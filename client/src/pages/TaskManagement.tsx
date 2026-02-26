@@ -1,8 +1,7 @@
 import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -149,6 +148,8 @@ const DEFAULT_TASKS: Task[] = CRITICAL_PRELOADED_TASKS.map((task, index) => ({
   templateId: task.templateId, // Keep original template ID
   dependsOn: index === 0 ? [] : [String(index)],
 }));
+
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
@@ -357,109 +358,124 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   };
 
   return (
-    <>
-      {!embedded && <StandardNav />}
+    <PageLayout embedded={embedded}>
+      <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Task Management</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
+                Execution <em style={{ fontStyle: "italic", color: "#DFC178" }}>Task Library</em>
+              </h1>
+              <p className="text-white/60 mt-1 max-w-2xl">
+                Define and manage execution tasks with dependencies and approval gates
+              </p>
+            </div>
+            <Button 
+              onClick={handleOpenCreate}
+              className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
+              data-testid="button-create-task"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Add Task
+            </Button>
+          </div>
+        </div>
+      </div>
       
       <main className="max-w-7xl mx-auto px-6 py-12">
-        <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
-              Task Management
-            </h1>
-            <p className="text-gray-800 dark:text-slate-300 mt-1">
-              Define and manage execution tasks with dependencies and approval gates
-            </p>
-          </div>
-          <Button 
-            onClick={handleOpenCreate}
-            className="bg-purple-600 hover:bg-purple-700"
-            data-testid="button-create-task"
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Add Task
-          </Button>
-        </header>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+          <Card data-testid="stat-total" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <ListChecks className="h-4 w-4 text-white" />
+                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Tasks</div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <Card data-testid="stat-total">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <ListChecks className="h-5 w-5 text-gray-800" />
+          <Card data-testid="stat-pending" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Circle className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-800">Total Tasks</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.pending}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Pending</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-pending">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Circle className="h-5 w-5 text-gray-800 dark:text-slate-200" />
+
+          <Card data-testid="stat-in-progress" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Timer className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-gray-800">{stats.pending}</p>
-                  <p className="text-sm text-gray-800">Pending</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.inProgress}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>In Progress</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-in-progress">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Timer className="h-5 w-5 text-blue-800" />
+
+          <Card data-testid="stat-completed" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <CheckCircle2 className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-blue-800">{stats.inProgress}</p>
-                  <p className="text-sm text-gray-800">In Progress</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.completed}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Completed</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-completed">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-700" />
+
+          <Card data-testid="stat-duration" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Clock className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-emerald-700">{stats.completed}</p>
-                  <p className="text-sm text-gray-800">Completed</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card data-testid="stat-duration">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <Clock className="h-5 w-5 text-purple-800" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-purple-800">{stats.totalMinutes}m</p>
-                  <p className="text-sm text-gray-800">Total Duration</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.totalMinutes}m</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Duration</div>
               </div>
             </CardContent>
           </Card>
         </div>
 
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "playbook" | "library" | "sequences")} className="mb-6">
-          <TabsList className="grid w-full max-w-2xl grid-cols-3">
-            <TabsTrigger value="playbook" className="flex items-center gap-2" data-testid="tab-playbook-tasks">
-              <ListChecks className="h-4 w-4" />
+          <TabsList className="bg-[#F8F7F4] border-b border-[#E8E4DC] rounded-none h-12 p-0 gap-8">
+            <TabsTrigger 
+              value="playbook" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+              data-testid="tab-playbook-tasks"
+            >
               Playbook Tasks ({tasks.length})
             </TabsTrigger>
-            <TabsTrigger value="library" className="flex items-center gap-2" data-testid="tab-task-library">
-              <Library className="h-4 w-4" />
+            <TabsTrigger 
+              value="library" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+              data-testid="tab-task-library"
+            >
               Task Library ({libraryStats.total})
             </TabsTrigger>
-            <TabsTrigger value="sequences" className="flex items-center gap-2" data-testid="tab-execution-sequences">
-              <Activity className="h-4 w-4" />
+            <TabsTrigger 
+              value="sequences" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+              data-testid="tab-execution-sequences"
+            >
               Execution Sequences
             </TabsTrigger>
           </TabsList>
@@ -553,6 +569,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               variant="ghost" 
                               size="sm" 
                               onClick={() => handleOpenEdit(task)}
+                              className="text-[#0A0F2E] hover:bg-[#0A0F2E]/5"
                               data-testid={`button-edit-${task.id}`}
                             >
                               <Edit className="h-4 w-4" />
@@ -561,7 +578,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               variant="ghost" 
                               size="sm" 
                               onClick={() => setDeleteId(task.id)}
-                              className="text-red-700 hover:text-red-700"
+                              className="text-red-700 hover:text-red-800 hover:bg-red-50"
                               data-testid={`button-delete-${task.id}`}
                             >
                               <Trash2 className="h-4 w-4" />
@@ -1019,10 +1036,10 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             </div>
 
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsDialogOpen(false)} data-testid="button-cancel">
+              <Button variant="outline" onClick={() => setIsDialogOpen(false)} className="border-[#E8E4DC] text-[#0A0F2E]" data-testid="button-cancel">
                 Cancel
               </Button>
-              <Button onClick={handleSave} data-testid="button-save-task">
+              <Button onClick={handleSave} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-save-task">
                 {editingTask ? 'Update Task' : 'Create Task'}
               </Button>
             </DialogFooter>
@@ -1050,8 +1067,6 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           </AlertDialogContent>
         </AlertDialog>
       </main>
-
-      {!embedded && <Footer />}
-    </>
+    </PageLayout>
   );
 }

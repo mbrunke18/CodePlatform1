@@ -34,51 +34,53 @@ import {
   Database,
 } from 'lucide-react';
 
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const ONBOARDING_STEPS = [
   {
     id: 'organization',
     title: 'Organization Setup',
     description: 'Define your organizational structure',
     icon: Building2,
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/30',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
+    borderColor: 'border-[#0A0F2E]/30',
   },
   {
     id: 'integrations',
     title: 'Integrations',
     description: 'Connect your project tracking and communication tools',
     icon: Zap,
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/30',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
+    borderColor: 'border-[#C9A84C]/30',
   },
   {
     id: 'triggers',
     title: 'Trigger Configuration',
     description: 'Set up intelligence monitoring thresholds',
     icon: Target,
-    color: 'text-amber-500',
-    bgColor: 'bg-amber-500/10',
-    borderColor: 'border-amber-500/30',
+    color: 'text-[#2B8A6E]',
+    bgColor: 'bg-[#2B8A6E]/10',
+    borderColor: 'border-[#2B8A6E]/30',
   },
   {
     id: 'playbooks',
     title: 'Playbook Customization',
     description: 'Customize strategic response playbooks',
     icon: Layers,
-    color: 'text-green-500',
-    bgColor: 'bg-green-500/10',
-    borderColor: 'border-green-500/30',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
+    borderColor: 'border-[#0A0F2E]/30',
   },
   {
     id: 'metrics',
     title: 'Success Metrics',
     description: 'Define your KPIs and targets',
     icon: BarChart3,
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/30',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
+    borderColor: 'border-[#C9A84C]/30',
   },
 ];
 
@@ -263,29 +265,59 @@ export default function OnboardingWizard() {
 
   return (
     <PageLayout>
-      <div className="max-w-4xl mx-auto space-y-8 py-8">
+      <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Onboarding</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
+                Platform <em style={{ fontStyle: "italic", color: "#DFC178" }}>Activation Wizard</em>
+              </h1>
+              <p className="text-white/60 mt-1 max-w-2xl">
+                Initialize your enterprise execution workspace and configure core intelligence parameters
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto space-y-8 py-12">
         {/* Progress Header */}
-        <Card className="bg-white border-gray-200">
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className={`w-12 h-12 rounded-xl ${currentStepInfo.bgColor} flex items-center justify-center`}>
-                  <StepIcon className={`h-6 w-6 ${currentStepInfo.color}`} />
+        <Card className="bg-white border-[#E8E4DC] rounded-none">
+          <CardContent className="pt-8">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-4">
+                <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <StepIcon className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">{currentStepInfo.title}</h2>
-                  <p className="text-sm text-gray-800">{currentStepInfo.description}</p>
+                  <h2 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E" }}>{currentStepInfo.title}</h2>
+                  <p className="text-sm text-[#6B7280]">{currentStepInfo.description}</p>
                 </div>
               </div>
-              <Badge variant="outline" className="bg-transparent text-gray-800 border-slate-600">
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                 Step {currentStep + 1} of {ONBOARDING_STEPS.length}
-              </Badge>
+              </div>
             </div>
             
-            <Progress value={progress} className="h-2" />
+            <div className="w-full bg-[#E8E4DC] h-1.5 mb-8">
+              <div 
+                className="bg-[#C9A84C] h-full transition-all duration-500" 
+                style={{ width: `${progress}%` }} 
+              />
+            </div>
             
             {/* Step indicators */}
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between">
               {ONBOARDING_STEPS.map((step, index) => {
                 const Icon = step.icon;
                 const isCompleted = completedSteps.has(index);
@@ -294,20 +326,38 @@ export default function OnboardingWizard() {
                 return (
                   <div 
                     key={step.id}
-                    className={`flex items-center gap-2 ${
-                      isCurrent ? step.color : isCompleted ? 'text-green-500' : 'text-gray-800'
-                    }`}
+                    className="flex flex-col items-center gap-2 group"
                   >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      isCurrent ? step.bgColor : isCompleted ? 'bg-green-500/10' : 'bg-gray-50'
-                    }`}>
+                    <div 
+                      style={{ 
+                        width: 32, 
+                        height: 32, 
+                        background: isCurrent ? "#0A0F2E" : isCompleted ? "#2B8A6E" : "#F8F7F4",
+                        border: isCurrent ? "none" : isCompleted ? "none" : "1px solid #E8E4DC",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: isCurrent || isCompleted ? "#fff" : "#6B7280"
+                      }}
+                    >
                       {isCompleted ? (
                         <CheckCircle className="h-4 w-4" />
                       ) : (
                         <Icon className="h-4 w-4" />
                       )}
                     </div>
-                    <span className="text-xs hidden md:block">{step.title}</span>
+                    <span 
+                      style={{ 
+                        fontSize: 8, 
+                        fontWeight: 700, 
+                        letterSpacing: "0.1em", 
+                        textTransform: "uppercase", 
+                        color: isCurrent ? "#0A0F2E" : "#6B7280"
+                      }} 
+                      className="hidden md:block"
+                    >
+                      {step.id}
+                    </span>
                   </div>
                 );
               })}
@@ -316,8 +366,8 @@ export default function OnboardingWizard() {
         </Card>
 
         {/* Step Content */}
-        <Card className="bg-white border-gray-200 min-h-[400px]">
-          <CardContent className="pt-6">
+        <Card className="bg-white border-[#E8E4DC] rounded-none min-h-[400px]">
+          <CardContent className="pt-8">
             {/* Step 1: Organization Setup */}
             {currentStep === 0 && (
               <div className="space-y-6">
@@ -848,17 +898,17 @@ export default function OnboardingWizard() {
 
         {/* Seed data toggle — shown only on final step */}
         {currentStep === ONBOARDING_STEPS.length - 1 && (
-          <Card className="bg-blue-50 border-blue-200">
-            <CardContent className="p-4">
+          <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
+            <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Database className="h-5 w-5 text-blue-600" />
+                <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Database className="h-5 w-5 text-white" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-semibold text-gray-900 text-sm">Pre-populate with sample data</div>
-                      <div className="text-gray-600 text-xs mt-0.5">
+                      <div style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#0A0F2E" }}>Pre-populate with sample data</div>
+                      <div className="text-[#6B7280] text-sm mt-1">
                         Add 3 sample scenarios to your workspace so you can explore the platform immediately. You can delete them anytime.
                       </div>
                     </div>
@@ -875,33 +925,33 @@ export default function OnboardingWizard() {
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <Button
             variant="outline"
             onClick={handleBack}
             disabled={currentStep === 0}
-            className="gap-2"
+            className="border-[#E8E4DC] text-[#0A0F2E] rounded-none px-8"
             data-testid="button-back"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4 mr-2" />
             Back
           </Button>
           
           <Button
             onClick={handleNext}
-            className="gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-8"
             disabled={completeOnboardingMutation.isPending}
             data-testid="button-next"
           >
             {currentStep === ONBOARDING_STEPS.length - 1 ? (
               <>
                 Complete Setup
-                <Rocket className="h-4 w-4" />
+                <Rocket className="h-4 w-4 ml-2" />
               </>
             ) : (
               <>
                 Continue
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4 ml-2" />
               </>
             )}
           </Button>

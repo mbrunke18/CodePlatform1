@@ -20,6 +20,13 @@ import {
   Trophy
 } from 'lucide-react';
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function ExecutiveSuite() {
   const executiveMetrics = [
     { title: "Strategic Initiatives", value: "12 Active", change: "+3 this quarter", trend: "up" },
@@ -34,21 +41,21 @@ export default function ExecutiveSuite() {
       type: "Quarterly Board Report",
       status: "Ready for Review",
       date: "September 2025",
-      icon: <FileText className="w-5 h-5 text-blue-400" />
+      icon: <FileText className="w-5 h-5 text-white" />
     },
     {
       title: "Crisis Response Capabilities Assessment",
       type: "Risk Management Report",
       status: "Completed",
       date: "August 2025",
-      icon: <Shield className="w-5 h-5 text-green-400" />
+      icon: <Shield className="w-5 h-5 text-white" />
     },
     {
       title: "Organizational Intelligence ROI Analysis",
       type: "Investment Performance",
       status: "In Progress",
       date: "September 2025",
-      icon: <TrendingUp className="w-5 h-5 text-orange-400" />
+      icon: <TrendingUp className="w-5 h-5 text-white" />
     }
   ];
 
@@ -62,172 +69,152 @@ export default function ExecutiveSuite() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="p-8">
-          {/* Executive Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                <Crown className="w-7 h-7 text-gray-900" />
-              </div>
+      <div className="flex-1 bg-white overflow-auto">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+            backgroundSize: "44px 44px" 
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Executive Command Center</h1>
-                <p className="text-gray-800 dark:text-gray-300">C-Suite Intelligence & Strategic Command</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>C-Suite Intelligence</span>
+                </div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+                  Executive <em style={{ fontStyle: "italic", color: GOLD_LT }}>Command Center</em>
+                </h1>
+                <p className="text-white/60 text-lg max-w-2xl">Strategic decision support and real-time organizational command for executive leadership.</p>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
-                <CheckCircle className="w-3 h-3 mr-1" />
-                All Systems Operational
-              </Badge>
-              <Badge className="bg-purple-600 text-gray-900">
-                Executive Access
-              </Badge>
+              <div className="text-right hidden md:block">
+                <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                  <CheckCircle className="w-3 h-3" />
+                  All Systems Operational
+                </div>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Executive Value Benchmarks - Based on Fortune 1000 Customer Data */}
-          <Card className="mb-8 bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-blue-950/30 border-2 border-blue-400 dark:border-blue-600">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-semibold text-blue-800 dark:text-blue-400 uppercase tracking-wider">
-                Platform ROI Benchmarks (Avg Fortune 1000 Customer Results)
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <DollarSign className="h-8 w-8 text-emerald-700 dark:text-green-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-emerald-700 dark:text-green-400">$5.8M</div>
-                  <div className="text-sm text-muted-foreground">Avg Annual Value</div>
-                  <div className="text-xs text-emerald-700 dark:text-green-400 mt-1">48x Avg ROI</div>
-                </div>
-                <div className="text-center">
-                  <Shield className="h-8 w-8 text-blue-800 dark:text-blue-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-blue-800 dark:text-blue-400">$4.2M</div>
-                  <div className="text-sm text-muted-foreground">Avg Risk Mitigation</div>
-                  <div className="text-xs text-blue-800 dark:text-blue-400 mt-1">Crisis Prevention Benchmark</div>
-                </div>
-                <div className="text-center">
-                  <Clock className="h-8 w-8 text-purple-800 dark:text-purple-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-purple-800 dark:text-purple-400">720 Hours</div>
-                  <div className="text-sm text-muted-foreground">Avg Time Saved/Year</div>
-                  <div className="text-xs text-purple-800 dark:text-purple-400 mt-1">Target: 12 min vs 72h industry</div>
-                </div>
-                <div className="text-center">
-                  <Trophy className="h-8 w-8 text-orange-600 dark:text-orange-400 mx-auto mb-2" />
-                  <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">92%</div>
-                  <div className="text-sm text-muted-foreground">Avg Board Confidence</div>
-                  <div className="text-xs text-orange-600 dark:text-orange-400 mt-1">Decision Velocity Benchmark</div>
+        {/* ROI Stats Banner */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: OFF, borderBottom:"1px solid #E8E4DC" }}>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>$5.8M</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Avg Annual Value</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>$4.2M</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Avg Risk Mitigation</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>720h</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Time Saved/Year</div>
+          </div>
+          <div style={{ padding:24 }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>92%</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Board Confidence</div>
+          </div>
+        </div>
+
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
+          {/* Executive Performance Dashboard */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {executiveMetrics.map((metric, index) => (
+              <div key={index} className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors">
+                <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginBottom: 8 }}>{metric.title}</div>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, marginBottom: 4 }}>{metric.value}</div>
+                <div className={`text-xs font-bold ${
+                  metric.trend === 'up' ? 'text-[#2B8A6E]' : 'text-[#6B7280]'
+                }`}>
+                  {metric.change}
                 </div>
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Executive Performance Dashboard */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {executiveMetrics.map((metric, index) => (
-              <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{metric.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{metric.value}</div>
-                  <div className={`text-sm flex items-center ${
-                    metric.trend === 'up' ? 'text-emerald-700' : 
-                    metric.trend === 'down' ? 'text-red-700' : 'text-gray-800'
-                  }`}>
-                    {metric.trend === 'up' && <TrendingUp className="w-3 h-3 mr-1" />}
-                    {metric.change}
-                  </div>
-                </CardContent>
-              </Card>
             ))}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Board Reports */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Briefcase className="w-5 h-5 mr-2 text-purple-500" />
-                  Board Reports & Strategic Documentation
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px", background: "#fff" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Strategic Documentation</span>
+              </div>
+              <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 24 }}>Board Reports</h2>
+              <div className="space-y-4">
                 {boardReports.map((report, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      {report.icon}
+                  <div key={index} className="flex items-center justify-between p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="flex items-center space-x-4">
+                      <div style={{ width:32, height:32, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                        {report.icon}
+                      </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{report.title}</h4>
-                        <p className="text-sm text-gray-800 dark:text-gray-400">{report.type} • {report.date}</p>
+                        <h4 className="font-bold text-[#0A0F2E]">{report.title}</h4>
+                        <p className="text-xs text-[#6B7280]">{report.type} • {report.date}</p>
                       </div>
                     </div>
-                    <Badge variant={report.status === 'Completed' ? 'default' : 'secondary'}>
+                    <span style={{ background: report.status === 'Completed' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: report.status === 'Completed' ? "#3BAF8A" : "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
                       {report.status}
-                    </Badge>
+                    </span>
                   </div>
                 ))}
-                <Button className="w-full mt-4" data-testid="button-generate-board-report">
-                  Generate Executive Summary
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+              <button style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 28px", border: "none", cursor: "pointer", width: "100%", marginTop: 24 }}>
+                Generate Executive Summary
+              </button>
+            </div>
 
             {/* Strategic Priorities */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Target className="w-5 h-5 mr-2 text-blue-500" />
-                  Current Strategic Priorities
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 mb-6">
-                  {executivePriorities.map((priority, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                      <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{priority}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex space-x-3">
-                  <Button size="sm" variant="outline" data-testid="button-update-priorities">
-                    Update Priorities
-                  </Button>
-                  <Button size="sm" data-testid="button-strategic-review">
-                    Schedule Strategic Review
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: "32px", background: "#fff" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution Focus</span>
+              </div>
+              <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 24 }}>Current Priorities</h2>
+              <div className="space-y-4 mb-8">
+                {executivePriorities.map((priority, index) => (
+                  <div key={index} className="flex items-start space-x-3 p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <CheckCircle className="w-4 h-4 mt-0.5 text-[#2B8A6E] flex-shrink-0" />
+                    <span className="text-sm text-[#0A0F2E]">{priority}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-4">
+                <button style={{ border: "1.5px solid #E8E4DC", color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "12px 24px", cursor: "pointer", flex: 1 }}>
+                  Update Priorities
+                </button>
+                <button style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "12px 24px", border: "none", cursor: "pointer", flex: 1 }}>
+                  Schedule Review
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Executive Command Actions */}
-          <Card className="mt-8 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-purple-200 dark:border-purple-800">
-            <CardHeader>
-              <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                <Crown className="w-5 h-5 mr-2 text-purple-500" />
-                Executive Command Actions
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Button className="h-16 bg-red-600 hover:bg-red-700 text-gray-900" data-testid="button-emergency-activation">
-                  <AlertCircle className="w-5 h-5 mr-2" />
-                  Emergency Crisis Activation
-                </Button>
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-strategic-intelligence">
-                  <Brain className="w-5 h-5 mr-2" />
-                  AI Strategic Intelligence
-                </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-board-presentation">
-                  <Briefcase className="w-5 h-5 mr-2" />
-                  Generate Board Presentation
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <div style={{ background: NAVY, padding: "48px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Command Override</span>
+            </div>
+            <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 32 }}>Executive Command Actions</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <button className="bg-red-600 hover:bg-red-700 text-white font-bold h-20 flex items-center justify-center gap-3">
+                <AlertCircle className="w-5 h-5" />
+                Emergency Crisis Activation
+              </button>
+              <button style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", color: "#fff", fontWeight: "bold" }} className="h-20 flex items-center justify-center gap-3 hover:bg-white/10">
+                <Brain className="w-5 h-5 text-[#DFC178]" />
+                AI Strategic Intelligence
+              </button>
+              <button style={{ background: GOLD, color: NAVY, fontWeight: "bold" }} className="h-20 flex items-center justify-center gap-3 hover:bg-[#DFC178]">
+                <Briefcase className="w-5 h-5" />
+                Generate Board Presentation
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </PageLayout>

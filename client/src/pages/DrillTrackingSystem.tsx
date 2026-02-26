@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { PlayCircle, Trophy, Users, Clock, TrendingUp, Target } from 'lucide-react';
+import { PlayCircle, Trophy, Users, Clock, TrendingUp, Target, CheckCircle } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 const demoDrills = [
@@ -134,6 +134,12 @@ const demoDrills = [
   }
 ];
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function DrillTrackingSystem() {
   const { data: simulationsData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/crisis-simulations'],
@@ -145,182 +151,152 @@ export default function DrillTrackingSystem() {
     ? completedDrills.reduce((acc: number, s: any) => acc + (s.performanceMetrics?.overallScore || 75), 0) / completedDrills.length
     : 0;
 
-  const getStatusColor = (status: string) => {
-    const colors: Record<string, string> = {
-      draft: 'bg-gray-500',
-      scheduled: 'bg-blue-500',
-      running: 'bg-green-500',
-      completed: 'bg-purple-500',
-      cancelled: 'bg-red-500'
-    };
-    return colors[status] || 'bg-gray-500';
-  };
-
-  const getDifficultyBadge = (difficulty: string) => {
-    const variants: Record<string, any> = {
-      basic: 'secondary',
-      intermediate: 'default',
-      advanced: 'destructive'
-    };
-    return variants[difficulty] || 'default';
+  const getStatusBadgeStyle = (status: string) => {
+    switch(status) {
+      case 'completed': return { background: "rgba(43,138,110,0.12)", color: "#3BAF8A" };
+      case 'scheduled': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
+      case 'running': return { background: "rgba(43,138,110,0.12)", color: "#3BAF8A" };
+      default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+    }
   };
 
   return (
-    <div className="space-y-6 p-6">
-
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2" data-testid="page-title">
-            <Target className="h-8 w-8 text-green-500" />
-            Drill Tracking System
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            Practice scenarios quarterly to maintain Executive Preparedness Score™
-          </p>
+    <div className="flex-1 bg-white overflow-auto">
+      {/* Navy Hero Section */}
+      <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex items-center justify-between">
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Readiness Auditing</span>
+              </div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+                Drill Tracking <em style={{ fontStyle: "italic", color: "#DFC178" }}>System</em>
+              </h1>
+              <p className="text-white/60 text-lg max-w-2xl">Quarterly scenario practice and performance verification to maintain the Executive Preparedness Score™.</p>
+            </div>
+            <Button 
+              style={{ background: "#C9A84C", color: "#0A0F2E", fontWeight: "bold" }}
+              className="hover:bg-[#DFC178]"
+              data-testid="button-create-drill"
+            >
+              <PlayCircle className="h-4 w-4 mr-2" />
+              Schedule New Drill
+            </Button>
+          </div>
         </div>
-        <Button data-testid="button-create-drill">
-          <PlayCircle className="h-4 w-4 mr-2" />
-          Schedule New Drill
-        </Button>
       </div>
 
-      {/* Key Metrics */}
-      <div className="grid gap-4 md:grid-cols-4">
-        <Card data-testid="card-total-drills">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Drills</CardTitle>
-            <PlayCircle className="h-4 w-4 text-blue-800" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{simulations.length}</div>
-            <p className="text-xs text-muted-foreground">
-              {completedDrills.length} completed
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card data-testid="card-avg-performance">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Performance</CardTitle>
-            <Trophy className="h-4 w-4 text-yellow-600" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{Math.round(avgPerformance)}%</div>
-            <p className="text-xs text-muted-foreground">
-              Across all completed drills
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card data-testid="card-participants">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Participants</CardTitle>
-            <Users className="h-4 w-4 text-emerald-700" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {simulations.reduce((acc: number, s: any) => {
-                return acc + (s.participants?.length || 0);
-              }, 0)}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Total executive involvement
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card data-testid="card-readiness-score">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Readiness Score</CardTitle>
-            <TrendingUp className="h-4 w-4 text-blue-800" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {completedDrills.length >= 4 ? 'Green' : completedDrills.length >= 2 ? 'Yellow' : 'Red'}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Based on drill frequency
-            </p>
-          </CardContent>
-        </Card>
+      {/* Stats Grid */}
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: OFF, borderBottom:"1px solid #E8E4DC" }}>
+        <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+          <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{simulations.length}</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Total Drills</div>
+        </div>
+        <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+          <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{Math.round(avgPerformance)}%</div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Avg Performance</div>
+        </div>
+        <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+          <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>
+            {simulations.reduce((acc: number, s: any) => acc + (s.participants?.length || 0), 0)}
+          </div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Active Participants</div>
+        </div>
+        <div style={{ padding:24 }}>
+          <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>
+            {completedDrills.length >= 4 ? 'Green' : completedDrills.length >= 2 ? 'Yellow' : 'Red'}
+          </div>
+          <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Readiness Status</div>
+        </div>
       </div>
 
-      {/* Drills List */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Crisis Simulation Drills</CardTitle>
-          <CardDescription>
-            Practice playbook execution with team performance tracking
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
+      <div className="p-12 max-w-7xl mx-auto">
+        <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px", background: "#fff" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Simulation Log</span>
+          </div>
+          <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Crisis Simulation Drills</h2>
+          <p className="text-[#6B7280] mb-8">Practice playbook execution with team performance tracking and systematic auditing.</p>
+
           {isLoading ? (
-            <div className="text-center py-8 text-muted-foreground">Loading drills...</div>
+            <div className="text-center py-12 text-[#6B7280]">Loading drills...</div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {simulations.map((sim: any) => (
                 <div 
                   key={sim.id} 
-                  className="border rounded-lg p-4 space-y-3"
+                  className="border border-[#E8E4DC] p-6 hover:border-[#0A0F2E] transition-colors"
                   data-testid={`drill-${sim.id}`}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="flex-1 page-background space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className={`w-3 h-3 rounded-full ${getStatusColor(sim.status)}`} data-testid={`status-indicator-${sim.id}`} />
-                        <h3 className="font-semibold" data-testid={`text-drill-name-${sim.id}`}>{sim.name}</h3>
-                        <Badge variant={getDifficultyBadge(sim.difficulty)} data-testid={`badge-difficulty-${sim.id}`}>
+                    <div className="flex-1 space-y-4">
+                      <div className="flex items-center gap-4">
+                        <h3 className="text-xl font-bold text-[#0A0F2E]" data-testid={`text-drill-name-${sim.id}`}>{sim.name}</h3>
+                        <span style={{ ...getStatusBadgeStyle(sim.status), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                          {sim.status}
+                        </span>
+                        <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                           {sim.difficulty}
-                        </Badge>
-                        <Badge variant="outline">{sim.scenarioType}</Badge>
+                        </span>
                       </div>
                       
-                      {sim.participants && sim.participants.length > 0 && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Users className="h-4 w-4" />
-                          <span>{sim.participants.length} participants</span>
+                      <div className="flex items-center gap-6 text-xs font-bold tracking-widest uppercase text-[#6B7280]">
+                        <div className="flex items-center gap-2">
+                          <Users className="h-3.5 w-3.5" />
+                          <span>{sim.participants?.length || 0} participants</span>
                         </div>
-                      )}
-
-                      {sim.duration && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Clock className="h-4 w-4" />
-                          <span>{sim.duration} minutes</span>
-                        </div>
-                      )}
+                        {sim.duration && (
+                          <div className="flex items-center gap-2">
+                            <Clock className="h-3.5 w-3.5" />
+                            <span>{sim.duration} minutes</span>
+                          </div>
+                        )}
+                      </div>
 
                       {sim.status === 'completed' && sim.performanceMetrics && (
-                        <div className="mt-2 space-y-2">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="text-muted-foreground">Overall Performance</span>
-                            <span className="font-medium">{sim.performanceMetrics.overallScore || 75}%</span>
+                        <div className="space-y-2 max-w-md">
+                          <div className="flex items-center justify-between text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">
+                            <span>Overall Performance</span>
+                            <span className="text-[#0A0F2E]">{sim.performanceMetrics.overallScore || 75}%</span>
                           </div>
-                          <Progress value={sim.performanceMetrics.overallScore || 75} className="h-2" />
+                          <Progress value={sim.performanceMetrics.overallScore || 75} className="h-1 bg-[#E8E4DC]" />
                         </div>
                       )}
 
                       {sim.lessons && sim.lessons.length > 0 && (
-                        <div className="bg-blue-50 dark:bg-blue-950 p-3 rounded-md">
-                          <p className="text-sm font-medium mb-1">Key Learnings:</p>
-                          <ul className="list-disc list-inside text-sm text-muted-foreground">
+                        <div style={{ border: "1px solid #E8E4DC", borderLeft: `2px solid ${GOLD}`, padding: "16px", background: OFF }}>
+                          <p className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280] mb-2">Key Audit Findings:</p>
+                          <ul className="space-y-2">
                             {(sim.lessons as any[]).slice(0, 2).map((lesson: string, idx: number) => (
-                              <li key={idx}>{lesson}</li>
+                              <li key={idx} className="text-sm text-[#0A0F2E] flex items-start gap-2">
+                                <CheckCircle className="h-4 w-4 text-[#2B8A6E] flex-shrink-0 mt-0.5" />
+                                {lesson}
+                              </li>
                             ))}
                           </ul>
                         </div>
                       )}
                     </div>
 
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-3">
                       {sim.status === 'completed' && (
-                        <Button size="sm" variant="outline" data-testid={`button-view-results-${sim.id}`}>
+                        <button style={{ border: "1.5px solid #E8E4DC", color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", cursor: "pointer" }} data-testid={`button-view-results-${sim.id}`}>
                           View Results
-                        </Button>
+                        </button>
                       )}
                       {sim.status === 'scheduled' && (
-                        <Button size="sm" data-testid={`button-start-drill-${sim.id}`}>
+                        <button style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", border: "none", cursor: "pointer" }} data-testid={`button-start-drill-${sim.id}`}>
                           Start Drill
-                        </Button>
+                        </button>
                       )}
                     </div>
                   </div>
@@ -328,8 +304,8 @@ export default function DrillTrackingSystem() {
               ))}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

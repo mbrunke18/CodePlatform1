@@ -213,9 +213,9 @@ function getPlaybookIcon(icon: string) {
 
 function getCategoryColor(category: string) {
   switch (category) {
-    case 'OFFENSE': return { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/30', ring: 'ring-blue-500', solid: 'bg-blue-500' };
-    case 'DEFENSE': return { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/30', ring: 'ring-red-500', solid: 'bg-red-500' };
-    case 'SPECIAL TEAMS': return { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/30', ring: 'ring-purple-500', solid: 'bg-purple-500' };
+    case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#3BAF8A]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
+    case 'DEFENSE': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#DFC178]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
+    case 'SPECIAL TEAMS': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
     default: return { bg: 'bg-gray-500/10', text: 'text-gray-800', border: 'border-gray-500/30', ring: 'ring-gray-500', solid: 'bg-gray-500' };
   }
 }
@@ -264,6 +264,17 @@ export default function LiveActivationCenter() {
   const feedRef = useRef<HTMLDivElement>(null);
   const startTimeRef = useRef<number>(0);
   const simulationRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const NAVY = "#0A0F2E";
+  const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const GOLD_LT = "#DFC178";
+  const TEAL = "#2B8A6E";
+  const TEAL_LT = "#3BAF8A";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   const activePlaybook = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
 
@@ -954,237 +965,176 @@ export default function LiveActivationCenter() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-white text-gray-900">
-      <div className="border-b border-gray-200 bg-white backdrop-blur-sm sticky top-0 z-30">
-        <div className="max-w-[1800px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 md:gap-4 min-w-0">
-            <h2 className="text-sm md:text-lg font-bold truncate">{activePlaybook?.name}</h2>
-            {activePlaybook && (
-              <Badge className={cn('text-[10px] md:text-xs font-semibold border-0 hidden sm:inline-flex', getCategoryColor(activePlaybook.category).bg, getCategoryColor(activePlaybook.category).text)}>
-                {activePlaybook.category}
-              </Badge>
-            )}
-            <Badge className={cn(
-              'text-[10px] md:text-xs font-semibold border-0',
-              activationState === 'ACTIVATING' ? 'bg-yellow-500/10 text-yellow-400' :
-              activationState === 'IN_PROGRESS' ? 'bg-blue-500/10 text-blue-400' :
-              'bg-emerald-500/10 text-emerald-400'
-            )}>
-              {activationState === 'ACTIVATING' && <Loader2 className="w-3 h-3 mr-1 animate-spin" />}
-              {activationState === 'ACTIVATING' ? 'ACTIVATING...' : activationState === 'IN_PROGRESS' ? 'IN PROGRESS' : 'COMPLETED'}
-            </Badge>
-          </div>
-          <div className="flex items-center gap-2 md:gap-4">
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="flex items-center gap-1.5 text-gray-800 font-mono text-sm md:text-lg">
-                <Clock className="w-4 h-4 text-gray-800" />
-                {formatElapsed(simulatedSeconds)}
+      <div style={{ background: OFF, minHeight: '100vh' }}>
+        {/* Navigation / Header */}
+        <div style={{ background: NAVY, padding: '20px 48px', borderBottom: `1px solid ${NAVY_MID}` }}>
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Live Activation Center</span>
               </div>
-              <Badge className="text-[9px] md:text-[10px] border-0 bg-amber-500/10 text-amber-400 font-semibold">8x ACCELERATED</Badge>
-            {hasLiveIntegrations && (
-              <Badge className="text-[9px] md:text-[10px] border-0 bg-cyan-500/10 text-cyan-400 font-semibold hidden sm:inline-flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                LIVE
-              </Badge>
-            )}
             </div>
-            <Button variant="ghost" size="sm" onClick={cancelActivation} className="text-gray-800 hover:text-white hover:bg-gray-800 px-2 md:px-3">
-              <X className="w-4 h-4" /><span className="hidden sm:inline ml-1">Cancel</span>
-            </Button>
+            <div className="flex items-center gap-4">
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:TEAL_LT, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border: `1px solid ${TEAL}` }}>
+                System: Operational
+              </div>
+            </div>
           </div>
         </div>
+
+        <div className="container mx-auto p-6 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY }}>
+                Playbook <em style={{ fontStyle: "italic", color: GOLD }}>Activation</em>
+              </h1>
+              <p style={{ color: MUTED, marginTop: 8 }}>
+                Orchestrate mission-critical response across the enterprise
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Left Column: Stats & Activity */}
+            <div className="lg:col-span-1 space-y-6">
+              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Execution Timer</div>
+                <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: NAVY, lineHeight: 1 }}>
+                  {formatElapsed(simulatedSeconds)}
+                </div>
+                <div style={{ fontSize: 10, fontWeight: 600, color: TEAL, marginTop: 8 }}>
+                  TARGET: 12:00
+                </div>
+              </div>
+
+              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Activity Feed</div>
+                <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                  {activityFeed.map((entry) => (
+                    <div key={entry.id} className="flex gap-3">
+                      <div style={{ width: 2, background: entry.type === 'system' ? NAVY : entry.type === 'stakeholder' ? GOLD : TEAL, flexShrink: 0 }} />
+                      <div>
+                        <div style={{ fontSize: 12, color: NAVY, fontWeight: 500 }}>{entry.description}</div>
+                        <div style={{ fontSize: 10, color: MUTED }}>{formatElapsed(entry.timestamp)}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle Column: Stakeholders & Tasks */}
+            <div className="lg:col-span-2 space-y-6">
+              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Users className="h-4 w-4" style={{ color: NAVY }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Stakeholder Alignment</span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                  {stakeholders.map((s) => (
+                    <div key={s.id} className="text-center">
+                      <div style={{ width: 48, height: 48, background: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : BORDER, borderRadius: '50%', margin: '0 auto 8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 600, fontSize: 14 }}>
+                        {s.initials}
+                      </div>
+                      <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</div>
+                      <div style={{ fontSize: 10, color: MUTED }}>{s.status}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Target className="h-4 w-4" style={{ color: NAVY }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Tasks</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {tasks.map((task) => (
+                    <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 12, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : BORDER}` }}>
+                      {task.status === 'completed' ? <CheckCircle2 className="h-4 w-4" style={{ color: TEAL }} /> : <Circle className="h-4 w-4" style={{ color: BORDER }} />}
+                      <div className="flex-1">
+                        <div style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{task.name}</div>
+                        <div style={{ fontSize: 10, color: MUTED }}>{task.owner} • {task.phase}</div>
+                      </div>
+                      <div style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', color: task.status === 'completed' ? TEAL : GOLD }}>{task.status}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Context & Controls */}
+            <div className="lg:col-span-1 space-y-6">
+              <div style={{ border: `1px solid ${BORDER}`, background: NAVY, padding: 24, color: '#fff' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Active Playbook</div>
+                <div style={{ ...CG, fontSize: 20, fontWeight: 600, marginBottom: 8 }}>{activePlaybook?.name}</div>
+                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>{activePlaybook?.description}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <div style={{ background: 'rgba(255,255,255,0.1)', padding: '4px 10px', fontSize: 10, fontWeight: 600, border: '1px solid rgba(255,255,255,0.2)' }}>
+                    {activePlaybook?.category}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Button 
+                  onClick={() => activateMutation.mutate(selectedPlaybook)}
+                  disabled={activationState === 'ACTIVATING' || activationState === 'IN_PROGRESS'}
+                  style={{ width: '100%', background: GOLD, color: NAVY, fontWeight: 700, textTransform: 'uppercase', fontSize: 11, letterSpacing: '0.1em', padding: '12px' }}
+                >
+                  <Play className="h-4 w-4 mr-2" />
+                  Restart Activation
+                </Button>
+                <Button 
+                  variant="outline"
+                  style={{ width: '100%', border: `1.5px solid ${BORDER}`, color: NAVY, fontWeight: 700, textTransform: 'uppercase', fontSize: 11, letterSpacing: '0.1em', padding: '12px' }}
+                  asChild
+                >
+                  <Link href="/command-center">Cancel Activation</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Completion Modal Overlay */}
+        {showCompletion && (
+          <div style={{ position: 'fixed', inset: 0, background: 'rgba(10,15,46,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 24 }}>
+            <div style={{ maxWidth: 600, width: '100%', background: '#fff', border: `1px solid ${GOLD}`, padding: 48, textAlign: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+                <Trophy className="h-16 w-16" style={{ color: GOLD }} />
+                <h2 style={{ ...CG, fontSize: 40, fontWeight: 600, color: NAVY }}>Mission <em style={{ fontStyle: 'italic', color: GOLD }}>Successful</em></h2>
+                <div style={{ fontSize: 14, color: MUTED, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                  Playbook Executed in {formatElapsed(simulatedSeconds)}
+                </div>
+                <div className="grid grid-cols-2 gap-8 w-full py-8 border-y border-[#E8E4DC]">
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: MUTED, textTransform: 'uppercase', marginBottom: 4 }}>Time Saved</div>
+                    <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: TEAL }}>71.8 Hours</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: MUTED, textTransform: 'uppercase', marginBottom: 4 }}>Efficiency Gain</div>
+                    <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD }}>360x</div>
+                  </div>
+                </div>
+                <div className="flex gap-4 w-full">
+                  <Button style={{ flex: 1, background: NAVY, color: '#fff', fontWeight: 700, textTransform: 'uppercase' }} asChild>
+                    <Link href="/command-center">Return to Command Center</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-
-      {activeKpis && (
-        <div className="border-b border-gray-200 bg-white">
-          <div className="max-w-[1800px] mx-auto px-4 py-2 flex items-center justify-center gap-6 md:gap-10">
-            {contextLabel && (
-              <span className="text-xs font-semibold text-emerald-400 hidden sm:inline">
-                {roleOverlay ? `${contextLabel} View` : `${contextLabel}`}
-              </span>
-            )}
-            {activeKpis.map((kpi, i) => (
-              <div key={i} className="flex items-center gap-1.5 text-xs">
-                <span className="text-gray-800">{kpi.label}:</span>
-                <span className={cn('font-semibold', kpi.color)}>{kpi.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-[1800px] mx-auto p-3 md:p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-        <div className="lg:col-span-1 space-y-3">
-          <Card className="bg-white border-gray-200">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                  <Users className="w-4 h-4 text-blue-400" /> Stakeholder Coordination
-                </CardTitle>
-                <span className="text-xs text-emerald-400 font-mono">{acknowledgedCount}/{stakeholders.length} acknowledged</span>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto pr-1">
-              {stakeholders.map(s => (
-                <div key={s.id} className={cn(
-                  'flex items-center gap-3 p-2.5 rounded-lg border transition-all duration-300',
-                  s.status === 'acknowledged'
-                    ? 'bg-emerald-500/5 border-emerald-500/20'
-                    : s.status === 'notifying'
-                    ? 'bg-yellow-500/5 border-yellow-500/20'
-                    : s.status === 'notified'
-                    ? 'bg-blue-500/5 border-blue-500/20'
-                    : 'bg-gray-50 border-gray-200'
-                )}>
-                  <div className={cn('w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-gray-900 flex-shrink-0', s.color)}>
-                    {s.initials}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-900 truncate">{s.name}</span>
-                      <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-800">
-                        Tier {s.tier}
-                      </Badge>
-                    </div>
-                    <div className="text-xs text-gray-800 truncate">{s.title} · {s.department}</div>
-                  </div>
-                  <div className="flex items-center gap-1.5 flex-shrink-0">
-                    {s.status === 'pending' && (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-gray-600" />
-                        <span className="text-xs text-gray-800">Pending</span>
-                      </>
-                    )}
-                    {s.status === 'notifying' && (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-                        <span className="text-xs text-yellow-400">Notifying...</span>
-                      </>
-                    )}
-                    {s.status === 'notified' && (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-blue-400" />
-                        <span className="text-xs text-blue-400">Notified</span>
-                      </>
-                    )}
-                    {s.status === 'acknowledged' && (
-                      <>
-                        <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                        <span className="text-xs text-emerald-400">{formatElapsed(toSimulatedTime(s.responseTime || 0))}</span>
-                      </>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="lg:col-span-1 space-y-3">
-          <Card className="bg-white border-gray-200">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-gray-800 flex items-center gap-2">
-                  <Target className="w-4 h-4 text-blue-400" /> Execution Tasks
-                </CardTitle>
-                <span className="text-xs text-emerald-400 font-mono">{completedTaskCount}/{tasks.length} complete</span>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4 max-h-[calc(100vh-200px)] overflow-y-auto pr-1">
-              {[
-                { label: 'IMMEDIATE (0-2 min)', items: immediateT },
-                { label: 'SECONDARY (2-6 min)', items: secondaryT },
-                { label: 'FOLLOW UP (6-12 min)', items: followUpT },
-              ].map(group => (
-                group.items.length > 0 && (
-                  <div key={group.label}>
-                    <div className="text-[10px] font-bold tracking-widest text-gray-800 mb-2 uppercase">{group.label}</div>
-                    <div className="space-y-1.5">
-                      {group.items.map(task => {
-                        const isYourTask = highlightedTaskIds.includes(task.id);
-                        return (
-                        <div key={task.id} className={cn(
-                          'flex items-center gap-2.5 p-2 rounded-lg transition-all duration-300',
-                          isYourTask && task.status !== 'completed' ? 'ring-1 ring-amber-500/30 bg-amber-500/5' :
-                          task.status === 'completed' ? 'bg-emerald-500/5' :
-                          task.status === 'in_progress' ? 'bg-blue-500/5' : 'bg-gray-50'
-                        )}>
-                          {task.status === 'pending' && <Circle className="w-4 h-4 text-gray-800 flex-shrink-0" />}
-                          {task.status === 'in_progress' && <Loader2 className="w-4 h-4 text-blue-400 animate-spin flex-shrink-0" />}
-                          {task.status === 'completed' && <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-1.5">
-                              <span className={cn(
-                                'text-sm truncate',
-                                task.status === 'completed' ? 'text-gray-800' :
-                                task.status === 'in_progress' ? 'text-gray-900' : 'text-gray-800'
-                              )}>{task.name}</span>
-                              {isYourTask && (
-                                <Badge className="text-[8px] px-1 py-0 bg-amber-500/20 text-amber-400 border-0 flex-shrink-0">YOU</Badge>
-                              )}
-                            </div>
-                          </div>
-                          <Badge variant="outline" className="text-[10px] px-1.5 py-0 border-gray-200 text-gray-800 flex-shrink-0">
-                            {task.owner}
-                          </Badge>
-                        </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="lg:col-span-1 space-y-3">
-          <Card className="bg-white border-gray-200">
-            <CardContent className="pt-6 flex flex-col items-center">
-              <div className="relative w-40 h-40 mb-4">
-                <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="54" fill="none" stroke="rgb(31 41 55)" strokeWidth="8" />
-                  <circle
-                    cx="60" cy="60" r="54" fill="none"
-                    stroke="rgb(16 185 129)"
-                    strokeWidth="8"
-                    strokeLinecap="round"
-                    strokeDasharray={`${2 * Math.PI * 54}`}
-                    strokeDashoffset={`${2 * Math.PI * 54 * (1 - Math.min(simulatedSeconds / SIMULATED_DURATION, 1))}`}
-                    className="transition-all duration-500"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold font-mono text-gray-900">{formatElapsed(simulatedSeconds)}</span>
-                  <span className="text-[10px] text-gray-800">EXECUTION TIME</span>
-                </div>
-              </div>
-              <div className="text-xs text-gray-800 font-semibold tracking-wider mb-6">12-MINUTE COORDINATION CYCLE</div>
-
-              <div className="grid grid-cols-2 gap-3 w-full">
-                <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
-                  <div className="text-2xl font-bold text-emerald-400">{coordinationPct}%</div>
-                  <div className="text-[10px] text-gray-800 mt-1">Coordination</div>
-                  <Progress value={coordinationPct} className="h-1 mt-2 bg-gray-50" />
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
-                  <div className="text-2xl font-bold text-blue-400">{acknowledgedCount}/{stakeholders.length}</div>
-                  <div className="text-[10px] text-gray-800 mt-1">Stakeholders</div>
-                  <Progress value={stakeholders.length > 0 ? (acknowledgedCount / stakeholders.length) * 100 : 0} className="h-1 mt-2 bg-gray-50" />
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
-                  <div className="text-2xl font-bold text-blue-400">{completedTaskCount}/{tasks.length}</div>
-                  <div className="text-[10px] text-gray-800 mt-1">Tasks</div>
-                  <Progress value={taskPct} className="h-1 mt-2 bg-gray-50" />
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3 text-center border border-gray-200">
-                  <div className="text-lg font-bold text-purple-400">{phaseLabel}</div>
-                  <div className="text-[10px] text-gray-800 mt-1">Phase</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+    </PageLayout>
+  );
+}
 
         <div className="md:col-span-2 lg:col-span-1 space-y-3">
           <Card className="bg-white border-gray-200 h-full flex flex-col">

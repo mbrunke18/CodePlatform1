@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play, Clock, ArrowLeft, User } from "lucide-react";
+import { Play, Clock, ArrowLeft, User, Quote } from "lucide-react";
 import { Link } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import FounderStoryIntro from "@/components/marketing/FounderStoryIntro";
 import FounderStoryFull from "@/components/marketing/FounderStoryFull";
-import { BrandStamp } from "@/components/BrandStamp";
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function FounderStory() {
   const [activeVideo, setActiveVideo] = useState<"none" | "intro" | "full">("none");
@@ -18,221 +22,121 @@ export default function FounderStory() {
 
   if (activeVideo === "intro") {
     return (
-      <div className="min-h-screen bg-white">
-        <StandardNav />
+      <PageLayout>
         <FounderStoryIntro onComplete={handleVideoComplete} onSkip={handleVideoComplete} />
-      </div>
+      </PageLayout>
     );
   }
 
   if (activeVideo === "full") {
     return (
-      <div className="min-h-screen bg-white">
-        <StandardNav />
+      <PageLayout>
         <FounderStoryFull onComplete={handleVideoComplete} onSkip={handleVideoComplete} />
-      </div>
+      </PageLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
-      <StandardNav />
-      
-      <main className="pt-24 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back link */}
-          <Link href="/">
-            <Button variant="ghost" className="mb-8 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-
-          {/* Header */}
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-[#C9A84C] dark:text-amber-300 rounded-full text-sm font-medium mb-6">
-                <User className="h-4 w-4" />
-                Meet the Founder
-              </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-                The Story Behind Execution OS
-              </h1>
-              <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
-                20 years of Fortune 500 experience. 5 years coaching major college football. 
-                One mission: eliminate the chaos between strategy and execution.
-              </p>
-            </motion.div>
+    <PageLayout>
+      {/* Hero */}
+      <section style={{ background: "#0A0F2E", padding: "80px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        {/* Background Grid Accent */}
+        <div style={{ position: "absolute", inset: 0, opacity: 0.05, backgroundImage: "linear-gradient(#DFC178 1px, transparent 1px), linear-gradient(90deg, #DFC178 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "#DFC178", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#DFC178" }}>Meet the Founder</span>
           </div>
+          <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 24 }}>
+            The Story Behind <em style={{ fontStyle: "italic", color: "#DFC178" }}>Execution OS</em>
+          </h1>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto">
+            20 years of Fortune 500 experience. 5 years coaching major college football. One mission: eliminate the chaos between strategy and execution.
+          </p>
+        </div>
+      </section>
 
+      <main className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
           {/* Video Selection Cards */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-12 mb-24">
             {/* 90-Second Intro */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-all"
-            >
-              <div className="aspect-video bg-gradient-to-br from-amber-500/20 to-orange-500/20 dark:from-amber-900/30 dark:to-orange-900/30 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 to-transparent" />
-                <div className="text-center relative z-10">
-                  <div className="w-20 h-20 rounded-full bg-amber-500/20 dark:bg-amber-400/20 flex items-center justify-center mx-auto mb-4">
-                    <Play className="h-10 w-10 text-[#C9A84C] dark:text-amber-400" />
-                  </div>
-                  <span className="text-4xl font-bold text-[#C9A84C] dark:text-amber-400">90</span>
-                  <span className="text-lg text-[#C9A84C]/70 dark:text-amber-400/70 ml-2">seconds</span>
+            <div className="border border-[#E8E4DC] bg-white group hover:border-[#0A0F2E] transition-colors overflow-hidden">
+              <div className="aspect-video bg-[#0A0F2E] flex items-center justify-center relative cursor-pointer" onClick={() => setActiveVideo("intro")}>
+                <div style={{ width: 64, height: 64, border: "1px solid #DFC178", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Play className="h-6 w-6 text-[#DFC178]" />
                 </div>
+                <div style={{ position: "absolute", bottom: 16, right: 16, fontSize: 10, fontWeight: 700, color: "#DFC178", letterSpacing: "0.1em" }}>90 SECONDS</div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  Quick Intro
-                </h3>
-                <p className="text-gray-800 dark:text-slate-300 mb-6">
-                  The 72-hour problem, the football insight, and why Execution OS exists. 
-                  Perfect for a quick overview.
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                    <Clock className="h-4 w-4" />
-                    <span className="text-sm">~90 seconds</span>
-                  </div>
-                  <Button 
-                    onClick={() => setActiveVideo("intro")}
-                    className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400"
-                  >
-                    <Play className="h-4 w-4 mr-2" />
-                    Watch Now
-                  </Button>
-                </div>
+              <div className="p-8">
+                <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 12 }}>Quick Intro</h3>
+                <p className="text-[#6B7280] mb-8">The 72-hour problem, the football insight, and why Execution OS exists. Perfect for a quick overview.</p>
+                <Button 
+                  onClick={() => setActiveVideo("intro")}
+                  style={{ background: "#0A0F2E", color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", width: "100%" }}
+                >
+                  Watch Now
+                </Button>
               </div>
-            </motion.div>
+            </div>
 
             {/* Full Story */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-all"
-            >
-              <div className="aspect-video bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 dark:from-emerald-900/30 dark:to-cyan-900/30 flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 to-transparent" />
-                <div className="text-center relative z-10">
-                  <div className="w-20 h-20 rounded-full bg-emerald-500/20 dark:bg-emerald-400/20 flex items-center justify-center mx-auto mb-4">
-                    <Play className="h-10 w-10 text-emerald-700 dark:text-emerald-400" />
-                  </div>
-                  <span className="text-4xl font-bold text-emerald-700 dark:text-emerald-400">3:30</span>
-                  <span className="text-lg text-emerald-700/70 dark:text-emerald-400/70 ml-2">minutes</span>
+            <div className="border border-[#E8E4DC] bg-white group hover:border-[#0A0F2E] transition-colors overflow-hidden">
+              <div className="aspect-video bg-[#0A0F2E] flex items-center justify-center relative cursor-pointer" onClick={() => setActiveVideo("full")}>
+                <div style={{ width: 64, height: 64, border: "1px solid #DFC178", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Play className="h-6 w-6 text-[#DFC178]" />
                 </div>
+                <div style={{ position: "absolute", bottom: 16, right: 16, fontSize: 10, fontWeight: 700, color: "#DFC178", letterSpacing: "0.1em" }}>3:30 MINUTES</div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  The Full Story
-                </h3>
-                <p className="text-gray-800 dark:text-slate-300 mb-6">
-                  The complete narrative: McKinsey research, Fortune 500 experiences, 
-                  the IDEA framework, and the vision for strategic execution.
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                    <Clock className="h-4 w-4" />
-                    <span className="text-sm">~3:30 minutes</span>
-                  </div>
-                  <Button 
-                    onClick={() => setActiveVideo("full")}
-                    className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400"
-                  >
-                    <Play className="h-4 w-4 mr-2" />
-                    Watch Now
-                  </Button>
-                </div>
+              <div className="p-8">
+                <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 12 }}>The Full Story</h3>
+                <p className="text-[#6B7280] mb-8">The complete narrative: McKinsey research, Fortune 500 experiences, the IDEA framework, and the vision for strategic execution.</p>
+                <Button 
+                  onClick={() => setActiveVideo("full")}
+                  style={{ border: "1.5px solid #0A0F2E", background: "transparent", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", width: "100%" }}
+                >
+                  Watch Full Story
+                </Button>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Founder Bio Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 md:p-12"
-          >
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Founder Info */}
-              <div className="md:col-span-1">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mx-auto md:mx-0 mb-6">
-                  <span className="text-4xl font-bold text-gray-900">MB</span>
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white text-center md:text-left">
-                  Martin Brunke
-                </h3>
-                <p className="text-[#C9A84C] dark:text-amber-400 font-medium text-center md:text-left">
-                  Founder & CEO
-                </p>
+          <div className="grid md:grid-cols-12 gap-12 mb-24 items-start">
+            <div className="md:col-span-4">
+              <div style={{ width: "100%", aspectRatio: "1/1", background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", color: "#DFC178", fontSize: 48, fontWeight: 700, marginBottom: 24 }}>MB</div>
+              <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>Martin Brunke</h3>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", marginTop: 4 }}>Founder & CEO</p>
+            </div>
+            <div className="md:col-span-8">
+              <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#0A0F2E", marginBottom: 24 }}>Fortune 500 Experience</h4>
+              <div className="flex flex-wrap gap-3 mb-12">
+                {["Ford", "Toyota", "Lockheed Martin", "Boyd Gaming", "Churchill Downs", "Charles Schwab"].map((company) => (
+                  <div key={company} style={{ border: "1px solid #E8E4DC", padding: "8px 16px", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#0A0F2E" }}>{company}</div>
+                ))}
               </div>
 
-              {/* Experience */}
-              <div className="md:col-span-2">
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                  Fortune 500 Experience
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-                  {[
-                    "Ford",
-                    "Toyota",
-                    "Lockheed Martin",
-                    "Boyd Gaming",
-                    "Churchill Downs",
-                    "Charles Schwab"
-                  ].map((company) => (
-                    <div 
-                      key={company}
-                      className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm text-slate-700 dark:text-slate-300 text-center"
-                    >
-                      {company}
-                    </div>
-                  ))}
-                </div>
-
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-                  The Unique Perspective
-                </h4>
-                <p className="text-gray-800 dark:text-slate-300 mb-4">
-                  After 20 years navigating crises, transformations, and strategic initiatives 
-                  across gaming, automotive, financial services, aerospace, and pharma—and 5 years 
-                  coaching major college football—Martin saw a pattern that no one was solving.
-                </p>
-                <p className="text-gray-800 dark:text-slate-300">
-                  <span className="font-semibold text-slate-900 dark:text-white">The insight:</span> In football, 
-                  you'd never run a play without practicing it. But in business, organizations improvise 
-                  their most critical moments. Execution OS brings the discipline of championship execution 
-                  to enterprise strategy.
-                </p>
+              <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#0A0F2E", marginBottom: 24 }}>The Unique Perspective</h4>
+              <div className="space-y-6 text-lg text-[#6B7280] leading-relaxed">
+                <p>After 20 years navigating crises, transformations, and strategic initiatives across gaming, automotive, financial services, aerospace, and pharma—and 5 years coaching major college football—Martin saw a pattern that no one was solving.</p>
+                <p><strong style={{ color: "#0A0F2E" }}>The insight:</strong> In football, you'd never run a play without practicing it. But in business, organizations improvise their most critical moments. Execution OS brings the discipline of championship execution to enterprise strategy.</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Quote Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-16"
-          >
-            <blockquote className="text-2xl md:text-3xl font-light text-slate-700 dark:text-slate-300 italic max-w-4xl mx-auto">
-              "Strategy is 10% of the work. Execution is 90%. 
-              <span className="text-[#C9A84C] dark:text-amber-400 font-medium"> Execution OS is built for the 90%.</span>"
+          <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 80, textAlign: "center" }}>
+            <Quote className="h-12 w-12 text-[#E8E4DC] mx-auto mb-8" />
+            <blockquote style={{ ...CG, fontSize: "clamp(24px, 4vw, 40px)", fontWeight: 500, color: "#0A0F2E", lineHeight: 1.3, fontStyle: "italic", maxWidth: "900px", margin: "0 auto" }}>
+              "Strategy is 10% of the work. Execution is 90%. <em style={{ color: "#C9A84C" }}>Execution OS is built for the 90%.</em>"
             </blockquote>
-            <p className="text-gray-800 dark:text-slate-300 mt-4">— Martin Brunke</p>
-          </motion.div>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 32 }}>— Martin Brunke</p>
+          </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </PageLayout>
+  );
+}
   );
 }

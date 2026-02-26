@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -133,6 +132,8 @@ const DEFAULT_STAKEHOLDERS: Stakeholder[] = [
   { id: '5', name: 'Lisa Anderson', email: 'lisa.anderson@company.com', phone: '+1 (555) 100-0005', role: 'VP Communications', department: 'Communications', level: 3, responsibility: 'External messaging, media relations', notificationChannels: ['email', 'sms', 'slack'], isBackup: false, isActive: true },
   { id: '6', name: 'Robert Kim', email: 'robert.kim@company.com', phone: '+1 (555) 100-0006', role: 'CISO', department: 'Security', level: 2, responsibility: 'Security assessment, incident response', notificationChannels: ['email', 'phone', 'sms', 'slack'], isBackup: false, isActive: true },
 ];
+
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function StakeholderManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
@@ -267,79 +268,86 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
   };
 
   return (
-    <>
-      {!embedded && <StandardNav />}
+    <PageLayout embedded={embedded}>
+      <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Stakeholder Directory</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
+                Executive <em style={{ fontStyle: "italic", color: "#DFC178" }}>Stakeholder Matrix</em>
+              </h1>
+              <p className="text-white/60 mt-1 max-w-2xl">
+                Manage your organization's stakeholders, roles, and contact information
+              </p>
+            </div>
+            <Button 
+              onClick={handleOpenCreate}
+              className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
+              data-testid="button-add-stakeholder"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Add Stakeholder
+            </Button>
+          </div>
+        </div>
+      </div>
       
       <main className="max-w-7xl mx-auto px-6 py-12">
-        <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
-              Stakeholder Directory
-            </h1>
-            <p className="text-gray-800 dark:text-slate-300 mt-1">
-              Manage your organization's stakeholders, roles, and contact information
-            </p>
-          </div>
-          <Button 
-            onClick={handleOpenCreate}
-            className="bg-purple-600 hover:bg-purple-700"
-            data-testid="button-add-stakeholder"
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Add Stakeholder
-          </Button>
-        </header>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <Card data-testid="stat-total" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Users className="h-4 w-4 text-white" />
+                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Stakeholders</div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card data-testid="stat-total">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Users className="h-5 w-5 text-gray-800" />
+          <Card data-testid="stat-csuite" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Shield className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-800">Total Stakeholders</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.cSuite}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>C-Suite</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-csuite">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <Shield className="h-5 w-5 text-purple-800" />
+
+          <Card data-testid="stat-executives" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Building2 className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-purple-800">{stats.cSuite}</p>
-                  <p className="text-sm text-gray-800">C-Suite</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.executives}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Executives</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-executives">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Building2 className="h-5 w-5 text-blue-800" />
+
+          <Card data-testid="stat-active" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <UserCircle className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-blue-800">{stats.executives}</p>
-                  <p className="text-sm text-gray-800">Executives</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card data-testid="stat-active">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <UserCircle className="h-5 w-5 text-emerald-700" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-emerald-700">{stats.active}</p>
-                  <p className="text-sm text-gray-800">Active</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.active}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
               </div>
             </CardContent>
           </Card>
@@ -423,7 +431,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       <TableCell>
                         <div className="flex items-center gap-3">
                           <Avatar className="h-10 w-10">
-                            <AvatarFallback className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">
+                            <AvatarFallback style={{ background: "rgba(10,15,46,0.05)", color: "#0A0F2E", fontWeight: 700 }}>
                               {getInitials(stakeholder.name)}
                             </AvatarFallback>
                           </Avatar>
@@ -485,6 +493,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             variant="ghost" 
                             size="sm" 
                             onClick={() => handleOpenEdit(stakeholder)}
+                            className="text-[#0A0F2E] hover:bg-[#0A0F2E]/5"
                             data-testid={`button-edit-${stakeholder.id}`}
                           >
                             <Edit className="h-4 w-4" />
@@ -493,7 +502,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                             variant="ghost" 
                             size="sm" 
                             onClick={() => setDeleteId(stakeholder.id)}
-                            className="text-red-700 hover:text-red-700"
+                            className="text-red-700 hover:text-red-800 hover:bg-red-50"
                             data-testid={`button-delete-${stakeholder.id}`}
                           >
                             <Trash2 className="h-4 w-4" />
@@ -509,33 +518,31 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         )}
 
         {/* Engagement Analytics Section */}
-        <div className="mt-10 mb-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-              <Activity className="h-5 w-5 text-purple-800 dark:text-purple-400" />
-            </div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Engagement Analytics</h2>
+        <div className="mt-16 mb-8">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+            <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Engagement Analytics</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
+            <Card className="border-[#E8E4DC]">
               <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                    <Clock className="h-5 w-5 text-emerald-700 dark:text-green-400" />
+                <div className="flex items-start justify-between mb-4">
+                  <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Clock className="h-4 w-4 text-white" />
                   </div>
-                  <Badge className="bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400">94% within SLA</Badge>
+                  <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>94% within SLA</div>
                 </div>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">3.2 minutes</p>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Average Response Time</p>
-                <p className="text-xs text-gray-800 dark:text-slate-400">Stakeholders acknowledge notifications within avg 3.2 min</p>
-                <Progress value={94} className="mt-3 h-1.5" />
+                <p style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }} className="mb-1">3.2 minutes</p>
+                <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Average Response Time</p>
+                <p className="text-xs text-gray-500 mt-2">Stakeholders acknowledge notifications within avg 3.2 min</p>
+                <Progress value={94} className="mt-4 h-1.5" />
               </CardContent>
             </Card>
-            <Card>
+            <Card className="border-[#E8E4DC]">
               <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                    <TrendingUp className="h-5 w-5 text-blue-800 dark:text-blue-400" />
+                <div className="flex items-start justify-between mb-4">
+                  <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <TrendingUp className="h-4 w-4 text-white" />
                   </div>
                   <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">All channels</Badge>
                 </div>
@@ -863,10 +870,10 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             </div>
 
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsDialogOpen(false)} data-testid="button-cancel">
+              <Button variant="outline" onClick={() => setIsDialogOpen(false)} className="border-[#E8E4DC] text-[#0A0F2E]" data-testid="button-cancel">
                 Cancel
               </Button>
-              <Button onClick={handleSave} data-testid="button-save-stakeholder">
+              <Button onClick={handleSave} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-save-stakeholder">
                 {editingStakeholder ? 'Update Stakeholder' : 'Add Stakeholder'}
               </Button>
             </DialogFooter>
@@ -894,8 +901,6 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           </AlertDialogContent>
         </AlertDialog>
       </main>
-
-      {!embedded && <Footer />}
-    </>
+    </PageLayout>
   );
 }

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -59,16 +58,18 @@ import {
 
 import type { Playbook } from "@shared/schema";
 
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const CATEGORY_CONFIG = {
-  offense: { label: "Offense", icon: Target, color: "text-emerald-700", bg: "bg-emerald-100 dark:bg-emerald-900/30" },
-  defense: { label: "Defense", icon: Shield, color: "text-blue-800", bg: "bg-blue-100 dark:bg-blue-900/30" },
-  special_teams: { label: "Special Teams", icon: Zap, color: "text-purple-800", bg: "bg-purple-100 dark:bg-purple-900/30" },
+  offense: { label: "Offense", icon: Target, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/12" },
+  defense: { label: "Defense", icon: Shield, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/12" },
+  special_teams: { label: "Special Teams", icon: Zap, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/12" },
 };
 
 const STATUS_CONFIG = {
   draft: { label: "Draft", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
-  ready: { label: "Ready", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
-  active: { label: "Active", color: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400" },
+  ready: { label: "Ready", color: "bg-[#2B8A6E]/12 text-[#3BAF8A]" },
+  active: { label: "Active", color: "bg-[#C9A84C]/12 text-[#C9A84C]" },
   archived: { label: "Archived", color: "bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400" },
 };
 
@@ -145,79 +146,86 @@ export default function PlaybookManagement() {
   };
 
   return (
-    <>
-      <StandardNav />
+    <PageLayout>
+      <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Playbook Management</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
+                Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Execution Playbooks</em>
+              </h1>
+              <p className="text-white/60 mt-1 max-w-2xl">
+                Create, customize, and manage your organization's strategic playbooks
+              </p>
+            </div>
+            <Button 
+              onClick={() => setLocation('/playbook-customize/new')}
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
+              data-testid="button-create-playbook"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Create Playbook
+            </Button>
+          </div>
+        </div>
+      </div>
       
       <main className="max-w-7xl mx-auto px-6 py-12">
-        <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white" data-testid="text-page-title">
-              Playbook Management
-            </h1>
-            <p className="text-gray-800 dark:text-slate-300 mt-1">
-              Create, customize, and manage your organization's strategic playbooks
-            </p>
-          </div>
-          <Button 
-            onClick={() => setLocation('/playbook-customize/new')}
-            className="bg-purple-600 hover:bg-purple-700"
-            data-testid="button-create-playbook"
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Create Playbook
-          </Button>
-        </header>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <Card data-testid="stat-total" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <FileText className="h-4 w-4 text-white" />
+                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Playbooks</div>
+              </div>
+            </CardContent>
+          </Card>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card data-testid="stat-total">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <FileText className="h-5 w-5 text-gray-800 dark:text-slate-300" />
+          <Card data-testid="stat-active" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <CheckCircle className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white">{stats.total}</p>
-                  <p className="text-sm text-gray-800">Total Playbooks</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.active}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-active">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <CheckCircle className="h-5 w-5 text-emerald-700" />
+
+          <Card data-testid="stat-ready" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Play className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-emerald-700">{stats.active}</p>
-                  <p className="text-sm text-gray-800">Active</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.ready}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Ready</div>
               </div>
             </CardContent>
           </Card>
-          <Card data-testid="stat-ready">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Play className="h-5 w-5 text-blue-800" />
+
+          <Card data-testid="stat-draft" className="border-[#E8E4DC] bg-[#F8F7F4]">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-2">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Edit className="h-4 w-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-blue-800">{stats.ready}</p>
-                  <p className="text-sm text-gray-800">Ready</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card data-testid="stat-draft">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                  <Edit className="h-5 w-5 text-gray-800" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-gray-800">{stats.draft}</p>
-                  <p className="text-sm text-gray-800">Drafts</p>
-                </div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.draft}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Drafts</div>
               </div>
             </CardContent>
           </Card>
@@ -431,8 +439,6 @@ export default function PlaybookManagement() {
           </AlertDialogContent>
         </AlertDialog>
       </main>
-
-      <Footer />
-    </>
+    </PageLayout>
   );
 }

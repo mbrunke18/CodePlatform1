@@ -44,166 +44,165 @@ export default function MarketingLanding() {
   }, []);
 
   return (
-    <div className="page-background min-h-screen">
+    <div className="page-background min-h-screen bg-white">
       <StandardNav />
 
       {/* Hero Section */}
-      <section className="py-20 px-6 text-gray-900 relative overflow-hidden">
+      <section className="py-24 px-6 text-poise-navy relative overflow-hidden bg-poise-navy">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
           {/* Execution OS Logo */}
-          <div className="mb-8 flex justify-center">
-            <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm">
-              <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
+          <div className="mb-12 flex justify-center">
+            <div className="inline-block px-8 py-6 rounded-none border border-white/10 backdrop-blur-md bg-white/5">
+              <ExecuteIQLogo width={320} variant="full" color="white" showTagline={true} />
             </div>
           </div>
           {/* High-Stakes Competitive Scenario */}
-          <div className="mb-8">
-            <Badge className="mb-4 bg-red-600 text-gray-900 border-0 text-sm px-4 py-1.5 animate-pulse" data-testid="badge-alert">
-              ⚡ COMPETITIVE ALERT
-            </Badge>
-            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight max-w-6xl mx-auto text-gray-900" data-testid="heading-hero">
+          <div className="mb-12">
+            <div className="flex justify-center mb-6">
+              <Badge className="bg-red-600 text-white border-0 text-[10px] tracking-[0.2em] font-bold px-4 py-1 rounded-none uppercase animate-pulse" data-testid="badge-alert">
+                Competitive Alert
+              </Badge>
+            </div>
+            <h1 className="font-serif text-5xl md:text-8xl mb-8 leading-tight max-w-6xl mx-auto text-white" data-testid="heading-hero">
               Monday 9:15 AM:<br />
-              <span className="text-red-300">Your Competitor Just Launched.</span>
+              <span className="text-poise-gold italic">Your Competitor Just Launched.</span>
             </h1>
-            <div className="max-w-3xl mx-auto mb-6">
-              <div className="bg-red-900/30 border-2 border-red-500/50 rounded-lg p-6 mb-4">
-                <p className="text-xl md:text-2xl text-gray-900 font-semibold mb-3">
+            <div className="max-w-4xl mx-auto mb-10">
+              <div className="bg-white/5 border-l-4 border-red-600 p-8 mb-8 backdrop-blur-sm">
+                <p className="text-xl md:text-3xl text-white font-medium mb-4 leading-relaxed">
                   Their product is 15% cheaper. Social sentiment is tanking. 12 deals worth $2.4M are at risk.
                 </p>
-                <p className="text-lg text-red-700">
-                  Your next board meeting? <span className="font-bold text-gray-900">Thursday 2 PM.</span>
+                <p className="text-lg text-slate-400 uppercase tracking-widest font-bold">
+                  Your next board meeting? <span className="text-white">Thursday 2 PM.</span>
                 </p>
               </div>
-              <p className="text-xl md:text-2xl text-yellow-700 font-bold">
-                By then, you'll have lost market share.<br />
-                <span className="text-gray-900">Unless you have Execution OS.</span>
+              <p className="text-2xl md:text-3xl text-poise-gold font-serif italic mb-2">
+                By then, you'll have lost market share.
+              </p>
+              <p className="text-xl md:text-2xl text-white uppercase tracking-[0.15em] font-bold">
+                Unless you have Execution OS.
               </p>
             </div>
           </div>
 
           {/* Solution - Category Definition */}
-          <div className="mb-10">
-            <div className="max-w-5xl mx-auto mb-8">
-              <Badge className="mb-4 bg-cyan-500 text-gray-900 border-0 text-base px-6 py-2">
-                The Strategic Execution OS
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
+          <div className="mb-16">
+            <div className="max-w-5xl mx-auto mb-12">
+              <div className="flex justify-center mb-6">
+                <Badge className="bg-poise-teal text-white border-0 text-[10px] tracking-[0.2em] font-bold px-6 py-2 rounded-none uppercase">
+                  The Strategic Execution OS
+                </Badge>
+              </div>
+              <h2 className="font-serif text-3xl md:text-5xl text-white mb-8">
                 Execution OS for Fortune 1000 Companies
               </h2>
-              <p className="text-xl md:text-2xl text-gray-900 mb-4 leading-relaxed">
-                When a strategic trigger hits—a competitor launches, regulations shift, a cyber threat emerges, or a market opportunity appears—organizations typically <span className="text-red-300">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-cyan-300 font-bold">12 minutes</span>.
+              <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed font-light">
+                When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-red-400 font-medium">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-poise-teal font-bold underline decoration-poise-gold underline-offset-8">12 minutes</span>.
               </p>
-              <p className="text-lg text-gray-800 mb-4 leading-relaxed max-w-4xl mx-auto">
-                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook from our library of 170 battle-tested responses: notifying stakeholders, assigning tasks, staging documents, unlocking pre-approved budgets—all in under 12 minutes.
+              <p className="text-lg text-slate-400 mb-8 leading-relaxed max-w-4xl mx-auto">
+                Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
               </p>
-              <p className="text-lg text-gray-800 mb-4 leading-relaxed max-w-4xl mx-auto">
-                We're the orchestration layer between strategy and execution. <span className="text-cyan-300">AI handles detection and coordination. Executives make the decisions.</span>
+              <p className="text-lg text-slate-300 mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
+                We're the orchestration layer between strategy and execution. <span className="text-poise-teal">AI handles detection and coordination. Executives make the decisions.</span>
               </p>
-              <p className="text-lg text-poise-gold font-semibold">
-                What used to take 72 hours now happens at championship speed.
-              </p>
-              <div className="flex items-center justify-center gap-6 text-lg text-blue-800 mb-6">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-400" />
+              
+              <div className="flex flex-wrap items-center justify-center gap-10 text-sm uppercase tracking-widest font-bold text-poise-gold">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-poise-teal" />
                   <span>170 Strategic Playbooks</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-400" />
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-poise-teal" />
                   <span>5 AI Intelligence Modules</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-400" />
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-poise-teal" />
                   <span>24/7 Monitoring</span>
                 </div>
               </div>
             </div>
 
             {/* Execution OS Product Suite */}
-            <Card className="max-w-5xl mx-auto bg-gradient-to-br   backdrop-blur-sm border-2 border-blue-400/50">
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <Card className="max-w-6xl mx-auto bg-white/5 backdrop-blur-xl border-white/10 rounded-none">
+              <CardContent className="p-10">
+                <div className="text-center mb-12">
+                  <h3 className="font-serif text-3xl text-white mb-3">
                     The Execution OS Product Suite
                   </h3>
-                  <p className="text-blue-800 text-sm">
+                  <p className="text-poise-gold text-xs uppercase tracking-[0.2em] font-bold">
                     Four integrated modules powered by the IDEA Framework™
                   </p>
                 </div>
-                <div className="grid md:grid-cols-4 gap-4 text-left">
-                  <div className="bg-violet-500/20 rounded-lg p-4 border border-violet-400/30">
-                    <Badge className="mb-2 bg-violet-500 text-gray-900 border-0 text-xs">IDENTIFY</Badge>
-                    <div className="text-violet-200 font-bold text-lg mb-1"><SubBrandLabel name="Playbook™" /></div>
-                    <p className="text-violet-100/80 text-xs">
+                <div className="grid md:grid-cols-4 gap-6 text-left">
+                  <div className="bg-white/5 p-6 border-l-2 border-poise-gold hover:bg-white/10 transition-colors">
+                    <Badge className="mb-4 bg-poise-gold text-poise-navy border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
+                    <div className="text-white font-serif text-xl mb-3"><SubBrandLabel name="Playbook™" /></div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
                       170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                     </p>
                   </div>
-                  <div className="bg-blue-500/20 rounded-lg p-4 border border-blue-400/30">
-                    <Badge className="mb-2 bg-blue-500 text-gray-900 border-0 text-xs">DETECT</Badge>
-                    <div className="text-blue-800 font-bold text-lg mb-1"><SubBrandLabel name="Signal™" /></div>
-                    <p className="text-blue-800/80 text-xs">
+                  <div className="bg-white/5 p-6 border-l-2 border-poise-teal hover:bg-white/10 transition-colors">
+                    <Badge className="mb-4 bg-poise-teal text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Detect</Badge>
+                    <div className="text-white font-serif text-xl mb-3"><SubBrandLabel name="Signal™" /></div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
                       AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                     </p>
                   </div>
-                  <div className="bg-emerald-500/20 rounded-lg p-4 border border-emerald-400/30">
-                    <Badge className="mb-2 bg-emerald-500 text-gray-900 border-0 text-xs">EXECUTE</Badge>
-                    <div className="text-emerald-200 font-bold text-lg mb-1"><SubBrandLabel name="Compass™" /></div>
-                    <p className="text-emerald-100/80 text-xs">
+                  <div className="bg-white/5 p-6 border-l-2 border-poise-gold hover:bg-white/10 transition-colors">
+                    <Badge className="mb-4 bg-poise-gold text-poise-navy border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Execute</Badge>
+                    <div className="text-white font-serif text-xl mb-3"><SubBrandLabel name="Compass™" /></div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
                       12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
                     </p>
                   </div>
-                  <div className="bg-amber-500/20 rounded-lg p-4 border border-amber-400/30">
-                    <Badge className="mb-2 bg-amber-500 text-gray-900 border-0 text-xs">ADVANCE</Badge>
-                    <div className="text-[#C9A84C] font-bold text-lg mb-1"><SubBrandLabel name="Retrospect™" /></div>
-                    <p className="text-[#C9A84C]/80 text-xs">
+                  <div className="bg-white/5 p-6 border-l-2 border-poise-teal hover:bg-white/10 transition-colors">
+                    <Badge className="mb-4 bg-poise-teal text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
+                    <div className="text-white font-serif text-xl mb-3"><SubBrandLabel name="Retrospect™" /></div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
                       Capture lessons, refine playbooks. Every execution makes your organization smarter.
                     </p>
                   </div>
                 </div>
-                <div className="text-center mt-4">
-                  <p className="text-blue-800 text-xs">
-                    Plus <span className="text-cyan-300 font-semibold">Execution OS One™</span> — the single-pane executive overview of your strategic readiness
+                <div className="text-center mt-10">
+                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.3em]">
+                    Plus <span className="text-poise-teal font-bold">Execution OS One™</span> — Single-pane executive overview
                   </p>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Interactive ROI Calculator */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <InteractiveROICalculator persona="general" industry="general" />
-          </div>
-
           {/* Primary Conversion Funnel - Try Demo + Start Pilot */}
-          <div className="text-center mb-10">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+          <div className="text-center mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
               <Button 
                 onClick={() => { window.location.href = '/try-demo'; }}
                 size="lg"
-                className="bg-gradient-to-r from-poise-teal to-cyan-500 hover:from-cyan-500 hover:to-poise-teal text-gray-900 font-bold text-lg px-10 py-6 shadow-2xl transform hover:scale-105 transition-all"
+                className="bg-poise-teal hover:bg-emerald-700 text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-try-demo"
               >
-                <Play className="mr-3 h-6 w-6" />
+                <Play className="mr-3 h-4 w-4" />
                 Try Interactive Demo
               </Button>
               
               <Button 
                 onClick={() => setLocation("/contact")}
                 size="lg"
-                className="bg-poise-gold hover:bg-amber-500 text-poise-navy font-bold text-lg px-10 py-6 shadow-xl transform hover:scale-105 transition-all"
+                className="bg-poise-gold hover:bg-amber-600 text-poise-navy font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-start-pilot"
               >
                 Start Pilot Program
-                <ArrowRight className="ml-3 h-6 w-6" />
+                <ArrowRight className="ml-3 h-4 w-4" />
               </Button>
             </div>
             
-            <p className="text-sm text-blue-300 mb-4">
+            <p className="text-xs uppercase tracking-[0.2em] font-bold text-slate-500">
               See the platform in action or{" "}
               <button 
                 onClick={() => setLocation("/playbooks")}
-                className="underline hover:text-cyan-300 transition-colors"
+                className="text-poise-gold hover:text-white transition-colors underline decoration-poise-gold/30 underline-offset-4"
                 data-testid="link-explore-playbooks"
               >
                 explore 170 playbooks
@@ -211,7 +210,7 @@ export default function MarketingLanding() {
               {" "}•{" "}
               <button 
                 onClick={() => setLocation("/how-it-works")}
-                className="underline hover:text-cyan-300 transition-colors"
+                className="text-poise-gold hover:text-white transition-colors underline decoration-poise-gold/30 underline-offset-4"
                 data-testid="link-watch-demo"
               >
                 learn how it works
@@ -220,180 +219,164 @@ export default function MarketingLanding() {
           </div>
 
           {/* Q1 2026 Founding Partner Program - Supporting Info */}
-          <div className="max-w-4xl mx-auto mb-8">
-            <Card className=" border border-poise-gold/30 backdrop-blur-sm" data-testid="card-pilot-info">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div className="flex items-center gap-3">
-                    <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30 font-semibold">
-                      Q1 2026 Founding Partners
-                    </Badge>
-                    <span className="text-gray-900/80 text-sm">
-                      90-day validation • $75K (100% credited to Year 1) • Only 3 slots remaining
-                    </span>
-                  </div>
-                  <div className="flex gap-2 text-xs text-gray-800 dark:text-slate-200">
-                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+          <div className="max-w-5xl mx-auto">
+            <div className="border border-white/10 bg-white/5 backdrop-blur-sm p-6" data-testid="card-pilot-info">
+              <div className="flex items-center justify-between flex-wrap gap-6">
+                <div className="flex items-center gap-4">
+                  <Badge className="bg-poise-gold/10 text-poise-gold border border-poise-gold/30 text-[9px] tracking-widest font-bold rounded-none uppercase px-3 py-1">
+                    Q1 2026 Founding Partners
+                  </Badge>
+                  <span className="text-slate-400 text-xs uppercase tracking-widest">
+                    90-day validation • Only 3 slots remaining
+                  </span>
+                </div>
+                <div className="flex gap-6 text-[9px] uppercase tracking-[0.2em] font-bold text-slate-500">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-poise-teal" />
                     <span>Full platform access</span>
-                    <span>•</span>
-                    <span>Priority roadmap input</span>
-                    <span>•</span>
-                    <span>Founding pricing locked</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-poise-teal" />
+                    <span>Priority roadmap</span>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Complete Product Features - All Capabilities */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="max-w-7xl mx-auto">
+      {/* Interactive ROI Calculator */}
+      <section className="py-24 px-6 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900 border-0 text-base px-6 py-2">
+            <h2 className="font-serif text-4xl text-poise-navy mb-4 italic">The ROI of 12-Minute Execution</h2>
+            <p className="text-slate-600 uppercase tracking-widest text-xs font-bold">Calculate the value of strategic agility</p>
+          </div>
+          <InteractiveROICalculator persona="general" industry="general" />
+        </div>
+      </section>
+
+      {/* Complete Product Features - All Capabilities */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <Badge className="mb-6 bg-poise-navy text-poise-gold border-0 text-[10px] tracking-[0.3em] font-bold px-8 py-2 rounded-none uppercase">
               Complete Platform Access
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 dark:text-white">
+            <h2 className="font-serif text-4xl md:text-6xl text-poise-navy mb-6">
               Explore All Product Features
             </h2>
-            <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
-              Complete platform ecosystem for championship-level execution. Click any feature to explore.
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+              Complete platform ecosystem for championship-level execution. Build your organization's decision operations infrastructure.
             </p>
           </div>
 
           {/* Feature Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* 1. Create Playbook - PROMINENT */}
-            <Card className="border-2 border-purple-500 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 hover:shadow-2xl transition-all duration-300 col-span-full lg:col-span-1" data-testid="card-create-playbook">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center flex-shrink-0">
-                    <Rocket className="w-6 h-6 text-gray-900" />
+            <Card className="border-2 border-poise-navy bg-slate-50 rounded-none hover:shadow-2xl transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
+              <CardContent className="p-10">
+                <div className="flex items-start gap-6 mb-8">
+                  <div className="w-16 h-16 rounded-none bg-poise-navy flex items-center justify-center flex-shrink-0">
+                    <Rocket className="w-8 h-8 text-poise-gold" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                    <h3 className="font-serif text-2xl text-poise-navy mb-3">
                       Create Strategic Playbook
                     </h3>
-                    <Badge className="bg-purple-600 text-gray-900 mb-3">Start Here</Badge>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, Review
-                    </p>
+                    <Badge className="bg-poise-gold text-poise-navy rounded-none text-[9px] tracking-widest font-bold uppercase px-3 py-1 mb-4">Start Here</Badge>
                   </div>
                 </div>
-                <CreateScenarioButton organizationId="default-org" className="w-full" />
+                <p className="text-slate-600 mb-8 leading-relaxed">
+                  Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, and Review.
+                </p>
+                <CreateScenarioButton organizationId="default-org" className="w-full bg-poise-navy hover:bg-slate-800 text-white rounded-none h-14 uppercase tracking-widest text-xs font-bold" />
               </CardContent>
             </Card>
 
             {/* 2. AI Intelligence (5 Modules) */}
-            <Card className="border-2 border-cyan-300 dark:border-cyan-700 hover:shadow-xl transition-all duration-300" data-testid="card-ai-intelligence">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center flex-shrink-0">
-                    <Brain className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      AI Intelligence Layer
-                    </h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for strategic insights
-                    </p>
-                  </div>
+            <Card className="border border-slate-200 rounded-none hover:border-poise-teal transition-all duration-300 group" data-testid="card-ai-intelligence">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-poise-teal/10 transition-colors">
+                  <Brain className="w-7 h-7 text-poise-navy group-hover:text-poise-teal transition-colors" />
                 </div>
-                <Button onClick={() => setLocation('/ai')} variant="outline" className="w-full border-cyan-500 text-cyan-600 hover:bg-cyan-50 dark:hover:bg-cyan-900/20" data-testid="button-ai-intelligence">
+                <h3 className="font-serif text-xl text-poise-navy mb-4">AI Intelligence Layer</h3>
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                  5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for real-time strategic insights and pattern detection.
+                </p>
+                <Button onClick={() => setLocation('/ai')} variant="outline" className="w-full border-slate-200 text-poise-navy hover:bg-poise-navy hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-ai-intelligence">
                   Explore AI Modules <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
 
             {/* 3. 24/7 Monitoring */}
-            <Card className="border-2 border-blue-300 dark:border-blue-700 hover:shadow-xl transition-all duration-300" data-testid="card-monitoring">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0">
-                    <Radio className="w-6 h-6 text-blue-800 dark:text-blue-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      24/7 Monitoring System
-                    </h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts
-                    </p>
-                  </div>
+            <Card className="border border-slate-200 rounded-none hover:border-poise-teal transition-all duration-300 group" data-testid="card-monitoring">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-poise-teal/10 transition-colors">
+                  <Radio className="w-7 h-7 text-poise-navy group-hover:text-poise-teal transition-colors" />
                 </div>
-                <Button onClick={() => setLocation('/ai-radar')} variant="outline" className="w-full border-blue-500 text-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20" data-testid="button-monitoring">
+                <h3 className="font-serif text-xl text-poise-navy mb-4">24/7 Monitoring System</h3>
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                  Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts tailored to your industry.
+                </p>
+                <Button onClick={() => setLocation('/ai-radar')} variant="outline" className="w-full border-slate-200 text-poise-navy hover:bg-poise-navy hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-monitoring">
                   View AI Radar <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
 
             {/* 4. Playbook Library */}
-            <Card className="border-2 border-green-300 dark:border-green-700 hover:shadow-xl transition-all duration-300" data-testid="card-scenarios">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-green-100 dark:bg-green-900 flex items-center justify-center flex-shrink-0">
-                    <FileText className="w-6 h-6 text-emerald-700 dark:text-green-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      Playbook Library
-                    </h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance
-                    </p>
-                  </div>
+            <Card className="border border-slate-200 rounded-none hover:border-poise-teal transition-all duration-300 group" data-testid="card-scenarios">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-poise-teal/10 transition-colors">
+                  <FileText className="w-7 h-7 text-poise-navy group-hover:text-poise-teal transition-colors" />
                 </div>
-                <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-green-500 text-emerald-700 hover:bg-green-50 dark:hover:bg-green-900/20" data-testid="button-scenarios">
+                <h3 className="font-serif text-xl text-poise-navy mb-4">Playbook Library</h3>
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                  170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance.
+                </p>
+                <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-slate-200 text-poise-navy hover:bg-poise-navy hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-scenarios">
                   Browse Playbooks <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
 
             {/* 5. What-If Analyzer */}
-            <Card className="border-2 border-orange-300 dark:border-orange-700 hover:shadow-xl transition-all duration-300" data-testid="card-what-if">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900 flex items-center justify-center flex-shrink-0">
-                    <Layers className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      What-If Analyzer
-                    </h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      Test strategic approaches, simulate outcomes, and optimize execution plans
-                    </p>
-                  </div>
+            <Card className="border border-slate-200 rounded-none hover:border-poise-teal transition-all duration-300 group" data-testid="card-what-if">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-poise-teal/10 transition-colors">
+                  <Layers className="w-7 h-7 text-poise-navy group-hover:text-poise-teal transition-colors" />
                 </div>
-                <Button onClick={() => setLocation('/what-if-analyzer')} variant="outline" className="w-full border-orange-500 text-orange-600 hover:bg-orange-50 dark:hover:bg-orange-900/20" data-testid="button-what-if">
+                <h3 className="font-serif text-xl text-poise-navy mb-4">What-If Analyzer</h3>
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                  Test strategic approaches, simulate outcomes, and optimize execution plans before allocating resources.
+                </p>
+                <Button onClick={() => setLocation('/what-if-analyzer')} variant="outline" className="w-full border-slate-200 text-poise-navy hover:bg-poise-navy hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-what-if">
                   Run Simulations <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
 
             {/* 6. Command Center */}
-            <Card className="border-2 border-red-300 dark:border-red-700 hover:shadow-xl transition-all duration-300" data-testid="card-command-center">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-lg bg-red-100 dark:bg-red-900 flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-red-700 dark:text-red-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                      Executive Command Center
-                    </h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-4">
-                      Real-time strategic coordination hub for 12-minute execution
-                    </p>
-                  </div>
+            <Card className="border border-slate-200 rounded-none hover:border-poise-teal transition-all duration-300 group" data-testid="card-command-center">
+              <CardContent className="p-8">
+                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-poise-teal/10 transition-colors">
+                  <Shield className="w-7 h-7 text-poise-navy group-hover:text-poise-teal transition-colors" />
                 </div>
-                <Button onClick={() => setLocation('/command-center')} variant="outline" className="w-full border-red-500 text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20" data-testid="button-command-center">
+                <h3 className="font-serif text-xl text-poise-navy mb-4">Executive Command Center</h3>
+                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                  Real-time strategic coordination hub for 12-minute execution. Manage active scenarios and stakeholder alignment.
+                </p>
+                <Button onClick={() => setLocation('/command-center')} variant="outline" className="w-full border-slate-200 text-poise-navy hover:bg-poise-navy hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-command-center">
                   Open War Room <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
 
             {/* 7. Triggers Management */}
             <Card className="border-2 border-yellow-300 dark:border-yellow-700 hover:shadow-xl transition-all duration-300" data-testid="card-triggers">

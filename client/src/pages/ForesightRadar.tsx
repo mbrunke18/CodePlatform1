@@ -7,7 +7,32 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Radio, AlertTriangle, TrendingUp, Eye, Zap, Settings, Database, Grid3X3, Play, Target, Shield, Lightbulb, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { 
+  Radio, 
+  AlertTriangle, 
+  TrendingUp, 
+  Eye, 
+  Zap, 
+  Settings, 
+  Database, 
+  Grid3X3, 
+  Play, 
+  Target, 
+  Shield, 
+  Lightbulb, 
+  ArrowRight, 
+  CheckCircle2,
+  Activity,
+  Globe,
+  Cpu,
+  Users,
+  Scale,
+  Brain,
+  Timer,
+  Radar,
+  Building2,
+  DollarSign
+} from 'lucide-react';
 import { SignalControlCenter } from '@/components/intelligence/SignalControlCenter';
 import PageLayout from '@/components/layout/PageLayout';
 
@@ -33,6 +58,12 @@ interface EnhancedOraclePattern {
   trend: string;
   recommendation: string;
 }
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const demoWeakSignals: EnhancedWeakSignal[] = [
   {
@@ -156,11 +187,11 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
   if (isLoading) {
     return (
       <PageLayout embedded={embedded}>
-        <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
+        <div className="bg-white min-h-screen p-8">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse space-y-4">
-              <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded"></div>
-              <div className="h-64 bg-slate-200 dark:bg-slate-800 rounded"></div>
+              <div className="h-12 bg-[#F8F7F4] rounded"></div>
+              <div className="h-64 bg-[#F8F7F4] rounded"></div>
             </div>
           </div>
         </div>
@@ -170,504 +201,358 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header with Value Proposition */}
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent flex items-center gap-3">
-              <Radio className="w-10 h-10 text-blue-800 animate-pulse" />
-              Foresight Radar
-            </h1>
-            <div className="flex items-center gap-3">
-              <Link href="/intelligence-demo">
-                <Button variant="outline" className="border-blue-500 text-blue-800 hover:bg-blue-50 dark:hover:bg-blue-950" data-testid="button-try-demo">
-                  <Play className="w-4 h-4 mr-2" />
-                  Try Interactive Demo
-                </Button>
-              </Link>
-              <Badge className={`flex items-center gap-1 ${isConnected ? 'bg-green-500' : 'bg-amber-500'}`}>
-                <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-white animate-pulse' : 'bg-white'}`}></div>
-                {isConnected ? 'Live Stream Active' : 'Demo Mode'}
-              </Badge>
+      <div className="bg-white min-h-screen">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Horizon Intelligence</span>
+              </div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", color: "#fff", lineHeight: 1.1, maxWidth: "800px" }}>
+                Foresight <em style={{ fontStyle: "italic", color: "#DFC178" }}>Radar</em>
+              </h1>
+              <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 24, fontSize: 18, maxWidth: "600px" }}>
+                AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
+              </p>
+              <div className="flex items-center gap-4 mt-8">
+                <Link href="/intelligence-demo">
+                  <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, borderRadius: 0, padding: "12px 24px" }}>
+                    <Play className="w-4 h-4 mr-2" />
+                    Interactive Demo
+                  </Button>
+                </Link>
+                <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 0, padding: "6px 12px" }}>
+                  <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-green-500 animate-pulse' : 'bg-amber-500'}`}></div>
+                  {isConnected ? 'LIVE STREAM ACTIVE' : 'DEMO MODE'}
+                </Badge>
+              </div>
             </div>
           </div>
-          <p className="text-gray-800 dark:text-slate-300 max-w-3xl">
-            AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
-          </p>
         </div>
 
-        {/* Value Proposition Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/30 border-blue-200 dark:border-blue-800">
-            <CardContent className="p-4 flex items-start gap-3">
-              <div className="bg-blue-500 rounded-lg p-2">
-                <Eye className="w-5 h-5 text-gray-900" />
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          {/* ROI Context Bar */}
+          <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: "24px 32px", background: "#fff", marginBottom: 64 }}>
+            <div className="flex items-center gap-6">
+              <div style={{ width:48, height:48, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Brain className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">16 Signal Categories</h4>
-                <p className="text-sm text-gray-800 dark:text-slate-300">Monitoring competitive, market, regulatory, and operational signals</p>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>Foresight Value Advantage</div>
+                <div style={{ fontSize: 16, color: "#4B5563" }}>Detect weak signals 2-6 weeks before they impact the market, enabling proactive strategic maneuvering.</div>
               </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/50 dark:to-amber-900/30 border-amber-200 dark:border-amber-800">
-            <CardContent className="p-4 flex items-start gap-3">
-              <div className="bg-amber-500 rounded-lg p-2">
-                <Target className="w-5 h-5 text-gray-900" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">Early Warning</h4>
-                <p className="text-sm text-gray-800 dark:text-slate-300">Detect weak signals 2-6 weeks before they become obvious threats</p>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/50 dark:to-violet-900/30 border-violet-200 dark:border-violet-800">
-            <CardContent className="p-4 flex items-start gap-3">
-              <div className="bg-violet-500 rounded-lg p-2">
-                <Lightbulb className="w-5 h-5 text-gray-900" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white">AI Pattern Recognition</h4>
-                <p className="text-sm text-gray-800 dark:text-slate-300">Oracle engine identifies opportunities others miss</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
+          </div>
 
-        {/* Main Tabs */}
-        <Tabs defaultValue="radar" className="w-full">
-          <TabsList className="grid grid-cols-3 w-full max-w-lg">
-            <TabsTrigger value="radar" className="flex items-center gap-2" data-testid="tab-radar-view">
-              <Eye className="w-4 h-4" />
-              Radar View
-            </TabsTrigger>
-            <TabsTrigger value="signals" className="flex items-center gap-2" data-testid="tab-signal-center">
-              <Grid3X3 className="w-4 h-4" />
-              Signal Center
-            </TabsTrigger>
-            <TabsTrigger value="configure" className="flex items-center gap-2" data-testid="tab-configure">
-              <Settings className="w-4 h-4" />
-              Configure
-            </TabsTrigger>
-          </TabsList>
+          <Tabs defaultValue="radar" className="w-full">
+            <TabsList style={{ background: "transparent", borderBottom: "1px solid #E8E4DC", width: "100%", justifyContent: "flex-start", borderRadius: 0, height: "auto", padding: 0, marginBottom: 48 }}>
+              {["radar", "signals", "configure"].map((tab) => (
+                <TabsTrigger 
+                  key={tab}
+                  value={tab} 
+                  style={{ 
+                    background: "transparent", 
+                    border: "none", 
+                    borderBottom: "2px solid transparent",
+                    borderRadius: 0,
+                    padding: "16px 32px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    color: "#6B7280"
+                  }}
+                  className="data-[state=active]:border-b-[#0A0F2E] data-[state=active]:text-[#0A0F2E]"
+                >
+                  {tab === 'radar' && <Eye className="w-4 h-4 mr-2" />}
+                  {tab === 'signals' && <Grid3X3 className="w-4 h-4 mr-2" />}
+                  {tab === 'configure' && <Settings className="w-4 h-4 mr-2" />}
+                  {tab} View
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-          <TabsContent value="radar" className="mt-6">
-            {/* Radar Visual Section */}
-            <div className="space-y-8">
-              {/* Radar Visual Representation */}
-              <Card className="bg-gradient-to-br from-blue-50 to-violet-50 dark:from-blue-950/30 dark:to-violet-950/30 border-2 border-blue-200 dark:border-blue-800">
-                <CardContent className="p-12">
-                  <div className="relative w-full aspect-square max-w-2xl mx-auto">
+            <TabsContent value="radar">
+              <div className="grid grid-cols-12 gap-12">
+                <div className="col-span-8">
+                  <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", maxWidth: "700px", margin: "0 auto", background: "#F8F7F4", borderRadius: "50%", border: "1px solid #E8E4DC" }}>
                     {/* Radar Circles */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-full h-full border-4 border-blue-300 dark:border-blue-700 rounded-full opacity-30"></div>
-                    </div>
-                    <div className="absolute inset-[15%] flex items-center justify-center">
-                      <div className="w-full h-full border-4 border-blue-300 dark:border-blue-700 rounded-full opacity-50"></div>
-                    </div>
-                    <div className="absolute inset-[30%] flex items-center justify-center">
-                      <div className="w-full h-full border-4 border-blue-300 dark:border-blue-700 rounded-full opacity-70"></div>
-                    </div>
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} style={{ 
+                        position: "absolute", 
+                        inset: `${i * 15}%`, 
+                        border: "1px solid rgba(10,15,46,0.08)", 
+                        borderRadius: "50%" 
+                      }} />
+                    ))}
                     
                     {/* Center Icon */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-blue-600 dark:bg-blue-500 rounded-full p-6 shadow-xl">
-                        <Eye className="w-12 h-12 text-gray-900" />
+                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <div style={{ width: 80, height: 80, background: NAVY, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
+                        <Radar className="w-10 h-10 text-white" />
                       </div>
                     </div>
 
-                    {/* Weak Signals on Radar */}
+                    {/* Scan Line */}
+                    <div style={{ position: "absolute", inset: 0, borderRadius: "50%", overflow: "hidden" }}>
+                      <div 
+                        className="animate-[spin_6s_linear_infinite]"
+                        style={{ 
+                          position: "absolute", 
+                          width: "50%", 
+                          height: "1px", 
+                          background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.3))",
+                          top: "50%",
+                          left: "50%",
+                          transformOrigin: "left"
+                        }}
+                      />
+                    </div>
+
+                    {/* Radar Blips */}
                     {weakSignals.slice(0, 8).map((signal, index) => {
-                      const angle = (index * 360) / Math.min(weakSignals.length, 8);
-                      const distance = 35 + (signal.confidence / 100) * 25;
+                      const angle = (index * 45) + (index * 12);
+                      const distance = 25 + (index * 8);
                       const x = 50 + distance * Math.cos((angle * Math.PI) / 180);
                       const y = 50 + distance * Math.sin((angle * Math.PI) / 180);
-                      const isNew = highlightedSignal === signal.id;
-                      const impactColor = signal.impact === 'critical' ? 'bg-red-500' : signal.impact === 'high' ? 'bg-amber-500' : 'bg-yellow-400';
+                      const color = signal.impact === 'critical' ? "#ef4444" : signal.impact === 'high' ? GOLD : TEAL;
                       
                       return (
                         <div
                           key={signal.id}
-                          className={`absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group transition-all ${isNew ? 'scale-125' : ''}`}
-                          style={{ left: `${x}%`, top: `${y}%` }}
+                          className="group"
+                          style={{ 
+                            position: "absolute", 
+                            left: `${x}%`, 
+                            top: `${y}%`, 
+                            transform: "translate(-50%, -50%)",
+                            cursor: "pointer"
+                          }}
                           onClick={() => handleInvestigateSignal(signal)}
-                          data-testid={`radar-blip-${signal.id}`}
                         >
-                          <div className={`w-4 h-4 rounded-full absolute ${impactColor} animate-ping`}></div>
-                          <div className={`w-4 h-4 rounded-full relative ${impactColor}`}></div>
+                          <div style={{ width: 12, height: 12, background: color, borderRadius: "50%", position: "relative", zIndex: 10 }}>
+                            <div className="animate-ping" style={{ position: "absolute", inset: 0, background: color, borderRadius: "50%", opacity: 0.5 }} />
+                          </div>
                           
                           {/* Tooltip */}
-                          <div className="absolute hidden group-hover:block z-50 bg-white dark:bg-slate-800 p-3 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 min-w-64 top-6 left-0">
-                            <div className="font-semibold text-sm mb-1">{signal.title}</div>
-                            <div className="text-xs text-gray-800 dark:text-slate-300 mb-2">{signal.description}</div>
-                            <div className="flex items-center gap-2 text-xs">
-                              <Badge variant="outline">{signal.confidence}% confidence</Badge>
-                              <Badge variant={signal.impact === 'critical' ? 'destructive' : 'secondary'}>
-                                {signal.impact}
-                              </Badge>
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-50">
+                            <h4 style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
+                            <p style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>{signal.description}</p>
+                            <div className="flex items-center gap-2 mt-3">
+                              <Badge style={{ background: OFF, color: NAVY, border: "1px solid #E8E4DC", fontSize: 10 }}>{signal.confidence}% CONFIDENCE</Badge>
+                              <Badge style={{ background: color, color: "#fff", border: "none", fontSize: 10 }}>{signal.impact.toUpperCase()}</Badge>
                             </div>
-                            <p className="text-xs text-blue-800 dark:text-blue-400 mt-2">Click to investigate →</p>
                           </div>
                         </div>
                       );
                     })}
+                  </div>
+                </div>
 
-                    {/* Rotating Scan Line */}
-                    <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-full">
+                <div className="col-span-4 space-y-6">
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Priority Signals</span>
+                  </div>
+                  
+                  <div className="space-y-4 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
+                    {weakSignals.map((signal) => (
                       <div 
-                        className="absolute w-1/2 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-blue-500 origin-left animate-[spin_4s_linear_infinite]"
-                        style={{ left: '50%' }}
-                      ></div>
+                        key={signal.id}
+                        onClick={() => handleInvestigateSignal(signal)}
+                        style={{ padding: 24, border: "1px solid #E8E4DC", background: "#fff", cursor: "pointer", transition: "all 0.2s" }}
+                        className="hover:border-[#0A0F2E] hover:shadow-sm"
+                      >
+                        <div className="flex items-start justify-between mb-4">
+                          <h4 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
+                          <span style={{ 
+                            fontSize: 8, 
+                            fontWeight: 700, 
+                            letterSpacing: "0.1em", 
+                            textTransform: "uppercase", 
+                            padding: "2px 8px",
+                            background: signal.impact === 'critical' ? 'rgba(239,68,68,0.1)' : 'rgba(201,168,76,0.1)',
+                            color: signal.impact === 'critical' ? '#ef4444' : GOLD
+                          }}>
+                            {signal.impact}
+                          </span>
+                        </div>
+                        <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.5 }}>{signal.description}</p>
+                        <div className="flex items-center gap-4 mt-6">
+                          <div className="flex items-center gap-2">
+                            <TrendingUp className="w-3 h-3 text-[#6B7280]" />
+                            <span style={{ fontSize: 11, color: "#6B7280" }}>{signal.confidence}% confidence</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Timer className="w-3 h-3 text-[#6B7280]" />
+                            <span style={{ fontSize: 11, color: "#6B7280" }}>{signal.timeline} window</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Oracle Patterns Section */}
+              <div className="mt-24">
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Pattern recognition</span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-8">
+                  {oraclePatterns.map((pattern) => (
+                    <div key={pattern.id} style={{ border: "1px solid #E8E4DC", padding: 32, background: OFF }}>
+                      <div className="flex items-center justify-between mb-6">
+                        <div style={{ width: 48, height: 48, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <Zap className="w-6 h-6 text-white" />
+                        </div>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: GOLD }}>{pattern.accuracy}% ACCURACY</span>
+                      </div>
+                      <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY, marginBottom: 12 }}>{pattern.name}</h3>
+                      <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.6, marginBottom: 24 }}>{pattern.description}</p>
+                      
+                      <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 24 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 8 }}>Recommendation</div>
+                        <p style={{ fontSize: 14, color: TEAL, fontStyle: "italic", lineHeight: 1.5 }}>{pattern.recommendation}</p>
+                      </div>
+
+                      <Button 
+                        variant="outline" 
+                        className="w-full mt-8 border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none h-12 text-xs font-bold tracking-widest uppercase"
+                        onClick={() => handleViewPattern(pattern)}
+                      >
+                        Analyze Pattern
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="signals">
+              <SignalControlCenter />
+            </TabsContent>
+
+            <TabsContent value="configure">
+              <div className="max-w-3xl mx-auto py-12">
+                <div style={{ border: "1px solid #E8E4DC", padding: 48, background: "#fff" }}>
+                  <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 16 }}>Configuration</h3>
+                  <p style={{ fontSize: 16, color: "#6B7280", marginBottom: 32 }}>Configure intelligence parameters, signal categories, and AI confidence thresholds for the Foresight Radar.</p>
+                  
+                  <div className="space-y-8">
+                    {["Category Priority", "Alert Thresholds", "Source Management"].map((item) => (
+                      <div key={item} className="flex items-center justify-between py-4 border-b border-[#E8E4DC]">
+                        <span style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>{item}</span>
+                        <Button variant="ghost" className="text-[#6B7280]">
+                          <Settings className="w-4 h-4 mr-2" />
+                          Manage
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        {/* Dialogs */}
+        <Dialog open={!!selectedSignal} onOpenChange={() => setSelectedSignal(null)}>
+          <DialogContent className="sm:max-w-[600px] border-none p-0 overflow-hidden">
+            <div style={{ background: NAVY, padding: 32 }}>
+              <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff" }}>Signal Investigation</h2>
+            </div>
+            <div className="p-8 bg-white">
+              {selectedSignal && (
+                <div className="space-y-6">
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Title</div>
+                    <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY }}>{selectedSignal.title}</h3>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>AI Assessment</div>
+                    <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.6 }}>{selectedSignal.description}</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Confidence</div>
+                      <div style={{ fontSize: 20, fontWeight: 600, color: NAVY }}>{selectedSignal.confidence}%</div>
+                    </div>
+                    <div style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Impact</div>
+                      <div style={{ fontSize: 20, fontWeight: 600, color: selectedSignal.impact === 'critical' ? '#ef4444' : GOLD }}>{selectedSignal.impact.toUpperCase()}</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="pt-8 flex gap-4">
+                    <Button 
+                      className="flex-1 rounded-none h-12 bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xs font-bold uppercase tracking-widest"
+                      onClick={() => handleActivatePlaybook(selectedSignal)}
+                    >
+                      Activate Response Playbook
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="flex-1 rounded-none h-12 border-[#E8E4DC] text-[#0A0F2E] text-xs font-bold uppercase tracking-widest"
+                      onClick={() => setSelectedSignal(null)}
+                    >
+                      Dismiss Signal
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
 
-              {/* Signal Cards Grid */}
-              <div className="grid grid-cols-2 gap-6">
-                {/* Weak Signals */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
-                      Weak Signals Detected
-                      <Badge variant="outline" className="ml-2">{weakSignals.length}</Badge>
-                    </CardTitle>
-                    <CardDescription>
-                      Early indicators requiring executive attention
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                      {weakSignals.map((signal) => (
-                        <div
-                          key={signal.id}
-                          className={`p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-900 hover:shadow-md transition-all cursor-pointer ${
-                            highlightedSignal === signal.id ? 'ring-2 ring-blue-500 animate-pulse' : ''
-                          }`}
-                          onClick={() => handleInvestigateSignal(signal)}
-                          data-testid={`weak-signal-card-${signal.id}`}
-                        >
-                          <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-semibold text-slate-900 dark:text-white">
-                              {signal.title}
-                            </h4>
-                            <Badge variant={signal.impact === 'critical' ? 'destructive' : 'secondary'} className="text-xs">
-                              {signal.impact}
-                            </Badge>
-                          </div>
-                          <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
-                            {signal.description}
-                          </p>
-                          <div className="flex items-center gap-4 text-xs text-gray-800 dark:text-slate-300">
-                            <span className="flex items-center gap-1">
-                              <TrendingUp className="w-3 h-3" />
-                              {signal.confidence}% confidence
-                            </span>
-                            <span>Timeline: {signal.timeline}</span>
-                          </div>
-                          <Button 
-                            size="sm" 
-                            variant="outline" 
-                            className="w-full mt-3"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleInvestigateSignal(signal);
-                            }}
-                            data-testid={`button-investigate-${signal.id}`}
-                          >
-                            <Shield className="w-4 h-4 mr-2" />
-                            Investigate Signal
-                          </Button>
-                        </div>
-                      ))}
+        <Dialog open={!!selectedPattern} onOpenChange={() => setSelectedPattern(null)}>
+          <DialogContent className="sm:max-w-[600px] border-none p-0 overflow-hidden">
+            <div style={{ background: NAVY, padding: 32 }}>
+              <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff" }}>Pattern Detail</h2>
+            </div>
+            <div className="p-8 bg-white">
+              {selectedPattern && (
+                <div className="space-y-6">
+                  <div>
+                    <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY }}>{selectedPattern.name}</h3>
+                    <p style={{ fontSize: 16, color: "#4B5563", marginTop: 12, lineHeight: 1.6 }}>{selectedPattern.description}</p>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="text-center p-4 bg-white border border-[#E8E4DC]">
+                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Accuracy</div>
+                      <div style={{ fontSize: 24, fontWeight: 600, color: GOLD }}>{selectedPattern.accuracy}%</div>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Oracle Patterns */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Zap className="w-5 h-5 text-violet-600" />
-                      Oracle Pattern Recognition
-                      <Badge variant="outline" className="ml-2">{oraclePatterns.length}</Badge>
-                    </CardTitle>
-                    <CardDescription>
-                      AI-identified strategic patterns and predictions
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3 max-h-[600px] overflow-y-auto">
-                      {oraclePatterns.map((pattern) => (
-                        <div
-                          key={pattern.id}
-                          className="p-4 bg-violet-50 dark:bg-violet-950/30 rounded-lg border border-violet-200 dark:border-violet-900 hover:shadow-md transition-shadow cursor-pointer"
-                          onClick={() => handleViewPattern(pattern)}
-                          data-testid={`oracle-pattern-card-${pattern.id}`}
-                        >
-                          <div className="flex items-start justify-between mb-2">
-                            <h4 className="font-semibold text-slate-900 dark:text-white">
-                              {pattern.name}
-                            </h4>
-                            <Badge variant="outline" className="text-xs bg-violet-100 dark:bg-violet-900">
-                              {pattern.accuracy}% accurate
-                            </Badge>
-                          </div>
-                          <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
-                            {pattern.description}
-                          </p>
-                          <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300">
-                            <div className="flex items-center gap-1">
-                              <TrendingUp className="w-4 h-4" />
-                              <span>{pattern.trend}</span>
-                            </div>
-                            <div>
-                              {pattern.signals} signals analyzed
-                            </div>
-                          </div>
-                          <Button 
-                            size="sm" 
-                            variant="outline" 
-                            className="w-full mt-3"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleViewPattern(pattern);
-                            }}
-                            data-testid={`button-view-pattern-${pattern.id}`}
-                          >
-                            <Lightbulb className="w-4 h-4 mr-2" />
-                            View Pattern Details
-                          </Button>
-                        </div>
-                      ))}
+                    <div className="text-center p-4 bg-white border border-[#E8E4DC]">
+                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Signals</div>
+                      <div style={{ fontSize: 24, fontWeight: 600, color: NAVY }}>{selectedPattern.signals}</div>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Monitoring Status */}
-              <Card className="border-2 border-green-500 dark:border-green-700">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-green-500 rounded-full p-3">
-                        <Radio className="w-6 h-6 text-gray-900 animate-pulse" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                          Continuous Monitoring Active
-                        </h3>
-                        <p className="text-sm text-gray-800 dark:text-slate-300">
-                          Scanning 16 intelligence signal categories in real-time
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-8">
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-[#C9A84C] dark:text-amber-400">
-                          {weakSignals.length}
-                        </div>
-                        <div className="text-xs text-gray-800 dark:text-slate-300 uppercase">
-                          Weak Signals
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-3xl font-bold text-violet-600 dark:text-violet-400">
-                          {oraclePatterns.length}
-                        </div>
-                        <div className="text-xs text-gray-800 dark:text-slate-300 uppercase">
-                          Patterns
-                        </div>
-                      </div>
+                    <div className="text-center p-4 bg-white border border-[#E8E4DC]">
+                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Trend</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: TEAL, marginTop: 8 }}>{selectedPattern.trend.toUpperCase()}</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="signals" className="mt-6">
-            <SignalControlCenter />
-          </TabsContent>
-
-          <TabsContent value="configure" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Settings className="w-5 h-5" />
-                  Signal Configuration
-                </CardTitle>
-                <CardDescription>
-                  Configure monitoring thresholds, data sources, and alert settings
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-3 gap-6">
-                  <Link href="/triggers">
-                    <Card className="cursor-pointer hover:border-blue-500 hover:shadow-md transition-all" data-testid="config-thresholds">
-                      <CardContent className="p-6 text-center">
-                        <Database className="w-8 h-8 mx-auto mb-3 text-blue-800" />
-                        <h4 className="font-semibold mb-1">Monitoring Thresholds</h4>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Set custom alert thresholds for each signal category
-                        </p>
-                        <Button variant="ghost" size="sm" className="text-blue-800">
-                          Configure <ArrowRight className="w-4 h-4 ml-1" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="/integrations">
-                    <Card className="cursor-pointer hover:border-purple-500 hover:shadow-md transition-all" data-testid="config-sources">
-                      <CardContent className="p-6 text-center">
-                        <Grid3X3 className="w-8 h-8 mx-auto mb-3 text-purple-800" />
-                        <h4 className="font-semibold mb-1">Data Sources</h4>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Connect and manage enterprise data sources
-                        </p>
-                        <Button variant="ghost" size="sm" className="text-purple-800">
-                          Configure <ArrowRight className="w-4 h-4 ml-1" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="/triggers">
-                    <Card className="cursor-pointer hover:border-amber-500 hover:shadow-md transition-all" data-testid="config-notifications">
-                      <CardContent className="p-6 text-center">
-                        <AlertTriangle className="w-8 h-8 mx-auto mb-3 text-[#C9A84C]" />
-                        <h4 className="font-semibold mb-1">Alert Settings</h4>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Configure notification preferences and escalation
-                        </p>
-                        <Button variant="ghost" size="sm" className="text-[#C9A84C]">
-                          Configure <ArrowRight className="w-4 h-4 ml-1" />
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
+                  <div style={{ padding: 24, background: "rgba(43,138,110,0.05)", borderLeft: `4px solid ${TEAL}` }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: TEAL, textTransform: "uppercase", marginBottom: 8 }}>AI Strategic Recommendation</div>
+                    <p style={{ fontSize: 15, color: "#2D3748", fontStyle: "italic" }}>{selectedPattern.recommendation}</p>
+                  </div>
+                  <div className="pt-8">
+                    <Button 
+                      className="w-full rounded-none h-12 bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xs font-bold uppercase tracking-widest"
+                      onClick={() => setSelectedPattern(null)}
+                    >
+                      Close Analysis
+                    </Button>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
-      </div>
-
-      {/* Signal Investigation Modal */}
-      <Dialog open={!!selectedSignal} onOpenChange={() => setSelectedSignal(null)}>
-        <DialogContent className="max-w-lg" data-testid="dialog-investigate-signal">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2" data-testid="dialog-title-investigate">
-              <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
-              Signal Investigation
-            </DialogTitle>
-            <DialogDescription>
-              Review signal details and recommended actions
-            </DialogDescription>
-          </DialogHeader>
-          {selectedSignal && (
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold text-lg">{selectedSignal.title}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{selectedSignal.description}</p>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
-                  <div className="text-xs text-muted-foreground uppercase">Confidence</div>
-                  <div className="text-xl font-bold text-blue-800">{selectedSignal.confidence}%</div>
-                </div>
-                <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg">
-                  <div className="text-xs text-muted-foreground uppercase">Timeline</div>
-                  <div className="text-xl font-bold text-[#C9A84C]">{selectedSignal.timeline}</div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <Lightbulb className="w-4 h-4 text-blue-800" />
-                  <span className="font-semibold text-sm">Recommended Action</span>
-                </div>
-                <p className="text-sm text-gray-800 dark:text-slate-300">
-                  {selectedSignal.suggestedPlaybook 
-                    ? `Activate the "${selectedSignal.suggestedPlaybook}" playbook to address this signal before it escalates.`
-                    : 'Review related playbooks to determine the best response strategy.'}
-                </p>
-              </div>
-            </div>
-          )}
-          <DialogFooter className="flex gap-2">
-            <Button variant="outline" onClick={() => setSelectedSignal(null)}>
-              Dismiss
-            </Button>
-            <Button onClick={() => selectedSignal && handleActivatePlaybook(selectedSignal)}>
-              <CheckCircle2 className="w-4 h-4 mr-2" />
-              Find Matching Playbook
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Pattern Details Modal */}
-      <Dialog open={!!selectedPattern} onOpenChange={() => setSelectedPattern(null)}>
-        <DialogContent className="max-w-lg" data-testid="dialog-pattern-analysis">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2" data-testid="dialog-title-pattern">
-              <Zap className="w-5 h-5 text-violet-600" />
-              Pattern Analysis
-            </DialogTitle>
-            <DialogDescription>
-              AI-identified strategic pattern details
-            </DialogDescription>
-          </DialogHeader>
-          {selectedPattern && (
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold text-lg">{selectedPattern.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{selectedPattern.description}</p>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-3">
-                <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg text-center">
-                  <div className="text-xs text-muted-foreground uppercase">Accuracy</div>
-                  <div className="text-xl font-bold text-violet-600">{selectedPattern.accuracy}%</div>
-                </div>
-                <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg text-center">
-                  <div className="text-xs text-muted-foreground uppercase">Signals</div>
-                  <div className="text-xl font-bold text-blue-800">{selectedPattern.signals}</div>
-                </div>
-                <div className="bg-slate-50 dark:bg-slate-800 p-3 rounded-lg text-center">
-                  <div className="text-xs text-muted-foreground uppercase">Trend</div>
-                  <div className="text-sm font-semibold text-emerald-700">{selectedPattern.trend}</div>
-                </div>
-              </div>
-
-              <div className="bg-violet-50 dark:bg-violet-950/30 p-4 rounded-lg border border-violet-200 dark:border-violet-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <Lightbulb className="w-4 h-4 text-violet-600" />
-                  <span className="font-semibold text-sm">Oracle Recommendation</span>
-                </div>
-                <p className="text-sm text-gray-800 dark:text-slate-300">
-                  {selectedPattern.recommendation}
-                </p>
-              </div>
-            </div>
-          )}
-          <DialogFooter className="flex gap-2">
-            <Button variant="outline" onClick={() => setSelectedPattern(null)}>
-              Close
-            </Button>
-            <Button onClick={() => {
-              setSelectedPattern(null);
-              setLocation('/playbook-library');
-            }}>
-              <Target className="w-4 h-4 mr-2" />
-              Explore Related Playbooks
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </PageLayout>
   );
 }

@@ -38,6 +38,8 @@ import {
   RefreshCw
 } from 'lucide-react';
 
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function SettingsPage() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -117,74 +119,93 @@ export default function SettingsPage() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="p-8">
-          {/* Breadcrumb Navigation */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
-              <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-gray-800 dark:hover:text-white p-1 h-auto">
-                  <Home className="h-4 w-4" />
-                </Button>
-              </Link>
-              <span>/</span>
-              <span>Administration</span>
-              <span>/</span>
-              <span className="text-gray-800 dark:text-white">Settings</span>
-            </div>
+      <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ 
+          position: "absolute", 
+          inset: 0, 
+          backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+          backgroundSize: "44px 44px" 
+        }} />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Platform Settings</span>
           </div>
-
-          {/* Settings Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-blue-600 rounded-xl flex items-center justify-center">
-                <Settings className="w-7 h-7 text-gray-900" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">System Management</h1>
-                <p className="text-gray-800 dark:text-gray-300">Enterprise Platform Administration & Configuration</p>
-              </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
+                System <em style={{ fontStyle: "italic", color: "#DFC178" }}>Management</em>
+              </h1>
+              <p className="text-white/60 mt-1 max-w-2xl">
+                Enterprise Platform Administration & Configuration
+              </p>
             </div>
             <div className="flex items-center space-x-3">
               <Link to="/">
-                <Button variant="secondary" className="bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100">
+                <Button className="bg-white/10 hover:bg-white/20 text-white border-none">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Dashboard
                 </Button>
               </Link>
-              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
                 <CheckCircle className="w-3 h-3 mr-1" />
                 All Systems Operational
-              </Badge>
-              <Badge className="bg-teal-600 text-gray-900">
-                Admin Access
-              </Badge>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="flex-1 page-background overflow-auto bg-[#F8F7F4]">
+        <div className="max-w-7xl mx-auto p-8">
 
           <Tabs defaultValue="system" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-6">
-              <TabsTrigger value="system" data-testid="tab-system-status">
+            <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-8 px-6 mb-8">
+              <TabsTrigger 
+                value="system" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-system-status"
+              >
                 <Activity className="w-4 h-4 mr-2" />
                 System Status
               </TabsTrigger>
-              <TabsTrigger value="users" data-testid="tab-user-management">
+              <TabsTrigger 
+                value="users" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-user-management"
+              >
                 <Users className="w-4 h-4 mr-2" />
                 User Management
               </TabsTrigger>
-              <TabsTrigger value="security" data-testid="tab-security-settings">
+              <TabsTrigger 
+                value="security" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-security-settings"
+              >
                 <Shield className="w-4 h-4 mr-2" />
                 Security
               </TabsTrigger>
-              <TabsTrigger value="enterprise" data-testid="tab-enterprise-features">
+              <TabsTrigger 
+                value="enterprise" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-enterprise-features"
+              >
                 <Crown className="w-4 h-4 mr-2" />
                 Enterprise Features
               </TabsTrigger>
-              <TabsTrigger value="integrations" data-testid="tab-integrations">
+              <TabsTrigger 
+                value="integrations" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-integrations"
+              >
                 <Globe className="w-4 h-4 mr-2" />
                 Integrations
               </TabsTrigger>
-              <TabsTrigger value="demo" data-testid="tab-demo-management">
+              <TabsTrigger 
+                value="demo" 
+                className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
+                data-testid="tab-demo-management"
+              >
                 <PlayCircle className="w-4 h-4 mr-2" />
                 Demo Management
               </TabsTrigger>
@@ -247,30 +268,30 @@ export default function SettingsPage() {
                 <CardContent>
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-800">1,247</div>
-                        <div className="text-sm text-gray-800 dark:text-gray-400">Active Users</div>
+                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>1,247</div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Users</div>
                       </div>
-                      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-emerald-700">94%</div>
-                        <div className="text-sm text-gray-800 dark:text-gray-400">Platform Adoption</div>
+                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E" }}>94%</div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Platform Adoption</div>
                       </div>
-                      <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-800">47</div>
-                        <div className="text-sm text-gray-800 dark:text-gray-400">Admin Users</div>
+                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                        <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C" }}>47</div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Admin Users</div>
                       </div>
                     </div>
 
                     <div className="flex space-x-3">
-                      <Button data-testid="button-add-user">
+                      <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-add-user">
                         <Users className="w-4 h-4 mr-2" />
                         Add Enterprise User
                       </Button>
-                      <Button variant="outline" data-testid="button-bulk-import">
+                      <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]" data-testid="button-bulk-import">
                         <Database className="w-4 h-4 mr-2" />
                         Bulk Import
                       </Button>
-                      <Button variant="outline" data-testid="button-export-users">
+                      <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]" data-testid="button-export-users">
                         <BarChart3 className="w-4 h-4 mr-2" />
                         Export User Data
                       </Button>
@@ -316,12 +337,12 @@ export default function SettingsPage() {
                     ))}
                   </div>
                   
-                  <div className="mt-6 p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
-                    <div className="flex items-center text-purple-800 dark:text-purple-200">
+                  <div style={{ marginTop: 24, padding: 16, background: "rgba(201,168,76,0.08)", border: "1px solid #C9A84C", borderRadius: 0 }}>
+                    <div className="flex items-center text-[#C9A84C]">
                       <Crown className="w-4 h-4 mr-2" />
-                      <span className="text-sm font-medium">Enterprise Intelligence Platform Status</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Enterprise Intelligence Platform Status</span>
                     </div>
-                    <p className="text-xs text-purple-700 dark:text-purple-300 mt-1">
+                    <p className="text-xs text-[#0A0F2E] mt-2 font-medium">
                       All Fortune 1000 enterprise features are active and optimized for organizational intelligence and crisis response excellence.
                     </p>
                   </div>
@@ -331,15 +352,24 @@ export default function SettingsPage() {
 
             {/* Security Settings Tab */}
             <TabsContent value="security" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="border-[#E8E4DC] bg-white">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <Shield className="w-5 h-5 mr-2 text-red-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E] font-serif text-2xl">
+                    <Shield className="w-6 h-6 mr-2 text-[#C9A84C]" />
                     Enterprise Security Configuration
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
+                    <div style={{ padding: 16, background: "rgba(201,168,76,0.08)", border: "1px solid #C9A84C", borderRadius: 0, marginBottom: 24 }}>
+                      <div className="flex items-center text-[#C9A84C] mb-2">
+                        <AlertTriangle className="w-4 h-4 mr-2" />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Critical Security Protocol</span>
+                      </div>
+                      <p className="text-xs text-[#0A0F2E] font-medium">
+                        These settings affect platform-wide authentication and data protection. Any changes will be logged in the permanent audit trail.
+                      </p>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-3">
                         <Label htmlFor="session-timeout">Session Timeout (minutes)</Label>

@@ -7,6 +7,12 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Shield, Activity, Clock } from "lucide-react";
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function CrisisResponse() {
   const { toast } = useToast();
   
@@ -19,81 +25,59 @@ export default function CrisisResponse() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto" data-testid="crisis-response-page">
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-gray-900 p-8">
-          <div className="max-w-7xl mx-auto">
+      <div className="flex-1 bg-white overflow-auto" data-testid="crisis-response-page">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+            backgroundSize: "44px 44px" 
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-4xl font-bold mb-2">Crisis Response Center</h1>
-                <p className="text-red-500 text-lg">Immediate response protocols and emergency management systems</p>
-              </div>
-              <div className="text-right">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <Badge variant="secondary" className="bg-white/20 text-gray-900">OPERATIONAL</Badge>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Immediate Response Protocols</span>
                 </div>
-                <div className="text-red-500">24/7 Crisis Monitoring Active</div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+                  Crisis Response <em style={{ fontStyle: "italic", color: "#DFC178" }}>Center</em>
+                </h1>
+                <p className="text-white/60 text-lg max-w-2xl">Emergency management systems and rapid activation protocols for enterprise-scale incidents.</p>
+              </div>
+              <div className="text-right hidden md:block">
+                <div className="flex items-center gap-2 mb-2 justify-end">
+                  <div className="w-2 h-2 bg-[#3BAF8A] rounded-full animate-pulse"></div>
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#3BAF8A" }}>System Operational</span>
+                </div>
+                <div className="text-white/40 text-xs tracking-widest uppercase">24/7 Monitoring Active</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="p-6 max-w-7xl mx-auto space-y-6">
-          {/* Crisis Status Overview */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="border-green-200 bg-green-50 dark:bg-green-900/20" data-testid="readiness-status">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm flex items-center gap-2 text-green-800 dark:text-green-200">
-                  <Shield className="h-4 w-4" />
-                  Readiness Status
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">98%</div>
-                <div className="text-xs text-emerald-700 dark:text-green-400">Crisis Prepared</div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-blue-200 bg-blue-50 dark:bg-blue-900/20" data-testid="response-time">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm flex items-center gap-2 text-blue-800 dark:text-blue-200">
-                  <Clock className="h-4 w-4" />
-                  Response Time
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-blue-800 dark:text-blue-300">&lt;1hr</div>
-                <div className="text-xs text-blue-800 dark:text-blue-400">Average Activation</div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-purple-200 bg-purple-50 dark:bg-purple-900/20" data-testid="templates-ready">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm flex items-center gap-2 text-purple-800 dark:text-purple-200">
-                  <Activity className="h-4 w-4" />
-                  Templates Ready
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">15+</div>
-                <div className="text-xs text-purple-800 dark:text-purple-400">Crisis Scenarios</div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-orange-200 bg-orange-50 dark:bg-orange-900/20" data-testid="monitoring-status">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm flex items-center gap-2 text-orange-800 dark:text-orange-200">
-                  <AlertTriangle className="h-4 w-4" />
-                  Monitoring
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-orange-700 dark:text-orange-300">24/7</div>
-                <div className="text-xs text-orange-600 dark:text-orange-400">Active Surveillance</div>
-              </CardContent>
-            </Card>
+        {/* Stats Section */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: OFF, borderBottom:"1px solid #E8E4DC" }}>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>98%</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Crisis Prepared</div>
           </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>&lt;1h</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Avg Activation</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>15+</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Response Templates</div>
+          </div>
+          <div style={{ padding:24 }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>24/7</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Surveillance</div>
+          </div>
+        </div>
 
+        <div className="p-12 max-w-7xl mx-auto">
           {/* Crisis Response Dashboard */}
           <CrisisResponseDashboard organizationId={organizationId} />
         </div>

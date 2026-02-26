@@ -198,7 +198,7 @@ const compoundScenarios = [
 function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "critical") {
     return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400">
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(239, 68, 68, 0.12)", color: "#EF4444", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
         <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
         Critical
       </span>
@@ -206,14 +206,14 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   }
   if (urgency === "high") {
     return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
         <span className="w-2 h-2 rounded-full bg-amber-500" />
         High
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#3BAF8A", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
       <span className="w-2 h-2 rounded-full bg-emerald-500" />
       Standard
     </span>
@@ -350,6 +350,15 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const [search, setSearch] = useState("");
   const { isAuthenticated } = useAuth();
 
+  const NAVY = "#0A0F2E";
+  const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const { data: templates } = useQuery<Playbook[]>({
     queryKey: ["/api/playbooks/templates"],
   });
@@ -421,53 +430,58 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
           <div className="sticky top-24">
-            <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-3 pl-1">Domains</div>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
             <nav className="space-y-0.5">
               {DOMAINS.map((domain) => {
                 const Icon = domain.icon;
+                const isActive = activeDomain === domain.id;
                 return (
                   <button
                     key={domain.id}
                     onClick={() => setActiveDomain(domain.id)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors text-left ${
-                      activeDomain === domain.id
-                        ? "bg-[#0A0F2E] text-white font-semibold"
-                        : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
-                    }`}
+                    style={{ 
+                      width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
+                      background: isActive ? "#fff" : "transparent",
+                      border: isActive ? `1px solid ${BORDER}` : "1px solid transparent",
+                      color: isActive ? NAVY : MUTED,
+                      fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
+                    }}
                   >
-                    <span className="flex items-center gap-2">
-                      {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
-                      <span className="truncate">{domain.id === "all" ? "All (170)" : domain.label.replace("& ", "&\u00A0").split(" ").slice(0, 2).join(" ")}</span>
-                    </span>
-                    <span className={`text-xs shrink-0 ${activeDomain === domain.id ? "text-white/70" : "text-slate-400"}`}>
-                      {domain.id !== "all" && domain.count}
-                    </span>
+                    {Icon && <Icon className="h-4 w-4" style={{ color: isActive ? GOLD : MUTED }} />}
+                    {!Icon && <BookOpen className="h-4 w-4" style={{ color: isActive ? GOLD : MUTED }} />}
+                    <span className="flex-1 truncate">{domain.label}</span>
+                    <span style={{ fontSize: 10, color: MUTED, opacity: 0.7 }}>{domain.count}</span>
                   </button>
                 );
               })}
             </nav>
 
-            <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-3 pl-1 mt-6">Urgency</div>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4, marginTop: 24 }}>Urgency</div>
             <nav className="space-y-0.5">
-              {URGENCY_FILTERS.map((u) => (
-                <button
-                  key={u.id}
-                  onClick={() => setActiveUrgency(u.id)}
-                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors text-left ${
-                    activeUrgency === u.id
-                      ? "bg-[#0A0F2E] text-white font-semibold"
-                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium"
-                  }`}
-                >
-                  <span className="flex items-center gap-1.5">
-                    {u.id === "critical" && <span className="w-2 h-2 rounded-full bg-red-500" />}
-                    {u.id === "high" && <span className="w-2 h-2 rounded-full bg-amber-500" />}
-                    {u.id === "standard" && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
-                    {u.label}
-                  </span>
-                  {"count" in u && <span className={`text-xs ${activeUrgency === u.id ? "text-white/70" : "text-slate-400"}`}>{u.count}</span>}
-                </button>
-              ))}
+              {URGENCY_FILTERS.map((u) => {
+                const isActive = activeUrgency === u.id;
+                return (
+                  <button
+                    key={u.id}
+                    onClick={() => setActiveUrgency(u.id)}
+                    style={{ 
+                      width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
+                      background: isActive ? "#fff" : "transparent",
+                      border: isActive ? `1px solid ${BORDER}` : "1px solid transparent",
+                      color: isActive ? NAVY : MUTED,
+                      fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
+                    }}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      {u.id === "critical" && <span className="w-2 h-2 rounded-full bg-red-500" />}
+                      {u.id === "high" && <span className="w-2 h-2 rounded-full bg-amber-500" />}
+                      {u.id === "standard" && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
+                      {u.label}
+                    </span>
+                    {"count" in u && <span style={{ fontSize: 10, color: MUTED, opacity: 0.7, marginLeft: "auto" }}>{u.count}</span>}
+                  </button>
+                );
+              })}
             </nav>
           </div>
         </aside>
@@ -475,10 +489,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-3 mb-5">
             <div className="relative flex-1 max-w-sm">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: MUTED }} />
               <Input
                 placeholder="Search playbooks..."
-                className="pl-9 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700"
+                style={{ paddingLeft: 40, border: `1.5px solid ${BORDER}`, borderRadius: 0 }}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -489,44 +503,44 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               </Button>
             )}
             <div className="ml-auto text-sm text-slate-500">
-              <span className="font-semibold text-slate-900 dark:text-white">{activeDomainInfo.count}</span> playbooks
+              <span className="font-semibold" style={{ color: NAVY }}>{activeDomainInfo.count}</span> playbooks
             </div>
           </div>
 
-          <div className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <div style={{ border: `1px solid ${BORDER}`, background: "#fff" }} className="overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-                  <th className="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider w-12">#</th>
-                  <th className="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">Playbook Title</th>
-                  <th className="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider hidden md:table-cell">Domain</th>
-                  <th className="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider hidden lg:table-cell">Avg. Execution</th>
-                  <th className="text-left px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider hidden sm:table-cell">Urgency</th>
+                <tr style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider w-12">#</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Playbook Title</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden md:table-cell">Domain</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden lg:table-cell">Avg. Execution</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden sm:table-cell">Urgency</th>
                   <th className="px-4 py-3 w-20" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-100">
                 {publicTeasers.map((pb) => (
-                  <tr key={pb.num} className="bg-white dark:bg-slate-950 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                  <tr key={pb.num} className="bg-white hover:bg-[#F8F7F4] transition-colors group">
                     <td className="px-4 py-4">
-                      <span className="font-serif text-xl text-[#C9A84C] font-semibold">{pb.num}</span>
+                      <span style={{ ...CG, fontSize: 20, color: GOLD, fontWeight: 600 }}>{pb.num}</span>
                     </td>
                     <td className="px-4 py-4">
-                      <div className="font-semibold text-slate-900 dark:text-white leading-snug">{pb.title}</div>
-                      <div className="text-xs text-slate-500 mt-0.5">{pb.meta}</div>
+                      <div style={{ fontWeight: 600, color: NAVY }}>{pb.title}</div>
+                      <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{pb.meta}</div>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell">
-                      <span className="px-2.5 py-1 rounded text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                      <span style={{ fontSize: 10, padding: "3px 8px", background: "#f0f0f0", color: NAVY, fontWeight: 700, textTransform: "uppercase" }}>
                         {pb.domain}
                       </span>
                     </td>
                     <td className="px-4 py-4 hidden lg:table-cell">
-                      <span className="text-[#2B8A6E] font-semibold text-xs">{pb.time}</span>
+                      <span style={{ color: TEAL, fontWeight: 600, fontSize: 12 }}>{pb.time}</span>
                     </td>
                     <td className="px-4 py-4 hidden sm:table-cell">
                       <UrgencyBadge urgency={pb.urgency} />
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-4 py-4 text-right">
                       <button
                         onClick={() => {
                           if (isAuthenticated) {
@@ -537,7 +551,8 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                             window.location.href = "/api/login";
                           }
                         }}
-                        className="text-xs font-semibold text-[#0A0F2E] dark:text-white hover:text-[#C9A84C] transition-colors whitespace-nowrap group-hover:underline"
+                        style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: NAVY }}
+                        className="hover:text-[#C9A84C] transition-colors whitespace-nowrap"
                       >
                         View →
                       </button>
@@ -545,27 +560,17 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   </tr>
                 ))}
 
-                {publicTeasers.length === 0 && (
-                  <tr>
-                    <td colSpan={6} className="px-4 py-10 text-center text-slate-500 text-sm">
-                      No playbooks match your current filter. <button className="underline" onClick={() => { setSearch(""); setActiveDomain("all"); setActiveUrgency("all"); }}>Clear filters</button>
-                    </td>
-                  </tr>
-                )}
-
-                <tr className="bg-[#F8F7F4] dark:bg-slate-900/50">
-                  <td colSpan={6} className="px-4 py-5 text-center">
-                    <div className="flex items-center justify-center gap-3">
-                      <Lock className="h-4 w-4 text-slate-400" />
-                      <span className="text-sm text-slate-600 dark:text-slate-400">
-                        <span className="font-semibold text-slate-900 dark:text-white">+ {activeDomainInfo.count - publicTeasers.length} more playbooks</span>
-                        {" "}— sign in to unlock the full library
+                <tr style={{ background: OFF }}>
+                  <td colSpan={6} className="px-4 py-6 text-center">
+                    <div className="flex items-center justify-center gap-4">
+                      <Lock className="h-4 w-4" style={{ color: MUTED }} />
+                      <span style={{ fontSize: 13, color: NAVY }}>
+                        <strong>+ {activeDomainInfo.count - publicTeasers.length} more playbooks</strong> — sign in to unlock the full library
                       </span>
                       <Button
                         size="sm"
                         onClick={() => window.location.href = "/api/login"}
-                        style={{ background: "#0A0F2E", color: "#fff" }}
-                        className="hover:opacity-90"
+                        style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
                       >
                         Sign In to Access
                       </Button>

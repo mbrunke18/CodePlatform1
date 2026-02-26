@@ -35,6 +35,12 @@ import {
   Home
 } from 'lucide-react';
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 interface CrisisTemplate {
   id: string;
   name: string;
@@ -194,6 +200,288 @@ export default function CrisisResponseCenter() {
       }
     ]);
   }, []);
+
+  const getSeverityBadgeStyle = (severity: string) => {
+    switch (severity) {
+      case 'critical': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
+      case 'high': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
+      case 'medium': return { background: "rgba(43,138,110,0.12)", color: "#3BAF8A" };
+      case 'low': return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+      default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+    }
+  };
+
+  const getSeverityIcon = (severity: string) => {
+    switch (severity) {
+      case 'critical': return <AlertTriangle className="h-4 w-4" />;
+      case 'high': return <AlertCircle className="h-4 w-4" />;
+      case 'medium': return <Clock className="h-4 w-4" />;
+      case 'low': return <CheckCircle className="h-4 w-4" />;
+      default: return <Activity className="h-4 w-4" />;
+    }
+  };
+
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+
+  return (
+    <PageLayout>
+      <div className="flex-1 bg-white overflow-y-auto" data-testid="crisis-response-center">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+            backgroundSize: "44px 44px" 
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Emergency Operations Center</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+                  Crisis Response <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Center</em>
+                </h1>
+                <p className="text-white/60 text-lg max-w-2xl">Enterprise-grade crisis management with 15+ response protocols and real-time coordination systems.</p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                  <Shield className="w-3 h-3" />
+                  All Systems Ready
+                </div>
+                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold" size="lg">
+                  <AlertTriangle className="w-4 h-4 mr-2" />
+                  EMERGENCY ACTIVATION
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: OFF, borderBottom:"1px solid #E8E4DC" }}>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.readinessLevel}%</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Readiness Level</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.responseTeamsActive}</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Teams Active</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.protocolsReady}</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Protocols Ready</div>
+          </div>
+          <div style={{ padding:24 }}>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>8d</div>
+            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Since Last Drill</div>
+          </div>
+        </div>
+
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
+          {/* Demo Crisis Simulation - Only visible during demo mode */}
+          <DemoStrategicAlert />
+          <DemoActiveStrategicCard />
+
+          {/* Crisis Management Tabs */}
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
+            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-8">
+              {['dashboard', 'templates', 'active', 'protocols', 'analytics'].map((tab) => (
+                <TabsTrigger 
+                  key={tab}
+                  value={tab} 
+                  className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-4 text-xs font-bold tracking-widest uppercase text-[#6B7280]"
+                >
+                  {tab}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <TabsContent value="dashboard" className="space-y-8 mt-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Active Situations */}
+                <Card className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none">
+                  <CardHeader className="px-0 pt-0">
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                      <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Live Monitoring</span>
+                    </div>
+                    <CardTitle className="text-2xl font-bold flex items-center gap-2">
+                      <Activity className="h-5 w-5 text-[#2B8A6E]" />
+                      Active Situations <span className="text-[#6B7280] font-normal" data-testid="crisis-active-counter">({activeCrises.length})</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-0 pb-0 space-y-4">
+                    {activeCrises.map((crisis) => (
+                      <div key={crisis.id} className="p-6 bg-[#F8F7F4] border border-[#E8E4DC]" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
+                        <div className="flex items-center justify-between mb-4">
+                          <h4 className="font-bold text-[#0A0F2E]">{crisis.template}</h4>
+                          <span style={{ ...getSeverityBadgeStyle(crisis.severity), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                            {getSeverityIcon(crisis.severity)}
+                            <span className="ml-1">{crisis.severity}</span>
+                          </span>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">
+                            <span>Progress</span>
+                            <span className="text-[#0A0F2E]">{crisis.progress}%</span>
+                          </div>
+                          <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC]" />
+                          <div className="flex items-center gap-2 text-xs text-[#6B7280]">
+                            <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full" />
+                            Current Phase: <span className="text-[#0A0F2E] font-medium">{crisis.currentPhase}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+
+                {/* Quick Actions */}
+                <Card className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none">
+                  <CardHeader className="px-0 pt-0">
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                      <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Rapid Execution</span>
+                    </div>
+                    <CardTitle className="text-2xl font-bold flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-[#C9A84C]" />
+                      Emergency Actions
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="px-0 pb-0 space-y-3">
+                    <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold py-6 rounded-none justify-start">
+                      <AlertTriangle className="w-4 h-4 mr-3 text-red-500" />
+                      ACTIVATE CRISIS PROTOCOL
+                    </Button>
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
+                      <Users className="w-4 h-4 mr-3" />
+                      ASSEMBLE RESPONSE TEAM
+                    </Button>
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
+                      <Phone className="w-4 h-4 mr-3" />
+                      EMERGENCY COMMUNICATIONS
+                    </Button>
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
+                      <Bell className="w-4 h-4 mr-3" />
+                      STAKEHOLDER ALERTS
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="templates" className="mt-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {crisisTemplates.map((template) => (
+                  <Card key={template.id} className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors rounded-none flex flex-col">
+                    <div className="flex items-center justify-between mb-4">
+                      <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
+                        {template.category}
+                      </span>
+                      <span style={{ ...getSeverityBadgeStyle(template.severity), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                        {template.severity}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#0A0F2E] mb-2">{template.name}</h3>
+                    <p className="text-sm text-[#6B7280] flex-grow mb-6 leading-relaxed">{template.description}</p>
+                    
+                    <div className="space-y-3 mb-8">
+                      <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase border-b border-[#E8E4DC] pb-2">
+                        <span className="text-[#6B7280]">Activation</span>
+                        <span className="text-[#0A0F2E]">{template.activationTime}</span>
+                      </div>
+                      <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase border-b border-[#E8E4DC] pb-2">
+                        <span className="text-[#6B7280]">Stakeholders</span>
+                        <span className="text-[#0A0F2E]">{template.stakeholders.length}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex gap-3">
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] font-bold py-5 text-[10px] tracking-widest uppercase rounded-none">
+                        DETAILS
+                      </Button>
+                      <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold py-5 text-[10px] tracking-widest uppercase rounded-none">
+                        ACTIVATE
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="active" className="mt-0 space-y-6">
+              {activeCrises.map((crisis) => (
+                <Card key={crisis.id} className="border border-[#E8E4DC] bg-white rounded-none shadow-none overflow-hidden">
+                  <div style={{ borderLeft: "4px solid #EF4444", padding: "24px" }}>
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-2xl font-bold text-[#0A0F2E]">{crisis.template}</h3>
+                          <span style={{ background: "rgba(239,68,68,0.12)", color: "#EF4444", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+                            ACTIVE INCIDENT
+                          </span>
+                        </div>
+                        <div className="text-sm text-[#6B7280]">Internal ID: {crisis.id} · Started: {crisis.startTime}</div>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold rounded-none">
+                          <CheckCircle className="w-4 h-4 mr-2" />
+                          UPDATE STATUS
+                        </Button>
+                        <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] font-bold rounded-none">
+                          <FileText className="w-4 h-4 mr-2" />
+                          FULL REPORT
+                        </Button>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                      <div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Execution Progress</div>
+                        <div className="text-3xl font-bold text-[#0A0F2E] mb-2">{crisis.progress}%</div>
+                        <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC]" />
+                        <div className="mt-3 text-sm text-[#6B7280]">Currently in: <span className="text-[#0A0F2E] font-bold">{crisis.currentPhase}</span></div>
+                      </div>
+                      
+                      <div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Assigned Command</div>
+                        <div className="flex flex-wrap gap-2">
+                          {crisis.assignedTeam.map((team, index) => (
+                            <span key={index} style={{ border: "1px solid #E8E4DC", padding: "4px 10px", fontSize: 10, fontWeight: 600, color: "#0A0F2E", background: OFF }}>
+                              {team}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Next Protocols</div>
+                        <div className="space-y-3">
+                          {crisis.nextActions.map((action, index) => (
+                            <div key={index} className="flex items-start gap-3 text-sm text-[#0A0F2E]">
+                              <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full mt-1.5 flex-shrink-0" />
+                              {action}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+    </PageLayout>
+  );
+}
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {

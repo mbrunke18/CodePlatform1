@@ -133,33 +133,39 @@ export default function NovaInnovations() {
     }
   ];
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-      purple: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
-      emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      orange: 'text-orange-400 bg-orange-500/10 border-orange-500/30'
+      blue: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
+      purple: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
+      emerald: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
+      orange: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
+      case 'critical': return 'bg-red-500/12 text-red-500 border-red-500/30';
+      case 'high': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'medium': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'low': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
+      default: return 'bg-gray-500/12 text-gray-800 border-gray-500/30';
     }
   };
 
   const getStageColor = (stage: string) => {
     switch (stage) {
-      case 'development': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'research': return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
-      case 'ideation': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'discovery': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
+      case 'development': return `bg-[${NAVY}]/12 text-[${NAVY}] border-[${NAVY}]/30`;
+      case 'research': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'ideation': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'discovery': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
+      default: return 'bg-gray-500/12 text-gray-800 border-gray-500/30';
     }
   };
 
@@ -169,63 +175,43 @@ export default function NovaInnovations() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-transparent p-6" data-testid="nova-innovations">
+      <div className="page-background min-h-screen bg-white p-6" data-testid="nova-innovations">
         <div className="max-w-7xl mx-auto space-y-8">
           
-          {/* Breadcrumb Navigation */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
-              <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
-                  <Home className="h-4 w-4" />
-                </Button>
-              </Link>
-              <span>/</span>
-              <span>AI Intelligence</span>
-              <span>/</span>
-              <span className="text-gray-900">Nova Innovations</span>
+          {/* ROI Value Context */}
+          <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }} data-testid="nova-roi-context">
+            <div className="flex items-center gap-4">
+              <div style={{ width:32, height:32, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Brain className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Nova Saves You Money</div>
+                <div style={{ fontSize: 14, color: "#6B7280" }}>Identifies breakthrough opportunities 6 months ahead of competitors, capturing $3.2M+ in first-mover advantage</div>
+              </div>
             </div>
           </div>
 
-          {/* ROI Value Context - Tier 2 Enhancement */}
-          <Card className="mb-4 bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-700" data-testid="nova-roi-context">
-            <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
-                <Brain className="h-5 w-5 text-indigo-600" />
-              </div>
-              <div>
-                <div className="font-semibold text-indigo-900 dark:text-indigo-100 text-sm">How Nova Saves You Money</div>
-                <div className="text-xs text-indigo-700 dark:text-indigo-300">Identifies breakthrough opportunities 6 months ahead of competitors, capturing $3.2M+ in first-mover advantage</div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-gray-900 p-6 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <Brain className="h-10 w-10" />
+          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 8 }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-6">
+                <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Brain className="h-10 w-10 text-[${GOLD}]" />
+                </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="nova-title">
-                    Nova Innovations
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Innovation Intelligence</span>
+                  </div>
+                  <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
+                    Nova <em style={{ fontStyle: "italic", color: "#DFC178" }}>Innovations</em>
                   </h1>
-                  <p className="text-purple-800">Innovation pipeline management and breakthrough opportunity identification</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Innovation pipeline management and breakthrough opportunity identification</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="nova-innovations" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
-                <Link to="/">
-                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-800 border-purple-600" data-testid="back-to-dashboard">
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <BrandStamp variant="dual" size="md" className="mb-8" />
-                <Badge variant="secondary" className="bg-purple-700 text-purple-800 border-purple-600" data-testid="ai-discovery-badge">
-                  <Rocket className="h-4 w-4 mr-2" />
-                  AI DISCOVERY
-                </Badge>
-                <Button variant="secondary" className="bg-indigo-600 hover:bg-indigo-700 text-gray-900" data-testid="new-innovation-button">
+              <div className="flex flex-wrap items-center gap-4">
+                <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }} data-testid="new-innovation-button">
                   <PlusCircle className="h-4 w-4 mr-2" />
                   New Innovation
                 </Button>
@@ -234,221 +220,170 @@ export default function NovaInnovations() {
           </div>
 
           {/* Innovation Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-blue-500/30 bg-blue-950/30 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-blue-300 text-sm font-medium">Active Projects</p>
-                    <p className="text-2xl font-bold text-gray-900">{innovationProjects.length}</p>
-                  </div>
-                  <Rocket className="h-8 w-8 text-blue-400" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-emerald-500/30 bg-emerald-950/30 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-emerald-300 text-sm font-medium">Total Investment</p>
-                    <p className="text-2xl font-bold text-gray-900">$10.2M</p>
-                  </div>
-                  <DollarSign className="h-8 w-8 text-emerald-400" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-purple-500/30 bg-purple-950/30 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-purple-300 text-sm font-medium">Avg Potential</p>
-                    <p className="text-2xl font-bold text-gray-900">88.3%</p>
-                  </div>
-                  <Star className="h-8 w-8 text-purple-400" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="border-orange-500/30 bg-orange-950/30 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-orange-300 text-sm font-medium">Expected ROI</p>
-                    <p className="text-2xl font-bold text-gray-900">340%</p>
-                  </div>
-                  <TrendingUp className="h-8 w-8 text-orange-400" />
-                </div>
-              </CardContent>
-            </Card>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background:"#F8F7F4", border:"1px solid #E8E4DC", borderRadius: 8 }}>
+            <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color:GOLD, lineHeight:1 }}>{innovationProjects.length}</div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Active Projects</div>
+            </div>
+            <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color:GOLD, lineHeight:1 }}>$10.2M</div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Total Investment</div>
+            </div>
+            <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color:GOLD, lineHeight:1 }}>88.3%</div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Avg Potential</div>
+            </div>
+            <div style={{ padding:24 }}>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color:GOLD, lineHeight:1 }}>340%</div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Expected ROI</div>
+            </div>
           </div>
 
           <Tabs value={selectedPipeline} onValueChange={setSelectedPipeline} className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="discovery" data-testid="tab-discovery">Discovery</TabsTrigger>
-              <TabsTrigger value="ideation" data-testid="tab-ideation">Ideation</TabsTrigger>
-              <TabsTrigger value="research" data-testid="tab-research">Research</TabsTrigger>
-              <TabsTrigger value="development" data-testid="tab-development">Development</TabsTrigger>
-              <TabsTrigger value="all" data-testid="tab-all">All Projects</TabsTrigger>
+            <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC]">
+              <TabsTrigger value="discovery" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Discovery</TabsTrigger>
+              <TabsTrigger value="ideation" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Ideation</TabsTrigger>
+              <TabsTrigger value="research" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Research</TabsTrigger>
+              <TabsTrigger value="development" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Development</TabsTrigger>
+              <TabsTrigger value="all" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">All</TabsTrigger>
             </TabsList>
 
-            <TabsContent value={selectedPipeline} className="space-y-6">
-              {/* Innovation Projects Grid */}
+            <TabsContent value={selectedPipeline} className="space-y-6 mt-8">
               <div className="space-y-6">
                 {filteredProjects.map((project) => (
-                  <Card key={project.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className={`p-3 rounded-lg ${getColorClasses(project.color)}`}>
+                  <Card key={project.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center gap-6">
+                        <div style={{ width:48, height:48, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                          <div className="text-white">
                             {project.icon}
                           </div>
-                          <div>
-                            <h3 className="text-xl font-semibold text-gray-900">{project.name}</h3>
-                            <p className="text-gray-800">{project.description}</p>
-                            <div className="flex items-center gap-2 mt-2">
-                              <span className="text-sm text-gray-800">Timeline: {project.timeline}</span>
-                              <span className="text-gray-800">•</span>
-                              <span className="text-sm text-gray-800">Investment: ${project.investment}M</span>
-                            </div>
-                          </div>
                         </div>
-                        <div className="flex flex-col gap-2">
-                          <Badge variant="outline" className={getPriorityColor(project.priority)}>
-                            {project.priority.toUpperCase()}
-                          </Badge>
-                          <Badge variant="outline" className={getStageColor(project.stage)}>
-                            {project.stage.toUpperCase()}
-                          </Badge>
-                          <div className="text-right">
-                            <div className="text-sm text-gray-800">Potential</div>
-                            <div className="text-lg font-bold text-gray-900">{project.potential}%</div>
+                        <div>
+                          <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY }}>{project.name}</h3>
+                          <p style={{ color: "#4B5563", fontSize: 14, marginTop: 4 }}>{project.description}</p>
+                          <div className="flex items-center gap-4 mt-4">
+                            <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>Timeline: {project.timeline}</span>
+                            <div style={{ width: 4, height: 4, background: "#E8E4DC", borderRadius: "full" }} />
+                            <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>Investment: ${project.investment}M</span>
                           </div>
                         </div>
                       </div>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      {/* Impact Metrics */}
-                      <div className="grid grid-cols-4 gap-4">
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Efficiency</span>
-                            <span className="text-blue-400 font-medium">{project.impact.efficiency}%</span>
-                          </div>
-                          <Progress value={project.impact.efficiency} className="h-2" />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Cost Impact</span>
-                            <span className="text-emerald-400 font-medium">{project.impact.cost}%</span>
-                          </div>
-                          <Progress value={project.impact.cost} className="h-2" />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Revenue</span>
-                            <span className="text-purple-400 font-medium">{project.impact.revenue}%</span>
-                          </div>
-                          <Progress value={project.impact.revenue} className="h-2" />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Risk</span>
-                            <span className="text-orange-400 font-medium">{project.impact.risk}%</span>
-                          </div>
-                          <Progress value={project.impact.risk} className="h-2" />
+                      <div className="flex flex-col items-end gap-2">
+                        <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: project.priority === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: project.priority === 'critical' ? '#ef4444' : GOLD, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                          {project.priority}
+                        </span>
+                        <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: project.stage === 'development' ? 'rgba(43,138,110,0.12)' : 'rgba(0,0,0,0.05)', color: project.stage === 'development' ? TEAL : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                          {project.stage}
+                        </span>
+                        <div className="text-right mt-2">
+                          <div style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Potential</div>
+                          <div style={{ fontSize: 20, fontWeight: 700, color: NAVY }}>{project.potential}%</div>
                         </div>
                       </div>
+                    </div>
 
-                      {/* Team and Milestones */}
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <Users className="h-4 w-4 text-blue-400" />
-                            Project Team
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.team.map((member, index) => (
-                              <Badge key={index} variant="outline" className="bg-gray-50 text-gray-800 border-gray-600">
-                                {member}
-                              </Badge>
-                            ))}
-                          </div>
+                    <div className="grid grid-cols-4 gap-6 mb-8">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Efficiency</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: NAVY }}>{project.impact.efficiency}%</span>
                         </div>
-                        
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-purple-400" />
-                            Key Milestones
-                          </h4>
-                          <div className="space-y-2">
-                            {project.milestones.slice(0, 2).map((milestone, index) => (
-                              <div key={index} className="flex items-center justify-between text-sm">
-                                <span className="text-gray-800">{milestone.name}</span>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-gray-800">{milestone.date}</span>
-                                  <Badge 
-                                    variant="outline" 
-                                    className={
-                                      milestone.status === 'completed' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                                      milestone.status === 'in-progress' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
-                                      'bg-gray-500/20 text-gray-800 border-gray-500/30'
-                                    }
-                                  >
-                                    {milestone.status}
-                                  </Badge>
-                                </div>
+                        <Progress value={project.impact.efficiency} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': NAVY } as any} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Cost Impact</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>{project.impact.cost}%</span>
+                        </div>
+                        <Progress value={project.impact.cost} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': TEAL } as any} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Revenue</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: GOLD }}>{project.impact.revenue}%</span>
+                        </div>
+                        <Progress value={project.impact.revenue} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': GOLD } as any} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Risk</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: project.impact.risk > 30 ? "#ef4444" : TEAL }}>{project.impact.risk}%</span>
+                        </div>
+                        <Progress value={project.impact.risk} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': project.impact.risk > 30 ? "#ef4444" : TEAL } as any} />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-8 border-t border-[#E8E4DC]">
+                      <div>
+                        <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 16 }}>Project Team</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.team.map((member, index) => (
+                            <Badge key={index} variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] bg-white">
+                              {member}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 16 }}>Key Milestones</h4>
+                        <div className="space-y-3">
+                          {project.milestones.slice(0, 2).map((milestone, index) => (
+                            <div key={index} className="flex items-center justify-between text-sm">
+                              <span style={{ color: "#4B5563" }}>{milestone.name}</span>
+                              <div className="flex items-center gap-3">
+                                <span style={{ color: "#6B7280", fontSize: 12 }}>{milestone.date}</span>
+                                <span style={{ display:"inline-flex", alignItems:"center", background: milestone.status === 'completed' ? 'rgba(43,138,110,0.12)' : 'rgba(201,168,76,0.12)', color: milestone.status === 'completed' ? TEAL : GOLD, fontSize:8, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"2px 8px" }}>
+                                  {milestone.status}
+                                </span>
                               </div>
-                            ))}
-                          </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
+                    </div>
 
-                      <div className="flex gap-3 pt-4 border-t border-gray-200">
-                        <Button size="sm" variant="outline" className="flex-1">
-                          <Eye className="h-4 w-4 mr-2" />
-                          View Details
-                        </Button>
-                        <Button size="sm" variant="outline" className="flex-1">
-                          <BarChart3 className="h-4 w-4 mr-2" />
-                          Analytics
-                        </Button>
-                        <Button size="sm" className="flex-1 bg-purple-600 hover:bg-purple-700">
-                          <Rocket className="h-4 w-4 mr-2" />
-                          Accelerate
-                        </Button>
-                      </div>
-                    </CardContent>
+                    <div className="flex gap-3 pt-8 mt-8 border-t border-[#E8E4DC]">
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                        <Eye className="h-4 w-4 mr-2" />
+                        Details
+                      </Button>
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                        <BarChart3 className="h-4 w-4 mr-2" />
+                        Analytics
+                      </Button>
+                      <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45]">
+                        <Rocket className="h-4 w-4 mr-2" />
+                        Accelerate
+                      </Button>
+                    </div>
                   </Card>
                 ))}
               </div>
 
               {/* AI Recommendations */}
-              <Card className="border-indigo-500/30 bg-indigo-950/30 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-indigo-300">
-                    <Brain className="h-5 w-5" />
-                    AI Innovation Recommendations
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-500/30">
-                      <p className="text-purple-300 font-medium mb-2">Priority Alignment</p>
-                      <p className="text-purple-700 text-sm">Focus on AI-Powered Process Automation and Predictive Market Intelligence for maximum ROI in Q1-Q2.</p>
-                    </div>
-                    <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-500/30">
-                      <p className="text-blue-300 font-medium mb-2">Resource Optimization</p>
-                      <p className="text-blue-800 text-sm">Cross-project synergies identified: AI/ML expertise can accelerate both automation and market intelligence initiatives.</p>
-                    </div>
-                    <div className="p-4 bg-emerald-950/30 rounded-lg border border-emerald-500/30">
-                      <p className="text-emerald-300 font-medium mb-2">Breakthrough Opportunity</p>
-                      <p className="text-emerald-200 text-sm">Quantum-Resistant Security shows potential for industry disruption - consider fast-track development with additional resources.</p>
-                    </div>
+              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Nova Analysis</span>
+                </div>
+                <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Innovation <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Priority Alignment</p>
+                    <p style={{ fontSize: 14, color: "#4B5563" }}>Focus on AI-Powered Process Automation and Predictive Market Intelligence for maximum ROI in Q1-Q2.</p>
                   </div>
-                </CardContent>
-              </Card>
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: 24, background: "#fff" }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 8 }}>Resource Optimization</p>
+                    <p style={{ fontSize: 14, color: "#4B5563" }}>Cross-project synergies identified: AI/ML expertise can accelerate both automation and market intelligence initiatives.</p>
+                  </div>
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 8 }}>Breakthrough Opportunity</p>
+                    <p style={{ fontSize: 14, color: "#4B5563" }}>Quantum-Resistant Security shows potential for industry disruption - consider fast-track development with additional resources.</p>
+                  </div>
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
         </div>

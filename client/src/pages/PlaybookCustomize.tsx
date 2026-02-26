@@ -371,7 +371,7 @@ const IDEA_PHASES = [
     label: 'IDENTIFY', 
     tagline: 'Build Your Depth Chart',
     description: 'Define stakeholders, dependencies, and governance before situations arise',
-    color: 'bg-blue-500',
+    color: 'bg-[#0A0F2E]',
     sections: ['basic', 'stakeholders', 'dependencies', 'governance', 'geographic', 'readiness']
   },
   { 
@@ -379,7 +379,7 @@ const IDEA_PHASES = [
     label: 'DETECT', 
     tagline: 'Monitor Signals',
     description: 'Configure triggers and risk thresholds for early warning',
-    color: 'bg-amber-500',
+    color: 'bg-[#C9A84C]',
     sections: ['triggers', 'risk', 'compliance']
   },
   { 
@@ -387,7 +387,7 @@ const IDEA_PHASES = [
     label: 'EXECUTE', 
     tagline: 'Execute Response',
     description: 'Define execution steps, escalation paths, budget, and communications',
-    color: 'bg-green-500',
+    color: 'bg-[#2B8A6E]',
     sections: ['steps', 'escalation', 'budget', 'communications']
   },
   { 
@@ -395,7 +395,7 @@ const IDEA_PHASES = [
     label: 'ADVANCE', 
     tagline: 'Review the Film',
     description: 'Track success metrics and capture business impact',
-    color: 'bg-purple-500',
+    color: 'bg-[#DFC178]',
     sections: ['metrics', 'impact']
   }
 ];
@@ -563,10 +563,10 @@ export default function PlaybookCustomize() {
   };
 
   const PHASE_BADGES: Record<string, { label: string; color: string }> = {
-    identify: { label: 'I', color: 'bg-blue-500' },
-    detect: { label: 'D', color: 'bg-amber-500' },
-    execute: { label: 'E', color: 'bg-green-500' },
-    advance: { label: 'A', color: 'bg-purple-500' },
+    identify: { label: 'I', color: 'bg-[#0A0F2E]' },
+    detect: { label: 'D', color: 'bg-[#C9A84C]' },
+    execute: { label: 'E', color: 'bg-[#2B8A6E]' },
+    advance: { label: 'A', color: 'bg-[#DFC178]' },
   };
   
   const SECTION_TO_PHASE: Record<string, string> = {
@@ -604,6 +604,15 @@ export default function PlaybookCustomize() {
     );
   };
   
+  const NAVY = "#0A0F2E";
+  const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   if (isLoading && !isCreateMode) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900">

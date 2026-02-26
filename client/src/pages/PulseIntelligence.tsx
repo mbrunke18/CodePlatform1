@@ -30,7 +30,14 @@ import {
   Building2,
   Users,
   Cpu,
-  Scale
+  Scale,
+  Play,
+  Settings,
+  PlusCircle,
+  BarChart3,
+  PieChart,
+  Rocket,
+  UserCheck
 } from 'lucide-react';
 import { BrandStamp } from "@/components/BrandStamp";
 
@@ -80,11 +87,17 @@ interface FeedSummary {
   nextScanTime: string;
 }
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const urgencyConfig: Record<string, { color: string; bg: string; border: string; icon: JSX.Element }> = {
-  critical: { color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/30', icon: <AlertTriangle className="h-4 w-4" /> },
-  high: { color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30', icon: <Zap className="h-4 w-4" /> },
-  medium: { color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30', icon: <Activity className="h-4 w-4" /> },
-  low: { color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30', icon: <Eye className="h-4 w-4" /> },
+  critical: { color: 'text-red-500', bg: 'bg-red-500/12', border: 'border-red-500/30', icon: <AlertTriangle className="h-4 w-4" /> },
+  high: { color: `text-[${GOLD}]`, bg: `bg-[${GOLD}]/12`, border: `border-[${GOLD}]/30`, icon: <Zap className="h-4 w-4" /> },
+  medium: { color: `text-[${TEAL}]`, bg: `bg-[${TEAL}]/12`, border: `border-[${TEAL}]/30`, icon: <Activity className="h-4 w-4" /> },
+  low: { color: 'text-gray-500', bg: 'bg-gray-500/12', border: 'border-gray-500/30', icon: <Eye className="h-4 w-4" /> },
 };
 
 const categoryIcons: Record<string, JSX.Element> = {
@@ -177,110 +190,87 @@ export default function PulseIntelligence() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-b min-h-screen">
+      <div className="bg-white min-h-screen">
         {/* ROI Value Context */}
         <div className="max-w-[1600px] mx-auto px-6 pt-6">
-          <Card className="bg-indigo-50 dark:bg-indigo-950/20 border-indigo-300 dark:border-indigo-700" data-testid="pulse-roi-context">
-            <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
-                <Brain className="h-5 w-5 text-indigo-600" />
+          <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }} data-testid="pulse-roi-context">
+            <div className="flex items-center gap-4">
+              <div style={{ width:32, height:32, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Brain className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div className="font-semibold text-indigo-900 dark:text-indigo-100 text-sm">How Pulse Saves You Money</div>
-                <div className="text-xs text-indigo-700 dark:text-indigo-300">Detects market shifts and competitive threats 4 weeks ahead, preventing $1.5M+ in missed strategic windows</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Pulse Saves You Money</div>
+                <div style={{ fontSize: 14, color: "#6B7280" }}>Detects market shifts and competitive threats 4 weeks ahead, preventing $1.5M+ in missed strategic windows</div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         {/* Command Center Header */}
-        <div className=" border-b border-indigo-500/20">
-          <div className="max-w-[1600px] mx-auto px-6 py-5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                    <Brain className="h-7 w-7 text-gray-900" />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-gray-200 animate-pulse" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Signal-to-Action Intelligence</h1>
-                  <p className="text-gray-800 text-sm">AI-powered threat detection, analysis, and strategic response orchestration</p>
-                </div>
-                <OnboardingTrigger pageId="pulse-intelligence" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
+        <div style={{ background: NAVY, padding: "48px", position: "relative", overflow: "hidden", margin: "24px", borderRadius: 8 }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-6">
+              <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Brain className="h-10 w-10 text-[#C9A84C]" />
               </div>
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
-                  <Radio className="h-3.5 w-3.5 text-emerald-400 animate-pulse" />
-                  <span className="text-xs font-medium text-emerald-400">SCANNING {summary?.dataPointsMonitored || 0} DATA POINTS</span>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Signal Intelligence</span>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-indigo-500/10 border border-indigo-500/30 rounded-full">
-                  <Radar className="h-3.5 w-3.5 text-indigo-400" />
-                  <span className="text-xs font-medium text-indigo-400">{summary?.signalCategories || 0} SIGNAL CATEGORIES</span>
-                </div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
+                  Signal-to-Action <em style={{ fontStyle: "italic", color: "#DFC178" }}>Intelligence</em>
+                </h1>
+                <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>AI-powered threat detection, analysis, and strategic response orchestration</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:TEAL, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(43,138,110,0.3)" }}>
+                SCANNING {summary?.dataPointsMonitored || 0} DATA POINTS
+              </div>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(201,168,76,0.12)", color:GOLD, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(201,168,76,0.3)" }}>
+                {summary?.signalCategories || 0} CATEGORIES
               </div>
             </div>
           </div>
         </div>
 
         {/* Executive Summary Bar */}
-        <div className="border-b border-gray-200">
-          <div className="max-w-[1600px] mx-auto px-6 py-3">
-            <div className="grid grid-cols-5 gap-4">
-              <div className="flex items-center gap-3 px-4 py-2 bg-red-500/5 border border-red-500/20 rounded-lg">
-                <AlertTriangle className="h-5 w-5 text-red-400" />
-                <div>
-                  <div className="text-xl font-bold text-red-400">{summary?.criticalSignals || 0}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-red-400/70">Critical Signals</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-2 bg-amber-500/5 border border-amber-500/20 rounded-lg">
-                <Clock className="h-5 w-5 text-amber-400" />
-                <div>
-                  <div className="text-xl font-bold text-amber-400">{summary?.pendingDecisions || 0}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-amber-400/70">Awaiting Decision</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-2 bg-emerald-500/5 border border-emerald-500/20 rounded-lg">
-                <CheckCircle className="h-5 w-5 text-emerald-400" />
-                <div>
-                  <div className="text-xl font-bold text-emerald-400">{summary?.approvedActions || 0}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-emerald-400/70">Actions Approved</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-2 bg-rose-500/5 border border-rose-500/20 rounded-lg">
-                <DollarSign className="h-5 w-5 text-rose-400" />
-                <div>
-                  <div className="text-xl font-bold text-rose-400">{formatCurrency(summary?.totalRevenueAtRisk || 0)}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-rose-400/70">Revenue at Risk</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 px-4 py-2 bg-blue-500/5 border border-blue-500/20 rounded-lg">
-                <Brain className="h-5 w-5 text-blue-400" />
-                <div>
-                  <div className="text-xl font-bold text-blue-400">{Math.round((summary?.avgConfidence || 0) * 100)}%</div>
-                  <div className="text-[10px] uppercase tracking-wider text-blue-400/70">AI Confidence</div>
-                </div>
-              </div>
-            </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", background:"#F8F7F4", borderBottom:"1px solid #E8E4DC", margin: "0 24px" }}>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize:32, fontWeight:600, color:"#ef4444", lineHeight:1 }}>{summary?.criticalSignals || 0}</div>
+            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Critical</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize:32, fontWeight:600, color:GOLD, lineHeight:1 }}>{summary?.pendingDecisions || 0}</div>
+            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Pending</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize:32, fontWeight:600, color:TEAL, lineHeight:1 }}>{summary?.approvedActions || 0}</div>
+            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Approved</div>
+          </div>
+          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize:32, fontWeight:600, color:"#ef4444", lineHeight:1 }}>{formatCurrency(summary?.totalRevenueAtRisk || 0)}</div>
+            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>At Risk</div>
+          </div>
+          <div style={{ padding:24 }}>
+            <div style={{ ...CG, fontSize:32, fontWeight:600, color:NAVY, lineHeight:1 }}>{Math.round((summary?.avgConfidence || 0) * 100)}%</div>
+            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Confidence</div>
           </div>
         </div>
 
-        {/* Three-Panel Layout: Signal Feed | AI Analysis | Decision & Cost */}
-        <div className="max-w-[1600px] mx-auto px-6 py-5">
-          <div className="grid grid-cols-12 gap-5 min-h-[700px]">
+        {/* Three-Panel Layout */}
+        <div className="max-w-[1600px] mx-auto px-6 py-8">
+          <div className="grid grid-cols-12 gap-8 min-h-[700px]">
 
             {/* LEFT: Signal Feed */}
-            <div className="col-span-3 space-y-2">
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">Live Signal Feed</h2>
-                <BrandStamp variant="dual" size="md" className="mb-8" />
-                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-[10px]">
-                  {feed.length} Active
-                </Badge>
+            <div className="col-span-3 space-y-4">
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: GOLD }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Live Signals</span>
               </div>
-              <div className="space-y-2 max-h-[calc(100vh-340px)] overflow-y-auto pr-1">
+              <div className="space-y-3 max-h-[calc(100vh-400px)] overflow-y-auto pr-2 custom-scrollbar">
                 {feed.map((item) => {
                   const urg = urgencyConfig[item.urgency] || urgencyConfig.medium;
                   const isSelected = (selected?.id === item.id);
@@ -289,39 +279,36 @@ export default function PulseIntelligence() {
                     <button
                       key={item.id}
                       onClick={() => setSelectedSignal(item.id)}
-                      className={`w-full text-left p-3 rounded-lg border transition-all ${
+                      className={`w-full text-left p-4 border transition-all ${
                         isSelected 
-                          ? 'bg-indigo-500/10 border-indigo-500/40 ring-1 ring-indigo-500/20' 
-                          : 'bg-white border-gray-200 hover:border-slate-700/50 hover:bg-slate-800/30'
+                          ? `bg-[#F8F7F4] border-[${NAVY}] shadow-sm` 
+                          : 'bg-white border-[#E8E4DC] hover:border-[#6B7280]'
                       }`}
                     >
-                      <div className="flex items-start gap-2.5">
-                        <div className={`p-1.5 rounded-md ${urg.bg} ${urg.color} mt-0.5 flex-shrink-0`}>
-                          {categoryIcons[item.signalCategory] || <Activity className="h-5 w-5" />}
+                      <div className="flex items-start gap-4">
+                        <div style={{ width:32, height:32, background: isSelected ? NAVY : "#F8F7F4", display:"flex", alignItems:"center", justifyContent:"center", flexShrink: 0 }}>
+                          <div className={isSelected ? "text-white" : "text-[#0A0F2E]"}>
+                            {categoryIcons[item.signalCategory] || <Activity className="h-5 w-5" />}
+                          </div>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Badge variant="outline" className={`${urg.bg} ${urg.color} ${urg.border} text-[9px] px-1.5 py-0`}>
-                              {item.urgency.toUpperCase()}
-                            </Badge>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span style={{ display:"inline-flex", alignItems:"center", background: item.urgency === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: item.urgency === 'critical' ? '#ef4444' : GOLD, fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                              {item.urgency}
+                            </span>
                             {status === 'approved' && (
-                              <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-[9px] px-1.5 py-0">
+                              <span style={{ display:"inline-flex", alignItems:"center", background: "rgba(43,138,110,0.12)", color: TEAL, fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                                 APPROVED
-                              </Badge>
+                              </span>
                             )}
                           </div>
-                          <h3 className="text-sm font-medium text-gray-900 truncate">{item.signalName}</h3>
+                          <h3 style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>{item.signalName}</h3>
                           <div className="flex items-center gap-2 mt-1">
-                            <span className="text-[10px] text-gray-800">{timeAgo(item.detectedAt)}</span>
-                            <span className="text-[10px] text-gray-800">·</span>
-                            <span className="text-[10px] text-gray-800 truncate">{item.signalSource.split('+')[0].trim()}</span>
-                          </div>
-                          <div className="mt-1.5 flex items-center gap-1.5">
-                            <DollarSign className="h-3 w-3 text-rose-400/70" />
-                            <span className="text-[11px] text-rose-400/70 font-medium">{formatCurrency(item.costOfInaction.revenueAtRisk)} at risk</span>
+                            <span style={{ fontSize: 10, color: "#6B7280" }}>{timeAgo(item.detectedAt)}</span>
+                            <span style={{ fontSize: 10, color: "#E8E4DC" }}>|</span>
+                            <span style={{ fontSize: 10, color: "#6B7280" }} className="truncate">{item.signalSource.split('+')[0].trim()}</span>
                           </div>
                         </div>
-                        <ChevronRight className={`h-4 w-4 flex-shrink-0 mt-1 transition-colors ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
                       </div>
                     </button>
                   );
@@ -330,273 +317,117 @@ export default function PulseIntelligence() {
             </div>
 
             {/* CENTER: AI Analysis */}
-            <div className="col-span-5 space-y-4">
+            <div className="col-span-5 space-y-6">
               {selected && (
                 <>
-                  <div className="flex items-center justify-between mb-1">
-                    <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">AI Analysis</h2>
-                    <div className="flex items-center gap-2">
-                      <Brain className="h-3.5 w-3.5 text-indigo-400" />
-                      <span className="text-xs text-indigo-400 font-medium">{Math.round(selected.aiAnalysis.confidence * 100)}% confidence</span>
-                    </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Analysis</span>
                   </div>
 
                   {/* Signal Detail */}
-                  <Card className="bg-white border-gray-200">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${urgencyConfig[selected.urgency]?.bg} ${urgencyConfig[selected.urgency]?.color}`}>
-                          {categoryIcons[selected.signalCategory] || <Activity className="h-6 w-6" />}
-                        </div>
-                        <div>
-                          <CardTitle className="text-lg text-gray-900">{selected.signalName}</CardTitle>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-gray-800">{selected.signalSource}</span>
-                            <span className="text-xs text-gray-800">·</span>
-                            <span className="text-xs text-gray-800">Detected {timeAgo(selected.detectedAt)}</span>
-                          </div>
+                  <div style={{ border: "1px solid #E8E4DC", padding: 32, background: "#fff" }}>
+                    <div className="flex items-center gap-6 mb-8">
+                      <div style={{ width:64, height:64, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                        <div className="text-white">
+                          {categoryIcons[selected.signalCategory] || <Activity className="h-8 w-8" />}
                         </div>
                       </div>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <div className="grid grid-cols-2 gap-2 mb-4">
-                        {selected.dataPoints.map((dp, i) => (
-                          <div key={i} className="p-2.5 bg-gray-50 rounded-md border border-gray-200">
-                            <div className="text-[10px] text-gray-800 uppercase tracking-wider">{dp.label}</div>
-                            <div className="text-sm text-gray-900 font-medium mt-0.5">{dp.value}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* AI Summary */}
-                  <Card className="bg-indigo-950/30 border-indigo-500/20">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="p-2 bg-indigo-500/10 rounded-lg flex-shrink-0">
-                          <Brain className="h-5 w-5 text-indigo-400" />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-1.5">AI Assessment</div>
-                          <p className="text-sm text-gray-800 leading-relaxed">{selected.aiAnalysis.summary}</p>
-                          <div className="mt-3 p-2.5 bg-indigo-500/10 rounded-md border border-indigo-500/20">
-                            <div className="flex items-center gap-2">
-                              <Zap className="h-4 w-4 text-indigo-400 flex-shrink-0" />
-                              <span className="text-xs font-semibold text-indigo-300">KEY INSIGHT:</span>
-                            </div>
-                            <p className="text-sm text-indigo-200 mt-1">{selected.aiAnalysis.keyInsight}</p>
-                          </div>
-                          <div className="flex items-center gap-4 mt-3">
-                            <div className="flex items-center gap-1.5">
-                              <Timer className="h-3.5 w-3.5 text-amber-400" />
-                              <span className="text-xs text-amber-300">{selected.aiAnalysis.timeToImpact}</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <Activity className="h-3.5 w-3.5 text-gray-800" />
-                              <span className="text-xs text-gray-800">Risk: {selected.aiAnalysis.riskLevel}</span>
-                            </div>
-                          </div>
+                      <div>
+                        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY }}>{selected.signalName}</h2>
+                        <div className="flex items-center gap-4 mt-2">
+                          <span style={{ fontSize: 12, color: "#6B7280" }}>Source: {selected.signalSource}</span>
+                          <span style={{ fontSize: 12, color: "#E8E4DC" }}>|</span>
+                          <span style={{ fontSize: 12, color: "#6B7280" }}>Detected {timeAgo(selected.detectedAt)}</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Recommended Playbook */}
-                  <Card className="bg-emerald-950/20 border-emerald-500/20">
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <Target className="h-4 w-4 text-emerald-400" />
-                          <span className="text-xs font-semibold text-emerald-300 uppercase tracking-wider">Recommended Playbook</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      {selected.dataPoints.map((dp, i) => (
+                        <div key={i} style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>{dp.label}</div>
+                          <div style={{ fontSize: 16, fontWeight: 600, color: NAVY }}>{dp.value}</div>
                         </div>
-                        <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 text-[10px]">
-                          {selected.recommendedPlaybook.estimatedDuration}
-                        </Badge>
-                      </div>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="p-2 bg-emerald-500/10 rounded-lg">
-                          <Building2 className="h-5 w-5 text-emerald-400" />
-                        </div>
-                        <div>
-                          <h4 className="text-gray-900 font-semibold">{selected.recommendedPlaybook.name}</h4>
-                          <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-xs text-gray-800">{selected.recommendedPlaybook.domain}</span>
-                            <span className="text-xs text-gray-800">·</span>
-                            <span className="text-xs text-gray-800">{selected.recommendedPlaybook.tasksCount} pre-configured tasks</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-1.5">
-                        {selected.recommendedPlaybook.keyActions.map((action, i) => (
-                          <div key={i} className="flex items-center gap-2 text-sm">
-                            <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                              <span className="text-[10px] text-emerald-400 font-bold">{i + 1}</span>
-                            </div>
-                            <span className="text-gray-800">{action}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </>
-              )}
-            </div>
-
-            {/* RIGHT: Cost of Inaction & Decision Panel */}
-            <div className="col-span-4 space-y-4">
-              {selected && (
-                <>
-                  <div className="flex items-center justify-between mb-1">
-                    <h2 className="text-sm font-semibold text-gray-800 uppercase tracking-wider">Executive Decision</h2>
-                    <div className="flex items-center gap-1.5">
-                      <Timer className="h-3.5 w-3.5 text-amber-400" />
-                      <span className="text-xs text-amber-400 font-medium">SLA: {timeUntil(selected.slaDeadline)}</span>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Cost of Inaction */}
-                  <Card className="bg-rose-950/20 border-rose-500/20">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-semibold text-rose-300 uppercase tracking-wider flex items-center gap-2">
-                        <AlertTriangle className="h-4 w-4" />
-                        Cost of Inaction
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="p-3 bg-rose-500/10 rounded-lg border border-rose-500/20 text-center">
-                        <div className="text-3xl font-bold text-rose-400">{formatCurrency(selected.costOfInaction.revenueAtRisk)}</div>
-                        <div className="text-xs text-rose-300/70 uppercase tracking-wider mt-1">Revenue at Risk</div>
+                  {/* AI Summary */}
+                  <div style={{ background: NAVY, padding: 32, border: "1px solid #E8E4DC" }}>
+                    <div className="flex items-start gap-6">
+                      <div style={{ width:40, height:40, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Brain className="h-5 w-5 text-[#C9A84C]" />
                       </div>
-                      <div className="space-y-2">
-                        <div className="p-2.5 bg-gray-50 rounded-md border border-gray-200">
-                          <div className="flex items-center gap-2 mb-1">
-                            <TrendingUp className="h-3.5 w-3.5 text-rose-400" />
-                            <span className="text-[10px] text-rose-300/70 uppercase tracking-wider">Pipeline Impact</span>
-                          </div>
-                          <p className="text-sm text-gray-900">{selected.costOfInaction.pipelineImpact}</p>
+                      <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                          <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>AI Assessment</span>
                         </div>
-                        <div className="p-2.5 bg-gray-50 rounded-md border border-gray-200">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Clock className="h-3.5 w-3.5 text-amber-400" />
-                            <span className="text-[10px] text-amber-300/70 uppercase tracking-wider">Time Decay</span>
-                          </div>
-                          <p className="text-sm text-gray-900">{selected.costOfInaction.timeDecay}</p>
-                        </div>
-                        <div className="p-2.5 bg-gray-50 rounded-md border border-gray-200">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Target className="h-3.5 w-3.5 text-orange-400" />
-                            <span className="text-[10px] text-orange-300/70 uppercase tracking-wider">Competitor Advantage</span>
-                          </div>
-                          <p className="text-sm text-gray-900">{selected.costOfInaction.competitorAdvantage}</p>
+                        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", lineHeight: 1.6, ...CG }}>{selected.aiAnalysis.summary}</p>
+                        <div style={{ marginTop: 24, padding: 20, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                          <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Key Strategic Insight</p>
+                          <p style={{ fontSize: 15, color: "#DFC178", fontStyle: "italic" }}>{selected.aiAnalysis.keyInsight}</p>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Signal Flow Visualization */}
-                  <Card className="bg-white border-gray-200">
-                    <CardContent className="p-4">
-                      <div className="text-xs font-semibold text-gray-800 uppercase tracking-wider mb-3">Signal-to-Action Flow</div>
-                      <div className="space-y-0">
-                        {[
-                          { label: 'Signal Detected', detail: timeAgo(selected.detectedAt), icon: <Radio className="h-3.5 w-3.5" />, color: 'text-blue-400', bgColor: 'bg-blue-500/20', done: true },
-                          { label: 'AI Analysis Complete', detail: `${Math.round(selected.aiAnalysis.confidence * 100)}% confidence`, icon: <Brain className="h-3.5 w-3.5" />, color: 'text-indigo-400', bgColor: 'bg-indigo-500/20', done: true },
-                          { label: 'Playbook Matched', detail: selected.recommendedPlaybook.name, icon: <Target className="h-3.5 w-3.5" />, color: 'text-emerald-400', bgColor: 'bg-emerald-500/20', done: true },
-                          { label: 'Executive Decision', detail: getDecisionStatus(selected) === 'approved' ? 'Approved' : 'Awaiting approval', icon: <Shield className="h-3.5 w-3.5" />, color: getDecisionStatus(selected) === 'approved' ? 'text-emerald-400' : 'text-amber-400', bgColor: getDecisionStatus(selected) === 'approved' ? 'bg-emerald-500/20' : 'bg-amber-500/20', done: getDecisionStatus(selected) === 'approved' },
-                          { label: 'Execution Started', detail: getDecisionStatus(selected) === 'approved' ? 'In progress' : 'Pending decision', icon: <Zap className="h-3.5 w-3.5" />, color: getDecisionStatus(selected) === 'approved' ? 'text-emerald-400' : 'text-gray-800', bgColor: getDecisionStatus(selected) === 'approved' ? 'bg-emerald-500/20' : 'bg-gray-50', done: getDecisionStatus(selected) === 'approved' },
-                        ].map((step, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <div className="flex flex-col items-center">
-                              <div className={`w-7 h-7 rounded-full ${step.bgColor} flex items-center justify-center ${step.color}`}>
-                                {step.done ? <CheckCircle className="h-3.5 w-3.5" /> : step.icon}
-                              </div>
-                              {i < 4 && <div className={`w-0.5 h-6 ${step.done ? 'bg-emerald-500/30' : 'bg-gray-50'}`} />}
-                            </div>
-                            <div className="pb-4">
-                              <div className={`text-xs font-medium ${step.done ? 'text-gray-900' : 'text-gray-800'}`}>{step.label}</div>
-                              <div className="text-[10px] text-gray-800">{step.detail}</div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Decision Buttons */}
-                  <Card className={`border ${getDecisionStatus(selected) === 'approved' ? 'bg-emerald-950/20 border-emerald-500/30' : getDecisionStatus(selected) === 'rejected' ? 'bg-white border-gray-200' : 'bg-amber-950/20 border-amber-500/30'}`}>
-                    <CardContent className="p-4">
-                      {getDecisionStatus(selected) === 'approved' ? (
-                        <div className="text-center py-2">
-                          <CheckCircle className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
-                          <div className="text-sm font-semibold text-emerald-300">Playbook Activated</div>
-                          <div className="text-xs text-emerald-400/70 mt-1">Execution in progress - {selected.recommendedPlaybook.tasksCount} tasks deployed</div>
-                          <Link to="/execute/tasks">
-                            <Button size="sm" className="mt-3 bg-emerald-600 hover:bg-emerald-700 text-gray-900">
-                              View Execution Progress <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
-                            </Button>
-                          </Link>
-                        </div>
-                      ) : getDecisionStatus(selected) === 'rejected' ? (
-                        <div className="text-center py-2">
-                          <XCircle className="h-8 w-8 text-gray-800 mx-auto mb-2" />
-                          <div className="text-sm font-semibold text-gray-800">Action Declined</div>
-                          <div className="text-xs text-gray-800 mt-1">Signal monitored - no playbook activation</div>
-                          <Button size="sm" variant="outline" className="mt-3 border-gray-200 text-gray-800" onClick={() => handleDecision(selected.id, 'pending')}>
-                            Reconsider
-                          </Button>
-                        </div>
-                      ) : (
-                        <div>
-                          <div className="text-xs font-semibold text-amber-300 uppercase tracking-wider mb-3 text-center">Decision Required</div>
-                          <div className="grid grid-cols-2 gap-3">
-                            <Button 
-                              className="bg-emerald-600 hover:bg-emerald-700 text-gray-900 font-semibold"
-                              onClick={() => handleDecision(selected.id, 'approved')}
-                            >
-                              <CheckCircle className="h-4 w-4 mr-2" />
-                              Activate Playbook
-                            </Button>
-                            <Button 
-                              variant="outline" 
-                              className="border-slate-600 text-gray-800 hover:bg-slate-800"
-                              onClick={() => handleDecision(selected.id, 'rejected')}
-                            >
-                              <XCircle className="h-4 w-4 mr-2" />
-                              Decline
-                            </Button>
-                          </div>
-                          <p className="text-[10px] text-amber-400/50 text-center mt-2">
-                            Human-AI Partnership: AI recommends, you decide
-                          </p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </>
               )}
             </div>
-          </div>
 
-          {/* Bottom: Value Proposition Bar */}
-          <div className="mt-6 p-4 bg-gradient-to-r bg-indigo-50 border border-indigo-500/20 rounded-xl">
-            <div className="grid grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-2xl font-bold text-gray-900">{summary?.dataPointsMonitored || 0}+</div>
-                <div className="text-xs text-gray-800">Data Points Monitored 24/7</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">12 min</div>
-                <div className="text-xs text-gray-800">Signal to Execution</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gray-900">170</div>
-                <div className="text-xs text-gray-800">Pre-Built Strategic Playbooks</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-emerald-400">{formatCurrency(summary?.totalRevenueAtRisk || 0)}</div>
-                <div className="text-xs text-gray-800">Revenue Protected This Quarter</div>
-              </div>
+            {/* RIGHT: Decision & Playbook */}
+            <div className="col-span-4 space-y-6">
+              {selected && (
+                <>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Action Required</span>
+                  </div>
+
+                  {/* Cost of Inaction */}
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #ef4444", padding: 24, background: "#fff" }}>
+                    <div className="flex items-center gap-2 mb-4">
+                      <AlertTriangle className="h-4 w-4 text-red-500" />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ef4444" }}>Cost of Inaction</span>
+                    </div>
+                    <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#ef4444", lineHeight: 1 }}>{formatCurrency(selected.costOfInaction.revenueAtRisk)}</div>
+                    <p style={{ fontSize: 12, color: "#6B7280", marginTop: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Revenue At Risk · {selected.costOfInaction.timeDecay} Decay</p>
+                  </div>
+
+                  {/* Recommended Playbook */}
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-2">
+                        <Target className="h-4 w-4 text-[#2B8A6E]" />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Recommended Playbook</span>
+                      </div>
+                      <span style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>{selected.recommendedPlaybook.estimatedDuration}</span>
+                    </div>
+                    <h4 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{selected.recommendedPlaybook.name}</h4>
+                    <p style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>{selected.recommendedPlaybook.domain} • {selected.recommendedPlaybook.tasksCount} Automated Tasks</p>
+                    
+                    <div className="mt-6 space-y-3">
+                      {selected.recommendedPlaybook.keyActions.map((action, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div style={{ width: 16, height: 16, background: NAVY, color: GOLD, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 2, flexShrink: 0 }}>{i + 1}</div>
+                          <span style={{ fontSize: 13, color: "#4B5563" }}>{action}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 flex gap-3">
+                      <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={() => handleDecision(selected.id, 'approved')}>
+                        <CheckCircle className="h-4 w-4 mr-2" />
+                        Authorize
+                      </Button>
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]" onClick={() => handleDecision(selected.id, 'dismissed')}>
+                        <XCircle className="h-4 w-4 mr-2" />
+                        Dismiss
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

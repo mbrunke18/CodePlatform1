@@ -822,17 +822,3 @@ function ProductTour() {
     </div>
   );
 }
-
-// Wrap component with navigation
-const ProductTourWithNav = () => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <StandardNav />
-      <div className="flex-1 bg-white">
-        <ProductTour />
-      </div>
-    </div>
-  );
-};
-
-export default ProductTourWithNav;

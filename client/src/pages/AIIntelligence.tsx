@@ -21,6 +21,11 @@ import {
   Globe
 } from 'lucide-react';
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function AIIntelligence() {
   const [activeModule, setActiveModule] = useState('pulse');
 
@@ -34,7 +39,7 @@ export default function AIIntelligence() {
       accuracy: 92,
       lastUpdate: '2 minutes ago',
       insights: 847,
-      color: 'from-blue-500 to-cyan-500'
+      color: '#0A0F2E'
     },
     {
       id: 'flux',
@@ -45,7 +50,7 @@ export default function AIIntelligence() {
       accuracy: 89,
       lastUpdate: '5 minutes ago',
       insights: 623,
-      color: 'from-green-500 to-emerald-500'
+      color: '#0A0F2E'
     },
     {
       id: 'prism',
@@ -56,7 +61,7 @@ export default function AIIntelligence() {
       accuracy: 94,
       lastUpdate: '1 minute ago',
       insights: 1203,
-      color: 'from-purple-500 to-indigo-500'
+      color: '#0A0F2E'
     },
     {
       id: 'echo',
@@ -67,7 +72,7 @@ export default function AIIntelligence() {
       accuracy: 87,
       lastUpdate: '3 minutes ago',
       insights: 456,
-      color: 'from-orange-500 to-red-500'
+      color: '#0A0F2E'
     },
     {
       id: 'nova',
@@ -78,7 +83,7 @@ export default function AIIntelligence() {
       accuracy: 91,
       lastUpdate: '4 minutes ago',
       insights: 329,
-      color: 'from-yellow-500 to-orange-500'
+      color: '#0A0F2E'
     }
   ];
 
@@ -92,27 +97,30 @@ export default function AIIntelligence() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <div className="flex-1 page-background overflow-auto bg-white">
         <div className="p-8">
           {/* AI Intelligence Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <Brain className="w-7 h-7 text-gray-900" />
+              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Brain className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">AI Intelligence Center</h1>
-                <p className="text-gray-800 dark:text-gray-300">Advanced Organizational Intelligence & Predictive Analytics</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Predictive Intelligence</span>
+                </div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>AI Intelligence Center</h1>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 <Activity className="w-3 h-3 mr-1" />
                 All Modules Active
-              </Badge>
-              <Badge className="bg-blue-600 text-gray-900">
+              </div>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 Enterprise AI
-              </Badge>
+              </div>
             </div>
           </div>
 
@@ -122,33 +130,33 @@ export default function AIIntelligence() {
               <Card 
                 key={module.id} 
                 className={`cursor-pointer transition-all duration-300 hover:shadow-lg ${
-                  activeModule === module.id ? 'ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/20' : 'bg-white dark:bg-slate-800'
-                }`}
+                  activeModule === module.id ? 'ring-2 ring-[#C9A84C] bg-white' : 'bg-white'
+                } border border-[#E8E4DC] p-0`}
                 onClick={() => setActiveModule(module.id)}
                 data-testid={`card-ai-module-${module.id}`}
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <div className={`p-2 rounded-lg bg-gradient-to-r ${module.color} text-gray-900`}>
-                      {module.icon}
+                    <div style={{ width: 32, height: 32, background: module.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      {module.icon && <div className="text-white">{module.icon}</div>}
                     </div>
-                    <Badge variant={module.status === 'active' ? 'default' : 'secondary'}>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: module.status === 'active' ? "rgba(43,138,110,0.12)" : "rgba(0,0,0,0.05)", color: module.status === 'active' ? "#3BAF8A" : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                       {module.status}
-                    </Badge>
+                    </div>
                   </div>
-                  <CardTitle className="text-lg">{module.name}</CardTitle>
+                  <CardTitle style={{ ...CG, fontSize: "1.25rem", color: NAVY }}>{module.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-800 dark:text-gray-400 mb-4">{module.description}</p>
+                  <p className="text-sm text-gray-600 mb-4">{module.description}</p>
                   
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-800 dark:text-gray-400">Accuracy</span>
-                      <span className="font-semibold text-emerald-700">{module.accuracy}%</span>
+                      <span className="text-gray-500">Accuracy</span>
+                      <span className="font-semibold text-[#2B8A6E]">{module.accuracy}%</span>
                     </div>
                     <Progress value={module.accuracy} className="h-2" />
                     
-                    <div className="flex items-center justify-between text-xs text-gray-800">
+                    <div className="flex items-center justify-between text-xs text-gray-400">
                       <span>Last Update: {module.lastUpdate}</span>
                       <span>{module.insights} insights</span>
                     </div>
@@ -160,27 +168,27 @@ export default function AIIntelligence() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Real-time Intelligence Feed */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Zap className="w-5 h-5 mr-2 text-yellow-500" />
+            <Card className="border border-[#E8E4DC] bg-white p-6">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle style={{ ...CG, display: "flex", alignItems: "center", color: NAVY }}>
+                  <Zap className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Real-time Intelligence Feed
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-0">
                 <div className="space-y-4">
                   {realtimeInsights.map((insight, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                      <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
-                      <div className="flex-1 page-background">
-                        <p className="text-sm text-gray-700 dark:text-gray-300">{insight}</p>
-                        <p className="text-xs text-gray-800 mt-1">AI Confidence: 95%</p>
+                    <div key={index} className="flex items-start space-x-3 p-3 bg-[#F8F7F4] rounded-lg">
+                      <CheckCircle className="w-4 h-4 mt-0.5 text-[#2B8A6E] flex-shrink-0" />
+                      <div className="flex-1">
+                        <p className="text-sm text-gray-700">{insight}</p>
+                        <p className="text-xs text-gray-500 mt-1">AI Confidence: 95%</p>
                       </div>
-                      <Clock className="w-3 h-3 text-gray-800" />
+                      <Clock className="w-3 h-3 text-gray-400" />
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-4" variant="outline" data-testid="button-view-all-insights">
+                <Button className="w-full mt-4" variant="outline" style={{ border:"1.5px solid #E8E4DC", color:"#0A0F2E", background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-view-all-insights">
                   View All Intelligence Reports
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -188,50 +196,50 @@ export default function AIIntelligence() {
             </Card>
 
             {/* AI Module Controls */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Target className="w-5 h-5 mr-2 text-blue-500" />
+            <Card className="border border-[#E8E4DC] bg-white p-6">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle style={{ ...CG, display: "flex", alignItems: "center", color: NAVY }}>
+                  <Target className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                   AI Intelligence Controls
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 bg-gradient-to-r .section-background dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Active Intelligence Module</h4>
-                  <p className="text-sm text-gray-800 dark:text-gray-400 mb-3">
+              <CardContent className="px-0 space-y-4">
+                <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                  <h4 style={{ ...CG, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Active Intelligence Module</h4>
+                  <p className="text-sm text-gray-600 mb-3">
                     {aiModules.find(m => m.id === activeModule)?.description}
                   </p>
                   <div className="flex space-x-2">
-                    <Button size="sm" data-testid="button-run-analysis">
+                    <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-run-analysis">
                       Run Deep Analysis
                     </Button>
-                    <Button size="sm" variant="outline" data-testid="button-export-insights">
+                    <Button size="sm" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-export-insights">
                       Export Insights
                     </Button>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Button className="w-full justify-start" variant="outline" data-testid="button-predictive-analytics">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-predictive-analytics">
                     <BarChart3 className="w-4 h-4 mr-2" />
                     Run Predictive Analytics
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" data-testid="button-scenario-modeling">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-scenario-modeling">
                     <Globe className="w-4 h-4 mr-2" />
                     AI Scenario Modeling
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" data-testid="button-decision-intelligence">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-decision-intelligence">
                     <Target className="w-4 h-4 mr-2" />
                     Decision Intelligence
                   </Button>
                 </div>
 
-                <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                  <div className="flex items-center text-yellow-800 dark:text-yellow-200">
+                <div className="mt-6 p-4 bg-[#FFF9E5] border border-[#FBE39A] rounded-lg">
+                  <div className="flex items-center text-[#856404]">
                     <AlertTriangle className="w-4 h-4 mr-2" />
                     <span className="text-sm font-medium">AI Intelligence Recommendation</span>
                   </div>
-                  <p className="text-xs text-yellow-700 dark:text-yellow-300 mt-1">
+                  <p className="text-xs text-[#856404] mt-1">
                     Based on current data, recommend immediate focus on crisis response protocol optimization and cross-functional team collaboration enhancement.
                   </p>
                 </div>

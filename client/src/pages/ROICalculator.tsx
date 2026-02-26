@@ -1,33 +1,10 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
-import { 
-  Calculator,
-  Clock,
-  DollarSign,
-  TrendingUp,
-  Users,
-  AlertTriangle,
-  ArrowRight,
-  Building2,
-  Zap,
-  Target,
-  Shield,
-  Download,
-  Send,
-  CheckCircle2,
-  BarChart3
-} from 'lucide-react';
 import { useLocation } from 'wouter';
-import { useToast } from '@/hooks/use-toast';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
-import { PageHero } from "@/components/layout/PageHero";
+import PageLayout from '@/components/layout/PageLayout';
 
 interface ROIInputs {
   companySize: string;
@@ -59,7 +36,6 @@ const COMPANY_SIZES: Record<string, { employees: number; label: string }> = {
 
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
-  const { toast } = useToast();
   
   const [inputs, setInputs] = useState<ROIInputs>({
     companySize: 'enterprise',
@@ -73,67 +49,38 @@ export default function ROICalculator() {
 
   const calculations = useMemo(() => {
     const industryData = INDUSTRY_MULTIPLIERS[inputs.industry];
-    const companyData = COMPANY_SIZES[inputs.companySize];
     
     // Current state calculations
-    const hourlyExecutiveCost = inputs.avgExecutiveSalary / 2080; // Annual salary / working hours
+    const hourlyExecutiveCost = inputs.avgExecutiveSalary / 2080;
     const currentCoordinationHoursPerEvent = inputs.avgResponseTimeHours;
     const currentTotalExecutiveHoursPerYear = currentCoordinationHoursPerEvent * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     const currentCoordinationCostPerYear = currentTotalExecutiveHoursPerYear * hourlyExecutiveCost;
     
-    // Revenue at risk from slow response (percentage of annual revenue)
-    const revenueAtRiskPercentage = 0.005 * industryData.riskMultiplier; // 0.5% base, adjusted by industry
+    // Revenue at risk from slow response
+    const revenueAtRiskPercentage = 0.005 * industryData.riskMultiplier;
     const revenueAtRiskPerEvent = inputs.annualRevenue * revenueAtRiskPercentage / inputs.strategicEventsPerYear;
     
     // Regulatory/compliance risk cost
     const complianceRiskCost = inputs.annualRevenue * 0.001 * industryData.regulatoryFactor;
     
-    // With Execution OS (12-minute decision, 90-minute full execution)
-    const mResponseTimeHours = 0.2 + 1.5; // 12 min decision + 90 min execution = ~1.7 hours
+    // With Execution OS
+    const mResponseTimeHours = 0.2 + 1.5; 
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
-    const mCoordinationCostPerYear = mTotalExecutiveHoursPerYear * hourlyExecutiveCost;
     
     // Savings calculations
-    const coordinationCostSavings = currentCoordinationCostPerYear - mCoordinationCostPerYear;
-    const timeSavedHoursPerYear = currentTotalExecutiveHoursPerYear - mTotalExecutiveHoursPerYear;
-    const revenueProtected = revenueAtRiskPerEvent * inputs.strategicEventsPerYear * 0.7; // 70% of at-risk revenue protected
-    const complianceRiskReduction = complianceRiskCost * 0.6; // 60% reduction in compliance risk
+    const coordinationCostSavings = currentCoordinationCostPerYear - (mTotalExecutiveHoursPerYear * hourlyExecutiveCost);
+    const revenueProtected = revenueAtRiskPerEvent * inputs.strategicEventsPerYear * 0.7;
+    const complianceRiskReduction = complianceRiskCost * 0.6;
     
-    // Total annual value
     const totalAnnualValue = coordinationCostSavings + revenueProtected + complianceRiskReduction;
-    
-    // Platform investment assumption
-    const assumedAnnualInvestment = 500000; // $500K annual platform cost
-    const roi = ((totalAnnualValue - assumedAnnualInvestment) / assumedAnnualInvestment) * 100;
-    const paybackMonths = (assumedAnnualInvestment / totalAnnualValue) * 12;
-    
-    // Time metrics
     const speedImprovement = Math.round(inputs.avgResponseTimeHours / mResponseTimeHours);
     
     return {
-      // Current state
-      currentCoordinationCostPerYear,
-      currentTotalExecutiveHoursPerYear,
-      revenueAtRiskPerEvent,
-      
-      // With Execution OS
-      mCoordinationCostPerYear,
-      mTotalExecutiveHoursPerYear,
-      
-      // Savings
-      coordinationCostSavings,
-      timeSavedHoursPerYear,
-      revenueProtected,
-      complianceRiskReduction,
       totalAnnualValue,
-      
-      // ROI
-      roi,
-      paybackMonths,
       speedImprovement,
-      
-      // Raw
-      hourlyExecutiveCost,
+      coordinationCostSavings,
+      revenueProtected,
+      complianceRiskReduction
     };
   }, [inputs]);
 
@@ -144,485 +91,166 @@ export default function ROICalculator() {
     return `$${value.toFixed(0)}`;
   };
 
-  const formatNumber = (value: number) => {
-    return value.toLocaleString();
-  };
-
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <StandardNav />
-      <PageHero
-        eyebrow="ROI Calculator"
-        title="Calculate Your Strategic Velocity ROI"
-        subtitle="See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line."
-        size="md"
-      />
-      
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-6xl mx-auto">
-          {/* BAI Report Stat Highlight */}
-          <div className="mb-12">
-            <Card className="bg-gradient-to-r from-white to-slate-50 border-[#C9A84C]/30 max-w-2xl mx-auto shadow-sm">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-center gap-8 flex-wrap">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-600">10.3%</div>
-                    <p className="text-sm text-gray-700">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-500">Organizations that improved agility</p>
-                  </div>
-                  <div className="text-2xl text-gray-400">vs</div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-red-500">3.5%</div>
-                    <p className="text-sm text-gray-700">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-500">Organizations that didn't improve</p>
-                  </div>
-                </div>
-                <p className="text-center text-sm text-gray-600 mt-4">
-                  Source: 2025 Business Agility Report (244 organizations)
-                </p>
-              </CardContent>
-            </Card>
+    <PageLayout>
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section style={{ background: "#0A0F2E", padding: "64px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Value Engineering</span>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            </div>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+              Quantify the <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Cost of Inaction</em>
+            </h1>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              Calculate the potential savings by compressing your organization's response time from 
+              industry average (72 hours) to Execution OS standard (12 minutes).
+            </p>
           </div>
+        </section>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Input Section */}
-            <div className="space-y-6">
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Building2 className="h-5 w-5 text-blue-400" />
-                    Your Organization
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Company Size</Label>
-                    <Select 
-                      value={inputs.companySize} 
-                      onValueChange={(v) => setInputs({...inputs, companySize: v})}
-                    >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-company-size">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Object.entries(COMPANY_SIZES).map(([key, data]) => (
-                          <SelectItem key={key} value={key}>{data.label}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+        <section className="py-16 px-12">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-12 gap-12">
+              {/* Calculator Inputs */}
+              <div className="lg:col-span-7 space-y-8">
+                <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "32px", background: "#fff" }}>
+                  <h2 className="text-xl font-bold text-slate-900 mb-6 uppercase tracking-wider">Organizational Profile</h2>
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <Label className="text-gray-800">Company Size</Label>
+                      <Select 
+                        value={inputs.companySize} 
+                        onValueChange={(v) => setInputs({...inputs, companySize: v})}
+                      >
+                        <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Object.entries(COMPANY_SIZES).map(([key, data]) => (
+                            <SelectItem key={key} value={key}>{data.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Industry</Label>
-                    <Select 
-                      value={inputs.industry} 
-                      onValueChange={(v) => setInputs({...inputs, industry: v})}
-                    >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-industry">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {Object.entries(INDUSTRY_MULTIPLIERS).map(([key, data]) => (
-                          <SelectItem key={key} value={key}>{data.label}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                    <div className="space-y-2">
+                      <Label className="text-gray-800">Industry</Label>
+                      <Select 
+                        value={inputs.industry} 
+                        onValueChange={(v) => setInputs({...inputs, industry: v})}
+                      >
+                        <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Object.entries(INDUSTRY_MULTIPLIERS).map(([key, data]) => (
+                            <SelectItem key={key} value={key}>{data.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Annual Revenue</Label>
-                    <div className="flex items-center gap-4">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <Label className="text-slate-700 font-semibold uppercase tracking-tighter text-xs">Annual Revenue (USD)</Label>
+                        <span className="font-mono text-slate-900">{formatCurrency(inputs.annualRevenue)}</span>
+                      </div>
                       <Slider
                         value={[Math.log10(inputs.annualRevenue)]}
                         onValueChange={([v]) => setInputs({...inputs, annualRevenue: Math.pow(10, v)})}
                         min={8} // $100M
                         max={11} // $100B
                         step={0.1}
-                        className="flex-1"
-                        data-testid="slider-revenue"
+                        className="py-4"
                       />
-                      <span className="text-gray-900 font-mono w-20 text-right">
-                        {formatCurrency(inputs.annualRevenue)}
-                      </span>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
 
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <AlertTriangle className="h-5 w-5 text-amber-400" />
-                    Current State
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Strategic Events per Year</Label>
-                    <div className="text-xs text-gray-800 mb-2">
-                      Crises, competitive responses, market entries, M&A, regulatory changes
-                    </div>
-                    <div className="flex items-center gap-4">
+                <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", padding: "32px", background: "#fff" }}>
+                  <h2 className="text-xl font-bold text-slate-900 mb-6 uppercase tracking-wider">Execution Variables</h2>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <Label className="text-slate-700 font-semibold uppercase tracking-tighter text-xs">Events Per Year</Label>
+                        <span className="font-mono text-slate-900">{inputs.strategicEventsPerYear}</span>
+                      </div>
                       <Slider
                         value={[inputs.strategicEventsPerYear]}
                         onValueChange={([v]) => setInputs({...inputs, strategicEventsPerYear: v})}
                         min={4}
                         max={100}
                         step={1}
-                        className="flex-1"
-                        data-testid="slider-events"
+                        className="py-4"
                       />
-                      <span className="text-gray-900 font-mono w-16 text-right">
-                        {inputs.strategicEventsPerYear}
-                      </span>
                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Average Response Time (Hours)</Label>
-                    <div className="text-xs text-gray-800 mb-2">
-                      Time from event detection to coordinated response execution
-                    </div>
-                    <div className="flex items-center gap-4">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <Label className="text-slate-700 font-semibold uppercase tracking-tighter text-xs">Current Response Time (Hours)</Label>
+                        <span className="font-mono text-slate-900">{inputs.avgResponseTimeHours}h</span>
+                      </div>
                       <Slider
                         value={[inputs.avgResponseTimeHours]}
                         onValueChange={([v]) => setInputs({...inputs, avgResponseTimeHours: v})}
                         min={24}
                         max={408} // 17 days
                         step={1}
-                        className="flex-1"
-                        data-testid="slider-response-time"
+                        className="py-4"
                       />
-                      <span className="text-gray-900 font-mono w-20 text-right">
-                        {inputs.avgResponseTimeHours}h
-                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Results Sidebar */}
+              <div className="lg:col-span-5">
+                <div style={{ background: "#0A0F2E", padding: "40px", position: "sticky", top: "24px" }} className="text-white">
+                  <div className="text-center mb-8">
+                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-2">Estimated Annual Value</p>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 56, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>
+                      {formatCurrency(calculations.totalAnnualValue)}
+                    </div>
+                    <p className="text-teal-400 text-xs font-bold mt-2 uppercase tracking-widest">
+                      Through {calculations.speedImprovement}X Response Compression
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 mb-8">
+                    <div className="flex justify-between py-3 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Coordination Efficiency</span>
+                      <span className="font-mono text-white">{formatCurrency(calculations.coordinationCostSavings)}</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Revenue Risk Protected</span>
+                      <span className="font-mono text-white">{formatCurrency(calculations.revenueProtected)}</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Compliance Risk Reduced</span>
+                      <span className="font-mono text-white">{formatCurrency(calculations.complianceRiskReduction)}</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Response Time Reduction</span>
+                      <span className="font-mono text-teal-400 font-bold">72h → 12m</span>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Executives Involved per Event</Label>
-                    <div className="flex items-center gap-4">
-                      <Slider
-                        value={[inputs.executivesInvolved]}
-                        onValueChange={([v]) => setInputs({...inputs, executivesInvolved: v})}
-                        min={3}
-                        max={20}
-                        step={1}
-                        className="flex-1"
-                        data-testid="slider-executives"
-                      />
-                      <span className="text-gray-900 font-mono w-16 text-right">
-                        {inputs.executivesInvolved}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label className="text-gray-800">Average Executive Compensation</Label>
-                    <div className="flex items-center gap-4">
-                      <Slider
-                        value={[inputs.avgExecutiveSalary]}
-                        onValueChange={([v]) => setInputs({...inputs, avgExecutiveSalary: v})}
-                        min={200000}
-                        max={1000000}
-                        step={25000}
-                        className="flex-1"
-                        data-testid="slider-salary"
-                      />
-                      <span className="text-gray-900 font-mono w-20 text-right">
-                        {formatCurrency(inputs.avgExecutiveSalary)}
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Results Section */}
-            <div className="space-y-6">
-              {/* ROI Summary Card */}
-              <Card className="bg-gradient-to-br   border-green-500/30">
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <div className="text-6xl font-bold text-green-400 mb-2">
-                      {calculations.roi.toFixed(0)}%
-                    </div>
-                    <div className="text-xl text-gray-800">Annual ROI</div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mb-6">
-                    <div className="bg-gray-50 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {formatCurrency(calculations.totalAnnualValue)}
-                      </div>
-                      <div className="text-sm text-gray-800">Total Annual Value</div>
-                    </div>
-                    <div className="bg-gray-50 rounded-lg p-4 text-center">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {calculations.paybackMonths.toFixed(1)} mo
-                      </div>
-                      <div className="text-sm text-gray-800">Payback Period</div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center">
-                    <Button 
-                      size="lg"
-                      className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-                      onClick={() => setLocation('/contact')}
-                      data-testid="button-get-proposal"
-                    >
-                      Get Custom Proposal
-                      <ArrowRight className="h-5 w-5 ml-2" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Executive Summary */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Target className="h-5 w-5 text-cyan-400" />
-                    Your Custom ROI Analysis
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-800 leading-relaxed">
-                    Based on your profile as a {COMPANY_SIZES[inputs.companySize]?.label} organization in the {INDUSTRY_MULTIPLIERS[inputs.industry]?.label} sector, Execution OS can deliver an estimated {formatCurrency(calculations.totalAnnualValue)} in annual value by reducing strategic response time from {inputs.avgResponseTimeHours} hours to under 2 hours — a {calculations.speedImprovement}X improvement in execution velocity that directly impacts competitive positioning and risk exposure.
+                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-6 text-lg" onClick={() => setLocation('/contact')}>
+                    Request Full ROI Analysis
+                  </Button>
+                  <p className="text-center text-white/30 text-[10px] mt-4 leading-relaxed uppercase tracking-tighter">
+                    ROI based on industry standard productivity costs and revenue-at-risk models.
                   </p>
-
-                  <div className="space-y-3 mt-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-800">Save {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} executive hours annually — equivalent to {Math.round(calculations.timeSavedHoursPerYear / 2080)} full-time senior leaders redeployed to growth initiatives</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-800">Protect {formatCurrency(calculations.revenueProtected)} in at-risk revenue through faster competitive and market response</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-800">Achieve full payback in {calculations.paybackMonths.toFixed(1)} months with a {calculations.roi.toFixed(0)}% first-year ROI</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-800">Reduce compliance exposure by {formatCurrency(calculations.complianceRiskReduction)} through automated regulatory response coordination</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3 pt-4 border-t border-gray-200">
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-slate-600 text-gray-800 hover:bg-slate-800"
-                      onClick={() => toast({ title: "Coming Soon", description: "Report download will be available shortly." })}
-                    >
-                      <Download className="h-4 w-4 mr-2" />
-                      Download Report
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="flex-1 border-slate-600 text-gray-800 hover:bg-slate-800"
-                      onClick={() => toast({ title: "Coming Soon", description: "Share functionality will be available shortly." })}
-                    >
-                      <Send className="h-4 w-4 mr-2" />
-                      Share Results
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Speed Improvement */}
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                      <Zap className="h-5 w-5 text-amber-400" />
-                      Speed Improvement
-                    </h3>
-                    <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-lg px-4">
-                      {calculations.speedImprovement}X Faster
-                    </Badge>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-red-950/30 rounded-lg p-4 border border-red-500/20">
-                      <div className="text-sm text-red-400 mb-1">Current Response</div>
-                      <div className="text-2xl font-bold text-gray-900">{inputs.avgResponseTimeHours} hours</div>
-                    </div>
-                    <div className="bg-green-950/30 rounded-lg p-4 border border-green-500/20">
-                      <div className="text-sm text-green-400 mb-1">With Execution OS</div>
-                      <div className="text-2xl font-bold text-gray-900">~2 hours</div>
-                      <div className="text-xs text-gray-800">12 min decision + 90 min execution</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Value Breakdown */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-blue-400" />
-                    Value Breakdown
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <Clock className="h-5 w-5 text-blue-400" />
-                      <div>
-                        <div className="text-gray-900">Executive Time Saved</div>
-                        <div className="text-xs text-gray-800">
-                          {formatNumber(Math.round(calculations.timeSavedHoursPerYear))} hours/year
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-lg font-bold text-green-400">
-                      {formatCurrency(calculations.coordinationCostSavings)}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <DollarSign className="h-5 w-5 text-green-400" />
-                      <div>
-                        <div className="text-gray-900">Revenue Protected</div>
-                        <div className="text-xs text-gray-800">
-                          From faster competitive response
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-lg font-bold text-green-400">
-                      {formatCurrency(calculations.revenueProtected)}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <Shield className="h-5 w-5 text-amber-400" />
-                      <div>
-                        <div className="text-gray-900">Compliance Risk Reduction</div>
-                        <div className="text-xs text-gray-800">
-                          Faster regulatory response
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-lg font-bold text-green-400">
-                      {formatCurrency(calculations.complianceRiskReduction)}
-                    </div>
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-4 mt-4">
-                    <div className="flex items-center justify-between">
-                      <div className="text-lg text-gray-900 font-semibold">Total Annual Value</div>
-                      <div className="text-2xl font-bold text-green-400">
-                        {formatCurrency(calculations.totalAnnualValue)}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Industry Benchmarks */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-purple-400" />
-                    Industry Benchmarks
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b border-gray-200">
-                          <th className="text-left text-gray-800 pb-3 pr-4">Metric</th>
-                          <th className="text-center text-gray-800 pb-3 px-2">Your Org</th>
-                          <th className="text-center text-gray-800 pb-3 px-2">Industry Avg</th>
-                          <th className="text-center text-green-400 pb-3 pl-2">Execution OS Target</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-800">
-                        <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-gray-900">Avg Response Time</td>
-                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{inputs.avgResponseTimeHours}h</td>
-                          <td className="py-3 px-2 text-center text-amber-400">72h</td>
-                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">~2h</td>
-                        </tr>
-                        <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-gray-900">Coordination Cost</td>
-                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatCurrency(calculations.currentCoordinationCostPerYear)}</td>
-                          <td className="py-3 px-2 text-center text-amber-400">{formatCurrency(2400000)}</td>
-                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatCurrency(calculations.mCoordinationCostPerYear)}</td>
-                        </tr>
-                        <tr className="border-b border-gray-200">
-                          <td className="py-3 pr-4 text-gray-900">Events Per Year</td>
-                          <td className="py-3 px-2 text-center font-semibold">{inputs.strategicEventsPerYear}</td>
-                          <td className="py-3 px-2 text-center text-amber-400">18</td>
-                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">All covered</td>
-                        </tr>
-                        <tr>
-                          <td className="py-3 pr-4 text-gray-900">Executive Hours Wasted</td>
-                          <td className="py-3 px-2 text-center text-red-400 font-semibold">{formatNumber(Math.round(calculations.currentTotalExecutiveHoursPerYear))}h</td>
-                          <td className="py-3 px-2 text-center text-amber-400">{formatNumber(10368)}h</td>
-                          <td className="py-3 pl-2 text-center text-green-400 font-semibold">{formatNumber(Math.round(calculations.mTotalExecutiveHoursPerYear))}h</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <div className="text-xs text-gray-800 text-center">
-                * Calculations are estimates based on industry benchmarks and your inputs.
-                Actual results may vary. Contact us for a detailed analysis.
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Bottom CTA Section */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-r  border-blue-500/30 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/10 to-purple-500/5" />
-              <CardContent className="p-10 text-center relative z-10">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">
-                  Ready to See This in Action?
-                </h2>
-                <p className="text-lg text-gray-800 mb-8 max-w-2xl mx-auto">
-                  Join our founding partner program and experience the strategic velocity difference firsthand.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-gray-900 px-8"
-                    onClick={() => setLocation('/contact')}
-                  >
-                    Start Your 90-Day Pilot
-                    <ArrowRight className="h-5 w-5 ml-2" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-blue-500/50 text-blue-300 hover:bg-blue-950/50 px-8"
-                    onClick={() => setLocation('/try-demo')}
-                  >
-                    Try the Live Demo
-                    <Zap className="h-5 w-5 ml-2" />
-                  </Button>
-                </div>
-
-                <p className="text-sm text-gray-800">
-                  Founding Partner Pilot: $75K, 100% credited to Year 1
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        </section>
       </div>
-      
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

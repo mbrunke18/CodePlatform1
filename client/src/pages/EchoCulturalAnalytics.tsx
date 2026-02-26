@@ -135,84 +135,71 @@ export default function EchoCulturalAnalytics() {
     }
   ];
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      blue: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-      purple: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
-      orange: 'text-orange-400 bg-orange-500/10 border-orange-500/30'
+      emerald: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
+      blue: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
+      purple: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
+      orange: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'excellent': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      case 'good': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
-      case 'warning': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
-      case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
+      case 'excellent': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
+      case 'good': return `bg-[${NAVY}]/12 text-[${NAVY}] border-[${NAVY}]/30`;
+      case 'warning': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'critical': return 'bg-red-500/12 text-red-500 border-red-500/30';
+      default: return 'bg-gray-500/12 text-gray-800 border-gray-500/30';
     }
   };
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-transparent p-6" data-testid="echo-cultural-analytics">
+      <div className="page-background min-h-screen bg-white p-6" data-testid="echo-cultural-analytics">
         <div className="max-w-7xl mx-auto space-y-8">
           
-          {/* Breadcrumb Navigation */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
-              <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
-                  <Home className="h-4 w-4" />
-                </Button>
-              </Link>
-              <span>/</span>
-              <span>AI Intelligence</span>
-              <span>/</span>
-              <span className="text-gray-900">Echo Cultural Analytics</span>
+          {/* ROI Value Context */}
+          <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }} data-testid="echo-roi-context">
+            <div className="flex items-center gap-4">
+              <div style={{ width:32, height:32, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Users className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Echo Saves You Money</div>
+                <div style={{ fontSize: 14, color: "#6B7280" }}>Prevents $2M+ culture crisis escalation costs through early detection and intervention</div>
+              </div>
             </div>
           </div>
 
-          {/* ROI Value Context - Tier 2 Enhancement */}
-          <Card className="mb-4 bg-teal-50 dark:bg-teal-950/20 border-teal-300 dark:border-teal-700" data-testid="echo-roi-context">
-            <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg">
-                <Users className="h-5 w-5 text-teal-600" />
-              </div>
-              <div>
-                <div className="font-semibold text-teal-900 dark:text-teal-100 text-sm">How Echo Saves You Money</div>
-                <div className="text-xs text-teal-700 dark:text-teal-300">Prevents $2M+ culture crisis escalation costs through early detection and intervention</div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* Header */}
-          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-gray-900 p-6 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <Users className="h-10 w-10" />
+          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 8 }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-6">
+                <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Users className="h-10 w-10 text-[${GOLD}]" />
+                </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="echo-title">
-                    Echo Cultural Analytics
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Cultural Intelligence</span>
+                  </div>
+                  <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
+                    Echo Cultural <em style={{ fontStyle: "italic", color: "#DFC178" }}>Analytics</em>
                   </h1>
-                  <p className="text-teal-100">Cultural intelligence and team dynamics assessment platform</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Cultural intelligence and team dynamics assessment platform</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="echo-cultural" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
-                <Link to="/">
-                  <Button variant="secondary" className="bg-teal-700 hover:bg-teal-800 text-teal-100 border-teal-600" data-testid="back-to-dashboard">
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <Badge variant="secondary" className="bg-teal-700 text-teal-100 border-teal-600" data-testid="ai-insights-badge">
-                  <Brain className="h-4 w-4 mr-2" />
-                  AI INSIGHTS
-                </Badge>
-                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-gray-900" data-testid="generate-report-button">
+              <div className="flex flex-wrap items-center gap-4">
+                <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }} data-testid="generate-report-button">
                   <BarChart3 className="h-4 w-4 mr-2" />
                   Culture Report
                 </Button>
@@ -221,196 +208,171 @@ export default function EchoCulturalAnalytics() {
           </div>
 
           <Tabs value={selectedAnalysis} onValueChange={setSelectedAnalysis} className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="overview" data-testid="tab-overview">Cultural Overview</TabsTrigger>
-              <TabsTrigger value="teams" data-testid="tab-teams">Team Dynamics</TabsTrigger>
-              <TabsTrigger value="insights" data-testid="tab-insights">AI Insights</TabsTrigger>
-              <TabsTrigger value="trends" data-testid="tab-trends">Trend Analysis</TabsTrigger>
+            <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC]">
+              <TabsTrigger value="overview" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Overview</TabsTrigger>
+              <TabsTrigger value="teams" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Teams</TabsTrigger>
+              <TabsTrigger value="insights" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Insights</TabsTrigger>
+              <TabsTrigger value="trends" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Trends</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="overview" className="space-y-6">
+            <TabsContent value="overview" className="space-y-6 mt-8">
               {/* Cultural Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {culturalMetrics.map((metric) => (
-                  <Card key={metric.id} className="border-gray-200 bg-white backdrop-blur-sm" data-testid={`metric-${metric.id}`}>
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between">
-                        <div className={`p-2 rounded-lg ${getColorClasses(metric.color)}`}>
+                  <Card key={metric.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={`metric-${metric.id}`}>
+                    <div className="flex items-center justify-between mb-4">
+                      <div style={{ width:40, height:40, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                        <div className="text-white">
                           {metric.icon}
                         </div>
-                        <Badge variant="outline" className={getStatusColor(metric.status)}>
-                          {metric.status.toUpperCase()}
-                        </Badge>
                       </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-gray-900">{metric.name}</h3>
-                          <span className={`text-sm font-medium ${metric.change >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                            {metric.change >= 0 ? '+' : ''}{metric.change}%
-                          </span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900">{metric.value}%</div>
-                        <Progress value={metric.value} className="h-2" />
-                        <p className="text-xs text-gray-800">{metric.description}</p>
-                        
-                        {/* Detailed Breakdown */}
-                        <div className="grid grid-cols-2 gap-2 text-xs">
-                          {Object.entries(metric.details).map(([key, value]) => (
-                            <div key={key} className="flex justify-between">
-                              <span className="text-gray-800 capitalize">{key}:</span>
-                              <span className="text-gray-900 font-medium">{value}%</span>
-                            </div>
-                          ))}
-                        </div>
+                      <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: metric.status === 'excellent' ? 'rgba(43,138,110,0.12)' : metric.status === 'warning' ? 'rgba(201,168,76,0.12)' : 'rgba(0,0,0,0.05)', color: metric.status === 'excellent' ? TEAL : metric.status === 'warning' ? GOLD : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                        {metric.status}
+                      </span>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{metric.name}</h3>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: metric.change >= 0 ? TEAL : "#ef4444" }}>
+                          {metric.change >= 0 ? '+' : ''}{metric.change}%
+                        </span>
                       </div>
-                    </CardContent>
+                      <div style={{ fontSize: 32, fontWeight: 600, color: NAVY, ...CG }}>{metric.value}%</div>
+                      <Progress value={metric.value} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': metric.status === 'excellent' ? TEAL : metric.status === 'warning' ? GOLD : NAVY } as any} />
+                      <p style={{ fontSize: 12, color: "#6B7280" }}>{metric.description}</p>
+                      
+                      {/* Detailed Breakdown */}
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-[#E8E4DC]">
+                        {Object.entries(metric.details).map(([key, value]) => (
+                          <div key={key} className="flex flex-col">
+                            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280" }}>{key}</span>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>{value}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </Card>
                 ))}
               </div>
 
               {/* Key Cultural Insights */}
-              <Card className="border-purple-500/30 bg-purple-950/30 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-purple-300">
-                    <Brain className="h-5 w-5" />
-                    Cultural Health Summary
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="p-4 bg-emerald-950/30 rounded-lg border border-emerald-500/30">
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="h-4 w-4 text-emerald-400" />
-                        <span className="font-medium text-emerald-300">Positive Trends</span>
-                      </div>
-                      <ul className="space-y-1 text-sm text-emerald-200">
-                        <li>• Innovation culture surging (+7.1%)</li>
-                        <li>• Employee engagement at 3-year high</li>
-                        <li>• Cross-team collaboration improving</li>
-                      </ul>
+              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Echo Summary</span>
+                </div>
+                <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>Cultural Health <em style={{ fontStyle: "italic", color: GOLD }}>Summary</em></h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <TrendingUp className="h-4 w-4 text-[${TEAL}]" />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Positive Trends</span>
                     </div>
-                    <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Target className="h-4 w-4 text-orange-400" />
-                        <span className="font-medium text-orange-300">Focus Areas</span>
-                      </div>
-                      <ul className="space-y-1 text-sm text-orange-200">
-                        <li>• Leadership trust needs attention</li>
-                        <li>• Operations team stress levels high</li>
-                        <li>• Communication transparency gaps</li>
-                      </ul>
-                    </div>
-                    <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-500/30">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Lightbulb className="h-4 w-4 text-blue-400" />
-                        <span className="font-medium text-blue-300">Recommendations</span>
-                      </div>
-                      <ul className="space-y-1 text-sm text-blue-800">
-                        <li>• Leadership visibility sessions</li>
-                        <li>• Operations workload review</li>
-                        <li>• Transparent decision processes</li>
-                      </ul>
-                    </div>
+                    <ul className="space-y-2">
+                      <li className="text-sm text-[#4B5563]">Innovation culture surging (+7.1%)</li>
+                      <li className="text-sm text-[#4B5563]">Employee engagement at 3-year high</li>
+                      <li className="text-sm text-[#4B5563]">Cross-team collaboration improving</li>
+                    </ul>
                   </div>
-                </CardContent>
-              </Card>
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Target className="h-4 w-4 text-[${GOLD}]" />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD }}>Focus Areas</span>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="text-sm text-[#4B5563]">Leadership trust needs attention</li>
+                      <li className="text-sm text-[#4B5563]">Operations team stress levels high</li>
+                      <li className="text-sm text-[#4B5563]">Communication transparency gaps</li>
+                    </ul>
+                  </div>
+                  <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: 24, background: "#fff" }}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Lightbulb className="h-4 w-4 text-[${NAVY}]" />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>Recommendations</span>
+                    </div>
+                    <ul className="space-y-2">
+                      <li className="text-sm text-[#4B5563]">Leadership visibility sessions</li>
+                      <li className="text-sm text-[#4B5563]">Operations workload review</li>
+                      <li className="text-sm text-[#4B5563]">Transparent decision processes</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </TabsContent>
 
-            <TabsContent value="teams" className="space-y-6">
-              {/* Team Dynamics Comparison */}
+            <TabsContent value="teams" className="space-y-6 mt-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {teamDynamics.map((team) => (
-                  <Card key={team.team} className="border-gray-200 bg-white backdrop-blur-sm" data-testid={`team-${team.team.toLowerCase()}`}>
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-blue-500/10">
-                            <Users className="h-5 w-5 text-blue-400" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-gray-900">{team.team} Team</h3>
-                            <p className="text-sm text-gray-800">{team.size} members</p>
-                          </div>
-                        </div>
-                        <Badge variant="outline" className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-                          {team.engagement}% ENGAGED
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Collaboration</span>
-                            <span className="text-emerald-400 font-medium">{team.collaboration}%</span>
-                          </div>
-                          <Progress value={team.collaboration} className="h-2" />
+                  <Card key={team.team} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={`team-${team.team.toLowerCase()}`}>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-4">
+                        <div style={{ width:40, height:40, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                          <Users className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Productivity</span>
-                            <span className="text-blue-400 font-medium">{team.productivity}%</span>
-                          </div>
-                          <Progress value={team.productivity} className="h-2" />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Retention</span>
-                            <span className="text-purple-400 font-medium">{team.retention}%</span>
-                          </div>
-                          <Progress value={team.retention} className="h-2" />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-sm mb-1">
-                            <span className="text-gray-800">Stress Level</span>
-                            <span className="text-orange-400 font-medium">{team.stress}%</span>
-                          </div>
-                          <Progress value={team.stress} className="h-2" />
+                          <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{team.team} Team</h3>
+                          <p style={{ fontSize: 12, color: "#6B7280" }}>{team.size} members</p>
                         </div>
                       </div>
-                      
-                      <div className="pt-3 border-t border-gray-200">
-                        <Button size="sm" variant="outline" className="w-full">
-                          <UserCheck className="h-4 w-4 mr-2" />
-                          Team Deep Dive
-                        </Button>
+                      <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(43,138,110,0.12)", color: TEAL, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                        {team.engagement}% ENGAGED
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Collaboration</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>{team.collaboration}%</span>
+                        </div>
+                        <Progress value={team.collaboration} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': TEAL } as any} />
                       </div>
-                    </CardContent>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Productivity</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: NAVY }}>{team.productivity}%</span>
+                        </div>
+                        <Progress value={team.productivity} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': NAVY } as any} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Retention</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: GOLD }}>{team.retention}%</span>
+                        </div>
+                        <Progress value={team.retention} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': GOLD } as any} />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase" }}>Stress Level</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: team.stress > 40 ? "#ef4444" : TEAL }}>{team.stress}%</span>
+                        </div>
+                        <Progress value={team.stress} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': team.stress > 40 ? "#ef4444" : TEAL } as any} />
+                      </div>
+                    </div>
+                    <div className="pt-6 mt-6 border-t border-[#E8E4DC]">
+                      <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                        <UserCheck className="h-4 w-4 mr-2" />
+                        Team Deep Dive
+                      </Button>
+                    </div>
                   </Card>
                 ))}
               </div>
             </TabsContent>
 
-            <TabsContent value="insights" className="space-y-6">
-              <Card className="border-gray-200 bg-white backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">AI-Powered Cultural Insights</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-center py-12">
-                    <Brain className="h-16 w-16 text-gray-800 mx-auto mb-4" />
-                    <p className="text-gray-800">Advanced cultural pattern analysis and predictive insights</p>
-                    <p className="text-sm text-gray-800 mt-2">AI-driven cultural transformation recommendations</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <TabsContent value="insights" className="mt-8">
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center" }}>
+                <Brain className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
+                <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>AI-Powered Cultural Insights</h3>
+                <p style={{ color: "#6B7280", marginTop: 8 }}>Advanced cultural pattern analysis and predictive insights arriving in Q1.</p>
+              </div>
             </TabsContent>
 
-            <TabsContent value="trends" className="space-y-6">
-              <Card className="border-gray-200 bg-white backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">Cultural Trend Analysis</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-center py-12">
-                    <PieChart className="h-16 w-16 text-gray-800 mx-auto mb-4" />
-                    <p className="text-gray-800">Historical cultural trends and future projections</p>
-                    <p className="text-sm text-gray-800 mt-2">Multi-dimensional cultural evolution tracking</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <TabsContent value="trends" className="mt-8">
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center" }}>
+                <PieChart className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
+                <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>Cultural Trend Analysis</h3>
+                <p style={{ color: "#6B7280", marginTop: 8 }}>Historical cultural trends and future projections arriving in Q1.</p>
+              </div>
             </TabsContent>
           </Tabs>
         </div>

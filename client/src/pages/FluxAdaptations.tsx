@@ -82,20 +82,26 @@ export default function FluxAdaptations() {
     }
   ];
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
+      case 'critical': return 'bg-red-500/20 text-red-500 border-red-500/30';
+      case 'high': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'medium': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
+      case 'low': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
       default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-      case 'planning': return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      case 'active': return `bg-[${TEAL}]/12 text-[${TEAL}] border-[${TEAL}]/30`;
+      case 'planning': return `bg-[${GOLD}]/12 text-[${GOLD}] border-[${GOLD}]/30`;
       case 'paused': return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
       default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
     }
@@ -107,198 +113,166 @@ export default function FluxAdaptations() {
 
   return (
     <PageLayout>
-    <div className="h-full bg-transparent p-4" data-testid="flux-adaptations">
-        <div className="w-full max-w-none mx-auto space-y-4 h-full overflow-hidden flex flex-col">
+      <div className="h-full bg-white" data-testid="flux-adaptations">
+        <div className="w-full max-w-7xl mx-auto py-12 px-6 space-y-8">
           
-          {/* Breadcrumb Navigation */}
-          <div className="mb-2 flex-shrink-0">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
-              <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
-                  <Home className="h-4 w-4" />
-                </Button>
-              </Link>
-              <span>/</span>
-              <span>AI Intelligence</span>
-              <span>/</span>
-              <span className="text-gray-900">Flux Adaptations</span>
-            </div>
-          </div>
-
-          {/* ROI Value Context - Tier 2 Enhancement */}
-          <Card className="mb-4 bg-blue-50 dark:bg-blue-950/20 border-blue-300 dark:border-blue-700 flex-shrink-0" data-testid="flux-roi-context">
-            <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                <Zap className="h-5 w-5 text-blue-800" />
+          {/* ROI Value Context */}
+          <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }} data-testid="flux-roi-context">
+            <div className="flex items-center gap-4">
+              <div style={{ width:32, height:32, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                <Zap className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div className="font-semibold text-blue-900 dark:text-blue-100 text-sm">How Flux Saves You Money</div>
-                <div className="text-xs text-blue-800 dark:text-blue-300">Catches competitive threats 3 weeks earlier than manual tracking, preventing $850K+ in market share losses</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Flux Saves You Money</div>
+                <div style={{ fontSize: 14, color: "#6B7280" }}>Catches competitive threats 3 weeks earlier than manual tracking, preventing $850K+ in market share losses</div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-gray-900 p-4 rounded-lg flex-shrink-0">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <TrendingUp className="h-10 w-10" />
+          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 8 }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-6">
+                <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <TrendingUp className="h-10 w-10 text-[${GOLD}]" />
+                </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="flux-title">
-                    Flux Adaptations
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Dynamic Adaptation</span>
+                  </div>
+                  <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
+                    Flux <em style={{ fontStyle: "italic", color: "#DFC178" }}>Adaptations</em>
                   </h1>
-                  <p className="text-blue-800">Dynamic adaptation strategies and change management intelligence</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Dynamic adaptation strategies and change management intelligence</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="flux-adaptations" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
-                <Link to="/">
-                  <Button variant="secondary" className="bg-blue-700 hover:bg-blue-800 text-blue-800 border-blue-600" data-testid="back-to-dashboard">
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <Badge variant="secondary" className="bg-blue-700 text-blue-800 border-blue-600" data-testid="ai-powered-badge">
-                  <Brain className="h-4 w-4 mr-2" />
-                  AI POWERED
-                </Badge>
-                <Button variant="secondary" className="bg-cyan-600 hover:bg-cyan-700 text-gray-900" data-testid="generate-strategy-button">
+              <div className="flex flex-wrap items-center gap-4">
+                <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }} data-testid="generate-strategy-button">
                   <Lightbulb className="h-4 w-4 mr-2" />
-                  Generate New Strategy
+                  Generate Strategy
                 </Button>
               </div>
             </div>
           </div>
 
-          <Tabs value={selectedStrategy} onValueChange={setSelectedStrategy} className="w-full flex-1 flex flex-col min-h-0">
-            <TabsList className="grid w-full grid-cols-4 flex-shrink-0">
-              <TabsTrigger value="active" data-testid="tab-active">Active Strategies</TabsTrigger>
-              <TabsTrigger value="planning" data-testid="tab-planning">In Planning</TabsTrigger>
-              <TabsTrigger value="all" data-testid="tab-all">All Strategies</TabsTrigger>
-              <TabsTrigger value="analytics" data-testid="tab-analytics">Analytics</TabsTrigger>
+          <Tabs value={selectedStrategy} onValueChange={setSelectedStrategy} className="w-full">
+            <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC]">
+              <TabsTrigger value="active" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Active</TabsTrigger>
+              <TabsTrigger value="planning" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Planning</TabsTrigger>
+              <TabsTrigger value="all" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">All</TabsTrigger>
+              <TabsTrigger value="analytics" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Analytics</TabsTrigger>
             </TabsList>
 
-            <TabsContent value={selectedStrategy} className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="mt-8">
               {selectedStrategy !== 'analytics' ? (
                 <>
-                  {/* Adaptation Strategies Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {filteredStrategies.map((strategy) => (
-                      <Card key={strategy.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-blue-500/30 transition-colors" data-testid={`strategy-${strategy.id}`}>
-                        <CardHeader>
-                          <div className="flex items-start justify-between">
-                            <div className="flex items-center gap-3">
-                              <div className="p-2 rounded-lg bg-blue-500/10">
-                                <div className="text-blue-400">
-                                  {strategy.icon}
-                                </div>
-                              </div>
-                              <div>
-                                <h3 className="font-semibold text-gray-900">{strategy.name}</h3>
-                                <p className="text-sm text-gray-800 capitalize">{strategy.category} • {strategy.timeline}</p>
+                      <Card key={strategy.id} className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors shadow-none" data-testid={`strategy-${strategy.id}`}>
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-center gap-4">
+                            <div style={{ width:40, height:40, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                              <div className="text-white">
+                                {strategy.icon}
                               </div>
                             </div>
-                            <div className="flex flex-col gap-2">
-                              <Badge variant="outline" className={getPriorityColor(strategy.priority)}>
-                                {strategy.priority.toUpperCase()}
-                              </Badge>
-                              <Badge variant="outline" className={getStatusColor(strategy.status)}>
-                                {strategy.status.toUpperCase()}
-                              </Badge>
+                            <div>
+                              <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{strategy.name}</h3>
+                              <p style={{ fontSize: 12, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>{strategy.category} • {strategy.timeline}</p>
                             </div>
                           </div>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <p className="text-sm text-gray-800">{strategy.description}</p>
+                          <div className="flex flex-col items-end gap-2">
+                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.priority === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: strategy.priority === 'critical' ? '#ef4444' : GOLD, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                              {strategy.priority}
+                            </span>
+                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.status === 'active' ? 'rgba(43,138,110,0.12)' : 'rgba(0,0,0,0.05)', color: strategy.status === 'active' ? TEAL : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                              {strategy.status}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-6">
+                          <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6 }}>{strategy.description}</p>
                           
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <div className="flex items-center justify-between text-sm mb-1">
-                                <span className="text-gray-800">Impact</span>
-                                <span className="text-emerald-400 font-medium">{strategy.impact}%</span>
+                          <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>Impact</span>
+                                <span style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>{strategy.impact}%</span>
                               </div>
-                              <Progress value={strategy.impact} className="h-2" />
+                              <Progress value={strategy.impact} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': TEAL } as any} />
                             </div>
-                            <div>
-                              <div className="flex items-center justify-between text-sm mb-1">
-                                <span className="text-gray-800">Effort</span>
-                                <span className="text-orange-400 font-medium">{strategy.effort}%</span>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span style={{ fontSize: 11, fontWeight: 600, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.05em" }}>Effort</span>
+                                <span style={{ fontSize: 11, fontWeight: 700, color: GOLD }}>{strategy.effort}%</span>
                               </div>
-                              <Progress value={strategy.effort} className="h-2" />
+                              <Progress value={strategy.effort} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': GOLD } as any} />
                             </div>
                           </div>
 
-                          <div>
-                            <h4 className="text-sm font-medium text-gray-900 mb-2">Expected Outcomes:</h4>
-                            <ul className="space-y-1">
+                          <div style={{ background: OFF, padding: 20, border: "1px solid #E8E4DC" }}>
+                            <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 12 }}>Expected Outcomes</h4>
+                            <ul className="space-y-2">
                               {strategy.outcomes.map((outcome, index) => (
-                                <li key={index} className="flex items-center gap-2 text-sm text-gray-800">
-                                  <ArrowRight className="h-3 w-3 text-blue-400" />
+                                <li key={index} className="flex items-start gap-3 text-sm text-[#4B5563]">
+                                  <div style={{ width: 12, height: 2, background: GOLD, marginTop: 9, flexShrink: 0 }} />
                                   {outcome}
                                 </li>
                               ))}
                             </ul>
                           </div>
 
-                          <div className="flex gap-2 pt-2">
-                            <Button size="sm" variant="outline" className="flex-1">
+                          <div className="flex gap-3 pt-2">
+                            <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
                               <Settings className="h-4 w-4 mr-2" />
                               Configure
                             </Button>
-                            <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                            <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45]">
                               <Play className="h-4 w-4 mr-2" />
                               Execute
                             </Button>
                           </div>
-                        </CardContent>
+                        </div>
                       </Card>
                     ))}
                   </div>
 
-                  {/* Strategy Insights */}
-                  <Card className="border-purple-500/30 bg-purple-950/30 backdrop-blur-sm">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-purple-300">
-                        <Brain className="h-5 w-5" />
-                        AI Strategy Recommendations
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-500/30">
-                          <p className="text-blue-300 font-medium mb-2">Prioritization Recommendation</p>
-                          <p className="text-blue-800 text-sm">Focus on Financial Flexibility Framework first - high impact with low effort, providing foundation for other adaptations.</p>
-                        </div>
-                        <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
-                          <p className="text-green-300 font-medium mb-2">Synergy Opportunity</p>
-                          <p className="text-emerald-800 text-sm">Digital Transformation and Workforce Evolution strategies can be executed in parallel for 25% efficiency gain.</p>
-                        </div>
-                        <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
-                          <p className="text-orange-300 font-medium mb-2">Risk Mitigation</p>
-                          <p className="text-orange-200 text-sm">Market Expansion strategy shows high risk - consider phased approach or additional contingency planning.</p>
-                        </div>
+                  <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                      <div style={{ width: 28, height: 2, background: GOLD }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Intelligence</span>
+                    </div>
+                    <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Strategy <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
+                        <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Prioritization</p>
+                        <p style={{ fontSize: 14, color: "#4B5563" }}>Focus on Financial Flexibility Framework first - high impact with low effort, providing foundation for other adaptations.</p>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
+                        <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 8 }}>Synergy Opportunity</p>
+                        <p style={{ fontSize: 14, color: "#4B5563" }}>Digital Transformation and Workforce Evolution strategies can be executed in parallel for 25% efficiency gain.</p>
+                      </div>
+                      <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #ef4444", padding: 24, background: "#fff" }}>
+                        <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#ef4444", marginBottom: 8 }}>Risk Mitigation</p>
+                        <p style={{ fontSize: 14, color: "#4B5563" }}>Market Expansion strategy shows high risk - consider phased approach or additional contingency planning.</p>
+                      </div>
+                    </div>
+                  </div>
                 </>
               ) : (
-                <Card className="border-gray-200 bg-white backdrop-blur-sm">
-                  <CardHeader>
-                    <CardTitle className="text-gray-900">Strategy Analytics & Performance</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center py-12">
-                      <BarChart3 className="h-16 w-16 text-gray-800 mx-auto mb-4" />
-                      <p className="text-gray-800">Advanced strategy analytics and performance tracking</p>
-                      <p className="text-sm text-gray-800 mt-2">Real-time adaptation effectiveness measurement</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center" }}>
+                  <BarChart3 className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
+                  <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>Strategy Analytics & Performance</h3>
+                  <p style={{ color: "#6B7280", marginTop: 8 }}>Advanced strategy analytics and performance tracking arriving in Q1.</p>
+                </div>
               )}
-            </TabsContent>
+            </div>
           </Tabs>
         </div>
-    </div>
+      </div>
     </PageLayout>
   );
 }

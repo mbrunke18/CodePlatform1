@@ -821,5 +821,3 @@ function InvestorPresentation() {
     </div>
   );
 }
-
-export default InvestorPresentation;

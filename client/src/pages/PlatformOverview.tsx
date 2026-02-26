@@ -118,19 +118,17 @@ export default function PlatformOverview() {
     <PageLayout>
       <div>
         {/* Hero — white */}
-        <section className="bg-white dark:bg-slate-950 pt-24 pb-12 px-6 border-b border-slate-200 dark:border-slate-800">
+        <section style={{ background: "#fff", borderBottom: "1px solid #E8E4DC", padding: "64px 48px", minHeight: 260 }}>
           <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-4 h-0.5" style={{ background: GOLD }} />
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
-                Platform Overview
-              </span>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Execution OS · Platform Architecture</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end gap-8">
               <div className="flex-1">
-                <h1 className="font-serif text-4xl md:text-5xl font-semibold leading-tight mb-4" style={{ color: NAVY }}>
+                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
                   The Complete<br />
-                  <em className="italic" style={{ color: TEAL }}>Execution Infrastructure</em>
+                  <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Execution Infrastructure</em>
                 </h1>
                 <p className="text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
                   Every component needed to move from strategic trigger to coordinated organizational response — in under 12 minutes.
@@ -151,17 +149,15 @@ export default function PlatformOverview() {
         </section>
 
         {/* 12-Minute Timeline */}
-        <section className="py-16 px-6 bg-slate-50 dark:bg-slate-900">
+        <section style={{ background: "#F8F7F4", padding: "64px 48px" }}>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <div className="w-4 h-0.5" style={{ background: GOLD }} />
-                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
-                  The 12-Minute Window
-                </span>
-                <div className="w-4 h-0.5" style={{ background: GOLD }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The 12-Minute Window</span>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               </div>
-              <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-3" style={{ color: NAVY }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
                 What Happens in 12 Minutes
               </h2>
               <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -176,26 +172,19 @@ export default function PlatformOverview() {
                 <div key={i} className="relative flex gap-6 md:gap-10 mb-8">
                   <div className="shrink-0 flex flex-col items-center">
                     <div
-                      className="w-12 h-12 md:w-24 md:h-12 rounded-xl flex items-center justify-center font-bold text-white text-sm shrink-0 z-10"
-                      style={{ background: step.color === GOLD ? GOLD : step.color, color: step.color === GOLD ? NAVY : "white" }}
+                      className="w-12 h-12 md:w-24 md:h-12 flex items-center justify-center font-serif font-bold text-white text-sm shrink-0 z-10"
+                      style={{ background: "#0A0F2E", color: "#C9A84C" }}
                     >
                       {step.time}
                     </div>
                   </div>
 
-                  <div className="flex-1 bg-white dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+                  <div className="flex-1 bg-white dark:bg-slate-950 border border-[#E8E4DC] p-6 shadow-sm">
                     <div className="flex items-start justify-between flex-wrap gap-3 mb-5">
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge
-                            className="text-[10px] font-bold tracking-widest border-0 px-2"
-                            style={{
-                              background: step.color === GOLD ? `${GOLD}22` : step.color === NAVY ? "#0A0F2E22" : `${TEAL}22`,
-                              color: step.color === GOLD ? "#A8822A" : step.color === NAVY ? NAVY : TEAL
-                            }}
-                          >
-                            {step.badge}
-                          </Badge>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                          <div style={{ width: 20, height: 1.5, background: step.color, flexShrink: 0 }} />
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
                         </div>
                         <h3 className="text-xl font-bold" style={{ color: NAVY }}>{step.headline}</h3>
                         <p className="text-sm text-slate-500">{step.sub}</p>
@@ -204,7 +193,7 @@ export default function PlatformOverview() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 p-4">
+                      <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
                           <Cpu className="h-3.5 w-3.5" style={{ color: TEAL }} />
                           <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: TEAL }}>AI Role</span>
@@ -218,15 +207,15 @@ export default function PlatformOverview() {
                           ))}
                         </ul>
                       </div>
-                      <div className="rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/40 p-4">
+                      <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
-                          <HeartHandshake className="h-3.5 w-3.5" style={{ color: "#A8822A" }} />
-                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#A8822A" }}>Human Role</span>
+                          <HeartHandshake className="h-3.5 w-3.5" style={{ color: "#C9A84C" }} />
+                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>Human Role</span>
                         </div>
                         <ul className="space-y-2">
                           {step.humanRole.map((a, j) => (
                             <li key={j} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                              <Users className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#A8822A" }} />
+                              <Users className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
                               {a}
                             </li>
                           ))}
@@ -241,15 +230,15 @@ export default function PlatformOverview() {
         </section>
 
         {/* 8 Platform Components */}
-        <section className="py-16 px-6 bg-white dark:bg-slate-950">
+        <section className="py-16 px-12 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <div className="w-4 h-0.5" style={{ background: GOLD }} />
-                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>8 Integrated Components</span>
-                <div className="w-4 h-0.5" style={{ background: GOLD }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>8 Integrated Components</span>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               </div>
-              <h2 className="font-serif text-3xl font-semibold mb-3" style={{ color: NAVY }}>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
                 One Platform. Every Component Connected.
               </h2>
             </div>
@@ -257,10 +246,10 @@ export default function PlatformOverview() {
               {components.map(({ name, desc, icon: Icon }) => (
                 <div
                   key={name}
-                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-5 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-sm transition-all"
+                  className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${TEAL}18` }}>
-                    <Icon className="h-5 w-5" style={{ color: TEAL }} />
+                  <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                    <Icon className="h-4 w-4 text-white" />
                   </div>
                   <div className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{name}</div>
                   <div className="text-xs text-slate-500 leading-relaxed">{desc}</div>
@@ -271,14 +260,14 @@ export default function PlatformOverview() {
         </section>
 
         {/* CTA — dark navy */}
-        <section style={{ background: NAVY }} className="py-16 px-6">
+        <section style={{ background: "#0A0F2E", padding: "64px 48px" }}>
           <div className="max-w-3xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <div className="w-4 h-0.5" style={{ background: GOLD }} />
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>Ready to See It</span>
-              <div className="w-4 h-0.5" style={{ background: GOLD }} />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Ready to See It</span>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-white mb-4">
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
               Experience the Full Loop
             </h2>
             <p className="text-white/60 text-lg mb-8 max-w-xl mx-auto">
@@ -288,8 +277,7 @@ export default function PlatformOverview() {
               <Link href="/try-demo">
                 <Button
                   size="lg"
-                  className="font-semibold px-8"
-                  style={{ background: GOLD, color: NAVY }}
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                 >
                   <Play className="mr-2 h-4 w-4" />
                   Try Interactive Demo
@@ -298,8 +286,7 @@ export default function PlatformOverview() {
               <Link href="/contact">
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="font-semibold px-8 border-white/20 text-white hover:bg-white/10 hover:text-white"
+                  className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10 px-8"
                 >
                   Request Pilot Access
                   <ArrowRight className="ml-2 h-4 w-4" />

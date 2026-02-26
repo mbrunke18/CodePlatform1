@@ -153,285 +153,269 @@ export default function PlaybookActivationConsole() {
   const completedTasks = safeTasks.filter((t: any) => t.status === 'completed').length;
   const progressPercent = safeTasks.length > 0 ? (completedTasks / safeTasks.length) * 100 : 0;
   
-  // Decision Velocity Metrics
+  // SuccessMetrics:
   const targetTime = 12; // 12 minutes target
   const elapsedMinutes = elapsedSeconds / 60;
   const isOnTrack = elapsedMinutes <= targetTime;
   const industryStandard = 72 * 60; // 72 hours in minutes
   const timeSaved = industryStandard - elapsedMinutes;
 
+  const NAVY = "#0A0F2E";
+  const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const GOLD_LT = "#DFC178";
+  const TEAL = "#2B8A6E";
+  const TEAL_LT = "#3BAF8A";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   // For manual executions, only wait for playbook. For trigger-based, wait for both.
   if (!playbook || (!isManualExecution && !trigger)) {
-    return <PageLayout><div className="p-6">Loading activation console...</div></PageLayout>;
+    return <PageLayout><div className="p-6" style={{ background: OFF, minHeight: "100vh", color: NAVY }}>Loading activation console...</div></PageLayout>;
   }
 
   // Show Pre-Activation Impact Preview if not yet confirmed
   if (!activationConfirmed) {
     return (
       <PageLayout>
-      <div className="page-background min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-        <div className="container mx-auto p-6 space-y-6 max-w-4xl">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <Target className="h-8 w-8 text-blue-800" />
-                Pre-Activation Review
-              </h1>
-              <p className="text-gray-800 dark:text-gray-300 mt-1">
-                Review projected impact before activating playbook
-              </p>
+        <div style={{ background: OFF, minHeight: "100vh" }}>
+          <div className="container mx-auto p-6 space-y-6 max-w-4xl">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Pre-Activation Review</span>
+                </div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
+                  Review <em style={{ fontStyle: "italic", color: GOLD }}>Projected Impact</em>
+                </h1>
+                <p style={{ color: MUTED, marginTop: 4 }}>
+                  Verify mission parameters before initiating coordination sequence
+                </p>
+              </div>
+              <Link href="/triggers-management">
+                <Button variant="outline" data-testid="button-back-triggers-preview" style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent" }}>
+                  Back to Triggers
+                </Button>
+              </Link>
             </div>
-            <Link href="/triggers-management">
-              <Button variant="outline" data-testid="button-back-triggers-preview">
-                Back to Triggers
-              </Button>
-            </Link>
-          </div>
 
-          {/* Playbook Summary Card */}
-          <Card className="border-2 border-purple-200 dark:border-purple-800">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-purple-800" />
-                Playbook: {playbook?.name || 'Loading...'}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-800 dark:text-gray-400">
+            {/* Playbook Summary Card */}
+            <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, padding: "20px 24px", background: "#fff", marginBottom: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 2, marginBottom: 8 }}>
+                <PlayCircle className="h-5 w-5" style={{ color: GOLD }} />
+                <span style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>Playbook: {playbook?.name || 'Loading...'}</span>
+              </div>
+              <p style={{ fontSize: 14, color: MUTED }}>
                 {playbook?.description || 'Strategic response playbook ready for activation.'}
               </p>
               {!isManualExecution && trigger && (
-                <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
-                  <div className="flex items-center gap-2 text-red-700 dark:text-red-300 font-medium">
+                <div style={{ marginTop: 16, padding: 12, background: "rgba(239, 68, 68, 0.05)", border: "1px solid rgba(239, 68, 68, 0.2)", borderRadius: 4 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 2, color: "#B91C1C", fontWeight: 500, fontSize: 13 }}>
                     <AlertTriangle className="h-4 w-4" />
                     Triggered by: {trigger.name}
                   </div>
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Pre-Activation Impact Preview */}
-          <PreActivationImpactPreview 
-            playbook={playbook}
-            onConfirmActivation={handleConfirmActivation}
-            onCancel={handleCancelActivation}
-          />
+            {/* Pre-Activation Impact Preview */}
+            <PreActivationImpactPreview 
+              playbook={playbook}
+              onConfirmActivation={handleConfirmActivation}
+              onCancel={handleCancelActivation}
+            />
+          </div>
         </div>
-      </div>
       </PageLayout>
     );
   }
 
   return (
     <PageLayout>
-    <div className="page-background min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="container mx-auto p-6 space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-              <AlertTriangle className="h-8 w-8 text-red-700" />
-              Execute Your Playbook
-            </h1>
-            <p className="text-gray-800 dark:text-gray-300 mt-1">
-              Make the call. Rally your team. Win the moment.
-            </p>
-          </div>
-          <Link href="/triggers-management">
-            <Button variant="outline" data-testid="button-back-triggers">
-              Back to Triggers
-            </Button>
-          </Link>
-        </div>
-
-        {/* Time Compression Banner - Shows benchmark comparison */}
-        <Card className="bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-blue-950/30 border-2 border-blue-400 dark:border-blue-600">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div className="text-sm text-muted-foreground">
-                <strong>Industry Benchmark:</strong> Traditional coordination takes 72 hours on average.
-                <strong className="ml-2">M Target:</strong> 12 minutes or less.
+      <div style={{ background: OFF, minHeight: "100vh" }}>
+        <div className="container mx-auto p-6 space-y-6">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Live Execution Console</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
+                Execute Your <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Playbook</em>
+              </h1>
+              <p style={{ color: MUTED, marginTop: 4 }}>
+                Make the call. Rally your team. Win the moment.
+              </p>
+            </div>
+            <Link href="/triggers-management">
+              <Button variant="outline" data-testid="button-back-triggers" style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent" }}>
+                Back to Triggers
+              </Button>
+            </Link>
+          </div>
+
+          {/* Time Compression Banner - Shows benchmark comparison */}
+          <div style={{ background: NAVY, padding: "24px 32px", border: `1px solid ${NAVY_MID}`, position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px", opacity: 0.5 }} />
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em" }}>
+                <strong style={{ color: GOLD }}>INDUSTRY BENCHMARK:</strong> Traditional coordination takes 72 hours average.
+                <strong style={{ color: GOLD, marginLeft: 16 }}>M TARGET:</strong> 12 minutes or less.
+              </div>
+              <div className="flex items-center gap-4">
                 {elapsedMinutes > 0 && (
-                  <Badge variant={isOnTrack ? "default" : "secondary"} className={isOnTrack ? "bg-green-600" : "bg-yellow-600"}>
+                  <div style={{ 
+                    display:"inline-flex", alignItems:"center", gap:5, 
+                    background: isOnTrack ? "rgba(43,138,110,0.2)" : "rgba(201,168,76,0.2)", 
+                    color: isOnTrack ? TEAL_LT : GOLD_LT, 
+                    fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"6px 14px",
+                    border: `1px solid ${isOnTrack ? TEAL : GOLD}`
+                  }}>
                     {isOnTrack ? '✅ On Track for 12 Min Target' : '⚠️ Exceeding 12 Min Target'}
-                  </Badge>
+                  </div>
                 )}
                 {elapsedMinutes === 0 && (
-                  <Badge variant="outline">Execution will start when you begin</Badge>
+                  <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(255,255,255,0.05)", color:"rgba(255,255,255,0.6)", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"6px 14px", border: "1px solid rgba(255,255,255,0.2)" }}>
+                    Ready for Initiation
+                  </div>
                 )}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Execution Timer & Status */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="bg-gradient-to-br from-red-500 to-orange-600 text-gray-900">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                Execution Time
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-4xl font-bold" data-testid="text-execution-time">
+          {/* Execution Timer & Status */}
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))", background: OFF, border: `1px solid ${BORDER}`, borderBottom: "none" }}>
+            {/* Timer Block */}
+            <div style={{ padding:24, borderRight:`1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, background: NAVY }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <Clock className="h-3 w-3" style={{ color: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>Execution Time</span>
+              </div>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color:"#fff", lineHeight:1 }} data-testid="text-execution-time">
                 {formatTime(elapsedSeconds)}
               </div>
-              <p className="text-xs mt-1 opacity-90">
-                {executionStatus === 'active' ? 'In Progress' : executionStatus === 'paused' ? 'Paused' : executionStatus === 'pending' ? 'Ready' : 'Completed'}
-              </p>
-            </CardContent>
-          </Card>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: GOLD, marginTop:8 }}>
+                {executionStatus === 'active' ? '● Live' : executionStatus.toUpperCase()}
+              </div>
+            </div>
 
-          <Card className={isOnTrack ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-gray-900' : 'bg-gradient-to-br from-yellow-500 to-amber-600 text-gray-900'}>
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Target className="h-4 w-4" />
-                Target: 12 Minutes
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-4xl font-bold" data-testid="text-target-status">
+            {/* Target Status Block */}
+            <div style={{ padding:24, borderRight:`1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, background: isOnTrack ? "rgba(43,138,110,0.05)" : "rgba(201,168,76,0.05)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <Target className="h-3 w-3" style={{ color: isOnTrack ? TEAL : GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED }}>Target: 12 Min</span>
+              </div>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color: isOnTrack ? TEAL : GOLD, lineHeight:1 }} data-testid="text-target-status">
                 {isOnTrack ? 'On Track' : 'Behind'}
               </div>
-              <p className="text-xs mt-1 opacity-90">
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: MUTED, marginTop:8 }}>
                 {Math.max(0, targetTime - elapsedMinutes).toFixed(1)} min remaining
-              </p>
-            </CardContent>
-          </Card>
+              </div>
+            </div>
 
-          <Card className="bg-gradient-to-br from-blue-500 to-cyan-600 text-gray-900">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Zap className="h-4 w-4" />
-                Decision Velocity Target
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {elapsedMinutes > 0 ? (
-                <>
-                  <div className="text-4xl font-bold" data-testid="text-velocity-multiplier">
-                    {(industryStandard / elapsedMinutes).toFixed(0)}x
-                  </div>
-                  <p className="text-xs mt-1 opacity-90">
-                    faster than 72hr standard
-                  </p>
-                </>
-              ) : (
-                <>
-                  <div className="text-2xl font-bold" data-testid="text-velocity-target">
-                    360x+
-                  </div>
-                  <p className="text-xs mt-1 opacity-90">
-                    target vs 72hr standard
-                  </p>
-                </>
-              )}
-            </CardContent>
-          </Card>
+            {/* Velocity Multiplier Block */}
+            <div style={{ padding:24, borderRight:`1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <Zap className="h-3 w-3" style={{ color: NAVY }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED }}>Decision Velocity</span>
+              </div>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color: NAVY, lineHeight:1 }} data-testid="text-velocity-multiplier">
+                {elapsedMinutes > 0 ? `${(industryStandard / elapsedMinutes).toFixed(0)}x` : '360x+'}
+              </div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: MUTED, marginTop:8 }}>
+                Faster than 72hr standard
+              </div>
+            </div>
 
-          <Card className="bg-gradient-to-br from-purple-500 to-pink-600 text-gray-900">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-sm font-medium flex items-center gap-2">
-                <Trophy className="h-4 w-4" />
-                Time Savings Target
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {elapsedMinutes > 0 ? (
-                <>
-                  <div className="text-4xl font-bold" data-testid="text-time-saved">
-                    {Math.floor(timeSaved / 60)}h
-                  </div>
-                  <p className="text-xs mt-1 opacity-90">
-                    {(timeSaved % 60).toFixed(0)} min saved so far
-                  </p>
-                </>
-              ) : (
-                <>
-                  <div className="text-2xl font-bold" data-testid="text-time-saved-target">
-                    ~72 Hours
-                  </div>
-                  <p className="text-xs mt-1 opacity-90">
-                    target savings vs industry
-                  </p>
-                </>
-              )}
-            </CardContent>
-          </Card>
-        </div>
+            {/* Time Saved Block */}
+            <div style={{ padding:24, borderBottom: `1px solid ${BORDER}` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                <Trophy className="h-3 w-3" style={{ color: TEAL }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED }}>Time Saved</span>
+              </div>
+              <div style={{ ...CG, fontSize:40, fontWeight:600, color: TEAL, lineHeight:1 }} data-testid="text-time-saved">
+                {elapsedMinutes > 0 ? `${Math.floor(timeSaved / 60)}h` : '~72h'}
+              </div>
+              <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: MUTED, marginTop:8 }}>
+                Cumulative efficiency gain
+              </div>
+            </div>
+          </div>
 
         {/* Trigger & Playbook Info */}
         <div className={`grid grid-cols-1 ${isManualExecution ? 'md:grid-cols-1' : 'md:grid-cols-2'} gap-6`}>
           {!isManualExecution && trigger && (
-            <Card className="border-2 border-red-200 dark:border-red-800">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-700" />
-                  Trigger Alert
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+            <div style={{ border: `1px solid ${BORDER}`, borderLeft: "3px solid #EF4444", padding: "20px 24px", background: "#fff" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                <AlertTriangle className="h-5 w-5" style={{ color: "#EF4444" }} />
+                <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Trigger Alert</span>
+              </div>
+              <div className="space-y-4">
                 <div>
-                  <div className="text-sm text-gray-800 dark:text-gray-400">Trigger Name</div>
-                  <div className="font-semibold" data-testid="text-trigger-name">{trigger.name}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Trigger Name</div>
+                  <div style={{ fontWeight: 600, color: NAVY }} data-testid="text-trigger-name">{trigger.name}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-800 dark:text-gray-400">Description</div>
-                  <div className="text-sm">{trigger.description}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Description</div>
+                  <div style={{ fontSize: 14, color: NAVY }}>{trigger.description}</div>
                 </div>
-                <div>
-                  <div className="text-sm text-gray-800 dark:text-gray-400">Current Status</div>
-                  <Badge variant={trigger?.currentStatus === 'red' ? 'destructive' : 'secondary'} data-testid="badge-trigger-status">
-                    {(trigger?.currentStatus || 'active').toUpperCase()}
-                  </Badge>
+                <div className="flex gap-4">
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Status</div>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(239,68,68,0.12)", color:"#EF4444", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 }} data-testid="badge-trigger-status">
+                      {trigger?.currentStatus || 'active'}
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Severity</div>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(239,68,68,0.12)", color:"#EF4444", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 }}>
+                      {trigger.severity}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-sm text-gray-800 dark:text-gray-400">Severity</div>
-                  <Badge variant={trigger.severity === 'high' || trigger.severity === 'critical' ? 'destructive' : 'default'}>
-                    {trigger.severity}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           )}
 
-          <Card className="border-2 border-blue-200 dark:border-blue-800">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <PlayCircle className="h-5 w-5 text-blue-800" />
-                Active Playbook
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
+          <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+              <PlayCircle className="h-5 w-5" style={{ color: TEAL }} />
+              <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Active Playbook</span>
+            </div>
+            <div className="space-y-4">
               <div>
-                <div className="text-sm text-gray-800 dark:text-gray-400">Playbook Name</div>
-                <div className="font-semibold" data-testid="text-playbook-name">{playbook.title || playbook.name}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Playbook Name</div>
+                <div style={{ fontWeight: 600, color: NAVY }} data-testid="text-playbook-name">{playbook.title || playbook.name}</div>
               </div>
               <div>
-                <div className="text-sm text-gray-800 dark:text-gray-400">Description</div>
-                <div className="text-sm">{playbook.description}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Description</div>
+                <div style={{ fontSize: 14, color: NAVY }}>{playbook.description}</div>
               </div>
-              <div>
-                <div className="text-sm text-gray-800 dark:text-gray-400">Readiness</div>
-                <Badge 
-                  variant={playbook.readinessState === 'green' ? 'default' : playbook.readinessState === 'yellow' ? 'secondary' : 'destructive'}
-                  data-testid="badge-playbook-readiness"
-                >
-                  {playbook.readinessState === 'green' ? '✓ Ready' : playbook.readinessState === 'yellow' ? '⚠ Needs Review' : '✗ Requires Setup'}
-                </Badge>
-              </div>
-              <div>
-                <div className="text-sm text-gray-800 dark:text-gray-400">Average Execution</div>
-                <div className="font-semibold">
-                  {playbook.averageExecutionTime ? `${playbook.averageExecutionTime} minutes` : 'First execution'}
+              <div className="flex gap-4">
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Readiness</div>
+                  <div style={{ 
+                    display:"inline-flex", alignItems:"center", gap:5, 
+                    background: playbook.readinessState === 'green' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", 
+                    color: playbook.readinessState === 'green' ? TEAL : GOLD, 
+                    fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 
+                  }} data-testid="badge-playbook-readiness">
+                    {playbook.readinessState === 'green' ? '✓ Ready' : '⚠ Needs Review'}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Avg Execution</div>
+                  <div style={{ fontWeight: 600, color: NAVY, fontSize: 14, marginTop: 4 }}>
+                    {playbook.averageExecutionTime ? `${playbook.averageExecutionTime}m` : 'First execution'}
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         {/* Decision Confidence Score */}
@@ -452,144 +436,150 @@ export default function PlaybookActivationConsole() {
         )}
 
         {/* Progress Checkpoints */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-emerald-700" />
-                Execution Progress
-              </span>
-              <span className="text-sm font-normal text-gray-800 dark:text-gray-400">
-                {completedTasks} of {safeTasks.length} tasks completed
-              </span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Progress value={progressPercent} className="h-3" data-testid="progress-execution" />
+        <div className="bg-white border border-[#E8E4DC] p-6 hover:border-[#0A0F2E] transition-colors">
+          <div style={{ display: "flex", alignItems: "center", justifyItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <CheckCircle2 className="h-5 w-5" style={{ color: TEAL }} />
+              <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Progress</span>
+            </div>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>
+              {completedTasks} of {safeTasks.length} tasks completed
+            </span>
+          </div>
+          <div className="space-y-6">
+            <div className="relative h-2 w-full bg-[#E8E4DC] overflow-hidden">
+              <div 
+                className="absolute top-0 left-0 h-full transition-all duration-500" 
+                style={{ width: `${progressPercent}%`, background: GOLD }}
+              />
+            </div>
             
             <div className="space-y-3">
               {safeTasks.length === 0 ? (
-                <div className="text-center py-8 text-gray-800 dark:text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   No tasks defined for this playbook
                 </div>
               ) : (
                 safeTasks.map((task: any, index: number) => (
                   <div 
                     key={task.id} 
-                    className={`flex items-start gap-3 p-4 rounded-lg border-2 ${
-                      task.status === 'completed' 
-                        ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800' 
-                        : task.status === 'in_progress'
-                        ? 'bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800'
-                        : 'bg-gray-50 border-gray-200 dark:bg-gray-800 dark:border-gray-700'
-                    }`}
+                    style={{ 
+                      display: "flex", 
+                      alignItems: "flex-start", 
+                      gap: 12, 
+                      padding: 16, 
+                      background: task.status === 'completed' ? "rgba(43,138,110,0.03)" : "#fff",
+                      border: `1px solid ${task.status === 'completed' ? TEAL : BORDER}`,
+                      borderLeft: `3px solid ${task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : BORDER}`
+                    }}
                     data-testid={`task-item-${index}`}
                   >
                     {task.status === 'completed' ? (
-                      <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
                     ) : (
-                      <Circle className="h-5 w-5 text-gray-800 mt-0.5 flex-shrink-0" />
+                      <Circle className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: BORDER }} />
                     )}
-                    <div className="flex-1 page-background">
-                      <div className="font-semibold">{task.description}</div>
-                      <div className="text-sm text-gray-800 dark:text-gray-400 mt-1 flex items-center gap-3">
+                    <div className="flex-1">
+                      <div style={{ fontWeight: 600, color: NAVY, fontSize: 14 }}>{task.description}</div>
+                      <div className="text-xs text-muted-foreground mt-1 flex items-center gap-4">
                         {task.assignedTo && (
                           <span className="flex items-center gap-1">
                             <Users className="h-3 w-3" />
-                            Assigned to: {task.assignedTo}
+                            {task.assignedTo}
                           </span>
                         )}
                         {task.estimatedHours && (
                           <span className="flex items-center gap-1">
                             <Clock className="h-3 w-3" />
-                            Est: {task.estimatedHours}h
+                            {task.estimatedHours}h target
                           </span>
                         )}
                       </div>
                     </div>
-                    <Badge variant={task.status === 'completed' ? 'default' : task.status === 'in_progress' ? 'secondary' : 'outline'}>
+                    <div style={{ 
+                      display:"inline-flex", alignItems:"center", gap:5, 
+                      background: task.status === 'completed' ? "rgba(43,138,110,0.12)" : task.status === 'in_progress' ? "rgba(201,168,76,0.12)" : "rgba(0,0,0,0.05)", 
+                      color: task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : MUTED, 
+                      fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"2px 8px"
+                    }}>
                       {task.status}
-                    </Badge>
+                    </div>
                   </div>
                 ))
               )}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Execution Notes */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MessageSquare className="h-5 w-5" />
-              Execution Notes
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Textarea 
-              placeholder="Document key decisions, actions taken, or important observations during this execution..."
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              rows={4}
-              className="w-full"
-              data-testid="textarea-execution-notes"
-            />
-          </CardContent>
-        </Card>
+        <div className="bg-white border border-[#E8E4DC] p-6">
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+            <MessageSquare className="h-5 w-5" style={{ color: NAVY }} />
+            <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Notes</span>
+          </div>
+          <Textarea 
+            placeholder="Document key decisions, actions taken, or important observations during this execution..."
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            rows={4}
+            className="w-full focus-visible:ring-NAVY"
+            style={{ border: `1.5px solid ${BORDER}`, color: NAVY }}
+            data-testid="textarea-execution-notes"
+          />
+        </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 pt-4">
           <div className="flex gap-3">
             {executionStatus === 'active' ? (
               <Button 
                 variant="outline" 
                 onClick={() => setExecutionStatus('paused')}
+                style={{ border:`1.5px solid ${BORDER}`, color:NAVY, background:"transparent", fontSize:10, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"11px 24px" }}
                 data-testid="button-pause-execution"
               >
                 <PauseCircle className="h-4 w-4 mr-2" />
-                Pause Execution
+                Pause
               </Button>
             ) : executionStatus === 'paused' ? (
               <Button 
                 variant="outline" 
                 onClick={() => setExecutionStatus('active')}
+                style={{ border:`1.5px solid ${BORDER}`, color:NAVY, background:"transparent", fontSize:10, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"11px 24px" }}
                 data-testid="button-resume-execution"
               >
                 <PlayCircle className="h-4 w-4 mr-2" />
-                Resume Execution
+                Resume
               </Button>
             ) : null}
           </div>
 
           <Button 
-            size="lg"
-            className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-            disabled={executionStatus === 'completed' || completeExecutionMutation.isPending}
             onClick={() => completeExecutionMutation.mutate()}
+            disabled={completeExecutionMutation.isPending || executionStatus === 'completed'}
+            style={{ background:NAVY, color:"#fff", fontSize:10, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"11px 28px", border:"none" }}
             data-testid="button-complete-execution"
           >
-            <CheckCircle2 className="h-5 w-5 mr-2" />
-            {completeExecutionMutation.isPending ? 'Completing...' : 'Complete Execution'}
+            {completeExecutionMutation.isPending ? 'Finalizing...' : 'Complete Execution'}
           </Button>
         </div>
 
         {/* Success Message */}
         {executionStatus === 'completed' && (
           <>
-            <Card className="bg-gradient-to-br from-green-500 to-emerald-600 text-gray-900 border-0">
-              <CardContent className="pt-6">
-                <div className="text-center space-y-3">
-                  <Trophy className="h-16 w-16 mx-auto" />
-                  <h2 className="text-3xl font-bold">Playbook Executed Successfully!</h2>
-                  <p className="text-lg">
-                    Completed in {formatTime(elapsedSeconds)} • {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x faster than industry standard
-                  </p>
-                  <p className="text-sm opacity-90">
-                    You saved {Math.floor(timeSaved / 60)} hours and {(timeSaved % 60).toFixed(0)} minutes of coordination time
-                  </p>
+            <div style={{ background: NAVY, padding: "64px 48px", textAlign: "center", color: "#fff", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+              <div className="relative z-10 space-y-4">
+                <Trophy className="h-16 w-16 mx-auto" style={{ color: GOLD }} />
+                <h2 style={{ ...CG, fontSize: "clamp(32px,5vw,48px)", fontWeight: 600 }}>Playbook Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em></h2>
+                <div style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                  Completed in {formatTime(elapsedSeconds)} • {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x faster than industry standard
                 </div>
-              </CardContent>
-            </Card>
+                <p style={{ color: GOLD_LT, fontSize: 18 }}>
+                  Mission critical time saved: {Math.floor(timeSaved / 60)}h {(timeSaved % 60).toFixed(0)}m
+                </p>
+              </div>
+            </div>
 
             {/* Post-Execution Validation Report */}
             {params?.playbookId && (

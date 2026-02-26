@@ -4,17 +4,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import PageLayout from "@/components/layout/PageLayout";
-import { PageHero } from "@/components/layout/PageHero";
 import { updatePageMetadata } from "@/lib/seo";
 import { CheckCircle2, Shield, Zap, Target } from "lucide-react";
 import { useLocation } from "wouter";
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
 
 const earlyAccessSchema = z.object({
   firstName: z.string().min(1, "First name required"),
@@ -73,7 +75,6 @@ export default function Contact() {
 
       form.reset();
 
-      // Redirect to login to begin the real onboarding experience
       setTimeout(() => {
         window.location.href = '/api/login';
       }, 1500);
@@ -88,98 +89,92 @@ export default function Contact() {
 
   return (
     <PageLayout>
-      <PageHero
-        eyebrow="Now in Pilot"
-        title="Request Pilot Access"
-        subtitle="Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership."
-        size="lg"
-      >
-        <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
-          {[
-            { icon: Shield, label: "Limited to 10 Partners" },
-            { icon: Zap, label: "Pilot Active Now" },
-            { icon: Target, label: "90-Day Validation" },
-          ].map(({ icon: Icon, label }) => (
-            <div key={label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Icon style={{ width: 16, height: 16, color: "#C9A84C" }} />
-              <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(240,237,228,0.8)" }}>{label}</span>
+      <div className="bg-white">
+        {/* Hero Section - Navy */}
+        <section style={{ background: "#0A0F2E", padding: "64px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Now in Pilot</span>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
-          ))}
-        </div>
-      </PageHero>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+              Request <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Pilot Access</em>
+            </h1>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
+              Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution 
+              through Execution OS' 90-day validation partnership.
+            </p>
+            <div className="flex gap-8 justify-center flex-wrap">
+              {[
+                { icon: Shield, label: "Limited to 10 Partners" },
+                { icon: Zap, label: "Pilot Active Now" },
+                { icon: Target, label: "90-Day Validation" },
+              ].map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-2">
+                  <Icon className="w-4 h-4" style={{ color: GOLD }} />
+                  <span className="text-[11px] font-bold uppercase tracking-widest text-white/60">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* Main Form Section */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {/* Left Column - Value Proposition */}
-          <div className="md:col-span-1">
-            <Card className="sticky top-24" data-testid="card-pilot-benefits">
-              <CardHeader>
-                <CardTitle className="text-2xl">Pilot Partner Benefits</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 dark:text-white">Full Platform Access</div>
-                      <p className="text-sm text-slate-700 dark:text-slate-300">Complete 7-component ecosystem during validation period</p>
+        {/* Main Form Section */}
+        <section className="py-20 px-12 bg-white">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-12">
+            {/* Left Column - Value Proposition */}
+            <div className="md:col-span-4">
+              <div style={{ border: "1px solid #E8E4DC", padding: "32px", background: "#F8F7F4" }} className="sticky top-24">
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>Pilot Partner Benefits</h3>
+                <div className="space-y-6">
+                  {[
+                    { title: "Full Platform Access", desc: "Complete 7-component ecosystem during validation period" },
+                    { title: "Strategic Implementation", desc: "Dedicated support for 3-5 critical scenarios" },
+                    { title: "First-Mover Advantage", desc: "Category leadership in Executive Decision Operations" },
+                    { title: "Risk-Free Validation", desc: "Prove ROI in your context before full commitment" }
+                  ].map((benefit) => (
+                    <div key={benefit.title} className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 flex-shrink-0 mt-1" style={{ color: TEAL }} />
+                      <div>
+                        <div className="font-bold text-slate-900 text-sm">{benefit.title}</div>
+                        <p className="text-xs text-slate-500 leading-relaxed mt-1">{benefit.desc}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 dark:text-white">Strategic Implementation</div>
-                      <p className="text-sm text-slate-700 dark:text-slate-300">Dedicated support for 3-5 critical scenarios</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 dark:text-white">First-Mover Advantage</div>
-                      <p className="text-sm text-slate-700 dark:text-slate-300">Category leadership in Executive Decision Operations</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 dark:text-white">Risk-Free Validation</div>
-                      <p className="text-sm text-slate-700 dark:text-slate-300">Prove ROI in your context before full commitment</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-                  <p className="text-sm text-blue-900 dark:text-blue-200">
-                    <strong>Selection Process:</strong> Executive interview → Use case assessment → Partnership agreement → Week 1 onboarding
+                <div style={{ background: "#0A0F2E", borderLeft: `4px solid ${GOLD}`, padding: "20px", marginTop: "32px" }}>
+                  <p style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 8 }}>Selection Process</p>
+                  <p className="text-white/60 text-xs leading-relaxed">
+                    Executive interview → Use case assessment → Partnership agreement → Week 1 onboarding
                   </p>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </div>
 
-          {/* Right Column - Form */}
-          <div className="md:col-span-2">
-            <Card data-testid="card-early-access-form">
-              <CardHeader>
-                <CardTitle className="text-3xl">Tell Us About Your Organization</CardTitle>
-                <p className="text-slate-700 dark:text-slate-300">
-                  Help us understand your strategic execution challenges and pilot readiness.
-                </p>
-              </CardHeader>
-              <CardContent>
+            {/* Right Column - Form */}
+            <div className="md:col-span-8">
+              <div style={{ border: "1px solid #E8E4DC", padding: "40px" }}>
+                <div className="mb-10">
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>Application Form</h2>
+                  <p className="text-slate-500">
+                    Help us understand your strategic execution challenges and pilot readiness.
+                  </p>
+                </div>
+
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    {/* Name Fields */}
-                    <div className="grid md:grid-cols-2 gap-4">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="firstName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>First Name *</FormLabel>
+                            <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">First Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="John" {...field} data-testid="input-first-name" />
+                              <Input placeholder="John" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -190,9 +185,9 @@ export default function Contact() {
                         name="lastName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Last Name *</FormLabel>
+                            <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Last Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Smith" {...field} data-testid="input-last-name" />
+                              <Input placeholder="Smith" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -200,31 +195,29 @@ export default function Contact() {
                       />
                     </div>
 
-                    {/* Email */}
                     <FormField
                       control={form.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Business Email *</FormLabel>
+                          <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Business Email *</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john.smith@company.com" {...field} data-testid="input-email" />
+                            <Input type="email" placeholder="john.smith@company.com" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
 
-                    {/* Company & Title */}
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="company"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Company Name *</FormLabel>
+                            <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Company Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Acme Corporation" {...field} data-testid="input-company" />
+                              <Input placeholder="Acme Corporation" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -235,9 +228,9 @@ export default function Contact() {
                         name="title"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Job Title *</FormLabel>
+                            <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Job Title *</FormLabel>
                             <FormControl>
-                              <Input placeholder="VP of Strategy" {...field} data-testid="input-title" />
+                              <Input placeholder="VP of Strategy" {...field} className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -245,16 +238,15 @@ export default function Contact() {
                       />
                     </div>
 
-                    {/* Company Size */}
                     <FormField
                       control={form.control}
                       name="companySize"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Company Size (Employees) *</FormLabel>
+                          <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Company Size *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger data-testid="select-company-size">
+                              <SelectTrigger className="border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none h-12">
                                 <SelectValue placeholder="Select company size" />
                               </SelectTrigger>
                             </FormControl>
@@ -271,19 +263,17 @@ export default function Contact() {
                       )}
                     />
 
-                    {/* Primary Challenge */}
                     <FormField
                       control={form.control}
                       name="primaryChallenge"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Primary Strategic Execution Challenge *</FormLabel>
+                          <FormLabel className="text-[#0A0F2E] font-bold uppercase text-[10px] tracking-widest">Execution Challenge *</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Example: We miss 60% of market opportunities due to slow stakeholder coordination. By the time we align cross-functional teams, competitors have already moved."
-                              className="min-h-[100px]"
+                              placeholder="Describe your primary strategic execution challenge..."
+                              className="min-h-[120px] border-[#E8E4DC] focus:border-[#0A0F2E] rounded-none"
                               {...field}
-                              data-testid="textarea-challenge"
                             />
                           </FormControl>
                           <FormMessage />
@@ -291,99 +281,58 @@ export default function Contact() {
                       )}
                     />
 
-                    {/* Scenarios of Interest */}
-                    <FormField
-                      control={form.control}
-                      name="scenariosOfInterest"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Strategic Scenarios You'd Like to Operationalize *</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Example: Competitive response to new entrant, M&A opportunity evaluation, product recall crisis, regulatory change adaptation"
-                              className="min-h-[100px]"
-                              {...field}
-                              data-testid="textarea-scenarios"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    {/* Disclaimer */}
-                    <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
-                      <p className="text-sm text-yellow-900 dark:text-yellow-200">
-                        <strong>Note:</strong> Execution OS is in pre-launch with zero production customers. This pilot program is designed to validate our design goals (12-minute execution vs 72-hour industry standard) in real-world Fortune 1000 environments. Selection is limited to 10 companies with clear strategic fit and implementation readiness.
+                    <div style={{ background: "#F8F7F4", borderLeft: `4px solid ${GOLD}`, padding: "24px" }}>
+                      <p className="text-xs text-slate-700 leading-relaxed">
+                        <strong className="text-[#0A0F2E]">Note:</strong> Execution OS is in pre-launch. This pilot program is designed to validate 12-minute execution goals in real-world environments. Selection is limited to 10 companies.
                       </p>
                     </div>
 
-                    {/* Submit Button */}
                     <Button
                       type="submit"
-                      size="lg"
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-gray-900 text-lg py-6"
-                      data-testid="button-submit-early-access"
+                      className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-sm py-8 rounded-none"
                     >
-                      Submit Early Access Request
+                      Submit Pilot Request
                     </Button>
-
-                    <p className="text-sm text-center text-slate-700 dark:text-slate-300">
-                      Our team will review your request and contact you within 48 hours to schedule an executive interview.
-                    </p>
                   </form>
                 </Form>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Supporting Information */}
-      <section className="py-16 px-6 bg-slate-100 dark:bg-slate-800">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
-            Questions About the Pilot Program?
-          </h2>
-          <p className="text-lg text-slate-700 dark:text-slate-300 mb-4">
-            Reach out directly or learn more about program structure and success metrics.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <a href="mailto:mbrunke@vaughnmartin.com" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
-              mbrunke@vaughnmartin.com
-            </a>
-            <a href="https://www.executeiq.io" target="_blank" rel="noopener noreferrer" className="text-lg font-medium text-blue-800 dark:text-blue-400 hover:underline">
-              www.executeiq.io
-            </a>
+        {/* Supporting Information */}
+        <section className="py-24 px-12 bg-[#F8F7F4] border-t border-[#E8E4DC]">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "#0A0F2E", marginBottom: 16 }}>
+              Questions About the Pilot Program?
+            </h2>
+            <p className="text-slate-600 mb-10 text-lg">
+              Reach out directly or learn more about program structure and success metrics.
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 mb-12">
+              <a href="mailto:mbrunke@vaughnmartin.com" className="text-lg font-bold text-[#0A0F2E] hover:text-[#C9A84C] transition-colors border-b-2 border-[#C9A84C] pb-1">
+                mbrunke@vaughnmartin.com
+              </a>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6">
+              {[
+                { label: "How It Works", path: "/platform-overview" },
+                { label: "170 Playbooks", path: "/playbook-library" },
+                { label: "Our Story", path: "/our-story" }
+              ].map((link) => (
+                <Button
+                  key={link.label}
+                  onClick={() => setLocation(link.path)}
+                  variant="outline"
+                  className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold px-8 h-12"
+                >
+                  {link.label}
+                </Button>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              onClick={() => setLocation("/how-it-works")}
-              variant="outline"
-              size="lg"
-              data-testid="button-see-demo"
-            >
-              See How Execution OS Works
-            </Button>
-            <Button
-              onClick={() => setLocation("/playbook-library")}
-              variant="outline"
-              size="lg"
-              data-testid="button-view-scenarios"
-            >
-              View 170 Playbooks
-            </Button>
-            <Button
-              onClick={() => setLocation("/our-story")}
-              variant="outline"
-              size="lg"
-              data-testid="button-our-story"
-            >
-              Read Our Story
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </PageLayout>
   );
 }

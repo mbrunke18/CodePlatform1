@@ -102,6 +102,11 @@ const DEMO_SPEEDS = [
   { label: '10x', value: 10, icon: '🚀' },
 ];
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   const { 
     readiness, 
@@ -210,11 +215,11 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
   const getTaskIcon = (type: DemoTask['type']) => {
     switch (type) {
-      case 'task': return <CheckCircle2 className="w-4 h-4 text-emerald-500" />;
-      case 'document': return <FileCheck className="w-4 h-4 text-blue-500" />;
-      case 'communication': return <Send className="w-4 h-4 text-violet-500" />;
-      case 'budget': return <Wallet className="w-4 h-4 text-amber-500" />;
-      case 'integration': return <Zap className="w-4 h-4 text-cyan-500" />;
+      case 'task': return <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />;
+      case 'document': return <FileCheck className="w-4 h-4 text-[#0A0F2E]" />;
+      case 'communication': return <Send className="w-4 h-4 text-[#C9A84C]" />;
+      case 'budget': return <Wallet className="w-4 h-4 text-[#C9A84C]" />;
+      case 'integration': return <Zap className="w-4 h-4 text-[#0A0F2E]" />;
     }
   };
 
@@ -241,10 +246,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   ];
 
   const severityColors = {
-    critical: 'bg-red-500 text-gray-900',
-    high: 'bg-orange-500 text-gray-900',
-    medium: 'bg-amber-500 text-gray-900',
-    low: 'bg-blue-500 text-gray-900'
+    critical: 'bg-red-500 text-white',
+    high: 'bg-[#C9A84C] text-[#0A0F2E]',
+    medium: 'bg-[#2B8A6E] text-white',
+    low: 'bg-[#0A0F2E] text-white'
   };
 
   // Fetch ROI metrics
@@ -255,11 +260,11 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   if (isLoading) {
     return (
       <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
+      <div className="min-h-screen bg-white p-8">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse space-y-4">
-            <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded"></div>
-            <div className="h-64 bg-slate-200 dark:bg-slate-800 rounded"></div>
+            <div className="h-12 bg-gray-100 rounded"></div>
+            <div className="h-64 bg-gray-100 rounded"></div>
           </div>
         </div>
       </div>
@@ -276,28 +281,23 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           recycle={false}
           numberOfPieces={500}
           gravity={0.2}
-          colors={['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EC4899']}
+          colors={['#0A0F2E', '#C9A84C', '#2B8A6E', '#DFC178', '#3BAF8A']}
         />
       )}
 
-      {/* ZONE 1: Hero Header — What is this page and why does it matter */}
-      <div className="bg-white border-b border-gray-200">
+      {/* ZONE 1: Hero Header */}
+      <div className="bg-white border-b border-[#E8E4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <Badge className="bg-poise-teal/20 text-poise-teal border border-poise-teal/40 text-xs font-semibold">
-                  <SubBrandLabel name="Compass™" />
-                </Badge>
-                <Badge variant="outline" className="border-slate-600 text-gray-800 text-xs">
-                  <Clock className="w-3 h-3 mr-1" />
-                  {currentTime.toLocaleTimeString()}
-                </Badge>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Command Center · Compass™</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-                Command Center
+              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", color: NAVY, marginBottom: 16 }}>
+                Execution <em style={{ fontStyle: "italic", color: GOLD }}>Command Center</em>
               </h1>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6">
                 Your organization's nerve center for strategic execution. When a critical event is detected, 
                 Execution OS coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
                 in under 12 minutes.
@@ -305,27 +305,27 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               <OnboardingTrigger pageId="command-center" autoStart={true} />
             </div>
             <div className="grid grid-cols-3 gap-4 lg:gap-6">
-              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
-                <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">
+              <div style={{ padding: 16, border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", background: "#fff", textAlign: "center" }}>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {activeScenarios.length}
                 </div>
-                <div className="text-xs text-gray-800 uppercase tracking-wide">
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
                   Active Scenarios
                 </div>
               </div>
-              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
-                <div className="text-2xl sm:text-3xl font-bold text-violet-400 mb-1">
+              <div style={{ padding: 16, border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", background: "#fff", textAlign: "center" }}>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {teamsCoordinating}
                 </div>
-                <div className="text-xs text-gray-800 uppercase tracking-wide">
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
                   Teams Ready
                 </div>
               </div>
-              <div className="text-center p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
-                <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
+              <div style={{ padding: 16, border: "1px solid #E8E4DC", borderLeft: "3px solid #0A0F2E", background: "#fff", textAlign: "center" }}>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {percentOnTrack}%
                 </div>
-                <div className="text-xs text-gray-800 uppercase tracking-wide">
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
                   On Track
                 </div>
               </div>
@@ -334,60 +334,63 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
         </div>
       </div>
 
-      {/* ZONE 2: Live Execution View — The "aha moment" when running */}
+      {/* ZONE 2: Live Execution View */}
       <div ref={executionViewRef} />
       {demoExecution && (
-        <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 dark:from-blue-800 dark:via-violet-800 dark:to-purple-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div style={{ background: NAVY, padding: "48px 0" }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
               <div className="flex items-center gap-4 sm:gap-6">
                 <div className="relative shrink-0">
-                  <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/10 flex items-center justify-center border-2 sm:border-4 border-white/30">
+                  <div style={{ width: 96, height: 96, borderRadius: "50%", background: "rgba(255,255,255,0.05)", border: "2px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div className="text-center">
-                      <div className="text-xl sm:text-3xl font-bold text-gray-900" data-testid="text-countdown-time">
+                      <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#fff" }} data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
                       </div>
-                      <div className="text-xs text-gray-900/70">remaining</div>
+                      <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>remaining</div>
                     </div>
                   </div>
                   {demoExecution.active && (
-                    <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-green-400 rounded-full animate-pulse border-2 border-white"></div>
+                    <div className="absolute top-1 right-1 w-4 h-4 bg-[#3BAF8A] rounded-full animate-pulse border-2 border-[#0A0F2E]"></div>
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900 shrink-0" />
-                    <h2 className="text-base sm:text-xl font-bold text-gray-900 truncate">
-                      {demoExecution.scenario}
-                    </h2>
-                    {demoExecution.active ? (
-                      <Badge className="bg-green-500 text-gray-900 animate-pulse text-xs">LIVE</Badge>
-                    ) : (
-                      <Badge className="bg-emerald-500 text-gray-900 text-xs">COMPLETED</Badge>
-                    )}
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                      <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>LIVE EXECUTION</span>
+                    </div>
                   </div>
-                  <p className="text-gray-900/80 text-xs sm:text-sm truncate">
-                    {demoExecution.active 
-                      ? `Phase: ${EXECUTION_PHASES[demoExecution.phase]?.name}`
-                      : 'All phases finished successfully'}
-                  </p>
+                  <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>
+                    {demoExecution.scenario}
+                  </h2>
+                  <div className="flex items-center gap-2">
+                    {demoExecution.active ? (
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>LIVE</div>
+                    ) : (
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.2)", color:"#fff", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>COMPLETED</div>
+                    )}
+                    <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13 }}>
+                      Phase: {EXECUTION_PHASES[demoExecution.phase]?.name}
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-6">
-                <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4 flex-1 sm:flex-initial">
-                  <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
-                    <div className="text-base sm:text-xl font-bold text-gray-900">{demoExecution.completedTasks.length}</div>
-                    <div className="text-xs text-gray-900/70">Tasks Done</div>
+                <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4">
+                  <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
+                    <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff" }}>{demoExecution.completedTasks.length}</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Tasks</div>
                   </div>
-                  <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
-                    <div className="text-base sm:text-xl font-bold text-emerald-300" data-testid="text-roi-value">
+                  <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
+                    <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: GOLD_LT }} data-testid="text-roi-value">
                       ${(demoExecution.accumulatedValue / 1000).toFixed(0)}K
                     </div>
-                    <div className="text-xs text-gray-900/70">Value</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Value</div>
                   </div>
-                  <div className="text-center px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 rounded-lg">
-                    <div className="text-base sm:text-xl font-bold text-gray-900">8</div>
-                    <div className="text-xs text-gray-900/70">Teams</div>
+                  <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
+                    <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff" }}>8</div>
+                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Teams</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -395,8 +398,8 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     <Button
                       key={speed.value}
                       size="sm"
-                      variant={demoSpeed === speed.value ? "secondary" : "ghost"}
-                      className={`h-7 sm:h-8 px-2 sm:px-3 text-xs ${demoSpeed === speed.value ? "bg-white text-violet-600" : "text-gray-900 hover:bg-white/20"}`}
+                      variant="ghost"
+                      style={{ border: demoSpeed === speed.value ? "1px solid #C9A84C" : "1px solid rgba(255,255,255,0.1)", color: demoSpeed === speed.value ? "#C9A84C" : "rgba(255,255,255,0.6)", fontSize: 9, fontWeight: 700 }}
                       onClick={() => setDemoSpeed(speed.value)}
                       data-testid={`button-speed-${speed.value}x`}
                     >
@@ -407,7 +410,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </div>
             </div>
             
-            <div className="mt-4 sm:mt-6 grid grid-cols-2 sm:flex gap-2">
+            <div className="mt-8 grid grid-cols-2 sm:flex gap-4">
               {EXECUTION_PHASES.map((phase, idx) => {
                 const phaseStart = EXECUTION_PHASES.slice(0, idx).reduce((a, p) => a + p.duration, 0);
                 const phaseProgress = demoExecution.elapsedSeconds >= phaseStart + phase.duration 
@@ -420,17 +423,16 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 
                 return (
                   <div key={phase.id} className="flex-1" data-testid={`phase-progress-${phase.id}`}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className={`text-xs font-medium ${isActive ? 'text-gray-900' : 'text-gray-900/60'}`}>
-                        {phase.icon} <span className="hidden sm:inline">{phase.name}</span>
-                        <span className="sm:hidden">{phase.name.split(' ')[0]}</span>
+                    <div className="flex items-center justify-between mb-2">
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: isActive ? "#fff" : "rgba(255,255,255,0.4)" }}>
+                        {phase.icon} {phase.name}
                       </span>
-                      {isComplete && <CheckCircle2 className="w-3 h-3 text-emerald-300" />}
+                      {isComplete && <CheckCircle2 className="w-3 h-3 text-[#3BAF8A]" />}
                     </div>
-                    <div className="h-1.5 sm:h-2 bg-white/20 rounded-full overflow-hidden">
+                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
                       <div 
                         className={`h-full transition-all duration-300 ${
-                          isComplete ? 'bg-emerald-400' : isActive ? 'bg-white animate-pulse' : 'bg-white/40'
+                          isComplete ? 'bg-[#3BAF8A]' : isActive ? 'bg-[#C9A84C] animate-pulse' : 'bg-white/20'
                         }`}
                         style={{ width: `${phaseProgress}%` }}
                       ></div>
@@ -441,15 +443,15 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             </div>
 
             {demoExecution.completedTasks.length > 0 && (
-              <div className="mt-4 pt-4 border-t border-white/20">
-                <div className="flex items-center justify-between mb-2">
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-gray-900/70" />
-                    <span className="text-xs font-medium text-gray-900/70 uppercase tracking-wide">Live Activity Feed</span>
+                    <Activity className="w-4 h-4 text-[#C9A84C]" />
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Live Activity Feed</span>
                   </div>
-                  <span className="text-xs text-gray-900/60">{demoExecution.completedTasks.length} of 20 tasks</span>
+                  <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{demoExecution.completedTasks.length} of 20 tasks</span>
                 </div>
-                <div className="max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20">
+                <div className="max-h-32 overflow-y-auto">
                   <div className="flex flex-wrap gap-2">
                     {DEMO_TASKS
                       .filter(t => demoExecution.completedTasks.includes(t.id))
@@ -457,15 +459,14 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       .map((task, idx) => (
                       <div 
                         key={task.id}
-                        className={`flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full text-xs text-gray-900 whitespace-nowrap ${
-                          idx === 0 ? 'animate-pulse ring-2 ring-white/30' : ''
-                        }`}
+                        style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", padding: "8px 16px", borderRadius: 20, display: "flex", alignItems: "center", gap: 8 }}
+                        className={idx === 0 ? 'animate-pulse ring-1 ring-[#C9A84C]/50' : ''}
                         data-testid={`live-task-${task.id}`}
                       >
                         {getTaskIcon(task.type)}
-                        <span className="font-medium">{task.team}:</span>
-                        <span className="opacity-90 max-w-[150px] truncate">{task.action}</span>
-                        <span className="opacity-60">+${(task.value/1000).toFixed(0)}K</span>
+                        <span style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{task.team}:</span>
+                        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)" }} className="max-w-[150px] truncate">{task.action}</span>
+                        <span style={{ fontSize: 10, color: "#DFC178" }}>+${(task.value/1000).toFixed(0)}K</span>
                       </div>
                     ))}
                   </div>
@@ -478,543 +479,219 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
       {/* Completion Celebration */}
       {demoExecution && !demoExecution.active && demoExecution.elapsedSeconds >= 720 && (
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-800 dark:to-teal-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "48px 0" }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4 sm:gap-6">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                  <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-gray-900" />
+              <div className="flex items-center gap-6">
+                <div style={{ width: 64, height: 64, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Trophy className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>EXECUTION SUCCESSFUL</span>
+                  </div>
+                  <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY }}>
                     Execution Complete
                   </h2>
-                  <p className="text-gray-900/80 text-sm sm:text-base">
+                  <p className="text-gray-600 text-sm">
                     {demoExecution.scenario} — coordinated response delivered in under 12 minutes
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-3 sm:gap-6">
-                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-2xl sm:text-3xl font-bold text-gray-900">{demoExecution.completedTasks.length}</div>
-                  <div className="text-xs text-gray-900/70">Tasks</div>
+              <div className="flex flex-wrap items-center gap-6">
+                <div style={{ padding: 16, background: "#fff", border: "1px solid #E8E4DC", textAlign: "center", minWidth: 100 }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>{demoExecution.completedTasks.length}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280" }}>Tasks</div>
                 </div>
-                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-2xl sm:text-3xl font-bold text-emerald-200">${(demoExecution.accumulatedValue / 1000).toFixed(0)}K</div>
-                  <div className="text-xs text-gray-900/70">Value</div>
+                <div style={{ padding: 16, background: "#fff", border: "1px solid #E8E4DC", textAlign: "center", minWidth: 100 }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E" }}>$154K</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280" }}>Value Saved</div>
                 </div>
-                <div className="text-center px-3 sm:px-4 py-2 bg-white/10 rounded-lg">
-                  <div className="text-2xl sm:text-3xl font-bold text-gray-900">8</div>
-                  <div className="text-xs text-gray-900/70">Teams</div>
-                </div>
-                <Button
-                  size="lg"
-                  onClick={launchDemoExecution}
-                  className="bg-white text-emerald-700 hover:bg-white/90"
-                  data-testid="button-restart-demo"
-                >
-                  <Rocket className="w-4 h-4 mr-2" />
-                  Run Again
-                </Button>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* ZONE 3: Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
-
-        {/* Section: Launch an Execution */}
-        <div>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Launch an Execution</h2>
-              <p className="text-sm text-gray-700 dark:text-slate-400 mt-1">
-                Select a strategic scenario to see how Execution OS orchestrates your organization's response in real time
-              </p>
-            </div>
-            <Button 
-              onClick={() => setShowScenarioLauncher(!showScenarioLauncher)}
-              className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-gray-900 shrink-0"
-              data-testid="button-launch-scenario"
-            >
-              <PlayCircle className="w-4 h-4 mr-2" />
-              Choose Scenario
-            </Button>
-          </div>
-          
-          {showScenarioLauncher && (
-            <Card className="mb-4 border-2 border-blue-500 dark:border-blue-700 animate-in slide-in-from-top-2 duration-200">
-              <CardContent className="py-5">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-slate-900 dark:text-white">Select a Scenario</h3>
-                  <Button variant="ghost" size="sm" onClick={() => setShowScenarioLauncher(false)}>
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                  {[
-                    { name: 'Competitor Acquisition Response', domain: 'M&A', category: 'OFFENSE', teams: 8, tasks: 20, desc: 'Coordinate cross-functional response when a competitor announces a major acquisition' },
-                    { name: 'Ransomware Incident Response', domain: 'Cybersecurity', category: 'DEFENSE', teams: 6, tasks: 16, desc: 'Activate security protocols, legal, communications, and recovery simultaneously' },
-                    { name: 'Product Counter-Launch', domain: 'Competitive Response', category: 'OFFENSE', teams: 7, tasks: 18, desc: 'Rapid competitive response when a rival launches a product in your market' },
-                    { name: 'Regulatory Compliance Sprint', domain: 'Regulatory', category: 'DEFENSE', teams: 5, tasks: 14, desc: 'Mobilize legal, operations, and compliance for urgent regulatory changes' },
-                    { name: 'AI Governance Deployment', domain: 'AI Governance', category: 'SPECIAL TEAMS', teams: 6, tasks: 22, desc: 'Stand up governance framework across engineering, legal, and ethics teams' },
-                    { name: 'Digital Transformation Phase 2', domain: 'Digital Transformation', category: 'SPECIAL TEAMS', teams: 9, tasks: 24, desc: 'Orchestrate the next phase of enterprise-wide digital transformation' },
-                  ].map((scenario, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setShowScenarioLauncher(false); launchDemoExecution(scenario.name); }}
-                      className="text-left p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-all group"
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant="outline" className="text-[10px]">{scenario.category}</Badge>
-                        <span className="text-xs text-gray-800">{scenario.domain}</span>
-                      </div>
-                      <span className="text-sm font-semibold text-slate-900 dark:text-white block mb-1">{scenario.name}</span>
-                      <p className="text-xs text-gray-700 dark:text-slate-400 mb-3">{scenario.desc}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-gray-800">
-                          <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {scenario.teams} teams</span>
-                          <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> {scenario.tasks} tasks</span>
+      {/* ZONE 3: Management Grid */}
+      <div className="bg-white min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Left Column: Signals & Alerts */}
+            <div className="lg:col-span-1 space-y-8">
+              <Card className="border border-[#E8E4DC] bg-white">
+                <CardHeader className="border-b border-[#E8E4DC]">
+                  <div className="flex items-center justify-between">
+                    <CardTitle style={{ ...CG, color: NAVY }}>Intelligence Signals</CardTitle>
+                    <Badge variant="outline" className="text-xs">{signalAlerts.length} Active</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="divide-y divide-[#E8E4DC]">
+                    {signalAlerts.map((alert) => (
+                      <div 
+                        key={alert.id} 
+                        className={`p-4 transition-colors cursor-pointer hover:bg-[#F8F7F4] ${selectedSignal === alert.id ? 'bg-[#F8F7F4]' : ''}`}
+                        onClick={() => setSelectedSignal(alert.id)}
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className={`mt-1 shrink-0 w-2 h-2 rounded-full ${
+                            alert.severity === 'critical' ? 'bg-red-500' : 
+                            alert.severity === 'high' ? 'bg-[#C9A84C]' : 
+                            alert.severity === 'medium' ? 'bg-[#2B8A6E]' : 'bg-[#0A0F2E]'
+                          }`}></div>
+                          <div className="flex-1 min-w-0">
+                            <p style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{alert.title}</p>
+                            <div className="flex items-center justify-between mt-1">
+                              <span style={{ color: "#6B7280", fontSize: 11 }}>{alert.source}</span>
+                              <span style={{ color: "#6B7280", fontSize: 11 }}>{alert.time}</span>
+                            </div>
+                          </div>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-800 group-hover:text-blue-500 transition-colors" />
                       </div>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
-          {activeScenarios.length === 0 && !demoExecution ? (
-            <Card className="border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 via-white to-blue-50/50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950/30" data-testid="card-no-scenarios">
-              <CardContent className="py-10 sm:py-14">
-                <div className="max-w-2xl mx-auto text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-violet-100 dark:from-blue-900/50 dark:to-violet-900/50 mb-5">
-                    <Rocket className="w-8 h-8 text-blue-800 dark:text-blue-400" />
+              <Card className="border border-[#E8E4DC] bg-[#0A0F2E] text-white">
+                <CardContent className="p-6 space-y-4">
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>ORACLE PATTERNS</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                    See Execution OS in Action
-                  </h3>
-                  <p className="text-gray-800 dark:text-slate-300 mb-6 text-sm sm:text-base leading-relaxed">
-                    Watch how Execution OS transforms a strategic trigger into a fully coordinated organizational response. 
-                    Tasks are assigned, documents are staged, budgets are unlocked, and integrations fire — all within 12 minutes.
+                  <h3 style={{ ...CG, fontSize: 20, fontWeight: 600 }}>Pattern Detected</h3>
+                  <p className="text-sm text-white/70">
+                    Multiple weak signals indicate a competitor move in the APAC region. 
+                    Recommended protocol: APAC Market Defense.
                   </p>
-                  <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8">
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-blue-800 dark:text-blue-400">20</div>
-                      <div className="text-xs text-gray-700 dark:text-slate-400 mt-1">Tasks Auto-Created</div>
-                    </div>
-                    <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-violet-600 dark:text-violet-400">8</div>
-                      <div className="text-xs text-gray-700 dark:text-slate-400 mt-1">Teams Coordinated</div>
-                    </div>
-                    <div className="h-8 w-px bg-slate-200 dark:bg-slate-700"></div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-emerald-700 dark:text-emerald-400">&lt;12m</div>
-                      <div className="text-xs text-gray-700 dark:text-slate-400 mt-1">Full Activation</div>
+                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
+                    Review Full Pattern Analysis
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Middle Column: Coordination & Timeline */}
+            <div className="lg:col-span-2 space-y-8">
+              <Card className="border border-[#E8E4DC] bg-white">
+                <CardHeader className="border-b border-[#E8E4DC]">
+                  <div className="flex items-center justify-between">
+                    <CardTitle style={{ ...CG, color: NAVY }}>Execution Coordination</CardTitle>
+                    <div className="flex items-center gap-2">
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                        Synced
+                      </div>
                     </div>
                   </div>
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div className="space-y-6">
+                    {coordinationTimeline.map((event, idx) => (
+                      <div key={event.id} className="relative pl-8">
+                        {idx !== coordinationTimeline.length - 1 && (
+                          <div className="absolute left-3 top-6 bottom-0 w-[1px] bg-[#E8E4DC]"></div>
+                        )}
+                        <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 flex items-center justify-center bg-white ${
+                          event.status === 'completed' ? 'border-[#3BAF8A]' : 
+                          event.status === 'in-progress' ? 'border-[#C9A84C] animate-pulse' : 'border-[#E8E4DC]'
+                        }`}>
+                          {event.status === 'completed' && <CheckCircle2 className="w-3 h-3 text-[#3BAF8A]" />}
+                          {event.status === 'in-progress' && <Clock className="w-3 h-3 text-[#C9A84C]" />}
+                        </div>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <p style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{event.team}: {event.action}</p>
+                            <p style={{ color: "#6B7280", fontSize: 12 }}>{event.time}</p>
+                          </div>
+                          <Badge variant="ghost" style={{ fontSize: 9, color: "#6B7280" }}>
+                            {event.status.toUpperCase()}
+                          </Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Action Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="border border-[#E8E4DC] hover:border-[#0A0F2E] transition-colors bg-[#F8F7F4]">
+                  <CardContent className="p-6">
+                    <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                      <Rocket className="w-4 h-4 text-white" />
+                    </div>
+                    <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Launch Response</h3>
+                    <p className="text-sm text-gray-600 mb-4">Execute a pre-configured playbook for active signals.</p>
                     <Button 
-                      size="lg" 
-                      onClick={launchDemoExecution}
-                      className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-gray-900 px-8"
-                      data-testid="button-launch-demo"
-                    >
-                      <Rocket className="w-4 h-4 mr-2" />
-                      Launch Execution
-                    </Button>
-                    <Button 
-                      size="lg" 
-                      variant="outline"
+                      variant="outline" 
+                      className="w-full" 
+                      style={{ border:"1.5px solid #E8E4DC", color: NAVY, fontSize: 10, fontWeight: 700 }}
                       onClick={() => setShowScenarioLauncher(true)}
                     >
-                      <Target className="w-4 h-4 mr-2" />
-                      Browse Scenarios
+                      VIEW SCENARIOS
                     </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {activeScenarios.map((scenario) => (
-                <Card key={scenario.id} className="border-l-4 border-l-blue-500" data-testid={`card-scenario-${scenario.id}`}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <CardTitle className="text-lg">{scenario.name}</CardTitle>
-                        <CardDescription>
-                          {scenario.teamsInvolved} teams coordinating
-                        </CardDescription>
-                      </div>
-                      <Badge variant={scenario.status === 'active' ? 'default' : 'secondary'}>
-                        {scenario.status === 'active' && <Radio className="w-3 h-3 mr-1 animate-pulse" />}
-                        {scenario.status}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-300">Progress</span>
-                        <span className="font-semibold">{scenario.progress}%</span>
-                      </div>
-                      <Progress value={scenario.progress} />
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="w-full mt-2" 
-                        onClick={() => setSelectedScenario(selectedScenario === scenario.id ? null : scenario.id)}
-                        data-testid={`button-view-${scenario.id}`}
-                      >
-                        {selectedScenario === scenario.id ? 'Hide Details' : 'View Details'}
-                      </Button>
-                      {selectedScenario === scenario.id && (
-                        <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 space-y-2 text-sm">
-                          <div className="flex justify-between">
-                            <span className="text-gray-700 dark:text-slate-400">Domain</span>
-                            <span className="font-medium">{scenario.domain || 'Strategic'}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-700 dark:text-slate-400">Teams Active</span>
-                            <span className="font-medium">{scenario.teamsInvolved}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-700 dark:text-slate-400">Progress</span>
-                            <span className="font-medium text-emerald-700">{scenario.progress}%</span>
-                          </div>
-                          <Button 
-                            size="sm" 
-                            className="w-full mt-2 bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900"
-                            onClick={() => launchDemoExecution()}
-                          >
-                            <Rocket className="w-3 h-3 mr-1.5" />
-                            Open Execution View
-                          </Button>
-                        </div>
-                      )}
-                    </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
-          )}
-        </div>
 
-        {/* Section: Operational Intelligence — explains what these panels are */}
-        <div>
-          <div className="mb-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Operational Intelligence</h2>
-            <p className="text-sm text-gray-700 dark:text-slate-400 mt-1">
-              Real-time visibility into team coordination and incoming signals that may require action
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card data-testid="card-coordination-timeline">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <Users className="w-5 h-5 text-violet-600" />
-                  Team Coordination
-                </CardTitle>
-                <CardDescription>
-                  What your teams are doing right now across active scenarios
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {coordinationTimeline.map((event) => (
-                    <div 
-                      key={event.id} 
-                      className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700"
-                      data-testid={`timeline-event-${event.id}`}
-                    >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                        event.status === 'completed' ? 'bg-emerald-100 dark:bg-emerald-900' :
-                        event.status === 'in-progress' ? 'bg-blue-100 dark:bg-blue-900' :
-                        'bg-slate-200 dark:bg-slate-700'
-                      }`}>
-                        {event.status === 'completed' ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
-                        ) : event.status === 'in-progress' ? (
-                          <Radio className="w-4 h-4 text-blue-800 dark:text-blue-400 animate-pulse" />
-                        ) : (
-                          <Clock className="w-4 h-4 text-gray-800" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <span className="font-medium text-sm text-slate-900 dark:text-white">
-                            {event.team}
-                          </span>
-                          <span className="text-xs text-gray-800">{event.time}</span>
-                        </div>
-                        <p className="text-sm text-gray-800 dark:text-slate-300 truncate">
-                          {event.action}
-                        </p>
-                      </div>
+                <Card className="border border-[#E8E4DC] hover:border-[#0A0F2E] transition-colors bg-white">
+                  <CardContent className="p-6">
+                    <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                      <Radio className="w-4 h-4 text-white" />
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card data-testid="card-signal-alerts">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <Bell className="w-5 h-5 text-[#C9A84C]" />
-                  Incoming Signals
-                </CardTitle>
-                <CardDescription>
-                  Events detected across your monitoring sources that may require a response
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {signalAlerts.map((alert) => (
-                    <div key={alert.id}>
-                      <div 
-                        className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer"
-                        data-testid={`signal-alert-${alert.id}`}
-                        onClick={() => setSelectedSignal(selectedSignal === alert.id ? null : alert.id)}
-                      >
-                        <Badge className={`${severityColors[alert.severity]} text-xs px-2`}>
-                          {alert.severity.toUpperCase()}
-                        </Badge>
-                        <div className="flex-1 min-w-0">
-                          <p className="font-medium text-sm text-slate-900 dark:text-white">
-                            {alert.title}
-                          </p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-gray-800">{alert.source}</span>
-                            <span className="text-xs text-gray-800">·</span>
-                            <span className="text-xs text-gray-800">{alert.time}</span>
-                          </div>
-                        </div>
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="flex-shrink-0"
-                          onClick={(e) => { e.stopPropagation(); setSelectedSignal(selectedSignal === alert.id ? null : alert.id); }}
-                        >
-                          {selectedSignal === alert.id ? <X className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
-                        </Button>
-                      </div>
-                      {selectedSignal === alert.id && (
-                        <div className="ml-4 mr-4 mb-3 mt-1 p-3 bg-slate-50 dark:bg-slate-800/80 rounded-lg border border-slate-200 dark:border-slate-700 space-y-2 animate-in slide-in-from-top-2 duration-200">
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-gray-700 dark:text-slate-400">Source</span>
-                            <span className="text-xs font-semibold">{alert.source}</span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-gray-700 dark:text-slate-400">Detected</span>
-                            <span className="text-xs font-semibold">{alert.time}</span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-gray-700 dark:text-slate-400">AI Confidence</span>
-                            <span className="text-xs font-semibold text-emerald-700">94%</span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span className="text-xs font-medium text-gray-700 dark:text-slate-400">Matching Playbooks</span>
-                            <span className="text-xs font-semibold text-blue-800">3 available</span>
-                          </div>
-                          <div className="flex gap-2 mt-2">
-                            <Button size="sm" className="flex-1 bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900 text-xs"
-                              onClick={() => launchDemoExecution()}>
-                              <Rocket className="w-3 h-3 mr-1" />
-                              Activate Response
-                            </Button>
-                            <Button size="sm" variant="outline" className="text-xs"
-                              onClick={() => setSelectedSignal(null)}>
-                              Dismiss
-                            </Button>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Section: Strategic Readiness */}
-        <div>
-          <div className="mb-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Strategic Readiness</h2>
-            <p className="text-sm text-gray-700 dark:text-slate-400 mt-1">
-              How prepared your organization is to respond to emerging threats and opportunities
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <TrendingUp className="w-5 h-5 text-blue-800" />
-                  Readiness Score
-                </CardTitle>
-                <CardDescription>
-                  Your organization's preparedness across key dimensions
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center mb-4">
-                  <div className="text-5xl font-bold text-blue-800 dark:text-blue-400 mb-2">
-                    {readiness.overall.toFixed(1)}%
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
-                    <div key={key}>
-                      <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="capitalize text-slate-700 dark:text-slate-300">{key}</span>
-                        <span className="font-semibold">{value}%</span>
-                      </div>
-                      <Progress value={value} className="h-2" />
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
-                  Early Warning Signals
-                </CardTitle>
-                <CardDescription>
-                  Emerging patterns that haven't yet reached trigger threshold
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {weakSignals.slice(0, 5).map((signal) => (
-                    <div 
-                      key={signal.id} 
-                      className="p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-900"
-                      data-testid={`weak-signal-${signal.id}`}
-                    >
-                      <div className="flex items-start justify-between mb-1">
-                        <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
-                          {signal.title}
-                        </h4>
-                        <Badge variant="outline" className="text-xs">
-                          {signal.confidence}%
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-300">
-                        {signal.source} · {signal.category}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <Zap className="w-5 h-5 text-violet-600" />
-                  AI Pattern Recognition
-                </CardTitle>
-                <CardDescription>
-                  Patterns the AI has identified across your signal data
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 max-h-96 overflow-y-auto">
-                  {oraclePatterns.length > 0 ? oraclePatterns.map((pattern) => (
-                    <div 
-                      key={pattern.id} 
-                      className="p-3 bg-violet-50 dark:bg-violet-950/30 rounded-lg border border-violet-200 dark:border-violet-900"
-                      data-testid={`oracle-pattern-${pattern.id}`}
-                    >
-                      <div className="flex items-start justify-between mb-1">
-                        <h4 className="font-semibold text-sm text-slate-900 dark:text-white">
-                          {pattern.name}
-                        </h4>
-                        <Badge variant="outline" className="text-xs">
-                          {pattern.accuracy}%
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-300">
-                        {pattern.signals} signals · {pattern.trend}
-                      </p>
-                    </div>
-                  )) : (
-                    <div className="text-center py-6 text-sm text-gray-800">
-                      <Brain className="w-8 h-8 mx-auto mb-2 opacity-40" />
-                      AI is analyzing incoming signals. Patterns will appear as more data is collected.
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Section: Always-On Monitoring */}
-        <Card className="border border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-950/20">
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-              <div>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <Activity className="w-5 h-5 text-blue-800" />
-                  Always-On Monitoring
-                </CardTitle>
-                <CardDescription>
-                  Execution OS continuously watches your signal sources and automatically activates the right playbook when a trigger fires
-                </CardDescription>
-              </div>
-              <Button 
-                variant={continuousModeLocal ? "destructive" : "default"}
-                onClick={() => setContinuousModeLocal(!continuousModeLocal)}
-                className="shrink-0"
-                data-testid="button-toggle-continuous-mode"
-              >
-                {continuousModeLocal ? (
-                  <>
-                    <Pause className="w-4 h-4 mr-2" />
-                    Pause Monitoring
-                  </>
-                ) : (
-                  <>
-                    <PlayCircle className="w-4 h-4 mr-2" />
-                    Enable Monitoring
-                  </>
-                )}
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                <div className={`text-3xl font-bold mb-1 ${continuousModeLocal ? 'text-emerald-700 dark:text-emerald-400' : 'text-gray-800'}`}>
-                  {continuousModeLocal ? 'ACTIVE' : 'PAUSED'}
-                </div>
-                <div className="text-xs text-gray-700 dark:text-slate-400">Monitoring Status</div>
-              </div>
-              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 mb-1">
-                  {continuousMode.tasksScheduled}
-                </div>
-                <div className="text-xs text-gray-700 dark:text-slate-400">Automated Tasks Queued</div>
-              </div>
-              <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                <div className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-1">
-                  {continuousMode.nextRun ? new Date(continuousMode.nextRun).toLocaleTimeString() : '--'}
-                </div>
-                <div className="text-xs text-gray-700 dark:text-slate-400">Next Scan</div>
+                    <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Signal Settings</h3>
+                    <p className="text-sm text-gray-600 mb-4">Configure custom trigger thresholds and team alerts.</p>
+                    <Button variant="outline" className="w-full" style={{ border:"1.5px solid #E8E4DC", color: NAVY, fontSize: 10, fontWeight: 700 }}>
+                      MANAGE TRIGGERS
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
+
+      {/* Scenario Launcher Modal */}
+      {showScenarioLauncher && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <Card className="w-full max-w-lg border border-[#E8E4DC] bg-white shadow-2xl">
+            <CardHeader className="border-b border-[#E8E4DC]">
+              <div className="flex items-center justify-between">
+                <CardTitle style={{ ...CG, color: NAVY }}>Launch Execution Scenario</CardTitle>
+                <Button variant="ghost" size="icon" onClick={() => setShowScenarioLauncher(false)}>
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent className="p-6 space-y-4">
+              <p className="text-sm text-gray-600">Select a scenario to simulate organization-wide execution coordination.</p>
+              <div className="space-y-3">
+                {[
+                  { name: 'Competitor Acquisition Response', icon: '🎯' },
+                  { name: 'Ransomware Protocol Activation', icon: '🛡️' },
+                  { name: 'Supply Chain Disruption APAC', icon: '📦' },
+                  { name: 'Hostile Takeover Defense', icon: '⚔️' },
+                ].map((scenario) => (
+                  <div 
+                    key={scenario.name}
+                    className="p-4 border border-[#E8E4DC] hover:border-[#0A0F2E] cursor-pointer bg-[#F8F7F4] flex items-center gap-4 transition-colors"
+                    onClick={() => {
+                      launchDemoExecution(scenario.name);
+                      setShowScenarioLauncher(false);
+                    }}
+                  >
+                    <span className="text-2xl">{scenario.icon}</span>
+                    <span style={{ color: NAVY, fontWeight: 600 }}>{scenario.name}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </PageLayout>
   );
 }

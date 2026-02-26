@@ -126,7 +126,8 @@ const SCENARIOS: Scenario[] = [
       { id: '8', type: 'slack', sender: 'HR Director', content: 'Employees are panicking. Social media posts appearing. Need comms guidance NOW.', urgency: 'high' },
       { id: '9', type: 'call', sender: 'FBI Cyber Division', content: 'Incoming call regarding potential ransomware investigation', urgency: 'critical' },
       { id: '10', type: 'slack', sender: 'SOC Team', content: 'Ransom demand received: $15M in Bitcoin. 48-hour deadline.', urgency: 'critical' },
-    ]
+    ],
+    demoType: 'defensive'
   },
   {
     id: 'competitor',
@@ -151,7 +152,8 @@ const SCENARIOS: Scenario[] = [
       { id: '8', type: 'text', sender: 'CEO', content: 'Wall Street Journal wants a statement. What\'s our position?', urgency: 'critical' },
       { id: '9', type: 'slack', sender: 'Field Sales', content: '6 demos cancelled today. Prospects saying "why bother when competitor is cheaper"', urgency: 'high' },
       { id: '10', type: 'email', sender: 'Analyst Relations', content: 'Gartner calling for comment. They\'re updating their MQ assessment.', urgency: 'high' },
-    ]
+    ],
+    demoType: 'offensive'
   },
   {
     id: 'regulatory',
@@ -176,7 +178,8 @@ const SCENARIOS: Scenario[] = [
       { id: '8', type: 'text', sender: 'Board Chair', content: 'WSJ has the story. Running tomorrow morning. We need to get ahead of this.', urgency: 'critical' },
       { id: '9', type: 'email', sender: 'HR Legal', content: 'Executive compensation clawback provisions activated. Review required.', urgency: 'high' },
       { id: '10', type: 'slack', sender: 'Communications', content: 'Employee town hall needed. Rumors spreading. Morale tanking.', urgency: 'high' },
-    ]
+    ],
+    demoType: 'defensive'
   },
   {
     id: 'deal-risk',
@@ -201,7 +204,8 @@ const SCENARIOS: Scenario[] = [
       { id: '8', type: 'slack', sender: 'Customer Success', content: 'Customer asking why we can\'t match competitor\'s timeline. Losing confidence.', urgency: 'critical' },
       { id: '9', type: 'text', sender: 'CFO', content: 'Margin on expedited deal is 12% vs normal 28%. Is this worth it?', urgency: 'high' },
       { id: '10', type: 'slack', sender: 'Operations', content: 'Engineering says impossible. Sales says must happen. Need exec decision.', urgency: 'critical' },
-    ]
+    ],
+    demoType: 'offensive'
   },
 ];
 
@@ -492,74 +496,73 @@ export default function TryDemo() {
 
           {/* Scenario Selection */}
           {currentPhase === 'select' && (
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Crisis</h2>
-                <p className="text-gray-800">
-                  Experience the chaos of strategic events—then see how Execution OS transforms response
-                </p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                {SCENARIOS.map((scenario) => {
-                  const IconComponent = scenario.icon;
-                  return (
-                    <Card 
-                      key={scenario.id}
-                      className={`bg-white border-2 ${scenario.borderColor} cursor-pointer transition-all hover:shadow-xl hover:scale-[1.02] group`}
-                      onClick={() => startDemo(scenario)}
-                    >
-                      <CardContent className="p-6">
-                        <div className="flex items-start gap-4">
-                          <div className={`p-3 rounded-xl bg-gradient-to-br ${scenario.color}`}>
-                            <IconComponent className="h-6 w-6 text-gray-900" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-bold text-gray-900 group-hover:text-emerald-400 transition-colors mb-1">
-                              {scenario.name}
-                            </h3>
-                            <p className="text-sm text-gray-800 mb-2">{scenario.industry}</p>
-                            <p className="text-sm text-gray-800 mb-3">{scenario.trigger}</p>
-                            <div className="flex items-center gap-4 text-xs">
-                              <span className="flex items-center gap-1 text-red-400">
-                                <TrendingDown className="h-3 w-3" />
-                                ${(scenario.revenuePerMinute / 1000).toFixed(1)}K/min at risk
-                              </span>
-                            </div>
-                          </div>
-                          <ArrowRight className="h-5 w-5 text-gray-800 group-hover:text-white group-hover:translate-x-1 transition-all" />
+            <div className="space-y-12">
+              <div className="grid md:grid-cols-2 gap-6">
+                {SCENARIOS.map((scenario) => (
+                  <div
+                    key={scenario.id}
+                    onClick={() => startDemo(scenario)}
+                    className="group relative border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-all cursor-pointer overflow-hidden"
+                  >
+                    <div className="flex items-start gap-6 relative z-10">
+                      <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <scenario.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                          <div style={{ width: 20, height: 1.5, background: scenario.demoType === 'offensive' ? TEAL : GOLD, flexShrink: 0 }} />
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: scenario.demoType === 'offensive' ? TEAL : GOLD }}>{scenario.industry}</span>
                         </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
+                        <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>{scenario.name}</h3>
+                        <p className="text-slate-600 mb-6 text-sm leading-relaxed">
+                          {scenario.trigger}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs font-bold tracking-widest text-[#0A0F2E] uppercase">
+                          <span>{formatCurrency(scenario.dealValue)} at risk</span>
+                          <div className="w-1 h-1 bg-slate-300 rounded-full" />
+                          <span>{scenario.stakeholders} stakeholders</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-[#0A0F2E] transition-colors" />
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {/* Industry Demos Teaser */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <div className="text-center">
-                  <p className="text-sm text-gray-800 mb-3">
-                    Want to see real company scenarios? Explore our industry deep-dives:
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-2 mb-4">
-                    {INDUSTRY_DEMOS.slice(0, 5).map((demo) => {
-                      const IconComponent = demo.icon;
-                      return (
-                        <button
-                          key={demo.id}
-                          onClick={() => {
-                            setLocation(demo.route);
-                            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                          }}
-                          className="flex items-center gap-2 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg hover:border-poise-teal/50 transition-colors text-sm"
-                        >
-                          <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                          <span className="text-gray-800">{demo.organization}</span>
-                          <span className="text-xs text-gray-800">{demo.industry}</span>
-                        </button>
-                      );
-                    })}
+              {/* Industry Demos Section */}
+              <div className="pt-12 border-t border-[#E8E4DC]">
+                <div className="text-center mb-10">
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+                    <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Industry Deep Dives</span>
+                    <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
                   </div>
-                  <p className="text-xs text-gray-800 mt-2">Each scenario shows the full IDEA loop in action</p>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
+                    Explore Role-Specific Environments
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {INDUSTRY_DEMOS.map((demo) => (
+                    <Link key={demo.id} href={demo.route}>
+                      <div className="group border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-all cursor-pointer">
+                        <div className="flex items-center justify-between mb-4">
+                          <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <demo.icon className="h-4 w-4 text-white" />
+                          </div>
+                          <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: demo.type === 'offensive' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: demo.type === 'offensive' ? "#3BAF8A" : "#C9A84C", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                            {demo.type}
+                          </div>
+                        </div>
+                        <h4 className="font-bold text-slate-900 mb-1">{demo.title}</h4>
+                        <div className="text-xs text-slate-500 mb-3">{demo.organization} · {demo.industry}</div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-[#0A0F2E]">{demo.impact}</span>
+                          <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-[#0A0F2E] transition-colors" />
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>

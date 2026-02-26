@@ -1,297 +1,23 @@
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Target, 
   Zap, 
-  Radio, 
   Clock, 
-  BookOpen, 
-  Brain, 
   ArrowRight,
-  CheckCircle,
-  XCircle,
-  Minus,
   TrendingUp,
-  Shield,
-  Users,
-  BarChart3,
-  Layers,
-  AlertTriangle,
-  Play,
   Bell,
   Settings,
-  MessageSquare,
-  Building2,
-  HelpCircle,
-  Calculator
+  Play
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
 
-const crisisNotificationTools = [
-  {
-    name: 'Everbridge',
-    category: 'Crisis Notification',
-    marketPosition: 'Market leader in mass notification',
-    focus: 'Emergency alerts, mass notification, critical event management',
-    strengths: ['Global reach', 'Mass notification', 'Multi-channel alerts', 'Compliance certified'],
-    gaps: ['Alert only - no execution', 'No playbook library', 'No task orchestration', 'No institutional learning'],
-    color: 'bg-red-500',
-    whenTheyWin: 'Pure notification requirements, government/public sector mandates',
-    trapQuestion: '"How do you turn an alert into coordinated action across 6 departments in under an hour?"'
-  },
-  {
-    name: 'OnSolve',
-    category: 'Crisis Notification',
-    marketPosition: 'Risk intelligence + notification',
-    focus: 'AI-powered risk intelligence, mass notification, travel risk',
-    strengths: ['Risk intelligence', 'Travel tracking', 'Quick deployment', 'Location-based alerts'],
-    gaps: ['Detection without execution', 'No pre-built responses', 'No cross-functional coordination', 'No decision support'],
-    color: 'bg-orange-500',
-    whenTheyWin: 'Risk monitoring focus, travel-heavy organizations',
-    trapQuestion: '"After OnSolve detects a risk, how long does it take your teams to mobilize a coordinated response?"'
-  },
-  {
-    name: 'Noggin',
-    category: 'Crisis Management',
-    marketPosition: 'Integrated resilience workspace',
-    focus: 'Crisis management, business continuity, incident management',
-    strengths: ['Incident management', 'Plan repository', 'Exercise management', 'Resilience focus'],
-    gaps: ['Manual coordination', 'No signal monitoring', 'Slow activation', 'No AI recommendations'],
-    color: 'bg-purple-500',
-    whenTheyWin: 'BC/DR focused requirements, manual plan management',
-    trapQuestion: '"How quickly can you activate a response and have all stakeholders aligned with assigned tasks?"'
-  }
-];
-
-const strategyOKRTools = [
-  {
-    name: 'Workboard',
-    category: 'Strategy Execution',
-    marketPosition: 'OKR and strategy execution platform',
-    focus: 'OKRs, strategic planning, alignment tracking, business reviews',
-    strengths: ['OKR methodology', 'Executive dashboards', 'Alignment visibility', 'Business reviews'],
-    gaps: ['No real-time triggers', 'No crisis playbooks', 'No auto-orchestration', 'No signal detection'],
-    color: 'bg-indigo-500',
-    whenTheyWin: 'Quarterly OKR cadence, strategy alignment reporting',
-    trapQuestion: '"Workboard helps track goals. But when a competitor launches, can it instantly mobilize 6 departments with pre-assigned tasks?"'
-  },
-  {
-    name: 'Quantive (Gtmhub)',
-    category: 'Strategy Execution',
-    marketPosition: 'OKR and goal management',
-    focus: 'OKRs, KPIs, strategic alignment, performance tracking',
-    strengths: ['Goal tracking', 'Integrations', 'Analytics', 'Alignment cascades'],
-    gaps: ['No event-driven activation', 'No playbook library', 'No cross-functional coordination', 'Quarterly not real-time'],
-    color: 'bg-cyan-500',
-    whenTheyWin: 'Data-driven OKR programs, enterprise goal tracking',
-    trapQuestion: '"Quantive tracks whether you hit goals. Execution OS ensures you react to threats before they derail those goals."'
-  },
-  {
-    name: 'Perdoo',
-    category: 'OKR Platform',
-    marketPosition: 'Simple OKR software',
-    focus: 'OKRs, KPIs, strategy alignment for mid-market',
-    strengths: ['Ease of use', 'Clean interface', 'Affordable', 'Quick deployment'],
-    gaps: ['No execution orchestration', 'No external signals', 'No crisis response', 'No institutional learning'],
-    color: 'bg-teal-500',
-    whenTheyWin: 'Mid-market OKR adoption, simplicity-first teams',
-    trapQuestion: '"OKRs measure progress. Execution OS drives action when that progress is threatened."'
-  }
-];
-
-const automationTools = [
-  {
-    name: 'Zapier',
-    category: 'Workflow Automation',
-    marketPosition: 'No-code automation leader',
-    focus: 'App integrations, trigger-based workflows, task automation',
-    strengths: ['5000+ app connections', 'No-code', 'Quick setup', 'Affordable'],
-    gaps: ['No strategic context', 'No playbook library', 'No human decision points', 'No institutional memory'],
-    color: 'bg-orange-500',
-    whenTheyWin: 'Simple task automation, individual productivity',
-    trapQuestion: '"Zapier automates tasks. Can it orchestrate a 50-task, 6-department response with human approval gates and budget unlocks?"'
-  },
-  {
-    name: 'Make (Integromat)',
-    category: 'Workflow Automation',
-    marketPosition: 'Visual automation platform',
-    focus: 'Complex workflows, data transformation, API integrations',
-    strengths: ['Visual builder', 'Complex logic', 'Data manipulation', 'Affordable'],
-    gaps: ['No strategic intelligence', 'No enterprise playbooks', 'No stakeholder coordination', 'No decision velocity'],
-    color: 'bg-violet-500',
-    whenTheyWin: 'Technical teams, complex data workflows',
-    trapQuestion: '"Make connects systems. Execution OS coordinates humans with pre-defined strategic responses."'
-  },
-  {
-    name: 'Workato',
-    category: 'Enterprise Automation',
-    marketPosition: 'Enterprise integration platform',
-    focus: 'Enterprise iPaaS, workflow automation, data integration',
-    strengths: ['Enterprise-grade', 'AI features', 'Security/compliance', 'Deep integrations'],
-    gaps: ['IT-centric', 'No strategic playbooks', 'No signal monitoring', 'No cross-functional execution'],
-    color: 'bg-rose-500',
-    whenTheyWin: 'IT-led automation, enterprise integration projects',
-    trapQuestion: '"Workato integrates systems. But when a cyber breach hits, can it activate Legal, Comms, IT, and HR with pre-staged documents in 12 minutes?"'
-  }
-];
-
-const planningModelingTools = [
-  {
-    name: 'Anaplan',
-    category: 'Connected Planning',
-    marketPosition: 'Enterprise planning & modeling platform',
-    focus: 'FP&A, scenario modeling, supply chain planning, workforce planning',
-    strengths: ['Multi-dimensional modeling', 'Real-time calculation engine', 'AI/ML forecasting (PlanIQ)', 'Cross-functional planning', 'What-if scenarios'],
-    gaps: ['Plans scenarios but doesn\'t execute responses', 'No trigger-based activation', 'No playbook library', 'No stakeholder coordination', '16+ week implementation'],
-    color: 'bg-sky-500',
-    whenTheyWin: 'Complex FP&A requirements, multi-dimensional budgeting, supply chain modeling',
-    trapQuestion: '"Anaplan helps you model what happens if a competitor enters your market. But when they actually do, can Anaplan mobilize 6 departments with pre-assigned tasks in 12 minutes?"',
-    pricing: '$100K-$1M+/year',
-    relationship: 'Complementary - Anaplan models scenarios, Execution OS executes the response'
-  },
-  {
-    name: 'Pigment',
-    category: 'Business Planning',
-    marketPosition: 'Modern business planning platform',
-    focus: 'Financial planning, revenue operations, workforce planning',
-    strengths: ['Modern UI/UX', 'Fast implementation', 'Collaborative', 'Real-time data'],
-    gaps: ['No execution orchestration', 'No signal monitoring', 'No pre-built responses', 'No event-driven activation'],
-    color: 'bg-fuchsia-500',
-    whenTheyWin: 'Mid-market finance teams, Anaplan alternative seekers',
-    trapQuestion: '"Pigment plans your numbers. Execution OS plans your response. When a risk materializes, can Pigment activate your crisis team?"',
-    pricing: 'Contact for pricing',
-    relationship: 'Complementary - Planning data can inform Execution OS trigger thresholds'
-  }
-];
-
-const projectManagementTools = [
-  {
-    name: 'Jira',
-    category: 'Project Management',
-    marketPosition: 'Dev team work management',
-    focus: 'Agile project management, issue tracking, dev workflows',
-    strengths: ['Developer adoption', 'Workflow flexibility', 'Integrations', 'Reporting'],
-    gaps: ['No strategic playbooks', 'No signal detection', 'Manual project setup', 'No pre-approved resources'],
-    color: 'bg-blue-500',
-    whenTheyWin: 'Engineering-first organizations, existing heavy Jira adoption',
-    trapQuestion: '"When a strategic event hits, how long does it take to create the project, assign owners, and get everyone aligned?"'
-  },
-  {
-    name: 'Asana',
-    category: 'Work Management',
-    marketPosition: 'Team collaboration platform',
-    focus: 'Task management, team collaboration, project tracking',
-    strengths: ['User-friendly', 'Cross-functional visibility', 'Templates', 'Timeline views'],
-    gaps: ['No external intelligence', 'No crisis readiness', 'No auto-orchestration', 'No institutional memory'],
-    color: 'bg-pink-500',
-    whenTheyWin: 'Marketing/ops teams, simple project needs',
-    trapQuestion: '"Does Asana tell you when to act, or just help you track work you\'ve already decided to do?"'
-  },
-  {
-    name: 'Monday.com',
-    category: 'Work OS',
-    marketPosition: 'Visual work management',
-    focus: 'Team collaboration, project management, workflow automation',
-    strengths: ['Visual interface', 'Customizable', 'Automations', 'Integrations'],
-    gaps: ['Task-level focus', 'No signal monitoring', 'No coordinated response', 'No strategic execution'],
-    color: 'bg-yellow-500',
-    whenTheyWin: 'Visual-first teams, simple automation needs',
-    trapQuestion: '"Can Monday.com automatically create a project with 50 tasks, assign 6 departments, and unlock budget when a competitor announces M&A?"'
-  },
-  {
-    name: 'ServiceNow',
-    category: 'Enterprise Workflow',
-    marketPosition: 'Enterprise service management',
-    focus: 'IT service management, workflow automation, enterprise ops',
-    strengths: ['Enterprise scale', 'ITSM strength', 'Process automation', 'Compliance'],
-    gaps: ['IT-centric', 'No external signals', 'No strategic playbooks', 'Reactive not proactive'],
-    color: 'bg-green-500',
-    whenTheyWin: 'IT-led initiatives, ITSM expansion plays',
-    trapQuestion: '"ServiceNow is great for IT incidents. But when a regulatory change hits, can it coordinate Legal, Compliance, Comms, and Ops in 12 minutes?"'
-  }
-];
-
-const categoryComparison = [
-  { capability: 'Detects strategic triggers proactively', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', planningTools: false, m: true },
-  { capability: 'Pre-built playbooks with assigned tasks', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'Auto-creates project on activation', crisisTools: false, pmTools: false, okrTools: false, automationTools: 'partial', planningTools: false, m: true },
-  { capability: 'Assigns tasks to specific owners', crisisTools: false, pmTools: 'manual', okrTools: 'manual', automationTools: false, planningTools: false, m: true },
-  { capability: 'Stages required documents', crisisTools: false, pmTools: 'manual', okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'Unlocks pre-approved budgets', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'Syncs to existing PM tools (Jira, etc.)', crisisTools: false, pmTools: 'native', okrTools: 'partial', automationTools: true, planningTools: 'partial', m: true },
-  { capability: '12-minute coordinated response', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'AI-powered recommendations', crisisTools: 'partial', pmTools: false, okrTools: false, automationTools: 'partial', planningTools: true, m: true },
-  { capability: 'Human decision gates', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'Cross-functional coordination', crisisTools: 'partial', pmTools: 'partial', okrTools: 'partial', automationTools: false, planningTools: 'partial', m: true },
-  { capability: 'Institutional learning loop', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: false, m: true },
-  { capability: 'What-if scenario modeling', crisisTools: false, pmTools: false, okrTools: false, automationTools: false, planningTools: true, m: 'partial' },
-  { capability: 'Real-time execution tracking', crisisTools: 'partial', pmTools: true, okrTools: 'partial', automationTools: false, planningTools: false, m: true },
-];
-
-const objections = [
-  {
-    objection: '"We already have Everbridge for crisis management."',
-    response: 'Everbridge excels at notification—telling people something happened. Execution OS picks up where Everbridge stops: the 20-50 hours of coordination after the alert goes out. Execution OS can actually receive Everbridge alerts as triggers, then auto-orchestrate your response.',
-    category: 'Crisis Tools'
-  },
-  {
-    objection: '"We use Jira/Asana for all our project management."',
-    response: 'Perfect—Execution OS syncs directly to Jira and Asana. When Execution OS activates a playbook, it creates the project in your existing PM tool with all tasks assigned. Your teams work where they\'re comfortable; Execution OS just eliminates the 20-50 hours of setup.',
-    category: 'PM Tools'
-  },
-  {
-    objection: '"This sounds like another tool to adopt."',
-    response: 'Execution OS is the opposite—it reduces tools. Teams don\'t learn Execution OS; Execution OS comes to them via the tools they already use (Slack, Teams, Jira, email). The playbook library and signal monitoring are invisible to end users.',
-    category: 'Adoption'
-  },
-  {
-    objection: '"We have crisis playbooks in SharePoint."',
-    response: 'Static playbooks become stale and require manual activation. When did you last update them? Who activates them? Execution OS turns static documents into living, self-improving execution engines that activate automatically.',
-    category: 'Process'
-  },
-  {
-    objection: '"Our teams can coordinate in 72 hours."',
-    response: 'What\'s the cost of those 72 hours? For a cyber breach, every hour is $150K+ in damages. For M&A response, competitors who react in 12 minutes gain insurmountable advantages. Execution OS captures the value of speed.',
-    category: 'Urgency'
-  },
-  {
-    objection: '"How is this different from AI agents?"',
-    response: 'AI agents introduce unpredictability—you don\'t know what they\'ll do. Execution OS provides deterministic execution: pre-defined playbooks where AI recommends and humans decide. You get speed without surprises.',
-    category: 'Technology'
-  },
-  {
-    objection: '"We use Workboard/Quantive for strategy execution."',
-    response: 'OKR tools measure progress on a quarterly cadence. Execution OS activates responses in minutes when strategic events threaten those goals. Workboard tells you if you\'re on track; Execution OS ensures threats don\'t derail you.',
-    category: 'OKR Tools'
-  },
-  {
-    objection: '"Can\'t we just build this with Zapier/Make?"',
-    response: 'Automation tools connect apps. Execution OS orchestrates humans. You can\'t Zap your way to cross-functional coordination with human decision gates, pre-approved budgets, and institutional learning. Execution OS is the strategic layer above automation.',
-    category: 'Automation'
-  },
-  {
-    objection: '"We use Anaplan for strategic planning."',
-    response: 'Excellent! Anaplan models scenarios—what happens if a competitor enters your market. Execution OS completes the loop: when that actually happens, Execution OS activates the response in 12 minutes. Anaplan plans, Execution OS executes. They\'re complementary, not competing.',
-    category: 'Planning Tools'
-  }
-];
-
-const strategicDomains = [
-  { name: 'Market Dynamics', count: 24, icon: TrendingUp },
-  { name: 'Competitive Intelligence', count: 18, icon: Target },
-  { name: 'Crisis Management', count: 22, icon: AlertTriangle },
-  { name: 'M&A Integration', count: 16, icon: Layers },
-  { name: 'Supply Chain', count: 20, icon: BarChart3 },
-  { name: 'Regulatory Response', count: 18, icon: Shield },
-  { name: 'Talent & Culture', count: 14, icon: Users },
-  { name: 'Technology Disruption', count: 16, icon: Zap },
-  { name: 'AI Governance', count: 18, icon: Brain },
-];
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
 
 export default function CompetitivePositioning() {
   const [, setLocation] = useLocation();
@@ -307,49 +33,50 @@ export default function CompetitivePositioning() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950">
+      <div className="bg-white">
         
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-6xl mx-auto text-center">
-            <Badge className="mb-6 bg-blue-600/20 text-blue-300 border-blue-500/30" data-testid="badge-market-position">
-              Market Position
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-testid="heading-competitive-positioning">
-              The Strategic Execution Layer
-              <span className="block text-blue-400 mt-2">Category of One</span>
+        <section style={{ background: "#0A0F2E", padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Market Position</span>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+            </div>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+              The Strategic Execution Layer <em style={{ fontStyle: "italic", color: "#DFC178" }}>Category of One</em>
             </h1>
-            <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
               Crisis tools notify. PM tools track. Execution OS executes. We're not competing with Everbridge or Jira—we own the 
-              <span className="text-blue-300 font-semibold"> 20-50 hours of coordination </span> 
+              <span className="text-[#DFC178] font-semibold"> 20-50 hours of coordination </span> 
               that happens between alert and action.
             </p>
             
             {/* Three Category Visual */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <div className="bg-red-500/20 border border-red-500/40 rounded-lg px-6 py-3">
-                <Bell className="w-5 h-5 text-red-400 inline mr-2" />
-                <span className="text-red-300 font-medium">Crisis Notification</span>
-                <div className="text-xs text-red-400/70 mt-1">Everbridge, OnSolve, Noggin</div>
+              <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
+                <Bell className="w-5 h-5 text-white/40 inline mr-2" />
+                <span className="text-white/60 font-medium">Crisis Notification</span>
+                <div className="text-[10px] text-white/30 mt-1 uppercase tracking-wider">Everbridge, OnSolve, Noggin</div>
               </div>
-              <div className="bg-blue-500/30 border-2 border-blue-400 rounded-lg px-6 py-3 ring-2 ring-blue-400/50">
-                <Zap className="w-5 h-5 text-blue-300 inline mr-2" />
-                <span className="text-blue-800 font-bold">Strategic Execution</span>
-                <div className="text-xs text-blue-300 mt-1">Execution OS (Category of One)</div>
+              <div style={{ border: "1px solid #C9A84C", padding: "16px 24px", background: "rgba(201,168,76,0.1)" }} className="rounded-lg">
+                <Zap className="w-5 h-5 text-[#DFC178] inline mr-2" />
+                <span className="text-white font-bold">Strategic Execution</span>
+                <div className="text-[10px] text-[#DFC178] mt-1 uppercase tracking-wider font-bold">Execution OS (Category of One)</div>
               </div>
-              <div className="bg-green-500/20 border border-green-500/40 rounded-lg px-6 py-3">
-                <Settings className="w-5 h-5 text-green-400 inline mr-2" />
-                <span className="text-green-300 font-medium">Project Management</span>
-                <div className="text-xs text-green-400/70 mt-1">Jira, Asana, Monday, ServiceNow</div>
+              <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
+                <Settings className="w-5 h-5 text-white/40 inline mr-2" />
+                <span className="text-white/60 font-medium">Project Management</span>
+                <div className="text-[10px] text-white/30 mt-1 uppercase tracking-wider">Jira, Asana, ServiceNow</div>
               </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-blue-600 hover:bg-blue-700"
-                onClick={() => setLocation('/demo/live-activation')}
-                data-testid="button-see-demo"
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
+                onClick={() => setLocation('/try-demo')}
               >
                 <Play className="w-5 h-5 mr-2" />
                 See 12-Minute Activation
@@ -357,9 +84,8 @@ export default function CompetitivePositioning() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white/30 text-gray-900 hover:bg-white/10"
-                onClick={() => setLocation('/pilot-program')}
-                data-testid="button-pilot-program"
+                className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10"
+                onClick={() => setLocation('/contact')}
               >
                 Start Pilot Program
               </Button>
@@ -368,665 +94,109 @@ export default function CompetitivePositioning() {
         </section>
 
         {/* The Gap We Fill */}
-        <section className="py-16 px-6">
+        <section className="py-16 px-12 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-gap">
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
                 The $2M Gap Between Alert and Action
               </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                 When a strategic event hits, organizations spend 20-50 hours getting organized. 
                 That's $60K-$2M in lost value per major event. Execution OS eliminates that gap entirely.
               </p>
             </div>
 
             {/* Visual Timeline */}
-            <Card className="mb-12 overflow-hidden" data-testid="card-timeline">
-              <CardContent className="p-8">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                  {/* Without Execution OS */}
-                  <div className="flex-1 text-center">
-                    <div className="text-red-500 font-bold text-lg mb-2">Without Execution OS</div>
-                    <div className="flex items-center justify-center gap-2 flex-wrap">
-                      <div className="bg-red-100 dark:bg-red-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-red-700 dark:text-red-400">Alert</div>
-                        <div className="font-bold text-red-700 dark:text-red-300">T+0</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
-                      <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Triage</div>
-                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+4-8 hrs</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
-                      <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Planning</div>
-                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+12-24 hrs</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
-                      <div className="bg-amber-100 dark:bg-amber-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-[#C9A84C] dark:text-amber-400">Coordination</div>
-                        <div className="font-bold text-[#C9A84C] dark:text-amber-300">+24-48 hrs</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-800 dark:text-slate-200" />
-                      <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 text-center">
-                        <div className="text-xs text-gray-800 dark:text-slate-300">Execution</div>
-                        <div className="font-bold text-slate-700 dark:text-slate-300">+72 hrs</div>
-                      </div>
+            <div className="border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-colors mb-12">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                {/* Without Execution OS */}
+                <div className="flex-1 text-center">
+                  <div className="text-[#C9A84C] font-bold text-lg mb-4 uppercase tracking-widest">Without Execution OS</div>
+                  <div className="flex items-center justify-center gap-2 flex-wrap">
+                    <div className="p-3 text-center" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                      <div className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Alert</div>
+                      <div className="font-bold text-slate-900">T+0</div>
                     </div>
-                  </div>
-
-                  {/* Divider */}
-                  <div className="hidden md:block w-px h-24 bg-slate-300 dark:bg-slate-700"></div>
-                  <div className="md:hidden h-px w-full bg-slate-300 dark:bg-slate-700"></div>
-
-                  {/* With Execution OS */}
-                  <div className="flex-1 text-center">
-                    <div className="text-emerald-500 font-bold text-lg mb-2">With Execution OS</div>
-                    <div className="flex items-center justify-center gap-2 flex-wrap">
-                      <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-700 dark:text-emerald-400">Trigger Detected</div>
-                        <div className="font-bold text-emerald-700 dark:text-emerald-300">T+0</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-emerald-400" />
-                      <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-700 dark:text-emerald-400">Playbook Activated</div>
-                        <div className="font-bold text-emerald-700 dark:text-emerald-300">+30 sec</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-emerald-400" />
-                      <div className="bg-emerald-100 dark:bg-emerald-900/30 rounded-lg p-3 text-center">
-                        <div className="text-xs text-emerald-700 dark:text-emerald-400">All Teams Aligned</div>
-                        <div className="font-bold text-emerald-700 dark:text-emerald-300">+12 min</div>
-                      </div>
+                    <ArrowRight className="w-4 h-4 text-slate-300" />
+                    <div className="p-3 text-center" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                      <div className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Triage</div>
+                      <div className="font-bold text-slate-900">+8h</div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-300" />
+                    <div className="p-3 text-center" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                      <div className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Planning</div>
+                      <div className="font-bold text-slate-900">+24h</div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-300" />
+                    <div className="p-3 text-center" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                      <div className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Coordination</div>
+                      <div className="font-bold text-slate-900">+48h</div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-slate-300" />
+                    <div className="p-3 text-center" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                      <div className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">Execution</div>
+                      <div className="font-bold text-slate-900">+72h</div>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
 
-        {/* Battle Cards by Category */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-battle-cards">
-                Competitive Battle Cards
-              </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                How Execution OS positions against each category of competitor
-              </p>
-            </div>
+                {/* Divider */}
+                <div className="hidden md:block w-px h-24 bg-[#E8E4DC]"></div>
+                <div className="md:hidden h-px w-full bg-[#E8E4DC]"></div>
 
-            <Tabs defaultValue="crisis" className="w-full">
-              <TabsList className="grid w-full grid-cols-5 mb-8" data-testid="tabs-competitor-categories">
-                <TabsTrigger value="crisis" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-crisis-tools">
-                  <Bell className="w-4 h-4" />
-                  <span className="hidden sm:inline">Crisis</span>
-                </TabsTrigger>
-                <TabsTrigger value="pm" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-pm-tools">
-                  <Settings className="w-4 h-4" />
-                  <span className="hidden sm:inline">PM</span>
-                </TabsTrigger>
-                <TabsTrigger value="planning" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-planning-tools">
-                  <Calculator className="w-4 h-4" />
-                  <span className="hidden sm:inline">Planning</span>
-                </TabsTrigger>
-                <TabsTrigger value="okr" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-okr-tools">
-                  <Target className="w-4 h-4" />
-                  <span className="hidden sm:inline">OKR</span>
-                </TabsTrigger>
-                <TabsTrigger value="automation" className="flex items-center gap-2 text-xs sm:text-sm" data-testid="tab-automation-tools">
-                  <Zap className="w-4 h-4" />
-                  <span className="hidden sm:inline">Automation</span>
-                </TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="crisis">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {crisisNotificationTools.map((tool) => (
-                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.replace('bg-', '').includes('red') ? '#ef4444' : tool.color.includes('orange') ? '#f97316' : '#a855f7' }} data-testid={`card-competitor-${tool.name.toLowerCase()}`}>
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{tool.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
-                            </div>
-                          </div>
-                        </div>
-                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
-                          <ul className="space-y-1">
-                            {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
-                          <ul className="space-y-1">
-                            {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-[#C9A84C] dark:text-amber-400 mb-1">When They Win</div>
-                          <p className="text-xs text-gray-800 dark:text-slate-300">{tool.whenTheyWin}</p>
-                        </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                            <MessageSquare className="w-3 h-3" /> Trap Question
-                          </div>
-                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="pm">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {projectManagementTools.map((tool) => (
-                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('blue') ? '#3b82f6' : tool.color.includes('pink') ? '#ec4899' : tool.color.includes('yellow') ? '#eab308' : '#22c55e' }} data-testid={`card-competitor-${tool.name.toLowerCase().replace(/\./g, '')}`}>
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{tool.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
-                            </div>
-                          </div>
-                        </div>
-                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
-                            <ul className="space-y-1">
-                              {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                  <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
-                            <ul className="space-y-1">
-                              {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                  <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                            <MessageSquare className="w-3 h-3" /> Trap Question
-                          </div>
-                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="planning">
-                <div className="mb-6 bg-sky-50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800 rounded-lg p-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
-                      <Calculator className="w-5 h-5 text-gray-900" />
+                {/* With Execution OS */}
+                <div className="flex-1 text-center">
+                  <div className="text-teal-600 font-bold text-lg mb-4 uppercase tracking-widest">With Execution OS</div>
+                  <div className="flex items-center justify-center gap-2 flex-wrap">
+                    <div className="p-3 text-center" style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.2)" }}>
+                      <div className="text-[10px] text-teal-600 uppercase font-bold tracking-tighter">Alert</div>
+                      <div className="font-bold text-teal-700">T+0</div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-sky-900 dark:text-sky-100 mb-1">Complementary, Not Competing</h3>
-                      <p className="text-sm text-sky-700 dark:text-sky-300">
-                        Planning tools like Anaplan model "what if" scenarios. Execution OS executes the "when it happens" response. 
-                        Together, they complete the strategic loop: <strong>Plan → Trigger → Execute → Learn</strong>.
-                      </p>
+                    <ArrowRight className="w-4 h-4 text-teal-400" />
+                    <div className="p-3 text-center" style={{ background: "rgba(43,138,110,0.1)", border: "2px solid #2B8A6E" }}>
+                      <div className="text-[10px] text-teal-600 uppercase font-bold tracking-tighter">Execution</div>
+                      <div className="font-bold text-teal-700">T+12m</div>
                     </div>
                   </div>
+                  <div className="mt-4 text-teal-600 font-bold text-sm">99% Faster Response</div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {planningModelingTools.map((tool) => (
-                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('sky') ? '#0ea5e9' : '#d946ef' }} data-testid={`card-competitor-${tool.name.toLowerCase()}`}>
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{tool.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
-                            </div>
-                          </div>
-                          <Badge className="bg-sky-100 text-sky-800 dark:bg-sky-900 dark:text-sky-200">
-                            {tool.pricing}
-                          </Badge>
-                        </div>
-                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
-                            <ul className="space-y-1">
-                              {tool.strengths.map((s, i) => (
-                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                  <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
-                            <ul className="space-y-1">
-                              {tool.gaps.map((g, i) => (
-                                <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                  <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                          <div className="text-xs font-semibold text-sky-800 dark:text-sky-400 mb-1">Relationship with Execution OS</div>
-                          <p className="text-xs text-gray-800 dark:text-slate-300">{tool.relationship}</p>
-                        </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                            <MessageSquare className="w-3 h-3" /> Trap Question
-                          </div>
-                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="okr">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {strategyOKRTools.map((tool) => (
-                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('indigo') ? '#6366f1' : tool.color.includes('cyan') ? '#06b6d4' : '#14b8a6' }} data-testid={`card-competitor-${tool.name.toLowerCase().replace(/[()]/g, '')}`}>
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{tool.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
-                            </div>
-                          </div>
-                        </div>
-                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
-                          <ul className="space-y-1">
-                            {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
-                          <ul className="space-y-1">
-                            {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                            <MessageSquare className="w-3 h-3" /> Trap Question
-                          </div>
-                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="automation">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {automationTools.map((tool) => (
-                    <Card key={tool.name} className="border-t-4 hover:shadow-lg transition-shadow" style={{ borderTopColor: tool.color.includes('orange') ? '#f97316' : tool.color.includes('violet') ? '#8b5cf6' : '#f43f5e' }} data-testid={`card-competitor-${tool.name.toLowerCase().replace(/[()]/g, '')}`}>
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <div className={`w-10 h-10 rounded-full ${tool.color} flex items-center justify-center`}>
-                              <span className="text-gray-900 font-bold">{tool.name.charAt(0)}</span>
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">{tool.name}</CardTitle>
-                              <Badge variant="outline" className="text-xs">{tool.category}</Badge>
-                            </div>
-                          </div>
-                        </div>
-                        <CardDescription className="mt-2">{tool.marketPosition}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div>
-                          <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-2">Their Strengths</div>
-                          <ul className="space-y-1">
-                            {tool.strengths.map((s, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" /> {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-2">Gaps Execution OS Fills</div>
-                          <ul className="space-y-1">
-                            {tool.gaps.map((g, i) => (
-                              <li key={i} className="text-xs text-gray-800 dark:text-slate-300 flex items-center gap-1">
-                                <Zap className="w-3 h-3 text-blue-500 flex-shrink-0" /> {g}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                          <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-1 flex items-center gap-1">
-                            <MessageSquare className="w-3 h-3" /> Trap Question
-                          </div>
-                          <p className="text-xs text-blue-800 dark:text-blue-400 italic">{tool.trapQuestion}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </section>
-
-        {/* Category Comparison Matrix */}
-        <section className="py-16 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-category-comparison">
-                Five Categories, One Gap
-              </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Execution OS is the only platform that bridges planning, detection, coordination, and execution
-              </p>
-            </div>
-
-            <Card data-testid="card-comparison-matrix">
-              <CardContent className="p-0 overflow-x-auto">
-                <table className="w-full min-w-[600px]">
-                  <thead>
-                    <tr className="border-b bg-slate-50 dark:bg-slate-800/50">
-                      <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Capability</th>
-                      <th className="text-center p-3">
-                        <div className="flex flex-col items-center">
-                          <Bell className="w-4 h-4 text-red-500 mb-1" />
-                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Crisis</span>
-                        </div>
-                      </th>
-                      <th className="text-center p-3">
-                        <div className="flex flex-col items-center">
-                          <Settings className="w-4 h-4 text-green-500 mb-1" />
-                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">PM</span>
-                        </div>
-                      </th>
-                      <th className="text-center p-3">
-                        <div className="flex flex-col items-center">
-                          <Target className="w-4 h-4 text-indigo-500 mb-1" />
-                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">OKR</span>
-                        </div>
-                      </th>
-                      <th className="text-center p-3">
-                        <div className="flex flex-col items-center">
-                          <Zap className="w-4 h-4 text-orange-500 mb-1" />
-                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Automation</span>
-                        </div>
-                      </th>
-                      <th className="text-center p-3">
-                        <div className="flex flex-col items-center">
-                          <Calculator className="w-4 h-4 text-sky-500 mb-1" />
-                          <span className="text-xs font-semibold text-gray-800 dark:text-slate-300">Planning</span>
-                        </div>
-                      </th>
-                      <th className="text-center p-3 bg-blue-50 dark:bg-blue-900/20">
-                        <div className="flex flex-col items-center">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-1">
-                            <span className="text-gray-900 font-bold text-xs">P</span>
-                          </div>
-                          <span className="text-xs font-bold text-blue-800 dark:text-blue-400">Execution OS</span>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categoryComparison.map((row, i) => (
-                      <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/30">
-                        <td className="p-4 text-sm text-slate-700 dark:text-slate-300">{row.capability}</td>
-                        <td className="p-3 text-center">
-                          {row.crisisTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.crisisTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
-                          {row.crisisTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.crisisTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
-                          {row.crisisTools === 'native' && <span className="text-xs text-gray-800">N/A</span>}
-                        </td>
-                        <td className="p-3 text-center">
-                          {row.pmTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.pmTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
-                          {row.pmTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.pmTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
-                          {row.pmTools === 'native' && <span className="text-xs text-gray-800">N/A</span>}
-                        </td>
-                        <td className="p-3 text-center">
-                          {row.okrTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.okrTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
-                          {row.okrTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                          {row.okrTools === 'manual' && <span className="text-xs text-gray-800">Manual</span>}
-                        </td>
-                        <td className="p-3 text-center">
-                          {row.automationTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.automationTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
-                          {row.automationTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                        </td>
-                        <td className="p-3 text-center">
-                          {row.planningTools === true && <CheckCircle className="w-4 h-4 text-emerald-500 mx-auto" />}
-                          {row.planningTools === false && <XCircle className="w-4 h-4 text-gray-800 dark:text-slate-200 mx-auto" />}
-                          {row.planningTools === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                        </td>
-                        <td className="p-3 text-center bg-blue-50/50 dark:bg-blue-900/10">
-                          {row.m === true && <CheckCircle className="w-4 h-4 text-blue-500 mx-auto" />}
-                          {row.m === 'partial' && <Minus className="w-4 h-4 text-amber-500 mx-auto" />}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Objection Handling */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-objections">
-                Objection Handling Guide
-              </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Common pushback and how to address it
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {objections.map((obj, i) => (
-                <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-objection-${i}`}>
-                  <CardHeader className="pb-2">
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-red-100 dark:bg-red-900/30">
-                        <HelpCircle className="w-5 h-5 text-red-500" />
-                      </div>
-                      <div>
-                        <Badge variant="outline" className="mb-2 text-xs">{obj.category}</Badge>
-                        <CardTitle className="text-base text-red-700 dark:text-red-400">{obj.objection}</CardTitle>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
-                        <MessageSquare className="w-5 h-5 text-emerald-500" />
-                      </div>
-                      <p className="text-sm text-gray-800 dark:text-slate-300">{obj.response}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Strategic Domains */}
-        <section className="py-16 px-6 bg-gradient-to-br  ">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-domains">
-                170 Playbooks Across 9 Strategic Domains
-              </h2>
-              <p className="text-lg text-blue-800">
-                No competitor offers pre-built, executable strategic playbooks
-              </p>
+        {/* CTA */}
+        <section style={{ background: "#F8F7F4", padding: "64px 48px" }}>
+          <div className="max-w-3xl mx-auto text-center">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Get Started</span>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
-
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
-              {strategicDomains.map((domain) => (
-                <div 
-                  key={domain.name} 
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => setLocation('/playbook-library')}
-                  data-testid={`card-domain-${domain.name.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <domain.icon className="w-6 h-6 text-blue-300 mx-auto mb-2" />
-                  <div className="text-xl font-bold text-gray-900 mb-1">{domain.count}</div>
-                  <div className="text-xs text-blue-800">{domain.name}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <Button 
-                size="lg" 
-                className="bg-white text-blue-900 hover:bg-blue-50"
-                onClick={() => setLocation('/playbook-library')}
-                data-testid="button-browse-playbooks"
-              >
-                Browse All 170 Playbooks
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* The Moat */}
-        <section className="py-16 px-6">
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-white text-gray-900 border-0" data-testid="card-moat">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-white/10">
-                    <Building2 className="w-8 h-8 text-blue-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4">The Enterprise Moat</h3>
-                    <p className="text-blue-800 mb-6">
-                      Once a Fortune 1000 company has 50+ playbooks syncing to Jira with bi-directional updates, 
-                      historical execution data, and months of organizational knowledge encoded in Execution OS—switching 
-                      becomes nearly impossible.
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-300">50+</div>
-                        <div className="text-xs text-blue-400">Active Playbooks</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-300">2-way</div>
-                        <div className="text-xs text-blue-400">Jira Sync</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-300">12mo</div>
-                        <div className="text-xs text-blue-400">Execution History</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-300">100%</div>
-                        <div className="text-xs text-blue-400">Institutional Memory</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-slate-900/50">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-cta">
-              Ready to Own Strategic Execution?
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
+              Stop Managing. Start Executing.
             </h2>
-            <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
-              See how Execution OS eliminates the 20-50 hours between alert and action
+            <p className="text-slate-600 mb-8">
+              Join the pilot program and move your organization to Execution OS.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-blue-600 hover:bg-blue-700"
-                onClick={() => setLocation('/demo/live-activation')}
-                data-testid="button-cta-demo"
+                className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
+                onClick={() => setLocation('/contact')}
               >
-                <Play className="w-5 h-5 mr-2" />
-                See Live Execution
+                Request Pilot Access
               </Button>
               <Button 
                 size="lg" 
-                variant="outline"
-                onClick={() => setLocation('/pilot-program')}
-                data-testid="button-cta-pilot"
+                style={{ border: "1.5px solid #E8E4DC", color: "#0A0F2E", background: "transparent" }}
+                onClick={() => setLocation('/try-demo')}
               >
-                Start 90-Day Pilot
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Try Interactive Demo
               </Button>
             </div>
           </div>
         </section>
-
       </div>
     </PageLayout>
   );

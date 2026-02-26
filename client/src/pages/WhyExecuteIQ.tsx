@@ -30,6 +30,12 @@ import { PageHero } from "@/components/layout/PageHero";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function WhyExecuteIQ() {
   useEffect(() => {
     updatePageMetadata({
@@ -49,141 +55,113 @@ export default function WhyExecuteIQ() {
         size="lg"
         actions={<>
           <Link href="/try-demo">
-            <Button size="lg" style={{ background: "#C9A84C", color: "#0A0F2E", fontWeight: 700, border: "none" }}>
-              <Play className="mr-2 h-5 w-5" />
+            <Button size="lg" style={{ background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }}>
+              <Play className="mr-2 h-4 w-4" />
               Watch Demo
             </Button>
           </Link>
           <Link href="/research">
-            <Button size="lg" variant="outline" style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff", background: "transparent" }}>
+            <Button size="lg" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", background: "transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px" }}>
               View Research
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </>}
       />
 
       {/* Quick Stats Bar */}
-      <section className="py-8 px-6 bg-slate-100 dark:bg-slate-800 border-b border-border">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">15</div>
-              <p className="text-sm text-muted-foreground">Major Firms Agree</p>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">170</div>
-              <p className="text-sm text-muted-foreground">Pre-Built Playbooks</p>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-1">12 min</div>
-              <p className="text-sm text-muted-foreground">Trigger to Execution</p>
-            </div>
-          </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", background: "#F8F7F4", borderBottom: "1px solid #E8E4DC" }}>
+        <div style={{ padding: 32, borderRight: "1px solid #E8E4DC", textAlign: "center" }}>
+          <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>15</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Major Firms Agree</div>
         </div>
-      </section>
+        <div style={{ padding: 32, borderRight: "1px solid #E8E4DC", textAlign: "center" }}>
+          <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>170</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Pre-Built Playbooks</div>
+        </div>
+        <div style={{ padding: 32, textAlign: "center" }}>
+          <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>12m</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Trigger-to-Execution</div>
+        </div>
+      </div>
 
       {/* Section 1: The Consensus */}
-      <section className="py-16 px-6">
+      <section className="py-20 px-12 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-blue-600 text-gray-900 border-0">
-              <Globe2 className="w-4 h-4 mr-2" />
-              The Consensus
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              What 15 Major Firms All Concluded
-            </h2>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Consensus</span>
           </div>
+          <h2 className="text-center mb-16" style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
+            What 15 Major Firms All Concluded
+          </h2>
 
-          <Card className="border-2 border-primary/30 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
-            <CardContent className="p-8 md:p-12">
-              <p className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
-                From 2025 into 2026, fifteen major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion: Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems. This isn't speculation. It's consensus.
-              </p>
+          <div className="border border-[#E8E4DC] bg-white p-12 text-center">
+            <p className="text-xl text-[#0A0F2E] leading-relaxed mb-12 max-w-4xl mx-auto">
+              From 2025 into 2026, fifteen major consulting and technology firms independently published research on AI adoption. They all arrived at the same conclusion: Organizations aren't failing at AI because of technology. They're failing because they lack execution infrastructure—governance, decision rights, and coordination systems.
+            </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
-                {["McKinsey", "IBM", "BCG", "Deloitte", "Accenture", "Microsoft", "Google Cloud", "WEF", "Bain", "Anthropic", "OpenAI", "PwC", "Gartner", "Forrester", "IDC"].map((firm) => (
-                  <div key={firm} className="flex items-center justify-center p-3 bg-white dark:bg-slate-700 rounded-lg border border-border shadow-sm">
-                    <span className="text-sm font-semibold text-foreground">{firm}</span>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+            <div className="flex flex-wrap justify-center gap-4">
+              {["McKinsey", "IBM", "BCG", "Deloitte", "Accenture", "Microsoft", "Google Cloud", "WEF", "Bain", "Anthropic", "OpenAI", "PwC", "Gartner", "Forrester", "IDC"].map((firm) => (
+                <div key={firm} className="px-6 py-3 bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#0A0F2E" }}>{firm}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Section 2: The Gap */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <section style={{ background: "#F8F7F4", padding: "80px 48px" }}>
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-amber-500 text-gray-900 border-0">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              The Gap
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What's Missing
+          <div className="text-center mb-16">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Gap</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
+              The Missing Infrastructure Layer
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="border-2 border-green-500/30 hover:border-green-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <CheckCircle2 className="h-6 w-6 text-green-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">What Enterprises Have</h3>
-                    <p className="text-sm text-emerald-700 dark:text-green-400 font-medium">Already invested</p>
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3 text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">AI tools</span>
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", padding: "40px", background: "#fff" }}>
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>What Enterprises Have</h3>
+              <ul className="space-y-4">
+                {["AI Tools & Models", "Talented Teams", "Strategic Ambition"].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] shrink-0 mt-0.5" />
+                    <span className="text-lg text-[#0A0F2E]">{item}</span>
                   </li>
-                  <li className="flex items-start gap-3 text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">Talented people</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-foreground">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">Strategic ambition</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                ))}
+              </ul>
+            </div>
 
-            <Card className="border-2 border-red-500/30 hover:border-red-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
-                    <XCircle className="h-6 w-6 text-red-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">What They Lack</h3>
-                    <p className="text-sm text-red-700 dark:text-red-400 font-medium">The missing layer</p>
-                  </div>
-                </div>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3 text-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">Pre-defined governance</span>
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "40px", background: "#fff" }}>
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>What They Lack</h3>
+              <ul className="space-y-4">
+                {["Pre-defined Governance", "Clear Decision Rights", "Coordination Systems"].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <XCircle className="h-5 w-5 text-[#C9A84C] shrink-0 mt-0.5" />
+                    <span className="text-lg text-[#0A0F2E]">{item}</span>
                   </li>
-                  <li className="flex items-start gap-3 text-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">Clear decision rights</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-foreground">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span className="text-lg">Coordination systems</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                ))}
+              </ul>
+            </div>
           </div>
+
+          <div style={{ background: "#0A0F2E", padding: "48px", textAlign: "center" }}>
+            <p style={{ ...CG, fontSize: 32, color: "#fff", marginBottom: 16 }}>
+              Result: 72 hours to coordinate what should take <em style={{ fontStyle: "italic", color: "#DFC178" }}>minutes</em>.
+            </p>
+            <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 16 }}>
+              Without execution infrastructure, every strategic moment is handled ad-hoc—no matter how talented the team.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
           <Card className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border-red-500/30">
             <CardContent className="p-8 text-center">
@@ -200,255 +178,143 @@ export default function WhyExecuteIQ() {
       </section>
 
       {/* Section 3: The Solution */}
-      <section className="py-16 px-6 bg-white dark:bg-slate-950">
+      <section className="py-20 px-12 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-500 text-gray-900 border-0">
-              <Zap className="w-4 h-4 mr-2" />
-              The Solution
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
+          <div className="text-center mb-16">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>The Solution</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
               Execution OS Provides the Infrastructure
             </h2>
           </div>
 
-          <Card className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 mb-12">
-            <CardContent className="p-8 md:p-12">
-              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
-                Execution OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution. The infrastructure that makes AI actually work.
-              </p>
+          <div className="border border-[#E8E4DC] bg-[#F8F7F4] p-12 mb-12">
+            <p className="text-xl text-[#0A0F2E] leading-relaxed mb-12">
+              Execution OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
+            </p>
 
-              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
-                  <div className="w-14 h-14 mx-auto mb-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center">
-                    <BookOpen className="h-7 w-7 text-blue-600 dark:text-blue-400" />
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { icon: BookOpen, val: "170", label: "Pre-built playbooks", color: "#0A0F2E" },
+                { icon: Shield, val: "Built-in", label: "Governance", color: "#2B8A6E" },
+                { icon: Target, val: "Custom", label: "Build your own", color: "#C9A84C" },
+                { icon: Timer, val: "12 min", label: "Trigger-to-Execution", color: "#0A0F2E" }
+              ].map((item, i) => (
+                <div key={i} className="text-center p-6 bg-white border border-[#E8E4DC]">
+                  <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                    <item.icon className="h-4 w-4 text-white" />
                   </div>
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">170</div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Pre-built playbooks</p>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: item.color, lineHeight: 1 }}>{item.val}</div>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>{item.label}</p>
                 </div>
-                <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
-                  <div className="w-14 h-14 mx-auto mb-4 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center">
-                    <Shield className="h-7 w-7 text-emerald-600 dark:text-emerald-400" />
-                  </div>
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">Built-in</div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Governance & decision rights</p>
-                </div>
-                <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
-                  <div className="w-14 h-14 mx-auto mb-4 bg-amber-100 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center">
-                    <Target className="h-7 w-7 text-amber-600 dark:text-amber-400" />
-                  </div>
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">Custom</div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Build your own playbooks</p>
-                </div>
-                <div className="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm">
-                  <div className="w-14 h-14 mx-auto mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
-                    <Timer className="h-7 w-7 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">12 min</div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Trigger to execution</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="text-center">
-            <Link href="/demo-selector">
-              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-                <Play className="mr-2 h-5 w-5" />
-                See Execution OS in Action
-              </Button>
-            </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+
       {/* Section: The Agentic Execution Layer */}
-      <section className="py-16 px-6">
+      <section style={{ background: "#0A0F2E", padding: "80px 48px" }}>
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-purple-600 text-gray-900 border-0">
-              <Brain className="w-4 h-4 mr-2" />
-              The Agentic Layer
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Not Workflow Automation. Agentic Execution.
+          <div className="text-center mb-16">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>The Agentic Layer</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
+              Agentic Execution Infrastructure
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Execution OS isn't another tool in the stack. It's the agentic execution layer — the system where AI agents coordinate enterprise-wide response in real time, with human executives making the final call.
+            <p className="text-lg text-white/60 max-w-3xl mx-auto">
+              Execution OS isn't another tool in the stack. It's the agentic execution layer — where AI agents coordinate enterprise-wide response in real time.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="border-2 border-purple-500/30 hover:border-purple-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
-                    <XCircle className="h-6 w-6 text-red-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">Workflow Tools</h3>
-                    <p className="text-sm text-red-700 dark:text-red-400 font-medium">Scripted, reactive, siloed</p>
-                  </div>
-                </div>
-                <ul className="space-y-3 text-foreground">
-                  <li className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>Route tickets based on static rules</span>
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-white/5 border border-white/10 p-8">
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 24 }}>Workflow Tools</h3>
+              <ul className="space-y-4">
+                {[
+                  "Route tickets based on static rules",
+                  "Require manual escalation",
+                  "No cross-functional coordination"
+                ].map(text => (
+                  <li key={text} className="flex items-start gap-3 text-white/60">
+                    <XCircle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+                    <span>{text}</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>Require manual escalation at every step</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>No cross-functional coordination</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <XCircle className="h-5 w-5 text-red-500 mt-0.5 shrink-0" />
-                    <span>Can't learn from previous executions</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                ))}
+              </ul>
+            </div>
 
-            <Card className="border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <CheckCircle2 className="h-6 w-6 text-emerald-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-foreground">Agentic Execution (Execution OS)</h3>
-                    <p className="text-sm text-emerald-700 dark:text-emerald-400 font-medium">Autonomous, proactive, coordinated</p>
-                  </div>
-                </div>
-                <ul className="space-y-3 text-foreground">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Agents detect signals and activate playbooks</span>
+            <div className="bg-white/5 border border-white/10 p-8">
+              <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#DFC178", marginBottom: 24 }}>Agentic Execution</h3>
+              <ul className="space-y-4">
+                {[
+                  "Agents detect signals and activate playbooks",
+                  "Pre-authorized decisions within thresholds",
+                  "Cross-enterprise coordination in 12 minutes"
+                ].map(text => (
+                  <li key={text} className="flex items-start gap-3 text-white/80">
+                    <CheckCircle2 className="h-5 w-5 text-[#3BAF8A] shrink-0 mt-0.5" />
+                    <span>{text}</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Pre-authorized decisions within policy thresholds</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Cross-enterprise coordination in 12 minutes</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Every execution makes the system smarter</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+                ))}
+              </ul>
+            </div>
           </div>
-
-          <Card className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/20 dark:to-blue-950/20 border-purple-500/20">
-            <CardContent className="p-8">
-              <h3 className="text-xl font-bold text-foreground mb-4 text-center">Agent Decision Authority Spectrum</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
-                  <div className="text-2xl mb-2">🔍</div>
-                  <div className="font-semibold text-foreground mb-1">Assist</div>
-                  <p className="text-xs text-muted-foreground">Recommend actions to executives</p>
-                </div>
-                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
-                  <div className="text-2xl mb-2">🔀</div>
-                  <div className="font-semibold text-foreground mb-1">Coordinate</div>
-                  <p className="text-xs text-muted-foreground">Route tasks + assign stakeholders</p>
-                </div>
-                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
-                  <div className="text-2xl mb-2">⚡</div>
-                  <div className="font-semibold text-foreground mb-1">Execute</div>
-                  <p className="text-xs text-muted-foreground">Trigger pre-approved workflows</p>
-                </div>
-                <div className="text-center p-4 bg-white dark:bg-slate-800 rounded-xl border border-border">
-                  <div className="text-2xl mb-2">🎯</div>
-                  <div className="font-semibold text-foreground mb-1">Decide</div>
-                  <p className="text-xs text-muted-foreground">Within policy thresholds only</p>
-                </div>
-              </div>
-              <p className="text-center text-sm text-muted-foreground mt-4">
-                Human executives retain ultimate authority. Agents operate within pre-defined governance guardrails.
-              </p>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
+
       {/* Founder Story */}
-      <section className="py-16 px-6">
+      <section className="py-20 px-12 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-primary text-gray-900 border-0">
-              <Lightbulb className="w-4 h-4 mr-2" />
-              The Founder
-            </Badge>
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Built by Someone Who Lived the Problem
-            </h2>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Founder</span>
           </div>
+          <h2 className="text-center mb-16" style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
+            Built by Someone Who Lived the Problem
+          </h2>
 
-          <Card className="border-2 border-primary/30 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-900">
-            <CardContent className="p-8 md:p-12">
-              <div className="flex items-start gap-6 mb-8">
-                <Quote className="h-12 w-12 text-primary shrink-0 opacity-60" />
-                <blockquote className="text-lg md:text-xl text-foreground leading-relaxed italic">
-                  "I coached college football for 5 years. Every game, 60-80 plays. Every 40 seconds—read the situation, call the play, execute. The speed comes from preparation. Then I spent 20 years inside Fortune 500 companies—Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc. 15 major firms just said execution infrastructure is the bottleneck. I built the infrastructure I wish I'd had."
-                </blockquote>
-              </div>
-
-              <div className="flex items-center justify-between flex-wrap gap-4 pt-6 border-t border-border">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-gray-900 text-2xl font-bold">
-                    MB
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground text-lg">Martin Brunke</p>
-                    <p className="text-muted-foreground">Founder & CEO, Execution OS</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Ford</Badge>
-                  <Badge variant="outline">Toyota</Badge>
-                  <Badge variant="outline">Lockheed Martin</Badge>
-                  <Badge variant="outline">Charles Schwab</Badge>
-                  <Badge variant="outline">Boyd Gaming</Badge>
-                  <Badge variant="outline">Churchill Downs</Badge>
+          <div className="border border-[#E8E4DC] p-12 bg-white relative">
+            <Quote className="absolute top-8 left-8 h-12 w-12 text-[#E8E4DC]" />
+            <div className="relative z-10">
+              <blockquote style={{ ...CG, fontSize: 24, fontWeight: 500, color: "#0A0F2E", lineHeight: 1.5, fontStyle: "italic", marginBottom: 32 }}>
+                "I coached college football for 5 years. Every 40 seconds—read the situation, call the play, execute. Then I spent 20 years inside Fortune 500 companies. Same caliber of people. No playbooks. Every strategic moment handled ad-hoc. I built the infrastructure I wish I'd had."
+              </blockquote>
+              <div className="flex items-center gap-4">
+                <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", color: "#DFC178", fontWeight: 700 }}>MB</div>
+                <div>
+                  <div style={{ fontWeight: 700, color: "#0A0F2E" }}>Martin Brunke</div>
+                  <div style={{ fontSize: 12, color: "#6B7280" }}>Founder & CEO, Execution OS</div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-primary/5 to-purple-500/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Ready to See the Infrastructure?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            See how Execution OS closes the gap between AI investment and AI results.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/demo-selector">
-              <Button size="lg" className="bg-primary text-gray-900 hover:bg-primary/90">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
-            </Link>
-            <Link href="/research">
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                Explore Research
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
+      <section style={{ background: "#0A0F2E", padding: "80px 48px", textAlign: "center" }}>
+        <h2 style={{ ...CG, fontSize: 40, fontWeight: 600, color: "#fff", marginBottom: 16 }}>Ready to See the Infrastructure?</h2>
+        <p className="text-white/60 mb-8 max-w-xl mx-auto">See how Execution OS closes the gap between AI investment and AI results.</p>
+        <div className="flex justify-center gap-4">
+          <Link href="/demo-selector">
+            <Button style={{ background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }}>
+              <Play className="mr-2 h-4 w-4" /> Watch Demo
+            </Button>
+          </Link>
+          <Link href="/contact">
+            <Button style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", background: "transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px" }}>
+              Contact Sales
+            </Button>
+          </Link>
         </div>
       </section>
-
     </PageLayout>
   );
 }

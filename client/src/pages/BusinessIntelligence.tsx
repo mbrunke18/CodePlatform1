@@ -12,20 +12,24 @@ import {
   Globe,
   ArrowUpRight,
   ArrowDownRight,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Building2,
   Briefcase,
-  PieChart
+  PieChart,
+  ArrowRight,
+  FileText,
+  CheckCircle
 } from 'lucide-react';
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function BusinessIntelligence() {
   const executiveMetrics = [
-    { title: "Revenue Growth", value: "$127.5M", change: "+23.5%", trend: "up", color: "text-emerald-700" },
-    { title: "Market Share", value: "34.2%", change: "+5.7%", trend: "up", color: "text-blue-800" },
-    { title: "Operational Efficiency", value: "94.8%", change: "+12.3%", trend: "up", color: "text-purple-800" },
-    { title: "Customer Satisfaction", value: "4.8/5", change: "+0.3", trend: "up", color: "text-orange-600" }
+    { title: "Revenue Growth", value: "$127.5M", change: "+23.5%", trend: "up", color: "text-[#2B8A6E]" },
+    { title: "Market Share", value: "34.2%", change: "+5.7%", trend: "up", color: "text-[#0A0F2E]" },
+    { title: "Operational Efficiency", value: "94.8%", change: "+12.3%", trend: "up", color: "text-[#2B8A6E]" },
+    { title: "Customer Satisfaction", value: "4.8/5", change: "+0.3", trend: "up", color: "text-[#C9A84C]" }
   ];
 
   const competitiveAnalysis = [
@@ -61,77 +65,79 @@ export default function BusinessIntelligence() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <div className="flex-1 page-background overflow-auto bg-white">
         <div className="p-8">
           {/* Business Intelligence Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                <BarChart3 className="w-7 h-7 text-gray-900" />
+              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <BarChart3 className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Business Intelligence Center</h1>
-                <p className="text-gray-800 dark:text-gray-300">Executive Analytics & Competitive Intelligence</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Analytics</span>
+                </div>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>Business Intelligence Center</h1>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 <TrendingUp className="w-3 h-3 mr-1" />
                 Market Leading
-              </Badge>
-              <Badge className="bg-green-600 text-gray-900">
+              </div>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 Executive BI
-              </Badge>
+              </div>
             </div>
           </div>
 
           {/* Executive Performance Dashboard */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {executiveMetrics.map((metric, index) => (
-              <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{metric.title}</CardTitle>
-                    {metric.trend === 'up' ? 
-                      <ArrowUpRight className="w-4 h-4 text-green-500" /> : 
-                      <ArrowDownRight className="w-4 h-4 text-red-500" />
-                    }
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{metric.value}</div>
-                  <div className={`text-sm ${metric.color}`}>{metric.change}</div>
-                </CardContent>
+              <Card key={index} className="border border-[#E8E4DC] bg-white p-6 shadow-sm">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">{metric.title}</span>
+                  {metric.trend === 'up' ? 
+                    <ArrowUpRight className="w-4 h-4 text-[#2B8A6E]" /> : 
+                    <ArrowDownRight className="w-4 h-4 text-red-500" />
+                  }
+                </div>
+                <div style={{ ...CG, fontSize: "1.75rem", fontWeight: 600, color: NAVY }}>{metric.value}</div>
+                <div className={`text-[10px] font-bold uppercase tracking-wider ${metric.color} mt-1`}>{metric.change}</div>
               </Card>
             ))}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Competitive Analysis */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Target className="w-5 h-5 mr-2 text-red-500" />
+            <Card className="border border-[#E8E4DC] bg-white p-6">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle style={{ ...CG, display: "flex", alignItems: "center", color: NAVY }}>
+                  <Target className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Competitive Intelligence Analysis
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-0">
                 <div className="space-y-4">
                   {competitiveAnalysis.map((comp, index) => (
-                    <div key={index} className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{comp.competitor}</h4>
-                        <Badge 
-                          variant={comp.marketPosition === 'Leading' ? 'default' : 
-                                 comp.marketPosition === 'Superior' ? 'destructive' : 'secondary'}
-                        >
+                    <div key={index} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 style={{ ...CG, fontWeight: 600, color: NAVY }}>{comp.competitor}</h4>
+                        <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                           {comp.marketPosition}
-                        </Badge>
+                        </div>
                       </div>
                       <div className="space-y-2 text-sm">
-                        <div className="text-emerald-700">✓ Strength: {comp.strength}</div>
-                        <div className="text-red-700">✗ Weakness: {comp.weakness}</div>
-                        <div className="text-blue-800 font-medium">Our Advantage: {comp.ourAdvantage}</div>
+                        <div className="flex items-center text-[#2B8A6E] font-medium">
+                          <CheckCircle className="w-3.5 h-3.5 mr-2" /> Strength: {comp.strength}
+                        </div>
+                        <div className="flex items-center text-red-700">
+                          <div className="w-3.5 h-3.5 mr-2 flex items-center justify-center font-bold">×</div> Weakness: {comp.weakness}
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-[#E8E4DC] text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider">
+                          Our Advantage: {comp.ourAdvantage}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -140,27 +146,27 @@ export default function BusinessIntelligence() {
             </Card>
 
             {/* Performance Indicators */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <PieChart className="w-5 h-5 mr-2 text-purple-500" />
+            <Card className="border border-[#E8E4DC] bg-white p-6">
+              <CardHeader className="px-0 pt-0">
+                <CardTitle style={{ ...CG, display: "flex", alignItems: "center", color: NAVY }}>
+                  <PieChart className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                   Key Performance Indicators
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-0">
                 <div className="space-y-6">
                   {performanceIndicators.map((kpi, index) => (
                     <div key={index} className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="font-medium text-gray-900 dark:text-white">{kpi.kpi}</span>
-                        <span className="text-gray-800 dark:text-gray-400">{kpi.current} / {kpi.target}</span>
+                        <span className="font-bold text-gray-500 uppercase tracking-wider text-[10px]">{kpi.kpi}</span>
+                        <span className="font-semibold text-[#0A0F2E]">{kpi.current} / {kpi.target}</span>
                       </div>
-                      <Progress value={kpi.progress} className="h-3" />
-                      <div className="text-xs text-gray-800 text-right">{kpi.progress}% of target achieved</div>
+                      <Progress value={kpi.progress} className="h-2" />
+                      <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-right">{kpi.progress}% OF TARGET ACHIEVED</div>
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-6" data-testid="button-detailed-analytics">
+                <Button className="w-full mt-8" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-detailed-analytics">
                   View Detailed Analytics Dashboard
                 </Button>
               </CardContent>
@@ -168,29 +174,29 @@ export default function BusinessIntelligence() {
           </div>
 
           {/* Executive Actions */}
-          <Card className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-blue-200 dark:border-blue-800">
-            <CardHeader>
-              <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                <Briefcase className="w-5 h-5 mr-2 text-blue-500" />
-                Executive Business Intelligence Actions
+          <Card className="border border-[#E8E4DC] bg-[#0A0F2E] p-8">
+            <CardHeader className="px-0 pt-0">
+              <CardTitle style={{ ...CG, display: "flex", alignItems: "center", color: "white" }}>
+                <Briefcase className="w-5 h-5 mr-2 text-[#C9A84C]" />
+                Executive BI Actions
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-14 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-market-analysis">
-                  <Globe className="w-5 h-5 mr-2" />
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-market-analysis">
+                  <Globe className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Market Analysis
                 </Button>
-                <Button className="h-14 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-financial-modeling">
-                  <DollarSign className="w-5 h-5 mr-2" />
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-financial-modeling">
+                  <DollarSign className="w-5 h-5 mr-2 text-[#2B8A6E]" />
                   Financial Modeling
                 </Button>
-                <Button className="h-14 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-competitive-intel">
-                  <Target className="w-5 h-5 mr-2" />
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-competitive-intel">
+                  <Target className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Competitive Intel
                 </Button>
-                <Button className="h-14 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-executive-report">
-                  <Briefcase className="w-5 h-5 mr-2" />
+                <Button className="h-14 bg-white/5 border border-white/10 hover:bg-white/10 text-white" data-testid="button-executive-report">
+                  <FileText className="w-5 h-5 mr-2 text-[#DFC178]" />
                   Executive Report
                 </Button>
               </div>

@@ -336,33 +336,32 @@ export default function NewUserJourney() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-gradient-to-br ">
-      <div className="sticky top-0 left-0 right-0 z-40 bg-white backdrop-blur-sm border-b border-gray-200">
+    <div className="min-h-screen bg-white">
+      <div className="sticky top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                <span className="text-gray-900 font-bold text-sm">Execution OS</span>
+              <div className="w-10 h-10 rounded-none bg-poise-navy flex items-center justify-center">
+                <span className="text-poise-gold font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
               </div>
               <div>
-                <h1 className="text-lg font-semibold text-gray-900">Getting Started with Execution OS</h1>
-                <p className="text-xs text-gray-800">Your first playbook will be ready in under 15 minutes</p>
+                <h1 className="text-sm font-bold text-poise-navy uppercase tracking-widest">Execution OS Onboarding</h1>
+                <p className="text-[10px] text-slate-500 uppercase tracking-tight">Your first playbook ready in 15 minutes</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge variant="outline" className="bg-transparent text-gray-800 border-slate-600">
+            <div className="flex items-center gap-6">
+              <Badge variant="outline" className="bg-transparent text-poise-navy border-poise-gold rounded-none uppercase text-[9px] font-bold tracking-widest">
                 Step {state.step + 1} of {STEPS.length}
               </Badge>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setLocation('/')}
-                className="text-gray-800 hover:text-white hover:bg-slate-800"
+                className="text-slate-500 hover:text-poise-navy hover:bg-transparent rounded-none uppercase text-[10px] font-bold tracking-widest"
                 data-testid="button-home"
               >
-                <Home className="h-4 w-4 mr-1" />
-                Home
+                <Home className="h-3 w-3 mr-2" />
+                Exit
               </Button>
             </div>
           </div>
@@ -371,25 +370,15 @@ export default function NewUserJourney() {
             {STEPS.map((step, index) => {
               const isCompleted = index < state.step;
               const isCurrent = index === state.step;
-              const Icon = step.icon;
               
               return (
                 <div key={step.id} className="flex-1 flex items-center">
                   <div className={`
-                    flex items-center justify-center w-8 h-8 rounded-full transition-all
-                    ${isCurrent ? 'bg-indigo-600 ring-2 ring-indigo-400 ring-offset-2 ring-offset-slate-900' : ''}
-                    ${isCompleted ? 'bg-green-600' : ''}
-                    ${!isCurrent && !isCompleted ? 'bg-gray-50' : ''}
-                  `}>
-                    {isCompleted ? (
-                      <Check className="h-4 w-4 text-gray-900" />
-                    ) : (
-                      <Icon className={`h-4 w-4 ${isCurrent ? 'text-gray-900' : 'text-gray-800'}`} />
-                    )}
-                  </div>
-                  {index < STEPS.length - 1 && (
-                    <div className={`flex-1 h-0.5 mx-1 ${isCompleted ? 'bg-green-600' : 'bg-gray-50'}`} />
-                  )}
+                    h-1 transition-all flex-1
+                    ${isCurrent ? 'bg-poise-gold' : ''}
+                    ${isCompleted ? 'bg-poise-teal' : ''}
+                    ${!isCurrent && !isCompleted ? 'bg-slate-100' : ''}
+                  `} />
                 </div>
               );
             })}
@@ -402,78 +391,58 @@ export default function NewUserJourney() {
           <AnimatePresence mode="wait">
             <motion.div
               key={state.step}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
             >
               {state.step === 0 && (
-                <div className="text-center space-y-8">
-                  <div className="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-6">
-                    <Rocket className="h-12 w-12 text-gray-900" />
+                <div className="text-center space-y-10">
+                  <div className="w-24 h-24 mx-auto rounded-none bg-poise-navy flex items-center justify-center mb-8 border-b-4 border-poise-gold">
+                    <Rocket className="h-10 w-10 text-poise-gold" />
                   </div>
                   
                   <div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                    <h2 className="font-serif text-5xl text-poise-navy mb-6">
                       Success Favors the Prepared
                     </h2>
-                    <p className="text-xl text-gray-800 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
                       Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
-                      into decisive action in <span className="text-indigo-400 font-semibold">12 minutes, not 72 hours</span>
+                      into decisive action in <span className="text-poise-teal font-bold underline decoration-poise-gold underline-offset-4">12 minutes, not 72 hours</span>
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
-                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
-                      <div className="w-12 h-12 mx-auto rounded-lg bg-indigo-500/20 flex items-center justify-center mb-4">
-                        <Clock className="h-6 w-6 text-indigo-400" />
-                      </div>
-                      <div className="text-2xl font-bold text-gray-900 mb-1">15 min</div>
-                      <div className="text-sm text-gray-800">Time to your first playbook</div>
-                    </Card>
-                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
-                      <div className="w-12 h-12 mx-auto rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
-                        <Layers className="h-6 w-6 text-green-400" />
-                      </div>
-                      <div className="text-2xl font-bold text-gray-900 mb-1">170</div>
-                      <div className="text-sm text-gray-800">Ready-to-use playbooks</div>
-                    </Card>
-                    <Card className="bg-gray-50 border-gray-200 text-center p-6">
-                      <div className="w-12 h-12 mx-auto rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
-                        <Radio className="h-6 w-6 text-purple-400" />
-                      </div>
-                      <div className="text-2xl font-bold text-gray-900 mb-1">92</div>
-                      <div className="text-sm text-gray-800">Intelligence signals</div>
-                    </Card>
+                  <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
+                      <div className="text-3xl font-serif text-poise-navy mb-2">15 min</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Time to Build</div>
+                    </div>
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
+                      <div className="text-3xl font-serif text-poise-navy mb-2">170</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Playbooks</div>
+                    </div>
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
+                      <div className="text-3xl font-serif text-poise-navy mb-2">92</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Signals</div>
+                    </div>
                   </div>
 
-                  <div className="bg-gradient-to-r   border border-indigo-500/30 rounded-xl p-6 max-w-2xl mx-auto mt-8">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-indigo-500/30 flex items-center justify-center flex-shrink-0">
-                        <Sparkles className="h-5 w-5 text-indigo-400" />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="font-semibold text-gray-900 mb-1">What you'll accomplish</h3>
-                        <ul className="text-sm text-gray-800 space-y-1">
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-400" />
-                            Configure Execution OS for your industry and role
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-400" />
-                            Select and customize your first playbook
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-400" />
-                            Enable AI monitoring for key signals
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-400" />
-                            See a live simulation of Execution OS in action
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <div className="bg-slate-50 border-l-4 border-poise-gold p-8 max-w-2xl mx-auto mt-12 text-left">
+                    <h3 className="font-bold text-poise-navy uppercase tracking-widest text-xs mb-4">Onboarding Milestones</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3 text-sm text-slate-600">
+                        <Check className="h-4 w-4 text-poise-teal" />
+                        Configure Execution OS for your industry
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600">
+                        <Check className="h-4 w-4 text-poise-teal" />
+                        Select your first operational playbook
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-slate-600">
+                        <Check className="h-4 w-4 text-poise-teal" />
+                        Enable AI-powered signal monitoring
+                      </li>
+                    </ul>
                   </div>
                 </div>
               )}
