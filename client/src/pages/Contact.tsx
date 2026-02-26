@@ -35,10 +35,10 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Early Access - Execution OS Q1 2026 Pilot Program",
-      description: "Join Execution OS' exclusive Q1 2026 pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
-      ogTitle: "Request Early Access - Execution OS Pilot Program",
-      ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership starting Q1 2026.",
+      title: "Request Pilot Access - Execution OS Now in Pilot",
+      description: "Join Execution OS' exclusive pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
+      ogTitle: "Request Pilot Access - Execution OS Pilot Program",
+      ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership. Now accepting applications.",
     });
   }, []);
 
@@ -89,15 +89,15 @@ export default function Contact() {
   return (
     <PageLayout>
       <PageHero
-        eyebrow="Q1 2026 Pilot Program"
-        title="Request Early Access Interview"
+        eyebrow="Now in Pilot"
+        title="Request Pilot Access"
         subtitle="Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership."
         size="lg"
       >
         <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
           {[
             { icon: Shield, label: "Limited to 10 Partners" },
-            { icon: Zap, label: "Q1 2026 Launch" },
+            { icon: Zap, label: "Pilot Active Now" },
             { icon: Target, label: "90-Day Validation" },
           ].map(({ icon: Icon, label }) => (
             <div key={label} style={{ display: "flex", alignItems: "center", gap: 8 }}>

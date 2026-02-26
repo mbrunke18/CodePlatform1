@@ -93,6 +93,7 @@ const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
 const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
 const PlaybookReadinessAudit = lazy(() => import("./pages/PlaybookReadinessAudit"));
 const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
+const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
 const WorkspaceIdentify = lazy(() => import("./pages/WorkspaceIdentify"));
@@ -325,6 +326,7 @@ function Router() {
         <Route path="/why-executeiq" component={WhyExecuteIQ} />
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
+        <Route path="/idea-framework" component={IDEAFramework} />
         <Route path="/pricing" component={Pricing} />
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />

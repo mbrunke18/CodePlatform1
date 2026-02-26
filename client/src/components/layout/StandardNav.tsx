@@ -37,9 +37,10 @@ export default function StandardNav() {
     {
       heading: "Understand",
       links: [
-        { label: "How It Works", path: "/how-it-works", icon: Layers, description: "The IDEA Framework" },
-        { label: "Why Execution OS", path: "/why-executeiq", icon: Target, description: "The execution gap" },
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Full capabilities" },
+        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "I·D·E·A — the execution operating model" },
+        { label: "How It Works", path: "/how-it-works", icon: Target, description: "Overview of the full system" },
+        { label: "Why Execution OS", path: "/why-executeiq", icon: Shield, description: "The execution gap" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every component, connected" },
       ],
     },
     {
