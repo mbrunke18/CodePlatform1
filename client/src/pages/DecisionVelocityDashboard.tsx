@@ -84,22 +84,28 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
     <div className="min-h-screen bg-[#F8F7F4]">
       {!embedded && <StandardNav />}
       
-      <div className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none rounded-none">
-            <Zap className="h-3 w-3 mr-1" />
-            Decision Velocity Tracking
-          </Badge>
-          <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG} data-testid="page-title">
-            Decision Velocity Dashboard
+      {/* Navy Header Section */}
+      <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+            <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+              Performance Intelligence
+            </span>
+            <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG} data-testid="page-title">
+            Decision <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Velocity</em> Dashboard
           </h1>
-          <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
         </div>
-        
+      </div>
+      
+      <div className="container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-4 gap-6 mb-12">
           <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="pb-2">

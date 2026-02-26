@@ -141,7 +141,7 @@ export default function SettingsPage() {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <Link to="/">
+              <Link to="/dashboard">
                 <Button className="bg-white/10 hover:bg-white/20 text-white border-none">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Dashboard
@@ -228,10 +228,10 @@ export default function SettingsPage() {
                           <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                           <div>
                             <h4 className="font-semibold text-[#0A0F2E]">{service.service}</h4>
-                            <p className="text-sm text-gray-800">Uptime: {service.uptime}</p>
+                            <p className="text-sm text-[#6B7280]">Uptime: {service.uptime}</p>
                           </div>
                         </div>
-                        <Badge variant="default" className="bg-[#2B8A6E] text-white">
+                        <Badge variant="default" className="bg-[#2B8A6E] text-white rounded-none">
                           {service.status}
                         </Badge>
                       </div>
@@ -318,10 +318,10 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                            <Badge variant="destructive" className="rounded-none">Critical</Badge>
+                            <Badge variant="destructive" className="rounded-none bg-red-600 text-white">Critical</Badge>
                         )}
                       </div>
-                      <p className="text-sm text-gray-800">{feature.description}</p>
+                      <p className="text-sm text-[#6B7280]">{feature.description}</p>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Switch 
@@ -330,7 +330,7 @@ export default function SettingsPage() {
                         data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
                         className="data-[state=checked]:bg-[#2B8A6E] [&>span]:bg-white"
                       />
-                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-black/5 text-gray-700 rounded-none'}>
+                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-[#E8E4DC] text-[#6B7280] rounded-none'}>
                         {feature.enabled ? 'Enabled' : 'Disabled'}
                       </Badge>
                     </div>
@@ -374,24 +374,24 @@ export default function SettingsPage() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
-                          <p className="text-sm text-gray-800">Require 2FA for all admin users</p>
+                          <h4 className="font-medium text-[#0A0F2E]">Two-Factor Authentication</h4>
+                          <p className="text-sm text-[#6B7280]">Require 2FA for all admin users</p>
                         </div>
                         <Switch defaultChecked data-testid="switch-2fa-required" className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>
                       
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900">Audit Logging</h4>
-                          <p className="text-sm text-gray-800">Log all user actions and system events</p>
+                          <h4 className="font-medium text-[#0A0F2E]">Audit Logging</h4>
+                          <p className="text-sm text-[#6B7280]">Log all user actions and system events</p>
                         </div>
                         <Switch defaultChecked data-testid="switch-audit-logging" className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
-                          <h4 className="font-medium text-gray-900">Advanced Encryption</h4>
-                          <p className="text-sm text-gray-800">AES-256 encryption for sensitive data</p>
+                          <h4 className="font-medium text-[#0A0F2E]">Advanced Encryption</h4>
+                          <p className="text-sm text-[#6B7280]">AES-256 encryption for sensitive data</p>
                         </div>
                         <Switch defaultChecked disabled className="data-[state=checked]:bg-[#2B8A6E]" />
                       </div>

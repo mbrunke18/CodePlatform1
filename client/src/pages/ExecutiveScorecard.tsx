@@ -60,7 +60,7 @@ function MetricCard({
   const statusBorders = {
     good: 'border-l-[#2B8A6E]',
     warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-[#0A0F2E]'
+    critical: 'border-l-red-600'
   };
 
   const trendIcons = {
@@ -160,7 +160,7 @@ export default function ExecutiveScorecard() {
 
   const statusBg = 
     overallStatus === 'good' ? 'bg-[#2B8A6E]' :
-    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-[#0A0F2E]';
+    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-red-600';
 
   return (
     <PageLayout>

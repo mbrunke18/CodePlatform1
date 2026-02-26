@@ -220,7 +220,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   
   const getProgressColor = (progress: number) => {
     if (progress >= 80) return 'bg-[#2B8A6E]';
-    if (progress >= 50) return 'bg-[#C9A84C]';
+    if (progress >= 50) return 'bg-[#DFC178]';
     return 'bg-[#0A0F2E]';
   };
   
@@ -254,10 +254,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
       <div className="page-background min-h-screen bg-transparent p-6">
         <div className="max-w-7xl mx-auto space-y-8">
           
-          {/* Breadcrumb Navigation */}
           <div className="mb-6">
             <div className="flex items-center gap-2 text-sm text-gray-800">
-              <Link to="/">
+              <Link to="/dashboard">
                 <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
@@ -265,7 +264,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-gray-900">Success Metrics</span>
+              <span className="text-gray-900 font-medium">Success Metrics</span>
             </div>
           </div>
 
@@ -282,22 +281,22 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   <p className="text-[#DFC178] mt-1 text-sm opacity-80">Track progress toward your strategic goals with custom metrics</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <Button 
-                  onClick={() => setIsAddMetricDialogOpen(true)}
-                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
-                  data-testid="button-add-metric"
-                >
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Metric
-                </Button>
-                <Link to="/">
-                  <Button variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10">
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-              </div>
+                  <div className="flex items-center gap-4">
+                    <Button 
+                      onClick={() => setIsAddMetricDialogOpen(true)}
+                      className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
+                      data-testid="button-add-metric"
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add Metric
+                    </Button>
+                    <Link to="/dashboard">
+                      <Button variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10">
+                        <ArrowLeft className="h-4 w-4 mr-2" />
+                        Dashboard
+                      </Button>
+                    </Link>
+                  </div>
             </div>
           </div>
 
@@ -337,7 +336,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       <span className="text-[#6B7280]">Progress to Target</span>
                       <span className="text-[#0A0F2E] font-bold">{friProgress.toFixed(0)}%</span>
                     </div>
-                    <div className="h-2 bg-[#F8F7F4] overflow-hidden">
+                    <div className="h-2 bg-[#E8E4DC] overflow-hidden">
                       <div 
                         className="bg-[#C9A84C] h-full transition-all duration-500" 
                         style={{ width: `${friProgress}%` }} 

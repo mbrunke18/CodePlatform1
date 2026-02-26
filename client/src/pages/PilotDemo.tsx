@@ -309,7 +309,7 @@ export default function PilotDemo() {
                       ? "bg-[#0A0F2E] text-white" 
                       : ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
                         ? "bg-[#2B8A6E] text-white"
-                        : "bg-[#E8E4DC] text-gray-800"
+                        : "bg-[#E8E4DC] text-[#6B7280]"
                   }`}>
                     {["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i ? (
                       <CheckCircle className="w-4 h-4" />
@@ -337,9 +337,9 @@ export default function PilotDemo() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] dark:border-slate-800">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <Mail className="w-5 h-5 text-[#0A0F2E]" />
                       Step 1: Enter Your Email
                     </CardTitle>
@@ -349,24 +349,24 @@ export default function PilotDemo() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
+                      <Label htmlFor="email" className="text-[#0A0F2E]">Email Address</Label>
                       <Input
                         id="email"
                         type="email"
                         placeholder="your@email.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="text-lg py-6"
+                        className="text-lg py-6 border-[#E8E4DC]"
                         data-testid="input-pilot-email"
                       />
-                      <p className="text-sm text-gray-800">
+                      <p className="text-sm text-[#6B7280]">
                         We'll send you a stakeholder notification just like your team would receive
                       </p>
                     </div>
 
                     <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-4 border border-[#0A0F2E] dark:border-[#0A0F2E]">
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
-                      <ul className="text-sm text-white dark:text-slate-300 space-y-1">
+                      <ul className="text-sm text-white/90 dark:text-slate-300 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a playbook to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
@@ -379,7 +379,7 @@ export default function PilotDemo() {
                         size="lg"
                         onClick={() => setStep("configure")}
                         disabled={!canProceedToConfig}
-                        className="gap-2"
+                        className="gap-2 bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                         data-testid="button-next-configure"
                       >
                         Continue <ArrowRight className="w-4 h-4" />
@@ -398,10 +398,10 @@ export default function PilotDemo() {
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-6"
               >
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] dark:border-slate-800">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Radio className="w-5 h-5 text-amber-500" />
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
+                      <Radio className="w-5 h-5 text-[#C9A84C]" />
                       Step 2: Choose a Trigger Scenario
                     </CardTitle>
                     <CardDescription>
@@ -416,18 +416,18 @@ export default function PilotDemo() {
                           onClick={() => setSelectedTrigger(trigger.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedTrigger === trigger.id
-                              ? "border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/30"
-                              : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                              ? "border-[#0A0F2E] bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/30"
+                              : "border-[#E8E4DC] dark:border-slate-700 hover:border-[#C9A84C]/30"
                           }`}
                           data-testid={`button-trigger-${trigger.id}`}
                         >
                           <div className={`inline-flex p-2 rounded-lg ${trigger.bgColor} mb-3`}>
                             <trigger.icon className={`w-5 h-5 ${trigger.color}`} />
                           </div>
-                          <h4 className="font-medium text-slate-900 dark:text-white mb-1">
+                          <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-1">
                             {trigger.name}
                           </h4>
-                          <p className="text-sm text-gray-800 dark:text-slate-300">
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">
                             {trigger.description}
                           </p>
                         </button>
@@ -436,9 +436,9 @@ export default function PilotDemo() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] dark:border-slate-800">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <BookOpen className="w-5 h-5 text-[#C9A84C]" />
                       Step 3: Select a Playbook
                     </CardTitle>
@@ -454,22 +454,22 @@ export default function PilotDemo() {
                           onClick={() => setSelectedPlaybook(playbook.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedPlaybook === playbook.id
-                              ? "border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#C9A84C]/30"
-                              : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                              ? "border-[#C9A84C] bg-[#C9A84C]/5 dark:bg-[#C9A84C]/30"
+                              : "border-[#E8E4DC] dark:border-slate-700 hover:border-[#C9A84C]/30"
                           }`}
                           data-testid={`button-playbook-${playbook.id}`}
                         >
-                          <h4 className="font-medium text-slate-900 dark:text-white mb-1">
+                          <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-1">
                             {playbook.name}
                           </h4>
-                          <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300 mb-3">
                             {playbook.description}
                           </p>
                           <div className="flex gap-3 text-xs">
-                            <span className="text-gray-800 dark:text-slate-300">
+                            <span className="text-[#6B7280] dark:text-slate-300">
                               {playbook.tasks} tasks
                             </span>
-                            <span className="text-gray-800 dark:text-slate-300">
+                            <span className="text-[#6B7280] dark:text-slate-300">
                               {playbook.stakeholders} stakeholders
                             </span>
                             <span className="text-[#2B8A6E] dark:text-[#2B8A6E] font-medium">
@@ -487,7 +487,7 @@ export default function PilotDemo() {
                     variant="outline"
                     size="lg"
                     onClick={() => setStep("setup")}
-                    className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white hover:border-[#141B45]"
+                    className="gap-2 text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#0A0F2E] hover:text-white"
                     data-testid="button-back-setup"
                   >
                     <ArrowLeft className="w-4 h-4" /> Back
@@ -496,7 +496,7 @@ export default function PilotDemo() {
                     size="lg"
                     onClick={() => setStep("ready")}
                     disabled={!canProceedToReady}
-                    className="gap-2"
+                    className="gap-2 bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                     data-testid="button-next-ready"
                   >
                     Continue <ArrowRight className="w-4 h-4" />
@@ -512,9 +512,9 @@ export default function PilotDemo() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
               >
-                <Card className="border-slate-200 dark:border-slate-800">
+                <Card className="border-[#E8E4DC] dark:border-slate-800">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <Rocket className="w-5 h-5 text-[#2B8A6E]" />
                       Ready to Execute
                     </CardTitle>
@@ -523,43 +523,43 @@ export default function PilotDemo() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="bg-slate-100 dark:bg-[#141B45]/50 rounded-lg p-6 space-y-4">
+                    <div className="bg-[#F8F7F4] dark:bg-[#141B45]/50 rounded-lg p-6 space-y-4 border border-[#E8E4DC]">
                       <div className="flex items-start gap-4">
                         <div className="bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
                           <Mail className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-800 dark:text-slate-300">Stakeholder Email</p>
-                          <p className="font-medium text-slate-900 dark:text-white">{email}</p>
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Stakeholder Email</p>
+                          <p className="font-medium text-[#0A0F2E] dark:text-white">{email}</p>
                         </div>
                       </div>
-                      <Separator />
+                      <Separator className="bg-[#E8E4DC]" />
                       <div className="flex items-start gap-4">
                         <div className={`p-2 rounded-lg ${triggerData?.bgColor}`}>
                           {triggerData && <triggerData.icon className={`w-5 h-5 ${triggerData.color}`} />}
                         </div>
                         <div>
-                          <p className="text-sm text-gray-800 dark:text-slate-300">Trigger Scenario</p>
-                          <p className="font-medium text-slate-900 dark:text-white">{triggerData?.name}</p>
-                          <p className="text-sm text-gray-800 mt-1">"{triggerData?.sampleSignal}"</p>
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Trigger Scenario</p>
+                          <p className="font-medium text-[#0A0F2E] dark:text-white">{triggerData?.name}</p>
+                          <p className="text-sm text-[#6B7280] mt-1">"{triggerData?.sampleSignal}"</p>
                         </div>
                       </div>
-                      <Separator />
+                      <Separator className="bg-[#E8E4DC]" />
                       <div className="flex items-start gap-4">
                         <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/30 p-2 rounded-lg">
                           <BookOpen className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-800 dark:text-slate-300">Playbook to Execute</p>
-                          <p className="font-medium text-slate-900 dark:text-white">{playbookData?.name}</p>
-                          <p className="text-sm text-gray-800 mt-1">
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Playbook to Execute</p>
+                          <p className="font-medium text-[#0A0F2E] dark:text-white">{playbookData?.name}</p>
+                          <p className="text-sm text-[#6B7280] mt-1">
                             {playbookData?.tasks} tasks • {playbookData?.stakeholders} stakeholders
                           </p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
+                    <div className="bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                       <h4 className="font-medium text-[#0A2920] dark:text-[#2B8A6E] mb-2 flex items-center gap-2">
                         <Clock className="w-4 h-4" />
                         What you'll see:

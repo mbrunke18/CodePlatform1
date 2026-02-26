@@ -119,8 +119,8 @@ export default function ManufacturingSupplierDemo() {
                     <li>• Day 4-5: Emergency meetings to find alternatives</li>
                     <li>• Week 2: Alternative supplier can't meet quality specs</li>
                     <li>• Week 3: Engineering scrambles to re-qualify parts</li>
-                    <li className="text-[#C9A84C] font-semibold">• Week 4: Production lines shut down</li>
-                    <li className="text-[#C9A84C] font-bold">• Month 2: Customers buying from competitors</li>
+                    <li className="text-red-400 font-semibold">• Week 4: Production lines shut down</li>
+                    <li className="text-red-500 font-bold">• Month 2: Customers buying from competitors</li>
                   </ul>
                 </div>
               </div>

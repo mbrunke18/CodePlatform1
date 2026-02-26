@@ -269,43 +269,43 @@ export default function InvestorLanding() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-[#2B8A6E]" />
-                </div>
-                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Detection Agent</div>
-                <div className="text-xs text-[#6B7280]">Monitors signals across domains</div>
+          <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center text-[#2B8A6E]">
+                <Zap className="h-5 w-5" />
               </div>
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center">
-                  <Target className="h-5 w-5 text-[#C9A84C]" />
-                </div>
-                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Risk Scoring Agent</div>
-                <div className="text-xs text-[#6B7280]">Classifies severity + urgency</div>
-              </div>
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/20 rounded-lg flex items-center justify-center">
-                  <Users className="h-5 w-5 text-[#0A0F2E]" />
-                </div>
-                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Routing Agent</div>
-                <div className="text-xs text-[#6B7280]">Assigns stakeholders + roles</div>
-              </div>
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-[#2B8A6E]" />
-                </div>
-                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Decision Agent</div>
-                <div className="text-xs text-[#6B7280]">Pre-authorized within policy</div>
-              </div>
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center">
-                  <Brain className="h-5 w-5 text-[#C9A84C]" />
-                </div>
-                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Learning Agent</div>
-                <div className="text-xs text-[#6B7280]">Compounds institutional knowledge</div>
-              </div>
+              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Detection Agent</div>
+              <div className="text-xs text-[#6B7280]">Monitors signals across domains</div>
             </div>
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center text-[#C9A84C]">
+                <Target className="h-5 w-5" />
+              </div>
+              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Risk Scoring Agent</div>
+              <div className="text-xs text-[#6B7280]">Classifies severity + urgency</div>
+            </div>
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/20 rounded-lg flex items-center justify-center text-[#0A0F2E]">
+                <Users className="h-5 w-5" />
+              </div>
+              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Routing Agent</div>
+              <div className="text-xs text-[#6B7280]">Assigns stakeholders + roles</div>
+            </div>
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center text-[#2B8A6E]">
+                <Shield className="h-5 w-5" />
+              </div>
+              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Decision Agent</div>
+              <div className="text-xs text-[#6B7280]">Pre-authorized within policy</div>
+            </div>
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+              <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center text-[#C9A84C]">
+                <Brain className="h-5 w-5" />
+              </div>
+              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Learning Agent</div>
+              <div className="text-xs text-[#6B7280]">Compounds institutional knowledge</div>
+            </div>
+          </div>
           </div>
         </section>
 

@@ -395,7 +395,7 @@ function InvestorPresentation() {
               <div className="text-[#0A0F2E] font-bold text-sm mb-1">{c.name}</div>
               <div className="text-[#6B7280] text-xs mb-3">{c.type}</div>
               <div className="text-[#2B8A6E] text-xs mb-1">✓ {c.has}</div>
-              <div className="text-red-500 text-xs">✗ {c.missing}</div>
+              <div className="text-[#0A0F2E] text-xs">✗ {c.missing}</div>
             </div>
           ))}
           <div className="bg-[#0A0F2E] border-2 border-[#C9A84C]/50 rounded-xl p-4 text-white">

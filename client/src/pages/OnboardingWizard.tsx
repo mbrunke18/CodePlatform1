@@ -60,27 +60,27 @@ const ONBOARDING_STEPS = [
     title: 'Trigger Configuration',
     description: 'Set up intelligence monitoring thresholds',
     icon: Target,
-    color: 'text-[#2B8A6E]',
-    bgColor: 'bg-[#2B8A6E]/10',
-    borderColor: 'border-[#2B8A6E]/30',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
+    borderColor: 'border-[#0A0F2E]/30',
   },
   {
     id: 'playbooks',
     title: 'Playbook Customization',
     description: 'Customize strategic response playbooks',
     icon: Layers,
-    color: 'text-[#0A0F2E]',
-    bgColor: 'bg-[#0A0F2E]/10',
-    borderColor: 'border-[#0A0F2E]/30',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
+    borderColor: 'border-[#C9A84C]/30',
   },
   {
     id: 'metrics',
     title: 'Success Metrics',
     description: 'Define your KPIs and targets',
     icon: BarChart3,
-    color: 'text-[#C9A84C]',
-    bgColor: 'bg-[#C9A84C]/10',
-    borderColor: 'border-[#C9A84C]/30',
+    color: 'text-[#2B8A6E]',
+    bgColor: 'bg-[#2B8A6E]/10',
+    borderColor: 'border-[#2B8A6E]/30',
   },
 ];
 
@@ -842,16 +842,16 @@ max="120"
             
             <div className="flex items-center gap-3">
               <Button
-                variant="ghost"
+                variant="outline"
                 onClick={() => setLocation('/dashboard')}
-                className="text-[#6B7280] text-[10px] uppercase tracking-widest font-bold rounded-none"
+                className="text-[#0A0F2E] border-[#E8E4DC] hover:bg-white text-[10px] uppercase tracking-widest font-bold rounded-none"
               >
                 Skip to Dashboard
               </Button>
               <Button
                 onClick={handleNext}
                 disabled={saveProgressMutation.isPending || completeOnboardingMutation.isPending}
-                className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold px-8 rounded-none"
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold px-8 rounded-none"
               >
                 {currentStep === ONBOARDING_STEPS.length - 1 ? (
                   completeOnboardingMutation.isPending ? 'Finalizing...' : 'Complete Setup'

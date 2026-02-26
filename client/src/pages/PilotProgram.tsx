@@ -316,7 +316,7 @@ export default function PilotProgram() {
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-phases">
+              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-phases">
                 Structured 90-Day Journey
               </h2>
               <p className="text-lg text-gray-800 dark:text-slate-300">
@@ -326,18 +326,18 @@ export default function PilotProgram() {
 
             {/* Timeline Visual */}
             <div className="relative mb-12">
-              <div className="absolute left-0 right-0 top-1/2 h-1 bg-slate-200 dark:bg-[#141B45] -translate-y-1/2 hidden md:block"></div>
+              <div className="absolute left-0 right-0 top-1/2 h-1 bg-[#E8E4DC] dark:bg-[#141B45] -translate-y-1/2 hidden md:block"></div>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {pilotPhases.map((phase, i) => (
                   <div key={i} className="relative" data-testid={`phase-${i}`}>
                     <div className="flex flex-col items-center">
-                      <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-gray-900 font-bold z-10 mb-4`}>
+                      <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-white font-bold z-10 mb-4`}>
                         {i + 1}
                       </div>
-                      <Card className="w-full">
+                      <Card className="w-full border-[#E8E4DC]">
                         <CardHeader className="pb-2 text-center">
-                          <Badge className={`${phase.color} text-gray-900 mb-2`}>{phase.duration}</Badge>
-                          <CardTitle className="text-lg">{phase.name}</CardTitle>
+                          <Badge className={`${phase.color} text-white mb-2 border-none`}>{phase.duration}</Badge>
+                          <CardTitle className="text-lg text-[#0A0F2E]">{phase.name}</CardTitle>
                         </CardHeader>
                         <CardContent className="text-sm">
                           <ul className="space-y-1 mb-4">
@@ -348,8 +348,8 @@ export default function PilotProgram() {
                               </li>
                             ))}
                           </ul>
-                          <div className="border-t pt-3">
-                            <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#0A0F2E] mb-1">Success Metric</div>
+                          <div className="border-t border-[#E8E4DC] pt-3">
+                            <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Success Metric</div>
                             <p className="text-xs text-gray-800 dark:text-slate-300">{phase.successMetrics}</p>
                           </div>
                         </CardContent>

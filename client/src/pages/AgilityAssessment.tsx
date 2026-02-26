@@ -331,7 +331,7 @@ export default function AgilityAssessment() {
                     <RadioGroupItem 
                       value={option.value} 
                       id={option.value}
-                      className="border-[#6B7280] text-[#2B8A6E]"
+                      className="border-[#6B7280] text-[#C9A84C] data-[state=checked]:bg-[#C9A84C] data-[state=checked]:border-[#C9A84C]"
                       data-testid={`radio-${option.value}`}
                     />
                     <Label 

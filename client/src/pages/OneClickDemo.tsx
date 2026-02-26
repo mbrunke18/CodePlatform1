@@ -188,7 +188,7 @@ export default function OneClickDemo() {
       case 'blocker': return <AlertCircle className="h-4 w-4 text-red-600" />;
       case 'resolved': return <Zap className="h-4 w-4 text-[#C9A84C]" />;
       case 'complete': return <Shield className="h-4 w-4 text-[#2B8A6E]" />;
-      default: return <FileText className="h-4 w-4 text-gray-800" />;
+      default: return <FileText className="h-4 w-4 text-[#6B7280]" />;
     }
   };
 
@@ -199,7 +199,7 @@ export default function OneClickDemo() {
       case 'blocker': return 'border-l-red-500';
       case 'resolved': return 'border-l-[#C9A84C]';
       case 'complete': return 'border-l-[#2B8A6E]';
-      default: return 'border-l-slate-500';
+      default: return 'border-l-[#E8E4DC]';
     }
   };
 
@@ -217,7 +217,7 @@ export default function OneClickDemo() {
               Live Interactive Demo
             </Badge>
             
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-5xl font-bold text-[#0A0F2E] mb-6">
               See Execution OS in Action
             </h1>
             
@@ -278,7 +278,7 @@ export default function OneClickDemo() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Badge className={`${demoState === 'complete' ? 'bg-[#2B8A6E] text-white' : 'bg-red-600 text-white animate-pulse'}`}>
+              <Badge className={`${demoState === 'complete' ? 'bg-[#2B8A6E] text-white' : 'bg-red-600 text-white animate-pulse'} border-none`}>
                 {demoState === 'complete' ? 'CONTAINED' : 'ACTIVE INCIDENT'}
               </Badge>
               <span className="text-white font-semibold">{DEMO_SCENARIO.name}</span>
@@ -313,7 +313,7 @@ export default function OneClickDemo() {
           
           {/* Progress Bar */}
           <div className="mt-3">
-            <Progress value={Math.min(progress, 100)} className="h-2 [&>div]:bg-[#C9A84C]" />
+            <Progress value={Math.min(progress, 100)} className="h-2 bg-white/10 [&>div]:bg-[#C9A84C]" />
             <div className="flex justify-between text-xs text-white/70 mt-1">
               <span>0:00</span>
               <span>Target: 12:00</span>
@@ -328,14 +328,14 @@ export default function OneClickDemo() {
           
           {/* Left Column - Task Feed */}
           <div className="lg:col-span-2 space-y-4">
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-[#0A0F2E] flex items-center gap-2">
                     <Zap className="h-5 w-5 text-[#C9A84C]" />
                     Live Execution Feed
                   </h3>
-                  <Badge variant="outline" className="bg-transparent text-gray-800">
+                  <Badge variant="outline" className="bg-transparent text-[#0A0F2E] border-[#E8E4DC]">
                     {completedTasks}/{tasks.length} Tasks
                   </Badge>
                 </div>
@@ -346,7 +346,7 @@ export default function OneClickDemo() {
                       key={task.id}
                       className={`border-l-4 ${getTaskBorderColor(task.type)} pl-4 py-2 rounded-r transition-all duration-300 ${
                         task.completed 
-                          ? 'bg-gray-50 opacity-100' 
+                          ? 'bg-[#F8F7F4] opacity-100' 
                           : 'bg-white opacity-40'
                       }`}
                       data-testid={`task-${task.id}`}
@@ -354,11 +354,11 @@ export default function OneClickDemo() {
                       <div className="flex items-start gap-3">
                         {getTaskIcon(task.type)}
                         <div className="flex-1">
-                          <div className="text-sm text-gray-900">{task.title}</div>
-                          <div className="text-xs text-gray-800">{task.stakeholder}</div>
+                          <div className="text-sm text-[#0A0F2E] font-medium">{task.title}</div>
+                          <div className="text-xs text-[#6B7280]">{task.stakeholder}</div>
                         </div>
                         {task.completed && (
-                          <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
+                          <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
                         )}
                       </div>
                     </div>
@@ -371,14 +371,14 @@ export default function OneClickDemo() {
           {/* Right Column - Stakeholders & Stats */}
           <div className="space-y-4">
             {/* Stakeholder Status */}
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-[#0A0F2E] flex items-center gap-2">
                     <Users className="h-5 w-5 text-[#0A0F2E]" />
                     Stakeholder Status
                   </h3>
-                  <Badge variant="outline" className="text-green-400">
+                  <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30">
                     {acknowledgedCount}/{stakeholders.length} Acknowledged
                   </Badge>
                 </div>
@@ -389,24 +389,24 @@ export default function OneClickDemo() {
                       key={stakeholder.id}
                       className={`flex items-center justify-between p-2 rounded transition-all duration-300 ${
                         stakeholder.acknowledged 
-                          ? 'bg-green-500/10 border border-green-500/30' 
-                          : 'bg-gray-50'
+                          ? 'bg-[#2B8A6E]/10 border border-[#2B8A6E]/30' 
+                          : 'bg-[#F8F7F4]'
                       }`}
                       data-testid={`stakeholder-${stakeholder.id}`}
                     >
                       <div className="flex items-center gap-2">
                         {stakeholder.acknowledged ? (
-                          <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                         ) : (
-                          <div className="h-4 w-4 rounded-full border-2 border-slate-600" />
+                          <div className="h-4 w-4 rounded-full border-2 border-[#6B7280]" />
                         )}
                         <div>
-                          <div className="text-sm text-gray-900">{stakeholder.name}</div>
-                          <div className="text-xs text-gray-800">{stakeholder.role}</div>
+                          <div className="text-sm text-[#0A0F2E] font-medium">{stakeholder.name}</div>
+                          <div className="text-xs text-[#6B7280]">{stakeholder.role}</div>
                         </div>
                       </div>
                       {stakeholder.acknowledged && (
-                        <Badge variant="outline" className="text-xs text-green-400">
+                        <Badge variant="outline" className="text-xs text-[#2B8A6E] border-[#2B8A6E]/30">
                           {formatDisplayTime(stakeholder.acknowledgedAt || 0)}
                         </Badge>
                       )}
@@ -427,19 +427,19 @@ export default function OneClickDemo() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#0A0F2E]">{completedTasks}</div>
-                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Tasks</div>
+                    <div className="text-sm text-[#6B7280] font-medium">Tasks</div>
                   </div>
                   <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">{acknowledgedCount}</div>
-                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Stakeholders</div>
+                    <div className="text-sm text-[#6B7280] font-medium">Stakeholders</div>
                   </div>
                   <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">$500K</div>
-                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Budget</div>
+                    <div className="text-sm text-[#6B7280] font-medium">Budget</div>
                   </div>
                   <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
                     <div className="text-2xl font-bold text-[#C9A84C]">2.4M</div>
-                    <div className="text-sm text-[#0A0F2E]/70 font-medium">Customers</div>
+                    <div className="text-sm text-[#6B7280] font-medium">Customers</div>
                   </div>
                 </div>
               </CardContent>
@@ -449,7 +449,7 @@ export default function OneClickDemo() {
 
         {/* Completion Card */}
         {demoState === 'complete' && (
-          <Card className="mt-6 border-[#2B8A6E]/30">
+          <Card className="mt-6 border-[#2B8A6E]/30 shadow-2xl">
             <CardContent className="p-8 text-center">
               <div className="flex justify-center mb-4">
                 <div className="w-20 h-20 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center">
@@ -457,25 +457,25 @@ export default function OneClickDemo() {
                 </div>
               </div>
               
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Breach Contained in 12 Minutes</h2>
+              <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Breach Contained in 12 Minutes</h2>
               <p className="text-gray-800 mb-6">
                 Traditional response time: 17 days. Execution OS response: 12 minutes.
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-[#F8F7F4] rounded-lg p-4">
                   <div className="text-3xl font-bold text-[#2B8A6E]">340X</div>
                   <div className="text-sm text-gray-800">Faster Response</div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-[#F8F7F4] rounded-lg p-4">
                   <div className="text-3xl font-bold text-[#0A0F2E]">$47M</div>
                   <div className="text-sm text-gray-800">Fine Avoided</div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-[#F8F7F4] rounded-lg p-4">
                   <div className="text-3xl font-bold text-[#C9A84C]">47</div>
                   <div className="text-sm text-gray-800">Tasks Coordinated</div>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4">
+                <div className="bg-[#F8F7F4] rounded-lg p-4">
                   <div className="text-3xl font-bold text-[#C9A84C]">8</div>
                   <div className="text-sm text-gray-800">Executives Aligned</div>
                 </div>
@@ -486,6 +486,7 @@ export default function OneClickDemo() {
                   onClick={resetDemo}
                   variant="outline"
                   size="lg"
+                  className="border-[#E8E4DC] text-[#0A0F2E]"
                   data-testid="button-run-again"
                 >
                   <RotateCcw className="h-5 w-5 mr-2" />
@@ -494,7 +495,7 @@ export default function OneClickDemo() {
                 <Button 
                   onClick={() => { resetDemo(); setLocation('/contact'); }}
                   size="lg"
-                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-8"
                   data-testid="button-schedule-demo"
                 >
                   Schedule Live Demo

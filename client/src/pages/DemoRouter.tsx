@@ -81,7 +81,7 @@ export default function DemoRouter() {
             <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               Interactive Experience
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-testid="heading-demo-router">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4" data-testid="heading-demo-router">
               Experience Execution OS
             </h1>
             <p className="text-xl text-gray-800">
@@ -96,7 +96,7 @@ export default function DemoRouter() {
                 <Sparkles className="h-5 w-5 text-[#0A0F2E]" />
               </div>
               <div className="flex-1">
-                <p className="text-gray-900 font-medium mb-1">Recommended for executives</p>
+                <p className="text-[#0A0F2E] font-medium mb-1">Recommended for executives</p>
                 <p className="text-sm text-gray-800 mb-3">
                   See how Execution OS delivers 12-minute coordinated response with predictive AI and role-specific wins.
                 </p>
@@ -120,7 +120,7 @@ export default function DemoRouter() {
                 <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div className="flex-1">
-                <p className="text-gray-900 font-medium mb-1">NEW: Predictive Intelligence</p>
+                <p className="text-[#0A0F2E] font-medium mb-1">NEW: Predictive Intelligence</p>
                 <p className="text-sm text-gray-800">
                   Execution OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
                 </p>
@@ -142,13 +142,13 @@ export default function DemoRouter() {
                   <CardContent className="p-5 md:p-6 flex items-center gap-4 md:gap-6">
                     {/* Icon */}
                     <div className={`p-3 md:p-4 rounded-2xl bg-[#0A0F2E] flex-shrink-0`}>
-                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                      <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-[#C9A84C]" />
                     </div>
                     
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 md:gap-3 mb-1 flex-wrap">
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-[#2B8A6E] transition-colors">
+                        <h3 className="text-lg md:text-xl font-bold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors">
                           {demo.title}
                         </h3>
                         <Badge className={`${demo.badgeColor} text-white text-xs`}>
@@ -156,14 +156,14 @@ export default function DemoRouter() {
                         </Badge>
                       </div>
                       <p className="text-gray-800 mb-2 text-sm md:text-base line-clamp-2">{demo.description}</p>
-                      <div className="flex items-center gap-2 text-sm text-gray-800">
+                      <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                         <Clock className="h-4 w-4" />
                         <span>{demo.duration}</span>
                       </div>
                     </div>
                     
                     {/* Arrow */}
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-800 group-hover:text-[#0A0F2E] group-hover:translate-x-1 transition-all flex-shrink-0" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-[#6B7280] group-hover:text-[#0A0F2E] group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </CardContent>
                 </Card>
               );
@@ -178,7 +178,7 @@ export default function DemoRouter() {
             <Button
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
-              className="text-gray-800 border-gray-200 hover:bg-[#141B45] hover:text-white"
+              className="text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#141B45] hover:text-white"
               data-testid="button-explore-playbooks"
             >
               Browse 170 Playbooks →
@@ -186,14 +186,14 @@ export default function DemoRouter() {
           </div>
 
           {/* Investor/Roadshow Resources */}
-          <div className="p-5 bg-[#C9A84C]/30 border border-[#C9A84C]/30 rounded-xl">
+          <div className="p-5 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
                   <FileText className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <p className="text-gray-900 font-medium">Investor?</p>
+                  <p className="text-[#0A0F2E] font-medium">Investor?</p>
                   <p className="text-sm text-gray-800">Locked demo, FAQ, and roadshow materials</p>
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function DemoRouter() {
                 <Button
                   variant="outline"
                   onClick={() => setLocation('/investor-demo')}
-                  className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#0A0F2E] flex-1 sm:flex-initial"
+                  className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#0A0F2E] hover:text-white flex-1 sm:flex-initial"
                   data-testid="button-investor-demo"
                 >
                   Investor Demo
@@ -209,7 +209,7 @@ export default function DemoRouter() {
                 <Button
                   variant="ghost"
                   onClick={() => setLocation('/roadshow-resources')}
-                  className="text-[#C9A84C] hover:bg-[#0A0F2E] flex-1 sm:flex-initial"
+                  className="text-[#C9A84C] hover:bg-[#0A0F2E] hover:text-white flex-1 sm:flex-initial"
                   data-testid="button-roadshow-resources"
                 >
                   Resources

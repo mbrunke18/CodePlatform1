@@ -67,8 +67,8 @@ function raciColor(r: string) {
     case "R": return "bg-red-500/10 text-red-600 border-red-500/20";
     case "A": return "bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20";
     case "C": return "bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20";
-    case "I": return "bg-black/5 text-gray-700 border-black/10";
-    default: return "bg-black/5 text-gray-700 border-black/10";
+    case "I": return "bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10";
+    default: return "bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10";
   }
 }
 
@@ -78,7 +78,7 @@ function priorityColor(p: string) {
     case "high": return "bg-red-500/10 text-red-600 border-red-500/20";
     case "medium": return "bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20";
     case "low": return "bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20";
-    default: return "bg-black/5 text-gray-700 border-black/10";
+    default: return "bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10";
   }
 }
 

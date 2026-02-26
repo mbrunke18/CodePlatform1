@@ -206,7 +206,7 @@ export default function PlatformOverview() {
                       </div>
                       <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
-                          <HeartHandshake className="h-3.5 w-3.5" style={{ color: "#C9A84C" }} />
+                          <Users className="h-3.5 w-3.5" style={{ color: "#C9A84C" }} />
                           <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>Human Role</span>
                         </div>
                         <ul className="space-y-2">

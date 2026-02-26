@@ -60,6 +60,7 @@ import {
   BookOpen,
   Loader2,
   Activity,
+  Home,
 } from "lucide-react";
 
 import { 
@@ -96,10 +97,10 @@ const STAKEHOLDER_ROLES = [
 ];
 
 const PRIORITY_CONFIG = {
-  critical: { label: "Critical", color: "bg-destructive text-destructive-foreground rounded-none" },
+  critical: { label: "Critical", color: "bg-red-600 text-white rounded-none" },
   high: { label: "High", color: "bg-[#0A0F2E] text-white rounded-none" },
   medium: { label: "Medium", color: "bg-[#DFC178] text-[#0A0F2E] rounded-none" },
-  low: { label: "Low", color: "bg-[#F8F7F4] text-gray-800 rounded-none" },
+  low: { label: "Low", color: "bg-[#F8F7F4] text-[#6B7280] border border-[#E8E4DC] rounded-none" },
 };
 
 const STATUS_CONFIG = {
@@ -393,6 +394,20 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
       </div>
       
       <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
+            <Link to="/dashboard">
+              <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] p-1 h-auto">
+                <Home className="h-4 w-4" />
+              </Button>
+            </Link>
+            <span>/</span>
+            <span>Configuration</span>
+            <span>/</span>
+            <span className="text-[#0A0F2E] font-medium">Task Management</span>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
           <Card data-testid="stat-total" className="border-[#E8E4DC] bg-[#F8F7F4]">
             <CardContent className="p-6">

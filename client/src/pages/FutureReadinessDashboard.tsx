@@ -147,31 +147,39 @@ export default function FutureReadinessDashboard() {
   return (
     <div className="bg-[#F8F7F4] min-h-screen">
       <StandardNav />
-      <div className="max-w-7xl mx-auto space-y-8 p-12">
-        {/* Header */}
-        <div className="flex items-center justify-between">
+      
+      {/* Navy Header Section */}
+      <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Readiness Intelligence</span>
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+              <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                Readiness Intelligence
+              </span>
             </div>
-            <h1 className="text-4xl font-bold flex items-center gap-3 text-[#0A0F2E]" style={CG}>
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
               Future Readiness <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Index</em>™
             </h1>
-            <p className="text-[#6B7280] mt-2">
-              Real-time strategic preparedness and self-learning intelligence
+            <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+              Real-time strategic preparedness and self-learning intelligence. 
+              Track organizational gravity across 170 playbooks.
             </p>
           </div>
           <Button 
             onClick={handleRecalculate}
-            variant="outline"
-            className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none h-12 px-8 uppercase tracking-widest font-bold text-[10px]"
+            style={{ background: "#C9A84C", color: "#0A0F2E" }}
+            className="hover:bg-[#DFC178] rounded-none h-14 px-10 uppercase tracking-widest font-bold text-xs"
             data-testid="button-recalculate-readiness"
           >
-            <RefreshCw className="h-4 w-4 mr-2" />
-            Recalculate
+            <RefreshCw className="h-5 w-5 mr-2" />
+            Recalculate Index
           </Button>
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto space-y-8 p-12">
 
         {/* Main Readiness Score */}
         <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm overflow-hidden">

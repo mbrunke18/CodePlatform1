@@ -546,7 +546,7 @@ function DemoLiveActivation() {
 
       {/* Scenario Context Card */}
       {executionId && demoPhase !== 'complete' && (
-        <Card className="max-w-7xl mx-auto mb-8 bg-red-50 dark:bg-red-900/30 border-red-300 dark:border-red-700/50">
+        <Card className="max-w-7xl mx-auto mb-8 bg-red-50 dark:bg-[#0A0F2E]/30 border-red-300 dark:border-red-700/50">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <AlertCircle className="h-12 w-12 text-red-700 dark:text-red-400 flex-shrink-0 mt-1" />
@@ -576,11 +576,11 @@ function DemoLiveActivation() {
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 bg-[#0A0F2E] rounded-full flex items-center justify-center">
-                  <Info className="w-6 h-6 text-gray-900" />
+                  <Info className="w-6 h-6 text-[#C9A84C]" />
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-2 text-[#0A0F2E] dark:text-white">
+                <h3 className="font-semibold text-lg mb-2 text-white dark:text-white">
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">

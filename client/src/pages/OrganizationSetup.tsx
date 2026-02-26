@@ -448,22 +448,22 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   <div className="text-sm text-gray-800">Complete</div>
                 </div>
               </div>
-              <Progress value={progressPercent} className="h-3 mb-4 [&>div]:bg-[#C9A84C]" />
-                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
-                  {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
-                  <span className="text-sm text-gray-900">Departments</span>
+              <Progress value={progressPercent} className="h-3 mb-4 [&>div]:bg-[#C9A84C] bg-[#E8E4DC]" />
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/40'}`}>
+                  {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />}
+                  <span className="text-sm text-gray-900 font-medium">Departments</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
-                  {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
-                  <span className="text-sm text-gray-900">Stakeholders</span>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/40'}`}>
+                  {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />}
+                  <span className="text-sm text-gray-900 font-medium">Stakeholders</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
-                  {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
-                  <span className="text-sm text-gray-900">Escalation</span>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/40'}`}>
+                  {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />}
+                  <span className="text-sm text-gray-900 font-medium">Escalation</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
-                  {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
-                  <span className="text-sm text-gray-900">Channels</span>
+                <div className={`flex items-center gap-2 p-3 rounded-none ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/40'}`}>
+                  {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />}
+                  <span className="text-sm text-gray-900 font-medium">Channels</span>
                 </div>
             </CardContent>
           </Card>

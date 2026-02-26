@@ -105,7 +105,7 @@ export default function ExplorePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest shadow-xl"
                 onClick={() => { window.location.href = '/api/login'; }}
               >
                 <LogIn className="h-4 w-4" />
@@ -114,7 +114,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors"
+                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors shadow-sm"
                 onClick={() => setLocation('/contact')}
               >
                 Apply for Pilot Program

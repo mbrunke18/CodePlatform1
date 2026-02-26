@@ -406,6 +406,17 @@ export default function NewUserJourney() {
                     </p>
                   </div>
 
+                  <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                    <Button
+                      size="lg"
+                      className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none shadow-xl"
+                      onClick={handleNext}
+                    >
+                      Start Configuration
+                      <ChevronRight className="ml-3 h-4 w-4" />
+                    </Button>
+                  </div>
+
                   <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">15 min</div>

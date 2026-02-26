@@ -203,30 +203,33 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
     <PageLayout embedded={embedded}>
       <div className="bg-white min-h-screen">
         {/* Navy Hero Section */}
-        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
-          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Horizon Intelligence</span>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                  Horizon Intelligence
+                </span>
               </div>
-              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", color: "#fff", lineHeight: 1.1, maxWidth: "800px" }}>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
                 Foresight <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Radar</em>
               </h1>
-              <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 24, fontSize: 18, maxWidth: "600px" }}>
-                AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. 
+                See what's coming so you can act first, not react late.
               </p>
-              <div className="flex items-center gap-4 mt-8">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-8">
                 <Link href="/intelligence-demo">
-                  <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, borderRadius: 0, padding: "12px 24px" }}>
+                  <Button style={{ background: "#C9A84C", color: "#0A0F2E" }} className="hover:bg-[#DFC178] rounded-none h-12 px-8 uppercase tracking-widest font-bold text-xs">
                     <Play className="w-4 h-4 mr-2" />
                     Interactive Demo
                   </Button>
                 </Link>
-                <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 0, padding: "6px 12px" }} className="rounded-none">
-                  <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-[#2B8A6E] animate-pulse' : 'bg-[#C9A84C]'}`}></div>
-                  {isConnected ? 'LIVE STREAM ACTIVE' : 'DEMO MODE'}
+                <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)" }} className="px-4 py-2 rounded-none h-12">
+                  <div className={`w-2 h-2 rounded-none mr-2 ${isConnected ? 'bg-[#2B8A6E] animate-pulse' : 'bg-[#C9A84C]'}`}></div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">{isConnected ? 'LIVE STREAM ACTIVE' : 'DEMO MODE'}</span>
                 </Badge>
               </div>
             </div>

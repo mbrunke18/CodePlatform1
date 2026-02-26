@@ -218,7 +218,7 @@ export default function WorkspaceIdentify() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-red-600">
+            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#0A0F2E]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-red-600/10">

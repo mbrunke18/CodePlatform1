@@ -47,7 +47,7 @@ interface RoleData {
 const ROLES: Record<string, RoleData> = {
   ceo: {
     id: 'ceo', title: 'Chief Executive Officer', name: 'Jennifer Park', company: 'Meridian Financial Group',
-    icon: Briefcase, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
+    icon: Briefcase, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'M&A Integration — $2.3B Acquisition of CloudTech Solutions',
     domain: 'Mergers & Acquisitions', domainCategory: 'OFFENSE',
     playbook: { number: '12', name: 'M&A Day 1 Integration', tasks: 34, stakeholders: 45, budget: '$1.2M' },
@@ -103,7 +103,7 @@ const ROLES: Record<string, RoleData> = {
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
-    icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: Shield, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Ransomware Attack — Production Systems Compromised at 2:17 AM',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '31', name: 'Critical Incident Response — Ransomware', tasks: 28, stakeholders: 30, budget: '$350K' },
@@ -159,7 +159,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
-    icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: TrendingUp, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Competitive Response — Major Competitor Launches Rival Product',
     domain: 'Competitive Response', domainCategory: 'OFFENSE',
     playbook: { number: '47', name: 'Competitive Response — Product Counter-Strategy', tasks: 24, stakeholders: 28, budget: '$250K' },
@@ -215,7 +215,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cfo: {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
-    icon: DollarSign, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: DollarSign, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Regulatory Change — New SEC Climate Disclosure Requirements',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '58', name: 'Regulatory Compliance — Financial Reporting', tasks: 32, stakeholders: 22, budget: '$180K' },
@@ -271,10 +271,10 @@ const ROLES: Record<string, RoleData> = {
   },
   coo: {
     id: 'coo', title: 'Chief Operating Officer', name: 'David Wilson', company: 'Meridian Financial Group',
-    icon: Settings, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
+    icon: Settings, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'Supply Chain Disruption — Critical Vendor Data Center Outage',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
-    playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, stakeholders: 24, budget: '$200K' },
+    playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, responseTime: '24 seconds', budget: '$200K' },
     triggers: [
       { name: 'Vendor SLA Breach Alert', source: 'ServiceNow + Datadog', type: 'Automated Infrastructure' },
       { name: 'Customer Impact Threshold', source: 'Zendesk + Statuspage', type: 'Automated Customer Impact' },
@@ -327,7 +327,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cto: {
     id: 'cto', title: 'Chief Technology Officer', name: 'Michael Rodriguez', company: 'Meridian Financial Group',
-    icon: Server, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
+    icon: Server, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Digital Transformation — Enterprise AI Platform Rollout',
     domain: 'Digital Transformation', domainCategory: 'SPECIAL TEAMS',
     playbook: { number: '72', name: 'AI Governance & Platform Launch', tasks: 38, stakeholders: 35, budget: '$2.8M' },

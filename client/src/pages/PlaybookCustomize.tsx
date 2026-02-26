@@ -569,9 +569,9 @@ export default function PlaybookCustomize() {
     advance: { label: 'A', color: "#2B8A6E" },
   };
 
-  const isOffense = watch("category") === 'offense';
-  const isDefense = watch("category") === 'defense';
-  const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
+  const isOffense = watch("category") === 'offense' || watch("category") === 'growth' || watch("category") === 'market' || watch("category") === 'special_teams';
+  const isDefense = watch("category") === 'defense' || watch("category") === 'crisis' || watch("category") === 'regulatory' || watch("category") === 'cyber';
+  const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
   
   const SECTION_TO_PHASE: Record<string, string> = {
     basic: 'identify', stakeholders: 'identify', dependencies: 'identify', 
@@ -1074,7 +1074,7 @@ export default function PlaybookCustomize() {
                   </SectionHeader>
                   {expandedSections.budget && (
                     <CardContent className="space-y-4">
-                      <div className="grid grid-cols-2 gap-3 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg">
+                      <div className="grid grid-cols-2 gap-3 p-3 bg-[#F8F7F4] dark:bg-[#141B45]/30 rounded-lg">
                         <div>
                           <Label className="text-sm">Total Budget</Label>
                           <div className="flex items-center gap-1 mt-1">

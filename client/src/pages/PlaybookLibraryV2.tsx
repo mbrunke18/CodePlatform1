@@ -533,11 +533,11 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 {publicTeasers.length === 0 && (templates || []).length === 0 ? (
                   [1,2,3,4,5].map((i) => (
                     <tr key={i} className="bg-white animate-pulse">
-                      <td className="px-4 py-4"><div className="h-5 w-8 bg-gray-100 rounded" /></td>
-                      <td className="px-4 py-4"><div className="h-4 w-48 bg-gray-100 rounded" /></td>
-                      <td className="px-4 py-4 hidden md:table-cell"><div className="h-4 w-24 bg-gray-100 rounded" /></td>
-                      <td className="px-4 py-4 hidden lg:table-cell"><div className="h-4 w-16 bg-gray-100 rounded" /></td>
-                      <td className="px-4 py-4 hidden sm:table-cell"><div className="h-5 w-16 bg-gray-100 rounded" /></td>
+                      <td className="px-4 py-4"><div className="h-5 w-8 bg-[#F8F7F4] rounded" /></td>
+                      <td className="px-4 py-4"><div className="h-4 w-48 bg-[#F8F7F4] rounded" /></td>
+                      <td className="px-4 py-4 hidden md:table-cell"><div className="h-4 w-24 bg-[#F8F7F4] rounded" /></td>
+                      <td className="px-4 py-4 hidden lg:table-cell"><div className="h-4 w-16 bg-[#F8F7F4] rounded" /></td>
+                      <td className="px-4 py-4 hidden sm:table-cell"><div className="h-5 w-16 bg-[#F8F7F4] rounded" /></td>
                       <td className="px-4 py-4" />
                     </tr>
                   ))

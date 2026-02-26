@@ -169,7 +169,7 @@ export default function DemoGallery() {
             <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               Experience Execution OS
             </Badge>
-            <h1 className="text-4xl font-bold text-slate-900 mb-4">
+            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-4">
               Demo Gallery
             </h1>
             <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-6">
@@ -186,7 +186,7 @@ export default function DemoGallery() {
                     <Rocket className="h-6 w-6 text-[#2B8A6E]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Your Journey Starts Here</h3>
+                    <h3 className="font-semibold text-[#0A0F2E]">Your Journey Starts Here</h3>
                     <p className="text-sm text-gray-800">
                       These demos map to Phase 1 of your Execution OS North Star™ journey — Discovery to 12-minute execution
                     </p>
@@ -214,8 +214,8 @@ export default function DemoGallery() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2 flex-wrap">
-                          <Badge variant="secondary" className="text-xs">Featured</Badge>
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="secondary" className="text-xs bg-[#E8E4DC] text-[#0A0F2E]">Featured</Badge>
+                          <Badge variant="outline" className="text-xs border-[#E8E4DC] text-[#6B7280]">
                             <Clock className="h-3 w-3 mr-1" />
                             {demo.duration}
                           </Badge>
@@ -225,7 +225,7 @@ export default function DemoGallery() {
                             </Badge>
                           )}
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#2B8A6E] transition-colors mb-2">
+                        <h3 className="text-2xl font-bold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors mb-2">
                           {demo.title}
                         </h3>
                         <p className="text-gray-800 mb-4">
@@ -233,7 +233,7 @@ export default function DemoGallery() {
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {demo.tags.map((tag) => (
-                            <Badge key={tag} variant="outline" className="text-xs">
+                            <Badge key={tag} variant="outline" className="text-xs border-[#E8E4DC] text-[#6B7280]">
                               {tag}
                             </Badge>
                           ))}
@@ -265,7 +265,7 @@ export default function DemoGallery() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {filteredDemos.filter(d => !d.featured).map((demo) => (
               <Link key={demo.id} href={demo.path}>
-                <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-slate-200">
+                <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-[#E8E4DC]">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${demo.bgColor}`}>
@@ -273,16 +273,16 @@ export default function DemoGallery() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-slate-900 group-hover:text-[#2B8A6E] transition-colors">
+                          <h3 className="font-semibold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors">
                             {demo.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-gray-800 group-hover:text-[#2B8A6E] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] group-hover:text-[#2B8A6E] transition-colors" />
                         </div>
                         <p className="text-sm text-gray-800 mt-1 mb-3">
                           {demo.description}
                         </p>
                         <div className="flex items-center gap-2 flex-wrap">
-                          <Badge variant="outline" className="text-xs border-slate-300">
+                          <Badge variant="outline" className="text-xs border-[#E8E4DC] text-[#6B7280]">
                             <Clock className="h-3 w-3 mr-1" />
                             {demo.duration}
                           </Badge>
@@ -302,17 +302,17 @@ export default function DemoGallery() {
 
           {/* Industry-Specific Demos */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">Industry Scenarios</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2">Industry Scenarios</h2>
             <p className="text-gray-800 mb-6">
               See Execution OS in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industryDemos.map((demo) => (
                 <Link key={demo.id} href={demo.path}>
-                  <Card className="h-full hover:shadow-lg transition-all cursor-pointer group">
+                  <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-[#E8E4DC]">
                     <CardContent className="p-6">
                       <demo.icon className={`h-8 w-8 ${demo.color} mb-4`} />
-                      <h3 className="font-semibold text-slate-900 group-hover:text-[#2B8A6E] transition-colors mb-1">
+                      <h3 className="font-semibold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors mb-1">
                         {demo.title}
                       </h3>
                       <p className="text-xs text-gray-800 mb-2">{demo.industry}</p>
@@ -327,9 +327,9 @@ export default function DemoGallery() {
           </div>
 
           {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
-          <Card className="bg-white border border-gray-200">
+          <Card className="bg-white border border-[#E8E4DC]">
             <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-gray-800 mb-6 max-w-xl mx-auto">
                 Join Fortune 1000 companies achieving 12-minute coordinated response with Execution OS
               </p>
@@ -347,7 +347,7 @@ export default function DemoGallery() {
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-gray-800 mt-4">
+              <p className="text-sm text-[#6B7280] mt-4">
                 Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
               </p>
             </CardContent>

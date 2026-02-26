@@ -17,7 +17,8 @@ import {
   Target,
   ArrowRight,
   Zap,
-  Compass
+  Compass,
+  Home,
 } from 'lucide-react';
 
 interface RoleConfig {
@@ -207,6 +208,20 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#2B8A6E]" /> Personalized workspace</span>
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Role-specific playbooks</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#C9A84C]" /> Tailored signal feeds</span>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
+              <Link to="/dashboard">
+                <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] p-1 h-auto">
+                  <Home className="h-4 w-4" />
+                </Button>
+              </Link>
+              <span>/</span>
+              <span>Configuration</span>
+              <span>/</span>
+              <span className="text-[#0A0F2E] font-medium">Role Selector</span>
             </div>
           </div>
 

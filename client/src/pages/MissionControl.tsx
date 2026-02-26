@@ -156,40 +156,35 @@ export default function MissionControl() {
   return (
     <IDEALayout showBackButton={false}>
       <div style={{ background: OFF, minHeight: "100vh" }}>
-        {/* Navy Hero Header */}
-        <div style={{ background: NAVY, padding: "48px 48px 32px", position: "relative", overflow: "hidden" }}>
-          <div style={{ 
-            position: "absolute", 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0, 
-            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
-            backgroundSize: "44px 44px" 
-          }} />
-          
-          <div className="relative z-10 max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
+        {/* Navy Header Section */}
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="relative z-10 max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
                   Operational Center
                 </span>
               </div>
-              <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
                 Mission <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Control</em> One™
               </h1>
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                Single-pane executive overview of strategic readiness and execution status. 
+                Real-time telemetry and predictive response orchestration.
+              </p>
             </div>
             
             <div className="flex items-center gap-8">
-              <div className="text-right">
+              <div className="text-right hidden md:block">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">System Time</div>
                 <div style={{ ...CG, color: "#fff", fontSize: "24px", fontWeight: 500 }}>{currentTime.toLocaleTimeString()}</div>
               </div>
-              <div className="bg-white/5 border border-white/10 p-3 rounded-none flex items-center gap-4">
+              <div className="bg-white/5 border border-white/10 p-4 rounded-none flex items-center gap-4 h-16 px-6">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2B8A6E]">Live Telemetry</span>
+                  <div className="w-2 h-2 rounded-none bg-[#2B8A6E] animate-pulse" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2B8A6E]">Live Telemetry Active</span>
                 </div>
               </div>
             </div>

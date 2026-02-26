@@ -542,13 +542,13 @@ export default function InvestorDemo() {
 
                       {/* PM Sync Panel */}
                       {currentStage.pmSync && (
-                        <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 mb-4">
+                        <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
-                            <GitBranch className="h-4 w-4 text-[#2B8A6E]" />
+                            <GitBranch className="h-4 w-4 text-[#0A0F2E]" />
                             <span className="font-medium text-[#0A0F2E]">{currentStage.pmSync.title}</span>
                             <div className="flex gap-1 ml-auto">
                               {currentStage.pmSync.platforms.map((p, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-[#2B8A6E]">
+                                <Badge key={idx} variant="outline" className="text-xs border-[#0A0F2E]/30 text-[#0A0F2E]">
                                   {p}
                                 </Badge>
                               ))}
@@ -557,7 +557,7 @@ export default function InvestorDemo() {
                           <div className="space-y-1">
                             {currentStage.pmSync.actions.map((action, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-sm">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
                                 <span className="text-[#0A0F2E]">{action}</span>
                               </div>
                             ))}
@@ -565,10 +565,10 @@ export default function InvestorDemo() {
                         </div>
                       )}
                       
-                      {!isComplete ? (
+                          {!isComplete ? (
                         <Button
                           onClick={handleNextStage}
-                          className="w-full bg-[#2B8A6E] hover:bg-[#256B56] text-[#0A0F2E] py-6 text-lg"
+                          className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white py-6 text-lg"
                           data-testid="button-next-stage"
                         >
                           {currentStageIndex === IDEA_STORY.length - 2 ? 'Complete Story' : 'Next Beat'}

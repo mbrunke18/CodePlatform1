@@ -60,7 +60,7 @@ function KPICard({
     <div className="flex items-center gap-2 sm:gap-3">
       <StatusDot status={status} />
       <div>
-        <div style={{ ...CG, fontSize: "24px", fontWeight: 600 }} className={statusColors[status]}>{value}</div>
+        <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: status === 'good' ? TEAL : status === 'warning' ? GOLD : '#dc2626' }}>{value}</div>
         <div className="text-[10px] font-bold tracking-widest uppercase text-gray-500">{label}</div>
         {trend && <div className="text-xs text-gray-400 hidden sm:block">{trend}</div>}
       </div>
@@ -162,47 +162,45 @@ export default function Dashboard() {
   return (
     <IDEALayout showBackButton={false}>
       <div style={{ background: "#F8F7F4", minHeight: "100vh" }}>
-        {/* Header Section */}
-        <div style={{ background: "#0A0F2E", padding: "48px 48px 32px", position: "relative", overflow: "hidden" }}>
+        {/* Navy Header Section */}
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ 
             position: "absolute", 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0, 
+            inset: 0, 
             backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
             backgroundSize: "44px 44px" 
           }} />
           
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                  <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
-                    Command Center
-                  </span>
-                </div>
-                <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
-                  Strategic <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Intelligence</em> Dashboard
-                </h1>
+          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+            <div>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                  Command Center
+                </span>
               </div>
-              
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex gap-8 items-center rounded-none shadow-[0_0_20px_rgba(201,168,76,0.1)]">
-                <KPICard 
-                  label="Execution Score" 
-                  value={`${scoreValue}%`} 
-                  status={overallStatus} 
-                  trend="+2.4% vs last week"
-                />
-                <div className="w-px h-10 bg-white/10" />
-                <KPICard 
-                  label="Active Signals" 
-                  value={`${triggerCount}`} 
-                  status="warning" 
-                  trend="3 high priority"
-                />
-              </div>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
+                Strategic <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Intelligence</em>
+              </h1>
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                Real-time visibility into strategic execution, AI-driven intelligence, and organizational readiness.
+              </p>
+            </div>
+            
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-wrap gap-10 items-center justify-center rounded-none shadow-[0_0_40px_rgba(201,168,76,0.1)]">
+              <KPICard 
+                label="Execution Score" 
+                value={`${scoreValue}%`} 
+                status={overallStatus} 
+                trend="+2.4% vs last week"
+              />
+              <div className="w-px h-12 bg-white/10 hidden sm:block" />
+              <KPICard 
+                label="Active Signals" 
+                value={`${triggerCount}`} 
+                status="warning" 
+                trend="3 high priority"
+              />
             </div>
           </div>
         </div>

@@ -217,7 +217,7 @@ function getCategoryColor(category: string) {
     case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
     case 'DEFENSE': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
     case 'SPECIAL TEAMS': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
-    default: return { bg: 'bg-black/5', text: 'text-gray-700', border: 'border-black/10', ring: 'ring-black/20', solid: 'bg-black/20' };
+    default: return { bg: 'bg-[#F8F7F4]', text: 'text-[#0A0F2E]', border: 'border-[#E8E4DC]', ring: 'ring-[#E8E4DC]', solid: 'bg-[#E8E4DC]' };
   }
 }
 
@@ -556,7 +556,7 @@ export default function LiveActivationCenter() {
 
   if (!activationId) {
     return (
-      <PageLayout embedded={embedded}>
+      <PageLayout>
         <div className="min-h-screen bg-[#F8F7F4] text-gray-900 p-6">
           <div className="max-w-6xl mx-auto py-10 md:py-16">
             <div className="mb-8">
@@ -615,7 +615,7 @@ export default function LiveActivationCenter() {
                     {activeKpis.map((kpi, i) => (
                       <div key={i} className="text-center">
                         <div className={cn('text-sm font-bold', kpi.color)}>{kpi.value}</div>
-                        <div className="text-[10px] text-gray-800">{kpi.label}</div>
+                        <div className="text-[10px] text-[#6B7280]">{kpi.label}</div>
                       </div>
                     ))}
                   </div>
@@ -626,9 +626,9 @@ export default function LiveActivationCenter() {
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="w-8 h-8 text-[#2B8A6E]" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Live Activation Command Center</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E]">Live Activation Command Center</h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-800 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto">
               Watch strategic coordination unfold in real-time. Select a playbook and see how Execution OS orchestrates cross-functional alignment in under 12 minutes.
             </p>
           </div>
@@ -759,16 +759,16 @@ export default function LiveActivationCenter() {
             <div className="w-20 h-20 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center mx-auto mb-6 animate-[pulse_2s_ease-in-out_infinite]">
               <CheckCircle2 className="w-12 h-12 text-[#2B8A6E]" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Coordination Complete</h1>
-            <p className="text-gray-800 mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-[#0A0F2E]">Coordination Complete</h1>
+            <p className="text-[#6B7280] mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
             {industryOverlay && (
-              <div className="mb-4 text-sm text-gray-800">
-                <span className="text-gray-900 font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
+              <div className="mb-4 text-sm text-[#6B7280]">
+                <span className="text-[#0A0F2E] font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
               </div>
             )}
             {roleOverlay && (
-              <div className="mb-4 text-sm text-gray-800">
-                Viewed as <span className="text-gray-900 font-medium">{roleOverlay.label}</span>
+              <div className="mb-4 text-sm text-[#6B7280]">
+                Viewed as <span className="text-[#0A0F2E] font-medium">{roleOverlay.label}</span>
               </div>
             )}
             <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg px-4 py-2">
@@ -778,25 +778,25 @@ export default function LiveActivationCenter() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
               <div className="text-3xl font-bold text-[#2B8A6E]">{formatElapsed(simulatedSeconds)}</div>
-              <div className="text-xs text-gray-800 mt-1">Execution Time</div>
+              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Execution Time</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
               <div className="text-3xl font-bold text-[#2B8A6E]">{acknowledgedCount}/{stakeholders.length}</div>
-              <div className="text-xs text-gray-800 mt-1">Stakeholders Reached</div>
+              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Stakeholders Reached</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
               <div className="text-3xl font-bold text-[#2B8A6E]">{completedTaskCount}/{tasks.length}</div>
-              <div className="text-xs text-gray-800 mt-1">Tasks Completed</div>
+              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Tasks Completed</div>
             </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-5 text-center">
+            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
               <div className="text-3xl font-bold text-[#0A0F2E]">{formatElapsed(toSimulatedTime(avgResponseTime))}</div>
-              <div className="text-xs text-gray-800 mt-1">Avg Response Time</div>
+              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Avg Response Time</div>
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+          <div className="bg-white border border-[#E8E4DC] rounded-xl p-6 mb-8 shadow-sm">
             <div className="flex items-center gap-2 mb-5">
               <FileText className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-lg font-bold text-gray-900">Executive After-Action Brief</h2>
@@ -908,7 +908,7 @@ export default function LiveActivationCenter() {
           </div>
 
           {liveDispatchResults && (liveDispatchResults.jira?.length > 0 || liveDispatchResults.slack?.length > 0) && (
-            <div className="bg-white border border-[#2B8A6E]/20 rounded-xl p-6 mb-8">
+            <div className="bg-white border border-[#2B8A6E]/20 rounded-xl p-6 mb-8 shadow-sm">
               <div className="flex items-center gap-2 mb-4">
                 <Zap className="w-5 h-5 text-[#2B8A6E]" />
                 <h2 className="text-lg font-bold text-gray-900">Live Integration Results</h2>

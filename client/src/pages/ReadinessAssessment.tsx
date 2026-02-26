@@ -454,80 +454,91 @@ export default function ReadinessAssessment() {
                   </div>
                 </CardHeader>
                 <CardContent className="pt-4">
-                  {q.type === "input" && (
-                    <Input
-                      value={answers[q.key] || ""}
-                      onChange={(e) => updateAnswer(q.key, e.target.value)}
-                      placeholder={q.placeholder}
-                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
-                      autoFocus
-                    />
-                  )}
-                  {q.type === "phone" && (
-                    <Input
-                      type="tel"
-                      value={answers[q.key] || ""}
-                      onChange={(e) => updateAnswer(q.key, e.target.value)}
-                      placeholder={q.placeholder}
-                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
-                      autoFocus
-                    />
-                  )}
-                  {q.type === "textarea" && (
-                    <Textarea
-                      value={answers[q.key] || ""}
-                      onChange={(e) => updateAnswer(q.key, e.target.value)}
-                      placeholder={q.placeholder}
-                      rows={4}
-                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] resize-none text-lg"
-                      autoFocus
-                    />
-                  )}
-                  {q.type === "select" && (
-                    <Select
-                      value={answers[q.key] || ""}
-                      onValueChange={(val) => updateAnswer(q.key, val)}
-                    >
-                      <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white focus:border-[#C9A84C] text-lg py-6">
-                        <SelectValue placeholder={q.placeholder} />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-white/10">
-                        {q.options!.map((opt) => (
-                          <SelectItem key={opt} value={opt} className="text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
-                            {opt}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  )}
-                  {q.type === "radio" && (
-                    <RadioGroup
-                      value={answers[q.key] || ""}
-                      onValueChange={(val) => updateAnswer(q.key, val)}
-                      className="space-y-3"
-                    >
-                      {q.options!.map((opt) => (
-                        <div
-                          key={opt}
-                          className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
-                            answers[q.key] === opt
-                              ? `${domainConfig.bgLight} ${domainConfig.border}`
-                              : "border-[#E8E4DC] dark:border-white/10 hover:border-[#6B7280]"
-                          }`}
-                          onClick={() => updateAnswer(q.key, opt)}
-                        >
-                          <RadioGroupItem
-                            value={opt}
-                            id={`${q.key}-${opt}`}
-                            className="border-[#6B7280] text-[#2B8A6E]"
+                  {(() => {
+                    switch (q.type) {
+                      case 'input':
+                        return (
+                          <Input
+                            value={answers[q.key] || ""}
+                            onChange={(e) => updateAnswer(q.key, e.target.value)}
+                            placeholder={q.placeholder}
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
+                            autoFocus
                           />
-                          <Label htmlFor={`${q.key}-${opt}`} className="text-[#0A0F2E] dark:text-white cursor-pointer text-base flex-1">
-                            {opt}
-                          </Label>
-                        </div>
-                      ))}
-                    </RadioGroup>
-                  )}
+                        );
+                      case 'phone':
+                        return (
+                          <Input
+                            type="tel"
+                            value={answers[q.key] || ""}
+                            onChange={(e) => updateAnswer(q.key, e.target.value)}
+                            placeholder={q.placeholder}
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
+                            autoFocus
+                          />
+                        );
+                      case 'textarea':
+                        return (
+                          <Textarea
+                            value={answers[q.key] || ""}
+                            onChange={(e) => updateAnswer(q.key, e.target.value)}
+                            placeholder={q.placeholder}
+                            rows={4}
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] resize-none text-lg"
+                            autoFocus
+                          />
+                        );
+                      case 'select':
+                        return (
+                          <Select
+                            value={answers[q.key] || ""}
+                            onValueChange={(val) => updateAnswer(q.key, val)}
+                          >
+                            <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white focus:border-[#C9A84C] text-lg py-6">
+                              <SelectValue placeholder={q.placeholder} />
+                            </SelectTrigger>
+                            <SelectContent className="bg-white dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-white/10">
+                              {q.options!.map((opt) => (
+                                <SelectItem key={opt} value={opt} className="text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
+                                  {opt}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        );
+                      case 'radio':
+                        return (
+                          <RadioGroup
+                            value={answers[q.key] || ""}
+                            onValueChange={(val) => updateAnswer(q.key, val)}
+                            className="space-y-3"
+                          >
+                            {q.options!.map((opt) => (
+                              <div
+                                key={opt}
+                                className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
+                                  answers[q.key] === opt
+                                    ? `${domainConfig.bgLight} ${domainConfig.border}`
+                                    : "border-[#E8E4DC] dark:border-white/10 hover:border-[#6B7280]"
+                                }`}
+                                onClick={() => updateAnswer(q.key, opt)}
+                              >
+                                <RadioGroupItem
+                                  value={opt}
+                                  id={`${q.key}-${opt}`}
+                                  className="border-[#6B7280] text-[#C9A84C] data-[state=checked]:bg-[#C9A84C] data-[state=checked]:border-[#C9A84C]"
+                                />
+                                <Label htmlFor={`${q.key}-${opt}`} className="text-[#0A0F2E] dark:text-white cursor-pointer text-base flex-1">
+                                  {opt}
+                                </Label>
+                              </div>
+                            ))}
+                          </RadioGroup>
+                        );
+                      default:
+                        return null;
+                    }
+                  })()}
                 </CardContent>
               </Card>
 

@@ -137,44 +137,41 @@ export default function IDEAFramework() {
   return (
     <PageLayout>
       <div className="bg-white min-h-screen">
-        {/* Hero — dark navy */}
-        <section style={{ background: NAVY, position: "relative" }} className="pt-24 pb-16 px-6">
+        {/* Hero Section — Navy with Grid */}
+        <section style={{ background: "#0A0F2E", padding: "120px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ 
             position: "absolute", 
-            top: 0, 
-            left: 0, 
-            right: 0, 
-            bottom: 0, 
-            backgroundImage: "linear-gradient(rgba(201,168,76,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.1) 1px,transparent 1px)", 
+            inset: 0, 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
             backgroundSize: "44px 44px" 
           }} />
           <div className="max-w-5xl mx-auto text-center relative z-10">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <div className="w-6 h-0.5" style={{ background: GOLD }} />
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
                 The Execution Framework
               </span>
-              <div className="w-6 h-0.5" style={{ background: GOLD }} />
+              <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
             </div>
 
             <h1
-              className="font-serif font-semibold leading-none mb-6"
-              style={{ fontSize: "clamp(72px, 12vw, 120px)", color: "white", letterSpacing: "-0.02em" }}
+              className="font-serif font-semibold leading-none mb-8"
+              style={{ fontSize: "clamp(80px, 15vw, 160px)", color: "white", letterSpacing: "-0.02em" }}
             >
               I · D · E · A
             </h1>
 
-            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-3 leading-relaxed">
-              Four phases. One operating model. Built for the 12-minute window between a strategic trigger and coordinated organizational response.
+            <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Four phases. One operating model. Built for the <em style={{ fontStyle: "italic", color: "#C9A84C" }}>12-minute window</em> between a strategic trigger and coordinated organizational response.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-              <Badge className="px-4 py-2 text-sm font-semibold border-0 rounded-none" style={{ background: `${TEAL}22`, color: TEAL_LT }}>
-                <Cpu className="w-4 h-4 mr-2" />
+            <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
+              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(43,138,110,0.15)", color: "#3BAF8A" }}>
+                <Cpu className="w-5 h-5 mr-3" />
                 AI handles monitoring & orchestration
               </Badge>
-              <Badge className="px-4 py-2 text-sm font-semibold border-0 rounded-none" style={{ background: `${GOLD}22`, color: GOLD_LT }}>
-                <HeartHandshake className="w-4 h-4 mr-2" />
+              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(201,168,76,0.15)", color: "#DFC178" }}>
+                <HeartHandshake className="w-5 h-5 mr-3" />
                 Humans retain all strategic authority
               </Badge>
             </div>

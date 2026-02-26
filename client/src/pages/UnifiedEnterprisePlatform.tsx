@@ -1035,7 +1035,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Network className="h-5 w-5 text-orange-500" />
+                      <Network className="h-5 w-5 text-[#C9A84C]" />
                       Cross-Functional Integration
                     </CardTitle>
                   </CardHeader>
@@ -1051,14 +1051,14 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                         <span className="text-gray-800">Legal & Compliance</span>
-                        <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">PENDING</Badge>
+                        <Badge variant="outline" className="bg-yellow-500/20 text-yellow-600 border-yellow-500/30">PENDING</Badge>
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                         <span className="text-gray-800">Technology Team</span>
                         <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">SYNC</Badge>
                       </div>
                     </div>
-                    <Button className="w-full bg-orange-600 hover:bg-orange-700">
+                    <Button className="w-full bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]">
                       <Network className="h-4 w-4 mr-2" />
                       Initiate Cross-Sync
                     </Button>
@@ -1153,7 +1153,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                         <span className="text-gray-800">Slack Workspace</span>
-                        <Badge variant="outline" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">SYNC</Badge>
+                        <Badge variant="outline" className="bg-yellow-500/20 text-yellow-600 border-yellow-500/30">SYNC</Badge>
                       </div>
                     </div>
                   </CardContent>
@@ -1188,7 +1188,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Error Rate:</span>
-                        <span className="text-orange-400 font-bold">0.03%</span>
+                        <span className="text-[#0A0F2E] font-bold">0.03%</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Quality Score:</span>
@@ -1204,7 +1204,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Zap className="h-5 w-5 text-yellow-500" />
+                      <Zap className="h-5 w-5 text-[#C9A84C]" />
                       Workflow Automation
                     </CardTitle>
                   </CardHeader>
@@ -1223,7 +1223,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Hourly</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-xs">
+                    <Button className="w-full bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] text-xs">
                       <Zap className="h-3 w-3 mr-1" />
                       Manage Workflows
                     </Button>
@@ -1233,7 +1233,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Shield className="h-5 w-5 text-red-500" />
+                      <Shield className="h-5 w-5 text-red-600" />
                       Security & Compliance
                     </CardTitle>
                   </CardHeader>
@@ -1339,7 +1339,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Customer Behavior:</span>
-                        <span className="text-orange-400 font-bold">89.6%</span>
+                        <span className="text-[#0A0F2E] font-bold">89.6%</span>
                       </div>
                     </div>
                   </CardContent>
@@ -1378,7 +1378,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Freshness:</span>
-                        <span className="text-orange-400 font-bold">Real-time</span>
+                        <span className="text-[#2B8A6E] font-bold">Real-time</span>
                       </div>
                     </div>
                   </CardContent>

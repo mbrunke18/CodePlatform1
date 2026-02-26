@@ -223,10 +223,10 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
   };
   
   const getComplexityColor = (complexity: string, category: string) => {
-    const isOffense = category === 'market' || category === 'growth' || category === 'offense';
-    const isDefense = category === 'crisis' || category === 'regulatory' || category === 'defense';
+    const isOffense = category === 'market' || category === 'growth' || category === 'offense' || category === 'competitive' || category === 'talent' || category === 'financial';
+    const isDefense = category === 'crisis' || category === 'regulatory' || category === 'defense' || category === 'technology' || category === 'operational';
     const color = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
-    const contrastColor = isOffense ? "white" : isDefense ? "white" : "#0A0F2E";
+    const contrastColor = (isOffense || isDefense) ? "white" : "#0A0F2E";
     
     switch (complexity) {
       case 'low': return `bg-white border-[#E8E4DC] text-[${color}]`;

@@ -62,6 +62,7 @@ import {
   CheckCircle,
   AlertTriangle,
   Zap,
+  Home,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
@@ -119,7 +120,7 @@ const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
   2: { label: "Executive", color: "bg-[#141B45] text-white rounded-none" },
   3: { label: "VP", color: "bg-[#DFC178] text-[#0A0F2E] rounded-none" },
   4: { label: "Director", color: "bg-[#2B8A6E] text-white rounded-none" },
-  5: { label: "Manager", color: "bg-[#E8E4DC] text-[#6B7280] rounded-none" },
+  5: { label: "Manager", color: "bg-[#F8F7F4] text-[#6B7280] border border-[#E8E4DC] rounded-none" },
 };
 
 const generateId = () => Date.now().toString(36);
@@ -303,6 +304,20 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
       </div>
       
       <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
+            <Link to="/dashboard">
+              <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] p-1 h-auto">
+                <Home className="h-4 w-4" />
+              </Button>
+            </Link>
+            <span>/</span>
+            <span>Configuration</span>
+            <span>/</span>
+            <span className="text-[#0A0F2E] font-medium">Stakeholder Management</span>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <Card data-testid="stat-total" className="border-[#E8E4DC] bg-[#F8F7F4]">
             <CardContent className="p-6">

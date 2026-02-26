@@ -157,56 +157,50 @@ export default function ExecutiveAnalyticsDashboard() {
 
   return (
     <PageLayout>
-      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto p-8 space-y-8">
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto p-0 space-y-0">
         
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-[#6B7280] hover:text-[#0A0F2E] p-0 h-auto rounded-none">
-                HOME
+        {/* Navy Header Section */}
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+          <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+            <div>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                  Executive Intelligence
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
+                Executive <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Analytics</em>
+              </h1>
+              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
+                Fortune 1000-grade business intelligence and performance analytics. 
+                Real-time strategic visibility across the enterprise.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Select value={timeRange} onValueChange={setTimeRange}>
+                <SelectTrigger className="w-44 h-12 bg-white/5 border-white/10 text-white rounded-none">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="rounded-none border-[#E8E4DC]">
+                  <SelectItem value="week">This Week</SelectItem>
+                  <SelectItem value="month">This Month</SelectItem>
+                  <SelectItem value="quarter">This Quarter</SelectItem>
+                  <SelectItem value="year">This Year</SelectItem>
+                </SelectContent>
+              </Select>
+              <Button style={{ background: "#C9A84C", color: "#0A0F2E" }} className="hover:bg-[#DFC178] rounded-none h-12 px-8 uppercase tracking-widest font-bold text-[10px]">
+                <Download className="w-4 h-4 mr-2" />
+                Export Report
               </Button>
-            </Link>
-            <span>/</span>
-            <span>Analytics & Intelligence</span>
-            <span>/</span>
-            <span className="text-[#0A0F2E]">Executive Dashboard</span>
+            </div>
           </div>
         </div>
 
-        {/* Executive Dashboard Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2" style={CG}>Executive Analytics Dashboard</h1>
-            <p className="text-[#6B7280]">Fortune 1000-grade business intelligence and performance analytics</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/">
-              <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Dashboard
-              </Button>
-            </Link>
-            <Select value={timeRange} onValueChange={setTimeRange}>
-              <SelectTrigger className="w-40 bg-white border-[#E8E4DC] text-[#0A0F2E] rounded-none">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="week">This Week</SelectItem>
-                <SelectItem value="month">This Month</SelectItem>
-                <SelectItem value="quarter">This Quarter</SelectItem>
-                <SelectItem value="year">This Year</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none">
-              <Download className="w-4 h-4 mr-2" />
-              Export Report
-            </Button>
-          </div>
-        </div>
-
-        {/* Real-Time Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="max-w-7xl mx-auto px-8 py-12 space-y-8">
+          {/* Real-Time Metrics */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">

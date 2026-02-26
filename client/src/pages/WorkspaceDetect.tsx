@@ -151,7 +151,7 @@ export default function WorkspaceDetect() {
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E] border-2 border-[#0A0F2E] shadow-sm shadow-[#0A0F2E]/20">
-                    <Radar className="h-4 w-4 text-white" />
+                    <Radar className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-sm font-bold text-white">DETECT</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />

@@ -139,9 +139,9 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'data_access': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
       case 'configuration': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
       case 'decision': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
-      case 'system': return 'bg-black/5 text-gray-700 border-black/10';
+      case 'system': return 'bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10';
       case 'security': return 'bg-red-500/10 text-red-600 border-red-500/20';
-      default: return 'bg-black/5 text-gray-700 border-black/10';
+      default: return 'bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10';
     }
   };
 
@@ -151,7 +151,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'high': return 'bg-red-500/10 text-red-600 border-red-500/20';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
       case 'low': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
-      default: return 'bg-black/5 text-gray-700 border-black/10';
+      default: return 'bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10';
     }
   };
 
@@ -160,7 +160,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
       case 'success': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
       case 'failure': return 'bg-red-500/10 text-red-600 border-red-500/20';
       case 'warning': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
-      default: return 'bg-black/5 text-gray-700 border-black/10';
+      default: return 'bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10';
     }
   };
 

@@ -284,7 +284,7 @@ export default function BoardBriefings() {
                 key={decision.title}
                 className={`border rounded-lg p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
                   decision.priority === 'High'
-                    ? 'border-l-4 border-l-[#0A0F2E] border-[#E8E4DC] dark:border-white/10'
+                    ? 'border-l-4 border-l-red-600 border-[#E8E4DC] dark:border-white/10'
                     : 'border-l-4 border-l-[#C9A84C] border-[#E8E4DC] dark:border-white/10'
                 }`}
               >

@@ -272,7 +272,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'pharma-recall': {
     id: 'pharma-recall', title: 'Product Recall — Class I', organization: 'Glenmark Pharmaceuticals',
-    industry: 'Pharmaceutical', icon: Pill, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    industry: 'Pharmaceutical', icon: Pill, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Class I Recall — Life-Threatening Contamination in Blood Pressure Medication',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
     playbook: { number: '095', name: 'Product Recall — Class I (Life-Threatening)', tasks: 44, stakeholders: 2052, budget: '$8.5M' },

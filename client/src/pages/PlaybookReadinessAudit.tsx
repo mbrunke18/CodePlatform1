@@ -211,7 +211,7 @@ export default function PlaybookReadinessAudit() {
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-gray-400 text-lg max-w-2xl">
+              <p className="text-[#6B7280] text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
@@ -371,8 +371,8 @@ export default function PlaybookReadinessAudit() {
           {filteredPlaybooks.slice(0, 20).map((playbook) => {
             const config = tierConfig[playbook.tier];
             const TierIcon = config.icon;
-            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth") || playbook.domain.includes("Expansion") || playbook.domain.includes("Partnerships");
-            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory") || playbook.domain.includes("Resilience") || playbook.domain.includes("Compliance");
+            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth") || playbook.domain.includes("Expansion") || playbook.domain.includes("Partnerships") || playbook.domain.includes("People");
+            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory") || playbook.domain.includes("Resilience") || playbook.domain.includes("Compliance") || playbook.domain.includes("Technology");
             const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
             
             return (
