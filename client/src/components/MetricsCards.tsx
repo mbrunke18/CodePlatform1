@@ -33,7 +33,7 @@ export default function MetricsCards() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500">
+      <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-[#0A0F2E]">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -85,7 +85,7 @@ export default function MetricsCards() {
         </CardContent>
       </Card>
       
-      <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-emerald-500">
+      <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-[#2B8A6E]">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div>

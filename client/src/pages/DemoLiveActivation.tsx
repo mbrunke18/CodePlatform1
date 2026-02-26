@@ -580,7 +580,7 @@ function DemoLiveActivation() {
                 </div>
               </div>
               <div className="flex-1 page-background">
-                <h3 className="font-semibold text-lg mb-2 text-[#0A0F2E] dark:text-blue-100">
+                <h3 className="font-semibold text-lg mb-2 text-[#0A0F2E] dark:text-white">
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">

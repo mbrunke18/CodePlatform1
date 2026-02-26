@@ -49,7 +49,7 @@ const PHASE_STYLES = {
     active: 'bg-[#0A0F2E] dark:bg-[#0A0F2E] text-[#C9A84C] dark:text-[#C9A84C] font-medium ring-1 ring-[#C9A84C] dark:ring-[#C9A84C]',
   },
   monitor: {
-    active: 'bg-blue-100 dark:bg-[#0A0F2E] text-[#0A0F2E] dark:text-blue-300 font-medium ring-1 ring-blue-300 dark:ring-blue-700',
+    active: 'bg-[#F8F7F4] dark:bg-[#0A0F2E] text-[#0A0F2E] dark:text-[#DFC178] font-medium ring-1 ring-[#C9A84C] dark:ring-[#C9A84C]',
   },
   execute: {
     active: 'bg-orange-100 dark:bg-orange-950 text-orange-700 dark:text-orange-300 font-medium ring-1 ring-orange-300 dark:ring-orange-700',
@@ -277,10 +277,10 @@ export default function PlaybookCustomizationWizard({
         {/* Step Content with Validation */}
         <div className="flex-1 overflow-y-auto py-4 space-y-4">
           {/* Quick Tips Card */}
-          <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-blue-200 dark:border-blue-900 p-3">
+          <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-[#E8E4DC] dark:border-[#0A0F2E] p-3">
             <div className="flex gap-2">
               <Lightbulb className="w-4 h-4 text-[#0A0F2E] flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-[#0A0F2E] dark:text-blue-100">
+              <div className="text-sm text-[#0A0F2E] dark:text-white">
                 <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context, roles, and communication preferences for optimal execution velocity.
               </div>
             </div>

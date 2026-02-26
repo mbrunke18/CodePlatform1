@@ -101,7 +101,7 @@ export default function TwelveMinuteTimer({
         <p className="text-xl text-[#0A0F2E]">{subtitle}</p>
       </div>
 
-      <Card className="p-4 bg-gradient-to-br   border-blue-800/30 max-w-md mx-auto">
+      <Card className="p-4 bg-gradient-to-br   border-[#0A0F2E]/30 max-w-md mx-auto">
         <div className="flex items-center justify-center gap-4">
           <Clock className={`h-5 w-5 text-[#0A0F2E] ${isRunning ? 'animate-pulse' : ''}`} />
           <div className="text-4xl font-bold text-gray-900" data-testid="text-timer">
@@ -133,7 +133,7 @@ export default function TwelveMinuteTimer({
                   isActive 
                     ? isLast 
                       ? 'bg-green-500 ring-4 ring-green-200 dark:ring-green-800' 
-                      : 'bg-[#0A0F2E] ring-4 ring-blue-200 dark:ring-blue-800'
+                      : 'bg-[#0A0F2E] ring-4 ring-[#C9A84C] dark:ring-[#0A0F2E]'
                     : 'bg-gray-300 dark:bg-gray-700'
                 }`}>
                   {isActive && (
@@ -143,7 +143,7 @@ export default function TwelveMinuteTimer({
                   )}
                 </div>
 
-                <Card className={`p-4 ${isActive ? 'border-blue-500 border-2' : ''}`}>
+                <Card className={`p-4 ${isActive ? 'border-[#2B8A6E] border-2' : ''}`}>
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <Badge variant={isActive ? 'default' : 'outline'} className="mb-2">

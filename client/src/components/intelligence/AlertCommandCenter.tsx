@@ -89,7 +89,7 @@ const SEVERITY_CONFIG = {
   },
   low: { 
     color: 'bg-[#0A0F2E]', 
-    borderColor: 'border-l-blue-500',
+    borderColor: 'border-l-[#0A0F2E]',
     bgColor: 'bg-[#0A0F2E]/10',
     textColor: 'text-[#0A0F2E] dark:text-[#0A0F2E]',
     label: 'Low'
@@ -348,7 +348,7 @@ function SummaryCard({
     red: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30',
     orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30',
     yellow: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/30',
-    blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-blue-500/30',
+    blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-[#2B8A6E]/30',
     purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C]/30'
   };
 
@@ -454,7 +454,7 @@ function WeakSignalCard({ signal }: { signal: WeakSignal }) {
     critical: 'border-red-500 bg-red-500/5',
     high: 'border-orange-500 bg-orange-500/5',
     medium: 'border-yellow-500 bg-yellow-500/5',
-    low: 'border-blue-500 bg-[#0A0F2E]/5'
+    low: 'border-[#2B8A6E] bg-[#0A0F2E]/5'
   };
 
   return (

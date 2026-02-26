@@ -372,7 +372,7 @@ export function StrategyToIDEA() {
       phase: "IDENTIFY",
       color: "bg-[#0A0F2E]",
       textColor: "text-[#0A0F2E]",
-      borderColor: "border-blue-500/30",
+      borderColor: "border-[#2B8A6E]/30",
       traditionalWork: ["Work AROUND", "Work BEFORE"],
       mPlatform: "Pre-built playbooks, stakeholder mapping, decision workflows staged before situations occur",
     },

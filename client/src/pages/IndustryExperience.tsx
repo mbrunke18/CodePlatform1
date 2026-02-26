@@ -386,7 +386,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'retail-contamination': {
     id: 'retail-contamination', title: 'Food Contamination Response', organization: 'Walmart Inc.',
-    industry: 'Retail', icon: ShoppingCart, color: 'text-green-400', gradient: 'from-green-600 to-emerald-800',
+    industry: 'Retail', icon: ShoppingCart, color: 'text-green-400', gradient: 'from-[#2B8A6E] to-[#0A0F2E]',
     scenario: 'Salmonella Contamination — 847 Stores, 23 States, 12,847 Customers Affected',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
     playbook: { number: '095', name: 'Food Product Recall — Contamination Response', tasks: 42, stakeholders: 5000, budget: '$12M' },

@@ -294,7 +294,7 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
-                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-blue-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-[#2B8A6E]/30 rounded-xl p-6"
                   >
                     <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3">DEFENSE</h3>

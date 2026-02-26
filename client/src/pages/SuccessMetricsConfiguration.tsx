@@ -302,19 +302,19 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           </div>
 
           {/* FRI Hero Card */}
-          <Card className="border-[#E8E4DC] bg-white">
+          <Card className="border-[#E8E4DC] bg-white rounded-none">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">
                   <div className="relative">
                     <div className="w-32 h-32 rounded-full border-8 border-[#C9A84C]/20 flex items-center justify-center bg-[#F8F7F4]">
                       <div className="text-center">
-                        <div style={{...CG}} className="text-4xl font-bold text-[#C9A84C]">{overallFRI.toFixed(1)}%</div>
+                        <div style={{...CG}} className="text-4xl font-bold text-[#0A0F2E]">{overallFRI.toFixed(1)}%</div>
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current FRI</div>
                       </div>
                     </div>
-                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center">
-                      <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
+                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center">
+                      <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                     </div>
                   </div>
                   <div>
@@ -323,7 +323,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     <div className="mt-4 flex items-center gap-4">
                       <div>
                         <span className="text-xs uppercase tracking-wider text-[#6B7280]">Target:</span>
-                        <span className="ml-2 text-lg font-semibold text-[#C9A84C]">{friTarget}%</span>
+                        <span className="ml-2 text-lg font-semibold text-[#0A0F2E]">{friTarget}%</span>
                       </div>
                       <div>
                         <span className="text-xs uppercase tracking-wider text-[#6B7280]">Improvement:</span>
@@ -335,9 +335,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 <div className="w-64">
                   <div className="flex justify-between text-xs uppercase tracking-wider mb-2">
                     <span className="text-[#6B7280]">Progress to Target</span>
-                    <span className="text-[#C9A84C] font-bold">{friProgress.toFixed(0)}%</span>
+                    <span className="text-[#0A0F2E] font-bold">{friProgress.toFixed(0)}%</span>
                   </div>
-                  <Progress value={friProgress} className="h-2" />
+                  <Progress value={friProgress} className="h-2 [&>div]:bg-[#C9A84C]" />
                   <p className="text-xs text-[#6B7280] mt-2">
                     {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
                   </p>
@@ -391,13 +391,13 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-[#F8F7F4] rounded-lg border border-[#C9A84C]/30">
+                      <div className="p-2 bg-[#F8F7F4] rounded-none border border-[#E8E4DC]">
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current</div>
-                        <div className="text-lg font-semibold text-[#C9A84C]">
+                        <div className="text-lg font-semibold text-[#0A0F2E]">
                           {metric.currentValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-[#F8F7F4] rounded-lg">
+                      <div className="p-2 bg-[#F8F7F4] rounded-none border border-[#E8E4DC]">
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Target</div>
                         <div className="text-lg font-semibold text-[#2B8A6E]">
                           {metric.targetValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}

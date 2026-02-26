@@ -291,7 +291,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                     
                     {/* Center Icon */}
                     <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <div style={{ width: 80, height: 80, background: NAVY, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
+                      <div style={{ width: 80, height: 80, background: "#141B45", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
                         <Radar className="w-10 h-10 text-white" />
                       </div>
                     </div>

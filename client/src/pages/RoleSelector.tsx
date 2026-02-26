@@ -186,6 +186,8 @@ const categoryBadge = (cat: string) => {
   return 'bg-[#C9A84C]/15 text-[#C9A84C] border-[#C9A84C]/30';
 };
 
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function RoleSelector({ embedded }: { embedded?: boolean }) {
   return (
     <PageLayout embedded={embedded}>
@@ -213,37 +215,37 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               const Icon = config.icon;
               return (
                 <Link key={config.id} href={`/experience/${config.id}`}>
-                  <Card className={`bg-white border-gray-200 border-l-4 ${config.accentColor} transition-all duration-300 cursor-pointer hover:bg-gray-800/80 hover:border-gray-700 h-full`}>
+                  <Card className={`bg-white border-[#E8E4DC] border-l-4 ${config.accentColor} transition-all duration-300 cursor-pointer hover:bg-[#F8F7F4] hover:border-[#C9A84C] h-full rounded-none`}>
                     <CardContent className="p-5">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2.5 rounded-lg ${config.iconBg}`}>
+                          <div className={`p-2.5 rounded-none ${config.iconBg}`}>
                             <Icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <div className="font-bold text-gray-900 text-lg">{config.id.toUpperCase()}</div>
-                            <div className="text-sm text-gray-800">{config.title}</div>
+                            <div className="font-bold text-[#0A0F2E] text-lg uppercase tracking-tight">{config.id}</div>
+                            <div className="text-sm text-[#6B7280]">{config.title}</div>
                           </div>
                         </div>
-                        <Badge className={`text-[10px] border ${categoryBadge(config.category)}`}>
+                        <Badge className={`text-[10px] border rounded-none ${categoryBadge(config.category)}`}>
                           {config.category}
                         </Badge>
                       </div>
 
-                      <p className="text-sm text-gray-800 italic mb-4 min-h-[48px] leading-relaxed">
+                      <p className="text-sm text-[#0A0F2E] italic mb-4 min-h-[48px] leading-relaxed">
                         "{config.hookQuestion}"
                       </p>
 
-                      <div className="border-t border-gray-200 pt-3 mb-4">
-                        <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-1">Your Execution OS Impact</div>
+                      <div className="border-t border-[#E8E4DC] pt-3 mb-4">
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280] mb-1">Your Execution OS Impact</div>
                         <div className="text-sm font-semibold text-[#2B8A6E]">{config.keyMetric}</div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-xs text-gray-800">
+                        <div className="text-xs text-[#0A0F2E] font-bold uppercase tracking-widest" style={{ fontSize: 9 }}>
                           <Compass className="w-3 h-3 inline mr-1" />Configure Workspace
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-800" />
+                        <ArrowRight className="w-4 h-4 text-[#0A0F2E]" />
                       </div>
                     </CardContent>
                   </Card>
@@ -253,13 +255,13 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           </div>
 
           <div className="mt-16 text-center">
-            <Card className="bg-white border-gray-200 p-8 max-w-3xl mx-auto">
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Not sure which role to start with?</h3>
-              <p className="text-gray-800 mb-6">
+            <Card className="bg-white border-[#E8E4DC] p-8 max-w-3xl mx-auto rounded-none">
+              <h3 style={{...CG}} className="text-2xl font-bold mb-3 text-[#0A0F2E]">Not sure which role to start with?</h3>
+              <p className="text-[#6B7280] mb-6">
                 Jump straight into the Command Center — select any playbook and experience the full coordination workflow.
               </p>
               <Link href="/command-center">
-                <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-8">
+                <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-8 rounded-none">
                   <Compass className="w-5 h-5 mr-2" />
                   Open Command Center
                 </Button>

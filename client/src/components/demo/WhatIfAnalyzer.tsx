@@ -185,13 +185,13 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
             {/* Outcome Scenarios */}
             <div className="grid gap-4">
               {/* Most Likely */}
-              <div className="bg-[#0A0F2E]/20 border border-blue-500/30 rounded-lg p-4">
+              <div className="bg-[#0A0F2E]/20 border border-[#2B8A6E]/30 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
-                    <h4 className="font-semibold text-blue-300">Most Likely Outcome</h4>
+                    <h4 className="font-semibold text-[#DFC178]">Most Likely Outcome</h4>
                   </div>
-                  <Badge className="bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50">
+                  <Badge className="bg-[#0A0F2E]/20 text-[#DFC178] border-[#2B8A6E]/50">
                     {analysis.mostLikely.probability}% Probability
                   </Badge>
                 </div>

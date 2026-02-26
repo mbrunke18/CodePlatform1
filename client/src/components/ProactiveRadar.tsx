@@ -218,7 +218,7 @@ export default function ProactiveRadar() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-blue-100 rounded-lg">
+          <div className="p-2 bg-[#F8F7F4] rounded-lg">
             <Radar className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>
@@ -373,7 +373,7 @@ export default function ProactiveRadar() {
                 <div className="space-y-3 mt-4" data-testid="div-generated-scenarios">
                   <h4 className="font-medium">Generated Scenarios:</h4>
                   {scenarioMutation.data.scenarios.map((scenario: SyntheticScenario, index: number) => (
-                    <Alert key={index} className="border-blue-200">
+                    <Alert key={index} className="border-[#E8E4DC]">
                       <Target className="h-4 w-4" />
                       <AlertDescription>
                         <div className="space-y-2">

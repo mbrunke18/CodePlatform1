@@ -49,7 +49,7 @@ export default function StrategicInsightsPanel() {
       case 'strategic opportunity': return "bg-green-50 text-green-700 border-green-200";
       case 'risk assessment': return "bg-red-50 text-red-700 border-red-200";
       case 'innovation catalyst': return "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]";
-      case 'market intelligence': return "bg-[#0A0F2E] text-[#0A0F2E] border-blue-200";
+      case 'market intelligence': return "bg-[#0A0F2E] text-[#0A0F2E] border-[#E8E4DC]";
       default: return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };

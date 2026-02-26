@@ -176,7 +176,7 @@ const OPERATORS = [
 ];
 
 const SEVERITY_LEVELS = [
-  { id: 'low', name: 'Low', color: 'bg-blue-100 text-[#0A0F2E]', description: 'Informational, monitor only' },
+  { id: 'low', name: 'Low', color: 'bg-[#F8F7F4] text-[#0A0F2E]', description: 'Informational, monitor only' },
   { id: 'medium', name: 'Medium', color: 'bg-yellow-100 text-yellow-800', description: 'Requires attention within 24 hours' },
   { id: 'high', name: 'High', color: 'bg-orange-100 text-orange-800', description: 'Urgent, requires action within 4 hours' },
   { id: 'critical', name: 'Critical', color: 'bg-red-100 text-red-800', description: 'Emergency, immediate response required' },
@@ -407,7 +407,7 @@ export default function TriggerConfigurationWizard({
               >
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
                   s < step ? 'bg-[#0A0F2E] text-white' : 
-                  s === step ? 'bg-blue-100 text-[#0A0F2E] border-2 border-blue-600' : 
+                  s === step ? 'bg-[#F8F7F4] text-[#0A0F2E] border-2 border-[#0A0F2E]' : 
                   'bg-gray-100 text-gray-600 dark:text-gray-200'
                 }`}>
                   {s < step ? <Check className="h-3 w-3" /> : s}
@@ -462,7 +462,7 @@ export default function TriggerConfigurationWizard({
                     <Card 
                       key={category.id}
                       className={`cursor-pointer transition-all hover:shadow-md ${
-                        isSelected ? 'ring-2 ring-blue-600 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' : ''
+                        isSelected ? 'ring-2 ring-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' : ''
                       }`}
                       onClick={() => {
                         setSelectedCategory(category.id);
@@ -493,14 +493,14 @@ export default function TriggerConfigurationWizard({
         {/* Step 2: Conditions */}
         {step === 2 && (
           <div className="space-y-6">
-            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-blue-200">
+            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-[#E8E4DC]">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />
-                <span className="font-medium text-[#0A0F2E] dark:text-blue-200">
+                <span className="font-medium text-[#0A0F2E] dark:text-[#DFC178]">
                   Category: {SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.name}
                 </span>
               </div>
-              <p className="text-sm text-[#0A0F2E] dark:text-blue-300">
+              <p className="text-sm text-[#0A0F2E] dark:text-[#DFC178]">
                 Define the specific condition that will trigger an alert
               </p>
             </div>

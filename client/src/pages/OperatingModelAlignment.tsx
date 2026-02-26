@@ -52,12 +52,12 @@ const elementIcons: Record<string, any> = {
   'Talent': GraduationCap
 };
 
-const elementCategories: Record<string, { name: string; color: string; elements: OperatingModelElement[] }> = {
-  'foundation': { name: 'Foundation', color: 'blue', elements: ['Purpose', 'Value Agenda'] },
-  'organization': { name: 'Organization', color: 'purple', elements: ['Structure', 'Ecosystem'] },
-  'governance': { name: 'Governance', color: 'amber', elements: ['Leadership', 'Governance'] },
-  'execution': { name: 'Execution', color: 'green', elements: ['Processes', 'Technology'] },
-  'people': { name: 'People', color: 'rose', elements: ['Behaviors', 'Rewards', 'Footprint', 'Talent'] }
+const elementCategories: Record<string, { name: string; color: string; hex: string; elements: OperatingModelElement[] }> = {
+  'foundation': { name: 'Foundation', color: 'navy', hex: '#0A0F2E', elements: ['Purpose', 'Value Agenda'] },
+  'organization': { name: 'Organization', color: 'teal', hex: '#2B8A6E', elements: ['Structure', 'Ecosystem'] },
+  'governance': { name: 'Governance', color: 'gold', hex: '#C9A84C', elements: ['Leadership', 'Governance'] },
+  'execution': { name: 'Execution', color: 'teal', hex: '#2B8A6E', elements: ['Processes', 'Technology'] },
+  'people': { name: 'People', color: 'navy', hex: '#0A0F2E', elements: ['Behaviors', 'Rewards', 'Footprint', 'Talent'] }
 };
 
 const operatingModelQuestions: Record<OperatingModelElement, { questions: string[]; playbookDomains: string[] }> = {
@@ -356,7 +356,7 @@ function AssessmentStep({
     <Card className="border-2">
       <CardHeader>
         <div className="flex items-center justify-between mb-4">
-          <Badge variant="outline" className={`text-${category?.[1].color}-600`}>
+          <Badge variant="outline" style={{ color: category?.[1].hex, borderColor: category?.[1].hex }}>
             {category?.[1].name}
           </Badge>
           <span className="text-sm text-muted-foreground">
@@ -364,8 +364,8 @@ function AssessmentStep({
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <div className={`w-12 h-12 rounded-xl bg-${category?.[1].color}-500/10 flex items-center justify-center`}>
-            <Icon className={`w-6 h-6 text-${category?.[1].color}-500`} />
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${category?.[1].hex}18` }}>
+            <Icon className="w-6 h-6" style={{ color: category?.[1].hex }} />
           </div>
           <div>
             <CardTitle className="text-xl">{element}</CardTitle>
@@ -690,7 +690,7 @@ export default function OperatingModelAlignment() {
                       <div className="space-y-3">
                         {Object.entries(elementCategories).map(([key, category]) => (
                           <div key={key} className="flex items-center gap-3">
-                            <Badge variant="outline" className={`text-${category.color}-600 border-${category.color}-200`}>
+                            <Badge variant="outline" style={{ color: category.hex, borderColor: category.hex }}>
                               {category.name}
                             </Badge>
                             <span className="text-sm text-muted-foreground">

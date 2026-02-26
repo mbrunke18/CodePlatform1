@@ -115,7 +115,7 @@ export default function OnboardingOverlay() {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[10000] w-full max-w-lg px-4"
         data-testid="onboarding-overlay"
       >
-        <Card className="bg-white border-blue-500/50 shadow-2xl backdrop-blur-md">
+        <Card className="bg-white border-[#2B8A6E]/50 shadow-2xl backdrop-blur-md">
           <CardContent className="p-5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -130,7 +130,7 @@ export default function OnboardingOverlay() {
                     {currentStep.phase && (
                       <Badge 
                         variant="outline" 
-                        className="text-xs border-blue-500/50 text-blue-300"
+                        className="text-xs border-[#2B8A6E]/50 text-[#DFC178]"
                         data-testid="onboarding-phase-badge"
                       >
                         {currentStep.phase}

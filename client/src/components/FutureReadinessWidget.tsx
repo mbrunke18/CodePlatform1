@@ -111,7 +111,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Readiness Score - Large Display */}
-          <div className="lg:col-span-1 flex flex-col items-center justify-center bg-white/50 dark:bg-slate-900/50 rounded-xl p-6 border border-blue-200/50 dark:border-blue-800/50">
+          <div className="lg:col-span-1 flex flex-col items-center justify-center bg-white/50 dark:bg-slate-900/50 rounded-xl p-6 border border-[#E8E4DC]/50 dark:border-[#0A0F2E]/50">
             <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
               Overall Readiness
             </div>
@@ -163,7 +163,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
         </div>
 
         {/* Quick Stats Row */}
-        <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-blue-200/50 dark:border-blue-800/50">
+        <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-[#E8E4DC]/50 dark:border-[#0A0F2E]/50">
           <div className="text-center">
             <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]" data-testid="text-active-scenarios">
               {readinessData?.activeScenarios || 3}

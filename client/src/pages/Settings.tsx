@@ -243,11 +243,11 @@ export default function SettingsPage() {
                       <BarChart3 className="w-4 h-4 mr-2" />
                       Run Health Check
                     </Button>
-                    <Button variant="outline" data-testid="button-restart-services">
+                    <Button variant="outline" data-testid="button-restart-services" className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
                       <Zap className="w-4 h-4 mr-2" />
                       Restart Services
                     </Button>
-                    <Button variant="outline" data-testid="button-view-logs">
+                    <Button variant="outline" data-testid="button-view-logs" className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
                       <FileText className="w-4 h-4 mr-2" />
                       View System Logs
                     </Button>
@@ -318,7 +318,7 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                            <Badge variant="default" className="bg-red-600 text-white">Critical</Badge>
+                            <Badge variant="default" className="bg-red-600 text-white rounded-none">Critical</Badge>
                         )}
                       </div>
                       <p className="text-sm text-gray-800">{feature.description}</p>
@@ -330,7 +330,7 @@ export default function SettingsPage() {
                         data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
                         className="data-[state=checked]:bg-[#2B8A6E]"
                       />
-                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white' : 'bg-black/5 text-gray-700'}>
+                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-black/5 text-gray-700 rounded-none'}>
                         {feature.enabled ? 'Enabled' : 'Disabled'}
                       </Badge>
                     </div>

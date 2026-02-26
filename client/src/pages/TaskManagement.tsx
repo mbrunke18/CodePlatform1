@@ -96,10 +96,10 @@ const STAKEHOLDER_ROLES = [
 ];
 
 const PRIORITY_CONFIG = {
-  critical: { label: "Critical", color: "bg-red-600 text-white" },
-  high: { label: "High", color: "bg-[#0A0F2E] text-white" },
-  medium: { label: "Medium", color: "bg-[#DFC178] text-[#0A0F2E]" },
-  low: { label: "Low", color: "bg-[#F8F7F4] text-gray-800" },
+  critical: { label: "Critical", color: "bg-red-600 text-white rounded-none" },
+  high: { label: "High", color: "bg-[#0A0F2E] text-white rounded-none" },
+  medium: { label: "Medium", color: "bg-[#DFC178] text-[#0A0F2E] rounded-none" },
+  low: { label: "Low", color: "bg-[#F8F7F4] text-gray-800 rounded-none" },
 };
 
 const STATUS_CONFIG = {
@@ -456,7 +456,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
         </div>
 
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "playbook" | "library" | "sequences")} className="mb-6">
-          <TabsList className="bg-[#F8F7F4] border-b border-[#E8E4DC] rounded-none h-12 p-0 gap-8">
+          <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-8 px-6">
             <TabsTrigger 
               value="playbook" 
               className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 

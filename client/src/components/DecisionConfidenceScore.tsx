@@ -104,7 +104,7 @@ export default function DecisionConfidenceScore({
                           confidence.confidenceLevel === 'medium' ? 'secondary' : 'destructive';
 
   return (
-    <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] border-blue-200 dark:border-blue-800" data-testid="decision-confidence-card">
+    <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] border-[#E8E4DC] dark:border-[#0A0F2E]" data-testid="decision-confidence-card">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">

@@ -29,7 +29,7 @@ const severityColors: Record<string, { badge: string; border: string }> = {
   'critical': { badge: 'bg-red-500 text-white', border: 'border-red-500/20' },
   'high': { badge: 'bg-orange-500 text-white', border: 'border-orange-500/20' },
   'medium': { badge: 'bg-yellow-500 text-white', border: 'border-yellow-500/20' },
-  'low': { badge: 'bg-[#0A0F2E] text-white', border: 'border-blue-500/20' },
+  'low': { badge: 'bg-[#0A0F2E] text-white', border: 'border-[#2B8A6E]/20' },
   'info': { badge: 'bg-slate-500 text-white', border: 'border-slate-500/20' }
 };
 

@@ -263,7 +263,7 @@ function CompoundDisruptionSection() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
                 </div>
                 <div style={{ color: MUTED }} className="text-xs mb-2">{item.domains}</div>
-                <div style={{ color: TEAL }} className="text-xs font-semibold">{item.playbookCount} coordinated playbooks</div>
+                <div className="text-xs text-[#2B8A6E] font-semibold">{item.playbookCount} coordinated playbooks</div>
               </div>
             );
           })}
@@ -550,8 +550,8 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 <tr style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
                   <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider w-12">#</th>
                   <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Playbook Title</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden md:table-cell">Domain</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden lg:table-cell">Avg. Execution</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden md:table-cell">Business Domain</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden lg:table-cell">Target Execution</th>
                   <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden sm:table-cell">Urgency</th>
                   <th className="px-4 py-3 w-20" />
                 </tr>

@@ -43,7 +43,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
   const velocityBgColor = 
     velocityData.velocityScore >= 80 ? 'bg-green-100 dark:bg-green-900/20' :
-    velocityData.velocityScore >= 60 ? 'bg-blue-100 dark:bg-[#0A0F2E]/20' :
+    velocityData.velocityScore >= 60 ? 'bg-[#F8F7F4] dark:bg-[#0A0F2E]/20' :
     'bg-yellow-100 dark:bg-yellow-900/20';
 
   const timesSaved = Math.floor(velocityData.industryStandard / velocityData.averageResponseTime);
@@ -104,14 +104,14 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
                 <Clock className="h-5 w-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                 <span className="text-sm text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Avg Response Time</span>
               </div>
-              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-blue-300">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-[#DFC178]">
                 {velocityData.averageResponseTime} min
               </div>
               <div className="text-xs text-muted-foreground mt-1">
                 vs {Math.floor(velocityData.industryStandard / 60)}hr industry standard
               </div>
               <div className="mt-2">
-                <Badge variant="secondary" className="text-xs bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-blue-300">
+                <Badge variant="secondary" className="text-xs bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#DFC178]">
                   {timesSaved}x faster
                 </Badge>
               </div>

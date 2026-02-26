@@ -737,7 +737,7 @@ export function TriggerBuilder({
                 <div className="mt-3 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg">
                   <div className="flex items-center gap-2 text-sm">
                     <Link className="w-4 h-4 text-[#0A0F2E]" />
-                    <span className="text-[#0A0F2E] dark:text-blue-200">
+                    <span className="text-[#0A0F2E] dark:text-[#DFC178]">
                       {triggerConfig.logic === 'any' && 'Alert triggers when ANY condition is met'}
                       {triggerConfig.logic === 'all' && 'Alert triggers when ALL conditions are met'}
                       {triggerConfig.logic === 'threshold' && 

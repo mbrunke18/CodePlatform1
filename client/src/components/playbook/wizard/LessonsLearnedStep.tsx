@@ -89,7 +89,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
       </div>
 
       {/* AI Analysis Note */}
-      <Card className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E] border-blue-200 dark:border-blue-800">
+      <Card className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h4 className="font-semibold text-sm mb-2">AI-Powered Analysis</h4>
         <p className="text-xs text-muted-foreground">
           After you complete lessons learned, Execution OS' AI will analyze patterns across all executions to generate:

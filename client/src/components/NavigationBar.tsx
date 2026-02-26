@@ -117,7 +117,7 @@ export default function NavigationBar() {
                               }}
                               className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
-                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-blue-100 dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-blue-200 dark:border-blue-700' 
+                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-[#F8F7F4] dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-[#E8E4DC] dark:border-[#0A0F2E]' 
                                   : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
                               }`}
                             >
@@ -183,7 +183,7 @@ export default function NavigationBar() {
                               }}
                               className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
-                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-blue-100 dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-blue-200 dark:border-blue-700' 
+                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-[#F8F7F4] dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-[#E8E4DC] dark:border-[#0A0F2E]' 
                                   : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
                               }`}
                             >
@@ -387,7 +387,7 @@ export default function NavigationBar() {
                   <div className="space-y-3 pt-6 border-t border-slate-200">
                     <Button
                       variant="outline"
-                      className="w-full border-blue-600 text-[#0A0F2E] hover:bg-[#0A0F2E]"
+                      className="w-full border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]"
                     >
                       Sign In
                     </Button>

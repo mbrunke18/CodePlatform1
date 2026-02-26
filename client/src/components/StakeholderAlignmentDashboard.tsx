@@ -207,10 +207,10 @@ export default function StakeholderAlignmentDashboard({
           ))}
         </div>
 
-        <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
           <div className="flex items-center gap-2 text-sm">
             <Mail className="h-4 w-4 text-[#0A0F2E]" />
-            <span className="text-[#0A0F2E] dark:text-blue-100">
+            <span className="text-[#0A0F2E] dark:text-white">
               <strong>{acknowledgedCount}</strong> of <strong>{totalCount}</strong> executives ready
               {taskProgress > 0 && (
                 <> • <strong>{completedTasks}</strong> of <strong>{totalTasks}</strong> tasks done</>

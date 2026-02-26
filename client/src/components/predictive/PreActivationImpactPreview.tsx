@@ -139,7 +139,7 @@ export default function PreActivationImpactPreview({
   const hasConflicts = preview.resourceConflicts.length > 0;
 
   return (
-    <Card className="border-2 border-blue-400 dark:border-blue-600 shadow-lg" data-testid="card-pre-activation-preview">
+    <Card className="border-2 border-[#C9A84C] dark:border-[#0A0F2E] shadow-lg" data-testid="card-pre-activation-preview">
       <CardHeader className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/30 dark:to-[#141B45]/30">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -287,7 +287,7 @@ export default function PreActivationImpactPreview({
               type="checkbox" 
               checked={acknowledged}
               onChange={(e) => setAcknowledged(e.target.checked)}
-              className="mt-1 w-5 h-5 rounded border-slate-300 text-[#0A0F2E] focus:ring-blue-500"
+              className="mt-1 w-5 h-5 rounded border-slate-300 text-[#0A0F2E] focus:ring-[#2B8A6E]"
               data-testid="checkbox-acknowledge-impact"
             />
             <span className="text-sm text-gray-800 dark:text-slate-300">

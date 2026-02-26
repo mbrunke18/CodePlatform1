@@ -93,7 +93,7 @@ export default function AIRadarSimulation({
       </div>
 
       {/* Main Confidence Meter */}
-      <Card className={`p-6 bg-white border-blue-800/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
+      <Card className={`p-6 bg-white border-[#0A0F2E]/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-[#0A0F2E]'}`} />

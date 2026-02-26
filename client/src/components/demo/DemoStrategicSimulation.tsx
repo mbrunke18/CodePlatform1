@@ -112,7 +112,7 @@ export function DemoActiveStrategicCard() {
               3 days ago
             </div>
             {isActivated && (
-              <div className="mt-2 text-sm font-mono bg-blue-100 dark:bg-[#0A0F2E]/30 px-3 py-1 rounded">
+              <div className="mt-2 text-sm font-mono bg-[#F8F7F4] dark:bg-[#0A0F2E]/30 px-3 py-1 rounded">
                 Elapsed: {formatTime(elapsedTime)}
               </div>
             )}
@@ -185,12 +185,12 @@ export function DemoActiveStrategicCard() {
         )}
         
         {isActivated && (
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-[#0A0F2E] dark:text-blue-100">
+              <h4 className="font-semibold text-[#0A0F2E] dark:text-white">
                 Coordinated Response Execution
               </h4>
-              <span className="text-sm font-semibold text-[#0A0F2E] dark:text-blue-300">
+              <span className="text-sm font-semibold text-[#0A0F2E] dark:text-[#DFC178]">
                 {taskProgress}% Complete
               </span>
             </div>
@@ -268,20 +268,20 @@ export function DemoStrategicROIResults() {
             </div>
           </div>
           
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-            <h4 className="font-semibold text-[#0A0F2E] dark:text-blue-100 mb-2">Execution Success Metrics</h4>
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
+            <h4 className="font-semibold text-[#0A0F2E] dark:text-white mb-2">Execution Success Metrics</h4>
             <div className="grid grid-cols-3 gap-3 text-sm">
               <div>
                 <div className="text-gray-800 dark:text-gray-200">Task Completion</div>
-                <div className="text-lg font-bold text-[#0A0F2E] dark:text-blue-300">94%</div>
+                <div className="text-lg font-bold text-[#0A0F2E] dark:text-[#DFC178]">94%</div>
               </div>
               <div>
                 <div className="text-gray-800 dark:text-gray-200">Team Coordination</div>
-                <div className="text-lg font-bold text-[#0A0F2E] dark:text-blue-300">47 members</div>
+                <div className="text-lg font-bold text-[#0A0F2E] dark:text-[#DFC178]">47 members</div>
               </div>
               <div>
                 <div className="text-gray-800 dark:text-gray-200">Departments</div>
-                <div className="text-lg font-bold text-[#0A0F2E] dark:text-blue-300">8 teams</div>
+                <div className="text-lg font-bold text-[#0A0F2E] dark:text-[#DFC178]">8 teams</div>
               </div>
             </div>
           </div>

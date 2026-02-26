@@ -83,7 +83,7 @@ export default function PlatformVisual() {
       name: "DETECT",
       subtitle: "AI Playbook Matching",
       color: "from-[#0A0F2E] to-[#3BAF8A]",
-      borderColor: "border-blue-500",
+      borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#0A0F2E]",
       items: ["170 playbooks scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
     },

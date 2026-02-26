@@ -246,7 +246,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
         </CardHeader>
         <CardContent>
           <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-emerald-400 to-green-300 dark:from-green-600 dark:via-emerald-500 dark:to-green-400" />
+            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#2B8A6E] via-[#3BAF8A] to-[#2B8A6E] dark:from-[#2B8A6E] dark:via-[#3BAF8A] dark:to-[#2B8A6E]" />
             
             {timingOrder.map((timing) => {
               const timingItems = groupedByTiming[timing] || [];

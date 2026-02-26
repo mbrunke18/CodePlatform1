@@ -83,7 +83,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       )}
 
       {/* Add Stakeholder Form */}
-      <Card className="border-blue-500/30 bg-white">
+      <Card className="border-[#2B8A6E]/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
             <Plus className="h-5 w-5 text-[#0A0F2E]" />

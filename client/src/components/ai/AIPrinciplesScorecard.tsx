@@ -158,7 +158,7 @@ export function AIPrinciplesScorecard({
                 className={`text-base font-bold px-3 py-1 ${
                   overallScore >= 90 
                     ? 'bg-[#F0F9F6] text-[#2B8A6E] dark:bg-[#2B8A6E]/15/50 dark:text-[#2B8A6E]' 
-                    : 'bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/50 dark:text-blue-300'
+                    : 'bg-[#F8F7F4] text-[#0A0F2E] dark:bg-[#0A0F2E]/50 dark:text-[#DFC178]'
                 }`}
               >
                 {overallScore}%

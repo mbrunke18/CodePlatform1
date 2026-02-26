@@ -761,7 +761,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
                     { letter: "I", name: "Identify", icon: BookOpen, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20", border: "border-[#C9A84C]/30" },
-                    { letter: "D", name: "Detect", icon: Radar, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20", border: "border-blue-500/30" },
+                    { letter: "D", name: "Detect", icon: Radar, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20", border: "border-[#2B8A6E]/30" },
                     { letter: "E", name: "Execute", icon: Zap, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20", border: "border-[#2B8A6E]/30" },
                     { letter: "A", name: "Advance", icon: BarChart3, color: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-500/30" },
                   ].map((phase, i) => (
@@ -928,7 +928,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                     <p className="text-gray-800">Launch in 4 months vs 18</p>
                     <p className="text-[#2B8A6E] text-sm mt-1">Capture the revenue</p>
                   </div>
-                  <div className="bg-[#0A0F2E]/10 border border-blue-500/30 rounded-xl p-4">
+                  <div className="bg-[#0A0F2E]/10 border border-[#2B8A6E]/30 rounded-xl p-4">
                     <Target className="h-8 w-8 text-[#0A0F2E] mx-auto mb-2" />
                     <p className="text-gray-800">Integrate in 6 months vs 24</p>
                     <p className="text-[#0A0F2E] text-sm mt-1">Capture synergies</p>

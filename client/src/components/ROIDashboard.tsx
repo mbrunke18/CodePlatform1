@@ -96,7 +96,7 @@ export default function ROIDashboard() {
         </Card>
 
         {/* Cost Avoided */}
-        <Card className="border-l-4 border-l-blue-500">
+        <Card className="border-l-4 border-l-[#0A0F2E]">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
@@ -108,7 +108,7 @@ export default function ROIDashboard() {
                   From crisis preparedness & efficiency
                 </p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#F8F7F4] rounded-lg flex items-center justify-center">
                 <i className="fas fa-shield-alt text-[#0A0F2E] w-6"></i>
               </div>
             </div>

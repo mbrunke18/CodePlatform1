@@ -57,7 +57,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
 
   if (isLoading) {
     return (
-      <Card className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-[#0A0F2E] to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:to-[#3BAF8A]/20" data-testid="roi-summary-card">
+      <Card className="border-2 border-[#E8E4DC] dark:border-[#0A0F2E] bg-gradient-to-br from-[#0A0F2E] to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:to-[#3BAF8A]/20" data-testid="roi-summary-card">
         <CardContent className="flex items-center justify-center py-12">
           <Loader2 className="w-8 h-8 animate-spin text-[#0A0F2E] dark:text-[#0A0F2E]" />
         </CardContent>
@@ -75,7 +75,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
   };
 
   return (
-    <Card className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-[#0A0F2E] to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:to-[#3BAF8A]/20" data-testid="roi-summary-card">
+    <Card className="border-2 border-[#E8E4DC] dark:border-[#0A0F2E] bg-gradient-to-br from-[#0A0F2E] to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:to-[#3BAF8A]/20" data-testid="roi-summary-card">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <CardTitle className="text-lg font-semibold text-slate-900 dark:text-white">
@@ -114,7 +114,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
         </div>
 
         {/* Execution Metrics */}
-        <div className="flex items-center justify-between pt-3 border-t border-blue-200 dark:border-blue-800">
+        <div className="flex items-center justify-between pt-3 border-t border-[#E8E4DC] dark:border-[#0A0F2E]">
           <div className="space-y-1">
             <div className="text-xs text-gray-600 dark:text-slate-300">Playbooks Executed</div>
             <div className="text-lg font-semibold text-slate-900 dark:text-white" data-testid="roi-playbooks-executed">
@@ -134,7 +134,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
         <Link href="/institutional-memory">
           <Button 
             variant="outline" 
-            className="w-full mt-2 border-blue-300 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-[#0A0F2E]/30"
+            className="w-full mt-2 border-[#C9A84C] dark:border-[#C9A84C] hover:bg-[#F8F7F4] dark:hover:bg-[#0A0F2E]/30"
             data-testid="button-view-detailed-roi"
           >
             View Detailed ROI Report

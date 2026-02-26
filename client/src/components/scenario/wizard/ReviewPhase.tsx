@@ -43,7 +43,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
   return (
     <div className="space-y-6">
       {/* Completion Overview */}
-      <Card className="border-blue-500/30 bg-gradient-to-r  ">
+      <Card className="border-[#2B8A6E]/30 bg-gradient-to-r  ">
         <CardHeader>
           <CardTitle className="text-gray-900 flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-[#C9A84C]" />
@@ -120,11 +120,11 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             })}
           </div>
 
-          <div className="mt-6 p-4 bg-[#0A0F2E]/20 border border-blue-500/30 rounded-lg">
+          <div className="mt-6 p-4 bg-[#0A0F2E]/20 border border-[#2B8A6E]/30 rounded-lg">
             <div className="flex items-start gap-3">
               <Clock className="h-5 w-5 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
               <div>
-                <p className="text-sm font-semibold text-blue-300">Estimated Execution Velocity</p>
+                <p className="text-sm font-semibold text-[#DFC178]">Estimated Execution Velocity</p>
                 <p className="text-xs text-gray-700 mt-1">
                   {readinessScore >= 80 ? (
                     <>

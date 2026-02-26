@@ -115,11 +115,11 @@ const NOTIFICATION_CHANNELS = [
 ];
 
 const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
-  1: { label: "C-Suite", color: "bg-[#0A0F2E] text-white" },
-  2: { label: "Executive", color: "bg-[#141B45] text-white" },
-  3: { label: "VP", color: "bg-[#DFC178] text-[#0A0F2E]" },
-  4: { label: "Director", color: "bg-[#2B8A6E] text-white" },
-  5: { label: "Manager", color: "bg-[#E8E4DC] text-[#6B7280]" },
+  1: { label: "C-Suite", color: "bg-[#0A0F2E] text-white rounded-none" },
+  2: { label: "Executive", color: "bg-[#141B45] text-white rounded-none" },
+  3: { label: "VP", color: "bg-[#DFC178] text-[#0A0F2E] rounded-none" },
+  4: { label: "Director", color: "bg-[#2B8A6E] text-white rounded-none" },
+  5: { label: "Manager", color: "bg-[#E8E4DC] text-[#6B7280] rounded-none" },
 };
 
 const generateId = () => Date.now().toString(36);
@@ -353,16 +353,16 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           </Card>
         </div>
 
-        <Card className="mb-6">
+        <Card className="mb-6 rounded-none border-[#E8E4DC]">
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800" />
                 <Input
                   placeholder="Search by name, role, or email..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 rounded-none border-[#E8E4DC]"
                   data-testid="input-search"
                 />
               </div>
@@ -370,7 +370,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <select
                   value={levelFilter}
                   onChange={(e) => setLevelFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
+                  className="px-3 py-2 border border-[#E8E4DC] rounded-none bg-white text-[#0A0F2E] text-sm"
                   data-testid="select-level-filter"
                 >
                   <option value="all">All Levels</option>
@@ -383,7 +383,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <select
                   value={departmentFilter}
                   onChange={(e) => setDepartmentFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
+                  className="px-3 py-2 border border-[#E8E4DC] rounded-none bg-white text-[#0A0F2E] text-sm"
                   data-testid="select-department-filter"
                 >
                   <option value="all">All Departments</option>

@@ -62,7 +62,7 @@ export default function InnovationPipelinePanel() {
     switch (potential.toLowerCase()) {
       case 'breakthrough': return "bg-red-50 text-red-700 border-red-200";
       case 'incremental': return "bg-yellow-50 text-yellow-700 border-yellow-200";
-      case 'sustaining': return "bg-[#0A0F2E] text-[#0A0F2E] border-blue-200";
+      case 'sustaining': return "bg-[#0A0F2E] text-[#0A0F2E] border-[#E8E4DC]";
       default: return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };

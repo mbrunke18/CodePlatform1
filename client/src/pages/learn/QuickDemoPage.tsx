@@ -390,7 +390,7 @@ export default function QuickDemoPage() {
         {currentPhase === 'select' && (
           <>
             <div className="text-center mb-8">
-              <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
+              <Badge className="mb-4 bg-gradient-to-r from-[#C9A84C]/20 to-[#2B8A6E]/20 text-amber-300 border-amber-500/30">
                 5-Minute Interactive Demo
               </Badge>
               <h1 className="text-3xl font-bold mb-2">Experience Execution OS</h1>

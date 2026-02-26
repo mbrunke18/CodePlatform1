@@ -283,7 +283,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                     key={item.id}
                     className={`border rounded-lg p-3 transition-all ${
                       item.isActive
-                        ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-blue-200 dark:border-blue-800'
+                        ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-[#E8E4DC] dark:border-[#0A0F2E]'
                         : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 opacity-60'
                     }`}
                     data-testid={`monitor-item-${item.id}`}

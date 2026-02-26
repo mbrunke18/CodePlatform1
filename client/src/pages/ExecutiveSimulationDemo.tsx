@@ -830,7 +830,7 @@ export default function ExecutiveSimulationDemo() {
                     className={`border-l-4 ${
                       signal.severity === 'critical' ? 'border-l-red-500 bg-red-50 dark:bg-red-950/20' :
                       signal.severity === 'high' ? 'border-l-orange-500' :
-                      signal.severity === 'medium' ? 'border-l-yellow-500' : 'border-l-blue-500'
+                      signal.severity === 'medium' ? 'border-l-yellow-500' : 'border-l-[#0A0F2E]'
                     }`}
                     data-testid={`card-signal-${signal.id}`}
                   >

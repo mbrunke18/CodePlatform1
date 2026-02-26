@@ -264,7 +264,7 @@ export function SplitScreenComparison() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 animate-in slide-in-from-bottom duration-700 h-[40vh]">
-      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-blue-500/50 bg-white backdrop-blur-xl shadow-2xl h-full overflow-y-auto">
+      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-[#2B8A6E]/50 bg-white backdrop-blur-xl shadow-2xl h-full overflow-y-auto">
         <div className="grid grid-cols-2 divide-x divide-gray-700">
           {/* TRADITIONAL SIDE - PAIN */}
           <div className="p-6 bg-gradient-to-br  ">
@@ -313,7 +313,7 @@ export function SplitScreenComparison() {
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div>
-                  <Badge variant="outline" className="bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50">
+                  <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#DFC178] border-[#2B8A6E]/50">
                     Execution OS Response
                   </Badge>
                   <h3 className="text-lg font-bold text-[#0A0F2E] mt-2">{data.mState}</h3>
@@ -328,11 +328,11 @@ export function SplitScreenComparison() {
               {/* Metrics */}
               <div className="space-y-2">
                 {data.metrics.map((metric, idx) => (
-                  <div key={idx} className="bg-black/30 rounded-lg p-3 border border-blue-500/20">
+                  <div key={idx} className="bg-black/30 rounded-lg p-3 border border-[#2B8A6E]/20">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-2xl font-bold text-[#0A0F2E]">{metric.m.value}</p>
-                        <p className="text-xs text-blue-300">{metric.m.sublabel}</p>
+                        <p className="text-xs text-[#DFC178]">{metric.m.sublabel}</p>
                       </div>
                       <TrendingUp className="h-5 w-5 text-green-400" />
                     </div>
@@ -341,8 +341,8 @@ export function SplitScreenComparison() {
               </div>
 
               {/* Executive Confidence */}
-              <div className="bg-[#0A0F2E]/30 rounded-lg p-3 border border-blue-500/30">
-                <p className="text-xs font-semibold text-blue-300 mb-2">Executive Confidence</p>
+              <div className="bg-[#0A0F2E]/30 rounded-lg p-3 border border-[#2B8A6E]/30">
+                <p className="text-xs font-semibold text-[#DFC178] mb-2">Executive Confidence</p>
                 <div className="space-y-1">
                   {data.executivePressure.m.map((item, idx) => (
                     <p key={idx} className="text-xs text-[#0A0F2E]/90">{item}</p>

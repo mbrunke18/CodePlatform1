@@ -275,7 +275,7 @@ export function PreparePhaseView({ playbookId, organizationId, isEditable = true
                     className={`border rounded-lg p-3 transition-all ${
                       item.status === 'completed'
                         ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800'
-                        : 'bg-card border-border hover:border-blue-300 dark:hover:border-blue-700'
+                        : 'bg-card border-border hover:border-[#E8E4DC] dark:hover:border-[#0A0F2E]'
                     }`}
                     data-testid={`prepare-item-${item.id}`}
                   >

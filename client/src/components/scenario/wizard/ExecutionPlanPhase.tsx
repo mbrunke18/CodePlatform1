@@ -48,7 +48,7 @@ const PRIORITY_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'bg-red-600/20 text-red-300 border-red-500/50' },
   { value: 'high', label: 'High', color: 'bg-orange-600/20 text-orange-300 border-orange-500/50' },
   { value: 'medium', label: 'Medium', color: 'bg-yellow-600/20 text-yellow-300 border-yellow-500/50' },
-  { value: 'low', label: 'Low', color: 'bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50' },
+  { value: 'low', label: 'Low', color: 'bg-[#0A0F2E]/20 text-[#DFC178] border-[#2B8A6E]/50' },
 ];
 
 export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhaseProps) {
@@ -124,7 +124,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
     const colors: Record<string, string> = {
       red: 'border-red-500/50 bg-red-950/20',
       orange: 'border-orange-500/50 bg-orange-950/20',
-      blue: 'border-blue-500/50 bg-[#0A0F2E]/20',
+      blue: 'border-[#2B8A6E]/50 bg-[#0A0F2E]/20',
     };
     return colors[color] || colors.blue;
   };
@@ -214,7 +214,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
           </CardContent>
         </Card>
       ) : (
-        <Card className="border-blue-500/30 bg-white">
+        <Card className="border-[#2B8A6E]/30 bg-white">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
               <Plus className="h-5 w-5 text-[#0A0F2E]" />

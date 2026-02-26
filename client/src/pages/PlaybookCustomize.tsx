@@ -721,7 +721,7 @@ export default function PlaybookCustomize() {
                           }}
                           className={`w-full flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-left text-sm transition-colors ${
                             isActive 
-                              ? 'bg-primary text-primary-foreground' 
+                              ? 'bg-[#0A0F2E] text-white font-bold' 
                               : 'text-gray-800 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#141B45]'
                           }`}
                           data-testid={`nav-${section.id}`}

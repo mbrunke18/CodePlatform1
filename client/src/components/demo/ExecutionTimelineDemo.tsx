@@ -32,7 +32,7 @@ export default function ExecutionTimelineDemo({
       case 'medium':
         return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50';
       default:
-        return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-blue-500/50';
+        return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#2B8A6E]/50';
     }
   };
 
@@ -104,7 +104,7 @@ export default function ExecutionTimelineDemo({
                   <Badge 
                     key={idx} 
                     variant="outline" 
-                    className="bg-[#0A0F2E]/10 border-blue-500/30 text-[#0A0F2E]"
+                    className="bg-[#0A0F2E]/10 border-[#2B8A6E]/30 text-[#0A0F2E]"
                   >
                     {stakeholder.role}: {stakeholder.name}
                   </Badge>
@@ -172,7 +172,7 @@ export default function ExecutionTimelineDemo({
               {phase.tasks.map((task, taskIdx) => (
                 <div 
                   key={taskIdx}
-                  className="border-l-4 border-blue-500/50 pl-4 py-3 bg-white rounded-r-lg"
+                  className="border-l-4 border-[#2B8A6E]/50 pl-4 py-3 bg-white rounded-r-lg"
                   data-testid={`task-${phaseKey}-${taskIdx}`}
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
@@ -221,7 +221,7 @@ export default function ExecutionTimelineDemo({
       </div>
 
       {/* Execution Summary */}
-      <Card className="bg-gradient-to-r   border-blue-500/30">
+      <Card className="bg-gradient-to-r   border-[#2B8A6E]/30">
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">

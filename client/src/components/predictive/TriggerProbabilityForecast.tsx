@@ -185,7 +185,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       <CardContent className="space-y-4">
         <div className="flex items-center gap-2 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg text-sm">
           <Info className="w-4 h-4 text-[#0A0F2E] dark:text-[#0A0F2E] flex-shrink-0" />
-          <span className="text-[#0A0F2E] dark:text-blue-200">
+          <span className="text-[#0A0F2E] dark:text-[#DFC178]">
             Triggers ranked by highest 30-day firing probability. Higher probability = higher priority for review.
           </span>
         </div>
@@ -299,7 +299,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                 </div>
 
                 <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
-                  <div className="text-xs font-semibold text-[#0A0F2E] dark:text-blue-300 mb-2 flex items-center gap-1">
+                  <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#DFC178] mb-2 flex items-center gap-1">
                     <Target className="w-3 h-3" />
                     Recommended Preparation
                   </div>

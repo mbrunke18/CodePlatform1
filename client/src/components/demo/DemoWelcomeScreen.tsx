@@ -66,7 +66,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/70 backdrop-blur-sm"
       data-testid="demo-welcome-screen"
     >
-      <Card className="bg-white border-blue-500/70 shadow-2xl backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+      <Card className="bg-white border-[#2B8A6E]/70 shadow-2xl backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         <CardContent className="p-8 space-y-6">
           
           {/* Header */}

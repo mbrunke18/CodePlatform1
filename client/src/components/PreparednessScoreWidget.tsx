@@ -79,7 +79,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
   const scoreBgColor = 
     displayData.score >= 80 ? 'bg-green-100 dark:bg-green-900/20' :
-    displayData.score >= 60 ? 'bg-blue-100 dark:bg-[#0A0F2E]/20' :
+    displayData.score >= 60 ? 'bg-[#F8F7F4] dark:bg-[#0A0F2E]/20' :
     displayData.score >= 40 ? 'bg-yellow-100 dark:bg-yellow-900/20' :
     'bg-red-100 dark:bg-red-900/20';
 
@@ -175,7 +175,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
               <Target className="h-4 w-4 text-[#0A0F2E] dark:text-[#0A0F2E]" />
               <span className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Scenarios</span>
             </div>
-            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-blue-300">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#DFC178]">
               {displayData.scenariosPracticed}
             </div>
             <div className="text-xs text-muted-foreground">practiced</div>

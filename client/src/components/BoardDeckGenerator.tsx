@@ -54,7 +54,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
   };
 
   return (
-    <Card className="border-blue-200 dark:border-blue-800">
+    <Card className="border-[#E8E4DC] dark:border-[#0A0F2E]">
       <CardHeader className="border-b border-border pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">

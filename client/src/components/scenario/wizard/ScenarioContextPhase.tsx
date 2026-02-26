@@ -130,13 +130,13 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                   data-testid={`select-scenario-type-${type.value}`}
                   className={`p-4 rounded-lg border-2 text-left transition-all ${
                     isSelected
-                      ? 'border-blue-500 bg-[#0A0F2E]/30'
+                      ? 'border-[#2B8A6E] bg-[#0A0F2E]/30'
                       : 'border-gray-200 bg-white hover:border-slate-600'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <Icon className={`h-5 w-5 ${isSelected ? 'text-[#0A0F2E]' : type.color}`} />
-                    <span className={`font-semibold ${isSelected ? 'text-blue-300' : 'text-gray-900'}`}>
+                    <span className={`font-semibold ${isSelected ? 'text-[#DFC178]' : 'text-gray-900'}`}>
                       {type.label}
                     </span>
                   </div>

@@ -472,20 +472,20 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
 
           {/* Main Content Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="bg-gray-50 p-1 h-auto flex-wrap">
-              <TabsTrigger value="departments" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
+            <TabsList className="bg-white p-1 h-auto flex-wrap border border-[#E8E4DC] rounded-none">
+              <TabsTrigger value="departments" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider rounded-none">
                 <Layers className="h-4 w-4" />
                 Departments
               </TabsTrigger>
-              <TabsTrigger value="stakeholders" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
+              <TabsTrigger value="stakeholders" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider rounded-none">
                 <Users className="h-4 w-4" />
                 Stakeholders
               </TabsTrigger>
-              <TabsTrigger value="escalation" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
+              <TabsTrigger value="escalation" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider rounded-none">
                 <Workflow className="h-4 w-4" />
                 Escalation Policies
               </TabsTrigger>
-              <TabsTrigger value="channels" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
+              <TabsTrigger value="channels" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider rounded-none">
                 <MessageSquare className="h-4 w-4" />
                 Communication Channels
               </TabsTrigger>

@@ -265,11 +265,11 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               </div>
             </div>
 
-            <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E] border-blue-200 dark:border-blue-800">
+            <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-[#0A0F2E]">
               <CardContent className="pt-4">
                 <div className="flex gap-2 text-sm">
                   <Lightbulb className="w-4 h-4 text-[#0A0F2E] flex-shrink-0 mt-0.5" />
-                  <div className="text-[#0A0F2E] dark:text-blue-100">
+                  <div className="text-[#0A0F2E] dark:text-white">
                     <p className="font-semibold mb-1">How This SLA Works:</p>
                     <div className="space-y-1 text-xs">
                       {currentPhase === 'identify' && (

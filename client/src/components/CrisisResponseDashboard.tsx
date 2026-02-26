@@ -277,19 +277,19 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-2xl font-bold mb-1">{crisisTemplates.length}</div>
-              <div className="text-blue-100 text-sm">Response Templates</div>
+              <div className="text-white text-sm">Response Templates</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-1">24/7</div>
-              <div className="text-blue-100 text-sm">Monitoring Status</div>
+              <div className="text-white text-sm">Monitoring Status</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-1">&lt;1hr</div>
-              <div className="text-blue-100 text-sm">Response Time</div>
+              <div className="text-white text-sm">Response Time</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold mb-1">98%</div>
-              <div className="text-blue-100 text-sm">Readiness Score</div>
+              <div className="text-white text-sm">Readiness Score</div>
             </div>
           </div>
           

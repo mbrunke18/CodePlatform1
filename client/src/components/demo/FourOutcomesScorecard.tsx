@@ -217,7 +217,7 @@ export default function FourOutcomesScorecard({
         ))}
       </div>
 
-      <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-2 border-blue-300 dark:border-blue-700" data-testid="card-trust-indicators">
+      <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-2 border-[#C9A84C] dark:border-[#C9A84C]" data-testid="card-trust-indicators">
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
             <Shield className="w-6 h-6 text-[#0A0F2E] dark:text-[#0A0F2E]" />
@@ -234,7 +234,7 @@ export default function FourOutcomesScorecard({
                 <span className="font-medium">Stakeholder Engagement</span>
                 <span className="font-semibold text-[#0A0F2E] dark:text-[#0A0F2E]">{engagementRate}%</span>
               </div>
-              <Progress value={engagementRate} className="h-2 bg-blue-100 dark:bg-[#0A0F2E]" />
+              <Progress value={engagementRate} className="h-2 bg-[#F8F7F4] dark:bg-[#0A0F2E]" />
               <p className="text-xs text-muted-foreground">{stakeholdersAcknowledged}/{stakeholdersTotal} participated actively</p>
             </div>
 
@@ -266,7 +266,7 @@ export default function FourOutcomesScorecard({
             </div>
           </div>
 
-          <div className="pt-4 border-t border-blue-200 dark:border-blue-800 space-y-3">
+          <div className="pt-4 border-t border-[#E8E4DC] dark:border-[#0A0F2E]/50 space-y-3">
             <p className="text-sm text-muted-foreground">
               Execution OS augments human execution by eliminating coordination friction while keeping humans in full control. 
               This activation demonstrated high trust through transparent stakeholder engagement, human oversight of all 
@@ -341,7 +341,7 @@ export default function FourOutcomesScorecard({
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="bg-gradient-to-br from-[#0A0F2E] to-white dark:from-[#0A0F2E]/20 dark:to-background border-blue-200 dark:border-blue-800" data-testid="card-citation-mckinsey">
+        <Card className="bg-gradient-to-br from-[#0A0F2E] to-white dark:from-[#0A0F2E]/20 dark:to-background border-[#E8E4DC] dark:border-[#0A0F2E]/50" data-testid="card-citation-mckinsey">
           <CardContent className="pt-6 space-y-3">
             <div className="flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />

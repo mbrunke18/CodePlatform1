@@ -110,9 +110,9 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
       </div>
 
       {/* Bottom Line */}
-      <Card className="p-6 bg-gradient-to-r   border-blue-500">
+      <Card className="p-6 bg-gradient-to-r   border-[#2B8A6E]">
         <div className="text-center">
-          <div className="text-sm text-blue-300 mb-2">Bottom Line</div>
+          <div className="text-sm text-[#DFC178] mb-2">Bottom Line</div>
           <div className="text-3xl font-bold text-gray-900 mb-2">{bottomLine.value}</div>
           <div className="text-sm text-[#0A0F2E]">{bottomLine.metric}</div>
         </div>

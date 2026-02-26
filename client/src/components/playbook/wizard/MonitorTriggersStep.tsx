@@ -97,7 +97,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">📡</span> DETECT Phase — Monitor Signals
         </h3>

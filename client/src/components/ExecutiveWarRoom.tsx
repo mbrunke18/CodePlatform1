@@ -569,9 +569,9 @@ export function ExecutiveWarRoom() {
                   <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 rounded-lg">
                     <div className="flex items-center mb-2">
                       <Target className="h-5 w-5 text-[#0A0F2E] mr-2" />
-                      <span className="font-medium text-[#0A0F2E] dark:text-blue-100">Strategic Opportunity</span>
+                      <span className="font-medium text-[#0A0F2E] dark:text-white">Strategic Opportunity</span>
                     </div>
-                    <p className="text-sm text-[#0A0F2E] dark:text-blue-200">
+                    <p className="text-sm text-[#0A0F2E] dark:text-[#DFC178]">
                       Market analysis indicates 23% growth opportunity in Q2. Recommend accelerating Product Line Alpha expansion.
                     </p>
                   </div>

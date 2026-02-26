@@ -231,7 +231,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       {/* Progress Header */}
-      <Card className="border-blue-500/30 bg-gradient-to-r  ">
+      <Card className="border-[#2B8A6E]/30 bg-gradient-to-r  ">
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -272,7 +272,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               data-testid={`wizard-phase-${phase.id}`}
               className={`p-4 rounded-lg border-2 transition-all text-left ${
                 isCurrent
-                  ? 'border-blue-500 bg-[#0A0F2E]/30 scale-105'
+                  ? 'border-[#2B8A6E] bg-[#0A0F2E]/30 scale-105'
                   : isComplete
                   ? 'border-green-500/50 bg-green-950/20 hover:scale-102'
                   : isAccessible
@@ -286,7 +286,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
                 ) : (
                   <Circle className={`h-5 w-5 ${isCurrent ? 'text-[#0A0F2E]' : 'text-gray-800'}`} />
                 )}
-                <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-300' : isComplete ? 'text-green-300' : 'text-gray-700'}`}>
+                <span className={`text-sm font-semibold ${isCurrent ? 'text-[#DFC178]' : isComplete ? 'text-green-300' : 'text-gray-700'}`}>
                   Phase {index + 1}
                 </span>
               </div>

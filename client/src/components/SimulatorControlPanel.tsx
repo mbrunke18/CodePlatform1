@@ -15,7 +15,7 @@ export function SimulatorControlPanel() {
   ];
 
   return (
-    <Card className="border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-[#0A0F2E]/50 to-[#141B45]/50 dark:from-[#0A0F2E]/20 dark:to-[#141B45]/20">
+    <Card className="border-2 border-[#E8E4DC] dark:border-[#0A0F2E] bg-gradient-to-br from-[#0A0F2E]/50 to-[#141B45]/50 dark:from-[#0A0F2E]/20 dark:to-[#141B45]/20">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
@@ -135,10 +135,10 @@ export function SimulatorControlPanel() {
         )}
 
         {isRunning && (
-          <div className="mt-4 p-3 rounded-lg bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-blue-200 dark:border-blue-800">
+          <div className="mt-4 p-3 rounded-lg bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC] dark:border-[#0A0F2E]">
             <div className="flex items-start gap-2">
               <Activity className="h-4 w-4 text-[#0A0F2E] mt-0.5" />
-              <div className="text-xs text-[#0A0F2E] dark:text-blue-100">
+              <div className="text-xs text-[#0A0F2E] dark:text-white">
                 <strong>Automation Active:</strong> The system is now detecting weak signals every 5 seconds, 
                 scanning for Oracle patterns every 30 seconds, and updating readiness metrics in real-time. 
                 Activity feed is being populated automatically.

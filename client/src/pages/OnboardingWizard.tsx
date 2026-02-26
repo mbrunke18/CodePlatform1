@@ -437,9 +437,9 @@ export default function OnboardingWizard() {
                       <Badge
                         key={dept}
                         variant={orgData.departments.includes(dept) ? 'default' : 'outline'}
-                        className={`cursor-pointer ${
+                        className={`cursor-pointer rounded-none ${
                           orgData.departments.includes(dept) 
-                            ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45]' 
+                            ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45] border-[#0A0F2E]' 
                             : 'hover:bg-[#F8F7F4] text-[#0A0F2E] border-[#E8E4DC]'
                         }`}
                         onClick={() => {
@@ -501,10 +501,10 @@ export default function OnboardingWizard() {
                     <span className="text-xs bg-[#C9A84C]/10 text-[#C9A84C] font-medium px-2 py-1 rounded">Optional — set up after onboarding</span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="bg-gray-50 border-gray-200">
+                    <Card className="bg-gray-50 border-gray-200 rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded flex items-center justify-center">
+                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
                             <Layers className="h-5 w-5 text-[#0A0F2E]" />
                           </div>
                           <div>
@@ -515,6 +515,7 @@ export default function OnboardingWizard() {
                         <Button 
                           size="sm" 
                           variant="outline"
+                          className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
                           onClick={() => {
                             toast({
                               title: 'Jira Integration',
@@ -527,10 +528,10 @@ export default function OnboardingWizard() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-50 border-gray-200">
+                    <Card className="bg-gray-50 border-gray-200 rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#C9A84C]/10 rounded flex items-center justify-center">
+                          <div className="w-10 h-10 bg-[#C9A84C]/10 rounded-none flex items-center justify-center">
                             <Bell className="h-5 w-5 text-[#C9A84C]" />
                           </div>
                           <div>
@@ -541,6 +542,7 @@ export default function OnboardingWizard() {
                         <Button 
                           size="sm" 
                           variant="outline"
+                          className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
                           onClick={() => {
                             toast({
                               title: 'Slack Integration',
@@ -823,12 +825,12 @@ max="120"
             )}
           </CardContent>
           
-          <CardFooter className="flex items-center justify-between border-t border-[#E8E4DC] p-6 bg-[#F8F7F4]">
+          <CardFooter className="flex items-center justify-between border-t border-[#E8E4DC] p-6 bg-[#F8F7F4] rounded-none">
             <Button
               variant="outline"
               onClick={handleBack}
               disabled={currentStep === 0}
-              className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white"
+              className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none"
             >
               <ChevronLeft className="h-4 w-4 mr-2" />
               Back
@@ -838,14 +840,14 @@ max="120"
               <Button
                 variant="ghost"
                 onClick={() => setLocation('/dashboard')}
-                className="text-gray-500 text-xs uppercase tracking-widest font-bold"
+                className="text-gray-500 text-xs uppercase tracking-widest font-bold rounded-none"
               >
                 Skip to Dashboard
               </Button>
               <Button
                 onClick={handleNext}
                 disabled={saveProgressMutation.isPending || completeOnboardingMutation.isPending}
-                className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold px-8"
+                className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold px-8 rounded-none"
               >
                 {currentStep === ONBOARDING_STEPS.length - 1 ? (
                   completeOnboardingMutation.isPending ? 'Finalizing...' : 'Complete Setup'

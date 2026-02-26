@@ -628,7 +628,7 @@ function AlertCard({ alert }: { alert: any }) {
   const severityColors: Record<string, string> = {
     critical: 'border-red-500 bg-red-500/10',
     high: 'border-amber-500 bg-amber-500/10',
-    medium: 'border-blue-500 bg-[#0A0F2E]/10',
+    medium: 'border-[#2B8A6E] bg-[#0A0F2E]/10',
     low: 'border-gray-500 bg-gray-500/10'
   };
 

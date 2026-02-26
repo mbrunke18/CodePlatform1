@@ -389,10 +389,10 @@ export default function FourPhasePlaybookWizard({
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-              <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-blue-200 dark:border-blue-900 p-3 mb-4">
+              <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-[#E8E4DC] dark:border-[#0A0F2E] p-3 mb-4">
                 <div className="flex gap-2">
                   <Lightbulb className="w-4 h-4 text-[#0A0F2E] flex-shrink-0 mt-0.5" />
-                  <div className="text-sm text-[#0A0F2E] dark:text-blue-100">
+                  <div className="text-sm text-[#0A0F2E] dark:text-white">
                     <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context. Execution OS pre-fills 80%+ of content from best practices.
                   </div>
                 </div>

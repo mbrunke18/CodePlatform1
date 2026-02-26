@@ -26,7 +26,7 @@ export default function AIConfidenceBadge({
     };
     if (score >= 70) return {
       level: "High",
-      color: "bg-[#0A0F2E] dark:bg-[#0A0F2E] text-[#0A0F2E] dark:text-[#0A0F2E] border-blue-200 dark:border-blue-800",
+      color: "bg-[#0A0F2E] dark:bg-[#0A0F2E] text-[#0A0F2E] dark:text-[#0A0F2E] border-[#E8E4DC] dark:border-[#0A0F2E]",
       icon: <Brain className="w-3 h-3" />
     };
     if (score >= 50) return {

@@ -112,7 +112,7 @@ export default function EmptyConfigState({
 
 export function QuickSetupBanner() {
   return (
-    <Card className="bg-gradient-to-r   border-blue-500/30">
+    <Card className="bg-gradient-to-r   border-[#2B8A6E]/30">
       <CardContent className="flex items-center justify-between py-4">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">

@@ -17,7 +17,7 @@ export default function ScenariosSection() {
     switch (status.toLowerCase()) {
       case 'active': return 'bg-green-100 text-green-800';
       case 'review': return 'bg-yellow-100 text-yellow-800';
-      case 'complete': return 'bg-blue-100 text-[#0A0F2E]';
+      case 'complete': return 'bg-[#F8F7F4] text-[#0A0F2E]';
       default: return 'bg-gray-100 text-gray-800';
     }
   };

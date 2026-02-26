@@ -127,7 +127,7 @@ export default function AICopilotPanel() {
             className="w-full justify-start h-auto p-4"
             data-testid="button-create-organization"
           >
-            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-[#F8F7F4] rounded-lg flex items-center justify-center mr-3">
               <i className="fas fa-building text-[#0A0F2E] w-4"></i>
             </div>
             <div className="text-left">

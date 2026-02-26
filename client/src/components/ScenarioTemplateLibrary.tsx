@@ -340,14 +340,14 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                   </Button>
                 </CardContent>
               </Card>
-              <Card className="border-blue-200">
+              <Card className="border-[#E8E4DC]">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <Building className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="font-medium">Industry Analysis</span>
                   </div>
                   <p className="text-sm text-gray-600">Templates optimized for your specific industry requirements</p>
-                  <Button size="sm" variant="outline" className="mt-2 border-blue-300 text-[#0A0F2E]">
+                  <Button size="sm" variant="outline" className="mt-2 border-[#E8E4DC] text-[#0A0F2E]">
                     Analyze Industry
                   </Button>
                 </CardContent>
@@ -677,7 +677,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
         <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Response Phases</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {template.responsePhases.map((phase: any, index: number) => (
-            <Card key={index} className="border-l-4 border-l-blue-500">
+            <Card key={index} className="border-l-4 border-l-[#0A0F2E]">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-medium capitalize">{phase.phase}</CardTitle>
                 <div className="text-xs text-gray-600 dark:text-gray-300">{phase.timeline}</div>

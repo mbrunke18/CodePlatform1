@@ -39,7 +39,7 @@ export function HeroMetricsOverlay() {
       comparison: 'Top 3%',
       color: 'text-[#0A0F2E]',
       bgColor: 'bg-[#0A0F2E]/10',
-      borderColor: 'border-blue-500/30'
+      borderColor: 'border-[#2B8A6E]/30'
     },
     {
       icon: Target,
