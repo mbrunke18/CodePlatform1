@@ -27,7 +27,7 @@ import { useLocation } from 'wouter';
 import { useToast } from '@/hooks/use-toast';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
-import { BrandStamp } from "@/components/BrandStamp";
+import { PageHero } from "@/components/layout/PageHero";
 
 interface ROIInputs {
   companySize: string;
@@ -149,42 +149,35 @@ export default function ROICalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br ">
+    <div className="min-h-screen bg-background flex flex-col">
       <StandardNav />
+      <PageHero
+        eyebrow="ROI Calculator"
+        title="Calculate Your Strategic Velocity ROI"
+        subtitle="See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line."
+        size="md"
+      />
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
-              <Calculator className="h-4 w-4 mr-2" />
-              ROI Calculator
-            </Badge>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Calculate Your Strategic Velocity ROI
-            </h1>
-            <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-6">
-              See how Execution OS transforms coordination time from 72 hours to 12 minutes—and what that means for your bottom line.
-            </p>
-            
-            {/* BAI Report Stat Highlight */}
-            <Card className="bg-gradient-to-r   border-emerald-500/30 max-w-2xl mx-auto">
+          {/* BAI Report Stat Highlight */}
+          <div className="mb-12">
+            <Card className="bg-gradient-to-r from-white to-slate-50 border-[#C9A84C]/30 max-w-2xl mx-auto shadow-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-center gap-8 flex-wrap">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-emerald-400">10.3%</div>
-                    <p className="text-sm text-gray-800">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-800">Organizations that improved agility</p>
+                    <div className="text-3xl font-bold text-emerald-600">10.3%</div>
+                    <p className="text-sm text-gray-700">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-500">Organizations that improved agility</p>
                   </div>
-                  <div className="text-2xl text-gray-800">vs</div>
+                  <div className="text-2xl text-gray-400">vs</div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-red-400">3.5%</div>
-                    <p className="text-sm text-gray-800">Revenue/Employee Growth</p>
-                    <p className="text-xs text-gray-800">Organizations that didn't improve</p>
+                    <div className="text-3xl font-bold text-red-500">3.5%</div>
+                    <p className="text-sm text-gray-700">Revenue/Employee Growth</p>
+                    <p className="text-xs text-gray-500">Organizations that didn't improve</p>
                   </div>
                 </div>
-                <p className="text-center text-sm text-gray-800 mt-4">
+                <p className="text-center text-sm text-gray-600 mt-4">
                   Source: 2025 Business Agility Report (244 organizations)
                 </p>
               </CardContent>

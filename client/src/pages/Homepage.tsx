@@ -122,7 +122,7 @@ export default function Homepage() {
           <div>
             {/* VaughnMartin logo */}
             <div style={{ marginBottom: 28 }}>
-              <VaughnMartinLogo height={44} variant="full" color="light" />
+              <VaughnMartinLogo height={44} variant="full" color="dark" />
             </div>
 
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.22)", padding: "6px 18px", marginBottom: 36 }}>

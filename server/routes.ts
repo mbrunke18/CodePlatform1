@@ -6804,7 +6804,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
 
   app.post('/api/signals/live/ingest', async (req, res) => {
     try {
-      const organizationId = req.body?.req.orgId;
+      const organizationId = req.body?.organizationId || (req as any).orgId;
       const result = await liveSignalIngestionService.runIngestionCycle(organizationId);
       res.json({ success: true, ...result });
     } catch (err) {
@@ -6813,7 +6813,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   app.post('/api/signals/live/start', (req, res) => {
-    const organizationId = req.body?.req.orgId;
+    const organizationId = req.body?.organizationId || (req as any).orgId;
     const intervalMinutes = req.body?.intervalMinutes || 15;
     liveSignalIngestionService.start(organizationId, intervalMinutes);
     res.json({ success: true, status: liveSignalIngestionService.getStatus() });

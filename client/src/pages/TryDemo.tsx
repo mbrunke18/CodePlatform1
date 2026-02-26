@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
+import { PageHero } from '@/components/layout/PageHero';
 import { useLocation } from 'wouter';
 import {
   BookOpen,
@@ -479,22 +480,15 @@ export default function TryDemo() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <StandardNav />
-      
+      <PageHero
+        eyebrow="Interactive Demo"
+        title="Experience Execution OS"
+        subtitle="Select a strategic scenario and see how Execution OS responds — from signal detection to full playbook execution in 12 minutes."
+        size="md"
+      />
       <main className="flex-1 py-8 md:py-12">
         <div ref={contentRef} className="max-w-6xl mx-auto px-4 md:px-6">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-gradient-to-r from-amber-500/20 to-emerald-500/20 text-amber-300 border-amber-500/30">
-              Y Combinator Demo
-            </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-              Experience Execution OS
-            </h1>
-            <p className="text-lg text-gray-800">
-              See why Fortune 1000 leaders need the Strategic Execution OS
-            </p>
-          </div>
+          {/* Header injected at top level — see PageHero above main */}
 
           {/* Scenario Selection */}
           {currentPhase === 'select' && (

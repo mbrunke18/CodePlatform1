@@ -1,9 +1,9 @@
 import PageLayout from '@/components/layout/PageLayout';
+import { PageHero } from '@/components/layout/PageHero';
 import PlatformVisual from '@/components/marketing/PlatformVisual';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import { useLocation } from 'wouter';
-import { BrandStamp } from "@/components/BrandStamp";
 
 export default function PlatformOverview() {
   const [, setLocation] = useLocation();
@@ -11,6 +11,12 @@ export default function PlatformOverview() {
   return (
     <PageLayout>
       <div>
+        <PageHero
+          eyebrow="Platform Overview"
+          title="The Complete Execution Infrastructure"
+          subtitle="From signal detection to task deployment — every component of the Execution OS, in one unified platform built for Fortune 1000 speed."
+          size="lg"
+        />
         <PlatformVisual />
 
         <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">

@@ -1,4 +1,5 @@
 import PageLayout from '@/components/layout/PageLayout';
+import { PageHero } from '@/components/layout/PageHero';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -16,8 +17,6 @@ import {
   Play
 } from "lucide-react";
 import { useLocation } from "wouter";
-import { BrandStamp } from "@/components/BrandStamp";
-import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 export default function HowItWorks() {
   const [, setLocation] = useLocation();
@@ -142,41 +141,29 @@ export default function HowItWorks() {
     <PageLayout>
       <div className="page-background">
       
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-white border-b border-gray-100">
-        <div className="container mx-auto px-6 py-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-6 bg-poise-gold/10 text-poise-gold border-poise-gold/30 text-sm px-4 py-2">
-              The IDEA Framework™
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-              From Situation to Execution in 12 Minutes
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed max-w-3xl mx-auto">
-              In a world where disruptions compound and cascade across domains simultaneously, the only advantage is execution infrastructure built before the moment arrives.
-            </p>
-            
-            {/* Visual Phase Flow */}
-            <div className="flex items-center justify-center gap-2 md:gap-4 mt-12 flex-wrap">
-              {phases.map((phase, index) => (
-                <div key={phase.name} className="flex items-center gap-2 md:gap-4">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className={`w-14 h-14 md:w-20 md:h-20 rounded-xl bg-gradient-to-br ${phase.bgGradient} flex items-center justify-center shadow-lg`}>
-                      <phase.icon className="h-7 w-7 md:h-9 md:w-9 text-white" />
-                    </div>
-                    <span className="text-xs md:text-sm font-bold text-gray-800 tracking-wide uppercase">{phase.name}</span>
-                  </div>
-                  {index < phases.length - 1 && (
-                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6 text-gray-500 mb-5" />
-                  )}
+      <PageHero
+        eyebrow="The IDEA Framework™"
+        title="From Situation to Execution in 12 Minutes"
+        subtitle="In a world where disruptions compound and cascade across domains simultaneously, the only advantage is execution infrastructure built before the moment arrives."
+        size="lg"
+      >
+        <div className="flex items-center gap-3 md:gap-6 flex-wrap">
+          {phases.map((phase, index) => (
+            <div key={phase.name} className="flex items-center gap-3 md:gap-6">
+              <div className="flex flex-col items-center gap-2">
+                <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br ${phase.bgGradient} flex items-center justify-center shadow-lg`}>
+                  <phase.icon className="h-6 w-6 md:h-8 md:h-8 text-white" />
                 </div>
-              ))}
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.7)" }}>{phase.name}</span>
+              </div>
+              {index < phases.length - 1 && (
+                <ArrowRight className="h-4 w-4 text-white/30 mb-4" />
+              )}
             </div>
-            <p className="text-sm text-gray-700 mt-4 font-medium">Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
-          </div>
+          ))}
         </div>
-      </div>
+        <p style={{ fontSize: 12, color: "rgba(201,168,76,0.7)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 8 }}>Continuous cycle — ADVANCE feeds back into IDENTIFY</p>
+      </PageHero>
 
       {/* Phase Details */}
       <div className="container mx-auto px-6 py-20">

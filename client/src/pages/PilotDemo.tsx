@@ -12,6 +12,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import { PageHero } from "@/components/layout/PageHero";
 import {
   ArrowRight,
   ArrowLeft,
@@ -33,7 +34,7 @@ import {
   Building2,
   Loader2
 } from "lucide-react";
-import { BrandStamp } from "@/components/BrandStamp";
+
 
 type Step = "setup" | "configure" | "ready" | "executing" | "complete";
 
@@ -291,21 +292,14 @@ export default function PilotDemo() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <StandardNav />
       
-      <main className="container mx-auto px-4 py-12 pt-24">
+      <PageHero
+        eyebrow="Pilot Demo"
+        title="Prove It Works"
+        subtitle="Experience the full trigger → execution flow with real notifications and live email delivery."
+        size="md"
+      />
+      <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-              Pilot Demo
-            </Badge>
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Prove It Works
-            </h1>
-            <p className="text-xl text-gray-800 dark:text-slate-300">
-              Experience the full trigger → execution flow with real notifications
-            </p>
-          </div>
-
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-2">
               {["setup", "configure", "ready", "executing", "complete"].map((s, i) => (

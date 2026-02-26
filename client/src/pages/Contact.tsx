@@ -11,10 +11,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import PageLayout from "@/components/layout/PageLayout";
+import { PageHero } from "@/components/layout/PageHero";
 import { updatePageMetadata } from "@/lib/seo";
 import { CheckCircle2, Shield, Zap, Target } from "lucide-react";
 import { useLocation } from "wouter";
-import { BrandStamp } from "@/components/BrandStamp";
 
 const earlyAccessSchema = z.object({
   firstName: z.string().min(1, "First name required"),
@@ -88,37 +88,25 @@ export default function Contact() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
-
-      {/* Hero Section */}
-      <section className="py-16 px-6 text-gray-900">
-        <div className="max-w-5xl mx-auto text-center">
-          <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="mb-4 bg-purple-600 text-gray-900 border-0 text-base px-6 py-2" data-testid="badge-early-access">
-            Q1 2026 Pilot Program
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900" data-testid="heading-early-access">
-            Request Early Access Interview
-          </h1>
-          <p className="text-xl text-blue-800 max-w-3xl mx-auto mb-6">
-            Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership.
-          </p>
-          <div className="flex items-center justify-center gap-8 text-sm text-blue-300">
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-cyan-400" />
-              <span>Limited to 10 Partners</span>
+      <PageHero
+        eyebrow="Q1 2026 Pilot Program"
+        title="Request Early Access Interview"
+        subtitle="Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution through Execution OS' 90-day validation partnership."
+        size="lg"
+      >
+        <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
+          {[
+            { icon: Shield, label: "Limited to 10 Partners" },
+            { icon: Zap, label: "Q1 2026 Launch" },
+            { icon: Target, label: "90-Day Validation" },
+          ].map(({ icon: Icon, label }) => (
+            <div key={label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Icon style={{ width: 16, height: 16, color: "#C9A84C" }} />
+              <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(240,237,228,0.8)" }}>{label}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="h-5 w-5 text-cyan-400" />
-              <span>Q1 2026 Launch</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Target className="h-5 w-5 text-cyan-400" />
-              <span>90-Day Validation</span>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </PageHero>
 
       {/* Main Form Section */}
       <section className="py-16 px-6">
@@ -396,7 +384,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      </div>
     </PageLayout>
   );
 }

@@ -25,10 +25,9 @@ import {
   DollarSign
 } from "lucide-react";
 import { Link } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
+import { PageHero } from "@/components/layout/PageHero";
 import { useEffect } from "react";
-import { BrandStamp } from "@/components/BrandStamp";
 import { updatePageMetadata } from "@/lib/seo";
 
 export default function WhyExecuteIQ() {
@@ -42,42 +41,27 @@ export default function WhyExecuteIQ() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <StandardNav />
-
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 px-6 text-gray-900">
-        <div className="max-w-5xl mx-auto text-center">
-          <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="mb-6 bg-amber-500 text-gray-900 border-0">
-            <BarChart3 className="w-4 h-4 mr-2" />
-            2026 Research Consensus
-          </Badge>
-
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" data-testid="heading-why-executeiq">
-            The Infrastructure 15 Firms Say Is Missing
-          </h1>
-
-          <p className="text-xl md:text-2xl text-blue-800 max-w-3xl mx-auto mb-10">
-            McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. World Economic Forum. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/demo-selector">
-              <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
-            </Link>
-            <Link href="/research">
-              <Button size="lg" variant="outline" className="border-white text-gray-900 hover:bg-white/10 bg-transparent">
-                View Research
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+    <PageLayout>
+      <PageHero
+        eyebrow="2026 Research Consensus"
+        title="The Infrastructure 15 Firms Say Is Missing"
+        subtitle="McKinsey. IBM. BCG. Deloitte. Accenture. Microsoft. Google Cloud. WEF. Bain. Anthropic. OpenAI. PwC. Gartner. Forrester. IDC. Fifteen firms, one conclusion: enterprises need execution infrastructure."
+        size="lg"
+        actions={<>
+          <Link href="/try-demo">
+            <Button size="lg" style={{ background: "#C9A84C", color: "#0A0F2E", fontWeight: 700, border: "none" }}>
+              <Play className="mr-2 h-5 w-5" />
+              Watch Demo
+            </Button>
+          </Link>
+          <Link href="/research">
+            <Button size="lg" variant="outline" style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff", background: "transparent" }}>
+              View Research
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </>}
+      />
 
       {/* Quick Stats Bar */}
       <section className="py-8 px-6 bg-slate-100 dark:bg-slate-800 border-b border-border">
@@ -465,7 +449,6 @@ export default function WhyExecuteIQ() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

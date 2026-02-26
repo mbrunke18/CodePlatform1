@@ -7,12 +7,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import { PageHero } from "@/components/layout/PageHero";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Search, Plus, Eye, Copy, Edit, Target, Shield, Zap, Clock, Users, Star, MoreHorizontal, ArrowLeft, ChevronRight, BookOpen, ChevronDown, AlertTriangle, Brain, Network, ArrowRight } from "lucide-react";
 import type { Playbook } from "@shared/schema";
 import { useCustomer } from "@/contexts/CustomerContext";
-import { BrandStamp } from "@/components/BrandStamp";
+
 
 const categoryConfig = {
   offense: {
@@ -227,7 +228,6 @@ function CompoundDisruptionSection() {
         <div>
           <div className="flex items-center gap-3 mb-1">
             <h3 className="text-lg font-bold text-gray-900">Compound Disruption Response</h3>
-            <BrandStamp variant="dual" size="md" className="mb-8" />
             <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-[10px]">COMPOUND RESPONSE</Badge>
           </div>
           <p className="text-gray-800 text-sm">
@@ -407,35 +407,26 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       
       {!selectedCategory ? (
         <>
-          <div className="bg-white dark:bg-slate-950 border-b border-gray-200">
-            <div className="max-w-6xl mx-auto px-6 pt-24 pb-16">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                      <BookOpen className="h-5 w-5 text-gray-900" />
-                    </div>
-                    <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">
-                      Playbook Library
-                    </h1>
-                  </div>
-                  <p className="text-gray-800 dark:text-slate-200 max-w-lg">
-                    {totalCount} validated strategic playbooks with outcome scoring across 9 domains. Select a category to explore.
-                  </p>
-                </div>
-                <Button 
-                  onClick={() => setLocation('/playbooks/create')} 
-                  className="bg-white text-slate-900 hover:bg-slate-100"
+          {!embedded && (
+            <PageHero
+              eyebrow="Strategic Playbook Library"
+              title="170 Validated Execution Playbooks"
+              subtitle={`${totalCount} strategic playbooks with outcome scoring across 9 domains. Select a category to explore.`}
+              size="md"
+              actions={
+                <Button
+                  onClick={() => setLocation('/playbooks/create')}
+                  style={{ background: "#C9A84C", color: "#0A0F2E", fontWeight: 700, border: "none" }}
                   data-testid="button-create-playbook"
                 >
                   <Plus className="mr-2 h-4 w-4" />
-                  Create Custom
+                  Create Custom Playbook
                 </Button>
-              </div>
-            </div>
-          </div>
+              }
+            />
+          )}
           
-          <div className="max-w-6xl mx-auto px-6 -mt-8">
+          <div className="max-w-6xl mx-auto px-6 py-10">
             <div className="grid md:grid-cols-3 gap-5">
               {(['offense', 'defense', 'special_teams'] as Category[]).map((category) => {
                 const config = categoryConfig[category];
