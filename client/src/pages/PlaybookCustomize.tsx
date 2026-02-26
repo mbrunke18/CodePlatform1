@@ -605,7 +605,14 @@ export default function PlaybookCustomize() {
     );
   };
   
+  const NAVY = "#0A0F2E";
   const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   if (isLoading && !isCreateMode) {
     return (

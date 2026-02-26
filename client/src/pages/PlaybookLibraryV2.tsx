@@ -362,6 +362,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const { isAuthenticated } = useAuth();
 
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
 
   const { data: templates } = useQuery<Playbook[]>({
     queryKey: ["/api/playbooks/templates"],
