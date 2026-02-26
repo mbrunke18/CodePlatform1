@@ -621,8 +621,6 @@ export default function LiveActivationCenter() {
                   </div>
                 </div>
               )}
-            </div>
-          )}
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="w-8 h-8 text-[#2B8A6E]" />
