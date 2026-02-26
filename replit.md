@@ -29,15 +29,22 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Real-time:** Socket.IO WebSocket server for real-time collaboration.
 - **Asynchronous Tasks:** PostgreSQL-backed background job queue for async AI tasks.
 - **Live Signal Ingestion:** A service for real-time signal monitoring operating in 15-minute cycles.
-- **Authentication:** Replit OIDC with Passport.js for session management.
+- **Authentication:** Replit OIDC with Passport.js for session management. New users automatically get an organization created on first login (`onboardingCompleted: false`).
+- **Onboarding Guard:** `requireOrgAccess` middleware enforces org-scoped access. Authenticated users without completed onboarding are redirected to `/onboarding` (5-step wizard). The "default" org ID placeholder is accepted as shorthand for the user's own org.
+- **Role-Based Access:** `requireRole()` middleware factory enforces role checks on write routes (admin, executive, strategist). Users with no assigned role get read-only access.
 - **AI Services:** Integrates OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
-- **Email:** SendGrid integration for email notifications.
+- **Email:** Resend (`RESEND_API_KEY`) used for transactional email from `noreply@executeiq.io`. Falls back to console logging when key is absent.
 - **IDEA Framework:** The system supports the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE) with features like Playbook customization, AI-powered pattern matching, coordinated response orchestration, and outcome analysis.
-- **Key Features:** Includes an Executive Summary Generator, a 7-step New User Journey, an Enterprise Task Library, Execution Plan Sync, and a Pilot Demo showcasing the full trigger-to-execution loop.
+- **Key Features:** Includes an Executive Summary Generator, a 5-step New User Onboarding Wizard, an Enterprise Task Library, Execution Plan Sync, and a Pilot Demo showcasing the full trigger-to-execution loop.
+
+## Customer & Deployment
+- **Custom Domain:** executeiq.io
+- **First Customer:** martybrunke — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
+- **Contact Email:** mbrunke@vaughnmartin.com
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
 - **Database:** Neon PostgreSQL
 - **Authentication:** Replit OIDC
-- **Email:** SendGrid
-- **Enterprise Integrations:** Salesforce, HubSpot, ServiceNow, Jira, Slack, Microsoft Teams, Google Workspace, Outlook/Exchange, AWS CloudWatch, Workday, Okta, Microsoft Active Directory
+- **Email:** Resend (RESEND_API_KEY) — previously SendGrid, now migrated
+- **Enterprise Integrations (planned):** Salesforce, HubSpot, ServiceNow, Jira, Slack, Microsoft Teams, Google Workspace, Outlook/Exchange, AWS CloudWatch, Workday, Okta, Microsoft Active Directory
