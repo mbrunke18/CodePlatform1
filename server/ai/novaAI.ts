@@ -292,6 +292,6 @@ export class NovaAI {
   }
 
   private static generateRealisticValue(min: number, max: number): number {
-    return Number((Math.random() * (max - min) + min).toFixed(2));
+    return Number(((min + max) / 2).toFixed(2));
   }
 }

@@ -690,7 +690,7 @@ router.post('/simulate', async (req, res) => {
       // Auto-acknowledge stakeholders (simulate unless real email)
       if (!email && elapsed >= 5) {
         const unacked = sim.stakeholders.filter(s => s.notifiedAt && !s.acknowledged);
-        if (unacked.length > 0 && Math.random() > 0.3) {
+        if (unacked.length > 0) {
           unacked[0].acknowledged = true;
           unacked[0].acknowledgedAt = new Date().toISOString();
         }
@@ -706,7 +706,7 @@ router.post('/simulate', async (req, res) => {
       }
       if (elapsed >= 6) {
         const inProgress = sim.tasks.filter(t => t.status === 'in_progress');
-        if (inProgress.length > 0 && Math.random() > 0.4) {
+        if (inProgress.length > 0) {
           inProgress[0].status = 'completed';
           inProgress[0].completedAt = new Date().toISOString();
         }

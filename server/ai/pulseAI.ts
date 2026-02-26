@@ -42,7 +42,7 @@ export class PulseAI {
         metadata: {
           calculationMethod: 'weighted_average',
           factors: ['team_velocity', 'decision_speed', 'adaptation_rate'],
-          benchmarkPercentile: Math.floor(Math.random() * 30) + 70
+          benchmarkPercentile: 85
         }
       },
       {
@@ -53,7 +53,7 @@ export class PulseAI {
         category: 'Productivity',
         metadata: {
           sprint_completion_rate: this.generateRealisticValue(85, 98),
-          story_points_delivered: Math.floor(Math.random() * 50) + 120,
+          story_points_delivered: 145,
           cycle_time_days: this.generateRealisticValue(2.1, 4.8)
         }
       },
@@ -64,8 +64,8 @@ export class PulseAI {
         unit: 'index',
         category: 'Innovation',
         metadata: {
-          new_ideas_submitted: Math.floor(Math.random() * 15) + 8,
-          experiments_running: Math.floor(Math.random() * 6) + 3,
+          new_ideas_submitted: 15,
+          experiments_running: 6,
           implementation_rate: this.generateRealisticValue(45, 75)
         }
       },
@@ -139,14 +139,14 @@ export class PulseAI {
   }
 
   private static generateRealisticValue(min: number, max: number): number {
-    return Number((Math.random() * (max - min) + min).toFixed(2));
+    return Number(((min + max) / 2).toFixed(2));
   }
 
   private static generatePulseInsights(trend: string, avgValue: number): string[] {
     const insights = [
       `Current organizational pulse shows ${trend} trajectory with ${avgValue > 8 ? 'strong' : 'moderate'} performance indicators`,
       `Team collaboration metrics indicate ${avgValue > 7.5 ? 'high' : 'developing'} cross-functional effectiveness`,
-      `Innovation pipeline shows ${Math.random() > 0.5 ? 'accelerating' : 'steady'} ideation velocity`,
+      `Innovation pipeline shows steady ideation velocity`,
       `Strategic initiative alignment demonstrates ${avgValue > 8 ? 'excellent' : 'good'} organizational focus`
     ];
 
@@ -162,7 +162,7 @@ export class PulseAI {
       "Introduce predictive analytics for proactive organizational health monitoring"
     ];
 
-    return recommendations.slice(0, Math.floor(Math.random() * 2) + 2);
+    return recommendations.slice(0, 3);
   }
 
   private static generatePulseAlerts(trend: string, avgValue: number): any[] {

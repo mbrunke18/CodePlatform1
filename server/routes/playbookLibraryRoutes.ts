@@ -2158,7 +2158,7 @@ playbookLibraryRouter.post('/:playbookId/activate', async (req, res) => {
         phases: createdPhases.length,
         tasks: taskCount || 12,
       },
-      stakeholders: Math.floor(Math.random() * 20) + 10,
+      stakeholders: taskCount || 0,
       estimatedDuration: '12 minutes',
     };
 

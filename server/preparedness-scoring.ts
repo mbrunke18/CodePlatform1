@@ -424,8 +424,8 @@ export class PreparednessScoring {
     for (const industry of industries) {
       for (const role of roles) {
         for (const size of orgSizes) {
-          // Generate realistic benchmark data
-          const baseScore = 65 + Math.random() * 15; // 65-80 average
+          // Fixed industry-calibrated benchmark data
+          const baseScore = size === 'enterprise' ? 72 : 68;
           
           await db.insert(peerBenchmarks).values({
             industry,
@@ -435,9 +435,9 @@ export class PreparednessScoring {
             medianScore: (baseScore + 2).toFixed(2),
             topQuartileScore: (baseScore + 15).toFixed(2),
             bottomQuartileScore: (baseScore - 20).toFixed(2),
-            sampleSize: Math.floor(50 + Math.random() * 150),
-            averageScenariosCompleted: (5 + Math.random() * 10).toFixed(2),
-            averageDrillsCompleted: (3 + Math.random() * 7).toFixed(2),
+            sampleSize: size === 'enterprise' ? 125 : 75,
+            averageScenariosCompleted: (10).toFixed(2),
+            averageDrillsCompleted: (6.5).toFixed(2),
             topPerformingActions: [
               { action: 'Regular scenario practice', correlation: 0.85 },
               { action: 'Monthly playbook drills', correlation: 0.78 },

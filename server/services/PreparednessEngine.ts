@@ -212,7 +212,7 @@ export class PreparednessEngine {
       // Estimate score based on activation count (rough approximation)
       const estimatedScore = i === 0 
         ? currentScore.overall 
-        : Math.max(30, currentScore.overall - (i * 5) - Math.random() * 10);
+        : Math.max(30, currentScore.overall - (i * 5));
 
       timeline.push({
         month: monthDate.toISOString().substring(0, 7),
