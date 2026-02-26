@@ -152,6 +152,9 @@ export default function OnboardingWizard() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/config/setup-progress'] });
     },
+    onError: () => {
+      // Non-blocking — progress save failed but user can continue
+    },
   });
 
   // Complete onboarding mutation
@@ -443,7 +446,10 @@ export default function OnboardingWizard() {
                 </div>
 
                 <div className="pt-6 border-t border-gray-200 space-y-4">
-                  <h3 className="font-semibold text-gray-900">Connect Integrations</h3>
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-semibold text-gray-900">Connect Integrations</h3>
+                    <span className="text-xs bg-amber-100 text-amber-700 font-medium px-2 py-1 rounded">Optional — set up after onboarding</span>
+                  </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-4 flex items-center justify-between">
@@ -460,11 +466,13 @@ export default function OnboardingWizard() {
                           size="sm" 
                           variant="outline"
                           onClick={() => {
-                            const orgId = (existingProgress as any)?.organizationId || 'current';
-                            window.location.href = `/api/integrations/jira/auth?orgId=${orgId}`;
+                            toast({
+                              title: 'Jira Integration',
+                              description: 'Connect Jira from the Integration Hub after completing onboarding.',
+                            });
                           }}
                         >
-                          Connect
+                          Set Up Later
                         </Button>
                       </CardContent>
                     </Card>
@@ -484,17 +492,19 @@ export default function OnboardingWizard() {
                           size="sm" 
                           variant="outline"
                           onClick={() => {
-                            const orgId = (existingProgress as any)?.organizationId || 'current';
-                            window.location.href = `/api/integrations/slack/auth?orgId=${orgId}`;
+                            toast({
+                              title: 'Slack Integration',
+                              description: 'Connect Slack from the Integration Hub after completing onboarding.',
+                            });
                           }}
                         >
-                          Connect
+                          Set Up Later
                         </Button>
                       </CardContent>
                     </Card>
                   </div>
                   <p className="text-xs text-gray-800 italic text-center">
-                    You can also skip these and connect them later in the Integration Hub.
+                    Integrations can be connected from the Integration Hub at any time after onboarding.
                   </p>
                 </div>
               </div>
