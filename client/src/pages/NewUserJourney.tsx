@@ -337,27 +337,27 @@ export default function NewUserJourney() {
   return (
     <PageLayout>
     <div className="min-h-screen bg-white">
-      <div className="sticky top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div className="sticky top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-[#E8E4DC]">
         <div className="max-w-5xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-none bg-poise-navy flex items-center justify-center">
-                <span className="text-poise-gold font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
+              <div className="w-10 h-10 rounded-none bg-[#0A0F2E] flex items-center justify-center">
+                <span className="text-[#C9A84C] font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
               </div>
               <div>
-                <h1 className="text-sm font-bold text-poise-navy uppercase tracking-widest">Execution OS Onboarding</h1>
+                <h1 className="text-sm font-bold text-[#0A0F2E] uppercase tracking-widest">Execution OS Onboarding</h1>
                 <p className="text-[10px] text-slate-500 uppercase tracking-tight">Your first playbook ready in 15 minutes</p>
               </div>
             </div>
             <div className="flex items-center gap-6">
-              <Badge variant="outline" className="bg-transparent text-poise-navy border-poise-gold rounded-none uppercase text-[9px] font-bold tracking-widest">
+              <Badge variant="outline" className="bg-transparent text-[#0A0F2E] border-[#C9A84C] rounded-none uppercase text-[9px] font-bold tracking-widest">
                 Step {state.step + 1} of {STEPS.length}
               </Badge>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setLocation('/')}
-                className="text-slate-500 hover:text-poise-navy hover:bg-transparent rounded-none uppercase text-[10px] font-bold tracking-widest"
+                className="text-slate-500 hover:text-[#0A0F2E] hover:bg-transparent rounded-none uppercase text-[10px] font-bold tracking-widest"
                 data-testid="button-home"
               >
                 <Home className="h-3 w-3 mr-2" />
@@ -366,25 +366,18 @@ export default function NewUserJourney() {
             </div>
           </div>
           
-          <div className="flex items-center gap-1">
-            {STEPS.map((step, index) => {
-              const isCompleted = index < state.step;
-              const isCurrent = index === state.step;
-              
-              return (
-                <div key={step.id} className="flex-1 flex items-center">
-                  <div className={`
-                    h-1 transition-all flex-1
-                    ${isCurrent ? 'bg-poise-gold' : ''}
-                    ${isCompleted ? 'bg-poise-teal' : ''}
-                    ${!isCurrent && !isCompleted ? 'bg-slate-100' : ''}
-                  `} />
-                </div>
-              );
-            })}
+                          <div className={`
+                            h-1 transition-all flex-1
+                            ${isCurrent ? 'bg-[#C9A84C]' : ''}
+                            ${isCompleted ? 'bg-[#2B8A6E]' : ''}
+                            ${!isCurrent && !isCompleted ? 'bg-[#E8E4DC]' : ''}
+                          `} />
+                        </div>
+                      );
+                    })}
+                  </div>
+            </div>
           </div>
-        </div>
-      </div>
 
       <div className="pt-32 pb-24 px-6">
         <div className="max-w-4xl mx-auto">
@@ -398,48 +391,48 @@ export default function NewUserJourney() {
             >
               {state.step === 0 && (
                 <div className="text-center space-y-10">
-                  <div className="w-24 h-24 mx-auto rounded-none bg-poise-navy flex items-center justify-center mb-8 border-b-4 border-poise-gold">
-                    <Rocket className="h-10 w-10 text-poise-gold" />
+                  <div className="w-24 h-24 mx-auto rounded-none bg-[#0A0F2E] flex items-center justify-center mb-8 border-b-4 border-[#C9A84C]">
+                    <Rocket className="h-10 w-10 text-[#C9A84C]" />
                   </div>
                   
                   <div>
-                    <h2 className="font-serif text-5xl text-poise-navy mb-6">
+                    <h2 className="font-serif text-5xl text-[#0A0F2E] mb-6">
                       Success Favors the Prepared
                     </h2>
                     <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
                       Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
-                      into decisive action in <span className="text-poise-teal font-bold underline decoration-poise-gold underline-offset-4">12 minutes, not 72 hours</span>
+                      into decisive action in <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-4">12 minutes, not 72 hours</span>
                     </p>
                   </div>
 
                   <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
-                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
-                      <div className="text-3xl font-serif text-poise-navy mb-2">15 min</div>
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
+                      <div className="text-3xl font-serif text-[#0A0F2E] mb-2">15 min</div>
                       <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Time to Build</div>
                     </div>
-                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
-                      <div className="text-3xl font-serif text-poise-navy mb-2">170</div>
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
+                      <div className="text-3xl font-serif text-[#0A0F2E] mb-2">170</div>
                       <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Playbooks</div>
                     </div>
-                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-poise-gold transition-colors">
-                      <div className="text-3xl font-serif text-poise-navy mb-2">92</div>
+                    <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
+                      <div className="text-3xl font-serif text-[#0A0F2E] mb-2">92</div>
                       <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Signals</div>
                     </div>
                   </div>
 
-                  <div className="bg-slate-50 border-l-4 border-poise-gold p-8 max-w-2xl mx-auto mt-12 text-left">
-                    <h3 className="font-bold text-poise-navy uppercase tracking-widest text-xs mb-4">Onboarding Milestones</h3>
+                  <div className="bg-[#F8F7F4] border-l-4 border-[#C9A84C] p-8 max-w-2xl mx-auto mt-12 text-left">
+                    <h3 className="font-bold text-[#0A0F2E] uppercase tracking-widest text-xs mb-4">Onboarding Milestones</h3>
                     <ul className="space-y-3">
                       <li className="flex items-center gap-3 text-sm text-slate-600">
-                        <Check className="h-4 w-4 text-poise-teal" />
+                        <Check className="h-4 w-4 text-[#2B8A6E]" />
                         Configure Execution OS for your industry
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
-                        <Check className="h-4 w-4 text-poise-teal" />
+                        <Check className="h-4 w-4 text-[#2B8A6E]" />
                         Select your first operational playbook
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
-                        <Check className="h-4 w-4 text-poise-teal" />
+                        <Check className="h-4 w-4 text-[#2B8A6E]" />
                         Enable AI-powered signal monitoring
                       </li>
                     </ul>
@@ -493,14 +486,14 @@ export default function NewUserJourney() {
                               key={industry.id}
                               className={`cursor-pointer transition-all ${
                                 isSelected 
-                                  ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
+                                  ? 'bg-[#0A0F2E]/20 border-indigo-500 ring-1 ring-indigo-500' 
                                   : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                               }`}
                               onClick={() => updateState({ industry: industry.id, selectedPlaybooks: [] })}
                               data-testid={`industry-${industry.id}`}
                             >
-                              <CardContent className="p-4 text-center">
-                                <Icon className={`h-6 w-6 mx-auto mb-2 ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
+                            <CardContent className="p-4 text-center">
+                                <Icon className={`h-6 w-6 mx-auto mb-2 ${isSelected ? 'text-[#C9A84C]' : 'text-gray-800'}`} />
                                 <div className={`text-sm font-medium ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                                   {industry.name}
                                 </div>
@@ -562,8 +555,8 @@ export default function NewUserJourney() {
                           key={priority.id}
                           className={`cursor-pointer transition-all ${
                             isSelected 
-                              ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
-                              : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                              ? 'bg-[#0A0F2E]/10 border-[#0A0F2E] ring-1 ring-[#0A0F2E]' 
+                              : 'bg-gray-50 border-[#E8E4DC] hover:border-slate-600'
                           }`}
                           onClick={() => {
                             if (isSelected) {
@@ -576,8 +569,8 @@ export default function NewUserJourney() {
                         >
                           <CardContent className="p-4">
                             <div className="flex items-center justify-between mb-3">
-                              <Icon className={`h-6 w-6 ${isSelected ? 'text-indigo-400' : 'text-gray-800'}`} />
-                              {isSelected && <Check className="h-5 w-5 text-green-400" />}
+                              <Icon className={`h-6 w-6 ${isSelected ? 'text-[#C9A84C]' : 'text-gray-800'}`} />
+                              {isSelected && <Check className="h-5 w-5 text-[#2B8A6E]" />}
                             </div>
                             <div className={`font-medium mb-1 ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                               {priority.name}
@@ -592,9 +585,9 @@ export default function NewUserJourney() {
                   </div>
 
                   {state.priorities.length > 0 && (
-                    <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                    <div className="bg-gray-50 rounded-xl p-4 border border-[#E8E4DC]">
                       <div className="flex items-center gap-2 text-sm text-gray-800">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
+                        <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
                         <span>
                           Selected: {state.priorities.map(p => 
                             STRATEGIC_PRIORITIES.find(sp => sp.id === p)?.name
@@ -624,8 +617,8 @@ export default function NewUserJourney() {
                           key={playbook.id}
                           className={`cursor-pointer transition-all ${
                             isSelected 
-                              ? 'bg-indigo-600/20 border-indigo-500 ring-1 ring-indigo-500' 
-                              : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                              ? 'bg-[#0A0F2E]/10 border-[#0A0F2E] ring-1 ring-[#0A0F2E]' 
+                              : 'bg-gray-50 border-[#E8E4DC] hover:border-slate-600'
                           }`}
                           onClick={() => {
                             if (isSelected) {
@@ -643,7 +636,7 @@ export default function NewUserJourney() {
                                   <h3 className={`font-semibold text-lg ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
                                     {playbook.name}
                                   </h3>
-                                  <Badge variant="outline" className="text-xs">
+                                  <Badge variant="outline" className="text-xs border-[#C9A84C] text-[#C9A84C]">
                                     {playbook.domain}
                                   </Badge>
                                 </div>
@@ -651,17 +644,17 @@ export default function NewUserJourney() {
                                 <div className="flex items-center gap-2">
                                   <span className="text-xs text-gray-800">Triggers:</span>
                                   {playbook.triggers.map((trigger, idx) => (
-                                    <Badge key={idx} variant="secondary" className="text-xs bg-gray-50">
+                                    <Badge key={idx} variant="secondary" className="text-xs bg-gray-50 border-[#E8E4DC]">
                                       {trigger}
                                     </Badge>
                                   ))}
                                 </div>
                               </div>
                               <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isSelected ? 'bg-green-500' : 'bg-gray-50'
+                                isSelected ? 'bg-[#2B8A6E]' : 'bg-gray-50'
                               }`}>
                                 {isSelected ? (
-                                  <Check className="h-5 w-5 text-gray-900" />
+                                  <Check className="h-5 w-5 text-white" />
                                 ) : (
                                   <Layers className="h-5 w-5 text-gray-800" />
                                 )}
@@ -698,9 +691,9 @@ export default function NewUserJourney() {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-r   border border-indigo-500/30 rounded-xl p-4 mb-6">
+                  <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/20 rounded-xl p-4 mb-6">
                     <div className="flex items-center gap-3">
-                      <Activity className="h-5 w-5 text-indigo-400" />
+                      <Activity className="h-5 w-5 text-[#0A0F2E]" />
                       <span className="text-sm text-gray-800">
                         Based on your priorities, we recommend these signal categories. Toggle them on to enable 24/7 AI monitoring.
                       </span>
@@ -719,8 +712,8 @@ export default function NewUserJourney() {
                           key={category.id}
                           className={`transition-all ${
                             isEnabled 
-                              ? 'bg-green-600/10 border-green-500/50' 
-                              : 'bg-gray-50 border-gray-200'
+                              ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50' 
+                              : 'bg-gray-50 border-[#E8E4DC]'
                           }`}
                           data-testid={`signal-${category.id}`}
                         >
@@ -728,19 +721,17 @@ export default function NewUserJourney() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4">
                                 <div 
-                                  className="w-10 h-10 rounded-lg flex items-center justify-center"
-                                  style={{ backgroundColor: `${category.color}20` }}
+                                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0A0F2E]/10"
                                 >
                                   <Radio 
-                                    className="h-5 w-5" 
-                                    style={{ color: category.color }}
+                                    className="h-5 w-5 text-[#0A0F2E]" 
                                   />
                                 </div>
                                 <div>
                                   <div className="flex items-center gap-2">
                                     <h3 className="font-medium text-gray-900">{category.name}</h3>
                                     {isRecommended && (
-                                      <Badge variant="secondary" className="text-xs bg-indigo-500/20 text-indigo-300">
+                                      <Badge variant="secondary" className="text-xs bg-[#C9A84C]/20 text-[#0A0F2E]">
                                         Recommended
                                       </Badge>
                                     )}
@@ -785,11 +776,11 @@ export default function NewUserJourney() {
                   </div>
 
                   <div className="grid gap-6">
-                    <Card className="bg-gray-50 border-gray-200">
+                    <Card className="bg-gray-50 border-[#E8E4DC]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center flex-shrink-0">
-                            <Target className="h-6 w-6 text-indigo-400" />
+                          <div className="w-12 h-12 rounded-xl bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
+                            <Target className="h-6 w-6 text-[#0A0F2E]" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Future Readiness Index™ Target</h3>
@@ -801,14 +792,14 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.friTarget}
                                 onChange={(e) => updateState({ friTarget: Number(e.target.value) })}
-                                className="w-24 bg-white border-slate-600 text-gray-900"
+                                className="w-24 bg-white border-[#E8E4DC] text-gray-900"
                                 min={0}
                                 max={100}
                                 step={0.1}
                                 data-testid="input-fri-target"
                               />
                               <span className="text-gray-800">%</span>
-                              <Badge variant="secondary" className="bg-green-500/20 text-green-300">
+                              <Badge variant="secondary" className="bg-[#2B8A6E]/20 text-[#2B8A6E]">
                                 Best-in-class: 84.4%
                               </Badge>
                             </div>
@@ -817,11 +808,11 @@ export default function NewUserJourney() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-50 border-gray-200">
+                    <Card className="bg-gray-50 border-[#E8E4DC]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                            <Timer className="h-6 w-6 text-green-400" />
+                          <div className="w-12 h-12 rounded-xl bg-[#2B8A6E]/10 flex items-center justify-center flex-shrink-0">
+                            <Timer className="h-6 w-6 text-[#2B8A6E]" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Decision Velocity Target</h3>
@@ -833,13 +824,13 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.velocityTarget}
                                 onChange={(e) => updateState({ velocityTarget: Number(e.target.value) })}
-                                className="w-24 bg-white border-slate-600 text-gray-900"
+                                className="w-24 bg-white border-[#E8E4DC] text-gray-900"
                                 min={1}
                                 max={60}
                                 data-testid="input-velocity-target"
                               />
                               <span className="text-gray-800">minutes</span>
-                              <Badge variant="secondary" className="bg-green-500/20 text-green-300">
+                              <Badge variant="secondary" className="bg-[#2B8A6E]/20 text-[#2B8A6E]">
                                 Industry avg: 72 hours
                               </Badge>
                             </div>
@@ -848,11 +839,11 @@ export default function NewUserJourney() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-50 border-gray-200">
+                    <Card className="bg-gray-50 border-[#E8E4DC]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                            <Shield className="h-6 w-6 text-purple-400" />
+                          <div className="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
+                            <Shield className="h-6 w-6 text-[#C9A84C]" />
                           </div>
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Playbook Coverage Target</h3>
@@ -864,7 +855,7 @@ export default function NewUserJourney() {
                                 type="number"
                                 value={state.coverageTarget}
                                 onChange={(e) => updateState({ coverageTarget: Number(e.target.value) })}
-                                className="w-24 bg-white border-slate-600 text-gray-900"
+                                className="w-24 bg-white border-[#E8E4DC] text-gray-900"
                                 min={50}
                                 max={100}
                                 data-testid="input-coverage-target"
@@ -890,38 +881,38 @@ export default function NewUserJourney() {
 
                   {/* Live Configuration Summary */}
                   <div className="grid grid-cols-3 gap-4 mb-6">
-                    <Card className="bg-gradient-to-br  to-indigo-800/20 border-indigo-500/30">
+                    <Card className="bg-white border-[#0A0F2E]/20">
                       <CardContent className="p-4 text-center">
-                        <div className="text-3xl font-bold text-indigo-400 mb-1">{state.enabledSignals.length}</div>
+                        <div className="text-3xl font-bold text-[#0A0F2E] mb-1">{state.enabledSignals.length}</div>
                         <div className="text-sm text-gray-800">Signal Categories</div>
-                        <div className="text-xs text-indigo-400 mt-1">Monitoring {state.enabledSignals.length * 6}+ data points</div>
+                        <div className="text-xs text-[#0A0F2E] mt-1">Monitoring {state.enabledSignals.length * 6}+ data points</div>
                       </CardContent>
                     </Card>
-                    <Card className="bg-gradient-to-br  to-purple-800/20 border-purple-500/30">
+                    <Card className="bg-white border-[#C9A84C]/20">
                       <CardContent className="p-4 text-center">
-                        <div className="text-3xl font-bold text-purple-400 mb-1">{state.selectedPlaybooks.length}</div>
+                        <div className="text-3xl font-bold text-[#C9A84C] mb-1">{state.selectedPlaybooks.length}</div>
                         <div className="text-sm text-gray-800">Active Playbooks</div>
-                        <div className="text-xs text-purple-400 mt-1">Ready for instant activation</div>
+                        <div className="text-xs text-[#C9A84C] mt-1">Ready for instant activation</div>
                       </CardContent>
                     </Card>
-                    <Card className="bg-gradient-to-br  to-green-800/20 border-green-500/30">
+                    <Card className="bg-white border-[#2B8A6E]/20">
                       <CardContent className="p-4 text-center">
-                        <div className="text-3xl font-bold text-green-400 mb-1">{state.velocityTarget}m</div>
+                        <div className="text-3xl font-bold text-[#2B8A6E] mb-1">{state.velocityTarget}m</div>
                         <div className="text-sm text-gray-800">Target Response</div>
-                        <div className="text-xs text-green-400 mt-1">vs 72hr industry average</div>
+                        <div className="text-xs text-[#2B8A6E] mt-1">vs 72hr industry average</div>
                       </CardContent>
                     </Card>
                   </div>
 
                   {/* Live Signal Monitoring Preview */}
-                  <Card className="bg-white border-gray-200 overflow-hidden">
-                    <CardHeader className=" border-b border-gray-200 py-3">
+                  <Card className="bg-white border-[#E8E4DC] overflow-hidden">
+                    <CardHeader className=" border-b border-[#E8E4DC] py-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                          <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
                           <span className="font-semibold text-gray-900 text-sm">LIVE SIGNAL MONITORING</span>
                         </div>
-                        <Badge variant="outline" className="text-green-400 border-green-500/50 text-xs">
+                        <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 text-xs">
                           <Activity className="w-3 h-3 mr-1" /> Active
                         </Badge>
                       </div>
@@ -936,11 +927,11 @@ export default function NewUserJourney() {
                               initial={{ opacity: 0, x: -20 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1 }}
-                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
+                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-[#E8E4DC]"
                             >
                               <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center">
-                                  <Radio className="w-4 h-4 text-indigo-400" />
+                                <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center">
+                                  <Radio className="h-4 w-4 text-[#0A0F2E]" />
                                 </div>
                                 <div>
                                   <div className="text-sm font-medium text-gray-900">{category?.name || signalId}</div>
@@ -950,13 +941,13 @@ export default function NewUserJourney() {
                               <div className="flex items-center gap-2">
                                 <div className="w-16 h-1.5 bg-gray-50 rounded-full overflow-hidden">
                                   <motion.div 
-                                    className="h-full bg-green-500"
+                                    className="h-full bg-[#2B8A6E]"
                                     initial={{ width: 0 }}
                                     animate={{ width: '100%' }}
                                     transition={{ duration: 2, delay: index * 0.2 }}
                                   />
                                 </div>
-                                <span className="text-xs text-green-400">Connected</span>
+                                <span className="text-xs text-[#2B8A6E]">Connected</span>
                               </div>
                             </motion.div>
                           );
@@ -971,14 +962,14 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* Playbook Ready Status */}
-                  <Card className="bg-white border-gray-200 overflow-hidden">
-                    <CardHeader className=" border-b border-gray-200 py-3">
+                  <Card className="bg-white border-[#E8E4DC] overflow-hidden">
+                    <CardHeader className=" border-b border-[#E8E4DC] py-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <Layers className="w-4 h-4 text-purple-400" />
+                          <Layers className="w-4 h-4 text-[#C9A84C]" />
                           <span className="font-semibold text-gray-900 text-sm">PLAYBOOKS ARMED & READY</span>
                         </div>
-                        <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/50 text-xs">
+                        <Badge className="bg-[#C9A84C]/20 text-[#0A0F2E] border-[#C9A84C]/50 text-xs">
                           {state.selectedPlaybooks.length} Active
                         </Badge>
                       </div>
@@ -993,18 +984,18 @@ export default function NewUserJourney() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: index * 0.1 }}
-                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
+                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-[#E8E4DC]"
                             >
                               <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
-                                  <Shield className="w-4 h-4 text-purple-400" />
+                                <div className="w-8 h-8 rounded-lg bg-[#C9A84C]/20 flex items-center justify-center">
+                                  <Shield className="w-4 h-4 text-[#C9A84C]" />
                                 </div>
                                 <div>
                                   <div className="text-sm font-medium text-gray-900">{playbook?.name || playbookId}</div>
                                   <div className="text-xs text-gray-800">Triggers: {playbook?.triggers.join(', ')}</div>
                                 </div>
                               </div>
-                              <Badge className="bg-green-500/20 text-green-300 text-xs">Ready</Badge>
+                              <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-xs">Ready</Badge>
                             </motion.div>
                           );
                         })}
@@ -1013,11 +1004,11 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* ROI Projection */}
-                  <Card className="bg-gradient-to-br   border-green-500/30">
+                  <Card className="bg-[#2B8A6E]/5 border-[#2B8A6E]/30">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-green-500/30 flex items-center justify-center flex-shrink-0">
-                          <TrendingUp className="h-6 w-6 text-green-400" />
+                        <div className="w-12 h-12 rounded-xl bg-[#2B8A6E]/10 flex items-center justify-center flex-shrink-0">
+                          <TrendingUp className="h-6 w-6 text-[#2B8A6E]" />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold text-gray-900 mb-2">Projected Annual Value</h3>
@@ -1025,16 +1016,16 @@ export default function NewUserJourney() {
                             Based on {INDUSTRIES.find(i => i.id === state.industry)?.name || 'your industry'} benchmarks and your configuration
                           </p>
                           <div className="grid grid-cols-3 gap-4">
-                            <div className="text-center p-3 bg-white rounded-lg">
-                              <div className="text-xl font-bold text-green-400">$2.4M</div>
+                            <div className="text-center p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                              <div className="text-xl font-bold text-[#2B8A6E]">$2.4M</div>
                               <div className="text-xs text-gray-800">Risk Mitigation</div>
                             </div>
-                            <div className="text-center p-3 bg-white rounded-lg">
-                              <div className="text-xl font-bold text-green-400">847hrs</div>
+                            <div className="text-center p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                              <div className="text-xl font-bold text-[#2B8A6E]">847hrs</div>
                               <div className="text-xs text-gray-800">Executive Time Saved</div>
                             </div>
-                            <div className="text-center p-3 bg-white rounded-lg">
-                              <div className="text-xl font-bold text-green-400">12x</div>
+                            <div className="text-center p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                              <div className="text-xl font-bold text-[#2B8A6E]">12x</div>
                               <div className="text-xs text-gray-800">Faster Response</div>
                             </div>
                           </div>
@@ -1044,26 +1035,26 @@ export default function NewUserJourney() {
                   </Card>
 
                   {/* What Happens Next */}
-                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                  <div className="bg-gray-50 rounded-xl p-4 border border-[#E8E4DC]">
                     <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-indigo-400" />
+                      <Sparkles className="w-4 h-4 text-[#C9A84C]" />
                       What happens when you complete setup:
                     </h4>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="flex items-center gap-2 text-sm text-gray-800">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                         {state.enabledSignals.length} triggers go live immediately
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-800">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                         {state.selectedPlaybooks.length} playbooks ready for activation
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-800">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                         Real-time monitoring begins
                       </div>
                       <div className="flex items-center gap-2 text-sm text-gray-800">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                         Dashboard reflects your configuration
                       </div>
                     </div>
@@ -1079,9 +1070,9 @@ export default function NewUserJourney() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", duration: 0.6 }}
-                      className="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-6"
+                      className="w-24 h-24 rounded-full bg-[#2B8A6E] flex items-center justify-center mx-auto mb-6"
                     >
-                      <CheckCircle className="h-12 w-12 text-gray-900" />
+                      <CheckCircle className="h-12 w-12 text-white" />
                     </motion.div>
                     <motion.h2 
                       initial={{ opacity: 0, y: 20 }}
@@ -1107,29 +1098,29 @@ export default function NewUserJourney() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                   >
-                    <Card className=" border-gray-200">
+                    <Card className=" border-[#E8E4DC]">
                       <CardHeader className="pb-2">
                         <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                          <Activity className="w-5 h-5 text-green-400" />
+                          <Activity className="w-5 h-5 text-[#2B8A6E]" />
                           What's Now Active
                         </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-3 gap-4">
-                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
-                            <div className="text-3xl font-bold text-green-400">{state.enabledSignals.length}</div>
+                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                            <div className="text-3xl font-bold text-[#2B8A6E]">{state.enabledSignals.length}</div>
                             <div className="text-sm text-gray-800">Signal Categories</div>
-                            <div className="text-xs text-green-400/70 mt-1">Monitoring 24/7</div>
+                            <div className="text-xs text-[#2B8A6E] mt-1">Monitoring 24/7</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
-                            <div className="text-3xl font-bold text-purple-400">{state.selectedPlaybooks.length}</div>
+                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                            <div className="text-3xl font-bold text-[#C9A84C]">{state.selectedPlaybooks.length}</div>
                             <div className="text-sm text-gray-800">Playbooks</div>
-                            <div className="text-xs text-purple-400/70 mt-1">Armed & Ready</div>
+                            <div className="text-xs text-[#C9A84C] mt-1">Armed & Ready</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 border border-gray-200 text-center">
-                            <div className="text-3xl font-bold text-blue-400">{state.friTarget}%</div>
+                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                            <div className="text-3xl font-bold text-[#0A0F2E]">{state.friTarget}%</div>
                             <div className="text-sm text-gray-800">FRI Target</div>
-                            <div className="text-xs text-blue-400/70 mt-1">Tracking Active</div>
+                            <div className="text-xs text-[#0A0F2E] mt-1">Tracking Active</div>
                           </div>
                         </div>
                       </CardContent>
@@ -1149,12 +1140,12 @@ export default function NewUserJourney() {
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                      <div className="bg-gray-50 rounded-lg p-4 border border-[#E8E4DC]">
                         <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Organization</div>
                         <div className="text-gray-900 font-medium">{state.organizationName}</div>
                         <div className="text-sm text-gray-800">{INDUSTRIES.find(i => i.id === state.industry)?.name}</div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                      <div className="bg-gray-50 rounded-lg p-4 border border-[#E8E4DC]">
                         <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Strategic Focus</div>
                         <div className="text-gray-900 font-medium">{state.priorities.length} Priorities</div>
                         <div className="text-sm text-gray-800 truncate">
@@ -1171,29 +1162,29 @@ export default function NewUserJourney() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
                   >
-                    <Card className="bg-gradient-to-br   border-indigo-500/30">
+                    <Card className="bg-[#0A0F2E]/5 border-[#0A0F2E]/30">
                       <CardContent className="p-6">
                         <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-indigo-400" />
+                          <Sparkles className="w-5 h-5 text-[#C9A84C]" />
                           Your First Actions in the Platform
                         </h3>
                         <div className="space-y-3">
-                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">1</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
                             <div>
                               <div className="text-gray-900 font-medium">Review Your Dashboard</div>
                               <div className="text-sm text-gray-800">See your Future Readiness Index and active monitoring status</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">2</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
                             <div>
                               <div className="text-gray-900 font-medium">Explore Your Playbooks</div>
                               <div className="text-sm text-gray-800">Customize response protocols for your specific organization</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-white rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 font-bold">3</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
+                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">3</div>
                             <div>
                               <div className="text-gray-900 font-medium">Visit Command Center</div>
                               <div className="text-sm text-gray-800">When a trigger fires, this is where 12-minute responses are orchestrated</div>
@@ -1211,13 +1202,13 @@ export default function NewUserJourney() {
                     transition={{ delay: 0.8 }}
                     className="flex items-center justify-center gap-3 py-4"
                   >
-                    <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full border border-green-500/30">
-                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/10 rounded-full border border-[#2B8A6E]/30">
+                      <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
                       <span className="text-sm text-green-400 font-medium">All Systems Operational</span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 rounded-full border border-blue-500/30">
-                      <Radio className="w-3 h-3 text-blue-400" />
-                      <span className="text-sm text-blue-400 font-medium">Intelligence Monitoring Active</span>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-[#0A0F2E]/10 rounded-full border border-[#0A0F2E]/30">
+                      <Radio className="w-3 h-3 text-[#0A0F2E]" />
+                      <span className="text-sm text-[#0A0F2E] font-medium">Intelligence Monitoring Active</span>
                     </div>
                   </motion.div>
                 </div>
@@ -1253,7 +1244,7 @@ export default function NewUserJourney() {
                   size="lg"
                   variant="outline"
                   onClick={goToCommandCenter}
-                  className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10 min-w-[180px]"
+                  className="border-[#0A0F2E]/50 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 min-w-[180px]"
                   data-testid="button-command-center"
                 >
                   <Radio className="h-4 w-4 mr-2" />
@@ -1262,7 +1253,7 @@ export default function NewUserJourney() {
                 <Button
                   size="lg"
                   onClick={handleNext}
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 min-w-[220px]"
+                  className="bg-gradient-to-r from-green-600 to-[#2B8A6E] hover:from-green-700 hover:to-[#256B56] min-w-[220px]"
                   data-testid="button-enter-platform"
                 >
                   <Rocket className="h-4 w-4 mr-2" />
@@ -1295,7 +1286,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="bg-indigo-600 hover:bg-indigo-700 min-w-[160px]"
+                className="bg-[#0A0F2E] hover:bg-[#0A0F2E] min-w-[160px]"
                 data-testid="button-next"
               >
                 Continue

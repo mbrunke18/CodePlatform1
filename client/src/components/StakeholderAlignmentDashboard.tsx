@@ -73,8 +73,8 @@ export default function StakeholderAlignmentDashboard({
     return (
       <Card className="border-dashed border-2 border-gray-200 bg-white" data-testid="stakeholder-alignment-empty">
         <CardContent className="flex flex-col items-center justify-center py-8 text-center">
-          <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center mb-4">
-            <AlertCircle className="h-6 w-6 text-purple-500" />
+          <div className="w-12 h-12 rounded-full bg-[#C9A84C]/10 flex items-center justify-center mb-4">
+            <AlertCircle className="h-6 w-6 text-[#C9A84C]" />
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">
             No Stakeholders Assigned
@@ -83,7 +83,7 @@ export default function StakeholderAlignmentDashboard({
             Configure your organization's stakeholders to enable alignment tracking during playbook execution.
           </p>
           <Link href="/organization-setup">
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+            <Button className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45]">
               Configure Stakeholders
             </Button>
           </Link>
@@ -106,18 +106,18 @@ export default function StakeholderAlignmentDashboard({
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
-            <Users className="h-5 w-5 text-purple-600" />
+            <Users className="h-5 w-5 text-[#C9A84C]" />
             Who's On Board?
           </CardTitle>
           <div className="flex items-center gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600" data-testid="alignment-percentage">
+              <div className="text-2xl font-bold text-[#C9A84C]" data-testid="alignment-percentage">
                 {alignmentPercentage}%
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-200">Acknowledged</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600" data-testid="task-progress-percentage">
+              <div className="text-2xl font-bold text-[#0A0F2E]" data-testid="task-progress-percentage">
                 {taskProgress}%
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-200">Tasks Complete</div>
@@ -207,10 +207,10 @@ export default function StakeholderAlignmentDashboard({
           ))}
         </div>
 
-        <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-blue-200 dark:border-blue-800">
           <div className="flex items-center gap-2 text-sm">
-            <Mail className="h-4 w-4 text-blue-600" />
-            <span className="text-blue-900 dark:text-blue-100">
+            <Mail className="h-4 w-4 text-[#0A0F2E]" />
+            <span className="text-[#0A0F2E] dark:text-blue-100">
               <strong>{acknowledgedCount}</strong> of <strong>{totalCount}</strong> executives ready
               {taskProgress > 0 && (
                 <> • <strong>{completedTasks}</strong> of <strong>{totalTasks}</strong> tasks done</>

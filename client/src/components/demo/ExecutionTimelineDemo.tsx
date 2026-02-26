@@ -32,7 +32,7 @@ export default function ExecutionTimelineDemo({
       case 'medium':
         return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50';
       default:
-        return 'bg-blue-500/20 text-blue-400 border-blue-500/50';
+        return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-blue-500/50';
     }
   };
 
@@ -40,7 +40,7 @@ export default function ExecutionTimelineDemo({
     if (phaseName.includes('IMMEDIATE')) return 'from-red-600 to-orange-600';
     if (phaseName.includes('SECONDARY')) return 'from-orange-600 to-yellow-600';
     if (phaseName.includes('FOLLOW')) return 'from-yellow-600 to-green-600';
-    return 'from-blue-600 to-teal-600';
+    return 'from-[#0A0F2E] to-teal-600';
   };
 
   return (
@@ -104,7 +104,7 @@ export default function ExecutionTimelineDemo({
                   <Badge 
                     key={idx} 
                     variant="outline" 
-                    className="bg-blue-500/10 border-blue-500/30 text-blue-400"
+                    className="bg-[#0A0F2E]/10 border-blue-500/30 text-[#0A0F2E]"
                   >
                     {stakeholder.role}: {stakeholder.name}
                   </Badge>
@@ -177,8 +177,8 @@ export default function ExecutionTimelineDemo({
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div className="flex items-start gap-3 flex-1">
-                      <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-blue-400 text-sm font-bold">{task.sequence}</span>
+                      <div className="w-8 h-8 bg-[#0A0F2E]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span className="text-[#0A0F2E] text-sm font-bold">{task.sequence}</span>
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-gray-900 font-semibold mb-1 leading-tight">{task.title}</h4>
@@ -196,7 +196,7 @@ export default function ExecutionTimelineDemo({
                       <Badge className={getPriorityColor(task.priority)}>
                         {task.priority.toUpperCase()}
                       </Badge>
-                      <Badge variant="outline" className="bg-purple-500/10 border-purple-500/30 text-purple-400">
+                      <Badge variant="outline" className="bg-[#C9A84C]/10 border-[#C9A84C]/30 text-[#C9A84C]">
                         {task.role}
                       </Badge>
                       <div className="flex items-center gap-1 text-gray-800 dark:text-gray-200">
@@ -226,11 +226,11 @@ export default function ExecutionTimelineDemo({
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                <Timer className="h-5 w-5 text-blue-400" />
+                <Timer className="h-5 w-5 text-[#0A0F2E]" />
                 Execution Summary
               </h3>
               <div className="text-right">
-                <div className="text-3xl font-bold text-blue-400">{plan.targetExecutionTime} minutes</div>
+                <div className="text-3xl font-bold text-[#0A0F2E]">{plan.targetExecutionTime} minutes</div>
                 <div className="text-sm text-gray-800 dark:text-gray-200">Total Coordinated Response</div>
               </div>
             </div>

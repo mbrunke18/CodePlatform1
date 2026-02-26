@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -439,8 +439,8 @@ export default function OnboardingWizard() {
                         variant={orgData.departments.includes(dept) ? 'default' : 'outline'}
                         className={`cursor-pointer ${
                           orgData.departments.includes(dept) 
-                            ? 'bg-blue-600 hover:bg-blue-700' 
-                            : 'hover:bg-slate-700'
+                            ? 'bg-[#0A0F2E] hover:bg-[#141B45]' 
+                            : 'hover:bg-[#F8F7F4] text-[#0A0F2E] border-[#E8E4DC]'
                         }`}
                         onClick={() => {
                           if (orgData.departments.includes(dept)) {
@@ -498,14 +498,14 @@ export default function OnboardingWizard() {
                 <div className="pt-6 border-t border-gray-200 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold text-gray-900">Connect Integrations</h3>
-                    <span className="text-xs bg-amber-100 text-amber-700 font-medium px-2 py-1 rounded">Optional — set up after onboarding</span>
+                    <span className="text-xs bg-[#C9A84C]/10 text-[#C9A84C] font-medium px-2 py-1 rounded">Optional — set up after onboarding</span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-blue-500/10 rounded flex items-center justify-center">
-                            <Layers className="h-5 w-5 text-blue-500" />
+                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded flex items-center justify-center">
+                            <Layers className="h-5 w-5 text-[#0A0F2E]" />
                           </div>
                           <div>
                             <p className="font-medium text-gray-900">Jira</p>
@@ -530,8 +530,8 @@ export default function OnboardingWizard() {
                     <Card className="bg-gray-50 border-gray-200">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-pink-500/10 rounded flex items-center justify-center">
-                            <Bell className="h-5 w-5 text-pink-500" />
+                          <div className="w-10 h-10 bg-[#C9A84C]/10 rounded flex items-center justify-center">
+                            <Bell className="h-5 w-5 text-[#C9A84C]" />
                           </div>
                           <div>
                             <p className="font-medium text-gray-900">Slack</p>
@@ -554,7 +554,7 @@ export default function OnboardingWizard() {
                     </Card>
                   </div>
                   <p className="text-xs text-gray-800 italic text-center">
-                    Integrations can be connected from the Integration Hub at any time after onboarding.
+                    Integrations can be connected from the Integration Hub at any time after onboarding
                   </p>
                 </div>
               </div>
@@ -563,411 +563,302 @@ export default function OnboardingWizard() {
             {/* Step 3: Trigger Configuration */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <p className="text-gray-800 mb-4">
-                  Configure the thresholds that will trigger strategic alerts and playbook recommendations.
-                </p>
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-amber-400">
-                        <BarChart3 className="h-4 w-4" />
-                        Revenue Impact Threshold
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          value={triggerData.revenueThreshold}
-                          onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-revenue-threshold"
-                        />
-                        <span className="text-gray-800">% change triggers alert</span>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div className="space-y-2">
+                    <Label htmlFor="revenueThreshold" className="text-gray-800">Revenue Risk Threshold (%)</Label>
+                    <Input
+                      id="revenueThreshold"
+                      type="number"
+                      value={triggerData.revenueThreshold}
+                      onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: parseInt(e.target.value) })}
+                      className="bg-gray-50 border-gray-200"
+                    />
+                    <p className="text-[10px] text-gray-500 italic">Trigger alert when revenue deviation exceeds this %</p>
+                  </div>
                   
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-purple-400">
-                        <Target className="h-4 w-4" />
-                        Market Share Threshold
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          value={triggerData.marketShareThreshold}
-                          onChange={(e) => setTriggerData({ ...triggerData, marketShareThreshold: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-market-threshold"
-                        />
-                        <span className="text-gray-800">% shift triggers alert</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-red-400">
-                        <AlertTriangle className="h-4 w-4" />
-                        Sentiment Threshold
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          value={triggerData.sentimentThreshold}
-                          onChange={(e) => setTriggerData({ ...triggerData, sentimentThreshold: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-sentiment-threshold"
-                        />
-                        <span className="text-gray-800">% negative swing</span>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <div className="space-y-2">
+                    <Label htmlFor="marketShareThreshold" className="text-gray-800">Market Share Risk Threshold (%)</Label>
+                    <Input
+                      id="marketShareThreshold"
+                      type="number"
+                      value={triggerData.marketShareThreshold}
+                      onChange={(e) => setTriggerData({ ...triggerData, marketShareThreshold: parseInt(e.target.value) })}
+                      className="bg-gray-50 border-gray-200"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="sentimentThreshold" className="text-gray-800">Social Sentiment Threshold (%)</Label>
+                    <Input
+                      id="sentimentThreshold"
+                      type="number"
+                      value={triggerData.sentimentThreshold}
+                      onChange={(e) => setTriggerData({ ...triggerData, sentimentThreshold: parseInt(e.target.value) })}
+                      className="bg-gray-50 border-gray-200"
+                    />
+                    <p className="text-[10px] text-gray-500 italic">Negative sentiment spike required to trigger alert</p>
+                  </div>
                 </div>
-                
+
                 <div className="pt-4 border-t border-gray-200 space-y-4">
-                  <h3 className="font-semibold text-gray-900">Alert Categories</h3>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Shield className="h-5 w-5 text-blue-400" />
-                      <div>
-                        <p className="text-gray-900">Competitor Alerts</p>
-                        <p className="text-xs text-gray-800">Monitor competitor moves and market positioning</p>
+                  <h3 className="font-semibold text-gray-900">Intelligence Scanning</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
+                      <div className="flex items-center gap-3">
+                        <Target className="h-5 w-5 text-[#0A0F2E]" />
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">Competitor Monitoring</p>
+                          <p className="text-xs text-gray-500">Scan filings, news, and releases</p>
+                        </div>
                       </div>
+                      <Switch 
+                        checked={triggerData.competitorAlertEnabled}
+                        onCheckedChange={(v) => setTriggerData({ ...triggerData, competitorAlertEnabled: v })}
+                      />
                     </div>
-                    <Switch 
-                      checked={triggerData.competitorAlertEnabled}
-                      onCheckedChange={(v) => setTriggerData({ ...triggerData, competitorAlertEnabled: v })}
-                      data-testid="switch-competitor-alerts"
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <AlertTriangle className="h-5 w-5 text-amber-400" />
-                      <div>
-                        <p className="text-gray-900">Regulatory Alerts</p>
-                        <p className="text-xs text-gray-800">Track regulatory changes and compliance risks</p>
+
+                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
+                      <div className="flex items-center gap-3">
+                        <Shield className="h-5 w-5 text-[#2B8A6E]" />
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">Regulatory Scanning</p>
+                          <p className="text-xs text-gray-500">Track legislative and regulatory shifts</p>
+                        </div>
                       </div>
+                      <Switch 
+                        checked={triggerData.regulatoryAlertEnabled}
+                        onCheckedChange={(v) => setTriggerData({ ...triggerData, regulatoryAlertEnabled: v })}
+                      />
                     </div>
-                    <Switch 
-                      checked={triggerData.regulatoryAlertEnabled}
-                      onCheckedChange={(v) => setTriggerData({ ...triggerData, regulatoryAlertEnabled: v })}
-                      data-testid="switch-regulatory-alerts"
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Bell className="h-5 w-5 text-green-400" />
-                      <div>
-                        <p className="text-gray-900">Media & PR Alerts</p>
-                        <p className="text-xs text-gray-800">Monitor brand mentions and sentiment shifts</p>
+
+                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
+                      <div className="flex items-center gap-3">
+                        <Bell className="h-5 w-5 text-[#C9A84C]" />
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">Media Sentiment Radar</p>
+                          <p className="text-xs text-gray-500">Real-time public perception tracking</p>
+                        </div>
                       </div>
+                      <Switch 
+                        checked={triggerData.mediaAlertEnabled}
+                        onCheckedChange={(v) => setTriggerData({ ...triggerData, mediaAlertEnabled: v })}
+                      />
                     </div>
-                    <Switch 
-                      checked={triggerData.mediaAlertEnabled}
-                      onCheckedChange={(v) => setTriggerData({ ...triggerData, mediaAlertEnabled: v })}
-                      data-testid="switch-media-alerts"
-                    />
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Step 3: Playbook Customization */}
-            {currentStep === 2 && (
+            {/* Step 4: Playbook Customization */}
+            {currentStep === 3 && (
               <div className="space-y-6">
-                <p className="text-gray-800 mb-4">
-                  Select and configure the strategic playbooks your organization will use.
-                </p>
-                
                 <div className="space-y-4">
-                  <Label className="text-gray-800">Selected Playbook Categories</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <Label className="text-gray-900 font-semibold">Select core playbooks to activate:</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {[
-                      { id: 'Crisis Response', icon: AlertTriangle, color: 'text-red-400' },
-                      { id: 'Market Opportunity', icon: Rocket, color: 'text-green-400' },
-                      { id: 'Competitive Response', icon: Target, color: 'text-blue-400' },
-                      { id: 'M&A Integration', icon: Layers, color: 'text-purple-400' },
-                      { id: 'Regulatory Compliance', icon: Shield, color: 'text-amber-400' },
-                      { id: 'Digital Transformation', icon: Zap, color: 'text-cyan-400' },
-                    ].map((playbook) => (
-                      <Card
-                        key={playbook.id}
-                        className={`cursor-pointer transition-all ${
-                          playbookData.selectedPlaybooks.includes(playbook.id)
-                            ? 'bg-gray-50 border-green-500/50'
-                            : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                      'Crisis Response', 
+                      'Market Opportunity', 
+                      'Competitive Response', 
+                      'Regulatory Compliance', 
+                      'Supply Chain Resiliency',
+                      'Executive Transition'
+                    ].map(playbook => (
+                      <div 
+                        key={playbook}
+                        className={`p-3 border cursor-pointer flex items-center justify-between ${
+                          playbookData.selectedPlaybooks.includes(playbook)
+                            ? 'bg-[#0A0F2E]/5 border-[#0A0F2E]'
+                            : 'bg-white border-gray-200 hover:border-gray-300'
                         }`}
                         onClick={() => {
-                          if (playbookData.selectedPlaybooks.includes(playbook.id)) {
-                            setPlaybookData({
-                              ...playbookData,
-                              selectedPlaybooks: playbookData.selectedPlaybooks.filter(p => p !== playbook.id)
-                            });
+                          if (playbookData.selectedPlaybooks.includes(playbook)) {
+                            setPlaybookData({ ...playbookData, selectedPlaybooks: playbookData.selectedPlaybooks.filter(p => p !== playbook) });
                           } else {
-                            setPlaybookData({
-                              ...playbookData,
-                              selectedPlaybooks: [...playbookData.selectedPlaybooks, playbook.id]
-                            });
+                            setPlaybookData({ ...playbookData, selectedPlaybooks: [...playbookData.selectedPlaybooks, playbook] });
                           }
                         }}
-                        data-testid={`card-playbook-${playbook.id.toLowerCase().replace(/\s+/g, '-')}`}
                       >
-                        <CardContent className="pt-4 pb-4 flex items-center gap-3">
-                          <playbook.icon className={`h-5 w-5 ${playbook.color}`} />
-                          <span className="text-sm text-gray-900">{playbook.id}</span>
-                          {playbookData.selectedPlaybooks.includes(playbook.id) && (
-                            <CheckCircle className="h-4 w-4 text-green-500 ml-auto" />
-                          )}
-                        </CardContent>
-                      </Card>
+                        <span className="text-sm font-medium">{playbook}</span>
+                        {playbookData.selectedPlaybooks.includes(playbook) && (
+                          <CheckCircle className="h-4 w-4 text-[#0A0F2E]" />
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
                   <div className="space-y-2">
-                    <Label className="text-gray-800 flex items-center gap-2">
-                      <Clock className="h-4 w-4" />
-                      Target Response Time
-                    </Label>
-                    <div className="flex items-center gap-3">
-                      <Input
-                        type="number"
-                        value={playbookData.responseTimeTarget}
-                        onChange={(e) => setPlaybookData({ ...playbookData, responseTimeTarget: Number(e.target.value) })}
-                        className="bg-gray-50 border-gray-200 w-24"
-                        data-testid="input-response-time"
-                      />
-                      <span className="text-gray-800">minutes</span>
-                    </div>
-                    <p className="text-xs text-gray-800">Industry benchmark: 12 minutes</p>
+                    <Label htmlFor="responseTime" className="text-gray-800">Target Response Time (Hours)</Label>
+                    <Select 
+                      value={playbookData.responseTimeTarget.toString()} 
+                      onValueChange={(v) => setPlaybookData({ ...playbookData, responseTimeTarget: parseInt(v) })}
+                    >
+                      <SelectTrigger className="bg-gray-50 border-gray-200">
+                        <SelectValue placeholder="Select target" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="2">2 Hours (Immediate)</SelectItem>
+                        <SelectItem value="4">4 Hours (High Velocity)</SelectItem>
+                        <SelectItem value="12">12 Hours (Standard)</SelectItem>
+                        <SelectItem value="24">24 Hours (Thorough)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
-                  
+
                   <div className="space-y-2">
-                    <Label className="text-gray-800">Default Budget Threshold</Label>
-                    <div className="flex items-center gap-3">
-                      <span className="text-gray-800">$</span>
-                      <Input
-                        type="number"
-                        value={playbookData.defaultBudgetThreshold}
-                        onChange={(e) => setPlaybookData({ ...playbookData, defaultBudgetThreshold: Number(e.target.value) })}
-                        className="bg-gray-50 border-gray-200"
-                        data-testid="input-budget-threshold"
-                      />
-                    </div>
-                    <p className="text-xs text-gray-800">Pre-approved spend per activation</p>
+                    <Label htmlFor="budgetThreshold" className="text-gray-800">Default Auth Threshold ($)</Label>
+                    <Input
+                      id="budgetThreshold"
+                      type="number"
+                      value={playbookData.defaultBudgetThreshold}
+                      onChange={(e) => setPlaybookData({ ...playbookData, defaultBudgetThreshold: parseInt(e.target.value) })}
+                      className="bg-gray-50 border-gray-200"
+                    />
                   </div>
                 </div>
-                
-                <div className="flex items-center justify-between pt-4">
+
+                <div className="flex items-center justify-between p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                   <div className="flex items-center gap-3">
-                    <Zap className="h-5 w-5 text-amber-400" />
+                    <Zap className="h-5 w-5 text-[#C9A84C]" />
                     <div>
-                      <p className="text-gray-900">Auto-Escalation</p>
-                      <p className="text-xs text-gray-800">Automatically escalate if response time exceeds target</p>
+                      <p className="text-sm font-bold text-[#0A0F2E]">Auto-Escalation Engine</p>
+                      <p className="text-xs text-gray-500">Automatically escalate if response SLAs are breached</p>
                     </div>
                   </div>
                   <Switch 
                     checked={playbookData.autoEscalationEnabled}
                     onCheckedChange={(v) => setPlaybookData({ ...playbookData, autoEscalationEnabled: v })}
-                    data-testid="switch-auto-escalation"
                   />
                 </div>
               </div>
             )}
 
-            {/* Step 4: Success Metrics */}
-            {currentStep === 3 && (
+            {/* Step 5: Success Metrics */}
+            {currentStep === 4 && (
               <div className="space-y-6">
-                <p className="text-gray-800 mb-4">
-                  Define the key performance indicators that will measure your strategic execution success.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-blue-400">
-                        <Sparkles className="h-4 w-4" />
-                        Future Readiness Index™ Target
-                      </CardTitle>
-                      <CardDescription className="text-xs">Overall organizational preparedness score</CardDescription>
-                    </CardHeader>
-                    <CardContent>
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-900">Define Your KPIs</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label className="text-gray-800">Target Future Readiness Index (%)</Label>
                       <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          step="0.1"
-                          value={metricsData.friTarget}
-                          onChange={(e) => setMetricsData({ ...metricsData, friTarget: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-fri-target"
-                        />
-                        <span className="text-gray-800">%</span>
+                        <div className="flex-1">
+                          <Progress value={metricsData.friTarget} className="h-2 bg-gray-100" />
+                        </div>
+                        <span className="font-bold text-[#0A0F2E]">{metricsData.friTarget}%</span>
                       </div>
-                      <p className="text-xs text-gray-800 mt-2">Recommended: 84.4% (top quartile)</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-green-400">
-                        <Zap className="h-4 w-4" />
-                        Decision Velocity Target
-                      </CardTitle>
-                      <CardDescription className="text-xs">Time from trigger to coordinated response</CardDescription>
-                    </CardHeader>
-                    <CardContent>
+                      <input 
+                        type="range" 
+                        min="50" 
+                        max="100" 
+                        step="0.1"
+                        value={metricsData.friTarget}
+                        onChange={(e) => setMetricsData({ ...metricsData, friTarget: parseFloat(e.target.value) })}
+                        className="w-full accent-[#0A0F2E]"
+                      />
+                    </div>
+
+                    <div className="space-y-3">
+                      <Label className="text-gray-800">Target Decision Velocity (Minutes)</Label>
                       <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          value={metricsData.velocityTarget}
-                          onChange={(e) => setMetricsData({ ...metricsData, velocityTarget: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-velocity-target"
-                        />
-                        <span className="text-gray-800">minutes</span>
+                        <div className="flex-1">
+                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-gray-100" />
+                        </div>
+                        <span className="font-bold text-[#2B8A6E]">{metricsData.velocityTarget}m</span>
                       </div>
-                      <p className="text-xs text-gray-800 mt-2">Industry average: 45 minutes</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-purple-400">
-                        <Shield className="h-4 w-4" />
-                        Scenario Coverage Target
-                      </CardTitle>
-                      <CardDescription className="text-xs">Percentage of risks with active playbooks</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center gap-4">
-                        <Input
-                          type="number"
-                          value={metricsData.coverageTarget}
-                          onChange={(e) => setMetricsData({ ...metricsData, coverageTarget: Number(e.target.value) })}
-                          className="bg-white border-slate-600 w-24"
-                          data-testid="input-coverage-target"
-                        />
-                        <span className="text-gray-800">%</span>
+                      <input 
+                        type="range" 
+                        min="5" 
+max="120" 
+                        step="1"
+                        value={metricsData.velocityTarget}
+                        onChange={(e) => setMetricsData({ ...metricsData, velocityTarget: parseInt(e.target.value) })}
+                        className="w-full accent-[#2B8A6E]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-4 space-y-4">
+                    <Label className="text-gray-800">Review & Governance Cadence</Label>
+                    <div className="grid grid-cols-3 gap-3">
+                      {['daily', 'weekly', 'monthly'].map(cadence => (
+                        <div 
+                          key={cadence}
+                          className={`p-4 border text-center cursor-pointer font-bold text-[10px] uppercase tracking-widest ${
+                            metricsData.reviewCadence === cadence
+                              ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]'
+                              : 'bg-white text-gray-400 border-gray-200 hover:border-gray-300'
+                          }`}
+                          onClick={() => setMetricsData({ ...metricsData, reviewCadence: cadence as any })}
+                        >
+                          {cadence}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-8 p-6 bg-[#0A0F2E] text-white space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center">
+                        <Rocket className="h-5 w-5 text-[#0A0F2E]" />
                       </div>
-                      <p className="text-xs text-gray-800 mt-2">Recommended: 95% coverage</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gray-50 border-gray-200">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-sm flex items-center gap-2 text-amber-400">
-                        <Clock className="h-4 w-4" />
-                        Review Cadence
-                      </CardTitle>
-                      <CardDescription className="text-xs">How often metrics are reviewed</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Select 
-                        value={metricsData.reviewCadence} 
-                        onValueChange={(v) => setMetricsData({ ...metricsData, reviewCadence: v })}
-                      >
-                        <SelectTrigger className="bg-white border-slate-600" data-testid="select-review-cadence">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="daily">Daily</SelectItem>
-                          <SelectItem value="weekly">Weekly</SelectItem>
-                          <SelectItem value="monthly">Monthly</SelectItem>
-                          <SelectItem value="quarterly">Quarterly</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </CardContent>
-                  </Card>
+                      <div>
+                        <h4 style={{ ...CG, fontSize: 18 }}>Ready for Launch</h4>
+                        <p className="text-xs text-white/60">Configure your workspace with sample demo data to explore capabilities immediately</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                      <span className="text-sm font-medium">Seed sample intelligence and playbooks</span>
+                      <Switch 
+                        checked={seedSampleData}
+                        onCheckedChange={setSeedSampleData}
+                        className="data-[state=checked]:bg-[#C9A84C]"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </CardContent>
-        </Card>
-
-        {/* Seed data toggle — shown only on final step */}
-        {currentStep === ONBOARDING_STEPS.length - 1 && (
-          <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
-            <CardContent className="p-6">
-              <div className="flex items-start gap-4">
-                <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Database className="h-5 w-5 text-white" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#0A0F2E" }}>Pre-populate with sample data</div>
-                      <div className="text-[#6B7280] text-sm mt-1">
-                        Add 3 sample scenarios to your workspace so you can explore the platform immediately. You can delete them anytime.
-                      </div>
-                    </div>
-                    <Switch
-                      checked={seedSampleData}
-                      onCheckedChange={setSeedSampleData}
-                      className="ml-4 flex-shrink-0"
-                    />
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {/* Navigation Buttons */}
-        <div className="flex justify-between items-center">
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            disabled={currentStep === 0}
-            className="border-[#E8E4DC] text-[#0A0F2E] rounded-none px-8"
-            data-testid="button-back"
-          >
-            <ChevronLeft className="h-4 w-4 mr-2" />
-            Back
-          </Button>
           
-          <Button
-            onClick={handleNext}
-            className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-8"
-            disabled={completeOnboardingMutation.isPending}
-            data-testid="button-next"
-          >
-            {currentStep === ONBOARDING_STEPS.length - 1 ? (
-              <>
-                Complete Setup
-                <Rocket className="h-4 w-4 ml-2" />
-              </>
-            ) : (
-              <>
-                Continue
-                <ChevronRight className="h-4 w-4 ml-2" />
-              </>
-            )}
-          </Button>
-        </div>
-
-        {/* Skip Option */}
-        <div className="text-center">
-          <Button
-            variant="link"
-            onClick={() => setLocation('/dashboard')}
-            className="text-gray-800 hover:text-slate-300"
-            data-testid="button-skip"
-          >
-            Skip for now and explore the platform
-          </Button>
-        </div>
+          <CardFooter className="flex items-center justify-between border-t border-[#E8E4DC] p-6 bg-[#F8F7F4]">
+            <Button
+              variant="outline"
+              onClick={handleBack}
+              disabled={currentStep === 0}
+              className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white"
+            >
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back
+            </Button>
+            
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                onClick={() => setLocation('/dashboard')}
+                className="text-gray-500 text-xs uppercase tracking-widest font-bold"
+              >
+                Skip to Dashboard
+              </Button>
+              <Button
+                onClick={handleNext}
+                disabled={saveProgressMutation.isPending || completeOnboardingMutation.isPending}
+                className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold px-8"
+              >
+                {currentStep === ONBOARDING_STEPS.length - 1 ? (
+                  completeOnboardingMutation.isPending ? 'Finalizing...' : 'Complete Setup'
+                ) : (
+                  <>
+                    Next Step
+                    <ChevronRight className="h-4 w-4 ml-2" />
+                  </>
+                )}
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
       </div>
     </PageLayout>
   );

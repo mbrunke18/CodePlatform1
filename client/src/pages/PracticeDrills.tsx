@@ -32,6 +32,11 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const [selectedDrill, setSelectedDrill] = useState<any>(null);
@@ -193,19 +198,24 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="p-6 space-y-6" data-testid="practice-drills-page">
+      <div className="p-8 space-y-8 bg-[#F8F7F4] min-h-screen" data-testid="practice-drills-page">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold" data-testid="page-title">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-8 w-[2px] bg-[#C9A84C]"></div>
+              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Executive Readiness</span>
+            </div>
+            <h1 className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="page-title">
               Strategic Simulations & War Games
             </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-[#6B7280] mt-1 font-medium">
               Practice decision execution through scenario testing and executive simulations
             </p>
           </div>
           <div className="flex items-center gap-4">
             <Button 
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold"
               onClick={() => setIsScheduling(!isScheduling)}
               data-testid="button-schedule-drill"
             >
@@ -217,58 +227,66 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
         {/* Performance Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
+          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-total-drills">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-total-drills">
                     {drills.length}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Total Drills</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Total Drills</div>
                 </div>
-                <Activity className="h-8 w-8 text-blue-800 dark:text-blue-400" />
+                <div className="h-8 w-8 bg-[#0A0F2E] rounded flex items-center justify-center">
+                  <Activity className="h-4 w-4 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-completion-time">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-completion-time">
                     {avgCompletionTime}m
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Avg. Completion</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Avg. Completion</div>
                 </div>
-                <Clock className="h-8 w-8 text-emerald-700 dark:text-green-400" />
+                <div className="h-8 w-8 bg-[#2B8A6E] rounded flex items-center justify-center">
+                  <Clock className="h-4 w-4 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-success-rate">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-success-rate">
                     {avgSuccessRate}%
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Success Rate</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Success Rate</div>
                 </div>
-                <TrendingUp className="h-8 w-8 text-purple-800 dark:text-purple-400" />
+                <div className="h-8 w-8 bg-[#0A0F2E] rounded flex items-center justify-center">
+                  <TrendingUp className="h-4 w-4 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-upcoming">
+                  <div className="text-4xl font-bold" style={{ ...CG, color: GOLD }} data-testid="stat-upcoming">
                     {upcomingDrills.length}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Upcoming</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Upcoming</div>
                 </div>
-                <Calendar className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+                <div className="h-8 w-8 bg-[#C9A84C] rounded flex items-center justify-center">
+                  <Calendar className="h-4 w-4 text-white" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -276,17 +294,17 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
         {/* Schedule New Drill */}
         {isScheduling && (
-          <Card className="border-2 border-[#0A1F44] dark:border-[#D4AF37]">
+          <Card className="border-2 border-[#0A0F2E] bg-white">
             <CardHeader>
-              <CardTitle>Schedule Practice Drill</CardTitle>
+              <CardTitle style={CG} className="text-2xl">Schedule Practice Drill</CardTitle>
               <CardDescription>Set up a new fire drill simulation</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="playbook">Select Playbook</Label>
+                  <Label htmlFor="playbook" className="font-bold text-[#0A0F2E]">Select Playbook</Label>
                   <Select value={selectedPlaybookId} onValueChange={setSelectedPlaybookId}>
-                    <SelectTrigger id="playbook" data-testid="select-playbook">
+                    <SelectTrigger id="playbook" className="border-[#E8E4DC]" data-testid="select-playbook">
                       <SelectValue placeholder="Choose a playbook..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -300,10 +318,11 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="date">Scheduled Date & Time</Label>
+                  <Label htmlFor="date" className="font-bold text-[#0A0F2E]">Scheduled Date & Time</Label>
                   <Input
                     id="date"
                     type="datetime-local"
+                    className="border-[#E8E4DC]"
                     value={scheduledDate}
                     onChange={(e) => setScheduledDate(e.target.value)}
                     data-testid="input-date"
@@ -312,9 +331,10 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="participants">Participants (comma-separated emails)</Label>
+                <Label htmlFor="participants" className="font-bold text-[#0A0F2E]">Participants (comma-separated emails)</Label>
                 <Input
                   id="participants"
+                  className="border-[#E8E4DC]"
                   placeholder="john@company.com, jane@company.com"
                   value={participants}
                   onChange={(e) => setParticipants(e.target.value)}
@@ -324,6 +344,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
               <div className="flex gap-2">
                 <Button 
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                   onClick={handleScheduleDrill}
                   disabled={scheduleDrillMutation.isPending}
                   data-testid="button-confirm-schedule"
@@ -332,6 +353,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                 </Button>
                 <Button 
                   variant="outline" 
+                  className="border-[#E8E4DC] text-[#0A0F2E]"
                   onClick={() => setIsScheduling(false)}
                   data-testid="button-cancel-schedule"
                 >
@@ -344,17 +366,33 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
         {/* Tabs for different drill views */}
         <Tabs defaultValue="upcoming" className="w-full">
-          <TabsList>
-            <TabsTrigger value="upcoming" data-testid="tab-upcoming">
+          <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none p-0 h-auto">
+            <TabsTrigger 
+              value="upcoming" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:shadow-none py-3 font-bold text-[#6B7280] data-[state=active]:text-[#0A0F2E]"
+              data-testid="tab-upcoming"
+            >
               Upcoming ({upcomingDrills.length})
             </TabsTrigger>
-            <TabsTrigger value="active" data-testid="tab-active">
+            <TabsTrigger 
+              value="active" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:shadow-none py-3 font-bold text-[#6B7280] data-[state=active]:text-[#0A0F2E]"
+              data-testid="tab-active"
+            >
               Active ({activeDrills.length})
             </TabsTrigger>
-            <TabsTrigger value="completed" data-testid="tab-completed">
+            <TabsTrigger 
+              value="completed" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:shadow-none py-3 font-bold text-[#6B7280] data-[state=active]:text-[#0A0F2E]"
+              data-testid="tab-completed"
+            >
               Completed ({completedDrills.length})
             </TabsTrigger>
-            <TabsTrigger value="performance" data-testid="tab-performance">
+            <TabsTrigger 
+              value="performance" 
+              className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:shadow-none py-3 font-bold text-[#6B7280] data-[state=active]:text-[#0A0F2E]"
+              data-testid="tab-performance"
+            >
               Performance Reports
             </TabsTrigger>
           </TabsList>
@@ -362,12 +400,12 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
           {/* Upcoming Drills */}
           <TabsContent value="upcoming" className="space-y-4 mt-6">
             {upcomingDrills.length === 0 ? (
-              <Card>
+              <Card className="border border-[#E8E4DC] bg-white">
                 <CardContent className="pt-6">
-                  <div className="text-center py-12 text-muted-foreground">
-                    <Calendar className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                    <p className="font-medium">No upcoming drills</p>
-                    <p className="text-sm mt-1">Schedule your first practice drill</p>
+                  <div className="text-center py-12">
+                    <Calendar className="h-12 w-12 mx-auto mb-3 text-[#E8E4DC]" />
+                    <p className="font-bold text-[#0A0F2E]">No upcoming drills</p>
+                    <p className="text-sm text-[#6B7280] mt-1">Schedule your first practice drill</p>
                   </div>
                 </CardContent>
               </Card>
@@ -375,37 +413,38 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
               upcomingDrills.map((drill: any) => {
                 const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
                 return (
-                  <Card key={drill.id} data-testid={`card-drill-${drill.id}`}>
+                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white hover:shadow-md transition-all" data-testid={`card-drill-${drill.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
-                          <CardTitle className="text-lg" data-testid={`text-drill-title-${drill.id}`}>
+                          <CardTitle className="text-xl" style={CG} data-testid={`text-drill-title-${drill.id}`}>
                             {playbook?.title || 'Unknown Playbook'}
                           </CardTitle>
                           <CardDescription className="mt-1">
-                            <div className="flex items-center gap-2 text-sm">
-                              <Clock className="h-4 w-4" />
+                            <div className="flex items-center gap-2 text-sm font-medium">
+                              <Clock className="h-4 w-4 text-[#C9A84C]" />
                               {new Date(drill.scheduledFor).toLocaleString()}
                             </div>
                           </CardDescription>
                         </div>
-                        <Badge variant="outline" data-testid={`badge-status-${drill.id}`}>
+                        <Badge variant="outline" className="border-[#C9A84C] text-[#C9A84C] bg-[#C9A84C]/5 font-bold uppercase tracking-wider text-[10px]" data-testid={`badge-status-${drill.id}`}>
                           {drill.status}
                         </Badge>
                       </div>
                     </CardHeader>
                     <CardContent>
                       <div className="flex items-center justify-between">
-                        <div className="text-sm text-muted-foreground">
-                          <Users className="h-4 w-4 inline mr-1" />
-                          {drill.participants?.length || 0} participants
+                        <div className="text-sm font-medium text-[#6B7280]">
+                          <Users className="h-4 w-4 inline mr-2 text-[#0A0F2E]" />
+                          {drill.participants?.length || 0} executive participants
                         </div>
                         <Button
+                          className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold"
                           onClick={() => startDrillMutation.mutate(drill.id)}
                           disabled={startDrillMutation.isPending}
                           data-testid={`button-start-${drill.id}`}
                         >
-                          <Play className="h-4 w-4 mr-2" />
+                          <Play className="h-4 w-4 mr-2 text-[#C9A84C]" />
                           Start Now
                         </Button>
                       </div>
@@ -419,12 +458,12 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
           {/* Active Drills */}
           <TabsContent value="active" className="space-y-4 mt-6">
             {activeDrills.length === 0 ? (
-              <Card>
+              <Card className="border border-[#E8E4DC] bg-white">
                 <CardContent className="pt-6">
-                  <div className="text-center py-12 text-muted-foreground">
-                    <Activity className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                    <p className="font-medium">No active drills</p>
-                    <p className="text-sm mt-1">Start an upcoming drill to see it here</p>
+                  <div className="text-center py-12">
+                    <Activity className="h-12 w-12 mx-auto mb-3 text-[#E8E4DC]" />
+                    <p className="font-bold text-[#0A0F2E]">No active drills</p>
+                    <p className="text-sm text-[#6B7280] mt-1">Start an upcoming drill to see it here</p>
                   </div>
                 </CardContent>
               </Card>
@@ -432,20 +471,21 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
               activeDrills.map((drill: any) => {
                 const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
                 return (
-                  <Card key={drill.id} className="border-2 border-green-500" data-testid={`card-active-drill-${drill.id}`}>
+                  <Card key={drill.id} className="border-2 border-[#2B8A6E] bg-white" data-testid={`card-active-drill-${drill.id}`}>
                     <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Activity className="h-5 w-5 text-emerald-700 animate-pulse" />
-                        {playbook?.title || 'Unknown Playbook'} - LIVE
+                      <CardTitle className="flex items-center gap-2 text-xl" style={CG}>
+                        <Activity className="h-5 w-5 text-[#2B8A6E] animate-pulse" />
+                        {playbook?.title || 'Unknown Playbook'} - LIVE SIMULATION
                       </CardTitle>
-                      <CardDescription>Simulation in progress</CardDescription>
+                      <CardDescription className="font-medium">Strategic coordination in progress</CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="text-sm text-muted-foreground">
-                        Started: {drill.startedAt ? new Date(drill.startedAt).toLocaleString() : 'N/A'}
+                    <CardContent className="space-y-6">
+                      <div className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">
+                        Started: <span className="text-[#0A0F2E]">{drill.startedAt ? new Date(drill.startedAt).toLocaleString() : 'N/A'}</span>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="flex gap-3">
                         <Button
+                          className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold"
                           onClick={() => handleCompleteDrill(drill.id, true)}
                           disabled={completeDrillMutation.isPending}
                           data-testid={`button-complete-success-${drill.id}`}
@@ -455,6 +495,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                         </Button>
                         <Button
                           variant="outline"
+                          className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/5 font-bold"
                           onClick={() => handleCompleteDrill(drill.id, false)}
                           disabled={completeDrillMutation.isPending}
                           data-testid={`button-complete-issues-${drill.id}`}
@@ -473,12 +514,12 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
           {/* Completed Drills */}
           <TabsContent value="completed" className="space-y-4 mt-6">
             {completedDrills.length === 0 ? (
-              <Card>
+              <Card className="border border-[#E8E4DC] bg-white">
                 <CardContent className="pt-6">
-                  <div className="text-center py-12 text-muted-foreground">
-                    <Award className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                    <p className="font-medium">No completed drills</p>
-                    <p className="text-sm mt-1">Complete your first drill to see results</p>
+                  <div className="text-center py-12">
+                    <Award className="h-12 w-12 mx-auto mb-3 text-[#E8E4DC]" />
+                    <p className="font-bold text-[#0A0F2E]">No completed drills</p>
+                    <p className="text-sm text-[#6B7280] mt-1">Complete your first drill to see results</p>
                   </div>
                 </CardContent>
               </Card>
@@ -488,41 +529,41 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                 const performance = performances.find(p => p.drillId === drill.id);
                 
                 return (
-                  <Card key={drill.id} data-testid={`card-completed-drill-${drill.id}`}>
+                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white hover:shadow-sm transition-all" data-testid={`card-completed-drill-${drill.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
-                          <CardTitle className="text-lg">
+                          <CardTitle className="text-xl" style={CG}>
                             {playbook?.title || 'Unknown Playbook'}
                           </CardTitle>
-                          <CardDescription className="mt-1">
+                          <CardDescription className="mt-1 font-medium">
                             Completed: {drill.completedAt ? new Date(drill.completedAt).toLocaleDateString() : 'N/A'}
                           </CardDescription>
                         </div>
-                        <Badge variant="secondary" data-testid={`badge-completed-${drill.id}`}>
+                        <Badge variant="secondary" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-none font-bold uppercase tracking-wider text-[10px]" data-testid={`badge-completed-${drill.id}`}>
                           <CheckCircle className="h-3 w-3 mr-1" />
-                          Completed
+                          Validated
                         </Badge>
                       </div>
                     </CardHeader>
                     {performance && (
                       <CardContent>
-                        <div className="grid grid-cols-3 gap-4 text-sm">
+                        <div className="grid grid-cols-3 gap-6 pt-4 border-t border-[#E8E4DC]">
                           <div>
-                            <div className="text-muted-foreground">Time</div>
-                            <div className="font-medium" data-testid={`text-time-${drill.id}`}>
+                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Execution Time</div>
+                            <div className="text-2xl font-bold" style={{ ...CG, color: GOLD }} data-testid={`text-time-${drill.id}`}>
                               {performance.timeToComplete}m
                             </div>
                           </div>
                           <div>
-                            <div className="text-muted-foreground">Success Rate</div>
-                            <div className="font-medium" data-testid={`text-success-${drill.id}`}>
+                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Success Rate</div>
+                            <div className="text-2xl font-bold" style={{ ...CG, color: GOLD }} data-testid={`text-success-${drill.id}`}>
                               {performance.successRate}%
                             </div>
                           </div>
                           <div>
-                            <div className="text-muted-foreground">Bottlenecks</div>
-                            <div className="font-medium" data-testid={`text-bottlenecks-${drill.id}`}>
+                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Bottlenecks</div>
+                            <div className="text-2xl font-bold" style={{ ...CG, color: performance.bottlenecks?.length > 0 ? '#C9A84C' : '#2B8A6E' }} data-testid={`text-bottlenecks-${drill.id}`}>
                               {performance.bottlenecks?.length || 0}
                             </div>
                           </div>
@@ -596,7 +637,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-blue-800 dark:text-blue-400" />
+                  <Target className="h-5 w-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                   Drill Scoring Breakdown
                 </CardTitle>
                 <CardDescription>Detailed performance across key response dimensions</CardDescription>
@@ -628,7 +669,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <Award className="h-5 w-5 text-amber-500" />
                       <span className="font-semibold">Overall Average</span>
                     </div>
-                    <div className="text-2xl font-bold text-blue-800 dark:text-blue-400">
+                    <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]">
                       {Math.round((92 + 87 + 78 + 85 + 91) / 5)}/100
                     </div>
                   </div>
@@ -639,7 +680,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-purple-800 dark:text-purple-400" />
+                  <Users className="h-5 w-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                   Team Performance Comparison
                 </CardTitle>
                 <CardDescription>Cross-team drill performance and readiness trends</CardDescription>
@@ -670,7 +711,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                         </div>
                         <div className="flex items-center gap-1">
                           {item.trend === "up" && (
-                            <Badge variant="outline" className="text-emerald-700 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
+                            <Badge variant="outline" className="text-[#2B8A6E] border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30">
                               <ArrowUp className="h-3 w-3 mr-1" />
                               Up
                             </Badge>

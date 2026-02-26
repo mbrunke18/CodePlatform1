@@ -63,10 +63,10 @@ export default function UnifiedEnterprisePlatform() {
 
   // Real-time metrics
   const metrics = [
-    { name: "Global Agility Score", value: "87.6%", change: "+2.4%", color: "text-emerald-400" },
+    { name: "Global Agility Score", value: "87.6%", change: "+2.4%", color: "text-[#2B8A6E]" },
     { name: "Playbook Readiness", value: "98.7%", change: "+0.8%", color: "text-orange-400" },
-    { name: "Strategic Intelligence", value: "94.2%", change: "+1.6%", color: "text-blue-400" },
-    { name: "Innovation Pipeline", value: "91.4%", change: "+3.2%", color: "text-purple-400" }
+    { name: "Strategic Intelligence", value: "94.2%", change: "+1.6%", color: "text-[#0A0F2E]" },
+    { name: "Innovation Pipeline", value: "91.4%", change: "+3.2%", color: "text-[#C9A84C]" }
   ];
 
   // AI Intelligence modules
@@ -177,7 +177,7 @@ export default function UnifiedEnterprisePlatform() {
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-teal-500 text-gray-900 p-3 rounded-lg flex-shrink-0">
+          <div className="bg-gradient-to-r from-primary to-[#3BAF8A] text-gray-900 p-3 rounded-lg flex-shrink-0">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <LayoutDashboard className="h-10 w-10" />
@@ -191,7 +191,7 @@ export default function UnifiedEnterprisePlatform() {
               <div className="flex items-center gap-3">
                 <Link to="/hybrid-demo">
                   <Button 
-                    className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all" 
+                    className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] hover:from-[#0A0F2E] hover:to-[#3BAF8A] text-gray-900 font-semibold shadow-lg hover:shadow-xl transition-all" 
                     data-testid="try-live-demo-btn"
                   >
                     <Play className="h-4 w-4 mr-2" />
@@ -214,10 +214,10 @@ export default function UnifiedEnterprisePlatform() {
 
           {/* 4-Step IDEA Framework - Core Methodology */}
           <div className="grid grid-cols-4 gap-3 flex-shrink-0">
-            <Card className="border-blue-500/30 bg-gradient-to-br hover:border-blue-500/50 transition-all">
+            <Card className="border-[#0A0F2E]/30 bg-gradient-to-br hover:border-[#0A0F2E]/50 transition-all">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
-                  <Eye className="h-5 w-5 text-blue-400" />
+                  <Eye className="h-5 w-5 text-[#0A0F2E]" />
                   <CardTitle className="text-sm text-gray-900">1. IDENTIFY</CardTitle>
                 </div>
               </CardHeader>
@@ -230,7 +230,7 @@ export default function UnifiedEnterprisePlatform() {
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">12 Signals</span>
-                    <span className="text-blue-400 font-semibold">Monitoring</span>
+                    <span className="text-[#0A0F2E] font-semibold">Monitoring</span>
                   </div>
                 </div>
               </CardContent>
@@ -280,10 +280,10 @@ export default function UnifiedEnterprisePlatform() {
               </CardContent>
             </Card>
 
-            <Card className="border-purple-500/30 bg-gradient-to-br hover:border-purple-500/50 transition-all">
+            <Card className="border-[#C9A84C]/30 bg-gradient-to-br hover:border-[#C9A84C]/50 transition-all">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-purple-400" />
+                  <BookOpen className="h-5 w-5 text-[#C9A84C]" />
                   <CardTitle className="text-sm text-gray-900">4. ADVANCE</CardTitle>
                 </div>
               </CardHeader>
@@ -292,11 +292,11 @@ export default function UnifiedEnterprisePlatform() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">Executions</span>
-                    <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 text-xs">1,247</Badge>
+                    <Badge variant="outline" className="bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30 text-xs">1,247</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">ROI Captured</span>
-                    <span className="text-purple-400 font-semibold">$144M</span>
+                    <span className="text-[#C9A84C] font-semibold">$144M</span>
                   </div>
                 </div>
               </CardContent>
@@ -332,17 +332,17 @@ export default function UnifiedEnterprisePlatform() {
               <TabsTrigger value="audit" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-audit">
                 <Shield className="h-4 w-4" />
                 Audit & Compliance
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="integrations" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-integrations">
                 <Network className="h-4 w-4" />
                 Integrations
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="analytics" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-analytics">
                 <PieChart className="h-4 w-4" />
                 Advanced Analytics
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-blue-900">V2</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V2</Badge>
               </TabsTrigger>
               <TabsTrigger value="scenario-triggers" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-triggers">
                 <Zap className="h-4 w-4" />
@@ -357,7 +357,7 @@ export default function UnifiedEnterprisePlatform() {
             <TabsContent value="overview" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="overview-content">
               
               {/* V1 Core Loop Banner */}
-              <div className="bg-gradient-to-r from-blue-50 via-purple-50/30 to-teal-50 dark:from-blue-950/20 dark:via-purple-950/10 dark:to-teal-950/20 rounded-lg border-2 border-blue-300 dark:border-blue-700 p-4 mb-4">
+              <div className="bg-gradient-to-r from-[#0A0F2E] via-[#C9A84C]/10 to-[#3BAF8A] dark:from-[#0A0F2E]/20 dark:via-[#C9A84C]/10 dark:to-[#3BAF8A]/20 rounded-lg border-2 border-[#0A0F2E] dark:border-[#0A0F2E] p-4 mb-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Identify → Detect → Execute → Advance</h2>
@@ -382,8 +382,8 @@ export default function UnifiedEnterprisePlatform() {
                   <Card key={index} className="border-gray-200 bg-white backdrop-blur-sm" data-testid={`metric-${metric.name.replace(/\s+/g, '-').toLowerCase()}`}>
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
-                        <div className="p-2 rounded-lg bg-blue-500/10">
-                          <BarChart3 className="h-5 w-5 text-blue-500" />
+                        <div className="p-2 rounded-lg bg-[#0A0F2E]/10">
+                          <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                         </div>
                         <Badge variant="outline" className="bg-primary/20 text-primary border-primary/30">
                           EXCELLENT
@@ -407,17 +407,17 @@ export default function UnifiedEnterprisePlatform() {
               </div>
 
               {/* Decision Velocity - Execution Infrastructure */}
-              <Card className="border-emerald-500/50 bg-gradient-to-br   backdrop-blur-sm mb-4">
+              <Card className="border-[#2B8A6E]/50 bg-gradient-to-br   backdrop-blur-sm mb-4">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Zap className="h-6 w-6 text-emerald-400" />
+                      <Zap className="h-6 w-6 text-[#2B8A6E]" />
                       Decision Velocity Dashboard
-                      <Badge variant="outline" className="bg-emerald-600/20 text-emerald-300 border-emerald-500/50 ml-2">
+                      <Badge variant="outline" className="bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/50 ml-2">
                         INFRASTRUCTURE MODE
                       </Badge>
                     </CardTitle>
-                    <Badge variant="outline" className="bg-blue-600/20 text-blue-300 border-blue-500/50">
+                    <Badge variant="outline" className="bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/50">
                       170 PLAYBOOKS READY
                     </Badge>
                   </div>
@@ -428,9 +428,9 @@ export default function UnifiedEnterprisePlatform() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Average Decision Time */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-emerald-500/30">
+                    <div className="p-4 bg-gray-50 rounded-lg border border-[#2B8A6E]/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <Clock className="h-5 w-5 text-emerald-400" />
+                        <Clock className="h-5 w-5 text-[#2B8A6E]" />
                         <span className="text-sm font-medium text-gray-800">Avg. Decision Time</span>
                       </div>
                       <div className="flex items-baseline gap-2">
@@ -438,15 +438,15 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-lg text-gray-800">minutes</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4 text-emerald-400" />
-                        <span className="text-xs text-emerald-400">85% faster than industry avg (72 hrs)</span>
+                        <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
+                        <span className="text-xs text-[#2B8A6E]">85% faster than industry avg (72 hrs)</span>
                       </div>
                     </div>
 
                     {/* Playbooks Executed */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-blue-500/30">
+                    <div className="p-4 bg-gray-50 rounded-lg border border-[#0A0F2E]/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <Target className="h-5 w-5 text-blue-400" />
+                        <Target className="h-5 w-5 text-[#0A0F2E]" />
                         <span className="text-sm font-medium text-gray-800">Plays Executed (30d)</span>
                       </div>
                       <div className="flex items-baseline gap-2">
@@ -454,15 +454,15 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-lg text-gray-800">playbooks</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
-                        <CheckCircle className="h-4 w-4 text-blue-400" />
-                        <span className="text-xs text-blue-400">94% execution success rate</span>
+                        <CheckCircle className="h-4 w-4 text-[#0A0F2E]" />
+                        <span className="text-xs text-[#0A0F2E]">94% execution success rate</span>
                       </div>
                     </div>
 
                     {/* Value Created */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-purple-500/30">
+                    <div className="p-4 bg-gray-50 rounded-lg border border-[#C9A84C]/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <DollarSign className="h-5 w-5 text-purple-400" />
+                        <DollarSign className="h-5 w-5 text-[#C9A84C]" />
                         <span className="text-sm font-medium text-gray-800">Value Created (30d)</span>
                       </div>
                       <div className="flex items-baseline gap-2">
@@ -470,8 +470,8 @@ export default function UnifiedEnterprisePlatform() {
                         <span className="text-lg text-gray-800">saved</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4 text-purple-400" />
-                        <span className="text-xs text-purple-400">Through rapid decision execution</span>
+                        <TrendingUp className="h-4 w-4 text-[#C9A84C]" />
+                        <span className="text-xs text-[#C9A84C]">Through rapid decision execution</span>
                       </div>
                     </div>
                   </div>
@@ -499,8 +499,8 @@ export default function UnifiedEnterprisePlatform() {
                           </div>
                           <div className="flex items-center gap-4 text-xs">
                             <span className="text-gray-800">{playbook.uses} uses</span>
-                            <span className="text-emerald-400">{playbook.avgTime}</span>
-                            <span className="text-purple-400 font-semibold">{playbook.value}</span>
+                            <span className="text-[#2B8A6E]">{playbook.avgTime}</span>
+                            <span className="text-[#C9A84C] font-semibold">{playbook.value}</span>
                           </div>
                         </div>
                       ))}
@@ -514,7 +514,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Target className="h-5 w-5 text-blue-500" />
+                      <Target className="h-5 w-5 text-[#0A0F2E]" />
                       Active Strategic Scenarios
                     </CardTitle>
                   </CardHeader>
@@ -535,7 +535,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="space-y-1">
                           <div className="flex justify-between text-sm">
                             <span className="text-gray-800">Progress:</span>
-                            <span className="text-blue-400 font-bold">{scenario.progress}%</span>
+                            <span className="text-[#0A0F2E] font-bold">{scenario.progress}%</span>
                           </div>
                           <Progress value={scenario.progress} className="h-2" />
                           <div className="flex justify-between text-sm">
@@ -551,21 +551,21 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Brain className="h-5 w-5 text-purple-500" />
+                      <Brain className="h-5 w-5 text-[#C9A84C]" />
                       AI Strategic Recommendations
                       <Badge variant="outline" className="ml-2">Powered by ML</Badge>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     {aiRecommendations.slice(0, 2).map((rec) => (
-                      <Card key={rec.id} className="border-l-4 border-l-purple-500 bg-gray-50">
+                      <Card key={rec.id} className="border-l-4 border-l-[#0A0F2E] bg-gray-50">
                         <CardContent className="p-3">
                           <div className="flex justify-between items-start mb-2">
                             <Badge variant={rec.priority === 'critical' ? 'destructive' : rec.priority === 'high' ? 'default' : 'secondary'}>
                               {rec.priority.toUpperCase()}
                             </Badge>
                             <div className="flex items-center gap-1">
-                              <Brain className="h-4 w-4 text-purple-800" />
+                              <Brain className="h-4 w-4 text-[#C9A84C]" />
                               <span className="text-xs text-gray-800">{rec.confidence}% confidence</span>
                             </div>
                           </div>
@@ -587,7 +587,7 @@ export default function UnifiedEnterprisePlatform() {
               </div>
 
               {/* Executive Performance Dashboard */}
-              <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900">
+              <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-gray-900">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <TrendingUp className="h-6 w-6" />
@@ -656,7 +656,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     {executivePlaybooks.map((playbook, index) => (
                       <Link key={index} href="/comprehensive-scenarios">
-                        <div className="p-3 bg-gray-50 rounded-lg border border-slate-600 hover:border-blue-500 cursor-pointer transition-colors">
+                        <div className="p-3 bg-gray-50 rounded-lg border border-slate-600 hover:border-[#0A0F2E] cursor-pointer transition-colors">
                           <div className="flex justify-between items-start mb-2">
                             <div>
                               <span className="text-xs text-gray-800 font-mono">{playbook.playbookId}</span>
@@ -684,7 +684,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Target className="h-5 w-5 text-blue-500" />
+                      <Target className="h-5 w-5 text-[#0A0F2E]" />
                       Strategic Initiative Portfolio
                     </CardTitle>
                   </CardHeader>
@@ -705,7 +705,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="space-y-1">
                           <div className="flex justify-between text-xs">
                             <span className="text-gray-800">Progress:</span>
-                            <span className="text-blue-400 font-bold">{scenario.progress}%</span>
+                            <span className="text-[#0A0F2E] font-bold">{scenario.progress}%</span>
                           </div>
                           <Progress value={scenario.progress} className="h-1" />
                           <div className="flex justify-between text-xs">
@@ -728,7 +728,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
-                        <div className="text-xl font-bold text-blue-400">$4.2M</div>
+                        <div className="text-xl font-bold text-[#0A0F2E]">$4.2M</div>
                         <div className="text-xs text-gray-800">Active Budget</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
@@ -740,7 +740,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">Budget Utilization</span>
-                          <span className="text-blue-400 font-bold">73%</span>
+                          <span className="text-[#0A0F2E] font-bold">73%</span>
                         </div>
                         <Progress value={73} className="h-2" />
                       </div>
@@ -768,7 +768,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Calendar className="h-5 w-5 text-purple-500" />
+                      <Calendar className="h-5 w-5 text-[#C9A84C]" />
                       Strategic Timeline
                     </CardTitle>
                   </CardHeader>
@@ -787,7 +787,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Due in 45 days • High Priority</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <Calendar className="h-3 w-3 mr-1" />
                       View Full Timeline
                     </Button>
@@ -797,7 +797,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Users className="h-5 w-5 text-blue-500" />
+                      <Users className="h-5 w-5 text-[#0A0F2E]" />
                       Stakeholder Management
                     </CardTitle>
                   </CardHeader>
@@ -805,7 +805,7 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-800 text-sm">Executive Sponsors</span>
-                        <span className="text-blue-400 font-bold">12</span>
+                        <span className="text-[#0A0F2E] font-bold">12</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-800 text-sm">Department Heads</span>
@@ -813,14 +813,14 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-800 text-sm">Key Contributors</span>
-                        <span className="text-purple-400 font-bold">167</span>
+                        <span className="text-[#C9A84C] font-bold">167</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-gray-800 text-sm">Engagement Score</span>
                         <span className="text-orange-400 font-bold">89%</span>
                       </div>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <Users className="h-3 w-3 mr-1" />
                       Manage Stakeholders
                     </Button>
@@ -846,14 +846,14 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800 dark:text-slate-200">Execution Quality</span>
-                          <span className="text-blue-400 font-bold">87%</span>
+                          <span className="text-[#0A0F2E] font-bold">87%</span>
                         </div>
                         <Progress value={87} className="h-1" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800 dark:text-slate-200">Value Delivery</span>
-                          <span className="text-purple-400 font-bold">94%</span>
+                          <span className="text-[#C9A84C] font-bold">94%</span>
                         </div>
                         <Progress value={94} className="h-1" />
                       </div>
@@ -877,7 +877,7 @@ export default function UnifiedEnterprisePlatform() {
                   <Card key={index} className="border-gray-200 bg-white backdrop-blur-sm">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2 text-gray-900">
-                        <Brain className="h-5 w-5 text-purple-500" />
+                        <Brain className="h-5 w-5 text-[#C9A84C]" />
                         {module.name}
                       </CardTitle>
                     </CardHeader>
@@ -902,7 +902,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Users className="h-5 w-5 text-blue-500" />
+                      <Users className="h-5 w-5 text-[#0A0F2E]" />
                       Real-Time Collaboration
                     </CardTitle>
                   </CardHeader>
@@ -914,10 +914,10 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between mb-2">
                         <span>Live Sessions:</span>
-                        <span className="text-blue-400 font-bold">{collaborationData.liveSessions}</span>
+                        <span className="text-[#0A0F2E] font-bold">{collaborationData.liveSessions}</span>
                       </div>
                       <div className="grid grid-cols-2 gap-2 mt-4">
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-xs">
+                        <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                           <MessageSquare className="h-3 w-3 mr-1" />
                           War Room
                         </Button>
@@ -967,7 +967,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Activity className="h-5 w-5 text-purple-500" />
+                      <Activity className="h-5 w-5 text-[#C9A84C]" />
                       Live Activity Feed
                     </CardTitle>
                   </CardHeader>
@@ -988,7 +988,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <MessageSquare className="h-5 w-5 text-blue-500" />
+                      <MessageSquare className="h-5 w-5 text-[#0A0F2E]" />
                       Executive Communication Center
                     </CardTitle>
                   </CardHeader>
@@ -998,7 +998,7 @@ export default function UnifiedEnterprisePlatform() {
                         <AlertTriangle className="h-4 w-4 mr-2" />
                         Emergency Broadcast
                       </Button>
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Users className="h-4 w-4 mr-2" />
                         Team Assembly
                       </Button>
@@ -1006,7 +1006,7 @@ export default function UnifiedEnterprisePlatform() {
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Status Update
                       </Button>
-                      <Button className="bg-purple-600 hover:bg-purple-700">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Calendar className="h-4 w-4 mr-2" />
                         Schedule Meeting
                       </Button>
@@ -1015,7 +1015,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div className="text-sm text-gray-800">
                         <div className="flex justify-between mb-1">
                           <span>Messages Today:</span>
-                          <span className="text-blue-400 font-bold">147</span>
+                          <span className="text-[#0A0F2E] font-bold">147</span>
                         </div>
                         <div className="flex justify-between mb-1">
                           <span>Urgent Alerts:</span>
@@ -1086,7 +1086,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <FileText className="h-5 w-5 text-blue-500" />
+                      <FileText className="h-5 w-5 text-[#0A0F2E]" />
                       Audit Logs
                     </CardTitle>
                   </CardHeader>
@@ -1123,7 +1123,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Network className="h-5 w-5 text-blue-500" />
+                      <Network className="h-5 w-5 text-[#0A0F2E]" />
                       Enterprise System Integrations
                     </CardTitle>
                   </CardHeader>
@@ -1160,14 +1160,14 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Settings className="h-5 w-5 text-purple-500" />
+                      <Settings className="h-5 w-5 text-[#C9A84C]" />
                       API & Data Management
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
-                        <div className="text-xl font-bold text-blue-400">47</div>
+                        <div className="text-xl font-bold text-[#0A0F2E]">47</div>
                         <div className="text-xs text-gray-800">Active APIs</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
@@ -1178,7 +1178,7 @@ export default function UnifiedEnterprisePlatform() {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Flow Rate:</span>
-                        <span className="text-blue-400 font-bold">2.4TB/hour</span>
+                        <span className="text-[#0A0F2E] font-bold">2.4TB/hour</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">API Calls/min:</span>
@@ -1190,7 +1190,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Quality Score:</span>
-                        <span className="text-purple-400 font-bold">96.8%</span>
+                        <span className="text-[#C9A84C] font-bold">96.8%</span>
                       </div>
                     </div>
                   </CardContent>
@@ -1273,7 +1273,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">System Load</span>
-                          <span className="text-blue-400 font-bold">67%</span>
+                          <span className="text-[#0A0F2E] font-bold">67%</span>
                         </div>
                         <Progress value={67} className="h-1" />
                       </div>
@@ -1287,7 +1287,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">Data Sync Status</span>
-                          <span className="text-purple-400 font-bold">98%</span>
+                          <span className="text-[#C9A84C] font-bold">98%</span>
                         </div>
                         <Progress value={98} className="h-1" />
                       </div>
@@ -1318,7 +1318,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800">Prediction Accuracy</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
-                        <div className="text-xl font-bold text-blue-400">2.4M</div>
+                        <div className="text-xl font-bold text-[#0A0F2E]">2.4M</div>
                         <div className="text-xs text-gray-800">Data Points</div>
                       </div>
                     </div>
@@ -1329,11 +1329,11 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Risk Prediction:</span>
-                        <span className="text-blue-400 font-bold">93.8%</span>
+                        <span className="text-[#0A0F2E] font-bold">93.8%</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Revenue Projection:</span>
-                        <span className="text-purple-400 font-bold">92.1%</span>
+                        <span className="text-[#C9A84C] font-bold">92.1%</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Customer Behavior:</span>
@@ -1346,14 +1346,14 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <BarChart3 className="h-5 w-5 text-blue-500" />
+                      <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                       Business Intelligence Hub
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-gray-50 rounded">
-                        <div className="text-xl font-bold text-blue-400">67</div>
+                        <div className="text-xl font-bold text-[#0A0F2E]">67</div>
                         <div className="text-xs text-gray-800">Active Dashboards</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded">
@@ -1368,11 +1368,11 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Processing:</span>
-                        <span className="text-blue-400 font-bold">4.7TB/day</span>
+                        <span className="text-[#0A0F2E] font-bold">4.7TB/day</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Query Performance:</span>
-                        <span className="text-purple-400 font-bold">0.3s avg</span>
+                        <span className="text-[#C9A84C] font-bold">0.3s avg</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Data Freshness:</span>
@@ -1388,7 +1388,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <TrendingUp className="h-5 w-5 text-purple-500" />
+                      <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
                       Market Intelligence
                     </CardTitle>
                   </CardHeader>
@@ -1407,7 +1407,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Daily updates</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-purple-600 hover:bg-purple-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <TrendingUp className="h-3 w-3 mr-1" />
                       View Analysis
                     </Button>
@@ -1417,7 +1417,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Users className="h-5 w-5 text-blue-500" />
+                      <Users className="h-5 w-5 text-[#0A0F2E]" />
                       Customer Analytics
                     </CardTitle>
                   </CardHeader>
@@ -1433,7 +1433,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">Retention Rate</span>
-                          <span className="text-blue-400 font-bold">87.3%</span>
+                          <span className="text-[#0A0F2E] font-bold">87.3%</span>
                         </div>
                         <Progress value={87.3} className="h-1" />
                       </div>
@@ -1445,7 +1445,7 @@ export default function UnifiedEnterprisePlatform() {
                         <Progress value={12.7} className="h-1" />
                       </div>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <Users className="h-3 w-3 mr-1" />
                       Customer Insights
                     </Button>
@@ -1467,11 +1467,11 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Profit Margin:</span>
-                        <span className="text-blue-400 font-bold">23.4%</span>
+                        <span className="text-[#0A0F2E] font-bold">23.4%</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Cost Efficiency:</span>
-                        <span className="text-purple-400 font-bold">+12.1%</span>
+                        <span className="text-[#C9A84C] font-bold">+12.1%</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">ROI:</span>
@@ -1491,7 +1491,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Brain className="h-5 w-5 text-purple-500" />
+                      <Brain className="h-5 w-5 text-[#C9A84C]" />
                       Machine Learning Models
                     </CardTitle>
                   </CardHeader>
@@ -1525,7 +1525,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Activity className="h-5 w-5 text-blue-500" />
+                      <Activity className="h-5 w-5 text-[#0A0F2E]" />
                       Real-time Analytics Feed
                     </CardTitle>
                   </CardHeader>
@@ -1548,7 +1548,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-gray-800 dark:text-slate-200">Supply chain efficiency +7% • 12 minutes ago</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <Activity className="h-3 w-3 mr-1" />
                       View All Alerts
                     </Button>
@@ -1585,7 +1585,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">Avg Response Time:</span>
-                        <span className="text-blue-400 font-bold">147ms</span>
+                        <span className="text-[#0A0F2E] font-bold">147ms</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-800">False Positives:</span>
@@ -1598,7 +1598,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Activity className="h-5 w-5 text-blue-500" />
+                      <Activity className="h-5 w-5 text-[#0A0F2E]" />
                       Real-time Trigger Dashboard
                     </CardTitle>
                   </CardHeader>
@@ -1693,7 +1693,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Target className="h-5 w-5 text-blue-500" />
+                      <Target className="h-5 w-5 text-[#0A0F2E]" />
                       Strategic Triggers
                     </CardTitle>
                   </CardHeader>
@@ -1712,7 +1712,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="text-xs text-gray-800 dark:text-slate-200">Technology trend analysis</div>
                       </div>
                     </div>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-xs">
+                    <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-xs">
                       <Target className="h-3 w-3 mr-1" />
                       Strategic Settings
                     </Button>
@@ -1725,7 +1725,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Brain className="h-5 w-5 text-purple-500" />
+                      <Brain className="h-5 w-5 text-[#C9A84C]" />
                       AI-Powered Trigger Learning
                     </CardTitle>
                   </CardHeader>
@@ -1734,7 +1734,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div className="p-3 bg-gray-50 rounded">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-gray-900 font-medium text-sm">Pattern Recognition Model</span>
-                          <Badge variant="outline" className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">LEARNING</Badge>
+                          <Badge variant="outline" className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30 text-xs">LEARNING</Badge>
                         </div>
                         <div className="text-xs text-gray-800 dark:text-slate-200">Analyzing 47,892 historical trigger events</div>
                         <Progress value={73} className="h-1 mt-2" />
@@ -1783,7 +1783,7 @@ export default function UnifiedEnterprisePlatform() {
 
             <TabsContent value="c-suite-copilot" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="copilot-content">
               {/* Executive Co-pilot Header */}
-              <Card className="bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900">
+              <Card className="bg-gradient-to-r from-[#0A0F2E] to-pink-600 text-gray-900">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <Command className="h-6 w-6" />
@@ -1805,7 +1805,7 @@ export default function UnifiedEnterprisePlatform() {
                       <div className="text-sm opacity-90">Decisions Supported</div>
                     </div>
                   </div>
-                  <Button className="w-full mt-4 bg-white text-purple-800 hover:bg-gray-100">
+                  <Button className="w-full mt-4 bg-white text-[#C9A84C] hover:bg-gray-100">
                     <Brain className="h-4 w-4 mr-2" />
                     Launch Executive Assistant
                   </Button>
@@ -1816,7 +1816,7 @@ export default function UnifiedEnterprisePlatform() {
               <Card className="border-gray-200 bg-white backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-gray-900">
-                    <Brain className="h-5 w-5 text-purple-500" />
+                    <Brain className="h-5 w-5 text-[#C9A84C]" />
                     Advanced AI Strategic Recommendations
                     <Badge variant="outline" className="ml-2">ML-Powered</Badge>
                   </CardTitle>
@@ -1824,14 +1824,14 @@ export default function UnifiedEnterprisePlatform() {
                 <CardContent>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     {aiRecommendations.map((rec) => (
-                      <Card key={rec.id} className="border-l-4 border-l-purple-500 bg-gray-50">
+                      <Card key={rec.id} className="border-l-4 border-l-[#0A0F2E] bg-gray-50">
                         <CardContent className="p-4">
                           <div className="flex justify-between items-start mb-2">
                             <Badge variant={rec.priority === 'critical' ? 'destructive' : rec.priority === 'high' ? 'default' : 'secondary'}>
                               {rec.priority.toUpperCase()}
                             </Badge>
                             <div className="flex items-center gap-1">
-                              <Brain className="h-4 w-4 text-purple-800" />
+                              <Brain className="h-4 w-4 text-[#C9A84C]" />
                               <span className="text-xs text-gray-800">{rec.confidence}% confidence</span>
                             </div>
                           </div>
@@ -1842,7 +1842,7 @@ export default function UnifiedEnterprisePlatform() {
                               <span className="text-sm font-medium text-green-400">{rec.impact}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <Clock className="h-4 w-4 text-blue-800" />
+                              <Clock className="h-4 w-4 text-[#0A0F2E]" />
                               <span className="text-sm text-gray-800">{rec.timeframe}</span>
                             </div>
                             <div className="text-xs text-gray-800 dark:text-slate-200">
@@ -1861,7 +1861,7 @@ export default function UnifiedEnterprisePlatform() {
                 <Card className="border-gray-200 bg-white backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
-                      <Command className="h-5 w-5 text-blue-500" />
+                      <Command className="h-5 w-5 text-[#0A0F2E]" />
                       Executive Command Center
                     </CardTitle>
                   </CardHeader>
@@ -1871,7 +1871,7 @@ export default function UnifiedEnterprisePlatform() {
                         <AlertTriangle className="h-4 w-4 mr-2" />
                         Crisis Mode
                       </Button>
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Target className="h-4 w-4 mr-2" />
                         Strategic Session
                       </Button>
@@ -1879,7 +1879,7 @@ export default function UnifiedEnterprisePlatform() {
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Operations Review
                       </Button>
-                      <Button className="bg-purple-600 hover:bg-purple-700">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Brain className="h-4 w-4 mr-2" />
                         AI Insights
                       </Button>
@@ -1896,7 +1896,7 @@ export default function UnifiedEnterprisePlatform() {
                         </div>
                         <div className="flex justify-between">
                           <span>Action Items:</span>
-                          <span className="text-blue-400 font-bold">23</span>
+                          <span className="text-[#0A0F2E] font-bold">23</span>
                         </div>
                       </div>
                     </div>
@@ -1922,14 +1922,14 @@ export default function UnifiedEnterprisePlatform() {
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">Market Share</span>
-                          <span className="text-blue-400 font-bold">18.3%</span>
+                          <span className="text-[#0A0F2E] font-bold">18.3%</span>
                         </div>
                         <Progress value={73.3} className="h-2" />
                       </div>
                       <div>
                         <div className="flex justify-between text-sm mb-1">
                           <span className="text-gray-800">Customer Satisfaction</span>
-                          <span className="text-purple-400 font-bold">96.2%</span>
+                          <span className="text-[#C9A84C] font-bold">96.2%</span>
                         </div>
                         <Progress value={96.2} className="h-2" />
                       </div>

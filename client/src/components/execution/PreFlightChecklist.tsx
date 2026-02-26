@@ -45,7 +45,7 @@ const severityConfig = {
   blocking: { icon: AlertCircle, color: "text-red-500", bg: "bg-red-500/10", badge: "destructive" as const },
   critical: { icon: AlertTriangle, color: "text-orange-500", bg: "bg-orange-500/10", badge: "destructive" as const },
   warning: { icon: AlertTriangle, color: "text-yellow-500", bg: "bg-yellow-500/10", badge: "secondary" as const },
-  info: { icon: Info, color: "text-blue-500", bg: "bg-blue-500/10", badge: "outline" as const },
+  info: { icon: Info, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/10", badge: "outline" as const },
 };
 
 const categoryConfig = {
@@ -167,7 +167,7 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
           {result.canProceed ? (
             <>
               <CheckCircle2 className="h-5 w-5 text-green-500" />
-              <span className="font-medium text-emerald-800 dark:text-green-400" data-testid="status-ready">
+              <span className="font-medium text-[#2B8A6E] dark:text-green-400" data-testid="status-ready">
                 Ready for Activation
               </span>
             </>

@@ -341,7 +341,7 @@ export default function LiveDrillExecution() {
                         key={task.id}
                         className={`p-3 rounded-lg border ${
                           isActive 
-                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-950' 
+                            ? 'border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]' 
                             : isCompleted 
                             ? 'border-gray-300 dark:border-gray-700 opacity-50'
                             : 'border-gray-200 dark:border-gray-800'
@@ -354,8 +354,8 @@ export default function LiveDrillExecution() {
                               <span className="text-xs font-mono text-muted-foreground">
                                 {task.timing}
                               </span>
-                              {isCompleted && <CheckCircle className="h-4 w-4 text-emerald-700" />}
-                              {isActive && <AlertTriangle className="h-4 w-4 text-blue-800 animate-pulse" />}
+                              {isCompleted && <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />}
+                              {isActive && <AlertTriangle className="h-4 w-4 text-[#0A0F2E] animate-pulse" />}
                             </div>
                             <div className="font-medium text-sm">{task.taskName}</div>
                             <div className="text-xs text-muted-foreground mt-1">

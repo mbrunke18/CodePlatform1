@@ -25,10 +25,10 @@ import { BrandStamp } from "@/components/BrandStamp";
 
 export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
   const enterpriseKPIs = [
-    { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-emerald-700" },
-    { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-blue-800" },
-    { title: "User Adoption", value: "94%", target: "98%", progress: 94, color: "text-purple-800" },
-    { title: "Cost Efficiency", value: "$847K", target: "$1.2M", progress: 85, color: "text-orange-600" }
+    { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-[#2B8A6E]" },
+    { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-[#0A0F2E]" },
+    { title: "User Adoption", value: "94%", target: "98%", progress: 94, color: "text-[#C9A84C]" },
+    { title: "Cost Efficiency", value: "$847K", target: "$1.2M", progress: 85, color: "text-[#C9A84C]" }
   ];
 
   const scalabilityMetrics = [
@@ -67,26 +67,26 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <div className="flex-1 page-background overflow-auto bg-[#F8F7F4]">
         <div className="p-8">
           {/* Enterprise Metrics Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                <Building className="w-7 h-7 text-gray-900" />
+              <div className="w-12 h-12 bg-[#0A0F2E] rounded-xl flex items-center justify-center">
+                <Building className="w-7 h-7 text-[#C9A84C]" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Enterprise Metrics Center</h1>
-                <p className="text-gray-800 dark:text-gray-300">Platform Performance & Enterprise Integration Hub</p>
+                <h1 className="text-3xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Enterprise Metrics Center</h1>
+                <p className="text-[#6B7280]">Platform Performance & Enterprise Integration Hub</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
               <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge variant="outline" className="text-emerald-700 border-green-500/50">
+              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 bg-[#2B8A6E]/5">
                 <CheckCircle className="w-3 h-3 mr-1" />
                 Enterprise Ready
               </Badge>
-              <Badge className="bg-orange-600 text-gray-900">
+              <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
                 Fortune 1000
               </Badge>
             </div>
@@ -95,15 +95,15 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
           {/* Enterprise KPIs */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {enterpriseKPIs.map((kpi, index) => (
-              <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card key={index} className="bg-white border-[#E8E4DC]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-400">{kpi.title}</CardTitle>
+                  <CardTitle className="text-sm font-medium text-[#6B7280]">{kpi.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{kpi.value}</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{kpi.value}</div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-800 dark:text-gray-400">Target: {kpi.target}</span>
+                      <span className="text-[#6B7280]">Target: {kpi.target}</span>
                       <span className={kpi.color}>{kpi.progress}%</span>
                     </div>
                     <Progress value={kpi.progress} className="h-2" />
@@ -115,65 +115,65 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             {/* Scalability Dashboard */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Database className="w-5 h-5 mr-2 text-blue-500" />
+                <CardTitle className="flex items-center text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Database className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                   Platform Scalability Metrics
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {scalabilityMetrics.map((metric, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                       <div>
-                        <h4 className="font-medium text-gray-900 dark:text-white">{metric.metric}</h4>
-                        <p className="text-sm text-gray-800 dark:text-gray-400">{metric.value}</p>
+                        <h4 className="font-medium text-[#0A0F2E]">{metric.metric}</h4>
+                        <p className="text-sm text-[#6B7280]">{metric.value}</p>
                       </div>
                       <Badge 
                         variant={metric.status === 'Optimal' || metric.status === 'Excellent' ? 'default' : 'secondary'}
-                        className={metric.status === 'Optimal' || metric.status === 'Excellent' ? 'bg-green-600' : ''}
+                        className={metric.status === 'Optimal' || metric.status === 'Excellent' ? 'bg-[#2B8A6E] text-white' : 'bg-[#E8E4DC] text-[#0A0F2E]'}
                       >
                         {metric.status}
                       </Badge>
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-4" variant="outline" data-testid="button-detailed-performance">
+                <Button className="w-full mt-4 border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5" variant="outline" data-testid="button-detailed-performance">
                   View Detailed Performance Reports
                 </Button>
               </CardContent>
             </Card>
 
             {/* Integration Hub */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Globe className="w-5 h-5 mr-2 text-green-500" />
+                <CardTitle className="flex items-center text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Globe className="w-5 h-5 mr-2 text-[#2B8A6E]" />
                   Enterprise Integration Hub
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {integrationCapabilities.map((integration, index) => (
-                    <div key={index} className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                    <div key={index} className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-gray-900 dark:text-white">{integration.system}</h4>
-                        <Badge variant="default" className="bg-green-600">
+                        <h4 className="font-semibold text-[#0A0F2E]">{integration.system}</h4>
+                        <Badge variant="default" className="bg-[#2B8A6E] text-white">
                           {integration.status}
                         </Badge>
                       </div>
-                      <div className="text-sm text-gray-800 dark:text-gray-400 mb-2">
+                      <div className="text-sm text-[#6B7280] mb-2">
                         {integration.providers.join(", ")}
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-800">Coverage: {integration.coverage}</span>
-                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span className="text-xs text-[#6B7280]">Coverage: {integration.coverage}</span>
+                        <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                       </div>
                     </div>
                   ))}
                 </div>
-                <Button className="w-full mt-4" data-testid="button-integration-management">
+                <Button className="w-full mt-4 bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-integration-management">
                   Manage Enterprise Integrations
                 </Button>
               </CardContent>
@@ -181,28 +181,28 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
           </div>
 
           {/* Enterprise Command Actions */}
-          <Card className="bg-gradient-to-r from-orange-500/10 to-red-500/10 border-orange-200 dark:border-orange-800">
+          <Card className="bg-[#0A0F2E]/5 border-[#C9A84C]/20">
             <CardHeader>
-              <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                <Crown className="w-5 h-5 mr-2 text-orange-500" />
+              <CardTitle className="flex items-center text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Crown className="w-5 h-5 mr-2 text-[#C9A84C]" />
                 Enterprise Command Actions
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-system-health">
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-system-health">
                   <Activity className="w-5 h-5 mr-2" />
                   System Health Check
                 </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-scale-resources">
+                <Button className="h-16 bg-[#2B8A6E] hover:bg-[#237059] text-white" data-testid="button-scale-resources">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Scale Resources
                 </Button>
-                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-security-audit">
+                <Button className="h-16 bg-[#0A0F2E] hover:bg-[#141B45] text-white" data-testid="button-security-audit">
                   <Shield className="w-5 h-5 mr-2" />
                   Security Audit
                 </Button>
-                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-performance-optimization">
+                <Button className="h-16 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold" data-testid="button-performance-optimization">
                   <Zap className="w-5 h-5 mr-2" />
                   Optimize Performance
                 </Button>

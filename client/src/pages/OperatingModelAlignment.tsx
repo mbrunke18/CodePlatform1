@@ -578,8 +578,8 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-alignment-score">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                      <BarChart3 className="w-5 h-5 text-blue-500" />
+                    <div className="w-10 h-10 rounded-lg bg-[#0A0F2E]/10 flex items-center justify-center">
+                      <BarChart3 className="w-5 h-5 text-[#0A0F2E]" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-alignment-score">{assessmentComplete ? `${overallScore}%` : '—'}</p>
@@ -617,8 +617,8 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-industry-gap">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-purple-500" />
+                    <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-[#C9A84C]" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-industry-gap">30%</p>
@@ -758,11 +758,11 @@ export default function OperatingModelAlignment() {
                         <RadarChart scores={scores} targetScores={targetScores} />
                         <div className="flex justify-center gap-6 mt-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                            <div className="w-3 h-3 rounded-full bg-[#2B8A6E]" />
                             <span className="text-sm text-muted-foreground">Current</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-blue-500 border-2 border-dashed border-blue-500" />
+                            <div className="w-3 h-3 rounded-full bg-[#0A0F2E] border-2 border-dashed border-[#0A0F2E]" />
                             <span className="text-sm text-muted-foreground">Target</span>
                           </div>
                         </div>
@@ -788,7 +788,7 @@ export default function OperatingModelAlignment() {
                                 <span className="text-sm w-24 shrink-0">{element}</span>
                                 <Progress value={score} className="flex-1 h-2" data-testid={`progress-${elementId}`} />
                                 <span className={`text-sm font-medium w-12 text-right ${
-                                  score >= 80 ? 'text-emerald-700' :
+                                  score >= 80 ? 'text-[#2B8A6E]' :
                                   score >= 60 ? 'text-[#C9A84C]' : 'text-red-700'
                                 }`} data-testid={`score-${elementId}`}>
                                   {score}%
@@ -977,22 +977,22 @@ export default function OperatingModelAlignment() {
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-500/5">
-                              <Target className="w-5 h-5 text-blue-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                              <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Operating model redesign</p>
                                 <p className="text-xs text-muted-foreground">Address lowest-scoring elements systematically</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-500/5">
-                              <Target className="w-5 h-5 text-blue-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                              <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Build playbook library</p>
                                 <p className="text-xs text-muted-foreground">Customize 20+ playbooks to your context</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-blue-500/5">
-                              <Target className="w-5 h-5 text-blue-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                              <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Leadership alignment program</p>
                                 <p className="text-xs text-muted-foreground">Train executives on playbook activation</p>

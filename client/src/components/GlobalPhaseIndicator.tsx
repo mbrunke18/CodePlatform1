@@ -22,8 +22,8 @@ export default function GlobalPhaseIndicator({
       id: 'identify', 
       label: 'IDENTIFY', 
       icon: Target, 
-      color: 'text-violet-400', 
-      bgColor: 'bg-violet-500',
+      color: 'text-[#C9A84C]', 
+      bgColor: 'bg-[#0A0F2E]',
       score: scores.identify,
       path: '/playbook-library'
     },
@@ -31,8 +31,8 @@ export default function GlobalPhaseIndicator({
       id: 'detect', 
       label: 'DETECT', 
       icon: Radio, 
-      color: 'text-blue-400', 
-      bgColor: 'bg-blue-500',
+      color: 'text-[#0A0F2E]', 
+      bgColor: 'bg-[#0A0F2E]',
       score: scores.detect,
       path: '/foresight-radar'
     },
@@ -40,8 +40,8 @@ export default function GlobalPhaseIndicator({
       id: 'execute', 
       label: 'EXECUTE', 
       icon: Zap, 
-      color: 'text-emerald-400', 
-      bgColor: 'bg-emerald-500',
+      color: 'text-[#2B8A6E]', 
+      bgColor: 'bg-[#2B8A6E]',
       score: scores.execute,
       path: '/command-center'
     },

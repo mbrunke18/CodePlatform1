@@ -219,7 +219,7 @@ export default function ProactiveRadar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="p-2 bg-blue-100 rounded-lg">
-            <Radar className="h-6 w-6 text-blue-600" />
+            <Radar className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>
             <h2 className="text-2xl font-bold">Proactive AI Radar</h2>
@@ -230,7 +230,7 @@ export default function ProactiveRadar() {
         <Button 
           onClick={() => scanMutation.mutate()}
           disabled={scanMutation.isPending}
-          className="bg-blue-600 hover:bg-blue-700"
+          className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
           data-testid="button-manual-scan"
         >
           {scanMutation.isPending ? (

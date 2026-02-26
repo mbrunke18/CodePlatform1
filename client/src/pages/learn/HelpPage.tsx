@@ -9,7 +9,7 @@ const resources = [
     title: 'Documentation',
     description: 'Comprehensive guides and API reference',
     action: 'Browse Docs',
-    color: 'text-blue-500'
+    color: 'text-[#0A0F2E]'
   },
   {
     icon: Video,
@@ -30,7 +30,7 @@ const resources = [
     title: 'Community',
     description: 'Connect with other Execution OS users',
     action: 'Join Community',
-    color: 'text-purple-500'
+    color: 'text-[#C9A84C]'
   }
 ];
 

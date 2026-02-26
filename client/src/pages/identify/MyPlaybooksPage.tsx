@@ -72,7 +72,7 @@ export default function MyPlaybooksPage() {
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-3">
-                <Users className="w-8 h-8 text-blue-500" />
+                <Users className="w-8 h-8 text-[#0A0F2E]" />
                 <div>
                   <div className="text-2xl font-bold">--</div>
                   <div className="text-xs text-muted-foreground">Stakeholders</div>

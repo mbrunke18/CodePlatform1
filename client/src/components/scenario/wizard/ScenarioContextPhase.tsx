@@ -31,14 +31,14 @@ const SCENARIO_TYPE_OPTIONS = [
     label: 'Transformation', 
     icon: Zap, 
     description: 'Digital transformation, org change, process reengineering',
-    color: 'text-purple-400'
+    color: 'text-[#C9A84C]'
   },
   { 
     value: 'operational', 
     label: 'Operational', 
     icon: Target, 
     description: 'Day-to-day operations, efficiency improvements',
-    color: 'text-blue-400'
+    color: 'text-[#0A0F2E]'
   },
 ];
 
@@ -62,12 +62,12 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
   return (
     <div className="space-y-6">
       {/* AI Suggestion Banner */}
-      <Card className="border-purple-500/30 bg-purple-950/20">
+      <Card className="border-[#C9A84C]/30 bg-[#C9A84C]/20">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Lightbulb className="h-5 w-5 text-purple-400 mt-0.5" />
+            <Lightbulb className="h-5 w-5 text-[#C9A84C] mt-0.5" />
             <div>
-              <p className="text-sm text-purple-300 font-medium">AI Recommendation</p>
+              <p className="text-sm text-[#C9A84C] font-medium">AI Recommendation</p>
               <p className="text-xs text-gray-700 mt-1">
                 Start with a template scenario to get industry-standard defaults, then customize for your business.
                 Most customers only need to customize 20-30% of fields.
@@ -110,7 +110,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
       {/* Strategic Framing - Standardized Options */}
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-          <Target className="h-5 w-5 text-blue-400" />
+          <Target className="h-5 w-5 text-[#0A0F2E]" />
           Strategic Framing
         </h3>
 
@@ -130,12 +130,12 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                   data-testid={`select-scenario-type-${type.value}`}
                   className={`p-4 rounded-lg border-2 text-left transition-all ${
                     isSelected
-                      ? 'border-blue-500 bg-blue-950/30'
+                      ? 'border-blue-500 bg-[#0A0F2E]/30'
                       : 'border-gray-200 bg-white hover:border-slate-600'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className={`h-5 w-5 ${isSelected ? 'text-blue-400' : type.color}`} />
+                    <Icon className={`h-5 w-5 ${isSelected ? 'text-[#0A0F2E]' : type.color}`} />
                     <span className={`font-semibold ${isSelected ? 'text-blue-300' : 'text-gray-900'}`}>
                       {type.label}
                     </span>

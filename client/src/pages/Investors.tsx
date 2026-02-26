@@ -63,7 +63,7 @@ const metrics = [
     description: "Operating model speed improvement",
     source: "McKinsey Operating Model Research",
     icon: Clock,
-    color: "text-[#D4AF37]"
+    color: "text-[#C9A84C]"
   },
   { 
     value: "$4.88M", 
@@ -168,38 +168,42 @@ const milestones = [
 export default function Investors() {
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-b from-[#1A2B3D] via-[#0f1a26] to-[#0a0a0f]">
-        <div className="max-w-6xl mx-auto px-4 py-16">
+      <div className="min-h-screen bg-[#0A0F2E] relative overflow-hidden">
+        {/* Gold dot grid overlay */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+        
+        <div className="max-w-6xl mx-auto px-4 py-16 relative z-10">
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full px-4 py-2 mb-6">
-              <BarChart3 className="w-4 h-4 text-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-sm font-medium">Investor Overview</span>
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <div className="h-[1px] w-7 bg-[#C9A84C]" />
+              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">Investor Overview</span>
+              <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               The Strategic Execution OS for
-              <span className="text-[#D4AF37]"> Fortune 1000</span>
+              <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             
-            <p className="text-xl text-gray-900/70 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
               Execution OS transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/try-demo">
-                <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-6 h-12">
+              <Link href="/try-demo">
+                <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
                 </Button>
-              </a>
+              </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/30 text-gray-900 hover:bg-white/10 h-12 px-6 bg-transparent">
-                  <Calendar className="w-4 h-4 mr-2" />
+                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
+                  <Calendar className="w-4 h-4 mr-2 text-[#C9A84C]" />
                   Schedule Meeting
                 </Button>
               </Link>
@@ -212,7 +216,7 @@ export default function Investors() {
             transition={{ delay: 0.1 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Market Validation</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-8">Market Validation</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {metrics.map((metric, i) => (
                 <motion.div
@@ -226,8 +230,8 @@ export default function Investors() {
                     <metric.icon className={`w-5 h-5 ${metric.color}`} />
                   </div>
                   <p className={`text-3xl font-bold mb-1 ${metric.color}`}>{metric.value}</p>
-                  <p className="text-gray-900 font-medium text-sm mb-1">{metric.label}</p>
-                  <p className="text-gray-900/50 text-xs mb-2">{metric.description}</p>
+                  <p className="text-white font-medium text-sm mb-1">{metric.label}</p>
+                  <p className="text-white/50 text-xs mb-2">{metric.description}</p>
                   <p className="text-[#00A8A8] text-xs font-medium">{metric.source}</p>
                 </motion.div>
               ))}
@@ -240,8 +244,8 @@ export default function Investors() {
             transition={{ delay: 0.2 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">The Problem We Solve</h2>
-            <p className="text-gray-900/50 text-center text-sm mb-8">Strategic execution fails at massive scale</p>
+            <h2 className="text-2xl font-bold text-white text-center mb-3">The Problem We Solve</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Strategic execution fails at massive scale</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industryProblems.map((problem, i) => (
                 <motion.div
@@ -255,9 +259,9 @@ export default function Investors() {
                     <problem.icon className={`w-5 h-5 ${problem.color}`} />
                   </div>
                   <p className={`text-3xl font-bold mb-1 ${problem.color}`}>{problem.value}</p>
-                  <p className="text-gray-900 font-medium text-sm mb-1">{problem.label}</p>
-                  <p className="text-gray-900/50 text-xs mb-2">{problem.description}</p>
-                  <p className="text-gray-900/40 text-xs">{problem.source}</p>
+                  <p className="text-white font-medium text-sm mb-1">{problem.label}</p>
+                  <p className="text-white/50 text-xs mb-2">{problem.description}</p>
+                  <p className="text-white/40 text-xs">{problem.source}</p>
                 </motion.div>
               ))}
             </div>
@@ -269,8 +273,8 @@ export default function Investors() {
             transition={{ delay: 0.25 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">Proven Across Critical Scenarios</h2>
-            <p className="text-gray-900/50 text-center text-sm mb-8">Same situations. Radically different outcomes.</p>
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Proven Across Critical Scenarios</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Same situations. Radically different outcomes.</p>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {scenarioComparisons.map((scenario, i) => (
                 <motion.div
@@ -283,12 +287,12 @@ export default function Investors() {
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl">{scenario.icon}</span>
                     <div>
-                      <h3 className="text-gray-900 font-bold">{scenario.title}</h3>
-                      <p className="text-gray-900/40 text-xs">{scenario.industry}</p>
+                      <h3 className="text-white font-bold">{scenario.title}</h3>
+                      <p className="text-white/40 text-xs">{scenario.industry}</p>
                     </div>
                     <span className={`ml-auto text-xs font-semibold px-2 py-1 rounded-full ${
                       scenario.type === 'offense' 
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                        ? 'bg-[#2B8A6E]/20 text-[#2B8A6E] border border-[#2B8A6E]/30' 
                         : 'bg-red-500/20 text-red-400 border border-red-500/30'
                     }`}>
                       {scenario.type === 'offense' ? 'OFFENSE' : 'DEFENSE'}
@@ -309,18 +313,18 @@ export default function Investors() {
                   </div>
                   
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="flex-1 h-2 bg-gray-50 rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '100%' }} />
                     </div>
                     <span className="text-[#00A8A8] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
-                    <div className="w-6 h-2 bg-gray-50 rounded-full overflow-hidden">
+                    <div className="w-6 h-2 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-[#00A8A8] to-emerald-500 rounded-full" style={{ width: '100%' }} />
                     </div>
                   </div>
                   
                   <div className="space-y-1">
                     {scenario.proofPoints.map((point, j) => (
-                      <p key={j} className="text-gray-900/50 text-xs flex items-start gap-1.5">
+                      <p key={j} className="text-white/50 text-xs flex items-start gap-1.5">
                         <CheckCircle className="w-3 h-3 text-[#00A8A8] flex-shrink-0 mt-0.5" />
                         {point}
                       </p>
@@ -330,13 +334,14 @@ export default function Investors() {
               ))}
             </div>
             <div className="text-center">
-              <button
-                onClick={() => { window.location.href = '/try-demo'; }}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-emerald-500 text-gray-900 font-semibold rounded-xl hover:opacity-90 transition-all"
-              >
-                <Play className="w-4 h-4" />
-                Experience the Interactive Scenario Demo
-              </button>
+              <Link href="/try-demo">
+                <Button
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-emerald-500 text-[#0A0F2E] font-semibold rounded-xl hover:opacity-90 transition-all"
+                >
+                  <Play className="w-4 h-4" />
+                  Experience the Interactive Scenario Demo
+                </Button>
+              </Link>
             </div>
           </motion.div>
 
@@ -346,8 +351,8 @@ export default function Investors() {
             transition={{ delay: 0.35 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">Complete End-to-End Platform</h2>
-            <p className="text-gray-900/50 text-center text-sm mb-8">From signal detection to coordinated execution in 12 minutes</p>
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Complete End-to-End Platform</h2>
+            <p className="text-white/50 text-center text-sm mb-8">From signal detection to coordinated execution in 12 minutes</p>
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src={productArchitectureImg}
@@ -364,7 +369,7 @@ export default function Investors() {
             transition={{ delay: 0.4 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Competitive Advantages</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-8">Competitive Advantages</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {competitiveAdvantages.map((advantage, i) => (
                 <motion.div
@@ -375,12 +380,12 @@ export default function Investors() {
                   className="bg-white/5 border border-white/10 rounded-xl p-6"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/10 flex items-center justify-center flex-shrink-0">
-                      <advantage.icon className="w-6 h-6 text-[#D4AF37]" />
+                    <div className="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
+                      <advantage.icon className="w-6 h-6 text-[#C9A84C]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{advantage.title}</h3>
-                      <p className="text-gray-900/60 text-sm">{advantage.description}</p>
+                      <h3 className="text-lg font-bold text-white mb-2">{advantage.title}</h3>
+                      <p className="text-white/60 text-sm">{advantage.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -394,21 +399,21 @@ export default function Investors() {
             transition={{ delay: 0.5 }}
             className="mb-20 bg-white/5 border border-white/10 rounded-2xl p-8"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">The IDEA Framework</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-8">The IDEA Framework</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
-                { phase: "IDENTIFY", module: "Playbook™", desc: "Build and customize strategic playbooks", color: "bg-[#D4AF37]" },
+                { phase: "IDENTIFY", module: "Playbook™", desc: "Build and customize strategic playbooks", color: "bg-[#C9A84C]" },
                 { phase: "DETECT", module: "Signal™", desc: "AI-powered signal monitoring", color: "bg-[#00A8A8]" },
                 { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#00A8A8]" },
-                { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#D4AF37]" },
+                { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#C9A84C]" },
               ].map((phase, i) => (
                 <div key={i} className="text-center">
                   <div className={`w-12 h-12 mx-auto mb-3 rounded-full ${phase.color} flex items-center justify-center text-black font-bold text-lg`}>
                     {phase.phase[0]}
                   </div>
-                  <p className="text-gray-900 font-bold mb-1">{phase.phase}</p>
-                  <p className="text-[#D4AF37] text-xs mb-2 flex items-center justify-center"><SubBrandLabel name={phase.module} size={11} /></p>
-                  <p className="text-gray-900/50 text-xs">{phase.desc}</p>
+                  <p className="text-white font-bold mb-1">{phase.phase}</p>
+                  <p className="text-[#C9A84C] text-xs mb-2 flex items-center justify-center"><SubBrandLabel name={phase.module} size={11} /></p>
+                  <p className="text-white/50 text-xs">{phase.desc}</p>
                 </div>
               ))}
             </div>
@@ -420,8 +425,8 @@ export default function Investors() {
             transition={{ delay: 0.55 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">Built for Today. Positioned for Tomorrow.</h2>
-            <p className="text-gray-900/50 text-center text-sm mb-8">Selling pain relief today while building the operating layer for the AI era</p>
+            <h2 className="text-2xl font-bold text-white text-center mb-3">Built for Today. Positioned for Tomorrow.</h2>
+            <p className="text-white/50 text-center text-sm mb-8">Selling pain relief today while building the operating layer for the AI era</p>
             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src={futurePositioningImg}
@@ -438,13 +443,13 @@ export default function Investors() {
             transition={{ delay: 0.6 }}
             className="mb-20"
           >
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Product Roadmap</h2>
+            <h2 className="text-2xl font-bold text-white text-center mb-8">Product Roadmap</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {milestones.map((milestone, i) => (
                 <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                     i === 0 ? "bg-green-500/20 text-green-400" :
-                    i === 1 ? "bg-[#D4AF37]/20 text-[#D4AF37]" :
+                    i === 1 ? "bg-[#C9A84C]/20 text-[#C9A84C]" :
                     "bg-[#00A8A8]/20 text-[#00A8A8]"
                   }`}>
                     {i === 0 ? <CheckCircle className="w-3 h-3" /> : i === 1 ? <Zap className="w-3 h-3" /> : <Target className="w-3 h-3" />}
@@ -452,8 +457,8 @@ export default function Investors() {
                   </div>
                   <ul className="space-y-2">
                     {milestone.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-gray-900/70">
-                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${i === 0 ? "text-green-400" : "text-gray-900/30"}`} />
+                      <li key={j} className="flex items-start gap-2 text-sm text-white/70">
+                        <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${i === 0 ? "text-green-400" : "text-white/30"}`} />
                         {item}
                       </li>
                     ))}
@@ -471,25 +476,25 @@ export default function Investors() {
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Target Market</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">Target Market</h2>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-[#D4AF37]" />
-                    <span className="text-gray-900">Fortune 1000 enterprises</span>
+                    <Globe className="w-5 h-5 text-[#C9A84C]" />
+                    <span className="text-white">Fortune 1000 enterprises</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Building className="w-5 h-5 text-[#00A8A8]" />
-                    <span className="text-gray-900">Complex, multi-domain organizations</span>
+                    <span className="text-white">Complex, multi-domain organizations</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5 text-[#D4AF37]" />
-                    <span className="text-gray-900">C-suite and strategic leadership teams</span>
+                    <Users className="w-5 h-5 text-[#C9A84C]" />
+                    <span className="text-white">C-suite and strategic leadership teams</span>
                   </div>
                 </div>
               </div>
-              <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl p-6">
-                <p className="text-[#D4AF37] font-bold text-lg mb-2">Why Now?</p>
-                <ul className="space-y-2 text-gray-900/70 text-sm">
+              <div className="bg-[#C9A84C]/10 border border-[#D4AF37]/30 rounded-xl p-6">
+                <p className="text-[#C9A84C] font-bold text-lg mb-2">Why Now?</p>
+                <ul className="space-y-2 text-white/70 text-sm">
                   <li>• AI disruption accelerating strategic uncertainty</li>
                   <li>• Regulatory windows shrinking globally</li>
                   <li>• Remote work fragmented institutional knowledge</li>
@@ -505,29 +510,29 @@ export default function Investors() {
             transition={{ delay: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Ready to Learn More?</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">Ready to Learn More?</h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="/try-demo">
-                <Button className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
+              <Link href="/try-demo">
+                <Button className="bg-[#C9A84C] hover:bg-[#c9a432] text-black font-semibold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Interactive Demo
                 </Button>
-              </a>
-              <a href="/try-demo">
+              </Link>
+              <Link href="/try-demo">
                 <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8 bg-transparent">
                   <FileText className="w-4 h-4 mr-2" />
                   Scenario Comparisons
                 </Button>
-              </a>
+              </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-white/30 text-gray-900 hover:bg-white/10 h-12 px-8 bg-transparent">
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 bg-transparent">
                   <Calendar className="w-4 h-4 mr-2" />
                   Schedule Call
                 </Button>
               </Link>
             </div>
             
-            <p className="text-gray-900/40 text-sm mt-8">
+            <p className="text-white/40 text-sm mt-8">
               Execution OS • Strategic Execution OS • Execute Decisions at Scale
             </p>
           </motion.div>
@@ -538,19 +543,19 @@ export default function Investors() {
             transition={{ delay: 1 }}
             className="mt-20 pt-12 border-t border-white/10"
           >
-            <h3 className="text-sm font-semibold text-gray-900/60 mb-6 text-center">Research Sources & Citations</h3>
+            <h3 className="text-sm font-semibold text-white/60 mb-6 text-center">Research Sources & Citations</h3>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {researchCitations.map((citation) => (
-                <div key={citation.id} className="text-xs text-gray-900/40 p-3 bg-white/5 rounded-lg">
-                  <span className="text-gray-900/60 font-medium">[{citation.id}]</span>{' '}
+                <div key={citation.id} className="text-xs text-white/40 p-3 bg-white/5 rounded-lg">
+                  <span className="text-white/60 font-medium">[{citation.id}]</span>{' '}
                   <span className="text-[#00A8A8]">{citation.source}</span>{' '}
                   <span className="italic">"{citation.title}"</span>{' '}
                   <span>({citation.year})</span>
-                  <p className="mt-1 text-gray-900/30">{citation.finding}</p>
+                  <p className="mt-1 text-white/30">{citation.finding}</p>
                 </div>
               ))}
             </div>
-            <p className="text-center text-gray-900/30 text-xs mt-6">
+            <p className="text-center text-white/30 text-xs mt-6">
               All statistics sourced from publicly available industry research. Execution OS internal metrics (12-minute activation) based on platform capabilities.
             </p>
           </motion.div>

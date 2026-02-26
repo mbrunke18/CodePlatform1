@@ -116,21 +116,21 @@ export default function PrismInsights() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      blue: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-      purple: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
-      orange: 'text-orange-400 bg-orange-500/10 border-orange-500/30'
+      emerald: 'text-[#2B8A6E] bg-[#2B8A6E]/10 border-[#2B8A6E]/30',
+      blue: 'text-[#0A0F2E] bg-[#0A0F2E]/10 border-[#0A0F2E]/30',
+      purple: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30',
+      orange: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30'
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'critical': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
+      case 'critical': return 'bg-red-500/20 text-red-600 border-red-500/30';
+      case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      default: return 'bg-gray-500/20 text-[#6B7280] border-gray-500/30';
     }
   };
 
@@ -140,62 +140,63 @@ export default function PrismInsights() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-transparent p-6" data-testid="prism-insights">
+      <div className="bg-[#F8F7F4] min-h-screen p-6" data-testid="prism-insights">
         <div className="max-w-7xl mx-auto space-y-8">
           
           {/* Breadcrumb Navigation */}
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
+            <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#0A0F2E]/5 p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
-              <span>/</span>
-              <span>AI Intelligence</span>
-              <span>/</span>
-              <span className="text-gray-900">Prism Insights</span>
+              <span className="text-[#6B7280]">/</span>
+              <span className="text-[#6B7280]">AI Intelligence</span>
+              <span className="text-[#6B7280]">/</span>
+              <span className="text-[#0A0F2E] font-medium">Prism Insights</span>
             </div>
           </div>
 
-          {/* ROI Value Context - Tier 2 Enhancement */}
-          <Card className="mb-4 bg-purple-50 dark:bg-purple-950/20 border-purple-300 dark:border-purple-700" data-testid="prism-roi-context">
+          {/* ROI Value Context */}
+          <Card className="mb-4 bg-[#0A0F2E]/5 border-[#E8E4DC]" data-testid="prism-roi-context">
             <CardContent className="p-3 flex items-center gap-3">
-              <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                <Layers className="h-5 w-5 text-purple-800" />
+              <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                <Layers className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div>
-                <div className="font-semibold text-purple-900 dark:text-purple-100 text-sm">How Prism Saves You Money</div>
-                <div className="text-xs text-purple-700 dark:text-purple-300">Automates 40 hours/month of stakeholder analysis, saving $180K+ annually in executive time</div>
+                <div className="font-semibold text-[#0A0F2E] text-sm">How Prism Saves You Money</div>
+                <div className="text-xs text-[#6B7280]">Automates 40 hours/month of stakeholder analysis, saving $180K+ annually in executive time</div>
               </div>
             </CardContent>
           </Card>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900 p-6 rounded-lg">
-            <div className="flex items-center justify-between">
+          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+            <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Layers className="h-10 w-10" />
+                <Layers className="h-10 w-10 text-[#C9A84C]" />
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="prism-title">
+                  <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="prism-title">
                     Prism Insights
                   </h1>
-                  <p className="text-purple-800">Multi-dimensional strategic analysis and decision support intelligence</p>
+                  <p className="text-white/70">Multi-dimensional strategic analysis and decision support intelligence</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <OnboardingTrigger pageId="prism-insights" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
+                <OnboardingTrigger pageId="prism-insights" autoStart={true} className="bg-white/10 border-white/30 text-white hover:bg-white/20" />
                 <Link to="/">
-                  <Button variant="secondary" className="bg-purple-700 hover:bg-purple-800 text-purple-800 border-purple-600" data-testid="back-to-dashboard">
+                  <Button variant="outline" className="border-white/30 text-white hover:bg-white/10" data-testid="back-to-dashboard">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
                 </Link>
-                <Badge variant="secondary" className="bg-purple-700 text-purple-800 border-purple-600" data-testid="ai-analysis-badge">
+                <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" data-testid="ai-analysis-badge">
                   <Brain className="h-4 w-4 mr-2" />
                   AI ANALYSIS
                 </Badge>
-                <Button variant="secondary" className="bg-pink-600 hover:bg-pink-700 text-gray-900" data-testid="generate-report-button">
+                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="generate-report-button">
                   <Download className="h-4 w-4 mr-2" />
                   Generate Report
                 </Button>
@@ -204,12 +205,12 @@ export default function PrismInsights() {
           </div>
 
           <Tabs value={selectedDimension} onValueChange={setSelectedDimension} className="w-full">
-            <TabsList className="grid w-full grid-cols-5">
-              <TabsTrigger value="strategic" data-testid="tab-strategic">Strategic</TabsTrigger>
-              <TabsTrigger value="operational" data-testid="tab-operational">Operational</TabsTrigger>
-              <TabsTrigger value="financial" data-testid="tab-financial">Financial</TabsTrigger>
-              <TabsTrigger value="human" data-testid="tab-human">Human Capital</TabsTrigger>
-              <TabsTrigger value="all" data-testid="tab-all">All Dimensions</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-5 bg-[#E8E4DC]">
+              <TabsTrigger value="strategic" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Strategic</TabsTrigger>
+              <TabsTrigger value="operational" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Operational</TabsTrigger>
+              <TabsTrigger value="financial" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Financial</TabsTrigger>
+              <TabsTrigger value="human" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Human Capital</TabsTrigger>
+              <TabsTrigger value="all" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">All Dimensions</TabsTrigger>
             </TabsList>
 
             <TabsContent value={selectedDimension} className="space-y-6">
@@ -237,7 +238,7 @@ export default function PrismInsights() {
               {/* Insights Grid */}
               <div className="space-y-6">
                 {filteredInsights.map((insight) => (
-                  <Card key={insight.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-purple-500/30 transition-colors" data-testid={`insight-${insight.id}`}>
+                  <Card key={insight.id} className="border-gray-200 bg-white backdrop-blur-sm hover:border-[#C9A84C]/30 transition-colors" data-testid={`insight-${insight.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -272,7 +273,7 @@ export default function PrismInsights() {
                           <ul className="space-y-2">
                             {insight.insights.map((item, index) => (
                               <li key={index} className="flex items-start gap-2 text-sm text-gray-800">
-                                <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <div className="w-1.5 h-1.5 bg-[#0A0F2E] rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
                             ))}
@@ -304,7 +305,7 @@ export default function PrismInsights() {
                           <BarChart3 className="h-4 w-4 mr-2" />
                           View Data
                         </Button>
-                        <Button size="sm" className="flex-1 bg-purple-600 hover:bg-purple-700">
+                        <Button size="sm" className="flex-1 bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                           <Download className="h-4 w-4 mr-2" />
                           Export Report
                         </Button>
@@ -315,7 +316,7 @@ export default function PrismInsights() {
               </div>
 
               {/* AI Summary */}
-              <Card className="border-blue-500/30 bg-blue-950/30 backdrop-blur-sm">
+              <Card className="border-[#0A0F2E]/30 bg-[#0A0F2E]/30 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-blue-300">
                     <Brain className="h-5 w-5" />
@@ -324,13 +325,13 @@ export default function PrismInsights() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="p-4 bg-purple-950/30 rounded-lg border border-purple-500/30">
-                      <p className="text-purple-300 font-medium mb-2">Strategic Convergence</p>
-                      <p className="text-purple-700 text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
+                    <div className="p-4 bg-[#C9A84C]/30 rounded-lg border border-[#C9A84C]/30">
+                      <p className="text-[#C9A84C] font-medium mb-2">Strategic Convergence</p>
+                      <p className="text-[#C9A84C] text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
                     </div>
                     <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
                       <p className="text-green-300 font-medium mb-2">Optimization Opportunity</p>
-                      <p className="text-emerald-800 text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
+                      <p className="text-[#2B8A6E] text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
                     </div>
                     <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
                       <p className="text-orange-300 font-medium mb-2">Risk-Adjusted Prioritization</p>

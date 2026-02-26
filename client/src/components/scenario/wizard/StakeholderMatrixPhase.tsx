@@ -86,7 +86,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <Plus className="h-5 w-5 text-blue-400" />
+            <Plus className="h-5 w-5 text-[#0A0F2E]" />
             Add Stakeholder
           </h3>
 
@@ -202,7 +202,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
           <Button
             onClick={addStakeholder}
             disabled={!newStakeholder.name || !newStakeholder.title}
-            className="mt-4 bg-blue-600 hover:bg-blue-700 text-gray-900"
+            className="mt-4 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
             data-testid="button-add-stakeholder"
           >
             <Plus className="h-4 w-4 mr-2" />
@@ -215,7 +215,7 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
       {data.stakeholders && data.stakeholders.length > 0 && (
         <div>
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-blue-400" />
+            <Users className="h-5 w-5 text-[#0A0F2E]" />
             Stakeholder Matrix ({data.stakeholders.length})
           </h3>
 
@@ -231,10 +231,10 @@ export default function StakeholderMatrixPhase({ data, onChange }: StakeholderMa
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <RoleIcon className="h-4 w-4 text-blue-400" />
+                          <RoleIcon className="h-4 w-4 text-[#0A0F2E]" />
                           <h4 className="font-semibold text-gray-900">{stakeholder.name}</h4>
                           {stakeholder.isExecutiveSponsor && (
-                            <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/50 text-xs">
+                            <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/50 text-xs">
                               <Crown className="h-3 w-3 mr-1" />
                               Sponsor
                             </Badge>

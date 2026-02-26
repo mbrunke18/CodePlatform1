@@ -16,36 +16,36 @@ export default function ApprovalSuccess() {
   }, []);
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-      <Card className="max-w-md w-full">
+    <div className="min-h-screen bg-[#F8F7F4] flex items-center justify-center p-4">
+      <Card className="max-w-md w-full border-[#E8E4DC] shadow-lg">
         <CardHeader className="text-center">
-          <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
-            <CheckCircle className="w-10 h-10 text-emerald-700 dark:text-green-400" />
+          <div className="mx-auto w-16 h-16 bg-[#2B8A6E]/10 rounded-full flex items-center justify-center mb-4">
+            <CheckCircle className="w-10 h-10 text-[#2B8A6E]" />
           </div>
-          <CardTitle className="text-2xl">
+          <CardTitle className="text-2xl text-[#0A0F2E]">
             {action === 'approve' ? 'Approved Successfully' : 'Action Completed'}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-gray-800">
             Your decision has been recorded and the execution will proceed accordingly.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {executionId && (
-            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-              <p className="text-sm text-gray-800 dark:text-gray-400">Execution ID</p>
-              <p className="font-mono text-sm break-all">{executionId}</p>
+            <div className="bg-[#0A0F2E]/5 p-4 rounded-lg border border-[#0A0F2E]/10">
+              <p className="text-sm text-[#0A0F2E] font-medium">Execution ID</p>
+              <p className="font-mono text-sm break-all text-gray-800">{executionId}</p>
             </div>
           )}
           
-          <div className="space-y-2 text-sm text-gray-800 dark:text-gray-400">
-            <p>✓ Your approval has been processed</p>
-            <p>✓ Stakeholders have been notified</p>
-            <p>✓ Execution will begin shortly</p>
+          <div className="space-y-2 text-sm text-gray-800">
+            <p className="flex items-center gap-2"><span className="text-[#2B8A6E]">✓</span> Your approval has been processed</p>
+            <p className="flex items-center gap-2"><span className="text-[#2B8A6E]">✓</span> Stakeholders have been notified</p>
+            <p className="flex items-center gap-2"><span className="text-[#2B8A6E]">✓</span> Execution will begin shortly</p>
           </div>
 
           <Button 
             onClick={() => setLocation('/')} 
-            className="w-full"
+            className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
             data-testid="button-return-home"
           >
             Return to Dashboard

@@ -30,8 +30,8 @@ interface ExecuteTasksStepProps {
 const SUB_PHASES = [
   { id: 'immediate' as const, label: 'Immediate', color: 'bg-red-500', description: 'First 0-5 minutes' },
   { id: 'coordinate' as const, label: 'Coordinate', color: 'bg-amber-500', description: '5-15 minutes' },
-  { id: 'resolve' as const, label: 'Resolve', color: 'bg-blue-500', description: '15-60 minutes' },
-  { id: 'close' as const, label: 'Close', color: 'bg-emerald-500', description: '60+ minutes' },
+  { id: 'resolve' as const, label: 'Resolve', color: 'bg-[#0A0F2E]', description: '15-60 minutes' },
+  { id: 'close' as const, label: 'Close', color: 'bg-[#2B8A6E]', description: '60+ minutes' },
 ];
 
 const ROLES = [

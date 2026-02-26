@@ -17,12 +17,12 @@ export default function DemoRouter() {
       duration: '6 minutes',
       description: 'See predictive AI, what-if scenarios, and 12-minute execution. Role-specific wins for CEO, COO, CISO, and more.',
       icon: Users,
-      color: 'from-blue-500 to-cyan-500',
-      borderColor: 'border-blue-500/30 hover:border-blue-500',
-      iconBg: 'bg-blue-500/20',
+      color: 'from-[#0A0F2E] to-[#3BAF8A]',
+      borderColor: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]',
+      iconBg: 'bg-[#0A0F2E]/20',
       path: '/customer-demo',
       badge: 'For Buyers',
-      badgeColor: 'bg-blue-500',
+      badgeColor: 'bg-[#0A0F2E]',
       recommended: true
     },
     {
@@ -31,12 +31,12 @@ export default function DemoRouter() {
       duration: '3 minutes',
       description: 'See a playbook activate and tasks deploy in real-time. Perfect for a quick overview.',
       icon: Zap,
-      color: 'from-emerald-500 to-teal-500',
-      borderColor: 'border-emerald-500/30 hover:border-emerald-500',
-      iconBg: 'bg-emerald-500/20',
+      color: 'from-[#2B8A6E] to-[#3BAF8A]',
+      borderColor: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]',
+      iconBg: 'bg-[#2B8A6E]/20',
       path: '/demo/live-activation',
       badge: 'Quick Start',
-      badgeColor: 'bg-emerald-500',
+      badgeColor: 'bg-[#2B8A6E]',
       recommended: false
     },
     {
@@ -45,12 +45,12 @@ export default function DemoRouter() {
       duration: '12 minutes',
       description: 'Step into the role of a Fortune 500 CSO. Experience signal detection, playbook activation, and coordinated response.',
       icon: Briefcase,
-      color: 'from-purple-500 to-violet-500',
-      borderColor: 'border-purple-500/30 hover:border-purple-500',
-      iconBg: 'bg-purple-500/20',
+      color: 'from-[#0A0F2E] to-[#141B45]',
+      borderColor: 'border-[#C9A84C]/30 hover:border-[#C9A84C]',
+      iconBg: 'bg-[#C9A84C]/20',
       path: '/executive-simulation',
       badge: 'Deep Dive',
-      badgeColor: 'bg-purple-500',
+      badgeColor: 'bg-[#0A0F2E]',
       recommended: false
     },
     {
@@ -78,7 +78,7 @@ export default function DemoRouter() {
           {/* Header */}
           <div className="text-center mb-10">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+            <Badge className="mb-4 bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30">
               Interactive Experience
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" data-testid="heading-demo-router">
@@ -90,10 +90,10 @@ export default function DemoRouter() {
           </div>
 
           {/* Recommended Callout */}
-          <div className="mb-8 p-4 bg-gradient-to-r   border border-blue-500/30 rounded-xl">
+          <div className="mb-8 p-4 bg-gradient-to-r   border border-[#0A0F2E]/30 rounded-xl">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-blue-500/20 rounded-lg">
-                <Sparkles className="h-5 w-5 text-blue-400" />
+              <div className="p-2 bg-[#0A0F2E]/20 rounded-lg">
+                <Sparkles className="h-5 w-5 text-[#0A0F2E]" />
               </div>
               <div className="flex-1">
                 <p className="text-gray-900 font-medium mb-1">Recommended for executives</p>
@@ -103,7 +103,7 @@ export default function DemoRouter() {
                 <Button
                   onClick={() => setLocation('/customer-demo')}
                   size="sm"
-                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
+                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
                   data-testid="button-recommended-demo"
                 >
                   <Play className="h-4 w-4 mr-1.5" />
@@ -114,10 +114,10 @@ export default function DemoRouter() {
           </div>
 
           {/* AI-Native Differentiator */}
-          <div className="mb-8 p-4 bg-gradient-to-r   border border-purple-500/30 rounded-xl">
+          <div className="mb-8 p-4 bg-gradient-to-r   border border-[#C9A84C]/30 rounded-xl">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-purple-500/20 rounded-lg">
-                <TrendingUp className="h-5 w-5 text-purple-400" />
+              <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
+                <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div className="flex-1">
                 <p className="text-gray-900 font-medium mb-1">NEW: Predictive Intelligence</p>
@@ -148,7 +148,7 @@ export default function DemoRouter() {
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 md:gap-3 mb-1 flex-wrap">
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-emerald-400 transition-colors">
+                        <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-[#2B8A6E] transition-colors">
                           {demo.title}
                         </h3>
                         <Badge className={`${demo.badgeColor} text-gray-900 text-xs`}>
@@ -186,11 +186,11 @@ export default function DemoRouter() {
           </div>
 
           {/* Investor/Roadshow Resources */}
-          <div className="p-5 bg-purple-950/30 border border-purple-500/30 rounded-xl">
+          <div className="p-5 bg-[#C9A84C]/30 border border-[#C9A84C]/30 rounded-xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-purple-500/20 rounded-lg">
-                  <FileText className="h-5 w-5 text-purple-400" />
+                <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
+                  <FileText className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div>
                   <p className="text-gray-900 font-medium">Investor?</p>
@@ -201,7 +201,7 @@ export default function DemoRouter() {
                 <Button
                   variant="outline"
                   onClick={() => setLocation('/investor-demo')}
-                  className="border-purple-500/50 text-purple-300 hover:bg-purple-950 flex-1 sm:flex-initial"
+                  className="border-[#C9A84C]/50 text-[#C9A84C] hover:bg-[#0A0F2E] flex-1 sm:flex-initial"
                   data-testid="button-investor-demo"
                 >
                   Investor Demo
@@ -209,7 +209,7 @@ export default function DemoRouter() {
                 <Button
                   variant="ghost"
                   onClick={() => setLocation('/roadshow-resources')}
-                  className="text-purple-300 hover:bg-purple-950 flex-1 sm:flex-initial"
+                  className="text-[#C9A84C] hover:bg-[#0A0F2E] flex-1 sm:flex-initial"
                   data-testid="button-roadshow-resources"
                 >
                   Resources

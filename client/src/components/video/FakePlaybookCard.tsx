@@ -12,9 +12,9 @@ const icons = {
 
 const colors = {
   crisis: { bg: "from-red-500/20 to-red-600/10", border: "border-red-500/30", text: "text-red-400" },
-  market: { bg: "from-blue-500/20 to-blue-600/10", border: "border-blue-500/30", text: "text-blue-400" },
+  market: { bg: "from-[#0A0F2E]/20 to-[#141B45]/10", border: "border-blue-500/30", text: "text-[#0A0F2E]" },
   launch: { bg: "from-green-500/20 to-green-600/10", border: "border-green-500/30", text: "text-green-400" },
-  cyber: { bg: "from-purple-500/20 to-purple-600/10", border: "border-purple-500/30", text: "text-purple-400" },
+  cyber: { bg: "from-[#0A0F2E]/20 to-[#141B45]/10", border: "border-[#C9A84C]/30", text: "text-[#C9A84C]" },
   ma: { bg: "from-amber-500/20 to-amber-600/10", border: "border-amber-500/30", text: "text-amber-400" },
   regulatory: { bg: "from-teal-500/20 to-teal-600/10", border: "border-teal-500/30", text: "text-teal-400" },
 };

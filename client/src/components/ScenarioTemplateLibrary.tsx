@@ -103,7 +103,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
       case 'catastrophic': return <AlertTriangle className="h-5 w-5 text-red-600" />;
       case 'severe': return <AlertCircle className="h-5 w-5 text-orange-600" />;
       case 'significant': return <AlertCircle className="h-5 w-5 text-yellow-600" />;
-      case 'moderate': return <AlertCircle className="h-5 w-5 text-blue-600" />;
+      case 'moderate': return <AlertCircle className="h-5 w-5 text-[#0A0F2E]" />;
       default: return <CheckCircle className="h-5 w-5 text-green-600" />;
     }
   };
@@ -318,24 +318,24 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
       {/* Template Library */}
       {/* Enhanced AI Suggestions Panel */}
       {showAiSuggestions && (
-        <Card className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-200 dark:border-purple-700">
+        <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/20 dark:to-[#141B45]/20 border-[#C9A84C] dark:border-[#C9A84C]">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5 text-purple-600" />
+              <Brain className="h-5 w-5 text-[#C9A84C]" />
               AI-Powered Template Recommendations
-              <Badge className="bg-purple-100 text-purple-700">Beta</Badge>
+              <Badge className="bg-[#0A0F2E] text-[#C9A84C]">Beta</Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="border-purple-200">
+              <Card className="border-[#C9A84C]">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Wand2 className="h-4 w-4 text-purple-600" />
+                    <Wand2 className="h-4 w-4 text-[#C9A84C]" />
                     <span className="font-medium">Smart Suggestions</span>
                   </div>
                   <p className="text-sm text-gray-600">AI recommends templates based on your organization's risk profile</p>
-                  <Button size="sm" className="mt-2 bg-purple-600 hover:bg-purple-700">
+                  <Button size="sm" className="mt-2 bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                     Generate Suggestions
                   </Button>
                 </CardContent>
@@ -343,11 +343,11 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
               <Card className="border-blue-200">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Building className="h-4 w-4 text-blue-600" />
+                    <Building className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="font-medium">Industry Analysis</span>
                   </div>
                   <p className="text-sm text-gray-600">Templates optimized for your specific industry requirements</p>
-                  <Button size="sm" variant="outline" className="mt-2 border-blue-300 text-blue-600">
+                  <Button size="sm" variant="outline" className="mt-2 border-blue-300 text-[#0A0F2E]">
                     Analyze Industry
                   </Button>
                 </CardContent>
@@ -375,7 +375,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
             <div>
               <CardTitle className="flex items-center gap-2">
                 Comprehensive Template Library
-                <Badge variant="outline" className="bg-blue-50 text-blue-700">
+                <Badge variant="outline" className="bg-[#0A0F2E] text-[#0A0F2E]">
                   {filteredTemplates.length} Templates
                 </Badge>
               </CardTitle>
@@ -387,7 +387,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
               variant="outline" 
               size="sm"
               onClick={() => setShowAiSuggestions(!showAiSuggestions)}
-              className="border-purple-300 text-purple-600 hover:bg-purple-50"
+              className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#0A0F2E]"
             >
               <Brain className="h-4 w-4 mr-1" />
               AI Assist
@@ -503,7 +503,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                           {getCategoryIcon(template.category)}
                           {template.name}
                           {template.aiGenerated && (
-                            <Badge variant="outline" className="text-xs bg-purple-50 text-purple-600">
+                            <Badge variant="outline" className="text-xs bg-[#0A0F2E] text-[#C9A84C]">
                               <Brain className="h-3 w-3 mr-1" />
                               AI
                             </Badge>
@@ -540,7 +540,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                       <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                         <div className="grid grid-cols-3 gap-2 text-xs">
                           <div className="text-center">
-                            <div className="font-medium text-blue-600">{template.effectiveness.usageCount}</div>
+                            <div className="font-medium text-[#0A0F2E]">{template.effectiveness.usageCount}</div>
                             <div className="text-gray-600 dark:text-gray-300">Uses</div>
                           </div>
                           <div className="text-center">
@@ -548,7 +548,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                             <div className="text-gray-600 dark:text-gray-300">Success</div>
                           </div>
                           <div className="text-center">
-                            <div className="font-medium text-purple-600">{template.effectiveness.avgResolutionTime}</div>
+                            <div className="font-medium text-[#C9A84C]">{template.effectiveness.avgResolutionTime}</div>
                             <div className="text-gray-600 dark:text-gray-300">Avg Time</div>
                           </div>
                         </div>
@@ -556,17 +556,17 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
 
                       {/* AI Suggestions */}
                       {template.aiSuggestions && (
-                        <div className="mb-4 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-700">
+                        <div className="mb-4 p-3 bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg border border-[#C9A84C] dark:border-[#C9A84C]">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-1">
-                              <Brain className="h-3 w-3 text-purple-600" />
-                              <span className="text-xs font-medium text-purple-700">AI Insights</span>
+                              <Brain className="h-3 w-3 text-[#C9A84C]" />
+                              <span className="text-xs font-medium text-[#C9A84C]">AI Insights</span>
                             </div>
-                            <Badge variant="outline" className="text-xs border-purple-300 text-purple-600">
+                            <Badge variant="outline" className="text-xs border-[#C9A84C] text-[#C9A84C]">
                               {template.aiSuggestions.confidence}%
                             </Badge>
                           </div>
-                          <p className="text-xs text-purple-600 dark:text-purple-400">{template.aiSuggestions.reasoning}</p>
+                          <p className="text-xs text-[#C9A84C] dark:text-[#C9A84C]">{template.aiSuggestions.reasoning}</p>
                         </div>
                       )}
                       
@@ -702,7 +702,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
       {/* Data Collection Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Basic Scenario Information */}
-        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+        <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 rounded-lg">
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Basic Scenario Information</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -751,7 +751,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
               return (
                 <div key={category} className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-gray-600">
-                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#0A0F2E]"></div>
                     <h5 className="font-medium text-gray-900 dark:text-gray-100 capitalize">
                       {category.replace('-', ' ')} Information
                     </h5>
@@ -852,7 +852,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
                           />
                         )}
                         {field.helpText && (
-                          <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">💡 {field.helpText}</p>
+                          <p className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] mt-1">💡 {field.helpText}</p>
                         )}
                       </div>
                     ))}
@@ -883,7 +883,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Key Stakeholders</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {template.stakeholderMapping.slice(0, 4).map((stakeholder: any, index: number) => (
-              <Card key={index} className="bg-blue-50 dark:bg-blue-900/20">
+              <Card key={index} className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20">
                 <CardContent className="p-3">
                   <div className="flex items-center justify-between mb-2">
                     <div className="font-medium text-sm">{stakeholder.role}</div>
@@ -908,7 +908,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
           <Button 
             type="submit" 
             disabled={isLoading}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45]"
             data-testid="button-create-scenario"
           >
             {isLoading ? 'Creating Scenario...' : 'Create Strategic Scenario'}

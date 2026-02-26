@@ -43,9 +43,9 @@ const STEP_LABELS = ["Describe", "Analyze", "Playbook", "Simulate", "Report"];
 function domainColors(domain: string) {
   switch (domain) {
     case "offense":
-      return { bg: "bg-emerald-500/20", text: "text-emerald-400", border: "border-emerald-500/30", darkBg: "bg-emerald-950/30", label: "OFFENSE", realityBg: "bg-amber-950/30", realityBorder: "border-amber-500/20" };
+      return { bg: "bg-[#2B8A6E]/20", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/30", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-amber-950/30", realityBorder: "border-amber-500/20" };
     case "special_teams":
-      return { bg: "bg-purple-500/20", text: "text-purple-400", border: "border-purple-500/30", darkBg: "bg-purple-950/30", label: "SPECIAL TEAMS", realityBg: "bg-purple-950/30", realityBorder: "border-purple-500/20" };
+      return { bg: "bg-[#C9A84C]/20", text: "text-[#C9A84C]", border: "border-[#C9A84C]/30", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#C9A84C]/30", realityBorder: "border-[#C9A84C]/20" };
     default:
       return { bg: "bg-red-500/20", text: "text-red-400", border: "border-red-500/30", darkBg: "bg-red-950/30", label: "DEFENSE", realityBg: "bg-red-950/30", realityBorder: "border-red-500/20" };
   }
@@ -64,21 +64,21 @@ function DomainIcon({ domain, className }: { domain: string; className?: string 
 
 function raciColor(r: string) {
   switch (r?.toUpperCase()) {
-    case "R": return "bg-red-500/20 text-red-400 border-red-500/30";
-    case "A": return "bg-amber-500/20 text-amber-400 border-amber-500/30";
-    case "C": return "bg-blue-500/20 text-blue-400 border-blue-500/30";
-    case "I": return "bg-slate-500/20 text-gray-800 border-slate-500/30";
-    default: return "bg-slate-500/20 text-gray-800 border-slate-500/30";
+    case "R": return "bg-red-500/20 text-red-600 border-red-500/30";
+    case "A": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
+    case "C": return "bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30";
+    case "I": return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
+    default: return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
   }
 }
 
 function priorityColor(p: string) {
   switch (p?.toLowerCase()) {
-    case "critical": return "bg-red-500/20 text-red-400 border-red-500/30";
-    case "high": return "bg-amber-500/20 text-amber-400 border-amber-500/30";
-    case "medium": return "bg-blue-500/20 text-blue-400 border-blue-500/30";
-    case "low": return "bg-slate-500/20 text-gray-800 border-slate-500/30";
-    default: return "bg-slate-500/20 text-gray-800 border-slate-500/30";
+    case "critical": return "bg-red-500/20 text-red-600 border-red-500/30";
+    case "high": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
+    case "medium": return "bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30";
+    case "low": return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
+    default: return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
   }
 }
 
@@ -518,8 +518,8 @@ export default function IncidentAnalyzer() {
 
   const simBannerConfig = (() => {
     const d = activeDomain;
-    if (d === "offense") return { bg: "bg-emerald-950/30", border: "border-emerald-500/30", dotColor: "bg-emerald-400", textColor: "text-emerald-400", label: "OPPORTUNITY DETECTED" };
-    if (d === "special_teams") return { bg: "bg-purple-950/30", border: "border-purple-500/30", dotColor: "bg-purple-400", textColor: "text-purple-400", label: "INITIATIVE TRIGGERED" };
+    if (d === "offense") return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "OPPORTUNITY DETECTED" };
+    if (d === "special_teams") return { bg: "bg-[#C9A84C]/30", border: "border-[#C9A84C]/30", dotColor: "bg-[#0A0F2E]", textColor: "text-[#C9A84C]", label: "INITIATIVE TRIGGERED" };
     return { bg: "bg-teal-950/30", border: "border-teal-500/30", dotColor: "bg-teal-400", textColor: "text-teal-400", label: "Playbook Activated" };
   })();
 
@@ -549,9 +549,9 @@ export default function IncidentAnalyzer() {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {[
                   { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-teal-400" },
-                  { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-blue-400" },
-                  { num: 3, label: "Playbook", desc: "Custom playbook generated", icon: BookOpen, color: "text-emerald-400" },
-                  { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-purple-400" },
+                  { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-[#0A0F2E]" },
+                  { num: 3, label: "Playbook", desc: "Custom playbook generated", icon: BookOpen, color: "text-[#2B8A6E]" },
+                  { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-[#C9A84C]" },
                   { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-amber-400" },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
@@ -571,8 +571,8 @@ export default function IncidentAnalyzer() {
               <div className="grid md:grid-cols-3 gap-4">
                 {[
                   { domain: 'defense', label: 'DEFENSE', icon: Shield, title: 'Ransomware Attack', desc: 'Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge of the response. By then, the damage had spread to 4 other offices.', borderCls: 'border-red-500/30 hover:border-red-500/50', bgCls: 'bg-red-950/20', textCls: 'text-red-400', badgeCls: 'bg-red-500/20 text-red-400 border-red-500/30' },
-                  { domain: 'offense', label: 'OFFENSE', icon: Rocket, title: 'Missed Market Entry', desc: 'We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders and got budget approval, two competitors had already launched.', borderCls: 'border-emerald-500/30 hover:border-emerald-500/50', bgCls: 'bg-emerald-950/20', textCls: 'text-emerald-400', badgeCls: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
-                  { domain: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, title: 'Stalled Transformation', desc: 'We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent, we\'re only 30% through the original scope.', borderCls: 'border-purple-500/30 hover:border-purple-500/50', bgCls: 'bg-purple-950/20', textCls: 'text-purple-400', badgeCls: 'bg-purple-500/20 text-purple-400 border-purple-500/30' },
+                  { domain: 'offense', label: 'OFFENSE', icon: Rocket, title: 'Missed Market Entry', desc: 'We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders and got budget approval, two competitors had already launched.', borderCls: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', bgCls: 'bg-[#2B8A6E]/15', textCls: 'text-[#2B8A6E]', badgeCls: 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30' },
+                  { domain: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, title: 'Stalled Transformation', desc: 'We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent, we\'re only 30% through the original scope.', borderCls: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', bgCls: 'bg-[#C9A84C]/20', textCls: 'text-[#C9A84C]', badgeCls: 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30' },
                 ].map((preset) => (
                   <button
                     key={preset.domain}
@@ -619,7 +619,7 @@ export default function IncidentAnalyzer() {
 
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-center">
-                <div className="text-2xl font-bold text-emerald-400">58</div>
+                <div className="text-2xl font-bold text-[#2B8A6E]">58</div>
                 <div className="text-xs text-gray-800">Offense Playbooks</div>
               </div>
               <div className="w-px h-8 bg-gray-50" />
@@ -629,7 +629,7 @@ export default function IncidentAnalyzer() {
               </div>
               <div className="w-px h-8 bg-gray-50" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">52</div>
+                <div className="text-2xl font-bold text-[#C9A84C]">52</div>
                 <div className="text-xs text-gray-800">Special Teams</div>
               </div>
               <div className="w-px h-8 bg-gray-50" />
@@ -676,7 +676,7 @@ export default function IncidentAnalyzer() {
                             isActive
                               ? "bg-teal-500 text-gray-900 shadow-lg shadow-teal-500/30"
                               : isComplete
-                              ? "bg-emerald-500 text-gray-900"
+                              ? "bg-[#2B8A6E] text-gray-900"
                               : "bg-gray-50 text-gray-700"
                           }`}
                         >
@@ -684,7 +684,7 @@ export default function IncidentAnalyzer() {
                         </div>
                         <span
                           className={`text-xs font-medium ${
-                            isActive ? "text-teal-400" : isComplete ? "text-emerald-400" : "text-gray-800"
+                            isActive ? "text-teal-400" : isComplete ? "text-[#2B8A6E]" : "text-gray-800"
                           }`}
                         >
                           {label}
@@ -693,7 +693,7 @@ export default function IncidentAnalyzer() {
                       {i < STEP_LABELS.length - 1 && (
                         <div
                           className={`w-10 h-0.5 mx-1 mt-[-12px] ${
-                            currentStep > stepNum ? "bg-emerald-500" : "bg-gray-50"
+                            currentStep > stepNum ? "bg-[#2B8A6E]" : "bg-gray-50"
                           }`}
                         />
                       )}
@@ -750,12 +750,12 @@ export default function IncidentAnalyzer() {
                     onClick={() => setSelectedDomain('offense')}
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'offense'
-                        ? 'bg-emerald-500/10 border-emerald-500/50 ring-1 ring-emerald-500/30'
+                        ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50 ring-1 ring-emerald-500/30'
                         : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                     }`}
                   >
-                    <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-gray-700'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-emerald-400' : 'text-gray-800'}`}>
+                    <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-gray-700'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>
                       OFFENSE
                     </p>
                     <p className="text-xs text-gray-700 mt-0.5">58 Playbooks</p>
@@ -780,12 +780,12 @@ export default function IncidentAnalyzer() {
                     onClick={() => setSelectedDomain('special_teams')}
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'special_teams'
-                        ? 'bg-purple-500/10 border-purple-500/50 ring-1 ring-purple-500/30'
+                        ? 'bg-[#C9A84C]/10 border-[#C9A84C]/50 ring-1 ring-[#C9A84C]/30'
                         : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                     }`}
                   >
-                    <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-gray-700'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-purple-400' : 'text-gray-800'}`}>
+                    <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-gray-700'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-gray-800'}`}>
                       SPECIAL TEAMS
                     </p>
                     <p className="text-xs text-gray-700 mt-0.5">54 Playbooks</p>
@@ -1018,7 +1018,7 @@ export default function IncidentAnalyzer() {
                             <th className="bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-800 uppercase w-1/4">
                               Phase
                             </th>
-                            <th className={`${activeDomain === 'offense' ? 'bg-amber-950/40' : activeDomain === 'special_teams' ? 'bg-purple-950/40' : 'bg-red-950/40'} px-4 py-3 text-left text-xs font-semibold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-purple-400' : 'text-red-400'} uppercase w-[37.5%]`}>
+                            <th className={`${activeDomain === 'offense' ? 'bg-amber-950/40' : activeDomain === 'special_teams' ? 'bg-[#0A0F2E]/40' : 'bg-red-950/40'} px-4 py-3 text-left text-xs font-semibold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-400'} uppercase w-[37.5%]`}>
                               Your Reality
                             </th>
                             <th className="bg-teal-950/40 px-4 py-3 text-left text-xs font-semibold text-teal-400 uppercase w-[37.5%]">
@@ -1032,7 +1032,7 @@ export default function IncidentAnalyzer() {
                               <td className="bg-white px-4 py-3 text-sm font-medium text-gray-800">
                                 {row.phase || row.label}
                               </td>
-                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/10' : activeDomain === 'special_teams' ? 'bg-purple-950/10' : 'bg-red-950/10'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-amber-300' : activeDomain === 'special_teams' ? 'text-purple-300' : 'text-red-300'}`}>
+                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/10' : activeDomain === 'special_teams' ? 'bg-[#C9A84C]/10' : 'bg-red-950/10'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-amber-300' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-300'}`}>
                                 {row.without || row.yourReality}
                               </td>
                               <td className="bg-teal-950/10 px-4 py-3 text-sm text-teal-300">
@@ -1045,7 +1045,7 @@ export default function IncidentAnalyzer() {
                               <td className="bg-white px-4 py-4 text-sm font-bold text-gray-900">
                                 Total Cost
                               </td>
-                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/20' : activeDomain === 'special_teams' ? 'bg-purple-950/20' : 'bg-red-950/20'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-purple-400' : 'text-red-400'}`}>
+                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/20' : activeDomain === 'special_teams' ? 'bg-[#C9A84C]/20' : 'bg-red-950/20'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-400'}`}>
                                 {analysis.costWithout || analysis.cost_without}
                               </td>
                               <td className="bg-teal-950/20 px-4 py-4 text-lg font-bold text-teal-400">
@@ -1120,7 +1120,7 @@ export default function IncidentAnalyzer() {
                     </Badge>
                   )}
                   {editablePlaybook?.category && (
-                    <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+                    <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                       {editablePlaybook.category}
                     </Badge>
                   )}
@@ -1156,7 +1156,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Users className="w-5 h-5 text-blue-400" /> Stakeholder RACI Matrix
+                    <Users className="w-5 h-5 text-[#0A0F2E]" /> Stakeholder RACI Matrix
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1209,7 +1209,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-emerald-400" /> Task Sequence
+                    <Activity className="w-5 h-5 text-[#2B8A6E]" /> Task Sequence
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1247,15 +1247,15 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader>
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Shield className="w-5 h-5 text-purple-400" /> Pre-Authorized Thresholds
+                    <Shield className="w-5 h-5 text-[#C9A84C]" /> Pre-Authorized Thresholds
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-3">
                     {editablePlaybook.preAuthorizedThresholds.map((t: any, i: number) => (
-                      <div key={i} className="bg-gray-50 border border-purple-500/20 rounded-lg p-3">
+                      <div key={i} className="bg-gray-50 border border-[#C9A84C]/20 rounded-lg p-3">
                         <p className="text-sm font-medium text-gray-900">{t.decision}</p>
-                        <p className="text-xs text-purple-400 mt-1">Limit: {t.limit}</p>
+                        <p className="text-xs text-[#C9A84C] mt-1">Limit: {t.limit}</p>
                         <p className="text-xs text-gray-700 mt-0.5">Approver: {t.approver}</p>
                       </div>
                     ))}
@@ -1309,7 +1309,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Users className="w-5 h-5 text-blue-400" /> Stakeholder Status
+                    <Users className="w-5 h-5 text-[#0A0F2E]" /> Stakeholder Status
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1320,7 +1320,7 @@ export default function IncidentAnalyzer() {
                         return (
                           <div key={i} className="flex items-center gap-3 py-1.5">
                             {status === "acknowledged" ? (
-                              <div className="w-3 h-3 bg-emerald-400 rounded-full flex items-center justify-center">
+                              <div className="w-3 h-3 bg-[#2B8A6E] rounded-full flex items-center justify-center">
                                 <Check className="w-2 h-2 text-gray-900" />
                               </div>
                             ) : status === "notified" ? (
@@ -1330,7 +1330,7 @@ export default function IncidentAnalyzer() {
                             )}
                             <span className="text-sm text-gray-800 flex-1">{s.name || s.role || `Stakeholder ${i + 1}`}</span>
                             <span className={`text-xs ${
-                              status === "acknowledged" ? "text-emerald-400" : status === "notified" ? "text-yellow-400" : "text-gray-800"
+                              status === "acknowledged" ? "text-[#2B8A6E]" : status === "notified" ? "text-yellow-400" : "text-gray-800"
                             }`}>
                               {status}
                             </span>
@@ -1358,7 +1358,7 @@ export default function IncidentAnalyzer() {
               <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-gray-900 text-lg flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-emerald-400" /> Task Progress
+                    <Activity className="w-5 h-5 text-[#2B8A6E]" /> Task Progress
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1369,9 +1369,9 @@ export default function IncidentAnalyzer() {
                         return (
                           <div key={i} className="flex items-center gap-3 py-1.5">
                             {status === "completed" ? (
-                              <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 text-[#2B8A6E] flex-shrink-0" />
                             ) : status === "in_progress" ? (
-                              <div className="w-4 h-4 border-2 border-blue-400 rounded-full animate-pulse flex-shrink-0" />
+                              <div className="w-4 h-4 border-2 border-[#0A0F2E] rounded-full animate-pulse flex-shrink-0" />
                             ) : (
                               <CircleDot className="w-4 h-4 text-gray-800 flex-shrink-0" />
                             )}
@@ -1379,7 +1379,7 @@ export default function IncidentAnalyzer() {
                               {t.name || t.task || t.title || `Task ${i + 1}`}
                             </span>
                             <span className={`text-xs flex-shrink-0 ${
-                              status === "completed" ? "text-emerald-400" : status === "in_progress" ? "text-blue-400" : "text-gray-800"
+                              status === "completed" ? "text-[#2B8A6E]" : status === "in_progress" ? "text-[#0A0F2E]" : "text-gray-800"
                             }`}>
                               {status === "in_progress" ? "In Progress" : status}
                             </span>
@@ -1406,7 +1406,7 @@ export default function IncidentAnalyzer() {
 
             {simulationComplete && (
               <div className={`${dc.darkBg} border ${dc.border} rounded-xl p-6 text-center`}>
-                <CheckCircle className="w-10 h-10 text-emerald-400 mx-auto mb-3" />
+                <CheckCircle className="w-10 h-10 text-[#2B8A6E] mx-auto mb-3" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Simulation Complete</h3>
                 <p className="text-gray-800 mb-4">
                   All stakeholders coordinated and tasks completed in {formatTime(elapsedSeconds)}
@@ -1459,9 +1459,9 @@ export default function IncidentAnalyzer() {
                 <p className={`text-sm font-semibold ${dc.text}`}>{dc.label}</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                <DollarSign className="w-6 h-6 text-emerald-400 mx-auto mb-2" />
+                <DollarSign className="w-6 h-6 text-[#2B8A6E] mx-auto mb-2" />
                 <p className="text-xs text-gray-700 mb-1">Impact Avoided</p>
-                <p className="text-sm font-semibold text-emerald-400">{analysis?.estimatedImpact || "Significant"}</p>
+                <p className="text-sm font-semibold text-[#2B8A6E]">{analysis?.estimatedImpact || "Significant"}</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
                 <Clock className="w-6 h-6 text-amber-400 mx-auto mb-2" />
@@ -1469,7 +1469,7 @@ export default function IncidentAnalyzer() {
                 <p className="text-sm font-semibold text-amber-400">{formatTime(elapsedSeconds)}</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-xl p-4 text-center">
-                <BookOpen className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                <BookOpen className="w-6 h-6 text-[#0A0F2E] mx-auto mb-2" />
                 <p className="text-xs text-gray-700 mb-1">Playbook Generated</p>
                 <p className="text-sm font-semibold text-gray-900">{playbook?.name || "Custom Playbook"}</p>
               </div>
@@ -1493,16 +1493,16 @@ export default function IncidentAnalyzer() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-gray-200 hover:border-emerald-500/30 transition-colors cursor-pointer group">
+              <Card className="bg-white border-gray-200 hover:border-[#2B8A6E]/30 transition-colors cursor-pointer group">
                 <CardContent className="pt-6 text-center">
-                  <FileText className="w-10 h-10 text-emerald-400 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                  <FileText className="w-10 h-10 text-[#2B8A6E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Board Briefing Deck</h3>
                   <p className="text-sm text-gray-800 mb-4">
                     Executive summary, risk assessment, playbook overview, and ROI projection for board presentation
                   </p>
                   <Button
                     onClick={generateBoardPDF}
-                    className="bg-emerald-500 hover:bg-emerald-600 text-gray-900 gap-2 w-full"
+                    className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 gap-2 w-full"
                   >
                     <Download className="w-4 h-4" /> Download Board Briefing (PDF)
                   </Button>
@@ -1525,7 +1525,7 @@ export default function IncidentAnalyzer() {
 
         {/* Validation Banner */}
         <div className="max-w-4xl mx-auto mb-12 px-6">
-          <div className="bg-gradient-to-r   border border-emerald-700/40 rounded-xl p-6 text-center">
+          <div className="bg-gradient-to-r   border border-[#2B8A6E]/40 rounded-xl p-6 text-center">
             <p className="text-emerald-300 font-semibold mb-2">
               McKinsey, BCG, Bain, Deloitte, PwC, and 10 more firms all published 2025-2026 guides confirming the execution infrastructure gap.
             </p>

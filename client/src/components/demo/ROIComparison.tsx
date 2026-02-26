@@ -87,7 +87,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
 
             <div className="border-b border-green-800/30 pb-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-emerald-800 flex items-center gap-1">
+                <span className="text-sm text-[#2B8A6E] flex items-center gap-1">
                   <TrendingUp className="h-4 w-4" />
                   Outcome
                 </span>
@@ -98,7 +98,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
             </div>
 
             <div className="bg-white p-3 rounded border border-green-800/30">
-              <p className="text-xs font-semibold mb-2 text-emerald-800">The Benefits:</p>
+              <p className="text-xs font-semibold mb-2 text-[#2B8A6E]">The Benefits:</p>
               <ul className="text-xs space-y-1 text-green-300">
                 {vexor.points.map((point, idx) => (
                   <li key={idx}>• {point}</li>
@@ -114,7 +114,7 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
         <div className="text-center">
           <div className="text-sm text-blue-300 mb-2">Bottom Line</div>
           <div className="text-3xl font-bold text-gray-900 mb-2">{bottomLine.value}</div>
-          <div className="text-sm text-blue-800">{bottomLine.metric}</div>
+          <div className="text-sm text-[#0A0F2E]">{bottomLine.metric}</div>
         </div>
       </Card>
     </div>

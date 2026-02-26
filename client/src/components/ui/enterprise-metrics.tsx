@@ -95,10 +95,10 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
 
   const getColorByCategory = (category: string) => {
     switch (category.toLowerCase()) {
-      case 'performance': return { bg: 'from-blue-500/20 to-cyan-500/20', text: 'text-blue-400' };
-      case 'productivity': return { bg: 'from-green-500/20 to-emerald-500/20', text: 'text-green-400' };
+      case 'performance': return { bg: 'from-[#0A0F2E]/20 to-[#3BAF8A]/20', text: 'text-[#0A0F2E]' };
+      case 'productivity': return { bg: 'from-green-500/20 to-[#256B56]/20', text: 'text-green-400' };
       case 'innovation': return { bg: 'from-yellow-500/20 to-orange-500/20', text: 'text-yellow-400' };
-      case 'culture': return { bg: 'from-purple-500/20 to-indigo-500/20', text: 'text-purple-400' };
+      case 'culture': return { bg: 'from-[#0A0F2E]/20 to-[#141B45]/20', text: 'text-[#C9A84C]' };
       case 'strategy': return { bg: 'from-red-500/20 to-pink-500/20', text: 'text-red-400' };
       default: return { bg: 'from-gray-500/20 to-slate-500/20', text: 'text-gray-500' };
     }
@@ -209,7 +209,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
         <div>Last updated: {lastUpdate.toLocaleTimeString()}</div>
         <div className="w-1 h-1 bg-gray-600 rounded-full" />
         <div className="flex items-center">
-          <Brain className="w-4 h-4 mr-2 text-purple-400" />
+          <Brain className="w-4 h-4 mr-2 text-[#C9A84C]" />
           AI Generated
         </div>
       </div>

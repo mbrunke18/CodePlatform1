@@ -12,7 +12,7 @@ interface FakeRoleAssignmentProps {
 
 export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status = "assigned" }: FakeRoleAssignmentProps) {
   const statusColors = {
-    assigned: "bg-blue-500",
+    assigned: "bg-[#0A0F2E]",
     notified: "bg-amber-500",
     acknowledged: "bg-green-500",
   };
@@ -63,7 +63,7 @@ export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status
         className={`px-2 py-1 rounded text-xs font-medium ${
           status === "acknowledged" ? "bg-green-500/20 text-green-400" :
           status === "notified" ? "bg-amber-500/20 text-amber-400" :
-          "bg-blue-500/20 text-blue-400"
+          "bg-[#0A0F2E]/20 text-[#0A0F2E]"
         }`}
       >
         {statusText[status]}

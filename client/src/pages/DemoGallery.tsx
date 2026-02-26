@@ -63,8 +63,8 @@ const demos = [
     category: "interactive",
     audience: "prospects",
     icon: Zap,
-    color: "text-pink-500",
-    bgColor: "bg-pink-500/10",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     tags: ["Self-Guided", "Exploration"],
     journeyPhase: "Onboarding"
   },
@@ -77,8 +77,8 @@ const demos = [
     category: "presentation",
     audience: "investors",
     icon: Building2,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
+    color: "text-[#0A0F2E]",
+    bgColor: "bg-[#0A0F2E]/10",
     tags: ["Market Size", "ROI Metrics"],
     journeyPhase: "Discovery"
   },
@@ -91,8 +91,8 @@ const demos = [
     category: "presentation",
     audience: "prospects",
     icon: Eye,
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
+    color: "text-[#0A0F2E]",
+    bgColor: "bg-[#0A0F2E]/10",
     tags: ["Feature Overview", "Modules"],
     journeyPhase: "IDENTIFY"
   },
@@ -105,8 +105,8 @@ const demos = [
     category: "interactive",
     audience: "prospects",
     icon: Play,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
     tags: ["Quick Start", "No Setup"],
     journeyPhase: "Discovery"
   }
@@ -120,7 +120,7 @@ const industryDemos = [
     path: "/industry-demos",
     industry: "Luxury & Retail",
     icon: Star,
-    color: "text-amber-500"
+    color: "text-[#C9A84C]"
   },
   {
     id: "financial-ransomware",
@@ -138,7 +138,7 @@ const industryDemos = [
     path: "/industry-demos",
     industry: "Consumer Goods",
     icon: Globe,
-    color: "text-blue-500"
+    color: "text-[#0A0F2E]"
   },
   {
     id: "pharma-recall",
@@ -147,7 +147,7 @@ const industryDemos = [
     path: "/industry-demos",
     industry: "Healthcare",
     icon: Target,
-    color: "text-purple-500"
+    color: "text-[#C9A84C]"
   }
 ];
 
@@ -160,7 +160,7 @@ export default function DemoGallery() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50/30 dark:from-poise-navy dark:to-slate-900">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#141B45]/30 dark:from-poise-navy dark:to-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           {/* Header */}
@@ -178,7 +178,7 @@ export default function DemoGallery() {
           </div>
 
           {/* North Star Journey Connection */}
-          <Card className="mb-10 bg-gradient-to-r from-poise-teal/10 to-cyan-500/10 border-poise-teal/30">
+          <Card className="mb-10 bg-gradient-to-r from-poise-teal/10 to-[#3BAF8A]/10 border-poise-teal/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-4">
@@ -335,7 +335,7 @@ export default function DemoGallery() {
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">
-                  <Button size="lg" className="bg-poise-teal hover:bg-cyan-500 text-gray-900 font-semibold">
+                  <Button size="lg" className="bg-poise-teal hover:bg-[#2B8A6E] text-gray-900 font-semibold">
                     <Play className="h-4 w-4 mr-2" />
                     Try Interactive Demo
                   </Button>

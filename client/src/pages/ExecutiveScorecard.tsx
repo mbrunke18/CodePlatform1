@@ -22,9 +22,9 @@ import { Link } from 'wouter';
 
 function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }) {
   const config = {
-    good: { bg: 'bg-emerald-500', className: 'status-success', label: 'Healthy' },
-    warning: { bg: 'bg-amber-500', className: 'status-warning', label: 'Attention' },
-    critical: { bg: 'bg-red-500', className: 'status-error', label: 'Critical' }
+    good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
+    warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
+    critical: { bg: 'bg-red-500', className: 'text-red-500', label: 'Critical' }
   };
   const c = config[status];
   
@@ -58,8 +58,8 @@ function MetricCard({
   action: string;
 }) {
   const statusBorders = {
-    good: 'border-l-emerald-500',
-    warning: 'border-l-amber-500',
+    good: 'border-l-[#2B8A6E]',
+    warning: 'border-l-[#C9A84C]',
     critical: 'border-l-red-500'
   };
 
@@ -71,27 +71,27 @@ function MetricCard({
   const TrendIcon = trendIcons[trendDirection];
 
   const trendClasses = {
-    up: 'status-success',
-    down: 'status-error',
-    neutral: 'text-gray-800 dark:text-slate-300'
+    up: 'text-[#2B8A6E]',
+    down: 'text-red-500',
+    neutral: 'text-[#6B7280] dark:text-white/60'
   };
 
   return (
-    <Card className={`metric-card border-l-4 ${statusBorders[status]} hover:shadow-md transition-shadow`}>
+    <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 border-l-4 ${statusBorders[status]} hover:shadow-md transition-shadow`}>
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/30">
-            <Icon className="h-5 w-5 text-blue-800 dark:text-blue-400" />
+          <div className="p-2 rounded-lg bg-[#0A0F2E]/5 dark:bg-white/10">
+            <Icon className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </div>
           <StatusIndicator status={status} />
         </div>
       </CardHeader>
       <CardContent className="space-y-3">
         <div>
-          <CardTitle className="text-sm font-medium text-gray-800 dark:text-slate-300 mb-1">{title}</CardTitle>
+          <CardTitle className="text-sm font-medium text-[#6B7280] dark:text-white/60 mb-1 uppercase tracking-wider">{title}</CardTitle>
           <div className="flex items-baseline gap-1">
-            <span className="text-3xl font-bold text-slate-900 dark:text-white">{value}</span>
-            {unit && <span className="text-lg text-gray-800 dark:text-slate-300">{unit}</span>}
+            <span className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{value}</span>
+            {unit && <span className="text-lg text-[#6B7280] dark:text-white/60">{unit}</span>}
           </div>
         </div>
         
@@ -104,7 +104,7 @@ function MetricCard({
           <Button 
             variant="ghost" 
             size="sm"
-            className="w-full justify-between text-gray-800 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 -mx-2"
+            className="w-full justify-between text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 -mx-2"
           >
             {action}
             <ChevronRight className="h-4 w-4" />
@@ -166,52 +166,52 @@ export default function ExecutiveScorecard() {
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3 mb-1">
-              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Executive Scorecard</h1>
-              <OnboardingTrigger pageId="executive-scorecard" autoStart={true} className="bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/50" />
+              <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Scorecard</h1>
+              <OnboardingTrigger pageId="executive-scorecard" autoStart={true} className="bg-[#0A0F2E]/5 dark:bg-white/10 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-[#C9A84C] hover:bg-[#F8F7F4] dark:hover:bg-white/5" />
             </div>
-            <p className="text-gray-800 dark:text-slate-300 text-sm">Strategic execution metrics at a glance</p>
+            <p className="text-[#6B7280] dark:text-white/60 text-sm">Strategic execution metrics at a glance</p>
           </div>
-          <Badge className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-800">
+          <Badge className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] border-none">
             <Activity className="h-3 w-3 mr-1.5" />
             Live
           </Badge>
         </div>
 
         {/* Executive Summary Strip */}
-        <Card className="card-bg">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-6 flex-wrap">
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${
-                    overallStatus === 'good' ? 'bg-emerald-500' :
-                    overallStatus === 'warning' ? 'bg-amber-500' : 'bg-red-500'
+                    overallStatus === 'good' ? 'bg-[#2B8A6E]' :
+                    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-red-500'
                   }`} />
                   <div>
-                    <div className="text-xs text-gray-800 dark:text-slate-300 uppercase tracking-wide">System Status</div>
-                    <div className="text-slate-900 dark:text-white font-semibold">
+                    <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">System Status</div>
+                    <div className="text-[#0A0F2E] dark:text-white font-semibold">
                       {overallStatus === 'good' ? 'All Systems Operational' :
                        overallStatus === 'warning' ? 'Attention Needed' : 'Action Required'}
                     </div>
                   </div>
                 </div>
-                <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
+                <div className="h-8 w-px bg-[#E8E4DC] dark:bg-white/10 hidden sm:block" />
                 <div>
-                  <div className="text-xs text-gray-800 dark:text-slate-300 uppercase tracking-wide">Last Activation</div>
-                  <div className="text-slate-900 dark:text-white font-semibold">
+                  <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">Last Activation</div>
+                  <div className="text-[#0A0F2E] dark:text-white font-semibold">
                     {last30Days.length > 0 ? 'Today' : 'No recent activity'}
                   </div>
                 </div>
-                <div className="h-8 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
+                <div className="h-8 w-px bg-[#E8E4DC] dark:bg-white/10 hidden sm:block" />
                 <div>
-                  <div className="text-xs text-gray-800 dark:text-slate-300 uppercase tracking-wide">Response Time</div>
-                  <div className="text-slate-900 dark:text-white font-semibold">
+                  <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">Response Time</div>
+                  <div className="text-[#0A0F2E] dark:text-white font-semibold">
                     {avgResponseTime > 0 ? `${Math.round(avgResponseTime)} min avg` : '—'}
                   </div>
                 </div>
               </div>
               <Link href="/command-center">
-                <Button variant="outline" size="sm" className="border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+                <Button variant="outline" size="sm" className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
                   Open Command Center
                   <ChevronRight className="h-4 w-4 ml-1" />
                 </Button>
@@ -283,7 +283,7 @@ export default function ExecutiveScorecard() {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-xs text-gray-800 dark:text-slate-300 pt-4">
+        <p className="text-center text-xs text-[#6B7280] dark:text-white/60 pt-4">
           Data refreshes automatically • Last updated just now
         </p>
       </div>

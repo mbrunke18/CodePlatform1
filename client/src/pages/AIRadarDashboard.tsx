@@ -82,47 +82,47 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-3" data-testid="page-title">
+            <h1 className="text-3xl font-bold flex items-center gap-3 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
               <div className="relative">
-                <Radar className="h-10 w-10 text-blue-500" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <Radar className="h-10 w-10 text-[#0A0F2E]" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#2B8A6E] rounded-full animate-pulse" />
               </div>
               Threat Radar
             </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-[#6B7280] mt-1">
               Real-time AI monitoring across {SIGNAL_CATEGORIES.length} signal categories and {totalDataPoints} data points
             </p>
           </div>
-          <Button onClick={() => setLocation('/signal-intelligence')} data-testid="button-configure-signals">
+          <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={() => setLocation('/signal-intelligence')} data-testid="button-configure-signals">
             <Settings className="h-4 w-4 mr-2" />
             Configure Signals
           </Button>
         </div>
 
         {/* Live Status Bar */}
-        <div className=" rounded-xl p-4 text-gray-900">
+        <div className="bg-[#0A0F2E] rounded-xl p-4 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
                 <span className="text-sm font-medium">LIVE MONITORING</span>
               </div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">
-                Now scanning: <span className="text-blue-400 font-medium">{currentCategory?.name}</span>
+              <div className="text-sm text-white/80">
+                Now scanning: <span className="text-[#C9A84C] font-medium">{currentCategory?.name}</span>
               </div>
             </div>
             <div className="flex items-center gap-6 text-sm">
               <div>
-                <span className="text-gray-800 dark:text-slate-200">Active monitors:</span>
-                <span className="ml-2 font-mono text-green-400">{triggers.length}</span>
+                <span className="text-white/60">Active monitors:</span>
+                <span className="ml-2 font-mono text-[#2B8A6E]">{triggers.length}</span>
               </div>
               <div>
-                <span className="text-gray-800 dark:text-slate-200">Weak signals:</span>
-                <span className="ml-2 font-mono text-amber-400">{weakSignals.length}</span>
+                <span className="text-white/60">Weak signals:</span>
+                <span className="ml-2 font-mono text-[#C9A84C]">{weakSignals.length}</span>
               </div>
               <div>
-                <span className="text-gray-800 dark:text-slate-200">Status:</span>
-                <span className="ml-2 font-mono text-blue-400">Active</span>
+                <span className="text-white/60">Status:</span>
+                <span className="ml-2 font-mono text-[#2B8A6E]">Active</span>
               </div>
             </div>
           </div>
@@ -131,26 +131,26 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Radar Visualization */}
-          <Card className="lg:col-span-1 bg-white border-gray-200">
+          <Card className="lg:col-span-1 bg-white border-[#E8E4DC]">
             <CardHeader className="pb-2">
-              <CardTitle className="text-gray-900 text-lg">Signal Radar</CardTitle>
+              <CardTitle className="text-[#0A0F2E] text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signal Radar</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="relative w-full aspect-square max-w-[300px] mx-auto">
                 {/* Radar circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-gray-200" />
-                  <div className="absolute w-3/4 h-3/4 rounded-full border border-gray-200" />
-                  <div className="absolute w-1/2 h-1/2 rounded-full border border-gray-200" />
-                  <div className="absolute w-1/4 h-1/4 rounded-full border border-gray-200" />
+                  <div className="w-full h-full rounded-full border border-[#E8E4DC]" />
+                  <div className="absolute w-3/4 h-3/4 rounded-full border border-[#E8E4DC]" />
+                  <div className="absolute w-1/2 h-1/2 rounded-full border border-[#E8E4DC]" />
+                  <div className="absolute w-1/4 h-1/4 rounded-full border border-[#E8E4DC]" />
                 </div>
                 
                 {/* Cross lines */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-px bg-gray-50" />
+                  <div className="w-full h-px bg-[#F8F7F4]" />
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-px h-full bg-gray-50" />
+                  <div className="w-px h-full bg-[#F8F7F4]" />
                 </div>
                 
                 {/* Radar sweep */}
@@ -161,7 +161,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div 
                     className="w-1/2 h-1 origin-left"
                     style={{
-                      background: 'linear-gradient(90deg, rgba(34,197,94,0.8) 0%, rgba(34,197,94,0) 100%)'
+                      background: 'linear-gradient(90deg, rgba(43,138,110,0.8) 0%, rgba(43,138,110,0) 100%)'
                     }}
                   />
                 </div>
@@ -174,7 +174,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div 
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: `conic-gradient(from ${radarAngle}deg, rgba(34,197,94,0.15) 0deg, transparent 60deg)`
+                      background: `conic-gradient(from ${radarAngle}deg, rgba(43,138,110,0.15) 0deg, transparent 60deg)`
                     }}
                   />
                 </div>
@@ -229,52 +229,52 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
           <div className="lg:col-span-2 space-y-4">
             {/* Key Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50 dark:bg-red-950/20' : 'border-green-500 bg-green-50 dark:bg-green-950/20'}`} data-testid="card-threat-level">
+              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50' : 'border-[#2B8A6E] bg-[#2B8A6E]/5'}`} data-testid="card-threat-level">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">Threat Level</p>
-                      <p className={`text-2xl font-bold ${criticalTriggers.length > 0 ? 'text-red-700' : 'text-emerald-700'}`}>
+                      <p className="text-xs text-[#6B7280]">Threat Level</p>
+                      <p className={`text-2xl font-bold ${criticalTriggers.length > 0 ? 'text-red-700' : 'text-[#2B8A6E]'}`}>
                         {criticalTriggers.length > 0 ? 'ELEVATED' : 'NORMAL'}
                       </p>
                     </div>
-                    <Shield className={`h-8 w-8 ${criticalTriggers.length > 0 ? 'text-red-500' : 'text-green-500'}`} />
+                    <Shield className={`h-8 w-8 ${criticalTriggers.length > 0 ? 'text-red-500' : 'text-[#2B8A6E]'}`} />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card data-testid="card-active-monitors">
+              <Card data-testid="card-active-monitors" className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">Active Monitors</p>
-                      <p className="text-2xl font-bold">{triggers.length}</p>
+                      <p className="text-xs text-[#6B7280]">Active Monitors</p>
+                      <p className="text-2xl font-bold text-[#0A0F2E]">{triggers.length}</p>
                     </div>
-                    <Eye className="h-8 w-8 text-blue-500" />
+                    <Eye className="h-8 w-8 text-[#0A0F2E] opacity-20" />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card data-testid="card-signals-today">
+              <Card data-testid="card-signals-today" className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">Weak Signals</p>
-                      <p className="text-2xl font-bold">{weakSignals.length}</p>
+                      <p className="text-xs text-[#6B7280]">Weak Signals</p>
+                      <p className="text-2xl font-bold text-[#0A0F2E]">{weakSignals.length}</p>
                     </div>
-                    <Radio className="h-8 w-8 text-purple-500" />
+                    <Radio className="h-8 w-8 text-[#C9A84C]" />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card data-testid="card-response-time">
+              <Card data-testid="card-response-time" className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">Avg Response</p>
-                      <p className="text-2xl font-bold text-emerald-700">12m</p>
+                      <p className="text-xs text-[#6B7280]">Avg Response</p>
+                      <p className="text-2xl font-bold text-[#2B8A6E]">12m</p>
                     </div>
-                    <Zap className="h-8 w-8 text-amber-500" />
+                    <Zap className="h-8 w-8 text-[#C9A84C]" />
                   </div>
                 </CardContent>
               </Card>
@@ -348,7 +348,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5 text-blue-500" />
+                  <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                   Signal Coverage
                 </CardTitle>
                 <CardDescription>
@@ -371,10 +371,10 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 return (
                   <div 
                     key={category.id}
-                    className={`p-3 rounded-lg border text-center transition-all cursor-pointer hover:border-blue-400 ${
+                    className={`p-3 rounded-lg border text-center transition-all cursor-pointer hover:border-[#0A0F2E] ${
                       isScanning ? 'border-green-500 bg-green-50 dark:bg-green-950/20 ring-2 ring-green-500/50' :
                       hasAlert ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/20' :
-                      hasTrigger ? 'border-blue-300 bg-blue-50 dark:bg-blue-950/20' :
+                      hasTrigger ? 'border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' :
                       'border-slate-200 dark:border-slate-700'
                     }`}
                     onClick={() => setLocation('/signal-intelligence')}
@@ -452,9 +452,9 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                     {weakSignals.slice(0, 3).map((signal: any) => (
                       <div 
                         key={`weak-${signal.id}`}
-                        className="flex items-center gap-3 p-2 rounded bg-purple-50 dark:bg-purple-950/30 text-sm"
+                        className="flex items-center gap-3 p-2 rounded bg-[#0A0F2E] dark:bg-[#C9A84C]/30 text-sm"
                       >
-                        <div className="w-2 h-2 bg-purple-500 rounded-full" />
+                        <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
                         <div className="flex-1">
                           <span className="font-medium">{signal.title || 'Weak Signal'}</span>
                           <span className="text-muted-foreground"> · Early indicator</span>
@@ -464,9 +464,9 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                     {activeAlerts.slice(0, 3).map((alert: any) => (
                       <div 
                         key={`alert-${alert.id}`}
-                        className="flex items-center gap-3 p-2 rounded bg-blue-50 dark:bg-blue-950/30 text-sm"
+                        className="flex items-center gap-3 p-2 rounded bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 text-sm"
                       >
-                        <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                        <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
                         <div className="flex-1">
                           <span className="font-medium">{alert.title}</span>
                           <span className="text-muted-foreground"> · Strategic Alert</span>
@@ -480,9 +480,9 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
           </Card>
 
           {/* Monitoring Summary */}
-          <Card className="bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-emerald-950/20 dark:to-blue-950/20" data-testid="card-value-protected">
+          <Card className="bg-gradient-to-br from-[#2B8A6E] to-[#141B45] dark:from-[#2B8A6E]/15 dark:to-[#141B45]/20" data-testid="card-value-protected">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
+              <CardTitle className="flex items-center gap-2 text-[#2B8A6E] dark:text-[#2B8A6E]">
                 <Shield className="h-5 w-5" />
                 Monitoring Summary
               </CardTitle>
@@ -493,13 +493,13 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
-                  <p className="text-3xl font-bold text-emerald-700">
+                  <p className="text-3xl font-bold text-[#2B8A6E]">
                     {dynamicStatus?.readinessScore?.toFixed(1) || '—'}%
                   </p>
                   <p className="text-xs text-muted-foreground">Readiness Score</p>
                 </div>
                 <div className="text-center p-4 bg-white dark:bg-slate-900 rounded-lg">
-                  <p className="text-3xl font-bold text-blue-800">{totalDataPoints}</p>
+                  <p className="text-3xl font-bold text-[#0A0F2E]">{totalDataPoints}</p>
                   <p className="text-xs text-muted-foreground">Data Points</p>
                 </div>
               </div>
@@ -511,7 +511,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span>Elevated Alerts</span>
-                  <span className={`font-medium ${activeTriggers.length > 0 ? 'text-[#C9A84C]' : 'text-emerald-700'}`}>
+                  <span className={`font-medium ${activeTriggers.length > 0 ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`}>
                     {activeTriggers.length}
                   </span>
                 </div>
@@ -526,7 +526,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               </div>
 
               <Button 
-                className="w-full bg-emerald-600 hover:bg-emerald-700"
+                className="w-full bg-[#2B8A6E] hover:bg-[#256B56]"
                 onClick={() => setLocation('/analytics')}
               >
                 View Full Analytics
@@ -538,9 +538,9 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
 
         {/* Bottom CTA */}
         {triggers.length === 0 && (
-          <Card className="border-2 border-dashed border-blue-300 dark:border-blue-700 bg-blue-50/50 dark:bg-blue-950/20" data-testid="card-setup-cta">
+          <Card className="border-2 border-dashed border-[#0A0F2E] dark:border-[#0A0F2E] bg-[#0A0F2E]/50 dark:bg-[#0A0F2E]/20" data-testid="card-setup-cta">
             <CardContent className="py-8 text-center">
-              <Target className="h-12 w-12 mx-auto mb-4 text-blue-500" />
+              <Target className="h-12 w-12 mx-auto mb-4 text-[#0A0F2E]" />
               <h3 className="text-xl font-semibold mb-2">Start Monitoring Your Strategic Signals</h3>
               <p className="text-muted-foreground mb-4 max-w-md mx-auto">
                 Configure triggers across {SIGNAL_CATEGORIES.length} signal categories to detect threats and opportunities before they impact your business.

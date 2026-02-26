@@ -147,12 +147,12 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 <span className="text-red-400 font-semibold">OFFENSE</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="h-6 w-6 text-blue-400" />
-                <span className="text-blue-400 font-semibold">DEFENSE</span>
+                <Shield className="h-6 w-6 text-[#0A0F2E]" />
+                <span className="text-[#0A0F2E] font-semibold">DEFENSE</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="h-6 w-6 text-purple-400" />
-                <span className="text-purple-400 font-semibold">SPECIAL TEAMS</span>
+                <Zap className="h-6 w-6 text-[#C9A84C]" />
+                <span className="text-[#C9A84C] font-semibold">SPECIAL TEAMS</span>
               </div>
             </motion.div>
             
@@ -161,7 +161,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.6 }}
             >
-              <span className="text-4xl md:text-6xl font-bold text-emerald-400">12 MINUTES.</span>
+              <span className="text-4xl md:text-6xl font-bold text-[#2B8A6E]">12 MINUTES.</span>
             </motion.div>
           </div>
         </Scene>
@@ -182,7 +182,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.3 }}
-              className="text-2xl font-bold text-emerald-400 mt-2"
+              className="text-2xl font-bold text-[#2B8A6E] mt-2"
             >
               At speed.
             </motion.p>
@@ -208,7 +208,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.4 }}
               className="mb-6"
             >
-              <span className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 font-semibold">
+              <span className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] font-semibold">
                 THE SPEED TO EXECUTE.
               </span>
             </motion.div>
@@ -219,7 +219,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.7 }}
             >
               <Link href="/sandbox">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500" data-testid="button-try-now-30s">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-30s">
                   <Play className="mr-2 h-5 w-5" />
                   Try It Now
                 </Button>
@@ -256,7 +256,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               </div>
               <div className="text-gray-800">vs</div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-emerald-400">?</div>
+                <div className="text-4xl font-bold text-[#2B8A6E]">?</div>
                 <div className="text-sm text-gray-800">Company B</div>
               </div>
             </motion.div>
@@ -277,10 +277,10 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 <div className="text-4xl font-bold text-red-500 line-through">72 hrs</div>
                 <div className="text-sm text-gray-800">Still scheduling</div>
               </div>
-              <ArrowRight className="h-8 w-8 text-emerald-400" />
+              <ArrowRight className="h-8 w-8 text-[#2B8A6E]" />
               <div className="text-center">
-                <div className="text-4xl font-bold text-emerald-400">12 min</div>
-                <div className="text-sm text-emerald-300">With Execution OS</div>
+                <div className="text-4xl font-bold text-[#2B8A6E]">12 min</div>
+                <div className="text-sm text-[#2B8A6E]">With Execution OS</div>
               </div>
             </motion.div>
           </div>
@@ -311,7 +311,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.6 }}
               className="mt-6"
             >
-              <span className="text-2xl font-bold text-emerald-400">SPEED WINS.</span>
+              <span className="text-2xl font-bold text-[#2B8A6E]">SPEED WINS.</span>
             </motion.div>
           </div>
         </Scene>
@@ -346,7 +346,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.7 }}
             >
               <Link href="/sandbox">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500" data-testid="button-try-now-first-mover">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-first-mover">
                   <Play className="mr-2 h-5 w-5" />
                   Try It Now
                 </Button>
@@ -391,8 +391,8 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, type: "spring" }}
             >
-              <span className="text-6xl md:text-8xl font-bold text-emerald-400">12</span>
-              <span className="text-3xl md:text-4xl text-emerald-300 ml-3">MINUTES</span>
+              <span className="text-6xl md:text-8xl font-bold text-[#2B8A6E]">12</span>
+              <span className="text-3xl md:text-4xl text-[#2B8A6E] ml-3">MINUTES</span>
             </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -415,7 +415,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.6, type: "spring" }}
               className="mb-6"
             >
-              <span className="text-7xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+              <span className="text-7xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                 360X
               </span>
               <br />
@@ -475,7 +475,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.8 }}
             >
               <Link href="/sandbox">
-                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500" data-testid="button-try-now-360x">
+                <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]" data-testid="button-try-now-360x">
                   <Play className="mr-2 h-5 w-5" />
                   Try It Now
                 </Button>
@@ -514,8 +514,8 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[500px] md:h-[600px] flex items-center justify-center px-6">

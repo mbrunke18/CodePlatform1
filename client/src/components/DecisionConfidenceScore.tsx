@@ -104,11 +104,11 @@ export default function DecisionConfidenceScore({
                           confidence.confidenceLevel === 'medium' ? 'secondary' : 'destructive';
 
   return (
-    <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950 border-blue-200 dark:border-blue-800" data-testid="decision-confidence-card">
+    <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] border-blue-200 dark:border-blue-800" data-testid="decision-confidence-card">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
-            <Target className="h-5 w-5 text-blue-600" />
+            <Target className="h-5 w-5 text-[#0A0F2E]" />
             Ready to Decide?
           </CardTitle>
           <div className="flex items-center gap-3">
@@ -126,7 +126,7 @@ export default function DecisionConfidenceScore({
           <div className="space-y-2" data-testid="data-completeness-metric">
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
-                <Database className="h-4 w-4 text-blue-600" />
+                <Database className="h-4 w-4 text-[#0A0F2E]" />
                 <span className="font-medium">Your Data</span>
               </div>
               <span className="font-semibold" data-testid="data-completeness-score">{confidence.dataCompletenessScore}%</span>
@@ -140,7 +140,7 @@ export default function DecisionConfidenceScore({
           <div className="space-y-2" data-testid="stakeholder-alignment-metric">
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-purple-600" />
+                <Users className="h-4 w-4 text-[#C9A84C]" />
                 <span className="font-medium">Team Aligned</span>
               </div>
               <span className="font-semibold" data-testid="stakeholder-alignment-score">{confidence.stakeholderAlignmentScore}%</span>

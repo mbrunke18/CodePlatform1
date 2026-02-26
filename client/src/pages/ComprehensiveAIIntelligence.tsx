@@ -82,11 +82,11 @@ interface DatabaseIntelligenceReport {
 
 const getReportTypeBadgeColor = (reportType: string) => {
   switch (reportType) {
-    case 'market_analysis': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-    case 'competitive_intelligence': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+    case 'market_analysis': return 'bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30';
+    case 'competitive_intelligence': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
     case 'risk_assessment': return 'bg-red-500/20 text-red-300 border-red-500/30';
     case 'regulatory_update': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-    case 'technology_trends': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
     default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
   }
 };
@@ -322,7 +322,7 @@ export default function ComprehensiveAIIntelligence() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'operational': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+      case 'operational': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
       case 'processing': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       case 'offline': return 'bg-red-500/20 text-red-300 border-red-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -365,19 +365,19 @@ export default function ComprehensiveAIIntelligence() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto p-8 space-y-8">
         
         {/* AI Intelligence Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">AI Intelligence Command Center</h1>
-            <p className="text-gray-800">Comprehensive AI-powered organizational intelligence and strategic insights</p>
+            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI Intelligence Command Center</h1>
+            <p className="text-[#6B7280]">Comprehensive AI-powered organizational intelligence and strategic insights</p>
           </div>
           <div className="flex items-center gap-4">
             <Button 
               onClick={generateAllIntelligence}
               disabled={isGenerating}
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
             >
               {isGenerating ? (
                 <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
@@ -386,7 +386,7 @@ export default function ComprehensiveAIIntelligence() {
               )}
               Generate Intelligence
             </Button>
-            <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+            <Button variant="outline" className="bg-transparent border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
               <Download className="w-4 h-4 mr-2" />
               Export Reports
             </Button>
@@ -395,70 +395,70 @@ export default function ComprehensiveAIIntelligence() {
 
         {/* System Overview */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Processing Power</h3>
-                <Cpu className="h-5 w-5 text-blue-400" />
+                <h3 className="font-semibold text-[#0A0F2E]">Processing Power</h3>
+                <Cpu className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.totalProcessingPower}%</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">System utilization</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{systemMetrics.totalProcessingPower}%</div>
+              <div className="text-sm text-[#6B7280]">System utilization</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Active Modules</h3>
-                <Brain className="h-5 w-5 text-emerald-400" />
+                <h3 className="font-semibold text-[#0A0F2E]">Active Modules</h3>
+                <Brain className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.activeModules}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">AI systems online</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{systemMetrics.activeModules}</div>
+              <div className="text-sm text-[#6B7280]">AI systems online</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Daily Insights</h3>
-                <Eye className="h-5 w-5 text-purple-400" />
+                <h3 className="font-semibold text-[#0A0F2E]">Daily Insights</h3>
+                <Eye className="h-5 w-5 text-[#0A0F2E] opacity-40" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.dailyInsights}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Generated today</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{systemMetrics.dailyInsights}</div>
+              <div className="text-sm text-[#6B7280]">Generated today</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Accuracy Rate</h3>
-                <Target className="h-5 w-5 text-emerald-400" />
+                <h3 className="font-semibold text-[#0A0F2E]">Accuracy Rate</h3>
+                <Target className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.accuracyRate}%</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Prediction accuracy</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{systemMetrics.accuracyRate}%</div>
+              <div className="text-sm text-[#6B7280]">Prediction accuracy</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">System Health</h3>
-                <Activity className="h-5 w-5 text-emerald-400" />
+                <h3 className="font-semibold text-[#0A0F2E]">System Health</h3>
+                <Activity className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.systemHealth}%</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Overall health</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{systemMetrics.systemHealth}%</div>
+              <div className="text-sm text-[#6B7280]">Overall health</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Intelligence Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-gray-50 border border-gray-200">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">AI Dashboard</TabsTrigger>
-            <TabsTrigger value="modules" className="data-[state=active]:bg-gray-50">AI Modules</TabsTrigger>
-            <TabsTrigger value="reports" className="data-[state=active]:bg-gray-50">Intelligence Reports</TabsTrigger>
-            <TabsTrigger value="insights" className="data-[state=active]:bg-gray-50">Live Insights</TabsTrigger>
-            <TabsTrigger value="configuration" className="data-[state=active]:bg-gray-50">Configuration</TabsTrigger>
+          <TabsList className="bg-[#E8E4DC] border border-[#E8E4DC]">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">AI Dashboard</TabsTrigger>
+            <TabsTrigger value="modules" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">AI Modules</TabsTrigger>
+            <TabsTrigger value="reports" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Intelligence Reports</TabsTrigger>
+            <TabsTrigger value="insights" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Live Insights</TabsTrigger>
+            <TabsTrigger value="configuration" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Configuration</TabsTrigger>
           </TabsList>
 
           {/* AI Dashboard */}
@@ -477,7 +477,7 @@ export default function ComprehensiveAIIntelligence() {
                   {aiModules.map((module) => (
                     <div key={module.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
+                        <div className="p-2 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg">
                           {module.icon}
                         </div>
                         <div>
@@ -511,21 +511,21 @@ export default function ComprehensiveAIIntelligence() {
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Pulse Intelligence generated performance metrics</div>
                         <div className="text-xs text-gray-800 dark:text-slate-200">Real-time • Confidence: 96.4%</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Nova identified breakthrough innovation opportunity</div>
                         <div className="text-xs text-gray-800 dark:text-slate-200">2 min ago • Impact: $750K potential</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
                       <div className="flex-1 page-background">
                         <div className="text-sm text-gray-900">Prism completed strategic market analysis</div>
                         <div className="text-xs text-gray-800 dark:text-slate-200">5 min ago • Market opportunity: $2.3M</div>
@@ -545,7 +545,7 @@ export default function ComprehensiveAIIntelligence() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-gray-900 flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
+                        <div className="p-2 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg">
                           {module.icon}
                         </div>
                         {module.name}
@@ -593,7 +593,7 @@ export default function ComprehensiveAIIntelligence() {
                     {/* Action Buttons */}
                     <div className="flex gap-2">
                       <Link to={`/${module.id}`} className="flex-1">
-                        <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
+                        <Button size="sm" className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                           <Eye className="w-4 h-4 mr-2" />
                           View Details
                         </Button>
@@ -639,7 +639,7 @@ export default function ComprehensiveAIIntelligence() {
                         <div className="space-y-1">
                           {report.keyFindings.map((finding, index) => (
                             <div key={index} className="text-sm text-gray-800 flex items-start gap-2">
-                              <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                              <CheckCircle className="w-4 h-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                               {finding}
                             </div>
                           ))}
@@ -651,7 +651,7 @@ export default function ComprehensiveAIIntelligence() {
                         <div className="space-y-1">
                           {report.recommendations.map((rec, index) => (
                             <div key={index} className="text-sm text-gray-800 flex items-start gap-2">
-                              <Target className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                              <Target className="w-4 h-4 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
                               {rec}
                             </div>
                           ))}
@@ -664,7 +664,7 @@ export default function ComprehensiveAIIntelligence() {
                         Generated: {new Date(report.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
-                        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                        <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                           <Eye className="w-4 h-4 mr-2" />
                           Full Report
                         </Button>
@@ -682,7 +682,7 @@ export default function ComprehensiveAIIntelligence() {
             {/* Intelligence Reports from Database */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <Database className="h-5 w-5 text-blue-400" />
+                <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h2 className="text-xl font-semibold text-gray-900">Intelligence Reports from Database</h2>
               </div>
 
@@ -712,7 +712,7 @@ export default function ComprehensiveAIIntelligence() {
                       <CardHeader>
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-gray-900 flex items-center gap-3">
-                            <FileText className="h-5 w-5 text-blue-400" />
+                            <FileText className="h-5 w-5 text-[#0A0F2E]" />
                             {report.title}
                           </CardTitle>
                           <Badge className={getReportTypeBadgeColor(report.reportType)}>
@@ -752,9 +752,9 @@ export default function ComprehensiveAIIntelligence() {
 
           {/* Live Insights */}
           <TabsContent value="insights" className="space-y-6">
-            <Alert className="border-blue-500/30 bg-blue-500/10">
+            <Alert className="border-[#0A0F2E]/30 bg-[#0A0F2E]/10">
               <Brain className="h-4 w-4" />
-              <AlertDescription className="text-blue-800">
+              <AlertDescription className="text-[#0A0F2E]">
                 Live insights are generated in real-time from all AI modules. Refresh automatically every 30 seconds.
               </AlertDescription>
             </Alert>
@@ -788,15 +788,15 @@ export default function ComprehensiveAIIntelligence() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Button className="h-24 bg-blue-600 hover:bg-blue-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
                     <Brain className="w-8 h-8" />
                     Model Training
                   </Button>
-                  <Button className="h-24 bg-emerald-600 hover:bg-emerald-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#2B8A6E] hover:bg-[#256B56] flex-col gap-2">
                     <Network className="w-8 h-8" />
                     Data Sources
                   </Button>
-                  <Button className="h-24 bg-purple-600 hover:bg-purple-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
                     <Settings className="w-8 h-8" />
                     System Settings
                   </Button>
@@ -808,7 +808,7 @@ export default function ComprehensiveAIIntelligence() {
                     <Target className="w-8 h-8" />
                     Performance Tuning
                   </Button>
-                  <Button className="h-24 bg-indigo-600 hover:bg-indigo-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
                     <Globe className="w-8 h-8" />
                     Integration Hub
                   </Button>

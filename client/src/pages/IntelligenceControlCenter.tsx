@@ -99,17 +99,17 @@ export default function IntelligenceControlCenter() {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-      purple: { bg: ' ', border: 'border-purple-500/30 hover:border-purple-500/50', text: 'text-purple-400', badge: 'bg-purple-500/10 text-purple-300 border-purple-500/30' },
-      blue: { bg: ' ', border: 'border-blue-500/30 hover:border-blue-500/50', text: 'text-blue-400', badge: 'bg-blue-500/10 text-blue-300 border-blue-500/30' },
-      cyan: { bg: ' ', border: 'border-cyan-500/30 hover:border-cyan-500/50', text: 'text-cyan-400', badge: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30' },
-      amber: { bg: ' ', border: 'border-amber-500/30 hover:border-amber-500/50', text: 'text-amber-400', badge: 'bg-amber-500/10 text-amber-300 border-amber-500/30' },
-      green: { bg: ' ', border: 'border-green-500/30 hover:border-green-500/50', text: 'text-green-400', badge: 'bg-green-500/10 text-green-300 border-green-500/30' },
+      purple: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
+      blue: { bg: ' ', border: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50', text: 'text-[#0A0F2E]', badge: 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30' },
+      cyan: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
+      amber: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
+      green: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
     };
     return colors[color] || colors.blue;
   };
 
   return (
-    <div className="min-h-screen bg-white" data-testid="intelligence-control-center">
+    <div className="min-h-screen bg-[#F8F7F4]" data-testid="intelligence-control-center">
       <StandardNav />
       
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
@@ -117,17 +117,17 @@ export default function IntelligenceControlCenter() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg">
-                <Radio className="h-5 w-5 text-gray-900" />
+              <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                <Radio className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <h1 className="text-2xl font-bold text-gray-900" data-testid="page-title">Intelligence Control Center</h1>
+              <h1 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">Intelligence Control Center</h1>
             </div>
-            <p className="text-gray-800">Real-time strategic intelligence and AI-powered pattern detection</p>
+            <p className="text-[#6B7280]">Real-time strategic intelligence and AI-powered pattern detection</p>
           </div>
           
           <div className="flex items-center gap-3">
-            <Badge variant="outline" className="bg-green-500/10 text-green-300 border-green-500/30 px-3 py-1">
-              <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
+            <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 px-3 py-1">
+              <div className="w-2 h-2 bg-[#2B8A6E] rounded-full mr-2 animate-pulse" />
               All Systems Online
             </Badge>
           </div>
@@ -135,47 +135,47 @@ export default function IntelligenceControlCenter() {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4" data-testid="grid-quick-stats">
-          <Card className="bg-white border-gray-200" data-testid="stat-data-points">
+          <Card className="bg-white border-[#E8E4DC]" data-testid="stat-data-points">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-800">Data Points Monitored</p>
-                  <p className="text-2xl font-bold text-gray-900" data-testid="value-data-points">92+</p>
+                  <p className="text-sm text-[#6B7280]">Data Points Monitored</p>
+                  <p className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-data-points">92+</p>
                 </div>
-                <Activity className="h-8 w-8 text-blue-400 opacity-50" />
+                <Activity className="h-8 w-8 text-[#0A0F2E] opacity-10" />
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-white border-gray-200" data-testid="stat-signal-categories">
+          <Card className="bg-white border-[#E8E4DC]" data-testid="stat-signal-categories">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-800">Signal Categories</p>
-                  <p className="text-2xl font-bold text-gray-900" data-testid="value-signal-categories">16</p>
+                  <p className="text-sm text-[#6B7280]">Signal Categories</p>
+                  <p className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-signal-categories">16</p>
                 </div>
-                <Layers className="h-8 w-8 text-purple-400 opacity-50" />
+                <Layers className="h-8 w-8 text-[#0A0F2E] opacity-10" />
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-white border-gray-200" data-testid="stat-weak-signals">
+          <Card className="bg-white border-[#E8E4DC]" data-testid="stat-weak-signals">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-800">Weak Signals</p>
-                  <p className="text-2xl font-bold text-gray-900" data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
+                  <p className="text-sm text-[#6B7280]">Weak Signals</p>
+                  <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="value-weak-signals">{dynamicStatus?.weakSignalsDetected ?? 0}</p>
                 </div>
-                <AlertCircle className="h-8 w-8 text-amber-400 opacity-50" />
+                <AlertCircle className="h-8 w-8 text-[#C9A84C] opacity-20" />
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-white border-gray-200" data-testid="stat-active-patterns">
+          <Card className="bg-white border-[#E8E4DC]" data-testid="stat-active-patterns">
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-800">Active Patterns</p>
-                  <p className="text-2xl font-bold text-gray-900">{dynamicStatus?.oraclePatternsActive ?? 0}</p>
+                  <p className="text-sm text-[#6B7280]">Active Patterns</p>
+                  <p className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{dynamicStatus?.oraclePatternsActive ?? 0}</p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-green-400 opacity-50" />
+                <TrendingUp className="h-8 w-8 text-[#2B8A6E] opacity-20" />
               </div>
             </CardContent>
           </Card>
@@ -183,8 +183,8 @@ export default function IntelligenceControlCenter() {
 
         {/* Intelligence Modules Grid */}
         <div className="space-y-4" data-testid="section-modules">
-          <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-            <Brain className="h-5 w-5 text-purple-400" />
+          <h2 className="text-lg font-semibold text-[#0A0F2E] flex items-center gap-2">
+            <Brain className="h-5 w-5 text-[#C9A84C]" />
             Intelligence Modules
           </h2>
           <div className="grid md:grid-cols-2 gap-4" data-testid="grid-modules">
@@ -193,16 +193,16 @@ export default function IntelligenceControlCenter() {
               const Icon = module.icon;
               return (
                 <Link key={module.id} href={module.path} data-testid={`link-module-${module.id}`}>
-                  <Card className={`${colors.border} bg-gradient-to-br ${colors.bg} transition-all cursor-pointer h-full`} data-testid={`card-module-${module.id}`}>
+                  <Card className={`${colors.border} bg-white transition-all cursor-pointer h-full`} data-testid={`card-module-${module.id}`}>
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 ${colors.text.replace('text-', 'bg-')}/10 rounded-lg`}>
+                          <div className={`p-2 bg-[#0A0F2E] rounded-lg`}>
                             <Icon className={`h-6 w-6 ${colors.text}`} />
                           </div>
                           <div>
-                            <CardTitle className="text-lg text-gray-900">{module.title}</CardTitle>
-                            <CardDescription className="text-gray-800 text-sm">
+                            <CardTitle className="text-lg text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{module.title}</CardTitle>
+                            <CardDescription className="text-[#6B7280] text-sm">
                               {module.description}
                             </CardDescription>
                           </div>
@@ -218,12 +218,12 @@ export default function IntelligenceControlCenter() {
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
                           {module.features.slice(0, 3).map((feature, idx) => (
-                            <span key={idx} className="text-xs text-gray-800 bg-gray-50 px-2 py-1 rounded">
+                            <span key={idx} className="text-xs text-[#6B7280] bg-[#F8F7F4] border border-[#E8E4DC] px-2 py-1 rounded">
                               {feature}
                             </span>
                           ))}
                         </div>
-                        <ChevronRight className="h-5 w-5 text-gray-800" />
+                        <ChevronRight className="h-5 w-5 text-[#0A0F2E]" />
                       </div>
                     </CardContent>
                   </Card>
@@ -236,46 +236,46 @@ export default function IntelligenceControlCenter() {
         {/* Quick Actions */}
         <div className="grid md:grid-cols-3 gap-4 pt-4" data-testid="section-quick-actions">
           <Link href="/ai" data-testid="link-ai-copilots">
-            <Card className="bg-white border-gray-200 hover:border-purple-500/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
+            <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-ai-copilots">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-purple-500/10 rounded-lg">
-                  <Brain className="h-5 w-5 text-purple-400" />
+                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                  <Brain className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">Launch AI Co-Pilots</p>
-                  <p className="text-sm text-gray-800">Strategic decision support</p>
+                  <p className="font-medium text-[#0A0F2E]">Launch AI Co-Pilots</p>
+                  <p className="text-sm text-[#6B7280]">Strategic decision support</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-800" />
+                <ArrowRight className="h-4 w-4 text-[#0A0F2E]" />
               </CardContent>
             </Card>
           </Link>
           
           <Link href="/signal-intelligence" data-testid="link-configure-signals">
-            <Card className="bg-white border-gray-200 hover:border-blue-500/50 transition-all cursor-pointer" data-testid="card-configure-signals">
+            <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E]/50 transition-all cursor-pointer" data-testid="card-configure-signals">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-blue-500/10 rounded-lg">
-                  <Radio className="h-5 w-5 text-blue-400" />
+                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                  <Radio className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">Configure Signals</p>
-                  <p className="text-sm text-gray-800">Manage data sources</p>
+                  <p className="font-medium text-[#0A0F2E]">Configure Signals</p>
+                  <p className="text-sm text-[#6B7280]">Manage data sources</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-800" />
+                <ArrowRight className="h-4 w-4 text-[#0A0F2E]" />
               </CardContent>
             </Card>
           </Link>
           
           <Link href="/triggers-management" data-testid="link-manage-triggers">
-            <Card className="bg-white border-gray-200 hover:border-amber-500/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
+            <Card className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all cursor-pointer" data-testid="card-manage-triggers">
               <CardContent className="p-4 flex items-center gap-4">
-                <div className="p-2 bg-amber-500/10 rounded-lg">
-                  <Bell className="h-5 w-5 text-amber-400" />
+                <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                  <Bell className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-900">Set Up Triggers</p>
-                  <p className="text-sm text-gray-800">Automate responses</p>
+                  <p className="font-medium text-[#0A0F2E]">Set Up Triggers</p>
+                  <p className="text-sm text-[#6B7280]">Automate responses</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-gray-800" />
+                <ArrowRight className="h-4 w-4 text-[#0A0F2E]" />
               </CardContent>
             </Card>
           </Link>

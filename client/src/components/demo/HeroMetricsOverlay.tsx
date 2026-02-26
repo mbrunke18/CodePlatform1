@@ -37,8 +37,8 @@ export function HeroMetricsOverlay() {
       label: 'Preparedness Score™',
       value: '85',
       comparison: 'Top 3%',
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-500/10',
+      color: 'text-[#0A0F2E]',
+      bgColor: 'bg-[#0A0F2E]/10',
       borderColor: 'border-blue-500/30'
     },
     {
@@ -46,18 +46,18 @@ export function HeroMetricsOverlay() {
       label: 'Active Triggers',
       value: '24/7',
       comparison: 'AI Monitoring',
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/30'
+      color: 'text-[#C9A84C]',
+      bgColor: 'bg-[#C9A84C]/10',
+      borderColor: 'border-[#C9A84C]/30'
     },
     {
       icon: Dumbbell,
       label: 'Practice Mode',
       value: 'Live',
       comparison: 'What-If Ready',
-      color: 'text-emerald-400',
-      bgColor: 'bg-emerald-500/10',
-      borderColor: 'border-emerald-500/30'
+      color: 'text-[#2B8A6E]',
+      bgColor: 'bg-[#2B8A6E]/10',
+      borderColor: 'border-[#2B8A6E]/30'
     }
   ];
 

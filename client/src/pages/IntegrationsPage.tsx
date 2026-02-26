@@ -54,11 +54,11 @@ const categoryIcons = {
 };
 
 const categoryColors = {
-  project_management: "bg-blue-500/10 text-blue-800 dark:text-blue-400",
-  communication: "bg-purple-500/10 text-purple-800 dark:text-purple-400",
-  scheduling: "bg-green-500/10 text-emerald-700 dark:text-green-400",
-  directory: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
-  crm: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
+  project_management: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
+  communication: "bg-[#DFC178]/10 text-[#C9A84C]",
+  scheduling: "bg-[#2B8A6E]/10 text-[#2B8A6E]",
+  directory: "bg-[#C9A84C]/10 text-[#0A0F2E]",
+  crm: "bg-[#141B45]/10 text-[#141B45]",
 };
 
 export default function IntegrationsPage() {
@@ -165,13 +165,13 @@ export default function IntegrationsPage() {
       <div className="space-y-8">
         {/* Header */}
         <div>
-          <Badge className="mb-4 bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-500/30">
+          <Badge className="mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20">
             Enterprise Integrations
           </Badge>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight text-[#0A0F2E]">
             Execution OS Orchestrates Your Stack
           </h1>
-          <p className="mt-2 text-lg text-gray-800 dark:text-gray-200">
+          <p className="mt-2 text-lg text-[#6B7280]">
             Execution OS doesn't replace your workflow tools — it coordinates them. When a playbook 
             activates, Execution OS tells each system exactly what to do.
           </p>
@@ -179,69 +179,69 @@ export default function IntegrationsPage() {
 
         {/* Integration Philosophy */}
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="p-6 text-center">
-            <div className="w-12 h-12 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
-              <Zap className="w-6 h-6 text-blue-500" />
+          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
+            <div className="w-12 h-12 mx-auto mb-4 bg-[#0A0F2E]/10 rounded-xl flex items-center justify-center">
+              <Zap className="w-6 h-6 text-[#0A0F2E]" />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Execution OS Orchestrates</h3>
-            <p className="text-sm text-gray-800 dark:text-gray-200">Strategic playbooks trigger coordinated actions across your entire stack</p>
+            <h3 className="font-semibold text-[#0A0F2E] mb-2">Execution OS Orchestrates</h3>
+            <p className="text-sm text-[#6B7280]">Strategic playbooks trigger coordinated actions across your entire stack</p>
           </Card>
-          <Card className="p-6 text-center">
-            <div className="w-12 h-12 mx-auto mb-4 bg-purple-500/20 rounded-xl flex items-center justify-center">
-              <Database className="w-6 h-6 text-purple-500" />
+          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
+            <div className="w-12 h-12 mx-auto mb-4 bg-[#C9A84C]/10 rounded-xl flex items-center justify-center">
+              <Database className="w-6 h-6 text-[#C9A84C]" />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Tools Execute</h3>
-            <p className="text-sm text-gray-800 dark:text-gray-200">ServiceNow, Jira, Slack, and Teams carry out the operational work</p>
+            <h3 className="font-semibold text-[#0A0F2E] mb-2">Tools Execute</h3>
+            <p className="text-sm text-[#6B7280]">ServiceNow, Jira, Slack, and Teams carry out the operational work</p>
           </Card>
-          <Card className="p-6 text-center">
-            <div className="w-12 h-12 mx-auto mb-4 bg-emerald-500/20 rounded-xl flex items-center justify-center">
-              <CheckCircle2 className="w-6 h-6 text-emerald-500" />
+          <Card className="p-6 text-center border-[#E8E4DC] bg-white">
+            <div className="w-12 h-12 mx-auto mb-4 bg-[#2B8A6E]/10 rounded-xl flex items-center justify-center">
+              <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
             </div>
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Everything Syncs</h3>
-            <p className="text-sm text-gray-800 dark:text-gray-200">Bi-directional updates keep Execution OS and your tools in perfect alignment</p>
+            <h3 className="font-semibold text-[#0A0F2E] mb-2">Everything Syncs</h3>
+            <p className="text-sm text-[#6B7280]">Bi-directional updates keep Execution OS and your tools in perfect alignment</p>
           </Card>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="p-6">
+          <Card className="p-6 border-[#E8E4DC] bg-white">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-800 dark:text-gray-200">Connected</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm text-[#6B7280]">Connected</p>
+                <p className="text-2xl font-bold text-[#0A0F2E]">
                   {connectedIntegrations.filter(i => i.status === 'active').length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-emerald-700 dark:text-green-400" />
+              <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-lg flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
               </div>
             </div>
           </Card>
 
-          <Card className="p-6">
+          <Card className="p-6 border-[#E8E4DC] bg-white">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-800 dark:text-gray-200">Available</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm text-[#6B7280]">Available</p>
+                <p className="text-2xl font-bold text-[#0A0F2E]">
                   {marketplace.filter(i => i.status === 'available').length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                <Cloud className="w-6 h-6 text-blue-800 dark:text-blue-400" />
+              <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-lg flex items-center justify-center">
+                <Cloud className="w-6 h-6 text-[#C9A84C]" />
               </div>
             </div>
           </Card>
 
-          <Card className="p-6">
+          <Card className="p-6 border-[#E8E4DC] bg-white">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-800 dark:text-gray-200">Coming Soon</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                <p className="text-sm text-[#6B7280]">Coming Soon</p>
+                <p className="text-2xl font-bold text-[#0A0F2E]">
                   {marketplace.filter(i => i.status === 'coming_soon').length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-gray-500/10 rounded-lg flex items-center justify-center">
-                <Zap className="w-6 h-6 text-gray-800 dark:text-gray-200" />
+              <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
+                <Zap className="w-6 h-6 text-[#0A0F2E]" />
               </div>
             </div>
           </Card>
@@ -249,10 +249,10 @@ export default function IntegrationsPage() {
 
         {/* Integration Categories */}
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-            <TabsTrigger value="all" data-testid="tab-all">All Integrations</TabsTrigger>
-            <TabsTrigger value="connected" data-testid="tab-connected">Connected</TabsTrigger>
-            <TabsTrigger value="available" data-testid="tab-available">Available</TabsTrigger>
+          <TabsList className="bg-white border border-[#E8E4DC]">
+            <TabsTrigger value="all" data-testid="tab-all" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">All Integrations</TabsTrigger>
+            <TabsTrigger value="connected" data-testid="tab-connected" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">Connected</TabsTrigger>
+            <TabsTrigger value="available" data-testid="tab-available" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">Available</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="mt-6">
@@ -264,38 +264,38 @@ export default function IntegrationsPage() {
                 const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
 
                 return (
-                  <Card key={integration.id} className="p-6 hover:shadow-lg transition-shadow" data-testid={`card-integration-${integration.id}`}>
+                  <Card key={integration.id} className="p-6 hover:shadow-lg transition-shadow border-[#E8E4DC] bg-white" data-testid={`card-integration-${integration.id}`}>
                     <div className="flex items-start justify-between mb-4">
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       {connected ? (
-                        <Badge variant="outline" className="bg-green-500/10 text-emerald-700 dark:text-green-400 border-green-500/20">
+                        <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20">
                           <CheckCircle2 className="w-3 h-3 mr-1" />
                           Connected
                         </Badge>
                       ) : integration.status === 'coming_soon' ? (
-                        <Badge variant="outline" className="bg-gray-500/10 text-gray-800 dark:text-gray-200 border-gray-500/20">
+                        <Badge variant="outline" className="bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC]">
                           Coming Soon
                         </Badge>
                       ) : (
-                        <Badge variant="outline" className="bg-blue-500/10 text-blue-800 dark:text-blue-400 border-blue-500/20">
+                        <Badge variant="outline" className="bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20">
                           <Circle className="w-3 h-3 mr-1" />
                           Available
                         </Badge>
                       )}
                     </div>
 
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-800 dark:text-gray-200 mb-4">
+                    <p className="text-sm text-[#6B7280] mb-4">
                       {integration.description}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {integration.capabilities.slice(0, 3).map((capability) => (
-                        <Badge key={capability} variant="secondary" className="text-xs">
+                        <Badge key={capability} variant="secondary" className="text-xs bg-[#F8F7F4] text-[#0A0F2E]">
                           {capability.replace(/_/g, ' ')}
                         </Badge>
                       ))}
@@ -303,7 +303,7 @@ export default function IntegrationsPage() {
 
                     {connected ? (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs text-gray-800 dark:text-gray-200">
+                        <div className="flex items-center justify-between text-xs text-[#6B7280]">
                           <span>Status:</span>
                           <span className="font-medium">{connectedData?.status}</span>
                         </div>
@@ -311,7 +311,7 @@ export default function IntegrationsPage() {
                           <Button
                             size="sm"
                             variant="outline"
-                            className="flex-1"
+                            className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
                             data-testid={`button-settings-${integration.id}`}
                           >
                             <Settings className="w-4 h-4 mr-1" />
@@ -320,6 +320,7 @@ export default function IntegrationsPage() {
                           <Button
                             size="sm"
                             variant="outline"
+                            className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
                             onClick={() => connectedData && handleDisconnect(connectedData.id)}
                             data-testid={`button-disconnect-${integration.id}`}
                           >
@@ -329,7 +330,7 @@ export default function IntegrationsPage() {
                       </div>
                     ) : integration.status === 'available' ? (
                       <Button
-                        className="w-full"
+                        className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                         onClick={() => handleConnect(integration)}
                         data-testid={`button-connect-${integration.id}`}
                       >
@@ -337,7 +338,7 @@ export default function IntegrationsPage() {
                         Connect
                       </Button>
                     ) : (
-                      <Button className="w-full" disabled data-testid={`button-coming-soon-${integration.id}`}>
+                      <Button className="w-full bg-[#F8F7F4] text-[#6B7280]" disabled data-testid={`button-coming-soon-${integration.id}`}>
                         Coming Soon
                       </Button>
                     )}
@@ -360,7 +361,7 @@ export default function IntegrationsPage() {
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
-                      <Badge variant="outline" className="bg-green-500/10 text-emerald-700 dark:text-green-400 border-green-500/20">
+                      <Badge variant="outline" className="bg-green-500/10 text-[#2B8A6E] dark:text-green-400 border-green-500/20">
                         <CheckCircle2 className="w-3 h-3 mr-1" />
                         Active
                       </Badge>
@@ -404,7 +405,7 @@ export default function IntegrationsPage() {
                       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
-                      <Badge variant="outline" className="bg-blue-500/10 text-blue-800 dark:text-blue-400 border-blue-500/20">
+                      <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-[#0A0F2E]/20">
                         Available
                       </Badge>
                     </div>
@@ -460,10 +461,10 @@ export default function IntegrationsPage() {
                 />
               </div>
 
-              <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+              <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#0A0F2E] dark:border-[#0A0F2E] rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-blue-800 dark:text-blue-400 mt-0.5" />
-                  <div className="text-sm text-blue-800 dark:text-blue-300">
+                  <AlertCircle className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E] mt-0.5" />
+                  <div className="text-sm text-[#0A0F2E] dark:text-blue-300">
                     <p className="font-medium mb-1">Secure Connection</p>
                     <p>Your credentials are encrypted and stored securely. They are only used to authenticate with {selectedIntegration?.name}.</p>
                   </div>

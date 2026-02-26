@@ -311,7 +311,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
       
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -510,7 +510,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 1.8 + i * 0.1 }}
-                      className="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-300"
+                      className="px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-full text-[#2B8A6E]"
                     >
                       {item}
                     </motion.span>
@@ -530,7 +530,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.5 }}
                   className="flex items-center justify-center gap-3 mb-6"
                 >
-                  <Clock className="h-8 w-8 text-emerald-400" />
+                  <Clock className="h-8 w-8 text-[#2B8A6E]" />
                   <span className="text-xl text-gray-800">From signal to coordinated execution</span>
                 </motion.div>
                 <motion.div
@@ -539,10 +539,10 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
                   className="mb-8"
                 >
-                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     12
                   </span>
-                  <span className="text-4xl md:text-6xl text-emerald-400 ml-4">
+                  <span className="text-4xl md:text-6xl text-[#2B8A6E] ml-4">
                     MINUTES
                   </span>
                 </motion.div>
@@ -616,7 +616,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.5, delay: 1.2 }}
                   className="mb-8"
                 >
-                  <span className="text-2xl md:text-3xl text-emerald-400 font-semibold">
+                  <span className="text-2xl md:text-3xl text-[#2B8A6E] font-semibold">
                     Welcome to Execution OS.
                   </span>
                 </motion.div>
@@ -629,7 +629,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   <a href="/try-demo">
                     <Button 
                       size="lg" 
-                      className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400"
+                      className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-[#3BAF8A]"
                       onClick={() => onSkip?.()}
                     >
                       <Play className="mr-2 h-5 w-5" />
@@ -659,7 +659,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
           {/* Progress bar */}
           <div className="h-1 bg-gray-50 rounded-full mb-4 overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-amber-500 to-emerald-500"
+              className="h-full bg-gradient-to-r from-amber-500 to-[#256B56]"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}

@@ -29,7 +29,7 @@ const severityColors: Record<string, { badge: string; border: string }> = {
   'critical': { badge: 'bg-red-500 text-white', border: 'border-red-500/20' },
   'high': { badge: 'bg-orange-500 text-white', border: 'border-orange-500/20' },
   'medium': { badge: 'bg-yellow-500 text-white', border: 'border-yellow-500/20' },
-  'low': { badge: 'bg-blue-500 text-white', border: 'border-blue-500/20' },
+  'low': { badge: 'bg-[#0A0F2E] text-white', border: 'border-blue-500/20' },
   'info': { badge: 'bg-slate-500 text-white', border: 'border-slate-500/20' }
 };
 
@@ -46,7 +46,7 @@ export default function LiveActivityFeed({ organizationId }: { organizationId: s
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Activity className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <Activity className="h-5 w-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
             <CardTitle className="text-lg">Live Activity Feed</CardTitle>
           </div>
           <Badge variant="outline" className="text-xs">
@@ -82,7 +82,7 @@ export default function LiveActivityFeed({ organizationId }: { organizationId: s
                     data-testid={`activity-event-${event.id}`}
                   >
                     <div className="flex-shrink-0">
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center`}>
+                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center`}>
                         <Icon className="h-4 w-4 text-white" />
                       </div>
                     </div>

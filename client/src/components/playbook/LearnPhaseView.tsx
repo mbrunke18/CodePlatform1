@@ -78,11 +78,11 @@ interface LearnItem {
 }
 
 const LEARN_TYPE_CONFIG: Record<LearnType, { icon: any; label: string; color: string }> = {
-  debrief_meeting: { icon: MessageSquare, label: 'Debrief Meeting', color: 'text-blue-500' },
+  debrief_meeting: { icon: MessageSquare, label: 'Debrief Meeting', color: 'text-[#0A0F2E]' },
   survey: { icon: ClipboardList, label: 'Feedback Survey', color: 'text-green-500' },
-  documentation: { icon: FileText, label: 'Documentation', color: 'text-purple-500' },
+  documentation: { icon: FileText, label: 'Documentation', color: 'text-[#C9A84C]' },
   playbook_update: { icon: RefreshCw, label: 'Playbook Update', color: 'text-orange-500' },
-  metrics_review: { icon: BarChart3, label: 'Metrics Review', color: 'text-cyan-500' },
+  metrics_review: { icon: BarChart3, label: 'Metrics Review', color: 'text-[#2B8A6E]' },
   process_improvement: { icon: Users, label: 'Process Improvement', color: 'text-pink-500' },
 };
 
@@ -197,7 +197,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
 
   return (
     <div className="space-y-6" data-testid="learn-phase-view">
-      <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30">
+      <Card className="bg-gradient-to-br from-green-50 to-[#256B56] dark:from-green-950/30 dark:to-[#256B56]/30">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -210,7 +210,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-emerald-700 dark:text-green-400" data-testid="learn-items-count">
+              <div className="text-3xl font-bold text-[#2B8A6E] dark:text-green-400" data-testid="learn-items-count">
                 {totalItems}
               </div>
               <div className="text-xs text-muted-foreground">Learning Activities</div>

@@ -46,7 +46,7 @@ export default function PerformanceAnalytics() {
               <span className="text-sm font-medium text-foreground" data-testid="text-task-velocity">2.3/day</span>
             </div>
             <div className="w-full bg-muted rounded-full h-2 mt-1">
-              <div className="bg-blue-500 h-2 rounded-full" style={{ width: '76%' }}></div>
+              <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '76%' }}></div>
             </div>
           </div>
           
@@ -56,15 +56,15 @@ export default function PerformanceAnalytics() {
               <span className="text-sm font-medium text-foreground" data-testid="text-team-engagement">94%</span>
             </div>
             <div className="w-full bg-muted rounded-full h-2 mt-1">
-              <div className="bg-purple-500 h-2 rounded-full" style={{ width: '94%' }}></div>
+              <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '94%' }}></div>
             </div>
           </div>
         </div>
         
         {/* AI Insights */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border border-purple-200">
+        <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] p-4 rounded-lg border border-[#C9A84C]">
           <div className="flex items-start space-x-3">
-            <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-full flex items-center justify-center flex-shrink-0">
               <i className="fas fa-lightbulb text-white text-xs"></i>
             </div>
             <div>

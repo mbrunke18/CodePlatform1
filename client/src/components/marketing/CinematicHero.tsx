@@ -148,8 +148,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A0F2E]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -200,7 +200,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     transition={{ duration: 0.4, delay: 0 }}
                     className="flex flex-col items-center p-4"
                   >
-                    <Globe className="h-10 w-10 text-emerald-400 mb-2" />
+                    <Globe className="h-10 w-10 text-[#2B8A6E] mb-2" />
                     <span className="text-gray-800 text-sm">A market opens.</span>
                   </motion.div>
                   <motion.div
@@ -209,7 +209,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     transition={{ duration: 0.4, delay: 0.3 }}
                     className="flex flex-col items-center p-4"
                   >
-                    <TrendingUp className="h-10 w-10 text-blue-400 mb-2" />
+                    <TrendingUp className="h-10 w-10 text-[#0A0F2E] mb-2" />
                     <span className="text-gray-800 text-sm">A competitor moves.</span>
                   </motion.div>
                   <motion.div
@@ -218,7 +218,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     transition={{ duration: 0.4, delay: 0.6 }}
                     className="flex flex-col items-center p-4"
                   >
-                    <Cpu className="h-10 w-10 text-purple-400 mb-2" />
+                    <Cpu className="h-10 w-10 text-[#C9A84C] mb-2" />
                     <span className="text-gray-800 text-sm">A transformation begins.</span>
                   </motion.div>
                   <motion.div
@@ -345,10 +345,10 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   }}
                   className="mb-6"
                 >
-                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     12
                   </span>
-                  <span className="text-4xl md:text-6xl text-emerald-400 ml-4">
+                  <span className="text-4xl md:text-6xl text-[#2B8A6E] ml-4">
                     MINUTES?
                   </span>
                 </motion.div>
@@ -399,31 +399,31 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     <Sword className="h-10 w-10 text-red-400 mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-red-400 mb-2">OFFENSE</h3>
                     <p className="text-gray-800 text-sm mb-2">Market Entry • M&A • Product Launch</p>
-                    <p className="text-emerald-400 text-sm font-medium">Seize opportunities before competitors react.</p>
+                    <p className="text-[#2B8A6E] text-sm font-medium">Seize opportunities before competitors react.</p>
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.0 }}
-                    className="bg-gradient-to-br from-blue-500/20 to-cyan-500/10 border border-blue-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-blue-500/30 rounded-xl p-6"
                   >
-                    <Shield className="h-10 w-10 text-blue-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-blue-400 mb-2">DEFENSE</h3>
+                    <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-2">DEFENSE</h3>
                     <p className="text-gray-800 text-sm mb-2">Crisis • Cyber • Regulatory</p>
-                    <p className="text-emerald-400 text-sm font-medium">Protect value when threats emerge.</p>
+                    <p className="text-[#2B8A6E] text-sm font-medium">Protect value when threats emerge.</p>
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 1.2 }}
-                    className="bg-gradient-to-br from-purple-500/20 to-pink-500/10 border border-purple-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 rounded-xl p-6"
                   >
-                    <Zap className="h-10 w-10 text-purple-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-purple-400 mb-2">SPECIAL TEAMS</h3>
+                    <Zap className="h-10 w-10 text-[#C9A84C] mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-2">SPECIAL TEAMS</h3>
                     <p className="text-gray-800 text-sm mb-2">Transformation • AI • Innovation</p>
-                    <p className="text-emerald-400 text-sm font-medium">Drive transformation at speed.</p>
+                    <p className="text-[#2B8A6E] text-sm font-medium">Drive transformation at speed.</p>
                   </motion.div>
                 </div>
               </div>
@@ -456,11 +456,11 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     animate={{ x: [0, 10, 0] }}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
-                    <ArrowRight className="h-8 w-8 md:h-12 md:w-12 text-emerald-400" />
+                    <ArrowRight className="h-8 w-8 md:h-12 md:w-12 text-[#2B8A6E]" />
                   </motion.div>
                   <div className="text-center">
-                    <div className="text-4xl md:text-6xl font-bold text-emerald-400">12 min</div>
-                    <div className="text-sm text-emerald-300 mt-1">With Execution OS</div>
+                    <div className="text-4xl md:text-6xl font-bold text-[#2B8A6E]">12 min</div>
+                    <div className="text-sm text-[#2B8A6E] mt-1">With Execution OS</div>
                   </div>
                 </motion.div>
 
@@ -506,7 +506,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="mb-8"
                 >
-                  <span className="text-lg text-emerald-300/80">
+                  <span className="text-lg text-[#2B8A6E]/80">
                     By design, not by default.
                   </span>
                 </motion.div>
@@ -520,7 +520,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     TRIGGER-TO-EXECUTION
                   </span>
                   <br />
-                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     ORCHESTRATION
                   </span>
                 </motion.div>
@@ -557,7 +557,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="mb-10"
                 >
-                  <span className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 font-semibold uppercase tracking-wider">
+                  <span className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] font-semibold uppercase tracking-wider">
                     TRIGGER TO EXECUTION IN 12 MINUTES.
                   </span>
                 </motion.div>
@@ -571,7 +571,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   <a href="/try-demo">
                     <Button 
                       size="lg" 
-                      className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400" 
+                      className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-[#3BAF8A]" 
                       data-testid="button-try-demo"
                       onClick={() => onSkip?.()}
                     >

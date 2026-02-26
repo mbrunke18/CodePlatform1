@@ -78,23 +78,23 @@ export function ExecutiveTestimonialOverlay() {
             <div className={`absolute inset-0 transition-all duration-700 ${
               phase === 'after' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
             }`}>
-              <div className="bg-emerald-950/40 rounded-lg p-6 border border-emerald-500/30">
+              <div className="bg-[#2B8A6E]/15 rounded-lg p-6 border border-[#2B8A6E]/30">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-emerald-600/30 rounded-full">
-                    <Sparkles className="h-6 w-6 text-emerald-400" />
+                  <div className="p-3 bg-[#2B8A6E]/30 rounded-full">
+                    <Sparkles className="h-6 w-6 text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 space-y-4">
-                    <p className="text-sm text-emerald-400 font-semibold uppercase tracking-wide">
+                    <p className="text-sm text-[#2B8A6E] font-semibold uppercase tracking-wide">
                       With Execution OS Methodology
                     </p>
-                    <blockquote className="text-xl text-emerald-100 leading-relaxed">
+                    <blockquote className="text-xl text-[#2B8A6E] leading-relaxed">
                       Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
                       AI monitoring for early warning. Coordinated execution with clear decision rights when trigger fires.
                     </blockquote>
                     <div className="space-y-2 pt-2">
-                      <p className="text-emerald-200/80 italic">✓ Design goal: 12-minute execution from trigger</p>
-                      <p className="text-emerald-200/80 italic">✓ Projected outcome: Capture windows competitors miss</p>
-                      <p className="text-emerald-200/80 italic">✓ System capability: Preparation-driven velocity</p>
+                      <p className="text-[#2B8A6E]/80 italic">✓ Design goal: 12-minute execution from trigger</p>
+                      <p className="text-[#2B8A6E]/80 italic">✓ Projected outcome: Capture windows competitors miss</p>
+                      <p className="text-[#2B8A6E]/80 italic">✓ System capability: Preparation-driven velocity</p>
                     </div>
                   </div>
                 </div>
@@ -105,7 +105,7 @@ export function ExecutiveTestimonialOverlay() {
             <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
               phase === 'after' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
             }`}>
-              <div className="p-4 bg-gradient-to-r from-red-600 to-emerald-600 rounded-full">
+              <div className="p-4 bg-gradient-to-r from-red-600 to-[#256B56] rounded-full">
                 <ArrowRight className="h-8 w-8 text-gray-900" />
               </div>
             </div>
@@ -117,7 +117,7 @@ export function ExecutiveTestimonialOverlay() {
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>
               ) : (
-                <span className="text-emerald-300 font-semibold">Execution OS turns strategic preparation into your competitive advantage.</span>
+                <span className="text-[#2B8A6E] font-semibold">Execution OS turns strategic preparation into your competitive advantage.</span>
               )}
             </p>
           </div>

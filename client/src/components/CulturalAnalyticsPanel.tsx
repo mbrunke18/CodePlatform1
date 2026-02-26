@@ -48,7 +48,7 @@ export default function CulturalAnalyticsPanel() {
   const getTrendColor = (trend: string) => {
     switch (trend.toLowerCase()) {
       case 'improving': return "text-green-600";
-      case 'stable': return "text-blue-600";
+      case 'stable': return "text-[#0A0F2E]";
       case 'declining': return "text-red-600";
       default: return "text-gray-600";
     }
@@ -108,7 +108,7 @@ export default function CulturalAnalyticsPanel() {
               return (
                 <div key={metric.id} className="flex items-center justify-between">
                   <div className="flex items-center gap-3 flex-1">
-                    <div className="p-2 rounded-lg bg-purple-50 text-purple-600">
+                    <div className="p-2 rounded-lg bg-[#0A0F2E] text-[#C9A84C]">
                       {getDimensionIcon(metric.dimension)}
                     </div>
                     <div className="flex-1">

@@ -51,11 +51,11 @@ interface SuccessMetric {
 }
 
 const METRIC_TYPES = [
-  { id: 'fri', name: 'Future Readiness Index', icon: Gauge, color: 'text-blue-500', description: 'Overall organizational readiness score' },
-  { id: 'velocity', name: 'Decision Velocity', icon: Zap, color: 'text-yellow-500', description: 'Speed of strategic decision-making' },
-  { id: 'coverage', name: 'Scenario Coverage', icon: Shield, color: 'text-purple-500', description: 'Percentage of risks with active playbooks' },
-  { id: 'roi', name: 'ROI Metrics', icon: DollarSign, color: 'text-green-500', description: 'Return on strategic investments' },
-  { id: 'custom', name: 'Custom KPI', icon: BarChart3, color: 'text-cyan-500', description: 'Organization-specific metrics' },
+  { id: 'fri', name: 'Future Readiness Index', icon: Gauge, color: 'text-[#C9A84C]', description: 'Overall organizational readiness score' },
+  { id: 'velocity', name: 'Decision Velocity', icon: Zap, color: 'text-[#C9A84C]', description: 'Speed of strategic decision-making' },
+  { id: 'coverage', name: 'Scenario Coverage', icon: Shield, color: 'text-[#2B8A6E]', description: 'Percentage of risks with active playbooks' },
+  { id: 'roi', name: 'ROI Metrics', icon: DollarSign, color: 'text-[#2B8A6E]', description: 'Return on strategic investments' },
+  { id: 'custom', name: 'Custom KPI', icon: BarChart3, color: 'text-[#141B45]', description: 'Organization-specific metrics' },
 ];
 
 const REVIEW_CADENCES = [
@@ -115,6 +115,8 @@ const DEFAULT_METRICS: SuccessMetric[] = [
     isActive: true,
   },
 ];
+
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function SuccessMetricsConfiguration({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
@@ -220,9 +222,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   };
   
   const getProgressColor = (progress: number) => {
-    if (progress >= 80) return 'bg-green-500';
-    if (progress >= 50) return 'bg-yellow-500';
-    return 'bg-red-500';
+    if (progress >= 80) return 'bg-[#2B8A6E]';
+    if (progress >= 50) return 'bg-[#C9A84C]';
+    return 'bg-red-600';
   };
   
   const handleAddMetric = () => {
@@ -271,29 +273,29 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-gray-900 p-6 rounded-lg">
+          <div className="bg-[#0A0F2E] text-white p-6 rounded-lg border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Target className="w-7 h-7 text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                  <Target className="w-7 h-7 text-[#C9A84C]" />
                 </div>
                 <div>
                   <h1 className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
-                  <p className="text-[#C9A84C] mt-1">Define YOUR success criteria and KPIs</p>
-                  <p className="text-[#C9A84C] mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
+                  <p className="text-[#DFC178] mt-1">Define YOUR success criteria and KPIs</p>
+                  <p className="text-[#DFC178] mt-1 text-sm opacity-80">Track progress toward your strategic goals with custom metrics</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Button 
                   onClick={() => setIsAddMetricDialogOpen(true)}
-                  className="bg-white text-[#C9A84C] hover:bg-amber-50"
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
                   data-testid="button-add-metric"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Metric
                 </Button>
                 <Link to="/">
-                  <Button variant="secondary" className="bg-amber-700 hover:bg-amber-800 text-[#C9A84C] border-amber-600">
+                  <Button variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -303,43 +305,43 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           </div>
 
           {/* FRI Hero Card */}
-          <Card className="border-amber-500/30 bg-gradient-to-br  ">
+          <Card className="border-[#E8E4DC] bg-white">
             <CardContent className="p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-6">
                   <div className="relative">
-                    <div className="w-32 h-32 rounded-full border-8 border-amber-500/30 flex items-center justify-center bg-white">
+                    <div className="w-32 h-32 rounded-full border-8 border-[#C9A84C]/20 flex items-center justify-center bg-[#F8F7F4]">
                       <div className="text-center">
-                        <div className="text-4xl font-bold text-amber-400">{overallFRI.toFixed(1)}%</div>
-                        <div className="text-sm text-gray-800">Current FRI</div>
+                        <div style={{...CG}} className="text-4xl font-bold text-[#C9A84C]">{overallFRI.toFixed(1)}%</div>
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current FRI</div>
                       </div>
                     </div>
-                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center">
-                      <TrendingUp className="h-5 w-5 text-gray-900" />
+                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center">
+                      <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">Future Readiness Index™</h2>
-                    <p className="text-gray-800 mt-1">Your organization's strategic preparedness score</p>
+                    <h2 style={{...CG}} className="text-2xl font-bold text-[#0A0F2E]">Future Readiness Index™</h2>
+                    <p className="text-[#6B7280] mt-1">Your organization's strategic preparedness score</p>
                     <div className="mt-4 flex items-center gap-4">
                       <div>
-                        <span className="text-sm text-gray-800">Target:</span>
-                        <span className="ml-2 text-lg font-semibold text-amber-400">{friTarget}%</span>
+                        <span className="text-xs uppercase tracking-wider text-[#6B7280]">Target:</span>
+                        <span className="ml-2 text-lg font-semibold text-[#C9A84C]">{friTarget}%</span>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-800">Improvement:</span>
-                        <span className="ml-2 text-lg font-semibold text-green-400">+{(overallFRI - (friMetric?.baselineValue || 0)).toFixed(1)}%</span>
+                        <span className="text-xs uppercase tracking-wider text-[#6B7280]">Improvement:</span>
+                        <span className="ml-2 text-lg font-semibold text-[#2B8A6E]">+{(overallFRI - (friMetric?.baselineValue || 0)).toFixed(1)}%</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="w-64">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-800">Progress to Target</span>
-                    <span className="text-amber-400">{friProgress.toFixed(0)}%</span>
+                  <div className="flex justify-between text-xs uppercase tracking-wider mb-2">
+                    <span className="text-[#6B7280]">Progress to Target</span>
+                    <span className="text-[#C9A84C] font-bold">{friProgress.toFixed(0)}%</span>
                   </div>
-                  <Progress value={friProgress} className="h-3" />
-                  <p className="text-xs text-gray-800 mt-2">
+                  <Progress value={friProgress} className="h-2" />
+                  <p className="text-xs text-[#6B7280] mt-2">
                     {friProgress >= 100 ? 'Target achieved!' : `${(friTarget - overallFRI).toFixed(1)}% remaining to target`}
                   </p>
                 </div>
@@ -355,28 +357,28 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
               const progress = calculateProgress(metric.currentValue, metric.baselineValue, metric.targetValue);
               
               return (
-                <Card key={metric.id} className="bg-gray-50 border-gray-200 hover:border-amber-500/50 transition-all">
+                <Card key={metric.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-gray-50`}>
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-[#F8F7F4]`}>
                           <TypeIcon className={`h-5 w-5 ${typeInfo.color}`} />
                         </div>
                         <div>
-                          <CardTitle className="text-gray-900 text-lg">{metric.name}</CardTitle>
-                          <CardDescription className="text-gray-800 text-sm">
+                          <CardTitle style={{...CG}} className="text-[#0A0F2E] text-lg">{metric.name}</CardTitle>
+                          <CardDescription className="text-[#6B7280] text-sm">
                             {metric.description}
                           </CardDescription>
                         </div>
                       </div>
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-[#6B7280] hover:text-[#0A0F2E]">
                           <Edit className="h-4 w-4" />
                         </Button>
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          className="h-8 w-8 text-gray-800 hover:text-red-500"
+                          className="h-8 w-8 text-[#6B7280] hover:text-red-600"
                           onClick={() => handleDeleteMetric(metric.id)}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -386,34 +388,34 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="p-2 bg-gray-50 rounded-lg">
-                        <div className="text-xs text-gray-800">Baseline</div>
-                        <div className="text-lg font-semibold text-gray-800">
+                      <div className="p-2 bg-[#F8F7F4] rounded-lg">
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Baseline</div>
+                        <div className="text-lg font-semibold text-[#6B7280]">
                           {metric.baselineValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-gray-50 rounded-lg border-2 border-amber-500/30">
-                        <div className="text-xs text-gray-800">Current</div>
-                        <div className="text-lg font-semibold text-amber-400">
+                      <div className="p-2 bg-[#F8F7F4] rounded-lg border border-[#C9A84C]/30">
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current</div>
+                        <div className="text-lg font-semibold text-[#C9A84C]">
                           {metric.currentValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
-                      <div className="p-2 bg-gray-50 rounded-lg">
-                        <div className="text-xs text-gray-800">Target</div>
-                        <div className="text-lg font-semibold text-green-400">
+                      <div className="p-2 bg-[#F8F7F4] rounded-lg">
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Target</div>
+                        <div className="text-lg font-semibold text-[#2B8A6E]">
                           {metric.targetValue}{metric.unit === '%' || metric.unit === 'minutes' ? '' : ' '}{metric.unit}
                         </div>
                       </div>
                     </div>
                     
                     <div>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-800">Progress</span>
-                        <span className={progress >= 80 ? 'text-green-400' : progress >= 50 ? 'text-yellow-400' : 'text-red-400'}>
+                      <div className="flex justify-between text-xs uppercase tracking-wider mb-1">
+                        <span className="text-[#6B7280]">Progress</span>
+                        <span className={progress >= 80 ? 'text-[#2B8A6E]' : progress >= 50 ? 'text-[#C9A84C]' : 'text-red-600'}>
                           {progress.toFixed(0)}%
                         </span>
                       </div>
-                      <div className="h-2 bg-gray-50 rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#F8F7F4] rounded-full overflow-hidden">
                         <div 
                           className={`h-full ${getProgressColor(progress)} transition-all`}
                           style={{ width: `${progress}%` }}
@@ -421,14 +423,14 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       </div>
                     </div>
                     
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-gray-800">
+                    <div className="flex items-center justify-between text-xs uppercase tracking-wider">
+                      <div className="flex items-center gap-2 text-[#6B7280]">
                         <RefreshCw className="h-4 w-4" />
                         <span>Review: {metric.reviewCadence}</span>
                       </div>
                       <Badge 
                         variant="outline" 
-                        className={metric.isActive ? 'text-green-400 border-green-500/30' : 'text-gray-800 border-gray-500/30'}
+                        className={metric.isActive ? 'text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/5' : 'text-[#6B7280] border-[#E8E4DC]'}
                       >
                         {metric.isActive ? 'Active' : 'Inactive'}
                       </Badge>
@@ -441,25 +443,25 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
 
           {/* Add Metric Dialog */}
           <Dialog open={isAddMetricDialogOpen} onOpenChange={setIsAddMetricDialogOpen}>
-            <DialogContent className="max-w-lg">
+            <DialogContent className="max-w-lg bg-white border-[#E8E4DC]">
               <DialogHeader>
-                <DialogTitle className="flex items-center gap-2">
-                  <Plus className="h-5 w-5 text-amber-500" />
+                <DialogTitle style={{...CG}} className="flex items-center gap-2 text-[#0A0F2E] text-2xl">
+                  <Plus className="h-5 w-5 text-[#C9A84C]" />
                   Add Success Metric
                 </DialogTitle>
-                <DialogDescription>
+                <DialogDescription className="text-[#6B7280]">
                   Define a new KPI to track your organization's strategic success
                 </DialogDescription>
               </DialogHeader>
               
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label>Metric Type</Label>
+                  <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Metric Type</Label>
                   <Select 
                     value={newMetric.type} 
                     onValueChange={(value: any) => setNewMetric({ ...newMetric, type: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="border-[#E8E4DC]">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -476,47 +478,52 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Metric Name *</Label>
+                  <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Metric Name *</Label>
                   <Input 
                     value={newMetric.name}
                     onChange={(e) => setNewMetric({ ...newMetric, name: e.target.value })}
                     placeholder="e.g., Customer Response Time"
+                    className="border-[#E8E4DC]"
                     data-testid="input-metric-name"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Description</Label>
+                  <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Description</Label>
                   <Textarea 
                     value={newMetric.description}
                     onChange={(e) => setNewMetric({ ...newMetric, description: e.target.value })}
                     placeholder="Describe what this metric measures..."
+                    className="border-[#E8E4DC]"
                     rows={2}
                   />
                 </div>
                 
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label>Baseline</Label>
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Baseline</Label>
                     <Input 
                       type="number"
                       value={newMetric.baselineValue}
+                      className="border-[#E8E4DC]"
                       onChange={(e) => setNewMetric({ ...newMetric, baselineValue: parseFloat(e.target.value) || 0 })}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Current</Label>
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Current</Label>
                     <Input 
                       type="number"
                       value={newMetric.currentValue}
+                      className="border-[#E8E4DC]"
                       onChange={(e) => setNewMetric({ ...newMetric, currentValue: parseFloat(e.target.value) || 0 })}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Target</Label>
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Target</Label>
                     <Input 
                       type="number"
                       value={newMetric.targetValue}
+                      className="border-[#E8E4DC]"
                       onChange={(e) => setNewMetric({ ...newMetric, targetValue: parseFloat(e.target.value) || 0 })}
                     />
                   </div>
@@ -524,12 +531,12 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>Unit</Label>
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Unit</Label>
                     <Select 
                       value={newMetric.unit} 
                       onValueChange={(value) => setNewMetric({ ...newMetric, unit: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="border-[#E8E4DC]">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -545,17 +552,19 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label>Review Cadence</Label>
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Review Cadence</Label>
                     <Select 
                       value={newMetric.reviewCadence} 
                       onValueChange={(value: any) => setNewMetric({ ...newMetric, reviewCadence: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="border-[#E8E4DC]">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         {REVIEW_CADENCES.map((cadence) => (
-                          <SelectItem key={cadence.id} value={cadence.id}>{cadence.name}</SelectItem>
+                          <SelectItem key={cadence.id} value={cadence.id}>
+                            {cadence.name}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -563,13 +572,20 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                 </div>
               </div>
               
-              <DialogFooter>
-                <Button variant="outline" onClick={() => setIsAddMetricDialogOpen(false)}>
+              <DialogFooter className="pt-6">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setIsAddMetricDialogOpen(false)}
+                  className="border-[#E8E4DC] text-[#6B7280]"
+                >
                   Cancel
                 </Button>
-                <Button onClick={handleAddMetric} className="bg-amber-600 hover:bg-amber-700" data-testid="button-save-metric">
-                  <Save className="h-4 w-4 mr-2" />
-                  Save Metric
+                <Button 
+                  onClick={handleAddMetric}
+                  disabled={createMetricMutation.isPending}
+                  className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
+                >
+                  {createMetricMutation.isPending ? 'Creating...' : 'Create Metric'}
                 </Button>
               </DialogFooter>
             </DialogContent>

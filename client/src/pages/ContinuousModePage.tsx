@@ -5,6 +5,17 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Activity, Clock, Calendar, CheckCircle, AlertCircle, PlayCircle, Pause } from 'lucide-react';
 
+const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const scheduledTasks = [
   {
     id: 1,
@@ -65,22 +76,26 @@ export default function ContinuousModePage() {
   const { continuousMode } = useDynamicStrategy();
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
+    <div className="page-background min-h-screen bg-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-              <Activity className="w-10 h-10 text-blue-800" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Always-On Intelligence</span>
+            </div>
+            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
+              <Activity className="w-10 h-10 text-[#0A0F2E]" />
               Continuous Operations Mode
             </h1>
-            <p className="text-gray-800 dark:text-slate-300">
+            <p className="text-[#6B7280]">
               Always-on strategic monitoring, learning, and automated coordination
             </p>
           </div>
           <Button 
             size="lg"
-            variant={continuousMode.enabled ? "destructive" : "default"}
+            className={continuousMode.enabled ? "bg-[#0A0F2E] text-white hover:bg-[#141B45]" : "bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"}
             data-testid="button-toggle-continuous"
           >
             {continuousMode.enabled ? (
@@ -99,47 +114,49 @@ export default function ContinuousModePage() {
 
         {/* Status Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className={continuousMode.enabled ? 
-            "border-2 border-green-500 dark:border-green-700" : 
-            "border-2 border-slate-300 dark:border-slate-700"
-          }>
-            <CardHeader>
-              <CardDescription>System Status</CardDescription>
-              <CardTitle className={`text-3xl ${continuousMode.enabled ? "text-emerald-700" : "text-gray-800 dark:text-slate-200"}`}>
-                {continuousMode.enabled ? "ACTIVE" : "PAUSED"}
+          <Card className={`border shadow-none ${continuousMode.enabled ? 
+            "border-[#2B8A6E] bg-[#2B8A6E]/5" : 
+            "border-[#E8E4DC] bg-white"
+          }`}>
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[#6B7280]">System Status</CardDescription>
+              <CardTitle className="text-3xl" style={CG}>
+                <span className={continuousMode.enabled ? "text-[#2B8A6E]" : "text-[#0A0F2E]"}>
+                  {continuousMode.enabled ? "ACTIVE" : "PAUSED"}
+                </span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               {continuousMode.enabled && (
-                <div className="flex items-center gap-2 text-sm text-emerald-800 dark:text-green-400">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span>Monitoring in progress</span>
+                <div className="flex items-center gap-2 text-sm text-[#2B8A6E]">
+                  <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse"></div>
+                  <span className="font-semibold uppercase tracking-wider text-[10px]">Monitoring in progress</span>
                 </div>
               )}
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardDescription>Tasks Scheduled</CardDescription>
-              <CardTitle className="text-3xl text-blue-800">{continuousMode.tasksScheduled}</CardTitle>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[#6B7280]">Tasks Scheduled</CardDescription>
+              <CardTitle className="text-3xl text-[#0A0F2E]" style={CG}>{continuousMode.tasksScheduled}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-800 dark:text-slate-300">
+              <p className="text-sm text-[#6B7280]">
                 Automated operations running
               </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardDescription>Next Scheduled Run</CardDescription>
-              <CardTitle className="text-3xl text-violet-600">
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[#6B7280]">Next Scheduled Run</CardDescription>
+              <CardTitle className="text-3xl text-[#C9A84C]" style={CG}>
                 {continuousMode.nextRun ? new Date(continuousMode.nextRun).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : '--:--'}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-gray-800 dark:text-slate-300">
+              <p className="text-sm text-[#6B7280]">
                 {continuousMode.nextRun ? 'Weak Signal Sweep' : 'No tasks scheduled'}
               </p>
             </CardContent>
@@ -148,45 +165,45 @@ export default function ContinuousModePage() {
 
         {/* Scheduled Tasks */}
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Scheduled Automation Tasks</h2>
+          <h2 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={CG}>Scheduled Automation Tasks</h2>
           <div className="space-y-3">
             {scheduledTasks.map((task) => (
-              <Card key={task.id} data-testid={`card-task-${task.id}`}>
+              <Card key={task.id} className="border-[#E8E4DC] shadow-none bg-white overflow-hidden" data-testid={`card-task-${task.id}`}>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
-                      <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
-                        <Clock className="w-5 h-5 text-blue-800 dark:text-blue-400" />
+                      <div className="bg-[#0A0F2E] p-3 rounded-none">
+                        <Clock className="w-5 h-5 text-white" />
                       </div>
-                      <div className="flex-1 page-background">
-                        <h3 className="font-semibold text-slate-900 dark:text-white mb-1">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-[#0A0F2E] mb-1">
                           {task.name}
                         </h3>
-                        <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300">
+                        <div className="flex items-center gap-4 text-sm text-[#6B7280]">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             <span>{task.schedule}</span>
                           </div>
                           <span>•</span>
-                          <span>{task.executions} executions</span>
+                          <span className="font-medium">{task.executions} executions</span>
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <div className="text-xs text-gray-800 dark:text-slate-300 mb-1">Last run</div>
-                        <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-1">Last run</div>
+                        <div className="text-sm font-medium text-[#0A0F2E]">
                           {task.lastRun}
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-xs text-gray-800 dark:text-slate-300 mb-1">Next run</div>
-                        <div className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-1">Next run</div>
+                        <div className="text-sm font-medium text-[#0A0F2E]">
                           {task.nextRun}
                         </div>
                       </div>
-                      <Badge variant={task.status === 'active' ? 'default' : 'secondary'}>
-                        {task.status}
+                      <Badge className={task.status === 'active' ? 'bg-[#2B8A6E]/12 text-[#2B8A6E] border-none' : 'bg-[#E8E4DC] text-[#6B7280] border-none'}>
+                        {task.status.toUpperCase()}
                       </Badge>
                     </div>
                   </div>
@@ -198,28 +215,28 @@ export default function ContinuousModePage() {
 
         {/* Recent Execution Log */}
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Recent Executions</h2>
-          <Card>
+          <h2 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={CG}>Recent Executions</h2>
+          <Card className="border-[#E8E4DC] shadow-none bg-white">
             <CardContent className="p-6">
               <div className="space-y-3">
                 {recentExecutions.map((execution, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg"
+                    className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]"
                     data-testid={`execution-log-${index}`}
                   >
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-700" />
+                      <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                       <div>
-                        <div className="font-medium text-slate-900 dark:text-white">
+                        <div className="font-medium text-[#0A0F2E]">
                           {execution.task}
                         </div>
-                        <div className="text-sm text-gray-800 dark:text-slate-300">
+                        <div className="text-sm text-[#6B7280]">
                           {execution.findings}
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-800 dark:text-slate-300">
+                    <div className="text-sm text-[#6B7280]">
                       {execution.time}
                     </div>
                   </div>
@@ -230,36 +247,37 @@ export default function ContinuousModePage() {
         </div>
 
         {/* Capabilities Overview */}
-        <Card className="bg-gradient-to-r from-blue-600 to-violet-600 text-gray-900 border-0">
-          <CardHeader>
-            <CardTitle className="text-2xl">Continuous Mode Capabilities</CardTitle>
+        <Card style={{ background: NAVY }} className="border-none shadow-xl text-white relative overflow-hidden">
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.1) 1px, transparent 0)", backgroundSize: "24px 24px" }} />
+          <CardHeader className="relative z-10">
+            <CardTitle className="text-2xl" style={CG}>Continuous Mode Capabilities</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <Activity className="w-5 h-5" />
                   Always-On Monitoring
                 </h4>
-                <p className="text-sm text-blue-800">
+                <p className="text-sm text-white/70">
                   24/7 scanning of intelligence signals for threats and opportunities
                 </p>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <CheckCircle className="w-5 h-5" />
                   Automated Learning
                 </h4>
-                <p className="text-sm text-blue-800">
+                <p className="text-sm text-white/70">
                   Self-improving playbooks after every execution
                 </p>
               </div>
-              <div>
-                <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+                <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <Clock className="w-5 h-5" />
                   Scheduled Operations
                 </h4>
-                <p className="text-sm text-blue-800">
+                <p className="text-sm text-white/70">
                   Automated tasks run on smart schedules optimized for your org
                 </p>
               </div>

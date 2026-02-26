@@ -79,7 +79,7 @@ export function StrategicDomains({ progress }: SceneProps) {
           </div>
 
           <div className="text-center">
-            <p className="text-purple-400 font-bold text-sm mb-3">SPECIAL TEAMS</p>
+            <p className="text-[#C9A84C] font-bold text-sm mb-3">SPECIAL TEAMS</p>
             <div className="space-y-3">
               {domains.filter(d => d.category === "SPECIAL").map((domain, i) => (
                 <motion.div
@@ -87,9 +87,9 @@ export function StrategicDomains({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: i + 6 < visibleCount ? 1 : 0.2, x: 0 }}
                   transition={{ delay: 1.0 + i * 0.1 }}
-                  className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-3 flex items-center gap-3"
+                  className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg p-3 flex items-center gap-3"
                 >
-                  <domain.icon className="w-5 h-5 text-purple-400" />
+                  <domain.icon className="w-5 h-5 text-[#C9A84C]" />
                   <span className="text-gray-900 text-sm">{domain.name}</span>
                 </motion.div>
               ))}

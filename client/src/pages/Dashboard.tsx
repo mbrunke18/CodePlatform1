@@ -86,7 +86,7 @@ function PhaseCard({
   color: 'violet' | 'blue' | 'amber' | 'emerald';
 }) {
   const colorMap = {
-    violet: { border: BORDER, accent: NAVY },
+    violet: { border: BORDER, accent: TEAL },
     blue: { border: BORDER, accent: NAVY },
     amber: { border: BORDER, accent: GOLD },
     emerald: { border: BORDER, accent: TEAL }
@@ -348,15 +348,15 @@ export default function Dashboard() {
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">AI Intelligence Core</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span className="text-[10px] font-bold text-emerald-400 uppercase">Operational</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
                       </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Execution Engine</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span className="text-[10px] font-bold text-emerald-400 uppercase">Active</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Active</span>
                       </div>
                     </div>
                   </div>

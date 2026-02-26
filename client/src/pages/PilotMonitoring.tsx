@@ -48,7 +48,7 @@ export default function PilotMonitoring() {
         <StandardNav />
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A0F2E] mx-auto"></div>
             <p className="mt-4 text-gray-800 dark:text-slate-300">Loading monitoring dashboard...</p>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function PilotMonitoring() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-sm text-gray-800 dark:text-slate-300">Uptime</div>
-                <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.uptime}%
@@ -141,7 +141,7 @@ export default function PilotMonitoring() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-sm text-gray-800 dark:text-slate-300">Avg Response</div>
-                <Clock className="w-5 h-5 text-blue-800" />
+                <Clock className="w-5 h-5 text-[#0A0F2E]" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.avgResponseTime}ms
@@ -154,7 +154,7 @@ export default function PilotMonitoring() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-sm text-gray-800 dark:text-slate-300">Active Users</div>
-                <Users className="w-5 h-5 text-purple-800" />
+                <Users className="w-5 h-5 text-[#C9A84C]" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {systemHealth.activeUsers}
@@ -167,7 +167,7 @@ export default function PilotMonitoring() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-sm text-gray-800 dark:text-slate-300">Executions</div>
-                <Zap className="w-5 h-5 text-cyan-600" />
+                <Zap className="w-5 h-5 text-[#2B8A6E]" />
               </div>
               <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 {pilotMetrics.executionsCompleted}
@@ -182,7 +182,7 @@ export default function PilotMonitoring() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-blue-800" />
+                <Users className="w-5 h-5 text-[#0A0F2E]" />
                 Pilot Company Status
               </CardTitle>
             </CardHeader>
@@ -195,7 +195,7 @@ export default function PilotMonitoring() {
                   <div className="text-sm text-gray-800 dark:text-slate-300">Total Pilots</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-emerald-700">
+                  <div className="text-2xl font-bold text-[#2B8A6E]">
                     {pilotMetrics.activePilots}
                   </div>
                   <div className="text-sm text-gray-800 dark:text-slate-300">Active</div>
@@ -224,7 +224,7 @@ export default function PilotMonitoring() {
                     <span className="font-semibold text-slate-900 dark:text-white">85%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '85%' }}></div>
+                    <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function PilotMonitoring() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-purple-800" />
+                <BarChart3 className="w-5 h-5 text-[#C9A84C]" />
                 Platform Usage
               </CardTitle>
             </CardHeader>
@@ -245,14 +245,14 @@ export default function PilotMonitoring() {
                     <div className="text-sm text-gray-800 dark:text-slate-300">Scenarios Created</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.scenariosCreated}</div>
                   </div>
-                  <TrendingUp className="w-8 h-8 text-emerald-700" />
+                  <TrendingUp className="w-8 h-8 text-[#2B8A6E]" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Triggers Configured</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.triggersConfigured}</div>
                   </div>
-                  <TrendingUp className="w-8 h-8 text-blue-800" />
+                  <TrendingUp className="w-8 h-8 text-[#0A0F2E]" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
@@ -282,7 +282,7 @@ export default function PilotMonitoring() {
                       {metric.label}
                     </div>
                     <CheckCircle2 className={`w-5 h-5 ${
-                      metric.status === 'good' ? 'text-emerald-700' : 'text-yellow-600'
+                      metric.status === 'good' ? 'text-[#2B8A6E]' : 'text-yellow-600'
                     }`} />
                   </div>
                   <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
@@ -308,7 +308,7 @@ export default function PilotMonitoring() {
                 <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg">
                   <div className="flex-shrink-0 mt-1">
                     {activity.success ? (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                      <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
                     ) : (
                       <AlertCircle className="w-5 h-5 text-yellow-600" />
                     )}

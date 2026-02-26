@@ -47,7 +47,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Luxury Goods",
     industryKey: "luxury",
     icon: Crown,
-    iconColor: "text-purple-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "China Luxury Renaissance — 10-Brand Simultaneous Launch",
     organization: "LVMH Moët Hennessy Louis Vuitton",
     playbook: "#145 Strategic Market Entry",
@@ -64,7 +64,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Fast Fashion",
     industryKey: "fast-fashion",
     icon: TrendingUp,
-    iconColor: "text-pink-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "TikTok Cottage Core Trend — 200 SKUs in 7 Days",
     organization: "SHEIN (Global Fashion Marketplace)",
     playbook: "#146 Trend Capitalization",
@@ -81,7 +81,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Aerospace",
     industryKey: "aerospace",
     icon: Rocket,
-    iconColor: "text-blue-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Orbital Window — 3-Day Launch Advancement",
     organization: "SpaceX (Space Transportation)",
     playbook: "#155 Launch Acceleration",
@@ -98,7 +98,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Financial Services",
     industryKey: "financial",
     icon: Shield,
-    iconColor: "text-blue-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Banking Infrastructure Breach",
     organization: "LoanDepot (Major Mortgage Lender)",
     playbook: "#065 Ransomware Attack Response",
@@ -115,7 +115,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Pharmaceutical",
     industryKey: "pharma",
     icon: Pill,
-    iconColor: "text-red-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Class I Recall — Life-Threatening Defect",
     organization: "Glenmark Pharmaceuticals",
     playbook: "#095 Product Recall (Class I)",
@@ -132,7 +132,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Manufacturing",
     industryKey: "manufacturing",
     icon: Factory,
-    iconColor: "text-orange-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Critical Semiconductor Shortage",
     organization: "Toyota Motor Corporation",
     playbook: "#019 Supplier Failure Response",
@@ -149,7 +149,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Retail",
     industryKey: "retail",
     icon: ShoppingCart,
-    iconColor: "text-green-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Salmonella Contamination Crisis",
     organization: "Walmart Inc.",
     playbook: "#095 Food Product Recall",
@@ -166,7 +166,7 @@ const industryDemos: IndustryDemo[] = [
     industry: "Energy & Utilities",
     industryKey: "energy",
     icon: Zap,
-    iconColor: "text-yellow-400",
+    iconColor: "text-[#C9A84C]",
     scenario: "Cascading Grid Failure Crisis",
     organization: "Pacific Grid & Power",
     playbook: "#082 Grid Emergency Response",
@@ -180,9 +180,9 @@ const industryDemos: IndustryDemo[] = [
 ];
 
 const categoryBadge = (cat: string) => {
-  if (cat === 'OFFENSE') return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
-  if (cat === 'DEFENSE') return 'bg-red-500/10 text-red-400 border-red-500/20';
-  return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+  if (cat === 'OFFENSE') return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
+  if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
+  return 'bg-[#C9A84C]/10 text-[#0A0F2E] border-[#C9A84C]/20';
 };
 
 export default function IndustryDemosHub() {
@@ -229,7 +229,7 @@ export default function IndustryDemosHub() {
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Value Impact</div>
-                <div className="text-sm font-semibold text-emerald-400">{demo.valueSaved}</div>
+                <div className="text-sm font-semibold text-[#2B8A6E]">{demo.valueSaved}</div>
               </div>
               <div>
                 <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Stakeholders</div>
@@ -257,8 +257,8 @@ export default function IndustryDemosHub() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Building2 className="w-8 h-8 text-emerald-400" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+              <Building2 className="w-8 h-8 text-[#2B8A6E]" />
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E]">
                 Industry Scenarios
               </h1>
             </div>
@@ -266,18 +266,18 @@ export default function IndustryDemosHub() {
               See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-gray-800">
-              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Offense & Defense</span>
-              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-emerald-400" /> 12-minute coordination</span>
-              <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-amber-400" /> Real enterprise impact</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Live stakeholder orchestration</span>
+              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Offense & Defense</span>
+              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12-minute coordination</span>
+              <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-[#C9A84C]" /> Real enterprise impact</span>
+              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#0A0F2E]" /> Live stakeholder orchestration</span>
             </div>
           </div>
 
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
-              <Target className="w-5 h-5 text-blue-400" />
-              <h2 className="text-xl font-bold">Strategic Opportunities</h2>
-              <Badge className="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs">OFFENSE</Badge>
+              <Target className="w-5 h-5 text-[#0A0F2E]" />
+              <h2 className="text-xl font-bold text-[#0A0F2E]">Strategic Opportunities</h2>
+              <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-xs">OFFENSE</Badge>
             </div>
             <p className="text-sm text-gray-700 mb-6 max-w-4xl">
               When opportunities emerge — market shifts, competitive windows, strategic launches — 12-minute coordination enables your organization to execute while competitors are still scheduling meetings.
@@ -289,9 +289,9 @@ export default function IndustryDemosHub() {
 
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-5 h-5 text-red-400" />
-              <h2 className="text-xl font-bold">Crisis Response</h2>
-              <Badge className="bg-red-500/10 text-red-400 border border-red-500/20 text-xs">DEFENSE</Badge>
+              <Shield className="w-5 h-5 text-[#0A0F2E]" />
+              <h2 className="text-xl font-bold text-[#0A0F2E]">Crisis Response</h2>
+              <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 text-xs">DEFENSE</Badge>
             </div>
             <p className="text-sm text-gray-700 mb-6 max-w-4xl">
               When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
@@ -309,26 +309,26 @@ export default function IndustryDemosHub() {
               </p>
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div>
-                  <div className="text-2xl font-bold text-red-400 mb-1">48-72 hrs</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-1">48-72 hrs</div>
                   <div className="text-xs text-gray-800">Traditional coordination</div>
                 </div>
                 <div className="flex items-center justify-center">
                   <ArrowRight className="w-6 h-6 text-gray-800" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-emerald-400 mb-1">12 min</div>
+                  <div className="text-2xl font-bold text-[#2B8A6E] mb-1">12 min</div>
                   <div className="text-xs text-gray-800">Execution OS coordination</div>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link href="/activation">
-                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-500 text-gray-900 px-8">
+                <Link href="/onboarding">
+                  <Button size="lg" className="bg-[#2B8A6E] hover:bg-[#237059] text-white px-8">
                     <Zap className="w-5 h-5 mr-2" />
                     Try Live Activation
                   </Button>
                 </Link>
-                <Link href="/playbooks">
-                  <Button size="lg" variant="outline" className="border-gray-200 text-gray-800 hover:bg-gray-800 px-8">
+                <Link href="/onboarding">
+                  <Button size="lg" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-gray-50 px-8">
                     Explore 170 Playbooks
                   </Button>
                 </Link>

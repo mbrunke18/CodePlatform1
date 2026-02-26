@@ -26,11 +26,11 @@ interface LearnConfigStepProps {
 }
 
 const LEARN_ITEM_TYPES = [
-  { value: 'debrief_meeting', label: 'Debrief Meeting', icon: Users, color: 'text-blue-500' },
-  { value: 'stakeholder_survey', label: 'Stakeholder Survey', icon: FileText, color: 'text-purple-500' },
-  { value: 'metrics_review', label: 'Metrics Review', icon: BarChart3, color: 'text-emerald-500' },
+  { value: 'debrief_meeting', label: 'Debrief Meeting', icon: Users, color: 'text-[#0A0F2E]' },
+  { value: 'stakeholder_survey', label: 'Stakeholder Survey', icon: FileText, color: 'text-[#C9A84C]' },
+  { value: 'metrics_review', label: 'Metrics Review', icon: BarChart3, color: 'text-[#2B8A6E]' },
   { value: 'playbook_update', label: 'Playbook Update', icon: BookOpen, color: 'text-amber-500' },
-  { value: 'documentation', label: 'Documentation', icon: FileText, color: 'text-cyan-500' },
+  { value: 'documentation', label: 'Documentation', icon: FileText, color: 'text-[#2B8A6E]' },
 ];
 
 const TIMING_OPTIONS = [

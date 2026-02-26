@@ -98,23 +98,23 @@ export default function TwelveMinuteTimer({
     <div className="space-y-6">
       <div className="text-center mb-4">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-xl text-blue-800">{subtitle}</p>
+        <p className="text-xl text-[#0A0F2E]">{subtitle}</p>
       </div>
 
       <Card className="p-4 bg-gradient-to-br   border-blue-800/30 max-w-md mx-auto">
         <div className="flex items-center justify-center gap-4">
-          <Clock className={`h-5 w-5 text-blue-400 ${isRunning ? 'animate-pulse' : ''}`} />
+          <Clock className={`h-5 w-5 text-[#0A0F2E] ${isRunning ? 'animate-pulse' : ''}`} />
           <div className="text-4xl font-bold text-gray-900" data-testid="text-timer">
             {timelineState.formattedTime}
           </div>
-          <span className="text-sm text-blue-800">
+          <span className="text-sm text-[#0A0F2E]">
             {completed ? '✓ Complete' : 'Coordinating...'}
           </span>
         </div>
       </Card>
 
       <div className="relative">
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-green-500" />
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#0A0F2E] to-green-500" />
 
         <div className="space-y-4">
           {timeline.map((event, index) => {
@@ -133,7 +133,7 @@ export default function TwelveMinuteTimer({
                   isActive 
                     ? isLast 
                       ? 'bg-green-500 ring-4 ring-green-200 dark:ring-green-800' 
-                      : 'bg-blue-500 ring-4 ring-blue-200 dark:ring-blue-800'
+                      : 'bg-[#0A0F2E] ring-4 ring-blue-200 dark:ring-blue-800'
                     : 'bg-gray-300 dark:bg-gray-700'
                 }`}>
                   {isActive && (
@@ -168,15 +168,15 @@ export default function TwelveMinuteTimer({
         <Card className="p-6 bg-green-50 dark:bg-green-950 border-green-500 border-2" data-testid="card-completion">
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">12:00</div>
+              <div className="text-2xl font-bold text-[#2B8A6E] dark:text-green-300">12:00</div>
               <div className="text-xs text-muted-foreground">Total Time</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">193</div>
+              <div className="text-2xl font-bold text-[#2B8A6E] dark:text-green-300">193</div>
               <div className="text-xs text-muted-foreground">Stakeholders</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-800 dark:text-green-300">$50M</div>
+              <div className="text-2xl font-bold text-[#2B8A6E] dark:text-green-300">$50M</div>
               <div className="text-xs text-muted-foreground">Budget Activated</div>
             </div>
           </div>

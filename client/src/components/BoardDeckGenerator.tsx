@@ -58,7 +58,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
       <CardHeader className="border-b border-border pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] rounded-lg flex items-center justify-center">
               <FileText className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -66,7 +66,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
               <p className="text-sm text-muted-foreground">AI-powered executive briefings</p>
             </div>
           </div>
-          <Badge variant="outline" className="bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800">
+          <Badge variant="outline" className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C] dark:border-[#C9A84C]">
             <Sparkles className="w-3 h-3 mr-1" />
             AI Generated
           </Badge>
@@ -135,22 +135,22 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
             <p className="text-xs text-green-600 dark:text-green-500">Cost savings</p>
           </div>
 
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-1">
-              <Zap className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <p className="text-xs font-medium text-blue-700 dark:text-blue-400">Velocity</p>
+              <Zap className="w-4 h-4 text-[#0A0F2E] dark:text-[#0A0F2E]" />
+              <p className="text-xs font-medium text-[#0A0F2E] dark:text-[#0A0F2E]">Velocity</p>
             </div>
-            <p className="text-lg font-bold text-blue-700 dark:text-blue-400">12 min</p>
-            <p className="text-xs text-blue-600 dark:text-blue-500">Avg execution</p>
+            <p className="text-lg font-bold text-[#0A0F2E] dark:text-[#0A0F2E]">12 min</p>
+            <p className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E]">Avg execution</p>
           </div>
 
-          <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3">
+          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg p-3">
             <div className="flex items-center gap-2 mb-1">
-              <Shield className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <p className="text-xs font-medium text-purple-700 dark:text-purple-400">Readiness</p>
+              <Shield className="w-4 h-4 text-[#C9A84C] dark:text-[#C9A84C]" />
+              <p className="text-xs font-medium text-[#C9A84C] dark:text-[#C9A84C]">Readiness</p>
             </div>
-            <p className="text-lg font-bold text-purple-700 dark:text-purple-400">87/100</p>
-            <p className="text-xs text-purple-600 dark:text-purple-500">Exec score</p>
+            <p className="text-lg font-bold text-[#C9A84C] dark:text-[#C9A84C]">87/100</p>
+            <p className="text-xs text-[#C9A84C] dark:text-[#C9A84C]">Exec score</p>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
         <Button 
           onClick={handleGenerate}
           disabled={generateMutation.isPending}
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+          className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45]"
           size="lg"
           data-testid="button-generate-board-deck"
         >

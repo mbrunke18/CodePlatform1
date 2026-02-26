@@ -47,7 +47,7 @@ export default function TaskPanel() {
     switch (priority.toLowerCase()) {
       case 'high': return 'bg-red-100 text-red-800';
       case 'medium': return 'bg-orange-100 text-orange-800';
-      case 'low': return 'bg-blue-100 text-blue-800';
+      case 'low': return 'bg-blue-100 text-[#0A0F2E]';
       default: return 'bg-gray-100 text-gray-800';
     }
   };

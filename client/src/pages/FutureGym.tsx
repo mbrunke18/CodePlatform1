@@ -8,6 +8,17 @@ import { Progress } from '@/components/ui/progress';
 import { Dumbbell, Target, Trophy, TrendingUp, Play, Lock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
+const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const trainingScenarios = [
   {
     id: 1,
@@ -77,20 +88,24 @@ export default function FutureGym() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-8">
+      <div className="bg-white p-8 min-h-screen">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
-              <Dumbbell className="w-10 h-10 text-blue-800" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Preparedness</span>
+            </div>
+            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
+              <Dumbbell className="w-10 h-10 text-[#0A0F2E]" />
               Future Gym
             </h1>
-            <p className="text-gray-800 dark:text-slate-300">
+            <p className="text-[#6B7280]">
               Build strategic muscle through simulated scenarios and practice drills
             </p>
           </div>
-          <Button size="lg" onClick={handleCreateExercise} data-testid="button-create-exercise">
+          <Button size="lg" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={handleCreateExercise} data-testid="button-create-exercise">
             <Target className="w-4 h-4 mr-2" />
             Create Custom Exercise
           </Button>
@@ -98,47 +113,47 @@ export default function FutureGym() {
 
         {/* Team Performance Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
-            <CardHeader>
-              <CardDescription>Total Exercises</CardDescription>
-              <CardTitle className="text-3xl text-blue-800">{teamStats.totalExercises}</CardTitle>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Total Exercises</CardDescription>
+              <CardTitle className="text-3xl text-[#0A0F2E]" style={CG}>{teamStats.totalExercises}</CardTitle>
             </CardHeader>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardDescription>Average Score</CardDescription>
-              <CardTitle className="text-3xl text-violet-600">{teamStats.avgScore}%</CardTitle>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Average Score</CardDescription>
+              <CardTitle className="text-3xl text-[#C9A84C]" style={CG}>{teamStats.avgScore}%</CardTitle>
             </CardHeader>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardDescription>Training Hours</CardDescription>
-              <CardTitle className="text-3xl text-emerald-700">{teamStats.hoursTraining}</CardTitle>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Training Hours</CardDescription>
+              <CardTitle className="text-3xl text-[#2B8A6E]" style={CG}>{teamStats.hoursTraining}</CardTitle>
             </CardHeader>
           </Card>
-          <Card>
-            <CardHeader>
-              <CardDescription>Certifications</CardDescription>
-              <CardTitle className="text-3xl text-orange-600">{teamStats.certifications}</CardTitle>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
+            <CardHeader className="pb-2">
+              <CardDescription className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Certifications</CardDescription>
+              <CardTitle className="text-3xl text-[#C9A84C]" style={CG}>{teamStats.certifications}</CardTitle>
             </CardHeader>
           </Card>
         </div>
 
         {/* Readiness Improvement Tracker */}
-        <Card>
+        <Card className="border-[#E8E4DC] bg-white shadow-none">
           <CardHeader>
-            <CardTitle>Readiness Improvement Tracker</CardTitle>
-            <CardDescription>Your training impact on Future Readiness Index™</CardDescription>
+            <CardTitle style={CG} className="text-xl text-[#0A0F2E]">Readiness Improvement Tracker</CardTitle>
+            <CardDescription className="text-[#6B7280]">Your training impact on Future Readiness Index™</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
               {Object.entries(readiness).filter(([key]) => key !== 'overall').map(([key, value]) => (
-                <div key={key} className="text-center">
-                  <div className="text-2xl font-bold text-blue-800 mb-1">{value}%</div>
-                  <div className="text-xs uppercase tracking-wide text-gray-800 dark:text-slate-300 mb-2">
+                <div key={key} className="text-center p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-1" style={CG}>{value}%</div>
+                  <div className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280] mb-3">
                     {key}
                   </div>
-                  <Progress value={value} className="h-2" />
+                  <Progress value={value} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': NAVY } as any} />
                 </div>
               ))}
             </div>
@@ -147,59 +162,60 @@ export default function FutureGym() {
 
         {/* Training Scenarios */}
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Training Scenarios</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h2 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={CG}>Training Scenarios</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trainingScenarios.map((scenario) => (
-              <Card key={scenario.id} data-testid={`card-training-${scenario.id}`}>
+              <Card key={scenario.id} className="border border-[#E8E4DC] bg-white shadow-none relative overflow-hidden" data-testid={`card-training-${scenario.id}`}>
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0A0F2E]" />
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="text-lg">{scenario.name}</CardTitle>
-                      <CardDescription className="mt-1">{scenario.description}</CardDescription>
+                      <CardTitle className="text-lg text-[#0A0F2E]" style={CG}>{scenario.name}</CardTitle>
+                      <CardDescription className="mt-1 text-[#6B7280]">{scenario.description}</CardDescription>
                     </div>
                     {scenario.completed && (
-                      <Trophy className="w-5 h-5 text-yellow-500" />
+                      <Trophy className="w-5 h-5 text-[#C9A84C]" />
                     )}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-2">
-                      <Badge variant={
-                        scenario.difficulty === 'Advanced' ? 'destructive' :
-                        scenario.difficulty === 'Intermediate' ? 'default' :
-                        'secondary'
+                      <Badge className={
+                        scenario.difficulty === 'Advanced' ? 'bg-[#0A0F2E] text-white border-none' :
+                        scenario.difficulty === 'Intermediate' ? 'bg-[#C9A84C] text-[#0A0F2E] border-none' :
+                        'bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC]'
                       }>
-                        {scenario.difficulty}
+                        {scenario.difficulty.toUpperCase()}
                       </Badge>
-                      <span className="text-sm text-gray-800 dark:text-slate-300">
+                      <span className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">
                         {scenario.duration}
                       </span>
                     </div>
                     {scenario.completed && scenario.score && (
-                      <div className="p-3 bg-green-50 dark:bg-green-950/30 rounded border border-green-200 dark:border-green-900">
+                      <div className="p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/20">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-green-900 dark:text-green-100">
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-[#2B8A6E]">
                             Completed
                           </span>
-                          <span className="text-lg font-bold text-emerald-700 dark:text-green-400">
+                          <span className="text-xl font-bold text-[#2B8A6E]" style={CG}>
                             {scenario.score}%
                           </span>
                         </div>
                       </div>
                     )}
                     <Button 
-                      className="w-full" 
+                      className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]" 
                       variant={scenario.completed ? "outline" : "default"}
                       onClick={() => handleStartExercise(scenario)}
                       data-testid={`button-start-${scenario.id}`}
                     >
                       {scenario.completed ? (
-                        <>Retake Exercise</>
+                        <span className="font-bold text-[#0A0F2E]">RETAKE EXERCISE</span>
                       ) : (
                         <>
                           <Play className="w-4 h-4 mr-2" />
-                          Start Exercise
+                          <span className="font-bold">START EXERCISE</span>
                         </>
                       )}
                     </Button>

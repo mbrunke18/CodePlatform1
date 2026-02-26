@@ -132,8 +132,17 @@ export default function IDEAFramework() {
     <PageLayout>
       <div>
         {/* Hero — dark navy */}
-        <section style={{ background: NAVY }} className="pt-24 pb-16 px-6">
-          <div className="max-w-5xl mx-auto text-center">
+        <section style={{ background: NAVY, position: "relative" }} className="pt-24 pb-16 px-6">
+          <div style={{ 
+            position: "absolute", 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+            backgroundSize: "44px 44px" 
+          }} />
+          <div className="max-w-5xl mx-auto text-center relative z-10">
             <div className="flex items-center justify-center gap-2 mb-6">
               <div className="w-6 h-0.5" style={{ background: GOLD }} />
               <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
@@ -154,11 +163,11 @@ export default function IDEAFramework() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${TEAL}22`, color: "#5BC8A0" }}>
+              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${TEAL}22`, color: "#3BAF8A" }}>
                 <Cpu className="w-4 h-4 mr-2" />
                 AI handles monitoring & orchestration
               </Badge>
-              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${GOLD}22`, color: "#E8C97A" }}>
+              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${GOLD}22`, color: "#DFC178" }}>
                 <HeartHandshake className="w-4 h-4 mr-2" />
                 Humans retain all strategic authority
               </Badge>
@@ -167,13 +176,13 @@ export default function IDEAFramework() {
         </section>
 
         {/* 4 Phase Strip — phase overview */}
-        <section className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+        <section className="border-b border-[#E8E4DC] bg-white">
           <div className="max-w-5xl mx-auto grid grid-cols-4">
             {phases.map((phase, i) => (
               <a
                 key={phase.letter}
                 href={`#phase-${phase.letter}`}
-                className="group flex flex-col items-center py-6 px-4 border-r border-slate-200 dark:border-slate-800 last:border-r-0 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
+                className="group flex flex-col items-center py-6 px-4 border-r border-[#E8E4DC] last:border-r-0 hover:bg-[#F8F7F4] transition-colors"
               >
                 <span
                   className="font-serif font-bold text-5xl leading-none mb-2 group-hover:opacity-80 transition-opacity"
@@ -181,7 +190,7 @@ export default function IDEAFramework() {
                 >
                   {phase.letter}
                 </span>
-                <span className="text-xs font-bold tracking-widest uppercase text-slate-500">{phase.name}</span>
+                <span className="text-xs font-bold tracking-widest uppercase text-gray-500">{phase.name}</span>
               </a>
             ))}
           </div>
@@ -195,7 +204,7 @@ export default function IDEAFramework() {
             <section
               key={phase.letter}
               id={`phase-${phase.letter}`}
-              className={`py-16 px-6 ${isEven ? "bg-white dark:bg-slate-950" : "bg-slate-50 dark:bg-slate-900"}`}
+              className={`py-16 px-6 ${isEven ? "bg-white" : "bg-[#F8F7F4]"}`}
             >
               <div className="max-w-5xl mx-auto">
                 <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
@@ -210,7 +219,7 @@ export default function IDEAFramework() {
                     <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: GOLD }}>
                       {phase.name}
                     </div>
-                    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 leading-snug mb-4">
+                    <p className="text-sm font-medium text-gray-700 leading-snug mb-4">
                       {phase.tagline}
                     </p>
                     <div className="flex flex-col gap-2">
@@ -223,29 +232,29 @@ export default function IDEAFramework() {
                       </Badge>
                       <Badge
                         className="self-start px-3 py-1 text-xs font-semibold border-0"
-                        style={{ background: `${GOLD}18`, color: "#A8822A" }}
+                        style={{ background: `${GOLD}18`, color: "#C9A84C" }}
                       >
                         <HeartHandshake className="w-3 h-3 mr-1.5" />
                         {phase.humanRole}
                       </Badge>
                     </div>
-                    <div className="mt-6 text-center p-4 border rounded-xl bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700">
+                    <div className="mt-6 text-center p-4 border rounded-none bg-white border-[#E8E4DC]">
                       <div className="font-serif text-3xl font-bold" style={{ color: isEven ? NAVY : TEAL }}>
                         {phase.metric.value}
                       </div>
-                      <div className="text-xs text-slate-500 font-medium mt-0.5">{phase.metric.label}</div>
+                      <div className="text-xs text-gray-500 font-medium mt-0.5">{phase.metric.label}</div>
                     </div>
                   </div>
 
                   {/* Right — description + two columns */}
                   <div className="flex-1">
-                    <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                    <p className="text-base text-gray-600 leading-relaxed mb-8">
                       {phase.description}
                     </p>
 
                     <div className="grid sm:grid-cols-2 gap-6">
                       {/* AI Role */}
-                      <div className="rounded-xl border border-emerald-200 dark:border-emerald-900/50 bg-emerald-50 dark:bg-emerald-950/20 p-5">
+                      <div className="rounded-none border border-[#3BAF8A]/20 bg-[#3BAF8A]/5 p-5">
                         <div className="flex items-center gap-2 mb-4">
                           <Cpu className="h-4 w-4" style={{ color: TEAL }} />
                           <span className="text-xs font-bold tracking-widest uppercase" style={{ color: TEAL }}>
@@ -254,7 +263,7 @@ export default function IDEAFramework() {
                         </div>
                         <ul className="space-y-3">
                           {phase.aiActions.map((action, j) => (
-                            <li key={j} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+                            <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700">
                               <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" style={{ color: TEAL }} />
                               {action}
                             </li>
@@ -263,17 +272,17 @@ export default function IDEAFramework() {
                       </div>
 
                       {/* Human Role */}
-                      <div className="rounded-xl border border-amber-200 dark:border-amber-900/50 bg-amber-50 dark:bg-amber-950/20 p-5">
+                      <div className="rounded-none border border-[#DFC178]/20 bg-[#DFC178]/5 p-5">
                         <div className="flex items-center gap-2 mb-4">
-                          <HeartHandshake className="h-4 w-4" style={{ color: "#A8822A" }} />
-                          <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#A8822A" }}>
+                          <HeartHandshake className="h-4 w-4" style={{ color: "#C9A84C" }} />
+                          <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
                             Human Role
                           </span>
                         </div>
                         <ul className="space-y-3">
                           {phase.humanActions.map((action, j) => (
-                            <li key={j} className="flex items-start gap-2.5 text-sm text-slate-700 dark:text-slate-300">
-                              <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#A8822A" }} />
+                            <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700">
+                              <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
                               {action}
                             </li>
                           ))}

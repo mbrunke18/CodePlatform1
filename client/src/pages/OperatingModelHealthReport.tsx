@@ -57,8 +57,8 @@ const elementIcons = {
 };
 
 function getHealthStatus(score: number) {
-  if (score >= 80) return { label: 'Excellent', color: 'bg-green-500', textColor: 'text-emerald-700' };
-  if (score >= 70) return { label: 'Good', color: 'bg-blue-500', textColor: 'text-blue-800' };
+  if (score >= 80) return { label: 'Excellent', color: 'bg-green-500', textColor: 'text-[#2B8A6E]' };
+  if (score >= 70) return { label: 'Good', color: 'bg-[#0A0F2E]', textColor: 'text-[#0A0F2E]' };
   if (score >= 60) return { label: 'Fair', color: 'bg-yellow-500', textColor: 'text-yellow-600' };
   return { label: 'Needs Attention', color: 'bg-red-500', textColor: 'text-red-700' };
 }
@@ -82,7 +82,7 @@ export default function OperatingModelHealthReport() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
+            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <Activity className="h-6 w-6 text-gray-900" />
             </div>
             <div>
@@ -119,11 +119,11 @@ export default function OperatingModelHealthReport() {
                 <Progress value={overallScore} className="h-3 mb-6" data-testid="progress-overall-score" />
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-emerald-700" data-testid="text-excellent-count">{excellentCount}</div>
+                    <div className="text-3xl font-bold text-[#2B8A6E]" data-testid="text-excellent-count">{excellentCount}</div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Excellent</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-800" data-testid="text-good-count">
+                    <div className="text-3xl font-bold text-[#0A0F2E]" data-testid="text-good-count">
                       {Object.values(elementHealthScores).filter(s => s >= 70 && s < 80).length}
                     </div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Good</div>
@@ -136,12 +136,12 @@ export default function OperatingModelHealthReport() {
               </div>
               <div className="card-bg rounded-lg p-6">
                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-blue-800" />
+                  <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                   Key Insights
                 </h3>
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                     <span>Leadership and Purpose are your strongest elements, driving strategic clarity</span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -149,7 +149,7 @@ export default function OperatingModelHealthReport() {
                     <span>Rewards and Processes need improvement to unlock full transformation potential</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <TrendingUp className="h-5 w-5 text-blue-800 mt-0.5 flex-shrink-0" />
+                    <TrendingUp className="h-5 w-5 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
                     <span>Technology investments are paying off with 78% health score</span>
                   </li>
                 </ul>
@@ -310,10 +310,10 @@ export default function OperatingModelHealthReport() {
         </Tabs>
 
         {/* Recommendations Section */}
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-800 dark:to-slate-900 border-2">
+        <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-slate-800 dark:to-slate-900 border-2">
           <CardHeader>
             <CardTitle className="text-2xl flex items-center gap-2">
-              <TrendingUp className="h-6 w-6 text-blue-800" />
+              <TrendingUp className="h-6 w-6 text-[#0A0F2E]" />
               Strategic Recommendations
             </CardTitle>
             <CardDescription>
@@ -356,7 +356,7 @@ export default function OperatingModelHealthReport() {
 
               <div className="bg-white dark:bg-slate-800 rounded-lg p-4 border-l-4 border-green-500">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-700 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg mb-1">Opportunity: Leverage Leadership Strength</h4>
                     <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">

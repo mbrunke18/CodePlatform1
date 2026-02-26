@@ -85,10 +85,10 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
   };
 
   return (
-    <Card className="border-cyan-500/30 bg-gradient-to-br ">
+    <Card className="border-[#2B8A6E]/30 bg-gradient-to-br ">
       <CardHeader>
         <CardTitle className="text-gray-900 flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-cyan-400" />
+          <Sparkles className="h-5 w-5 text-[#2B8A6E]" />
           AI-Powered What-If Analyzer
         </CardTitle>
         <p className="text-gray-700 text-sm">
@@ -163,7 +163,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
         <Button
           onClick={runAnalysis}
           disabled={isLoading}
-          className="w-full bg-cyan-600 hover:bg-cyan-700 text-gray-900"
+          className="w-full bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900"
           data-testid="button-run-analysis"
         >
           {isLoading ? (
@@ -185,13 +185,13 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
             {/* Outcome Scenarios */}
             <div className="grid gap-4">
               {/* Most Likely */}
-              <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4">
+              <div className="bg-[#0A0F2E]/20 border border-blue-500/30 rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-blue-400" />
+                    <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                     <h4 className="font-semibold text-blue-300">Most Likely Outcome</h4>
                   </div>
-                  <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/50">
+                  <Badge className="bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50">
                     {analysis.mostLikely.probability}% Probability
                   </Badge>
                 </div>
@@ -261,12 +261,12 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
             </div>
 
             {/* Recommendations */}
-            <div className="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4">
-              <h4 className="font-semibold text-purple-300 mb-3">AI Recommendations</h4>
+            <div className="bg-[#C9A84C]/20 border border-[#C9A84C]/30 rounded-lg p-4">
+              <h4 className="font-semibold text-[#C9A84C] mb-3">AI Recommendations</h4>
               <ul className="space-y-2">
                 {analysis.recommendations.map((rec: string, index: number) => (
                   <li key={index} className="text-gray-800 text-sm flex items-start gap-2">
-                    <span className="text-purple-400 font-bold mt-0.5">{index + 1}.</span>
+                    <span className="text-[#C9A84C] font-bold mt-0.5">{index + 1}.</span>
                     {rec}
                   </li>
                 ))}

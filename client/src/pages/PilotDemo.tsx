@@ -74,8 +74,8 @@ const TRIGGER_SCENARIOS = [
     name: "Market Expansion Opportunity",
     description: "Strategic window opens for market expansion",
     icon: TrendingUp,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-50 dark:bg-emerald-950/30",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#F0F9F6] dark:bg-[#2B8A6E]/15",
     sampleSignal: "European Union announces $2B digital transformation fund for enterprise software adoption"
   },
   {
@@ -306,10 +306,10 @@ export default function PilotDemo() {
                 <div key={s} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
                     step === s 
-                      ? "bg-blue-600 text-gray-900" 
+                      ? "bg-[#0A0F2E] text-white" 
                       : ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
-                        ? "bg-emerald-500 text-gray-900"
-                        : "bg-slate-200 dark:bg-slate-700 text-gray-800"
+                        ? "bg-[#2B8A6E] text-white"
+                        : "bg-[#E8E4DC] text-gray-800"
                   }`}>
                     {["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i ? (
                       <CheckCircle className="w-4 h-4" />
@@ -320,8 +320,8 @@ export default function PilotDemo() {
                   {i < 4 && (
                     <div className={`w-12 h-1 mx-1 ${
                       ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
-                        ? "bg-emerald-500"
-                        : "bg-slate-200 dark:bg-slate-700"
+                        ? "bg-[#2B8A6E]"
+                        : "bg-[#E8E4DC]"
                     }`} />
                   )}
                 </div>
@@ -340,7 +340,7 @@ export default function PilotDemo() {
                 <Card className="border-slate-200 dark:border-slate-800">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Mail className="w-5 h-5 text-blue-500" />
+                      <Mail className="w-5 h-5 text-[#0A0F2E]" />
                       Step 1: Enter Your Email
                     </CardTitle>
                     <CardDescription>
@@ -364,9 +364,9 @@ export default function PilotDemo() {
                       </p>
                     </div>
 
-                    <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
-                      <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">What happens next:</h4>
-                      <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+                    <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-4 border border-[#0A0F2E] dark:border-[#0A0F2E]">
+                      <h4 className="font-medium text-[#0A0F2E] dark:text-blue-100 mb-2">What happens next:</h4>
+                      <ul className="text-sm text-[#0A0F2E] dark:text-blue-300 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a playbook to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
@@ -416,7 +416,7 @@ export default function PilotDemo() {
                           onClick={() => setSelectedTrigger(trigger.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedTrigger === trigger.id
-                              ? "border-blue-500 bg-blue-50 dark:bg-blue-950/30"
+                              ? "border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/30"
                               : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                           }`}
                           data-testid={`button-trigger-${trigger.id}`}
@@ -439,7 +439,7 @@ export default function PilotDemo() {
                 <Card className="border-slate-200 dark:border-slate-800">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-violet-500" />
+                      <BookOpen className="w-5 h-5 text-[#C9A84C]" />
                       Step 3: Select a Playbook
                     </CardTitle>
                     <CardDescription>
@@ -454,7 +454,7 @@ export default function PilotDemo() {
                           onClick={() => setSelectedPlaybook(playbook.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedPlaybook === playbook.id
-                              ? "border-violet-500 bg-violet-50 dark:bg-violet-950/30"
+                              ? "border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#C9A84C]/30"
                               : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                           }`}
                           data-testid={`button-playbook-${playbook.id}`}
@@ -472,7 +472,7 @@ export default function PilotDemo() {
                             <span className="text-gray-800 dark:text-slate-300">
                               {playbook.stakeholders} stakeholders
                             </span>
-                            <span className="text-emerald-700 dark:text-emerald-400 font-medium">
+                            <span className="text-[#2B8A6E] dark:text-[#2B8A6E] font-medium">
                               {playbook.estimatedTime}
                             </span>
                           </div>
@@ -515,7 +515,7 @@ export default function PilotDemo() {
                 <Card className="border-slate-200 dark:border-slate-800">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Rocket className="w-5 h-5 text-emerald-500" />
+                      <Rocket className="w-5 h-5 text-[#2B8A6E]" />
                       Ready to Execute
                     </CardTitle>
                     <CardDescription>
@@ -525,8 +525,8 @@ export default function PilotDemo() {
                   <CardContent className="space-y-6">
                     <div className="bg-slate-100 dark:bg-slate-800/50 rounded-lg p-6 space-y-4">
                       <div className="flex items-start gap-4">
-                        <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
-                          <Mail className="w-5 h-5 text-blue-800 dark:text-blue-400" />
+                        <div className="bg-blue-100 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
+                          <Mail className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                         </div>
                         <div>
                           <p className="text-sm text-gray-800 dark:text-slate-300">Stakeholder Email</p>
@@ -546,8 +546,8 @@ export default function PilotDemo() {
                       </div>
                       <Separator />
                       <div className="flex items-start gap-4">
-                        <div className="bg-violet-100 dark:bg-violet-900/30 p-2 rounded-lg">
-                          <BookOpen className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                        <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/30 p-2 rounded-lg">
+                          <BookOpen className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                         </div>
                         <div>
                           <p className="text-sm text-gray-800 dark:text-slate-300">Playbook to Execute</p>
@@ -559,12 +559,12 @@ export default function PilotDemo() {
                       </div>
                     </div>
 
-                    <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-100 dark:border-emerald-900">
-                      <h4 className="font-medium text-emerald-900 dark:text-emerald-100 mb-2 flex items-center gap-2">
+                    <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
+                      <h4 className="font-medium text-[#0A2920] dark:text-[#2B8A6E] mb-2 flex items-center gap-2">
                         <Clock className="w-4 h-4" />
                         What you'll see:
                       </h4>
-                      <ul className="text-sm text-emerald-700 dark:text-emerald-300 space-y-1">
+                      <ul className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E] space-y-1">
                         <li>• Real-time Command Center showing each execution step</li>
                         <li>• AI analyzing the signal and matching to your trigger</li>
                         <li>• Playbook activation with task and stakeholder assignments</li>
@@ -585,7 +585,7 @@ export default function PilotDemo() {
                       <Button
                         size="lg"
                         onClick={startExecution}
-                        className="gap-2 bg-emerald-600 hover:bg-emerald-700"
+                        className="gap-2 bg-[#2B8A6E] hover:bg-[#256B56]"
                         data-testid="button-fire-trigger"
                       >
                         <Play className="w-4 h-4" /> Fire Trigger
@@ -608,12 +608,12 @@ export default function PilotDemo() {
                     <CardTitle className="flex items-center gap-2">
                       {step === "complete" ? (
                         <>
-                          <CheckCircle className="w-5 h-5 text-emerald-500" />
+                          <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                           Execution Complete
                         </>
                       ) : (
                         <>
-                          <Loader2 className="w-5 h-5 text-blue-500 animate-spin" />
+                          <Loader2 className="w-5 h-5 text-[#0A0F2E] animate-spin" />
                           Command Center - Live Execution
                         </>
                       )}
@@ -643,9 +643,9 @@ export default function PilotDemo() {
                           transition={{ duration: 0.3 }}
                           className={`rounded-lg border transition-colors overflow-hidden ${
                             event.status === "active"
-                              ? "bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800"
+                              ? "bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-[#0A0F2E] dark:border-[#0A0F2E]"
                               : event.status === "complete"
-                                ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900"
+                                ? "bg-[#F0F9F6]/50 dark:bg-[#2B8A6E]/15 border-[#2B8A6E] dark:border-[#2B8A6E]"
                                 : "bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700"
                           }`}
                           data-testid={`event-${event.type}`}
@@ -653,13 +653,13 @@ export default function PilotDemo() {
                           <div className="flex items-start gap-4 p-4">
                             <div className={`p-2.5 rounded-lg shrink-0 ${
                               event.status === "active" 
-                                ? "bg-blue-100 dark:bg-blue-900/50" 
-                                : "bg-emerald-100 dark:bg-emerald-900/50"
+                                ? "bg-blue-100 dark:bg-[#0A0F2E]/50" 
+                                : "bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/50"
                             }`}>
                               <event.icon className={`w-5 h-5 ${
                                 event.status === "active"
-                                  ? "text-blue-800 dark:text-blue-400"
-                                  : "text-emerald-700 dark:text-emerald-400"
+                                  ? "text-[#0A0F2E] dark:text-[#0A0F2E]"
+                                  : "text-[#2B8A6E] dark:text-[#2B8A6E]"
                               }`} />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -668,17 +668,17 @@ export default function PilotDemo() {
                                   {event.title}
                                 </span>
                                 {event.status === "active" && (
-                                  <Loader2 className="w-4 h-4 text-blue-500 animate-spin" />
+                                  <Loader2 className="w-4 h-4 text-[#0A0F2E] animate-spin" />
                                 )}
                                 {event.status === "complete" && (
-                                  <CheckCircle className="w-4 h-4 text-emerald-500" />
+                                  <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                                 )}
                               </div>
                               <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
                                 {event.description}
                               </p>
                               <div className="flex items-center gap-2 text-xs">
-                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/40 text-[#2B8A6E] dark:text-[#2B8A6E]">
                                   <Zap className="w-3 h-3" />
                                   {event.valueCallout}
                                 </span>
@@ -703,19 +703,19 @@ export default function PilotDemo() {
                         animate={{ opacity: 1, y: 0 }}
                         className="space-y-6"
                       >
-                        <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-950/40 dark:to-cyan-950/40 rounded-xl p-6 border border-emerald-200 dark:border-emerald-800">
+                        <div className="bg-gradient-to-br from-[#2B8A6E] to-[#3BAF8A] dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/40 rounded-xl p-6 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                           <div className="text-center mb-6">
-                            <CheckCircle className="w-14 h-14 text-emerald-500 mx-auto mb-4" />
-                            <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100 mb-2">
+                            <CheckCircle className="w-14 h-14 text-[#2B8A6E] mx-auto mb-4" />
+                            <h3 className="text-2xl font-bold text-[#0A2920] dark:text-[#2B8A6E] mb-2">
                               Coordination Achieved!
                             </h3>
-                            <p className="text-emerald-700 dark:text-emerald-300">
+                            <p className="text-[#2B8A6E] dark:text-[#2B8A6E]">
                               Check your email at <strong>{email}</strong> for the stakeholder notification.
                             </p>
                           </div>
 
-                          <div className="bg-blue-50 dark:bg-blue-950/30 rounded-lg p-3 mb-4 border border-blue-200 dark:border-blue-800 text-center">
-                            <p className="text-sm text-blue-800 dark:text-blue-300">
+                          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-3 mb-4 border border-[#0A0F2E] dark:border-[#0A0F2E] text-center">
+                            <p className="text-sm text-[#0A0F2E] dark:text-blue-300">
                               <span className="font-semibold">Demo Mode:</span> This {executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0}-second simulation represents the full 12-minute production activation, compressed for demonstration.
                             </p>
                           </div>
@@ -731,13 +731,13 @@ export default function PilotDemo() {
                                 Meetings, email chains, manual coordination, decision delays
                               </p>
                             </div>
-                            <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                            <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                               <div className="flex items-center gap-2 mb-3">
-                                <Zap className="w-5 h-5 text-emerald-500" />
-                                <span className="font-semibold text-emerald-900 dark:text-emerald-200">With Execution OS</span>
+                                <Zap className="w-5 h-5 text-[#2B8A6E]" />
+                                <span className="font-semibold text-[#0A2920] dark:text-[#2B8A6E]">With Execution OS</span>
                               </div>
-                              <div className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-1">12 minutes</div>
-                              <p className="text-sm text-emerald-700 dark:text-emerald-300">
+                              <div className="text-3xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">12 minutes</div>
+                              <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
                                 Full coordination: detection, analysis, playbook activation, stakeholder alignment
                               </p>
                             </div>
@@ -749,11 +749,11 @@ export default function PilotDemo() {
                             </h4>
                             <div className="grid grid-cols-3 gap-4 text-center">
                               <div>
-                                <div className="text-2xl font-bold text-blue-800 dark:text-blue-400">30-60</div>
+                                <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]">30-60</div>
                                 <div className="text-xs text-gray-800 dark:text-slate-300">Hours Saved</div>
                               </div>
                               <div>
-                                <div className="text-2xl font-bold text-purple-800 dark:text-purple-400">$15-30K</div>
+                                <div className="text-2xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">$15-30K</div>
                                 <div className="text-xs text-gray-800 dark:text-slate-300">Executive Time Recovered</div>
                               </div>
                               <div>
@@ -778,7 +778,7 @@ export default function PilotDemo() {
                             </Button>
                             <Button
                               onClick={() => window.location.href = "/contact"}
-                              className="gap-2 bg-emerald-600 hover:bg-emerald-700"
+                              className="gap-2 bg-[#2B8A6E] hover:bg-[#256B56]"
                               data-testid="button-start-pilot"
                             >
                               Start Full Pilot <ArrowRight className="w-4 h-4" />

@@ -43,8 +43,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-blue-500',
-    iconBg: 'bg-blue-500/15 text-blue-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'cfo',
@@ -55,8 +55,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-emerald-500',
-    iconBg: 'bg-emerald-500/15 text-emerald-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'coo',
@@ -67,8 +67,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-amber-500',
-    iconBg: 'bg-amber-500/15 text-amber-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'cmo',
@@ -79,8 +79,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-purple-500',
-    iconBg: 'bg-purple-500/15 text-purple-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'cto',
@@ -91,8 +91,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    accentColor: 'border-l-cyan-500',
-    iconBg: 'bg-cyan-500/15 text-cyan-400'
+    accentColor: 'border-l-[#C9A84C]',
+    iconBg: 'bg-[#C9A84C]/15 text-[#C9A84C]'
   },
   {
     id: 'ciso',
@@ -103,8 +103,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ransomware',
     playbookLabel: 'Ransomware Response',
     category: 'DEFENSE',
-    accentColor: 'border-l-red-500',
-    iconBg: 'bg-red-500/15 text-red-400'
+    accentColor: 'border-l-[#0A0F2E]',
+    iconBg: 'bg-[#0A0F2E]/15 text-[#0A0F2E]'
   },
   {
     id: 'chro',
@@ -115,8 +115,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-pink-500',
-    iconBg: 'bg-pink-500/15 text-pink-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'cdo',
@@ -127,8 +127,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    accentColor: 'border-l-indigo-500',
-    iconBg: 'bg-indigo-500/15 text-indigo-400'
+    accentColor: 'border-l-[#C9A84C]',
+    iconBg: 'bg-[#C9A84C]/15 text-[#C9A84C]'
   },
   {
     id: 'gc',
@@ -139,8 +139,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    accentColor: 'border-l-slate-400',
-    iconBg: 'bg-slate-500/15 text-gray-800'
+    accentColor: 'border-l-[#C9A84C]',
+    iconBg: 'bg-[#C9A84C]/15 text-[#C9A84C]'
   },
   {
     id: 'cco',
@@ -151,8 +151,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ai-governance',
     playbookLabel: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    accentColor: 'border-l-teal-500',
-    iconBg: 'bg-teal-500/15 text-teal-400'
+    accentColor: 'border-l-[#C9A84C]',
+    iconBg: 'bg-[#C9A84C]/15 text-[#C9A84C]'
   },
   {
     id: 'cso',
@@ -163,8 +163,8 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-violet-500',
-    iconBg: 'bg-violet-500/15 text-violet-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   },
   {
     id: 'cro',
@@ -175,15 +175,15 @@ const roleConfigs: RoleConfig[] = [
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
-    accentColor: 'border-l-emerald-500',
-    iconBg: 'bg-emerald-500/15 text-emerald-400'
+    accentColor: 'border-l-[#2B8A6E]',
+    iconBg: 'bg-[#2B8A6E]/15 text-[#2B8A6E]'
   }
 ];
 
 const categoryBadge = (cat: string) => {
-  if (cat === 'OFFENSE') return 'bg-blue-500/15 text-blue-300 border-blue-500/30';
-  if (cat === 'DEFENSE') return 'bg-red-500/15 text-red-300 border-red-500/30';
-  return 'bg-purple-500/15 text-purple-300 border-purple-500/30';
+  if (cat === 'OFFENSE') return 'bg-[#2B8A6E]/15 text-[#2B8A6E] border-[#2B8A6E]/30';
+  if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/15 text-[#0A0F2E] border-[#0A0F2E]/30';
+  return 'bg-[#C9A84C]/15 text-[#C9A84C] border-[#C9A84C]/30';
 };
 
 export default function RoleSelector({ embedded }: { embedded?: boolean }) {
@@ -202,9 +202,9 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-800">
-              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-poise-teal" /> Personalized workspace</span>
-              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-blue-400" /> Role-specific playbooks</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-purple-400" /> Tailored signal feeds</span>
+              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#2B8A6E]" /> Personalized workspace</span>
+              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Role-specific playbooks</span>
+              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#C9A84C]" /> Tailored signal feeds</span>
             </div>
           </div>
 
@@ -236,7 +236,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
 
                       <div className="border-t border-gray-200 pt-3 mb-4">
                         <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-1">Your Execution OS Impact</div>
-                        <div className="text-sm font-semibold text-emerald-400">{config.keyMetric}</div>
+                        <div className="text-sm font-semibold text-[#2B8A6E]">{config.keyMetric}</div>
                       </div>
 
                       <div className="flex items-center justify-between">
@@ -259,7 +259,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 Jump straight into the Command Center — select any playbook and experience the full coordination workflow.
               </p>
               <Link href="/command-center">
-                <Button size="lg" className="bg-gradient-to-r from-poise-teal to-cyan-600 hover:from-cyan-600 hover:to-poise-teal text-gray-900 px-8">
+                <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-8">
                   <Compass className="w-5 h-5 mr-2" />
                   Open Command Center
                 </Button>

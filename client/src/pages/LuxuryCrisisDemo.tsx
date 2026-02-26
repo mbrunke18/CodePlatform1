@@ -42,11 +42,11 @@ export default function LuxuryCrisisDemo() {
           <div key={act.id} className="flex items-center">
             <Badge 
               variant={currentAct === act.id ? 'default' : 'outline'}
-              className={currentAct === act.id ? 'animate-pulse' : ''}
+              className={`${currentAct === act.id ? 'animate-pulse bg-[#C9A84C] text-[#0A0F2E]' : 'text-white/60 border-white/20'}`}
             >
               {act.label}
             </Badge>
-            {index < acts.length - 1 && <ChevronRight className="h-4 w-4 mx-2 text-muted-foreground" />}
+            {index < acts.length - 1 && <ChevronRight className="h-4 w-4 mx-2 text-white/40" />}
           </div>
         ))}
       </div>
@@ -54,19 +54,19 @@ export default function LuxuryCrisisDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
+    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
       <DemoNavHeader title="Luxury Crisis Demo" showBackButton={true} />
-      <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl">
+      <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl text-white">
         {/* Header */}
         <div className="text-center mb-12">
-          <Badge className="mb-4" data-testid="badge-demo-type">Interactive Demo</Badge>
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-demo-type">Interactive Demo</Badge>
+          <h1 className="text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {crisisScenario.title}
           </h1>
-          <p className="text-xl text-muted-foreground mb-2">
+          <p className="text-xl text-white/80 mb-2">
             {crisisScenario.subtitle}
           </p>
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm text-white/60 max-w-2xl mx-auto">
             Experience how Execution OS transforms AI detection into coordinated execution—
             turning a $280M crisis into a strategic advantage in just 12 minutes.
           </p>
@@ -78,56 +78,56 @@ export default function LuxuryCrisisDemo() {
         {currentAct === 'intro' && (
           <div className="space-y-8 animate-in fade-in duration-500">
             {/* Organization Card */}
-            <Card className="p-8 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950 dark:to-blue-950">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-6">
-                <h2 className="text-3xl font-bold mb-2">{luxuryOrg.name}</h2>
-                <Badge variant="outline" className="mb-4">{luxuryOrg.industry}</Badge>
+                <h2 className="text-3xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{luxuryOrg.name}</h2>
+                <Badge variant="outline" className="mb-4 text-[#C9A84C] border-[#C9A84C]">{luxuryOrg.industry}</Badge>
                 <div className="grid md:grid-cols-4 gap-6 mt-6">
                   <div>
-                    <div className="text-3xl font-bold text-purple-700 dark:text-purple-400">{luxuryOrg.marketCap}</div>
-                    <div className="text-sm text-muted-foreground">Market Cap</div>
+                    <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{luxuryOrg.marketCap}</div>
+                    <div className="text-sm text-white/60">Market Cap</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-800 dark:text-blue-400">{luxuryOrg.brands}</div>
-                    <div className="text-sm text-muted-foreground">Maisons</div>
+                    <div className="text-3xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{luxuryOrg.brands}</div>
+                    <div className="text-sm text-white/60">Maisons</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-emerald-800 dark:text-green-400">{luxuryOrg.regions}</div>
-                    <div className="text-sm text-muted-foreground">Regions</div>
+                    <div className="text-3xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{luxuryOrg.regions}</div>
+                    <div className="text-sm text-white/60">Regions</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-orange-700 dark:text-orange-400">
+                    <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {(luxuryOrg.employees / 1000).toFixed(0)}K
                     </div>
-                    <div className="text-sm text-muted-foreground">Employees</div>
+                    <div className="text-sm text-white/60">Employees</div>
                   </div>
                 </div>
               </div>
             </Card>
 
             {/* The Scenario */}
-            <Card className="p-8">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-red-100 dark:bg-red-900 rounded-full">
-                  <Target className="h-6 w-6 text-red-700 dark:text-red-400" />
+                <div className="p-3 bg-red-900/50 rounded-full">
+                  <Target className="h-6 w-6 text-red-400" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">The Crisis Event</h3>
-                  <p className="text-lg text-muted-foreground mb-4">
+                  <h3 className="text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Event</h3>
+                  <p className="text-lg text-white/80 mb-4">
                     {crisisScenario.triggerEvent}
                   </p>
                   <div className="grid md:grid-cols-3 gap-4 mt-4">
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
-                      <div className="text-sm text-muted-foreground mb-1">Financial Impact</div>
-                      <div className="text-2xl font-bold text-red-700">{crisisScenario.financialImpact}</div>
+                    <div className="bg-white/5 p-4 rounded border border-white/10">
+                      <div className="text-sm text-white/60 mb-1">Financial Impact</div>
+                      <div className="text-2xl font-bold text-red-400">{crisisScenario.financialImpact}</div>
                     </div>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
-                      <div className="text-sm text-muted-foreground mb-1">Response Window</div>
-                      <div className="text-2xl font-bold text-yellow-600">{crisisScenario.timeWindow}</div>
+                    <div className="bg-white/5 p-4 rounded border border-white/10">
+                      <div className="text-sm text-white/60 mb-1">Response Window</div>
+                      <div className="text-2xl font-bold text-[#C9A84C]">{crisisScenario.timeWindow}</div>
                     </div>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
-                      <div className="text-sm text-muted-foreground mb-1">Stakeholders</div>
-                      <div className="text-2xl font-bold text-blue-800">{crisisScenario.stakeholdersInvolved}</div>
+                    <div className="bg-white/5 p-4 rounded border border-white/10">
+                      <div className="text-sm text-white/60 mb-1">Stakeholders</div>
+                      <div className="text-2xl font-bold text-[#DFC178]">{crisisScenario.stakeholdersInvolved}</div>
                     </div>
                   </div>
                 </div>
@@ -135,25 +135,25 @@ export default function LuxuryCrisisDemo() {
             </Card>
 
             {/* The Playbook */}
-            <Card className="p-8 bg-blue-50 dark:bg-blue-950 border-blue-500 border-2">
+            <Card className="p-8 bg-[#0A0F2E] border-[#C9A84C] border-2">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-blue-500 rounded-full">
-                  <Award className="h-6 w-6 text-gray-900" />
+                <div className="p-3 bg-[#C9A84C] rounded-full">
+                  <Award className="h-6 w-6 text-[#0A0F2E]" />
                 </div>
-                <div className="flex-1 page-background">
-                  <h3 className="text-2xl font-bold mb-2">
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     Playbook {playbookTemplate.number}: {playbookTemplate.name}
                   </h3>
-                  <Badge className="mb-4">{playbookTemplate.domain}</Badge>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <Badge className="mb-4 bg-[#2B8A6E] text-white">{playbookTemplate.domain}</Badge>
+                  <p className="text-sm text-white/60 mb-4">
                     This playbook is {playbookTemplate.preparedness}% prepared with pre-filled stakeholders, 
                     communication templates, and execution plans ready to activate.
                   </p>
                   <div className="grid md:grid-cols-4 gap-3">
                     {playbookTemplate.sections.slice(0, 4).map(section => (
-                      <div key={section.name} className="bg-white dark:bg-gray-900 p-3 rounded text-center">
-                        <div className="text-xs text-muted-foreground mb-1">{section.name}</div>
-                        <div className="text-lg font-bold text-blue-800">{section.prefill}%</div>
+                      <div key={section.name} className="bg-white/5 p-3 rounded text-center border border-white/10">
+                        <div className="text-xs text-white/60 mb-1">{section.name}</div>
+                        <div className="text-lg font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{section.prefill}%</div>
                       </div>
                     ))}
                   </div>
@@ -165,7 +165,7 @@ export default function LuxuryCrisisDemo() {
               <Button 
                 size="lg" 
                 onClick={proceedToNextAct}
-                className="gap-2"
+                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                 data-testid="button-start-demo"
               >
                 <PlayCircle className="h-5 w-5" />
@@ -178,12 +178,12 @@ export default function LuxuryCrisisDemo() {
         {/* ACT 1: Detection */}
         {currentAct === 'detection' && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950 dark:to-orange-950">
-              <h2 className="text-3xl font-bold mb-4">Act 1: AI Detection</h2>
-              <p className="text-lg text-muted-foreground mb-2">
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Act 1: AI Detection</h2>
+              <p className="text-lg text-white/80 mb-2">
                 {crisisScenario.narrative.detection}
               </p>
-              <Badge variant="outline" className="mt-2">
+              <Badge variant="outline" className="mt-2 text-[#C9A84C] border-[#C9A84C]">
                 Watch the AI confidence score climb in real-time
               </Badge>
             </Card>
@@ -193,7 +193,7 @@ export default function LuxuryCrisisDemo() {
               autoStart={true}
             />
 
-            <div className="text-center text-sm text-muted-foreground">
+            <div className="text-center text-sm text-white/60">
               The AI will automatically proceed when trigger threshold is reached...
             </div>
           </div>
@@ -202,12 +202,12 @@ export default function LuxuryCrisisDemo() {
         {/* ACT 2: Coordination */}
         {currentAct === 'coordination' && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950 dark:to-indigo-950">
-              <h2 className="text-3xl font-bold mb-4">Act 2: The 12-Minute Coordination</h2>
-              <p className="text-lg text-muted-foreground mb-2">
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Act 2: The 12-Minute Coordination</h2>
+              <p className="text-lg text-white/80 mb-2">
                 {crisisScenario.narrative.coordination}
               </p>
-              <Badge variant="outline" className="mt-2">
+              <Badge variant="outline" className="mt-2 text-[#C9A84C] border-[#C9A84C]">
                 <Clock className="h-3 w-3 mr-1 inline" />
                 Watch 193 stakeholders coordinate in real-time
               </Badge>
@@ -219,7 +219,7 @@ export default function LuxuryCrisisDemo() {
               autoStart={true}
             />
 
-            <div className="text-center text-sm text-muted-foreground">
+            <div className="text-center text-sm text-white/60">
               The timer will automatically proceed when coordination is complete...
             </div>
           </div>
@@ -228,12 +228,12 @@ export default function LuxuryCrisisDemo() {
         {/* ACT 3: Outcome */}
         {currentAct === 'outcome' && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
-              <h2 className="text-3xl font-bold mb-4">Act 3: The Outcome</h2>
-              <p className="text-lg text-muted-foreground mb-2">
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Act 3: The Outcome</h2>
+              <p className="text-lg text-white/80 mb-2">
                 {crisisScenario.narrative.outcome}
               </p>
-              <Badge variant="outline" className="mt-2">
+              <Badge variant="outline" className="mt-2 text-[#2B8A6E] border-[#2B8A6E]">
                 <BarChart3 className="h-3 w-3 mr-1 inline" />
                 See the ROI comparison
               </Badge>
@@ -261,7 +261,7 @@ export default function LuxuryCrisisDemo() {
               <Button 
                 size="lg" 
                 onClick={proceedToNextAct}
-                className="gap-2"
+                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                 data-testid="button-see-summary"
               >
                 See Final Summary
@@ -274,33 +274,33 @@ export default function LuxuryCrisisDemo() {
         {/* Final Summary */}
         {currentAct === 'complete' && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-12 bg-gradient-to-br from-purple-50 via-blue-50 to-green-50 dark:from-purple-950 dark:via-blue-950 dark:to-green-950 text-center">
-              <Award className="h-16 w-16 mx-auto mb-6 text-emerald-700" />
-              <h2 className="text-4xl font-bold mb-4">Demo Complete</h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <Card className="p-12 bg-white/5 border-white/10 text-center">
+              <Award className="h-16 w-16 mx-auto mb-6 text-[#2B8A6E]" />
+              <h2 className="text-4xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Demo Complete</h2>
+              <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 You've just experienced how Execution OS transforms the gap between AI detection 
                 and human execution—from 72 hours of coordination chaos to 12 minutes of 
                 orchestrated response.
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <Card className="p-6 border-2 border-green-500">
-                  <div className="text-4xl font-bold text-emerald-700 mb-2">$280M</div>
-                  <div className="text-sm text-muted-foreground">Value Preserved</div>
+                <Card className="p-6 border-2 border-[#2B8A6E] bg-white/5">
+                  <div className="text-4xl font-bold text-[#2B8A6E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$280M</div>
+                  <div className="text-sm text-white/60">Value Preserved</div>
                 </Card>
-                <Card className="p-6 border-2 border-blue-500">
-                  <div className="text-4xl font-bold text-blue-800 mb-2">12 min</div>
-                  <div className="text-sm text-muted-foreground">Full Coordination</div>
+                <Card className="p-6 border-2 border-[#DFC178] bg-white/5">
+                  <div className="text-4xl font-bold text-[#DFC178] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 min</div>
+                  <div className="text-sm text-white/60">Full Coordination</div>
                 </Card>
-                <Card className="p-6 border-2 border-purple-500">
-                  <div className="text-4xl font-bold text-purple-800 mb-2">193</div>
-                  <div className="text-sm text-muted-foreground">Stakeholders Aligned</div>
+                <Card className="p-6 border-2 border-[#C9A84C] bg-white/5">
+                  <div className="text-4xl font-bold text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>193</div>
+                  <div className="text-sm text-white/60">Stakeholders Aligned</div>
                 </Card>
               </div>
 
-              <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border-2 border-blue-500 mb-8">
-                <p className="font-semibold mb-2">The Strategic Insight</p>
-                <p className="text-sm text-muted-foreground">
+              <div className="bg-white/5 p-6 rounded-lg border-2 border-[#DFC178] mb-8">
+                <p className="font-semibold mb-2 text-white">The Strategic Insight</p>
+                <p className="text-sm text-white/80">
                   Luxury brands are spending billions on AI for detection. But without Execution OS' 
                   execution layer, they're still losing 72 hours—and hundreds of millions—to 
                   coordination chaos. Execution OS is the missing piece that turns AI insights into 
@@ -313,13 +313,15 @@ export default function LuxuryCrisisDemo() {
                   size="lg"
                   onClick={() => setCurrentAct('intro')}
                   variant="outline"
+                  className="text-white border-white/20 hover:bg-white/10"
                   data-testid="button-restart-demo"
                 >
                   Restart Demo
                 </Button>
                 <Button 
-                  size="lg"
+                  size="lg" 
                   onClick={() => window.location.href = '/playbook-library'}
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                   data-testid="button-explore-playbooks"
                 >
                   Explore All 170 Playbooks

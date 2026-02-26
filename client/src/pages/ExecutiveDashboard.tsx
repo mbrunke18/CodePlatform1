@@ -259,7 +259,7 @@ export default function ExecutiveDashboard() {
             
             <div className="flex items-center gap-4">
               <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.12)" }} className="px-3 py-1">
-                <Activity className="h-3 w-3 mr-2 text-emerald-400" />
+                <Activity className="h-3 w-3 mr-2 text-[#2B8A6E]" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">Live System</span>
               </Badge>
               <Button 
@@ -388,7 +388,7 @@ export default function ExecutiveDashboard() {
                 <Card className="border-[#E8E4DC] bg-white">
                   <CardHeader className="border-b border-[#E8E4DC]">
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <Sparkles className="h-4 w-4 text-purple-500" />
+                      <Sparkles className="h-4 w-4 text-[#C9A84C]" />
                       <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Oracle Patterns</CardTitle>
                     </div>
                   </CardHeader>
@@ -402,7 +402,7 @@ export default function ExecutiveDashboard() {
                             <div className="text-sm font-bold text-[#0A0F2E]">{p.title}</div>
                             <div className="text-xs text-gray-500">{p.description}</div>
                           </div>
-                          <div className="text-[10px] font-bold text-purple-600 uppercase tracking-widest">{p.impact} Impact</div>
+                          <div className="text-[10px] font-bold text-[#2B8A6E] uppercase tracking-widest">{p.impact} Impact</div>
                         </div>
                       ))
                     )}

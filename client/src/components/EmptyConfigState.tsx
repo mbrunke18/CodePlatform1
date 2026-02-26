@@ -26,8 +26,8 @@ const configInfo = {
     description: 'Add your organizational departments to enable team coordination during playbook execution.',
     actionPath: '/organization-setup',
     actionLabel: 'Configure Organization',
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
   },
   stakeholders: {
     icon: Building2,
@@ -35,8 +35,8 @@ const configInfo = {
     description: 'Add your key decision-makers and team leads to enable approval workflows and notifications.',
     actionPath: '/organization-setup',
     actionLabel: 'Add Stakeholders',
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
   },
   triggers: {
     icon: Target,
@@ -62,8 +62,8 @@ const configInfo = {
     description: 'Define your KPIs and targets to measure strategic execution effectiveness.',
     actionPath: '/success-metrics',
     actionLabel: 'Set Metrics',
-    color: 'text-indigo-500',
-    bgColor: 'bg-indigo-500/10',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
   },
   general: {
     icon: Settings,
@@ -71,8 +71,8 @@ const configInfo = {
     description: 'Complete your Execution OS platform setup to unlock full strategic execution capabilities.',
     actionPath: '/onboarding',
     actionLabel: 'Start Setup',
-    color: 'text-cyan-500',
-    bgColor: 'bg-cyan-500/10',
+    color: 'text-[#2B8A6E]',
+    bgColor: 'bg-[#2B8A6E]/10',
   },
 };
 
@@ -99,7 +99,7 @@ export default function EmptyConfigState({
           {description || info.description}
         </p>
         <Link href={actionPath || info.actionPath}>
-          <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+          <Button className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45]">
             <Sparkles className="h-4 w-4 mr-2" />
             {actionLabel || info.actionLabel}
             <ArrowRight className="h-4 w-4 ml-2" />
@@ -116,7 +116,7 @@ export function QuickSetupBanner() {
       <CardContent className="flex items-center justify-between py-4">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-            <Sparkles className="h-6 w-6 text-blue-400" />
+            <Sparkles className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>
             <h3 className="font-semibold text-white">Complete Your Setup</h3>

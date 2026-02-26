@@ -135,10 +135,10 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'authentication': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      case 'data_access': return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+      case 'authentication': return 'bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30';
+      case 'data_access': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'configuration': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'decision': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+      case 'decision': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
       case 'system': return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
       case 'security': return 'bg-red-500/20 text-red-300 border-red-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -157,7 +157,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
 
   const getOutcomeColor = (outcome: string) => {
     switch (outcome) {
-      case 'success': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+      case 'success': return 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30';
       case 'failure': return 'bg-red-500/20 text-red-300 border-red-500/30';
       case 'warning': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
       default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
@@ -186,11 +186,11 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           </div>
           <div className="flex items-center gap-4">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+            <Badge className="bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30">
               <Shield className="w-4 h-4 mr-2" />
               Compliance: {metrics.complianceScore}%
             </Badge>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
               <Download className="w-4 h-4 mr-2" />
               Export Logs
             </Button>
@@ -203,7 +203,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">Total Logs</h3>
-                <FileText className="h-5 w-5 text-blue-400" />
+                <FileText className="h-5 w-5 text-[#0A0F2E]" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.totalLogs.toLocaleString()}</div>
               <div className="text-sm text-gray-800 dark:text-slate-200">All time</div>
@@ -225,7 +225,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">Compliance</h3>
-                <CheckCircle className="h-5 w-5 text-emerald-400" />
+                <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.complianceScore}%</div>
               <div className="text-sm text-gray-800 dark:text-slate-200">Overall score</div>
@@ -236,7 +236,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">System Health</h3>
-                <Activity className="h-5 w-5 text-emerald-400" />
+                <Activity className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.systemHealth}%</div>
               <div className="text-sm text-gray-800 dark:text-slate-200">Uptime</div>
@@ -247,7 +247,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-gray-900">Daily Logins</h3>
-                <Users className="h-5 w-5 text-purple-400" />
+                <Users className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div className="text-2xl font-bold text-gray-900">{metrics.dailyLogins}</div>
               <div className="text-sm text-gray-800 dark:text-slate-200">Today</div>
@@ -474,7 +474,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <div className="space-y-1">
                           {event.affectedResources.map((resource, index) => (
                             <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
-                              <Database className="w-4 h-4 text-blue-400" />
+                              <Database className="w-4 h-4 text-[#0A0F2E]" />
                               {resource}
                             </div>
                           ))}
@@ -486,7 +486,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         <div className="space-y-1">
                           {event.recommendations.map((rec, index) => (
                             <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
-                              <Target className="w-4 h-4 text-emerald-400" />
+                              <Target className="w-4 h-4 text-[#2B8A6E]" />
                               {rec}
                             </div>
                           ))}
@@ -499,7 +499,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                         User: {event.user} | Detected: {new Date(event.timestamp).toLocaleString()}
                       </div>
                       <div className="flex gap-2">
-                        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                        <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                           <Eye className="w-4 h-4 mr-2" />
                           Investigate
                         </Button>
@@ -522,7 +522,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-gray-900">{report.reportType}</CardTitle>
-                      <Badge className={report.status === 'approved' ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'}>
+                      <Badge className={report.status === 'approved' ? 'bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30' : 'bg-amber-500/20 text-amber-300 border-amber-500/30'}>
                         {report.status.toUpperCase()}
                       </Badge>
                     </div>
@@ -563,7 +563,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                     </div>
                     
                     <div className="flex gap-3">
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Download className="w-4 h-4 mr-2" />
                         Download Report
                       </Button>
@@ -585,7 +585,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Log Volume</h3>
-                    <BarChart3 className="h-5 w-5 text-blue-400" />
+                    <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">2,847</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Logs today</div>
@@ -596,7 +596,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Security Score</h3>
-                    <Shield className="h-5 w-5 text-emerald-400" />
+                    <Shield className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">94.2%</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Overall security</div>
@@ -607,7 +607,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Response Time</h3>
-                    <Clock className="h-5 w-5 text-purple-400" />
+                    <Clock className="h-5 w-5 text-[#C9A84C]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">1.2s</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Average response</div>
@@ -618,7 +618,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Threat Detection</h3>
-                    <TrendingUp className="h-5 w-5 text-emerald-400" />
+                    <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">99.7%</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Detection rate</div>

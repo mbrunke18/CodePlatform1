@@ -27,7 +27,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
         <Card className="p-4 bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold text-sm">Historical Performance</h4>
-            <span className="text-2xl font-bold text-emerald-800 dark:text-green-300">
+            <span className="text-2xl font-bold text-[#2B8A6E] dark:text-green-300">
               {(playbook.historicalSuccessRate * 100).toFixed(0)}%
             </span>
           </div>
@@ -89,7 +89,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
       </div>
 
       {/* AI Analysis Note */}
-      <Card className="p-4 bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
+      <Card className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E] border-blue-200 dark:border-blue-800">
         <h4 className="font-semibold text-sm mb-2">AI-Powered Analysis</h4>
         <p className="text-xs text-muted-foreground">
           After you complete lessons learned, Execution OS' AI will analyze patterns across all executions to generate:

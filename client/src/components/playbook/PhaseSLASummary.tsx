@@ -19,8 +19,8 @@ const PHASE_CONFIG = {
   identify: {
     icon: Target,
     label: 'IDENTIFY',
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-50 dark:bg-blue-950',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E] dark:bg-[#0A0F2E]',
   },
   detect: {
     icon: Clock,
@@ -37,8 +37,8 @@ const PHASE_CONFIG = {
   advance: {
     icon: TrendingUp,
     label: 'ADVANCE',
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-50 dark:bg-purple-950',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#0A0F2E] dark:bg-[#0A0F2E]',
   },
 };
 

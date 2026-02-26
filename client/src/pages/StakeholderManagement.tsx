@@ -115,11 +115,11 @@ const NOTIFICATION_CHANNELS = [
 ];
 
 const LEVEL_CONFIG: Record<number, { label: string; color: string }> = {
-  1: { label: "C-Suite", color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
-  2: { label: "Executive", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
-  3: { label: "VP", color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400" },
-  4: { label: "Director", color: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400" },
-  5: { label: "Manager", color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300" },
+  1: { label: "C-Suite", color: "bg-[#0A0F2E] text-white" },
+  2: { label: "Executive", color: "bg-[#141B45] text-white" },
+  3: { label: "VP", color: "bg-[#DFC178] text-[#0A0F2E]" },
+  4: { label: "Director", color: "bg-[#2B8A6E] text-white" },
+  5: { label: "Manager", color: "bg-[#E8E4DC] text-[#6B7280]" },
 };
 
 const generateId = () => Date.now().toString(36);
@@ -292,7 +292,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             </div>
             <Button 
               onClick={handleOpenCreate}
-              className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] border-none"
+              className="bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border-none"
               data-testid="button-add-stakeholder"
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -310,7 +310,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Users className="h-4 w-4 text-white" />
                 </div>
-                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.total}</div>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Stakeholders</div>
               </div>
             </CardContent>
@@ -334,7 +334,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                 <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Building2 className="h-4 w-4 text-white" />
                 </div>
-                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.executives}</div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.executives}</div>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Executives</div>
               </div>
             </CardContent>
@@ -530,7 +530,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Clock className="h-4 w-4 text-white" />
                   </div>
-                  <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>94% within SLA</div>
+                  <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.1)", color:"#2B8A6E", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>94% within SLA</div>
                 </div>
                 <p style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }} className="mb-1">3.2 minutes</p>
                 <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Average Response Time</p>
@@ -544,25 +544,25 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <TrendingUp className="h-4 w-4 text-white" />
                   </div>
-                  <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">All channels</Badge>
+                  <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">All channels</Badge>
                 </div>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">98.4%</p>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Notification Reach</p>
-                <p className="text-xs text-gray-800 dark:text-slate-400">Percentage of stakeholders successfully reached on first attempt</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">98.4%</p>
+                <p className="text-sm font-medium text-slate-700 mb-2">Notification Reach</p>
+                <p className="text-xs text-gray-800">Percentage of stakeholders successfully reached on first attempt</p>
                 <Progress value={98.4} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-purple-800 dark:text-purple-400" />
+                  <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+                    <CheckCircle className="h-5 w-5 text-[#0A0F2E]" />
                   </div>
-                  <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Above benchmark</Badge>
+                  <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">Above benchmark</Badge>
                 </div>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white mb-1">92%</p>
-                <p className="text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">Participation Rate</p>
-                <p className="text-xs text-gray-800 dark:text-slate-400">Stakeholder participation rate in practice drills</p>
+                <p className="text-3xl font-bold text-slate-900 mb-1">92%</p>
+                <p className="text-sm font-medium text-slate-700 mb-2">Participation Rate</p>
+                <p className="text-xs text-gray-800">Stakeholder participation rate in practice drills</p>
                 <Progress value={92} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -572,21 +572,21 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {/* Communication Timeline Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <Clock className="h-5 w-5 text-blue-800 dark:text-blue-400" />
+            <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+              <Clock className="h-5 w-5 text-[#0A0F2E]" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Recent Communication Timeline</h2>
+            <h2 className="text-2xl font-bold text-slate-900">Recent Communication Timeline</h2>
           </div>
           <Card>
             <CardContent className="p-6">
               <div className="relative">
-                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700" />
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200" />
                 {[
-                  { date: "Feb 15, 2:14 PM", description: "Competitive Response playbook activated — 18 stakeholders notified via Slack, Email, SMS", badge: "Playbook #45", badgeClass: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400", dotClass: "bg-purple-500", icon: Zap },
-                  { date: "Feb 10, 9:30 AM", description: "Monthly practice drill completed — 92% participation, avg response 2.8 min", badge: "Drill", badgeClass: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400", dotClass: "bg-blue-500", icon: Activity },
-                  { date: "Feb 3, 2:17 AM", description: "CRITICAL: Ransomware incident triggered — 47 stakeholders notified, all C-Suite reached in 45 sec", badge: "Emergency", badgeClass: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400", dotClass: "bg-red-500", icon: AlertTriangle },
-                  { date: "Jan 28, 10:00 AM", description: "M&A integration playbook activated — 45 stakeholders coordinated across 6 departments", badge: "Playbook #12", badgeClass: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400", dotClass: "bg-indigo-500", icon: Building2 },
-                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Playbook #67", badgeClass: "bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400", dotClass: "bg-green-500", icon: Shield },
+                  { date: "Feb 15, 2:14 PM", description: "Competitive Response playbook activated — 18 stakeholders notified via Slack, Email, SMS", badge: "Playbook #45", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#0A0F2E]", icon: Zap },
+                  { date: "Feb 10, 9:30 AM", description: "Monthly practice drill completed — 92% participation, avg response 2.8 min", badge: "Drill", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#C9A84C]", icon: Activity },
+                  { date: "Feb 3, 2:17 AM", description: "CRITICAL: Ransomware incident triggered — 47 stakeholders notified, all C-Suite reached in 45 sec", badge: "Emergency", badgeClass: "bg-red-100 text-red-700", dotClass: "bg-red-500", icon: AlertTriangle },
+                  { date: "Jan 28, 10:00 AM", description: "M&A integration playbook activated — 45 stakeholders coordinated across 6 departments", badge: "Playbook #12", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#C9A84C]", icon: Building2 },
+                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Playbook #67", badgeClass: "bg-[#2B8A6E]/10 text-[#2B8A6E]", dotClass: "bg-[#2B8A6E]", icon: Shield },
                 ].map((entry, index) => {
                   const EntryIcon = entry.icon;
                   return (
@@ -616,10 +616,10 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {/* RACI Matrix Visualization */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg">
-              <Users className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+            <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+              <Users className="h-5 w-5 text-[#0A0F2E]" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">RACI Matrix — Active Playbooks</h2>
+            <h2 className="text-2xl font-bold text-slate-900">RACI Matrix — Active Playbooks</h2>
           </div>
           <Card>
             <Table>
@@ -645,26 +645,26 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <Avatar className="h-8 w-8">
-                          <AvatarFallback className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-xs">
+                          <AvatarFallback className="bg-[#0A0F2E]/10 text-[#0A0F2E] text-xs font-bold">
                             {row.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-medium text-slate-900 dark:text-white text-sm">{row.name}</p>
-                          <p className="text-xs text-gray-800 dark:text-slate-400">{row.role}</p>
+                          <p className="font-medium text-slate-900 text-sm">{row.name}</p>
+                          <p className="text-xs text-gray-800">{row.role}</p>
                         </div>
                       </div>
                     </TableCell>
                     {row.raci.map((value, i) => {
                       const raciConfig: Record<string, string> = {
-                        R: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
-                        A: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-                        C: "bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400",
-                        I: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+                        R: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
+                        A: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
+                        C: "bg-[#C9A84C]/10 text-[#C9A84C]",
+                        I: "bg-slate-100 text-slate-700",
                       };
                       return (
                         <TableCell key={i} className="text-center">
-                          <Badge className={`${raciConfig[value]} min-w-[28px] justify-center`}>{value}</Badge>
+                          <Badge className={`${raciConfig[value]} min-w-[28px] justify-center border-none`}>{value}</Badge>
                         </TableCell>
                       );
                     })}
@@ -675,16 +675,16 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-700">
               <div className="flex flex-wrap gap-4 text-xs">
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-xs px-1.5">R</Badge>
+                  <Badge className="bg-[#0A0F2E] text-[#C9A84C] dark:bg-[#C9A84C]/30 dark:text-[#C9A84C] text-xs px-1.5">R</Badge>
                   <span className="text-gray-700 dark:text-slate-400">Responsible</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 text-xs px-1.5">A</Badge>
-                  <span className="text-gray-700 dark:text-slate-400">Accountable</span>
+                  <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none text-xs px-1.5">A</Badge>
+                  <span className="text-gray-700">Accountable</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <Badge className="bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400 text-xs px-1.5">C</Badge>
-                  <span className="text-gray-700 dark:text-slate-400">Consulted</span>
+                  <Badge className="bg-[#C9A84C]/10 text-[#C9A84C] border-none text-xs px-1.5">C</Badge>
+                  <span className="text-gray-700">Consulted</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Badge className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 text-xs px-1.5">I</Badge>
@@ -819,7 +819,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         variant={isSelected ? "default" : "outline"}
                         size="sm"
                         onClick={() => handleToggleChannel(channel.id)}
-                        className={isSelected ? "bg-purple-600 hover:bg-purple-700" : ""}
+                        className={isSelected ? "bg-[#0A0F2E] hover:bg-[#0A0F2E]" : ""}
                         data-testid={`button-channel-${channel.id}`}
                       >
                         <Icon className="h-4 w-4 mr-1" />

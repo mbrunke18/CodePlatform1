@@ -116,7 +116,7 @@ const compoundScenarios = [
   {
     scenario: "Geopolitical + Supply Chain",
     icon: Network,
-    iconColor: "text-amber-500",
+    iconColor: "text-[#C9A84C]",
     domains: "Financial + Crisis",
     playbookCount: 8,
     description: "Tariff escalation or sanctions impact a critical supplier in an affected region, requiring simultaneous supply chain restructuring and market repositioning.",
@@ -144,7 +144,7 @@ const compoundScenarios = [
   {
     scenario: "Climate + Operations",
     icon: AlertTriangle,
-    iconColor: "text-blue-500",
+    iconColor: "text-[#2B8A6E]",
     domains: "Crisis + Technology",
     playbookCount: 5,
     description: "Severe weather event causes facility shutdown with cascading impact on customers, logistics, employee safety, and insurance claims.",
@@ -169,7 +169,7 @@ const compoundScenarios = [
   {
     scenario: "AI + Workforce",
     icon: Brain,
-    iconColor: "text-purple-500",
+    iconColor: "text-[#C9A84C]",
     domains: "Technology + Talent",
     playbookCount: 7,
     description: "AI automation announcement triggers union response, media scrutiny, regulatory inquiry, and employee morale concerns requiring coordinated stakeholder management.",
@@ -207,14 +207,14 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "high") {
     return (
       <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
-        <span className="w-2 h-2 rounded-full bg-amber-500" />
+        <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
         High
       </span>
     );
   }
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#3BAF8A", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
-      <span className="w-2 h-2 rounded-full bg-emerald-500" />
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+      <span className="w-2 h-2 rounded-full" style={{ background: "#2B8A6E" }} />
       Standard
     </span>
   );
@@ -222,37 +222,48 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
 
 function CompoundDisruptionSection() {
   const [expandedScenario, setExpandedScenario] = useState<number | null>(null);
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <div className="mt-12 border border-red-200 dark:border-red-900/40 rounded-xl overflow-hidden">
-      <div className="bg-red-50 dark:bg-red-950/30 px-6 py-4 flex items-center gap-3 border-b border-red-200 dark:border-red-900/40">
-        <Zap className="h-4 w-4 text-red-500" />
-        <span className="text-sm font-bold text-red-700 dark:text-red-400 uppercase tracking-wide">Compound Disruption Response</span>
-        <Badge className="bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 border-0 text-[10px]">MULTI-DOMAIN</Badge>
+    <div className="mt-12 border rounded-xl overflow-hidden" style={{ borderColor: BORDER }}>
+      <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "rgba(10, 15, 46, 0.02)", borderColor: BORDER }}>
+        <Zap className="h-4 w-4" style={{ color: GOLD }} />
+        <span className="text-sm font-bold uppercase tracking-wide" style={{ color: NAVY }}>Compound Disruption Response</span>
+        <Badge style={{ background: "rgba(43,138,110,0.1)", color: TEAL }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
       </div>
-      <div className="p-6 bg-white dark:bg-slate-900">
-        <p className="text-sm text-slate-600 dark:text-slate-400 mb-5">
+      <div className="p-6 bg-white">
+        <p className="text-sm mb-5" style={{ color: MUTED }}>
           When disruptions cascade across domains, Execution OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
+            const scenarioColor = item.scenario.includes("Cyber") ? "#EF4444" : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : NAVY;
             return (
               <div
                 key={i}
-                className={`border rounded-lg p-4 cursor-pointer transition-all duration-200 bg-slate-50 dark:bg-slate-800 hover:border-slate-400 dark:hover:border-slate-500 ${isExpanded ? "border-slate-400 dark:border-slate-500 ring-1 ring-slate-300 dark:ring-slate-600" : "border-slate-200 dark:border-slate-700"}`}
+                style={{ 
+                  border: `1px solid ${isExpanded ? GOLD : BORDER}`,
+                  background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(0,0,0,0.02)"
+                }}
+                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-slate-400`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
               >
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
-                    <Icon className={`h-4 w-4 ${item.iconColor}`} />
-                    <div className="text-slate-900 dark:text-white text-sm font-semibold">{item.scenario}</div>
+                    <Icon className="h-4 w-4" style={{ color: scenarioColor }} />
+                    <div className="text-sm font-semibold" style={{ color: NAVY }}>{item.scenario}</div>
                   </div>
-                  <ChevronDown className={`h-3.5 w-3.5 text-slate-500 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: MUTED }} />
                 </div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs mb-2">{item.domains}</div>
-                <div className="text-[#2B8A6E] text-xs font-semibold">{item.playbookCount} coordinated playbooks</div>
+                <div style={{ color: MUTED }} className="text-xs mb-2">{item.domains}</div>
+                <div style={{ color: TEAL }} className="text-xs font-semibold">{item.playbookCount} coordinated playbooks</div>
               </div>
             );
           })}
@@ -261,77 +272,78 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
+          const scenarioColor = scenario.scenario.includes("Cyber") ? "#EF4444" : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : NAVY;
           return (
-            <div className="mt-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300">
+            <div className="mt-5 rounded-xl border bg-slate-50/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shrink-0">
-                  <Icon className={`h-5 w-5 ${scenario.iconColor}`} />
+                <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: BORDER }}>
+                  <Icon className="h-5 w-5" style={{ color: scenarioColor }} />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-base font-bold text-slate-900 dark:text-white mb-1">{scenario.scenario}</h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{scenario.description}</p>
+                  <h4 style={{ ...CG, color: NAVY }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
+                  <p style={{ color: MUTED }} className="text-sm leading-relaxed">{scenario.description}</p>
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-slate-900 rounded-lg p-4 mb-5 border border-slate-200 dark:border-slate-700">
-                <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
-                <p className="text-slate-900 dark:text-white text-sm font-medium">{scenario.triggerExample}</p>
+              <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: BORDER }}>
+                <div style={{ color: MUTED }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+                <p style={{ color: NAVY }} className="text-sm font-medium">{scenario.triggerExample}</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-6 mb-5">
                 <div>
-                  <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <BookOpen className="h-4 w-4 text-[#2B8A6E]" />
+                  <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                    <BookOpen className="h-4 w-4" style={{ color: TEAL }} />
                     Activated Playbooks ({scenario.playbookCount})
                   </h5>
                   <div className="space-y-2">
                     {scenario.playbooks.map((pb, j) => (
-                      <div key={j} className="flex items-center justify-between bg-white dark:bg-slate-900 rounded-lg px-3 py-2 border border-slate-200 dark:border-slate-700">
+                      <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: BORDER }}>
                         <div className="flex-1">
-                          <div className="text-slate-900 dark:text-white text-sm font-medium">{pb.name}</div>
-                          <div className="text-slate-500 text-xs">{pb.domain}</div>
+                          <div style={{ color: NAVY }} className="text-sm font-medium">{pb.name}</div>
+                          <div style={{ color: MUTED }} className="text-xs">{pb.domain}</div>
                         </div>
-                        <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">{pb.phase}</span>
+                        <span style={{ background: "rgba(0,0,0,0.05)", color: MUTED, borderColor: BORDER }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-[#2B8A6E]" />
+                  <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                    <Clock className="h-4 w-4" style={{ color: TEAL }} />
                     12-Minute Execution Timeline
                   </h5>
                   <div className="space-y-0 relative">
-                    <div className="absolute left-[7px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-[#2B8A6E] to-[#2B8A6E]/30 rounded-full" />
+                    <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, ${TEAL}, rgba(43,138,110,0.1))` }} />
                     {scenario.timeline.map((step, j) => (
                       <div key={j} className="flex items-start gap-3 py-1.5 relative">
-                        <div className={`w-4 h-4 rounded-full shrink-0 z-10 ${j === 0 ? "bg-[#2B8A6E] ring-2 ring-[#2B8A6E]/30" : j === scenario.timeline.length - 1 ? "bg-[#2B8A6E]/40" : "bg-[#2B8A6E]/70"}`} />
+                        <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? TEAL : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
                         <div className="flex-1 min-w-0">
-                          <span className="text-[#2B8A6E] text-xs font-bold mr-2">{step.time}</span>
-                          <span className="text-slate-600 dark:text-slate-400 text-xs">{step.action}</span>
+                          <span style={{ color: TEAL }} className="text-xs font-bold mr-2">{step.time}</span>
+                          <span style={{ color: MUTED }} className="text-xs">{step.action}</span>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   <div className="mt-4">
-                    <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                      <Users className="h-4 w-4 text-[#2B8A6E]" />
+                    <h5 style={{ color: NAVY }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                      <Users className="h-4 w-4" style={{ color: TEAL }} />
                       Stakeholders ({scenario.stakeholders.length})
                     </h5>
                     <div className="flex flex-wrap gap-1.5">
                       {scenario.stakeholders.map((s, j) => (
-                        <span key={j} className="px-2.5 py-1 rounded-full text-xs font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{s}</span>
+                        <span key={j} style={{ background: "white", color: NAVY, borderColor: BORDER }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="border border-[#2B8A6E]/20 bg-[#2B8A6E]/5 rounded-lg p-4 flex items-center gap-3">
-                <ArrowRight className="h-4 w-4 text-[#2B8A6E] shrink-0" />
-                <p className="text-slate-700 dark:text-slate-300 text-sm">
+              <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border rounded-lg p-4 flex items-center gap-3">
+                <ArrowRight className="h-4 w-4 shrink-0" style={{ color: TEAL }} />
+                <p style={{ color: NAVY }} className="text-sm">
                   All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
                 </p>
               </div>
@@ -351,7 +363,6 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const { isAuthenticated } = useAuth();
 
   const NAVY = "#0A0F2E";
-  const NAVY_MID = "#141B45";
   const GOLD = "#C9A84C";
   const TEAL = "#2B8A6E";
   const OFF = "#F8F7F4";
@@ -387,40 +398,50 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const activeDomainInfo = DOMAINS.find((d) => d.id === activeDomain)!;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950">
+    <div className="min-h-screen bg-white">
       {!embedded && <StandardNav />}
 
       {!embedded && (
-        <div className="bg-[#F8F7F4] dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+        <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-4 h-0.5 bg-[#C9A84C]" />
-                  <span className="text-xs font-bold tracking-widest uppercase text-[#C9A84C]">170 Playbooks · 9 Domains</span>
+                  <div className="w-7 h-[2px]" style={{ background: GOLD }} />
+                  <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
                 </div>
-                <h1 className="font-serif text-4xl md:text-5xl font-semibold text-[#0A0F2E] dark:text-white mb-3 leading-tight">
+                <h1 style={{ ...CG, color: NAVY }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
                   A Playbook for Every<br />
-                  <em className="italic text-[#C9A84C]">Strategic Scenario</em>
+                  <em className="italic" style={{ color: GOLD }}>Strategic Scenario</em>
                 </h1>
-                <p className="text-slate-600 dark:text-slate-400 text-base max-w-lg">
+                <p style={{ color: MUTED }} className="text-base max-w-lg">
                   Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 max-w-sm">
-                {["All Domains", "Financial", "Competitive", "Regulatory", "Crisis", "M&A"].map((chip, i) => (
-                  <button
-                    key={chip}
-                    onClick={() => setActiveDomain(i === 0 ? "all" : ["all","financial","competitive","regulatory","crisis","ma"][i])}
-                    className={`px-3.5 py-1.5 text-xs font-semibold border transition-colors ${
-                      (i === 0 && activeDomain === "all") || (i > 0 && activeDomain === ["all","financial","competitive","regulatory","crisis","ma"][i])
-                        ? "border-[#C9A84C] text-[#C9A84C] bg-white dark:bg-slate-900"
-                        : "border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 hover:border-slate-400"
-                    }`}
-                  >
-                    {chip}
-                  </button>
-                ))}
+                {["All Domains", "Financial", "Competitive", "Regulatory", "Crisis", "M&A"].map((chip, i) => {
+                  const id = i === 0 ? "all" : ["all","financial","competitive","regulatory","crisis","ma"][i];
+                  const isActive = activeDomain === id;
+                  return (
+                    <button
+                      key={chip}
+                      onClick={() => setActiveDomain(id)}
+                      style={{
+                        padding: "6px 14px",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        border: `1px solid ${isActive ? GOLD : BORDER}`,
+                        color: isActive ? GOLD : NAVY,
+                        background: isActive ? "white" : "transparent",
+                        transition: "all 0.2s"
+                      }}
+                    >
+                      {chip}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -441,8 +462,8 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     onClick={() => setActiveDomain(domain.id)}
                     style={{ 
                       width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
-                      background: isActive ? "#fff" : "transparent",
-                      border: isActive ? `1px solid ${BORDER}` : "1px solid transparent",
+                      background: isActive ? "rgba(0,0,0,0.03)" : "transparent",
+                      border: "none",
                       color: isActive ? NAVY : MUTED,
                       fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
                     }}
@@ -466,16 +487,16 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     onClick={() => setActiveUrgency(u.id)}
                     style={{ 
                       width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
-                      background: isActive ? "#fff" : "transparent",
-                      border: isActive ? `1px solid ${BORDER}` : "1px solid transparent",
+                      background: isActive ? "rgba(0,0,0,0.03)" : "transparent",
+                      border: "none",
                       color: isActive ? NAVY : MUTED,
                       fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
                     }}
                   >
                     <span className="flex items-center gap-1.5">
                       {u.id === "critical" && <span className="w-2 h-2 rounded-full bg-red-500" />}
-                      {u.id === "high" && <span className="w-2 h-2 rounded-full bg-amber-500" />}
-                      {u.id === "standard" && <span className="w-2 h-2 rounded-full bg-emerald-500" />}
+                      {u.id === "high" && <span className="w-2 h-2 rounded-full" style={{ background: GOLD }} />}
+                      {u.id === "standard" && <span className="w-2 h-2 rounded-full" style={{ background: TEAL }} />}
                       {u.label}
                     </span>
                     {"count" in u && <span style={{ fontSize: 10, color: MUTED, opacity: 0.7, marginLeft: "auto" }}>{u.count}</span>}
@@ -487,23 +508,39 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         </aside>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="relative flex-1 max-w-sm">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b" style={{ borderColor: BORDER }}>
+            <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: MUTED }} />
-              <Input
-                placeholder="Search playbooks..."
-                style={{ paddingLeft: 40, border: `1.5px solid ${BORDER}`, borderRadius: 0 }}
+              <input
+                type="text"
+                placeholder="Search 170 playbooks..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                style={{
+                  width: "100%", padding: "10px 12px 10px 40px", fontSize: 14,
+                  border: `1px solid ${BORDER}`, background: "white", outline: "none"
+                }}
               />
             </div>
-            {(search || activeDomain !== "all" || activeUrgency !== "all") && (
-              <Button variant="ghost" size="sm" onClick={() => { setSearch(""); setActiveDomain("all"); setActiveUrgency("all"); }}>
-                Clear
-              </Button>
-            )}
-            <div className="ml-auto text-sm text-slate-500">
-              <span className="font-semibold" style={{ color: NAVY }}>{activeDomainInfo.count}</span> playbooks
+            <div className="flex items-center gap-3">
+              <span style={{ fontSize: 11, fontWeight: 600, color: MUTED }}>URGENCY:</span>
+              <div className="flex bg-black/5 p-1 rounded">
+                {URGENCY_FILTERS.map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => setActiveUrgency(f.id)}
+                    style={{
+                      padding: "4px 10px", fontSize: 10, fontWeight: 700, textTransform: "uppercase",
+                      color: activeUrgency === f.id ? NAVY : MUTED,
+                      background: activeUrgency === f.id ? "white" : "transparent",
+                      boxShadow: activeUrgency === f.id ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
+                      borderRadius: 2
+                    }}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -584,34 +621,35 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
           {isAuthenticated && searchFiltered.length > 0 && (
             <div className="mt-6">
               <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="h-4 w-4 text-[#2B8A6E]" />
-                <span className="text-sm font-bold text-slate-900 dark:text-white">Full Library — {searchFiltered.length} playbooks</span>
+                <BookOpen className="h-4 w-4" style={{ color: TEAL }} />
+                <span className="text-sm font-bold" style={{ color: NAVY }}>Full Library — {searchFiltered.length} playbooks</span>
               </div>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {searchFiltered.slice(0, 12).map((pb) => (
                   <div
                     key={pb.id}
-                    className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all cursor-pointer"
+                    style={{ border: `1px solid ${BORDER}`, background: "white" }}
+                    className="p-4 hover:shadow-md hover:border-slate-300 transition-all cursor-pointer"
                     onClick={() => setLocation(`/playbooks/${pb.id}/preview`)}
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 uppercase tracking-wide">
+                      <span style={{ fontSize: 10, padding: "2px 6px", background: "#f0f0f0", color: NAVY, fontWeight: 700, textTransform: "uppercase" }}>
                         {pb.domain || "General"}
                       </span>
-                      <span className="text-[#C9A84C] text-xs font-semibold whitespace-nowrap">~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
+                      <span style={{ color: GOLD, fontSize: 12, fontWeight: 600 }} className="whitespace-nowrap">~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
                     </div>
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white leading-snug mb-1 line-clamp-2">{pb.name}</h3>
-                    <p className="text-xs text-slate-500 line-clamp-2">{pb.description}</p>
+                    <h3 style={{ color: NAVY }} className="text-sm font-semibold leading-snug mb-1 line-clamp-2">{pb.name}</h3>
+                    <p style={{ color: MUTED }} className="text-xs line-clamp-2">{pb.description}</p>
                     <div className="flex items-center gap-1 mt-3">
-                      <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">Validated</span>
-                      <ChevronRight className="h-3.5 w-3.5 text-slate-400 ml-auto" />
+                      <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 6px", background: "rgba(43,138,110,0.1)", color: TEAL, textTransform: "uppercase" }}>Validated</span>
+                      <ChevronRight className="h-3.5 w-3.5 ml-auto" style={{ color: MUTED }} />
                     </div>
                   </div>
                 ))}
               </div>
               {searchFiltered.length > 12 && (
                 <div className="text-center mt-4">
-                  <Button variant="outline" size="sm" onClick={() => setLocation("/identify/playbook-library")}>
+                  <Button variant="outline" size="sm" onClick={() => setLocation("/identify/playbook-library")} style={{ borderRadius: 0 }}>
                     Browse all {searchFiltered.length} matching playbooks
                     <ChevronRight className="ml-1.5 h-4 w-4" />
                   </Button>
@@ -625,12 +663,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       </div>
 
       {!embedded && (
-        <div style={{ background: "#0A0F2E" }} className="mt-12">
+        <div style={{ background: NAVY }} className="mt-12">
           <div className="max-w-6xl mx-auto px-6 py-12">
             <div className="grid md:grid-cols-3 gap-8">
               <div>
-                <div className="font-serif text-xl font-semibold text-white mb-1">VaughnMartin</div>
-                <div className="text-[10px] font-bold tracking-widest uppercase text-[#C9A84C] mb-4">Execution OS</div>
+                <div style={{ ...CG, color: "white" }} className="text-xl font-semibold mb-1">VaughnMartin</div>
+                <div style={{ color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }} className="mb-4">Execution OS</div>
                 <p className="text-sm text-white/50 leading-relaxed">170 playbooks. 9 domains. Built for Fortune 1000 strategic velocity.</p>
               </div>
               <div>

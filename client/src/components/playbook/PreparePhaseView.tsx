@@ -74,11 +74,11 @@ interface PrepareItem {
 }
 
 const ITEM_TYPE_CONFIG: Record<PrepareItemType, { icon: any; label: string; color: string }> = {
-  stakeholder_assignment: { icon: Users, label: 'Stakeholder Assignment', color: 'text-blue-500' },
+  stakeholder_assignment: { icon: Users, label: 'Stakeholder Assignment', color: 'text-[#0A0F2E]' },
   document_template: { icon: FileText, label: 'Document Template', color: 'text-green-500' },
-  vendor_contract: { icon: Building2, label: 'Vendor Contract', color: 'text-purple-500' },
+  vendor_contract: { icon: Building2, label: 'Vendor Contract', color: 'text-[#C9A84C]' },
   budget_approval: { icon: DollarSign, label: 'Budget Approval', color: 'text-yellow-500' },
-  communication_template: { icon: MessageSquare, label: 'Communication Template', color: 'text-indigo-500' },
+  communication_template: { icon: MessageSquare, label: 'Communication Template', color: 'text-[#0A0F2E]' },
   resource_staging: { icon: Package, label: 'Resource Staging', color: 'text-orange-500' },
 };
 

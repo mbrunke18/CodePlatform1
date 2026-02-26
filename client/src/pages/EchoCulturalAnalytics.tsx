@@ -180,20 +180,20 @@ export default function EchoCulturalAnalytics() {
           </div>
 
           {/* Header */}
-          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 8 }}>
+          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 0 }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
                 <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Users className="h-10 w-10 text-[${GOLD}]" />
+                  <Users className={`h-10 w-10 text-[${GOLD}]`} />
                 </div>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Cultural Intelligence</span>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Cultural Intelligence</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
-                    Echo Cultural <em style={{ fontStyle: "italic", color: "#DFC178" }}>Analytics</em>
+                    Echo Cultural <em style={{ fontStyle: "italic", color: GOLD }}>Analytics</em>
                   </h1>
                   <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Cultural intelligence and team dynamics assessment platform</p>
                 </div>
@@ -219,7 +219,7 @@ export default function EchoCulturalAnalytics() {
               {/* Cultural Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {culturalMetrics.map((metric) => (
-                  <Card key={metric.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={`metric-${metric.id}`}>
+                  <Card key={metric.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none" data-testid={`metric-${metric.id}`}>
                     <div className="flex items-center justify-between mb-4">
                       <div style={{ width:40, height:40, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
                         <div className="text-white">
@@ -256,7 +256,7 @@ export default function EchoCulturalAnalytics() {
               </div>
 
               {/* Key Cultural Insights */}
-              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
+              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48, borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
                   <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Echo Summary</span>
@@ -265,7 +265,7 @@ export default function EchoCulturalAnalytics() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
                     <div className="flex items-center gap-2 mb-3">
-                      <TrendingUp className="h-4 w-4 text-[${TEAL}]" />
+                      <TrendingUp className={`h-4 w-4 text-[${TEAL}]`} />
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Positive Trends</span>
                     </div>
                     <ul className="space-y-2">
@@ -276,7 +276,7 @@ export default function EchoCulturalAnalytics() {
                   </div>
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
                     <div className="flex items-center gap-2 mb-3">
-                      <Target className="h-4 w-4 text-[${GOLD}]" />
+                      <Target className={`h-4 w-4 text-[${GOLD}]`} />
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD }}>Focus Areas</span>
                     </div>
                     <ul className="space-y-2">
@@ -287,7 +287,7 @@ export default function EchoCulturalAnalytics() {
                   </div>
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: 24, background: "#fff" }}>
                     <div className="flex items-center gap-2 mb-3">
-                      <Lightbulb className="h-4 w-4 text-[${NAVY}]" />
+                      <Lightbulb className={`h-4 w-4 text-[${NAVY}]`} />
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>Recommendations</span>
                     </div>
                     <ul className="space-y-2">
@@ -303,7 +303,7 @@ export default function EchoCulturalAnalytics() {
             <TabsContent value="teams" className="space-y-6 mt-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {teamDynamics.map((team) => (
-                  <Card key={team.team} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={`team-${team.team.toLowerCase()}`}>
+                  <Card key={team.team} className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none" data-testid={`team-${team.team.toLowerCase()}`}>
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-4">
                         <div style={{ width:40, height:40, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
@@ -349,7 +349,7 @@ export default function EchoCulturalAnalytics() {
                       </div>
                     </div>
                     <div className="pt-6 mt-6 border-t border-[#E8E4DC]">
-                      <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                      <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                         <UserCheck className="h-4 w-4 mr-2" />
                         Team Deep Dive
                       </Button>
@@ -360,7 +360,7 @@ export default function EchoCulturalAnalytics() {
             </TabsContent>
 
             <TabsContent value="insights" className="mt-8">
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center" }}>
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center", borderRadius: 0 }}>
                 <Brain className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
                 <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>AI-Powered Cultural Insights</h3>
                 <p style={{ color: "#6B7280", marginTop: 8 }}>Advanced cultural pattern analysis and predictive insights arriving in Q1.</p>
@@ -368,7 +368,7 @@ export default function EchoCulturalAnalytics() {
             </TabsContent>
 
             <TabsContent value="trends" className="mt-8">
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center" }}>
+              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center", borderRadius: 0 }}>
                 <PieChart className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
                 <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>Cultural Trend Analysis</h3>
                 <p style={{ color: "#6B7280", marginTop: 8 }}>Historical cultural trends and future projections arriving in Q1.</p>

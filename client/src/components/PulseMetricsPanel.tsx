@@ -134,7 +134,7 @@ export default function PulseMetricsPanel() {
           <div className="pt-4 border-t">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Overall Health</span>
-              <Badge variant="secondary" className="bg-blue-50 text-blue-700" data-testid="overall-health-score">
+              <Badge variant="secondary" className="bg-[#0A0F2E] text-[#0A0F2E]" data-testid="overall-health-score">
                 {Array.isArray(metrics) && metrics.length > 0 ? 
                   `${(metrics.reduce((sum: number, m: PulseMetric) => sum + parseFloat(m.value), 0) / metrics.length).toFixed(1)}/10` 
                   : 'N/A'

@@ -340,7 +340,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
       
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -695,7 +695,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-xl text-emerald-400 mt-6"
+                  className="text-xl text-[#2B8A6E] mt-6"
                 >
                   The Strategic Execution Operating System
                 </motion.p>
@@ -713,7 +713,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.6 }}
                   className="mb-8"
                 >
-                  <span className="text-6xl md:text-8xl font-bold text-emerald-400">170</span>
+                  <span className="text-6xl md:text-8xl font-bold text-[#2B8A6E]">170</span>
                   <span className="text-2xl md:text-4xl text-gray-800 ml-4">PLAYBOOKS</span>
                 </motion.div>
                 <motion.p
@@ -736,7 +736,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 1.5 + i * 0.08 }}
-                      className="px-3 py-1.5 bg-emerald-500/20 border border-emerald-500/30 rounded-full text-emerald-300 text-sm"
+                      className="px-3 py-1.5 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-full text-[#2B8A6E] text-sm"
                     >
                       {domain}
                     </motion.span>
@@ -760,9 +760,9 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 </motion.p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { letter: "I", name: "Identify", icon: BookOpen, color: "text-violet-400", bg: "bg-violet-500/20", border: "border-violet-500/30" },
-                    { letter: "D", name: "Detect", icon: Radar, color: "text-blue-400", bg: "bg-blue-500/20", border: "border-blue-500/30" },
-                    { letter: "E", name: "Execute", icon: Zap, color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-500/30" },
+                    { letter: "I", name: "Identify", icon: BookOpen, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20", border: "border-[#C9A84C]/30" },
+                    { letter: "D", name: "Detect", icon: Radar, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20", border: "border-blue-500/30" },
+                    { letter: "E", name: "Execute", icon: Zap, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20", border: "border-[#2B8A6E]/30" },
                     { letter: "A", name: "Advance", icon: BarChart3, color: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-500/30" },
                   ].map((phase, i) => (
                     <motion.div
@@ -800,11 +800,11 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="flex flex-wrap justify-center gap-4 mb-6"
                 >
-                  <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-lg text-emerald-300">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-lg text-[#2B8A6E]">
                     <CheckCircle className="h-5 w-5" />
                     <span>Roles assigned instantly</span>
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 rounded-lg text-emerald-300">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-lg text-[#2B8A6E]">
                     <Users className="h-5 w-5" />
                     <span>Teams in parallel</span>
                   </div>
@@ -831,7 +831,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="flex items-center justify-center gap-3 mb-6"
                 >
-                  <Clock className="h-8 w-8 text-emerald-400" />
+                  <Clock className="h-8 w-8 text-[#2B8A6E]" />
                   <span className="text-xl text-gray-800">From signal to full coordinated execution</span>
                 </motion.div>
                 <motion.div
@@ -840,8 +840,8 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
                   className="mb-6"
                 >
-                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">12</span>
-                  <span className="text-4xl md:text-6xl text-emerald-400 ml-4">MINUTES</span>
+                  <span className="text-8xl md:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">12</span>
+                  <span className="text-4xl md:text-6xl text-[#2B8A6E] ml-4">MINUTES</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -923,15 +923,15 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.3 }}
                   className="grid md:grid-cols-3 gap-6"
                 >
-                  <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
-                    <TrendingUp className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+                  <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-xl p-4">
+                    <TrendingUp className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-800">Launch in 4 months vs 18</p>
-                    <p className="text-emerald-400 text-sm mt-1">Capture the revenue</p>
+                    <p className="text-[#2B8A6E] text-sm mt-1">Capture the revenue</p>
                   </div>
-                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-                    <Target className="h-8 w-8 text-blue-400 mx-auto mb-2" />
+                  <div className="bg-[#0A0F2E]/10 border border-blue-500/30 rounded-xl p-4">
+                    <Target className="h-8 w-8 text-[#0A0F2E] mx-auto mb-2" />
                     <p className="text-gray-800">Integrate in 6 months vs 24</p>
-                    <p className="text-blue-400 text-sm mt-1">Capture synergies</p>
+                    <p className="text-[#0A0F2E] text-sm mt-1">Capture synergies</p>
                   </div>
                   <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
                     <Zap className="h-8 w-8 text-amber-400 mx-auto mb-2" />
@@ -960,7 +960,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  <span className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-emerald-400">
+                  <span className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-[#256B56]">
                     It's competitive advantage.
                   </span>
                 </motion.div>
@@ -995,7 +995,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                 >
                   <span className="text-3xl md:text-5xl font-bold text-gray-900">THE STRATEGIC EXECUTION</span>
                   <br />
-                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     OPERATING SYSTEM
                   </span>
                 </motion.div>
@@ -1057,7 +1057,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="mb-8"
                 >
                   <p className="text-xl md:text-2xl text-gray-800 mb-2">Strategy is 10%. Execution is 90%.</p>
-                  <p className="text-3xl md:text-4xl font-bold text-emerald-400">
+                  <p className="text-3xl md:text-4xl font-bold text-[#2B8A6E]">
                     Execution OS is built for the 90%.
                   </p>
                 </motion.div>
@@ -1078,7 +1078,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   <a href="/try-demo">
                     <Button 
                       size="lg" 
-                      className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400"
+                      className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-[#3BAF8A]"
                       onClick={() => onSkip?.()}
                     >
                       <Play className="mr-2 h-5 w-5" />
@@ -1108,7 +1108,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
           {/* Progress bar */}
           <div className="h-1 bg-gray-50 rounded-full mb-4 overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-amber-500 to-emerald-500"
+              className="h-full bg-gradient-to-r from-amber-500 to-[#256B56]"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}

@@ -85,9 +85,9 @@ const PHASES = [
 function PhaseReadinessScore({ phase, score, isActive }: { phase: typeof PHASES[0], score: number, isActive: boolean }) {
   const PhaseIcon = phase.icon;
   const colorClasses = {
-    violet: 'bg-violet-500',
-    blue: 'bg-blue-500',
-    emerald: 'bg-emerald-500',
+    violet: 'bg-[#0A0F2E]',
+    blue: 'bg-[#0A0F2E]',
+    emerald: 'bg-[#2B8A6E]',
     amber: 'bg-amber-500',
   };
   
@@ -121,7 +121,7 @@ function PhaseReadinessScore({ phase, score, isActive }: { phase: typeof PHASES[
 
 function OverallReadinessCard({ readinessData }: { readinessData: any }) {
   const score = readinessData?.score?.overallScore ?? 0;
-  const scoreColor = score >= 80 ? 'text-emerald-700' : score >= 60 ? 'text-[#C9A84C]' : 'text-red-700';
+  const scoreColor = score >= 80 ? 'text-[#2B8A6E]' : score >= 60 ? 'text-[#C9A84C]' : 'text-red-700';
   
   return (
     <Card className=" text-gray-900 border-0">
@@ -362,7 +362,7 @@ export default function FourPhasePlaybookWizard({
                 </Badge>
               </div>
               <Progress value={progress} className="h-2" data-testid="progress-wizard" />
-              <div className="flex items-center gap-2 mt-2 text-xs text-blue-800 dark:text-blue-400">
+              <div className="flex items-center gap-2 mt-2 text-xs text-[#0A0F2E] dark:text-[#0A0F2E]">
                 <Lightbulb className="w-3 h-3" />
                 <span>{currentStep?.aiTip}</span>
               </div>
@@ -377,7 +377,7 @@ export default function FourPhasePlaybookWizard({
                     currentStepIndex === idx
                       ? 'bg-primary text-primary-foreground'
                       : currentStepIndex > idx
-                      ? 'bg-green-100 dark:bg-green-900 text-emerald-800 dark:text-green-300'
+                      ? 'bg-green-100 dark:bg-green-900 text-[#2B8A6E] dark:text-green-300'
                       : 'bg-muted text-muted-foreground hover:bg-muted/80'
                   }`}
                   data-testid={`button-step-${step.id}`}
@@ -389,10 +389,10 @@ export default function FourPhasePlaybookWizard({
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-              <Card className="bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900 p-3 mb-4">
+              <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-blue-200 dark:border-blue-900 p-3 mb-4">
                 <div className="flex gap-2">
-                  <Lightbulb className="w-4 h-4 text-blue-800 flex-shrink-0 mt-0.5" />
-                  <div className="text-sm text-blue-900 dark:text-blue-100">
+                  <Lightbulb className="w-4 h-4 text-[#0A0F2E] flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-[#0A0F2E] dark:text-blue-100">
                     <span className="font-semibold">Pro Tip:</span> Customize each section with your organization's specific context. Execution OS pre-fills 80%+ of content from best practices.
                   </div>
                 </div>

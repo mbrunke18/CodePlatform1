@@ -103,7 +103,7 @@ const URGENCY_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'bg-red-500', description: 'Immediate executive action required' },
   { value: 'high', label: 'High', color: 'bg-orange-500', description: 'Requires attention within hours' },
   { value: 'medium', label: 'Medium', color: 'bg-yellow-500', description: 'Review within 24 hours' },
-  { value: 'low', label: 'Low', color: 'bg-blue-500', description: 'Informational, weekly review' },
+  { value: 'low', label: 'Low', color: 'bg-[#0A0F2E]', description: 'Informational, weekly review' },
 ];
 
 export function TriggerBuilder({ 
@@ -734,10 +734,10 @@ export function TriggerBuilder({
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
+                <div className="mt-3 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg">
                   <div className="flex items-center gap-2 text-sm">
-                    <Link className="w-4 h-4 text-blue-600" />
-                    <span className="text-blue-800 dark:text-blue-200">
+                    <Link className="w-4 h-4 text-[#0A0F2E]" />
+                    <span className="text-[#0A0F2E] dark:text-blue-200">
                       {triggerConfig.logic === 'any' && 'Alert triggers when ANY condition is met'}
                       {triggerConfig.logic === 'all' && 'Alert triggers when ALL conditions are met'}
                       {triggerConfig.logic === 'threshold' && 

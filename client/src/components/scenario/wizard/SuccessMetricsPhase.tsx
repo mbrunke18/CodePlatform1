@@ -78,15 +78,15 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
   return (
     <div className="space-y-6">
       {/* Metric Templates */}
-      <Card className="border-purple-500/30 bg-purple-950/20">
+      <Card className="border-[#C9A84C]/30 bg-[#C9A84C]/20">
         <CardContent className="p-4">
-          <h3 className="text-sm font-semibold text-purple-300 mb-3">Standard Success Metrics</h3>
+          <h3 className="text-sm font-semibold text-[#C9A84C] mb-3">Standard Success Metrics</h3>
           <div className="grid md:grid-cols-2 gap-2">
             {METRIC_TEMPLATES.map((template, index) => (
               <button
                 key={index}
                 onClick={() => applyTemplate(template)}
-                className="p-3 rounded border border-purple-500/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
+                className="p-3 rounded border border-[#C9A84C]/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
                 data-testid={`template-metric-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
@@ -103,7 +103,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <Plus className="h-5 w-5 text-blue-400" />
+            <Plus className="h-5 w-5 text-[#0A0F2E]" />
             Define Success Metric
           </h3>
 
@@ -212,7 +212,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
             <Button
               onClick={addMetric}
               disabled={!newMetric.name || !newMetric.targetValue}
-              className="bg-blue-600 hover:bg-blue-700 text-gray-900"
+              className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
               data-testid="button-add-metric"
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -226,7 +226,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
       {data.metrics && data.metrics.length > 0 && (
         <div>
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <BarChart3 className="h-5 w-5 text-blue-400" />
+            <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
             Success Metrics ({data.metrics.length})
           </h3>
 
@@ -242,7 +242,7 @@ export default function SuccessMetricsPhase({ data, onChange }: SuccessMetricsPh
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <CategoryIcon className="h-4 w-4 text-blue-400" />
+                          <CategoryIcon className="h-4 w-4 text-[#0A0F2E]" />
                           <h4 className="font-semibold text-gray-900">{metric.name}</h4>
                           {metric.isKeyMetric && (
                             <Badge className="bg-yellow-600/20 text-yellow-300 border-yellow-500/50 text-xs">

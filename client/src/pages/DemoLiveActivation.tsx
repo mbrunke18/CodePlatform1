@@ -475,7 +475,7 @@ function DemoLiveActivation() {
               <Button
                 onClick={startDemoActivation}
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-gray-900 text-xl px-8 py-6"
+                className="bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xl px-8 py-6"
                 data-testid="button-start-demo"
               >
                 <Play className="mr-2 h-6 w-6" />
@@ -489,9 +489,9 @@ function DemoLiveActivation() {
       {/* Scenario Welcome Card - Show before execution starts */}
       {!executionId && (
         <div className="max-w-7xl mx-auto mb-8">
-          <Card className="bg-slate-50 dark:bg-slate-800/50 border-slate-300 dark:border-slate-700">
+          <Card className="bg-white border-[#E8E4DC]">
             <CardHeader>
-              <CardTitle className="text-4xl text-center flex items-center justify-center gap-3 text-slate-900 dark:text-white">
+              <CardTitle className="text-4xl text-center flex items-center justify-center gap-3 text-[#0A0F2E]">
                 <span className="text-6xl">{DEMO_SCENARIO.emoji}</span>
                 {DEMO_SCENARIO.title}
               </CardTitle>
@@ -501,21 +501,21 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center p-6 bg-blue-50 dark:bg-slate-800/50 rounded-lg border border-blue-200 dark:border-slate-700">
-                  <Users className="h-12 w-12 text-blue-800 dark:text-blue-400 mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2" data-testid="text-stakeholder-count">
+                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                  <Users className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-stakeholder-count">
                     {STAKEHOLDER_ROSTER.length}
                   </div>
                   <div className="text-gray-800 dark:text-slate-300 text-lg">Stakeholders</div>
                 </div>
-                <div className="text-center p-6 bg-purple-50 dark:bg-slate-800/50 rounded-lg border border-purple-200 dark:border-slate-700">
-                  <Clock className="h-12 w-12 text-purple-800 dark:text-purple-400 mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">~12 min</div>
+                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                  <Clock className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-[#C9A84C] mb-2">~12 min</div>
                   <div className="text-gray-800 dark:text-slate-300 text-lg">Duration</div>
                 </div>
-                <div className="text-center p-6 bg-green-50 dark:bg-slate-800/50 rounded-lg border border-green-200 dark:border-slate-700">
-                  <DollarSign className="h-12 w-12 text-emerald-700 dark:text-green-400 mx-auto mb-3" />
-                  <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">{DEMO_SCENARIO.valueProp}</div>
+                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                  <DollarSign className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-[#C9A84C] mb-2">{DEMO_SCENARIO.valueProp}</div>
                   <div className="text-gray-800 dark:text-slate-300 text-lg">Value Created</div>
                 </div>
               </div>
@@ -526,7 +526,7 @@ function DemoLiveActivation() {
                 </p>
                 <div className="flex items-center justify-center gap-4 text-sm text-gray-800 dark:text-slate-300">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#0A0F2E] rounded-full"></div>
                     <span>Real-time coordination</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -534,7 +534,7 @@ function DemoLiveActivation() {
                     <span>Live acknowledgments</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-[#0A0F2E] rounded-full"></div>
                     <span>Before/after metrics</span>
                   </div>
                 </div>
@@ -571,16 +571,16 @@ function DemoLiveActivation() {
 
       {/* Augmented Execution Info Box - Appears at 2:00 mark */}
       {executionId && elapsedTime >= 120 && elapsedTime < 180 && demoPhase !== 'complete' && (
-        <Card className="max-w-7xl mx-auto mb-8 border-2 border-blue-500 bg-blue-50 dark:bg-blue-900/20 animate-in fade-in slide-in-from-top duration-500" data-testid="card-augmented-execution-info">
+        <Card className="max-w-7xl mx-auto mb-8 border-2 border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 animate-in fade-in slide-in-from-top duration-500" data-testid="card-augmented-execution-info">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#0A0F2E] rounded-full flex items-center justify-center">
                   <Info className="w-6 h-6 text-gray-900" />
                 </div>
               </div>
               <div className="flex-1 page-background">
-                <h3 className="font-semibold text-lg mb-2 text-blue-900 dark:text-blue-100">
+                <h3 className="font-semibold text-lg mb-2 text-[#0A0F2E] dark:text-blue-100">
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
@@ -588,19 +588,19 @@ function DemoLiveActivation() {
                 </p>
                 <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2B8A6E] flex-shrink-0" />
                     <span>CEO acknowledging = <strong>Human decision</strong></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2B8A6E] flex-shrink-0" />
                     <span>Legal reviewing = <strong>Human oversight</strong></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2B8A6E] flex-shrink-0" />
                     <span>IT executing = <strong>Human action</strong></span>
                   </li>
                 </ul>
-                <p className="text-sm font-semibold text-blue-800 dark:text-blue-400 mt-3">
+                <p className="text-sm font-semibold text-[#0A0F2E] dark:text-[#0A0F2E] mt-3">
                   💡 The system amplifies. Humans decide.
                 </p>
               </div>
@@ -614,7 +614,7 @@ function DemoLiveActivation() {
         <Card className="max-w-7xl mx-auto mb-8 border-2 border-green-500 bg-green-50 dark:bg-green-900/20 animate-in fade-in slide-in-from-top duration-500" data-testid="card-threshold-message">
           <CardContent className="p-4">
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-emerald-700 flex-shrink-0" />
+              <Shield className="w-6 h-6 text-[#2B8A6E] flex-shrink-0" />
               <div>
                 <p className="font-semibold text-sm text-green-900 dark:text-green-100">
                   ✅ All Critical Stakeholders Engaged
@@ -634,7 +634,7 @@ function DemoLiveActivation() {
           <CardHeader>
             <CardTitle className="flex items-center justify-between text-3xl text-slate-900 dark:text-white">
               <span className="flex items-center gap-2">
-                <Users className="h-10 w-10 text-blue-800 dark:text-blue-400" />
+                <Users className="h-10 w-10 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                 Stakeholders Being Coordinated
               </span>
               <Badge variant="outline" className="text-lg px-4 py-2 border-slate-400 dark:border-slate-600">
@@ -669,10 +669,10 @@ function DemoLiveActivation() {
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">
                       <div className="flex-1 page-background min-w-0">
-                        <div className={`font-semibold text-sm ${isAcknowledged ? 'text-emerald-800 dark:text-green-300' : 'text-slate-900 dark:text-white'} truncate`}>
+                        <div className={`font-semibold text-sm ${isAcknowledged ? 'text-[#2B8A6E] dark:text-green-300' : 'text-slate-900 dark:text-white'} truncate`}>
                           {stakeholder.name}
                         </div>
-                        <div className={`text-xs ${isAcknowledged ? 'text-emerald-700 dark:text-green-400' : 'text-gray-800 dark:text-slate-300'} truncate`}>
+                        <div className={`text-xs ${isAcknowledged ? 'text-[#2B8A6E] dark:text-green-400' : 'text-gray-800 dark:text-slate-300'} truncate`}>
                           {stakeholder.role}
                         </div>
                         <div className="text-xs text-gray-800 dark:text-slate-300 truncate">
@@ -736,8 +736,8 @@ function DemoLiveActivation() {
 
                 <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
-                    <Users className="h-12 w-12 text-blue-400 mx-auto mb-3" />
-                    <div className="text-6xl font-bold text-blue-400 mb-2" data-testid="text-final-acks">
+                    <Users className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
+                    <div className="text-6xl font-bold text-[#0A0F2E] mb-2" data-testid="text-final-acks">
                       {finalMetrics.stakeholdersAcknowledged}/{finalMetrics.stakeholdersNotified}
                     </div>
                     <div className="text-xl text-gray-800">Acknowledged</div>
@@ -746,8 +746,8 @@ function DemoLiveActivation() {
 
                 <Card className="bg-gray-50 border-green-500/30">
                   <CardContent className="p-6 text-center">
-                    <Target className="h-12 w-12 text-purple-400 mx-auto mb-3" />
-                    <div className="text-6xl font-bold text-purple-400 mb-2" data-testid="text-final-rate">
+                    <Target className="h-12 w-12 text-[#C9A84C] mx-auto mb-3" />
+                    <div className="text-6xl font-bold text-[#C9A84C] mb-2" data-testid="text-final-rate">
                       {finalMetrics.acknowledgmentRate}%
                     </div>
                     <div className="text-xl text-gray-800">Success Rate</div>
@@ -766,9 +766,9 @@ function DemoLiveActivation() {
               </div>
 
               {/* The Execution OS Advantage - Before/After */}
-              <Card className=" border-purple-500/50 mb-12">
+              <Card className=" border-[#C9A84C]/50 mb-12">
                 <CardHeader>
-                  <CardTitle className="text-4xl text-center text-purple-300">
+                  <CardTitle className="text-4xl text-center text-[#C9A84C]">
                     The Execution OS Advantage
                   </CardTitle>
                 </CardHeader>
@@ -806,10 +806,10 @@ function DemoLiveActivation() {
 
               {/* Value Created */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <Card className="bg-gradient-to-br   border-blue-500/50">
+                <Card className="bg-gradient-to-br   border-[#0A0F2E]/50">
                   <CardContent className="p-8 text-center">
-                    <Clock className="h-16 w-16 text-blue-400 mx-auto mb-4" />
-                    <div className="text-5xl font-bold text-blue-400 mb-3" data-testid="text-time-saved">
+                    <Clock className="h-16 w-16 text-[#0A0F2E] mx-auto mb-4" />
+                    <div className="text-5xl font-bold text-[#0A0F2E] mb-3" data-testid="text-time-saved">
                       {finalMetrics.timeSavedHours.toFixed(1)} hours
                     </div>
                     <div className="text-2xl text-gray-800">Time Saved</div>
@@ -826,10 +826,10 @@ function DemoLiveActivation() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br   border-purple-500/50">
+                <Card className="bg-gradient-to-br   border-[#C9A84C]/50">
                   <CardContent className="p-8 text-center">
-                    <TrendingUp className="h-16 w-16 text-purple-400 mx-auto mb-4" />
-                    <div className="text-5xl font-bold text-purple-400 mb-3" data-testid="text-velocity">
+                    <TrendingUp className="h-16 w-16 text-[#C9A84C] mx-auto mb-4" />
+                    <div className="text-5xl font-bold text-[#C9A84C] mb-3" data-testid="text-velocity">
                       {finalMetrics.velocityMultiplier}x Faster
                     </div>
                     <div className="text-2xl text-gray-800">Strategic Velocity</div>
@@ -841,7 +841,7 @@ function DemoLiveActivation() {
               <div className="flex justify-center gap-6">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-gray-900 text-2xl px-12 py-8"
+                  className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-gray-900 text-2xl px-12 py-8"
                   data-testid="button-new-demo"
                   onClick={resetDemo}
                 >
@@ -878,7 +878,7 @@ function DemoLiveActivation() {
             <CardContent className="p-12">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-4 mb-6">
-                  <Clock className="h-16 w-16 text-blue-400" />
+                  <Clock className="h-16 w-16 text-[#0A0F2E]" />
                   <div>
                     <div className="text-8xl font-bold font-mono tracking-tight" data-testid="text-elapsed-time">
                       {formatTime(elapsedTime)}
@@ -902,7 +902,7 @@ function DemoLiveActivation() {
                     <span className="text-gray-800 dark:text-slate-200">
                       {acknowledgments.length} / {totalStakeholders} Stakeholders Acknowledged
                     </span>
-                    <span className="font-bold text-blue-400">
+                    <span className="font-bold text-[#0A0F2E]">
                       {progress.toFixed(1)}%
                     </span>
                   </div>
@@ -922,10 +922,10 @@ function DemoLiveActivation() {
 
                 {/* Completing message */}
                 {demoPhase === 'completing' && (
-                  <div className="mt-8 p-6 bg-purple-500/20 border border-purple-500/50 rounded-lg animate-pulse">
+                  <div className="mt-8 p-6 bg-[#C9A84C]/20 border border-[#C9A84C]/50 rounded-lg animate-pulse">
                     <div className="flex items-center justify-center gap-3">
-                      <Sparkles className="h-12 w-12 text-purple-400" />
-                      <div className="text-3xl font-bold text-purple-400">
+                      <Sparkles className="h-12 w-12 text-[#C9A84C]" />
+                      <div className="text-3xl font-bold text-[#C9A84C]">
                         Final stakeholders coordinating...
                       </div>
                     </div>
@@ -939,12 +939,12 @@ function DemoLiveActivation() {
           <Card className="bg-gray-50 border-gray-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <Users className="h-8 w-8 text-blue-400" />
+                <Users className="h-8 w-8 text-[#0A0F2E]" />
                 Acknowledgments
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-6xl font-bold text-blue-400" data-testid="text-ack-count">
+              <div className="text-6xl font-bold text-[#0A0F2E]" data-testid="text-ack-count">
                 {acknowledgments.length}
               </div>
               <div className="text-xl text-gray-800 dark:text-slate-200 mt-2">
@@ -992,7 +992,7 @@ function DemoLiveActivation() {
             <CardHeader>
               <CardTitle className="flex items-center justify-between text-2xl">
                 <span className="flex items-center gap-2">
-                  <Activity className="h-8 w-8 text-blue-400" />
+                  <Activity className="h-8 w-8 text-[#0A0F2E]" />
                   Execution Timeline - What's Happening
                 </span>
                 <Badge variant="outline" className="text-lg px-4 py-2 text-gray-900 border-slate-500">
@@ -1019,9 +1019,9 @@ function DemoLiveActivation() {
                   };
                   
                   const getColor = () => {
-                    if (task.type === 'milestone') return 'text-purple-400 bg-purple-900/30 border-purple-600/50';
-                    if (task.type === 'system') return 'text-cyan-400 bg-cyan-900/30 border-cyan-600/50';
-                    return 'text-blue-400 bg-blue-900/30 border-blue-600/50';
+                    if (task.type === 'milestone') return 'text-[#C9A84C] bg-[#C9A84C]/30 border-[#C9A84C]/50';
+                    if (task.type === 'system') return 'text-[#2B8A6E] bg-[#2B8A6E]/30 border-[#2B8A6E]/50';
+                    return 'text-[#0A0F2E] bg-[#0A0F2E]/30 border-[#0A0F2E]/50';
                   };
                   
                   return (
@@ -1118,10 +1118,10 @@ function DemoLiveActivation() {
           </Card>
 
           {/* ROI Comparison */}
-          <Card className="bg-gradient-to-br   border-purple-700">
+          <Card className="bg-gradient-to-br   border-[#C9A84C]">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <DollarSign className="h-8 w-8 text-purple-400" />
+                <DollarSign className="h-8 w-8 text-[#C9A84C]" />
                 Impact
               </CardTitle>
             </CardHeader>
@@ -1150,7 +1150,7 @@ function DemoLiveActivation() {
 
               <div className="border-t border-gray-200 pt-4">
                 <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">TIME SAVED</div>
-                <div className="text-4xl font-bold text-purple-400">360x</div>
+                <div className="text-4xl font-bold text-[#C9A84C]">360x</div>
                 <div className="text-lg text-gray-800 dark:text-slate-200 mt-2">
                   faster execution
                 </div>

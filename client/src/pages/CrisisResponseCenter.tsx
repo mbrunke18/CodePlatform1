@@ -205,7 +205,7 @@ export default function CrisisResponseCenter() {
     switch (severity) {
       case 'critical': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
       case 'high': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
-      case 'medium': return { background: "rgba(43,138,110,0.12)", color: "#3BAF8A" };
+      case 'medium': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
       case 'low': return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
       default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
     }
@@ -221,41 +221,37 @@ export default function CrisisResponseCenter() {
     }
   };
 
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const OFF = "#F8F7F4";
-
   return (
     <PageLayout>
-      <div className="flex-1 bg-white overflow-y-auto" data-testid="crisis-response-center">
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto" data-testid="crisis-response-center">
         {/* Navy Hero Section */}
-        <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
+        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden", minHeight: 360 }}>
           <div style={{ 
             position: "absolute", 
             inset: 0, 
-            backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
-            backgroundSize: "44px 44px" 
+            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundSize: "32px 32px",
+            opacity: 0.1
           }} />
           <div className="max-w-7xl mx-auto relative z-10">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Emergency Operations Center</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Emergency Operations Center</span>
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
+            <div className="flex items-end justify-between gap-12">
+              <div className="max-w-3xl">
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
                   Crisis Response <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Center</em>
                 </h1>
-                <p className="text-white/60 text-lg max-w-2xl">Enterprise-grade crisis management with 15+ response protocols and real-time coordination systems.</p>
+                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">Enterprise-grade crisis management with 15+ response protocols and real-time coordination systems.</p>
               </div>
-              <div className="flex flex-col gap-3">
-                <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
-                  <Shield className="w-3 h-3" />
+              <div className="flex flex-col items-end gap-4 min-w-[280px]">
+                <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:"#3BAF8A", fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: "1px solid rgba(43,138,110,0.3)" }}>
+                  <Shield className="w-4 h-4" />
                   All Systems Ready
                 </div>
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold" size="lg">
-                  <AlertTriangle className="w-4 h-4 mr-2" />
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-bold h-14 rounded-none text-sm tracking-widest" size="lg">
+                  <AlertTriangle className="w-5 h-5 mr-3" />
                   EMERGENCY ACTIVATION
                 </Button>
               </div>
@@ -264,22 +260,22 @@ export default function CrisisResponseCenter() {
         </div>
 
         {/* Stats Grid */}
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: OFF, borderBottom:"1px solid #E8E4DC" }}>
-          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
-            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.readinessLevel}%</div>
-            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Readiness Level</div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background: "white", borderBottom:"1px solid #E8E4DC" }}>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.readinessLevel}%</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Readiness Level</div>
           </div>
-          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
-            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.responseTeamsActive}</div>
-            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Teams Active</div>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.responseTeamsActive}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Teams Active</div>
           </div>
-          <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
-            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.protocolsReady}</div>
-            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Protocols Ready</div>
+          <div style={{ padding:32, borderRight:"1px solid #E8E4DC" }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{systemStatus.protocolsReady}</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Protocols Ready</div>
           </div>
-          <div style={{ padding:24 }}>
-            <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>8d</div>
-            <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 4 }}>Since Last Drill</div>
+          <div style={{ padding:32 }}>
+            <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: GOLD, lineHeight: 1 }}>8d</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Since Last Drill</div>
           </div>
         </div>
 
@@ -289,52 +285,55 @@ export default function CrisisResponseCenter() {
           <DemoActiveStrategicCard />
 
           {/* Crisis Management Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
-            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-8">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
+            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-12">
               {['dashboard', 'templates', 'active', 'protocols', 'analytics'].map((tab) => (
                 <TabsTrigger 
                   key={tab}
                   value={tab} 
-                  className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-4 text-xs font-bold tracking-widest uppercase text-[#6B7280]"
+                  className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]"
                 >
                   {tab}
                 </TabsTrigger>
               ))}
             </TabsList>
 
-            <TabsContent value="dashboard" className="space-y-8 mt-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <TabsContent value="dashboard" className="space-y-12 mt-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Active Situations */}
-                <Card className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none">
-                  <CardHeader className="px-0 pt-0">
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                <Card className="border border-[#E8E4DC] bg-white p-8 shadow-sm rounded-none">
+                  <CardHeader className="px-0 pt-0 mb-8">
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Live Monitoring</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Live Monitoring</span>
                     </div>
-                    <CardTitle className="text-2xl font-bold flex items-center gap-2">
-                      <Activity className="h-5 w-5 text-[#2B8A6E]" />
-                      Active Situations <span className="text-[#6B7280] font-normal" data-testid="crisis-active-counter">({activeCrises.length})</span>
+                    <CardTitle style={CG} className="text-3xl font-bold flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        Active Situations
+                      </div>
+                      <span className="text-[#6B7280] font-normal text-xl" data-testid="crisis-active-counter">({activeCrises.length})</span>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="px-0 pb-0 space-y-4">
+                  <CardContent className="px-0 pb-0 space-y-6">
                     {activeCrises.map((crisis) => (
-                      <div key={crisis.id} className="p-6 bg-[#F8F7F4] border border-[#E8E4DC]" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
-                        <div className="flex items-center justify-between mb-4">
-                          <h4 className="font-bold text-[#0A0F2E]">{crisis.template}</h4>
-                          <span style={{ ...getSeverityBadgeStyle(crisis.severity), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
-                            {getSeverityIcon(crisis.severity)}
-                            <span className="ml-1">{crisis.severity}</span>
+                      <div key={crisis.id} className="p-8 bg-[#F8F7F4] border border-[#E8E4DC]" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
+                        <div className="flex items-center justify-between mb-6">
+                          <h4 style={CG} className="text-2xl font-bold text-[#0A0F2E]">{crisis.template}</h4>
+                          <span style={{ ...getSeverityBadgeStyle(crisis.severity), fontSize:10, fontWeight:800, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"4px 12px" }}>
+                            {crisis.severity}
                           </span>
                         </div>
-                        <div className="space-y-3">
-                          <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">
+                        <div className="space-y-4">
+                          <div className="flex justify-between text-[11px] font-bold tracking-widest uppercase text-[#6B7280]">
                             <span>Progress</span>
-                            <span className="text-[#0A0F2E]">{crisis.progress}%</span>
+                            <span className="text-[#0A0F2E] font-black">{crisis.progress}%</span>
                           </div>
-                          <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC]" />
-                          <div className="flex items-center gap-2 text-xs text-[#6B7280]">
-                            <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full" />
-                            Current Phase: <span className="text-[#0A0F2E] font-medium">{crisis.currentPhase}</span>
+                          <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC] overflow-hidden">
+                             <div className="h-full bg-[#2B8A6E]" style={{ width: `${crisis.progress}%` }} />
+                          </Progress>
+                          <div className="flex items-center gap-3 text-xs text-[#6B7280] font-medium pt-2">
+                            <div className="w-2 h-2 bg-[#C9A84C]" />
+                            Current Phase: <span className="text-[#0A0F2E] font-bold uppercase tracking-wider">{crisis.currentPhase}</span>
                           </div>
                         </div>
                       </div>
@@ -343,33 +342,32 @@ export default function CrisisResponseCenter() {
                 </Card>
 
                 {/* Quick Actions */}
-                <Card className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none">
-                  <CardHeader className="px-0 pt-0">
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                <Card className="border border-[#E8E4DC] bg-white p-8 shadow-sm rounded-none">
+                  <CardHeader className="px-0 pt-0 mb-8">
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Rapid Execution</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Rapid Execution</span>
                     </div>
-                    <CardTitle className="text-2xl font-bold flex items-center gap-2">
-                      <Zap className="h-5 w-5 text-[#C9A84C]" />
+                    <CardTitle style={CG} className="text-3xl font-bold">
                       Emergency Actions
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="px-0 pb-0 space-y-3">
-                    <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold py-6 rounded-none justify-start">
-                      <AlertTriangle className="w-4 h-4 mr-3 text-red-500" />
+                  <CardContent className="px-0 pb-0 space-y-4">
+                    <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ACTIVATE CRISIS PROTOCOL
+                      <AlertTriangle className="w-5 h-5 text-red-500" />
                     </Button>
-                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
-                      <Users className="w-4 h-4 mr-3" />
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ASSEMBLE RESPONSE TEAM
+                      <Users className="w-5 h-5" />
                     </Button>
-                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
-                      <Phone className="w-4 h-4 mr-3" />
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       EMERGENCY COMMUNICATIONS
+                      <Phone className="w-5 h-5" />
                     </Button>
-                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold py-6 rounded-none justify-start">
-                      <Bell className="w-4 h-4 mr-3" />
+                    <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       STAKEHOLDER ALERTS
+                      <Bell className="w-5 h-5" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -478,432 +476,6 @@ export default function CrisisResponseCenter() {
             </TabsContent>
           </Tabs>
         </div>
-      </div>
-    </PageLayout>
-  );
-}
-
-  const getSeverityColor = (severity: string) => {
-    switch (severity) {
-      case 'critical': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
-      case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
-    }
-  };
-
-  const getSeverityIcon = (severity: string) => {
-    switch (severity) {
-      case 'critical': return <AlertTriangle className="h-4 w-4" />;
-      case 'high': return <AlertCircle className="h-4 w-4" />;
-      case 'medium': return <Clock className="h-4 w-4" />;
-      case 'low': return <CheckCircle className="h-4 w-4" />;
-      default: return <Activity className="h-4 w-4" />;
-    }
-  };
-
-  return (
-    <PageLayout>
-      <div className="flex-1 page-background overflow-y-auto p-8 space-y-8" data-testid="crisis-response-center">
-        
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-200">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-800 dark:text-gray-200 hover:text-white p-1 h-auto">
-                <Home className="h-4 w-4" />
-              </Button>
-            </Link>
-            <span>/</span>
-            <span>Crisis Management</span>
-            <span>/</span>
-            <span className="text-gray-900">Crisis Response Center</span>
-          </div>
-        </div>
-
-        {/* Crisis Response Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Crisis Response Command Center</h1>
-            <p className="text-gray-800">Enterprise-grade crisis management with 15+ response protocols</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/">
-              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-700 border-slate-600">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Dashboard
-              </Button>
-            </Link>
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
-              <Shield className="w-4 h-4 mr-2" />
-              All Systems Ready
-            </Badge>
-            <Button className="bg-red-600 hover:bg-red-700">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Emergency Activation
-            </Button>
-          </div>
-        </div>
-
-        {/* Demo Crisis Simulation - Only visible during demo mode */}
-        <DemoStrategicAlert />
-        <DemoActiveStrategicCard />
-
-        {/* System Status Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Readiness Level</h3>
-                <Shield className="h-5 w-5 text-emerald-400" />
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.readinessLevel}%</div>
-              <Progress value={systemStatus.readinessLevel} className="h-2" />
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Response Teams</h3>
-                <Users className="h-5 w-5 text-blue-400" />
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.responseTeamsActive}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Teams Active</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Protocols Ready</h3>
-                <FileText className="h-5 w-5 text-purple-400" />
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-2">{systemStatus.protocolsReady}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Response Templates</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border-gray-200">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Last Drill</h3>
-                <Clock className="h-5 w-5 text-amber-400" />
-              </div>
-              <div className="text-2xl font-bold text-gray-900 mb-2">8</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">days ago</div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Crisis Management Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-gray-50 border border-gray-200">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Dashboard</TabsTrigger>
-            <TabsTrigger value="templates" className="data-[state=active]:bg-gray-50">Response Templates</TabsTrigger>
-            <TabsTrigger value="active" className="data-[state=active]:bg-gray-50">Active Crises</TabsTrigger>
-            <TabsTrigger value="protocols" className="data-[state=active]:bg-gray-50">Protocols</TabsTrigger>
-            <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-50">Analytics</TabsTrigger>
-          </TabsList>
-
-          {/* Dashboard Tab */}
-          <TabsContent value="dashboard" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              
-              {/* Active Situations */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Activity className="h-5 w-5" />
-                    Active Situations <span data-testid="crisis-active-counter">({activeCrises.length} Active)</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {activeCrises.map((crisis) => (
-                    <div key={crisis.id} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50" data-testid={crisis.template === 'Supply Chain Disruption' ? 'crisis-card-supply-chain' : `crisis-card-${crisis.id}`}>
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold text-gray-900">{crisis.template}</h4>
-                        <Badge className={getSeverityColor(crisis.severity)}>
-                          {getSeverityIcon(crisis.severity)}
-                          {crisis.severity.toUpperCase()}
-                        </Badge>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-800 dark:text-slate-200">Progress</span>
-                          <span className="text-gray-900">{crisis.progress}%</span>
-                        </div>
-                        <Progress value={crisis.progress} className="h-2" />
-                        <div className="text-xs text-gray-800">Phase: {crisis.currentPhase}</div>
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              {/* Quick Actions */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Zap className="h-5 w-5" />
-                    Emergency Quick Actions
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Button className="w-full bg-red-600 hover:bg-red-700 justify-start">
-                    <AlertTriangle className="w-4 h-4 mr-2" />
-                    Activate Crisis Protocol
-                  </Button>
-                  <Button className="w-full bg-amber-600 hover:bg-amber-700 justify-start">
-                    <Users className="w-4 h-4 mr-2" />
-                    Assemble Response Team
-                  </Button>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 justify-start">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Emergency Communications
-                  </Button>
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 justify-start">
-                    <Bell className="w-4 h-4 mr-2" />
-                    Stakeholder Alerts
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          {/* Templates Tab */}
-          <TabsContent value="templates" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {crisisTemplates.map((template) => (
-                <Card key={template.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-gray-900 text-lg">{template.name}</CardTitle>
-                      <Badge className={getSeverityColor(template.severity)}>
-                        {getSeverityIcon(template.severity)}
-                        {template.severity.toUpperCase()}
-                      </Badge>
-                    </div>
-                    <p className="text-gray-800 dark:text-slate-200 text-sm">{template.description}</p>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-200">Category:</span>
-                        <span className="text-gray-900">{template.category}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-200">Activation:</span>
-                        <span className="text-gray-900">{template.activationTime}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-200">Stakeholders:</span>
-                        <span className="text-gray-900">{template.stakeholders.length}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
-                        <FileText className="w-4 h-4 mr-2" />
-                        View Details
-                      </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
-                        <Play className="w-4 h-4 mr-2" />
-                        Activate
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Active Crises Tab */}
-          <TabsContent value="active" className="space-y-6">
-            {activeCrises.length > 0 ? (
-              <div className="space-y-6">
-                {activeCrises.map((crisis) => (
-                  <Card key={crisis.id} className="bg-white border-gray-200">
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-gray-900">{crisis.template}</CardTitle>
-                        <div className="flex items-center gap-3">
-                          <Badge className={getSeverityColor(crisis.severity)}>
-                            {getSeverityIcon(crisis.severity)}
-                            {crisis.severity.toUpperCase()}
-                          </Badge>
-                          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                            {crisis.status.toUpperCase()}
-                          </Badge>
-                        </div>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">Timeline</h4>
-                          <div className="text-sm space-y-1">
-                            <div className="text-gray-800 dark:text-slate-200">Started: {crisis.startTime}</div>
-                            <div className="text-gray-800 dark:text-slate-200">Phase: {crisis.currentPhase}</div>
-                            <div className="text-gray-800 dark:text-slate-200">Progress: {crisis.progress}%</div>
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">Assigned Team</h4>
-                          <div className="space-y-1">
-                            {crisis.assignedTeam.map((team, index) => (
-                              <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                                {team}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-2">Next Actions</h4>
-                          <div className="space-y-1">
-                            {crisis.nextActions.map((action, index) => (
-                              <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
-                                <div className="w-2 h-2 bg-amber-400 rounded-full" />
-                                {action}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-3">
-                        <Button className="bg-emerald-600 hover:bg-emerald-700">
-                          <CheckCircle className="w-4 h-4 mr-2" />
-                          Update Status
-                        </Button>
-                        <Button variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
-                          <FileText className="w-4 h-4 mr-2" />
-                          View Full Report
-                        </Button>
-                        <Button variant="outline" className="border-red-600 text-red-300 hover:bg-red-900/20">
-                          <Square className="w-4 h-4 mr-2" />
-                          Escalate
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            ) : (
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-12 text-center">
-                  <CheckCircle className="h-16 w-16 text-emerald-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">No Active Crises</h3>
-                  <p className="text-gray-800 dark:text-slate-200">All systems operational. Crisis response protocols ready.</p>
-                </CardContent>
-              </Card>
-            )}
-          </TabsContent>
-
-          {/* Protocols Tab */}
-          <TabsContent value="protocols" className="space-y-6">
-            <Alert className="border-amber-500/30 bg-amber-500/10">
-              <AlertTriangle className="h-4 w-4" />
-              <AlertDescription className="text-[#C9A84C]">
-                Crisis response protocols are regularly updated based on industry best practices and regulatory requirements.
-              </AlertDescription>
-            </Alert>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">Communication Protocols</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Emergency Notification Chain</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Media Response Guidelines</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Stakeholder Updates</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">ACTIVE</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">Response Procedures</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Incident Assessment</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Resource Mobilization</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-gray-900">Recovery Planning</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">READY</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-
-          {/* Analytics Tab */}
-          <TabsContent value="analytics" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Response Time</h3>
-                    <Clock className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">12 min</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Average activation</div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Recovery Rate</h3>
-                    <TrendingUp className="h-5 w-5 text-emerald-400" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">96%</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Successful resolution</div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Team Readiness</h3>
-                    <Users className="h-5 w-5 text-purple-400" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">100%</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Teams certified</div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white border-gray-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Drills Completed</h3>
-                    <BarChart3 className="h-5 w-5 text-amber-400" />
-                  </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">24</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">This quarter</div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-        </Tabs>
       </div>
     </PageLayout>
   );

@@ -24,7 +24,7 @@ export function CommandCenterStatusBar() {
   const getStatusColor = () => {
     switch (status.systemStatus) {
       case 'operational':
-        return 'text-emerald-400';
+        return 'text-[#2B8A6E]';
       case 'degraded':
         return 'text-yellow-400';
       case 'critical':
@@ -65,14 +65,14 @@ export function CommandCenterStatusBar() {
             <div className="h-4 w-px bg-border/40" />
 
             <div className="flex items-center gap-1.5 text-slate-700 transition-colors" data-testid="status-readiness-score">
-              <Zap className="h-3.5 w-3.5 text-emerald-600" />
-              <span className="font-medium text-emerald-600">{status.readinessScore}%</span>
+              <Zap className="h-3.5 w-3.5 text-[#2B8A6E]" />
+              <span className="font-medium text-[#2B8A6E]">{status.readinessScore}%</span>
               <span className="text-xs">Readiness</span>
             </div>
 
             <div className="flex items-center gap-1.5 text-slate-700 transition-colors" data-testid="status-active-scenarios">
-              <Target className="h-3.5 w-3.5 text-blue-600" />
-              <span className="font-medium text-blue-600">{status.activeScenarios}</span>
+              <Target className="h-3.5 w-3.5 text-[#0A0F2E]" />
+              <span className="font-medium text-[#0A0F2E]">{status.activeScenarios}</span>
               <span className="text-xs">Active Scenarios</span>
             </div>
 
@@ -83,8 +83,8 @@ export function CommandCenterStatusBar() {
             </div>
 
             <div className="flex items-center gap-1.5 text-slate-700 transition-colors" data-testid="status-oracle-patterns">
-              <AlertTriangle className="h-3.5 w-3.5 text-purple-600" />
-              <span className="font-medium text-purple-600">{status.oraclePatternsActive}</span>
+              <AlertTriangle className="h-3.5 w-3.5 text-[#C9A84C]" />
+              <span className="font-medium text-[#C9A84C]">{status.oraclePatternsActive}</span>
               <span className="text-xs">Oracle Patterns</span>
             </div>
           </div>

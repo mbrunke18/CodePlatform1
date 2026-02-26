@@ -19,6 +19,17 @@ import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function NFLLearningDashboard() {
   const { toast } = useToast();
 
@@ -108,8 +119,8 @@ export default function NFLLearningDashboard() {
   if (suggestionsLoading) {
     return (
       <PageLayout>
-        <div className="p-6">
-          <div className="animate-pulse">Loading learning dashboard...</div>
+        <div className="p-6 bg-white min-h-screen">
+          <div className="animate-pulse text-[#0A0F2E] font-semibold">Loading learning dashboard...</div>
         </div>
       </PageLayout>
     );
@@ -117,74 +128,80 @@ export default function NFLLearningDashboard() {
 
   return (
     <PageLayout>
-      <div className="p-6 space-y-6" data-testid="execution-learning-dashboard-page">
+      <div className="p-6 space-y-6 bg-white min-h-screen" data-testid="execution-learning-dashboard-page">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold" data-testid="page-title">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase</span>
+            </div>
+            <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="page-title">
               Strategic Learning Center
             </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-[#6B7280] mt-1">
               Performance intelligence and continuous optimization
             </p>
           </div>
-          <Brain className="h-12 w-12 text-[#0A1F44] dark:text-[#D4AF37]" />
+          <div className="bg-[#0A0F2E] p-3 rounded-none">
+            <Brain className="h-10 w-10 text-white" />
+          </div>
         </div>
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-pending-suggestions">
+                  <div className="text-2xl font-bold text-[#0A0F2E]" style={CG} data-testid="stat-pending-suggestions">
                     {pendingSuggestions.length}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Pending Insights</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Pending Insights</div>
                 </div>
-                <Lightbulb className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
+                <Lightbulb className="h-8 w-8 text-[#C9A84C]" />
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-avg-time">
+                  <div className="text-2xl font-bold text-[#0A0F2E]" style={CG} data-testid="stat-avg-time">
                     {avgDrillTime}m
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Avg. Response Time</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Avg. Response Time</div>
                 </div>
-                <Clock className="h-8 w-8 text-blue-800 dark:text-blue-400" />
+                <Clock className="h-8 w-8 text-[#0A0F2E]" />
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-success-rate">
+                  <div className="text-2xl font-bold text-[#0A0F2E]" style={CG} data-testid="stat-success-rate">
                     {avgSuccessRate}%
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Success Rate</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Success Rate</div>
                 </div>
-                <Target className="h-8 w-8 text-emerald-700 dark:text-green-400" />
+                <Target className="h-8 w-8 text-[#2B8A6E]" />
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white shadow-none">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-2xl font-bold" data-testid="stat-improvement">
+                  <div className="text-2xl font-bold text-[#0A0F2E]" style={CG} data-testid="stat-improvement">
                     +{improvementRate}%
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">Improvement Rate</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mt-1">Improvement Rate</div>
                 </div>
-                <TrendingUp className="h-8 w-8 text-purple-800 dark:text-purple-400" />
+                <TrendingUp className="h-8 w-8 text-[#C9A84C]" />
               </div>
             </CardContent>
           </Card>
@@ -192,38 +209,38 @@ export default function NFLLearningDashboard() {
 
         {/* Tabs for different views */}
         <Tabs defaultValue="suggestions" className="w-full">
-          <TabsList>
-            <TabsTrigger value="suggestions" data-testid="tab-suggestions">
+          <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC]">
+            <TabsTrigger value="suggestions" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-suggestions">
               AI Suggestions ({pendingSuggestions.length})
             </TabsTrigger>
-            <TabsTrigger value="performance" data-testid="tab-performance">
+            <TabsTrigger value="performance" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-performance">
               Performance Trends
             </TabsTrigger>
-            <TabsTrigger value="insights" data-testid="tab-insights">
+            <TabsTrigger value="insights" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-insights">
               Cross-Playbook Insights
             </TabsTrigger>
-            <TabsTrigger value="velocity" data-testid="tab-velocity">
+            <TabsTrigger value="velocity" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-velocity">
               Execution Velocity
             </TabsTrigger>
           </TabsList>
 
           {/* AI Suggestions Tab */}
           <TabsContent value="suggestions" className="space-y-4 mt-6">
-            <Card>
+            <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="h-5 w-5" />
+                <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
+                  <Lightbulb className="h-5 w-5 text-[#C9A84C]" />
                   AI-Powered Optimization Suggestions
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-[#6B7280]">
                   Machine learning insights from your drill performance and real activations
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {pendingSuggestions.length === 0 ? (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-emerald-700" />
-                    <p className="font-medium">All suggestions reviewed</p>
+                  <div className="text-center py-12 text-[#6B7280]">
+                    <CheckCircle className="h-12 w-12 mx-auto mb-3 text-[#2B8A6E]" />
+                    <p className="font-bold text-[#0A0F2E]">All suggestions reviewed</p>
                     <p className="text-sm mt-1">You're up to date with AI recommendations</p>
                   </div>
                 ) : (
@@ -233,51 +250,52 @@ export default function NFLLearningDashboard() {
                       const playbook = libraryData.playbooks.find((p: any) => p.id === suggestion.playbookId);
                       
                       const severityColors = {
-                        high: 'bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300',
-                        medium: 'bg-yellow-100 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-300',
-                        low: 'bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300',
+                        high: 'bg-red-100 text-red-700',
+                        medium: `bg-[${GOLD}]/12 text-[${GOLD}]`,
+                        low: `bg-[${NAVY}]/12 text-[${NAVY}]`,
                       };
 
                       return (
                         <Card 
                           key={suggestion.id} 
-                          className="border-l-4 border-l-[#D4AF37]"
+                          className="border border-[#E8E4DC] bg-white shadow-none relative overflow-hidden"
                           data-testid={`card-suggestion-${suggestion.id}`}
                         >
+                          <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C9A84C]" />
                           <CardHeader>
                             <div className="flex items-start justify-between">
-                              <div className="flex-1 page-background">
+                              <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-2">
-                                  <Badge className={severityColors[suggestion.severity as keyof typeof severityColors] || ''}>
+                                  <Badge className={`${severityColors[suggestion.severity as keyof typeof severityColors] || ''} border-none font-bold text-[9px] uppercase tracking-wider`}>
                                     {suggestion.severity} priority
                                   </Badge>
-                                  <Badge variant="outline">
+                                  <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280] font-bold text-[9px] uppercase tracking-wider">
                                     {suggestion.suggestionType}
                                   </Badge>
                                 </div>
-                                <CardTitle className="text-lg" data-testid={`text-suggestion-title-${suggestion.id}`}>
+                                <CardTitle className="text-lg text-[#0A0F2E]" style={CG} data-testid={`text-suggestion-title-${suggestion.id}`}>
                                   {suggestion.suggestionTitle}
                                 </CardTitle>
                                 {playbook && (
-                                  <CardDescription className="mt-1">
-                                    For playbook: {playbook.name}
+                                  <CardDescription className="mt-1 text-[#6B7280]">
+                                    For playbook: <span className="text-[#0A0F2E] font-semibold">{playbook.name}</span>
                                   </CardDescription>
                                 )}
                               </div>
                             </div>
                           </CardHeader>
                           <CardContent className="space-y-4">
-                            <div>
-                              <h4 className="font-medium text-sm mb-2">Recommendation</h4>
-                              <p className="text-sm text-muted-foreground">
+                            <div className="bg-[#F8F7F4] p-4 border border-[#E8E4DC]">
+                              <h4 className="font-bold text-[10px] text-[#6B7280] mb-2 uppercase tracking-wider">Recommendation</h4>
+                              <p className="text-sm text-[#0A0F2E]">
                                 {suggestion.recommendation}
                               </p>
                             </div>
 
                             {suggestion.expectedImpact && (
                               <div>
-                                <h4 className="font-medium text-sm mb-2">Expected Impact</h4>
-                                <p className="text-sm text-muted-foreground">
+                                <h4 className="font-bold text-[10px] text-[#6B7280] mb-1 uppercase tracking-wider">Expected Impact</h4>
+                                <p className="text-sm text-[#0A0F2E]">
                                   {suggestion.expectedImpact}
                                 </p>
                               </div>
@@ -285,16 +303,17 @@ export default function NFLLearningDashboard() {
 
                             {suggestion.implementationSteps && (
                               <div>
-                                <h4 className="font-medium text-sm mb-2">Implementation Steps</h4>
-                                <p className="text-sm text-muted-foreground whitespace-pre-line">
+                                <h4 className="font-bold text-[10px] text-[#6B7280] mb-1 uppercase tracking-wider">Implementation Steps</h4>
+                                <p className="text-sm text-[#0A0F2E] whitespace-pre-line">
                                   {suggestion.implementationSteps}
                                 </p>
                               </div>
                             )}
 
-                            <div className="flex gap-2 pt-2 border-t">
+                            <div className="flex gap-2 pt-4 border-t border-[#E8E4DC]">
                               <Button
                                 size="sm"
+                                className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                                 onClick={() => handleAcceptSuggestion(suggestion)}
                                 disabled={updateSuggestionMutation.isPending}
                                 data-testid={`button-accept-${suggestion.id}`}
@@ -305,6 +324,7 @@ export default function NFLLearningDashboard() {
                               <Button
                                 size="sm"
                                 variant="outline"
+                                className="border-[#E8E4DC] text-[#0A0F2E]"
                                 onClick={() => handleRejectSuggestion(suggestion)}
                                 disabled={updateSuggestionMutation.isPending}
                                 data-testid={`button-reject-${suggestion.id}`}
@@ -313,7 +333,7 @@ export default function NFLLearningDashboard() {
                               </Button>
                             </div>
 
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-[10px] text-[#6B7280] font-medium italic">
                               Generated: {new Date(suggestion.generatedAt).toLocaleString()}
                             </div>
                           </CardContent>
@@ -328,77 +348,77 @@ export default function NFLLearningDashboard() {
 
           {/* Performance Trends Tab */}
           <TabsContent value="performance" className="space-y-4 mt-6">
-            <Card>
+            <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5" />
+                <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
+                  <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                   Drill Performance Trends
                 </CardTitle>
-                <CardDescription>Track your team's execution improvement over time</CardDescription>
+                <CardDescription className="text-[#6B7280]">Track your team's execution improvement over time</CardDescription>
               </CardHeader>
               <CardContent>
                 {drillPerformances.length === 0 ? (
-                  <div className="text-center py-12 text-muted-foreground">
+                  <div className="text-center py-12 text-[#6B7280]">
                     <BarChart3 className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                    <p className="font-medium">No performance data yet</p>
+                    <p className="font-bold text-[#0A0F2E]">No performance data yet</p>
                     <p className="text-sm mt-1">Complete practice drills to see trends</p>
                   </div>
                 ) : (
                   <div className="space-y-6">
                     <div className="grid grid-cols-3 gap-6">
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-sm">Response Time Trend</h4>
-                        <div className="text-3xl font-bold" data-testid="text-response-trend">
+                      <div className="space-y-2 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                        <h4 className="font-bold text-[10px] text-[#6B7280] uppercase tracking-wider">Response Time Trend</h4>
+                        <div className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="text-response-trend">
                           {avgDrillTime}m
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-emerald-700 dark:text-green-400">
+                        <div className="flex items-center gap-1 text-sm text-[#2B8A6E] font-bold">
                           <TrendingUp className="h-4 w-4" />
-                          <span>Improving</span>
+                          <span>IMPROVING</span>
                         </div>
                       </div>
 
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-sm">Success Rate Trend</h4>
-                        <div className="text-3xl font-bold" data-testid="text-success-trend">
+                      <div className="space-y-2 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                        <h4 className="font-bold text-[10px] text-[#6B7280] uppercase tracking-wider">Success Rate Trend</h4>
+                        <div className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="text-success-trend">
                           {avgSuccessRate}%
                         </div>
-                        <div className="flex items-center gap-1 text-sm text-emerald-700 dark:text-green-400">
+                        <div className="flex items-center gap-1 text-sm text-[#2B8A6E] font-bold">
                           <TrendingUp className="h-4 w-4" />
-                          <span>Improving</span>
+                          <span>IMPROVING</span>
                         </div>
                       </div>
 
-                      <div className="space-y-2">
-                        <h4 className="font-medium text-sm">Total Drills</h4>
-                        <div className="text-3xl font-bold" data-testid="text-total-drills">
+                      <div className="space-y-2 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                        <h4 className="font-bold text-[10px] text-[#6B7280] uppercase tracking-wider">Total Drills</h4>
+                        <div className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="text-total-drills">
                           {drillPerformances.length}
                         </div>
-                        <div className="text-sm text-muted-foreground">Completed</div>
+                        <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">COMPLETED</div>
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t">
-                      <h4 className="font-medium mb-3">Recent Performance History</h4>
+                    <div className="pt-4 border-t border-[#E8E4DC]">
+                      <h4 className="font-bold text-sm text-[#0A0F2E] mb-3 uppercase tracking-wider">Recent Performance History</h4>
                       <div className="space-y-2">
                         {drillPerformances.slice(0, 5).map((perf: any, index: number) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                          <div key={index} className="flex items-center justify-between p-3 bg-white border border-[#E8E4DC] hover:bg-[#F8F7F4]">
                             <div className="flex items-center gap-3">
-                              <Award className="h-5 w-5 text-[#D4AF37]" />
+                              <Award className="h-5 w-5 text-[#C9A84C]" />
                               <div>
-                                <div className="font-medium text-sm">Drill #{drillPerformances.length - index}</div>
-                                <div className="text-xs text-muted-foreground">
+                                <div className="font-bold text-sm text-[#0A0F2E]">Drill #{drillPerformances.length - index}</div>
+                                <div className="text-xs text-[#6B7280]">
                                   {new Date(perf.completedAt || Date.now()).toLocaleDateString()}
                                 </div>
                               </div>
                             </div>
                             <div className="flex items-center gap-6 text-sm">
                               <div>
-                                <span className="text-muted-foreground">Time:</span>
-                                <span className="font-medium ml-2">{perf.timeToComplete}m</span>
+                                <span className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Time:</span>
+                                <span className="font-bold text-[#0A0F2E] ml-2">{perf.timeToComplete}m</span>
                               </div>
                               <div>
-                                <span className="text-muted-foreground">Success:</span>
-                                <span className="font-medium ml-2">{perf.successRate}%</span>
+                                <span className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Success:</span>
+                                <span className="font-bold text-[#2B8A6E] ml-2">{perf.successRate}%</span>
                               </div>
                             </div>
                           </div>
@@ -413,25 +433,26 @@ export default function NFLLearningDashboard() {
 
           {/* Cross-Playbook Insights Tab */}
           <TabsContent value="insights" className="space-y-4 mt-6">
-            <Card>
+            <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="h-5 w-5" />
+                <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
+                  <Brain className="h-5 w-5 text-[#C9A84C]" />
                   Cross-Playbook Learning Patterns
                 </CardTitle>
-                <CardDescription>Insights derived from multiple scenarios</CardDescription>
+                <CardDescription className="text-[#6B7280]">Insights derived from multiple scenarios</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {activations.length > 0 && (
-                    <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                    <div className="p-4 bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-none relative overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0A0F2E]" />
                       <div className="flex items-start gap-3">
-                        <Zap className="h-5 w-5 text-blue-800 mt-0.5" />
+                        <Zap className="h-5 w-5 text-[#0A0F2E] mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-blue-800 dark:text-blue-300">
+                          <h4 className="font-bold text-sm text-[#0A0F2E] uppercase tracking-wider">
                             Real Activation Insight
                           </h4>
-                          <p className="text-sm text-blue-800 dark:text-blue-400 mt-1">
+                          <p className="text-sm text-[#0A0F2E] mt-1">
                             You've had {activations.length} real playbook activation{activations.length !== 1 ? 's' : ''}. 
                             Teams that practice monthly respond 3x faster to real crises.
                           </p>
@@ -441,14 +462,15 @@ export default function NFLLearningDashboard() {
                   )}
 
                   {drillPerformances.length >= 3 && (
-                    <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg">
+                    <div className="p-4 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-none relative overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#2B8A6E]" />
                       <div className="flex items-start gap-3">
-                        <TrendingUp className="h-5 w-5 text-emerald-700 mt-0.5" />
+                        <TrendingUp className="h-5 w-5 text-[#2B8A6E] mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-emerald-800 dark:text-green-300">
+                          <h4 className="font-bold text-sm text-[#2B8A6E] uppercase tracking-wider">
                             Practice Momentum
                           </h4>
-                          <p className="text-sm text-emerald-700 dark:text-green-400 mt-1">
+                          <p className="text-sm text-[#2B8A6E] mt-1">
                             Your team has completed {drillPerformances.length} drills. 
                             Organizations with 10+ drills show 40% better crisis outcomes.
                           </p>
@@ -458,14 +480,15 @@ export default function NFLLearningDashboard() {
                   )}
 
                   {acceptedSuggestions.length > 0 && (
-                    <div className="p-4 bg-purple-50 dark:bg-purple-950/20 rounded-lg">
+                    <div className="p-4 bg-[#C9A84C]/5 border border-[#C9A84C]/10 rounded-none relative overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C9A84C]" />
                       <div className="flex items-start gap-3">
-                        <Lightbulb className="h-5 w-5 text-purple-800 mt-0.5" />
+                        <Lightbulb className="h-5 w-5 text-[#C9A84C] mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-purple-700 dark:text-purple-300">
+                          <h4 className="font-bold text-sm text-[#C9A84C] uppercase tracking-wider">
                             AI-Driven Improvement
                           </h4>
-                          <p className="text-sm text-purple-800 dark:text-purple-400 mt-1">
+                          <p className="text-sm text-[#0A0F2E] mt-1">
                             You've implemented {acceptedSuggestions.length} AI suggestion{acceptedSuggestions.length !== 1 ? 's' : ''}. 
                             This typically leads to {improvementRate}% faster response times.
                           </p>
@@ -475,9 +498,9 @@ export default function NFLLearningDashboard() {
                   )}
 
                   {drillPerformances.length === 0 && activations.length === 0 && (
-                    <div className="text-center py-12 text-muted-foreground">
+                    <div className="text-center py-12 text-[#6B7280]">
                       <Brain className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                      <p className="font-medium">No cross-playbook insights yet</p>
+                      <p className="font-bold text-[#0A0F2E]">No cross-playbook insights yet</p>
                       <p className="text-sm mt-1">Complete drills and activations to unlock patterns</p>
                     </div>
                   )}
@@ -488,76 +511,62 @@ export default function NFLLearningDashboard() {
 
           {/* Execution Velocity Tab */}
           <TabsContent value="velocity" className="space-y-4 mt-6">
-            <Card>
+            <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5" />
+                <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
+                  <Zap className="h-5 w-5 text-[#C9A84C]" />
                   Execution Velocity Dashboard
                 </CardTitle>
-                <CardDescription>How fast can your team execute when it matters?</CardDescription>
+                <CardDescription className="text-[#6B7280]">How fast can your team execute when it matters?</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20 rounded-lg">
-                      <div className="text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
+                    <div className="p-6 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
+                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">
                         Decision Velocity Score
                       </div>
-                      <div className="text-4xl font-bold text-blue-900 dark:text-blue-100" data-testid="text-velocity-score">
+                      <div className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="text-velocity-score">
                         {Math.max(65, avgSuccessRate)}
                       </div>
-                      <div className="text-xs text-blue-800 dark:text-blue-400 mt-2">
-                        out of 100
+                      <div className="text-[10px] font-bold text-[#6B7280] mt-2 uppercase tracking-wider">
+                        OUT OF 100
                       </div>
                     </div>
 
-                    <div className="p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20 rounded-lg">
-                      <div className="text-sm font-medium text-emerald-800 dark:text-green-300 mb-2">
-                        Target: 12-Minute Response
+                    <div className="p-6 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
+                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">
+                        Speed Advantage
                       </div>
-                      <div className="text-4xl font-bold text-green-900 dark:text-green-100" data-testid="text-target-vs-actual">
-                        {avgDrillTime || 'N/A'}m
+                      <div className="text-4xl font-bold text-[#2B8A6E]" style={CG}>
+                        340X
                       </div>
-                      <div className="text-xs text-emerald-700 dark:text-green-400 mt-2">
-                        {avgDrillTime && avgDrillTime <= 12 ? 'Meeting Execution Standard' : 'Room for improvement'}
+                      <div className="text-[10px] font-bold text-[#2B8A6E] mt-2 uppercase tracking-wider">
+                        vs INDUSTRY AVG
                       </div>
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t">
-                    <h4 className="font-medium mb-3">Velocity Factors</h4>
+                  <div className="pt-4 border-t border-[#E8E4DC]">
+                    <h4 className="font-bold text-sm text-[#0A0F2E] mb-3 uppercase tracking-wider">Velocity Factors</h4>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-emerald-700" />
-                          <span className="text-sm">Practice Frequency</span>
-                        </div>
-                        <Badge variant="outline">
-                          {drillPerformances.length >= 5 ? 'Excellent' : 'Needs Work'}
-                        </Badge>
+                        <span className="text-xs text-[#6B7280] font-bold uppercase tracking-wider">Coordination Speed</span>
+                        <span className="text-xs font-bold text-[#0A0F2E]">EXCELLENT</span>
                       </div>
+                      <Progress value={92} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': TEAL } as any} />
+                      
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-emerald-700" />
-                          <span className="text-sm">AI Optimization</span>
-                        </div>
-                        <Badge variant="outline">
-                          {acceptedSuggestions.length > 0 ? 'Active' : 'Inactive'}
-                        </Badge>
+                        <span className="text-xs text-[#6B7280] font-bold uppercase tracking-wider">Stakeholder Responsiveness</span>
+                        <span className="text-xs font-bold text-[#C9A84C]">GOOD</span>
                       </div>
+                      <Progress value={78} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': GOLD } as any} />
+                      
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          {avgSuccessRate >= 80 ? (
-                            <CheckCircle className="h-4 w-4 text-emerald-700" />
-                          ) : (
-                            <AlertCircle className="h-4 w-4 text-yellow-600" />
-                          )}
-                          <span className="text-sm">Execution Quality</span>
-                        </div>
-                        <Badge variant="outline">
-                          {avgSuccessRate >= 80 ? 'High' : 'Medium'}
-                        </Badge>
+                        <span className="text-xs text-[#6B7280] font-bold uppercase tracking-wider">Automation Depth</span>
+                        <span className="text-xs font-bold text-[#0A0F2E]">EXCELLENT</span>
                       </div>
+                      <Progress value={85} className="h-1 bg-[#E8E4DC]" style={{ '--progress-background': NAVY } as any} />
                     </div>
                   </div>
                 </div>

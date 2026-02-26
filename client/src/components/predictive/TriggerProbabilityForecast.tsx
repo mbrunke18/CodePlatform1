@@ -133,19 +133,19 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
     if (prob >= 70) return 'text-red-700 dark:text-red-400';
     if (prob >= 50) return 'text-[#C9A84C] dark:text-amber-400';
     if (prob >= 30) return 'text-yellow-600 dark:text-yellow-400';
-    return 'text-emerald-700 dark:text-emerald-400';
+    return 'text-[#2B8A6E] dark:text-[#2B8A6E]';
   };
 
   const getProbabilityBg = (prob: number) => {
     if (prob >= 70) return 'bg-red-100 dark:bg-red-900/30';
     if (prob >= 50) return 'bg-amber-100 dark:bg-amber-900/30';
     if (prob >= 30) return 'bg-yellow-100 dark:bg-yellow-900/30';
-    return 'bg-emerald-100 dark:bg-emerald-900/30';
+    return 'bg-[#F0F9F6] dark:bg-[#2B8A6E]/15';
   };
 
   const getTrendIcon = (trend: string) => {
     if (trend === 'increasing') return <TrendingUp className="w-4 h-4 text-red-500" />;
-    if (trend === 'decreasing') return <TrendingDown className="w-4 h-4 text-emerald-500" />;
+    if (trend === 'decreasing') return <TrendingDown className="w-4 h-4 text-[#2B8A6E]" />;
     return <Minus className="w-4 h-4 text-gray-800" />;
   };
 
@@ -166,7 +166,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600">
+            <div className="p-2 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45]">
               <Sparkles className="w-5 h-5 text-gray-900" />
             </div>
             <div>
@@ -176,16 +176,16 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
               </p>
             </div>
           </div>
-          <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300">
+          <Badge className="bg-[#0A0F2E] text-[#C9A84C] dark:bg-[#0A0F2E] dark:text-[#C9A84C]">
             <Brain className="w-3 h-3 mr-1" />
             PlanIQ-style
           </Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm">
-          <Info className="w-4 h-4 text-blue-800 dark:text-blue-400 flex-shrink-0" />
-          <span className="text-blue-800 dark:text-blue-200">
+        <div className="flex items-center gap-2 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg text-sm">
+          <Info className="w-4 h-4 text-[#0A0F2E] dark:text-[#0A0F2E] flex-shrink-0" />
+          <span className="text-[#0A0F2E] dark:text-blue-200">
             Triggers ranked by highest 30-day firing probability. Higher probability = higher priority for review.
           </span>
         </div>
@@ -197,8 +197,8 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             key={forecast.triggerId} 
             className={`border rounded-lg p-4 transition-all cursor-pointer ${
               isExpanded 
-                ? 'border-purple-400 dark:border-purple-600 shadow-lg ring-2 ring-purple-200 dark:ring-purple-800' 
-                : 'border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700'
+                ? 'border-[#C9A84C] dark:border-[#C9A84C] shadow-lg ring-2 ring-[#C9A84C] dark:ring-[#C9A84C]' 
+                : 'border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-[#C9A84C] dark:hover:border-[#C9A84C]'
             }`}
             onClick={() => setExpandedTriggerId(isExpanded ? null : forecast.triggerId)}
             data-testid={`forecast-${forecast.triggerId}`}
@@ -210,7 +210,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 text-xs">
+                  <Badge className="bg-[#0A0F2E] text-[#C9A84C] dark:bg-[#0A0F2E] dark:text-[#C9A84C] text-xs">
                     #{index + 1}
                   </Badge>
                   <h4 className="font-semibold text-slate-900 dark:text-white">{forecast.triggerName}</h4>
@@ -221,7 +221,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   <span className="text-xs text-gray-800">
                     Confidence: {forecast.confidenceScore}%
                   </span>
-                  <span className="text-xs text-purple-800 dark:text-purple-400">
+                  <span className="text-xs text-[#C9A84C] dark:text-[#C9A84C]">
                     {isExpanded ? '(click to collapse)' : '(click for details)'}
                   </span>
                 </div>
@@ -231,7 +231,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   <Clock className="w-3 h-3" />
                   Updated {forecast.lastUpdated}
                 </div>
-                {isExpanded ? <ChevronUp className="w-4 h-4 text-purple-500" /> : <ChevronDown className="w-4 h-4 text-gray-800" />}
+                {isExpanded ? <ChevronUp className="w-4 h-4 text-[#C9A84C]" /> : <ChevronDown className="w-4 h-4 text-gray-800" />}
               </div>
             </div>
 
@@ -289,7 +289,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                         className={`text-xs ${
                           factor.direction === 'negative' 
                             ? 'border-red-300 text-red-700 dark:border-red-700 dark:text-red-400' 
-                            : 'border-emerald-300 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400'
+                            : 'border-[#2B8A6E] text-[#2B8A6E] dark:border-[#2B8A6E] dark:text-[#2B8A6E]'
                         }`}
                       >
                         {factor.direction === 'negative' ? '↑' : '↓'} {factor.factor}
@@ -298,15 +298,15 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   </div>
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
-                  <div className="text-xs font-semibold text-blue-800 dark:text-blue-300 mb-2 flex items-center gap-1">
+                <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
+                  <div className="text-xs font-semibold text-[#0A0F2E] dark:text-blue-300 mb-2 flex items-center gap-1">
                     <Target className="w-3 h-3" />
                     Recommended Preparation
                   </div>
                   <ul className="space-y-1">
                     {forecast.recommendedActions.map((action, idx) => (
-                      <li key={idx} className="text-xs text-blue-800 dark:text-blue-400 flex items-start gap-1">
-                        <span className="text-blue-400">•</span> {action}
+                      <li key={idx} className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] flex items-start gap-1">
+                        <span className="text-[#0A0F2E]">•</span> {action}
                       </li>
                     ))}
                   </ul>

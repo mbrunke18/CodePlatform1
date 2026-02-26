@@ -82,13 +82,13 @@ interface MonitorItem {
 
 const SIGNAL_TYPE_CONFIG: Record<SignalType, { icon: any; label: string; color: string }> = {
   competitive: { icon: Radar, label: 'Competitive Intelligence', color: 'text-red-500' },
-  market: { icon: TrendingUp, label: 'Market Dynamics', color: 'text-blue-500' },
-  regulatory: { icon: Scale, label: 'Regulatory & Compliance', color: 'text-purple-500' },
+  market: { icon: TrendingUp, label: 'Market Dynamics', color: 'text-[#0A0F2E]' },
+  regulatory: { icon: Scale, label: 'Regulatory & Compliance', color: 'text-[#C9A84C]' },
   operational: { icon: Activity, label: 'Operational', color: 'text-orange-500' },
   financial: { icon: DollarSign, label: 'Financial', color: 'text-green-500' },
   talent: { icon: Users, label: 'Talent & Leadership', color: 'text-pink-500' },
   supply_chain: { icon: Boxes, label: 'Supply Chain', color: 'text-amber-500' },
-  technology: { icon: Globe, label: 'Technology', color: 'text-cyan-500' },
+  technology: { icon: Globe, label: 'Technology', color: 'text-[#2B8A6E]' },
 };
 
 const TRIGGER_TYPE_CONFIG: Record<TriggerType, { label: string; description: string }> = {
@@ -217,7 +217,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
 
   return (
     <div className="space-y-6" data-testid="monitor-phase-view">
-      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
+      <Card className="bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/30 dark:to-[#141B45]/30">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
@@ -230,7 +230,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-blue-800 dark:text-blue-400" data-testid="active-triggers-count">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]" data-testid="active-triggers-count">
                 {activeCount}
               </div>
               <div className="text-xs text-muted-foreground">Active Triggers</div>
@@ -283,7 +283,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                     key={item.id}
                     className={`border rounded-lg p-3 transition-all ${
                       item.isActive
-                        ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800'
+                        ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-blue-200 dark:border-blue-800'
                         : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 opacity-60'
                     }`}
                     data-testid={`monitor-item-${item.id}`}

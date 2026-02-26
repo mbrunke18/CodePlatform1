@@ -38,12 +38,12 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
   const velocityColor = 
     velocityData.velocityScore >= 80 ? 'text-green-600 dark:text-green-400' :
-    velocityData.velocityScore >= 60 ? 'text-blue-600 dark:text-blue-400' :
+    velocityData.velocityScore >= 60 ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' :
     'text-yellow-600 dark:text-yellow-400';
 
   const velocityBgColor = 
     velocityData.velocityScore >= 80 ? 'bg-green-100 dark:bg-green-900/20' :
-    velocityData.velocityScore >= 60 ? 'bg-blue-100 dark:bg-blue-900/20' :
+    velocityData.velocityScore >= 60 ? 'bg-blue-100 dark:bg-[#0A0F2E]/20' :
     'bg-yellow-100 dark:bg-yellow-900/20';
 
   const timesSaved = Math.floor(velocityData.industryStandard / velocityData.averageResponseTime);
@@ -99,19 +99,19 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
           {/* Competitive Advantage Grid */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4" data-testid="response-time">
+            <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4" data-testid="response-time">
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">Avg Response Time</span>
+                <Clock className="h-5 w-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
+                <span className="text-sm text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Avg Response Time</span>
               </div>
-              <div className="text-3xl font-bold text-blue-700 dark:text-blue-300">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-blue-300">
                 {velocityData.averageResponseTime} min
               </div>
               <div className="text-xs text-muted-foreground mt-1">
                 vs {Math.floor(velocityData.industryStandard / 60)}hr industry standard
               </div>
               <div className="mt-2">
-                <Badge variant="secondary" className="text-xs bg-blue-600/10 text-blue-700 dark:text-blue-300">
+                <Badge variant="secondary" className="text-xs bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-blue-300">
                   {timesSaved}x faster
                 </Badge>
               </div>
@@ -137,27 +137,27 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Quarterly Impact */}
-          <div className="bg-purple-50 dark:bg-purple-950/20 rounded-lg p-4" data-testid="quarterly-impact">
+          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg p-4" data-testid="quarterly-impact">
             <div className="flex items-center gap-2 mb-3">
-              <TrendingUp className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Quarterly Impact</span>
+              <TrendingUp className="h-5 w-5 text-[#C9A84C] dark:text-[#C9A84C]" />
+              <span className="text-sm font-medium text-[#C9A84C] dark:text-[#C9A84C]">Quarterly Impact</span>
             </div>
             
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">
+                <div className="text-2xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">
                   {velocityData.quarterlyMetrics.totalEvents}
                 </div>
                 <div className="text-xs text-muted-foreground">Strategic events</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">
+                <div className="text-2xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">
                   {velocityData.quarterlyMetrics.avgDecisionTime}m
                 </div>
                 <div className="text-xs text-muted-foreground">Avg decision time</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">
+                <div className="text-2xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">
                   {velocityData.quarterlyMetrics.velocityImprovement}%
                 </div>
                 <div className="text-xs text-muted-foreground">Velocity improvement</div>
@@ -193,7 +193,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Board-Ready Messaging */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-4 text-white" data-testid="board-message">
+          <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg p-4 text-white" data-testid="board-message">
             <div className="text-sm font-semibold mb-2">Board Presentation Language:</div>
             <div className="text-xs italic">
               "We've operationalized Dynamic Strategy through M. Decision velocity improved {velocityData.quarterlyMetrics.velocityImprovement}%, 

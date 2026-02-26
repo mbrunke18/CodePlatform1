@@ -78,10 +78,10 @@ export default function SettingsPage() {
   });
 
   const systemStatus = [
-    { service: "AI Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-emerald-700" },
-    { service: "Crisis Response Systems", status: "Ready", uptime: "99.99%", color: "text-emerald-700" },
-    { service: "Database Performance", status: "Optimal", uptime: "99.95%", color: "text-emerald-700" },
-    { service: "WebSocket Connections", status: "Connected", uptime: "99.92%", color: "text-emerald-700" }
+    { service: "AI Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-[#2B8A6E]" },
+    { service: "Crisis Response Systems", status: "Ready", uptime: "99.99%", color: "text-[#2B8A6E]" },
+    { service: "Database Performance", status: "Optimal", uptime: "99.95%", color: "text-[#2B8A6E]" },
+    { service: "WebSocket Connections", status: "Connected", uptime: "99.92%", color: "text-[#2B8A6E]" }
   ];
 
   const enterpriseFeatures = [
@@ -213,25 +213,25 @@ export default function SettingsPage() {
 
             {/* System Status Tab */}
             <TabsContent value="system" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="bg-white/90 backdrop-blur border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <Activity className="w-5 h-5 mr-2 text-blue-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E]">
+                    <Activity className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                     Platform Status Dashboard
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {systemStatus.map((service, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                      <div key={index} className="flex items-center justify-between p-4 bg-[#F8F7F4] rounded-none border border-[#E8E4DC]">
                         <div className="flex items-center space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500" />
+                          <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                           <div>
-                            <h4 className="font-semibold text-gray-900 dark:text-white">{service.service}</h4>
-                            <p className="text-sm text-gray-800 dark:text-gray-400">Uptime: {service.uptime}</p>
+                            <h4 className="font-semibold text-[#0A0F2E]">{service.service}</h4>
+                            <p className="text-sm text-gray-800">Uptime: {service.uptime}</p>
                           </div>
                         </div>
-                        <Badge variant="default" className="bg-green-600">
+                        <Badge variant="default" className="bg-[#2B8A6E]">
                           {service.status}
                         </Badge>
                       </div>
@@ -258,10 +258,10 @@ export default function SettingsPage() {
 
             {/* User Management Tab */}
             <TabsContent value="users" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="bg-white/90 backdrop-blur border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <Users className="w-5 h-5 mr-2 text-green-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E]">
+                    <Users className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                     Enterprise User Management
                   </CardTitle>
                 </CardHeader>
@@ -303,25 +303,25 @@ export default function SettingsPage() {
 
             {/* Enterprise Features Tab */}
             <TabsContent value="enterprise" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="bg-white/90 backdrop-blur border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <Crown className="w-5 h-5 mr-2 text-purple-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E]">
+                    <Crown className="w-5 h-5 mr-2 text-[#C9A84C]" />
                     Fortune 1000 Enterprise Features
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
                     {enterpriseFeatures.map((feature, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                        <div className="flex-1 page-background">
+                      <div key={index} className="flex items-center justify-between p-4 bg-[#F8F7F4] rounded-none border border-[#E8E4DC]">
+                        <div className="flex-1">
                           <div className="flex items-center space-x-3 mb-2">
-                            <h4 className="font-semibold text-gray-900 dark:text-white">{feature.name}</h4>
+                            <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
                               <Badge variant="destructive">Critical</Badge>
                             )}
                           </div>
-                          <p className="text-sm text-gray-800 dark:text-gray-400">{feature.description}</p>
+                          <p className="text-sm text-gray-800">{feature.description}</p>
                         </div>
                         <div className="flex items-center space-x-3">
                           <Switch 
@@ -329,7 +329,7 @@ export default function SettingsPage() {
                             disabled={feature.critical}
                             data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
                           />
-                          <Badge variant={feature.enabled ? 'default' : 'secondary'}>
+                          <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E]' : ''}>
                             {feature.enabled ? 'Enabled' : 'Disabled'}
                           </Badge>
                         </div>
@@ -423,29 +423,29 @@ export default function SettingsPage() {
 
             {/* Integrations Tab */}
             <TabsContent value="integrations" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="bg-white/90 backdrop-blur border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <Globe className="w-5 h-5 mr-2 text-blue-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E]">
+                    <Globe className="w-5 h-5 mr-2 text-[#0A0F2E]" />
                     Enterprise System Integrations
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-gray-900 dark:text-white">Connected Systems</h4>
+                      <h4 className="font-semibold text-[#0A0F2E]">Connected Systems</h4>
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">Salesforce CRM</span>
-                          <Badge className="bg-green-600">Connected</Badge>
+                        <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
+                          <span className="text-sm font-medium text-[#0A0F2E]">Salesforce CRM</span>
+                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">Microsoft Teams</span>
-                          <Badge className="bg-green-600">Connected</Badge>
+                        <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
+                          <span className="text-sm font-medium text-[#0A0F2E]">Microsoft Teams</span>
+                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
                         </div>
-                        <div className="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                          <span className="text-sm font-medium text-gray-900 dark:text-white">SAP ERP</span>
-                          <Badge className="bg-green-600">Connected</Badge>
+                        <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
+                          <span className="text-sm font-medium text-[#0A0F2E]">SAP ERP</span>
+                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
                         </div>
                       </div>
                     </div>
@@ -474,18 +474,18 @@ export default function SettingsPage() {
 
             {/* Demo Management Tab */}
             <TabsContent value="demo" className="space-y-6">
-              <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
+              <Card className="bg-white/90 backdrop-blur border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                    <PlayCircle className="w-5 h-5 mr-2 text-orange-500" />
+                  <CardTitle className="flex items-center text-[#0A0F2E]">
+                    <PlayCircle className="w-5 h-5 mr-2 text-[#C9A84C]" />
                     Fortune 500 Demo Management
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    <Alert className="border-orange-200 bg-orange-50 dark:bg-orange-900/20">
-                      <AlertTriangle className="h-4 w-4 text-orange-600" />
-                      <AlertDescription className="text-orange-800 dark:text-orange-200">
+                    <Alert className="border-[#C9A84C]/30 bg-[#C9A84C]/10 rounded-none">
+                      <AlertTriangle className="h-4 w-4 text-[#C9A84C]" />
+                      <AlertDescription className="text-[#0A0F2E]">
                         <strong>Demo Reset:</strong> This completely replaces all platform data with a selected Fortune 500 executive crisis scenario for sales presentations. Choose from multiple compelling narratives.
                       </AlertDescription>
                     </Alert>
@@ -511,44 +511,44 @@ export default function SettingsPage() {
                     </div>
 
                     {scenariosData?.scenarios && (
-                      <div className="bg-gradient-to-r .section-background dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-lg border border-blue-200 dark:border-blue-800">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Selected Scenario Preview</h3>
+                      <div className="bg-[#F8F7F4] p-6 rounded-none border border-[#E8E4DC]">
+                        <h3 className="text-lg font-semibold text-[#0A0F2E] mb-4">Selected Scenario Preview</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                           <div className="space-y-2">
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <Building2 className="w-4 h-4 mr-2 text-blue-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <Building2 className="w-4 h-4 mr-2 text-[#0A0F2E]" />
                               <span><strong>Scenario:</strong> {scenariosData.scenarios.find((s: any) => s.id === selectedScenario)?.name}</span>
                             </div>
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <AlertTriangle className="w-4 h-4 mr-2 text-red-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <AlertTriangle className="w-4 h-4 mr-2 text-red-600" />
                               <span><strong>Crisis Type:</strong> Executive-Level Response</span>
                             </div>
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <Target className="w-4 h-4 mr-2 text-orange-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <Target className="w-4 h-4 mr-2 text-[#C9A84C]" />
                               <span><strong>Audience:</strong> Fortune 500 Executives</span>
                             </div>
                           </div>
                           <div className="space-y-2">
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <Users className="w-4 h-4 mr-2 text-green-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <Users className="w-4 h-4 mr-2 text-[#2B8A6E]" />
                               <span><strong>Executive Team:</strong> C-Suite Leadership</span>
                             </div>
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <Clock className="w-4 h-4 mr-2 text-purple-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <Clock className="w-4 h-4 mr-2 text-[#C9A84C]" />
                               <span><strong>Timeline:</strong> Active crisis response</span>
                             </div>
-                            <div className="flex items-center text-sm text-gray-700 dark:text-gray-300">
-                              <Activity className="w-4 h-4 mr-2 text-blue-500" />
+                            <div className="flex items-center text-sm text-gray-800">
+                              <Activity className="w-4 h-4 mr-2 text-[#0A0F2E]" />
                               <span><strong>AI Modules:</strong> Full intelligence suite</span>
                             </div>
                           </div>
                         </div>
 
-                        <div className="bg-white/60 dark:bg-slate-800/60 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
-                          <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                        <div className="bg-white p-4 rounded-none border border-[#E8E4DC]">
+                          <p className="text-sm text-gray-800 mb-3">
                             <strong>Demo Title:</strong> {scenariosData.scenarios.find((s: any) => s.id === selectedScenario)?.title}
                           </p>
-                          <p className="text-xs text-gray-800 dark:text-gray-400">
+                          <p className="text-xs text-gray-800">
                             Each scenario includes realistic organizational data, executive briefings, strategic action items, AI intelligence modules, and crisis response workflows tailored for Fortune 500 leadership demonstrations.
                           </p>
                         </div>
@@ -559,7 +559,7 @@ export default function SettingsPage() {
                       <Button 
                         onClick={() => resetDemoMutation.mutate()}
                         disabled={resetDemoMutation.isPending || scenariosLoading}
-                        className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-gray-900 h-12"
+                        className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45] h-12 rounded-none font-bold"
                         data-testid="button-reset-demo-scenario"
                       >
                         {resetDemoMutation.isPending ? (
@@ -594,29 +594,36 @@ export default function SettingsPage() {
           </Tabs>
 
           {/* Enterprise Administration Actions */}
-          <Card className="mt-8 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-purple-200 dark:border-purple-800">
-            <CardHeader>
-              <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                <Crown className="w-5 h-5 mr-2 text-purple-500" />
+          <Card className="mt-8 bg-[#0A0F2E] border-[#C9A84C] rounded-none relative overflow-hidden">
+            <div style={{ 
+              position: "absolute", 
+              inset: 0, 
+              backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+              backgroundSize: "20px 20px",
+              opacity: 0.3
+            }} />
+            <CardHeader className="relative z-10">
+              <CardTitle className="flex items-center text-white font-serif text-2xl">
+                <Crown className="w-6 h-6 mr-2 text-[#C9A84C]" />
                 Enterprise Administration Commands
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Button className="h-16 bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-backup-system">
-                  <Database className="w-5 h-5 mr-2" />
+                <Button className="h-16 bg-white/10 hover:bg-white/20 text-white border border-[#C9A84C]/30 rounded-none" data-testid="button-backup-system">
+                  <Database className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   System Backup
                 </Button>
-                <Button className="h-16 bg-green-600 hover:bg-green-700 text-gray-900" data-testid="button-performance-optimization">
-                  <Zap className="w-5 h-5 mr-2" />
+                <Button className="h-16 bg-white/10 hover:bg-white/20 text-white border border-[#C9A84C]/30 rounded-none" data-testid="button-performance-optimization">
+                  <Zap className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Optimize Performance
                 </Button>
-                <Button className="h-16 bg-purple-600 hover:bg-purple-700 text-gray-900" data-testid="button-security-scan">
-                  <Shield className="w-5 h-5 mr-2" />
+                <Button className="h-16 bg-white/10 hover:bg-white/20 text-white border border-[#C9A84C]/30 rounded-none" data-testid="button-security-scan">
+                  <Shield className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Security Scan
                 </Button>
-                <Button className="h-16 bg-orange-600 hover:bg-orange-700 text-gray-900" data-testid="button-generate-reports">
-                  <BarChart3 className="w-5 h-5 mr-2" />
+                <Button className="h-16 bg-white/10 hover:bg-white/20 text-white border border-[#C9A84C]/30 rounded-none" data-testid="button-generate-reports">
+                  <BarChart3 className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Generate Reports
                 </Button>
               </div>

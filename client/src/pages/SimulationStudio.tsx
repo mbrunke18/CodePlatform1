@@ -38,6 +38,17 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 
+const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function SimulationStudio() {
   const { toast } = useToast();
   const [isCreating, setIsCreating] = useState(false);
@@ -122,55 +133,60 @@ export default function SimulationStudio() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'running': return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-      case 'completed': return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-      case 'cancelled': return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
-      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
+      case 'running': return `bg-[${TEAL}]/12 text-[${TEAL}]`;
+      case 'completed': return `bg-[${NAVY}]/12 text-[${NAVY}]`;
+      case 'cancelled': return 'bg-red-100 text-red-800';
+      default: return `bg-[${BORDER}] text-[${MUTED}]`;
     }
   };
 
   return (
     <PageLayout>
-      <div className="p-6 space-y-6" data-testid="simulation-studio-page">
+      <div className="p-6 space-y-6 bg-white" data-testid="simulation-studio-page">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2" data-testid="page-title">Simulation Studio</h1>
-            <p className="text-muted-foreground">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Operations</span>
+            </div>
+            <h1 className="text-3xl font-bold mb-2 text-[#0A0F2E]" style={CG} data-testid="page-title">Simulation Studio</h1>
+            <p className="text-[#6B7280]">
               War-game your crisis playbooks to turn abstract preparedness into measurable performance
             </p>
           </div>
           <Dialog open={isCreating} onOpenChange={setIsCreating}>
             <DialogTrigger asChild>
-              <Button size="lg" data-testid="button-create-simulation">
+              <Button size="lg" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-create-simulation">
                 <Play className="mr-2 h-5 w-5" />
                 New Simulation
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl bg-white border-[#E8E4DC]">
               <DialogHeader>
-                <DialogTitle>Create Crisis Simulation</DialogTitle>
-                <DialogDescription>
+                <DialogTitle style={CG} className="text-2xl text-[#0A0F2E]">Create Crisis Simulation</DialogTitle>
+                <DialogDescription className="text-[#6B7280]">
                   Set up a war-gaming exercise to practice your crisis response
                 </DialogDescription>
               </DialogHeader>
               
               <div className="space-y-4 py-4">
                 <div>
-                  <Label htmlFor="sim-name">Simulation Name</Label>
+                  <Label htmlFor="sim-name" className="text-[#0A0F2E] font-semibold">Simulation Name</Label>
                   <Input
                     id="sim-name"
                     placeholder="Q4 2026 Crisis Drill"
                     value={simulationName}
                     onChange={(e) => setSimulationName(e.target.value)}
+                    className="border-[#E8E4DC]"
                     data-testid="input-simulation-name"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="scenario">Scenario to Simulate</Label>
+                  <Label htmlFor="scenario" className="text-[#0A0F2E] font-semibold">Scenario to Simulate</Label>
                   <Select value={selectedScenarioId} onValueChange={setSelectedScenarioId}>
-                    <SelectTrigger id="scenario" data-testid="select-scenario">
+                    <SelectTrigger id="scenario" className="border-[#E8E4DC]" data-testid="select-scenario">
                       <SelectValue placeholder="Select a crisis scenario" />
                     </SelectTrigger>
                     <SelectContent>
@@ -184,49 +200,52 @@ export default function SimulationStudio() {
                 </div>
 
                 <div>
-                  <Label htmlFor="participants">Participants (comma-separated emails)</Label>
+                  <Label htmlFor="participants" className="text-[#0A0F2E] font-semibold">Participants (comma-separated emails)</Label>
                   <Input
                     id="participants"
                     placeholder="ceo@company.com, cfo@company.com, cto@company.com"
                     value={participants}
                     onChange={(e) => setParticipants(e.target.value)}
+                    className="border-[#E8E4DC]"
                     data-testid="input-participants"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="duration">Duration (minutes)</Label>
+                  <Label htmlFor="duration" className="text-[#0A0F2E] font-semibold">Duration (minutes)</Label>
                   <Input
                     id="duration"
                     type="number"
                     placeholder="60"
                     value={duration}
                     onChange={(e) => setDuration(e.target.value)}
+                    className="border-[#E8E4DC]"
                     data-testid="input-duration"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="complications">AI-Injected Complications (one per line, optional)</Label>
+                  <Label htmlFor="complications" className="text-[#0A0F2E] font-semibold">AI-Injected Complications (one per line, optional)</Label>
                   <Textarea
                     id="complications"
                     placeholder="CFO is on a flight and unreachable&#10;Main PR firm's system is down&#10;Social media amplifies the story faster than expected"
                     value={complications}
                     onChange={(e) => setComplications(e.target.value)}
                     rows={4}
+                    className="border-[#E8E4DC]"
                     data-testid="textarea-complications"
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-xs text-[#6B7280] mt-1">
                     Add realistic complications to test your team's adaptability
                   </p>
                 </div>
               </div>
 
               <DialogFooter>
-                <Button variant="outline" onClick={() => setIsCreating(false)} data-testid="button-cancel">
+                <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]" onClick={() => setIsCreating(false)} data-testid="button-cancel">
                   Cancel
                 </Button>
-                <Button onClick={handleCreateSimulation} data-testid="button-create-confirm">
+                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" onClick={handleCreateSimulation} data-testid="button-create-confirm">
                   Create Simulation
                 </Button>
               </DialogFooter>
@@ -235,40 +254,41 @@ export default function SimulationStudio() {
         </div>
 
         {/* Value Proposition */}
-        <Card className="bg-gradient-to-r .section-background dark:from-blue-950/30 dark:to-purple-950/30 border-blue-200 dark:border-blue-800">
+        <Card className="bg-white border-[#E8E4DC] shadow-none overflow-hidden relative">
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#2B8A6E]" />
           <CardHeader>
-            <CardTitle className="text-blue-900 dark:text-blue-100">Why Simulations Matter</CardTitle>
+            <CardTitle style={CG} className="text-[#0A0F2E] text-xl">Why Simulations Matter</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-blue-900 dark:text-blue-100 space-y-2">
+          <CardContent className="text-sm text-[#0A0F2E] space-y-3">
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
-              <p><strong>Find Bottlenecks:</strong> Discover that your Legal counsel takes 22 minutes to respond, not the planned 2 minutes</p>
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
+              <p><strong className="font-bold">Find Bottlenecks:</strong> Discover that your Legal counsel takes 22 minutes to respond, not the planned 2 minutes</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
-              <p><strong>Build Muscle Memory:</strong> Turn a 72-hour chaos into 20 minutes, then 15, then the target 12 minutes</p>
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
+              <p><strong className="font-bold">Build Muscle Memory:</strong> Turn a 72-hour chaos into 20 minutes, then 15, then the target 12 minutes</p>
             </div>
             <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-emerald-700" />
-              <p><strong>Prove ROI:</strong> Demonstrate to the board that your crisis preparedness is real, not theoretical</p>
+              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
+              <p><strong className="font-bold">Prove ROI:</strong> Demonstrate to the board that your crisis preparedness is real, not theoretical</p>
             </div>
           </CardContent>
         </Card>
 
         {/* Simulations List */}
-        <Card>
+        <Card className="border-[#E8E4DC] bg-white shadow-none">
           <CardHeader>
-            <CardTitle>Scheduled & Past Simulations</CardTitle>
-            <CardDescription>Track your war-gaming exercises and performance improvements</CardDescription>
+            <CardTitle style={CG} className="text-[#0A0F2E] text-2xl">Scheduled & Past Simulations</CardTitle>
+            <CardDescription className="text-[#6B7280]">Track your war-gaming exercises and performance improvements</CardDescription>
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <div className="text-center py-8 text-muted-foreground">Loading simulations...</div>
+              <div className="text-center py-8 text-[#6B7280]">Loading simulations...</div>
             ) : simulations.length === 0 ? (
               <div className="text-center py-12 space-y-3">
-                <Activity className="h-12 w-12 mx-auto text-muted-foreground" />
-                <p className="text-muted-foreground">No simulations scheduled yet</p>
-                <Button onClick={() => setIsCreating(true)} data-testid="button-create-first">
+                <Activity className="h-12 w-12 mx-auto text-[#6B7280]" />
+                <p className="text-[#6B7280]">No simulations scheduled yet</p>
+                <Button className="bg-[#0A0F2E] text-white" onClick={() => setIsCreating(true)} data-testid="button-create-first">
                   Create Your First Simulation
                 </Button>
               </div>
@@ -277,42 +297,43 @@ export default function SimulationStudio() {
                 {simulations.map((sim) => (
                   <div
                     key={sim.id}
-                    className="border rounded-lg p-4 space-y-3"
+                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-3 hover:bg-[#F8F7F4] transition-colors"
                     data-testid={`card-simulation-${sim.id}`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex-1 page-background">
-                        <h3 className="font-semibold text-lg">{sim.simulationName}</h3>
-                        <p className="text-sm text-muted-foreground">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-lg text-[#0A0F2E]">{sim.simulationName}</h3>
+                        <p className="text-sm text-[#6B7280]">
                           Scenario: {scenarios.find(s => s.id === sim.scenarioId)?.title || 'Unknown'}
                         </p>
                       </div>
-                      <Badge className={getStatusColor(sim.status)} data-testid={`badge-status-${sim.id}`}>
-                        {sim.status}
+                      <Badge className={`${getStatusColor(sim.status)} border-none`} data-testid={`badge-status-${sim.id}`}>
+                        {sim.status.toUpperCase()}
                       </Badge>
                     </div>
 
                     <div className="grid grid-cols-3 gap-4 text-sm">
                       <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-muted-foreground" />
-                        <span>{sim.participants?.length || 0} participants</span>
+                        <Users className="h-4 w-4 text-[#6B7280]" />
+                        <span className="text-[#0A0F2E] font-medium">{sim.participants?.length || 0} participants</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-muted-foreground" />
-                        <span>{sim.duration} minutes</span>
+                        <Clock className="h-4 w-4 text-[#6B7280]" />
+                        <span className="text-[#0A0F2E] font-medium">{sim.duration} minutes</span>
                       </div>
                       {sim.results && (
                         <div className="flex items-center gap-2">
-                          <Trophy className="h-4 w-4 text-yellow-500" />
-                          <span>Results available</span>
+                          <Trophy className="h-4 w-4 text-[#C9A84C]" />
+                          <span className="text-[#0A0F2E] font-medium">Results available</span>
                         </div>
                       )}
                     </div>
 
                     {sim.status === 'scheduled' && (
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 pt-2">
                         <Button
                           size="sm"
+                          className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                           onClick={() => startSimulation.mutate(sim.id)}
                           data-testid={`button-start-${sim.id}`}
                         >

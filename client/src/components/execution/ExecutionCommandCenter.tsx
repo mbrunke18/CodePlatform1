@@ -305,7 +305,7 @@ export function ExecutionCommandCenter({
                         ) : status.instance.status === 'failed' ? (
                           <AlertCircle className="h-5 w-5 text-red-500" />
                         ) : (
-                          <Activity className="h-5 w-5 text-blue-500 animate-pulse" />
+                          <Activity className="h-5 w-5 text-[#0A0F2E] animate-pulse" />
                         )}
                         <span className="text-xl font-semibold capitalize">
                           {status.instance.status?.replace('_', ' ')}

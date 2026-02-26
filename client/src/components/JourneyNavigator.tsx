@@ -59,8 +59,8 @@ const journeyPhases: JourneyPhase[] = [
     workspace: 'Organization Setup',
     workspacePath: '/organization-setup',
     icon: Building2,
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10',
+    color: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/10',
     milestones: ['Organization profile complete', 'SSO configured', 'Team members invited', 'Integrations connected'],
     status: 'current'
   },
@@ -134,8 +134,8 @@ const journeyPhases: JourneyPhase[] = [
     workspace: 'Execution OS One™',
     workspacePath: '/mission-control',
     icon: BarChart3,
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10',
+    color: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
     milestones: ['Cross-team adoption', 'Quarterly strategy reviews', 'Maturity advancement', 'ROI realization'],
     status: 'upcoming'
   }
@@ -155,7 +155,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
     const current = journeyPhases.find(p => p.status === 'current') || journeyPhases[0];
     return (
       <Link href="/north-star">
-        <Card className="hover:shadow-lg transition-all cursor-pointer group border-poise-teal/30 bg-gradient-to-br from-poise-teal/5 to-cyan-500/5">
+        <Card className="hover:shadow-lg transition-all cursor-pointer group border-poise-teal/30 bg-gradient-to-br from-poise-teal/5 to-[#3BAF8A]/5">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -191,7 +191,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
               phase.status === 'current' 
                 ? `${phase.bgColor} border-2 border-current ${phase.color}` 
                 : phase.status === 'completed'
-                  ? 'bg-emerald-500/10 text-emerald-600'
+                  ? 'bg-[#2B8A6E]/10 text-[#2B8A6E]'
                   : 'bg-slate-100 dark:bg-slate-800 text-gray-600 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}>
               {phase.status === 'completed' ? (
@@ -229,22 +229,22 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
               phase.status === 'current' 
                 ? 'border-2 border-poise-teal shadow-lg shadow-poise-teal/10' 
                 : phase.status === 'completed'
-                  ? 'border-emerald-500/50 bg-emerald-50/50 dark:bg-emerald-900/10'
+                  ? 'border-[#2B8A6E]/50 bg-[#F0F9F6]/50 dark:bg-[#2B8A6E]/10'
                   : 'opacity-70 hover:opacity-100'
             }`}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className={`relative flex-shrink-0`}>
-                    <div className={`p-3 rounded-xl ${phase.status === 'completed' ? 'bg-emerald-500/20' : phase.bgColor}`}>
+                    <div className={`p-3 rounded-xl ${phase.status === 'completed' ? 'bg-[#2B8A6E]/20' : phase.bgColor}`}>
                       {phase.status === 'completed' ? (
-                        <CheckCircle className="h-6 w-6 text-emerald-600" />
+                        <CheckCircle className="h-6 w-6 text-[#2B8A6E]" />
                       ) : (
                         <phase.icon className={`h-6 w-6 ${phase.color}`} />
                       )}
                     </div>
                     <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                       phase.status === 'completed' 
-                        ? 'bg-emerald-500 text-white' 
+                        ? 'bg-[#2B8A6E] text-white' 
                         : phase.status === 'current'
                           ? 'bg-poise-teal text-white'
                           : 'bg-slate-200 dark:bg-slate-700 text-gray-600 dark:text-slate-300'
@@ -282,7 +282,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                       {phase.milestones.map((milestone, idx) => (
                         <div key={idx} className="flex items-center gap-1 text-xs text-gray-600">
                           {phase.status === 'completed' ? (
-                            <CheckCircle className="h-3 w-3 text-emerald-500" />
+                            <CheckCircle className="h-3 w-3 text-[#2B8A6E]" />
                           ) : (
                             <Circle className="h-3 w-3" />
                           )}

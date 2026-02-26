@@ -11,9 +11,9 @@ export default function ActivityFeed() {
 
   const getActivityIcon = (action: string) => {
     if (action.includes('completed')) return 'fas fa-check text-green-600';
-    if (action.includes('created')) return 'fas fa-lightbulb text-blue-600';
+    if (action.includes('created')) return 'fas fa-lightbulb text-[#0A0F2E]';
     if (action.includes('joined')) return 'fas fa-users text-orange-600';
-    return 'fas fa-info text-blue-600';
+    return 'fas fa-info text-[#0A0F2E]';
   };
 
   const getTimeAgo = (dateString: string) => {

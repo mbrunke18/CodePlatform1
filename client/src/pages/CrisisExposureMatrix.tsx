@@ -95,137 +95,184 @@ export default function CrisisExposureMatrix() {
     </Card>
   );
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   return (
     <PageLayout>
-      <div className="p-6 space-y-6" data-testid="crisis-exposure-matrix-page">
-        {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold mb-2" data-testid="page-title">Crisis Exposure Matrix</h1>
-          <p className="text-muted-foreground">
-            Prioritize your playbook preparation with our Likelihood × Impact framework. 
-            Focus on Critical threats first for fastest time-to-value.
-          </p>
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto" data-testid="crisis-exposure-matrix-page">
+        {/* Navy Hero Section */}
+        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundSize: "32px 32px",
+            opacity: 0.1
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Strategic Risk Assessment</span>
+            </div>
+            <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
+              Crisis Exposure <em style={{ fontStyle: "italic", color: "#DFC178" }}>Matrix</em>
+            </h1>
+            <p className="text-white/60 text-xl leading-relaxed max-w-3xl">
+              Prioritize your playbook preparation with our Likelihood × Impact framework. 
+              Focus on <span className="text-red-500 font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
+            </p>
+          </div>
         </div>
 
-        {/* Strategy Card */}
-        <Card className="bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800">
-          <CardHeader>
-            <CardTitle className="text-blue-900 dark:text-blue-100">90-Day Onboarding Strategy</CardTitle>
-            <CardDescription className="text-blue-800 dark:text-blue-300">
-              Don't try to prepare for all 170 playbooks at once. Start with your Top 10 Critical threats.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-blue-900 dark:text-blue-100">
-            <div className="space-y-2 text-sm">
-              <div className="flex items-start gap-2">
-                <div className="bg-red-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">1</div>
-                <div>
-                  <strong>Days 1-30:</strong> Run your Crisis Exposure Matrix workshop with our Crisis Architects
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
+          {/* Strategy Card */}
+          <Card className="bg-[#0A0F2E] border-none rounded-none shadow-xl overflow-hidden relative">
+            <div style={{ 
+              position: "absolute", 
+              right: "-5%", 
+              bottom: "-10%", 
+              width: "40%", 
+              height: "120%", 
+              background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)",
+              filter: "blur(40px)"
+            }} />
+            <CardHeader className="p-10 pb-4 relative z-10">
+              <CardTitle style={CG} className="text-3xl text-white mb-2">90-Day Onboarding Strategy</CardTitle>
+              <CardDescription className="text-[#DFC178] text-lg font-medium italic">
+                Don't try to prepare for all 170 playbooks at once. Start with your Top 10 Critical threats.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-10 pt-4 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#C9A84C] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">01</div>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase One</span>
+                  </div>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    <strong className="text-white block mb-1">Days 1-30: Discovery</strong>
+                    Run your Crisis Exposure Matrix workshop with our Senior Crisis Architects.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#2B8A6E] text-white rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">02</div>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Two</span>
+                  </div>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    <strong className="text-white block mb-1">Days 31-90: Hardening</strong>
+                    Get your Top 10 Critical playbooks to 95%+ readiness level.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[#DFC178] text-[#0A0F2E] rounded-none w-8 h-8 flex items-center justify-center flex-shrink-0 text-xs font-black">03</div>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40">Phase Three</span>
+                  </div>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    <strong className="text-white block mb-1">Ongoing: Optimization</strong>
+                    Build out remaining playbooks with quarterly readiness sprints.
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start gap-2">
-                <div className="bg-orange-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">2</div>
-                <div>
-                  <strong>Days 31-90:</strong> Get your Top 10 Critical playbooks to 95%+ readiness
+            </CardContent>
+          </Card>
+
+          {/* 2x2 Matrix Grid */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Top Left: High Impact, Low Likelihood */}
+            <QuadrantCard
+              title="Important"
+              description="High Impact, Lower Likelihood - Strategic preparation"
+              scenarios={important}
+              color="bg-white border-[#E8E4DC] hover:border-[#DFC178]/50"
+              icon={Shield}
+            />
+
+            {/* Top Right: High Impact, High Likelihood */}
+            <QuadrantCard
+              title="Critical Priority"
+              description="High Impact, High Likelihood - Immediate focus"
+              scenarios={critical}
+              color="bg-red-50/30 border-red-200 hover:border-red-500/50"
+              icon={AlertTriangle}
+            />
+
+            {/* Bottom Left: Low Impact, Low Likelihood */}
+            <QuadrantCard
+              title="Low Priority"
+              description="Lower Impact, Lower Likelihood - Operational tasks"
+              scenarios={low}
+              color="bg-white border-[#E8E4DC] hover:border-[#6B7280]/50"
+              icon={Target}
+            />
+
+            {/* Bottom Right: Low Impact, High Likelihood */}
+            <QuadrantCard
+              title="Monitor Closely"
+              description="Lower Impact, High Likelihood - Reactive protocols"
+              scenarios={monitor}
+              color="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50"
+              icon={TrendingUp}
+            />
+          </div>
+
+          {/* Action Items */}
+          <Card className="rounded-none border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
+            <CardHeader className="p-8 border-b border-[#F8F7F4]">
+              <CardTitle style={CG} className="text-3xl text-[#0A0F2E]">Recommended Next Steps</CardTitle>
+            </CardHeader>
+            <CardContent className="p-8 space-y-4">
+              {[
+                { 
+                  title: 'Schedule practice drills for your Critical playbooks', 
+                  desc: 'Turn preparedness into proven performance', 
+                  link: '/practice-drills', 
+                  btn: 'Schedule Drills',
+                  variant: 'default',
+                  tid: 'card-action-drills'
+                },
+                { 
+                  title: 'Review full playbook library', 
+                  desc: 'Explore all 170 strategic playbooks', 
+                  link: '/playbook-library', 
+                  btn: 'View Library',
+                  variant: 'outline',
+                  tid: 'card-action-library'
+                },
+                { 
+                  title: 'Check your preparedness score', 
+                  desc: 'See your overall crisis readiness rating', 
+                  link: '/preparedness-report', 
+                  btn: 'View Score',
+                  variant: 'outline',
+                  tid: 'card-action-preparedness'
+                }
+              ].map((action, i) => (
+                <div key={i} className="flex items-center justify-between p-6 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none group hover:border-[#C9A84C] transition-colors" data-testid={action.tid}>
+                  <div>
+                    <p style={CG} className="text-xl font-bold text-[#0A0F2E]">{action.title}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">{action.desc}</p>
+                  </div>
+                  <Link href={action.link}>
+                    <Button 
+                      variant={action.variant as any} 
+                      className={`rounded-none font-bold text-[10px] tracking-widest uppercase px-8 h-12 ${action.variant === 'default' ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45]' : 'border-[#E8E4DC] text-[#0A0F2E] hover:bg-white'}`}
+                      data-testid={action.tid.replace('card-action', 'button')}
+                    >
+                      {action.btn}
+                      <ArrowRight className="ml-3 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
-              </div>
-              <div className="flex items-start gap-2">
-                <div className="bg-blue-500 text-gray-900 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs font-bold">3</div>
-                <div>
-                  <strong>Ongoing:</strong> Build out remaining playbooks with quarterly readiness sprints
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* 2x2 Matrix Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Top Left: High Impact, Low Likelihood */}
-          <QuadrantCard
-            title="Important"
-            description="High Impact, Lower Likelihood - Prepare but don't panic"
-            scenarios={important}
-            color="bg-orange-50 dark:bg-orange-950/20 border-orange-300 dark:border-orange-800"
-            icon={Shield}
-          />
-
-          {/* Top Right: High Impact, High Likelihood */}
-          <QuadrantCard
-            title="Critical Priority"
-            description="High Impact, High Likelihood - Your Top 10 for 90-day onboarding"
-            scenarios={critical}
-            color="bg-red-50 dark:bg-red-950/20 border-red-300 dark:border-red-800"
-            icon={AlertTriangle}
-          />
-
-          {/* Bottom Left: Low Impact, Low Likelihood */}
-          <QuadrantCard
-            title="Low Priority"
-            description="Lower Impact, Lower Likelihood - Address when ready"
-            scenarios={low}
-            color="bg-slate-50 dark:bg-slate-900/20 border-slate-200 dark:border-slate-700"
-            icon={Target}
-          />
-
-          {/* Bottom Right: Low Impact, High Likelihood */}
-          <QuadrantCard
-            title="Monitor Closely"
-            description="Lower Impact, High Likelihood - Quick response playbooks"
-            scenarios={monitor}
-            color="bg-yellow-50 dark:bg-yellow-950/20 border-yellow-300 dark:border-yellow-800"
-            icon={TrendingUp}
-          />
+              ))}
+            </CardContent>
+          </Card>
         </div>
-
-        {/* Action Items */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recommended Next Steps</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between p-4 border rounded-lg" data-testid="card-action-drills">
-                <div>
-                  <p className="font-medium">Schedule practice drills for your Critical playbooks</p>
-                  <p className="text-sm text-muted-foreground">Turn preparedness into proven performance</p>
-                </div>
-                <Link href="/practice-drills">
-                  <Button data-testid="button-schedule-drills">
-                    Schedule Drills
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="flex items-center justify-between p-4 border rounded-lg" data-testid="card-action-library">
-                <div>
-                  <p className="font-medium">Review full playbook library</p>
-                  <p className="text-sm text-muted-foreground">Explore all 170 strategic playbooks</p>
-                </div>
-                <Link href="/playbook-library">
-                  <Button variant="outline" data-testid="button-view-library">
-                    View Library
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="flex items-center justify-between p-4 border rounded-lg" data-testid="card-action-preparedness">
-                <div>
-                  <p className="font-medium">Check your preparedness score</p>
-                  <p className="text-sm text-muted-foreground">See your overall crisis readiness rating</p>
-                </div>
-                <Link href="/preparedness-report">
-                  <Button variant="outline" data-testid="button-check-score">
-                    View Score
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </PageLayout>
   );

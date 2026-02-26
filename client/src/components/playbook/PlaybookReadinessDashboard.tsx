@@ -153,15 +153,15 @@ export default function PlaybookReadinessDashboard({
         </div>
         <div className="flex-1 grid grid-cols-4 gap-2 text-xs">
           <div className="text-center">
-            <div className="text-violet-400">{score?.prepareScore ?? 0}%</div>
+            <div className="text-[#C9A84C]">{score?.prepareScore ?? 0}%</div>
             <div className="text-gray-800">IDENTIFY</div>
           </div>
           <div className="text-center">
-            <div className="text-blue-400">{score?.monitorScore ?? 0}%</div>
+            <div className="text-[#0A0F2E]">{score?.monitorScore ?? 0}%</div>
             <div className="text-gray-800">DETECT</div>
           </div>
           <div className="text-center">
-            <div className="text-emerald-400">{score?.executeScore ?? 0}%</div>
+            <div className="text-[#2B8A6E]">{score?.executeScore ?? 0}%</div>
             <div className="text-gray-800">EXECUTE</div>
           </div>
           <div className="text-center">
@@ -278,19 +278,19 @@ export default function PlaybookReadinessDashboard({
         <CardContent>
           <div className="flex gap-1 h-4 rounded-full overflow-hidden">
             <div 
-              className="bg-violet-500 flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.prepareWeight ?? 40}%` }}
             >
               {score?.prepareWeight ?? 40}%
             </div>
             <div 
-              className="bg-blue-500 flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#0A0F2E] flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.monitorWeight ?? 20}%` }}
             >
               {score?.monitorWeight ?? 20}%
             </div>
             <div 
-              className="bg-emerald-500 flex items-center justify-center text-xs text-gray-900 font-medium"
+              className="bg-[#2B8A6E] flex items-center justify-center text-xs text-gray-900 font-medium"
               style={{ width: `${score?.executeWeight ?? 30}%` }}
             >
               {score?.executeWeight ?? 30}%

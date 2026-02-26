@@ -266,7 +266,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
       </div>
 
       {/* Crisis Readiness Metrics */}
-      <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white" data-testid="crisis-readiness-metrics">
+      <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white" data-testid="crisis-readiness-metrics">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
@@ -298,7 +298,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
               <span className="text-sm">Overall Crisis Preparedness</span>
               <span className="text-sm">98%</span>
             </div>
-            <Progress value={98} className="bg-blue-400" />
+            <Progress value={98} className="bg-[#0A0F2E]" />
           </div>
         </CardContent>
       </Card>

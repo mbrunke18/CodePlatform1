@@ -50,7 +50,7 @@ const pilotPhases = [
     phase: 'Phase 1',
     name: 'Dry Runs & Training',
     duration: 'Weeks 3-6',
-    color: 'bg-blue-600',
+    color: 'bg-[#0A0F2E]',
     activities: [
       'Conduct 2-3 tabletop exercises with Execution OS',
       'Measure activation time (target: <12 min)',
@@ -65,7 +65,7 @@ const pilotPhases = [
     phase: 'Phase 2',
     name: 'Live Activation',
     duration: 'Weeks 7-10',
-    color: 'bg-emerald-600',
+    color: 'bg-[#2B8A6E]',
     activities: [
       'Enable live signal monitoring',
       'First live playbook activation',
@@ -80,7 +80,7 @@ const pilotPhases = [
     phase: 'Phase 3',
     name: 'Executive Readout',
     duration: 'Weeks 11-12',
-    color: 'bg-purple-600',
+    color: 'bg-[#C9A84C]',
     activities: [
       'Compile ROI scorecard',
       'Present results to executive sponsor',
@@ -243,7 +243,7 @@ export default function PilotProgram() {
 
   return (
     <PageLayout>
-      <div className="bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950">
+      <div className="bg-gradient-to-br from-slate-50 via-white to-[#141B45] dark:from-slate-950 dark:via-slate-900 dark:to-[#141B45]">
         
         {/* Hero Section */}
         <section className="py-16 px-6 bg-gradient-to-br ">
@@ -251,46 +251,46 @@ export default function PilotProgram() {
             <div className="inline-block px-6 py-4 rounded-2xl border border-slate-600/50 backdrop-blur-sm mb-6">
               <ExecuteIQLogo width={240} variant="full" color="white" showTagline={true} />
             </div>
-            <Badge className="mb-6 bg-emerald-600/20 text-emerald-300 border-emerald-500/30" data-testid="badge-pilot">
+            <Badge className="mb-6 bg-[#2B8A6E]/20 text-emerald-300 border-[#2B8A6E]/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6" data-testid="heading-pilot-program">
+            <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" data-testid="heading-pilot-program">
               90-Day Pilot Program
-              <span className="block text-emerald-400 mt-2">Validate Before You Commit</span>
+              <span className="block text-[#2B8A6E] mt-2">Validate Before You Commit</span>
             </h1>
-            <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto mb-8">
               Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
             {/* Key Stats */}
             <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-emerald-400">$75K</div>
-                <div className="text-xs text-gray-800">Pilot Investment</div>
+              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
+                <div className="text-2xl font-bold text-[#2B8A6E]">$75K</div>
+                <div className="text-xs text-[#0A0F2E]">Pilot Investment</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-gray-900">90</div>
-                <div className="text-xs text-gray-800">Days</div>
+              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
+                <div className="text-2xl font-bold text-[#0A0F2E]">90</div>
+                <div className="text-xs text-[#0A0F2E]">Days</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-gray-900">5</div>
-                <div className="text-xs text-gray-800">Playbooks</div>
+              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
+                <div className="text-2xl font-bold text-[#0A0F2E]">5</div>
+                <div className="text-xs text-[#0A0F2E]">Playbooks</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-gray-900">25</div>
-                <div className="text-xs text-gray-800">Users</div>
+              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
+                <div className="text-2xl font-bold text-[#0A0F2E]">25</div>
+                <div className="text-xs text-[#0A0F2E]">Users</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 text-center">
-                <div className="text-2xl font-bold text-gray-900">100%</div>
-                <div className="text-xs text-gray-800">Credit to Year 1</div>
+              <div className="bg-[#0A0F2E]/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-[#E8E4DC]">
+                <div className="text-2xl font-bold text-[#0A0F2E]">100%</div>
+                <div className="text-xs text-[#0A0F2E]">Credit to Year 1</div>
               </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                 onClick={() => setLocation('/contact')}
                 data-testid="button-apply-pilot"
               >
@@ -300,7 +300,7 @@ export default function PilotProgram() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white/30 text-gray-900 hover:bg-white/10"
+                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5"
                 onClick={() => setLocation('/try-demo')}
                 data-testid="button-see-demo"
               >
@@ -342,13 +342,13 @@ export default function PilotProgram() {
                           <ul className="space-y-1 mb-4">
                             {phase.activities.slice(0, 3).map((activity, j) => (
                               <li key={j} className="text-gray-800 dark:text-slate-300 flex items-start gap-2">
-                                <CheckCircle className="w-3 h-3 text-emerald-500 mt-1 flex-shrink-0" />
+                                <CheckCircle className="w-3 h-3 text-[#2B8A6E] mt-1 flex-shrink-0" />
                                 <span className="text-xs">{activity}</span>
                               </li>
                             ))}
                           </ul>
                           <div className="border-t pt-3">
-                            <div className="text-xs font-semibold text-blue-800 dark:text-blue-400 mb-1">Success Metric</div>
+                            <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#0A0F2E] mb-1">Success Metric</div>
                             <p className="text-xs text-gray-800 dark:text-slate-300">{phase.successMetrics}</p>
                           </div>
                         </CardContent>
@@ -378,8 +378,8 @@ export default function PilotProgram() {
                 <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-inclusion-${i}`}>
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                        <inclusion.icon className="w-5 h-5 text-blue-800 dark:text-blue-400" />
+                      <div className="p-2 rounded-lg bg-blue-100 dark:bg-[#0A0F2E]/30">
+                        <inclusion.icon className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                       </div>
                       <CardTitle className="text-base">{inclusion.category}</CardTitle>
                     </div>
@@ -388,7 +388,7 @@ export default function PilotProgram() {
                     <ul className="space-y-2">
                       {inclusion.items.map((item, j) => (
                         <li key={j} className="text-sm text-gray-800 dark:text-slate-300 flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -423,7 +423,7 @@ export default function PilotProgram() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <h3 className="font-semibold text-slate-900 dark:text-white">{candidate.criteria}</h3>
-                          <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-blue-600' : ''}>
+                          <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-[#0A0F2E]' : ''}>
                             {candidate.importance}
                           </Badge>
                         </div>
@@ -444,7 +444,7 @@ export default function PilotProgram() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4" data-testid="heading-roi">
                 ROI Measurement Framework
               </h2>
-              <p className="text-lg text-blue-800">
+              <p className="text-lg text-[#0A0F2E]">
                 Quantified value capture at every milestone
               </p>
             </div>
@@ -467,7 +467,7 @@ export default function PilotProgram() {
                         <td className="p-4 text-gray-900 font-medium">{row.metric}</td>
                         <td className="p-4 text-red-700">{row.baseline}</td>
                         <td className="p-4 text-emerald-200">{row.withExecutionOS}</td>
-                        <td className="p-4 text-blue-800 text-sm">{row.calculation}</td>
+                        <td className="p-4 text-[#0A0F2E] text-sm">{row.calculation}</td>
                         <td className="p-4 text-amber-300 font-bold text-right">{row.value}</td>
                       </tr>
                     ))}
@@ -498,10 +498,10 @@ export default function PilotProgram() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {conversionTerms.map((term, i) => (
-                <Card key={i} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border-2 border-emerald-200 dark:border-emerald-900 hover:border-emerald-400 dark:hover:border-emerald-700 transition-colors" data-testid={`card-term-${i}`}>
+                <Card key={i} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
                   <CardContent className="p-6 text-center">
-                    <div className="p-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 inline-block mb-4">
-                      <term.icon className="w-6 h-6 text-emerald-700 dark:text-emerald-400" />
+                    <div className="p-3 rounded-xl bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 inline-block mb-4">
+                      <term.icon className="w-6 h-6 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white mb-2">{term.term}</h3>
                     <p className="text-sm text-gray-800 dark:text-slate-300">{term.description}</p>
@@ -518,11 +518,11 @@ export default function PilotProgram() {
             <Card className="overflow-hidden" data-testid="card-success-preview">
               <CardContent className="p-8">
                 <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-xl bg-blue-100 dark:bg-blue-900/30">
-                    <Award className="w-10 h-10 text-blue-800 dark:text-blue-400" />
+                  <div className="p-4 rounded-xl bg-blue-100 dark:bg-[#0A0F2E]/30">
+                    <Award className="w-10 h-10 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                   </div>
                   <div>
-                    <Badge className="mb-3 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                    <Badge className="mb-3 bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-blue-300">
                       Pilot Success Target
                     </Badge>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
@@ -530,19 +530,19 @@ export default function PilotProgram() {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                         <span className="text-slate-700 dark:text-slate-300">At least 1 live activation under 15 minutes</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                         <span className="text-slate-700 dark:text-slate-300">5+ playbooks customized and operational</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                         <span className="text-slate-700 dark:text-slate-300">Quantified ROI with executive sign-off</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
                         <span className="text-slate-700 dark:text-slate-300">Clear expansion plan for enterprise rollout</span>
                       </div>
                     </div>
@@ -565,7 +565,7 @@ export default function PilotProgram() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-[#2B8A6E] hover:bg-[#256B56]"
                 onClick={() => setLocation('/contact')}
                 data-testid="button-cta-apply"
               >
@@ -583,7 +583,7 @@ export default function PilotProgram() {
               </Button>
             </div>
             <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
-              Questions? Contact us at <span className="text-blue-800 dark:text-blue-400">pilots@m-strategic.com</span>
+              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#0A0F2E]">pilots@m-strategic.com</span>
             </p>
           </div>
         </section>

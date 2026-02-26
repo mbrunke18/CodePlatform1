@@ -24,43 +24,43 @@ const features = [
     icon: Zap,
     title: 'DETECT — Signal Intelligence',
     description: 'See AI-powered monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
-    color: 'text-amber-600',
-    bg: 'bg-amber-50',
+    color: 'text-[#C9A84C]',
+    bg: 'bg-[#C9A84C]/10',
   },
   {
     icon: Target,
     title: 'EXECUTE — Playbook Activation',
     description: 'Browse 170 pre-built playbooks and activate a coordinated response across your org within 12 minutes.',
-    color: 'text-blue-600',
-    bg: 'bg-blue-50',
+    color: 'text-[#0A0F2E]',
+    bg: 'bg-[#0A0F2E]/10',
   },
   {
     icon: BarChart3,
     title: 'ADVANCE — Live Analytics',
     description: 'Track execution velocity, decision timing, and stakeholder coverage across every activation.',
-    color: 'text-emerald-600',
-    bg: 'bg-emerald-50',
+    color: 'text-[#2B8A6E]',
+    bg: 'bg-[#2B8A6E]/10',
   },
   {
     icon: Bell,
     title: 'Real Email Notifications',
     description: 'Activate a playbook and your stakeholders get a real-time email with their assigned tasks and actions.',
-    color: 'text-purple-600',
-    bg: 'bg-purple-50',
+    color: 'text-[#0A0F2E]',
+    bg: 'bg-[#0A0F2E]/10',
   },
   {
     icon: Users,
     title: 'Command Center',
     description: 'Manage your response team, track task completion, and coordinate across functions in real time.',
-    color: 'text-rose-600',
-    bg: 'bg-rose-50',
+    color: 'text-[#C9A84C]',
+    bg: 'bg-[#C9A84C]/10',
   },
   {
     icon: Clock,
     title: '12-Minute Activation',
     description: 'From trigger detection to full team mobilization in under 12 minutes — the platform enforces this standard.',
-    color: 'text-indigo-600',
-    bg: 'bg-indigo-50',
+    color: 'text-[#2B8A6E]',
+    bg: 'bg-[#2B8A6E]/10',
   },
 ];
 
@@ -86,59 +86,66 @@ export default function ExplorePage() {
       <div className="min-h-screen bg-white">
 
         {/* Hero */}
-        <section className="py-20 px-6 border-b border-gray-100">
+        <section className="py-20 px-6 border-b border-[#E8E4DC]">
           <div className="max-w-4xl mx-auto text-center">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-6 bg-blue-50 text-blue-700 border-blue-200 font-semibold uppercase tracking-widest text-xs px-4 py-2">
-              Product Experience
-            </Badge>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Product Experience</span>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+            </div>
+            <h1 className="text-5xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Experience the Platform<br />
-              <span className="text-blue-600">as a Real Customer</span>
+              <span className="text-[#C9A84C] italic">as a Real Customer</span>
             </h1>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
               Sign in, set up your workspace, and walk through an actual playbook activation — complete with real email notifications and a live command center.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#0A0F2E] hover:bg-[#1a2040] !text-white px-10 py-6 text-lg font-semibold rounded-lg gap-3"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
                 onClick={() => { try { (window.top || window).location.href = '/api/login'; } catch { window.open('/api/login', '_blank'); } }}
               >
-                <LogIn className="h-5 w-5" />
+                <LogIn className="h-4 w-4" />
                 Sign In to Explore
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gray-400 text-gray-800 hover:bg-gray-50 px-10 py-6 text-lg font-semibold rounded-lg gap-3"
+                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-slate-50 px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
                 onClick={() => setLocation('/contact')}
               >
                 Apply for Pilot Program
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
 
-            <p className="mt-6 text-sm text-gray-500">
+            <p className="mt-6 text-[10px] text-slate-400 uppercase tracking-widest font-bold">
               No credit card required. Your workspace is private and under your control.
             </p>
           </div>
         </section>
 
         {/* How it works */}
-        <section className="py-16 px-6 bg-gray-50">
+        <section className="py-24 px-6 bg-[#F8F7F4] border-b border-[#E8E4DC]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">What happens when you sign in</h2>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Journey</span>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+            </div>
+            <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What happens when you sign in</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {steps.map((s) => (
-                <div key={s.step} className="bg-white rounded-xl p-6 border border-gray-200 flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-full bg-[#0A0F2E] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div key={s.step} className="bg-white rounded-none p-6 border border-[#E8E4DC] flex gap-4 items-start shadow-sm">
+                  <div className="w-10 h-10 rounded-none bg-[#0A0F2E] text-[#C9A84C] flex items-center justify-center font-bold text-xs flex-shrink-0">
                     {s.step}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900 mb-1">{s.label}</div>
-                    <div className="text-gray-600 text-sm leading-relaxed">{s.description}</div>
+                    <div className="font-bold text-[#0A0F2E] mb-1 uppercase tracking-widest text-[10px]">{s.label}</div>
+                    <div className="text-slate-500 text-sm leading-relaxed">{s.description}</div>
                   </div>
                 </div>
               ))}
@@ -147,18 +154,18 @@ export default function ExplorePage() {
         </section>
 
         {/* Features */}
-        <section className="py-16 px-6">
+        <section className="py-24 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-4">Everything you'll have access to</h2>
-            <p className="text-gray-600 text-center mb-12">The full platform. No watered-down version.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Everything you'll have access to</h2>
+            <p className="text-slate-500 text-center mb-16 uppercase tracking-widest text-[10px] font-bold">The full platform. No watered-down version.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((f) => (
-                <div key={f.title} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors">
-                  <div className={`w-10 h-10 rounded-lg ${f.bg} flex items-center justify-center mb-4`}>
+                <div key={f.title} className="bg-white rounded-none p-8 border border-[#E8E4DC] hover:border-[#0A0F2E] transition-all duration-300">
+                  <div className={`w-10 h-10 rounded-none ${f.bg} flex items-center justify-center mb-6`}>
                     <f.icon className={`h-5 w-5 ${f.color}`} />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2 text-sm">{f.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{f.description}</p>
+                  <h3 className="font-bold text-[#0A0F2E] mb-3 text-[10px] uppercase tracking-widest">{f.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
                 </div>
               ))}
             </div>
@@ -166,28 +173,28 @@ export default function ExplorePage() {
         </section>
 
         {/* Difference between paths */}
-        <section className="py-16 px-6 bg-gray-50 border-t border-gray-100">
+        <section className="py-24 px-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">Two ways to get started</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl p-8 border-2 border-gray-200">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4">
-                  <Layers className="h-5 w-5 text-blue-600" />
+            <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Two ways to get started</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-none p-8 border border-[#E8E4DC] shadow-sm">
+                <div className="w-12 h-12 rounded-none bg-[#0A0F2E] flex items-center justify-center mb-6">
+                  <Layers className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Explore the Product</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Explore the Product</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
                   Sign in and experience the full platform immediately. Ideal for evaluators, decision-makers, and teams doing due diligence.
                 </p>
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-3 mb-8">
                   {['Instant access', 'Full feature set', 'Sample data available', 'No commitment'].map(item => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                      <ChevronRight className="h-4 w-4 text-blue-500" />
+                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-500">
+                      <ChevronRight className="h-4 w-4 text-[#2B8A6E]" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Button
-                  className="w-full bg-[#0A0F2E] hover:bg-[#1a2040] !text-white"
+                  className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none font-bold uppercase tracking-widest text-[10px] h-12"
                   onClick={() => { (window.top || window).location.href = '/api/login'; }}
                 >
                   <LogIn className="h-4 w-4 mr-2" />
@@ -195,25 +202,26 @@ export default function ExplorePage() {
                 </Button>
               </div>
 
-              <div className="bg-white rounded-xl p-8 border-2 border-[#C9A84C]">
-                <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center mb-4">
-                  <Shield className="h-5 w-5 text-amber-600" />
+              <div className="bg-white rounded-none p-8 border border-[#C9A84C] shadow-lg relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-[#0A0F2E] text-[9px] font-bold uppercase tracking-widest px-3 py-1">Recommended for F1000</div>
+                <div className="w-12 h-12 rounded-none bg-[#C9A84C] flex items-center justify-center mb-6">
+                  <Shield className="h-6 w-6 text-[#0A0F2E]" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Apply for Pilot Program</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Apply for Pilot Program</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6">
                   A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.
                 </p>
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-3 mb-8">
                   {['Dedicated onboarding', 'Up to 25 users', 'Custom playbook configuration', 'Executive readout at 90 days'].map(item => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                      <ChevronRight className="h-4 w-4 text-amber-500" />
+                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-500">
+                      <ChevronRight className="h-4 w-4 text-[#C9A84C]" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Button
                   variant="outline"
-                  className="w-full border-[#C9A84C] text-[#C9A84C] hover:bg-amber-50"
+                  className="w-full border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0A0F2E] rounded-none font-bold uppercase tracking-widest text-[10px] h-12"
                   onClick={() => setLocation('/contact')}
                 >
                   Apply for Pilot

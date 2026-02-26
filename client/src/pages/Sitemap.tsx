@@ -131,10 +131,10 @@ export default function Sitemap() {
   ];
 
   return (
-    <div className="page-background min-h-screen text-gray-900 p-8 pt-24">
+    <div className="bg-[#F8F7F4] min-h-screen text-[#0A0F2E] p-8 pt-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-4 text-[#0A0F2E]">
             Execution OS Sitemap
           </h1>
           <p className="text-xl text-gray-800">
@@ -144,9 +144,9 @@ export default function Sitemap() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sections.map((section) => (
-            <Card key={section.title} className="bg-gray-50 border-gray-200">
+            <Card key={section.title} className="bg-white border-[#E8E4DC]">
               <CardHeader>
-                <CardTitle className="text-xl text-blue-400">{section.title}</CardTitle>
+                <CardTitle className="text-xl text-[#0A0F2E]">{section.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
@@ -154,7 +154,7 @@ export default function Sitemap() {
                     <li key={page.path}>
                       <button
                         onClick={() => setLocation(page.path)}
-                        className="text-gray-800 hover:text-white hover:underline text-left w-full"
+                        className="text-gray-800 hover:text-[#0A0F2E] hover:underline text-left w-full transition-colors"
                       >
                         {page.name}
                       </button>
@@ -166,24 +166,24 @@ export default function Sitemap() {
           ))}
         </div>
 
-        <Card className="mt-8 bg-gray-50 border-gray-200">
+        <Card className="mt-8 bg-white border-[#E8E4DC]">
           <CardContent className="p-8">
-            <h2 className="text-2xl font-bold mb-4">Quick Stats</h2>
+            <h2 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Quick Stats</h2>
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-4xl font-bold text-blue-400 mb-2">7</div>
+                <div className="text-4xl font-bold text-[#2B8A6E] mb-2">7</div>
                 <div className="text-gray-800">Live Interactive Demos</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-green-400 mb-2">10</div>
+                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">10</div>
                 <div className="text-gray-800">Industry Demos</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-purple-400 mb-2">170</div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">170</div>
                 <div className="text-gray-800">Strategic Playbooks</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-orange-400 mb-2">70+</div>
+                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">70+</div>
                 <div className="text-gray-800">Total Pages</div>
               </div>
             </div>

@@ -117,12 +117,12 @@ export default function NavigationBar() {
                               }}
                               className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
-                                  ? 'bg-gradient-to-r from-blue-50 dark:from-blue-900 to-purple-50 dark:to-purple-900 hover:from-blue-100 dark:hover:from-blue-800 hover:to-purple-100 dark:hover:to-purple-800 border-2 border-blue-200 dark:border-blue-700' 
-                                  : 'hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400'
+                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-blue-100 dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-blue-200 dark:border-blue-700' 
+                                  : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
                               }`}
                             >
-                              <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-blue-700 dark:text-blue-400 flex items-center gap-2' : 'text-slate-900 dark:text-slate-100'}`}>
-                                {(link as any).featured && <span className="text-xs px-2 py-0.5 bg-blue-600 dark:bg-blue-500 text-white rounded-full">NEW</span>}
+                              <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-[#0A0F2E] dark:text-[#0A0F2E] flex items-center gap-2' : 'text-slate-900 dark:text-slate-100'}`}>
+                                {(link as any).featured && <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white rounded-full">NEW</span>}
                                 {link.title}
                               </div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -150,7 +150,7 @@ export default function NavigationBar() {
                               onClick={() => {
                                 setLocation(link.href);
                               }}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400"
+                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -169,7 +169,7 @@ export default function NavigationBar() {
                   <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50 font-semibold">
                     <span className="flex items-center gap-1">
                       Dynamic Strategy
-                      <span className="text-xs px-2 py-0.5 bg-blue-600 dark:bg-blue-500 text-white rounded-full ml-1">NEW</span>
+                      <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white rounded-full ml-1">NEW</span>
                     </span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -183,11 +183,11 @@ export default function NavigationBar() {
                               }}
                               className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
-                                  ? 'bg-gradient-to-r from-blue-50 dark:from-blue-900 to-purple-50 dark:to-purple-900 hover:from-blue-100 dark:hover:from-blue-800 hover:to-purple-100 dark:hover:to-purple-800 border-2 border-blue-200 dark:border-blue-700' 
-                                  : 'hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400'
+                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-blue-100 dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-blue-200 dark:border-blue-700' 
+                                  : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
                               }`}
                             >
-                              <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-slate-100'}`}>
+                              <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-slate-900 dark:text-slate-100'}`}>
                                 {link.title}
                               </div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -218,7 +218,7 @@ export default function NavigationBar() {
                                 }
                               }}
                               disabled={link.href === '#'}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -249,7 +249,7 @@ export default function NavigationBar() {
                                 }
                               }}
                               disabled={link.href === '#'}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 focus:bg-blue-50 dark:focus:bg-slate-700 focus:text-blue-700 dark:focus:text-blue-400 disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -289,7 +289,7 @@ export default function NavigationBar() {
               Sign In
             </Button>
             <Button
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+              className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white"
               onClick={() => setLocation('/demo-selector')}
               data-testid="button-get-started-nav"
             >
@@ -319,7 +319,7 @@ export default function NavigationBar() {
                               e.preventDefault();
                               navigateAndClose(link.href);
                             }}
-                            className="text-gray-600 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-[#0A0F2E] block py-1"
                           >
                             {link.title}
                           </a>
@@ -340,7 +340,7 @@ export default function NavigationBar() {
                               e.preventDefault();
                               navigateAndClose(link.href);
                             }}
-                            className="text-gray-600 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-[#0A0F2E] block py-1"
                           >
                             {link.title}
                           </a>
@@ -357,7 +357,7 @@ export default function NavigationBar() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="text-gray-600 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-[#0A0F2E] block py-1"
                           >
                             {link.title}
                           </a>
@@ -374,7 +374,7 @@ export default function NavigationBar() {
                         <li key={link.href}>
                           <a
                             href={link.href}
-                            className="text-gray-600 hover:text-blue-600 block py-1"
+                            className="text-gray-600 hover:text-[#0A0F2E] block py-1"
                           >
                             {link.title}
                           </a>
@@ -387,12 +387,12 @@ export default function NavigationBar() {
                   <div className="space-y-3 pt-6 border-t border-slate-200">
                     <Button
                       variant="outline"
-                      className="w-full border-blue-600 text-blue-600 hover:bg-blue-50"
+                      className="w-full border-blue-600 text-[#0A0F2E] hover:bg-[#0A0F2E]"
                     >
                       Sign In
                     </Button>
                     <Button
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+                      className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white"
                       onClick={() => navigateAndClose('/demo-selector')}
                     >
                       Get Started

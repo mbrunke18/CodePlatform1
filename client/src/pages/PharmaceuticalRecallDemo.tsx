@@ -42,11 +42,11 @@ export default function PharmaceuticalRecallDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br ">
+    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
       <DemoNavHeader title="Pharmaceutical Recall Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-red-800/20 bg-white pt-20">
+      <div className="border-b border-white/10 bg-white/5 pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -60,8 +60,8 @@ export default function PharmaceuticalRecallDemo() {
                 onClick={() => setCurrentAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-red-600 text-gray-900"
-                    : "text-red-300 hover:bg-red-950/50"
+                    ? "bg-[#C9A84C] text-[#0A0F2E]"
+                    : "text-white/60 hover:bg-white/10"
                 }`}
                 data-testid={`button-act-${act.id}`}
               >
@@ -74,62 +74,62 @@ export default function PharmaceuticalRecallDemo() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12 text-white">
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-red-800/30">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <Heart className="w-16 h-16 text-red-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.crisis.title}</h2>
-                <p className="text-xl text-red-700">{pharmaDemoData.crisis.subtitle}</p>
+                <Heart className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.crisis.title}</h2>
+                <p className="text-xl text-[#DFC178]">{pharmaDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-red-950/30 rounded-lg border border-red-800/30">
-                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                  <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <AlertTriangle className="w-5 h-5 text-red-400" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <div className="text-red-300 mb-1">Organization</div>
-                      <div className="text-gray-900 font-semibold">Glenmark Pharmaceuticals</div>
+                      <div className="text-white/60 mb-1">Organization</div>
+                      <div className="text-white font-semibold">Glenmark Pharmaceuticals</div>
                     </div>
                     <div>
-                      <div className="text-red-300 mb-1">Product</div>
-                      <div className="text-gray-900">Potassium Chloride Capsules</div>
+                      <div className="text-white/60 mb-1">Product</div>
+                      <div className="text-white">Potassium Chloride Capsules</div>
                     </div>
                     <div>
-                      <div className="text-red-300 mb-1">Defect</div>
-                      <div className="text-gray-900">Capsules failed to dissolve - potentially deadly</div>
+                      <div className="text-white/60 mb-1">Defect</div>
+                      <div className="text-white">Capsules failed to dissolve - potentially deadly</div>
                     </div>
                     <div>
-                      <div className="text-red-300 mb-1">Scale</div>
-                      <div className="text-gray-900 font-bold">47 Million Units Recalled</div>
+                      <div className="text-white/60 mb-1">Scale</div>
+                      <div className="text-white font-bold text-[#DFC178]">47 Million Units Recalled</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-lg border border-red-800/30">
-                  <h3 className="font-bold text-gray-900 mb-4">What Happened (May-June 2024)</h3>
-                  <ul className="space-y-2 text-sm text-red-700">
+                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                  <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What Happened (May-June 2024)</h3>
+                  <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1-3: Internal investigation</li>
                     <li>• Week 4 (May): Quietly notified wholesalers only</li>
                     <li className="text-red-400 font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
                     <li className="text-red-400 font-bold">• Week 5: Patient dies from lethal potassium levels</li>
                     <li>• Week 6 (June): Public announcement</li>
-                    <li className="text-red-300">• Family learns weeks later medication killed their loved one</li>
+                    <li className="text-white/40">• Family learns weeks later medication killed their loved one</li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r   border border-red-700 rounded-lg p-6 mb-8">
+              <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
-                  <ShieldAlert className="w-8 h-8 text-red-400 flex-shrink-0 mt-1" />
+                  <ShieldAlert className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">The Detection-Execution Gap</h3>
-                    <p className="text-red-500 leading-relaxed">
+                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Detection-Execution Gap</h3>
+                    <p className="text-white/80 leading-relaxed">
                       Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders 
                       across FDA, wholesalers, pharmacies, and patients took <strong>6 weeks</strong>. In that gap, 
                       a patient died. This demo shows how Execution OS would have compressed that 6-week coordination into 12 minutes,
@@ -143,7 +143,7 @@ export default function PharmaceuticalRecallDemo() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentAct("detection")}
-                  className="bg-red-600 hover:bg-red-700 text-gray-900 px-8"
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                   data-testid="button-start-demo"
                 >
                   Begin Crisis Simulation
@@ -157,21 +157,21 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-red-800/30">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <ShieldAlert className="w-8 h-8 text-red-400" />
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <ShieldAlert className="w-8 h-8 text-[#C9A84C]" />
                 AI Quality Monitoring Detects Critical Failure
               </h2>
 
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-red-700">AI Confidence Level</span>
-                  <span className="text-2xl font-bold text-red-400">{detectionProgress}%</span>
+                  <span className="text-white/60">AI Confidence Level</span>
+                  <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
                 </div>
-                <Progress value={detectionProgress} className="h-3" />
+                <Progress value={detectionProgress} className="h-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
                 {detectionProgress >= 92 && (
-                  <div className="mt-4 p-4 bg-red-950/50 border border-red-600 rounded-lg">
-                    <p className="text-red-700 font-semibold">
+                  <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
+                    <p className="text-red-400 font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Reasonable probability of serious adverse health consequences or death
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export default function PharmaceuticalRecallDemo() {
                   <Button
                     size="lg"
                     onClick={() => setCurrentAct("coordination")}
-                    className="bg-red-600 hover:bg-red-700 text-gray-900 px-8"
+                    className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                     data-testid="button-activate-playbook"
                   >
                     Activate Playbook #095 - Product Recall
@@ -206,9 +206,9 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 3: 12-MINUTE COORDINATION */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-red-800/30">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Clock className="w-8 h-8 text-red-400" />
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Clock className="w-8 h-8 text-[#DFC178]" />
                 12-Minute Coordinated Response Across 2,052 Stakeholders
               </h2>
 
@@ -223,24 +223,24 @@ export default function PharmaceuticalRecallDemo() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     {pharmaDemoData.stakeholderTiers && (
                       <>
-                        <Card className="p-6 bg-red-950/30 border-red-700">
-                          <div className="text-red-300 text-sm mb-2">Tier 1: Decision Makers</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier1.count}</div>
-                          <div className="text-xs text-red-700">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 1: Decision Makers</div>
+                          <div className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.stakeholderTiers.tier1.count}</div>
+                          <div className="text-xs text-white/40">
                             {pharmaDemoData.stakeholderTiers.tier1.members.join(", ")}
                           </div>
                         </Card>
-                        <Card className="p-6 bg-red-950/30 border-red-700">
-                          <div className="text-red-300 text-sm mb-2">Tier 2: Execution Teams</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier2.count}</div>
-                          <div className="text-xs text-red-700">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 2: Execution Teams</div>
+                          <div className="text-3xl font-bold text-[#DFC178] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.stakeholderTiers.tier2.count}</div>
+                          <div className="text-xs text-white/40">
                             {pharmaDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>
                         </Card>
-                        <Card className="p-6 bg-red-950/30 border-red-700">
-                          <div className="text-red-300 text-sm mb-2">Tier 3: Public Notification</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{pharmaDemoData.stakeholderTiers.tier3.count}</div>
-                          <div className="text-xs text-red-700">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 3: Public Notification</div>
+                          <div className="text-3xl font-bold text-[#2B8A6E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.stakeholderTiers.tier3.count}</div>
+                          <div className="text-xs text-white/40">
                             {pharmaDemoData.stakeholderTiers.tier3.members.join(", ")}
                           </div>
                         </Card>
@@ -252,7 +252,7 @@ export default function PharmaceuticalRecallDemo() {
                     <Button
                       size="lg"
                       onClick={() => setCurrentAct("outcome")}
-                      className="bg-green-600 hover:bg-green-700 text-gray-900 px-8"
+                      className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] px-8"
                       data-testid="button-view-outcome"
                     >
                       View Impact & ROI
@@ -268,11 +268,11 @@ export default function PharmaceuticalRecallDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-green-800/30">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <Heart className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">A Life Saved</h2>
-                <p className="text-xl text-emerald-800">The patient never received the deadly capsules</p>
+                <Heart className="w-16 h-16 text-[#2B8A6E] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>A Life Saved</h2>
+                <p className="text-xl text-[#2B8A6E]">The patient never received the deadly capsules</p>
               </div>
 
               <ROIComparison
@@ -282,21 +282,21 @@ export default function PharmaceuticalRecallDemo() {
               />
 
               <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <Card className="p-4 bg-green-950/30 border-green-800">
-                  <div className="text-green-300 text-sm mb-1">Lives Saved</div>
-                  <div className="text-2xl font-bold text-green-400">1+</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Lives Saved</div>
+                  <div className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1+</div>
                 </Card>
-                <Card className="p-4 bg-blue-950/30 border-blue-800">
-                  <div className="text-blue-300 text-sm mb-1">Liability Avoided</div>
-                  <div className="text-2xl font-bold text-blue-400">$50M+</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Liability Avoided</div>
+                  <div className="text-2xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$50M+</div>
                 </Card>
-                <Card className="p-4 bg-purple-950/30 border-purple-800">
-                  <div className="text-purple-300 text-sm mb-1">Stakeholders Coordinated</div>
-                  <div className="text-2xl font-bold text-purple-400">2,052</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Stakeholders Coordinated</div>
+                  <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2,052</div>
                 </Card>
-                <Card className="p-4 bg-orange-950/30 border-orange-800">
-                  <div className="text-orange-300 text-sm mb-1">Coordination Time</div>
-                  <div className="text-2xl font-bold text-orange-400">12 min</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Coordination Time</div>
+                  <div className="text-2xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 min</div>
                 </Card>
               </div>
 
@@ -305,13 +305,13 @@ export default function PharmaceuticalRecallDemo() {
                   size="lg"
                   onClick={resetDemo}
                   variant="outline"
-                  className="border-red-500 text-red-400 hover:bg-red-950/50"
+                  className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10"
                   data-testid="button-replay-demo"
                 >
                   Replay Demo
                 </Button>
                 <Link href="/industry-demos">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700" data-testid="button-explore-more">
+                  <Button size="lg" className="bg-[#0A0F2E] text-white hover:bg-[#141B45] border border-white/20" data-testid="button-explore-more">
                     Explore More Industry Demos
                   </Button>
                 </Link>

@@ -88,10 +88,10 @@ const SEVERITY_CONFIG = {
     label: 'Medium'
   },
   low: { 
-    color: 'bg-blue-500', 
+    color: 'bg-[#0A0F2E]', 
     borderColor: 'border-l-blue-500',
-    bgColor: 'bg-blue-500/10',
-    textColor: 'text-blue-600 dark:text-blue-400',
+    bgColor: 'bg-[#0A0F2E]/10',
+    textColor: 'text-[#0A0F2E] dark:text-[#0A0F2E]',
     label: 'Low'
   }
 };
@@ -257,7 +257,7 @@ export function AlertCommandCenter() {
               ) : filteredAlerts.length === 0 ? (
                 <Card>
                   <CardContent className="p-8 text-center">
-                    <CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" />
+                    <CheckCircle className="w-12 h-12 mx-auto mb-4 text-[#2B8A6E]" />
                     <h4 className="font-semibold mb-2">No Active Alerts</h4>
                     <p className="text-muted-foreground">
                       All systems are operating within normal parameters.
@@ -348,8 +348,8 @@ function SummaryCard({
     red: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30',
     orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30',
     yellow: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/30',
-    blue: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30',
-    purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/30'
+    blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-blue-500/30',
+    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C]/30'
   };
 
   return (
@@ -454,7 +454,7 @@ function WeakSignalCard({ signal }: { signal: WeakSignal }) {
     critical: 'border-red-500 bg-red-500/5',
     high: 'border-orange-500 bg-orange-500/5',
     medium: 'border-yellow-500 bg-yellow-500/5',
-    low: 'border-blue-500 bg-blue-500/5'
+    low: 'border-blue-500 bg-[#0A0F2E]/5'
   };
 
   return (
@@ -462,7 +462,7 @@ function WeakSignalCard({ signal }: { signal: WeakSignal }) {
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-2">
           <div className="flex items-center gap-2">
-            <Radio className="w-4 h-4 text-purple-500" />
+            <Radio className="w-4 h-4 text-[#C9A84C]" />
             <Badge variant="outline">{signal.signalType}</Badge>
           </div>
           <div className="flex items-center gap-1 text-xs text-muted-foreground">

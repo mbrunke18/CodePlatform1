@@ -42,11 +42,11 @@ export default function ManufacturingSupplierDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br ">
+    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
       <DemoNavHeader title="Manufacturing Supplier Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-orange-800/20 bg-white pt-20">
+      <div className="border-b border-white/10 bg-white/5 pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -60,8 +60,8 @@ export default function ManufacturingSupplierDemo() {
                 onClick={() => setCurrentAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-orange-600 text-gray-900"
-                    : "text-orange-300 hover:bg-orange-950/50"
+                    ? "bg-[#C9A84C] text-[#0A0F2E]"
+                    : "text-white/60 hover:bg-white/10"
                 }`}
                 data-testid={`button-act-${act.id}`}
               >
@@ -74,63 +74,63 @@ export default function ManufacturingSupplierDemo() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12 text-white">
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-orange-800/30">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <Cpu className="w-16 h-16 text-orange-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.crisis.title}</h2>
-                <p className="text-xl text-orange-200">{manufacturingDemoData.crisis.subtitle}</p>
+                <Cpu className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{manufacturingDemoData.crisis.title}</h2>
+                <p className="text-xl text-[#DFC178]">{manufacturingDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-orange-950/30 rounded-lg border border-orange-800/30">
-                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <AlertTriangle className="w-5 h-5 text-orange-400" />
+                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                  <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <AlertTriangle className="w-5 h-5 text-red-400" />
                     The Crisis
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <div className="text-orange-300 mb-1">Organization</div>
-                      <div className="text-gray-900 font-semibold">Toyota Motor Corporation</div>
+                      <div className="text-white/60 mb-1">Organization</div>
+                      <div className="text-white font-semibold">Toyota Motor Corporation</div>
                     </div>
                     <div>
-                      <div className="text-orange-300 mb-1">Component</div>
-                      <div className="text-gray-900">Critical Semiconductor Chips</div>
+                      <div className="text-white/60 mb-1">Component</div>
+                      <div className="text-white">Critical Semiconductor Chips</div>
                     </div>
                     <div>
-                      <div className="text-orange-300 mb-1">Impact</div>
-                      <div className="text-gray-900">50,000 chip shortage discovered</div>
+                      <div className="text-white/60 mb-1">Impact</div>
+                      <div className="text-white">50,000 chip shortage discovered</div>
                     </div>
                     <div>
-                      <div className="text-orange-300 mb-1">At Risk</div>
-                      <div className="text-gray-900 font-bold">10,000 vehicles ($500M production)</div>
+                      <div className="text-white/60 mb-1">At Risk</div>
+                      <div className="text-white font-bold text-[#DFC178]">10,000 vehicles ($500M production)</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-lg border border-orange-800/30">
-                  <h3 className="font-bold text-gray-900 mb-4">Traditional Response (30 Days)</h3>
-                  <ul className="space-y-2 text-sm text-orange-200">
+                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                  <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Response (30 Days)</h3>
+                  <ul className="space-y-2 text-sm text-white/60">
                     <li>• Day 1-2: Assess which suppliers affected</li>
                     <li>• Day 3: Discover 50,000 chip shortage</li>
                     <li>• Day 4-5: Emergency meetings to find alternatives</li>
                     <li>• Week 2: Alternative supplier can't meet quality specs</li>
                     <li>• Week 3: Engineering scrambles to re-qualify parts</li>
-                    <li className="text-orange-400 font-semibold">• Week 4: Production lines shut down</li>
-                    <li className="text-orange-400 font-bold">• Month 2: Customers buying from competitors</li>
+                    <li className="text-red-400 font-semibold">• Week 4: Production lines shut down</li>
+                    <li className="text-red-400 font-bold">• Month 2: Customers buying from competitors</li>
                   </ul>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r   border border-orange-700 rounded-lg p-6 mb-8">
+              <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
-                  <ShieldAlert className="w-8 h-8 text-orange-400 flex-shrink-0 mt-1" />
+                  <ShieldAlert className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">Just-In-Time Manufacturing Needs Just-In-Time Coordination</h3>
-                    <p className="text-orange-100 leading-relaxed">
+                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Just-In-Time Manufacturing Needs Just-In-Time Coordination</h3>
+                    <p className="text-white/80 leading-relaxed">
                       Toyota pioneered Just-In-Time manufacturing to eliminate waste. But when suppliers fail, coordination still takes 
                       <strong> 30 days</strong> of meetings, emails, and qualification delays. Execution OS brings Just-In-Time principles to 
                       crisis coordination: pre-vetted backup suppliers, pre-negotiated contracts, pre-approved budgets. Result: 
@@ -144,7 +144,7 @@ export default function ManufacturingSupplierDemo() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentAct("detection")}
-                  className="bg-orange-600 hover:bg-orange-700 text-gray-900 px-8"
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                   data-testid="button-start-demo"
                 >
                   Begin Crisis Simulation
@@ -158,21 +158,21 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-orange-800/30">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <ShieldAlert className="w-8 h-8 text-orange-400" />
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <ShieldAlert className="w-8 h-8 text-[#C9A84C]" />
                 Supply Chain AI Detects Critical Supplier Failure
               </h2>
 
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-orange-200">AI Confidence Level</span>
-                  <span className="text-2xl font-bold text-orange-400">{detectionProgress}%</span>
+                  <span className="text-white/60">AI Confidence Level</span>
+                  <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
                 </div>
-                <Progress value={detectionProgress} className="h-3" />
+                <Progress value={detectionProgress} className="h-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
                 {detectionProgress >= 89 && (
-                  <div className="mt-4 p-4 bg-orange-950/50 border border-orange-600 rounded-lg">
-                    <p className="text-orange-200 font-semibold">
+                  <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
+                    <p className="text-red-400 font-semibold">
                       ⚠️ ALERT: Critical supplier failure detected - 10,000 vehicle production at risk ($500M)
                     </p>
                   </div>
@@ -192,7 +192,7 @@ export default function ManufacturingSupplierDemo() {
                   <Button
                     size="lg"
                     onClick={() => setCurrentAct("coordination")}
-                    className="bg-orange-600 hover:bg-orange-700 text-gray-900 px-8"
+                    className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                     data-testid="button-activate-playbook"
                   >
                     Activate Playbook #019 - Supplier Failure
@@ -207,9 +207,9 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 3: 4-HOUR COORDINATION */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-orange-800/30">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <Clock className="w-8 h-8 text-orange-400" />
+            <Card className="p-8 bg-white/5 border-white/10">
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Clock className="w-8 h-8 text-[#DFC178]" />
                 4-Hour Coordinated Response Across 158 Stakeholders
               </h2>
 
@@ -224,24 +224,24 @@ export default function ManufacturingSupplierDemo() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                     {manufacturingDemoData.stakeholderTiers && (
                       <>
-                        <Card className="p-6 bg-orange-950/30 border-orange-700">
-                          <div className="text-orange-300 text-sm mb-2">Tier 1: Decision Makers</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier1.count}</div>
-                          <div className="text-xs text-orange-200">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 1: Decision Makers</div>
+                          <div className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{manufacturingDemoData.stakeholderTiers.tier1.count}</div>
+                          <div className="text-xs text-white/40">
                             {manufacturingDemoData.stakeholderTiers.tier1.members.join(", ")}
                           </div>
                         </Card>
-                        <Card className="p-6 bg-orange-950/30 border-orange-700">
-                          <div className="text-orange-300 text-sm mb-2">Tier 2: Execution Teams</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier2.count}</div>
-                          <div className="text-xs text-orange-200">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 2: Execution Teams</div>
+                          <div className="text-3xl font-bold text-[#DFC178] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{manufacturingDemoData.stakeholderTiers.tier2.count}</div>
+                          <div className="text-xs text-white/40">
                             {manufacturingDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>
                         </Card>
-                        <Card className="p-6 bg-orange-950/30 border-orange-700">
-                          <div className="text-orange-300 text-sm mb-2">Tier 3: External Partners</div>
-                          <div className="text-3xl font-bold text-gray-900 mb-3">{manufacturingDemoData.stakeholderTiers.tier3.count}</div>
-                          <div className="text-xs text-orange-200">
+                        <Card className="p-6 bg-white/5 border-white/10">
+                          <div className="text-white/60 text-sm mb-2">Tier 3: External Partners</div>
+                          <div className="text-3xl font-bold text-[#2B8A6E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{manufacturingDemoData.stakeholderTiers.tier3.count}</div>
+                          <div className="text-xs text-white/40">
                             {manufacturingDemoData.stakeholderTiers.tier3.members.join(", ")}
                           </div>
                         </Card>
@@ -253,7 +253,7 @@ export default function ManufacturingSupplierDemo() {
                     <Button
                       size="lg"
                       onClick={() => setCurrentAct("outcome")}
-                      className="bg-green-600 hover:bg-green-700 text-gray-900 px-8"
+                      className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] px-8"
                       data-testid="button-view-outcome"
                     >
                       View Impact & ROI
@@ -269,11 +269,11 @@ export default function ManufacturingSupplierDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-green-800/30">
+            <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <TrendingUp className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">$450M Production Saved</h2>
-                <p className="text-xl text-emerald-800">2-day pause vs 30-day production halt</p>
+                <TrendingUp className="w-16 h-16 text-[#2B8A6E] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$450M Production Saved</h2>
+                <p className="text-xl text-[#2B8A6E]">2-day pause vs 30-day production halt</p>
               </div>
 
               <ROIComparison
@@ -283,21 +283,21 @@ export default function ManufacturingSupplierDemo() {
               />
 
               <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <Card className="p-4 bg-green-950/30 border-green-800">
-                  <div className="text-green-300 text-sm mb-1">Production Saved</div>
-                  <div className="text-2xl font-bold text-green-400">$450M</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Production Saved</div>
+                  <div className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$450M</div>
                 </Card>
-                <Card className="p-4 bg-blue-950/30 border-blue-800">
-                  <div className="text-blue-300 text-sm mb-1">Response Time</div>
-                  <div className="text-2xl font-bold text-blue-400">4 hours</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Response Time</div>
+                  <div className="text-2xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>4 hours</div>
                 </Card>
-                <Card className="p-4 bg-purple-950/30 border-purple-800">
-                  <div className="text-purple-300 text-sm mb-1">Vehicles Protected</div>
-                  <div className="text-2xl font-bold text-purple-400">10,000</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Vehicles Protected</div>
+                  <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>10,000</div>
                 </Card>
-                <Card className="p-4 bg-orange-950/30 border-orange-800">
-                  <div className="text-orange-300 text-sm mb-1">Production Pause</div>
-                  <div className="text-2xl font-bold text-orange-400">2 days</div>
+                <Card className="p-4 bg-white/5 border-white/10">
+                  <div className="text-white/60 text-sm mb-1">Production Pause</div>
+                  <div className="text-2xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2 days</div>
                 </Card>
               </div>
 
@@ -306,13 +306,13 @@ export default function ManufacturingSupplierDemo() {
                   size="lg"
                   onClick={resetDemo}
                   variant="outline"
-                  className="border-orange-500 text-orange-400 hover:bg-orange-950/50"
+                  className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10"
                   data-testid="button-replay-demo"
                 >
                   Replay Demo
                 </Button>
                 <Link href="/industry-demos">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700" data-testid="button-explore-more">
+                  <Button size="lg" className="bg-[#0A0F2E] text-white hover:bg-[#141B45] border border-white/20" data-testid="button-explore-more">
                     Explore More Industry Demos
                   </Button>
                 </Link>

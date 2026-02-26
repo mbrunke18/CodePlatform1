@@ -261,7 +261,7 @@ export function ExecutiveWarRoom() {
     switch (status) {
       case 'active': return 'bg-green-500';
       case 'completed': return 'bg-gray-500';
-      case 'new': return 'bg-blue-500';
+      case 'new': return 'bg-[#0A0F2E]';
       case 'acknowledged': return 'bg-orange-500';
       case 'resolved': return 'bg-green-500';
       default: return 'bg-gray-500';
@@ -326,13 +326,13 @@ export function ExecutiveWarRoom() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 dark:text-gray-200">Today's Briefings</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-[#0A0F2E]">
                   {briefings.filter((b: ExecutiveBriefing) => 
                     new Date(b.createdAt).toDateString() === new Date().toDateString()
                   ).length}
                 </p>
               </div>
-              <Brain className="h-8 w-8 text-blue-600" />
+              <Brain className="h-8 w-8 text-[#0A0F2E]" />
             </div>
           </CardContent>
         </Card>
@@ -452,7 +452,7 @@ export function ExecutiveWarRoom() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm">AI Radar</span>
-                    <Badge className="bg-blue-500 text-white">SCANNING</Badge>
+                    <Badge className="bg-[#0A0F2E] text-white">SCANNING</Badge>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm">Command Ready</span>
@@ -566,12 +566,12 @@ export function ExecutiveWarRoom() {
                   <CardDescription>AI-powered strategic analysis and recommendations</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 rounded-lg">
                     <div className="flex items-center mb-2">
-                      <Target className="h-5 w-5 text-blue-600 mr-2" />
-                      <span className="font-medium text-blue-900 dark:text-blue-100">Strategic Opportunity</span>
+                      <Target className="h-5 w-5 text-[#0A0F2E] mr-2" />
+                      <span className="font-medium text-[#0A0F2E] dark:text-blue-100">Strategic Opportunity</span>
                     </div>
-                    <p className="text-sm text-blue-800 dark:text-blue-200">
+                    <p className="text-sm text-[#0A0F2E] dark:text-blue-200">
                       Market analysis indicates 23% growth opportunity in Q2. Recommend accelerating Product Line Alpha expansion.
                     </p>
                   </div>

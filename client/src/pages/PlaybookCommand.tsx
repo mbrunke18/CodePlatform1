@@ -142,14 +142,14 @@ export default function PlaybookCommand() {
 
           <CardContent className="space-y-6">
             {playbook.triggerCriteria && (
-              <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+              <div className="bg-[#0A0F2E] text-white border border-[#E8E4DC] rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <Target className="h-5 w-5 text-[#C9A84C] mt-0.5" />
                   <div>
-                    <div className="font-medium text-amber-800 dark:text-amber-400 mb-1">
+                    <div className="font-medium text-[#DFC178] mb-1">
                       Trigger Criteria
                     </div>
-                    <p className="text-[#C9A84C] dark:text-amber-300 text-sm">
+                    <p className="text-gray-300 text-sm">
                       {playbook.triggerCriteria}
                     </p>
                   </div>
@@ -159,20 +159,20 @@ export default function PlaybookCommand() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                <Clock className="h-5 w-5" />
+                <Clock className="h-5 w-5 text-[#2B8A6E]" />
                 <span>~12 min execution</span>
               </div>
               <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                <Users className="h-5 w-5" />
+                <Users className="h-5 w-5 text-[#2B8A6E]" />
                 <span>Human-led</span>
               </div>
               <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                <Sparkles className="h-5 w-5" />
+                <Sparkles className="h-5 w-5 text-[#2B8A6E]" />
                 <span>AI-assisted</span>
               </div>
               {playbook.preApprovedBudget && (
                 <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
-                  <DollarSign className="h-5 w-5" />
+                  <DollarSign className="h-5 w-5 text-[#2B8A6E]" />
                   <span>${Number(playbook.preApprovedBudget).toLocaleString()}</span>
                 </div>
               )}
@@ -202,12 +202,12 @@ export default function PlaybookCommand() {
                 </div>
               ) : startExecution.isSuccess ? (
                 <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-center gap-3">
-                  <CheckCircle className="h-6 w-6 text-emerald-700" />
+                  <CheckCircle className="h-6 w-6 text-[#2B8A6E]" />
                   <div>
                     <div className="font-medium text-green-800 dark:text-green-400">
                       Execution Started
                     </div>
-                    <p className="text-emerald-800 dark:text-green-300 text-sm">
+                    <p className="text-[#2B8A6E] dark:text-green-300 text-sm">
                       Playbook activation has been recorded. 12-minute timer started.
                     </p>
                   </div>
@@ -215,7 +215,7 @@ export default function PlaybookCommand() {
               ) : (
                 <Button
                   size="lg"
-                  className="w-full md:w-auto"
+                  className="w-full md:w-auto bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                   onClick={() => startExecution.mutate()}
                   disabled={startExecution.isPending}
                   data-testid="button-start-execution"
@@ -248,7 +248,7 @@ export default function PlaybookCommand() {
               )}
               {Array.isArray(playbook.tier3Stakeholders) && playbook.tier3Stakeholders.length > 0 && (
                 <div>
-                  <Badge className="bg-blue-100 text-blue-800 mb-2">Tier 3 - Within 24 Hours</Badge>
+                  <Badge className="bg-[#E8E4DC] text-[#0A0F2E] mb-2">Tier 3 - Within 24 Hours</Badge>
                   <p className="text-sm text-gray-800">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}

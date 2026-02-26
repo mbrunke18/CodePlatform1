@@ -96,17 +96,17 @@ const STAKEHOLDER_ROLES = [
 ];
 
 const PRIORITY_CONFIG = {
-  critical: { label: "Critical", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
-  high: { label: "High", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-  medium: { label: "Medium", color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400" },
-  low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-300" },
+  critical: { label: "Critical", color: "bg-red-100 text-red-700" },
+  high: { label: "High", color: "bg-orange-100 text-orange-700" },
+  medium: { label: "Medium", color: "bg-[#DFC178]/20 text-[#0A0F2E]" },
+  low: { label: "Low", color: "bg-slate-100 text-gray-800" },
 };
 
 const STATUS_CONFIG = {
-  pending: { label: "Pending", icon: Circle, color: "text-gray-800 dark:text-slate-200" },
-  in_progress: { label: "In Progress", icon: Timer, color: "text-blue-500" },
-  completed: { label: "Completed", icon: CheckCircle2, color: "text-green-500" },
-  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-red-500" },
+  pending: { label: "Pending", icon: Circle, color: "text-gray-800" },
+  in_progress: { label: "In Progress", icon: Timer, color: "text-[#0A0F2E]" },
+  completed: { label: "Completed", icon: CheckCircle2, color: "text-[#2B8A6E]" },
+  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-red-600" },
 };
 
 const APPROVAL_TYPES = [
@@ -481,15 +481,15 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           </TabsList>
           
           <TabsContent value="playbook" className="mt-6">
-            <Card className="mb-6">
+            <Card className="mb-6 rounded-none border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="relative">
-                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
+                  <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                   <Input
                     placeholder="Search tasks..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 bg-white border-[#E8E4DC] rounded-none"
                     data-testid="input-search"
                   />
                 </div>
@@ -498,12 +498,12 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
 
             <div className="space-y-4">
           {filteredTasks.length === 0 ? (
-            <Card>
+            <Card className="rounded-none border-[#E8E4DC]">
               <CardContent className="py-16 text-center">
-                <ListChecks className="h-12 w-12 mx-auto mb-4 text-gray-800" />
-                <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">No Tasks Found</h3>
-                <p className="text-gray-800 mb-6">Start by creating your first execution task.</p>
-                <Button onClick={handleOpenCreate} data-testid="button-add-first-task">
+                <ListChecks className="h-12 w-12 mx-auto mb-4 text-[#6B7280]" />
+                <h3 className="text-lg font-medium text-[#0A0F2E] mb-2">No Tasks Found</h3>
+                <p className="text-[#6B7280] mb-6">Start by creating your first execution task.</p>
+                <Button onClick={handleOpenCreate} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-add-first-task">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Task
                 </Button>
@@ -516,15 +516,15 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               const dependencies = task.dependsOn.map(id => tasks.find(t => t.id === id)?.title || id).join(', ');
 
               return (
-                <Card key={task.id} data-testid={`card-task-${task.id}`}>
+                <Card key={task.id} data-testid={`card-task-${task.id}`} className="rounded-none border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <CardContent className="p-4">
                     <div className="flex items-start gap-4">
                       <div className="flex flex-col items-center gap-1 min-w-[40px]">
-                        <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-sm font-bold">
+                        <div className="w-8 h-8 rounded-none bg-[#0A0F2E] flex items-center justify-center text-white text-sm font-bold">
                           {index + 1}
                         </div>
                         {index < filteredTasks.length - 1 && (
-                          <div className="w-0.5 h-8 bg-slate-200 dark:bg-slate-700" />
+                          <div className="w-0.5 h-8 bg-[#E8E4DC]" />
                         )}
                       </div>
                       
@@ -533,30 +533,30 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                               <StatusIcon className={`h-4 w-4 ${STATUS_CONFIG[task.status].color}`} />
-                              <h3 className="font-semibold text-slate-900 dark:text-white">{task.title}</h3>
+                              <h3 className="font-semibold text-[#0A0F2E]">{task.title}</h3>
                             </div>
-                            <p className="text-sm text-gray-800 mb-3">{task.description}</p>
+                            <p className="text-sm text-[#6B7280] mb-3">{task.description}</p>
                             
                             <div className="flex flex-wrap gap-2">
-                              <Badge variant="outline" className="text-xs">
+                              <Badge variant="outline" className="text-[9px] uppercase tracking-wider font-bold border-[#E8E4DC] text-[#6B7280]">
                                 <Users className="h-3 w-3 mr-1" />
                                 {task.assignedRole}
                               </Badge>
-                              <Badge variant="outline" className="text-xs">
+                              <Badge variant="outline" className="text-[9px] uppercase tracking-wider font-bold border-[#E8E4DC] text-[#6B7280]">
                                 <Clock className="h-3 w-3 mr-1" />
                                 {task.estimatedMinutes} min
                               </Badge>
-                              <Badge className={priorityConfig.color}>
+                              <Badge className={`${priorityConfig.color} text-[9px] uppercase tracking-wider font-bold rounded-none`}>
                                 {priorityConfig.label}
                               </Badge>
                               {task.approvalRequired !== 'none' && (
-                                <Badge variant="outline" className="text-xs text-purple-800 border-purple-300">
+                                <Badge variant="outline" className="text-[9px] uppercase tracking-wider font-bold text-[#0A0F2E] border-[#E8E4DC]">
                                   <GitBranch className="h-3 w-3 mr-1" />
                                   {APPROVAL_TYPES.find(a => a.value === task.approvalRequired)?.label}
                                 </Badge>
                               )}
                               {task.dependsOn.length > 0 && (
-                                <Badge variant="outline" className="text-xs text-[#C9A84C] border-amber-300">
+                                <Badge variant="outline" className="text-xs text-[#C9A84C] border-[#C9A84C]/30">
                                   <ArrowRight className="h-3 w-3 mr-1" />
                                   Depends on: {dependencies}
                                 </Badge>
@@ -585,6 +585,45 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                             </Button>
                           </div>
                         </div>
+
+                        <div className="mt-4 pt-4 border-t border-[#E8E4DC] flex items-center justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
+                              <Briefcase className="h-3.5 w-3.5" />
+                              <span>{task.playbookName || 'Global Library'}</span>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            {task.status !== 'completed' && (
+                              <Button 
+                                size="sm" 
+                                className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white h-8 text-[10px] uppercase font-bold tracking-wider rounded-none"
+                                onClick={() => {
+                                  setTasks(tasks.map(t => t.id === task.id ? { ...t, status: 'completed' } : t));
+                                  toast({ title: "Task Completed", description: `"${task.title}" marked as complete.` });
+                                }}
+                              >
+                                <CheckCircle2 className="h-3 w-3 mr-1" />
+                                Mark Complete
+                              </Button>
+                            )}
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="h-8 text-[10px] uppercase font-bold tracking-wider border-[#E8E4DC] text-[#0A0F2E] rounded-none"
+                              onClick={() => {
+                                const statusOrder: Task['status'][] = ['pending', 'in_progress', 'completed', 'blocked'];
+                                const currentIndex = statusOrder.indexOf(task.status);
+                                const nextStatus = statusOrder[(currentIndex + 1) % statusOrder.length];
+                                setTasks(tasks.map(t => t.id === task.id ? { ...t, status: nextStatus } : t));
+                              }}
+                            >
+                              Change Status
+                              <ArrowRight className="h-3 w-3 ml-1" />
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -598,33 +637,33 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           <TabsContent value="library" className="mt-6">
             <div className="space-y-6">
               {/* Library Header with Stats */}
-              <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 border-indigo-200 dark:border-indigo-800">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC]">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                        <BookOpen className="h-5 w-5 text-indigo-600" />
+                      <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <BookOpen className="h-5 w-5 text-[#0A0F2E]" />
                         Enterprise Task Library
                       </h2>
-                      <p className="text-gray-800 dark:text-slate-300 mt-1">
+                      <p className="text-gray-800 mt-1">
                         {libraryStats.total} pre-defined tasks across all IDEA phases. Add tasks to your playbook to ensure everyone knows their role.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Target className="h-3 w-3 mr-1 text-blue-800" />
+                      <Badge variant="outline" className="bg-white">
+                        <Target className="h-3 w-3 mr-1 text-[#0A0F2E]" />
                         {libraryStats.phases.identify} IDENTIFY
                       </Badge>
-                      <Badge variant="outline" className="bg-white dark:bg-slate-900">
+                      <Badge variant="outline" className="bg-white">
                         <Zap className="h-3 w-3 mr-1 text-[#C9A84C]" />
                         {libraryStats.phases.detect} DETECT
                       </Badge>
-                      <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Shield className="h-3 w-3 mr-1 text-emerald-700" />
+                      <Badge variant="outline" className="bg-white">
+                        <Shield className="h-3 w-3 mr-1 text-[#2B8A6E]" />
                         {libraryStats.phases.execute} EXECUTE
                       </Badge>
-                      <Badge variant="outline" className="bg-white dark:bg-slate-900">
-                        <Briefcase className="h-3 w-3 mr-1 text-purple-800" />
+                      <Badge variant="outline" className="bg-white">
+                        <Briefcase className="h-3 w-3 mr-1 text-[#0A0F2E]" />
                         {libraryStats.phases.advance} ADVANCE
                       </Badge>
                     </div>
@@ -702,7 +741,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   return (
                     <Card 
                       key={template.id} 
-                      className={`transition-all ${isAdded ? 'opacity-60 bg-green-50 dark:bg-green-950/20' : 'hover:shadow-md'}`}
+                      className={`transition-all ${isAdded ? 'opacity-60 bg-[#2B8A6E]/10' : 'hover:shadow-md'}`}
                       data-testid={`card-library-task-${template.id}`}
                     >
                       <CardContent className="p-4">
@@ -741,7 +780,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                             variant={isAdded ? "ghost" : "default"}
                             disabled={isAdded}
                             onClick={() => handleAddFromLibrary(template)}
-                            className={isAdded ? "text-emerald-700" : ""}
+                            className={isAdded ? "text-[#2B8A6E]" : ""}
                             data-testid={`button-add-library-task-${template.id}`}
                           >
                             {isAdded ? (
@@ -779,18 +818,18 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             {sequencesLoading ? (
               <Card>
                 <CardContent className="py-16 text-center">
-                  <Loader2 className="h-8 w-8 mx-auto mb-4 text-purple-500 animate-spin" />
+                  <Loader2 className="h-8 w-8 mx-auto mb-4 text-[#C9A84C] animate-spin" />
                   <p className="text-gray-800">Loading execution sequences...</p>
                 </CardContent>
               </Card>
             ) : (
               <div className="space-y-6">
-                <Card className="bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 border-purple-200 dark:border-purple-800">
+                <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/40 dark:to-[#141B45]/40 border-[#C9A84C] dark:border-[#C9A84C]">
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
                         <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                          <Activity className="h-5 w-5 text-purple-800" />
+                          <Activity className="h-5 w-5 text-[#C9A84C]" />
                           Playbook Execution Sequences
                         </h2>
                         <p className="text-gray-800 dark:text-slate-300 mt-1">
@@ -799,13 +838,13 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                       </div>
                       <div className="flex gap-4">
                         <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
-                          <p className="text-2xl font-bold text-purple-800">
+                          <p className="text-2xl font-bold text-[#C9A84C]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
                           <p className="text-xs text-gray-800">Total Playbooks</p>
                         </div>
                         <div className="text-center px-4 py-2 bg-white dark:bg-slate-900 rounded-lg border">
-                          <p className="text-2xl font-bold text-indigo-600">
+                          <p className="text-2xl font-bold text-[#0A0F2E]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.taskCount), 0)?.toLocaleString() ?? '0'}
                           </p>
                           <p className="text-xs text-gray-800">Total Task Sequences</p>
@@ -824,8 +863,8 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const isDefense = /regulatory|brand|compliance|legal/i.test(domain.domainName);
                     const isOffense = /market|growth|revenue|sales/i.test(domain.domainName);
                     const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
-                    const iconColor = isDefense ? "text-blue-800" : isOffense ? "text-orange-600" : "text-purple-800";
-                    const iconBg = isDefense ? "bg-blue-100 dark:bg-blue-900/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-purple-100 dark:bg-purple-900/30";
+                    const iconColor = isDefense ? "text-[#0A0F2E]" : isOffense ? "text-orange-600" : "text-[#C9A84C]";
+                    const iconBg = isDefense ? "bg-blue-100 dark:bg-[#0A0F2E]/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
                     const progressColor = coverage >= 80 ? "bg-green-500" : coverage >= 50 ? "bg-yellow-500" : "bg-red-500";
                     
                     return (

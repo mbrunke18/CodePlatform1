@@ -134,8 +134,8 @@ export default function CrisisDetail() {
   if (crisisLoading) {
     return (
       <PageLayout>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="flex items-center justify-center h-64 bg-[#F8F7F4]">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A0F2E]"></div>
         </div>
       </PageLayout>
     );
@@ -144,12 +144,12 @@ export default function CrisisDetail() {
   if (!crisis) {
     return (
       <PageLayout>
-        <div className="text-center py-12">
-          <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Crisis Not Found</h2>
-          <p className="text-gray-800 mb-4">The requested crisis scenario could not be found.</p>
+        <div className="text-center py-24 bg-[#F8F7F4]">
+          <AlertTriangle className="h-16 w-16 text-red-500 mx-auto mb-6" />
+          <h2 style={CG} className="text-3xl font-bold mb-4 text-[#0A0F2E]">Crisis Not Found</h2>
+          <p className="text-[#6B7280] mb-8 max-w-md mx-auto">The requested crisis scenario could not be found or has been archived.</p>
           <Link href="/crisis">
-            <Button variant="outline">
+            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-8 font-bold tracking-widest text-[10px] uppercase">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Crisis Management
             </Button>
@@ -159,22 +159,30 @@ export default function CrisisDetail() {
     );
   }
 
-  const getStatusBadgeVariant = (status: string) => {
+  const getStatusBadgeStyle = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'active': return 'destructive';
-      case 'monitoring': return 'default';
-      case 'resolved': return 'secondary';
-      case 'draft': return 'outline';
-      default: return 'default';
+      case 'active': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
+      case 'monitoring': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
+      case 'resolved': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
+      default: return { background: "rgba(0,0,0,0.05)", color: "#6B7280" };
+    }
+  };
+
+  const getPriorityStyle = (priority: string) => {
+    switch (priority.toLowerCase()) {
+      case 'high': return 'text-red-600 bg-red-50 font-bold';
+      case 'medium': return 'text-[#C9A84C] bg-[#C9A84C]/5 font-bold';
+      case 'low': return 'text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold';
+      default: return 'text-[#6B7280] bg-gray-50';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high': return 'text-red-700 bg-red-50 dark:bg-red-900/20';
-      case 'medium': return 'text-orange-600 bg-orange-50 dark:bg-orange-900/20';
-      case 'low': return 'text-emerald-700 bg-green-50 dark:bg-green-900/20';
-      default: return 'text-gray-800 bg-gray-50 dark:bg-gray-900/20';
+      case 'high': return 'bg-red-100 text-red-700';
+      case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
+      case 'low': return 'bg-[#2B8A6E]/10 text-[#2B8A6E]';
+      default: return 'bg-gray-100 text-gray-700';
     }
   };
 
@@ -182,139 +190,183 @@ export default function CrisisDetail() {
   const totalTasks = tasks.length;
   const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto" data-testid="crisis-detail-page">
+      <div className="flex-1 bg-[#F8F7F4] overflow-auto" data-testid="crisis-detail-page">
         {/* Header */}
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 text-gray-900 p-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-4">
+        <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden" }}>
+          <div style={{ 
+            position: "absolute", 
+            inset: 0, 
+            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundSize: "32px 32px",
+            opacity: 0.1
+          }} />
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="flex items-center justify-between mb-8">
               <Link href="/crisis">
-                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
+                <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/5 px-0">
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Crisis Center
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase">Back to Crisis Center</span>
                 </Button>
               </Link>
-              <div className="flex items-center gap-3">
-                <Badge 
-                  variant={getStatusBadgeVariant(crisis.status)} 
-                  className="bg-white/20 text-gray-900 border-white/30"
-                >
-                  {crisis.status.toUpperCase()}
-                </Badge>
-                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Share
-                </Button>
-                <Button variant="ghost" className="text-gray-900 hover:bg-white/20">
-                  <Download className="w-4 h-4 mr-2" />
-                  Export
-                </Button>
+              <div className="flex items-center gap-6">
+                <div style={{ ...getStatusBadgeStyle(crisis.status), fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", padding: "4px 12px" }}>
+                  {crisis.status}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/5 h-10 w-10 p-0 rounded-none">
+                    <Share2 className="w-4 h-4" />
+                  </Button>
+                  <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/5 h-10 w-10 p-0 rounded-none">
+                    <Download className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             </div>
             
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold">{crisis.title}</h1>
-              <p className="text-red-500 text-lg">
-                {organization?.name || 'Organization'} • Crisis Response Protocol
-              </p>
-              <div className="flex items-center gap-4 text-sm text-red-500">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  Created {new Date(crisis.createdAt).toLocaleDateString()}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+              <div className="space-y-4">
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Crisis Detail Report</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  Last updated {new Date(crisis.updatedAt).toLocaleDateString()}
+                <h1 style={{ ...CG, color: "#fff", fontSize: "clamp(32px,4vw,56px)", fontWeight: 600, lineHeight: 1.1 }}>
+                  {crisis.title}
+                </h1>
+                <p className="text-[#DFC178] text-lg italic max-w-2xl font-medium">
+                  {organization?.name || 'Organization'} • Strategic Execution Protocol
+                </p>
+                <div className="flex items-center gap-6 text-[10px] font-bold tracking-[0.15em] uppercase text-white/40">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-3 h-3 text-white/20" />
+                    Started: {new Date(crisis.createdAt).toLocaleDateString()}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3 h-3 text-white/20" />
+                    Updated: {new Date(crisis.updatedAt).toLocaleDateString()}
+                  </div>
                 </div>
+              </div>
+
+              <div className="flex items-center gap-6 bg-white/5 border border-white/10 p-6 backdrop-blur-sm min-w-[320px]">
+                 <div className="text-center">
+                    <div style={CG} className="text-4xl font-bold text-[#C9A84C]">{Math.round(progressPercentage)}%</div>
+                    <div className="text-[9px] font-bold uppercase tracking-widest text-white/40">Completion</div>
+                 </div>
+                 <div className="w-px h-12 bg-white/10" />
+                 <div className="flex-1 page-background">
+                    <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-white/60 mb-2">
+                       <span>Tasks</span>
+                       <span>{completedTasks}/{totalTasks}</span>
+                    </div>
+                    <Progress value={progressPercentage} className="h-1 bg-white/10" />
+                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="p-6 max-w-7xl mx-auto space-y-6">
+        <div className="p-12 max-w-7xl mx-auto space-y-12">
           {/* Quick Actions & Progress */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Activity className="h-5 w-5" />
-                  Response Progress
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <Card className="lg:col-span-2 rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+              <CardHeader className="px-0 pt-0 mb-8">
+                <CardTitle style={CG} className="text-2xl font-bold flex items-center gap-3 text-[#0A0F2E]">
+                  <Activity className="h-6 w-6 text-[#2B8A6E]" />
+                  Response Performance
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Task Completion</span>
-                  <span className="text-sm text-gray-800" data-testid="task-progress-counter">{completedTasks} of {totalTasks} tasks</span>
+              <CardContent className="px-0 pb-0">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="p-8 bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div style={CG} className="text-5xl font-bold text-[#0A0F2E] mb-2">{totalTasks}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Total Strategic Tasks</div>
+                  </div>
+                  <div className="p-8 bg-[#2B8A6E]/5 border border-[#2B8A6E]/20">
+                    <div style={CG} className="text-5xl font-bold text-[#2B8A6E] mb-2">{completedTasks}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Validated Completions</div>
+                  </div>
                 </div>
-                <Progress value={progressPercentage} className="h-2" />
-                
-                <div className="grid grid-cols-2 gap-4 mt-6">
-                  <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-800">{totalTasks}</div>
-                    <div className="text-sm text-gray-800">Total Tasks</div>
+
+                <div className="mt-8 space-y-4">
+                  <div className="flex justify-between items-end">
+                     <div>
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Execution Velocity</h4>
+                        <p className="text-sm font-medium text-[#0A0F2E]">Real-time task synchronization</p>
+                     </div>
+                     <span style={CG} className="text-2xl font-bold text-[#0A0F2E]">{Math.round(progressPercentage)}%</span>
                   </div>
-                  <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-emerald-700">{completedTasks}</div>
-                    <div className="text-sm text-gray-800">Completed</div>
-                  </div>
+                  <Progress value={progressPercentage} className="h-1.5 bg-[#E8E4DC]" />
                 </div>
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Settings className="h-5 w-5" />
-                  Quick Actions
+            <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+              <CardHeader className="px-0 pt-0 mb-8">
+                <CardTitle style={CG} className="text-2xl font-bold flex items-center gap-3 text-[#0A0F2E]">
+                  <Settings className="h-6 w-6 text-[#C9A84C]" />
+                  Protocol Control
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="px-0 pb-0 space-y-3">
                 <Button 
-                  className="w-full"
+                  className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] h-14 rounded-none font-bold text-[10px] tracking-widest uppercase px-6 justify-between"
                   onClick={() => updateStatusMutation.mutate('active')}
                   disabled={updateStatusMutation.isPending}
                   data-testid="button-activate-crisis"
                 >
-                  <Play className="w-4 h-4 mr-2" />
                   Activate Response
+                  <Play className="w-4 h-4 text-[#C9A84C]" />
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="w-full"
+                  className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] h-14 rounded-none font-bold text-[10px] tracking-widest uppercase px-6 justify-between"
                   onClick={() => updateStatusMutation.mutate('monitoring')}
                   disabled={updateStatusMutation.isPending}
                   data-testid="button-monitor-crisis"
                 >
-                  <Eye className="w-4 h-4 mr-2" />
                   Monitor Situation
+                  <Eye className="w-4 h-4" />
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="w-full"
+                  className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] h-14 rounded-none font-bold text-[10px] tracking-widest uppercase px-6 justify-between"
                   onClick={() => updateStatusMutation.mutate('resolved')}
                   disabled={updateStatusMutation.isPending}
                   data-testid="button-resolve-crisis"
                 >
-                  <CheckCircle className="w-4 h-4 mr-2" />
                   Mark Resolved
+                  <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
                 </Button>
-                <Separator className="my-3" />
-                <Button variant="ghost" className="w-full text-left justify-start">
-                  <Bell className="w-4 h-4 mr-2" />
-                  Notification Settings
-                </Button>
+                <div className="pt-4 mt-4 border-t border-[#F8F7F4]">
+                   <Button variant="ghost" className="w-full text-[#6B7280] hover:text-[#0A0F2E] hover:bg-transparent font-bold text-[10px] tracking-widest uppercase justify-center">
+                      <Bell className="w-4 h-4 mr-2" />
+                      Protocol Notifications
+                   </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
 
           {/* Main Content Tabs */}
-          <Tabs defaultValue="overview" className="space-y-4">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="tasks" data-testid="nav-item-tasks">Tasks ({totalTasks})</TabsTrigger>
-              <TabsTrigger value="timeline">Timeline</TabsTrigger>
-              <TabsTrigger value="analysis">Analysis</TabsTrigger>
+          <Tabs defaultValue="overview" className="space-y-8">
+            <TabsList className="bg-transparent border-b border-[#E8E4DC] rounded-none h-auto p-0 gap-12">
+              {['overview', 'tasks', 'timeline', 'analysis'].map((tab) => (
+                <TabsTrigger 
+                  key={tab}
+                  value={tab} 
+                  className="data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none px-0 py-5 text-[10px] font-bold tracking-[0.25em] uppercase text-[#6B7280]"
+                  data-testid={tab === 'tasks' ? 'nav-item-tasks' : undefined}
+                >
+                  {tab === 'tasks' ? `Tasks (${totalTasks})` : tab}
+                </TabsTrigger>
+              ))}
             </TabsList>
 
             <TabsContent value="overview" className="space-y-6">
@@ -401,7 +453,7 @@ export default function CrisisDetail() {
 
               {tasksLoading ? (
                 <div className="text-center py-8">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#0A0F2E] mx-auto"></div>
                 </div>
               ) : tasks.length === 0 ? (
                 <Card>
@@ -431,7 +483,7 @@ export default function CrisisDetail() {
                                 data-testid={`button-toggle-task-${task.id}`}
                               >
                                 {task.status === 'Completed' ? (
-                                  <CheckCircle className="h-5 w-5 text-emerald-700" />
+                                  <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                                 ) : (
                                   <div className="h-5 w-5 border-2 border-gray-300 rounded-full" />
                                 )}
@@ -469,7 +521,7 @@ export default function CrisisDetail() {
                 <CardContent>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full mt-2"></div>
                       <div className="flex-1 page-background">
                         <div className="text-sm font-medium">Crisis Detected</div>
                         <div className="text-xs text-gray-800">{new Date(crisis.createdAt).toLocaleString()}</div>
@@ -479,7 +531,7 @@ export default function CrisisDetail() {
                     
                     {crisis.status === 'active' && (
                       <div className="flex items-start gap-4">
-                        <div className="w-2 h-2 bg-orange-600 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-[#C9A84C] rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Response Activated</div>
                           <div className="text-xs text-gray-800">{new Date().toLocaleString()}</div>
@@ -490,7 +542,7 @@ export default function CrisisDetail() {
 
                     {crisis.status === 'resolved' && (
                       <div className="flex items-start gap-4">
-                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-[#2B8A6E] rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Crisis Resolved</div>
                           <div className="text-xs text-gray-800">{new Date(crisis.updatedAt).toLocaleString()}</div>

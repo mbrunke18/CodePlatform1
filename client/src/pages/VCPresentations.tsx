@@ -24,6 +24,11 @@ import {
 } from 'lucide-react';
 import { BrandStamp } from "@/components/BrandStamp";
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 export default function VCPresentations() {
   const investmentHighlights = [
     {
@@ -31,28 +36,28 @@ export default function VCPresentations() {
       value: "$847B",
       subtitle: "Enterprise intelligence market size",
       growth: "+18.2% CAGR",
-      color: "text-blue-800"
+      color: "text-[#C9A84C]"
     },
     {
       title: "Current Traction",
       value: "178",
       subtitle: "Enterprise components deployed",
       growth: "98/100 quality score",
-      color: "text-emerald-700"
+      color: "text-[#2B8A6E]"
     },
     {
       title: "Competitive Advantage",
       value: "4 min",
       subtitle: "Crisis response vs 6-month traditional",
       growth: "15,000x faster",
-      color: "text-purple-800"
+      color: "text-[#0A0F2E]"
     },
     {
       title: "AI Accuracy",
       value: "85-92%",
       subtitle: "Strategic decision intelligence",
       growth: "Industry leading",
-      color: "text-orange-600"
+      color: "text-[#C9A84C]"
     }
   ];
 
@@ -64,7 +69,7 @@ export default function VCPresentations() {
       duration: "18 min",
       status: "Ready",
       type: "Primary Deck",
-      icon: <Presentation className="w-6 h-6 text-blue-500" />
+      icon: <Presentation className="w-6 h-6 text-[#C9A84C]" />
     },
     {
       title: "Financial Projections Model",
@@ -73,7 +78,7 @@ export default function VCPresentations() {
       duration: "8 min", 
       status: "Updated",
       type: "Financial",
-      icon: <BarChart3 className="w-6 h-6 text-green-500" />
+      icon: <BarChart3 className="w-6 h-6 text-[#2B8A6E]" />
     },
     {
       title: "Product Demo Presentation",
@@ -82,7 +87,7 @@ export default function VCPresentations() {
       duration: "12 min",
       status: "Live Demo",
       type: "Product",
-      icon: <Play className="w-6 h-6 text-purple-500" />
+      icon: <Play className="w-6 h-6 text-[#C9A84C]" />
     },
     {
       title: "Competitive Analysis Deep Dive",
@@ -91,7 +96,7 @@ export default function VCPresentations() {
       duration: "15 min",
       status: "Ready",
       type: "Market Analysis",
-      icon: <Target className="w-6 h-6 text-red-500" />
+      icon: <Target className="w-6 h-6 text-[#0A0F2E]" />
     },
     {
       title: "Technology Architecture Overview",
@@ -100,7 +105,7 @@ export default function VCPresentations() {
       duration: "14 min",
       status: "Ready",
       type: "Technical",
-      icon: <Building2 className="w-6 h-6 text-teal-500" />
+      icon: <Building2 className="w-6 h-6 text-[#2B8A6E]" />
     },
     {
       title: "Market Expansion Strategy",
@@ -109,7 +114,7 @@ export default function VCPresentations() {
       duration: "10 min",
       status: "In Review",
       type: "Growth Strategy",
-      icon: <Globe className="w-6 h-6 text-indigo-500" />
+      icon: <Globe className="w-6 h-6 text-[#C9A84C]" />
     }
   ];
 
@@ -123,126 +128,142 @@ export default function VCPresentations() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="p-8">
-          {/* VC Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center">
-                <Briefcase className="w-7 h-7 text-gray-900" />
+      <div className="flex-1 page-background overflow-auto bg-[#F8F7F4]">
+        {/* Navy Hero Section */}
+        <div className="py-16 px-8 text-white relative overflow-hidden" style={{ background: "#0A0F2E" }}>
+          {/* Gold dot grid overlay */}
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+          
+          <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex items-center space-x-6">
+                <div className="w-16 h-16 bg-[#C9A84C] rounded-none flex items-center justify-center shadow-lg">
+                  <Briefcase className="w-8 h-8 text-[#0A0F2E]" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive</span>
+                  </div>
+                  <h1 className="text-4xl md:text-5xl font-light mb-2" style={CG}>Investor Relations Center</h1>
+                  <p className="text-gray-400 text-lg max-w-xl">Series B Presentation Materials & Financial Projections</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Investor Relations Center</h1>
-                <p className="text-gray-800 dark:text-gray-300">Series B Presentation Materials & Financial Projections</p>
+              <div className="flex items-center space-x-4">
+                <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C]/50 px-4 py-1">
+                  <Star className="w-3 h-3 mr-2" />
+                  Series B Ready
+                </Badge>
+                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold px-4 py-1">
+                  Investment Grade
+                </Badge>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge variant="outline" className="text-yellow-600 border-yellow-500/50">
-                <Star className="w-3 h-3 mr-1" />
-                Series B Ready
-              </Badge>
-              <Badge className="bg-yellow-600 text-gray-900">
-                Investment Grade
-              </Badge>
             </div>
           </div>
+        </div>
 
+        <div className="p-8 max-w-7xl mx-auto">
           {/* Investment Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 -mt-16 relative z-20">
             {investmentHighlights.map((highlight, index) => (
-              <Card key={index} className="bg-white/90 dark:bg-slate-800/90 backdrop-blur border-slate-200 dark:border-slate-700">
+              <Card key={index} className="bg-white border-[#E8E4DC] shadow-sm rounded-none">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-gray-800 dark:text-gray-200">{highlight.title}</CardTitle>
+                  <CardTitle className="text-xs uppercase tracking-widest font-bold text-[#6B7280]">{highlight.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{highlight.value}</div>
-                  <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">{highlight.subtitle}</div>
-                  <div className={`text-sm font-medium ${highlight.color}`}>{highlight.growth}</div>
+                  <div className="text-3xl font-light mb-1" style={{ ...CG, color: highlight.color.includes('[') ? highlight.color.split('-')[1].replace('[', '').replace(']', '') : undefined }}>{highlight.value}</div>
+                  <div className="text-sm text-[#6B7280] mb-2">{highlight.subtitle}</div>
+                  <div className={`text-sm font-semibold ${highlight.color}`}>{highlight.growth}</div>
                 </CardContent>
               </Card>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Pitch Materials Library */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <FileText className="w-5 h-5 mr-2 text-blue-500" />
-                  Series B Presentation Materials
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {pitchMaterials.map((material, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                      <div className="flex items-center space-x-3">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
+                <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">Documentation</span>
+              </div>
+              <h2 className="text-3xl font-light text-[#0A0F2E]" style={CG}>Series B Presentation Materials</h2>
+              
+              <div className="space-y-4">
+                {pitchMaterials.map((material, index) => (
+                  <div key={index} className="flex items-center justify-between p-5 bg-white border border-[#E8E4DC] group hover:border-[#C9A84C] transition-colors">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-10 h-10 bg-[#F8F7F4] flex items-center justify-center group-hover:bg-[#0A0F2E] transition-colors">
                         {material.icon}
-                        <div>
-                          <h4 className="font-semibold text-gray-900 dark:text-white">{material.title}</h4>
-                          <p className="text-sm text-gray-800 dark:text-gray-200">{material.description}</p>
-                          <div className="flex items-center space-x-4 text-xs text-gray-800 mt-1">
-                            <span>{material.slides} slides</span>
-                            <span>{material.duration}</span>
-                            <Badge variant="outline">{material.type}</Badge>
-                          </div>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[#0A0F2E]">{material.title}</h4>
+                        <p className="text-sm text-[#6B7280]">{material.description}</p>
+                        <div className="flex items-center space-x-4 text-[10px] uppercase tracking-wider text-[#6B7280] mt-2 font-bold">
+                          <span>{material.slides} SLIDES</span>
+                          <span className="w-1 h-1 bg-[#E8E4DC] rounded-full"></span>
+                          <span>{material.duration}</span>
+                          <span className="w-1 h-1 bg-[#E8E4DC] rounded-full"></span>
+                          <span className="text-[#C9A84C]">{material.type}</span>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <Badge variant={material.status === 'Ready' ? 'default' : 'secondary'}>
-                          {material.status}
-                        </Badge>
-                        <Button size="sm" variant="outline" data-testid={`button-download-${material.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                          <Download className="w-3 h-3" />
-                        </Button>
-                      </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="flex items-center space-x-3">
+                      <Badge variant="outline" className={`rounded-none px-3 border-[#E8E4DC] ${material.status === 'Ready' ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>
+                        {material.status}
+                      </Badge>
+                      <Button size="icon" variant="ghost" className="text-[#0A0F2E] hover:bg-[#F8F7F4]" data-testid={`button-download-${material.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Download className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Investment Thesis */}
-            <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center text-gray-900 dark:text-white">
-                  <Rocket className="w-5 h-5 mr-2 text-purple-500" />
-                  Investment Thesis & Value Proposition
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4 mb-6">
-                  {keyInvestmentThesis.map((point, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                      <CheckCircle className="w-4 h-4 mt-0.5 text-green-500 flex-shrink-0" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{point}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="space-y-3">
-                  <Button className="w-full" data-testid="button-full-investor-package">
-                    <Crown className="w-4 h-4 mr-2" />
-                    Download Complete Investor Package
-                  </Button>
-                  <Button className="w-full" variant="outline" data-testid="button-schedule-presentation">
-                    <Clock className="w-4 h-4 mr-2" />
-                    Schedule Investor Presentation
-                  </Button>
-                </div>
-
-                <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-                  <div className="flex items-center text-green-800 dark:text-green-200">
-                    <TrendingUp className="w-4 h-4 mr-2" />
-                    <span className="text-sm font-medium">Investment Readiness Score: 96/100</span>
+            <div className="space-y-6">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
+                <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">Value Proposition</span>
+              </div>
+              <h2 className="text-3xl font-light text-[#0A0F2E]" style={CG}>Investment Thesis</h2>
+              
+              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+                <CardContent className="p-8">
+                  <div className="space-y-5 mb-10">
+                    {keyInvestmentThesis.map((point, index) => (
+                      <div key={index} className="flex items-start space-x-4">
+                        <div className="mt-1 flex-shrink-0">
+                          <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
+                        </div>
+                        <span className="text-[#141B45] leading-relaxed">{point}</span>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-xs text-emerald-800 dark:text-green-300 mt-1">
-                    Platform demonstrates clear market leadership with unprecedented competitive advantages in enterprise intelligence and crisis response.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none h-12" data-testid="button-full-investor-package">
+                      <Crown className="w-4 h-4 mr-2" />
+                      Download Package
+                    </Button>
+                    <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none h-12" data-testid="button-schedule-presentation">
+                      <Clock className="w-4 h-4 mr-2" />
+                      Schedule Presentation
+                    </Button>
+                  </div>
+
+                  <div className="mt-10 p-6 bg-[#2B8A6E]/5 border-l-4 border-[#2B8A6E]">
+                    <div className="flex items-center text-[#2B8A6E] mb-2">
+                      <TrendingUp className="w-5 h-5 mr-3" />
+                      <span className="text-lg font-bold" style={CG}>Investment Readiness: 96/100</span>
+                    </div>
+                    <p className="text-sm text-[#141B45] italic opacity-80 leading-relaxed">
+                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in enterprise intelligence and crisis response."
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>

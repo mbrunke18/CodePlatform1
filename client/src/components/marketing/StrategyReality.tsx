@@ -190,10 +190,10 @@ export function StrategyReality() {
             </ul>
           </div>
 
-          <div className=" border border-emerald-500/30 rounded-2xl p-8">
+          <div className=" border border-[#2B8A6E]/30 rounded-2xl p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-emerald-500/10 rounded-lg">
-                <Target className="w-6 h-6 text-emerald-500" />
+              <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+                <Target className="w-6 h-6 text-[#2B8A6E]" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">Execution OS: 12 Minutes</h3>
             </div>
@@ -203,19 +203,19 @@ export function StrategyReality() {
             </p>
             <ul className="space-y-3 text-gray-800">
               <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
                 <span>170 pre-built playbooks across 9 domains</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
                 <span>Stakeholders mapped before situations occur</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
                 <span>Tasks execute in parallel, not serial</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
                 <span>Real-time coordination, instant alignment</span>
               </li>
             </ul>
@@ -342,7 +342,7 @@ export function StrategyRealityHero() {
           <ArrowRight className="w-8 h-8 text-gray-800" />
           
           <div className="text-left">
-            <p className="text-4xl md:text-5xl font-bold text-emerald-500">12m</p>
+            <p className="text-4xl md:text-5xl font-bold text-[#2B8A6E]">12m</p>
             <p className="text-gray-800 text-sm">With Execution OS</p>
           </div>
         </motion.div>
@@ -370,8 +370,8 @@ export function StrategyToIDEA() {
   const mapping = [
     {
       phase: "IDENTIFY",
-      color: "bg-blue-500",
-      textColor: "text-blue-500",
+      color: "bg-[#0A0F2E]",
+      textColor: "text-[#0A0F2E]",
       borderColor: "border-blue-500/30",
       traditionalWork: ["Work AROUND", "Work BEFORE"],
       mPlatform: "Pre-built playbooks, stakeholder mapping, decision workflows staged before situations occur",
@@ -386,17 +386,17 @@ export function StrategyToIDEA() {
     },
     {
       phase: "EXECUTE",
-      color: "bg-emerald-500",
-      textColor: "text-emerald-500",
-      borderColor: "border-emerald-500/30",
+      color: "bg-[#2B8A6E]",
+      textColor: "text-[#2B8A6E]",
+      borderColor: "border-[#2B8A6E]/30",
       traditionalWork: ["Work to ALIGN", "Work to SHARE", "Work to IMPLEMENT", "Work BEYOND"],
       mPlatform: "Instant stakeholder notification, parallel task execution, real-time coordination",
     },
     {
       phase: "ADVANCE",
-      color: "bg-purple-500",
-      textColor: "text-purple-500",
-      borderColor: "border-purple-500/30",
+      color: "bg-[#0A0F2E]",
+      textColor: "text-[#C9A84C]",
+      borderColor: "border-[#C9A84C]/30",
       traditionalWork: ["Work AFTER"],
       mPlatform: "Automated debriefs, lessons learned capture, playbook refinement",
     },

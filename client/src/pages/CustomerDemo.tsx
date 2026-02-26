@@ -74,10 +74,10 @@ const IDEA_STORY = [
     title: "Your Playbooks Are Ready Before You Need Them",
     subtitle: "170 templates customized for your organization",
     phase: "IDENTIFY",
-    phaseColor: "bg-violet-500",
+    phaseColor: "bg-[#C9A84C]",
     icon: BookOpen,
-    color: "text-violet-400",
-    bgColor: "bg-violet-500/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/20",
     time: 30,
     description: "M comes with 170 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
     roleWins: [
@@ -105,10 +105,10 @@ const IDEA_STORY = [
     title: "AI Watches. You Approve.",
     subtitle: "Never miss a signal that matters",
     phase: "DETECT",
-    phaseColor: "bg-blue-500",
+    phaseColor: "bg-[#DFC178]",
     icon: Radar,
-    color: "text-blue-400",
-    bgColor: "bg-blue-500/20",
+    color: "text-[#DFC178]",
+    bgColor: "bg-[#DFC178]/20",
     time: 50,
     description: "M's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
     roleWins: [
@@ -129,10 +129,10 @@ const IDEA_STORY = [
     title: "See The Future. Run What-If Scenarios.",
     subtitle: "Predictive intelligence for proactive leadership",
     phase: "PREDICT",
-    phaseColor: "bg-purple-500",
+    phaseColor: "bg-[#C9A84C]",
     icon: TrendingUp,
-    color: "text-purple-400",
-    bgColor: "bg-purple-500/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/20",
     time: 75,
     description: "Execution OS forecasts which triggers are most likely to fire in the next 30, 60, and 90 days. Run what-if scenarios to see how your organization would respond. Get your team aligned BEFORE the crisis—not during it.",
     roleWins: [
@@ -160,10 +160,10 @@ const IDEA_STORY = [
     title: "One Click. 12 Minutes. Everyone Aligned.",
     subtitle: "Execution OS handles the coordination so you handle the crisis",
     phase: "EXECUTE",
-    phaseColor: "bg-emerald-500",
+    phaseColor: "bg-[#2B8A6E]",
     icon: Zap,
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-500/20",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/20",
     time: 120,
     description: "When you activate a playbook, Execution OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
     roleWins: [
@@ -191,10 +191,10 @@ const IDEA_STORY = [
     title: "Every Execution Makes You Stronger",
     subtitle: "Institutional learning that stays with the company",
     phase: "ADVANCE",
-    phaseColor: "bg-amber-500",
+    phaseColor: "bg-[#DFC178]",
     icon: Brain,
-    color: "text-amber-400",
-    bgColor: "bg-amber-500/20",
+    color: "text-[#DFC178]",
+    bgColor: "bg-[#DFC178]/20",
     time: 160,
     description: "After each execution, Execution OS captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your playbooks get better every time.",
     roleWins: [
@@ -316,7 +316,7 @@ export default function CustomerDemo() {
   const StageIcon = currentStage.icon;
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#0A0F2E] flex flex-col text-white">
       <StandardNav />
       
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
@@ -325,26 +325,26 @@ export default function CustomerDemo() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-blue-500 text-gray-900 mb-3">
+            <Badge className="bg-[#C9A84C] text-[#0A0F2E] mb-3">
               Executive Demo — Execution Confidence
             </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-testid="heading-customer-demo">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-customer-demo" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Execute Strategy at the Speed of Disruption
             </h1>
-            <p className="text-lg text-gray-800">
+            <p className="text-lg text-white/80">
               From strategic event to coordinated response in 12 minutes. Success favors the prepared.
             </p>
           </div>
 
           {/* Playback Controls */}
-          <Card className="bg-white border-gray-200 mb-6">
+          <Card className="bg-white/5 border-white/10 mb-6">
             <CardContent className="p-4">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-3">
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-emerald-600 hover:bg-emerald-700"
+                      className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A]"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />
@@ -354,7 +354,7 @@ export default function CustomerDemo() {
                     <Button
                       onClick={() => setIsPlaying(false)}
                       variant="outline"
-                      className="border-slate-600 text-gray-900 hover:bg-slate-800"
+                      className="border-white/20 text-white hover:bg-white/10"
                       data-testid="button-pause-demo"
                     >
                       <Pause className="h-4 w-4 mr-2" />
@@ -365,7 +365,7 @@ export default function CustomerDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-gray-800'}`}
+                    className={`text-sm ${manualMode ? 'text-[#C9A84C]' : 'text-white/60'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode
@@ -374,7 +374,7 @@ export default function CustomerDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={handleReset}
-                    className="text-gray-800"
+                    className="text-white/60 hover:text-white"
                     data-testid="button-reset-demo"
                   >
                     <RotateCcw className="h-4 w-4" />
@@ -383,14 +383,14 @@ export default function CustomerDemo() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-800">Speed:</span>
+                    <span className="text-xs text-white/60">Speed:</span>
                     {[1, 2, 4].map((speed) => (
                       <Button
                         key={speed}
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-gray-800'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#C9A84C] bg-[#C9A84C]/20' : 'text-white/60'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -398,16 +398,16 @@ export default function CustomerDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg">
-                    <Clock className="h-4 w-4 text-gray-800" />
-                    <span className="text-gray-900 font-mono text-sm">
+                  <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg">
+                    <Clock className="h-4 w-4 text-[#C9A84C]" />
+                    <span className="text-white font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
                     </span>
-                    <span className="text-gray-800 text-xs">/ 3:00</span>
+                    <span className="text-white/40 text-xs">/ 3:00</span>
                   </div>
                 </div>
               </div>
-              <Progress value={(elapsedTime / DEMO_DURATION) * 100} className="h-1 mt-3" />
+              <Progress value={(elapsedTime / DEMO_DURATION) * 100} className="h-1 mt-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
             </CardContent>
           </Card>
 
@@ -425,8 +425,8 @@ export default function CustomerDemo() {
                 }}
                 className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   idx === currentStageIndex
-                    ? `${stage.phaseColor} text-gray-900`
-                    : 'bg-gray-50 text-gray-800 hover:bg-slate-700'
+                    ? `${stage.phaseColor} text-[#0A0F2E]`
+                    : 'bg-white/5 text-white/60 hover:bg-white/10'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -437,14 +437,14 @@ export default function CustomerDemo() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="border-b border-gray-200 pb-4">
+              <Card className="bg-white/5 border-white/10">
+                <CardHeader className="border-b border-white/10 pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <Badge className={`${currentStage.phaseColor} text-gray-900`}>
+                      <Badge className={`${currentStage.phaseColor} text-[#0A0F2E]`}>
                         {currentStage.phase}
                       </Badge>
-                      <span className="text-gray-800 text-sm">
+                      <span className="text-white/60 text-sm">
                         {currentStage.beat} — {currentStageIndex + 1} of {IDEA_STORY.length}
                       </span>
                     </div>
@@ -455,7 +455,7 @@ export default function CustomerDemo() {
                           size="sm"
                           onClick={handlePrevStage}
                           disabled={currentStageIndex === 0}
-                          className="text-gray-800"
+                          className="text-white/60 hover:text-white"
                           data-testid="button-prev-stage"
                         >
                           ← Back
@@ -471,7 +471,7 @@ export default function CustomerDemo() {
                             setShowConfetti(true);
                             setTimeout(() => setShowConfetti(false), 5000);
                           }}
-                          className="text-gray-800"
+                          className="text-white/60 hover:text-white"
                           data-testid="button-skip-to-end"
                         >
                           <SkipForward className="h-4 w-4 mr-1" />
@@ -480,7 +480,7 @@ export default function CustomerDemo() {
                       </div>
                     )}
                   </div>
-                  <Progress value={progress} className="h-1 mt-4" />
+                  <Progress value={progress} className="h-1 mt-4 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
                 </CardHeader>
                 
                 <CardContent className="p-6">
@@ -497,13 +497,13 @@ export default function CustomerDemo() {
                           <StageIcon className={`h-8 w-8 ${currentStage.color}`} />
                         </div>
                         <div className="flex-1">
-                          <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                          <h2 className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                             {currentStage.title}
                           </h2>
                           <p className={`text-lg ${currentStage.color} mb-3`}>
                             {currentStage.subtitle}
                           </p>
-                          <p className="text-gray-800 leading-relaxed">
+                          <p className="text-white/80 leading-relaxed">
                             {currentStage.description}
                           </p>
                         </div>
@@ -511,26 +511,26 @@ export default function CustomerDemo() {
                       
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className="bg-gray-50 rounded-lg p-4 text-center">
-                            <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
-                            <div className="text-xs text-gray-800">{metric.label}</div>
+                          <div key={idx} className="bg-white/5 rounded-lg p-4 text-center border border-white/10">
+                            <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
+                            <div className="text-xs text-white/40">{metric.label}</div>
                           </div>
                         ))}
                       </div>
 
                       {/* Role-Specific Wins */}
-                      <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 mb-4">
+                      <div className="bg-[#0A0F2E] border border-[#C9A84C]/30 rounded-lg p-4 mb-4">
                         <div className="flex items-center gap-2 mb-3">
-                          <UserCheck className="h-4 w-4 text-blue-400" />
-                          <span className="font-medium text-gray-900">What This Means For You</span>
+                          <UserCheck className="h-4 w-4 text-[#C9A84C]" />
+                          <span className="font-medium text-white">What This Means For You</span>
                         </div>
                         <div className="space-y-2">
                           {currentStage.roleWins.map((win, idx) => (
                             <div key={idx} className="flex items-start gap-2 text-sm">
-                              <Badge variant="outline" className="text-xs border-blue-500/50 text-blue-300 flex-shrink-0">
+                              <Badge variant="outline" className="text-xs border-[#C9A84C]/50 text-[#C9A84C] flex-shrink-0">
                                 {win.role}
                               </Badge>
-                              <span className="text-gray-800">{win.benefit}</span>
+                              <span className="text-white/80">{win.benefit}</span>
                             </div>
                           ))}
                         </div>
@@ -538,89 +538,18 @@ export default function CustomerDemo() {
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
-                        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <div className="bg-white/5 rounded-lg p-4 mb-4 border border-white/10">
                           <div className="flex items-center gap-2 mb-3">
-                            <Settings className="h-4 w-4 text-violet-400" />
-                            <span className="font-medium text-gray-900">{currentStage.smartDefaults.title}</span>
+                            <Settings className="h-4 w-4 text-[#DFC178]" />
+                            <span className="font-medium text-white">{currentStage.smartDefaults.title}</span>
                           </div>
-                          <div className="space-y-2">
+                          <div className="space-y-3">
                             {currentStage.smartDefaults.items.map((item, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-sm">
-                                <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                                <div>
-                                  <span className="text-gray-900">{item.domain}:</span>{' '}
-                                  <span className="text-gray-800">{item.defaults}</span>
-                                </div>
+                              <div key={idx} className="text-sm">
+                                <div className="font-semibold text-white/90">{item.domain}</div>
+                                <div className="text-white/60">{item.defaults}</div>
                               </div>
                             ))}
-                          </div>
-                        </div>
-                      )}
-                      
-                      {!isComplete ? (
-                        <Button
-                          onClick={handleNextStage}
-                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-gray-900 py-6 text-lg"
-                          data-testid="button-next-stage"
-                        >
-                          {currentStageIndex === IDEA_STORY.length - 2 ? 'See the Result' : 'Continue'}
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Button>
-                      ) : (
-                        <div className="space-y-4">
-                          <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4 text-center">
-                            <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
-                            <p className="text-emerald-400 font-medium text-lg">Success Favors the Prepared</p>
-                            <p className="text-gray-800 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
-                          </div>
-                          
-                          {/* Pilot Program Options */}
-                          <div className="bg-gray-50 rounded-lg p-4">
-                            <p className="text-gray-900 font-medium mb-3">Start With a Founding Partner Pilot</p>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                              <div className="p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/30">
-                                <div className="text-sm font-medium text-gray-900 mb-1">90-Day Pilot</div>
-                                <div className="text-xs text-gray-800 mb-2">5 playbooks, 25 users</div>
-                                <div className="text-emerald-400 text-sm font-medium">$75K</div>
-                                <div className="text-xs text-emerald-400/70">100% credited to Year 1</div>
-                              </div>
-                              <div className="p-3 bg-gray-50 rounded-lg border border-slate-600">
-                                <div className="text-sm font-medium text-gray-900 mb-1">Enterprise</div>
-                                <div className="text-xs text-gray-800 mb-2">Single domain</div>
-                                <div className="text-blue-400 text-sm font-medium">$250K/yr</div>
-                              </div>
-                              <div className="p-3 bg-gray-50 rounded-lg border border-blue-500/30">
-                                <div className="text-sm font-medium text-gray-900 mb-1">Enterprise Plus</div>
-                                <div className="text-xs text-gray-800 mb-2">Multi-domain</div>
-                                <div className="text-blue-400 text-sm font-medium">$450K/yr</div>
-                              </div>
-                              <div className="p-3 bg-violet-900/30 rounded-lg border border-violet-500/30">
-                                <div className="text-sm font-medium text-gray-900 mb-1">Global</div>
-                                <div className="text-xs text-gray-800 mb-2">All 170 playbooks</div>
-                                <div className="text-violet-400 text-sm font-medium">Custom</div>
-                                <div className="text-xs text-violet-400/70">$750K-$1.5M/yr</div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="flex gap-3">
-                            <Button
-                              onClick={() => setLocation('/contact')}
-                              className="flex-1 bg-emerald-600 hover:bg-emerald-700"
-                              data-testid="button-schedule-pilot"
-                            >
-                              <Target className="mr-2 h-4 w-4" />
-                              Schedule a Conversation
-                            </Button>
-                            <Button
-                              onClick={() => setLocation('/playbook-library')}
-                              variant="outline"
-                              className="flex-1 border-slate-600 text-gray-800"
-                              data-testid="button-explore-playbooks"
-                            >
-                              <BookOpen className="mr-2 h-4 w-4" />
-                              Explore Playbooks
-                            </Button>
                           </div>
                         </div>
                       )}
@@ -631,102 +560,93 @@ export default function CustomerDemo() {
             </div>
 
             <div className="space-y-6">
-              {/* Value Recovered */}
-              <Card className="bg-gradient-to-br border-emerald-500/30">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-emerald-400" />
-                    Value Recovered Per Event
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {VALUE_RECOVERED.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                          <item.icon className="h-4 w-4 text-emerald-400" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">{item.title}: <span className="text-emerald-400">{item.value}</span></div>
-                          <div className="text-xs text-gray-800">{item.description}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Stakeholder Response - only show during EXECUTE */}
-              {currentStageIndex >= 3 && (
-                <Card className="bg-white border-gray-200">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                      <Users className="h-5 w-5 text-blue-400" />
-                      Live Stakeholder Response
+              {/* Execution Status Card */}
+              <Card className="bg-white/5 border-white/10 overflow-hidden">
+                <CardHeader className="bg-white/5 border-b border-white/10 p-4">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-semibold flex items-center gap-2 text-white">
+                      <Zap className="h-4 w-4 text-[#2B8A6E]" />
+                      EXECUTION STATUS
                     </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 max-h-48 overflow-y-auto">
-                      {STAKEHOLDER_ACKNOWLEDGMENTS.map((stakeholder, idx) => {
-                        const isAcknowledged = acknowledgedStakeholders.some(s => s.name === stakeholder.name);
-                        return (
-                          <div 
-                            key={idx}
-                            className={`p-2 rounded-lg flex items-center gap-2 transition-all ${
-                              isAcknowledged ? 'bg-emerald-900/30' : 'bg-gray-50'
-                            }`}
-                          >
-                            <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-emerald-400' : 'bg-slate-600'}`} />
-                            <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-gray-900 truncate">{stakeholder.name}</div>
-                              <div className="text-xs text-gray-800 truncate">{stakeholder.role}</div>
-                            </div>
-                            {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />}
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div className="mt-3 pt-3 border-t border-gray-200">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-800">Acknowledged</span>
-                        <span className="text-gray-900 font-medium">{acknowledgedStakeholders.length} / {STAKEHOLDER_ACKNOWLEDGMENTS.length}</span>
-                      </div>
-                      <Progress value={(acknowledgedStakeholders.length / STAKEHOLDER_ACKNOWLEDGMENTS.length) * 100} className="h-2 mt-2" />
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* Pilot Options */}
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                    <Target className="h-5 w-5 text-violet-400" />
-                    Start With a Pilot
-                  </CardTitle>
+                    {elapsedTime > 120 && (
+                      <Badge className="bg-[#2B8A6E] text-white">LIVE</Badge>
+                    )}
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="p-3 bg-gray-50 rounded-lg">
-                      <div className="text-sm font-medium text-gray-900 mb-1">90-Day Proof of Concept</div>
-                      <div className="text-xs text-gray-800">Single domain, 20 playbooks, 1 live execution</div>
-                    </div>
-                    <div className="p-3 bg-gray-50 rounded-lg">
-                      <div className="text-sm font-medium text-gray-900 mb-1">Domain Pilot</div>
-                      <div className="text-xs text-gray-800">Full domain, all playbooks, 3 live executions</div>
-                    </div>
-                    <div className="p-3 bg-violet-900/30 border border-violet-500/30 rounded-lg">
-                      <div className="text-sm font-medium text-gray-900 mb-1">Enterprise Pilot</div>
-                      <div className="text-xs text-gray-800">All 170 playbooks, dedicated success manager</div>
-                    </div>
+                <CardContent className="p-4 space-y-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-white/60">Stakeholders Notified</span>
+                    <span className="text-white font-medium">47 / 47</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-white/60">Acknowledgments</span>
+                    <span className="text-white font-medium">{acknowledgedStakeholders.length} / 47</span>
+                  </div>
+                  <Progress value={(acknowledgedStakeholders.length / 47) * 100} className="h-1.5 bg-white/10" indicatorClassName="bg-[#2B8A6E]" />
+                  
+                  <div className="space-y-3 pt-2">
+                    <AnimatePresence mode="popLayout">
+                      {acknowledgedStakeholders.slice(-4).reverse().map((s, i) => (
+                        <motion.div
+                          key={s.name}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          className="flex items-center gap-3 text-xs bg-white/5 p-2 rounded border border-white/10"
+                        >
+                          <div className="w-6 h-6 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center text-[#2B8A6E]">
+                            <CheckCircle2 className="h-3 w-3" />
+                          </div>
+                          <div className="flex-1 overflow-hidden">
+                            <div className="font-medium text-white truncate">{s.name}</div>
+                            <div className="text-white/40 truncate">{s.role}</div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Value Realized Card (Only shown at end) */}
+              {isComplete && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 shadow-lg shadow-[#C9A84C]/10">
+                    <CardHeader className="p-4 border-b border-[#C9A84C]/20">
+                      <CardTitle className="text-sm font-bold flex items-center gap-2 text-white">
+                        <TrendingUp className="h-4 w-4 text-[#C9A84C]" />
+                        VALUE RECOVERED
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-4 space-y-4">
+                      {VALUE_RECOVERED.map((val, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="p-2 bg-[#C9A84C]/10 rounded border border-[#C9A84C]/20">
+                            <val.icon className="h-4 w-4 text-[#C9A84C]" />
+                          </div>
+                          <div>
+                            <div className="text-sm font-bold text-white">{val.value}</div>
+                            <div className="text-xs text-white/60">{val.title} {val.description}</div>
+                          </div>
+                        </div>
+                      ))}
+                      <Button 
+                        className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold mt-2"
+                        onClick={() => setLocation('/contact')}
+                      >
+                        Contact for Full Demo
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
       </main>
-      
       <Footer />
     </div>
   );

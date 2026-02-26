@@ -46,7 +46,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       <Card className="border-blue-500/30 bg-gradient-to-r  ">
         <CardHeader>
           <CardTitle className="text-gray-900 flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-purple-400" />
+            <Sparkles className="h-6 w-6 text-[#C9A84C]" />
             Scenario Readiness Assessment
           </CardTitle>
         </CardHeader>
@@ -54,7 +54,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-gray-900 font-medium">Overall Completion</span>
-              <span className="text-2xl font-bold text-purple-400">{Math.round(completionScore)}%</span>
+              <span className="text-2xl font-bold text-[#C9A84C]">{Math.round(completionScore)}%</span>
             </div>
             <Progress value={completionScore} className="h-3" />
           </div>
@@ -62,14 +62,14 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Users className="h-4 w-4 text-blue-400" />
+                <Users className="h-4 w-4 text-[#0A0F2E]" />
                 <span className="text-sm text-gray-700">Stakeholders</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{stakeholderCount}</p>
             </div>
             <div className="bg-white rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Bell className="h-4 w-4 text-purple-400" />
+                <Bell className="h-4 w-4 text-[#C9A84C]" />
                 <span className="text-sm text-gray-700">Triggers</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{triggerCount}</p>
@@ -120,9 +120,9 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             })}
           </div>
 
-          <div className="mt-6 p-4 bg-blue-950/20 border border-blue-500/30 rounded-lg">
+          <div className="mt-6 p-4 bg-[#0A0F2E]/20 border border-blue-500/30 rounded-lg">
             <div className="flex items-start gap-3">
-              <Clock className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+              <Clock className="h-5 w-5 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-blue-300">Estimated Execution Velocity</p>
                 <p className="text-xs text-gray-700 mt-1">
@@ -147,10 +147,10 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
       </Card>
 
       {/* AI Recommendations */}
-      <Card className="border-purple-500/30 bg-purple-950/20">
+      <Card className="border-[#C9A84C]/30 bg-[#C9A84C]/20">
         <CardHeader>
           <CardTitle className="text-gray-900 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-purple-400" />
+            <Sparkles className="h-5 w-5 text-[#C9A84C]" />
             AI Recommendations
           </CardTitle>
         </CardHeader>
@@ -158,7 +158,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
           <div className="space-y-3 text-sm">
             {!hasExecutiveSponsor && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-400 mt-0.5">•</span>
+                <span className="text-[#C9A84C] mt-0.5">•</span>
                 <p className="text-gray-800">
                   <strong className="text-gray-900">Add Executive Sponsor:</strong> Critical for decision authority and rapid approvals
                 </p>
@@ -166,7 +166,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             )}
             {!hasAccountableOwner && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-400 mt-0.5">•</span>
+                <span className="text-[#C9A84C] mt-0.5">•</span>
                 <p className="text-gray-800">
                   <strong className="text-gray-900">Assign Accountable Owner:</strong> Essential for coordinated execution
                 </p>
@@ -174,7 +174,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             )}
             {triggerCount < 2 && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-400 mt-0.5">•</span>
+                <span className="text-[#C9A84C] mt-0.5">•</span>
                 <p className="text-gray-800">
                   <strong className="text-gray-900">Add More Triggers:</strong> Multiple signals improve detection accuracy
                 </p>
@@ -182,7 +182,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             )}
             {!hasKeyMetrics && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-400 mt-0.5">•</span>
+                <span className="text-[#C9A84C] mt-0.5">•</span>
                 <p className="text-gray-800">
                   <strong className="text-gray-900">Mark Key Metrics:</strong> Identify primary success indicators for focus
                 </p>
@@ -190,7 +190,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             )}
             {stakeholderCount < 3 && (
               <div className="flex items-start gap-2">
-                <span className="text-purple-400 mt-0.5">•</span>
+                <span className="text-[#C9A84C] mt-0.5">•</span>
                 <p className="text-gray-800">
                   <strong className="text-gray-900">Add Cross-functional Stakeholders:</strong> Most scenarios require 3-7 stakeholders
                 </p>

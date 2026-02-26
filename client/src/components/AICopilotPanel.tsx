@@ -52,7 +52,7 @@ export default function AICopilotPanel() {
       <Card>
         <CardHeader className="border-b border-border">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg flex items-center justify-center">
               <i className="fas fa-robot text-white w-4"></i>
             </div>
             <h3 className="text-lg font-semibold text-foreground">AI Strategic Co-pilot</h3>
@@ -63,7 +63,7 @@ export default function AICopilotPanel() {
           {aiResponse && (
             <div className="bg-muted/50 rounded-lg p-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-full flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-sparkles text-white text-xs"></i>
                 </div>
                 <div className="flex-1 space-y-3">
@@ -128,7 +128,7 @@ export default function AICopilotPanel() {
             data-testid="button-create-organization"
           >
             <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
-              <i className="fas fa-building text-blue-600 w-4"></i>
+              <i className="fas fa-building text-[#0A0F2E] w-4"></i>
             </div>
             <div className="text-left">
               <p className="text-sm font-medium text-foreground">Create Organization</p>
@@ -155,8 +155,8 @@ export default function AICopilotPanel() {
             className="w-full justify-start h-auto p-4"
             data-testid="button-generate-report"
           >
-            <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
-              <i className="fas fa-chart-pie text-purple-600 w-4"></i>
+            <div className="w-8 h-8 bg-[#0A0F2E] rounded-lg flex items-center justify-center mr-3">
+              <i className="fas fa-chart-pie text-[#C9A84C] w-4"></i>
             </div>
             <div className="text-left">
               <p className="text-sm font-medium text-foreground">Generate Report</p>

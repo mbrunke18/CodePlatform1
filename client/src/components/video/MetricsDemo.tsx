@@ -102,11 +102,11 @@ export function MetricsDemo({ progress }: SceneProps) {
             <span className="text-gray-600">•</span>
             <span className="text-gray-900 font-medium">BCG</span>
             <span className="text-gray-600">•</span>
-            <span className="text-purple-400 font-medium">Deloitte</span>
+            <span className="text-[#C9A84C] font-medium">Deloitte</span>
             <span className="text-gray-600">•</span>
             <span className="text-sky-400 font-medium">Microsoft</span>
             <span className="text-gray-600">•</span>
-            <span className="text-emerald-400 font-medium">Google Cloud</span>
+            <span className="text-[#2B8A6E] font-medium">Google Cloud</span>
             <span className="text-gray-600">•</span>
             <span className="text-amber-400 font-medium">+ 9 more</span>
           </div>

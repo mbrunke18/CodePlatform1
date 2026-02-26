@@ -61,50 +61,50 @@ const DOMAIN_CONFIG = {
   offense: {
     label: "OFFENSE",
     icon: Rocket,
-    color: "emerald",
+    color: "teal",
     playbooks: "58 Playbooks",
     categories: "Market Entry \u2022 M&A \u2022 Product Launch",
     tagline: "How fast can you capture opportunities?",
-    bg: "bg-emerald-500",
-    bgLight: "bg-emerald-500/20",
-    text: "text-emerald-500",
-    textLight: "text-emerald-400",
-    border: "border-emerald-500/30",
-    borderHover: "hover:border-emerald-500/60",
-    shadow: "shadow-emerald-500/25",
-    ring: "stroke-emerald-500",
+    bg: "bg-[#2B8A6E]",
+    bgLight: "bg-[#2B8A6E]/20",
+    text: "text-[#2B8A6E]",
+    textLight: "text-[#3BAF8A]",
+    border: "border-[#2B8A6E]/30",
+    borderHover: "hover:border-[#2B8A6E]/60",
+    shadow: "shadow-[#2B8A6E]/25",
+    ring: "stroke-[#2B8A6E]",
   },
   defense: {
     label: "DEFENSE",
     icon: Shield,
-    color: "red",
+    color: "navy",
     playbooks: "58 Playbooks",
     categories: "Crisis \u2022 Cyber \u2022 Regulatory",
     tagline: "How ready are you to contain threats?",
-    bg: "bg-red-500",
-    bgLight: "bg-red-500/20",
-    text: "text-red-500",
-    textLight: "text-red-400",
-    border: "border-red-500/30",
-    borderHover: "hover:border-red-500/60",
-    shadow: "shadow-red-500/25",
-    ring: "stroke-red-500",
+    bg: "bg-[#0A0F2E]",
+    bgLight: "bg-[#0A0F2E]/20",
+    text: "text-[#0A0F2E]",
+    textLight: "text-[#141B45]",
+    border: "border-[#0A0F2E]/30",
+    borderHover: "hover:border-[#0A0F2E]/60",
+    shadow: "shadow-[#0A0F2E]/25",
+    ring: "stroke-[#0A0F2E]",
   },
   special_teams: {
     label: "SPECIAL TEAMS",
     icon: Settings,
-    color: "purple",
+    color: "gold",
     playbooks: "54 Playbooks",
     categories: "Digital Transformation \u2022 AI Governance",
     tagline: "How effectively do you execute change?",
-    bg: "bg-purple-500",
-    bgLight: "bg-purple-500/20",
-    text: "text-purple-500",
-    textLight: "text-purple-400",
-    border: "border-purple-500/30",
-    borderHover: "hover:border-purple-500/60",
-    shadow: "shadow-purple-500/25",
-    ring: "stroke-purple-500",
+    bg: "bg-[#C9A84C]",
+    bgLight: "bg-[#C9A84C]/20",
+    text: "text-[#C9A84C]",
+    textLight: "text-[#DFC178]",
+    border: "border-[#C9A84C]/30",
+    borderHover: "hover:border-[#C9A84C]/60",
+    shadow: "shadow-[#C9A84C]/25",
+    ring: "stroke-[#C9A84C]",
   },
 } as const;
 
@@ -212,19 +212,19 @@ const DOMAIN_QUESTIONS: Record<Domain, QuestionDef[]> = {
 };
 
 const QUESTION_ICONS = [
-  { icon: Target, color: "text-blue-400", bg: "bg-blue-500/20", border: "border-blue-500/30" },
-  { icon: Clock, color: "text-purple-400", bg: "bg-purple-500/20", border: "border-purple-500/30" },
-  { icon: DollarSign, color: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-500/30" },
-  { icon: Users, color: "text-emerald-400", bg: "bg-emerald-500/20", border: "border-emerald-500/30" },
-  { icon: FileText, color: "text-teal-400", bg: "bg-teal-500/20", border: "border-teal-500/30" },
+  { icon: Target, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/10", border: "border-[#0A0F2E]/30" },
+  { icon: Clock, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/10", border: "border-[#C9A84C]/30" },
+  { icon: DollarSign, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/10", border: "border-[#2B8A6E]/30" },
+  { icon: Users, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/10", border: "border-[#0A0F2E]/30" },
+  { icon: FileText, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/10", border: "border-[#C9A84C]/30" },
 ];
 
 function getScoreColor(score: number) {
   if (score <= 30) return { color: "text-red-500", bg: "bg-red-500", label: "Critical", ring: "stroke-red-500" };
   if (score <= 50) return { color: "text-orange-500", bg: "bg-orange-500", label: "At Risk", ring: "stroke-orange-500" };
-  if (score <= 70) return { color: "text-yellow-500", bg: "bg-yellow-500", label: "Needs Improvement", ring: "stroke-yellow-500" };
-  if (score <= 85) return { color: "text-teal-500", bg: "bg-teal-500", label: "Good", ring: "stroke-teal-500" };
-  return { color: "text-emerald-500", bg: "bg-emerald-500", label: "Excellent", ring: "stroke-emerald-500" };
+  if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
+  if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Good", ring: "stroke-[#2B8A6E]" };
+  return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Excellent", ring: "stroke-[#2B8A6E]" };
 }
 
 export default function ReadinessAssessment() {
@@ -294,28 +294,31 @@ export default function ReadinessAssessment() {
   const strokeDashoffset = result ? circumference - (result.score / 100) * circumference : circumference;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
       <StandardNav />
 
       {phase === "select-domain" && (
-        <section className="py-16 md:py-24 px-6">
-          <div className="max-w-4xl mx-auto space-y-10">
+        <section className="py-16 md:py-24 px-6 bg-[#0A0F2E] relative overflow-hidden">
+          {/* Gold dot grid overlay */}
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+          
+          <div className="max-w-4xl mx-auto space-y-10 relative z-10">
             <div className="text-center">
               <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30">
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 How Ready Is Your Organization<br className="hidden md:block" /> to Execute Under Pressure?
               </h1>
-              <p className="text-lg text-gray-800 max-w-2xl mx-auto">
+              <p className="text-lg text-white/80 max-w-2xl mx-auto">
                 Answer 5 targeted questions and get an instant readiness score with specific gaps and recommendations for your strategic domain.
               </p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">How It Works</h2>
+            <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-8">
+              <h2 className="text-lg font-semibold text-white mb-6 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>How It Works</h2>
               <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
                 {[
                   { num: 1, label: "Choose Domain", desc: "Select your strategic focus area", icon: Target },
@@ -323,27 +326,27 @@ export default function ReadinessAssessment() {
                   { num: 3, label: "Get Your Score", desc: "Gaps, benchmarks & next steps", icon: BarChart3 },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mx-auto mb-3">
-                      <step.icon className="w-5 h-5 text-teal-400" />
+                    <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-3">
+                      <step.icon className="w-5 h-5 text-[#C9A84C]" />
                     </div>
-                    <div className="text-sm font-semibold text-gray-900">{step.label}</div>
-                    <div className="text-xs text-gray-700 mt-1">{step.desc}</div>
+                    <div className="text-sm font-semibold text-white">{step.label}</div>
+                    <div className="text-xs text-white/60 mt-1">{step.desc}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-2 text-center">Select a Strategic Domain</h2>
-              <p className="text-sm text-gray-700 text-center mb-6">Choose the area you want to assess</p>
+              <h2 className="text-lg font-semibold text-white mb-2 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Select a Strategic Domain</h2>
+              <p className="text-sm text-white/60 text-center mb-6">Choose the area you want to assess</p>
 
               <div className="mb-6 max-w-md mx-auto">
-                <Label className="text-gray-800 text-sm mb-2 block text-center">Company Name (optional)</Label>
+                <Label className="text-white/80 text-sm mb-2 block text-center">Company Name (optional)</Label>
                 <Input
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Your organization's name"
-                  className="bg-white border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500"
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#C9A84C]"
                 />
               </div>
 
@@ -354,20 +357,20 @@ export default function ReadinessAssessment() {
                     <button
                       key={domain}
                       onClick={() => handleSelectDomain(domain)}
-                      className={`text-left rounded-xl bg-white border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group`}
+                      className={`text-left rounded-xl bg-white/5 border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group backdrop-blur-sm`}
                     >
                       <div className="text-center">
                         <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
                           <IconComponent className={`h-8 w-8 ${config.textLight}`} />
                         </div>
-                        <h3 className={`text-xl font-bold ${config.textLight} mb-1`}>
+                        <h3 className={`text-xl font-bold ${config.textLight} mb-1`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {config.label}
                         </h3>
                         <Badge className={`${config.bgLight} ${config.textLight} border-none mt-1`}>
                           {config.playbooks}
                         </Badge>
-                        <p className="text-gray-800 text-sm font-medium mt-3">{config.categories}</p>
-                        <p className="text-gray-700 text-sm italic mt-1">{config.tagline}</p>
+                        <p className="text-white/80 text-sm font-medium mt-3">{config.categories}</p>
+                        <p className="text-white/60 text-sm italic mt-1">{config.tagline}</p>
                         <div className={`${config.textLight} text-xs font-medium mt-4 flex items-center justify-center gap-1 group-hover:gap-2 transition-all`}>
                           Start Assessment <ArrowRight className="w-3 h-3" />
                         </div>
@@ -396,19 +399,19 @@ export default function ReadinessAssessment() {
                   {(() => { const Icon = domainConfig.icon; return <Icon className="w-4 h-4 mr-2" />; })()}
                   {domainConfig.label} Assessment
                 </Badge>
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                <h1 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {companyName ? `${companyName}'s` : "Your"} {domainConfig.label} Readiness
                 </h1>
               </div>
 
               <div className="mb-8">
-                <div className="flex items-center justify-between text-sm text-gray-800 mb-2">
+                <div className="flex items-center justify-between text-sm text-[#6B7280] mb-2">
                   <span>Question {currentQuestion + 1} of {questions.length}</span>
                   <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
                 <Progress
                   value={((currentQuestion + 1) / questions.length) * 100}
-                  className="h-2 bg-gray-50"
+                  className="h-2 bg-[#E8E4DC] dark:bg-white/5"
                 />
               </div>
 
@@ -419,10 +422,10 @@ export default function ReadinessAssessment() {
                     onClick={() => setCurrentQuestion(idx)}
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
                       idx === currentQuestion
-                        ? `${domainConfig.bg} text-gray-900 shadow-lg ${domainConfig.shadow}`
+                        ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
                         : answers[questions[idx].key]?.trim()
-                        ? "bg-emerald-500 text-gray-900"
-                        : "bg-gray-50 text-gray-700 hover:bg-slate-700"
+                        ? "bg-[#2B8A6E] text-white"
+                        : "bg-[#E8E4DC] dark:bg-white/5 text-[#6B7280] hover:bg-[#0A0F2E]/10"
                     }`}
                   >
                     {answers[questions[idx].key]?.trim() && idx !== currentQuestion ? (
@@ -434,18 +437,18 @@ export default function ReadinessAssessment() {
                 ))}
               </div>
 
-              <Card className={`bg-white border ${iconDef.border}`}>
+              <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10`}>
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
                       <IconComponent className={`h-6 w-6 ${iconDef.color}`} />
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-gray-900 text-xl font-semibold">
+                      <CardTitle className="text-[#0A0F2E] dark:text-white text-xl font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         {q.question}
                       </CardTitle>
                       {q.helper && (
-                        <p className="text-gray-700 text-sm mt-1">{q.helper}</p>
+                        <p className="text-[#6B7280] dark:text-white/60 text-sm mt-1">{q.helper}</p>
                       )}
                     </div>
                   </div>
@@ -456,7 +459,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -466,7 +469,7 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
-                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 text-lg py-6"
+                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
                       autoFocus
                     />
                   )}
@@ -476,7 +479,7 @@ export default function ReadinessAssessment() {
                       onChange={(e) => updateAnswer(q.key, e.target.value)}
                       placeholder={q.placeholder}
                       rows={4}
-                      className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-500 focus:border-teal-500 resize-none text-lg"
+                      className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] resize-none text-lg"
                       autoFocus
                     />
                   )}
@@ -485,12 +488,12 @@ export default function ReadinessAssessment() {
                       value={answers[q.key] || ""}
                       onValueChange={(val) => updateAnswer(q.key, val)}
                     >
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900 focus:border-teal-500 text-lg py-6">
+                      <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white focus:border-[#C9A84C] text-lg py-6">
                         <SelectValue placeholder={q.placeholder} />
                       </SelectTrigger>
-                      <SelectContent className="bg-gray-50 border-gray-200">
+                      <SelectContent className="bg-white dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-white/10">
                         {q.options!.map((opt) => (
-                          <SelectItem key={opt} value={opt} className="text-gray-900 hover:bg-slate-700">
+                          <SelectItem key={opt} value={opt} className="text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
                             {opt}
                           </SelectItem>
                         ))}
@@ -509,16 +512,16 @@ export default function ReadinessAssessment() {
                           className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
                             answers[q.key] === opt
                               ? `${domainConfig.bgLight} ${domainConfig.border}`
-                              : "border-gray-200 hover:border-slate-600"
+                              : "border-[#E8E4DC] dark:border-white/10 hover:border-[#6B7280]"
                           }`}
                           onClick={() => updateAnswer(q.key, opt)}
                         >
                           <RadioGroupItem
                             value={opt}
                             id={`${q.key}-${opt}`}
-                            className="border-slate-600 text-teal-500"
+                            className="border-[#6B7280] text-[#2B8A6E]"
                           />
-                          <Label htmlFor={`${q.key}-${opt}`} className="text-gray-800 cursor-pointer text-base flex-1">
+                          <Label htmlFor={`${q.key}-${opt}`} className="text-[#0A0F2E] dark:text-white cursor-pointer text-base flex-1">
                             {opt}
                           </Label>
                         </div>
@@ -529,7 +532,7 @@ export default function ReadinessAssessment() {
               </Card>
 
               {error && (
-                <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm flex items-center gap-2">
+                <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-500 text-sm flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                   {error}
                 </div>
@@ -545,7 +548,7 @@ export default function ReadinessAssessment() {
                       setCurrentQuestion(currentQuestion - 1);
                     }
                   }}
-                  className="border-slate-600 text-gray-800 hover:bg-slate-800 bg-transparent"
+                  className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                 >
                   {currentQuestion === 0 ? "Back to Domains" : "Previous"}
                 </Button>
@@ -555,27 +558,18 @@ export default function ReadinessAssessment() {
                     size="lg"
                     onClick={handleSubmit}
                     disabled={loading}
-                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-gray-900 shadow-lg ${domainConfig.shadow}`}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
                   >
-                    {loading ? (
-                      <>
-                        <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                        Analyzing...
-                      </>
-                    ) : (
-                      <>
-                        <BarChart3 className="mr-2 h-5 w-5" />
-                        See My Score
-                      </>
-                    )}
+                    {loading ? "Analyzing..." : "Complete Assessment"}
                   </Button>
                 ) : (
                   <Button
+                    size="lg"
                     onClick={() => setCurrentQuestion(currentQuestion + 1)}
-                    className={`${domainConfig.bg} hover:opacity-90 text-gray-900`}
+                    disabled={!hasAnswer}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
                   >
-                    {hasAnswer ? "Next Question" : "Skip"}
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    Next Question
                   </Button>
                 )}
               </div>
@@ -636,7 +630,7 @@ export default function ReadinessAssessment() {
 
             <div className="mb-8">
               <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-blue-400" />
+                <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                 Industry Benchmark Comparison
               </h2>
               <Card className={`bg-white border ${domainConfig.border}`}>
@@ -747,16 +741,16 @@ export default function ReadinessAssessment() {
 
             {result.recommendations.length > 0 && (
               <div className="mb-12">
-                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />
                   Recommendations ({result.recommendations.length})
                 </h2>
                 <div className="space-y-3">
                   {result.recommendations.map((rec, i) => (
-                    <Card key={i} className="bg-white border border-emerald-500/30">
+                    <Card key={i} className="bg-white dark:bg-white/5 border border-[#2B8A6E]/30">
                       <CardContent className="p-4 flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                        <p className="text-gray-800">{rec}</p>
+                        <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] flex-shrink-0 mt-0.5" />
+                        <p className="text-[#0A0F2E] dark:text-white">{rec}</p>
                       </CardContent>
                     </Card>
                   ))}
@@ -764,14 +758,14 @@ export default function ReadinessAssessment() {
               </div>
             )}
 
-            <Card className={`    border ${domainConfig.border} mb-8 overflow-hidden`}>
+            <Card className={`bg-[#0A0F2E] border ${domainConfig.border} mb-8 overflow-hidden`}>
               <CardContent className="p-8 text-center">
-                <h2 className="text-2xl font-bold text-gray-900 mb-3 flex items-center justify-center gap-2">
-                  <Rocket className={`h-6 w-6 ${domainConfig.textLight}`} />
+                <h2 className="text-2xl font-bold text-white mb-3 flex items-center justify-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Rocket className={`h-6 w-6 text-[#C9A84C]`} />
                   Your Next Step
                 </h2>
-                <p className="text-gray-800 text-lg max-w-2xl mx-auto leading-relaxed">
-                  Based on your score of <span className={`font-bold ${domainConfig.text}`}>{result.score}/100</span>,{" "}
+                <p className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed">
+                  Based on your score of <span className={`font-bold ${domainConfig.textLight}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
                     ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
                     : `we recommend starting with our playbook library — activate ${domainConfig.playbooks.toLowerCase()} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
@@ -783,7 +777,7 @@ export default function ReadinessAssessment() {
               <Link href="/incident-analyzer">
                 <Button
                   size="lg"
-                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-gray-900 shadow-lg ${domainConfig.shadow}`}
+                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
                 >
                   Build Your Playbooks
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -792,7 +786,7 @@ export default function ReadinessAssessment() {
               <Link href="/roi-calculator">
                 <Button
                   size="lg"
-                  className="text-lg px-10 py-7 bg-teal-600 hover:bg-teal-700 text-gray-900 shadow-lg shadow-teal-500/25"
+                  className="text-lg px-10 py-7 bg-[#2B8A6E] hover:bg-[#2B8A6E]/90 text-white shadow-lg shadow-[#2B8A6E]/25"
                 >
                   <DollarSign className="mr-2 h-5 w-5" />
                   Calculate Your ROI
@@ -802,7 +796,7 @@ export default function ReadinessAssessment() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-10 py-7 border-slate-600 text-gray-800 hover:bg-slate-800 bg-transparent"
+                  className="text-lg px-10 py-7 border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                 >
                   See Our 170 Playbooks
                 </Button>
@@ -811,7 +805,7 @@ export default function ReadinessAssessment() {
                 size="lg"
                 variant="outline"
                 onClick={handleReset}
-                className="text-lg px-10 py-7 border-slate-600 text-gray-800 hover:bg-slate-800 bg-transparent"
+                className="text-lg px-10 py-7 border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
               >
                 Assess Another Domain
               </Button>

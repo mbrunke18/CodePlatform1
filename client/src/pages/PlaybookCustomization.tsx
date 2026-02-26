@@ -74,14 +74,14 @@ interface CustomizedPlaybook {
 }
 
 const PLAYBOOK_DOMAINS = [
-  { id: 'crisis', name: 'Crisis Management', icon: AlertTriangle, color: 'text-red-500' },
-  { id: 'competitive', name: 'Competitive Response', icon: Target, color: 'text-purple-500' },
-  { id: 'market', name: 'Market Opportunity', icon: TrendingUp, color: 'text-blue-500' },
-  { id: 'regulatory', name: 'Regulatory Compliance', icon: Shield, color: 'text-orange-500' },
-  { id: 'technology', name: 'Technology', icon: Zap, color: 'text-cyan-500' },
-  { id: 'talent', name: 'Talent & Workforce', icon: Users, color: 'text-pink-500' },
-  { id: 'financial', name: 'Financial Response', icon: DollarSign, color: 'text-green-500' },
-  { id: 'operational', name: 'Operational Excellence', icon: Settings, color: 'text-indigo-500' },
+  { id: 'crisis', name: 'Crisis Management', icon: AlertTriangle, color: 'text-[#0A0F2E]' },
+  { id: 'competitive', name: 'Competitive Response', icon: Target, color: 'text-[#C9A84C]' },
+  { id: 'market', name: 'Market Opportunity', icon: TrendingUp, color: 'text-[#2B8A6E]' },
+  { id: 'regulatory', name: 'Regulatory Compliance', icon: Shield, color: 'text-[#C9A84C]' },
+  { id: 'technology', name: 'Technology', icon: Zap, color: 'text-[#0A0F2E]' },
+  { id: 'talent', name: 'Talent & Workforce', icon: Users, color: 'text-[#C9A84C]' },
+  { id: 'financial', name: 'Financial Response', icon: DollarSign, color: 'text-[#2B8A6E]' },
+  { id: 'operational', name: 'Operational Excellence', icon: Settings, color: 'text-[#0A0F2E]' },
 ];
 
 const SAMPLE_TEMPLATES: PlaybookTemplate[] = [
@@ -252,21 +252,21 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-gray-900 p-6 rounded-lg">
+          <div className="bg-[#0A0F2E] text-white p-6 rounded-lg border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <BookOpen className="w-7 h-7 text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                  <BookOpen className="w-7 h-7 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="playbook-customization-title">Playbook Customization</h1>
-                  <p className="text-emerald-100 mt-1">Clone templates and customize for YOUR organization</p>
-                  <p className="text-emerald-200 mt-1 text-sm">Assign your stakeholders, set budgets, and configure execution parameters</p>
+                  <h1 className="text-3xl font-bold" data-testid="playbook-customization-title" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Customization</h1>
+                  <p className="text-gray-300 mt-1">Clone templates and customize for YOUR organization</p>
+                  <p className="text-gray-400 mt-1 text-sm">Assign your stakeholders, set budgets, and configure execution parameters</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Link to="/">
-                  <Button variant="secondary" className="bg-emerald-700 hover:bg-emerald-800 text-emerald-100 border-emerald-600">
+                  <Button variant="secondary" className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold border-0">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -282,9 +282,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-800">Total Templates</p>
-                    <p className="text-2xl font-bold text-gray-900">{templates.length}</p>
+                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{templates.length}</p>
                   </div>
-                  <BookOpen className="h-8 w-8 text-emerald-500" />
+                  <BookOpen className="h-8 w-8 text-[#0A0F2E]" />
                 </div>
               </CardContent>
             </Card>
@@ -293,9 +293,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-800">Customized</p>
-                    <p className="text-2xl font-bold text-gray-900">3</p>
+                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3</p>
                   </div>
-                  <Edit className="h-8 w-8 text-blue-500" />
+                  <Edit className="h-8 w-8 text-[#2B8A6E]" />
                 </div>
               </CardContent>
             </Card>
@@ -304,9 +304,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-800">Active</p>
-                    <p className="text-2xl font-bold text-gray-900">2</p>
+                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2</p>
                   </div>
-                  <Play className="h-8 w-8 text-green-500" />
+                  <Play className="h-8 w-8 text-[#2B8A6E]" />
                 </div>
               </CardContent>
             </Card>
@@ -315,9 +315,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-800">Domains</p>
-                    <p className="text-2xl font-bold text-gray-900">8</p>
+                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>8</p>
                   </div>
-                  <Target className="h-8 w-8 text-purple-500" />
+                  <Target className="h-8 w-8 text-[#0A0F2E]" />
                 </div>
               </CardContent>
             </Card>
@@ -379,11 +379,11 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Playbook Templates Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredTemplates.map((template: PlaybookTemplate) => (
-              <Card key={template.id} className="bg-gray-50 border-gray-200 hover:border-emerald-500/50 transition-all">
+              <Card key={template.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
                 <CardHeader className="pb-2">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <CardTitle className="text-gray-900 text-lg">{template.name}</CardTitle>
+                      <CardTitle className="text-gray-900 text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{template.name}</CardTitle>
                       <CardDescription className="mt-1 text-gray-800 line-clamp-2">
                         {template.description}
                       </CardDescription>
@@ -395,28 +395,28 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <Badge className={getComplexityColor(template.complexity)}>
                       {template.complexity} complexity
                     </Badge>
-                    <Badge variant="outline" className="text-gray-800">
+                    <Badge variant="outline" className="text-[#0A0F2E] border-[#E8E4DC]">
                       {template.category}
                     </Badge>
                   </div>
                   
                   <div className="grid grid-cols-3 gap-2 text-sm">
                     <div className="flex items-center gap-1 text-gray-800">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.estimatedDuration}</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-800">
-                      <Users className="h-4 w-4" />
+                      <Users className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.stakeholderCount}</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-800">
-                      <Target className="h-4 w-4" />
+                      <Target className="h-4 w-4 text-[#2B8A6E]" />
                       <span>{template.tasks} tasks</span>
                     </div>
                   </div>
                   
                   <Button 
-                    className="w-full bg-emerald-600 hover:bg-emerald-700"
+                    className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                     onClick={() => handleStartCustomization(template)}
                     data-testid={`button-customize-${template.id}`}
                   >
@@ -442,8 +442,8 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           <Dialog open={isCustomizationDialogOpen} onOpenChange={setIsCustomizationDialogOpen}>
             <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle className="flex items-center gap-2">
-                  <Copy className="h-5 w-5 text-emerald-500" />
+                <DialogTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Copy className="h-5 w-5 text-[#C9A84C]" />
                   Customize Playbook
                 </DialogTitle>
                 <DialogDescription>
@@ -458,9 +458,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 </div>
                 <Progress value={(customizationStep / 3) * 100} className="h-2" />
                 <div className="flex justify-between mt-2">
-                  <span className={`text-xs ${customizationStep >= 1 ? 'text-emerald-500' : 'text-gray-800'}`}>Details</span>
-                  <span className={`text-xs ${customizationStep >= 2 ? 'text-emerald-500' : 'text-gray-800'}`}>Stakeholders</span>
-                  <span className={`text-xs ${customizationStep >= 3 ? 'text-emerald-500' : 'text-gray-800'}`}>Settings</span>
+                  <span className={`text-xs ${customizationStep >= 1 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Details</span>
+                  <span className={`text-xs ${customizationStep >= 2 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Stakeholders</span>
+                  <span className={`text-xs ${customizationStep >= 3 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Settings</span>
                 </div>
               </div>
               
@@ -618,9 +618,9 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   </Card>
                   
                   {/* Summary */}
-                  <Card className="bg-emerald-500/10 border-emerald-500/30">
+                  <Card className="bg-[#2B8A6E]/10 border-[#2B8A6E]/30">
                     <CardContent className="p-4">
-                      <h4 className="font-medium text-emerald-400 mb-2">Customization Summary</h4>
+                      <h4 className="font-medium text-[#2B8A6E] mb-2">Customization Summary</h4>
                       <div className="grid grid-cols-2 gap-2 text-sm">
                         <div className="text-gray-800">Playbook Name:</div>
                         <div className="text-gray-900">{customName}</div>
@@ -657,7 +657,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       handleSaveCustomization();
                     }
                   }}
-                  className="bg-emerald-600 hover:bg-emerald-700"
+                  className="bg-[#2B8A6E] hover:bg-[#256B56]"
                   data-testid="button-next-step"
                   disabled={customizationStep === 3 && savePlaybookMutation.isPending}
                 >

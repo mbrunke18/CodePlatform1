@@ -104,12 +104,12 @@ const CATEGORY_ICONS: Record<string, any> = {
 };
 
 const PHASE_COLORS = {
-  external: 'from-blue-600 to-cyan-600',
-  internal: 'from-purple-600 to-pink-600'
+  external: 'from-[#0A0F2E] to-[#3BAF8A]',
+  internal: 'from-[#0A0F2E] to-pink-600'
 };
 
 const STATUS_COLORS = {
-  active: 'bg-emerald-500',
+  active: 'bg-[#2B8A6E]',
   warning: 'bg-amber-500',
   alert: 'bg-red-500',
   inactive: 'bg-gray-400'
@@ -365,11 +365,11 @@ function MetricCard({
   color: string;
 }) {
   const colorClasses: Record<string, string> = {
-    blue: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
+    blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E]',
     red: 'bg-red-500/10 text-red-600 dark:text-red-400',
-    green: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
-    purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
-    cyan: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400',
+    green: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
+    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
+    cyan: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
     amber: 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
   };
 
@@ -605,7 +605,7 @@ function AlertsPanel({ alerts, weakSignals }: { alerts: any[]; weakSignals: any[
       {alerts.length === 0 && weakSignals.length === 0 ? (
         <Card>
           <CardContent className="p-8 text-center">
-            <CheckCircle className="w-12 h-12 mx-auto mb-4 text-emerald-500" />
+            <CheckCircle className="w-12 h-12 mx-auto mb-4 text-[#2B8A6E]" />
             <h4 className="font-semibold mb-2">All Clear</h4>
             <p className="text-muted-foreground">No active alerts at this time. All signals are within normal parameters.</p>
           </CardContent>
@@ -628,7 +628,7 @@ function AlertCard({ alert }: { alert: any }) {
   const severityColors: Record<string, string> = {
     critical: 'border-red-500 bg-red-500/10',
     high: 'border-amber-500 bg-amber-500/10',
-    medium: 'border-blue-500 bg-blue-500/10',
+    medium: 'border-blue-500 bg-[#0A0F2E]/10',
     low: 'border-gray-500 bg-gray-500/10'
   };
 
@@ -660,12 +660,12 @@ function AlertCard({ alert }: { alert: any }) {
 
 function WeakSignalCard({ signal }: { signal: any }) {
   return (
-    <Card className="border-l-4 border-purple-500 bg-purple-500/5">
+    <Card className="border-l-4 border-[#C9A84C] bg-[#0A0F2E]/5">
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Radio className="w-4 h-4 text-purple-500" />
+              <Radio className="w-4 h-4 text-[#C9A84C]" />
               <span className="font-medium">Weak Signal Detected</span>
               <Badge variant="outline">{signal.signalType}</Badge>
             </div>
@@ -743,7 +743,7 @@ function TriggersPanel() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`w-2 h-2 rounded-full ${trigger.isActive ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
+                    <div className={`w-2 h-2 rounded-full ${trigger.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
                     <div>
                       <span className="font-medium">{trigger.name}</span>
                       <p className="text-sm text-muted-foreground">{trigger.description}</p>
@@ -810,7 +810,7 @@ function DataSourcesPanel() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium">{source.name}</span>
-                  <div className={`w-2 h-2 rounded-full ${source.isActive ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
+                  <div className={`w-2 h-2 rounded-full ${source.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Badge variant="outline">{source.sourceType}</Badge>

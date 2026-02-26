@@ -47,18 +47,18 @@ interface TriggerConfigurationWizardProps {
 }
 
 const SIGNAL_CATEGORIES = [
-  { id: 'competitive', name: 'Competitive Intelligence', icon: Target, color: 'text-purple-500', description: 'Track competitor moves, pricing, market share' },
-  { id: 'market', name: 'Market Dynamics', icon: TrendingUp, color: 'text-blue-500', description: 'Monitor market trends, demand shifts, sentiment' },
+  { id: 'competitive', name: 'Competitive Intelligence', icon: Target, color: 'text-[#C9A84C]', description: 'Track competitor moves, pricing, market share' },
+  { id: 'market', name: 'Market Dynamics', icon: TrendingUp, color: 'text-[#0A0F2E]', description: 'Monitor market trends, demand shifts, sentiment' },
   { id: 'financial', name: 'Financial Signals', icon: DollarSign, color: 'text-green-500', description: 'Track revenue, margins, cash flow indicators' },
   { id: 'regulatory', name: 'Regulatory & Compliance', icon: Shield, color: 'text-red-500', description: 'Monitor policy changes, compliance requirements' },
   { id: 'supplychain', name: 'Supply Chain', icon: Activity, color: 'text-orange-500', description: 'Track supplier health, logistics, inventory' },
-  { id: 'customer', name: 'Customer Signals', icon: Users, color: 'text-indigo-500', description: 'Monitor NPS, churn, satisfaction metrics' },
+  { id: 'customer', name: 'Customer Signals', icon: Users, color: 'text-[#0A0F2E]', description: 'Monitor NPS, churn, satisfaction metrics' },
   { id: 'talent', name: 'Talent & Workforce', icon: Users, color: 'text-pink-500', description: 'Track attrition, engagement, skill gaps' },
   { id: 'geopolitical', name: 'Geopolitical', icon: Globe, color: 'text-amber-500', description: 'Monitor regional stability, trade policies' },
-  { id: 'technology', name: 'Technology', icon: Cpu, color: 'text-cyan-500', description: 'Track tech disruptions, infrastructure issues' },
-  { id: 'media', name: 'Media & Reputation', icon: Eye, color: 'text-violet-500', description: 'Monitor brand mentions, sentiment, PR issues' },
+  { id: 'technology', name: 'Technology', icon: Cpu, color: 'text-[#2B8A6E]', description: 'Track tech disruptions, infrastructure issues' },
+  { id: 'media', name: 'Media & Reputation', icon: Eye, color: 'text-[#C9A84C]', description: 'Monitor brand mentions, sentiment, PR issues' },
   { id: 'cyber', name: 'Cybersecurity', icon: Shield, color: 'text-red-600', description: 'Track threat levels, vulnerabilities, incidents' },
-  { id: 'economic', name: 'Economic Indicators', icon: BarChart3, color: 'text-emerald-500', description: 'Monitor GDP, inflation, interest rates' },
+  { id: 'economic', name: 'Economic Indicators', icon: BarChart3, color: 'text-[#2B8A6E]', description: 'Monitor GDP, inflation, interest rates' },
   { id: 'partnership', name: 'Partnership & Alliance', icon: Users, color: 'text-teal-500', description: 'Track partner health, joint venture status' },
   { id: 'execution', name: 'Execution Velocity', icon: Zap, color: 'text-yellow-500', description: 'Monitor project timelines, delivery metrics' },
   { id: 'behavior', name: 'Behavioral Analytics', icon: Activity, color: 'text-rose-500', description: 'Track user patterns, engagement shifts' },
@@ -176,7 +176,7 @@ const OPERATORS = [
 ];
 
 const SEVERITY_LEVELS = [
-  { id: 'low', name: 'Low', color: 'bg-blue-100 text-blue-800', description: 'Informational, monitor only' },
+  { id: 'low', name: 'Low', color: 'bg-blue-100 text-[#0A0F2E]', description: 'Informational, monitor only' },
   { id: 'medium', name: 'Medium', color: 'bg-yellow-100 text-yellow-800', description: 'Requires attention within 24 hours' },
   { id: 'high', name: 'High', color: 'bg-orange-100 text-orange-800', description: 'Urgent, requires action within 4 hours' },
   { id: 'critical', name: 'Critical', color: 'bg-red-100 text-red-800', description: 'Emergency, immediate response required' },
@@ -378,7 +378,7 @@ export default function TriggerConfigurationWizard({
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl">
-            <Target className="h-6 w-6 text-blue-600" />
+            <Target className="h-6 w-6 text-[#0A0F2E]" />
             {editTrigger ? 'Edit Trigger' : 'Create Custom Trigger'}
           </DialogTitle>
           <DialogDescription>
@@ -403,11 +403,11 @@ export default function TriggerConfigurationWizard({
             {[1, 2, 3, 4].map((s) => (
               <div 
                 key={s} 
-                className={`flex items-center gap-1 text-xs ${s <= step ? 'text-blue-600' : 'text-gray-600 dark:text-gray-200'}`}
+                className={`flex items-center gap-1 text-xs ${s <= step ? 'text-[#0A0F2E]' : 'text-gray-600 dark:text-gray-200'}`}
               >
                 <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                  s < step ? 'bg-blue-600 text-white' : 
-                  s === step ? 'bg-blue-100 text-blue-600 border-2 border-blue-600' : 
+                  s < step ? 'bg-[#0A0F2E] text-white' : 
+                  s === step ? 'bg-blue-100 text-[#0A0F2E] border-2 border-blue-600' : 
                   'bg-gray-100 text-gray-600 dark:text-gray-200'
                 }`}>
                   {s < step ? <Check className="h-3 w-3" /> : s}
@@ -462,7 +462,7 @@ export default function TriggerConfigurationWizard({
                     <Card 
                       key={category.id}
                       className={`cursor-pointer transition-all hover:shadow-md ${
-                        isSelected ? 'ring-2 ring-blue-600 bg-blue-50 dark:bg-blue-900/20' : ''
+                        isSelected ? 'ring-2 ring-blue-600 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' : ''
                       }`}
                       onClick={() => {
                         setSelectedCategory(category.id);
@@ -493,14 +493,14 @@ export default function TriggerConfigurationWizard({
         {/* Step 2: Conditions */}
         {step === 2 && (
           <div className="space-y-6">
-            <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200">
+            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-blue-200">
               <div className="flex items-center gap-2 mb-2">
-                <AlertTriangle className="h-5 w-5 text-blue-600" />
-                <span className="font-medium text-blue-800 dark:text-blue-200">
+                <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />
+                <span className="font-medium text-[#0A0F2E] dark:text-blue-200">
                   Category: {SIGNAL_CATEGORIES.find(c => c.id === selectedCategory)?.name}
                 </span>
               </div>
-              <p className="text-sm text-blue-700 dark:text-blue-300">
+              <p className="text-sm text-[#0A0F2E] dark:text-blue-300">
                 Define the specific condition that will trigger an alert
               </p>
             </div>
@@ -607,7 +607,7 @@ export default function TriggerConfigurationWizard({
                   </div>
                   <p className="text-lg font-medium">
                     Alert when{' '}
-                    <span className="text-blue-600">
+                    <span className="text-[#0A0F2E]">
                       {SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField)?.name}
                     </span>{' '}
                     <span className="text-orange-600">
@@ -639,7 +639,7 @@ export default function TriggerConfigurationWizard({
                 <CardContent className="p-4 space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <Mail className="h-5 w-5 text-blue-500" />
+                      <Mail className="h-5 w-5 text-[#0A0F2E]" />
                       <div>
                         <p className="font-medium">Email Notifications</p>
                         <p className="text-sm text-gray-600 dark:text-gray-300">Send email alerts to configured recipients</p>
@@ -656,7 +656,7 @@ export default function TriggerConfigurationWizard({
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <MessageSquare className="h-5 w-5 text-purple-500" />
+                      <MessageSquare className="h-5 w-5 text-[#C9A84C]" />
                       <div>
                         <p className="font-medium">Slack Notifications</p>
                         <p className="text-sm text-gray-600 dark:text-gray-300">Post alerts to Slack channels</p>

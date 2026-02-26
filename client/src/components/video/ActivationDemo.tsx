@@ -62,7 +62,7 @@ export function ActivationDemo({ progress }: SceneProps) {
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
             <p className="text-gray-700 text-xs">Documents staged</p>
-            <p className="text-purple-400 font-bold text-lg">Ready to send</p>
+            <p className="text-[#C9A84C] font-bold text-lg">Ready to send</p>
           </div>
         </motion.div>
 

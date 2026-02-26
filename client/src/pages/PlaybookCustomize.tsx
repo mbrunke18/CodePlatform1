@@ -371,7 +371,7 @@ const IDEA_PHASES = [
     label: 'IDENTIFY', 
     tagline: 'Build Your Depth Chart',
     description: 'Define stakeholders, dependencies, and governance before situations arise',
-    color: 'bg-[#0A0F2E]',
+    color: 'bg-[#2B8A6E]',
     sections: ['basic', 'stakeholders', 'dependencies', 'governance', 'geographic', 'readiness']
   },
   { 
@@ -379,7 +379,7 @@ const IDEA_PHASES = [
     label: 'DETECT', 
     tagline: 'Monitor Signals',
     description: 'Configure triggers and risk thresholds for early warning',
-    color: 'bg-[#C9A84C]',
+    color: 'bg-[#0A0F2E]',
     sections: ['triggers', 'risk', 'compliance']
   },
   { 
@@ -387,7 +387,7 @@ const IDEA_PHASES = [
     label: 'EXECUTE', 
     tagline: 'Execute Response',
     description: 'Define execution steps, escalation paths, budget, and communications',
-    color: 'bg-[#2B8A6E]',
+    color: 'bg-[#C9A84C]',
     sections: ['steps', 'escalation', 'budget', 'communications']
   },
   { 
@@ -395,7 +395,7 @@ const IDEA_PHASES = [
     label: 'ADVANCE', 
     tagline: 'Review the Film',
     description: 'Track success metrics and capture business impact',
-    color: 'bg-[#DFC178]',
+    color: 'bg-[#2B8A6E]',
     sections: ['metrics', 'impact']
   }
 ];
@@ -562,11 +562,19 @@ export default function PlaybookCustomize() {
     setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const PHASE_BADGES: Record<string, { label: string; color: string }> = {
-    identify: { label: 'I', color: 'bg-[#0A0F2E]' },
-    detect: { label: 'D', color: 'bg-[#C9A84C]' },
-    execute: { label: 'E', color: 'bg-[#2B8A6E]' },
-    advance: { label: 'A', color: 'bg-[#DFC178]' },
+    identify: { label: 'I', color: "#2B8A6E" },
+    detect: { label: 'D', color: "#0A0F2E" },
+    execute: { label: 'E', color: "#C9A84C" },
+    advance: { label: 'A', color: "#2B8A6E" },
   };
   
   const SECTION_TO_PHASE: Record<string, string> = {
@@ -581,37 +589,27 @@ export default function PlaybookCustomize() {
     const phase = SECTION_TO_PHASE[id];
     const phaseBadge = phase ? PHASE_BADGES[phase] : null;
     return (
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <div className="cursor-pointer flex-1" onClick={() => toggleSection(id)}>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Icon className="h-5 w-5 text-gray-800" />
-              {title}
-              {phaseBadge && (
-                <span className={`ml-2 w-5 h-5 ${phaseBadge.color} text-gray-900 text-xs font-bold rounded flex items-center justify-center`}>
-                  {phaseBadge.label}
-                </span>
-              )}
-            </CardTitle>
-            {description && <CardDescription className="text-sm mt-1">{description}</CardDescription>}
-          </div>
-          <div className="flex items-center gap-2">
-            {children}
-            {expandedSections[id] ? <ChevronUp className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} /> : <ChevronDown className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-pointer" onClick={() => toggleSection(id)} />}
+      <div className="p-4 border-b bg-white flex items-center justify-between" style={{ borderColor: BORDER }}>
+        <div className="flex items-center gap-4 cursor-pointer flex-1" onClick={() => toggleSection(id)}>
+          {phaseBadge && (
+            <div className="w-6 h-6 flex items-center justify-center text-white text-[9px] font-bold" style={{ background: phaseBadge.color }}>
+              {phaseBadge.label}
+            </div>
+          )}
+          <div className="flex items-center gap-3">
+            <Icon className="h-5 w-5" style={{ color: NAVY }} />
+            <h3 style={{ ...CG, color: NAVY }} className="text-base font-bold">{title}</h3>
           </div>
         </div>
-      </CardHeader>
+        <div className="flex items-center gap-2">
+          {children}
+          {expandedSections[id] ? <ChevronUp className="h-5 w-5" style={{ color: MUTED }} /> : <ChevronDown className="h-5 w-5" style={{ color: MUTED }} />}
+        </div>
+      </div>
     );
   };
   
-  const NAVY = "#0A0F2E";
   const NAVY_MID = "#141B45";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const OFF = "#F8F7F4";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   if (isLoading && !isCreateMode) {
     return (
@@ -792,12 +790,12 @@ export default function PlaybookCustomize() {
                                     <span className={`w-2 h-2 rounded-full ${
                                       field.value === 'draft' ? 'bg-yellow-500' :
                                       field.value === 'ready' ? 'bg-green-500' :
-                                      field.value === 'active' ? 'bg-blue-500' : 'bg-slate-400'
+                                      field.value === 'active' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
                                     }`} />
                                     <span className={`font-medium ${
                                       field.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                      field.value === 'ready' ? 'text-emerald-700 dark:text-green-400' :
-                                      field.value === 'active' ? 'text-blue-800 dark:text-blue-400' : 'text-gray-800'
+                                      field.value === 'ready' ? 'text-[#2B8A6E] dark:text-green-400' :
+                                      field.value === 'active' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-gray-800'
                                     }`}>
                                       {PLAYBOOK_STATUSES.find(s => s.value === field.value)?.label || 'Draft'}
                                     </span>
@@ -811,12 +809,12 @@ export default function PlaybookCustomize() {
                                       <span className={`w-2 h-2 rounded-full ${
                                         s.value === 'draft' ? 'bg-yellow-500' :
                                         s.value === 'ready' ? 'bg-green-500' :
-                                        s.value === 'active' ? 'bg-blue-500' : 'bg-slate-400'
+                                        s.value === 'active' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
                                       }`} />
                                       <span className={`${
                                         s.value === 'draft' ? 'text-yellow-600 dark:text-yellow-400' :
-                                        s.value === 'ready' ? 'text-emerald-700 dark:text-green-400' :
-                                        s.value === 'active' ? 'text-blue-800 dark:text-blue-400' : 'text-gray-800'
+                                        s.value === 'ready' ? 'text-[#2B8A6E] dark:text-green-400' :
+                                        s.value === 'active' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-gray-800'
                                       }`}>
                                         {s.label}
                                       </span>
@@ -1201,7 +1199,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
                                   {f.label}
                                 </button>
                               );
@@ -1431,7 +1429,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(r.value);
                               return (
                                 <button key={r.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== r.value) : [...(field.value || []), r.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-purple-100 text-purple-700 border-purple-300' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'bg-white dark:bg-slate-800 text-gray-800 border-slate-200'}`}>
                                   {r.label}
                                 </button>
                               );

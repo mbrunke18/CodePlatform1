@@ -123,7 +123,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
     <Card className="h-[600px] flex flex-col" data-testid="ai-chat-container">
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2">
-          <Bot className="w-5 h-5 text-blue-600" />
+          <Bot className="w-5 h-5 text-[#0A0F2E]" />
           AI Intelligence Assistant
         </CardTitle>
         <p className="text-sm text-gray-600">
@@ -147,7 +147,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                 <div className={`flex gap-3 max-w-[85%] ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   <div className="flex-shrink-0">
                     {message.role === 'user' ? (
-                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-[#0A0F2E] rounded-full flex items-center justify-center">
                         <User className="w-4 h-4 text-white" />
                       </div>
                     ) : (
@@ -159,7 +159,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
 
                   <div className={`rounded-lg p-4 ${
                     message.role === 'user' 
-                      ? 'bg-blue-600 text-white' 
+                      ? 'bg-[#0A0F2E] text-white' 
                       : 'bg-gray-50 border'
                   }`}>
                     <div className="space-y-3">

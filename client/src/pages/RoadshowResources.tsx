@@ -27,13 +27,20 @@ import competitiveMoatContent from '@/data/ExecuteIQ-Competitive-Moat-TalkingPoi
 import checklistContent from '@/data/ExecuteIQ-PreRoadshow-Checklist.md?raw';
 import { BrandStamp } from "@/components/BrandStamp";
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const KEY_STATS = [
-  { label: "Response Time", value: "72h → 12min", color: "text-emerald-400" },
-  { label: "Playbooks", value: "170", color: "text-blue-400" },
-  { label: "Domains", value: "9", color: "text-purple-400" },
-  { label: "Pilot Price", value: "$75K", color: "text-amber-400" },
-  { label: "Contract Range", value: "$250K-$1.5M", color: "text-green-400" },
-  { label: "Seed Target", value: "$2.6M", color: "text-pink-400" },
+  { label: "Response Time", value: "72h → 12min", color: "text-[#2B8A6E]" },
+  { label: "Playbooks", value: "170", color: "text-[#0A0F2E]" },
+  { label: "Domains", value: "9", color: "text-[#C9A84C]" },
+  { label: "Pilot Price", value: "$75K", color: "text-[#C9A84C]" },
+  { label: "Contract Range", value: "$250K-$1.5M", color: "text-[#2B8A6E]" },
+  { label: "Seed Target", value: "$2.6M", color: "text-[#0A0F2E]" },
 ];
 
 const DOCUMENTS = [
@@ -42,7 +49,7 @@ const DOCUMENTS = [
     title: 'Investor FAQ',
     description: '20 anticipated questions with crisp answers',
     icon: MessageSquare,
-    color: 'from-blue-500 to-cyan-500',
+    color: 'bg-[#0A0F2E]',
     badge: '20 Q&As',
     content: investorFaqContent
   },
@@ -51,7 +58,7 @@ const DOCUMENTS = [
     title: 'Pilot Program',
     description: '90-day engagement structure, pricing, success metrics',
     icon: Target,
-    color: 'from-emerald-500 to-teal-500',
+    color: 'bg-[#2B8A6E]',
     badge: '$75K',
     content: pilotProgramContent
   },
@@ -60,7 +67,7 @@ const DOCUMENTS = [
     title: 'Demo Script',
     description: '3-minute investor demo with exact talking points',
     icon: Clock,
-    color: 'from-purple-500 to-violet-500',
+    color: 'bg-[#C9A84C]',
     badge: '3 min',
     content: demoScriptContent
   },
@@ -69,7 +76,7 @@ const DOCUMENTS = [
     title: 'Why Now',
     description: '3 slides of market timing narrative and data',
     icon: TrendingUp,
-    color: 'from-amber-500 to-orange-500',
+    color: 'bg-[#0A0F2E]',
     badge: '3 Slides',
     content: whyNowContent
   },
@@ -78,7 +85,7 @@ const DOCUMENTS = [
     title: 'Competitive Moat',
     description: 'Responses to "Why can\'t BigCo build this?"',
     icon: Shield,
-    color: 'from-red-500 to-rose-500',
+    color: 'bg-[#2B8A6E]',
     badge: '5 Moats',
     content: competitiveMoatContent
   },
@@ -87,7 +94,7 @@ const DOCUMENTS = [
     title: 'Pre-Roadshow Checklist',
     description: '75 tasks with priorities and deadlines',
     icon: CheckSquare,
-    color: 'from-green-500 to-emerald-500',
+    color: 'bg-[#C9A84C]',
     badge: '75 Tasks',
     content: checklistContent
   },
@@ -97,35 +104,35 @@ function MarkdownRenderer({ content }: { content: string }) {
   const lines = content.split('\n');
   
   return (
-    <div className="prose prose-invert prose-sm max-w-none">
+    <div className="prose prose-sm max-w-none">
       {lines.map((line, idx) => {
         if (line.startsWith('# ')) {
-          return <h1 key={idx} className="text-2xl font-bold text-gray-900 mt-6 mb-4">{line.slice(2)}</h1>;
+          return <h1 key={idx} className="text-3xl font-light text-[#0A0F2E] mt-8 mb-6" style={CG}>{line.slice(2)}</h1>;
         }
         if (line.startsWith('## ')) {
-          return <h2 key={idx} className="text-xl font-bold text-gray-900 mt-6 mb-3 border-b border-gray-200 pb-2">{line.slice(3)}</h2>;
+          return <h2 key={idx} className="text-2xl font-light text-[#0A0F2E] mt-8 mb-4 border-b border-[#E8E4DC] pb-2" style={CG}>{line.slice(3)}</h2>;
         }
         if (line.startsWith('### ')) {
-          return <h3 key={idx} className="text-lg font-semibold text-emerald-400 mt-4 mb-2">{line.slice(4)}</h3>;
+          return <h3 key={idx} className="text-lg font-bold text-[#2B8A6E] mt-6 mb-3 uppercase tracking-wider">{line.slice(4)}</h3>;
         }
         if (line.startsWith('**') && line.endsWith('**')) {
-          return <p key={idx} className="font-bold text-gray-900 my-2">{line.slice(2, -2)}</p>;
+          return <p key={idx} className="font-bold text-[#0A0F2E] my-3">{line.slice(2, -2)}</p>;
         }
         if (line.startsWith('> ')) {
-          return <blockquote key={idx} className="border-l-4 border-emerald-500 pl-4 my-3 text-gray-800 italic">{line.slice(2)}</blockquote>;
+          return <blockquote key={idx} className="border-l-4 border-[#C9A84C] pl-6 my-6 text-[#141B45] italic bg-[#F8F7F4] py-4">{line.slice(2)}</blockquote>;
         }
         if (line.startsWith('- [ ] ')) {
-          return <div key={idx} className="flex items-start gap-2 my-1"><input type="checkbox" className="mt-1" /><span className="text-gray-800">{line.slice(6)}</span></div>;
+          return <div key={idx} className="flex items-start gap-3 my-2 text-[#141B45]"><div className="w-4 h-4 border border-[#E8E4DC] mt-1 shrink-0"></div><span>{line.slice(6)}</span></div>;
         }
         if (line.startsWith('- ')) {
-          return <li key={idx} className="text-gray-800 ml-4 my-1">{line.slice(2)}</li>;
+          return <li key={idx} className="text-[#141B45] ml-4 my-2 list-none flex items-center gap-2"><span className="w-1.5 h-1.5 bg-[#C9A84C] shrink-0"></span>{line.slice(2)}</li>;
         }
         if (line.startsWith('| ') && line.includes(' | ')) {
           const cells = line.split(' | ').map(c => c.replace(/^\||\|$/g, '').trim());
           const isHeader = lines[idx + 1]?.includes('---');
           return (
-            <div key={idx} className={`grid gap-2 py-2 border-b border-gray-200 ${isHeader ? 'font-semibold text-gray-900' : 'text-gray-800'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
-              {cells.map((cell, i) => <div key={i} className="text-sm">{cell}</div>)}
+            <div key={idx} className={`grid gap-4 py-3 border-b border-[#E8E4DC] ${isHeader ? 'font-bold text-[#0A0F2E] bg-[#F8F7F4]' : 'text-[#141B45]'}`} style={{ gridTemplateColumns: `repeat(${cells.length}, minmax(0, 1fr))` }}>
+              {cells.map((cell, i) => <div key={i} className="text-sm px-2">{cell}</div>)}
             </div>
           );
         }
@@ -133,16 +140,16 @@ function MarkdownRenderer({ content }: { content: string }) {
           return null;
         }
         if (line.startsWith('---')) {
-          return <hr key={idx} className="border-gray-200 my-6" />;
+          return <hr key={idx} className="border-[#E8E4DC] my-10" />;
         }
         if (line.trim() === '') {
-          return <div key={idx} className="h-2" />;
+          return <div key={idx} className="h-4" />;
         }
         const formattedLine = line
-          .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')
+          .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#0A0F2E]">$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
-          .replace(/`(.*?)`/g, '<code class="bg-gray-50 px-1 rounded text-emerald-400">$1</code>');
-        return <p key={idx} className="text-gray-800 my-1" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
+          .replace(/`(.*?)`/g, '<code class="bg-[#F8F7F4] px-1.5 py-0.5 rounded text-[#2B8A6E] font-mono text-xs">$1</code>');
+        return <p key={idx} className="text-[#141B45] my-2 leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedLine }} />;
       })}
     </div>
   );
@@ -162,172 +169,176 @@ export default function RoadshowResources() {
   const activeDocument = DOCUMENTS.find(d => d.id === activeDoc);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F8F7F4]">
       <StandardNav />
       
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="text-center mb-8">
-          <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="bg-purple-500 text-gray-900 mb-4">
-            Internal Resources
-          </Badge>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2" data-testid="heading-roadshow">
+      {/* Navy Hero Header */}
+      <div className="py-20 px-6 text-white text-center relative overflow-hidden" style={{ background: "#0A0F2E" }}>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-[1px] bg-[#C9A84C]"></div>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] font-bold">Internal Executive Suite</span>
+            <div className="w-8 h-[1px] bg-[#C9A84C]"></div>
+          </div>
+          <h1 className="text-5xl font-light mb-6" style={CG} data-testid="heading-roadshow">
             Roadshow Preparation
           </h1>
-          <p className="text-gray-800 max-w-2xl mx-auto">
-            Complete investor materials. Click any document to view full content.
+          <p className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto">
+            Complete investor materials and strategic talking points. Premium resources for executive-level presentations.
           </p>
         </div>
+      </div>
 
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Zap className="h-5 w-5 text-amber-400" />
-            Key Numbers to Memorize
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-[#0A0F2E] flex items-center justify-center">
+              <Zap className="h-5 w-5 text-[#C9A84C]" />
+            </div>
+            <h2 className="text-2xl font-light text-[#0A0F2E]" style={CG}>
+              Strategic Benchmarks
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {KEY_STATS.map((stat) => (
-              <Card 
+              <div 
                 key={stat.label}
-                className="bg-white border-gray-200 cursor-pointer hover:border-slate-500 transition-all group"
+                className="bg-white border border-[#E8E4DC] p-6 cursor-pointer hover:border-[#C9A84C] transition-all group relative"
                 onClick={() => copyToClipboard(stat.value, stat.label)}
                 data-testid={`card-stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <CardContent className="p-4 text-center">
-                  <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
-                  <div className="text-sm text-gray-800">{stat.label}</div>
-                  <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-gray-800 flex items-center justify-center gap-1">
-                    {copiedStat === stat.label ? (
-                      <><Check className="h-3 w-3" /> Copied</>
-                    ) : (
-                      <><Copy className="h-3 w-3" /> Click to copy</>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                <div className={`text-2xl font-light mb-1`} style={{ ...CG, color: stat.color.includes('[') ? stat.color.split('-')[1].replace('[', '').replace(']', '') : undefined }}>{stat.value}</div>
+                <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">{stat.label}</div>
+                <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {copiedStat === stat.label ? <Check className="h-3 w-3 text-[#2B8A6E]" /> : <Copy className="h-3 w-3 text-[#E8E4DC]" />}
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-1">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <FileText className="h-5 w-5 text-blue-400" />
-              Documents
-            </h2>
-            <div className="space-y-2">
-              {DOCUMENTS.map((doc) => {
-                const IconComponent = doc.icon;
-                return (
-                  <Card 
-                    key={doc.id}
-                    className={`bg-white border cursor-pointer transition-all ${
-                      activeDoc === doc.id 
-                        ? 'border-emerald-500 bg-emerald-950/20' 
-                        : 'border-gray-200 hover:border-slate-500'
-                    }`}
-                    onClick={() => setActiveDoc(doc.id)}
-                    data-testid={`card-doc-${doc.id}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg bg-gradient-to-br ${doc.color}`}>
-                          <IconComponent className="h-4 w-4 text-gray-900" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-4 space-y-8">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <FileText className="h-5 w-5 text-[#0A0F2E]" />
+                <h2 className="text-xl font-bold text-[#0A0F2E]">Document Library</h2>
+              </div>
+              <div className="space-y-3">
+                {DOCUMENTS.map((doc) => {
+                  const IconComponent = doc.icon;
+                  return (
+                    <div 
+                      key={doc.id}
+                      className={`p-4 cursor-pointer transition-all border-l-4 ${
+                        activeDoc === doc.id 
+                          ? 'border-[#C9A84C] bg-white shadow-sm' 
+                          : 'border-transparent bg-transparent hover:bg-white/50'
+                      }`}
+                      onClick={() => setActiveDoc(doc.id)}
+                      data-testid={`card-doc-${doc.id}`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`w-8 h-8 ${doc.color} flex items-center justify-center text-white`}>
+                          <IconComponent className="h-4 w-4" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="font-medium text-gray-900 text-sm">{doc.title}</div>
-                          <div className="text-xs text-gray-800 truncate">{doc.description}</div>
+                          <div className="font-bold text-[#0A0F2E] text-sm">{doc.title}</div>
+                          <div className="text-xs text-[#6B7280] truncate">{doc.description}</div>
                         </div>
-                        <Badge variant="secondary" className="text-xs shrink-0">
+                        <Badge variant="secondary" className="text-[9px] font-bold bg-[#F8F7F4] text-[#0A0F2E] rounded-none">
                           {doc.badge}
                         </Badge>
                       </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="pt-6 border-t border-[#E8E4DC] space-y-3">
               <Button 
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600"
+                className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none h-12 font-bold"
                 onClick={() => setLocation('/try-demo')}
                 data-testid="button-run-investor-demo"
               >
                 <Clock className="mr-2 h-4 w-4" />
-                Run Investor Demo
+                Launch Investor Demo
               </Button>
               <Button 
                 variant="outline"
-                className="w-full bg-transparent border-slate-600 text-gray-800"
+                className="w-full border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none h-12"
                 onClick={() => setLocation('/demo')}
                 data-testid="button-view-all-demos"
               >
-                View All Demos
+                Explore Demo Suite
               </Button>
             </div>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-8">
             {activeDocument && (
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="border-b border-gray-200">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${activeDocument.color}`}>
-                      <activeDocument.icon className="h-6 w-6 text-gray-900" />
+              <div className="bg-white border border-[#E8E4DC] shadow-sm overflow-hidden">
+                <div className="p-8 border-b border-[#E8E4DC] flex items-center justify-between bg-[#F8F7F4]/30">
+                  <div className="flex items-center gap-6">
+                    <div className={`w-14 h-14 ${activeDocument.color} flex items-center justify-center text-white shadow-lg`}>
+                      <activeDocument.icon className="h-7 w-7" />
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-gray-900 text-xl">{activeDocument.title}</CardTitle>
-                      <CardDescription>{activeDocument.description}</CardDescription>
+                    <div>
+                      <h3 className="text-3xl font-light text-[#0A0F2E]" style={CG}>{activeDocument.title}</h3>
+                      <p className="text-[#6B7280] text-sm">{activeDocument.description}</p>
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="bg-transparent border-slate-600"
-                      onClick={() => {
-                        navigator.clipboard.writeText(activeDocument.content);
-                        setCopiedStat('doc');
-                        setTimeout(() => setCopiedStat(null), 2000);
-                      }}
-                      data-testid="button-copy-document"
-                    >
-                      {copiedStat === 'doc' ? <><Check className="h-4 w-4 mr-1" /> Copied</> : <><Copy className="h-4 w-4 mr-1" /> Copy All</>}
-                    </Button>
                   </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <ScrollArea className="h-[600px] pr-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none"
+                    onClick={() => {
+                      navigator.clipboard.writeText(activeDocument.content);
+                      setCopiedStat('doc');
+                      setTimeout(() => setCopiedStat(null), 2000);
+                    }}
+                    data-testid="button-copy-document"
+                  >
+                    {copiedStat === 'doc' ? <><Check className="h-4 w-4 mr-2" /> Copied</> : <><Copy className="h-4 w-4 mr-2" /> Copy Source</>}
+                  </Button>
+                </div>
+                <div className="p-10">
+                  <ScrollArea className="h-[700px] pr-6">
                     <MarkdownRenderer content={activeDocument.content} />
                   </ScrollArea>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             )}
           </div>
         </div>
 
-        <Card className="mt-8 bg-gradient-to-r   border-purple-500/30">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="mt-20 p-10 bg-[#0A0F2E] text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/5 rounded-full -mr-32 -mt-32"></div>
+          <div className="relative z-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">Quick Reference Table</h3>
-                <p className="text-gray-800 text-sm">What document to use in each situation</p>
+                <h3 className="text-2xl font-light mb-2" style={CG}>Executive Reference Guide</h3>
+                <p className="text-gray-400 text-sm">Deployment strategy for high-stakes investor interactions</p>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                  Tough question → FAQ
-                </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                  Pricing talk → Pilot Program
-                </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                  About to demo → Demo Script
-                </Badge>
-                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                  "Why can't Salesforce?" → Competitive Moat
-                </Badge>
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  { label: "Tough Question", target: "FAQ" },
+                  { label: "Pricing Talk", target: "Pilot Program" },
+                  { label: "Product Demo", target: "Demo Script" },
+                  { label: "Moat Analysis", target: "Competitive Moat" }
+                ].map((item, i) => (
+                  <div key={i} className="px-4 py-2 border border-white/10 bg-white/5 flex items-center gap-3">
+                    <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">{item.label}</span>
+                    <ArrowRight className="w-3 h-3 text-[#C9A84C]" />
+                    <span className="text-xs font-bold text-[#C9A84C]">{item.target}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

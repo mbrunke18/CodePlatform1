@@ -197,13 +197,13 @@ export default function Footer() {
               </a>
               <button 
                 onClick={() => navigateTo('/try-demo')}
-                className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+                className="text-sm text-[#2B8A6E] hover:text-[#2B8A6E] transition-colors font-medium"
               >
                 See Demo →
               </button>
               <button 
                 onClick={() => navigateTo("/investors")}
-                className="text-sm text-purple-400 hover:text-purple-300 transition-colors font-medium"
+                className="text-sm text-[#C9A84C] hover:text-[#C9A84C] transition-colors font-medium"
               >
                 Investors →
               </button>

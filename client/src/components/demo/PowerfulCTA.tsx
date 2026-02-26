@@ -27,7 +27,7 @@ export function PowerfulCTA() {
   const urgencyPoints = [
     { icon: Zap, text: 'Your competitors are seeing this demo too', color: 'text-amber-400' },
     { icon: Shield, text: 'Every day without M = increased crisis risk', color: 'text-red-400' },
-    { icon: Users, text: '23 Fortune 1000 CEOs activated last month', color: 'text-emerald-400' },
+    { icon: Users, text: '23 Fortune 1000 CEOs activated last month', color: 'text-[#2B8A6E]' },
   ];
 
   return (
@@ -39,7 +39,7 @@ export function PowerfulCTA() {
             <h3 className="text-2xl font-bold text-gray-900">
               Ready to Transform Your Crisis Response?
             </h3>
-            <p className="text-lg text-blue-800">
+            <p className="text-lg text-[#0A0F2E]">
               Schedule your personalized war room workshop and activate your executive triggers within 48 hours
             </p>
           </div>
@@ -51,7 +51,7 @@ export function PowerfulCTA() {
               return (
                 <div key={index} className="flex items-center gap-2">
                   <Icon className={`h-5 w-5 ${point.color}`} />
-                  <span className="text-sm text-blue-800">{point.text}</span>
+                  <span className="text-sm text-[#0A0F2E]">{point.text}</span>
                 </div>
               );
             })}
@@ -61,7 +61,7 @@ export function PowerfulCTA() {
           <div className="flex items-center gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-gray-900 font-bold px-8 py-6 text-lg shadow-lg hover:shadow-emerald-500/50 transition-all duration-200"
+              className="bg-[#2B8A6E] hover:bg-[#256B56] text-gray-900 font-bold px-8 py-6 text-lg shadow-lg hover:shadow-emerald-500/50 transition-all duration-200"
               data-testid="cta-schedule-workshop"
             >
               <Calendar className="h-5 w-5 mr-2" />
@@ -72,7 +72,7 @@ export function PowerfulCTA() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-blue-500 text-blue-800 hover:bg-blue-900/50 px-8 py-6 text-lg"
+              className="border-blue-500 text-[#0A0F2E] hover:bg-[#0A0F2E]/50 px-8 py-6 text-lg"
               data-testid="cta-contact-sales"
             >
               Contact Executive Sales
@@ -82,15 +82,15 @@ export function PowerfulCTA() {
           {/* Value Props */}
           <div className="flex items-center justify-center gap-8 pt-4 text-sm text-blue-300">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+              <div className="w-2 h-2 bg-[#2B8A6E] rounded-full"></div>
               <span>48-hour activation</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+              <div className="w-2 h-2 bg-[#2B8A6E] rounded-full"></div>
               <span>White-glove onboarding</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+              <div className="w-2 h-2 bg-[#2B8A6E] rounded-full"></div>
               <span>Board-ready ROI in 30 days</span>
             </div>
           </div>
@@ -98,8 +98,8 @@ export function PowerfulCTA() {
           {/* Social Proof */}
           <div className="text-center pt-4 border-t border-blue-500/30">
             <p className="text-sm text-blue-300">
-              Trusted by <span className="font-bold text-blue-800">127 Fortune 1000 companies</span> protecting 
-              <span className="font-bold text-emerald-400"> $47B</span> in combined annual revenue
+              Trusted by <span className="font-bold text-[#0A0F2E]">127 Fortune 1000 companies</span> protecting 
+              <span className="font-bold text-[#2B8A6E]"> $47B</span> in combined annual revenue
             </p>
           </div>
         </div>

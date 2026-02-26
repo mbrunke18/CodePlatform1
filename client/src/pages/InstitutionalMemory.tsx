@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Brain, BookOpen, TrendingUp, Award, AlertCircle, CheckCircle, Clock, Target, Shield, Zap, ArrowUpRight, BarChart3, Lightbulb, RefreshCw, ChevronRight } from 'lucide-react';
+import { Brain, BookOpen, TrendingUp, Award, AlertCircle, CheckCircle, Clock, Target, Shield, Zap, ArrowUpRight, BarChart3, Lightbulb, RefreshCw } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 
@@ -195,10 +195,10 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
 
   const getOutcomeIcon = (outcome: string) => {
     switch (outcome) {
-      case 'successful': return <CheckCircle className="h-5 w-5 text-green-500" />;
-      case 'partially_successful': return <AlertCircle className="h-5 w-5 text-yellow-500" />;
+      case 'successful': return <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />;
+      case 'partially_successful': return <AlertCircle className="h-5 w-5 text-[#C9A84C]" />;
       case 'failed': return <AlertCircle className="h-5 w-5 text-red-500" />;
-      default: return <AlertCircle className="h-5 w-5 text-gray-800" />;
+      default: return <AlertCircle className="h-5 w-5 text-[#6B7280]" />;
     }
   };
 
@@ -209,133 +209,133 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950">
+      <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
+            <Badge className="bg-[#0A0F2E] text-[#C9A84C] border border-[#C9A84C]/40 text-xs font-semibold">
               <SubBrandLabel name="Retrospect™" />
             </Badge>
-            <Badge variant="outline" className="text-xs">ADVANCE Phase</Badge>
+            <Badge variant="outline" className="text-xs border-[#E8E4DC]">ADVANCE Phase</Badge>
           </div>
-          <h1 className="text-3xl font-bold flex items-center gap-2" data-testid="page-title">
-            <Brain className="h-8 w-8 text-purple-500" />
+          <h1 className="text-3xl font-bold flex items-center gap-2 text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
+            <Brain className="h-8 w-8 text-[#C9A84C]" />
             Institutional Memory
           </h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-[#6B7280] mt-1">
             AI-powered learning from past decisions — continuously improving recommendations
           </p>
         </div>
-        <Button data-testid="button-record-learning">
+        <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-record-learning">
           <BookOpen className="h-4 w-4 mr-2" />
           Record New Learning
         </Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <Card data-testid="card-decisions-tracked">
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10" data-testid="card-decisions-tracked">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Decisions Tracked</CardTitle>
-            <BookOpen className="h-4 w-4 text-blue-800" />
+            <BookOpen className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{decisionOutcomes.length}</div>
-            <p className="text-xs text-muted-foreground">Across 5 strategic domains</p>
+            <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{decisionOutcomes.length}</div>
+            <p className="text-xs text-[#6B7280]">Across 5 strategic domains</p>
           </CardContent>
         </Card>
 
-        <Card data-testid="card-patterns-identified">
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10" data-testid="card-patterns-identified">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Patterns Identified</CardTitle>
-            <TrendingUp className="h-4 w-4 text-emerald-700" />
+            <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{learningPatterns.length}</div>
-            <p className="text-xs text-muted-foreground">AI-discovered insights</p>
+            <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{learningPatterns.length}</div>
+            <p className="text-xs text-[#6B7280]">AI-discovered insights</p>
           </CardContent>
         </Card>
 
-        <Card data-testid="card-knowledge-base">
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10" data-testid="card-knowledge-base">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Knowledge Base</CardTitle>
-            <Award className="h-4 w-4 text-purple-800" />
+            <Award className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{institutionalKnowledge.length}</div>
-            <p className="text-xs text-muted-foreground">Documented learnings</p>
+            <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{institutionalKnowledge.length}</div>
+            <p className="text-xs text-[#6B7280]">Documented learnings</p>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Value Protected</CardTitle>
-            <Shield className="h-4 w-4 text-emerald-700" />
+            <Shield className="h-4 w-4 text-[#2B8A6E]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-emerald-700">${totalValueSaved.toFixed(1)}M</div>
-            <p className="text-xs text-muted-foreground">Cost savings from learned responses</p>
+            <div className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>${totalValueSaved.toFixed(1)}M</div>
+            <p className="text-xs text-[#6B7280]">Cost savings from learned responses</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border-blue-200 dark:border-blue-800">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                <RefreshCw className="h-5 w-5 text-blue-800 dark:text-blue-400" />
+              <div className="p-2 bg-[#0A0F2E]/10 dark:bg-white/10 rounded-lg">
+                <RefreshCw className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">Continuous Learning Loop</p>
-                <p className="text-xs text-blue-800 dark:text-blue-400">Every execution makes the next one faster</p>
+                <p className="text-sm font-semibold text-[#0A0F2E] dark:text-white">Continuous Learning Loop</p>
+                <p className="text-xs text-[#6B7280]">Every execution makes the next one faster</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Progress value={87} className="flex-1" />
-              <span className="text-sm font-bold text-blue-800">87%</span>
+              <span className="text-sm font-bold text-[#0A0F2E] dark:text-[#C9A84C]">87%</span>
             </div>
-            <p className="text-xs text-blue-800 dark:text-blue-400 mt-1">Learning utilization rate</p>
+            <p className="text-xs text-[#6B7280] mt-1">Learning utilization rate</p>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/40 dark:to-green-950/40 border-emerald-200 dark:border-emerald-800">
+        <Card className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border-[#2B8A6E]/20">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-emerald-100 dark:bg-emerald-900 rounded-lg">
-                <ArrowUpRight className="h-5 w-5 text-emerald-700 dark:text-emerald-400" />
+              <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+                <ArrowUpRight className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">Response Improvement</p>
-                <p className="text-xs text-emerald-700 dark:text-emerald-400">Avg improvement per playbook iteration</p>
+                <p className="text-sm font-semibold text-[#2B8A6E]">Response Improvement</p>
+                <p className="text-xs text-[#2B8A6E]/70">Avg improvement per playbook iteration</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-emerald-700 dark:text-emerald-400">+18%</div>
-            <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-1">Faster execution on each subsequent run</p>
+            <div className="text-3xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>+18%</div>
+            <p className="text-xs text-[#2B8A6E]/70 mt-1">Faster execution on each subsequent run</p>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40 border-purple-200 dark:border-purple-800">
+        <Card className="bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10 border-[#C9A84C]/20">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                <Lightbulb className="h-5 w-5 text-purple-800 dark:text-purple-400" />
+              <div className="p-2 bg-[#C9A84C]/10 rounded-lg">
+                <Lightbulb className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-purple-900 dark:text-purple-200">AI Recommendations</p>
-                <p className="text-xs text-purple-700 dark:text-purple-400">Insights applied to active playbooks</p>
+                <p className="text-sm font-semibold text-[#C9A84C]">AI Recommendations</p>
+                <p className="text-xs text-[#C9A84C]/70">Insights applied to active playbooks</p>
               </div>
             </div>
-            <div className="text-3xl font-bold text-purple-800 dark:text-purple-400">34</div>
-            <p className="text-xs text-purple-800 dark:text-purple-400 mt-1">Auto-applied improvements this quarter</p>
+            <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>34</div>
+            <p className="text-xs text-[#C9A84C]/70 mt-1">Auto-applied improvements this quarter</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5 text-blue-500" />
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <BarChart3 className="h-5 w-5 text-[#C9A84C]" />
               Execution Performance Trend
             </CardTitle>
           </CardHeader>
@@ -350,26 +350,26 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 { month: 'Feb', value: 12 },
               ].map((d) => (
                 <div key={d.month} className="flex-1 flex flex-col items-center gap-1">
-                  <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{d.value}m</span>
+                  <span className="text-xs font-semibold text-[#0A0F2E] dark:text-[#C9A84C]">{d.value}m</span>
                   <div
-                    className="w-full rounded-t-md bg-gradient-to-t from-blue-600 to-blue-400 dark:from-blue-500 dark:to-blue-300 transition-all"
+                    className="w-full rounded-t-md bg-[#0A0F2E] dark:bg-[#C9A84C] transition-all"
                     style={{ height: `${(d.value / 34) * 100}%` }}
                   />
-                  <span className="text-xs text-muted-foreground">{d.month}</span>
+                  <span className="text-xs text-[#6B7280]">{d.month}</span>
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-lg p-3">
-              <TrendingUp className="h-4 w-4 text-emerald-700" />
-              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">67% improvement in average execution time over 6 months</span>
+            <div className="flex items-center gap-2 bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-3">
+              <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
+              <span className="text-sm font-semibold text-[#2B8A6E]">67% improvement in average execution time over 6 months</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-purple-500" />
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <BookOpen className="h-5 w-5 text-[#C9A84C]" />
               Playbooks Improved From Learnings
             </CardTitle>
           </CardHeader>
@@ -381,14 +381,14 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 { name: 'Competitive Counter (#45)', improvement: 'Added patent monitoring signal', version: 'v1 → v2', date: 'Feb 10' },
                 { name: 'GDPR Compliance (#67)', improvement: 'Staggered notification timing', version: 'v2 → v3', date: 'Jan 18' },
               ].map((item) => (
-                <div key={item.name} className="flex items-center justify-between border rounded-lg p-3 bg-slate-50 dark:bg-slate-800/50">
+                <div key={item.name} className="flex items-center justify-between border border-[#E8E4DC] rounded-lg p-3 bg-[#F8F7F4] dark:bg-white/5">
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-slate-900 dark:text-slate-100 truncate">{item.name}</p>
-                    <p className="text-xs text-muted-foreground">{item.improvement}</p>
+                    <p className="text-sm font-semibold text-[#0A0F2E] dark:text-white truncate">{item.name}</p>
+                    <p className="text-xs text-[#6B7280]">{item.improvement}</p>
                   </div>
                   <div className="flex items-center gap-2 ml-3 shrink-0">
-                    <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300 text-xs">{item.version}</Badge>
-                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                    <Badge className="bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20 text-xs">{item.version}</Badge>
+                    <span className="text-xs text-[#6B7280] flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       {item.date}
                     </span>
@@ -400,17 +400,17 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         </Card>
       </div>
 
-      <Tabs defaultValue="outcomes" className="space-y-4" onValueChange={setActiveTab}>
-        <TabsList data-testid="tabs-memory-sections">
-          <TabsTrigger value="outcomes" data-testid="tab-outcomes">Decision Outcomes</TabsTrigger>
-          <TabsTrigger value="patterns" data-testid="tab-patterns">Learning Patterns</TabsTrigger>
-          <TabsTrigger value="knowledge" data-testid="tab-knowledge">Knowledge Base</TabsTrigger>
+      <Tabs value={activeTab} className="space-y-4" onValueChange={setActiveTab}>
+        <TabsList className="bg-[#E8E4DC]/30" data-testid="tabs-memory-sections">
+          <TabsTrigger value="outcomes" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-outcomes">Decision Outcomes</TabsTrigger>
+          <TabsTrigger value="patterns" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-patterns">Learning Patterns</TabsTrigger>
+          <TabsTrigger value="knowledge" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-knowledge">Knowledge Base</TabsTrigger>
         </TabsList>
 
         <TabsContent value="outcomes" className="space-y-4">
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
             <CardHeader>
-              <CardTitle>Decision Outcomes History</CardTitle>
+              <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Decision Outcomes History</CardTitle>
               <CardDescription>
                 Track effectiveness and lessons learned from past executive decisions
               </CardDescription>
@@ -420,31 +420,34 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {decisionOutcomes.map((outcome) => (
                   <div 
                     key={outcome.id} 
-                    className="border rounded-lg p-4 space-y-3"
+                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-3 bg-white dark:bg-white/5"
                     data-testid={`outcome-${outcome.id}`}
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1 space-y-2">
                         <div className="flex items-center gap-2 flex-wrap">
                           {getOutcomeIcon(outcome.outcomeType)}
-                          <h3 className="font-semibold" data-testid={`text-outcome-type-${outcome.id}`}>
+                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-outcome-type-${outcome.id}`}>
                             {outcome.decisionType}
                           </h3>
-                          <Badge variant="outline" className={outcome.outcomeType === 'successful' ? 'border-green-500 text-emerald-700' : 'border-yellow-500 text-yellow-600'}>
+                          <Badge className={
+                            outcome.outcomeType === 'successful' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20' :
+                            'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20'
+                          }>
                             {outcome.outcomeType === 'successful' ? 'Successful' : 'Partially Successful'}
                           </Badge>
-                          <Badge variant="secondary">{outcome.domain}</Badge>
+                          <Badge variant="secondary" className="bg-[#E8E4DC]/30 text-[#0A0F2E] dark:text-white border-none">{outcome.domain}</Badge>
                         </div>
-                        <p className="text-sm text-gray-800 dark:text-slate-300">{outcome.decisionDescription}</p>
-                        <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400">
+                        <p className="text-sm text-[#0A0F2E]/80 dark:text-white/80">{outcome.decisionDescription}</p>
+                        <div className="flex items-center gap-4 text-xs text-[#6B7280]">
                           <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {outcome.date}</span>
                           <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> {outcome.executionTime}</span>
-                          <span className="flex items-center gap-1 text-emerald-700 font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
+                          <span className="flex items-center gap-1 text-[#2B8A6E] font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
                         </div>
                         {outcome.lessonsLearned && (
-                          <div className="bg-blue-50 dark:bg-blue-950/50 p-3 rounded-md border border-blue-200 dark:border-blue-800">
-                            <p className="text-sm font-medium mb-1 flex items-center gap-1"><Lightbulb className="h-4 w-4 text-amber-500" /> Lessons Learned:</p>
-                            <p className="text-sm text-gray-800 dark:text-slate-300">{outcome.lessonsLearned}</p>
+                          <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 rounded-md border border-[#E8E4DC] dark:border-white/10">
+                            <p className="text-sm font-medium mb-1 flex items-center gap-1 text-[#0A0F2E] dark:text-[#C9A84C]"><Lightbulb className="h-4 w-4" /> Lessons Learned:</p>
+                            <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">{outcome.lessonsLearned}</p>
                           </div>
                         )}
                       </div>
@@ -457,9 +460,9 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         </TabsContent>
 
         <TabsContent value="patterns" className="space-y-4">
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
             <CardHeader>
-              <CardTitle>AI-Discovered Learning Patterns</CardTitle>
+              <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Discovered Learning Patterns</CardTitle>
               <CardDescription>
                 Patterns identified from historical data to improve future recommendations
               </CardDescription>
@@ -469,26 +472,26 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {learningPatterns.map((pattern) => (
                   <div 
                     key={pattern.id} 
-                    className="border rounded-lg p-4 space-y-2"
+                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-2 bg-white dark:bg-white/5"
                     data-testid={`pattern-${pattern.id}`}
                   >
                     <div className="flex items-center gap-2 flex-wrap">
-                      <Badge variant="secondary">{pattern.patternType}</Badge>
-                      <Badge variant="outline">{pattern.category}</Badge>
+                      <Badge variant="secondary" className="bg-[#E8E4DC]/30 text-[#0A0F2E] dark:text-white border-none">{pattern.patternType}</Badge>
+                      <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">{pattern.category}</Badge>
                       <Badge className={
-                        pattern.impactScore === 'Critical' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
-                        pattern.impactScore === 'High' ? 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300' :
-                        'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+                        pattern.impactScore === 'Critical' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                        pattern.impactScore === 'High' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
+                        'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-white/10 dark:text-white border-[#0A0F2E]/20'
                       }>
                         {pattern.impactScore} Impact
                       </Badge>
                     </div>
-                    <h3 className="font-semibold" data-testid={`text-pattern-title-${pattern.id}`}>{pattern.title}</h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300">{pattern.description}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400 pt-1">
+                    <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-pattern-title-${pattern.id}`}>{pattern.title}</h3>
+                    <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">{pattern.description}</p>
+                    <div className="flex items-center gap-4 text-xs text-[#6B7280] pt-1">
                       <span className="flex items-center gap-1">
                         <Target className="h-3 w-3" />
-                        Confidence: <span className="font-semibold text-emerald-700">{pattern.confidenceLevel}</span>
+                        Confidence: <span className="font-semibold text-[#2B8A6E]">{pattern.confidenceLevel}</span>
                       </span>
                       <span className="flex items-center gap-1">
                         <BarChart3 className="h-3 w-3" />
@@ -503,9 +506,9 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         </TabsContent>
 
         <TabsContent value="knowledge" className="space-y-4">
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white dark:bg-white/5 dark:border-white/10">
             <CardHeader>
-              <CardTitle>Institutional Knowledge Base</CardTitle>
+              <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Institutional Knowledge Base</CardTitle>
               <CardDescription>
                 Documented organizational wisdom and best practices
               </CardDescription>
@@ -515,20 +518,20 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {institutionalKnowledge.map((knowledge) => (
                   <div 
                     key={knowledge.id} 
-                    className="border rounded-lg p-4 space-y-2"
+                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-2 bg-white dark:bg-white/5"
                     data-testid={`knowledge-${knowledge.id}`}
                   >
                     <div className="flex items-center gap-2 flex-wrap">
                       <Badge className={
-                        knowledge.memoryType === 'Best Practice' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300' :
-                        knowledge.memoryType === 'Failure Analysis' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
-                        'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                        knowledge.memoryType === 'Best Practice' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20' :
+                        knowledge.memoryType === 'Failure Analysis' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                        'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20'
                       }>{knowledge.memoryType}</Badge>
-                      {knowledge.domain && <Badge variant="outline">{knowledge.domain}</Badge>}
+                      {knowledge.domain && <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">{knowledge.domain}</Badge>}
                     </div>
-                    <h3 className="font-semibold" data-testid={`text-knowledge-title-${knowledge.id}`}>{knowledge.title}</h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300">{knowledge.summary}</p>
-                    <div className="flex items-center gap-4 text-xs text-gray-700 dark:text-slate-400 pt-1">
+                    <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-knowledge-title-${knowledge.id}`}>{knowledge.title}</h3>
+                    <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">{knowledge.summary}</p>
+                    <div className="flex items-center gap-4 text-xs text-[#6B7280] pt-1">
                       <span className="flex items-center gap-1"><Target className="h-3 w-3" /> {knowledge.applicability}</span>
                       <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> Updated: {knowledge.lastUpdated}</span>
                     </div>

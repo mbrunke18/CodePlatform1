@@ -52,32 +52,32 @@ export function PeerAdoptionOverlay() {
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="p-3 bg-blue-600/30 rounded-lg">
-                <Users className="h-8 w-8 text-blue-400" />
+              <div className="p-3 bg-[#0A0F2E]/30 rounded-lg">
+                <Users className="h-8 w-8 text-[#0A0F2E]" />
               </div>
-              <h2 className="text-3xl font-bold text-blue-800">While You're Deciding...</h2>
+              <h2 className="text-3xl font-bold text-[#0A0F2E]">While You're Deciding...</h2>
             </div>
-            <p className="text-xl text-blue-800/90">Your Fortune 1000 peers are already executing</p>
+            <p className="text-xl text-[#0A0F2E]/90">Your Fortune 1000 peers are already executing</p>
           </div>
 
           {/* Stats Bar */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-blue-600/20 rounded-lg p-4 border border-blue-500/30">
+            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-blue-500/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-blue-300">847</p>
-                <p className="text-blue-400 text-sm mt-1">Fortune 1000 Executives</p>
+                <p className="text-[#0A0F2E] text-sm mt-1">Fortune 1000 Executives</p>
               </div>
             </div>
-            <div className="bg-blue-600/20 rounded-lg p-4 border border-blue-500/30">
+            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-blue-500/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-blue-300">12 min</p>
-                <p className="text-blue-400 text-sm mt-1">Average Response Time</p>
+                <p className="text-[#0A0F2E] text-sm mt-1">Average Response Time</p>
               </div>
             </div>
-            <div className="bg-blue-600/20 rounded-lg p-4 border border-blue-500/30">
+            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-blue-500/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-blue-300">94%</p>
-                <p className="text-blue-400 text-sm mt-1">Crisis Success Rate</p>
+                <p className="text-[#0A0F2E] text-sm mt-1">Crisis Success Rate</p>
               </div>
             </div>
           </div>
@@ -85,8 +85,8 @@ export function PeerAdoptionOverlay() {
           {/* Recently Adopted */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="h-5 w-5 text-blue-400" />
-              <p className="text-blue-800 font-semibold">Adopted in the Last 30 Days</p>
+              <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
+              <p className="text-[#0A0F2E] font-semibold">Adopted in the Last 30 Days</p>
             </div>
             
             <div className="grid grid-cols-2 gap-3">
@@ -98,12 +98,12 @@ export function PeerAdoptionOverlay() {
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <div className="p-2 bg-blue-600/30 rounded">
-                      <Building2 className="h-4 w-4 text-blue-400" />
+                    <div className="p-2 bg-[#0A0F2E]/30 rounded">
+                      <Building2 className="h-4 w-4 text-[#0A0F2E]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2">
-                        <p className="text-blue-800 font-semibold text-sm truncate">{company.name}</p>
+                        <p className="text-[#0A0F2E] font-semibold text-sm truncate">{company.name}</p>
                         <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
                       </div>
                       <div className="flex items-center gap-2 mt-1 text-xs text-blue-300">
@@ -121,12 +121,12 @@ export function PeerAdoptionOverlay() {
           </div>
 
           {/* Bottom Message */}
-          <div className="bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg p-5 border border-blue-500/40">
+          <div className="bg-gradient-to-r from-[#0A0F2E]/30 to-[#141B45]/30 rounded-lg p-5 border border-blue-500/40">
             <div className="text-center space-y-2">
-              <p className="text-blue-800 text-xl font-bold">
+              <p className="text-[#0A0F2E] text-xl font-bold">
                 They Had the Same Doubts You Do
               </p>
-              <p className="text-blue-800/80 text-lg">
+              <p className="text-[#0A0F2E]/80 text-lg">
                 Now they're responding to crises 6x faster than their competitors
               </p>
             </div>

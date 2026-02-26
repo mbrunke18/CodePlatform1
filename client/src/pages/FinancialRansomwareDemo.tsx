@@ -48,57 +48,57 @@ export default function FinancialRansomwareDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br ">
+    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
       <DemoNavHeader title="Financial Ransomware Demo" showBackButton={true} />
 
       {/* Progress Indicator */}
-      <div className="border-b border-blue-800/20 bg-white pt-20">
+      <div className="border-b border-white/10 bg-white/5 pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex items-center gap-4 text-sm">
-            <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-blue-400" : "text-blue-800"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "introduction" ? "bg-blue-400" : "bg-blue-800"}`} />
+            <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-[#C9A84C]" : "text-white/60"}`}>
+              <div className={`w-2 h-2 rounded-full ${currentAct === "introduction" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
               Introduction
             </div>
-            <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "ai-detection" ? "text-blue-400" : "text-blue-800"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "ai-detection" ? "bg-blue-400" : "bg-blue-800"}`} />
+            <div className="flex-1 h-px bg-white/10" />
+            <div className={`flex items-center gap-2 ${currentAct === "ai-detection" ? "text-[#C9A84C]" : "text-white/60"}`}>
+              <div className={`w-2 h-2 rounded-full ${currentAct === "ai-detection" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
               AI Detection
             </div>
-            <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "coordination" ? "text-blue-400" : "text-blue-800"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "coordination" ? "bg-blue-400" : "bg-blue-800"}`} />
+            <div className="flex-1 h-px bg-white/10" />
+            <div className={`flex items-center gap-2 ${currentAct === "coordination" ? "text-[#C9A84C]" : "text-white/60"}`}>
+              <div className={`w-2 h-2 rounded-full ${currentAct === "coordination" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
               Coordination
             </div>
-            <div className="flex-1 page-background h-px bg-blue-900" />
-            <div className={`flex items-center gap-2 ${currentAct === "outcome" || currentAct === "summary" ? "text-blue-400" : "text-blue-800"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "outcome" || currentAct === "summary" ? "bg-blue-400" : "bg-blue-800"}`} />
+            <div className="flex-1 h-px bg-white/10" />
+            <div className={`flex items-center gap-2 ${currentAct === "outcome" || currentAct === "summary" ? "text-[#C9A84C]" : "text-white/60"}`}>
+              <div className={`w-2 h-2 rounded-full ${currentAct === "outcome" || currentAct === "summary" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
               Outcome
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-6 py-12 text-white">
         {/* Introduction Act */}
         {currentAct === "introduction" && (
           <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold text-gray-900">{financialDemoData.crisis.title}</h2>
-              <p className="text-xl text-blue-800">{financialDemoData.crisis.subtitle}</p>
+              <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.title}</h2>
+              <p className="text-xl text-[#DFC178]">{financialDemoData.crisis.subtitle}</p>
             </div>
 
             {/* Organization Info */}
-            <Card className="bg-white border-blue-800/30 p-6">
+            <Card className="bg-white/5 border-white/10 p-6">
               <div className="flex items-start gap-4 mb-4">
-                <Building2 className="w-6 h-6 text-blue-400 mt-1" />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{financialDemoData.organization.name}</h3>
-                  <p className="text-blue-800 mb-4">{financialDemoData.organization.type}</p>
+                <Building2 className="w-6 h-6 text-[#C9A84C] mt-1" />
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.organization.name}</h3>
+                  <p className="text-white/60 mb-4">{financialDemoData.organization.type}</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {Object.entries(financialDemoData.organization.stats).map(([key, value]) => (
                       <div key={key}>
-                        <div className="text-2xl font-bold text-blue-400">{value}</div>
-                        <div className="text-sm text-blue-300 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                        <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{value}</div>
+                        <div className="text-sm text-white/40 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
                       </div>
                     ))}
                   </div>
@@ -107,33 +107,33 @@ export default function FinancialRansomwareDemo() {
             </Card>
 
             {/* Crisis Scenario */}
-            <Card className="bg-white border-red-800/50 p-6">
+            <Card className="bg-white/5 border-white/10 p-6">
               <div className="flex items-start gap-4">
                 <AlertTriangle className="w-6 h-6 text-red-400 mt-1" />
-                <div className="flex-1 page-background">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">The Crisis Scenario</h3>
-                  <p className="text-blue-800 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Scenario</h3>
+                  <p className="text-white/80 mb-4 leading-relaxed">{financialDemoData.crisis.description}</p>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="bg-white p-4 rounded-lg border border-red-800/30">
+                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
                       <DollarSign className="w-5 h-5 text-red-400 mb-2" />
-                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.financialImpact}</div>
-                      <div className="text-sm text-red-300">At Risk</div>
+                      <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.financialImpact}</div>
+                      <div className="text-sm text-white/40">At Risk</div>
                     </div>
-                    <div className="bg-white p-4 rounded-lg border border-blue-800/30">
-                      <Clock className="w-5 h-5 text-blue-400 mb-2" />
-                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.timeWindow}</div>
-                      <div className="text-sm text-blue-300">Response Window</div>
+                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                      <Clock className="w-5 h-5 text-[#DFC178] mb-2" />
+                      <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.timeWindow}</div>
+                      <div className="text-sm text-white/40">Response Window</div>
                     </div>
-                    <div className="bg-white p-4 rounded-lg border border-blue-800/30">
-                      <Users className="w-5 h-5 text-blue-400 mb-2" />
-                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
-                      <div className="text-sm text-blue-300">Stakeholders</div>
+                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+                      <Users className="w-5 h-5 text-[#C9A84C] mb-2" />
+                      <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.stakeholders}</div>
+                      <div className="text-sm text-white/40">Stakeholders</div>
                     </div>
-                    <div className="bg-white p-4 rounded-lg border border-red-800/30">
+                    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
                       <AlertTriangle className="w-5 h-5 text-red-400 mb-2" />
-                      <div className="text-xl font-bold text-gray-900">{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
-                      <div className="text-sm text-red-300">Affected Customers</div>
+                      <div className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.affectedCustomers}</div>
+                      <div className="text-sm text-white/40">Affected Customers</div>
                     </div>
                   </div>
                 </div>
@@ -141,13 +141,13 @@ export default function FinancialRansomwareDemo() {
             </Card>
 
             {/* Playbook Info */}
-            <Card className="bg-gradient-to-r   border-blue-800/30 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">M Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
+            <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 p-6">
+              <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook: {financialDemoData.playbook.id} - {financialDemoData.playbook.name}</h3>
               <div className="flex items-center gap-6 mb-4">
-                <div className="text-sm text-blue-800">Domain: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.domain}</span></div>
-                <div className="text-sm text-blue-800">Sections: <span className="text-gray-900 font-semibold">{financialDemoData.playbook.sections}</span></div>
-                <div className="text-sm text-blue-800">
-                  Preparedness: <span className="text-green-400 font-semibold">{financialDemoData.playbook.preparedness}%</span>
+                <div className="text-sm text-white/60">Domain: <span className="text-white font-semibold">{financialDemoData.playbook.domain}</span></div>
+                <div className="text-sm text-white/60">Sections: <span className="text-white font-semibold">{financialDemoData.playbook.sections}</span></div>
+                <div className="text-sm text-white/60">
+                  Preparedness: <span className="text-[#2B8A6E] font-semibold">{financialDemoData.playbook.preparedness}%</span>
                 </div>
               </div>
             </Card>
@@ -156,7 +156,7 @@ export default function FinancialRansomwareDemo() {
               <Button
                 size="lg"
                 onClick={handleStartDemo}
-                className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8 py-6 text-lg"
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8 py-6 text-lg"
                 data-testid="button-start-demo"
               >
                 Begin Crisis Simulation
@@ -176,6 +176,7 @@ export default function FinancialRansomwareDemo() {
               playbookId={financialDemoData.playbook.id}
               playbookName={financialDemoData.playbook.name}
               onTriggerFired={handleTriggerFired}
+              autoStart={true}
             />
           </div>
         )}
@@ -188,16 +189,17 @@ export default function FinancialRansomwareDemo() {
               subtitle="Ransomware containment and recovery protocol executing"
               timelineEvents={financialDemoData.timelineEvents}
               onComplete={handleCoordinationComplete}
+              autoStart={true}
             />
           </div>
         )}
 
         {/* Act 3: ROI Outcome */}
         {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
+          <div className="max-w-6xl mx-auto space-y-8 text-white">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Crisis Contained</h2>
-              <p className="text-xl text-blue-800">Compare the traditional approach vs. Execution OS' coordinated response</p>
+              <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Crisis Contained</h2>
+              <p className="text-xl text-white/60">Compare the traditional approach vs. Execution OS' coordinated response</p>
             </div>
 
             <ROIComparison
@@ -210,7 +212,7 @@ export default function FinancialRansomwareDemo() {
               <Button
                 size="lg"
                 onClick={handleSeeSummary}
-                className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8"
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                 data-testid="button-see-summary"
               >
                 See Final Summary
@@ -222,38 +224,38 @@ export default function FinancialRansomwareDemo() {
 
         {/* Final Summary */}
         {currentAct === "summary" && (
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto space-y-8 text-white">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 mb-4">
-                <CheckCircle2 className="w-10 h-10 text-green-400" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2B8A6E]/20 mb-4">
+                <CheckCircle2 className="w-10 h-10 text-[#2B8A6E]" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Demo Complete</h2>
-              <p className="text-xl text-blue-800">Financial Services Ransomware Response</p>
+              <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Demo Complete</h2>
+              <p className="text-xl text-white/60">Financial Services Ransomware Response</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-white border-green-800/30 p-6 text-center">
-                <DollarSign className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">{financialDemoData.roiComparison.bottomLine.value}</div>
-                <div className="text-sm text-green-300">Value Preserved</div>
+              <Card className="bg-white/5 border-white/10 p-6 text-center">
+                <DollarSign className="w-8 h-8 text-[#2B8A6E] mx-auto mb-3" />
+                <div className="text-3xl font-bold text-[#2B8A6E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.roiComparison.bottomLine.value}</div>
+                <div className="text-sm text-white/40">Value Preserved</div>
               </Card>
 
-              <Card className="bg-white border-blue-800/30 p-6 text-center">
-                <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">12 min</div>
-                <div className="text-sm text-blue-300">Full Coordination</div>
+              <Card className="bg-white/5 border-white/10 p-6 text-center">
+                <Clock className="w-8 h-8 text-[#DFC178] mx-auto mb-3" />
+                <div className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 min</div>
+                <div className="text-sm text-white/40">Full Coordination</div>
               </Card>
 
-              <Card className="bg-white border-purple-800/30 p-6 text-center">
-                <Users className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">{financialDemoData.crisis.impactMetrics.stakeholders}</div>
-                <div className="text-sm text-purple-300">Stakeholders Aligned</div>
+              <Card className="bg-white/5 border-white/10 p-6 text-center">
+                <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-3" />
+                <div className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.impactMetrics.stakeholders}</div>
+                <div className="text-sm text-white/40">Stakeholders Aligned</div>
               </Card>
             </div>
 
-            <Card className="bg-gradient-to-r   border-blue-800/30 p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">The Execution OS Difference</h3>
-              <p className="text-blue-800 text-center leading-relaxed max-w-3xl mx-auto">
+            <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 p-8">
+              <h3 className="text-xl font-semibold text-white mb-4 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
+              <p className="text-white/80 text-center leading-relaxed max-w-3xl mx-auto">
                 Your AI detected the ransomware in milliseconds. But without Execution OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, Board, and regulators would take 48-72 hours of email chains and emergency meetings. In that window, a $1M incident becomes a $27M disaster. Execution OS turns instant detection into 12-minute coordinated response—we're not replacing your AI, we're the execution layer that makes it deliver ROI.
               </p>
             </Card>
@@ -263,7 +265,7 @@ export default function FinancialRansomwareDemo() {
                 size="lg"
                 variant="outline"
                 onClick={handleRestart}
-                className="border-blue-600 text-blue-400 hover:bg-blue-950"
+                className="text-white border-white/20 hover:bg-white/10"
                 data-testid="button-restart-demo"
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
@@ -272,7 +274,7 @@ export default function FinancialRansomwareDemo() {
               <Link href="/playbook-library">
                 <Button
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
+                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
                   data-testid="button-explore-playbooks"
                 >
                   <Library className="w-5 h-5 mr-2" />

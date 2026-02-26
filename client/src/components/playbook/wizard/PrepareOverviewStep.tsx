@@ -90,7 +90,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed':
-        return <CheckCircle2 className="h-4 w-4 text-emerald-500" />;
+        return <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />;
       case 'in_progress':
         return <Clock className="h-4 w-4 text-amber-500" />;
       default:
@@ -106,7 +106,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
 
   return (
     <div className="space-y-6">
-      <div className="bg-violet-50 dark:bg-violet-950 p-4 rounded-lg border border-violet-200 dark:border-violet-800">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#C9A84C] dark:border-[#C9A84C]">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">🎯</span> IDENTIFY Phase — Build Your Depth Chart
         </h3>

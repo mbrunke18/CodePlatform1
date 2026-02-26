@@ -166,7 +166,7 @@ type ViewMode = 'choose' | 'quick' | 'builder';
 const domainPresets: Record<string, { label: string; color: string; icon: any; scenarios: string[] }> = {
   offense: {
     label: 'OFFENSE',
-    color: 'emerald',
+    color: 'teal',
     icon: Rocket,
     scenarios: [
       "What if we accelerate the market entry timeline from 6 months to 6 weeks?",
@@ -186,7 +186,7 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
   },
   special_teams: {
     label: 'SPECIAL TEAMS',
-    color: 'purple',
+    color: 'gold',
     icon: Settings,
     scenarios: [
       "What if the digital transformation timeline is cut by 50%?",
@@ -197,10 +197,10 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
 };
 
 const domainStyleMap: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
-  all: { border: 'border-teal-200 dark:border-teal-800', bg: 'bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900', text: 'text-teal-600', iconText: 'text-teal-600', btnClass: 'bg-teal-600 hover:bg-teal-700 text-gray-900' },
-  offense: { border: 'border-emerald-200 dark:border-emerald-800', bg: 'bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-900/20 dark:to-slate-900', text: 'text-emerald-700', iconText: 'text-emerald-700', btnClass: 'bg-emerald-600 hover:bg-emerald-700 text-gray-900' },
-  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-gradient-to-br from-red-50 to-white dark:from-red-900/20 dark:to-slate-900', text: 'text-red-700', iconText: 'text-red-700', btnClass: 'bg-red-600 hover:bg-red-700 text-gray-900' },
-  special_teams: { border: 'border-purple-200 dark:border-purple-800', bg: 'bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-slate-900', text: 'text-purple-800', iconText: 'text-purple-800', btnClass: 'bg-purple-600 hover:bg-purple-700 text-gray-900' },
+  all: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
+  offense: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
+  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-red-50 dark:bg-red-900/20', text: 'text-red-700', iconText: 'text-red-700', btnClass: 'bg-red-600 hover:bg-red-700 text-white' },
+  special_teams: { border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', bg: 'bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10', text: 'text-[#C9A84C]', iconText: 'text-[#C9A84C]', btnClass: 'bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]' },
 };
 
 function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSwitchToBuilder: () => void }) {
@@ -260,10 +260,10 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
       <div className="flex gap-2 flex-wrap justify-center">
         {[
-          { key: 'all', label: 'All Domains', icon: Sparkles, borderColor: 'border-teal-500', textColor: 'text-teal-700 dark:text-teal-300', bgColor: 'bg-teal-50 dark:bg-teal-900/20' },
-          { key: 'offense', label: 'OFFENSE', icon: Rocket, borderColor: 'border-emerald-500', textColor: 'text-emerald-700 dark:text-emerald-300', bgColor: 'bg-emerald-50 dark:bg-emerald-900/20' },
-          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-red-500', textColor: 'text-red-700 dark:text-red-300', bgColor: 'bg-red-50 dark:bg-red-900/20' },
-          { key: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, borderColor: 'border-purple-500', textColor: 'text-purple-700 dark:text-purple-300', bgColor: 'bg-purple-50 dark:bg-purple-900/20' },
+          { key: 'all', label: 'All Domains', icon: Sparkles, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
+          { key: 'offense', label: 'OFFENSE', icon: Rocket, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
+          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-red-500', textColor: 'text-red-700', bgColor: 'bg-red-50' },
+          { key: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
         ].map(({ key, label, icon: Icon, borderColor, textColor, bgColor }) => (
           <Button
             key={key}
@@ -290,7 +290,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   key={i}
                   variant="outline"
                   size="sm"
-                  className={`text-xs transition-all ${scenario === s ? 'ring-2 ring-blue-400 bg-blue-50 dark:bg-blue-900/30' : ''}`}
+                  className={`text-xs transition-all ${scenario === s ? 'ring-2 ring-[#C9A84C] bg-[#C9A84C]/10' : ''}`}
                   onClick={() => setScenario(s)}
                 >
                   {s.length > 60 ? s.substring(0, 60) + '...' : s}
@@ -340,8 +340,8 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         const verdictConfig = isNotRecommended
           ? { icon: XCircle, label: 'Not Recommended', color: 'red', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-300', iconColor: 'text-red-700', badgeBg: 'bg-red-600' }
           : isConditional
-          ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'amber', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', text: 'text-[#C9A84C] dark:text-amber-300', iconColor: 'text-[#C9A84C]', badgeBg: 'bg-amber-600' }
-          : { icon: CheckCircle2, label: 'Recommended', color: 'green', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', text: 'text-emerald-800 dark:text-green-300', iconColor: 'text-emerald-700', badgeBg: 'bg-green-600' };
+          ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'gold', bg: 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/5', border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', text: 'text-[#C9A84C]', iconColor: 'text-[#C9A84C]', badgeBg: 'bg-[#C9A84C]' }
+          : { icon: CheckCircle2, label: 'Recommended', color: 'teal', bg: 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/5', border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', iconColor: 'text-[#2B8A6E]', badgeBg: 'bg-[#2B8A6E]' };
         const VerdictIcon = verdictConfig.icon;
         return (
         <div className="space-y-6 animate-in fade-in duration-500">
@@ -367,8 +367,8 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
           <Card>
             <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Clock className="h-5 w-5 text-blue-800" />
+              <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Clock className="h-5 w-5 text-[#0A0F2E]" />
                 Coordination Timeline Comparison
               </CardTitle>
               <CardDescription>How this change affects the time from trigger to full stakeholder coordination</CardDescription>
@@ -379,10 +379,10 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <div className="flex-1 bg-green-100 dark:bg-green-900/30 rounded-full h-8 flex items-center px-4">
-                        <span className="text-sm font-bold text-emerald-800 dark:text-green-300">{result.original_time}</span>
+                      <div className="flex-1 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-full h-8 flex items-center px-4">
+                        <span className="text-sm font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.original_time}</span>
                       </div>
-                      <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />
                     </div>
                   </div>
                 </div>
@@ -390,17 +390,17 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-amber-100 dark:bg-amber-900/30' : 'bg-green-100 dark:bg-green-900/30'} rounded-full h-8 flex items-center px-4`}>
-                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700 dark:text-red-300' : isConditional ? 'text-[#C9A84C] dark:text-amber-300' : 'text-emerald-800 dark:text-green-300'}`}>{result.modified_time}</span>
+                      <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} rounded-full h-8 flex items-center px-4`}>
+                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.modified_time}</span>
                       </div>
-                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-700 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-emerald-700 flex-shrink-0" />}
+                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-700 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 pt-2 border-t border-slate-200 dark:border-slate-700">
-                  <div className="w-32 text-sm font-semibold text-slate-700 dark:text-slate-200 text-right flex-shrink-0">Net Impact</div>
+                <div className="flex items-center gap-4 pt-2 border-t border-[#E8E4DC] dark:border-white/10">
+                  <div className="w-32 text-sm font-semibold text-[#0A0F2E] dark:text-white text-right flex-shrink-0">Net Impact</div>
                   <div className="flex-1">
-                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-emerald-700'}`}>{result.impact}</span>
+                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.impact}</span>
                   </div>
                 </div>
               </div>
@@ -411,7 +411,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-blue-800" />
+                  <Shield className="h-5 w-5 text-[#2B8A6E]" />
                   What You Should Know
                 </CardTitle>
               </CardHeader>
@@ -421,11 +421,11 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             </Card>
           )}
 
-          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-slate-900">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Zap className="h-5 w-5 text-teal-600" />
-                How Execution OS Handles This
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E] to-white dark:from-[#2B8A6E]/20 dark:to-slate-900">
+            <CardHeader className="pb-3 border-b border-[#E8E4DC] dark:border-white/10">
+              <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Shield className="h-5 w-5 text-[#2B8A6E]" />
+                Playbook Activation Readiness
               </CardTitle>
               <CardDescription>
                 {isRecommended
@@ -436,32 +436,32 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid sm:grid-cols-3 gap-4">
+              <div className="grid sm:grid-cols-3 gap-4 pt-4">
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
-                    <Target className="h-4 w-4 text-teal-600" />
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                    <Target className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Auto-Detect Trigger</div>
-                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
+                    <div className="text-sm font-semibold text-[#0A0F2E] dark:text-white">Auto-Detect Trigger</div>
+                    <p className="text-xs text-[#6B7280] mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right playbook instantly</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
-                    <Users className="h-4 w-4 text-teal-600" />
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                    <Users className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Coordinate Stakeholders</div>
-                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
+                    <div className="text-sm font-semibold text-[#0A0F2E] dark:text-white">Coordinate Stakeholders</div>
+                    <p className="text-xs text-[#6B7280] mt-0.5">Notify 50-200+ stakeholders simultaneously with role-specific instructions and acknowledgment tracking</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex-shrink-0">
-                    <ArrowRight className="h-4 w-4 text-teal-600" />
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                    <ArrowRight className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-slate-800 dark:text-white">Execute in {isRecommended ? (result.modified_time || result.original_time || '12 minutes') : (result.original_time || '12 minutes')}</div>
-                    <p className="text-xs text-gray-700 dark:text-slate-400 mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
+                    <div className="text-sm font-semibold text-[#0A0F2E] dark:text-white">Execute in {isRecommended ? (result.modified_time || result.original_time || '12 minutes') : (result.original_time || '12 minutes')}</div>
+                    <p className="text-xs text-[#6B7280] mt-0.5">Pre-authorized budgets release, tasks assign, and documents stage — all within the coordination window</p>
                   </div>
                 </div>
               </div>
@@ -684,7 +684,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               if (playbook && !recommendedPlaybooksList.find(p => p.id === pbId)) {
                 recommendedPlaybooksList.push({
                   id: playbook.id, name: playbook.name || playbook.title,
-                  executionTime: playbook.averageExecutionTime || 12, readinessState: playbook.readinessState || 'green',
+                  executionTime: playbook.averageExecutionTime || 12, readinessState: playbook.readinessState || 'teal',
                   automationCoverage: playbook.automationCoverage || 75,
                 });
                 teamsSet.add('Crisis Response Team');
@@ -732,7 +732,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
         };
         const demo = typeMap[scenarioType] || typeMap['operational'];
         demo.alerts.forEach((a, i) => triggeredAlerts.push({ id: `demo-alert-${i}`, name: a.name, severity: a.severity }));
-        demo.playbooks.forEach((p, i) => recommendedPlaybooksList.push({ id: `demo-pb-${i}`, name: p.name, executionTime: p.time, readinessState: 'green', automationCoverage: p.coverage }));
+        demo.playbooks.forEach((p, i) => recommendedPlaybooksList.push({ id: `demo-pb-${i}`, name: p.name, executionTime: p.time, readinessState: 'teal', automationCoverage: p.coverage }));
         demo.teams.forEach(t => teamsSet.add(t));
         impactAssessment.operational.affectedDepartments.forEach(dept => teamsSet.add(dept));
       }
@@ -851,13 +851,13 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           return (
             <div key={step} className="flex items-center">
               {i > 0 && (
-                <div className={`w-8 sm:w-12 h-0.5 ${isComplete ? 'bg-blue-500' : 'bg-slate-200 dark:bg-slate-700'}`} />
+                <div className={`w-8 sm:w-12 h-0.5 ${isComplete ? 'bg-[#2B8A6E]' : 'bg-slate-200 dark:bg-slate-700'}`} />
               )}
               <button
                 onClick={() => { if (isComplete) setWizardStep(step); }}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  isActive ? 'bg-blue-600 text-gray-900 shadow-md' :
-                  isComplete ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 cursor-pointer hover:bg-blue-200 dark:hover:bg-blue-900/50' :
+                  isActive ? 'bg-[#0A0F2E] text-white shadow-md' :
+                  isComplete ? 'bg-[#2B8A6E] text-white border-[#2B8A6E] shadow-sm' :
                   'bg-slate-100 text-gray-800 dark:bg-slate-800 dark:text-slate-500'
                 }`}
               >
@@ -882,18 +882,18 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {[
-                  { key: 'market-entry', label: 'Market Entry', icon: TrendingUp, domain: 'OFFENSE', color: 'emerald' },
-                  { key: 'ma-integration', label: 'M&A Integration', icon: Building2, domain: 'OFFENSE', color: 'emerald' },
+                  { key: 'market-entry', label: 'Market Entry', icon: TrendingUp, domain: 'OFFENSE', color: 'teal' },
+                  { key: 'ma-integration', label: 'M&A Integration', icon: Building2, domain: 'OFFENSE', color: 'teal' },
                   { key: 'product-recall', label: 'Product Recall', icon: AlertTriangle, domain: 'DEFENSE', color: 'red' },
                   { key: 'cyber-incident', label: 'Cyber Incident', icon: Shield, domain: 'DEFENSE', color: 'red' },
-                  { key: 'digital-transform', label: 'Digital Transform', icon: Zap, domain: 'SPECIAL TEAMS', color: 'purple' },
-                  { key: 'ai-governance', label: 'AI Governance', icon: FileText, domain: 'SPECIAL TEAMS', color: 'purple' },
+                  { key: 'digital-transform', label: 'Digital Transform', icon: Zap, domain: 'SPECIAL TEAMS', color: 'gold' },
+                  { key: 'ai-governance', label: 'AI Governance', icon: FileText, domain: 'SPECIAL TEAMS', color: 'gold' },
                 ].map(({ key, label, icon: Icon, domain, color }) => {
                   const isActive = analysisName === { 'market-entry': 'Market Entry Analysis', 'ma-integration': 'M&A Integration', 'product-recall': 'Product Recall Scenario', 'cyber-incident': 'Cybersecurity Incident', 'digital-transform': 'Digital Transformation Sprint', 'ai-governance': 'AI Governance Framework' }[key];
-                  const borderMap: Record<string, string> = { emerald: 'border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20', red: 'border-red-400 bg-red-50 dark:bg-red-900/20', purple: 'border-purple-400 bg-purple-50 dark:bg-purple-900/20' };
-                  const iconBg: Record<string, string> = { emerald: 'bg-emerald-100 dark:bg-emerald-900/30', red: 'bg-red-100 dark:bg-red-900/30', purple: 'bg-purple-100 dark:bg-purple-900/30' };
-                  const iconColor: Record<string, string> = { emerald: 'text-emerald-700', red: 'text-red-700', purple: 'text-purple-800' };
-                  const domainColor: Record<string, string> = { emerald: 'text-emerald-700 dark:text-emerald-400', red: 'text-red-700 dark:text-red-400', purple: 'text-purple-800 dark:text-purple-400' };
+                  const borderMap: Record<string, string> = { teal: 'border-teal-400 bg-teal-50 dark:bg-teal-900/20', red: 'border-red-400 bg-red-50 dark:bg-red-900/20', gold: 'border-gold-400 bg-gold-50 dark:bg-gold-900/20' };
+                  const iconBg: Record<string, string> = { teal: 'bg-teal-100 dark:bg-teal-900/30', red: 'bg-red-100 dark:bg-red-900/30', gold: 'bg-gold-100 dark:bg-gold-900/30' };
+                  const iconColor: Record<string, string> = { teal: 'text-teal-700', red: 'text-red-700', gold: 'text-[#C9A84C]' };
+                  const domainColor: Record<string, string> = { teal: 'text-teal-700 dark:text-teal-400', red: 'text-red-700 dark:text-red-400', gold: 'text-[#C9A84C] dark:text-gold-400' };
                   return (
                     <button
                       key={key}
@@ -980,7 +980,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-blue-500" />
+                <Target className="h-5 w-5 text-[#2B8A6E]" />
                 Define Scenario Assumptions
               </CardTitle>
               <CardDescription>
@@ -1003,11 +1003,11 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {displayed.map(variable => {
                             const catColors: Record<string, { bg: string; text: string; border: string }> = {
-                              market: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', text: 'text-emerald-700 dark:text-emerald-300', border: 'border-emerald-200 dark:border-emerald-800' },
-                              operational: { bg: 'bg-blue-50 dark:bg-blue-900/20', text: 'text-blue-800 dark:text-blue-300', border: 'border-blue-200 dark:border-blue-800' },
+                              market: { bg: 'bg-teal-50 dark:bg-teal-900/20', text: 'text-teal-700 dark:text-teal-300', border: 'border-teal-200 dark:border-teal-800' },
+                              operational: { bg: 'bg-navy-50 dark:bg-navy-900/20', text: 'text-[#2B8A6E] dark:text-navy-300', border: 'border-navy-200 dark:border-navy-800' },
                               financial: { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-[#C9A84C] dark:text-amber-300', border: 'border-amber-200 dark:border-amber-800' },
-                              regulatory: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-700 dark:text-purple-300', border: 'border-purple-200 dark:border-purple-800' },
-                              environmental: { bg: 'bg-cyan-50 dark:bg-cyan-900/20', text: 'text-cyan-700 dark:text-cyan-300', border: 'border-cyan-200 dark:border-cyan-800' },
+                              regulatory: { bg: 'bg-gold-50 dark:bg-gold-900/20', text: 'text-gold-700 dark:text-gold-300', border: 'border-gold-200 dark:border-gold-800' },
+                              environmental: { bg: 'bg-teal-50 dark:bg-teal-900/20', text: 'text-teal-700 dark:text-teal-300', border: 'border-teal-200 dark:border-teal-800' },
                             };
                             const colors = catColors[variable.category] || catColors.market;
                             return (
@@ -1027,7 +1027,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         </div>
                         {hasMore && (
                           <div className="text-center mt-2">
-                            <Button variant="ghost" size="sm" className="text-blue-800 dark:text-blue-400" onClick={() => setShowAllVariables(true)}>
+                            <Button variant="ghost" size="sm" className="text-[#2B8A6E] dark:text-navy-400" onClick={() => setShowAllVariables(true)}>
                               Show {available.length - 8} more variables
                             </Button>
                           </div>
@@ -1044,7 +1044,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               )}
 
               {selectedVariableId && selectedVariable && (
-                <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg space-y-4 border border-blue-200 dark:border-blue-800">
+                <div className="p-4 bg-navy-50 dark:bg-navy-900/10 rounded-lg space-y-4 border border-navy-200 dark:border-navy-800">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-bold text-slate-800 dark:text-white">{selectedVariable.label}</div>
@@ -1180,14 +1180,14 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <Label className="text-sm font-semibold">Scenario Assumptions ({conditions.length})</Label>
                   {conditions.map(condition => {
                     const catBadgeColors: Record<string, string> = {
-                      market: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
-                      operational: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
+                      market: 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300',
+                      operational: 'bg-navy-100 text-[#2B8A6E] dark:bg-navy-900/30 dark:text-navy-300',
                       financial: 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-300',
-                      regulatory: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300',
-                      environmental: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300',
+                      regulatory: 'bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-300',
+                      environmental: 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300',
                     };
                     return (
-                      <div key={condition.id} className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <div key={condition.id} className="flex items-center justify-between p-3 bg-navy-50 dark:bg-navy-900/20 rounded-lg border border-navy-200 dark:border-navy-800">
                         <div className="text-sm flex-1">
                           <Badge className={`mb-1 text-[10px] border-0 ${catBadgeColors[condition.category] || ''}`}>{condition.category}</Badge>
                           <div className="text-slate-800 dark:text-white">
@@ -1248,7 +1248,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-base">
-                  <DollarSign className="h-5 w-5 text-green-500" />
+                  <DollarSign className="h-5 w-5 text-teal-500" />
                   Financial & Operational Impact
                 </CardTitle>
                 <CardDescription className="text-xs">Optional - adds depth to your analysis and increases confidence score.</CardDescription>
@@ -1273,7 +1273,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           onClick={() => toggleDepartment(dept)}
                           className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
                             isSelected
-                              ? 'bg-blue-600 text-gray-900 shadow-sm'
+                              ? 'bg-[#0A0F2E] text-white shadow-sm'
                               : 'bg-slate-100 dark:bg-slate-800 text-gray-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                           }`}
                         >
@@ -1346,7 +1346,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-base">
-                    <UserCheck className="h-5 w-5 text-blue-500" />
+                    <UserCheck className="h-5 w-5 text-[#2B8A6E]" />
                     Key Stakeholders
                   </CardTitle>
                   <CardDescription className="text-xs">Optional - tap common roles or add your own.</CardDescription>
@@ -1357,7 +1357,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <button
                         key={preset.name}
                         onClick={() => addPresetStakeholder(preset)}
-                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
+                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-navy-50 dark:bg-navy-900/20 text-[#2B8A6E] dark:text-navy-300 border border-navy-200 dark:border-navy-800 hover:bg-navy-100 dark:hover:bg-navy-900/40 transition-all"
                       >
                         <Plus className="h-3 w-3" /> {preset.name}
                       </button>
@@ -1398,7 +1398,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
         const impactConfig = {
           high: { label: 'High Impact Scenario', color: 'text-red-700', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', icon: AlertTriangle, iconColor: 'text-red-700' },
           moderate: { label: 'Moderate Impact Scenario', color: 'text-[#C9A84C]', bg: 'bg-amber-50 dark:bg-amber-900/20', border: 'border-amber-200 dark:border-amber-800', icon: AlertTriangle, iconColor: 'text-[#C9A84C]' },
-          low: { label: 'Low Impact Scenario', color: 'text-emerald-700', bg: 'bg-green-50 dark:bg-green-900/20', border: 'border-green-200 dark:border-green-800', icon: CheckCircle2, iconColor: 'text-emerald-700' },
+          low: { label: 'Low Impact Scenario', color: 'text-teal-700', bg: 'bg-teal-50 dark:bg-teal-900/20', border: 'border-teal-200 dark:border-teal-800', icon: CheckCircle2, iconColor: 'text-teal-700' },
         }[impactLevel];
         const ImpactIcon = impactConfig.icon;
         const industryHrs = Math.round(analysisResult.decisionVelocityMetrics.industryAverage / 60);
@@ -1412,7 +1412,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <ImpactIcon className={`h-7 w-7 ${impactConfig.iconColor}`} />
                 </div>
                 <div className="flex-1">
-                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-green-600'} text-gray-900`}>
+                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-teal-600'} text-gray-900`}>
                     {impactConfig.label} — Score: {analysisResult.impactScore}/100
                   </Badge>
                   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
@@ -1432,7 +1432,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-base flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-blue-800" />
+                  <Clock className="h-5 w-5 text-[#2B8A6E]" />
                   Your Speed vs. Industry
                 </CardTitle>
                 <CardDescription>Time from trigger detection to full coordination</CardDescription>
@@ -1478,7 +1478,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   {analysisResult.triggeredAlerts.map(alert => (
                     <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-slate-800 rounded-lg">
                       <div className="flex items-center gap-2.5">
-                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-blue-500'}`} />
+                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-[#2B8A6E]'}`} />
                         <span className="font-medium text-sm text-slate-700 dark:text-slate-200">{alert.name}</span>
                       </div>
                       <Badge variant={alert.severity === 'high' ? 'destructive' : 'secondary'} className="text-[10px]">{alert.severity}</Badge>
@@ -1489,7 +1489,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             </Card>
           </div>
 
-          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50/50 to-white dark:from-teal-900/10 dark:to-slate-900">
+          <Card className="border-teal-200 dark:border-teal-800 bg-gradient-to-br from-[#2B8A6E]/50 to-white dark:from-[#2B8A6E]/10 dark:to-slate-900">
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2">
                 <Zap className="h-5 w-5 text-teal-600" />
@@ -1515,8 +1515,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                           )}
                         </div>
                       </div>
-                      <Badge className={`${playbook.readinessState === 'green' ? 'bg-green-100 text-emerald-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400'} text-[10px]`}>
-                        {playbook.readinessState === 'green' ? 'Ready' : 'Setup Needed'}
+                      <Badge className={`${playbook.readinessState === 'teal' ? 'bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400' : 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400'} text-[10px]`}>
+                        {playbook.readinessState === 'teal' ? 'Ready' : 'Setup Needed'}
                       </Badge>
                     </div>
                   ))}
@@ -1530,7 +1530,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="flex flex-wrap gap-2">
                   {analysisResult.teamsInvolved.map((team, idx) => (
                     <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700">
-                      <Users className="h-3 w-3 text-purple-500" />
+                      <Users className="h-3 w-3 text-[#C9A84C]" />
                       <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{team.name}</span>
                     </div>
                   ))}
@@ -1570,13 +1570,13 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardContent className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5 text-blue-800" />
+                  <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
                   <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Analysis Confidence</span>
                 </div>
-                <Badge variant="outline" className="text-blue-800">{analysisResult.confidenceLevel}%</Badge>
+                <Badge variant="outline" className="text-[#2B8A6E]">{analysisResult.confidenceLevel}%</Badge>
               </div>
               <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
-                <div className="bg-blue-600 h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
+                <div className="bg-[#0A0F2E] h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
               <p className="text-xs text-gray-700 mt-1.5">
                 {analysisResult.confidenceLevel < 60
@@ -1588,7 +1588,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-blue-200 dark:border-blue-800">
+          <Card className="border-2 border-navy-200 dark:border-navy-800">
             <CardContent className="p-4">
               <div className="flex flex-wrap items-center gap-3">
                 <Button onClick={saveScenario} className="flex-1 min-w-[140px]">
@@ -1611,7 +1611,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <ArrowLeft className="h-4 w-4 mr-1" /> Previous
           </Button>
           {wizardStep === 3 ? (
-            <Button onClick={runAnalysis} disabled={isAnalyzing || conditions.length === 0} className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700">
+            <Button onClick={runAnalysis} disabled={isAnalyzing || conditions.length === 0} className="bg-gradient-to-r from-gold-600 to-navy-600 hover:from-gold-700 hover:to-navy-700">
               {isAnalyzing ? <><Activity className="h-4 w-4 mr-2 animate-spin" /> Analyzing...</> : <><Play className="h-4 w-4 mr-2" /> Run Analysis</>}
             </Button>
           ) : (
@@ -1632,19 +1632,19 @@ export default function WhatIfAnalyzer() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 p-6 sm:p-8">
+      <div className="flex-1 page-background overflow-auto bg-gradient-to-br from-slate-50 to-navy-50 dark:from-slate-900 dark:to-slate-800 p-6 sm:p-8">
         <div className="max-w-5xl mx-auto space-y-8">
 
           {viewMode === 'choose' && (
             <>
               <div className="text-center max-w-3xl mx-auto">
                 <div className="flex items-center justify-center gap-3 mb-3">
-                  <div className="p-2.5 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl">
+                  <div className="p-2.5 bg-gradient-to-br from-gold-500 to-navy-600 rounded-xl">
                     <FlaskConical className="h-7 w-7 text-gray-900" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
-                      <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                      <h1 className="text-3xl font-bold bg-gradient-to-r from-gold-600 to-navy-600 bg-clip-text text-transparent">
                         What-If Analyzer
                       </h1>
                       <OnboardingTrigger pageId="what-if-analyzer" autoStart={true} />
@@ -1660,15 +1660,15 @@ export default function WhatIfAnalyzer() {
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <button
                   onClick={() => setViewMode('quick')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-xl group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
-                      <Sparkles className="h-6 w-6 text-blue-800" />
+                    <div className="p-2.5 bg-navy-100 dark:bg-navy-900/30 rounded-xl group-hover:bg-navy-200 dark:group-hover:bg-navy-900/50 transition-colors">
+                      <Sparkles className="h-6 w-6 text-[#2B8A6E]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-slate-800 dark:text-white">Quick Analysis</h3>
-                      <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 text-[10px]">RECOMMENDED FOR FIRST TIME</Badge>
+                      <Badge className="bg-navy-100 text-[#2B8A6E] dark:bg-navy-900/30 dark:text-navy-300 text-[10px]">RECOMMENDED FOR FIRST TIME</Badge>
                     </div>
                   </div>
                   <p className="text-sm text-gray-700 dark:text-slate-400 mb-4">
@@ -1677,34 +1677,34 @@ export default function WhatIfAnalyzer() {
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>Type a scenario in plain English</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>AI analyzes timing impact and risks</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>Get a clear recommendation in seconds</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-blue-800 group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-[#2B8A6E] group-hover:gap-2 transition-all">
                     Start Quick Analysis <ArrowRight className="h-4 w-4" />
                   </div>
                 </button>
 
                 <button
                   onClick={() => setViewMode('builder')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-purple-400 dark:hover:border-purple-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-gold-400 dark:hover:border-gold-500 hover:shadow-xl transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-xl group-hover:bg-purple-200 dark:group-hover:bg-purple-900/50 transition-colors">
-                      <Layers className="h-6 w-6 text-purple-800" />
+                    <div className="p-2.5 bg-gold-100 dark:bg-gold-900/30 rounded-xl group-hover:bg-gold-200 dark:group-hover:bg-gold-900/50 transition-colors">
+                      <Layers className="h-6 w-6 text-[#C9A84C]" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-slate-800 dark:text-white">Deep Scenario Builder</h3>
-                      <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 text-[10px]">DETAILED MODELING</Badge>
+                      <Badge className="bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-300 text-[10px]">DETAILED MODELING</Badge>
                     </div>
                   </div>
                   <p className="text-sm text-gray-700 dark:text-slate-400 mb-4">
@@ -1713,19 +1713,19 @@ export default function WhatIfAnalyzer() {
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>Guided 4-step wizard walks you through</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>See which playbooks and teams activate</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-green-500 flex-shrink-0" />
+                      <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
                       <span>Save scenarios and create reusable templates</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-purple-800 group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 mt-4 text-sm font-semibold text-[#C9A84C] group-hover:gap-2 transition-all">
                     Open Scenario Builder <ArrowRight className="h-4 w-4" />
                   </div>
                 </button>

@@ -252,18 +252,18 @@ export default function AdvancedAnalytics() {
 
   const getTrendIcon = (trend: string) => {
     switch (trend) {
-      case 'positive': return <ArrowUp className="h-4 w-4 text-emerald-400" />;
+      case 'positive': return <ArrowUp className="h-4 w-4 text-[#2B8A6E]" />;
       case 'negative': return <ArrowDown className="h-4 w-4 text-red-400" />;
-      default: return <Minus className="h-4 w-4 text-amber-400" />;
+      default: return <Minus className="h-4 w-4 text-[#C9A84C]" />;
     }
   };
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'high': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      case 'medium': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+      case 'high': return 'bg-red-500/20 text-red-600 border-red-500/30';
+      case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      default: return 'bg-slate-500/20 text-[#0A0F2E] border-slate-500/30';
     }
   };
 
@@ -278,41 +278,41 @@ export default function AdvancedAnalytics() {
 
   return (
     <PageLayout>
-      <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto p-8 space-y-8">
         
         {/* Breadcrumb Navigation */}
         <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-gray-200">
+          <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
             <Link to="/">
-              <Button variant="ghost" size="sm" className="text-gray-800 dark:text-gray-200 hover:text-white p-1 h-auto">
+              <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#0A0F2E]/5 p-1 h-auto">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
-            <span>/</span>
-            <span>Analytics & Intelligence</span>
-            <span>/</span>
-            <span className="text-gray-900">Advanced Analytics</span>
+            <span className="text-[#6B7280]">/</span>
+            <span className="text-[#6B7280]">Analytics & Intelligence</span>
+            <span className="text-[#6B7280]">/</span>
+            <span className="text-[#0A0F2E] font-medium">Advanced Analytics</span>
           </div>
         </div>
 
         {/* Advanced Analytics Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Advanced Business Intelligence</h1>
-            <p className="text-gray-800">Predictive analytics, market intelligence, and competitive benchmarking</p>
+            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Advanced Business Intelligence</h1>
+            <p className="text-[#6B7280]">Predictive analytics, market intelligence, and competitive benchmarking</p>
           </div>
           <div className="flex items-center gap-4">
             <Link to="/">
-              <Button variant="secondary" className="bg-gray-50 hover:bg-slate-600 text-gray-700 border-slate-600">
+              <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Dashboard
               </Button>
             </Link>
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+            <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               <Brain className="w-4 h-4 mr-2" />
               AI Models Active: 12
             </Badge>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
               <BarChart3 className="w-4 h-4 mr-2" />
               Generate Report
             </Button>
@@ -321,12 +321,12 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-gray-50 border border-gray-200">
-            <TabsTrigger value="predictive" className="data-[state=active]:bg-gray-50">Predictive Models</TabsTrigger>
-            <TabsTrigger value="intelligence" className="data-[state=active]:bg-gray-50">Business Intelligence</TabsTrigger>
-            <TabsTrigger value="benchmarks" className="data-[state=active]:bg-gray-50">Industry Benchmarks</TabsTrigger>
-            <TabsTrigger value="scenarios" className="data-[state=active]:bg-gray-50">Scenario Analysis</TabsTrigger>
-            <TabsTrigger value="ai-chat" className="data-[state=active]:bg-gray-50 flex items-center gap-2">
+          <TabsList className="bg-[#E8E4DC] border border-[#E8E4DC]">
+            <TabsTrigger value="predictive" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Predictive Models</TabsTrigger>
+            <TabsTrigger value="intelligence" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Business Intelligence</TabsTrigger>
+            <TabsTrigger value="benchmarks" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Industry Benchmarks</TabsTrigger>
+            <TabsTrigger value="scenarios" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Scenario Analysis</TabsTrigger>
+            <TabsTrigger value="ai-chat" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] flex items-center gap-2">
               <MessageSquare className="h-4 w-4" />
               AI Chat
             </TabsTrigger>
@@ -336,14 +336,14 @@ export default function AdvancedAnalytics() {
           <TabsContent value="predictive" className="space-y-6">
             <div className="space-y-6">
               {predictiveModels.map((model) => (
-                <Card key={model.id} className="bg-white border-gray-200">
+                <Card key={model.id} className="bg-white border-[#E8E4DC]">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-gray-900 flex items-center gap-3">
-                        <Brain className="h-6 w-6" />
+                      <CardTitle className="text-[#0A0F2E] flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Brain className="h-6 w-6 text-[#C9A84C]" />
                         {model.name}
                       </CardTitle>
-                      <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                         {model.accuracy}% Accuracy
                       </Badge>
                     </div>
@@ -352,22 +352,22 @@ export default function AdvancedAnalytics() {
                     
                     {/* Predictions */}
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Forecasts</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] mb-3">Forecasts</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.predictions.map((prediction, index) => (
-                          <div key={index} className="p-4 bg-gray-50 rounded-lg">
+                          <div key={index} className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                             <div className="flex items-center justify-between mb-2">
-                              <span className="text-gray-900 font-medium">{prediction.period}</span>
-                              <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                              <span className="text-[#0A0F2E] font-medium">{prediction.period}</span>
+                              <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20">
                                 {prediction.probability}% Confidence
                               </Badge>
                             </div>
-                            <div className="text-2xl font-bold text-gray-900 mb-2">
+                            <div className="text-2xl font-bold text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                               {model.type === 'revenue' ? formatCurrency(prediction.value) : 
                                model.type === 'customer_churn' ? `${prediction.value}%` : 
                                prediction.value.toLocaleString()}
                             </div>
-                            <div className="text-xs text-gray-800 dark:text-slate-200">
+                            <div className="text-xs text-[#6B7280]">
                               Key factors: {prediction.factors.slice(0, 2).join(', ')}
                             </div>
                           </div>
@@ -377,20 +377,20 @@ export default function AdvancedAnalytics() {
 
                     {/* Key Drivers */}
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Key Drivers</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] mb-3">Key Drivers</h4>
                       <div className="space-y-3">
                         {model.keyDrivers.map((driver, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                          <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                             <div className="flex items-center gap-3">
                               {getTrendIcon(driver.trend)}
-                              <span className="text-gray-900">{driver.factor}</span>
+                              <span className="text-[#0A0F2E]">{driver.factor}</span>
                             </div>
                             <div className="flex items-center gap-4">
                               <div className="text-right">
-                                <div className="text-sm font-medium text-gray-900">
+                                <div className="text-sm font-medium text-[#0A0F2E]">
                                   {(Math.abs(driver.impact) * 100).toFixed(1)}% Impact
                                 </div>
-                                <div className="text-xs text-gray-800 dark:text-slate-200">
+                                <div className="text-xs text-[#6B7280]">
                                   {(driver.significance * 100).toFixed(0)}% Significance
                                 </div>
                               </div>
@@ -403,18 +403,18 @@ export default function AdvancedAnalytics() {
 
                     {/* Scenarios */}
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Scenario Analysis</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] mb-3">Scenario Analysis</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.scenarios.map((scenario, index) => (
-                          <div key={index} className="p-4 bg-gray-50 rounded-lg border border-slate-600/50">
+                          <div key={index} className="p-4 bg-white rounded-lg border border-[#E8E4DC]">
                             <div className="flex items-center justify-between mb-2">
-                              <span className="font-medium text-gray-900">{scenario.name}</span>
-                              <span className="text-sm text-gray-800 dark:text-slate-200">{scenario.probability}%</span>
+                              <span className="font-medium text-[#0A0F2E]">{scenario.name}</span>
+                              <span className="text-sm text-[#6B7280]">{scenario.probability}%</span>
                             </div>
-                            <div className="text-xl font-bold text-gray-900 mb-2">
+                            <div className="text-xl font-bold text-[#0A0F2E] mb-2">
                               {model.type === 'revenue' ? formatCurrency(scenario.outcome) : `${scenario.outcome}%`}
                             </div>
-                            <p className="text-xs text-gray-800 dark:text-slate-200">{scenario.description}</p>
+                            <p className="text-xs text-[#6B7280]">{scenario.description}</p>
                           </div>
                         ))}
                       </div>
@@ -429,39 +429,39 @@ export default function AdvancedAnalytics() {
           <TabsContent value="intelligence" className="space-y-6">
             <div className="space-y-4">
               {businessIntelligence.map((insight) => (
-                <Card key={insight.id} className="bg-white border-gray-200">
+                <Card key={insight.id} className="bg-white border-[#E8E4DC]">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1 page-background">
+                      <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <Badge className={getImpactColor(insight.impact)}>
                             {insight.impact.toUpperCase()} IMPACT
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
+                          <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">
                             {insight.category.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
+                          <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">
                             {insight.timeHorizon.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-900 text-lg mb-4">{insight.insight}</p>
+                        <p className="text-[#0A0F2E] text-lg mb-4 font-medium">{insight.insight}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Financial Impact</div>
-                        <div className={`text-2xl font-bold ${insight.quantifiedValue > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        <div className="text-sm text-[#6B7280]">Financial Impact</div>
+                        <div className={`text-2xl font-bold ${insight.quantifiedValue > 0 ? 'text-[#2B8A6E]' : 'text-red-600'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {insight.quantifiedValue > 0 ? '+' : ''}{formatCurrency(insight.quantifiedValue)}
                         </div>
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Risk Level: {insight.riskLevel}%</div>
+                        <div className="text-sm text-[#6B7280]">Risk Level: {insight.riskLevel}%</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Data Sources</h4>
+                        <h4 className="font-semibold text-[#0A0F2E] mb-2">Data Sources</h4>
                         <div className="space-y-1">
                           {insight.sources.map((source, index) => (
-                            <div key={index} className="text-sm text-gray-800 flex items-center gap-2">
-                              <CheckCircle className="w-3 h-3 text-emerald-400" />
+                            <div key={index} className="text-sm text-[#6B7280] flex items-center gap-2">
+                              <CheckCircle className="w-3 h-3 text-[#2B8A6E]" />
                               {source}
                             </div>
                           ))}
@@ -469,15 +469,15 @@ export default function AdvancedAnalytics() {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Recommended Actions</h4>
+                        <h4 className="font-semibold text-[#0A0F2E] mb-2">Recommended Actions</h4>
                         <div className="space-y-2">
                           {insight.recommendations.slice(0, 2).map((rec, index) => (
-                            <div key={index} className="p-2 bg-gray-50 rounded">
+                            <div key={index} className="p-2 bg-[#F8F7F4] rounded border border-[#E8E4DC]">
                               <div className="flex items-center justify-between">
-                                <span className="text-sm text-gray-900">{rec.action}</span>
-                                <span className="text-xs text-emerald-400">{rec.estimatedROI}% ROI</span>
+                                <span className="text-sm text-[#0A0F2E] font-medium">{rec.action}</span>
+                                <span className="text-xs text-[#2B8A6E] font-bold">{rec.estimatedROI}% ROI</span>
                               </div>
-                              <div className="text-xs text-gray-800 dark:text-slate-200">Timeline: {rec.timeToImplement}</div>
+                              <div className="text-xs text-[#6B7280]">Timeline: {rec.timeToImplement}</div>
                             </div>
                           ))}
                         </div>
@@ -493,30 +493,30 @@ export default function AdvancedAnalytics() {
           <TabsContent value="benchmarks" className="space-y-6">
             <div className="space-y-6">
               {industryBenchmarks.map((benchmark, index) => (
-                <Card key={index} className="bg-white border-gray-200">
+                <Card key={index} className="bg-white border-[#E8E4DC]">
                   <CardHeader>
-                    <CardTitle className="text-gray-900">{benchmark.metric}</CardTitle>
+                    <CardTitle className="text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{benchmark.metric}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div className="text-center">
-                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Our Performance</div>
-                        <div className="text-2xl font-bold text-gray-900">
+                        <div className="text-sm text-[#6B7280] mb-1">Our Performance</div>
+                        <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.ourPerformance) : benchmark.ourPerformance.toLocaleString()}
                         </div>
-                        <div className="text-xs text-emerald-400">
+                        <div className="text-xs text-[#2B8A6E] font-bold">
                           {benchmark.percentileRank}th percentile
                         </div>
                       </div>
                       
                       <div className="text-center">
-                        <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Industry Average</div>
-                        <div className="text-2xl font-bold text-gray-800">
+                        <div className="text-sm text-[#6B7280] mb-1">Industry Average</div>
+                        <div className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.industryAverage) : benchmark.industryAverage.toLocaleString()}
                         </div>
-                        <div className={`text-xs ${benchmark.competitiveGap > 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        <div className={`text-xs ${benchmark.competitiveGap > 0 ? 'text-[#2B8A6E]' : 'text-red-400'}`}>
                           {benchmark.competitiveGap > 0 ? '+' : ''}{formatCurrency(benchmark.competitiveGap)} vs us
                         </div>
                       </div>
@@ -538,7 +538,7 @@ export default function AdvancedAnalytics() {
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.improvementPotential) : benchmark.improvementPotential.toLocaleString()}
                         </div>
-                        <div className="text-xs text-blue-400">
+                        <div className="text-xs text-[#0A0F2E]">
                           To reach top quartile
                         </div>
                       </div>

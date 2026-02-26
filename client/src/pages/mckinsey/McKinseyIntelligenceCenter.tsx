@@ -98,7 +98,7 @@ export default function McKinseyIntelligenceCenter() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-emerald-700" data-testid="value-realized">$4.2M</div>
+            <div className="text-2xl font-bold text-[#2B8A6E]" data-testid="value-realized">$4.2M</div>
             <p className="text-xs text-muted-foreground">YTD savings</p>
           </CardContent>
         </Card>
@@ -203,8 +203,8 @@ export default function McKinseyIntelligenceCenter() {
                 <div key={phase.phase} className="space-y-2" data-testid={`phase-${phase.phase}`}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      {phase.status === 'completed' && <CheckCircle2 className="h-5 w-5 text-emerald-700" />}
-                      {phase.status === 'in_progress' && <Clock className="h-5 w-5 text-blue-800 animate-pulse" />}
+                      {phase.status === 'completed' && <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />}
+                      {phase.status === 'in_progress' && <Clock className="h-5 w-5 text-[#0A0F2E] animate-pulse" />}
                       {phase.status === 'pending' && <AlertCircle className="h-5 w-5 text-gray-800" />}
                       <div>
                         <p className="font-semibold">{phase.name}</p>
@@ -224,7 +224,7 @@ export default function McKinseyIntelligenceCenter() {
               <div className="pt-4 border-t">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Business Case Value</span>
-                  <span className="text-lg font-bold text-emerald-700" data-testid="value-business-case">$160M</span>
+                  <span className="text-lg font-bold text-[#2B8A6E]" data-testid="value-business-case">$160M</span>
                 </div>
               </div>
             </CardContent>
@@ -341,7 +341,7 @@ export default function McKinseyIntelligenceCenter() {
                 <div className="grid gap-3">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Cost Savings</span>
-                    <span className="font-semibold text-emerald-700" data-testid="value-cost-savings">$4.2M</span>
+                    <span className="font-semibold text-[#2B8A6E]" data-testid="value-cost-savings">$4.2M</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Time Savings</span>
@@ -349,11 +349,11 @@ export default function McKinseyIntelligenceCenter() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Coordination Speed Improvement</span>
-                    <span className="font-semibold text-blue-800" data-testid="value-speed-improvement">360x faster</span>
+                    <span className="font-semibold text-[#0A0F2E]" data-testid="value-speed-improvement">360x faster</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">ROI</span>
-                    <span className="font-semibold text-emerald-700" data-testid="value-roi">428%</span>
+                    <span className="font-semibold text-[#2B8A6E]" data-testid="value-roi">428%</span>
                   </div>
                 </div>
               </div>
@@ -375,8 +375,8 @@ export default function McKinseyIntelligenceCenter() {
                   data-testid={`rule-${index + 1}`}
                 >
                   <div className="flex items-center gap-3">
-                    {rule.status === 'compliant' && <CheckCircle2 className="h-5 w-5 text-emerald-700" />}
-                    {rule.status === 'in_progress' && <Clock className="h-5 w-5 text-blue-800" />}
+                    {rule.status === 'compliant' && <CheckCircle2 className="h-5 w-5 text-[#2B8A6E]" />}
+                    {rule.status === 'in_progress' && <Clock className="h-5 w-5 text-[#0A0F2E]" />}
                     {rule.status === 'not_started' && <AlertCircle className="h-5 w-5 text-gray-800" />}
                     <div>
                       <p className="font-medium text-sm">{rule.name}</p>

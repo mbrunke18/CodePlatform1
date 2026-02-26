@@ -141,7 +141,7 @@ export default function ExecutionValidationReport({
   const isCostUnderBudget = costVariance < 0;
 
   return (
-    <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 border-green-200 dark:border-green-800" data-testid="validation-report-card">
+    <Card className="bg-gradient-to-br from-green-50 to-[#256B56] dark:from-green-950 dark:to-[#256B56] border-green-200 dark:border-green-800" data-testid="validation-report-card">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">

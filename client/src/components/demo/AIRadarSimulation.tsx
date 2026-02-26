@@ -76,7 +76,7 @@ export default function AIRadarSimulation({
   const getConfidenceColor = (conf: number) => {
     if (conf >= 85) return 'text-red-700 dark:text-red-400';
     if (conf >= 70) return 'text-yellow-600 dark:text-yellow-400';
-    return 'text-emerald-700 dark:text-green-400';
+    return 'text-[#2B8A6E] dark:text-green-400';
   };
 
   const getStreamStatus = (conf: number) => {
@@ -89,14 +89,14 @@ export default function AIRadarSimulation({
     <div className="space-y-6">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-xl text-blue-800">{subtitle}</p>
+        <p className="text-xl text-[#0A0F2E]">{subtitle}</p>
       </div>
 
       {/* Main Confidence Meter */}
       <Card className={`p-6 bg-white border-blue-800/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-blue-400'}`} />
+            <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-[#0A0F2E]'}`} />
             <h3 className="font-semibold text-gray-900">AI Trigger Monitoring</h3>
           </div>
           <Badge variant={triggered ? 'destructive' : isMonitoring ? 'default' : 'outline'} data-testid="badge-monitoring">

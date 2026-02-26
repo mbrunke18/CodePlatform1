@@ -92,10 +92,10 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
 
   const getSystemColor = (system: string) => {
     switch (system.toLowerCase()) {
-      case 'slack': return 'bg-purple-500';
-      case 'jira': return 'bg-blue-500';
+      case 'slack': return 'bg-[#0A0F2E]';
+      case 'jira': return 'bg-[#0A0F2E]';
       case 'google calendar': return 'bg-green-500';
-      case 'salesforce': return 'bg-cyan-500';
+      case 'salesforce': return 'bg-[#2B8A6E]';
       default: return 'bg-amber-500';
     }
   };
@@ -109,7 +109,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
               <Zap className="h-5 w-5 text-amber-400" />
               Command Center
             </CardTitle>
-            <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+            <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               Live Execution
             </Badge>
           </div>
@@ -120,7 +120,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
             </div>
             <div className="flex items-center justify-between text-sm mt-1">
               <span className="text-gray-600">Value:</span>
-              <span className="text-emerald-400 font-medium">
+              <span className="text-[#2B8A6E] font-medium">
                 ${(execution.amount / 1000000).toFixed(1)}M
               </span>
             </div>
@@ -149,7 +149,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                   </div>
                   <p className="text-sm text-white mt-1">{event.action}</p>
                 </div>
-                <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />
               </div>
             ))}
           </div>
@@ -160,8 +160,8 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
         <Card className="bg-white border-gray-200">
           <CardContent className="p-4 text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <Clock className="h-5 w-5 text-emerald-400" />
-              <span className="text-3xl font-bold text-emerald-400">
+              <Clock className="h-5 w-5 text-[#2B8A6E]" />
+              <span className="text-3xl font-bold text-[#2B8A6E]">
                 {execution.comparisonMetrics.executeiqTime} min
               </span>
             </div>
@@ -188,11 +188,11 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
         <CardContent>
           <div className="grid grid-cols-4 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-purple-400">1</div>
+              <div className="text-2xl font-bold text-[#C9A84C]">1</div>
               <p className="text-xs text-gray-600">Slack Alert</p>
             </div>
             <div>
-              <div className="text-2xl font-bold text-blue-400">
+              <div className="text-2xl font-bold text-[#0A0F2E]">
                 {execution.results.jira.taskCount}
               </div>
               <p className="text-xs text-gray-600">Jira Tasks</p>
@@ -204,7 +204,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
               <p className="text-xs text-gray-600">Attendees</p>
             </div>
             <div>
-              <div className="text-2xl font-bold text-cyan-400">4</div>
+              <div className="text-2xl font-bold text-[#2B8A6E]">4</div>
               <p className="text-xs text-gray-600">Systems</p>
             </div>
           </div>

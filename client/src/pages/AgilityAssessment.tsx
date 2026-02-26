@@ -95,11 +95,11 @@ const QUESTIONS: Question[] = [
 ];
 
 const getScoreCategory = (score: number) => {
-  if (score >= 80) return { label: "Agility Leader", color: "text-emerald-400", bg: "bg-emerald-500/20" };
-  if (score >= 60) return { label: "Above Average", color: "text-blue-400", bg: "bg-blue-500/20" };
-  if (score >= 40) return { label: "Industry Average", color: "text-amber-400", bg: "bg-amber-500/20" };
-  if (score >= 20) return { label: "Below Average", color: "text-orange-400", bg: "bg-orange-500/20" };
-  return { label: "Significant Opportunity", color: "text-red-400", bg: "bg-red-500/20" };
+  if (score >= 80) return { label: "Agility Leader", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
+  if (score >= 60) return { label: "Above Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
+  if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20" };
+  if (score >= 20) return { label: "Below Average", color: "text-orange-500", bg: "bg-orange-500/20" };
+  return { label: "Significant Opportunity", color: "text-red-500", bg: "bg-red-500/20" };
 };
 
 export default function AgilityAssessment() {
@@ -160,27 +160,28 @@ export default function AgilityAssessment() {
     const revenueImpact = calculateRevenueImpact(score);
 
     return (
-      <div className="min-h-screen bg-gradient-to-br ">
+      <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <StandardNav />
         
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Assessment Complete
               </Badge>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Your Agility Score
               </h1>
             </div>
 
-            <Card className="bg-white border-gray-200 mb-8" data-testid="card-score-result">
+            <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 mb-8" data-testid="card-score-result">
               <CardContent className="p-8 text-center">
                 <div className="mb-8">
                   <div 
                     className={`text-8xl font-bold ${category.color} mb-4`}
                     data-testid="text-score-value"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
                   >
                     {score}
                   </div>
@@ -193,45 +194,45 @@ export default function AgilityAssessment() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-gray-50 rounded-lg p-6" data-testid="result-current-growth">
-                    <div className="text-3xl font-bold text-gray-900 mb-2">{revenueImpact.currentGrowth}%</div>
-                    <p className="text-gray-800 text-sm">Estimated Current Revenue/Employee Growth</p>
+                  <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-current-growth">
+                    <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2">{revenueImpact.currentGrowth}%</div>
+                    <p className="text-[#6B7280] dark:text-white/60 text-sm">Estimated Current Revenue/Employee Growth</p>
                   </div>
-                  <div className="bg-emerald-900/30 rounded-lg p-6 border border-emerald-500/30" data-testid="result-potential-growth">
-                    <div className="text-3xl font-bold text-emerald-400 mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-gray-800 text-sm">Potential Additional Growth with Execution OS</p>
+                  <div className="bg-[#2B8A6E]/10 rounded-lg p-6 border border-[#2B8A6E]/30" data-testid="result-potential-growth">
+                    <div className="text-3xl font-bold text-[#2B8A6E] mb-2">+{revenueImpact.potentialGrowth}%</div>
+                    <p className="text-[#0A0F2E] dark:text-white text-sm">Potential Additional Growth with Execution OS</p>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-6" data-testid="result-benchmark">
-                    <div className="text-3xl font-bold text-amber-400 mb-2">10.3%</div>
-                    <p className="text-gray-800 text-sm">Top Performer Benchmark (BAI 2025)</p>
+                  <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-benchmark">
+                    <div className="text-3xl font-bold text-[#C9A84C] mb-2">10.3%</div>
+                    <p className="text-[#6B7280] dark:text-white/60 text-sm">Top Performer Benchmark (BAI 2025)</p>
                   </div>
                 </div>
 
-                <Card className="bg-gray-50 border-gray-200 mb-8">
+                <Card className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 mb-8">
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">What This Means</h3>
+                    <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What This Means</h3>
                     {score < 60 ? (
                       <div className="text-left space-y-3">
-                        <p className="text-gray-800">
-                          Your organization is likely taking <span className="text-red-400 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          Your organization is likely taking <span className="text-red-500 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
                         </p>
-                        <p className="text-gray-800">
-                          Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-amber-400 font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-[#C9A84C] font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
-                        <p className="text-gray-800">
-                          With Execution OS, you could close the gap to top performers and capture an additional <span className="text-emerald-400 font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          With Execution OS, you could close the gap to top performers and capture an additional <span className="text-[#2B8A6E] font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
                       <div className="text-left space-y-3">
-                        <p className="text-gray-800">
-                          You're performing <span className="text-emerald-400 font-semibold">above industry average</span>. Your organization is making progress on agility.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          You're performing <span className="text-[#2B8A6E] font-semibold">above industry average</span>. Your organization is making progress on agility.
                         </p>
-                        <p className="text-gray-800">
-                          However, there's still room to reach the <span className="text-emerald-400 font-semibold">10.3% benchmark</span> that top performers achieve.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          However, there's still room to reach the <span className="text-[#2B8A6E] font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
-                        <p className="text-gray-800">
-                          Execution OS can help you close the remaining gap with <span className="text-emerald-400 font-semibold">pre-staged playbooks and 12-minute execution</span>.
+                        <p className="text-[#0A0F2E] dark:text-white">
+                          Execution OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
                     )}
@@ -242,7 +243,7 @@ export default function AgilityAssessment() {
                   <Button 
                     size="lg"
                     onClick={() => setLocation('/roi-calculator')}
-                    className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-700 hover:to-cyan-700"
+                    className="bg-[#2B8A6E] hover:bg-[#2B8A6E]/90 text-white"
                     data-testid="button-calculate-full-roi"
                   >
                     <TrendingUp className="mr-2 h-5 w-5" />
@@ -252,7 +253,7 @@ export default function AgilityAssessment() {
                     size="lg"
                     onClick={() => setLocation('/contact')}
                     variant="outline"
-                    className="border-slate-600 text-gray-900 hover:bg-slate-800"
+                    className="border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5"
                     data-testid="button-get-consultation"
                   >
                     Get Expert Consultation
@@ -262,7 +263,7 @@ export default function AgilityAssessment() {
               </CardContent>
             </Card>
 
-            <div className="text-center text-gray-800 text-sm">
+            <div className="text-center text-[#6B7280] dark:text-white/60 text-sm">
               Based on data from the 2025 Business Agility Report across 244 organizations
             </div>
           </div>
@@ -274,38 +275,38 @@ export default function AgilityAssessment() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br ">
+    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
       <StandardNav />
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
+            <Badge className="mb-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
               <BarChart3 className="h-4 w-4 mr-2" />
               Agility Assessment
             </Badge>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Where Does Your Organization Stand?
             </h1>
-            <p className="text-gray-800">
+            <p className="text-[#6B7280] dark:text-white/60">
               Answer 5 questions to benchmark against 244 organizations from the 2025 Business Agility Report
             </p>
           </div>
 
           <div className="mb-8">
-            <div className="flex justify-between text-sm text-gray-800 mb-2">
+            <div className="flex justify-between text-sm text-[#6B7280] dark:text-white/60 mb-2">
               <span>Question {currentQuestion + 1} of {QUESTIONS.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
-            <Progress value={progress} className="h-2" />
+            <Progress value={progress} className="h-2 bg-[#E8E4DC] dark:bg-white/10" />
           </div>
 
-          <Card className="bg-white border-gray-200" data-testid="card-question">
+          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-question">
             <CardHeader>
-              <CardTitle className="text-xl text-gray-900">
+              <CardTitle className="text-xl text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {currentQ.question}
               </CardTitle>
-              <p className="text-sm text-gray-800 mt-2">
+              <p className="text-sm text-[#6B7280] dark:text-white/60 mt-2">
                 {currentQ.context}
               </p>
             </CardHeader>
@@ -321,8 +322,8 @@ export default function AgilityAssessment() {
                     key={option.value}
                     className={`flex items-center space-x-3 p-4 rounded-lg border transition-all cursor-pointer ${
                       currentAnswer === option.value 
-                        ? 'border-emerald-500 bg-emerald-500/10' 
-                        : 'border-gray-200 bg-gray-50 hover:border-slate-600'
+                        ? 'border-[#2B8A6E] bg-[#2B8A6E]/10' 
+                        : 'border-[#E8E4DC] dark:border-white/10 bg-[#F8F7F4] dark:bg-white/5 hover:border-[#6B7280]'
                     }`}
                     onClick={() => handleAnswer(option.value)}
                     data-testid={`option-${option.value}`}
@@ -330,11 +331,12 @@ export default function AgilityAssessment() {
                     <RadioGroupItem 
                       value={option.value} 
                       id={option.value}
+                      className="border-[#6B7280] text-[#2B8A6E]"
                       data-testid={`radio-${option.value}`}
                     />
                     <Label 
                       htmlFor={option.value} 
-                      className="flex-1 cursor-pointer text-gray-800"
+                      className="flex-1 cursor-pointer text-[#0A0F2E] dark:text-white"
                       data-testid={`label-${option.value}`}
                     >
                       {option.label}
@@ -348,7 +350,7 @@ export default function AgilityAssessment() {
                   variant="outline"
                   onClick={handleBack}
                   disabled={currentQuestion === 0}
-                  className="border-gray-200 text-gray-800 hover:bg-slate-800"
+                  className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                   data-testid="button-back"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
@@ -357,7 +359,7 @@ export default function AgilityAssessment() {
                 <Button
                   onClick={handleNext}
                   disabled={!currentAnswer}
-                  className="bg-emerald-600 hover:bg-emerald-700"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   data-testid="button-next"
                 >
                   {currentQuestion === QUESTIONS.length - 1 ? 'See Results' : 'Next'}

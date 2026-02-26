@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import StandardNav from '@/components/layout/StandardNav';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -13,31 +12,20 @@ import {
   SkipBack,
   Volume2,
   VolumeX,
-  Maximize,
   X,
-  ChevronRight,
   Clock,
   Users,
   Shield,
   Zap,
-  Target,
-  TrendingUp,
   AlertTriangle,
   CheckCircle2,
-  BarChart3,
-  Building2,
-  Globe,
-  ArrowRight,
-  BookOpen,
   Radio,
-  Activity,
   Brain,
-  Lightbulb,
-  Award,
   Timer,
   DollarSign,
-  FileText,
-  MessageSquare
+  BookOpen,
+  TrendingUp,
+  ArrowRight
 } from 'lucide-react';
 import { BrandStamp } from "@/components/BrandStamp";
 
@@ -177,7 +165,7 @@ const TOUR_SCENES: Scene[] = [
   }
 ];
 
-function ProductTour() {
+export default function ProductTour() {
   const [, setLocation] = useLocation();
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -279,11 +267,11 @@ function ProductTour() {
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-red-500/20 rounded-full flex items-center justify-center mb-4">
-            <Clock className="w-12 h-12 text-red-400" />
+          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+            <Clock className="w-12 h-12 text-red-600" />
           </div>
-          <p className="text-2xl font-bold text-red-400">72+ Hours</p>
-          <p className="text-gray-800 dark:text-slate-200">Signal to Decision</p>
+          <p className="text-2xl font-bold text-red-600">72+ Hours</p>
+          <p className="text-[#0A0F2E] font-medium">Signal to Decision</p>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -291,11 +279,11 @@ function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-orange-500/20 rounded-full flex items-center justify-center mb-4">
-            <AlertTriangle className="w-12 h-12 text-orange-400" />
+          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+            <AlertTriangle className="w-12 h-12 text-red-600" />
           </div>
-          <p className="text-2xl font-bold text-orange-400">15+ Meetings</p>
-          <p className="text-gray-800 dark:text-slate-200">To Align Stakeholders</p>
+          <p className="text-2xl font-bold text-red-600">15+ Meetings</p>
+          <p className="text-[#0A0F2E] font-medium">To Align Stakeholders</p>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -303,11 +291,11 @@ function ProductTour() {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-yellow-500/20 rounded-full flex items-center justify-center mb-4">
-            <TrendingUp className="w-12 h-12 text-yellow-400 rotate-180" />
+          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+            <TrendingUp className="w-12 h-12 text-red-600 rotate-180" />
           </div>
-          <p className="text-2xl font-bold text-yellow-400">$10-50M</p>
-          <p className="text-gray-800 dark:text-slate-200">Annual Revenue at Risk</p>
+          <p className="text-2xl font-bold text-red-600">$10-50M</p>
+          <p className="text-[#0A0F2E] font-medium">Annual Revenue at Risk</p>
         </motion.div>
       </div>
     </div>
@@ -321,13 +309,13 @@ function ProductTour() {
         className="text-center"
       >
         <motion.div 
-          className="w-32 h-32 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center"
+          className="w-32 h-32 mx-auto mb-8 bg-[#0A0F2E] rounded-none flex items-center justify-center"
           animate={{ 
-            boxShadow: ['0 0 20px rgba(59, 130, 246, 0.5)', '0 0 60px rgba(59, 130, 246, 0.8)', '0 0 20px rgba(59, 130, 246, 0.5)']
+            boxShadow: ['0 0 20px rgba(201, 168, 76, 0.3)', '0 0 60px rgba(201, 168, 76, 0.5)', '0 0 20px rgba(201, 168, 76, 0.3)']
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-5xl font-bold text-gray-900">Execution OS</span>
+          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Execution OS</span>
         </motion.div>
         <div className="flex items-center justify-center gap-8 mt-8">
           <motion.div 
@@ -336,15 +324,15 @@ function ProductTour() {
             transition={{ delay: 0.5 }}
             className="text-center"
           >
-            <p className="text-4xl font-bold text-blue-400">12</p>
-            <p className="text-gray-800 dark:text-slate-200">Minutes</p>
+            <p className="text-4xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12</p>
+            <p className="text-slate-600 uppercase tracking-widest text-[10px] font-bold">Minutes</p>
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.7 }}
           >
-            <Zap className="w-12 h-12 text-teal-400" />
+            <Zap className="w-12 h-12 text-[#2B8A6E]" />
           </motion.div>
           <motion.div 
             initial={{ x: 50, opacity: 0 }}
@@ -352,8 +340,8 @@ function ProductTour() {
             transition={{ delay: 0.9 }}
             className="text-center"
           >
-            <p className="text-4xl font-bold text-teal-400">170</p>
-            <p className="text-gray-800 dark:text-slate-200">Playbooks</p>
+            <p className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>170</p>
+            <p className="text-slate-600 uppercase tracking-widest text-[10px] font-bold">Playbooks</p>
           </motion.div>
         </div>
       </motion.div>
@@ -361,59 +349,59 @@ function ProductTour() {
   );
 
   const renderPhaseVisual = (phase: string) => {
-    const phaseConfig: Record<string, { icon: typeof Shield; color: string; items: string[] }> = {
-      prepare: {
+    const phaseConfig: Record<string, { icon: typeof Shield; hex: string; items: string[] }> = {
+      identify: {
         icon: BookOpen,
-        color: 'blue',
+        hex: '#2B8A6E',
         items: ['170 Strategic Playbooks', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
       },
-      monitor: {
+      detect: {
         icon: Radio,
-        color: 'purple',
+        hex: '#0A0F2E',
         items: ['16 Signal Categories', '92 Data Points', '24/7 AI Monitoring', 'Real-time Alerts']
       },
       execute: {
         icon: Zap,
-        color: 'teal',
+        hex: '#C9A84C',
         items: ['12-Minute Coordination', 'Parallel Execution', 'Live Progress Tracking', 'Automatic Notifications']
       },
-      learn: {
+      advance: {
         icon: Brain,
-        color: 'amber',
+        hex: '#2B8A6E',
         items: ['Outcome Analysis', 'AI Recommendations', 'Playbook Refinement', 'Future Readiness Index']
       }
     };
 
-    const config = phaseConfig[phase] || phaseConfig.prepare;
+    const config = phaseConfig[phase] || phaseConfig.identify;
     const Icon = config.icon;
 
     return (
       <div className="relative w-full h-full flex items-center justify-center">
-        <div className="flex items-center gap-16 max-w-5xl">
+        <div className="flex flex-col md:flex-row items-center gap-16 max-w-5xl">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: 'spring', duration: 0.8 }}
-            className={`w-48 h-48 rounded-full bg-${config.color}-500/20 flex items-center justify-center`}
-            style={{ backgroundColor: `rgba(var(--${config.color}-500), 0.2)` }}
+            className="w-48 h-48 rounded-none flex items-center justify-center"
+            style={{ backgroundColor: `${config.hex}15` }}
           >
-            <div className={`w-32 h-32 rounded-full bg-gradient-to-br from-${config.color}-400 to-${config.color}-600 flex items-center justify-center`}>
-              <Icon className="w-16 h-16 text-gray-900" />
+            <div className="w-32 h-32 rounded-none flex items-center justify-center" style={{ backgroundColor: config.hex }}>
+              <Icon className="w-16 h-16 text-white" />
             </div>
           </motion.div>
           
           <div className="flex-1">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {config.items.map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3 + index * 0.15 }}
-                  className="flex items-center gap-3 bg-gray-50 rounded-lg p-4"
+                  className="flex items-center gap-3 bg-white border border-[#E8E4DC] rounded-none p-4"
                 >
-                  <CheckCircle2 className={`w-5 h-5 text-${config.color}-400`} />
-                  <span className="text-gray-900 font-medium">{item}</span>
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: config.hex }} />
+                  <span className="text-[#0A0F2E] font-bold text-xs uppercase tracking-widest">{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -430,20 +418,20 @@ function ProductTour() {
         animate={{ opacity: 1 }}
         className="w-full max-w-4xl"
       >
-        <Card className="bg-gray-50 border-gray-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-teal-500 p-4">
+        <Card className="bg-white border-[#E8E4DC] rounded-none overflow-hidden shadow-2xl">
+          <div className="bg-[#0A0F2E] p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="font-bold text-gray-900">SC</span>
+                <div className="w-10 h-10 bg-white/10 rounded-none flex items-center justify-center">
+                  <span className="font-bold text-white">SC</span>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">Sarah Chen</p>
-                  <p className="text-sm text-gray-900/80">Chief Strategy Officer</p>
+                  <p className="font-semibold text-white">Sarah Chen</p>
+                  <p className="text-sm text-white/60 uppercase tracking-widest text-[9px] font-bold">Chief Strategy Officer</p>
                 </div>
               </div>
-              <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge className="bg-red-500 text-gray-900 animate-pulse">
+              <BrandStamp variant="dual" size="md" />
+              <Badge className="bg-red-600 text-white animate-pulse rounded-none border-0 uppercase text-[9px] tracking-widest font-bold px-3 py-1">
                 <AlertTriangle className="w-3 h-3 mr-1" />
                 CRITICAL SIGNAL
               </Badge>
@@ -451,27 +439,27 @@ function ProductTour() {
           </div>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-red-500/10 rounded-lg border border-red-500/30">
-                <AlertTriangle className="w-8 h-8 text-red-400 flex-shrink-0" />
+              <div className="flex items-start gap-4 p-4 bg-red-50 border border-red-100 rounded-none">
+                <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-gray-900">Competitor Acquisition Announced</p>
-                  <p className="text-gray-800 dark:text-slate-200 text-sm">TitanTech acquires Precision Components for $890M</p>
+                  <p className="font-bold text-red-900 uppercase tracking-wide">Competitor Acquisition Announced</p>
+                  <p className="text-red-800 text-sm">TitanTech acquires Precision Components for $890M</p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {['CFO', 'CMO', 'Legal', 'Ops', 'Sales', 'Strategy'].map((role, i) => (
                   <motion.div
                     key={role}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 1 + i * 0.1 }}
-                    className="flex items-center gap-2 bg-gray-50 rounded-lg p-3"
+                    className="flex items-center gap-2 bg-slate-50 border border-[#E8E4DC] rounded-none p-3"
                   >
-                    <div className="w-8 h-8 bg-teal-500/20 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-4 h-4 text-teal-400" />
+                    <div className="w-8 h-8 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center">
+                      <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                     </div>
-                    <span className="text-sm text-gray-900">{role}</span>
+                    <span className="text-sm text-[#0A0F2E] font-bold uppercase tracking-widest text-[9px]">{role}</span>
                   </motion.div>
                 ))}
               </div>
@@ -484,18 +472,18 @@ function ProductTour() {
 
   const renderMetricsVisual = () => (
     <div className="relative w-full h-full flex items-center justify-center">
-      <div className="grid grid-cols-3 gap-12 max-w-4xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center mb-4">
-            <Timer className="w-16 h-16 text-gray-900" />
+          <div className="w-24 h-24 mx-auto bg-[#2B8A6E] rounded-none flex items-center justify-center mb-4">
+            <Timer className="w-12 h-12 text-white" />
           </div>
-          <p className="text-5xl font-bold text-teal-400">3,180x</p>
-          <p className="text-gray-800 dark:text-slate-200 mt-2">Faster Response</p>
+          <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3,180x</p>
+          <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Faster Response</p>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -503,11 +491,11 @@ function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mb-4">
-            <Users className="w-16 h-16 text-gray-900" />
+          <div className="w-24 h-24 mx-auto bg-[#0A0F2E] rounded-none flex items-center justify-center mb-4">
+            <Users className="w-12 h-12 text-white" />
           </div>
-          <p className="text-5xl font-bold text-blue-400">6</p>
-          <p className="text-gray-800 dark:text-slate-200 mt-2">Stakeholders Aligned</p>
+          <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
+          <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Stakeholders Aligned</p>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -515,11 +503,11 @@ function ProductTour() {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mb-4">
-            <DollarSign className="w-16 h-16 text-gray-900" />
+          <div className="w-24 h-24 mx-auto bg-[#C9A84C] rounded-none flex items-center justify-center mb-4">
+            <DollarSign className="w-12 h-12 text-[#0A0F2E]" />
           </div>
-          <p className="text-5xl font-bold text-purple-400">$50M+</p>
-          <p className="text-gray-800 dark:text-slate-200 mt-2">Revenue Protected</p>
+          <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$50M+</p>
+          <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Revenue Protected</p>
         </motion.div>
       </div>
     </div>
@@ -534,14 +522,14 @@ function ProductTour() {
       >
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-1"></div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-gray-50 rounded-lg">
-            <p className="text-gray-800 dark:text-slate-200 text-sm">Palantir</p>
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-slate-50 border border-[#E8E4DC] rounded-none">
+            <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Palantir</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-gray-50 rounded-lg">
-            <p className="text-gray-800 dark:text-slate-200 text-sm">Anaplan</p>
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-slate-50 border border-[#E8E4DC] rounded-none">
+            <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Anaplan</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-gradient-to-r from-blue-600 to-teal-500 rounded-lg">
-            <p className="text-gray-900 font-bold text-sm">Execution OS</p>
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E] rounded-none shadow-lg">
+            <p className="text-[#C9A84C] font-bold text-[9px] uppercase tracking-widest">Execution OS</p>
           </motion.div>
           
           {[
@@ -557,12 +545,12 @@ function ProductTour() {
               transition={{ delay: 0.5 + i * 0.1 }}
               className="contents"
             >
-              <div className="p-3 bg-gray-50 rounded-lg flex items-center">
-                <p className="text-gray-900 text-sm">{row.label}</p>
+              <div className="p-3 bg-slate-50 border border-[#E8E4DC] rounded-none flex items-center">
+                <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">{row.label}</p>
               </div>
               {row.scores.map((score, j) => (
-                <div key={j} className={`p-3 rounded-lg flex items-center justify-center ${j === 2 ? 'bg-teal-500/20' : 'bg-gray-50'}`}>
-                  <p className={`text-sm ${j === 2 ? 'text-teal-400 font-medium' : 'text-gray-800'}`}>{score}</p>
+                <div key={j} className={`p-3 border border-[#E8E4DC] rounded-none flex items-center justify-center ${j === 2 ? 'bg-[#2B8A6E]/5 border-[#2B8A6E]/20' : 'bg-white'}`}>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${j === 2 ? 'text-[#2B8A6E]' : 'text-slate-400'}`}>{score}</p>
                 </div>
               ))}
             </motion.div>
@@ -580,9 +568,9 @@ function ProductTour() {
         className="text-center max-w-2xl"
       >
         <motion.div 
-          className="w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl flex items-center justify-center"
+          className="w-24 h-24 mx-auto mb-8 bg-[#0A0F2E] rounded-none flex items-center justify-center shadow-2xl"
         >
-          <span className="text-4xl font-bold text-gray-900">Execution OS</span>
+          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Execution OS</span>
         </motion.div>
         <div className="space-y-6">
           <motion.div
@@ -592,49 +580,38 @@ function ProductTour() {
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-gray-900 px-8 py-6 text-lg"
-              onClick={() => setLocation('/executive-simulation')}
-              data-testid="button-try-simulation"
+              className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-12 py-8 text-sm rounded-none uppercase tracking-[0.2em] shadow-xl"
+              onClick={() => setLocation('/try-demo')}
             >
-              <Play className="w-5 h-5 mr-2" />
-              Try Executive Simulation
+              <Play className="w-5 h-5 mr-3" />
+              Try Interactive Demo
             </Button>
           </motion.div>
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center justify-center gap-4"
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-transparent text-gray-900 border-slate-500 hover:bg-slate-800"
-              onClick={() => setLocation('/scenario-library')}
-              data-testid="button-explore-playbooks"
+              className="bg-white text-[#0A0F2E] border-[#0A0F2E] hover:bg-slate-50 font-bold uppercase tracking-widest text-[10px] px-8 rounded-none h-14"
+              onClick={() => setLocation('/playbook-library')}
             >
-              <BookOpen className="w-5 h-5 mr-2" />
-              Explore 170 Playbooks
+              <BookOpen className="w-4 h-4 mr-2" />
+              Explore Playbooks
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="bg-transparent text-gray-900 border-slate-500 hover:bg-slate-800"
-              onClick={() => setLocation('/foresight-radar')}
-              data-testid="button-see-radar"
+              className="bg-white text-[#0A0F2E] border-[#0A0F2E] hover:bg-slate-50 font-bold uppercase tracking-widest text-[10px] px-8 rounded-none h-14"
+              onClick={() => setLocation('/contact')}
             >
-              <Radio className="w-5 h-5 mr-2" />
-              See Intelligence Radar
+              Contact Sales
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="text-gray-800 dark:text-slate-200 text-sm"
-          >
-            Request a custom demo configured for your industry
-          </motion.p>
         </div>
       </motion.div>
     </div>
@@ -668,17 +645,15 @@ function ProductTour() {
       onMouseMove={() => setShowControls(true)}
       data-testid="page-product-tour"
     >
-      <div className="absolute inset-0 bg-gradient-to-br to-black" />
-      
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 rounded-full blur-3xl" />
       </div>
 
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-4 right-4 z-50 text-gray-900/70 hover:text-white hover:bg-white/10"
+        className="absolute top-4 right-4 z-50 text-[#0A0F2E]/40 hover:text-[#0A0F2E] hover:bg-[#0A0F2E]/5 rounded-none"
         onClick={() => setLocation('/')}
         data-testid="button-close-tour"
       >
@@ -699,27 +674,23 @@ function ProductTour() {
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-center mb-8"
+              className="text-center mb-12"
             >
-              <Badge 
-                className={`mb-4 ${
-                  currentScene.visual === 'problem' ? 'bg-red-500/20 text-red-400' :
-                  currentScene.type === 'phase' ? 'bg-blue-500/20 text-blue-400' :
-                  'bg-teal-500/20 text-teal-400'
-                }`}
-              >
-                Scene {currentSceneIndex + 1} of {TOUR_SCENES.length}
-              </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Scene {currentSceneIndex + 1} of {TOUR_SCENES.length}</span>
+                <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 {currentScene.title}
               </h1>
               {currentScene.subtitle && (
-                <p className="text-2xl text-gray-800 dark:text-slate-200">{currentScene.subtitle}</p>
+                <p className="text-xl text-slate-500 uppercase tracking-[0.2em] font-bold">{currentScene.subtitle}</p>
               )}
             </motion.div>
           )}
 
-          <div className="flex-1 w-full max-w-6xl flex items-center justify-center">
+          <div className="flex-1 w-full max-w-6xl flex items-center justify-center mb-12">
             {renderVisual()}
           </div>
 
@@ -727,9 +698,9 @@ function ProductTour() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mb-32 max-w-3xl text-center"
+            className="mb-32 max-w-3xl text-center bg-[#F8F7F4] p-8 border border-[#E8E4DC] shadow-sm"
           >
-            <p className="text-xl md:text-2xl text-gray-800 leading-relaxed">
+            <p className="text-xl md:text-2xl text-[#0A0F2E] leading-relaxed font-medium">
               {currentScene.narration}
             </p>
           </motion.div>
@@ -739,22 +710,21 @@ function ProductTour() {
       <motion.div
         initial={{ y: 100 }}
         animate={{ y: showControls ? 0 : 100 }}
-        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6"
+        className="absolute bottom-0 left-0 right-0 bg-[#0A0F2E] p-6 border-t border-white/10"
       >
         <div className="max-w-4xl mx-auto">
-          <div className="mb-4">
-            <Progress value={progress} className="h-1 bg-gray-50" />
+          <div className="mb-6">
+            <Progress value={progress} className="h-0.5 bg-white/10" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
           </div>
           
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-6">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={goToPrevScene}
                 disabled={currentSceneIndex === 0}
-                className="text-gray-900/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
-                data-testid="button-prev-scene"
+                className="text-white/60 hover:text-white hover:bg-white/10 disabled:opacity-30 rounded-none"
               >
                 <SkipBack className="w-5 h-5" />
               </Button>
@@ -763,8 +733,7 @@ function ProductTour() {
                 variant="ghost"
                 size="icon"
                 onClick={togglePlay}
-                className="w-12 h-12 text-gray-900 hover:bg-white/10 rounded-full"
-                data-testid="button-play-pause"
+                className="w-12 h-12 text-white bg-white/10 hover:bg-white/20 rounded-none"
               >
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
               </Button>
@@ -774,8 +743,7 @@ function ProductTour() {
                 size="icon"
                 onClick={goToNextScene}
                 disabled={currentSceneIndex === TOUR_SCENES.length - 1}
-                className="text-gray-900/70 hover:text-white hover:bg-white/10 disabled:opacity-30"
-                data-testid="button-next-scene"
+                className="text-white/60 hover:text-white hover:bg-white/10 disabled:opacity-30 rounded-none"
               >
                 <SkipForward className="w-5 h-5" />
               </Button>
@@ -784,15 +752,14 @@ function ProductTour() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMuted(!isMuted)}
-                className="text-gray-900/70 hover:text-white hover:bg-white/10"
-                data-testid="button-mute"
+                className="text-white/60 hover:text-white hover:bg-white/10 rounded-none"
               >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
               </Button>
             </div>
 
-            <div className="flex items-center gap-2 text-gray-900/70 text-sm">
-              <span>{getCurrentTime()}</span>
+            <div className="flex items-center gap-3 text-white/40 text-[10px] font-bold uppercase tracking-widest">
+              <span className="text-[#C9A84C]">{getCurrentTime()}</span>
               <span>/</span>
               <span>{formatTime(totalDuration)}</span>
             </div>
@@ -805,14 +772,13 @@ function ProductTour() {
                     setCurrentSceneIndex(index);
                     setSceneProgress(0);
                   }}
-                  className={`w-2 h-2 rounded-full transition-all ${
+                  className={`w-2 h-2 rounded-none transition-all ${
                     index === currentSceneIndex 
-                      ? 'bg-teal-400 w-6' 
+                      ? 'bg-[#C9A84C] w-6' 
                       : index < currentSceneIndex 
-                        ? 'bg-teal-400/50' 
-                        : 'bg-slate-600'
+                        ? 'bg-[#C9A84C]/40' 
+                        : 'bg-white/10'
                   }`}
-                  data-testid={`button-scene-${index}`}
                 />
               ))}
             </div>

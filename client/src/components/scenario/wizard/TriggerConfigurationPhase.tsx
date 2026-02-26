@@ -31,7 +31,7 @@ const PRIORITY_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'bg-red-600/20 text-red-300 border-red-500/50' },
   { value: 'high', label: 'High', color: 'bg-orange-600/20 text-orange-300 border-orange-500/50' },
   { value: 'medium', label: 'Medium', color: 'bg-yellow-600/20 text-yellow-300 border-yellow-500/50' },
-  { value: 'low', label: 'Low', color: 'bg-blue-600/20 text-blue-300 border-blue-500/50' },
+  { value: 'low', label: 'Low', color: 'bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50' },
 ];
 
 export default function TriggerConfigurationPhase({ data, onChange, organizationId }: TriggerConfigurationPhaseProps) {
@@ -81,15 +81,15 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
   return (
     <div className="space-y-6">
       {/* Template Quick Start */}
-      <Card className="border-purple-500/30 bg-purple-950/20">
+      <Card className="border-[#C9A84C]/30 bg-[#C9A84C]/20">
         <CardContent className="p-4">
-          <h3 className="text-sm font-semibold text-purple-300 mb-3">Quick Start Templates</h3>
+          <h3 className="text-sm font-semibold text-[#C9A84C] mb-3">Quick Start Templates</h3>
           <div className="grid md:grid-cols-2 gap-2">
             {TRIGGER_TEMPLATES.map((template, index) => (
               <button
                 key={index}
                 onClick={() => applyTemplate(template)}
-                className="p-3 rounded border border-purple-500/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
+                className="p-3 rounded border border-[#C9A84C]/30 bg-white hover:bg-slate-800/50 transition-colors text-left"
                 data-testid={`template-trigger-${index}`}
               >
                 <p className="text-sm font-medium text-white">{template.name}</p>
@@ -106,7 +106,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
       <Card className="border-blue-500/30 bg-white">
         <CardContent className="p-6">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <Plus className="h-5 w-5 text-blue-400" />
+            <Plus className="h-5 w-5 text-[#0A0F2E]" />
             Define Monitoring Trigger
           </h3>
 
@@ -211,7 +211,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
             <Button
               onClick={addTrigger}
               disabled={!newTrigger.name || !newTrigger.signal || !newTrigger.threshold}
-              className="bg-blue-600 hover:bg-blue-700 text-gray-900"
+              className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
               data-testid="button-add-trigger"
             >
               <Plus className="h-4 w-4 mr-2" />
@@ -225,7 +225,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
       {data.triggers && data.triggers.length > 0 && (
         <div>
           <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-            <Bell className="h-5 w-5 text-blue-400" />
+            <Bell className="h-5 w-5 text-[#0A0F2E]" />
             Active Triggers ({data.triggers.length})
           </h3>
 
@@ -241,7 +241,7 @@ export default function TriggerConfigurationPhase({ data, onChange, organization
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <OperatorIcon className="h-4 w-4 text-blue-400" />
+                          <OperatorIcon className="h-4 w-4 text-[#0A0F2E]" />
                           <h4 className="font-semibold text-gray-900">{trigger.name}</h4>
                           <Badge className={priorityConfig?.color}>
                             {priorityConfig?.label || trigger.priority}

@@ -49,11 +49,11 @@ export default function InnovationPipelinePanel() {
 
   const getStageColor = (stage: string) => {
     switch (stage.toLowerCase()) {
-      case 'ideation': return "bg-blue-50 text-blue-600";
+      case 'ideation': return "bg-[#0A0F2E] text-[#0A0F2E]";
       case 'prototyping': return "bg-yellow-50 text-yellow-600";
-      case 'testing': return "bg-purple-50 text-purple-600";
+      case 'testing': return "bg-[#0A0F2E] text-[#C9A84C]";
       case 'scaling': return "bg-green-50 text-green-600";
-      case 'deployed': return "bg-emerald-50 text-emerald-600";
+      case 'deployed': return "bg-[#F0F9F6] text-[#2B8A6E]";
       default: return "bg-gray-50 text-gray-600";
     }
   };
@@ -62,7 +62,7 @@ export default function InnovationPipelinePanel() {
     switch (potential.toLowerCase()) {
       case 'breakthrough': return "bg-red-50 text-red-700 border-red-200";
       case 'incremental': return "bg-yellow-50 text-yellow-700 border-yellow-200";
-      case 'sustaining': return "bg-blue-50 text-blue-700 border-blue-200";
+      case 'sustaining': return "bg-[#0A0F2E] text-[#0A0F2E] border-blue-200";
       default: return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };

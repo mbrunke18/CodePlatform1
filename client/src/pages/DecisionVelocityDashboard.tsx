@@ -34,8 +34,8 @@ function formatOutcome(outcome: string): string {
 
 function getEffectivenessColor(effectiveness: string): string {
   switch (effectiveness) {
-    case 'excellent': return 'text-emerald-700';
-    case 'high': return 'text-blue-800';
+    case 'excellent': return 'text-[#2B8A6E]';
+    case 'high': return 'text-[#0A0F2E]';
     case 'moderate': return 'text-[#C9A84C]';
     case 'low': return 'text-orange-600';
     case 'poor': return 'text-red-700';
@@ -67,162 +67,164 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+      <div className="min-h-screen bg-[#F8F7F4]">
         {!embedded && <StandardNav />}
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
-          <Loader2 className="h-12 w-12 animate-spin text-emerald-700 mb-4" />
-          <p className="text-lg text-gray-800 dark:text-slate-300">Loading decision outcomes...</p>
+          <Loader2 className="h-12 w-12 animate-spin text-[#2B8A6E] mb-4" />
+          <p className="text-lg text-gray-800">Loading decision outcomes...</p>
         </div>
         {!embedded && <Footer />}
       </div>
     );
   }
 
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+    <div className="min-h-screen bg-[#F8F7F4]">
       {!embedded && <StandardNav />}
       
       <div className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="mb-4 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+          <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none">
             <Zap className="h-3 w-3 mr-1" />
             Decision Velocity Tracking
           </Badge>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-4" data-testid="page-title">
+          <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG} data-testid="page-title">
             Decision Velocity Dashboard
           </h1>
-          <p className="text-xl text-gray-800 dark:text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-800 max-w-3xl mx-auto">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
         </div>
         
         <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <Card className="border-2 border-emerald-200 dark:border-emerald-800">
+          <Card className="border-[#E8E4DC] bg-white">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Trophy className="h-5 w-5 text-emerald-700" />
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+                <Trophy className="h-5 w-5 text-[#2B8A6E]" />
                 Total Decisions
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-emerald-700" data-testid="total-decisions">
+              <div className="text-4xl font-bold text-[#2B8A6E]" style={CG} data-testid="total-decisions">
                 {totalDecisions}
               </div>
-              <p className="text-sm text-gray-800 mt-2">
+              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
                 decisions tracked
               </p>
             </CardContent>
           </Card>
           
-          <Card className="border-2 border-blue-200 dark:border-blue-800">
+          <Card className="border-[#E8E4DC] bg-white">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <CheckCircle className="h-5 w-5 text-blue-800" />
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+                <CheckCircle className="h-5 w-5 text-[#0A0F2E]" />
                 Success Rate
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-blue-800" data-testid="success-rate">
+              <div className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="success-rate">
                 {successRate}%
               </div>
-              <p className="text-sm text-gray-800 mt-2">
+              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
                 {successfulCount} of {totalDecisions} successful
               </p>
             </CardContent>
           </Card>
           
-          <Card className="border-2 border-purple-200 dark:border-purple-800">
+          <Card className="border-[#E8E4DC] bg-white">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Target className="h-5 w-5 text-purple-800" />
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+                <Target className="h-5 w-5 text-[#0A0F2E]" />
                 Avg Confidence
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-purple-800" data-testid="avg-confidence">
+              <div className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="avg-confidence">
                 {avgConfidence}%
               </div>
-              <p className="text-sm text-gray-800 mt-2">
+              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
                 average decision confidence
               </p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="border-[#E8E4DC] bg-white">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
                 <Zap className="h-5 w-5 text-[#C9A84C]" />
                 Effectiveness
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-bold text-[#C9A84C]" data-testid="avg-effectiveness">
+              <div className="text-4xl font-bold text-[#C9A84C]" style={CG} data-testid="avg-effectiveness">
                 {avgEffectiveness}%
               </div>
-              <p className="text-sm text-gray-800 mt-2">
+              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
                 {excellentCount} excellent decisions
               </p>
             </CardContent>
           </Card>
         </div>
         
-        <Card className="mb-12 bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900">
-          <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Target className="h-6 w-6 text-blue-800" />
+        <Card className="mb-12 border-[#E8E4DC] bg-white">
+          <CardHeader className="border-b border-[#E8E4DC]">
+            <CardTitle className="text-2xl flex items-center gap-2 text-[#0A0F2E]" style={CG}>
+              <Target className="h-6 w-6 text-[#0A0F2E]" />
               The Decision Velocity Gap
             </CardTitle>
-            <CardDescription className="text-base">
+            <CardDescription className="text-base text-gray-600">
               Head coaches make 80+ critical decisions in 3 hours. Your team now decides at head coach speed.
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
+                <h3 className="text-lg font-bold text-gray-700 mb-4 uppercase tracking-widest text-xs">
                   Before Execution OS
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Avg Decision Confidence</span>
-                    <span className="text-lg font-bold text-red-700">45%</span>
+                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                    <span className="text-sm font-medium text-gray-700">Avg Decision Confidence</span>
+                    <span className="text-lg font-bold text-red-700" style={CG}>45%</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Decisions Per Quarter</span>
-                    <span className="text-lg font-bold text-red-700">11</span>
+                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                    <span className="text-sm font-medium text-gray-700">Decisions Per Quarter</span>
+                    <span className="text-lg font-bold text-red-700" style={CG}>11</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Success Rate</span>
-                    <span className="text-lg font-bold text-red-700">47%</span>
+                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
+                    <span className="text-sm font-medium text-gray-700">Success Rate</span>
+                    <span className="text-lg font-bold text-red-700" style={CG}>47%</span>
                   </div>
                 </div>
               </div>
               
               <div>
-                <h3 className="text-lg font-bold text-slate-700 dark:text-slate-300 mb-4">
+                <h3 className="text-lg font-bold text-gray-700 mb-4 uppercase tracking-widest text-xs">
                   With Execution OS
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Avg Decision Confidence</span>
-                    <span className="text-lg font-bold text-emerald-700">{avgConfidence}%</span>
+                  <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
+                    <span className="text-sm font-medium text-gray-700">Avg Decision Confidence</span>
+                    <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{avgConfidence}%</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Decisions Per Quarter</span>
-                    <span className="text-lg font-bold text-emerald-700">{totalDecisions}</span>
+                  <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
+                    <span className="text-sm font-medium text-gray-700">Decisions Per Quarter</span>
+                    <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{totalDecisions}</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Success Rate</span>
-                    <span className="text-lg font-bold text-emerald-700">{successRate}%</span>
+                  <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
+                    <span className="text-sm font-medium text-gray-700">Success Rate</span>
+                    <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{successRate}%</span>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center">
-              <p className="text-lg font-bold text-blue-900 dark:text-blue-200">
+            <div className="mt-6 p-4 bg-[#0A0F2E] text-center">
+              <p className="text-lg font-bold text-white" style={CG}>
                 {totalDecisions} decisions tracked • {successRate}% success rate • {avgConfidence}% avg confidence
               </p>
             </div>
@@ -230,17 +232,17 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         </Card>
         
         {decisions.length > 0 && (
-          <Card className="mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Trophy className="h-6 w-6 text-amber-500" />
+          <Card className="mb-12 border-[#E8E4DC] bg-white">
+            <CardHeader className="border-b border-[#E8E4DC]">
+              <CardTitle className="text-2xl flex items-center gap-2 text-[#0A0F2E]" style={CG}>
+                <Trophy className="h-6 w-6 text-[#C9A84C]" />
                 Decision Type Breakdown
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-gray-600">
                 Strategic decisions by category and effectiveness
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               <div className="grid md:grid-cols-5 gap-3">
                 {Object.entries(decisions.reduce((acc: Record<string, { count: number; successful: number }>, d: any) => {
                   const type = d.decisionType || 'unknown';
@@ -249,10 +251,10 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                   if (d.actualOutcome === 'successful') acc[type].successful++;
                   return acc;
                 }, {})).map(([type, stats]: [string, any]) => (
-                  <div key={type} className="p-4 bg-slate-50 dark:bg-slate-800 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{stats.count}</div>
-                    <div className="text-xs font-medium text-gray-800 mt-1">{formatDecisionType(type)}</div>
-                    <Badge variant="outline" className="mt-2 text-xs">
+                  <div key={type} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none text-center">
+                    <div className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{stats.count}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">{formatDecisionType(type)}</div>
+                    <Badge variant="outline" className="mt-2 text-[10px] border-[#E8E4DC] text-[#0A0F2E]">
                       {Math.round((stats.successful / stats.count) * 100)}% success
                     </Badge>
                   </div>
@@ -262,17 +264,17 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           </Card>
         )}
         
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="text-2xl">Recent Decisions</CardTitle>
-            <CardDescription>
+        <Card className="mb-12 border-[#E8E4DC] bg-white">
+          <CardHeader className="border-b border-[#E8E4DC]">
+            <CardTitle className="text-2xl text-[#0A0F2E]" style={CG}>Recent Decisions</CardTitle>
+            <CardDescription className="text-gray-600">
               Decision log with outcomes and lessons learned
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             {decisions.length === 0 ? (
               <div className="text-center py-12 text-gray-800">
-                <Target className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                <Target className="h-12 w-12 mx-auto mb-4 text-gray-300" />
                 <p className="text-lg font-medium">No decisions recorded yet</p>
                 <p className="text-sm mt-1">Decision outcomes will appear here once they are tracked.</p>
               </div>
@@ -281,77 +283,45 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                 {decisions.map((decision: any) => (
                   <div 
                     key={decision.id}
-                    className="p-4 border border-slate-200 dark:border-slate-700 rounded-lg"
+                    className="p-4 border border-[#E8E4DC] rounded-none bg-white"
                     data-testid={`decision-row-${decision.id}`}
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white">
+                        <h4 className="font-semibold text-[#0A0F2E]" style={CG}>
                           {formatDecisionType(decision.decisionType)}
                         </h4>
-                        <p className="text-sm text-gray-800 dark:text-slate-300">{decision.decisionDescription}</p>
+                        <p className="text-sm text-gray-600">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)}>
+                        <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)} className={decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}>
                           {formatOutcome(decision.actualOutcome)}
                         </Badge>
                         {decision.effectiveness && (
-                          <Badge variant="outline" className={getEffectivenessColor(decision.effectiveness)}>
+                          <Badge variant="outline" className={`${getEffectivenessColor(decision.effectiveness)} border-[#E8E4DC]`}>
                             {decision.effectiveness}
                           </Badge>
                         )}
                       </div>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-4 mt-3 text-sm">
+                    <div className="grid md:grid-cols-2 gap-4 mt-3 text-xs uppercase tracking-widest font-bold">
                       <div>
-                        <span className="text-gray-800">Decision Maker:</span>
-                        <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">{decision.decisionMaker}</span>
+                        <span className="text-gray-400">Decision Maker:</span>
+                        <span className="ml-2 text-[#0A0F2E]">{decision.decisionMaker}</span>
                       </div>
                       <div>
-                        <span className="text-gray-800">Choice:</span>
-                        <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">
+                        <span className="text-gray-400">Choice:</span>
+                        <span className="ml-2 text-[#0A0F2E]">
                           {decision.chosenOption?.title || 'N/A'}
                         </span>
                       </div>
-                      {decision.confidence && (
-                        <div>
-                          <span className="text-gray-800">Confidence:</span>
-                          <Badge variant="outline" className="ml-2">{formatDecisionType(decision.confidence)}</Badge>
-                        </div>
-                      )}
-                      {decision.timeToImplement != null && (
-                        <div>
-                          <span className="text-gray-800">Implementation Time:</span>
-                          <span className="ml-2 font-medium text-slate-700 dark:text-slate-300">{decision.timeToImplement} days</span>
-                        </div>
-                      )}
                     </div>
-                    <div className="mt-3 p-3 bg-slate-50 dark:bg-slate-800 rounded text-sm">
+                    <div className="mt-3 p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none text-sm">
                       {decision.actualResults?.description && (
                         <>
-                          <div className="text-gray-800 mb-1">Results:</div>
-                          <div className="text-slate-700 dark:text-slate-300">{decision.actualResults.description}</div>
+                          <div className="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-1">Results:</div>
+                          <div className="text-gray-700">{decision.actualResults.description}</div>
                         </>
-                      )}
-                      {decision.actualResults?.metricsImpacted && decision.actualResults.metricsImpacted.length > 0 && (
-                        <div className="mt-2 flex flex-wrap gap-1">
-                          {decision.actualResults.metricsImpacted.map((metric: string, i: number) => (
-                            <Badge key={i} variant="outline" className="text-xs">{metric}</Badge>
-                          ))}
-                        </div>
-                      )}
-                      {decision.lessonsLearned?.keyTakeaways && decision.lessonsLearned.keyTakeaways.length > 0 && (
-                        <>
-                          <div className="text-gray-800 mt-2 mb-1">Lessons Learned:</div>
-                          <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 italic space-y-1">
-                            {decision.lessonsLearned.keyTakeaways.map((takeaway: string, i: number) => (
-                              <li key={i}>{takeaway}</li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-                      {!decision.actualResults?.description && (!decision.lessonsLearned?.keyTakeaways || decision.lessonsLearned.keyTakeaways.length === 0) && (
-                        <div className="text-gray-800 dark:text-slate-200 italic">No outcome details recorded yet.</div>
                       )}
                     </div>
                   </div>
@@ -365,13 +335,13 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           <Button 
             size="lg" 
             onClick={() => setLocation('/decision-trees')}
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-xs h-12 px-8 rounded-none"
             data-testid="button-create-tree"
           >
             <ArrowRight className="mr-2 h-5 w-5" />
             Create Your First Decision Tree
           </Button>
-          <p className="mt-3 text-sm text-gray-800">
+          <p className="mt-3 text-sm text-gray-500 uppercase tracking-widest font-bold text-[10px]">
             Pre-stage decisions before scenarios occur—just like head coaches do
           </p>
         </div>

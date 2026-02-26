@@ -112,37 +112,42 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
   return playbooks;
 };
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const tierConfig = {
   'combat-ready': {
     label: 'Combat Ready',
-    color: 'bg-emerald-500',
-    textColor: 'text-emerald-700 dark:text-emerald-400',
-    bgColor: 'bg-emerald-50 dark:bg-emerald-950/30',
-    borderColor: 'border-emerald-200 dark:border-emerald-800',
+    color: 'bg-[#2B8A6E]',
+    textColor: 'text-[#2B8A6E]',
+    bgColor: 'bg-[#2B8A6E]/10',
+    borderColor: 'border-[#2B8A6E]/20',
     icon: CheckCircle2
   },
   'practice-needed': {
     label: 'Practice Needed',
-    color: 'bg-amber-500',
-    textColor: 'text-[#C9A84C] dark:text-amber-400',
-    bgColor: 'bg-amber-50 dark:bg-amber-950/30',
-    borderColor: 'border-amber-200 dark:border-amber-800',
+    color: 'bg-[#C9A84C]',
+    textColor: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/10',
+    borderColor: 'border-[#C9A84C]/20',
     icon: Clock
   },
   'setup-required': {
     label: 'Setup Required',
-    color: 'bg-orange-500',
-    textColor: 'text-orange-600 dark:text-orange-400',
-    bgColor: 'bg-orange-50 dark:bg-orange-950/30',
-    borderColor: 'border-orange-200 dark:border-orange-800',
+    color: 'bg-[#C9A84C]',
+    textColor: 'text-[#C9A84C]',
+    bgColor: 'bg-[#C9A84C]/5',
+    borderColor: 'border-[#C9A84C]/10',
     icon: AlertTriangle
   },
   'not-configured': {
     label: 'Not Configured',
     color: 'bg-red-500',
-    textColor: 'text-red-700 dark:text-red-400',
-    bgColor: 'bg-red-50 dark:bg-red-950/30',
-    borderColor: 'border-red-200 dark:border-red-800',
+    textColor: 'text-red-600',
+    bgColor: 'bg-red-50',
+    borderColor: 'border-red-200',
     icon: XCircle
   }
 };
@@ -185,27 +190,34 @@ export default function PlaybookReadinessAudit() {
   }, [playbooks]);
 
   return (
-    <div className="page-background min-h-screen">
+    <div className="page-background min-h-screen bg-[#F8F7F4]">
       <StandardNav />
       
-      <div className="bg-gradient-to-r from-blue-600 via-violet-600 to-purple-600 text-gray-900 py-12">
-        <div className="max-w-7xl mx-auto px-8">
+      <div style={{ background: NAVY }} className="relative text-white py-16 overflow-hidden">
+        {/* Gold dot grid overlay */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
+        
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
           <div className="flex items-center justify-between">
             <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-8 w-[2px] bg-[#C9A84C]"></div>
+                <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Readiness Audit</span>
+              </div>
               <div className="flex items-center gap-3 mb-3">
-                <Shield className="h-8 w-8" />
-                <h1 className="text-3xl font-bold" data-testid="page-title">
+                <Shield className="h-8 w-8 text-[#C9A84C]" />
+                <h1 className="text-4xl font-bold" style={CG} data-testid="page-title">
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-blue-800 text-lg max-w-2xl">
+              <p className="text-gray-400 text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/10 border-white/30 text-gray-900 hover:bg-white/20" />
-              <Button variant="outline" className="bg-transparent border-white/30 text-gray-900 hover:bg-white/20" data-testid="button-export">
+              <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/5 border-white/10 text-white hover:bg-white/10" />
+              <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Export Report
               </Button>
@@ -224,21 +236,21 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={tier} 
-                className={`${config.bgColor} ${config.borderColor} border-2 cursor-pointer hover:scale-105 transition-transform`}
+                className={`${config.bgColor} ${config.borderColor} border border-[#E8E4DC] cursor-pointer hover:shadow-md transition-all`}
                 onClick={() => setSelectedTier(tier)}
                 data-testid={`tier-card-${tier}`}
               >
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-between mb-2">
                     <TierIcon className={`h-6 w-6 ${config.textColor}`} />
-                    <Badge className={`${config.color} text-gray-900`}>
+                    <Badge className={`${config.color} text-white border-none`}>
                       {percentage}%
                     </Badge>
                   </div>
-                  <div className={`text-3xl font-bold ${config.textColor}`}>
+                  <div className="text-4xl font-bold mb-1" style={{ ...CG, color: GOLD }}>
                     {count}
                   </div>
-                  <div className="text-sm text-gray-800 dark:text-slate-300">
+                  <div className="text-xs uppercase tracking-wider font-semibold text-[#6B7280]">
                     {config.label}
                   </div>
                 </CardContent>
@@ -247,10 +259,10 @@ export default function PlaybookReadinessAudit() {
           })}
         </div>
 
-        <Card className="border-2 border-blue-500 dark:border-blue-700" data-testid="card-overall-readiness">
+        <Card className="border border-[#E8E4DC] bg-white shadow-sm" data-testid="card-overall-readiness">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-blue-800" />
+            <CardTitle className="flex items-center gap-2" style={CG}>
+              <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
               Overall Readiness Score
             </CardTitle>
             <CardDescription>
@@ -260,53 +272,53 @@ export default function PlaybookReadinessAudit() {
           <CardContent>
             <div className="flex items-center gap-8">
               <div className="text-center">
-                <div className="text-6xl font-bold text-blue-800 dark:text-blue-400">
+                <div className="text-7xl font-bold" style={{ ...CG, color: GOLD }}>
                   {stats.averageScore}%
                 </div>
-                <div className="text-sm text-gray-800 dark:text-slate-300 mt-1">
+                <div className="text-sm text-[#6B7280] mt-2 font-medium">
                   Target: 84.4%
                 </div>
               </div>
               <div className="flex-1 space-y-4">
                 <div>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2 font-medium text-[#0A0F2E]">
                       <Target className="h-4 w-4" />
                       Trigger Coverage
                     </span>
-                    <span className="font-semibold">72%</span>
+                    <span className="font-bold text-[#0A0F2E]">72%</span>
                   </div>
-                  <Progress value={72} className="h-2" />
+                  <Progress value={72} className="h-2 bg-[#E8E4DC]" />
                 </div>
                 <div>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2 font-medium text-[#0A0F2E]">
                       <Users className="h-4 w-4" />
                       Stakeholder Readiness
                     </span>
-                    <span className="font-semibold">68%</span>
+                    <span className="font-bold text-[#0A0F2E]">68%</span>
                   </div>
-                  <Progress value={68} className="h-2" />
+                  <Progress value={68} className="h-2 bg-[#E8E4DC]" />
                 </div>
                 <div>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2 font-medium text-[#0A0F2E]">
                       <Calendar className="h-4 w-4" />
                       Practice Frequency
                     </span>
-                    <span className="font-semibold">55%</span>
+                    <span className="font-bold text-[#0A0F2E]">55%</span>
                   </div>
-                  <Progress value={55} className="h-2" />
+                  <Progress value={55} className="h-2 bg-[#E8E4DC]" />
                 </div>
                 <div>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2 font-medium text-[#0A0F2E]">
                       <CheckCircle2 className="h-4 w-4" />
                       Outcome Confidence
                     </span>
-                    <span className="font-semibold">64%</span>
+                    <span className="font-bold text-[#0A0F2E]">64%</span>
                   </div>
-                  <Progress value={64} className="h-2" />
+                  <Progress value={64} className="h-2 bg-[#E8E4DC]" />
                 </div>
               </div>
             </div>
@@ -316,17 +328,17 @@ export default function PlaybookReadinessAudit() {
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex items-center gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-80">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
               <Input
                 placeholder="Search playbooks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
+                className="pl-10 border-[#E8E4DC]"
                 data-testid="input-search"
               />
             </div>
             <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-              <SelectTrigger className="w-48" data-testid="select-domain">
+              <SelectTrigger className="w-48 border-[#E8E4DC]" data-testid="select-domain">
                 <Filter className="h-4 w-4 mr-2" />
                 <SelectValue placeholder="Domain" />
               </SelectTrigger>
@@ -338,7 +350,7 @@ export default function PlaybookReadinessAudit() {
               </SelectContent>
             </Select>
             <Select value={selectedTier} onValueChange={setSelectedTier}>
-              <SelectTrigger className="w-48" data-testid="select-tier">
+              <SelectTrigger className="w-48 border-[#E8E4DC]" data-testid="select-tier">
                 <SelectValue placeholder="Tier" />
               </SelectTrigger>
               <SelectContent>
@@ -349,8 +361,8 @@ export default function PlaybookReadinessAudit() {
               </SelectContent>
             </Select>
           </div>
-          <div className="text-sm text-gray-800 dark:text-slate-300">
-            Showing {filteredPlaybooks.length} of {playbooks.length} playbooks
+          <div className="text-sm font-medium text-[#6B7280]">
+            Showing <span className="text-[#0A0F2E]">{filteredPlaybooks.length}</span> of {playbooks.length} playbooks
           </div>
         </div>
 
@@ -362,33 +374,33 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={playbook.id} 
-                className={`${config.borderColor} border-l-4 hover:shadow-lg transition-shadow`}
+                className={`border border-[#E8E4DC] bg-white border-l-4 border-l-[${config.textColor}] hover:shadow-md transition-all`}
                 data-testid={`playbook-card-${playbook.playbookNumber}`}
               >
                 <CardContent className="py-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
-                      <div className={`w-12 h-12 ${config.bgColor} rounded-lg flex items-center justify-center`}>
+                      <div className={`w-12 h-12 ${config.bgColor} rounded flex items-center justify-center`}>
                         <TierIcon className={`h-6 w-6 ${config.textColor}`} />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-semibold text-slate-900 dark:text-white">
+                          <h3 className="font-bold text-[#0A0F2E] text-lg" style={CG}>
                             #{playbook.playbookNumber} - {playbook.name}
                           </h3>
-                          <Badge variant="outline" className={config.textColor}>
+                          <Badge variant="outline" className={`${config.textColor} border-${config.textColor}/20 bg-${config.textColor}/5`}>
                             {config.label}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-300">
+                        <div className="flex items-center gap-4 text-sm font-medium text-[#6B7280]">
                           <span>{playbook.domain}</span>
-                          <span>•</span>
+                          <span className="text-[#E8E4DC]">•</span>
                           <span>{playbook.stakeholderCount} stakeholders</span>
-                          <span>•</span>
+                          <span className="text-[#E8E4DC]">•</span>
                           <span>{playbook.drillsCompleted} drills completed</span>
                           {playbook.lastDrillDate && (
                             <>
-                              <span>•</span>
+                              <span className="text-[#E8E4DC]">•</span>
                               <span>Last drill: {new Date(playbook.lastDrillDate).toLocaleDateString()}</span>
                             </>
                           )}
@@ -397,52 +409,54 @@ export default function PlaybookReadinessAudit() {
                     </div>
 
                     <div className="flex items-center gap-6">
-                      <div className="hidden lg:flex items-center gap-4">
+                      <div className="hidden lg:flex items-center gap-6">
                         <div className="text-center">
-                          <div className="text-lg font-bold text-blue-800 dark:text-blue-400">
+                          <div className="text-xl font-bold text-[#0A0F2E]" style={CG}>
                             {playbook.triggerCoverage}%
                           </div>
-                          <div className="text-xs text-gray-800">Triggers</div>
+                          <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Triggers</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-violet-600 dark:text-violet-400">
+                          <div className="text-xl font-bold text-[#0A0F2E]" style={CG}>
                             {playbook.stakeholderReadiness}%
                           </div>
-                          <div className="text-xs text-gray-800">Stakeholders</div>
+                          <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Stakeholders</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-[#C9A84C] dark:text-amber-400">
+                          <div className="text-xl font-bold text-[#C9A84C]" style={CG}>
                             {playbook.practiceFrequency}%
                           </div>
-                          <div className="text-xs text-gray-800">Practice</div>
+                          <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Practice</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-bold text-emerald-700 dark:text-emerald-400">
+                          <div className="text-xl font-bold text-[#2B8A6E]" style={CG}>
                             {playbook.outcomeConfidence}%
                           </div>
-                          <div className="text-xs text-gray-800">Confidence</div>
+                          <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Confidence</div>
                         </div>
                       </div>
 
-                      <div className="text-center px-4 border-l border-slate-200 dark:border-slate-700">
-                        <div className={`text-2xl font-bold ${config.textColor}`}>
+                      <div className="text-center px-6 border-l border-[#E8E4DC]">
+                        <div className="text-3xl font-bold" style={{ ...CG, color: GOLD }}>
                           {playbook.overallScore}%
                         </div>
-                        <div className="text-xs text-gray-800">Overall</div>
+                        <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Overall</div>
                       </div>
 
                       <div className="flex items-center gap-2">
                         <Button 
                           variant="outline" 
                           size="sm"
+                          className="border-[#E8E4DC] text-[#0A0F2E] font-bold hover:bg-[#F8F7F4]"
                           data-testid={`button-drill-${playbook.playbookNumber}`}
                         >
-                          <Play className="h-4 w-4 mr-1" />
+                          <Play className="h-4 w-4 mr-1 text-[#C9A84C]" />
                           Drill
                         </Button>
                         <Button 
                           variant="ghost" 
                           size="sm"
+                          className="text-[#6B7280] hover:text-[#0A0F2E]"
                           data-testid={`button-view-${playbook.playbookNumber}`}
                         >
                           <ChevronRight className="h-4 w-4" />
@@ -452,11 +466,11 @@ export default function PlaybookReadinessAudit() {
                   </div>
 
                   {playbook.recommendations.length > 0 && (
-                    <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700">
+                    <div className="mt-3 pt-3 border-t border-[#E8E4DC]">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-semibold text-gray-800">Recommendations:</span>
+                        <span className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280]">Recommendations:</span>
                         {playbook.recommendations.map((rec, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-xs">
+                          <Badge key={idx} variant="secondary" className="text-[10px] bg-[#F8F7F4] text-[#0A0F2E] border-none">
                             {rec}
                           </Badge>
                         ))}
@@ -470,32 +484,33 @@ export default function PlaybookReadinessAudit() {
         </div>
 
         {filteredPlaybooks.length > 20 && (
-          <div className="text-center">
-            <Button variant="outline" data-testid="button-load-more">
+          <div className="text-center pb-12">
+            <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] font-bold" data-testid="button-load-more">
               <RefreshCw className="h-4 w-4 mr-2" />
               Load More ({filteredPlaybooks.length - 20} remaining)
             </Button>
           </div>
         )}
 
-        <Card className="bg-gradient-to-r from-blue-50 via-violet-50 to-purple-50 dark:from-blue-950/30 dark:via-violet-950/30 dark:to-purple-950/30 border-blue-200 dark:border-blue-800">
-          <CardContent className="py-6">
+        <Card className="bg-[#0A0F2E] text-white overflow-hidden relative border-none">
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '20px 20px' }}></div>
+          <CardContent className="py-10 relative z-10">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-1">
+                <h3 className="text-2xl font-bold mb-2" style={CG}>
                   Ready to improve readiness?
                 </h3>
-                <p className="text-sm text-gray-800 dark:text-slate-300">
+                <p className="text-gray-400 font-medium">
                   Schedule a bulk drill session or import stakeholder data to boost your scores.
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 <Link href="/scenario-gallery">
-                  <Button variant="outline" data-testid="button-browse-playbooks">
+                  <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-browse-playbooks">
                     Browse Playbooks
                   </Button>
                 </Link>
-                <Button data-testid="button-schedule-drill">
+                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-schedule-drill">
                   <Calendar className="h-4 w-4 mr-2" />
                   Schedule Drill
                 </Button>

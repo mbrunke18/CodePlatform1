@@ -250,7 +250,7 @@ export default function ScenarioVarianceAlert({
                 </div>
 
                 {alert.escalatedTo && (
-                  <div className="flex items-center gap-2 text-sm text-emerald-700 dark:text-emerald-400 mb-2">
+                  <div className="flex items-center gap-2 text-sm text-[#2B8A6E] dark:text-[#2B8A6E] mb-2">
                     <Send className="w-4 h-4" />
                     Escalated to: {alert.escalatedTo.join(', ')}
                   </div>

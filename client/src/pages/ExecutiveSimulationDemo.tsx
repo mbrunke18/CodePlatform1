@@ -317,20 +317,20 @@ export default function ExecutiveSimulationDemo() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-500 text-gray-900';
-      case 'high': return 'bg-orange-500 text-gray-900';
-      case 'medium': return 'bg-yellow-500 text-black';
-      case 'low': return 'bg-blue-500 text-gray-900';
-      default: return 'bg-gray-500 text-gray-900';
+      case 'critical': return 'bg-red-500 text-white';
+      case 'high': return 'bg-orange-500 text-white';
+      case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E]';
+      case 'low': return 'bg-[#0A0F2E] text-white';
+      default: return 'bg-[#6B7280] text-white';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed': return 'text-emerald-700 dark:text-green-400';
-      case 'in_progress': return 'text-blue-800 dark:text-blue-400';
-      case 'blocked': return 'text-red-700 dark:text-red-400';
-      default: return 'text-gray-800 dark:text-slate-200';
+      case 'completed': return 'text-[#2B8A6E]';
+      case 'in_progress': return 'text-[#0A0F2E] dark:text-[#C9A84C]';
+      case 'blocked': return 'text-red-500';
+      default: return 'text-[#6B7280] dark:text-white/60';
     }
   };
 
@@ -347,85 +347,85 @@ export default function ExecutiveSimulationDemo() {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center p-6">
-          <Card className="max-w-3xl w-full border-0 bg-white/5 backdrop-blur-xl" data-testid="card-simulation-intro">
+          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">
-              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-teal-400 rounded-2xl flex items-center justify-center">
-                <Briefcase className="w-10 h-10 text-gray-900" />
+              <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-2xl flex items-center justify-center">
+                <Briefcase className="w-10 h-10 text-white dark:text-[#0A0F2E]" />
               </div>
-              <Badge className="mx-auto mb-4 bg-blue-500/20 text-blue-300 border-blue-500/30">
+              <Badge className="mx-auto mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#C9A84C]/20 dark:text-[#C9A84C] border-none">
                 Executive Simulation
               </Badge>
-              <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+              <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Welcome to Your Day as CSO
               </CardTitle>
-              <CardDescription className="text-lg text-gray-800">
+              <CardDescription className="text-lg text-[#6B7280] dark:text-white/60">
                 Experience Execution OS from the perspective of a Fortune 500 executive
               </CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
-              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-blue-400" />
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+                <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Building2 className="w-5 h-5 text-[#C9A84C]" />
                   Your Company Profile
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-gray-800 dark:text-slate-200">Company:</span>
-                    <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.name}</span>
+                    <span className="text-[#6B7280] dark:text-white/60">Company:</span>
+                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.name}</span>
                   </div>
                   <div>
-                    <span className="text-gray-800 dark:text-slate-200">Industry:</span>
-                    <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
+                    <span className="text-[#6B7280] dark:text-white/60">Industry:</span>
+                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
                   </div>
                   <div>
-                    <span className="text-gray-800 dark:text-slate-200">Revenue:</span>
-                    <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
+                    <span className="text-[#6B7280] dark:text-white/60">Revenue:</span>
+                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
                   </div>
                   <div>
-                    <span className="text-gray-800 dark:text-slate-200">Employees:</span>
-                    <span className="text-gray-900 ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
+                    <span className="text-[#6B7280] dark:text-white/60">Employees:</span>
+                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r   rounded-xl p-6 border border-blue-700/30">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <Users className="w-5 h-5 text-teal-400" />
+              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Users className="w-5 h-5 text-[#C9A84C]" />
                   Your Role
                 </h3>
                 <div className="flex items-center gap-4">
-                  <Avatar className="w-16 h-16 border-2 border-teal-400">
-                    <AvatarFallback className="bg-teal-600 text-gray-900 text-lg font-bold">SC</AvatarFallback>
+                  <Avatar className="w-16 h-16 border-2 border-[#C9A84C]">
+                    <AvatarFallback className="bg-[#C9A84C] text-[#0A0F2E] text-lg font-bold">SC</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="text-xl font-bold text-gray-900">{COMPANY_PROFILE.persona}</p>
-                    <p className="text-teal-300">{COMPANY_PROFILE.role}</p>
-                    <p className="text-gray-800 dark:text-slate-200 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
+                    <p className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{COMPANY_PROFILE.persona}</p>
+                    <p className="text-[#C9A84C]">{COMPANY_PROFILE.role}</p>
+                    <p className="text-white/60 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Target className="w-5 h-5 text-purple-400" />
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+                <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Target className="w-5 h-5 text-[#C9A84C]" />
                   What You'll Experience
                 </h3>
-                <ul className="space-y-3 text-gray-800">
+                <ul className="space-y-3 text-[#0A0F2E] dark:text-white/80">
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                     <span>Monitor real-time intelligence signals from multiple sources</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                     <span>Respond to a critical strategic event as it unfolds</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                     <span>Activate a pre-built playbook and coordinate your team</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                     <span>See how Execution OS compresses 72-hour responses to 12 minutes</span>
                   </li>
                 </ul>
@@ -436,7 +436,7 @@ export default function ExecutiveSimulationDemo() {
               <Button 
                 size="lg" 
                 onClick={startSimulation}
-                className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-gray-900 font-semibold px-12 py-6 text-lg"
+                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-12 py-6 text-lg"
                 data-testid="button-start-simulation"
               >
                 <Play className="w-5 h-5 mr-2" />
@@ -452,93 +452,93 @@ export default function ExecutiveSimulationDemo() {
   if (phase === 'complete') {
     return (
       <PageLayout>
-        <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-6">
-          <Card className="max-w-3xl w-full border-0 bg-white/5 backdrop-blur-xl" data-testid="card-simulation-complete">
+        <div className="min-h-screen flex items-center justify-center p-6">
+          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5" data-testid="card-simulation-complete">
             <CardHeader className="text-center pb-2">
-              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-emerald-500 to-green-400 rounded-2xl flex items-center justify-center">
-                <Award className="w-10 h-10 text-gray-900" />
+              <div className="w-20 h-20 mx-auto mb-6 bg-[#2B8A6E] rounded-2xl flex items-center justify-center">
+                <Award className="w-10 h-10 text-white" />
               </div>
-              <Badge className="mx-auto mb-4 bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+              <Badge className="mx-auto mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none">
                 Simulation Complete
               </Badge>
-              <CardTitle className="text-3xl font-bold text-gray-900 mb-2">
+              <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Response Successfully Coordinated
               </CardTitle>
-              <CardDescription className="text-lg text-gray-800">
+              <CardDescription className="text-lg text-[#6B7280] dark:text-white/60">
                 You just experienced the power of Execution OS
               </CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
-                  <Clock className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                  <p className="text-3xl font-bold text-gray-900">{formatTime(elapsedTime)}</p>
-                  <p className="text-gray-800 dark:text-slate-200 text-sm">Total Response Time</p>
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                  <Clock className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
+                  <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatTime(elapsedTime)}</p>
+                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Total Response Time</p>
                 </div>
-                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
-                  <Users className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <p className="text-3xl font-bold text-gray-900">6</p>
-                  <p className="text-gray-800 dark:text-slate-200 text-sm">Stakeholders Aligned</p>
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                  <Users className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
+                  <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
+                  <p classNamePrefix="text-[#6B7280] dark:text-white/60 text-sm">Stakeholders Aligned</p>
                 </div>
-                <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
-                  <CheckCircle2 className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                  <p className="text-3xl font-bold text-gray-900">{playbookActions.length}</p>
-                  <p className="text-gray-800 dark:text-slate-200 text-sm">Actions Completed</p>
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                  <CheckCircle2 className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
+                  <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{playbookActions.length}</p>
+                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Actions Completed</p>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r   rounded-xl p-6 border border-emerald-700/30">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Traditional vs Execution OS Response</h3>
+              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional vs Execution OS Response</h3>
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-800 dark:text-slate-200">Traditional Approach</span>
-                      <span className="text-red-400">48-72 hours</span>
+                      <span className="text-white/80">Traditional Approach</span>
+                      <span className="text-red-500">48-72 hours</span>
                     </div>
-                    <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
+                    <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-red-500/50 rounded-full" style={{ width: '100%' }}></div>
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-800 dark:text-slate-200">With Execution OS</span>
-                      <span className="text-emerald-400">{formatTime(elapsedTime)}</span>
+                      <span className="text-white/80">With Execution OS</span>
+                      <span className="text-[#2B8A6E]">{formatTime(elapsedTime)}</span>
                     </div>
-                    <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-emerald-500 to-green-400 rounded-full" style={{ width: '3%' }}></div>
+                    <div className="h-3 bg-white/5 rounded-full overflow-hidden">
+                      <div className="h-full bg-[#2B8A6E] rounded-full" style={{ width: '3%' }}></div>
                     </div>
                   </div>
                 </div>
-                <p className="text-emerald-300 text-center mt-4 font-semibold">
+                <p className="text-[#C9A84C] text-center mt-4 font-semibold">
                   You responded {Math.round((72 * 60) / (elapsedTime / 60000))}x faster than traditional methods
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">What Happened</h3>
-                <ul className="space-y-3 text-gray-800 text-sm">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+                <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What Happened</h3>
+                <ul className="space-y-3 text-[#0A0F2E] dark:text-white/80 text-sm">
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-blue-400 text-xs font-bold">1</span>
+                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">1</span>
                     </div>
                     <span>Execution OS detected competitor acquisition via Reuters and SEC filing monitoring</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-purple-400 text-xs font-bold">2</span>
+                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">2</span>
                     </div>
                     <span>AI assessed impact and recommended "Competitor M&A Response" playbook</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-teal-400 text-xs font-bold">3</span>
+                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">3</span>
                     </div>
                     <span>You activated the playbook, triggering automatic stakeholder notification</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-emerald-400 text-xs font-bold">4</span>
+                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">4</span>
                     </div>
                     <span>All 6 response workstreams were coordinated in parallel, not sequentially</span>
                   </li>
@@ -550,7 +550,7 @@ export default function ExecutiveSimulationDemo() {
               <Button 
                 variant="outline"
                 onClick={resetSimulation}
-                className="border-slate-600 text-gray-800 hover:bg-slate-800"
+                className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5"
                 data-testid="button-restart-simulation"
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
@@ -558,7 +558,26 @@ export default function ExecutiveSimulationDemo() {
               </Button>
               <Button 
                 onClick={() => setLocation('/foresight-radar')}
-                className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-gray-900"
+                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold"
+                data-testid="button-explore-platform"
+              >
+                Explore Full Platform
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </PageLayout>
+    );
+  }
+                data-testid="button-restart-simulation"
+              >
+                <RotateCcw className="w-4 h-4 mr-2" />
+                Try Again
+              </Button>
+              <Button 
+                onClick={() => setLocation('/foresight-radar')}
+                className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] hover:from-[#0A0F2E] hover:to-[#3BAF8A] text-gray-900"
                 data-testid="button-explore-platform"
               >
                 Explore Full Platform
@@ -646,7 +665,7 @@ export default function ExecutiveSimulationDemo() {
               <div className="flex items-center gap-4">
                 {/* Timer */}
                 <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg">
-                  <Timer className="w-4 h-4 text-blue-500" />
+                  <Timer className="w-4 h-4 text-[#0A0F2E]" />
                   <span className="font-mono font-bold text-slate-900 dark:text-white" data-testid="text-elapsed-time">
                     {formatTime(elapsedTime)}
                   </span>
@@ -678,7 +697,7 @@ export default function ExecutiveSimulationDemo() {
         </div>
 
         {/* Phase Indicator */}
-        <div className="bg-gradient-to-r from-blue-600 to-teal-500 text-gray-900 py-2">
+        <div className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] text-gray-900 py-2">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
@@ -732,7 +751,7 @@ export default function ExecutiveSimulationDemo() {
                   <Card className="border-slate-200 dark:border-slate-800">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Radio className="w-5 h-5 text-blue-500" />
+                        <Radio className="w-5 h-5 text-[#0A0F2E]" />
                         Foresight Radar
                       </CardTitle>
                       <CardDescription>Real-time intelligence monitoring across 12 signal sources</CardDescription>
@@ -744,7 +763,7 @@ export default function ExecutiveSimulationDemo() {
                         <div className="absolute inset-20 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-full"></div>
                         
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
+                          <div className="w-4 h-4 bg-[#0A0F2E] rounded-full animate-ping"></div>
                         </div>
                         
                         {signals.map((signal, index) => {
@@ -759,7 +778,7 @@ export default function ExecutiveSimulationDemo() {
                               className={`absolute w-4 h-4 rounded-full ${
                                 signal.severity === 'critical' ? 'bg-red-500 animate-pulse' :
                                 signal.severity === 'high' ? 'bg-orange-500' :
-                                signal.severity === 'medium' ? 'bg-yellow-500' : 'bg-blue-500'
+                                signal.severity === 'medium' ? 'bg-yellow-500' : 'bg-[#0A0F2E]'
                               }`}
                               style={{ 
                                 transform: `translate(${x}px, ${y}px)`,
@@ -784,7 +803,7 @@ export default function ExecutiveSimulationDemo() {
                 <Card className="border-slate-200 dark:border-slate-800">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-base">
-                      <Users className="w-5 h-5 text-purple-500" />
+                      <Users className="w-5 h-5 text-[#C9A84C]" />
                       Executive Team
                     </CardTitle>
                   </CardHeader>
@@ -795,7 +814,7 @@ export default function ExecutiveSimulationDemo() {
                           <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
                             <Avatar className="w-10 h-10">
                               <AvatarFallback className={`text-sm font-bold ${
-                                member.status === 'available' ? 'bg-green-100 text-emerald-800' :
+                                member.status === 'available' ? 'bg-green-100 text-[#2B8A6E]' :
                                 member.status === 'busy' ? 'bg-amber-100 text-[#C9A84C]' :
                                 'bg-slate-100 text-gray-800'
                               }`}>
@@ -839,12 +858,12 @@ export default function ExecutiveSimulationDemo() {
                           <div className={`p-2 rounded-lg ${
                             signal.severity === 'critical' ? 'bg-red-100 dark:bg-red-900/30' :
                             signal.severity === 'high' ? 'bg-orange-100 dark:bg-orange-900/30' :
-                            'bg-blue-100 dark:bg-blue-900/30'
+                            'bg-blue-100 dark:bg-[#0A0F2E]/30'
                           }`}>
                             <signal.icon className={`w-5 h-5 ${
                               signal.severity === 'critical' ? 'text-red-700' :
                               signal.severity === 'high' ? 'text-orange-600' :
-                              'text-blue-800'
+                              'text-[#0A0F2E]'
                             }`} />
                           </div>
                           <div>
@@ -861,7 +880,7 @@ export default function ExecutiveSimulationDemo() {
                         {signal.actionRequired && phase === 'playbook_selection' && (
                           <Button 
                             size="sm" 
-                            className="bg-blue-600 hover:bg-blue-700"
+                            className="bg-[#0A0F2E] hover:bg-[#0A0F2E]"
                             onClick={() => handleSelectPlaybook('competitor-ma-response')}
                             data-testid="button-respond-signal"
                           >
@@ -888,20 +907,20 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   
                   <Card 
-                    className="border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/20 cursor-pointer hover:shadow-lg transition-all"
+                    className="border-2 border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer hover:shadow-lg transition-all"
                     onClick={() => handleSelectPlaybook('competitor-ma-response')}
                     data-testid="card-recommended-playbook"
                   >
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div>
-                          <Badge className="mb-2 bg-blue-500 text-gray-900">RECOMMENDED</Badge>
+                          <Badge className="mb-2 bg-[#0A0F2E] text-gray-900">RECOMMENDED</Badge>
                           <CardTitle className="text-xl">Competitor M&A Response Protocol</CardTitle>
                           <CardDescription>Comprehensive response framework for competitor acquisition events</CardDescription>
                         </div>
                         <div className="text-right">
                           <p className="text-sm text-gray-800">Est. Coordination Time</p>
-                          <p className="text-2xl font-bold text-blue-800">12 min</p>
+                          <p className="text-2xl font-bold text-[#0A0F2E]">12 min</p>
                         </div>
                       </div>
                     </CardHeader>
@@ -940,8 +959,8 @@ export default function ExecutiveSimulationDemo() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="bg-blue-100 dark:bg-blue-900/30">
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700" data-testid="button-activate-playbook">
+                    <CardFooter className="bg-blue-100 dark:bg-[#0A0F2E]/30">
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]" data-testid="button-activate-playbook">
                         <Rocket className="w-4 h-4 mr-2" />
                         Activate This Playbook
                       </Button>
@@ -953,7 +972,7 @@ export default function ExecutiveSimulationDemo() {
                   <Card className="border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/20">
                     <CardHeader>
                       <div className="flex items-center gap-3">
-                        <CheckCircle2 className="w-8 h-8 text-emerald-700" />
+                        <CheckCircle2 className="w-8 h-8 text-[#2B8A6E]" />
                         <div>
                           <CardTitle>Playbook Activated: Competitor M&A Response</CardTitle>
                           <CardDescription>Team notifications sent. Review actions below and launch execution.</CardDescription>
@@ -965,7 +984,7 @@ export default function ExecutiveSimulationDemo() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Target className="w-5 h-5 text-purple-500" />
+                        <Target className="w-5 h-5 text-[#C9A84C]" />
                         Coordinated Action Plan
                       </CardTitle>
                       <CardDescription>{playbookActions.length} actions across {new Set(playbookActions.map(a => a.department)).size} departments</CardDescription>
@@ -992,7 +1011,7 @@ export default function ExecutiveSimulationDemo() {
                     </CardContent>
                     <CardFooter>
                       <Button 
-                        className="w-full bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600"
+                        className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] hover:from-[#0A0F2E] hover:to-[#3BAF8A]"
                         onClick={handleLaunchExecution}
                         data-testid="button-launch-execution"
                       >
@@ -1014,18 +1033,18 @@ export default function ExecutiveSimulationDemo() {
             <TabsContent value="command" className="space-y-6">
               {(phase === 'execution' || phase === 'monitoring') ? (
                 <div className="space-y-6">
-                  <Card className="border-blue-200 dark:border-blue-800">
-                    <CardHeader className="bg-gradient-to-r from-blue-600 to-teal-500 text-gray-900 rounded-t-lg">
+                  <Card className="border-[#0A0F2E] dark:border-[#0A0F2E]">
+                    <CardHeader className="bg-gradient-to-r from-[#0A0F2E] to-[#3BAF8A] text-gray-900 rounded-t-lg">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <Radio className="w-6 h-6" />
                           <div>
                             <CardTitle className="text-gray-900">Command Center Active</CardTitle>
-                            <CardDescription className="text-blue-800">Coordinating response in real-time</CardDescription>
+                            <CardDescription className="text-[#0A0F2E]">Coordinating response in real-time</CardDescription>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-blue-800 text-sm">Elapsed Time</p>
+                          <p className="text-[#0A0F2E] text-sm">Elapsed Time</p>
                           <p className="text-2xl font-mono font-bold">{formatTime(elapsedTime)}</p>
                         </div>
                       </div>
@@ -1045,7 +1064,7 @@ export default function ExecutiveSimulationDemo() {
                             key={action.id} 
                             className={`flex items-center gap-4 p-4 rounded-lg border ${
                               action.status === 'completed' ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800' :
-                              action.status === 'in_progress' ? 'bg-blue-50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-800' :
+                              action.status === 'in_progress' ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-[#0A0F2E] dark:border-[#0A0F2E]' :
                               'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700'
                             }`}
                             data-testid={`execution-action-${action.id}`}
@@ -1055,8 +1074,8 @@ export default function ExecutiveSimulationDemo() {
                             </div>
                             <div className="flex-1">
                               <p className={`font-medium ${
-                                action.status === 'completed' ? 'text-emerald-800 dark:text-green-400' :
-                                action.status === 'in_progress' ? 'text-blue-800 dark:text-blue-400' :
+                                action.status === 'completed' ? 'text-[#2B8A6E] dark:text-green-400' :
+                                action.status === 'in_progress' ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' :
                                 'text-slate-700 dark:text-slate-300'
                               }`}>
                                 {action.name}
@@ -1064,8 +1083,8 @@ export default function ExecutiveSimulationDemo() {
                               <p className="text-sm text-gray-800">{action.assignee} • {action.department}</p>
                             </div>
                             <Badge variant="outline" className={
-                              action.status === 'completed' ? 'border-green-500 text-emerald-700' :
-                              action.status === 'in_progress' ? 'border-blue-500 text-blue-800' :
+                              action.status === 'completed' ? 'border-green-500 text-[#2B8A6E]' :
+                              action.status === 'in_progress' ? 'border-[#0A0F2E] text-[#0A0F2E]' :
                               ''
                             }>
                               {action.status === 'completed' ? 'Done' : 

@@ -743,27 +743,27 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'inactive': return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
-      case 'error': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      case 'pending': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'running': return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-      case 'stopped': return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
-      case 'deprecated': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-      case 'maintenance': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+      case 'active': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      case 'inactive': return 'bg-[#6B7280]/20 text-[#6B7280] border-[#6B7280]/30';
+      case 'error': return 'bg-red-500/20 text-red-600 border-red-500/30';
+      case 'pending': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'running': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      case 'stopped': return 'bg-[#6B7280]/20 text-[#6B7280] border-[#6B7280]/30';
+      case 'deprecated': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'maintenance': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      default: return 'bg-[#6B7280]/20 text-[#6B7280] border-[#6B7280]/30';
     }
   };
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'project-tracking': return 'bg-violet-100 text-violet-700 border-violet-300';
-      case 'communication': return 'bg-pink-100 text-pink-700 border-pink-300';
-      case 'crm': return 'bg-blue-100 text-blue-700 border-blue-300';
-      case 'itsm': return 'bg-orange-100 text-orange-700 border-orange-300';
-      case 'documentation': return 'bg-teal-100 text-teal-700 border-teal-300';
-      case 'source-control': return 'bg-gray-100 text-gray-700 border-gray-300';
-      default: return 'bg-slate-100 text-gray-700 border-slate-300';
+      case 'project-tracking': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
+      case 'communication': return 'bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20';
+      case 'crm': return 'bg-[#141B45]/10 text-[#141B45] border-[#141B45]/20';
+      case 'itsm': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
+      case 'documentation': return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
+      case 'source-control': return 'bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC]';
+      default: return 'bg-[#F8F7F4] text-[#6B7280] border-[#E8E4DC]';
     }
   };
 
@@ -786,16 +786,16 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         {/* Ecosystem Connectors Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Ecosystem Connectors</h1>
-            <p className="text-gray-800">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
+            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2">Ecosystem Connectors</h1>
+            <p className="text-[#6B7280]">Connect 10-15 enterprise systems to create platform lock-in and prohibitive switching costs</p>
           </div>
           <div className="flex items-center gap-4">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+            <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
               <Activity className="w-4 h-4 mr-2" />
               System Health: {systemMetrics.systemHealth}%
             </Badge>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-6 font-bold text-[10px] tracking-widest uppercase">
               <Plus className="w-4 h-4 mr-2" />
               Add Integration
             </Button>
@@ -804,81 +804,81 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
 
         {/* System Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Integrations</h3>
-                <Globe className="h-5 w-5 text-blue-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Integrations</h3>
+                <Globe className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.totalIntegrations}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Total connected</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.totalIntegrations}</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Total connected</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Active</h3>
-                <CheckCircle className="h-5 w-5 text-emerald-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Active</h3>
+                <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.activeConnections}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Connections live</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.activeConnections}</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Connections live</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">API Calls</h3>
-                <Zap className="h-5 w-5 text-purple-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">API Calls</h3>
+                <Zap className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{formatNumber(systemMetrics.dailyApiCalls)}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Today</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{formatNumber(systemMetrics.dailyApiCalls)}</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Today</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Health</h3>
-                <Activity className="h-5 w-5 text-emerald-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Health</h3>
+                <Activity className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.systemHealth}%</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Overall status</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.systemHealth}%</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Overall status</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Data Flows</h3>
-                <Database className="h-5 w-5 text-amber-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Data Flows</h3>
+                <Database className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{systemMetrics.dataFlows}</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Active pipelines</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{systemMetrics.dataFlows}</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Active pipelines</div>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200">
+          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-gray-900">Error Rate</h3>
-                <AlertTriangle className="h-5 w-5 text-red-400" />
+                <h3 className="font-bold text-[10px] uppercase tracking-widest text-[#0A0F2E]">Error Rate</h3>
+                <AlertTriangle className="h-5 w-5 text-red-500" />
               </div>
-              <div className="text-2xl font-bold text-gray-900">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
-              <div className="text-sm text-gray-800 dark:text-slate-200">Last 24h</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{(systemMetrics.errorRate * 100).toFixed(2)}%</div>
+              <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">Last 24h</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Integration Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-gray-50 border border-gray-200">
-            <TabsTrigger value="dashboard" className="data-[state=active]:bg-gray-50">Dashboard</TabsTrigger>
-            <TabsTrigger value="integrations" className="data-[state=active]:bg-gray-50">Integrations</TabsTrigger>
-            <TabsTrigger value="apis" className="data-[state=active]:bg-gray-50">API Endpoints</TabsTrigger>
-            <TabsTrigger value="dataflows" className="data-[state=active]:bg-gray-50">Data Flows</TabsTrigger>
-            <TabsTrigger value="monitoring" className="data-[state=active]:bg-gray-50">Monitoring</TabsTrigger>
+          <TabsList className="bg-white border border-[#E8E4DC] rounded-none">
+            <TabsTrigger value="dashboard" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Dashboard</TabsTrigger>
+            <TabsTrigger value="integrations" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Integrations</TabsTrigger>
+            <TabsTrigger value="apis" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">API Endpoints</TabsTrigger>
+            <TabsTrigger value="dataflows" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Data Flows</TabsTrigger>
+            <TabsTrigger value="monitoring" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none font-bold text-[10px] uppercase tracking-widest">Monitoring</TabsTrigger>
           </TabsList>
 
           {/* Dashboard */}
@@ -886,27 +886,27 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Top Integrations */}
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5" />
+                  <CardTitle className="text-[#0A0F2E] flex items-center gap-2 font-bold text-xl uppercase tracking-widest" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <BarChart3 className="h-5 w-5 text-[#C9A84C]" />
                     Top Performing Integrations
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {integrations.slice(0, 5).map((integration) => (
-                    <div key={integration.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={integration.id} className="flex items-center justify-between p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Globe className="w-5 h-5 text-gray-900" />
+                        <div className="w-10 h-10 bg-[#0A0F2E] rounded-none flex items-center justify-center">
+                          <Globe className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <div className="font-semibold text-gray-900">{integration.name}</div>
-                          <div className="text-xs text-gray-800 dark:text-slate-200">{formatNumber(integration.dailyRequests)} requests today</div>
+                          <div className="font-bold text-[#0A0F2E] text-sm uppercase tracking-wider">{integration.name}</div>
+                          <div className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">{formatNumber(integration.dailyRequests)} requests today</div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-sm font-medium text-gray-900">{integration.health}%</div>
+                        <div className="text-sm font-bold text-[#0A0F2E] mb-1">{integration.health}%</div>
                         <Badge className={getStatusColor(integration.status)}>
                           {integration.status}
                         </Badge>
@@ -917,27 +917,27 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               </Card>
 
               {/* Recent Activity */}
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Clock className="h-5 w-5" />
+                  <CardTitle className="text-[#0A0F2E] flex items-center gap-2 font-bold text-xl uppercase tracking-widest" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <Clock className="h-5 w-5 text-[#C9A84C]" />
                     Recent API Activity
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {apiEndpoints.slice(0, 5).map((endpoint) => (
-                    <div key={endpoint.id} className="p-3 bg-gray-50 rounded-lg">
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                    <div key={endpoint.id} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 font-bold tracking-widest text-[9px] uppercase">
                           {endpoint.method}
                         </Badge>
-                        <span className="text-xs text-gray-800 dark:text-slate-200">
+                        <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-widest">
                           {new Date(endpoint.lastCalled).toLocaleTimeString()}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-gray-900 text-sm mb-1">{endpoint.name}</h4>
-                      <p className="text-gray-800 text-xs mb-2">{endpoint.path}</p>
-                      <div className="flex justify-between text-xs text-gray-800">
+                      <h4 className="font-bold text-[#0A0F2E] text-sm mb-1 uppercase tracking-wider">{endpoint.name}</h4>
+                      <p className="text-[#6B7280] text-[10px] mb-3 font-mono">{endpoint.path}</p>
+                      <div className="flex justify-between text-[9px] font-bold text-[#6B7280] uppercase tracking-widest">
                         <span>{formatNumber(endpoint.requests24h)} calls</span>
                         <span>{endpoint.averageResponse}ms avg</span>
                         <span>{endpoint.successRate}% success</span>
@@ -953,21 +953,21 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <TabsContent value="integrations" className="space-y-6">
             
             {/* Filters */}
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-gray-200">
+            <div className="flex items-center gap-4 bg-white p-4 rounded-none border border-[#E8E4DC]">
               <div className="flex-1 page-background relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-800 dark:text-slate-200" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
                 <Input
                   placeholder="Search integrations..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-50 border-slate-600 text-gray-900"
+                  className="pl-10 bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E] rounded-none focus-visible:ring-[#C9A84C]"
                 />
               </div>
               <Select value={filterCategory} onValueChange={setFilterCategory}>
-                <SelectTrigger className="w-48 bg-gray-50 border-slate-600 text-gray-900">
+                <SelectTrigger className="w-48 bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E] rounded-none focus:ring-[#C9A84C]">
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="rounded-none border-[#E8E4DC]">
                   <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="project-tracking">Project / Issue Tracking</SelectItem>
                   <SelectItem value="communication">Communication</SelectItem>
@@ -984,12 +984,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                   {filteredIntegrations.map((integration) => {
                     const isConnected = integration.status === 'active';
                     return (
-                      <Card key={integration.id} className="bg-white border-gray-200 hover:bg-slate-800/50 transition-all duration-300">
+                      <Card key={integration.id} className="bg-white border-[#E8E4DC] rounded-none hover:shadow-md transition-all duration-300">
                         <CardHeader>
-                          <div className="flex items-center justify-between">
-                            <CardTitle className="text-gray-900 flex items-center gap-3">
-                              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                                <Globe className="w-5 h-5 text-gray-900" />
+                          <div className="flex items-center justify-between mb-4">
+                            <CardTitle className="text-[#0A0F2E] flex items-center gap-3 font-bold uppercase tracking-wider text-sm">
+                              <div className="w-10 h-10 bg-[#0A0F2E] rounded-none flex items-center justify-center">
+                                <Globe className="w-5 h-5 text-white" />
                               </div>
                               {integration.name}
                             </CardTitle>
@@ -1002,41 +1002,41 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                               </Badge>
                             </div>
                           </div>
-                          <p className="text-gray-800 dark:text-slate-200 text-sm">{integration.description}</p>
+                          <p className="text-[#6B7280] text-xs leading-relaxed">{integration.description}</p>
                         </CardHeader>
                         <CardContent className="space-y-4">
                           
                           {/* Metrics */}
-                          <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div className="grid grid-cols-2 gap-4 text-[10px] uppercase font-bold tracking-widest">
                             <div>
-                              <div className="text-gray-800 dark:text-slate-200">Health</div>
-                              <div className="text-gray-900 font-medium">{integration.health}%</div>
+                              <div className="text-[#6B7280]">Health</div>
+                              <div className="text-[#0A0F2E]">{integration.health}%</div>
                             </div>
                             <div>
-                              <div className="text-gray-800 dark:text-slate-200">Response Time</div>
-                              <div className="text-gray-900 font-medium">{integration.responseTime}ms</div>
+                              <div className="text-[#6B7280]">Response</div>
+                              <div className="text-[#0A0F2E]">{integration.responseTime}ms</div>
                             </div>
                             <div>
-                              <div className="text-gray-800 dark:text-slate-200">Daily Requests</div>
-                              <div className="text-gray-900 font-medium">{formatNumber(integration.dailyRequests)}</div>
+                              <div className="text-[#6B7280]">Daily Req</div>
+                              <div className="text-[#0A0F2E]">{formatNumber(integration.dailyRequests)}</div>
                             </div>
                             <div>
-                              <div className="text-gray-800 dark:text-slate-200">Error Rate</div>
-                              <div className="text-gray-900 font-medium">{(integration.errorRate * 100).toFixed(2)}%</div>
+                              <div className="text-[#6B7280]">Error Rate</div>
+                              <div className="text-[#0A0F2E]">{(integration.errorRate * 100).toFixed(2)}%</div>
                             </div>
                           </div>
 
                           {/* Features */}
                           <div>
-                            <div className="text-sm font-semibold text-gray-900 mb-2">Features</div>
+                            <div className="text-[10px] font-bold text-[#0A0F2E] mb-2 uppercase tracking-widest">Features</div>
                             <div className="flex flex-wrap gap-2">
                               {integration.features.slice(0, 3).map((feature, index) => (
-                                <Badge key={index} variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
+                                <Badge key={index} variant="outline" className="bg-transparent border-[#E8E4DC] text-[#6B7280] text-[9px] font-bold uppercase tracking-widest">
                                   {feature}
                                 </Badge>
                               ))}
                               {integration.features.length > 3 && (
-                                <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800 text-xs">
+                                <Badge variant="outline" className="bg-transparent border-[#E8E4DC] text-[#6B7280] text-[9px] font-bold uppercase tracking-widest">
                                   +{integration.features.length - 3} more
                                 </Badge>
                               )}
@@ -1046,30 +1046,30 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                           <div className="flex gap-2">
                             {isConnected ? (
                               <>
-                                <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                                <Button size="sm" className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none font-bold text-[9px] uppercase tracking-widest">
                                   <Settings className="w-4 h-4 mr-2" />
                                   Configure
                                 </Button>
-                                <Button size="sm" variant="destructive" onClick={() => handleDisconnect(integration.id)}>
+                                <Button size="sm" variant="destructive" className="rounded-none font-bold text-[9px] uppercase tracking-widest" onClick={() => handleDisconnect(integration.id)}>
                                   <Trash2 className="w-4 h-4 mr-2" />
                                   Disconnect
                                 </Button>
                               </>
                             ) : integration.comingSoon ? (
-                              <Button size="sm" disabled className="flex-1 bg-gray-100 text-gray-500 border border-gray-300 cursor-not-allowed">
+                              <Button size="sm" disabled className="flex-1 bg-[#F8F7F4] text-[#6B7280] border border-[#E8E4DC] rounded-none font-bold text-[9px] uppercase tracking-widest">
                                 Coming Soon
                               </Button>
                             ) : (
                               <Button 
                                 size="sm" 
-                                className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+                                className="flex-1 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] rounded-none font-bold text-[9px] uppercase tracking-widest"
                                 onClick={() => handleConnect(integration.provider.toLowerCase().includes('slack') ? 'slack' : 'jira')}
                               >
                                 <Plus className="w-4 h-4 mr-2" />
                                 Connect
                               </Button>
                             )}
-                            <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-slate-700">
+                            <Button size="sm" variant="outline" className="bg-transparent border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                               <Monitor className="w-4 h-4" />
                             </Button>
                           </div>
@@ -1107,7 +1107,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                            <Badge className="bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30">
                               {endpoint.method}
                             </Badge>
                           </td>
@@ -1118,7 +1118,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                             {formatNumber(endpoint.requests24h)}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <span className={`${endpoint.successRate >= 99 ? 'text-emerald-400' : endpoint.successRate >= 95 ? 'text-amber-400' : 'text-red-400'}`}>
+                            <span className={`${endpoint.successRate >= 99 ? 'text-[#2B8A6E]' : endpoint.successRate >= 95 ? 'text-amber-400' : 'text-red-400'}`}>
                               {endpoint.successRate}%
                             </span>
                           </td>
@@ -1158,12 +1158,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                         </div>
                         <div className="flex items-center gap-4 text-sm text-gray-800">
                           <div className="flex items-center gap-2">
-                            <Database className="w-4 h-4 text-blue-400" />
+                            <Database className="w-4 h-4 text-[#0A0F2E]" />
                             {flow.source}
                           </div>
                           <div>→</div>
                           <div className="flex items-center gap-2">
-                            <Database className="w-4 h-4 text-emerald-400" />
+                            <Database className="w-4 h-4 text-[#2B8A6E]" />
                             {flow.destination}
                           </div>
                         </div>
@@ -1185,7 +1185,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                       </div>
                       <div>
                         <div className="text-sm text-gray-800 dark:text-slate-200">Error Count</div>
-                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-[#2B8A6E]' : 'text-red-400'}`}>
                           {flow.errorCount}
                         </div>
                       </div>
@@ -1196,7 +1196,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                     </div>
                     
                     <div className="mt-4 flex gap-3">
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                      <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
                         <Monitor className="w-4 h-4 mr-2" />
                         Monitor
                       </Button>
@@ -1221,7 +1221,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Uptime</h3>
-                    <Activity className="h-5 w-5 text-emerald-400" />
+                    <Activity className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">99.9%</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Last 30 days</div>
@@ -1232,7 +1232,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Throughput</h3>
-                    <Zap className="h-5 w-5 text-blue-400" />
+                    <Zap className="h-5 w-5 text-[#0A0F2E]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">1.2K/s</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">Requests per second</div>
@@ -1243,7 +1243,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold text-gray-900">Latency</h3>
-                    <Clock className="h-5 w-5 text-purple-400" />
+                    <Clock className="h-5 w-5 text-[#C9A84C]" />
                   </div>
                   <div className="text-2xl font-bold text-gray-900 mb-2">234ms</div>
                   <div className="text-sm text-gray-800 dark:text-slate-200">P95 response time</div>

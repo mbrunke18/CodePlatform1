@@ -33,14 +33,14 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       value: "5 AI", 
       label: "Intelligence Modules",
       comparison: "Pulse, Flux, Prism, Echo, Nova",
-      color: "text-blue-400"
+      color: "text-[#0A0F2E]"
     },
     { 
       icon: CheckCircle, 
       value: "13", 
       label: "Strategic Scenarios",
       comparison: "Pre-built playbook templates",
-      color: "text-purple-400"
+      color: "text-[#C9A84C]"
     },
     { 
       icon: Zap, 
@@ -72,7 +72,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-xl flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0A0F2E] to-teal-600 rounded-xl flex items-center justify-center">
                 <Rocket className="h-8 w-8 text-gray-900" />
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           {/* What You'll See */}
           <div className="space-y-3">
             <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-              <Target className="h-6 w-6 text-blue-400" />
+              <Target className="h-6 w-6 text-[#0A0F2E]" />
               What You'll Experience
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -115,9 +115,9 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Early Access Program */}
-          <div className="bg-gradient-to-r   rounded-lg p-6 border border-purple-500/30">
+          <div className="bg-gradient-to-r   rounded-lg p-6 border border-[#C9A84C]/30">
             <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-              <Building2 className="h-5 w-5 text-purple-400" />
+              <Building2 className="h-5 w-5 text-[#C9A84C]" />
               Built for Fortune 1000 Strategic Execution
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -181,7 +181,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
             </Button>
             <Button 
               onClick={onStartDemo}
-              className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-gray-900 font-semibold px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-gray-900 font-semibold px-8 py-6 text-lg"
               data-testid="welcome-start-demo-btn"
             >
               <Rocket className="h-5 w-5 mr-2" />

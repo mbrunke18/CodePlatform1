@@ -35,10 +35,10 @@ import {
 type Phase = 'identify' | 'detect' | 'execute' | 'advance';
 
 const PHASES = [
-  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'violet' },
-  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'blue' },
-  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'emerald' },
-  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'amber' },
+  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: '#C9A84C' },
+  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: '#DFC178' },
+  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: '#2B8A6E' },
+  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: '#DFC178' },
 ];
 
 export default function DealRiskDemo() {
@@ -150,31 +150,31 @@ export default function DealRiskDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: "#0A0F2E" }}>
       <StandardNav />
       
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <main className="max-w-7xl mx-auto px-6 py-12 text-white">
         <div className="text-center mb-10">
-          <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
+          <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]">
             Interactive Demo
           </Badge>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Deal Risk Response Demo
           </h1>
-          <p className="text-xl text-gray-800 dark:text-slate-200 max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and orchestrates a coordinated response in 12 minutes.
           </p>
           <Button 
             variant="outline" 
             onClick={() => resetMutation.mutate()}
-            className="mt-4 border-slate-600 text-gray-800 hover:bg-slate-800"
+            className="mt-4 border-white/20 text-white hover:bg-white/10"
           >
             <RefreshCw className="h-4 w-4 mr-2" />
             Reset Demo
           </Button>
         </div>
 
-        <div className="flex items-center justify-between mb-8 bg-white rounded-xl p-4 border border-gray-200">
+        <div className="flex items-center justify-between mb-8 bg-white/5 rounded-xl p-4 border border-white/10">
           {PHASES.map((phase, index) => {
             const isCompleted = completedPhases.includes(phase.id);
             const isCurrent = currentPhase === phase.id;
@@ -188,77 +188,77 @@ export default function DealRiskDemo() {
                     isCurrent 
                       ? 'bg-white/10 border border-white/20' 
                       : isCompleted 
-                        ? 'bg-emerald-500/10 border border-emerald-500/30 cursor-pointer hover:bg-emerald-500/20' 
+                        ? 'bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 cursor-pointer hover:bg-[#2B8A6E]/20' 
                         : 'opacity-50'
                   }`}
                 >
                   <div className={`p-2 rounded-lg ${
-                    isCurrent ? `bg-${phase.color}-500` : isCompleted ? 'bg-emerald-500' : 'bg-gray-50'
-                  }`}>
+                    isCurrent ? `bg-[${phase.color}]` : isCompleted ? 'bg-[#2B8A6E]' : 'bg-white/5'
+                  }`} style={{ backgroundColor: isCurrent ? phase.color : undefined }}>
                     {isCompleted ? (
-                      <CheckCircle2 className="h-5 w-5 text-gray-900" />
+                      <CheckCircle2 className="h-5 w-5 text-[#0A0F2E]" />
                     ) : (
-                      <Icon className="h-5 w-5 text-gray-900" />
+                      <Icon className="h-5 w-5 text-[#0A0F2E]" />
                     )}
                   </div>
                   <div className="text-left">
-                    <div className="text-xs text-gray-800 dark:text-slate-200">Phase {index + 1}</div>
-                    <div className={`font-semibold ${isCurrent ? 'text-gray-900' : 'text-gray-800 dark:text-slate-200'}`}>
+                    <div className="text-xs text-white/40">Phase {index + 1}</div>
+                    <div className={`font-semibold ${isCurrent ? 'text-white' : 'text-white/60'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {phase.name}
                     </div>
                   </div>
                 </button>
                 {index < PHASES.length - 1 && (
-                  <ChevronRight className="h-5 w-5 text-gray-800 mx-2" />
+                  <ChevronRight className="h-5 w-5 text-white/20 mx-2" />
                 )}
               </div>
             );
           })}
         </div>
 
-        <Progress value={getPhaseProgress()} className="mb-8 h-2" />
+        <Progress value={getPhaseProgress()} className="mb-8 h-2 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             {currentPhase === 'identify' && (
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white/5 border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <BookOpen className="h-5 w-5 text-violet-400" />
+                  <CardTitle className="text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <BookOpen className="h-5 w-5 text-[#C9A84C]" />
                     IDENTIFY Phase
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-white/60">
                     Connect your systems and select a playbook
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-900">Salesforce</span>
+                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                      <span className="text-white">Salesforce</span>
                       {integrations.salesforce ? (
-                        <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
+                        <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
                       ) : (
-                        <Button size="sm" onClick={() => connectSalesforceMutation.mutate()}>
+                        <Button size="sm" onClick={() => connectSalesforceMutation.mutate()} className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178]">
                           Connect
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-900">Slack</span>
+                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                      <span className="text-white">Slack</span>
                       {integrations.slack ? (
-                        <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
+                        <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
                       ) : (
-                        <Button size="sm" onClick={() => connectSlackMutation.mutate()}>
+                        <Button size="sm" onClick={() => connectSlackMutation.mutate()} className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178]">
                           Connect
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-900">Jira</span>
+                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                      <span className="text-white">Jira</span>
                       {integrations.jira ? (
-                        <Badge className="bg-emerald-500/20 text-emerald-400">Connected</Badge>
+                        <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
                       ) : (
-                        <Button size="sm" onClick={() => connectJiraMutation.mutate()}>
+                        <Button size="sm" onClick={() => connectJiraMutation.mutate()} className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178]">
                           Connect
                         </Button>
                       )}
@@ -267,7 +267,7 @@ export default function DealRiskDemo() {
 
                   {allIntegrationsConnected && !typedStatus?.playbook && (
                     <Button 
-                      className="w-full bg-violet-600 hover:bg-violet-700"
+                      className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                       onClick={() => selectPlaybookMutation.mutate()}
                     >
                       Select Deal Risk Response Playbook
@@ -276,12 +276,12 @@ export default function DealRiskDemo() {
                   )}
 
                   {typedStatus?.playbook && (
-                    <div className="p-4 bg-violet-500/10 border border-violet-500/30 rounded-lg">
-                      <div className="flex items-center gap-2 text-violet-400 mb-2">
+                    <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                      <div className="flex items-center gap-2 text-[#2B8A6E] mb-2">
                         <CheckCircle2 className="h-5 w-5" />
                         <span className="font-medium">Playbook Configured</span>
                       </div>
-                      <p className="text-sm text-gray-800 dark:text-slate-200">
+                      <p className="text-sm text-white/80">
                         {typedStatus.playbook.name} with {typedStatus.playbook.triggers.length} trigger conditions
                       </p>
                     </div>
@@ -291,20 +291,20 @@ export default function DealRiskDemo() {
             )}
 
             {currentPhase === 'detect' && (
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white/5 border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Radar className="h-5 w-5 text-blue-400" />
+                  <CardTitle className="text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <Radar className="h-5 w-5 text-[#DFC178]" />
                     DETECT Phase
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-white/60">
                     Monitor deals for risk signals
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {!typedStatus?.monitoring && (
                     <Button 
-                      className="w-full bg-blue-600 hover:bg-blue-700"
+                      className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                       onClick={() => startMonitoringMutation.mutate()}
                     >
                       <Play className="mr-2 h-4 w-4" />
@@ -314,22 +314,22 @@ export default function DealRiskDemo() {
 
                   {typedStatus?.monitoring && typedPipeline?.deals && (
                     <div className="space-y-3">
-                      <p className="text-sm text-emerald-400 flex items-center gap-2">
-                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                      <p className="text-sm text-[#2B8A6E] flex items-center gap-2">
+                        <span className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
                         Monitoring {typedPipeline.deals.length} deals...
                       </p>
                       {typedPipeline.deals.filter((d: any) => d.riskScore > 60).map((deal: any) => (
                         <div 
                           key={deal.id}
-                          className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg"
+                          className="p-4 bg-red-900/20 border border-red-500 rounded-lg"
                         >
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-gray-900 font-medium">{deal.dealName}</span>
+                            <span className="text-white font-medium">{deal.dealName}</span>
                             <Badge className="bg-red-500/20 text-red-400">
                               {deal.riskScore}% Risk
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-200 mb-3">
+                          <div className="flex items-center gap-4 text-sm text-white/60 mb-3">
                             <span className="flex items-center gap-1">
                               <DollarSign className="h-4 w-4" />
                               ${(deal.amount / 1000000).toFixed(1)}M
@@ -337,7 +337,7 @@ export default function DealRiskDemo() {
                             <span>{deal.triggers.length} triggers</span>
                           </div>
                           <Button 
-                            className="w-full bg-red-600 hover:bg-red-700"
+                            className="w-full bg-red-600 hover:bg-red-700 font-bold"
                             onClick={() => executeTriggerMutation.mutate(deal.id)}
                           >
                             <AlertTriangle className="mr-2 h-4 w-4" />
@@ -352,13 +352,13 @@ export default function DealRiskDemo() {
             )}
 
             {currentPhase === 'execute' && (
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white/5 border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Radio className="h-5 w-5 text-emerald-400" />
+                  <CardTitle className="text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <Radio className="h-5 w-5 text-[#2B8A6E]" />
                     EXECUTE Phase
                   </CardTitle>
-                  <CardDescription>
+                  <CardDescription className="text-white/60">
                     Coordinated response in progress
                   </CardDescription>
                 </CardHeader>
@@ -373,24 +373,24 @@ export default function DealRiskDemo() {
 
             {currentPhase === 'advance' && (
               <div className="space-y-6">
-                <Card className="bg-white border-gray-200">
+                <Card className="bg-white/5 border-white/10">
                   <CardHeader>
-                    <CardTitle className="text-gray-900 flex items-center gap-2">
-                      <BarChart3 className="h-5 w-5 text-amber-400" />
+                    <CardTitle className="text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                      <BarChart3 className="h-5 w-5 text-[#DFC178]" />
                       ADVANCE Phase
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-white/60">
                       Capture learnings and strengthen your playbook
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {!completedPhases.includes('advance') ? (
                       <div className="space-y-4">
-                        <p className="text-gray-800 dark:text-slate-200">
+                        <p className="text-white/80">
                           Execution OS captures institutional knowledge from every execution, so your organization gets smarter with each response.
                         </p>
                         <Button 
-                          className="w-full bg-amber-600 hover:bg-amber-700"
+                          className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                           onClick={() => advanceCompleteMutation.mutate()}
                           disabled={advanceCompleteMutation.isPending}
                         >
@@ -410,33 +410,33 @@ export default function DealRiskDemo() {
                     ) : learnings ? (
                       <div className="space-y-6">
                         {/* Success Banner */}
-                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-                          <div className="flex items-center gap-2 text-emerald-400 mb-1">
+                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                          <div className="flex items-center gap-2 text-[#2B8A6E] mb-1">
                             <CheckCircle2 className="h-5 w-5" />
                             <span className="font-medium">Execution Complete - Learnings Captured</span>
                           </div>
-                          <p className="text-sm text-gray-800 dark:text-slate-200">
+                          <p className="text-sm text-white/80">
                             {learnings.dealContext?.dealName} - ${((learnings.dealContext?.dealAmount || 0) / 1000000).toFixed(1)}M protected
                           </p>
                         </div>
 
                         {/* What Worked Well */}
                         <div>
-                          <h4 className="text-sm font-medium text-emerald-400 mb-3 flex items-center gap-2">
+                          <h4 className="text-sm font-medium text-[#2B8A6E] mb-3 flex items-center gap-2">
                             <TrendingUp className="h-4 w-4" />
                             What Worked Well
                           </h4>
                           <div className="space-y-2">
                             {learnings.successPatterns?.map((pattern: any, i: number) => (
-                              <div key={i} className="p-3 bg-gray-50 rounded-lg border-l-2 border-emerald-500">
+                              <div key={i} className="p-3 bg-white/5 rounded-lg border-l-2 border-[#2B8A6E]">
                                 <div className="flex items-center gap-2 mb-1">
-                                  {pattern.icon === 'radar' && <Radar className="h-4 w-4 text-emerald-400" />}
-                                  {pattern.icon === 'users' && <Users className="h-4 w-4 text-emerald-400" />}
-                                  {pattern.icon === 'zap' && <Zap className="h-4 w-4 text-emerald-400" />}
-                                  <span className="text-gray-900 text-sm font-medium">{pattern.category}</span>
+                                  {pattern.icon === 'radar' && <Radar className="h-4 w-4 text-[#2B8A6E]" />}
+                                  {pattern.icon === 'users' && <Users className="h-4 w-4 text-[#2B8A6E]" />}
+                                  {pattern.icon === 'zap' && <Zap className="h-4 w-4 text-[#2B8A6E]" />}
+                                  <span className="text-white text-sm font-medium">{pattern.category}</span>
                                 </div>
-                                <p className="text-sm text-gray-800">{pattern.insight}</p>
-                                <p className="text-xs text-gray-800 mt-1">{pattern.impact}</p>
+                                <p className="text-sm text-white/80">{pattern.insight}</p>
+                                <p className="text-xs text-white/40 mt-1">{pattern.impact}</p>
                               </div>
                             ))}
                           </div>
@@ -444,21 +444,21 @@ export default function DealRiskDemo() {
 
                         {/* Playbook Improvements */}
                         <div>
-                          <h4 className="text-sm font-medium text-amber-400 mb-3 flex items-center gap-2">
+                          <h4 className="text-sm font-medium text-[#DFC178] mb-3 flex items-center gap-2">
                             <Lightbulb className="h-4 w-4" />
                             Recommended Playbook Improvements
                           </h4>
                           <div className="space-y-2">
                             {learnings.playbookImprovements?.map((improvement: any, i: number) => (
-                              <div key={i} className="p-3 bg-gray-50 rounded-lg">
+                              <div key={i} className="p-3 bg-white/5 rounded-lg">
                                 <div className="flex items-center justify-between mb-1">
-                                  <span className="text-gray-900 text-sm font-medium">{improvement.title}</span>
-                                  <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-amber-500/20 text-amber-400'}>
+                                  <span className="text-white text-sm font-medium">{improvement.title}</span>
+                                  <Badge className={improvement.priority === 'high' ? 'bg-red-500/20 text-red-400' : 'bg-[#DFC178]/20 text-[#DFC178]'}>
                                     {improvement.priority}
                                   </Badge>
                                 </div>
-                                <p className="text-sm text-gray-800 dark:text-slate-200">{improvement.description}</p>
-                                <p className="text-xs text-emerald-400 mt-2 flex items-center gap-1">
+                                <p className="text-sm text-white/80">{improvement.description}</p>
+                                <p className="text-xs text-[#2B8A6E] mt-2 flex items-center gap-1">
                                   <ArrowUpRight className="h-3 w-3" />
                                   {improvement.estimatedImpact}
                                 </p>
@@ -470,21 +470,21 @@ export default function DealRiskDemo() {
                         {/* Institutional Knowledge */}
                         {learnings.institutionalKnowledge?.length > 0 && (
                           <div>
-                            <h4 className="text-sm font-medium text-purple-400 mb-3 flex items-center gap-2">
+                            <h4 className="text-sm font-medium text-[#C9A84C] mb-3 flex items-center gap-2">
                               <Brain className="h-4 w-4" />
                               Institutional Knowledge Captured
                             </h4>
                             {learnings.institutionalKnowledge.map((knowledge: any, i: number) => (
-                              <div key={i} className="p-3 bg-purple-500/10 border border-purple-500/30 rounded-lg">
-                                <div className="text-gray-900 text-sm font-medium mb-2">{knowledge.pattern}</div>
+                              <div key={i} className="p-3 bg-white/5 border border-white/10 rounded-lg">
+                                <div className="text-white text-sm font-medium mb-2">{knowledge.pattern}</div>
                                 <div className="grid grid-cols-2 gap-3 text-xs">
                                   <div>
-                                    <span className="text-gray-800">Frequency:</span>
-                                    <p className="text-gray-800">{knowledge.frequency}</p>
+                                    <span className="text-white/40">Frequency:</span>
+                                    <p className="text-white/80">{knowledge.frequency}</p>
                                   </div>
                                   <div>
-                                    <span className="text-gray-800">Best Response:</span>
-                                    <p className="text-emerald-400">{knowledge.bestResponse}</p>
+                                    <span className="text-white/40">Best Response:</span>
+                                    <p className="text-[#2B8A6E]">{knowledge.bestResponse}</p>
                                   </div>
                                 </div>
                               </div>
@@ -493,54 +493,34 @@ export default function DealRiskDemo() {
                         )}
 
                         {/* ROI Summary */}
-                        <div className="p-4 bg-gradient-to-r from-amber-500/10 to-emerald-500/10 rounded-lg border border-amber-500/30">
-                          <h4 className="text-sm font-medium text-gray-900 mb-3 flex items-center gap-2">
-                            <Shield className="h-4 w-4 text-amber-400" />
+                        <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                          <h4 className="text-sm font-medium text-white mb-3 flex items-center gap-2">
+                            <Shield className="h-4 w-4 text-[#DFC178]" />
                             Execution ROI
                           </h4>
                           <div className="grid grid-cols-3 gap-3">
                             <div className="text-center">
-                              <div className="text-xl font-bold text-emerald-400">
+                              <div className="text-xl font-bold text-[#2B8A6E]">
                                 ${((learnings.metrics?.dealValueProtected || 0) / 1000000).toFixed(1)}M
                               </div>
-                              <p className="text-xs text-gray-800 dark:text-slate-200">Deal Protected</p>
+                              <p className="text-xs text-white/40">Deal Protected</p>
                             </div>
                             <div className="text-center">
-                              <div className="text-xl font-bold text-amber-400">
+                              <div className="text-xl font-bold text-[#DFC178]">
                                 {learnings.metrics?.hoursRecovered || 20}h
                               </div>
-                              <p className="text-xs text-gray-800 dark:text-slate-200">Hours Recovered</p>
+                              <p className="text-xs text-white/40">Hours Recovered</p>
                             </div>
                             <div className="text-center">
-                              <div className="text-xl font-bold text-blue-400">
-                                ${((learnings.metrics?.costOfDelay || 0) / 1000).toFixed(0)}K
+                              <div className="text-xl font-bold text-[#C9A84C]">
+                                {learnings.metrics?.responseAcceleration || '85'}%
                               </div>
-                              <p className="text-xs text-gray-800 dark:text-slate-200">Erosion Avoided</p>
+                              <p className="text-xs text-white/40">Acceleration</p>
                             </div>
                           </div>
                         </div>
-
-                        {/* Next Steps */}
-                        <div>
-                          <h4 className="text-sm font-medium text-blue-400 mb-3 flex items-center gap-2">
-                            <Target className="h-4 w-4" />
-                            Next Steps
-                          </h4>
-                          <div className="space-y-2">
-                            {learnings.nextExecutionRecommendations?.map((rec: string, i: number) => (
-                              <div key={i} className="flex items-center gap-2 text-sm text-gray-800">
-                                <ChevronRight className="h-4 w-4 text-blue-400" />
-                                {rec}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
                       </div>
-                    ) : (
-                      <div className="text-center text-gray-800 dark:text-slate-200 py-8">
-                        Loading learnings...
-                      </div>
-                    )}
+                    ) : null}
                   </CardContent>
                 </Card>
               </div>
@@ -548,75 +528,97 @@ export default function DealRiskDemo() {
           </div>
 
           <div className="space-y-6">
-            {typedPipeline && (
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">Pipeline Overview</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-gray-50 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-gray-900">
-                        {typedPipeline.summary?.totalDeals || 5}
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-200">Total Deals</p>
+            <Card className="bg-white/5 border-white/10">
+              <CardHeader>
+                <CardTitle className="text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Real-time Intelligence</CardTitle>
+                <CardDescription className="text-white/60">Global monitoring of deal health and risk signals</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                      {typedPipeline?.summary?.totalDeals || 42}
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-emerald-400">
-                        ${((typedPipeline.summary?.totalPipeline || 23900000) / 1000000).toFixed(1)}M
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-200">Pipeline Value</p>
-                    </div>
-                    <div className="p-4 bg-gray-50 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-red-400">
-                        {typedPipeline.deals?.filter((d: any) => d.riskScore > 60).length || 1}
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-200">At Risk</p>
-                    </div>
-                    <div className="p-4 bg-gray-50 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-amber-400">
-                        ${((typedPipeline.summary?.atRiskValue || 5000000) / 1000000).toFixed(1)}M
-                      </div>
-                      <p className="text-xs text-gray-800 dark:text-slate-200">At Risk Value</p>
-                    </div>
+                    <p className="text-xs text-white/40">Active Deals</p>
                   </div>
-                </CardContent>
-              </Card>
-            )}
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                      ${((typedPipeline?.summary?.totalPipeline || 12000000) / 1000000).toFixed(1)}M
+                    </div>
+                    <p className="text-xs text-white/40">Total Pipeline</p>
+                  </div>
+                </div>
 
-            {execution && (
-              <Card className="bg-white border-gray-200">
-                <CardHeader>
-                  <CardTitle className="text-gray-900">ROI Summary</CardTitle>
-                </CardHeader>
-                <CardContent>
+                {typedPipeline?.deals && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-emerald-500/10 rounded-lg">
-                      <span className="text-gray-800 dark:text-slate-200">Time Saved</span>
-                      <span className="text-emerald-400 font-bold">168 minutes</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-blue-500/10 rounded-lg">
-                      <span className="text-gray-800 dark:text-slate-200">Tasks Automated</span>
-                      <span className="text-blue-400 font-bold">4 tasks</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-purple-500/10 rounded-lg">
-                      <span className="text-gray-800 dark:text-slate-200">Stakeholders Notified</span>
-                      <span className="text-purple-400 font-bold">6 people</span>
-                    </div>
-                    <div className="flex items-center justify-between p-3 bg-amber-500/10 rounded-lg">
-                      <span className="text-gray-800 dark:text-slate-200">Deal Value Protected</span>
-                      <span className="text-amber-400 font-bold">
-                        ${(execution.amount / 1000000).toFixed(1)}M
-                      </span>
+                    <h4 className="text-sm font-medium text-white/60 flex items-center gap-2">
+                      <Target className="h-4 w-4" />
+                      Deal Heat Map
+                    </h4>
+                    <div className="space-y-2">
+                      {typedPipeline.deals.slice(0, 5).map((deal: any) => (
+                        <div key={deal.id} className="space-y-1">
+                          <div className="flex justify-between text-xs">
+                            <span className="text-white/80">{deal.dealName}</span>
+                            <span className={deal.riskScore > 40 ? 'text-red-400' : 'text-[#2B8A6E]'}>
+                              {deal.riskScore}%
+                            </span>
+                          </div>
+                          <Progress value={deal.riskScore} className="h-1 bg-white/5" indicatorClassName={deal.riskScore > 40 ? 'bg-red-500' : 'bg-[#2B8A6E]'} />
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            )}
+                )}
+              </CardContent>
+            </Card>
+
+            <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2">
+              <CardHeader>
+                <CardTitle className="text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>IDEA Framework Implementation</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                    <BookOpen className="h-5 w-5 text-[#C9A84C]" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-medium text-white">Identify</h5>
+                    <p className="text-xs text-white/60">Connect Salesforce and Slack to map your institutional deal knowledge.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                    <Radar className="h-5 w-5 text-[#DFC178]" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-medium text-white">Detect</h5>
+                    <p className="text-xs text-white/60">AI monitors communication and CRM signals for hidden risk patterns.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                    <Radio className="h-5 w-5 text-[#2B8A6E]" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-medium text-white">Execute</h5>
+                    <p className="text-xs text-white/60">Orchestrate the CEO, VP Sales, and Legal for a 12-minute risk response.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                    <BarChart3 className="h-5 w-5 text-[#DFC178]" />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-medium text-white">Advance</h5>
+                    <p className="text-xs text-white/60">Capture learnings to strengthen your response for the next deal.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

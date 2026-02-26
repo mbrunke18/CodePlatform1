@@ -182,11 +182,11 @@ export default function OneClickDemo() {
 
   const getTaskIcon = (type: Task['type']) => {
     switch (type) {
-      case 'ai': return <Bot className="h-4 w-4 text-blue-400" />;
+      case 'ai': return <Bot className="h-4 w-4 text-[#0A0F2E]" />;
       case 'approval': return <CheckCircle2 className="h-4 w-4 text-green-400" />;
       case 'blocker': return <AlertCircle className="h-4 w-4 text-red-400" />;
       case 'resolved': return <Zap className="h-4 w-4 text-amber-400" />;
-      case 'complete': return <Shield className="h-4 w-4 text-emerald-400" />;
+      case 'complete': return <Shield className="h-4 w-4 text-[#2B8A6E]" />;
       default: return <FileText className="h-4 w-4 text-gray-800" />;
     }
   };
@@ -249,7 +249,7 @@ export default function OneClickDemo() {
             <Button 
               size="lg" 
               onClick={startDemo}
-              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-gray-900 px-12 py-6 text-xl rounded-xl shadow-2xl shadow-blue-500/30 transition-all hover:scale-105"
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-12 py-6 text-xl rounded-xl shadow-2xl shadow-[#0A0F2E]/30 transition-all hover:scale-105"
               data-testid="button-start-demo"
             >
               <Play className="h-6 w-6 mr-3" />
@@ -273,19 +273,19 @@ export default function OneClickDemo() {
       {showConfetti && <Confetti recycle={false} numberOfPieces={500} />}
       
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="bg-white border-b border-[#E8E4DC] sticky top-0 z-10">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Badge className={`${demoState === 'complete' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse'}`}>
+              <Badge className={`${demoState === 'complete' ? 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30' : 'bg-red-500/20 text-red-400 border-red-500/30 animate-pulse'}`}>
                 {demoState === 'complete' ? 'CONTAINED' : 'ACTIVE INCIDENT'}
               </Badge>
-              <span className="text-gray-900 font-semibold">{DEMO_SCENARIO.name}</span>
+              <span className="text-[#0A0F2E] font-semibold">{DEMO_SCENARIO.name}</span>
             </div>
             
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-3xl font-mono font-bold text-gray-900">{formatDisplayTime(displayTime)}</div>
+                <div className="text-3xl font-mono font-bold text-[#C9A84C]">{formatDisplayTime(displayTime)}</div>
                 <div className="text-xs text-gray-800">Elapsed Time</div>
               </div>
               
@@ -374,7 +374,7 @@ export default function OneClickDemo() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <Users className="h-5 w-5 text-blue-400" />
+                    <Users className="h-5 w-5 text-[#0A0F2E]" />
                     Stakeholder Status
                   </h3>
                   <Badge variant="outline" className="text-green-400">
@@ -419,13 +419,13 @@ export default function OneClickDemo() {
             <Card className="bg-white border-gray-200">
               <CardContent className="p-4 space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-emerald-400" />
+                  <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
                   Live Metrics
                 </h3>
                 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-blue-400">{completedTasks}</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E]">{completedTasks}</div>
                     <div className="text-xs text-gray-800">Tasks Complete</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
@@ -437,7 +437,7 @@ export default function OneClickDemo() {
                     <div className="text-xs text-gray-800">Budget Released</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-purple-400">2.4M</div>
+                    <div className="text-2xl font-bold text-[#C9A84C]">2.4M</div>
                     <div className="text-xs text-gray-800">Customers Notified</div>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function OneClickDemo() {
                   <div className="text-sm text-gray-800">Faster Response</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-blue-400">$47M</div>
+                  <div className="text-3xl font-bold text-[#0A0F2E]">$47M</div>
                   <div className="text-sm text-gray-800">Fine Avoided</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
@@ -475,7 +475,7 @@ export default function OneClickDemo() {
                   <div className="text-sm text-gray-800">Tasks Coordinated</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-purple-400">8</div>
+                  <div className="text-3xl font-bold text-[#C9A84C]">8</div>
                   <div className="text-sm text-gray-800">Executives Aligned</div>
                 </div>
               </div>
@@ -493,7 +493,7 @@ export default function OneClickDemo() {
                 <Button 
                   onClick={() => { resetDemo(); setLocation('/contact'); }}
                   size="lg"
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                  className="bg-gradient-to-r from-green-600 to-[#2B8A6E] hover:from-green-700 hover:to-[#256B56]"
                   data-testid="button-schedule-demo"
                 >
                   Schedule Live Demo

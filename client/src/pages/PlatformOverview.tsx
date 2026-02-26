@@ -136,11 +136,11 @@ export default function PlatformOverview() {
               </div>
               <div className="flex flex-col gap-2 shrink-0">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
                   AI handles signal monitoring and execution orchestration
                 </div>
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <span className="w-2 h-2 rounded-full" style={{ background: GOLD }} />
+                  <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
                   Humans retain all strategic decision authority
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function PlatformOverview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
                 What Happens in 12 Minutes
               </h2>
-              <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+              <p className="text-slate-600 max-w-2xl mx-auto">
                 From the moment a signal fires to the moment your organization is fully coordinated. Every step powered by AI, every decision made by humans.
               </p>
             </div>
@@ -172,21 +172,21 @@ export default function PlatformOverview() {
                 <div key={i} className="relative flex gap-6 md:gap-10 mb-8">
                   <div className="shrink-0 flex flex-col items-center">
                     <div
-                      className="w-12 h-12 md:w-24 md:h-12 flex items-center justify-center font-serif font-bold text-white text-sm shrink-0 z-10"
+                      className="w-12 h-12 md:w-24 md:h-12 flex items-center justify-center font-serif font-bold text-sm shrink-0 z-10"
                       style={{ background: "#0A0F2E", color: "#C9A84C" }}
                     >
                       {step.time}
                     </div>
                   </div>
 
-                  <div className="flex-1 bg-white dark:bg-slate-950 border border-[#E8E4DC] p-6 shadow-sm">
+                  <div className="flex-1 bg-white border border-[#E8E4DC] p-6 shadow-sm">
                     <div className="flex items-start justify-between flex-wrap gap-3 mb-5">
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: step.color, flexShrink: 0 }} />
                           <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
                         </div>
-                        <h3 className="text-xl font-bold" style={{ color: NAVY }}>{step.headline}</h3>
+                        <h3 className="text-xl font-bold" style={{ color: "#0A0F2E" }}>{step.headline}</h3>
                         <p className="text-sm text-slate-500">{step.sub}</p>
                       </div>
                       <Clock className="h-5 w-5 text-slate-300 shrink-0" />
@@ -195,13 +195,13 @@ export default function PlatformOverview() {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
-                          <Cpu className="h-3.5 w-3.5" style={{ color: TEAL }} />
-                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: TEAL }}>AI Role</span>
+                          <Cpu className="h-3.5 w-3.5" style={{ color: "#2B8A6E" }} />
+                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#2B8A6E" }}>AI Role</span>
                         </div>
                         <ul className="space-y-2">
                           {step.aiRole.map((a, j) => (
-                            <li key={j} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: TEAL }} />
+                            <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
+                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#2B8A6E" }} />
                               {a}
                             </li>
                           ))}
@@ -214,7 +214,7 @@ export default function PlatformOverview() {
                         </div>
                         <ul className="space-y-2">
                           {step.humanRole.map((a, j) => (
-                            <li key={j} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li key={j} className="flex items-start gap-2 text-sm text-slate-600">
                               <Users className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
                               {a}
                             </li>

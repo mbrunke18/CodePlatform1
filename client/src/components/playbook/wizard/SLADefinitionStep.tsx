@@ -121,7 +121,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950 dark:to-blue-950 border-0">
+      <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] border-0">
         <CardContent className="pt-6">
           <div className="flex items-start gap-4">
             <div className="text-4xl">⏱️</div>
@@ -135,7 +135,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               </p>
               <div className="flex flex-wrap gap-4 mt-4 text-xs">
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-emerald-700" />
+                  <TrendingUp className="w-4 h-4 text-[#2B8A6E]" />
                   <span>Enables SLA tracking</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -143,7 +143,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                   <span>Validates playbook feasibility</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-blue-800" />
+                  <Clock className="w-4 h-4 text-[#0A0F2E]" />
                   <span>Measures execution velocity</span>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               {phase.toUpperCase()}
             </div>
             {phaseSLAs[phase]?.enabled && (
-              <div className="text-xs text-emerald-700 mt-1">✓ Configured</div>
+              <div className="text-xs text-[#2B8A6E] mt-1">✓ Configured</div>
             )}
           </button>
         ))}
@@ -265,11 +265,11 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
               </div>
             </div>
 
-            <Card className="bg-blue-50 dark:bg-blue-950 border-blue-200 dark:border-blue-800">
+            <Card className="bg-[#0A0F2E] dark:bg-[#0A0F2E] border-blue-200 dark:border-blue-800">
               <CardContent className="pt-4">
                 <div className="flex gap-2 text-sm">
-                  <Lightbulb className="w-4 h-4 text-blue-800 flex-shrink-0 mt-0.5" />
-                  <div className="text-blue-900 dark:text-blue-100">
+                  <Lightbulb className="w-4 h-4 text-[#0A0F2E] flex-shrink-0 mt-0.5" />
+                  <div className="text-[#0A0F2E] dark:text-blue-100">
                     <p className="font-semibold mb-1">How This SLA Works:</p>
                     <div className="space-y-1 text-xs">
                       {currentPhase === 'identify' && (
@@ -354,7 +354,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950 border-0">
+      <Card className="bg-gradient-to-r from-green-50 to-[#256B56] dark:from-green-950 dark:to-[#256B56] border-0">
         <CardContent className="pt-6">
           <div className="text-sm space-y-2">
             <p className="font-semibold text-slate-900 dark:text-white">

@@ -65,8 +65,8 @@ export default function SizzleReel() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A0F2E]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -237,7 +237,7 @@ export default function SizzleReel() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.6 }}
                 >
-                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     PREPARATION ENABLES SPEED.
                   </span>
                 </motion.div>
@@ -294,10 +294,10 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.9 }}
-                    className="bg-gradient-to-br from-blue-500/20 to-cyan-500/10 border border-blue-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-blue-500/30 rounded-xl p-6"
                   >
-                    <Shield className="h-10 w-10 text-blue-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-blue-400 mb-3">DEFENSE</h3>
+                    <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3">DEFENSE</h3>
                     <p className="text-gray-800 text-sm">
                       Crisis response. Cyber incidents. Regulatory compliance. Reputation protection.
                     </p>
@@ -307,10 +307,10 @@ export default function SizzleReel() {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 1.2 }}
-                    className="bg-gradient-to-br from-purple-500/20 to-pink-500/10 border border-purple-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 rounded-xl p-6"
                   >
-                    <Zap className="h-10 w-10 text-purple-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-purple-400 mb-3">SPECIAL TEAMS</h3>
+                    <Zap className="h-10 w-10 text-[#C9A84C] mx-auto mb-3" />
+                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-3">SPECIAL TEAMS</h3>
                     <p className="text-gray-800 text-sm">
                       Digital transformation. AI governance. Innovation initiatives. Game-changing moves.
                     </p>
@@ -341,7 +341,7 @@ export default function SizzleReel() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
-                    <Users className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+                    <Users className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-900 font-semibold text-sm mb-1">Stakeholders Mapped</p>
                     <p className="text-gray-800 text-xs">Every role defined before situations occur</p>
                   </motion.div>
@@ -352,7 +352,7 @@ export default function SizzleReel() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
-                    <Brain className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+                    <Brain className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-900 font-semibold text-sm mb-1">Decisions Pre-staged</p>
                     <p className="text-gray-800 text-xs">Options analyzed. Criteria defined.</p>
                   </motion.div>
@@ -363,7 +363,7 @@ export default function SizzleReel() {
                     transition={{ duration: 0.5, delay: 0.9 }}
                     className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
-                    <Bell className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+                    <Bell className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-900 font-semibold text-sm mb-1">Instant Activation</p>
                     <p className="text-gray-800 text-xs">Stakeholders notified instantly</p>
                   </motion.div>
@@ -374,7 +374,7 @@ export default function SizzleReel() {
                     transition={{ duration: 0.5, delay: 1.2 }}
                     className="bg-gray-50 border border-gray-200 rounded-xl p-4"
                   >
-                    <BarChart3 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
+                    <BarChart3 className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-900 font-semibold text-sm mb-1">Parallel Execution</p>
                     <p className="text-gray-800 text-xs">Progress tracked in real-time</p>
                   </motion.div>
@@ -387,15 +387,15 @@ export default function SizzleReel() {
                   className="flex items-center justify-center gap-8 mb-6"
                 >
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-emerald-400">47</div>
+                    <div className="text-4xl font-bold text-[#2B8A6E]">47</div>
                     <div className="text-sm text-gray-800">Tasks</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-emerald-400">12</div>
+                    <div className="text-4xl font-bold text-[#2B8A6E]">12</div>
                     <div className="text-sm text-gray-800">Stakeholders</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-emerald-400">12</div>
+                    <div className="text-4xl font-bold text-[#2B8A6E]">12</div>
                     <div className="text-sm text-gray-800">Minutes</div>
                   </div>
                 </motion.div>
@@ -407,8 +407,8 @@ export default function SizzleReel() {
                   className="flex items-center justify-center gap-4"
                 >
                   <span className="text-4xl font-bold text-red-500 line-through opacity-60">72 hrs</span>
-                  <ArrowRight className="h-8 w-8 text-emerald-400" />
-                  <span className="text-4xl font-bold text-emerald-400">12 min</span>
+                  <ArrowRight className="h-8 w-8 text-[#2B8A6E]" />
+                  <span className="text-4xl font-bold text-[#2B8A6E]">12 min</span>
                 </motion.div>
               </div>
             </Scene>
@@ -460,7 +460,7 @@ export default function SizzleReel() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 1.5 }}
-                  className="text-xl text-emerald-400 font-semibold mb-4"
+                  className="text-xl text-[#2B8A6E] font-semibold mb-4"
                 >
                   Until now.
                 </motion.div>
@@ -474,7 +474,7 @@ export default function SizzleReel() {
                     THE STRATEGIC EXECUTION
                   </span>
                   <br />
-                  <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     OPERATING SYSTEM
                   </span>
                 </motion.div>
@@ -531,7 +531,7 @@ export default function SizzleReel() {
                   transition={{ duration: 0.5 }}
                   className="mb-6"
                 >
-                  <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                  <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
                     PREPARED TO EXECUTE.
                   </span>
                 </motion.div>
@@ -563,7 +563,7 @@ export default function SizzleReel() {
                   className="flex gap-4 justify-center flex-wrap"
                 >
                   <Link href="/sandbox">
-                    <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400" data-testid="button-see-it-action">
+                    <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-[#3BAF8A]" data-testid="button-see-it-action">
                       <Play className="mr-2 h-5 w-5" />
                       See It In Action
                     </Button>

@@ -101,7 +101,7 @@ export default function ROIDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Cost Avoided</p>
-                <p className="text-2xl font-bold text-blue-600" data-testid="text-cost-avoided">
+                <p className="text-2xl font-bold text-[#0A0F2E]" data-testid="text-cost-avoided">
                   {formatCurrency(roiMetrics.totalCostAvoided)}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
@@ -109,27 +109,27 @@ export default function ROIDashboard() {
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-shield-alt text-blue-600 w-6"></i>
+                <i className="fas fa-shield-alt text-[#0A0F2E] w-6"></i>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Efficiency Gains */}
-        <Card className="border-l-4 border-l-purple-500">
+        <Card className="border-l-4 border-l-[#0A0F2E]">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Efficiency Score</p>
-                <p className="text-2xl font-bold text-purple-600" data-testid="text-efficiency-score">
+                <p className="text-2xl font-bold text-[#C9A84C]" data-testid="text-efficiency-score">
                   {roiMetrics.qualityScore * 100}%
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
                   Avg resolution: {roiMetrics.avgTimeToResolution}min
                 </p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-tachometer-alt text-purple-600 w-6"></i>
+              <div className="w-12 h-12 bg-[#0A0F2E] rounded-lg flex items-center justify-center">
+                <i className="fas fa-tachometer-alt text-[#C9A84C] w-6"></i>
               </div>
             </div>
           </CardContent>

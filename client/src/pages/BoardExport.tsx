@@ -144,7 +144,7 @@ export default function BoardExport() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br ">
+    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
       <StandardNav />
       
       <div className="container mx-auto px-4 py-12">
@@ -152,14 +152,14 @@ export default function BoardExport() {
           {/* Header */}
           <div className="text-center mb-12">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-purple-500/20 text-purple-400 border-purple-500/30">
+            <Badge className="mb-4 bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
               <FileText className="h-4 w-4 mr-2" />
               Board-Ready Export
             </Badge>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Executive Briefing Generator
             </h1>
-            <p className="text-xl text-gray-800 max-w-2xl mx-auto">
+            <p className="text-xl text-[#6B7280] dark:text-white/80 max-w-2xl mx-auto">
               Generate comprehensive board-ready reports showing strategic readiness, 
               active scenarios, and response metrics—in one click.
             </p>
@@ -168,18 +168,18 @@ export default function BoardExport() {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Left Column - Configuration */}
             <div className="space-y-6">
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Building2 className="h-5 w-5 text-blue-400" />
+                  <CardTitle className="text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <Building2 className="h-5 w-5 text-[#C9A84C]" />
                     Report Configuration
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-2">
-                    <Label className="text-gray-800">Export Format</Label>
+                    <Label className="text-[#0A0F2E] dark:text-white">Export Format</Label>
                     <Select value={exportFormat} onValueChange={(v: 'pdf' | 'pptx' | 'docx') => setExportFormat(v)}>
-                      <SelectTrigger className="bg-gray-50 border-gray-200 text-gray-900" data-testid="select-format">
+                      <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white" data-testid="select-format">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -191,36 +191,36 @@ export default function BoardExport() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="text-gray-800">Report Period</Label>
-                    <div className="text-gray-900 bg-gray-50 rounded-md px-3 py-2 border border-gray-200">
+                    <Label className="text-[#0A0F2E] dark:text-white">Report Period</Label>
+                    <div className="text-[#0A0F2E] dark:text-white bg-[#F8F7F4] dark:bg-white/5 rounded-md px-3 py-2 border border-[#E8E4DC] dark:border-white/10">
                       {SAMPLE_DATA.quarter}
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-gray-200">
-                    <Label className="text-gray-800 mb-3 block">Include Sections</Label>
+                  <div className="pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                    <Label className="text-[#0A0F2E] dark:text-white mb-3 block">Include Sections</Label>
                     <div className="space-y-3">
                       {sections.map((section) => (
                         <div 
                           key={section.id}
-                          className="flex items-start gap-3 p-2 rounded hover:bg-slate-800/50 transition-colors"
+                          className="flex items-start gap-3 p-2 rounded hover:bg-[#F8F7F4] dark:hover:bg-white/5 transition-colors"
                         >
                           <Checkbox
                             id={section.id}
                             checked={section.included}
                             onCheckedChange={() => toggleSection(section.id)}
-                            className="mt-0.5"
+                            className="mt-0.5 border-[#E8E4DC] data-[state=checked]:bg-[#2B8A6E] data-[state=checked]:border-[#2B8A6E]"
                             data-testid={`checkbox-${section.id}`}
                           />
                           <div className="flex-1">
                             <Label 
                               htmlFor={section.id}
-                              className="text-gray-900 cursor-pointer flex items-center gap-2"
+                              className="text-[#0A0F2E] dark:text-white cursor-pointer flex items-center gap-2"
                             >
-                              <span className="text-gray-800">{section.icon}</span>
+                              <span className="text-[#C9A84C]">{section.icon}</span>
                               {section.label}
                             </Label>
-                            <div className="text-xs text-gray-800">{section.description}</div>
+                            <div className="text-xs text-[#6B7280] dark:text-white/60">{section.description}</div>
                           </div>
                         </div>
                       ))}
@@ -231,7 +231,7 @@ export default function BoardExport() {
 
               <Button 
                 size="lg" 
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                 onClick={handleExport}
                 disabled={isGenerating || sections.filter(s => s.included).length === 0}
                 data-testid="button-generate-report"
@@ -252,19 +252,19 @@ export default function BoardExport() {
 
             {/* Right Column - Preview */}
             <div className="lg:col-span-2 space-y-6">
-              <Card className="bg-white border-gray-200">
-                <CardHeader className="border-b border-gray-200">
+              <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
+                <CardHeader className="border-b border-[#E8E4DC] dark:border-white/10">
                   <div className="flex items-center justify-between">
                     <div>
-                      <CardTitle className="text-gray-900 flex items-center gap-2">
-                        <Eye className="h-5 w-5 text-gray-800" />
+                      <CardTitle className="text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Eye className="h-5 w-5 text-[#C9A84C]" />
                         Report Preview
                       </CardTitle>
-                      <CardDescription>
+                      <CardDescription className="text-[#6B7280] dark:text-white/60">
                         {SAMPLE_DATA.organization} • {SAMPLE_DATA.quarter}
                       </CardDescription>
                     </div>
-                    <Badge variant="outline" className="bg-transparent text-gray-800">
+                    <Badge variant="outline" className="bg-transparent text-[#0A0F2E] dark:text-white border-[#E8E4DC] dark:border-white/10">
                       {sections.filter(s => s.included).length} sections selected
                     </Badge>
                   </div>
@@ -273,22 +273,22 @@ export default function BoardExport() {
                   {/* Executive Summary */}
                   {sections.find(s => s.id === 'executive_summary')?.included && (
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <Target className="h-5 w-5 text-violet-400" />
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Target className="h-5 w-5 text-[#C9A84C]" />
                         Executive Summary
                       </h3>
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-gradient-to-br   rounded-lg p-4 text-center border border-green-500/20">
-                          <div className="text-3xl font-bold text-green-400">{SAMPLE_DATA.executiveSummary.overallReadiness}%</div>
-                          <div className="text-sm text-gray-800">Overall Readiness</div>
+                        <div className="bg-[#2B8A6E]/10 rounded-lg p-4 text-center border border-[#2B8A6E]/20">
+                          <div className="text-3xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.executiveSummary.overallReadiness}%</div>
+                          <div className="text-sm text-[#0A0F2E] dark:text-white/80">Overall Readiness</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-blue-400">{SAMPLE_DATA.executiveSummary.activeScenarios}</div>
-                          <div className="text-sm text-gray-800">Active Scenarios</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-4 text-center border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.executiveSummary.activeScenarios}</div>
+                          <div className="text-sm text-[#0A0F2E] dark:text-white/80">Active Scenarios</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-4 text-center">
-                          <div className="text-3xl font-bold text-amber-400">{SAMPLE_DATA.executiveSummary.avgResponseTime}</div>
-                          <div className="text-sm text-gray-800">Avg Response Time</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-4 text-center border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-3xl font-bold text-[#C9A84C]">{SAMPLE_DATA.executiveSummary.avgResponseTime}</div>
+                          <div className="text-sm text-[#0A0F2E] dark:text-white/80">Avg Response Time</div>
                         </div>
                       </div>
                     </div>
@@ -296,30 +296,30 @@ export default function BoardExport() {
 
                   {/* Active Scenarios */}
                   {sections.find(s => s.id === 'active_scenarios')?.included && (
-                    <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <AlertTriangle className="h-5 w-5 text-amber-400" />
+                    <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />
                         Active Scenarios
                       </h3>
                       <div className="space-y-2">
                         {SAMPLE_DATA.activeScenarios.map((scenario) => (
                           <div 
                             key={scenario.id}
-                            className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                            className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10"
                           >
                             <div className="flex items-center gap-3">
                               <Badge className={
-                                scenario.severity === 'High' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
-                                scenario.severity === 'Medium' ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' :
-                                'bg-green-500/20 text-green-400 border-green-500/30'
+                                scenario.severity === 'High' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                                scenario.severity === 'Medium' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
+                                'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20'
                               }>
                                 {scenario.severity}
                               </Badge>
-                              <span className="text-gray-900">{scenario.name}</span>
+                              <span className="text-[#0A0F2E] dark:text-white">{scenario.name}</span>
                             </div>
-                            <div className="flex items-center gap-4 text-sm text-gray-800">
+                            <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60">
                               <span>{scenario.stakeholders} stakeholders</span>
-                              <Badge variant="outline">{scenario.status}</Badge>
+                              <Badge variant="outline" className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white">{scenario.status}</Badge>
                             </div>
                           </div>
                         ))}
@@ -329,23 +329,23 @@ export default function BoardExport() {
 
                   {/* Response Metrics */}
                   {sections.find(s => s.id === 'response_metrics')?.included && (
-                    <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <Clock className="h-5 w-5 text-blue-400" />
+                    <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Clock className="h-5 w-5 text-[#C9A84C]" />
                         Response Metrics
                       </h3>
                       <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-gray-50 rounded-lg p-3 text-center">
-                          <div className="text-xl font-bold text-gray-900">{SAMPLE_DATA.responseMetrics.avgDecisionTime}</div>
-                          <div className="text-xs text-gray-800">Avg Decision Time</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.responseMetrics.avgDecisionTime}</div>
+                          <div className="text-xs text-[#6B7280] dark:text-white/60">Avg Decision Time</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-3 text-center">
-                          <div className="text-xl font-bold text-gray-900">{SAMPLE_DATA.responseMetrics.avgExecutionTime}</div>
-                          <div className="text-xs text-gray-800">Avg Execution Time</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.responseMetrics.avgExecutionTime}</div>
+                          <div className="text-xs text-[#6B7280] dark:text-white/60">Avg Execution Time</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-3 text-center">
-                          <div className="text-xl font-bold text-green-400">{SAMPLE_DATA.responseMetrics.stakeholderResponseRate}%</div>
-                          <div className="text-xs text-gray-800">Response Rate</div>
+                        <div className="bg-[#2B8A6E]/10 rounded-lg p-3 text-center border border-[#2B8A6E]/20">
+                          <div className="text-xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.responseMetrics.stakeholderResponseRate}%</div>
+                          <div className="text-xs text-[#0A0F2E] dark:text-white/80">Response Rate</div>
                         </div>
                       </div>
                     </div>
@@ -353,29 +353,29 @@ export default function BoardExport() {
 
                   {/* Financial Summary */}
                   {sections.find(s => s.id === 'financial_summary')?.included && (
-                    <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <DollarSign className="h-5 w-5 text-green-400" />
+                    <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <DollarSign className="h-5 w-5 text-[#2B8A6E]" />
                         Financial Summary
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-gray-800 mb-1">Revenue Protected</div>
-                          <div className="text-2xl font-bold text-green-400">{formatCurrency(SAMPLE_DATA.financialSummary.revenueProtected)}</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Revenue Protected</div>
+                          <div className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(SAMPLE_DATA.financialSummary.revenueProtected)}</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-gray-800 mb-1">Cost Avoided</div>
-                          <div className="text-2xl font-bold text-green-400">{formatCurrency(SAMPLE_DATA.financialSummary.costAvoided)}</div>
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Cost Avoided</div>
+                          <div className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(SAMPLE_DATA.financialSummary.costAvoided)}</div>
                         </div>
-                        <div className="bg-gray-50 rounded-lg p-3">
-                          <div className="text-sm text-gray-800 mb-1">Budget Utilization</div>
-                          <div className="text-2xl font-bold text-blue-400">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                          <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Budget Utilization</div>
+                          <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">
                             {formatCurrency(SAMPLE_DATA.financialSummary.budgetUsed)} / {formatCurrency(SAMPLE_DATA.financialSummary.budgetAllocated)}
                           </div>
                         </div>
-                        <div className="bg-gradient-to-br   rounded-lg p-3 border border-green-500/20">
-                          <div className="text-sm text-gray-800 mb-1">Quarterly ROI</div>
-                          <div className="text-2xl font-bold text-green-400">{SAMPLE_DATA.financialSummary.roiThisQuarter}%</div>
+                        <div className="bg-[#2B8A6E]/10 rounded-lg p-3 border border-[#2B8A6E]/20">
+                          <div className="text-sm text-[#0A0F2E] dark:text-white/80 mb-1">Quarterly ROI</div>
+                          <div className="text-2xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.financialSummary.roiThisQuarter}%</div>
                         </div>
                       </div>
                     </div>
@@ -383,29 +383,29 @@ export default function BoardExport() {
 
                   {/* Playbook Readiness */}
                   {sections.find(s => s.id === 'playbook_readiness')?.included && (
-                    <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <Shield className="h-5 w-5 text-purple-400" />
+                    <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Shield className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                         Playbook Readiness by Domain
                       </h3>
                       <div className="space-y-2">
                         {SAMPLE_DATA.playbookReadiness.map((domain) => (
                           <div 
                             key={domain.domain}
-                            className="flex items-center justify-between p-2 bg-gray-50 rounded"
+                            className="flex items-center justify-between p-2 bg-[#F8F7F4] dark:bg-white/5 rounded border border-[#E8E4DC] dark:border-white/10"
                           >
                             <div className="flex items-center gap-3">
-                              <span className="text-gray-900 text-sm">{domain.domain}</span>
-                              <Badge variant="outline" className="bg-transparent text-xs text-gray-800">
+                              <span className="text-[#0A0F2E] dark:text-white text-sm font-medium">{domain.domain}</span>
+                              <Badge variant="outline" className="bg-transparent text-xs text-[#6B7280] dark:text-white/60 border-[#E8E4DC] dark:border-white/10">
                                 {domain.playbooks} playbooks
                               </Badge>
                             </div>
                             <div className="flex items-center gap-3">
-                              <span className="text-xs text-gray-800">Drill: {domain.lastDrill}</span>
+                              <span className="text-xs text-[#6B7280] dark:text-white/60">Drill: {domain.lastDrill}</span>
                               <Badge className={
-                                domain.readiness >= 90 ? 'bg-green-500/20 text-green-400' :
-                                domain.readiness >= 80 ? 'bg-blue-500/20 text-blue-400' :
-                                'bg-amber-500/20 text-amber-400'
+                                domain.readiness >= 90 ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20' :
+                                domain.readiness >= 80 ? 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-white border-[#0A0F2E]/20' :
+                                'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20'
                               }>
                                 {domain.readiness}%
                               </Badge>
@@ -418,30 +418,30 @@ export default function BoardExport() {
 
                   {/* Recommendations */}
                   {sections.find(s => s.id === 'recommendations')?.included && (
-                    <div className="space-y-4 pt-4 border-t border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                        <Zap className="h-5 w-5 text-amber-400" />
+                    <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
+                      <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <Zap className="h-5 w-5 text-[#C9A84C]" />
                         Recommendations
                       </h3>
                       <div className="space-y-2">
                         {SAMPLE_DATA.recommendations.map((rec, idx) => (
                           <div 
                             key={idx}
-                            className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-amber-500"
+                            className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border-l-4 border-l-[#C9A84C] border border-[#E8E4DC] dark:border-white/10"
                           >
                             <div className="flex items-start justify-between">
                               <div>
                                 <Badge className={
-                                  rec.priority === 'High' ? 'bg-red-500/20 text-red-400 mb-2' :
-                                  rec.priority === 'Medium' ? 'bg-amber-500/20 text-amber-400 mb-2' :
-                                  'bg-green-500/20 text-green-400 mb-2'
+                                  rec.priority === 'High' ? 'bg-red-500/10 text-red-500 mb-2' :
+                                  rec.priority === 'Medium' ? 'bg-[#C9A84C]/10 text-[#C9A84C] mb-2' :
+                                  'bg-[#2B8A6E]/10 text-[#2B8A6E] mb-2'
                                 }>
                                   {rec.priority} Priority
                                 </Badge>
-                                <div className="text-gray-900 text-sm">{rec.recommendation}</div>
+                                <div className="text-[#0A0F2E] dark:text-white text-sm font-medium">{rec.recommendation}</div>
                               </div>
-                              <div className="text-right text-xs text-gray-800">
-                                <div>{rec.owner}</div>
+                              <div className="text-right text-xs text-[#6B7280] dark:text-white/60">
+                                <div className="font-semibold text-[#0A0F2E] dark:text-white">{rec.owner}</div>
                                 <div>{rec.dueDate}</div>
                               </div>
                             </div>

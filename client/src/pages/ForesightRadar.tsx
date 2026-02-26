@@ -338,7 +338,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           </div>
                           
                           {/* Tooltip */}
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-50">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-[100]">
                             <h4 style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
                             <p style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>{signal.description}</p>
                             <div className="flex items-center gap-2 mt-3">

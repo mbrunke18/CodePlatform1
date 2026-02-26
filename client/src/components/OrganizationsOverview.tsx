@@ -18,17 +18,17 @@ export default function OrganizationsOverview() {
       case 'active': return 'bg-green-100 text-green-800';
       case 'planning': return 'bg-yellow-100 text-yellow-800';
       case 'inactive': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-blue-100 text-blue-800';
+      default: return 'bg-blue-100 text-[#0A0F2E]';
     }
   };
 
   const getGradientClass = (index: number) => {
     const gradients = [
-      'from-blue-500 to-purple-500',
+      'from-[#0A0F2E] to-[#141B45]',
       'from-green-500 to-teal-500',
       'from-orange-500 to-red-500',
-      'from-purple-500 to-pink-500',
-      'from-teal-500 to-blue-500',
+      'from-[#0A0F2E] to-pink-500',
+      'from-teal-500 to-[#141B45]',
     ];
     return gradients[index % gradients.length];
   };

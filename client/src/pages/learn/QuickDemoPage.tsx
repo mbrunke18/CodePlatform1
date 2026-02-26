@@ -68,8 +68,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Competitor Launch',
     industry: 'Competitive Response',
     icon: Target,
-    color: 'from-purple-500 to-violet-500',
-    borderColor: 'border-purple-500/50',
+    color: 'from-[#0A0F2E] to-[#141B45]',
+    borderColor: 'border-[#C9A84C]/50',
     trigger: 'Major competitor announces product in your category',
     playbook: 'Competitive Response',
     dealValue: 47000000,
@@ -114,8 +114,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Deal at Risk',
     industry: 'Sales & Revenue',
     icon: DollarSign,
-    color: 'from-emerald-500 to-teal-500',
-    borderColor: 'border-emerald-500/50',
+    color: 'from-[#2B8A6E] to-[#3BAF8A]',
+    borderColor: 'border-[#2B8A6E]/50',
     trigger: 'Customer requests accelerated timeline on $5M deal',
     playbook: 'Deal Risk Response',
     dealValue: 5000000,
@@ -151,9 +151,9 @@ const MESSAGE_ICONS: Record<string, any> = {
 };
 
 const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-400' },
-  blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-400' },
-  emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-400' },
+  violet: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
+  blue: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
+  emerald: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
   amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-400' },
   red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
 };
@@ -380,7 +380,7 @@ export default function QuickDemoPage() {
       case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
       case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
       case 'notion': return <SiNotion className="h-4 w-4 text-gray-900" />;
-      default: return <Zap className="h-4 w-4 text-emerald-400" />;
+      default: return <Zap className="h-4 w-4 text-[#2B8A6E]" />;
     }
   };
 
@@ -414,7 +414,7 @@ export default function QuickDemoPage() {
                           <IconComponent className="h-6 w-6 text-gray-900" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-lg font-bold group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors mb-1">
+                          <h3 className="text-lg font-bold group-hover:text-[#2B8A6E] dark:group-hover:text-[#2B8A6E] transition-colors mb-1">
                             {scenario.name}
                           </h3>
                           <p className="text-sm text-muted-foreground mb-2">{scenario.industry}</p>
@@ -564,7 +564,7 @@ export default function QuickDemoPage() {
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
                       <Button
-                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-gray-900 font-semibold py-6"
+                        className="w-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#256B56] hover:to-[#3BAF8A] text-gray-900 font-semibold py-6"
                         onClick={moveToPrepared}
                       >
                         <Sparkles className="mr-2 h-5 w-5" />
@@ -610,13 +610,13 @@ export default function QuickDemoPage() {
                       isCurrent
                         ? `${colors.bg} ${colors.border}`
                         : isCompleted
-                          ? 'bg-emerald-50 dark:bg-slate-800/50 border-emerald-500/50'
+                          ? 'bg-[#F0F9F6] dark:bg-slate-800/50 border-[#2B8A6E]/50'
                           : 'bg-muted/30 border-border/50'
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       {isCompleted ? (
-                        <CheckCircle2 className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
+                        <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                       ) : (
                         <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-muted-foreground'}`} />
                       )}
@@ -637,7 +637,7 @@ export default function QuickDemoPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <BookOpen className="h-5 w-5 text-violet-500" />
+                        <BookOpen className="h-5 w-5 text-[#C9A84C]" />
                         IDENTIFY: Playbook Ready
                       </CardTitle>
                       <CardDescription>
@@ -645,30 +645,30 @@ export default function QuickDemoPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="p-4 bg-violet-50 dark:bg-violet-500/10 border border-violet-200 dark:border-violet-500/30 rounded-lg">
+                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/10 border border-[#C9A84C] dark:border-[#C9A84C]/30 rounded-lg">
                         <h4 className="font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                         <div className="grid grid-cols-2 gap-3 text-sm">
                           <div className="flex items-center gap-2 text-muted-foreground">
-                            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                            <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                             12 pre-configured tasks
                           </div>
                           <div className="flex items-center gap-2 text-muted-foreground">
-                            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                            <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                             {selectedScenario.stakeholders} stakeholders mapped
                           </div>
                           <div className="flex items-center gap-2 text-muted-foreground">
-                            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                            <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                             Response templates staged
                           </div>
                           <div className="flex items-center gap-2 text-muted-foreground">
-                            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                            <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                             Budget pre-approved
                           </div>
                         </div>
                       </div>
 
-                      <div className="p-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 mb-2">
+                      <div className="p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-[#2B8A6E] dark:text-[#2B8A6E] mb-2">
                           <Clock className="h-4 w-4" />
                           <span className="font-medium">Time to Ready: 0 minutes</span>
                         </div>
@@ -683,7 +683,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <Button className="w-full bg-violet-600 hover:bg-violet-700 text-gray-900" onClick={completeIdentify}>
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900" onClick={completeIdentify}>
                         Playbook Ready - Continue to Detection
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -695,7 +695,7 @@ export default function QuickDemoPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Radar className="h-5 w-5 text-blue-500" />
+                        <Radar className="h-5 w-5 text-[#0A0F2E]" />
                         DETECT: Signal Received
                       </CardTitle>
                       <CardDescription>
@@ -721,18 +721,18 @@ export default function QuickDemoPage() {
                         </div>
                       </div>
 
-                      <div className="p-4 bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/30 rounded-lg">
-                        <div className="flex items-center gap-2 text-blue-800 dark:text-blue-400 mb-2">
+                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/10 border border-[#0A0F2E] dark:border-[#0A0F2E]/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-[#0A0F2E] dark:text-[#0A0F2E] mb-2">
                           <Brain className="h-5 w-5" />
                           <span className="font-medium">AI Recommendation</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
                           Activate <span className="font-medium text-foreground">{selectedScenario.playbook}</span> playbook.
-                          Match confidence: <span className="text-emerald-700 dark:text-emerald-400 font-bold">94%</span>
+                          Match confidence: <span className="text-[#2B8A6E] dark:text-[#2B8A6E] font-bold">94%</span>
                         </p>
                       </div>
 
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-gray-900 py-6 text-lg font-semibold" onClick={completeDetect}>
+                      <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900 py-6 text-lg font-semibold" onClick={completeDetect}>
                         <Play className="mr-2 h-5 w-5" />
                         Activate Playbook
                       </Button>
@@ -744,7 +744,7 @@ export default function QuickDemoPage() {
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Radio className="h-5 w-5 text-emerald-500" />
+                        <Radio className="h-5 w-5 text-[#2B8A6E]" />
                         EXECUTE: Coordinating Response
                       </CardTitle>
                       <CardDescription>
@@ -752,12 +752,12 @@ export default function QuickDemoPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="mb-4 p-4 bg-emerald-50 dark:bg-gradient-to-r dark:from-emerald-500/20 dark:to-teal-500/20 border border-emerald-200 dark:border-emerald-500/30 rounded-lg text-center">
-                        <p className="text-xs text-emerald-700 dark:text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
+                      <div className="mb-4 p-4 bg-[#F0F9F6] dark:bg-gradient-to-r dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/20 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg text-center">
+                        <p className="text-xs text-[#2B8A6E] dark:text-[#2B8A6E] uppercase tracking-wide mb-1">Execution Time</p>
                         <p className="text-4xl font-bold font-mono">
                           {formatTime(executionTimer)}
                         </p>
-                        <p className="text-xs text-emerald-500 dark:text-emerald-300 mt-1">Target: 12:00</p>
+                        <p className="text-xs text-[#2B8A6E] dark:text-[#2B8A6E] mt-1">Target: 12:00</p>
                       </div>
 
                       <div className="space-y-3">
@@ -766,10 +766,10 @@ export default function QuickDemoPage() {
                           return (
                             <div
                               key={step.id}
-                              className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
+                              className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
                             >
-                              <div className="p-2 bg-emerald-100 dark:bg-emerald-500/20 rounded-lg">
-                                <IconComponent className="h-4 w-4 text-emerald-700 dark:text-emerald-400" />
+                              <div className="p-2 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20 rounded-lg">
+                                <IconComponent className="h-4 w-4 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-2">
@@ -780,14 +780,14 @@ export default function QuickDemoPage() {
                                 </div>
                                 <p className="text-muted-foreground text-xs">{step.description}</p>
                               </div>
-                              <CheckCircle2 className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
+                              <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                             </div>
                           );
                         })}
 
                         {isExecuting && (
                           <div className="flex items-center justify-center p-4 text-muted-foreground">
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent mr-2" />
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
                             Orchestrating response...
                           </div>
                         )}
@@ -820,8 +820,8 @@ export default function QuickDemoPage() {
                         </div>
                       ) : (
                         <div className="space-y-4">
-                          <div className="p-3 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 rounded-lg">
-                            <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 mb-1">
+                          <div className="p-3 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg">
+                            <div className="flex items-center gap-2 text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">
                               <CheckCircle2 className="h-4 w-4" />
                               <span className="font-medium text-sm">Execution Complete</span>
                             </div>
@@ -831,7 +831,7 @@ export default function QuickDemoPage() {
                           </div>
 
                           <div>
-                            <h4 className="text-xs font-medium text-emerald-700 dark:text-emerald-400 mb-2 flex items-center gap-1">
+                            <h4 className="text-xs font-medium text-[#2B8A6E] dark:text-[#2B8A6E] mb-2 flex items-center gap-1">
                               <TrendingUp className="h-3 w-3" />
                               Success Patterns Captured
                             </h4>
@@ -851,11 +851,11 @@ export default function QuickDemoPage() {
                 )}
 
                 {currentPhase === 'complete' && (
-                  <Card className="border-emerald-500/50 bg-emerald-50 dark:bg-gradient-to-br dark:from-emerald-900/50 dark:to-teal-900/50">
+                  <Card className="border-[#2B8A6E]/50 bg-[#F0F9F6] dark:bg-gradient-to-br dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/50">
                     <CardContent className="p-8 text-center">
                       <div className="mb-6">
-                        <div className="inline-flex p-4 bg-emerald-100 dark:bg-emerald-500/20 rounded-full mb-4">
-                          <Rocket className="h-10 w-10 text-emerald-700 dark:text-emerald-400" />
+                        <div className="inline-flex p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20 rounded-full mb-4">
+                          <Rocket className="h-10 w-10 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                         </div>
                         <h2 className="text-2xl font-bold mb-2">Demo Complete</h2>
                         <p className="text-muted-foreground">You just experienced the IDEA Framework in action</p>
@@ -863,15 +863,15 @@ export default function QuickDemoPage() {
 
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">12 min</p>
+                          <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">12 min</p>
                           <p className="text-xs text-muted-foreground">Response Time</p>
                         </div>
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                          <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                           <p className="text-xs text-muted-foreground">Value Protected</p>
                         </div>
                         <div className="p-4 bg-background/50 rounded-lg">
-                          <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">98 days</p>
+                          <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">98 days</p>
                           <p className="text-xs text-muted-foreground">Saved (IBM 2024)</p>
                         </div>
                       </div>
@@ -898,9 +898,9 @@ export default function QuickDemoPage() {
               </div>
 
               <div className="space-y-4">
-                <Card className="bg-emerald-50 dark:bg-emerald-500/5 border-emerald-200 dark:border-emerald-500/20">
+                <Card className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/5 border-[#2B8A6E] dark:border-[#2B8A6E]/20">
                   <CardContent className="p-4">
-                    <h4 className="text-sm font-medium text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-medium text-[#2B8A6E] dark:text-[#2B8A6E] mb-3 flex items-center gap-2">
                       <Zap className="h-4 w-4" />
                       What Execution OS Is Doing
                     </h4>
@@ -958,10 +958,10 @@ export default function QuickDemoPage() {
                   <Card>
                     <CardContent className="p-4">
                       <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
-                        <TrendingUp className="h-4 w-4 text-emerald-500" />
+                        <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                         Value Protected
                       </h4>
-                      <p className="text-3xl font-bold text-emerald-700 dark:text-emerald-400 mb-1">
+                      <p className="text-3xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">
                         {formatCurrency(currentPhase === 'complete' ? (selectedScenario?.dealValue || 0) : savedValue)}
                       </p>
                       <p className="text-xs text-muted-foreground">

@@ -86,10 +86,10 @@ export function Outro({ progress }: SceneProps) {
           <span className="px-3 py-1 bg-[#00A8A8]/10 border border-[#00A8A8]/30 rounded-full text-[#00A8A8]">
             Executive Summary Generator
           </span>
-          <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-purple-400">
+          <span className="px-3 py-1 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full text-[#C9A84C]">
             What-If Analyzer
           </span>
-          <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400">
+          <span className="px-3 py-1 bg-[#0A0F2E]/10 border border-blue-500/30 rounded-full text-[#0A0F2E]">
             Readiness Assessment
           </span>
         </motion.div>

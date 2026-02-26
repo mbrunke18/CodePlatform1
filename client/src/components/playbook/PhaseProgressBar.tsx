@@ -20,10 +20,10 @@ export function PhaseProgressBar({
   compact = false
 }: PhaseProgressBarProps) {
   const phases = [
-    { id: 'identify', name: 'Identify', tagline: 'Build Your Depth Chart', score: prepareScore, color: 'bg-blue-500', textColor: 'text-blue-500' },
+    { id: 'identify', name: 'Identify', tagline: 'Build Your Depth Chart', score: prepareScore, color: 'bg-[#0A0F2E]', textColor: 'text-[#0A0F2E]' },
     { id: 'detect', name: 'Detect', tagline: 'Monitor Signals', score: monitorScore, color: 'bg-amber-500', textColor: 'text-amber-500' },
     { id: 'execute', name: 'Execute', tagline: 'Execute Response', score: executeScore, color: 'bg-green-500', textColor: 'text-green-500' },
-    { id: 'advance', name: 'Advance', tagline: 'Review the Film', score: learnScore, color: 'bg-purple-500', textColor: 'text-purple-500' },
+    { id: 'advance', name: 'Advance', tagline: 'Review the Film', score: learnScore, color: 'bg-[#0A0F2E]', textColor: 'text-[#C9A84C]' },
   ];
 
   const overallScore = Math.round(

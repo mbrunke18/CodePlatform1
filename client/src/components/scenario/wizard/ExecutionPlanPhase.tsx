@@ -48,7 +48,7 @@ const PRIORITY_LEVELS = [
   { value: 'critical', label: 'Critical', color: 'bg-red-600/20 text-red-300 border-red-500/50' },
   { value: 'high', label: 'High', color: 'bg-orange-600/20 text-orange-300 border-orange-500/50' },
   { value: 'medium', label: 'Medium', color: 'bg-yellow-600/20 text-yellow-300 border-yellow-500/50' },
-  { value: 'low', label: 'Low', color: 'bg-blue-600/20 text-blue-300 border-blue-500/50' },
+  { value: 'low', label: 'Low', color: 'bg-[#0A0F2E]/20 text-blue-300 border-blue-500/50' },
 ];
 
 export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhaseProps) {
@@ -124,7 +124,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
     const colors: Record<string, string> = {
       red: 'border-red-500/50 bg-red-950/20',
       orange: 'border-orange-500/50 bg-orange-950/20',
-      blue: 'border-blue-500/50 bg-blue-950/20',
+      blue: 'border-blue-500/50 bg-[#0A0F2E]/20',
     };
     return colors[color] || colors.blue;
   };
@@ -136,23 +136,23 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
   return (
     <div className="space-y-6">
       {/* Execution Plan Overview */}
-      <Card className="border-purple-500/30 bg-purple-950/20">
+      <Card className="border-[#C9A84C]/30 bg-[#C9A84C]/20">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
-            <Timer className="h-5 w-5 text-purple-400 mt-0.5" />
+            <Timer className="h-5 w-5 text-[#C9A84C] mt-0.5" />
             <div className="flex-1">
-              <p className="text-sm text-purple-300 font-medium">12-Minute Execution Plan</p>
+              <p className="text-sm text-[#C9A84C] font-medium">12-Minute Execution Plan</p>
               <p className="text-xs text-gray-700 mt-1">
                 Build your Work Breakdown Structure (WBS): define WHO does WHAT, WHEN, with clear dependencies.
                 Tasks unfold in coordinated phases for championship execution.
               </p>
               <div className="flex gap-4 mt-3">
                 <div className="flex items-center gap-2">
-                  <Target className="h-4 w-4 text-purple-400" />
+                  <Target className="h-4 w-4 text-[#C9A84C]" />
                   <span className="text-xs text-gray-800">{getTotalTasks()} Tasks</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-purple-400" />
+                  <Clock className="h-4 w-4 text-[#C9A84C]" />
                   <span className="text-xs text-gray-800">{getTotalTime()} min estimated</span>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
         <Card className="border-blue-500/30 bg-white">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 mb-4">
-              <Plus className="h-5 w-5 text-blue-400" />
+              <Plus className="h-5 w-5 text-[#0A0F2E]" />
               Add Task to {EXECUTION_PHASES.find(p => p.id === selectedPhase)?.name}
             </h3>
 
@@ -303,7 +303,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
               <Button
                 onClick={addTask}
                 disabled={!newTask.title || !newTask.assignedRole}
-                className="w-full bg-blue-600 hover:bg-blue-700"
+                className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]"
                 data-testid="button-add-task"
               >
                 <Plus className="h-4 w-4 mr-2" />

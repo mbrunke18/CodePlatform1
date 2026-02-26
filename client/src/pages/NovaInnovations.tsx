@@ -192,20 +192,20 @@ export default function NovaInnovations() {
           </div>
 
           {/* Header */}
-          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 8 }}>
+          <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", borderRadius: 0 }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-6">
                 <div style={{ width:64, height:64, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Brain className="h-10 w-10 text-[${GOLD}]" />
+                  <Brain className={`h-10 w-10 text-[${GOLD}]`} />
                 </div>
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Innovation Intelligence</span>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Innovation Intelligence</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
-                    Nova <em style={{ fontStyle: "italic", color: "#DFC178" }}>Innovations</em>
+                    Nova <em style={{ fontStyle: "italic", color: GOLD }}>Innovations</em>
                   </h1>
                   <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Innovation pipeline management and breakthrough opportunity identification</p>
                 </div>
@@ -220,7 +220,7 @@ export default function NovaInnovations() {
           </div>
 
           {/* Innovation Metrics */}
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background:"#F8F7F4", border:"1px solid #E8E4DC", borderRadius: 8 }}>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", background:"#F8F7F4", border:"1px solid #E8E4DC", borderRadius: 0 }}>
             <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
               <div style={{ ...CG, fontSize:40, fontWeight:600, color:GOLD, lineHeight:1 }}>{innovationProjects.length}</div>
               <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Active Projects</div>
@@ -251,7 +251,7 @@ export default function NovaInnovations() {
             <TabsContent value={selectedPipeline} className="space-y-6 mt-8">
               <div className="space-y-6">
                 {filteredProjects.map((project) => (
-                  <Card key={project.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
+                  <Card key={project.id} className="border border-[#E8E4DC] bg-white p-6 shadow-none rounded-none" data-testid={project.id === 'ai-automation' ? 'innovation-project-ai' : `project-${project.id}`}>
                     <div className="flex items-start justify-between mb-6">
                       <div className="flex items-center gap-6">
                         <div style={{ width:48, height:48, background:NAVY, display:"flex", alignItems:"center", justifyContent:"center" }}>
@@ -319,7 +319,7 @@ export default function NovaInnovations() {
                         <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 16 }}>Project Team</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.team.map((member, index) => (
-                            <Badge key={index} variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] bg-white">
+                            <Badge key={index} variant="outline" className="border-[#E8E4DC] text-[#0A0F2E] bg-white rounded-none">
                               {member}
                             </Badge>
                           ))}
@@ -345,15 +345,15 @@ export default function NovaInnovations() {
                     </div>
 
                     <div className="flex gap-3 pt-8 mt-8 border-t border-[#E8E4DC]">
-                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                         <Eye className="h-4 w-4 mr-2" />
                         Details
                       </Button>
-                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                      <Button variant="outline" className="flex-1 border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                         <BarChart3 className="h-4 w-4 mr-2" />
                         Analytics
                       </Button>
-                      <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45]">
+                      <Button className="flex-1 bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none">
                         <Rocket className="h-4 w-4 mr-2" />
                         Accelerate
                       </Button>
@@ -363,7 +363,7 @@ export default function NovaInnovations() {
               </div>
 
               {/* AI Recommendations */}
-              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
+              <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48, borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
                   <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Nova Analysis</span>

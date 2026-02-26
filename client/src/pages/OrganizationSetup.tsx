@@ -404,21 +404,27 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
           </div>
 
           {/* Header */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-gray-900 p-6 rounded-lg">
-            <div className="flex items-center justify-between">
+          <div style={{ background: "#0A0F2E", padding: "40px 48px", position: "relative", overflow: "hidden", borderRadius: "8px" }}>
+            <div style={{ 
+              position: "absolute", 
+              inset: 0, 
+              backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", 
+              backgroundSize: "44px 44px" 
+            }} />
+            <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Building2 className="w-7 h-7 text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                  <Building2 className="w-7 h-7 text-[#DFC178]" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="org-setup-title">Organization Setup</h1>
-                  <p className="text-indigo-100 mt-1">Configure YOUR team structure, stakeholders, and approval workflows</p>
-                  <p className="text-indigo-200 mt-1 text-sm">M will use these settings to coordinate execution across your organization</p>
+                  <h1 style={{ ...CG, fontWeight: 600, fontSize: "32px", color: "#fff" }} data-testid="org-setup-title">Organization <em style={{ fontStyle: "italic", color: "#DFC178" }}>Setup</em></h1>
+                  <p className="text-white/60 mt-1">Configure YOUR team structure, stakeholders, and approval workflows</p>
+                  <p className="text-white/40 mt-1 text-sm">Execution OS will use these settings to coordinate execution across your organization</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Link to="/">
-                  <Button variant="secondary" className="bg-indigo-700 hover:bg-indigo-800 text-indigo-100 border-indigo-600">
+                  <Button variant="secondary" className="bg-white/10 hover:bg-white/20 text-white border-none">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -428,7 +434,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
           </div>
 
           {/* Setup Progress */}
-          <Card className="border-indigo-500/30 bg-indigo-950/20">
+          <Card className="border-[#E8E4DC] bg-[#F8F7F4]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
@@ -436,26 +442,26 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   <p className="text-sm text-gray-800">Complete all sections to enable full strategic execution capabilities</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-indigo-400">{Math.round(progressPercent)}%</div>
+                  <div className="text-3xl font-bold text-[#C9A84C]">{Math.round(progressPercent)}%</div>
                   <div className="text-sm text-gray-800">Complete</div>
                 </div>
               </div>
               <Progress value={progressPercent} className="h-3 mb-4" />
               <div className="grid grid-cols-4 gap-4">
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-green-500/20' : 'bg-gray-50'}`}>
-                  {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                  {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Departments</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-green-500/20' : 'bg-gray-50'}`}>
-                  {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                  {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Stakeholders</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-green-500/20' : 'bg-gray-50'}`}>
-                  {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                  {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Escalation</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-green-500/20' : 'bg-gray-50'}`}>
-                  {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-green-500" /> : <AlertTriangle className="h-5 w-5 text-yellow-500" />}
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                  {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Channels</span>
                 </div>
               </div>
@@ -465,19 +471,19 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
           {/* Main Content Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
             <TabsList className="bg-gray-50 p-1 h-auto flex-wrap">
-              <TabsTrigger value="departments" className="gap-2 data-[state=active]:bg-indigo-600">
+              <TabsTrigger value="departments" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
                 <Layers className="h-4 w-4" />
                 Departments
               </TabsTrigger>
-              <TabsTrigger value="stakeholders" className="gap-2 data-[state=active]:bg-indigo-600">
+              <TabsTrigger value="stakeholders" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
                 <Users className="h-4 w-4" />
                 Stakeholders
               </TabsTrigger>
-              <TabsTrigger value="escalation" className="gap-2 data-[state=active]:bg-indigo-600">
+              <TabsTrigger value="escalation" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
                 <Workflow className="h-4 w-4" />
                 Escalation Policies
               </TabsTrigger>
-              <TabsTrigger value="channels" className="gap-2 data-[state=active]:bg-indigo-600">
+              <TabsTrigger value="channels" className="gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white uppercase text-[10px] font-bold tracking-wider">
                 <MessageSquare className="h-4 w-4" />
                 Communication Channels
               </TabsTrigger>
@@ -498,7 +504,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {departments.map((dept) => (
-                  <Card key={dept.id} className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+                  <Card key={dept.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div>
@@ -506,7 +512,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           <p className="text-sm text-gray-800 mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:bg-[#0A0F2E] hover:text-white">
                             <Edit className="h-4 w-4" />
                           </Button>
                           <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-red-500">
@@ -549,16 +555,16 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {stakeholders.map((sh) => (
-                  <Card key={sh.id} className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+                  <Card key={sh.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-gray-900 font-medium">
+                          <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-white font-medium">
                             {sh.name.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{sh.name}</h3>
-                            <p className="text-sm text-indigo-400">{sh.role}</p>
+                            <p className="text-sm text-[#0A0F2E]">{sh.role}</p>
                           </div>
                         </div>
                         <div className="flex gap-1">
@@ -585,7 +591,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                       </div>
                       <div className="mt-4 flex items-center gap-2">
                         {sh.canApproveActivations && (
-                          <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                          <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
                             Can Approve Activations
                           </Badge>
                         )}
@@ -622,7 +628,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                         <div>
                           <h3 className="font-semibold text-gray-900 text-lg">{policy.name}</h3>
                           <p className="text-sm text-gray-800 mt-1">{policy.description}</p>
-                          <Badge className="mt-2 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
+                          <Badge className="mt-2 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30">
                             {policy.triggerType.replace('_', ' ')}
                           </Badge>
                         </div>
@@ -642,7 +648,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           {policy.levels.map((level, idx) => (
                             <div key={level.level} className="relative flex items-start gap-4 pl-8">
                               <div className={`absolute left-2 w-4 h-4 rounded-full ${
-                                idx === 0 ? 'bg-green-500' : idx === 1 ? 'bg-yellow-500' : 'bg-red-500'
+                                idx === 0 ? 'bg-[#2B8A6E]' : idx === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                               } ring-4 ring-gray-800`}></div>
                               <div className="flex-1 p-3 bg-gray-50 rounded-lg">
                                 <div className="flex items-center justify-between">
@@ -663,7 +669,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                                 <div className="mt-2 flex items-center gap-2">
                                   <span className="text-sm text-gray-800">Actions:</span>
                                   {level.actions.map((action) => (
-                                    <Badge key={action} className="text-xs bg-blue-500/20 text-blue-400 border-blue-500/30">
+                                    <Badge key={action} className="text-xs bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30">
                                       {action}
                                     </Badge>
                                   ))}
@@ -699,10 +705,10 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
                           <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            channel.channelType === 'email' ? 'bg-blue-500/20 text-blue-400' :
-                            channel.channelType === 'slack' ? 'bg-purple-500/20 text-purple-400' :
-                            channel.channelType === 'teams' ? 'bg-indigo-500/20 text-indigo-400' :
-                            'bg-orange-500/20 text-orange-400'
+                            channel.channelType === 'email' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E]' :
+                            channel.channelType === 'slack' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E]' :
+                            channel.channelType === 'teams' ? 'bg-[#0A0F2E]/10 text-[#0A0F2E]' :
+                            'bg-[#C9A84C]/10 text-[#C9A84C]'
                           }`}>
                             {getChannelIcon(channel.channelType)}
                           </div>
@@ -713,7 +719,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                         </div>
                         <div className="flex items-center gap-2">
                           {channel.isDefault && (
-                            <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                            <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
                               Default
                             </Badge>
                           )}

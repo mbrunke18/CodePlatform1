@@ -7,7 +7,7 @@ const phaseSLAs = [
   {
     phase: 'IDENTIFY',
     icon: '🎯',
-    color: 'from-blue-600 to-cyan-600',
+    color: 'from-[#0A0F2E] to-[#3BAF8A]',
     target: '5 minutes',
     description: 'Time to confirm trigger and assess situation',
     benchmark: 'Industry: 2-4 hours'
@@ -15,7 +15,7 @@ const phaseSLAs = [
   {
     phase: 'DETECT',
     icon: '👁️',
-    color: 'from-purple-600 to-pink-600',
+    color: 'from-[#0A0F2E] to-pink-600',
     target: '2 minutes',
     description: 'Time to notify all Tier 1 stakeholders',
     benchmark: 'Industry: 30-60 minutes'
@@ -31,7 +31,7 @@ const phaseSLAs = [
   {
     phase: 'ADVANCE',
     icon: '📈',
-    color: 'from-green-600 to-emerald-600',
+    color: 'from-green-600 to-[#2B8A6E]',
     target: '24 hours',
     description: 'Time to complete lessons learned review',
     benchmark: 'Industry: 2-4 weeks'

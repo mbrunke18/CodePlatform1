@@ -474,7 +474,7 @@ export default function ExecutiveSummaryGenerator() {
                     </div>
                     <div className="flex items-center gap-3">
                       <Button variant="outline" size="sm" onClick={handleCopy} className="h-9 border-[#E8E4DC] text-[10px] font-bold uppercase tracking-widest">
-                        {copied ? <Check className="w-3.5 h-3.5 mr-2 text-emerald-500" /> : <Copy className="w-3.5 h-3.5 mr-2" />}
+                        {copied ? <Check className="w-3.5 h-3.5 mr-2 text-[#2B8A6E]" /> : <Copy className="w-3.5 h-3.5 mr-2" />}
                         {copied ? 'Copied' : 'Copy'}
                       </Button>
                       <Button variant="outline" size="sm" onClick={handleDownload} className="h-9 border-[#E8E4DC] text-[10px] font-bold uppercase tracking-widest">

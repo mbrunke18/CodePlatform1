@@ -34,7 +34,7 @@ const quotes = [
 
 export function Validation({ progress }: SceneProps) {
   return (
-    <div className="relative w-full h-full bg-gradient-to-b from-blue-50 to-white flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-gradient-to-b from-[#0A0F2E] to-white flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0 opacity-15"
         animate={{
@@ -54,8 +54,8 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 0.2 }}
           className="flex items-center justify-center gap-2 mb-3"
         >
-          <CheckCircle2 className="w-5 h-5 text-indigo-400" />
-          <span className="text-indigo-400 text-sm font-semibold tracking-wide uppercase">2026 Market Validation</span>
+          <CheckCircle2 className="w-5 h-5 text-[#0A0F2E]" />
+          <span className="text-[#0A0F2E] text-sm font-semibold tracking-wide uppercase">2026 Market Validation</span>
         </motion.div>
 
         <TextPunch
@@ -115,9 +115,9 @@ export function Validation({ progress }: SceneProps) {
               transition={{ delay: 1.6 + i * 0.25 }}
               className="bg-gray-50 border border-gray-200 rounded-xl p-4"
             >
-              <div className="text-indigo-400 font-bold text-sm mb-2">{q.firm}</div>
+              <div className="text-[#0A0F2E] font-bold text-sm mb-2">{q.firm}</div>
               <p className="text-gray-800 text-xs italic leading-relaxed">"{q.quote}"</p>
-              <div className="mt-2 text-emerald-400 text-xs">→ Execution OS delivers this</div>
+              <div className="mt-2 text-[#2B8A6E] text-xs">→ Execution OS delivers this</div>
             </motion.div>
           ))}
         </div>
@@ -128,7 +128,7 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 2.5 }}
           className="text-sm text-gray-700 text-center mt-6"
         >
-          <span className="text-indigo-400 font-semibold">15 firms. 17 reports.</span> Every one points at the gap Execution OS fills.
+          <span className="text-[#0A0F2E] font-semibold">15 firms. 17 reports.</span> Every one points at the gap Execution OS fills.
         </motion.p>
       </div>
 

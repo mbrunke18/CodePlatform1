@@ -47,7 +47,7 @@ interface RoleData {
 const ROLES: Record<string, RoleData> = {
   ceo: {
     id: 'ceo', title: 'Chief Executive Officer', name: 'Jennifer Park', company: 'Meridian Financial Group',
-    icon: Briefcase, color: 'text-blue-400', gradient: 'from-blue-600 to-indigo-700',
+    icon: Briefcase, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'M&A Integration — $2.3B Acquisition of CloudTech Solutions',
     domain: 'Mergers & Acquisitions', domainCategory: 'OFFENSE',
     playbook: { number: '12', name: 'M&A Day 1 Integration', tasks: 34, stakeholders: 45, budget: '$1.2M' },
@@ -103,7 +103,7 @@ const ROLES: Record<string, RoleData> = {
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
-    icon: Shield, color: 'text-red-400', gradient: 'from-red-600 to-rose-700',
+    icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Ransomware Attack — Production Systems Compromised at 2:17 AM',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '31', name: 'Critical Incident Response — Ransomware', tasks: 28, stakeholders: 30, budget: '$350K' },
@@ -159,7 +159,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
-    icon: TrendingUp, color: 'text-purple-400', gradient: 'from-purple-600 to-pink-700',
+    icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Competitive Response — Major Competitor Launches Rival Product',
     domain: 'Competitive Response', domainCategory: 'OFFENSE',
     playbook: { number: '47', name: 'Competitive Response — Product Counter-Strategy', tasks: 24, stakeholders: 28, budget: '$250K' },
@@ -215,7 +215,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cfo: {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
-    icon: DollarSign, color: 'text-emerald-400', gradient: 'from-emerald-600 to-green-700',
+    icon: DollarSign, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Regulatory Change — New SEC Climate Disclosure Requirements',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '58', name: 'Regulatory Compliance — Financial Reporting', tasks: 32, stakeholders: 22, budget: '$180K' },
@@ -271,7 +271,7 @@ const ROLES: Record<string, RoleData> = {
   },
   coo: {
     id: 'coo', title: 'Chief Operating Officer', name: 'David Wilson', company: 'Meridian Financial Group',
-    icon: Settings, color: 'text-amber-400', gradient: 'from-amber-600 to-orange-700',
+    icon: Settings, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'Supply Chain Disruption — Critical Vendor Data Center Outage',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
     playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, stakeholders: 24, budget: '$200K' },
@@ -327,7 +327,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cto: {
     id: 'cto', title: 'Chief Technology Officer', name: 'Michael Rodriguez', company: 'Meridian Financial Group',
-    icon: Server, color: 'text-cyan-400', gradient: 'from-cyan-600 to-blue-700',
+    icon: Server, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Digital Transformation — Enterprise AI Platform Rollout',
     domain: 'Digital Transformation', domainCategory: 'SPECIAL TEAMS',
     playbook: { number: '72', name: 'AI Governance & Platform Launch', tasks: 38, stakeholders: 35, budget: '$2.8M' },
@@ -439,7 +439,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cdo: {
     id: 'cdo', title: 'Chief Data Officer', name: 'Nicole Hall', company: 'Meridian Financial Group',
-    icon: Database, color: 'text-indigo-400', gradient: 'from-indigo-600 to-violet-700',
+    icon: Database, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Data Strategy — Enterprise Customer 360 Platform Launch',
     domain: 'Digital Transformation', domainCategory: 'SPECIAL TEAMS',
     playbook: { number: '78', name: 'Enterprise Data Platform Rollout', tasks: 36, stakeholders: 28, budget: '$1.8M' },
@@ -551,7 +551,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cco: {
     id: 'cco', title: 'Chief Compliance Officer', name: 'Jessica Thompson', company: 'Meridian Financial Group',
-    icon: FileCheck, color: 'text-teal-400', gradient: 'from-teal-600 to-cyan-700',
+    icon: FileCheck, color: 'text-teal-400', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
     scenario: 'Compliance Emergency — Surprise Regulatory Audit with 48-Hour Notice',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '62', name: 'Emergency Regulatory Audit Response', tasks: 30, stakeholders: 20, budget: '$150K' },
@@ -607,7 +607,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cso: {
     id: 'cso', title: 'Chief Strategy Officer', name: 'Patricia Wright', company: 'Meridian Financial Group',
-    icon: Target, color: 'text-violet-400', gradient: 'from-violet-600 to-purple-700',
+    icon: Target, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Strategic Pivot — Market Entry into Asia-Pacific Financial Services',
     domain: 'Market Entry', domainCategory: 'OFFENSE',
     playbook: { number: '15', name: 'New Market Entry — APAC Financial Services', tasks: 40, stakeholders: 38, budget: '$3.2M' },
@@ -665,7 +665,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cro: {
     id: 'cro', title: 'Chief Revenue Officer', name: 'Ryan Davis', company: 'Meridian Financial Group',
-    icon: TrendingUp, color: 'text-emerald-400', gradient: 'from-emerald-600 to-teal-700',
+    icon: TrendingUp, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
     scenario: 'Revenue Protection — Major Enterprise Customer Churn Prevention',
     domain: 'Competitive Response', domainCategory: 'OFFENSE',
     playbook: { number: '52', name: 'Enterprise Customer Retention — Critical Account', tasks: 28, stakeholders: 22, budget: '$200K' },
@@ -742,7 +742,7 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
     <div className="flex items-center gap-1">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 flex-1 rounded-full transition-all ${i <= step ? 'bg-indigo-500' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
+        <div key={i} className={`h-1 flex-1 rounded-full transition-all ${i <= step ? 'bg-[#0A0F2E]' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
       ))}
     </div>
   );
@@ -882,9 +882,9 @@ export default function RoleExperience() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="bg-white border border-cyan-500/20 rounded-2xl p-6">
+              className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="h-5 w-5 text-cyan-400" />
+                <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                 <h3 className="font-semibold text-gray-900">Your Playbook</h3>
               </div>
               <div className="space-y-2 text-sm">
@@ -912,14 +912,14 @@ export default function RoleExperience() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="bg-white border border-indigo-500/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Database className="h-5 w-5 text-indigo-400" />
+                <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h3 className="font-semibold text-gray-900">Connected Data Sources</h3>
               </div>
               <div className="space-y-2">
                 {connectedSources.map((s, i) => (
                   <div key={i} className="flex items-center justify-between text-sm">
                     <span className="text-gray-800">{s.name}</span>
-                    <span className="text-indigo-400 font-medium">{s.dataPoints.toLocaleString()} pts</span>
+                    <span className="text-[#0A0F2E] font-medium">{s.dataPoints.toLocaleString()} pts</span>
                   </div>
                 ))}
               </div>
@@ -929,9 +929,9 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-white border border-purple-500/20 rounded-2xl p-6">
+              className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Sliders className="h-5 w-5 text-purple-400" />
+                <Sliders className="h-5 w-5 text-[#C9A84C]" />
                 <h3 className="font-semibold text-gray-900">Customizations</h3>
               </div>
               <div className="space-y-2">
@@ -946,7 +946,7 @@ export default function RoleExperience() {
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
             className="text-center">
-            <Button onClick={next} size="lg" className="bg-gradient-to-r from-green-600 to-emerald-600 text-gray-900 px-10 py-6 text-lg">
+            <Button onClick={next} size="lg" className="bg-gradient-to-r from-green-600 to-[#2B8A6E] text-gray-900 px-10 py-6 text-lg">
               <Rocket className="h-5 w-5 mr-2" /> Launch Execution
             </Button>
           </motion.div>
@@ -964,7 +964,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Badge className={`mb-4 ${role.domainCategory === 'OFFENSE' ? 'bg-blue-500/20 text-blue-400' : role.domainCategory === 'DEFENSE' ? 'bg-red-500/20 text-red-400' : 'bg-purple-500/20 text-purple-400'}`}>{role.domainCategory} — {role.domain}</Badge>
+              <Badge className={`mb-4 ${role.domainCategory === 'OFFENSE' ? 'bg-[#0A0F2E]/20 text-[#0A0F2E]' : role.domainCategory === 'DEFENSE' ? 'bg-red-500/20 text-red-400' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{role.domainCategory} — {role.domain}</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">{role.name}, {role.title}</h1>
               <p className="text-xl text-gray-800 mb-2">{role.company}</p>
             </motion.div>
@@ -980,8 +980,8 @@ export default function RoleExperience() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
               className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-800"
             >
-              <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-cyan-400" /> Playbook #{role.playbook.number}</span>
-              <span className="flex items-center gap-2"><Users className="h-4 w-4 text-blue-400" /> {role.playbook.stakeholders} stakeholders</span>
+              <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Playbook #{role.playbook.number}</span>
+              <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#0A0F2E]" /> {role.playbook.stakeholders} stakeholders</span>
               <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-amber-400" /> {role.playbook.tasks} tasks</span>
               <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-green-400" /> {role.playbook.budget} budget</span>
             </motion.div>
@@ -992,7 +992,7 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-cyan-500/20 text-cyan-400"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PLAYBOOK</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PLAYBOOK</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Build Your Playbook</h2>
               <p className="text-gray-800">Customize your playbook configuration — pre-filled with smart defaults from {role.title}</p>
             </div>
@@ -1008,11 +1008,11 @@ export default function RoleExperience() {
               <span className="text-xs text-gray-800 font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-white border border-cyan-500/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#2B8A6E]/20 rounded-2xl overflow-hidden"
             >
-              <div className="bg-cyan-950/30 border-b border-cyan-500/10 px-6 py-4 flex items-center justify-between">
+              <div className="bg-[#2B8A6E]/30 border-b border-[#2B8A6E]/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <BookOpen className="h-5 w-5 text-cyan-400" />
+                  <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                   <span className="text-gray-900 font-semibold">Playbook Configuration</span>
                   <Badge variant="outline" className="text-xs">Template #{role.playbook.number}</Badge>
                 </div>
@@ -1051,7 +1051,7 @@ export default function RoleExperience() {
                   <div className="space-y-2 mb-4">
                     {role.executionTasks.slice(0, 5).map((task, i) => (
                       <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                        <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-xs text-cyan-400 font-bold">{i + 1}</div>
+                        <div className="w-6 h-6 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center text-xs text-[#2B8A6E] font-bold">{i + 1}</div>
                         <span className="text-sm text-gray-800 flex-1">{task.task}</span>
                         <Badge variant="outline" className="text-[10px]">{task.tool}</Badge>
                       </div>
@@ -1062,11 +1062,11 @@ export default function RoleExperience() {
                   </div>
                   {customTasks.length > 0 && (
                     <div className="mb-4">
-                      <div className="text-xs text-cyan-400 uppercase tracking-wider mb-2">Your Custom Tasks</div>
+                      <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-2">Your Custom Tasks</div>
                       <div className="space-y-2">
                         {customTasks.map((task, i) => (
-                          <div key={i} className="flex items-center gap-3 bg-cyan-500/5 border border-cyan-500/10 rounded-lg p-3">
-                            <Badge className="bg-cyan-500/20 text-cyan-400 text-[10px]">Custom</Badge>
+                          <div key={i} className="flex items-center gap-3 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-lg p-3">
+                            <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[10px]">Custom</Badge>
                             <span className="text-sm text-gray-900 flex-1">{task}</span>
                             <button onClick={() => setCustomTasks(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
                               <Trash2 className="h-3.5 w-3.5" />
@@ -1081,7 +1081,7 @@ export default function RoleExperience() {
                       placeholder="Add a custom task to the execution sequence..."
                       className="bg-white/5 border-white/10 text-gray-900 flex-1"
                       onKeyDown={e => { if (e.key === 'Enter' && newTaskInput.trim()) { setCustomTasks(prev => [...prev, newTaskInput.trim()]); setNewTaskInput(''); }}} />
-                    <Button variant="outline" className="border-cyan-500/30 text-cyan-400"
+                    <Button variant="outline" className="border-[#2B8A6E]/30 text-[#2B8A6E]"
                       onClick={() => { if (newTaskInput.trim()) { setCustomTasks(prev => [...prev, newTaskInput.trim()]); setNewTaskInput(''); }}}>
                       <Plus className="h-4 w-4 mr-1" /> Add Task
                     </Button>
@@ -1090,7 +1090,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <div className="mt-6 flex justify-end">
-              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-cyan-600 to-indigo-600 text-gray-900 px-8">
+              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-[#2B8A6E] to-[#141B45] text-gray-900 px-8">
                 Next: Configure Triggers <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1179,7 +1179,7 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-indigo-500/20 text-indigo-400"><Database className="h-3 w-3 mr-1" /> CONNECT DATA SOURCES</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Database className="h-3 w-3 mr-1" /> CONNECT DATA SOURCES</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Connect Your Data Sources</h2>
               <p className="text-gray-800">Toggle connections to enterprise systems that feed real-time intelligence</p>
             </div>
@@ -1189,10 +1189,10 @@ export default function RoleExperience() {
             </div>
             <div className="bg-white border border-indigo-500/20 rounded-xl p-4 mb-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <Globe className="h-5 w-5 text-indigo-400" />
+                <Globe className="h-5 w-5 text-[#0A0F2E]" />
                 <span className="text-sm text-gray-900 font-medium">Total Data Points Monitored</span>
               </div>
-              <div className="text-2xl font-bold text-indigo-400">{totalDataPoints.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-[#0A0F2E]">{totalDataPoints.toLocaleString()}</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {userDataSources.map((source, i) => (
@@ -1201,7 +1201,7 @@ export default function RoleExperience() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-indigo-400' : 'text-gray-800'}`} />
+                      <Workflow className={`h-5 w-5 ${source.connected ? 'text-[#C9A84C]' : 'text-gray-800'}`} />
                       {i < role.dataSources.length ? (
                         <span className="text-sm font-medium text-gray-900">{source.name}</span>
                       ) : (
@@ -1229,7 +1229,7 @@ export default function RoleExperience() {
                       )}
                     </div>
                     {source.connected && (
-                      <span className="text-sm font-bold text-indigo-400">{source.dataPoints.toLocaleString()} pts</span>
+                      <span className="text-sm font-bold text-[#C9A84C]">{source.dataPoints.toLocaleString()} pts</span>
                     )}
                   </div>
                 </motion.div>
@@ -1243,7 +1243,7 @@ export default function RoleExperience() {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}} />
-              <Button variant="outline" className="border-indigo-500/30 text-indigo-400"
+              <Button variant="outline" className="border-indigo-500/30 text-[#0A0F2E]"
                 onClick={() => { if (newDataSourceName.trim()) {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
@@ -1255,7 +1255,7 @@ export default function RoleExperience() {
               <Button variant="outline" onClick={prev} className="border-white/20 text-gray-900">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back
               </Button>
-              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-gradient-to-r from-indigo-600 to-violet-600 text-gray-900 px-8">
+              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-gray-900 px-8">
                 Next: Customize <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1266,7 +1266,7 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-purple-500/20 text-purple-400"><Sliders className="h-3 w-3 mr-1" /> CUSTOMIZE CONFIGURATION</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Sliders className="h-3 w-3 mr-1" /> CUSTOMIZE CONFIGURATION</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Customize Your Configuration</h2>
               <p className="text-gray-800">Fine-tune each setting — leave blank to use the smart default</p>
             </div>
@@ -1284,7 +1284,7 @@ export default function RoleExperience() {
             <div className="space-y-4 mb-6">
               {userCustomizations.map((custom, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
-                  className="bg-white border border-purple-500/20 rounded-xl p-5"
+                  className="bg-white border border-[#C9A84C]/20 rounded-xl p-5"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <Label className="text-gray-900 font-medium">{custom.field}</Label>
@@ -1296,7 +1296,7 @@ export default function RoleExperience() {
                   </div>
                   {i < role.customizations.length && (
                     <div className="text-xs text-gray-800 mb-2">
-                      Default: <span className="text-gray-800">{role.customizations[i].before}</span> → <span className="text-purple-400">{role.customizations[i].after}</span>
+                      Default: <span className="text-gray-800">{role.customizations[i].before}</span> → <span className="text-[#C9A84C]">{role.customizations[i].after}</span>
                     </div>
                   )}
                   <Textarea value={custom.value}
@@ -1304,7 +1304,7 @@ export default function RoleExperience() {
                     placeholder={i < role.customizations.length ? role.customizations[i].after : 'Enter your custom configuration...'}
                     className="bg-white/5 border-white/10 text-gray-900 min-h-[60px]" />
                   {custom.value.trim() && custom.value !== (i < role.customizations.length ? role.customizations[i].after : '') && (
-                    <Badge className="mt-2 bg-cyan-500/20 text-cyan-400 text-[10px]">Your Configuration</Badge>
+                    <Badge className="mt-2 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[10px]">Your Configuration</Badge>
                   )}
                 </motion.div>
               ))}
@@ -1317,7 +1317,7 @@ export default function RoleExperience() {
                   setUserCustomizations(prev => [...prev, { field: newCustomField.trim(), value: '' }]);
                   setNewCustomField('');
                 }}} />
-              <Button variant="outline" className="border-purple-500/30 text-purple-400"
+              <Button variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E]"
                 onClick={() => { if (newCustomField.trim()) {
                   setUserCustomizations(prev => [...prev, { field: newCustomField.trim(), value: '' }]);
                   setNewCustomField('');
@@ -1329,7 +1329,7 @@ export default function RoleExperience() {
               <Button variant="outline" onClick={prev} className="border-white/20 text-gray-900">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back
               </Button>
-              <Button onClick={next} className="bg-gradient-to-r from-purple-600 to-pink-600 text-gray-900 px-8">
+              <Button onClick={next} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-8">
                 <Rocket className="h-4 w-4 mr-2" /> Review & Launch
               </Button>
             </div>
@@ -1366,15 +1366,15 @@ export default function RoleExperience() {
                 <p className="text-gray-800 mb-6 leading-relaxed">{role.signal.detail}</p>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="bg-white/5 rounded-lg p-3 text-center">
-                    <Eye className="h-5 w-5 text-blue-400 mx-auto mb-1" />
+                    <Eye className="h-5 w-5 text-[#0A0F2E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Source</div>
                     <div className="text-sm text-gray-900 font-medium">{role.signal.source}</div>
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 text-center">
-                    <BookOpen className="h-5 w-5 text-cyan-400 mx-auto mb-1" />
+                    <BookOpen className="h-5 w-5 text-[#2B8A6E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Your Playbook</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
-                    {userPlaybook.name !== role.playbook.name && <Badge className="mt-1 bg-cyan-500/20 text-cyan-400 text-[8px]">Custom</Badge>}
+                    {userPlaybook.name !== role.playbook.name && <Badge className="mt-1 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                   </div>
                   <div className="bg-white/5 rounded-lg p-3 text-center">
                     <Bell className="h-5 w-5 text-amber-400 mx-auto mb-1" />
@@ -1401,16 +1401,16 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-purple-500/20 text-purple-400"><Brain className="h-3 w-3 mr-1" /> AI ANALYSIS</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Brain className="h-3 w-3 mr-1" /> AI ANALYSIS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">AI Analyzes the Situation</h2>
               <p className="text-gray-800">GPT-4o processes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-                className="bg-white border border-purple-500/20 rounded-2xl p-6"
+                className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <Brain className="h-5 w-5 text-purple-400" />
+                  <Brain className="h-5 w-5 text-[#0A0F2E]" />
                   <h3 className="text-lg font-semibold text-gray-900">Key Insights</h3>
                 </div>
                 <div className="space-y-3">
@@ -1426,20 +1426,20 @@ export default function RoleExperience() {
               </motion.div>
               <div className="space-y-6">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
-                  className="bg-white border border-purple-500/20 rounded-2xl p-6"
+                  className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
-                    <div className="text-5xl font-bold text-purple-400">94%</div>
+                    <div className="text-5xl font-bold text-[#C9A84C]">94%</div>
                     <div className="text-sm text-gray-800 pb-2">recommendation confidence</div>
                   </div>
                   <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: '94%' }} transition={{ delay: 0.8, duration: 1.5 }}
-                      className="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" />
+                      className="h-full bg-[#C9A84C] rounded-full" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
-                  className="bg-white border border-cyan-500/20 rounded-2xl p-6"
+                  className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Recommendation</h3>
                   <p className="text-sm text-gray-800 leading-relaxed">
@@ -1456,12 +1456,12 @@ export default function RoleExperience() {
         return (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-indigo-500/20 text-indigo-400"><Shield className="h-3 w-3 mr-1" /> HUMAN-AI PARTNERSHIP</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Shield className="h-3 w-3 mr-1" /> HUMAN-AI PARTNERSHIP</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{role.name.split(' ')[0]} Makes the Call</h2>
               <p className="text-gray-800">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-indigo-500/30 rounded-2xl p-8"
+              className="bg-white border border-[#0A0F2E]/30 rounded-2xl p-8"
             >
               <div className="flex items-center gap-5 mb-6">
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center`}>
@@ -1472,29 +1472,29 @@ export default function RoleExperience() {
                   <p className="text-gray-800">{role.title}, {role.company}</p>
                 </div>
               </div>
-              <div className="bg-indigo-950/30 border border-indigo-500/10 rounded-xl p-5 mb-6">
-                <div className="text-xs text-indigo-400 uppercase tracking-wider mb-2">Decision Required</div>
+              <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/10 rounded-xl p-5 mb-6">
+                <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-2">Decision Required</div>
                 <p className="text-gray-800">
                   Activate <span className="text-gray-900 font-semibold">{userPlaybook.name}</span> with {userPlaybook.stakeholders} stakeholders, 
                   {' '}{userPlaybook.tasks}{customTasks.length > 0 ? ` + ${customTasks.length} custom` : ''} pre-configured tasks, and {userPlaybook.budget} pre-approved budget?
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-3 text-center">
-                  <div className="text-lg font-bold text-cyan-400">{userPlaybook.tasks + customTasks.length}</div>
+                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                  <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.tasks + customTasks.length}</div>
                   <div className="text-xs text-gray-800">Tasks Ready</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center">
-                  <div className="text-lg font-bold text-blue-400">{userPlaybook.stakeholders}</div>
+                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                  <div className="text-lg font-bold text-[#0A0F2E]">{userPlaybook.stakeholders}</div>
                   <div className="text-xs text-gray-800">Stakeholders Mapped</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center">
-                  <div className="text-lg font-bold text-green-400">{userPlaybook.budget}</div>
+                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                  <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.budget}</div>
                   <div className="text-xs text-gray-800">Budget Pre-Approved</div>
                 </div>
               </div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
-                className="flex items-center justify-center gap-3 bg-green-500/20 border border-green-500/30 text-green-400 px-8 py-4 rounded-xl font-semibold text-lg"
+                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 rounded-xl font-semibold text-lg"
               >
                 <CheckCircle2 className="h-6 w-6" />
                 APPROVED — {role.name.split(' ')[0]} Activates {userPlaybook.name}
@@ -1512,17 +1512,17 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-6">
-              <Badge className="mb-3 bg-green-500/20 text-green-400"><Zap className="h-3 w-3 mr-1" /> EXECUTE PHASE</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><Zap className="h-3 w-3 mr-1" /> EXECUTE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">12-Minute Execution in Progress</h2>
               <p className="text-gray-800">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3 bg-white border border-green-500/20 rounded-2xl p-5">
+              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-gray-900">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
-                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-green-500" />
-                    <span className="text-green-400 text-xs font-medium">LIVE</span>
+                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                    <span className="text-[#2B8A6E] text-xs font-medium">LIVE</span>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -1541,7 +1541,7 @@ export default function RoleExperience() {
                         <div className="flex-1">
                           <div className={`text-sm font-medium ${isActive ? 'text-gray-900' : 'text-gray-800'}`}>{task.task}</div>
                         </div>
-                        {isCustom && <Badge className="bg-cyan-500/20 text-cyan-400 text-[8px]">Custom</Badge>}
+                        {isCustom && <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                         <Badge variant="outline" className={`text-[10px] ${isActive ? '' : 'opacity-30'}`}>{task.tool}</Badge>
                       </motion.div>
                     );
@@ -1549,7 +1549,7 @@ export default function RoleExperience() {
                 </div>
               </div>
               <div className="col-span-2 space-y-4">
-                <div className="bg-white border border-blue-500/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-5">
                   <h3 className="font-semibold text-gray-900 mb-3 text-sm">Stakeholder Response</h3>
                   <div className="space-y-2">
                     {role.stakeholders.map((s, i) => (
@@ -1562,28 +1562,28 @@ export default function RoleExperience() {
                         </div>
                         {i <= activationStep && (
                           <div className="flex items-center gap-1">
-                            <CheckCircle2 className="h-3 w-3 text-green-400" />
-                            <span className="text-[10px] text-green-400">{s.responseTime}</span>
+                            <CheckCircle2 className="h-3 w-3 text-[#2B8A6E]" />
+                            <span className="text-[10px] text-[#2B8A6E]">{s.responseTime}</span>
                           </div>
                         )}
                       </motion.div>
                     ))}
                   </div>
                 </div>
-                <div className="bg-white border border-amber-500/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#C9A84C]/20 rounded-2xl p-5">
                   <h3 className="font-semibold text-gray-900 mb-3 text-sm">Progress</h3>
                   <div className="space-y-3">
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="text-gray-800">Tasks</span>
-                        <span className="text-green-400">{Math.min(activationStep + 1, allExecutionTasks.length)}/{allExecutionTasks.length}</span>
+                        <span className="text-[#2B8A6E]">{Math.min(activationStep + 1, allExecutionTasks.length)}/{allExecutionTasks.length}</span>
                       </div>
                       <Progress value={((activationStep + 1) / allExecutionTasks.length) * 100} className="h-2" />
                     </div>
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="text-gray-800">Stakeholders</span>
-                        <span className="text-blue-400">{Math.min(activationStep + 1, role.stakeholders.length)}/{userPlaybook.stakeholders}</span>
+                        <span className="text-[#0A0F2E]">{Math.min(activationStep + 1, role.stakeholders.length)}/{userPlaybook.stakeholders}</span>
                       </div>
                       <Progress value={((Math.min(activationStep + 1, role.stakeholders.length)) / userPlaybook.stakeholders) * 100} className="h-2" />
                     </div>
@@ -1598,16 +1598,16 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-blue-500/20 text-blue-400"><MessageSquare className="h-3 w-3 mr-1" /> WAR ROOM</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><MessageSquare className="h-3 w-3 mr-1" /> WAR ROOM</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Cross-Functional War Room</h2>
               <p className="text-gray-800">All stakeholders coordinating in real-time through a unified command center</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-blue-500/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#0A0F2E]/20 rounded-2xl overflow-hidden"
             >
-              <div className="bg-blue-950/30 border-b border-blue-500/10 px-6 py-3 flex items-center justify-between">
+              <div className="bg-[#0A0F2E]/5 border-b border-[#0A0F2E]/10 px-6 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
                   <span className="text-gray-900 font-medium text-sm">War Room — {userPlaybook.name}</span>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-gray-800">
@@ -1617,9 +1617,9 @@ export default function RoleExperience() {
               </div>
               <div className="p-6 space-y-4">
                 {[
-                  { name: role.stakeholders[0]?.name || 'Team Lead', role: role.stakeholders[0]?.role || 'Director', msg: `Team is assembled. All ${userPlaybook.tasks + customTasks.length} tasks distributed and acknowledged. Execution is on track.`, time: '2 min ago', color: 'border-green-500/30' },
-                  { name: 'Execution OS AI', role: 'AI Assistant', msg: `Status update: ${Math.floor(userPlaybook.stakeholders * 0.8)} of ${userPlaybook.stakeholders} stakeholders have acknowledged. ${allExecutionTasks.length} tasks in progress. No blockers detected. Estimated completion: under 12 minutes.`, time: '1 min ago', color: 'border-purple-500/30' },
-                  { name: role.stakeholders[1]?.name || 'Executive', role: role.stakeholders[1]?.role || 'VP', msg: `Confirmed all systems are operational on our end. ${userPlaybook.budget} budget allocation is active and tracking. Ready to support any escalations.`, time: '30 sec ago', color: 'border-blue-500/30' },
+                  { name: role.stakeholders[0]?.name || 'Team Lead', role: role.stakeholders[0]?.role || 'Director', msg: `Team is assembled. All ${userPlaybook.tasks + customTasks.length} tasks distributed and acknowledged. Execution is on track.`, time: '2 min ago', color: 'border-[#2B8A6E]/30' },
+                  { name: 'Execution OS AI', role: 'AI Assistant', msg: `Status update: ${Math.floor(userPlaybook.stakeholders * 0.8)} of ${userPlaybook.stakeholders} stakeholders have acknowledged. ${allExecutionTasks.length} tasks in progress. No blockers detected. Estimated completion: under 12 minutes.`, time: '1 min ago', color: 'border-[#C9A84C]/30' },
+                  { name: role.stakeholders[1]?.name || 'Executive', role: role.stakeholders[1]?.role || 'VP', msg: `Confirmed all systems are operational on our end. ${userPlaybook.budget} budget allocation is active and tracking. Ready to support any escalations.`, time: '30 sec ago', color: 'border-[#0A0F2E]/30' },
                 ].map((msg, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.3 }}
                     className={`border-l-2 ${msg.color} bg-white/5 rounded-r-lg p-4`}
@@ -1650,26 +1650,26 @@ export default function RoleExperience() {
             <div className="space-y-4 mb-8">
               {role.outcomes.map((outcome, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }}
-                  className="bg-white border border-white/10 rounded-xl p-5"
+                  className="bg-white border border-[#E8E4DC] rounded-xl p-5 shadow-sm"
                 >
                   <div className="grid grid-cols-3 gap-4 items-center">
                     <div className="text-gray-900 font-semibold">{outcome.metric}</div>
                     <div className="text-center">
-                      <div className="text-xs text-red-400 uppercase tracking-wider mb-1">Without Execution OS</div>
+                      <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-1 opacity-70">Without Execution OS</div>
                       <div className="text-lg font-bold text-red-400">{outcome.before}</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs text-green-400 uppercase tracking-wider mb-1">With Execution OS</div>
-                      <div className="text-lg font-bold text-green-400">{outcome.after}</div>
+                      <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-1 opacity-70">With Execution OS</div>
+                      <div className="text-lg font-bold text-[#2B8A6E]">{outcome.after}</div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
-              className="bg-gradient-to-r   border border-green-500/20 rounded-2xl p-6 text-center"
+              className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/20 rounded-2xl p-6 text-center"
             >
-              <CheckCircle2 className="h-10 w-10 text-green-400 mx-auto mb-3" />
+              <CheckCircle2 className="h-10 w-10 text-[#2B8A6E] mx-auto mb-3" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">Full execution completed in under 12 minutes</h3>
               <p className="text-gray-800">{userPlaybook.stakeholders} stakeholders coordinated, {userPlaybook.tasks + customTasks.length} tasks completed, {userPlaybook.budget} budget tracked</p>
             </motion.div>
@@ -1680,18 +1680,18 @@ export default function RoleExperience() {
         return (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-purple-500/20 text-purple-400"><TrendingUp className="h-3 w-3 mr-1" /> ADVANCE PHASE</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><TrendingUp className="h-3 w-3 mr-1" /> ADVANCE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Institutional Learning</h2>
               <p className="text-gray-800">{role.name.split(' ')[0]}'s execution data feeds back into the playbook for continuous improvement</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-purple-500/20 rounded-2xl p-6 mb-6"
+              className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6 mb-6"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Brain className="h-6 w-6 text-purple-400" />
+                <Brain className="h-6 w-6 text-[#0A0F2E]" />
                 <h3 className="text-lg font-semibold text-gray-900">AI-Generated Playbook Refinement</h3>
               </div>
-              <div className="bg-purple-950/20 border border-purple-500/10 rounded-xl p-5">
+              <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl p-5">
                 <p className="text-gray-800 leading-relaxed">{role.lesson}</p>
               </div>
             </motion.div>
@@ -1699,11 +1699,11 @@ export default function RoleExperience() {
               className="grid grid-cols-3 gap-4 mb-8"
             >
               {[
-                { label: 'Execution Score', value: '96/100', icon: Award, color: 'text-green-400' },
-                { label: 'Improvement Areas', value: '3 identified', icon: Lightbulb, color: 'text-amber-400' },
-                { label: 'Playbook Version', value: 'v2.1 saved', icon: BookOpen, color: 'text-cyan-400' },
+                { label: 'Execution Score', value: '96/100', icon: Award, color: 'text-[#2B8A6E]' },
+                { label: 'Improvement Areas', value: '3 identified', icon: Lightbulb, color: 'text-[#C9A84C]' },
+                { label: 'Playbook Version', value: 'v2.1 saved', icon: BookOpen, color: 'text-[#0A0F2E]' },
               ].map((item, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                <div key={i} className="bg-white/5 border border-[#E8E4DC] rounded-xl p-4 text-center">
                   <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
                   <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
                   <div className="text-xs text-gray-800">{item.label}</div>
@@ -1712,10 +1712,10 @@ export default function RoleExperience() {
             </motion.div>
             {customTasks.length > 0 && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                className="bg-cyan-950/20 border border-cyan-500/10 rounded-xl p-5 mb-6"
+                className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-5 mb-6"
               >
                 <div className="flex items-center gap-2 mb-3">
-                  <Badge className="bg-cyan-500/20 text-cyan-400 text-xs">Your Custom Tasks</Badge>
+                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-xs">Your Custom Tasks</Badge>
                   <span className="text-sm text-gray-800">incorporated into playbook v2.1</span>
                 </div>
                 <div className="space-y-1">
@@ -1730,13 +1730,13 @@ export default function RoleExperience() {
             >
               <p className="text-gray-800">Every execution makes the next one faster, smarter, and more effective.</p>
               <div className="flex items-center justify-center gap-4">
-                <Link href="/role-selector">
+                <Link href="/onboarding">
                   <Button variant="outline" className="border-white/20 text-gray-900 hover:bg-white/10">
                     <ArrowLeft className="h-4 w-4 mr-2" /> Try Another Role
                   </Button>
                 </Link>
-                <Link href="/pilot-program">
-                  <Button className="bg-gradient-to-r from-indigo-600 to-cyan-600 text-gray-900">
+                <Link href="/onboarding">
+                  <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
                     <Rocket className="h-4 w-4 mr-2" /> Start Your Pilot
                   </Button>
                 </Link>
@@ -1752,11 +1752,11 @@ export default function RoleExperience() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-b pt-8 pb-20">
-        <div className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md border-b border-white/5 px-4 py-3">
+      <div className="min-h-screen bg-[#F8F7F4] pt-8 pb-20">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-[#F8F7F4]/80 backdrop-blur-md border-b border-[#E8E4DC] px-4 py-3">
           <div className="max-w-5xl mx-auto flex items-center gap-4">
-            <Link href="/role-selector">
-              <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white">
+            <Link href="/onboarding">
+              <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#0A0F2E]/10">
                 <ArrowLeft className="h-4 w-4 mr-1" /> Roles
               </Button>
             </Link>
@@ -1765,10 +1765,10 @@ export default function RoleExperience() {
             </div>
             <span className="text-xs text-gray-800 font-medium min-w-[80px] text-center">{stage + 1}/{STAGES.length} — {currentStage.label}</span>
             <div className="flex gap-1">
-              <Button variant="ghost" size="sm" onClick={prev} disabled={stage === 0 && !showSummary} className="text-gray-800 hover:text-white">
+              <Button variant="ghost" size="sm" onClick={prev} disabled={stage === 0 && !showSummary} className="text-[#0A0F2E] hover:bg-[#0A0F2E]/10">
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <Button variant="ghost" size="sm" onClick={next} disabled={stage === STAGES.length - 1} className="text-gray-800 hover:text-white">
+              <Button variant="ghost" size="sm" onClick={next} disabled={stage === STAGES.length - 1} className="text-[#0A0F2E] hover:bg-[#0A0F2E]/10">
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>

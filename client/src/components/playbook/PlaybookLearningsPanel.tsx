@@ -64,9 +64,9 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'communication': return 'text-blue-800 dark:text-blue-400';
-      case 'timing': return 'text-purple-800 dark:text-purple-400';
-      case 'resource_allocation': return 'text-emerald-700 dark:text-green-400';
+      case 'communication': return 'text-[#0A0F2E] dark:text-[#0A0F2E]';
+      case 'timing': return 'text-[#C9A84C] dark:text-[#C9A84C]';
+      case 'resource_allocation': return 'text-[#2B8A6E] dark:text-green-400';
       case 'escalation': return 'text-red-700 dark:text-red-400';
       default: return 'text-gray-800 dark:text-slate-300';
     }
@@ -125,7 +125,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                 <p className="text-sm text-gray-800 dark:text-slate-300">Total Learnings</p>
                 <p className="text-3xl font-bold text-slate-900 dark:text-white">{totalLearnings}</p>
               </div>
-              <Brain className="h-8 w-8 text-blue-500" />
+              <Brain className="h-8 w-8 text-[#0A0F2E]" />
             </div>
           </CardContent>
         </Card>
@@ -135,7 +135,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-800 dark:text-slate-300">Applied</p>
-                <p className="text-3xl font-bold text-emerald-700 dark:text-green-400">{appliedLearnings}</p>
+                <p className="text-3xl font-bold text-[#2B8A6E] dark:text-green-400">{appliedLearnings}</p>
               </div>
               <CheckCircle2 className="h-8 w-8 text-green-500" />
             </div>
@@ -159,11 +159,11 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-800 dark:text-slate-300">Avg Confidence</p>
-                <p className="text-3xl font-bold text-purple-800 dark:text-purple-400">
+                <p className="text-3xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">
                   {(avgConfidence * 100).toFixed(0)}%
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-purple-500" />
+              <TrendingUp className="h-8 w-8 text-[#C9A84C]" />
             </div>
             <Progress value={avgConfidence * 100} className="h-2 mt-2" />
           </CardContent>
@@ -174,7 +174,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Brain className="h-5 w-5 text-blue-800" />
+            <Brain className="h-5 w-5 text-[#0A0F2E]" />
             AI-Extracted Learnings
           </CardTitle>
           <CardDescription>
@@ -254,7 +254,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                                     {format(new Date(learning.extractedAt), 'PPp')}
                                   </span>
                                   {learning.appliedAt && (
-                                    <span className="flex items-center gap-1 text-emerald-700">
+                                    <span className="flex items-center gap-1 text-[#2B8A6E]">
                                       <CheckCircle2 className="h-3 w-3" />
                                       Applied {format(new Date(learning.appliedAt), 'PP')}
                                     </span>
@@ -298,7 +298,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <GitBranch className="h-5 w-5 text-purple-800" />
+            <GitBranch className="h-5 w-5 text-[#C9A84C]" />
             Version History
           </CardTitle>
           <CardDescription>

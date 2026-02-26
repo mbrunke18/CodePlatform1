@@ -73,27 +73,27 @@ export default function PlatformVisual() {
       letter: "I",
       name: "IDENTIFY",
       subtitle: "AI Pattern Recognition",
-      color: "from-violet-500 to-purple-600",
-      borderColor: "border-violet-500",
-      bgColor: "bg-violet-500",
+      color: "from-[#0A0F2E] to-[#141B45]",
+      borderColor: "border-[#C9A84C]",
+      bgColor: "bg-[#0A0F2E]",
       items: ["Signal detected", "Context analyzed", "Severity scored", "Routed instantly"],
     },
     {
       letter: "D",
       name: "DETECT",
       subtitle: "AI Playbook Matching",
-      color: "from-blue-500 to-cyan-600",
+      color: "from-[#0A0F2E] to-[#3BAF8A]",
       borderColor: "border-blue-500",
-      bgColor: "bg-blue-500",
+      bgColor: "bg-[#0A0F2E]",
       items: ["170 playbooks scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
     },
     {
       letter: "E",
       name: "EXECUTE",
       subtitle: "AI Coordination",
-      color: "from-emerald-500 to-teal-600",
-      borderColor: "border-emerald-500",
-      bgColor: "bg-emerald-500",
+      color: "from-[#2B8A6E] to-teal-600",
+      borderColor: "border-[#2B8A6E]",
+      bgColor: "bg-[#2B8A6E]",
       items: ["RACI auto-assigned", "Teams notified", "Tasks created", "Parallel execution"],
     },
     {
@@ -265,7 +265,7 @@ export default function PlatformVisual() {
             animate={isInView ? "visible" : "hidden"}
           >
             <div className="text-center mb-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-500">After</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[#2B8A6E]">After</span>
               <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mt-1">12-Minute Execution</p>
             </div>
             {afterItems.map((item, i) => (
@@ -273,16 +273,16 @@ export default function PlatformVisual() {
                 key={i}
                 variants={fadeUp}
                 custom={i + 4}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 border border-[#2B8A6E] dark:border-[#2B8A6E]/50"
               >
-                <item.icon className="h-3.5 w-3.5 text-emerald-500 flex-shrink-0" />
-                <span className="text-xs text-emerald-700 dark:text-emerald-300 font-medium">{item.text}</span>
+                <item.icon className="h-3.5 w-3.5 text-[#2B8A6E] flex-shrink-0" />
+                <span className="text-xs text-[#2B8A6E] dark:text-[#2B8A6E] font-medium">{item.text}</span>
               </motion.div>
             ))}
             <motion.p
               variants={fadeUp}
               custom={11}
-              className="text-center text-xs font-bold text-emerald-500 mt-4 italic"
+              className="text-center text-xs font-bold text-[#2B8A6E] mt-4 italic"
             >
               Coordinated. Accountable.<br />Executing.
             </motion.p>
@@ -314,7 +314,7 @@ export default function PlatformVisual() {
                 <ul className="space-y-1">
                   {output.items.map((item, j) => (
                     <li key={j} className="flex items-start gap-1.5">
-                      <CheckCircle className="h-2.5 w-2.5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="h-2.5 w-2.5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                       <span className="text-xs text-gray-800 dark:text-slate-300 leading-tight">{item}</span>
                     </li>
                   ))}

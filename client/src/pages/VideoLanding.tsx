@@ -39,117 +39,127 @@ export default function VideoLanding() {
       <StandardNav />
       
       <div className="pt-20">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="flex items-center justify-between mb-8">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="flex items-center justify-between mb-12">
             <div>
               <Link href="/">
-                <Button variant="ghost" className="text-gray-800 hover:text-white mb-4" data-testid="button-back-home">
+                <Button variant="ghost" className="text-slate-500 hover:text-[#0A0F2E] mb-4 p-0" data-testid="button-back-home">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Home
                 </Button>
               </Link>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-testid="heading-video-hub">
-                Execution OS Brand Films
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
+              </div>
+              <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-video-hub">
+                Brand Films & <em className="italic text-[#C9A84C]">Sizzle Reels</em>
               </h1>
-              <p className="text-gray-800">
-                Cinematic presentations for trade shows, conferences, and broadcast
+              <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
+                Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Execution OS.
               </p>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-gray-50 mb-8" data-testid="video-tabs">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-[#F8F7F4] border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
               <TabsTrigger 
                 value="90-second" 
-                className="data-[state=active]:bg-emerald-600"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
                 data-testid="tab-90-second"
               >
-                <Clock className="h-4 w-4 mr-2" />
+                <Clock className="h-3 w-3 mr-2" />
                 90 Seconds
               </TabsTrigger>
               <TabsTrigger 
                 value="2-minute" 
-                className="data-[state=active]:bg-emerald-600"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
                 data-testid="tab-2-minute"
               >
-                <Clock className="h-4 w-4 mr-2" />
+                <Clock className="h-3 w-3 mr-2" />
                 2 Minutes
               </TabsTrigger>
               <TabsTrigger 
                 value="30-second" 
-                className="data-[state=active]:bg-emerald-600"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
                 data-testid="tab-30-second"
               >
-                <Clock className="h-4 w-4 mr-2" />
+                <Clock className="h-3 w-3 mr-2" />
                 30 Seconds
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="90-second" className="mt-0">
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2" data-testid="heading-90-second">
-                  "The Speed to Execute" - 90 Second Brand Film
-                </h2>
-                <p className="text-gray-800 text-sm">
-                  Purpose: Trade show booth loop, conference opener, website hero, investor meetings
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <Badge className="bg-[#2B8A6E] text-white rounded-none uppercase text-[9px] font-bold tracking-widest px-3 py-1 border-0">Primary</Badge>
+                  <h2 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-90-second">
+                    "The Speed to Execute" - 90 Second Brand Film
+                  </h2>
+                </div>
+                <p className="text-slate-500 text-sm uppercase tracking-widest font-bold">
+                  Purpose: Trade show booth loop · conference opener · website hero · investor meetings
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden border border-gray-200">
+              <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-xl">
                 <CinematicHero />
               </div>
             </TabsContent>
 
             <TabsContent value="2-minute" className="mt-0">
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2" data-testid="heading-2-minute">
-                  "Prepared to Execute" - 2 Minute Sizzle Reel
-                </h2>
-                <p className="text-gray-800 text-sm">
-                  Purpose: Conference sessions, investor presentations, sales meetings, website
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none uppercase text-[9px] font-bold tracking-widest px-3 py-1 border-0">Extended</Badge>
+                  <h2 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-2-minute">
+                    "Prepared to Execute" - 2 Minute Sizzle Reel
+                  </h2>
+                </div>
+                <p className="text-slate-500 text-sm uppercase tracking-widest font-bold">
+                  Purpose: Conference sessions · investor presentations · sales meetings · website
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden border border-gray-200">
+              <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-xl">
                 <SizzleReel />
               </div>
             </TabsContent>
 
             <TabsContent value="30-second" className="mt-0">
-              <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-2" data-testid="heading-30-second">
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-30-second">
                   30-Second Spots - Three Versions
                 </h2>
-                <p className="text-gray-800 text-sm mb-6">
-                  Purpose: Social media, LinkedIn, brand awareness, performance marketing
+                <p className="text-slate-500 text-sm uppercase tracking-widest font-bold">
+                  Purpose: Social media · LinkedIn · brand awareness · performance marketing
                 </p>
               </div>
               
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3" data-testid="heading-spot-1">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="space-y-4">
+                  <div className="h-1 w-12 bg-[#C9A84C]" />
+                  <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-1">
                     Version 1: "Offense, Defense, Special Teams"
                   </h3>
-                  <p className="text-gray-800 text-sm mb-3">Best for: Trade shows, LinkedIn, brand awareness</p>
-                  <div className="rounded-xl overflow-hidden border border-gray-200">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
                     <ThirtySecondSpot version="offense-defense" />
                   </div>
                 </div>
                 
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3" data-testid="heading-spot-2">
+                <div className="space-y-4">
+                  <div className="h-1 w-12 bg-[#2B8A6E]" />
+                  <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-2">
                     Version 2: "The First Mover"
                   </h3>
-                  <p className="text-gray-800 text-sm mb-3">Best for: Competitive positioning, executive audience</p>
-                  <div className="rounded-xl overflow-hidden border border-gray-200">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
                     <ThirtySecondSpot version="first-mover" />
                   </div>
                 </div>
                 
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3" data-testid="heading-spot-3">
+                <div className="space-y-4">
+                  <div className="h-1 w-12 bg-[#0A0F2E]" />
+                  <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-3">
                     Version 3: "360X Faster"
                   </h3>
-                  <p className="text-gray-800 text-sm mb-3">Best for: Metric-driven audiences, performance marketing</p>
-                  <div className="rounded-xl overflow-hidden border border-gray-200">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
                     <ThirtySecondSpot version="360x-faster" />
                   </div>
                 </div>
@@ -159,46 +169,54 @@ export default function VideoLanding() {
         </div>
       </div>
 
-      <section className="py-20 px-6 bg-gradient-to-b">
+      <section className="py-24 px-6 bg-[#F8F7F4] border-y border-[#E8E4DC]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              The Execution OS Advantage
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Fortune 1000 Leaders Choose Execution OS
+          <div className="text-center mb-16">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The Advantage</span>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Why Fortune 1000 Leaders Choose <em className="italic text-[#C9A84C]">Execution OS</em>
             </h2>
-            <p className="text-gray-800 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
               Transform how your organization responds to the moments that matter
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="bg-gray-50 border-gray-200 hover:border-emerald-500/50 transition-colors">
-              <CardContent className="p-6">
-                <Clock className="h-10 w-10 text-emerald-400 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">12-Minute Execution</h3>
-                <p className="text-gray-800">
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center mb-6">
+                  <Clock className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12-Minute Execution</h3>
+                <p className="text-slate-600 leading-relaxed">
                   Pre-staged playbooks with predetermined stakeholders and tasks. No meetings. No delays.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-50 border-gray-200 hover:border-blue-500/50 transition-colors">
-              <CardContent className="p-6">
-                <Users className="h-10 w-10 text-blue-400 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Coordinated Response</h3>
-                <p className="text-gray-800">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-[#2B8A6E] flex items-center justify-center mb-6">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Coordinated Response</h3>
+                <p className="text-slate-600 leading-relaxed">
                   Every stakeholder knows their role before the call comes. Parallel execution across teams.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-50 border-gray-200 hover:border-purple-500/50 transition-colors">
-              <CardContent className="p-6">
-                <Zap className="h-10 w-10 text-purple-400 mb-4" />
-                <h3 className="text-xl font-bold text-gray-900 mb-2">AI-Powered Monitoring</h3>
-                <p className="text-gray-800">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-[#C9A84C] flex items-center justify-center mb-6">
+                  <Zap className="h-6 w-6 text-[#0A0F2E]" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Powered Monitoring</h3>
+                <p className="text-slate-600 leading-relaxed">
                   Continuous intelligence scanning. Automatic trigger detection. Real-time alerts.
                 </p>
               </CardContent>
@@ -207,19 +225,25 @@ export default function VideoLanding() {
         </div>
       </section>
 
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Execute at the Speed of Change?
+      <section className="py-24 px-6 bg-[#0A0F2E] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMDAsMTcwLDc2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.3)", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Get Started</span>
+            <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.3)", flexShrink: 0 }} />
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Ready to Execute at the <em className="italic text-[#C9A84C]">Speed of Change?</em>
           </h2>
-          <p className="text-xl text-gray-800 mb-8">
+          <p className="text-xl text-white/60 mb-12 font-light leading-relaxed">
             Join Fortune 1000 leaders who have transformed their strategic response capability
           </p>
           
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/sandbox">
-              <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400" data-testid="button-try-demo-bottom">
-                <Play className="mr-2 h-5 w-5" />
+            <Link href="/try-demo">
+              <Button size="lg" className="px-10 py-8 text-lg bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] rounded-none font-bold uppercase tracking-widest" data-testid="button-try-demo-bottom">
+                <Play className="mr-3 h-5 w-5" />
                 Try Interactive Demo
               </Button>
             </Link>
@@ -228,21 +252,21 @@ export default function VideoLanding() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-lg border-slate-600 text-gray-900 hover:bg-slate-800"
+                className="px-10 py-8 text-lg border-white/20 text-white hover:bg-white/10 rounded-none font-bold uppercase tracking-widest"
                 data-testid="button-contact"
               >
                 Contact Sales
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      <footer className="py-8 px-6 bg-white border-t border-gray-200">
+      <footer className="py-12 px-6 bg-white border-t border-[#E8E4DC]">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-800 text-sm">
-            Execution OS - Strategic Execution Operating System
+          <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">
+            Execution OS — Strategic Execution Operating System by VaughnMartin
           </p>
         </div>
       </footer>

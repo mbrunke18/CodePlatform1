@@ -91,15 +91,15 @@ interface IndustryDemo {
 }
 
 const INDUSTRY_DEMOS: IndustryDemo[] = [
-  { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-purple-400', bgColor: 'bg-purple-900/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
-  { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-pink-400', bgColor: 'bg-pink-900/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
-  { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-blue-400', bgColor: 'bg-blue-900/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
-  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-blue-400', bgColor: 'bg-gray-50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
+  { id: 'lvmh', title: 'Strategic Market Entry', industry: 'Luxury', icon: Crown, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'LVMH', impact: '€1.68B value', route: '/lvmh-demo', type: 'offensive' },
+  { id: 'shein', title: 'Viral Trend Response', industry: 'Fashion', icon: TrendingUp, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SHEIN', impact: '$108M revenue', route: '/shein-demo', type: 'offensive' },
+  { id: 'spacex', title: 'Launch Acceleration', industry: 'Aerospace', icon: Rocket, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#0A0F2E]/30', organization: 'SpaceX', impact: '$47M value', route: '/spacex-demo', type: 'offensive' },
+  { id: 'financial', title: 'Ransomware Response', industry: 'Finance', icon: Shield, iconColor: 'text-[#0A0F2E]', bgColor: 'bg-gray-50', organization: 'LoanDepot', impact: '$22M saved', route: '/financial-demo', type: 'defensive' },
   { id: 'pharma', title: 'Class I Recall', industry: 'Pharma', icon: Pill, iconColor: 'text-red-400', bgColor: 'bg-red-900/30', organization: 'Glenmark', impact: 'Lives saved', route: '/pharma-demo', type: 'defensive' },
-  { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-orange-400', bgColor: 'bg-orange-900/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
-  { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-green-400', bgColor: 'bg-green-900/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
-  { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-yellow-400', bgColor: 'bg-yellow-900/30', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
-  { id: 'luxury-crisis', title: 'Revenue Collapse', industry: 'Luxury', icon: Building2, iconColor: 'text-purple-400', bgColor: 'bg-purple-900/30', organization: 'LVMH', impact: '€280M preserved', route: '/luxury-demo', type: 'defensive' },
+  { id: 'manufacturing', title: 'Supplier Crisis', industry: 'Automotive', icon: Factory, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Toyota', impact: '$450M saved', route: '/manufacturing-demo', type: 'defensive' },
+  { id: 'retail', title: 'Food Contamination', industry: 'Retail', icon: ShoppingCart, iconColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/30', organization: 'Walmart', impact: '$245M + lives', route: '/retail-demo', type: 'defensive' },
+  { id: 'energy', title: 'Grid Failure', industry: 'Energy', icon: Zap, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'Pacific Grid', impact: '$2.5B saved', route: '/energy-demo', type: 'defensive' },
+  { id: 'luxury-crisis', title: 'Revenue Collapse', industry: 'Luxury', icon: Building2, iconColor: 'text-[#C9A84C]', bgColor: 'bg-[#0A0F2E]/30', organization: 'LVMH', impact: '€280M preserved', route: '/luxury-demo', type: 'defensive' },
 ];
 
 const SCENARIOS: Scenario[] = [
@@ -134,8 +134,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Competitor Launch',
     industry: 'Competitive Response',
     icon: Target,
-    color: 'from-purple-500 to-violet-500',
-    borderColor: 'border-purple-500/50',
+    color: 'from-[#0A0F2E] to-[#141B45]',
+    borderColor: 'border-[#C9A84C]/50',
     trigger: 'Major competitor announces product in your category',
     playbook: 'Competitive Response',
     dealValue: 47000000,
@@ -186,8 +186,8 @@ const SCENARIOS: Scenario[] = [
     name: 'Deal at Risk',
     industry: 'Sales & Revenue',
     icon: DollarSign,
-    color: 'from-emerald-500 to-teal-500',
-    borderColor: 'border-emerald-500/50',
+    color: 'from-[#2B8A6E] to-[#3BAF8A]',
+    borderColor: 'border-[#2B8A6E]/50',
     trigger: 'Customer requests accelerated timeline on $5M deal',
     playbook: 'Deal Risk Response',
     dealValue: 5000000,
@@ -211,10 +211,10 @@ const SCENARIOS: Scenario[] = [
 
 const PHASES = [
   { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Execution OS' },
-  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'violet', description: 'Playbook ready' },
-  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'blue', description: 'Signal detected' },
-  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'emerald', description: 'Coordinate response' },
-  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'amber', description: 'Capture learnings' },
+  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'teal', description: 'Playbook ready' },
+  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'navy', description: 'Signal detected' },
+  { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'gold', description: 'Coordinate response' },
+  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'teal', description: 'Capture learnings' },
 ];
 
 const MESSAGE_ICONS: Record<string, any> = {
@@ -226,10 +226,9 @@ const MESSAGE_ICONS: Record<string, any> = {
 };
 
 const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  violet: { bg: 'bg-violet-500/20', border: 'border-violet-500', text: 'text-violet-400' },
-  blue: { bg: 'bg-blue-500/20', border: 'border-blue-500', text: 'text-blue-400' },
-  emerald: { bg: 'bg-emerald-500/20', border: 'border-emerald-500', text: 'text-emerald-400' },
-  amber: { bg: 'bg-amber-500/20', border: 'border-amber-500', text: 'text-amber-400' },
+  teal: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
+  navy: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
+  gold: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
   red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-400' },
 };
 
@@ -477,7 +476,7 @@ export default function TryDemo() {
       case 'teams': return <Users className="h-4 w-4 text-[#6264A7]" />;
       case 'salesforce': return <SiSalesforce className="h-4 w-4 text-[#00A1E0]" />;
       case 'notion': return <SiNotion className="h-4 w-4 text-gray-900" />;
-      default: return <Zap className="h-4 w-4 text-emerald-400" />;
+      default: return <Zap className="h-4 w-4 text-[#2B8A6E]" />;
     }
   };
 
@@ -690,7 +689,7 @@ export default function TryDemo() {
                           <p className="text-gray-900 font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
-                          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-gray-900 font-semibold py-6"
+                          className="w-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#256B56] hover:to-[#3BAF8A] text-gray-900 font-semibold py-6"
                           onClick={moveToPrepared}
                         >
                           <Sparkles className="mr-2 h-5 w-5" />
@@ -739,13 +738,13 @@ export default function TryDemo() {
                         isCurrent 
                           ? `${colors.bg} ${colors.border}` 
                           : isCompleted 
-                            ? 'bg-gray-50 border-emerald-500/50' 
+                            ? 'bg-gray-50 border-[#2B8A6E]/50' 
                             : 'bg-white border-gray-200'
                       }`}
                     >
                       <div className="flex items-center gap-2">
                         {isCompleted ? (
-                          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                          <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                         ) : (
                           <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-gray-800'}`} />
                         )}
@@ -768,7 +767,7 @@ export default function TryDemo() {
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <BookOpen className="h-5 w-5 text-violet-400" />
+                          <BookOpen className="h-5 w-5 text-[#C9A84C]" />
                           IDENTIFY: Playbook Ready
                         </CardTitle>
                         <CardDescription>
@@ -776,30 +775,30 @@ export default function TryDemo() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <div className="p-4 bg-violet-500/10 border border-violet-500/30 rounded-lg">
+                        <div className="p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
                           <h4 className="text-gray-900 font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div className="flex items-center gap-2 text-gray-800">
-                              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                              <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                               12 pre-configured tasks
                             </div>
                             <div className="flex items-center gap-2 text-gray-800">
-                              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                              <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                               {selectedScenario.stakeholders} stakeholders mapped
                             </div>
                             <div className="flex items-center gap-2 text-gray-800">
-                              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                              <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                               Response templates staged
                             </div>
                             <div className="flex items-center gap-2 text-gray-800">
-                              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                              <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                               Budget pre-approved
                             </div>
                           </div>
                         </div>
 
-                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-                          <div className="flex items-center gap-2 text-emerald-400 mb-2">
+                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                          <div className="flex items-center gap-2 text-[#2B8A6E] mb-2">
                             <Clock className="h-4 w-4" />
                             <span className="font-medium">Time to Ready: 0 minutes</span>
                           </div>
@@ -815,7 +814,7 @@ export default function TryDemo() {
                         </div>
 
                         <Button 
-                          className="w-full bg-violet-600 hover:bg-violet-700"
+                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]"
                           onClick={completeIdentify}
                         >
                           Playbook Ready - Continue to Detection
@@ -829,7 +828,7 @@ export default function TryDemo() {
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <Radar className="h-5 w-5 text-blue-400" />
+                          <Radar className="h-5 w-5 text-[#0A0F2E]" />
                           DETECT: Signal Received
                         </CardTitle>
                         <CardDescription>
@@ -855,19 +854,19 @@ export default function TryDemo() {
                           </div>
                         </div>
 
-                        <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                          <div className="flex items-center gap-2 text-blue-400 mb-2">
+                        <div className="p-4 bg-[#0A0F2E]/10 border border-[#0A0F2E]/30 rounded-lg">
+                          <div className="flex items-center gap-2 text-[#0A0F2E] mb-2">
                             <Brain className="h-5 w-5" />
                             <span className="font-medium">AI Recommendation</span>
                           </div>
                           <p className="text-sm text-gray-800">
                             Activate <span className="text-gray-900 font-medium">{selectedScenario.playbook}</span> playbook. 
-                            Match confidence: <span className="text-emerald-400 font-bold">94%</span>
+                            Match confidence: <span className="text-[#2B8A6E] font-bold">94%</span>
                           </p>
                         </div>
 
                         <Button 
-                          className="w-full bg-blue-600 hover:bg-blue-700 py-6 text-lg font-semibold"
+                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] py-6 text-lg font-semibold"
                           onClick={completeDetect}
                         >
                           <Play className="mr-2 h-5 w-5" />
@@ -881,7 +880,7 @@ export default function TryDemo() {
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <Radio className="h-5 w-5 text-emerald-400" />
+                          <Radio className="h-5 w-5 text-[#2B8A6E]" />
                           EXECUTE: Coordinating Response
                         </CardTitle>
                         <CardDescription>
@@ -890,8 +889,8 @@ export default function TryDemo() {
                       </CardHeader>
                       <CardContent>
                         {/* Timer */}
-                        <div className="mb-4 p-4 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 rounded-lg text-center">
-                          <p className="text-xs text-emerald-400 uppercase tracking-wide mb-1">Execution Time</p>
+                        <div className="mb-4 p-4 bg-gradient-to-r from-[#2B8A6E]/20 to-[#3BAF8A]/20 border border-[#2B8A6E]/30 rounded-lg text-center">
+                          <p className="text-xs text-[#2B8A6E] uppercase tracking-wide mb-1">Execution Time</p>
                           <p className="text-4xl font-bold text-gray-900 font-mono">
                             {formatTime(executionTimer)}
                           </p>
@@ -904,10 +903,10 @@ export default function TryDemo() {
                             return (
                               <div 
                                 key={step.id}
-                                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-emerald-500 animate-in slide-in-from-left"
+                                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
                               >
-                                <div className="p-2 bg-emerald-500/20 rounded-lg">
-                                  <IconComponent className="h-4 w-4 text-emerald-400" />
+                                <div className="p-2 bg-[#2B8A6E]/20 rounded-lg">
+                                  <IconComponent className="h-4 w-4 text-[#2B8A6E]" />
                                 </div>
                                 <div className="flex-1">
                                   <div className="flex items-center gap-2">
@@ -918,14 +917,14 @@ export default function TryDemo() {
                                   </div>
                                   <p className="text-gray-800 text-xs">{step.description}</p>
                                 </div>
-                                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                               </div>
                             );
                           })}
                           
                           {isExecuting && (
                             <div className="flex items-center justify-center p-4 text-gray-800">
-                              <div className="animate-spin rounded-full h-5 w-5 border-2 border-emerald-500 border-t-transparent mr-2" />
+                              <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
                               Orchestrating response...
                             </div>
                           )}
@@ -961,8 +960,8 @@ export default function TryDemo() {
                           </div>
                         ) : (
                           <div className="space-y-4">
-                            <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-                              <div className="flex items-center gap-2 text-emerald-400 mb-1">
+                            <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                              <div className="flex items-center gap-2 text-[#2B8A6E] mb-1">
                                 <CheckCircle2 className="h-4 w-4" />
                                 <span className="font-medium text-sm">Execution Complete</span>
                               </div>
@@ -972,7 +971,7 @@ export default function TryDemo() {
                             </div>
 
                             <div>
-                              <h4 className="text-xs font-medium text-emerald-400 mb-2 flex items-center gap-1">
+                              <h4 className="text-xs font-medium text-[#2B8A6E] mb-2 flex items-center gap-1">
                                 <TrendingUp className="h-3 w-3" />
                                 Success Patterns Captured
                               </h4>
@@ -993,11 +992,11 @@ export default function TryDemo() {
 
                   {currentPhase === 'complete' && (
                     <div className="space-y-6">
-                      <Card className="bg-gradient-to-br   border-emerald-500/50">
+                      <Card className="bg-gradient-to-br   border-[#2B8A6E]/50">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
-                            <div className="inline-flex p-4 bg-emerald-500/20 rounded-full mb-4">
-                              <Rocket className="h-10 w-10 text-emerald-400" />
+                            <div className="inline-flex p-4 bg-[#2B8A6E]/20 rounded-full mb-4">
+                              <Rocket className="h-10 w-10 text-[#2B8A6E]" />
                             </div>
                             <h2 className="text-2xl font-bold text-gray-900 mb-2">Demo Complete</h2>
                             <p className="text-gray-800">You just experienced the IDEA Framework in action</p>
@@ -1005,15 +1004,15 @@ export default function TryDemo() {
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
                             <div className="p-4 bg-gray-50 rounded-lg">
-                              <p className="text-2xl font-bold text-emerald-400">12 min</p>
+                              <p className="text-2xl font-bold text-[#2B8A6E]">12 min</p>
                               <p className="text-xs text-gray-800">Response Time</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
-                              <p className="text-2xl font-bold text-emerald-400">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                              <p className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                               <p className="text-xs text-gray-800">Value Protected</p>
                             </div>
                             <div className="p-4 bg-gray-50 rounded-lg">
-                              <p className="text-2xl font-bold text-emerald-400">98 days</p>
+                              <p className="text-2xl font-bold text-[#2B8A6E]">98 days</p>
                               <p className="text-xs text-gray-800">Saved (IBM 2024)</p>
                             </div>
                           </div>
@@ -1095,7 +1094,7 @@ export default function TryDemo() {
                                   <p className="text-xs font-medium text-gray-900 truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
                                     <span className="text-xs text-gray-800">{demo.organization}</span>
-                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
+                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-[#2B8A6E]'}`}>
                                       {demo.impact}
                                     </span>
                                   </div>
@@ -1130,8 +1129,8 @@ export default function TryDemo() {
                           <p className="text-xl font-bold text-red-300">20-72 hrs</p>
                           <p className="text-xs text-gray-800">Industry average</p>
                         </div>
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-center">
-                          <p className="text-xs text-emerald-400 mb-1">Execution OS</p>
+                        <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
+                          <p className="text-xs text-[#2B8A6E] mb-1">Execution OS</p>
                           <p className="text-xl font-bold text-emerald-300">12 min</p>
                           <p className="text-xs text-gray-800">Guaranteed</p>
                         </div>
@@ -1232,7 +1231,7 @@ export default function TryDemo() {
                     <Badge variant="outline" className={`text-xs ${
                       demo.type === 'offensive' 
                         ? 'text-green-400 border-green-500/30 bg-green-500/10' 
-                        : 'text-blue-400 border-blue-500/30 bg-blue-500/10'
+                        : 'text-[#0A0F2E] border-[#0A0F2E]/30 bg-[#0A0F2E]/10'
                     }`}>
                       {demo.type === 'offensive' ? 'Offense' : 'Defense'}
                     </Badge>
@@ -1240,7 +1239,7 @@ export default function TryDemo() {
                   <p className="text-sm font-semibold text-gray-900 mb-1">{demo.title}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-800">{demo.organization}</span>
-                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-emerald-400'}`}>
+                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-[#2B8A6E]'}`}>
                       {demo.impact}
                     </span>
                   </div>

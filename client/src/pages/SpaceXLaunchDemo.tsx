@@ -34,7 +34,7 @@ export default function SpaceXLaunchDemo() {
       <DemoNavHeader title="SpaceX Launch Demo" showBackButton={true} />
 
       {/* Act Navigation */}
-      <div className="border-b border-blue-800/20 bg-white pt-20">
+      <div className="border-b border-[#0A0F2E]/20 bg-white pt-20">
         <div className="container mx-auto px-6 py-3">
           <div className="flex justify-between items-center">
             {[
@@ -48,8 +48,8 @@ export default function SpaceXLaunchDemo() {
                 onClick={() => goToAct(act.id as DemoAct)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
-                    ? "bg-blue-600 text-gray-900"
-                    : "text-blue-300 hover:bg-blue-950/50"
+                    ? "bg-[#0A0F2E] text-gray-900"
+                    : "text-blue-300 hover:bg-[#0A0F2E]/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
               >
@@ -66,17 +66,17 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-blue-800/30">
+            <Card className="p-8 bg-white border-[#0A0F2E]/30">
               <div className="text-center mb-8">
-                <Satellite className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                <Satellite className="w-16 h-16 text-[#0A0F2E] mx-auto mb-4" />
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">{spacexLaunchDemoData.crisis.title}</h2>
-                <p className="text-xl text-blue-800">{spacexLaunchDemoData.crisis.subtitle}</p>
+                <p className="text-xl text-[#0A0F2E]">{spacexLaunchDemoData.crisis.subtitle}</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
                   <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <Target className="w-5 h-5 text-blue-400" />
+                    <Target className="w-5 h-5 text-[#0A0F2E]" />
                     The Opportunity
                   </h3>
                   <div className="space-y-3 text-sm">
@@ -99,9 +99,9 @@ export default function SpaceXLaunchDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-white rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-white rounded-lg border border-[#0A0F2E]/30">
                   <h3 className="font-bold text-gray-900 mb-4">Traditional Aerospace Coordination</h3>
-                  <ul className="space-y-2 text-sm text-blue-800">
+                  <ul className="space-y-2 text-sm text-[#0A0F2E]">
                     <li>• Day 1-2: Engineering reviews sequential approvals</li>
                     <li>• Day 3-4: FAA license modification (standard 7-10 days)</li>
                     <li className="text-amber-400 font-semibold">• During gap: Favorable window closes</li>
@@ -112,12 +112,12 @@ export default function SpaceXLaunchDemo() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r   border border-blue-700 rounded-lg p-6 mb-8">
+              <div className="bg-gradient-to-r   border border-[#0A0F2E] rounded-lg p-6 mb-8">
                 <div className="flex items-start gap-4">
-                  <Zap className="w-8 h-8 text-blue-400 flex-shrink-0 mt-1" />
+                  <Zap className="w-8 h-8 text-[#0A0F2E] flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2">When Elon Calls the Play, Everyone Executes</h3>
-                    <p className="text-blue-800 leading-relaxed">
+                    <p className="text-[#0A0F2E] leading-relaxed">
                       SpaceX already moves faster than traditional aerospace—but even SpaceX faces coordination bottlenecks. 
                       When a favorable orbital window opens, coordinating 1,847 stakeholders (ground crews, FAA, Space Force, 
                       payload teams, weather, range safety) traditionally takes <strong>5-7 days</strong>. Execution OS compresses 
@@ -128,18 +128,18 @@ export default function SpaceXLaunchDemo() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-800/30 text-center">
-                  <Users className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
+                  <Users className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">1,847</div>
                   <div className="text-sm text-blue-300">Stakeholders Coordinated</div>
                 </div>
-                <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-800/30 text-center">
-                  <Zap className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
+                  <Zap className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">12 Minutes</div>
                   <div className="text-sm text-blue-300">Full Coordination</div>
                 </div>
-                <div className="p-4 bg-blue-950/30 rounded-lg border border-blue-800/30 text-center">
-                  <DollarSign className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
+                  <DollarSign className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">$47M</div>
                   <div className="text-sm text-blue-300">Revenue Accelerated</div>
                 </div>
@@ -149,13 +149,13 @@ export default function SpaceXLaunchDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("detection")}
-                  className="bg-blue-600 hover:bg-blue-700 text-gray-900 px-8 py-6 text-lg"
+                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900 px-8 py-6 text-lg"
                   data-testid="button-begin-simulation"
                 >
                   <Play className="w-5 h-5 mr-2" />
                   Begin Launch Simulation
                 </Button>
-                <p className="text-sm text-blue-400 mt-3">Experience aerospace coordination velocity</p>
+                <p className="text-sm text-[#0A0F2E] mt-3">Experience aerospace coordination velocity</p>
               </div>
             </Card>
           </div>
@@ -164,21 +164,21 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-blue-800/30">
+            <Card className="p-8 bg-white border-[#0A0F2E]/30">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Target className="w-8 h-8 text-blue-400" />
+                <Target className="w-8 h-8 text-[#0A0F2E]" />
                 Act 2: Orbital Dynamics Detection
               </h2>
-              <p className="text-lg text-blue-800 mb-4">
+              <p className="text-lg text-[#0A0F2E] mb-4">
                 9:00 AM PT - SpaceX trajectory analysis identifies rare orbital window opening 3 days early. Favorable 
                 atmospheric conditions + ULA delay = vacant April 15 slot. Moving launch forward unlocks $47M revenue + optimal constellation geometry.
               </p>
-              <div className="mt-6 p-4 bg-blue-900/50 border border-blue-500 rounded">
+              <div className="mt-6 p-4 bg-[#0A0F2E]/50 border border-[#0A0F2E] rounded">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-6 w-6 text-blue-400 animate-pulse" />
+                  <CheckCircle className="h-6 w-6 text-[#0A0F2E] animate-pulse" />
                   <div>
                     <p className="font-bold text-gray-900">Orbital Window Criteria Met</p>
-                    <p className="text-sm text-blue-800">
+                    <p className="text-sm text-[#0A0F2E]">
                       Favorable conditions confirmed - Playbook #155 (Launch Acceleration) recommended
                     </p>
                   </div>
@@ -198,7 +198,7 @@ export default function SpaceXLaunchDemo() {
               <Button
                 size="lg"
                 onClick={() => goToAct("coordination")}
-                className="gap-2 bg-blue-600 hover:bg-blue-700 text-gray-900"
+                className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
                 data-testid="button-activate-playbook"
               >
                 <Rocket className="h-5 w-5" />
@@ -214,40 +214,40 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 3: COORDINATED RESPONSE */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-blue-800/30">
+            <Card className="p-8 bg-white border-[#0A0F2E]/30">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                <Zap className="w-8 h-8 text-blue-400" />
+                <Zap className="w-8 h-8 text-[#0A0F2E]" />
                 Act 3: 12-Minute Coordinated Execution
               </h2>
-              <p className="text-lg text-blue-800 mb-6">
+              <p className="text-lg text-[#0A0F2E] mb-6">
                 Execution OS coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across 
                 34 executives, 813 operations teams, and 1,000 external partners (FAA, Space Force, Range Control).
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">1</div>
+                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">1</div>
                     <h3 className="font-bold text-gray-900">Mission Leadership</h3>
                   </div>
-                  <p className="text-sm text-blue-800 mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
-                  <div className="text-2xl font-bold text-blue-400">34 Leaders</div>
+                  <p className="text-sm text-[#0A0F2E] mb-2">34 executives approve 3-day acceleration, initiate FAA expedited review</p>
+                  <div className="text-2xl font-bold text-[#0A0F2E]">34 Leaders</div>
                 </div>
-                <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">2</div>
+                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">2</div>
                     <h3 className="font-bold text-gray-900">Operations Teams</h3>
                   </div>
-                  <p className="text-sm text-blue-800 mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
-                  <div className="text-2xl font-bold text-blue-400">813 Specialists</div>
+                  <p className="text-sm text-[#0A0F2E] mb-2">Ground crews, vehicle processing, payload, fueling—all accelerated by 72 hours</p>
+                  <div className="text-2xl font-bold text-[#0A0F2E]">813 Specialists</div>
                 </div>
-                <div className="p-6 bg-blue-950/30 rounded-lg border border-blue-800/30">
+                <div className="p-6 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-gray-900 font-bold">3</div>
+                    <div className="w-10 h-10 rounded-full bg-[#0A0F2E] flex items-center justify-center text-gray-900 font-bold">3</div>
                     <h3 className="font-bold text-gray-900">External Partners</h3>
                   </div>
-                  <p className="text-sm text-blue-800 mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
-                  <div className="text-2xl font-bold text-blue-400">1,000 Partners</div>
+                  <p className="text-sm text-[#0A0F2E] mb-2">FAA, Space Force, Range Control, airspace—all coordinated</p>
+                  <div className="text-2xl font-bold text-[#0A0F2E]">1,000 Partners</div>
                 </div>
               </div>
             </Card>
@@ -263,7 +263,7 @@ export default function SpaceXLaunchDemo() {
                 <Button
                   size="lg"
                   onClick={() => goToAct("outcome")}
-                  className="gap-2 bg-blue-600 hover:bg-blue-700 text-gray-900"
+                  className="gap-2 bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
                   data-testid="button-view-outcome"
                 >
                   <Rocket className="h-5 w-5" />
@@ -277,27 +277,27 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white border-blue-800/30 text-center">
-              <Rocket className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+            <Card className="p-8 bg-white border-[#0A0F2E]/30 text-center">
+              <Rocket className="w-16 h-16 text-[#0A0F2E] mx-auto mb-4" />
               <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 $47M Revenue + Strategic Orbital Position Through Coordination Velocity
               </h2>
-              <p className="text-xl text-blue-800 mb-6">
+              <p className="text-xl text-[#0A0F2E] mb-6">
                 SpaceX coordinates 1,847 stakeholders in 12 minutes, moves launch forward 3 days, captures April 15 
                 optimal window—accelerating Starlink expansion and demonstrating coordination velocity traditional aerospace cannot match.
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="p-4 bg-blue-950/30 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">$47M</div>
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">$47M</div>
                   <div className="text-sm text-blue-300">Revenue Accelerated</div>
                 </div>
-                <div className="p-4 bg-blue-950/30 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">12 Min</div>
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">12 Min</div>
                   <div className="text-sm text-blue-300">vs 5-7 Days Traditional</div>
                 </div>
-                <div className="p-4 bg-blue-950/30 rounded-lg">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">72 Hrs</div>
+                <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">72 Hrs</div>
                   <div className="text-sm text-blue-300">Vehicle Turnaround Achieved</div>
                 </div>
               </div>
@@ -310,11 +310,11 @@ export default function SpaceXLaunchDemo() {
             />
 
             <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" className="border-blue-500 text-blue-300 hover:bg-blue-950" data-testid="button-replay">
+              <Button onClick={resetDemo} variant="outline" className="border-[#0A0F2E] text-blue-300 hover:bg-[#0A0F2E]" data-testid="button-replay">
                 Replay Demo
               </Button>
               <Link href="/industry-demos">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-gray-900" data-testid="button-all-demos">
+                <Button className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900" data-testid="button-all-demos">
                   View All Industry Demos
                 </Button>
               </Link>

@@ -25,12 +25,12 @@ interface MonitorTriggersStepProps {
 }
 
 const SIGNAL_TYPES = [
-  { value: 'competitive', label: 'Competitive Intelligence', icon: TrendingUp, color: 'text-blue-500' },
-  { value: 'regulatory', label: 'Regulatory Change', icon: Shield, color: 'text-purple-500' },
-  { value: 'market', label: 'Market Signal', icon: TrendingUp, color: 'text-emerald-500' },
+  { value: 'competitive', label: 'Competitive Intelligence', icon: TrendingUp, color: 'text-[#0A0F2E]' },
+  { value: 'regulatory', label: 'Regulatory Change', icon: Shield, color: 'text-[#C9A84C]' },
+  { value: 'market', label: 'Market Signal', icon: TrendingUp, color: 'text-[#2B8A6E]' },
   { value: 'security', label: 'Security Threat', icon: AlertTriangle, color: 'text-red-500' },
   { value: 'operational', label: 'Operational Risk', icon: Radio, color: 'text-amber-500' },
-  { value: 'financial', label: 'Financial Trigger', icon: TrendingUp, color: 'text-cyan-500' },
+  { value: 'financial', label: 'Financial Trigger', icon: TrendingUp, color: 'text-[#2B8A6E]' },
 ];
 
 const DEFAULT_TRIGGERS: TriggerCondition[] = [
@@ -97,7 +97,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-blue-200 dark:border-blue-800">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">📡</span> DETECT Phase — Monitor Signals
         </h3>

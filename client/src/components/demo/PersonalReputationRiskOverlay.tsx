@@ -39,7 +39,7 @@ export function PersonalReputationRiskOverlay() {
       stakeholder: 'Major Shareholder',
       quote: '"Other Fortune 1000s had playbooks ready. Why didn\'t we?"',
       impact: 'Leadership effectiveness disputed',
-      color: 'from-pink-600 to-purple-600'
+      color: 'from-pink-600 to-[#141B45]'
     }
   ];
 

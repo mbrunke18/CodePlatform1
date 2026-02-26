@@ -96,15 +96,15 @@ export const FOUNDATIONAL_AI_PRINCIPLES: AIPrincipleScore[] = [
 ];
 
 function getScoreColor(score: number): string {
-  if (score >= 90) return 'text-emerald-700 dark:text-emerald-400';
-  if (score >= 80) return 'text-blue-800 dark:text-blue-400';
+  if (score >= 90) return 'text-[#2B8A6E] dark:text-[#2B8A6E]';
+  if (score >= 80) return 'text-[#0A0F2E] dark:text-[#0A0F2E]';
   if (score >= 70) return 'text-yellow-600 dark:text-yellow-400';
   return 'text-red-700 dark:text-red-400';
 }
 
 function getProgressColor(score: number): string {
-  if (score >= 90) return 'bg-emerald-500';
-  if (score >= 80) return 'bg-blue-500';
+  if (score >= 90) return 'bg-[#2B8A6E]';
+  if (score >= 80) return 'bg-[#0A0F2E]';
   if (score >= 70) return 'bg-yellow-500';
   return 'bg-red-500';
 }
@@ -144,7 +144,7 @@ export function AIPrinciplesScorecard({
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <CardTitle className="text-base font-semibold flex items-center gap-2">
-              <Brain className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+              <Brain className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
               AI Principles Alignment
             </CardTitle>
             <p className="text-xs text-muted-foreground mt-1">
@@ -157,8 +157,8 @@ export function AIPrinciplesScorecard({
               <Badge 
                 className={`text-base font-bold px-3 py-1 ${
                   overallScore >= 90 
-                    ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300' 
-                    : 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300'
+                    ? 'bg-[#F0F9F6] text-[#2B8A6E] dark:bg-[#2B8A6E]/15/50 dark:text-[#2B8A6E]' 
+                    : 'bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/50 dark:text-blue-300'
                 }`}
               >
                 {overallScore}%
@@ -176,7 +176,7 @@ export function AIPrinciplesScorecard({
                 <Tooltip key={principle.principle}>
                   <TooltipTrigger asChild>
                     <div className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-help">
-                      <Icon className="w-4 h-4 text-violet-600 dark:text-violet-400 flex-shrink-0" />
+                      <Icon className="w-4 h-4 text-[#C9A84C] dark:text-[#C9A84C] flex-shrink-0" />
                       <span className="text-sm flex-1 min-w-0">
                         {principle.principle}
                       </span>
@@ -212,7 +212,7 @@ export function DeterministicExecutionBadge() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Badge 
-            className="bg-gradient-to-r from-emerald-600 to-teal-600 text-gray-900 border-0 cursor-help"
+            className="bg-gradient-to-r from-[#2B8A6E] to-teal-600 text-gray-900 border-0 cursor-help"
           >
             <CheckCircle className="w-3 h-3 mr-1" />
             Deterministic Execution

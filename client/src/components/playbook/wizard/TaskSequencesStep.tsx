@@ -93,7 +93,7 @@ export default function TaskSequencesStep({ data, onChange }: TaskSequencesStepP
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-blue-200 dark:border-blue-800">
         <h3 className="font-semibold text-sm mb-2">75% Pre-filled Template</h3>
         <p className="text-xs text-muted-foreground">
           Minute-by-minute timeline with pre-assigned task owners and dependencies

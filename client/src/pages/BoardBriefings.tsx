@@ -118,15 +118,15 @@ export default function BoardBriefings() {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2" data-testid="page-title">
-            <FileText className="h-8 w-8 text-blue-500" />
+          <h1 className="text-3xl font-bold flex items-center gap-2" data-testid="page-title" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <FileText className="h-8 w-8 text-[#0A0F2E] dark:text-[#C9A84C]" />
             Board Briefings
           </h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-[#6B7280] dark:text-white/60 mt-1">
             Automated executive reports with evidence traceability for board presentations
           </p>
         </div>
-        <Button data-testid="button-generate-briefing">
+        <Button className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid="button-generate-briefing">
           <FileText className="h-4 w-4 mr-2" />
           Generate New Briefing
         </Button>
@@ -134,57 +134,57 @@ export default function BoardBriefings() {
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-4">
-        <Card data-testid="card-total-briefings">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-total-briefings">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Briefings</CardTitle>
-            <FileText className="h-4 w-4 text-blue-800" />
+            <CardTitle className="text-sm font-medium text-[#6B7280] dark:text-white/60 uppercase tracking-wider">Total Briefings</CardTitle>
+            <FileText className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{briefings.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{briefings.length}</div>
+            <p className="text-xs text-[#6B7280] dark:text-white/60">
               Executive intelligence summaries
             </p>
           </CardContent>
         </Card>
 
-        <Card data-testid="card-board-reports">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-board-reports">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Board Reports</CardTitle>
-            <Award className="h-4 w-4 text-purple-800" />
+            <CardTitle className="text-sm font-medium text-[#6B7280] dark:text-white/60 uppercase tracking-wider">Board Reports</CardTitle>
+            <Award className="h-4 w-4 text-[#C9A84C]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{boardReports.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{boardReports.length}</div>
+            <p className="text-xs text-[#6B7280] dark:text-white/60">
               Quarterly board presentations
             </p>
           </CardContent>
         </Card>
 
-        <Card data-testid="card-reviewed">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-reviewed">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Reviewed</CardTitle>
-            <CheckCircle className="h-4 w-4 text-emerald-700" />
+            <CardTitle className="text-sm font-medium text-[#6B7280] dark:text-white/60 uppercase tracking-wider">Reviewed</CardTitle>
+            <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{acknowledgedBriefings.length}</div>
-            <p className="text-xs text-muted-foreground">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{acknowledgedBriefings.length}</div>
+            <p className="text-xs text-[#6B7280] dark:text-white/60">
               Acknowledged by executives
             </p>
           </CardContent>
         </Card>
 
-        <Card data-testid="card-avg-confidence">
+        <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10" data-testid="card-avg-confidence">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Confidence</CardTitle>
-            <TrendingUp className="h-4 w-4 text-blue-800" />
+            <CardTitle className="text-sm font-medium text-[#6B7280] dark:text-white/60 uppercase tracking-wider">Avg Confidence</CardTitle>
+            <TrendingUp className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               {briefings.length > 0 
                 ? Math.round(briefings.reduce((acc: number, b: any) => acc + (b.confidenceLevel || 85), 0) / briefings.length)
                 : 85}%
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-[#6B7280] dark:text-white/60">
               AI-generated insights
             </p>
           </CardContent>
@@ -192,42 +192,42 @@ export default function BoardBriefings() {
       </div>
 
       {/* Executive Briefings */}
-      <Card>
+      <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
         <CardHeader>
-          <CardTitle>Executive Briefings</CardTitle>
-          <CardDescription>
+          <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Briefings</CardTitle>
+          <CardDescription className="text-[#6B7280] dark:text-white/60">
             AI-generated daily intelligence, crisis alerts, and decision support summaries
           </CardDescription>
         </CardHeader>
         <CardContent>
           {briefingsLoading ? (
-            <div className="text-center py-8 text-muted-foreground">Loading briefings...</div>
+            <div className="text-center py-8 text-[#6B7280] dark:text-white/60">Loading briefings...</div>
           ) : (
             <div className="space-y-4">
               {briefings.map((briefing: any) => (
                 <div 
                   key={briefing.id} 
-                  className="border rounded-lg p-4 space-y-3"
+                  className="border border-[#E8E4DC] dark:border-white/10 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`briefing-${briefing.id}`}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="flex-1 page-background space-y-2">
+                    <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold" data-testid={`text-briefing-title-${briefing.id}`}>{briefing.title}</h3>
-                        <Badge variant="outline">{briefing.briefingType}</Badge>
+                        <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-briefing-title-${briefing.id}`}>{briefing.title}</h3>
+                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{briefing.briefingType}</Badge>
                         {briefing.timeToDecision && (
-                          <Badge variant="secondary">{briefing.timeToDecision}</Badge>
+                          <Badge variant="secondary" className="bg-[#C9A84C]/20 text-[#C9A84C] border-none">{briefing.timeToDecision}</Badge>
                         )}
                         {briefing.reviewed && (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
+                          <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm">{briefing.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-white/80">{briefing.executiveSummary}</p>
                       
                       {briefing.keyInsights && briefing.keyInsights.length > 0 && (
-                        <div className="bg-blue-50 dark:bg-blue-950 p-3 rounded-md">
-                          <p className="text-sm font-medium mb-1">Key Insights:</p>
-                          <ul className="list-disc list-inside text-sm text-muted-foreground">
+                        <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/40 p-3 rounded-md border border-[#0A0F2E]/10">
+                          <p className="text-sm font-medium mb-1 text-[#0A0F2E] dark:text-[#C9A84C]">Key Insights:</p>
+                          <ul className="list-disc list-inside text-sm text-[#6B7280] dark:text-white/60">
                             {(briefing.keyInsights as any[]).slice(0, 3).map((insight: string, idx: number) => (
                               <li key={idx}>{insight}</li>
                             ))}
@@ -235,7 +235,7 @@ export default function BoardBriefings() {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60">
                         {briefing.confidenceLevel && (
                           <span>Confidence: {briefing.confidenceLevel}%</span>
                         )}
@@ -249,10 +249,10 @@ export default function BoardBriefings() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" variant="outline" data-testid={`button-view-briefing-${briefing.id}`}>
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-view-briefing-${briefing.id}`}>
                         View Full
                       </Button>
-                      <Button size="sm" variant="ghost" data-testid={`button-download-briefing-${briefing.id}`}>
+                      <Button size="sm" variant="ghost" className="text-[#0A0F2E] dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-download-briefing-${briefing.id}`}>
                         <Download className="h-4 w-4" />
                       </Button>
                     </div>
@@ -265,13 +265,13 @@ export default function BoardBriefings() {
       </Card>
 
       {/* Key Decisions Pending */}
-      <Card>
+      <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5 text-amber-500" />
+          <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <AlertTriangle className="h-5 w-5 text-red-500" />
             Decisions Requiring Board Action
           </CardTitle>
-          <CardDescription>Items pending executive approval or board vote</CardDescription>
+          <CardDescription className="text-[#6B7280] dark:text-white/60">Items pending executive approval or board vote</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -282,27 +282,27 @@ export default function BoardBriefings() {
             ].map((decision) => (
               <div
                 key={decision.title}
-                className={`border rounded-lg p-4 space-y-2 ${
+                className={`border rounded-lg p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
                   decision.priority === 'High'
-                    ? 'border-l-4 border-l-red-500'
-                    : 'border-l-4 border-l-amber-500'
+                    ? 'border-l-4 border-l-red-500 border-[#E8E4DC] dark:border-white/10'
+                    : 'border-l-4 border-l-[#C9A84C] border-[#E8E4DC] dark:border-white/10'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">{decision.title}</h3>
+                  <h3 className="font-semibold text-[#0A0F2E] dark:text-white">{decision.title}</h3>
                   <Badge className={
-                    decision.status === 'Pending Vote' ? 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300' :
-                    decision.status === 'Under Review' ? 'bg-amber-100 text-[#C9A84C] dark:bg-amber-900 dark:text-amber-300' :
-                    'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
+                    decision.status === 'Pending Vote' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                    decision.status === 'Under Review' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
+                    'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-white/10 dark:text-white border-none'
                   }>{decision.status}</Badge>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60">
                   <span className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
                     Due: {decision.due}
                   </span>
                   <Badge variant="outline" className={
-                    decision.priority === 'High' ? 'border-red-400 text-red-700' : 'border-amber-400 text-[#C9A84C]'
+                    decision.priority === 'High' ? 'border-red-500/30 text-red-500' : 'border-[#C9A84C]/30 text-[#C9A84C]'
                   }>{decision.priority} Priority</Badge>
                 </div>
               </div>
@@ -312,18 +312,18 @@ export default function BoardBriefings() {
       </Card>
 
       {/* Strategic Recommendations */}
-      <Card>
+      <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
         <CardHeader>
           <div className="flex items-center gap-2">
-            <CardTitle className="flex items-center gap-2">
-              <Brain className="h-5 w-5 text-purple-500" />
+            <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <Brain className="h-5 w-5 text-[#C9A84C]" />
               AI-Generated Strategic Recommendations
             </CardTitle>
-            <Badge className="bg-purple-600/20 text-purple-400 border border-purple-500/40 text-xs font-semibold">
+            <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#C9A84C]/20 dark:text-[#C9A84C] border-none text-xs font-semibold">
               <SubBrandLabel name="Retrospect™" />
             </Badge>
           </div>
-          <CardDescription>Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>
+          <CardDescription className="text-[#6B7280] dark:text-white/60">Data-driven recommendations based on cross-functional intelligence analysis</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-3">
@@ -332,36 +332,36 @@ export default function BoardBriefings() {
                 title: 'Accelerate EMEA Expansion',
                 description: 'Pipeline data suggests 44% QoQ growth. Recommend increasing GTM investment by 30% in Q2.',
                 confidence: 91,
-                icon: <TrendingUp className="h-5 w-5 text-blue-500" />,
+                icon: <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />,
               },
               {
                 title: 'Strengthen Supply Chain Redundancy',
                 description: 'Single-region dependency risk identified for 3 critical components. Recommend activating backup supplier framework.',
                 confidence: 87,
-                icon: <Target className="h-5 w-5 text-amber-500" />,
+                icon: <Target className="h-5 w-5 text-[#C9A84C]" />,
               },
               {
                 title: 'Increase Practice Drill Frequency',
                 description: 'Teams with monthly drills show 23% faster response times. Current cadence is quarterly.',
                 confidence: 94,
-                icon: <Zap className="h-5 w-5 text-emerald-500" />,
+                icon: <Zap className="h-5 w-5 text-[#0A0F2E] dark:text-white" />,
               },
             ].map((rec) => (
-              <Card key={rec.title} className="bg-gradient-to-br from-slate-50 to-purple-50 dark:from-slate-800/50 dark:to-purple-950/30 border-purple-200 dark:border-purple-800">
+              <Card key={rec.title} className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
                 <CardContent className="pt-5 space-y-3">
                   <div className="flex items-center gap-2">
                     {rec.icon}
-                    <h3 className="font-semibold text-sm text-slate-900 dark:text-slate-100">{rec.title}</h3>
+                    <h3 className="font-semibold text-sm text-[#0A0F2E] dark:text-white">{rec.title}</h3>
                   </div>
-                  <p className="text-xs text-muted-foreground">{rec.description}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-white/60">{rec.description}</p>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-slate-200 dark:bg-slate-700 rounded-full h-1.5">
+                    <div className="flex-1 bg-[#E8E4DC] dark:bg-white/10 rounded-full h-1.5">
                       <div
-                        className="bg-purple-500 h-1.5 rounded-full"
+                        className="bg-[#C9A84C] h-1.5 rounded-full"
                         style={{ width: `${rec.confidence}%` }}
                       />
                     </div>
-                    <span className="text-xs font-bold text-purple-800 dark:text-purple-400">{rec.confidence}%</span>
+                    <span className="text-xs font-bold text-[#C9A84C]">{rec.confidence}%</span>
                   </div>
                 </CardContent>
               </Card>
@@ -371,38 +371,38 @@ export default function BoardBriefings() {
       </Card>
 
       {/* Board Reports */}
-      <Card>
+      <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
         <CardHeader>
-          <CardTitle>Quarterly Board Reports</CardTitle>
-          <CardDescription>
+          <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Quarterly Board Reports</CardTitle>
+          <CardDescription className="text-[#6B7280] dark:text-white/60">
             Comprehensive performance dashboards and strategic updates for board presentations
           </CardDescription>
         </CardHeader>
         <CardContent>
           {reportsLoading ? (
-            <div className="text-center py-8 text-muted-foreground">Loading board reports...</div>
+            <div className="text-center py-8 text-[#6B7280] dark:text-white/60">Loading board reports...</div>
           ) : (
             <div className="space-y-4">
               {boardReports.map((report: any) => (
                 <div 
                   key={report.id} 
-                  className="border rounded-lg p-4 space-y-3"
+                  className="border border-[#E8E4DC] dark:border-white/10 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`report-${report.id}`}
                 >
                   <div className="flex items-start justify-between">
-                    <div className="flex-1 page-background space-y-2">
+                    <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
-                        <Badge variant="outline">{report.reportType}</Badge>
-                        <Badge>{report.reportingPeriod}</Badge>
+                        <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
+                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{report.reportType}</Badge>
+                        <Badge className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E]">{report.reportingPeriod}</Badge>
                         {report.approvedBy && (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
+                          <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm">{report.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-white/80">{report.executiveSummary}</p>
                       
                       {report.presentedAt && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2 text-sm text-[#6B7280] dark:text-white/60">
                           <Calendar className="h-4 w-4" />
                           <span>Presented: {new Date(report.presentedAt).toLocaleDateString()}</span>
                         </div>
@@ -410,10 +410,10 @@ export default function BoardBriefings() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" data-testid={`button-view-report-${report.id}`}>
+                      <Button size="sm" className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid={`button-view-report-${report.id}`}>
                         View Report
                       </Button>
-                      <Button size="sm" variant="outline" data-testid={`button-export-report-${report.id}`}>
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-export-report-${report.id}`}>
                         <Download className="h-4 w-4 mr-2" />
                         Export
                       </Button>

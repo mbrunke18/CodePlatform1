@@ -73,13 +73,13 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
   const scoreColor = 
     displayData.score >= 80 ? 'text-green-600 dark:text-green-400' :
-    displayData.score >= 60 ? 'text-blue-600 dark:text-blue-400' :
+    displayData.score >= 60 ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' :
     displayData.score >= 40 ? 'text-yellow-600 dark:text-yellow-400' :
     'text-red-600 dark:text-red-400';
 
   const scoreBgColor = 
     displayData.score >= 80 ? 'bg-green-100 dark:bg-green-900/20' :
-    displayData.score >= 60 ? 'bg-blue-100 dark:bg-blue-900/20' :
+    displayData.score >= 60 ? 'bg-blue-100 dark:bg-[#0A0F2E]/20' :
     displayData.score >= 40 ? 'bg-yellow-100 dark:bg-yellow-900/20' :
     'bg-red-100 dark:bg-red-900/20';
 
@@ -170,12 +170,12 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-3" data-testid="scenarios-practiced">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3" data-testid="scenarios-practiced">
             <div className="flex items-center gap-2 mb-1">
-              <Target className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-              <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">Scenarios</span>
+              <Target className="h-4 w-4 text-[#0A0F2E] dark:text-[#0A0F2E]" />
+              <span className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Scenarios</span>
             </div>
-            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-blue-300">
               {displayData.scenariosPracticed}
             </div>
             <div className="text-xs text-muted-foreground">practiced</div>

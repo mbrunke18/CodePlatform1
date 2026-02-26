@@ -24,9 +24,9 @@ const phaseIcons = {
 };
 
 const phaseColors = {
-  IDENTIFY: 'bg-violet-600',
-  DETECT: 'bg-blue-600',
-  EXECUTE: 'bg-emerald-600',
+  IDENTIFY: 'bg-[#0A0F2E]',
+  DETECT: 'bg-[#0A0F2E]',
+  EXECUTE: 'bg-[#2B8A6E]',
   ADVANCE: 'bg-amber-600'
 };
 
@@ -100,7 +100,7 @@ export default function OnboardingOverlay() {
   if (!state.isActive || !currentStep || !config) return null;
 
   const PhaseIcon = currentStep.phase ? phaseIcons[currentStep.phase] : Lightbulb;
-  const phaseColor = currentStep.phase ? phaseColors[currentStep.phase] : 'bg-blue-600';
+  const phaseColor = currentStep.phase ? phaseColors[currentStep.phase] : 'bg-[#0A0F2E]';
 
   return createPortal(
     <>
@@ -188,7 +188,7 @@ export default function OnboardingOverlay() {
                 <Button
                   size="sm"
                   onClick={nextStep}
-                  className="bg-blue-600 hover:bg-blue-700 text-gray-900"
+                  className="bg-[#0A0F2E] hover:bg-[#0A0F2E] text-gray-900"
                   data-testid="onboarding-next"
                 >
                   {state.currentStep >= steps.length - 1 ? 'Done' : 'Next'}

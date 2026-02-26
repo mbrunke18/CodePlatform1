@@ -313,9 +313,9 @@ function StatCard({
   color: string;
 }) {
   const colorClasses: Record<string, string> = {
-    blue: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
-    purple: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
-    green: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+    blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E]',
+    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
+    green: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
     amber: 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
   };
 

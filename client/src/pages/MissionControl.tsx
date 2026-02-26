@@ -188,8 +188,8 @@ export default function MissionControl() {
               </div>
               <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Live Telemetry</span>
+                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2B8A6E]">Live Telemetry</span>
                 </div>
               </div>
             </div>
@@ -326,15 +326,15 @@ export default function MissionControl() {
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Oracle AI Core</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span className="text-[10px] font-bold text-emerald-400 uppercase">Operational</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
                       </div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-white/60">Telemetry Mesh</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                        <span className="text-[10px] font-bold text-emerald-400 uppercase">Synchronized</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Synchronized</span>
                       </div>
                     </div>
                   </div>

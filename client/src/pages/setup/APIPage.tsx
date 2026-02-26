@@ -56,7 +56,7 @@ export default function APIPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Webhook className="w-5 h-5 text-purple-500" />
+                <Webhook className="w-5 h-5 text-[#C9A84C]" />
                 Webhooks
               </CardTitle>
             </CardHeader>
@@ -71,7 +71,7 @@ export default function APIPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Code className="w-5 h-5 text-blue-500" />
+                <Code className="w-5 h-5 text-[#0A0F2E]" />
                 SDKs & Libraries
               </CardTitle>
             </CardHeader>

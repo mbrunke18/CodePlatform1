@@ -6,14 +6,14 @@ import { FileText, ArrowRight } from 'lucide-react';
 import { Link } from 'wouter';
 
 const templates = [
-  { name: 'Competitive Response', domain: 'Market Entry', count: 12, color: 'bg-blue-500' },
-  { name: 'M&A Integration', domain: 'M&A', count: 15, color: 'bg-purple-500' },
+  { name: 'Competitive Response', domain: 'Market Entry', count: 12, color: 'bg-[#0A0F2E]' },
+  { name: 'M&A Integration', domain: 'M&A', count: 15, color: 'bg-[#0A0F2E]' },
   { name: 'Product Launch', domain: 'Product', count: 8, color: 'bg-green-500' },
   { name: 'Crisis Management', domain: 'Crisis', count: 22, color: 'bg-red-500' },
   { name: 'Cyber Incident', domain: 'Cyber', count: 18, color: 'bg-orange-500' },
   { name: 'Regulatory Change', domain: 'Regulatory', count: 14, color: 'bg-yellow-500' },
-  { name: 'Digital Transformation', domain: 'Digital', count: 20, color: 'bg-cyan-500' },
-  { name: 'AI Governance', domain: 'AI', count: 18, color: 'bg-indigo-500' },
+  { name: 'Digital Transformation', domain: 'Digital', count: 20, color: 'bg-[#2B8A6E]' },
+  { name: 'AI Governance', domain: 'AI', count: 18, color: 'bg-[#0A0F2E]' },
 ];
 
 export default function TemplatesPage() {

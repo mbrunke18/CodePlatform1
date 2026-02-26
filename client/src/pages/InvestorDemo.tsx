@@ -49,10 +49,10 @@ const IDEA_STORY = [
     title: "The $270M-$900M Problem",
     subtitle: "Why 30% of strategy value is lost in execution",
     phase: "PROBLEM",
-    phaseColor: "bg-red-500",
+    phaseColor: "bg-[#0A0F2E]",
     icon: AlertTriangle,
     color: "text-red-400",
-    bgColor: "bg-red-500/20",
+    bgColor: "bg-red-500/10",
     time: 0,
     description: "McKinsey research: Even high-performing companies lose 30% of their strategy's value in execution. For Fortune 500, that's $270M-$900M annually. The gap isn't intelligence—it's coordination. When a strategic event hits, teams spend 20-50 hours just getting organized.",
     investorHighlight: "This is a $15B+ market opportunity. No one owns the execution layer between strategy consulting and project management.",
@@ -70,10 +70,10 @@ const IDEA_STORY = [
     title: "170 Playbooks. Zero Blank Pages.",
     subtitle: "Build your depth chart before the game starts",
     phase: "IDENTIFY",
-    phaseColor: "bg-violet-500",
+    phaseColor: "bg-[#2B8A6E]",
     icon: BookOpen,
-    color: "text-violet-400",
-    bgColor: "bg-violet-500/20",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
     time: 30,
     description: "Unlike crisis tools or PM platforms, Execution OS comes with 170 battle-tested playbooks across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
     investorHighlight: "This is our moat. 170 playbooks = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
@@ -98,10 +98,10 @@ const IDEA_STORY = [
     title: "AI Monitors. You Decide.",
     subtitle: "Human-AI partnership for strategic velocity",
     phase: "DETECT",
-    phaseColor: "bg-blue-500",
+    phaseColor: "bg-[#0A0F2E]",
     icon: Radar,
-    color: "text-blue-400",
-    bgColor: "bg-blue-500/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     time: 50,
     description: "Execution OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right playbook with confidence scoring. AI monitors and recommends. Executives decide.",
     investorHighlight: "The human-AI partnership is key to enterprise adoption. We augment executives, we don't replace them. This is how you sell to Fortune 1000 C-suites.",
@@ -119,10 +119,10 @@ const IDEA_STORY = [
     title: "Predictive Intelligence. Before It Happens.",
     subtitle: "Anaplan PlanIQ-style forecasting for strategic triggers",
     phase: "PREDICT",
-    phaseColor: "bg-purple-500",
+    phaseColor: "bg-[#C9A84C]",
     icon: LineChart,
-    color: "text-purple-400",
-    bgColor: "bg-purple-500/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     time: 80,
     description: "Execution OS doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test playbook readiness. Like Anaplan PlanIQ, but for strategic execution.",
     investorHighlight: "This is our AI differentiation. We're not just workflow—we're predictive intelligence for the C-suite. No competitor has this capability.",
@@ -147,10 +147,10 @@ const IDEA_STORY = [
     title: "12 Minutes. Not 72 Hours.",
     subtitle: "One-click activation with 15-section executive data",
     phase: "EXECUTE",
-    phaseColor: "bg-emerald-500",
+    phaseColor: "bg-[#2B8A6E]",
     icon: Zap,
-    color: "text-emerald-400",
-    bgColor: "bg-emerald-500/20",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
     time: 120,
     description: "When the CISO approves, Execution OS auto-creates your Jira project, assigns every task, stages every document, and unlocks pre-approved budgets—all in 12 minutes. 47 stakeholders notified instantly. Teams don't learn Execution OS—Execution OS comes to them in tools they already use.",
     investorHighlight: "The integration layer IS the moat. Once 50 playbooks are syncing to Jira with bi-directional updates, switching costs are massive.",
@@ -184,10 +184,10 @@ const IDEA_STORY = [
     title: "Institutional Learning Captured",
     subtitle: "Every execution makes the next one better",
     phase: "ADVANCE",
-    phaseColor: "bg-amber-500",
+    phaseColor: "bg-[#C9A84C]",
     icon: Brain,
-    color: "text-amber-400",
-    bgColor: "bg-amber-500/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     time: 160,
     description: "After resolution, Execution OS captures what worked, what didn't, and suggests playbook refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The playbook library becomes a strategic asset.",
     investorHighlight: "Historical execution data + playbook refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
@@ -315,7 +315,7 @@ export default function InvestorDemo() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-purple-500 text-gray-900 mb-3">
+            <Badge className="bg-[#0A0F2E] text-gray-900 mb-3">
               Investor Demo — Market Creation Story
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-testid="heading-investor-demo">
@@ -334,7 +334,7 @@ export default function InvestorDemo() {
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-emerald-600 hover:bg-emerald-700"
+                      className="bg-[#2B8A6E] hover:bg-[#256B56]"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />
@@ -355,7 +355,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-emerald-400' : 'text-gray-800'}`}
+                    className={`text-sm ${manualMode ? 'text-[#2B8A6E]' : 'text-gray-800'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode
@@ -380,7 +380,7 @@ export default function InvestorDemo() {
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-emerald-400 bg-emerald-500/20' : 'text-gray-800'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#2B8A6E] bg-[#2B8A6E]/20' : 'text-gray-800'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -493,16 +493,16 @@ export default function InvestorDemo() {
                           <p className={`text-lg ${currentStage.color} mb-3`}>
                             {currentStage.subtitle}
                           </p>
-                          <p className="text-gray-800 leading-relaxed mb-4">
+                          <p className="text-gray-900 font-medium leading-relaxed mb-4">
                             {currentStage.description}
                           </p>
                           
                           {/* Investor Highlight */}
-                          <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-3">
+                          <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-3">
                             <div className="flex items-start gap-2">
-                              <TrendingUp className="h-4 w-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                              <p className="text-sm text-purple-700">
-                                <span className="font-medium text-purple-400">Investor Insight:</span> {currentStage.investorHighlight}
+                              <TrendingUp className="h-4 w-4 text-[#C9A84C] mt-0.5 flex-shrink-0" />
+                              <p className="text-sm text-[#C9A84C]">
+                                <span className="font-bold text-[#C9A84C]">Investor Insight:</span> {currentStage.investorHighlight}
                               </p>
                             </div>
                           </div>
@@ -522,13 +522,13 @@ export default function InvestorDemo() {
                       {currentStage.smartDefaults && (
                         <div className="bg-gray-50 rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
-                            <Settings className="h-4 w-4 text-violet-400" />
+                            <Settings className="h-4 w-4 text-[#C9A84C]" />
                             <span className="font-medium text-gray-900">{currentStage.smartDefaults.title}</span>
                           </div>
                           <div className="space-y-2">
                             {currentStage.smartDefaults.items.map((item, idx) => (
                               <div key={idx} className="flex items-start gap-2 text-sm">
-                                <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                                 <div>
                                   <span className="text-gray-900">{item.domain}:</span>{' '}
                                   <span className="text-gray-800">{item.defaults}</span>
@@ -541,13 +541,13 @@ export default function InvestorDemo() {
 
                       {/* PM Sync Panel */}
                       {currentStage.pmSync && (
-                        <div className="bg-emerald-900/20 border border-emerald-500/30 rounded-lg p-4 mb-4">
+                        <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
-                            <GitBranch className="h-4 w-4 text-emerald-400" />
+                            <GitBranch className="h-4 w-4 text-[#2B8A6E]" />
                             <span className="font-medium text-gray-900">{currentStage.pmSync.title}</span>
                             <div className="flex gap-1 ml-auto">
                               {currentStage.pmSync.platforms.map((p, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs border-emerald-500/50 text-emerald-300">
+                                <Badge key={idx} variant="outline" className="text-xs border-[#2B8A6E]/50 text-emerald-300">
                                   {p}
                                 </Badge>
                               ))}
@@ -556,7 +556,7 @@ export default function InvestorDemo() {
                           <div className="space-y-1">
                             {currentStage.pmSync.actions.map((action, idx) => (
                               <div key={idx} className="flex items-center gap-2 text-sm">
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
                                 <span className="text-gray-800">{action}</span>
                               </div>
                             ))}
@@ -567,7 +567,7 @@ export default function InvestorDemo() {
                       {!isComplete ? (
                         <Button
                           onClick={handleNextStage}
-                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-gray-900 py-6 text-lg"
+                          className="w-full bg-[#2B8A6E] hover:bg-[#256B56] text-gray-900 py-6 text-lg"
                           data-testid="button-next-stage"
                         >
                           {currentStageIndex === IDEA_STORY.length - 2 ? 'Complete Story' : 'Next Beat'}
@@ -575,15 +575,15 @@ export default function InvestorDemo() {
                         </Button>
                       ) : (
                         <div className="space-y-3">
-                          <div className="bg-emerald-900/30 border border-emerald-500/30 rounded-lg p-4 text-center">
-                            <CheckCircle2 className="h-8 w-8 text-emerald-400 mx-auto mb-2" />
-                            <p className="text-emerald-400 font-medium">Story Complete</p>
+                          <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 text-center">
+                            <CheckCircle2 className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
+                            <p className="text-[#2B8A6E] font-medium">Story Complete</p>
                             <p className="text-gray-800 text-sm">From signal to coordinated action: 12 minutes vs 72 hours</p>
                           </div>
                           <div className="flex gap-3">
                             <Button
                               onClick={() => setLocation('/customer-demo')}
-                              className="flex-1 bg-blue-600 hover:bg-blue-700"
+                              className="flex-1 bg-[#0A0F2E] hover:bg-[#0A0F2E]"
                               data-testid="button-customer-demo"
                             >
                               <Users className="mr-2 h-4 w-4" />
@@ -592,7 +592,7 @@ export default function InvestorDemo() {
                             <Button
                               onClick={() => setLocation('/investor-presentation')}
                               variant="outline"
-                              className="flex-1 border-purple-500/50 text-purple-300"
+                              className="flex-1 border-[#C9A84C]/50 text-[#C9A84C]"
                               data-testid="button-full-presentation"
                             >
                               Full Deck
@@ -609,10 +609,10 @@ export default function InvestorDemo() {
 
             <div className="space-y-6">
               {/* Enterprise Moat */}
-              <Card className="bg-gradient-to-br border-purple-500/30">
+              <Card className="bg-gradient-to-br border-[#C9A84C]/30">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                    <Lock className="h-5 w-5 text-purple-400" />
+                    <Lock className="h-5 w-5 text-[#C9A84C]" />
                     Enterprise Moat
                   </CardTitle>
                 </CardHeader>
@@ -620,8 +620,8 @@ export default function InvestorDemo() {
                   <div className="space-y-3">
                     {MOAT_COMPONENTS.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                          <item.icon className="h-4 w-4 text-purple-400" />
+                        <div className="w-8 h-8 rounded-lg bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0">
+                          <item.icon className="h-4 w-4 text-[#C9A84C]" />
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-900">{item.title}</div>
@@ -638,7 +638,7 @@ export default function InvestorDemo() {
                 <Card className="bg-white border-gray-200">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                      <Users className="h-5 w-5 text-blue-400" />
+                      <Users className="h-5 w-5 text-[#0A0F2E]" />
                       Live Stakeholder Response
                     </CardTitle>
                   </CardHeader>
@@ -650,15 +650,15 @@ export default function InvestorDemo() {
                           <div 
                             key={idx}
                             className={`p-2 rounded-lg flex items-center gap-2 transition-all ${
-                              isAcknowledged ? 'bg-emerald-900/30' : 'bg-gray-50'
+                              isAcknowledged ? 'bg-[#2B8A6E]/15' : 'bg-gray-50'
                             }`}
                           >
-                            <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-emerald-400' : 'bg-slate-600'}`} />
+                            <div className={`w-2 h-2 rounded-full ${isAcknowledged ? 'bg-[#2B8A6E]' : 'bg-slate-600'}`} />
                             <div className="flex-1 min-w-0">
                               <div className="text-sm font-medium text-gray-900 truncate">{stakeholder.name}</div>
                               <div className="text-xs text-gray-800 truncate">{stakeholder.role}</div>
                             </div>
-                            {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />}
+                            {isAcknowledged && <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />}
                           </div>
                         );
                       })}
@@ -678,7 +678,7 @@ export default function InvestorDemo() {
               <Card className="bg-white border-gray-200">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                    <LineChart className="h-5 w-5 text-emerald-400" />
+                    <LineChart className="h-5 w-5 text-[#2B8A6E]" />
                     Investment Thesis
                   </CardTitle>
                 </CardHeader>
@@ -698,7 +698,7 @@ export default function InvestorDemo() {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-800">Category</span>
-                      <span className="text-sm font-medium text-emerald-400">Category Creator</span>
+                      <span className="text-sm font-medium text-[#2B8A6E]">Category Creator</span>
                     </div>
                   </div>
                 </CardContent>

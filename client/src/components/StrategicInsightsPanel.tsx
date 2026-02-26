@@ -48,8 +48,8 @@ export default function StrategicInsightsPanel() {
     switch (type.toLowerCase()) {
       case 'strategic opportunity': return "bg-green-50 text-green-700 border-green-200";
       case 'risk assessment': return "bg-red-50 text-red-700 border-red-200";
-      case 'innovation catalyst': return "bg-purple-50 text-purple-700 border-purple-200";
-      case 'market intelligence': return "bg-blue-50 text-blue-700 border-blue-200";
+      case 'innovation catalyst': return "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]";
+      case 'market intelligence': return "bg-[#0A0F2E] text-[#0A0F2E] border-blue-200";
       default: return "bg-gray-50 text-gray-700 border-gray-200";
     }
   };

@@ -50,13 +50,13 @@ export default function FutureReadinessWidget({ organizationId }: { organization
       label: 'FORESIGHT',
       value: readinessData?.foresightScore || 92,
       icon: Eye,
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-[#0A0F2E] to-[#141B45]'
     },
     {
       label: 'VELOCITY',
       value: readinessData?.velocityScore || 88,
       icon: Zap,
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-[#0A0F2E] to-[#141B45]'
     },
     {
       label: 'AGILITY',
@@ -79,23 +79,23 @@ export default function FutureReadinessWidget({ organizationId }: { organization
   ];
 
   return (
-    <Card className="relative overflow-hidden border-2 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-blue-950/30" data-testid="widget-future-readiness">
+    <Card className="relative overflow-hidden border-2 bg-gradient-to-br from-[#0A0F2E] via-white to-[#141B45] dark:from-[#0A0F2E]/30 dark:via-[#C9A84C]/10 dark:to-[#141B45]/30" data-testid="widget-future-readiness">
       {/* Gradient Border Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-20 blur-sm"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F2E] via-white to-[#141B45] opacity-20 blur-sm"></div>
       
       <CardContent className="relative pt-8 pb-6 px-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center shadow-lg">
               <Brain className="h-6 w-6 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] bg-clip-text text-transparent">
                   Future Readiness Index™
                 </h3>
-                <Badge className="bg-blue-600 text-white text-xs font-semibold">NEW</Badge>
+                <Badge className="bg-[#0A0F2E] text-white text-xs font-semibold">NEW</Badge>
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
                 Real-time strategic preparedness • AI intelligence • Predictive analysis
@@ -103,7 +103,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
             </div>
           </div>
           <Link to="/future-readiness">
-            <Button size="sm" variant="ghost" className="gap-1 text-blue-600 hover:text-blue-700 dark:text-blue-400" data-testid="button-view-full-dashboard">
+            <Button size="sm" variant="ghost" className="gap-1 text-[#0A0F2E] hover:text-[#0A0F2E] dark:text-[#0A0F2E]" data-testid="button-view-full-dashboard">
               Full Dashboard <ArrowRight className="h-3 w-3" />
             </Button>
           </Link>
@@ -116,7 +116,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
               Overall Readiness
             </div>
             <div className="relative">
-              <div className="text-6xl font-bold bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent" data-testid="text-readiness-score">
+              <div className="text-6xl font-bold bg-gradient-to-br from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E] dark:to-[#141B45] bg-clip-text text-transparent" data-testid="text-readiness-score">
                 {score.toFixed(1)}%
               </div>
               {trend === 'up' && (
@@ -165,13 +165,13 @@ export default function FutureReadinessWidget({ organizationId }: { organization
         {/* Quick Stats Row */}
         <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-blue-200/50 dark:border-blue-800/50">
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400" data-testid="text-active-scenarios">
+            <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]" data-testid="text-active-scenarios">
               {readinessData?.activeScenarios || 3}
             </div>
             <div className="text-xs text-muted-foreground mt-1">Active Scenarios</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400" data-testid="text-weak-signals">
+            <div className="text-2xl font-bold text-[#C9A84C] dark:text-[#C9A84C]" data-testid="text-weak-signals">
               {activeSignals}
             </div>
             <div className="text-xs text-muted-foreground mt-1">Weak Signals Detected</div>
