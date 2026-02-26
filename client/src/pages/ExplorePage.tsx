@@ -98,7 +98,7 @@ export default function ExplorePage() {
               Experience the Platform<br />
               <span className="text-[#C9A84C] italic">as a Real Customer</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            <p className="text-xl text-[#6B7280] max-w-2xl mx-auto mb-10 leading-relaxed font-light">
               Sign in, set up your workspace, and walk through an actual playbook activation — complete with real email notifications and a live command center.
             </p>
 
@@ -114,7 +114,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-slate-50 px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
+                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors"
                 onClick={() => setLocation('/contact')}
               >
                 Apply for Pilot Program
@@ -157,7 +157,7 @@ export default function ExplorePage() {
         <section className="py-24 px-6 bg-white">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Everything you'll have access to</h2>
-            <p className="text-slate-500 text-center mb-16 uppercase tracking-widest text-[10px] font-bold">The full platform. No watered-down version.</p>
+            <p className="text-[#6B7280] text-center mb-16 uppercase tracking-widest text-[10px] font-bold">The full platform. No watered-down version.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((f) => (
                 <div key={f.title} className="bg-white rounded-none p-8 border border-[#E8E4DC] hover:border-[#0A0F2E] transition-all duration-300">
@@ -165,7 +165,7 @@ export default function ExplorePage() {
                     <f.icon className={`h-5 w-5 ${f.color}`} />
                   </div>
                   <h3 className="font-bold text-[#0A0F2E] mb-3 text-[10px] uppercase tracking-widest">{f.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
+                  <p className="text-[#6B7280] text-sm leading-relaxed">{f.description}</p>
                 </div>
               ))}
             </div>
@@ -182,12 +182,12 @@ export default function ExplorePage() {
                   <Layers className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Explore the Product</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                   Sign in and experience the full platform immediately. Ideal for evaluators, decision-makers, and teams doing due diligence.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {['Instant access', 'Full feature set', 'Sample data available', 'No commitment'].map(item => (
-                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#6B7280]">
                       <ChevronRight className="h-4 w-4 text-[#2B8A6E]" />
                       {item}
                     </li>
@@ -208,12 +208,12 @@ export default function ExplorePage() {
                   <Shield className="h-6 w-6 text-[#0A0F2E]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Apply for Pilot Program</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                   A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {['Dedicated onboarding', 'Up to 25 users', 'Custom playbook configuration', 'Executive readout at 90 days'].map(item => (
-                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#6B7280]">
                       <ChevronRight className="h-4 w-4 text-[#C9A84C]" />
                       {item}
                     </li>

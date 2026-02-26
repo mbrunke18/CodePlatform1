@@ -74,8 +74,8 @@ const workspaceTools = [
     description: "Assess your organization's strategic readiness score",
     path: "/preparedness-report",
     icon: Shield,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
+    color: "text-red-600",
+    bgColor: "bg-red-600/10",
     stats: "Readiness scoring"
   }
 ];
@@ -109,7 +109,7 @@ export default function WorkspaceIdentify() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Factory</h1>
-                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
+                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white" }}>
                     <SubBrandLabel name="Playbook™" />
                   </Badge>
                 </div>
@@ -143,9 +143,9 @@ export default function WorkspaceIdentify() {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E]">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
-                    <span className="text-sm font-medium text-[#2B8A6E]">IDENTIFY</span>
+                    <span className="text-sm font-bold text-[#2B8A6E]">IDENTIFY</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/detect">
@@ -212,16 +212,16 @@ export default function WorkspaceIdentify() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-red-500">
+            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-red-600">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-red-500/10">
-                    <Shield className="h-5 w-5 text-red-500" />
+                  <div className="p-2 rounded-lg bg-red-600/10">
+                    <Shield className="h-5 w-5 text-red-600" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Playbook #31</h4>
-                      <Badge className="bg-red-500/20 text-red-700 border-red-500/30">Triggered</Badge>
+                      <Badge className="bg-red-600/20 text-red-700 border-red-600/30">Triggered</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Activated Feb 3 via automated trigger</p>
                   </div>

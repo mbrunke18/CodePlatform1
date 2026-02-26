@@ -224,8 +224,8 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
   
   const getComplexityColor = (complexity: string) => {
     switch (complexity) {
-      case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+      case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'high': return 'bg-red-500/20 text-red-400 border-red-500/30';
       default: return 'bg-gray-500/20 text-gray-800 border-gray-500/30';
     }
@@ -457,11 +457,11 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   <span className="text-sm text-gray-800">Step {customizationStep} of 3</span>
                 </div>
                 <Progress value={(customizationStep / 3) * 100} className="h-2" />
-                <div className="flex justify-between mt-2">
-                  <span className={`text-xs ${customizationStep >= 1 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Details</span>
-                  <span className={`text-xs ${customizationStep >= 2 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Stakeholders</span>
-                  <span className={`text-xs ${customizationStep >= 3 ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>Settings</span>
-                </div>
+                  <div className="flex justify-between mt-2">
+                    <span className={`text-xs ${customizationStep >= 1 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Details</span>
+                    <span className={`text-xs ${customizationStep >= 2 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Stakeholders</span>
+                    <span className={`text-xs ${customizationStep >= 3 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Settings</span>
+                  </div>
               </div>
               
               {/* Step 1: Basic Details */}

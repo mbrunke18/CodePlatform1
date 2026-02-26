@@ -90,7 +90,7 @@ const compoundScenarios = [
   {
     scenario: "Cyber + Regulatory",
     icon: Shield,
-    iconColor: "text-red-500",
+    iconColor: "text-[#2B8A6E]",
     domains: "Crisis + Regulatory",
     playbookCount: 6,
     description: "A data breach triggers simultaneous GDPR penalties, SEC disclosure requirements, and customer notification obligations across multiple jurisdictions.",
@@ -244,7 +244,7 @@ function CompoundDisruptionSection() {
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
-            const scenarioColor = item.scenario.includes("Cyber") ? "#EF4444" : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : NAVY;
+            const scenarioColor = item.scenario.includes("Cyber") ? TEAL : item.scenario.includes("Geopolitical") ? GOLD : item.scenario.includes("Climate") ? TEAL : NAVY;
             return (
               <div
                 key={i}
@@ -252,7 +252,7 @@ function CompoundDisruptionSection() {
                   border: `1px solid ${isExpanded ? GOLD : BORDER}`,
                   background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(0,0,0,0.02)"
                 }}
-                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-slate-400`}
+                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#DFC178]`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -272,9 +272,9 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
-          const scenarioColor = scenario.scenario.includes("Cyber") ? "#EF4444" : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : NAVY;
+          const scenarioColor = scenario.scenario.includes("Cyber") ? TEAL : scenario.scenario.includes("Geopolitical") ? GOLD : scenario.scenario.includes("Climate") ? TEAL : NAVY;
           return (
-            <div className="mt-5 rounded-xl border bg-slate-50/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
+            <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: BORDER }}>
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: BORDER }}>
                   <Icon className="h-5 w-5" style={{ color: scenarioColor }} />
@@ -494,7 +494,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     }}
                   >
                     <span className="flex items-center gap-1.5">
-                      {u.id === "critical" && <span className="w-2 h-2 rounded-full bg-red-500" />}
+                      {u.id === "critical" && <span className="w-2 h-2 rounded-full" style={{ background: "#EF4444" }} />}
                       {u.id === "high" && <span className="w-2 h-2 rounded-full" style={{ background: GOLD }} />}
                       {u.id === "standard" && <span className="w-2 h-2 rounded-full" style={{ background: TEAL }} />}
                       {u.label}
@@ -548,15 +548,15 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider w-12">#</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">Playbook Title</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden md:table-cell">Domain</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden lg:table-cell">Avg. Execution</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider hidden sm:table-cell">Urgency</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider w-12">#</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Playbook Title</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden md:table-cell">Domain</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden lg:table-cell">Avg. Execution</th>
+                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden sm:table-cell">Urgency</th>
                   <th className="px-4 py-3 w-20" />
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-[#E8E4DC]">
                 {publicTeasers.map((pb) => (
                   <tr key={pb.num} className="bg-white hover:bg-[#F8F7F4] transition-colors group">
                     <td className="px-4 py-4">
@@ -600,7 +600,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 <tr style={{ background: OFF }}>
                   <td colSpan={6} className="px-4 py-6 text-center">
                     <div className="flex items-center justify-center gap-4">
-                      <Lock className="h-4 w-4" style={{ color: MUTED }} />
+                      <Lock className="h-4 w-4" style={{ color: "#6B7280" }} />
                       <span style={{ fontSize: 13, color: NAVY }}>
                         <strong>+ {activeDomainInfo.count - publicTeasers.length} more playbooks</strong> — sign in to unlock the full library
                       </span>
@@ -629,7 +629,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   <div
                     key={pb.id}
                     style={{ border: `1px solid ${BORDER}`, background: "white" }}
-                    className="p-4 hover:shadow-md hover:border-slate-300 transition-all cursor-pointer"
+                    className="p-4 hover:shadow-md hover:border-[#C9A84C] transition-all cursor-pointer"
                     onClick={() => setLocation(`/playbooks/${pb.id}/preview`)}
                   >
                     <div className="flex items-start justify-between gap-2 mb-2">

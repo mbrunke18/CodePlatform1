@@ -235,6 +235,7 @@ export default function BoardExport() {
                 onClick={handleExport}
                 disabled={isGenerating || sections.filter(s => s.included).length === 0}
                 data-testid="button-generate-report"
+                style={{ background: "#0A0F2E" }}
               >
                 {isGenerating ? (
                   <>
@@ -309,7 +310,7 @@ export default function BoardExport() {
                           >
                             <div className="flex items-center gap-3">
                               <Badge className={
-                                scenario.severity === 'High' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                                scenario.severity === 'High' ? 'bg-red-600/10 text-red-600 border-red-600/20' :
                                 scenario.severity === 'Medium' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
                                 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20'
                               }>

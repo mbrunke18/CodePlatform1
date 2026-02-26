@@ -71,24 +71,24 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
         <div className="p-8">
           {/* Enterprise Metrics Header */}
           <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-[#0A0F2E] rounded-xl flex items-center justify-center">
-                <Building className="w-7 h-7 text-[#C9A84C]" />
+            <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between">
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+              <div className="relative z-10 flex items-center gap-4">
+                <Building className="h-10 w-10 text-[#C9A84C]" />
+                <div>
+                  <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Enterprise Metrics Center</h1>
+                  <p className="text-white/70">Platform Performance & Enterprise Integration Hub</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Enterprise Metrics Center</h1>
-                <p className="text-[#6B7280]">Platform Performance & Enterprise Integration Hub</p>
+              <div className="relative z-10 flex items-center gap-3">
+                <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 bg-[#2B8A6E]/5">
+                  <CheckCircle className="w-3 h-3 mr-1" />
+                  Enterprise Ready
+                </Badge>
+                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
+                  Fortune 1000
+                </Badge>
               </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 bg-[#2B8A6E]/5">
-                <CheckCircle className="w-3 h-3 mr-1" />
-                Enterprise Ready
-              </Badge>
-              <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
-                Fortune 1000
-              </Badge>
             </div>
           </div>
 

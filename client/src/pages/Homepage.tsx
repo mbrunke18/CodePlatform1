@@ -318,8 +318,8 @@ export default function Homepage() {
             {([
               { phase: "I", word: "IDENTIFY", color: GOLD, desc: "Monitor 170+ strategic trigger categories across financial, competitive, regulatory, and operational domains. AI pattern-matching surfaces the right playbook in seconds." },
               { phase: "D", word: "DETECT", color: TEAL_LIGHT, desc: "Real-time signal ingestion from 12 enterprise systems. Weak signals become strong alerts before the market reacts. No lag between event and awareness." },
-              { phase: "E", word: "EXECUTE", color: "#818CF8", desc: "12-minute trigger-to-execution. Projects created, tasks assigned, documents staged, budgets allocated — all before your first committee email is sent." },
-              { phase: "A", word: "ADVANCE", color: "#F472B6", desc: "Capture institutional memory. Every execution becomes training data for future responses. The organization gets smarter with each event." },
+              { phase: "E", word: "EXECUTE", color: "#C9A84C", desc: "12-minute trigger-to-execution. Projects created, tasks assigned, documents staged, budgets allocated — all before your first committee email is sent." },
+              { phase: "A", word: "ADVANCE", color: "#2B8A6E", desc: "Capture institutional memory. Every execution becomes training data for future responses. The organization gets smarter with each event." },
             ] as { phase: string; word: string; color: string; desc: string }[]).map((f, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{ background: "rgba(255,255,255,0.03)", padding: "40px 32px", minHeight: 280, transition: "background 0.3s" }}
@@ -435,8 +435,8 @@ export default function Homepage() {
                 { label: "Pattern Detection", val: "Real-time", color: TEAL_LIGHT },
                 { label: "Playbook Matching", val: "AI Assisted", color: GOLD },
                 { label: "Task Orchestration", val: "Automated", color: GOLD },
-                { label: "Approval Gate", val: "Human Required", color: "#F472B6" },
-                { label: "Budget Release", val: "Human Required", color: "#F472B6" },
+                { label: "Approval Gate", val: "Human Required", color: "#2B8A6E" },
+                { label: "Budget Release", val: "Human Required", color: "#2B8A6E" },
               ] as { label: string; val: string; color: string }[]).map((row, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                   <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>{row.label}</span>

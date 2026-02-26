@@ -40,8 +40,8 @@ const workspaceTools = [
     description: "Rapid response protocols for critical situations",
     path: "/crisis",
     icon: AlertTriangle,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
+    color: "text-red-600",
+    bgColor: "bg-red-600/10",
     stats: "Emergency protocols"
   },
   {
@@ -112,7 +112,7 @@ export default function WorkspaceExecute() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Compass Command</h1>
-                  <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
+                  <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" style={{ background: "#C9A84C", color: "#0A0F2E" }}>
                     <SubBrandLabel name="Compass™" />
                   </Badge>
                 </div>
@@ -160,9 +160,9 @@ export default function WorkspaceExecute() {
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C]">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
                     <Compass className="h-4 w-4 text-[#C9A84C]" />
-                    <span className="text-sm font-medium text-[#C9A84C]">EXECUTE</span>
+                    <span className="text-sm font-bold text-[#C9A84C]">EXECUTE</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">

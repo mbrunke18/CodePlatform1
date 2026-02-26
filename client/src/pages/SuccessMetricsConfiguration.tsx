@@ -55,7 +55,7 @@ const METRIC_TYPES = [
   { id: 'velocity', name: 'Decision Velocity', icon: Zap, color: 'text-[#C9A84C]', description: 'Speed of strategic decision-making' },
   { id: 'coverage', name: 'Scenario Coverage', icon: Shield, color: 'text-[#2B8A6E]', description: 'Percentage of risks with active playbooks' },
   { id: 'roi', name: 'ROI Metrics', icon: DollarSign, color: 'text-[#2B8A6E]', description: 'Return on strategic investments' },
-  { id: 'custom', name: 'Custom KPI', icon: BarChart3, color: 'text-[#141B45]', description: 'Organization-specific metrics' },
+  { id: 'custom', name: 'Custom KPI', icon: BarChart3, color: 'text-[#0A0F2E]', description: 'Organization-specific metrics' },
 ];
 
 const REVIEW_CADENCES = [
@@ -159,19 +159,16 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   // Create metric mutation
   const createMetricMutation = useMutation({
     mutationFn: async (metric: Partial<SuccessMetric>) => {
-      return apiRequest('/api/config/success-metrics', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: metric.name,
-          description: metric.description,
-          metricType: metric.type,
-          targetValue: metric.targetValue,
-          currentValue: metric.currentValue,
-          baselineValue: metric.baselineValue,
-          unit: metric.unit,
-          reviewCadence: metric.reviewCadence,
-          isActive: metric.isActive,
-        }),
+      return apiRequest('POST', '/api/config/success-metrics', {
+        name: metric.name,
+        description: metric.description,
+        metricType: metric.type,
+        targetValue: metric.targetValue,
+        currentValue: metric.currentValue,
+        baselineValue: metric.baselineValue,
+        unit: metric.unit,
+        reviewCadence: metric.reviewCadence,
+        isActive: metric.isActive,
       });
     },
     onSuccess: () => {
@@ -198,7 +195,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   // Delete metric mutation
   const deleteMetricMutation = useMutation({
     mutationFn: async (id: string) => {
-      return apiRequest(`/api/config/success-metrics/${id}`, { method: 'DELETE' });
+      return apiRequest('DELETE', `/api/config/success-metrics/${id}`);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/config/success-metrics'] });
@@ -417,7 +414,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       </div>
                       <div className="h-2 bg-[#F8F7F4] rounded-full overflow-hidden">
                         <div 
-                          className={`h-full ${getProgressColor(progress)} transition-all`}
+                          className={`h-full ${getProgressColor(progress)} transition-all [&>div]:bg-[#C9A84C]`}
                           style={{ width: `${progress}%` }}
                         />
                       </div>

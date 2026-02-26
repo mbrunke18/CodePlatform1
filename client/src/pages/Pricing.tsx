@@ -1,10 +1,13 @@
+import { useEffect, CSSProperties } from 'react';
+import { useLocation } from 'wouter';
+import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from "@/components/layout/PageLayout";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function Pricing() {
   const [, setLocation] = useLocation();

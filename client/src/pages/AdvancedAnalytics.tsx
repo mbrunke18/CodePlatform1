@@ -253,7 +253,7 @@ export default function AdvancedAnalytics() {
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'positive': return <ArrowUp className="h-4 w-4 text-[#2B8A6E]" />;
-      case 'negative': return <ArrowDown className="h-4 w-4 text-red-400" />;
+      case 'negative': return <ArrowDown className="h-4 w-4 text-red-600" />;
       default: return <Minus className="h-4 w-4 text-[#C9A84C]" />;
     }
   };
@@ -263,7 +263,7 @@ export default function AdvancedAnalytics() {
       case 'high': return 'bg-red-500/20 text-red-600 border-red-500/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
-      default: return 'bg-slate-500/20 text-[#0A0F2E] border-slate-500/30';
+      default: return 'bg-black/5 text-gray-700 border-black/10';
     }
   };
 
@@ -297,25 +297,31 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Header */}
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Advanced Business Intelligence</h1>
-            <p className="text-[#6B7280]">Predictive analytics, market intelligence, and competitive benchmarking</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/">
-              <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Dashboard
+          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+            <div className="relative z-10 flex items-center gap-4">
+              <BarChart3 className="h-10 w-10 text-[#C9A84C]" />
+              <div>
+                <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Advanced Business Intelligence</h1>
+                <p className="text-white/70">Predictive analytics, market intelligence, and competitive benchmarking</p>
+              </div>
+            </div>
+            <div className="relative z-10 flex items-center gap-4">
+              <Link to="/">
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Dashboard
+                </Button>
+              </Link>
+              <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
+                <Brain className="w-4 h-4 mr-2" />
+                AI Models Active: 12
+              </Badge>
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
+                <BarChart3 className="w-4 h-4 mr-2" />
+                Generate Report
               </Button>
-            </Link>
-            <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
-              <Brain className="w-4 h-4 mr-2" />
-              AI Models Active: 12
-            </Badge>
-            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Generate Report
-            </Button>
+            </div>
           </div>
         </div>
 
@@ -534,7 +540,7 @@ export default function AdvancedAnalytics() {
                       
                       <div className="text-center">
                         <div className="text-sm text-gray-800 dark:text-slate-200 mb-1">Improvement Potential</div>
-                        <div className="text-2xl font-bold text-blue-300">
+                        <div className="text-2xl font-bold text-[#3BAF8A]">
                           {benchmark.metric.includes('Cost') || benchmark.metric.includes('Revenue') ? 
                             formatCurrency(benchmark.improvementPotential) : benchmark.improvementPotential.toLocaleString()}
                         </div>

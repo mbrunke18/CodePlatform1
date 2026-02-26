@@ -52,8 +52,8 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   
   return (
     <div className="flex items-center gap-2">
-      <div className={`w-2 h-2 rounded-full ${c.bg}`} />
-      <span className={`text-[10px] font-bold uppercase tracking-wider ${c.className}`}>{c.label}</span>
+      <div className={`w-2 h-2 rounded-full ${c.bg} rounded-none`} />
+      <span className={`text-[10px] font-bold uppercase tracking-widest ${c.className}`}>{c.label}</span>
     </div>
   );
 }
@@ -61,7 +61,6 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
 function MetricCard({ 
   title, 
   value, 
-  unit,
   trend,
   trendDirection,
   status,
@@ -70,7 +69,6 @@ function MetricCard({
 }: {
   title: string;
   value: string | number;
-  unit?: string;
   trend?: string;
   trendDirection?: 'up' | 'down' | 'neutral';
   status: 'good' | 'warning' | 'critical';
@@ -93,23 +91,22 @@ function MetricCard({
   const trendClasses = {
     up: 'text-[#2B8A6E]',
     down: 'text-red-700',
-    neutral: 'text-gray-400'
+    neutral: 'text-[#6B7280]'
   };
 
   return (
-    <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC] hover:shadow-md transition-shadow`}>
+    <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC] hover:shadow-md transition-shadow rounded-none shadow-sm`}>
       <CardContent className="pt-5 space-y-3">
         <div className="flex items-center justify-between">
-          <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Icon className="h-4 w-4 text-white" />
           </div>
           <StatusIndicator status={status} />
         </div>
         <div>
-          <div className="text-[10px] font-bold tracking-widest uppercase text-gray-500 mb-1">{title}</div>
+          <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280] mb-1">{title}</div>
           <div className="flex items-baseline gap-1">
             <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>{value}</span>
-            {unit && <span style={{ ...CG, fontSize: "18px", color: "#6B7280" }}>{unit}</span>}
           </div>
         </div>
         {trend && trendDirection && TrendIcon && (
@@ -119,7 +116,7 @@ function MetricCard({
           </div>
         )}
         {description && (
-          <p className="text-xs text-gray-400">{description}</p>
+          <p className="text-xs text-[#6B7280]">{description}</p>
         )}
       </CardContent>
     </Card>
@@ -252,20 +249,20 @@ export default function ExecutiveDashboard() {
                   Executive Command
                 </span>
               </div>
-              <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
-                Unified Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command</em>
+            <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
+                Unified Strategic <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Command</em>
               </h1>
             </div>
             
             <div className="flex items-center gap-4">
-              <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.12)" }} className="px-3 py-1">
+              <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.12)" }} className="px-3 py-1 rounded-none">
                 <Activity className="h-3 w-3 mr-2 text-[#2B8A6E]" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">Live System</span>
               </Badge>
               <Button 
                 onClick={handleRecalculate}
                 style={{ background: "transparent", border: "1.5px solid rgba(255,255,255,0.2)", color: "#fff" }}
-                className="hover:bg-white/10"
+                className="hover:bg-white/10 rounded-none"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Refresh Intelligence
@@ -276,17 +273,17 @@ export default function ExecutiveDashboard() {
 
         <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList style={{ background: "#E8E4DC", padding: 4 }} className="grid grid-cols-4 mb-8 rounded-sm">
-              <TabsTrigger value="overview" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
+            <TabsList style={{ background: "#E8E4DC", padding: 4 }} className="grid grid-cols-4 mb-8 rounded-none">
+              <TabsTrigger value="overview" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
                 Overview
               </TabsTrigger>
-              <TabsTrigger value="readiness" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
+              <TabsTrigger value="readiness" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
                 Readiness
               </TabsTrigger>
-              <TabsTrigger value="velocity" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
+              <TabsTrigger value="velocity" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
                 Velocity
               </TabsTrigger>
-              <TabsTrigger value="preparedness" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
+              <TabsTrigger value="preparedness" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">
                 Crisis
               </TabsTrigger>
             </TabsList>
@@ -300,7 +297,7 @@ export default function ExecutiveDashboard() {
                       <div style={{ ...CG, fontSize: "64px", fontWeight: 600 }} className={getScoreColor(friScore)}>
                         {friScore.toFixed(1)}%
                       </div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mt-2">Future Readiness Index™</div>
+                      <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280] mt-2">Future Readiness Index™</div>
                     </div>
                     <div className="p-12 flex-1 flex flex-col justify-center space-y-6">
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -308,7 +305,7 @@ export default function ExecutiveDashboard() {
                         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Status Assessment</span>
                       </div>
                       <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>Your organization is in a <em style={{ fontStyle: "italic", color: TEAL }}>high-gravity</em> preparedness state.</h2>
-                      <p className="text-gray-600 text-sm max-w-xl">
+                      <p className="text-[#6B7280] text-sm max-w-xl">
                         Based on real-time telemetry across 170 strategic playbooks and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
                       </p>
                     </div>
@@ -370,15 +367,15 @@ export default function ExecutiveDashboard() {
                   </CardHeader>
                   <CardContent className="pt-6 space-y-4">
                     {weakSignals.length === 0 ? (
-                      <div className="text-center py-12 text-gray-400 italic text-sm">No signals requiring immediate attention</div>
+                      <div className="text-center py-12 text-[#6B7280] italic text-sm">No signals requiring immediate attention</div>
                     ) : (
                       weakSignals.slice(0, 3).map((s) => (
-                        <div key={s.id} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-sm flex justify-between items-start">
+                        <div key={s.id} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none flex justify-between items-start">
                           <div className="space-y-1">
                             <div className="text-sm font-bold text-[#0A0F2E]">{s.title}</div>
-                            <div className="text-xs text-gray-500">{s.description}</div>
+                            <div className="text-xs text-[#6B7280]">{s.description}</div>
                           </div>
-                          <Badge style={{ background: NAVY, color: "#fff", border: "none" }} className="text-[9px] font-bold uppercase tracking-widest">{s.urgency}</Badge>
+                          <Badge style={{ background: NAVY, color: "#fff", border: "none" }} className="text-[9px] font-bold uppercase tracking-widest rounded-none">{s.urgency}</Badge>
                         </div>
                       ))
                     )}
@@ -394,13 +391,13 @@ export default function ExecutiveDashboard() {
                   </CardHeader>
                   <CardContent className="pt-6 space-y-4">
                     {oraclePatterns.length === 0 ? (
-                      <div className="text-center py-12 text-gray-400 italic text-sm">Oracle is synthesizing data...</div>
+                      <div className="text-center py-12 text-[#6B7280] italic text-sm">Oracle is synthesizing data...</div>
                     ) : (
                       oraclePatterns.slice(0, 3).map((p) => (
-                        <div key={p.id} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-sm flex justify-between items-start">
+                        <div key={p.id} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none flex justify-between items-start">
                           <div className="space-y-1">
                             <div className="text-sm font-bold text-[#0A0F2E]">{p.title}</div>
-                            <div className="text-xs text-gray-500">{p.description}</div>
+                            <div className="text-xs text-[#6B7280]">{p.description}</div>
                           </div>
                           <div className="text-[10px] font-bold text-[#2B8A6E] uppercase tracking-widest">{p.impact} Impact</div>
                         </div>

@@ -82,12 +82,12 @@ interface DatabaseIntelligenceReport {
 
 const getReportTypeBadgeColor = (reportType: string) => {
   switch (reportType) {
-    case 'market_analysis': return 'bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30';
+    case 'market_analysis': return 'bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30';
     case 'competitive_intelligence': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
-    case 'risk_assessment': return 'bg-red-500/20 text-red-300 border-red-500/30';
-    case 'regulatory_update': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
-    default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+    case 'risk_assessment': return 'bg-red-500/20 text-red-600 border-red-500/30';
+    case 'regulatory_update': return 'bg-orange-500/20 text-orange-600 border-orange-500/30';
+    case 'technology_trends': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+    default: return 'bg-black/5 text-gray-700 border-black/10';
   }
 };
 
@@ -322,20 +322,20 @@ export default function ComprehensiveAIIntelligence() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'operational': return 'bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/30';
-      case 'processing': return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'offline': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+      case 'operational': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      case 'processing': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'offline': return 'bg-red-500/20 text-red-600 border-red-500/30';
+      default: return 'bg-black/5 text-gray-700 border-black/10';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'critical': return 'bg-red-500/20 text-red-300 border-red-500/30';
-      case 'high': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
-      case 'medium': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30';
-      case 'low': return 'bg-green-500/20 text-green-300 border-green-500/30';
-      default: return 'bg-slate-500/20 text-gray-800 border-slate-500/30';
+      case 'critical': return 'bg-red-500/20 text-red-600 border-red-500/30';
+      case 'high': return 'bg-orange-500/20 text-orange-600 border-orange-500/30';
+      case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
+      default: return 'bg-black/5 text-gray-700 border-black/10';
     }
   };
 
@@ -369,27 +369,33 @@ export default function ComprehensiveAIIntelligence() {
         
         {/* AI Intelligence Header */}
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI Intelligence Command Center</h1>
-            <p className="text-[#6B7280]">Comprehensive AI-powered organizational intelligence and strategic insights</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button 
-              onClick={generateAllIntelligence}
-              disabled={isGenerating}
-              className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
-            >
-              {isGenerating ? (
-                <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-              ) : (
-                <Zap className="w-4 h-4 mr-2" />
-              )}
-              Generate Intelligence
-            </Button>
-            <Button variant="outline" className="bg-transparent border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
-              <Download className="w-4 h-4 mr-2" />
-              Export Reports
-            </Button>
+          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+            <div className="relative z-10 flex items-center gap-4">
+              <Brain className="h-10 w-10 text-[#C9A84C]" />
+              <div>
+                <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI Intelligence Command Center</h1>
+                <p className="text-white/70">Comprehensive AI-powered organizational intelligence and strategic insights</p>
+              </div>
+            </div>
+            <div className="relative z-10 flex items-center gap-4">
+              <Button 
+                onClick={generateAllIntelligence}
+                disabled={isGenerating}
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
+              >
+                {isGenerating ? (
+                  <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                ) : (
+                  <Zap className="w-4 h-4 mr-2" />
+                )}
+                Generate Intelligence
+              </Button>
+              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                <Download className="w-4 h-4 mr-2" />
+                Export Reports
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -466,31 +472,30 @@ export default function ComprehensiveAIIntelligence() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Module Status Overview */}
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
+                  <CardTitle className="text-[#0A0F2E] flex items-center gap-2">
                     <Brain className="h-5 w-5" />
                     AI Module Status
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {aiModules.map((module) => (
-                    <div key={module.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div key={module.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg">
+                        <div className="p-2 bg-[#0A0F2E] rounded-lg">
                           {module.icon}
                         </div>
                         <div>
-                          <div className="font-semibold text-gray-900">{module.name}</div>
-                          <div className="text-xs text-gray-800 dark:text-slate-200">Updated: {module.lastUpdate}</div>
+                          <div className="font-semibold text-[#0A0F2E]">{module.name}</div>
+                          <div className="text-xs text-[#6B7280]">Updated: {module.lastUpdate}</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="text-right">
-                          <div className="text-sm font-medium text-gray-900">{module.performance}%</div>
-                          <Progress value={module.performance} className="w-16 h-2" />
+                          <div className="text-sm font-medium text-[#0A0F2E]">{module.performance}%</div>
+                          <Progress value={module.performance} className="w-16 h-2 [&>div]:bg-[#C9A84C]" />
                         </div>
-                        <BrandStamp variant="dual" size="md" className="mb-8" />
                         <Badge className={getStatusColor(module.status)}>
                           {module.status.toUpperCase()}
                         </Badge>
@@ -501,34 +506,34 @@ export default function ComprehensiveAIIntelligence() {
               </Card>
 
               {/* Recent Intelligence Activity */}
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC]">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
+                  <CardTitle className="text-[#0A0F2E] flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Recent Intelligence Activity
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
                       <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
-                      <div className="flex-1 page-background">
-                        <div className="text-sm text-gray-900">Pulse Intelligence generated performance metrics</div>
-                        <div className="text-xs text-gray-800 dark:text-slate-200">Real-time • Confidence: 96.4%</div>
+                      <div className="flex-1">
+                        <div className="text-sm text-[#0A0F2E]">Pulse Intelligence generated performance metrics</div>
+                        <div className="text-xs text-[#6B7280]">Real-time • Confidence: 96.4%</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
                       <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
-                      <div className="flex-1 page-background">
-                        <div className="text-sm text-gray-900">Nova identified breakthrough innovation opportunity</div>
-                        <div className="text-xs text-gray-800 dark:text-slate-200">2 min ago • Impact: $750K potential</div>
+                      <div className="flex-1">
+                        <div className="text-sm text-[#0A0F2E]">Nova identified breakthrough innovation opportunity</div>
+                        <div className="text-xs text-[#6B7280]">2 min ago • Impact: $750K potential</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
                       <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
-                      <div className="flex-1 page-background">
-                        <div className="text-sm text-gray-900">Prism completed strategic market analysis</div>
-                        <div className="text-xs text-gray-800 dark:text-slate-200">5 min ago • Market opportunity: $2.3M</div>
+                      <div className="flex-1">
+                        <div className="text-sm text-[#0A0F2E]">Prism completed strategic market analysis</div>
+                        <div className="text-xs text-[#6B7280]">5 min ago • Market opportunity: $2.3M</div>
                       </div>
                     </div>
                   </div>
@@ -608,145 +613,177 @@ export default function ComprehensiveAIIntelligence() {
             </div>
           </TabsContent>
 
-          {/* Intelligence Reports */}
+          {/* Reports Content */}
           <TabsContent value="reports" className="space-y-6">
-            <div className="space-y-4">
-              {intelligenceReports.map((report) => (
-                <Card key={report.id} className="bg-white border-gray-200">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1 page-background">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">{report.title}</h3>
-                          <Badge className={getPriorityColor(report.priority)}>
-                            {report.priority.toUpperCase()}
-                          </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
-                            {report.module}
-                          </Badge>
-                        </div>
-                        <p className="text-gray-800 mb-4">{report.summary}</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Confidence</div>
-                        <div className="text-xl font-bold text-gray-900">{report.confidence}%</div>
-                      </div>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <div className="text-sm font-semibold text-gray-900 mb-2">Key Findings</div>
-                        <div className="space-y-1">
-                          {report.keyFindings.map((finding, index) => (
-                            <div key={index} className="text-sm text-gray-800 flex items-start gap-2">
-                              <CheckCircle className="w-4 h-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                              {finding}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 space-y-4">
+                {dbReportsLoading ? (
+                  Array(3).fill(0).map((_, i) => (
+                    <Card key={i} className="bg-white border-[#E8E4DC]">
+                      <CardContent className="p-6">
+                        <Skeleton className="h-6 w-1/2 mb-4" />
+                        <Skeleton className="h-4 w-full mb-2" />
+                        <Skeleton className="h-4 w-full" />
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : dbReports && dbReports.length > 0 ? (
+                  dbReports.map((report) => (
+                    <Card key={report.id} className="bg-white border-[#E8E4DC]">
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge className={getReportTypeBadgeColor(report.reportType)}>
+                                {formatReportType(report.reportType)}
+                              </Badge>
+                              <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">
+                                Confidence: {report.confidence}%
+                              </Badge>
                             </div>
-                          ))}
+                            <h3 className="text-xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{report.title}</h3>
+                          </div>
+                          <Button variant="outline" size="sm" className="border-[#E8E4DC] text-[#0A0F2E]">
+                            <Download className="h-4 w-4 mr-2" />
+                            PDF
+                          </Button>
                         </div>
-                      </div>
-                      
-                      <div>
-                        <div className="text-sm font-semibold text-gray-900 mb-2">Recommendations</div>
-                        <div className="space-y-1">
-                          {report.recommendations.map((rec, index) => (
-                            <div key={index} className="text-sm text-gray-800 flex items-start gap-2">
-                              <Target className="w-4 h-4 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
-                              {rec}
+                        <p className="text-[#6B7280] mb-4">{report.executiveSummary}</p>
+                        <div className="flex items-center justify-between pt-4 border-t border-[#E8E4DC]">
+                          <div className="flex items-center gap-4">
+                            <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                              <FileText className="h-4 w-4 mr-2" />
+                              View Full Report
+                            </Button>
+                            <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                              <Share className="h-4 w-4 mr-2" />
+                              Share
+                            </Button>
+                          </div>
+                          <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
+                            Verified
+                          </Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : (
+                  intelligenceReports.map((report) => (
+                    <Card key={report.id} className="bg-white border-[#E8E4DC]">
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge className={getPriorityColor(report.priority)}>
+                                {report.priority.toUpperCase()} PRIORITY
+                              </Badge>
+                              <Badge variant="outline" className="border-[#E8E4DC] text-[#6B7280]">
+                                {report.module}
+                              </Badge>
                             </div>
-                          ))}
+                            <h3 className="text-xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{report.title}</h3>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-xs text-[#6B7280] mb-1">{new Date(report.timestamp).toLocaleDateString()}</div>
+                            <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/30">
+                              {report.status.toUpperCase()}
+                            </Badge>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
-                      <div className="text-xs text-gray-800">
-                        Generated: {new Date(report.timestamp).toLocaleString()}
-                      </div>
-                      <div className="flex gap-2">
-                        <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
-                          <Eye className="w-4 h-4 mr-2" />
-                          Full Report
-                        </Button>
-                        <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
-                          <Share className="w-4 h-4 mr-2" />
-                          Share
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {/* Intelligence Reports from Database */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Database className="h-5 w-5 text-[#0A0F2E]" />
-                <h2 className="text-xl font-semibold text-gray-900">Intelligence Reports from Database</h2>
+                        <p className="text-[#6B7280] mb-4">{report.summary}</p>
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                          <div className="bg-[#F8F7F4] p-3 rounded-lg border border-[#E8E4DC]">
+                            <div className="text-sm font-semibold text-[#0A0F2E] mb-2">Key Findings</div>
+                            <ul className="text-xs text-[#6B7280] space-y-1">
+                              {report.keyFindings.map((finding, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <div className="w-1 h-1 bg-[#6B7280] rounded-full mt-1.5" />
+                                  {finding}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="bg-[#F8F7F4] p-3 rounded-lg border border-[#E8E4DC]">
+                            <div className="text-sm font-semibold text-[#0A0F2E] mb-2">Recommendations</div>
+                            <ul className="text-xs text-[#6B7280] space-y-1">
+                              {report.recommendations.map((rec, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <div className="w-1 h-1 bg-[#0A0F2E] rounded-full mt-1.5" />
+                                  {rec}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between pt-4 border-t border-[#E8E4DC]">
+                          <div className="flex items-center gap-4">
+                            <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                              <FileText className="h-4 w-4 mr-2" />
+                              View Full Report
+                            </Button>
+                            <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:bg-[#F8F7F4]">
+                              <Share className="h-4 w-4 mr-2" />
+                              Share
+                            </Button>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-[#6B7280]">Confidence:</span>
+                            <Progress value={report.confidence} className="w-16 h-1.5 [&>div]:bg-[#C9A84C]" />
+                            <span className="text-xs font-bold text-[#0A0F2E]">{report.confidence}%</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))
+                )}
               </div>
 
-              {dbReportsLoading ? (
-                <div className="space-y-4">
-                  {[1, 2, 3].map((i) => (
-                    <Card key={i} className="bg-white border-gray-200">
-                      <CardContent className="p-6 space-y-4">
-                        <div className="flex items-center gap-3">
-                          <Skeleton className="h-6 w-48" />
-                          <Skeleton className="h-5 w-24" />
-                        </div>
-                        <Skeleton className="h-4 w-full" />
-                        <Skeleton className="h-4 w-3/4" />
-                        <div className="flex items-center gap-4">
-                          <Skeleton className="h-3 w-32" />
-                          <Skeleton className="h-3 w-24" />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ) : dbReports && dbReports.length > 0 ? (
-                <div className="space-y-4">
-                  {dbReports.map((report) => (
-                    <Card key={report.id} className="bg-white border-gray-200">
-                      <CardHeader>
-                        <div className="flex items-center justify-between">
-                          <CardTitle className="text-gray-900 flex items-center gap-3">
-                            <FileText className="h-5 w-5 text-[#0A0F2E]" />
-                            {report.title}
-                          </CardTitle>
-                          <Badge className={getReportTypeBadgeColor(report.reportType)}>
-                            {formatReportType(report.reportType)}
+              <div className="space-y-6">
+                <Card className="bg-white border-[#E8E4DC]">
+                  <CardHeader>
+                    <CardTitle className="text-[#0A0F2E]">Report Filters</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#0A0F2E]">Module Source</label>
+                      <div className="space-y-1">
+                        {['All Modules', 'Pulse Intelligence', 'Nova Innovations', 'Prism Insights', 'Flux Adaptations', 'Echo Analytics'].map((m) => (
+                          <div key={m} className="flex items-center gap-2">
+                            <div className="w-4 h-4 border border-[#E8E4DC] rounded" />
+                            <span className="text-sm text-[#6B7280]">{m}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-[#0A0F2E]">Priority Level</label>
+                      <div className="flex flex-wrap gap-2">
+                        {['Critical', 'High', 'Medium', 'Low'].map((p) => (
+                          <Badge key={p} variant="outline" className="cursor-pointer border-[#E8E4DC] text-[#6B7280] hover:border-[#0A0F2E]">
+                            {p}
                           </Badge>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-gray-800 text-sm">{report.executiveSummary}</p>
-
-                        <div className="flex items-center gap-6">
-                          <div className="flex-1">
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs text-gray-800 dark:text-slate-200">Confidence</span>
-                              <span className="text-xs font-medium text-gray-900">{Math.round(report.confidence * 100)}%</span>
-                            </div>
-                            <Progress value={report.confidence * 100} className="h-2" />
-                          </div>
-                          <div className="text-sm text-gray-800 dark:text-slate-200">
-                            <span className="font-medium text-gray-900">{Array.isArray(report.findings) ? report.findings.length : 0}</span> findings
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <Card className="bg-white border-gray-200">
-                  <CardContent className="p-8 text-center">
-                    <Database className="h-12 w-12 mx-auto mb-3 text-gray-800" />
-                    <p className="text-gray-800 dark:text-slate-200">No intelligence reports found in the database.</p>
+                        ))}
+                      </div>
+                    </div>
+                    <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]">
+                      <Filter className="h-4 w-4 mr-2" />
+                      Apply Filters
+                    </Button>
                   </CardContent>
                 </Card>
-              )}
+
+                <Card className="bg-[#0A0F2E] text-white overflow-hidden relative">
+                  <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '15px 15px' }}></div>
+                  <CardContent className="p-6 relative z-10">
+                    <h3 className="font-bold text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Schedule Reports</h3>
+                    <p className="text-white/70 text-sm mb-4">Automate intelligence delivery to key stakeholders on a regular basis.</p>
+                    <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Configure Scheduler
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </TabsContent>
 
@@ -761,16 +798,16 @@ export default function ComprehensiveAIIntelligence() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {aiModules.filter(m => m.insights.length > 0).map((module) => (
-                <Card key={module.id} className="bg-white border-gray-200">
+                <Card key={module.id} className="bg-white border-[#E8E4DC]">
                   <CardHeader>
-                    <CardTitle className="text-gray-900 flex items-center gap-2">
+                    <CardTitle className="text-[#0A0F2E] flex items-center gap-2">
                       {module.icon}
                       {module.name} Insights
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-center text-gray-800 dark:text-slate-200">
-                      <Brain className="h-12 w-12 mx-auto mb-2" />
+                    <div className="text-center text-[#6B7280]">
+                      <Brain className="h-12 w-12 mx-auto mb-2 text-[#C9A84C]" />
                       <p>Live insights streaming...</p>
                       <p className="text-xs">{module.insights.length} data points processed</p>
                     </div>
@@ -782,33 +819,33 @@ export default function ComprehensiveAIIntelligence() {
 
           {/* Configuration */}
           <TabsContent value="configuration" className="space-y-6">
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-white border-[#E8E4DC]">
               <CardHeader>
-                <CardTitle className="text-gray-900">AI System Configuration</CardTitle>
+                <CardTitle className="text-[#0A0F2E]">AI System Configuration</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#141B45] text-white flex-col gap-2">
                     <Brain className="w-8 h-8" />
                     Model Training
                   </Button>
-                  <Button className="h-24 bg-[#2B8A6E] hover:bg-[#256B56] flex-col gap-2">
+                  <Button className="h-24 bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white flex-col gap-2">
                     <Network className="w-8 h-8" />
                     Data Sources
                   </Button>
-                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#141B45] text-white flex-col gap-2">
                     <Settings className="w-8 h-8" />
                     System Settings
                   </Button>
-                  <Button className="h-24 bg-amber-600 hover:bg-amber-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold flex-col gap-2">
                     <Filter className="w-8 h-8" />
                     Processing Rules
                   </Button>
-                  <Button className="h-24 bg-pink-600 hover:bg-pink-700 flex-col gap-2">
+                  <Button className="h-24 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold flex-col gap-2">
                     <Target className="w-8 h-8" />
                     Performance Tuning
                   </Button>
-                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#0A0F2E] flex-col gap-2">
+                  <Button className="h-24 bg-[#0A0F2E] hover:bg-[#141B45] text-white flex-col gap-2">
                     <Globe className="w-8 h-8" />
                     Integration Hub
                   </Button>

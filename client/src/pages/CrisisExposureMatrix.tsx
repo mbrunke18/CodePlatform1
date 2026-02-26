@@ -56,7 +56,7 @@ export default function CrisisExposureMatrix() {
             <Icon className="h-5 w-5" />
             <CardTitle className="text-lg">{title}</CardTitle>
           </div>
-          <Badge variant="outline" className="text-lg font-bold" data-testid={`badge-count-${title.toLowerCase().replace(' ', '-')}`}>
+          <Badge variant="outline" className="text-lg font-bold border-[#E8E4DC] text-[#0A0F2E]" data-testid={`badge-count-${title.toLowerCase().replace(' ', '-')}`}>
             {scenarios.length}
           </Badge>
         </div>
@@ -64,7 +64,7 @@ export default function CrisisExposureMatrix() {
       </CardHeader>
       <CardContent>
         {scenarios.length === 0 ? (
-          <p className="text-sm text-muted-foreground italic">No scenarios in this category</p>
+          <p className="text-sm text-[#6B7280] italic">No scenarios in this category</p>
         ) : (
           <div className="space-y-2">
             {scenarios.slice(0, 5).map((scenario) => (
@@ -73,19 +73,19 @@ export default function CrisisExposureMatrix() {
                 href={`/strategic-monitoring/${scenario.id}`}
                 data-testid={`link-scenario-${scenario.id}`}
               >
-                <div className="flex items-center justify-between p-2 rounded hover:bg-accent cursor-pointer transition-colors">
-                  <div className="flex-1 page-background">
-                    <p className="text-sm font-medium">{scenario.title || scenario.name}</p>
-                    <p className="text-xs text-muted-foreground">
+                <div className="flex items-center justify-between p-2 rounded hover:bg-[#F8F7F4] cursor-pointer transition-colors">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-[#0A0F2E]">{scenario.title || scenario.name}</p>
+                    <p className="text-xs text-[#6B7280]">
                       Likelihood: {Math.round((scenario.likelihood || 0) * 100)}% | Impact: {scenario.impact}
                     </p>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                 </div>
               </Link>
             ))}
             {scenarios.length > 5 && (
-              <p className="text-xs text-muted-foreground text-center pt-2">
+              <p className="text-xs text-[#6B7280] text-center pt-2">
                 +{scenarios.length - 5} more scenarios
               </p>
             )}
@@ -123,7 +123,7 @@ export default function CrisisExposureMatrix() {
             </h1>
             <p className="text-white/60 text-xl leading-relaxed max-w-3xl">
               Prioritize your playbook preparation with our Likelihood × Impact framework. 
-              Focus on <span className="text-red-500 font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
+              Focus on <span className="text-red-600 font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
             </p>
           </div>
         </div>

@@ -199,7 +199,7 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
 const domainStyleMap: Record<string, { border: string; bg: string; text: string; iconText: string; btnClass: string }> = {
   all: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
   offense: { border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', bg: 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', iconText: 'text-[#2B8A6E]', btnClass: 'bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white' },
-  defense: { border: 'border-red-200 dark:border-red-800', bg: 'bg-red-50 dark:bg-red-900/20', text: 'text-red-700', iconText: 'text-red-700', btnClass: 'bg-red-600 hover:bg-red-700 text-white' },
+  defense: { border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', bg: 'bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10', text: 'text-[#C9A84C]', iconText: 'text-[#C9A84C]', btnClass: 'bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]' },
   special_teams: { border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', bg: 'bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10', text: 'text-[#C9A84C]', iconText: 'text-[#C9A84C]', btnClass: 'bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E]' },
 };
 
@@ -262,7 +262,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         {[
           { key: 'all', label: 'All Domains', icon: Sparkles, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
           { key: 'offense', label: 'OFFENSE', icon: Rocket, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
-          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-red-500', textColor: 'text-red-700', bgColor: 'bg-red-50' },
+          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
           { key: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
         ].map(({ key, label, icon: Icon, borderColor, textColor, bgColor }) => (
           <Button
@@ -338,7 +338,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         const isConditional = result.recommendation?.toLowerCase().includes('conditionally');
         const isRecommended = !isNotRecommended && !isConditional;
         const verdictConfig = isNotRecommended
-          ? { icon: XCircle, label: 'Not Recommended', color: 'red', bg: 'bg-red-50 dark:bg-red-900/20', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-300', iconColor: 'text-red-700', badgeBg: 'bg-red-600' }
+          ? { icon: XCircle, label: 'Not Recommended', color: 'navy', bg: 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]/30 dark:border-[#0A0F2E]/50', text: 'text-[#0A0F2E] dark:text-[#C9A84C]', iconColor: 'text-[#0A0F2E]', badgeBg: 'bg-[#0A0F2E]' }
           : isConditional
           ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'gold', bg: 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/5', border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', text: 'text-[#C9A84C]', iconColor: 'text-[#C9A84C]', badgeBg: 'bg-[#C9A84C]' }
           : { icon: CheckCircle2, label: 'Recommended', color: 'teal', bg: 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/5', border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', iconColor: 'text-[#2B8A6E]', badgeBg: 'bg-[#2B8A6E]' };
@@ -390,17 +390,17 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <div className={`flex-1 ${isNotRecommended ? 'bg-red-100 dark:bg-red-900/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} rounded-full h-8 flex items-center px-4`}>
-                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.modified_time}</span>
+                      <div className={`flex-1 ${isNotRecommended ? 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} rounded-full h-8 flex items-center px-4`}>
+                        <span className={`text-sm font-bold ${isNotRecommended ? 'text-[#0A0F2E]' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.modified_time}</span>
                       </div>
-                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-red-700 flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />}
+                      {isNotRecommended ? <TrendingDown className="h-5 w-5 text-[#0A0F2E] flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />}
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 pt-2 border-t border-[#E8E4DC] dark:border-white/10">
                   <div className="w-32 text-sm font-semibold text-[#0A0F2E] dark:text-white text-right flex-shrink-0">Net Impact</div>
                   <div className="flex-1">
-                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-red-700' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.impact}</span>
+                    <span className={`text-lg font-bold ${isNotRecommended ? 'text-[#0A0F2E]' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.impact}</span>
                   </div>
                 </div>
               </div>

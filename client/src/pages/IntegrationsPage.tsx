@@ -61,6 +61,11 @@ const categoryColors = {
   crm: "bg-[#141B45]/10 text-[#141B45]",
 };
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const GOLD_LT = "#DFC178";
+
 export default function IntegrationsPage() {
   const { toast } = useToast();
   const [selectedIntegration, setSelectedIntegration] = useState<Integration | null>(null);
@@ -212,8 +217,8 @@ export default function IntegrationsPage() {
                   {connectedIntegrations.filter(i => i.status === 'active').length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-lg flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
+              <div className={`w-12 h-12 bg-[${TEAL}]/10 rounded-lg flex items-center justify-center`}>
+                <CheckCircle2 className={`w-6 h-6 text-[${TEAL}]`} />
               </div>
             </div>
           </Card>
@@ -249,10 +254,10 @@ export default function IntegrationsPage() {
 
         {/* Integration Categories */}
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="bg-white border border-[#E8E4DC]">
-            <TabsTrigger value="all" data-testid="tab-all" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">All Integrations</TabsTrigger>
-            <TabsTrigger value="connected" data-testid="tab-connected" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">Connected</TabsTrigger>
-            <TabsTrigger value="available" data-testid="tab-available" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E]">Available</TabsTrigger>
+          <TabsList className="bg-white border border-[#E8E4DC] rounded-none">
+            <TabsTrigger value="all" data-testid="tab-all" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">All Integrations</TabsTrigger>
+            <TabsTrigger value="connected" data-testid="tab-connected" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">Connected</TabsTrigger>
+            <TabsTrigger value="available" data-testid="tab-available" className="data-[state=active]:bg-[#F8F7F4] data-[state=active]:text-[#0A0F2E] rounded-none">Available</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all" className="mt-6">
@@ -270,7 +275,7 @@ export default function IntegrationsPage() {
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
                       {connected ? (
-                        <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20">
+                        <Badge variant="outline" className={`bg-[${TEAL}]/10 text-[${TEAL}] border-[${TEAL}]/20`}>
                           <CheckCircle2 className="w-3 h-3 mr-1" />
                           Connected
                         </Badge>
@@ -279,7 +284,7 @@ export default function IntegrationsPage() {
                           Coming Soon
                         </Badge>
                       ) : (
-                        <Badge variant="outline" className="bg-[#DFC178]/10 text-[#C9A84C] border-[#DFC178]/20">
+                        <Badge variant="outline" className={`bg-[${GOLD_LT}]/10 text-[${GOLD}] border-[${GOLD_LT}]/20`}>
                           <Circle className="w-3 h-3 mr-1" />
                           Available
                         </Badge>
@@ -356,12 +361,12 @@ export default function IntegrationsPage() {
                 const connectedData = getConnectedIntegration(integration.id);
 
                 return (
-                  <Card key={integration.id} className="p-6">
+                  <Card key={integration.id} className="p-6 rounded-none">
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
+                      <div className={`w-12 h-12 rounded-none flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
-                      <Badge variant="outline" className="bg-green-500/10 text-[#2B8A6E] dark:text-green-400 border-green-500/20">
+                      <Badge variant="outline" className={`bg-[${TEAL}]/10 text-[${TEAL}] border-[${TEAL}]/20 rounded-none`}>
                         <CheckCircle2 className="w-3 h-3 mr-1" />
                         Active
                       </Badge>
@@ -400,12 +405,12 @@ export default function IntegrationsPage() {
                 const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
 
                 return (
-                  <Card key={integration.id} className="p-6">
+                  <Card key={integration.id} className="p-6 rounded-none">
                     <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${colorClass}`}>
+                      <div className={`w-12 h-12 rounded-none flex items-center justify-center ${colorClass}`}>
                         {Icon && <Icon className="w-6 h-6" />}
                       </div>
-                      <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-[#0A0F2E]/20">
+                      <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 rounded-none">
                         Available
                       </Badge>
                     </div>
@@ -473,11 +478,12 @@ export default function IntegrationsPage() {
             </div>
 
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsConnecting(false)} data-testid="button-cancel">
+              <Button variant="outline" className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]" onClick={() => setIsConnecting(false)} data-testid="button-cancel">
                 Cancel
               </Button>
               <Button
                 onClick={handleSubmitConnection}
+                className="rounded-none bg-[#0A0F2E] text-white hover:bg-[#141B45]"
                 disabled={!connectionConfig.apiKey || connectMutation.isPending}
                 data-testid="button-connect-submit"
               >

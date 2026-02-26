@@ -71,7 +71,7 @@ const metrics = [
     description: "What companies pay for slow response",
     source: "IBM Cost of a Data Breach 2024",
     icon: Shield,
-    color: "text-red-400"
+    color: "text-red-500"
   },
   { 
     value: "98 days", 
@@ -79,7 +79,7 @@ const metrics = [
     description: "Faster breach detection & containment",
     source: "IBM 2024 Report",
     icon: Zap,
-    color: "text-[#00A8A8]"
+    color: "text-[#2B8A6E]"
   },
   { 
     value: "3.5x", 
@@ -87,7 +87,7 @@ const metrics = [
     description: "Distributed vs centralized crisis teams",
     source: "PagerDuty 2024",
     icon: TrendingUp,
-    color: "text-green-400"
+    color: "text-[#C9A84C]"
   },
 ];
 
@@ -122,7 +122,7 @@ const industryProblems = [
     description: "Organizations activated plans in past 12 months",
     source: "BCI 2024",
     icon: Shield,
-    color: "text-[#00A8A8]"
+    color: "text-[#2B8A6E]"
   },
 ];
 
@@ -232,7 +232,7 @@ export default function Investors() {
                   <p className={`text-3xl font-bold mb-1 ${metric.color}`}>{metric.value}</p>
                   <p className="text-white font-medium text-sm mb-1">{metric.label}</p>
                   <p className="text-white/50 text-xs mb-2">{metric.description}</p>
-                  <p className="text-[#00A8A8] text-xs font-medium">{metric.source}</p>
+                  <p className="text-[#2B8A6E] text-xs font-medium">{metric.source}</p>
                 </motion.div>
               ))}
             </div>
@@ -305,10 +305,10 @@ export default function Investors() {
                       <p className="text-red-400 font-bold text-lg">{scenario.traditional.time}</p>
                       <p className="text-red-400/60 text-xs mt-1">{scenario.traditional.cost}</p>
                     </div>
-                    <div className="bg-[#00A8A8]/10 border border-[#00A8A8]/20 rounded-lg p-3">
-                      <p className="text-[#00A8A8]/60 text-xs mb-1">With Execution OS</p>
-                      <p className="text-[#00A8A8] font-bold text-lg">{scenario.executeiq.time}</p>
-                      <p className="text-[#00A8A8]/60 text-xs mt-1">{scenario.executeiq.value}</p>
+                    <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-3">
+                      <p className="text-[#2B8A6E]/60 text-xs mb-1">With Execution OS</p>
+                      <p className="text-[#2B8A6E] font-bold text-lg">{scenario.executeiq.time}</p>
+                      <p className="text-[#2B8A6E]/60 text-xs mt-1">{scenario.executeiq.value}</p>
                     </div>
                   </div>
                   
@@ -316,16 +316,16 @@ export default function Investors() {
                     <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full" style={{ width: '100%' }} />
                     </div>
-                    <span className="text-[#00A8A8] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
+                    <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
                     <div className="w-6 h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-[#00A8A8] to-emerald-500 rounded-full" style={{ width: '100%' }} />
+                      <div className="h-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] rounded-full" style={{ width: '100%' }} />
                     </div>
                   </div>
                   
                   <div className="space-y-1">
                     {scenario.proofPoints.map((point, j) => (
                       <p key={j} className="text-white/50 text-xs flex items-start gap-1.5">
-                        <CheckCircle className="w-3 h-3 text-[#00A8A8] flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-3 h-3 text-[#2B8A6E] flex-shrink-0 mt-0.5" />
                         {point}
                       </p>
                     ))}
@@ -336,7 +336,7 @@ export default function Investors() {
             <div className="text-center">
               <Link href="/try-demo">
                 <Button
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00A8A8] to-emerald-500 text-[#0A0F2E] font-semibold rounded-xl hover:opacity-90 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] text-[#0A0F2E] font-semibold rounded-xl hover:opacity-90 transition-all"
                 >
                   <Play className="w-4 h-4" />
                   Experience the Interactive Scenario Demo
@@ -403,8 +403,8 @@ export default function Investors() {
             <div className="grid md:grid-cols-4 gap-4">
               {[
                 { phase: "IDENTIFY", module: "Playbook™", desc: "Build and customize strategic playbooks", color: "bg-[#C9A84C]" },
-                { phase: "DETECT", module: "Signal™", desc: "AI-powered signal monitoring", color: "bg-[#00A8A8]" },
-                { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#00A8A8]" },
+                { phase: "DETECT", module: "Signal™", desc: "AI-powered signal monitoring", color: "bg-[#2B8A6E]" },
+                { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#2B8A6E]" },
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#C9A84C]" },
               ].map((phase, i) => (
                 <div key={i} className="text-center">
@@ -450,7 +450,7 @@ export default function Investors() {
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                     i === 0 ? "bg-green-500/20 text-green-400" :
                     i === 1 ? "bg-[#C9A84C]/20 text-[#C9A84C]" :
-                    "bg-[#00A8A8]/20 text-[#00A8A8]"
+                    "bg-[#2B8A6E]/20 text-[#2B8A6E]"
                   }`}>
                     {i === 0 ? <CheckCircle className="w-3 h-3" /> : i === 1 ? <Zap className="w-3 h-3" /> : <Target className="w-3 h-3" />}
                     {milestone.phase}
@@ -483,7 +483,7 @@ export default function Investors() {
                     <span className="text-white">Fortune 1000 enterprises</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Building className="w-5 h-5 text-[#00A8A8]" />
+                    <Building className="w-5 h-5 text-[#2B8A6E]" />
                     <span className="text-white">Complex, multi-domain organizations</span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -519,7 +519,7 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/try-demo">
-                <Button variant="outline" className="border-[#00A8A8]/50 text-[#00A8A8] hover:bg-[#00A8A8]/10 h-12 px-8 bg-transparent">
+                <Button variant="outline" className="border-[#2B8A6E]/50 text-[#2B8A6E] hover:bg-[#2B8A6E]/10 h-12 px-8 bg-transparent">
                   <FileText className="w-4 h-4 mr-2" />
                   Scenario Comparisons
                 </Button>
@@ -548,7 +548,7 @@ export default function Investors() {
               {researchCitations.map((citation) => (
                 <div key={citation.id} className="text-xs text-white/40 p-3 bg-white/5 rounded-lg">
                   <span className="text-white/60 font-medium">[{citation.id}]</span>{' '}
-                  <span className="text-[#00A8A8]">{citation.source}</span>{' '}
+                  <span className="text-[#2B8A6E]">{citation.source}</span>{' '}
                   <span className="italic">"{citation.title}"</span>{' '}
                   <span>({citation.year})</span>
                   <p className="mt-1 text-white/30">{citation.finding}</p>

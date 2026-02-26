@@ -135,7 +135,7 @@ export default function SimulationStudio() {
     switch (status) {
       case 'running': return `bg-[${TEAL}]/12 text-[${TEAL}]`;
       case 'completed': return `bg-[${NAVY}]/12 text-[${NAVY}]`;
-      case 'cancelled': return 'bg-red-100 text-red-800';
+      case 'cancelled': return 'bg-red-500/12 text-red-500';
       default: return `bg-[${BORDER}] text-[${MUTED}]`;
     }
   };

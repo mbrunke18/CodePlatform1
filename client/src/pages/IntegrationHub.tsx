@@ -1080,53 +1080,52 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </div>
           </TabsContent>
 
-          {/* API Endpoints */}
           <TabsContent value="apis" className="space-y-6">
-            <Card className="bg-white border-gray-200">
+            <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-gray-50 border-b border-gray-200">
+                    <thead className="bg-[#F8F7F4] border-b border-[#E8E4DC]">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Endpoint</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Method</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Integration</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Requests (24h)</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Success Rate</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Avg Response</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">Status</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Endpoint</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Method</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Integration</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Requests (24h)</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Success Rate</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Avg Response</th>
+                        <th className="px-6 py-3 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Status</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-700">
+                    <tbody className="divide-y divide-[#E8E4DC]">
                       {apiEndpoints.map((endpoint) => (
-                        <tr key={endpoint.id} className="hover:bg-[#141B45]/30">
+                        <tr key={endpoint.id} className="hover:bg-[#F8F7F4] transition-colors">
                           <td className="px-6 py-4">
                             <div>
-                              <div className="text-sm font-medium text-gray-900">{endpoint.name}</div>
-                              <div className="text-xs text-gray-800 dark:text-slate-200 font-mono">{endpoint.path}</div>
+                              <div className="text-sm font-bold text-[#0A0F2E]">{endpoint.name}</div>
+                              <div className="text-[10px] text-[#6B7280] font-mono">{endpoint.path}</div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Badge className="bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/30">
+                            <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 rounded-none text-[9px] font-bold uppercase tracking-widest">
                               {endpoint.method}
                             </Badge>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#0A0F2E]">
                             {endpoint.integration}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-[#0A0F2E]">
                             {formatNumber(endpoint.requests24h)}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <span className={`${endpoint.successRate >= 99 ? 'text-[#2B8A6E]' : endpoint.successRate >= 95 ? 'text-amber-400' : 'text-red-400'}`}>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-bold">
+                            <span className={`${endpoint.successRate >= 99 ? 'text-[#2B8A6E]' : endpoint.successRate >= 95 ? 'text-[#C9A84C]' : 'text-red-600'}`}>
                               {endpoint.successRate}%
                             </span>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-[#0A0F2E]">
                             {endpoint.averageResponse}ms
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <Badge className={getStatusColor(endpoint.status)}>
+                            <Badge className={`${getStatusColor(endpoint.status)} rounded-none text-[9px] font-bold uppercase tracking-widest`}>
                               {endpoint.status}
                             </Badge>
                           </td>
@@ -1143,20 +1142,20 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <TabsContent value="dataflows" className="space-y-6">
             <div className="space-y-4">
               {dataFlows.map((flow) => (
-                <Card key={flow.id} className="bg-white border-gray-200">
+                <Card key={flow.id} className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1 page-background">
+                      <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">{flow.name}</h3>
-                          <Badge className={getStatusColor(flow.status)}>
+                          <h3 className="text-lg font-bold text-[#0A0F2E]">{flow.name}</h3>
+                          <Badge className={`${getStatusColor(flow.status)} rounded-none text-[9px] font-bold uppercase tracking-widest`}>
                             {flow.status.toUpperCase()}
                           </Badge>
-                          <Badge variant="outline" className="bg-transparent border-slate-600 text-gray-800">
+                          <Badge variant="outline" className="bg-transparent border-[#E8E4DC] text-[#6B7280] rounded-none text-[9px] font-bold uppercase tracking-widest">
                             {flow.type.replace('_', ' ').toUpperCase()}
                           </Badge>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-800">
+                        <div className="flex items-center gap-4 text-xs font-bold text-[#6B7280]">
                           <div className="flex items-center gap-2">
                             <Database className="w-4 h-4 text-[#0A0F2E]" />
                             {flow.source}
@@ -1168,43 +1167,43 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                           </div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Records Processed</div>
-                        <div className="text-2xl font-bold text-gray-900">{formatNumber(flow.recordsProcessed)}</div>
+                          <div className="text-right">
+                        <div className="text-sm text-[#6B7280]">Records Processed</div>
+                        <div className="text-2xl font-bold text-[#0A0F2E]">{formatNumber(flow.recordsProcessed)}</div>
                       </div>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                       <div>
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Frequency</div>
-                        <div className="text-gray-900 font-medium">{flow.frequency}</div>
+                        <div className="text-sm text-[#6B7280]">Frequency</div>
+                        <div className="text-[#0A0F2E] font-medium">{flow.frequency}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Last Run</div>
-                        <div className="text-gray-900 font-medium">{new Date(flow.lastRun).toLocaleString()}</div>
+                        <div className="text-sm text-[#6B7280]">Last Run</div>
+                        <div className="text-[#0A0F2E] font-medium">{new Date(flow.lastRun).toLocaleString()}</div>
                       </div>
                       <div>
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Error Count</div>
-                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-[#2B8A6E]' : 'text-red-400'}`}>
+                        <div className="text-sm text-[#6B7280]">Error Count</div>
+                        <div className={`font-medium ${flow.errorCount === 0 ? 'text-[#2B8A6E]' : 'text-red-600'}`}>
                           {flow.errorCount}
                         </div>
                       </div>
                       <div>
-                        <div className="text-sm text-gray-800 dark:text-slate-200">Transformations</div>
-                        <div className="text-gray-900 font-medium">{flow.transformations.length}</div>
+                        <div className="text-sm text-[#6B7280]">Transformations</div>
+                        <div className="text-[#0A0F2E] font-medium">{flow.transformations.length}</div>
                       </div>
                     </div>
                     
                     <div className="mt-4 flex gap-3">
-                      <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#0A0F2E]">
+                      <Button size="sm" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none">
                         <Monitor className="w-4 h-4 mr-2" />
                         Monitor
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
+                      <Button size="sm" variant="outline" className="bg-transparent border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                         <Settings className="w-4 h-4 mr-2" />
                         Configure
                       </Button>
-                      <Button size="sm" variant="outline" className="bg-transparent border-slate-600 text-gray-800 hover:bg-[#141B45]">
+                      <Button size="sm" variant="outline" className="bg-transparent border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] rounded-none">
                         {flow.status === 'running' ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                       </Button>
                     </div>
@@ -1214,50 +1213,49 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             </div>
           </TabsContent>
 
-          {/* Monitoring */}
           <TabsContent value="monitoring" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Uptime</h3>
+                    <h3 className="font-bold text-[#0A0F2E] text-[10px] uppercase tracking-widest">Uptime</h3>
                     <Activity className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">99.9%</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Last 30 days</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-2">99.9%</div>
+                  <div className="text-xs text-[#6B7280]">Last 30 days</div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Throughput</h3>
+                    <h3 className="font-bold text-[#0A0F2E] text-[10px] uppercase tracking-widest">Throughput</h3>
                     <Zap className="h-5 w-5 text-[#0A0F2E]" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">1.2K/s</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Requests per second</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-2">1.2K/s</div>
+                  <div className="text-xs text-[#6B7280]">Requests per second</div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Latency</h3>
+                    <h3 className="font-bold text-[#0A0F2E] text-[10px] uppercase tracking-widest">Latency</h3>
                     <Clock className="h-5 w-5 text-[#C9A84C]" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">234ms</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">P95 response time</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-2">234ms</div>
+                  <div className="text-xs text-[#6B7280]">P95 response time</div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border-gray-200">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold text-gray-900">Data Volume</h3>
-                    <Database className="h-5 w-5 text-amber-400" />
+                    <h3 className="font-bold text-[#0A0F2E] text-[10px] uppercase tracking-widest">Data Volume</h3>
+                    <Database className="h-5 w-5 text-[#DFC178]" />
                   </div>
-                  <div className="text-2xl font-bold text-gray-900 mb-2">2.3TB</div>
-                  <div className="text-sm text-gray-800 dark:text-slate-200">Processed today</div>
+                  <div className="text-2xl font-bold text-[#0A0F2E] mb-2">2.3TB</div>
+                  <div className="text-xs text-[#6B7280]">Processed today</div>
                 </CardContent>
               </Card>
             </div>

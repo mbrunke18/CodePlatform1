@@ -49,9 +49,9 @@ const IDEA_STORY = [
     title: "The $270M-$900M Problem",
     subtitle: "Why 30% of strategy value is lost in execution",
     phase: "PROBLEM",
-    phaseColor: "bg-[#0A0F2E]",
+    phaseColor: "bg-red-500",
     icon: AlertTriangle,
-    color: "text-red-400",
+    color: "text-red-500",
     bgColor: "bg-red-500/10",
     time: 0,
     description: "McKinsey research: Even high-performing companies lose 30% of their strategy's value in execution. For Fortune 500, that's $270M-$900M annually. The gap isn't intelligence—it's coordination. When a strategic event hits, teams spend 20-50 hours just getting organized.",
@@ -97,9 +97,9 @@ const IDEA_STORY = [
     beat: "DETECT",
     title: "AI Monitors. You Decide.",
     subtitle: "Human-AI partnership for strategic velocity",
-    phase: "DETECT",
+    phase: "PROBLEM",
     phaseColor: "bg-[#0A0F2E]",
-    icon: Radar,
+    icon: AlertTriangle,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
     time: 50,
@@ -315,13 +315,13 @@ export default function InvestorDemo() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="bg-[#0A0F2E] text-gray-900 mb-3">
+            <Badge className="bg-[#0A0F2E] text-white mb-3">
               Investor Demo — Market Creation Story
             </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2" data-testid="heading-investor-demo">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="heading-investor-demo">
               Execution OS: The Strategic Execution Operating System
             </h1>
-            <p className="text-lg text-gray-800">
+            <p className="text-lg text-[#0A0F2E]">
               First mover in $15B+ SEOS category. 170 playbooks. 12-minute execution.
             </p>
           </div>
@@ -334,7 +334,7 @@ export default function InvestorDemo() {
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-[#2B8A6E] hover:bg-[#256B56]"
+                      className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-bold"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />
@@ -344,7 +344,7 @@ export default function InvestorDemo() {
                     <Button
                       onClick={() => setIsPlaying(false)}
                       variant="outline"
-                      className="border-slate-600 text-gray-900 hover:bg-[#141B45]"
+                      className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white"
                       data-testid="button-pause-demo"
                     >
                       <Pause className="h-4 w-4 mr-2" />
@@ -355,7 +355,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-[#2B8A6E]' : 'text-gray-800'}`}
+                    className={`text-sm ${manualMode ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode
@@ -364,7 +364,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={handleReset}
-                    className="text-gray-800"
+                    className="text-[#0A0F2E]"
                     data-testid="button-reset-demo"
                   >
                     <RotateCcw className="h-4 w-4" />
@@ -373,14 +373,14 @@ export default function InvestorDemo() {
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-gray-800">Speed:</span>
+                    <span className="text-xs text-[#0A0F2E]">Speed:</span>
                     {[1, 2, 4].map((speed) => (
                       <Button
                         key={speed}
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#2B8A6E] bg-[#2B8A6E]/20' : 'text-gray-800'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#2B8A6E] bg-[#2B8A6E]/20' : 'text-[#0A0F2E]'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -388,12 +388,12 @@ export default function InvestorDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg">
-                    <Clock className="h-4 w-4 text-gray-800" />
-                    <span className="text-gray-900 font-mono text-sm">
+                  <div className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-1.5 rounded-lg">
+                    <Clock className="h-4 w-4 text-[#0A0F2E]" />
+                    <span className="text-[#0A0F2E] font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
                     </span>
-                    <span className="text-gray-800 text-xs">/ 3:00</span>
+                    <span className="text-[#6B7280] text-xs">/ 3:00</span>
                   </div>
                 </div>
               </div>
@@ -413,10 +413,10 @@ export default function InvestorDemo() {
                   setAcknowledgedStakeholders(newAcks);
                   setIsComplete(idx === IDEA_STORY.length - 1);
                 }}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-all ${
                   idx === currentStageIndex
-                    ? `${stage.phaseColor} text-gray-900`
-                    : 'bg-gray-50 text-gray-800 hover:bg-[#141B45]'
+                    ? `${stage.phaseColor} text-white`
+                    : 'bg-[#F8F7F4] text-[#6B7280] hover:bg-[#0A0F2E] hover:text-white'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -431,10 +431,10 @@ export default function InvestorDemo() {
                 <CardHeader className="border-b border-gray-200 pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <Badge className={`${currentStage.phaseColor} text-gray-900`}>
+                      <Badge className={`${currentStage.phaseColor} text-white font-bold`}>
                         {currentStage.phase}
                       </Badge>
-                      <span className="text-gray-800 text-sm">
+                      <span className="text-[#6B7280] text-xs font-bold uppercase tracking-widest">
                         {currentStage.beat} — {currentStageIndex + 1} of {IDEA_STORY.length}
                       </span>
                     </div>
@@ -445,7 +445,7 @@ export default function InvestorDemo() {
                           size="sm"
                           onClick={handlePrevStage}
                           disabled={currentStageIndex === 0}
-                          className="text-gray-800"
+                          className="text-[#0A0F2E]"
                           data-testid="button-prev-stage"
                         >
                           ← Back
@@ -461,7 +461,7 @@ export default function InvestorDemo() {
                             setShowConfetti(true);
                             setTimeout(() => setShowConfetti(false), 5000);
                           }}
-                          className="text-gray-800"
+                          className="text-[#0A0F2E]"
                           data-testid="button-skip-to-end"
                         >
                           <SkipForward className="h-4 w-4 mr-1" />
@@ -487,13 +487,13 @@ export default function InvestorDemo() {
                           <StageIcon className={`h-8 w-8 ${currentStage.color}`} />
                         </div>
                         <div className="flex-1">
-                          <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                          <h2 className="text-2xl font-bold text-[#0A0F2E] mb-1">
                             {currentStage.title}
                           </h2>
                           <p className={`text-lg ${currentStage.color} mb-3`}>
                             {currentStage.subtitle}
                           </p>
-                          <p className="text-gray-900 font-medium leading-relaxed mb-4">
+                          <p className="text-[#0A0F2E] font-medium leading-relaxed mb-4">
                             {currentStage.description}
                           </p>
                           
@@ -511,27 +511,27 @@ export default function InvestorDemo() {
                       
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className="bg-gray-50 rounded-lg p-4 text-center">
-                            <div className="text-2xl font-bold text-gray-900 mb-1">{metric.value}</div>
-                            <div className="text-xs text-gray-800">{metric.label}</div>
+                          <div key={idx} className={`rounded-lg p-4 text-center ${currentStage.phase === 'PROBLEM' ? 'bg-red-50' : 'bg-[#F8F7F4]'}`}>
+                            <div className={`text-2xl font-bold mb-1 ${currentStage.phase === 'PROBLEM' ? 'text-red-600' : 'text-[#0A0F2E]'}`}>{metric.value}</div>
+                            <div className="text-xs text-[#6B7280]">{metric.label}</div>
                           </div>
                         ))}
                       </div>
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
-                        <div className="bg-gray-50 rounded-lg p-4 mb-4">
+                        <div className="bg-[#F8F7F4] rounded-lg p-4 mb-4">
                           <div className="flex items-center gap-2 mb-3">
                             <Settings className="h-4 w-4 text-[#C9A84C]" />
-                            <span className="font-medium text-gray-900">{currentStage.smartDefaults.title}</span>
+                            <span className="font-medium text-[#0A0F2E]">{currentStage.smartDefaults.title}</span>
                           </div>
                           <div className="space-y-2">
                             {currentStage.smartDefaults.items.map((item, idx) => (
                               <div key={idx} className="flex items-start gap-2 text-sm">
                                 <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                                 <div>
-                                  <span className="text-gray-900">{item.domain}:</span>{' '}
-                                  <span className="text-gray-800">{item.defaults}</span>
+                                  <span className="text-[#0A0F2E] font-semibold">{item.domain}:</span>{' '}
+                                  <span className="text-[#0A0F2E]">{item.defaults}</span>
                                 </div>
                               </div>
                             ))}

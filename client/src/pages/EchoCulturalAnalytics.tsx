@@ -44,7 +44,7 @@ export default function EchoCulturalAnalytics() {
         advocacy: 76
       },
       icon: <Heart className="h-5 w-5" />,
-      color: 'emerald'
+      color: 'teal'
     },
     {
       id: 'collaboration',
@@ -60,7 +60,7 @@ export default function EchoCulturalAnalytics() {
         conflict: 23
       },
       icon: <Users className="h-5 w-5" />,
-      color: 'blue'
+      color: 'navy'
     },
     {
       id: 'innovation',
@@ -76,7 +76,7 @@ export default function EchoCulturalAnalytics() {
         implementation: 89
       },
       icon: <Lightbulb className="h-5 w-5" />,
-      color: 'purple'
+      color: 'gold'
     },
     {
       id: 'leadership',
@@ -92,7 +92,7 @@ export default function EchoCulturalAnalytics() {
         support: 75
       },
       icon: <Award className="h-5 w-5" />,
-      color: 'orange'
+      color: 'gold'
     }
   ];
 
@@ -143,12 +143,11 @@ export default function EchoCulturalAnalytics() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
-      blue: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
-      purple: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
-      orange: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`
+      teal: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
+      navy: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
+      gold: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
     };
-    return colors[color as keyof typeof colors] || colors.blue;
+    return colors[color as keyof typeof colors] || colors.navy;
   };
 
   const getStatusColor = (status: string) => {

@@ -60,7 +60,7 @@ export default function LuxuryCrisisDemo() {
         {/* Header */}
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-demo-type">Interactive Demo</Badge>
-          <h1 className="text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h1 className="text-5xl font-bold mb-4 text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {crisisScenario.title}
           </h1>
           <p className="text-xl text-white/80 mb-2">
@@ -127,7 +127,7 @@ export default function LuxuryCrisisDemo() {
                     </div>
                     <div className="bg-white/5 p-4 rounded border border-white/10">
                       <div className="text-sm text-white/60 mb-1">Stakeholders</div>
-                      <div className="text-2xl font-bold text-[#DFC178]">{crisisScenario.stakeholdersInvolved}</div>
+                      <div className="text-2xl font-bold text-[#C9A84C]">{crisisScenario.stakeholdersInvolved}</div>
                     </div>
                   </div>
                 </div>

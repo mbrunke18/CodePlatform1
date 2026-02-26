@@ -43,11 +43,11 @@ const STEP_LABELS = ["Describe", "Analyze", "Playbook", "Simulate", "Report"];
 function domainColors(domain: string) {
   switch (domain) {
     case "offense":
-      return { bg: "bg-[#2B8A6E]/20", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/30", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-amber-950/30", realityBorder: "border-amber-500/20" };
+      return { bg: "bg-[#2B8A6E]/20", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/30", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-[#C9A84C]/10", realityBorder: "border-[#C9A84C]/20" };
     case "special_teams":
-      return { bg: "bg-[#C9A84C]/20", text: "text-[#C9A84C]", border: "border-[#C9A84C]/30", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#C9A84C]/30", realityBorder: "border-[#C9A84C]/20" };
+      return { bg: "bg-[#C9A84C]/20", text: "text-[#C9A84C]", border: "border-[#C9A84C]/30", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#0A0F2E]/10", realityBorder: "border-[#0A0F2E]/20" };
     default:
-      return { bg: "bg-red-500/20", text: "text-red-400", border: "border-red-500/30", darkBg: "bg-red-950/30", label: "DEFENSE", realityBg: "bg-red-950/30", realityBorder: "border-red-500/20" };
+      return { bg: "bg-red-500/20", text: "text-red-600", border: "border-red-500/30", darkBg: "bg-red-500/5", label: "DEFENSE", realityBg: "bg-red-500/5", realityBorder: "border-red-500/20" };
   }
 }
 
@@ -67,18 +67,18 @@ function raciColor(r: string) {
     case "R": return "bg-red-500/20 text-red-600 border-red-500/30";
     case "A": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
     case "C": return "bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30";
-    case "I": return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
-    default: return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
+    case "I": return "bg-black/5 text-gray-700 border-black/10";
+    default: return "bg-black/5 text-gray-700 border-black/10";
   }
 }
 
 function priorityColor(p: string) {
   switch (p?.toLowerCase()) {
     case "critical": return "bg-red-500/20 text-red-600 border-red-500/30";
-    case "high": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
-    case "medium": return "bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30";
-    case "low": return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
-    default: return "bg-slate-500/20 text-[#6B7280] border-slate-500/30";
+    case "high": return "bg-red-500/10 text-red-500 border-red-500/20";
+    case "medium": return "bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30";
+    case "low": return "bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30";
+    default: return "bg-black/5 text-gray-700 border-black/10";
   }
 }
 
@@ -520,7 +520,7 @@ export default function IncidentAnalyzer() {
     const d = activeDomain;
     if (d === "offense") return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "OPPORTUNITY DETECTED" };
     if (d === "special_teams") return { bg: "bg-[#C9A84C]/30", border: "border-[#C9A84C]/30", dotColor: "bg-[#0A0F2E]", textColor: "text-[#C9A84C]", label: "INITIATIVE TRIGGERED" };
-    return { bg: "bg-teal-950/30", border: "border-teal-500/30", dotColor: "bg-teal-400", textColor: "text-teal-400", label: "Playbook Activated" };
+    return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "Playbook Activated" };
   })();
 
   return (
@@ -532,34 +532,34 @@ export default function IncidentAnalyzer() {
         {currentStep === 0 && (
           <div className="space-y-10">
             <div className="text-center">
-              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                 <Brain className="w-4 h-4 mr-2" />
                 Strategic Analyzer
               </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 See How Execution OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
               </h1>
-              <p className="text-lg text-gray-800 max-w-2xl mx-auto">
+              <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
                 Describe any strategic situation your company faced and watch our AI analyze it, generate a custom playbook, and simulate full execution in under 12 minutes.
               </p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">How It Works</h2>
+            <div className="bg-white border border-[#E8E4DC] rounded-2xl p-8">
+              <h2 className="text-lg font-semibold text-[#0A0F2E] mb-6 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>How It Works</h2>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {[
-                  { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-teal-400" },
+                  { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-[#0A0F2E]" },
                   { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-[#0A0F2E]" },
                   { num: 3, label: "Playbook", desc: "Custom playbook generated", icon: BookOpen, color: "text-[#2B8A6E]" },
                   { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-[#C9A84C]" },
-                  { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-amber-400" },
+                  { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-[#C9A84C]" },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className={`w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center mx-auto mb-3`}>
+                    <div className={`w-12 h-12 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC] flex items-center justify-center mx-auto mb-3`}>
                       <step.icon className={`w-5 h-5 ${step.color}`} />
                     </div>
-                    <div className="text-sm font-semibold text-gray-900">{step.label}</div>
-                    <div className="text-xs text-gray-700 mt-1">{step.desc}</div>
+                    <div className="text-sm font-semibold text-[#0A0F2E]">{step.label}</div>
+                    <div className="text-xs text-[#6B7280] mt-1">{step.desc}</div>
                   </div>
                 ))}
               </div>
@@ -1018,10 +1018,10 @@ export default function IncidentAnalyzer() {
                             <th className="bg-gray-50 px-4 py-3 text-left text-xs font-semibold text-gray-800 uppercase w-1/4">
                               Phase
                             </th>
-                            <th className={`${activeDomain === 'offense' ? 'bg-amber-950/40' : activeDomain === 'special_teams' ? 'bg-[#0A0F2E]/40' : 'bg-red-950/40'} px-4 py-3 text-left text-xs font-semibold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-400'} uppercase w-[37.5%]`}>
+                            <th className={`${activeDomain === 'offense' ? 'bg-[#C9A84C]/20' : activeDomain === 'special_teams' ? 'bg-[#0A0F2E]/20' : 'bg-red-500/10'} px-4 py-3 text-left text-xs font-semibold ${activeDomain === 'offense' ? 'text-[#C9A84C]' : activeDomain === 'special_teams' ? 'text-[#0A0F2E]' : 'text-red-600'} uppercase w-[37.5%]`}>
                               Your Reality
                             </th>
-                            <th className="bg-teal-950/40 px-4 py-3 text-left text-xs font-semibold text-teal-400 uppercase w-[37.5%]">
+                            <th className="bg-[#2B8A6E]/20 px-4 py-3 text-left text-xs font-semibold text-[#2B8A6E] uppercase w-[37.5%]">
                               With Execution OS
                             </th>
                           </tr>
@@ -1032,10 +1032,10 @@ export default function IncidentAnalyzer() {
                               <td className="bg-white px-4 py-3 text-sm font-medium text-gray-800">
                                 {row.phase || row.label}
                               </td>
-                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/10' : activeDomain === 'special_teams' ? 'bg-[#C9A84C]/10' : 'bg-red-950/10'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-amber-300' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-300'}`}>
+                              <td className={`${activeDomain === 'offense' ? 'bg-[#C9A84C]/5' : activeDomain === 'special_teams' ? 'bg-[#0A0F2E]/5' : 'bg-red-500/5'} px-4 py-3 text-sm ${activeDomain === 'offense' ? 'text-[#C9A84C]' : activeDomain === 'special_teams' ? 'text-[#0A0F2E]' : 'text-red-600'}`}>
                                 {row.without || row.yourReality}
                               </td>
-                              <td className="bg-teal-950/10 px-4 py-3 text-sm text-teal-300">
+                              <td className="bg-[#2B8A6E]/5 px-4 py-3 text-sm text-[#2B8A6E]">
                                 {row.with || row.withExecutionOS}
                               </td>
                             </tr>
@@ -1045,10 +1045,10 @@ export default function IncidentAnalyzer() {
                               <td className="bg-white px-4 py-4 text-sm font-bold text-gray-900">
                                 Total Cost
                               </td>
-                              <td className={`${activeDomain === 'offense' ? 'bg-amber-950/20' : activeDomain === 'special_teams' ? 'bg-[#C9A84C]/20' : 'bg-red-950/20'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-amber-400' : activeDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-red-400'}`}>
+                              <td className={`${activeDomain === 'offense' ? 'bg-[#C9A84C]/10' : activeDomain === 'special_teams' ? 'bg-[#0A0F2E]/10' : 'bg-red-500/10'} px-4 py-4 text-lg font-bold ${activeDomain === 'offense' ? 'text-[#C9A84C]' : activeDomain === 'special_teams' ? 'text-[#0A0F2E]' : 'text-red-600'}`}>
                                 {analysis.costWithout || analysis.cost_without}
                               </td>
-                              <td className="bg-teal-950/20 px-4 py-4 text-lg font-bold text-teal-400">
+                              <td className="bg-[#2B8A6E]/10 px-4 py-4 text-lg font-bold text-[#2B8A6E]">
                                 {analysis.costWith || analysis.cost_with}
                               </td>
                             </tr>

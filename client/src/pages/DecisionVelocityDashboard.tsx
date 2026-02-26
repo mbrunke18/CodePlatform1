@@ -18,10 +18,10 @@ function formatDecisionType(type: string): string {
 function getOutcomeBadgeVariant(outcome: string): "default" | "secondary" | "destructive" | "outline" {
   switch (outcome) {
     case 'successful': return 'default';
-    case 'partially_successful': return 'secondary';
+    case 'partially_successful': return 'outline';
     case 'unsuccessful': return 'destructive';
     case 'pending': return 'outline';
-    default: return 'secondary';
+    default: return 'outline';
   }
 }
 
@@ -37,9 +37,9 @@ function getEffectivenessColor(effectiveness: string): string {
     case 'excellent': return 'text-[#2B8A6E]';
     case 'high': return 'text-[#0A0F2E]';
     case 'moderate': return 'text-[#C9A84C]';
-    case 'low': return 'text-orange-600';
+    case 'low': return 'text-[#C9A84C]';
     case 'poor': return 'text-red-700';
-    default: return 'text-gray-800';
+    default: return 'text-[#0A0F2E]';
   }
 }
 
@@ -87,23 +87,23 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
       <div className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <BrandStamp variant="dual" size="md" className="mb-8" />
-          <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none">
+          <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none rounded-none">
             <Zap className="h-3 w-3 mr-1" />
             Decision Velocity Tracking
           </Badge>
           <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG} data-testid="page-title">
             Decision Velocity Dashboard
           </h1>
-          <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+          <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
             Head coaches make 80+ decisions in 3 hours because they pre-stage decision trees. 
             Track how fast your executive team is deciding.
           </p>
         </div>
         
         <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <Card className="border-[#E8E4DC] bg-white">
+          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Trophy className="h-5 w-5 text-[#2B8A6E]" />
                 Total Decisions
               </CardTitle>
@@ -112,15 +112,15 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               <div className="text-4xl font-bold text-[#2B8A6E]" style={CG} data-testid="total-decisions">
                 {totalDecisions}
               </div>
-              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
+              <p className="text-sm text-[#6B7280] mt-2 uppercase tracking-widest font-bold text-[10px]">
                 decisions tracked
               </p>
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white">
+          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <CheckCircle className="h-5 w-5 text-[#0A0F2E]" />
                 Success Rate
               </CardTitle>
@@ -129,15 +129,15 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               <div className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="success-rate">
                 {successRate}%
               </div>
-              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
+              <p className="text-sm text-[#6B7280] mt-2 uppercase tracking-widest font-bold text-[10px]">
                 {successfulCount} of {totalDecisions} successful
               </p>
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white">
+          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Target className="h-5 w-5 text-[#0A0F2E]" />
                 Avg Confidence
               </CardTitle>
@@ -146,15 +146,15 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               <div className="text-4xl font-bold text-[#0A0F2E]" style={CG} data-testid="avg-confidence">
                 {avgConfidence}%
               </div>
-              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
+              <p className="text-sm text-[#6B7280] mt-2 uppercase tracking-widest font-bold text-[10px]">
                 average decision confidence
               </p>
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white">
+          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-gray-500">
+              <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Zap className="h-5 w-5 text-[#C9A84C]" />
                 Effectiveness
               </CardTitle>
@@ -163,60 +163,60 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               <div className="text-4xl font-bold text-[#C9A84C]" style={CG} data-testid="avg-effectiveness">
                 {avgEffectiveness}%
               </div>
-              <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold text-[10px]">
+              <p className="text-sm text-[#6B7280] mt-2 uppercase tracking-widest font-bold text-[10px]">
                 {excellentCount} excellent decisions
               </p>
             </CardContent>
           </Card>
         </div>
         
-        <Card className="mb-12 border-[#E8E4DC] bg-white">
+        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
           <CardHeader className="border-b border-[#E8E4DC]">
             <CardTitle className="text-2xl flex items-center gap-2 text-[#0A0F2E]" style={CG}>
               <Target className="h-6 w-6 text-[#0A0F2E]" />
               The Decision Velocity Gap
             </CardTitle>
-            <CardDescription className="text-base text-gray-600">
+            <CardDescription className="text-base text-[#6B7280]">
               Head coaches make 80+ critical decisions in 3 hours. Your team now decides at head coach speed.
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-bold text-gray-700 mb-4 uppercase tracking-widest text-xs">
+                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-xs">
                   Before Execution OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
-                    <span className="text-sm font-medium text-gray-700">Avg Decision Confidence</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Avg Decision Confidence</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>45%</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
-                    <span className="text-sm font-medium text-gray-700">Decisions Per Quarter</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Decisions Per Quarter</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>11</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-red-50 rounded-none border border-red-100">
-                    <span className="text-sm font-medium text-gray-700">Success Rate</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Success Rate</span>
                     <span className="text-lg font-bold text-red-700" style={CG}>47%</span>
                   </div>
                 </div>
               </div>
               
               <div>
-                <h3 className="text-lg font-bold text-gray-700 mb-4 uppercase tracking-widest text-xs">
+                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-xs">
                   With Execution OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
-                    <span className="text-sm font-medium text-gray-700">Avg Decision Confidence</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Avg Decision Confidence</span>
                     <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{avgConfidence}%</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
-                    <span className="text-sm font-medium text-gray-700">Decisions Per Quarter</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Decisions Per Quarter</span>
                     <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{totalDecisions}</span>
                   </div>
                   <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">
-                    <span className="text-sm font-medium text-gray-700">Success Rate</span>
+                    <span className="text-sm font-medium text-[#0A0F2E]">Success Rate</span>
                     <span className="text-lg font-bold text-[#2B8A6E]" style={CG}>{successRate}%</span>
                   </div>
                 </div>
@@ -232,13 +232,13 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         </Card>
         
         {decisions.length > 0 && (
-          <Card className="mb-12 border-[#E8E4DC] bg-white">
+          <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
             <CardHeader className="border-b border-[#E8E4DC]">
               <CardTitle className="text-2xl flex items-center gap-2 text-[#0A0F2E]" style={CG}>
                 <Trophy className="h-6 w-6 text-[#C9A84C]" />
                 Decision Type Breakdown
               </CardTitle>
-              <CardDescription className="text-gray-600">
+              <CardDescription className="text-[#6B7280]">
                 Strategic decisions by category and effectiveness
               </CardDescription>
             </CardHeader>
@@ -253,8 +253,8 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                 }, {})).map(([type, stats]: [string, any]) => (
                   <div key={type} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none text-center">
                     <div className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{stats.count}</div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mt-1">{formatDecisionType(type)}</div>
-                    <Badge variant="outline" className="mt-2 text-[10px] border-[#E8E4DC] text-[#0A0F2E]">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">{formatDecisionType(type)}</div>
+                    <Badge variant="outline" className="mt-2 text-[10px] border-[#E8E4DC] text-[#0A0F2E] rounded-none">
                       {Math.round((stats.successful / stats.count) * 100)}% success
                     </Badge>
                   </div>
@@ -264,17 +264,17 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           </Card>
         )}
         
-        <Card className="mb-12 border-[#E8E4DC] bg-white">
+        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
           <CardHeader className="border-b border-[#E8E4DC]">
             <CardTitle className="text-2xl text-[#0A0F2E]" style={CG}>Recent Decisions</CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardDescription className="text-[#6B7280]">
               Decision log with outcomes and lessons learned
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             {decisions.length === 0 ? (
-              <div className="text-center py-12 text-gray-800">
-                <Target className="h-12 w-12 mx-auto mb-4 text-gray-300" />
+              <div className="text-center py-12 text-[#0A0F2E]">
+                <Target className="h-12 w-12 mx-auto mb-4 text-[#E8E4DC]" />
                 <p className="text-lg font-medium">No decisions recorded yet</p>
                 <p className="text-sm mt-1">Decision outcomes will appear here once they are tracked.</p>
               </div>
@@ -291,14 +291,14 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                         <h4 className="font-semibold text-[#0A0F2E]" style={CG}>
                           {formatDecisionType(decision.decisionType)}
                         </h4>
-                        <p className="text-sm text-gray-600">{decision.decisionDescription}</p>
+                        <p className="text-sm text-[#6B7280]">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)} className={decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}>
+                        <Badge variant={getOutcomeBadgeVariant(decision.actualOutcome)} className={`rounded-none ${decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}`}>
                           {formatOutcome(decision.actualOutcome)}
                         </Badge>
                         {decision.effectiveness && (
-                          <Badge variant="outline" className={`${getEffectivenessColor(decision.effectiveness)} border-[#E8E4DC]`}>
+                          <Badge variant="outline" className={`${getEffectivenessColor(decision.effectiveness)} border-[#E8E4DC] rounded-none`}>
                             {decision.effectiveness}
                           </Badge>
                         )}
@@ -306,11 +306,11 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                     </div>
                     <div className="grid md:grid-cols-2 gap-4 mt-3 text-xs uppercase tracking-widest font-bold">
                       <div>
-                        <span className="text-gray-400">Decision Maker:</span>
+                        <span className="text-[#6B7280]">Decision Maker:</span>
                         <span className="ml-2 text-[#0A0F2E]">{decision.decisionMaker}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400">Choice:</span>
+                        <span className="text-[#6B7280]">Choice:</span>
                         <span className="ml-2 text-[#0A0F2E]">
                           {decision.chosenOption?.title || 'N/A'}
                         </span>
@@ -319,8 +319,8 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                     <div className="mt-3 p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none text-sm">
                       {decision.actualResults?.description && (
                         <>
-                          <div className="text-gray-400 font-bold uppercase tracking-widest text-[10px] mb-1">Results:</div>
-                          <div className="text-gray-700">{decision.actualResults.description}</div>
+                          <div className="text-[#6B7280] font-bold uppercase tracking-widest text-[10px] mb-1">Results:</div>
+                          <div className="text-[#0A0F2E]">{decision.actualResults.description}</div>
                         </>
                       )}
                     </div>
@@ -341,7 +341,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             <ArrowRight className="mr-2 h-5 w-5" />
             Create Your First Decision Tree
           </Button>
-          <p className="mt-3 text-sm text-gray-500 uppercase tracking-widest font-bold text-[10px]">
+          <p className="mt-3 text-sm text-[#6B7280] uppercase tracking-widest font-bold text-[10px]">
             Pre-stage decisions before scenarios occur—just like head coaches do
           </p>
         </div>

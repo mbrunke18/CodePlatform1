@@ -910,7 +910,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-indigo-500/20 rounded-2xl p-6">
+              className="bg-white border border-[#E8E4DC] rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h3 className="font-semibold text-gray-900">Connected Data Sources</h3>
@@ -1187,7 +1187,7 @@ export default function RoleExperience() {
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
               <span className="text-xs text-gray-800 font-medium">{setupReadiness.percent}% ready</span>
             </div>
-            <div className="bg-white border border-indigo-500/20 rounded-xl p-4 mb-6 flex items-center justify-between">
+            <div className="bg-white border border-[#E8E4DC] rounded-xl p-4 mb-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Globe className="h-5 w-5 text-[#0A0F2E]" />
                 <span className="text-sm text-gray-900 font-medium">Total Data Points Monitored</span>
@@ -1243,7 +1243,7 @@ export default function RoleExperience() {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}} />
-              <Button variant="outline" className="border-indigo-500/30 text-[#0A0F2E]"
+              <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]"
                 onClick={() => { if (newDataSourceName.trim()) {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');

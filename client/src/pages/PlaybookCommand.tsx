@@ -201,13 +201,13 @@ export default function PlaybookCommand() {
                   <Button disabled>Configure Organization</Button>
                 </div>
               ) : startExecution.isSuccess ? (
-                <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-center gap-3">
+                <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-4 flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-[#2B8A6E]" />
                   <div>
-                    <div className="font-medium text-green-800 dark:text-green-400">
+                    <div className="font-medium text-[#2B8A6E]">
                       Execution Started
                     </div>
-                    <p className="text-[#2B8A6E] dark:text-green-300 text-sm">
+                    <p className="text-[#2B8A6E]/80 text-sm">
                       Playbook activation has been recorded. 12-minute timer started.
                     </p>
                   </div>
@@ -236,19 +236,19 @@ export default function PlaybookCommand() {
             <CardContent className="space-y-4">
               {Array.isArray(playbook.tier1Stakeholders) && playbook.tier1Stakeholders.length > 0 && (
                 <div>
-                  <Badge className="bg-red-100 text-red-700 mb-2">Tier 1 - Immediate</Badge>
+                  <Badge className="bg-red-500/10 text-red-500 mb-2 border-red-500/20">Tier 1 - Immediate</Badge>
                   <p className="text-sm text-gray-800">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier2Stakeholders) && playbook.tier2Stakeholders.length > 0 && (
                 <div>
-                  <Badge className="bg-amber-100 text-[#C9A84C] mb-2">Tier 2 - Within 2 Hours</Badge>
+                  <Badge className="bg-[#C9A84C]/10 text-[#C9A84C] mb-2 border-[#C9A84C]/20">Tier 2 - Within 2 Hours</Badge>
                   <p className="text-sm text-gray-800">{(playbook.tier2Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier3Stakeholders) && playbook.tier3Stakeholders.length > 0 && (
                 <div>
-                  <Badge className="bg-[#E8E4DC] text-[#0A0F2E] mb-2">Tier 3 - Within 24 Hours</Badge>
+                  <Badge className="bg-[#0A0F2E]/5 text-[#0A0F2E] mb-2 border-[#0A0F2E]/10">Tier 3 - Within 24 Hours</Badge>
                   <p className="text-sm text-gray-800">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}

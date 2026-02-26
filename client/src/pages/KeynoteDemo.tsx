@@ -217,7 +217,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-2xl text-[#6B7280] mt-16 max-w-3xl"
+          className="text-2xl text-[#0A0F2E] mt-16 max-w-3xl"
         >
           Fortune 1000 companies lose billions every year because they can't move fast enough when it matters most.
         </motion.p>
@@ -242,7 +242,7 @@ export default function KeynoteDemo() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-2xl text-[#6B7280] mb-16 max-w-3xl"
+          className="text-2xl text-[#0A0F2E] mb-16 max-w-3xl"
         >
           Annual cost of failed strategic execution across Fortune 1000 companies
         </motion.p>
@@ -254,7 +254,7 @@ export default function KeynoteDemo() {
         >
           {[
             { icon: Clock, value: '3-5 days', label: 'Average response time to competitive threats', color: 'text-red-500', bg: 'bg-red-50' },
-            { icon: Users, value: '30+', label: 'Stakeholders to coordinate per strategic event', color: 'text-[#0A0F2E]', bg: 'bg-[#0A0F2E]/5' },
+            { icon: Users, value: '30+', label: 'Stakeholders to coordinate per strategic event', color: 'text-[#0A0F2E]', bg: 'bg-[#F8F7F4]' },
             { icon: FileText, value: '47', label: 'Documents manually created per activation', color: 'text-[#C9A84C]', bg: 'bg-[#C9A84C]/5' },
             { icon: DollarSign, value: '$2.4M', label: 'Average cost per day of delayed response', color: 'text-[#2B8A6E]', bg: 'bg-[#2B8A6E]/5' },
           ].map((item, i) => (
@@ -420,7 +420,7 @@ export default function KeynoteDemo() {
             AI ANALYSIS ENGINE
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>AI Analyzes the Threat</h2>
-          <p className="text-xl text-[#6B7280]">GPT-4o processes the signal against your organizational context</p>
+          <p className="text-xl text-[#0A0F2E]">GPT-4o processes the signal against your organizational context</p>
         </motion.div>
 
         <motion.div
@@ -517,7 +517,7 @@ export default function KeynoteDemo() {
             PLAYBOOK MATCHED
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The Right Playbook, Instantly</h2>
-          <p className="text-xl text-[#6B7280]">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
+          <p className="text-xl text-[#0A0F2E]">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
         </motion.div>
 
         <motion.div
@@ -702,7 +702,7 @@ export default function KeynoteDemo() {
               LIVE ACTIVATION
             </div>
             <h2 className="text-5xl font-bold text-[#0A0F2E] mb-3" style={CG}>12-Minute Execution</h2>
-            <p className="text-lg text-[#6B7280]">Watch the full organizational response unfold in real-time</p>
+            <p className="text-lg text-[#0A0F2E]">Watch the full organizational response unfold in real-time</p>
           </motion.div>
 
           <div className="grid grid-cols-5 gap-6">
@@ -780,7 +780,7 @@ export default function KeynoteDemo() {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `radial-gradient(${NAVY} 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-12 relative z-10">
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The IDEA Framework</h2>
-          <p className="text-xl text-[#6B7280]">Four phases of continuous strategic execution</p>
+          <p className="text-xl text-[#0A0F2E]">Four phases of continuous strategic execution</p>
         </motion.div>
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full relative z-10">
@@ -838,7 +838,7 @@ export default function KeynoteDemo() {
             PROVEN RESULTS
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The Transformation</h2>
-          <p className="text-xl text-[#6B7280]">Strategic maturity reimagined</p>
+          <p className="text-xl text-[#0A0F2E]">Strategic maturity reimagined</p>
         </motion.div>
 
         <div className="w-full max-w-6xl">

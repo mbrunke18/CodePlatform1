@@ -1199,7 +1199,7 @@ export default function PlaybookCustomize() {
                               const selected = (field.value || []).includes(f.value);
                               return (
                                 <button key={f.value} type="button" onClick={() => field.onChange(selected ? field.value.filter((v: string) => v !== f.value) : [...(field.value || []), f.value])}
-                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-blue-100 text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
+                                  className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${selected ? 'bg-[#F8F7F4] text-[#0A0F2E] border-[#0A0F2E]' : 'bg-white dark:bg-[#141B45] text-gray-800 border-slate-200'}`}>
                                   {f.label}
                                 </button>
                               );

@@ -126,7 +126,7 @@ export default function BoardBriefings() {
             Automated executive reports with evidence traceability for board presentations
           </p>
         </div>
-        <Button className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid="button-generate-briefing">
+        <Button className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid="button-generate-briefing" style={{ background: "#0A0F2E" }}>
           <FileText className="h-4 w-4 mr-2" />
           Generate New Briefing
         </Button>
@@ -249,10 +249,10 @@ export default function BoardBriefings() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-view-briefing-${briefing.id}`}>
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-view-briefing-${briefing.id}`} style={{ color: "#0A0F2E" }}>
                         View Full
                       </Button>
-                      <Button size="sm" variant="ghost" className="text-[#0A0F2E] dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-download-briefing-${briefing.id}`}>
+                      <Button size="sm" variant="ghost" className="text-[#0A0F2E] dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-download-briefing-${briefing.id}`} style={{ color: "#0A0F2E" }}>
                         <Download className="h-4 w-4" />
                       </Button>
                     </div>
@@ -268,7 +268,7 @@ export default function BoardBriefings() {
       <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
         <CardHeader>
           <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            <AlertTriangle className="h-5 w-5 text-red-500" />
+            <AlertTriangle className="h-5 w-5 text-red-600" />
             Decisions Requiring Board Action
           </CardTitle>
           <CardDescription className="text-[#6B7280] dark:text-white/60">Items pending executive approval or board vote</CardDescription>
@@ -284,14 +284,14 @@ export default function BoardBriefings() {
                 key={decision.title}
                 className={`border rounded-lg p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
                   decision.priority === 'High'
-                    ? 'border-l-4 border-l-red-500 border-[#E8E4DC] dark:border-white/10'
+                    ? 'border-l-4 border-l-red-600 border-[#E8E4DC] dark:border-white/10'
                     : 'border-l-4 border-l-[#C9A84C] border-[#E8E4DC] dark:border-white/10'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <h3 className="font-semibold text-[#0A0F2E] dark:text-white">{decision.title}</h3>
                   <Badge className={
-                    decision.status === 'Pending Vote' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
+                    decision.status === 'Pending Vote' ? 'bg-red-600/10 text-red-600 border-red-600/20' :
                     decision.status === 'Under Review' ? 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20' :
                     'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-white/10 dark:text-white border-none'
                   }>{decision.status}</Badge>
@@ -302,7 +302,7 @@ export default function BoardBriefings() {
                     Due: {decision.due}
                   </span>
                   <Badge variant="outline" className={
-                    decision.priority === 'High' ? 'border-red-500/30 text-red-500' : 'border-[#C9A84C]/30 text-[#C9A84C]'
+                    decision.priority === 'High' ? 'border-red-600/30 text-red-600' : 'border-[#C9A84C]/30 text-[#C9A84C]'
                   }>{decision.priority} Priority</Badge>
                 </div>
               </div>
@@ -410,10 +410,10 @@ export default function BoardBriefings() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button size="sm" className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid={`button-view-report-${report.id}`}>
+                      <Button size="sm" className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] hover:opacity-90" data-testid={`button-view-report-${report.id}`} style={{ background: "#0A0F2E" }}>
                         View Report
                       </Button>
-                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-export-report-${report.id}`}>
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-export-report-${report.id}`} style={{ color: "#0A0F2E" }}>
                         <Download className="h-4 w-4 mr-2" />
                         Export
                       </Button>

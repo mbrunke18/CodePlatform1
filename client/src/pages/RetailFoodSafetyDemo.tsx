@@ -80,8 +80,8 @@ export default function RetailFoodSafetyDemo() {
           <div className="max-w-5xl mx-auto space-y-8">
             <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <ShoppingCart className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{retailDemoData.crisis.title}</h2>
+                <Store className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{retailDemoData.crisis.title}</h2>
                 <p className="text-xl text-[#DFC178]">{retailDemoData.crisis.subtitle}</p>
               </div>
 
@@ -187,7 +187,7 @@ export default function RetailFoodSafetyDemo() {
                   <span className="text-white/60">AI Confidence Level</span>
                   <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
+                <Progress value={detectionProgress} className="h-3 bg-white/10" />
                 {detectionProgress >= 88 && (
                   <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
                     <p className="text-red-400 font-semibold">
@@ -260,11 +260,11 @@ export default function RetailFoodSafetyDemo() {
 
                     <Card className="p-6 bg-white/5 border-white/10">
                       <div className="text-center">
-                        <Users className="w-10 h-10 text-[#DFC178] mx-auto mb-3" />
+                        <Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" />
                         <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {retailDemoData.stakeholderTiers.tier2.count}
                         </div>
-                        <div className="text-sm text-[#DFC178] mb-4">{retailDemoData.stakeholderTiers.tier2.title}</div>
+                        <div className="text-sm text-[#C9A84C] mb-4">{retailDemoData.stakeholderTiers.tier2.title}</div>
                         <ul className="text-xs text-white/60 space-y-1 text-left">
                           <li>• 847 store managers</li>
                           <li>• Supply chain team</li>
@@ -280,7 +280,7 @@ export default function RetailFoodSafetyDemo() {
                         <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                           {retailDemoData.stakeholderTiers.tier3.count}+
                         </div>
-                        <div className="text-sm text-[#DFC178] mb-4">{retailDemoData.stakeholderTiers.tier3.title}</div>
+                        <div className="text-sm text-[#C9A84C] mb-4">{retailDemoData.stakeholderTiers.tier3.title}</div>
                         <ul className="text-xs text-white/60 space-y-1 text-left">
                           <li>• 12,847 customers</li>
                           <li>• All store employees</li>

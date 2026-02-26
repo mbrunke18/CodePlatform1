@@ -193,56 +193,47 @@ export default function IndustryDemosHub() {
     const DemoIcon = demo.icon;
     return (
       <Link key={demo.id} href={`/industry-experience/${demo.id}`}>
-        <Card className="bg-white border-gray-200 hover:border-gray-600 transition-all duration-300 cursor-pointer hover:scale-[1.02] h-full group">
-          <div className="p-5">
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className={`p-2.5 rounded-lg bg-gray-50 ${demo.iconColor}`}>
-                  <DemoIcon className="w-5 h-5" />
+        <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E] transition-all duration-300 cursor-pointer rounded-none h-full group shadow-none hover:shadow-2xl">
+          <div className="p-6">
+            <div className="flex items-start justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className={`p-3 rounded-none bg-[#F8F7F4] group-hover:bg-[#0A0F2E] transition-colors ${demo.iconColor} group-hover:text-[#C9A84C]`}>
+                  <DemoIcon className="w-6 h-6 transition-colors" />
                 </div>
                 <div>
-                  <div className="font-bold text-gray-900">{demo.title}</div>
-                  <div className="text-xs text-gray-700">{demo.industry}</div>
+                  <div className="font-serif text-lg text-[#0A0F2E]">{demo.title}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">{demo.industry}</div>
                 </div>
               </div>
-              <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge className={`text-[10px] border ${categoryBadge(demo.type)}`}>
+              <Badge className={`text-[9px] font-bold tracking-widest uppercase border rounded-none px-3 py-1 ${categoryBadge(demo.type)}`}>
                 {demo.type}
               </Badge>
             </div>
 
-            <div className="space-y-3 mb-4">
+            <div className="space-y-4 mb-6">
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-1">Scenario</div>
-                <div className="text-sm font-medium text-gray-900">{demo.scenario}</div>
+                <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#C9A84C] mb-1">Scenario</div>
+                <div className="text-sm font-medium text-[#0A0F2E] leading-relaxed">{demo.scenario}</div>
               </div>
               <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-1">Organization</div>
-                <div className="text-sm text-gray-800">{demo.organization}</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 border-t border-white/10 pt-3 mb-4">
-              <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Coordination Speed</div>
-                <div className="text-sm font-semibold text-gray-900">{demo.timeSaved}</div>
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Value Impact</div>
-                <div className="text-sm font-semibold text-[#2B8A6E]">{demo.valueSaved}</div>
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Stakeholders</div>
-                <div className="text-sm text-gray-900">{demo.stakeholders.toLocaleString()}</div>
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-wider text-gray-800 mb-0.5">Impact Scope</div>
-                <div className="text-sm text-gray-900">{demo.impact}</div>
+                <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#C9A84C] mb-1">Organization</div>
+                <div className="text-sm text-[#6B7280] font-light">{demo.organization}</div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-gray-800">
-              <span className="flex items-center gap-1"><Play className="w-3 h-3" />{demo.playbook}</span>
+            <div className="grid grid-cols-2 gap-4 border-t border-[#F8F7F4] pt-4 mb-6">
+              <div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Speed</div>
+                <div className="text-xs font-bold text-[#0A0F2E]">{demo.timeSaved}</div>
+              </div>
+              <div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Value</div>
+                <div className="text-xs font-bold text-[#2B8A6E]">{demo.valueSaved}</div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
+              <span className="flex items-center gap-2"><Play className="w-3 h-3 text-[#C9A84C]" />{demo.playbook}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
@@ -262,10 +253,10 @@ export default function IndustryDemosHub() {
                 Industry Scenarios
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-[#6B7280] max-w-3xl mx-auto mb-6">
               See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-gray-800">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-[#6B7280]">
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Offense & Defense</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12-minute coordination</span>
               <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-[#C9A84C]" /> Real enterprise impact</span>
@@ -279,7 +270,7 @@ export default function IndustryDemosHub() {
               <h2 className="text-xl font-bold text-[#0A0F2E]">Strategic Opportunities</h2>
               <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-xs">OFFENSE</Badge>
             </div>
-            <p className="text-sm text-gray-700 mb-6 max-w-4xl">
+            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl">
               When opportunities emerge — market shifts, competitive windows, strategic launches — 12-minute coordination enables your organization to execute while competitors are still scheduling meetings.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -293,7 +284,7 @@ export default function IndustryDemosHub() {
               <h2 className="text-xl font-bold text-[#0A0F2E]">Crisis Response</h2>
               <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 text-xs">DEFENSE</Badge>
             </div>
-            <p className="text-sm text-gray-700 mb-6 max-w-4xl">
+            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl">
               When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -301,34 +292,34 @@ export default function IndustryDemosHub() {
             </div>
           </div>
 
-          <Card className="bg-white border-gray-200 p-8">
+          <Card className="bg-white border-[#E8E4DC] p-12 rounded-none">
             <div className="text-center max-w-3xl mx-auto">
-              <h3 className="text-xl font-bold mb-3">The Detection-Execution Gap</h3>
-              <p className="text-gray-700 mb-6">
+              <h3 className="text-3xl font-serif text-[#0A0F2E] mb-4">The Detection-Execution Gap</h3>
+              <p className="text-lg text-[#6B7280] mb-10 font-light leading-relaxed">
                 Every industry has invested billions in AI for detection. But when action is needed, coordination still happens at email speed. Execution OS bridges that gap.
               </p>
-              <div className="grid grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-3 gap-8 mb-12">
                 <div>
-                  <div className="text-2xl font-bold text-[#0A0F2E] mb-1">48-72 hrs</div>
-                  <div className="text-xs text-gray-800">Traditional coordination</div>
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">48-72 hrs</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Traditional coordination</div>
                 </div>
                 <div className="flex items-center justify-center">
-                  <ArrowRight className="w-6 h-6 text-gray-800" />
+                  <ArrowRight className="w-8 h-8 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-[#2B8A6E] mb-1">12 min</div>
-                  <div className="text-xs text-gray-800">Execution OS coordination</div>
+                  <div className="text-3xl font-bold text-[#2B8A6E] mb-2">12 min</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">ExOS coordination</div>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href="/onboarding">
-                  <Button size="lg" className="bg-[#2B8A6E] hover:bg-[#237059] text-white px-8">
-                    <Zap className="w-5 h-5 mr-2" />
+                  <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none shadow-xl">
+                    <Zap className="w-4 h-4 mr-3 text-[#C9A84C]" />
                     Try Live Activation
                   </Button>
                 </Link>
                 <Link href="/onboarding">
-                  <Button size="lg" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-gray-50 px-8">
+                  <Button size="lg" variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none transition-colors">
                     Explore 170 Playbooks
                   </Button>
                 </Link>

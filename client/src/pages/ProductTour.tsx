@@ -267,7 +267,7 @@ export default function ProductTour() {
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
             <Clock className="w-12 h-12 text-red-600" />
           </div>
           <p className="text-2xl font-bold text-red-600">72+ Hours</p>
@@ -279,7 +279,7 @@ export default function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
             <AlertTriangle className="w-12 h-12 text-red-600" />
           </div>
           <p className="text-2xl font-bold text-red-600">15+ Meetings</p>
@@ -291,7 +291,7 @@ export default function ProductTour() {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-red-500/10 rounded-none flex items-center justify-center mb-4">
+          <div className="w-24 h-24 mx-auto bg-[#0A0F2E]/10 rounded-none flex items-center justify-center mb-4">
             <TrendingUp className="w-12 h-12 text-red-600 rotate-180" />
           </div>
           <p className="text-2xl font-bold text-red-600">$10-50M</p>
@@ -325,7 +325,7 @@ export default function ProductTour() {
             className="text-center"
           >
             <p className="text-4xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12</p>
-            <p className="text-slate-600 uppercase tracking-widest text-[10px] font-bold">Minutes</p>
+            <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Minutes</p>
           </motion.div>
           <motion.div
             initial={{ scale: 0 }}
@@ -341,7 +341,7 @@ export default function ProductTour() {
             className="text-center"
           >
             <p className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>170</p>
-            <p className="text-slate-600 uppercase tracking-widest text-[10px] font-bold">Playbooks</p>
+            <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Playbooks</p>
           </motion.div>
         </div>
       </motion.div>
@@ -456,7 +456,7 @@ export default function ProductTour() {
                     transition={{ delay: 1 + i * 0.1 }}
                     className="flex items-center gap-2 bg-slate-50 border border-[#E8E4DC] rounded-none p-3"
                   >
-                    <div className="w-8 h-8 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center">
+                    <div className="w-8 h-8 bg-[#0A0F2E]/5 border border-[#E8E4DC] rounded-none flex items-center justify-center">
                       <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
                     </div>
                     <span className="text-sm text-[#0A0F2E] font-bold uppercase tracking-widest text-[9px]">{role}</span>
@@ -522,10 +522,10 @@ export default function ProductTour() {
       >
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-1"></div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-slate-50 border border-[#E8E4DC] rounded-none">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="text-center p-3 bg-white border border-[#E8E4DC] rounded-none">
             <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Palantir</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-slate-50 border border-[#E8E4DC] rounded-none">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-white border border-[#E8E4DC] rounded-none">
             <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E] rounded-none shadow-lg">
@@ -545,7 +545,7 @@ export default function ProductTour() {
               transition={{ delay: 0.5 + i * 0.1 }}
               className="contents"
             >
-              <div className="p-3 bg-slate-50 border border-[#E8E4DC] rounded-none flex items-center">
+              <div className="p-3 bg-white border border-[#E8E4DC] rounded-none flex items-center">
                 <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">{row.label}</p>
               </div>
               {row.scores.map((score, j) => (

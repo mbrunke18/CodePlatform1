@@ -57,7 +57,7 @@ export default function IntelligenceControlCenter() {
       description: '5 AI co-pilots for strategic decision-making',
       path: '/ai',
       icon: Brain,
-      color: 'purple',
+      color: 'gold',
       status: 'active',
       features: ['Pulse Intelligence', 'Flux Adaptations', 'Prism Insights', 'Echo Analytics', 'Nova Innovations'],
       badge: '5 MODULES'
@@ -68,7 +68,7 @@ export default function IntelligenceControlCenter() {
       description: 'Configure triggers and monitor data points',
       path: '/signal-intelligence',
       icon: Radio,
-      color: 'blue',
+      color: 'navy',
       status: 'active',
       features: ['16 Signal Categories', '92+ Data Points', 'Custom Triggers', 'Alert Management'],
       badge: '92 DATA POINTS'
@@ -79,7 +79,7 @@ export default function IntelligenceControlCenter() {
       description: 'Visual intelligence scanning and pattern detection',
       path: '/foresight-radar',
       icon: Eye,
-      color: 'cyan',
+      color: 'teal',
       status: 'active',
       features: ['Radar Visualization', 'Trend Detection', 'Early Warning System'],
       badge: 'REAL-TIME'
@@ -90,7 +90,7 @@ export default function IntelligenceControlCenter() {
       description: 'Create and manage automated triggers',
       path: '/triggers-management',
       icon: Bell,
-      color: 'amber',
+      color: 'gold',
       status: 'active',
       features: ['Trigger Templates', 'Condition Builder', 'Playbook Mapping'],
       badge: 'CONFIGURE'
@@ -99,13 +99,11 @@ export default function IntelligenceControlCenter() {
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-      purple: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
-      blue: { bg: ' ', border: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50', text: 'text-[#0A0F2E]', badge: 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30' },
-      cyan: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
-      amber: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
-      green: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
+      gold: { bg: ' ', border: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', text: 'text-[#C9A84C]', badge: 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30' },
+      navy: { bg: ' ', border: 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50', text: 'text-[#0A0F2E]', badge: 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30' },
+      teal: { bg: ' ', border: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', badge: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30' },
     };
-    return colors[color] || colors.blue;
+    return colors[color] || colors.navy;
   };
 
   return (

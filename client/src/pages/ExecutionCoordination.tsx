@@ -150,12 +150,12 @@ const sampleExecutions = {
 type CategoryKey = 'offense' | 'defense' | 'special_teams';
 
 const statusConfig = {
-  pending: { color: 'bg-slate-200 text-gray-800', icon: Circle, label: 'Pending' },
-  blocked: { color: 'bg-red-100 text-red-700', icon: AlertCircle, label: 'Blocked' },
-  ready: { color: 'bg-[#141B45] text-white', icon: Play, label: 'Ready' },
+  pending: { color: 'bg-[#F8F7F4] text-[#6B7280]', icon: Circle, label: 'Pending' },
+  blocked: { color: 'bg-red-600/10 text-red-600', icon: AlertCircle, label: 'Blocked' },
+  ready: { color: 'bg-[#0A0F2E] text-white', icon: Play, label: 'Ready' },
   in_progress: { color: 'bg-[#C9A84C]/10 text-[#C9A84C]', icon: Pause, label: 'In Progress' },
   completed: { color: 'bg-[#2B8A6E]/10 text-[#2B8A6E]', icon: CheckCircle, label: 'Completed' },
-  failed: { color: 'bg-red-100 text-red-700', icon: AlertCircle, label: 'Failed' },
+  failed: { color: 'bg-red-600/10 text-red-600', icon: AlertCircle, label: 'Failed' },
 };
 
 const NAVY = "#0A0F2E";
@@ -319,7 +319,7 @@ export default function ExecutionCoordination() {
               </div>
             </div>
             
-            <Progress value={completionPercent} className="mt-8 h-1 bg-white/10" />
+            <Progress value={completionPercent} className="mt-8 h-1 bg-white/10 [&>div]:bg-[#C9A84C]" />
           </CardContent>
         </Card>
         

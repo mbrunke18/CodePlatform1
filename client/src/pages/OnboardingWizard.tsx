@@ -309,7 +309,7 @@ export default function OnboardingWizard() {
               </div>
             </div>
             
-            <div className="w-full bg-[#E8E4DC] h-1.5 mb-8">
+            <div className="w-full bg-[#E8E4DC] h-1.5 mb-8 overflow-hidden">
               <div 
                 className="bg-[#C9A84C] h-full transition-all duration-500" 
                 style={{ width: `${progress}%` }} 
@@ -439,7 +439,7 @@ export default function OnboardingWizard() {
                         variant={orgData.departments.includes(dept) ? 'default' : 'outline'}
                         className={`cursor-pointer ${
                           orgData.departments.includes(dept) 
-                            ? 'bg-[#0A0F2E] hover:bg-[#141B45]' 
+                            ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45]' 
                             : 'hover:bg-[#F8F7F4] text-[#0A0F2E] border-[#E8E4DC]'
                         }`}
                         onClick={() => {

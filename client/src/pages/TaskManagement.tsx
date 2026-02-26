@@ -96,10 +96,10 @@ const STAKEHOLDER_ROLES = [
 ];
 
 const PRIORITY_CONFIG = {
-  critical: { label: "Critical", color: "bg-red-100 text-red-700" },
-  high: { label: "High", color: "bg-orange-100 text-orange-700" },
-  medium: { label: "Medium", color: "bg-[#DFC178]/20 text-[#0A0F2E]" },
-  low: { label: "Low", color: "bg-slate-100 text-gray-800" },
+  critical: { label: "Critical", color: "bg-red-600 text-white" },
+  high: { label: "High", color: "bg-[#0A0F2E] text-white" },
+  medium: { label: "Medium", color: "bg-[#DFC178] text-[#0A0F2E]" },
+  low: { label: "Low", color: "bg-[#F8F7F4] text-gray-800" },
 };
 
 const STATUS_CONFIG = {
@@ -864,7 +864,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const isOffense = /market|growth|revenue|sales/i.test(domain.domainName);
                     const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
                     const iconColor = isDefense ? "text-[#0A0F2E]" : isOffense ? "text-orange-600" : "text-[#C9A84C]";
-                    const iconBg = isDefense ? "bg-blue-100 dark:bg-[#0A0F2E]/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
+                    const iconBg = isDefense ? "bg-[#F8F7F4] dark:bg-[#0A0F2E]/30" : isOffense ? "bg-orange-100 dark:bg-orange-900/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
                     const progressColor = coverage >= 80 ? "bg-green-500" : coverage >= 50 ? "bg-yellow-500" : "bg-red-500";
                     
                     return (

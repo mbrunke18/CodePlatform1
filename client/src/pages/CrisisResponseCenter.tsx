@@ -246,7 +246,7 @@ export default function CrisisResponseCenter() {
                 <p className="text-white/60 text-xl leading-relaxed max-w-2xl">Enterprise-grade crisis management with 15+ response protocols and real-time coordination systems.</p>
               </div>
               <div className="flex flex-col items-end gap-4 min-w-[280px]">
-                <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:"#3BAF8A", fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: "1px solid rgba(43,138,110,0.3)" }}>
+                <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:TEAL, fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: `1px solid ${TEAL}` }}>
                   <Shield className="w-4 h-4" />
                   All Systems Ready
                 </div>
@@ -328,8 +328,8 @@ export default function CrisisResponseCenter() {
                             <span>Progress</span>
                             <span className="text-[#0A0F2E] font-black">{crisis.progress}%</span>
                           </div>
-                          <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC] overflow-hidden">
-                             <div className="h-full bg-[#2B8A6E]" style={{ width: `${crisis.progress}%` }} />
+                          <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC] overflow-hidden [&>div]:bg-[#C9A84C]">
+                             <div className="h-full bg-[#C9A84C]" style={{ width: `${crisis.progress}%` }} />
                           </Progress>
                           <div className="flex items-center gap-3 text-xs text-[#6B7280] font-medium pt-2">
                             <div className="w-2 h-2 bg-[#C9A84C]" />

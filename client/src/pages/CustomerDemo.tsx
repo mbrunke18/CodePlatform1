@@ -105,10 +105,10 @@ const IDEA_STORY = [
     title: "AI Watches. You Approve.",
     subtitle: "Never miss a signal that matters",
     phase: "DETECT",
-    phaseColor: "bg-[#DFC178]",
+    phaseColor: "bg-[#C9A84C]",
     icon: Radar,
-    color: "text-[#DFC178]",
-    bgColor: "bg-[#DFC178]/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/20",
     time: 50,
     description: "M's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
     roleWins: [
@@ -328,7 +328,7 @@ export default function CustomerDemo() {
             <Badge className="bg-[#C9A84C] text-[#0A0F2E] mb-3">
               Executive Demo — Execution Confidence
             </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2" data-testid="heading-customer-demo" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#C9A84C] mb-2" data-testid="heading-customer-demo" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Execute Strategy at the Speed of Disruption
             </h1>
             <p className="text-lg text-white/80">
@@ -407,7 +407,7 @@ export default function CustomerDemo() {
                   </div>
                 </div>
               </div>
-              <Progress value={(elapsedTime / DEMO_DURATION) * 100} className="h-1 mt-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
+              <Progress value={(elapsedTime / DEMO_DURATION) * 100} className="h-1 mt-3 bg-white/10" />
             </CardContent>
           </Card>
 
@@ -480,7 +480,7 @@ export default function CustomerDemo() {
                       </div>
                     )}
                   </div>
-                  <Progress value={progress} className="h-1 mt-4 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
+                  <Progress value={progress} className="h-1 mt-4 bg-white/10" />
                 </CardHeader>
                 
                 <CardContent className="p-6">
@@ -582,7 +582,7 @@ export default function CustomerDemo() {
                     <span className="text-white/60">Acknowledgments</span>
                     <span className="text-white font-medium">{acknowledgedStakeholders.length} / 47</span>
                   </div>
-                  <Progress value={(acknowledgedStakeholders.length / 47) * 100} className="h-1.5 bg-white/10" indicatorClassName="bg-[#2B8A6E]" />
+                  <Progress value={(acknowledgedStakeholders.length / 47) * 100} className="h-1.5 bg-white/10" />
                   
                   <div className="space-y-3 pt-2">
                     <AnimatePresence mode="popLayout">

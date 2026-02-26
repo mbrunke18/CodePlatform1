@@ -47,7 +47,7 @@ export default function PrismInsights() {
         'Develop partnerships with key market influencers'
       ],
       icon: <Target className="h-5 w-5" />,
-      color: 'emerald'
+      color: 'teal'
     },
     {
       id: 'operational-efficiency',
@@ -68,7 +68,7 @@ export default function PrismInsights() {
         'Deploy standardized productivity enhancement protocols'
       ],
       icon: <BarChart3 className="h-5 w-5" />,
-      color: 'blue'
+      color: 'navy'
     },
     {
       id: 'financial-modeling',
@@ -89,7 +89,7 @@ export default function PrismInsights() {
         'Expand high-performing investment allocations'
       ],
       icon: <DollarSign className="h-5 w-5" />,
-      color: 'purple'
+      color: 'gold'
     },
     {
       id: 'talent-dynamics',
@@ -110,18 +110,17 @@ export default function PrismInsights() {
         'Expand leadership development across all levels'
       ],
       icon: <Users className="h-5 w-5" />,
-      color: 'orange'
+      color: 'gold'
     }
   ];
 
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: 'text-[#2B8A6E] bg-[#2B8A6E]/10 border-[#2B8A6E]/30',
-      blue: 'text-[#0A0F2E] bg-[#0A0F2E]/10 border-[#0A0F2E]/30',
-      purple: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30',
-      orange: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30'
+      teal: 'text-[#2B8A6E] bg-[#2B8A6E]/10 border-[#2B8A6E]/30',
+      navy: 'text-[#0A0F2E] bg-[#0A0F2E]/10 border-[#0A0F2E]/30',
+      gold: 'text-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]/30'
     };
-    return colors[color as keyof typeof colors] || colors.blue;
+    return colors[color as keyof typeof colors] || colors.navy;
   };
 
   const getImpactColor = (impact: string) => {
@@ -130,7 +129,7 @@ export default function PrismInsights() {
       case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
-      default: return 'bg-gray-500/20 text-[#6B7280] border-gray-500/30';
+      default: return 'bg-black/5 text-gray-700 border-black/10';
     }
   };
 
@@ -267,12 +266,12 @@ export default function PrismInsights() {
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <Lightbulb className="h-4 w-4 text-yellow-400" />
+                            <Lightbulb className="h-4 w-4 text-[#C9A84C]" />
                             Key Insights
                           </h4>
                           <ul className="space-y-2">
                             {insight.insights.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-800">
+                              <li key={index} className="flex items-start gap-2 text-sm text-[#6B7280]">
                                 <div className="w-1.5 h-1.5 bg-[#0A0F2E] rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
@@ -282,13 +281,13 @@ export default function PrismInsights() {
                         
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                            <Target className="h-4 w-4 text-green-400" />
+                            <Target className="h-4 w-4 text-[#2B8A6E]" />
                             Strategic Recommendations
                           </h4>
                           <ul className="space-y-2">
                             {insight.recommendations.map((item, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-800">
-                                <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <li key={index} className="flex items-start gap-2 text-sm text-[#6B7280]">
+                                <div className="w-1.5 h-1.5 bg-[#2B8A6E] rounded-full mt-2 flex-shrink-0"></div>
                                 {item}
                               </li>
                             ))}
@@ -318,24 +317,24 @@ export default function PrismInsights() {
               {/* AI Summary */}
               <Card className="border-[#0A0F2E]/30 bg-[#0A0F2E]/30 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-blue-300">
+                  <CardTitle className="flex items-center gap-2 text-[#C9A84C]">
                     <Brain className="h-5 w-5" />
                     Cross-Dimensional AI Summary
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="p-4 bg-[#C9A84C]/30 rounded-lg border border-[#C9A84C]/30">
+                    <div className="p-4 bg-[#C9A84C]/5 rounded-lg border border-[#C9A84C]/30">
                       <p className="text-[#C9A84C] font-medium mb-2">Strategic Convergence</p>
-                      <p className="text-[#C9A84C] text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
+                      <p className="text-[#6B7280] text-sm">Market positioning and financial modeling show 87% alignment, suggesting coordinated execution will maximize impact.</p>
                     </div>
-                    <div className="p-4 bg-green-950/30 rounded-lg border border-green-500/30">
-                      <p className="text-green-300 font-medium mb-2">Optimization Opportunity</p>
-                      <p className="text-[#2B8A6E] text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
+                    <div className="p-4 bg-[#2B8A6E]/5 rounded-lg border border-[#2B8A6E]/30">
+                      <p className="text-[#2B8A6E] font-medium mb-2">Optimization Opportunity</p>
+                      <p className="text-[#6B7280] text-sm">Operational efficiency improvements can fund 73% of strategic market expansion with neutral cash flow impact.</p>
                     </div>
-                    <div className="p-4 bg-orange-950/30 rounded-lg border border-orange-500/30">
-                      <p className="text-orange-300 font-medium mb-2">Risk-Adjusted Prioritization</p>
-                      <p className="text-orange-200 text-sm">Human capital investments show highest risk-adjusted returns and should be prioritized for Q2 execution.</p>
+                    <div className="p-4 bg-[#C9A84C]/5 rounded-lg border border-[#C9A84C]/20">
+                      <p className="text-[#C9A84C] font-medium mb-2">Risk-Adjusted Prioritization</p>
+                      <p className="text-[#6B7280] text-sm">Human capital investments show highest risk-adjusted returns and should be prioritized for Q2 execution.</p>
                     </div>
                   </div>
                 </CardContent>

@@ -83,7 +83,7 @@ export default function FinancialRansomwareDemo() {
         {currentAct === "introduction" && (
           <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.title}</h2>
+              <h2 className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{financialDemoData.crisis.title}</h2>
               <p className="text-xl text-[#DFC178]">{financialDemoData.crisis.subtitle}</p>
             </div>
 
@@ -241,7 +241,7 @@ export default function FinancialRansomwareDemo() {
               </Card>
 
               <Card className="bg-white/5 border-white/10 p-6 text-center">
-                <Clock className="w-8 h-8 text-[#DFC178] mx-auto mb-3" />
+                <Clock className="w-8 h-8 text-[#C9A84C] mx-auto mb-3" />
                 <div className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 min</div>
                 <div className="text-sm text-white/40">Full Coordination</div>
               </Card>

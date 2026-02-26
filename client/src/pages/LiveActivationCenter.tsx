@@ -79,9 +79,9 @@ interface PlaybookDef {
 }
 
 const AVATAR_COLORS = [
-  'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-amber-500',
-  'bg-rose-500', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-pink-500',
-  'bg-teal-500', 'bg-orange-500'
+  'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
+  'bg-[#EF4444]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
+  'bg-[#2B8A6E]', 'bg-[#DFC178]'
 ];
 
 const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
@@ -94,7 +94,7 @@ const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
     stakeholderCount: 10,
     taskCount: 12,
     duration: '12-min coordination',
-    color: 'blue'
+    color: 'teal'
   },
   {
     key: 'ransomware',
@@ -105,7 +105,7 @@ const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
     stakeholderCount: 10,
     taskCount: 12,
     duration: '12-min coordination',
-    color: 'red'
+    color: 'navy'
   },
   {
     key: 'ai-governance',
@@ -116,7 +116,7 @@ const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
     stakeholderCount: 9,
     taskCount: 10,
     duration: '12-min coordination',
-    color: 'purple'
+    color: 'gold'
   }
 ];
 
@@ -702,7 +702,7 @@ export default function LiveActivationCenter() {
               disabled={activateMutation.isPending}
               className={cn(
                 'text-lg px-12 py-7 font-bold tracking-wide rounded-xl transition-all duration-300',
-                'bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 shadow-lg shadow-emerald-600/20',
+                'bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 shadow-lg shadow-[#2B8A6E]/20',
                 'disabled:opacity-50'
               )}
             >

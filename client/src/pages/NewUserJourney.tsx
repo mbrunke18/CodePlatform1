@@ -400,7 +400,7 @@ export default function NewUserJourney() {
                     <h2 className="font-serif text-5xl text-[#0A0F2E] mb-6">
                       Success Favors the Prepared
                     </h2>
-                    <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
                       Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
                       into decisive action in <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-4">12 minutes, not 72 hours</span>
                     </p>
@@ -409,15 +409,15 @@ export default function NewUserJourney() {
                   <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto mt-16">
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">15 min</div>
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Time to Build</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Time to Build</div>
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">170</div>
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Playbooks</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Playbooks</div>
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">92</div>
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Signals</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Signals</div>
                     </div>
                   </div>
 
@@ -487,7 +487,7 @@ export default function NewUserJourney() {
                               key={industry.id}
                               className={`cursor-pointer transition-all ${
                                 isSelected 
-                                  ? 'bg-[#0A0F2E]/20 border-indigo-500 ring-1 ring-indigo-500' 
+                                  ? 'bg-[#0A0F2E]/20 border-[#C9A84C] ring-1 ring-[#C9A84C]' 
                                   : 'bg-gray-50 border-gray-200 hover:border-slate-600'
                               }`}
                               onClick={() => updateState({ industry: industry.id, selectedPlaybooks: [] })}

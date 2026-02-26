@@ -78,13 +78,13 @@ const DOMAIN_CONFIG = {
     label: "DEFENSE",
     icon: Shield,
     color: "navy",
-    playbooks: "58 Playbooks",
+    playbooks: "74 Playbooks",
     categories: "Crisis \u2022 Cyber \u2022 Regulatory",
     tagline: "How ready are you to contain threats?",
     bg: "bg-[#0A0F2E]",
     bgLight: "bg-[#0A0F2E]/20",
     text: "text-[#0A0F2E]",
-    textLight: "text-[#141B45]",
+    textLight: "text-[#C9A84C]",
     border: "border-[#0A0F2E]/30",
     borderHover: "hover:border-[#0A0F2E]/60",
     shadow: "shadow-[#0A0F2E]/25",
@@ -220,8 +220,8 @@ const QUESTION_ICONS = [
 ];
 
 function getScoreColor(score: number) {
-  if (score <= 30) return { color: "text-red-500", bg: "bg-red-500", label: "Critical", ring: "stroke-red-500" };
-  if (score <= 50) return { color: "text-orange-500", bg: "bg-orange-500", label: "At Risk", ring: "stroke-orange-500" };
+  if (score <= 30) return { color: "text-red-600", bg: "bg-red-600", label: "Critical", ring: "stroke-red-600" };
+  if (score <= 50) return { color: "text-orange-600", bg: "bg-orange-600", label: "At Risk", ring: "stroke-orange-600" };
   if (score <= 70) return { color: "text-[#C9A84C]", bg: "bg-[#C9A84C]", label: "Needs Improvement", ring: "stroke-[#C9A84C]" };
   if (score <= 85) return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Good", ring: "stroke-[#2B8A6E]" };
   return { color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]", label: "Excellent", ring: "stroke-[#2B8A6E]" };
@@ -532,7 +532,7 @@ export default function ReadinessAssessment() {
               </Card>
 
               {error && (
-                <div className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-500 text-sm flex items-center gap-2">
+                <div className="mt-6 p-4 bg-red-600/10 border border-red-600/30 rounded-xl text-red-600 text-sm flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                   {error}
                 </div>

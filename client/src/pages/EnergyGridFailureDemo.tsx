@@ -57,7 +57,7 @@ export default function EnergyGridFailureDemo() {
           <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-demo-type">
             Interactive Demo
           </Badge>
-          <h1 className="text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h1 className="text-5xl font-bold mb-4 text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Energy Grid Crisis Demo
           </h1>
           <p className="text-xl text-[#DFC178] mb-2">
@@ -163,7 +163,7 @@ export default function EnergyGridFailureDemo() {
                   <span className="text-sm text-white/60">Preparedness Score</span>
                   <span className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.playbook.preparednessScore}%</span>
                 </div>
-                <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2 bg-white/10" indicatorClassName="bg-[#2B8A6E]" />
+                <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2 bg-white/10" />
               </div>
             </Card>
 
@@ -230,7 +230,7 @@ export default function EnergyGridFailureDemo() {
               <Button
                 size="lg"
                 onClick={() => goToAct("coordination")}
-                className="gap-2 bg-red-600 hover:bg-red-700 text-white font-bold"
+                className="gap-2 bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border border-white/20"
                 data-testid="button-activate-playbook"
               >
                 <ShieldAlert className="h-5 w-5" />
@@ -301,9 +301,9 @@ export default function EnergyGridFailureDemo() {
                       <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
                     </div>
                   </Card>
-                  <Card className="p-6 bg-white/5 border-white/10 border-[#DFC178]/30">
+                  <Card className="p-6 bg-white/5 border-white/10 border-[#C9A84C]/30">
                     <div className="text-center">
-                      <Activity className="h-8 w-8 text-[#DFC178] mx-auto mb-2" />
+                      <Activity className="h-8 w-8 text-[#C9A84C] mx-auto mb-2" />
                       <div className="text-sm text-white/60 mb-1">Tier 2: Field Execution</div>
                       <div className="text-3xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.stakeholderTiers.tier2.count}</div>
                       <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>

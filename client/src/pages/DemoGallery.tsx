@@ -33,8 +33,8 @@ const demos = [
     category: "interactive",
     audience: "prospects",
     icon: Rocket,
-    color: "text-poise-teal",
-    bgColor: "bg-poise-teal/10",
+    color: "text-[#2B8A6E]",
+    bgColor: "bg-[#2B8A6E]/10",
     featured: true,
     tags: ["Full Experience", "Live Execution"],
     journeyPhase: "Discovery"
@@ -48,8 +48,8 @@ const demos = [
     category: "interactive",
     audience: "executives",
     icon: Briefcase,
-    color: "text-poise-gold",
-    bgColor: "bg-poise-gold/10",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
     featured: true,
     tags: ["Decision Making", "Crisis Response"],
     journeyPhase: "EXECUTE"
@@ -160,40 +160,40 @@ export default function DemoGallery() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-[#141B45]/30 dark:from-poise-navy dark:to-[#0A0F2E]">
+      <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           {/* Header */}
           <div className="text-center mb-8">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+            <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
               Experience Execution OS
             </Badge>
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            <h1 className="text-4xl font-bold text-slate-900 mb-4">
               Demo Gallery
             </h1>
-            <p className="text-xl text-gray-800 dark:text-slate-300 max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-6">
               Choose your experience: interactive simulations, guided tours, or industry-specific scenarios
             </p>
           </div>
 
           {/* North Star Journey Connection */}
-          <Card className="mb-10 bg-gradient-to-r from-poise-teal/10 to-[#3BAF8A]/10 border-poise-teal/30">
+          <Card className="mb-10 bg-[#2B8A6E]/5 border-[#2B8A6E]/30">
             <CardContent className="p-6">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-poise-teal/20">
-                    <Rocket className="h-6 w-6 text-poise-teal" />
+                  <div className="p-3 rounded-xl bg-[#2B8A6E]/10">
+                    <Rocket className="h-6 w-6 text-[#2B8A6E]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 dark:text-white">Your Journey Starts Here</h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300">
+                    <h3 className="font-semibold text-slate-900">Your Journey Starts Here</h3>
+                    <p className="text-sm text-gray-800">
                       These demos map to Phase 1 of your Execution OS North Star™ journey — Discovery to 12-minute execution
                     </p>
                   </div>
                 </div>
                 <Link href="/north-star">
-                  <Button variant="outline" className="border-poise-teal text-poise-teal hover:bg-poise-teal hover:text-white">
+                  <Button variant="outline" className="border-[#2B8A6E] text-[#2B8A6E] hover:bg-[#2B8A6E] hover:text-white">
                     View Full Journey
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </Button>
@@ -206,7 +206,7 @@ export default function DemoGallery() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {demos.filter(d => d.featured).map((demo) => (
               <Link key={demo.id} href={demo.path}>
-                <Card className="h-full hover:shadow-xl transition-all cursor-pointer group border-2 border-transparent hover:border-poise-teal/50">
+                <Card className="h-full hover:shadow-xl transition-all cursor-pointer group border-2 border-transparent hover:border-[#2B8A6E]/50">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
                       <div className={`p-4 rounded-2xl ${demo.bgColor}`}>
@@ -220,15 +220,15 @@ export default function DemoGallery() {
                             {demo.duration}
                           </Badge>
                           {(demo as any).journeyPhase && (
-                            <Badge className="text-xs bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+                            <Badge className="text-xs bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                               {(demo as any).journeyPhase}
                             </Badge>
                           )}
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors mb-2">
+                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-[#2B8A6E] transition-colors mb-2">
                           {demo.title}
                         </h3>
-                        <p className="text-gray-800 dark:text-slate-300 mb-4">
+                        <p className="text-gray-800 mb-4">
                           {demo.description}
                         </p>
                         <div className="flex flex-wrap gap-2">
@@ -238,7 +238,7 @@ export default function DemoGallery() {
                             </Badge>
                           ))}
                         </div>
-                        <div className="flex items-center gap-2 mt-4 text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-2 mt-4 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
                           <span className="text-sm font-medium">Start Demo</span>
                           <ChevronRight className="h-4 w-4" />
                         </div>
@@ -252,7 +252,7 @@ export default function DemoGallery() {
 
           {/* Filter Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-            <TabsList className="bg-slate-100 dark:bg-[#141B45]">
+            <TabsList className="bg-slate-100">
               <TabsTrigger value="all">All Demos</TabsTrigger>
               <TabsTrigger value="interactive">Interactive</TabsTrigger>
               <TabsTrigger value="presentation">Presentations</TabsTrigger>
@@ -273,12 +273,12 @@ export default function DemoGallery() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors">
+                          <h3 className="font-semibold text-slate-900 group-hover:text-[#2B8A6E] transition-colors">
                             {demo.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-gray-800 dark:text-slate-200 group-hover:text-poise-teal transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-gray-800 group-hover:text-[#2B8A6E] transition-colors" />
                         </div>
-                        <p className="text-sm text-gray-800 dark:text-slate-300 mt-1 mb-3">
+                        <p className="text-sm text-gray-800 mt-1 mb-3">
                           {demo.description}
                         </p>
                         <div className="flex items-center gap-2 flex-wrap">
@@ -287,7 +287,7 @@ export default function DemoGallery() {
                             {demo.duration}
                           </Badge>
                           {(demo as any).journeyPhase && (
-                            <Badge className="text-xs bg-poise-teal/20 text-poise-teal border-poise-teal/30">
+                            <Badge className="text-xs bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                               {(demo as any).journeyPhase}
                             </Badge>
                           )}
@@ -302,8 +302,8 @@ export default function DemoGallery() {
 
           {/* Industry-Specific Demos */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Industry Scenarios</h2>
-            <p className="text-gray-800 dark:text-slate-300 mb-6">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Industry Scenarios</h2>
+            <p className="text-gray-800 mb-6">
               See Execution OS in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -312,11 +312,11 @@ export default function DemoGallery() {
                   <Card className="h-full hover:shadow-lg transition-all cursor-pointer group">
                     <CardContent className="p-6">
                       <demo.icon className={`h-8 w-8 ${demo.color} mb-4`} />
-                      <h3 className="font-semibold text-slate-900 dark:text-white group-hover:text-poise-teal transition-colors mb-1">
+                      <h3 className="font-semibold text-slate-900 group-hover:text-[#2B8A6E] transition-colors mb-1">
                         {demo.title}
                       </h3>
                       <p className="text-xs text-gray-800 mb-2">{demo.industry}</p>
-                      <p className="text-sm text-gray-800 dark:text-slate-300">
+                      <p className="text-sm text-gray-800">
                         {demo.description}
                       </p>
                     </CardContent>
@@ -327,7 +327,7 @@ export default function DemoGallery() {
           </div>
 
           {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
-          <Card className="bg-white border border-gray-200 border-0">
+          <Card className="bg-white border border-gray-200">
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-gray-800 mb-6 max-w-xl mx-auto">
@@ -335,13 +335,13 @@ export default function DemoGallery() {
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">
-                  <Button size="lg" className="bg-poise-teal hover:bg-[#2B8A6E] text-gray-900 font-semibold">
+                  <Button size="lg" className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-semibold">
                     <Play className="h-4 w-4 mr-2" />
                     Try Interactive Demo
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg" className="bg-poise-gold hover:bg-amber-500 text-poise-navy font-semibold">
+                  <Button size="lg" className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-semibold">
                     Start Pilot Program
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>

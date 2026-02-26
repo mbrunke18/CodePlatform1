@@ -225,8 +225,8 @@ const SUCCESS_METRICS = [
 
 const SCENARIO_BRANCHES = [
   { severity: "critical", label: "Critical - Full Activation", color: "bg-red-500", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
-  { severity: "high", label: "High - Elevated Response", color: "bg-orange-500", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
-  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-yellow-500", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
+  { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
+  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#C9A84C]/50", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
   { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
 ];
 
@@ -532,7 +532,7 @@ export default function SandboxDemo() {
     <div className="space-y-8">
       <div className="text-center">
         <BrandStamp variant="dual" size="md" className="mb-8" />
-        <Badge className="mb-4 bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-[#0A0F2E]">
+        <Badge className="mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E]">
           Step 1 of 6: IDENTIFY Phase
         </Badge>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -553,7 +553,7 @@ export default function SandboxDemo() {
               key={domain.id}
               className={`cursor-pointer transition-all hover:scale-105 ${
                 isSelected 
-                  ? 'ring-2 ring-blue-500 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30' 
+                  ? 'ring-2 ring-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/30' 
                   : 'hover:shadow-lg'
               }`}
               onClick={() => setConfig({ ...config, domain: domain.id, domainName: domain.name })}
@@ -982,8 +982,8 @@ export default function SandboxDemo() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-4 bg-orange-50 dark:bg-orange-950/30 rounded-lg">
-                <p className="text-sm text-orange-700 dark:text-orange-400">
+              <div className="mt-4 p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
+                <p className="text-sm text-[#C9A84C]">
                   <strong>Auto-Escalation:</strong> If enabled, the system automatically escalates when timeouts are reached
                 </p>
                 <div className="flex items-center gap-2 mt-2">
@@ -1710,19 +1710,19 @@ export default function SandboxDemo() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-4 gap-3">
-              {[
-                { id: 'critical', label: 'Critical', color: 'bg-red-500' },
-                { id: 'high', label: 'High', color: 'bg-orange-500' },
-                { id: 'medium', label: 'Medium', color: 'bg-yellow-500' },
-                { id: 'low', label: 'Low', color: 'bg-gray-400' },
-              ].map((sev) => (
-                <div
-                  key={sev.id}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all text-center ${
-                    triggerConfig.severity === sev.id
-                      ? 'ring-2 ring-offset-2 ring-blue-500'
-                      : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
-                  }`}
+                  {[
+                    { id: 'critical', label: 'Critical', color: 'bg-red-500' },
+                    { id: 'high', label: 'High', color: 'bg-[#C9A84C]' },
+                    { id: 'medium', label: 'Medium', color: 'bg-[#DFC178]' },
+                    { id: 'low', label: 'Low', color: 'bg-gray-400' },
+                  ].map((sev) => (
+                    <div
+                      key={sev.id}
+                      className={`p-3 rounded-lg border cursor-pointer transition-all text-center ${
+                        triggerConfig.severity === sev.id
+                          ? 'ring-2 ring-offset-2 ring-[#0A0F2E] border-[#0A0F2E]'
+                          : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
+                      }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, severity: sev.id })}
                   data-testid={`severity-${sev.id}`}
                 >
@@ -1783,7 +1783,7 @@ export default function SandboxDemo() {
                 key={branch.severity}
                 className={`p-4 border rounded-lg transition-all cursor-pointer ${
                   triggerConfig.severity === branch.severity 
-                    ? 'ring-2 ring-blue-500 bg-slate-50 dark:bg-[#141B45]/50' 
+                    ? 'ring-2 ring-[#0A0F2E] bg-slate-50 dark:bg-[#141B45]/50' 
                     : 'opacity-60 hover:opacity-80'
                 }`}
                 onClick={() => setTriggerConfig({ ...triggerConfig, severity: branch.severity })}
@@ -2151,11 +2151,11 @@ export default function SandboxDemo() {
                 <h3 className="text-2xl font-bold mb-4">Complete Configuration Summary</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
-                    <p><strong className="text-blue-300">Domain:</strong> {config.domainName}</p>
-                    <p><strong className="text-blue-300">Team Size:</strong> {config.stakeholders.length} stakeholders</p>
-                    <p><strong className="text-blue-300">Tasks:</strong> {tasks.length} configured</p>
-                    <p><strong className="text-blue-300">Decisions:</strong> {config.decisionPoints.length} gates</p>
-                    <p><strong className="text-blue-300">Escalation:</strong> {config.escalationPath.length} levels</p>
+                    <p><strong className="text-[#3BAF8A]">Domain:</strong> {config.domainName}</p>
+                    <p><strong className="text-[#3BAF8A]">Team Size:</strong> {config.stakeholders.length} stakeholders</p>
+                    <p><strong className="text-[#3BAF8A]">Tasks:</strong> {tasks.length} configured</p>
+                    <p><strong className="text-[#3BAF8A]">Decisions:</strong> {config.decisionPoints.length} gates</p>
+                    <p><strong className="text-[#3BAF8A]">Escalation:</strong> {config.escalationPath.length} levels</p>
                   </div>
                   <div className="space-y-2">
                     <p><strong className="text-green-300">Target Time:</strong> {config.responseTimeTarget} min</p>

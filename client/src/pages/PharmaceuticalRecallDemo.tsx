@@ -80,8 +80,8 @@ export default function PharmaceuticalRecallDemo() {
           <div className="max-w-5xl mx-auto space-y-8">
             <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
-                <Heart className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.crisis.title}</h2>
+                <Pill className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
+                <h2 className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.crisis.title}</h2>
                 <p className="text-xl text-[#DFC178]">{pharmaDemoData.crisis.subtitle}</p>
               </div>
 
@@ -168,7 +168,7 @@ export default function PharmaceuticalRecallDemo() {
                   <span className="text-white/60">AI Confidence Level</span>
                   <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
+                <Progress value={detectionProgress} className="h-3 bg-white/10" />
                 {detectionProgress >= 92 && (
                   <div className="mt-4 p-4 bg-red-900/20 border border-red-500 rounded-lg">
                     <p className="text-red-400 font-semibold">
@@ -232,7 +232,7 @@ export default function PharmaceuticalRecallDemo() {
                         </Card>
                         <Card className="p-6 bg-white/5 border-white/10">
                           <div className="text-white/60 text-sm mb-2">Tier 2: Execution Teams</div>
-                          <div className="text-3xl font-bold text-[#DFC178] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.stakeholderTiers.tier2.count}</div>
+                          <div className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pharmaDemoData.stakeholderTiers.tier2.count}</div>
                           <div className="text-xs text-white/40">
                             {pharmaDemoData.stakeholderTiers.tier2.members.join(", ")}
                           </div>

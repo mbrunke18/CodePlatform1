@@ -365,8 +365,8 @@ export default function PilotDemo() {
                     </div>
 
                     <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-4 border border-[#0A0F2E] dark:border-[#0A0F2E]">
-                      <h4 className="font-medium text-[#0A0F2E] dark:text-blue-100 mb-2">What happens next:</h4>
-                      <ul className="text-sm text-[#0A0F2E] dark:text-blue-300 space-y-1">
+                      <h4 className="font-medium text-[#0A0F2E] dark:text-[#C9A84C]/20 mb-2">What happens next:</h4>
+                      <ul className="text-sm text-[#0A0F2E] dark:text-slate-300 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a playbook to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
@@ -525,7 +525,7 @@ export default function PilotDemo() {
                   <CardContent className="space-y-6">
                     <div className="bg-slate-100 dark:bg-[#141B45]/50 rounded-lg p-6 space-y-4">
                       <div className="flex items-start gap-4">
-                        <div className="bg-blue-100 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
+                        <div className="bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
                           <Mail className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                         </div>
                         <div>
@@ -653,7 +653,7 @@ export default function PilotDemo() {
                           <div className="flex items-start gap-4 p-4">
                             <div className={`p-2.5 rounded-lg shrink-0 ${
                               event.status === "active" 
-                                ? "bg-blue-100 dark:bg-[#0A0F2E]/50" 
+                                ? "bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/50" 
                                 : "bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/50"
                             }`}>
                               <event.icon className={`w-5 h-5 ${
@@ -715,7 +715,7 @@ export default function PilotDemo() {
                           </div>
 
                           <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-3 mb-4 border border-[#0A0F2E] dark:border-[#0A0F2E] text-center">
-                            <p className="text-sm text-[#0A0F2E] dark:text-blue-300">
+                            <p className="text-sm text-[#0A0F2E] dark:text-slate-300">
                               <span className="font-semibold">Demo Mode:</span> This {executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0}-second simulation represents the full 12-minute production activation, compressed for demonstration.
                             </p>
                           </div>

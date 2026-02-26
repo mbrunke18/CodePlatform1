@@ -1,6 +1,7 @@
 import StandardNav from '@/components/layout/StandardNav';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLocation } from "wouter";
+import { ChevronRight } from "lucide-react";
 
 export default function Sitemap() {
   const [, setLocation] = useLocation();
@@ -131,31 +132,32 @@ export default function Sitemap() {
   ];
 
   return (
-    <div className="bg-[#F8F7F4] min-h-screen text-[#0A0F2E] p-8 pt-24">
+    <div className="bg-white min-h-screen text-[#0A0F2E] p-8 pt-24">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-[#0A0F2E]">
+          <h1 className="text-5xl font-bold mb-4 text-[#0A0F2E] font-serif">
             Execution OS Sitemap
           </h1>
-          <p className="text-xl text-gray-800">
+          <p className="text-xl text-[#6B7280] font-light">
             Complete directory of all pages and features available in Execution OS
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sections.map((section) => (
-            <Card key={section.title} className="bg-white border-[#E8E4DC]">
-              <CardHeader>
-                <CardTitle className="text-xl text-[#0A0F2E]">{section.title}</CardTitle>
+            <Card key={section.title} className="bg-white border-[#E8E4DC] rounded-none shadow-none hover:border-[#C9A84C] transition-colors group">
+              <CardHeader className="border-b border-[#F8F7F4] mb-4">
+                <CardTitle className="text-lg text-[#0A0F2E] font-serif group-hover:text-[#C9A84C] transition-colors">{section.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {section.pages.map((page) => (
                     <li key={page.path}>
                       <button
                         onClick={() => setLocation(page.path)}
-                        className="text-gray-800 hover:text-[#0A0F2E] hover:underline text-left w-full transition-colors"
+                        className="text-[#6B7280] hover:text-[#0A0F2E] text-xs font-bold uppercase tracking-widest text-left w-full transition-colors flex items-center group/link"
                       >
+                        <ChevronRight className="w-3 h-3 mr-2 text-[#C9A84C] opacity-0 group-hover/link:opacity-100 transition-all" />
                         {page.name}
                       </button>
                     </li>
@@ -166,25 +168,25 @@ export default function Sitemap() {
           ))}
         </div>
 
-        <Card className="mt-8 bg-white border-[#E8E4DC]">
-          <CardContent className="p-8">
-            <h2 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Quick Stats</h2>
-            <div className="grid md:grid-cols-4 gap-6 text-center">
+        <Card className="mt-8 bg-[#0A0F2E] border-none rounded-none">
+          <CardContent className="p-12">
+            <h2 className="text-2xl font-serif mb-8 text-[#C9A84C] text-center">System Capabilities</h2>
+            <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-4xl font-bold text-[#2B8A6E] mb-2">7</div>
-                <div className="text-gray-800">Live Interactive Demos</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Live Interactive Demos</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">10</div>
-                <div className="text-gray-800">Industry Demos</div>
+                <div className="text-4xl font-bold text-white mb-2">10</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Industry Demos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-[#C9A84C] mb-2">170</div>
-                <div className="text-gray-800">Strategic Playbooks</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Strategic Playbooks</div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-[#0A0F2E] mb-2">70+</div>
-                <div className="text-gray-800">Total Pages</div>
+                <div className="text-4xl font-bold text-white mb-2">70+</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Total Pages</div>
               </div>
             </div>
           </CardContent>

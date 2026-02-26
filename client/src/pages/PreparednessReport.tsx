@@ -268,7 +268,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                         <div className="flex items-center gap-6">
                           <div className="text-2xl font-bold" style={{ ...CG, color: NAVY }}>{entry.score}</div>
                           {entry.scoreDelta !== 0 && (
-                            <Badge className={`border-none font-bold ${entry.scoreDelta > 0 ? 'bg-[#2B8A6E] text-white' : 'bg-red-500 text-white'}`}>
+                            <Badge className={`border-none font-bold ${entry.scoreDelta > 0 ? 'bg-[#2B8A6E] text-white' : 'bg-[#0A0F2E] text-white'}`}>
                               {entry.scoreDelta > 0 ? '+' : ''}{entry.scoreDelta}
                             </Badge>
                           )}

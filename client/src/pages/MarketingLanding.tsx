@@ -72,7 +72,7 @@ export default function MarketingLanding() {
                 <p className="text-xl md:text-3xl text-white font-medium mb-4 leading-relaxed">
                   Their product is 15% cheaper. Social sentiment is tanking. 12 deals worth $2.4M are at risk.
                 </p>
-                <p className="text-lg text-slate-400 uppercase tracking-widest font-bold">
+                <p className="text-lg text-white/40 uppercase tracking-widest font-bold">
                   Your next board meeting? <span className="text-white">Thursday 2 PM.</span>
                 </p>
               </div>
@@ -91,7 +91,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => { window.location.href = '/try-demo'; }}
                 size="lg"
-                className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
+                className="bg-[#0A0F2E] border border-white/20 hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-try-demo"
               >
                 <Play className="mr-3 h-4 w-4" />
@@ -117,17 +117,17 @@ export default function MarketingLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <div className="flex justify-center mb-6">
-              <Badge className="bg-[#2B8A6E] text-white border-0 text-[10px] tracking-[0.2em] font-bold px-6 py-2 rounded-none uppercase">
+              <Badge className="bg-[#0A0F2E] text-white border-0 text-[10px] tracking-[0.2em] font-bold px-6 py-2 rounded-none uppercase">
                 The Strategic Execution OS
               </Badge>
             </div>
             <h2 className="font-serif text-3xl md:text-6xl text-[#0A0F2E] mb-8">
               Execution OS for Fortune 1000 Companies
             </h2>
-            <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed font-light">
+            <p className="text-xl md:text-2xl text-[#6B7280] mb-8 leading-relaxed font-light">
               When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-red-600 font-medium">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
-            <p className="text-lg text-slate-500 mb-8 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
               Our AI monitors 216 data points across 16 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
@@ -165,34 +165,34 @@ export default function MarketingLanding() {
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Playbook™" /></div>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
                     170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
                   <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Detect</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Signal™" /></div>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
                     AI-powered monitoring across 216 data points. Detect threats and opportunities before competitors.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Execute</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Compass™" /></div>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
                     12-minute coordinated execution. Stakeholders, budgets, and actions—automatically orchestrated.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
                   <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Retrospect™" /></div>
-                  <p className="text-slate-500 text-sm leading-relaxed">
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
                     Capture lessons, refine playbooks. Every execution makes your organization smarter.
                   </p>
                 </div>
               </div>
               <div className="text-center mt-10">
-                <p className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-bold">
+                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.3em]">
                   Plus <span className="text-[#2B8A6E] font-bold">Execution OS One™</span> — Single-pane executive overview
                 </p>
               </div>
@@ -211,7 +211,7 @@ export default function MarketingLanding() {
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
             <h2 className="font-serif text-4xl text-[#0A0F2E] mb-4">The ROI of <em className="italic text-[#C9A84C]">12-Minute Execution</em></h2>
-            <p className="text-slate-500 uppercase tracking-widest text-[10px] font-bold">Calculate the value of strategic agility</p>
+            <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Calculate the value of strategic agility</p>
           </div>
           <InteractiveROICalculator persona="general" industry="general" />
         </div>
@@ -227,7 +227,7 @@ export default function MarketingLanding() {
             <h2 className="font-serif text-4xl md:text-6xl text-[#0A0F2E] mb-6">
               Explore All Product Features
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-light leading-relaxed">
               Complete platform ecosystem for championship-level execution. Build your organization's decision operations infrastructure.
             </p>
           </div>
@@ -235,7 +235,7 @@ export default function MarketingLanding() {
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* 1. Create Playbook - PROMINENT */}
-            <Card className="border-2 border-[#0A0F2E] bg-slate-50 rounded-none hover:shadow-2xl transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
+            <Card className="border-2 border-[#0A0F2E] bg-white rounded-none hover:shadow-2xl transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
               <CardContent className="p-10">
                 <div className="flex items-start gap-6 mb-8">
                   <div className="w-16 h-16 rounded-none bg-[#0A0F2E] flex items-center justify-center flex-shrink-0">
@@ -248,7 +248,7 @@ export default function MarketingLanding() {
                     <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none text-[9px] tracking-widest font-bold uppercase px-3 py-1 mb-4">Start Here</Badge>
                   </div>
                 </div>
-                <p className="text-slate-600 mb-8 leading-relaxed">
+                <p className="text-[#6B7280] mb-8 leading-relaxed">
                   Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, and Review.
                 </p>
                 <CreateScenarioButton organizationId="default-org" className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none h-14 uppercase tracking-widest text-xs font-bold" />
@@ -256,13 +256,13 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 2. AI Intelligence (5 Modules) */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 group" data-testid="card-ai-intelligence">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-ai-intelligence">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-[#2B8A6E]/10 transition-colors">
-                  <Brain className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors" />
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                  <Brain className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">AI Intelligence Layer</h3>
-                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for real-time strategic insights and pattern detection.
                 </p>
                 <Button onClick={() => setLocation('/ai')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-ai-intelligence">
@@ -272,13 +272,13 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 3. 24/7 Monitoring */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 group" data-testid="card-monitoring">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-monitoring">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-[#2B8A6E]/10 transition-colors">
-                  <Radio className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors" />
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                  <Radio className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">24/7 Monitoring System</h3>
-                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts tailored to your industry.
                 </p>
                 <Button onClick={() => setLocation('/ai-radar')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-monitoring">
@@ -288,13 +288,13 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 4. Playbook Library */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 group" data-testid="card-scenarios">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-[#2B8A6E]/10 transition-colors">
-                  <FileText className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors" />
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                  <FileText className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Playbook Library</h3>
-                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance.
                 </p>
                 <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-scenarios">
@@ -304,13 +304,13 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 5. What-If Analyzer */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 group" data-testid="card-what-if">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-what-if">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-[#2B8A6E]/10 transition-colors">
-                  <Layers className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors" />
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                  <Layers className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">What-If Analyzer</h3>
-                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Test strategic approaches, simulate outcomes, and optimize execution plans before allocating resources.
                 </p>
                 <Button onClick={() => setLocation('/what-if-analyzer')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-what-if">
@@ -320,13 +320,13 @@ export default function MarketingLanding() {
             </Card>
 
             {/* 6. Command Center */}
-            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 group" data-testid="card-command-center">
+            <Card className="border border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 group" data-testid="card-command-center">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-slate-100 flex items-center justify-center mb-6 group-hover:bg-[#2B8A6E]/10 transition-colors">
-                  <Shield className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors" />
+                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] transition-colors">
+                  <Shield className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
                 </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Executive Command Center</h3>
-                <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+                <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Real-time strategic coordination hub for 12-minute execution. Manage active scenarios and stakeholder alignment.
                 </p>
                 <Button onClick={() => setLocation('/command-center')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-command-center">

@@ -36,9 +36,9 @@ type Phase = 'identify' | 'detect' | 'execute' | 'advance';
 
 const PHASES = [
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: '#C9A84C' },
-  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: '#DFC178' },
+  { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: '#C9A84C' },
   { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: '#2B8A6E' },
-  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: '#DFC178' },
+  { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: '#C9A84C' },
 ];
 
 export default function DealRiskDemo() {
@@ -158,7 +158,7 @@ export default function DealRiskDemo() {
           <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]">
             Interactive Demo
           </Badge>
-          <h1 className="text-4xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h1 className="text-4xl font-bold mb-4 text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Deal Risk Response Demo
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
@@ -216,7 +216,7 @@ export default function DealRiskDemo() {
           })}
         </div>
 
-        <Progress value={getPhaseProgress()} className="mb-8 h-2 bg-white/10" indicatorClassName="bg-[#C9A84C]" />
+        <Progress value={getPhaseProgress()} className="mb-8 h-2 bg-white/10" />
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-6">
@@ -564,7 +564,7 @@ export default function DealRiskDemo() {
                               {deal.riskScore}%
                             </span>
                           </div>
-                          <Progress value={deal.riskScore} className="h-1 bg-white/5" indicatorClassName={deal.riskScore > 40 ? 'bg-red-500' : 'bg-[#2B8A6E]'} />
+                          <Progress value={deal.riskScore} className="h-1 bg-white/5" />
                         </div>
                       ))}
                     </div>

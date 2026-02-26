@@ -378,7 +378,7 @@ export default function PilotProgram() {
                 <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-inclusion-${i}`}>
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-blue-100 dark:bg-[#0A0F2E]/30">
+                      <div className="p-2 rounded-lg bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
                         <inclusion.icon className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                       </div>
                       <CardTitle className="text-base">{inclusion.category}</CardTitle>
@@ -457,7 +457,7 @@ export default function PilotProgram() {
                       <th className="text-left p-4 font-semibold text-gray-900">Value Metric</th>
                       <th className="text-left p-4 font-semibold text-red-300">Before Execution OS</th>
                       <th className="text-left p-4 font-semibold text-[#3BAF8A]">With Execution OS</th>
-                      <th className="text-left p-4 font-semibold text-blue-300">Calculation</th>
+                      <th className="text-left p-4 font-semibold text-slate-300">Calculation</th>
                       <th className="text-right p-4 font-semibold text-amber-300">Value Captured</th>
                     </tr>
                   </thead>
@@ -518,11 +518,11 @@ export default function PilotProgram() {
             <Card className="overflow-hidden" data-testid="card-success-preview">
               <CardContent className="p-8">
                 <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-xl bg-blue-100 dark:bg-[#0A0F2E]/30">
+                  <div className="p-4 rounded-xl bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
                     <Award className="w-10 h-10 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                   </div>
                   <div>
-                    <Badge className="mb-3 bg-blue-100 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-blue-300">
+                    <Badge className="mb-3 bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-slate-300">
                       Pilot Success Target
                     </Badge>
                     <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">

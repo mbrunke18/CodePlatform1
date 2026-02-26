@@ -70,7 +70,7 @@ export default function LVMHMarketEntryDemo() {
             <Card className="p-8 bg-white/5 border-white/10">
               <div className="text-center mb-8">
                 <Crown className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{lvmhMarketEntryDemoData.crisis.title}</h2>
+                <h2 className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{lvmhMarketEntryDemoData.crisis.title}</h2>
                 <p className="text-xl text-[#DFC178]">{lvmhMarketEntryDemoData.crisis.subtitle}</p>
               </div>
 
@@ -237,11 +237,11 @@ export default function LVMHMarketEntryDemo() {
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#DFC178] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
+                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Operations Teams</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
-                  <div className="text-2xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>347 Specialists</div>
+                  <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>347 Specialists</div>
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">

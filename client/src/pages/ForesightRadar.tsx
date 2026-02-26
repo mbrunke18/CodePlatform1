@@ -212,7 +212,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Horizon Intelligence</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", color: "#fff", lineHeight: 1.1, maxWidth: "800px" }}>
-                Foresight <em style={{ fontStyle: "italic", color: "#DFC178" }}>Radar</em>
+                Foresight <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Radar</em>
               </h1>
               <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 24, fontSize: 18, maxWidth: "600px" }}>
                 AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. See what's coming so you can act first, not react late.
@@ -224,8 +224,8 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                     Interactive Demo
                   </Button>
                 </Link>
-                <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 0, padding: "6px 12px" }}>
-                  <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-green-500 animate-pulse' : 'bg-amber-500'}`}></div>
+                <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 0, padding: "6px 12px" }} className="rounded-none">
+                  <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-[#2B8A6E] animate-pulse' : 'bg-[#C9A84C]'}`}></div>
                   {isConnected ? 'LIVE STREAM ACTIVE' : 'DEMO MODE'}
                 </Badge>
               </div>
@@ -338,12 +338,12 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           </div>
                           
                           {/* Tooltip */}
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-[100]">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-[100] rounded-none">
                             <h4 style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
                             <p style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>{signal.description}</p>
                             <div className="flex items-center gap-2 mt-3">
-                              <Badge style={{ background: OFF, color: NAVY, border: "1px solid #E8E4DC", fontSize: 10 }}>{signal.confidence}% CONFIDENCE</Badge>
-                              <Badge style={{ background: color, color: "#fff", border: "none", fontSize: 10 }}>{signal.impact.toUpperCase()}</Badge>
+                              <Badge style={{ background: OFF, color: NAVY, border: "1px solid #E8E4DC", fontSize: 10 }} className="rounded-none">{signal.confidence}% CONFIDENCE</Badge>
+                              <Badge style={{ background: color, color: "#fff", border: "none", fontSize: 10 }} className="rounded-none">{signal.impact.toUpperCase()}</Badge>
                             </div>
                           </div>
                         </div>

@@ -383,6 +383,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
     }
   };
 
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   return (
     <PageLayout embedded={embedded}>
       <div className="page-background min-h-screen bg-transparent p-6">
@@ -448,19 +450,19 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               </div>
               <Progress value={progressPercent} className="h-3 mb-4" />
               <div className="grid grid-cols-4 gap-4">
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.departments ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.departments ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Departments</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.stakeholders ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.stakeholders ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Stakeholders</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.escalation ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.escalation ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Escalation</span>
                 </div>
-                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-gray-50'}`}>
+                <div className={`flex items-center gap-2 p-3 rounded-lg ${setupProgress.channels ? 'bg-[#2B8A6E]/10' : 'bg-[#E8E4DC]/20'}`}>
                   {setupProgress.channels ? <CheckCircle className="h-5 w-5 text-[#2B8A6E]" /> : <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />}
                   <span className="text-sm text-gray-900">Channels</span>
                 </div>

@@ -691,7 +691,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-indigo-500/20 rounded-2xl p-6">
+              className="bg-white border border-[#E8E4DC] rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h3 className="font-semibold text-gray-900">Connected Data Sources</h3>
@@ -982,7 +982,7 @@ export default function IndustryExperience() {
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
               <span className="text-xs text-gray-800 dark:text-slate-200 font-medium">{setupReadiness.percent}% ready</span>
             </div>
-            <div className="bg-white border border-indigo-500/20 rounded-2xl p-5 mb-4">
+            <div className="bg-white border border-[#E8E4DC] rounded-2xl p-5 mb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Activity className="h-5 w-5 text-[#0A0F2E]" />
@@ -1043,7 +1043,7 @@ export default function IndustryExperience() {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
                 }}} />
-              <Button variant="outline" className="border-indigo-500/30 text-[#0A0F2E]"
+              <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]"
                 onClick={() => { if (newDataSourceName.trim()) {
                   setUserDataSources(prev => [...prev, { name: newDataSourceName.trim(), connected: false, dataPoints: 0 }]);
                   setNewDataSourceName('');
@@ -1261,7 +1261,7 @@ export default function IndustryExperience() {
               <p className="text-gray-800 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-indigo-500/30 rounded-2xl p-8"
+              className="bg-white border border-[#E8E4DC] rounded-2xl p-8"
             >
               <div className="flex items-center gap-5 mb-6">
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center`}>
@@ -1272,7 +1272,7 @@ export default function IndustryExperience() {
                   <p className="text-gray-800 dark:text-slate-200">{industry.industry} — {industry.domain}</p>
                 </div>
               </div>
-              <div className="bg-[#0A0F2E]/30 border border-indigo-500/10 rounded-xl p-5 mb-6">
+              <div className="bg-[#0A0F2E]/30 border border-white/10 rounded-xl p-5 mb-6">
                 <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-2">Decision Required</div>
                 <p className="text-gray-800">
                   Activate <span className="text-gray-900 font-semibold">{userPlaybook.name}</span> with {userPlaybook.stakeholders.toLocaleString()} stakeholders, 
@@ -1550,42 +1550,43 @@ export default function IndustryExperience() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-gradient-to-b ">
-        <div className="max-w-7xl mx-auto px-4 pt-6 pb-4">
-          <div className="flex items-center justify-between mb-2">
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-4 pt-8 pb-4">
+          <div className="flex items-center justify-between mb-6">
             <Link href="/industry-demos">
-              <Button variant="ghost" className="text-gray-800 hover:text-white text-sm">
-                <ArrowLeft className="h-4 w-4 mr-1" /> Industry Scenarios
+              <Button variant="ghost" className="text-[#6B7280] hover:text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] p-0">
+                <ArrowLeft className="h-3 w-3 mr-2" /> Industry Scenarios
               </Button>
             </Link>
-            <div className="flex items-center gap-3 text-sm text-gray-800">
-              <span>{stage + 1}/{STAGES.length}</span>
-              <span className="text-gray-900 font-medium">{currentStage.label}</span>
+            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280]">
+              <span className="text-[#0A0F2E]">{stage + 1} / {STAGES.length}</span>
+              <span className="w-8 h-px bg-[#E8E4DC]" />
+              <span className="text-[#0A0F2E]">{currentStage.label}</span>
             </div>
           </div>
           <StepIndicator step={stage} total={STAGES.length} />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 pb-20 pt-8">
+        <div className="max-w-7xl mx-auto px-4 pb-24 pt-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${currentStage.id}-${showSummary ? 'summary' : 'main'}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
               {renderStage()}
             </motion.div>
           </AnimatePresence>
 
-          {!showSummary && currentStage.id !== 'playbook' && currentStage.id !== 'triggers' && currentStage.id !== 'data' && currentStage.id !== 'customize' && currentStage.id !== 'learning' && (
-            <div className="max-w-5xl mx-auto mt-10 flex justify-between">
-              <Button variant="outline" onClick={prev} disabled={stage === 0} className="border-white/20 text-gray-900">
-                <ArrowLeft className="h-4 w-4 mr-2" /> Previous
+          {!showSummary && !['playbook', 'triggers', 'data', 'customize', 'learning'].includes(currentStage.id) && (
+            <div className="max-w-5xl mx-auto mt-16 flex justify-between border-t border-[#F8F7F4] pt-8">
+              <Button variant="outline" onClick={prev} disabled={stage === 0} className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-10 py-6 font-bold uppercase tracking-widest text-[10px] transition-colors">
+                <ArrowLeft className="h-3 w-3 mr-2" /> Previous
               </Button>
-              <Button onClick={next} disabled={stage === STAGES.length - 1} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-8">
-                Next <ArrowRight className="h-4 w-4 ml-2" />
+              <Button onClick={next} disabled={stage === STAGES.length - 1} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-12 py-6 font-bold uppercase tracking-widest text-[10px] shadow-xl">
+                Next Stage <ArrowRight className="h-3 w-3 ml-2" />
               </Button>
             </div>
           )}

@@ -24,7 +24,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-red-500', className: 'text-red-500', label: 'Critical' }
+    critical: { bg: 'bg-red-600', className: 'text-red-600', label: 'Critical' }
   };
   const c = config[status];
   
@@ -60,7 +60,7 @@ function MetricCard({
   const statusBorders = {
     good: 'border-l-[#2B8A6E]',
     warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-red-500'
+    critical: 'border-l-red-600'
   };
 
   const trendIcons = {
@@ -72,7 +72,7 @@ function MetricCard({
 
   const trendClasses = {
     up: 'text-[#2B8A6E]',
-    down: 'text-red-500',
+    down: 'text-red-600',
     neutral: 'text-[#6B7280] dark:text-white/60'
   };
 
@@ -185,7 +185,7 @@ export default function ExecutiveScorecard() {
                 <div className="flex items-center gap-3">
                   <div className={`w-3 h-3 rounded-full ${
                     overallStatus === 'good' ? 'bg-[#2B8A6E]' :
-                    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-red-500'
+                    overallStatus === 'warning' ? 'bg-[#C9A84C]' : 'bg-red-600'
                   }`} />
                   <div>
                     <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">System Status</div>

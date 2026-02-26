@@ -354,7 +354,7 @@ export default function DecisionTreeBuilder() {
                     >
                       <input 
                         type="checkbox" 
-                        className="rounded-none border-[#E8E4DC] text-[#0A0F2E] focus:ring-[#C9A84C]"
+                        className="rounded-none border-[#E8E4DC] text-[#0A0F2E] focus:ring-[#C9A84C] accent-[#0A0F2E]"
                         checked={mustWeighIn.includes(role)}
                         onChange={() => toggleWeighIn(role)}
                       />
@@ -408,7 +408,7 @@ export default function DecisionTreeBuilder() {
                         variant="ghost" 
                         size="sm"
                         onClick={() => removeOption(option.id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-transparent ml-4"
+                        className="text-red-600 hover:text-red-700 hover:bg-transparent ml-4"
                       >
                         <Trash2 className="h-5 w-5" />
                       </Button>

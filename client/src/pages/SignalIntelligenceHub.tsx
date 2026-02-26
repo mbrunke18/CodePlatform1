@@ -161,7 +161,7 @@ const TRIGGER_TEMPLATES = [
     value: '10',
     urgency: 'critical',
     icon: Heart,
-    color: '#ec4899'
+    color: '#2B8A6E'
   },
   {
     id: 'talent-flight',

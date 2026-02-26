@@ -43,7 +43,7 @@ export default function VideoLanding() {
           <div className="flex items-center justify-between mb-12">
             <div>
               <Link href="/">
-                <Button variant="ghost" className="text-slate-500 hover:text-[#0A0F2E] mb-4 p-0" data-testid="button-back-home">
+                <Button variant="ghost" className="text-[#6B7280] hover:text-[#0A0F2E] mb-4 p-0" data-testid="button-back-home">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Back to Home
                 </Button>
@@ -55,17 +55,17 @@ export default function VideoLanding() {
               <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-video-hub">
                 Brand Films & <em className="italic text-[#C9A84C]">Sizzle Reels</em>
               </h1>
-              <p className="text-xl text-slate-600 max-w-2xl leading-relaxed">
+              <p className="text-xl text-[#6B7280] max-w-2xl leading-relaxed">
                 Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Execution OS.
               </p>
             </div>
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-[#F8F7F4] border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
               <TabsTrigger 
                 value="90-second" 
-                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
                 data-testid="tab-90-second"
               >
                 <Clock className="h-3 w-3 mr-2" />
@@ -73,7 +73,7 @@ export default function VideoLanding() {
               </TabsTrigger>
               <TabsTrigger 
                 value="2-minute" 
-                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
                 data-testid="tab-2-minute"
               >
                 <Clock className="h-3 w-3 mr-2" />
@@ -81,7 +81,7 @@ export default function VideoLanding() {
               </TabsTrigger>
               <TabsTrigger 
                 value="30-second" 
-                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white font-bold uppercase text-[9px] tracking-widest py-3"
+                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
                 data-testid="tab-30-second"
               >
                 <Clock className="h-3 w-3 mr-2" />
@@ -180,43 +180,43 @@ export default function VideoLanding() {
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Why Fortune 1000 Leaders Choose <em className="italic text-[#C9A84C]">Execution OS</em>
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
               Transform how your organization responds to the moments that matter
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
                 <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Clock className="h-6 w-6 text-white" />
+                  <Clock className="h-6 w-6 text-[#C9A84C]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12-Minute Execution</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed font-light">
                   Pre-staged playbooks with predetermined stakeholders and tasks. No meetings. No delays.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#2B8A6E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
                 <div className="w-12 h-12 bg-[#2B8A6E] flex items-center justify-center mb-6">
                   <Users className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Coordinated Response</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed font-light">
                   Every stakeholder knows their role before the call comes. Parallel execution across teams.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300">
+            <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#C9A84C] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
                 <div className="w-12 h-12 bg-[#C9A84C] flex items-center justify-center mb-6">
                   <Zap className="h-6 w-6 text-[#0A0F2E]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Powered Monitoring</h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed font-light">
                   Continuous intelligence scanning. Automatic trigger detection. Real-time alerts.
                 </p>
               </CardContent>

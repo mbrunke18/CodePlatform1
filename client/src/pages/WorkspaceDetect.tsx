@@ -73,8 +73,8 @@ const workspaceTools = [
     description: "Set up notifications and escalation workflows",
     path: "/triggers-management",
     icon: Bell,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
+    color: "text-red-600",
+    bgColor: "bg-red-600/10",
     stats: "Instant alerts"
   }
 ];
@@ -109,7 +109,7 @@ export default function WorkspaceDetect() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signal Ops</h1>
-                  <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/30">
+                  <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/30" style={{ background: "#0A0F2E", color: "white" }}>
                     <SubBrandLabel name="Signal™" />
                   </Badge>
                 </div>
@@ -150,9 +150,9 @@ export default function WorkspaceDetect() {
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/20 border-2 border-[#0A0F2E] dark:border-white/40">
-                    <Radar className="h-4 w-4 text-[#0A0F2E] dark:text-white" />
-                    <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">DETECT</span>
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E] border-2 border-[#0A0F2E] shadow-sm shadow-[#0A0F2E]/20 dark:border-[#C9A84C] dark:bg-[#C9A84C]/10">
+                    <Radar className="h-4 w-4 text-white dark:text-[#C9A84C]" />
+                    <span className="text-sm font-bold text-white dark:text-[#C9A84C]">DETECT</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
@@ -214,12 +214,12 @@ export default function WorkspaceDetect() {
             <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <span className="flex h-3 w-3 rounded-full bg-red-500 flex-shrink-0" title="High severity" />
+                  <span className="flex h-3 w-3 rounded-full bg-red-600 flex-shrink-0" title="High severity" />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Regulatory alert</h4>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">SEC proposed new AI disclosure requirements</p>
                   </div>
-                  <Badge variant="outline" className="text-red-500 border-red-500/30 flex-shrink-0">High</Badge>
+                  <Badge variant="outline" className="text-red-600 border-red-600/30 flex-shrink-0">High</Badge>
                   <span className="text-xs text-[#6B7280] whitespace-nowrap">2 hours ago</span>
                 </div>
               </CardContent>

@@ -231,7 +231,7 @@ export default function SettingsPage() {
                             <p className="text-sm text-gray-800">Uptime: {service.uptime}</p>
                           </div>
                         </div>
-                        <Badge variant="default" className="bg-[#2B8A6E]">
+                        <Badge variant="default" className="bg-[#2B8A6E] text-white">
                           {service.status}
                         </Badge>
                       </div>
@@ -239,7 +239,7 @@ export default function SettingsPage() {
                   </div>
                   
                   <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Button data-testid="button-system-health-check">
+                    <Button data-testid="button-system-health-check" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
                       <BarChart3 className="w-4 h-4 mr-2" />
                       Run Health Check
                     </Button>
@@ -318,7 +318,7 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                              <Badge variant="destructive">Critical</Badge>
+                              <Badge variant="default" className="bg-red-600 text-white">Critical</Badge>
                             )}
                           </div>
                           <p className="text-sm text-gray-800">{feature.description}</p>
@@ -329,7 +329,7 @@ export default function SettingsPage() {
                             disabled={feature.critical}
                             data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
                           />
-                          <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E]' : ''}>
+                          <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white' : ''}>
                             {feature.enabled ? 'Enabled' : 'Disabled'}
                           </Badge>
                         </div>
@@ -437,15 +437,15 @@ export default function SettingsPage() {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
                           <span className="text-sm font-medium text-[#0A0F2E]">Salesforce CRM</span>
-                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
+                          <Badge className="bg-[#2B8A6E] text-white">Connected</Badge>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
                           <span className="text-sm font-medium text-[#0A0F2E]">Microsoft Teams</span>
-                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
+                          <Badge className="bg-[#2B8A6E] text-white">Connected</Badge>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none">
                           <span className="text-sm font-medium text-[#0A0F2E]">SAP ERP</span>
-                          <Badge className="bg-[#2B8A6E]">Connected</Badge>
+                          <Badge className="bg-[#2B8A6E] text-white">Connected</Badge>
                         </div>
                       </div>
                     </div>

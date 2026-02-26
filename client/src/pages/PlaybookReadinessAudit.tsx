@@ -144,10 +144,10 @@ const tierConfig = {
   },
   'not-configured': {
     label: 'Not Configured',
-    color: 'bg-red-500',
-    textColor: 'text-red-600',
-    bgColor: 'bg-red-50',
-    borderColor: 'border-red-200',
+    color: 'bg-[#0A0F2E]',
+    textColor: 'text-[#0A0F2E]',
+    bgColor: 'bg-[#0A0F2E]/5',
+    borderColor: 'border-[#0A0F2E]/10',
     icon: XCircle
   }
 };

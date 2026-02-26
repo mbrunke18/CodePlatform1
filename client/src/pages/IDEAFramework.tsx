@@ -10,8 +10,14 @@ import {
 } from "lucide-react";
 
 const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
 const GOLD = "#C9A84C";
+const GOLD_LT = "#DFC178";
 const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
 
 const phases = [
   {
@@ -163,11 +169,11 @@ export default function IDEAFramework() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${TEAL}22`, color: "#3BAF8A" }}>
+              <Badge className="px-4 py-2 text-sm font-semibold border-0 rounded-none" style={{ background: `${TEAL}22`, color: TEAL_LT }}>
                 <Cpu className="w-4 h-4 mr-2" />
                 AI handles monitoring & orchestration
               </Badge>
-              <Badge className="px-4 py-2 text-sm font-semibold border-0" style={{ background: `${GOLD}22`, color: "#DFC178" }}>
+              <Badge className="px-4 py-2 text-sm font-semibold border-0 rounded-none" style={{ background: `${GOLD}22`, color: GOLD_LT }}>
                 <HeartHandshake className="w-4 h-4 mr-2" />
                 Humans retain all strategic authority
               </Badge>
@@ -224,15 +230,15 @@ export default function IDEAFramework() {
                     </p>
                     <div className="flex flex-col gap-2">
                       <Badge
-                        className="self-start px-3 py-1 text-xs font-semibold border-0"
+                        className="self-start px-3 py-1 text-xs font-semibold border-0 rounded-none"
                         style={{ background: `${TEAL}18`, color: TEAL }}
                       >
                         <Cpu className="w-3 h-3 mr-1.5" />
                         {phase.aiRole}
                       </Badge>
                       <Badge
-                        className="self-start px-3 py-1 text-xs font-semibold border-0"
-                        style={{ background: `${GOLD}18`, color: "#C9A84C" }}
+                        className="self-start px-3 py-1 text-xs font-semibold border-0 rounded-none"
+                        style={{ background: `${GOLD}18`, color: GOLD }}
                       >
                         <HeartHandshake className="w-3 h-3 mr-1.5" />
                         {phase.humanRole}
@@ -274,15 +280,15 @@ export default function IDEAFramework() {
                       {/* Human Role */}
                       <div className="rounded-none border border-[#DFC178]/20 bg-[#DFC178]/5 p-5">
                         <div className="flex items-center gap-2 mb-4">
-                          <HeartHandshake className="h-4 w-4" style={{ color: "#C9A84C" }} />
-                          <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                          <HeartHandshake className="h-4 w-4" style={{ color: GOLD }} />
+                          <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
                             Human Role
                           </span>
                         </div>
                         <ul className="space-y-3">
                           {phase.humanActions.map((action, j) => (
                             <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700">
-                              <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
+                              <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: GOLD }} />
                               {action}
                             </li>
                           ))}
@@ -318,7 +324,7 @@ export default function IDEAFramework() {
                 { icon: Shield, label: "Human Authority", desc: "Every playbook activation requires executive authorization" },
                 { icon: Brain, label: "AI Execution", desc: "Tasks, notifications, documents, and budgets deployed instantly" },
               ].map(({ icon: Icon, label, desc }) => (
-                <div key={label} className="rounded-xl border border-white/10 bg-white/5 p-5">
+                <div key={label} className="rounded-none border border-white/10 bg-white/5 p-5">
                   <Icon className="h-5 w-5 mb-3" style={{ color: GOLD }} />
                   <div className="text-sm font-semibold text-white mb-1">{label}</div>
                   <div className="text-xs text-white/50 leading-relaxed">{desc}</div>
@@ -329,7 +335,7 @@ export default function IDEAFramework() {
               <Link href="/try-demo">
                 <Button
                   size="lg"
-                  className="font-semibold px-8"
+                  className="font-semibold px-8 rounded-none"
                   style={{ background: GOLD, color: NAVY }}
                 >
                   <Play className="mr-2 h-4 w-4" />
@@ -340,7 +346,7 @@ export default function IDEAFramework() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="font-semibold px-8 border-white/20 text-white hover:bg-white/10 hover:text-white"
+                  className="font-semibold px-8 border-white/20 text-white hover:bg-white/10 hover:text-white rounded-none"
                 >
                   Browse 170 Playbooks
                   <ChevronRight className="ml-2 h-4 w-4" />

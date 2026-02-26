@@ -156,9 +156,9 @@ export default function FutureReadinessDashboard() {
               <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Readiness Intelligence</span>
             </div>
             <h1 className="text-4xl font-bold flex items-center gap-3 text-[#0A0F2E]" style={CG}>
-              Future Readiness Index™
+              Future Readiness <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Index</em>™
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-[#6B7280] mt-2">
               Real-time strategic preparedness and self-learning intelligence
             </p>
           </div>
@@ -182,7 +182,7 @@ export default function FutureReadinessDashboard() {
                   <Target className="h-6 w-6 text-[#0A0F2E]" />
                   Overall Readiness Score
                 </CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardDescription className="text-[#6B7280]">
                   {readiness?.calculatedAt 
                     ? `Last updated ${format(new Date(readiness.calculatedAt), 'PPp')}`
                     : 'Calculating...'}
@@ -194,51 +194,51 @@ export default function FutureReadinessDashboard() {
             </div>
           </CardHeader>
           <CardContent className="pt-8">
-            <Progress value={overallScore} className="h-2 rounded-none bg-[#F8F7F4]" />
+            <Progress value={overallScore} className="h-2 rounded-none bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Playbook Maturity</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Playbook Maturity</span>
                   <Sparkles className="h-4 w-4 text-[#C9A84C]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(playbookMaturity)}`} style={CG}>
                   {playbookMaturity.toFixed(1)}%
                 </div>
-                <Progress value={playbookMaturity} className="h-1 rounded-none bg-[#F8F7F4]" />
+                <Progress value={playbookMaturity} className="h-1 rounded-none bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Execution Velocity</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Execution Velocity</span>
                   <Zap className="h-4 w-4 text-[#C9A84C]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(executionVelocity)}`} style={CG}>
                   {executionVelocity.toFixed(1)}%
                 </div>
-                <Progress value={executionVelocity} className="h-1 rounded-none bg-[#F8F7F4]" />
+                <Progress value={executionVelocity} className="h-1 rounded-none bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Learning Rate</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Learning Rate</span>
                   <Brain className="h-4 w-4 text-[#0A0F2E]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(learningRate)}`} style={CG}>
                   {learningRate.toFixed(1)}%
                 </div>
-                <Progress value={learningRate} className="h-1 rounded-none bg-[#F8F7F4]" />
+                <Progress value={learningRate} className="h-1 rounded-none bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
               </div>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Signal Detection</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Signal Detection</span>
                   <Eye className="h-4 w-4 text-[#2B8A6E]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(signalDetection)}`} style={CG}>
                   {signalDetection.toFixed(1)}%
                 </div>
-                <Progress value={signalDetection} className="h-1 rounded-none bg-[#F8F7F4]" />
+                <Progress value={signalDetection} className="h-1 rounded-none bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
               </div>
             </div>
           </CardContent>
@@ -269,7 +269,7 @@ export default function FutureReadinessDashboard() {
                   <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />
                   Weak Signal Detection
                 </CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardDescription className="text-[#6B7280]">
                   Early indicators of emerging threats and opportunities
                 </CardDescription>
               </CardHeader>
@@ -277,12 +277,12 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px] pr-4">
                   <div className="space-y-4">
                     {signalsLoading ? (
-                      <p className="text-center text-gray-400 italic">Loading signals...</p>
+                      <p className="text-center text-[#6B7280] italic">Loading signals...</p>
                     ) : weakSignals.length === 0 ? (
-                      <p className="text-center text-gray-400 italic">No weak signals detected</p>
+                      <p className="text-center text-[#6B7280] italic">No weak signals detected</p>
                     ) : (
                       weakSignals.map((signal) => (
-                        <Card key={signal.id} className="border border-[#E8E4DC] border-l-4 border-l-[#C9A84C] rounded-none">
+                        <Card key={signal.id} className="border border-[#E8E4DC] border-l-4 border-l-[#C9A84C] rounded-none shadow-sm">
                           <CardContent className="pt-6">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -291,14 +291,14 @@ export default function FutureReadinessDashboard() {
                                   <Badge variant={getUrgencyBadgeVariant(signal.urgency)} className="rounded-none uppercase text-[9px] font-bold tracking-widest">
                                     {signal.urgency}
                                   </Badge>
-                                  <Badge variant="outline" className="rounded-none uppercase text-[9px] font-bold tracking-widest border-[#E8E4DC]">
+                                  <Badge variant="outline" className="rounded-none uppercase text-[9px] font-bold tracking-widest border-[#E8E4DC] text-[#6B7280]">
                                     {signal.signalType}
                                   </Badge>
                                 </div>
-                                <p className="text-sm text-gray-600 mb-4">
+                                <p className="text-sm text-[#6B7280] mb-4">
                                   {signal.description}
                                 </p>
-                                <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                                <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(signal.confidence).toFixed(0)}%
@@ -329,7 +329,7 @@ export default function FutureReadinessDashboard() {
                   <Lightbulb className="h-5 w-5 text-[#C9A84C]" />
                   Oracle Intelligence Patterns
                 </CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardDescription className="text-[#6B7280]">
                   AI-detected strategic patterns and predictive insights
                 </CardDescription>
               </CardHeader>
@@ -337,12 +337,12 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px] pr-4">
                   <div className="space-y-4">
                     {patternsLoading ? (
-                      <p className="text-center text-gray-400 italic">Loading patterns...</p>
+                      <p className="text-center text-[#6B7280] italic">Loading patterns...</p>
                     ) : oraclePatterns.length === 0 ? (
-                      <p className="text-center text-gray-400 italic">No oracle patterns detected</p>
+                      <p className="text-center text-[#6B7280] italic">No oracle patterns detected</p>
                     ) : (
                       oraclePatterns.map((pattern) => (
-                        <Card key={pattern.id} className="border border-[#E8E4DC] border-l-4 border-l-[#0A0F2E] rounded-none">
+                        <Card key={pattern.id} className="border border-[#E8E4DC] border-l-4 border-l-[#0A0F2E] rounded-none shadow-sm">
                           <CardContent className="pt-6">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -353,10 +353,10 @@ export default function FutureReadinessDashboard() {
                                   </Badge>
                                   {getImpactIcon(pattern.impact)}
                                 </div>
-                                <p className="text-sm text-gray-600 mb-4">
+                                <p className="text-sm text-[#6B7280] mb-4">
                                   {pattern.description}
                                 </p>
-                                <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                                <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
                                   <span className="flex items-center gap-1">
                                     <BarChart3 className="h-3 w-3" />
                                     Confidence: {parseFloat(pattern.confidence).toFixed(0)}%
@@ -387,7 +387,7 @@ export default function FutureReadinessDashboard() {
                   <Activity className="h-5 w-5 text-[#2B8A6E]" />
                   Real-Time Activity Feed
                 </CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardDescription className="text-[#6B7280]">
                   Live stream of strategic execution events
                 </CardDescription>
               </CardHeader>
@@ -395,9 +395,9 @@ export default function FutureReadinessDashboard() {
                 <ScrollArea className="h-[500px] pr-4">
                   <div className="space-y-6">
                     {activityLoading ? (
-                      <p className="text-center text-gray-400 italic">Loading activity...</p>
+                      <p className="text-center text-[#6B7280] italic">Loading activity...</p>
                     ) : activityFeed.length === 0 ? (
-                      <p className="text-center text-gray-400 italic">No recent activity</p>
+                      <p className="text-center text-[#6B7280] italic">No recent activity</p>
                     ) : (
                       activityFeed.map((event, idx) => (
                         <div key={event.id}>
@@ -411,14 +411,14 @@ export default function FutureReadinessDashboard() {
                             <div className="flex-1 pb-6">
                               <div className="flex items-center justify-between mb-2">
                                 <h4 className="font-bold text-[#0A0F2E]" style={CG}>{event.title}</h4>
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
                                   {format(new Date(event.timestamp), 'PPp')}
                                 </span>
                               </div>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-sm text-[#6B7280]">
                                 {event.description}
                               </p>
-                              <Badge variant="outline" className="mt-3 rounded-none uppercase text-[9px] font-bold tracking-widest border-[#E8E4DC] text-gray-500">
+                              <Badge variant="outline" className="mt-3 rounded-none uppercase text-[9px] font-bold tracking-widest border-[#E8E4DC] text-[#6B7280]">
                                 {event.eventType}
                               </Badge>
                             </div>

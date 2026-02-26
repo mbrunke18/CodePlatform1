@@ -49,7 +49,7 @@ export default function SpaceXLaunchDemo() {
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                   currentAct === act.id
                     ? "bg-[#0A0F2E] text-gray-900"
-                    : "text-blue-300 hover:bg-[#0A0F2E]/50"
+                    : "text-[#3BAF8A] hover:bg-[#0A0F2E]/50"
                 }`}
                 data-testid={`button-act-${act.id}`}
               >
@@ -81,19 +81,19 @@ export default function SpaceXLaunchDemo() {
                   </h3>
                   <div className="space-y-3 text-sm">
                     <div>
-                      <div className="text-blue-300 mb-1">Mission</div>
+                      <div className="text-[#3BAF8A] mb-1">Mission</div>
                       <div className="text-gray-900 font-semibold">Starlink Group 7-8 • 23 satellites • Falcon 9 Block 5</div>
                     </div>
                     <div>
-                      <div className="text-blue-300 mb-1">Orbital Window</div>
+                      <div className="text-[#3BAF8A] mb-1">Orbital Window</div>
                       <div className="text-gray-900">Opens 3 days early (April 15 vs April 18)</div>
                     </div>
                     <div>
-                      <div className="text-blue-300 mb-1">Strategic Value</div>
+                      <div className="text-[#3BAF8A] mb-1">Strategic Value</div>
                       <div className="text-gray-900">Optimal geometry + vacant slot from ULA delay</div>
                     </div>
                     <div>
-                      <div className="text-blue-300 mb-1">Revenue Impact</div>
+                      <div className="text-[#3BAF8A] mb-1">Revenue Impact</div>
                       <div className="text-gray-900 font-bold">$47M acceleration + 2-week service expansion</div>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ export default function SpaceXLaunchDemo() {
                     <li className="text-amber-400 font-semibold">• During gap: Favorable window closes</li>
                     <li className="text-red-400 font-bold">• During gap: ULA reschedules, reclaims slot</li>
                     <li>• Day 5-7: Coordination finally complete—too late</li>
-                    <li className="text-blue-300">• Result: Launch April 18 on original date (opportunity missed)</li>
+                    <li className="text-[#3BAF8A]">• Result: Launch April 18 on original date (opportunity missed)</li>
                   </ul>
                 </div>
               </div>
@@ -131,17 +131,17 @@ export default function SpaceXLaunchDemo() {
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
                   <Users className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">1,847</div>
-                  <div className="text-sm text-blue-300">Stakeholders Coordinated</div>
+                  <div className="text-sm text-[#3BAF8A]">Stakeholders Coordinated</div>
                 </div>
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
                   <Zap className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">12 Minutes</div>
-                  <div className="text-sm text-blue-300">Full Coordination</div>
+                  <div className="text-sm text-[#3BAF8A]">Full Coordination</div>
                 </div>
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg border border-[#0A0F2E]/30 text-center">
                   <DollarSign className="w-8 h-8 text-[#0A0F2E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-gray-900">$47M</div>
-                  <div className="text-sm text-blue-300">Revenue Accelerated</div>
+                  <div className="text-sm text-[#3BAF8A]">Revenue Accelerated</div>
                 </div>
               </div>
 
@@ -204,7 +204,7 @@ export default function SpaceXLaunchDemo() {
                 <Rocket className="h-5 w-5" />
                 Activate Playbook #155 - Launch Acceleration
               </Button>
-              <p className="text-sm text-blue-300 mt-2">
+              <p className="text-sm text-[#3BAF8A] mt-2">
                 Elon approves - Move launch to April 15
               </p>
             </div>
@@ -290,15 +290,15 @@ export default function SpaceXLaunchDemo() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2">$47M</div>
-                  <div className="text-sm text-blue-300">Revenue Accelerated</div>
+                  <div className="text-sm text-[#3BAF8A]">Revenue Accelerated</div>
                 </div>
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2">12 Min</div>
-                  <div className="text-sm text-blue-300">vs 5-7 Days Traditional</div>
+                  <div className="text-sm text-[#3BAF8A]">vs 5-7 Days Traditional</div>
                 </div>
                 <div className="p-4 bg-[#0A0F2E]/30 rounded-lg">
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2">72 Hrs</div>
-                  <div className="text-sm text-blue-300">Vehicle Turnaround Achieved</div>
+                  <div className="text-sm text-[#3BAF8A]">Vehicle Turnaround Achieved</div>
                 </div>
               </div>
             </Card>
@@ -310,7 +310,7 @@ export default function SpaceXLaunchDemo() {
             />
 
             <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" className="border-[#0A0F2E] text-blue-300 hover:bg-[#0A0F2E]" data-testid="button-replay">
+              <Button onClick={resetDemo} variant="outline" className="border-[#0A0F2E] text-[#3BAF8A] hover:bg-[#0A0F2E]" data-testid="button-replay">
                 Replay Demo
               </Button>
               <Link href="/industry-demos">

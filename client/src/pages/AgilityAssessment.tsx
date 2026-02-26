@@ -96,10 +96,10 @@ const QUESTIONS: Question[] = [
 
 const getScoreCategory = (score: number) => {
   if (score >= 80) return { label: "Agility Leader", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
-  if (score >= 60) return { label: "Above Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
+  if (score >= 60) return { label: "Above Average", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/20" };
   if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/20" };
-  if (score >= 20) return { label: "Below Average", color: "text-orange-500", bg: "bg-orange-500/20" };
-  return { label: "Significant Opportunity", color: "text-red-500", bg: "bg-red-500/20" };
+  if (score >= 20) return { label: "Below Average", color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/20" };
+  return { label: "Significant Opportunity", color: "text-red-600", bg: "bg-red-600/20" };
 };
 
 export default function AgilityAssessment() {
@@ -214,7 +214,7 @@ export default function AgilityAssessment() {
                     {score < 60 ? (
                       <div className="text-left space-y-3">
                         <p className="text-[#0A0F2E] dark:text-white">
-                          Your organization is likely taking <span className="text-red-500 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
+                          Your organization is likely taking <span className="text-red-600 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
                         </p>
                         <p className="text-[#0A0F2E] dark:text-white">
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-[#C9A84C] font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
@@ -361,6 +361,7 @@ export default function AgilityAssessment() {
                   disabled={!currentAnswer}
                   className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   data-testid="button-next"
+                  style={{ background: "#0A0F2E" }}
                 >
                   {currentQuestion === QUESTIONS.length - 1 ? 'See Results' : 'Next'}
                   <ArrowRight className="ml-2 h-4 w-4" />

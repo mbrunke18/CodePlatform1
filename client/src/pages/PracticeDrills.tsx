@@ -427,89 +427,89 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                             </div>
                           </CardDescription>
                         </div>
-                        <Badge variant="outline" className="border-[#C9A84C] text-[#C9A84C] bg-[#C9A84C]/5 font-bold uppercase tracking-wider text-[10px]" data-testid={`badge-status-${drill.id}`}>
-                          {drill.status}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between">
-                        <div className="text-sm font-medium text-[#6B7280]">
-                          <Users className="h-4 w-4 inline mr-2 text-[#0A0F2E]" />
-                          {drill.participants?.length || 0} executive participants
+                          <Badge variant="outline" className="border-[#2B8A6E] text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold uppercase tracking-wider text-[10px]">
+                            {drill.status}
+                          </Badge>
                         </div>
-                        <Button
-                          className="bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold"
-                          onClick={() => startDrillMutation.mutate(drill.id)}
-                          disabled={startDrillMutation.isPending}
-                          data-testid={`button-start-${drill.id}`}
-                        >
-                          <Play className="h-4 w-4 mr-2 text-[#C9A84C]" />
-                          Start Now
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })
-            )}
-          </TabsContent>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center justify-between">
+                          <div className="text-sm font-medium text-[#6B7280]">
+                            <Users className="h-4 w-4 inline mr-2 text-[#0A0F2E]" />
+                            {drill.participants?.length || 0} executive participants
+                          </div>
+                          <Button
+                            className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold"
+                            onClick={() => startDrillMutation.mutate(drill.id)}
+                            disabled={startDrillMutation.isPending}
+                            data-testid={`button-start-${drill.id}`}
+                          >
+                            <Play className="h-4 w-4 mr-2 text-white" />
+                            Start Now
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })
+              )}
+            </TabsContent>
 
-          {/* Active Drills */}
-          <TabsContent value="active" className="space-y-4 mt-6">
-            {activeDrills.length === 0 ? (
-              <Card className="border border-[#E8E4DC] bg-white">
-                <CardContent className="pt-6">
-                  <div className="text-center py-12">
-                    <Activity className="h-12 w-12 mx-auto mb-3 text-[#E8E4DC]" />
-                    <p className="font-bold text-[#0A0F2E]">No active drills</p>
-                    <p className="text-sm text-[#6B7280] mt-1">Start an upcoming drill to see it here</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ) : (
-              activeDrills.map((drill: any) => {
-                const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
-                return (
-                  <Card key={drill.id} className="border-2 border-[#2B8A6E] bg-white" data-testid={`card-active-drill-${drill.id}`}>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-xl" style={CG}>
-                        <Activity className="h-5 w-5 text-[#2B8A6E] animate-pulse" />
-                        {playbook?.title || 'Unknown Playbook'} - LIVE SIMULATION
-                      </CardTitle>
-                      <CardDescription className="font-medium">Strategic coordination in progress</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      <div className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">
-                        Started: <span className="text-[#0A0F2E]">{drill.startedAt ? new Date(drill.startedAt).toLocaleString() : 'N/A'}</span>
-                      </div>
-                      <div className="flex gap-3">
-                        <Button
-                          className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold"
-                          onClick={() => handleCompleteDrill(drill.id, true)}
-                          disabled={completeDrillMutation.isPending}
-                          data-testid={`button-complete-success-${drill.id}`}
-                        >
-                          <CheckCircle className="h-4 w-4 mr-2" />
-                          Complete Successfully
-                        </Button>
-                        <Button
-                          variant="outline"
-                          className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/5 font-bold"
-                          onClick={() => handleCompleteDrill(drill.id, false)}
-                          disabled={completeDrillMutation.isPending}
-                          data-testid={`button-complete-issues-${drill.id}`}
-                        >
-                          <AlertTriangle className="h-4 w-4 mr-2" />
-                          Complete with Issues
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })
-            )}
-          </TabsContent>
+            {/* Active Drills */}
+            <TabsContent value="active" className="space-y-4 mt-6">
+              {activeDrills.length === 0 ? (
+                <Card className="border border-[#E8E4DC] bg-white">
+                  <CardContent className="pt-6">
+                    <div className="text-center py-12">
+                      <Activity className="h-12 w-12 mx-auto mb-3 text-[#E8E4DC]" />
+                      <p className="font-bold text-[#0A0F2E]">No active drills</p>
+                      <p className="text-sm text-[#6B7280] mt-1">Start an upcoming drill to see it here</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : (
+                activeDrills.map((drill: any) => {
+                  const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
+                  return (
+                    <Card key={drill.id} className="border-2 border-[#2B8A6E] bg-white" data-testid={`card-active-drill-${drill.id}`}>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-xl" style={CG}>
+                          <Activity className="h-5 w-5 text-[#2B8A6E] animate-pulse" />
+                          {playbook?.title || 'Unknown Playbook'} - LIVE SIMULATION
+                        </CardTitle>
+                        <CardDescription className="font-medium">Strategic coordination in progress</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-6">
+                        <div className="text-sm font-bold text-[#6B7280] uppercase tracking-wider">
+                          Started: <span className="text-[#0A0F2E]">{drill.startedAt ? new Date(drill.startedAt).toLocaleString() : 'N/A'}</span>
+                        </div>
+                        <div className="flex gap-3">
+                          <Button
+                            className="bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold"
+                            onClick={() => handleCompleteDrill(drill.id, true)}
+                            disabled={completeDrillMutation.isPending}
+                            data-testid={`button-complete-success-${drill.id}`}
+                          >
+                            <CheckCircle className="h-4 w-4 mr-2" />
+                            Complete Successfully
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/5 font-bold"
+                            onClick={() => handleCompleteDrill(drill.id, false)}
+                            disabled={completeDrillMutation.isPending}
+                            data-testid={`button-complete-issues-${drill.id}`}
+                          >
+                            <AlertTriangle className="h-4 w-4 mr-2" />
+                            Complete with Issues
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })
+              )}
+            </TabsContent>
 
           {/* Completed Drills */}
           <TabsContent value="completed" className="space-y-4 mt-6">
@@ -666,7 +666,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                 <div className="mt-6 pt-4 border-t">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Award className="h-5 w-5 text-amber-500" />
+                      <Award className="h-5 w-5 text-[#C9A84C]" />
                       <span className="font-semibold">Overall Average</span>
                     </div>
                     <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]">
@@ -717,7 +717,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                             </Badge>
                           )}
                           {item.trend === "stable" && (
-                            <Badge variant="outline" className="text-[#C9A84C] border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30">
+                            <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C]/30 bg-[#C9A84C]/5">
                               <Minus className="h-3 w-3 mr-1" />
                               Stable
                             </Badge>

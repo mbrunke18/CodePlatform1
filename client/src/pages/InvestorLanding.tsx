@@ -45,9 +45,9 @@ import {
 
 // Market funnel data
 const marketFunnelData = [
-  { name: 'TAM', value: 127, label: '$127B', color: '#3B82F6' },
-  { name: 'SAM', value: 38, label: '$38B', color: '#8B5CF6' },
-  { name: 'SOM', value: 1.9, label: '$1.9B', color: '#10B981' }
+  { name: 'TAM', value: 127, label: '$127B', color: '#0A0F2E' },
+  { name: 'SAM', value: 38, label: '$38B', color: '#C9A84C' },
+  { name: 'SOM', value: 1.9, label: '$1.9B', color: '#2B8A6E' }
 ];
 
 // LTV:CAC trend over 5 years
@@ -61,9 +61,9 @@ const ltvCacTrendData = [
 
 // ROI breakdown data
 const roiBreakdownData = [
-  { name: 'Cost Savings', value: 7.2, color: '#10B981' },
-  { name: 'Time Recovery', value: 3.4, color: '#3B82F6' },
-  { name: 'Risk Mitigation', value: 1.8, color: '#8B5CF6' }
+  { name: 'Cost Savings', value: 7.2, color: '#2B8A6E' },
+  { name: 'Time Recovery', value: 3.4, color: '#C9A84C' },
+  { name: 'Risk Mitigation', value: 1.8, color: '#0A0F2E' }
 ];
 
 export default function InvestorLanding() {
@@ -133,41 +133,41 @@ export default function InvestorLanding() {
         </section>
 
         {/* Three Problems Worth Billions */}
-        <section className="py-16 px-6 text-gray-900">
+        <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-red-600/20 text-red-400 border border-red-500/30 text-sm px-4 py-1.5">
+              <Badge className="mb-6 bg-red-600/20 text-red-500 border border-red-500/30 text-sm px-4 py-1.5">
                 <AlertTriangle className="h-4 w-4 mr-2 inline" />
                 Market Problem
               </Badge>
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 Three Enterprise Problems Worth $847B
               </h2>
-              <p className="text-xl text-gray-800 max-w-4xl mx-auto">
+              <p className="text-xl text-[#0A0F2E] max-w-4xl mx-auto">
                 Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Execution OS.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-10">
-              <Card className="bg-white border border-gray-200 hover:border-red-500/40 transition-all">
+              <Card className="bg-white border border-[#E8E4DC] hover:border-red-500/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="p-2 rounded-lg bg-red-500/10">
                         <Zap className="h-5 w-5 text-red-500" />
                       </div>
-                      <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Problem 1</span>
+                      <span className="text-xs font-semibold text-red-500 uppercase tracking-wider">Problem 1</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">The Execution Gap</h3>
-                    <p className="text-sm text-gray-800 mb-2">20-72 hours to even begin acting when strategic moments hit</p>
-                    <p className="text-xs text-red-400">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
+                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Execution Gap</h3>
+                    <p className="text-sm text-[#0A0F2E] mb-2">20-72 hours to even begin acting when strategic moments hit</p>
+                    <p className="text-xs text-red-500">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
                   </div>
-                  <div className="border-t border-gray-200 pt-4">
+                  <div className="border-t border-[#E8E4DC] pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
                       <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-800 mb-3">Pre-built infrastructure activates in 12 minutes</p>
+                    <p className="text-sm text-[#0A0F2E] mb-3">Pre-built infrastructure activates in 12 minutes</p>
                     <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-[#2B8A6E] font-bold text-lg">72 hrs → 12 min</span>
                     </div>
@@ -175,25 +175,25 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border border-gray-200 hover:border-amber-500/40 transition-all">
+              <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 rounded-lg bg-amber-500/10">
-                        <Users className="h-5 w-5 text-amber-500" />
+                      <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                        <Users className="h-5 w-5 text-[#C9A84C]" />
                       </div>
-                      <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Problem 2</span>
+                      <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 2</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">The Coordination Chaos</h3>
-                    <p className="text-sm text-gray-800 mb-2">50-200+ stakeholders. No system to coordinate them.</p>
-                    <p className="text-xs text-amber-400">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
+                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Coordination Chaos</h3>
+                    <p className="text-sm text-[#0A0F2E] mb-2">50-200+ stakeholders. No system to coordinate them.</p>
+                    <p className="text-xs text-[#C9A84C]">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
                   </div>
-                  <div className="border-t border-gray-200 pt-4">
+                  <div className="border-t border-[#E8E4DC] pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
                       <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-800 mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
+                    <p className="text-sm text-[#0A0F2E] mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
                     <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-[#2B8A6E] font-bold text-lg">35% cost reduction</span>
                     </div>
@@ -201,7 +201,7 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white border border-gray-200 hover:border-[#C9A84C]/40 transition-all">
+              <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -210,16 +210,16 @@ export default function InvestorLanding() {
                       </div>
                       <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 3</span>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">The Institutional Amnesia</h3>
-                    <p className="text-sm text-gray-800 mb-2">Knowledge walks out the door. Same scramble every time.</p>
+                    <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Institutional Amnesia</h3>
+                    <p className="text-sm text-[#0A0F2E] mb-2">Knowledge walks out the door. Same scramble every time.</p>
                     <p className="text-xs text-[#C9A84C]">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
                   </div>
-                  <div className="border-t border-gray-200 pt-4">
+                  <div className="border-t border-[#E8E4DC] pt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
                       <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
                     </div>
-                    <p className="text-sm text-gray-800 mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
+                    <p className="text-sm text-[#0A0F2E] mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
                     <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center">
                       <span className="text-[#2B8A6E] font-bold text-lg">Compounding intelligence</span>
                     </div>
@@ -228,214 +228,214 @@ export default function InvestorLanding() {
               </Card>
             </div>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-4 text-center">
-              <p className="text-gray-800">
-                <span className="text-gray-900 font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-400 font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl px-6 py-4 text-center">
+              <p className="text-[#0A0F2E]">
+                <span className="text-[#0A0F2E] font-semibold">Execution OS at $250K-$750K/year</span> vs. one incident costing <span className="text-red-500 font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
         </section>
 
         {/* Agentic Execution Layer */}
-        <section className="py-16 px-6 bg-gradient-to-br  text-gray-900">
+        <section className="py-16 px-6 bg-gradient-to-br  text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <Badge className="mb-6 bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30 text-sm px-4 py-1.5">
                 <Brain className="h-4 w-4 mr-2 inline" />
                 Architectural Thesis
               </Badge>
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 The Agentic Execution Layer
               </h2>
-              <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
                 Agents don't just generate answers — they coordinate enterprises. Execution OS is the missing orchestration layer between strategy and operational systems.
               </p>
             </div>
 
             <div className="grid md:grid-cols-5 gap-2 items-center max-w-4xl mx-auto mb-12">
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-                <div className="text-xs text-gray-800 mb-1">Strategy Layer</div>
-                <div className="text-sm font-semibold text-gray-900">Board & C-Suite</div>
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4 text-center">
+                <div className="text-xs text-[#6B7280] mb-1">Strategy Layer</div>
+                <div className="text-sm font-semibold text-[#0A0F2E]">Board & C-Suite</div>
               </div>
-              <div className="text-center text-gray-700">→</div>
+              <div className="text-center text-[#6B7280]">→</div>
               <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#3BAF8A]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-[#C9A84C] font-semibold mb-1">Agentic Execution Layer</div>
-                <div className="text-sm font-bold text-gray-900">Execution OS</div>
+                <div className="text-sm font-bold text-[#0A0F2E]">Execution OS</div>
               </div>
-              <div className="text-center text-gray-700">→</div>
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-                <div className="text-xs text-gray-800 mb-1">Workflow Layer</div>
-                <div className="text-sm font-semibold text-gray-900">Jira, ServiceNow</div>
+              <div className="text-center text-[#6B7280]">→</div>
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4 text-center">
+                <div className="text-xs text-[#6B7280] mb-1">Workflow Layer</div>
+                <div className="text-sm font-semibold text-[#0A0F2E]">Jira, ServiceNow</div>
               </div>
             </div>
 
             <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center">
                   <Zap className="h-5 w-5 text-[#2B8A6E]" />
                 </div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">Detection Agent</div>
-                <div className="text-xs text-gray-800">Monitors signals across domains</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Detection Agent</div>
+                <div className="text-xs text-[#6B7280]">Monitors signals across domains</div>
               </div>
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
-                <div className="w-10 h-10 mx-auto mb-3 bg-amber-500/20 rounded-lg flex items-center justify-center">
-                  <Target className="h-5 w-5 text-amber-400" />
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center">
+                  <Target className="h-5 w-5 text-[#C9A84C]" />
                 </div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">Risk Scoring Agent</div>
-                <div className="text-xs text-gray-800">Classifies severity + urgency</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Risk Scoring Agent</div>
+                <div className="text-xs text-[#6B7280]">Classifies severity + urgency</div>
               </div>
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/20 rounded-lg flex items-center justify-center">
                   <Users className="h-5 w-5 text-[#0A0F2E]" />
                 </div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">Routing Agent</div>
-                <div className="text-xs text-gray-800">Assigns stakeholders + roles</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Routing Agent</div>
+                <div className="text-xs text-[#6B7280]">Assigns stakeholders + roles</div>
               </div>
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center">
                   <Shield className="h-5 w-5 text-[#2B8A6E]" />
                 </div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">Decision Agent</div>
-                <div className="text-xs text-gray-800">Pre-authorized within policy</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Decision Agent</div>
+                <div className="text-xs text-[#6B7280]">Pre-authorized within policy</div>
               </div>
-              <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
                 <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center">
                   <Brain className="h-5 w-5 text-[#C9A84C]" />
                 </div>
-                <div className="text-sm font-semibold text-gray-900 mb-1">Learning Agent</div>
-                <div className="text-xs text-gray-800">Compounds institutional knowledge</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Learning Agent</div>
+                <div className="text-xs text-[#6B7280]">Compounds institutional knowledge</div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Independent Market Validation - Moved up for visibility */}
-        <section className="py-16 px-6 text-gray-900">
+        <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-[#0A0F2E] text-gray-900 border-0 text-sm px-4 py-1.5">
+              <Badge className="mb-6 bg-[#0A0F2E] text-white border-0 text-sm px-4 py-1.5">
                 2026 Market Validation
               </Badge>
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">
+              <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 8 Flagship Reports. One Conclusion.
               </h2>
-              <p className="text-xl text-gray-800 max-w-3xl mx-auto mb-6">
+              <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto mb-6">
                 The world's top consulting and technology firms independently confirm the market Execution OS addresses
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
-                  <span key={firm} className="bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-medium text-gray-800">{firm}</span>
+                  <span key={firm} className="bg-white/10 border border-[#E8E4DC] rounded-full px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
                 ))}
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Brain className="h-5 w-5 text-[#0A0F2E]" />
-                    <span className="font-bold text-gray-900 text-lg">BCG</span>
+                    <span className="font-bold text-[#0A0F2E] text-lg">BCG</span>
                   </div>
                   <div className="text-sm text-[#0A0F2E] mb-3">AI Radar 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS is built for the C-suite</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Globe2 className="h-5 w-5 text-[#0A0F2E]" />
-                    <span className="font-bold text-gray-900 text-lg">IBM</span>
+                    <span className="font-bold text-[#0A0F2E] text-lg">IBM</span>
                   </div>
                   <div className="text-sm text-[#0A0F2E] mb-3">The Enterprise in 2030</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"The smarter enterprise requires new operating models"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"The smarter enterprise requires new operating models"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS IS that operating model</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
-                    <span className="font-bold text-gray-900 text-lg">McKinsey</span>
+                    <span className="font-bold text-[#0A0F2E] text-lg">McKinsey</span>
                   </div>
                   <div className="text-sm text-[#2B8A6E] mb-3">Global Tech Agenda 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"CIOs evolving from cost managers to strategy architects"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Our 170 playbooks give them the execution infrastructure</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <Network className="h-5 w-5 text-[#C9A84C]" />
-                    <span className="font-bold text-gray-900 text-lg">Deloitte</span>
+                    <span className="font-bold text-[#0A0F2E] text-lg">Deloitte</span>
                   </div>
                   <div className="text-sm text-[#C9A84C] mb-3">State of AI in the Enterprise 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"Rise of sovereign, agentic, and physical AI"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"Rise of sovereign, agentic, and physical AI"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS orchestrates agentic AI with human oversight</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <Globe className="h-5 w-5 text-amber-400" />
-                    <span className="font-bold text-gray-900 text-lg">World Economic Forum</span>
+                    <Globe className="h-5 w-5 text-[#C9A84C]" />
+                    <span className="font-bold text-[#0A0F2E] text-lg">World Economic Forum</span>
                   </div>
-                  <div className="text-sm text-amber-400 mb-3">Proof over Promise</div>
+                  <div className="text-sm text-[#C9A84C] mb-3">Proof over Promise</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"Organizations scaling AI into outcomes"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"Organizations scaling AI into outcomes"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS delivers measurable execution outcomes</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <Zap className="h-5 w-5 text-sky-400" />
-                    <span className="font-bold text-gray-900 text-lg">Microsoft</span>
+                    <Zap className="h-5 w-5 text-[#C9A84C]" />
+                    <span className="font-bold text-[#0A0F2E] text-lg">Microsoft</span>
                   </div>
-                  <div className="text-sm text-sky-400 mb-3">Agents Are Here</div>
+                  <div className="text-sm text-[#C9A84C] mb-3">Agents Are Here</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"Readiness requires people, process, culture, governance"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"Readiness requires people, process, culture, governance"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Execution OS provides all four</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <Target className="h-5 w-5 text-rose-400" />
-                    <span className="font-bold text-gray-900 text-lg">Google Cloud</span>
+                    <Target className="h-5 w-5 text-[#C9A84C]" />
+                    <span className="font-bold text-[#0A0F2E] text-lg">Google Cloud</span>
                   </div>
-                  <div className="text-sm text-rose-400 mb-3">AI Agent Trends 2026</div>
+                  <div className="text-sm text-[#C9A84C] mb-3">AI Agent Trends 2026</div>
                   <div className="flex items-start gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-gray-700 flex-shrink-0 mt-1" />
-                    <p className="text-gray-800 text-sm">"AI agents being used across industries"</p>
+                    <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                    <p className="text-[#0A0F2E] text-sm">"AI agents being used across industries"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Our 9 strategic domains cover the enterprise</p>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gray-50 border-gray-200 hover:border-indigo-500/50 transition-all">
+              <Card className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <FileText className="h-5 w-5 text-teal-400" />
@@ -1006,9 +1006,9 @@ export default function InvestorLanding() {
                       contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '8px', color: 'white' }}
                     />
                     <Legend />
-                    <Line yAxisId="left" type="monotone" dataKey="ratio" stroke="#10B981" strokeWidth={3} name="LTV:CAC Ratio" dot={{ fill: '#10B981', r: 6 }} />
-                    <Line yAxisId="right" type="monotone" dataKey="ltv" stroke="#3B82F6" strokeWidth={2} name="LTV ($K)" />
-                    <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#8B5CF6" strokeWidth={2} name="CAC ($K)" />
+                    <Line yAxisId="left" type="monotone" dataKey="ratio" stroke="#2B8A6E" strokeWidth={3} name="LTV:CAC Ratio" dot={{ fill: '#2B8A6E', r: 6 }} />
+                    <Line yAxisId="right" type="monotone" dataKey="ltv" stroke="#0A0F2E" strokeWidth={2} name="LTV ($K)" />
+                    <Line yAxisId="right" type="monotone" dataKey="cac" stroke="#C9A84C" strokeWidth={2} name="CAC ($K)" />
                   </LineChart>
                 </ResponsiveContainer>
                 <div className="mt-4 text-center text-sm text-gray-800 dark:text-slate-300">
@@ -1051,7 +1051,7 @@ export default function InvestorLanding() {
                   <div className="flex-1 space-y-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#10B981' }}></div>
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#2B8A6E' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Cost Savings: $7.2M</div>
                       </div>
                       <div className="text-sm text-gray-800 dark:text-slate-300">
@@ -1060,7 +1060,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#3B82F6' }}></div>
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#0A0F2E' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Time Recovery: $3.4M</div>
                       </div>
                       <div className="text-sm text-gray-800 dark:text-slate-300">
@@ -1069,7 +1069,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#8B5CF6' }}></div>
+                        <div className="w-4 h-4 rounded" style={{ backgroundColor: '#C9A84C' }}></div>
                         <div className="font-semibold text-slate-900 dark:text-white">Risk Mitigation: $1.8M</div>
                       </div>
                       <div className="text-sm text-gray-800 dark:text-slate-300">

@@ -110,7 +110,7 @@ export default function PilotMonitoring() {
             </h1>
             <Badge className={`text-base px-4 py-2 ${
               systemHealth.status === 'healthy' 
-                ? 'bg-green-600 text-gray-900' 
+                ? 'bg-[#2B8A6E] text-gray-900' 
                 : 'bg-yellow-600 text-gray-900'
             }`} data-testid="badge-system-status">
               <Activity className="w-4 h-4 mr-2" />
@@ -215,7 +215,7 @@ export default function PilotMonitoring() {
                     <span className="font-semibold text-slate-900 dark:text-white">70%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
-                    <div className="bg-green-600 h-2 rounded-full" style={{ width: '70%' }}></div>
+                    <div className="bg-[#2B8A6E] h-2 rounded-full" style={{ width: '70%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -259,7 +259,7 @@ export default function PilotMonitoring() {
                     <div className="text-sm text-gray-800 dark:text-slate-300">Avg Execution Time</div>
                     <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
                   </div>
-                  <Badge className="bg-green-600 text-gray-900">
+                  <Badge className="bg-[#2B8A6E] text-gray-900">
                     Target: 12 min
                   </Badge>
                 </div>

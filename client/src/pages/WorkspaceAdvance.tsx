@@ -112,7 +112,7 @@ export default function WorkspaceAdvance() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Retrospect Lab</h1>
-                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
+                  <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30" style={{ background: "#2B8A6E", color: "white" }}>
                     <SubBrandLabel name="Retrospect™" />
                   </Badge>
                 </div>
@@ -167,9 +167,9 @@ export default function WorkspaceAdvance() {
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/20 border-2 border-[#2B8A6E]">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/20 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
-                    <span className="text-sm font-medium text-[#2B8A6E]">ADVANCE</span>
+                    <span className="text-sm font-bold text-[#2B8A6E]">ADVANCE</span>
                   </div>
                 </div>
               </div>

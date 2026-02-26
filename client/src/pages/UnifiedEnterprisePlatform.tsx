@@ -64,7 +64,7 @@ export default function UnifiedEnterprisePlatform() {
   // Real-time metrics
   const metrics = [
     { name: "Global Agility Score", value: "87.6%", change: "+2.4%", color: "text-[#2B8A6E]" },
-    { name: "Playbook Readiness", value: "98.7%", change: "+0.8%", color: "text-orange-400" },
+    { name: "Playbook Readiness", value: "98.7%", change: "+0.8%", color: "text-[#C9A84C]" },
     { name: "Strategic Intelligence", value: "94.2%", change: "+1.6%", color: "text-[#0A0F2E]" },
     { name: "Innovation Pipeline", value: "91.4%", change: "+3.2%", color: "text-[#C9A84C]" }
   ];
@@ -226,7 +226,7 @@ export default function UnifiedEnterprisePlatform() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">Pulse Active</span>
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">94%</Badge>
+                    <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">94%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">12 Signals</span>
@@ -236,10 +236,10 @@ export default function UnifiedEnterprisePlatform() {
               </CardContent>
             </Card>
 
-            <Card className="border-orange-500/30 bg-gradient-to-br hover:border-orange-500/50 transition-all">
+            <Card className="border-[#C9A84C]/30 bg-gradient-to-br hover:border-[#C9A84C]/50 transition-all">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-orange-400" />
+                  <Target className="h-5 w-5 text-[#C9A84C]" />
                   <CardTitle className="text-sm text-gray-900">2. DETECT</CardTitle>
                 </div>
               </CardHeader>
@@ -248,20 +248,20 @@ export default function UnifiedEnterprisePlatform() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">Preparedness</span>
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">98.7%</Badge>
+                    <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">98.7%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">47 Playbooks</span>
-                    <span className="text-orange-400 font-semibold">Ready</span>
+                    <span className="text-[#C9A84C] font-semibold">Ready</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-green-500/30 bg-gradient-to-br hover:border-green-500/50 transition-all">
+            <Card className="border-[#2B8A6E]/30 bg-gradient-to-br hover:border-[#2B8A6E]/50 transition-all">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-green-400" />
+                  <Zap className="h-5 w-5 text-[#2B8A6E]" />
                   <CardTitle className="text-sm text-gray-900">3. EXECUTE</CardTitle>
                 </div>
               </CardHeader>
@@ -270,11 +270,11 @@ export default function UnifiedEnterprisePlatform() {
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">Avg Speed</span>
-                    <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 text-xs">12min</Badge>
+                    <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">12min</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-gray-800">vs Industry</span>
-                    <span className="text-green-400 font-semibold">360x Faster</span>
+                    <span className="text-[#2B8A6E] font-semibold">360x Faster</span>
                   </div>
                 </div>
               </CardContent>
@@ -332,17 +332,17 @@ export default function UnifiedEnterprisePlatform() {
               <TabsTrigger value="audit" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-audit">
                 <Shield className="h-4 w-4" />
                 Audit & Compliance
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="integrations" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-integrations">
                 <Network className="h-4 w-4" />
                 Integrations
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V3</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V3</Badge>
               </TabsTrigger>
               <TabsTrigger value="analytics" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-analytics">
                 <PieChart className="h-4 w-4" />
                 Advanced Analytics
-                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-blue-100 dark:bg-[#0A0F2E]">V2</Badge>
+                <Badge variant="outline" className="ml-1 text-xs px-1 py-0 h-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]">V2</Badge>
               </TabsTrigger>
               <TabsTrigger value="scenario-triggers" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs" data-testid="tab-triggers">
                 <Zap className="h-4 w-4" />
@@ -413,11 +413,11 @@ export default function UnifiedEnterprisePlatform() {
                     <CardTitle className="flex items-center gap-2 text-gray-900">
                       <Zap className="h-6 w-6 text-[#2B8A6E]" />
                       Decision Velocity Dashboard
-                      <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#3BAF8A] border-[#2B8A6E]/50 ml-2">
+                      <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/50 ml-2">
                         INFRASTRUCTURE MODE
                       </Badge>
                     </CardTitle>
-                    <Badge variant="outline" className="bg-[#0A0F2E]/20 text-blue-300 border-[#0A0F2E]/50">
+                    <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/50">
                       170 PLAYBOOKS READY
                     </Badge>
                   </div>

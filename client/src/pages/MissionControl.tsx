@@ -177,7 +177,7 @@ export default function MissionControl() {
                 </span>
               </div>
               <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
-                Mission <em style={{ fontStyle: "italic", color: "#DFC178" }}>Control</em> One™
+                Mission <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Control</em> One™
               </h1>
             </div>
             
@@ -186,7 +186,7 @@ export default function MissionControl() {
                 <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">System Time</div>
                 <div style={{ ...CG, color: "#fff", fontSize: "24px", fontWeight: 500 }}>{currentTime.toLocaleTimeString()}</div>
               </div>
-              <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex items-center gap-4">
+              <div className="bg-white/5 border border-white/10 p-3 rounded-none flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
                   <span className="text-[10px] font-bold uppercase tracking-widest text-[#2B8A6E]">Live Telemetry</span>
@@ -211,7 +211,7 @@ export default function MissionControl() {
                       <CardTitle style={{ ...CG, fontSize: "24px", color: NAVY }}>Active Telemetry Hub</CardTitle>
                     </div>
                     {pendingTriggers.length > 0 && (
-                      <Badge style={{ background: "rgba(239,68,68,0.1)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.2)" }} className="px-3 py-1 font-bold">
+                      <Badge style={{ background: "rgba(239,68,68,0.1)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.2)" }} className="px-3 py-1 font-bold rounded-none">
                         {pendingTriggers.length} CRITICAL EVENTS
                       </Badge>
                     )}
@@ -223,16 +223,16 @@ export default function MissionControl() {
                       {pendingTriggers.map((trigger) => (
                         <div key={trigger.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#F8F7F4]/30 transition-colors">
                           <div className="flex items-start gap-4">
-                            <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                               <AlertTriangle className="h-5 w-5 text-white" />
                             </div>
                             <div>
-                              <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">{trigger.category} signal detected</div>
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">{trigger.category} signal detected</div>
                               <div style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>{trigger.name}</div>
                               <div className="flex items-center gap-3 mt-1">
-                                <span className="text-xs text-gray-500">Confidence: {trigger.confidence}%</span>
-                                <span className="w-1 h-1 rounded-full bg-gray-300" />
-                                <span className="text-xs text-gray-500">Source: {trigger.source}</span>
+                                <span className="text-xs text-[#6B7280]">Confidence: {trigger.confidence}%</span>
+                                <span className="w-1 h-1 rounded-full bg-[#E8E4DC]" />
+                                <span className="text-xs text-[#6B7280]">Source: {trigger.source}</span>
                               </div>
                             </div>
                           </div>
@@ -240,7 +240,7 @@ export default function MissionControl() {
                             <Button 
                               onClick={() => handleActivatePlaybook(trigger)}
                               style={{ background: NAVY, color: "#fff" }}
-                              className="font-bold uppercase tracking-widest text-[10px] px-6"
+                              className="font-bold uppercase tracking-widest text-[10px] px-6 rounded-none"
                             >
                               Activate Response
                             </Button>
@@ -267,14 +267,14 @@ export default function MissionControl() {
                         <div className="flex justify-between items-end">
                           <div>
                             <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: NAVY }}>{exec.playbook}</div>
-                            <div className="text-xs text-gray-500">Execution active for 2m 14s</div>
+                            <div className="text-xs text-[#6B7280]">Execution active for 2m 14s</div>
                           </div>
                           <div className="text-right">
                             <div className="text-2xl font-bold text-[#2B8A6E]">{exec.progress}%</div>
-                            <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">Complete</div>
+                            <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Complete</div>
                           </div>
                         </div>
-                        <Progress value={exec.progress} className="h-2 bg-[#F8F7F4]" />
+                        <Progress value={exec.progress} className="h-2 bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
                       </div>
                     ))}
                   </CardContent>
@@ -284,39 +284,39 @@ export default function MissionControl() {
 
             {/* Right Column - System Stats */}
             <div className="lg:col-span-4 space-y-8">
-              <Card className="border-[#E8E4DC] bg-white">
+              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader className="border-b border-[#E8E4DC]">
                   <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Readiness Matrix</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 space-y-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-sm">
+                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">
                       <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>170</div>
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-gray-500 mt-1">Playbooks</div>
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">Playbooks</div>
                     </div>
-                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-sm">
+                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">
                       <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: TEAL }}>94%</div>
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-gray-500 mt-1">Reliability</div>
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">Reliability</div>
                     </div>
                   </div>
                   
                   <div className="space-y-4 pt-4">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="text-gray-500 font-bold uppercase tracking-widest">Signal Precision</span>
+                      <span className="text-[#6B7280] font-bold uppercase tracking-widest">Signal Precision</span>
                       <span className="font-bold text-[#0A0F2E]">89.4%</span>
                     </div>
-                    <Progress value={89.4} className="h-1 bg-[#F8F7F4]" />
+                    <Progress value={89.4} className="h-1 bg-[#F8F7F4] rounded-none [&>div]:bg-[#C9A84C]" />
                     
                     <div className="flex justify-between items-center text-xs pt-2">
-                      <span className="text-gray-500 font-bold uppercase tracking-widest">Cohesion Index</span>
+                      <span className="text-[#6B7280] font-bold uppercase tracking-widest">Cohesion Index</span>
                       <span className="font-bold text-[#0A0F2E]">92.1%</span>
                     </div>
-                    <Progress value={92.1} className="h-1 bg-[#F8F7F4]" />
+                    <Progress value={92.1} className="h-1 bg-[#F8F7F4] rounded-none [&>div]:bg-[#C9A84C]" />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card style={{ background: NAVY }} className="border-none text-white">
+              <Card style={{ background: NAVY }} className="border-none text-white rounded-none shadow-sm">
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />
@@ -342,7 +342,7 @@ export default function MissionControl() {
               </Card>
 
               <div className="pt-4">
-                <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+                <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280]">
                   Confidential Operational View • VaughnMartin
                 </p>
               </div>

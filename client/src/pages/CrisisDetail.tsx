@@ -131,6 +131,11 @@ export default function CrisisDetail() {
     },
   });
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   if (crisisLoading) {
     return (
       <PageLayout>
@@ -171,8 +176,8 @@ export default function CrisisDetail() {
   const getPriorityStyle = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'text-red-600 bg-red-50 font-bold';
-      case 'medium': return 'text-[#C9A84C] bg-[#C9A84C]/5 font-bold';
-      case 'low': return 'text-[#2B8A6E] bg-[#2B8A6E]/5 font-bold';
+      case 'medium': return `text-[${GOLD}] bg-[${GOLD}]/5 font-bold`;
+      case 'low': return `text-[${TEAL}] bg-[${TEAL}]/5 font-bold`;
       default: return 'text-[#6B7280] bg-gray-50';
     }
   };
@@ -180,8 +185,8 @@ export default function CrisisDetail() {
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'bg-red-100 text-red-700';
-      case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
-      case 'low': return 'bg-[#2B8A6E]/10 text-[#2B8A6E]';
+      case 'medium': return `bg-[${GOLD}]/10 text-[${GOLD}]`;
+      case 'low': return `bg-[${TEAL}]/10 text-[${TEAL}]`;
       default: return 'bg-gray-100 text-gray-700';
     }
   };
@@ -189,11 +194,6 @@ export default function CrisisDetail() {
   const completedTasks = tasks.filter(task => task.status === 'Completed').length;
   const totalTasks = tasks.length;
   const progressPercentage = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
-
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
     <PageLayout>
@@ -260,12 +260,12 @@ export default function CrisisDetail() {
                     <div className="text-[9px] font-bold uppercase tracking-widest text-white/40">Completion</div>
                  </div>
                  <div className="w-px h-12 bg-white/10" />
-                 <div className="flex-1 page-background">
+                 <div className="flex-1">
                     <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest text-white/60 mb-2">
                        <span>Tasks</span>
                        <span>{completedTasks}/{totalTasks}</span>
                     </div>
-                    <Progress value={progressPercentage} className="h-1 bg-white/10" />
+                    <Progress value={progressPercentage} className="h-1 bg-white/10 [&>div]:bg-[#C9A84C]" />
                  </div>
               </div>
             </div>
@@ -302,7 +302,7 @@ export default function CrisisDetail() {
                      </div>
                      <span style={CG} className="text-2xl font-bold text-[#0A0F2E]">{Math.round(progressPercentage)}%</span>
                   </div>
-                  <Progress value={progressPercentage} className="h-1.5 bg-[#E8E4DC]" />
+                  <Progress value={progressPercentage} className="h-1.5 bg-[#E8E4DC] [&>div]:bg-[#C9A84C]" />
                 </div>
               </CardContent>
             </Card>
@@ -379,7 +379,7 @@ export default function CrisisDetail() {
                 </CardHeader>
                 <CardContent>
                   <div className="prose dark:prose-invert max-w-none">
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <p className="text-[#0A0F2E] leading-relaxed">
                       {crisis.description}
                     </p>
                   </div>
@@ -396,20 +396,20 @@ export default function CrisisDetail() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div>
-                      <div className="text-sm font-medium text-gray-800">Organization</div>
-                      <div className="text-lg font-semibold">{organization?.name || 'Unknown'}</div>
+                      <div className="text-sm font-medium text-[#0A0F2E]">Organization</div>
+                      <div className="text-lg font-semibold text-[#0A0F2E]">{organization?.name || 'Unknown'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-800">Industry</div>
-                      <div>{organization?.industry || 'Not specified'}</div>
+                      <div className="text-sm font-medium text-[#0A0F2E]">Industry</div>
+                      <div className="text-[#0A0F2E]">{organization?.industry || 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-800">Size</div>
-                      <div>{organization?.size ? `${organization.size} employees` : 'Not specified'}</div>
+                      <div className="text-sm font-medium text-[#0A0F2E]">Size</div>
+                      <div className="text-[#0A0F2E]">{organization?.size ? `${organization.size} employees` : 'Not specified'}</div>
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-800">Location</div>
-                      <div>{organization?.headquarters || 'Not specified'}</div>
+                      <div className="text-sm font-medium text-[#0A0F2E]">Location</div>
+                      <div className="text-[#0A0F2E]">{organization?.headquarters || 'Not specified'}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -423,20 +423,20 @@ export default function CrisisDetail() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Severity Level</span>
-                      <Badge variant="destructive">HIGH</Badge>
+                      <span className="text-sm font-medium text-[#0A0F2E]">Severity Level</span>
+                      <Badge variant="destructive" className="bg-red-600 text-white">HIGH</Badge>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Response Time</span>
-                      <span className="text-sm">&lt; 2 hours</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">Response Time</span>
+                      <span className="text-sm text-[#0A0F2E]">&lt; 2 hours</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Affected Stakeholders</span>
-                      <span className="text-sm">Multiple departments</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">Affected Stakeholders</span>
+                      <span className="text-sm text-[#0A0F2E]">Multiple departments</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium">Est. Financial Impact</span>
-                      <span className="text-sm font-semibold text-red-700">$2.4M+</span>
+                      <span className="text-sm font-medium text-[#0A0F2E]">Est. Financial Impact</span>
+                      <span className="text-sm font-semibold text-red-600">$2.4M+</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -445,8 +445,8 @@ export default function CrisisDetail() {
 
             <TabsContent value="tasks" className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Strategic Action Items</h3>
-                <div className="text-sm text-gray-800">
+                <h3 className="text-lg font-semibold text-[#0A0F2E]">Strategic Action Items</h3>
+                <div className="text-sm text-[#6B7280]">
                   {completedTasks} of {totalTasks} completed
                 </div>
               </div>
@@ -456,20 +456,20 @@ export default function CrisisDetail() {
                   <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#0A0F2E] mx-auto"></div>
                 </div>
               ) : tasks.length === 0 ? (
-                <Card>
+                <Card className="rounded-none border-[#E8E4DC]">
                   <CardContent className="text-center py-8">
-                    <FileText className="h-12 w-12 text-gray-800 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">No Tasks Yet</h3>
-                    <p className="text-gray-800">Tasks will be created when the crisis response is activated.</p>
+                    <FileText className="h-12 w-12 text-[#6B7280] mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold mb-2 text-[#0A0F2E]">No Tasks Yet</h3>
+                    <p className="text-[#6B7280]">Tasks will be created when the crisis response is activated.</p>
                   </CardContent>
                 </Card>
               ) : (
                 <div className="space-y-3">
                   {tasks.map((task) => (
-                    <Card key={task.id} className="hover:shadow-md transition-shadow">
+                    <Card key={task.id} className="hover:shadow-md transition-shadow rounded-none border-[#E8E4DC]">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
-                          <div className="flex-1 page-background space-y-2">
+                          <div className="flex-1 space-y-2">
                             <div className="flex items-center gap-3">
                               <Button
                                 variant="ghost"
@@ -485,17 +485,17 @@ export default function CrisisDetail() {
                                 {task.status === 'Completed' ? (
                                   <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                                 ) : (
-                                  <div className="h-5 w-5 border-2 border-gray-300 rounded-full" />
+                                  <div className="h-5 w-5 border-2 border-[#E8E4DC] rounded-full" />
                                 )}
                               </Button>
-                              <div className="flex-1 page-background">
-                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-gray-800' : 'text-gray-900 dark:text-gray-100'}`}>
+                              <div className="flex-1">
+                                <p className={`text-sm ${task.status === 'Completed' ? 'line-through text-[#6B7280]' : 'text-[#0A0F2E]'}`}>
                                   {task.description}
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-4 text-xs text-gray-800 ml-8">
-                              <span className={`px-2 py-1 rounded-full ${getPriorityColor(task.priority)}`}>
+                            <div className="flex items-center gap-4 text-xs text-[#6B7280] ml-8">
+                              <span className={`px-2 py-1 rounded-none ${getPriorityStyle(task.priority)}`}>
                                 {task.priority}
                               </span>
                               <span>Due: {new Date(task.dueDate).toLocaleDateString()}</span>

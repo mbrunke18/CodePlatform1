@@ -183,9 +183,9 @@ export default function OneClickDemo() {
   const getTaskIcon = (type: Task['type']) => {
     switch (type) {
       case 'ai': return <Bot className="h-4 w-4 text-[#0A0F2E]" />;
-      case 'approval': return <CheckCircle2 className="h-4 w-4 text-green-400" />;
+      case 'approval': return <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />;
       case 'blocker': return <AlertCircle className="h-4 w-4 text-red-400" />;
-      case 'resolved': return <Zap className="h-4 w-4 text-amber-400" />;
+      case 'resolved': return <Zap className="h-4 w-4 text-[#C9A84C]" />;
       case 'complete': return <Shield className="h-4 w-4 text-[#2B8A6E]" />;
       default: return <FileText className="h-4 w-4 text-gray-800" />;
     }
@@ -193,11 +193,11 @@ export default function OneClickDemo() {
 
   const getTaskBorderColor = (type: Task['type']) => {
     switch (type) {
-      case 'ai': return 'border-l-blue-500';
-      case 'approval': return 'border-l-green-500';
+      case 'ai': return 'border-l-[#0A0F2E]';
+      case 'approval': return 'border-l-[#2B8A6E]';
       case 'blocker': return 'border-l-red-500';
-      case 'resolved': return 'border-l-amber-500';
-      case 'complete': return 'border-l-emerald-500';
+      case 'resolved': return 'border-l-[#C9A84C]';
+      case 'complete': return 'border-l-[#2B8A6E]';
       default: return 'border-l-slate-500';
     }
   };
@@ -228,19 +228,19 @@ export default function OneClickDemo() {
             <div className="grid md:grid-cols-3 gap-6 mb-12">
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-red-400 mb-2">2.4M</div>
+                  <div className="text-4xl font-bold text-red-500 mb-2">2.4M</div>
                   <div className="text-sm text-gray-800">Customers Impacted</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-amber-400 mb-2">$50M</div>
+                  <div className="text-4xl font-bold text-[#C9A84C] mb-2">$50M</div>
                   <div className="text-sm text-gray-800">Potential Fine</div>
                 </CardContent>
               </Card>
               <Card className="bg-gray-50 border-gray-200">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-green-400 mb-2">12 min</div>
+                  <div className="text-4xl font-bold text-[#2B8A6E] mb-2">12 min</div>
                   <div className="text-sm text-gray-800">Target Response Time</div>
                 </CardContent>
               </Card>
@@ -331,7 +331,7 @@ export default function OneClickDemo() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-amber-400" />
+                    <Zap className="h-5 w-5 text-[#C9A84C]" />
                     Live Execution Feed
                   </h3>
                   <Badge variant="outline" className="bg-transparent text-gray-800">
@@ -429,11 +429,11 @@ export default function OneClickDemo() {
                     <div className="text-xs text-gray-800">Tasks Complete</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-green-400">{acknowledgedCount}</div>
+                    <div className="text-2xl font-bold text-[#2B8A6E]">{acknowledgedCount}</div>
                     <div className="text-xs text-gray-800">Stakeholders Active</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-amber-400">$500K</div>
+                    <div className="text-2xl font-bold text-[#2B8A6E]">$500K</div>
                     <div className="text-xs text-gray-800">Budget Released</div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3 text-center">
@@ -463,7 +463,7 @@ export default function OneClickDemo() {
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-green-400">340X</div>
+                  <div className="text-3xl font-bold text-[#2B8A6E]">340X</div>
                   <div className="text-sm text-gray-800">Faster Response</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
@@ -471,7 +471,7 @@ export default function OneClickDemo() {
                   <div className="text-sm text-gray-800">Fine Avoided</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-amber-400">47</div>
+                  <div className="text-3xl font-bold text-[#C9A84C]">47</div>
                   <div className="text-sm text-gray-800">Tasks Coordinated</div>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-4">
@@ -493,7 +493,7 @@ export default function OneClickDemo() {
                 <Button 
                   onClick={() => { resetDemo(); setLocation('/contact'); }}
                   size="lg"
-                  className="bg-gradient-to-r from-green-600 to-[#2B8A6E] hover:from-green-700 hover:to-[#256B56]"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                   data-testid="button-schedule-demo"
                 >
                   Schedule Live Demo

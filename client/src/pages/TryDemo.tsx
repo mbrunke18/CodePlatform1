@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import StandardNav from '@/components/layout/StandardNav';
 import Footer from '@/components/layout/Footer';
 import { PageHero } from '@/components/layout/PageHero';
-import { useLocation } from 'wouter';
+import { useLocation, Link } from 'wouter';
 import {
   BookOpen,
   Radar,
@@ -78,6 +78,7 @@ interface Scenario {
   stakeholders: number;
   revenuePerMinute: number;
   chaosMessages: ChaosMessage[];
+  demoType: 'offensive' | 'defensive';
 }
 
 interface ChaosMessage {
@@ -119,7 +120,7 @@ const SCENARIOS: Scenario[] = [
     name: 'Ransomware Attack',
     industry: 'Cybersecurity',
     icon: Shield,
-    color: 'from-red-500 to-orange-500',
+    color: 'from-red-500 to-[#141B45]',
     borderColor: 'border-red-500/50',
     trigger: 'Unusual network activity detected at 2:47 AM',
     playbook: 'Cyber Incident Response',
@@ -171,8 +172,8 @@ const SCENARIOS: Scenario[] = [
     name: 'SEC Investigation',
     industry: 'Compliance',
     icon: Scale,
-    color: 'from-amber-500 to-yellow-500',
-    borderColor: 'border-amber-500/50',
+    color: 'from-[#C9A84C] to-[#DFC178]',
+    borderColor: 'border-[#C9A84C]/50',
     trigger: 'SEC enforcement notice received',
     playbook: 'Regulatory Response',
     dealValue: 120000000,
@@ -245,8 +246,8 @@ const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }>
 
 const URGENCY_COLORS: Record<string, string> = {
   critical: 'bg-red-500/20 border-red-500 text-red-300',
-  high: 'bg-orange-500/20 border-orange-500 text-orange-300',
-  medium: 'bg-yellow-500/20 border-yellow-500 text-yellow-300',
+  high: 'bg-[#C9A84C]/20 border-[#C9A84C] text-[#DFC178]',
+  medium: 'bg-[#C9A84C]/10 border-[#C9A84C]/50 text-[#C9A84C]',
 };
 
 export default function TryDemo() {
@@ -700,7 +701,7 @@ export default function TryDemo() {
                           <p className="text-gray-900 font-medium">Chaos. Confusion. Costly delays.</p>
                         </div>
                         <Button 
-                          className="w-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#256B56] hover:to-[#3BAF8A] text-gray-900 font-semibold py-6"
+                          className="w-full bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-semibold py-6"
                           onClick={moveToPrepared}
                         >
                           <Sparkles className="mr-2 h-5 w-5" />
@@ -948,7 +949,7 @@ export default function TryDemo() {
                     <Card className="bg-white border-gray-200">
                       <CardHeader>
                         <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <BarChart3 className="h-5 w-5 text-amber-400" />
+                          <BarChart3 className="h-5 w-5 text-[#DFC178]" />
                           ADVANCE: Capture Learnings
                         </CardTitle>
                         <CardDescription>
@@ -962,7 +963,7 @@ export default function TryDemo() {
                               Execution OS captures what worked and suggests playbook improvements for next time.
                             </p>
                             <Button 
-                              className="w-full bg-amber-600 hover:bg-amber-700"
+                              className="w-full bg-[#0A0F2E] hover:bg-[#141B45]"
                               onClick={completeAdvance}
                             >
                               <Sparkles className="mr-2 h-4 w-4" />
@@ -1003,7 +1004,7 @@ export default function TryDemo() {
 
                   {currentPhase === 'complete' && (
                     <div className="space-y-6">
-                      <Card className="bg-gradient-to-br   border-[#2B8A6E]/50">
+                      <Card className="bg-white border-[#2B8A6E]/50 shadow-lg">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
                             <div className="inline-flex p-4 bg-[#2B8A6E]/20 rounded-full mb-4">
@@ -1029,19 +1030,19 @@ export default function TryDemo() {
                           </div>
 
                           <div className="space-y-3">
-                            <Button 
-                              className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 py-6 text-lg font-semibold"
-                              onClick={() => {
-                                setLocation('/pilot-demo');
-                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                              }}
-                            >
-                              <Rocket className="mr-2 h-5 w-5" />
-                              Start Your Pilot
-                            </Button>
+                          <Button 
+                            className="w-full bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] py-6 text-lg font-bold"
+                            onClick={() => {
+                              setLocation('/pilot-demo');
+                              window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                            }}
+                          >
+                            <Rocket className="mr-2 h-5 w-5" />
+                            Start Your Pilot
+                          </Button>
                             <Button 
                               variant="outline"
-                              className="w-full text-gray-900 border-slate-600 hover:bg-[#141B45]"
+                              className="w-full text-gray-900 border-slate-600 hover:bg-gray-100"
                               onClick={resetDemo}
                             >
                               <RefreshCw className="mr-2 h-4 w-4" />
@@ -1057,14 +1058,14 @@ export default function TryDemo() {
                           <div className="flex items-center justify-between">
                             <div>
                               <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
-                                <Building2 className="h-5 w-5 text-poise-gold" />
+                                <Building2 className="h-5 w-5 text-[#C9A84C]" />
                                 Explore Industry Deep-Dives
                               </CardTitle>
                               <CardDescription className="text-gray-800">
                                 See Execution OS in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
-                            <Badge className="bg-poise-gold/20 text-poise-gold border-poise-gold/30">
+                            <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
                               9 Demos
                             </Badge>
                           </div>
@@ -1072,11 +1073,11 @@ export default function TryDemo() {
                         <CardContent>
                           <div className="mb-4">
                             <div className="flex gap-2 mb-3">
-                              <Badge variant="outline" className="text-green-400 border-green-500/30 bg-green-500/10">
+                              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10">
                                 <Target className="h-3 w-3 mr-1" />
                                 Offensive (3)
                               </Badge>
-                              <Badge variant="outline" className="text-red-400 border-red-500/30 bg-red-500/10">
+                              <Badge variant="outline" className="text-[#0A0F2E] border-[#0A0F2E]/30 bg-[#0A0F2E]/10">
                                 <Shield className="h-3 w-3 mr-1" />
                                 Defensive (6)
                               </Badge>
@@ -1094,8 +1095,8 @@ export default function TryDemo() {
                                   }}
                                   className={`p-3 rounded-lg border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
                                     demo.type === 'offensive' 
-                                      ? 'border-green-500/30 hover:border-green-400/50' 
-                                      : 'border-slate-600/50 hover:border-slate-500/70'
+                                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50' 
+                                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50'
                                   }`}
                                 >
                                   <div className="flex items-center gap-2 mb-1">
@@ -1105,11 +1106,11 @@ export default function TryDemo() {
                                   <p className="text-xs font-medium text-gray-900 truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
                                     <span className="text-xs text-gray-800">{demo.organization}</span>
-                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-green-400' : 'text-[#2B8A6E]'}`}>
+                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
                                       {demo.impact}
                                     </span>
                                   </div>
-                                  <div className="mt-2 flex items-center gap-1 text-xs text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div className="mt-2 flex items-center gap-1 text-xs text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
                                     <span>Explore</span>
                                     <ExternalLink className="h-2.5 w-2.5" />
                                   </div>
@@ -1134,18 +1135,18 @@ export default function TryDemo() {
                       <CardTitle className="text-sm text-gray-900">Response Comparison</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
-                          <p className="text-xs text-red-400 mb-1">Traditional</p>
-                          <p className="text-xl font-bold text-red-300">20-72 hrs</p>
-                          <p className="text-xs text-gray-800">Industry average</p>
-                        </div>
-                        <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
-                          <p className="text-xs text-[#2B8A6E] mb-1">Execution OS</p>
-                          <p className="text-xl font-bold text-[#3BAF8A]">12 min</p>
-                          <p className="text-xs text-gray-800">Guaranteed</p>
-                        </div>
-                      </div>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
+                              <p className="text-xs text-red-400 mb-1">Traditional</p>
+                              <p className="text-xl font-bold text-red-400">20-72 hrs</p>
+                              <p className="text-xs text-gray-800">Industry average</p>
+                            </div>
+                            <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
+                              <p className="text-xs text-[#2B8A6E] mb-1">Execution OS</p>
+                              <p className="text-xl font-bold text-[#2B8A6E]">12 min</p>
+                              <p className="text-xs text-gray-800">Guaranteed</p>
+                            </div>
+                          </div>
                     </CardContent>
                   </Card>
 
@@ -1161,7 +1162,7 @@ export default function TryDemo() {
                           { icon: SiJira, name: 'Jira', color: '#0052CC' },
                           { icon: Users, name: 'Teams', color: '#6264A7' },
                           { icon: SiSalesforce, name: 'Salesforce', color: '#00A1E0' },
-                          { icon: SiNotion, name: 'Notion', color: '#FFFFFF' },
+                          { icon: SiNotion, name: 'Notion', color: '#000000' },
                         ].map(({ icon: Icon, name, color }) => (
                           <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded text-xs">
                             <Icon className="h-3.5 w-3.5" style={{ color }} />
@@ -1194,9 +1195,9 @@ export default function TryDemo() {
                   </Card>
 
                   {/* 170 Playbooks */}
-                  <Card className="bg-gradient-to-br   border-amber-500/30">
+                  <Card className="bg-white border-[#C9A84C]/30">
                     <CardContent className="p-4 text-center">
-                      <p className="text-4xl font-bold text-amber-400 mb-1">170</p>
+                      <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
                       <p className="text-sm text-[#C9A84C]">Pre-Built Playbooks</p>
                       <p className="text-xs text-gray-800 mt-1">Across 9 Strategic Domains</p>
                     </CardContent>

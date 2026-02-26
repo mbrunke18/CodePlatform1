@@ -83,13 +83,12 @@ function PhaseCard({
   icon: any;
   metrics: { label: string; value: string; highlight?: boolean }[];
   link: string;
-  color: 'violet' | 'blue' | 'amber' | 'emerald';
+  color: 'navy' | 'gold' | 'teal';
 }) {
   const colorMap = {
-    violet: { border: BORDER, accent: TEAL },
-    blue: { border: BORDER, accent: NAVY },
-    amber: { border: BORDER, accent: GOLD },
-    emerald: { border: BORDER, accent: TEAL }
+    navy: { border: BORDER, accent: NAVY },
+    gold: { border: BORDER, accent: GOLD },
+    teal: { border: BORDER, accent: TEAL }
   };
 
   const c = colorMap[color];
@@ -97,7 +96,7 @@ function PhaseCard({
   return (
     <Link href={link}>
       <Card 
-        className="transition-all cursor-pointer hover:shadow-lg h-full border-t-4"
+        className="transition-all cursor-pointer hover:shadow-lg h-full border-t-4 rounded-none"
         style={{ borderColor: c.accent, background: "#fff" }}
       >
         <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
@@ -118,8 +117,8 @@ function PhaseCard({
         <CardContent className="p-3 sm:p-6 pt-0">
           <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-2">
             {metrics.map((m, i) => (
-              <div key={i} className="p-2 sm:p-3 rounded bg-[#F8F7F4] border border-[#E8E4DC]">
-                <div className="text-[10px] font-bold tracking-widest uppercase text-gray-500">{m.label}</div>
+              <div key={i} className="p-2 sm:p-3 rounded-none bg-[#F8F7F4] border border-[#E8E4DC]">
+                <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">{m.label}</div>
                 <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? c.accent : NAVY }}>{m.value}</div>
               </div>
             ))}
@@ -185,11 +184,11 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <h1 style={{ ...CG, color: "#fff", fontSize: "40px", fontWeight: 600, lineHeight: 1.1 }}>
-                  Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Intelligence</em> Dashboard
+                  Strategic <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Intelligence</em> Dashboard
                 </h1>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex gap-8 items-center rounded-sm">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex gap-8 items-center rounded-none">
                 <KPICard 
                   label="Execution Score" 
                   value={`${scoreValue}%`} 
@@ -217,7 +216,7 @@ export default function Dashboard() {
                   title="Depth Chart"
                   description="170 templates across 9 strategic domains"
                   icon={Target}
-                  color="violet"
+                  color="teal"
                   link="/playbook-library"
                   metrics={[
                     { label: 'Playbook Templates', value: '170' },
@@ -229,7 +228,7 @@ export default function Dashboard() {
                   title="Monitor Signals"
                   description="Real-time signal detection and alerts"
                   icon={Radio}
-                  color="blue"
+                  color="navy"
                   link="/signal-intelligence"
                   metrics={[
                     { label: 'AI Modules', value: '5 Active', highlight: true },
@@ -241,7 +240,7 @@ export default function Dashboard() {
                   title="Execute Response"
                   description="12-minute coordinated response"
                   icon={Zap}
-                  color="emerald"
+                  color="gold"
                   link="/command-center"
                   metrics={[
                     { label: 'Active Scenarios', value: `${activeScenarios.length}` },
@@ -253,7 +252,7 @@ export default function Dashboard() {
                   title="Review Film"
                   description="AI-powered analysis and refinement"
                   icon={Brain}
-                  color="amber"
+                  color="teal"
                   link="/institutional-memory"
                   metrics={[
                     { label: 'Patterns Found', value: '18' },
@@ -262,11 +261,11 @@ export default function Dashboard() {
                 />
               </div>
 
-              <Card className="border-[#E8E4DC] bg-white">
+              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader className="border-b border-[#E8E4DC]">
                   <div className="flex items-center justify-between">
                     <CardTitle style={{ ...CG, fontSize: "24px", color: NAVY }}>Intelligence Feed</CardTitle>
-                    <Badge style={{ background: "rgba(10,15,46,0.05)", color: NAVY, border: "none" }}>Live Updates</Badge>
+                    <Badge style={{ background: "rgba(10,15,46,0.05)", color: NAVY, border: "none" }} className="rounded-none">Live Updates</Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
@@ -276,9 +275,9 @@ export default function Dashboard() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Weak signal detected</span>
-                          <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">2m ago</span>
+                          <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">2m ago</span>
                         </div>
-                        <p className="text-xs text-gray-600">Competitor pricing change detected across 3 regions.</p>
+                        <p className="text-xs text-[#6B7280]">Competitor pricing change detected across 3 regions.</p>
                       </div>
                     </div>
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
@@ -286,9 +285,9 @@ export default function Dashboard() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>
-                          <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">15m ago</span>
+                          <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">15m ago</span>
                         </div>
-                        <p className="text-xs text-gray-600">M&A Integration playbook activated for Project Phoenix.</p>
+                        <p className="text-xs text-[#6B7280]">M&A Integration playbook activated for Project Phoenix.</p>
                       </div>
                     </div>
                   </div>
@@ -297,48 +296,48 @@ export default function Dashboard() {
             </div>
 
             <div className="lg:col-span-4 space-y-8">
-              <Card className="border-[#E8E4DC] bg-white">
+              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader>
                   <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Strategic Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <Link href="/playbook-library">
-                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent">
-                      <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent rounded-none">
+                      <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
                         <Target className="h-4 w-4 text-white" />
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Browse Playbooks</div>
-                        <div className="text-[10px] text-gray-500">170 strategic templates</div>
+                        <div className="text-[10px] text-[#6B7280]">170 strategic templates</div>
                       </div>
                     </Button>
                   </Link>
                   <Link href="/triggers-management">
-                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent">
-                      <div style={{ width: 32, height: 32, background: GOLD, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent rounded-none">
+                      <div style={{ width: 32, height: 32, background: GOLD, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
                         <Radio className="h-4 w-4 text-white" />
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Configure Triggers</div>
-                        <div className="text-[10px] text-gray-500">Set up AI monitoring</div>
+                        <div className="text-[10px] text-[#6B7280]">Set up AI monitoring</div>
                       </div>
                     </Button>
                   </Link>
                   <Link href="/preparedness-report">
-                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent">
-                      <div style={{ width: 32, height: 32, background: TEAL, borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent rounded-none">
+                      <div style={{ width: 32, height: 32, background: TEAL, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
                         <TrendingUp className="h-4 w-4 text-white" />
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Readiness Audit</div>
-                        <div className="text-[10px] text-gray-500">Full platform analysis</div>
+                        <div className="text-[10px] text-[#6B7280]">Full platform analysis</div>
                       </div>
                     </Button>
                   </Link>
                 </CardContent>
               </Card>
 
-              <Card style={{ background: NAVY }} className="border-none text-white">
+              <Card style={{ background: NAVY }} className="border-none text-white rounded-none shadow-sm">
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />
@@ -366,7 +365,7 @@ export default function Dashboard() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-[#E8E4DC]">
-            <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+            <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280]">
               Data refreshes automatically • Last updated {new Date().toLocaleTimeString()}
             </p>
           </div>

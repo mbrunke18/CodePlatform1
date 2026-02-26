@@ -317,8 +317,8 @@ export default function ExecutiveSimulationDemo() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-500 text-white';
-      case 'high': return 'bg-orange-500 text-white';
+      case 'critical': return 'bg-red-600 text-white';
+      case 'high': return 'bg-orange-600 text-white';
       case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E]';
       case 'low': return 'bg-[#0A0F2E] text-white';
       default: return 'bg-[#6B7280] text-white';
@@ -329,7 +329,7 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return 'text-[#2B8A6E]';
       case 'in_progress': return 'text-[#0A0F2E] dark:text-[#C9A84C]';
-      case 'blocked': return 'text-red-500';
+      case 'blocked': return 'text-red-600';
       default: return 'text-[#6B7280] dark:text-white/60';
     }
   };
@@ -438,6 +438,7 @@ export default function ExecutiveSimulationDemo() {
                 onClick={startSimulation}
                 className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-12 py-6 text-lg"
                 data-testid="button-start-simulation"
+                style={{ background: "#C9A84C", color: "#0A0F2E" }}
               >
                 <Play className="w-5 h-5 mr-2" />
                 Begin Simulation
@@ -494,10 +495,10 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/80">Traditional Approach</span>
-                      <span className="text-red-500">48-72 hours</span>
+                      <span className="text-red-600">48-72 hours</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-red-500/50 rounded-full" style={{ width: '100%' }}></div>
+                      <div className="h-full bg-red-600/50 rounded-full" style={{ width: '100%' }}></div>
                     </div>
                   </div>
                   <div>
@@ -839,7 +840,7 @@ export default function ExecutiveSimulationDemo() {
                           <div className={`p-2 rounded-lg ${
                             signal.severity === 'critical' ? 'bg-red-100 dark:bg-red-900/30' :
                             signal.severity === 'high' ? 'bg-orange-100 dark:bg-orange-900/30' :
-                            'bg-blue-100 dark:bg-[#0A0F2E]/30'
+                            'bg-[#F8F7F4] dark:bg-[#0A0F2E]/30'
                           }`}>
                             <signal.icon className={`w-5 h-5 ${
                               signal.severity === 'critical' ? 'text-red-700' :
@@ -940,7 +941,7 @@ export default function ExecutiveSimulationDemo() {
                         </div>
                       </div>
                     </CardContent>
-                    <CardFooter className="bg-blue-100 dark:bg-[#0A0F2E]/30">
+                    <CardFooter className="bg-[#F8F7F4] dark:bg-[#0A0F2E]/30">
                       <Button className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E]" data-testid="button-activate-playbook">
                         <Rocket className="w-4 h-4 mr-2" />
                         Activate This Playbook

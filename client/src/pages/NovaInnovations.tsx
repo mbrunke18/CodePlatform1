@@ -54,7 +54,7 @@ export default function NovaInnovations() {
         { name: 'Full Deployment', status: 'planned', date: '2025-Q3' }
       ],
       icon: <Brain className="h-5 w-5" />,
-      color: 'blue'
+      color: 'navy'
     },
     {
       id: 'quantum-security',
@@ -79,7 +79,7 @@ export default function NovaInnovations() {
         { name: 'Implementation', status: 'planned', date: '2025-Q4' }
       ],
       icon: <Zap className="h-5 w-5" />,
-      color: 'purple'
+      color: 'gold'
     },
     {
       id: 'sustainable-tech',
@@ -104,7 +104,7 @@ export default function NovaInnovations() {
         { name: 'Scale-up', status: 'planned', date: '2025-Q4' }
       ],
       icon: <Layers className="h-5 w-5" />,
-      color: 'emerald'
+      color: 'teal'
     },
     {
       id: 'market-intelligence',
@@ -129,7 +129,7 @@ export default function NovaInnovations() {
         { name: 'Platform Launch', status: 'planned', date: '2025-Q3' }
       ],
       icon: <Target className="h-5 w-5" />,
-      color: 'orange'
+      color: 'gold'
     }
   ];
 
@@ -141,12 +141,11 @@ export default function NovaInnovations() {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
-      purple: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
-      emerald: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
-      orange: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`
+      navy: `text-[${NAVY}] bg-[${NAVY}]/12 border-[${NAVY}]/30`,
+      gold: `text-[${GOLD}] bg-[${GOLD}]/12 border-[${GOLD}]/30`,
+      teal: `text-[${TEAL}] bg-[${TEAL}]/12 border-[${TEAL}]/30`,
     };
-    return colors[color as keyof typeof colors] || colors.blue;
+    return colors[color as keyof typeof colors] || colors.navy;
   };
 
   const getPriorityColor = (priority: string) => {
