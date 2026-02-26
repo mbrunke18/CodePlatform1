@@ -104,12 +104,12 @@ export default function WorkspaceDetect() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-4 rounded-2xl bg-[#0A0F2E] shadow-lg shadow-[#0A0F2E]/30">
-                <Radar className="h-8 w-8 text-white" />
+                <Radar className="h-8 w-8 text-[#C9A84C]" />
               </div>
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Signal Ops</h1>
-                  <Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1">
+                  <Badge className="bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]/20 px-3 py-1">
                     DETECT
                   </Badge>
                 </div>
@@ -157,7 +157,7 @@ export default function WorkspaceDetect() {
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
-                      <span className="text-sm text-[#C9A84C]">EXECUTE</span>
+                      <span className="text-sm text-[#C9A84C] font-medium">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
@@ -206,7 +206,7 @@ export default function WorkspaceDetect() {
                     <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Competitor patent filing detected</h4>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">TechCorp filed 3 new AI patents</p>
                   </div>
-                  <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 flex-shrink-0">Medium</Badge>
+                  <Badge className="bg-[#2B8A6E] text-white border-none flex-shrink-0">Medium</Badge>
                   <span className="text-xs text-[#6B7280] whitespace-nowrap">14 min ago</span>
                 </div>
               </CardContent>
@@ -219,7 +219,7 @@ export default function WorkspaceDetect() {
                     <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Regulatory alert</h4>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">SEC proposed new AI disclosure requirements</p>
                   </div>
-                  <Badge variant="outline" className="text-red-600 border-red-600/30 flex-shrink-0">High</Badge>
+                  <Badge className="bg-red-600 text-white border-none flex-shrink-0">High</Badge>
                   <span className="text-xs text-[#6B7280] whitespace-nowrap">2 hours ago</span>
                 </div>
               </CardContent>
@@ -232,7 +232,7 @@ export default function WorkspaceDetect() {
                     <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Market shift</h4>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">APAC semiconductor demand up 23% QoQ</p>
                   </div>
-                  <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 flex-shrink-0">Low</Badge>
+                  <Badge className="bg-[#2B8A6E] text-white border-none flex-shrink-0">Low</Badge>
                   <span className="text-xs text-[#6B7280] whitespace-nowrap">4 hours ago</span>
                 </div>
               </CardContent>
@@ -245,7 +245,7 @@ export default function WorkspaceDetect() {
                     <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Social sentiment spike</h4>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Brand mentions up 340% on Twitter/X</p>
                   </div>
-                  <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 flex-shrink-0">Medium</Badge>
+                  <Badge className="bg-[#2B8A6E] text-white border-none flex-shrink-0">Medium</Badge>
                   <span className="text-xs text-[#6B7280] whitespace-nowrap">6 hours ago</span>
                 </div>
               </CardContent>

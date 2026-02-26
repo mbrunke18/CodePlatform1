@@ -10,7 +10,7 @@ import {
   Search, ChevronDown, ChevronRight, Shield, Zap, Brain,
   Network, AlertTriangle, BookOpen, Clock, Users, ArrowRight,
   Lock, TrendingUp, DollarSign, Globe2, Layers, Target,
-  HeartHandshake, Lightbulb
+  HeartHandshake, Lightbulb, Check, ChevronLeft
 } from "lucide-react";
 import type { Playbook } from "@shared/schema";
 import { useAuth } from "@/hooks/useAuth";
@@ -207,7 +207,7 @@ function CompoundDisruptionSection() {
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
-            const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI");
+            const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI") || item.domains.includes("Growth") || item.domains.includes("Market");
             const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate");
             const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
             return (
@@ -237,10 +237,10 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
-          const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI");
+          const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI") || scenario.domains.includes("Growth") || scenario.domains.includes("Market");
           const isDefense = scenario.domains.includes("Crisis") || scenario.scenario.includes("Regulatory") || scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
           const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
-          const CG = { fontFamily: "'Cormorant Garamond', serif" };
+          const CG_LOCAL = { fontFamily: "'Cormorant Garamond', serif" };
           return (
             <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: "#E8E4DC" }}>
               <div className="flex items-start gap-4 mb-6">
@@ -248,7 +248,7 @@ function CompoundDisruptionSection() {
                   <Icon className="h-5 w-5" style={{ color: indicatorColor }} />
                 </div>
                 <div className="flex-1">
-                  <h4 style={{ ...CG, color: "#0A0F2E" }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
+                  <h4 style={{ ...CG_LOCAL, color: "#0A0F2E" }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
                   <p style={{ color: "#6B7280" }} className="text-sm leading-relaxed">{scenario.description}</p>
                 </div>
               </div>
@@ -265,15 +265,20 @@ function CompoundDisruptionSection() {
                     Activated Playbooks ({scenario.playbookCount})
                   </h5>
                   <div className="space-y-2">
-                    {scenario.playbooks.map((pb, j) => (
-                      <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
-                        <div className="flex-1">
-                          <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
-                          <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
+                    {scenario.playbooks.map((pb, j) => {
+                      const pbIsOffense = pb.domain.includes("Financial") || pb.domain.includes("Market") || pb.domain.includes("Growth");
+                      const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology");
+                      const pbIndicatorColor = pbIsOffense ? "#2B8A6E" : pbIsDefense ? "#0A0F2E" : "#C9A84C";
+                      return (
+                        <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
+                          <div className="flex-1">
+                            <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
+                            <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
+                          </div>
+                          <span style={{ background: "white", color: pbIndicatorColor, borderColor: pbIndicatorColor }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
                         </div>
-                        <span style={{ background: "rgba(10,15,46,0.05)", color: "#6B7280", borderColor: "#E8E4DC" }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -367,8 +372,6 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     return true;
   });
 
-  const activeDomainInfo = DOMAINS.find((d) => d.id === activeDomain)!;
-
   return (
     <div className="min-h-screen bg-white">
       {!embedded && <StandardNav />}
@@ -433,46 +436,17 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   <button
                     key={domain.id}
                     onClick={() => setActiveDomain(domain.id)}
-                    style={{ 
-                      width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
-                      background: isActive ? "rgba(0,0,0,0.03)" : "transparent",
-                      border: "none",
+                    className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all"
+                    style={{
+                      background: isActive ? "rgba(201,168,76,0.08)" : "transparent",
                       color: isActive ? NAVY : MUTED,
                       fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
                     }}
                   >
-                    {Icon && <Icon className="h-4 w-4" style={{ color: isActive ? GOLD : MUTED }} />}
-                    {!Icon && <BookOpen className="h-4 w-4" style={{ color: isActive ? GOLD : MUTED }} />}
-                    <span className="flex-1 truncate">{domain.label}</span>
-                    <span style={{ fontSize: 10, color: MUTED, opacity: 0.7 }}>{domain.count}</span>
-                  </button>
-                );
-              })}
-            </nav>
-
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4, marginTop: 24 }}>Urgency</div>
-            <nav className="space-y-0.5">
-              {URGENCY_FILTERS.map((u) => {
-                const isActive = activeUrgency === u.id;
-                return (
-                  <button
-                    key={u.id}
-                    onClick={() => setActiveUrgency(u.id)}
-                    style={{ 
-                      width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "8px 12px", 
-                      background: isActive ? "rgba(0,0,0,0.03)" : "transparent",
-                      border: "none",
-                      color: isActive ? NAVY : MUTED,
-                      fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
-                    }}
-                  >
-                    <span className="flex items-center gap-1.5">
-                      {u.id === "critical" && <span className="w-2 h-2 rounded-full" style={{ background: "#EF4444" }} />}
-                      {u.id === "high" && <span className="w-2 h-2 rounded-full" style={{ background: GOLD }} />}
-                      {u.id === "standard" && <span className="w-2 h-2 rounded-full" style={{ background: TEAL }} />}
-                      {u.label}
-                    </span>
-                    {"count" in u && <span style={{ fontSize: 10, color: MUTED, opacity: 0.7, marginLeft: "auto" }}>{u.count}</span>}
+                    <div className="flex items-center gap-3">
+                      {Icon && <Icon className="h-3.5 w-3.5" style={{ color: isActive ? GOLD : MUTED }} />}
+                      <span>{domain.label}</span>
+                    </div>
                   </button>
                 );
               })}
@@ -480,206 +454,126 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
           </div>
         </aside>
 
-        <div className="flex-1 min-w-0">
+        <main className="flex-1 min-w-0">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b" style={{ borderColor: BORDER }}>
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: MUTED }} />
-              <input
-                type="text"
-                placeholder="Search 170 playbooks..."
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input 
+                className="pl-10 border-gray-200 focus:border-[#C9A84C] focus:ring-[#C9A84C]" 
+                placeholder="Search templates..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                style={{
-                  width: "100%", padding: "10px 12px 10px 40px", fontSize: 14,
-                  border: `1px solid ${BORDER}`, background: "white", outline: "none"
-                }}
               />
             </div>
-            <div className="flex items-center gap-3">
-              <span style={{ fontSize: 11, fontWeight: 600, color: MUTED }}>URGENCY:</span>
-              <div className="flex bg-black/5 p-1 rounded">
-                {URGENCY_FILTERS.map((f) => (
-                  <button
-                    key={f.id}
-                    onClick={() => setActiveUrgency(f.id)}
-                    style={{
-                      padding: "4px 10px", fontSize: 10, fontWeight: 700, textTransform: "uppercase",
-                      color: activeUrgency === f.id ? NAVY : MUTED,
-                      background: activeUrgency === f.id ? "white" : "transparent",
-                      boxShadow: activeUrgency === f.id ? "0 1px 2px rgba(0,0,0,0.1)" : "none",
-                      borderRadius: 2
-                    }}
-                  >
-                    {f.label}
-                  </button>
-                ))}
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mr-2">Filter:</span>
+              {URGENCY_FILTERS.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setActiveUrgency(f.id)}
+                  style={{
+                    padding: "4px 10px",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    background: activeUrgency === f.id ? "#0A0F2E" : "transparent",
+                    color: activeUrgency === f.id ? "white" : MUTED,
+                    border: `1px solid ${activeUrgency === f.id ? "#0A0F2E" : BORDER}`,
+                    borderRadius: 4
+                  }}
+                >
+                  {f.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div style={{ border: `1px solid ${BORDER}`, background: "#fff" }} className="overflow-hidden">
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: OFF, borderBottom: `1px solid ${BORDER}` }}>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider w-12">#</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider">Playbook Title</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden md:table-cell">Business Domain</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden lg:table-cell">Target Execution</th>
-                  <th className="text-left px-4 py-3 text-[10px] font-bold text-[#6B7280] uppercase tracking-wider hidden sm:table-cell">Urgency</th>
-                  <th className="px-4 py-3 w-20" />
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#E8E4DC]">
-                {publicTeasers.length === 0 && (templates || []).length === 0 ? (
-                  [1,2,3,4,5].map((i) => (
-                    <tr key={i} className="bg-white animate-pulse">
-                      <td className="px-4 py-4"><div className="h-5 w-8 bg-[#F8F7F4] rounded" /></td>
-                      <td className="px-4 py-4"><div className="h-4 w-48 bg-[#F8F7F4] rounded" /></td>
-                      <td className="px-4 py-4 hidden md:table-cell"><div className="h-4 w-24 bg-[#F8F7F4] rounded" /></td>
-                      <td className="px-4 py-4 hidden lg:table-cell"><div className="h-4 w-16 bg-[#F8F7F4] rounded" /></td>
-                      <td className="px-4 py-4 hidden sm:table-cell"><div className="h-5 w-16 bg-[#F8F7F4] rounded" /></td>
-                      <td className="px-4 py-4" />
-                    </tr>
-                  ))
-                ) : publicTeasers.map((pb, idx) => (
-                  <tr
-                    key={pb.id}
-                    className="bg-white hover:bg-[#F8F7F4] transition-colors group cursor-pointer"
-                    onClick={() => setLocation(`/playbook-library/${pb.id}`)}
-                  >
-                    <td className="px-4 py-4">
-                      <span style={{ ...CG, fontSize: 20, color: GOLD, fontWeight: 600 }}>{idx + 1}</span>
-                    </td>
-                    <td className="px-4 py-4">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span style={{ fontWeight: 600, color: NAVY }}>{pb.name}</span>
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "2px 7px", background: "rgba(201,168,76,0.12)", color: GOLD, border: `1px solid rgba(201,168,76,0.3)` }}>
-                          Free Preview
-                        </span>
+          <div className="grid md:grid-cols-2 gap-6">
+            {!isAuthenticated ? (
+              publicTeasers.map((playbook) => (
+                <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <Lock className="h-3.5 w-3.5 text-[#C9A84C]" />
+                        <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Locked Template</span>
                       </div>
-                      <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{pb.description?.slice(0, 80)}{(pb.description?.length || 0) > 80 ? "…" : ""}</div>
-                    </td>
-                    <td className="px-4 py-4 hidden md:table-cell">
-                      <span style={{ fontSize: 10, padding: "3px 8px", background: "white", color: NAVY, fontWeight: 700, textTransform: "uppercase", border: `1px solid ${BORDER}` }}>
-                        {pb.domain || pb.category || "General"}
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 hidden lg:table-cell">
-                      <span style={{ color: TEAL, fontWeight: 600, fontSize: 12 }}>~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
-                    </td>
-                    <td className="px-4 py-4 hidden sm:table-cell">
-                      <UrgencyBadge urgency="critical" />
-                    </td>
-                    <td className="px-4 py-4 text-right">
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0 rounded-full hover:bg-[#0A0F2E] hover:text-white">
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-
-                <tr style={{ background: OFF }}>
-                  <td colSpan={6} className="px-4 py-6 text-center">
-                    <div className="flex items-center justify-center gap-4 flex-wrap">
-                      <Lock className="h-4 w-4" style={{ color: "#6B7280" }} />
-                      <span style={{ fontSize: 13, color: NAVY }}>
-                        <strong>+ {Math.max(0, (activeDomainInfo?.count || 170) - publicTeasers.length)} more playbooks</strong> — sign in to unlock the full library
-                      </span>
-                      <Button
+                      <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
+                    </div>
+                    <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-xl font-bold mb-2 group-hover:text-[#C9A84C] transition-colors">{playbook.name}</h3>
+                    <p style={{ color: "#6B7280" }} className="text-sm line-clamp-2 mb-6 leading-relaxed">
+                      {playbook.description}
+                    </p>
+                    <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: "#F8F7F4" }}>
+                      <div className="flex gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-[9px] font-bold text-gray-400 uppercase">Role</span>
+                          <span className="text-[11px] font-semibold text-[#0A0F2E]">{playbook.domain}</span>
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-[9px] font-bold text-gray-400 uppercase">Complexity</span>
+                          <span className="text-[11px] font-semibold text-[#0A0F2E]">High</span>
+                        </div>
+                      </div>
+                      <Button 
                         size="sm"
-                        onClick={() => window.location.href = "/api/login"}
-                        style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
-                        className="hover:bg-[#141B45]"
+                        style={{ background: "#0A0F2E", color: "white" }}
+                        className="font-bold text-[11px] uppercase tracking-wider px-5"
+                        onClick={() => setLocation("/auth")}
                       >
-                        Sign In to Access
+                        Unlock Playbook
                       </Button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {isAuthenticated && searchFiltered.length > 0 && (
-            <div className="mt-6">
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="h-4 w-4" style={{ color: TEAL }} />
-                <span className="text-sm font-bold" style={{ color: NAVY }}>Full Library — {searchFiltered.length} playbooks</span>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {searchFiltered.slice(0, 12).map((pb) => (
-                  <div
-                    key={pb.id}
-                    style={{ border: `1px solid ${BORDER}`, background: "white" }}
-                    className="p-4 hover:shadow-md hover:border-[#C9A84C] transition-all cursor-pointer"
-                    onClick={() => setLocation(`/playbooks/${pb.id}/preview`)}
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <span style={{ fontSize: 10, padding: "2px 6px", background: "white", color: NAVY, fontWeight: 700, textTransform: "uppercase", border: `1px solid ${BORDER}` }}>
-                        {pb.domain || "General"}
-                      </span>
-                      <span style={{ color: GOLD, fontSize: 12, fontWeight: 600 }} className="whitespace-nowrap">~{pb.avgResponseTimeSeconds ? Math.round(pb.avgResponseTimeSeconds / 60) : 12}m</span>
-                    </div>
-                    <h3 style={{ color: NAVY }} className="text-sm font-semibold leading-snug mb-1 line-clamp-2">{pb.name}</h3>
-                    <p style={{ color: MUTED }} className="text-xs line-clamp-2">{pb.description}</p>
-                    <div className="flex items-center gap-1 mt-3">
-                      <span style={{ fontSize: 10, fontWeight: 700, padding: "2px 6px", background: "rgba(43,138,110,0.1)", color: TEAL, textTransform: "uppercase", border: `1px solid rgba(43,138,110,0.2)` }}>Validated</span>
-                      <ChevronRight className="h-3.5 w-3.5 ml-auto" style={{ color: MUTED }} />
                     </div>
                   </div>
-                ))}
-              </div>
-              {searchFiltered.length > 12 && (
-                <div className="text-center mt-4">
-                  <Button variant="outline" size="sm" onClick={() => setLocation("/identify/playbook-library")} style={{ borderRadius: 0 }}>
-                    Browse all {searchFiltered.length} matching playbooks
-                    <ChevronRight className="ml-1.5 h-4 w-4" />
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
+                </Card>
+              ))
+            ) : (
+              searchFiltered.map((playbook) => (
+                <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-2">
+                        <Check className="h-3.5 w-3.5 text-[#2B8A6E]" />
+                        <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Enterprise Tier</span>
+                      </div>
+                      <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
+                    </div>
+                    <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-xl font-bold mb-2 group-hover:text-[#C9A84C] transition-colors">{playbook.name}</h3>
+                    <p style={{ color: "#6B7280" }} className="text-sm line-clamp-2 mb-6 leading-relaxed">
+                      {playbook.description}
+                    </p>
+                    <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: "#F8F7F4" }}>
+                      <div className="flex gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-[9px] font-bold text-gray-400 uppercase">Role</span>
+                          <span className="text-[11px] font-semibold text-[#0A0F2E]">{playbook.domain}</span>
+                        </div>
+                      </div>
+                      <Button 
+                        size="sm"
+                        style={{ background: "#0A0F2E", color: "white" }}
+                        className="font-bold text-[11px] uppercase tracking-wider px-5"
+                        onClick={() => setLocation(`/playbooks/customize?template=${playbook.id}`)}
+                      >
+                        Deploy Playbook
+                        <ChevronRight className="ml-2 h-3.5 w-3.5" />
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))
+            )}
+          </div>
 
           <CompoundDisruptionSection />
-        </div>
+        </main>
       </div>
 
-      {!embedded && (
-        <div style={{ background: NAVY }} className="mt-12">
-          <div className="max-w-6xl mx-auto px-6 py-12">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <div style={{ ...CG, color: "white" }} className="text-xl font-semibold mb-1">VaughnMartin</div>
-                <div style={{ color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }} className="mb-4">Execution OS</div>
-                <p className="text-sm text-white/50 leading-relaxed">170 playbooks. 9 domains. Built for Fortune 1000 strategic velocity.</p>
-              </div>
-              <div>
-                <div className="text-[10px] font-bold tracking-widest uppercase text-white/40 mb-4">Browse</div>
-                <ul className="space-y-2 text-sm text-white/60">
-                  <li><button onClick={() => setActiveDomain("all")} className="hover:text-white transition-colors">All Playbooks</button></li>
-                  <li><button onClick={() => setActiveDomain("financial")} className="hover:text-white transition-colors">Financial Response</button></li>
-                  <li><button onClick={() => setActiveDomain("crisis")} className="hover:text-white transition-colors">Crisis Management</button></li>
-                  <li><button onClick={() => setActiveDomain("competitive")} className="hover:text-white transition-colors">Competitive Intel</button></li>
-                  <li><button onClick={() => setActiveDomain("ma")} className="hover:text-white transition-colors">M&A Integration</button></li>
-                </ul>
-              </div>
-              <div>
-                <div className="text-[10px] font-bold tracking-widest uppercase text-white/40 mb-4">Platform</div>
-                <ul className="space-y-2 text-sm text-white/60">
-                  <li><a href="/platform-overview" className="hover:text-white transition-colors">Platform Overview</a></li>
-                  <li><a href="/why-executeiq" className="hover:text-white transition-colors">Why Execution OS</a></li>
-                  <li><a href="/try-demo" className="hover:text-white transition-colors">Try a Demo</a></li>
-                  <li><a href="/contact" className="hover:text-white transition-colors">Request Pilot Access</a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <p className="text-xs text-white/30">© 2026 VaughnMartin. All rights reserved.</p>
-              <p className="text-xs text-white/30">executeiq.io</p>
-            </div>
-          </div>
-        </div>
-      )}
+      {!embedded && <Footer />}
     </div>
   );
+}
+
+function Card({ children, className, style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) {
+  return <div className={`border rounded-xl overflow-hidden ${className}`} style={style}>{children}</div>;
 }

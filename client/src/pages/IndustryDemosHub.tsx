@@ -181,7 +181,7 @@ const industryDemos: IndustryDemo[] = [
 
 const categoryBadge = (cat: string) => {
   if (cat === 'OFFENSE') return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
-  if (cat === 'DEFENSE') return 'bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20';
+  if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/10 text-[#C9A84C] border-[#0A0F2E]/20';
   return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
 };
 
@@ -282,7 +282,7 @@ export default function IndustryDemosHub() {
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-xl font-bold text-[#0A0F2E]">Crisis Response</h2>
-              <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 text-xs">DEFENSE</Badge>
+              <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-xs">DEFENSE</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl">
               When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.

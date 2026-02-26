@@ -16,6 +16,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Link } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
+import StandardNav from '@/components/layout/StandardNav';
 import { 
   BookOpen,
   Copy,
@@ -98,180 +99,87 @@ const SAMPLE_TEMPLATES: PlaybookTemplate[] = [
 export default function PlaybookCustomization({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDomain, setSelectedDomain] = useState<string>('all');
-  const [isCustomizationDialogOpen, setIsCustomizationDialogOpen] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<PlaybookTemplate | null>(null);
-  
-  // Customization form state
-  const [customName, setCustomName] = useState('');
-  const [customDescription, setCustomDescription] = useState('');
-  const [budgetLimit, setBudgetLimit] = useState('');
-  const [approvalRequired, setApprovalRequired] = useState(true);
-  const [customizationStep, setCustomizationStep] = useState(1);
-  
-  // Stakeholder assignments
-  const [stakeholderAssignments, setStakeholderAssignments] = useState<Array<{role: string; assignedTo: string; approvalAuthority: number}>>([]);
-  
-  // Fetch playbooks from API
-  const { data: playbooks, isLoading } = useQuery({
-    queryKey: ['/api/playbooks'],
+  const [isDialogOpen, setIsDialog] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDomain, setSelectedDomain] = useState('all');
+
+  const { data: templates = SAMPLE_TEMPLATES } = useQuery<PlaybookTemplate[]>({
+    queryKey: ['/api/playbook-templates'],
+    enabled: false, // Using samples for now
   });
-  
-  // Mutation for saving customized playbooks
-  const savePlaybookMutation = useMutation({
-    mutationFn: async (customizedPlaybook: CustomizedPlaybook) => {
-      return apiRequest('POST', '/api/scenarios', {
-        title: customizedPlaybook.name,
-        description: customizedPlaybook.description,
-        category: selectedTemplate?.category || 'custom',
-        status: 'preparing',
-        budgetLimit: customizedPlaybook.budgetLimit,
-        approvalRequired: customizedPlaybook.approvalRequired,
-        stakeholderAssignments: customizedPlaybook.stakeholderAssignments,
-        notificationPreferences: customizedPlaybook.notificationPreferences,
-        templateId: customizedPlaybook.templateId,
-      });
+
+  const customizeMutation = useMutation({
+    mutationFn: async (data: Partial<CustomizedPlaybook>) => {
+      const res = await apiRequest('POST', '/api/playbooks/customize', data);
+      return res.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
-      queryClient.invalidateQueries({ queryKey: ['/api/scenarios'] });
-      toast({ 
-        title: 'Playbook Customized', 
-        description: `"${customName}" has been saved to your organization's playbook library`,
+      toast({
+        title: "Success",
+        description: "Playbook customized successfully",
       });
-      setIsCustomizationDialogOpen(false);
-      setSelectedTemplate(null);
-    },
-    onError: () => {
-      toast({ 
-        title: 'Error', 
-        description: 'Failed to save playbook customization. Please try again.',
-        variant: 'destructive',
-      });
-    },
+      setIsDialog(false);
+    }
   });
-  
-  const templates = Array.isArray(playbooks) && playbooks.length > 0 
-    ? playbooks.map((p: any) => ({
-        id: p.id,
-        name: p.name || p.title,
-        category: p.category || 'general',
-        domain: p.domain || 'general',
-        description: p.description || '',
-        estimatedDuration: p.estimatedDuration || '4-12 hours',
-        complexity: p.complexity || 'medium',
-        stakeholderCount: p.stakeholderCount || 10,
-        tasks: p.tasksCount || 20,
-      }))
-    : SAMPLE_TEMPLATES;
-  
-  const filteredTemplates = templates.filter((template: PlaybookTemplate) => {
-    const matchesSearch = template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          template.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesDomain = selectedDomain === 'all' || template.category === selectedDomain;
+
+  const filteredTemplates = templates.filter(t => {
+    const matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         t.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDomain = selectedDomain === 'all' || t.category === selectedDomain;
     return matchesSearch && matchesDomain;
   });
-  
-  const handleStartCustomization = (template: PlaybookTemplate) => {
-    setSelectedTemplate(template);
-    setCustomName(template.name);
-    setCustomDescription(template.description);
-    setStakeholderAssignments([
-      { role: 'Executive Sponsor', assignedTo: '', approvalAuthority: 1000000 },
-      { role: 'Decision Maker', assignedTo: '', approvalAuthority: 500000 },
-      { role: 'Primary Executor', assignedTo: '', approvalAuthority: 100000 },
-    ]);
-    setCustomizationStep(1);
-    setIsCustomizationDialogOpen(true);
-  };
-  
-  const handleSaveCustomization = () => {
-    if (!customName) {
-      toast({ title: 'Error', description: 'Playbook name is required', variant: 'destructive' });
-      return;
-    }
-    
-    const customizedPlaybook: CustomizedPlaybook = {
-      id: `custom-${Date.now()}`,
-      templateId: selectedTemplate?.id || '',
-      name: customName,
-      description: customDescription,
-      budgetLimit: budgetLimit ? parseFloat(budgetLimit) : 0,
-      approvalRequired,
-      stakeholderAssignments,
-      customTasks: [],
-      notificationPreferences: {
-        onActivation: true,
-        onTaskComplete: true,
-        onEscalation: true,
-      },
-    };
-    
-    savePlaybookMutation.mutate(customizedPlaybook);
-  };
-  
-  const addStakeholderRole = () => {
-    setStakeholderAssignments([
-      ...stakeholderAssignments,
-      { role: '', assignedTo: '', approvalAuthority: 50000 }
-    ]);
-  };
-  
-  const removeStakeholderRole = (index: number) => {
-    setStakeholderAssignments(stakeholderAssignments.filter((_, i) => i !== index));
-  };
-  
-  const getComplexityColor = (complexity: string, category: string) => {
-    const isOffense = category === 'market' || category === 'growth' || category === 'offense' || category === 'competitive' || category === 'talent' || category === 'financial';
-    const isDefense = category === 'crisis' || category === 'regulatory' || category === 'defense' || category === 'technology' || category === 'operational';
-    const color = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
-    const contrastColor = (isOffense || isDefense) ? "white" : "#0A0F2E";
-    
-    switch (complexity) {
-      case 'low': return `bg-white border-[#E8E4DC] text-[${color}]`;
-      case 'medium': return `bg-[${color}]/10 text-[${color}] border-[${color}]/20`;
-      case 'high': return `bg-[${color}] text-[${contrastColor}] border-none`;
-      default: return 'bg-black/5 text-gray-700 border-[#E8E4DC]';
-    }
-  };
+
+  const NAVY = "#0A0F2E";
+  const NAVY_MID = "#141B45";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const BORDER = "#E8E4DC";
+  const MUTED = "#6B7280";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <PageLayout embedded={embedded}>
-      <div className="page-background min-h-screen bg-transparent p-6">
-        <div className="max-w-7xl mx-auto space-y-8">
-          
-          {/* Breadcrumb Navigation */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
+    <PageLayout>
+      <div className="min-h-screen bg-[#F8F7F4]">
+        {!embedded && <StandardNav />}
+        
+        <div className="max-w-[1600px] mx-auto px-6 py-12">
+          <div className="mb-8 flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-sm text-[#6B7280]">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
-                  <Home className="h-4 w-4" />
+                <Button variant="ghost" size="sm" className="p-0 h-auto font-medium hover:text-[#0A0F2E] bg-transparent">
+                  <Home className="h-4 w-4 mr-1" />
+                  Execution OS
                 </Button>
               </Link>
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-gray-900">Playbook Customization</span>
+              <span className="text-[#0A0F2E] font-bold">Playbook Customization</span>
             </div>
           </div>
 
           {/* Header */}
-          <div className="bg-[#0A0F2E] text-white p-6 rounded-lg border border-[#E8E4DC]">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                  <BookOpen className="w-7 h-7 text-[#C9A84C]" />
+          <div className="bg-[#0A0F2E] text-white p-10 rounded-2xl border border-[#E8E4DC] mb-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div className="flex items-center space-x-6">
+                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10">
+                  <BookOpen className="w-8 h-8 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold" data-testid="playbook-customization-title" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Customization</h1>
-                  <p className="text-gray-300 mt-1">Clone templates and customize for YOUR organization</p>
-                  <p className="text-gray-400 mt-1 text-sm">Assign your stakeholders, set budgets, and configure execution parameters</p>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-4 w-[2px] bg-[#C9A84C]"></div>
+                    <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C9A84C]">Template Engine</span>
+                  </div>
+                  <h1 style={CG} className="text-4xl font-bold" data-testid="playbook-customization-title">Strategic Playbook Customization</h1>
+                  <p className="text-gray-400 mt-2 text-lg">Architect your organization's response by cloning and configuring battle-tested templates.</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
                 <Link to="/">
-                  <Button variant="secondary" className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold border-0">
+                  <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold h-12 px-8 rounded-xl border-0">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -280,416 +188,217 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card className="bg-white border-[#E8E4DC]">
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-[#6B7280]">Total Templates</p>
-                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{templates.length}</p>
-                  </div>
-                  <BookOpen className="h-8 w-8 text-[#0A0F2E]" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-[#E8E4DC]">
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-[#6B7280]">Customized</p>
-                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3</p>
-                  </div>
-                  <Edit className="h-8 w-8 text-[#2B8A6E]" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-[#E8E4DC]">
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-[#6B7280]">Active</p>
-                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2</p>
-                  </div>
-                  <Play className="h-8 w-8 text-[#2B8A6E]" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-white border-[#E8E4DC]">
-              <CardContent className="p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-[#6B7280]">Domains</p>
-                    <p className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>8</p>
-                  </div>
-                  <Target className="h-8 w-8 text-[#0A0F2E]" />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
           {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
-              <Input 
-                placeholder="Search playbook templates..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 bg-white border-[#E8E4DC]"
-                data-testid="input-search-playbooks"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-10">
+            <div className="lg:col-span-3">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#6B7280]" />
+                <Input 
+                  placeholder="Search playbook templates by keyword, scenario, or domain..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 h-14 bg-white border-[#E8E4DC] rounded-xl text-lg focus:ring-[#C9A84C]"
+                  data-testid="input-search-playbooks"
+                />
+              </div>
             </div>
-            <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-              <SelectTrigger className="w-48 bg-white border-[#E8E4DC]">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="All Domains" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Domains</SelectItem>
-                {PLAYBOOK_DOMAINS.map((domain) => (
-                  <SelectItem key={domain.id} value={domain.id}>{domain.name}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div>
+              <Select value={selectedDomain} onValueChange={setSelectedDomain}>
+                <SelectTrigger className="h-14 bg-white border-[#E8E4DC] rounded-xl font-bold text-[#0A0F2E]">
+                  <Filter className="h-4 w-4 mr-2 text-[#C9A84C]" />
+                  <SelectValue placeholder="All Domains" />
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-[#E8E4DC]">
+                  <SelectItem value="all">All Strategic Domains</SelectItem>
+                  {PLAYBOOK_DOMAINS.map(domain => (
+                    <SelectItem key={domain.id} value={domain.id}>{domain.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
-          {/* Domain Quick Filters */}
-          <div className="flex flex-wrap gap-2">
-            <Button 
-              variant={selectedDomain === 'all' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSelectedDomain('all')}
-              className="gap-2"
-            >
-              All
-            </Button>
-            {PLAYBOOK_DOMAINS.map((domain) => {
-              const Icon = domain.icon;
+          {/* Template Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {filteredTemplates.map(template => {
+              const isOffense = template.category === 'market' || template.category === 'competitive' || template.category === 'growth';
+              const isDefense = template.category === 'crisis' || template.category === 'regulatory' || template.category === 'operational' || template.category === 'technology';
+              const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
+              
               return (
-                <Button 
-                  key={domain.id}
-                  variant={selectedDomain === domain.id ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setSelectedDomain(domain.id)}
-                  className="gap-2"
-                >
-                  <Icon className={`h-4 w-4 ${domain.color}`} />
-                  {domain.name}
-                </Button>
-              );
-            })}
-          </div>
-
-          {/* Playbook Templates Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredTemplates.map((template: PlaybookTemplate) => (
-              <Card key={template.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all">
-                <CardHeader className="pb-2">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <CardTitle className="text-[#0A0F2E] text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{template.name}</CardTitle>
-                      <CardDescription className="mt-1 text-[#6B7280] line-clamp-2">
-                        {template.description}
-                      </CardDescription>
+                <Card key={template.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 shadow-sm hover:shadow-md rounded-2xl overflow-hidden group">
+                  <div className="h-1.5 transition-colors" style={{ backgroundColor: indicatorColor }} />
+                  <CardHeader className="p-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <Badge variant="outline" className="bg-[#F8F7F4] border-[#E8E4DC] text-[#6B7280] font-bold uppercase tracking-widest text-[9px] px-3 py-1">
+                        {template.category.toUpperCase()}
+                      </Badge>
+                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#6B7280] uppercase">
+                      <Clock className="h-3 w-3" />
+                      {template.estimatedDuration}
                     </div>
                   </div>
+                  <CardTitle style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3 group-hover:text-[#C9A84C] transition-colors">
+                    {template.name}
+                  </CardTitle>
+                  <CardDescription className="text-[#6B7280] leading-relaxed line-clamp-2 min-h-[3rem]">
+                    {template.description}
+                  </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className={getComplexityColor(template.complexity, template.category)}>
-                      {template.complexity} complexity
-                    </Badge>
-                    <Badge variant="outline" className="text-[#0A0F2E] border-[#E8E4DC]">
-                      {template.category}
-                    </Badge>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div className="flex items-center gap-1 text-[#0A0F2E]">
-                      <Clock className="h-4 w-4 text-[#2B8A6E]" />
-                      <span>{template.estimatedDuration}</span>
+                <CardContent className="px-8 pb-8 pt-0">
+                  <div className="grid grid-cols-3 gap-4 mb-8">
+                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">STAKEHOLDERS</div>
+                      <div className="text-lg font-bold text-[#0A0F2E]">{template.stakeholderCount}</div>
                     </div>
-                    <div className="flex items-center gap-1 text-[#0A0F2E]">
-                      <Users className="h-4 w-4 text-[#2B8A6E]" />
-                      <span>{template.stakeholderCount}</span>
+                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">TASKS</div>
+                      <div className="text-lg font-bold text-[#0A0F2E]">{template.tasks}</div>
                     </div>
-                    <div className="flex items-center gap-1 text-[#0A0F2E]">
-                      <Target className="h-4 w-4 text-[#2B8A6E]" />
-                      <span>{template.tasks} tasks</span>
+                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">COMPLEXITY</div>
+                      <div className="text-[10px] font-bold text-[#0A0F2E] uppercase">{template.complexity}</div>
                     </div>
                   </div>
-                  
                   <Button 
-                    className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45]"
-                    onClick={() => handleStartCustomization(template)}
-                    data-testid={`button-customize-${template.id}`}
+                    onClick={() => { setSelectedTemplate(template); setIsDialog(true); }}
+                    className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12 rounded-xl"
                   >
                     <Copy className="h-4 w-4 mr-2" />
-                    Clone & Customize
+                    Customize Template
                   </Button>
                 </CardContent>
               </Card>
-            ))}
+            );
+          })}
           </div>
+        </div>
 
-          {filteredTemplates.length === 0 && (
-            <Card className="bg-gray-50 border-gray-200">
-              <CardContent className="p-12 text-center">
-                <BookOpen className="h-12 w-12 text-gray-800 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Playbooks Found</h3>
-                <p className="text-gray-800">Try adjusting your search or filter criteria</p>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Customization Dialog */}
-          <Dialog open={isCustomizationDialogOpen} onOpenChange={setIsCustomizationDialogOpen}>
-            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-              <DialogHeader>
-                <DialogTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  <Copy className="h-5 w-5 text-[#C9A84C]" />
-                  Customize Playbook
+        {/* Customization Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialog}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border-[#E8E4DC] p-0">
+            <div className="h-2 bg-[#C9A84C]" />
+            <div className="p-10">
+              <DialogHeader className="mb-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px]">Configuring</Badge>
+                </div>
+                <DialogTitle style={CG} className="text-4xl font-bold text-[#0A0F2E]">
+                  Customize: {selectedTemplate?.name}
                 </DialogTitle>
-                <DialogDescription>
-                  Customize "{selectedTemplate?.name}" for your organization
+                <DialogDescription className="text-lg text-[#6B7280] mt-2">
+                  Configure this playbook for your organization's specific operating model and governance.
                 </DialogDescription>
               </DialogHeader>
-              
-              {/* Step Progress */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-gray-800">Step {customizationStep} of 3</span>
-                </div>
-                <Progress value={(customizationStep / 3) * 100} className="h-2" />
-                  <div className="flex justify-between mt-2">
-                    <span className={`text-xs ${customizationStep >= 1 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Details</span>
-                    <span className={`text-xs ${customizationStep >= 2 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Stakeholders</span>
-                    <span className={`text-xs ${customizationStep >= 3 ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>Settings</span>
+
+              <Tabs defaultValue="basic" className="space-y-8">
+                <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC] rounded-xl h-12">
+                  <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">1. Identity</TabsTrigger>
+                  <TabsTrigger value="stakeholders" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">2. Command</TabsTrigger>
+                  <TabsTrigger value="governance" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">3. Governance</TabsTrigger>
+                  <TabsTrigger value="notifications" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">4. Comms</TabsTrigger>
+                </TabsList>
+
+                <TabsContent value="basic" className="space-y-8">
+                  <div className="grid gap-8">
+                    <div className="space-y-3">
+                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Playbook Name</Label>
+                      <Input defaultValue={selectedTemplate?.name} className="h-12 border-[#E8E4DC] rounded-xl font-bold text-[#0A0F2E]" />
+                    </div>
+                    <div className="space-y-3">
+                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Strategic Intent & Scope</Label>
+                      <Textarea defaultValue={selectedTemplate?.description} className="min-h-[120px] border-[#E8E4DC] rounded-xl leading-relaxed" />
+                    </div>
                   </div>
-              </div>
-              
-              {/* Step 1: Basic Details */}
-              {customizationStep === 1 && (
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label>Playbook Name *</Label>
-                    <Input 
-                      value={customName}
-                      onChange={(e) => setCustomName(e.target.value)}
-                      placeholder="Enter playbook name"
-                      data-testid="input-custom-name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Description</Label>
-                    <Textarea 
-                      value={customDescription}
-                      onChange={(e) => setCustomDescription(e.target.value)}
-                      placeholder="Describe this playbook..."
-                      rows={3}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Budget Limit ($)</Label>
-                    <Input 
-                      type="number"
-                      value={budgetLimit}
-                      onChange={(e) => setBudgetLimit(e.target.value)}
-                      placeholder="e.g., 500000"
-                    />
-                    <p className="text-xs text-gray-800">Maximum budget that can be authorized during playbook execution</p>
-                  </div>
-                </div>
-              )}
-              
-              {/* Step 2: Stakeholder Assignments */}
-              {customizationStep === 2 && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <Label className="text-lg">Assign Stakeholders</Label>
-                    <Button variant="outline" size="sm" onClick={addStakeholderRole}>
-                      <Plus className="h-4 w-4 mr-2" />
-                      Add Role
-                    </Button>
-                  </div>
-                  <p className="text-sm text-gray-800">Assign people from your organization to each role in this playbook</p>
-                  
-                  <div className="space-y-3">
-                    {stakeholderAssignments.map((assignment, idx) => (
-                      <Card key={idx} className="bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-                        <CardContent className="p-4">
-                          <div className="flex items-start gap-4">
-                            <div className="flex-1 grid grid-cols-3 gap-3">
-                              <div className="space-y-1">
-                                <Label className="text-xs">Role</Label>
-                                <Input 
-                                  value={assignment.role}
-                                  onChange={(e) => {
-                                    const updated = [...stakeholderAssignments];
-                                    updated[idx].role = e.target.value;
-                                    setStakeholderAssignments(updated);
-                                  }}
-                                  placeholder="e.g., Executive Sponsor"
-                                />
-                              </div>
-                              <div className="space-y-1">
-                                <Label className="text-xs">Assigned To</Label>
-                                <Input 
-                                  value={assignment.assignedTo}
-                                  onChange={(e) => {
-                                    const updated = [...stakeholderAssignments];
-                                    updated[idx].assignedTo = e.target.value;
-                                    setStakeholderAssignments(updated);
-                                  }}
-                                  placeholder="Name or email"
-                                />
-                              </div>
-                              <div className="space-y-1">
-                                <Label className="text-xs">Approval Limit ($)</Label>
-                                <Input 
-                                  type="number"
-                                  value={assignment.approvalAuthority}
-                                  onChange={(e) => {
-                                    const updated = [...stakeholderAssignments];
-                                    updated[idx].approvalAuthority = parseInt(e.target.value) || 0;
-                                    setStakeholderAssignments(updated);
-                                  }}
-                                />
-                              </div>
-                            </div>
-                            <Button 
-                              variant="ghost" 
-                              size="icon"
-                              onClick={() => removeStakeholderRole(idx)}
-                              className="text-gray-800 hover:text-red-500 mt-5"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
+                </TabsContent>
+
+                <TabsContent value="stakeholders" className="space-y-8">
+                  <div className="space-y-4">
+                    <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Role Assignments</Label>
+                    <div className="grid gap-4">
+                      {[
+                        { role: 'Incident Commander', default: 'General Counsel' },
+                        { role: 'Communications Lead', default: 'VP Corporate Comms' },
+                        { role: 'Operational Lead', default: 'COO' },
+                        { role: 'Financial Oversight', default: 'CFO' },
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                          <div>
+                            <div className="text-sm font-bold text-[#0A0F2E]">{item.role}</div>
+                            <div className="text-xs text-[#6B7280] mt-1">Default Template Role</div>
                           </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+                          <Select defaultValue={item.default}>
+                            <SelectTrigger className="w-64 bg-white border-[#E8E4DC] rounded-xl font-bold">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent className="rounded-xl border-[#E8E4DC]">
+                              <SelectItem value="CEO">CEO</SelectItem>
+                              <SelectItem value="COO">COO</SelectItem>
+                              <SelectItem value="CFO">CFO</SelectItem>
+                              <SelectItem value="General Counsel">General Counsel</SelectItem>
+                              <SelectItem value="VP Corporate Comms">VP Corporate Comms</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-              
-              {/* Step 3: Execution Settings */}
-              {customizationStep === 3 && (
-                <div className="space-y-4">
-                  <Label className="text-lg">Execution Settings</Label>
-                  <p className="text-sm text-gray-800">Configure how this playbook should be executed when activated</p>
-                  
-                  <Card className="bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
-                    <CardContent className="p-4 space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium">Require Approval Before Activation</p>
-                          <p className="text-sm text-gray-800">Playbook must be approved by designated stakeholder before tasks begin</p>
+                </TabsContent>
+
+                <TabsContent value="governance" className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Single Action Budget Limit</Label>
+                      <div className="relative">
+                        <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
+                        <Input type="number" placeholder="50,000" className="pl-10 h-12 border-[#E8E4DC] rounded-xl font-bold" />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                      <div className="space-y-1">
+                        <Label className="font-bold text-[#0A0F2E]">Board Notification</Label>
+                        <p className="text-xs text-[#6B7280]">Trigger board alert on activation</p>
+                      </div>
+                      <Switch className="data-[state=checked]:bg-[#2B8A6E]" />
+                    </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="notifications" className="space-y-8">
+                  <div className="space-y-4">
+                    <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Event-Driven Intelligence</Label>
+                    <div className="grid gap-4">
+                      {[
+                        { title: 'Activation Alert', desc: 'Notify stakeholders immediately when playbook is engaged' },
+                        { title: 'Milestone Completion', desc: 'Broadcast progress as critical tasks are fulfilled' },
+                        { title: 'Escalation Triggers', desc: 'Automate high-priority alerts when timeline slippage occurs' },
+                      ].map((pref, i) => (
+                        <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                          <div className="space-y-1">
+                            <div className="text-sm font-bold text-[#0A0F2E]">{pref.title}</div>
+                            <div className="text-xs text-[#6B7280]">{pref.desc}</div>
+                          </div>
+                          <Switch defaultChecked className="data-[state=checked]:bg-[#2B8A6E]" />
                         </div>
-                        <Switch checked={approvalRequired} onCheckedChange={setApprovalRequired} />
-                      </div>
-                      
-                      <Separator />
-                      
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium">Notify on Activation</p>
-                          <p className="text-sm text-gray-800">Send notifications when playbook is activated</p>
-                        </div>
-                        <Switch defaultChecked />
-                      </div>
-                      
-                      <Separator />
-                      
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium">Notify on Task Completion</p>
-                          <p className="text-sm text-gray-800">Send notifications as tasks are completed</p>
-                        </div>
-                        <Switch defaultChecked />
-                      </div>
-                      
-                      <Separator />
-                      
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium">Auto-Escalate Blocked Tasks</p>
-                          <p className="text-sm text-gray-800">Automatically escalate if tasks are blocked for too long</p>
-                        </div>
-                        <Switch defaultChecked />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  {/* Summary */}
-                  <Card className="bg-[#2B8A6E]/10 border-[#2B8A6E]/30">
-                    <CardContent className="p-4">
-                      <h4 className="font-medium text-[#2B8A6E] mb-2">Customization Summary</h4>
-                      <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className="text-gray-800">Playbook Name:</div>
-                        <div className="text-gray-900">{customName}</div>
-                        <div className="text-gray-800">Budget Limit:</div>
-                        <div className="text-gray-900">${parseInt(budgetLimit || '0').toLocaleString()}</div>
-                        <div className="text-gray-800">Stakeholders:</div>
-                        <div className="text-gray-900">{stakeholderAssignments.length} assigned</div>
-                        <div className="text-gray-800">Approval Required:</div>
-                        <div className="text-gray-900">{approvalRequired ? 'Yes' : 'No'}</div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              )}
-              
-              <DialogFooter className="flex justify-between">
+                      ))}
+                    </div>
+                  </div>
+                </TabsContent>
+              </Tabs>
+
+              <div className="mt-12 flex items-center justify-end gap-4 border-t border-[#E8E4DC] pt-10">
+                <Button variant="ghost" onClick={() => setIsDialog(false)} className="h-12 px-8 font-bold text-[#6B7280] hover:text-[#0A0F2E] hover:bg-transparent">Cancel</Button>
                 <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    if (customizationStep > 1) {
-                      setCustomizationStep(customizationStep - 1);
-                    } else {
-                      setIsCustomizationDialogOpen(false);
-                    }
-                  }}
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12 px-10 rounded-xl"
+                  onClick={() => customizeMutation.mutate({})}
                 >
-                  {customizationStep === 1 ? 'Cancel' : 'Back'}
+                  <Save className="h-4 w-4 mr-2" />
+                  Deploy Customized Playbook
                 </Button>
-                <Button 
-                  onClick={() => {
-                    if (customizationStep < 3) {
-                      setCustomizationStep(customizationStep + 1);
-                    } else {
-                      handleSaveCustomization();
-                    }
-                  }}
-                  className="bg-[#2B8A6E] hover:bg-[#256B56]"
-                  data-testid="button-next-step"
-                  disabled={customizationStep === 3 && savePlaybookMutation.isPending}
-                >
-                  {customizationStep === 3 ? (
-                    savePlaybookMutation.isPending ? (
-                      <>
-                        <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full mr-2" />
-                        Saving...
-                      </>
-                    ) : (
-                      <>
-                        <Save className="h-4 w-4 mr-2" />
-                        Save Playbook
-                      </>
-                    )
-                  ) : (
-                    <>
-                      Next
-                      <ChevronRight className="h-4 w-4 ml-2" />
-                    </>
-                  )}
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-          
-        </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </PageLayout>
   );

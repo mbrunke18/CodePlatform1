@@ -712,8 +712,8 @@ export default function SandboxDemo() {
                     data-testid="slider-response-time"
                   />
                 </div>
-                <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg">
-                  <p className="text-sm text-[#C9A84C] dark:text-amber-400">
+                <div className="p-4 bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20 rounded-lg">
+                  <p className="text-sm text-[#C9A84C] dark:text-[#C9A84C]">
                     <strong>Industry Average:</strong> {TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime} hours
                   </p>
                   <p className="text-sm font-bold text-[#C9A84C] mt-1">
@@ -944,7 +944,7 @@ export default function SandboxDemo() {
                 {config.escalationPath.map((level, index) => (
                   <div key={level.id} className="flex items-center gap-4">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-gray-900 ${
-                      index === 0 ? 'bg-green-500' : index === 1 ? 'bg-amber-500' : 'bg-red-500'
+                      index === 0 ? 'bg-[#2B8A6E]' : index === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                     }`}>
                       L{level.level}
                     </div>
@@ -1222,8 +1222,8 @@ export default function SandboxDemo() {
                   </div>
                 </div>
               ))}
-              <div className="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg">
-                <p className="text-sm text-[#2B8A6E] dark:text-green-400">
+              <div className="p-4 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg">
+                <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
                   <strong>Automated Tracking:</strong> Execution OS will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
               </div>
@@ -1516,7 +1516,7 @@ export default function SandboxDemo() {
   const renderTriggerSetup = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-amber-100 text-[#C9A84C] dark:bg-amber-900/30 dark:text-amber-400">
+        <Badge className="mb-4 bg-[#C9A84C]/20 text-[#C9A84C] dark:bg-[#C9A84C]/30 dark:text-[#C9A84C]">
           Step 4 of 6: DETECT Phase
         </Badge>
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -1586,8 +1586,8 @@ export default function SandboxDemo() {
                   key={trigger.id}
                   className={`p-3 rounded-lg border cursor-pointer transition-all ${
                     triggerConfig.triggerType === trigger.id
-                      ? 'bg-amber-50 border-amber-300 dark:bg-amber-950/30 dark:border-amber-700'
-                      : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
+                      ? 'bg-[#C9A84C]/10 border-[#C9A84C]/30 dark:bg-[#C9A84C]/20 dark:border-[#C9A84C]/50'
+                      : 'hover:bg-[#F8F7F4] dark:hover:bg-[#141B45]'
                   }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, triggerType: trigger.id })}
                   data-testid={`trigger-type-${trigger.id}`}
@@ -1900,7 +1900,7 @@ export default function SandboxDemo() {
                   key={index}
                   className={`flex items-start gap-4 p-4 rounded-lg animate-in fade-in slide-in-from-left duration-500 ${
                     event.type === 'complete' 
-                      ? 'bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800'
+                      ? 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50'
                       : event.type === 'trigger'
                       ? 'bg-red-50 dark:bg-red-950/30'
                       : event.type === 'ai'
@@ -1924,7 +1924,7 @@ export default function SandboxDemo() {
                       {event.type === 'decision' && <GitBranch className="h-4 w-4 text-[#C9A84C]" />}
                       {event.type === 'stakeholder' && <Users className="h-4 w-4 text-[#2B8A6E]" />}
                       {event.type === 'escalation' && <ArrowUpRight className="h-4 w-4 text-[#C9A84C]" />}
-                      <span className={`font-medium ${event.type === 'complete' ? 'text-[#2B8A6E] dark:text-green-400' : ''}`}>
+                      <span className={`font-medium ${event.type === 'complete' ? 'text-[#2B8A6E]' : ''}`}>
                         {event.event}
                       </span>
                     </div>
@@ -1953,7 +1953,7 @@ export default function SandboxDemo() {
     return (
       <div className="space-y-8">
         <div className="text-center">
-          <Badge className="mb-4 bg-green-100 text-[#2B8A6E] dark:bg-green-900/30 dark:text-green-400">
+          <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] dark:bg-[#2B8A6E]/30 dark:text-[#2B8A6E]">
             Step 6 of 6: Results
           </Badge>
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -2137,7 +2137,7 @@ export default function SandboxDemo() {
               {config.escalationPath.map((level, i) => (
                 <div key={level.id} className="flex items-center gap-3 text-sm">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center text-gray-900 text-xs font-bold ${
-                    i === 0 ? 'bg-green-500' : i === 1 ? 'bg-amber-500' : 'bg-red-500'
+                    i === 0 ? 'bg-[#2B8A6E]' : i === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                   }`}>
                     L{level.level}
                   </div>
@@ -2165,16 +2165,16 @@ export default function SandboxDemo() {
                     <p><strong className="text-[#3BAF8A]">Escalation:</strong> {config.escalationPath.length} levels</p>
                   </div>
                   <div className="space-y-2">
-                    <p><strong className="text-green-300">Target Time:</strong> {config.responseTimeTarget} min</p>
-                    <p><strong className="text-green-300">Budget:</strong> ${(config.budgetPreApproved / 1000).toFixed(0)}K</p>
-                    <p><strong className="text-green-300">Signal Sources:</strong> {triggerConfig.signalSources.length}</p>
-                    <p><strong className="text-green-300">Thresholds:</strong> {triggerConfig.thresholds.length} rules</p>
-                    <p><strong className="text-green-300">Templates:</strong> {config.communicationTemplates.length} messages</p>
+                    <p><strong className="text-[#2B8A6E]">Target Time:</strong> {config.responseTimeTarget} min</p>
+                    <p><strong className="text-[#2B8A6E]">Budget:</strong> ${(config.budgetPreApproved / 1000).toFixed(0)}K</p>
+                    <p><strong className="text-[#2B8A6E]">Signal Sources:</strong> {triggerConfig.signalSources.length}</p>
+                    <p><strong className="text-[#2B8A6E]">Thresholds:</strong> {triggerConfig.thresholds.length} rules</p>
+                    <p><strong className="text-[#2B8A6E]">Templates:</strong> {config.communicationTemplates.length} messages</p>
                   </div>
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-5xl font-bold text-green-400 mb-2">
+                <div className="text-5xl font-bold text-[#2B8A6E] mb-2">
                   ${(roi.totalValue / 1000).toFixed(0)}K+
                 </div>
                 <div className="text-xl text-gray-800 mb-6">Estimated Annual Value</div>
@@ -2257,7 +2257,7 @@ export default function SandboxDemo() {
                       isActive 
                         ? 'bg-[#0A0F2E] text-white' 
                         : isComplete 
-                        ? 'bg-green-100 text-[#2B8A6E] dark:bg-green-900/30 dark:text-green-400'
+                        ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:bg-[#2B8A6E]/20 dark:text-[#2B8A6E]'
                         : 'bg-slate-100 text-gray-800 dark:bg-[#141B45]'
                     }`}
                   >
@@ -2270,7 +2270,7 @@ export default function SandboxDemo() {
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`w-6 h-0.5 mx-1 ${
-                      isComplete ? 'bg-green-400' : 'bg-slate-200 dark:bg-[#141B45]'
+                      isComplete ? 'bg-[#2B8A6E]' : 'bg-slate-200 dark:bg-[#141B45]'
                     }`} />
                   )}
                 </div>

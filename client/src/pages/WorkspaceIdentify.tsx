@@ -104,7 +104,7 @@ export default function WorkspaceIdentify() {
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-[#0A0F2E] shadow-lg shadow-[#0A0F2E]/30">
+              <div className="p-4 rounded-2xl bg-[#2B8A6E] shadow-lg shadow-[#2B8A6E]/30">
                 <ClipboardList className="h-8 w-8 text-white" />
               </div>
               <div>
@@ -152,7 +152,7 @@ export default function WorkspaceIdentify() {
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
                       <Radar className="h-4 w-4 text-[#0A0F2E]" />
-                      <span className="text-sm text-[#0A0F2E]">DETECT</span>
+                      <span className="text-sm text-[#0A0F2E] font-medium">DETECT</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
@@ -227,7 +227,7 @@ export default function WorkspaceIdentify() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Playbook #31</h4>
-                      <Badge className="bg-red-600/20 text-red-600 border-red-600/30">Triggered</Badge>
+                      <Badge className="bg-red-600 text-white border-none">Triggered</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Activated Feb 3 via automated trigger</p>
                   </div>

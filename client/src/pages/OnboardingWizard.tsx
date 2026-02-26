@@ -32,6 +32,7 @@ import {
   Settings,
   AlertTriangle,
   Database,
+  TrendingUp,
 } from 'lucide-react';
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
@@ -83,6 +84,23 @@ const ONBOARDING_STEPS = [
     borderColor: 'border-[#2B8A6E]/30',
   },
 ];
+
+const Loader2 = (props: any) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+  </svg>
+);
 
 export default function OnboardingWizard() {
   const { toast } = useToast();
@@ -155,16 +173,14 @@ export default function OnboardingWizard() {
       queryClient.invalidateQueries({ queryKey: ['/api/config/setup-progress'] });
     },
     onError: () => {
-      // Non-blocking — progress save failed but user can continue
+      // Non-blocking
     },
   });
 
   // Complete onboarding mutation
   const completeOnboardingMutation = useMutation({
     mutationFn: async () => {
-      // Save all configuration data
       const promises = [
-        // Update organization info
         apiRequest('PATCH', '/api/organizations/current', {
           industry: orgData.industry,
           size: parseInt(orgData.employeeCount) || 0,
@@ -174,11 +190,9 @@ export default function OnboardingWizard() {
             playbooks: playbookData
           }
         }).catch(() => {}),
-        // Save departments
         ...orgData.departments.map(dept => 
           apiRequest('POST', '/api/config/departments', { name: dept, description: `${dept} department` }).catch(() => {})
         ),
-        // Save success metrics
         apiRequest('POST', '/api/config/success-metrics', {
           name: 'Future Readiness Index',
           metricType: 'fri',
@@ -200,10 +214,7 @@ export default function OnboardingWizard() {
       ];
       
       await Promise.all(promises);
-
-      // Mark onboarding complete — this sets onboardingCompleted: true on the org
       await apiRequest('POST', '/api/onboarding/complete', {}).catch(() => {});
-
       return { success: true };
     },
     onSuccess: async () => {
@@ -233,12 +244,10 @@ export default function OnboardingWizard() {
   });
 
   const handleNext = () => {
-    // Mark current step as completed
     const newCompleted = new Set(completedSteps);
     newCompleted.add(currentStep);
     setCompletedSteps(newCompleted);
     
-    // Save progress
     saveProgressMutation.mutate({
       step: ONBOARDING_STEPS[currentStep].id,
       completed: true,
@@ -248,7 +257,6 @@ export default function OnboardingWizard() {
     if (currentStep < ONBOARDING_STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Complete onboarding
       completeOnboardingMutation.mutate();
     }
   };
@@ -291,7 +299,6 @@ export default function OnboardingWizard() {
       </div>
 
       <div className="max-w-4xl mx-auto space-y-8 py-12">
-        {/* Progress Header */}
         <Card className="bg-white border-[#E8E4DC] rounded-none">
           <CardContent className="pt-8">
           <div className="flex items-center justify-between mb-8">
@@ -316,7 +323,6 @@ export default function OnboardingWizard() {
             />
           </div>
             
-            {/* Step indicators */}
             <div className="flex justify-between">
               {ONBOARDING_STEPS.map((step, index) => {
                 const Icon = step.icon;
@@ -365,10 +371,8 @@ export default function OnboardingWizard() {
           </CardContent>
         </Card>
 
-        {/* Step Content */}
         <Card className="bg-white border-[#E8E4DC] rounded-none min-h-[400px]">
           <CardContent className="pt-8">
-            {/* Step 1: Organization Setup */}
             {currentStep === 0 && (
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -380,14 +384,13 @@ export default function OnboardingWizard() {
                       onChange={(e) => setOrgData({ ...orgData, companyName: e.target.value })}
                       placeholder="Enter your company name"
                       className="bg-gray-50 border-gray-200"
-                      data-testid="input-company-name"
                     />
                   </div>
                   
                   <div className="space-y-2">
                     <Label htmlFor="industry" className="text-gray-800">Industry</Label>
                     <Select value={orgData.industry} onValueChange={(v) => setOrgData({ ...orgData, industry: v })}>
-                      <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-industry">
+                      <SelectTrigger className="bg-gray-50 border-gray-200">
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
                       <SelectContent>
@@ -401,46 +404,19 @@ export default function OnboardingWizard() {
                       </SelectContent>
                     </Select>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="employeeCount" className="text-gray-800">Employee Count</Label>
-                    <Select value={orgData.employeeCount} onValueChange={(v) => setOrgData({ ...orgData, employeeCount: v })}>
-                      <SelectTrigger className="bg-gray-50 border-gray-200" data-testid="select-employees">
-                        <SelectValue placeholder="Select size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="1000-5000">1,000 - 5,000</SelectItem>
-                        <SelectItem value="5000-10000">5,000 - 10,000</SelectItem>
-                        <SelectItem value="10000-50000">10,000 - 50,000</SelectItem>
-                        <SelectItem value="50000+">50,000+</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="primaryContact" className="text-gray-800">Primary Contact</Label>
-                    <Input
-                      id="primaryContact"
-                      value={orgData.primaryContact}
-                      onChange={(e) => setOrgData({ ...orgData, primaryContact: e.target.value })}
-                      placeholder="Name of primary executive sponsor"
-                      className="bg-gray-50 border-gray-200"
-                      data-testid="input-primary-contact"
-                    />
-                  </div>
                 </div>
                 
                 <div className="pt-4 border-t border-gray-200">
-                  <Label className="text-gray-800 mb-3 block">Key Departments (will be included in playbook coordination)</Label>
+                  <Label className="text-gray-800 mb-3 block text-xs uppercase tracking-wider">Key Departments</Label>
                   <div className="flex flex-wrap gap-2">
                     {['Executive', 'Operations', 'Finance', 'Legal', 'Communications', 'IT', 'HR', 'Sales', 'Marketing'].map((dept) => (
                       <Badge
                         key={dept}
                         variant={orgData.departments.includes(dept) ? 'default' : 'outline'}
-                        className={`cursor-pointer rounded-none ${
+                        className={`cursor-pointer rounded-none border-none ${
                           orgData.departments.includes(dept) 
-                            ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45] border-[#0A0F2E]' 
-                            : 'hover:bg-[#F8F7F4] text-[#0A0F2E] border-[#E8E4DC]'
+                            ? 'bg-[#0A0F2E] text-white hover:bg-[#141B45]' 
+                            : 'bg-[#F8F7F4] text-[#6B7280] hover:bg-[#E8E4DC]'
                         }`}
                         onClick={() => {
                           if (orgData.departments.includes(dept)) {
@@ -449,7 +425,6 @@ export default function OnboardingWizard() {
                             setOrgData({ ...orgData, departments: [...orgData.departments, dept] });
                           }
                         }}
-                        data-testid={`badge-dept-${dept.toLowerCase()}`}
                       >
                         {dept}
                       </Badge>
@@ -459,369 +434,148 @@ export default function OnboardingWizard() {
               </div>
             )}
 
-            {/* Step 2: Integrations */}
             {currentStep === 1 && (
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <Label className="text-gray-900 font-semibold">What do you use for project tracking?</Label>
-                  <Select value={integrationsData.projectTracking} onValueChange={(v) => setIntegrationsData({ ...integrationsData, projectTracking: v })}>
-                    <SelectTrigger className="bg-gray-50 border-gray-200">
-                      <SelectValue placeholder="Select tool" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="jira">Jira (OAuth 2.0)</SelectItem>
-                      <SelectItem value="azure-devops">Azure DevOps (Coming Soon)</SelectItem>
-                      <SelectItem value="asana">Asana (Coming Soon)</SelectItem>
-                      <SelectItem value="monday">Monday.com (Coming Soon)</SelectItem>
-                      <SelectItem value="linear">Linear (Coming Soon)</SelectItem>
-                      <SelectItem value="shortcut">Shortcut (Coming Soon)</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-4 pt-4">
-                  <Label className="text-gray-900 font-semibold">What do you use for communication?</Label>
-                  <Select value={integrationsData.communication} onValueChange={(v) => setIntegrationsData({ ...integrationsData, communication: v })}>
-                    <SelectTrigger className="bg-gray-50 border-gray-200">
-                      <SelectValue placeholder="Select tool" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="slack">Slack (OAuth 2.0)</SelectItem>
-                      <SelectItem value="teams">Microsoft Teams (Coming Soon)</SelectItem>
-                      <SelectItem value="google-chat">Google Chat (Coming Soon)</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="pt-6 border-t border-gray-200 space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-semibold text-gray-900">Connect Integrations</h3>
-                    <span className="text-xs bg-[#C9A84C]/10 text-[#C9A84C] font-medium px-2 py-1 rounded">Optional — set up after onboarding</span>
-                  </div>
+                  <Label className="text-gray-900 font-semibold">Integrations Platform</Label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="bg-gray-50 border-gray-200 rounded-none">
+                    <Card className="bg-gray-50 border-[#E8E4DC] rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
+                          <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
                             <Layers className="h-5 w-5 text-[#0A0F2E]" />
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900">Jira</p>
-                            <p className="text-xs text-gray-800">Project tracking</p>
+                            <p className="font-medium text-[#0A0F2E]">Jira</p>
+                            <p className="text-xs text-[#6B7280]">Project Tracking</p>
                           </div>
                         </div>
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
-                          onClick={() => {
-                            toast({
-                              title: 'Jira Integration',
-                              description: 'Connect Jira from the Integration Hub after completing onboarding.',
-                            });
-                          }}
-                        >
-                          Set Up Later
-                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E]">Setup Later</Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-50 border-gray-200 rounded-none">
+                    <Card className="bg-gray-50 border-[#E8E4DC] rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
+                          <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
                             <Bell className="h-5 w-5 text-[#0A0F2E]" />
                           </div>
                           <div>
-                            <p className="font-medium text-gray-900">Slack</p>
-                            <p className="text-xs text-gray-800">Team communication</p>
+                            <p className="font-medium text-[#0A0F2E]">Slack</p>
+                            <p className="text-xs text-[#6B7280]">Communication</p>
                           </div>
                         </div>
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
-                          onClick={() => {
-                            toast({
-                              title: 'Slack Integration',
-                              description: 'Connect Slack from the Integration Hub after completing onboarding.',
-                            });
-                          }}
-                        >
-                          Set Up Later
-                        </Button>
+                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E]">Setup Later</Button>
                       </CardContent>
                     </Card>
                   </div>
-                  <p className="text-xs text-gray-800 italic text-center">
-                    Integrations can be connected from the Integration Hub at any time after onboarding
-                  </p>
                 </div>
               </div>
             )}
 
-            {/* Step 3: Trigger Configuration */}
             {currentStep === 2 && (
               <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="revenueThreshold" className="text-gray-800">Revenue Risk Threshold (%)</Label>
-                    <Input
-                      id="revenueThreshold"
-                      type="number"
-                      value={triggerData.revenueThreshold}
-                      onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: parseInt(e.target.value) })}
-                      className="bg-gray-50 border-gray-200"
-                    />
-                    <p className="text-[10px] text-[#6B7280] italic">Trigger alert when revenue deviation exceeds this %</p>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="marketShareThreshold" className="text-gray-800">Market Share Risk Threshold (%)</Label>
-                    <Input
-                      id="marketShareThreshold"
-                      type="number"
-                      value={triggerData.marketShareThreshold}
-                      onChange={(e) => setTriggerData({ ...triggerData, marketShareThreshold: parseInt(e.target.value) })}
-                      className="bg-gray-50 border-gray-200"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="sentimentThreshold" className="text-gray-800">Social Sentiment Threshold (%)</Label>
-                    <Input
-                      id="sentimentThreshold"
-                      type="number"
-                      value={triggerData.sentimentThreshold}
-                      onChange={(e) => setTriggerData({ ...triggerData, sentimentThreshold: parseInt(e.target.value) })}
-                      className="bg-gray-50 border-gray-200"
-                    />
-                    <p className="text-[10px] text-[#6B7280] italic">Negative sentiment spike required to trigger alert</p>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-gray-200 space-y-4">
-                  <h3 className="font-semibold text-gray-900">Intelligence Scanning</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
-                      <div className="flex items-center gap-3">
-                        <Target className="h-5 w-5 text-[#2B8A6E]" />
-                        <div>
-                          <p className="text-sm font-medium text-gray-900">Competitor Monitoring</p>
-                          <p className="text-xs text-[#6B7280]">Scan filings, news, and releases</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-[#0A0F2E] flex items-center gap-2 uppercase text-xs tracking-wider">
+                      <Target className="h-4 w-4" />
+                      Financial Thresholds
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <Label className="text-[#6B7280] text-[10px] uppercase">Revenue Variance (%)</Label>
+                          <span className="text-sm font-bold text-[#0A0F2E]">{triggerData.revenueThreshold}%</span>
                         </div>
+                        <Input 
+                          type="range" 
+                          min="1" max="20" step="0.5"
+                          value={triggerData.revenueThreshold}
+                          onChange={(e) => setTriggerData({ ...triggerData, revenueThreshold: parseFloat(e.target.value) })}
+                          className="h-1.5 bg-[#E8E4DC] accent-[#0A0F2E]"
+                        />
                       </div>
-                      <Switch 
-                        checked={triggerData.competitorAlertEnabled}
-                        onCheckedChange={(v) => setTriggerData({ ...triggerData, competitorAlertEnabled: v })}
-                        className="data-[state=checked]:bg-[#2B8A6E]"
-                      />
                     </div>
+                  </div>
 
-                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
-                      <div className="flex items-center gap-3">
-                        <Shield className="h-5 w-5 text-[#0A0F2E]" />
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-[#0A0F2E] flex items-center gap-2 uppercase text-xs tracking-wider">
+                      <Shield className="h-4 w-4" />
+                      Intelligence Alerts
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-3 bg-gray-50 border border-[#E8E4DC]">
                         <div>
-                          <p className="text-sm font-medium text-gray-900">Regulatory Scanning</p>
-                          <p className="text-xs text-[#6B7280]">Track legislative and regulatory shifts</p>
+                          <p className="text-sm font-bold text-[#0A0F2E]">Competitor Intel</p>
+                          <p className="text-[10px] text-[#6B7280]">Monitor competitor moves</p>
                         </div>
+                        <Switch 
+                          checked={triggerData.competitorAlertEnabled} 
+                          onCheckedChange={(c) => setTriggerData({ ...triggerData, competitorAlertEnabled: c })}
+                          className="data-[state=checked]:bg-[#2B8A6E]"
+                        />
                       </div>
-                      <Switch 
-                        checked={triggerData.regulatoryAlertEnabled}
-                        onCheckedChange={(v) => setTriggerData({ ...triggerData, regulatoryAlertEnabled: v })}
-                        className="data-[state=checked]:bg-[#2B8A6E]"
-                      />
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200">
-                      <div className="flex items-center gap-3">
-                        <Bell className="h-5 w-5 text-[#C9A84C]" />
-                        <div>
-                          <p className="text-sm font-medium text-gray-900">Media Sentiment Radar</p>
-                          <p className="text-xs text-[#6B7280]">Real-time public perception tracking</p>
-                        </div>
-                      </div>
-                      <Switch 
-                        checked={triggerData.mediaAlertEnabled}
-                        onCheckedChange={(v) => setTriggerData({ ...triggerData, mediaAlertEnabled: v })}
-                        className="data-[state=checked]:bg-[#2B8A6E]"
-                      />
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Step 4: Playbook Customization */}
             {currentStep === 3 && (
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <Label className="text-gray-900 font-semibold">Select core playbooks to activate:</Label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {[
-                      'Crisis Response', 
-                      'Market Opportunity', 
-                      'Competitive Response', 
-                      'Regulatory Compliance', 
-                      'Supply Chain Resiliency',
-                      'Executive Transition'
-                    ].map(playbook => (
+                  <Label className="text-gray-900 font-semibold uppercase text-xs tracking-wider">Playbook Activation</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {['Crisis Response', 'Market Opportunity', 'M&A Integration'].map(pb => (
                       <div 
-                        key={playbook}
-                        className={`p-3 border cursor-pointer flex items-center justify-between ${
-                          playbookData.selectedPlaybooks.includes(playbook)
-                            ? 'bg-[#0A0F2E]/5 border-[#0A0F2E]'
-                            : 'bg-white border-gray-200 hover:border-[#DFC178]'
-                        }`}
+                        key={pb}
                         onClick={() => {
-                          if (playbookData.selectedPlaybooks.includes(playbook)) {
-                            setPlaybookData({ ...playbookData, selectedPlaybooks: playbookData.selectedPlaybooks.filter(p => p !== playbook) });
+                          if (playbookData.selectedPlaybooks.includes(pb)) {
+                            setPlaybookData({ ...playbookData, selectedPlaybooks: playbookData.selectedPlaybooks.filter(p => p !== pb) });
                           } else {
-                            setPlaybookData({ ...playbookData, selectedPlaybooks: [...playbookData.selectedPlaybooks, playbook] });
+                            setPlaybookData({ ...playbookData, selectedPlaybooks: [...playbookData.selectedPlaybooks, pb] });
                           }
                         }}
+                        className={`p-4 border cursor-pointer ${
+                          playbookData.selectedPlaybooks.includes(pb)
+                            ? 'bg-[#0A0F2E]/5 border-[#0A0F2E] border-l-4'
+                            : 'bg-white border-[#E8E4DC]'
+                        }`}
                       >
-                        <span className="text-sm font-medium">{playbook}</span>
-                        {playbookData.selectedPlaybooks.includes(playbook) && (
-                          <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
-                        )}
+                        <span className="text-sm font-medium text-[#0A0F2E]">{pb}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-200">
-                  <div className="space-y-2">
-                    <Label htmlFor="responseTime" className="text-gray-800">Target Response Time (Hours)</Label>
-                    <Select 
-                      value={playbookData.responseTimeTarget.toString()} 
-                      onValueChange={(v) => setPlaybookData({ ...playbookData, responseTimeTarget: parseInt(v) })}
-                    >
-                      <SelectTrigger className="bg-gray-50 border-gray-200">
-                        <SelectValue placeholder="Select target" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="2">2 Hours (Immediate)</SelectItem>
-                        <SelectItem value="4">4 Hours (High Velocity)</SelectItem>
-                        <SelectItem value="12">12 Hours (Standard)</SelectItem>
-                        <SelectItem value="24">24 Hours (Thorough)</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="budgetThreshold" className="text-gray-800">Default Auth Threshold ($)</Label>
-                    <Input
-                      id="budgetThreshold"
-                      type="number"
-                      value={playbookData.defaultBudgetThreshold}
-                      onChange={(e) => setPlaybookData({ ...playbookData, defaultBudgetThreshold: parseInt(e.target.value) })}
-                      className="bg-gray-50 border-gray-200"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
-                  <div className="flex items-center gap-3">
-                    <Zap className="h-5 w-5 text-[#C9A84C]" />
-                    <div>
-                      <p className="text-sm font-bold text-[#0A0F2E]">Auto-Escalation Engine</p>
-                      <p className="text-xs text-[#6B7280]">Automatically escalate if response SLAs are breached</p>
-                    </div>
-                  </div>
-                  <Switch 
-                    checked={playbookData.autoEscalationEnabled}
-                    onCheckedChange={(v) => setPlaybookData({ ...playbookData, autoEscalationEnabled: v })}
-                    className="data-[state=checked]:bg-[#2B8A6E]"
-                  />
-                </div>
               </div>
             )}
 
-            {/* Step 5: Success Metrics */}
             {currentStep === 4 && (
               <div className="space-y-6">
-                <div className="space-y-4">
-                  <h3 className="font-semibold text-gray-900">Define Your KPIs</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
-                      <Label className="text-gray-800">Target Future Readiness Index (%)</Label>
-                      <div className="flex items-center gap-4">
-                        <div className="flex-1">
-                          <Progress value={metricsData.friTarget} className="h-2 bg-[#E8E4DC] [&>div]:bg-[#C9A84C]" />
-                        </div>
-                        <span className="font-bold text-[#0A0F2E]">{metricsData.friTarget}%</span>
-                      </div>
-                      <input 
-                        type="range" 
-                        min="50" 
-                        max="100" 
-                        step="0.1"
-                        value={metricsData.friTarget}
-                        onChange={(e) => setMetricsData({ ...metricsData, friTarget: parseFloat(e.target.value) })}
-                        className="w-full accent-[#0A0F2E]"
-                      />
-                    </div>
-
-                    <div className="space-y-3">
-                      <Label className="text-gray-800">Target Decision Velocity (Minutes)</Label>
-                      <div className="flex items-center gap-4">
-                        <div className="flex-1">
-                          <Progress value={100 - (metricsData.velocityTarget / 120 * 100)} className="h-2 bg-[#E8E4DC] [&>div]:bg-[#C9A84C]" />
-                        </div>
-                        <span className="font-bold text-[#2B8A6E]">{metricsData.velocityTarget}m</span>
-                      </div>
-                      <input 
-                        type="range" 
-                        min="5" 
-max="120" 
-                        step="1"
-                        value={metricsData.velocityTarget}
-                        onChange={(e) => setMetricsData({ ...metricsData, velocityTarget: parseInt(e.target.value) })}
-                        className="w-full accent-[#2B8A6E]"
-                      />
-                    </div>
+                <div className="p-6 bg-[#0A0F2E] text-white flex items-center gap-6">
+                  <TrendingUp className="h-8 w-8 text-[#C9A84C]" />
+                  <div>
+                    <h3 style={{ ...CG }} className="text-2xl font-bold">Future Readiness Index™</h3>
+                    <p className="text-white/60 text-sm">Target performance baseline</p>
                   </div>
+                </div>
 
-                  <div className="pt-4 space-y-4">
-                    <Label className="text-gray-800">Review & Governance Cadence</Label>
-                    <div className="grid grid-cols-3 gap-3">
-                      {['daily', 'weekly', 'monthly'].map(cadence => (
-                        <div 
-                          key={cadence}
-                          className={`p-4 border text-center cursor-pointer font-bold text-[10px] uppercase tracking-widest ${
-                            metricsData.reviewCadence === cadence
-                              ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]'
-                              : 'bg-white text-[#6B7280] border-gray-200 hover:border-[#DFC178]'
-                          }`}
-                          onClick={() => setMetricsData({ ...metricsData, reviewCadence: cadence as any })}
-                        >
-                          {cadence}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                  <div className="space-y-4">
+                    <Label className="text-gray-900 font-semibold uppercase text-xs tracking-wider">Primary Targets</Label>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <Label className="text-[#6B7280] text-[10px] uppercase">Target FRI (%)</Label>
+                          <span className="text-sm font-bold text-[#0A0F2E]">{metricsData.friTarget}%</span>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="mt-8 p-6 bg-[#0A0F2E] text-white space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center">
-                        <Rocket className="h-5 w-5 text-[#0A0F2E]" />
+                        <Input 
+                          type="range" min="50" max="100" step="0.1"
+                          value={metricsData.friTarget}
+                          onChange={(e) => setMetricsData({ ...metricsData, friTarget: parseFloat(e.target.value) })}
+                          className="h-1.5 bg-[#E8E4DC] accent-[#0A0F2E]"
+                        />
                       </div>
-                      <div>
-                        <h4 style={{ ...CG, fontSize: 18 }}>Ready for Launch</h4>
-                        <p className="text-xs text-white/60">Configure your workspace with sample demo data to explore capabilities immediately</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                      <span className="text-sm font-medium">Seed sample intelligence and playbooks</span>
-                      <Switch 
-                        checked={seedSampleData}
-                        onCheckedChange={setSeedSampleData}
-                        className="data-[state=checked]:bg-[#C9A84C]"
-                      />
                     </div>
                   </div>
                 </div>
@@ -842,15 +596,7 @@ max="120"
             
             <div className="flex items-center gap-3">
               <Button
-                variant="outline"
-                onClick={() => setLocation('/dashboard')}
-                className="text-[#0A0F2E] border-[#E8E4DC] hover:bg-white text-[10px] uppercase tracking-widest font-bold rounded-none"
-              >
-                Skip to Dashboard
-              </Button>
-              <Button
                 onClick={handleNext}
-                disabled={saveProgressMutation.isPending || completeOnboardingMutation.isPending}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold px-8 rounded-none"
               >
                 {currentStep === ONBOARDING_STEPS.length - 1 ? (

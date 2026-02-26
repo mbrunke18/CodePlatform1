@@ -159,7 +159,7 @@ export default function ExecutiveDashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Dashboard | ExecuteIQ",
+      title: "Executive Dashboard | VaughnMartin Execution OS",
       description: "Unified strategic command center for Execution OS.",
     });
   }, []);

@@ -171,7 +171,7 @@ export default function CustomerJourney() {
                 <CardContent className="p-8">
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2" style={CG}>{metric.value}</div>
                   <div className="text-[10px] font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">{metric.label}</div>
-                  <div className="text-[11px] text-[#6B7280] leading-relaxed">{metric.description}</div>
+                  <div className="text-[11px] text-[#6B7280] leading-relaxed font-medium">{metric.description}</div>
                 </CardContent>
               </Card>
             ))}

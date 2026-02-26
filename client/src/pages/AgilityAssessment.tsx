@@ -166,7 +166,7 @@ export default function AgilityAssessment() {
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
+              <Badge className="mb-4 bg-[#2B8A6E] text-white border-none font-bold">
                 <CheckCircle className="h-4 w-4 mr-2" />
                 Assessment Complete
               </Badge>
@@ -200,7 +200,7 @@ export default function AgilityAssessment() {
                   </div>
                   <div className="bg-[#2B8A6E]/10 rounded-lg p-6 border border-[#2B8A6E]/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-[#0A0F2E] mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-[#0A0F2E] dark:text-white text-sm">Potential Additional Growth with Execution OS</p>
+                    <p className="text-[#0A0F2E] dark:text-[#C9A84C] text-sm">Potential Additional Growth with Execution OS</p>
                   </div>
                   <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-[#C9A84C] mb-2">10.3%</div>
@@ -213,25 +213,25 @@ export default function AgilityAssessment() {
                     <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What This Means</h3>
                     {score < 60 ? (
                       <div className="text-left space-y-3">
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           Your organization is likely taking <span className="text-red-600 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
                         </p>
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-[#C9A84C] font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           With Execution OS, you could close the gap to top performers and capture an additional <span className="text-[#2B8A6E] font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
                       <div className="text-left space-y-3">
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           You're performing <span className="text-[#2B8A6E] font-semibold">above industry average</span>. Your organization is making progress on agility.
                         </p>
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           However, there's still room to reach the <span className="text-[#2B8A6E] font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
-                        <p className="text-[#0A0F2E] dark:text-white">
+                        <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           Execution OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
@@ -281,7 +281,7 @@ export default function AgilityAssessment() {
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <Badge className="mb-4 bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30">
+            <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">
               <BarChart3 className="h-4 w-4 mr-2" />
               Agility Assessment
             </Badge>

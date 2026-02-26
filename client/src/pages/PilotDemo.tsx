@@ -560,10 +560,10 @@ export default function PilotDemo() {
                     </div>
 
                     <div className="bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
-                      <h4 className="font-medium text-[#0A2920] dark:text-[#2B8A6E] mb-2 flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        What you'll see:
-                      </h4>
+                          <h4 className="font-medium text-[#0A2920] dark:text-[#2B8A6E] mb-2 flex items-center gap-2">
+                            <Clock className="w-4 h-4" />
+                            What you'll see:
+                          </h4>
                       <ul className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E] space-y-1">
                         <li>• Real-time Command Center showing each execution step</li>
                         <li>• AI analyzing the signal and matching to your trigger</li>

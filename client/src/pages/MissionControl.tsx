@@ -92,7 +92,7 @@ export default function MissionControl() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Mission Control | ExecuteIQ',
+      title: 'Mission Control | VaughnMartin Execution OS',
       description: 'Single-pane executive overview of strategic readiness and execution status.'
     });
   }, []);

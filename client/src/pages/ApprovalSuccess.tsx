@@ -12,7 +12,7 @@ export default function ApprovalSuccess() {
   const executionId = params.get('execution');
 
   useEffect(() => {
-    document.title = 'Approval Successful - M';
+    document.title = 'Approval Successful — Execution OS by VaughnMartin';
   }, []);
 
   return (

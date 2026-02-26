@@ -431,7 +431,7 @@ export default function ProductTour() {
                 </div>
               </div>
               <BrandStamp variant="dual" size="md" />
-          <Badge className="bg-red-600 text-white animate-pulse rounded-none border-0 uppercase text-[9px] tracking-widest font-bold px-3 py-1">
+                  <Badge className="bg-red-600 text-white animate-pulse rounded-none border-0 uppercase text-[9px] tracking-widest font-bold px-3 py-1">
                 <AlertTriangle className="w-3 h-3 mr-1" />
                 CRITICAL SIGNAL
               </Badge>
@@ -439,7 +439,7 @@ export default function ProductTour() {
           </div>
           <CardContent className="p-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-4 bg-red-50/50 border border-red-100 rounded-none">
+              <div className="flex items-start gap-4 p-4 bg-[#F8F7F4] border border-red-100 rounded-none">
                 <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-red-900 uppercase tracking-wide">Competitor Acquisition Announced</p>

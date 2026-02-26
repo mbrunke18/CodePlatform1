@@ -305,7 +305,7 @@ export default function ReadinessAssessment() {
           <div className="max-w-4xl mx-auto space-y-10 relative z-10">
             <div className="text-center">
               <BrandStamp variant="dual" size="md" className="mb-8" />
-              <Badge className="mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30">
+              <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">
                 <Clock className="w-4 h-4 mr-2" />
                 5-Minute Diagnostic
               </Badge>

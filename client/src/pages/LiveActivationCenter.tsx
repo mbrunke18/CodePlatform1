@@ -235,7 +235,6 @@ function formatElapsed(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-
 export default function LiveActivationCenter() {
   const params = new URLSearchParams(window.location.search);
   const urlPlaybook = params.get('playbook');
@@ -339,6 +338,13 @@ export default function LiveActivationCenter() {
     ]);
   }, []);
 
+  const completeActivation = useCallback(() => {
+    setActivationState('COMPLETED');
+    setShowCompletion(true);
+    if (timerRef.current) clearInterval(timerRef.current);
+    addActivity('system', 'Activation sequence complete — operational state maintained');
+  }, [addActivity]);
+
   const beginActivation = useCallback((id: string) => {
     setActivationId(id);
     setActivationState('ACTIVATING');
@@ -424,7 +430,7 @@ export default function LiveActivationCenter() {
     });
 
     runClientSimulation(initialStakeholders, initialTasks, playbookKey);
-  }, [selectedPlaybook, addActivity, industryOverlay, hasLiveIntegrations, organizationId, activePlaybook]);
+  }, [selectedPlaybook, addActivity, industryOverlay, hasLiveIntegrations, organizationId, activePlaybook, completeActivation]);
 
   const runClientSimulation = useCallback((initStakeholders: Stakeholder[], initTasks: Task[], playbookKey: string) => {
     simulationRef.current.forEach(t => clearTimeout(t));
@@ -432,7 +438,6 @@ export default function LiveActivationCenter() {
 
     const totalTime = 90;
     const stakeholderCount = initStakeholders.length;
-    const taskCount = initTasks.length;
 
     initStakeholders.forEach((s, i) => {
       const notifyDelay = 2000 + i * 800;
@@ -484,37 +489,24 @@ export default function LiveActivationCenter() {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'in_progress' } : t));
       }, startDelay);
 
-      const completeDelay = startDelay + 3000;
+      const completeDelay = startDelay + 5000 + Math.random() * 10000;
       const t2 = setTimeout(() => {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'completed' } : t));
-        addActivity('task', `Task: ${task.name} — COMPLETED`);
-      }, Math.min(completeDelay, (totalTime - 30) * 1000));
+        addActivity('task', `Task completed: ${task.name}`);
+      }, Math.min(completeDelay, (totalTime - 10) * 1000));
 
       simulationRef.current.push(t1, t2);
     });
 
-    const completionTimer = setTimeout(() => {
+    const tFinal = setTimeout(() => {
       completeActivation();
     }, totalTime * 1000);
-    simulationRef.current.push(completionTimer);
-  }, [addActivity]);
+    simulationRef.current.push(tFinal);
 
-  const completeActivation = useCallback(() => {
-    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-    setActivationState('COMPLETED');
-    setStakeholders(prev => prev.map(s => s.status !== 'acknowledged' ? { ...s, status: 'acknowledged', responseTime: 15 } : s));
-    setTasks(prev => prev.map(t => t.status !== 'completed' ? { ...t, status: 'completed' } : t));
-    addActivity('system', 'All coordination tasks complete — activation successful');
-    setTimeout(() => setShowCompletion(true), 800);
-  }, [addActivity]);
-
-  useEffect(() => {
-    if (!activationId) return;
     timerRef.current = setInterval(() => {
-      setElapsedSeconds(Math.floor((Date.now() - startTimeRef.current) / 1000));
-    }, 200);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [activationId]);
+      setElapsedSeconds(prev => prev + 1);
+    }, 1000);
+  }, [addActivity, completeActivation]);
 
   useEffect(() => {
     if (feedRef.current) {
@@ -524,622 +516,369 @@ export default function LiveActivationCenter() {
 
   useEffect(() => {
     return () => {
-      simulationRef.current.forEach(t => clearTimeout(t));
       if (socketRef.current) socketRef.current.disconnect();
       if (timerRef.current) clearInterval(timerRef.current);
+      simulationRef.current.forEach(t => clearTimeout(t));
     };
   }, []);
-
-  const cancelActivation = () => {
-    simulationRef.current.forEach(t => clearTimeout(t));
-    if (socketRef.current) { socketRef.current.disconnect(); socketRef.current = null; }
-    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-    setActivationId(null);
-    setShowCompletion(false);
-  };
-
-  const runAnother = () => {
-    cancelActivation();
-  };
-
-  const handleActivate = () => {
-    activateMutation.mutate(selectedPlaybook);
-  };
-
-  const acknowledgedCount = stakeholders.filter(s => s.status === 'acknowledged').length;
-  const completedTaskCount = tasks.filter(t => t.status === 'completed').length;
-  const coordinationPct = stakeholders.length > 0 ? Math.round((acknowledgedCount / stakeholders.length) * 100) : 0;
-  const taskPct = tasks.length > 0 ? Math.round((completedTaskCount / tasks.length) * 100) : 0;
-
-  const phaseLabel = currentPhase === 'FOLLOW_UP' ? 'FOLLOW UP' : currentPhase;
-  const simulatedSeconds = toSimulatedTime(elapsedSeconds);
 
   if (!activationId) {
     return (
       <PageLayout>
-        <div className="min-h-screen bg-[#F8F7F4] text-gray-900 p-6">
-          <div className="max-w-6xl mx-auto py-10 md:py-16">
-            <div className="mb-8">
-              <Link href="/dashboard" className="inline-flex items-center gap-2 text-sm text-[#0A0F2E] font-bold hover:text-[#C9A84C] transition-colors">
-                <ArrowLeft className="w-4 h-4" /> Back to Dashboard
-              </Link>
-            </div>
-            
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-8 w-[2px] bg-[#C9A84C]"></div>
-              <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Mission Control</span>
-              <h1 className="text-4xl font-bold ml-4 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                Select Playbook to <em className="italic text-[#C9A84C]">Activate</em>
-              </h1>
-            </div>
-
-            {(roleOverlay || industryOverlay) && (
-              <div className="mb-8 rounded-xl border border-[#E8E4DC] bg-white p-6 shadow-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <Target className="w-5 h-5 text-[#2B8A6E]" />
-                  <span className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {roleOverlay ? `${contextLabel} Perspective` : `${contextLabel} Industry`}
-                  </span>
-                </div>
-                <p className="text-sm text-[#6B7280] leading-relaxed mb-6">{contextPerspective}</p>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {industryOverlay && (
-                    <div className="p-4 rounded-lg bg-[#F8F7F4] border border-[#E8E4DC]">
-                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Target Scenario</div>
-                      <div className="text-sm font-bold text-[#0A0F2E] mb-1">{industryOverlay.scenario}</div>
-                      <div className="text-xs text-[#6B7280]">{industryOverlay.organization}</div>
-                    </div>
-                  )}
-
-                  {roleOverlay && (
-                    <div className="p-4 rounded-lg bg-[#F8F7F4] border border-[#E8E4DC]">
-                      <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Priority Executive Actions</div>
-                      <div className="space-y-2">
-                        {roleOverlay.yourActions.map((action, i) => (
-                          <div key={i} className="flex items-center gap-2 text-xs font-bold text-[#0A0F2E]">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#2B8A6E] flex-shrink-0" />
-                            {action}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+        <div className="min-h-screen bg-[#F8F7F4] p-12">
+          <div className="max-w-4xl mx-auto space-y-12">
+            <div className="text-center space-y-4">
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <div className="w-10 h-[2px] bg-[#C9A84C]" />
+                <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" }}>Activation Center</span>
+                <div className="w-10 h-[2px] bg-[#C9A84C]" />
               </div>
-            )}
-
-              {activeKpis && (
-                <div className="px-4 pb-4 border-t border-[#2B8A6E]/10 pt-3">
-                  <div className="grid grid-cols-3 gap-3">
-                    {activeKpis.map((kpi, i) => (
-                      <div key={i} className="text-center">
-                        <div className={cn('text-sm font-bold', kpi.color)}>{kpi.value}</div>
-                        <div className="text-[10px] text-[#6B7280]">{kpi.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-          <div className="text-center mb-12 md:mb-16">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Zap className="w-8 h-8 text-[#2B8A6E]" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E]">Live Activation Command Center</h1>
-            </div>
-            <p className="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto">
-              Watch strategic coordination unfold in real-time. Select a playbook and see how Execution OS orchestrates cross-functional alignment in under 12 minutes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {playbooks.map((pb) => {
-              const colors = getCategoryColor(pb.category);
-              const isSelected = selectedPlaybook === pb.key;
-              return (
-                <button
-                  key={pb.key}
-                  onClick={() => setSelectedPlaybook(pb.key)}
-                  className={cn(
-                    'relative text-left rounded-xl border-2 p-6 transition-all duration-300 cursor-pointer',
-                    'bg-white group hover:border-[#DFC178] shadow-sm',
-                    isSelected
-                      ? `border-[#C9A84C] ring-4 ring-[#C9A84C]/10`
-                      : 'border-[#E8E4DC]'
-                  )}
-                >
-                  {isSelected && (
-                    <div className={cn('absolute top-3 right-3 w-4 h-4 rounded-full flex items-center justify-center bg-[#C9A84C] text-[#0A0F2E]')}>
-                      <CheckCircle2 className="w-3 h-3" />
-                    </div>
-                  )}
-                  <Badge className={cn('mb-4 text-[10px] font-bold tracking-wider px-2 py-0.5 border-none', colors.solid, 'text-white')}>
-                    {pb.category}
-                  </Badge>
-                  <div className={cn('mb-4', colors.text)}>
-                    {getPlaybookIcon(pb.icon)}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{pb.name}</h3>
-                  <p className="text-sm text-[#6B7280] mb-6 leading-relaxed">{pb.description}</p>
-                  <div className="flex items-center gap-4 text-xs font-bold text-[#6B7280]">
-                    <span className="flex items-center gap-1.5">
-                      <Users className="w-4 h-4 text-[#0A0F2E]" /> {pb.stakeholderCount} stakeholders
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Target className="w-4 h-4 text-[#0A0F2E]" /> {pb.taskCount} tasks
-                    </span>
-                  </div>
-                  <div className="mt-3 text-xs font-bold text-[#2B8A6E] flex items-center gap-1.5">
-                    <Clock className="w-4 h-4" /> {pb.duration}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {hasLiveIntegrations && (
-            <div className="mb-8 rounded-xl border border-[#2B8A6E]/20 bg-[#2B8A6E]/5 p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-4 h-4 text-[#2B8A6E]" />
-                <span className="text-sm font-semibold text-[#2B8A6E]">Live Integrations Active</span>
-                <Badge className="text-[10px] border-0 bg-[#2B8A6E]/20 text-[#2B8A6E] ml-auto">CONNECTED</Badge>
-              </div>
-              <p className="text-xs text-gray-800 mb-3">
-                Activating this playbook will push real tasks and notifications to your connected tools:
-              </p>
-              <div className="flex items-center gap-3">
-                {hasJira && (
-                  <div className="flex items-center gap-1.5 bg-[#0A0F2E]/10 border border-[#0A0F2E]/20 rounded-lg px-3 py-1.5">
-                    <div className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
-                    <span className="text-xs font-medium text-[#0A0F2E]">Jira</span>
-                    <span className="text-[10px] text-gray-800">Tasks will be created</span>
-                  </div>
-                )}
-                {hasSlack && (
-                  <div className="flex items-center gap-1.5 bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-lg px-3 py-1.5">
-                    <div className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
-                    <span className="text-xs font-medium text-[#C9A84C]">Slack</span>
-                    <span className="text-[10px] text-gray-800">Notifications will be sent</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          <div className="text-center">
-            <Button
-              size="lg"
-              onClick={handleActivate}
-              disabled={activateMutation.isPending}
-              className={cn(
-                'text-lg px-12 py-7 font-bold tracking-wide rounded-xl transition-all duration-300',
-                'bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 shadow-lg shadow-[#2B8A6E]/20',
-                'disabled:opacity-50'
-              )}
-            >
-              {activateMutation.isPending ? (
-                <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  INITIALIZING...
-                </>
-              ) : (
-                <>
-                  <Play className="w-5 h-5 mr-2" />
-                  {hasLiveIntegrations ? 'ACTIVATE PLAYBOOK (LIVE)' : 'ACTIVATE PLAYBOOK'}
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </>
-              )}
-            </Button>
-            {!hasLiveIntegrations && (
-              <p className="text-xs text-gray-800 mt-3">
-                <Link href="/integrations/connections" className="text-gray-800 hover:text-gray-300 underline">Connect Jira or Slack</Link>
-                {' '}to push real tasks and notifications during activation
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
-      </PageLayout>
-    );
-  }
-
-  if (showCompletion) {
-    const avgResponseTime = stakeholders.length > 0
-      ? Math.round(stakeholders.reduce((sum, s) => sum + (s.responseTime || 0), 0) / stakeholders.length)
-      : 0;
-    const tier1Stakeholders = stakeholders.filter(s => s.tier === 1);
-    const tier2Stakeholders = stakeholders.filter(s => s.tier === 2);
-
-    return (
-      <PageLayout>
-      <div className="min-h-screen bg-white text-gray-900 p-6 overflow-y-auto">
-        <div className="max-w-4xl mx-auto py-8 md:py-12">
-          <div className="text-center mb-10">
-            <div className="w-20 h-20 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center mx-auto mb-6 animate-[pulse_2s_ease-in-out_infinite]">
-              <CheckCircle2 className="w-12 h-12 text-[#2B8A6E]" />
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-[#0A0F2E]">Coordination Complete</h1>
-            <p className="text-[#6B7280] mb-4 text-lg">All stakeholders aligned and tasks executed successfully.</p>
-            {industryOverlay && (
-              <div className="mb-4 text-sm text-[#6B7280]">
-                <span className="text-[#0A0F2E] font-medium">{industryOverlay.scenario}</span> — {industryOverlay.organization}
-              </div>
-            )}
-            {roleOverlay && (
-              <div className="mb-4 text-sm text-[#6B7280]">
-                Viewed as <span className="text-[#0A0F2E] font-medium">{roleOverlay.label}</span>
-              </div>
-            )}
-            <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg px-4 py-2">
-              <Zap className="w-4 h-4 text-[#2B8A6E]" />
-              <span className="text-sm text-[#2B8A6E] font-medium">Full coordination in under 12 minutes — vs. 3-6 weeks traditional</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#2B8A6E]">{formatElapsed(simulatedSeconds)}</div>
-              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Execution Time</div>
-            </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#2B8A6E]">{acknowledgedCount}/{stakeholders.length}</div>
-              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Stakeholders Reached</div>
-            </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#2B8A6E]">{completedTaskCount}/{tasks.length}</div>
-              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Tasks Completed</div>
-            </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-5 text-center shadow-sm">
-              <div className="text-3xl font-bold text-[#0A0F2E]">{formatElapsed(toSimulatedTime(avgResponseTime))}</div>
-              <div className="text-xs text-[#6B7280] mt-1 font-bold tracking-wider uppercase">Avg Response Time</div>
-            </div>
-          </div>
-
-          <div className="bg-white border border-[#E8E4DC] rounded-xl p-6 mb-8 shadow-sm">
-            <div className="flex items-center gap-2 mb-5">
-              <FileText className="w-5 h-5 text-[#0A0F2E]" />
-              <h2 className="text-lg font-bold text-gray-900">Executive After-Action Brief</h2>
-              <Badge className="text-[10px] border-0 bg-[#0A0F2E]/10 text-[#0A0F2E] font-semibold ml-auto">AUTO-GENERATED</Badge>
+              <h1 style={CG} className="text-6xl font-bold text-[#0A0F2E]">Live Playbook Engagement</h1>
+              <p className="text-[#6B7280] text-xl max-w-2xl mx-auto">Select a strategic scenario to activate the synchronized coordination engine.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Playbook Executed</h3>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={cn('p-2 rounded-lg', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg)}>
-                    {getPlaybookIcon(activePlaybook?.icon || 'shield')}
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900">{activePlaybook?.name}</div>
-                    <Badge className={cn('text-[10px] border-0 mt-1', getCategoryColor(activePlaybook?.category || 'OFFENSE').bg, getCategoryColor(activePlaybook?.category || 'OFFENSE').text)}>
-                      {activePlaybook?.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Coordination Channels</h3>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['Slack', 'Email', 'SMS', 'Teams', 'Push'].map(ch => (
-                    <Badge key={ch} variant="outline" className="text-[10px] border-gray-200 text-gray-800">{ch}</Badge>
-                  ))}
-                </div>
-
-                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Phase Breakdown</h3>
-                <div className="space-y-2">
-                  {[
-                    { label: 'Immediate', count: tasks.filter(t => t.phase === 'IMMEDIATE').length, color: 'text-[#2B8A6E]' },
-                    { label: 'Secondary', count: tasks.filter(t => t.phase === 'SECONDARY').length, color: 'text-[#C9A84C]' },
-                    { label: 'Follow Up', count: tasks.filter(t => t.phase === 'FOLLOW_UP').length, color: 'text-[#0A0F2E]' },
-                  ].map(p => (
-                    <div key={p.label} className="flex items-center justify-between text-sm">
-                      <span className={cn('font-medium', p.color)}>{p.label}</span>
-                      <span className="text-gray-800">{p.count} tasks completed</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Tier 1 Leadership ({tier1Stakeholders.length})</h3>
-                <div className="space-y-1.5 mb-4">
-                  {tier1Stakeholders.map(s => (
-                    <div key={s.id} className="flex items-center gap-2">
-                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-800 flex-1 truncate">{s.name} — {s.title}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2B8A6E] flex-shrink-0" />
-                    </div>
-                  ))}
-                </div>
-
-                <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Tier 2 Functional ({tier2Stakeholders.length})</h3>
-                <div className="space-y-1.5 mb-4">
-                  {tier2Stakeholders.map(s => (
-                    <div key={s.id} className="flex items-center gap-2">
-                      <div className={cn('w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-gray-900 flex-shrink-0', s.color)}>{s.initials}</div>
-                      <span className="text-xs text-gray-800 flex-1 truncate">{s.name} — {s.title}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2B8A6E] flex-shrink-0" />
-                    </div>
-                  ))}
-                </div>
-
-                {(() => {
-                  const metrics = industryOverlay?.completionMetrics || roleOverlay?.completionMetrics || null;
-                  return metrics ? (
-                    <>
-                      <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">
-                        {roleOverlay ? `${roleOverlay.label} Impact` : industryOverlay ? `${industryOverlay.label} Impact` : 'Impact'} vs. Traditional
-                      </h3>
-                      <div className="space-y-3">
-                        {metrics.map((m, i) => (
-                          <div key={i} className="space-y-1">
-                            <div className="text-xs font-medium text-gray-800">{m.label}</div>
-                            <div className="flex items-center gap-2 text-sm">
-                              <span className="text-red-400/70 line-through text-xs">{m.before}</span>
-                              <ArrowRight className="w-3 h-3 text-gray-800 flex-shrink-0" />
-                              <span className="text-[#2B8A6E] font-semibold text-xs">{m.after}</span>
+            <div className="grid gap-6">
+              {playbooks.map((p) => {
+                const colors = getCategoryColor(p.category);
+                const isSelected = selectedPlaybook === p.key;
+                return (
+                  <Card 
+                    key={p.key}
+                    onClick={() => setSelectedPlaybook(p.key)}
+                    className={cn(
+                      "cursor-pointer transition-all duration-300 bg-white border-[#E8E4DC] overflow-hidden group",
+                      isSelected ? "ring-2 ring-[#C9A84C] scale-[1.02] shadow-xl" : "hover:border-[#C9A84C] hover:shadow-lg"
+                    )}
+                  >
+                    <div className="flex">
+                      <div className={cn("w-2", colors.solid)} />
+                      <div className="flex-1 p-8">
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-center gap-4">
+                            <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center border", colors.border, colors.bg, colors.text)}>
+                              {getPlaybookIcon(p.icon)}
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-2 mb-1">
+                                <Badge variant="outline" className={cn("text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border-0", colors.bg, colors.text)}>
+                                  {p.category}
+                                </Badge>
+                                <span className="text-xs text-[#6B7280] flex items-center gap-1">
+                                  <Clock className="w-3 h-3" /> {p.duration}
+                                </span>
+                              </div>
+                              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">{p.name}</h3>
                             </div>
                           </div>
-                        ))}
+                          <div className="text-right">
+                            <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-wider mb-1">Impact Scope</div>
+                            <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-1">
+                                <Users className="w-3.5 h-3.5 text-[#C9A84C]" />
+                                <span className="text-sm font-bold text-[#0A0F2E]">{p.stakeholderCount} Stakeholders</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#2B8A6E]" />
+                                <span className="text-sm font-bold text-[#0A0F2E]">{p.taskCount} Tasks</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-[#6B7280] leading-relaxed mb-0">{p.description}</p>
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-3 uppercase">Impact vs. Traditional</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-800 flex items-center gap-1"><TrendingUp className="w-3.5 h-3.5 text-[#2B8A6E]" /> Time Saved</span>
-                          <span className="text-[#2B8A6E] font-semibold">3-6 weeks → 12 min</span>
-                        </div>
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-800 flex items-center gap-1"><BarChart3 className="w-3.5 h-3.5 text-[#0A0F2E]" /> Cost Reduction</span>
-                          <span className="text-[#0A0F2E] font-semibold">~85% lower</span>
-                        </div>
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-800 flex items-center gap-1"><Users className="w-3.5 h-3.5 text-[#C9A84C]" /> Coordination</span>
-                          <span className="text-[#C9A84C] font-semibold">100% simultaneous</span>
-                        </div>
-                      </div>
-                    </>
-                  );
-                })()}
-              </div>
+                    </div>
+                  </Card>
+                );
+              })}
             </div>
-          </div>
 
-          {liveDispatchResults && (liveDispatchResults.jira?.length > 0 || liveDispatchResults.slack?.length > 0) && (
-            <div className="bg-white border border-[#2B8A6E]/20 rounded-xl p-6 mb-8 shadow-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <Zap className="w-5 h-5 text-[#2B8A6E]" />
-                <h2 className="text-lg font-bold text-gray-900">Live Integration Results</h2>
-                <Badge className="text-[10px] border-0 bg-[#2B8A6E]/20 text-[#2B8A6E] ml-auto">REAL DATA</Badge>
-              </div>
-              {liveDispatchResults.jira?.filter((r: any) => r.success).length > 0 && (
-                <div className="mb-4">
-                  <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-2 uppercase">Jira Issues Created</h3>
-                  <div className="space-y-1.5">
-                    {liveDispatchResults.jira.filter((r: any) => r.success).map((r: any, i: number) => (
-                      <div key={i} className="flex items-center gap-2 text-sm">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0A0F2E] flex-shrink-0" />
-                        <span className="text-[#0A0F2E] font-mono text-xs">{r.detail?.key}</span>
-                        <span className="text-gray-800 text-xs">{r.detail?.taskName}</span>
-                        {r.detail?.url && (
-                          <a href={r.detail.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-gray-800 hover:text-[#0A0F2E] ml-auto">View</a>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {liveDispatchResults.slack?.filter((r: any) => r.success).length > 0 && (
-                <div>
-                  <h3 className="text-xs font-bold tracking-wider text-gray-800 mb-2 uppercase">Slack Notifications</h3>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A84C] flex-shrink-0" />
-                    <span className="text-gray-800 text-xs">Activation alert sent to Slack workspace</span>
-                  </div>
-                </div>
-              )}
-              {liveDispatchResults.summary && (
-                <div className="mt-3 pt-3 border-t border-gray-200 text-xs text-gray-800">
-                  {liveDispatchResults.summary}
-                </div>
-              )}
-            </div>
-          )}
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              onClick={runAnother}
-              className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900 px-10 py-6 text-lg rounded-xl w-full sm:w-auto"
-            >
-              Run Another Demo
-            </Button>
-            <Link href="/" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gray-200 text-gray-800 hover:bg-gray-800 hover:text-white px-10 py-6 text-lg rounded-xl w-full"
+            <div className="flex items-center justify-center gap-4 pt-8">
+              <Link to="/playbooks">
+                <Button variant="outline" className="border-[#E8E4DC] text-[#6B7280] h-14 px-8 font-bold rounded-xl hover:bg-white">
+                  Back to Library
+                </Button>
+              </Link>
+              <Button 
+                onClick={() => activateMutation.mutate(selectedPlaybook)}
+                disabled={activateMutation.isPending}
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 px-12 font-bold rounded-xl text-lg shadow-lg group"
               >
-                Back to Execution OS
+                {activateMutation.isPending ? (
+                  <>
+                    <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                    Initializing Coordination...
+                  </>
+                ) : (
+                  <>
+                    Activate Synchronized Response
+                    <Play className="ml-3 h-5 w-5 fill-current group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
-      </div>
       </PageLayout>
     );
   }
 
-  const immediateT = tasks.filter(t => t.phase === 'IMMEDIATE');
-  const secondaryT = tasks.filter(t => t.phase === 'SECONDARY');
-  const followUpT = tasks.filter(t => t.phase === 'FOLLOW_UP');
+  const colors = getCategoryColor(activePlaybook?.category || 'DEFENSE');
 
   return (
     <PageLayout>
-      <div style={{ background: OFF, minHeight: '100vh' }}>
-        {/* Navigation / Header */}
-        <div style={{ background: NAVY, padding: '20px 48px', borderBottom: `1px solid ${NAVY_MID}` }}>
-          <div className="container mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Live Activation Center</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:TEAL_LT, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border: `1px solid ${TEAL}` }}>
-                System: Operational
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container mx-auto p-6 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY }}>
-                Playbook <em style={{ fontStyle: "italic", color: GOLD }}>Activation</em>
-              </h1>
-              <p style={{ color: MUTED, marginTop: 8 }}>
-                Orchestrate mission-critical response across the enterprise
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Left Column: Stats & Activity */}
-            <div className="lg:col-span-1 space-y-6">
-              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Execution Timer</div>
-                <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: NAVY, lineHeight: 1 }}>
-                  {formatElapsed(simulatedSeconds)}
+      <div className="min-h-screen bg-[#0A0F2E] p-6 lg:p-10 font-sans selection:bg-[#C9A84C] selection:text-[#0A0F2E]">
+        <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <div className="lg:col-span-8 space-y-8">
+            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
+              <div className="flex items-center gap-6">
+                <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center border text-white", colors.border, colors.bg)}>
+                  {getPlaybookIcon(activePlaybook?.icon || 'shield')}
                 </div>
-                <div style={{ fontSize: 10, fontWeight: 600, color: TEAL, marginTop: 8 }}>
-                  TARGET: 12:00
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <Badge className={cn("text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 border-0", colors.bg, colors.text)}>
+                      {activePlaybook?.category} ACTIVE
+                    </Badge>
+                    <span className="text-white/40 text-xs font-mono">ID: {activationId}</span>
+                  </div>
+                  <h1 style={CG} className="text-4xl font-bold text-white leading-none">{activePlaybook?.name}</h1>
                 </div>
               </div>
-
-              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Activity Feed</div>
-                <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
-                  {activityFeed.map((entry) => (
-                    <div key={entry.id} className="flex gap-3">
-                      <div style={{ width: 2, background: entry.type === 'system' ? NAVY : entry.type === 'stakeholder' ? GOLD : TEAL, flexShrink: 0 }} />
-                      <div>
-                        <div style={{ fontSize: 12, color: NAVY, fontWeight: 500 }}>{entry.description}</div>
-                        <div style={{ fontSize: 10, color: MUTED }}>{formatElapsed(entry.timestamp)}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Middle Column: Stakeholders & Tasks */}
-            <div className="lg:col-span-2 space-y-6">
-              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Users className="h-4 w-4" style={{ color: NAVY }} />
-                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Stakeholder Alignment</span>
+              <div className="flex flex-col items-end gap-2">
+                <div className="flex items-center gap-4">
+                  <div className="text-right">
+                    <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Elapsed Time</div>
+                    <div className="text-3xl font-mono text-[#C9A84C] font-bold">{formatElapsed(elapsedSeconds)}</div>
+                  </div>
+                  <div className="h-10 w-[1px] bg-white/10 mx-2" />
+                  <div className="text-right">
+                    <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Simulated Progress</div>
+                    <div className="text-3xl font-mono text-[#2B8A6E] font-bold">{formatElapsed(toSimulatedTime(elapsedSeconds))}</div>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+              </div>
+            </header>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Stakeholder Alignment</div>
+                  <Users className="w-4 h-4 text-[#C9A84C]" />
+                </div>
+                <div className="text-3xl font-bold text-white mb-2">
+                  {stakeholders.filter(s => s.status === 'acknowledged').length}/{stakeholders.length}
+                </div>
+                <Progress value={(stakeholders.filter(s => s.status === 'acknowledged').length / stakeholders.length) * 100} className="h-2 bg-white/10" />
+              </Card>
+              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Task Execution</div>
+                  <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
+                </div>
+                <div className="text-3xl font-bold text-white mb-2">
+                  {tasks.filter(t => t.status === 'completed').length}/{tasks.length}
+                </div>
+                <Progress value={(tasks.filter(t => t.status === 'completed').length / tasks.length) * 100} className="h-2 bg-white/10" />
+              </Card>
+              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Current Phase</div>
+                  <Zap className="w-4 h-4 text-[#C9A84C]" />
+                </div>
+                <div className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+                  {currentPhase.replace('_', ' ')}
+                </div>
+                <div className="text-[10px] text-white/40 font-mono">NEXT: {currentPhase === 'IMMEDIATE' ? 'SECONDARY' : currentPhase === 'SECONDARY' ? 'FOLLOW UP' : 'COMPLETION'}</div>
+              </Card>
+            </div>
+
+            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden">
+              <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
+                <div className="flex items-center gap-3">
+                  <Users className="w-5 h-5 text-[#C9A84C]" />
+                  <h3 className="font-bold text-white uppercase tracking-wider text-sm">Synchronized Stakeholder Command</h3>
+                </div>
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
+                    <span className="text-[9px] font-bold text-white/60 uppercase">Tier 1 Strategy</span>
+                  </div>
+                </div>
+              </div>
+              <div className="p-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
                   {stakeholders.map((s) => (
-                    <div key={s.id} className="text-center">
-                      <div style={{ width: 48, height: 48, background: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : BORDER, borderRadius: '50%', margin: '0 auto 8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 600, fontSize: 14 }}>
-                        {s.initials}
+                    <div key={s.id} className="group relative flex flex-col items-center text-center space-y-3">
+                      <div className="relative">
+                        <div className={cn(
+                          "w-16 h-16 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition-all duration-500",
+                          s.status === 'acknowledged' ? "ring-4 ring-[#2B8A6E] ring-offset-4 ring-offset-[#0A0F2E]" : 
+                          s.status === 'notifying' || s.status === 'notified' ? "ring-4 ring-[#C9A84C] ring-offset-4 ring-offset-[#0A0F2E] animate-pulse" : 
+                          "opacity-40",
+                          s.color
+                        )}>
+                          {s.initials}
+                        </div>
+                        {s.status === 'acknowledged' && (
+                          <div className="absolute -bottom-1 -right-1 bg-[#2B8A6E] text-white rounded-full p-1 border-2 border-[#0A0F2E]">
+                            <CheckCircle2 className="w-3 h-3" />
+                          </div>
+                        )}
                       </div>
-                      <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.name}</div>
-                      <div style={{ fontSize: 10, color: MUTED }}>{s.status}</div>
+                      <div>
+                        <div className="text-xs font-bold text-white mb-0.5">{s.name}</div>
+                        <div className="text-[9px] font-bold text-white/40 uppercase tracking-tighter">{s.title}</div>
+                      </div>
+                      <div className={cn(
+                        "text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md",
+                        s.status === 'acknowledged' ? "bg-[#2B8A6E]/20 text-[#2B8A6E]" : 
+                        s.status === 'notifying' || s.status === 'notified' ? "bg-[#C9A84C]/20 text-[#C9A84C]" : 
+                        "bg-white/5 text-white/20"
+                      )}>
+                        {s.status}
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
+            </Card>
 
-              <div style={{ border: `1px solid ${BORDER}`, background: '#fff', padding: 24 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Target className="h-4 w-4" style={{ color: NAVY }} />
-                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Tasks</span>
+            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden">
+              <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
+                  <h3 className="font-bold text-white uppercase tracking-wider text-sm">Operational Task Realization</h3>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-sm bg-[#2B8A6E]" />
+                    <span className="text-[10px] font-bold text-white/40 uppercase">Complete</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-sm bg-[#C9A84C]" />
+                    <span className="text-[10px] font-bold text-white/40 uppercase">Active</span>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  {tasks.map((task) => (
-                    <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: 12, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : BORDER}` }}>
-                      {task.status === 'completed' ? <CheckCircle2 className="h-4 w-4" style={{ color: TEAL }} /> : <Circle className="h-4 w-4" style={{ color: BORDER }} />}
-                      <div className="flex-1">
-                        <div style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{task.name}</div>
-                        <div style={{ fontSize: 10, color: MUTED }}>{task.owner} • {task.phase}</div>
+              </div>
+              <div className="p-0 max-h-[400px] overflow-y-auto custom-scrollbar">
+                {tasks.map((t) => (
+                  <div 
+                    key={t.id} 
+                    className={cn(
+                      "flex items-center justify-between p-6 border-b border-white/5 transition-colors",
+                      t.status === 'in_progress' ? "bg-white/5" : "hover:bg-white/5"
+                    )}
+                  >
+                    <div className="flex items-center gap-5">
+                      <div className={cn(
+                        "w-6 h-6 rounded-md flex items-center justify-center border transition-colors",
+                        t.status === 'completed' ? "bg-[#2B8A6E] border-[#2B8A6E] text-white" : 
+                        t.status === 'in_progress' ? "bg-[#C9A84C]/20 border-[#C9A84C] text-[#C9A84C]" : 
+                        "border-white/20 text-white/20"
+                      )}>
+                        {t.status === 'completed' ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
                       </div>
-                      <div style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', color: task.status === 'completed' ? TEAL : GOLD }}>{task.status}</div>
+                      <div>
+                        <div className={cn("text-sm font-bold transition-colors", t.status === 'completed' ? "text-white/40 line-through" : "text-white")}>
+                          {t.name}
+                        </div>
+                        <div className="flex items-center gap-3 mt-1">
+                          <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{t.owner}</span>
+                          <div className="w-1 h-1 rounded-full bg-white/20" />
+                          <span className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest">{t.phase}</span>
+                        </div>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Context & Controls */}
-            <div className="lg:col-span-1 space-y-6">
-              <div style={{ border: `1px solid ${BORDER}`, background: NAVY, padding: 24, color: '#fff' }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Active Playbook</div>
-                <div style={{ ...CG, fontSize: 20, fontWeight: 600, marginBottom: 8 }}>{activePlaybook?.name}</div>
-                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>{activePlaybook?.description}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <div style={{ background: 'rgba(255,255,255,0.1)', padding: '4px 10px', fontSize: 10, fontWeight: 600, border: '1px solid rgba(255,255,255,0.2)' }}>
-                    {activePlaybook?.category}
+                    {t.status === 'in_progress' && (
+                      <div className="flex items-center gap-2 text-[#C9A84C]">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span className="text-[10px] font-bold uppercase tracking-widest">Processing</span>
+                      </div>
+                    )}
                   </div>
-                </div>
+                ))}
               </div>
+            </Card>
+          </div>
 
-              <div className="space-y-3">
+          <div className="lg:col-span-4 space-y-8">
+            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden flex flex-col h-[calc(100vh-140px)] sticky top-6">
+              <div className="p-6 border-b border-white/10 bg-white/5 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Activity className="w-5 h-5 text-[#C9A84C]" />
+                  <h3 className="font-bold text-white uppercase tracking-wider text-sm">Coordination Intelligence</h3>
+                </div>
+                <Badge variant="outline" className="text-[9px] font-bold text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10">LIVE SIGNAL</Badge>
+              </div>
+              <div ref={feedRef} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                {activityFeed.map((entry) => (
+                  <div key={entry.id} className="relative pl-6 border-l border-white/10 group">
+                    <div className={cn(
+                      "absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border-2 border-[#0A0F2E]",
+                      entry.type === 'stakeholder' ? "bg-[#C9A84C]" : 
+                      entry.type === 'task' ? "bg-[#2B8A6E]" : 
+                      entry.type === 'phase' ? "bg-white" : "bg-white/40"
+                    )} />
+                    <div className="text-[10px] font-mono text-white/40 mb-1">{formatElapsed(entry.timestamp)}</div>
+                    <p className="text-sm text-white/80 leading-relaxed font-medium">
+                      {entry.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="p-6 bg-white/5 border-t border-white/10">
                 <Button 
-                  onClick={() => activateMutation.mutate(selectedPlaybook)}
-                  disabled={activationState === 'ACTIVATING' || activationState === 'IN_PROGRESS'}
-                  style={{ width: '100%', background: GOLD, color: NAVY, fontWeight: 700, textTransform: 'uppercase', fontSize: 11, letterSpacing: '0.1em', padding: '12px' }}
+                  onClick={() => setActivationId(null)}
+                  variant="ghost" 
+                  className="w-full text-white/40 hover:text-white hover:bg-white/5 font-bold uppercase tracking-widest text-[10px] py-6"
                 >
-                  <Play className="h-4 w-4 mr-2" />
-                  Restart Activation
-                </Button>
-                <Button 
-                  variant="outline"
-                  style={{ width: '100%', border: `1.5px solid ${BORDER}`, color: NAVY, fontWeight: 700, textTransform: 'uppercase', fontSize: 11, letterSpacing: '0.1em', padding: '12px' }}
-                  asChild
-                >
-                  <Link href="/command-center">Cancel Activation</Link>
+                  Terminate Activation Cycle
                 </Button>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
 
-        {/* Completion Modal Overlay */}
         {showCompletion && (
-          <div style={{ position: 'fixed', inset: 0, background: 'rgba(10,15,46,0.9)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 24 }}>
-            <div style={{ maxWidth: 600, width: '100%', background: '#fff', border: `1px solid ${GOLD}`, padding: 48, textAlign: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
-                <Trophy className="h-16 w-16" style={{ color: GOLD }} />
-                <h2 style={{ ...CG, fontSize: 40, fontWeight: 600, color: NAVY }}>Mission <em style={{ fontStyle: 'italic', color: GOLD }}>Successful</em></h2>
-                <div style={{ fontSize: 14, color: MUTED, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                  Playbook Executed in {formatElapsed(simulatedSeconds)}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-xl bg-[#0A0F2E]/80 animate-in fade-in duration-500">
+            <Card className="max-w-2xl w-full bg-white border-[#E8E4DC] rounded-3xl shadow-[0_0_100px_rgba(201,168,76,0.15)] overflow-hidden">
+              <div className="h-2 bg-[#C9A84C]" />
+              <div className="p-12 text-center space-y-8">
+                <div className="w-24 h-24 bg-[#2B8A6E]/10 rounded-3xl flex items-center justify-center mx-auto border border-[#2B8A6E]/20">
+                  <Trophy className="w-12 h-12 text-[#2B8A6E]" />
                 </div>
-                <div className="grid grid-cols-2 gap-8 w-full py-8 border-y border-[#E8E4DC]">
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: MUTED, textTransform: 'uppercase', marginBottom: 4 }}>Time Saved</div>
-                    <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: TEAL }}>71.8 Hours</div>
+                <div className="space-y-4">
+                  <h2 style={CG} className="text-5xl font-bold text-[#0A0F2E]">Coordination Realized</h2>
+                  <p className="text-[#6B7280] text-lg max-w-md mx-auto">Playbook execution successful. All stakeholders aligned and primary objectives secured.</p>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-6 pt-4">
+                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Response Time</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">1.2s</div>
                   </div>
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: MUTED, textTransform: 'uppercase', marginBottom: 4 }}>Efficiency Gain</div>
-                    <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD }}>360x</div>
+                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Alignment</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">100%</div>
+                  </div>
+                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Integrations</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">ACTIVE</div>
                   </div>
                 </div>
-                <div className="flex gap-4 w-full">
-                  <Button style={{ flex: 1, background: NAVY, color: '#fff', fontWeight: 700, textTransform: 'uppercase' }} asChild>
-                    <Link href="/command-center">Return to Command Center</Link>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                  <Button 
+                    onClick={() => { setActivationId(null); setShowCompletion(false); }}
+                    className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 font-bold rounded-xl text-lg"
+                  >
+                    Return to Mission Control
                   </Button>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
       </div>

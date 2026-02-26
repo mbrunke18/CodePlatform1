@@ -112,7 +112,7 @@ export default function WorkspaceAdvance() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Retrospect Lab</h1>
-                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1">
+                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold">
                     ADVANCE
                   </Badge>
                 </div>
@@ -163,11 +163,11 @@ export default function WorkspaceAdvance() {
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <Compass className="h-4 w-4 text-[#C9A84C]" />
-                      <span className="text-sm text-[#C9A84C]">EXECUTE</span>
+                      <span className="text-sm text-[#C9A84C] font-medium">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/20 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm font-bold text-[#2B8A6E]">ADVANCE</span>
                   </div>
@@ -218,7 +218,7 @@ export default function WorkspaceAdvance() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">5-tier stakeholder hierarchy reduced notification fatigue by 41%</h4>
-                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">Pattern</Badge>
+                      <Badge className="bg-[#2B8A6E] text-white border-none">Pattern</Badge>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 89%</span>
@@ -237,7 +237,7 @@ export default function WorkspaceAdvance() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Auto-isolation rules cut cyber incident damage by 78%</h4>
-                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">Automation</Badge>
+                      <Badge className="bg-[#2B8A6E] text-white border-none">Automation</Badge>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 96%</span>
@@ -256,7 +256,7 @@ export default function WorkspaceAdvance() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Pre-approved budget thresholds accelerate response by 34%</h4>
-                      <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">Financial</Badge>
+                      <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">Financial</Badge>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 87%</span>

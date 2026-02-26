@@ -14,7 +14,8 @@ import {
   Copy,
   Check,
   Zap,
-  Target
+  Target,
+  ArrowRight
 } from 'lucide-react';
 import StandardNav from '@/components/layout/StandardNav';
 import { useLocation } from 'wouter';

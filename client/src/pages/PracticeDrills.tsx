@@ -173,6 +173,8 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
     });
   };
 
+  const CG_FIX: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   if (drillsLoading) {
     return (
       <PageLayout embedded={embedded}>

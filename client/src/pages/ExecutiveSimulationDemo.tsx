@@ -352,7 +352,7 @@ export default function ExecutiveSimulationDemo() {
               <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] rounded-2xl flex items-center justify-center">
                 <Briefcase className="w-10 h-10 text-white" />
               </div>
-              <Badge className="mx-auto mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">
+              <Badge className="mx-auto mb-4 bg-[#0A0F2E] text-white border-none font-bold">
                 Executive Simulation
               </Badge>
               <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -372,19 +372,19 @@ export default function ExecutiveSimulationDemo() {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <span className="text-[#6B7280] dark:text-white/60">Company:</span>
-                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.name}</span>
+                    <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.name}</span>
                   </div>
                   <div>
                     <span className="text-[#6B7280] dark:text-white/60">Industry:</span>
-                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
+                    <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
                   </div>
                   <div>
                     <span className="text-[#6B7280] dark:text-white/60">Revenue:</span>
-                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
+                    <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
                   </div>
                   <div>
                     <span className="text-[#6B7280] dark:text-white/60">Employees:</span>
-                    <span className="text-[#0A0F2E] dark:text-white ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
+                    <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
                   </div>
                 </div>
               </div>

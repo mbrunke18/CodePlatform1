@@ -106,8 +106,8 @@ export default function WorkspaceExecute() {
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-[#0A0F2E] shadow-lg shadow-[#0A0F2E]/30">
-                <Compass className="h-8 w-8 text-white" />
+              <div className="p-4 rounded-2xl bg-[#C9A84C] shadow-lg shadow-[#C9A84C]/30">
+                <Compass className="h-8 w-8 text-[#0A0F2E]" />
               </div>
               <div>
                 <div className="flex items-center gap-3">
@@ -161,13 +161,13 @@ export default function WorkspaceExecute() {
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
-                    <Compass className="h-4 w-4 text-[#0A0F2E]" />
+                    <Compass className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-sm font-bold text-[#0A0F2E]">EXECUTE</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
-                      <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
+                      <span className="text-sm text-[#2B8A6E] font-medium">ADVANCE</span>
                     </div>
                   </Link>
                 </div>

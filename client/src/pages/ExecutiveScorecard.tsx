@@ -27,11 +27,11 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
     critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#0A0F2E]', label: 'Critical' }
   };
   const c = config[status];
-  
+
   return (
     <div className="flex items-center gap-2">
       <div className={`w-2.5 h-2.5 rounded-full ${c.bg}`} />
-      <span className={`text-sm font-medium ${c.className}`}>{c.label}</span>
+      <span className={`text-sm font-medium dark:text-[#C9A84C] ${c.className}`}>{c.label}</span>
     </div>
   );
 }
@@ -72,7 +72,7 @@ function MetricCard({
 
   const trendClasses = {
     up: 'text-[#2B8A6E]',
-    down: 'text-[#0A0F2E]',
+    down: 'text-[#0A0F2E] dark:text-[#C9A84C]',
     neutral: 'text-[#6B7280] dark:text-white/60'
   };
 
@@ -175,7 +175,7 @@ export default function ExecutiveScorecard() {
             </div>
             <p className="text-[#6B7280] dark:text-white/60 text-sm">Strategic execution metrics at a glance</p>
           </div>
-          <Badge className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] border-none">
+          <Badge className="bg-[#0A0F2E] dark:bg-[#C9A84C] text-white dark:text-[#0A0F2E] border-none font-bold">
             <Activity className="h-3 w-3 mr-1.5" />
             Live
           </Badge>
@@ -190,7 +190,7 @@ export default function ExecutiveScorecard() {
                   <div className={`w-3 h-3 rounded-full ${statusBg}`} />
                   <div>
                     <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">System Status</div>
-                    <div className="text-[#0A0F2E] dark:text-white font-semibold">
+                    <div className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">
                       {overallStatus === 'good' ? 'All Systems Operational' :
                        overallStatus === 'warning' ? 'Attention Needed' : 'Action Required'}
                     </div>
@@ -199,14 +199,14 @@ export default function ExecutiveScorecard() {
                 <div className="h-8 w-px bg-[#E8E4DC] dark:bg-white/10 hidden sm:block" />
                 <div>
                   <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">Last Activation</div>
-                  <div className="text-[#0A0F2E] dark:text-white font-semibold">
+                  <div className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">
                     {last30Days.length > 0 ? 'Today' : 'No recent activity'}
                   </div>
                 </div>
                 <div className="h-8 w-px bg-[#E8E4DC] dark:bg-white/10 hidden sm:block" />
                 <div>
                   <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">Response Time</div>
-                  <div className="text-[#0A0F2E] dark:text-white font-semibold">
+                  <div className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">
                     {avgResponseTime > 0 ? `${Math.round(avgResponseTime)} min avg` : '—'}
                   </div>
                 </div>

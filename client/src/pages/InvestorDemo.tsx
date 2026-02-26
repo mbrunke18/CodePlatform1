@@ -307,7 +307,7 @@ export default function InvestorDemo() {
   const StageIcon = currentStage.icon;
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-[#F8F7F4] flex flex-col">
       <StandardNav />
       
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
@@ -328,7 +328,7 @@ export default function InvestorDemo() {
           </div>
 
           {/* Playback Controls */}
-          <Card className="bg-white border-[#E8E4DC] mb-6">
+          <Card className="bg-white border-[#E8E4DC] mb-6 shadow-sm">
             <CardContent className="p-4">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <div className="flex items-center gap-3">
@@ -381,7 +381,7 @@ export default function InvestorDemo() {
                         variant="ghost"
                         size="sm"
                         onClick={() => setPlaybackSpeed(speed)}
-                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#2B8A6E] bg-[#2B8A6E]/20' : 'text-[#0A0F2E]'}`}
+                        className={`text-xs px-2 ${playbackSpeed === speed ? 'text-[#2B8A6E] bg-[#2B8A6E]/10' : 'text-[#0A0F2E]'}`}
                         data-testid={`button-speed-${speed}x`}
                       >
                         {speed}x
@@ -389,7 +389,7 @@ export default function InvestorDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-1.5 rounded-lg">
+                  <div className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-1.5 rounded-lg border border-[#E8E4DC]">
                     <Clock className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="text-[#0A0F2E] font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
@@ -414,10 +414,10 @@ export default function InvestorDemo() {
                   setAcknowledgedStakeholders(newAcks);
                   setIsComplete(idx === IDEA_STORY.length - 1);
                 }}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-all ${
+                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-all border ${
                   idx === currentStageIndex
-                    ? `${stage.phaseColor} text-white`
-                    : 'bg-[#F8F7F4] text-[#6B7280] hover:bg-[#0A0F2E] hover:text-white'
+                    ? `${stage.phaseColor} text-white border-transparent`
+                    : 'bg-white text-[#6B7280] hover:bg-[#0A0F2E] hover:text-white border-[#E8E4DC]'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >
@@ -428,7 +428,7 @@ export default function InvestorDemo() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-6">
-              <Card className="bg-white border-[#E8E4DC]">
+              <Card className="bg-white border-[#E8E4DC] shadow-sm">
                 <CardHeader className="border-b border-[#E8E4DC] pb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -484,14 +484,14 @@ export default function InvestorDemo() {
                       transition={{ duration: 0.3 }}
                     >
                       <div className="flex items-start gap-4 mb-6">
-                        <div className={`p-4 rounded-xl ${currentStage.bgColor}`}>
+                        <div className={`p-4 rounded-xl ${currentStage.bgColor} border border-[#E8E4DC]`}>
                           <StageIcon className={`h-8 w-8 ${currentStage.color}`} />
                         </div>
                         <div className="flex-1">
                           <h2 className="text-2xl font-bold text-[#0A0F2E] mb-1">
                             {currentStage.title}
                           </h2>
-                          <p className={`text-lg ${currentStage.color} mb-3`}>
+                          <p className={`text-lg ${currentStage.color} mb-3 font-semibold`}>
                             {currentStage.subtitle}
                           </p>
                           <p className="text-[#0A0F2E] font-medium leading-relaxed mb-4">
@@ -499,7 +499,7 @@ export default function InvestorDemo() {
                           </p>
                           
                           {/* Investor Highlight */}
-                          <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-3">
+                          <div className="bg-[#0A0F2E] border border-[#C9A84C] rounded-lg p-3 shadow-lg">
                             <div className="flex items-start gap-2">
                               <TrendingUp className="h-4 w-4 text-[#C9A84C] mt-0.5 flex-shrink-0" />
                               <p className="text-sm text-[#C9A84C]">
@@ -510,28 +510,28 @@ export default function InvestorDemo() {
                         </div>
                       </div>
                       
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            {currentStage.metrics.map((metric, idx) => (
-              <div key={idx} className={`rounded-lg p-4 text-center bg-[#F8F7F4]`}>
-                <div className={`text-2xl font-bold mb-1 text-[#0A0F2E]`}>{metric.value}</div>
-                <div className="text-xs text-[#6B7280]">{metric.label}</div>
-              </div>
-            ))}
-          </div>
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        {currentStage.metrics.map((metric, idx) => (
+                          <div key={idx} className={`rounded-lg p-4 text-center bg-[#F8F7F4] border border-[#E8E4DC] shadow-sm`}>
+                            <div className={`text-2xl font-bold mb-1 text-[#0A0F2E]`}>{metric.value}</div>
+                            <div className="text-xs text-[#6B7280] font-bold uppercase tracking-wider">{metric.label}</div>
+                          </div>
+                        ))}
+                      </div>
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
-                        <div className="bg-[#F8F7F4] rounded-lg p-4 mb-4">
+                        <div className="bg-[#F8F7F4] rounded-lg p-4 mb-4 border border-[#E8E4DC] shadow-sm">
                           <div className="flex items-center gap-2 mb-3">
                             <Settings className="h-4 w-4 text-[#C9A84C]" />
-                            <span className="font-medium text-[#0A0F2E]">{currentStage.smartDefaults.title}</span>
+                            <span className="font-bold text-[#0A0F2E] text-sm uppercase tracking-wider">{currentStage.smartDefaults.title}</span>
                           </div>
                           <div className="space-y-2">
                             {currentStage.smartDefaults.items.map((item, idx) => (
                               <div key={idx} className="flex items-start gap-2 text-sm">
                                 <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                                 <div>
-                                  <span className="text-[#0A0F2E] font-semibold">{item.domain}:</span>{' '}
+                                  <span className="text-[#0A0F2E] font-bold">{item.domain}:</span>{' '}
                                   <span className="text-[#0A0F2E]">{item.defaults}</span>
                                 </div>
                               </div>
@@ -539,6 +539,7 @@ export default function InvestorDemo() {
                           </div>
                         </div>
                       )}
+
 
                       {/* PM Sync Panel */}
                       {currentStage.pmSync && (

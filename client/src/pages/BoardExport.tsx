@@ -152,7 +152,7 @@ export default function BoardExport() {
           {/* Header */}
           <div className="text-center mb-12">
             <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30">
+            <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">
               <FileText className="h-4 w-4 mr-2" />
               Board-Ready Export
             </Badge>

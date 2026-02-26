@@ -409,10 +409,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="flex justify-between text-xs uppercase tracking-wider mb-1">
+                    <div className="flex justify-between text-xs uppercase tracking-wider mb-1">
                         <span className="text-[#6B7280]">Progress</span>
-                        <span className={progress >= 80 ? 'text-[#2B8A6E]' : progress >= 50 ? 'text-[#C9A84C]' : 'text-destructive'}>
+                        <span className={progress >= 80 ? 'text-[#2B8A6E]' : progress >= 50 ? 'text-[#C9A84C]' : 'text-red-600'}>
                           {progress.toFixed(0)}%
                         </span>
                       </div>
@@ -422,7 +421,6 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                           style={{ width: `${progress}%` }}
                         />
                       </div>
-                    </div>
                     
                     <div className="flex items-center justify-between text-xs uppercase tracking-wider">
                       <div className="flex items-center gap-2 text-[#6B7280]">

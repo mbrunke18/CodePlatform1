@@ -440,7 +440,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <Timer className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.inProgress}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>In Progress</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Execution</div>
               </div>
             </CardContent>
           </Card>

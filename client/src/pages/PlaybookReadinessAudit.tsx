@@ -428,13 +428,13 @@ export default function PlaybookReadinessAudit() {
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Stakeholders</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                          <div className="text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: indicatorColor }}>
                             {playbook.practiceFrequency}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Practice</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                          <div className="text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: indicatorColor }}>
                             {playbook.outcomeConfidence}%
                           </div>
                           <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Confidence</div>
@@ -442,7 +442,7 @@ export default function PlaybookReadinessAudit() {
                       </div>
 
                       <div className="text-center px-6 border-l border-[#E8E4DC]">
-                        <div className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C9A84C" }}>
+                        <div className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: indicatorColor }}>
                           {playbook.overallScore}%
                         </div>
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280] font-bold">Overall</div>

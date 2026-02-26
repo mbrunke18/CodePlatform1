@@ -609,7 +609,7 @@ export default function IncidentAnalyzer() {
                 <Button
                   size="lg"
                   onClick={() => setCurrentStep(1)}
-                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-10 py-6 text-lg"
+                  className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white gap-2 px-10 py-6 text-lg"
                 >
                   <FileText className="w-5 h-5" /> Describe Your Own Situation
                   <ArrowRight className="w-4 h-4" />
@@ -634,12 +634,12 @@ export default function IncidentAnalyzer() {
               </div>
               <div className="w-px h-8 bg-gray-50" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-400">12 min</div>
+                <div className="text-2xl font-bold text-[#2B8A6E]">12 min</div>
                 <div className="text-xs text-gray-800">Avg Coordination</div>
               </div>
               <div className="w-px h-8 bg-gray-50" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-400">$450M+</div>
+                <div className="text-2xl font-bold text-[#2B8A6E]">$450M+</div>
                 <div className="text-xs text-gray-800">Value Protected</div>
               </div>
             </div>
@@ -650,7 +650,7 @@ export default function IncidentAnalyzer() {
         {currentStep >= 1 && (
           <>
             <div className="text-center mb-10">
-              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
+              <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                 <Brain className="w-4 h-4 mr-2" />
                 Strategic Analyzer
               </Badge>
@@ -674,7 +674,7 @@ export default function IncidentAnalyzer() {
                         <div
                           className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
                             isActive
-                              ? "bg-teal-500 text-gray-900 shadow-lg shadow-teal-500/30"
+                              ? "bg-[#2B8A6E] text-white shadow-lg shadow-[#2B8A6E]/30"
                               : isComplete
                               ? "bg-[#2B8A6E] text-white"
                               : "bg-gray-50 text-gray-700"
@@ -684,7 +684,7 @@ export default function IncidentAnalyzer() {
                         </div>
                         <span
                           className={`text-xs font-medium ${
-                            isActive ? "text-teal-400" : isComplete ? "text-[#2B8A6E]" : "text-gray-800"
+                            isActive ? "text-[#2B8A6E]" : isComplete ? "text-[#2B8A6E]" : "text-gray-800"
                           }`}
                         >
                           {label}
@@ -720,7 +720,7 @@ export default function IncidentAnalyzer() {
           <Card className="bg-white border-gray-200">
             <CardHeader>
               <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
-                <FileText className="w-6 h-6 text-teal-400" />
+                <FileText className="w-6 h-6 text-[#2B8A6E]" />
                 Describe Your Situation
               </CardTitle>
               <p className="text-gray-800 mt-1">
@@ -736,12 +736,12 @@ export default function IncidentAnalyzer() {
                     onClick={() => setSelectedDomain('auto')}
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'auto'
-                        ? 'bg-teal-500/10 border-teal-500/50 ring-1 ring-teal-500/30'
-                        : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                        ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50 ring-1 ring-[#2B8A6E]/30'
+                        : 'bg-gray-50 border-gray-200 hover:border-[#0A0F2E]'
                     }`}
                   >
-                    <Brain className={`w-6 h-6 mb-2 ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-gray-700'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'auto' ? 'text-teal-400' : 'text-gray-800'}`}>
+                    <Brain className={`w-6 h-6 mb-2 ${selectedDomain === 'auto' ? 'text-[#2B8A6E]' : 'text-gray-700'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'auto' ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>
                       Let AI Detect
                     </p>
                     <p className="text-xs text-gray-700 mt-1">Auto-classify</p>
@@ -751,7 +751,7 @@ export default function IncidentAnalyzer() {
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'offense'
                         ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/50 ring-1 ring-[#2B8A6E]/30'
-                        : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                        : 'bg-gray-50 border-gray-200 hover:border-[#0A0F2E]'
                     }`}
                   >
                     <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-gray-700'}`} />
@@ -766,11 +766,11 @@ export default function IncidentAnalyzer() {
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'defense'
                         ? 'bg-red-500/10 border-red-500/50 ring-1 ring-red-500/30'
-                        : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                        : 'bg-gray-50 border-gray-200 hover:border-[#0A0F2E]'
                     }`}
                   >
-                    <Shield className={`w-6 h-6 mb-2 ${selectedDomain === 'defense' ? 'text-red-400' : 'text-gray-700'}`} />
-                    <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-400' : 'text-gray-800'}`}>
+                    <Shield className={`w-6 h-6 mb-2 ${selectedDomain === 'defense' ? 'text-red-600' : 'text-gray-700'}`} />
+                    <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-600' : 'text-gray-800'}`}>
                       DEFENSE
                     </p>
                     <p className="text-xs text-gray-700 mt-0.5">58 Playbooks</p>
@@ -781,7 +781,7 @@ export default function IncidentAnalyzer() {
                     className={`relative rounded-xl border p-4 text-left transition-all ${
                       selectedDomain === 'special_teams'
                         ? 'bg-[#C9A84C]/10 border-[#C9A84C]/50 ring-1 ring-[#C9A84C]/30'
-                        : 'bg-gray-50 border-gray-200 hover:border-slate-600'
+                        : 'bg-gray-50 border-gray-200 hover:border-[#0A0F2E]'
                     }`}
                   >
                     <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-gray-700'}`} />
@@ -801,7 +801,7 @@ export default function IncidentAnalyzer() {
                   placeholder={getPlaceholder(selectedDomain)}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500 resize-none"
+                  className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-[#6B7280] focus:border-[#2B8A6E] resize-none"
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
@@ -814,7 +814,7 @@ export default function IncidentAnalyzer() {
                     placeholder="Acme Corp"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500"
+                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-[#6B7280] focus:border-[#2B8A6E]"
                   />
                 </div>
                 <div className="space-y-2">
@@ -827,7 +827,7 @@ export default function IncidentAnalyzer() {
                     placeholder="exec@company.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-slate-600 focus:border-teal-500"
+                    className="bg-gray-50 border-gray-200 text-gray-900 placeholder:text-[#6B7280] focus:border-[#2B8A6E]"
                   />
                   <p className="text-xs text-gray-800">
                     Enter your email to receive a real notification during the simulation
@@ -839,7 +839,7 @@ export default function IncidentAnalyzer() {
                   size="lg"
                   onClick={handleAnalyze}
                   disabled={!description.trim() || isAnalyzing}
-                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
+                  className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white gap-2 px-8"
                 >
                   {isAnalyzing ? (
                     <>
@@ -863,7 +863,7 @@ export default function IncidentAnalyzer() {
               <CardHeader>
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <CardTitle className="text-gray-900 flex items-center gap-2 text-2xl">
-                    <Brain className="w-6 h-6 text-teal-400" />
+                    <Brain className="w-6 h-6 text-[#2B8A6E]" />
                     AI Analysis Results
                   </CardTitle>
                   <div className="flex items-center gap-2">
@@ -874,7 +874,7 @@ export default function IncidentAnalyzer() {
                       </Badge>
                     )}
                     {(analysis.incidentType || analysis.incident_type) && (
-                      <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30 text-sm">
+                      <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30 text-sm">
                         {analysis.incidentType || analysis.incident_type}
                       </Badge>
                     )}
@@ -1183,7 +1183,7 @@ export default function IncidentAnalyzer() {
                                     updated.raciMatrix[i].name = e.target.value;
                                     setEditablePlaybook({ ...updated });
                                   }}
-                                  className="bg-gray-50 border-slate-600 text-gray-900 h-8 text-sm"
+                                  className="bg-gray-50 border-[#0A0F2E] text-gray-900 h-8 text-sm"
                                 />
                               ) : (
                                 <span className="text-gray-900">{s.name}</span>
@@ -1227,7 +1227,7 @@ export default function IncidentAnalyzer() {
                           <div className="flex flex-wrap gap-2 mt-1">
                             {task.owner && <span className="text-xs text-gray-700">Owner: {task.owner}</span>}
                             {task.duration && <span className="text-xs text-gray-700">Duration: {task.duration}</span>}
-                            {task.phase && <span className="text-xs text-teal-500">{task.phase}</span>}
+                            {task.phase && <span className="text-xs text-[#2B8A6E]">{task.phase}</span>}
                           </div>
                         </div>
                         {task.priority && (
@@ -1269,7 +1269,7 @@ export default function IncidentAnalyzer() {
                 size="lg"
                 onClick={handleRunSimulation}
                 disabled={isSimulating}
-                className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
+                className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white gap-2 px-8"
               >
                 {isSimulating ? (
                   <>
@@ -1414,7 +1414,7 @@ export default function IncidentAnalyzer() {
                 <Button
                   size="lg"
                   onClick={handleGoToReport}
-                  className="bg-teal-500 hover:bg-teal-600 text-gray-900 gap-2 px-8"
+                  className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white gap-2 px-8"
                 >
                   <Download className="w-5 h-5" /> Download Report
                   <ArrowRight className="w-4 h-4" />
@@ -1441,8 +1441,8 @@ export default function IncidentAnalyzer() {
           <div className="space-y-6">
             <Card className="bg-white border-gray-200">
               <CardContent className="pt-8 text-center">
-                <div className="w-16 h-16 bg-teal-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <FileText className="w-8 h-8 text-teal-400" />
+                <div className="w-16 h-16 bg-[#2B8A6E]/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <FileText className="w-8 h-8 text-[#2B8A6E]" />
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Your Executive Report is Ready</h2>
                 <p className="text-gray-800 max-w-lg mx-auto">

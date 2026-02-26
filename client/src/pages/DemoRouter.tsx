@@ -31,7 +31,7 @@ export default function DemoRouter() {
       duration: '3 minutes',
       description: 'See a playbook activate and tasks deploy in real-time. Perfect for a quick overview.',
       icon: Zap,
-      color: 'from-[#2B8A6E] to-[#DFC178]',
+      color: 'from-[#2B8A6E] to-[#C9A84C]',
       borderColor: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]',
       iconBg: 'bg-[#2B8A6E]/20',
       path: '/demo/live-activation',

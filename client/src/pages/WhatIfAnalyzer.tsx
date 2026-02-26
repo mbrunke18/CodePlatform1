@@ -246,13 +246,13 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
 
   return (
     <div className="space-y-6">
-      <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-700 hover:text-slate-700 dark:hover:text-slate-300 -ml-2">
+      <Button variant="ghost" size="sm" onClick={onBack} className="text-[#0A0F2E] hover:text-[#0A0F2E] dark:hover:text-[#C9A84C] -ml-2">
         <ArrowLeft className="h-4 w-4 mr-1" /> Back to options
       </Button>
 
       <div className="text-center max-w-2xl mx-auto mb-2">
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Quick What-If Analysis</h2>
-        <p className="text-gray-700 dark:text-slate-400">
+        <h2 className="text-2xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Quick What-If Analysis</h2>
+        <p className="text-[#6B7280] dark:text-[#E8E4DC]">
           Describe a scenario in plain language and get an instant AI-powered impact assessment.
           See how long it would take to respond, what risks are involved, and whether to proceed.
         </p>
@@ -269,7 +269,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             key={key}
             variant={selectedDomain === key ? 'default' : 'outline'}
             size="sm"
-            className={selectedDomain === key ? `${bgColor} ${textColor} border-2 ${borderColor}` : ''}
+            className={selectedDomain === key ? `${bgColor} ${textColor} border-2 ${borderColor}` : 'border-[#E8E4DC] text-[#6B7280]'}
             onClick={() => setSelectedDomain(key as any)}
           >
             <Icon className="h-4 w-4 mr-1" />
@@ -281,7 +281,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
       <Card className={`${style.border} ${style.bg}`}>
         <CardContent className="p-6 space-y-4">
           <div>
-            <Label className="text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2 block">
+            <Label className="text-sm font-semibold text-[#0A0F2E] dark:text-[#E8E4DC] mb-2 block">
               Pick a sample scenario or type your own:
             </Label>
             <div className="flex flex-wrap gap-2 mb-4">
@@ -290,7 +290,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   key={i}
                   variant="outline"
                   size="sm"
-                  className={`text-xs transition-all ${scenario === s ? 'ring-2 ring-[#C9A84C] bg-[#C9A84C]/10' : ''}`}
+                  className={`text-xs transition-all border-[#E8E4DC] text-[#6B7280] ${scenario === s ? 'ring-2 ring-[#C9A84C] bg-[#C9A84C]/10 border-[#C9A84C]' : ''}`}
                   onClick={() => setScenario(s)}
                 >
                   {s.length > 60 ? s.substring(0, 60) + '...' : s}
@@ -353,30 +353,30 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <VerdictIcon className={`h-8 w-8 ${verdictConfig.iconColor}`} />
                 </div>
                 <div>
-                  <Badge className={`${verdictConfig.badgeBg} text-gray-900 mb-1`}>{verdictConfig.label}</Badge>
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-white">
+                  <Badge className={`${verdictConfig.badgeBg} text-white mb-1`}>{verdictConfig.label}</Badge>
+                  <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {isRecommended ? 'This change improves your execution speed'
                       : isConditional ? 'This change requires careful planning'
                       : 'This change would slow down your response'}
                   </h3>
                 </div>
               </div>
-              <p className="text-gray-800 dark:text-slate-300 text-sm leading-relaxed">{result.recommendation}</p>
+              <p className="text-[#6B7280] dark:text-[#E8E4DC] text-sm leading-relaxed">{result.recommendation}</p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 <Clock className="h-5 w-5 text-[#0A0F2E]" />
                 Coordination Timeline Comparison
               </CardTitle>
-              <CardDescription>How this change affects the time from trigger to full stakeholder coordination</CardDescription>
+              <CardDescription className="text-[#6B7280]">How this change affects the time from trigger to full stakeholder coordination</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">Current Playbook</div>
+                  <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">Current Playbook</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className="flex-1 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-full h-8 flex items-center px-4">
@@ -387,7 +387,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-gray-700 dark:text-slate-400 text-right flex-shrink-0">With This Change</div>
+                  <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className={`flex-1 ${isNotRecommended ? 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} rounded-full h-8 flex items-center px-4`}>
@@ -408,15 +408,15 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
           </Card>
 
           {result.risk_assessment && (
-            <Card>
+            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
               <CardHeader className="pb-3">
-                <CardTitle className="text-base flex items-center gap-2">
+                <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Shield className="h-5 w-5 text-[#2B8A6E]" />
                   What You Should Know
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-800 dark:text-slate-300 text-sm leading-relaxed">{result.risk_assessment}</p>
+                <p className="text-[#6B7280] dark:text-[#E8E4DC] text-sm leading-relaxed">{result.risk_assessment}</p>
               </CardContent>
             </Card>
           )}

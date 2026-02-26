@@ -50,7 +50,7 @@ const IDEA_STORY = [
     title: "When Strategic Events Hit, Teams Scramble",
     subtitle: "20-50 hours lost just getting organized",
     phase: "PROBLEM",
-    phaseColor: "bg-red-900/40",
+    phaseColor: "bg-[#0A0F2E]",
     icon: AlertTriangle,
     color: "text-red-400",
     bgColor: "bg-red-900/20",

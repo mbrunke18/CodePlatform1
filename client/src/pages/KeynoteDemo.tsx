@@ -181,7 +181,7 @@ export default function KeynoteDemo() {
 
   const stageContent: Record<string, JSX.Element> = {
     opening: (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-white">
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-[#F8F7F4]">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
           <AlertTriangle className="h-20 w-20 text-[#0A0F2E] mx-auto mb-8" />
         </motion.div>
@@ -202,22 +202,22 @@ export default function KeynoteDemo() {
         >
           <div className="text-center">
             <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={72} suffix="+" /></div>
-            <div className="text-xl text-[#6B7280]">Hours for critical signals to reach decision-makers</div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Hours for critical signals</div>
           </div>
           <div className="text-center">
             <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={67} suffix="%" /></div>
-            <div className="text-xl text-[#6B7280]">Of strategic initiatives fail due to poor execution</div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Execution Failure Rate</div>
           </div>
           <div className="text-center">
             <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={23} suffix="%" /></div>
-            <div className="text-xl text-[#6B7280]">Of executive time wasted getting organized</div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Executive Time Wasted</div>
           </div>
         </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
-          className="text-2xl text-[#0A0F2E] mt-16 max-w-3xl"
+          className="text-2xl text-[#0A0F2E] mt-16 max-w-3xl font-medium"
         >
           Fortune 1000 companies lose billions every year because they can't move fast enough when it matters most.
         </motion.p>
@@ -225,7 +225,7 @@ export default function KeynoteDemo() {
     ),
 
     cost: (
-      <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-white">
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-8 bg-[#F8F7F4]">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
           <DollarSign className="h-20 w-20 text-[#0A0F2E] mx-auto mb-8" />
         </motion.div>
@@ -236,13 +236,13 @@ export default function KeynoteDemo() {
           className="text-7xl font-bold text-[#0A0F2E] mb-4 tracking-tight"
           style={CG}
         >
-          The <span className="text-[#0A0F2E]">$4.7 Trillion</span> Problem
+          The <span className="text-[#C9A84C]">$4.7 Trillion</span> Problem
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-2xl text-[#0A0F2E] mb-16 max-w-3xl"
+          className="text-2xl text-[#0A0F2E] mb-16 max-w-3xl font-medium"
         >
           Annual cost of failed strategic execution across Fortune 1000 companies
         </motion.p>
@@ -253,21 +253,21 @@ export default function KeynoteDemo() {
           className="grid grid-cols-4 gap-8 max-w-6xl"
         >
           {[
-            { icon: Clock, value: '3-5 days', label: 'Average response time to competitive threats', color: 'text-[#0A0F2E]', bg: 'bg-[#F8F7F4]' },
-            { icon: Users, value: '30+', label: 'Stakeholders to coordinate per strategic event', color: 'text-[#0A0F2E]', bg: 'bg-[#F8F7F4]' },
-            { icon: FileText, value: '47', label: 'Documents manually created per activation', color: 'text-[#C9A84C]', bg: 'bg-[#C9A84C]/5' },
-            { icon: DollarSign, value: '$2.4M', label: 'Average cost per day of delayed response', color: 'text-[#2B8A6E]', bg: 'bg-[#2B8A6E]/5' },
+            { icon: Clock, value: '3-5 days', label: 'Response time to threats', color: 'text-[#0A0F2E]', bg: 'bg-white' },
+            { icon: Users, value: '30+', label: 'Stakeholders per event', color: 'text-[#0A0F2E]', bg: 'bg-white' },
+            { icon: FileText, value: '47', label: 'Documents manually created', color: 'text-[#C9A84C]', bg: 'bg-white' },
+            { icon: DollarSign, value: '$2.4M', label: 'Daily delay cost', color: 'text-[#2B8A6E]', bg: 'bg-white' },
           ].map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 + i * 0.2, duration: 0.6 }}
-              className={`${item.bg} border border-[#E8E4DC] rounded-2xl p-8 text-center`}
+              className={`${item.bg} border border-[#E8E4DC] rounded-2xl p-8 text-center shadow-sm`}
             >
               <item.icon className={`h-10 w-10 ${item.color} mx-auto mb-4`} />
               <div className={`text-4xl font-bold ${item.color} mb-2`} style={CG}>{item.value}</div>
-              <div className="text-sm text-[#0A0F2E] font-medium">{item.label}</div>
+              <div className="text-xs font-bold text-[#6B7280] uppercase tracking-widest">{item.label}</div>
             </motion.div>
           ))}
         </motion.div>

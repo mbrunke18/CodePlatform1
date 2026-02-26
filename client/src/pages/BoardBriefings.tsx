@@ -216,13 +216,13 @@ export default function BoardBriefings() {
                         <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-briefing-title-${briefing.id}`}>{briefing.title}</h3>
                         <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{briefing.briefingType}</Badge>
                         {briefing.timeToDecision && (
-                          <Badge variant="secondary" className="bg-[#C9A84C]/10 text-[#C9A84C] border-none">{briefing.timeToDecision}</Badge>
+                          <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">{briefing.timeToDecision}</Badge>
                         )}
                         {briefing.reviewed && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm text-[#0A0F2E] dark:text-white/80">{briefing.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80">{briefing.executiveSummary}</p>
                       
                       {briefing.keyInsights && briefing.keyInsights.length > 0 && (
                         <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/40 p-3 rounded-md border border-[#0A0F2E]/10">
@@ -392,14 +392,14 @@ export default function BoardBriefings() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
-                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{report.reportType}</Badge>
+                        <h3 className="font-semibold text-[#0A0F2E] dark:text-[#C9A84C]" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
+                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-[#C9A84C]/20 dark:text-[#C9A84C]">{report.reportType}</Badge>
                         <Badge className="bg-[#0A0F2E] text-white border-none">{report.reportingPeriod}</Badge>
                         {report.approvedBy && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm text-[#0A0F2E] dark:text-white/80">{report.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80">{report.executiveSummary}</p>
                       
                       {report.presentedAt && (
                         <div className="flex items-center gap-2 text-sm text-[#6B7280] dark:text-white/60">

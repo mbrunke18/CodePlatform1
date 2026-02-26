@@ -114,12 +114,13 @@ export default function PlaybookCommand() {
       <StandardNav />
 
       <main className="max-w-4xl mx-auto px-6 py-16">
-        <Button 
-          variant="ghost" 
-          className="mb-6"
-          onClick={() => setLocation("/playbooks")}
-          data-testid="button-back"
-        >
+          <Button 
+            variant="ghost" 
+            className="mb-6 hover:bg-transparent hover:text-[#0A0F2E]"
+            style={{ color: "#6B7280" }}
+            onClick={() => setLocation("/playbooks")}
+            data-testid="button-back"
+          >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Library
         </Button>

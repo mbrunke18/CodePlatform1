@@ -166,11 +166,11 @@ export default function IDEAFramework() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12">
-              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(43,138,110,0.15)", color: "#3BAF8A" }}>
+              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(43,138,110,0.15)", color: "#2B8A6E" }}>
                 <Cpu className="w-5 h-5 mr-3" />
                 AI handles monitoring & orchestration
               </Badge>
-              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(201,168,76,0.15)", color: "#DFC178" }}>
+              <Badge className="px-6 py-3 text-sm font-semibold border-0 rounded-none h-14" style={{ background: "rgba(201,168,76,0.15)", color: "#C9A84C" }}>
                 <HeartHandshake className="w-5 h-5 mr-3" />
                 Humans retain all strategic authority
               </Badge>

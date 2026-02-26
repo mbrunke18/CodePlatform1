@@ -205,7 +205,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-800">
-              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#2B8A6E]" /> Personalized workspace</span>
+              <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#2B8A6E]" /> Professional workspace</span>
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Role-specific playbooks</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#C9A84C]" /> Tailored signal feeds</span>
             </div>

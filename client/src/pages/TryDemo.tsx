@@ -1219,7 +1219,7 @@ export default function TryDemo() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {INDUSTRY_DEMOS.map((demo) => {
               const IconComponent = demo.icon;
               return (
@@ -1231,8 +1231,8 @@ export default function TryDemo() {
                   }}
                   className={`p-5 rounded-xl border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
                     demo.type === 'offensive' 
-                      ? 'border-green-500/30 hover:border-green-400/50' 
-                      : 'border-slate-600/50 hover:border-slate-500/70'
+                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50' 
+                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -1242,7 +1242,7 @@ export default function TryDemo() {
                     </div>
                     <Badge variant="outline" className={`text-xs ${
                       demo.type === 'offensive' 
-                        ? 'text-green-400 border-green-500/30 bg-green-500/10' 
+                        ? 'text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10' 
                         : 'text-[#0A0F2E] border-[#0A0F2E]/30 bg-[#0A0F2E]/10'
                     }`}>
                       {demo.type === 'offensive' ? 'Offense' : 'Defense'}
@@ -1251,11 +1251,11 @@ export default function TryDemo() {
                   <p className="text-sm font-semibold text-gray-900 mb-1">{demo.title}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-800">{demo.organization}</span>
-                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-green-400' : 'text-[#2B8A6E]'}`}>
+                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
                       {demo.impact}
                     </span>
                   </div>
-                  <div className="mt-3 flex items-center gap-1 text-xs text-poise-teal opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-3 flex items-center gap-1 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
                     <span>Run this scenario</span>
                     <ArrowRight className="h-3 w-3" />
                   </div>

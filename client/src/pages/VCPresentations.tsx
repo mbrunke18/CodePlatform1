@@ -172,8 +172,8 @@ export default function VCPresentations() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-light mb-1" style={{ ...CG, color: highlight.color.includes('[') ? highlight.color.split('-')[1].replace('[', '').replace(']', '') : undefined }}>{highlight.value}</div>
-                  <div className="text-sm text-[#6B7280] mb-2">{highlight.subtitle}</div>
-                  <div className={`text-sm font-semibold ${highlight.color}`}>{highlight.growth}</div>
+                  <div className="text-sm text-[#6B7280] mb-2 font-medium">{highlight.subtitle}</div>
+                  <div className={`text-sm font-bold ${highlight.color}`}>{highlight.growth}</div>
                 </CardContent>
               </Card>
             ))}

@@ -387,7 +387,7 @@ export default function UnifiedEnterprisePlatform() {
                         <div className="p-2 rounded-lg bg-[#0A0F2E]/10">
                           <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                         </div>
-                        <Badge variant="outline" className="bg-primary/20 text-primary border-primary/30">
+                        <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                           EXCELLENT
                         </Badge>
                       </div>
@@ -409,7 +409,7 @@ export default function UnifiedEnterprisePlatform() {
               </div>
 
               {/* Decision Velocity - Execution Infrastructure */}
-              <Card className="border-[#2B8A6E]/50 bg-gradient-to-br   backdrop-blur-sm mb-4">
+              <Card className="border-[#2B8A6E]/50 bg-white backdrop-blur-sm mb-4">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="flex items-center gap-2 text-gray-900">
