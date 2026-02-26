@@ -167,7 +167,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45]">
-              <Sparkles className="w-5 h-5 text-gray-900" />
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
               <CardTitle className="text-lg">Trigger Probability Forecast</CardTitle>
@@ -184,8 +184,8 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center gap-2 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg text-sm">
-          <Info className="w-4 h-4 text-[#0A0F2E] dark:text-[#0A0F2E] flex-shrink-0" />
-          <span className="text-[#0A0F2E] dark:text-[#DFC178]">
+          <Info className="w-4 h-4 text-white dark:text-[#C9A84C] flex-shrink-0" />
+          <span className="text-white dark:text-[#DFC178]">
             Triggers ranked by highest 30-day firing probability. Higher probability = higher priority for review.
           </span>
         </div>
@@ -299,14 +299,14 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                 </div>
 
                 <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
-                  <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#DFC178] mb-2 flex items-center gap-1">
+                  <div className="text-xs font-semibold text-white dark:text-[#DFC178] mb-2 flex items-center gap-1">
                     <Target className="w-3 h-3" />
                     Recommended Preparation
                   </div>
                   <ul className="space-y-1">
                     {forecast.recommendedActions.map((action, idx) => (
-                      <li key={idx} className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] flex items-start gap-1">
-                        <span className="text-[#0A0F2E]">•</span> {action}
+                      <li key={idx} className="text-xs text-white dark:text-white/80 flex items-start gap-1">
+                        <span className="text-[#C9A84C]">•</span> {action}
                       </li>
                     ))}
                   </ul>
@@ -336,7 +336,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                     <Button
                       size="sm"
                       variant="default"
-                      className="w-full bg-poise-teal hover:bg-poise-teal/90"
+                      className="w-full bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white"
                       data-testid={`button-edit-trigger-${forecast.triggerId}`}
                     >
                       <Edit className="w-3 h-3 mr-1" />

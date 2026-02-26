@@ -375,7 +375,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
             <div>
               <CardTitle className="flex items-center gap-2">
                 Comprehensive Template Library
-                <Badge variant="outline" className="bg-[#0A0F2E] text-[#0A0F2E]">
+                <Badge variant="outline" className="bg-[#0A0F2E] text-[#C9A84C]">
                   {filteredTemplates.length} Templates
                 </Badge>
               </CardTitle>

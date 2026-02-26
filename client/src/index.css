@@ -488,6 +488,34 @@ html:not(.dark) .bg-poise-navy .text-gray-200 { color: #e2e8f0 !important; }
 html:not(.dark) .bg-poise-navy .text-gray-300 { color: #cbd5e1 !important; }
 html:not(.dark) .bg-poise-navy .text-gray-400 { color: #94a3b8 !important; }
 
+/* ── Restore white text on brand hex dark backgrounds (CRITICAL) ── */
+/* Without these, text-white gets overridden to navy on all dark brand containers */
+html:not(.dark) [class~="bg-[#0A0F2E]"] .text-white,
+html:not(.dark) [class~="bg-[#141B45]"] .text-white,
+html:not(.dark) [class~="bg-[#0A0F2E]/60"] .text-white,
+html:not(.dark) [class~="bg-[#0A0F2E]/70"] .text-white,
+html:not(.dark) [class~="bg-[#0A0F2E]/80"] .text-white,
+html:not(.dark) [class~="bg-[#0A0F2E]/90"] .text-white,
+html:not(.dark) [class~="bg-[#2B8A6E]"] .text-white,
+html:not(.dark) [class~="bg-[#237A5F]"] .text-white { color: #ffffff !important; }
+
+/* Same element (e.g. <Button className="bg-[#0A0F2E] text-white">) */
+html:not(.dark) [class~="bg-[#0A0F2E]"].text-white,
+html:not(.dark) [class~="bg-[#141B45]"].text-white,
+html:not(.dark) [class~="bg-[#2B8A6E]"].text-white { color: #ffffff !important; }
+
+/* Inline style navy backgrounds restore white text */
+html:not(.dark) [style*="background: #0A0F2E"] .text-white,
+html:not(.dark) [style*="background:#0A0F2E"] .text-white,
+html:not(.dark) [style*="background: #141B45"] .text-white,
+html:not(.dark) [style*="background: #2B8A6E"] .text-white { color: #ffffff !important; }
+
+/* Gradient navy backgrounds restore white text */
+html:not(.dark) [class~="from-[#0A0F2E]"] .text-white,
+html:not(.dark) [class~="from-[#141B45]"] .text-white,
+html:not(.dark) [class~="from-[#0A0F2E]"].text-white,
+html:not(.dark) [class~="from-[#141B45]"].text-white { color: #ffffff !important; }
+
 /* ── Fix dark borders in light mode → neutral light gray ── */
 html:not(.dark) [class*="border-gray-7"],
 html:not(.dark) [class*="border-gray-8"],
@@ -897,27 +925,46 @@ html:not(.dark) [class*="border-zinc-9"] {
 
 /* ── DARK BACKGROUND CONTRAST ENFORCEMENT ─────────────────────────────── */
 
-/* Navy containers: inherit white text */
+/* Navy containers: WHITE text — !important beats Tailwind's explicit text-[#0A0F2E] on same element */
 [class~="bg-[#0A0F2E]"],
 [class~="bg-[#141B45]"],
 [class~="bg-[#0A0F2E]/50"], [class~="bg-[#0A0F2E]/60"],
 [class~="bg-[#0A0F2E]/70"], [class~="bg-[#0A0F2E]/80"],
 [class~="bg-[#0A0F2E]/90"] {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
-/* Teal containers: inherit white text */
+/* Gradient containers starting from navy — force white text + icons */
+[class~="from-[#0A0F2E]"],
+[class~="from-[#141B45]"] {
+  color: #ffffff !important;
+}
+[class~="from-[#0A0F2E]"] svg,
+[class~="from-[#141B45]"] svg {
+  color: #ffffff !important;
+}
+
+/* Teal containers: WHITE text */
 [class~="bg-[#2B8A6E]"],
 [class~="bg-[#237A5F]"],
 [class~="bg-[#2B8A6E]/50"], [class~="bg-[#2B8A6E]/60"],
 [class~="bg-[#2B8A6E]/70"], [class~="bg-[#2B8A6E]/80"],
 [class~="bg-[#2B8A6E]/90"] {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 /* Gold containers: dark navy text */
 [class~="bg-[#C9A84C]"],
 [class~="bg-[#DFC178]"] {
+  color: #0A0F2E !important;
+}
+
+/* Light-bg elements reset text to navy so nested white-bg cards inside dark sections are readable */
+[class~="bg-white"],
+[class~="bg-[#F8F7F4]"],
+[class~="bg-[#F0EDE4]"],
+[class~="bg-slate-50"],
+[class~="bg-gray-50"] {
   color: #0A0F2E;
 }
 
