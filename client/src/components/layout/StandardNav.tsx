@@ -246,12 +246,11 @@ export default function StandardNav() {
               <>
                 <Button
                   variant="outline"
-                  onClick={() => navigateTo("/explore")}
+                  onClick={() => navigateTo("/try-demo")}
                   className="border-gray-400 dark:border-gray-500 text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-4 font-medium"
-                  data-testid="nav-explore"
+                  data-testid="nav-try-demo"
                 >
-                  <Eye className="h-4 w-4 mr-1.5" />
-                  Explore
+                  Try Demo
                 </Button>
                 <Button
                   onClick={() => navigateTo("/contact")}

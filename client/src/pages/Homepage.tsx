@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const NAVY = "#0A0F2E";
@@ -119,6 +120,11 @@ export default function Homepage() {
 
           {/* Left */}
           <div>
+            {/* VaughnMartin logo */}
+            <div style={{ marginBottom: 28 }}>
+              <VaughnMartinLogo height={44} variant="full" color="light" />
+            </div>
+
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.22)", padding: "6px 18px", marginBottom: 36 }}>
               <span style={{ width: 6, height: 6, background: GOLD, borderRadius: "50%", display: "inline-block", animation: "hpBlink 2.5s ease infinite" }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Execution OS · Now in Pilot</span>
