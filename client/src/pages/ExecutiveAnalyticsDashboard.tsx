@@ -347,6 +347,7 @@ export default function ExecutiveAnalyticsDashboard() {
           </TabsContent>
         </Tabs>
       </div>
+    </div>
     </PageLayout>
   );
 }
