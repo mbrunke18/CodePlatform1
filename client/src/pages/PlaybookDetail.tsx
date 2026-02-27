@@ -47,11 +47,9 @@ import { ExecutionCommandCenter } from '@/components/execution/ExecutionCommandC
 import { PhaseSLASummary } from '@/components/playbook/PhaseSLASummary';
 
 const SAMPLE_PLAYBOOK_IDS = [
-  "3dfecf58-e93c-4a3b-b712-f2a9d4a77ed0",
-  "9d192969-a025-4d66-8aee-f71f237983a2",
-  "f522bf40-c8fa-484a-9d7c-e0be01f10744",
-  "3998652e-169e-407f-91f1-cbade5394659",
-  "2e32847a-0358-4f82-a182-f0e2ed63d447",
+  "a8d182bd-7f3a-4a70-8818-8b80790394b2", // Aggressive Pricing Disruption (Offense)
+  "1a309274-6068-46f3-bb17-4303c184939c", // Compound: Geopolitical + Supply Chain Disruption (Defense)
+  "da7df303-a5bd-4fc0-a8b7-492f8619c500", // AI Competitive Disruption (Special Teams)
 ];
 
 const SEVERITY_COLORS = {
@@ -312,7 +310,7 @@ export default function PlaybookDetail() {
                   <div>
                     <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
                     <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>
-                      165 more playbooks are waiting for your team
+                      167 more playbooks are waiting for your team
                     </div>
                     <p style={{ fontSize: 12, color: MUTED, marginBottom: 24, lineHeight: 1.6 }}>
                       Access the full library, activate playbooks in real-time, and run practice drills with your executive team.
@@ -412,7 +410,7 @@ export default function PlaybookDetail() {
                 </div>
                 <div style={{ ...CG, fontSize: "clamp(28px,4vw,40px)", fontWeight: 600, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
                   You just read one playbook.<br />
-                  <em style={{ color: GOLD }}>165 more are protecting your competitors.</em>
+                  <em style={{ color: GOLD }}>167 more are protecting your competitors.</em>
                 </div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
                   Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation. 

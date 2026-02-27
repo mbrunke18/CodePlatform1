@@ -10,7 +10,7 @@ import {
   Search, ChevronDown, ChevronRight, Shield, Zap, Brain,
   Network, AlertTriangle, BookOpen, Clock, Users, ArrowRight,
   Lock, TrendingUp, DollarSign, Globe2, Layers, Target,
-  HeartHandshake, Lightbulb, Check, ChevronLeft
+  HeartHandshake, Lightbulb, Check, ChevronLeft, Eye
 } from "lucide-react";
 import type { Playbook } from "@shared/schema";
 import { useAuth } from "@/hooks/useAuth";
@@ -36,11 +36,9 @@ const URGENCY_FILTERS = [
 ];
 
 const SAMPLE_PLAYBOOK_IDS = [
-  "3dfecf58-e93c-4a3b-b712-f2a9d4a77ed0", // CEO Sudden Departure
-  "9d192969-a025-4d66-8aee-f71f237983a2", // Competitor Product Launch (Breakthrough Innovation)
-  "f522bf40-c8fa-484a-9d7c-e0be01f10744", // Data Privacy Violation (GDPR/CCPA)
-  "3998652e-169e-407f-91f1-cbade5394659", // Activist Investor Campaign
-  "2e32847a-0358-4f82-a182-f0e2ed63d447", // Social Media Firestorm
+  "a8d182bd-7f3a-4a70-8818-8b80790394b2", // Aggressive Pricing Disruption (Offense)
+  "1a309274-6068-46f3-bb17-4303c184939c", // Compound: Geopolitical + Supply Chain Disruption (Defense)
+  "da7df303-a5bd-4fc0-a8b7-492f8619c500", // AI Competitive Disruption (Special Teams)
 ];
 
 const DOMAIN_DB_MAP: Record<string, string[]> = {
@@ -511,6 +509,11 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                           <Check className="h-3 w-3 text-[#2B8A6E]" />
                           <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Enterprise Tier</span>
                         </>
+                      ) : SAMPLE_PLAYBOOK_IDS.includes(playbook.id) ? (
+                        <>
+                          <Eye className="h-3 w-3 text-[#2B8A6E]" />
+                          <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Free Sample</span>
+                        </>
                       ) : (
                         <>
                           <Lock className="h-3 w-3 text-[#C9A84C]" />
@@ -531,15 +534,25 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     </div>
                     <Button
                       size="sm"
-                      style={{ background: "#0A0F2E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }}
+                      style={{
+                        background: isAuthenticated || SAMPLE_PLAYBOOK_IDS.includes(playbook.id) ? "#0A0F2E" : "#0A0F2E",
+                        color: "white", fontSize: 10, padding: "4px 12px", height: "auto"
+                      }}
                       className="font-bold uppercase tracking-wider"
-                      onClick={() => isAuthenticated
-                        ? setLocation(`/playbooks/customize?template=${playbook.id}`)
-                        : setLocation("/early-access")
-                      }
+                      onClick={() => {
+                        if (isAuthenticated) {
+                          setLocation(`/playbooks/customize?template=${playbook.id}`);
+                        } else if (SAMPLE_PLAYBOOK_IDS.includes(playbook.id)) {
+                          setLocation(`/playbook-library/${playbook.id}`);
+                        } else {
+                          setLocation("/early-access");
+                        }
+                      }}
                     >
                       {isAuthenticated ? (
                         <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
+                      ) : SAMPLE_PLAYBOOK_IDS.includes(playbook.id) ? (
+                        <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
                       ) : (
                         <span>Get Access</span>
                       )}
