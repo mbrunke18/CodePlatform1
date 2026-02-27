@@ -146,7 +146,7 @@ export default function WorkspaceIdentify() {
                 <div className="flex-1 flex items-center gap-2">
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
-                    <span className="text-sm font-bold text-[#2B8A6E]">IDENTIFY</span>
+                    <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">IDENTIFY</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/detect">
@@ -182,7 +182,7 @@ export default function WorkspaceIdentify() {
                       <category.icon className={`h-6 w-6 ${category.color}`} />
                       <h3 className="font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{category.name}</h3>
                     </div>
-                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-white/10 text-[#0A0F2E] dark:text-white/60">{category.count} playbooks</Badge>
+                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-white/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} playbooks</Badge>
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
@@ -302,7 +302,7 @@ export default function WorkspaceIdentify() {
                   </div>
                 </div>
                 <Link href="/workspaces/detect">
-                  <Button className="bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45]">
+                  <Button className="bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border border-white/20">
                     Go to DETECT
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>

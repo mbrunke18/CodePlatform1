@@ -162,7 +162,7 @@ export default function WorkspaceExecute() {
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
                     <Compass className="h-4 w-4 text-[#C9A84C]" />
-                    <span className="text-sm font-bold text-[#0A0F2E]">EXECUTE</span>
+                    <span className="text-sm font-bold text-[#0A0F2E] uppercase tracking-wider">EXECUTE</span>
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
@@ -267,15 +267,15 @@ export default function WorkspaceExecute() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#2B8A6E] transition-colors">
+                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#C9A84C] transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-white/40 group-hover:text-[#2B8A6E] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-white/40 group-hover:text-[#C9A84C] transition-colors" />
                         </div>
                         <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-white/60">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

@@ -231,7 +231,7 @@ export default function DecisionTreeBuilder() {
             <CardContent className="px-0 pb-0 space-y-8">
               <div className="space-y-3">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-                  Scenario Name <span className="text-red-700">*</span>
+                  Scenario Name <span className="text-[#DC2626]">*</span>
                 </label>
                 <Input 
                   placeholder="e.g., M&A Target Acquisition, Customer Data Breach, AI Model Deployment"
@@ -444,7 +444,7 @@ export default function DecisionTreeBuilder() {
                       </div>
                       
                       <div className="space-y-3">
-                        <label className="text-[10px] font-bold uppercase tracking-widest text-red-700">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-[#DC2626]">
                           Strategic Risks (Cons)
                         </label>
                         <Textarea 

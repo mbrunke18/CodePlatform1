@@ -85,15 +85,10 @@ const PLAYBOOK_DOMAINS = [
   { id: 'operational', name: 'Operational Excellence', icon: Settings, color: 'text-[#0A0F2E]' },
 ];
 
-const SAMPLE_TEMPLATES: PlaybookTemplate[] = [
-  { id: '1', name: 'Supply Chain Disruption Response', category: 'crisis', domain: 'operations', description: 'Rapid response playbook for supply chain disruptions including supplier failure, logistics issues, or natural disasters', estimatedDuration: '4-12 hours', complexity: 'high', stakeholderCount: 12, tasks: 24 },
-  { id: '2', name: 'Competitive Pricing Response', category: 'competitive', domain: 'market', description: 'Quick response to aggressive competitor pricing moves or market share threats', estimatedDuration: '2-4 hours', complexity: 'medium', stakeholderCount: 8, tasks: 16 },
-  { id: '3', name: 'Cybersecurity Incident Response', category: 'crisis', domain: 'technology', description: 'Comprehensive response to security breaches, ransomware, or data compromise', estimatedDuration: '1-24 hours', complexity: 'high', stakeholderCount: 15, tasks: 32 },
-  { id: '4', name: 'Product Recall Execution', category: 'crisis', domain: 'operations', description: 'Coordinated product recall with regulatory notification, customer communication, and logistics', estimatedDuration: '24-72 hours', complexity: 'high', stakeholderCount: 20, tasks: 45 },
-  { id: '5', name: 'Market Entry Acceleration', category: 'market', domain: 'strategy', description: 'Rapid deployment playbook for entering new markets or launching products', estimatedDuration: '2-4 weeks', complexity: 'high', stakeholderCount: 18, tasks: 38 },
-  { id: '6', name: 'Regulatory Compliance Response', category: 'regulatory', domain: 'compliance', description: 'Response to new regulations, audit findings, or compliance gaps', estimatedDuration: '1-2 weeks', complexity: 'medium', stakeholderCount: 10, tasks: 20 },
-  { id: '7', name: 'Talent Retention Crisis', category: 'talent', domain: 'hr', description: 'Response to key talent departures or retention challenges', estimatedDuration: '1-4 weeks', complexity: 'medium', stakeholderCount: 8, tasks: 18 },
-  { id: '8', name: 'Financial Liquidity Response', category: 'financial', domain: 'finance', description: 'Emergency response to cash flow challenges or financial stress', estimatedDuration: '24-48 hours', complexity: 'high', stakeholderCount: 12, tasks: 25 },
+const FALLBACK_TEMPLATES: PlaybookTemplate[] = [
+  { id: '1', name: 'Supply Chain Disruption Response', category: 'crisis', domain: 'Crisis Management', description: 'Rapid response playbook for supply chain disruptions including supplier failure, logistics issues, or natural disasters', estimatedDuration: '4-12 hours', complexity: 'high', stakeholderCount: 12, tasks: 24 },
+  { id: '2', name: 'Competitive Pricing Response', category: 'competitive', domain: 'Market Dynamics', description: 'Quick response to aggressive competitor pricing moves or market share threats', estimatedDuration: '2-4 hours', complexity: 'medium', stakeholderCount: 8, tasks: 16 },
+  { id: '3', name: 'Cybersecurity Incident Response', category: 'crisis', domain: 'Crisis Management', description: 'Comprehensive response to security breaches, ransomware, or data compromise', estimatedDuration: '1-24 hours', complexity: 'high', stakeholderCount: 15, tasks: 32 },
 ];
 
 export default function PlaybookCustomization({ embedded }: { embedded?: boolean }) {

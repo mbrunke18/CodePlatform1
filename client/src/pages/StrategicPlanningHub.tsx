@@ -276,7 +276,7 @@ export default function StrategicPlanningHub() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Active Projects</h3>
                 <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.activeProjects}</div>
+              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.activeProjects}</div>
             </CardContent>
           </Card>
 
@@ -286,7 +286,7 @@ export default function StrategicPlanningHub() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Completed Q1</h3>
                 <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.completedThisQuarter}</div>
+              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.completedThisQuarter}</div>
             </CardContent>
           </Card>
 
@@ -296,7 +296,7 @@ export default function StrategicPlanningHub() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Total Budget</h3>
                 <DollarSign className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatCurrency(portfolioMetrics.totalBudget)}</div>
+              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatCurrency(portfolioMetrics.totalBudget)}</div>
             </CardContent>
           </Card>
 
@@ -306,7 +306,7 @@ export default function StrategicPlanningHub() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Portfolio Health</h3>
                 <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.portfolioHealth}%</div>
+              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.portfolioHealth}%</div>
             </CardContent>
           </Card>
 
@@ -316,7 +316,7 @@ export default function StrategicPlanningHub() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Risk Exposure</h3>
                 <AlertCircle className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.riskExposure}%</div>
+              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.riskExposure}%</div>
             </CardContent>
           </Card>
         </div>

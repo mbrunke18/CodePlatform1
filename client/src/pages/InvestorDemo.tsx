@@ -389,13 +389,13 @@ export default function InvestorDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-1.5 rounded-lg border border-[#E8E4DC]">
-                    <Clock className="h-4 w-4 text-[#0A0F2E]" />
-                    <span className="text-[#0A0F2E] font-mono text-sm">
-                      {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
-                    </span>
-                    <span className="text-[#6B7280] text-xs">/ 3:00</span>
-                  </div>
+                  <div className="flex items-center gap-2 bg-[#F8F7F4] px-3 py-1.5 rounded-lg border border-[#E8E4DC] shadow-sm">
+                      <Clock className="h-4 w-4 text-[#C9A84C]" />
+                      <span className="text-[#0A0F2E] font-mono text-sm font-bold">
+                        {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
+                      </span>
+                      <span className="text-[#6B7280] text-xs font-bold">/ 3:00</span>
+                    </div>
                 </div>
               </div>
               <Progress value={(elapsedTime / DEMO_DURATION) * 100} className="h-1 mt-3" />

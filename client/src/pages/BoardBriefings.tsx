@@ -235,12 +235,12 @@ export default function BoardBriefings() {
                         </div>
                       )}
 
-                      <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60">
+                      <div className="flex items-center gap-2 text-sm text-[#6B7280] dark:text-[#C9A84C]">
                         {briefing.confidenceLevel && (
                           <span>Confidence: {briefing.confidenceLevel}%</span>
                         )}
                         {briefing.createdAt && (
-                          <span className="flex items-center gap-1">
+                          <span className="flex items-center gap-1 text-[#6B7280] dark:text-white/60">
                             <Calendar className="h-4 w-4" />
                             {new Date(briefing.createdAt).toLocaleDateString()}
                           </span>

@@ -228,19 +228,19 @@ export default function UATAdmin() {
         <div className="p-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" data-testid="uat-tabs">
             <TabsList className="grid w-full grid-cols-4 mb-6 bg-white dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
-              <TabsTrigger value="provision" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-provision">
+              <TabsTrigger value="provision" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-provision">
                 <Plus className="h-4 w-4" />
                 Provision
               </TabsTrigger>
-              <TabsTrigger value="monitor" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-monitor">
+              <TabsTrigger value="monitor" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-monitor">
                 <Database className="h-4 w-4" />
                 Monitor
               </TabsTrigger>
-              <TabsTrigger value="validate" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-validate">
+              <TabsTrigger value="validate" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-validate">
                 <Check className="h-4 w-4" />
                 Validate
               </TabsTrigger>
-              <TabsTrigger value="scenarios" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] flex items-center gap-2" data-testid="tab-scenarios">
+              <TabsTrigger value="scenarios" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white flex items-center gap-2" data-testid="tab-scenarios">
                 <PlayCircle className="h-4 w-4" />
                 UAT Scenarios
               </TabsTrigger>

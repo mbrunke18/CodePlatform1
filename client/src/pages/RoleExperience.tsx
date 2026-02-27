@@ -903,7 +903,7 @@ export default function RoleExperience() {
               <div className="space-y-2">
                 {enabledTriggers.map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
                     <span className="text-gray-800">{t.name}</span>
                   </div>
                 ))}
@@ -998,9 +998,9 @@ export default function RoleExperience() {
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="mb-6 bg-green-500/10 border border-green-500/20 rounded-xl p-3 text-center">
-                <CheckCircle2 className="h-4 w-4 text-green-400 inline mr-2" />
-                <span className="text-sm text-green-400 font-medium">Configuration Complete — All 4 setup stages have data</span>
+                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none p-3 text-center">
+                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] inline mr-2" />
+                <span className="text-sm text-[#2B8A6E] font-medium uppercase tracking-widest font-bold">Configuration Complete — All 4 setup stages have data</span>
               </motion.div>
             )}
             <div className="mb-4 flex items-center gap-3">
@@ -1221,8 +1221,8 @@ export default function RoleExperience() {
                         <motion.span animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1 }}
                           className="text-xs text-amber-400">Connecting...</motion.span>
                       ) : source.connected ? (
-                        <span className="flex items-center gap-1 text-xs text-green-400">
-                          <div className="w-1.5 h-1.5 rounded-full bg-green-500" /> Connected
+                        <span className="flex items-center gap-1 text-xs text-[#2B8A6E] font-bold uppercase tracking-widest">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" /> Connected
                         </span>
                       ) : (
                         <span className="text-xs text-gray-800">Disconnected</span>
@@ -1276,7 +1276,7 @@ export default function RoleExperience() {
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="mb-6 bg-green-500/10 border border-green-500/20 rounded-xl p-3 text-center">
+                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-xl p-3 text-center">
                 <CheckCircle2 className="h-4 w-4 text-green-400 inline mr-2" />
                 <span className="text-sm text-green-400 font-medium">Configuration Complete — Ready to launch execution</span>
               </motion.div>
@@ -1532,10 +1532,10 @@ export default function RoleExperience() {
                     const isCustom = i >= role.executionTasks.length;
                     return (
                       <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 0 : -20 }}
-                        className={`flex items-center gap-3 p-2.5 rounded-lg ${isCurrent ? 'bg-green-500/10 ring-1 ring-green-500/20' : ''}`}
+                        className={`flex items-center gap-3 p-2.5 rounded-lg ${isCurrent ? 'bg-[#2B8A6E]/10 ring-1 ring-[#2B8A6E]/20' : ''}`}
                       >
                         <div className="w-12 text-right font-mono text-xs text-gray-800">{task.time}</div>
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-green-500/20' : 'bg-white/5'}`}>
+                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
                           <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-green-400' : 'text-slate-700'}`} />
                         </div>
                         <div className="flex-1">
@@ -1643,7 +1643,7 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-green-500/20 text-green-400"><Award className="h-3 w-3 mr-1" /> RESULTS</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E] rounded-none font-bold uppercase tracking-widest"><Award className="h-3 w-3 mr-1" /> RESULTS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Mission Complete</h2>
               <p className="text-gray-800">{role.name.split(' ')[0]}'s results using Execution OS vs. traditional approach</p>
             </div>

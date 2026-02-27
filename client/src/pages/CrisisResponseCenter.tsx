@@ -203,7 +203,7 @@ export default function CrisisResponseCenter() {
 
   const getSeverityBadgeStyle = (severity: string) => {
     switch (severity) {
-      case 'critical': return { background: "rgba(239,68,68,0.12)", color: "#EF4444" };
+      case 'critical': return { background: "rgba(220,38,38,0.12)", color: "#DC2626" };
       case 'high': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
       case 'medium': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
       case 'low': return { background: "#F8F7F4", color: "#6B7280" };
@@ -213,7 +213,7 @@ export default function CrisisResponseCenter() {
 
   const getSeverityIcon = (severity: string) => {
     switch (severity) {
-      case 'critical': return <AlertTriangle className="h-4 w-4 text-red-700" />;
+      case 'critical': return <AlertTriangle className="h-4 w-4 text-[#DC2626]" />;
       case 'high': return <AlertCircle className="h-4 w-4 text-[#C9A84C]" />;
       case 'medium': return <Clock className="h-4 w-4 text-[#2B8A6E]" />;
       case 'low': return <CheckCircle className="h-4 w-4 text-[#6B7280]" />;
@@ -355,7 +355,7 @@ export default function CrisisResponseCenter() {
                   <CardContent className="px-0 pb-0 space-y-4">
                     <Button className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ACTIVATE CRISIS PROTOCOL
-                      <AlertTriangle className="w-5 h-5 text-red-600" />
+                      <AlertTriangle className="w-5 h-5 text-[#DC2626]" />
                     </Button>
                     <Button variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] font-bold h-16 rounded-none justify-between px-8 text-xs tracking-[0.2em]">
                       ASSEMBLE RESPONSE TEAM

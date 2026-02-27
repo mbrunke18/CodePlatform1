@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { useLocation } from "wouter";
+import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";

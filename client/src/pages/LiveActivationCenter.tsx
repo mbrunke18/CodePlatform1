@@ -217,7 +217,7 @@ function getCategoryColor(category: string) {
     case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
     case 'DEFENSE': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
     case 'SPECIAL TEAMS': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
-    default: return { bg: 'bg-[#F8F7F4]', text: 'text-[#0A0F2E]', border: 'border-[#E8E4DC]', ring: 'ring-[#E8E4DC]', solid: 'bg-[#E8E4DC]' };
+    default: return { bg: 'bg-[#F8F7F4]', text: 'text-[#0A0F2E]', border: 'border-[#E8E4DC]', ring: 'ring-[#E8E4DC]', solid: 'bg-[#0A0F2E]' };
   }
 }
 

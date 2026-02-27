@@ -123,7 +123,7 @@ export default function CrisisExposureMatrix() {
             </h1>
             <p className="text-white/60 text-xl leading-relaxed max-w-3xl">
               Prioritize your playbook preparation with our Likelihood × Impact framework. 
-              Focus on <span className="text-red-700 font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
+              Focus on <span className="text-[#DC2626] font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
             </p>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function CrisisExposureMatrix() {
               title="Critical Priority"
               description="High Impact, High Likelihood - Immediate focus"
               scenarios={critical}
-              className="bg-red-50 border-red-700/20 hover:border-red-700/50"
+              className="bg-[#DC2626]/5 border-[#DC2626]/20 hover:border-[#DC2626]/50"
               icon={AlertTriangle}
             />
 

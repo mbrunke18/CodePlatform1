@@ -236,6 +236,15 @@ const STAKEHOLDER_COLORS: Record<number, string> = {
   3: "text-[#2B8A6E]",
 };
 
+const STEP_COLORS: Record<Step, string> = {
+  domain: "#2B8A6E", // Identify
+  configure: "#0A0F2E", // Detect/Prep
+  tasks: "#C9A84C", // Execute
+  triggers: "#0A0F2E", // Detect
+  simulate: "#C9A84C", // Execute
+  results: "#2B8A6E", // Advance
+};
+
 // Map library task owners to demo stakeholder IDs
 const OWNER_TO_STAKEHOLDER: Record<string, string> = {
   'ceo': 'ceo', 'cfo': 'cfo', 'coo': 'coo', 'cmo': 'comms', 'chro': 'hr',
@@ -538,13 +547,13 @@ export default function SandboxDemo() {
     <div className="space-y-8">
       <div className="text-center">
         <BrandStamp variant="dual" size="md" className="mb-8" />
-        <Badge className="mb-4 bg-[#0A0F2E] text-white">
+        <Badge className="mb-4 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] border-none">
           Step 1 of 6: IDENTIFY Phase
         </Badge>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           What strategic challenge do you want to prepare for?
         </h2>
-        <p className="text-lg text-gray-800 dark:text-slate-300">
+        <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Select a domain to build your personalized playbook
         </p>
       </div>
@@ -557,27 +566,27 @@ export default function SandboxDemo() {
           return (
             <Card 
               key={domain.id}
-              className={`cursor-pointer transition-all hover:scale-105 ${
+              className={`cursor-pointer transition-all hover:scale-[1.02] border-2 ${
                 isSelected 
-                  ? 'ring-2 ring-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/30' 
-                  : 'hover:shadow-lg'
+                  ? 'border-[#2B8A6E] bg-[#2B8A6E]/5' 
+                  : 'border-[#E8E4DC] hover:border-[#2B8A6E]/30'
               }`}
               onClick={() => setConfig({ ...config, domain: domain.id, domainName: domain.name })}
               data-testid={`domain-card-${domain.id}`}
             >
               <CardContent className="p-6 text-center">
                 <div 
-                  className="w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: `${domain.color}20` }}
+                  className={`w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center ${
+                    isSelected ? "bg-[#2B8A6E] text-white" : "bg-[#2B8A6E]/10 text-[#2B8A6E]"
+                  }`}
                 >
-                  <IconComponent className="h-6 w-6" style={{ color: domain.color }} />
+                  <IconComponent className="h-6 w-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">{domain.name}</h3>
-                <p className="text-sm text-gray-800 dark:text-slate-300 mb-3">{domain.description}</p>
+                <h3 className="font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{domain.name}</h3>
+                <p className="text-xs text-slate-500 font-medium mb-3 leading-relaxed">{domain.description}</p>
                 <Badge 
                   variant="outline" 
-                  className="text-xs"
-                  style={{ borderColor: domain.color, color: domain.color }}
+                  className={`text-[10px] font-bold ${isSelected ? 'border-[#2B8A6E] text-[#2B8A6E]' : 'border-slate-300 text-slate-400'}`}
                 >
                   {domain.category.replace('_', ' ').toUpperCase()}
                 </Badge>
@@ -586,82 +595,94 @@ export default function SandboxDemo() {
           );
         })}
       </div>
+
+      <div className="flex justify-center pt-8">
+        <Button 
+          disabled={!config.domain}
+          onClick={() => setCurrentStep('configure')}
+          className="bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] px-12 py-6 text-lg font-bold rounded-full group transition-all"
+        >
+          Begin Configuration
+          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+        </Button>
+      </div>
     </div>
   );
 
   const renderConfiguration = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-[#F0F9F6] text-[#2B8A6E] dark:bg-[#2B8A6E]/15 dark:text-[#2B8A6E]">
-          Step 2 of 6: Configure Playbook
+        <Badge className="mb-4 bg-[#0A0F2E] text-white hover:bg-[#141B45] border-none">
+          Step 2 of 6: DETECT Phase
         </Badge>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Configure Your {config.domainName} Playbook
         </h2>
-        <p className="text-lg text-gray-800 dark:text-slate-300">
+        <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Set up your team, decision tree, escalation paths, and communications
         </p>
       </div>
 
       <Tabs value={configTab} onValueChange={setConfigTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-7 mb-6">
-          <TabsTrigger value="team" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
+        <TabsList className="grid w-full grid-cols-7 mb-6 bg-[#F8F7F4] border-[#E8E4DC] border h-auto p-1">
+          <TabsTrigger value="team" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
             <Users className="h-4 w-4" />
             <span className="hidden lg:inline">Team</span>
           </TabsTrigger>
-          <TabsTrigger value="budget" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
+          <TabsTrigger value="budget" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
             <PieChart className="h-4 w-4" />
             <span className="hidden lg:inline">Budget</span>
           </TabsTrigger>
-          <TabsTrigger value="integrations" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
+          <TabsTrigger value="integrations" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
             <Plug className="h-4 w-4" />
             <span className="hidden lg:inline">Integrations</span>
           </TabsTrigger>
-          <TabsTrigger value="decisions" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
+          <TabsTrigger value="decisions" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
             <GitBranch className="h-4 w-4" />
             <span className="hidden lg:inline">Decisions</span>
           </TabsTrigger>
-          <TabsTrigger value="escalation" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
+          <TabsTrigger value="escalation" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
             <ArrowUpRight className="h-4 w-4" />
             <span className="hidden lg:inline">Escalation</span>
           </TabsTrigger>
-          <TabsTrigger value="comms" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
-            <Send className="h-4 w-4" />
+          <TabsTrigger value="comms" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
+            <MessageSquare className="h-4 w-4" />
             <span className="hidden lg:inline">Comms</span>
           </TabsTrigger>
-          <TabsTrigger value="metrics" className="flex items-center gap-1 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white">
-            <BarChart3 className="h-4 w-4" />
-            <span className="hidden lg:inline">KPIs</span>
+          <TabsTrigger value="targets" className="flex items-center gap-1 text-[10px] uppercase font-bold data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] py-2">
+            <Timer className="h-4 w-4" />
+            <span className="hidden lg:inline">Targets</span>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="team" className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Building2 className="h-5 w-5 text-[#0A0F2E]" />
+            <Card className="border-[#E8E4DC]">
+              <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+                <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Building2 className="h-5 w-5 text-[#2B8A6E]" />
                   Organization Details
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 pt-6">
                 <div>
-                  <Label htmlFor="companyName">Company Name</Label>
+                  <Label htmlFor="companyName" className="text-[#0A0F2E] font-bold text-xs uppercase tracking-wider">Company Name</Label>
                   <Input
                     id="companyName"
                     placeholder="Your Company"
+                    className="border-[#E8E4DC] focus:border-[#2B8A6E] focus:ring-[#2B8A6E]"
                     value={config.companyName}
                     onChange={(e) => setConfig({ ...config, companyName: e.target.value })}
                     data-testid="input-company-name"
                   />
                 </div>
                 <div>
-                  <Label>Industry</Label>
+                  <Label className="text-[#0A0F2E] font-bold text-xs uppercase tracking-wider">Industry</Label>
                   <Select 
                     value={config.industry} 
                     onValueChange={(v) => setConfig({ ...config, industry: v })}
                   >
-                    <SelectTrigger data-testid="select-industry">
+                    <SelectTrigger className="border-[#E8E4DC] focus:ring-[#2B8A6E]" data-testid="select-industry">
                       <SelectValue placeholder="Select industry" />
                     </SelectTrigger>
                     <SelectContent>
@@ -673,7 +694,7 @@ export default function SandboxDemo() {
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
-                    <Label>Pre-Approved Budget</Label>
+                    <Label className="text-[#0A0F2E] font-bold text-xs uppercase tracking-wider">Pre-Approved Budget</Label>
                     <span className="text-lg font-bold text-[#2B8A6E]">${(config.budgetPreApproved / 1000).toFixed(0)}K</span>
                   </div>
                   <Slider
@@ -689,17 +710,17 @@ export default function SandboxDemo() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+            <Card className="border-[#E8E4DC]">
+              <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+                <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Clock className="h-5 w-5 text-[#C9A84C]" />
                   Response Timing
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 pt-6">
                 <div>
                   <div className="flex justify-between mb-2">
-                    <Label>Target Response Time</Label>
+                    <Label className="text-[#0A0F2E] font-bold text-xs uppercase tracking-wider">Target Response Time</Label>
                     <span className="text-lg font-bold text-[#C9A84C]">{config.responseTimeTarget} min</span>
                   </div>
                   <Slider
@@ -712,22 +733,23 @@ export default function SandboxDemo() {
                     data-testid="slider-response-time"
                   />
                 </div>
-                <div className="p-4 bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20 rounded-lg">
-                  <p className="text-sm text-[#C9A84C] dark:text-[#C9A84C]">
-                    <strong>Industry Average:</strong> {TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime} hours
+                <div className="p-4 bg-[#C9A84C]/10 rounded-lg border border-[#C9A84C]/20">
+                  <p className="text-xs text-[#0A0F2E] font-medium">
+                    <strong className="text-[#C9A84C]">Industry Average:</strong> {TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime} hours
                   </p>
                   <p className="text-sm font-bold text-[#C9A84C] mt-1">
                     You'll be {Math.round((TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime * 60) / config.responseTimeTarget)}X faster
                   </p>
                 </div>
-                <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
+                <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg">
                   <div>
-                    <Label className="text-sm">AI-Assisted Drafting</Label>
-                    <p className="text-xs text-gray-800">Auto-generate documents</p>
+                    <Label className="text-sm font-bold text-[#0A0F2E]">AI-Assisted Drafting</Label>
+                    <p className="text-[10px] text-slate-500 font-medium">Auto-generate response documents</p>
                   </div>
                   <Switch
                     checked={config.aiAssistEnabled}
                     onCheckedChange={(v) => setConfig({ ...config, aiAssistEnabled: v })}
+                    className="data-[state=checked]:bg-[#2B8A6E]"
                     data-testid="switch-ai-assist"
                   />
                 </div>
@@ -735,15 +757,15 @@ export default function SandboxDemo() {
             </Card>
           </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-[#C9A84C]" />
+          <Card className="border-[#E8E4DC]">
+            <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+              <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Users className="h-5 w-5 text-[#2B8A6E]" />
                 Response Team ({config.stakeholders.length} selected)
               </CardTitle>
-              <CardDescription>Select stakeholders to include in the coordinated response</CardDescription>
+              <CardDescription className="text-slate-500 font-medium">Select stakeholders to include in the coordinated response</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 {STAKEHOLDER_OPTIONS.map((stakeholder) => {
                   const isSelected = config.stakeholders.includes(stakeholder.id);
@@ -751,10 +773,10 @@ export default function SandboxDemo() {
                   return (
                     <div
                       key={stakeholder.id}
-                      className={`flex flex-col items-center p-4 rounded-lg border cursor-pointer transition-all ${
+                      className={`flex flex-col items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
                         isSelected 
-                          ? 'bg-[#0A0F2E] border-[#C9A84C] dark:bg-[#C9A84C]/30 dark:border-[#C9A84C]' 
-                          : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
+                          ? 'border-[#2B8A6E] bg-[#2B8A6E]/5' 
+                          : 'border-[#E8E4DC] hover:border-[#2B8A6E]/30 bg-white'
                       }`}
                       onClick={() => {
                         const newStakeholders = isSelected
@@ -764,9 +786,13 @@ export default function SandboxDemo() {
                       }}
                       data-testid={`stakeholder-${stakeholder.id}`}
                     >
-                      <Icon className={`h-6 w-6 mb-2 ${isSelected ? 'text-[#C9A84C]' : 'text-gray-800 dark:text-slate-200'}`} />
-                      <span className="text-sm font-medium text-center">{stakeholder.label}</span>
-                      <Badge variant="outline" className="mt-1 text-xs">L{stakeholder.level}</Badge>
+                      <Icon className={`h-6 w-6 mb-2 ${isSelected ? 'text-[#2B8A6E]' : 'text-slate-400'}`} />
+                      <span className={`text-[11px] font-bold text-center ${isSelected ? 'text-[#0A0F2E]' : 'text-slate-500'}`}>{stakeholder.label}</span>
+                      <Badge variant="outline" className={`mt-2 text-[9px] font-bold ${
+                        stakeholder.level === 1 ? 'border-[#0A0F2E] text-[#0A0F2E]' : 
+                        stakeholder.level === 2 ? 'border-[#C9A84C] text-[#C9A84C]' : 
+                        'border-[#2B8A6E] text-[#2B8A6E]'
+                      }`}>L{stakeholder.level}</Badge>
                     </div>
                   );
                 })}
@@ -774,14 +800,14 @@ export default function SandboxDemo() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Bell className="h-5 w-5 text-[#0A0F2E]" />
+          <Card className="border-[#E8E4DC]">
+            <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+              <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Bell className="h-5 w-5 text-[#2B8A6E]" />
                 Notification Channels
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               <div className="flex flex-wrap gap-3">
                 {NOTIFICATION_OPTIONS.map((channel) => {
                   const isSelected = config.notificationChannels.includes(channel.id);
@@ -790,7 +816,11 @@ export default function SandboxDemo() {
                     <Badge
                       key={channel.id}
                       variant={isSelected ? "default" : "outline"}
-                      className={`cursor-pointer px-4 py-2 text-base ${isSelected ? 'bg-[#0A0F2E]' : ''}`}
+                      className={`cursor-pointer px-4 py-2 text-xs font-bold uppercase transition-all ${
+                        isSelected 
+                          ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#0A0F2E]' 
+                          : 'border-[#E8E4DC] text-slate-500 bg-white hover:border-[#2B8A6E]/30'
+                      }`}
                       onClick={() => {
                         const newChannels = isSelected
                           ? config.notificationChannels.filter(c => c !== channel.id)
@@ -1237,35 +1267,35 @@ export default function SandboxDemo() {
   const renderTaskAssignments = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-[#0A0F2E] text-[#C9A84C] dark:bg-[#C9A84C]/30 dark:text-[#C9A84C]">
+        <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">
           Step 3 of 6: EXECUTE Phase Setup
         </Badge>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Configure Task Assignments
         </h2>
-        <p className="text-lg text-gray-800 dark:text-slate-300">
+        <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Define tasks, assign roles, and set dependencies for your {config.domainName} response
         </p>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <Card className="border-[#E8E4DC]">
+        <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+          <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             <ListChecks className="h-5 w-5 text-[#C9A84C]" />
             Execution Tasks ({tasks.length} configured)
           </CardTitle>
-          <CardDescription>Tasks execute in order based on dependencies. Drag to reorder.</CardDescription>
+          <CardDescription className="text-slate-500 font-medium">Tasks execute in order based on dependencies. Drag to reorder.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           {tasks.map((task, index) => (
-            <div key={task.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
+            <div key={task.id} className="p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm transition-all hover:border-[#C9A84C]/30">
               <div className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
-                  <GripVertical className="h-5 w-5 text-gray-800 dark:text-slate-200 cursor-move" />
-                  <div className={`mt-2 w-8 h-8 rounded-full flex items-center justify-center text-gray-900 text-sm font-bold ${
+                  <GripVertical className="h-5 w-5 text-slate-400 cursor-move" />
+                  <div className={`mt-2 w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold ${
                     task.priority === 'critical' ? 'bg-red-500' :
-                    task.priority === 'high' ? 'bg-orange-500' :
-                    task.priority === 'medium' ? 'bg-[#0A0F2E]' : 'bg-gray-500'
+                    task.priority === 'high' ? 'bg-[#C9A84C]' :
+                    task.priority === 'medium' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
                   }`}>
                     {index + 1}
                   </div>
@@ -1273,7 +1303,7 @@ export default function SandboxDemo() {
                 <div className="flex-1 space-y-3">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label className="text-xs">Task Name</Label>
+                      <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Task Name</Label>
                       <Input
                         value={task.name}
                         onChange={(e) => {
@@ -1281,12 +1311,12 @@ export default function SandboxDemo() {
                           updated[index].name = e.target.value;
                           setTasks(updated);
                         }}
-                        className="mt-1 font-medium"
+                        className="mt-1 font-bold text-[#0A0F2E] border-[#E8E4DC] focus:border-[#2B8A6E]"
                         data-testid={`task-name-${index}`}
                       />
                     </div>
                     <div>
-                      <Label className="text-xs">Assigned Role</Label>
+                      <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Assigned Role</Label>
                       <Select 
                         value={task.assignedRole}
                         onValueChange={(v) => {
@@ -1295,7 +1325,7 @@ export default function SandboxDemo() {
                           setTasks(updated);
                         }}
                       >
-                        <SelectTrigger className="mt-1">
+                        <SelectTrigger className="mt-1 border-[#E8E4DC] focus:ring-[#2B8A6E]">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -1307,7 +1337,7 @@ export default function SandboxDemo() {
                     </div>
                   </div>
                   <div>
-                    <Label className="text-xs">Description</Label>
+                    <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Description</Label>
                     <Textarea
                       value={task.description}
                       onChange={(e) => {
@@ -1315,14 +1345,14 @@ export default function SandboxDemo() {
                         updated[index].description = e.target.value;
                         setTasks(updated);
                       }}
-                      className="mt-1 resize-none"
+                      className="mt-1 resize-none border-[#E8E4DC] focus:border-[#2B8A6E]"
                       rows={2}
                       placeholder="What needs to be done"
                     />
                   </div>
                   <div className="grid grid-cols-4 gap-4 items-end">
                     <div>
-                      <Label className="text-xs">Est. Duration</Label>
+                      <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Est. Duration</Label>
                       <div className="flex items-center gap-2 mt-1">
                         <Input
                           type="number"
@@ -1332,13 +1362,13 @@ export default function SandboxDemo() {
                             updated[index].estimatedMinutes = parseInt(e.target.value) || 0;
                             setTasks(updated);
                           }}
-                          className="w-20"
+                          className="w-20 border-[#E8E4DC] focus:border-[#2B8A6E]"
                         />
-                        <span className="text-sm text-gray-800">min</span>
+                        <span className="text-xs text-[#0A0F2E] font-bold">min</span>
                       </div>
                     </div>
                     <div>
-                      <Label className="text-xs">Priority</Label>
+                      <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Priority</Label>
                       <Select 
                         value={task.priority}
                         onValueChange={(v: 'critical' | 'high' | 'medium' | 'low') => {
@@ -1347,7 +1377,7 @@ export default function SandboxDemo() {
                           setTasks(updated);
                         }}
                       >
-                        <SelectTrigger className="mt-1">
+                        <SelectTrigger className="mt-1 border-[#E8E4DC] focus:ring-[#2B8A6E]">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
@@ -1359,20 +1389,20 @@ export default function SandboxDemo() {
                       </Select>
                     </div>
                     <div>
-                      <Label className="text-xs">Dependencies</Label>
+                      <Label className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Dependencies</Label>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {task.dependencies.length > 0 ? (
                           task.dependencies.map(dep => (
-                            <Badge key={dep} variant="outline" className="text-xs">
+                            <Badge key={dep} variant="outline" className="text-[9px] font-bold border-[#E8E4DC] text-[#0A0F2E]">
                               Task {dep}
                             </Badge>
                           ))
                         ) : (
-                          <Badge variant="outline" className="bg-transparent text-xs text-gray-800 dark:text-slate-200">None</Badge>
+                          <Badge variant="outline" className="bg-transparent text-[9px] font-bold text-slate-400 border-slate-200">None</Badge>
                         )}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-2">
                       <Checkbox
                         checked={task.requiresApproval}
                         onCheckedChange={(v) => {
@@ -1381,15 +1411,15 @@ export default function SandboxDemo() {
                           setTasks(updated);
                         }}
                       />
-                      <Label className="text-xs">Requires Approval</Label>
+                      <Label className="text-xs font-bold text-[#0A0F2E]">Req Approval</Label>
                     </div>
                   </div>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setTasks(tasks.filter(t => t.id !== task.id))}
-                  className="text-red-500 hover:text-red-700"
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="text-slate-400 hover:text-red-600"
+                  onClick={() => setTasks(tasks.filter((_, i) => i !== index))}
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -1398,42 +1428,39 @@ export default function SandboxDemo() {
           ))}
           <Button
             variant="outline"
-            onClick={() => {
-              setTasks([...tasks, {
-                id: String(tasks.length + 1),
-                name: 'New Task',
-                description: '',
-                assignedRole: 'coo',
-                estimatedMinutes: 5,
-                dependencies: tasks.length > 0 ? [tasks[tasks.length - 1].id] : [],
-                requiresApproval: false,
-                priority: 'medium'
-              }]);
-            }}
-            className="w-full"
-            data-testid="button-add-task"
+            onClick={() => setTasks([...tasks, {
+              id: String(Date.now()),
+              name: 'New Response Task',
+              description: '',
+              assignedRole: 'coo',
+              estimatedMinutes: 15,
+              dependencies: [],
+              requiresApproval: false,
+              priority: 'medium'
+            }])}
+            className="w-full border-dashed border-2 border-[#E8E4DC] text-slate-500 hover:text-[#2B8A6E] hover:border-[#2B8A6E] py-8 font-bold"
           >
-            <Plus className="h-4 w-4 mr-2" />
-            Add Task
+            <Plus className="h-5 w-5 mr-2" />
+            Add Custom Task
           </Button>
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/30 dark:to-[#141B45]/30">
-        <CardContent className="p-6">
+      <Card className="bg-[#0A0F2E] border-none shadow-xl">
+        <CardContent className="p-8">
           <div className="flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white">Task Flow Preview</h4>
-              <p className="text-sm text-gray-800 dark:text-slate-300">
-                Total estimated time: {tasks.reduce((acc, t) => acc + t.estimatedMinutes, 0)} minutes
+              <h4 className="font-bold text-[#C9A84C] text-lg" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Task Flow Preview</h4>
+              <p className="text-sm text-slate-400 font-medium">
+                Total estimated time: <span className="text-[#2B8A6E]">{tasks.reduce((acc, t) => acc + t.estimatedMinutes, 0)} minutes</span>
               </p>
             </div>
             <div className="flex items-center gap-2">
               {tasks.slice(0, 5).map((task, i) => (
                 <div key={task.id} className="flex items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-gray-900 text-xs font-bold ${
-                    task.priority === 'critical' ? 'bg-red-500' :
-                    task.priority === 'high' ? 'bg-orange-500' : 'bg-[#0A0F2E]'
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 ${
+                    task.priority === 'critical' ? 'bg-red-500 border-red-400' :
+                    task.priority === 'high' ? 'bg-[#C9A84C] border-[#DFC178]' : 'bg-[#2B8A6E] border-[#3BAF8A]'
                   }`}>
                     {i + 1}
                   </div>
@@ -1516,37 +1543,37 @@ export default function SandboxDemo() {
   const renderTriggerSetup = () => (
     <div className="space-y-8">
       <div className="text-center">
-        <Badge className="mb-4 bg-[#C9A84C]/20 text-[#C9A84C] dark:bg-[#C9A84C]/30 dark:text-[#C9A84C]">
+        <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">
           Step 4 of 6: DETECT Phase
         </Badge>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+        <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           Configure Detection & Triggers
         </h2>
-        <p className="text-lg text-gray-800 dark:text-slate-300">
+        <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Define signal sources, thresholds, and activation rules for your {config.domainName} playbook
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Network className="h-5 w-5 text-[#0A0F2E]" />
+        <Card className="border-[#E8E4DC]">
+          <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <Network className="h-5 w-5 text-[#2B8A6E]" />
               Signal Sources
             </CardTitle>
-            <CardDescription>Where should Execution OS monitor for signals?</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Where should Execution OS monitor for signals?</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="grid grid-cols-2 gap-3">
               {SIGNAL_SOURCES.map((source) => {
                 const isSelected = triggerConfig.signalSources.includes(source.id);
                 return (
                   <div
                     key={source.id}
-                    className={`p-3 rounded-lg border cursor-pointer transition-all ${
+                    className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${
                       isSelected 
-                        ? 'bg-[#0A0F2E] border-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:border-[#0A0F2E]' 
-                        : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
+                        ? 'border-[#0A0F2E] bg-[#0A0F2E]/5' 
+                        : 'border-[#E8E4DC] hover:border-[#0A0F2E]/30 bg-white'
                     }`}
                     onClick={() => {
                       const newSources = isSelected
@@ -1557,8 +1584,11 @@ export default function SandboxDemo() {
                     data-testid={`signal-${source.id}`}
                   >
                     <div className="flex items-center gap-2">
-                      <Checkbox checked={isSelected} />
-                      <span className="text-sm font-medium">{source.label}</span>
+                      <Checkbox 
+                        checked={isSelected}
+                        className="data-[state=checked]:bg-[#0A0F2E]"
+                      />
+                      <span className={`text-xs font-bold ${isSelected ? 'text-[#0A0F2E]' : 'text-slate-500'}`}>{source.label}</span>
                     </div>
                   </div>
                 );
@@ -1567,14 +1597,15 @@ export default function SandboxDemo() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="border-[#E8E4DC]">
+          <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <Zap className="h-5 w-5 text-[#C9A84C]" />
               Trigger Type
             </CardTitle>
+            <CardDescription className="text-slate-500 font-medium">Activation mechanism for this playbook</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-4 pt-6">
             <div className="grid grid-cols-2 gap-3">
               {[
                 { id: 'system', label: 'AI Detection', desc: 'Automatic pattern recognition' },
@@ -1584,16 +1615,16 @@ export default function SandboxDemo() {
               ].map((trigger) => (
                 <div
                   key={trigger.id}
-                  className={`p-3 rounded-lg border cursor-pointer transition-all ${
+                  className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${
                     triggerConfig.triggerType === trigger.id
-                      ? 'bg-[#C9A84C]/10 border-[#C9A84C]/30 dark:bg-[#C9A84C]/20 dark:border-[#C9A84C]/50'
-                      : 'hover:bg-[#F8F7F4] dark:hover:bg-[#141B45]'
+                      ? 'border-[#C9A84C] bg-[#C9A84C]/5'
+                      : 'border-[#E8E4DC] hover:border-[#C9A84C]/30 bg-white'
                   }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, triggerType: trigger.id })}
                   data-testid={`trigger-type-${trigger.id}`}
                 >
-                  <div className="font-medium text-sm">{trigger.label}</div>
-                  <div className="text-xs text-gray-800">{trigger.desc}</div>
+                  <div className={`font-bold text-xs ${triggerConfig.triggerType === trigger.id ? 'text-[#0A0F2E]' : 'text-slate-500'}`}>{trigger.label}</div>
+                  <div className="text-[10px] text-slate-400 font-medium leading-tight mt-1">{trigger.desc}</div>
                 </div>
               ))}
             </div>
@@ -1601,18 +1632,18 @@ export default function SandboxDemo() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <Card className="border-[#E8E4DC]">
+        <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+          <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
             Threshold Conditions
           </CardTitle>
-          <CardDescription>When these conditions are met, the specified action is triggered</CardDescription>
+          <CardDescription className="text-slate-500 font-medium">When these conditions are met, the specified action is triggered</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-6">
           {triggerConfig.thresholds.map((threshold, index) => (
-            <div key={threshold.id} className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-[#141B45]/50 rounded-lg">
-              <span className="text-sm font-medium text-gray-800">When</span>
+            <div key={threshold.id} className="flex items-center gap-4 p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">When</span>
               <Input
                 value={threshold.metric}
                 onChange={(e) => {
@@ -1620,7 +1651,7 @@ export default function SandboxDemo() {
                   updated[index].metric = e.target.value;
                   setTriggerConfig({ ...triggerConfig, thresholds: updated });
                 }}
-                className="w-40"
+                className="w-40 border-[#E8E4DC] focus:border-[#2B8A6E] font-bold text-xs"
                 placeholder="Metric name"
               />
               <Select 
@@ -1631,7 +1662,7 @@ export default function SandboxDemo() {
                   setTriggerConfig({ ...triggerConfig, thresholds: updated });
                 }}
               >
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-32 border-[#E8E4DC] focus:ring-[#2B8A6E] text-xs">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -1648,10 +1679,10 @@ export default function SandboxDemo() {
                   updated[index].value = e.target.value;
                   setTriggerConfig({ ...triggerConfig, thresholds: updated });
                 }}
-                className="w-24"
+                className="w-24 border-[#E8E4DC] focus:border-[#2B8A6E] font-bold text-xs"
                 placeholder="Value"
               />
-              <span className="text-sm font-medium text-gray-800">then</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">then</span>
               <Select 
                 value={threshold.action}
                 onValueChange={(v: 'alert' | 'activate' | 'escalate') => {
@@ -1660,7 +1691,7 @@ export default function SandboxDemo() {
                   setTriggerConfig({ ...triggerConfig, thresholds: updated });
                 }}
               >
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-36 border-[#E8E4DC] focus:ring-[#2B8A6E] text-xs font-bold text-[#2B8A6E]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -1671,14 +1702,14 @@ export default function SandboxDemo() {
               </Select>
               <Button
                 variant="ghost"
-                size="sm"
+                size="icon"
                 onClick={() => {
                   setTriggerConfig({
                     ...triggerConfig,
                     thresholds: triggerConfig.thresholds.filter(t => t.id !== threshold.id)
                   });
                 }}
-                className="text-red-500"
+                className="text-slate-400 hover:text-red-600 ml-auto"
               >
                 <Trash2 className="h-4 w-4" />
               </Button>
@@ -1698,75 +1729,79 @@ export default function SandboxDemo() {
                 }]
               });
             }}
-            className="w-full"
+            className="w-full border-dashed border-2 border-[#E8E4DC] text-slate-500 hover:text-[#2B8A6E] hover:border-[#2B8A6E] py-6 font-bold"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add Threshold
+            Add Detection Threshold
           </Button>
         </CardContent>
       </Card>
 
       <div className="grid md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-700" />
+        <Card className="border-[#E8E4DC]">
+          <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <AlertTriangle className="h-5 w-5 text-red-600" />
               Severity Level
             </CardTitle>
+            <CardDescription className="text-slate-500 font-medium">Playbook configuration based on impact</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <div className="grid grid-cols-4 gap-3">
                   {[
                     { id: 'critical', label: 'Critical', color: 'bg-red-500' },
                     { id: 'high', label: 'High', color: 'bg-[#C9A84C]' },
                     { id: 'medium', label: 'Medium', color: 'bg-[#DFC178]' },
-                    { id: 'low', label: 'Low', color: 'bg-gray-400' },
+                    { id: 'low', label: 'Low', color: 'bg-slate-400' },
                   ].map((sev) => (
                     <div
                       key={sev.id}
-                      className={`p-3 rounded-lg border cursor-pointer transition-all text-center ${
+                      className={`p-3 rounded-xl border-2 cursor-pointer transition-all text-center ${
                         triggerConfig.severity === sev.id
-                          ? 'ring-2 ring-offset-2 ring-[#0A0F2E] border-[#0A0F2E]'
-                          : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
+                          ? 'border-[#0A0F2E] bg-[#0A0F2E]/5 ring-1 ring-[#0A0F2E]'
+                          : 'border-[#E8E4DC] hover:border-[#0A0F2E]/30 bg-white'
                       }`}
                   onClick={() => setTriggerConfig({ ...triggerConfig, severity: sev.id })}
                   data-testid={`severity-${sev.id}`}
                 >
-                  <div className={`w-4 h-4 rounded-full mx-auto mb-2 ${sev.color}`} />
-                  <span className="text-sm font-medium">{sev.label}</span>
+                  <div className={`w-3 h-3 rounded-full mx-auto mb-2 ${sev.color}`} />
+                  <span className={`text-[10px] font-bold uppercase tracking-tight ${triggerConfig.severity === sev.id ? 'text-[#0A0F2E]' : 'text-slate-400'}`}>{sev.label}</span>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-[#0A0F2E]" />
+        <Card className="border-[#E8E4DC]">
+          <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <Shield className="h-5 w-5 text-[#2B8A6E]" />
               Activation Controls
             </CardTitle>
+            <CardDescription className="text-slate-500 font-medium">Safeguards and automation settings</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
+          <CardContent className="space-y-4 pt-6">
+            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
               <div>
-                <Label className="text-sm">Require Confirmation</Label>
-                <p className="text-xs text-gray-800">Human must approve activation</p>
+                <Label className="text-xs font-bold text-[#0A0F2E]">Require Confirmation</Label>
+                <p className="text-[10px] text-slate-500 font-medium">Human must approve activation</p>
               </div>
               <Switch
                 checked={triggerConfig.confirmationRequired}
                 onCheckedChange={(v) => setTriggerConfig({ ...triggerConfig, confirmationRequired: v })}
+                className="data-[state=checked]:bg-[#2B8A6E]"
                 data-testid="switch-confirmation-required"
               />
             </div>
-            <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-[#141B45] rounded-lg">
+            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
               <div>
-                <Label className="text-sm">Auto-Activate on Timeout</Label>
-                <p className="text-xs text-gray-800">If no response in 5 min</p>
+                <Label className="text-xs font-bold text-[#0A0F2E]">Auto-Activate on Timeout</Label>
+                <p className="text-[10px] text-slate-500 font-medium">If no response in 5 min</p>
               </div>
               <Switch
                 checked={triggerConfig.autoActivate}
                 onCheckedChange={(v) => setTriggerConfig({ ...triggerConfig, autoActivate: v })}
+                className="data-[state=checked]:bg-[#2B8A6E]"
                 data-testid="switch-auto-activate"
               />
             </div>
@@ -1774,48 +1809,48 @@ export default function SandboxDemo() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <Card className="border-[#E8E4DC]">
+        <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
+          <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             <GitBranch className="h-5 w-5 text-[#C9A84C]" />
             Scenario Branching
           </CardTitle>
-          <CardDescription>Different response paths based on trigger severity - actions are pre-configured for each level</CardDescription>
+          <CardDescription className="text-slate-500 font-medium">Different response paths based on trigger severity</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="space-y-4">
             {SCENARIO_BRANCHES.map((branch) => (
               <div 
                 key={branch.severity}
-                className={`p-4 border rounded-lg transition-all cursor-pointer ${
+                className={`p-5 border-2 rounded-xl transition-all cursor-pointer ${
                   triggerConfig.severity === branch.severity 
-                    ? 'ring-2 ring-[#0A0F2E] bg-slate-50 dark:bg-[#141B45]/50' 
-                    : 'opacity-60 hover:opacity-80'
+                    ? 'border-[#0A0F2E] bg-[#0A0F2E]/5 shadow-inner' 
+                    : 'border-[#E8E4DC] opacity-60 hover:opacity-100 hover:border-[#0A0F2E]/30 bg-white'
                 }`}
                 onClick={() => setTriggerConfig({ ...triggerConfig, severity: branch.severity })}
                 data-testid={`scenario-branch-${branch.severity}`}
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className={`w-4 h-4 rounded-full ${branch.color}`} />
-                  <span className="font-semibold">{branch.label}</span>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-3 h-3 rounded-full ${branch.color}`} />
+                  <span className="font-bold text-[#0A0F2E]">{branch.label}</span>
                   {triggerConfig.severity === branch.severity && (
-                    <Badge className="bg-[#0A0F2E] text-white ml-auto">Active Path</Badge>
+                    <Badge className="bg-[#0A0F2E] text-[#C9A84C] border-none ml-auto text-[10px] font-bold">ACTIVE PATH</Badge>
                   )}
                 </div>
-                <div className="grid md:grid-cols-3 gap-2">
+                <div className="grid md:grid-cols-3 gap-3">
                   {branch.actions.map((action, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 className={`h-4 w-4 ${triggerConfig.severity === branch.severity ? 'text-[#2B8A6E]' : 'text-gray-800'}`} />
-                      <span className={triggerConfig.severity === branch.severity ? '' : 'text-gray-800 dark:text-slate-200'}>{action}</span>
+                    <div key={i} className="flex items-center gap-2 text-[11px] font-medium text-slate-600">
+                      <CheckCircle2 className={`h-4 w-4 ${triggerConfig.severity === branch.severity ? 'text-[#2B8A6E]' : 'text-slate-300'}`} />
+                      <span>{action}</span>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-4 p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/30 rounded-lg">
-            <p className="text-sm text-[#C9A84C] dark:text-[#C9A84C]">
-              <strong>Dynamic Routing:</strong> Execution OS automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
+          <div className="mt-6 p-5 bg-[#0A0F2E] rounded-xl border border-[#0A0F2E]">
+            <p className="text-xs text-[#C9A84C] leading-relaxed font-medium">
+              <strong className="text-white">Dynamic Routing:</strong> Execution OS automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
             </p>
           </div>
         </CardContent>
@@ -1828,116 +1863,117 @@ export default function SandboxDemo() {
       {showConfetti && <Confetti recycle={false} numberOfPieces={300} />}
       
       <div className="text-center">
-        <Badge className="mb-4 bg-[#0A0F2E] text-[#C9A84C] dark:bg-[#C9A84C]/30 dark:text-[#C9A84C]">
+        <Badge className="mb-4 bg-[#0A0F2E] text-[#C9A84C] border-none font-bold">
           Step 5 of 6: Execute Simulation
         </Badge>
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
-          {simulationComplete ? 'Response Coordinated!' : 'Running Your Personalized Simulation...'}
+        <h2 className="text-4xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          {simulationComplete ? 'Response Coordinated' : 'Executing Response OS'}
         </h2>
-        <p className="text-lg text-gray-800 dark:text-slate-300">
+        <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           {config.companyName || 'Your organization'} responding to {config.domainName} scenario
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto">
-        <Card className="mb-6">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <Timer className="h-6 w-6 text-[#C9A84C]" />
-                <span className="text-lg font-semibold">Execution Progress</span>
+      <div className="max-w-4xl mx-auto">
+        <Card className="mb-8 border-none shadow-2xl bg-[#0A0F2E] overflow-hidden">
+          <CardContent className="p-8">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-[#C9A84C]/10 rounded-full">
+                  <Timer className="h-8 w-8 text-[#C9A84C]" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Execution Velocity</h3>
+                  <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">Real-time Coordination Progress</p>
+                </div>
               </div>
-              <Badge variant={simulationComplete ? "default" : "secondary"} className={simulationComplete ? "bg-[#2B8A6E]" : ""}>
-                {simulationComplete ? 'Complete' : 'In Progress'}
+              <Badge className={`px-4 py-1.5 rounded-full text-xs font-bold ${simulationComplete ? "bg-[#2B8A6E] text-white" : "bg-[#C9A84C] text-[#0A0F2E]"}`}>
+                {simulationComplete ? 'MISSION COMPLETE' : 'IN PROGRESS'}
               </Badge>
             </div>
-            <Progress value={simulationProgress} className="h-3 mb-2" />
-            <div className="flex justify-between text-sm text-gray-800">
-              <span>Target: {config.responseTimeTarget} min</span>
-              <span>{Math.round(simulationProgress)}% complete</span>
+            
+            <div className="space-y-4">
+              <Progress value={simulationProgress} className="h-4 bg-white/10" />
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Response Target</span>
+                  <span className="text-sm font-bold text-white">{config.responseTimeTarget}m</span>
+                </div>
+                <div className="text-right">
+                  <span className="text-2xl font-black text-white">{Math.round(simulationProgress)}%</span>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
 
-        <div className="grid md:grid-cols-4 gap-4 mb-6">
-          <Card className="bg-slate-50 dark:bg-[#141B45]">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#C9A84C]">{config.stakeholders.length}</div>
-              <div className="text-xs text-gray-800">Stakeholders</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-slate-50 dark:bg-[#141B45]">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#0A0F2E]">{tasks.length}</div>
-              <div className="text-xs text-gray-800">Tasks</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-slate-50 dark:bg-[#141B45]">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#C9A84C]">{config.decisionPoints.length}</div>
-              <div className="text-xs text-gray-800">Decisions</div>
-            </CardContent>
-          </Card>
-          <Card className="bg-slate-50 dark:bg-[#141B45]">
-            <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#2B8A6E]">${(config.budgetPreApproved/1000).toFixed(0)}K</div>
-              <div className="text-xs text-gray-800">Budget</div>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {[
+            { label: 'Stakeholders', value: config.stakeholders.length, icon: Users, color: 'text-[#C9A84C]' },
+            { label: 'Tasks', value: tasks.length, icon: ListChecks, color: 'text-[#2B8A6E]' },
+            { label: 'Decisions', value: config.decisionPoints.length, icon: GitBranch, color: 'text-[#C9A84C]' },
+            { label: 'Budget', value: `$${(config.budgetPreApproved/1000).toFixed(0)}K`, icon: PieChart, color: 'text-[#2B8A6E]' }
+          ].map((stat, i) => (
+            <Card key={i} className="border-[#E8E4DC] bg-white shadow-sm hover:shadow-md transition-shadow">
+              <CardContent className="p-5 text-center">
+                <stat.icon className={`h-5 w-5 mx-auto mb-2 ${stat.color}`} />
+                <div className="text-2xl font-black text-[#0A0F2E]">{stat.value}</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{stat.label}</div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-[#0A0F2E]" />
-              Live Execution Log
+        <Card className="border-[#E8E4DC] shadow-xl overflow-hidden">
+          <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/80">
+            <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <FileText className="h-5 w-5 text-[#2B8A6E]" />
+              Execution Audit Trail
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {simulationEvents.map((event, index) => (
-                <div 
-                  key={index}
-                  className={`flex items-start gap-4 p-4 rounded-lg animate-in fade-in slide-in-from-left duration-500 ${
-                    event.type === 'complete' 
-                      ? 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50'
-                      : event.type === 'trigger'
-                      ? 'bg-red-50 dark:bg-red-950/30'
-                      : event.type === 'ai'
-                      ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/30'
-                      : event.type === 'decision'
-                      ? 'bg-[#0A0F2E] dark:bg-[#C9A84C]/30'
-                      : event.type === 'task'
-                      ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/30'
-                      : 'bg-slate-50 dark:bg-[#141B45]'
-                  }`}
-                >
-                  <div className="min-w-16 font-mono text-sm font-bold text-gray-800 dark:text-slate-300">
-                    {event.time}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      {event.type === 'complete' && <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />}
-                      {event.type === 'trigger' && <AlertTriangle className="h-4 w-4 text-red-700" />}
-                      {event.type === 'ai' && <Sparkles className="h-4 w-4 text-[#0A0F2E]" />}
-                      {event.type === 'task' && <ListChecks className="h-4 w-4 text-[#0A0F2E]" />}
-                      {event.type === 'decision' && <GitBranch className="h-4 w-4 text-[#C9A84C]" />}
-                      {event.type === 'stakeholder' && <Users className="h-4 w-4 text-[#2B8A6E]" />}
-                      {event.type === 'escalation' && <ArrowUpRight className="h-4 w-4 text-[#C9A84C]" />}
-                      <span className={`font-medium ${event.type === 'complete' ? 'text-[#2B8A6E]' : ''}`}>
-                        {event.event}
-                      </span>
+          <CardContent className="p-0">
+            <div className="max-h-[500px] overflow-y-auto bg-white">
+              {simulationEvents.length > 0 ? (
+                <div className="divide-y divide-[#E8E4DC]">
+                  {simulationEvents.map((event, index) => (
+                    <div 
+                      key={index}
+                      className={`p-6 flex items-start gap-5 transition-all animate-in fade-in slide-in-from-bottom-2 duration-700 ${
+                        event.type === 'complete' ? 'bg-[#2B8A6E]/5' : 
+                        event.type === 'trigger' ? 'bg-red-50' : 'bg-white'
+                      }`}
+                    >
+                      <div className="min-w-[60px] text-[10px] font-black text-slate-400 font-mono pt-1">
+                        T+{event.time}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1.5">
+                          {event.type === 'complete' && <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />}
+                          {event.type === 'trigger' && <AlertTriangle className="h-4 w-4 text-red-600" />}
+                          {event.type === 'ai' && <Sparkles className="h-4 w-4 text-[#0A0F2E]" />}
+                          {event.type === 'task' && <ListChecks className="h-4 w-4 text-[#0A0F2E]" />}
+                          {event.type === 'decision' && <GitBranch className="h-4 w-4 text-[#C9A84C]" />}
+                          {event.type === 'stakeholder' && <Users className="h-4 w-4 text-[#2B8A6E]" />}
+                          <span className={`font-bold text-sm ${event.type === 'complete' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
+                            {event.event}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium leading-relaxed italic border-l-2 border-[#E8E4DC] pl-3">
+                          {EVENT_EXPLANATIONS[event.type]}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xs text-gray-800 dark:text-slate-300 mt-1 italic">
-                      {EVENT_EXPLANATIONS[event.type]}
-                    </p>
-                  </div>
+                  ))}
                 </div>
-              ))}
-              {simulationEvents.length === 0 && (
-                <div className="text-center py-8 text-gray-800">
-                  <Timer className="h-8 w-8 mx-auto mb-2 animate-pulse" />
-                  <p>Initializing simulation...</p>
+              ) : (
+                <div className="text-center py-24">
+                  <div className="relative inline-block">
+                    <Timer className="h-12 w-12 text-slate-200 animate-spin" style={{ animationDuration: '3s' }} />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-2 w-2 bg-[#C9A84C] rounded-full animate-ping" />
+                    </div>
+                  </div>
+                  <p className="mt-4 text-slate-400 font-bold text-xs uppercase tracking-widest">Initializing Protocol...</p>
                 </div>
               )}
             </div>

@@ -1896,19 +1896,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // GET playbook templates - returns playbookLibrary items marked for use as templates
   app.get('/api/playbooks/templates', async (req: any, res) => {
     try {
-      const templates = await db.select().from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(200);
-      res.json(templates.map(t => ({
-        id: t.id,
-        name: t.name,
-        description: t.description,
-        domain: t.triggerCriteria,
-        category: t.strategicCategory,
-        timesUsed: 0,
-        avgResponseTimeSeconds: t.targetExecutionTime ? t.targetExecutionTime * 60 : null,
-        triggerConditions: t.triggerDataSources,
-        stakeholders: t.tier1Stakeholders,
-        isTemplate: true
-      })));
+      const templates = await db.select({
+        id: playbookLibrary.id,
+        name: playbookLibrary.name,
+        description: playbookLibrary.description,
+        strategicCategory: playbookLibrary.strategicCategory,
+        triggerCriteria: playbookLibrary.triggerCriteria,
+        triggerDataSources: playbookLibrary.triggerDataSources,
+        tier1Stakeholders: playbookLibrary.tier1Stakeholders,
+        tier1Count: playbookLibrary.tier1Count,
+        tier2Count: playbookLibrary.tier2Count,
+        targetExecutionTime: playbookLibrary.targetExecutionTime,
+        severityScore: playbookLibrary.severityScore,
+        playbookNumber: playbookLibrary.playbookNumber,
+        domainName: playbookDomains.name,
+      })
+        .from(playbookLibrary)
+        .leftJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
+        .where(eq(playbookLibrary.isActive, true))
+        .limit(200);
+
+      res.json(templates.map(t => {
+        const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? (t.tier1Stakeholders as string[]).length : 8);
+        const execMins = t.targetExecutionTime || 240;
+        const estimatedDuration = execMins <= 60 ? `${execMins} minutes`
+          : execMins <= 480 ? `${Math.floor(execMins/60)}-${Math.ceil(execMins/60)+1} hours`
+          : execMins <= 2880 ? `${Math.floor(execMins/60/24)+1}-${Math.ceil(execMins/60/24)+1} days`
+          : `${Math.round(execMins/60/24/7)}-${Math.round(execMins/60/24/7)+1} weeks`;
+        const complexity: 'low'|'medium'|'high' = stakeholderCount > 15 || execMins > 480 ? 'high'
+          : stakeholderCount > 8 || execMins > 120 ? 'medium' : 'low';
+        const tasks = Math.max(8, Math.floor(stakeholderCount * 1.8) + (t.playbookNumber % 7));
+        return {
+          id: t.id,
+          name: t.name,
+          description: t.description,
+          domain: t.domainName || 'Strategic Response',
+          category: t.strategicCategory,
+          timesUsed: 0,
+          avgResponseTimeSeconds: execMins * 60,
+          triggerConditions: t.triggerDataSources,
+          stakeholders: t.tier1Stakeholders,
+          isTemplate: true,
+          estimatedDuration,
+          complexity,
+          stakeholderCount,
+          tasks,
+          severityScore: t.severityScore,
+        };
+      }));
     } catch (error) {
       console.error("Error fetching playbook templates:", error);
       res.status(500).json({ message: "Failed to fetch playbook templates" });

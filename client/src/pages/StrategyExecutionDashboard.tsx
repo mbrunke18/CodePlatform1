@@ -76,7 +76,7 @@ export default function StrategyExecutionDashboard() {
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up': return <ArrowUp className="h-4 w-4 text-[#2B8A6E]" />;
-      case 'down': return <ArrowDown className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />;
+      case 'down': return <ArrowDown className="h-4 w-4 text-red-500" />;
       default: return <Minus className="h-4 w-4 text-[#6B7280]" />;
     }
   };

@@ -84,7 +84,7 @@ const TRIGGER_SCENARIOS = [
     description: "Security breach or operational crisis detected",
     icon: AlertTriangle,
     color: "text-red-600",
-    bgColor: "bg-red-50 dark:bg-red-950/30",
+    bgColor: "bg-red-50",
     sampleSignal: "Unusual network activity detected - potential data exfiltration attempt from internal systems"
   }
 ];
@@ -364,9 +364,9 @@ export default function PilotDemo() {
                       </p>
                     </div>
 
-                    <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-4 border border-[#0A0F2E] dark:border-[#0A0F2E]">
+                    <div className="bg-[#0A0F2E] rounded-lg p-4 border border-[#0A0F2E]">
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
-                      <ul className="text-sm text-white/90 dark:text-slate-300 space-y-1">
+                      <ul className="text-sm text-white/90 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
                         <li>2. You'll select a playbook to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
@@ -416,8 +416,8 @@ export default function PilotDemo() {
                           onClick={() => setSelectedTrigger(trigger.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedTrigger === trigger.id
-                              ? "border-[#0A0F2E] bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/30"
-                              : "border-[#E8E4DC] dark:border-slate-700 hover:border-[#C9A84C]/30"
+                              ? "border-[#0A0F2E] bg-[#0A0F2E]/5"
+                              : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
                           }`}
                           data-testid={`button-trigger-${trigger.id}`}
                         >
@@ -454,8 +454,8 @@ export default function PilotDemo() {
                           onClick={() => setSelectedPlaybook(playbook.id)}
                           className={`p-4 rounded-lg border-2 text-left transition-all ${
                             selectedPlaybook === playbook.id
-                              ? "border-[#C9A84C] bg-[#C9A84C]/5 dark:bg-[#C9A84C]/30"
-                              : "border-[#E8E4DC] dark:border-slate-700 hover:border-[#C9A84C]/30"
+                              ? "border-[#C9A84C] bg-[#C9A84C]/5"
+                              : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
                           }`}
                           data-testid={`button-playbook-${playbook.id}`}
                         >
@@ -560,7 +560,7 @@ export default function PilotDemo() {
                     </div>
 
                     <div className="bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
-                          <h4 className="font-medium text-[#0A2920] dark:text-[#2B8A6E] mb-2 flex items-center gap-2">
+                          <h4 className="font-medium text-[#0A2920] mb-2 flex items-center gap-2">
                             <Clock className="w-4 h-4" />
                             What you'll see:
                           </h4>

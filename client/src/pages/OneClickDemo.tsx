@@ -209,13 +209,13 @@ export default function OneClickDemo() {
       <div className="min-h-screen bg-[#F8F7F4]">
         <StandardNav />
         
-        <div className="container mx-auto px-4 py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-6 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30 text-sm px-4 py-1">
-              <AlertCircle className="h-4 w-4 mr-2" />
-              Live Interactive Demo
-            </Badge>
+          <div className="container mx-auto px-4 py-20">
+            <div className="max-w-4xl mx-auto text-center">
+              <BrandStamp variant="dual" size="md" className="mb-8" />
+              <Badge className="mb-6 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30 text-sm px-4 py-1">
+                <AlertCircle className="h-4 w-4 mr-2" />
+                Live Interactive Demo
+              </Badge>
             
             <h1 className="text-5xl font-bold text-[#0A0F2E] mb-6">
               See Execution OS in Action

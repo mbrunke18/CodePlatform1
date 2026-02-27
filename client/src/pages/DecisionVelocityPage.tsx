@@ -105,10 +105,10 @@ export default function DecisionVelocityPage() {
 
               <div className="bg-white p-8 rounded-none border-l-4 border-[#C9A84C]">
                 <div className="text-[10px] font-bold text-[#0A0F2E] tracking-[0.2em] uppercase mb-2">The Strategic MOAT</div>
-                <div className="text-sm text-[#6B7280] leading-relaxed">
+                <p className="text-[#6B7280] leading-relaxed">
                   Companies like Microsoft and Amazon built execution infrastructure over 5+ years. 
                   Poise gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 playbooks, pre-defined governance, and a compressed 12-minute execution cycle.
-                </div>
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -126,15 +126,13 @@ export default function DecisionVelocityPage() {
                     The competitive advantage metric Fortune 1000 leaders track
                   </CardDescription>
                 </CardHeader>
-                <div className="space-y-4">
                   <p className="text-[#0A0F2E] text-lg leading-relaxed">
                     <strong>Decision Velocity</strong> measures how fast your organization moves from <em className="italic">strategic signal</em> to <em className="italic">execution completion</em>. 
                     While competitors coordinate through email chains and emergency meetings, Poise practitioners execute in minutes.
                   </p>
-                  <p className="text-[#6B7280]">
+                  <p className="text-[#6B7280] leading-relaxed">
                     After 10 strategic events, a Poise-enabled organization is <strong className="text-[#0A0F2E]">50 days ahead</strong> of the competition—the difference between a category leader and a market follower.
                   </p>
-                </div>
               </div>
               <div className="p-10 md:w-1/3 bg-[#F8F7F4] flex flex-col justify-center">
                 <div className="text-[10px] font-bold text-[#6B7280] tracking-[0.2em] uppercase mb-4">The Velocity Formula</div>

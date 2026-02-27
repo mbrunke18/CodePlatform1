@@ -332,7 +332,7 @@ export default function ComprehensiveAIIntelligence() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'critical': return 'bg-red-500/20 text-red-600 border-red-500/30';
-      case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
+      case 'high': return 'bg-red-500/20 text-red-600 border-red-500/30';
       case 'medium': return 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30';
       case 'low': return 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30';
       default: return 'bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10';

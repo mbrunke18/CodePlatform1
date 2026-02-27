@@ -50,12 +50,6 @@ function KPICard({
   status: 'good' | 'warning' | 'critical';
   trend?: string;
 }) {
-  const statusColors = {
-    good: 'text-[#2B8A6E]',
-    warning: 'text-[#C9A84C]',
-    critical: 'text-[#dc2626]'
-  };
-
   return (
     <div className="flex items-center gap-2 sm:gap-3">
       <StatusDot status={status} />

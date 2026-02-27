@@ -207,7 +207,7 @@ function CompoundDisruptionSection() {
           {compoundScenarios.map((item, i) => {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
-            const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI") || item.domains.includes("Growth") || item.domains.includes("Market");
+            const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI") || item.domains.includes("Growth") || item.domains.includes("Market") || item.scenario.includes("M&A");
             const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate");
             const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
             return (
@@ -237,7 +237,7 @@ function CompoundDisruptionSection() {
         {expandedScenario !== null && (() => {
           const scenario = compoundScenarios[expandedScenario];
           const Icon = scenario.icon;
-          const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI") || scenario.domains.includes("Growth") || scenario.domains.includes("Market");
+          const isOffense = scenario.domains.includes("Financial") || scenario.scenario.includes("AI") || scenario.domains.includes("Growth") || scenario.domains.includes("Market") || scenario.scenario.includes("M&A");
           const isDefense = scenario.domains.includes("Crisis") || scenario.scenario.includes("Regulatory") || scenario.scenario.includes("Cyber") || scenario.scenario.includes("Climate");
           const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
           const CG_LOCAL = { fontFamily: "'Cormorant Garamond', serif" };
@@ -266,8 +266,8 @@ function CompoundDisruptionSection() {
                   </h5>
                   <div className="space-y-2">
                     {scenario.playbooks.map((pb, j) => {
-                      const pbIsOffense = pb.domain.includes("Financial") || pb.domain.includes("Market") || pb.domain.includes("Growth");
-                      const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology");
+                      const pbIsOffense = pb.domain.includes("Financial") || pb.domain.includes("Market") || pb.domain.includes("Growth") || pb.domain.includes("M&A");
+                      const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology") || pb.domain.includes("Talent");
                       const pbIndicatorColor = pbIsOffense ? "#2B8A6E" : pbIsDefense ? "#0A0F2E" : "#C9A84C";
                       return (
                         <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>

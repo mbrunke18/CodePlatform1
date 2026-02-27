@@ -684,7 +684,7 @@ export default function IndustryExperience() {
               <div className="space-y-2">
                 {enabledTriggers.map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
                     <span className="text-gray-800">{t.name}</span>
                   </div>
                 ))}
@@ -727,7 +727,7 @@ export default function IndustryExperience() {
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
             className="text-center">
-            <Button onClick={next} size="lg" className="bg-gradient-to-r from-green-600 to-[#2B8A6E] text-gray-900 px-10 py-6 text-lg">
+            <Button onClick={next} size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-6 text-lg rounded-none font-bold uppercase tracking-widest">
               <Rocket className="h-5 w-5 mr-2" /> Launch Execution
             </Button>
           </motion.div>
@@ -745,9 +745,9 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Badge className={`mb-4 ${industry.domainCategory === 'OFFENSE' ? 'bg-[#0A0F2E]/20 text-[#0A0F2E]' : industry.domainCategory === 'DEFENSE' ? 'bg-red-500/20 text-red-400' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{industry.domainCategory} — {industry.domain}</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">{industry.organization}</h1>
-              <p className="text-xl text-gray-800 dark:text-slate-200 mb-2">{industry.industry} Industry</p>
+              <Badge className={`mb-4 rounded-none font-bold uppercase tracking-widest ${industry.domainCategory === 'OFFENSE' ? 'bg-[#2B8A6E]/20 text-[#2B8A6E]' : industry.domainCategory === 'DEFENSE' ? 'bg-[#0A0F2E]/20 text-[#C9A84C]' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{industry.domainCategory} — {industry.domain}</Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{industry.organization}</h1>
+              <p className="text-xl text-[#6B7280] mb-2">{industry.industry} Industry</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
               className="mt-8 bg-white border border-white/10 rounded-2xl p-8"
@@ -779,9 +779,9 @@ export default function IndustryExperience() {
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="mb-6 bg-green-500/10 border border-green-500/20 rounded-xl p-3 text-center">
-                <CheckCircle2 className="h-4 w-4 text-green-400 inline mr-2" />
-                <span className="text-sm text-green-400 font-medium">Configuration Complete — All 4 setup stages have data</span>
+                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-none p-3 text-center">
+                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] inline mr-2" />
+                <span className="text-sm text-[#2B8A6E] font-medium uppercase tracking-widest font-bold">Configuration Complete — All 4 setup stages have data</span>
               </motion.div>
             )}
             <div className="mb-4 flex items-center gap-3">
@@ -1294,7 +1294,7 @@ export default function IndustryExperience() {
                 </div>
               </div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
-                className="flex items-center justify-center gap-3 bg-green-500/20 border border-green-500/30 text-green-400 px-8 py-4 rounded-xl font-semibold text-lg"
+                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 rounded-none font-bold uppercase tracking-widest text-lg shadow-xl"
               >
                 <CheckCircle2 className="h-6 w-6" />
                 APPROVED — {industry.organization.split(' ')[0]} Activates {userPlaybook.name}
@@ -1312,17 +1312,17 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-6">
-              <Badge className="mb-3 bg-green-500/20 text-green-400"><Zap className="h-3 w-3 mr-1" /> EXECUTE PHASE</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E] rounded-none font-bold uppercase tracking-widest"><Zap className="h-3 w-3 mr-1" /> EXECUTE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">12-Minute Execution in Progress</h2>
               <p className="text-gray-800 dark:text-slate-200">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3 bg-white border border-green-500/20 rounded-2xl p-5">
+              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 rounded-none p-5 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-gray-900">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
-                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-green-500" />
-                    <span className="text-green-400 text-xs font-medium">LIVE</span>
+                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                    <span className="text-[#2B8A6E] text-xs font-bold uppercase tracking-widest">LIVE</span>
                   </div>
                 </div>
                 <div className="space-y-2">
@@ -1332,17 +1332,17 @@ export default function IndustryExperience() {
                     const isCustom = i >= industry.executionTasks.length;
                     return (
                       <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 0 : -20 }}
-                        className={`flex items-center gap-3 p-2.5 rounded-lg ${isCurrent ? 'bg-green-500/10 ring-1 ring-green-500/20' : ''}`}
+                        className={`flex items-center gap-3 p-2.5 rounded-none ${isCurrent ? 'bg-[#2B8A6E]/10 ring-1 ring-[#2B8A6E]/20' : ''}`}
                       >
                         <div className="w-12 text-right font-mono text-xs text-gray-800">{task.time}</div>
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-green-500/20' : 'bg-white/5'}`}>
-                          <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-green-400' : 'text-slate-700'}`} />
+                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
+                          <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-[#2B8A6E]' : 'text-slate-700'}`} />
                         </div>
                         <div className="flex-1">
                           <div className={`text-sm font-medium ${isActive ? 'text-gray-900' : 'text-gray-800 dark:text-slate-200'}`}>{task.task}</div>
                         </div>
-                        {isCustom && <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
-                        <Badge variant="outline" className={`text-[10px] ${isActive ? '' : 'opacity-30'}`}>{task.tool}</Badge>
+                        {isCustom && <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px] rounded-none font-bold uppercase">Custom</Badge>}
+                        <Badge variant="outline" className={`text-[10px] rounded-none ${isActive ? '' : 'opacity-30'}`}>{task.tool}</Badge>
                       </motion.div>
                     );
                   })}

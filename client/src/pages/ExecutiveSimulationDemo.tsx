@@ -330,7 +330,7 @@ export default function ExecutiveSimulationDemo() {
       case 'completed': return 'text-[#2B8A6E]';
       case 'in_progress': return 'text-[#C9A84C]';
       case 'blocked': return 'text-red-600';
-      default: return 'text-[#6B7280] dark:text-white/60';
+      default: return 'text-[#6B7280] dark:text-[#C9A84C]';
     }
   };
 
@@ -339,7 +339,7 @@ export default function ExecutiveSimulationDemo() {
       case 'completed': return <CheckCircle2 className="w-5 h-5" />;
       case 'in_progress': return <Activity className="w-5 h-5 animate-pulse" />;
       case 'blocked': return <XCircle className="w-5 h-5" />;
-      default: return <CircleDot className="w-5 h-5" />;
+      default: return <CircleDot className="w-5 h-5 text-[#C9A84C]" />;
     }
   };
 

@@ -120,7 +120,7 @@ const SCENARIOS: Scenario[] = [
     name: 'Ransomware Attack',
     industry: 'Cybersecurity',
     icon: Shield,
-    color: 'from-[#0A0F2E] to-[#141B45]',
+    color: 'bg-[#0A0F2E]',
     borderColor: 'border-[#E8E4DC]',
     trigger: 'Unusual network activity detected at 2:47 AM',
     playbook: 'Cyber Incident Response',
@@ -1007,42 +1007,42 @@ export default function TryDemo() {
                       <Card className="bg-white border-[#2B8A6E]/50 shadow-lg">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
-                            <div className="inline-flex p-4 bg-[#2B8A6E]/20 rounded-full mb-4">
+                            <div className="inline-flex p-4 bg-[#2B8A6E]/10 rounded-full mb-4">
                               <Rocket className="h-10 w-10 text-[#2B8A6E]" />
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Demo Complete</h2>
-                            <p className="text-gray-800">You just experienced the IDEA Framework in action</p>
+                            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>Demo Complete</h2>
+                            <p className="text-slate-600">You just experienced the IDEA Framework in action</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
-                            <div className="p-4 bg-gray-50 rounded-lg">
+                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                               <p className="text-2xl font-bold text-[#2B8A6E]">12 min</p>
-                              <p className="text-xs text-gray-800">Response Time</p>
+                              <p className="text-xs text-slate-500 font-medium">Response Time</p>
                             </div>
-                            <div className="p-4 bg-gray-50 rounded-lg">
+                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                               <p className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                              <p className="text-xs text-gray-800">Value Protected</p>
+                              <p className="text-xs text-slate-500 font-medium">Value Protected</p>
                             </div>
-                            <div className="p-4 bg-gray-50 rounded-lg">
+                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
                               <p className="text-2xl font-bold text-[#2B8A6E]">98 days</p>
-                              <p className="text-xs text-gray-800">Saved (IBM 2024)</p>
+                              <p className="text-xs text-slate-500 font-medium">Saved (IBM 2024)</p>
                             </div>
                           </div>
 
                           <div className="space-y-3">
-                          <Button 
-                            className="w-full bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] py-6 text-lg font-bold"
-                            onClick={() => {
-                              setLocation('/pilot-demo');
-                              window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                            }}
-                          >
-                            <Rocket className="mr-2 h-5 w-5" />
-                            Start Your Pilot
-                          </Button>
+                            <Button 
+                              className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] py-6 text-lg font-bold"
+                              onClick={() => {
+                                setLocation('/pilot-demo');
+                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                              }}
+                            >
+                              <Rocket className="mr-2 h-5 w-5" />
+                              Start Your Pilot
+                            </Button>
                             <Button 
                               variant="outline"
-                              className="w-full text-gray-900 border-slate-600 hover:bg-gray-100"
+                              className="w-full text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#F8F7F4]"
                               onClick={resetDemo}
                             >
                               <RefreshCw className="mr-2 h-4 w-4" />
@@ -1057,15 +1057,15 @@ export default function TryDemo() {
                         <CardHeader className="pb-4">
                           <div className="flex items-center justify-between">
                             <div>
-                              <CardTitle className="text-lg text-gray-900 flex items-center gap-2">
+                              <CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2" style={CG}>
                                 <Building2 className="h-5 w-5 text-[#C9A84C]" />
                                 Explore Industry Deep-Dives
                               </CardTitle>
-                              <CardDescription className="text-gray-800">
+                              <CardDescription className="text-slate-600">
                                 See Execution OS in action across 9 industries with real company scenarios
                               </CardDescription>
                             </div>
-                            <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">
+                            <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-[#C9A84C] hover:bg-[#DFC178]">
                               9 Demos
                             </Badge>
                           </div>
@@ -1073,11 +1073,11 @@ export default function TryDemo() {
                         <CardContent>
                           <div className="mb-4">
                             <div className="flex gap-2 mb-3">
-                              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10">
+                              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E] bg-[#2B8A6E]/10">
                                 <Target className="h-3 w-3 mr-1" />
                                 Offensive (3)
                               </Badge>
-                              <Badge variant="outline" className="text-[#0A0F2E] border-[#0A0F2E]/30 bg-[#0A0F2E]/10">
+                              <Badge variant="outline" className="text-[#0A0F2E] border-[#0A0F2E] bg-[#0A0F2E]/10">
                                 <Shield className="h-3 w-3 mr-1" />
                                 Defensive (6)
                               </Badge>
@@ -1095,31 +1095,31 @@ export default function TryDemo() {
                                   }}
                                   className={`p-3 rounded-lg border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
                                     demo.type === 'offensive' 
-                                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50' 
-                                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50'
+                                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]' 
+                                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]'
                                   }`}
                                 >
                                   <div className="flex items-center gap-2 mb-1">
                                     <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-xs text-gray-800 uppercase">{demo.industry}</span>
+                                    <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{demo.industry}</span>
                                   </div>
-                                  <p className="text-xs font-medium text-gray-900 truncate">{demo.title}</p>
+                                  <p className="text-xs font-semibold text-[#0A0F2E] truncate">{demo.title}</p>
                                   <div className="flex items-center justify-between mt-1">
-                                    <span className="text-xs text-gray-800">{demo.organization}</span>
-                                    <span className={`text-xs font-semibold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
+                                    <span className="text-[10px] text-slate-600 font-medium">{demo.organization}</span>
+                                    <span className={`text-[10px] font-bold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
                                       {demo.impact}
                                     </span>
                                   </div>
                                   <div className="mt-2 flex items-center gap-1 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <span className="text-[10px] font-medium">Explore</span>
+                                    <span className="text-[10px] font-bold">Explore</span>
                                     <ExternalLink className="h-2.5 w-2.5" />
                                   </div>
                                 </button>
                               );
                             })}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-gray-200 text-center">
-                            <p className="text-xs text-gray-800">Click any scenario above to explore the full demo</p>
+                          <div className="mt-4 pt-4 border-t border-[#E8E4DC] text-center">
+                            <p className="text-xs text-slate-500 font-medium">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -1130,43 +1130,43 @@ export default function TryDemo() {
                 {/* Sidebar */}
                 <div className="space-y-4">
                   {/* Value Comparison */}
-                  <Card className="bg-white border-gray-200">
+                  <Card className="bg-white border-[#E8E4DC]">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-gray-900">Response Comparison</CardTitle>
+                      <CardTitle className="text-sm font-bold text-[#0A0F2E]" style={CG}>Response Comparison</CardTitle>
                     </CardHeader>
                     <CardContent>
                           <div className="grid grid-cols-2 gap-4">
                             <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
-                              <p className="text-xs text-red-400 mb-1">Traditional</p>
-                              <p className="text-xl font-bold text-red-400">20-72 hrs</p>
-                              <p className="text-xs text-gray-800">Industry average</p>
+                              <p className="text-[10px] text-red-600 font-bold uppercase mb-1">Traditional</p>
+                              <p className="text-xl font-bold text-red-600">20-72 hrs</p>
+                              <p className="text-[10px] text-slate-500 font-medium">Industry average</p>
                             </div>
                             <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
-                              <p className="text-xs text-[#2B8A6E] mb-1">Execution OS</p>
+                              <p className="text-[10px] text-[#2B8A6E] font-bold uppercase mb-1">Execution OS</p>
                               <p className="text-xl font-bold text-[#2B8A6E]">12 min</p>
-                              <p className="text-xs text-gray-800">Guaranteed</p>
+                              <p className="text-[10px] text-slate-500 font-medium">Guaranteed</p>
                             </div>
                           </div>
                     </CardContent>
                   </Card>
 
                   {/* Enterprise Integrations */}
-                  <Card className="bg-white border-gray-200">
+                  <Card className="bg-white border-[#E8E4DC]">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-gray-900">Integrated With Your Stack</CardTitle>
+                      <CardTitle className="text-sm font-bold text-[#0A0F2E]" style={CG}>Integrated With Your Stack</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
                         {[
-                          { icon: SiSlack, name: 'Slack', color: '#4A154B' },
-                          { icon: SiJira, name: 'Jira', color: '#0052CC' },
-                          { icon: Users, name: 'Teams', color: '#6264A7' },
-                          { icon: SiSalesforce, name: 'Salesforce', color: '#00A1E0' },
-                          { icon: SiNotion, name: 'Notion', color: '#000000' },
+                          { icon: SiSlack, name: 'Slack', color: '#0A0F2E' },
+                          { icon: SiJira, name: 'Jira', color: '#0A0F2E' },
+                          { icon: Users, name: 'Teams', color: '#0A0F2E' },
+                          { icon: SiSalesforce, name: 'Salesforce', color: '#0A0F2E' },
+                          { icon: SiNotion, name: 'Notion', color: '#0A0F2E' },
                         ].map(({ icon: Icon, name, color }) => (
-                          <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded text-xs">
-                            <Icon className="h-3.5 w-3.5" style={{ color }} />
-                            <span className="text-gray-800">{name}</span>
+                          <div key={name} className="flex items-center gap-1.5 px-2 py-1 bg-[#F8F7F4] border border-[#E8E4DC] rounded text-[10px] font-bold">
+                            <Icon className="h-3 w-3" style={{ color }} />
+                            <span className="text-[#0A0F2E]">{name}</span>
                           </div>
                         ))}
                       </div>
@@ -1174,32 +1174,32 @@ export default function TryDemo() {
                   </Card>
 
                   {/* Research Citations */}
-                  <Card className="bg-white border-gray-200">
+                  <Card className="bg-white border-[#E8E4DC]">
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm text-gray-900">Research-Backed Claims</CardTitle>
+                      <CardTitle className="text-sm font-bold text-[#0A0F2E]" style={CG}>Research-Backed Claims</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2">
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">IBM 2024</Badge>
-                        <span className="text-gray-800">98 days saved with AI/automation</span>
+                        <Badge variant="outline" className="text-[10px] shrink-0 bg-transparent text-[#0A0F2E] border-[#0A0F2E] font-bold">IBM 2024</Badge>
+                        <span className="text-slate-600 font-medium text-[11px]">98 days saved with AI/automation</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">McKinsey</Badge>
-                        <span className="text-gray-800">5-10x faster execution</span>
+                        <Badge variant="outline" className="text-[10px] shrink-0 bg-transparent text-[#0A0F2E] border-[#0A0F2E] font-bold">McKinsey</Badge>
+                        <span className="text-slate-600 font-medium text-[11px]">5-10x faster execution</span>
                       </div>
                       <div className="flex items-start gap-2 text-xs">
-                        <Badge variant="outline" className="text-xs shrink-0 bg-transparent text-gray-800 border-slate-600">PagerDuty</Badge>
-                        <span className="text-gray-800">3.5x faster crisis response</span>
+                        <Badge variant="outline" className="text-[10px] shrink-0 bg-transparent text-[#0A0F2E] border-[#0A0F2E] font-bold">PagerDuty</Badge>
+                        <span className="text-slate-600 font-medium text-[11px]">3.5x faster crisis response</span>
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* 170 Playbooks */}
-                  <Card className="bg-white border-[#C9A84C]/30">
+                  <Card className="bg-white border-[#C9A84C]">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
-                      <p className="text-sm text-[#C9A84C]">Pre-Built Playbooks</p>
-                      <p className="text-xs text-gray-800 mt-1">Across 9 Strategic Domains</p>
+                      <p className="text-sm font-bold text-[#0A0F2E]" style={CG}>Pre-Built Playbooks</p>
+                      <p className="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Across 9 Strategic Domains</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -1210,16 +1210,16 @@ export default function TryDemo() {
       </main>
 
       {/* See It In Your Industry Section */}
-      <section className="bg-gradient-to-b from-backgroundborder-t border-gray-200 py-16 px-6">
+      <section className="bg-[#F8F7F4] border-t border-[#E8E4DC] py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">See It In Your Industry</h2>
-            <p className="text-gray-800 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={CG}>See It In Your Industry</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto font-medium">
               Explore how Execution OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
             </p>
           </div>
           
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {INDUSTRY_DEMOS.map((demo) => {
               const IconComponent = demo.icon;
               return (
@@ -1229,34 +1229,34 @@ export default function TryDemo() {
                     setLocation(demo.route);
                     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                   }}
-                  className={`p-5 rounded-xl border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
+                  className={`p-5 rounded-xl border transition-all hover:scale-[1.02] text-left group bg-white ${
                     demo.type === 'offensive' 
-                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50' 
-                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]/50'
+                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]' 
+                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <IconComponent className={`h-5 w-5 ${demo.iconColor}`} />
-                      <span className="text-xs font-medium text-gray-800 uppercase tracking-wider">{demo.industry}</span>
+                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{demo.industry}</span>
                     </div>
-                    <Badge variant="outline" className={`text-xs ${
+                    <Badge variant="outline" className={`text-[10px] font-bold uppercase ${
                       demo.type === 'offensive' 
-                        ? 'text-[#2B8A6E] border-[#2B8A6E]/30 bg-[#2B8A6E]/10' 
-                        : 'text-[#0A0F2E] border-[#0A0F2E]/30 bg-[#0A0F2E]/10'
+                        ? 'text-[#2B8A6E] border-[#2B8A6E] bg-[#2B8A6E]/10' 
+                        : 'text-[#0A0F2E] border-[#0A0F2E] bg-[#0A0F2E]/10'
                     }`}>
                       {demo.type === 'offensive' ? 'Offense' : 'Defense'}
                     </Badge>
                   </div>
-                  <p className="text-sm font-semibold text-gray-900 mb-1">{demo.title}</p>
+                  <p className="text-sm font-bold text-[#0A0F2E] mb-1" style={CG}>{demo.title}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-800">{demo.organization}</span>
-                    <span className={`text-xs font-bold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
+                    <span className="text-[11px] text-slate-600 font-medium">{demo.organization}</span>
+                    <span className={`text-[11px] font-bold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
                       {demo.impact}
                     </span>
                   </div>
                   <div className="mt-3 flex items-center gap-1 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>Run this scenario</span>
+                    <span className="text-[11px] font-bold">Run this scenario</span>
                     <ArrowRight className="h-3 w-3" />
                   </div>
                 </button>

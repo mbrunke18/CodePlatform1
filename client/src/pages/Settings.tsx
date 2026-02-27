@@ -319,21 +319,21 @@ export default function SettingsPage() {
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
                             <Badge variant="destructive" className="rounded-none bg-red-600 text-white">Critical</Badge>
-                        )}
+                          )}
+                        </div>
+                        <p className="text-sm text-[#6B7280]">{feature.description}</p>
                       </div>
-                      <p className="text-sm text-[#6B7280]">{feature.description}</p>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Switch 
-                        checked={feature.enabled}
-                        disabled={feature.critical}
-                        data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="data-[state=checked]:bg-[#2B8A6E]"
-                      />
-                      <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-[#E8E4DC] text-[#6B7280] rounded-none'}>
-                        {feature.enabled ? 'Enabled' : 'Disabled'}
-                      </Badge>
-                    </div>
+                      <div className="flex items-center space-x-3">
+                        <Switch 
+                          checked={feature.enabled}
+                          disabled={feature.critical}
+                          data-testid={`switch-${feature.name.toLowerCase().replace(/\s+/g, '-')}`}
+                          className="data-[state=checked]:bg-[#2B8A6E]"
+                        />
+                        <Badge variant={feature.enabled ? 'default' : 'secondary'} className={feature.enabled ? 'bg-[#2B8A6E] text-white rounded-none' : 'bg-[#E8E4DC] text-[#6B7280] rounded-none'}>
+                          {feature.enabled ? 'Enabled' : 'Disabled'}
+                        </Badge>
+                      </div>
                       </div>
                     ))}
                   </div>

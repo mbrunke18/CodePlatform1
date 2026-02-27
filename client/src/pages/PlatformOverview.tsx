@@ -96,7 +96,7 @@ const components = [
   { name: "Stakeholder Hub", desc: "Role-based notifications and briefs", icon: Users },
   { name: "AI Radar", desc: "Pattern detection and risk scoring", icon: Brain },
   { name: "Governance Layer", desc: "Decision rights and audit trail", icon: Shield },
-  { name: "ADVANCE Analytics", desc: "Outcome tracking and playbook learning", icon: Eye },
+  { name: "Outcome Tracking", desc: "Outcome tracking and playbook learning", icon: Eye },
 ];
 
 export default function PlatformOverview() {

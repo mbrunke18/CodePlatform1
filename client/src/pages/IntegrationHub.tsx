@@ -806,7 +806,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
                   Integration <em style={{ fontStyle: "italic", color: "#DFC178" }}>Hub</em>
                 </h1>
-                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">ExecuteIQ orchestrates your entire enterprise stack through bi-directional strategic synchronization.</p>
+                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">Poise orchestrates your entire enterprise stack through bi-directional strategic synchronization.</p>
               </div>
               <div className="flex flex-col items-end gap-4 min-w-[280px]">
                 <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:TEAL, fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: `1px solid ${TEAL}` }}>

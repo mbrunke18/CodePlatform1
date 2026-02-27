@@ -244,19 +244,21 @@ export default function IndustryDemosHub() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="min-h-screen bg-white text-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Building2 className="w-8 h-8 text-[#2B8A6E]" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E]">
-                Industry Scenarios
-              </h1>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Industry Demos</span>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
-            <p className="text-lg md:text-xl text-[#6B7280] max-w-3xl mx-auto mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E] font-serif">
+              Industry <em className="italic text-[#C9A84C]">Scenarios</em>
+            </h1>
+            <p className="text-lg md:text-xl text-[#6B7280] max-w-3xl mx-auto mt-6 font-light">
               See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-[#6B7280]">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mt-8">
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Offense & Defense</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12-minute coordination</span>
               <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-[#C9A84C]" /> Real enterprise impact</span>
@@ -267,10 +269,10 @@ export default function IndustryDemosHub() {
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
               <Target className="w-5 h-5 text-[#0A0F2E]" />
-              <h2 className="text-xl font-bold text-[#0A0F2E]">Strategic Opportunities</h2>
-              <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-xs">OFFENSE</Badge>
+              <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Strategic Opportunities</h2>
+              <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">OFFENSE</Badge>
             </div>
-            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl">
+            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
               When opportunities emerge — market shifts, competitive windows, strategic launches — 12-minute coordination enables your organization to execute while competitors are still scheduling meetings.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -281,10 +283,10 @@ export default function IndustryDemosHub() {
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-5 h-5 text-[#0A0F2E]" />
-              <h2 className="text-xl font-bold text-[#0A0F2E]">Crisis Response</h2>
-              <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-xs">DEFENSE</Badge>
+              <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Crisis Response</h2>
+              <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">DEFENSE</Badge>
             </div>
-            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl">
+            <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
               When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -292,7 +294,7 @@ export default function IndustryDemosHub() {
             </div>
           </div>
 
-          <Card className="bg-white border-[#E8E4DC] p-12 rounded-none">
+          <Card className="bg-[#F8F7F4] border-[#E8E4DC] p-12 rounded-none shadow-sm">
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-3xl font-serif text-[#0A0F2E] mb-4">The Detection-Execution Gap</h3>
               <p className="text-lg text-[#6B7280] mb-10 font-light leading-relaxed">
@@ -318,7 +320,7 @@ export default function IndustryDemosHub() {
                     Try Live Activation
                   </Button>
                 </Link>
-                <Link href="/onboarding">
+                <Link href="/playbook-library">
                   <Button size="lg" variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none transition-colors">
                     Explore 170 Playbooks
                   </Button>

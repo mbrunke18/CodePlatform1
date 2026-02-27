@@ -346,7 +346,7 @@ export default function BoardExport() {
                         </div>
                         <div className="bg-[#2B8A6E]/10 rounded-lg p-3 text-center border border-[#2B8A6E]/20">
                           <div className="text-xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.responseMetrics.stakeholderResponseRate}%</div>
-                          <div className="text-xs text-[#0A0F2E] dark:text-white/80">Response Rate</div>
+                          <div className="text-xs text-[#2B8A6E] dark:text-[#C9A84C]">Response Rate</div>
                         </div>
                       </div>
                     </div>

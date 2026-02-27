@@ -569,7 +569,8 @@ export default function PlaybookCustomize() {
     advance: { label: 'A', color: "#2B8A6E" },
   };
 
-  const isOffense = watch("category") === 'offense' || watch("category") === 'growth' || watch("category") === 'market' || watch("category") === 'special_teams';
+  const isOffense = watch("category") === 'offense' || watch("category") === 'growth' || watch("category") === 'market' || watch("category") === 'special_teams' || watch("category") === 'ma';
+  const isDefense = !isOffense;
   
   const sectionPhases: Record<string, string> = {
     basic: 'identify',

@@ -169,7 +169,7 @@ export default function WorkspaceAdvance() {
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
-                    <span className="text-sm font-bold text-[#2B8A6E]">ADVANCE</span>
+                    <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">ADVANCE</span>
                   </div>
                 </div>
               </div>
@@ -289,7 +289,7 @@ export default function WorkspaceAdvance() {
                         <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-white/60">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

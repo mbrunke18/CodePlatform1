@@ -121,13 +121,13 @@ function InvestorPresentation() {
               { value: '30%', label: 'Strategic value lost', sub: 'McKinsey research' },
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
-            ].map((s, i) => (
-              <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-5">
-                <div className="text-2xl font-bold text-[#C9A84C]">{s.value}</div>
-                <div className="text-[#0A0F2E] font-medium">{s.label}</div>
-                <div className="text-[#6B7280] text-sm">{s.sub}</div>
-              </div>
-            ))}
+                        ].map((s, i) => (
+                <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-5 shadow-sm hover:border-[#C9A84C]/50 transition-colors">
+                  <div className="text-2xl font-bold text-[#C9A84C]">{s.value}</div>
+                  <div className="text-[#0A0F2E] font-medium">{s.label}</div>
+                  <div className="text-[#6B7280] text-sm">{s.sub}</div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

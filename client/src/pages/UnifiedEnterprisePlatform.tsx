@@ -163,16 +163,16 @@ export default function UnifiedEnterprisePlatform() {
           
           {/* Breadcrumb Navigation */}
           <div className="mb-2 flex-shrink-0">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
+            <div className="flex items-center gap-2 text-sm text-[#6B7280]">
               <Link to="/">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-[#6B7280] hover:text-[#0A0F2E] dark:hover:text-white p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
               <span>/</span>
               <span>AI Intelligence</span>
               <span>/</span>
-              <span className="text-gray-900">Intelligence Command Center</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]">Intelligence Command Center</span>
             </div>
           </div>
 
@@ -215,88 +215,88 @@ export default function UnifiedEnterprisePlatform() {
 
           {/* 4-Step IDEA Framework - Core Methodology */}
           <div className="grid grid-cols-4 gap-3 flex-shrink-0">
-            <Card className="border-[#0A0F2E]/30 bg-white hover:border-[#0A0F2E]/50 transition-all shadow-none">
+            <Card className="border-[#0A0F2E]/30 bg-white dark:bg-white/5 hover:border-[#0A0F2E]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
-                  <Eye className="h-5 w-5 text-[#0A0F2E]" />
-                  <CardTitle className="text-sm text-gray-900">1. IDENTIFY</CardTitle>
+                  <Eye className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
+                  <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">1. IDENTIFY</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-800 mb-2">24/7 AI Intelligence</p>
+                <p className="text-xs text-[#6B7280] mb-2">24/7 AI Intelligence</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">Pulse Active</span>
+                    <span className="text-[#6B7280]">Pulse Active</span>
                     <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">94%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">12 Signals</span>
-                    <span className="text-[#0A0F2E] font-semibold">Monitoring</span>
+                    <span className="text-[#6B7280]">12 Signals</span>
+                    <span className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">Monitoring</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-[#C9A84C]/30 bg-white hover:border-[#C9A84C]/50 transition-all shadow-none">
+            <Card className="border-[#C9A84C]/30 bg-white dark:bg-white/5 hover:border-[#C9A84C]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-[#C9A84C]" />
-                  <CardTitle className="text-sm text-gray-900">2. DETECT</CardTitle>
+                  <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">2. DETECT</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-800 mb-2">Trigger Intelligence</p>
+                <p className="text-xs text-[#6B7280] mb-2">Trigger Intelligence</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">Preparedness</span>
+                    <span className="text-[#6B7280]">Preparedness</span>
                     <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">98.7%</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">47 Playbooks</span>
+                    <span className="text-[#6B7280]">47 Playbooks</span>
                     <span className="text-[#C9A84C] font-semibold">Ready</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-[#2B8A6E]/30 bg-white hover:border-[#2B8A6E]/50 transition-all shadow-none">
+            <Card className="border-[#2B8A6E]/30 bg-white dark:bg-white/5 hover:border-[#2B8A6E]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-[#2B8A6E]" />
-                  <CardTitle className="text-sm text-gray-900">3. EXECUTE</CardTitle>
+                  <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">3. EXECUTE</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-800 mb-2">12-Minute Coordination</p>
+                <p className="text-xs text-[#6B7280] mb-2">12-Minute Coordination</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">Avg Speed</span>
+                    <span className="text-[#6B7280]">Avg Speed</span>
                     <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/30 text-xs">12min</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">vs Industry</span>
+                    <span className="text-[#6B7280]">vs Industry</span>
                     <span className="text-[#2B8A6E] font-semibold">360x Faster</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-[#C9A84C]/30 bg-white hover:border-[#C9A84C]/50 transition-all shadow-none">
+            <Card className="border-[#C9A84C]/30 bg-white dark:bg-white/5 hover:border-[#C9A84C]/50 transition-all shadow-none">
               <CardHeader className="p-3">
                 <div className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-                  <CardTitle className="text-sm text-gray-900">4. ADVANCE</CardTitle>
+                  <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">4. ADVANCE</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-gray-800 mb-2">Institutional Memory</p>
+                <p className="text-xs text-[#6B7280] mb-2">Institutional Memory</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">Executions</span>
+                    <span className="text-[#6B7280]">Executions</span>
                     <Badge variant="outline" className="bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/30 text-xs">1,247</Badge>
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-800">ROI Captured</span>
+                    <span className="text-[#6B7280]">ROI Captured</span>
                     <span className="text-[#C9A84C] font-semibold">$144M</span>
                   </div>
                 </div>
@@ -381,11 +381,11 @@ export default function UnifiedEnterprisePlatform() {
               {/* Real-time Metrics Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
                 {metrics.map((metric, index) => (
-                  <Card key={index} className="border-gray-200 bg-white backdrop-blur-sm" data-testid={`metric-${metric.name.replace(/\s+/g, '-').toLowerCase()}`}>
+                  <Card key={index} className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-sm" data-testid={`metric-${metric.name.replace(/\s+/g, '-').toLowerCase()}`}>
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
-                        <div className="p-2 rounded-lg bg-[#0A0F2E]/10">
-                          <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
+                        <div className="p-2 rounded-lg bg-[#0A0F2E]/10 dark:bg-white/10">
+                          <BarChart3 className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                         </div>
                         <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
                           EXCELLENT
@@ -395,12 +395,12 @@ export default function UnifiedEnterprisePlatform() {
                     <CardContent>
                       <div className="space-y-1">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-gray-800">{metric.name}</span>
+                          <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">{metric.name}</span>
                           <span className={`text-sm font-bold ${metric.color}`}>
                             {metric.change}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-gray-900">{metric.value}</div>
+                        <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">{metric.value}</div>
                         <Progress value={75} className="h-2" />
                       </div>
                     </CardContent>
@@ -409,35 +409,35 @@ export default function UnifiedEnterprisePlatform() {
               </div>
 
               {/* Decision Velocity - Execution Infrastructure */}
-              <Card className="border-[#2B8A6E]/50 bg-white backdrop-blur-sm mb-4">
+              <Card className="border-[#2B8A6E]/50 bg-white dark:bg-white/5 backdrop-blur-sm mb-4">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center gap-2 text-gray-900">
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white">
                       <Zap className="h-6 w-6 text-[#2B8A6E]" />
                       Decision Velocity Dashboard
                       <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/50 ml-2">
                         INFRASTRUCTURE MODE
                       </Badge>
                     </CardTitle>
-                    <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#0A0F2E] border-[#0A0F2E]/50">
+                    <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/50">
                       170 PLAYBOOKS READY
                     </Badge>
                   </div>
-                  <p className="text-sm text-gray-800 mt-2">
+                  <p className="text-sm text-[#6B7280] mt-2">
                     Execution infrastructure in action: From detection to coordinated execution in 12 minutes. Pre-defined governance for high-stakes situations.
                   </p>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Average Decision Time */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-[#2B8A6E]/30">
+                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#2B8A6E]/30">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="h-5 w-5 text-[#2B8A6E]" />
-                        <span className="text-sm font-medium text-gray-800">Avg. Decision Time</span>
+                        <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">Avg. Decision Time</span>
                       </div>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-gray-900">12</span>
-                        <span className="text-lg text-gray-800">minutes</span>
+                        <span className="text-3xl font-bold text-[#0A0F2E] dark:text-white">12</span>
+                        <span className="text-lg text-[#6B7280]">minutes</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
                         <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
@@ -446,18 +446,18 @@ export default function UnifiedEnterprisePlatform() {
                     </div>
 
                     {/* Playbooks Executed */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-[#0A0F2E]/30">
+                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#0A0F2E]/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <Target className="h-5 w-5 text-[#0A0F2E]" />
-                        <span className="text-sm font-medium text-gray-800">Plays Executed (30d)</span>
+                        <Target className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
+                        <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">Plays Executed (30d)</span>
                       </div>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-gray-900">47</span>
-                        <span className="text-lg text-gray-800">playbooks</span>
+                        <span className="text-3xl font-bold text-[#0A0F2E] dark:text-white">47</span>
+                        <span className="text-lg text-[#6B7280]">playbooks</span>
                       </div>
                       <div className="mt-2 flex items-center gap-1">
-                        <CheckCircle className="h-4 w-4 text-[#0A0F2E]" />
-                        <span className="text-xs text-[#0A0F2E]">94% execution success rate</span>
+                        <CheckCircle className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
+                        <span className="text-xs text-[#0A0F2E] dark:text-[#C9A84C]">94% execution success rate</span>
                       </div>
                     </div>
 
