@@ -488,81 +488,66 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {!isAuthenticated ? (
-              publicTeasers.map((playbook) => (
-                <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <Lock className="h-3.5 w-3.5 text-[#C9A84C]" />
-                        <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Locked Template</span>
-                      </div>
-                      <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
-                    </div>
-                    <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-xl font-bold mb-2 group-hover:text-[#C9A84C] transition-colors">{playbook.name}</h3>
-                    <p style={{ color: "#6B7280" }} className="text-sm line-clamp-2 mb-6 leading-relaxed">
-                      {playbook.description}
-                    </p>
-                    <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: "#F8F7F4" }}>
-                      <div className="flex gap-4">
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold text-gray-400 uppercase">Role</span>
-                          <span className="text-[11px] font-semibold text-[#0A0F2E]">{playbook.domain}</span>
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold text-gray-400 uppercase">Complexity</span>
-                          <span className="text-[11px] font-semibold text-[#0A0F2E]">High</span>
-                        </div>
-                      </div>
-                      <Button 
-                        size="sm"
-                        style={{ background: "#0A0F2E", color: "white" }}
-                        className="font-bold text-[11px] uppercase tracking-wider px-5"
-                        onClick={() => setLocation("/auth")}
-                      >
-                        Unlock Playbook
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))
-            ) : (
-              searchFiltered.map((playbook) => (
-                <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <Check className="h-3.5 w-3.5 text-[#2B8A6E]" />
-                        <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Enterprise Tier</span>
-                      </div>
-                      <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
-                    </div>
-                    <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-xl font-bold mb-2 group-hover:text-[#C9A84C] transition-colors">{playbook.name}</h3>
-                    <p style={{ color: "#6B7280" }} className="text-sm line-clamp-2 mb-6 leading-relaxed">
-                      {playbook.description}
-                    </p>
-                    <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: "#F8F7F4" }}>
-                      <div className="flex gap-4">
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold text-gray-400 uppercase">Role</span>
-                          <span className="text-[11px] font-semibold text-[#0A0F2E]">{playbook.domain}</span>
-                        </div>
-                      </div>
-                      <Button 
-                        size="sm"
-                        style={{ background: "#0A0F2E", color: "white" }}
-                        className="font-bold text-[11px] uppercase tracking-wider px-5"
-                        onClick={() => setLocation(`/playbooks/customize?template=${playbook.id}`)}
-                      >
-                        Deploy Playbook
-                        <ChevronRight className="ml-2 h-3.5 w-3.5" />
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))
+          <div className="mb-4 flex items-center justify-between">
+            <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
+              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{searchFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> playbooks
+            </span>
+            {!isAuthenticated && (
+              <div className="flex items-center gap-2">
+                <Lock className="h-3 w-3 text-[#C9A84C]" />
+                <span style={{ color: MUTED, fontSize: 11 }}>Sign in to deploy any playbook</span>
+              </div>
             )}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {searchFiltered.map((playbook) => (
+              <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
+                <div className="p-5">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      {isAuthenticated ? (
+                        <>
+                          <Check className="h-3 w-3 text-[#2B8A6E]" />
+                          <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Enterprise Tier</span>
+                        </>
+                      ) : (
+                        <>
+                          <Lock className="h-3 w-3 text-[#C9A84C]" />
+                          <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Execution Ready</span>
+                        </>
+                      )}
+                    </div>
+                    <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
+                  </div>
+                  <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-base font-bold mb-1.5 group-hover:text-[#C9A84C] transition-colors leading-snug">{playbook.name}</h3>
+                  <p style={{ color: "#6B7280" }} className="text-xs line-clamp-2 mb-4 leading-relaxed">
+                    {playbook.description}
+                  </p>
+                  <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: "#F8F7F4" }}>
+                    <div className="flex flex-col">
+                      <span className="text-[9px] font-bold text-gray-400 uppercase">Domain</span>
+                      <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[100px]">{playbook.domain}</span>
+                    </div>
+                    <Button
+                      size="sm"
+                      style={{ background: "#0A0F2E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }}
+                      className="font-bold uppercase tracking-wider"
+                      onClick={() => isAuthenticated
+                        ? setLocation(`/playbooks/customize?template=${playbook.id}`)
+                        : setLocation("/early-access")
+                      }
+                    >
+                      {isAuthenticated ? (
+                        <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
+                      ) : (
+                        <span>Get Access</span>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
 
           <CompoundDisruptionSection />
