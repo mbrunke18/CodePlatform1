@@ -179,7 +179,7 @@ export default function ExplorePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-none p-8 border border-[#E8E4DC] shadow-sm">
                 <div className="w-12 h-12 rounded-none bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Layers className="h-6 w-6 text-white" />
+                  <Layers className="h-6 w-6 text-[#C9A84C]" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Explore the Product</h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">

@@ -98,7 +98,7 @@ export default function WorkspaceDetect() {
               <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
-            <span className="text-[#0A0F2E] dark:text-white font-medium">DETECT</span>
+            <span className="text-[#0A0F2E] dark:text-[#C9A84C] font-medium">DETECT</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">

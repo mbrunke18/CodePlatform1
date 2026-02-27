@@ -422,10 +422,10 @@ export default function CrisisDetail() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-[#0A0F2E]">Severity Level</span>
-                      <Badge variant="destructive" className="bg-[#DC2626] text-white rounded-none">HIGH</Badge>
-                    </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-[#0A0F2E]">Severity Level</span>
+                    <Badge variant="destructive" className="bg-[#DC2626] text-white rounded-none">HIGH</Badge>
+                  </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-[#0A0F2E]">Response Time</span>
                       <span className="text-sm text-[#0A0F2E]">&lt; 2 hours</span>

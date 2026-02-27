@@ -202,7 +202,7 @@ export default function Investors() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-white/50 backdrop-blur-sm rounded-xl">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-[#0A0F2E]/5 backdrop-blur-sm rounded-xl">
                   <Calendar className="w-4 h-4 mr-2 text-[#C9A84C]" />
                   Schedule Meeting
                 </Button>
@@ -493,7 +493,7 @@ export default function Investors() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-6 shadow-sm">
+              <div className="bg-[#0A0F2E]/10 border border-white/10 backdrop-blur-sm rounded-xl p-6 shadow-sm">
                 <p className="text-[#C9A84C] font-bold text-lg mb-2 uppercase tracking-wider">Why Now?</p>
                 <ul className="space-y-2 text-white/70 text-sm font-medium">
                   <li>• AI disruption accelerating strategic uncertainty</li>

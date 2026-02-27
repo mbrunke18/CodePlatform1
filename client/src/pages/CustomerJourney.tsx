@@ -300,7 +300,7 @@ export default function CustomerJourney() {
                     </Button>
                   </Link>
                   <Link href="/demo-selector">
-                    <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent px-10 py-6 text-base rounded-xl">
+                    <Button variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent px-10 py-6 text-base rounded-xl">
                       Explore Demos
                     </Button>
                   </Link>

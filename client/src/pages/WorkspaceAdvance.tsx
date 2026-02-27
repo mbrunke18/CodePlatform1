@@ -163,7 +163,7 @@ export default function WorkspaceAdvance() {
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <Compass className="h-4 w-4 text-[#C9A84C]" />
-                      <span className="text-sm text-[#C9A84C] font-medium">EXECUTE</span>
+                      <span className="text-sm text-[#0A0F2E] font-medium">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />

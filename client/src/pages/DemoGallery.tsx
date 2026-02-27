@@ -172,7 +172,7 @@ export default function DemoGallery() {
             <h1 className="text-4xl font-bold text-[#0A0F2E] mb-4">
               Demo Gallery
             </h1>
-            <p className="text-xl text-gray-800 max-w-2xl mx-auto mb-6">
+            <p className="text-gray-800 max-w-2xl mx-auto mb-6">
               Choose your experience: interactive simulations, guided tours, or industry-specific scenarios
             </p>
           </div>

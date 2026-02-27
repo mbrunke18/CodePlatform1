@@ -245,7 +245,7 @@ export default function DecisionTreeBuilder() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-                    Domain <span className="text-red-700">*</span>
+                    Domain <span className="text-[#DC2626]">*</span>
                   </label>
                   <Select value={domain} onValueChange={setDomain}>
                     <SelectTrigger className="rounded-none border-[#E8E4DC] h-12 px-4" data-testid="select-domain">
@@ -264,7 +264,7 @@ export default function DecisionTreeBuilder() {
                 
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-                    Strategic Category <span className="text-red-700">*</span>
+                    Strategic Category <span className="text-[#DC2626]">*</span>
                   </label>
                   <Select value={category} onValueChange={setCategory}>
                     <SelectTrigger className="rounded-none border-[#E8E4DC] h-12 px-4" data-testid="select-category">
@@ -296,7 +296,7 @@ export default function DecisionTreeBuilder() {
             <CardContent className="px-0 pb-0 space-y-8">
               <div className="space-y-3">
                 <label className="text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-                  Decision Question <span className="text-red-700">*</span>
+                  Decision Question <span className="text-[#DC2626]">*</span>
                 </label>
                 <Textarea 
                   placeholder="e.g., Should we disclose the breach publicly immediately?"

@@ -195,7 +195,7 @@ function CompoundDisruptionSection() {
       <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "rgba(10, 15, 46, 0.02)", borderColor: "#E8E4DC" }}>
         <Zap className="h-4 w-4" style={{ color: "#C9A84C" }} />
         <span className="text-sm font-bold uppercase tracking-wide" style={{ color: "#0A0F2E" }}>Compound Disruption Response</span>
-        <Badge style={{ background: "rgba(43,138,110,0.1)", color: "#2B8A6E" }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
+        <Badge style={{ background: "rgba(10, 15, 46, 0.1)", color: "#0A0F2E" }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
       </div>
       <div className="p-6 bg-white">
         <p className="text-sm mb-5" style={{ color: "#6B7280" }}>
@@ -403,7 +403,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         letterSpacing: "0.05em",
                         border: `1px solid ${isActive ? "#C9A84C" : "#E8E4DC"}`,
                         color: isActive ? "#C9A84C" : "#0A0F2E",
-                        background: isActive ? "white" : "transparent",
+                        background: isActive ? "#FFFFFF" : "transparent",
                         transition: "all 0.2s"
                       }}
                       className="hover:border-[#DFC178]"

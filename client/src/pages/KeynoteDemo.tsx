@@ -473,7 +473,7 @@ export default function KeynoteDemo() {
                   Based on {signal?.aiAnalysis?.dataPointsAnalyzed || 847} data points analyzed
                 </div>
               </div>
-              <div className="mt-4 h-2 bg-white/10 rounded-full overflow-hidden">
+              <div className="mt-4 h-2 bg-[#0A0F2E]/30 rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${signal?.aiConfidence || 94}%` }}
@@ -739,7 +739,7 @@ export default function KeynoteDemo() {
                     { label: 'Channels Active', value: '6', color: 'text-[#2B8A6E]' },
                     { label: 'Docs Staged', value: '12', color: 'text-white/80' },
                   ].map((m, i) => (
-                    <div key={i} className="bg-white/5 rounded-lg p-4 text-center border border-white/5">
+                    <div key={i} className="bg-[#0A0F2E]/20 rounded-lg p-4 text-center border border-white/5">
                       <div className={`text-2xl font-bold ${m.color}`} style={CG}>{m.value}</div>
                       <div className="text-[10px] text-white/40 font-bold uppercase tracking-wider">{m.label}</div>
                     </div>
@@ -890,7 +890,7 @@ export default function KeynoteDemo() {
                   { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into playbook configuration' },
                   { metric: 'Full Execution', value: '< 12 minutes', detail: 'Signal to action, every time' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between bg-white/5 border border-white/10 rounded-lg p-4">
+                  <div key={i} className="flex items-center justify-between bg-[#0A0F2E]/20 border border-white/10 rounded-lg p-4">
                     <div>
                       <div className="text-white font-bold text-sm">{item.metric}</div>
                       <div className="text-[#C9A84C]/60 text-[10px] font-bold uppercase tracking-wider">{item.detail}</div>
@@ -978,7 +978,7 @@ export default function KeynoteDemo() {
           <Button
             size="lg"
             variant="outline"
-            className="border-white/20 text-white hover:bg-white/10 px-10 py-7 text-xl rounded-xl bg-transparent"
+            className="border-white/20 text-white hover:bg-[#0A0F2E]/30 px-10 py-7 text-xl rounded-xl bg-transparent"
           >
             Download Deck
           </Button>
@@ -1040,7 +1040,7 @@ export default function KeynoteDemo() {
             <div className="w-64">
               <Progress 
                 value={((stage + 1) / STAGES.length) * 100} 
-                className="h-1 bg-white/10"
+                className="h-1 bg-[#0A0F2E]/30"
               />
             </div>
             <div className="flex items-center gap-3">

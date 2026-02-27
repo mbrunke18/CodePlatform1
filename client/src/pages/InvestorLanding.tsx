@@ -79,7 +79,7 @@ export default function InvestorLanding() {
           
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <div className="mb-8 flex justify-center">
-              <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm bg-white/5">
+              <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm bg-[#0A0F2E]/30">
                 <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function InvestorLanding() {
               <Button 
                 size="lg"
                 onClick={() => setLocation("/incident-analyzer")}
-                className="bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
                 data-testid="button-incident-analyzer"
               >
                 <AlertTriangle className="mr-2 h-5 w-5 text-[#C9A84C]" />
@@ -122,7 +122,7 @@ export default function InvestorLanding() {
                 size="lg"
                 variant="outline"
                 onClick={() => setLocation("/readiness-assessment")}
-                className="border-white/20 text-white hover:bg-white/10"
+                className="border-white/20 text-white hover:bg-[#0A0F2E]"
                 data-testid="button-readiness-assessment"
               >
                 <Shield className="mr-2 h-5 w-5 text-[#C9A84C]" />
@@ -136,7 +136,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-[#0A0F2E]/20 text-[#0A0F2E] border border-[#0A0F2E]/30 text-sm px-4 py-1.5">
+              <Badge className="mb-6 bg-[#0A0F2E] text-white border border-[#0A0F2E]/30 text-sm px-4 py-1.5">
                 <AlertTriangle className="h-4 w-4 mr-2 inline" />
                 Market Problem
               </Badge>
@@ -324,7 +324,7 @@ export default function InvestorLanding() {
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
-                  <span key={firm} className="bg-white/10 border border-[#E8E4DC] rounded-full px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
+                  <span key={firm} className="bg-[#0A0F2E]/5 border border-[#E8E4DC] rounded-full px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
                 ))}
               </div>
             </div>

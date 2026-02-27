@@ -55,8 +55,8 @@ function KPICard({
       <StatusDot status={status} />
       <div>
         <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: status === 'good' ? TEAL : status === 'warning' ? GOLD : '#dc2626' }}>{value}</div>
-        <div className="text-[10px] font-bold tracking-widest uppercase text-gray-500">{label}</div>
-        {trend && <div className="text-xs text-gray-400 hidden sm:block">{trend}</div>}
+        <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">{label}</div>
+        {trend && <div className="text-xs text-[#6B7280] hidden sm:block">{trend}</div>}
       </div>
     </div>
   );
@@ -104,9 +104,9 @@ function PhaseCard({
                 <CardTitle style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>{title}</CardTitle>
               </div>
             </div>
-            <ChevronRight className="h-4 w-4 text-gray-300" />
+            <ChevronRight className="h-4 w-4 text-[#E8E4DC]" />
           </div>
-          <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+          <p className="text-sm text-[#4B5563] line-clamp-2">{description}</p>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 pt-0">
           <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-2">
@@ -168,13 +168,13 @@ export default function Dashboard() {
           <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             <div>
               <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
-                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
+                <div className="w-6 h-0.5" style={{ background: GOLD }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
                   Command Center
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
-                Strategic <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Intelligence</em>
+                Strategic <em style={{ fontStyle: "italic", color: GOLD }}>Intelligence</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
                 Real-time visibility into strategic execution, AI-driven intelligence, and organizational readiness.

@@ -73,7 +73,7 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent">
                 Watch Demo
               </Button>
             </Link>
@@ -392,17 +392,17 @@ export default function InvestorResources() {
               </Button>
             </Link>
             <Link href="/demo-selector">
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent">
                 Watch Demo
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent">
                 Contact Martin
               </Button>
             </Link>
             <a href="mailto:mbrunke@vaughnmartin.com">
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 bg-transparent">
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent">
                 mbrunke@vaughnmartin.com
               </Button>
             </a>

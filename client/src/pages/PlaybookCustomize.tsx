@@ -571,6 +571,7 @@ export default function PlaybookCustomize() {
 
   const isOffense = watch("category") === 'offense' || watch("category") === 'growth' || watch("category") === 'market' || watch("category") === 'special_teams' || watch("category") === 'ma';
   const isDefense = !isOffense;
+  const indicatorColor = isOffense ? "#2B8A6E" : "#0A0F2E";
   
   const sectionPhases: Record<string, string> = {
     basic: 'identify',
@@ -705,7 +706,7 @@ export default function PlaybookCustomize() {
             </div>
           )}
 
-          <div className="bg-white border border-[#E8E4DC] rounded-xl shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] rounded-xl shadow-sm" style={{ borderLeft: `4px solid ${indicatorColor}` }}>
             <div className="p-8">
               {activeSection === 'basic' && (
                 <div className="space-y-8 animate-in fade-in duration-500">

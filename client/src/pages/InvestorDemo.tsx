@@ -335,7 +335,7 @@ export default function InvestorDemo() {
                   {!isPlaying ? (
                     <Button
                       onClick={() => { setManualMode(false); setIsPlaying(true); }}
-                      className="bg-[#2B8A6E] hover:bg-[#2B8A6E] text-white font-bold"
+                      className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold"
                       data-testid="button-play-demo"
                     >
                       <Play className="h-4 w-4 mr-2" />
@@ -356,7 +356,7 @@ export default function InvestorDemo() {
                     variant="ghost"
                     size="sm"
                     onClick={() => { setManualMode(true); setIsPlaying(false); }}
-                    className={`text-sm ${manualMode ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}
+                    className={`text-sm ${manualMode ? 'text-[#C9A84C]' : 'text-[#0A0F2E]'}`}
                     data-testid="button-manual-mode"
                   >
                     Manual Mode

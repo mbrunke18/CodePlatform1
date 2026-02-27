@@ -337,7 +337,7 @@ export default function ExecutiveSimulationDemo() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'completed': return <CheckCircle2 className="w-5 h-5" />;
-      case 'in_progress': return <Activity className="w-5 h-5 animate-pulse" />;
+      case 'in_progress': return <Activity className="w-5 h-5 animate-pulse text-[#C9A84C]" />;
       case 'blocked': return <XCircle className="w-5 h-5" />;
       default: return <CircleDot className="w-5 h-5 text-[#C9A84C]" />;
     }

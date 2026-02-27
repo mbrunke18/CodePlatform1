@@ -604,8 +604,8 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-recommended-playbooks">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                      <BookOpen className="w-5 h-5 text-green-500" />
+                    <div className="w-10 h-10 rounded-lg bg-[#2B8A6E]/10 flex items-center justify-center">
+                      <BookOpen className="w-5 h-5 text-[#2B8A6E]" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-playbook-count">{assessmentComplete ? recommendedPlaybooks.reduce((sum, p) => sum + (p.info?.count || 0), 0) : '—'}</p>
@@ -945,22 +945,22 @@ export default function OperatingModelAlignment() {
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-green-500/5">
-                              <Zap className="w-5 h-5 text-green-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                              <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Clarify decision rights</p>
                                 <p className="text-xs text-muted-foreground">Map RACI for top 10 cross-functional processes</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-green-500/5">
-                              <Zap className="w-5 h-5 text-green-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                              <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Activate 3 priority playbooks</p>
                                 <p className="text-xs text-muted-foreground">Start with highest-relevance domain recommendations</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-green-500/5">
-                              <Zap className="w-5 h-5 text-green-500 mt-0.5" />
+                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                              <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Run a tabletop exercise</p>
                                 <p className="text-xs text-muted-foreground">Test one playbook with executive team</p>

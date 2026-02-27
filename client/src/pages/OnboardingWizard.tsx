@@ -377,20 +377,20 @@ export default function OnboardingWizard() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-gray-800">Company Name</Label>
+                    <Label htmlFor="companyName" className="text-[#0A0F2E]">Company Name</Label>
                     <Input
                       id="companyName"
                       value={orgData.companyName}
                       onChange={(e) => setOrgData({ ...orgData, companyName: e.target.value })}
                       placeholder="Enter your company name"
-                      className="bg-gray-50 border-gray-200"
+                      className="bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E]"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="industry" className="text-gray-800">Industry</Label>
+                    <Label htmlFor="industry" className="text-[#0A0F2E]">Industry</Label>
                     <Select value={orgData.industry} onValueChange={(v) => setOrgData({ ...orgData, industry: v })}>
-                      <SelectTrigger className="bg-gray-50 border-gray-200">
+                      <SelectTrigger className="bg-[#F8F7F4] border-[#E8E4DC] text-[#0A0F2E]">
                         <SelectValue placeholder="Select industry" />
                       </SelectTrigger>
                       <SelectContent>
@@ -406,8 +406,8 @@ export default function OnboardingWizard() {
                   </div>
                 </div>
                 
-                <div className="pt-4 border-t border-gray-200">
-                  <Label className="text-gray-800 mb-3 block text-xs uppercase tracking-wider">Key Departments</Label>
+                <div className="pt-4 border-t border-[#E8E4DC]">
+                  <Label className="text-[#0A0F2E] mb-3 block text-xs uppercase tracking-wider">Key Departments</Label>
                   <div className="flex flex-wrap gap-2">
                     {['Executive', 'Operations', 'Finance', 'Legal', 'Communications', 'IT', 'HR', 'Sales', 'Marketing'].map((dept) => (
                       <Badge
@@ -437,9 +437,9 @@ export default function OnboardingWizard() {
             {currentStep === 1 && (
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <Label className="text-gray-900 font-semibold">Integrations Platform</Label>
+                  <Label className="text-[#0A0F2E] font-semibold uppercase text-xs tracking-wider">Integrations Platform</Label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="bg-gray-50 border-[#E8E4DC] rounded-none">
+                    <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
@@ -450,11 +450,11 @@ export default function OnboardingWizard() {
                             <p className="text-xs text-[#6B7280]">Project Tracking</p>
                           </div>
                         </div>
-                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E]">Setup Later</Button>
+                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E] hover:bg-white">Setup Later</Button>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-gray-50 border-[#E8E4DC] rounded-none">
+                    <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
                       <CardContent className="p-4 flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
@@ -465,7 +465,7 @@ export default function OnboardingWizard() {
                             <p className="text-xs text-[#6B7280]">Communication</p>
                           </div>
                         </div>
-                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E]">Setup Later</Button>
+                        <Button size="sm" variant="outline" className="border-[#E8E4DC] rounded-none text-[#0A0F2E] hover:bg-white">Setup Later</Button>
                       </CardContent>
                     </Card>
                   </div>
@@ -504,7 +504,7 @@ export default function OnboardingWizard() {
                       Intelligence Alerts
                     </h3>
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between p-3 bg-gray-50 border border-[#E8E4DC]">
+                      <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                         <div>
                           <p className="text-sm font-bold text-[#0A0F2E]">Competitor Intel</p>
                           <p className="text-[10px] text-[#6B7280]">Monitor competitor moves</p>

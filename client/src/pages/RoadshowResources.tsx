@@ -235,7 +235,7 @@ export default function RoadshowResources() {
                       className={`p-4 cursor-pointer transition-all border-l-4 ${
                         activeDoc === doc.id 
                           ? 'border-[#C9A84C] bg-white shadow-sm' 
-                          : 'border-transparent bg-transparent hover:bg-white/50'
+                          : 'border-transparent bg-transparent hover:bg-[#0A0F2E]/10'
                       }`}
                       onClick={() => setActiveDoc(doc.id)}
                       data-testid={`card-doc-${doc.id}`}
@@ -330,8 +330,8 @@ export default function RoadshowResources() {
                   { label: "Product Demo", target: "Demo Script" },
                   { label: "Moat Analysis", target: "Competitive Moat" }
                 ].map((item, i) => (
-                  <div key={i} className="px-4 py-2 border border-white/10 bg-white/5 flex items-center gap-3">
-                    <span className="text-[10px] uppercase tracking-widest text-[#6B7280] font-bold">{item.label}</span>
+                  <div key={i} className="px-4 py-2 border border-white/10 bg-[#0A0F2E]/30 flex items-center gap-3">
+                    <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold">{item.label}</span>
                     <ArrowRight className="w-3 h-3 text-[#C9A84C]" />
                     <span className="text-xs font-bold text-[#C9A84C]">{item.target}</span>
                   </div>

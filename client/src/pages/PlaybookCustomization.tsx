@@ -99,7 +99,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDomain, setSelectedDomain] = useState('all');
 
-  const { data: templates = SAMPLE_TEMPLATES } = useQuery<PlaybookTemplate[]>({
+  const { data: templates = FALLBACK_TEMPLATES } = useQuery<PlaybookTemplate[]>({
     queryKey: ['/api/playbook-templates'],
     enabled: false, // Using samples for now
   });

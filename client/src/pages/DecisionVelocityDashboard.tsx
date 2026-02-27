@@ -71,7 +71,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         {!embedded && <StandardNav />}
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin text-[#2B8A6E] mb-4" />
-          <p className="text-lg text-gray-800">Loading decision outcomes...</p>
+          <p className="text-lg text-[#0A0F2E]">Loading decision outcomes...</p>
         </div>
         {!embedded && <Footer />}
       </div>
@@ -282,7 +282,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               <div className="text-center py-12 text-[#0A0F2E]">
                 <Target className="h-12 w-12 mx-auto mb-4 text-[#E8E4DC]" />
                 <p className="text-lg font-medium">No decisions recorded yet</p>
-                <p className="text-sm mt-1">Decision outcomes will appear here once they are tracked.</p>
+                <p className="text-sm mt-1 text-[#6B7280]">Decision outcomes will appear here once they are tracked.</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -297,7 +297,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
                         <h4 className="font-semibold text-[#0A0F2E]" style={CG}>
                           {formatDecisionType(decision.decisionType)}
                         </h4>
-                        <p className="text-sm text-[#6B7280]">{decision.decisionDescription}</p>
+                        <p className="text-sm text-[#4B5563]">{decision.decisionDescription}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge className={`rounded-none ${decision.actualOutcome === 'successful' ? 'bg-[#2B8A6E] text-white' : ''}`}>

@@ -248,11 +248,11 @@ export default function BoardBriefings() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-view-briefing-${briefing.id}`} style={{ color: "#0A0F2E" }}>
+                      <div className="flex flex-col gap-2">
+                      <Button size="sm" variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] dark:border-white/20 dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-view-briefing-${briefing.id}`}>
                         View Full
                       </Button>
-                      <Button size="sm" variant="ghost" className="text-[#0A0F2E] dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-download-briefing-${briefing.id}`} style={{ color: "#0A0F2E" }}>
+                      <Button size="sm" variant="ghost" className="text-[#0A0F2E] dark:text-white hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5" data-testid={`button-download-briefing-${briefing.id}`}>
                         <Download className="h-4 w-4" />
                       </Button>
                     </div>

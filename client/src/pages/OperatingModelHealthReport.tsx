@@ -57,7 +57,7 @@ const elementIcons = {
 };
 
 function getHealthStatus(score: number) {
-  if (score >= 80) return { label: 'Excellent', color: 'bg-green-500', textColor: 'text-[#2B8A6E]' };
+  if (score >= 80) return { label: 'Excellent', color: 'bg-[#2B8A6E]', textColor: 'text-[#2B8A6E]' };
   if (score >= 70) return { label: 'Good', color: 'bg-[#0A0F2E]', textColor: 'text-[#0A0F2E]' };
   if (score >= 60) return { label: 'Fair', color: 'bg-yellow-500', textColor: 'text-yellow-600' };
   return { label: 'Needs Attention', color: 'bg-red-500', textColor: 'text-red-700' };

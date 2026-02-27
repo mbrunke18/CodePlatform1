@@ -176,7 +176,7 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
   },
   defense: {
     label: 'DEFENSE',
-    color: 'red',
+    color: 'navy',
     icon: Shield,
     scenarios: [
       "What if the CISO is unavailable during a ransomware attack?",

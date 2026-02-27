@@ -82,7 +82,7 @@ function InvestorPresentation() {
   const slides = [
     () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="inline-block px-5 py-2 rounded-full bg-[#2B8A6E]/20 border border-[#2B8A6E]/40 text-[#2B8A6E] text-sm font-semibold mb-8">
+        <div className="inline-block px-5 py-2 rounded-full bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 text-[#2B8A6E] text-sm font-semibold mb-8">
           10.3% revenue impact within 12 months
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-6 leading-tight">

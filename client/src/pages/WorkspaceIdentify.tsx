@@ -275,7 +275,7 @@ export default function WorkspaceIdentify() {
                         <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-white/60">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

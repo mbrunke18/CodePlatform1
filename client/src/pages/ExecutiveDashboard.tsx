@@ -223,7 +223,7 @@ export default function ExecutiveDashboard() {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-[#2B8A6E]';
     if (score >= 60) return 'text-[#C9A84C]';
-    return 'text-[#C9A84C]';
+    return 'text-[#dc2626]';
   };
 
   const organizationId = organizations[0]?.id || 'demo-org-1';

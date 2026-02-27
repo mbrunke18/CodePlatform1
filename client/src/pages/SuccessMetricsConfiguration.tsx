@@ -255,16 +255,16 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
         <div className="max-w-7xl mx-auto space-y-8">
           
           <div className="mb-6">
-            <div className="flex items-center gap-2 text-sm text-gray-800">
+            <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
               <Link to="/dashboard">
-                <Button variant="ghost" size="sm" className="text-gray-800 hover:text-white p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-gray-900 font-medium">Success Metrics</span>
+              <span className="text-[#0A0F2E] font-medium">Success Metrics</span>
             </div>
           </div>
 

@@ -239,6 +239,7 @@ export default function PlaybookReadinessAudit() {
                 key={tier} 
                 className={`${config.bgColor} ${config.borderColor} border cursor-pointer hover:shadow-md transition-all`}
                 onClick={() => setSelectedTier(tier)}
+                style={{ borderTop: `4px solid ${config.color === 'bg-[#2B8A6E]' ? '#2B8A6E' : config.color === 'bg-[#C9A84C]' ? '#C9A84C' : '#0A0F2E'}` }}
                 data-testid={`tier-card-${tier}`}
               >
                 <CardContent className="pt-6">

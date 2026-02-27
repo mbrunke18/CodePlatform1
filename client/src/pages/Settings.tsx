@@ -268,15 +268,15 @@ export default function SettingsPage() {
                 <CardContent>
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>1,247</div>
                         <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Users</div>
                       </div>
-                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E" }}>94%</div>
                         <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Platform Adoption</div>
                       </div>
-                      <div className="p-4 bg-white border border-[#E8E4DC] rounded-none">
+                      <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C" }}>47</div>
                         <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Admin Users</div>
                       </div>
@@ -318,7 +318,7 @@ export default function SettingsPage() {
                           <div className="flex items-center space-x-3 mb-2">
                             <h4 className="font-semibold text-[#0A0F2E]">{feature.name}</h4>
                             {feature.critical && (
-                            <Badge variant="destructive" className="rounded-none bg-red-600 text-white">Critical</Badge>
+                            <Badge variant="destructive" className="rounded-none bg-red-600 text-white border-none">Critical</Badge>
                           )}
                         </div>
                         <p className="text-sm text-[#6B7280]">{feature.description}</p>

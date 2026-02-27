@@ -262,7 +262,7 @@ export default function LiveDrillExecution() {
                       key={checkpoint.id}
                       className={`p-4 rounded-lg border-2 ${
                         status === 'active' 
-                          ? 'border-green-500 bg-green-50 dark:bg-green-950' 
+                          ? 'border-[#2B8A6E] bg-[#F8F7F4] dark:bg-[#0A0F2E]/30' 
                           : 'border-gray-200 dark:border-gray-800'
                       }`}
                       data-testid={`checkpoint-${checkpoint.id}`}

@@ -416,7 +416,7 @@ export default function CrisisResponseCenter() {
             <TabsContent value="active" className="mt-0 space-y-6">
               {activeCrises.map((crisis) => (
                 <Card key={crisis.id} className="border border-[#E8E4DC] bg-white rounded-none shadow-none overflow-hidden">
-                  <div style={{ borderLeft: "4px solid #EF4444", padding: "24px" }}>
+                  <div style={{ borderLeft: "4px solid #DC2626", padding: "24px" }}>
                     <div className="flex items-center justify-between mb-8">
                       <div>
                         <div className="flex items-center gap-3 mb-2">

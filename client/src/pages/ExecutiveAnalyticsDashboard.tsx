@@ -132,7 +132,7 @@ export default function ExecutiveAnalyticsDashboard() {
       case 'opportunity': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-none rounded-none';
       case 'risk': return 'bg-[#C9A84C]/10 text-[#C9A84C] border-none rounded-none';
       case 'alert': return 'bg-[#dc2626]/10 text-[#dc2626] border-none rounded-none';
-      default: return 'bg-gray-100 text-[#6B7280] border-none rounded-none';
+      default: return 'bg-[#F8F7F4] text-[#6B7280] border-none rounded-none';
     }
   };
 
@@ -142,7 +142,7 @@ export default function ExecutiveAnalyticsDashboard() {
       case 'high': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'medium': return 'bg-[#C9A84C] text-[#0A0F2E] border-none rounded-none';
       case 'low': return 'bg-[#2B8A6E] text-white border-none rounded-none';
-      default: return 'bg-gray-500 text-white border-none rounded-none';
+      default: return 'bg-[#6B7280] text-white border-none rounded-none';
     }
   };
 
@@ -305,7 +305,7 @@ export default function ExecutiveAnalyticsDashboard() {
                             {insight.priority.toUpperCase()}
                           </Badge>
                         </div>
-                        <p className="text-gray-600 mb-6 max-w-3xl">{insight.description}</p>
+                        <p className="text-[#4B5563] mb-6 max-w-3xl">{insight.description}</p>
                       </div>
                       <div className="text-right">
                         <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Confidence</div>
