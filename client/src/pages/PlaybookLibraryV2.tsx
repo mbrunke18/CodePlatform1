@@ -17,15 +17,15 @@ import { useAuth } from "@/hooks/useAuth";
 
 const DOMAINS = [
   { id: "all", label: "All Domains", count: 170 },
-  { id: "financial", label: "Financial Response", count: 24, icon: DollarSign },
-  { id: "competitive", label: "Competitive Intelligence", count: 22, icon: Globe2 },
-  { id: "gtm", label: "Go-to-Market", count: 21, icon: TrendingUp },
-  { id: "crisis", label: "Crisis Management", count: 20, icon: AlertTriangle },
-  { id: "regulatory", label: "Regulatory & Compliance", count: 19, icon: Shield },
-  { id: "ma", label: "M&A Integration", count: 18, icon: Layers },
-  { id: "technology", label: "Technology & Digital", count: 17, icon: Brain },
-  { id: "talent", label: "Talent & Organization", count: 16, icon: HeartHandshake },
-  { id: "strategic", label: "Strategic Opportunity", count: 13, icon: Lightbulb },
+  { id: "financial", label: "Financial Strategy", count: 24, icon: DollarSign },
+  { id: "competitive", label: "Market Dynamics", count: 22, icon: Globe2 },
+  { id: "gtm", label: "Operational Excellence", count: 21, icon: TrendingUp },
+  { id: "crisis", label: "Technology & Innovation", count: 20, icon: Brain },
+  { id: "regulatory", label: "Regulatory & Compliance", count: 15, icon: Target },
+  { id: "ma", label: "Market Opportunities", count: 18, icon: Layers },
+  { id: "technology", label: "Brand & Reputation", count: 17, icon: Lightbulb },
+  { id: "talent", label: "Talent & Leadership", count: 14, icon: HeartHandshake },
+  { id: "strategic", label: "AI Governance", count: 19, icon: Shield },
 ];
 
 const URGENCY_FILTERS = [
@@ -42,15 +42,15 @@ const SAMPLE_PLAYBOOK_NAMES = new Set([
 ]);
 
 const DOMAIN_DB_MAP: Record<string, string[]> = {
-  financial: ["Financial Response", "Finance", "Financial"],
-  competitive: ["Competitive Intelligence", "Competitive Response", "Competitive"],
-  gtm: ["Go-to-Market", "Go to Market", "Product Launch", "Market Entry & Expansion"],
-  crisis: ["Crisis Management", "Crisis Response", "Crisis"],
-  regulatory: ["Regulatory & Compliance", "Regulatory Compliance", "Compliance"],
-  ma: ["M&A Integration", "M&A", "Mergers & Acquisitions"],
-  technology: ["Technology & Digital", "Digital Transformation", "Technology"],
-  talent: ["Talent & Organization", "Talent", "HR"],
-  strategic: ["Strategic Opportunity", "Strategic Planning"],
+  financial: ["Financial Strategy"],
+  competitive: ["Market Dynamics"],
+  gtm: ["Operational Excellence"],
+  crisis: ["Technology & Innovation"],
+  regulatory: ["Regulatory & Compliance"],
+  ma: ["Market Opportunities"],
+  technology: ["Brand & Reputation"],
+  talent: ["Talent & Leadership"],
+  strategic: ["AI Governance"],
 };
 
 const compoundScenarios = [
@@ -348,7 +348,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const domainFilteredTemplates = (templates || []).filter((t) => {
     if (activeDomain === "all") return true;
     const mapped = DOMAIN_DB_MAP[activeDomain] || [];
-    return mapped.some((d) => t.domain?.toLowerCase().includes(d.toLowerCase()));
+    return mapped.some((d) => t.domain === d);
   });
 
   const searchFiltered = domainFilteredTemplates.filter((t) => {
