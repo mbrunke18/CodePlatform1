@@ -46,11 +46,11 @@ import { AIPrinciplesScorecard, DeterministicExecutionBadge } from '@/components
 import { ExecutionCommandCenter } from '@/components/execution/ExecutionCommandCenter';
 import { PhaseSLASummary } from '@/components/playbook/PhaseSLASummary';
 
-const SAMPLE_PLAYBOOK_IDS = [
-  "a8d182bd-7f3a-4a70-8818-8b80790394b2", // Aggressive Pricing Disruption (Offense)
-  "1a309274-6068-46f3-bb17-4303c184939c", // Compound: Geopolitical + Supply Chain Disruption (Defense)
-  "da7df303-a5bd-4fc0-a8b7-492f8619c500", // AI Competitive Disruption (Special Teams)
-];
+const SAMPLE_PLAYBOOK_NAMES = new Set([
+  "Aggressive Pricing Disruption",
+  "Compound: Geopolitical + Supply Chain Disruption",
+  "AI Competitive Disruption",
+]);
 
 const SEVERITY_COLORS = {
   critical: 'bg-red-50 text-red-700',
@@ -65,7 +65,6 @@ export default function PlaybookDetail() {
   const [activeTab, setActiveTab] = useState('overview');
   const { toast } = useToast();
   const { isAuthenticated } = useAuth();
-  const isSampleView = SAMPLE_PLAYBOOK_IDS.includes(id || "") && !isAuthenticated;
 
   const { data: organizations = [] } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
@@ -83,6 +82,7 @@ export default function PlaybookDetail() {
   });
   
   const playbook = playbookData?.playbook;
+  const isSampleView = SAMPLE_PLAYBOOK_NAMES.has(playbook?.name || "") && !isAuthenticated;
 
   const { data: readiness } = useQuery<any>({
     queryKey: ['/api/playbook-library', id, 'readiness', { organizationId }],
