@@ -359,16 +359,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     );
   });
 
-  const samplePlaybooks = (templates || []).filter((t) => SAMPLE_PLAYBOOK_IDS.includes(t.id));
-
-  const publicTeasers = samplePlaybooks.filter((p) => {
-    if (activeDomain !== "all") {
-      const mapped = DOMAIN_DB_MAP[activeDomain] || [];
-      if (!mapped.some((d) => (p.domain || "").toLowerCase().includes(d.toLowerCase()))) return false;
-    }
-    if (search && !p.name?.toLowerCase().includes(search.toLowerCase()) && !p.description?.toLowerCase().includes(search.toLowerCase())) return false;
-    return true;
-  });
+  const sortedFiltered = !isAuthenticated
+    ? [
+        ...searchFiltered.filter((t) => SAMPLE_PLAYBOOK_IDS.includes(t.id)),
+        ...searchFiltered.filter((t) => !SAMPLE_PLAYBOOK_IDS.includes(t.id)),
+      ]
+    : searchFiltered;
 
   return (
     <div className="min-h-screen bg-white">
@@ -488,7 +484,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
-              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{searchFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> playbooks
+              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> playbooks
             </span>
             {!isAuthenticated && (
               <div className="flex items-center gap-2">
@@ -498,9 +494,23 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             )}
           </div>
 
+          {!isAuthenticated && (
+            <div className="mb-3 pb-3 border-b" style={{ borderColor: BORDER }}>
+              <div className="flex items-center gap-2 mb-1">
+                <Eye className="h-3.5 w-3.5 text-[#2B8A6E]" />
+                <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                  3 Full Playbook Previews — No Sign-In Required
+                </span>
+              </div>
+              <p style={{ color: MUTED, fontSize: 11 }}>See the full depth of what a deployed playbook contains — trigger logic, stakeholders, tasks, and budget authority.</p>
+            </div>
+          )}
+
           <div className="grid md:grid-cols-3 gap-4">
-            {searchFiltered.map((playbook) => (
-              <Card key={playbook.id} className="group border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 bg-white">
+            {sortedFiltered.map((playbook) => {
+              const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_IDS.includes(playbook.id);
+              return (
+              <Card key={playbook.id} className={`group transition-all duration-300 bg-white ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
@@ -560,7 +570,8 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   </div>
                 </div>
               </Card>
-            ))}
+              );
+            })}
           </div>
 
           <CompoundDisruptionSection />
