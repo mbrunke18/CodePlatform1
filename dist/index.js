@@ -43833,14 +43833,6 @@ function setupSwagger(app2) {
 
 // server/index.ts
 init_EnterpriseJobService();
-
-// server/seeds/playbookLibrarySeed.ts
-async function seedPlaybookLibrary() {
-  console.log("\u{1F3C8} Seeding Complete 170-Playbook Library...");
-  return true;
-}
-
-// server/index.ts
 init_triggersSeed();
 
 // server/seeds/demoScenariosSeed.ts
@@ -44312,7 +44304,7 @@ async function seedDemoScenarios() {
 // server/index.ts
 init_db();
 init_schema();
-import { count as count7, sql as sql18 } from "drizzle-orm";
+import { count as count7, eq as eq36, sql as sql18 } from "drizzle-orm";
 import pino16 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
@@ -44639,28 +44631,133 @@ app.use((req, res, next) => {
           const REQUIRED_PLAYBOOK_COUNT = 170;
           if (playbookCount < REQUIRED_PLAYBOOK_COUNT) {
             logger13.info(
-              `\u{1F4E6} Database has ${playbookCount}/${REQUIRED_PLAYBOOK_COUNT} playbooks - reseeding...`
+              `\u{1F4E6} Database has ${playbookCount}/${REQUIRED_PLAYBOOK_COUNT} playbooks - adding missing entries...`
             );
-            if (playbookCount > 0) {
-              logger13.info(
-                "\u{1F5D1}\uFE0F Clearing incomplete playbook data for fresh seed..."
-              );
-              const {
-                playbookCategories: playbookCategories2,
-                playbookDomains: playbookDomains2,
-                practiceDrills: practiceDrills2,
-                playbookTriggerAssociations: playbookTriggerAssociations2
-              } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-              await db.delete(practiceDrills2);
-              await db.delete(playbookTriggerAssociations2);
-              await db.delete(playbookLibrary);
-              await db.delete(playbookCategories2);
-              await db.delete(playbookDomains2);
+            const { playbookDomains: playbookDomains2, playbookCategories: playbookCategories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+            const domains = await db.select().from(playbookDomains2);
+            const categories = await db.select().from(playbookCategories2);
+            const domainByName = (name) => domains.find((d) => d.name === name)?.id;
+            const catByName = (name) => categories.find((c) => c.name === name)?.id;
+            const compoundPlaybooks = [
+              {
+                playbookNumber: 181,
+                domainId: domainByName("Technology & Innovation"),
+                categoryId: catByName("Cybersecurity Incidents"),
+                name: "Compound: Cyber + Regulatory Cascade",
+                description: "Multi-domain response for data breaches that trigger simultaneous GDPR penalties, SEC disclosure requirements, and customer notification obligations across multiple jurisdictions. Coordinates cybersecurity containment, legal compliance, regulatory filings, and crisis communications in parallel.",
+                triggerCriteria: "Data breach detected with regulatory reporting obligations across multiple jurisdictions (GDPR, SEC, state notification laws)",
+                tier1Stakeholders: ["CISO", "General Counsel", "Data Protection Officer"],
+                tier2Stakeholders: ["CFO", "VP Communications", "CTO"],
+                tier3Stakeholders: ["Board Secretary", "VP Customer Success", "Regional Compliance Officers"],
+                primaryResponseStrategy: "Parallel activation of cyber containment, regulatory notification, legal response, and stakeholder communication workstreams with unified command structure",
+                preApprovedBudget: "2500000",
+                budgetApprovalRequired: false,
+                targetExecutionTime: 12,
+                isActive: true,
+                isPremium: false,
+                primaryExecutiveRole: "CISO",
+                severityScore: 9,
+                timeSensitivity: 4,
+                tier1Count: 3,
+                tier2Count: 3,
+                tier3Count: 3,
+                targetResponseSpeed: 12,
+                targetStakeholderReach: "1",
+                strategicCategory: "special_teams"
+              },
+              {
+                playbookNumber: 182,
+                domainId: domainByName("Operational Excellence"),
+                categoryId: catByName("Supply Chain Crises"),
+                name: "Compound: Geopolitical + Supply Chain Disruption",
+                description: "Cross-domain response for tariff escalations, sanctions, or geopolitical events that simultaneously disrupt supply chains, require market repositioning, and trigger financial restructuring. Coordinates procurement, operations, finance, sales, and board communications.",
+                triggerCriteria: "Geopolitical event (tariff, sanctions, conflict) impacts critical supplier or trade route affecting multiple business units",
+                tier1Stakeholders: ["COO", "Chief Procurement Officer", "CFO"],
+                tier2Stakeholders: ["VP Supply Chain", "General Counsel", "VP Sales"],
+                tier3Stakeholders: ["Board Secretary", "VP Manufacturing", "Regional Operations Directors"],
+                primaryResponseStrategy: "Simultaneous supplier diversification, cost structure realignment, customer communication, and board briefing with cross-functional war room coordination",
+                preApprovedBudget: "5000000",
+                budgetApprovalRequired: false,
+                targetExecutionTime: 12,
+                isActive: true,
+                isPremium: false,
+                primaryExecutiveRole: "COO",
+                severityScore: 8,
+                timeSensitivity: 8,
+                tier1Count: 3,
+                tier2Count: 3,
+                tier3Count: 3,
+                targetResponseSpeed: 12,
+                targetStakeholderReach: "1",
+                strategicCategory: "defense"
+              },
+              {
+                playbookNumber: 183,
+                domainId: domainByName("Operational Excellence"),
+                categoryId: catByName("Facility & Infrastructure"),
+                name: "Compound: Climate + Operations Cascade",
+                description: "Multi-domain response for severe weather or climate events causing facility shutdowns with cascading impact on customer operations, logistics networks, employee safety, and insurance/recovery processes. Coordinates facilities, logistics, HR, customer success, and risk management in parallel.",
+                triggerCriteria: "Severe weather event or climate disruption threatens or impacts primary operational facility with customer-facing service dependencies",
+                tier1Stakeholders: ["COO", "VP Facilities", "CHRO"],
+                tier2Stakeholders: ["VP Customer Success", "Chief Risk Officer", "VP Logistics"],
+                tier3Stakeholders: ["Insurance Liaison", "Regional Safety Officers", "VP Communications"],
+                primaryResponseStrategy: "Parallel workstreams for employee safety, facility protection, customer service continuity, logistics rerouting, and insurance/recovery planning with 72-hour recovery timeline",
+                preApprovedBudget: "3000000",
+                budgetApprovalRequired: false,
+                targetExecutionTime: 12,
+                isActive: true,
+                isPremium: false,
+                primaryExecutiveRole: "COO",
+                severityScore: 8,
+                timeSensitivity: 6,
+                tier1Count: 3,
+                tier2Count: 3,
+                tier3Count: 3,
+                targetResponseSpeed: 12,
+                targetStakeholderReach: "1",
+                strategicCategory: "defense"
+              },
+              {
+                playbookNumber: 184,
+                domainId: domainByName("AI Governance"),
+                categoryId: catByName("AI Risk & Safety"),
+                name: "Compound: AI + Workforce Transformation Crisis",
+                description: "Cross-domain response for AI automation announcements that trigger union/labor responses, media scrutiny, regulatory inquiry, and employee morale concerns. Coordinates HR, legal, communications, technology leadership, and executive team for unified stakeholder management across internal and external audiences.",
+                triggerCriteria: "AI automation initiative leaked or announced prematurely triggering workforce concern, union response, media attention, or regulatory inquiry",
+                tier1Stakeholders: ["CHRO", "CTO", "General Counsel"],
+                tier2Stakeholders: ["VP Communications", "Chief AI Officer", "CEO"],
+                tier3Stakeholders: ["Union Relations Lead", "VP Employee Experience", "Board Secretary"],
+                primaryResponseStrategy: "Coordinated stakeholder management across HR, legal, communications, and technology with unified messaging, employee reskilling initiatives, and regulatory compliance for AI workforce transformation",
+                preApprovedBudget: "1500000",
+                budgetApprovalRequired: false,
+                targetExecutionTime: 12,
+                isActive: true,
+                isPremium: false,
+                primaryExecutiveRole: "CHRO",
+                severityScore: 8,
+                timeSensitivity: 4,
+                tier1Count: 3,
+                tier2Count: 3,
+                tier3Count: 3,
+                targetResponseSpeed: 12,
+                targetStakeholderReach: "1",
+                strategicCategory: "special_teams"
+              }
+            ];
+            let added = 0;
+            for (const p of compoundPlaybooks) {
+              if (!p.domainId) {
+                logger13.warn(`\u26A0\uFE0F Domain not found for compound playbook: ${p.name}`);
+                continue;
+              }
+              const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq36(playbookLibrary.name, p.name)).limit(1);
+              if (existing.length === 0) {
+                await db.insert(playbookLibrary).values(p);
+                added++;
+                logger13.info(`\u2705 Added missing playbook: ${p.name}`);
+              }
             }
-            await seedPlaybookLibrary();
-            logger13.info(
-              "\u2705 Database seeding completed with all 170 playbooks (including AI Governance)!"
-            );
+            logger13.info(`\u2705 Additive migration complete: added ${added} missing compound playbooks (total now ${playbookCount + added})`);
           } else {
             logger13.info(
               `\u2705 Database already seeded with ${playbookCount} playbooks`
