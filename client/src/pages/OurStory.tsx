@@ -285,7 +285,7 @@ export default function OurStory() {
             <ul className="space-y-4 my-12">
               {[
                 "170 battle-tested playbooks across 9 strategic domains",
-                "AI-powered monitoring across 92 intelligence signals",
+                "AI-powered monitoring across 216+ intelligence signals",
                 "12-minute coordinated response when triggers fire",
                 "Institutional memory that makes every response smarter"
               ].map(item => (

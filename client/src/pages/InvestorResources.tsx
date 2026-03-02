@@ -182,7 +182,7 @@ export default function InvestorResources() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
               { val: "170", label: "Strategic Playbooks", sub: "Across 9 domains" },
-              { val: "92+", label: "Data Points Monitored", sub: "Real-time signals" },
+              { val: "216+", label: "Data Points Monitored", sub: "Real-time signals" },
               { val: "12 min", label: "Response Time", sub: "vs 72 hrs industry avg" },
               { val: "24/7", label: "AI Intelligence", sub: "Continuous monitoring" },
             ].map((m, i) => (
@@ -218,7 +218,7 @@ export default function InvestorResources() {
                     <span className="font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">DETECT</span>
                   </div>
                   <p className="text-xs text-[#6B7280] leading-relaxed">
-                    92+ signals tracked, triggers configured, alerts routed
+                    216+ signals tracked, triggers configured, alerts routed
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-[#C9A84C]/5 border border-[#C9A84C]/10">

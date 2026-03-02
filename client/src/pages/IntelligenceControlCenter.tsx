@@ -71,8 +71,8 @@ export default function IntelligenceControlCenter() {
       icon: Radio,
       color: 'navy',
       status: 'active',
-      features: ['16 Signal Categories', '92+ Data Points', 'Custom Triggers', 'Alert Management'],
-      badge: '92 DATA POINTS'
+      features: ['16 Signal Categories', '216+ Data Points', 'Custom Triggers', 'Alert Management'],
+      badge: '216+ DATA POINTS'
     },
     {
       id: 'foresight-radar',
