@@ -358,7 +358,7 @@ export default function ProductTour() {
       detect: {
         icon: Radio,
         hex: '#0A0F2E',
-        items: ['16 Signal Categories', '92 Data Points', '24/7 AI Monitoring', 'Real-time Alerts']
+        items: ['16 Signal Categories', '216+ Data Points', '24/7 AI Monitoring', 'Real-time Alerts']
       },
       execute: {
         icon: Zap,
