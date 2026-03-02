@@ -111,6 +111,41 @@ export default function OurStory() {
         size="lg"
       />
 
+      {/* Name Origin */}
+      <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "72px 48px" }}>
+        <div className="max-w-4xl mx-auto">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+            <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Name</span>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 style={{ ...CG, fontSize: "clamp(28px,4vw,42px)", fontWeight: 600, color: "#0A0F2E", lineHeight: 1.15, marginBottom: 20 }}>
+                VaughnMartin is named after my father.
+              </h2>
+              <p style={{ fontSize: 15, lineHeight: 1.9, color: "#6B7280", marginBottom: 16 }}>
+                He taught me that preparation isn't about knowing what will happen — it's about being ready when it does. That philosophy shaped how I coached. It shaped how I ran transformation programs inside Fortune 500 companies. And it's the foundation of every playbook in this system.
+              </p>
+              <p style={{ fontSize: 15, lineHeight: 1.9, color: "#6B7280" }}>
+                I built Execution OS because I spent five years on the football sideline and twenty years in Fortune 500 boardrooms — and I couldn't unsee the gap between how two groups of equally talented people handled the exact same problem.
+              </p>
+            </div>
+            <div style={{ background: "#0A0F2E", padding: "48px 40px" }}>
+              <blockquote style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 500, fontStyle: "italic", lineHeight: 1.5, color: "#fff", marginBottom: 24 }}>
+                "The gap isn't talent. It's the infrastructure talent operates inside of."
+              </blockquote>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)", marginBottom: 20 }} />
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C" }}>
+                Martin Brunke — Founder, VaughnMartin
+              </p>
+              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
+                5 years college football · 20+ years Fortune 500 transformation
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           {/* Prologue */}

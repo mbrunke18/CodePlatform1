@@ -85,6 +85,19 @@ export default function WhyExecuteIQ() {
         </div>
       </div>
 
+      {/* The Core Claim */}
+      <div style={{ background: "#fff", padding: "80px 48px", borderBottom: "1px solid #E8E4DC" }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <blockquote style={{ ...CG, fontSize: "clamp(28px,4vw,48px)", fontWeight: 500, fontStyle: "italic", lineHeight: 1.3, color: "#0A0F2E", marginBottom: 28 }}>
+            "You can't automate what hasn't been made explicit."
+          </blockquote>
+          <div style={{ width: 48, height: 2, background: "#C9A84C", margin: "0 auto 28px" }} />
+          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 640, margin: "0 auto", lineHeight: 1.85 }}>
+            AI doesn't transform your organization — it exposes it. Every fuzzy decision right, every undefined role, every coordination gap that slowed you down before AI will become a breaking point after. Execution OS makes your coordination logic explicit, so AI has something real to act on.
+          </p>
+        </div>
+      </div>
+
       {/* Section 1: The Consensus */}
       <section className="py-20 px-12 bg-white">
         <div className="max-w-5xl mx-auto">
