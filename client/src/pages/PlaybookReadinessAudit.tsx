@@ -144,7 +144,7 @@ const tierConfig = {
     icon: AlertTriangle
   },
   'not-configured': {
-    label: 'Not Configured Status',
+    label: 'Not Configured',
     color: 'bg-[#0A0F2E]',
     textColor: 'text-[#0A0F2E]',
     bgColor: 'bg-[#0A0F2E]/5',
@@ -211,7 +211,7 @@ export default function PlaybookReadinessAudit() {
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-[#6B7280] text-lg max-w-2xl">
+              <p className="text-gray-400 text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>

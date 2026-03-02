@@ -177,11 +177,11 @@ export default function ExecutionCoordination() {
     defense: { bg: 'bg-[#0A0F2E]/5', border: 'border-[#0A0F2E]/20', text: 'text-[#0A0F2E]', icon: 'bg-[#0A0F2E]' },
     special_teams: { bg: 'bg-[#C9A84C]/5', border: 'border-[#C9A84C]/20', text: 'text-[#C9A84C]', icon: 'bg-[#C9A84C]' }
   };
-  
+
   const currentStyle = categoryStyles[activeCategory];
-  
+
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
+    <div className="min-h-screen bg-[#F8F7F4] font-sans">
       <StandardNav />
       
       <div className="container mx-auto px-4 py-20">

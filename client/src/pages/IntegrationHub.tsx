@@ -182,6 +182,12 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
     errorRate: 0.014
   };
 
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   useEffect(() => {
     // Initialize integration data
     const integrationData: Integration[] = [
@@ -778,11 +784,6 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
     
     return matchesSearch && matchesCategory;
   });
-
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
 
   return (
     <PageLayout embedded={embedded}>

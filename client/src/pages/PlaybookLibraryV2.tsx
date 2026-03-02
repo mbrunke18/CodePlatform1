@@ -165,7 +165,7 @@ const compoundScenarios = [
 function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "critical") {
     return (
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
         <span className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
         Critical
       </span>
@@ -173,14 +173,14 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   }
   if (urgency === "high") {
     return (
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
         <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
         High
       </span>
     );
   }
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
       <span className="w-2 h-2 rounded-full" style={{ background: "#2B8A6E" }} />
       Standard
     </span>
@@ -192,10 +192,10 @@ function CompoundDisruptionSection() {
 
   return (
     <div className="mt-12 border rounded-xl overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
-      <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "rgba(10, 15, 46, 0.02)", borderColor: "#E8E4DC" }}>
+      <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "white", borderColor: "#E8E4DC" }}>
         <Zap className="h-4 w-4" style={{ color: "#C9A84C" }} />
         <span className="text-sm font-bold uppercase tracking-wide" style={{ color: "#0A0F2E" }}>Compound Disruption Response</span>
-        <Badge style={{ background: "rgba(10, 15, 46, 0.1)", color: "#0A0F2E" }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
+        <Badge style={{ background: "rgba(201, 168, 76, 0.1)", color: "#0A0F2E" }} className="border-0 text-[10px]">MULTI-DOMAIN</Badge>
       </div>
       <div className="p-6 bg-white">
         <p className="text-sm mb-5" style={{ color: "#6B7280" }}>
@@ -213,7 +213,7 @@ function CompoundDisruptionSection() {
                 key={i}
                 style={{ 
                   border: `1px solid ${isExpanded ? "#C9A84C" : "#E8E4DC"}`,
-                  background: isExpanded ? "rgba(201,168,76,0.03)" : "rgba(10,15,46,0.02)"
+                  background: isExpanded ? "rgba(201,168,76,0.03)" : "white"
                 }}
                 className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#DFC178]`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
@@ -251,80 +251,81 @@ function CompoundDisruptionSection() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: "#E8E4DC" }}>
-                <div style={{ color: "#6B7280" }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
-                <p style={{ color: "#0A0F2E" }} className="text-sm font-medium">{scenario.triggerExample}</p>
-              </div>
-
-              <div className="grid lg:grid-cols-2 gap-6 mb-5">
-                <div>
-                  <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                    <BookOpen className="h-4 w-4" style={{ color: "#2B8A6E" }} />
-                    Activated Playbooks ({scenario.playbookCount})
-                  </h5>
-                  <div className="space-y-2">
-                    {scenario.playbooks.map((pb, j) => {
-                      const pbIsOffense = pb.domain.includes("Financial") || pb.domain.includes("Market") || pb.domain.includes("Growth") || pb.domain.includes("M&A");
-                      const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology") || pb.domain.includes("Talent");
-                      const pbIndicatorColor = pbIsOffense ? "#2B8A6E" : pbIsDefense ? "#0A0F2E" : "#C9A84C";
-                      return (
-                        <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
-                          <div className="flex-1">
-                            <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
-                            <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
-                          </div>
-                          <span style={{ background: "white", color: pbIndicatorColor, borderColor: pbIndicatorColor }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
-                        </div>
-                      );
-                    })}
+                  <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: "#E8E4DC" }}>
+                    <div style={{ color: "#6B7280" }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
+                    <p style={{ color: "#0A0F2E" }} className="text-sm font-medium">{scenario.triggerExample}</p>
                   </div>
-                </div>
 
-                <div>
-                  <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                    <Clock className="h-4 w-4" style={{ color: "#2B8A6E" }} />
-                    12-Minute Execution Timeline
-                  </h5>
-                  <div className="space-y-0 relative">
-                    <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, #2B8A6E, rgba(43,138,110,0.1))` }} />
-                    {scenario.timeline.map((step, j) => (
-                      <div key={j} className="flex items-start gap-3 py-1.5 relative">
-                        <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? "#2B8A6E" : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
-                        <div className="flex-1 min-w-0">
-                          <span style={{ color: "#2B8A6E" }} className="text-xs font-bold mr-2">{step.time}</span>
-                          <span style={{ color: "#6B7280" }} className="text-xs">{step.action}</span>
+                  <div className="grid lg:grid-cols-2 gap-6 mb-5">
+                    <div>
+                      <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                        <BookOpen className="h-4 w-4" style={{ color: "#2B8A6E" }} />
+                        Activated Playbooks ({scenario.playbookCount})
+                      </h5>
+                      <div className="space-y-2">
+                        {scenario.playbooks.map((pb, j) => {
+                          const pbIsOffense = pb.domain.includes("Financial") || pb.domain.includes("Market") || pb.domain.includes("Growth") || pb.domain.includes("M&A");
+                          const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology") || pb.domain.includes("Talent");
+                          const pbIndicatorColor = pbIsOffense ? "#2B8A6E" : pbIsDefense ? "#0A0F2E" : "#C9A84C";
+                          return (
+                            <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
+                              <div className="flex-1">
+                                <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
+                                <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
+                              </div>
+                              <span style={{ background: "white", color: pbIndicatorColor, borderColor: pbIndicatorColor }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                        <Clock className="h-4 w-4" style={{ color: "#2B8A6E" }} />
+                        12-Minute Execution Timeline
+                      </h5>
+                      <div className="space-y-0 relative">
+                        <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, #2B8A6E, rgba(43,138,110,0.1))` }} />
+                        {scenario.timeline.map((step, j) => (
+                          <div key={j} className="flex items-start gap-3 py-1.5 relative">
+                            <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? "#2B8A6E" : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
+                            <div className="flex-1 min-w-0">
+                              <span style={{ color: "#2B8A6E" }} className="text-xs font-bold mr-2">{step.time}</span>
+                              <span style={{ color: "#6B7280" }} className="text-xs">{step.action}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-4">
+                        <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
+                          <Users className="h-4 w-4" style={{ color: "#2B8A6E" }} />
+                          Stakeholders ({scenario.stakeholders.length})
+                        </h5>
+                        <div className="flex flex-wrap gap-1.5">
+                          {scenario.stakeholders.map((s, j) => (
+                            <span key={j} style={{ background: "white", color: "#0A0F2E", borderColor: "#E8E4DC" }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
+                          ))}
                         </div>
                       </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-4">
-                    <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
-                      <Users className="h-4 w-4" style={{ color: "#2B8A6E" }} />
-                      Stakeholders ({scenario.stakeholders.length})
-                    </h5>
-                    <div className="flex flex-wrap gap-1.5">
-                      {scenario.stakeholders.map((s, j) => (
-                        <span key={j} style={{ background: "white", color: "#0A0F2E", borderColor: "#E8E4DC" }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
-                      ))}
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border rounded-lg p-4 flex items-center gap-3">
-                <ArrowRight className="h-4 w-4 shrink-0" style={{ color: "#2B8A6E" }} />
-                <p style={{ color: "#0A0F2E" }} className="text-sm">
-                  All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
-                </p>
-              </div>
-            </div>
-          );
-        })()}
-      </div>
-    </div>
-  );
-}
+                  <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border rounded-lg p-4 flex items-center gap-3">
+                    <ArrowRight className="h-4 w-4 shrink-0" style={{ color: "#2B8A6E" }} />
+                    <p style={{ color: "#0A0F2E" }} className="text-sm">
+                      All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
+                    </p>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+        </div>
+      );
+    }
+
 
 export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
@@ -371,7 +372,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       {!embedded && <StandardNav />}
 
       {!embedded && (
-        <div style={{ background: "#F8F7F4", borderBottom: `1px solid #E8E4DC` }}>
+        <div style={{ background: "white", borderBottom: `1px solid #E8E4DC` }}>
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
               <div className="flex-1">

@@ -58,10 +58,10 @@ export default function RetailFoodSafetyDemo() {
               <button
                 key={act.id}
                 onClick={() => setCurrentAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors border ${
                   currentAct === act.id
-                    ? "bg-[#C9A84C] text-[#0A0F2E]"
-                    : "text-white/60 hover:bg-white/10"
+                    ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]"
+                    : "text-white/60 border-transparent hover:bg-white/10"
                 }`}
                 data-testid={`button-act-${act.id}`}
               >

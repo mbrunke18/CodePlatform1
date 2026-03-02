@@ -14,7 +14,7 @@ export default function DecisionVelocityPage() {
 
   return (
     <PageLayout>
-      <div className="space-y-12">
+      <div className="space-y-12 bg-[#F8F7F4]">
         {/* Navy Hero Header */}
         <div style={{ background: NAVY, padding: "64px 48px", margin: "-32px -32px 32px -32px", position: "relative", overflow: "hidden" }}>
           <div style={{ 

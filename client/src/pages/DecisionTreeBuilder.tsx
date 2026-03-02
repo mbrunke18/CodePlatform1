@@ -139,6 +139,12 @@ export default function DecisionTreeBuilder() {
     });
   };
   
+  const NAVY = "#0A0F2E";
+  const GOLD = "#C9A84C";
+  const TEAL = "#2B8A6E";
+  const OFF = "#F8F7F4";
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
   const weighInRoles = ['General Counsel', 'Chief Communications Officer', 'CISO', 'CFO', 'COO', 'CTO'];
   const optionLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
   const optionColors = [
@@ -147,14 +153,9 @@ export default function DecisionTreeBuilder() {
     'border-[#C9A84C]/30 bg-[#C9A84C]/5',
     'border-[#DFC178]/30 bg-[#DFC178]/5',
     'border-[#141B45]/30 bg-[#141B45]/5',
-    'border-[#E8E4DC] bg-[#F8F7F4]',
+    'border-[#E8E4DC] bg-OFF',
   ];
-  const buttonColors = ['bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]', 'bg-[#DFC178]', 'bg-[#141B45]', 'bg-[#3BAF8A]'];
-
-  const NAVY = "#0A0F2E";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const buttonColors = [TEAL, NAVY, GOLD, '#DFC178', '#141B45', '#3BAF8A'];
 
   return (
     <div className="min-h-screen bg-[#F8F7F4]">

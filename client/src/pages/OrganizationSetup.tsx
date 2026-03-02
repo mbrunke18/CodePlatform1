@@ -546,8 +546,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="stakeholders" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Key Stakeholders</h2>
-                  <p className="text-sm text-gray-800">Define executives and decision-makers for playbook coordination</p>
+                  <h2 className="text-xl font-semibold text-[#0A0F2E]">Key Stakeholders</h2>
+                  <p className="text-sm text-[#6B7280]">Define executives and decision-makers for playbook coordination</p>
                 </div>
                 <Button onClick={() => setIsStakeholderDialogOpen(true)} data-testid="button-add-stakeholder">
                   <Plus className="h-4 w-4 mr-2" />
@@ -557,7 +557,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {stakeholders.map((sh) => (
-                  <Card key={sh.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
+                  <Card key={sh.id} className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all rounded-none">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -565,7 +565,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                             {sh.name.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{sh.name}</h3>
+                            <h3 className="font-semibold text-[#0A0F2E]">{sh.name}</h3>
                             <p className="text-sm text-[#0A0F2E]">{sh.role}</p>
                           </div>
                         </div>
@@ -576,16 +576,16 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                         </div>
                       </div>
                       <div className="mt-4 space-y-2">
-                        <div className="flex items-center gap-2 text-sm text-gray-800">
+                        <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                           <Mail className="h-4 w-4" />
                           <span>{sh.email}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-800">
+                        <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                           <Building2 className="h-4 w-4" />
                           <span>{sh.department}</span>
                         </div>
                         {sh.approvalLimit && (
-                          <div className="flex items-center gap-2 text-sm text-gray-800">
+                          <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                             <DollarSign className="h-4 w-4" />
                             <span>Approval limit: ${sh.approvalLimit.toLocaleString()}</span>
                           </div>
@@ -613,8 +613,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="escalation" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Escalation Policies</h2>
-                  <p className="text-sm text-gray-800">Define how unacknowledged alerts escalate through your organization</p>
+                  <h2 className="text-xl font-semibold text-[#0A0F2E]">Escalation Policies</h2>
+                  <p className="text-sm text-[#6B7280]">Define how unacknowledged alerts escalate through your organization</p>
                 </div>
                 <Button onClick={() => setIsEscalationDialogOpen(true)} data-testid="button-add-escalation">
                   <Plus className="h-4 w-4 mr-2" />
@@ -624,12 +624,12 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="space-y-4">
                 {escalationPolicies.map((policy) => (
-                  <Card key={policy.id} className="bg-gray-50 border-gray-200">
+                  <Card key={policy.id} className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="font-semibold text-gray-900 text-lg">{policy.name}</h3>
-                          <p className="text-sm text-gray-800 mt-1">{policy.description}</p>
+                          <h3 className="font-semibold text-[#0A0F2E] text-lg">{policy.name}</h3>
+                          <p className="text-sm text-[#6B7280] mt-1">{policy.description}</p>
                           <Badge className="mt-2 bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30">
                             {policy.triggerType.replace('_', ' ')}
                           </Badge>
@@ -645,23 +645,23 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                       </div>
                       
                       <div className="relative">
-                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-50"></div>
+                        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-[#E8E4DC]"></div>
                         <div className="space-y-4">
                           {policy.levels.map((level, idx) => (
                             <div key={level.level} className="relative flex items-start gap-4 pl-8">
                               <div className={`absolute left-2 w-4 h-4 rounded-none ${
                                 idx === 0 ? 'bg-[#2B8A6E]' : idx === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                               } ring-4 ring-gray-800`}></div>
-                              <div className="flex-1 p-3 bg-gray-50 rounded-none">
+                              <div className="flex-1 p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                                 <div className="flex items-center justify-between">
-                                  <span className="font-medium text-gray-900">Level {level.level}</span>
-                                  <div className="flex items-center gap-1 text-sm text-gray-800">
+                                  <span className="font-medium text-[#0A0F2E]">Level {level.level}</span>
+                                  <div className="flex items-center gap-1 text-sm text-[#6B7280]">
                                     <Clock className="h-4 w-4" />
                                     <span>{level.timeoutMinutes} min</span>
                                   </div>
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-800">Approvers:</span>
+                                  <span className="text-sm text-[#6B7280]">Approvers:</span>
                                   {level.approvers.map((approver) => (
                                     <Badge key={approver} variant="outline" className="text-xs">
                                       {approver}
@@ -669,7 +669,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                                   ))}
                                 </div>
                                 <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-sm text-gray-800">Actions:</span>
+                                  <span className="text-sm text-[#6B7280]">Actions:</span>
                                   {level.actions.map((action) => (
                                     <Badge key={action} className="text-xs bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/30">
                                       {action}
@@ -691,8 +691,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="channels" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Communication Channels</h2>
-                  <p className="text-sm text-gray-800">Configure how Execution OS will notify stakeholders during activations</p>
+                  <h2 className="text-xl font-semibold text-[#0A0F2E]">Communication Channels</h2>
+                  <p className="text-sm text-[#6B7280]">Configure how Execution OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
                   <Plus className="h-4 w-4 mr-2" />
@@ -702,7 +702,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {communicationChannels.map((channel) => (
-                  <Card key={channel.id} className={`bg-gray-50 border-gray-200 ${channel.isActive ? '' : 'opacity-50'}`}>
+                  <Card key={channel.id} className={`bg-[#F8F7F4] border-[#E8E4DC] rounded-none ${channel.isActive ? '' : 'opacity-50'}`}>
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -715,8 +715,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                             {getChannelIcon(channel.channelType)}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{channel.name}</h3>
-                            <p className="text-sm text-gray-800 capitalize">{channel.channelType}</p>
+                            <h3 className="font-semibold text-[#0A0F2E]">{channel.name}</h3>
+                            <p className="text-sm text-[#6B7280] capitalize">{channel.channelType}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

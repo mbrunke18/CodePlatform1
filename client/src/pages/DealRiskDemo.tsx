@@ -184,12 +184,12 @@ export default function DealRiskDemo() {
               <div key={phase.id} className="flex items-center">
                 <button
                   onClick={() => isCompleted && setCurrentPhase(phase.id)}
-                  className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all ${
+                  className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all border ${
                     isCurrent 
-                      ? 'bg-white/10 border border-white/20' 
+                      ? 'bg-[#0A0F2E] border-[#C9A84C]' 
                       : isCompleted 
-                        ? 'bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 cursor-pointer hover:bg-[#2B8A6E]/20' 
-                        : 'opacity-50'
+                        ? 'bg-[#2B8A6E]/10 border-[#2B8A6E]/30 cursor-pointer hover:bg-[#2B8A6E]/20' 
+                        : 'opacity-50 border-transparent'
                   }`}
                 >
                   <div className={`p-2 rounded-lg ${
@@ -203,7 +203,7 @@ export default function DealRiskDemo() {
                   </div>
                   <div className="text-left">
                     <div className="text-xs text-white/40">Phase {index + 1}</div>
-                    <div className={`font-semibold ${isCurrent ? 'text-white' : 'text-white/60'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <div className={`font-semibold ${isCurrent ? 'text-[#C9A84C]' : 'text-white/60'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {phase.name}
                     </div>
                   </div>

@@ -423,10 +423,10 @@ export default function CustomerDemo() {
                   setAcknowledgedStakeholders(newAcks);
                   setIsComplete(idx === IDEA_STORY.length - 1);
                 }}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all border ${
                   idx === currentStageIndex
-                    ? `${stage.phaseColor} text-[#0A0F2E]`
-                    : 'bg-white/5 text-white/60 hover:bg-white/10'
+                    ? `bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]`
+                    : 'bg-white/5 text-white/60 border-transparent hover:bg-white/10'
                 }`}
                 data-testid={`button-stage-${idx}`}
               >

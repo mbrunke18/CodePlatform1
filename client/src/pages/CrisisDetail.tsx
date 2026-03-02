@@ -168,7 +168,7 @@ export default function CrisisDetail() {
     switch (status.toLowerCase()) {
       case 'active': return { background: "rgba(220,38,38,0.12)", color: "#DC2626" };
       case 'monitoring': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
-      case 'resolved': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
+      case 'resolved': return { background: "rgba(43,138,110,0.12)", color: TEAL };
       default: return { background: "#F8F7F4", color: "#6B7280" };
     }
   };
@@ -176,8 +176,8 @@ export default function CrisisDetail() {
   const getPriorityStyle = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'text-[#DC2626] bg-[#DC2626]/10 font-bold';
-      case 'medium': return `text-[#C9A84C] bg-[#C9A84C]/10 font-bold`;
-      case 'low': return `text-[#2B8A6E] bg-[#2B8A6E]/10 font-bold`;
+      case 'medium': return `text-[${GOLD}] bg-[${GOLD}]/10 font-bold`;
+      case 'low': return `text-[${TEAL}] bg-[${TEAL}]/10 font-bold`;
       default: return 'text-[#6B7280] bg-[#F8F7F4]';
     }
   };
@@ -185,8 +185,8 @@ export default function CrisisDetail() {
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'bg-[#DC2626]/10 text-[#DC2626]';
-      case 'medium': return `bg-[#C9A84C]/10 text-[#C9A84C]`;
-      case 'low': return `bg-[#2B8A6E]/10 text-[#2B8A6E]`;
+      case 'medium': return `bg-[${GOLD}]/10 text-[${GOLD}]`;
+      case 'low': return `bg-[${TEAL}]/10 text-[${TEAL}]`;
       default: return 'bg-[#F8F7F4] text-[#6B7280]';
     }
   };

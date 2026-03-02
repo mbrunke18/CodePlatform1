@@ -85,13 +85,20 @@ function PhaseCard({
     teal: { border: BORDER, accent: TEAL }
   };
 
-  const c = colorMap[color];
+  const phaseColorMap = {
+    'IDENTIFY': TEAL,
+    'DETECT': NAVY,
+    'EXECUTE': GOLD,
+    'ADVANCE': TEAL
+  };
+
+  const accentColor = (phaseColorMap as any)[phase] || colorMap[color].accent;
 
   return (
     <Link href={link}>
       <Card 
         className="transition-all cursor-pointer hover:shadow-lg h-full border-t-4 rounded-none"
-        style={{ borderColor: c.accent, background: "#fff" }}
+        style={{ borderColor: accentColor, background: "#fff" }}
       >
         <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
           <div className="flex items-center justify-between mb-2">
@@ -100,7 +107,7 @@ function PhaseCard({
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>{phase}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accentColor }}>{phase}</div>
                 <CardTitle style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>{title}</CardTitle>
               </div>
             </div>
@@ -113,7 +120,7 @@ function PhaseCard({
             {metrics.map((m, i) => (
               <div key={i} className="p-2 sm:p-3 rounded-none bg-[#F8F7F4] border border-[#E8E4DC]">
                 <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">{m.label}</div>
-                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? GOLD : NAVY }}>{m.value}</div>
+                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? accentColor : NAVY }}>{m.value}</div>
               </div>
             ))}
           </div>

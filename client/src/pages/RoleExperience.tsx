@@ -103,7 +103,7 @@ const ROLES: Record<string, RoleData> = {
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
-    icon: Shield, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: Shield, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Ransomware Attack — Production Systems Compromised at 2:17 AM',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '31', name: 'Critical Incident Response — Ransomware', tasks: 28, stakeholders: 30, budget: '$350K' },
@@ -159,7 +159,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
-    icon: TrendingUp, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: TrendingUp, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Competitive Response — Major Competitor Launches Rival Product',
     domain: 'Competitive Response', domainCategory: 'OFFENSE',
     playbook: { number: '47', name: 'Competitive Response — Product Counter-Strategy', tasks: 24, stakeholders: 28, budget: '$250K' },
@@ -215,7 +215,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cfo: {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
-    icon: DollarSign, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    icon: DollarSign, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Regulatory Change — New SEC Climate Disclosure Requirements',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '58', name: 'Regulatory Compliance — Financial Reporting', tasks: 32, stakeholders: 22, budget: '$180K' },

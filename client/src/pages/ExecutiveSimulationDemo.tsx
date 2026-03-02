@@ -320,7 +320,7 @@ export default function ExecutiveSimulationDemo() {
       case 'critical': return 'bg-[#0A0F2E] text-white';
       case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C]';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
-      case 'low': return 'bg-[#0A0F2E]/10 text-[#0A0F2E]';
+      case 'low': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#C9A84C]';
       default: return 'bg-[#6B7280]/10 text-[#6B7280]';
     }
   };
@@ -329,8 +329,8 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return 'text-[#2B8A6E]';
       case 'in_progress': return 'text-[#C9A84C]';
-      case 'blocked': return 'text-[#0A0F2E]';
-      default: return 'text-[#6B7280] dark:text-[#C9A84C]';
+      case 'blocked': return 'text-[#0A0F2E] dark:text-[#C9A84C]';
+      default: return 'text-[#6B7280] dark:text-[#C9A84C]/60';
     }
   };
 
@@ -338,7 +338,7 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return <CheckCircle2 className="w-5 h-5" />;
       case 'in_progress': return <Activity className="w-5 h-5 animate-pulse text-[#C9A84C]" />;
-      case 'blocked': return <XCircle className="w-5 h-5" />;
+      case 'blocked': return <XCircle className="w-5 h-5 text-[#0A0F2E] dark:text-[#C9A84C]" />;
       default: return <CircleDot className="w-5 h-5 text-[#C9A84C]" />;
     }
   };
@@ -347,7 +347,7 @@ export default function ExecutiveSimulationDemo() {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center p-6">
-          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
+          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">
               <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] rounded-2xl flex items-center justify-center">
                 <Briefcase className="w-10 h-10 text-white" />
@@ -358,38 +358,38 @@ export default function ExecutiveSimulationDemo() {
               <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Welcome to Your Day as CSO
               </CardTitle>
-              <CardDescription className="text-lg text-[#6B7280] dark:text-white/60">
+              <CardDescription className="text-lg text-[#6B7280] dark:text-[#C9A84C]/60">
                 Experience Execution OS from the perspective of a Fortune 500 executive
               </CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Building2 className="w-5 h-5 text-[#C9A84C]" />
                   Your Company Profile
                 </h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-[#6B7280] dark:text-white/60">Company:</span>
+                    <span className="text-[#6B7280] dark:text-[#C9A84C]/60">Company:</span>
                     <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.name}</span>
                   </div>
                   <div>
-                    <span className="text-[#6B7280] dark:text-white/60">Industry:</span>
+                    <span className="text-[#6B7280] dark:text-[#C9A84C]/60">Industry:</span>
                     <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.industry}</span>
                   </div>
                   <div>
-                    <span className="text-[#6B7280] dark:text-white/60">Revenue:</span>
+                    <span className="text-[#6B7280] dark:text-[#C9A84C]/60">Revenue:</span>
                     <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.revenue}</span>
                   </div>
                   <div>
-                    <span className="text-[#6B7280] dark:text-white/60">Employees:</span>
+                    <span className="text-[#6B7280] dark:text-[#C9A84C]/60">Employees:</span>
                     <span className="text-[#0A0F2E] dark:text-[#C9A84C] ml-2 font-medium">{COMPANY_PROFILE.employees}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-white/10">
+              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Users className="w-5 h-5 text-[#C9A84C]" />
                   Your Role
@@ -401,12 +401,12 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <p className="text-xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{COMPANY_PROFILE.persona}</p>
                     <p className="text-[#C9A84C]">{COMPANY_PROFILE.role}</p>
-                    <p className="text-white/60 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
+                    <p className="text-[#C9A84C]/60 text-sm mt-1">{COMPANY_PROFILE.headquarters}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Target className="w-5 h-5 text-[#C9A84C]" />
                   What You'll Experience
@@ -454,7 +454,7 @@ export default function ExecutiveSimulationDemo() {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center p-6">
-          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5" data-testid="card-simulation-complete">
+          <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5" data-testid="card-simulation-complete">
             <CardHeader className="text-center pb-2">
               <div className="w-20 h-20 mx-auto mb-6 bg-[#2B8A6E] rounded-2xl flex items-center justify-center">
                 <Award className="w-10 h-10 text-white" />
@@ -465,31 +465,31 @@ export default function ExecutiveSimulationDemo() {
               <CardTitle className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Response Successfully Coordinated
               </CardTitle>
-              <CardDescription className="text-lg text-[#6B7280] dark:text-white/60">
+              <CardDescription className="text-lg text-[#6B7280] dark:text-[#C9A84C]/60">
                 You just experienced the power of Execution OS
               </CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <Clock className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatTime(elapsedTime)}</p>
-                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Total Response Time</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Total Response Time</p>
                 </div>
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <Users className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
-                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Stakeholders Aligned</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Stakeholders Aligned</p>
                 </div>
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-white/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <CheckCircle2 className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{playbookActions.length}</p>
-                  <p className="text-[#6B7280] dark:text-white/60 text-sm">Actions Completed</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Actions Completed</p>
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-white/10">
+              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional vs Execution OS Response</h3>
                 <div className="space-y-4">
                   <div>
@@ -516,7 +516,7 @@ export default function ExecutiveSimulationDemo() {
                 </p>
               </div>
 
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-white/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What Happened</h3>
                 <ul className="space-y-3 text-[#0A0F2E] dark:text-white/80 text-sm">
                   <li className="flex items-start gap-3">

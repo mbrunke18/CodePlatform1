@@ -73,7 +73,7 @@ export default function CrisisExposureMatrix() {
                 href={`/strategic-monitoring/${scenario.id}`}
                 data-testid={`link-scenario-${scenario.id}`}
               >
-                <div className="flex items-center justify-between p-2 rounded hover:bg-[#F8F7F4] cursor-pointer transition-colors">
+                <div className="flex items-center justify-between p-2 rounded hover:bg-OFF cursor-pointer transition-colors">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-[#0A0F2E]">{scenario.title || scenario.name}</p>
                     <p className="text-xs text-[#6B7280]">
@@ -103,13 +103,13 @@ export default function CrisisExposureMatrix() {
 
   return (
     <PageLayout>
-      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto" data-testid="crisis-exposure-matrix-page">
+      <div className="flex-1 bg-OFF overflow-y-auto" data-testid="crisis-exposure-matrix-page">
         {/* Navy Hero Section */}
         <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ 
             position: "absolute", 
             inset: 0, 
-            backgroundImage: "radial-gradient(#C9A84C 0.5px, transparent 0.5px)", 
+            backgroundImage: `radial-gradient(${GOLD} 0.5px, transparent 0.5px)`, 
             backgroundSize: "32px 32px",
             opacity: 0.1
           }} />
@@ -223,7 +223,7 @@ export default function CrisisExposureMatrix() {
 
           {/* Action Items */}
           <Card className="rounded-none border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
-            <CardHeader className="p-8 border-b border-[#F8F7F4]">
+            <CardHeader className="p-8 border-b border-OFF">
               <CardTitle style={CG} className="text-3xl text-[#0A0F2E]">Recommended Next Steps</CardTitle>
             </CardHeader>
             <CardContent className="p-8 space-y-4">
@@ -253,7 +253,7 @@ export default function CrisisExposureMatrix() {
                   tid: 'card-action-preparedness'
                 }
               ].map((action, i) => (
-                <div key={i} className="flex items-center justify-between p-6 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none group hover:border-[#C9A84C] transition-colors" data-testid={action.tid}>
+                <div key={i} className="flex items-center justify-between p-6 bg-OFF border border-[#E8E4DC] rounded-none group hover:border-[#C9A84C] transition-colors" data-testid={action.tid}>
                   <div>
                     <p style={CG} className="text-xl font-bold text-[#0A0F2E]">{action.title}</p>
                     <p className="text-[11px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">{action.desc}</p>

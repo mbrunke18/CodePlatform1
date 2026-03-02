@@ -235,7 +235,7 @@ export default function MissionControl() {
                             <Button 
                               onClick={() => handleActivatePlaybook(trigger)}
                               style={{ background: NAVY, color: "#fff" }}
-                              className="font-bold uppercase tracking-widest text-[10px] px-6 rounded-none"
+                              className="font-bold uppercase tracking-widest text-[10px] px-6 rounded-none hover:bg-[#141B45]"
                             >
                               Activate Response
                             </Button>

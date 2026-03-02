@@ -372,7 +372,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           <CardContent className="p-4">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800" />
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#6B7280]" />
                 <Input
                   placeholder="Search by name, role, or email..."
                   value={search}
@@ -414,9 +414,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {filteredStakeholders.length === 0 ? (
           <Card>
             <CardContent className="py-16 text-center">
-              <Users className="h-12 w-12 mx-auto mb-4 text-gray-800" />
+              <Users className="h-12 w-12 mx-auto mb-4 text-[#0A0F2E]" />
               <h3 className="text-lg font-medium text-[#0A0F2E] mb-2">No Stakeholders Found</h3>
-              <p className="text-gray-800 mb-6">Start by adding stakeholders to your directory.</p>
+              <p className="text-[#6B7280] mb-6">Start by adding stakeholders to your directory.</p>
               <Button onClick={handleOpenCreate} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none" data-testid="button-add-first-stakeholder">
                 <Plus className="h-4 w-4 mr-2" />
                 Add First Stakeholder
@@ -561,9 +561,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   </div>
                   <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">All channels</Badge>
                 </div>
-                <p className="text-3xl font-bold text-slate-900 mb-1">98.4%</p>
-                <p className="text-sm font-medium text-slate-700 mb-2">Notification Reach</p>
-                <p className="text-xs text-gray-800">Percentage of stakeholders successfully reached on first attempt</p>
+                <p className="text-3xl font-bold text-[#0A0F2E] mb-1">98.4%</p>
+                <p className="text-sm font-medium text-[#0A0F2E] mb-2">Notification Reach</p>
+                <p className="text-xs text-[#6B7280]">Percentage of stakeholders successfully reached on first attempt</p>
                 <Progress value={98.4} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -575,9 +575,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   </div>
                   <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">Above benchmark</Badge>
                 </div>
-                <p className="text-3xl font-bold text-slate-900 mb-1">92%</p>
-                <p className="text-sm font-medium text-slate-700 mb-2">Participation Rate</p>
-                <p className="text-xs text-gray-800">Stakeholder participation rate in practice drills</p>
+                <p className="text-3xl font-bold text-[#0A0F2E] mb-1">92%</p>
+                <p className="text-sm font-medium text-[#0A0F2E] mb-2">Participation Rate</p>
+                <p className="text-xs text-[#6B7280]">Stakeholder participation rate in practice drills</p>
                 <Progress value={92} className="mt-3 h-1.5" />
               </CardContent>
             </Card>
@@ -590,7 +590,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
               <Clock className="h-5 w-5 text-[#0A0F2E]" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">Recent Communication Timeline</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E]">Recent Communication Timeline</h2>
           </div>
           <Card>
             <CardContent className="p-6">
@@ -613,7 +613,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <EntryIcon className="h-4 w-4 text-gray-800 dark:text-slate-300" />
+                            <EntryIcon className="h-4 w-4 text-[#0A0F2E]" />
                             <span className="text-sm font-semibold text-gray-700 dark:text-slate-400">{entry.date}</span>
                           </div>
                           <p className="text-sm text-slate-700 dark:text-slate-200">{entry.description}</p>
@@ -634,7 +634,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
               <Users className="h-5 w-5 text-[#0A0F2E]" />
             </div>
-            <h2 className="text-2xl font-bold text-slate-900">RACI Matrix — Active Playbooks</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E]">RACI Matrix — Active Playbooks</h2>
           </div>
           <Card>
             <Table>
@@ -665,8 +665,8 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <p className="font-medium text-slate-900 text-sm">{row.name}</p>
-                          <p className="text-xs text-gray-800">{row.role}</p>
+                          <p className="font-medium text-[#0A0F2E] text-sm">{row.name}</p>
+                          <p className="text-xs text-[#6B7280]">{row.role}</p>
                         </div>
                       </div>
                     </TableCell>

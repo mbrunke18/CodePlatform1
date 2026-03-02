@@ -56,22 +56,22 @@ export default function FinancialRansomwareDemo() {
         <div className="container mx-auto px-6 py-3">
           <div className="flex items-center gap-4 text-sm">
             <div className={`flex items-center gap-2 ${currentAct === "introduction" ? "text-[#C9A84C]" : "text-white/60"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "introduction" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
+              <div className={`w-2 h-2 rounded-full border border-[#C9A84C] ${currentAct === "introduction" ? "bg-[#C9A84C]" : "bg-transparent"}`} />
               Introduction
             </div>
             <div className="flex-1 h-px bg-white/10" />
             <div className={`flex items-center gap-2 ${currentAct === "ai-detection" ? "text-[#C9A84C]" : "text-white/60"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "ai-detection" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
+              <div className={`w-2 h-2 rounded-full border border-[#C9A84C] ${currentAct === "ai-detection" ? "bg-[#C9A84C]" : "bg-transparent"}`} />
               AI Detection
             </div>
             <div className="flex-1 h-px bg-white/10" />
             <div className={`flex items-center gap-2 ${currentAct === "coordination" ? "text-[#C9A84C]" : "text-white/60"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "coordination" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
+              <div className={`w-2 h-2 rounded-full border border-[#C9A84C] ${currentAct === "coordination" ? "bg-[#C9A84C]" : "bg-transparent"}`} />
               Coordination
             </div>
             <div className="flex-1 h-px bg-white/10" />
             <div className={`flex items-center gap-2 ${currentAct === "outcome" || currentAct === "summary" ? "text-[#C9A84C]" : "text-white/60"}`}>
-              <div className={`w-2 h-2 rounded-full ${currentAct === "outcome" || currentAct === "summary" ? "bg-[#C9A84C]" : "bg-white/20"}`} />
+              <div className={`w-2 h-2 rounded-full border border-[#C9A84C] ${currentAct === "outcome" || currentAct === "summary" ? "bg-[#C9A84C]" : "bg-transparent"}`} />
               Outcome
             </div>
           </div>

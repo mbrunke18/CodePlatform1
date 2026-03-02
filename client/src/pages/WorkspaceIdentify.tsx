@@ -98,10 +98,10 @@ export default function WorkspaceIdentify() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
-            <span className="text-[#2B8A6E] font-medium">IDENTIFY</span>
+            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
+            <span className="text-[#2B8A6E] font-bold uppercase tracking-wider">IDENTIFY</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
@@ -112,11 +112,11 @@ export default function WorkspaceIdentify() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Factory</h1>
-                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1">
+                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">
                     IDENTIFY
                   </Badge>
                 </div>
-                <p className="text-[#6B7280] dark:text-white/60 mt-1">
+                <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                   Build, customize, and manage strategic playbooks for every scenario
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function WorkspaceIdentify() {
                 </Button>
               </Link>
               <Link href="/playbook-customize/new">
-                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-white/20">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-[#C9A84C]/20">
                   <Sparkles className="h-4 w-4 mr-2" />
                   Create New
                 </Button>
@@ -138,11 +138,11 @@ export default function WorkspaceIdentify() {
           </div>
 
           {/* IDEA Progress Tracker */}
-          <Card className="mb-8 border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
+          <Card className="mb-8 border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-[#6B7280]">Phase 1 of 4</span>
+                <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Phase 1 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -150,21 +150,21 @@ export default function WorkspaceIdentify() {
                     <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">IDENTIFY</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
                       <Radar className="h-4 w-4 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E] font-medium">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <Compass className="h-4 w-4 text-[#C9A84C]" />
                       <span className="text-sm text-[#0A0F2E]">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
@@ -179,18 +179,18 @@ export default function WorkspaceIdentify() {
           {/* Strategic Triad Overview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             {domainCategories.map((category) => (
-              <Card key={category.name} className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={category.name} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <category.icon className={`h-6 w-6 ${category.color}`} />
                       <h3 className="font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{category.name}</h3>
                     </div>
-                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-white/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} playbooks</Badge>
+                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-[#C9A84C]/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} playbooks</Badge>
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
-                      <p key={domain} className="text-sm text-[#6B7280] dark:text-white/60">• {domain}</p>
+                      <p key={domain} className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">• {domain}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -205,7 +205,7 @@ export default function WorkspaceIdentify() {
               </div>
             </CardHeader>
           <div className="space-y-3 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#2B8A6E]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#2B8A6E]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
@@ -216,13 +216,13 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Playbook #12</h4>
                       <Badge className="bg-[#2B8A6E] text-white border-none">Active</Badge>
                     </div>
-                    <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
+                    <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
                   </div>
-                  <Clock className="h-4 w-4 text-[#6B7280] dark:text-white/40 flex-shrink-0" />
+                  <Clock className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#0A0F2E]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#0A0F2E]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-red-600/10">
@@ -233,13 +233,13 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Playbook #31</h4>
                       <Badge className="bg-red-600 text-white border-none">Triggered</Badge>
                     </div>
-                    <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Activated Feb 3 via automated trigger</p>
+                    <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Activated Feb 3 via automated trigger</p>
                   </div>
-                  <Clock className="h-4 w-4 text-[#6B7280] dark:text-white/40 flex-shrink-0" />
+                  <Clock className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#C9A84C]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#C9A84C]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#C9A84C]/10">
@@ -250,9 +250,9 @@ export default function WorkspaceIdentify() {
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Playbook #45</h4>
                       <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">In Review</Badge>
                     </div>
-                    <p className="text-sm text-[#6B7280] dark:text-white/60 mt-0.5">Draft review pending from 3 stakeholders</p>
+                    <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Draft review pending from 3 stakeholders</p>
                   </div>
-                  <Users className="h-4 w-4 text-[#6B7280] dark:text-white/40 flex-shrink-0" />
+                  <Users className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 flex-shrink-0" />
                 </div>
               </CardContent>
             </Card>
@@ -263,7 +263,7 @@ export default function WorkspaceIdentify() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${tool.bgColor}`}>
@@ -274,12 +274,12 @@ export default function WorkspaceIdentify() {
                           <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#C9A84C] transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-white/40 group-hover:text-[#C9A84C] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 group-hover:text-[#C9A84C] transition-colors" />
                         </div>
-                        <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
+                        <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

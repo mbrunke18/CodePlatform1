@@ -306,15 +306,6 @@ export default function ComprehensiveAIIntelligence() {
 
     // Real-time updates every 30 seconds
     const interval = setInterval(() => {
-      /*
-      setSystemMetrics(prev => ({
-        ...prev,
-        totalProcessingPower: +(prev.totalProcessingPower + (Math.random() * 2 - 1)).toFixed(1),
-        dailyInsights: prev.dailyInsights + Math.floor(Math.random() * 3),
-        accuracyRate: +(prev.accuracyRate + (Math.random() * 0.5 - 0.25)).toFixed(1),
-        systemHealth: +(prev.systemHealth + (Math.random() * 0.3 - 0.15)).toFixed(1)
-      }));
-      */
     }, 30000);
 
     return () => clearInterval(interval);

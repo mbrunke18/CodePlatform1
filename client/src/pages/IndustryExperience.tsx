@@ -102,7 +102,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'shein-trend': {
     id: 'shein-trend', title: 'Viral Trend Capitalization', organization: 'SHEIN (Global Fashion Marketplace)',
-    industry: 'Fast Fashion', icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    industry: 'Fast Fashion', icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'TikTok Cottage Core Trend — 200 SKUs Designed, Manufactured & Listed in 7 Days',
     domain: 'Product Launch', domainCategory: 'OFFENSE',
     playbook: { number: '146', name: 'Trend Capitalization — Viral Response', tasks: 38, stakeholders: 5847, budget: '$2.4M' },
@@ -215,7 +215,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'financial-ransomware': {
     id: 'financial-ransomware', title: 'Ransomware Attack Response', organization: 'LoanDepot (Major Mortgage Lender)',
-    industry: 'Financial Services', icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    industry: 'Financial Services', icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Banking Infrastructure Breach — LockBit 3.0 Attack on Mortgage Processing Systems',
     domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
     playbook: { number: '065', name: 'Ransomware Attack Response — Financial Services', tasks: 36, stakeholders: 150, budget: '$4.8M' },
@@ -272,7 +272,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'pharma-recall': {
     id: 'pharma-recall', title: 'Product Recall — Class I', organization: 'Glenmark Pharmaceuticals',
-    industry: 'Pharmaceutical', icon: Pill, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
+    industry: 'Pharmaceutical', icon: Pill, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Class I Recall — Life-Threatening Contamination in Blood Pressure Medication',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
     playbook: { number: '095', name: 'Product Recall — Class I (Life-Threatening)', tasks: 44, stakeholders: 2052, budget: '$8.5M' },

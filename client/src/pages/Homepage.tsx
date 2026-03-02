@@ -363,9 +363,9 @@ export default function Homepage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, background: BORDER, marginBottom: 48 }}>
             {([
-              { system: "ERP", category: "Finance", label: "Systematized", color: MUTED, bg: "#fff" },
-              { system: "CRM", category: "Customers", label: "Systematized", color: MUTED, bg: "#fff" },
-              { system: "ITSM", category: "Tickets", label: "Systematized", color: MUTED, bg: "#fff" },
+              { system: "ERP", category: "Finance", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
+              { system: "CRM", category: "Customers", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
+              { system: "ITSM", category: "Tickets", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
               { system: "Execution OS", category: "Strategy Execution", label: "Now Built", color: GOLD, bg: NAVY },
             ] as { system: string; category: string; label: string; color: string; bg: string }[]).map((item, i) => (
               <div key={i} style={{ background: item.bg, padding: "40px 32px" }}>
@@ -702,6 +702,7 @@ export default function Homepage() {
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                     <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY }}>{item.firm}</span>
                     <span style={{ fontSize: 10, fontWeight: 500, color: TEXT_MUTED }}>· {item.label}</span>
+
                   </div>
                   <p style={{ ...CG, fontSize: 18, fontWeight: 400, fontStyle: "italic", lineHeight: 1.65, color: NAVY, flex: 1 }}>{item.finding}</p>
                 </div>

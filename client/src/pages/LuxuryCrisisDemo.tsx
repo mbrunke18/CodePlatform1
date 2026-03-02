@@ -42,7 +42,7 @@ export default function LuxuryCrisisDemo() {
           <div key={act.id} className="flex items-center">
             <Badge 
               variant={currentAct === act.id ? 'default' : 'outline'}
-              className={`${currentAct === act.id ? 'animate-pulse bg-[#C9A84C] text-[#0A0F2E]' : 'text-white/60 border-white/20 hover:bg-white/10'}`}
+              className={`${currentAct === act.id ? 'bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]' : 'text-white/60 border-white/20 hover:bg-white/10'}`}
             >
               {act.label}
             </Badge>

@@ -98,10 +98,10 @@ export default function WorkspaceExecute() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
-            <span className="text-[#C9A84C] font-medium">EXECUTE</span>
+            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
+            <span className="text-[#C9A84C] font-bold uppercase tracking-wider">EXECUTE</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
@@ -112,11 +112,11 @@ export default function WorkspaceExecute() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Compass Command</h1>
-                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold">
+                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold uppercase tracking-wider">
                     EXECUTE
                   </Badge>
                 </div>
-                <p className="text-[#6B7280] dark:text-white/60 mt-1">
+                <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                   Coordinate responses and execute playbooks in 12 minutes
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function WorkspaceExecute() {
                 </Button>
               </Link>
               <Link href="/practice-drills">
-                <Button variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
+                <Button variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5 dark:border-[#C9A84C]/40">
                   <Play className="h-4 w-4 mr-2" />
                   Run Drill
                 </Button>
@@ -138,11 +138,11 @@ export default function WorkspaceExecute() {
           </div>
 
           {/* IDEA Progress Tracker */}
-          <Card className="mb-8 border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
+          <Card className="mb-8 border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-[#6B7280]">Phase 3 of 4</span>
+                <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Phase 3 of 4</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -152,19 +152,19 @@ export default function WorkspaceExecute() {
                       <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
                       <Radar className="h-4 w-4 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E]">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
                     <Compass className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-sm font-bold text-[#0A0F2E] uppercase tracking-wider">EXECUTE</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
                       <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
@@ -179,20 +179,20 @@ export default function WorkspaceExecute() {
           {/* Execution Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {executionMetrics.map((metric) => (
-              <Card key={metric.label} className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{metric.value}</p>
-                  <p className="text-xs text-[#6B7280]">{metric.label}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           {/* 12-Minute Promise Banner */}
-          <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-white/10">
+          <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-[#C9A84C]/10">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-[#0A0F2E]/10 dark:bg-white/10">
@@ -200,7 +200,7 @@ export default function WorkspaceExecute() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Minutes to Coordinated Response</h3>
-                  <p className="text-[#6B7280] dark:text-white/60">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Execution OS delivers 340x faster execution than traditional approaches (72 hours)</p>
                 </div>
               </div>
             </CardContent>
@@ -209,7 +209,7 @@ export default function WorkspaceExecute() {
           {/* Active Executions */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Active Executions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration — CloudTech Acquisition</h4>
@@ -217,9 +217,9 @@ export default function WorkspaceExecute() {
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">78%</span>
-                  <Progress value={78} className="flex-1 h-2" />
+                  <Progress value={78} className="flex-1 h-2 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60 mb-4">
+                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 28 of 45 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 45 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
@@ -231,7 +231,7 @@ export default function WorkspaceExecute() {
                 </Link>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Competitive Response — Market Counter-Strategy</h4>
@@ -239,9 +239,9 @@ export default function WorkspaceExecute() {
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">34%</span>
-                  <Progress value={34} className="flex-1 h-2" />
+                  <Progress value={34} className="flex-1 h-2 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
                 </div>
-                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-white/60 mb-4">
+                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mb-4">
                   <span className="flex items-center gap-1"><CheckCircle className="h-3.5 w-3.5" /> 8 of 24 tasks</span>
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 18 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
@@ -260,7 +260,7 @@ export default function WorkspaceExecute() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path + tool.title} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#2B8A6E]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#2B8A6E]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${tool.bgColor}`}>
@@ -271,12 +271,12 @@ export default function WorkspaceExecute() {
                           <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#C9A84C] transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-white/40 group-hover:text-[#C9A84C] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 group-hover:text-[#C9A84C] transition-colors" />
                         </div>
-                        <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
+                        <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

@@ -24,7 +24,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#0A0F2E]', label: 'Critical' }
+    critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#0A0F2E] dark:text-[#C9A84C]', label: 'Critical' }
   };
   const c = config[status];
 

@@ -229,7 +229,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
           <div className="lg:col-span-2 space-y-4">
             {/* Key Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50' : 'border-[#2B8A6E]/30 bg-[#2B8A6E]/5'}`} data-testid="card-threat-level">
+              <Card className={`${criticalTriggers.length > 0 ? 'border-red-500 bg-red-50' : 'border-[#2B8A6E]/30 bg-[#F8F7F4]'}`} data-testid="card-threat-level">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>

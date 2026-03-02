@@ -317,7 +317,7 @@ export default function ReadinessAssessment() {
               </p>
             </div>
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-8">
+            <div className="bg-white/5 border border-[#C9A84C]/10 backdrop-blur-sm rounded-2xl p-8">
               <h2 className="text-lg font-semibold text-white mb-6 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>How It Works</h2>
               <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
                 {[
@@ -346,7 +346,7 @@ export default function ReadinessAssessment() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Your organization's name"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30 focus:border-[#C9A84C]"
+                  className="bg-white/5 border-[#C9A84C]/10 text-white placeholder:text-white/30 focus:border-[#C9A84C]"
                 />
               </div>
 
@@ -405,7 +405,7 @@ export default function ReadinessAssessment() {
               </div>
 
               <div className="mb-8">
-                <div className="flex items-center justify-between text-sm text-[#6B7280] mb-2">
+                <div className="flex items-center justify-between text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mb-2">
                   <span>Question {currentQuestion + 1} of {questions.length}</span>
                   <span>{Math.round(((currentQuestion + 1) / questions.length) * 100)}%</span>
                 </div>
@@ -425,7 +425,7 @@ export default function ReadinessAssessment() {
                         ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
                         : answers[questions[idx].key]?.trim()
                         ? "bg-[#2B8A6E] text-white"
-                        : "bg-[#E8E4DC] dark:bg-white/5 text-[#6B7280] hover:bg-[#0A0F2E]/10"
+                        : "bg-[#E8E4DC] dark:bg-white/5 text-[#6B7280] dark:text-[#C9A84C]/60 hover:bg-[#0A0F2E]/10"
                     }`}
                   >
                     {answers[questions[idx].key]?.trim() && idx !== currentQuestion ? (
@@ -437,7 +437,7 @@ export default function ReadinessAssessment() {
                 ))}
               </div>
 
-              <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10`}>
+              <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10`}>
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
@@ -448,7 +448,7 @@ export default function ReadinessAssessment() {
                         {q.question}
                       </CardTitle>
                       {q.helper && (
-                        <p className="text-[#6B7280] dark:text-white/60 text-sm mt-1">{q.helper}</p>
+                        <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm mt-1">{q.helper}</p>
                       )}
                     </div>
                   </div>
@@ -462,7 +462,7 @@ export default function ReadinessAssessment() {
                             value={answers[q.key] || ""}
                             onChange={(e) => updateAnswer(q.key, e.target.value)}
                             placeholder={q.placeholder}
-                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
                             autoFocus
                           />
                         );
@@ -473,7 +473,7 @@ export default function ReadinessAssessment() {
                             value={answers[q.key] || ""}
                             onChange={(e) => updateAnswer(q.key, e.target.value)}
                             placeholder={q.placeholder}
-                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] text-lg py-6"
                             autoFocus
                           />
                         );
@@ -484,7 +484,7 @@ export default function ReadinessAssessment() {
                             onChange={(e) => updateAnswer(q.key, e.target.value)}
                             placeholder={q.placeholder}
                             rows={4}
-                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] resize-none text-lg"
+                            className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white placeholder:text-[#6B7280] focus:border-[#C9A84C] resize-none text-lg"
                             autoFocus
                           />
                         );
@@ -494,10 +494,10 @@ export default function ReadinessAssessment() {
                             value={answers[q.key] || ""}
                             onValueChange={(val) => updateAnswer(q.key, val)}
                           >
-                            <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white focus:border-[#C9A84C] text-lg py-6">
+                            <SelectTrigger className="bg-[#F8F7F4] dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white focus:border-[#C9A84C] text-lg py-6">
                               <SelectValue placeholder={q.placeholder} />
                             </SelectTrigger>
-                            <SelectContent className="bg-white dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-white/10">
+                            <SelectContent className="bg-white dark:bg-[#0A0F2E] border-[#E8E4DC] dark:border-[#C9A84C]/10">
                               {q.options!.map((opt) => (
                                 <SelectItem key={opt} value={opt} className="text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
                                   {opt}
@@ -519,7 +519,7 @@ export default function ReadinessAssessment() {
                                 className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
                                   answers[q.key] === opt
                                     ? `${domainConfig.bgLight} ${domainConfig.border}`
-                                    : "border-[#E8E4DC] dark:border-white/10 hover:border-[#6B7280]"
+                                    : "border-[#E8E4DC] dark:border-[#C9A84C]/10 hover:border-[#6B7280]"
                                 }`}
                                 onClick={() => updateAnswer(q.key, opt)}
                               >
@@ -559,7 +559,7 @@ export default function ReadinessAssessment() {
                       setCurrentQuestion(currentQuestion - 1);
                     }
                   }}
-                  className="border-[#E8E4DC] dark:border-white/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
+                  className="border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                 >
                   {currentQuestion === 0 ? "Back to Domains" : "Previous"}
                 </Button>

@@ -189,7 +189,7 @@ export default function IDEAFramework() {
               >
                 <span
                   className="font-serif font-bold text-5xl leading-none mb-2 group-hover:opacity-80 transition-opacity"
-                  style={{ color: i % 2 === 0 ? NAVY : TEAL }}
+                  style={{ color: (phase.name === 'IDENTIFY' || phase.name === 'ADVANCE') ? TEAL : (phase.name === 'DETECT' ? NAVY : GOLD) }}
                 >
                   {phase.letter}
                 </span>
@@ -203,6 +203,14 @@ export default function IDEAFramework() {
         {phases.map((phase, i) => {
           const Icon = phase.icon;
           const isEven = i % 2 === 0;
+          const phaseColorMap = {
+            'IDENTIFY': TEAL,
+            'DETECT': NAVY,
+            'EXECUTE': GOLD,
+            'ADVANCE': TEAL
+          };
+          const accentColor = (phaseColorMap as any)[phase.name] || (isEven ? NAVY : TEAL);
+
           return (
             <section
               key={phase.letter}
@@ -215,7 +223,7 @@ export default function IDEAFramework() {
                   <div className="md:w-56 shrink-0">
                     <div
                       className="font-serif font-bold leading-none mb-3"
-                      style={{ fontSize: 80, color: isEven ? NAVY : TEAL }}
+                      style={{ fontSize: 80, color: accentColor }}
                     >
                       {phase.letter}
                     </div>
@@ -242,7 +250,7 @@ export default function IDEAFramework() {
                       </Badge>
                     </div>
                     <div className="mt-6 text-center p-4 border rounded-none bg-white border-[#E8E4DC]">
-                      <div className="font-serif text-3xl font-bold" style={{ color: isEven ? NAVY : TEAL }}>
+                      <div className="font-serif text-3xl font-bold" style={{ color: accentColor }}>
                         {phase.metric.value}
                       </div>
                       <div className="text-xs text-gray-500 font-medium mt-0.5">{phase.metric.label}</div>

@@ -97,10 +97,10 @@ export default function WorkspaceAdvance() {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/mission-control">
-              <span className="text-[#0A0F2E] dark:text-white/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
-            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-white/40" />
-            <span className="text-[#2B8A6E] font-medium">ADVANCE</span>
+            <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
+            <span className="text-[#2B8A6E] font-medium uppercase tracking-wider">ADVANCE</span>
           </nav>
 
           {/* Header */}
@@ -112,11 +112,11 @@ export default function WorkspaceAdvance() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Retrospect Lab</h1>
-                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold">
+                  <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">
                     ADVANCE
                   </Badge>
                 </div>
-                <p className="text-[#6B7280] dark:text-white/60 mt-1">
+                <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                   Learn, improve, and strengthen organizational resilience
                 </p>
               </div>
@@ -129,7 +129,7 @@ export default function WorkspaceAdvance() {
                 </Button>
               </Link>
               <Link href="/executive-dashboard">
-                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-white/20">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-[#C9A84C]/20">
                   <BarChart3 className="h-4 w-4 mr-2" />
                   Dashboard
                 </Button>
@@ -138,11 +138,11 @@ export default function WorkspaceAdvance() {
           </div>
 
           {/* IDEA Progress Tracker - Complete */}
-          <Card className="mb-8 border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
+          <Card className="mb-8 border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">IDEA Framework Progress</h3>
-                <span className="text-sm text-[#6B7280]">Phase 4 of 4 - Continuous Loop</span>
+                <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Phase 4 of 4 - Continuous Loop</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex-1 flex items-center gap-2">
@@ -152,21 +152,21 @@ export default function WorkspaceAdvance() {
                       <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/detect">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
                       <Radar className="h-4 w-4 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E]">DETECT</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
                       <Compass className="h-4 w-4 text-[#C9A84C]" />
                       <span className="text-sm text-[#0A0F2E] font-medium">EXECUTE</span>
                     </div>
                   </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280]" />
+                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                   <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">ADVANCE</span>
@@ -179,20 +179,20 @@ export default function WorkspaceAdvance() {
           {/* Learning Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {learningMetrics.map((metric) => (
-              <Card key={metric.label} className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
                   </div>
                   <p className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{metric.value}</p>
-                  <p className="text-xs text-[#6B7280]">{metric.label}</p>
+                  <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">{metric.label}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           {/* Continuous Improvement Banner */}
-          <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-white/10">
+          <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-[#C9A84C]/10">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-[#0A0F2E]/10 dark:bg-white/10">
@@ -200,7 +200,7 @@ export default function WorkspaceAdvance() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Continuous Learning Loop</h3>
-                  <p className="text-[#6B7280] dark:text-white/60">Every execution makes your playbooks smarter and your team faster</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Every execution makes your playbooks smarter and your team faster</p>
                 </div>
               </div>
             </CardContent>
@@ -209,7 +209,7 @@ export default function WorkspaceAdvance() {
           {/* Recent Learnings */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Learnings</h2>
           <div className="space-y-3 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
@@ -221,14 +221,14 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-[#2B8A6E] text-white border-none">Pattern</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 89%</span>
-                      <Progress value={89} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
+                      <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Confidence: 89%</span>
+                      <Progress value={89} className="w-24 h-1.5 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
@@ -240,14 +240,14 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-[#2B8A6E] text-white border-none">Automation</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 96%</span>
-                      <Progress value={96} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
+                      <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Confidence: 96%</span>
+                      <Progress value={96} className="w-24 h-1.5 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-[#C9A84C]/10">
@@ -259,8 +259,8 @@ export default function WorkspaceAdvance() {
                       <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">Financial</Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-[#6B7280] dark:text-white/60">Confidence: 87%</span>
-                      <Progress value={87} className="w-24 h-1.5 [&>div]:bg-[#C9A84C]" />
+                      <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Confidence: 87%</span>
+                      <Progress value={87} className="w-24 h-1.5 bg-[#E8E4DC] dark:bg-white/10 [&>div]:bg-[#C9A84C]" />
                     </div>
                   </div>
                 </div>
@@ -273,7 +273,7 @@ export default function WorkspaceAdvance() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path + tool.title} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className={`p-3 rounded-xl ${tool.bgColor}`}>
@@ -284,12 +284,12 @@ export default function WorkspaceAdvance() {
                           <h3 className="font-semibold text-[#0A0F2E] dark:text-white group-hover:text-[#C9A84C] transition-colors">
                             {tool.title}
                           </h3>
-                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-white/40 group-hover:text-[#C9A84C] transition-colors" />
+                          <ChevronRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40 group-hover:text-[#C9A84C] transition-colors" />
                         </div>
-                        <p className="text-sm text-[#6B7280] dark:text-white/60 mt-1">
+                        <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
                           {tool.description}
                         </p>
-                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-white/10 text-[#6B7280] dark:text-[#C9A84C]">
+                        <Badge variant="outline" className="mt-3 text-xs border-[#E8E4DC] dark:border-[#C9A84C]/10 text-[#6B7280] dark:text-[#C9A84C]">
                           {tool.stats}
                         </Badge>
                       </div>

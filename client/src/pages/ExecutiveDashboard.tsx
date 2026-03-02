@@ -226,6 +226,8 @@ export default function ExecutiveDashboard() {
     return 'text-[#dc2626]';
   };
 
+  const scoreValueColor = getScoreColor(friScore);
+
   const organizationId = organizations[0]?.id || 'demo-org-1';
 
   return (
@@ -290,7 +292,7 @@ export default function ExecutiveDashboard() {
                 <CardContent className="p-0">
                   <div className="flex flex-col lg:flex-row items-stretch">
                     <div style={{ background: "#F8F7F4", borderRight: "1px solid #E8E4DC" }} className="p-12 text-center lg:w-1/3">
-                      <div style={{ ...CG, fontSize: "64px", fontWeight: 600 }} className={getScoreColor(friScore)}>
+                      <div style={{ ...CG, fontSize: "64px", fontWeight: 600 }} className={scoreValueColor}>
                         {friScore.toFixed(1)}%
                       </div>
                       <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280] mt-2">Future Readiness Index™</div>
