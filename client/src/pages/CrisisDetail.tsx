@@ -187,7 +187,7 @@ export default function CrisisDetail() {
       case 'high': return 'bg-[#DC2626]/10 text-[#DC2626]';
       case 'medium': return `bg-[#C9A84C]/10 text-[#C9A84C]`;
       case 'low': return `bg-[#2B8A6E]/10 text-[#2B8A6E]`;
-      default: return 'bg-[#F8F7F4] text-gray-700';
+      default: return 'bg-[#F8F7F4] text-[#6B7280]';
     }
   };
 
@@ -524,8 +524,8 @@ export default function CrisisDetail() {
                       <div className="w-2 h-2 bg-[#0A0F2E] rounded-full mt-2"></div>
                       <div className="flex-1 page-background">
                         <div className="text-sm font-medium">Crisis Detected</div>
-                        <div className="text-xs text-gray-800">{new Date(crisis.createdAt).toLocaleString()}</div>
-                        <div className="text-sm text-gray-800 mt-1">Initial crisis scenario created and logged</div>
+                        <div className="text-xs text-[#6B7280]">{new Date(crisis.createdAt).toLocaleString()}</div>
+                        <div className="text-sm text-[#0A0F2E] mt-1">Initial crisis scenario created and logged</div>
                       </div>
                     </div>
                     
@@ -534,8 +534,8 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-[#C9A84C] rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Response Activated</div>
-                          <div className="text-xs text-gray-800">{new Date().toLocaleString()}</div>
-                          <div className="text-sm text-gray-800 mt-1">Emergency response protocols initiated</div>
+                          <div className="text-xs text-[#6B7280]">{new Date().toLocaleString()}</div>
+                          <div className="text-sm text-[#0A0F2E] mt-1">Emergency response protocols initiated</div>
                         </div>
                       </div>
                     )}
@@ -545,8 +545,8 @@ export default function CrisisDetail() {
                         <div className="w-2 h-2 bg-[#2B8A6E] rounded-full mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Crisis Resolved</div>
-                          <div className="text-xs text-gray-800">{new Date(crisis.updatedAt).toLocaleString()}</div>
-                          <div className="text-sm text-gray-800 mt-1">All critical tasks completed, situation stabilized</div>
+                          <div className="text-xs text-[#6B7280]">{new Date(crisis.updatedAt).toLocaleString()}</div>
+                          <div className="text-sm text-[#0A0F2E] mt-1">All critical tasks completed, situation stabilized</div>
                         </div>
                       </div>
                     )}
@@ -557,32 +557,32 @@ export default function CrisisDetail() {
 
             <TabsContent value="analysis" className="space-y-4">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card>
+                <Card className="rounded-none border-[#E8E4DC]">
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5" />
+                    <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
+                      <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
                       Response Performance
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center text-[#0A0F2E]">
                       <span className="text-sm">Task Completion Rate</span>
                       <span className="font-semibold">{Math.round(progressPercentage)}%</span>
                     </div>
-                    <Progress value={progressPercentage} className="h-2" />
+                    <Progress value={progressPercentage} className="h-2 bg-[#E8E4DC] [&>div]:bg-[#2B8A6E]" />
                     
                     <div className="pt-4 space-y-3">
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-800">Response Speed</span>
-                        <Badge variant="outline">Excellent</Badge>
+                        <span className="text-sm text-[#6B7280]">Response Speed</span>
+                        <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/20 bg-[#2B8A6E]/5 rounded-none uppercase text-[10px] tracking-widest font-bold">Excellent</Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-800">Team Coordination</span>
-                        <Badge variant="outline">Good</Badge>
+                        <span className="text-sm text-[#6B7280]">Team Coordination</span>
+                        <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C]/20 bg-[#C9A84C]/5 rounded-none uppercase text-[10px] tracking-widest font-bold">Good</Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-sm text-gray-800">Resource Efficiency</span>
-                        <Badge variant="outline">Very Good</Badge>
+                        <span className="text-sm text-[#6B7280]">Resource Efficiency</span>
+                        <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/20 bg-[#2B8A6E]/5 rounded-none uppercase text-[10px] tracking-widest font-bold">Very Good</Badge>
                       </div>
                     </div>
                   </CardContent>

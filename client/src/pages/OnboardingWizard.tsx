@@ -338,7 +338,7 @@ export default function OnboardingWizard() {
                       style={{ 
                         width: 32, 
                         height: 32, 
-                        background: isCurrent ? "#0A0F2E" : isCompleted ? "#2B8A6E" : "#F8F7F4",
+                        background: isCurrent ? "#0A0F2E" : isCompleted ? "#2B8A6E" : "#E8E4DC",
                         border: isCurrent ? "none" : isCompleted ? "none" : "1px solid #E8E4DC",
                         display: "flex",
                         alignItems: "center",

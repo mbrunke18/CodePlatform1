@@ -218,7 +218,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                         <div className="flex items-start justify-between mb-4">
                           <div>
                             <h4 className="font-bold text-[#0A0F2E] text-lg" style={CG}>{gap.category}</h4>
-                            <Badge className={`mt-2 border-none ${gap.severity === 'high' ? 'bg-red-500 text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'} font-bold uppercase tracking-wider text-[10px]`}>
+                            <Badge className={`mt-2 border-none ${gap.severity === 'high' ? 'bg-[#0A0F2E] text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'} font-bold uppercase tracking-wider text-[10px]`}>
                               {gap.severity} priority gap
                             </Badge>
                           </div>

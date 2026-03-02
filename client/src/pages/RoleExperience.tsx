@@ -274,7 +274,7 @@ const ROLES: Record<string, RoleData> = {
     icon: Settings, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'Supply Chain Disruption — Critical Vendor Data Center Outage',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
-    playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, responseTime: '24 seconds', budget: '$200K' },
+    playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, stakeholders: 24, budget: '$200K' },
     triggers: [
       { name: 'Vendor SLA Breach Alert', source: 'ServiceNow + Datadog', type: 'Automated Infrastructure' },
       { name: 'Customer Impact Threshold', source: 'Zendesk + Statuspage', type: 'Automated Customer Impact' },
@@ -875,7 +875,7 @@ export default function RoleExperience() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring' }}>
-              <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-4" />
+              <CheckCircle2 className="h-16 w-16 text-[#2B8A6E] mx-auto mb-4" />
             </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configuration Summary</h2>
             <p className="text-gray-800">Review your setup before launching the execution</p>
@@ -983,7 +983,7 @@ export default function RoleExperience() {
               <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Playbook #{role.playbook.number}</span>
               <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#0A0F2E]" /> {role.playbook.stakeholders} stakeholders</span>
               <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-amber-400" /> {role.playbook.tasks} tasks</span>
-              <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-green-400" /> {role.playbook.budget} budget</span>
+              <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-[#2B8A6E]" /> {role.playbook.budget} budget</span>
             </motion.div>
           </div>
         );
@@ -1122,7 +1122,7 @@ export default function RoleExperience() {
                       <div className="flex items-center gap-2">
                         <Switch checked={trigger.enabled}
                           onCheckedChange={checked => setUserTriggers(prev => prev.map((t, j) => j === i ? { ...t, enabled: checked } : t))} />
-                        <span className={`text-xs ${trigger.enabled ? 'text-green-400' : 'text-gray-800'}`}>{trigger.enabled ? 'Enabled' : 'Disabled'}</span>
+                        <span className={`text-xs ${trigger.enabled ? 'text-[#2B8A6E]' : 'text-gray-800'}`}>{trigger.enabled ? 'Enabled' : 'Disabled'}</span>
                       </div>
                     </div>
                     <button onClick={() => setUserTriggers(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
@@ -1277,8 +1277,8 @@ export default function RoleExperience() {
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
                 className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-xl p-3 text-center">
-                <CheckCircle2 className="h-4 w-4 text-green-400 inline mr-2" />
-                <span className="text-sm text-green-400 font-medium">Configuration Complete — Ready to launch execution</span>
+                <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] inline mr-2" />
+                <span className="text-sm text-[#2B8A6E] font-medium">Configuration Complete — Ready to launch execution</span>
               </motion.div>
             )}
             <div className="space-y-4 mb-6">
@@ -1536,7 +1536,7 @@ export default function RoleExperience() {
                       >
                         <div className="w-12 text-right font-mono text-xs text-gray-800">{task.time}</div>
                         <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
-                          <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-green-400' : 'text-slate-700'}`} />
+                          <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-[#2B8A6E]' : 'text-slate-700'}`} />
                         </div>
                         <div className="flex-1">
                           <div className={`text-sm font-medium ${isActive ? 'text-gray-900' : 'text-gray-800'}`}>{task.task}</div>

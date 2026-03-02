@@ -363,10 +363,10 @@ export default function PilotProgram() {
         </section>
 
         {/* What's Included */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-[#0A0F2E]/50">
+        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#0A0F2E]/50">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-inclusions">
+              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-inclusions">
                 What's Included
               </h2>
               <p className="text-lg text-gray-800 dark:text-slate-300">
@@ -405,7 +405,7 @@ export default function PilotProgram() {
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-candidates">
+              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-candidates">
                 Ideal Pilot Candidates
               </h2>
               <p className="text-lg text-gray-800 dark:text-slate-300">
@@ -418,12 +418,12 @@ export default function PilotProgram() {
                 <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-candidate-${i}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-slate-100 dark:bg-[#141B45]">
+                      <div className="p-2 rounded-lg bg-[#F8F7F4] dark:bg-[#141B45]">
                         <candidate.icon className="w-5 h-5 text-gray-800 dark:text-slate-300" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-semibold text-slate-900 dark:text-white">{candidate.criteria}</h3>
+                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white">{candidate.criteria}</h3>
                           <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-[#0A0F2E] text-white' : ''}>
                             {candidate.importance}
                           </Badge>
@@ -489,7 +489,7 @@ export default function PilotProgram() {
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-conversion">
+              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-conversion">
                 Pilot to Production Path
               </h2>
               <p className="text-lg text-gray-800 dark:text-slate-300">
@@ -499,12 +499,12 @@ export default function PilotProgram() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {conversionTerms.map((term, i) => (
-                <Card key={i} className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#141B45] dark:to-[#0A0F2E] border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
+                <Card key={i} className="bg-gradient-to-br from-[#F8F7F4] to-[#F8F7F4] dark:from-[#141B45] dark:to-[#0A0F2E] border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
                   <CardContent className="p-6 text-center">
-                    <div className="p-3 rounded-xl bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 inline-block mb-4">
+                    <div className="p-3 rounded-xl bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 inline-block mb-4">
                       <term.icon className="w-6 h-6 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                     </div>
-                    <h3 className="font-bold text-slate-900 dark:text-white mb-2">{term.term}</h3>
+                    <h3 className="font-bold text-[#0A0F2E] dark:text-white mb-2">{term.term}</h3>
                     <p className="text-sm text-gray-800 dark:text-slate-300">{term.description}</p>
                   </CardContent>
                 </Card>
@@ -514,7 +514,7 @@ export default function PilotProgram() {
         </section>
 
         {/* Success Stories Preview */}
-        <section className="py-16 px-6 bg-slate-100 dark:bg-[#0A0F2E]/50">
+        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#0A0F2E]/50">
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden" data-testid="card-success-preview">
               <CardContent className="p-8">
@@ -526,25 +526,25 @@ export default function PilotProgram() {
                     <Badge className="mb-3 bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-slate-300">
                       Pilot Success Target
                     </Badge>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                    <h3 className="text-2xl font-bold text-[#0A0F2E] dark:text-white mb-4">
                       What Success Looks Like
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-slate-700 dark:text-slate-300">At least 1 live activation under 15 minutes</span>
+                        <span className="text-gray-800 dark:text-slate-300">At least 1 live activation under 15 minutes</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-slate-700 dark:text-slate-300">5+ playbooks customized and operational</span>
+                        <span className="text-gray-800 dark:text-slate-300">5+ playbooks customized and operational</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-slate-700 dark:text-slate-300">Quantified ROI with executive sign-off</span>
+                        <span className="text-gray-800 dark:text-slate-300">Quantified ROI with executive sign-off</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-slate-700 dark:text-slate-300">Clear expansion plan for enterprise rollout</span>
+                        <span className="text-gray-800 dark:text-slate-300">Clear expansion plan for enterprise rollout</span>
                       </div>
                     </div>
                   </div>
@@ -557,7 +557,7 @@ export default function PilotProgram() {
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4" data-testid="heading-cta">
+            <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-cta">
               Ready to Validate Strategic Execution?
             </h2>
             <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
@@ -566,7 +566,7 @@ export default function PilotProgram() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-[#2B8A6E] hover:bg-[#256B56]"
+                className="bg-[#2B8A6E] hover:bg-[#3BAF8A]"
                 onClick={() => setLocation('/contact')}
                 data-testid="button-cta-apply"
               >
@@ -576,6 +576,7 @@ export default function PilotProgram() {
               <Button 
                 size="lg" 
                 variant="outline"
+                className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white"
                 onClick={() => setLocation('/competitive-positioning')}
                 data-testid="button-cta-positioning"
               >
@@ -584,7 +585,7 @@ export default function PilotProgram() {
               </Button>
             </div>
             <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
-              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#0A0F2E]">pilots@m-strategic.com</span>
+              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">pilots@m-strategic.com</span>
             </p>
           </div>
         </section>

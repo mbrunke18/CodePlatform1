@@ -42,7 +42,7 @@ export default function MarketingLanding() {
   }, []);
 
   return (
-    <div className="page-background min-h-screen bg-white">
+    <div className="page-background min-h-screen bg-[#F8F7F4]">
       <StandardNav />
 
       {/* Hero Section */}

@@ -495,10 +495,10 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <TabsContent value="departments" className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900">Department Structure</h2>
-                  <p className="text-sm text-gray-800">Define your organization's departments and reporting structure</p>
+                  <h2 className="text-xl font-semibold text-[#0A0F2E]">Department Structure</h2>
+                  <p className="text-sm text-[#6B7280]">Define your organization's departments and reporting structure</p>
                 </div>
-                <Button onClick={() => setIsDepartmentDialogOpen(true)} data-testid="button-add-department">
+                <Button onClick={() => setIsDepartmentDialogOpen(true)} data-testid="button-add-department" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Department
                 </Button>
@@ -506,31 +506,31 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {departments.map((dept) => (
-                  <Card key={dept.id} className="bg-gray-50 border-gray-200 hover:border-[#C9A84C]/50 transition-all">
+                  <Card key={dept.id} className="bg-[#F8F7F4] border-[#E8E4DC] hover:border-[#C9A84C]/50 transition-all rounded-none">
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between">
                         <div>
-                          <h3 className="font-semibold text-gray-900">{dept.name}</h3>
-                          <p className="text-sm text-gray-800 mt-1">{dept.description}</p>
+                          <h3 className="font-semibold text-[#0A0F2E]">{dept.name}</h3>
+                          <p className="text-sm text-[#6B7280] mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:bg-[#0A0F2E] hover:text-white">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-red-500">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#0A0F2E] hover:text-red-600 rounded-none">
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
                       </div>
                       <div className="mt-4 flex items-center gap-4 text-sm">
                         {dept.headcount && (
-                          <div className="flex items-center gap-1 text-gray-800">
+                          <div className="flex items-center gap-1 text-[#6B7280]">
                             <Users className="h-4 w-4" />
                             <span>{dept.headcount}</span>
                           </div>
                         )}
                         {dept.leaderName && (
-                          <div className="flex items-center gap-1 text-gray-800">
+                          <div className="flex items-center gap-1 text-[#6B7280]">
                             <UserCircle className="h-4 w-4" />
                             <span>{dept.leaderName}</span>
                           </div>

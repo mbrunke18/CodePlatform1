@@ -192,19 +192,19 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function RoleSelector({ embedded }: { embedded?: boolean }) {
   return (
     <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-white text-gray-900">
+      <div className="min-h-screen bg-[#F8F7F4] text-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Users className="w-8 h-8 text-[#2B8A6E]" />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+              <h1 style={{...CG}} className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                 Your Execution OS Workspace
               </h1>
             </div>
-            <p className="text-lg md:text-xl text-gray-800 max-w-3xl mx-auto mb-6">
+            <p className="text-lg md:text-xl text-[#6B7280] max-w-3xl mx-auto mb-6">
               Select your role to configure Execution OS with the playbooks, signals, and dashboards most relevant to your responsibilities.
             </p>
-            <div className="flex items-center justify-center gap-6 text-sm text-gray-800">
+            <div className="flex items-center justify-center gap-6 text-sm text-[#6B7280]">
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#2B8A6E]" /> Professional workspace</span>
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Role-specific playbooks</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#C9A84C]" /> Tailored signal feeds</span>
@@ -214,7 +214,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           <div className="mb-8">
             <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">
               <Link to="/dashboard">
-                <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] p-1 h-auto">
+                <Button variant="ghost" size="sm" className="text-[#0A0F2E] hover:text-[#C9A84C] hover:bg-transparent p-1 h-auto">
                   <Home className="h-4 w-4" />
                 </Button>
               </Link>

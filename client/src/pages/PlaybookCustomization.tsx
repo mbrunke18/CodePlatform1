@@ -216,8 +216,8 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           {/* Template Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredTemplates.map(template => {
-              const isOffense = template.category === 'market' || template.category === 'competitive' || template.category === 'growth';
-              const isDefense = template.category === 'crisis' || template.category === 'regulatory' || template.category === 'operational' || template.category === 'technology';
+              const isOffense = template.category === 'market' || template.category === 'competitive' || template.category === 'growth' || template.domain.includes('Financial') || template.domain.includes('Market');
+              const isDefense = template.category === 'crisis' || template.category === 'regulatory' || template.category === 'operational' || template.category === 'technology' || template.domain.includes('Crisis') || template.domain.includes('Regulatory') || template.domain.includes('Security');
               const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
               
               return (

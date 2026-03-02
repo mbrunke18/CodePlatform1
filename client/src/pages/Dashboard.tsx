@@ -261,9 +261,9 @@ export default function Dashboard() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <div className="divide-y divide-[#E8E4DC]">
+          <div className="divide-y divide-[#E8E4DC]">
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, marginTop: 6 }} />
+                      <div className="w-2 h-2 rounded-none bg-[#2B8A6E] mt-1.5" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Weak signal detected</span>
@@ -273,7 +273,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div style={{ width: 8, height: 8, borderRadius: 0, background: NAVY, marginTop: 6 }} />
+                      <div className="w-2 h-2 rounded-none bg-[#0A0F2E] mt-1.5" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>

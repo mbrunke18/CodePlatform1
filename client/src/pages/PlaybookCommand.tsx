@@ -104,8 +104,8 @@ export default function PlaybookCommand() {
     );
   }
 
-  const isOffense = playbook.primaryExecutiveRole?.toLowerCase().includes('sales') || playbook.primaryExecutiveRole?.toLowerCase().includes('marketing') || playbook.primaryExecutiveRole?.toLowerCase().includes('growth') || playbook.primaryExecutiveRole?.toLowerCase().includes('finance') || playbook.primaryExecutiveRole?.toLowerCase().includes('m&a');
-  const isDefense = playbook.primaryExecutiveRole?.toLowerCase().includes('security') || playbook.primaryExecutiveRole?.toLowerCase().includes('risk') || playbook.primaryExecutiveRole?.toLowerCase().includes('legal') || playbook.primaryExecutiveRole?.toLowerCase().includes('compliance') || playbook.primaryExecutiveRole?.toLowerCase().includes('ops') || playbook.primaryExecutiveRole?.toLowerCase().includes('hr') || playbook.primaryExecutiveRole?.toLowerCase().includes('technology');
+  const isOffense = playbook.primaryExecutiveRole?.toLowerCase().includes('sales') || playbook.primaryExecutiveRole?.toLowerCase().includes('marketing') || playbook.primaryExecutiveRole?.toLowerCase().includes('growth') || playbook.primaryExecutiveRole?.toLowerCase().includes('finance') || playbook.primaryExecutiveRole?.toLowerCase().includes('m&a') || playbook.name?.toLowerCase().includes('pricing') || playbook.name?.toLowerCase().includes('market');
+  const isDefense = playbook.primaryExecutiveRole?.toLowerCase().includes('security') || playbook.primaryExecutiveRole?.toLowerCase().includes('risk') || playbook.primaryExecutiveRole?.toLowerCase().includes('legal') || playbook.primaryExecutiveRole?.toLowerCase().includes('compliance') || playbook.primaryExecutiveRole?.toLowerCase().includes('ops') || playbook.primaryExecutiveRole?.toLowerCase().includes('hr') || playbook.primaryExecutiveRole?.toLowerCase().includes('technology') || playbook.name?.toLowerCase().includes('incident') || playbook.name?.toLowerCase().includes('breach');
   const badgeColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
   const badgeBg = isOffense ? "rgba(43, 138, 110, 0.1)" : isDefense ? "rgba(10, 15, 46, 0.1)" : "rgba(201, 168, 76, 0.1)";
 

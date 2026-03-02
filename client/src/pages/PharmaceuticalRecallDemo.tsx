@@ -116,8 +116,8 @@ export default function PharmaceuticalRecallDemo() {
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1-3: Internal investigation</li>
                     <li>• Week 4 (May): Quietly notified wholesalers only</li>
-                    <li className="text-red-400 font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
-                    <li className="text-red-500 font-bold">• Week 5: Patient dies from lethal potassium levels</li>
+                    <li className="text-[#C9A84C] font-semibold">• Week 5: 91-year-old patient takes defective capsules</li>
+                    <li className="text-[#C9A84C] font-bold">• Week 5: Patient dies from lethal potassium levels</li>
                     <li>• Week 6 (June): Public announcement</li>
                     <li className="text-white/40">• Family learns weeks later medication killed their loved one</li>
                   </ul>

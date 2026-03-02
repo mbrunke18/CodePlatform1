@@ -105,7 +105,7 @@ export default function PilotMonitoring() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white" data-testid="heading-pilot-monitoring">
+            <h1 className="text-4xl font-bold text-[#0A0F2E] dark:text-white" data-testid="heading-pilot-monitoring">
               Pilot Program Monitoring
             </h1>
             <Badge className={`text-base px-4 py-2 ${
@@ -130,7 +130,7 @@ export default function PilotMonitoring() {
                 <div className="text-sm text-gray-800 dark:text-slate-300">Uptime</div>
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-1">
                 {systemHealth.uptime}%
               </div>
               <div className="text-xs text-gray-800">Last 30 days</div>
@@ -143,7 +143,7 @@ export default function PilotMonitoring() {
                 <div className="text-sm text-gray-800 dark:text-slate-300">Avg Response</div>
                 <Clock className="w-5 h-5 text-[#0A0F2E]" />
               </div>
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-1">
                 {systemHealth.avgResponseTime}ms
               </div>
               <div className="text-xs text-gray-800">Target: {'<'} 200ms</div>
@@ -156,7 +156,7 @@ export default function PilotMonitoring() {
                 <div className="text-sm text-gray-800 dark:text-slate-300">Active Users</div>
                 <Users className="w-5 h-5 text-[#C9A84C]" />
               </div>
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-1">
                 {systemHealth.activeUsers}
               </div>
               <div className="text-xs text-gray-800">Currently online</div>
@@ -169,7 +169,7 @@ export default function PilotMonitoring() {
                 <div className="text-sm text-gray-800 dark:text-slate-300">Executions</div>
                 <Zap className="w-5 h-5 text-[#2B8A6E]" />
               </div>
-              <div className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
+              <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-1">
                 {pilotMetrics.executionsCompleted}
               </div>
               <div className="text-xs text-gray-800">Total completed</div>
@@ -181,7 +181,7 @@ export default function PilotMonitoring() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                 <Users className="w-5 h-5 text-[#0A0F2E]" />
                 Pilot Company Status
               </CardTitle>
@@ -189,7 +189,7 @@ export default function PilotMonitoring() {
             <CardContent>
               <div className="grid grid-cols-3 gap-4 mb-6">
                 <div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white">
+                  <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">
                     {pilotMetrics.totalPilots}
                   </div>
                   <div className="text-sm text-gray-800 dark:text-slate-300">Total Pilots</div>
@@ -212,18 +212,18 @@ export default function PilotMonitoring() {
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-gray-800 dark:text-slate-300">Adoption Rate</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">70%</span>
+                    <span className="font-semibold text-[#0A0F2E] dark:text-white">70%</span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
+                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] rounded-full h-2">
                     <div className="bg-[#2B8A6E] h-2 rounded-full" style={{ width: '70%' }}></div>
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-gray-800 dark:text-slate-300">Average Engagement</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">85%</span>
+                    <span className="font-semibold text-[#0A0F2E] dark:text-white">85%</span>
                   </div>
-                  <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
+                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] rounded-full h-2">
                     <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ export default function PilotMonitoring() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                 <BarChart3 className="w-5 h-5 text-[#C9A84C]" />
                 Platform Usage
               </CardTitle>
@@ -243,21 +243,21 @@ export default function PilotMonitoring() {
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Scenarios Created</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.scenariosCreated}</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">{pilotMetrics.scenariosCreated}</div>
                   </div>
                   <TrendingUp className="w-8 h-8 text-[#2B8A6E]" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Triggers Configured</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.triggersConfigured}</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">{pilotMetrics.triggersConfigured}</div>
                   </div>
                   <TrendingUp className="w-8 h-8 text-[#0A0F2E]" />
                 </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">Avg Execution Time</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">{pilotMetrics.avgExecutionTime} min</div>
                   </div>
                   <Badge className="bg-[#2B8A6E] text-white">
                     Target: 12 min
@@ -271,21 +271,21 @@ export default function PilotMonitoring() {
         {/* Performance Metrics */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Performance Metrics</CardTitle>
+            <CardTitle className="text-[#0A0F2E]">Performance Metrics</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               {performanceMetrics.map((metric, index) => (
-                <div key={index} className="card-bg rounded-lg p-4">
+                <div key={index} className="bg-[#F8F7F4] dark:bg-[#141B45] rounded-lg p-4 border border-[#E8E4DC]">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                       {metric.label}
                     </div>
                     <CheckCircle2 className={`w-5 h-5 ${
-                      metric.status === 'good' ? 'text-[#2B8A6E]' : 'text-yellow-600'
+                      metric.status === 'good' ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'
                     }`} />
                   </div>
-                  <div className="text-2xl font-bold text-slate-900 dark:text-white mb-1">
+                  <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white mb-1">
                     {metric.value}
                   </div>
                   <div className="text-xs text-gray-800">
@@ -300,21 +300,21 @@ export default function PilotMonitoring() {
         {/* Recent Activity */}
         <Card>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
+            <CardTitle className="text-[#0A0F2E]">Recent Activity</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {recentActivity.map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-[#0A0F2E] rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-[#F8F7F4] dark:bg-[#0A0F2E] rounded-lg border border-[#E8E4DC]">
                   <div className="flex-shrink-0 mt-1">
                     {activity.success ? (
                       <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
                     ) : (
-                      <AlertCircle className="w-5 h-5 text-yellow-600" />
+                      <AlertCircle className="w-5 h-5 text-[#C9A84C]" />
                     )}
                   </div>
-                  <div className="flex-1 page-background">
-                    <div className="font-semibold text-slate-900 dark:text-white text-sm">
+                  <div className="flex-1">
+                    <div className="font-semibold text-[#0A0F2E] dark:text-white text-sm">
                       {activity.pilot}
                     </div>
                     <div className="text-sm text-gray-800 dark:text-slate-300">

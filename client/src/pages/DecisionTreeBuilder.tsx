@@ -408,7 +408,7 @@ export default function DecisionTreeBuilder() {
                         variant="ghost" 
                         size="sm"
                         onClick={() => removeOption(option.id)}
-                        className="text-red-600 hover:text-red-700 hover:bg-transparent ml-4"
+                        className="text-[#DC2626] hover:text-[#DC2626]/80 hover:bg-transparent ml-4"
                       >
                         <Trash2 className="h-5 w-5" />
                       </Button>

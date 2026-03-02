@@ -214,7 +214,7 @@ export default function AgilityAssessment() {
                     {score < 60 ? (
                       <div className="text-left space-y-3">
                         <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
-                          Your organization is likely taking <span className="text-red-600 font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
+                          Your organization is likely taking <span className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">longer than 3.8 years</span> to see meaningful agility improvements.
                         </p>
                         <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-[#C9A84C] font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.

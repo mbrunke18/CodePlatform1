@@ -116,8 +116,8 @@ export default function RetailFoodSafetyDemo() {
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1: QA detects contamination, internal investigation</li>
                     <li>• Week 1 End: Quietly notify wholesalers only</li>
-                    <li className="text-red-400 font-semibold">• During gap: 50+ customers consume contaminated lettuce</li>
-                    <li className="text-red-500 font-bold">• During gap: Hospitalizations begin</li>
+                    <li className="text-[#C9A84C] font-semibold">• During gap: 50+ customers consume contaminated lettuce</li>
+                    <li className="text-[#C9A84C] font-bold">• During gap: Hospitalizations begin</li>
                     <li>• Week 2: Public recall finally announced</li>
                     <li className="text-white/40">• Month 1-2: $200M in lawsuits, FDA warning letter</li>
                   </ul>

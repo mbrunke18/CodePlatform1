@@ -230,19 +230,19 @@ export default function OneClickDemo() {
               <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-red-600 mb-2">2.4M</div>
-                  <div className="text-sm text-gray-800">Customers Impacted</div>
+                  <div className="text-sm text-[#0A0F2E]">Customers Impacted</div>
                 </CardContent>
               </Card>
               <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2">$50M</div>
-                  <div className="text-sm text-gray-800">Potential Fine</div>
+                  <div className="text-sm text-[#0A0F2E]">Potential Fine</div>
                 </CardContent>
               </Card>
               <Card className="bg-white border-[#E8E4DC]">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl font-bold text-[#2B8A6E] mb-2">12 min</div>
-                  <div className="text-sm text-gray-800">Target Response Time</div>
+                  <div className="text-sm text-[#0A0F2E]">Target Response Time</div>
                 </CardContent>
               </Card>
             </div>

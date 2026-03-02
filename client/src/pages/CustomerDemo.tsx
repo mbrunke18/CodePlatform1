@@ -52,8 +52,8 @@ const IDEA_STORY = [
     phase: "PROBLEM",
     phaseColor: "bg-[#0A0F2E]",
     icon: AlertTriangle,
-    color: "text-red-400",
-    bgColor: "bg-red-900/20",
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/20",
     time: 0,
     description: "A ransomware attack hits at 2 AM. A competitor announces a major acquisition. A regulatory change requires immediate response. In each case, your team spends the first 20-50 hours figuring out who does what, what documents exist, and what budgets are available.",
     roleWins: [

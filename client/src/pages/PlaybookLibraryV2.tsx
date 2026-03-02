@@ -206,7 +206,7 @@ function CompoundDisruptionSection() {
             const Icon = item.icon;
             const isExpanded = expandedScenario === i;
             const isOffense = item.domains.includes("Financial") || item.scenario.includes("AI") || item.domains.includes("Growth") || item.domains.includes("Market") || item.scenario.includes("M&A");
-            const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate");
+            const isDefense = item.domains.includes("Crisis") || item.scenario.includes("Regulatory") || item.scenario.includes("Cyber") || item.scenario.includes("Climate") || item.domains.includes("Technology") || item.domains.includes("Talent");
             const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
             return (
               <div

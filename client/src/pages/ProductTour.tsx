@@ -580,7 +580,7 @@ export default function ProductTour() {
           >
             <Button 
               size="lg" 
-              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 rounded-none font-bold uppercase tracking-[0.2em] text-xs shadow-xl transition-all hover:scale-105"
+              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 rounded-none font-bold uppercase tracking-[0.2em] text-xs shadow-xl transition-all"
               onClick={() => setLocation('/try-demo')}
             >
               <Play className="mr-3 h-5 w-5" />

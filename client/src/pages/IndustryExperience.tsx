@@ -386,7 +386,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
   },
   'retail-contamination': {
     id: 'retail-contamination', title: 'Food Contamination Response', organization: 'Walmart Inc.',
-    industry: 'Retail', icon: ShoppingCart, color: 'text-green-400', gradient: 'from-[#2B8A6E] to-[#0A0F2E]',
+    industry: 'Retail', icon: ShoppingCart, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#0A0F2E]',
     scenario: 'Salmonella Contamination — 847 Stores, 23 States, 12,847 Customers Affected',
     domain: 'Crisis Management', domainCategory: 'DEFENSE',
     playbook: { number: '095', name: 'Food Product Recall — Contamination Response', tasks: 42, stakeholders: 5000, budget: '$12M' },
@@ -656,7 +656,7 @@ export default function IndustryExperience() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring' }}>
-              <CheckCircle2 className="h-16 w-16 text-green-400 mx-auto mb-4" />
+              <CheckCircle2 className="h-16 w-16 text-[#2B8A6E] mx-auto mb-4" />
             </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configuration Summary</h2>
             <p className="text-gray-800 dark:text-slate-200">Review your {industry.organization} setup before launching</p>
@@ -764,7 +764,7 @@ export default function IndustryExperience() {
               <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Playbook #{industry.playbook.number}</span>
               <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#0A0F2E]" /> {industry.playbook.stakeholders.toLocaleString()} stakeholders</span>
               <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-amber-400" /> {industry.playbook.tasks} tasks</span>
-              <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-green-400" /> {industry.playbook.budget} budget</span>
+              <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-[#2B8A6E]" /> {industry.playbook.budget} budget</span>
             </motion.div>
           </div>
         );
@@ -1362,8 +1362,8 @@ export default function IndustryExperience() {
                         </div>
                         {i <= activationStep && (
                           <div className="flex items-center gap-1">
-                            <CheckCircle2 className="h-3 w-3 text-green-400" />
-                            <span className="text-[10px] text-green-400">{s.responseTime}</span>
+                            <CheckCircle2 className="h-3 w-3 text-[#2B8A6E]" />
+                            <span className="text-[10px] text-[#2B8A6E]">{s.responseTime}</span>
                           </div>
                         )}
                       </motion.div>
@@ -1376,7 +1376,7 @@ export default function IndustryExperience() {
                     <div>
                       <div className="flex justify-between text-xs mb-1">
                         <span className="text-gray-800 dark:text-slate-200">Tasks</span>
-                        <span className="text-green-400">{Math.min(activationStep + 1, allExecutionTasks.length)}/{allExecutionTasks.length}</span>
+                        <span className="text-[#2B8A6E]">{Math.min(activationStep + 1, allExecutionTasks.length)}/{allExecutionTasks.length}</span>
                       </div>
                       <Progress value={((activationStep + 1) / allExecutionTasks.length) * 100} className="h-2" />
                     </div>

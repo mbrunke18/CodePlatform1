@@ -19,7 +19,9 @@ import {
   Shield,
   Rocket,
   Globe,
-  Radar
+  Radar,
+  Compass,
+  TrendingUp
 } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 
@@ -158,12 +160,14 @@ export default function WorkspaceIdentify() {
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/execute">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201, 168, 76, 0.2)" }}>
-                      <span className="text-sm text-[#C9A84C]">EXECUTE</span>
+                      <Compass className="h-4 w-4 text-[#C9A84C]" />
+                      <span className="text-sm text-[#0A0F2E]">EXECUTE</span>
                     </div>
                   </Link>
                   <ArrowRight className="h-4 w-4 text-[#6B7280]" />
                   <Link href="/workspaces/advance">
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
+                      <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                       <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
                     </div>
                   </Link>

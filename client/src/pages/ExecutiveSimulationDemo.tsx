@@ -317,7 +317,7 @@ export default function ExecutiveSimulationDemo() {
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case 'critical': return 'bg-red-600 text-white';
+      case 'critical': return 'bg-[#0A0F2E] text-white';
       case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C]';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
       case 'low': return 'bg-[#0A0F2E]/10 text-[#0A0F2E]';
@@ -329,7 +329,7 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return 'text-[#2B8A6E]';
       case 'in_progress': return 'text-[#C9A84C]';
-      case 'blocked': return 'text-red-600';
+      case 'blocked': return 'text-[#0A0F2E]';
       default: return 'text-[#6B7280] dark:text-[#C9A84C]';
     }
   };

@@ -27,7 +27,7 @@ const timelineSteps = [
       "Nothing else required yet",
     ],
     color: "#2B8A6E",
-    badge: "DETECT",
+    badge: "DETECT_PHASE",
   },
   {
     time: "1:30",
@@ -46,7 +46,7 @@ const timelineSteps = [
       "All strategic decision-making authority retained",
     ],
     color: "#C9A84C",
-    badge: "AUTHORIZE",
+    badge: "AUTHORIZE_PHASE",
   },
   {
     time: "4:00",
@@ -65,7 +65,7 @@ const timelineSteps = [
       "Escalates or deprioritizes based on ground truth",
     ],
     color: "#0A0F2E",
-    badge: "EXECUTE",
+    badge: "EXECUTE_PHASE",
   },
   {
     time: "12:00",
@@ -84,7 +84,7 @@ const timelineSteps = [
       "All response now operational — organization coordinated",
     ],
     color: "#2B8A6E",
-    badge: "ADVANCE",
+    badge: "ADVANCE_PHASE",
   },
 ];
 
@@ -163,7 +163,7 @@ export default function PlatformOverview() {
             </div>
 
             <div className="space-y-0 relative">
-              <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#0A0F2E] via-[#C9A84C] to-[#2B8A6E] rounded-full" />
+            <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#0A0F2E] via-[#C9A84C] to-[#2B8A6E] rounded-full" />
 
               {timelineSteps.map((step, i) => (
                 <div key={i} className="relative flex gap-6 md:gap-10 mb-8">

@@ -462,7 +462,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                         <span className="font-medium">{stakeholder.role}</span>
                       </TableCell>
                       <TableCell>
-                        <span className="text-gray-800 dark:text-slate-300">{stakeholder.department}</span>
+                        <span className="text-[#6B7280]">{stakeholder.department}</span>
                       </TableCell>
                       <TableCell>
                         <Badge className={levelConfig.color}>
@@ -471,12 +471,12 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                       </TableCell>
                       <TableCell>
                         <div className="space-y-1 text-sm">
-                          <div className="flex items-center gap-1 text-gray-800">
+                          <div className="flex items-center gap-1 text-[#6B7280]">
                             <Mail className="h-3 w-3" />
                             <span className="truncate max-w-[150px]" data-testid={`text-email-${stakeholder.id}`}>{stakeholder.email}</span>
                           </div>
                           {stakeholder.phone && (
-                            <div className="flex items-center gap-1 text-gray-800">
+                            <div className="flex items-center gap-1 text-[#6B7280]">
                               <Phone className="h-3 w-3" />
                               <span data-testid={`text-phone-${stakeholder.id}`}>{stakeholder.phone}</span>
                             </div>

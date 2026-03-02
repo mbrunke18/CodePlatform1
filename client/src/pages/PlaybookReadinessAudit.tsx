@@ -372,8 +372,8 @@ export default function PlaybookReadinessAudit() {
           {filteredPlaybooks.slice(0, 20).map((playbook) => {
             const config = tierConfig[playbook.tier];
             const TierIcon = config.icon;
-            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth") || playbook.domain.includes("Expansion") || playbook.domain.includes("Partnerships") || playbook.domain.includes("M&A");
-            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory") || playbook.domain.includes("Resilience") || playbook.domain.includes("Compliance") || playbook.domain.includes("Technology") || playbook.domain.includes("People") || playbook.domain.includes("Talent") || playbook.domain.includes("Culture");
+            const isOffense = playbook.domain.includes("Market") || playbook.domain.includes("Growth") || playbook.domain.includes("Expansion") || playbook.domain.includes("Partnerships") || playbook.domain.includes("M&A") || playbook.domain.includes("Response");
+            const isDefense = playbook.domain.includes("Crisis") || playbook.domain.includes("Regulatory") || playbook.domain.includes("Resilience") || playbook.domain.includes("Compliance") || playbook.domain.includes("Technology") || playbook.domain.includes("People") || playbook.domain.includes("Talent") || playbook.domain.includes("Culture") || playbook.domain.includes("Recovery") || playbook.domain.includes("Incident");
             const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
             
             return (

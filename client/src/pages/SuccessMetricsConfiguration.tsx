@@ -220,7 +220,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
   
   const getProgressColor = (progress: number) => {
     if (progress >= 80) return 'bg-[#2B8A6E]';
-    if (progress >= 50) return 'bg-[#DFC178]';
+    if (progress >= 50) return 'bg-[#C9A84C]';
     return 'bg-[#0A0F2E]';
   };
   
@@ -268,7 +268,6 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
             </div>
           </div>
 
-          {/* Header */}
           <div className="bg-[#0A0F2E] text-white p-6 rounded-none border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
@@ -276,9 +275,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   <Target className="w-7 h-7 text-[#C9A84C]" />
                 </div>
                 <div>
-                  <h1 style={{...CG}} className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics Configuration</h1>
-                  <p className="text-[#DFC178] mt-1">Define YOUR success criteria and KPIs</p>
-                  <p className="text-[#DFC178] mt-1 text-sm opacity-80">Track progress toward your strategic goals with custom metrics</p>
+                  <h1 style={{...CG}} className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics <em style={{ fontStyle: "italic", color: "#DFC178" }}>Configuration</em></h1>
+                  <p className="text-white/60 mt-1">Define YOUR success criteria and KPIs</p>
+                  <p className="text-white/40 mt-1 text-sm">Track progress toward your strategic goals with custom metrics</p>
                 </div>
               </div>
                   <div className="flex items-center gap-4">
@@ -291,7 +290,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                       Add Metric
                     </Button>
                     <Link to="/dashboard">
-                      <Button variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10">
+                      <Button variant="secondary" className="bg-white/10 hover:bg-white/20 text-white border-none">
                         <ArrowLeft className="h-4 w-4 mr-2" />
                         Dashboard
                       </Button>

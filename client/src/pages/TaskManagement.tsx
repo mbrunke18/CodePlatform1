@@ -104,10 +104,10 @@ const PRIORITY_CONFIG = {
 };
 
 const STATUS_CONFIG = {
-  pending: { label: "Pending", icon: Circle, color: "text-gray-800" },
+  pending: { label: "Pending", icon: Circle, color: "text-[#6B7280]" },
   in_progress: { label: "In Progress", icon: Timer, color: "text-[#0A0F2E]" },
   completed: { label: "Completed", icon: CheckCircle2, color: "text-[#2B8A6E]" },
-  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-destructive" },
+  blocked: { label: "Blocked", icon: AlertTriangle, color: "text-red-600" },
 };
 
 const APPROVAL_TYPES = [
