@@ -347,6 +347,62 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* ══ THE MISSING LAYER ══ */}
+      <section style={{ padding: "100px 56px", background: OFF_WHITE }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <Reveal style={{ textAlign: "center" }}>
+            <Eyebrow color="gold" center>The Missing Layer</Eyebrow>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
+              We Systematized Everything<br />
+              <em style={{ fontStyle: "italic", color: TEAL }}>Except Execution.</em>
+            </h2>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 560, margin: "0 auto 64px" }}>
+              Enterprise software has a category for everything except the layer that determines whether strategy actually happens.
+            </p>
+          </Reveal>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, background: BORDER, marginBottom: 48 }}>
+            {([
+              { system: "ERP", category: "Finance", label: "Systematized", color: MUTED, bg: "#fff" },
+              { system: "CRM", category: "Customers", label: "Systematized", color: MUTED, bg: "#fff" },
+              { system: "ITSM", category: "Tickets", label: "Systematized", color: MUTED, bg: "#fff" },
+              { system: "Execution OS", category: "Strategy Execution", label: "Now Built", color: GOLD, bg: NAVY },
+            ] as { system: string; category: string; label: string; color: string; bg: string }[]).map((item, i) => (
+              <div key={i} style={{ background: item.bg, padding: "40px 32px" }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: item.color, marginBottom: 16 }}>{item.label}</div>
+                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: i === 3 ? "#fff" : NAVY, lineHeight: 1, marginBottom: 8 }}>{item.system}</div>
+                <div style={{ fontSize: 13, fontWeight: 500, color: i === 3 ? "rgba(255,255,255,0.55)" : "#6B7280" }}>→ {item.category}</div>
+                {i === 3 && <div style={{ width: 32, height: 2, background: GOLD, marginTop: 20 }} />}
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
+            <Reveal>
+              <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151" }}>
+                Finance has ERP. Customers have CRM. IT tickets have ITSM. But strategic coordination — the moments that determine whether your organization wins or loses — still runs on email chains, ad hoc war rooms, and 72-hour alignment cycles. <strong style={{ color: NAVY, fontWeight: 700 }}>Execution OS is the layer nobody built.</strong>
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {([
+                  "Decision rights mapped before the moment hits",
+                  "Roles clarified with precision — no negotiation under pressure",
+                  "170 playbooks that execute in minutes, not days",
+                  "Signal detection that triggers action, not meetings",
+                  "AI-ready foundation — coordination logic AI can act on",
+                ] as string[]).map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, padding: "14px 20px", background: "#fff", border: `1px solid ${BORDER}` }}>
+                    <div style={{ width: 6, height: 6, background: TEAL, borderRadius: "50%", marginTop: 7, flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, fontWeight: 500, color: NAVY, lineHeight: 1.6 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ══ IDEA FRAMEWORK ══ */}
       <section style={{ padding: "100px 56px", background: NAVY, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
@@ -495,6 +551,56 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* ══ BUILT FOR TODAY, READY FOR TOMORROW ══ */}
+      <section style={{ padding: "100px 56px", background: NAVY, position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+          <Reveal>
+            <Eyebrow color="gold">The Foundation</Eyebrow>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
+              A Living System<br />
+              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>That Evolves With You.</em>
+            </h2>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>
+              Execution OS isn't a one-time implementation. It's the coordination foundation that grows with your organization — adapting as context shifts, integrating as AI capabilities expand, absorbing change instead of breaking under it.
+            </p>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.4)", marginBottom: 40 }}>
+              The pace of change isn't slowing down. Your ability to evolve shouldn't depend on heroics.
+            </p>
+            <button
+              onClick={() => go("/why-executeiq")}
+              style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, background: "none", border: `1px solid ${GOLD}`, padding: "14px 28px", cursor: "pointer", transition: "all 0.3s" }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.color = NAVY; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "none"; el.style.color = GOLD; }}
+            >
+              Why This Matters Now
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "rgba(255,255,255,0.06)" }}>
+              {([
+                { label: "Playbooks adapt based on usage", sub: "Every execution becomes institutional memory" },
+                { label: "Decision rights evolve as context shifts", sub: "The system learns how your org makes decisions" },
+                { label: "Coordination logic integrates with AI", sub: "Pre-mapped structure AI can act on directly" },
+                { label: "Infrastructure that absorbs change", sub: "Built to bend, not break under pressure" },
+              ] as { label: string; sub: string }[]).map((item, i) => (
+                <div key={i} style={{ padding: "24px 28px", background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "flex-start", gap: 16 }}>
+                  <div style={{ width: 8, height: 8, background: TEAL_LIGHT, borderRadius: "50%", marginTop: 6, flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", marginBottom: 4 }}>{item.label}</div>
+                    <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.4)" }}>{item.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ══ HOW IT WORKS ══ */}
       <section style={{ padding: "100px 56px", background: "#fff" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -546,6 +652,70 @@ export default function Homepage() {
                 </span>
               ))}
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══ VALIDATION ══ */}
+      <section style={{ padding: "100px 56px", background: "#fff" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <Reveal style={{ textAlign: "center" }}>
+            <Eyebrow color="gold" center>The Industry Is Catching Up</Eyebrow>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
+              The Bottleneck Isn't Technology.
+            </h2>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 580, margin: "0 auto 56px" }}>
+              McKinsey, Deloitte, BCG, Bain, IBM, Accenture — all circling the same conclusion: the operating model underneath the technology is the problem. Execution OS is the layer they're describing. And it's already built.
+            </p>
+          </Reveal>
+
+          <Reveal>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 1, background: BORDER, marginBottom: 56 }}>
+              {(["McKinsey", "Deloitte", "BCG", "Bain", "IBM", "Accenture", "Gartner", "Forrester", "PwC", "Microsoft", "Google Cloud", "WEF"] as string[]).map((firm, i) => (
+                <div key={i} style={{ flex: "1 1 16%", background: "#fff", padding: "20px 24px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: NAVY }}>{firm}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+            {([
+              {
+                firm: "McKinsey",
+                finding: "The biggest barrier to AI value isn't the technology — it's the organizational operating model that surrounds it.",
+                label: "Global AI Adoption Research",
+              },
+              {
+                firm: "Deloitte",
+                finding: "Organizations that fail to define decision rights and governance before AI deployment will find that AI accelerates dysfunction, not performance.",
+                label: "AI Governance Survey",
+              },
+              {
+                firm: "BCG",
+                finding: "Strategy execution has become the defining competitive differentiator. Most organizations still lack the infrastructure to close the gap between decision and action.",
+                label: "Transformation Research",
+              },
+            ] as { firm: string; finding: string; label: string }[]).map((item, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div style={{ border: `1px solid ${BORDER}`, padding: "36px 32px", background: OFF_WHITE, height: "100%", display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY }}>{item.firm}</span>
+                    <span style={{ fontSize: 10, fontWeight: 500, color: TEXT_MUTED }}>· {item.label}</span>
+                  </div>
+                  <p style={{ ...CG, fontSize: 18, fontWeight: 400, fontStyle: "italic", lineHeight: 1.65, color: NAVY, flex: 1 }}>{item.finding}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal style={{ textAlign: "center", marginTop: 56 }}>
+            <p style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 500, color: NAVY, marginBottom: 8 }}>
+              Execution OS is the layer they're describing.
+            </p>
+            <p style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, fontStyle: "italic", color: TEAL }}>
+              And it's already built.
+            </p>
           </Reveal>
         </div>
       </section>
