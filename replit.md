@@ -23,10 +23,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 **UI/UX Decisions:**
 - **Default Theme:** Fully light mode with pure white backgrounds. Dark mode is supported via localStorage.
 - **Typography:** Global base font-weight 500. Headings are font-weight 700 in midnight navy.
-- **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). A `BrandStamp` component provides consistent brand placement. Logo appears on every key page.
+- **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). A `BrandStamp` component provides consistent brand placement. Logo is carried by `StandardNav` on all pages — do NOT add a second logo instance inside page hero content (was removed from `Homepage.tsx` hero as it caused redundancy and poor rendering on dark backgrounds).
 - **Navigation:** Streamlined 5-item nav with a "More" dropdown and CTAs for "Try Demo" and "Start Pilot."
 - **Layout:** `PageLayout` component wraps all pages with `StandardNav` header and `Footer`.
-- **Homepage Video Intro:** 13-scene video intro (`VideoIntro.tsx`) plays on every homepage load.
+- **Homepage Messaging (current):** Hero opens with "They spend 72 hours getting the right people in a room. You spend 12 minutes already in execution." Core positioning: Execution OS replaces coordination — it doesn't accelerate it. Key sections: The Real Cost of Alignment → IDEA Framework → Execution-Ready Plans (not templates) → From Signal to Execution in 12 Minutes → CTA "The Gap Isn't Talent. It's Infrastructure."
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter routing, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
@@ -56,6 +56,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Build Strategy:** `dist/` is pre-built and committed to the repo (removed from `.gitignore`). Deployment runs `npm run start` directly — no build step during deploy. This avoids bundle timeout in Replit's deployment environment. **Before publishing: run `npm run build` to update `dist/`.**
 - **Start Command:** `npm run start` (production server from pre-built `dist/index.js`)
 - **Dev Command:** `npm run dev` (Vite + Express dev server on port 5000)
+- **Known `.replit` issue:** The `.replit` file persistently resets to include `build = ["npm", "run", "build"]` in the deployment block. Before every publish, use the Replit `deployConfig` API (via the agent) to remove the build step — otherwise deployment will attempt to bundle and hit the timeout. The deployment API config takes precedence over the file once set.
 
 ## Customer & Deployment
 - **Custom Domain:** executeiq.io

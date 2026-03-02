@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Overview
-**Version:** February 2026 | **Domain:** executeiq.io
+**Version:** March 2026 | **Domain:** executeiq.io
 
 ---
 
@@ -189,12 +189,14 @@ Red is preserved for crisis/alert severity. Yellow/orange for warnings. All Tail
 ```
 Deployment config:
   run: ["npm", "run", "start"]    # No build step
-  
+
 Before publishing:
   npm run build                    # Rebuild dist/ locally, then publish
 ```
 
 **Why:** `npm run build` takes ~23 seconds locally. In Replit's deployment environment it exceeded the bundle timeout. Pre-building and committing `dist/` resolves this permanently.
+
+**Critical `.replit` issue:** The `.replit` file persistently resets to include `build = ["npm", "run", "build"]` in the deployment block on each Replit checkpoint. This means every publish attempt will fail with a bundle timeout unless the build step is cleared first. Before every publish, the agent must use the Replit deployment config API to set `build: null` — this takes precedence over the `.replit` file. Developers cannot fix this by editing `.replit` directly (it resets automatically).
 
 ---
 
@@ -204,8 +206,10 @@ Before publishing:
 2. **`shared/schema.ts` is 6,122 lines** — all types in one file; imports are easy but diffs are large
 3. **Playbook seeding:** The full 170-playbook seed has no clean re-runnable script. The production DB relies on the additive migration for the 4 Compound playbooks and an assumed 166-playbook baseline from an earlier seed.
 4. **`dist/` is committed:** Developers must remember to `npm run build` before publishing. Stale `dist/` = stale production.
-5. **Replit OIDC:** Authentication only works when running on Replit (dev or deployed). Local development outside Replit requires mocking auth.
-6. **Single database:** Dev and production share the same Neon PostgreSQL instance. Schema changes in dev affect production immediately.
+5. **`.replit` build reset:** The `.replit` file resets to include a build step on every Replit checkpoint. Deployment will timeout unless the build step is removed via the deployment config API before each publish. See Deployment section above.
+6. **Replit OIDC:** Authentication only works when running on Replit (dev or deployed). Local development outside Replit requires mocking auth.
+7. **Single database:** Dev and production share the same Neon PostgreSQL instance. Schema changes in dev affect production immediately.
+8. **Homepage logo rule:** Do NOT add `VaughnMartinLogo` inside hero content sections. The `StandardNav` carries the brand on every page. A second instance inside the hero creates a redundant/unprofessional double-logo effect (this was corrected in `Homepage.tsx` — hero content now opens directly with the eyebrow badge and headline).
 
 ---
 
