@@ -682,29 +682,35 @@ export default function Homepage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
             {([
               {
-                firm: "McKinsey",
-                finding: "The biggest barrier to AI value isn't the technology — it's the organizational operating model that surrounds it.",
-                label: "Global AI Adoption Research",
+                firm: "McKinsey & Company",
+                theme: "AI Adoption & Operating Model",
+                conclusion: "The primary barrier to capturing AI value is not the technology itself — it is the organizational operating model surrounding it. Without explicit coordination infrastructure, AI amplifies existing dysfunction.",
+                source: "State of AI in Organizations research series",
               },
               {
-                firm: "Deloitte",
-                finding: "Organizations that fail to define decision rights and governance before AI deployment will find that AI accelerates dysfunction, not performance.",
-                label: "AI Governance Survey",
+                firm: "Deloitte Insights",
+                theme: "AI Governance & Decision Architecture",
+                conclusion: "Firms that deploy AI without pre-defined decision rights and accountability structures consistently report that AI accelerates poor decisions at scale rather than improving outcomes.",
+                source: "Global AI Governance Survey",
               },
               {
-                firm: "BCG",
-                finding: "Strategy execution has become the defining competitive differentiator. Most organizations still lack the infrastructure to close the gap between decision and action.",
-                label: "Transformation Research",
+                firm: "Boston Consulting Group",
+                theme: "Strategy Execution Gap",
+                conclusion: "Execution capability has emerged as the primary competitive differentiator in transformation-era enterprises. The gap between strategic intent and coordinated action remains the most costly and least addressed problem in the Fortune 500.",
+                source: "BCG Transformation & Execution research",
               },
-            ] as { firm: string; finding: string; label: string }[]).map((item, i) => (
+            ] as { firm: string; theme: string; conclusion: string; source: string }[]).map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{ border: `1px solid ${BORDER}`, padding: "36px 32px", background: OFF_WHITE, height: "100%", display: "flex", flexDirection: "column" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-                    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY }}>{item.firm}</span>
-                    <span style={{ fontSize: 10, fontWeight: 500, color: TEXT_MUTED }}>· {item.label}</span>
-
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>Research Finding</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: NAVY }}>{item.firm}</div>
+                    <div style={{ fontSize: 11, fontWeight: 500, color: TEXT_MUTED, marginTop: 2 }}>{item.theme}</div>
                   </div>
-                  <p style={{ ...CG, fontSize: 18, fontWeight: 400, fontStyle: "italic", lineHeight: 1.65, color: NAVY, flex: 1 }}>{item.finding}</p>
+                  <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.8, color: NAVY, flex: 1, marginBottom: 20 }}>{item.conclusion}</p>
+                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: TEXT_MUTED, borderTop: `1px solid ${BORDER}`, paddingTop: 14 }}>
+                    Based on: {item.source}
+                  </div>
                 </div>
               </Reveal>
             ))}
