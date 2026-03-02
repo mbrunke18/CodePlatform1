@@ -294,6 +294,59 @@ export default function Homepage() {
         </div>
       </section>
 
+      {/* ══ AI URGENCY BRIDGE ══ */}
+      <section style={{ padding: "100px 56px", background: "#fff", borderTop: `1px solid ${BORDER}` }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+          <Reveal>
+            <Eyebrow color="teal">Why This Matters Now</Eyebrow>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 20 }}>
+              AI Is About to<br />
+              <em style={{ fontStyle: "italic", color: TEAL }}>Expose the Gap.</em>
+            </h2>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginBottom: 16 }}>
+              Fifteen major firms — McKinsey, Deloitte, IBM, BCG, Accenture, Gartner and others — independently reached the same conclusion: organizations aren't failing at AI because of the technology. They're failing because the coordination layer underneath it hasn't been made explicit.
+            </p>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginBottom: 36 }}>
+              AI doesn't transform your organization. It exposes it. The fuzzy decision rights, undefined accountability, and coordination chaos that slowed you down before — AI makes them existential.
+            </p>
+            <button
+              onClick={() => go("/why-executeiq")}
+              style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY, background: "none", border: `1px solid ${NAVY}`, padding: "14px 28px", cursor: "pointer", transition: "all 0.3s" }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = NAVY; el.style.color = "#fff"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "none"; el.style.color = NAVY; }}
+            >
+              See the Research
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div style={{ background: NAVY, padding: "56px 48px" }}>
+              <div style={{ width: 36, height: 2, background: GOLD, marginBottom: 32 }} />
+              <blockquote style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 500, fontStyle: "italic", lineHeight: 1.4, color: "#fff", marginBottom: 28 }}>
+                "You can't automate what hasn't been made explicit."
+              </blockquote>
+              <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", marginBottom: 28 }}>
+                Execution OS makes your coordination logic explicit — decision rights mapped, roles defined, playbooks ready — so AI has something real to act on. Coordination infrastructure is the prerequisite for AI transformation.
+              </p>
+              <div style={{ display: "flex", gap: 48, paddingTop: 28, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                {([
+                  { num: "15", label: "Major firms agree" },
+                  { num: "170", label: "Playbooks ready" },
+                ] as { num: string; label: string }[]).map((s, i) => (
+                  <div key={i}>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{s.num}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ══ IDEA FRAMEWORK ══ */}
       <section style={{ padding: "100px 56px", background: NAVY, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
