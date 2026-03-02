@@ -16,7 +16,8 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Primary Colors:** Navy `#0A0F2E`, Navy Mid `#141B45`, Gold `#C9A84C`, Gold Light `#DFC178`, Teal `#2B8A6E`, Teal Light `#3BAF8A`
 - **Neutral Colors:** Off-white `#F8F7F4`, Border `#E8E4DC`, Muted `#6B7280`
 - **Rules:** Gold = accents, labels, metrics (never background). Navy = hero sections, headings, primary buttons. Teal = success states, offense playbooks, progress. Red = crisis/alert severity only (preserved). Yellow/orange = warnings only.
-- **Applied:** Full design system applied across all 171 pages — zero off-brand Tailwind color classes remain.
+- **Applied:** Full design system applied across all 171 pages — zero purple/violet/cyan/indigo/emerald/blue(600+) Tailwind color classes remain (verified clean build March 2026).
+- **Color variable trap:** `Homepage.tsx` uses `TEXT_MUTED` (not `MUTED`) as its local variable name. All other files use `MUTED`. Always check the constants block at the top of each file before using color variable names — do not assume they are identical across files.
 
 ## System Architecture
 
@@ -26,7 +27,9 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). A `BrandStamp` component provides consistent brand placement. Logo is carried by `StandardNav` on all pages — do NOT add a second logo instance inside page hero content (was removed from `Homepage.tsx` hero as it caused redundancy and poor rendering on dark backgrounds).
 - **Navigation:** Streamlined 5-item nav with a "More" dropdown and CTAs for "Try Demo" and "Start Pilot."
 - **Layout:** `PageLayout` component wraps all pages with `StandardNav` header and `Footer`.
-- **Homepage Messaging (current):** Hero opens with "They spend 72 hours getting the right people in a room. You spend 12 minutes already in execution." Core positioning: Execution OS replaces coordination — it doesn't accelerate it. Key sections: The Real Cost of Alignment → IDEA Framework → Execution-Ready Plans (not templates) → From Signal to Execution in 12 Minutes → CTA "The Gap Isn't Talent. It's Infrastructure."
+- **Homepage Messaging (current):** Hero opens with "They spend 72 hours getting the right people in a room. You spend 12 minutes already in execution." Core positioning: Execution OS replaces coordination — it doesn't accelerate it.
+  - Full section order: The Real Cost of Alignment → IDEA Framework → The Missing Layer (ERP/CRM/ITSM gap grid — 3-column: what they do vs. what's missing vs. what we provide) → Living System (signal-to-execution flywheel) → Execution-Ready Plans (not templates) → From Signal to Execution in 12 Minutes → Validation (research findings from McKinsey/Deloitte/BCG — presented as "Research Finding" cards with honest conclusions + "Based on: [research series]" attribution — NOT verbatim quotes) → CTA "The Gap Isn't Talent. It's Infrastructure."
+  - **Research card rule:** Cards show firm name + theme + honest research conclusion. Do NOT fabricate verbatim quotes. If user provides actual article URLs, update with real quotes at that time.
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter routing, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
@@ -34,7 +37,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Database:** PostgreSQL (Neon serverless) via Drizzle ORM. Schema in `shared/schema.ts`. Never write SQL migrations manually — use `npm run db:push`.
 - **Real-time:** Socket.IO WebSocket server for real-time collaboration.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
-- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles.
+- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles. Signal library: 16 signal categories, 216+ data points (source of truth: `shared/intelligence-signals.ts`). All site copy reads "216+" — do NOT use "92" or any other figure.
 - **Authentication:** Replit OIDC with Passport.js. New users auto-get an org on first login (`onboardingCompleted: false`).
 - **Onboarding Guard:** `requireOrgAccess` middleware redirects unauthenticated/incomplete-onboarding users to `/onboarding` (5-step wizard).
 - **Role-Based Access:** `requireRole()` middleware on write routes (admin, executive, strategist). No role = read-only.
