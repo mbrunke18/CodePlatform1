@@ -131,16 +131,15 @@ export default function Homepage() {
             </div>
 
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(42px, 5.2vw, 70px)", lineHeight: 1.05, color: "#fff", marginBottom: 12 }}>
-              The Execution<br />Infrastructure<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Enterprises Are Missing</em>
+              They spend 72 hours<br />getting the right people<br />
+              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>in a room.</em>
             </h1>
 
             <div style={{ width: 60, height: 2, background: `linear-gradient(90deg,${TEAL},transparent)`, margin: "28px 0" }} />
 
             <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.58)", maxWidth: 500, marginBottom: 48 }}>
-              VaughnMartin's Execution OS eliminates organizational lag after strategic events.{" "}
-              <strong style={{ color: "rgba(255,255,255,0.88)", fontWeight: 600 }}>From trigger to full execution in 12 minutes</strong>{" "}
-              — automated project creation, task assignment, document staging, and budget allocation through 170 AI-powered playbooks.
+              <strong style={{ color: "rgba(255,255,255,0.88)", fontWeight: 600 }}>You spend 12 minutes already in execution.</strong>{" "}
+              Execution OS doesn't accelerate coordination. It replaces it. When a signal fires, you're not scheduling a meeting — you're running a playbook.
             </p>
 
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
@@ -243,19 +242,19 @@ export default function Homepage() {
       <section id="platform" style={{ padding: "100px 56px", background: OFF_WHITE }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", maxWidth: 1200, margin: "0 auto" }}>
           <div>
-            <Reveal><Eyebrow color="teal">The Execution Gap</Eyebrow></Reveal>
+            <Reveal><Eyebrow color="teal">The Real Cost of Alignment</Eyebrow></Reveal>
             <Reveal delay={0.1}>
               <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px, 4vw, 52px)", lineHeight: 1.1, color: NAVY, marginBottom: 20 }}>
-                Enterprises React.<br />
-                <em style={{ fontStyle: "italic", color: TEAL }}>Leaders Execute.</em>
+                After 72 Hours,<br />They're Ready to Start<br />
+                <em style={{ fontStyle: "italic", color: TEAL }}>Planning.</em>
               </h2>
             </Reveal>
             <Reveal delay={0.2}>
               <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480 }}>
-                The average Fortune 500 company takes <strong style={{ color: NAVY, fontWeight: 700 }}>72 hours</strong> to mobilize after a strategic trigger. Committees form. Emails chain. Documents get created. Budgets get debated.
+                Most enterprises have systematized finance (ERP), customers (CRM), and tickets (ITSM). But strategic coordination — the moments that determine competitive outcomes — still runs on <strong style={{ color: NAVY, fontWeight: 700 }}>email chains, ad hoc war rooms, and 72-hour alignment cycles.</strong>
               </p>
               <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginTop: 16 }}>
-                While your organization deliberates, the market moves. Execution OS eliminates this gap by automating everything except the decision itself.
+                After 12 minutes with Execution OS, you're already in motion — roles clear, tasks assigned, decisions made. That's not an incremental improvement. That's a structural advantage.
               </p>
             </Reveal>
           </div>
@@ -284,10 +283,10 @@ export default function Homepage() {
             <Reveal delay={0.25}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                 {([
-                  { title: "Committee Paralysis", desc: "8.3 stakeholders in every strategic decision" },
-                  { title: "Document Chaos", desc: "14 tools touched before execution begins" },
-                  { title: "Budget Delay", desc: "Average 6 days to approve emergency spend" },
-                  { title: "Talent Confusion", desc: "No clear owner for 40% of strategic tasks" },
+                  { title: "Who Should Own This?", desc: "Decision rights undefined until a meeting can be scheduled" },
+                  { title: "Who Needs to Be Involved?", desc: "Roles negotiated in real time while the moment passes" },
+                  { title: "What's Our Plan?", desc: "Playbook built from scratch after the trigger fires" },
+                  { title: "Ready to Start Figuring It Out", desc: "72 hours later — they haven't executed. They've aligned." },
                 ] as { title: string; desc: string }[]).map((c, i) => (
                   <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "20px 22px" }}>
                     <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 12 }} />
@@ -344,11 +343,11 @@ export default function Homepage() {
           <Reveal style={{ textAlign: "center" }}>
             <Eyebrow color="teal" center>170 Strategic Playbooks</Eyebrow>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              Every Strategic Event.<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>Pre-Wired for Execution.</em>
+              Execution-Ready Plans.<br />
+              <em style={{ fontStyle: "italic", color: TEAL }}>Not Templates to Discuss.</em>
             </h2>
             <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 560, margin: "0 auto 64px" }}>
-              Nine execution domains covering every major strategic scenario Fortune 1000 companies face. Each playbook contains pre-built task sequences, role assignments, timeline templates, and success metrics.
+              Each playbook includes decision rights mapped before the moment, roles defined with precision, tasks assigned automatically, and escalation paths built in — with a timeline running from activation, not from your first alignment meeting.
             </p>
           </Reveal>
 
@@ -455,21 +454,21 @@ export default function Homepage() {
           <Reveal style={{ textAlign: "center" }}>
             <Eyebrow color="teal" center>How It Works</Eyebrow>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              Trigger to Full Execution<br />
+              From Signal to Execution<br />
               <em style={{ fontStyle: "italic", color: TEAL }}>in 12 Minutes</em>
             </h2>
             <p style={{ fontSize: 15, fontWeight: 400, color: "#6B7280", maxWidth: 500, margin: "0 auto 64px", lineHeight: 1.85 }}>
-              Four automated steps replace weeks of organizational drag.
+              Four steps that replace the 72-hour alignment cycle. No meetings to schedule. No coordination to negotiate.
             </p>
           </Reveal>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0, position: "relative" }}>
             <div style={{ position: "absolute", top: 40, left: "12.5%", right: "12.5%", height: 1, background: `linear-gradient(90deg,${TEAL},${GOLD})`, zIndex: 0 }} />
             {([
-              { step: "01", time: "0:00", title: "Trigger Detected", desc: "AI monitors 1,000+ signals across 12 enterprise systems and flags a strategic event matching your playbook library." },
-              { step: "02", time: "0:45", title: "Playbook Selected", desc: "The matching playbook is presented with recommended activation. One executive click deploys the entire response." },
-              { step: "03", time: "3:00", title: "Tasks Assigned", desc: "14–28 tasks automatically assigned to the right people with deadlines, documents, and budget allocations." },
-              { step: "04", time: "12:00", title: "Execution Live", desc: "All stakeholders notified, projects created in Jira/ServiceNow, budgets released, and status visible in real-time." },
+              { step: "01", time: "0:00", title: "Signal Detected", desc: "Execution OS integrates with Jira, Slack, Teams, Salesforce, and ServiceNow — detecting the signals that matter before your next committee email is drafted." },
+              { step: "02", time: "0:45", title: "Playbook Activated", desc: "The right playbook fires automatically. No meetings to schedule. No alignment to negotiate. One click deploys the entire coordinated response." },
+              { step: "03", time: "3:00", title: "Roles Assigned", desc: "Everyone knows their part. Decision rights are mapped. Tasks are distributed to the right people with deadlines and pre-approved budgets." },
+              { step: "04", time: "12:00", title: "Execution Underway", desc: "You're not planning a response. You're already executing one. Status visible in real-time. The market doesn't wait — now neither do you." },
             ] as { step: string; time: string; title: string; desc: string }[]).map((s, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{ padding: "0 32px", textAlign: "center", position: "relative", zIndex: 1 }}>
@@ -510,10 +509,10 @@ export default function Homepage() {
           <Reveal>
             <div style={{ width: 48, height: 1, background: GOLD, margin: "0 auto 40px" }} />
             <blockquote style={{ ...CG, fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.35, color: NAVY, marginBottom: 32 }}>
-              "The difference between strategy and execution is not intelligence — it's infrastructure. Most enterprises have the former and lack the latter."
+              "This isn't the same thing done faster. It's a different outcome. Traditional coordination ends with a meeting scheduled. Execution OS ends with execution underway."
             </blockquote>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEXT_MUTED }}>
-              VaughnMartin · Execution OS Design Principle
+              Built from 20+ years of Fortune 500 transformation · VaughnMartin
             </div>
             <div style={{ width: 48, height: 1, background: GOLD, margin: "40px auto 0" }} />
           </Reveal>
@@ -526,13 +525,13 @@ export default function Homepage() {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, background: "radial-gradient(ellipse,rgba(43,138,110,0.08) 0%,transparent 65%)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <Reveal>
-            <Eyebrow color="gold" center>Ready to Eliminate Execution Lag?</Eyebrow>
+            <Eyebrow color="gold" center>The Gap Isn't Talent. It's Infrastructure.</Eyebrow>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(34px,4.5vw,60px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-              Your First Strategic Trigger<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Is Already Waiting</em>
+              The Coordination Infrastructure<br />
+              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Enterprises Are Missing. Built.</em>
             </h2>
             <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.5)", maxWidth: 520, margin: "0 auto 48px" }}>
-              Join the pilot program and experience Execution OS before your next strategic event catches your organization flat-footed.
+              See Execution OS in action. When a signal fires, you're not scheduling a meeting — you're already executing. Join the pilot and run your first playbook.
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center" }}>
               <a
