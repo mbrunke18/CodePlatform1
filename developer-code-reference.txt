@@ -4,7 +4,7 @@ nagement and regulatory compliance',
   finance: { 
     label: 'Finance', 
     description: 'Budget, forecasting, and financial controls',
-    color: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+    color: 'bg-[#F8F7F4] text-[#C9A84C] dark:bg-white/10 dark:text-[#DFC178]'
   },
   technology: { 
     label: 'Technology', 
@@ -29,7 +29,7 @@ nagement and regulatory compliance',
   strategy: { 
     label: 'Strategy', 
     description: 'Strategic planning and executive decisions',
-    color: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400'
+    color: 'bg-[#F8F7F4] text-[#C9A84C] dark:bg-white/10 dark:text-[#DFC178]'
   },
 };
 ```
@@ -45,17 +45,17 @@ export const IDEA_PHASES: Record<IdeaPhase, { label: string; description: string
   detect: {
     label: 'DETECT',
     description: 'Monitor triggers and signals',
-    color: 'text-[#C9A84C] dark:text-[#DFC178]'
+    color: 'text-[#2B8A6E] dark:text-[#3BAF8A]'
   },
   execute: {
     label: 'EXECUTE',
     description: 'Coordinate response actions',
-    color: 'text-[#2B8A6E] dark:text-[#3BAF8A]'
+    color: 'text-[#C9A84C] dark:text-[#DFC178]'
   },
   advance: {
     label: 'ADVANCE',
     description: 'Learn and improve',
-    color: 'text-[#0A0F2E] dark:text-[#DFC178]'
+    color: 'text-[#2B8A6E] dark:text-[#3BAF8A]'
   },
 };
 ```

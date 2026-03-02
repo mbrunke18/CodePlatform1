@@ -38,12 +38,12 @@ export const TASK_CATEGORIES: Record<TaskCategory, { label: string; description:
   program_management: { 
     label: 'Program Management', 
     description: 'PMO, project coordination, and milestone tracking',
-    color: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400'
+    color: 'bg-[#F8F7F4] text-[#0A0F2E] dark:bg-white/10 dark:text-[#DFC178]'
   },
   communications: { 
     label: 'Communications', 
     description: 'Internal and external messaging',
-    color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400'
+    color: 'bg-[#F8F7F4] text-[#0A0F2E] dark:bg-white/10 dark:text-[#DFC178]'
   },
   risk_compliance: { 
     label: 'Risk & Compliance', 
@@ -53,12 +53,12 @@ export const TASK_CATEGORIES: Record<TaskCategory, { label: string; description:
   finance: { 
     label: 'Finance', 
     description: 'Budget, forecasting, and financial controls',
-    color: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+    color: 'bg-[#F8F7F4] text-[#C9A84C] dark:bg-white/10 dark:text-[#DFC178]'
   },
   technology: { 
     label: 'Technology', 
     description: 'IT infrastructure and system changes',
-    color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+    color: 'bg-[#F8F7F4] text-[#0A0F2E] dark:bg-white/10 dark:text-[#DFC178]'
   },
   hr_change: { 
     label: 'HR & Change Management', 
@@ -68,17 +68,17 @@ export const TASK_CATEGORIES: Record<TaskCategory, { label: string; description:
   legal: { 
     label: 'Legal', 
     description: 'Legal review, contracts, and regulatory filings',
-    color: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300'
+    color: 'bg-[#F8F7F4] text-[#6B7280] dark:bg-white/10 dark:text-[#6B7280]'
   },
   operations: { 
     label: 'Operations', 
     description: 'Operational execution and process changes',
-    color: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400'
+    color: 'bg-[#F8F7F4] text-[#2B8A6E] dark:bg-white/10 dark:text-[#3BAF8A]'
   },
   strategy: { 
     label: 'Strategy', 
     description: 'Strategic planning and executive decisions',
-    color: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400'
+    color: 'bg-[#F8F7F4] text-[#C9A84C] dark:bg-white/10 dark:text-[#DFC178]'
   },
 };
 
@@ -86,22 +86,22 @@ export const IDEA_PHASES: Record<IdeaPhase, { label: string; description: string
   identify: {
     label: 'IDENTIFY',
     description: 'Build and customize playbooks',
-    color: 'text-blue-600 dark:text-blue-400'
+    color: 'text-[#0A0F2E] dark:text-[#DFC178]'
   },
   detect: {
     label: 'DETECT',
     description: 'Monitor triggers and signals',
-    color: 'text-amber-600 dark:text-amber-400'
+    color: 'text-[#2B8A6E] dark:text-[#3BAF8A]'
   },
   execute: {
     label: 'EXECUTE',
     description: 'Coordinate response actions',
-    color: 'text-green-600 dark:text-green-400'
+    color: 'text-[#C9A84C] dark:text-[#DFC178]'
   },
   advance: {
     label: 'ADVANCE',
     description: 'Learn and improve',
-    color: 'text-purple-600 dark:text-purple-400'
+    color: 'text-[#2B8A6E] dark:text-[#3BAF8A]'
   },
 };
 
