@@ -119,9 +119,9 @@ export default function Homepage() {
 
           {/* Left */}
           <div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.22)", padding: "6px 18px", marginBottom: 36 }}>
-              <span style={{ width: 6, height: 6, background: GOLD, borderRadius: "50%", display: "inline-block", animation: "hpBlink 2.5s ease infinite" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.14)", border: "1px solid rgba(201,168,76,0.5)", padding: "10px 22px", marginBottom: 36 }}>
+              <span style={{ width: 8, height: 8, background: GOLD, borderRadius: "50%", display: "inline-block", flexShrink: 0, animation: "hpBlink 2.5s ease infinite" }} />
+              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
             </div>
 
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(42px, 5.2vw, 70px)", lineHeight: 1.05, color: "#fff", marginBottom: 12 }}>

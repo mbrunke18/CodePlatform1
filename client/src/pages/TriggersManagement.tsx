@@ -1,51 +1,49 @@
 import { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
-import { Link, useSearch } from 'wouter';
-import OnboardingTrigger from '@/components/onboarding/OnboardingTrigger';
-import { 
-  AlertTriangle, 
-  Activity, 
-  Clock, 
-  TrendingUp, 
-  Target, 
-  BarChart3, 
-  Settings, 
-  Eye, 
-  Zap, 
-  Shield, 
-  DollarSign, 
-  Users, 
-  CheckCircle, 
-  Pause, 
-  Play, 
-  ArrowLeft, 
-  Home, 
-  Plus,
-  Bell
-} from 'lucide-react';
+import { useSearch } from 'wouter';
+import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
+import {
+  AlertTriangle,
+  Activity,
+  Clock,
+  TrendingUp,
+  Target,
+  Settings,
+  Eye,
+  Zap,
+  Users,
+  Pause,
+  Plus,
+  Bell,
+  CheckCircle,
+  XCircle,
+  Calendar,
+  Tag,
+  Info
+} from 'lucide-react';
 import { format } from 'date-fns';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [selectedTrigger, setSelectedTrigger] = useState<any>(null);
-  const [sheetMode, setSheetMode] = useState<'view' | 'edit'>('view');
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
+  const [editTriggerData, setEditTriggerData] = useState<any>(null);
+  const [viewTrigger, setViewTrigger] = useState<any>(null);
   const { toast } = useToast();
   const searchString = useSearch();
 
@@ -59,7 +57,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
-      toast({ title: 'Trigger Updated', description: 'Trigger status updated successfully.' });
+      toast({ title: 'Trigger Updated', description: 'Monitoring status updated successfully.' });
     }
   });
 
@@ -78,11 +76,34 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     return categoryMatch && statusMatch;
   });
 
+  // Handle URL parameters to auto-open edit dialog (e.g. ?id=...&action=edit)
+  useEffect(() => {
+    if (!triggersData || triggersData.length === 0) return;
+    const params = new URLSearchParams(searchString);
+    const triggerId = params.get('id');
+    const action = params.get('action');
+    if (triggerId) {
+      const found = triggersData.find((t: any) => t.id === triggerId);
+      if (found) {
+        if (action === 'edit') {
+          setEditTriggerData(found);
+          setIsWizardOpen(true);
+        } else {
+          setViewTrigger({ ...found, status: found.isActive ? (found.alertThreshold === 'red' ? 'triggered' : 'active') : 'paused' });
+        }
+        setTimeout(() => {
+          const el = document.querySelector(`[data-trigger-id="${triggerId}"]`);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 500);
+      }
+    }
+  }, [triggersData, searchString]);
+
   if (isLoading) {
     return (
       <PageLayout>
         <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C9A84C]"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C9A84C]" />
         </div>
       </PageLayout>
     );
@@ -90,8 +111,9 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="flex-1 page-background overflow-auto bg-white">
+      <div className="flex-1 overflow-auto bg-white">
         <div className="p-8">
+
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
@@ -106,60 +128,35 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>Triggers & Guardrails</h1>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <Button style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-create-trigger">
-                <Plus className="w-4 h-4 mr-2" />
-                Create New Trigger
-              </Button>
-            </div>
+            <Button
+              style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}
+              onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Create New Trigger
+            </Button>
           </div>
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <Card className="border border-[#E8E4DC] bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">Critical Alerts</p>
-                    <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: "#EF4444" }}>{triggeredCount}</p>
+            {[
+              { label: 'Critical Alerts', value: triggeredCount, color: '#EF4444', icon: <Bell className="h-6 w-6 text-red-500" /> },
+              { label: 'Active Monitoring', value: activeCount, color: TEAL, icon: <Activity className="h-6 w-6" style={{ color: TEAL }} /> },
+              { label: 'Paused Triggers', value: pausedCount, color: NAVY, icon: <Pause className="h-6 w-6 text-gray-400" /> },
+              { label: 'Total Triggers', value: allTriggers.length, color: NAVY, icon: <Target className="h-6 w-6" style={{ color: GOLD }} /> },
+            ].map((m, i) => (
+              <Card key={i} className="border border-[#E8E4DC] bg-white">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">{m.label}</p>
+                      <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: m.color }}>{m.value}</p>
+                    </div>
+                    {m.icon}
                   </div>
-                  <Bell className="h-6 w-6 text-red-500" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border border-[#E8E4DC] bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">Active Monitoring</p>
-                    <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: "#2B8A6E" }}>{activeCount}</p>
-                  </div>
-                  <Activity className="h-6 w-6 text-[#2B8A6E]" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border border-[#E8E4DC] bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">Paused Triggers</p>
-                    <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: NAVY }}>{pausedCount}</p>
-                  </div>
-                  <Pause className="h-6 w-6 text-gray-400" />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border border-[#E8E4DC] bg-white">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">Total Triggers</p>
-                    <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: NAVY }}>{allTriggers.length}</p>
-                  </div>
-                  <Target className="h-6 w-6 text-[#C9A84C]" />
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           {/* AI Trigger Probability Forecast */}
@@ -188,16 +185,25 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
             <div className="grid grid-cols-1 gap-4">
               {filteredTriggers.map((trigger) => (
-                <Card key={trigger.id} className="border border-[#E8E4DC] hover:border-[#C9A84C] transition-all bg-white overflow-hidden shadow-sm">
+                <Card
+                  key={trigger.id}
+                  data-trigger-id={trigger.id}
+                  className="border border-[#E8E4DC] hover:border-[#C9A84C] transition-all bg-white overflow-hidden shadow-sm"
+                >
                   <CardContent className="p-0">
                     <div className="flex flex-col md:flex-row items-stretch">
-                      <div className={`w-1 ${trigger.status === 'triggered' ? 'bg-red-500' : 'bg-[#2B8A6E]'}`} />
+                      <div className={`w-1 flex-shrink-0 ${trigger.status === 'triggered' ? 'bg-red-500' : 'bg-[#2B8A6E]'}`} />
                       <div className="flex-1 p-6">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                           <div className="space-y-1">
-                            <div className="flex items-center space-x-3">
+                            <div className="flex items-center space-x-3 flex-wrap gap-y-1">
                               <h3 style={{ ...CG, fontSize: "1.25rem", fontWeight: 600, color: NAVY }}>{trigger.name}</h3>
-                              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: trigger.status === 'triggered' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(43,138,110,0.12)', color: trigger.status === 'triggered' ? '#EF4444' : '#3BAF8A', fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                              <div style={{
+                                display: "inline-flex", alignItems: "center", gap: 5,
+                                background: trigger.status === 'triggered' ? 'rgba(239,68,68,0.1)' : 'rgba(43,138,110,0.12)',
+                                color: trigger.status === 'triggered' ? '#EF4444' : '#3BAF8A',
+                                fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px"
+                              }}>
                                 {trigger.status}
                               </div>
                               <div className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${trigger.severity === 'critical' ? 'bg-red-500 text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'}`}>
@@ -206,10 +212,11 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             </div>
                             <p className="text-sm text-gray-600 max-w-2xl">{trigger.description}</p>
                           </div>
-                          <div className="flex items-center space-x-4">
+
+                          <div className="flex items-center gap-3 flex-shrink-0">
                             <div className="flex items-center space-x-2">
                               <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Monitoring</span>
-                              <Switch 
+                              <Switch
                                 checked={trigger.isActive}
                                 onCheckedChange={(isActive) => toggleTriggerMutation.mutate({ id: trigger.id, isActive })}
                               />
@@ -218,7 +225,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               variant="ghost"
                               size="sm"
                               style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, border: "1px solid #E8E4DC" }}
-                              onClick={() => { setSelectedTrigger(trigger); setSheetMode('view'); }}
+                              onClick={() => setViewTrigger(trigger)}
                             >
                               <Eye className="w-3.5 h-3.5 mr-1.5" />
                               View
@@ -226,8 +233,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             <Button
                               variant="ghost"
                               size="sm"
-                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}
-                              onClick={() => { setSelectedTrigger(trigger); setSheetMode('edit'); }}
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, border: "1px solid rgba(201,168,76,0.35)" }}
+                              onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
                             >
                               <Settings className="w-3.5 h-3.5 mr-1.5" />
                               Edit
@@ -238,26 +245,28 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 pt-6 border-t border-[#E8E4DC]">
                           <div className="space-y-2">
                             <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Target className="w-3.5 h-3.5 mr-2 text-[#C9A84C]" />
+                              <Target className="w-3.5 h-3.5 mr-2" style={{ color: GOLD }} />
                               Condition
                             </div>
                             <p className="text-sm font-medium text-gray-800">{trigger.condition || trigger.description}</p>
                           </div>
                           <div className="space-y-2">
                             <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Activity className="w-3.5 h-3.5 mr-2 text-[#2B8A6E]" />
+                              <Activity className="w-3.5 h-3.5 mr-2" style={{ color: TEAL }} />
                               Automated Response
                             </div>
                             <div className="flex items-center space-x-2">
-                              <Badge variant="outline" style={{ border:"1px solid #E8E4DC", color: NAVY, fontSize: 10 }}>{trigger.action || 'Execute Protocol'}</Badge>
+                              <Badge variant="outline" style={{ border: "1px solid #E8E4DC", color: NAVY, fontSize: 10 }}>
+                                {trigger.action || 'Execute Protocol'}
+                              </Badge>
                               {trigger.status === 'triggered' && (
-                                <Badge style={{ background: "#2B8A6E", color: "#fff", fontSize: 10 }}>Executing</Badge>
+                                <Badge style={{ background: TEAL, color: "#fff", fontSize: 10 }}>Executing</Badge>
                               )}
                             </div>
                           </div>
                           <div className="space-y-2">
                             <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Clock className="w-3.5 h-3.5 mr-2 text-[#0A0F2E]" />
+                              <Clock className="w-3.5 h-3.5 mr-2" style={{ color: NAVY }} />
                               Last Evaluated
                             </div>
                             <p className="text-sm text-gray-600">
@@ -281,25 +290,155 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { title: 'Budget Caps', description: 'Prevent automated execution from exceeding defined financial thresholds.', icon: <TrendingUp className="text-[#2B8A6E]" /> },
-                { title: 'Human-in-the-Loop', description: 'Requires manual authorization for critical high-impact actions.', icon: <Users className="text-[#0A0F2E]" /> },
-                { title: 'Conflict Detection', description: 'Identifies and pauses overlapping or contradictory execution protocols.', icon: <AlertTriangle className="text-[#C9A84C]" /> }
+                { title: 'Budget Caps', description: 'Prevent automated execution from exceeding defined financial thresholds.', icon: <TrendingUp style={{ color: TEAL }} /> },
+                { title: 'Human-in-the-Loop', description: 'Requires manual authorization for critical high-impact actions.', icon: <Users style={{ color: NAVY }} /> },
+                { title: 'Conflict Detection', description: 'Identifies and pauses overlapping or contradictory execution protocols.', icon: <AlertTriangle style={{ color: GOLD }} /> }
               ].map((guardrail, idx) => (
                 <Card key={idx} className="border border-[#E8E4DC] bg-[#F8F7F4] p-6 hover:shadow-md transition-all">
                   <div className="w-10 h-10 bg-white border border-[#E8E4DC] flex items-center justify-center mb-4">
                     {guardrail.icon}
                   </div>
                   <h3 style={{ ...CG, fontSize: "1.125rem", fontWeight: 600, color: NAVY, marginBottom: 8 }}>{guardrail.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">{guardrail.description}</p>
-                  <Button variant="link" className="p-0 h-auto text-xs font-bold uppercase tracking-wider text-[#C9A84C] hover:text-[#DFC178]">
-                    Configure Protocol
-                  </Button>
+                  <p className="text-sm text-gray-600 leading-relaxed">{guardrail.description}</p>
                 </Card>
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Trigger Configuration Wizard — Create & Edit */}
+      <TriggerConfigurationWizard
+        isOpen={isWizardOpen}
+        onClose={() => { setIsWizardOpen(false); setEditTriggerData(null); }}
+        onSuccess={() => {
+          setIsWizardOpen(false);
+          setEditTriggerData(null);
+          queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
+          toast({ title: editTriggerData ? 'Trigger Updated' : 'Trigger Created', description: editTriggerData ? 'Your trigger has been updated.' : 'Your new trigger is now active.' });
+        }}
+        editTrigger={editTriggerData}
+      />
+
+      {/* View Trigger Detail Sheet */}
+      <Sheet open={!!viewTrigger} onOpenChange={(open) => { if (!open) setViewTrigger(null); }}>
+        <SheetContent className="w-full sm:max-w-xl overflow-y-auto" style={{ borderLeft: `3px solid ${GOLD}` }}>
+          {viewTrigger && (
+            <>
+              <SheetHeader className="mb-6">
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                  <div style={{ width: 20, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Trigger Detail</span>
+                </div>
+                <SheetTitle style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: NAVY }}>{viewTrigger.name}</SheetTitle>
+                <div className="flex items-center gap-2 mt-2">
+                  <div style={{
+                    display: "inline-flex", alignItems: "center", gap: 5,
+                    background: viewTrigger.status === 'triggered' ? 'rgba(239,68,68,0.1)' : 'rgba(43,138,110,0.12)',
+                    color: viewTrigger.status === 'triggered' ? '#EF4444' : '#3BAF8A',
+                    fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "4px 12px"
+                  }}>
+                    {viewTrigger.status === 'triggered' ? <XCircle className="w-3 h-3" /> : <CheckCircle className="w-3 h-3" />}
+                    {viewTrigger.status}
+                  </div>
+                  <div className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${viewTrigger.severity === 'critical' ? 'bg-red-500 text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'}`}>
+                    {viewTrigger.severity}
+                  </div>
+                </div>
+              </SheetHeader>
+
+              <div className="space-y-6">
+                {/* Description */}
+                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Info className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Description</span>
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">{viewTrigger.description}</p>
+                </div>
+
+                {/* Condition */}
+                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Target className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Trigger Condition</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-800">{viewTrigger.condition || viewTrigger.description}</p>
+                </div>
+
+                {/* Metadata grid */}
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { label: 'Category', value: viewTrigger.category || '—', icon: <Tag className="w-3.5 h-3.5" style={{ color: GOLD }} /> },
+                    { label: 'Type', value: viewTrigger.triggerType || '—', icon: <Zap className="w-3.5 h-3.5" style={{ color: NAVY }} /> },
+                    { label: 'Alert Threshold', value: viewTrigger.alertThreshold || '—', icon: <Bell className="w-3.5 h-3.5 text-red-500" /> },
+                    { label: 'Monitoring', value: viewTrigger.isActive ? 'Active' : 'Paused', icon: viewTrigger.isActive ? <CheckCircle className="w-3.5 h-3.5" style={{ color: TEAL }} /> : <Pause className="w-3.5 h-3.5 text-gray-400" /> },
+                  ].map((item, i) => (
+                    <div key={i} className="p-3 border border-[#E8E4DC] bg-white">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        {item.icon}
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">{item.label}</span>
+                      </div>
+                      <p className="text-sm font-semibold capitalize" style={{ color: NAVY }}>{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action */}
+                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Activity className="w-3.5 h-3.5" style={{ color: TEAL }} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Automated Response</span>
+                  </div>
+                  <Badge variant="outline" style={{ border: `1px solid ${TEAL}`, color: TEAL, fontSize: 11 }}>
+                    {viewTrigger.action || 'Execute Protocol'}
+                  </Badge>
+                </div>
+
+                {/* Timestamps */}
+                <div className="p-4 border border-[#E8E4DC]">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Calendar className="w-3.5 h-3.5" style={{ color: NAVY }} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Timeline</span>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-500">Last Evaluated</span>
+                      <span className="font-medium" style={{ color: NAVY }}>
+                        {viewTrigger.updatedAt ? format(new Date(viewTrigger.updatedAt), 'MMM d, yyyy h:mm a') : 'Never'}
+                      </span>
+                    </div>
+                    {viewTrigger.lastTriggeredAt && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500">Last Triggered</span>
+                        <span className="font-medium text-red-600">
+                          {format(new Date(viewTrigger.lastTriggeredAt), 'MMM d, yyyy h:mm a')}
+                        </span>
+                      </div>
+                    )}
+                    {viewTrigger.triggerCount !== undefined && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500">Total Fires</span>
+                        <span className="font-bold" style={{ color: NAVY }}>{viewTrigger.triggerCount}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Edit CTA */}
+                <Button
+                  className="w-full"
+                  style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}
+                  onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}
+                >
+                  <Settings className="w-4 h-4 mr-2" />
+                  Edit This Trigger
+                </Button>
+              </div>
+            </>
+          )}
+        </SheetContent>
+      </Sheet>
     </PageLayout>
   );
 }

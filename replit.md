@@ -17,6 +17,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Neutral Colors:** Off-white `#F8F7F4`, Border `#E8E4DC`, Muted `#6B7280`
 - **Rules:** Gold = accents, labels, metrics (never background). Navy = hero sections, headings, primary buttons. Teal = success states, offense playbooks, progress. Red = crisis/alert severity only (preserved). Yellow/orange = warnings only.
 - **Applied:** Full design system applied across all 171 pages — zero purple/violet/cyan/indigo/emerald/blue(600+) Tailwind color classes remain (verified clean build March 2026).
+- **CRITICAL REFACTOR WARNING:** Color-pass subagents may strip functional component imports when rewriting files. After any style-only refactor pass, verify that `TriggersManagement.tsx` still imports and mounts `TriggerConfigurationWizard`. This was lost in the March 2026 color pass and restored manually.
 - **Color variable trap:** `Homepage.tsx` uses `TEXT_MUTED` (not `MUTED`) as its local variable name. All other files use `MUTED`. Always check the constants block at the top of each file before using color variable names — do not assume they are identical across files.
 
 ## System Architecture
