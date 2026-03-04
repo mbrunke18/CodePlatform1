@@ -454,7 +454,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
       outcome: "Execution OS is watching your environment in real-time.",
     },
     {
-      num: "03", label: "Activation", timing: "Week 3–4 · Go-live", color: NAVY, doing: "Your team activates",
+      num: "03", label: "Activation", timing: "Week 3–4 · Go-live", color: "#fff", doing: "Your team activates",
       items: [
         "First practice drill — full playbook simulation",
         "Executive and PMO team training",
