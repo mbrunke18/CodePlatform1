@@ -106,6 +106,10 @@ export default function MissionControl() {
     queryKey: ['/api/playbooks'],
   });
 
+  const { data: realPlaybooks = [] } = useQuery<any[]>({
+    queryKey: ['/api/scenarios'],
+  });
+
   const { data: triggers = [] } = useQuery<any[]>({
     queryKey: ['/api/triggers'],
   });
@@ -151,6 +155,22 @@ export default function MissionControl() {
       totalTasks: 12
     };
     setActiveExecutions(prev => [...prev, newExecution]);
+
+    // Navigate to the real activation flow after a short delay
+    setTimeout(() => {
+      if (realPlaybooks.length === 0) {
+        setLocation('/triggers-management');
+        return;
+      }
+
+      const keyword = trigger.suggestedPlaybook.toLowerCase();
+      const matchedPlaybook = realPlaybooks.find(p => 
+        p.name.toLowerCase().includes(keyword)
+      );
+
+      const matchedId = matchedPlaybook?.id || realPlaybooks[0]?.id;
+      setLocation('/playbook-activation/manual/' + matchedId);
+    }, 600);
   };
 
   return (

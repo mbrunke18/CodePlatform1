@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useLocation } from 'wouter';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
@@ -251,7 +252,9 @@ function DataPointRow({
   isToggling?: boolean;
 }) {
   const { data: signalStatus } = useQuery<any>({
-    queryKey: ['/api/dynamic-strategy/status']
+    queryKey: ['/api/dynamic-strategy/status'],
+    retry: false,
+    placeholderData: null
   });
 
   const isActive = existingTrigger?.isActive ?? false;
@@ -316,14 +319,23 @@ function DataPointRow({
 
 export default function SignalIntelligenceHub() {
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>(SIGNAL_CATEGORIES[0].id);
   const [isConfigDialogOpen, setIsConfigDialogOpen] = useState(false);
   const [editingDataPoint, setEditingDataPoint] = useState<DataPoint | null>(null);
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const { data: signalStatus, isError: isStatusError } = useQuery<any>({
+    queryKey: ['/api/dynamic-strategy/status'],
+    retry: false,
+    placeholderData: null
+  });
+
   const { data: triggers = [], isLoading: triggersLoading } = useQuery<any[]>({
-    queryKey: ['/api/dynamic-strategy/triggers']
+    queryKey: ['/api/dynamic-strategy/triggers'],
+    retry: false,
+    placeholderData: []
   });
 
   const saveTriggerMutation = useMutation({
@@ -386,6 +398,36 @@ export default function SignalIntelligenceHub() {
       toggleTriggerMutation.mutate({ id: existingId, isActive: enable });
     }
   };
+
+  if (isStatusError || !signalStatus) {
+    return (
+      <PageLayout>
+        <div className="bg-white min-h-screen flex items-center justify-center p-6">
+          <div style={{ background: "#0A0F2E", border: "1px solid #C9A84C", padding: 48, textAlign: "center", maxWidth: 600 }}>
+            <h2 style={{ ...CG, color: GOLD, fontSize: 32, marginBottom: 16 }}>Signal Monitoring Active</h2>
+            <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 32, lineHeight: 1.6 }}>
+              Real-time intelligence feeds are available to authenticated enterprise users. Sign in or request pilot access to connect your organization's signal layer.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.href = '/api/login'}
+                style={{ borderColor: "rgba(255,255,255,0.3)", color: "white" }}
+              >
+                Sign In
+              </Button>
+              <Button 
+                onClick={() => setLocation('/pilot-program')}
+                style={{ background: "#C9A84C", color: "#0A0F2E" }}
+              >
+                Request Pilot Access
+              </Button>
+            </div>
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout>

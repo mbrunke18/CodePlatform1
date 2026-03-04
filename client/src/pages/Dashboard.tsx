@@ -22,6 +22,7 @@ import {
 import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { BrandStamp } from "@/components/BrandStamp";
+import AICopilotPanel from '@/components/AICopilotPanel';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -360,6 +361,14 @@ export default function Dashboard() {
                   </div>
                 </CardContent>
               </Card>
+
+              <div style={{ marginTop: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div style={{ width: 28, height: 2, background: "#C9A84C" }} />
+                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>AI Executive Copilot</h2>
+                </div>
+                <AICopilotPanel />
+              </div>
             </div>
           </div>
 

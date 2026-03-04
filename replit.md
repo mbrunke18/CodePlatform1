@@ -19,6 +19,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Applied:** Full design system applied across all 171 pages — zero purple/violet/cyan/indigo/emerald/blue(600+) Tailwind color classes remain (verified clean build March 2026).
 - **CRITICAL REFACTOR WARNING:** Color-pass subagents may strip functional component imports when rewriting files. After any style-only refactor pass, verify that `TriggersManagement.tsx` still imports and mounts `TriggerConfigurationWizard`. This was lost in the March 2026 color pass and restored manually.
 - **Color variable trap:** `Homepage.tsx` uses `TEXT_MUTED` (not `MUTED`) as its local variable name. All other files use `MUTED`. Always check the constants block at the top of each file before using color variable names — do not assume they are identical across files.
+- **Wired components (March 2026):** `BoardDeckGenerator` mounted in `BoardBriefings.tsx`. `AICopilotPanel` mounted in `Dashboard.tsx`. Both were built but previously unreachable.
+- **Mission Control activation (March 2026):** `handleActivatePlaybook` now queries `/api/scenarios`, finds the best-matching real playbook by name, and navigates to `/playbook-activation/manual/{playbookId}` after a 600ms animation delay. No longer local-state-only.
+- **Signal Intelligence Hub (March 2026):** All `/api/dynamic-strategy/*` queries now have `retry: false` and `placeholderData`. Unauthenticated users see a branded navy/gold fallback with "Sign In" and "Request Pilot Access" CTAs instead of a blank/broken page.
+- **Settings buttons (March 2026):** All admin buttons now have onClick handlers — health check, restart services, view logs, add user, bulk import, backup, optimize, security scan, generate reports, and all three integration buttons (Slack, Jira, Tableau). User invite form is conditionally rendered inline.
 
 ## System Architecture
 

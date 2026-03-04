@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import BoardDeckGenerator from '@/components/BoardDeckGenerator';
+import { useAuth } from "@/hooks/useAuth";
 import { FileText, Download, Calendar, CheckCircle, TrendingUp, Award, AlertTriangle, Brain, Target, Clock, Zap } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 
@@ -100,6 +102,7 @@ const demoBoardReports = [
 ];
 
 export default function BoardBriefings() {
+  const { user } = useAuth();
   const { data: briefingsData, isLoading: briefingsLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-briefings'],
   });
@@ -425,6 +428,14 @@ export default function BoardBriefings() {
           )}
         </CardContent>
       </Card>
+
+      <div style={{ marginTop: 32 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+          <div style={{ width: 28, height: 2, background: "#C9A84C" }} />
+          <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>AI Board Deck Generation</h2>
+        </div>
+        <BoardDeckGenerator organizationId={(user as any)?.organizationId?.toString() || 'demo-org'} />
+      </div>
       </div>
     </PageLayout>
   );
