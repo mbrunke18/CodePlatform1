@@ -33,6 +33,15 @@ import {
   Layers,
   ArrowRight,
   Lock,
+  TrendingUp,
+  Radio,
+  GitBranch,
+  MessageSquare,
+  Activity,
+  Flag,
+  ChevronDown,
+  ChevronRight,
+  AlertCircle,
 } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -59,10 +68,80 @@ const SEVERITY_COLORS = {
   low: 'bg-[#0A0F2E]/10 text-[#0A0F2E]',
 };
 
+const NAVY = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+function RoleTaskCard({ task, index }: { task: any; index: number }) {
+  const [open, setOpen] = useState(index === 0);
+  const priorityColor = task.priority === 'lead' ? GOLD : task.priority === 'conditional' ? TEAL : NAVY;
+  return (
+    <div style={{ border: `1px solid ${BORDER}`, marginBottom: 8, background: "#fff" }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{ width: "100%", padding: "14px 20px", display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
+      >
+        <div style={{ width: 8, height: 8, borderRadius: "50%", background: priorityColor, flexShrink: 0 }} />
+        <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, flex: 1 }}>{task.role}</span>
+        {task.deadline && (
+          <span style={{ fontSize: 10, fontWeight: 600, color: MUTED, textTransform: "uppercase", letterSpacing: "0.05em" }}>{task.deadline}</span>
+        )}
+        {open ? <ChevronDown size={14} color={MUTED} /> : <ChevronRight size={14} color={MUTED} />}
+      </button>
+      {open && (
+        <div style={{ padding: "0 20px 16px 40px" }}>
+          <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+            {task.items.map((item: string, i: number) => (
+              <li key={i} style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                <div style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 7 }} />
+                <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DecisionGateBlock({ gate }: { gate: any }) {
+  if (!gate) return null;
+  return (
+    <div style={{ border: `1px solid ${GOLD}`, background: `${GOLD}10`, padding: 20, marginTop: 20 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+        <GitBranch size={14} color={GOLD} />
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Decision Gate</span>
+      </div>
+      <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 10 }}>{gate.title}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>All of the following must be true before advancing:</div>
+      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+        {gate.criteria.map((c: string, i: number) => (
+          <li key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+            <CheckCircle2 size={13} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+            <span style={{ fontSize: 13, color: "#374151" }}>{c}</span>
+          </li>
+        ))}
+      </ul>
+      {gate.escalation && (
+        <div style={{ marginTop: 12, padding: "8px 12px", background: "#fff", border: `1px solid ${BORDER}` }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#EF4444" }}>ESCALATION: </span>
+          <span style={{ fontSize: 12, color: MUTED }}>{gate.escalation}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function PlaybookDetail() {
   const { id } = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('overview');
+  const [expandedPhase, setExpandedPhase] = useState<string | null>('phase-1');
   const { toast } = useToast();
   const { isAuthenticated, login } = useAuth();
 
@@ -80,7 +159,7 @@ export default function PlaybookDetail() {
     },
     enabled: !!id,
   });
-  
+
   const playbook = playbookData?.playbook;
   const isSampleView = SAMPLE_PLAYBOOK_NAMES.has(playbook?.name || "") && !isAuthenticated;
 
@@ -168,14 +247,11 @@ export default function PlaybookDetail() {
   const overallScore = readiness?.overallScore ?? 0;
   const canActivate = overallScore >= 50;
 
-  const NAVY = "#0A0F2E";
-  const NAVY_MID = "#141B45";
-  const GOLD = "#C9A84C";
-  const TEAL = "#2B8A6E";
-  const OFF = "#F8F7F4";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const phases: any[] = playbook?.enrichedPhases || [];
+  const commAssets: any[] = playbook?.communicationAssets || [];
+  const riskIndicators: any = playbook?.riskIndicators || null;
+  const outcomeFraming: any = playbook?.outcomeFraming || null;
+  const signalSources: string[] = playbook?.signalSources || [];
 
   if (isLoading) {
     return (
@@ -217,7 +293,7 @@ export default function PlaybookDetail() {
               </Link>
             </Button>
             <div className="flex gap-3">
-              <Button 
+              <Button
                 onClick={() => setLocation(`/playbook/${id}/customize`)}
                 style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
               >
@@ -228,7 +304,10 @@ export default function PlaybookDetail() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* ── MAIN COLUMN ── */}
             <div className="lg:col-span-2 space-y-8">
+
+              {/* Hero card */}
               <div style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${GOLD}`, padding: 40, background: "#fff" }}>
                 <div className="flex items-center gap-3 mb-6">
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
@@ -263,6 +342,20 @@ export default function PlaybookDetail() {
                 </div>
               </div>
 
+              {/* Why It Matters */}
+              {playbook.whyItMatters && (
+                <div style={{ border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, background: `${GOLD}08`, padding: 32 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <TrendingUp size={16} color={GOLD} />
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Why Speed Matters</span>
+                  </div>
+                  <p style={{ fontSize: 17, color: NAVY, lineHeight: 1.7, fontStyle: "italic", fontWeight: 500 }}>
+                    {playbook.whyItMatters}
+                  </p>
+                </div>
+              )}
+
+              {/* Trigger Criteria + Signal Sources */}
               <div className="space-y-6">
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                   <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
@@ -272,14 +365,31 @@ export default function PlaybookDetail() {
                 <div className="grid gap-6">
                   <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: "#fff" }}>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Trigger Criteria</div>
-                    <p style={{ color: NAVY, lineHeight: 1.6 }}>{playbook.triggerCriteria}</p>
+                    <p style={{ color: NAVY, lineHeight: 1.6, marginBottom: signalSources.length > 0 ? 24 : 0 }}>{playbook.triggerCriteria}</p>
+
+                    {signalSources.length > 0 && (
+                      <>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                          <Radio size={12} color={MUTED} />
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED }}>Live Monitoring Sources</span>
+                        </div>
+                        <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          {signalSources.map((s: string, i: number) => (
+                            <li key={i} style={{ display: "flex", gap: 10, marginBottom: 8 }}>
+                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 6 }} />
+                              <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{s}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
                   </div>
 
                   <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: "#fff" }}>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Core Stakeholders</div>
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", marginBottom: 16 }}>Tier 1 - Decision Makers</h4>
+                        <h4 style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", marginBottom: 16 }}>Tier 1 — Decision Makers</h4>
                         <div className="flex flex-wrap gap-2">
                           {(typeof playbook.tier1Stakeholders === 'object' ? Object.values(playbook.tier1Stakeholders) : [playbook.tier1Stakeholders]).map((s: any, i: number) => (
                             <span key={i} style={{ padding: "4px 12px", background: OFF, border: `1px solid ${BORDER}`, fontSize: 11, fontWeight: 600, color: NAVY }}>
@@ -289,7 +399,7 @@ export default function PlaybookDetail() {
                         </div>
                       </div>
                       <div>
-                        <h4 style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", marginBottom: 16 }}>Tier 2 - Execution Team</h4>
+                        <h4 style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", marginBottom: 16 }}>Tier 2 — Execution Team</h4>
                         <div className="flex flex-wrap gap-2">
                           {(typeof playbook.tier2Stakeholders === 'object' ? Object.values(playbook.tier2Stakeholders) : [playbook.tier2Stakeholders]).map((s: any, i: number) => (
                             <span key={i} style={{ padding: "4px 12px", background: "#fff", border: `1px solid ${BORDER}`, fontSize: 11, fontWeight: 600, color: MUTED }}>
@@ -302,8 +412,226 @@ export default function PlaybookDetail() {
                   </div>
                 </div>
               </div>
+
+              {/* Execution Phases */}
+              {phases.length > 0 && (
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                    <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Phases</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: MUTED, marginBottom: 24 }}>
+                    Each phase has specific role owners, deliverables, and a decision gate that must clear before the next phase begins.
+                  </div>
+
+                  <div className="space-y-4">
+                    {phases.map((phase: any, pi: number) => {
+                      const isOpen = expandedPhase === phase.id;
+                      return (
+                        <div key={phase.id} style={{ border: `1px solid ${BORDER}`, background: "#fff" }}>
+                          <button
+                            onClick={() => setExpandedPhase(isOpen ? null : phase.id)}
+                            style={{ width: "100%", padding: "20px 28px", display: "flex", alignItems: "center", gap: 16, background: isOpen ? NAVY : "#fff", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.15s" }}
+                          >
+                            <div style={{ width: 32, height: 32, borderRadius: "50%", background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                              <span style={{ fontSize: 11, fontWeight: 700, color: isOpen ? NAVY : MUTED }}>{pi + 1}</span>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: isOpen ? GOLD : MUTED, marginBottom: 4 }}>{phase.timeWindow}</div>
+                              <div style={{ fontSize: 15, fontWeight: 700, color: isOpen ? "#fff" : NAVY }}>{phase.name}</div>
+                            </div>
+                            {isOpen ? <ChevronDown size={16} color={GOLD} /> : <ChevronRight size={16} color={MUTED} />}
+                          </button>
+
+                          {isOpen && (
+                            <div style={{ padding: "24px 28px" }}>
+                              <div style={{ padding: "12px 16px", background: OFF, border: `1px solid ${BORDER}`, marginBottom: 20 }}>
+                                <span style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>Objective: </span>
+                                <span style={{ fontSize: 13, color: NAVY }}>{phase.objective}</span>
+                              </div>
+
+                              {phase.tasks.map((task: any, ti: number) => (
+                                <RoleTaskCard key={ti} task={task} index={ti} />
+                              ))}
+
+                              {phase.restrictions && phase.restrictions.length > 0 && (
+                                <div style={{ border: `1px solid #FCA5A5`, background: "#FFF5F5", padding: 16, marginTop: 16 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                                    <AlertCircle size={13} color="#EF4444" />
+                                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EF4444" }}>What Does NOT Happen This Phase</span>
+                                  </div>
+                                  <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                                    {phase.restrictions.map((r: string, ri: number) => (
+                                      <li key={ri} style={{ fontSize: 12, color: "#7F1D1D", marginBottom: 4, paddingLeft: 12 }}>— {r}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+
+                              <DecisionGateBlock gate={phase.decisionGate} />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Communication Assets */}
+              {commAssets.length > 0 && (
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                    <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Communication Assets</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: MUTED, marginBottom: 24 }}>
+                    Pre-staged draft communications — ready to personalize and deploy when the phase clock starts.
+                  </div>
+
+                  <div className="space-y-4">
+                    {commAssets.map((asset: any, ai: number) => (
+                      <div key={ai} style={{ border: `1px solid ${BORDER}`, background: "#fff" }}>
+                        <div style={{ padding: "16px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", gap: 12 }}>
+                          <MessageSquare size={14} color={GOLD} />
+                          <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, flex: 1 }}>{asset.label}</span>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: MUTED, textTransform: "uppercase", letterSpacing: "0.05em", background: OFF, padding: "3px 8px", border: `1px solid ${BORDER}` }}>{asset.timing}</span>
+                        </div>
+                        {asset.subject && (
+                          <div style={{ padding: "12px 24px", borderBottom: `1px solid ${BORDER}`, background: OFF }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>Subject: </span>
+                            <span style={{ fontSize: 12, color: NAVY }}>{asset.subject}</span>
+                          </div>
+                        )}
+                        <div style={{ padding: "20px 24px" }}>
+                          <pre style={{ fontSize: 12, color: "#374151", lineHeight: 1.75, whiteSpace: "pre-wrap", fontFamily: "inherit", margin: 0 }}>
+                            {asset.body}
+                          </pre>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Risk Indicators */}
+              {riskIndicators && (
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                    <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Risk Indicators</span>
+                  </div>
+                  <div style={{ fontSize: 13, color: MUTED, marginBottom: 24 }}>
+                    Signals that tell you whether the response is working — or needs to escalate.
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div style={{ border: `1px solid #86EFAC`, background: "#F0FDF4", padding: 24 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#22C55E" }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#16A34A" }}>Green — On Track</span>
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        {riskIndicators.green.map((item: string, i: number) => (
+                          <li key={i} style={{ fontSize: 12, color: "#166534", marginBottom: 10, lineHeight: 1.5, paddingLeft: 8, borderLeft: "2px solid #86EFAC" }}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div style={{ border: `1px solid #FCD34D`, background: "#FFFBEB", padding: 24 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#B45309" }}>Yellow — Watch Closely</span>
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        {riskIndicators.yellow.map((item: string, i: number) => (
+                          <li key={i} style={{ fontSize: 12, color: "#92400E", marginBottom: 10, lineHeight: 1.5, paddingLeft: 8, borderLeft: "2px solid #FCD34D" }}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div style={{ border: `1px solid #FCA5A5`, background: "#FFF5F5", padding: 24 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#DC2626" }}>Red — Escalate Now</span>
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        {riskIndicators.red.map((item: string, i: number) => (
+                          <li key={i} style={{ fontSize: 12, color: "#7F1D1D", marginBottom: 10, lineHeight: 1.5, paddingLeft: 8, borderLeft: "2px solid #FCA5A5" }}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Outcome Framing */}
+              {outcomeFraming && (
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                    <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Outcome Framing</span>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    {outcomeFraming.at12hours && (
+                      <div style={{ border: `1px solid ${BORDER}`, background: "#fff", padding: 28 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                          <Clock size={13} color={TEAL} />
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: TEAL }}>Success at 12 Hours</span>
+                        </div>
+                        <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          {outcomeFraming.at12hours.map((item: string, i: number) => (
+                            <li key={i} style={{ display: "flex", gap: 10, marginBottom: 10 }}>
+                              <CheckCircle2 size={13} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                              <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {outcomeFraming.at30days && (
+                      <div style={{ border: `1px solid ${BORDER}`, background: "#fff", padding: 28 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                          <Flag size={13} color={GOLD} />
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Success at 30 Days</span>
+                        </div>
+                        <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                          {outcomeFraming.at30days.map((item: string, i: number) => (
+                            <li key={i} style={{ display: "flex", gap: 10, marginBottom: 10 }}>
+                              <CheckCircle2 size={13} color={GOLD} style={{ flexShrink: 0, marginTop: 2 }} />
+                              <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+
+                  {outcomeFraming.failureModes && (
+                    <div style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid #EF4444`, background: "#fff", padding: 28 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                        <AlertTriangle size={13} color="#EF4444" />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#EF4444" }}>What Failure Looks Like</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: MUTED, marginBottom: 16 }}>
+                        These are the specific, avoidable failure modes this playbook is designed to prevent.
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        {outcomeFraming.failureModes.map((item: string, i: number) => (
+                          <li key={i} style={{ display: "flex", gap: 10, marginBottom: 10 }}>
+                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#EF4444", flexShrink: 0, marginTop: 5 }} />
+                            <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
+            {/* ── SIDEBAR ── */}
             <aside className="space-y-6">
               <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: "#fff", textAlign: "center" }}>
                 {isSampleView ? (
@@ -400,8 +728,36 @@ export default function PlaybookDetail() {
                   ))}
                 </ul>
               </div>
+
+              {/* Quick-jump nav for enriched sections */}
+              {phases.length > 0 && (
+                <div style={{ border: `1px solid ${BORDER}`, padding: 24, background: "#fff" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, marginBottom: 16 }}>Jump to Phase</div>
+                  <div className="space-y-2">
+                    {phases.map((phase: any, pi: number) => (
+                      <button
+                        key={phase.id}
+                        onClick={() => {
+                          setExpandedPhase(phase.id);
+                          document.getElementById(`phase-${phase.id}`)?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", background: expandedPhase === phase.id ? `${NAVY}08` : "transparent", border: `1px solid ${expandedPhase === phase.id ? NAVY : BORDER}`, cursor: "pointer", textAlign: "left" }}
+                      >
+                        <div style={{ width: 20, height: 20, borderRadius: "50%", background: expandedPhase === phase.id ? NAVY : OFF, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <span style={{ fontSize: 9, fontWeight: 700, color: expandedPhase === phase.id ? "#fff" : MUTED }}>{pi + 1}</span>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 9, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>{phase.timeWindow}</div>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: NAVY }}>{phase.name}</div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </aside>
           </div>
+
           {isSampleView && (
             <div style={{ background: NAVY, padding: "64px 48px", marginTop: 0 }}>
               <div className="max-w-3xl mx-auto text-center">
@@ -413,7 +769,7 @@ export default function PlaybookDetail() {
                   <em style={{ color: GOLD }}>167 more are protecting your competitors.</em>
                 </div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
-                  Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation. 
+                  Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation.
                   Your team can be execution-ready in 12 minutes — not 12 weeks.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -179,6 +179,14 @@ export const strategicScenarios = pgTable('strategic_scenarios', {
   averageExecutionTime: integer('average_execution_time'), // Average time to execute in minutes
   executionCount: integer('execution_count').default(0), // How many times has this been executed?
   
+  // Enriched playbook content fields
+  whyItMatters: text('why_it_matters'), // Quantified "why respond fast" statement with source citation
+  signalSources: jsonb('signal_sources'), // Array of strings: specific data feeds and keywords monitored
+  enrichedPhases: jsonb('enriched_phases'), // Array of phase objects: name, timeWindow, objective, tasks[], restrictions[], decisionGate
+  communicationAssets: jsonb('communication_assets'), // Array: { type, label, timing, subject?, body }
+  riskIndicators: jsonb('risk_indicators'), // Object: { green: string[], yellow: string[], red: string[] }
+  outcomeFraming: jsonb('outcome_framing'), // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
+
   createdBy: varchar('created_by').references(() => users.id).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow(),
@@ -2559,6 +2567,14 @@ export const playbookLibrary = pgTable('playbook_library', {
   outcomeMetrics: jsonb('outcome_metrics'), // Market share retention, customer churn, etc.
   learningMetrics: jsonb('learning_metrics'), // What to measure for improvement
   
+  // Enriched playbook content (free sample playbooks + future full library)
+  whyItMatters: text('why_it_matters'), // Quantified "why respond fast" statement with source citation
+  signalSources: jsonb('signal_sources'), // Array of strings: specific data feeds and keywords monitored
+  enrichedPhases: jsonb('enriched_phases'), // Array of phase objects: name, timeWindow, objective, tasks[], restrictions[], decisionGate
+  communicationAssets: jsonb('communication_assets'), // Array: { type, label, timing, subject?, body }
+  riskIndicators: jsonb('risk_indicators'), // Object: { green: string[], yellow: string[], red: string[] }
+  outcomeFraming: jsonb('outcome_framing'), // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
+
   // Metadata
   isPremium: boolean('is_premium').default(false), // Some playbooks might be premium tier
   isActive: boolean('is_active').default(true),
