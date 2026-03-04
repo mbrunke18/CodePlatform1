@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -137,17 +138,17 @@ export default function OnboardingWizard() {
     else setView('journey');
   };
 
-  if (view === 'complete') return <CompleteView orgName={orgData.companyName} onGo={() => setLocation('/dashboard')} />;
-
-  if (view === 'journey') return (
-    <JourneyView
-      onBegin={() => setView('step')}
-      onSkip={() => completeOnboardingMutation.mutate()}
-    />
-  );
-
   return (
-    <div style={{ minHeight: "100vh", background: OFF, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
+    <PageLayout>
+    {view === 'complete' ? (
+      <CompleteView orgName={orgData.companyName} onGo={() => setLocation('/dashboard')} />
+    ) : view === 'journey' ? (
+      <JourneyView
+        onBegin={() => setView('step')}
+        onSkip={() => completeOnboardingMutation.mutate()}
+      />
+    ) : (
+    <div style={{ background: OFF, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
 
       {/* Header */}
       <div style={{ background: NAVY, padding: "0 48px", position: "relative", overflow: "hidden" }}>
@@ -427,6 +428,8 @@ export default function OnboardingWizard() {
         </div>
       </div>
     </div>
+    )}
+    </PageLayout>
   );
 }
 
