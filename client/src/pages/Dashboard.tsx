@@ -103,7 +103,7 @@ function PhaseCard({
         <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8 }}>
+              <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 0 }}>
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -120,7 +120,7 @@ function PhaseCard({
             {metrics.map((m, i) => (
               <div key={i} className="p-2 sm:p-3 rounded-none bg-[#F8F7F4] border border-[#E8E4DC]">
                 <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280]">{m.label}</div>
-                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? accentColor : NAVY }}>{m.value}</div>
+                <div style={{ ...CG, fontSize: "18px", fontWeight: 600, color: m.highlight ? GOLD : NAVY }}>{m.value}</div>
               </div>
             ))}
           </div>

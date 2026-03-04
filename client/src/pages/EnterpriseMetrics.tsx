@@ -71,7 +71,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
         <div className="p-8">
           {/* Enterprise Metrics Header */}
           <div className="flex items-center justify-between mb-8">
-            <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between">
+            <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
               <div className="relative z-10 flex items-center gap-4">
                 <Building className="h-10 w-10 text-[#C9A84C]" />
@@ -85,7 +85,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                   <CheckCircle className="w-3 h-3 mr-1" />
                   Enterprise Ready
                 </Badge>
-                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
+                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold shadow-lg">
                   Fortune 1000
                 </Badge>
               </div>

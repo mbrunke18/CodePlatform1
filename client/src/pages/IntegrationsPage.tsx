@@ -58,7 +58,7 @@ const categoryColors = {
   communication: "bg-[#C9A84C]/10 text-[#C9A84C]",
   scheduling: "bg-[#2B8A6E]/10 text-[#2B8A6E]",
   directory: "bg-[#0A0F2E]/10 text-[#0A0F2E]",
-  crm: "bg-[#0A0F2E]/10 text-[#C9A84C]",
+  crm: "bg-[#C9A84C]/10 text-[#C9A84C]",
 };
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };

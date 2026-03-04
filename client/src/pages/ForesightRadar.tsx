@@ -426,7 +426,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
 
                       <Button 
                         variant="outline" 
-                        className="w-full mt-8 border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none h-12 text-xs font-bold tracking-widest uppercase"
+                        className="w-full mt-8 border-[#E8E4DC] text-[#0A0F2E] hover:bg-white rounded-none h-12 text-[10px] font-bold tracking-widest uppercase"
                         onClick={() => handleViewPattern(pattern)}
                       >
                         Analyze Pattern

@@ -453,16 +453,16 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         <main className="flex-1 min-w-0">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b" style={{ borderColor: BORDER }}>
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
               <Input 
-                className="pl-10 border-gray-200 focus:border-[#C9A84C] focus:ring-[#C9A84C]" 
+                className="pl-10 border-[#E8E4DC] focus:border-[#C9A84C] focus:ring-[#C9A84C]" 
                 placeholder="Search templates..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest mr-2">Filter:</span>
+              <span className="text-xs font-bold text-[#6B7280] uppercase tracking-widest mr-2">Filter:</span>
               {URGENCY_FILTERS.map((f) => (
                 <button
                   key={f.id}
@@ -541,7 +541,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   </p>
                   <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: "#F8F7F4" }}>
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-gray-400 uppercase">Domain</span>
+                      <span className="text-[9px] font-bold text-[#6B7280] uppercase">Domain</span>
                       <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[100px]">{playbook.domain}</span>
                     </div>
                     <Button

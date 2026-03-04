@@ -627,7 +627,7 @@ export default function PlaybookCustomize() {
                   <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold uppercase tracking-wider text-[10px]">
                     {watch("category")?.toUpperCase() || 'DEFENSE'}
                   </Badge>
-                  <span className="text-gray-400 text-sm font-medium">
+                  <span className="text-[#6B7280] text-sm font-medium">
                     {watch("domain") || 'Strategic Intelligence'}
                   </span>
                 </div>

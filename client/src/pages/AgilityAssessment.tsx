@@ -98,8 +98,8 @@ const getScoreCategory = (score: number) => {
   if (score >= 80) return { label: "Agility Leader", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/10" };
   if (score >= 60) return { label: "Above Average", color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/10" };
   if (score >= 40) return { label: "Industry Average", color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/10" };
-  if (score >= 20) return { label: "Below Average", color: "text-[#0A0F2E] dark:text-[#C9A84C]", bg: "bg-[#0A0F2E]/10" };
-  return { label: "Significant Opportunity", color: "text-[#0A0F2E] dark:text-[#C9A84C]", bg: "bg-[#0A0F2E]/10" };
+  if (score >= 20) return { label: "Below Average", color: "text-[#C9A84C]", bg: "bg-[#0A0F2E]/10" };
+  return { label: "Significant Opportunity", color: "text-[#C9A84C]", bg: "bg-[#0A0F2E]/10" };
 };
 
 export default function AgilityAssessment() {

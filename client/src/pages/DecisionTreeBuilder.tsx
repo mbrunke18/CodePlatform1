@@ -153,9 +153,9 @@ export default function DecisionTreeBuilder() {
     'border-[#C9A84C]/30 bg-[#C9A84C]/5',
     'border-[#DFC178]/30 bg-[#DFC178]/5',
     'border-[#141B45]/30 bg-[#141B45]/5',
-    'border-[#E8E4DC] bg-OFF',
+    'border-[#E8E4DC] bg-[#F8F7F4]',
   ];
-  const buttonColors = [TEAL, NAVY, GOLD, '#DFC178', '#141B45', '#3BAF8A'];
+  const buttonColors = ["#2B8A6E", "#0A0F2E", "#C9A84C", '#DFC178', '#141B45', '#3BAF8A'];
 
   return (
     <div className="min-h-screen bg-[#F8F7F4]">

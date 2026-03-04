@@ -207,26 +207,26 @@ export default function BoardBriefings() {
               {briefings.map((briefing: any) => (
                 <div 
                   key={briefing.id} 
-                  className="border border-[#E8E4DC] dark:border-white/10 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
+                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`briefing-${briefing.id}`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-[#0A0F2E] dark:text-white" data-testid={`text-briefing-title-${briefing.id}`}>{briefing.title}</h3>
-                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-white/20 dark:text-white">{briefing.briefingType}</Badge>
+                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-[#C9A84C]/40 dark:text-[#C9A84C]">{briefing.briefingType}</Badge>
                         {briefing.timeToDecision && (
-                          <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">{briefing.timeToDecision}</Badge>
+                          <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold uppercase tracking-wider">{briefing.timeToDecision}</Badge>
                         )}
                         {briefing.reviewed && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80">{briefing.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80 leading-relaxed">{briefing.executiveSummary}</p>
                       
                       {briefing.keyInsights && briefing.keyInsights.length > 0 && (
-                        <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/40 p-3 rounded-md border border-[#0A0F2E]/10">
-                          <p className="text-sm font-medium mb-1 text-[#0A0F2E] dark:text-[#C9A84C]">Key Insights:</p>
+                        <div className="bg-[#0A0F2E]/5 dark:bg-[#141B45]/40 p-3 rounded-md border border-[#0A0F2E]/10 dark:border-[#C9A84C]/10">
+                          <p className="text-sm font-bold mb-1 text-[#0A0F2E] dark:text-[#C9A84C] uppercase tracking-wider">Key Insights:</p>
                           <ul className="list-disc list-inside text-sm text-[#6B7280] dark:text-white/60">
                             {(briefing.keyInsights as any[]).slice(0, 3).map((insight: string, idx: number) => (
                               <li key={idx}>{insight}</li>
@@ -386,20 +386,20 @@ export default function BoardBriefings() {
               {boardReports.map((report: any) => (
                 <div 
                   key={report.id} 
-                  className="border border-[#E8E4DC] dark:border-white/10 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
+                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`report-${report.id}`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-[#0A0F2E] dark:text-[#C9A84C]" data-testid={`text-report-title-${report.id}`}>{report.title}</h3>
-                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-[#C9A84C]/20 dark:text-[#C9A84C]">{report.reportType}</Badge>
-                        <Badge className="bg-[#0A0F2E] text-white border-none">{report.reportingPeriod}</Badge>
+                        <Badge variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] dark:border-[#C9A84C]/40 dark:text-[#C9A84C]">{report.reportType}</Badge>
+                        <Badge className="bg-[#0A0F2E] text-white border-none font-bold tracking-wider">{report.reportingPeriod}</Badge>
                         {report.approvedBy && (
                           <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                         )}
                       </div>
-                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80">{report.executiveSummary}</p>
+                      <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80 leading-relaxed">{report.executiveSummary}</p>
                       
                       {report.presentedAt && (
                         <div className="flex items-center gap-2 text-sm text-[#6B7280] dark:text-white/60">

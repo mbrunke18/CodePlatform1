@@ -134,13 +134,13 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
           </div>
         </Link>
         <div className="mt-3 flex items-center gap-1 text-xs text-gray-500 dark:text-slate-400">
-          <span className="px-1.5 py-0.5 rounded bg-[#F8F7F4] dark:bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Identify</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#F8F7F4] dark:bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] font-medium">Identify</span>
           <span>→</span>
           <span className="px-1.5 py-0.5 rounded bg-[#0A0F2E] dark:bg-[#C9A84C]/20 text-[#C9A84C] dark:text-[#C9A84C] font-medium">Detect</span>
           <span>→</span>
-          <span className="px-1.5 py-0.5 rounded bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 font-medium">Execute</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20 text-[#C9A84C] dark:text-[#DFC178] font-medium">Execute</span>
           <span>→</span>
-          <span className="px-1.5 py-0.5 rounded bg-green-100 dark:bg-green-500/20 text-green-700 dark:text-green-400 font-medium">Advance</span>
+          <span className="px-1.5 py-0.5 rounded bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 text-[#2B8A6E] dark:text-[#3BAF8A] font-medium">Advance</span>
         </div>
       </div>
 

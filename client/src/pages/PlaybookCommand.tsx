@@ -93,7 +93,7 @@ export default function PlaybookCommand() {
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto text-[#C9A84C] mb-4" />
           <h1 className="text-2xl font-bold mb-2">Playbook Not Found</h1>
-          <p className="text-gray-800 mb-6">The requested playbook could not be located.</p>
+          <p className="text-[#6B7280] mb-6">The requested playbook could not be located.</p>
           <Button onClick={() => setLocation("/playbooks")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Library
@@ -155,7 +155,7 @@ export default function PlaybookCommand() {
                     <div className="font-medium text-[#DFC178] mb-1">
                       Trigger Criteria
                     </div>
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-[#E8E4DC] text-sm">
                       {playbook.triggerCriteria}
                     </p>
                   </div>
@@ -164,20 +164,20 @@ export default function PlaybookCommand() {
             )}
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-[#0A0F2E]">
                 <Clock className="h-5 w-5 text-[#2B8A6E]" />
                 <span>~12 min execution</span>
               </div>
-              <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-[#0A0F2E]">
                 <Users className="h-5 w-5 text-[#2B8A6E]" />
                 <span>Human-led</span>
               </div>
-              <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-[#0A0F2E]">
                 <Sparkles className="h-5 w-5 text-[#2B8A6E]" />
                 <span>AI-assisted</span>
               </div>
               {playbook.preApprovedBudget && (
-                <div className="flex items-center gap-2 text-gray-800 dark:text-slate-300">
+                <div className="flex items-center gap-2 text-[#0A0F2E]">
                   <DollarSign className="h-5 w-5 text-[#2B8A6E]" />
                   <span>${Number(playbook.preApprovedBudget).toLocaleString()}</span>
                 </div>
@@ -187,7 +187,7 @@ export default function PlaybookCommand() {
             {playbook.primaryResponseStrategy && (
               <div>
                 <h3 className="font-medium mb-2">Response Strategy</h3>
-                <p className="text-gray-800 dark:text-slate-300 text-sm">
+                <p className="text-[#0A0F2E] text-sm">
                   {playbook.primaryResponseStrategy}
                 </p>
               </div>
@@ -196,7 +196,7 @@ export default function PlaybookCommand() {
             <div className="pt-4 border-t">
               {!isAuthenticated ? (
                 <div className="text-center py-4">
-                  <p className="text-gray-800 mb-1">Sign in to execute this playbook</p>
+                  <p className="text-[#0A0F2E] mb-1">Sign in to execute this playbook</p>
                   <p className="text-sm text-[#6B7280] mb-4">Continue with Google, GitHub, or Apple</p>
                   <Button onClick={() => login()} data-testid="button-login">
                     Sign In
@@ -204,7 +204,7 @@ export default function PlaybookCommand() {
                 </div>
               ) : !organization?.id ? (
                 <div className="text-center py-4">
-                  <p className="text-gray-800 mb-4">No organization configured</p>
+                  <p className="text-[#0A0F2E] mb-4">No organization configured</p>
                   <Button disabled>Configure Organization</Button>
                 </div>
               ) : startExecution.isSuccess ? (
@@ -244,19 +244,19 @@ export default function PlaybookCommand() {
               {Array.isArray(playbook.tier1Stakeholders) && playbook.tier1Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-[#0A0F2E] text-white mb-2 border-white/10">Tier 1 - Immediate</Badge>
-                  <p className="text-sm text-gray-800">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-[#0A0F2E]">{(playbook.tier1Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier2Stakeholders) && playbook.tier2Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-[#C9A84C]/10 text-[#C9A84C] mb-2 border-[#C9A84C]/20">Tier 2 - Within 2 Hours</Badge>
-                  <p className="text-sm text-gray-800">{(playbook.tier2Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-[#0A0F2E]">{(playbook.tier2Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
               {Array.isArray(playbook.tier3Stakeholders) && playbook.tier3Stakeholders.length > 0 && (
                 <div>
                   <Badge className="bg-[#0A0F2E]/5 text-[#0A0F2E] mb-2 border-[#0A0F2E]/10">Tier 3 - Within 24 Hours</Badge>
-                  <p className="text-sm text-gray-800">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
+                  <p className="text-sm text-[#0A0F2E]">{(playbook.tier3Stakeholders as string[]).join(", ")}</p>
                 </div>
               )}
             </CardContent>

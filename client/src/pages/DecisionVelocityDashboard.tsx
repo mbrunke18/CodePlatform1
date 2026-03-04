@@ -189,7 +189,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-xs">
+                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-[10px]">
                   Before Execution OS
                 </h3>
                 <div className="space-y-3">
@@ -209,7 +209,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               </div>
               
               <div>
-                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-xs">
+                <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-[10px]">
                   With Execution OS
                 </h3>
                 <div className="space-y-3">
@@ -341,7 +341,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           <Button 
             size="lg" 
             onClick={() => setLocation('/decision-trees')}
-            className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-xs h-12 px-8 rounded-none"
+            className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-[10px] h-12 px-8 rounded-none"
             data-testid="button-create-tree"
           >
             <ArrowRight className="mr-2 h-5 w-5" />

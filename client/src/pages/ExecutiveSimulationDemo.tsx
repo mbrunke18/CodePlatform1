@@ -320,7 +320,7 @@ export default function ExecutiveSimulationDemo() {
       case 'critical': return 'bg-[#0A0F2E] text-white';
       case 'high': return 'bg-[#C9A84C]/20 text-[#C9A84C]';
       case 'medium': return 'bg-[#C9A84C]/10 text-[#C9A84C]';
-      case 'low': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#C9A84C]';
+      case 'low': return 'bg-[#0A0F2E]/10 text-[#C9A84C]';
       default: return 'bg-[#6B7280]/10 text-[#6B7280]';
     }
   };
@@ -329,8 +329,8 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return 'text-[#2B8A6E]';
       case 'in_progress': return 'text-[#C9A84C]';
-      case 'blocked': return 'text-[#0A0F2E] dark:text-[#C9A84C]';
-      default: return 'text-[#6B7280] dark:text-[#C9A84C]/60';
+      case 'blocked': return 'text-[#C9A84C]';
+      default: return 'text-[#C9A84C]/60';
     }
   };
 
@@ -338,7 +338,7 @@ export default function ExecutiveSimulationDemo() {
     switch (status) {
       case 'completed': return <CheckCircle2 className="w-5 h-5" />;
       case 'in_progress': return <Activity className="w-5 h-5 animate-pulse text-[#C9A84C]" />;
-      case 'blocked': return <XCircle className="w-5 h-5 text-[#0A0F2E] dark:text-[#C9A84C]" />;
+      case 'blocked': return <XCircle className="w-5 h-5 text-[#C9A84C]" />;
       default: return <CircleDot className="w-5 h-5 text-[#C9A84C]" />;
     }
   };
@@ -498,7 +498,7 @@ export default function ExecutiveSimulationDemo() {
                       <span className="text-[#C9A84C]">48-72 hours</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#0A0F2E]/50 rounded-full" style={{ width: '100%' }}></div>
+                      <div className="h-full bg-[#141B45] rounded-full" style={{ width: '100%' }}></div>
                     </div>
                   </div>
                   <div>
@@ -520,26 +520,26 @@ export default function ExecutiveSimulationDemo() {
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What Happened</h3>
                 <ul className="space-y-3 text-[#0A0F2E] dark:text-white/80 text-sm">
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">1</span>
+                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#C9A84C] text-xs font-bold">1</span>
                     </div>
                     <span>Execution OS detected competitor acquisition via Reuters and SEC filing monitoring</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">2</span>
+                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#C9A84C] text-xs font-bold">2</span>
                     </div>
                     <span>AI assessed impact and recommended "Competitor M&A Response" playbook</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">3</span>
+                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#C9A84C] text-xs font-bold">3</span>
                     </div>
                     <span>You activated the playbook, triggering automatic stakeholder notification</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E]/10 dark:bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-[#0A0F2E] dark:text-[#C9A84C] text-xs font-bold">4</span>
+                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-[#C9A84C] text-xs font-bold">4</span>
                     </div>
                     <span>All 6 response workstreams were coordinated in parallel, not sequentially</span>
                   </li>
@@ -579,20 +579,20 @@ export default function ExecutiveSimulationDemo() {
         {showCriticalAlert && criticalSignal && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" data-testid="overlay-critical-alert">
             <Card className="max-w-2xl w-full border-2 border-[#0A0F2E] bg-white animate-pulse">
-              <CardHeader className="bg-[#0A0F2E]/20 border-b border-[#0A0F2E]/30">
+              <CardHeader className="bg-[#141B45] border-b border-[#0A0F2E]/30">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-[#0A0F2E] rounded-xl flex items-center justify-center animate-pulse">
                     <AlertTriangle className="w-7 h-7 text-[#C9A84C]" />
                   </div>
                   <div>
-                    <Badge className="bg-[#0A0F2E] text-white mb-1">CRITICAL SIGNAL DETECTED</Badge>
-                    <CardTitle className="text-xl text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{criticalSignal.title}</CardTitle>
+                    <Badge className="bg-[#C9A84C] text-[#0A0F2E] mb-1">CRITICAL SIGNAL DETECTED</Badge>
+                    <CardTitle className="text-xl text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{criticalSignal.title}</CardTitle>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-[#0A0F2E] dark:text-white/80 leading-relaxed">{criticalSignal.description}</p>
-                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-[#C9A84C]/60">
+                <p className="text-[#0A0F2E] leading-relaxed font-medium">{criticalSignal.description}</p>
+                <div className="flex items-center gap-4 text-sm text-[#6B7280]">
                   <span className="flex items-center gap-1">
                     <Globe className="w-4 h-4" />
                     {criticalSignal.source}
@@ -602,8 +602,8 @@ export default function ExecutiveSimulationDemo() {
                     Just now
                   </span>
                 </div>
-                <div className="bg-[#0A0F2E]/10 rounded-lg p-4 border border-[#0A0F2E]/20">
-                  <p className="text-[#0A0F2E] font-medium flex items-center gap-2">
+                <div className="bg-[#2B8A6E]/10 rounded-lg p-4 border border-[#2B8A6E]/20">
+                  <p className="text-[#2B8A6E] font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4 text-[#C9A84C]" />
                     Execution OS Recommendation: Activate "Competitor M&A Response" playbook immediately
                   </p>

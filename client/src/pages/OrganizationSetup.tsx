@@ -514,10 +514,12 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           <p className="text-sm text-[#6B7280] mt-1">{dept.description}</p>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#0A0F2E] hover:text-red-600 rounded-none">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="h-8 w-8 text-[#0A0F2E] hover:text-red-600 rounded-none"
+                            onClick={() => handleDeleteDepartment(dept.id)}
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -635,10 +637,12 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           </Badge>
                         </div>
                         <div className="flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-white">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-800 hover:text-red-500">
+                          <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="h-8 w-8 text-[#0A0F2E] hover:text-red-600"
+                            onClick={() => handleDeleteEscalationPolicy(policy.id)}
+                          >
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>
@@ -650,8 +654,8 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                           {policy.levels.map((level, idx) => (
                             <div key={level.level} className="relative flex items-start gap-4 pl-8">
                               <div className={`absolute left-2 w-4 h-4 rounded-none ${
-                                idx === 0 ? 'bg-[#2B8A6E]' : idx === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
-                              } ring-4 ring-gray-800`}></div>
+                                idx === 0 ? 'bg-[#2B8A6E]' : idx === 1 ? 'bg-[#C9A84C]' : 'bg-red-600'
+                              } ring-4 ring-[#F8F7F4]`}></div>
                               <div className="flex-1 p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                                 <div className="flex items-center justify-between">
                                   <span className="font-medium text-[#0A0F2E]">Level {level.level}</span>

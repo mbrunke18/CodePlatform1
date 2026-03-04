@@ -551,7 +551,7 @@ const ROLES: Record<string, RoleData> = {
   },
   cco: {
     id: 'cco', title: 'Chief Compliance Officer', name: 'Jessica Thompson', company: 'Meridian Financial Group',
-    icon: FileCheck, color: 'text-teal-400', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
+    icon: FileCheck, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
     scenario: 'Compliance Emergency — Surprise Regulatory Audit with 48-Hour Notice',
     domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
     playbook: { number: '62', name: 'Emergency Regulatory Audit Response', tasks: 30, stakeholders: 20, budget: '$150K' },

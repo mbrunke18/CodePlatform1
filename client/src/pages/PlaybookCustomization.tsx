@@ -169,7 +169,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C9A84C]">Template Engine</span>
                   </div>
                   <h1 style={CG} className="text-4xl font-bold" data-testid="playbook-customization-title">Strategic Playbook Customization</h1>
-                  <p className="text-gray-400 mt-2 text-lg">Architect your organization's response by cloning and configuring battle-tested templates.</p>
+                  <p className="text-[#6B7280] mt-2 text-lg">Architect your organization's response by cloning and configuring battle-tested templates.</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">

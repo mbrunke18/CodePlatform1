@@ -193,7 +193,7 @@ export default function IDEAFramework() {
                 >
                   {phase.letter}
                 </span>
-                <span className="text-xs font-bold tracking-widest uppercase text-gray-500">{phase.name}</span>
+                <span className="text-xs font-bold tracking-widest uppercase text-[#6B7280]">{phase.name}</span>
               </a>
             ))}
           </div>
@@ -230,7 +230,7 @@ export default function IDEAFramework() {
                     <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color: GOLD }}>
                       {phase.name}
                     </div>
-                    <p className="text-sm font-medium text-gray-700 leading-snug mb-4">
+                    <p className="text-sm font-medium text-[#374151] leading-snug mb-4">
                       {phase.tagline}
                     </p>
                     <div className="flex flex-col gap-2">
@@ -253,13 +253,13 @@ export default function IDEAFramework() {
                       <div className="font-serif text-3xl font-bold" style={{ color: accentColor }}>
                         {phase.metric.value}
                       </div>
-                      <div className="text-xs text-gray-500 font-medium mt-0.5">{phase.metric.label}</div>
+                      <div className="text-xs text-[#6B7280] font-medium mt-0.5">{phase.metric.label}</div>
                     </div>
                   </div>
 
                   {/* Right — description + two columns */}
                   <div className="flex-1">
-                    <p className="text-base text-gray-600 leading-relaxed mb-8">
+                    <p className="text-base text-[#4B5563] leading-relaxed mb-8">
                       {phase.description}
                     </p>
 
@@ -274,7 +274,7 @@ export default function IDEAFramework() {
                         </div>
                         <ul className="space-y-3">
                           {phase.aiActions.map((action, j) => (
-                            <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700">
+                            <li key={j} className="flex items-start gap-2.5 text-sm text-[#374151]">
                               <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" style={{ color: TEAL }} />
                               {action}
                             </li>
@@ -292,7 +292,7 @@ export default function IDEAFramework() {
                         </div>
                         <ul className="space-y-3">
                           {phase.humanActions.map((action, j) => (
-                            <li key={j} className="flex items-start gap-2.5 text-sm text-gray-700">
+                            <li key={j} className="flex items-start gap-2.5 text-sm text-[#374151]">
                               <Users className="h-4 w-4 shrink-0 mt-0.5" style={{ color: GOLD }} />
                               {action}
                             </li>

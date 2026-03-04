@@ -168,7 +168,7 @@ export default function CrisisDetail() {
     switch (status.toLowerCase()) {
       case 'active': return { background: "rgba(220,38,38,0.12)", color: "#DC2626" };
       case 'monitoring': return { background: "rgba(201,168,76,0.12)", color: "#C9A84C" };
-      case 'resolved': return { background: "rgba(43,138,110,0.12)", color: TEAL };
+      case 'resolved': return { background: "rgba(43,138,110,0.12)", color: "#2B8A6E" };
       default: return { background: "#F8F7F4", color: "#6B7280" };
     }
   };

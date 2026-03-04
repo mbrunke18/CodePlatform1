@@ -80,7 +80,7 @@ export default function FourOutcomesScorecard({
       score: calculateClarity(),
       description: 'Resources and accountabilities aligned to strategy',
       icon: <CheckCircle2 className="w-6 h-6" />,
-      color: 'text-[#0A0F2E] dark:text-[#0A0F2E]',
+      color: 'text-[#0A0F2E] dark:text-[#C9A84C]',
       details: [
         `${stakeholdersAcknowledged}/${stakeholdersTotal} stakeholders understood their role (${Math.round((stakeholdersAcknowledged/stakeholdersTotal)*100)}%)`,
         `${tasksCompleted}/${tasksTotal} tasks had clear ownership (${Math.round((tasksCompleted/tasksTotal)*100)}%)`,
@@ -93,7 +93,7 @@ export default function FourOutcomesScorecard({
       score: calculateSpeed(),
       description: 'Workflows are fast, tech-enabled, and frictionless',
       icon: <Clock className="w-6 h-6" />,
-      color: 'text-[#2B8A6E] dark:text-green-400',
+      color: 'text-[#2B8A6E] dark:text-[#3BAF8A]',
       details: [
         `Coordination time: ${coordinationTime} (vs 72 hours traditional)`,
         `Average response time: ${avgResponseTime}`,
@@ -119,7 +119,7 @@ export default function FourOutcomesScorecard({
       score: calculateCommitment(),
       description: 'Performance-oriented culture drives execution',
       icon: <Heart className="w-6 h-6" />,
-      color: 'text-red-700 dark:text-red-400',
+      color: 'text-red-600 dark:text-red-400',
       details: [
         `${engagementRate}% team engagement rate`,
         `${stakeholdersAcknowledged}/${stakeholdersTotal} active participation`,
@@ -142,11 +142,11 @@ export default function FourOutcomesScorecard({
   };
 
   const getScoreColor = (score: number): string => {
-    if (score >= 90) return 'bg-green-500';
+    if (score >= 90) return 'bg-[#2B8A6E]';
     if (score >= 80) return 'bg-[#0A0F2E]';
-    if (score >= 70) return 'bg-yellow-500';
-    if (score >= 60) return 'bg-orange-500';
-    return 'bg-red-500';
+    if (score >= 70) return 'bg-[#C9A84C]';
+    if (score >= 60) return 'bg-orange-600';
+    return 'bg-red-600';
   };
 
   const humanDecisionRate = 100;
@@ -232,7 +232,7 @@ export default function FourOutcomesScorecard({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="font-medium">Stakeholder Engagement</span>
-                <span className="font-semibold text-[#0A0F2E] dark:text-[#0A0F2E]">{engagementRate}%</span>
+                <span className="font-semibold text-[#0A0F2E] dark:text-[#C9A84C]">{engagementRate}%</span>
               </div>
               <Progress value={engagementRate} className="h-2 bg-[#F8F7F4] dark:bg-[#0A0F2E]" />
               <p className="text-xs text-muted-foreground">{stakeholdersAcknowledged}/{stakeholdersTotal} participated actively</p>
@@ -241,9 +241,9 @@ export default function FourOutcomesScorecard({
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="font-medium">Human Decision Rate</span>
-                <span className="font-semibold text-[#2B8A6E] dark:text-green-400">{humanDecisionRate}%</span>
+                <span className="font-semibold text-[#2B8A6E] dark:text-[#3BAF8A]">{humanDecisionRate}%</span>
               </div>
-              <Progress value={humanDecisionRate} className="h-2 bg-green-100 dark:bg-green-900" />
+              <Progress value={humanDecisionRate} className="h-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20" />
               <p className="text-xs text-muted-foreground">All critical decisions human-approved</p>
             </div>
 
@@ -252,16 +252,16 @@ export default function FourOutcomesScorecard({
                 <span className="font-medium">System Override Rate</span>
                 <span className="font-semibold text-[#C9A84C] dark:text-[#C9A84C]">{systemOverrideRate}%</span>
               </div>
-              <Progress value={systemOverrideRate} className="h-2 bg-[#0A0F2E] dark:bg-[#0A0F2E]" />
+              <Progress value={systemOverrideRate} className="h-2 bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20" />
               <p className="text-xs text-muted-foreground">{overrideCount} task{overrideCount !== 1 ? 's' : ''} modified by stakeholder choice</p>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="font-medium">Governance Compliance</span>
-                <span className="font-semibold text-[#2B8A6E] dark:text-green-400">100%</span>
+                <span className="font-semibold text-[#2B8A6E] dark:text-[#3BAF8A]">100%</span>
               </div>
-              <Progress value={100} className="h-2 bg-green-100 dark:bg-green-900" />
+              <Progress value={100} className="h-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20" />
               <p className="text-xs text-muted-foreground">Full audit trail maintained</p>
             </div>
           </div>
@@ -402,10 +402,10 @@ export default function FourOutcomesScorecard({
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-background border-green-200 dark:border-green-800" data-testid="card-citation-mit">
+        <Card className="bg-gradient-to-br from-[#2B8A6E]/10 to-white dark:from-[#2B8A6E]/20 dark:to-background border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50" data-testid="card-citation-mit">
           <CardContent className="pt-6 space-y-3">
             <div className="flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-[#2B8A6E] dark:text-green-400" />
+              <BarChart3 className="w-5 h-5 text-[#2B8A6E] dark:text-[#3BAF8A]" />
               <h3 className="font-semibold text-sm">MIT CIO-Validated Metrics</h3>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
@@ -416,7 +416,7 @@ export default function FourOutcomesScorecard({
             <Button 
               variant="link" 
               size="sm" 
-              className="h-auto p-0 text-xs text-[#2B8A6E] dark:text-green-400"
+              className="h-auto p-0 text-xs text-[#2B8A6E] dark:text-[#3BAF8A]"
               asChild
             >
               <a 
@@ -432,10 +432,10 @@ export default function FourOutcomesScorecard({
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/20 dark:to-background border-orange-200 dark:border-orange-800" data-testid="card-citation-salesforce">
+        <Card className="bg-gradient-to-br from-[#C9A84C]/10 to-white dark:from-[#C9A84C]/20 dark:to-background border-[#C9A84C]/30 dark:border-[#C9A84C]/50" data-testid="card-citation-salesforce">
           <CardContent className="pt-6 space-y-3">
             <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+              <Zap className="w-5 h-5 text-[#C9A84C] dark:text-[#DFC178]" />
               <h3 className="font-semibold text-sm">Speed as Competitive Advantage</h3>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
@@ -446,7 +446,7 @@ export default function FourOutcomesScorecard({
             <Button 
               variant="link" 
               size="sm" 
-              className="h-auto p-0 text-xs text-orange-600 dark:text-orange-400"
+              className="h-auto p-0 text-xs text-[#C9A84C] dark:text-[#DFC178]"
               asChild
             >
               <a 

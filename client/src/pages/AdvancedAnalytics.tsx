@@ -297,7 +297,7 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Header */}
         <div className="flex items-center justify-between">
-          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between">
+          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="relative z-10 flex items-center gap-4">
               <BarChart3 className="h-10 w-10 text-[#C9A84C]" />
@@ -317,7 +317,7 @@ export default function AdvancedAnalytics() {
                 <Brain className="w-4 h-4 mr-2" />
                 AI Models Active: 12
               </Badge>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] shadow-lg">
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Generate Report
               </Button>

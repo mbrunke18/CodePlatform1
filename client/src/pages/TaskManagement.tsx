@@ -593,7 +593,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               variant="ghost" 
                               size="sm" 
                               onClick={() => setDeleteId(task.id)}
-                              className="text-red-700 hover:text-red-800 hover:bg-red-50"
+                              className="text-[#0A0F2E] hover:text-red-700 hover:bg-red-50"
                               data-testid={`button-delete-${task.id}`}
                             >
                               <Trash2 className="h-4 w-4" />
@@ -880,7 +880,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const DomainIcon = isDefense ? Shield : isOffense ? Target : Zap;
                     const iconColor = isDefense ? "text-[#0A0F2E]" : isOffense ? "text-[#2B8A6E]" : "text-[#C9A84C]";
                     const iconBg = isDefense ? "bg-[#F8F7F4] dark:bg-[#0A0F2E]/30" : isOffense ? "bg-[#2B8A6E]/15 dark:bg-[#2B8A6E]/30" : "bg-[#0A0F2E] dark:bg-[#C9A84C]/30";
-                    const progressColor = coverage >= 80 ? "bg-[#2B8A6E]" : coverage >= 50 ? "bg-[#C9A84C]" : "bg-red-500";
+                    const progressColor = coverage >= 80 ? "bg-[#2B8A6E]" : coverage >= 50 ? "bg-[#C9A84C]" : "bg-red-600";
                     
                     return (
                       <Card key={domain.domainName} className="hover:shadow-md transition-shadow">

@@ -338,7 +338,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         const isConditional = result.recommendation?.toLowerCase().includes('conditionally');
         const isRecommended = !isNotRecommended && !isConditional;
         const verdictConfig = isNotRecommended
-          ? { icon: XCircle, label: 'Not Recommended', color: 'navy', bg: 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]/30 dark:border-[#0A0F2E]/50', text: 'text-[#0A0F2E] dark:text-[#C9A84C]', iconColor: 'text-[#0A0F2E]', badgeBg: 'bg-[#0A0F2E]' }
+          ? { icon: XCircle, label: 'Not Recommended', color: 'navy', bg: 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]/30 dark:border-[#0A0F2E]/50', text: 'text-[#0A0F2E] dark:text-[#C9A84C]', iconColor: 'text-[#0A0F2E] dark:text-[#C9A84C]', badgeBg: 'bg-[#0A0F2E]' }
           : isConditional
           ? { icon: AlertTriangle, label: 'Proceed with Caution', color: 'gold', bg: 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/5', border: 'border-[#C9A84C]/30 dark:border-[#C9A84C]/50', text: 'text-[#C9A84C]', iconColor: 'text-[#C9A84C]', badgeBg: 'bg-[#C9A84C]' }
           : { icon: CheckCircle2, label: 'Recommended', color: 'teal', bg: 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/5', border: 'border-[#2B8A6E]/30 dark:border-[#2B8A6E]/50', text: 'text-[#2B8A6E]', iconColor: 'text-[#2B8A6E]', badgeBg: 'bg-[#2B8A6E]' };
@@ -368,7 +368,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
           <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                <Clock className="h-5 w-5 text-[#0A0F2E]" />
+                <Clock className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                 Coordination Timeline Comparison
               </CardTitle>
               <CardDescription className="text-[#6B7280]">How this change affects the time from trigger to full stakeholder coordination</CardDescription>

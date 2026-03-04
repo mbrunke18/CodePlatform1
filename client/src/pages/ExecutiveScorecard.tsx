@@ -24,14 +24,14 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
   const config = {
     good: { bg: 'bg-[#2B8A6E]', className: 'text-[#2B8A6E]', label: 'Healthy' },
     warning: { bg: 'bg-[#C9A84C]', className: 'text-[#C9A84C]', label: 'Attention' },
-    critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#0A0F2E] dark:text-[#C9A84C]', label: 'Critical' }
+    critical: { bg: 'bg-[#0A0F2E]', className: 'text-[#C9A84C]', label: 'Critical' }
   };
   const c = config[status];
 
   return (
     <div className="flex items-center gap-2">
       <div className={`w-2.5 h-2.5 rounded-full ${c.bg}`} />
-      <span className={`text-sm font-medium dark:text-[#C9A84C] ${c.className}`}>{c.label}</span>
+      <span className={`text-sm font-medium ${c.className}`}>{c.label}</span>
     </div>
   );
 }
@@ -72,7 +72,7 @@ function MetricCard({
 
   const trendClasses = {
     up: 'text-[#2B8A6E]',
-    down: 'text-[#0A0F2E] dark:text-[#C9A84C]',
+    down: 'text-[#C9A84C]',
     neutral: 'text-[#6B7280] dark:text-white/60'
   };
 

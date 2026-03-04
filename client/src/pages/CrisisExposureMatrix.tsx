@@ -115,8 +115,8 @@ export default function CrisisExposureMatrix() {
           }} />
           <div className="max-w-7xl mx-auto relative z-10">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Strategic Risk Assessment</span>
+              <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Strategic Risk Assessment</span>
             </div>
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
               Crisis Exposure <em style={{ fontStyle: "italic", color: "#DFC178" }}>Matrix</em>

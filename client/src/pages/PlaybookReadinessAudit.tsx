@@ -215,7 +215,7 @@ export default function PlaybookReadinessAudit() {
                   Playbook Readiness Audit
                 </h1>
               </div>
-              <p className="text-gray-400 text-lg max-w-2xl">
+              <p className="text-[#6B7280] text-lg max-w-2xl">
                 Assess preparedness across your 170 strategic playbooks. Identify gaps, 
                 schedule drills, and ensure your organization is ready to execute.
               </p>
@@ -510,7 +510,7 @@ export default function PlaybookReadinessAudit() {
                 <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   Ready to improve readiness?
                 </h3>
-                <p className="text-gray-400 font-medium">
+                <p className="text-[#6B7280] font-medium">
                   Schedule a bulk drill session or import stakeholder data to boost your scores.
                 </p>
               </div>

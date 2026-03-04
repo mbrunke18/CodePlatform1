@@ -241,7 +241,7 @@ const PHASE_COLORS: Record<string, { bg: string; border: string; text: string }>
   teal: { bg: 'bg-[#2B8A6E]/20', border: 'border-[#2B8A6E]', text: 'text-[#2B8A6E]' },
   navy: { bg: 'bg-[#0A0F2E]/20', border: 'border-[#0A0F2E]', text: 'text-[#0A0F2E]' },
   gold: { bg: 'bg-[#C9A84C]/20', border: 'border-[#C9A84C]', text: 'text-[#C9A84C]' },
-  red: { bg: 'bg-red-500/20', border: 'border-red-500', text: 'text-red-600' },
+  red: { bg: 'bg-red-600/20', border: 'border-red-600', text: 'text-red-600' },
 };
 
 const URGENCY_COLORS: Record<string, string> = {
