@@ -8,7 +8,7 @@ packages = ["zip", "unzip"]
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["echo", "Skipping build — using pre-built dist/"]
+build = ["true"]
 run = ["npm", "run", "start"]
 
 [env]
