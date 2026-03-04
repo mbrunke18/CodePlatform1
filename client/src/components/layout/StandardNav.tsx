@@ -222,6 +222,21 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <>
                 <Button
+                  variant="outline"
+                  onClick={() => navigateTo("/try-demo")}
+                  className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 h-9 px-3 font-medium text-sm"
+                  data-testid="nav-try-demo"
+                >
+                  Try Demo
+                </Button>
+                <Button
+                  onClick={() => navigateTo("/pilot-program")}
+                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-3 font-semibold text-sm"
+                  data-testid="nav-request-pilot"
+                >
+                  Request Pilot
+                </Button>
+                <Button
                   onClick={() => navigateTo("/mission-control")}
                   className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-poise-teal !text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
                   data-testid="nav-open-platform"
@@ -304,14 +319,33 @@ export default function StandardNav() {
           <div className="lg:hidden py-4 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900">
             <div className="flex flex-col gap-1">
               {isAuthenticated && user ? (
-                <Button
-                  onClick={() => navigateTo("/mission-control")}
-                  className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white w-full justify-center h-12 text-base font-semibold"
-                  data-testid="nav-mobile-open-platform"
-                >
-                  <Compass className="h-5 w-5 mr-2" />
-                  Open Platform
-                </Button>
+                <div className="flex flex-col gap-2 px-1">
+                  <Button
+                    onClick={() => navigateTo("/mission-control")}
+                    className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white w-full justify-center h-12 text-base font-semibold"
+                    data-testid="nav-mobile-open-platform"
+                  >
+                    <Compass className="h-5 w-5 mr-2" />
+                    Open Platform
+                  </Button>
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={() => navigateTo("/try-demo")}
+                      variant="outline"
+                      className="flex-1 justify-center h-10 text-sm font-medium border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                      data-testid="nav-mobile-try-demo"
+                    >
+                      Try Demo
+                    </Button>
+                    <Button
+                      onClick={() => navigateTo("/pilot-program")}
+                      className="flex-1 justify-center h-10 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
+                      data-testid="nav-mobile-request-pilot"
+                    >
+                      Request Pilot
+                    </Button>
+                  </div>
+                </div>
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
