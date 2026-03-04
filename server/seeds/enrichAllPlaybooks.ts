@@ -1,166 +1,85 @@
 /**
- * Enrichment script — generates Phase/Gate/Communication/Risk/Outcome content
- * for every unenriched playbook in playbook_library using GPT-4o.
+ * Playbook enrichment — generates execution content for all unenriched playbooks.
  *
- * Run: npx tsx server/seeds/enrichAllPlaybooks.ts
+ * Run full:   npx tsx server/seeds/enrichAllPlaybooks.ts
+ * Run chunk:  npx tsx server/seeds/enrichAllPlaybooks.ts --count 20
  *
- * Safe to restart: skips playbooks that already have enriched_phases set.
- * Logs progress and errors without stopping — a failed playbook is skipped,
- * not a reason to abort the whole run.
+ * Safe to re-run — skips playbooks already enriched.
  */
 
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import { neonConfig, Pool } from '@neondatabase/serverless';
-import ws from 'ws';
-import { playbookLibrary } from '../../shared/schema';
-import { eq, isNull } from 'drizzle-orm';
 import OpenAI from 'openai';
+import { Pool } from 'pg';
 
-neonConfig.webSocketConstructor = ws;
+const openai = new OpenAI({
+  apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY || process.env.OPENAI_API_KEY,
+  baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+});
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const db = drizzle(pool);
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-const DELAY_MS = 1200; // stay well under rate limits
+const DELAY_MS = 600;
 
 function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(r => setTimeout(r, ms));
 }
 
-const SYSTEM_PROMPT = `You are a senior Fortune 500 strategic advisor with 20 years of experience
-designing crisis and competitive response playbooks. You write execution plans in plain,
-specific, boardroom-ready language.
+// Deliberately concise prompt — schema is described not shown, leaving max tokens for output
+function buildPrompt(p: any): string {
+  const budget = `$${Number(p.pre_approved_budget || 500000).toLocaleString()}`;
+  const t1 = Array.isArray(p.tier1_stakeholders) ? p.tier1_stakeholders.join(', ') : String(p.tier1_stakeholders);
+  const t2 = Array.isArray(p.tier2_stakeholders) ? p.tier2_stakeholders.join(', ') : String(p.tier2_stakeholders);
 
-You will receive a playbook's metadata and must return a JSON object with exactly these 6 fields:
+  return `Generate a Fortune 500 strategic execution plan for the playbook below. Return ONLY a JSON object with exactly these keys:
 
-{
-  "whyItMatters": "string — one or two specific, quantified sentences about why fast response is
-    critical for this scenario. Include a realistic research finding or industry benchmark.
-    Do NOT fabricate specific statistics — frame as 'Research consistently shows...' or
-    'Organizations that respond within X timeframe tend to...'",
+whyItMatters (string): 2 specific sentences with realistic industry benchmarks on why fast response matters for this exact scenario.
 
-  "signalSources": ["array of 3-5 specific strings — what enterprise systems, data feeds,
-    or human intelligence channels the platform monitors to detect this trigger"],
+signalSources (string[]): 4 specific enterprise data sources that detect this trigger.
 
-  "enrichedPhases": [
-    {
-      "id": "phase-1",
-      "name": "short name (2-4 words)",
-      "timeWindow": "e.g. Hours 0–4",
-      "objective": "one sentence — what must be accomplished before moving to next phase",
-      "tasks": [
-        {
-          "role": "specific executive title or team (e.g. CFO, Chief Supply Chain Officer, Legal)",
-          "priority": "lead | required | conditional",
-          "deadline": "e.g. within 2 hours | within this phase | within 48 hours",
-          "items": ["3-6 specific actionable tasks for this role — not generic, not vague"]
-        }
-      ],
-      "restrictions": ["2-4 things that must NOT happen during this phase"],
-      "decisionGate": {
-        "title": "Phase N → Phase N+1 Decision Gate",
-        "criteria": ["3-5 specific conditions that must be true before advancing"],
-        "escalation": "string or null — what happens if gate cannot clear"
-      }
-    }
-  ],
-  — provide EXACTLY 4 phases:
-    Phase 1: Immediate Assessment (Hours 0-4)
-    Phase 2: Internal Response Execution (Hours 4-8 OR Hours 4-48 for complex scenarios)
-    Phase 3: External Communication / Market Action (Hours 8-72)
-    Phase 4: Sustain / Structural Response (Days 2-30)
-  — Phase 4 decisionGate should be null
+enrichedPhases (array of 4 objects): 4 execution phases named "Immediate Assessment" (0-4h), "Internal Response" (4-24h), "External Action" (24-72h), "Structural Response" (3-30d). Each phase has: id (phase-1 through phase-4), name, timeWindow, objective (1 sentence), tasks (array of 2 role objects, each with role/priority/deadline/items array of 3 tasks), restrictions (2 strings), decisionGate (object with title/criteria array/escalation string, or null for phase 4).
 
-  "communicationAssets": [
-    {
-      "type": "board_notification | customer_outreach | press_response | sales_battle_card | executive_statement | investor_communication | employee_communication",
-      "label": "Short human-readable label",
-      "timing": "e.g. Hour 6 — notification, not approval",
-      "subject": "string or null (null for non-email assets like battle cards)",
-      "body": "The draft communication text. Use [brackets] for fill-in-the-blank sections.
-        For board notifications: 150-200 words. For customer scripts: 75-100 words.
-        For battle cards: structured Q&A format. Be specific, not generic."
-    }
-  ],
-  — provide 2-4 assets relevant to this specific scenario type
+communicationAssets (array of 2 objects): A board_notification (with subject line, 120-word draft body using [Company] placeholder) and a sales_battle_card (2 Q&A pairs in the body field, subject null).
 
-  "riskIndicators": {
-    "green": ["3 specific signals that indicate response is working well"],
-    "yellow": ["3 specific signals to watch closely — early warning"],
-    "red": ["3 specific signals that require immediate escalation"]
-  },
+riskIndicators (object): green (3 on-track signals), yellow (3 early warning signals), red (3 escalation triggers) — each as string array.
 
-  "outcomeFraming": {
-    "at12hours": ["3-4 specific conditions that define success at the 12-hour mark"],
-    "at30days": ["3-4 specific outcomes that define success at 30 days"],
-    "failureModes": ["3-4 specific, avoidable failure patterns this playbook prevents"]
-  }
+outcomeFraming (object): at12hours (3 success conditions), at30days (3 outcomes), failureModes (3 avoidable failure patterns) — each as string array.
+
+Be highly specific to this scenario — no generic corporate language.
+
+PLAYBOOK: ${p.name}
+DOMAIN: ${p.domain_name}
+TRIGGER: ${p.trigger_criteria}
+STRATEGY: ${p.primary_response_strategy || 'Coordinated rapid response'}
+PRE-APPROVED BUDGET: ${budget}
+DECISION MAKERS: ${t1}
+EXECUTION TEAM: ${t2}`;
 }
 
-Rules:
-- Be specific to this EXACT scenario — never write generic corporate-speak
-- Use real executive titles and specific action verbs
-- Communication assets should feel like working drafts, not templates
-- Risk indicators should have specific thresholds, not just "monitor the situation"
-- Failure modes should describe actual organizational behaviors that cause bad outcomes
-- Return ONLY the JSON object — no markdown, no explanation, no prefix text`;
-
-function buildUserPrompt(playbook: any): string {
-  return `Generate enriched execution content for this strategic playbook:
-
-PLAYBOOK NAME: ${playbook.name}
-DOMAIN: ${playbook.domain_name}
-TRIGGER CRITERIA: ${playbook.trigger_criteria}
-PRIMARY RESPONSE STRATEGY: ${playbook.primary_response_strategy || 'Not specified'}
-PRE-APPROVED BUDGET: $${Number(playbook.pre_approved_budget || 500000).toLocaleString()} (no board vote required for amounts within this threshold)
-TARGET EXECUTION TIME: ${playbook.target_execution_time || 12} hours to initial coordination
-TIER 1 STAKEHOLDERS (Decision Makers): ${JSON.stringify(playbook.tier1_stakeholders)}
-TIER 2 STAKEHOLDERS (Execution Team): ${JSON.stringify(playbook.tier2_stakeholders)}
-TIER 3 STAKEHOLDERS (Notification Groups): ${JSON.stringify(playbook.tier3_stakeholders)}
-EXTERNAL PARTNERS: ${JSON.stringify(playbook.external_partners)}
-HISTORICAL SUCCESS RATE: ${playbook.historical_success_rate ? (Number(playbook.historical_success_rate) * 100).toFixed(0) + '%' : 'Not available'}
-
-This playbook is part of VaughnMartin's Execution OS — a strategic execution platform for
-Fortune 1000 companies. The audience for this content is C-suite executives and their
-direct reports at large enterprises. Language should be boardroom-ready and execution-specific.
-
-Return ONLY a valid JSON object matching the schema in your instructions.`;
-}
-
-async function generateEnrichment(playbook: any): Promise<any> {
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
-    messages: [
-      { role: 'system', content: SYSTEM_PROMPT },
-      { role: 'user', content: buildUserPrompt(playbook) }
-    ],
-    temperature: 0.4,
-    max_tokens: 3500,
+async function enrich(playbook: any): Promise<any> {
+  const res = await openai.chat.completions.create({
+    model: 'gpt-5-mini',
+    messages: [{ role: 'user', content: buildPrompt(playbook) }],
+    max_completion_tokens: 4096,
     response_format: { type: 'json_object' },
   });
 
-  const content = response.choices[0]?.message?.content;
-  if (!content) throw new Error('No content returned from OpenAI');
-  return JSON.parse(content);
+  const choice = res.choices[0];
+  if (!choice) throw new Error('No choices in response');
+  if (choice.finish_reason === 'length') throw new Error('Truncated — hit token limit');
+  const raw = choice.message?.content ?? '';
+  if (!raw) throw new Error('Empty content');
+  return JSON.parse(raw);
 }
 
 async function run() {
-  if (!process.env.OPENAI_API_KEY) {
-    console.error('ERROR: OPENAI_API_KEY not set. Cannot proceed.');
-    process.exit(1);
-  }
+  console.log(`\nUsing: ${process.env.AI_INTEGRATIONS_OPENAI_BASE_URL || 'OpenAI direct'}\n`);
 
-  // Fetch all unenriched playbooks with domain name joined
-  const { Pool: PgPool } = await import('pg');
-  const pgPool = new PgPool({ connectionString: process.env.DATABASE_URL });
+  const countIdx = process.argv.indexOf('--count');
+  const limit = countIdx !== -1 ? parseInt(process.argv[countIdx + 1], 10) : Infinity;
 
-  const { rows: playbooks } = await pgPool.query(`
+  const db = new Pool({ connectionString: process.env.DATABASE_URL });
+
+  const { rows: unenriched } = await db.query(`
     SELECT pl.id, pl.name, pl.playbook_number, pl.trigger_criteria,
            pl.primary_response_strategy, pl.pre_approved_budget,
-           pl.tier1_stakeholders, pl.tier2_stakeholders, pl.tier3_stakeholders,
-           pl.external_partners, pl.historical_success_rate, pl.target_execution_time,
+           pl.tier1_stakeholders, pl.tier2_stakeholders,
            pd.name as domain_name
     FROM playbook_library pl
     JOIN playbook_domains pd ON pl.domain_id = pd.id
@@ -168,75 +87,53 @@ async function run() {
     ORDER BY pl.playbook_number
   `);
 
-  console.log(`\nFound ${playbooks.length} playbooks to enrich.\n`);
+  const batch = limit === Infinity ? unenriched : unenriched.slice(0, limit);
+  console.log(`Unenriched total: ${unenriched.length} | This run: ${batch.length}\n`);
 
-  let successCount = 0;
-  let failCount = 0;
+  let ok = 0, fail = 0;
 
-  for (let i = 0; i < playbooks.length; i++) {
-    const playbook = playbooks[i];
-    const progress = `[${i + 1}/${playbooks.length}]`;
+  for (let i = 0; i < batch.length; i++) {
+    const p = batch[i];
+    process.stdout.write(`[${i + 1}/${batch.length}] "${p.name}" (${p.domain_name})... `);
 
     try {
-      process.stdout.write(`${progress} Generating: "${playbook.name}" (${playbook.domain_name})... `);
+      const data = await enrich(p);
 
-      const enrichment = await generateEnrichment(playbook);
+      if (!Array.isArray(data.enrichedPhases) || data.enrichedPhases.length < 4)
+        throw new Error('Expected 4 phases');
+      if (!data.riskIndicators?.green)
+        throw new Error('Missing riskIndicators');
 
-      // Validate the shape before writing
-      if (!enrichment.enrichedPhases || !Array.isArray(enrichment.enrichedPhases)) {
-        throw new Error('Response missing enrichedPhases array');
-      }
-      if (!enrichment.riskIndicators?.green) {
-        throw new Error('Response missing riskIndicators');
-      }
-
-      await pgPool.query(`
+      await db.query(`
         UPDATE playbook_library SET
-          why_it_matters = $1,
-          signal_sources = $2,
-          enriched_phases = $3,
-          communication_assets = $4,
-          risk_indicators = $5,
-          outcome_framing = $6
+          why_it_matters = $1, signal_sources = $2, enriched_phases = $3,
+          communication_assets = $4, risk_indicators = $5, outcome_framing = $6
         WHERE id = $7
       `, [
-        enrichment.whyItMatters,
-        JSON.stringify(enrichment.signalSources),
-        JSON.stringify(enrichment.enrichedPhases),
-        JSON.stringify(enrichment.communicationAssets),
-        JSON.stringify(enrichment.riskIndicators),
-        JSON.stringify(enrichment.outcomeFraming),
-        playbook.id,
+        data.whyItMatters,
+        JSON.stringify(data.signalSources),
+        JSON.stringify(data.enrichedPhases),
+        JSON.stringify(data.communicationAssets),
+        JSON.stringify(data.riskIndicators),
+        JSON.stringify(data.outcomeFraming),
+        p.id,
       ]);
 
-      console.log(`✓ (${enrichment.enrichedPhases.length} phases, ${enrichment.communicationAssets?.length || 0} comms)`);
-      successCount++;
-
-    } catch (err: any) {
-      console.log(`✗ FAILED: ${err.message}`);
-      failCount++;
+      process.stdout.write(`✓\n`);
+      ok++;
+    } catch (e: any) {
+      process.stdout.write(`✗ ${e.message}\n`);
+      fail++;
     }
 
-    // Delay between calls to respect rate limits (skip delay on last item)
-    if (i < playbooks.length - 1) {
-      await sleep(DELAY_MS);
-    }
+    if (i < batch.length - 1) await sleep(DELAY_MS);
   }
 
-  console.log(`\n${'─'.repeat(60)}`);
-  console.log(`Enrichment complete.`);
-  console.log(`  Succeeded: ${successCount}`);
-  console.log(`  Failed:    ${failCount}`);
-  console.log(`  Total:     ${playbooks.length}`);
-  if (failCount > 0) {
-    console.log(`\nRe-run the script to retry failed playbooks.`);
-  }
+  console.log(`\n${'─'.repeat(55)}`);
+  console.log(`Done — ${ok} enriched, ${fail} failed, ${unenriched.length - ok} still remaining`);
+  if (fail > 0) console.log('Re-run to retry failures.');
 
-  await pgPool.end();
-  await pool.end();
+  await db.end();
 }
 
-run().catch((e) => {
-  console.error('Fatal error:', e);
-  process.exit(1);
-});
+run().catch(e => { console.error(e); process.exit(1); });
