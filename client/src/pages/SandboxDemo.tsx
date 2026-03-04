@@ -223,27 +223,19 @@ const SUCCESS_METRICS = [
   { id: "communication_coverage", label: "Communication Coverage", unit: "%", target: 100, description: "Stakeholders receiving timely updates" },
 ];
 
+const SCENARIO_COLORS: Record<string, string> = {
+  critical: "bg-red-600",
+  high: "bg-[#C9A84C]",
+  medium: "bg-[#2B8A6E]",
+  low: "bg-[#0A0F2E]",
+};
+
 const SCENARIO_BRANCHES = [
-  { severity: "critical", label: "Critical - Full Activation", color: "bg-red-600", actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
-  { severity: "high", label: "High - Elevated Response", color: "bg-[#C9A84C]", actions: ["Core team activation", "Management notification", "External counsel on standby"] },
-  { severity: "medium", label: "Medium - Monitoring Mode", color: "bg-[#2B8A6E]", actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
-  { severity: "low", label: "Low - Awareness Only", color: "bg-[#0A0F2E]", actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
+  { severity: "critical", label: "Critical - Full Activation", color: SCENARIO_COLORS.critical, actions: ["Immediate full team mobilization", "All escalation paths active", "Board notification triggered"] },
+  { severity: "high", label: "High - Elevated Response", color: SCENARIO_COLORS.high, actions: ["Core team activation", "Management notification", "External counsel on standby"] },
+  { severity: "medium", label: "Medium - Monitoring Mode", color: SCENARIO_COLORS.medium, actions: ["Primary owner notified", "Situation monitoring enabled", "Escalation paths ready"] },
+  { severity: "low", label: "Low - Awareness Only", color: SCENARIO_COLORS.low, actions: ["Log for tracking", "Weekly digest inclusion", "No immediate action required"] },
 ];
-
-const STAKEHOLDER_COLORS: Record<number, string> = {
-  1: "text-[#0A0F2E]",
-  2: "text-[#C9A84C]",
-  3: "text-[#2B8A6E]",
-};
-
-const STEP_COLORS: Record<Step, string> = {
-  domain: "#2B8A6E", // Identify
-  configure: "#0A0F2E", // Detect/Prep
-  tasks: "#C9A84C", // Execute
-  triggers: "#0A0F2E", // Detect
-  simulate: "#C9A84C", // Execute
-  results: "#2B8A6E", // Advance
-};
 
 // Map library task owners to demo stakeholder IDs
 const OWNER_TO_STAKEHOLDER: Record<string, string> = {
@@ -1182,7 +1174,7 @@ export default function SandboxDemo() {
                       key={integration.id}
                       className={`p-4 border rounded-lg cursor-pointer transition-all ${
                         isEnabled 
-                          ? 'bg-[#0A0F2E] border-[#C9A84C] dark:bg-[#C9A84C]/30 dark:border-[#C9A84C]' 
+                          ? 'bg-[#0A0F2E] border-[#C9A84C] text-white' 
                           : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
                       }`}
                       onClick={() => {

@@ -586,13 +586,13 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   <div>
                     <Badge className="bg-[#0A0F2E] text-white mb-1">CRITICAL SIGNAL DETECTED</Badge>
-                    <CardTitle className="text-xl text-gray-900">{criticalSignal.title}</CardTitle>
+                    <CardTitle className="text-xl text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{criticalSignal.title}</CardTitle>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="p-6 space-y-4">
-                <p className="text-gray-800">{criticalSignal.description}</p>
-                <div className="flex items-center gap-4 text-sm text-gray-800 dark:text-slate-200">
+                <p className="text-[#0A0F2E] dark:text-white/80 leading-relaxed">{criticalSignal.description}</p>
+                <div className="flex items-center gap-4 text-sm text-[#6B7280] dark:text-[#C9A84C]/60">
                   <span className="flex items-center gap-1">
                     <Globe className="w-4 h-4" />
                     {criticalSignal.source}
@@ -602,9 +602,9 @@ export default function ExecutiveSimulationDemo() {
                     Just now
                   </span>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <p className="text-amber-400 font-medium flex items-center gap-2">
-                    <Zap className="w-4 h-4" />
+                <div className="bg-[#0A0F2E]/10 rounded-lg p-4 border border-[#0A0F2E]/20">
+                  <p className="text-[#0A0F2E] font-medium flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-[#C9A84C]" />
                     Execution OS Recommendation: Activate "Competitor M&A Response" playbook immediately
                   </p>
                 </div>
@@ -624,7 +624,7 @@ export default function ExecutiveSimulationDemo() {
         )}
 
         {/* Top Bar */}
-        <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0A0F2E] sticky top-0 z-40">
+        <div className="border-b border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-[#0A0F2E] sticky top-0 z-40">
           <div className="container mx-auto px-4 py-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -633,11 +633,11 @@ export default function ExecutiveSimulationDemo() {
                     <AvatarFallback className="bg-[#2B8A6E] text-white font-bold">SC</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-semibold text-slate-900 dark:text-white text-sm">{COMPANY_PROFILE.persona}</p>
-                    <p className="text-xs text-gray-800 dark:text-slate-300">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
+                    <p className="font-semibold text-[#0A0F2E] dark:text-white text-sm">{COMPANY_PROFILE.persona}</p>
+                    <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">{COMPANY_PROFILE.role} • {COMPANY_PROFILE.name}</p>
                   </div>
                 </div>
-                <Separator orientation="vertical" className="h-8" />
+                <Separator orientation="vertical" className="h-8 bg-[#E8E4DC] dark:bg-white/10" />
                 <Badge variant="outline" className="text-[#0A0F2E] dark:text-white border-[#E8E4DC] dark:border-white/10">
                   <CircleDot className="w-3 h-3 mr-1 text-[#2B8A6E]" />
                   Simulation Active
@@ -646,18 +646,18 @@ export default function ExecutiveSimulationDemo() {
 
               <div className="flex items-center gap-4">
                 {/* Timer */}
-                <div className="flex items-center gap-2 bg-slate-100 dark:bg-[#141B45] px-4 py-2 rounded-lg">
-                  <Timer className="w-4 h-4 text-[#0A0F2E]" />
-                  <span className="font-mono font-bold text-slate-900 dark:text-white" data-testid="text-elapsed-time">
+                <div className="flex items-center gap-2 bg-[#F8F7F4] dark:bg-[#141B45] px-4 py-2 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                  <Timer className="w-4 h-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
+                  <span className="font-mono font-bold text-[#0A0F2E] dark:text-white" data-testid="text-elapsed-time">
                     {formatTime(elapsedTime)}
                   </span>
                 </div>
 
                 {/* Notifications */}
-                <Button variant="ghost" size="icon" className="relative" data-testid="button-notifications">
+                <Button variant="ghost" size="icon" className="relative text-[#0A0F2E] dark:text-[#C9A84C]" data-testid="button-notifications">
                   <Bell className="w-5 h-5" />
                   {notifications.filter(n => !n.read).length > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-gray-900 text-xs rounded-full flex items-center justify-center">
+                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs rounded-full flex items-center justify-center">
                       {notifications.filter(n => !n.read).length}
                     </span>
                   )}
@@ -667,7 +667,7 @@ export default function ExecutiveSimulationDemo() {
                   variant="outline" 
                   size="sm"
                   onClick={resetSimulation}
-                  className="text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white"
+                  className="text-[#0A0F2E] dark:text-white border-[#0A0F2E]/20 dark:border-white/20 hover:bg-[#0A0F2E]/5 dark:hover:bg-white/5"
                   data-testid="button-reset-simulation"
                 >
                   <RotateCcw className="w-4 h-4 mr-1" />
@@ -1005,8 +1005,8 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <FileText className="w-12 h-12 text-gray-800 dark:text-slate-200 mx-auto mb-4" />
-                  <p className="text-gray-800 dark:text-slate-300">Playbooks will be recommended when a signal requires response</p>
+                  <FileText className="w-12 h-12 text-[#6B7280] dark:text-[#C9A84C]/60 mx-auto mb-4" />
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Playbooks will be recommended when a signal requires response</p>
                 </div>
               )}
             </TabsContent>

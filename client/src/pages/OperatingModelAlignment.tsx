@@ -751,7 +751,7 @@ export default function OperatingModelAlignment() {
                       <CardHeader>
                         <CardTitle>Your Operating Model Fingerprint</CardTitle>
                         <CardDescription>
-                          Current state (green) vs. target state (blue dashed)
+                          Current state (teal) vs. target state (navy dashed)
                         </CardDescription>
                       </CardHeader>
                       <CardContent>

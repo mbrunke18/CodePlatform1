@@ -250,10 +250,10 @@ export default function OneClickDemo() {
             <Button 
               size="lg" 
               onClick={startDemo}
-              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-12 py-6 text-xl rounded-xl shadow-2xl shadow-[#0A0F2E]/30 transition-all hover:scale-105"
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-12 py-6 text-xl rounded-xl shadow-2xl shadow-[#0A0F2E]/30 transition-all hover:scale-105 border-2 border-[#C9A84C]/20"
               data-testid="button-start-demo"
             >
-              <Play className="h-6 w-6 mr-3" />
+              <Play className="h-6 w-6 mr-3 text-[#C9A84C]" />
               Start Live Demo
             </Button>
             

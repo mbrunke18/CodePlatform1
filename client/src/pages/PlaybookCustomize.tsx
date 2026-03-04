@@ -569,7 +569,7 @@ export default function PlaybookCustomize() {
     advance: { label: 'A', color: "#2B8A6E" },
   };
 
-  const isOffense = watch("category") === 'offense' || watch("category") === 'growth' || watch("category") === 'market' || watch("category") === 'special_teams' || watch("category") === 'ma' || watch("domain") === 'Financial Strategy' || watch("domain") === 'Market Dynamics';
+  const isOffense = watch("category") === 'OFFENSE' || watch("category") === 'GROWTH' || watch("category") === 'MARKET' || watch("category") === 'SPECIAL_TEAMS' || watch("category") === 'MA' || watch("domain") === 'Financial Strategy' || watch("domain") === 'Market Dynamics';
   const isDefense = !isOffense;
   const indicatorColor = isOffense ? "#2B8A6E" : "#0A0F2E";
   

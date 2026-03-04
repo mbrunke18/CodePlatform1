@@ -100,7 +100,7 @@ function MetricCard({
     <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC] hover:shadow-md transition-shadow rounded-none shadow-sm`}>
       <CardContent className="pt-5 space-y-3">
         <div className="flex items-center justify-between">
-          <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 32, height: 32, background: "#0A0F2E", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Icon className="h-4 w-4 text-white" />
           </div>
           <StatusIndicator status={status} />
@@ -108,7 +108,7 @@ function MetricCard({
         <div>
           <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280] mb-1">{title}</div>
           <div className="flex items-baseline gap-1">
-            <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>{value}{unit}</span>
+            <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>{value}{unit}</span>
           </div>
         </div>
         {trend && trendDirection && TrendIcon && (
@@ -234,7 +234,7 @@ export default function ExecutiveDashboard() {
     <PageLayout>
       <div style={{ background: OFF, minHeight: "100vh" }}>
         {/* Navy Header Section */}
-        <div style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
+        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
           <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
             <div>
@@ -302,7 +302,7 @@ export default function ExecutiveDashboard() {
                         <div style={{ width: 28, height: 2, background: GOLD }} />
                         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Status Assessment</span>
                       </div>
-                      <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>Your organization is in a <em style={{ fontStyle: "italic", color: TEAL }}>high-gravity</em> preparedness state.</h2>
+                      <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>Your organization is in a <em style={{ fontStyle: "italic", color: "#2B8A6E" }}>high-gravity</em> preparedness state.</h2>
                       <p className="text-[#6B7280] text-sm max-w-xl">
                         Based on real-time telemetry across 170 strategic playbooks and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
                       </p>
@@ -360,7 +360,7 @@ export default function ExecutiveDashboard() {
                   <CardHeader className="border-b border-[#E8E4DC]">
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <AlertTriangle className="h-4 w-4 text-[#C9A84C]" />
-                      <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Weak Signals</CardTitle>
+                      <CardTitle style={{ ...CG, fontSize: "20px", color: "#0A0F2E" }}>Weak Signals</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6 space-y-4">
@@ -373,7 +373,7 @@ export default function ExecutiveDashboard() {
                             <div className="text-sm font-bold text-[#0A0F2E]">{s.title}</div>
                             <div className="text-xs text-[#6B7280]">{s.description}</div>
                           </div>
-                          <Badge style={{ background: NAVY, color: "#fff", border: "none" }} className="text-[9px] font-bold uppercase tracking-widest rounded-none">{s.urgency}</Badge>
+                          <Badge style={{ background: "#0A0F2E", color: "#fff", border: "none" }} className="text-[9px] font-bold uppercase tracking-widest rounded-none">{s.urgency}</Badge>
                         </div>
                       ))
                     )}
@@ -384,7 +384,7 @@ export default function ExecutiveDashboard() {
                   <CardHeader className="border-b border-[#E8E4DC]">
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <Sparkles className="h-4 w-4 text-[#C9A84C]" />
-                      <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Oracle Patterns</CardTitle>
+                      <CardTitle style={{ ...CG, fontSize: "20px", color: "#0A0F2E" }}>Oracle Patterns</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="pt-6 space-y-4">

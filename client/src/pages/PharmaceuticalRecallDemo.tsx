@@ -277,7 +277,7 @@ export default function PharmaceuticalRecallDemo() {
 
               <ROIComparison
                 traditional={pharmaDemoData.roiComparison.traditional}
-                vexor={pharmaDemoData.roiComparison.vexor}
+                executionOS={pharmaDemoData.roiComparison.executionOS}
                 bottomLine={pharmaDemoData.roiComparison.bottomLine}
               />
 

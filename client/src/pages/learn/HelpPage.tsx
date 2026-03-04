@@ -23,7 +23,7 @@ const resources = [
     title: 'Best Practices',
     description: 'Learn from enterprise playbook templates',
     action: 'Read Guides',
-    color: 'text-green-500'
+    color: 'text-[#2B8A6E]'
   },
   {
     icon: MessageCircle,

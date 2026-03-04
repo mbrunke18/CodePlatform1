@@ -671,13 +671,13 @@ export default function ReadinessAssessment() {
               </Card>
             </div>
 
-            <Card className="bg-white border border-gray-200 mb-8">
+            <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10 mb-8">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3">
                   <AlertTriangle className={`h-6 w-6 flex-shrink-0 ${domainConfig.textLight}`} />
                   <div>
-                    <p className="text-gray-800 text-sm">{domainConfig.label} Benchmark</p>
-                    <p className="text-gray-900 text-lg font-semibold">You're {result.benchmark}</p>
+                    <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm font-medium uppercase tracking-wider">{domainConfig.label} Benchmark</p>
+                    <p className="text-[#0A0F2E] dark:text-white text-lg font-bold">You're {result.benchmark}</p>
                   </div>
                 </div>
               </CardContent>

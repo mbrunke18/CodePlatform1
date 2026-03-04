@@ -98,7 +98,7 @@ export default function SLAPage() {
                 <div className="text-sm text-muted-foreground">Days saved annually</div>
               </div>
               <div className="text-center p-4 bg-muted/50 rounded-lg">
-                <div className="text-3xl font-bold text-green-500">$2.2M</div>
+                <div className="text-3xl font-bold text-[#2B8A6E]">$2.2M</div>
                 <div className="text-sm text-muted-foreground">Average cost savings</div>
               </div>
             </div>

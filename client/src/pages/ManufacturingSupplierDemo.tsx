@@ -278,7 +278,7 @@ export default function ManufacturingSupplierDemo() {
 
               <ROIComparison
                 traditional={manufacturingDemoData.roiComparison.traditional}
-                vexor={manufacturingDemoData.roiComparison.vexor}
+                executionOS={manufacturingDemoData.roiComparison.executionOS}
                 bottomLine={manufacturingDemoData.roiComparison.bottomLine}
               />
 

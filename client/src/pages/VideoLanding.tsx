@@ -265,7 +265,7 @@ export default function VideoLanding() {
 
       <footer className="py-12 px-6 bg-white border-t border-[#E8E4DC]">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">
+          <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.3em]">
             Execution OS — Strategic Execution Operating System by VaughnMartin
           </p>
         </div>

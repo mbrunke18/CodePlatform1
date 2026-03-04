@@ -307,9 +307,41 @@ export default function LVMHMarketEntryDemo() {
 
             <ROIComparison
               traditional={lvmhMarketEntryDemoData.roiComparisonData.traditional}
-              vexor={lvmhMarketEntryDemoData.roiComparisonData.vexor}
+              executionOS={lvmhMarketEntryDemoData.roiComparisonData.executionOS}
               bottomLine={lvmhMarketEntryDemoData.roiComparisonData.bottomLine}
             />
+
+            <div className="bg-white/5 p-8 rounded-lg border-2 border-[#DFC178] mb-8">
+              <h3 className="text-xl font-bold mb-4 text-white text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-semibold text-[#C9A84C] mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#C9A84C] rounded-full" />
+                    Traditional Market Entry
+                  </h4>
+                  <ul className="space-y-2 text-sm text-white/60">
+                    <li>• 6-9 months of sequential planning across 10 brands</li>
+                    <li>• Real estate captured by faster moving competitors</li>
+                    <li>• Golden Week launch window missed entirely</li>
+                    <li>• €420M in opportunity cost + lost market share</li>
+                    <li>• Fragmented brand presence across 15 cities</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-[#2B8A6E] mb-3 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
+                    Execution OS Coordinated Move
+                  </h4>
+                  <ul className="space-y-2 text-sm text-white/60">
+                    <li>• 12-minute alignment across 1,267 stakeholders</li>
+                    <li>• Simultaneous 10-brand launch during Golden Week</li>
+                    <li>• Best-in-class real estate secured before rivals react</li>
+                    <li>• €1.68B in value creation + undisputed leadership</li>
+                    <li>• Unified strategic offensive at unprecedented scale</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             <div className="flex justify-center gap-4">
               <Button onClick={resetDemo} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-replay">

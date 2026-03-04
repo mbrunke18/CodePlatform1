@@ -50,7 +50,7 @@ export default function TeamPage() {
           <Card>
             <CardContent className="pt-6">
               <div className="flex items-center gap-3">
-                <TrendingUp className="w-8 h-8 text-green-500" />
+                <TrendingUp className="w-8 h-8 text-[#2B8A6E]" />
                 <div>
                   <div className="text-2xl font-bold">--</div>
                   <div className="text-xs text-muted-foreground">SLA Compliance</div>

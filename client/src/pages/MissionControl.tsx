@@ -223,7 +223,7 @@ export default function MissionControl() {
                             </div>
                             <div>
                               <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">{trigger.category} signal detected</div>
-                              <div style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>{trigger.name}</div>
+                              <div style={{ ...CG, fontSize: "20px", fontWeight: 600, color: "#C9A84C" }}>{trigger.name}</div>
                               <div className="flex items-center gap-3 mt-1">
                                 <span className="text-xs text-[#6B7280]">Confidence: {trigger.confidence}%</span>
                                 <span className="w-1 h-1 rounded-full bg-[#E8E4DC]" />
@@ -261,7 +261,7 @@ export default function MissionControl() {
                       <div key={exec.id} className="space-y-4">
                         <div className="flex justify-between items-end">
                           <div>
-                            <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: NAVY }}>{exec.playbook}</div>
+                            <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: "#C9A84C" }}>{exec.playbook}</div>
                             <div className="text-xs text-[#6B7280]">Execution active for 2m 14s</div>
                           </div>
                           <div className="text-right">
@@ -286,7 +286,7 @@ export default function MissionControl() {
                 <CardContent className="p-6 space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">
-                      <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: NAVY }}>170</div>
+                      <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>170</div>
                       <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">Playbooks</div>
                     </div>
                     <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">

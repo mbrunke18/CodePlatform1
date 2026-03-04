@@ -174,7 +174,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div 
                     className="absolute inset-0 rounded-full"
                     style={{
-                      background: `conic-gradient(from ${radarAngle}deg, rgba(43,138,110,0.15) 0deg, transparent 60deg)`
+                      background: `conic-gradient(from ${radarAngle}deg, rgba(43, 138, 110, 0.15) 0deg, transparent 60deg)`
                     }}
                   />
                 </div>

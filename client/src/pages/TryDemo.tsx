@@ -1077,7 +1077,7 @@ export default function TryDemo() {
                                 <Target className="h-3 w-3 mr-1" />
                                 Offensive (3)
                               </Badge>
-                              <Badge variant="outline" className="text-[#0A0F2E] border-[#0A0F2E] bg-[#0A0F2E]/10">
+                              <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C] bg-[#C9A84C]/10">
                                 <Shield className="h-3 w-3 mr-1" />
                                 Defensive (6)
                               </Badge>

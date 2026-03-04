@@ -187,7 +187,7 @@ export default function FutureReadinessDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="text-2xl flex items-center gap-2 text-[#0A0F2E]" style={CG}>
-                  <Target className="h-6 w-6 text-[#0A0F2E]" />
+                  <Target className="h-6 w-6 text-[#C9A84C]" />
                   Overall Readiness Score
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">
@@ -295,7 +295,7 @@ export default function FutureReadinessDashboard() {
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-3">
-                                  <h3 className="font-bold text-lg text-[#0A0F2E]" style={CG}>{signal.title}</h3>
+                  <h3 className="font-bold text-lg text-[#C9A84C]" style={CG}>{signal.title}</h3>
                                   <Badge variant={getUrgencyBadgeVariant(signal.urgency)} className="rounded-none uppercase text-[9px] font-bold tracking-widest">
                                     {signal.urgency}
                                   </Badge>
@@ -355,7 +355,7 @@ export default function FutureReadinessDashboard() {
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-3">
-                                  <h3 className="font-bold text-lg text-[#0A0F2E]" style={CG}>{pattern.title}</h3>
+                                  <h3 className="font-bold text-lg text-[#C9A84C]" style={CG}>{pattern.title}</h3>
                                   <Badge variant="secondary" className="rounded-none uppercase text-[9px] font-bold tracking-widest bg-[#0A0F2E] text-white">
                                     {pattern.patternType}
                                   </Badge>
@@ -418,7 +418,7 @@ export default function FutureReadinessDashboard() {
                             </div>
                             <div className="flex-1 pb-6">
                               <div className="flex items-center justify-between mb-2">
-                                <h4 className="font-bold text-[#0A0F2E]" style={CG}>{event.title}</h4>
+                                <h4 className="font-bold text-[#C9A84C]" style={CG}>{event.title}</h4>
                                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
                                   {format(new Date(event.timestamp), 'PPp')}
                                 </span>

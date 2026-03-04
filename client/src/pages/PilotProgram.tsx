@@ -291,11 +291,11 @@ export default function PilotProgram() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
+                className="bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border-2 border-[#C9A84C]/30"
                 onClick={() => setLocation('/contact')}
                 data-testid="button-apply-pilot"
               >
-                <Rocket className="w-5 h-5 mr-2" />
+                <Rocket className="w-5 h-5 mr-2 text-[#C9A84C]" />
                 Apply for Pilot Program
               </Button>
               <Button 
@@ -305,7 +305,7 @@ export default function PilotProgram() {
                 onClick={() => setLocation('/try-demo')}
                 data-testid="button-see-demo"
               >
-                <Play className="w-5 h-5 mr-2" />
+                <Play className="w-5 h-5 mr-2 text-[#2B8A6E]" />
                 See Demo First
               </Button>
             </div>

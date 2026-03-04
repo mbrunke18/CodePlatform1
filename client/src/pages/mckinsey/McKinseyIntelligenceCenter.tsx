@@ -172,12 +172,12 @@ export default function McKinseyIntelligenceCenter() {
                         </Badge>
                       </div>
                     </div>
-                    <div className="flex gap-2">
+                  <div className="flex gap-2">
                       <div className="flex-1">
-                        <Progress value={(element.current / 5) * 100} className="h-2 bg-gray-200" />
+                        <Progress value={(element.current / 5) * 100} className="h-2 bg-[#E8E4DC]" />
                       </div>
                       <div className="flex-1">
-                        <Progress value={(element.target / 5) * 100} className="h-2 bg-green-100" />
+                        <Progress value={(element.target / 5) * 100} className="h-2 bg-[#2B8A6E]/20" />
                       </div>
                     </div>
                   </div>

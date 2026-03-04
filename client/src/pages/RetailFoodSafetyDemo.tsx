@@ -329,13 +329,13 @@ export default function RetailFoodSafetyDemo() {
                   points: retailDemoData.roiComparison.traditional.points,
                   details: retailDemoData.roiComparison.traditional.details
                 }}
-                vexor={{
-                  label: retailDemoData.roiComparison.vexor.title,
-                  duration: retailDemoData.roiComparison.vexor.timeline,
-                  approach: retailDemoData.roiComparison.vexor.approach,
-                  outcome: retailDemoData.roiComparison.vexor.outcome,
-                  points: retailDemoData.roiComparison.vexor.points,
-                  details: retailDemoData.roiComparison.vexor.details
+                executionOS={{
+                  label: retailDemoData.roiComparison.executionOS.title,
+                  duration: retailDemoData.roiComparison.executionOS.timeline,
+                  approach: retailDemoData.roiComparison.executionOS.approach,
+                  outcome: retailDemoData.roiComparison.executionOS.outcome,
+                  points: retailDemoData.roiComparison.executionOS.points,
+                  details: retailDemoData.roiComparison.executionOS.details
                 }}
                 bottomLine={{
                   value: "$240M+ Value Preserved",

@@ -204,7 +204,7 @@ export default function FinancialRansomwareDemo() {
 
             <ROIComparison
               traditional={financialDemoData.roiComparison.traditional}
-              vexor={financialDemoData.roiComparison.vexor}
+              executionOS={financialDemoData.roiComparison.executionOS}
               bottomLine={financialDemoData.roiComparison.bottomLine}
             />
 

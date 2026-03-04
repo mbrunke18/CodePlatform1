@@ -125,6 +125,7 @@ const tierConfig = {
     textColor: 'text-[#2B8A6E]',
     bgColor: 'bg-[#2B8A6E]/10',
     borderColor: 'border-[#2B8A6E]/20',
+    indicator: '#2B8A6E',
     icon: CheckCircle2
   },
   'practice-needed': {
@@ -133,6 +134,7 @@ const tierConfig = {
     textColor: 'text-[#C9A84C]',
     bgColor: 'bg-[#C9A84C]/10',
     borderColor: 'border-[#C9A84C]/20',
+    indicator: '#C9A84C',
     icon: Clock
   },
   'setup-required': {
@@ -141,6 +143,7 @@ const tierConfig = {
     textColor: 'text-[#C9A84C]',
     bgColor: 'bg-[#C9A84C]/5',
     borderColor: 'border-[#C9A84C]/10',
+    indicator: '#C9A84C',
     icon: AlertTriangle
   },
   'not-configured': {
@@ -149,6 +152,7 @@ const tierConfig = {
     textColor: 'text-[#0A0F2E]',
     bgColor: 'bg-[#0A0F2E]/5',
     borderColor: 'border-[#0A0F2E]/10',
+    indicator: '#0A0F2E',
     icon: XCircle
   }
 };
@@ -239,7 +243,7 @@ export default function PlaybookReadinessAudit() {
                 key={tier} 
                 className={`${config.bgColor} ${config.borderColor} border cursor-pointer hover:shadow-md transition-all`}
                 onClick={() => setSelectedTier(tier)}
-                style={{ borderTop: `4px solid ${config.color === 'bg-[#2B8A6E]' ? '#2B8A6E' : config.color === 'bg-[#C9A84C]' ? '#C9A84C' : '#0A0F2E'}` }}
+                style={{ borderTop: `4px solid ${(config as any).indicator}` }}
                 data-testid={`tier-card-${tier}`}
               >
                 <CardContent className="pt-6">

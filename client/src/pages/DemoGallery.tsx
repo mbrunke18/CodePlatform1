@@ -341,7 +341,7 @@ export default function DemoGallery() {
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg" className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-semibold">
+                  <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-semibold border-2 border-[#C9A84C]/30">
                     Start Pilot Program
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>

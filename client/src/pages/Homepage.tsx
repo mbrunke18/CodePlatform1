@@ -158,6 +158,19 @@ export default function Homepage() {
                 </svg>
               </button>
             </div>
+
+            {/* Who it's for + Social Proof */}
+            <div style={{ marginTop: 40, paddingTop: 28, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 14 }}>Built for</div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 18 }}>
+                {(["COOs", "CSOs", "PMO Leaders", "CIOs"] as string[]).map((r, i) => (
+                  <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: "5px 14px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", color: GOLD_LIGHT, letterSpacing: "0.08em" }}>{r}</span>
+                ))}
+              </div>
+              <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.3)", letterSpacing: "0.02em" }}>
+                Active across Fortune 500 organizations in financial services and gaming
+              </div>
+            </div>
           </div>
 
           {/* Right — execution cards */}

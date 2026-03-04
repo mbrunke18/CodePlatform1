@@ -246,12 +246,12 @@ export default function LuxuryCrisisDemo() {
                 outcome: roiComparisonData.traditional.outcome,
                 points: roiComparisonData.traditional.points
               }}
-              vexor={{
-                label: roiComparisonData.vexor.title,
-                duration: roiComparisonData.vexor.timeline,
-                approach: roiComparisonData.vexor.approach,
-                outcome: roiComparisonData.vexor.outcome,
-                points: roiComparisonData.vexor.points
+              executionOS={{
+                label: roiComparisonData.executionOS.title,
+                duration: roiComparisonData.executionOS.timeline,
+                approach: roiComparisonData.executionOS.approach,
+                outcome: roiComparisonData.executionOS.outcome,
+                points: roiComparisonData.executionOS.points
               }}
               bottomLine={roiComparisonData.bottomLine}
             />

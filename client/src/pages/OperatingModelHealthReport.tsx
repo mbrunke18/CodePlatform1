@@ -77,19 +77,19 @@ export default function OperatingModelHealthReport() {
   const needsAttentionCount = Object.values(elementHealthScores).filter(s => s < 60).length;
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[#0A0F2E] dark:to-[#141B45]">
+    <div className="page-background min-h-screen bg-gradient-to-br from-[#F8F7F4] to-[#E8E4DC] dark:from-[#0A0F2E] dark:to-[#141B45]">
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
-              <Activity className="h-6 w-6 text-gray-900" />
+              <Activity className="h-6 w-6 text-[#C9A84C]" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
+              <h1 className="text-4xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 Operating Model Health Report
               </h1>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
+              <p className="text-lg text-[#6B7280] dark:text-[#E8E4DC]">
                 McKinsey's 12 Elements Framework Assessment
               </p>
             </div>
@@ -108,11 +108,11 @@ export default function OperatingModelHealthReport() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-6xl font-bold text-slate-900 dark:text-white">
+                  <span className="text-6xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {overallScore}
-                    <span className="text-3xl text-gray-800 dark:text-slate-300">/100</span>
+                    <span className="text-3xl text-[#6B7280] dark:text-[#E8E4DC]">/100</span>
                   </span>
-                  <Badge className={`${getHealthStatus(overallScore).color} text-gray-900 text-lg px-4 py-2`}>
+                  <Badge className={`${getHealthStatus(overallScore).color} text-white text-lg px-4 py-2`}>
                     {getHealthStatus(overallScore).label}
                   </Badge>
                 </div>
@@ -120,17 +120,17 @@ export default function OperatingModelHealthReport() {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
                     <div className="text-3xl font-bold text-[#2B8A6E]" data-testid="text-excellent-count">{excellentCount}</div>
-                    <div className="text-sm text-gray-800 dark:text-slate-300">Excellent</div>
+                    <div className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">Excellent</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-[#0A0F2E]" data-testid="text-good-count">
                       {Object.values(elementHealthScores).filter(s => s >= 70 && s < 80).length}
                     </div>
-                    <div className="text-sm text-gray-800 dark:text-slate-300">Good</div>
+                    <div className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">Good</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-yellow-600" data-testid="text-needs-attention-count">{needsAttentionCount}</div>
-                    <div className="text-sm text-gray-800 dark:text-slate-300">Needs Focus</div>
+                    <div className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">Needs Focus</div>
                   </div>
                 </div>
               </div>
@@ -195,10 +195,10 @@ export default function OperatingModelHealthReport() {
                     <CardContent>
                       <Progress value={score} className="mb-4 h-2" />
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-300">
+                        <span className="text-[#6B7280] dark:text-[#E8E4DC]">
                           Status: <span className={`font-semibold ${status.textColor}`}>{status.label}</span>
                         </span>
-                        <span className="text-gray-800 dark:text-slate-300">
+                        <span className="text-[#6B7280] dark:text-[#E8E4DC]">
                           {activationCount} scenarios
                         </span>
                       </div>
@@ -240,10 +240,10 @@ export default function OperatingModelHealthReport() {
                     <CardContent>
                       <Progress value={score} className="mb-4 h-2" />
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-800 dark:text-slate-300">
+                        <span className="text-[#6B7280] dark:text-[#E8E4DC]">
                           Status: <span className={`font-semibold ${status.textColor}`}>{status.label}</span>
                         </span>
-                        <span className="text-gray-800 dark:text-slate-300">
+                        <span className="text-[#6B7280] dark:text-[#E8E4DC]">
                           {activationCount} scenarios
                         </span>
                       </div>
@@ -326,11 +326,11 @@ export default function OperatingModelHealthReport() {
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-red-700 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Priority 1: Strengthen Rewards System</h4>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
+                    <h4 className="font-semibold text-lg mb-1 text-[#0A0F2E] dark:text-white">Priority 1: Strengthen Rewards System</h4>
+                    <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC] mb-2">
                       Current score: 62. Misaligned incentives are limiting transformation velocity.
                     </p>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                    <p className="text-sm text-[#0A0F2E] dark:text-[#E8E4DC]">
                       <strong>Action:</strong> Launch the Organizational Restructuring scenario to redesign rewards 
                       to align with strategic outcomes. Expected improvement: +15 points in 90 days.
                     </p>
@@ -342,11 +342,11 @@ export default function OperatingModelHealthReport() {
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Priority 2: Optimize Core Processes</h4>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
+                    <h4 className="font-semibold text-lg mb-1 text-[#0A0F2E] dark:text-white">Priority 2: Optimize Core Processes</h4>
+                    <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC] mb-2">
                       Current score: 65. Process inefficiencies are creating execution drag.
                     </p>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                    <p className="text-sm text-[#0A0F2E] dark:text-[#E8E4DC]">
                       <strong>Action:</strong> Activate the Process Improvement playbook to streamline workflows 
                       and eliminate bottlenecks. Expected ROI: $8M annually.
                     </p>
@@ -354,15 +354,15 @@ export default function OperatingModelHealthReport() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-green-500">
+              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-[#2B8A6E]">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-lg mb-1">Opportunity: Leverage Leadership Strength</h4>
-                    <p className="text-sm text-gray-800 dark:text-slate-300 mb-2">
+                    <h4 className="font-semibold text-lg mb-1 text-[#0A0F2E] dark:text-white">Opportunity: Leverage Leadership Strength</h4>
+                    <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC] mb-2">
                       Current score: 85. Strong leadership is your competitive advantage.
                     </p>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                    <p className="text-sm text-[#0A0F2E] dark:text-[#E8E4DC]">
                       <strong>Action:</strong> Use your leadership strength to drive Culture Transformation 
                       and cascade strategic clarity across the organization.
                     </p>

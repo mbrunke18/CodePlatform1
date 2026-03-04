@@ -293,11 +293,11 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                     ))}
                     
                     {/* Center Icon */}
-                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <div style={{ width: 80, height: 80, background: "#141B45", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
-                        <Radar className="w-10 h-10 text-white" />
-                      </div>
+                  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: 80, height: 80, background: "#0A0F2E", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 12px 24px rgba(10,15,46,0.2)" }}>
+                      <Radar className="w-10 h-10 text-white" />
                     </div>
+                  </div>
 
                     {/* Scan Line */}
                     <div style={{ position: "absolute", inset: 0, borderRadius: 0, overflow: "hidden" }}>
@@ -342,7 +342,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                           
                           {/* Tooltip */}
                           <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-6 left-1/2 -translate-x-1/2 w-64 p-4 bg-white border border-[#E8E4DC] shadow-xl z-[100] rounded-none">
-                            <h4 style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
+                            <h4 style={{ ...CG, fontSize: 16, fontWeight: 600, color: "#0A0F2E" }}>{signal.title}</h4>
                             <p style={{ fontSize: 12, color: "#4B5563", marginTop: 4 }}>{signal.description}</p>
                             <div className="flex items-center gap-2 mt-3">
                               <Badge style={{ background: OFF, color: NAVY, border: "1px solid #E8E4DC", fontSize: 10 }} className="rounded-none">{signal.confidence}% CONFIDENCE</Badge>
@@ -370,7 +370,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                         className="hover:border-[#0A0F2E] hover:shadow-sm"
                       >
                         <div className="flex items-start justify-between mb-4">
-                          <h4 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>{signal.title}</h4>
+                          <h4 style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#0A0F2E" }}>{signal.title}</h4>
                           <span style={{ 
                             fontSize: 8, 
                             fontWeight: 700, 
@@ -416,7 +416,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                         </div>
                         <span style={{ fontSize: 10, fontWeight: 700, color: GOLD }}>{pattern.accuracy}% ACCURACY</span>
                       </div>
-                      <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY, marginBottom: 12 }}>{pattern.name}</h3>
+                      <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 12 }}>{pattern.name}</h3>
                       <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.6, marginBottom: 24 }}>{pattern.description}</p>
                       
                       <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 24 }}>
@@ -444,13 +444,13 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
             <TabsContent value="configure">
               <div className="max-w-3xl mx-auto py-12">
                 <div style={{ border: "1px solid #E8E4DC", padding: 48, background: "#fff" }}>
-                  <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 16 }}>Configuration</h3>
+                  <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 16 }}>Configuration</h3>
                   <p style={{ fontSize: 16, color: "#6B7280", marginBottom: 32 }}>Configure intelligence parameters, signal categories, and AI confidence thresholds for the Foresight Radar.</p>
                   
                   <div className="space-y-8">
                     {["Category Priority", "Alert Thresholds", "Source Management"].map((item) => (
                       <div key={item} className="flex items-center justify-between py-4 border-b border-[#E8E4DC]">
-                        <span style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>{item}</span>
+                        <span style={{ fontSize: 14, fontWeight: 600, color: "#0A0F2E" }}>{item}</span>
                         <Button variant="ghost" className="text-[#6B7280]">
                           <Settings className="w-4 h-4 mr-2" />
                           Manage
@@ -467,7 +467,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
         {/* Dialogs */}
         <Dialog open={!!selectedSignal} onOpenChange={() => setSelectedSignal(null)}>
           <DialogContent className="sm:max-w-[600px] border-none p-0 overflow-hidden">
-            <div style={{ background: NAVY, padding: 32 }}>
+            <div style={{ background: "#0A0F2E", padding: 32 }}>
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff" }}>Signal Investigation</h2>
             </div>
             <div className="p-8 bg-white">

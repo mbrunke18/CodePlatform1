@@ -204,10 +204,10 @@ export default function IDEAFramework() {
           const Icon = phase.icon;
           const isEven = i % 2 === 0;
           const phaseColorMap = {
-            'IDENTIFY': TEAL,
-            'DETECT': NAVY,
-            'EXECUTE': GOLD,
-            'ADVANCE': TEAL
+            'IDENTIFY': "#2B8A6E",
+            'DETECT': "#0A0F2E",
+            'EXECUTE': "#C9A84C",
+            'ADVANCE': "#2B8A6E"
           };
           const accentColor = (phaseColorMap as any)[phase.name] || (isEven ? NAVY : TEAL);
 
@@ -341,7 +341,7 @@ export default function IDEAFramework() {
                 <Button
                   size="lg"
                   className="font-semibold px-8 rounded-none"
-                  style={{ background: GOLD, color: NAVY }}
+                  style={{ background: "#C9A84C", color: "#0A0F2E" }}
                 >
                   <Play className="mr-2 h-4 w-4" />
                   See It in Action

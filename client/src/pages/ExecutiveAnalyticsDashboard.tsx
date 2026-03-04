@@ -205,9 +205,9 @@ export default function ExecutiveAnalyticsDashboard() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Active Users</h3>
-                <Users className="h-5 w-5 text-[#0A0F2E]" />
+                <Users className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-3xl font-bold text-[#0A0F2E]" style={CG}>{realTimeData.activeUsers.toLocaleString()}</div>
+              <div className="text-3xl font-bold text-[#C9A84C]" style={CG}>{realTimeData.activeUsers.toLocaleString()}</div>
               <div className="text-xs text-[#6B7280] mt-1 uppercase tracking-widest font-bold">Live concurrent</div>
             </CardContent>
           </Card>
@@ -229,7 +229,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Conversion</h3>
                 <Target className="h-5 w-5 text-[#C9A84C]" />
               </div>
-              <div className="text-3xl font-bold text-[#0A0F2E]" style={CG}>{realTimeData.conversionRate}%</div>
+              <div className="text-3xl font-bold text-[#C9A84C]" style={CG}>{realTimeData.conversionRate}%</div>
               <div className="text-xs text-[#6B7280] mt-1 uppercase tracking-widest font-bold">Target: 4.0%</div>
             </CardContent>
           </Card>
@@ -276,7 +276,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">{metric.name}</h3>
                       {getTrendIcon(metric.trend)}
                     </div>
-                    <div className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>{metric.value}</div>
+                    <div className="text-2xl font-bold text-[#C9A84C] mb-2" style={CG}>{metric.value}</div>
                     <div className={`text-[10px] font-bold uppercase tracking-widest mb-2 ${metric.trend === 'up' ? 'text-[#2B8A6E]' : metric.trend === 'down' ? 'text-[#C9A84C]' : 'text-[#C9A84C]'}`}>
                       {metric.change} vs period
                     </div>
@@ -297,7 +297,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                           <div style={{ width: 24, height: 2, background: GOLD }} />
-                          <h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>{insight.title}</h3>
+                          <h3 className="text-xl font-bold text-[#C9A84C]" style={CG}>{insight.title}</h3>
                           <Badge className={getInsightColor(insight.category)}>
                             {insight.category.toUpperCase()}
                           </Badge>
@@ -309,7 +309,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       </div>
                       <div className="text-right">
                         <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Confidence</div>
-                        <div className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{insight.confidence}%</div>
+                        <div className="text-2xl font-bold text-[#C9A84C]" style={CG}>{insight.confidence}%</div>
                       </div>
                     </div>
                     

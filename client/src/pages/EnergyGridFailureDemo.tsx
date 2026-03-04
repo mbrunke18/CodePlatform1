@@ -357,12 +357,12 @@ export default function EnergyGridFailureDemo() {
                 outcome: energyDemoData.roiComparison.traditional.outcome,
                 points: energyDemoData.roiComparison.traditional.points
               }}
-              vexor={{
-                label: energyDemoData.roiComparison.vexor.title,
-                duration: energyDemoData.roiComparison.vexor.timeline,
-                approach: energyDemoData.roiComparison.vexor.approach,
-                outcome: energyDemoData.roiComparison.vexor.outcome,
-                points: energyDemoData.roiComparison.vexor.points
+              executionOS={{
+                label: energyDemoData.roiComparison.executionOS.title,
+                duration: energyDemoData.roiComparison.executionOS.timeline,
+                approach: energyDemoData.roiComparison.executionOS.approach,
+                outcome: energyDemoData.roiComparison.executionOS.outcome,
+                points: energyDemoData.roiComparison.executionOS.points
               }}
               bottomLine={energyDemoData.roiComparison.bottomLine}
             />

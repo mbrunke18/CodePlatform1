@@ -213,9 +213,9 @@ function CompoundDisruptionSection() {
                 key={i}
                 style={{ 
                   border: `1px solid ${isExpanded ? "#C9A84C" : "#E8E4DC"}`,
-                  background: isExpanded ? "rgba(201,168,76,0.03)" : "white"
+                  background: isExpanded ? "rgba(10,15,46,0.03)" : "white"
                 }}
-                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#DFC178]`}
+                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#C9A84C]`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -273,7 +273,7 @@ function CompoundDisruptionSection() {
                                 <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
                                 <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
                               </div>
-                              <span style={{ background: "white", color: pbIndicatorColor, borderColor: pbIndicatorColor }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border">{pb.phase}</span>
+                              <span style={{ background: "rgba(10, 15, 46, 0.05)", color: pbIndicatorColor, borderColor: pbIndicatorColor }} className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold border uppercase tracking-wider">{pb.phase}</span>
                             </div>
                           );
                         })}
@@ -402,12 +402,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: "0.05em",
-                        border: `1px solid ${isActive ? "#C9A84C" : "#E8E4DC"}`,
-                        color: isActive ? "#C9A84C" : "#0A0F2E",
-                        background: isActive ? "#FFFFFF" : "transparent",
+                          border: `1px solid ${isActive ? "#C9A84C" : "#E8E4DC"}`,
+                        color: isActive ? "#FFFFFF" : "#0A0F2E",
+                        background: isActive ? "#0A0F2E" : "transparent",
                         transition: "all 0.2s"
                       }}
-                      className="hover:border-[#DFC178]"
+                      className="hover:border-[#C9A84C]"
                     >
                       {chip}
                     </button>
@@ -433,9 +433,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     onClick={() => setActiveDomain(domain.id)}
                     className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all"
                     style={{
-                      background: isActive ? "rgba(201,168,76,0.08)" : "transparent",
+                      background: isActive ? "rgba(10, 15, 46, 0.08)" : "transparent",
                       color: isActive ? NAVY : MUTED,
-                      fontSize: 13, fontWeight: isActive ? 600 : 400, textAlign: "left"
+                      fontSize: 11, fontWeight: isActive ? 700 : 500, textAlign: "left",
+                      textTransform: "uppercase", letterSpacing: "0.1em"
                     }}
                   >
                     <div className="flex items-center gap-3">

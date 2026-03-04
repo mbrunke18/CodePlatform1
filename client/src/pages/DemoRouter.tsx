@@ -114,10 +114,10 @@ export default function DemoRouter() {
           </div>
 
           {/* AI-Native Differentiator */}
-          <div className="mb-8 p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-xl">
+          <div className="mb-8 p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-xl">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
-                <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
+              <div className="p-2 bg-[#2B8A6E]/20 rounded-lg">
+                <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div className="flex-1">
                 <p className="text-[#0A0F2E] font-medium mb-1">NEW: Predictive Intelligence</p>

@@ -80,16 +80,16 @@ function PhaseCard({
   color: 'navy' | 'gold' | 'teal';
 }) {
   const colorMap = {
-    navy: { border: BORDER, accent: NAVY },
-    gold: { border: BORDER, accent: GOLD },
-    teal: { border: BORDER, accent: TEAL }
+    navy: { border: BORDER, accent: "#0A0F2E" },
+    gold: { border: BORDER, accent: "#C9A84C" },
+    teal: { border: BORDER, accent: "#2B8A6E" }
   };
 
   const phaseColorMap = {
-    'IDENTIFY': TEAL,
-    'DETECT': NAVY,
-    'EXECUTE': GOLD,
-    'ADVANCE': TEAL
+    'IDENTIFY': "#2B8A6E",
+    'DETECT': "#0A0F2E",
+    'EXECUTE': "#C9A84C",
+    'ADVANCE': "#2B8A6E"
   };
 
   const accentColor = (phaseColorMap as any)[phase] || colorMap[color].accent;
@@ -103,12 +103,12 @@ function PhaseCard({
         <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div style={{ width: 40, height: 40, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8 }}>
+              <div style={{ width: 40, height: 40, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 8 }}>
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div>
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accentColor }}>{phase}</div>
-                <CardTitle style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>{title}</CardTitle>
+                <CardTitle style={{ ...CG, fontSize: "20px", fontWeight: 600, color: "#0A0F2E" }}>{title}</CardTitle>
               </div>
             </div>
             <ChevronRight className="h-4 w-4 text-[#E8E4DC]" />
@@ -263,8 +263,8 @@ export default function Dashboard() {
               <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader className="border-b border-[#E8E4DC]">
                   <div className="flex items-center justify-between">
-                    <CardTitle style={{ ...CG, fontSize: "24px", color: NAVY }}>Intelligence Feed</CardTitle>
-                    <Badge style={{ background: "rgba(10,15,46,0.05)", color: NAVY, border: "none" }} className="rounded-none">Live Updates</Badge>
+                    <CardTitle style={{ ...CG, fontSize: "24px", color: "#0A0F2E" }}>Intelligence Feed</CardTitle>
+                    <Badge style={{ background: "rgba(10,15,46,0.05)", color: "#0A0F2E", border: "none" }} className="rounded-none">Live Updates</Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
@@ -297,12 +297,12 @@ export default function Dashboard() {
             <div className="lg:col-span-4 space-y-8">
               <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader>
-                  <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Strategic Actions</CardTitle>
+                  <CardTitle style={{ ...CG, fontSize: "20px", color: "#0A0F2E" }}>Strategic Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <Link href="/playbook-library">
                     <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent rounded-none">
-                      <div style={{ width: 32, height: 32, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
+                      <div style={{ width: 32, height: 32, background: "#0A0F2E", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12 }}>
                         <Target className="h-4 w-4 text-white" />
                       </div>
                       <div className="text-left">
@@ -336,7 +336,7 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
 
-              <Card style={{ background: NAVY }} className="border-none text-white rounded-none shadow-sm">
+              <Card style={{ background: "#0A0F2E" }} className="border-none text-white rounded-none shadow-sm">
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />

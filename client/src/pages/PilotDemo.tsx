@@ -771,14 +771,14 @@ export default function PilotDemo() {
                             <Button
                               variant="outline"
                               onClick={resetDemo}
-                              className="gap-2 text-gray-900 border-slate-600 hover:bg-[#141B45] hover:text-white hover:border-[#141B45]"
+                              className="gap-2 text-[#0A0F2E] border-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white"
                               data-testid="button-reset-demo"
                             >
                               <RefreshCw className="w-4 h-4" /> Run Another Demo
                             </Button>
                             <Button
                               onClick={() => window.location.href = "/contact"}
-                              className="gap-2 bg-[#2B8A6E] hover:bg-[#256B56]"
+                              className="gap-2 bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white"
                               data-testid="button-start-pilot"
                             >
                               Start Full Pilot <ArrowRight className="w-4 h-4" />

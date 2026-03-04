@@ -46,7 +46,7 @@ export default function ThreatsPage() {
           <Card>
             <CardContent className="pt-6">
               <div className="flex items-center gap-3">
-                <Shield className="w-8 h-8 text-green-500" />
+                <Shield className="w-8 h-8 text-[#2B8A6E]" />
                 <div>
                   <div className="text-2xl font-bold">847</div>
                   <div className="text-xs text-muted-foreground">Signals Monitored</div>
