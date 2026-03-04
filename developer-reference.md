@@ -107,8 +107,14 @@ MUTED   = "#6B7280"   → helper text, secondary labels, timestamps
 ### How It Works
 Replit OIDC via Passport.js. Sessions stored in PostgreSQL (`sessions` table). New users auto-get an organization on first login. `onboardingCompleted: false` triggers the 5-step onboarding wizard.
 
-### Auth Guard — `requireOrgAccess` middleware
-Every protected route goes through this. Redirects unauthenticated users or users with incomplete onboarding to `/onboarding`.
+### Auth Guard — Frontend `OnboardingGuard` (App.tsx)
+Redirects new users to `/onboarding` **once per session** using a `useRef` flag (`hasRedirected`). After the first redirect, the user can navigate freely — the guard does NOT re-redirect on subsequent navigation. Do NOT revert to the old pattern (checking every navigation event) as it traps users on the onboarding page.
+
+The onboarding wizard provides two escape hatches:
+- **"Skip to Platform →"** button in the step view header (top-right of navy header)
+- **"Skip for now"** link next to the "Begin Phase 1" button in the journey view
+
+Both call `completeOnboardingMutation` → POST `/api/onboarding/complete` → invalidates `/api/auth/user` cache so `needsOnboarding` becomes `false` and the guard stops firing.
 
 ### Role-Based Access
 `requireRole('admin', 'executive', 'strategist')` is applied to all write routes. Users with no role get read-only access.
@@ -516,8 +522,10 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 
 ### `StandardNav`
 - Carries the logo on every page. Do NOT add a second logo inside page hero content.
-- Unauthenticated CTAs: "Try Demo" (→ /try-demo), "Request Pilot" (gold, → /pilot-program), "Sign In" (ghost)
-- Authenticated CTAs: "Open Platform" (teal, → /mission-control), Sign Out
+- Unauthenticated CTAs: "Try Demo" (outline, → /try-demo), "Request Pilot" (gold, → /pilot-program), "Sign In" (ghost)
+- Authenticated CTAs: "Try Demo" + "Request Pilot" always visible (same as unauthenticated — execs share these with prospects), "Open Platform" (teal, → /mission-control), user name as a **dropdown** with: Settings (→ /settings), Organization Setup (→ /organization-setup), Sign Out
+- **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
+- Footer includes Settings and Sitemap links in the Company column for full coverage
 
 ---
 
