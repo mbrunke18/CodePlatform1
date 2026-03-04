@@ -48,8 +48,8 @@ export default function GetStarted() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Start Free Trial — Execution OS | VaughnMartin",
-      description: "Access the full Execution OS platform. Real playbooks, real AI, real execution. No mocked demos.",
+      title: "Sign In — Execution OS | VaughnMartin",
+      description: "Access the full Execution OS platform. Real playbooks, real AI, real execution.",
     });
   }, []);
 
@@ -106,13 +106,13 @@ export default function GetStarted() {
                 {isAuthenticated ? (
                   <><Compass size={18} /> Open the Platform</>
                 ) : (
-                  <><LogIn size={18} /> Sign In to Start Free Trial</>
+                  <><LogIn size={18} /> Sign In to Platform</>
                 )}
                 <ArrowRight size={16} />
               </button>
             )}
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>
-              No credit card. No setup fee. Full platform from day one.
+              Existing pilot customers — sign in to access your platform.
             </p>
           </div>
         </div>

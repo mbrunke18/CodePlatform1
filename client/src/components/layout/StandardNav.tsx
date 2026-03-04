@@ -79,8 +79,8 @@ export default function StandardNav() {
       heading: "Access",
       links: [
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Scripted simulation — no login required" },
-        { label: "Start Free Trial", path: "/get-started", icon: LogIn, description: "Sign in with Google or GitHub — live platform" },
-        { label: "Pilot Program", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
+        { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
+        { label: "Sign In", path: "/get-started", icon: LogIn, description: "Access your live platform" },
       ],
     },
   ];
@@ -256,18 +256,11 @@ export default function StandardNav() {
                   Try Demo
                 </Button>
                 <Button
-                  onClick={() => navigateTo("/get-started")}
-                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
-                  data-testid="nav-free-trial"
-                >
-                  Start Free Trial
-                </Button>
-                <Button
                   onClick={() => navigateTo("/pilot-program")}
-                  className="bg-[#0A0F2E] hover:bg-[#141B45] dark:bg-white dark:hover:bg-gray-100 !text-white dark:!text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
-                  data-testid="nav-pilot-program"
+                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
+                  data-testid="nav-request-pilot"
                 >
-                  Pilot Program
+                  Request Pilot
                 </Button>
                 <Button
                   variant="ghost"
@@ -331,19 +324,12 @@ export default function StandardNav() {
                     Try Demo
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/get-started")}
-                    className="w-full justify-center h-11 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
-                    data-testid="nav-mobile-free-trial"
-                  >
-                    <LogIn className="h-4 w-4 mr-2" />
-                    Start Free Trial
-                  </Button>
-                  <Button
                     onClick={() => navigateTo("/pilot-program")}
-                    className="w-full justify-center h-11 text-sm font-semibold bg-[#0A0F2E] hover:bg-[#141B45] !text-white"
-                    data-testid="nav-mobile-pilot-program"
+                    className="w-full justify-center h-11 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
+                    data-testid="nav-mobile-request-pilot"
                   >
-                    Pilot Program
+                    <Target className="h-4 w-4 mr-2" />
+                    Request Pilot
                   </Button>
                   <Button
                     variant="ghost"
