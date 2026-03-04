@@ -68,6 +68,8 @@ export default function Footer() {
         { label: "Integrations", path: "/integrations" },
         { label: "Pricing", path: "/pricing" },
         { label: "Contact", path: "/contact" },
+        { label: "Settings", path: "/settings" },
+        { label: "Sitemap", path: "/sitemap" },
       ]
     },
   ];

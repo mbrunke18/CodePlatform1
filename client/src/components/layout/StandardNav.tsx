@@ -244,21 +244,36 @@ export default function StandardNav() {
                   <Compass className="h-4 w-4 mr-1.5" />
                   Open Platform
                 </Button>
-                <div className="flex items-center gap-2">
-                  <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                    <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                    <span className="text-sm text-gray-800 dark:text-gray-200">{user.firstName || user.email?.split('@')[0]}</span>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    onClick={logout}
-                    className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3"
-                    data-testid="nav-logout"
-                  >
-                    <LogOut className="h-4 w-4 xl:mr-1.5" />
-                    <span className="hidden xl:inline">Sign Out</span>
-                  </Button>
-                </div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex items-center gap-2 px-3 py-1.5 h-9 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      data-testid="nav-user-menu"
+                    >
+                      <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                      <span className="hidden xl:inline text-sm">{user.firstName || user.email?.split('@')[0]}</span>
+                      <ChevronDown className="h-3 w-3 opacity-50" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuLabel className="text-xs text-gray-500 font-normal">{user.email}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigateTo("/settings")} className="cursor-pointer">
+                      <Settings className="h-4 w-4 mr-2 opacity-60" />
+                      Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => navigateTo("/organization-setup")} className="cursor-pointer">
+                      <Building className="h-4 w-4 mr-2 opacity-60" />
+                      Organization Setup
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-600 dark:text-red-400" data-testid="nav-logout">
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </>
             ) : (
               <>
@@ -452,18 +467,34 @@ export default function StandardNav() {
               <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
 
               {isAuthenticated && user ? (
-                <div className="flex items-center justify-between px-3 py-2">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-col gap-1 px-1">
+                  <div className="flex items-center gap-2 px-3 py-2">
                     <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                    <span className="text-sm text-gray-800 dark:text-gray-200">{user.firstName || user.email}</span>
+                    <span className="text-sm text-gray-800 dark:text-gray-200 flex-1">{user.firstName || user.email}</span>
                   </div>
+                  <button
+                    onClick={() => navigateTo("/settings")}
+                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    data-testid="nav-mobile-settings"
+                  >
+                    <Settings className="h-4 w-4 opacity-60" />
+                    Settings
+                  </button>
+                  <button
+                    onClick={() => navigateTo("/organization-setup")}
+                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                  >
+                    <Building className="h-4 w-4 opacity-60" />
+                    Organization Setup
+                  </button>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={logout}
-                    className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white"
+                    className="w-full justify-start text-red-600 dark:text-red-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 h-10 px-4 gap-3"
                     data-testid="nav-mobile-signout"
                   >
+                    <LogOut className="h-4 w-4" />
                     Sign Out
                   </Button>
                 </div>
