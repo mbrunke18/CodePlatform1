@@ -121,7 +121,7 @@ export default function Homepage() {
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.22)", padding: "6px 18px", marginBottom: 36 }}>
               <span style={{ width: 6, height: 6, background: GOLD, borderRadius: "50%", display: "inline-block", animation: "hpBlink 2.5s ease infinite" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Execution OS · Now in Pilot</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
             </div>
 
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(42px, 5.2vw, 70px)", lineHeight: 1.05, color: "#fff", marginBottom: 12 }}>
@@ -138,13 +138,12 @@ export default function Homepage() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
               <a
-                href="/api/login"
-                target="_top"
+                href="/pilot-program"
                 style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "16px 36px", textDecoration: "none", transition: "all 0.25s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
               >
-                Request Pilot Access
+                Request Pilot
               </a>
               <button
                 onClick={() => document.getElementById("platform")?.scrollIntoView({ behavior: "smooth" })}
@@ -157,6 +156,20 @@ export default function Homepage() {
                   <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke={GOLD} strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </button>
+            </div>
+
+            {/* Three-stat strip */}
+            <div style={{ display: "flex", gap: 0, marginTop: 28, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 24 }}>
+              {[
+                { num: "12 min", label: "Execution speed once live" },
+                { num: "2–4 wk", label: "Time to full operation" },
+                { num: "170+", label: "Playbooks ready at go-live" },
+              ].map((s, i) => (
+                <div key={i} style={{ flex: 1, paddingRight: i < 2 ? 24 : 0, borderRight: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none", paddingLeft: i > 0 ? 24 : 0 }}>
+                  <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: GOLD, lineHeight: 1, marginBottom: 4 }}>{s.num}</div>
+                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>{s.label}</div>
+                </div>
+              ))}
             </div>
 
             {/* Who it's for + Social Proof */}
@@ -772,13 +785,12 @@ export default function Homepage() {
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center" }}>
               <a
-                href="/api/login"
-                target="_top"
+                href="/pilot-program"
                 style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "18px 44px", textDecoration: "none", transition: "all 0.25s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
               >
-                Request Pilot Access
+                Request Pilot
               </a>
               <button
                 onClick={() => go("/try-demo")}
@@ -790,7 +802,7 @@ export default function Homepage() {
               </button>
             </div>
             <div style={{ marginTop: 40, display: "flex", alignItems: "center", justifyContent: "center", gap: 32 }}>
-              {(["No contract required", "12-minute onboarding", "Full playbook access"] as string[]).map((t, i) => (
+              {(["Fortune 500 validated", "2–4 week implementation", "170 playbooks at go-live"] as string[]).map((t, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL_LIGHT }} />
                   <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>{t}</span>
