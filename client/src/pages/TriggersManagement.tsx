@@ -7,6 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Switch } from '@/components/ui/switch';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -43,6 +44,8 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [selectedTrigger, setSelectedTrigger] = useState<any>(null);
+  const [sheetMode, setSheetMode] = useState<'view' | 'edit'>('view');
   const { toast } = useToast();
   const searchString = useSearch();
 
@@ -211,8 +214,23 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 onCheckedChange={(isActive) => toggleTriggerMutation.mutate({ id: trigger.id, isActive })}
                               />
                             </div>
-                            <Button variant="ghost" size="icon" style={{ color: NAVY }}>
-                              <Settings className="w-4 h-4" />
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, border: "1px solid #E8E4DC" }}
+                              onClick={() => { setSelectedTrigger(trigger); setSheetMode('view'); }}
+                            >
+                              <Eye className="w-3.5 h-3.5 mr-1.5" />
+                              View
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.3)" }}
+                              onClick={() => { setSelectedTrigger(trigger); setSheetMode('edit'); }}
+                            >
+                              <Settings className="w-3.5 h-3.5 mr-1.5" />
+                              Edit
                             </Button>
                           </div>
                         </div>
