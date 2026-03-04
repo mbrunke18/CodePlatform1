@@ -154,9 +154,17 @@ export default function OnboardingWizard() {
       <div style={{ background: NAVY, padding: "0 48px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)`, backgroundSize: "44px 44px" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto", padding: "40px 0 36px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-            <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Phase 1 of 3 — Foundation</span>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Phase 1 of 3 — Foundation</span>
+            </div>
+            <button
+              onClick={() => completeOnboardingMutation.mutate()}
+              disabled={completeOnboardingMutation.isPending}
+              style={{ background: "transparent", border: "1px solid rgba(201,168,76,0.4)", color: "rgba(201,168,76,0.85)", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "8px 18px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
+              {completeOnboardingMutation.isPending ? "Saving..." : "Skip to Platform →"}
+            </button>
           </div>
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,3.5vw,42px)", color: "#fff", marginBottom: 8, lineHeight: 1.1 }}>
             Building Your <em style={{ fontStyle: "italic", color: GOLD_LT }}>Execution Foundation</em>
@@ -517,6 +525,11 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
             <ArrowRight size={18} />
           </button>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>About 20 minutes</div>
+          <button
+            onClick={onSkip}
+            style={{ background: "transparent", border: "none", color: "rgba(255,255,255,0.35)", fontSize: 12, fontWeight: 500, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
+            Skip for now
+          </button>
         </div>
 
         <div style={{ marginTop: 48, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 48 }}>

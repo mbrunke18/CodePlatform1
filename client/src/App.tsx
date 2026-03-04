@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -192,10 +192,15 @@ function PageLoader() {
 function OnboardingGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, needsOnboarding, isLoading } = useAuth();
   const [location, setLocation] = useLocation();
+  const hasRedirected = useRef(false);
 
   useEffect(() => {
-    if (!isLoading && isAuthenticated && needsOnboarding && location !== "/onboarding") {
+    if (!isLoading && isAuthenticated && needsOnboarding && location !== "/onboarding" && !hasRedirected.current) {
+      hasRedirected.current = true;
       setLocation("/onboarding");
+    }
+    if (location === "/onboarding") {
+      hasRedirected.current = true;
     }
   }, [isAuthenticated, needsOnboarding, isLoading, location, setLocation]);
 
