@@ -29,9 +29,39 @@ import {
   XCircle,
   Calendar,
   Tag,
-  Info
+  Info,
+  Database,
+  BarChart2,
+  BookOpen
 } from 'lucide-react';
 import { format } from 'date-fns';
+
+function formatOperator(op: string): string {
+  switch (op) {
+    case 'gte': return '≥';
+    case 'lte': return '≤';
+    case 'gt': return '>';
+    case 'lt': return '<';
+    case 'eq': return '=';
+    case 'drop': return 'drops ≥';
+    case 'spike': return 'spikes ≥';
+    case 'increase': return 'increases ≥';
+    case 'decrease': return 'decreases ≥';
+    default: return op;
+  }
+}
+
+function parseConditionText(conditions: any, description: string): string {
+  if (!conditions) return description;
+  try {
+    const c = typeof conditions === 'string' ? JSON.parse(conditions) : conditions;
+    if (c.field && c.operator && c.value !== undefined) {
+      const field = String(c.field).replace(/_/g, ' ');
+      return `${field} ${formatOperator(c.operator)} ${c.value}${typeof c.value === 'number' && c.operator === 'drop' ? '%' : ''}`;
+    }
+  } catch {}
+  return description;
+}
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -49,6 +79,12 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
   const { data: triggersData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
+  });
+
+  const { data: signalData } = useQuery<any[]>({
+    queryKey: ['/api/trigger-signals', viewTrigger?.category],
+    queryFn: () => fetch(`/api/trigger-signals?category=${encodeURIComponent(viewTrigger?.category || '')}`).then(r => r.json()),
+    enabled: !!viewTrigger?.category,
   });
 
   const toggleTriggerMutation = useMutation({
@@ -246,9 +282,9 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           <div className="space-y-2">
                             <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
                               <Target className="w-3.5 h-3.5 mr-2" style={{ color: GOLD }} />
-                              Condition
+                              Trigger Condition
                             </div>
-                            <p className="text-sm font-medium text-gray-800">{trigger.condition || trigger.description}</p>
+                            <p className="text-sm font-medium text-gray-800">{parseConditionText(trigger.conditions, trigger.description)}</p>
                           </div>
                           <div className="space-y-2">
                             <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
@@ -357,13 +393,25 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   <p className="text-sm text-gray-700 leading-relaxed">{viewTrigger.description}</p>
                 </div>
 
-                {/* Condition */}
+                {/* Trigger Condition — parsed from conditions JSON */}
                 <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                   <div className="flex items-center gap-2 mb-2">
                     <Target className="w-3.5 h-3.5" style={{ color: GOLD }} />
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Trigger Condition</span>
                   </div>
-                  <p className="text-sm font-medium text-gray-800">{viewTrigger.condition || viewTrigger.description}</p>
+                  <p className="text-sm font-semibold" style={{ color: NAVY }}>{parseConditionText(viewTrigger.conditions, viewTrigger.description)}</p>
+                  {viewTrigger.conditions && (() => {
+                    try {
+                      const c = typeof viewTrigger.conditions === 'string' ? JSON.parse(viewTrigger.conditions) : viewTrigger.conditions;
+                      return (
+                        <div className="mt-3 grid grid-cols-3 gap-2">
+                          {c.field && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Data Field</p><p className="text-xs font-semibold text-gray-700">{String(c.field).replace(/_/g, ' ')}</p></div>}
+                          {c.operator && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Operator</p><p className="text-xs font-semibold" style={{ color: TEAL }}>{formatOperator(c.operator)}</p></div>}
+                          {c.value !== undefined && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Threshold</p><p className="text-xs font-semibold" style={{ color: NAVY }}>{String(c.value)}</p></div>}
+                        </div>
+                      );
+                    } catch { return null; }
+                  })()}
                 </div>
 
                 {/* Metadata grid */}
@@ -383,6 +431,48 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     </div>
                   ))}
                 </div>
+
+                {/* Signal Data Points */}
+                {signalData && signalData.length > 0 && (
+                  <div className="p-4 border border-[#E8E4DC]">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Database className="w-3.5 h-3.5" style={{ color: TEAL }} />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Data Points Monitored</span>
+                      <span className="text-[9px] bg-[#E8F5EF] text-[#2B8A6E] font-bold px-2 py-0.5 rounded">{signalData.length} signals</span>
+                    </div>
+                    <div className="space-y-2">
+                      {signalData.map((sig: any, i: number) => (
+                        <div key={i} className="flex items-center justify-between p-2 bg-[#F8F7F4] border border-[#E8E4DC] rounded text-xs">
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-800 truncate">{sig.name}</p>
+                            {sig.description && <p className="text-gray-500 text-[10px] truncate">{sig.description}</p>}
+                          </div>
+                          <div className="flex items-center gap-2 ml-3 flex-shrink-0">
+                            <span className="font-mono text-[10px] bg-white border border-[#E8E4DC] px-1.5 py-0.5 rounded" style={{ color: TEAL }}>
+                              {formatOperator(sig.operator)} {sig.thresholdValue ?? sig.threshold_value}
+                            </span>
+                            {sig.signalType && <span className="text-[9px] uppercase font-bold text-gray-400">{sig.signalType ?? sig.signal_type}</span>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Recommended Playbooks */}
+                {viewTrigger.recommendedPlaybooks && Array.isArray(viewTrigger.recommendedPlaybooks) && viewTrigger.recommendedPlaybooks.length > 0 && (
+                  <div className="p-4 border border-[#E8E4DC]">
+                    <div className="flex items-center gap-2 mb-3">
+                      <BookOpen className="w-3.5 h-3.5" style={{ color: GOLD }} />
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Linked Playbooks</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {viewTrigger.recommendedPlaybooks.map((pb: string, i: number) => (
+                        <Badge key={i} variant="outline" style={{ border: `1px solid ${GOLD}`, color: NAVY, fontSize: 10 }}>{pb}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Action */}
                 <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">

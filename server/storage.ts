@@ -304,6 +304,9 @@ export interface IStorage {
   updateExecutiveTrigger(triggerId: string, updates: Partial<InsertExecutiveTrigger>): Promise<ExecutiveTrigger>;
   updateTriggerStatus(triggerId: string, status: 'green' | 'yellow' | 'red', currentValue?: string): Promise<ExecutiveTrigger>;
   
+  // Trigger Signals (by category for UI display)
+  getExecutiveTriggerSignals(category?: string): Promise<TriggerSignal[]>;
+
   // Trigger Monitoring History operations
   createTriggerMonitoringHistory(history: InsertTriggerMonitoringHistory): Promise<TriggerMonitoringHistory>;
   getTriggerMonitoringHistory(triggerId: string): Promise<TriggerMonitoringHistory[]>;
@@ -1622,6 +1625,14 @@ export class DatabaseStorage implements IStorage {
       .from(triggerMonitoringHistory)
       .where(eq(triggerMonitoringHistory.triggerId, triggerId))
       .orderBy(desc(triggerMonitoringHistory.timestamp));
+  }
+
+  async getExecutiveTriggerSignals(category?: string): Promise<TriggerSignal[]> {
+    let query = db.select().from(triggerSignals);
+    if (category) {
+      return await db.select().from(triggerSignals).where(eq(triggerSignals.category, category)).orderBy(triggerSignals.priority, triggerSignals.name);
+    }
+    return await query.orderBy(triggerSignals.category, triggerSignals.name);
   }
 
   // Playbook-Trigger Association operations

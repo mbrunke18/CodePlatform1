@@ -4281,6 +4281,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Trigger Signals — data points by category
+  app.get('/api/trigger-signals', requireAuth, async (req: any, res) => {
+    try {
+      const { category } = req.query;
+      const signals = await storage.getExecutiveTriggerSignals(category);
+      res.json(signals);
+    } catch (error) {
+      console.error('Error fetching trigger signals:', error);
+      res.status(500).json({ error: 'Failed to fetch trigger signals' });
+    }
+  });
+
   // Trigger Monitoring History routes
   app.get('/api/trigger-history/:triggerId', async (req: any, res) => {
     try {
