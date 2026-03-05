@@ -79,6 +79,7 @@ export default function StandardNav() {
       heading: "Access",
       links: [
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Scripted simulation — no login required" },
+        { label: "Live Playbook Examples", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in required" },
         { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
         { label: "Sign In", path: "/get-started", icon: LogIn, description: "Access your live platform" },
       ],

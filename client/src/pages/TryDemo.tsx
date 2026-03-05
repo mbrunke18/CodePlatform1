@@ -508,6 +508,24 @@ export default function TryDemo() {
           {/* Scenario Selection */}
           {currentPhase === 'select' && (
             <div className="space-y-12">
+
+              {/* Playbook Examples Callout */}
+              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: 8, padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
+                  <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, margin: 0 }}>
+                    Prefer to read first?{' '}
+                    <span style={{ fontWeight: 400, color: MUTED }}>Explore 3 fully enriched playbooks — 4-phase plans, comms assets, and risk grids included. No login required.</span>
+                  </p>
+                </div>
+                <button
+                  onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                  style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: 'transparent', border: '1px solid rgba(201,168,76,0.4)', borderRadius: 6, padding: '6px 14px', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
+                >
+                  View Playbook Examples →
+                </button>
+              </div>
+
               <div className="grid md:grid-cols-2 gap-6">
                 {SCENARIOS.map((scenario) => (
                   <div
