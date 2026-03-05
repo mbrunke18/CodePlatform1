@@ -1200,6 +1200,13 @@ export default function TryDemo() {
                       <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
                       <p className="text-sm font-bold text-[#0A0F2E]" style={CG}>Pre-Built Playbooks</p>
                       <p className="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Across 9 Strategic Domains</p>
+                      <button
+                        onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                        className="mt-3 w-full text-[10px] font-bold text-[#0A0F2E] border border-[#C9A84C] rounded px-3 py-1.5 hover:bg-[#C9A84C]/10 transition-colors flex items-center justify-center gap-1"
+                      >
+                        <BookOpen className="h-3 w-3" />
+                        View 3 Free Playbook Examples
+                      </button>
                     </CardContent>
                   </Card>
                 </div>
@@ -1262,6 +1269,115 @@ export default function TryDemo() {
                 </button>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Live Playbook Examples Section */}
+      <section style={{ background: NAVY, padding: '72px 24px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 20, padding: '4px 14px', marginBottom: 16 }}>
+              <BookOpen style={{ width: 12, height: 12, color: GOLD }} />
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD }}>Open Access</span>
+            </div>
+            <h2 style={{ fontSize: 30, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", marginBottom: 12 }}>
+              Explore Live Playbook Examples
+            </h2>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto', lineHeight: 1.6, fontWeight: 500 }}>
+              Three fully enriched playbooks — open to everyone. Each includes a 4-phase execution plan, pre-staged communications, risk indicators, and outcome benchmarks.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 40 }}>
+            {[
+              {
+                id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+                name: 'Aggressive Pricing Disruption',
+                description: 'Competitor cuts prices 30%+ or introduces a disruptive pricing model threatening your pipeline.',
+                type: 'Offensive',
+                typeColor: TEAL,
+                source: 'Bain Competitive Analysis',
+                stat: '91% pipeline retained',
+                context: 'when response is within 12 hours',
+                icon: TrendingDown,
+              },
+              {
+                id: 'da7df303-a5bd-4fc0-a8b7-492f8619c500',
+                name: 'AI Competitive Disruption',
+                description: 'A competitor deploys AI capability that fundamentally changes market dynamics in your category.',
+                type: 'Defensive',
+                typeColor: GOLD,
+                source: 'McKinsey Technology Adoption',
+                stat: 'Under 21 days',
+                context: 'vs. 94-day industry average',
+                icon: Brain,
+              },
+              {
+                id: '1a309274-6068-46f3-bb17-4303c184939c',
+                name: 'Compound: Geopolitical + Supply Chain',
+                description: 'Tariff escalations or sanctions that simultaneously disrupt supply chains and require financial restructuring.',
+                type: 'Compound',
+                typeColor: GOLD,
+                source: 'Deloitte Supply Chain Resilience',
+                stat: '$4.2M avoided',
+                context: 'per major disruption event',
+                icon: Building2,
+              },
+            ].map((pb) => {
+              const Icon = pb.icon;
+              return (
+                <div
+                  key={pb.id}
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 28, display: 'flex', flexDirection: 'column', gap: 16 }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Icon style={{ width: 18, height: 18, color: GOLD }} />
+                    </div>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: pb.typeColor, background: `${pb.typeColor}1A`, border: `1px solid ${pb.typeColor}40`, borderRadius: 4, padding: '2px 8px', whiteSpace: 'nowrap' }}>
+                      {pb.type}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 style={{ fontSize: 16, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", marginBottom: 8, lineHeight: 1.3 }}>{pb.name}</h3>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, fontWeight: 400 }}>{pb.description}</p>
+                  </div>
+
+                  <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 8, padding: '12px 14px' }}>
+                    <p style={{ fontSize: 18, fontWeight: 700, color: GOLD, marginBottom: 2 }}>{pb.stat}</p>
+                    <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{pb.context}</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 600, letterSpacing: '0.05em' }}>Based on: {pb.source}</p>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 'auto' }}>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                      {['4-Phase Plan', 'Comms Assets', 'Risk Grid', 'Outcome KPIs'].map(tag => (
+                        <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '2px 7px' }}>{tag}</span>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => { setLocation(`/playbook-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                      style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 8, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                    >
+                      View Full Playbook
+                      <ArrowRight style={{ width: 14, height: 14 }} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <button
+              onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+              style={{ padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
+            >
+              <BookOpen style={{ width: 14, height: 14 }} />
+              Browse All 170 Playbooks
+            </button>
           </div>
         </div>
       </section>
