@@ -84,7 +84,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 
 **Deployment:**
 - **Platform:** Replit Autoscale, custom domain `executeiq.io`.
-- **Build Strategy:** `dist/` is pre-built and committed; deployment runs `npm run start` directly.
+- **Build Strategy:** `dist/public/` (frontend) is pre-built and committed to git. Deployment build step runs only the fast server esbuild (~1 second): `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite ...`. This avoids the 25-second vite build that was timing out on deployment infrastructure. Do NOT change back to `["true"]` or `npm run build`.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
