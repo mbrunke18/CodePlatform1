@@ -6394,7 +6394,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
    *     summary: Get latest Future Readiness Index for organization
    *     tags: [Dynamic Strategy]
    */
-  app.get('/api/dynamic-strategy/readiness', async (req: any, res) => {
+  app.get('/api/dynamic-strategy/readiness', requireAuth, async (req: any, res) => {
     try {
       const { dynamicStrategyService } = await import('./services/dynamicStrategyService.js');
       const userId = getUserId(req);
@@ -6427,7 +6427,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
    *     summary: Trigger readiness score calculation
    *     tags: [Dynamic Strategy]
    */
-  app.post('/api/dynamic-strategy/readiness/calculate', async (req: any, res) => {
+  app.post('/api/dynamic-strategy/readiness/calculate', requireAuth, async (req: any, res) => {
     try {
       const { dynamicStrategyService } = await import('./services/dynamicStrategyService.js');
       const userId = getUserId(req);
@@ -6452,7 +6452,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
    *     summary: Get active weak signals for organization
    *     tags: [Dynamic Strategy]
    */
-  app.get('/api/dynamic-strategy/weak-signals', async (req: any, res) => {
+  app.get('/api/dynamic-strategy/weak-signals', requireAuth, async (req: any, res) => {
     try {
       const { weakSignals } = await import('@shared/schema');
       const { and, eq } = await import('drizzle-orm');
@@ -6489,7 +6489,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
    *     summary: Get Oracle intelligence patterns
    *     tags: [Dynamic Strategy]
    */
-  app.get('/api/dynamic-strategy/oracle-patterns', async (req: any, res) => {
+  app.get('/api/dynamic-strategy/oracle-patterns', requireAuth, async (req: any, res) => {
     try {
       const { oraclePatterns } = await import('@shared/schema');
       const userId = getUserId(req);
@@ -6520,7 +6520,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
    *     summary: Get consolidated system status for Command Center
    *     tags: [Dynamic Strategy]
    */
-  app.get('/api/dynamic-strategy/status', async (req: any, res) => {
+  app.get('/api/dynamic-strategy/status', requireAuth, async (req: any, res) => {
     try {
       const { dynamicStrategyService } = await import('./services/dynamicStrategyService.js');
       const userId = getUserId(req);
