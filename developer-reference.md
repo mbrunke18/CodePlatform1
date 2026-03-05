@@ -657,27 +657,34 @@ npm run build      # Builds to dist/ (~22 seconds)
 npm run start      # Serves pre-built dist/index.js
 ```
 
-**The `dist/` folder is committed to the repo.** Always run `npm run build` before publishing.
+**The `dist/public/` folder (frontend) is committed to the repo.** Always run `npm run build` locally before publishing so `dist/public/` is current.
 
 ### Deployment Platform
 - Replit Autoscale
 - Custom domain: `executeiq.io`
-- Start command: `npm run start` (no build step during deploy — avoids bundle timeout)
+- Build command: `esbuild server/index.ts` only (~1 second) — vite frontend build is skipped because `dist/public/` is pre-committed
+- Start command: `npm run start` → `node dist/index.js`
 - First customer org: `martybrunke` — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
 
-### Known `.replit` Issue — Run Before Every Publish
-The `.replit` file persistently resets to include a `build` step in the deployment block, which causes a bundle timeout during deploy. Before every publish, override it using the deployment config tool:
+### Deployment Build Strategy — IMPORTANT
+The full `npm run build` (vite + esbuild ~25 seconds) was timing out on Replit's deployment infrastructure. The fix: the deployment build step runs **only the fast server esbuild** (~1 second), while the frontend `dist/public/` is pre-committed to git.
 
+Current `.replit` deployment config:
+```toml
+[deployment]
+deploymentTarget = "autoscale"
+build = ["sh", "-c", "node_modules/.bin/esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+run = ["npm", "run", "start"]
+```
+
+**Do NOT change `build` back to `["true"]` or `["npm", "run", "build"]`.** If you ever need to reset via the deployment config tool:
 ```javascript
-// Run this via the agent before every publish:
 await deployConfig({
   deploymentTarget: "autoscale",
   run: ["npm", "run", "start"],
-  build: ["true"]   // "true" is a no-op — prevents bundle timeout
+  build: ["sh", "-c", "node_modules/.bin/esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
 });
 ```
-
-The API config takes precedence over `.replit` once set.
 
 ---
 
