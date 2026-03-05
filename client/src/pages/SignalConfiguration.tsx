@@ -89,7 +89,24 @@ export default function SignalConfiguration() {
   const triggeredDpIds = useMemo(() => {
     const set = new Set<string>();
     for (const t of (triggersData ?? []) as any[]) {
+      // Exact data-point match
       if (t.conditions?.field) set.add(t.conditions.field);
+      if (t.conditions?.dataPointId) set.add(t.conditions.dataPointId);
+      if (t.conditions?.metric) set.add(t.conditions.metric);
+      // Also map by dataPointIds array
+      if (Array.isArray(t.conditions?.dataPointIds)) {
+        for (const id of t.conditions.dataPointIds) set.add(id);
+      }
+    }
+    return set;
+  }, [triggersData]);
+
+  // Category-level trigger lookup: which categories have ANY trigger configured
+  const categoriesWithTriggers = useMemo(() => {
+    const set = new Set<string>();
+    for (const t of (triggersData ?? []) as any[]) {
+      const cat = t.category || t.signalCategory || t.signalCategoryId;
+      if (cat) set.add(cat);
     }
     return set;
   }, [triggersData]);
@@ -410,7 +427,12 @@ export default function SignalConfiguration() {
                               </span>
                               {hasTrigger && (
                                 <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
-                                  <Zap className="w-2.5 h-2.5" /> Trigger Set
+                                  <Zap className="w-2.5 h-2.5" /> Trigger Active
+                                </span>
+                              )}
+                              {!hasTrigger && activeCat && categoriesWithTriggers.has(activeCat.id) && (
+                                <span className="text-[9px] font-medium uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
+                                  <Zap className="w-2.5 h-2.5" /> Category Trigger
                                 </span>
                               )}
                             </div>
@@ -432,8 +454,26 @@ export default function SignalConfiguration() {
 
                           {/* Actions */}
                           <div className="flex items-center gap-3 flex-shrink-0">
-                            {/* Create trigger — visible on hover when no trigger yet */}
-                            {!hasTrigger && isEnabled && (
+                            {/* Exact data-point trigger exists */}
+                            {hasTrigger && (
+                              <Link href="/triggers-management">
+                                <button className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
+                                  <ArrowRight className="w-3 h-3" />
+                                  View Trigger
+                                </button>
+                              </Link>
+                            )}
+                            {/* Category has trigger(s) but no exact dp match */}
+                            {!hasTrigger && activeCat && categoriesWithTriggers.has(activeCat.id) && (
+                              <Link href="/triggers-management">
+                                <button className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider opacity-70 hover:opacity-100 transition-opacity" style={{ color: GOLD }}>
+                                  <ArrowRight className="w-3 h-3" />
+                                  View Triggers
+                                </button>
+                              </Link>
+                            )}
+                            {/* No trigger at all — show create on hover */}
+                            {!hasTrigger && isEnabled && activeCat && !categoriesWithTriggers.has(activeCat.id) && (
                               <button
                                 onClick={() => openWizardFor(activeCat.id)}
                                 className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5"
@@ -442,14 +482,6 @@ export default function SignalConfiguration() {
                                 <Plus className="w-3 h-3" />
                                 Create Trigger
                               </button>
-                            )}
-                            {hasTrigger && (
-                              <Link href="/triggers-management">
-                                <button className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
-                                  <ArrowRight className="w-3 h-3" />
-                                  View Trigger
-                                </button>
-                              </Link>
                             )}
                             <div className="flex items-center gap-2">
                               <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: isEnabled ? TEAL : '#9CA3AF' }}>

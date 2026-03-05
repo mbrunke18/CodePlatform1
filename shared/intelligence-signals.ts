@@ -2089,6 +2089,319 @@ export const SIGNAL_CATEGORIES: SignalCategory[] = [
         defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
       }
     ]
+  },
+
+  // ===== OPERATIONAL EXCELLENCE (18) =====
+  {
+    id: 'operational',
+    name: 'Operational Excellence',
+    shortName: 'Operations',
+    description: 'Monitor process efficiency, delivery velocity, quality metrics, and operational health across the enterprise',
+    icon: 'Settings',
+    color: '#7C3AED',
+    phase: 'internal',
+    refreshInterval: 3600,
+    recommendedPlaybooks: ['operational-turnaround', 'process-optimization', 'cost-efficiency-sprint', 'quality-recovery'],
+    dataPoints: [
+      {
+        id: 'ops_on_time_delivery',
+        name: 'On-Time Delivery Rate',
+        description: 'Percentage of projects, orders, or commitments delivered on schedule',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['erp', 'project-management', 'supply-chain-system'],
+        defaultThreshold: { operator: 'lt', value: 85, urgency: 'high' }
+      },
+      {
+        id: 'ops_defect_rate',
+        name: 'Defect / Error Rate',
+        description: 'Rate of defects, errors, or quality failures per unit output',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['quality-management-system', 'erp', 'customer-support'],
+        defaultThreshold: { operator: 'gt', value: 2, urgency: 'high' }
+      },
+      {
+        id: 'ops_process_cycle_time',
+        name: 'Process Cycle Time',
+        description: 'Average time to complete key operational processes end-to-end',
+        metricType: 'trend',
+        sources: ['bpm-system', 'erp', 'workflow-tools'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'medium' }
+      },
+      {
+        id: 'ops_capacity_utilization',
+        name: 'Capacity Utilization',
+        description: 'Percentage of available operational capacity being actively used',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['erp', 'manufacturing-system', 'crm'],
+        defaultThreshold: { operator: 'gt', value: 95, urgency: 'medium' }
+      },
+      {
+        id: 'ops_cost_per_unit',
+        name: 'Cost Per Unit / Transaction',
+        description: 'Cost efficiency of producing each unit or completing each transaction',
+        metricType: 'currency',
+        sources: ['erp', 'financial-system', 'cost-accounting'],
+        defaultThreshold: { operator: 'spike', value: 10, urgency: 'medium' }
+      },
+      {
+        id: 'ops_sla_compliance',
+        name: 'SLA Compliance Rate',
+        description: 'Percentage of service level agreements met across all customer commitments',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['servicenow', 'crm', 'helpdesk'],
+        defaultThreshold: { operator: 'lt', value: 95, urgency: 'high' }
+      },
+      {
+        id: 'ops_backlog_growth',
+        name: 'Backlog Growth Rate',
+        description: 'Rate at which unfulfilled orders, tickets, or tasks are accumulating',
+        metricType: 'trend',
+        sources: ['erp', 'project-management', 'servicenow'],
+        defaultThreshold: { operator: 'spike', value: 25, urgency: 'high' }
+      },
+      {
+        id: 'ops_workforce_productivity',
+        name: 'Workforce Productivity Index',
+        description: 'Output per employee or team relative to baseline targets',
+        metricType: 'score',
+        sources: ['hr-system', 'erp', 'project-management'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'medium' }
+      },
+      {
+        id: 'ops_system_uptime',
+        name: 'System Uptime / Availability',
+        description: 'Availability of critical operational systems and infrastructure',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['aws-cloudwatch', 'datadog', 'pagerduty'],
+        defaultThreshold: { operator: 'lt', value: 99, urgency: 'critical' }
+      },
+      {
+        id: 'ops_change_failure_rate',
+        name: 'Change Failure Rate',
+        description: 'Percentage of operational changes that result in incidents or rollbacks',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['devops-platform', 'servicenow', 'jira'],
+        defaultThreshold: { operator: 'gt', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'ops_incident_volume',
+        name: 'Operational Incident Volume',
+        description: 'Number of operational incidents, outages, or escalations per period',
+        metricType: 'count',
+        sources: ['pagerduty', 'servicenow', 'opsgenie'],
+        defaultThreshold: { operator: 'spike', value: 30, urgency: 'high' }
+      }
+    ]
+  },
+
+  // ===== AI GOVERNANCE (19) =====
+  {
+    id: 'ai_governance',
+    name: 'AI Governance',
+    shortName: 'AI Governance',
+    description: 'Monitor AI model performance, bias indicators, regulatory compliance, and enterprise AI adoption risk across all AI systems',
+    icon: 'Brain',
+    color: '#8B5CF6',
+    phase: 'internal',
+    refreshInterval: 7200,
+    recommendedPlaybooks: ['ai-governance-sprint', 'model-risk-response', 'ai-compliance-remediation', 'ai-disruption-defense'],
+    dataPoints: [
+      {
+        id: 'ai_model_accuracy_drift',
+        name: 'Model Accuracy Drift',
+        description: 'Degradation in AI model prediction accuracy relative to baseline performance',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['ml-monitoring', 'model-registry', 'data-platform'],
+        defaultThreshold: { operator: 'drop', value: 5, urgency: 'high' }
+      },
+      {
+        id: 'ai_bias_detection',
+        name: 'Bias Detection Alerts',
+        description: 'Statistically significant bias detected in AI model outputs across protected groups',
+        metricType: 'count',
+        sources: ['fairness-monitoring', 'model-audit', 'responsible-ai-platform'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'critical' }
+      },
+      {
+        id: 'ai_hallucination_rate',
+        name: 'LLM Hallucination Rate',
+        description: 'Rate at which generative AI systems produce factually incorrect or fabricated outputs',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['ai-monitoring', 'quality-assurance', 'human-review-pipeline'],
+        defaultThreshold: { operator: 'gt', value: 3, urgency: 'high' }
+      },
+      {
+        id: 'ai_regulatory_compliance',
+        name: 'AI Regulatory Compliance Score',
+        description: 'Compliance posture against EU AI Act, NIST AI RMF, and applicable AI regulations',
+        metricType: 'score',
+        sources: ['compliance-platform', 'legal-review', 'ai-audit'],
+        defaultThreshold: { operator: 'lt', value: 80, urgency: 'high' }
+      },
+      {
+        id: 'ai_data_privacy_exposure',
+        name: 'AI Data Privacy Exposure',
+        description: 'Risk that AI training or inference processes expose personally identifiable or regulated data',
+        metricType: 'score',
+        sources: ['dlp', 'data-governance-platform', 'privacy-management'],
+        defaultThreshold: { operator: 'gt', value: 40, urgency: 'critical' }
+      },
+      {
+        id: 'ai_adoption_velocity',
+        name: 'Shadow AI Adoption Rate',
+        description: 'Rate of unsanctioned AI tool adoption across the enterprise outside governance frameworks',
+        metricType: 'trend',
+        sources: ['network-monitoring', 'endpoint-security', 'saas-management'],
+        defaultThreshold: { operator: 'spike', value: 20, urgency: 'high' }
+      },
+      {
+        id: 'ai_model_availability',
+        name: 'AI System Availability',
+        description: 'Uptime and availability of production AI systems and APIs',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['aws-cloudwatch', 'ml-ops-platform', 'api-monitoring'],
+        defaultThreshold: { operator: 'lt', value: 99, urgency: 'critical' }
+      },
+      {
+        id: 'ai_cost_overrun',
+        name: 'AI Infrastructure Cost Variance',
+        description: 'Deviation of AI compute and API costs from approved budget baselines',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['cloud-cost-management', 'finops-platform', 'erp'],
+        defaultThreshold: { operator: 'gt', value: 20, urgency: 'medium' }
+      },
+      {
+        id: 'ai_third_party_risk',
+        name: 'AI Vendor Risk Signals',
+        description: 'Risk indicators from third-party AI providers including outages, policy changes, or security incidents',
+        metricType: 'count',
+        sources: ['vendor-monitoring', 'threat-intel', 'news-api'],
+        defaultThreshold: { operator: 'gte', value: 1, urgency: 'high' }
+      },
+      {
+        id: 'ai_decision_audit_gap',
+        name: 'AI Decision Audit Coverage',
+        description: 'Percentage of high-stakes AI decisions that lack full audit trail or explainability documentation',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['model-registry', 'audit-logging', 'governance-platform'],
+        defaultThreshold: { operator: 'gt', value: 10, urgency: 'high' }
+      }
+    ]
+  },
+
+  // ===== BRAND & REPUTATION (20) =====
+  {
+    id: 'brand_reputation',
+    name: 'Brand & Reputation',
+    shortName: 'Brand',
+    description: 'Monitor brand equity, media sentiment, executive reputation, and emerging reputation risk events across all channels',
+    icon: 'Star',
+    color: '#F59E0B',
+    phase: 'external',
+    refreshInterval: 1800,
+    recommendedPlaybooks: ['crisis-communication', 'brand-recovery', 'reputation-defense', 'executive-comms-sprint'],
+    dataPoints: [
+      {
+        id: 'brand_sentiment_score',
+        name: 'Overall Brand Sentiment Score',
+        description: 'Aggregated sentiment across news, social media, forums, and review platforms',
+        metricType: 'score',
+        sources: ['brandwatch', 'sprinklr', 'meltwater', 'mention'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'brand_media_volume_spike',
+        name: 'Negative Media Volume Spike',
+        description: 'Sudden increase in negative news mentions or press coverage',
+        metricType: 'count',
+        sources: ['meltwater', 'cision', 'google-news-api'],
+        defaultThreshold: { operator: 'spike', value: 50, urgency: 'critical' }
+      },
+      {
+        id: 'brand_social_virality',
+        name: 'Negative Viral Content Risk',
+        description: 'Detection of brand-related content trending negatively on social platforms',
+        metricType: 'score',
+        sources: ['twitter-api', 'tiktok-monitoring', 'reddit-api', 'brandwatch'],
+        defaultThreshold: { operator: 'gt', value: 70, urgency: 'critical' }
+      },
+      {
+        id: 'brand_review_score_drop',
+        name: 'Customer Review Score Drop',
+        description: 'Decline in average ratings across G2, Glassdoor, Trustpilot, Google, or app stores',
+        metricType: 'trend',
+        sources: ['review-aggregator', 'g2', 'trustpilot', 'glassdoor'],
+        defaultThreshold: { operator: 'drop', value: 0.5, urgency: 'high' }
+      },
+      {
+        id: 'brand_executive_reputation',
+        name: 'Executive Reputation Signals',
+        description: 'Negative press, social criticism, or regulatory scrutiny directed at named executives',
+        metricType: 'count',
+        sources: ['news-monitoring', 'social-listening', 'regulatory-filings'],
+        defaultThreshold: { operator: 'gte', value: 3, urgency: 'high' }
+      },
+      {
+        id: 'brand_share_of_voice',
+        name: 'Share of Voice vs Competitors',
+        description: 'Proportion of total industry media mentions captured by this brand relative to competitors',
+        metricType: 'percentage',
+        unit: '%',
+        sources: ['meltwater', 'cision', 'brandwatch'],
+        defaultThreshold: { operator: 'drop', value: 5, urgency: 'medium' }
+      },
+      {
+        id: 'brand_employee_sentiment',
+        name: 'Employer Brand Sentiment',
+        description: 'Employee perception of the company as an employer on public platforms',
+        metricType: 'score',
+        sources: ['glassdoor', 'indeed', 'linkedin', 'blind-app'],
+        defaultThreshold: { operator: 'drop', value: 0.3, urgency: 'medium' }
+      },
+      {
+        id: 'brand_crisis_indicators',
+        name: 'Brand Crisis Early Warning',
+        description: 'Composite signal aggregating multiple weak signals into an emerging crisis probability score',
+        metricType: 'score',
+        sources: ['brandwatch', 'meltwater', 'social-listening', 'news-api'],
+        defaultThreshold: { operator: 'gte', value: 65, urgency: 'critical' }
+      },
+      {
+        id: 'brand_nps_trend',
+        name: 'Net Promoter Score Trend',
+        description: 'Direction and velocity of NPS movement across customer segments',
+        metricType: 'trend',
+        sources: ['qualtrics', 'medallia', 'delighted', 'crm'],
+        defaultThreshold: { operator: 'drop', value: 10, urgency: 'high' }
+      },
+      {
+        id: 'brand_partnership_perception',
+        name: 'Partner & Investor Perception',
+        description: 'Sentiment signals from investor communities, analyst coverage, and strategic partners',
+        metricType: 'score',
+        sources: ['seeking-alpha', 'analyst-reports', 'investor-forums'],
+        defaultThreshold: { operator: 'drop', value: 8, urgency: 'high' }
+      },
+      {
+        id: 'brand_search_sentiment',
+        name: 'Search Query Sentiment',
+        description: 'Sentiment of top search queries and autocomplete patterns associated with the brand',
+        metricType: 'trend',
+        sources: ['google-search-console', 'semrush', 'ahrefs'],
+        defaultThreshold: { operator: 'drop', value: 15, urgency: 'medium' }
+      }
+    ]
   }
 ];
 

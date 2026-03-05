@@ -234,13 +234,13 @@ export default function Dashboard() {
                 />
                 <PhaseCard
                   phase="DETECT"
-                  title="Monitor Signals"
-                  description="Real-time signal detection and alerts"
+                  title="Signal Configuration"
+                  description="20 categories · 248+ data points · live triggers"
                   icon={Radio}
                   color="navy"
-                  link="/signal-intelligence"
+                  link="/signal-configuration"
                   metrics={[
-                    { label: 'AI Modules', value: '5 Active', highlight: true },
+                    { label: 'Signal Categories', value: '20', highlight: true },
                     { label: 'Weak Signals', value: `${weakSignals.length} detected` }
                   ]}
                 />
