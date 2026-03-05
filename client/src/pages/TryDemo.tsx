@@ -751,15 +751,29 @@ export default function TryDemo() {
           {/* CHAOS PHASE */}
           {currentPhase === 'chaos' && selectedScenario && (
             <div className="max-w-5xl mx-auto">
-              <div className="mb-6 flex items-center justify-between">
+
+              {/* Context banner — must be immediately clear this is the pain state */}
+              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.4)', borderRadius: 10, padding: '18px 24px', marginBottom: 24, display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <div style={{ width: 40, height: 40, background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <AlertTriangle style={{ width: 20, height: 20, color: '#f87171' }} />
+                </div>
+                <div>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Execution OS</p>
+                  <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, margin: 0 }}>
+                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a crisis hits and no playbook exists.
+                  </p>
+                </div>
+                <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto', flexShrink: 0 }}>
+                  <XCircle className="h-4 w-4 mr-1" />
+                  Exit
+                </Button>
+              </div>
+
+              <div className="mb-4 flex items-center justify-between">
                 <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
                   <AlertTriangle className="h-3 w-3 mr-1" />
-                  CRISIS IN PROGRESS
+                  CRISIS IN PROGRESS — NO PLAYBOOK ACTIVE
                 </Badge>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-800 hover:text-white">
-                  <XCircle className="h-4 w-4 mr-1" />
-                  Exit Demo
-                </Button>
               </div>
 
               <div className="grid lg:grid-cols-3 gap-6">
