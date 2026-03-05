@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import DecisionVelocityDashboard from '@/components/DecisionVelocityDashboard';
+import ExecutionIntelligenceDashboard from '@/components/ExecutionIntelligenceDashboard';
 import { 
   Shield, 
   Zap, 
@@ -270,6 +271,7 @@ export default function ExecutiveDashboard() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 py-12 space-y-8">
+          <ExecutionIntelligenceDashboard />
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList style={{ background: "#E8E4DC", padding: 4 }} className="grid grid-cols-4 mb-8 rounded-none">
               <TabsTrigger value="overview" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] text-[10px] font-bold uppercase tracking-widest">

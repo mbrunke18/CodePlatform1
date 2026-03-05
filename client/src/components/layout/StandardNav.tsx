@@ -268,6 +268,10 @@ export default function StandardNav() {
                       <Building className="h-4 w-4 mr-2 opacity-60" />
                       Organization Setup
                     </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => navigateTo("/admin/customer-health")} className="cursor-pointer">
+                      <BarChart3 className="h-4 w-4 mr-2 opacity-60" />
+                      Customer Health
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-600 dark:text-red-400" data-testid="nav-logout">
                       <LogOut className="h-4 w-4 mr-2" />
