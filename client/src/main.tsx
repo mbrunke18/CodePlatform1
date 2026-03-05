@@ -2,6 +2,22 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+// Suppress known third-party scroll-lock errors (react-remove-scroll / Radix UI)
+// that fire when a dialog/sheet/popover closes while a scroll event is still in-flight.
+// Uses capture phase so this runs before Vite's dev overlay listener.
+const suppressScrollLockError = (event: ErrorEvent) => {
+  const msg = event.message || '';
+  if (
+    msg.includes('getComputedStyle') ||
+    msg.includes('parameter 1 is not of type') ||
+    msg.includes("not of type 'Element'")
+  ) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+};
+window.addEventListener('error', suppressScrollLockError, true);
+
 // Initialize Google Analytics if measurement ID is configured
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 if (GA_MEASUREMENT_ID) {

@@ -1,10 +1,49 @@
-import { useEffect, useRef, lazy, Suspense } from "react";
+import { useEffect, useRef, lazy, Suspense, Component, ReactNode } from "react";
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Loader2 } from "lucide-react";
+import { Loader2, RefreshCw, Home } from "lucide-react";
+
+interface ErrorBoundaryState { hasError: boolean; error: Error | null; }
+class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error: Error, info: { componentStack: string }) {
+    console.error('[ErrorBoundary] Caught:', error, info.componentStack);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ minHeight: '100vh', background: '#F8F7F4', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'system-ui, sans-serif' }}>
+          <div style={{ maxWidth: 480, width: '100%', padding: '2.5rem', background: '#fff', border: '1px solid #E8E4DC', borderTop: '4px solid #C9A84C', borderRadius: 4, textAlign: 'center' }}>
+            <div style={{ width: 48, height: 48, background: 'rgba(201,168,76,0.12)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+              <RefreshCw size={22} color="#C9A84C" />
+            </div>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0A0F2E', margin: '0 0 0.5rem' }}>Page Encountered an Error</h2>
+            <p style={{ fontSize: '0.875rem', color: '#6B7280', margin: '0 0 1.75rem', lineHeight: 1.6 }}>Something went wrong loading this page. This has been logged. Use the buttons below to recover.</p>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+              <button onClick={() => window.location.href = '/'} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.6rem 1.25rem', background: '#0A0F2E', color: '#fff', border: 'none', borderRadius: 4, fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
+                <Home size={14} /> Return Home
+              </button>
+              <button onClick={() => { this.setState({ hasError: false, error: null }); window.location.reload(); }} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.6rem 1.25rem', background: '#fff', color: '#0A0F2E', border: '1px solid #E8E4DC', borderRadius: 4, fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
+                <RefreshCw size={14} /> Reload Page
+              </button>
+            </div>
+          </div>
+          <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#9CA3AF' }}>VaughnMartin Execution OS · Error Recovery</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 import NotFound from "@/pages/not-found";
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -483,21 +522,25 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <CustomerProvider>
-        <DynamicStrategyProvider>
-          <OnboardingProvider>
-            <ThemeProvider>
-              <TooltipProvider>
-                <Toaster />
-                <OnboardingOverlay />
-                <Router />
-              </TooltipProvider>
-            </ThemeProvider>
-          </OnboardingProvider>
-        </DynamicStrategyProvider>
-      </CustomerProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <CustomerProvider>
+          <DynamicStrategyProvider>
+            <OnboardingProvider>
+              <ThemeProvider>
+                <TooltipProvider>
+                  <Toaster />
+                  <OnboardingOverlay />
+                  <ErrorBoundary>
+                    <Router />
+                  </ErrorBoundary>
+                </TooltipProvider>
+              </ThemeProvider>
+            </OnboardingProvider>
+          </DynamicStrategyProvider>
+        </CustomerProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
