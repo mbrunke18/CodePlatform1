@@ -145,20 +145,22 @@ export default function PlaybookDetail() {
   const { toast } = useToast();
   const { isAuthenticated, login, user } = useAuth();
 
-  const { data: performance } = useQuery<any>({
-    queryKey: ['/api/playbook-performance', id],
-    queryFn: () => fetch(`/api/playbook-performance/${id}`).then(r => r.json()),
-    enabled: !!id && !!user,
-  });
-
   const { data: organizations = [] } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
   });
   const organizationId = organizations[0]?.id;
 
+  const isPlaybookNumber = /^\d+$/.test(id || '');
+
   const { data: playbookData, isLoading } = useQuery<any>({
     queryKey: ['/api/playbook-library', id],
     queryFn: async () => {
+      if (isPlaybookNumber) {
+        const response = await fetch(`/api/playbook-library/by-number/${id}`);
+        if (!response.ok) throw new Error('Failed to fetch playbook');
+        const data = await response.json();
+        return { playbook: data };
+      }
       const response = await fetch(`/api/playbook-library/${id}`);
       if (!response.ok) throw new Error('Failed to fetch playbook');
       return response.json();
@@ -167,18 +169,25 @@ export default function PlaybookDetail() {
   });
 
   const playbook = playbookData?.playbook;
+  const playbookUuid = playbook?.id;
   const isSampleView = SAMPLE_PLAYBOOK_NAMES.has(playbook?.name || "") && !isAuthenticated;
 
+  const { data: performance } = useQuery<any>({
+    queryKey: ['/api/playbook-performance', playbookUuid],
+    queryFn: () => fetch(`/api/playbook-performance/${playbookUuid}`).then(r => r.json()),
+    enabled: !!playbookUuid && !!user,
+  });
+
   const { data: readiness } = useQuery<any>({
-    queryKey: ['/api/playbook-library', id, 'readiness', { organizationId }],
+    queryKey: ['/api/playbook-library', playbookUuid, 'readiness', { organizationId }],
     queryFn: async () => {
       const response = await fetch(
-        `/api/playbook-library/${id}/readiness?organizationId=${organizationId}`
+        `/api/playbook-library/${playbookUuid}/readiness?organizationId=${organizationId}`
       );
       if (!response.ok) return null;
       return response.json();
     },
-    enabled: !!id && !!organizationId,
+    enabled: !!playbookUuid && !!organizationId,
   });
 
   const { data: users = [] } = useQuery<any[]>({
@@ -188,7 +197,7 @@ export default function PlaybookDetail() {
 
   const activatePlaybookMutation = useMutation({
     mutationFn: async () => {
-      const response = await apiRequest('POST', `/api/playbook-library/${id}/activate`, {
+      const response = await apiRequest('POST', `/api/playbook-library/${playbookUuid}/activate`, {
         scenarioId: `scenario-${Date.now()}`,
       });
       return response.json();

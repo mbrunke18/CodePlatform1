@@ -719,3 +719,34 @@ Seeding logic is in `server/index.ts` as an additive migration:
 ---
 
 *This file documents the state of the codebase as of March 2026. Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
+
+---
+
+## 22. Playbook ID Strategy — Stable vs. Environment-Specific UUIDs
+
+**Problem solved (March 2026):** The production and development databases seed playbooks with different UUIDs because `gen_random_uuid()` runs at insert time. Any code that hardcodes a UUID will fail in one environment.
+
+**Solution — use playbook numbers:**
+- Playbook numbers (`playbookNumber` column) are deterministic and identical across all environments.
+- The API supports both lookup strategies:
+  - By UUID: `GET /api/playbook-library/:uuid` → returns `{ playbook: {...} }`
+  - By number: `GET /api/playbook-library/by-number/:number` → returns flat `{ id, name, ... }`
+
+**PlaybookDetail.tsx** handles both URL forms automatically:
+- `/playbook-library/7ef2ee68-...` → UUID path (standard)
+- `/playbook-library/5` → number path (resolved to UUID after fetch)
+- Detection: `const isPlaybookNumber = /^\d+$/.test(id || '');`
+- After fetch, `playbookUuid = playbook?.id` is used for all subsequent API calls (readiness, activate, drill, performance).
+
+**TryDemo.tsx free sample playbooks — stable number map:**
+| Playbook | Number | Name |
+|---|---|---|
+| 5 | Aggressive Pricing Disruption | Market Dynamics |
+| 12 | Customer Consolidation to Competitor | Market Dynamics |
+| 49 | SEC Investigation Notice | Regulatory & Compliance |
+| 65 | Ransomware Attack | Cyber & Technology |
+| 180 | AI Competitive Disruption | AI Governance |
+| 182 | Compound: Geopolitical + Supply Chain | Compound |
+
+**Rule going forward:** Never hardcode UUIDs in source code. Always use playbook numbers for cross-environment stable references.
+

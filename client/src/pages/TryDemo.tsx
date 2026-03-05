@@ -279,22 +279,22 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
 
 const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
   ransomware: {
-    id: '247962f9-e204-4e4a-8fc0-88ffe9d98265',
+    id: '65',
     name: 'Ransomware Attack',
     badge: 'Cyber & Technology',
   },
   competitor: {
-    id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+    id: '5',
     name: 'Aggressive Pricing Disruption',
     badge: 'Market Dynamics — Free Sample',
   },
   regulatory: {
-    id: '966f55d7-a83b-49cf-8f47-892d13bf2d43',
+    id: '49',
     name: 'SEC Investigation Notice',
     badge: 'Regulatory & Compliance',
   },
   'deal-risk': {
-    id: '410046aa-a8a7-4531-8ecb-d555c80e4b44',
+    id: '12',
     name: 'Customer Consolidation to Competitor',
     badge: 'Market Dynamics',
   },
@@ -1641,7 +1641,7 @@ export default function TryDemo() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 40 }}>
             {[
               {
-                id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+                id: '5',
                 name: 'Aggressive Pricing Disruption',
                 description: 'Competitor cuts prices 30%+ or introduces a disruptive pricing model threatening your pipeline.',
                 type: 'Offensive',
@@ -1652,7 +1652,7 @@ export default function TryDemo() {
                 icon: TrendingDown,
               },
               {
-                id: 'da7df303-a5bd-4fc0-a8b7-492f8619c500',
+                id: '180',
                 name: 'AI Competitive Disruption',
                 description: 'A competitor deploys AI capability that fundamentally changes market dynamics in your category.',
                 type: 'Defensive',
@@ -1663,7 +1663,7 @@ export default function TryDemo() {
                 icon: Brain,
               },
               {
-                id: '1a309274-6068-46f3-bb17-4303c184939c',
+                id: '182',
                 name: 'Compound: Geopolitical + Supply Chain',
                 description: 'Tariff escalations or sanctions that simultaneously disrupt supply chains and require financial restructuring.',
                 type: 'Compound',
