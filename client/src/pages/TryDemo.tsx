@@ -422,10 +422,10 @@ export default function TryDemo() {
   useEffect(() => {
     if (currentPhase === 'detect') {
       setDetectStep(0);
-      const t1 = setTimeout(() => setDetectStep(1), 2000);
-      const t2 = setTimeout(() => setDetectStep(2), 4500);
-      const t3 = setTimeout(() => setDetectStep(3), 7500);
-      const t4 = setTimeout(() => completeDetect(), 12000);
+      const t1 = setTimeout(() => setDetectStep(1), 1500);
+      const t2 = setTimeout(() => setDetectStep(2), 3500);
+      const t3 = setTimeout(() => setDetectStep(3), 6000);
+      const t4 = setTimeout(() => completeDetect(), 9000);
       return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
     }
   }, [currentPhase]);
@@ -1018,6 +1018,13 @@ export default function TryDemo() {
                           <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
                           <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 216+ SOURCES</span>
                         </div>
+                      </div>
+
+                      {/* Demo timeline note */}
+                      <div style={{ background: 'rgba(201,168,76,0.07)', borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '7px 18px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em' }}>DEMO MODE</span>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>—</span>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 216+ sources.</span>
                       </div>
 
                       <div style={{ padding: '20px 20px 24px' }}>
