@@ -1,191 +1,122 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
-import { useSearch } from 'wouter';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import {
-  AlertTriangle,
-  Activity,
-  Clock,
-  TrendingUp,
-  Target,
-  Settings,
-  Eye,
-  Zap,
-  Users,
-  Pause,
-  Plus,
-  Bell,
-  CheckCircle,
-  XCircle,
-  Calendar,
-  Tag,
-  Info,
-  Database,
-  BarChart2,
-  BookOpen,
-  ChevronRight,
-  Layers,
-  Radio
+  AlertTriangle, Activity, Clock, TrendingUp, Target, Settings,
+  Zap, Users, Pause, Plus, Bell, ChevronRight, ChevronLeft,
+  Database, BarChart2, BookOpen, Radio,
 } from 'lucide-react';
 import { format } from 'date-fns';
 
-function formatOperator(op: string): string {
+const NAVY = '#0A0F2E';
+const GOLD = '#C9A84C';
+const TEAL = '#2B8A6E';
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+const SEV_COLOR: Record<string, string> = {
+  critical: '#EF4444', high: '#F97316', medium: GOLD, low: '#6B7280',
+};
+
+function formatOp(op: string, val?: any): string {
+  const v = val !== undefined ? String(val) : '';
   switch (op) {
-    case 'gte': return '≥';
-    case 'lte': return '≤';
-    case 'gt': return '>';
-    case 'lt': return '<';
-    case 'eq': return '=';
-    case 'drop': return 'drops ≥';
-    case 'spike': return 'spikes ≥';
-    case 'increase': return 'increases ≥';
-    case 'decrease': return 'decreases ≥';
-    default: return op;
+    case 'gt':    return `rises above ${v}`;
+    case 'gte':   return `reaches ≥ ${v}`;
+    case 'lt':    return `drops below ${v}`;
+    case 'lte':   return `reaches ≤ ${v}`;
+    case 'eq':    return `equals ${v}`;
+    case 'spike': return `spikes by ${v}%`;
+    case 'drop':  return `drops by ${v}%`;
+    default:      return op ? `${op} ${v}` : v;
   }
 }
 
-function parseConditionText(conditions: any, description: string): string {
-  if (!conditions) return description;
-  try {
-    const c = typeof conditions === 'string' ? JSON.parse(conditions) : conditions;
-    if (c.field && c.operator && c.value !== undefined) {
-      const field = String(c.field).replace(/_/g, ' ');
-      return `${field} ${formatOperator(c.operator)} ${c.value}${typeof c.value === 'number' && c.operator === 'drop' ? '%' : ''}`;
-    }
-  } catch {}
-  return description;
+// Map trigger category ID → SIGNAL_CATEGORIES entry
+function resolveSignalCat(category: string) {
+  const c = (category || '').toLowerCase().replace(/-/g, '').replace(/_/g, '');
+  return SIGNAL_CATEGORIES.find(sc =>
+    sc.id.replace(/-/g, '').replace(/_/g, '') === c
+  );
 }
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-
-const METRIC_TYPE_COLORS: Record<string, string> = {
-  percentage: '#2B8A6E',
-  count: '#0A0F2E',
-  currency: '#C9A84C',
-  score: '#7C3AED',
-  boolean: '#6B7280',
-  text: '#6B7280',
-  trend: '#2563EB',
-};
-
-const CATEGORY_TO_SIGNALS: Record<string, string[]> = {
-  'supply-chain': ['supplychain', 'geopolitical'],
-  'supply_chain': ['supplychain'],
-  'security': ['cyber', 'technology'],
-  'cyber': ['cyber'],
-  'financial': ['financial', 'economic'],
-  'market': ['market', 'competitive'],
-  'competitive': ['competitive'],
-  'customer': ['customer'],
-  'talent': ['talent'],
-  'regulatory': ['regulatory'],
-  'innovation': ['innovation', 'technology'],
-  'technology': ['technology', 'innovation'],
-  'geopolitical': ['geopolitical'],
-  'economic': ['economic'],
-  'esg': ['esg'],
-  'media': ['media'],
-  'brand': ['media'],
-  'operational': ['execution'],
-  'execution': ['execution'],
-  'partnership': ['partnership'],
-  'behavior': ['behavior'],
-};
-
-function getCategorySignals(triggerCategory: string) {
-  const cat = (triggerCategory || '').toLowerCase().replace(/ /g, '-');
-  const ids = CATEGORY_TO_SIGNALS[cat] || [cat];
-  return SIGNAL_CATEGORIES.filter(sc => ids.includes(sc.id));
+// Find a data point by ID across all signal categories
+function findDataPoint(dpId: string) {
+  for (const cat of SIGNAL_CATEGORIES) {
+    const dp = cat.dataPoints.find(d => d.id === dpId);
+    if (dp) return { dp, cat };
+  }
+  return null;
 }
 
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [isWizardOpen, setIsWizardOpen] = useState(false);
-  const [editTriggerData, setEditTriggerData] = useState<any>(null);
-  const [viewTrigger, setViewTrigger] = useState<any>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const [filterStatus, setFilterStatus]             = useState<'all' | 'triggered' | 'active' | 'paused'>('all');
+  const [isWizardOpen, setIsWizardOpen]             = useState(false);
+  const [editTriggerData, setEditTriggerData]       = useState<any>(null);
+  const [viewTrigger, setViewTrigger]               = useState<any>(null);
   const { toast } = useToast();
-  const searchString = useSearch();
 
   const { data: triggersData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
   });
 
-  const { data: signalData } = useQuery<any[]>({
-    queryKey: ['/api/trigger-signals', viewTrigger?.category],
-    queryFn: () => fetch(`/api/trigger-signals?category=${encodeURIComponent(viewTrigger?.category || '')}`).then(r => r.json()),
-    enabled: !!viewTrigger?.category,
-  });
-
-  const toggleTriggerMutation = useMutation({
-    mutationFn: async ({ id, isActive }: { id: string; isActive: boolean }) => {
-      return await apiRequest('PUT', `/api/executive-triggers/${id}`, { isActive });
-    },
+  const toggleMutation = useMutation({
+    mutationFn: ({ id, isActive }: { id: string; isActive: boolean }) =>
+      apiRequest('PUT', `/api/executive-triggers/${id}`, { isActive }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
-      toast({ title: 'Trigger Updated', description: 'Monitoring status updated successfully.' });
-    }
+      toast({ title: 'Alert rule updated' });
+    },
   });
 
-  const allTriggers = (triggersData || []).map((trigger: any) => ({
-    ...trigger,
-    status: trigger.isActive ? (trigger.alertThreshold === 'red' ? 'triggered' : 'active') : 'paused',
+  const allTriggers = (triggersData ?? []).map((t: any) => ({
+    ...t,
+    status: t.isActive ? (t.alertThreshold === 'red' ? 'triggered' : 'active') : 'paused',
   }));
 
   const triggeredCount = allTriggers.filter(t => t.status === 'triggered').length;
-  const activeCount = allTriggers.filter(t => t.status === 'active').length;
-  const pausedCount = allTriggers.filter(t => t.status === 'paused').length;
+  const activeCount    = allTriggers.filter(t => t.status === 'active').length;
+  const pausedCount    = allTriggers.filter(t => t.status === 'paused').length;
 
-  const allCategories = Array.from(
-    new Set(allTriggers.map((t: any) => t.category).filter(Boolean))
-  ).sort() as string[];
+  // Group triggers by category
+  const categoryGroups: Record<string, any[]> = {};
+  for (const t of allTriggers) {
+    const key = t.category || 'uncategorized';
+    if (!categoryGroups[key]) categoryGroups[key] = [];
+    categoryGroups[key].push(t);
+  }
 
-  const filteredTriggers = allTriggers.filter(trigger => {
-    const categoryMatch = selectedCategory === 'all' || trigger.category === selectedCategory;
-    const statusMatch = filterStatus === 'all' || trigger.status === filterStatus;
-    return categoryMatch && statusMatch;
+  // Build sorted category entries
+  const categoryEntries = Object.entries(categoryGroups).sort((a, b) => {
+    // Sort: triggered first, then by count desc
+    const aHasTriggered = a[1].some(t => t.status === 'triggered');
+    const bHasTriggered = b[1].some(t => t.status === 'triggered');
+    if (aHasTriggered && !bHasTriggered) return -1;
+    if (!aHasTriggered && bHasTriggered) return 1;
+    return b[1].length - a[1].length;
   });
 
-  // Handle URL parameters to auto-open edit dialog (e.g. ?id=...&action=edit)
-  useEffect(() => {
-    if (!triggersData || triggersData.length === 0) return;
-    const params = new URLSearchParams(searchString);
-    const triggerId = params.get('id');
-    const action = params.get('action');
-    if (triggerId) {
-      const found = triggersData.find((t: any) => t.id === triggerId);
-      if (found) {
-        if (action === 'edit') {
-          setEditTriggerData(found);
-          setIsWizardOpen(true);
-        } else {
-          setViewTrigger({ ...found, status: found.isActive ? (found.alertThreshold === 'red' ? 'triggered' : 'active') : 'paused' });
-        }
-        setTimeout(() => {
-          const el = document.querySelector(`[data-trigger-id="${triggerId}"]`);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 500);
-      }
-    }
-  }, [triggersData, searchString]);
+  // Triggers shown in right panel
+  const selectedTriggers = selectedCategoryId
+    ? (categoryGroups[selectedCategoryId] ?? []).filter(t =>
+        filterStatus === 'all' || t.status === filterStatus
+      )
+    : [];
+
+  const selectedSignalCat = selectedCategoryId ? resolveSignalCat(selectedCategoryId) : null;
 
   if (isLoading) {
     return (
-      <PageLayout>
+      <PageLayout embedded={embedded}>
         <div className="flex items-center justify-center min-h-screen">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C9A84C]" />
         </div>
@@ -195,259 +126,368 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="flex-1 overflow-auto bg-white">
-        <div className="p-8">
+      <div className="flex flex-col h-full overflow-hidden bg-white">
 
-          {/* Header */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Zap className="w-7 h-7 text-white" />
+        {/* ── Header ── */}
+        <div className="flex-shrink-0 border-b border-[#E8E4DC] px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Zap className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Execution Control</span>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: GOLD }}>IDEA Framework</span>
+                  <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>EXECUTE</span>
                 </div>
-                <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>Triggers & Guardrails</h1>
+                <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.5rem', color: NAVY, lineHeight: 1 }}>
+                  Trigger Alert Management
+                </h1>
               </div>
             </div>
             <Button
-              style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}
+              style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
               onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
             >
               <Plus className="w-4 h-4 mr-2" />
-              Create New Trigger
+              Create Alert Rule
             </Button>
           </div>
 
-          {/* Key Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          {/* Stats strip */}
+          <div className="flex items-center gap-8 mt-5">
             {[
-              { label: 'Critical Alerts', value: triggeredCount, color: '#EF4444', icon: <Bell className="h-6 w-6 text-red-500" /> },
-              { label: 'Active Monitoring', value: activeCount, color: TEAL, icon: <Activity className="h-6 w-6" style={{ color: TEAL }} /> },
-              { label: 'Paused Triggers', value: pausedCount, color: NAVY, icon: <Pause className="h-6 w-6 text-gray-400" /> },
-              { label: 'Total Triggers', value: allTriggers.length, color: NAVY, icon: <Target className="h-6 w-6" style={{ color: GOLD }} /> },
-            ].map((m, i) => (
-              <Card key={i} className="border border-[#E8E4DC] bg-white">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-gray-500 text-xs font-bold uppercase tracking-wider">{m.label}</p>
-                      <p style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: m.color }}>{m.value}</p>
-                    </div>
-                    {m.icon}
+              { label: 'Triggered',       value: triggeredCount,      color: '#EF4444', icon: Bell },
+              { label: 'Active',          value: activeCount,         color: TEAL,      icon: Activity },
+              { label: 'Paused',          value: pausedCount,         color: '#6B7280', icon: Pause },
+              { label: 'Total Rules',     value: allTriggers.length,  color: NAVY,      icon: Target },
+              { label: 'Categories',      value: categoryEntries.length, color: GOLD,   icon: Database },
+            ].map(s => {
+              const Icon = s.icon;
+              return (
+                <div key={s.label} className="flex items-center gap-2">
+                  <Icon className="w-4 h-4" style={{ color: s.color }} />
+                  <div>
+                    <p className="text-[8px] font-bold uppercase tracking-wider text-gray-400">{s.label}</p>
+                    <p className="text-base font-black leading-none" style={{ color: s.color }}>{s.value}</p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* AI Trigger Probability Forecast */}
-          <div className="mb-8">
-            <TriggerProbabilityForecast triggers={allTriggers} compact={false} />
-          </div>
-
-          {/* Triggers List Section */}
-          <div className="space-y-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Management Dashboard</span>
-                <span className="text-[10px] font-semibold text-gray-500">{filteredTriggers.length} of {allTriggers.length} triggers</span>
-              </div>
-              <div className="flex items-center gap-3 flex-wrap">
-                {/* Status filter buttons */}
-                <div className="flex items-center gap-1">
-                  {[
-                    { value: 'all', label: 'All Status' },
-                    { value: 'triggered', label: 'Triggered' },
-                    { value: 'active', label: 'Active' },
-                    { value: 'paused', label: 'Paused' },
-                  ].map((opt) => (
-                    <button
-                      key={opt.value}
-                      onClick={() => setFilterStatus(opt.value)}
-                      className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all"
-                      style={{
-                        background: filterStatus === opt.value ? NAVY : 'transparent',
-                        color: filterStatus === opt.value ? '#fff' : '#6B7280',
-                        border: `1px solid ${filterStatus === opt.value ? NAVY : '#E8E4DC'}`,
-                      }}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
                 </div>
-                {/* Dynamic category select */}
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger
-                    className="h-8 text-[10px] font-bold uppercase tracking-wider border-[#E8E4DC] min-w-[180px]"
-                    style={{ color: NAVY }}
-                  >
-                    <SelectValue placeholder="All Categories" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all" className="text-[11px] font-semibold">All Categories</SelectItem>
-                    {allCategories.map((cat) => (
-                      <SelectItem key={cat} value={cat} className="text-[11px] font-semibold capitalize">
-                        {cat.replace(/-/g, ' ').replace(/_/g, ' ')}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── AI Forecast ── */}
+        <div className="flex-shrink-0 px-8 py-4 border-b border-[#E8E4DC]">
+          <TriggerProbabilityForecast triggers={allTriggers} compact={true} />
+        </div>
+
+        {/* ── Split layout: Category list + Trigger detail ── */}
+        <div className="flex flex-1 min-h-0 overflow-hidden">
+
+          {/* LEFT — Category list */}
+          <div className="w-72 flex-shrink-0 border-r border-[#E8E4DC] overflow-y-auto bg-[#F8F7F4]">
+            <div className="p-3 border-b border-[#E8E4DC]">
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+                {categoryEntries.length} trigger categories
+              </p>
             </div>
+            {categoryEntries.map(([catId, triggers]) => {
+              const sigCat    = resolveSignalCat(catId);
+              const triggered = triggers.filter(t => t.status === 'triggered').length;
+              const active    = triggers.filter(t => t.status === 'active').length;
+              const paused    = triggers.filter(t => t.status === 'paused').length;
+              const isSelected = selectedCategoryId === catId;
 
-            <div className="grid grid-cols-1 gap-4">
-              {filteredTriggers.map((trigger) => (
-                <Card
-                  key={trigger.id}
-                  data-trigger-id={trigger.id}
-                  className="border border-[#E8E4DC] hover:border-[#C9A84C] transition-all bg-white overflow-hidden shadow-sm"
+              // Status color: red if any triggered, teal if all active, gray if all paused
+              const statusColor = triggered > 0 ? '#EF4444' : active > 0 ? TEAL : '#6B7280';
+
+              // Count data points this category covers (from signal categories)
+              const dpCount = sigCat?.dataPoints.length ?? 0;
+
+              return (
+                <button
+                  key={catId}
+                  onClick={() => setSelectedCategoryId(isSelected ? null : catId)}
+                  className="w-full text-left px-4 py-3.5 flex items-start gap-3 transition-colors border-b border-[#EDE9E3] hover:bg-white"
+                  style={{
+                    background: isSelected ? '#fff' : 'transparent',
+                    borderLeft: isSelected ? `3px solid ${TEAL}` : '3px solid transparent',
+                  }}
                 >
-                  <CardContent className="p-0">
-                    <div className="flex flex-col md:flex-row items-stretch">
-                      <div className={`w-1 flex-shrink-0 ${trigger.status === 'triggered' ? 'bg-red-500' : 'bg-[#2B8A6E]'}`} />
-                      <div className="flex-1 p-6">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                          <div className="space-y-1">
-                            <div className="flex items-center space-x-3 flex-wrap gap-y-1">
-                              <h3 style={{ ...CG, fontSize: "1.25rem", fontWeight: 600, color: NAVY }}>{trigger.name}</h3>
-                              <div style={{
-                                display: "inline-flex", alignItems: "center", gap: 5,
-                                background: trigger.status === 'triggered' ? 'rgba(239,68,68,0.1)' : 'rgba(43,138,110,0.12)',
-                                color: trigger.status === 'triggered' ? '#EF4444' : '#3BAF8A',
-                                fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px"
-                              }}>
-                                {trigger.status}
-                              </div>
-                              <div className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${trigger.severity === 'critical' ? 'bg-red-500 text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'}`}>
-                                {trigger.severity}
-                              </div>
-                            </div>
-                            <p className="text-sm text-gray-600 max-w-2xl">{trigger.description}</p>
-                          </div>
+                  {/* Status indicator */}
+                  <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ background: statusColor }} />
 
-                          <div className="flex items-center gap-3 flex-shrink-0">
-                            <div className="flex items-center space-x-2">
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Monitoring</span>
-                              <Switch
-                                checked={trigger.isActive}
-                                onCheckedChange={(isActive) => toggleTriggerMutation.mutate({ id: trigger.id, isActive })}
-                              />
-                            </div>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, border: `1px solid ${GOLD}`, background: "rgba(201,168,76,0.06)" }}
-                              onClick={() => setViewTrigger(trigger)}
-                            >
-                              <Database className="w-3.5 h-3.5 mr-1.5" style={{ color: GOLD }} />
-                              Conditions & Data
-                            </Button>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, border: "1px solid rgba(201,168,76,0.35)" }}
-                              onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
-                            >
-                              <Settings className="w-3.5 h-3.5 mr-1.5" />
-                              Edit
-                            </Button>
-                          </div>
-                        </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[12px] font-bold leading-tight capitalize truncate" style={{ color: isSelected ? NAVY : '#374151' }}>
+                      {sigCat?.name ?? catId.replace(/-/g, ' ').replace(/_/g, ' ')}
+                    </p>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-[9px] font-bold" style={{ color: NAVY }}>
+                        {triggers.length} rule{triggers.length !== 1 ? 's' : ''}
+                      </span>
+                      {dpCount > 0 && (
+                        <span className="text-[9px] text-gray-400">{dpCount} data pts</span>
+                      )}
+                      {triggered > 0 && (
+                        <span className="text-[9px] font-bold px-1.5 py-0.5" style={{ background: 'rgba(239,68,68,0.1)', color: '#EF4444' }}>
+                          {triggered} fired
+                        </span>
+                      )}
+                      {paused > 0 && (
+                        <span className="text-[9px] font-medium px-1.5 py-0.5" style={{ background: 'rgba(107,114,128,0.1)', color: '#6B7280' }}>
+                          {paused} paused
+                        </span>
+                      )}
+                    </div>
+                  </div>
 
-                        <div className="mt-6 pt-6 border-t border-[#E8E4DC] space-y-4">
-                          {/* Trigger Condition — clickable row */}
-                          <button
-                            className="w-full text-left group"
-                            onClick={() => setViewTrigger(trigger)}
-                          >
-                            <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC] group-hover:border-[#C9A84C] group-hover:bg-[#FFFDF5] transition-all rounded">
-                              <div className="flex items-start gap-3 flex-1 min-w-0">
-                                <Target className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
-                                <div className="min-w-0">
-                                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Trigger Condition</p>
-                                  <p className="text-sm font-semibold" style={{ color: NAVY }}>{parseConditionText(trigger.conditions, trigger.description)}</p>
-                                </div>
-                              </div>
-                              <div className="flex items-center gap-3 ml-4 flex-shrink-0">
-                                {(() => {
-                                  const signals = getCategorySignals(trigger.category);
-                                  const dpCount = signals.reduce((sum, s) => sum + s.dataPoints.length, 0);
-                                  return dpCount > 0 ? (
-                                    <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.1)", color: TEAL, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 4 }}>
-                                      <Database className="w-3 h-3" />
-                                      {dpCount} data points
-                                    </div>
-                                  ) : null;
-                                })()}
-                                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#C9A84C] transition-colors" />
-                              </div>
-                            </div>
-                          </button>
+                  <ChevronRight className="w-4 h-4 flex-shrink-0 mt-0.5 transition-transform"
+                    style={{ color: isSelected ? TEAL : '#D1D5DB', transform: isSelected ? 'rotate(90deg)' : '' }} />
+                </button>
+              );
+            })}
+          </div>
 
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                              <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                                <Activity className="w-3.5 h-3.5 mr-2" style={{ color: TEAL }} />
-                                Automated Response
-                              </div>
-                              <div className="flex items-center space-x-2">
-                                <Badge variant="outline" style={{ border: "1px solid #E8E4DC", color: NAVY, fontSize: 10 }}>
-                                  {trigger.action || 'Execute Protocol'}
-                                </Badge>
-                                {trigger.status === 'triggered' && (
-                                  <Badge style={{ background: TEAL, color: "#fff", fontSize: 10 }}>Executing</Badge>
-                                )}
-                              </div>
-                            </div>
-                            <div className="space-y-2">
-                              <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                                <Clock className="w-3.5 h-3.5 mr-2" style={{ color: NAVY }} />
-                                Last Evaluated
-                              </div>
-                              <p className="text-sm text-gray-600">
-                                {trigger.updatedAt ? format(new Date(trigger.updatedAt), 'MMM d, h:mm a') : 'Never'}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+          {/* RIGHT — Trigger detail for selected category */}
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            {selectedCategoryId ? (
+              <>
+                {/* Detail header */}
+                <div className="flex-shrink-0 px-6 py-4 border-b border-[#E8E4DC] bg-white">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => setSelectedCategoryId(null)}
+                        className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider hover:opacity-70 transition-opacity md:hidden"
+                        style={{ color: NAVY }}
+                      >
+                        <ChevronLeft className="w-3 h-3" /> Back
+                      </button>
+                      <div>
+                        <h2 className="text-base font-bold capitalize" style={{ color: NAVY }}>
+                          {selectedSignalCat?.name ?? selectedCategoryId?.replace(/-/g, ' ')}
+                        </h2>
+                        {selectedSignalCat?.description && (
+                          <p className="text-xs text-gray-500 mt-0.5 max-w-xl">{selectedSignalCat.description}</p>
+                        )}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Guardrails Section */}
-          <div className="mt-12">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Safety Protocols</span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { title: 'Budget Caps', description: 'Prevent automated execution from exceeding defined financial thresholds.', icon: <TrendingUp style={{ color: TEAL }} /> },
-                { title: 'Human-in-the-Loop', description: 'Requires manual authorization for critical high-impact actions.', icon: <Users style={{ color: NAVY }} /> },
-                { title: 'Conflict Detection', description: 'Identifies and pauses overlapping or contradictory execution protocols.', icon: <AlertTriangle style={{ color: GOLD }} /> }
-              ].map((guardrail, idx) => (
-                <Card key={idx} className="border border-[#E8E4DC] bg-[#F8F7F4] p-6 hover:shadow-md transition-all">
-                  <div className="w-10 h-10 bg-white border border-[#E8E4DC] flex items-center justify-center mb-4">
-                    {guardrail.icon}
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      {/* Status filter */}
+                      {(['all', 'triggered', 'active', 'paused'] as const).map(s => (
+                        <button
+                          key={s}
+                          onClick={() => setFilterStatus(s)}
+                          className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider transition-all"
+                          style={{
+                            background: filterStatus === s ? NAVY : 'transparent',
+                            color: filterStatus === s ? '#fff' : '#6B7280',
+                            border: `1px solid ${filterStatus === s ? NAVY : '#E8E4DC'}`,
+                          }}
+                        >
+                          {s}
+                        </button>
+                      ))}
+                      <Button
+                        size="sm"
+                        onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
+                        style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                      >
+                        <Plus className="w-3.5 h-3.5 mr-1" /> Add Rule
+                      </Button>
+                    </div>
                   </div>
-                  <h3 style={{ ...CG, fontSize: "1.125rem", fontWeight: 600, color: NAVY, marginBottom: 8 }}>{guardrail.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{guardrail.description}</p>
-                </Card>
-              ))}
-            </div>
+
+                  {/* Data point coverage row */}
+                  {selectedSignalCat && (
+                    <div className="flex items-center gap-4 mt-3 flex-wrap">
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">Monitoring:</span>
+                      {selectedSignalCat.dataPoints.slice(0, 6).map(dp => (
+                        <span key={dp.id} className="text-[9px] font-medium px-1.5 py-0.5 bg-gray-100 text-gray-600">
+                          {dp.name}
+                        </span>
+                      ))}
+                      {selectedSignalCat.dataPoints.length > 6 && (
+                        <span className="text-[9px] text-gray-400">+{selectedSignalCat.dataPoints.length - 6} more</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Trigger rows */}
+                <div className="flex-1 overflow-y-auto divide-y divide-[#F0EDE8]">
+                  {selectedTriggers.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+                      <Zap className="w-8 h-8 mb-3" />
+                      <p className="text-sm font-semibold">No rules match this filter</p>
+                    </div>
+                  ) : (
+                    selectedTriggers.map(trigger => {
+                      // Find the specific data point this trigger watches
+                      const dpId     = trigger.conditions?.dataPointId || trigger.conditions?.field || trigger.conditions?.metric;
+                      const dpLookup = dpId ? findDataPoint(dpId) : null;
+                      const dp       = dpLookup?.dp;
+
+                      const condition = trigger.conditions
+                        ? formatOp(trigger.conditions.operator, trigger.conditions.value)
+                        : trigger.description;
+
+                      return (
+                        <div
+                          key={trigger.id}
+                          className="px-6 py-5 hover:bg-[#FAFAF9] transition-colors group"
+                          style={{ borderLeft: `3px solid ${trigger.status === 'triggered' ? '#EF4444' : trigger.isActive ? TEAL : '#E5E7EB'}` }}
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="flex-1 min-w-0">
+
+                              {/* Data point this trigger watches */}
+                              {dp ? (
+                                <div className="mb-2">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">Watching:</span>
+                                    <span className="text-[11px] font-bold" style={{ color: NAVY }}>{dp.name}</span>
+                                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
+                                      {dp.metricType}
+                                    </span>
+                                  </div>
+                                  <p className="text-xs text-gray-400 mt-0.5">{dp.description}</p>
+                                </div>
+                              ) : (
+                                <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Alert Rule</p>
+                              )}
+
+                              {/* Trigger name + condition */}
+                              <p className="text-sm font-bold mb-1" style={{ color: NAVY }}>{trigger.name}</p>
+
+                              {/* Alert condition — the core of the trigger */}
+                              <div className="flex items-center gap-2 px-3 py-2 flex-wrap" style={{ background: 'rgba(43,138,110,0.04)', borderLeft: `2px solid ${TEAL}` }}>
+                                <Zap className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                                <span className="text-[11px] font-bold" style={{ color: NAVY }}>
+                                  Fires when: {condition}
+                                </span>
+                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5"
+                                  style={{ background: `${SEV_COLOR[trigger.severity] ?? GOLD}20`, color: SEV_COLOR[trigger.severity] ?? GOLD }}>
+                                  {trigger.severity}
+                                </span>
+                              </div>
+
+                              {/* Playbook connections + last eval */}
+                              <div className="flex items-center gap-4 mt-2 flex-wrap">
+                                {trigger.recommendedPlaybooks?.length > 0 && (
+                                  <div className="flex items-center gap-1.5">
+                                    <BookOpen className="w-3 h-3" style={{ color: GOLD }} />
+                                    <span className="text-[9px] text-gray-500">
+                                      {trigger.recommendedPlaybooks.slice(0,2).map((p: string) => p.replace(/-/g,' ')).join(', ')} playbook{trigger.recommendedPlaybooks.length > 1 ? 's' : ''}
+                                    </span>
+                                  </div>
+                                )}
+                                {trigger.updatedAt && (
+                                  <div className="flex items-center gap-1.5">
+                                    <Clock className="w-3 h-3 text-gray-400" />
+                                    <span className="text-[9px] text-gray-400">
+                                      Last eval: {format(new Date(trigger.updatedAt), 'MMM d, h:mm a')}
+                                    </span>
+                                  </div>
+                                )}
+                                {dp?.sources?.slice(0,2).map(src => (
+                                  <span key={src} className="text-[9px] font-medium bg-gray-100 text-gray-500 px-1.5 py-0.5">{src}</span>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Right actions */}
+                            <div className="flex items-center gap-3 flex-shrink-0">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[9px] font-bold uppercase tracking-wider"
+                                  style={{ color: trigger.isActive ? TEAL : '#9CA3AF' }}>
+                                  {trigger.isActive ? 'Active' : 'Paused'}
+                                </span>
+                                <Switch
+                                  checked={trigger.isActive}
+                                  onCheckedChange={(isActive) => toggleMutation.mutate({ id: trigger.id, isActive })}
+                                />
+                              </div>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
+                                style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: NAVY, border: `1px solid #E8E4DC` }}
+                              >
+                                <Settings className="w-3 h-3 mr-1" />
+                                Edit
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setViewTrigger(trigger)}
+                                style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD, border: `1px solid rgba(201,168,76,0.35)` }}
+                              >
+                                <Database className="w-3 h-3 mr-1" />
+                                Full Detail
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+
+                {/* Detail footer */}
+                <div className="flex-shrink-0 px-6 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
+                  <p className="text-[10px] text-gray-500">
+                    <span className="font-bold" style={{ color: NAVY }}>
+                      {(categoryGroups[selectedCategoryId] ?? []).length}
+                    </span>
+                    <span> alert rules in this category · </span>
+                    <span className="font-bold" style={{ color: TEAL }}>
+                      {(categoryGroups[selectedCategoryId] ?? []).filter(t => t.isActive).length} active
+                    </span>
+                  </p>
+                  {selectedSignalCat && (
+                    <span className="text-[9px] text-gray-400">
+                      {selectedSignalCat.dataPoints.length} data points available to monitor
+                    </span>
+                  )}
+                </div>
+              </>
+            ) : (
+              /* Empty state — no category selected */
+              <div className="flex flex-col items-center justify-center flex-1 text-center px-12">
+                <div style={{ width: 56, height: 56, background: 'rgba(201,168,76,0.1)', borderRadius: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+                  <Zap className="w-7 h-7" style={{ color: GOLD }} />
+                </div>
+                <h3 style={{ ...CG, fontSize: '1.25rem', fontWeight: 700, color: NAVY, marginBottom: 8 }}>
+                  Select a Category
+                </h3>
+                <p className="text-sm text-gray-500 max-w-xs leading-relaxed">
+                  Choose a trigger category on the left to see all alert rules and the exact data points they watch.
+                </p>
+                <div className="flex items-center gap-3 mt-6 flex-wrap justify-center">
+                  {categoryEntries.slice(0, 4).map(([catId, triggers]) => {
+                    const hasTriggered = triggers.some(t => t.status === 'triggered');
+                    return (
+                      <button
+                        key={catId}
+                        onClick={() => setSelectedCategoryId(catId)}
+                        className="px-3 py-2 text-[10px] font-bold uppercase tracking-wider transition-all hover:opacity-80"
+                        style={{ background: hasTriggered ? 'rgba(239,68,68,0.08)' : 'rgba(43,138,110,0.08)', color: hasTriggered ? '#EF4444' : TEAL, border: `1px solid ${hasTriggered ? 'rgba(239,68,68,0.2)' : 'rgba(43,138,110,0.2)'}` }}
+                      >
+                        {catId.replace(/-/g,' ')} · {triggers.length}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Trigger Configuration Wizard — Create & Edit */}
+      {/* Wizard */}
       <TriggerConfigurationWizard
         isOpen={isWizardOpen}
         onClose={() => { setIsWizardOpen(false); setEditTriggerData(null); }}
@@ -455,256 +495,103 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           setIsWizardOpen(false);
           setEditTriggerData(null);
           queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
-          toast({ title: editTriggerData ? 'Trigger Updated' : 'Trigger Created', description: editTriggerData ? 'Your trigger has been updated.' : 'Your new trigger is now active.' });
+          toast({ title: editTriggerData ? 'Alert rule updated' : 'Alert rule created', description: editTriggerData ? 'Rule has been updated.' : 'New rule is now monitoring.' });
         }}
         editTrigger={editTriggerData}
       />
 
-      {/* View Trigger Detail Sheet */}
-      <Sheet open={!!viewTrigger} onOpenChange={(open) => { if (!open) setViewTrigger(null); }}>
+      {/* Full detail sheet */}
+      <Sheet open={!!viewTrigger} onOpenChange={open => { if (!open) setViewTrigger(null); }}>
         <SheetContent className="w-full sm:max-w-xl overflow-y-auto" style={{ borderLeft: `3px solid ${GOLD}` }}>
-          {viewTrigger && (
-            <>
-              <SheetHeader className="mb-6">
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                  <div style={{ width: 20, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Trigger Detail</span>
-                </div>
-                <SheetTitle style={{ ...CG, fontSize: "1.5rem", fontWeight: 600, color: NAVY }}>{viewTrigger.name}</SheetTitle>
-                <div className="flex items-center gap-2 mt-2">
-                  <div style={{
-                    display: "inline-flex", alignItems: "center", gap: 5,
-                    background: viewTrigger.status === 'triggered' ? 'rgba(239,68,68,0.1)' : 'rgba(43,138,110,0.12)',
-                    color: viewTrigger.status === 'triggered' ? '#EF4444' : '#3BAF8A',
-                    fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "4px 12px"
-                  }}>
-                    {viewTrigger.status === 'triggered' ? <XCircle className="w-3 h-3" /> : <CheckCircle className="w-3 h-3" />}
-                    {viewTrigger.status}
-                  </div>
-                  <div className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${viewTrigger.severity === 'critical' ? 'bg-red-500 text-white' : 'bg-[#C9A84C] text-[#0A0F2E]'}`}>
-                    {viewTrigger.severity}
-                  </div>
-                </div>
-              </SheetHeader>
-
-              <div className="space-y-6">
-                {/* Description */}
-                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
+          {viewTrigger && (() => {
+            const dpId     = viewTrigger.conditions?.dataPointId || viewTrigger.conditions?.field;
+            const dpLookup = dpId ? findDataPoint(dpId) : null;
+            const dp       = dpLookup?.dp;
+            return (
+              <>
+                <SheetHeader className="mb-6">
                   <div className="flex items-center gap-2 mb-2">
-                    <Info className="w-3.5 h-3.5" style={{ color: GOLD }} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Description</span>
+                    <div style={{ width: 16, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Alert Rule Detail</span>
                   </div>
-                  <p className="text-sm text-gray-700 leading-relaxed">{viewTrigger.description}</p>
-                </div>
-
-                {/* Trigger Condition — parsed from conditions JSON */}
-                <div style={{ border: `2px solid ${GOLD}`, background: "#FFFDF5", padding: 16 }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <Target className="w-4 h-4" style={{ color: GOLD }} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Active Trigger Condition</span>
+                  <SheetTitle style={{ ...CG, fontSize: '1.4rem', fontWeight: 700, color: NAVY }}>{viewTrigger.name}</SheetTitle>
+                  <div className="flex items-center gap-2 mt-1 flex-wrap">
+                    <Badge style={{ background: viewTrigger.status === 'triggered' ? '#EF4444' : TEAL, color: '#fff', fontSize: 9 }}>
+                      {viewTrigger.status}
+                    </Badge>
+                    <Badge variant="outline" style={{ fontSize: 9, color: SEV_COLOR[viewTrigger.severity] ?? GOLD }}>
+                      {viewTrigger.severity}
+                    </Badge>
                   </div>
-                  <p className="text-base font-bold mb-3" style={{ color: NAVY }}>{parseConditionText(viewTrigger.conditions, viewTrigger.description)}</p>
-                  {viewTrigger.conditions && (() => {
-                    try {
-                      const c = typeof viewTrigger.conditions === 'string' ? JSON.parse(viewTrigger.conditions) : viewTrigger.conditions;
-                      return (
-                        <div className="grid grid-cols-3 gap-2">
-                          {c.field && (
-                            <div className="bg-white border border-[#E8E4DC] p-3">
-                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Signal Field</p>
-                              <p className="text-xs font-bold" style={{ color: NAVY }}>{String(c.field).replace(/_/g, ' ')}</p>
-                            </div>
-                          )}
-                          {c.operator && (
-                            <div className="bg-white border border-[#E8E4DC] p-3">
-                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Operator</p>
-                              <p className="text-sm font-bold" style={{ color: TEAL }}>{formatOperator(c.operator)}</p>
-                            </div>
-                          )}
-                          {c.value !== undefined && (
-                            <div style={{ background: NAVY, padding: 12 }}>
-                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-300 mb-1">Threshold</p>
-                              <p className="text-sm font-bold text-white">{String(c.value)}{typeof c.value === 'number' && (c.operator === 'drop' || c.operator === 'spike') ? '%' : ''}</p>
-                            </div>
-                          )}
-                        </div>
-                      );
-                    } catch { return null; }
-                  })()}
-                </div>
+                </SheetHeader>
 
-                {/* Metadata grid */}
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { label: 'Category', value: viewTrigger.category || '—', icon: <Tag className="w-3.5 h-3.5" style={{ color: GOLD }} /> },
-                    { label: 'Type', value: viewTrigger.triggerType || '—', icon: <Zap className="w-3.5 h-3.5" style={{ color: NAVY }} /> },
-                    { label: 'Alert Threshold', value: viewTrigger.alertThreshold || '—', icon: <Bell className="w-3.5 h-3.5 text-red-500" /> },
-                    { label: 'Monitoring', value: viewTrigger.isActive ? 'Active' : 'Paused', icon: viewTrigger.isActive ? <CheckCircle className="w-3.5 h-3.5" style={{ color: TEAL }} /> : <Pause className="w-3.5 h-3.5 text-gray-400" /> },
-                  ].map((item, i) => (
-                    <div key={i} className="p-3 border border-[#E8E4DC] bg-white">
-                      <div className="flex items-center gap-1.5 mb-1">
-                        {item.icon}
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">{item.label}</span>
+                <div className="space-y-6">
+                  {/* Data point being watched */}
+                  {dp && (
+                    <div className="p-4 border border-[#E8E4DC] bg-[#F8F7F4]">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Data Point Being Watched</p>
+                      <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
+                      <p className="text-xs text-gray-500 mt-1">{dp.description}</p>
+                      <div className="flex items-center gap-2 mt-2 flex-wrap">
+                        {dp.sources?.map(src => (
+                          <span key={src} className="text-[9px] bg-white border border-[#E8E4DC] px-2 py-0.5 text-gray-500">{src}</span>
+                        ))}
                       </div>
-                      <p className="text-sm font-semibold capitalize" style={{ color: NAVY }}>{item.value}</p>
                     </div>
-                  ))}
-                </div>
+                  )}
 
-                {/* Intelligence Signal Data Points — from SIGNAL_CATEGORIES */}
-                {(() => {
-                  const matchedCategories = getCategorySignals(viewTrigger.category);
-                  if (matchedCategories.length === 0) return null;
-                  const totalDPs = matchedCategories.reduce((sum, sc) => sum + sc.dataPoints.length, 0);
-                  return (
-                    <div className="border border-[#E8E4DC]">
-                      <div className="flex items-center justify-between p-4 border-b border-[#E8E4DC] bg-[#F8F7F4]">
-                        <div className="flex items-center gap-2">
-                          <Layers className="w-4 h-4" style={{ color: TEAL }} />
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-600">Signal Intelligence — Data Points</span>
-                        </div>
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: TEAL, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "3px 10px" }}>
-                          {totalDPs} data points
-                        </div>
+                  {/* Alert condition */}
+                  <div className="p-4 border-l-2" style={{ borderColor: TEAL, background: 'rgba(43,138,110,0.04)' }}>
+                    <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Alert Condition</p>
+                    <p className="text-sm font-bold" style={{ color: NAVY }}>
+                      Fires when: {formatOp(viewTrigger.conditions?.operator, viewTrigger.conditions?.value)}
+                    </p>
+                    {viewTrigger.conditions?.operator && (
+                      <div className="grid grid-cols-2 gap-3 mt-3">
+                        {[
+                          { label: 'Operator', value: viewTrigger.conditions.operator },
+                          { label: 'Threshold', value: String(viewTrigger.conditions.value ?? '—') },
+                          { label: 'Severity', value: viewTrigger.severity },
+                          { label: 'Type', value: viewTrigger.triggerType },
+                        ].map(item => (
+                          <div key={item.label} className="bg-white border border-[#E8E4DC] p-3">
+                            <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">{item.label}</p>
+                            <p className="text-sm font-semibold capitalize" style={{ color: NAVY }}>{item.value}</p>
+                          </div>
+                        ))}
                       </div>
-                      <div className="p-4 space-y-5">
-                        {matchedCategories.map((sc) => (
-                          <div key={sc.id}>
-                            <div className="flex items-center gap-2 mb-3">
-                              <Radio className="w-3 h-3" style={{ color: sc.color || GOLD }} />
-                              <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>{sc.name}</span>
-                              <span className="text-[9px] bg-gray-100 text-gray-500 font-bold px-2 py-0.5 rounded">{sc.dataPoints.length}</span>
-                            </div>
-                            <div className="space-y-2">
-                              {sc.dataPoints.map((dp) => (
-                                <div key={dp.id} className="bg-[#F8F7F4] border border-[#E8E4DC] p-3">
-                                  <div className="flex items-start justify-between gap-3">
-                                    <div className="flex-1 min-w-0">
-                                      <p className="text-xs font-bold" style={{ color: NAVY }}>{dp.name}</p>
-                                      <p className="text-[10px] text-gray-500 mt-0.5 leading-relaxed">{dp.description}</p>
-                                      {dp.sources && dp.sources.length > 0 && (
-                                        <div className="flex flex-wrap gap-1 mt-1.5">
-                                          {dp.sources.slice(0, 3).map((src) => (
-                                            <span key={src} className="text-[8px] font-bold uppercase tracking-wider bg-white border border-[#E8E4DC] px-1.5 py-0.5 text-gray-500">{src.replace(/-/g, ' ')}</span>
-                                          ))}
-                                        </div>
-                                      )}
-                                    </div>
-                                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                                      <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded" style={{ background: `${METRIC_TYPE_COLORS[dp.metricType] || '#6B7280'}15`, color: METRIC_TYPE_COLORS[dp.metricType] || '#6B7280' }}>
-                                        {dp.metricType}{dp.unit ? ` (${dp.unit})` : ''}
-                                      </span>
-                                      {dp.defaultThreshold && (
-                                        <span className="text-[9px] font-mono font-bold text-gray-500">
-                                          {formatOperator(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}{dp.unit ? dp.unit : ''}
-                                        </span>
-                                      )}
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
+                    )}
+                  </div>
+
+                  {/* Playbook response */}
+                  {viewTrigger.recommendedPlaybooks?.length > 0 && (
+                    <div>
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Fires These Playbooks</p>
+                      <div className="space-y-1">
+                        {viewTrigger.recommendedPlaybooks.map((p: string) => (
+                          <div key={p} className="flex items-center gap-2 px-3 py-2 bg-[#F8F7F4] border border-[#E8E4DC]">
+                            <BookOpen className="w-3 h-3" style={{ color: GOLD }} />
+                            <span className="text-xs font-semibold capitalize" style={{ color: NAVY }}>
+                              {p.replace(/-/g, ' ')}
+                            </span>
                           </div>
                         ))}
                       </div>
                     </div>
-                  );
-                })()}
+                  )}
 
-                {/* DB Signal Data (if any live data) */}
-                {signalData && signalData.length > 0 && (
-                  <div className="p-4 border border-[#E8E4DC]">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Database className="w-3.5 h-3.5" style={{ color: TEAL }} />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Live Signal Readings</span>
-                      <span className="text-[9px] bg-[#E8F5EF] text-[#2B8A6E] font-bold px-2 py-0.5 rounded">{signalData.length} active</span>
-                    </div>
-                    <div className="space-y-2">
-                      {signalData.map((sig: any, i: number) => (
-                        <div key={i} className="flex items-center justify-between p-2 bg-[#F8F7F4] border border-[#E8E4DC] text-xs">
-                          <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-gray-800 truncate">{sig.name}</p>
-                            {sig.description && <p className="text-gray-500 text-[10px] truncate">{sig.description}</p>}
-                          </div>
-                          <div className="flex items-center gap-2 ml-3 flex-shrink-0">
-                            <span className="font-mono text-[10px] bg-white border border-[#E8E4DC] px-1.5 py-0.5" style={{ color: TEAL }}>
-                              {formatOperator(sig.operator)} {sig.thresholdValue ?? sig.threshold_value}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Recommended Playbooks */}
-                {viewTrigger.recommendedPlaybooks && Array.isArray(viewTrigger.recommendedPlaybooks) && viewTrigger.recommendedPlaybooks.length > 0 && (
-                  <div className="p-4 border border-[#E8E4DC]">
-                    <div className="flex items-center gap-2 mb-3">
-                      <BookOpen className="w-3.5 h-3.5" style={{ color: GOLD }} />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Linked Playbooks</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {viewTrigger.recommendedPlaybooks.map((pb: string, i: number) => (
-                        <Badge key={i} variant="outline" style={{ border: `1px solid ${GOLD}`, color: NAVY, fontSize: 10 }}>{pb}</Badge>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Action */}
-                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Activity className="w-3.5 h-3.5" style={{ color: TEAL }} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Automated Response</span>
-                  </div>
-                  <Badge variant="outline" style={{ border: `1px solid ${TEAL}`, color: TEAL, fontSize: 11 }}>
-                    {viewTrigger.action || 'Execute Protocol'}
-                  </Badge>
+                  {/* Edit button */}
+                  <Button
+                    className="w-full"
+                    style={{ background: NAVY, color: '#fff', fontWeight: 700 }}
+                    onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}
+                  >
+                    <Settings className="w-4 h-4 mr-2" /> Edit This Alert Rule
+                  </Button>
                 </div>
-
-                {/* Timestamps */}
-                <div className="p-4 border border-[#E8E4DC]">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Calendar className="w-3.5 h-3.5" style={{ color: NAVY }} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Timeline</span>
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Last Evaluated</span>
-                      <span className="font-medium" style={{ color: NAVY }}>
-                        {viewTrigger.updatedAt ? format(new Date(viewTrigger.updatedAt), 'MMM d, yyyy h:mm a') : 'Never'}
-                      </span>
-                    </div>
-                    {viewTrigger.lastTriggeredAt && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-500">Last Triggered</span>
-                        <span className="font-medium text-red-600">
-                          {format(new Date(viewTrigger.lastTriggeredAt), 'MMM d, yyyy h:mm a')}
-                        </span>
-                      </div>
-                    )}
-                    {viewTrigger.triggerCount !== undefined && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-500">Total Fires</span>
-                        <span className="font-bold" style={{ color: NAVY }}>{viewTrigger.triggerCount}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Edit CTA */}
-                <Button
-                  className="w-full"
-                  style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}
-                  onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}
-                >
-                  <Settings className="w-4 h-4 mr-2" />
-                  Edit This Trigger
-                </Button>
-              </div>
-            </>
-          )}
+              </>
+            );
+          })()}
         </SheetContent>
       </Sheet>
     </PageLayout>

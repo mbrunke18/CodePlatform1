@@ -6,12 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { Link, useLocation } from 'wouter';
 import {
   Search, Zap, Target, TrendingUp, DollarSign, Shield, Activity,
   Users, Globe, Cpu, BarChart3, Eye, BookOpen, AlertTriangle,
   Radio, Leaf, Brain, Star, Building2, Database, Plus, ChevronRight,
-  CheckCircle2, XCircle, ArrowRight, Filter,
+  Settings, CheckCircle2,
 } from 'lucide-react';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
@@ -24,24 +23,46 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const ICON_MAP: Record<string, React.ElementType> = {
   Swords: Target, Zap, TrendingUp, DollarSign, Shield, Globe,
   Cpu, BarChart3, Activity, Eye, Users, Brain, Star, Leaf,
-  Radio, BookOpen, AlertTriangle, Building2, Database, Filter,
+  Radio, BookOpen, AlertTriangle, Building2, Database, Settings,
 };
 function getIcon(name: string): React.ElementType {
   return ICON_MAP[name] || Activity;
 }
 
+function formatOp(op: string, val?: any, unit?: string): string {
+  const v = val !== undefined ? `${val}${unit ?? ''}` : '';
+  switch (op) {
+    case 'gt':    return `rises above ${v}`;
+    case 'gte':   return `reaches ≥ ${v}`;
+    case 'lt':    return `drops below ${v}`;
+    case 'lte':   return `reaches ≤ ${v}`;
+    case 'eq':    return `equals ${v}`;
+    case 'spike': return `spikes by ${v}%`;
+    case 'drop':  return `drops by ${v}%`;
+    case 'trend': return `trends ${v}`;
+    default:      return `${op} ${v}`;
+  }
+}
+
+const SEV_COLOR: Record<string, string> = {
+  critical: '#EF4444',
+  high:     '#F97316',
+  medium:   GOLD,
+  low:      '#6B7280',
+};
+
 type DpFilter = 'all' | 'monitoring' | 'paused';
 
 export default function SignalConfiguration() {
   const { toast } = useToast();
-  const [, navigate] = useLocation();
 
-  const [search, setSearch]             = useState('');
+  const [search, setSearch]               = useState('');
   const [selectedCatId, setSelectedCatId] = useState(SIGNAL_CATEGORIES[0]?.id ?? '');
-  const [dpFilter, setDpFilter]         = useState<DpFilter>('all');
+  const [dpFilter, setDpFilter]           = useState<DpFilter>('all');
   const [localDisabled, setLocalDisabled] = useState<string[] | null>(null);
-  const [wizardOpen, setWizardOpen]     = useState(false);
+  const [wizardOpen, setWizardOpen]       = useState(false);
   const [wizardCategory, setWizardCategory] = useState('');
+  const [editingTrigger, setEditingTrigger] = useState<any>(null);
 
   const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[] }>({
     queryKey: ['/api/signal-monitoring-config'],
@@ -78,6 +99,7 @@ export default function SignalConfiguration() {
     configMutation.mutate(next);
   }, [localDisabled, configData, configMutation]);
 
+  // category → trigger count
   const triggersPerCategory = useMemo(() => {
     const map: Record<string, number> = {};
     for (const t of (triggersData ?? []) as any[]) {
@@ -86,36 +108,25 @@ export default function SignalConfiguration() {
     return map;
   }, [triggersData]);
 
-  const triggeredDpIds = useMemo(() => {
-    const set = new Set<string>();
+  // dataPointId → trigger object (exact match wins, category fallback second)
+  const triggerByDpId = useMemo(() => {
+    const map: Record<string, any> = {};
     for (const t of (triggersData ?? []) as any[]) {
-      // Exact data-point match
-      if (t.conditions?.field) set.add(t.conditions.field);
-      if (t.conditions?.dataPointId) set.add(t.conditions.dataPointId);
-      if (t.conditions?.metric) set.add(t.conditions.metric);
-      // Also map by dataPointIds array
+      const dpId = t.conditions?.dataPointId || t.conditions?.field || t.conditions?.metric;
+      if (dpId && !map[dpId]) map[dpId] = t;
       if (Array.isArray(t.conditions?.dataPointIds)) {
-        for (const id of t.conditions.dataPointIds) set.add(id);
+        for (const id of t.conditions.dataPointIds) {
+          if (!map[id]) map[id] = t;
+        }
       }
     }
-    return set;
+    return map;
   }, [triggersData]);
 
-  // Category-level trigger lookup: which categories have ANY trigger configured
-  const categoriesWithTriggers = useMemo(() => {
-    const set = new Set<string>();
-    for (const t of (triggersData ?? []) as any[]) {
-      const cat = t.category || t.signalCategory || t.signalCategoryId;
-      if (cat) set.add(cat);
-    }
-    return set;
-  }, [triggersData]);
-
-  const totalDps    = SIGNAL_CATEGORIES.reduce((s, c) => s + c.dataPoints.length, 0);
-  const activeDps   = totalDps - disabled.length;
+  const totalDps      = SIGNAL_CATEGORIES.reduce((s, c) => s + c.dataPoints.length, 0);
+  const activeDps     = totalDps - disabled.length;
   const activeTriggers = ((triggersData ?? []) as any[]).filter(t => t.isActive).length;
 
-  // Left panel — category list filtered by search
   const q = search.toLowerCase();
   const visibleCategories = SIGNAL_CATEGORIES.filter(cat => {
     if (!q) return true;
@@ -126,10 +137,8 @@ export default function SignalConfiguration() {
     );
   });
 
-  // When searching, auto-select first match
   const activeCat = visibleCategories.find(c => c.id === selectedCatId) ?? visibleCategories[0];
 
-  // Right panel — data points of selected category, filtered by search + dpFilter
   const visibleDps = useMemo(() => {
     if (!activeCat) return [];
     return activeCat.dataPoints.filter(dp => {
@@ -145,8 +154,9 @@ export default function SignalConfiguration() {
     ? activeCat.dataPoints.every(dp => !disabled.includes(dp.id))
     : false;
 
-  const openWizardFor = (categoryId: string) => {
+  const openWizardFor = (categoryId: string, trigger?: any) => {
     setWizardCategory(categoryId);
+    setEditingTrigger(trigger ?? null);
     setWizardOpen(true);
   };
 
@@ -166,7 +176,6 @@ export default function SignalConfiguration() {
 
         {/* ── Top bar ─────────────────────────────────────────────── */}
         <div className="flex-shrink-0 border-b border-[#E8E4DC] bg-white">
-          {/* Eyebrow + title row */}
           <div className="px-6 pt-6 pb-4 flex items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -184,11 +193,10 @@ export default function SignalConfiguration() {
               </div>
             </div>
 
-            {/* Stats strip */}
             <div className="hidden md:flex items-center gap-6">
               {[
                 { label: 'Active Data Points', value: `${activeDps} / ${totalDps}`, color: TEAL },
-                { label: 'Active Triggers',    value: activeTriggers,               color: GOLD },
+                { label: 'Alert Rules Set',    value: activeTriggers,               color: GOLD },
                 { label: 'Categories',         value: SIGNAL_CATEGORIES.length,     color: NAVY },
               ].map(s => (
                 <div key={s.label} className="text-center">
@@ -198,24 +206,15 @@ export default function SignalConfiguration() {
               ))}
             </div>
 
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <Button
-                onClick={() => openWizardFor(selectedCatId)}
-                style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' }}
-              >
-                <Plus className="w-4 h-4 mr-1.5" />
-                Create Trigger
-              </Button>
-              <Link href="/triggers-management">
-                <Button variant="ghost" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: NAVY, border: '1px solid #E8E4DC' }}>
-                  <Zap className="w-3.5 h-3.5 mr-1.5" />
-                  Manage Triggers
-                </Button>
-              </Link>
-            </div>
+            <Button
+              onClick={() => openWizardFor(selectedCatId)}
+              style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}
+            >
+              <Plus className="w-4 h-4 mr-1.5" />
+              Set Alert Rule
+            </Button>
           </div>
 
-          {/* Search bar + IDEA chain strip */}
           <div className="px-6 pb-4 flex items-center gap-4">
             <div className="relative flex-1 max-w-lg">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -227,8 +226,6 @@ export default function SignalConfiguration() {
                 autoFocus
               />
             </div>
-
-            {/* IDEA phase strip */}
             <div className="hidden lg:flex items-center gap-1 ml-auto">
               {[
                 { letter: 'I', label: 'IDENTIFY', color: '#6366F1', active: false },
@@ -245,7 +242,7 @@ export default function SignalConfiguration() {
                       border: `1px solid ${step.active ? step.color : '#E8E4DC'}`,
                     }}
                   >
-                    <span className="font-black">{step.letter}</span>
+                    <span>{step.letter}</span>
                     <span>{step.label}</span>
                   </div>
                   {i < 3 && <ChevronRight className="w-3 h-3 text-gray-300" />}
@@ -266,13 +263,13 @@ export default function SignalConfiguration() {
               </p>
             </div>
             {visibleCategories.map(cat => {
-              const Icon = getIcon(cat.icon);
-              const active   = cat.id === activeCat?.id;
-              const catDps   = cat.dataPoints.length;
-              const catOff   = cat.dataPoints.filter(dp => disabled.includes(dp.id)).length;
+              const Icon      = getIcon(cat.icon);
+              const active    = cat.id === activeCat?.id;
+              const catDps    = cat.dataPoints.length;
+              const catOff    = cat.dataPoints.filter(dp => disabled.includes(dp.id)).length;
               const catTriggers = triggersPerCategory[cat.id] || 0;
-              const allOn    = catOff === 0;
-              const noneOn   = catOff === catDps;
+              const allOn     = catOff === 0;
+              const noneOn    = catOff === catDps;
               const statusColor = noneOn ? '#EF4444' : allOn ? TEAL : GOLD;
 
               return (
@@ -293,7 +290,7 @@ export default function SignalConfiguration() {
                       </span>
                       {catTriggers > 0 && (
                         <span className="text-[8px] font-bold uppercase tracking-wider px-1 py-0.5" style={{ background: 'rgba(201,168,76,0.15)', color: GOLD }}>
-                          {catTriggers}T
+                          {catTriggers} alert{catTriggers !== 1 ? 's' : ''}
                         </span>
                       )}
                     </div>
@@ -317,40 +314,24 @@ export default function SignalConfiguration() {
                         <span className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 border" style={{ color: GOLD, borderColor: 'rgba(201,168,76,0.4)' }}>
                           {activeCat.phase === 'external' ? 'External Signal' : 'Internal Signal'}
                         </span>
-                        {(triggersPerCategory[activeCat.id] || 0) > 0 && (
-                          <Link href="/triggers-management">
-                            <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 cursor-pointer hover:opacity-80" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
-                              {triggersPerCategory[activeCat.id]} trigger{triggersPerCategory[activeCat.id] !== 1 ? 's' : ''} →
-                            </span>
-                          </Link>
-                        )}
                       </div>
                       <p className="text-xs text-gray-500 max-w-2xl">{activeCat.description}</p>
-
-                      {/* Playbooks row */}
                       {activeCat.recommendedPlaybooks?.length > 0 && (
                         <div className="flex items-center gap-2 mt-2 flex-wrap">
                           <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
                           <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Playbooks:</span>
                           {activeCat.recommendedPlaybooks.map(slug => (
-                            <Link key={slug} href="/playbook-library">
-                              <span className="text-[10px] font-medium underline-offset-2 hover:underline cursor-pointer" style={{ color: NAVY }}>
-                                {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                              </span>
-                            </Link>
+                            <span key={slug} className="text-[10px] font-medium" style={{ color: NAVY }}>
+                              {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                            </span>
                           ))}
                         </div>
                       )}
                     </div>
-
                     <div className="flex items-center gap-3 flex-shrink-0">
-                      {/* Category-level enable all / disable all */}
                       <div className="flex items-center gap-2">
                         <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">All</span>
-                        <Switch
-                          checked={catAllActive}
-                          onCheckedChange={checked => toggleCategory(activeCat.id, checked)}
-                        />
+                        <Switch checked={catAllActive} onCheckedChange={checked => toggleCategory(activeCat.id, checked)} />
                       </div>
                       <Button
                         size="sm"
@@ -358,12 +339,11 @@ export default function SignalConfiguration() {
                         style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
                       >
                         <Plus className="w-3.5 h-3.5 mr-1" />
-                        Create Trigger
+                        Set Alert Rule
                       </Button>
                     </div>
                   </div>
 
-                  {/* Data point filter pills */}
                   <div className="flex items-center gap-2 mt-3">
                     {([
                       { key: 'all',        label: 'All Data Points' },
@@ -381,23 +361,15 @@ export default function SignalConfiguration() {
                         }}
                       >
                         {f.label}
-                        {f.key === 'monitoring' && (
-                          <span className="ml-1.5 text-[9px]">
-                            ({activeCat.dataPoints.filter(dp => !disabled.includes(dp.id)).length})
-                          </span>
-                        )}
-                        {f.key === 'paused' && (
-                          <span className="ml-1.5 text-[9px]">
-                            ({activeCat.dataPoints.filter(dp => disabled.includes(dp.id)).length})
-                          </span>
-                        )}
+                        {f.key === 'monitoring' && <span className="ml-1.5 text-[9px]">({activeCat.dataPoints.filter(dp => !disabled.includes(dp.id)).length})</span>}
+                        {f.key === 'paused'     && <span className="ml-1.5 text-[9px]">({activeCat.dataPoints.filter(dp => disabled.includes(dp.id)).length})</span>}
                       </button>
                     ))}
                     <span className="ml-auto text-[10px] text-gray-400 font-medium">{visibleDps.length} data point{visibleDps.length !== 1 ? 's' : ''}</span>
                   </div>
                 </div>
 
-                {/* Data point rows */}
+                {/* ── Data point rows ── */}
                 <div className="flex-1 overflow-y-auto divide-y divide-[#F0EDE8]">
                   {visibleDps.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-20 text-gray-400">
@@ -407,90 +379,100 @@ export default function SignalConfiguration() {
                   ) : (
                     visibleDps.map(dp => {
                       const isEnabled = !disabled.includes(dp.id);
-                      const hasTrigger = triggeredDpIds.has(dp.id);
+                      const trigger   = triggerByDpId[dp.id];
 
                       return (
                         <div
                           key={dp.id}
-                          className="flex items-start gap-4 px-6 py-4 hover:bg-[#FAFAF9] transition-colors group"
+                          className="px-6 py-4 hover:bg-[#FAFAF9] transition-colors group"
                           style={{ opacity: isEnabled ? 1 : 0.55 }}
                         >
-                          {/* Status dot */}
-                          <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ background: isEnabled ? TEAL : '#D1D5DB' }} />
+                          <div className="flex items-start gap-4">
+                            {/* Status dot — gold if alert rule set, teal if monitoring, gray if off */}
+                            <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                              style={{ background: trigger ? GOLD : isEnabled ? TEAL : '#D1D5DB' }} />
 
-                          {/* Main content */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                              <span className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</span>
-                              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
-                                {dp.metricType}
-                              </span>
-                              {hasTrigger && (
-                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
-                                  <Zap className="w-2.5 h-2.5" /> Trigger Active
+                            {/* Main content */}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                                <span className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</span>
+                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
+                                  {dp.metricType}
                                 </span>
-                              )}
-                              {!hasTrigger && activeCat && categoriesWithTriggers.has(activeCat.id) && (
-                                <span className="text-[9px] font-medium uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
-                                  <Zap className="w-2.5 h-2.5" /> Category Trigger
-                                </span>
+                                {trigger && (
+                                  <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
+                                    <Zap className="w-2.5 h-2.5" /> Alert Rule Active
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-gray-500 leading-relaxed">{dp.description}</p>
+
+                              {/* ── Inline alert rule display or default threshold ── */}
+                              {trigger ? (
+                                <div className="mt-2 flex items-center gap-3 flex-wrap px-3 py-2 border-l-2" style={{ background: 'rgba(43,138,110,0.04)', borderColor: TEAL }}>
+                                  <Zap className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                                  <div className="flex-1 min-w-0">
+                                    <span className="text-[11px] font-bold" style={{ color: NAVY }}>
+                                      Alert fires when: {formatOp(trigger.conditions?.operator, trigger.conditions?.value)}
+                                    </span>
+                                    <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5"
+                                        style={{ background: `${SEV_COLOR[trigger.severity] ?? GOLD}20`, color: SEV_COLOR[trigger.severity] ?? GOLD }}>
+                                        {trigger.severity}
+                                      </span>
+                                      <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5"
+                                        style={{ background: trigger.isActive ? 'rgba(43,138,110,0.1)' : 'rgba(107,114,128,0.1)', color: trigger.isActive ? TEAL : '#6B7280' }}>
+                                        {trigger.isActive ? 'Monitoring' : 'Paused'}
+                                      </span>
+                                      {trigger.recommendedPlaybooks?.length > 0 && (
+                                        <span className="text-[9px] text-gray-400">
+                                          Fires → {trigger.recommendedPlaybooks.slice(0,2).map((p: string) => p.replace(/-/g,' ')).join(', ')} playbook{trigger.recommendedPlaybooks.length > 1 ? 's' : ''}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                  <button
+                                    onClick={() => openWizardFor(activeCat.id, trigger)}
+                                    className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-1 flex-shrink-0 hover:opacity-80 transition-opacity"
+                                    style={{ background: NAVY, color: '#fff' }}
+                                  >
+                                    <Settings className="w-3 h-3" />
+                                    Edit Rule
+                                  </button>
+                                </div>
+                              ) : (
+                                <div className="flex items-center gap-3 flex-wrap mt-1">
+                                  {dp.defaultThreshold && (
+                                    <span className="text-[9px] text-gray-400 flex items-center gap-1">
+                                      <AlertTriangle className="w-3 h-3" />
+                                      Default: fires when {formatOp(dp.defaultThreshold.operator, dp.defaultThreshold.value, dp.unit)}
+                                    </span>
+                                  )}
+                                  {dp.sources?.slice(0, 3).map(src => (
+                                    <span key={src} className="text-[9px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5">{src}</span>
+                                  ))}
+                                </div>
                               )}
                             </div>
-                            <p className="text-xs text-gray-500 leading-relaxed mb-1.5">{dp.description}</p>
-                            <div className="flex items-center gap-3 flex-wrap">
-                              {dp.defaultThreshold && (
-                                <span className="text-[9px] text-gray-400 flex items-center gap-1">
-                                  <AlertTriangle className="w-3 h-3" />
-                                  Default fires at {dp.defaultThreshold.operator} {dp.defaultThreshold.value}{dp.unit ?? ''}
-                                </span>
-                              )}
-                              {dp.sources?.slice(0, 3).map(src => (
-                                <span key={src} className="text-[9px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5">
-                                  {src}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
 
-                          {/* Actions */}
-                          <div className="flex items-center gap-3 flex-shrink-0">
-                            {/* Exact data-point trigger exists */}
-                            {hasTrigger && (
-                              <Link href="/triggers-management">
-                                <button className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
-                                  <ArrowRight className="w-3 h-3" />
-                                  View Trigger
+                            {/* Right actions */}
+                            <div className="flex items-center gap-3 flex-shrink-0">
+                              {!trigger && isEnabled && (
+                                <button
+                                  onClick={() => openWizardFor(activeCat.id)}
+                                  className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5"
+                                  style={{ background: NAVY, color: '#fff' }}
+                                >
+                                  <Plus className="w-3 h-3" />
+                                  Set Alert
                                 </button>
-                              </Link>
-                            )}
-                            {/* Category has trigger(s) but no exact dp match */}
-                            {!hasTrigger && activeCat && categoriesWithTriggers.has(activeCat.id) && (
-                              <Link href="/triggers-management">
-                                <button className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider opacity-70 hover:opacity-100 transition-opacity" style={{ color: GOLD }}>
-                                  <ArrowRight className="w-3 h-3" />
-                                  View Triggers
-                                </button>
-                              </Link>
-                            )}
-                            {/* No trigger at all — show create on hover */}
-                            {!hasTrigger && isEnabled && activeCat && !categoriesWithTriggers.has(activeCat.id) && (
-                              <button
-                                onClick={() => openWizardFor(activeCat.id)}
-                                className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5"
-                                style={{ background: NAVY, color: '#fff' }}
-                              >
-                                <Plus className="w-3 h-3" />
-                                Create Trigger
-                              </button>
-                            )}
-                            <div className="flex items-center gap-2">
-                              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: isEnabled ? TEAL : '#9CA3AF' }}>
-                                {isEnabled ? 'On' : 'Off'}
-                              </span>
-                              <Switch
-                                checked={isEnabled}
-                                onCheckedChange={() => toggleDp(dp.id)}
-                              />
+                              )}
+                              <div className="flex items-center gap-2">
+                                <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: isEnabled ? TEAL : '#9CA3AF' }}>
+                                  {isEnabled ? 'On' : 'Off'}
+                                </span>
+                                <Switch checked={isEnabled} onCheckedChange={() => toggleDp(dp.id)} />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -499,7 +481,7 @@ export default function SignalConfiguration() {
                   )}
                 </div>
 
-                {/* Panel footer — ADVANCE link */}
+                {/* Panel footer */}
                 <div className="flex-shrink-0 px-6 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
                   <p className="text-[10px] text-gray-500">
                     <span className="font-bold" style={{ color: TEAL }}>
@@ -507,15 +489,14 @@ export default function SignalConfiguration() {
                     </span>
                     <span> of {activeCat.dataPoints.length} data points monitoring · </span>
                     <span className="font-bold" style={{ color: GOLD }}>
-                      {triggersPerCategory[activeCat.id] || 0} triggers
+                      {triggersPerCategory[activeCat.id] || 0} alert rule{triggersPerCategory[activeCat.id] !== 1 ? 's' : ''}
                     </span>
-                    <span> configured for this category</span>
+                    <span> configured</span>
                   </p>
-                  <Link href="/activation-outcome">
-                    <button className="text-[10px] font-bold uppercase tracking-wider flex items-center gap-1" style={{ color: NAVY }}>
-                      View ADVANCE outcomes <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </Link>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-3.5 h-3.5" style={{ color: TEAL }} />
+                    <span className="text-[10px] text-gray-400">Changes saved automatically</span>
+                  </div>
                 </div>
               </>
             ) : (
@@ -527,15 +508,17 @@ export default function SignalConfiguration() {
           </div>
         </div>
 
-        {/* Trigger creation wizard */}
+        {/* Alert rule wizard */}
         <TriggerConfigurationWizard
           isOpen={wizardOpen}
-          onClose={() => setWizardOpen(false)}
+          onClose={() => { setWizardOpen(false); setEditingTrigger(null); }}
           onSuccess={() => {
             setWizardOpen(false);
+            setEditingTrigger(null);
             queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
-            toast({ title: 'Trigger created', description: 'Your new trigger is now monitoring this signal.' });
+            toast({ title: editingTrigger ? 'Alert rule updated' : 'Alert rule created', description: 'This data point is now being monitored.' });
           }}
+          editTrigger={editingTrigger}
         />
       </div>
     </PageLayout>
