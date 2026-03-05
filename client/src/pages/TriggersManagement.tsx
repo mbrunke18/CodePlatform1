@@ -8,12 +8,11 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
-import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import {
-  AlertTriangle, Activity, Clock, TrendingUp, Target, Settings,
-  Zap, Users, Pause, Plus, Bell, ChevronRight, ChevronLeft,
-  Database, BarChart2, BookOpen, Radio,
+  Activity, Clock, Target, Settings,
+  Zap, Pause, Plus, Bell, ChevronRight, ChevronLeft,
+  Database, BookOpen,
 } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -87,32 +86,43 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
   const activeCount    = allTriggers.filter(t => t.status === 'active').length;
   const pausedCount    = allTriggers.filter(t => t.status === 'paused').length;
 
-  // Group triggers by category
-  const categoryGroups: Record<string, any[]> = {};
+  // Map ALL 20 signal categories → their triggers (resolve by normalised ID match)
+  const triggersByCatId: Record<string, any[]> = {};
+  for (const sc of SIGNAL_CATEGORIES) triggersByCatId[sc.id] = [];
+
   for (const t of allTriggers) {
-    const key = t.category || 'uncategorized';
-    if (!categoryGroups[key]) categoryGroups[key] = [];
-    categoryGroups[key].push(t);
+    const sc = resolveSignalCat(t.category || '');
+    if (sc) {
+      triggersByCatId[sc.id].push(t);
+    } else {
+      // fallback: stash under raw category key so nothing is lost
+      const key = t.category || 'uncategorized';
+      if (!triggersByCatId[key]) triggersByCatId[key] = [];
+      triggersByCatId[key].push(t);
+    }
   }
 
-  // Build sorted category entries
-  const categoryEntries = Object.entries(categoryGroups).sort((a, b) => {
-    // Sort: triggered first, then by count desc
-    const aHasTriggered = a[1].some(t => t.status === 'triggered');
-    const bHasTriggered = b[1].some(t => t.status === 'triggered');
-    if (aHasTriggered && !bHasTriggered) return -1;
-    if (!aHasTriggered && bHasTriggered) return 1;
-    return b[1].length - a[1].length;
+  // All 20 signal categories, sorted: triggered first → most rules → alphabetical
+  const sortedSignalCats = [...SIGNAL_CATEGORIES].sort((a, b) => {
+    const aTrigs = triggersByCatId[a.id] ?? [];
+    const bTrigs = triggersByCatId[b.id] ?? [];
+    const aFired = aTrigs.some(t => t.status === 'triggered');
+    const bFired = bTrigs.some(t => t.status === 'triggered');
+    if (aFired && !bFired) return -1;
+    if (!aFired && bFired) return 1;
+    return bTrigs.length - aTrigs.length;
   });
 
   // Triggers shown in right panel
   const selectedTriggers = selectedCategoryId
-    ? (categoryGroups[selectedCategoryId] ?? []).filter(t =>
+    ? (triggersByCatId[selectedCategoryId] ?? []).filter(t =>
         filterStatus === 'all' || t.status === filterStatus
       )
     : [];
 
-  const selectedSignalCat = selectedCategoryId ? resolveSignalCat(selectedCategoryId) : null;
+  const selectedSignalCat = selectedCategoryId
+    ? SIGNAL_CATEGORIES.find(sc => sc.id === selectedCategoryId) ?? null
+    : null;
 
   if (isLoading) {
     return (
@@ -162,7 +172,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
               { label: 'Active',          value: activeCount,         color: TEAL,      icon: Activity },
               { label: 'Paused',          value: pausedCount,         color: '#6B7280', icon: Pause },
               { label: 'Total Rules',     value: allTriggers.length,  color: NAVY,      icon: Target },
-              { label: 'Categories',      value: categoryEntries.length, color: GOLD,   icon: Database },
+              { label: 'Categories',      value: SIGNAL_CATEGORIES.length, color: GOLD,   icon: Database },
             ].map(s => {
               const Icon = s.icon;
               return (
@@ -178,11 +188,6 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           </div>
         </div>
 
-        {/* ── AI Forecast ── */}
-        <div className="flex-shrink-0 px-8 py-4 border-b border-[#E8E4DC]">
-          <TriggerProbabilityForecast triggers={allTriggers} compact={true} />
-        </div>
-
         {/* ── Split layout: Category list + Trigger detail ── */}
         <div className="flex flex-1 min-h-0 overflow-hidden">
 
@@ -190,46 +195,38 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           <div className="w-72 flex-shrink-0 border-r border-[#E8E4DC] overflow-y-auto bg-[#F8F7F4]">
             <div className="p-3 border-b border-[#E8E4DC]">
               <p className="text-[9px] font-black uppercase tracking-widest text-gray-400">
-                {categoryEntries.length} trigger categories
+                {SIGNAL_CATEGORIES.length} signal categories
               </p>
             </div>
-            {categoryEntries.map(([catId, triggers]) => {
-              const sigCat    = resolveSignalCat(catId);
-              const triggered = triggers.filter(t => t.status === 'triggered').length;
-              const active    = triggers.filter(t => t.status === 'active').length;
-              const paused    = triggers.filter(t => t.status === 'paused').length;
-              const isSelected = selectedCategoryId === catId;
-
-              // Status color: red if any triggered, teal if all active, gray if all paused
-              const statusColor = triggered > 0 ? '#EF4444' : active > 0 ? TEAL : '#6B7280';
-
-              // Count data points this category covers (from signal categories)
-              const dpCount = sigCat?.dataPoints.length ?? 0;
+            {sortedSignalCats.map(sigCat => {
+              const triggers   = triggersByCatId[sigCat.id] ?? [];
+              const triggered  = triggers.filter(t => t.status === 'triggered').length;
+              const active     = triggers.filter(t => t.status === 'active').length;
+              const paused     = triggers.filter(t => t.status === 'paused').length;
+              const isSelected = selectedCategoryId === sigCat.id;
+              const statusColor = triggered > 0 ? '#EF4444' : triggers.length > 0 ? TEAL : '#D1D5DB';
 
               return (
                 <button
-                  key={catId}
-                  onClick={() => setSelectedCategoryId(isSelected ? null : catId)}
+                  key={sigCat.id}
+                  onClick={() => setSelectedCategoryId(isSelected ? null : sigCat.id)}
                   className="w-full text-left px-4 py-3.5 flex items-start gap-3 transition-colors border-b border-[#EDE9E3] hover:bg-white"
                   style={{
                     background: isSelected ? '#fff' : 'transparent',
                     borderLeft: isSelected ? `3px solid ${TEAL}` : '3px solid transparent',
                   }}
                 >
-                  {/* Status indicator */}
                   <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ background: statusColor }} />
 
                   <div className="flex-1 min-w-0">
-                    <p className="text-[12px] font-bold leading-tight capitalize truncate" style={{ color: isSelected ? NAVY : '#374151' }}>
-                      {sigCat?.name ?? catId.replace(/-/g, ' ').replace(/_/g, ' ')}
+                    <p className="text-[12px] font-bold leading-tight truncate" style={{ color: isSelected ? NAVY : '#374151' }}>
+                      {sigCat.name}
                     </p>
                     <div className="flex items-center gap-2 mt-1 flex-wrap">
-                      <span className="text-[9px] font-bold" style={{ color: NAVY }}>
+                      <span className="text-[9px] font-bold" style={{ color: triggers.length > 0 ? NAVY : '#9CA3AF' }}>
                         {triggers.length} rule{triggers.length !== 1 ? 's' : ''}
                       </span>
-                      {dpCount > 0 && (
-                        <span className="text-[9px] text-gray-400">{dpCount} data pts</span>
-                      )}
+                      <span className="text-[9px] text-gray-400">{sigCat.dataPoints.length} data pts</span>
                       {triggered > 0 && (
                         <span className="text-[9px] font-bold px-1.5 py-0.5" style={{ background: 'rgba(239,68,68,0.1)', color: '#EF4444' }}>
                           {triggered} fired
