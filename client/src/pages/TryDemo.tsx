@@ -387,12 +387,12 @@ export default function TryDemo() {
         setChaosMessages(prev => {
           if (prev.length >= selectedScenario.chaosMessages.length) {
             clearInterval(messageInterval);
-            setTimeout(() => setShowChaosComplete(true), 1500);
+            setTimeout(() => setShowChaosComplete(true), 2500);
             return prev;
           }
           return [...prev, selectedScenario.chaosMessages[prev.length]];
         });
-      }, 800);
+      }, 2000);
 
       const timerInterval = setInterval(() => {
         setChaosSeconds(prev => prev + 1);
@@ -420,30 +420,15 @@ export default function TryDemo() {
   }, [currentPhase]);
 
   useEffect(() => {
-    if (showChaosComplete) {
-      const timer = setTimeout(() => moveToPrepared(), 2500);
-      return () => clearTimeout(timer);
-    }
-  }, [showChaosComplete]);
-
-  useEffect(() => {
-    if (currentPhase === 'identify') {
-      const timer = setTimeout(() => completeIdentify(), 3500);
-      return () => clearTimeout(timer);
-    }
     if (currentPhase === 'detect') {
       setDetectStep(0);
-      const t1 = setTimeout(() => setDetectStep(1), 700);
-      const t2 = setTimeout(() => setDetectStep(2), 1500);
-      const t3 = setTimeout(() => setDetectStep(3), 2400);
-      const t4 = setTimeout(() => completeDetect(), 4200);
+      const t1 = setTimeout(() => setDetectStep(1), 2000);
+      const t2 = setTimeout(() => setDetectStep(2), 4500);
+      const t3 = setTimeout(() => setDetectStep(3), 7500);
+      const t4 = setTimeout(() => completeDetect(), 12000);
       return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
     }
-    if (currentPhase === 'advance' && !learnings) {
-      const timer = setTimeout(() => completeAdvance(), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [currentPhase, learnings]);
+  }, [currentPhase]);
 
   const skipChaos = () => {
     if (selectedScenario) {
@@ -1212,6 +1197,14 @@ export default function TryDemo() {
                         </div>
                         <p style={{ fontSize: 10, color: MUTED, marginTop: 10, fontStyle: 'italic' }}>These improvements are automatically staged for your next playbook review cycle.</p>
                       </div>
+
+                      <Button
+                        className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-semibold py-5"
+                        onClick={completeAdvance}
+                      >
+                        See the Full Playbook That Powered This Response
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
 
                       </div>
                   )}
