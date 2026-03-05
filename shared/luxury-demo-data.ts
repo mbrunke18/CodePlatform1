@@ -134,7 +134,7 @@ export const roiComparisonData = {
       reputation: "Investor concerns about executive responsiveness"
     }
   },
-  vexor: {
+  executionOS: {
     title: "M Coordination",
     timeline: "12 Minutes",
     outcome: "€280M Value Preserved",

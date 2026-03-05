@@ -104,7 +104,6 @@ export default function OurStory() {
   return (
     <PageLayout>
       <PageHero
-        variant="navy"
         eyebrow="The Origin Story"
         title="40-Second Decisions. Years of Preparation."
         subtitle="How one coach's championship methodology became the execution engine for Fortune 1000 companies."

@@ -29,7 +29,7 @@ export default function CulturalAnalyticsPanel() {
     }
   }, [organizations]);
 
-  const { data: metrics, isLoading } = useQuery({
+  const { data: metrics, isLoading } = useQuery<CulturalMetric[] | null>({
     queryKey: [`/api/echo-cultural-metrics/${organizationId}/latest`],
     enabled: !!organizationId
   });

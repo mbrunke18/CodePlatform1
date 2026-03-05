@@ -4,7 +4,7 @@ import SignalIntelligenceHub from '@/pages/SignalIntelligenceHub';
 export default function DashboardPage() {
   return (
     <IDEALayout>
-      <SignalIntelligenceHub embedded={true} />
+      <SignalIntelligenceHub />
     </IDEALayout>
   );
 }

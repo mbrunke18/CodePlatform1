@@ -299,7 +299,7 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={login}
+                  onClick={() => login()}
                   className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3 text-sm"
                   data-testid="nav-login"
                 >
@@ -387,7 +387,7 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     variant="ghost"
-                    onClick={login}
+                    onClick={() => login()}
                     className="w-full justify-center h-9 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-login"
                   >
@@ -506,7 +506,7 @@ export default function StandardNav() {
               ) : (
                 <Button
                   variant="ghost"
-                  onClick={login}
+                  onClick={() => login()}
                   className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
                   data-testid="nav-mobile-signin"
                 >

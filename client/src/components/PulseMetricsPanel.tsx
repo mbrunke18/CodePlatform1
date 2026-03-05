@@ -30,7 +30,7 @@ export default function PulseMetricsPanel() {
     }
   }, [organizations]);
 
-  const { data: metrics, isLoading } = useQuery({
+  const { data: metrics, isLoading } = useQuery<PulseMetric[] | null>({
     queryKey: [`/api/pulse-metrics/${organizationId}/latest`],
     enabled: !!organizationId
   });

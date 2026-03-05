@@ -2,6 +2,8 @@ import { useEffect, CSSProperties } from 'react';
 import { useLocation } from 'wouter';
 import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from "@/components/layout/PageLayout";
+import { Button } from "@/components/ui/button";
+import { Check, ArrowRight } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";

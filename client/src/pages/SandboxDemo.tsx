@@ -178,6 +178,12 @@ const STAKEHOLDER_OPTIONS = [
   { id: "legal", label: "Senior Legal Counsel", icon: Scale, level: 3 },
 ];
 
+const STAKEHOLDER_COLORS: Record<1|2|3, string> = {
+  1: "text-[#0A0F2E]",
+  2: "text-[#C9A84C]",
+  3: "text-[#2B8A6E]",
+};
+
 const NOTIFICATION_OPTIONS = [
   { id: "email", label: "Email", icon: Mail },
   { id: "slack", label: "Slack", icon: MessageSquare },

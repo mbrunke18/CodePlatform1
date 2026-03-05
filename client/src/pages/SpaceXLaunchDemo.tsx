@@ -305,7 +305,7 @@ export default function SpaceXLaunchDemo() {
 
             <ROIComparison
               traditional={spacexLaunchDemoData.roiComparisonData.traditional}
-              vexor={spacexLaunchDemoData.roiComparisonData.vexor}
+              executionOS={spacexLaunchDemoData.roiComparisonData.vexor}
               bottomLine={spacexLaunchDemoData.roiComparisonData.bottomLine}
             />
 

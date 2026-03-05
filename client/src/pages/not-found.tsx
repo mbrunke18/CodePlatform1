@@ -9,7 +9,7 @@ export default function NotFound() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <StandardNav variant="default" />
+      <StandardNav />
       <div className="page-background flex-1 w-full flex items-center justify-center bg-gray-50 dark:bg-[#0A0F2E]">
         <Card className="w-full max-w-md mx-4 dark:bg-[#0A0F2E] dark:border-slate-800">
           <CardContent className="pt-6">

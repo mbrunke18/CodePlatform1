@@ -196,7 +196,7 @@ export const financialDemoData = {
         stockImpact: "-22% in 48 hours"
       }
     },
-    vexor: {
+    executionOS: {
       label: "M Response",
       duration: "12 Minutes",
       approach: "AI-triggered playbook with pre-approved coordination",

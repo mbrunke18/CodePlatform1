@@ -252,7 +252,7 @@ router.get('/jira/auth', requireAuth, (req, res) => {
 
   const state = encodeURIComponent(JSON.stringify({
     orgId: req.query.orgId,
-    userId: req.userId
+    userId: (req as any).userId
   }));
 
   const scopes = [

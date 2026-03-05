@@ -102,9 +102,9 @@ export class DatabaseNotificationService {
 
       // Send via NotificationManager
       await notificationManager.sendScenarioAlert(
-        notification.notification.type,
+        notification.notification.type || 'alert',
         `${notification.notification.title}\n\n${notification.notification.message}`,
-        severity,
+        severity as "high" | "low" | "medium" | "critical",
         metadata
       );
 

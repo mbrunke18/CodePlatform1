@@ -191,11 +191,11 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
   // Calculate aggregate stats
   const avgCompletionTime = performances.length > 0
-    ? Math.round(performances.reduce((sum, p) => sum + (p.timeToComplete || 0), 0) / performances.length)
+    ? Math.round(performances.reduce((sum: number, p: any) => sum + (p.timeToComplete || 0), 0) / performances.length)
     : 0;
 
   const avgSuccessRate = performances.length > 0
-    ? Math.round(performances.reduce((sum, p) => sum + (p.successRate || 0), 0) / performances.length)
+    ? Math.round(performances.reduce((sum: number, p: any) => sum + (p.successRate || 0), 0) / performances.length)
     : 0;
 
   return (
@@ -528,7 +528,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             ) : (
               completedDrills.map((drill: any) => {
                 const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
-                const performance = performances.find(p => p.drillId === drill.id);
+                const performance = performances.find((p: any) => p.drillId === drill.id);
                 
                 return (
                   <Card key={drill.id} className="border border-[#E8E4DC] bg-white hover:shadow-sm transition-all" data-testid={`card-completed-drill-${drill.id}`}>
@@ -598,8 +598,8 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <div className="space-y-2">
                         <h4 className="font-medium">Common Bottlenecks</h4>
                         <div className="space-y-1">
-                          {Array.from(new Set(
-                            performances.flatMap(p => p.bottlenecks || [])
+                          {Array.from(new Set<string>(
+                            performances.flatMap((p: any) => (p.bottlenecks || []) as string[])
                           )).slice(0, 5).map((bottleneck, i) => (
                             <div key={i} className="flex items-center gap-2 text-sm">
                               <AlertTriangle className="h-4 w-4 text-yellow-600" />
@@ -615,13 +615,13 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">Best Time:</span>
                             <span className="font-medium">
-                              {Math.min(...performances.map(p => p.timeToComplete || 999))}m
+                              {Math.min(...performances.map((p: any) => p.timeToComplete || 999))}m
                             </span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-muted-foreground">Best Success Rate:</span>
                             <span className="font-medium">
-                              {Math.max(...performances.map(p => p.successRate || 0))}%
+                              {Math.max(...performances.map((p: any) => p.successRate || 0))}%
                             </span>
                           </div>
                           <div className="flex justify-between">
@@ -724,7 +724,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                               Stable
                             </Badge>
                           )}
-                          {item.trend === "down" && (
+                          {(item.trend as string) === "down" && (
                             <Badge variant="outline" className="text-red-700 border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-950/30">
                               <TrendingUp className="h-3 w-3 mr-1 rotate-180" />
                               Down

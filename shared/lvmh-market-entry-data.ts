@@ -361,7 +361,7 @@ export const lvmhMarketEntryDemoData = {
         "Competitors gain 6-month brand awareness head start in tier-2 cities"
       ]
     },
-    vexor: {
+    executionOS: {
       label: "M Coordination",
       duration: "12 Minutes",
       outcome: "Unified 10-Brand Simultaneous Launch",

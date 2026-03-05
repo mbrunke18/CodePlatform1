@@ -606,7 +606,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                             <p style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{event.team}: {event.action}</p>
                             <p style={{ color: "#6B7280", fontSize: 12 }}>{event.time}</p>
                           </div>
-                          <Badge variant="ghost" style={{ fontSize: 9, color: "#6B7280" }}>
+                          <Badge variant="outline" style={{ fontSize: 9, color: "#6B7280" }}>
                             {event.status.toUpperCase()}
                           </Badge>
                         </div>

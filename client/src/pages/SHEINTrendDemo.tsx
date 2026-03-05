@@ -305,7 +305,7 @@ export default function SHEINTrendDemo() {
 
             <ROIComparison
               traditional={sheinTrendDemoData.roiComparisonData.traditional}
-              vexor={sheinTrendDemoData.roiComparisonData.vexor}
+              executionOS={sheinTrendDemoData.roiComparisonData.vexor}
               bottomLine={sheinTrendDemoData.roiComparisonData.bottomLine}
             />
 

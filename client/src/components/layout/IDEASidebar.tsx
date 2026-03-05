@@ -191,7 +191,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
           </div>
         ) : (
           <Button
-            onClick={login}
+            onClick={() => login()}
             variant="outline"
             className="w-full justify-start gap-2"
           >

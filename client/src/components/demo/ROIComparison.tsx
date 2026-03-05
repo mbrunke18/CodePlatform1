@@ -13,14 +13,16 @@ interface ROISideProps {
 
 interface ROIComparisonProps {
   traditional: ROISideProps;
-  vexor: ROISideProps;
+  executionOS: ROISideProps;
+  vexor?: ROISideProps;
   bottomLine: {
     value: string;
     metric: string;
   };
 }
 
-export default function ROIComparison({ traditional, vexor, bottomLine }: ROIComparisonProps) {
+export default function ROIComparison({ traditional, executionOS, vexor, bottomLine }: ROIComparisonProps) {
+  const rightSide = executionOS ?? vexor!;
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
@@ -71,16 +73,16 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-green-400" />
-              <h3 className="font-bold text-lg text-gray-900">{vexor.label}</h3>
+              <h3 className="font-bold text-lg text-gray-900">{rightSide.label}</h3>
             </div>
-            <Badge className="bg-green-600">{vexor.duration}</Badge>
+            <Badge className="bg-green-600">{rightSide.duration}</Badge>
           </div>
 
           <div className="space-y-4">
-            {vexor.approach && (
+            {rightSide.approach && (
               <div className="border-b border-green-800/30 pb-3">
                 <p className="text-xs text-green-300">
-                  {vexor.approach}
+                  {rightSide.approach}
                 </p>
               </div>
             )}
@@ -93,14 +95,14 @@ export default function ROIComparison({ traditional, vexor, bottomLine }: ROICom
                 </span>
               </div>
               <span className="font-bold text-xl text-green-400" data-testid="text-vexor-preserved">
-                {vexor.outcome}
+                {rightSide.outcome}
               </span>
             </div>
 
             <div className="bg-white p-3 rounded border border-green-800/30">
               <p className="text-xs font-semibold mb-2 text-[#2B8A6E]">The Benefits:</p>
               <ul className="text-xs space-y-1 text-green-300">
-                {vexor.points.map((point, idx) => (
+                {rightSide.points.map((point, idx) => (
                   <li key={idx}>• {point}</li>
                 ))}
               </ul>

@@ -29,7 +29,7 @@ export default function StrategicInsightsPanel() {
     }
   }, [organizations]);
 
-  const { data: insights, isLoading } = useQuery({
+  const { data: insights, isLoading } = useQuery<PrismInsight[] | null>({
     queryKey: [`/api/prism-insights/${organizationId}/latest`],
     enabled: !!organizationId
   });

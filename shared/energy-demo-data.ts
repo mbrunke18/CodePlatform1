@@ -239,7 +239,7 @@ export const energyDemoData = {
         casualties: "12 preventable deaths"
       }
     },
-    vexor: {
+    executionOS: {
       title: "M Coordination",
       timeline: "3 Hours",
       outcome: "Zero Uncontrolled Outages",

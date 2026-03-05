@@ -55,22 +55,22 @@ interface DynamicStrategyState {
 const DynamicStrategyContext = createContext<DynamicStrategyState | null>(null);
 
 export function DynamicStrategyProvider({ children }: { children: ReactNode }) {
-  const { data: statusData, isLoading: statusLoading } = useQuery({
+  const { data: statusData, isLoading: statusLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/status'],
     refetchInterval: 60000,
   });
 
-  const { data: readinessData, isLoading: readinessLoading } = useQuery({
+  const { data: readinessData, isLoading: readinessLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/readiness'],
     refetchInterval: 60000,
   });
 
-  const { data: weakSignalsData, isLoading: signalsLoading } = useQuery({
+  const { data: weakSignalsData, isLoading: signalsLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/weak-signals'],
     refetchInterval: 120000,
   });
 
-  const { data: patternsData, isLoading: patternsLoading } = useQuery({
+  const { data: patternsData, isLoading: patternsLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/oracle-patterns'],
     refetchInterval: 120000,
   });

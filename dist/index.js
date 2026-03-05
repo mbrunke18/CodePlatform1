@@ -9805,6 +9805,13 @@ var init_storage = __esm({
       async getTriggerMonitoringHistory(triggerId) {
         return await db.select().from(triggerMonitoringHistory).where(eq(triggerMonitoringHistory.triggerId, triggerId)).orderBy(desc(triggerMonitoringHistory.timestamp));
       }
+      async getExecutiveTriggerSignals(category) {
+        let query = db.select().from(triggerSignals);
+        if (category) {
+          return await db.select().from(triggerSignals).where(eq(triggerSignals.category, category)).orderBy(triggerSignals.priority, triggerSignals.name);
+        }
+        return await query.orderBy(triggerSignals.category, triggerSignals.name);
+      }
       // Playbook-Trigger Association operations
       async getPlaybookTriggerAssociations(triggerId, playbookId) {
         const conditions = [];
@@ -16002,7 +16009,7 @@ var init_DatabaseNotificationService = __esm({
             entityId: notification.notification.entityId
           };
           await notificationManager.sendScenarioAlert(
-            notification.notification.type,
+            notification.notification.type || "alert",
             `${notification.notification.title}
 
 ${notification.notification.message}`,
@@ -40522,6 +40529,16 @@ async function registerRoutes(app2) {
       res.status(500).json({ error: "Failed to update trigger status" });
     }
   });
+  app2.get("/api/trigger-signals", requireAuth3, async (req, res) => {
+    try {
+      const { category } = req.query;
+      const signals = await storage.getExecutiveTriggerSignals(category);
+      res.json(signals);
+    } catch (error) {
+      console.error("Error fetching trigger signals:", error);
+      res.status(500).json({ error: "Failed to fetch trigger signals" });
+    }
+  });
   app2.get("/api/trigger-history/:triggerId", async (req, res) => {
     try {
       const history = await storage.getTriggerMonitoringHistory(req.params.triggerId);
@@ -42146,7 +42163,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.get("/api/dynamic-strategy/readiness", async (req, res) => {
+  app2.get("/api/dynamic-strategy/readiness", requireAuth3, async (req, res) => {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId3(req);
@@ -42165,7 +42182,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.post("/api/dynamic-strategy/readiness/calculate", async (req, res) => {
+  app2.post("/api/dynamic-strategy/readiness/calculate", requireAuth3, async (req, res) => {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId3(req);
@@ -42180,7 +42197,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.get("/api/dynamic-strategy/weak-signals", async (req, res) => {
+  app2.get("/api/dynamic-strategy/weak-signals", requireAuth3, async (req, res) => {
     try {
       const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { and: and25, eq: eq37 } = await import("drizzle-orm");
@@ -42201,7 +42218,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.get("/api/dynamic-strategy/oracle-patterns", async (req, res) => {
+  app2.get("/api/dynamic-strategy/oracle-patterns", requireAuth3, async (req, res) => {
     try {
       const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const userId = getUserId3(req);
@@ -42216,7 +42233,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.get("/api/dynamic-strategy/status", async (req, res) => {
+  app2.get("/api/dynamic-strategy/status", requireAuth3, async (req, res) => {
     try {
       const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
       const userId = getUserId3(req);

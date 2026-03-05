@@ -314,7 +314,7 @@ export const retailDemoData = {
         reputation: "Congressional hearing, FDA warning letter"
       }
     },
-    vexor: {
+    executionOS: {
       title: "M Coordination",
       timeline: "1 Hour",
       outcome: "Lives Saved",

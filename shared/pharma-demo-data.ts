@@ -201,7 +201,7 @@ export const pharmaDemoData = {
         criminalRisk: "Investigation pending"
       }
     },
-    vexor: {
+    executionOS: {
       label: "M Response",
       duration: "12 Minutes",
       approach: "Simultaneous coordination across all 2,052 stakeholders",

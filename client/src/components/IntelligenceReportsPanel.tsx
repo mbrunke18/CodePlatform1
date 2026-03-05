@@ -30,7 +30,7 @@ export default function IntelligenceReportsPanel() {
     }
   }, [organizations]);
 
-  const { data: report, isLoading } = useQuery({
+  const { data: report, isLoading } = useQuery<IntelligenceReport | null>({
     queryKey: [`/api/intelligence-reports/${organizationId}/latest`],
     enabled: !!organizationId
   });

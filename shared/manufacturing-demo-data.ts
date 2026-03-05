@@ -195,7 +195,7 @@ export const manufacturingDemoData = {
         stockImpact: "Significant negative movement"
       }
     },
-    vexor: {
+    executionOS: {
       label: "M Response",
       duration: "4 Hours",
       approach: "Pre-vetted alternatives, pre-approved budgets, instant coordination",
