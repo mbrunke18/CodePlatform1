@@ -62,6 +62,7 @@ __export(schema_exports, {
   activationActivityLog: () => activationActivityLog,
   activationEventTypeEnum: () => activationEventTypeEnum,
   activationEvents: () => activationEvents,
+  activationOutcomes: () => activationOutcomes,
   activationStakeholders: () => activationStakeholders,
   activationTasks: () => activationTasks,
   activeDecisions: () => activeDecisions,
@@ -142,6 +143,7 @@ __export(schema_exports, {
   initiativesRelations: () => initiativesRelations,
   insertActionHookSchema: () => insertActionHookSchema,
   insertActionItemSchema: () => insertActionItemSchema,
+  insertActivationOutcomeSchema: () => insertActivationOutcomeSchema,
   insertActiveDecisionSchema: () => insertActiveDecisionSchema,
   insertActivityFeedEventSchema: () => insertActivityFeedEventSchema,
   insertAiOptimizationSuggestionSchema: () => insertAiOptimizationSuggestionSchema,
@@ -240,6 +242,7 @@ __export(schema_exports, {
   insertRecommendationSchema: () => insertRecommendationSchema,
   insertRiskSchema: () => insertRiskSchema,
   insertRoiMetricSchema: () => insertRoiMetricSchema,
+  insertRoleAvailabilityFlagSchema: () => insertRoleAvailabilityFlagSchema,
   insertScenarioContextSchema: () => insertScenarioContextSchema,
   insertScenarioDependencySchema: () => insertScenarioDependencySchema,
   insertScenarioStakeholderSchema: () => insertScenarioStakeholderSchema,
@@ -359,6 +362,7 @@ __export(schema_exports, {
   risks: () => risks,
   risksRelations: () => risksRelations,
   roiMetrics: () => roiMetrics,
+  roleAvailabilityFlags: () => roleAvailabilityFlags,
   rolePermissions: () => rolePermissions,
   rolePermissionsRelations: () => rolePermissionsRelations,
   roles: () => roles,
@@ -426,7 +430,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, pilotApplications, insertPilotApplicationSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, pilotApplications, insertPilotApplicationSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -3243,6 +3247,49 @@ var init_schema = __esm({
       activatedAt: timestamp2("activated_at").defaultNow().notNull(),
       completedAt: timestamp2("completed_at"),
       createdAt: timestamp2("created_at").defaultNow()
+    });
+    activationOutcomes = pgTable2("activation_outcomes", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      activationId: uuid("activation_id").notNull(),
+      organizationId: uuid("organization_id").notNull(),
+      playbookId: uuid("playbook_id").notNull(),
+      // AI-generated summary
+      aiSummary: text2("ai_summary"),
+      // Task performance stats
+      tasksCompleted: integer2("tasks_completed").default(0),
+      tasksSkipped: integer2("tasks_skipped").default(0),
+      totalTasks: integer2("total_tasks").default(0),
+      // Time performance
+      actualMinutes: integer2("actual_minutes"),
+      targetMet: boolean("target_met"),
+      // Human input (single low-friction field)
+      humanNote: text2("human_note"),
+      // Status
+      status: varchar("status", { length: 50 }).default("pending"),
+      generatedAt: timestamp2("generated_at"),
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertActivationOutcomeSchema = createInsertSchema2(activationOutcomes).pick({
+      activationId: true,
+      organizationId: true,
+      playbookId: true,
+      humanNote: true
+    });
+    roleAvailabilityFlags = pgTable2("role_availability_flags", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: uuid("organization_id").notNull(),
+      roleName: varchar("role_name", { length: 100 }).notNull(),
+      isLimited: boolean("is_limited").default(false).notNull(),
+      note: text2("note"),
+      updatedAt: timestamp2("updated_at").defaultNow().notNull(),
+      updatedBy: varchar("updated_by", { length: 255 })
+    });
+    insertRoleAvailabilityFlagSchema = createInsertSchema2(roleAvailabilityFlags).pick({
+      organizationId: true,
+      roleName: true,
+      isLimited: true,
+      note: true,
+      updatedBy: true
     });
     complianceFrameworks = pgTable2("compliance_frameworks", {
       id: uuid("id").primaryKey().defaultRandom(),
@@ -10820,6 +10867,160 @@ var init_storage = __esm({
       }
       async deleteEnterpriseIntegration(id) {
         await db.execute(sql3`DELETE FROM enterprise_integrations WHERE id = ${id}`);
+      }
+      // ─── Role Availability Flags ────────────────────────────────────────────────
+      async getRoleAvailabilityFlags(organizationId) {
+        return db.select().from(roleAvailabilityFlags).where(eq(roleAvailabilityFlags.organizationId, organizationId));
+      }
+      async upsertRoleAvailabilityFlag(organizationId, roleName, isLimited, note, updatedBy) {
+        const existing = await db.select().from(roleAvailabilityFlags).where(and(eq(roleAvailabilityFlags.organizationId, organizationId), eq(roleAvailabilityFlags.roleName, roleName))).limit(1);
+        if (existing.length > 0) {
+          const [updated] = await db.update(roleAvailabilityFlags).set({ isLimited, note, updatedBy, updatedAt: /* @__PURE__ */ new Date() }).where(eq(roleAvailabilityFlags.id, existing[0].id)).returning();
+          return updated;
+        }
+        const [created] = await db.insert(roleAvailabilityFlags).values({ organizationId, roleName, isLimited, note, updatedBy, updatedAt: /* @__PURE__ */ new Date() }).returning();
+        return created;
+      }
+      async getLimitedRolesForPlaybook(organizationId, roleNames) {
+        if (!roleNames.length) return [];
+        return db.select().from(roleAvailabilityFlags).where(and(
+          eq(roleAvailabilityFlags.organizationId, organizationId),
+          eq(roleAvailabilityFlags.isLimited, true),
+          inArray(roleAvailabilityFlags.roleName, roleNames)
+        ));
+      }
+      // ─── Activation Outcomes ────────────────────────────────────────────────────
+      async getActivationOutcome(activationId) {
+        const [outcome] = await db.select().from(activationOutcomes).where(eq(activationOutcomes.activationId, activationId)).limit(1);
+        return outcome || null;
+      }
+      async createActivationOutcome(activationId, organizationId, playbookId) {
+        const existing = await this.getActivationOutcome(activationId);
+        if (existing) return existing;
+        const tasks4 = await db.select().from(activationTasks).where(eq(activationTasks.activationId, activationId));
+        const completed = tasks4.filter((t) => t.status === "completed").length;
+        const skipped = tasks4.filter((t) => t.status === "skipped").length;
+        const total = tasks4.length;
+        const activation = await db.select().from(playbookActivations).where(eq(playbookActivations.id, activationId)).limit(1);
+        const act = activation[0];
+        const actualMinutes = act?.actualExecutionTime ?? null;
+        const targetMet = act?.targetMet ?? null;
+        const [outcome] = await db.insert(activationOutcomes).values({ activationId, organizationId, playbookId, tasksCompleted: completed, tasksSkipped: skipped, totalTasks: total, actualMinutes, targetMet, status: "pending" }).returning();
+        return outcome;
+      }
+      async updateActivationOutcomeNote(outcomeId, humanNote) {
+        const [updated] = await db.update(activationOutcomes).set({ humanNote }).where(eq(activationOutcomes.id, outcomeId)).returning();
+        return updated;
+      }
+      async updateActivationOutcomeAI(outcomeId, aiSummary) {
+        const [updated] = await db.update(activationOutcomes).set({ aiSummary, status: "generated", generatedAt: /* @__PURE__ */ new Date() }).where(eq(activationOutcomes.id, outcomeId)).returning();
+        return updated;
+      }
+      // ─── Customer Health View (Admin) ───────────────────────────────────────────
+      async getCustomerHealthView() {
+        const orgs = await db.select({
+          id: organizations.id,
+          name: organizations.name,
+          industry: organizations.industry,
+          size: organizations.size,
+          createdAt: organizations.createdAt
+        }).from(organizations);
+        const results = await Promise.all(orgs.map(async (org) => {
+          const activationRows = await db.select({
+            count: sql3`COUNT(*)::int`,
+            lastAt: sql3`MAX(${playbookActivations.activatedAt})`,
+            completedCount: sql3`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`
+          }).from(playbookActivations).where(eq(playbookActivations.organizationId, org.id));
+          const actRow = activationRows[0];
+          const totalActivations = actRow?.count ?? 0;
+          const completedActivations = actRow?.completedCount ?? 0;
+          const lastActivationAt = actRow?.lastAt ?? null;
+          const memberRows = await db.select({ count: sql3`COUNT(*)::int` }).from(users).where(eq(users.organizationId, org.id));
+          const memberCount = memberRows[0]?.count ?? 0;
+          const triggerRows = await db.select({ count: sql3`COUNT(*)::int` }).from(executiveTriggers).where(eq(executiveTriggers.organizationId, org.id));
+          const triggerCount = triggerRows[0]?.count ?? 0;
+          const outcomeRows = await db.select({ count: sql3`COUNT(*)::int` }).from(activationOutcomes).where(and(
+            eq(activationOutcomes.organizationId, org.id),
+            sql3`${activationOutcomes.humanNote} IS NOT NULL`
+          ));
+          const closedLoopCount = outcomeRows[0]?.count ?? 0;
+          let ragStatus = "red";
+          if (lastActivationAt) {
+            const daysSince = Math.floor((Date.now() - new Date(lastActivationAt).getTime()) / 864e5);
+            ragStatus = daysSince <= 7 ? "green" : daysSince <= 21 ? "amber" : "red";
+          } else if (totalActivations === 0 && triggerCount > 0) {
+            ragStatus = "amber";
+          }
+          return { ...org, totalActivations, completedActivations, lastActivationAt, memberCount, triggerCount, closedLoopCount, ragStatus };
+        }));
+        return results;
+      }
+      // ─── Execution Maturity Score ───────────────────────────────────────────────
+      async getExecutionMaturityScore(organizationId) {
+        const actRows = await db.select({
+          total: sql3`COUNT(*)::int`,
+          completed: sql3`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`,
+          targetMets: sql3`SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::int`
+        }).from(playbookActivations).where(eq(playbookActivations.organizationId, organizationId));
+        const trigRows = await db.select({ count: sql3`COUNT(*)::int` }).from(executiveTriggers).where(eq(executiveTriggers.organizationId, organizationId));
+        const outcomeRows = await db.select({ count: sql3`COUNT(*)::int` }).from(activationOutcomes).where(and(
+          eq(activationOutcomes.organizationId, organizationId),
+          sql3`${activationOutcomes.humanNote} IS NOT NULL`
+        ));
+        const totalActivations = actRows[0]?.total ?? 0;
+        const completedActivations = actRows[0]?.completed ?? 0;
+        const targetMetCount = actRows[0]?.targetMets ?? 0;
+        const triggerDepth = Math.min(trigRows[0]?.count ?? 0, 10);
+        const closedLoopCount = outcomeRows[0]?.count ?? 0;
+        const activationScore = Math.min(totalActivations * 10, 100);
+        const advanceScore = completedActivations > 0 ? Math.min(closedLoopCount / completedActivations * 100, 100) : 0;
+        const triggerScore = triggerDepth / 10 * 100;
+        const maturityScore = Math.round(activationScore * 0.4 + advanceScore * 0.4 + triggerScore * 0.2);
+        return {
+          maturityScore,
+          totalActivations,
+          completedActivations,
+          targetMetCount,
+          targetMetRate: totalActivations > 0 ? Math.round(targetMetCount / totalActivations * 100) : 0,
+          triggerDepth,
+          closedLoopCount,
+          breakdown: {
+            activationScore: Math.round(activationScore),
+            advanceScore: Math.round(advanceScore),
+            triggerScore: Math.round(triggerScore)
+          }
+        };
+      }
+      // ─── Playbook Performance Fingerprint ──────────────────────────────────────
+      async getPlaybookPerformanceFingerprint(organizationId, playbookId) {
+        const rows = await db.select({
+          count: sql3`COUNT(*)::int`,
+          avgTime: sql3`ROUND(AVG(${playbookActivations.actualExecutionTime}), 1)`,
+          targetMetRate: sql3`ROUND(SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0) * 100, 1)`,
+          avgRating: sql3`ROUND(AVG(${playbookActivations.successRating}), 1)`,
+          lastUsed: sql3`MAX(${playbookActivations.activatedAt})`
+        }).from(playbookActivations).where(and(
+          eq(playbookActivations.organizationId, organizationId),
+          eq(playbookActivations.playbookId, playbookId)
+        ));
+        const outcomes = await db.select({
+          humanNote: activationOutcomes.humanNote,
+          aiSummary: activationOutcomes.aiSummary,
+          targetMet: activationOutcomes.targetMet,
+          actualMinutes: activationOutcomes.actualMinutes
+        }).from(activationOutcomes).where(and(
+          eq(activationOutcomes.organizationId, organizationId),
+          eq(activationOutcomes.playbookId, playbookId)
+        )).limit(5);
+        return {
+          activationCount: rows[0]?.count ?? 0,
+          avgExecutionMinutes: rows[0]?.avgTime ?? null,
+          targetMetRate: rows[0]?.targetMetRate ?? null,
+          avgSuccessRating: rows[0]?.avgRating ?? null,
+          lastUsed: rows[0]?.lastUsed ?? null,
+          recentOutcomes: outcomes,
+          hasEnoughData: (rows[0]?.count ?? 0) >= 3
+        };
       }
     };
     storage = new DatabaseStorage();
@@ -42375,6 +42576,27 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to fetch activations" });
     }
   });
+  app2.post("/api/playbook-activations", requireOrgAccess, async (req, res) => {
+    try {
+      const { playbookId, actualExecutionTime, targetMet, activationReason, situationSummary, triggerEventId } = req.body;
+      if (!playbookId) return res.status(400).json({ error: "playbookId required" });
+      const [activation] = await db.insert(playbookActivations).values({
+        organizationId: req.user.organizationId,
+        playbookId,
+        activatedBy: req.user.id,
+        activationReason: activationReason || null,
+        situationSummary: situationSummary || null,
+        triggerEventId: triggerEventId || null,
+        actualExecutionTime: actualExecutionTime || null,
+        targetMet: targetMet ?? null,
+        completedAt: /* @__PURE__ */ new Date()
+      }).returning();
+      res.json(activation);
+    } catch (error) {
+      console.error("Error creating playbook activation:", error);
+      res.status(500).json({ error: "Failed to create activation record" });
+    }
+  });
   const playbookLibraryRoutes = await Promise.resolve().then(() => (init_playbookLibraryRoutes(), playbookLibraryRoutes_exports));
   app2.use("/api/playbook-library", playbookLibraryRoutes.playbookLibraryRouter);
   const practiceDrillRoutes = await Promise.resolve().then(() => (init_practiceDrillRoutes(), practiceDrillRoutes_exports));
@@ -43551,6 +43773,119 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
   console.log("\u2705 Strategic Objectives API endpoints registered");
+  app2.get("/api/role-availability", requireOrgAccess, async (req, res) => {
+    try {
+      const flags = await storage.getRoleAvailabilityFlags(req.user.organizationId);
+      res.json(flags);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch role availability flags" });
+    }
+  });
+  app2.post("/api/role-availability", requireOrgAccess, async (req, res) => {
+    try {
+      const { roleName, isLimited, note } = req.body;
+      if (!roleName) return res.status(400).json({ error: "roleName is required" });
+      const flag = await storage.upsertRoleAvailabilityFlag(
+        req.user.organizationId,
+        roleName,
+        !!isLimited,
+        note || null,
+        req.user.id
+      );
+      res.json(flag);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update role availability" });
+    }
+  });
+  app2.post("/api/role-availability/check", requireOrgAccess, async (req, res) => {
+    try {
+      const { roleNames } = req.body;
+      const limited = await storage.getLimitedRolesForPlaybook(req.user.organizationId, roleNames || []);
+      res.json({ limitedRoles: limited });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to check role availability" });
+    }
+  });
+  app2.get("/api/activation-outcomes/:activationId", requireOrgAccess, async (req, res) => {
+    try {
+      const outcome = await storage.getActivationOutcome(req.params.activationId);
+      if (!outcome) return res.status(404).json({ error: "Outcome not found" });
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch activation outcome" });
+    }
+  });
+  app2.post("/api/activation-outcomes", requireOrgAccess, async (req, res) => {
+    try {
+      const { activationId, playbookId } = req.body;
+      if (!activationId || !playbookId) return res.status(400).json({ error: "activationId and playbookId required" });
+      const outcome = await storage.createActivationOutcome(activationId, req.user.organizationId, playbookId);
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to create activation outcome" });
+    }
+  });
+  app2.patch("/api/activation-outcomes/:id/note", requireOrgAccess, async (req, res) => {
+    try {
+      const { humanNote } = req.body;
+      if (!humanNote) return res.status(400).json({ error: "humanNote is required" });
+      const outcome = await storage.updateActivationOutcomeNote(req.params.id, humanNote);
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save note" });
+    }
+  });
+  app2.post("/api/activation-outcomes/:id/generate", requireOrgAccess, async (req, res) => {
+    try {
+      const outcome = await storage.getActivationOutcome(req.params.id);
+      if (!outcome) return res.status(404).json({ error: "Outcome not found" });
+      const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
+      const prompt = `You are an executive execution analyst. Write a concise, board-ready ADVANCE outcome summary (3-4 sentences) based on the following activation data:
+- Tasks completed: ${outcome.tasksCompleted} of ${outcome.totalTasks}
+- Tasks skipped: ${outcome.tasksSkipped}
+- Execution time: ${outcome.actualMinutes ? outcome.actualMinutes + " minutes" : "not recorded"}
+- 12-minute target met: ${outcome.targetMet === true ? "Yes" : outcome.targetMet === false ? "No" : "Unknown"}
+- Team note: ${outcome.humanNote || "No note provided"}
+
+Write the summary in third person past tense. Focus on velocity, team coordination, and lessons captured. Do not use bullet points.`;
+      const summary = await openAIService2.analyzeText(prompt);
+      const updated = await storage.updateActivationOutcomeAI(req.params.id, summary);
+      res.json(updated);
+    } catch (error) {
+      console.error("AI outcome generation error:", error);
+      res.status(500).json({ error: "Failed to generate AI summary" });
+    }
+  });
+  app2.get("/api/admin/customer-health", isAuthenticated, async (req, res) => {
+    try {
+      const user = req.user;
+      if (!user || user.role !== "admin") return res.status(403).json({ error: "Admin access required" });
+      const health = await storage.getCustomerHealthView();
+      res.json(health);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch customer health data" });
+    }
+  });
+  app2.get("/api/intelligence/maturity-score", requireOrgAccess, async (req, res) => {
+    try {
+      const score = await storage.getExecutionMaturityScore(req.user.organizationId);
+      res.json(score);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to compute maturity score" });
+    }
+  });
+  app2.get("/api/playbook-performance/:playbookId", requireOrgAccess, async (req, res) => {
+    try {
+      const fingerprint = await storage.getPlaybookPerformanceFingerprint(
+        req.user.organizationId,
+        req.params.playbookId
+      );
+      res.json(fingerprint);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch playbook performance data" });
+    }
+  });
+  console.log("\u2705 Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance");
   return httpServer;
 }
 

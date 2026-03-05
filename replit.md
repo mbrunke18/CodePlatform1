@@ -47,6 +47,41 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Purpose:** Demonstrates the before/after value of Execution OS in ~90 seconds.
 - **Flow:** Consists of 7 phases (Select, Chaos, IDENTIFY, DETECT, EXECUTE, ADVANCE, Complete) guiding the user through a simulated strategic event and its resolution. Pacing is user-controlled.
 
+**Role Availability Signal:**
+- **Purpose:** Protects the 12-minute promise — admin-set flags warn the activation console when key roles are limited.
+- **Admin UI:** `OrganizationSetup.tsx` Stakeholders tab → "Role Availability" section with 12 common executive roles (CEO, CFO, CTO, CISO, etc.) each with a toggle + optional reason note.
+- **Pre-Activation Warning:** `PlaybookActivationConsole.tsx` checks flags against the playbook's `tier1Stakeholders`/`tier2Stakeholders` and shows an amber advisory banner. Non-blocking — executive can still proceed.
+- **API:** `GET/POST /api/role-availability`, `POST /api/role-availability/check`.
+- **DB Table:** `role_availability_flags` (organizationId, roleName, isLimited, note, updatedBy).
+
+**Activation Outcome Card (ADVANCE Phase Closure):**
+- **Purpose:** Closes the ADVANCE loop — every completed playbook activation automatically seeds an outcome record.
+- **Flow:** `PlaybookActivationConsole.tsx` on completion → creates `playbook_activations` record → auto-seeds `activation_outcomes` → shows "Close the Loop — View Outcome Report →" button.
+- **Outcome Page:** `/activation-outcome/:activationId` — shows task stats, target met status, one human input field ("What would you change?"), and GPT-4o executive summary generation.
+- **API:** `GET/POST /api/activation-outcomes`, `PATCH /api/activation-outcomes/:id/note`, `POST /api/activation-outcomes/:id/generate`.
+- **DB Table:** `activation_outcomes` (activationId, orgId, playbookId, aiSummary, tasksCompleted, tasksSkipped, totalTasks, actualMinutes, targetMet, humanNote, status).
+
+**Admin Customer Health View:**
+- **Route:** `/admin/customer-health` (admin-only).
+- **Purpose:** RAG-status view across all pilot organizations for pilot management.
+- **RAG Logic:** Green = activation last 7 days, Amber = 8–21 days, Red = 22+ days or never.
+- **Metrics per org:** totalActivations, completedActivations, lastActivationAt, memberCount, triggerCount, closedLoopCount.
+- **API:** `GET /api/admin/customer-health`.
+
+**Execution Intelligence Dashboard + Maturity Score:**
+- **Component:** `client/src/components/ExecutionIntelligenceDashboard.tsx` — mounted in `Dashboard.tsx` above the Intelligence Feed.
+- **Maturity Score Formula:** `activationScore×0.4 + advanceClosureScore×0.4 + triggerDepthScore×0.2`, normalized 0–100.
+- **Labels:** 0–33 = Emerging, 34–66 = Developing, 67–100 = Operating.
+- **Shows:** Circular score display, 3 breakdown bars, key stats (activations, target met rate, closed loop count, trigger depth).
+- **API:** `GET /api/intelligence/maturity-score`.
+
+**Playbook Performance Fingerprints:**
+- **Location:** Performance tab added to `PlaybookDetail.tsx` (tabs were already imported but unused).
+- **Gating:** Tab only visible to authenticated users; requires 3+ activations for real data.
+- **Placeholder State:** Below 3 activations shows "Performance Intelligence Accumulating" message.
+- **Shows (with data):** Activation count, avg execution time, target met rate, avg success rating, recent outcome notes.
+- **API:** `GET /api/playbook-performance/:playbookId`.
+
 **Deployment:**
 - **Platform:** Replit Autoscale, custom domain `executeiq.io`.
 - **Build Strategy:** `dist/` is pre-built and committed; deployment runs `npm run start` directly.

@@ -6965,6 +6965,29 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
+  // Create a playbook activation record (called on completion from PlaybookActivationConsole)
+  app.post('/api/playbook-activations', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { playbookId, actualExecutionTime, targetMet, activationReason, situationSummary, triggerEventId } = req.body;
+      if (!playbookId) return res.status(400).json({ error: 'playbookId required' });
+      const [activation] = await db.insert(playbookActivations).values({
+        organizationId: req.user.organizationId,
+        playbookId,
+        activatedBy: req.user.id,
+        activationReason: activationReason || null,
+        situationSummary: situationSummary || null,
+        triggerEventId: triggerEventId || null,
+        actualExecutionTime: actualExecutionTime || null,
+        targetMet: targetMet ?? null,
+        completedAt: new Date(),
+      }).returning();
+      res.json(activation);
+    } catch (error) {
+      console.error('Error creating playbook activation:', error);
+      res.status(500).json({ error: 'Failed to create activation record' });
+    }
+  });
+
   // Playbook Library routes
   const playbookLibraryRoutes = await import('./routes/playbookLibraryRoutes.js');
   app.use('/api/playbook-library', playbookLibraryRoutes.playbookLibraryRouter);
@@ -8553,6 +8576,137 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   console.log('✅ Strategic Objectives API endpoints registered');
+
+  // ─── Role Availability Flags ──────────────────────────────────────────────
+
+  app.get('/api/role-availability', requireOrgAccess, async (req: any, res) => {
+    try {
+      const flags = await storage.getRoleAvailabilityFlags(req.user.organizationId);
+      res.json(flags);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch role availability flags' });
+    }
+  });
+
+  app.post('/api/role-availability', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { roleName, isLimited, note } = req.body;
+      if (!roleName) return res.status(400).json({ error: 'roleName is required' });
+      const flag = await storage.upsertRoleAvailabilityFlag(
+        req.user.organizationId, roleName, !!isLimited, note || null, req.user.id
+      );
+      res.json(flag);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to update role availability' });
+    }
+  });
+
+  app.post('/api/role-availability/check', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { roleNames } = req.body;
+      const limited = await storage.getLimitedRolesForPlaybook(req.user.organizationId, roleNames || []);
+      res.json({ limitedRoles: limited });
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to check role availability' });
+    }
+  });
+
+  // ─── Activation Outcomes ─────────────────────────────────────────────────
+
+  app.get('/api/activation-outcomes/:activationId', requireOrgAccess, async (req: any, res) => {
+    try {
+      const outcome = await storage.getActivationOutcome(req.params.activationId);
+      if (!outcome) return res.status(404).json({ error: 'Outcome not found' });
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch activation outcome' });
+    }
+  });
+
+  app.post('/api/activation-outcomes', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { activationId, playbookId } = req.body;
+      if (!activationId || !playbookId) return res.status(400).json({ error: 'activationId and playbookId required' });
+      const outcome = await storage.createActivationOutcome(activationId, req.user.organizationId, playbookId);
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to create activation outcome' });
+    }
+  });
+
+  app.patch('/api/activation-outcomes/:id/note', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { humanNote } = req.body;
+      if (!humanNote) return res.status(400).json({ error: 'humanNote is required' });
+      const outcome = await storage.updateActivationOutcomeNote(req.params.id, humanNote);
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to save note' });
+    }
+  });
+
+  app.post('/api/activation-outcomes/:id/generate', requireOrgAccess, async (req: any, res) => {
+    try {
+      const outcome = await storage.getActivationOutcome(req.params.id);
+      if (!outcome) return res.status(404).json({ error: 'Outcome not found' });
+
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const prompt = `You are an executive execution analyst. Write a concise, board-ready ADVANCE outcome summary (3-4 sentences) based on the following activation data:
+- Tasks completed: ${outcome.tasksCompleted} of ${outcome.totalTasks}
+- Tasks skipped: ${outcome.tasksSkipped}
+- Execution time: ${outcome.actualMinutes ? outcome.actualMinutes + ' minutes' : 'not recorded'}
+- 12-minute target met: ${outcome.targetMet === true ? 'Yes' : outcome.targetMet === false ? 'No' : 'Unknown'}
+- Team note: ${outcome.humanNote || 'No note provided'}
+
+Write the summary in third person past tense. Focus on velocity, team coordination, and lessons captured. Do not use bullet points.`;
+
+      const summary = await openAIService.analyzeText(prompt);
+      const updated = await storage.updateActivationOutcomeAI(req.params.id, summary);
+      res.json(updated);
+    } catch (error) {
+      console.error('AI outcome generation error:', error);
+      res.status(500).json({ error: 'Failed to generate AI summary' });
+    }
+  });
+
+  // ─── Admin Customer Health View ──────────────────────────────────────────
+
+  app.get('/api/admin/customer-health', isAuthenticated, async (req: any, res) => {
+    try {
+      const user = req.user;
+      if (!user || user.role !== 'admin') return res.status(403).json({ error: 'Admin access required' });
+      const health = await storage.getCustomerHealthView();
+      res.json(health);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch customer health data' });
+    }
+  });
+
+  // ─── Execution Intelligence / Maturity Score ─────────────────────────────
+
+  app.get('/api/intelligence/maturity-score', requireOrgAccess, async (req: any, res) => {
+    try {
+      const score = await storage.getExecutionMaturityScore(req.user.organizationId);
+      res.json(score);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to compute maturity score' });
+    }
+  });
+
+  // ─── Playbook Performance Fingerprint ────────────────────────────────────
+
+  app.get('/api/playbook-performance/:playbookId', requireOrgAccess, async (req: any, res) => {
+    try {
+      const fingerprint = await storage.getPlaybookPerformanceFingerprint(
+        req.user.organizationId, req.params.playbookId
+      );
+      res.json(fingerprint);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch playbook performance data' });
+    }
+  });
+
+  console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance');
 
   return httpServer;
 }

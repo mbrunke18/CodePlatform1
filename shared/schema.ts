@@ -2881,6 +2881,66 @@ export const playbookActivations = pgTable('playbook_activations', {
   createdAt: timestamp('created_at').defaultNow(),
 });
 
+// Activation Outcomes — Post-execution ADVANCE phase closure record
+export const activationOutcomes = pgTable('activation_outcomes', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  activationId: uuid('activation_id').notNull(),
+  organizationId: uuid('organization_id').notNull(),
+  playbookId: uuid('playbook_id').notNull(),
+
+  // AI-generated summary
+  aiSummary: text('ai_summary'),
+
+  // Task performance stats
+  tasksCompleted: integer('tasks_completed').default(0),
+  tasksSkipped: integer('tasks_skipped').default(0),
+  totalTasks: integer('total_tasks').default(0),
+
+  // Time performance
+  actualMinutes: integer('actual_minutes'),
+  targetMet: boolean('target_met'),
+
+  // Human input (single low-friction field)
+  humanNote: text('human_note'),
+
+  // Status
+  status: varchar('status', { length: 50 }).default('pending'),
+  generatedAt: timestamp('generated_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export type ActivationOutcome = typeof activationOutcomes.$inferSelect;
+export type InsertActivationOutcome = typeof activationOutcomes.$inferInsert;
+
+export const insertActivationOutcomeSchema = createInsertSchema(activationOutcomes).pick({
+  activationId: true,
+  organizationId: true,
+  playbookId: true,
+  humanNote: true,
+});
+
+// Role Availability Flags — Admin-set per-role availability warnings
+export const roleAvailabilityFlags = pgTable('role_availability_flags', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  roleName: varchar('role_name', { length: 100 }).notNull(),
+  isLimited: boolean('is_limited').default(false).notNull(),
+  note: text('note'),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  updatedBy: varchar('updated_by', { length: 255 }),
+});
+
+export type RoleAvailabilityFlag = typeof roleAvailabilityFlags.$inferSelect;
+export type InsertRoleAvailabilityFlag = typeof roleAvailabilityFlags.$inferInsert;
+
+export const insertRoleAvailabilityFlagSchema = createInsertSchema(roleAvailabilityFlags).pick({
+  organizationId: true,
+  roleName: true,
+  isLimited: true,
+  note: true,
+  updatedBy: true,
+});
+
 // 8. Compliance & Governance Framework
 export const complianceFrameworks = pgTable('compliance_frameworks', {
   id: uuid('id').primaryKey().defaultRandom(),

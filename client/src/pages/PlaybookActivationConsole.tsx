@@ -47,6 +47,7 @@ export default function PlaybookActivationConsole() {
   const [notes, setNotes] = useState("");
   const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
   const [executionId] = useState(`exec-${Date.now()}`);
+  const [activationDbId, setActivationDbId] = useState<string | null>(null);
 
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';
@@ -66,6 +67,25 @@ export default function PlaybookActivationConsole() {
     queryKey: [`/api/tasks?playbookId=${params?.playbookId}`],
     enabled: !!params?.playbookId,
   });
+
+  // Role availability check — extract role names from playbook and check for flags
+  const { data: roleAvailabilityFlags = [] } = useQuery<any[]>({
+    queryKey: ['/api/role-availability'],
+    enabled: !activationConfirmed,
+  });
+
+  const playbookRoleNames: string[] = playbook ? [
+    ...(typeof playbook.tier1Stakeholders === 'object' && playbook.tier1Stakeholders
+      ? Object.values(playbook.tier1Stakeholders as Record<string, any>).map((s: any) => (typeof s === 'string' ? s : s?.role || '')).filter(Boolean)
+      : []),
+    ...(typeof playbook.tier2Stakeholders === 'object' && playbook.tier2Stakeholders
+      ? Object.values(playbook.tier2Stakeholders as Record<string, any>).map((s: any) => (typeof s === 'string' ? s : s?.role || '')).filter(Boolean)
+      : []),
+  ] : [];
+
+  const limitedPlaybookRoles = roleAvailabilityFlags.filter((f: any) =>
+    f.isLimited && playbookRoleNames.some(r => r.toLowerCase().includes(f.roleName.toLowerCase()) || f.roleName.toLowerCase().includes(r.toLowerCase()))
+  );
 
   // Countdown timer - only starts after activation is confirmed
   useEffect(() => {
@@ -132,7 +152,7 @@ export default function PlaybookActivationConsole() {
         if (!response2.ok) throw new Error('Failed to update trigger status');
       }
     },
-    onSuccess: () => {
+    onSuccess: async () => {
       queryClient.refetchQueries({ queryKey: ['/api/scenarios'], exact: false });
       queryClient.refetchQueries({ queryKey: ['/api/executive-triggers'], exact: false });
       setExecutionStatus('completed');
@@ -140,6 +160,31 @@ export default function PlaybookActivationConsole() {
         title: "✅ Playbook Execution Completed",
         description: `Executed in ${formatTime(elapsedSeconds)}`,
       });
+      // Create activation DB record and auto-seed outcome card
+      try {
+        const executionTime = Math.floor(elapsedSeconds / 60);
+        const targetMet = executionTime <= 12;
+        const actRes = await fetch('/api/playbook-activations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            playbookId: params?.playbookId,
+            actualExecutionTime: executionTime,
+            targetMet,
+            triggerEventId: !isManualExecution ? params?.triggerId : null,
+          }),
+        });
+        if (actRes.ok) {
+          const act = await actRes.json();
+          setActivationDbId(act.id);
+          // Auto-create outcome record
+          await fetch('/api/activation-outcomes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ activationId: act.id, playbookId: params?.playbookId }),
+          });
+        }
+      } catch (_) {}
     },
   });
 
@@ -220,6 +265,26 @@ export default function PlaybookActivationConsole() {
                 </div>
               )}
             </div>
+
+            {/* Role Availability Warning Banner */}
+            {limitedPlaybookRoles.length > 0 && (
+              <div style={{ border: '1px solid #D97706', borderLeft: '4px solid #D97706', background: 'rgba(217, 119, 6, 0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                  <AlertTriangle className="h-4 w-4" style={{ color: '#D97706', flexShrink: 0 }} />
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#D97706' }}>Role Availability Advisory</span>
+                </div>
+                <p style={{ fontSize: 13, color: '#92400E', lineHeight: 1.5, marginBottom: 8 }}>
+                  The following roles have been flagged as limited availability by your admin. This is advisory — you can still proceed, but response time may be impacted.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 6 }}>
+                  {limitedPlaybookRoles.map((f: any) => (
+                    <span key={f.roleName} style={{ fontSize: 11, fontWeight: 600, background: 'rgba(217, 119, 6, 0.12)', color: '#92400E', padding: '3px 8px', border: '1px solid #D97706' }}>
+                      {f.roleName}{f.note ? ` — ${f.note}` : ''}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Pre-Activation Impact Preview */}
             <PreActivationImpactPreview 
@@ -578,6 +643,13 @@ export default function PlaybookActivationConsole() {
                 <p style={{ color: GOLD_LT, fontSize: 18 }}>
                   Mission critical time saved: {Math.floor(timeSaved / 60)}h {(timeSaved % 60).toFixed(0)}m
                 </p>
+                {activationDbId && (
+                  <Link href={`/activation-outcome/${activationDbId}`}>
+                    <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, borderRadius: 0, marginTop: 8 }}>
+                      Close the Loop — View Outcome Report →
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
 

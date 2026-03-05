@@ -121,6 +121,11 @@ import {
   demoLeads,
   type DemoLead,
   type InsertDemoLead,
+  activationOutcomes,
+  roleAvailabilityFlags,
+  activationTasks,
+  type ActivationOutcome,
+  type RoleAvailabilityFlag,
 } from "@shared/schema";
 
 // Infer types from table schemas where needed
@@ -2959,6 +2964,225 @@ export class DatabaseStorage implements IStorage {
 
   async deleteEnterpriseIntegration(id: string): Promise<void> {
     await db.execute(sql`DELETE FROM enterprise_integrations WHERE id = ${id}`);
+  }
+
+  // ─── Role Availability Flags ────────────────────────────────────────────────
+
+  async getRoleAvailabilityFlags(organizationId: string): Promise<RoleAvailabilityFlag[]> {
+    return db.select().from(roleAvailabilityFlags)
+      .where(eq(roleAvailabilityFlags.organizationId, organizationId));
+  }
+
+  async upsertRoleAvailabilityFlag(organizationId: string, roleName: string, isLimited: boolean, note: string | null, updatedBy: string): Promise<RoleAvailabilityFlag> {
+    const existing = await db.select().from(roleAvailabilityFlags)
+      .where(and(eq(roleAvailabilityFlags.organizationId, organizationId), eq(roleAvailabilityFlags.roleName, roleName)))
+      .limit(1);
+
+    if (existing.length > 0) {
+      const [updated] = await db.update(roleAvailabilityFlags)
+        .set({ isLimited, note, updatedBy, updatedAt: new Date() })
+        .where(eq(roleAvailabilityFlags.id, existing[0].id))
+        .returning();
+      return updated;
+    }
+
+    const [created] = await db.insert(roleAvailabilityFlags)
+      .values({ organizationId, roleName, isLimited, note, updatedBy, updatedAt: new Date() })
+      .returning();
+    return created;
+  }
+
+  async getLimitedRolesForPlaybook(organizationId: string, roleNames: string[]): Promise<RoleAvailabilityFlag[]> {
+    if (!roleNames.length) return [];
+    return db.select().from(roleAvailabilityFlags)
+      .where(and(
+        eq(roleAvailabilityFlags.organizationId, organizationId),
+        eq(roleAvailabilityFlags.isLimited, true),
+        inArray(roleAvailabilityFlags.roleName, roleNames)
+      ));
+  }
+
+  // ─── Activation Outcomes ────────────────────────────────────────────────────
+
+  async getActivationOutcome(activationId: string): Promise<ActivationOutcome | null> {
+    const [outcome] = await db.select().from(activationOutcomes)
+      .where(eq(activationOutcomes.activationId, activationId))
+      .limit(1);
+    return outcome || null;
+  }
+
+  async createActivationOutcome(activationId: string, organizationId: string, playbookId: string): Promise<ActivationOutcome> {
+    const existing = await this.getActivationOutcome(activationId);
+    if (existing) return existing;
+
+    const tasks = await db.select().from(activationTasks)
+      .where(eq(activationTasks.activationId, activationId));
+
+    const completed = tasks.filter(t => t.status === 'completed').length;
+    const skipped = tasks.filter(t => t.status === 'skipped').length;
+    const total = tasks.length;
+
+    const activation = await db.select().from(playbookActivations)
+      .where(eq(playbookActivations.id, activationId))
+      .limit(1);
+
+    const act = activation[0];
+    const actualMinutes = act?.actualExecutionTime ?? null;
+    const targetMet = act?.targetMet ?? null;
+
+    const [outcome] = await db.insert(activationOutcomes)
+      .values({ activationId, organizationId, playbookId, tasksCompleted: completed, tasksSkipped: skipped, totalTasks: total, actualMinutes, targetMet, status: 'pending' })
+      .returning();
+    return outcome;
+  }
+
+  async updateActivationOutcomeNote(outcomeId: string, humanNote: string): Promise<ActivationOutcome> {
+    const [updated] = await db.update(activationOutcomes)
+      .set({ humanNote })
+      .where(eq(activationOutcomes.id, outcomeId))
+      .returning();
+    return updated;
+  }
+
+  async updateActivationOutcomeAI(outcomeId: string, aiSummary: string): Promise<ActivationOutcome> {
+    const [updated] = await db.update(activationOutcomes)
+      .set({ aiSummary, status: 'generated', generatedAt: new Date() })
+      .where(eq(activationOutcomes.id, outcomeId))
+      .returning();
+    return updated;
+  }
+
+  // ─── Customer Health View (Admin) ───────────────────────────────────────────
+
+  async getCustomerHealthView(): Promise<any[]> {
+    const orgs = await db.select({
+      id: organizations.id,
+      name: organizations.name,
+      industry: organizations.industry,
+      size: organizations.size,
+      createdAt: organizations.createdAt,
+    }).from(organizations);
+
+    const results = await Promise.all(orgs.map(async (org) => {
+      const activationRows = await db.select({
+        count: sql<number>`COUNT(*)::int`,
+        lastAt: sql<string>`MAX(${playbookActivations.activatedAt})`,
+        completedCount: sql<number>`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`,
+      }).from(playbookActivations).where(eq(playbookActivations.organizationId, org.id));
+
+      const actRow = activationRows[0];
+      const totalActivations = actRow?.count ?? 0;
+      const completedActivations = actRow?.completedCount ?? 0;
+      const lastActivationAt = actRow?.lastAt ?? null;
+
+      const memberRows = await db.select({ count: sql<number>`COUNT(*)::int` })
+        .from(users).where(eq(users.organizationId, org.id));
+      const memberCount = memberRows[0]?.count ?? 0;
+
+      const triggerRows = await db.select({ count: sql<number>`COUNT(*)::int` })
+        .from(executiveTriggers).where(eq(executiveTriggers.organizationId, org.id));
+      const triggerCount = triggerRows[0]?.count ?? 0;
+
+      const outcomeRows = await db.select({ count: sql<number>`COUNT(*)::int` })
+        .from(activationOutcomes).where(and(
+          eq(activationOutcomes.organizationId, org.id),
+          sql`${activationOutcomes.humanNote} IS NOT NULL`
+        ));
+      const closedLoopCount = outcomeRows[0]?.count ?? 0;
+
+      let ragStatus: 'green' | 'amber' | 'red' = 'red';
+      if (lastActivationAt) {
+        const daysSince = Math.floor((Date.now() - new Date(lastActivationAt).getTime()) / 86400000);
+        ragStatus = daysSince <= 7 ? 'green' : daysSince <= 21 ? 'amber' : 'red';
+      } else if (totalActivations === 0 && triggerCount > 0) {
+        ragStatus = 'amber';
+      }
+
+      return { ...org, totalActivations, completedActivations, lastActivationAt, memberCount, triggerCount, closedLoopCount, ragStatus };
+    }));
+
+    return results;
+  }
+
+  // ─── Execution Maturity Score ───────────────────────────────────────────────
+
+  async getExecutionMaturityScore(organizationId: string): Promise<any> {
+    const actRows = await db.select({
+      total: sql<number>`COUNT(*)::int`,
+      completed: sql<number>`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`,
+      targetMets: sql<number>`SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::int`,
+    }).from(playbookActivations).where(eq(playbookActivations.organizationId, organizationId));
+
+    const trigRows = await db.select({ count: sql<number>`COUNT(*)::int` })
+      .from(executiveTriggers).where(eq(executiveTriggers.organizationId, organizationId));
+
+    const outcomeRows = await db.select({ count: sql<number>`COUNT(*)::int` })
+      .from(activationOutcomes).where(and(
+        eq(activationOutcomes.organizationId, organizationId),
+        sql`${activationOutcomes.humanNote} IS NOT NULL`
+      ));
+
+    const totalActivations = actRows[0]?.total ?? 0;
+    const completedActivations = actRows[0]?.completed ?? 0;
+    const targetMetCount = actRows[0]?.targetMets ?? 0;
+    const triggerDepth = Math.min(trigRows[0]?.count ?? 0, 10);
+    const closedLoopCount = outcomeRows[0]?.count ?? 0;
+
+    const activationScore = Math.min(totalActivations * 10, 100);
+    const advanceScore = completedActivations > 0 ? Math.min((closedLoopCount / completedActivations) * 100, 100) : 0;
+    const triggerScore = (triggerDepth / 10) * 100;
+
+    const maturityScore = Math.round(activationScore * 0.4 + advanceScore * 0.4 + triggerScore * 0.2);
+
+    return {
+      maturityScore,
+      totalActivations,
+      completedActivations,
+      targetMetCount,
+      targetMetRate: totalActivations > 0 ? Math.round((targetMetCount / totalActivations) * 100) : 0,
+      triggerDepth,
+      closedLoopCount,
+      breakdown: {
+        activationScore: Math.round(activationScore),
+        advanceScore: Math.round(advanceScore),
+        triggerScore: Math.round(triggerScore),
+      }
+    };
+  }
+
+  // ─── Playbook Performance Fingerprint ──────────────────────────────────────
+
+  async getPlaybookPerformanceFingerprint(organizationId: string, playbookId: string): Promise<any> {
+    const rows = await db.select({
+      count: sql<number>`COUNT(*)::int`,
+      avgTime: sql<number>`ROUND(AVG(${playbookActivations.actualExecutionTime}), 1)`,
+      targetMetRate: sql<number>`ROUND(SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0) * 100, 1)`,
+      avgRating: sql<number>`ROUND(AVG(${playbookActivations.successRating}), 1)`,
+      lastUsed: sql<string>`MAX(${playbookActivations.activatedAt})`,
+    }).from(playbookActivations).where(and(
+      eq(playbookActivations.organizationId, organizationId),
+      eq(playbookActivations.playbookId, playbookId)
+    ));
+
+    const outcomes = await db.select({
+      humanNote: activationOutcomes.humanNote,
+      aiSummary: activationOutcomes.aiSummary,
+      targetMet: activationOutcomes.targetMet,
+      actualMinutes: activationOutcomes.actualMinutes,
+    }).from(activationOutcomes).where(and(
+      eq(activationOutcomes.organizationId, organizationId),
+      eq(activationOutcomes.playbookId, playbookId)
+    )).limit(5);
+
+    return {
+      activationCount: rows[0]?.count ?? 0,
+      avgExecutionMinutes: rows[0]?.avgTime ?? null,
+      targetMetRate: rows[0]?.targetMetRate ?? null,
+      avgSuccessRating: rows[0]?.avgRating ?? null,
+      lastUsed: rows[0]?.lastUsed ?? null,
+      recentOutcomes: outcomes,
+      hasEnoughData: (rows[0]?.count ?? 0) >= 3,
+    };
   }
 }
 

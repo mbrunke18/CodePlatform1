@@ -23,6 +23,7 @@ import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { BrandStamp } from "@/components/BrandStamp";
 import AICopilotPanel from '@/components/AICopilotPanel';
+import ExecutionIntelligenceDashboard from '@/components/ExecutionIntelligenceDashboard';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -210,6 +211,14 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-8 space-y-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 mb-2">
+                  <div className="w-8 h-0.5" style={{ background: GOLD }} />
+                  <h2 style={{ ...CG, fontSize: "28px", color: NAVY }}>ADVANCE · Intelligence Accumulation</h2>
+                </div>
+                <ExecutionIntelligenceDashboard />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <PhaseCard
                   phase="IDENTIFY"

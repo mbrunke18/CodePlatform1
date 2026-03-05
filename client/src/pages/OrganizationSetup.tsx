@@ -94,6 +94,25 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('departments');
+  const [availabilityNote, setAvailabilityNote] = useState<Record<string, string>>({});
+
+  const COMMON_ROLES = ['CEO', 'CFO', 'COO', 'CTO', 'CISO', 'CMO', 'CLO', 'CPO', 'Head of Legal', 'Head of Communications', 'Head of HR', 'Head of Finance'];
+
+  const { data: availabilityFlags = [] } = useQuery<any[]>({
+    queryKey: ['/api/role-availability'],
+  });
+
+  const upsertAvailabilityMutation = useMutation({
+    mutationFn: (data: { roleName: string; isLimited: boolean; note?: string }) =>
+      apiRequest('POST', '/api/role-availability', data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/role-availability'] });
+    },
+    onError: () => toast({ title: 'Error', description: 'Failed to update availability', variant: 'destructive' }),
+  });
+
+  const getFlagForRole = (roleName: string) => availabilityFlags.find((f: any) => f.roleName === roleName);
+  const isRoleLimited = (roleName: string) => getFlagForRole(roleName)?.isLimited ?? false;
   
   // Dialog states
   const [isDepartmentDialogOpen, setIsDepartmentDialogOpen] = useState(false);
@@ -608,6 +627,56 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+
+              {/* Role Availability Flags */}
+              <div className="mt-8">
+                <div className="flex items-center gap-3 mb-2">
+                  <div style={{ width: 20, height: 2, background: '#C9A84C' }} />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A84C]">Role Availability</span>
+                </div>
+                <h3 className="text-lg font-semibold text-[#0A0F2E] mb-1">Pre-Activation Availability Flags</h3>
+                <p className="text-sm text-[#6B7280] mb-4">Mark roles as limited availability. A warning will appear before any playbook activation that depends on a flagged role.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {COMMON_ROLES.map((role) => {
+                    const limited = isRoleLimited(role);
+                    const flag = getFlagForRole(role);
+                    return (
+                      <div key={role} className={`p-4 border rounded-none transition-all ${limited ? 'border-amber-300 bg-amber-50' : 'border-[#E8E4DC] bg-[#F8F7F4]'}`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-semibold text-[#0A0F2E] text-sm">{role}</span>
+                          <Switch
+                            checked={limited}
+                            onCheckedChange={(checked) => {
+                              upsertAvailabilityMutation.mutate({
+                                roleName: role,
+                                isLimited: checked,
+                                note: availabilityNote[role] || flag?.note || '',
+                              });
+                            }}
+                          />
+                        </div>
+                        {limited && (
+                          <div className="flex items-center gap-2 mt-1">
+                            <AlertTriangle className="h-3 w-3 text-amber-600 flex-shrink-0" />
+                            <span className="text-[11px] text-amber-700 font-medium">Limited availability flagged</span>
+                          </div>
+                        )}
+                        <input
+                          type="text"
+                          placeholder={limited ? "Reason (optional)" : ""}
+                          defaultValue={flag?.note || ''}
+                          className={`mt-2 w-full text-xs border border-[#E8E4DC] px-2 py-1 rounded-none bg-white text-[#0A0F2E] placeholder:text-[#9CA3AF] outline-none focus:border-[#C9A84C] transition-colors ${!limited ? 'hidden' : ''}`}
+                          onBlur={(e) => {
+                            if (limited) {
+                              upsertAvailabilityMutation.mutate({ roleName: role, isLimited: true, note: e.target.value });
+                            }
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </TabsContent>
 

@@ -110,6 +110,8 @@ const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
+const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
+const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
@@ -445,6 +447,8 @@ function Router() {
         <Route path="/settings" component={Settings} />
         <Route path="/uat-admin" component={UATAdmin} />
         <Route path="/pilot-monitoring" component={PilotMonitoring} />
+        <Route path="/admin/customer-health" component={AdminCustomerHealth} />
+        <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 
