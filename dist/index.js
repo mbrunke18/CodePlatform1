@@ -598,6 +598,19 @@ var init_schema = __esm({
       // Average time to execute in minutes
       executionCount: integer2("execution_count").default(0),
       // How many times has this been executed?
+      // Enriched playbook content fields
+      whyItMatters: text2("why_it_matters"),
+      // Quantified "why respond fast" statement with source citation
+      signalSources: jsonb("signal_sources"),
+      // Array of strings: specific data feeds and keywords monitored
+      enrichedPhases: jsonb("enriched_phases"),
+      // Array of phase objects: name, timeWindow, objective, tasks[], restrictions[], decisionGate
+      communicationAssets: jsonb("communication_assets"),
+      // Array: { type, label, timing, subject?, body }
+      riskIndicators: jsonb("risk_indicators"),
+      // Object: { green: string[], yellow: string[], red: string[] }
+      outcomeFraming: jsonb("outcome_framing"),
+      // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
       createdBy: varchar("created_by").references(() => users.id).notNull(),
       createdAt: timestamp2("created_at").defaultNow().notNull(),
       updatedAt: timestamp2("updated_at").defaultNow()
@@ -2904,6 +2917,19 @@ var init_schema = __esm({
       // Market share retention, customer churn, etc.
       learningMetrics: jsonb("learning_metrics"),
       // What to measure for improvement
+      // Enriched playbook content (free sample playbooks + future full library)
+      whyItMatters: text2("why_it_matters"),
+      // Quantified "why respond fast" statement with source citation
+      signalSources: jsonb("signal_sources"),
+      // Array of strings: specific data feeds and keywords monitored
+      enrichedPhases: jsonb("enriched_phases"),
+      // Array of phase objects: name, timeWindow, objective, tasks[], restrictions[], decisionGate
+      communicationAssets: jsonb("communication_assets"),
+      // Array: { type, label, timing, subject?, body }
+      riskIndicators: jsonb("risk_indicators"),
+      // Object: { green: string[], yellow: string[], red: string[] }
+      outcomeFraming: jsonb("outcome_framing"),
+      // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
       // Metadata
       isPremium: boolean("is_premium").default(false),
       // Some playbooks might be premium tier
