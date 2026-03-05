@@ -187,24 +187,60 @@ export default function SignalConfiguration() {
             </Link>
           </div>
 
-          {/* Framework chain banner */}
-          <div className="mb-8 p-4 border border-[#E8E4DC] bg-[#F8F7F4] flex items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-bold" style={{ background: TEAL }}>1</div>
-              <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>Data Points</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-bold" style={{ background: GOLD }}>2</div>
-              <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Triggers Fire</span>
-            </div>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-bold" style={{ background: NAVY }}>3</div>
-              <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>Playbook Executes</span>
-            </div>
-            <div className="ml-auto text-[10px] text-gray-500 font-medium">
-              Activate data points → define trigger conditions → assign playbooks → respond in 12 minutes
+          {/* IDEA Framework chain banner */}
+          <div className="mb-8 border border-[#E8E4DC] overflow-hidden">
+            <div className="grid grid-cols-4 divide-x divide-[#E8E4DC]">
+              {[
+                {
+                  letter: 'I', phase: 'IDENTIFY', color: '#6366F1',
+                  title: 'Situation Detected',
+                  detail: 'A strategic trigger or threat is recognized — a playbook is selected or built to respond.',
+                },
+                {
+                  letter: 'D', phase: 'DETECT', color: TEAL,
+                  title: 'Data Points Active',
+                  detail: 'Signal categories monitor the conditions defined in the playbook. You configure exactly which data points to watch — here.',
+                  current: true,
+                },
+                {
+                  letter: 'E', phase: 'EXECUTE', color: GOLD,
+                  title: 'Trigger Fires → Playbook Runs',
+                  detail: 'When a monitored condition is met, the trigger fires and queues the playbook for 12-minute execution.',
+                },
+                {
+                  letter: 'A', phase: 'ADVANCE', color: NAVY,
+                  title: 'AI Lessons Learned',
+                  detail: 'After execution closes, AI analyzes outcomes and surfaces improvements for future playbook runs.',
+                },
+              ].map((step, i) => (
+                <div
+                  key={step.letter}
+                  className="p-4 relative"
+                  style={{ background: step.current ? `rgba(43,138,110,0.04)` : '#F8F7F4' }}
+                >
+                  {step.current && (
+                    <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: TEAL }} />
+                  )}
+                  <div className="flex items-center gap-2 mb-2">
+                    <div
+                      className="w-7 h-7 rounded flex items-center justify-center text-white text-sm font-black flex-shrink-0"
+                      style={{ background: step.color }}
+                    >
+                      {step.letter}
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-black uppercase tracking-widest" style={{ color: step.color }}>{step.phase}</p>
+                      <p className="text-[11px] font-bold leading-tight" style={{ color: NAVY }}>{step.title}</p>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-gray-500 leading-relaxed">{step.detail}</p>
+                  {step.current && (
+                    <div className="mt-2">
+                      <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ background: TEAL, color: '#fff' }}>You are here</span>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -449,15 +485,25 @@ export default function SignalConfiguration() {
           </div>
 
           {/* Bottom info callout */}
-          <div className="mt-8 p-5 border border-[#E8E4DC] bg-[#F8F7F4] flex items-start gap-4">
-            <Info className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
-            <div>
-              <p className="text-sm font-bold mb-1" style={{ color: NAVY }}>How this connects to your playbooks</p>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Enabling a data point means the platform watches that signal for your organization. When a monitored data point crosses a threshold,
-                a trigger fires. That trigger is linked to one or more playbooks, which automatically queue for execution — completing the 12-minute response loop.
-                Disable data points that aren't relevant to your industry or current strategic priorities.
-              </p>
+          <div className="mt-8 border border-[#E8E4DC] overflow-hidden">
+            <div className="p-4 border-b border-[#E8E4DC]" style={{ background: NAVY }}>
+              <p className="text-[9px] font-black uppercase tracking-widest text-white/60 mb-1">IDEA Framework™ — The Full Loop</p>
+              <p className="text-sm font-bold text-white">How situation → data point → trigger → execution → learning connects</p>
+            </div>
+            <div className="p-5 bg-[#F8F7F4]">
+              <ol className="space-y-3">
+                {[
+                  { phase: 'IDENTIFY', color: '#6366F1', text: 'A situation or strategic threat is identified — by leadership, AI pulse analysis, or market signal. A playbook is selected from the library (or built) that defines the response strategy.' },
+                  { phase: 'DETECT', color: TEAL, text: 'The playbook defines which signal categories are relevant. Here, you activate the specific data points within those categories that should be watched. These are the eyes of the system.' },
+                  { phase: 'EXECUTE', color: GOLD, text: 'When a monitored data point crosses its threshold, a trigger fires. That trigger is linked to the playbook — tasks are queued, stakeholders notified, and the 12-minute response clock starts.' },
+                  { phase: 'ADVANCE', color: NAVY, text: 'When execution closes, the AI analyzes what happened — what was completed, what was skipped, how long it took, and whether the target was met. Those lessons are used to improve future playbook runs automatically.' },
+                ].map(item => (
+                  <li key={item.phase} className="flex items-start gap-3">
+                    <span className="text-[9px] font-black uppercase tracking-widest px-2 py-1 flex-shrink-0 mt-0.5 text-white" style={{ background: item.color }}>{item.phase}</span>
+                    <p className="text-xs text-gray-600 leading-relaxed">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
 
