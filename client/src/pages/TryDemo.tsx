@@ -69,6 +69,8 @@ interface Scenario {
   id: string;
   name: string;
   industry: string;
+  domain: string;
+  domainCount: number;
   icon: any;
   color: string;
   borderColor: string;
@@ -119,6 +121,8 @@ const SCENARIOS: Scenario[] = [
     id: 'ransomware',
     name: 'Ransomware Attack',
     industry: 'Cybersecurity',
+    domain: 'Technology & Innovation',
+    domainCount: 20,
     icon: Shield,
     color: 'bg-[#0A0F2E]',
     borderColor: 'border-[#E8E4DC]',
@@ -145,6 +149,8 @@ const SCENARIOS: Scenario[] = [
     id: 'competitor',
     name: 'Competitor Launch',
     industry: 'Competitive Response',
+    domain: 'Market Dynamics',
+    domainCount: 22,
     icon: Target,
     color: 'bg-[#2B8A6E]',
     borderColor: 'border-[#2B8A6E]/50',
@@ -171,6 +177,8 @@ const SCENARIOS: Scenario[] = [
     id: 'regulatory',
     name: 'SEC Investigation',
     industry: 'Compliance',
+    domain: 'Regulatory & Compliance',
+    domainCount: 15,
     icon: Scale,
     color: 'bg-[#C9A84C]',
     borderColor: 'border-[#C9A84C]/50',
@@ -197,6 +205,8 @@ const SCENARIOS: Scenario[] = [
     id: 'deal-risk',
     name: 'Deal at Risk',
     industry: 'Sales & Revenue',
+    domain: 'Financial Strategy',
+    domainCount: 24,
     icon: DollarSign,
     color: 'bg-[#2B8A6E]',
     borderColor: 'border-[#2B8A6E]/50',
@@ -601,6 +611,58 @@ export default function TryDemo() {
                 </button>
               </div>
 
+              {/* How Execution OS Works — 3-step explainer */}
+              <div style={{ background: NAVY, borderRadius: 10, padding: '28px 24px', marginBottom: 8 }}>
+                <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>How Execution OS Works</span>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', marginTop: 4, fontWeight: 500 }}>You're about to watch all three stages happen live — in about 90 seconds.</p>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+                  {[
+                    {
+                      step: '01',
+                      phase: 'BEFORE THE CRISIS',
+                      color: GOLD,
+                      heading: 'Playbooks Pre-Staged',
+                      body: '170 playbooks across 9 domains — built, assigned, and ready before any crisis. Tasks, stakeholders, comms, and budget approvals pre-mapped.'
+                    },
+                    {
+                      step: '02',
+                      phase: 'CONTINUOUS MONITORING',
+                      color: '#3BAF8A',
+                      heading: 'AI Watches 216+ Signals',
+                      body: 'Machine learning monitors market, operational, regulatory, and competitive signals every 15 minutes. No manual scanning. No overnight surprises.'
+                    },
+                    {
+                      step: '03',
+                      phase: 'WHEN TRIGGERED',
+                      color: '#DFC178',
+                      heading: 'Full Execution in 12 Min',
+                      body: 'When a threshold is crossed, the matched playbook fires. Tasks assigned, stakeholders notified, board comms staged — all simultaneously.'
+                    }
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 8, padding: '16px 14px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                        <span style={{ fontSize: 22, fontWeight: 700, color: item.color, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1 }}>{item.step}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: item.color }}>{item.phase}</span>
+                      </div>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.3 }}>{item.heading}</p>
+                      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', lineHeight: 1.55, fontWeight: 400 }}>{item.body}</p>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
+                  {[['170', 'Pre-built playbooks'], ['9', 'Strategic domains'], ['216+', 'Signal sources monitored'], ['12 min', 'Execution target']].map(([val, label]) => (
+                    <div key={label} style={{ textAlign: 'center' }}>
+                      <p style={{ fontSize: 18, fontWeight: 700, color: GOLD, margin: 0, lineHeight: 1 }}>{val}</p>
+                      <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <p style={{ fontSize: 12, fontWeight: 600, color: MUTED, textAlign: 'center', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Choose a scenario to watch the system respond</p>
+
               <div className="grid md:grid-cols-2 gap-6">
                 {SCENARIOS.map((scenario) => (
                   <div
@@ -616,6 +678,7 @@ export default function TryDemo() {
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: scenario.demoType === 'offensive' ? TEAL : GOLD, flexShrink: 0 }} />
                           <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: scenario.demoType === 'offensive' ? TEAL : GOLD }}>{scenario.industry}</span>
+                          <span style={{ fontSize: 9, color: MUTED, fontWeight: 600 }}>· 1 of {scenario.domainCount} {scenario.domain} playbooks</span>
                         </div>
                         <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>{scenario.name}</h3>
                         <p className="text-slate-600 mb-6 text-sm leading-relaxed">
@@ -1309,6 +1372,85 @@ export default function TryDemo() {
 
                 {/* Sidebar */}
                 <div className="space-y-4">
+
+                  {/* Phase-specific context card */}
+                  {currentPhase === 'identify' && (
+                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Why This Was Ready</span>
+                      </div>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this playbook before today.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the crisis, not during it.</p>
+                      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
+                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Execution OS:</p>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Spend 4–8 hours assembling a response team, locating the right people, finding documents, and getting budget approval — while the situation compounds.</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {currentPhase === 'detect' && (
+                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
+                      </div>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 216+ sources — replaced by continuous AI monitoring.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Execution OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+                        {[['216+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
+                          <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '8px 10px', textAlign: 'center' }}>
+                            <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0 }}>{val}</p>
+                            <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', margin: 0, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {currentPhase === 'execute' && selectedScenario && (
+                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, animation: 'pulse 1.5s infinite' }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL }}>What's Happening Right Now</span>
+                      </div>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Execution OS is firing all of the following simultaneously — not sequentially. No one had to email anyone to start this.</p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        {[
+                          `${selectedScenario.stakeholders} role-specific task assignments`,
+                          'War room channel opened in Slack',
+                          'Jira incident tickets auto-created',
+                          'Board communication draft staged',
+                          'Budget exception flagged for approval',
+                          'External counsel pre-alert sent',
+                        ].map((item, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <div style={{ width: 5, height: 5, borderRadius: '50%', background: TEAL, flexShrink: 0 }} />
+                            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', margin: 0, fontWeight: 500 }}>{item}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ marginTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
+                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 4 }}>Without Execution OS:</p>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>Each of those 6 actions requires a human email, a meeting invite, and at least one follow-up chase. Collectively: 20–50 hours.</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {currentPhase === 'advance' && (
+                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>How The System Gets Smarter</span>
+                      </div>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Every execution teaches the system.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Pattern analysis identifies what worked, what slowed response, and where pre-staging gaps exist. Improvements are automatically staged for your next playbook review — not buried in a post-mortem slide deck that no one reads.</p>
+                      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Over time, your organization builds an institutional memory that new hires inherit from day one — not after years of experience.</p>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Value Comparison */}
                   <Card className="bg-white border-[#E8E4DC]">
                     <CardHeader className="pb-2">
