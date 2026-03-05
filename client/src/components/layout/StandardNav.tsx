@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -50,6 +50,7 @@ export default function StandardNav() {
         { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 domains" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time signal monitoring" },
         { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
+        { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Data points · triggers · playbooks" },
         { label: "AI Radar", path: "/ai-radar", icon: Brain, description: "Predictive pattern matching" },
         { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise connections" },
       ],

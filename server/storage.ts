@@ -124,8 +124,10 @@ import {
   activationOutcomes,
   roleAvailabilityFlags,
   activationTasks,
+  signalMonitoringConfig,
   type ActivationOutcome,
   type RoleAvailabilityFlag,
+  type SignalMonitoringConfig,
 } from "@shared/schema";
 
 // Infer types from table schemas where needed
@@ -2975,6 +2977,30 @@ export class DatabaseStorage implements IStorage {
 
   async deleteEnterpriseIntegration(id: string): Promise<void> {
     await db.execute(sql`DELETE FROM enterprise_integrations WHERE id = ${id}`);
+  }
+
+  // ─── Signal Monitoring Config ────────────────────────────────────────────────
+
+  async getSignalMonitoringConfig(organizationId: string): Promise<SignalMonitoringConfig | null> {
+    const [config] = await db.select().from(signalMonitoringConfig)
+      .where(eq(signalMonitoringConfig.organizationId, organizationId))
+      .limit(1);
+    return config || null;
+  }
+
+  async upsertSignalMonitoringConfig(organizationId: string, disabledDataPoints: string[]): Promise<SignalMonitoringConfig> {
+    const existing = await this.getSignalMonitoringConfig(organizationId);
+    if (existing) {
+      const [updated] = await db.update(signalMonitoringConfig)
+        .set({ disabledDataPoints, updatedAt: new Date() })
+        .where(eq(signalMonitoringConfig.organizationId, organizationId))
+        .returning();
+      return updated;
+    }
+    const [created] = await db.insert(signalMonitoringConfig)
+      .values({ organizationId, disabledDataPoints })
+      .returning();
+    return created;
   }
 
   // ─── Role Availability Flags ────────────────────────────────────────────────

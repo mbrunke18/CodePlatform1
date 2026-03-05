@@ -8718,7 +8718,32 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
 
-  console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance');
+  // ─── Signal Monitoring Config ────────────────────────────────────────────────
+  app.get('/api/signal-monitoring-config', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const config = await storage.getSignalMonitoringConfig(orgId);
+      res.json({ disabledDataPoints: config?.disabledDataPoints || [] });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.patch('/api/signal-monitoring-config', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const { disabledDataPoints } = req.body;
+      if (!Array.isArray(disabledDataPoints)) {
+        return res.status(400).json({ error: 'disabledDataPoints must be an array' });
+      }
+      const config = await storage.upsertSignalMonitoringConfig(orgId, disabledDataPoints);
+      res.json({ disabledDataPoints: config.disabledDataPoints || [] });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config');
 
   return httpServer;
 }

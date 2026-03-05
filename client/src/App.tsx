@@ -75,6 +75,7 @@ const IntegrationsPage = lazy(() => import("./pages/IntegrationsPage"));
 const IntegrationConnections = lazy(() => import("./pages/IntegrationConnections"));
 const AdvancedAnalytics = lazy(() => import("./pages/AdvancedAnalytics"));
 const TriggersManagement = lazy(() => import("./pages/TriggersManagement"));
+const SignalConfiguration = lazy(() => import("./pages/SignalConfiguration"));
 const PulseIntelligence = lazy(() => import("./pages/PulseIntelligence"));
 const FluxAdaptations = lazy(() => import("./pages/FluxAdaptations"));
 const PrismInsights = lazy(() => import("./pages/PrismInsights"));
@@ -383,6 +384,7 @@ function Router() {
 
         {/* Playbooks & Triggers */}
         <Route path="/triggers-management" component={TriggersManagement} />
+        <Route path="/signal-configuration" component={SignalConfiguration} />
         <Route path="/organization-setup" component={OrganizationSetup} />
         <Route path="/playbook-customization" component={PlaybookCustomization} />
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />

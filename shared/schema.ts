@@ -6176,6 +6176,17 @@ export interface StakeholderMapping {
 }
 
 // Pilot Applications
+// Signal Monitoring Configuration — per-org data point on/off toggles
+export const signalMonitoringConfig = pgTable('signal_monitoring_config', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  disabledDataPoints: text('disabled_data_points').array().default([]),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertSignalMonitoringConfigSchema = createInsertSchema(signalMonitoringConfig).omit({ id: true, updatedAt: true });
+export type InsertSignalMonitoringConfig = z.infer<typeof insertSignalMonitoringConfigSchema>;
+export type SignalMonitoringConfig = typeof signalMonitoringConfig.$inferSelect;
+
 export const pilotApplications = pgTable('pilot_applications', {
   id: uuid('id').primaryKey().defaultRandom(),
   firstName: text('first_name').notNull(),
