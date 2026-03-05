@@ -591,7 +591,58 @@ All buttons in `Settings.tsx` have `onClick` handlers as of March 2026:
 
 ---
 
-## 18. Build & Deployment
+## 18. Try Demo — Experience Design
+
+**File:** `client/src/pages/TryDemo.tsx` | **Route:** `/try-demo` | **Auth:** None required
+
+The demo is the primary conversion tool for unauthenticated visitors, pilot prospects, and investors. It must work without a login and demonstrate the full IDEA framework value in ~90 seconds.
+
+### 7-Phase Flow
+
+| Phase | Key Behavior |
+|---|---|
+| **Select** | Before/after two-column explainer + 4 scenario cards |
+| **Chaos** | Messages every 2s, revenue bleeds, user clicks to continue |
+| **IDENTIFY** | Pre-staged playbook revealed, user clicks to continue |
+| **DETECT** | Terminal AI scan, signals at 1.5s/3.5s/6s, auto-completes at 9s |
+| **EXECUTE** | 8 actions fire over 11s, auto-advances to ADVANCE |
+| **ADVANCE** | AI analysis, user clicks "See the Full Playbook" to continue |
+| **Complete** | Real playbook from DB revealed + pilot CTA |
+
+### Pacing Rules
+- **Do NOT add auto-advance** to Chaos, IDENTIFY, or ADVANCE. These must be user-controlled — audiences need time to absorb each phase before the next starts.
+- DETECT and EXECUTE auto-advance because they have continuous visual animation (signals appearing, actions firing) that shows completion naturally.
+
+### Data Constants
+```ts
+SCENARIO_SIGNALS   // Record<scenarioId, Signal[]> — 3 signals per scenario with source, label, strength %
+SCENARIO_ADVANCE   // Record<scenarioId, { stat, patterns[], improvements[] }> — AI analysis per scenario
+```
+
+Scenarios: `ransomware`, `competitor`, `regulatory`, `deal-risk`. Each `Scenario` object has `domain: string` and `domainCount: number` fields used on the scenario card.
+
+### DETECT Terminal Design
+- Navy Mac-style window chrome with 3 dots + monospace title
+- Gold-tinted `DEMO MODE` bar below header: *"Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 216+ sources."*
+- Confidence meter animates from 0% → signal strengths → 96%
+- Green glow "Trigger Threshold Crossed" reveal when `detectStep >= 3`
+
+### Phase-Specific Sidebar Narration
+Each IDEA phase renders a contextual navy card in the right sidebar that explains WHY this phase is remarkable vs. the current state. Controlled by `currentPhase` value:
+- `identify` → "Why This Was Ready" (playbook was pre-built before the crisis)
+- `detect` → "What AI Just Replaced" (216+ sources vs. manual analyst scanning)
+- `execute` → "What's Happening Right Now" (6 simultaneous actions listed)
+- `advance` → "How The System Gets Smarter" (institutional memory explanation)
+
+### Chaos Phase Labeling
+A prominent dark red banner renders at the very top of the chaos phase:
+> "This Is Your Current Reality — Without Execution OS"
+
+This is critical — without it, first-time viewers cannot tell whether the flooding messages represent the product or the problem. The banner must remain.
+
+---
+
+## 19. Build & Deployment
 
 ### Development
 ```bash
@@ -613,8 +664,19 @@ npm run start      # Serves pre-built dist/index.js
 - Start command: `npm run start` (no build step during deploy — avoids bundle timeout)
 - First customer org: `martybrunke` — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
 
-### Known `.replit` Issue
-The `.replit` file persistently resets to include a `build` step in the deployment block. Before every publish, set the deploy config via the Replit API to remove the build step — the API config takes precedence over the file.
+### Known `.replit` Issue — Run Before Every Publish
+The `.replit` file persistently resets to include a `build` step in the deployment block, which causes a bundle timeout during deploy. Before every publish, override it using the deployment config tool:
+
+```javascript
+// Run this via the agent before every publish:
+await deployConfig({
+  deploymentTarget: "autoscale",
+  run: ["npm", "run", "start"],
+  build: ["true"]   // "true" is a no-op — prevents bundle timeout
+});
+```
+
+The API config takes precedence over `.replit` once set.
 
 ---
 
