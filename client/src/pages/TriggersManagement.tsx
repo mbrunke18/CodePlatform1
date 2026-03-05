@@ -3,9 +3,9 @@ import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -150,6 +150,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
   const activeCount = allTriggers.filter(t => t.status === 'active').length;
   const pausedCount = allTriggers.filter(t => t.status === 'paused').length;
 
+  const allCategories = Array.from(
+    new Set(allTriggers.map((t: any) => t.category).filter(Boolean))
+  ).sort() as string[];
+
   const filteredTriggers = allTriggers.filter(trigger => {
     const categoryMatch = selectedCategory === 'all' || trigger.category === selectedCategory;
     const statusMatch = filterStatus === 'all' || trigger.status === filterStatus;
@@ -250,16 +254,48 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Management Dashboard</span>
+                <span className="text-[10px] font-semibold text-gray-500">{filteredTriggers.length} of {allTriggers.length} triggers</span>
               </div>
-              <div className="flex items-center space-x-4">
-                <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-auto">
-                  <TabsList className="bg-gray-100 p-1">
-                    <TabsTrigger value="all" className="text-[10px] font-bold uppercase tracking-wider">All</TabsTrigger>
-                    <TabsTrigger value="supply-chain" className="text-[10px] font-bold uppercase tracking-wider">Supply Chain</TabsTrigger>
-                    <TabsTrigger value="security" className="text-[10px] font-bold uppercase tracking-wider">Security</TabsTrigger>
-                    <TabsTrigger value="financial" className="text-[10px] font-bold uppercase tracking-wider">Financial</TabsTrigger>
-                  </TabsList>
-                </Tabs>
+              <div className="flex items-center gap-3 flex-wrap">
+                {/* Status filter buttons */}
+                <div className="flex items-center gap-1">
+                  {[
+                    { value: 'all', label: 'All Status' },
+                    { value: 'triggered', label: 'Triggered' },
+                    { value: 'active', label: 'Active' },
+                    { value: 'paused', label: 'Paused' },
+                  ].map((opt) => (
+                    <button
+                      key={opt.value}
+                      onClick={() => setFilterStatus(opt.value)}
+                      className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all"
+                      style={{
+                        background: filterStatus === opt.value ? NAVY : 'transparent',
+                        color: filterStatus === opt.value ? '#fff' : '#6B7280',
+                        border: `1px solid ${filterStatus === opt.value ? NAVY : '#E8E4DC'}`,
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+                {/* Dynamic category select */}
+                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <SelectTrigger
+                    className="h-8 text-[10px] font-bold uppercase tracking-wider border-[#E8E4DC] min-w-[180px]"
+                    style={{ color: NAVY }}
+                  >
+                    <SelectValue placeholder="All Categories" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all" className="text-[11px] font-semibold">All Categories</SelectItem>
+                    {allCategories.map((cat) => (
+                      <SelectItem key={cat} value={cat} className="text-[11px] font-semibold capitalize">
+                        {cat.replace(/-/g, ' ').replace(/_/g, ' ')}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
@@ -304,11 +340,11 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             <Button
                               variant="ghost"
                               size="sm"
-                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, border: "1px solid #E8E4DC" }}
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, border: `1px solid ${GOLD}`, background: "rgba(201,168,76,0.06)" }}
                               onClick={() => setViewTrigger(trigger)}
                             >
-                              <Eye className="w-3.5 h-3.5 mr-1.5" />
-                              View
+                              <Database className="w-3.5 h-3.5 mr-1.5" style={{ color: GOLD }} />
+                              Conditions & Data
                             </Button>
                             <Button
                               variant="ghost"
