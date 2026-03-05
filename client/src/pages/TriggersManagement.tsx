@@ -464,16 +464,17 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   Choose a trigger category on the left to see all alert rules and the exact data points they watch.
                 </p>
                 <div className="flex items-center gap-3 mt-6 flex-wrap justify-center">
-                  {categoryEntries.slice(0, 4).map(([catId, triggers]) => {
+                  {sortedSignalCats.slice(0, 4).map(sigCat => {
+                    const triggers     = triggersByCatId[sigCat.id] ?? [];
                     const hasTriggered = triggers.some(t => t.status === 'triggered');
                     return (
                       <button
-                        key={catId}
-                        onClick={() => setSelectedCategoryId(catId)}
+                        key={sigCat.id}
+                        onClick={() => setSelectedCategoryId(sigCat.id)}
                         className="px-3 py-2 text-[10px] font-bold uppercase tracking-wider transition-all hover:opacity-80"
                         style={{ background: hasTriggered ? 'rgba(239,68,68,0.08)' : 'rgba(43,138,110,0.08)', color: hasTriggered ? '#EF4444' : TEAL, border: `1px solid ${hasTriggered ? 'rgba(239,68,68,0.2)' : 'rgba(43,138,110,0.2)'}` }}
                       >
-                        {catId.replace(/-/g,' ')} · {triggers.length}
+                        {sigCat.name} · {triggers.length}
                       </button>
                     );
                   })}
