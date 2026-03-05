@@ -221,6 +221,52 @@ const SCENARIOS: Scenario[] = [
   },
 ];
 
+const SCENARIO_SIGNALS: Record<string, { label: string; source: string; strength: number }[]> = {
+  ransomware: [
+    { label: 'File encryption patterns across 3 production servers', source: 'EDR Console', strength: 34 },
+    { label: 'Lateral movement detected — 14 hosts affected', source: 'SIEM Alert', strength: 68 },
+    { label: 'Ransom executable confirmed — $15M demand received', source: 'Endpoint Agent', strength: 96 },
+  ],
+  competitor: [
+    { label: 'Competitor pricing page updated — 40% reduction', source: 'Web Monitor', strength: 29 },
+    { label: '3 enterprise accounts citing competitor in CRM notes', source: 'Salesforce Signal', strength: 63 },
+    { label: 'Analyst firm labels competitor "emerging category leader"', source: 'News Intelligence', strength: 91 },
+  ],
+  regulatory: [
+    { label: 'SEC EDGAR filing detected — subpoena language', source: 'Regulatory Feed', strength: 42 },
+    { label: 'Legal hold keywords spike in email monitoring', source: 'Compliance Engine', strength: 74 },
+    { label: 'External counsel retention initiated — document freeze', source: 'Legal System', strength: 95 },
+  ],
+  'deal-risk': [
+    { label: 'Deal stalled 18 days past expected stage advance', source: 'CRM Intelligence', strength: 31 },
+    { label: 'Customer engagement frequency dropped 80%', source: 'Engagement Tracker', strength: 62 },
+    { label: 'Competitor mentioned in 3 recent call transcripts', source: 'Conversation AI', strength: 88 },
+  ],
+};
+
+const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: string[]; stat: string }> = {
+  ransomware: {
+    patterns: ['Containment within 4 hours — below 6-hour industry median', 'Board notified before media inquiry — 47 min ahead', 'Ransomware strain matched to known actor — threat intel active'],
+    improvements: ['Add automated backup verification trigger at Phase 1', 'Include cyber insurer notification in Phase 2 stakeholder list', 'Pre-stage FBI Cyber Division contact in war room template'],
+    stat: '$4.9M ransom avoided through rapid containment',
+  },
+  competitor: {
+    patterns: ['91% of at-risk pipeline contacted within 12 hours', 'Battle card deployed to 47 AEs before first customer call', 'Pricing committee decision made in 38 minutes vs. 72-hour norm'],
+    improvements: ['Add competitive intelligence trigger at 20% price delta (current: 30%)', 'Include channel partners in Phase 1 stakeholder notification', 'Stage CEO quote approval in Phase 2 communication assets'],
+    stat: '$42M at-risk pipeline retained through rapid response',
+  },
+  regulatory: {
+    patterns: ['Legal hold activated 2 hours before SEC timeline requirement', 'All 14 named executives briefed within 90 minutes', '8-K draft staged for board approval — 19 hours ahead of filing deadline'],
+    improvements: ['Pre-load outside counsel engagement letter in playbook templates', 'Add IR firm to Phase 1 notifications (currently Phase 2)', 'Stage restatement scenario models as Phase 1 Finance task'],
+    stat: 'Regulatory filing timeline met — zero compliance penalties',
+  },
+  'deal-risk': {
+    patterns: ['CFO engaged within 22 minutes of deal risk flag', 'Accelerated timeline scope negotiated — delivery in 5 weeks vs. 6', 'Contract amendment executed same-day — deal preserved'],
+    improvements: ['Set deal velocity trigger at 14 days stalled (current: 18)', 'Add procurement stakeholder mapping to Phase 1 task list', 'Include margin exception approval workflow in Phase 2'],
+    stat: '$5M deal preserved — 28% margin maintained',
+  },
+};
+
 const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
   ransomware: {
     id: '247962f9-e204-4e4a-8fc0-88ffe9d98265',
@@ -292,6 +338,7 @@ export default function TryDemo() {
   
   const [executionTimer, setExecutionTimer] = useState(0);
   const [savedValue, setSavedValue] = useState(0);
+  const [detectStep, setDetectStep] = useState(0);
 
   const startDemo = (scenario: Scenario) => {
     setSelectedScenario(scenario);
@@ -321,6 +368,7 @@ export default function TryDemo() {
     setShowChaosComplete(false);
     setExecutionTimer(0);
     setSavedValue(0);
+    setDetectStep(0);
   };
 
   useEffect(() => {
@@ -374,8 +422,12 @@ export default function TryDemo() {
       return () => clearTimeout(timer);
     }
     if (currentPhase === 'detect') {
-      const timer = setTimeout(() => completeDetect(), 3500);
-      return () => clearTimeout(timer);
+      setDetectStep(0);
+      const t1 = setTimeout(() => setDetectStep(1), 700);
+      const t2 = setTimeout(() => setDetectStep(2), 1500);
+      const t3 = setTimeout(() => setDetectStep(3), 2400);
+      const t4 = setTimeout(() => completeDetect(), 4200);
+      return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
     }
     if (currentPhase === 'advance' && !learnings) {
       const timer = setTimeout(() => completeAdvance(), 3000);
@@ -878,55 +930,92 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'detect' && (
-                    <Card className="bg-white border-gray-200">
-                      <CardHeader>
-                        <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <Radar className="h-5 w-5 text-[#0A0F2E]" />
-                          DETECT: Signal Received
-                        </CardTitle>
-                        <CardDescription>
-                          AI identified a trigger matching your playbook
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg animate-pulse">
-                          <div className="flex items-center gap-2 text-red-400 mb-2">
-                            <AlertTriangle className="h-5 w-5" />
-                            <span className="font-medium">Trigger Detected</span>
+                    <div style={{ background: NAVY, borderRadius: 12, overflow: 'hidden' }}>
+                      {/* Terminal header */}
+                      <div style={{ background: NAVY_MID, padding: '10px 18px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div style={{ display: 'flex', gap: 5 }}>
+                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
+                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
+                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
+                        </div>
+                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>execution-os — signal-monitor — live</span>
+                        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
+                          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
+                          <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 216+ SOURCES</span>
+                        </div>
+                      </div>
+
+                      <div style={{ padding: '20px 20px 24px' }}>
+                        {/* Signal confidence meter */}
+                        <div style={{ marginBottom: 20 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase' }}>Trigger Confidence</span>
+                            <span style={{ fontSize: 18, fontWeight: 700, color: detectStep >= 3 ? '#22c55e' : GOLD, fontFamily: 'monospace' }}>
+                              {detectStep === 0 ? '0%' : detectStep === 1 ? `${(SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34)}%` : detectStep === 2 ? `${(SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68)}%` : `${(SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96)}%`}
+                            </span>
                           </div>
-                          <p className="text-gray-900">{selectedScenario.trigger}</p>
-                          <div className="mt-3 flex items-center gap-4 text-sm text-gray-800">
-                            <span className="flex items-center gap-1">
-                              <DollarSign className="h-4 w-4" />
-                              {formatCurrency(selectedScenario.dealValue)} at risk
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Clock className="h-4 w-4" />
-                              Detected just now
-                            </span>
+                          <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
+                            <div style={{ height: '100%', borderRadius: 3, transition: 'width 0.6s ease, background 0.4s ease', background: detectStep >= 3 ? '#22c55e' : GOLD, width: detectStep === 0 ? '2%' : detectStep === 1 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34}%` : detectStep === 2 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68}%` : `${SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96}%` }} />
+                          </div>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
+                            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)' }}>Monitoring</span>
+                            <span style={{ fontSize: 9, color: GOLD }}>Threshold: 80%</span>
+                            <span style={{ fontSize: 9, color: '#22c55e' }}>Trigger</span>
                           </div>
                         </div>
 
-                        <div className="p-4 bg-[#0A0F2E]/10 border border-[#0A0F2E]/30 rounded-lg">
-                          <div className="flex items-center gap-2 text-[#0A0F2E] mb-2">
-                            <Brain className="h-5 w-5" />
-                            <span className="font-medium">AI Recommendation</span>
-                          </div>
-                          <p className="text-sm text-gray-800">
-                            Activate <span className="text-gray-900 font-medium">{selectedScenario.playbook}</span> playbook. 
-                            Match confidence: <span className="text-[#2B8A6E] font-bold">94%</span>
-                          </p>
+                        {/* Live signals appearing */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
+                          {(SCENARIO_SIGNALS[selectedScenario.id] || []).map((signal, idx) => (
+                            detectStep > idx ? (
+                              <div key={idx} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${idx === 2 && detectStep >= 3 ? 'rgba(34,197,94,0.4)' : 'rgba(255,255,255,0.1)'}`, borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'flex-start', gap: 10, animation: 'slideIn 0.3s ease' }}>
+                                <div style={{ width: 6, height: 6, borderRadius: '50%', background: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8', marginTop: 5, flexShrink: 0 }} />
+                                <div style={{ flex: 1 }}>
+                                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: 3 }}>{signal.label}</p>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                    <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace' }}>src: {signal.source}</span>
+                                    <span style={{ fontSize: 10, fontWeight: 700, color: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8' }}>strength {signal.strength}%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div key={idx} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                                <div style={{ display: 'flex', gap: 3 }}>
+                                  {[0,1,2].map(d => <div key={d} style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.15)', animation: `pulse ${0.6 + d * 0.2}s infinite` }} />)}
+                                </div>
+                                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace' }}>scanning...</span>
+                              </div>
+                            )
+                          ))}
                         </div>
 
-                        <Button 
-                          className="w-full bg-[#0A0F2E] hover:bg-[#0A0F2E] text-white py-6 text-lg font-semibold"
-                          onClick={completeDetect}
-                        >
-                          <Play className="mr-2 h-5 w-5" />
-                          Activate Playbook
-                        </Button>
-                      </CardContent>
-                    </Card>
+                        {/* Trigger fired + Playbook match */}
+                        {detectStep >= 3 && (
+                          <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 8, padding: '14px 16px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
+                              <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Threshold Crossed — Playbook Matched</span>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                              <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
+                              <div>
+                                <p style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', margin: 0 }}>{selectedScenario.playbook}</p>
+                                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', margin: 0 }}>AI match confidence: <span style={{ color: '#22c55e', fontWeight: 700 }}>94%</span> · Activating now</p>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {detectStep < 3 && (
+                          <div style={{ textAlign: 'center', paddingTop: 8 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.4)' }}>
+                              <div style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: GOLD, borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                              <span style={{ fontSize: 12, fontFamily: 'monospace' }}>Correlating signals across {216 - detectStep * 30}+ sources...</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   )}
 
                   {currentPhase === 'execute' && (
@@ -987,60 +1076,54 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'advance' && (
-                    <Card className="bg-white border-gray-200">
-                      <CardHeader>
-                        <CardTitle className="text-gray-900 flex items-center gap-2">
-                          <BarChart3 className="h-5 w-5 text-[#DFC178]" />
-                          ADVANCE: Capture Learnings
-                        </CardTitle>
-                        <CardDescription>
-                          Turn this execution into institutional knowledge
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        {!learnings ? (
-                          <div className="space-y-4">
-                            <p className="text-gray-800">
-                              Execution OS captures what worked and suggests playbook improvements for next time.
-                            </p>
-                            <Button 
-                              className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
-                              onClick={completeAdvance}
-                            >
-                              <Sparkles className="mr-2 h-4 w-4" />
-                              Generate Insights
-                            </Button>
-                          </div>
-                        ) : (
-                          <div className="space-y-4">
-                            <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
-                              <div className="flex items-center gap-2 text-[#2B8A6E] mb-1">
-                                <CheckCircle2 className="h-4 w-4" />
-                                <span className="font-medium text-sm">Execution Complete</span>
-                              </div>
-                              <p className="text-xs text-gray-800">
-                                {formatCurrency(learnings.metrics?.dealValueProtected || 0)} protected
-                              </p>
-                            </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      {/* Outcome headline */}
+                      <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 10, padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(43,138,110,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <CheckCircle2 style={{ width: 18, height: 18, color: TEAL }} />
+                        </div>
+                        <div>
+                          <p style={{ fontSize: 15, fontWeight: 700, color: NAVY, fontFamily: "'Cormorant Garamond', serif", marginBottom: 2 }}>
+                            {selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.stat}
+                          </p>
+                          <p style={{ fontSize: 11, color: MUTED, fontWeight: 500 }}>Execution complete — {formatCurrency(selectedScenario?.dealValue || 0)} protected · Response time: 12 minutes</p>
+                        </div>
+                      </div>
 
-                            <div>
-                              <h4 className="text-xs font-medium text-[#2B8A6E] mb-2 flex items-center gap-1">
-                                <TrendingUp className="h-3 w-3" />
-                                Success Patterns Captured
-                              </h4>
-                              <div className="space-y-2">
-                                {learnings.successPatterns?.map((pattern: any, i: number) => (
-                                  <div key={i} className="p-2 bg-gray-50 rounded text-xs">
-                                    <span className="text-gray-900 font-medium">{pattern.category}:</span>
-                                    <span className="text-gray-800 ml-1">{pattern.insight}</span>
-                                  </div>
-                                ))}
-                              </div>
+                      {/* What worked */}
+                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '16px 18px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                          <TrendingUp style={{ width: 14, height: 14, color: TEAL }} />
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEAL }}>What Worked — AI Analysis</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                          {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.patterns || []).map((pattern, i) => (
+                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: OFF, borderRadius: 6 }}>
+                              <CheckCircle2 style={{ width: 12, height: 12, color: TEAL, marginTop: 2, flexShrink: 0 }} />
+                              <p style={{ fontSize: 12, color: NAVY, fontWeight: 500, lineHeight: 1.4 }}>{pattern}</p>
                             </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Playbook improvements */}
+                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '16px 18px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+                          <Lightbulb style={{ width: 14, height: 14, color: GOLD }} />
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>AI Playbook Improvements Suggested</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                          {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.improvements || []).map((improvement, i) => (
+                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 6 }}>
+                              <ArrowUpRight style={{ width: 12, height: 12, color: GOLD, marginTop: 2, flexShrink: 0 }} />
+                              <p style={{ fontSize: 12, color: NAVY, fontWeight: 500, lineHeight: 1.4 }}>{improvement}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <p style={{ fontSize: 10, color: MUTED, marginTop: 10, fontStyle: 'italic' }}>These improvements are automatically staged for your next playbook review cycle.</p>
+                      </div>
+
+                      </div>
                   )}
 
                   {currentPhase === 'complete' && (
