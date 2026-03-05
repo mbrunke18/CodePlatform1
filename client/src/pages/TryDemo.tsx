@@ -221,6 +221,29 @@ const SCENARIOS: Scenario[] = [
   },
 ];
 
+const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
+  ransomware: {
+    id: '247962f9-e204-4e4a-8fc0-88ffe9d98265',
+    name: 'Ransomware Attack',
+    badge: 'Cyber & Technology',
+  },
+  competitor: {
+    id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+    name: 'Aggressive Pricing Disruption',
+    badge: 'Market Dynamics — Free Sample',
+  },
+  regulatory: {
+    id: '966f55d7-a83b-49cf-8f47-892d13bf2d43',
+    name: 'SEC Investigation Notice',
+    badge: 'Regulatory & Compliance',
+  },
+  'deal-risk': {
+    id: '410046aa-a8a7-4531-8ecb-d555c80e4b44',
+    name: 'Customer Consolidation to Competitor',
+    badge: 'Market Dynamics',
+  },
+};
+
 const PHASES = [
   { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Execution OS' },
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'teal', description: 'Playbook ready' },
@@ -1022,14 +1045,70 @@ export default function TryDemo() {
 
                   {currentPhase === 'complete' && (
                     <div className="space-y-6">
+                      {/* Playbook reveal — primary WOW moment */}
+                      {(() => {
+                        const mapped = selectedScenario ? SCENARIO_PLAYBOOK_MAP[selectedScenario.id] : null;
+                        return mapped ? (
+                          <div style={{ background: NAVY, borderRadius: 12, overflow: 'hidden' }}>
+                            {/* Header bar */}
+                            <div style={{ background: NAVY_MID, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
+                              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+                              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Execution OS — Playbook Activated</span>
+                            </div>
+
+                            <div style={{ padding: '32px 28px' }}>
+                              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20 }}>
+                                <div style={{ width: 56, height: 56, borderRadius: 10, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                  <BookOpen style={{ width: 24, height: 24, color: GOLD }} />
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>{mapped.badge}</div>
+                                  <h2 style={{ fontSize: 24, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", marginBottom: 6, lineHeight: 1.2 }}>{mapped.name}</h2>
+                                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', margin: 0 }}>The playbook that just coordinated your response — 4 execution phases, pre-staged communications, risk indicators, and outcome benchmarks. Ready to activate for real.</p>
+                                </div>
+                              </div>
+
+                              {/* Phase preview strip */}
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, margin: '24px 0' }}>
+                                {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
+                                  <div key={phase} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '10px 12px', textAlign: 'center' }}>
+                                    <div style={{ fontSize: 16, fontWeight: 700, color: GOLD, marginBottom: 2 }}>0{i + 1}</div>
+                                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.5)' }}>{phase}</div>
+                                  </div>
+                                ))}
+                              </div>
+
+                              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
+                                {['Role-Specific Tasks', 'Board Notification Draft', 'Risk Grid', '30-Day Outcomes'].map(tag => (
+                                  <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '3px 8px' }}>{tag}</span>
+                                ))}
+                              </div>
+
+                              <button
+                                onClick={() => {
+                                  setLocation(`/playbook-library/${mapped.id}`);
+                                  window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+                                }}
+                                style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 8, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
+                              >
+                                <BookOpen style={{ width: 18, height: 18 }} />
+                                Open Your Activated Playbook
+                                <ArrowRight style={{ width: 16, height: 16 }} />
+                              </button>
+                              <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 10 }}>No login required — this is the full playbook, not a preview.</p>
+                            </div>
+                          </div>
+                        ) : null;
+                      })()}
+
                       <Card className="bg-white border-[#2B8A6E]/50 shadow-lg">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
                             <div className="inline-flex p-4 bg-[#2B8A6E]/10 rounded-full mb-4">
                               <Rocket className="h-10 w-10 text-[#2B8A6E]" />
                             </div>
-                            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>Demo Complete</h2>
-                            <p className="text-slate-600">You just experienced the IDEA Framework in action</p>
+                            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>IDEA Framework Complete</h2>
+                            <p className="text-slate-600">Identify · Detect · Execute · Advance — in 12 minutes</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-4 mb-6">
