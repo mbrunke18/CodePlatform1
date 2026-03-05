@@ -3,24 +3,22 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import {
-  ChevronDown, ChevronRight, Search, Zap, Target, TrendingUp,
-  DollarSign, Shield, Activity, Users, Globe, Cpu, BarChart3,
-  Eye, BookOpen, AlertTriangle, Radio, Leaf, Brain, Star,
-  Building2, Database, Plus, ExternalLink, Filter, CheckCircle2,
-  XCircle, Info,
+  Search, Zap, Target, TrendingUp, DollarSign, Shield, Activity,
+  Users, Globe, Cpu, BarChart3, Eye, BookOpen, AlertTriangle,
+  Radio, Leaf, Brain, Star, Building2, Database, Plus, ChevronRight,
+  CheckCircle2, XCircle, ArrowRight, Filter,
 } from 'lucide-react';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 
-const NAVY = '#0A0F2E';
-const GOLD = '#C9A84C';
-const TEAL = '#2B8A6E';
+const NAVY  = '#0A0F2E';
+const GOLD  = '#C9A84C';
+const TEAL  = '#2B8A6E';
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -28,126 +26,114 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Cpu, BarChart3, Activity, Eye, Users, Brain, Star, Leaf,
   Radio, BookOpen, AlertTriangle, Building2, Database, Filter,
 };
-
-function getCategoryIcon(iconName: string): React.ElementType {
-  return ICON_MAP[iconName] || Activity;
+function getIcon(name: string): React.ElementType {
+  return ICON_MAP[name] || Activity;
 }
 
-const PHASE_LABELS: Record<string, string> = {
-  external: 'External Signal',
-  internal: 'Internal Signal',
-};
+type DpFilter = 'all' | 'monitoring' | 'paused';
 
 export default function SignalConfiguration() {
   const { toast } = useToast();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
-  const [localDisabled, setLocalDisabled] = useState<string[] | null>(null);
+  const [, navigate] = useLocation();
 
-  const { data: configData, isLoading: configLoading } = useQuery<{ disabledDataPoints: string[] }>({
+  const [search, setSearch]             = useState('');
+  const [selectedCatId, setSelectedCatId] = useState(SIGNAL_CATEGORIES[0]?.id ?? '');
+  const [dpFilter, setDpFilter]         = useState<DpFilter>('all');
+  const [localDisabled, setLocalDisabled] = useState<string[] | null>(null);
+  const [wizardOpen, setWizardOpen]     = useState(false);
+  const [wizardCategory, setWizardCategory] = useState('');
+
+  const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[] }>({
     queryKey: ['/api/signal-monitoring-config'],
   });
-
   const { data: triggersData } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
   });
 
-  const { data: playbooksData } = useQuery<any>({
-    queryKey: ['/api/playbooks'],
-  });
-
-  const disabledDataPoints: string[] = localDisabled ?? configData?.disabledDataPoints ?? [];
+  const disabled: string[] = localDisabled ?? configData?.disabledDataPoints ?? [];
 
   const configMutation = useMutation({
-    mutationFn: async (disabled: string[]) => {
-      return apiRequest('PATCH', '/api/signal-monitoring-config', { disabledDataPoints: disabled });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/signal-monitoring-config'] });
-    },
+    mutationFn: (d: string[]) => apiRequest('PATCH', '/api/signal-monitoring-config', { disabledDataPoints: d }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['/api/signal-monitoring-config'] }),
     onError: () => {
       setLocalDisabled(null);
-      toast({ title: 'Save failed', description: 'Could not update signal configuration.', variant: 'destructive' });
+      toast({ title: 'Save failed', variant: 'destructive' });
     },
   });
 
-  const toggleDataPoint = useCallback((dpId: string) => {
-    const current = localDisabled ?? configData?.disabledDataPoints ?? [];
-    const updated = current.includes(dpId)
-      ? current.filter(id => id !== dpId)
-      : [...current, dpId];
-    setLocalDisabled(updated);
-    configMutation.mutate(updated);
+  const toggleDp = useCallback((dpId: string) => {
+    const cur = localDisabled ?? configData?.disabledDataPoints ?? [];
+    const next = cur.includes(dpId) ? cur.filter(id => id !== dpId) : [...cur, dpId];
+    setLocalDisabled(next);
+    configMutation.mutate(next);
   }, [localDisabled, configData, configMutation]);
 
-  const toggleCategory = useCallback((categoryId: string, enableAll: boolean) => {
-    const categoryDps = SIGNAL_CATEGORIES.find(c => c.id === categoryId)?.dataPoints.map(dp => dp.id) ?? [];
-    const current = localDisabled ?? configData?.disabledDataPoints ?? [];
-    let updated: string[];
-    if (enableAll) {
-      updated = current.filter(id => !categoryDps.includes(id));
-    } else {
-      const toAdd = categoryDps.filter(id => !current.includes(id));
-      updated = [...current, ...toAdd];
-    }
-    setLocalDisabled(updated);
-    configMutation.mutate(updated);
+  const toggleCategory = useCallback((catId: string, enable: boolean) => {
+    const dpIds = SIGNAL_CATEGORIES.find(c => c.id === catId)?.dataPoints.map(d => d.id) ?? [];
+    const cur = localDisabled ?? configData?.disabledDataPoints ?? [];
+    const next = enable
+      ? cur.filter(id => !dpIds.includes(id))
+      : [...cur, ...dpIds.filter(id => !cur.includes(id))];
+    setLocalDisabled(next);
+    configMutation.mutate(next);
   }, [localDisabled, configData, configMutation]);
-
-  const toggleExpanded = (categoryId: string) => {
-    setExpandedCategories(prev => {
-      const next = new Set(prev);
-      if (next.has(categoryId)) next.delete(categoryId);
-      else next.add(categoryId);
-      return next;
-    });
-  };
 
   const triggersPerCategory = useMemo(() => {
     const map: Record<string, number> = {};
-    if (!triggersData) return map;
-    for (const t of triggersData as any[]) {
+    for (const t of (triggersData ?? []) as any[]) {
       if (t.category) map[t.category] = (map[t.category] || 0) + 1;
     }
     return map;
   }, [triggersData]);
 
-  const playbooksByKey = useMemo(() => {
-    const map: Record<string, string> = {};
-    const list: any[] = playbooksData?.data ?? [];
-    for (const p of list) {
-      const key = (p.title || p.name || '').toLowerCase().replace(/\s+/g, '-');
-      map[key] = p.id;
+  const triggeredDpIds = useMemo(() => {
+    const set = new Set<string>();
+    for (const t of (triggersData ?? []) as any[]) {
+      if (t.conditions?.field) set.add(t.conditions.field);
     }
-    return map;
-  }, [playbooksData]);
+    return set;
+  }, [triggersData]);
 
-  const totalDataPoints = SIGNAL_CATEGORIES.reduce((sum, c) => sum + c.dataPoints.length, 0);
-  const activeDataPoints = totalDataPoints - disabledDataPoints.length;
-  const fullyActiveCategories = SIGNAL_CATEGORIES.filter(c =>
-    c.dataPoints.every(dp => !disabledDataPoints.includes(dp.id))
-  ).length;
+  const totalDps    = SIGNAL_CATEGORIES.reduce((s, c) => s + c.dataPoints.length, 0);
+  const activeDps   = totalDps - disabled.length;
+  const activeTriggers = ((triggersData ?? []) as any[]).filter(t => t.isActive).length;
 
-  const filteredCategories = useMemo(() => {
-    if (!searchTerm.trim()) return SIGNAL_CATEGORIES;
-    const q = searchTerm.toLowerCase();
-    return SIGNAL_CATEGORIES.filter(cat => {
-      const nameMatch = cat.name.toLowerCase().includes(q) || cat.description.toLowerCase().includes(q);
-      const dpMatch = cat.dataPoints.some(dp =>
-        dp.name.toLowerCase().includes(q) || dp.description.toLowerCase().includes(q)
-      );
-      return nameMatch || dpMatch;
-    }).map(cat => ({
-      ...cat,
-      dataPoints: searchTerm.trim()
-        ? cat.dataPoints.filter(dp =>
-            dp.name.toLowerCase().includes(q) || dp.description.toLowerCase().includes(q)
-          )
-        : cat.dataPoints,
-    }));
-  }, [searchTerm]);
+  // Left panel — category list filtered by search
+  const q = search.toLowerCase();
+  const visibleCategories = SIGNAL_CATEGORIES.filter(cat => {
+    if (!q) return true;
+    return (
+      cat.name.toLowerCase().includes(q) ||
+      cat.description.toLowerCase().includes(q) ||
+      cat.dataPoints.some(dp => dp.name.toLowerCase().includes(q) || dp.description.toLowerCase().includes(q))
+    );
+  });
 
-  if (configLoading) {
+  // When searching, auto-select first match
+  const activeCat = visibleCategories.find(c => c.id === selectedCatId) ?? visibleCategories[0];
+
+  // Right panel — data points of selected category, filtered by search + dpFilter
+  const visibleDps = useMemo(() => {
+    if (!activeCat) return [];
+    return activeCat.dataPoints.filter(dp => {
+      const textMatch = !q || dp.name.toLowerCase().includes(q) || dp.description.toLowerCase().includes(q);
+      const isEnabled = !disabled.includes(dp.id);
+      if (dpFilter === 'monitoring') return textMatch && isEnabled;
+      if (dpFilter === 'paused')     return textMatch && !isEnabled;
+      return textMatch;
+    });
+  }, [activeCat, q, dpFilter, disabled]);
+
+  const catAllActive = activeCat
+    ? activeCat.dataPoints.every(dp => !disabled.includes(dp.id))
+    : false;
+
+  const openWizardFor = (categoryId: string) => {
+    setWizardCategory(categoryId);
+    setWizardOpen(true);
+  };
+
+  if (isLoading) {
     return (
       <PageLayout>
         <div className="flex items-center justify-center min-h-screen">
@@ -159,355 +145,366 @@ export default function SignalConfiguration() {
 
   return (
     <PageLayout>
-      <div className="flex-1 overflow-auto bg-white">
-        <div className="p-8 max-w-7xl mx-auto">
+      <div className="flex flex-col h-full overflow-hidden bg-white">
 
-          {/* Header */}
-          <div className="flex items-start justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Radio className="w-6 h-6 text-white" />
+        {/* ── Top bar ─────────────────────────────────────────────── */}
+        <div className="flex-shrink-0 border-b border-[#E8E4DC] bg-white">
+          {/* Eyebrow + title row */}
+          <div className="px-6 pt-6 pb-4 flex items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Radio className="w-5 h-5 text-white" />
               </div>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>IDEA Framework · DETECT</span>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: GOLD }}>IDEA Framework</span>
+                  <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
+                  <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>DETECT</span>
                 </div>
-                <h1 style={{ ...CG, fontWeight: 700, fontSize: '2rem', color: NAVY }}>Signal Intelligence Configuration</h1>
-                <p className="text-sm text-gray-500 mt-1 max-w-xl">
-                  Control exactly what your organization monitors. Each active data point feeds your triggers, which fire your playbooks.
-                </p>
+                <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.5rem', color: NAVY, lineHeight: 1 }}>
+                  Signal Intelligence Configuration
+                </h1>
               </div>
             </div>
-            <Link href="/triggers-management">
-              <Button style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                <Zap className="w-4 h-4 mr-2" />
-                Manage Triggers
+
+            {/* Stats strip */}
+            <div className="hidden md:flex items-center gap-6">
+              {[
+                { label: 'Active Data Points', value: `${activeDps} / ${totalDps}`, color: TEAL },
+                { label: 'Active Triggers',    value: activeTriggers,               color: GOLD },
+                { label: 'Categories',         value: SIGNAL_CATEGORIES.length,     color: NAVY },
+              ].map(s => (
+                <div key={s.label} className="text-center">
+                  <p className="text-[8px] font-bold uppercase tracking-wider text-gray-400">{s.label}</p>
+                  <p className="text-lg font-black" style={{ color: s.color }}>{s.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Button
+                onClick={() => openWizardFor(selectedCatId)}
+                style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+              >
+                <Plus className="w-4 h-4 mr-1.5" />
+                Create Trigger
               </Button>
-            </Link>
+              <Link href="/triggers-management">
+                <Button variant="ghost" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: NAVY, border: '1px solid #E8E4DC' }}>
+                  <Zap className="w-3.5 h-3.5 mr-1.5" />
+                  Manage Triggers
+                </Button>
+              </Link>
+            </div>
           </div>
 
-          {/* IDEA Framework chain banner */}
-          <div className="mb-8 border border-[#E8E4DC] overflow-hidden">
-            <div className="grid grid-cols-4 divide-x divide-[#E8E4DC]">
+          {/* Search bar + IDEA chain strip */}
+          <div className="px-6 pb-4 flex items-center gap-4">
+            <div className="relative flex-1 max-w-lg">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Input
+                placeholder="Search categories, data points, or sources…"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="pl-9 h-10 border-[#E8E4DC] text-sm bg-[#F8F7F4] focus:bg-white"
+                autoFocus
+              />
+            </div>
+
+            {/* IDEA phase strip */}
+            <div className="hidden lg:flex items-center gap-1 ml-auto">
               {[
-                {
-                  letter: 'I', phase: 'IDENTIFY', color: '#6366F1',
-                  title: 'Situation Detected',
-                  detail: 'A strategic trigger or threat is recognized — a playbook is selected or built to respond.',
-                },
-                {
-                  letter: 'D', phase: 'DETECT', color: TEAL,
-                  title: 'Data Points Active',
-                  detail: 'Signal categories monitor the conditions defined in the playbook. You configure exactly which data points to watch — here.',
-                  current: true,
-                },
-                {
-                  letter: 'E', phase: 'EXECUTE', color: GOLD,
-                  title: 'Trigger Fires → Playbook Runs',
-                  detail: 'When a monitored condition is met, the trigger fires and queues the playbook for 12-minute execution.',
-                },
-                {
-                  letter: 'A', phase: 'ADVANCE', color: NAVY,
-                  title: 'AI Lessons Learned',
-                  detail: 'After execution closes, AI analyzes outcomes and surfaces improvements for future playbook runs.',
-                },
+                { letter: 'I', label: 'IDENTIFY', color: '#6366F1', active: false },
+                { letter: 'D', label: 'DETECT',   color: TEAL,      active: true  },
+                { letter: 'E', label: 'EXECUTE',  color: GOLD,      active: false },
+                { letter: 'A', label: 'ADVANCE',  color: NAVY,      active: false },
               ].map((step, i) => (
-                <div
-                  key={step.letter}
-                  className="p-4 relative"
-                  style={{ background: step.current ? `rgba(43,138,110,0.04)` : '#F8F7F4' }}
-                >
-                  {step.current && (
-                    <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: TEAL }} />
-                  )}
-                  <div className="flex items-center gap-2 mb-2">
-                    <div
-                      className="w-7 h-7 rounded flex items-center justify-center text-white text-sm font-black flex-shrink-0"
-                      style={{ background: step.color }}
-                    >
-                      {step.letter}
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-black uppercase tracking-widest" style={{ color: step.color }}>{step.phase}</p>
-                      <p className="text-[11px] font-bold leading-tight" style={{ color: NAVY }}>{step.title}</p>
-                    </div>
+                <div key={step.letter} className="flex items-center gap-1">
+                  <div
+                    className="flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-black uppercase tracking-wider"
+                    style={{
+                      background: step.active ? step.color : 'transparent',
+                      color: step.active ? '#fff' : '#9CA3AF',
+                      border: `1px solid ${step.active ? step.color : '#E8E4DC'}`,
+                    }}
+                  >
+                    <span className="font-black">{step.letter}</span>
+                    <span>{step.label}</span>
                   </div>
-                  <p className="text-[10px] text-gray-500 leading-relaxed">{step.detail}</p>
-                  {step.current && (
-                    <div className="mt-2">
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ background: TEAL, color: '#fff' }}>You are here</span>
-                    </div>
-                  )}
+                  {i < 3 && <ChevronRight className="w-3 h-3 text-gray-300" />}
                 </div>
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {[
-              { label: 'Active Data Points', value: activeDataPoints, total: totalDataPoints, color: TEAL },
-              { label: 'Categories Fully Active', value: fullyActiveCategories, total: SIGNAL_CATEGORIES.length, color: NAVY },
-              { label: 'Total Triggers Running', value: (triggersData as any[])?.filter(t => t.isActive)?.length ?? 0, total: undefined, color: GOLD },
-              { label: 'Disabled Data Points', value: disabledDataPoints.length, total: undefined, color: '#EF4444' },
-            ].map((s, i) => (
-              <div key={i} className="border border-[#E8E4DC] p-4 bg-white">
-                <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">{s.label}</p>
-                <p className="text-2xl font-bold" style={{ color: s.color }}>
-                  {s.value}
-                  {s.total !== undefined && <span className="text-sm text-gray-400 font-normal ml-1">/ {s.total}</span>}
-                </p>
-              </div>
-            ))}
-          </div>
+        {/* ── Split layout ─────────────────────────────────────────── */}
+        <div className="flex flex-1 min-h-0 overflow-hidden">
 
-          {/* Search + expand all */}
-          <div className="flex items-center gap-4 mb-6">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <Input
-                placeholder="Search categories or data points..."
-                value={searchTerm}
-                onChange={e => {
-                  setSearchTerm(e.target.value);
-                  if (e.target.value) {
-                    setExpandedCategories(new Set(SIGNAL_CATEGORIES.map(c => c.id)));
-                  }
-                }}
-                className="pl-9 border-[#E8E4DC] text-sm"
-              />
+          {/* LEFT — Category list */}
+          <div className="w-64 flex-shrink-0 border-r border-[#E8E4DC] overflow-y-auto bg-[#F8F7F4]">
+            <div className="p-3 border-b border-[#E8E4DC]">
+              <p className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+                {visibleCategories.length} of {SIGNAL_CATEGORIES.length} categories
+              </p>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-[10px] font-bold uppercase tracking-wider border border-[#E8E4DC]"
-              onClick={() => setExpandedCategories(
-                expandedCategories.size === SIGNAL_CATEGORIES.length
-                  ? new Set()
-                  : new Set(SIGNAL_CATEGORIES.map(c => c.id))
-              )}
-            >
-              {expandedCategories.size === SIGNAL_CATEGORIES.length ? 'Collapse All' : 'Expand All'}
-            </Button>
-          </div>
-
-          {/* Category cards */}
-          <div className="space-y-3">
-            {filteredCategories.map(category => {
-              const Icon = getCategoryIcon(category.icon);
-              const isExpanded = expandedCategories.has(category.id);
-              const categoryDpIds = category.dataPoints.map(dp => dp.id);
-              const activeDps = category.dataPoints.filter(dp => !disabledDataPoints.includes(dp.id)).length;
-              const allActive = activeDps === category.dataPoints.length;
-              const noneActive = activeDps === 0;
-              const triggerCount = triggersPerCategory[category.id] || 0;
-              const hasSearch = searchTerm.trim().length > 0;
+            {visibleCategories.map(cat => {
+              const Icon = getIcon(cat.icon);
+              const active   = cat.id === activeCat?.id;
+              const catDps   = cat.dataPoints.length;
+              const catOff   = cat.dataPoints.filter(dp => disabled.includes(dp.id)).length;
+              const catTriggers = triggersPerCategory[cat.id] || 0;
+              const allOn    = catOff === 0;
+              const noneOn   = catOff === catDps;
+              const statusColor = noneOn ? '#EF4444' : allOn ? TEAL : GOLD;
 
               return (
-                <div
-                  key={category.id}
-                  className="border border-[#E8E4DC] bg-white overflow-hidden"
-                  style={{ borderLeft: `3px solid ${allActive ? TEAL : noneActive ? '#EF4444' : GOLD}` }}
+                <button
+                  key={cat.id}
+                  onClick={() => { setSelectedCatId(cat.id); setDpFilter('all'); }}
+                  className="w-full text-left px-3 py-3 flex items-start gap-3 transition-colors border-b border-[#EDE9E3] hover:bg-white"
+                  style={{ background: active ? '#fff' : 'transparent', borderLeft: active ? `3px solid ${TEAL}` : '3px solid transparent' }}
                 >
-                  {/* Category header row */}
-                  <div
-                    className="flex items-center gap-4 p-4 cursor-pointer hover:bg-[#F8F7F4] transition-colors"
-                    onClick={() => toggleExpanded(category.id)}
-                  >
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <div style={{ width: 36, height: 36, background: '#F8F7F4', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <Icon className="w-5 h-5" style={{ color: NAVY }} />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-bold text-sm" style={{ color: NAVY }}>{category.name}</span>
-                          <span className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 border" style={{ color: GOLD, borderColor: 'rgba(201,168,76,0.4)' }}>
-                            {PHASE_LABELS[category.phase] ?? category.phase}
-                          </span>
-                          {triggerCount > 0 && (
-                            <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
-                              {triggerCount} trigger{triggerCount !== 1 ? 's' : ''} active
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-gray-500 mt-0.5 truncate max-w-xl">{category.description}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-6 flex-shrink-0">
-                      {/* Active count */}
-                      <div className="text-right">
-                        <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400">Data Points</p>
-                        <p className="text-lg font-bold" style={{ color: allActive ? TEAL : noneActive ? '#EF4444' : GOLD }}>
-                          {activeDps}<span className="text-sm text-gray-400 font-normal">/{category.dataPoints.length}</span>
-                        </p>
-                      </div>
-
-                      {/* Category-level enable/disable all */}
-                      <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">All</span>
-                        <Switch
-                          checked={allActive}
-                          onCheckedChange={(checked) => toggleCategory(category.id, checked)}
-                        />
-                      </div>
-
-                      {isExpanded ? <ChevronDown className="w-4 h-4 text-gray-400" /> : <ChevronRight className="w-4 h-4 text-gray-400" />}
+                  <div style={{ width: 28, height: 28, background: active ? `rgba(43,138,110,0.1)` : '#EDE9E3', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                    <Icon className="w-3.5 h-3.5" style={{ color: active ? TEAL : '#6B7280' }} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[11px] font-bold leading-tight truncate" style={{ color: active ? NAVY : '#374151' }}>{cat.name}</p>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <span className="text-[9px] font-bold" style={{ color: statusColor }}>
+                        {catDps - catOff}/{catDps}
+                      </span>
+                      {catTriggers > 0 && (
+                        <span className="text-[8px] font-bold uppercase tracking-wider px-1 py-0.5" style={{ background: 'rgba(201,168,76,0.15)', color: GOLD }}>
+                          {catTriggers}T
+                        </span>
+                      )}
                     </div>
                   </div>
-
-                  {/* Expanded: data points + playbook chain */}
-                  {isExpanded && (
-                    <div className="border-t border-[#E8E4DC]">
-
-                      {/* Playbook chain */}
-                      {category.recommendedPlaybooks?.length > 0 && (
-                        <div className="px-4 py-3 bg-[#F8F7F4] border-b border-[#E8E4DC]">
-                          <div className="flex items-start gap-3">
-                            <div className="flex items-center gap-2 flex-shrink-0 mt-0.5">
-                              <BookOpen className="w-4 h-4" style={{ color: GOLD }} />
-                              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Recommended Playbooks</span>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              {category.recommendedPlaybooks.map(slug => (
-                                <Link key={slug} href="/playbook-library">
-                                  <span
-                                    className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-semibold cursor-pointer hover:opacity-80 transition-opacity"
-                                    style={{ background: 'rgba(10,15,46,0.06)', color: NAVY, border: '1px solid rgba(10,15,46,0.15)' }}
-                                  >
-                                    {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                                    <ExternalLink className="w-2.5 h-2.5" />
-                                  </span>
-                                </Link>
-                              ))}
-                            </div>
-                            <Link href={`/triggers-management`} className="ml-auto flex-shrink-0">
-                              <Button
-                                size="sm"
-                                style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: NAVY, color: '#fff' }}
-                              >
-                                <Plus className="w-3 h-3 mr-1" />
-                                Create Trigger
-                              </Button>
-                            </Link>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Data points table */}
-                      <div className="divide-y divide-[#F0EDE8]">
-                        {(hasSearch ? category.dataPoints : category.dataPoints).map(dp => {
-                          const isEnabled = !disabledDataPoints.includes(dp.id);
-                          return (
-                            <div
-                              key={dp.id}
-                              className="flex items-center gap-4 px-4 py-3 hover:bg-[#FAFAF9] transition-colors"
-                              style={{ opacity: isEnabled ? 1 : 0.5 }}
-                            >
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2 flex-wrap mb-1">
-                                  <span className="text-sm font-semibold" style={{ color: NAVY }}>{dp.name}</span>
-                                  <span
-                                    className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5"
-                                    style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}
-                                  >
-                                    {dp.metricType}
-                                  </span>
-                                  {dp.defaultThreshold && (
-                                    <span className="text-[9px] font-semibold text-gray-400 flex items-center gap-1">
-                                      <AlertTriangle className="w-3 h-3" />
-                                      fires at {dp.defaultThreshold.operator} {dp.defaultThreshold.value}{dp.unit ?? ''}
-                                    </span>
-                                  )}
-                                </div>
-                                <p className="text-xs text-gray-500 leading-relaxed">{dp.description}</p>
-                                {dp.sources?.length > 0 && (
-                                  <div className="flex items-center gap-1 mt-1.5 flex-wrap">
-                                    <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">Sources:</span>
-                                    {dp.sources.map(src => (
-                                      <span key={src} className="text-[9px] font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
-                                        {src}
-                                      </span>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-
-                              <div className="flex items-center gap-4 flex-shrink-0">
-                                {isEnabled ? (
-                                  <div className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
-                                    <CheckCircle2 className="w-3.5 h-3.5" />
-                                    Monitoring
-                                  </div>
-                                ) : (
-                                  <div className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-gray-400">
-                                    <XCircle className="w-3.5 h-3.5" />
-                                    Paused
-                                  </div>
-                                )}
-                                <Switch
-                                  checked={isEnabled}
-                                  onCheckedChange={() => toggleDataPoint(dp.id)}
-                                />
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {/* Footer CTA for this category */}
-                      <div className="px-4 py-3 bg-[#F8F7F4] border-t border-[#E8E4DC] flex items-center justify-between">
-                        <p className="text-[10px] text-gray-500">
-                          <span className="font-bold" style={{ color: activeDps > 0 ? TEAL : '#EF4444' }}>{activeDps} of {category.dataPoints.length}</span> data points feeding your triggers in this category
-                        </p>
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={() => toggleCategory(category.id, true)}
-                            className="text-[10px] font-bold uppercase tracking-wider hover:underline"
-                            style={{ color: TEAL }}
-                          >
-                            Enable All
-                          </button>
-                          <button
-                            onClick={() => toggleCategory(category.id, false)}
-                            className="text-[10px] font-bold uppercase tracking-wider hover:underline text-gray-400"
-                          >
-                            Disable All
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  <div className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: statusColor }} />
+                </button>
               );
             })}
           </div>
 
-          {/* Bottom info callout */}
-          <div className="mt-8 border border-[#E8E4DC] overflow-hidden">
-            <div className="p-4 border-b border-[#E8E4DC]" style={{ background: NAVY }}>
-              <p className="text-[9px] font-black uppercase tracking-widest text-white/60 mb-1">IDEA Framework™ — The Full Loop</p>
-              <p className="text-sm font-bold text-white">How situation → data point → trigger → execution → learning connects</p>
-            </div>
-            <div className="p-5 bg-[#F8F7F4]">
-              <ol className="space-y-3">
-                {[
-                  { phase: 'IDENTIFY', color: '#6366F1', text: 'A situation or strategic threat is identified — by leadership, AI pulse analysis, or market signal. A playbook is selected from the library (or built) that defines the response strategy.' },
-                  { phase: 'DETECT', color: TEAL, text: 'The playbook defines which signal categories are relevant. Here, you activate the specific data points within those categories that should be watched. These are the eyes of the system.' },
-                  { phase: 'EXECUTE', color: GOLD, text: 'When a monitored data point crosses its threshold, a trigger fires. That trigger is linked to the playbook — tasks are queued, stakeholders notified, and the 12-minute response clock starts.' },
-                  { phase: 'ADVANCE', color: NAVY, text: 'When execution closes, the AI analyzes what happened — what was completed, what was skipped, how long it took, and whether the target was met. Those lessons are used to improve future playbook runs automatically.' },
-                ].map(item => (
-                  <li key={item.phase} className="flex items-start gap-3">
-                    <span className="text-[9px] font-black uppercase tracking-widest px-2 py-1 flex-shrink-0 mt-0.5 text-white" style={{ background: item.color }}>{item.phase}</span>
-                    <p className="text-xs text-gray-600 leading-relaxed">{item.text}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
+          {/* RIGHT — Data points panel */}
+          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            {activeCat ? (
+              <>
+                {/* Panel header */}
+                <div className="flex-shrink-0 px-6 py-4 border-b border-[#E8E4DC] bg-white">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap mb-1">
+                        <h2 className="text-lg font-bold" style={{ color: NAVY }}>{activeCat.name}</h2>
+                        <span className="text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 border" style={{ color: GOLD, borderColor: 'rgba(201,168,76,0.4)' }}>
+                          {activeCat.phase === 'external' ? 'External Signal' : 'Internal Signal'}
+                        </span>
+                        {(triggersPerCategory[activeCat.id] || 0) > 0 && (
+                          <Link href="/triggers-management">
+                            <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 cursor-pointer hover:opacity-80" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
+                              {triggersPerCategory[activeCat.id]} trigger{triggersPerCategory[activeCat.id] !== 1 ? 's' : ''} →
+                            </span>
+                          </Link>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 max-w-2xl">{activeCat.description}</p>
 
+                      {/* Playbooks row */}
+                      {activeCat.recommendedPlaybooks?.length > 0 && (
+                        <div className="flex items-center gap-2 mt-2 flex-wrap">
+                          <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
+                          <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Playbooks:</span>
+                          {activeCat.recommendedPlaybooks.map(slug => (
+                            <Link key={slug} href="/playbook-library">
+                              <span className="text-[10px] font-medium underline-offset-2 hover:underline cursor-pointer" style={{ color: NAVY }}>
+                                {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-3 flex-shrink-0">
+                      {/* Category-level enable all / disable all */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400">All</span>
+                        <Switch
+                          checked={catAllActive}
+                          onCheckedChange={checked => toggleCategory(activeCat.id, checked)}
+                        />
+                      </div>
+                      <Button
+                        size="sm"
+                        onClick={() => openWizardFor(activeCat.id)}
+                        style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                      >
+                        <Plus className="w-3.5 h-3.5 mr-1" />
+                        Create Trigger
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Data point filter pills */}
+                  <div className="flex items-center gap-2 mt-3">
+                    {([
+                      { key: 'all',        label: 'All Data Points' },
+                      { key: 'monitoring', label: 'Monitoring' },
+                      { key: 'paused',     label: 'Paused' },
+                    ] as { key: DpFilter; label: string }[]).map(f => (
+                      <button
+                        key={f.key}
+                        onClick={() => setDpFilter(f.key)}
+                        className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition-all"
+                        style={{
+                          background: dpFilter === f.key ? NAVY : 'transparent',
+                          color: dpFilter === f.key ? '#fff' : '#6B7280',
+                          border: `1px solid ${dpFilter === f.key ? NAVY : '#E8E4DC'}`,
+                        }}
+                      >
+                        {f.label}
+                        {f.key === 'monitoring' && (
+                          <span className="ml-1.5 text-[9px]">
+                            ({activeCat.dataPoints.filter(dp => !disabled.includes(dp.id)).length})
+                          </span>
+                        )}
+                        {f.key === 'paused' && (
+                          <span className="ml-1.5 text-[9px]">
+                            ({activeCat.dataPoints.filter(dp => disabled.includes(dp.id)).length})
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                    <span className="ml-auto text-[10px] text-gray-400 font-medium">{visibleDps.length} data point{visibleDps.length !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+
+                {/* Data point rows */}
+                <div className="flex-1 overflow-y-auto divide-y divide-[#F0EDE8]">
+                  {visibleDps.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+                      <Search className="w-8 h-8 mb-3" />
+                      <p className="text-sm font-semibold">No data points match your filter</p>
+                    </div>
+                  ) : (
+                    visibleDps.map(dp => {
+                      const isEnabled = !disabled.includes(dp.id);
+                      const hasTrigger = triggeredDpIds.has(dp.id);
+
+                      return (
+                        <div
+                          key={dp.id}
+                          className="flex items-start gap-4 px-6 py-4 hover:bg-[#FAFAF9] transition-colors group"
+                          style={{ opacity: isEnabled ? 1 : 0.55 }}
+                        >
+                          {/* Status dot */}
+                          <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={{ background: isEnabled ? TEAL : '#D1D5DB' }} />
+
+                          {/* Main content */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                              <span className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</span>
+                              <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
+                                {dp.metricType}
+                              </span>
+                              {hasTrigger && (
+                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 flex items-center gap-1" style={{ background: 'rgba(43,138,110,0.1)', color: TEAL }}>
+                                  <Zap className="w-2.5 h-2.5" /> Trigger Set
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-gray-500 leading-relaxed mb-1.5">{dp.description}</p>
+                            <div className="flex items-center gap-3 flex-wrap">
+                              {dp.defaultThreshold && (
+                                <span className="text-[9px] text-gray-400 flex items-center gap-1">
+                                  <AlertTriangle className="w-3 h-3" />
+                                  Default fires at {dp.defaultThreshold.operator} {dp.defaultThreshold.value}{dp.unit ?? ''}
+                                </span>
+                              )}
+                              {dp.sources?.slice(0, 3).map(src => (
+                                <span key={src} className="text-[9px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5">
+                                  {src}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Actions */}
+                          <div className="flex items-center gap-3 flex-shrink-0">
+                            {/* Create trigger — visible on hover when no trigger yet */}
+                            {!hasTrigger && isEnabled && (
+                              <button
+                                onClick={() => openWizardFor(activeCat.id)}
+                                className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5"
+                                style={{ background: NAVY, color: '#fff' }}
+                              >
+                                <Plus className="w-3 h-3" />
+                                Create Trigger
+                              </button>
+                            )}
+                            {hasTrigger && (
+                              <Link href="/triggers-management">
+                                <button className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
+                                  <ArrowRight className="w-3 h-3" />
+                                  View Trigger
+                                </button>
+                              </Link>
+                            )}
+                            <div className="flex items-center gap-2">
+                              <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: isEnabled ? TEAL : '#9CA3AF' }}>
+                                {isEnabled ? 'On' : 'Off'}
+                              </span>
+                              <Switch
+                                checked={isEnabled}
+                                onCheckedChange={() => toggleDp(dp.id)}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+
+                {/* Panel footer — ADVANCE link */}
+                <div className="flex-shrink-0 px-6 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
+                  <p className="text-[10px] text-gray-500">
+                    <span className="font-bold" style={{ color: TEAL }}>
+                      {activeCat.dataPoints.filter(dp => !disabled.includes(dp.id)).length}
+                    </span>
+                    <span> of {activeCat.dataPoints.length} data points monitoring · </span>
+                    <span className="font-bold" style={{ color: GOLD }}>
+                      {triggersPerCategory[activeCat.id] || 0} triggers
+                    </span>
+                    <span> configured for this category</span>
+                  </p>
+                  <Link href="/activation-outcome">
+                    <button className="text-[10px] font-bold uppercase tracking-wider flex items-center gap-1" style={{ color: NAVY }}>
+                      View ADVANCE outcomes <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center flex-1 text-gray-400">
+                <Radio className="w-10 h-10 mb-3" />
+                <p className="text-sm font-semibold">No categories match your search</p>
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Trigger creation wizard */}
+        <TriggerConfigurationWizard
+          isOpen={wizardOpen}
+          onClose={() => setWizardOpen(false)}
+          onSuccess={() => {
+            setWizardOpen(false);
+            queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
+            toast({ title: 'Trigger created', description: 'Your new trigger is now monitoring this signal.' });
+          }}
+        />
       </div>
     </PageLayout>
   );
