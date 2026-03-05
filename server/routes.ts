@@ -59,7 +59,12 @@ import {
   notifications,
   tasks,
   playbookActivations,
-  intelligenceReports
+  activationOutcomes,
+  intelligenceReports,
+  compoundThreatAlerts,
+  roiSnapshots,
+  simulationAnalyses,
+  strategicRecordings,
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count } from 'drizzle-orm';
 import { db } from './db';
@@ -8744,6 +8749,233 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   });
 
   console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config');
+
+  // ── WOW Feature Routes ──────────────────────────────────────────────────────
+
+  // Compound Threat Alerts — GET list
+  app.get('/api/compound-threats', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const threats = await db.select().from(compoundThreatAlerts)
+        .where(eq(compoundThreatAlerts.organizationId, orgId))
+        .orderBy(desc(compoundThreatAlerts.detectedAt))
+        .limit(20);
+      res.json(threats);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Compound Threat Alerts — POST analyze (GPT-4o cross-domain synthesis)
+  app.post('/api/compound-threats/analyze', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const triggers = await db.select().from(executiveTriggers)
+        .where(eq(executiveTriggers.organizationId, orgId))
+        .limit(100);
+      const activeDomains = [...new Set(triggers.filter((t: any) => t.isActive).map((t: any) => t.category))];
+      const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
+
+Active monitoring domains: ${activeDomains.join(', ')}
+Total active triggers: ${triggers.filter((t: any) => t.isActive).length}
+High-severity triggers: ${triggers.filter((t: any) => t.severity === 'critical' || t.severity === 'high').length}
+
+Identify 2-3 compound threats where signals across multiple domains could combine into a larger strategic risk. For each threat:
+1. Name the domains involved
+2. Describe the compound threat hypothesis
+3. Reference a historical business scenario it resembles (if any)
+4. Suggest a confidence level (0-100)
+5. Recommend a playbook category to pre-stage
+
+Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "string", "confidence": 75, "aiHypothesis": "detailed hypothesis", "historicalMatch": "optional reference", "recommendedPlaybookCategory": "string" }]`;
+      const raw = await openAIService.analyzeText(prompt);
+      let threats: any[] = [];
+      try {
+        const jsonMatch = raw.match(/\[[\s\S]*\]/);
+        threats = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+      } catch { threats = []; }
+      const saved = [];
+      for (const t of threats) {
+        const [inserted] = await db.insert(compoundThreatAlerts).values({
+          organizationId: orgId,
+          domains: t.domains || [],
+          threatType: t.threatType || 'Unknown Compound Threat',
+          confidence: Math.min(100, Math.max(0, t.confidence || 50)),
+          aiHypothesis: t.aiHypothesis || '',
+          historicalMatch: t.historicalMatch || null,
+          status: 'active',
+        }).returning();
+        saved.push(inserted);
+      }
+      res.json({ threats: saved, analyzed: activeDomains.length });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Compound Threat — dismiss
+  app.patch('/api/compound-threats/:id/dismiss', requireOrgAccess, async (req: any, res) => {
+    try {
+      await db.update(compoundThreatAlerts).set({ status: 'dismissed' })
+        .where(eq(compoundThreatAlerts.id, req.params.id));
+      res.json({ success: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ROI Summary
+  app.get('/api/roi/summary', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const activations = await db.select().from(playbookActivations)
+        .where(eq(playbookActivations.organizationId, orgId));
+      const completed = activations.filter((a: any) => a.completedAt && a.actualExecutionTime);
+      const avgMinutes = completed.length
+        ? Math.round(completed.reduce((s: number, a: any) => s + (a.actualExecutionTime || 0), 0) / completed.length)
+        : 0;
+      const industryBenchmark = 4320; // 72 hours in minutes
+      const minutesSavedPerEvent = Math.max(0, industryBenchmark - avgMinutes);
+      const valuePerMinute = 3472; // ~$5M/day Fortune 1000 avg → ~$3,472/min
+      const estimatedValuePreserved = Math.round(minutesSavedPerEvent * valuePerMinute * completed.length / 1000000);
+      const targetMetCount = activations.filter((a: any) => a.targetMet).length;
+      res.json({
+        activationCount: activations.length,
+        completedCount: completed.length,
+        avgResponseMinutes: avgMinutes,
+        industryBenchmarkMinutes: industryBenchmark,
+        minutesSavedPerEvent,
+        estimatedValuePreservedMillions: estimatedValuePreserved,
+        targetMetRate: activations.length ? Math.round(targetMetCount / activations.length * 100) : 0,
+        avgResponseVsBenchmark: industryBenchmark > 0 ? Math.round((1 - avgMinutes / industryBenchmark) * 100) : 0,
+      });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // ROI Board Report (detailed timeline)
+  app.get('/api/roi/board-report', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const activations = await db.select().from(playbookActivations)
+        .where(eq(playbookActivations.organizationId, orgId))
+        .orderBy(desc(playbookActivations.activatedAt))
+        .limit(50);
+      const outcomes = await db.select().from(activationOutcomes)
+        .where(eq(activationOutcomes.organizationId, orgId));
+      const outcomeMap = new Map(outcomes.map((o: any) => [o.activationId, o]));
+      const events = activations.map((a: any) => {
+        const outcome = outcomeMap.get(a.id);
+        const minutesSaved = Math.max(0, 4320 - (a.actualExecutionTime || 0));
+        return {
+          id: a.id,
+          activatedAt: a.activatedAt,
+          actualMinutes: a.actualExecutionTime,
+          targetMet: a.targetMet,
+          minutesSaved,
+          estimatedValueM: Math.round(minutesSaved * 3472 / 1000000 * 10) / 10,
+          aiSummary: outcome?.aiSummary || null,
+        };
+      });
+      res.json({ events, totalEvents: activations.length });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Shadow Strategy Simulator — analyze
+  app.post('/api/simulation/analyze', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { scenarioText } = req.body;
+      if (!scenarioText) return res.status(400).json({ error: 'scenarioText required' });
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain })
+        .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(50);
+      const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
+
+SCENARIO: "${scenarioText}"
+
+Available playbooks: ${playbooks.map((p: any) => p.name).join(', ')}
+
+Provide:
+1. SURVIVE SCORE (0-100): Probability the company avoids major damage
+2. THRIVE SCORE (0-100): Probability the company turns this into competitive advantage
+3. Which playbooks from the list would activate
+4. Coverage gaps (domains/scenarios not covered by current playbooks)
+5. Brief executive analysis (2-3 sentences)
+6. Domains most impacted (from: financial, market, operational, technology, regulatory, talent, competitive, esg, cyber, brand)
+
+Respond as JSON: { "surviveScore": 72, "thriveScore": 45, "activatedPlaybooks": ["name1","name2"], "coverageGaps": ["gap1","gap2"], "activatedDomains": ["domain1"], "aiAnalysis": "analysis text" }`;
+      const raw = await openAIService.analyzeText(prompt);
+      let result: any = { surviveScore: 60, thriveScore: 30, activatedPlaybooks: [], coverageGaps: [], activatedDomains: [], aiAnalysis: '' };
+      try {
+        const jsonMatch = raw.match(/\{[\s\S]*\}/);
+        if (jsonMatch) result = { ...result, ...JSON.parse(jsonMatch[0]) };
+      } catch {}
+      const [saved] = await db.insert(simulationAnalyses).values({
+        organizationId: orgId,
+        scenarioText,
+        surviveScore: Math.min(100, Math.max(0, result.surviveScore || 60)),
+        thriveScore: Math.min(100, Math.max(0, result.thriveScore || 30)),
+        aiAnalysis: result.aiAnalysis || '',
+        coverageGaps: result.coverageGaps || [],
+        recommendedPlaybooks: result.activatedPlaybooks || [],
+        activatedDomains: result.activatedDomains || [],
+      }).returning();
+      res.json(saved);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Simulation history
+  app.get('/api/simulation-analyses', requireOrgAccess, async (req: any, res) => {
+    try {
+      const analyses = await db.select().from(simulationAnalyses)
+        .where(eq(simulationAnalyses.organizationId, req.orgId))
+        .orderBy(desc(simulationAnalyses.createdAt)).limit(20);
+      res.json(analyses);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Strategic Recorder — analyze
+  app.post('/api/strategic-recorder/analyze', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { inputText } = req.body;
+      if (!inputText || inputText.length < 50) return res.status(400).json({ error: 'Minimum 50 characters required' });
+      const [recording] = await db.insert(strategicRecordings).values({
+        organizationId: orgId, inputText, status: 'processing',
+      }).returning();
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const prompt = `You are an AI that reverse-engineers corporate playbooks from past crisis records, meeting notes, or incident descriptions.
+
+INPUT TEXT:
+"${inputText.slice(0, 3000)}"
+
+Extract and generate 2-4 strategic playbooks based on what you can infer. For each playbook:
+- Name it (e.g. "Supply Chain Disruption Response")
+- Identify the trigger condition
+- List 4-6 execution phases with task descriptions
+- Identify stakeholder roles (CEO, CFO, COO, etc.)
+- Assign a domain (financial, operational, market, technology, regulatory, talent, crisis)
+- Write a 1-sentence value proposition
+
+Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "valueProposition": "...", "stakeholders": ["CEO","CFO"], "phases": [{ "name": "Phase 1", "duration": "0-30 min", "tasks": ["task1","task2"] }] }]`;
+      const raw = await openAIService.analyzeText(prompt);
+      let generated: any[] = [];
+      try {
+        const jsonMatch = raw.match(/\[[\s\S]*\]/);
+        generated = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+      } catch {}
+      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: 'complete' })
+        .where(eq(strategicRecordings.id, recording.id));
+      res.json({ id: recording.id, generatedPlaybooks: generated, status: 'complete' });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // Strategic Recordings — list
+  app.get('/api/strategic-recordings', requireOrgAccess, async (req: any, res) => {
+    try {
+      const recordings = await db.select().from(strategicRecordings)
+        .where(eq(strategicRecordings.organizationId, req.orgId))
+        .orderBy(desc(strategicRecordings.createdAt)).limit(10);
+      res.json(recordings);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  console.log('✅ WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder');
 
   return httpServer;
 }

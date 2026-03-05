@@ -24,6 +24,7 @@ import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { BrandStamp } from "@/components/BrandStamp";
 import AICopilotPanel from '@/components/AICopilotPanel';
 import ExecutionIntelligenceDashboard from '@/components/ExecutionIntelligenceDashboard';
+import CompoundThreatAlerts from '@/components/intelligence/CompoundThreatAlerts';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -217,6 +218,11 @@ export default function Dashboard() {
                   <h2 style={{ ...CG, fontSize: "28px", color: NAVY }}>ADVANCE · Intelligence Accumulation</h2>
                 </div>
                 <ExecutionIntelligenceDashboard />
+              </div>
+
+              {/* Compound Threat Intelligence */}
+              <div className="border border-[#E8E4DC] bg-white p-6">
+                <CompoundThreatAlerts compact />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

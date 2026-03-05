@@ -6207,3 +6207,68 @@ export const insertPilotApplicationSchema = createInsertSchema(pilotApplications
 });
 export type InsertPilotApplication = z.infer<typeof insertPilotApplicationSchema>;
 export type PilotApplication = typeof pilotApplications.$inferSelect;
+
+// ── WOW Features ──────────────────────────────────────────────────────────────
+
+// Compound Threat Alerts (Weak Signal Correlation)
+export const compoundThreatAlerts = pgTable('compound_threat_alerts', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  domains: text('domains').array().notNull().default([]),
+  threatType: text('threat_type').notNull(),
+  confidence: integer('confidence').notNull().default(0),
+  aiHypothesis: text('ai_hypothesis').notNull(),
+  historicalMatch: text('historical_match'),
+  stagedPlaybookId: uuid('staged_playbook_id'),
+  status: text('status').notNull().default('active'),
+  detectedAt: timestamp('detected_at').defaultNow(),
+});
+export const insertCompoundThreatAlertSchema = createInsertSchema(compoundThreatAlerts).omit({ id: true, detectedAt: true });
+export type InsertCompoundThreatAlert = z.infer<typeof insertCompoundThreatAlertSchema>;
+export type CompoundThreatAlert = typeof compoundThreatAlerts.$inferSelect;
+
+// ROI Snapshots (Execution ROI Dashboard)
+export const roiSnapshots = pgTable('roi_snapshots', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  period: text('period').notNull(),
+  activationCount: integer('activation_count').notNull().default(0),
+  avgResponseMinutes: integer('avg_response_minutes').notNull().default(0),
+  industryBenchmarkMinutes: integer('industry_benchmark_minutes').notNull().default(4320),
+  estimatedValuePreserved: integer('estimated_value_preserved').notNull().default(0),
+  eventsAnalyzed: integer('events_analyzed').notNull().default(0),
+  generatedAt: timestamp('generated_at').defaultNow(),
+});
+export const insertRoiSnapshotSchema = createInsertSchema(roiSnapshots).omit({ id: true, generatedAt: true });
+export type InsertRoiSnapshot = z.infer<typeof insertRoiSnapshotSchema>;
+export type RoiSnapshot = typeof roiSnapshots.$inferSelect;
+
+// Simulation Analyses (Shadow Strategy Simulator)
+export const simulationAnalyses = pgTable('simulation_analyses', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  scenarioText: text('scenario_text').notNull(),
+  surviveScore: integer('survive_score').notNull().default(0),
+  thriveScore: integer('thrive_score').notNull().default(0),
+  aiAnalysis: text('ai_analysis').notNull().default(''),
+  coverageGaps: text('coverage_gaps').array().default([]),
+  recommendedPlaybooks: text('recommended_playbooks').array().default([]),
+  activatedDomains: text('activated_domains').array().default([]),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertSimulationAnalysisSchema = createInsertSchema(simulationAnalyses).omit({ id: true, createdAt: true });
+export type InsertSimulationAnalysis = z.infer<typeof insertSimulationAnalysisSchema>;
+export type SimulationAnalysis = typeof simulationAnalyses.$inferSelect;
+
+// Strategic Recordings (AI Playbook Generator)
+export const strategicRecordings = pgTable('strategic_recordings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  inputText: text('input_text').notNull(),
+  generatedPlaybooks: jsonb('generated_playbooks').default([]),
+  status: text('status').notNull().default('pending'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertStrategicRecordingSchema = createInsertSchema(strategicRecordings).omit({ id: true, createdAt: true });
+export type InsertStrategicRecording = z.infer<typeof insertStrategicRecordingSchema>;
+export type StrategicRecording = typeof strategicRecordings.$inferSelect;

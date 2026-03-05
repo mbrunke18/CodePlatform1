@@ -1,353 +1,259 @@
 import { useState } from 'react';
-import { useQuery, useMutation } from '@tanstack/react-query';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { 
-  Play, 
-  Pause,
-  RotateCcw,
-  Trophy,
-  Users,
-  Clock,
-  Target,
-  AlertTriangle,
-  CheckCircle2,
-  Activity
-} from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
-import { apiRequest, queryClient } from '@/lib/queryClient';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Shield, TrendingUp, Loader2, ChevronRight, History, Zap, AlertTriangle, CheckCircle, Target, BookOpen, Clock } from 'lucide-react';
+import { format } from 'date-fns';
 
-const NAVY = "#0A0F2E";
-const NAVY_MID = "#141B45";
-const GOLD = "#C9A84C";
-const GOLD_LT = "#DFC178";
-const TEAL = "#2B8A6E";
-const TEAL_LT = "#3BAF8A";
-const OFF = "#F8F7F4";
-const BORDER = "#E8E4DC";
-const MUTED = "#6B7280";
+const NAVY = '#0A0F2E';
+const GOLD = '#C9A84C';
+const TEAL = '#2B8A6E';
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
-export default function SimulationStudio() {
+const SCENARIO_EXAMPLES = [
+  '20% tariff increase on all imported goods from Asia',
+  'Top competitor announces merger with our second-largest rival',
+  'Ransomware attack disables 40% of our manufacturing systems for 72 hours',
+  'Key regulator signals new EU data compliance deadline in 90 days',
+  'CFO and two board members resign simultaneously amid investor pressure',
+];
+
+const DOMAIN_ICONS: Record<string, string> = {
+  financial: '💰', market: '📈', operational: '⚙️', technology: '💻',
+  regulatory: '📋', talent: '👥', competitive: '⚔️', esg: '🌿', cyber: '🛡️', brand: '📣',
+};
+
+function ScoreGauge({ score, label, color, description }: { score: number; label: string; color: string; description: string }) {
+  const r = 70;
+  const circ = Math.PI * r;
+  const dashVal = (score / 100) * circ;
+  return (
+    <div className="flex flex-col items-center p-6 border border-[#E8E4DC] flex-1">
+      <svg width="180" height="100" viewBox="0 0 180 100" className="mb-2">
+        <path d="M 20,90 A 70,70 0 0,1 160,90" fill="none" stroke="#E8E4DC" strokeWidth="12" strokeLinecap="round" />
+        <path d="M 20,90 A 70,70 0 0,1 160,90" fill="none" stroke={color}
+          strokeWidth="12" strokeLinecap="round"
+          strokeDasharray={`${dashVal} 999`} />
+        <text x="90" y="78" textAnchor="middle" fill={color} fontSize="30" fontWeight="900">{score}</text>
+        <text x="90" y="94" textAnchor="middle" fill="#9CA3AF" fontSize="10">/100</text>
+      </svg>
+      <p className="text-[13px] font-bold text-center" style={{ color: NAVY }}>{label}</p>
+      <p className="text-[10px] text-gray-400 text-center mt-1 max-w-[140px]">{description}</p>
+    </div>
+  );
+}
+
+export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
+  const [scenario, setScenario] = useState('');
+  const [result, setResult] = useState<any>(null);
   const { toast } = useToast();
-  const [isCreating, setIsCreating] = useState(false);
-  const [simulationName, setSimulationName] = useState('');
-  const [selectedScenarioId, setSelectedScenarioId] = useState('');
-  const [participants, setParticipants] = useState('');
-  const [duration, setDuration] = useState('60');
-  const [complications, setComplications] = useState('');
 
-  const { data: organizations = [] } = useQuery<any[]>({ 
-    queryKey: ['/api/organizations'] 
-  });
-  const organizationId = organizations[0]?.id;
+  const { data: history = [] } = useQuery<any[]>({ queryKey: ['/api/simulation-analyses'] });
 
-  const { data: scenarios = [] } = useQuery<any[]>({
-    queryKey: ['/api/strategic-scenarios', organizationId],
-    enabled: !!organizationId,
-  });
-
-  const { data: simulations = [], isLoading } = useQuery<any[]>({
-    queryKey: ['/api/crisis-simulations', organizationId],
-    enabled: !!organizationId,
-  });
-
-  const createSimulation = useMutation({
-    mutationFn: async (data: any) => {
-      return apiRequest('POST', '/api/crisis-simulations', data);
+  const analyzeMutation = useMutation({
+    mutationFn: () => apiRequest('POST', '/api/simulation/analyze', { scenarioText: scenario }),
+    onSuccess: (data: any) => {
+      setResult(data);
+      queryClient.invalidateQueries({ queryKey: ['/api/simulation-analyses'] });
+      toast({ title: 'Simulation complete', description: `Survive: ${data.surviveScore} · Thrive: ${data.thriveScore}` });
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/crisis-simulations'] });
-      toast({
-        title: 'Simulation Created',
-        description: 'Crisis simulation has been scheduled successfully',
-      });
-      setIsCreating(false);
-      resetForm();
-    },
+    onError: () => toast({ title: 'Simulation failed', variant: 'destructive' }),
   });
 
-  const startSimulation = useMutation({
-    mutationFn: async (simulationId: string) => {
-      return apiRequest('PATCH', `/api/crisis-simulations/${simulationId}/status`, { status: 'running' });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/crisis-simulations'] });
-      toast({
-        title: 'Simulation Started',
-        description: 'Crisis simulation is now running',
-      });
-    },
-  });
+  const canRun = scenario.trim().length >= 10 && !analyzeMutation.isPending;
 
-  const resetForm = () => {
-    setSimulationName('');
-    setSelectedScenarioId('');
-    setParticipants('');
-    setDuration('60');
-    setComplications('');
-  };
-
-  const handleCreateSimulation = () => {
-    if (!simulationName || !selectedScenarioId || !organizationId) {
-      toast({
-        title: 'Missing Information',
-        description: 'Please fill in all required fields',
-        variant: 'destructive',
-      });
-      return;
-    }
-
-    createSimulation.mutate({
-      organizationId,
-      scenarioId: selectedScenarioId,
-      simulationName,
-      facilitator: 'System',
-      participants: participants.split(',').map(p => p.trim()).filter(Boolean),
-      duration: parseInt(duration),
-      complications: complications ? complications.split('\n').filter(Boolean) : [],
-      status: 'scheduled',
-    });
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'running': return `bg-[#2B8A6E]/12 text-[#2B8A6E]`;
-      case 'completed': return `bg-[#0A0F2E]/12 text-[#0A0F2E]`;
-      case 'cancelled': return 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#C9A84C]';
-      default: return `bg-[#E8E4DC] text-[#6B7280]`;
-    }
-  };
+  const surviveColor = (result?.surviveScore ?? 0) >= 70 ? TEAL : (result?.surviveScore ?? 0) >= 45 ? GOLD : '#EF4444';
+  const thriveColor = (result?.thriveScore ?? 0) >= 60 ? TEAL : (result?.thriveScore ?? 0) >= 35 ? GOLD : '#EF4444';
 
   return (
-    <PageLayout>
-      <div className="p-6 space-y-6 bg-white" data-testid="simulation-studio-page">
+    <PageLayout embedded={embedded}>
+      <div className="min-h-screen bg-white">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Operations</span>
+        <div className="border-b border-[#E8E4DC] px-8 py-6">
+          <div className="flex items-center gap-4">
+            <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Shield className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-3xl font-bold mb-2 text-[#0A0F2E]" style={CG} data-testid="page-title">Simulation Studio</h1>
-            <p className="text-[#6B7280]">
-              War-game your crisis playbooks to turn abstract preparedness into measurable performance
-            </p>
-          </div>
-          <Dialog open={isCreating} onOpenChange={setIsCreating}>
-            <DialogTrigger asChild>
-              <Button size="lg" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-create-simulation">
-                <Play className="mr-2 h-5 w-5" />
-                New Simulation
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-2xl bg-white border-[#E8E4DC]">
-              <DialogHeader>
-                <DialogTitle style={CG} className="text-2xl text-[#0A0F2E]">Create Crisis Simulation</DialogTitle>
-                <DialogDescription className="text-[#6B7280]">
-                  Set up a war-gaming exercise to practice your crisis response
-                </DialogDescription>
-              </DialogHeader>
-              
-              <div className="space-y-4 py-4">
-                <div>
-                  <Label htmlFor="sim-name" className="text-[#0A0F2E] font-semibold">Simulation Name</Label>
-                  <Input
-                    id="sim-name"
-                    placeholder="Q4 2026 Crisis Drill"
-                    value={simulationName}
-                    onChange={(e) => setSimulationName(e.target.value)}
-                    className="border-[#E8E4DC]"
-                    data-testid="input-simulation-name"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="scenario" className="text-[#0A0F2E] font-semibold">Scenario to Simulate</Label>
-                  <Select value={selectedScenarioId} onValueChange={setSelectedScenarioId}>
-                    <SelectTrigger id="scenario" className="border-[#E8E4DC]" data-testid="select-scenario">
-                      <SelectValue placeholder="Select a crisis scenario" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {scenarios.map((scenario) => (
-                        <SelectItem key={scenario.id} value={scenario.id}>
-                          {scenario.title || scenario.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label htmlFor="participants" className="text-[#0A0F2E] font-semibold">Participants (comma-separated emails)</Label>
-                  <Input
-                    id="participants"
-                    placeholder="ceo@company.com, cfo@company.com, cto@company.com"
-                    value={participants}
-                    onChange={(e) => setParticipants(e.target.value)}
-                    className="border-[#E8E4DC]"
-                    data-testid="input-participants"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="duration" className="text-[#0A0F2E] font-semibold">Duration (minutes)</Label>
-                  <Input
-                    id="duration"
-                    type="number"
-                    placeholder="60"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                    className="border-[#E8E4DC]"
-                    data-testid="input-duration"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="complications" className="text-[#0A0F2E] font-semibold">AI-Injected Complications (one per line, optional)</Label>
-                  <Textarea
-                    id="complications"
-                    placeholder="CFO is on a flight and unreachable&#10;Main PR firm's system is down&#10;Social media amplifies the story faster than expected"
-                    value={complications}
-                    onChange={(e) => setComplications(e.target.value)}
-                    rows={4}
-                    className="border-[#E8E4DC]"
-                    data-testid="textarea-complications"
-                  />
-                  <p className="text-xs text-[#6B7280] mt-1">
-                    Add realistic complications to test your team's adaptability
-                  </p>
-                </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: GOLD }}>EXECUTE</span>
+                <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
+                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>Digital Twin Simulator</span>
               </div>
-
-              <DialogFooter>
-                <Button variant="outline" className="border-[#E8E4DC] text-[#0A0F2E]" onClick={() => setIsCreating(false)} data-testid="button-cancel">
-                  Cancel
-                </Button>
-                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" onClick={handleCreateSimulation} data-testid="button-create-confirm">
-                  Create Simulation
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+              <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.8rem', color: NAVY, lineHeight: 1 }}>Shadow Strategy Simulator</h1>
+              <p className="text-xs text-gray-400 mt-0.5">Dry-run any strategic scenario before it happens. See your Survive vs. Thrive probability.</p>
+            </div>
+          </div>
         </div>
 
-        {/* Value Proposition */}
-        <Card className="bg-white border-[#E8E4DC] shadow-none overflow-hidden relative">
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#2B8A6E]" />
-          <CardHeader>
-            <CardTitle style={CG} className="text-[#0A0F2E] text-xl">Why Simulations Matter</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-[#0A0F2E] space-y-3">
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
-              <p><strong className="font-bold">Find Bottlenecks:</strong> Discover that your Legal counsel takes 22 minutes to respond, not the planned 2 minutes</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
-              <p><strong className="font-bold">Build Muscle Memory:</strong> Turn a 72-hour chaos into 20 minutes, then 15, then the target 12 minutes</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-[#2B8A6E]" />
-              <p><strong className="font-bold">Prove ROI:</strong> Demonstrate to the board that your crisis preparedness is real, not theoretical</p>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="max-w-6xl mx-auto px-8 py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-        {/* Simulations List */}
-        <Card className="border-[#E8E4DC] bg-white shadow-none">
-          <CardHeader>
-            <CardTitle style={CG} className="text-[#0A0F2E] text-2xl">Scheduled & Past Simulations</CardTitle>
-            <CardDescription className="text-[#6B7280]">Track your war-gaming exercises and performance improvements</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {isLoading ? (
-              <div className="text-center py-8 text-[#6B7280]">Loading simulations...</div>
-            ) : simulations.length === 0 ? (
-              <div className="text-center py-12 space-y-3">
-                <Activity className="h-12 w-12 mx-auto text-[#6B7280]" />
-                <p className="text-[#6B7280]">No simulations scheduled yet</p>
-                <Button className="bg-[#0A0F2E] text-white" onClick={() => setIsCreating(true)} data-testid="button-create-first">
-                  Create Your First Simulation
-                </Button>
+            {/* Left: Input + Results */}
+            <div className="lg:col-span-2 space-y-8">
+
+              {/* Scenario input */}
+              <div>
+                <label className="text-[10px] font-black uppercase tracking-wider block mb-2" style={{ color: NAVY }}>
+                  Describe the Scenario to Simulate
+                </label>
+                <Textarea
+                  value={scenario}
+                  onChange={e => setScenario(e.target.value)}
+                  placeholder="e.g. '20% tariff increase on all imported goods' or 'Top competitor announces merger with our second-largest rival'..."
+                  className="min-h-[120px] text-sm resize-none border-[#E8E4DC] focus:ring-0 focus:border-[#0A0F2E]"
+                />
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {SCENARIO_EXAMPLES.map(s => (
+                    <button key={s} onClick={() => setScenario(s)}
+                      className="text-[9px] font-semibold px-2 py-1 border border-[#E8E4DC] hover:border-[#C9A84C] text-gray-500 transition-colors">
+                      {s.slice(0, 35)}...
+                    </button>
+                  ))}
+                </div>
               </div>
-            ) : (
-              <div className="space-y-3">
-                {simulations.map((sim) => (
-                  <div
-                    key={sim.id}
-                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-3 hover:bg-[#F8F7F4] transition-colors"
-                    data-testid={`card-simulation-${sim.id}`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg text-[#0A0F2E]">{sim.simulationName}</h3>
-                        <p className="text-sm text-[#6B7280]">
-                          Scenario: {scenarios.find(s => s.id === sim.scenarioId)?.title || 'Unknown'}
-                        </p>
-                      </div>
-                      <Badge className={`${getStatusColor(sim.status)} border-none`} data-testid={`badge-status-${sim.id}`}>
-                        {sim.status.toUpperCase()}
-                      </Badge>
-                    </div>
 
-                    <div className="grid grid-cols-3 gap-4 text-sm">
-                      <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-[#6B7280]" />
-                        <span className="text-[#0A0F2E] font-medium">{sim.participants?.length || 0} participants</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-[#6B7280]" />
-                        <span className="text-[#0A0F2E] font-medium">{sim.duration} minutes</span>
-                      </div>
-                      {sim.results && (
-                        <div className="flex items-center gap-2">
-                          <Trophy className="h-4 w-4 text-[#C9A84C]" />
-                          <span className="text-[#0A0F2E] font-medium">Results available</span>
-                        </div>
-                      )}
-                    </div>
+              <Button
+                onClick={() => analyzeMutation.mutate()}
+                disabled={!canRun}
+                className="w-full py-4 text-sm font-bold uppercase tracking-widest"
+                style={{ background: canRun ? NAVY : '#D1D5DB', color: '#fff' }}>
+                {analyzeMutation.isPending
+                  ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Running Simulation...</>
+                  : <><Zap className="w-4 h-4 mr-2" /> Run Shadow Simulation</>}
+              </Button>
 
-                    {sim.status === 'scheduled' && (
-                      <div className="flex gap-2 pt-2">
-                        <Button
-                          size="sm"
-                          className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
-                          onClick={() => startSimulation.mutate(sim.id)}
-                          data-testid={`button-start-${sim.id}`}
-                        >
-                          <Play className="h-4 w-4 mr-2" />
-                          Start Simulation
-                        </Button>
-                      </div>
-                    )}
+              {/* Results */}
+              {result && (
+                <div className="space-y-6">
+                  <div className="px-4 py-3 border-l-4" style={{ borderColor: GOLD, background: `${GOLD}06` }}>
+                    <p className="text-[9px] font-black uppercase tracking-wider mb-1" style={{ color: GOLD }}>Simulated Scenario</p>
+                    <p className="text-sm font-semibold" style={{ color: NAVY }}>{result.scenarioText}</p>
                   </div>
-                ))}
+
+                  <div className="flex gap-4">
+                    <ScoreGauge score={result.surviveScore} label="Survive Probability" color={surviveColor} description="Probability of avoiding major damage" />
+                    <ScoreGauge score={result.thriveScore} label="Thrive Probability" color={thriveColor} description="Probability of competitive advantage" />
+                  </div>
+
+                  <div className="p-5 border border-[#E8E4DC]" style={{ borderLeft: `4px solid ${surviveColor}` }}>
+                    <p className="text-[9px] font-black uppercase tracking-wider mb-2" style={{ color: GOLD }}>Executive Analysis</p>
+                    <p className="text-[13px] text-gray-700 leading-relaxed">{result.aiAnalysis}</p>
+                  </div>
+
+                  {result.activatedDomains?.length > 0 && (
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-wider mb-3" style={{ color: NAVY }}>Domains Activated</p>
+                      <div className="flex flex-wrap gap-2">
+                        {result.activatedDomains.map((d: string) => (
+                          <span key={d} className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E8E4DC] text-[11px] font-bold" style={{ color: NAVY }}>
+                            <span>{DOMAIN_ICONS[d] || '📌'}</span> {d}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {result.recommendedPlaybooks?.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="w-4 h-4" style={{ color: TEAL }} />
+                        <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: TEAL }}>Playbooks That Would Activate</p>
+                      </div>
+                      <div className="space-y-2">
+                        {result.recommendedPlaybooks.map((pb: string) => (
+                          <div key={pb} className="flex items-center gap-3 px-3 py-2 border border-[#E8E4DC]">
+                            <BookOpen className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                            <span className="text-[11px] font-semibold" style={{ color: NAVY }}>{pb}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {result.coverageGaps?.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <AlertTriangle className="w-4 h-4" style={{ color: '#EF4444' }} />
+                        <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: '#EF4444' }}>Coverage Gaps Detected</p>
+                      </div>
+                      <div className="space-y-2">
+                        {result.coverageGaps.map((gap: string) => (
+                          <div key={gap} className="flex items-start gap-3 px-3 py-2" style={{ background: 'rgba(239,68,68,0.03)', borderLeft: '3px solid #EF4444' }}>
+                            <AlertTriangle className="w-3 h-3 flex-shrink-0 mt-0.5 text-red-400" />
+                            <span className="text-[11px] text-gray-600">{gap}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Right: History + How it works */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <History className="w-4 h-4" style={{ color: GOLD }} />
+                <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: NAVY }}>Simulation History</p>
               </div>
-            )}
-          </CardContent>
-        </Card>
+
+              {history.length === 0 ? (
+                <div className="border border-dashed border-[#E8E4DC] p-6 text-center mb-6">
+                  <Target className="w-6 h-6 mx-auto mb-2 text-gray-300" />
+                  <p className="text-[11px] text-gray-400">No simulations yet</p>
+                </div>
+              ) : (
+                <div className="space-y-3 mb-6">
+                  {(history as any[]).map((sim: any) => {
+                    const sc = sim.surviveScore ?? 0;
+                    const tc = sim.thriveScore ?? 0;
+                    const sC = sc >= 70 ? TEAL : sc >= 45 ? GOLD : '#EF4444';
+                    const tC = tc >= 60 ? TEAL : tc >= 35 ? GOLD : '#EF4444';
+                    return (
+                      <button key={sim.id} onClick={() => setResult(sim)}
+                        className="w-full text-left p-4 border border-[#E8E4DC] hover:bg-[#FAFAF9] transition-all">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[10px] font-black" style={{ color: sC }}>S:{sc}</span>
+                            <span className="text-[10px] font-black" style={{ color: tC }}>T:{tc}</span>
+                          </div>
+                          <span className="text-[9px] text-gray-400 flex items-center gap-1">
+                            <Clock className="w-2.5 h-2.5" />
+                            {sim.createdAt ? format(new Date(sim.createdAt), 'MMM d') : ''}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-gray-600 line-clamp-2">{sim.scenarioText}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              <div className="p-4 border border-[#E8E4DC]" style={{ background: `${NAVY}04` }}>
+                <p className="text-[9px] font-black uppercase tracking-wider mb-3" style={{ color: NAVY }}>How Scoring Works</p>
+                <div className="space-y-2 text-[10px] text-gray-500">
+                  {[
+                    { icon: Shield, label: 'Survive', desc: 'Playbook coverage for damage containment' },
+                    { icon: TrendingUp, label: 'Thrive', desc: 'Offensive playbooks & competitive gaps' },
+                    { icon: AlertTriangle, label: 'Gaps', desc: 'Scenarios your library doesn\'t cover' },
+                  ].map(h => {
+                    const Icon = h.icon;
+                    return (
+                      <div key={h.label} className="flex items-start gap-2">
+                        <Icon className="w-3 h-3 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+                        <div><span className="font-bold" style={{ color: NAVY }}>{h.label}: </span>{h.desc}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </PageLayout>
   );

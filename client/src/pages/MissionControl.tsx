@@ -54,6 +54,7 @@ import {
 } from 'lucide-react';
 import ExecuteIQLogo from '@/components/ExecuteIQLogo';
 import JourneyNavigator from '@/components/JourneyNavigator';
+import PulseMap from '@/components/mission/PulseMap';
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -210,6 +211,9 @@ export default function MissionControl() {
             </div>
           </div>
         </div>
+
+        {/* Strategic Pulse Map */}
+        <PulseMap />
 
         <div className="max-w-[1600px] mx-auto px-6 py-12 space-y-8">
           {/* Main Content Grid */}

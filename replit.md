@@ -82,6 +82,18 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Shows (with data):** Activation count, avg execution time, target met rate, avg success rating, recent outcome notes.
 - **API:** `GET /api/playbook-performance/:playbookId`.
 
+**WOW Features (5 Differentiators):**
+
+- **Execution ROI Dashboard** (`/roi-dashboard`): Board-ready value intelligence. Hero "Value Preserved" metric in gold, time-saved bar chart (72h industry vs 12-min OS), activation timeline, printable board report view. API: `GET /api/roi/summary`, `GET /api/roi/board-report`. DB: `roi_snapshots`.
+
+- **Compound Threat Intelligence** (`CompoundThreatAlerts.tsx`): GPT-4o cross-domain threat synthesis. Detects patterns spanning multiple signal domains. Compact mode mounts in Dashboard. "Analyze Now" button triggers fresh scan. Dismiss individual alerts. API: `GET/POST /api/compound-threats`, `PATCH /api/compound-threats/:id/dismiss`, `POST /api/compound-threats/analyze`. DB: `compound_threat_alerts`.
+
+- **Shadow Strategy Simulator** (`/simulation-studio`): Digital Twin scenario dry-run. Input scenario text → GPT-4o returns Survive score (0-100), Thrive score (0-100), playbooks that activate, coverage gaps. Circular SVG gauges, simulation history. API: `POST /api/simulation/analyze`, `GET /api/simulation-analyses`. DB: `simulation_analyses`.
+
+- **Strategic Recorder** (`/strategic-recorder`): Paste crisis notes/meeting transcripts → GPT-4o generates custom playbook outlines (name, phases, stakeholders, triggers, value prop). 48-hour onboarding accelerator. Save-to-library flow. API: `POST /api/strategic-recorder/analyze`, `GET /api/strategic-recordings`. DB: `strategic_recordings`.
+
+- **War Room Pulse Map** (`PulseMap.tsx` + `MissionControl.tsx`): Animated SVG concentric ring visualization of all 20 signal domains. Each node sized by trigger count, colored by proximity score. Pulse animations for AT RISK/APPROACHING nodes. Live stats panel (at-risk count, approaching, active activations). Mounted in MissionControl between header and content grid. Component: `client/src/components/mission/PulseMap.tsx`.
+
 **Deployment:**
 - **Platform:** Replit Autoscale, custom domain `executeiq.io`.
 - **Build Strategy:** `dist/public/` (frontend) is pre-built and committed to git. Deployment build step runs only the fast server esbuild (~1 second): `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite ...`. This avoids the 25-second vite build that was timing out on deployment infrastructure. Do NOT change back to `["true"]` or `npm run build`.

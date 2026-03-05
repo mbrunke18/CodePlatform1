@@ -164,6 +164,9 @@ const TaskManagement = lazy(() => import("./pages/TaskManagement"));
 const StakeholderManagement = lazy(() => import("./pages/StakeholderManagement"));
 const RoleExperience = lazy(() => import("./pages/RoleExperience"));
 const IndustryExperience = lazy(() => import("./pages/IndustryExperience"));
+const ROIDashboard = lazy(() => import("./pages/ROIDashboard"));
+const SimulationStudioPage = lazy(() => import("./pages/SimulationStudio"));
+const StrategicRecorder = lazy(() => import("./pages/StrategicRecorder"));
 
 const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
@@ -409,7 +412,9 @@ function Router() {
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
         <Route path="/practice-drills" component={PracticeDrills} />
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
-        {renderRedirects(["/simulation-studio"], "/try-demo")}
+        <Route path="/simulation-studio" component={SimulationStudioPage} />
+        <Route path="/roi-dashboard" component={ROIDashboard} />
+        <Route path="/strategic-recorder" component={StrategicRecorder} />
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
         {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}
         <Route path="/future-gym" component={FutureGym} />
