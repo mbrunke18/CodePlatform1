@@ -279,26 +279,30 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent className="p-0">
           <div className="divide-y divide-[#E8E4DC]">
-                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div className="w-2 h-2 rounded-none bg-[#2B8A6E] mt-1.5" />
+                    <Link href="/triggers-management">
+                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors cursor-pointer group">
+                      <div className="w-2 h-2 rounded-none bg-[#2B8A6E] mt-1.5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-[#0A0F2E]">Weak signal detected</span>
+                          <span className="text-sm font-semibold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors">Weak signal detected</span>
                           <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">2m ago</span>
                         </div>
                         <p className="text-xs text-[#6B7280]">Competitor pricing change detected across 3 regions.</p>
                       </div>
                     </div>
-                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors">
-                      <div className="w-2 h-2 rounded-none bg-[#0A0F2E] mt-1.5" />
+                    </Link>
+                    <Link href="/playbook-library">
+                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors cursor-pointer group">
+                      <div className="w-2 h-2 rounded-none bg-[#0A0F2E] mt-1.5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-[#0A0F2E]">Playbook activated</span>
+                          <span className="text-sm font-semibold text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors">Playbook activated</span>
                           <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">15m ago</span>
                         </div>
                         <p className="text-xs text-[#6B7280]">M&A Integration playbook activated for Project Phoenix.</p>
                       </div>
                     </div>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

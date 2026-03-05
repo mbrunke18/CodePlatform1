@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useSearch } from 'wouter';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
+import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import {
   AlertTriangle,
   Activity,
@@ -32,7 +33,10 @@ import {
   Info,
   Database,
   BarChart2,
-  BookOpen
+  BookOpen,
+  ChevronRight,
+  Layers,
+  Radio
 } from 'lucide-react';
 import { format } from 'date-fns';
 
@@ -67,6 +71,46 @@ const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+const METRIC_TYPE_COLORS: Record<string, string> = {
+  percentage: '#2B8A6E',
+  count: '#0A0F2E',
+  currency: '#C9A84C',
+  score: '#7C3AED',
+  boolean: '#6B7280',
+  text: '#6B7280',
+  trend: '#2563EB',
+};
+
+const CATEGORY_TO_SIGNALS: Record<string, string[]> = {
+  'supply-chain': ['supplychain', 'geopolitical'],
+  'supply_chain': ['supplychain'],
+  'security': ['cyber', 'technology'],
+  'cyber': ['cyber'],
+  'financial': ['financial', 'economic'],
+  'market': ['market', 'competitive'],
+  'competitive': ['competitive'],
+  'customer': ['customer'],
+  'talent': ['talent'],
+  'regulatory': ['regulatory'],
+  'innovation': ['innovation', 'technology'],
+  'technology': ['technology', 'innovation'],
+  'geopolitical': ['geopolitical'],
+  'economic': ['economic'],
+  'esg': ['esg'],
+  'media': ['media'],
+  'brand': ['media'],
+  'operational': ['execution'],
+  'execution': ['execution'],
+  'partnership': ['partnership'],
+  'behavior': ['behavior'],
+};
+
+function getCategorySignals(triggerCategory: string) {
+  const cat = (triggerCategory || '').toLowerCase().replace(/ /g, '-');
+  const ids = CATEGORY_TO_SIGNALS[cat] || [cat];
+  return SIGNAL_CATEGORIES.filter(sc => ids.includes(sc.id));
+}
 
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -278,36 +322,60 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           </div>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 pt-6 border-t border-[#E8E4DC]">
-                          <div className="space-y-2">
-                            <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Target className="w-3.5 h-3.5 mr-2" style={{ color: GOLD }} />
-                              Trigger Condition
+                        <div className="mt-6 pt-6 border-t border-[#E8E4DC] space-y-4">
+                          {/* Trigger Condition — clickable row */}
+                          <button
+                            className="w-full text-left group"
+                            onClick={() => setViewTrigger(trigger)}
+                          >
+                            <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC] group-hover:border-[#C9A84C] group-hover:bg-[#FFFDF5] transition-all rounded">
+                              <div className="flex items-start gap-3 flex-1 min-w-0">
+                                <Target className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: GOLD }} />
+                                <div className="min-w-0">
+                                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Trigger Condition</p>
+                                  <p className="text-sm font-semibold" style={{ color: NAVY }}>{parseConditionText(trigger.conditions, trigger.description)}</p>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-3 ml-4 flex-shrink-0">
+                                {(() => {
+                                  const signals = getCategorySignals(trigger.category);
+                                  const dpCount = signals.reduce((sum, s) => sum + s.dataPoints.length, 0);
+                                  return dpCount > 0 ? (
+                                    <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.1)", color: TEAL, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "3px 9px", borderRadius: 4 }}>
+                                      <Database className="w-3 h-3" />
+                                      {dpCount} data points
+                                    </div>
+                                  ) : null;
+                                })()}
+                                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-[#C9A84C] transition-colors" />
+                              </div>
                             </div>
-                            <p className="text-sm font-medium text-gray-800">{parseConditionText(trigger.conditions, trigger.description)}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Activity className="w-3.5 h-3.5 mr-2" style={{ color: TEAL }} />
-                              Automated Response
+                          </button>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                              <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
+                                <Activity className="w-3.5 h-3.5 mr-2" style={{ color: TEAL }} />
+                                Automated Response
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <Badge variant="outline" style={{ border: "1px solid #E8E4DC", color: NAVY, fontSize: 10 }}>
+                                  {trigger.action || 'Execute Protocol'}
+                                </Badge>
+                                {trigger.status === 'triggered' && (
+                                  <Badge style={{ background: TEAL, color: "#fff", fontSize: 10 }}>Executing</Badge>
+                                )}
+                              </div>
                             </div>
-                            <div className="flex items-center space-x-2">
-                              <Badge variant="outline" style={{ border: "1px solid #E8E4DC", color: NAVY, fontSize: 10 }}>
-                                {trigger.action || 'Execute Protocol'}
-                              </Badge>
-                              {trigger.status === 'triggered' && (
-                                <Badge style={{ background: TEAL, color: "#fff", fontSize: 10 }}>Executing</Badge>
-                              )}
+                            <div className="space-y-2">
+                              <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
+                                <Clock className="w-3.5 h-3.5 mr-2" style={{ color: NAVY }} />
+                                Last Evaluated
+                              </div>
+                              <p className="text-sm text-gray-600">
+                                {trigger.updatedAt ? format(new Date(trigger.updatedAt), 'MMM d, h:mm a') : 'Never'}
+                              </p>
                             </div>
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex items-center text-xs text-gray-500 uppercase tracking-wider font-bold">
-                              <Clock className="w-3.5 h-3.5 mr-2" style={{ color: NAVY }} />
-                              Last Evaluated
-                            </div>
-                            <p className="text-sm text-gray-600">
-                              {trigger.updatedAt ? format(new Date(trigger.updatedAt), 'MMM d, h:mm a') : 'Never'}
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -394,20 +462,35 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 </div>
 
                 {/* Trigger Condition — parsed from conditions JSON */}
-                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Target className="w-3.5 h-3.5" style={{ color: GOLD }} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Trigger Condition</span>
+                <div style={{ border: `2px solid ${GOLD}`, background: "#FFFDF5", padding: 16 }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target className="w-4 h-4" style={{ color: GOLD }} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Active Trigger Condition</span>
                   </div>
-                  <p className="text-sm font-semibold" style={{ color: NAVY }}>{parseConditionText(viewTrigger.conditions, viewTrigger.description)}</p>
+                  <p className="text-base font-bold mb-3" style={{ color: NAVY }}>{parseConditionText(viewTrigger.conditions, viewTrigger.description)}</p>
                   {viewTrigger.conditions && (() => {
                     try {
                       const c = typeof viewTrigger.conditions === 'string' ? JSON.parse(viewTrigger.conditions) : viewTrigger.conditions;
                       return (
-                        <div className="mt-3 grid grid-cols-3 gap-2">
-                          {c.field && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Data Field</p><p className="text-xs font-semibold text-gray-700">{String(c.field).replace(/_/g, ' ')}</p></div>}
-                          {c.operator && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Operator</p><p className="text-xs font-semibold" style={{ color: TEAL }}>{formatOperator(c.operator)}</p></div>}
-                          {c.value !== undefined && <div className="bg-white border border-[#E8E4DC] p-2 rounded"><p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-0.5">Threshold</p><p className="text-xs font-semibold" style={{ color: NAVY }}>{String(c.value)}</p></div>}
+                        <div className="grid grid-cols-3 gap-2">
+                          {c.field && (
+                            <div className="bg-white border border-[#E8E4DC] p-3">
+                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Signal Field</p>
+                              <p className="text-xs font-bold" style={{ color: NAVY }}>{String(c.field).replace(/_/g, ' ')}</p>
+                            </div>
+                          )}
+                          {c.operator && (
+                            <div className="bg-white border border-[#E8E4DC] p-3">
+                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Operator</p>
+                              <p className="text-sm font-bold" style={{ color: TEAL }}>{formatOperator(c.operator)}</p>
+                            </div>
+                          )}
+                          {c.value !== undefined && (
+                            <div style={{ background: NAVY, padding: 12 }}>
+                              <p className="text-[9px] font-bold uppercase tracking-wider text-gray-300 mb-1">Threshold</p>
+                              <p className="text-sm font-bold text-white">{String(c.value)}{typeof c.value === 'number' && (c.operator === 'drop' || c.operator === 'spike') ? '%' : ''}</p>
+                            </div>
+                          )}
                         </div>
                       );
                     } catch { return null; }
@@ -415,7 +498,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 </div>
 
                 {/* Metadata grid */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {[
                     { label: 'Category', value: viewTrigger.category || '—', icon: <Tag className="w-3.5 h-3.5" style={{ color: GOLD }} /> },
                     { label: 'Type', value: viewTrigger.triggerType || '—', icon: <Zap className="w-3.5 h-3.5" style={{ color: NAVY }} /> },
@@ -432,26 +515,85 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   ))}
                 </div>
 
-                {/* Signal Data Points */}
+                {/* Intelligence Signal Data Points — from SIGNAL_CATEGORIES */}
+                {(() => {
+                  const matchedCategories = getCategorySignals(viewTrigger.category);
+                  if (matchedCategories.length === 0) return null;
+                  const totalDPs = matchedCategories.reduce((sum, sc) => sum + sc.dataPoints.length, 0);
+                  return (
+                    <div className="border border-[#E8E4DC]">
+                      <div className="flex items-center justify-between p-4 border-b border-[#E8E4DC] bg-[#F8F7F4]">
+                        <div className="flex items-center gap-2">
+                          <Layers className="w-4 h-4" style={{ color: TEAL }} />
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-600">Signal Intelligence — Data Points</span>
+                        </div>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: TEAL, fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "3px 10px" }}>
+                          {totalDPs} data points
+                        </div>
+                      </div>
+                      <div className="p-4 space-y-5">
+                        {matchedCategories.map((sc) => (
+                          <div key={sc.id}>
+                            <div className="flex items-center gap-2 mb-3">
+                              <Radio className="w-3 h-3" style={{ color: sc.color || GOLD }} />
+                              <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>{sc.name}</span>
+                              <span className="text-[9px] bg-gray-100 text-gray-500 font-bold px-2 py-0.5 rounded">{sc.dataPoints.length}</span>
+                            </div>
+                            <div className="space-y-2">
+                              {sc.dataPoints.map((dp) => (
+                                <div key={dp.id} className="bg-[#F8F7F4] border border-[#E8E4DC] p-3">
+                                  <div className="flex items-start justify-between gap-3">
+                                    <div className="flex-1 min-w-0">
+                                      <p className="text-xs font-bold" style={{ color: NAVY }}>{dp.name}</p>
+                                      <p className="text-[10px] text-gray-500 mt-0.5 leading-relaxed">{dp.description}</p>
+                                      {dp.sources && dp.sources.length > 0 && (
+                                        <div className="flex flex-wrap gap-1 mt-1.5">
+                                          {dp.sources.slice(0, 3).map((src) => (
+                                            <span key={src} className="text-[8px] font-bold uppercase tracking-wider bg-white border border-[#E8E4DC] px-1.5 py-0.5 text-gray-500">{src.replace(/-/g, ' ')}</span>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
+                                    <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                                      <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded" style={{ background: `${METRIC_TYPE_COLORS[dp.metricType] || '#6B7280'}15`, color: METRIC_TYPE_COLORS[dp.metricType] || '#6B7280' }}>
+                                        {dp.metricType}{dp.unit ? ` (${dp.unit})` : ''}
+                                      </span>
+                                      {dp.defaultThreshold && (
+                                        <span className="text-[9px] font-mono font-bold text-gray-500">
+                                          {formatOperator(dp.defaultThreshold.operator)} {String(dp.defaultThreshold.value)}{dp.unit ? dp.unit : ''}
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* DB Signal Data (if any live data) */}
                 {signalData && signalData.length > 0 && (
                   <div className="p-4 border border-[#E8E4DC]">
                     <div className="flex items-center gap-2 mb-3">
                       <Database className="w-3.5 h-3.5" style={{ color: TEAL }} />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Data Points Monitored</span>
-                      <span className="text-[9px] bg-[#E8F5EF] text-[#2B8A6E] font-bold px-2 py-0.5 rounded">{signalData.length} signals</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">Live Signal Readings</span>
+                      <span className="text-[9px] bg-[#E8F5EF] text-[#2B8A6E] font-bold px-2 py-0.5 rounded">{signalData.length} active</span>
                     </div>
                     <div className="space-y-2">
                       {signalData.map((sig: any, i: number) => (
-                        <div key={i} className="flex items-center justify-between p-2 bg-[#F8F7F4] border border-[#E8E4DC] rounded text-xs">
+                        <div key={i} className="flex items-center justify-between p-2 bg-[#F8F7F4] border border-[#E8E4DC] text-xs">
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-gray-800 truncate">{sig.name}</p>
                             {sig.description && <p className="text-gray-500 text-[10px] truncate">{sig.description}</p>}
                           </div>
                           <div className="flex items-center gap-2 ml-3 flex-shrink-0">
-                            <span className="font-mono text-[10px] bg-white border border-[#E8E4DC] px-1.5 py-0.5 rounded" style={{ color: TEAL }}>
+                            <span className="font-mono text-[10px] bg-white border border-[#E8E4DC] px-1.5 py-0.5" style={{ color: TEAL }}>
                               {formatOperator(sig.operator)} {sig.thresholdValue ?? sig.threshold_value}
                             </span>
-                            {sig.signalType && <span className="text-[9px] uppercase font-bold text-gray-400">{sig.signalType ?? sig.signal_type}</span>}
                           </div>
                         </div>
                       ))}
