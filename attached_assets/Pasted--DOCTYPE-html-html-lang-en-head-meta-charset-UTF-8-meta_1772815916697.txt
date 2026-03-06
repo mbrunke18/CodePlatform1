@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaughnMartin · Execution OS — Creative Brand Package</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:     #0A0F2E;
+      --navy-mid: #141B45;
+      --navy-lit: #1E2860;
+      --gold:     #C9A84C;
+      --gold-lt:  #DFC178;
+      --gold-wh:  #EDD98A;
+      --gold-dk:  #9A7A35;
+      --teal:     #2B8A6E;
+      --teal-lt:  #3BAF8A;
+      --ivory:    #F0EDE4;
+      --ivory-dk: #E8E3D8;
+      --white:    #FDFCFA;
+      --ink:      #0D0C0A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      background: #0D0C0A;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── AGENCY COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .cover-diagonal {
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(201,168,76,0.03) 50%, transparent 100%);
+      transform: skewX(-8deg);
+      transform-origin: top right;
+    }
+
+    .cover-top {
+      position: relative; z-index: 2;
+      padding: 48px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .cover-agency-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .cover-doc-type {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .cover-main {
+      position: relative; z-index: 2;
+      padding: 0 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .cover-rule {
+      width: 80px; height: 3px;
+      background: var(--gold);
+      margin-bottom: 40px;
+    }
+
+    .cover-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(72px, 10vw, 120px);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .cover-brand-name em {
+      font-style: italic;
+      color: var(--gold-lt);
+      display: block;
+    }
+
+    .cover-product-line {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cover-product-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 36px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-lt);
+    }
+
+    .cover-product-sep {
+      width: 1px; height: 32px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .cover-product-sub {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .cover-bottom {
+      position: relative; z-index: 2;
+      padding: 40px 64px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cover-brief-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .cover-toc {
+      display: flex;
+      gap: 40px;
+    }
+
+    .cover-toc-item {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .cover-toc-item span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    /* ── SECTION DIVIDERS ── */
+    .section-break {
+      padding: 48px 64px 24px;
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+      max-width: 600px;
+    }
+
+    /* ── LOGO PRESENTATION BOARDS ── */
+    .logo-board {
+      padding: 48px 64px;
+      background: var(--ink);
+    }
+
+    .logo-concept-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .concept-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 4px 14px;
+    }
+
+    .concept-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--white);
+      font-style: italic;
+    }
+
+    .concept-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 10px;
+    }
+
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-bottom: 32px;
+    }
+
+    /* Dark variant */
+    .logo-dark {
+      background: var(--navy);
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Light variant */
+    .logo-light {
+      background: var(--ivory);
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    /* Gold variant */
+    .logo-gold-bg {
+      background: var(--gold);
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    /* Black variant */
+    .logo-black {
+      background: #080808;
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    .logo-bg-label {
+      position: absolute;
+      bottom: 14px; right: 16px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+
+    /* ── CONCEPT RATIONALE ── */
+    .concept-rationale {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .rationale-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 24px;
+    }
+
+    .rationale-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .rationale-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .rationale-body {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    /* ── SCALE TEST ── */
+    .scale-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 2px;
+    }
+
+    .scale-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      min-width: 80px;
+    }
+
+    /* ── TAGLINES ── */
+    .taglines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+
+    .tagline-row {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .tl-num {
+      background: var(--navy-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .tl-content {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: none;
+      padding: 28px 32px;
+    }
+
+    .tl-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .tl-tagline strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--gold-lt);
+    }
+
+    .tl-analysis {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .tl-use {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tl-chip {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border: 1px solid;
+    }
+
+    .tl-chip.guerrilla { border-color: rgba(59,175,138,0.4); color: var(--teal-lt); }
+    .tl-chip.linkedin { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+    .tl-chip.card { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); }
+    .tl-chip.pitch { border-color: rgba(201,168,76,0.6); color: var(--gold-lt); background: rgba(201,168,76,0.05); }
+
+    .tl-verdict {
+      background: rgba(255,255,255,0.02);
+      border-left: 3px solid rgba(255,255,255,0.08);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 160px;
+    }
+
+    .tl-verdict-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 6px;
+    }
+
+    .tl-verdict-score {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .score-a { color: var(--gold); }
+    .score-b { color: var(--teal-lt); }
+    .score-c { color: rgba(255,255,255,0.3); }
+
+    /* ── RECOMMENDED LOCKUP ── */
+    .recommended-badge {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .lockup-board {
+      background: var(--navy);
+      padding: 80px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lockup-board::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .lockup-center {
+      position: relative; z-index: 2;
+      text-align: center;
+    }
+
+    /* ── GUERRILLA CAMPAIGN ── */
+    .campaign-section {
+      padding: 48px 64px;
+      background: var(--ink);
+    }
+
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 32px;
+    }
+
+    .campaign-card {
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cc-dark { background: var(--navy); }
+    .cc-gold { background: var(--gold); }
+    .cc-light { background: var(--ivory); }
+    .cc-black { background: #080808; }
+
+    .campaign-format {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .cf-dark { color: var(--gold); }
+    .cf-gold { color: var(--navy); }
+    .cf-light { color: var(--teal); }
+    .cf-black { color: var(--gold); }
+
+    .campaign-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 16px;
+    }
+
+    .ch-dark { color: var(--white); }
+    .ch-gold { color: var(--navy); }
+    .ch-light { color: var(--navy); }
+    .ch-black { color: var(--white); }
+
+    .campaign-sub {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .cs-dark { color: rgba(255,255,255,0.5); }
+    .cs-gold { color: rgba(10,15,46,0.6); }
+    .cs-light { color: rgba(10,15,46,0.55); }
+    .cs-black { color: rgba(255,255,255,0.45); }
+
+    .campaign-tag {
+      margin-top: 24px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      display: inline-block;
+      border: 1px solid;
+    }
+
+    .ctag-dark { border-color: rgba(201,168,76,0.3); color: var(--gold); }
+    .ctag-gold { border-color: rgba(10,15,46,0.3); color: var(--navy); }
+    .ctag-light { border-color: rgba(43,138,110,0.3); color: var(--teal); }
+    .ctag-black { border-color: rgba(201,168,76,0.3); color: var(--gold-lt); }
+
+    .campaign-logo-stamp {
+      position: absolute;
+      bottom: 24px; right: 28px;
+      opacity: 0.12;
+    }
+
+    /* ── BUSINESS CARD ── */
+    .business-card-section {
+      padding: 48px 64px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .bc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .bc-card {
+      aspect-ratio: 1.75;
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bc-dark { background: var(--navy); }
+    .bc-light { background: var(--ivory); border: 1px solid #D4CEBC; }
+
+    .bc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .bc-name.light { color: var(--navy); }
+
+    .bc-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .bc-title.light { color: var(--teal); }
+
+    .bc-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .bc-contact {
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
+    }
+
+    .bc-contact.light { color: rgba(10,15,46,0.45); }
+
+    .bc-company-block { text-align: right; }
+
+    .bc-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .bc-company.light { color: var(--navy); }
+
+    .bc-product-bc {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    /* ── FULL RECOMMENDED LOGO ── */
+    /* CONCEPT A — Ascendant VM */
+    .vm-ascendant-lockup {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* CONCEPT B — Execution OS stand-alone */
+    .exos-lockup {
+      text-align: center;
+    }
+
+    /* ── ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════ COVER ══════════════════════ -->
+  <section class="cover">
+    <div class="cover-grid"></div>
+    <div class="cover-diagonal"></div>
+
+    <div class="cover-top">
+      <span class="cover-agency-tag">Creative Brand Package · 2026</span>
+      <span class="cover-doc-type">Logo System · Taglines · Guerrilla Campaign</span>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-rule"></div>
+      <div class="cover-brand-name">
+        Vaughn<em>Martin</em>
+      </div>
+      <div class="cover-product-line">
+        <span class="cover-product-name">Execution OS</span>
+        <div class="cover-product-sep"></div>
+        <span class="cover-product-sub">Strategic Execution Platform · Fortune 1000</span>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <span class="cover-brief-label">Contents of this document</span>
+      <div class="cover-toc">
+        <div class="cover-toc-item"><span>01</span>Logo Concepts</div>
+        <div class="cover-toc-item"><span>02</span>Tagline Options</div>
+        <div class="cover-toc-item"><span>03</span>Recommended Lockup</div>
+        <div class="cover-toc-item"><span>04</span>Guerrilla Campaign</div>
+        <div class="cover-toc-item"><span>05</span>Business Cards</div>
+        <div class="cover-toc-item"><span>06</span>Brand Standards</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 01 — LOGO CONCEPTS                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break">
+    <div class="section-num">Section 01</div>
+    <div class="section-title">Logo Concepts</div>
+    <div class="section-sub">Four distinct directions for VaughnMartin + Execution OS. Each tested on dark, light, and campaign backgrounds.</div>
+  </div>
+
+  <!-- ─── CONCEPT A: Ascendant VM ─── -->
+  <div class="logo-board">
+    <div class="logo-concept-label">
+      <span class="concept-num">Concept A</span>
+      <span class="concept-name">The Ascendant VM</span>
+      <span class="concept-tag">Recommended</span>
+    </div>
+
+    <div class="logo-showcase">
+      <!-- Dark -->
+      <div class="logo-dark" style="position:relative">
+        <div class="vm-ascendant-lockup">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <!-- Outer rect -->
+            <rect width="64" height="64" rx="4" fill="rgba(201,168,76,0.07)"/>
+            <rect width="64" height="64" rx="4" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="none"/>
+            <!-- Main V path -->
+            <path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Inner echo V (slightly raised) -->
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(201,168,76,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Top dot: apex of the outer V above — the preparation point -->
+            <circle cx="32" cy="11" r="3" fill="#C9A84C"/>
+          </svg>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:#FDFCFA;letter-spacing:0.02em;line-height:1;">VaughnMartin</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:5px">
+              <div style="width:28px;height:1px;background:#C9A84C;"></div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A84C;">Execution OS</div>
+            </div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.3)">Dark / Navy</span>
+      </div>
+
+      <!-- Light -->
+      <div class="logo-light" style="position:relative">
+        <div class="vm-ascendant-lockup">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="4" fill="rgba(10,15,46,0.05)"/>
+            <rect width="64" height="64" rx="4" stroke="rgba(10,15,46,0.12)" stroke-width="1" fill="none"/>
+            <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(10,15,46,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="32" cy="11" r="3" fill="#C9A84C"/>
+          </svg>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:#0A0F2E;letter-spacing:0.02em;line-height:1;">VaughnMartin</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:5px">
+              <div style="width:28px;height:1px;background:#C9A84C;"></div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:#2B8A6E;">Execution OS</div>
+            </div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.25)">Light / Ivory</span>
+      </div>
+
+      <!-- Gold BG -->
+      <div class="logo-gold-bg" style="position:relative">
+        <div class="vm-ascendant-lockup">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" rx="4" fill="rgba(10,15,46,0.1)"/>
+            <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(10,15,46,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="32" cy="11" r="3" fill="#0A0F2E"/>
+          </svg>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:#0A0F2E;letter-spacing:0.02em;line-height:1;">VaughnMartin</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:5px">
+              <div style="width:28px;height:1px;background:rgba(10,15,46,0.5);"></div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(10,15,46,0.7);">Execution OS</div>
+            </div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.3)">Gold Campaign</span>
+      </div>
+
+      <!-- Black -->
+      <div class="logo-black" style="position:relative">
+        <div class="vm-ascendant-lockup">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M12 16 L32 52 L52 16" stroke="#EDD98A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(237,217,138,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="32" cy="11" r="3" fill="#EDD98A"/>
+          </svg>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:#FDFCFA;letter-spacing:0.02em;line-height:1;">VaughnMartin</div>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:5px">
+              <div style="width:28px;height:1px;background:#EDD98A;"></div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:#EDD98A;">Execution OS</div>
+            </div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.2)">Black / Premium</span>
+      </div>
+    </div>
+
+    <!-- Scale row -->
+    <div class="scale-row" style="margin-top:0">
+      <span class="scale-label">Full (nav)</span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="32" height="32" viewBox="0 0 64 64" fill="none"><path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="11" r="3" fill="#C9A84C"/></svg>
+        <div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white);line-height:1">VaughnMartin</div><div style="font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-top:2px">Execution OS</div></div>
+      </div>
+      <span class="scale-label" style="margin-left:auto">Icon only</span>
+      <svg width="40" height="40" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="4" fill="rgba(201,168,76,0.1)"/><path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="11" r="3" fill="#C9A84C"/></svg>
+      <svg width="28" height="28" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="4" fill="rgba(201,168,76,0.1)"/><path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="11" r="3" fill="#C9A84C"/></svg>
+      <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="4" fill="rgba(201,168,76,0.15)"/><path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="16" height="16" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="2" fill="#C9A84C"/><path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="scale-label">Favicon</span>
+    </div>
+
+    <!-- Rationale -->
+    <div class="concept-rationale" style="margin-top:24px">
+      <div class="rationale-card">
+        <div class="rationale-icon">V</div>
+        <div class="rationale-title">The Mark's Meaning</div>
+        <div class="rationale-body">The outer V = Vaughn + Martin converging to one vision. The inner echo V = preparation preceding execution. The gold dot above = the moment before the game — the moment you're already fearless.</div>
+      </div>
+      <div class="rationale-card">
+        <div class="rationale-icon" style="font-family:'Barlow Condensed',sans-serif;font-weight:900">OS</div>
+        <div class="rationale-title">Two-Brand System</div>
+        <div class="rationale-body">VaughnMartin (Cormorant Garamond, 36px) carries the legacy and the people. Execution OS (Barlow Condensed, all-caps, gold rule separator) signals the product — technical, sharp, ready.</div>
+      </div>
+      <div class="rationale-card">
+        <div class="rationale-icon">◦</div>
+        <div class="rationale-title">Scale Performance</div>
+        <div class="rationale-body">The mark works at favicon size (16px), app nav (32px), business card (64px), and billboard scale. The gold dot holds legibility at every size. No detail is lost.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── CONCEPT B: Execution OS Stand-Alone ─── -->
+  <div class="logo-board" style="border-top:1px solid rgba(255,255,255,0.04)">
+    <div class="logo-concept-label">
+      <span class="concept-num">Concept B</span>
+      <span class="concept-name">The Execution Mark</span>
+      <span class="concept-tag">Product-Forward</span>
+    </div>
+
+    <div class="logo-showcase">
+      <div class="logo-dark" style="position:relative">
+        <div style="text-align:center">
+          <!-- Forward arrow mark -->
+          <svg width="72" height="52" viewBox="0 0 90 60" fill="none" style="display:block;margin:0 auto 20px">
+            <path d="M4 30 L62 30" stroke="rgba(43,138,110,0.3)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 30 L62 30 M50 10 L80 30 L50 50" stroke="#3BAF8A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="0" y="26" width="40" height="8" fill="rgba(43,138,110,0.15)"/>
+          </svg>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);line-height:1">EXECUTION<span style="color:var(--teal-lt)"> OS</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:400;letter-spacing:0.2em;color:rgba(255,255,255,0.3);margin-top:6px">by VaughnMartin</div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.3)">Dark / Navy</span>
+      </div>
+
+      <div class="logo-light" style="position:relative">
+        <div style="text-align:center">
+          <svg width="72" height="52" viewBox="0 0 90 60" fill="none" style="display:block;margin:0 auto 20px">
+            <path d="M4 30 L62 30 M50 10 L80 30 L50 50" stroke="#2B8A6E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="0" y="26" width="40" height="8" fill="rgba(43,138,110,0.1)"/>
+          </svg>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);line-height:1">EXECUTION<span style="color:var(--teal)"> OS</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:400;letter-spacing:0.2em;color:rgba(10,15,46,0.35);margin-top:6px">by VaughnMartin</div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.25)">Light / Ivory</span>
+      </div>
+
+      <div class="logo-gold-bg" style="position:relative">
+        <div style="text-align:center">
+          <svg width="72" height="52" viewBox="0 0 90 60" fill="none" style="display:block;margin:0 auto 20px">
+            <path d="M4 30 L62 30 M50 10 L80 30 L50 50" stroke="#0A0F2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);line-height:1">EXECUTION<span style="opacity:0.6"> OS</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:400;letter-spacing:0.2em;color:rgba(10,15,46,0.4);margin-top:6px">by VaughnMartin</div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.3)">Gold Campaign</span>
+      </div>
+
+      <div class="logo-black" style="position:relative">
+        <div style="text-align:center">
+          <svg width="72" height="52" viewBox="0 0 90 60" fill="none" style="display:block;margin:0 auto 20px">
+            <path d="M4 30 L62 30 M50 10 L80 30 L50 50" stroke="#EDD98A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);line-height:1">EXECUTION<span style="color:#EDD98A"> OS</span></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;font-weight:400;letter-spacing:0.2em;color:rgba(255,255,255,0.25);margin-top:6px">by VaughnMartin</div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.2)">Black / Premium</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── CONCEPT C: Wordmark Monogram ─── -->
+  <div class="logo-board" style="border-top:1px solid rgba(255,255,255,0.04)">
+    <div class="logo-concept-label">
+      <span class="concept-num">Concept C</span>
+      <span class="concept-name">The Monogram Serif</span>
+      <span class="concept-tag">Prestige / Advisory</span>
+    </div>
+
+    <div class="logo-showcase">
+      <div class="logo-dark" style="position:relative">
+        <div style="display:flex;align-items:center;gap:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--gold);line-height:1;letter-spacing:-0.02em">VM</div>
+          <div style="width:1px;height:64px;background:rgba(201,168,76,0.3)"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;color:var(--white);line-height:1;letter-spacing:0.04em">VaughnMartin</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-top:6px">Execution Operating System</div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.3)">Dark / Navy</span>
+      </div>
+
+      <div class="logo-light" style="position:relative">
+        <div style="display:flex;align-items:center;gap:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--navy);line-height:1;letter-spacing:-0.02em">VM</div>
+          <div style="width:1px;height:64px;background:rgba(10,15,46,0.15)"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;color:var(--navy);line-height:1;letter-spacing:0.04em">VaughnMartin</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:var(--teal);margin-top:6px">Execution Operating System</div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.25)">Light / Ivory</span>
+      </div>
+
+      <div class="logo-gold-bg" style="position:relative">
+        <div style="display:flex;align-items:center;gap:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--navy);line-height:1;opacity:0.8">VM</div>
+          <div style="width:1px;height:64px;background:rgba(10,15,46,0.2)"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;color:var(--navy);line-height:1;letter-spacing:0.04em">VaughnMartin</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(10,15,46,0.55);margin-top:6px">Execution Operating System</div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(10,15,46,0.3)">Gold Campaign</span>
+      </div>
+
+      <div class="logo-black" style="position:relative">
+        <div style="display:flex;align-items:center;gap:24px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;font-style:italic;color:var(--gold-lt);line-height:1;letter-spacing:-0.02em">VM</div>
+          <div style="width:1px;height:64px;background:rgba(201,168,76,0.2)"></div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;color:var(--white);line-height:1;letter-spacing:0.04em">VaughnMartin</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-top:6px">Execution Operating System</div>
+          </div>
+        </div>
+        <span class="logo-bg-label" style="color:rgba(255,255,255,0.2)">Black / Premium</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 02 — TAGLINES                                -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break" style="margin-top:0">
+    <div class="section-num">Section 02</div>
+    <div class="section-title">Tagline Options</div>
+    <div class="section-sub">Eight taglines across three strategic directions. Each rated for guerrilla use, LinkedIn, and pitch decks.</div>
+  </div>
+
+  <div style="padding:0 64px 48px;background:var(--ink)">
+
+    <!-- Direction A: Preparation -->
+    <div style="margin-bottom:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)">Direction A · The Preparation Angle</span>
+    </div>
+
+    <div class="taglines-grid" style="margin-bottom:32px">
+      <div class="tagline-row">
+        <div class="tl-num">1</div>
+        <div class="tl-content">
+          <div class="tl-tagline">Built on the Belief That <strong>Preparation Wins.</strong></div>
+          <div class="tl-analysis">Your founding philosophy in nine words. Rooted in football coaching, resonates in any boardroom. Personal, credible, and memorable. "Preparation Wins" does double duty — it's both truth and promise.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip card">Business Card</span>
+            <span class="tl-chip pitch">Pitch Deck</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A+</div></div>
+      </div>
+
+      <div class="tagline-row">
+        <div class="tl-num">2</div>
+        <div class="tl-content">
+          <div class="tl-tagline">The Team That <strong>Walks In Fearless.</strong></div>
+          <div class="tl-analysis">The emotional payoff of your entire methodology. "Fearless" is what executives actually want — not speed, not AI, not dashboards. This is the outcome that closes rooms.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip pitch">Pitch Deck</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A</div></div>
+      </div>
+    </div>
+
+    <!-- Direction B: Infrastructure -->
+    <div style="margin-bottom:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)">Direction B · The Infrastructure Angle</span>
+    </div>
+
+    <div class="taglines-grid" style="margin-bottom:32px">
+      <div class="tagline-row">
+        <div class="tl-num">3</div>
+        <div class="tl-content">
+          <div class="tl-tagline">The Execution Infrastructure <strong>Enterprises Are Missing.</strong></div>
+          <div class="tl-analysis">Direct, competitive, and exactly what you are. "Infrastructure" elevates the category above "software" or "platform" — it implies something foundational, permanent, essential. Works as a headline and a positioning statement simultaneously.</div>
+          <div class="tl-use">
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip pitch">Pitch Deck</span>
+            <span class="tl-chip card">Hero Copy</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A</div></div>
+      </div>
+
+      <div class="tagline-row">
+        <div class="tl-num">4</div>
+        <div class="tl-content">
+          <div class="tl-tagline"><strong>72 Hours → 12 Minutes.</strong> That's the Gap We Close.</div>
+          <div class="tl-analysis">The most visceral, data-driven option. The arrow between numbers does the selling. No adjectives, no promises — just math. Stops any executive cold on a LinkedIn scroll or a conference wall.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A</div></div>
+      </div>
+
+      <div class="tagline-row">
+        <div class="tl-num">5</div>
+        <div class="tl-content">
+          <div class="tl-tagline">Strategy Without <strong>Execution Is Fiction.</strong></div>
+          <div class="tl-analysis">Provocative. It names the problem that every Fortune 1000 COO feels but rarely says aloud. Positions you as the person willing to say what others won't. High-risk, high-reward — right for guerrilla, wrong for a board meeting.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-b">B+</div></div>
+      </div>
+    </div>
+
+    <!-- Direction C: Coordination -->
+    <div style="margin-bottom:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.05)">
+      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2)">Direction C · The Coordination Angle</span>
+    </div>
+
+    <div class="taglines-grid">
+      <div class="tagline-row">
+        <div class="tl-num">6</div>
+        <div class="tl-content">
+          <div class="tl-tagline">The Gap Between Strategy and Results <strong>Isn't Capability. It's Coordination.</strong></div>
+          <div class="tl-analysis">Your LinkedIn thesis made into a tagline. Sophisticated, peer-level, and ideologically precise. PMO Directors and COOs will nod immediately. Too long for a logo lockup — powerful as a campaign headline or LinkedIn subhead.</div>
+          <div class="tl-use">
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip pitch">Thought Leadership</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-b">A−</div></div>
+      </div>
+
+      <div class="tagline-row">
+        <div class="tl-num">7</div>
+        <div class="tl-content">
+          <div class="tl-tagline"><strong>Prepared to Respond.</strong></div>
+          <div class="tl-analysis">Three words. Military precision. The established tagline from earlier brand work — it holds. Short enough for a business card, strong enough for a billboard. The period is intentional — it's a full stop, not a question.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip card">Business Card</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip pitch">Pitch Deck</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A</div></div>
+      </div>
+
+      <div class="tagline-row">
+        <div class="tl-num">8</div>
+        <div class="tl-content">
+          <div class="tl-tagline">We Make Enterprises <strong>Fearless.</strong></div>
+          <div class="tl-analysis">The boldest one-line brand promise. "We Make" is active and ownable. "Fearless" is the emotional state every C-suite executive wants for their organization. Short, memorable, and true. This is the tagline that wins rooms.</div>
+          <div class="tl-use">
+            <span class="tl-chip guerrilla">Guerrilla</span>
+            <span class="tl-chip card">Business Card</span>
+            <span class="tl-chip linkedin">LinkedIn</span>
+            <span class="tl-chip pitch">Pitch Deck</span>
+          </div>
+        </div>
+        <div class="tl-verdict"><div class="tl-verdict-label">Agency Rating</div><div class="tl-verdict-score score-a">A+</div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 03 — RECOMMENDED LOCKUP                      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break">
+    <div class="section-num">Section 03</div>
+    <div class="section-title">Recommended Lockup</div>
+    <div class="section-sub">The primary mark, tagline, and composition for all campaign materials.</div>
+  </div>
+
+  <div style="padding:0 64px 48px;background:var(--ink)">
+    <div class="recommended-badge">Agency Recommendation</div>
+
+    <!-- Primary dark lockup -->
+    <div class="lockup-board" style="margin-bottom:2px">
+      <div class="lockup-center">
+        <!-- Mark -->
+        <svg width="80" height="80" viewBox="0 0 64 64" fill="none" style="display:block;margin:0 auto 24px">
+          <rect width="64" height="64" rx="4" fill="rgba(201,168,76,0.08)"/>
+          <rect width="64" height="64" rx="4" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="none"/>
+          <path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M22 16 L32 36 L42 16" stroke="rgba(201,168,76,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="11" r="3" fill="#C9A84C"/>
+        </svg>
+        <!-- Company -->
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:52px;color:#FDFCFA;letter-spacing:0.02em;line-height:1;text-align:center">VaughnMartin</div>
+        <!-- Rule + product -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:12px 0 20px">
+          <div style="width:48px;height:1px;background:rgba(201,168,76,0.4)"></div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold)">Execution OS</div>
+          <div style="width:48px;height:1px;background:rgba(201,168,76,0.4)"></div>
+        </div>
+        <!-- Tagline -->
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:400;color:rgba(255,255,255,0.45);letter-spacing:0.05em;text-align:center">We Make Enterprises Fearless.</div>
+      </div>
+    </div>
+
+    <!-- Two alternate colorways side by side -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:32px">
+      <div style="background:var(--ivory);padding:60px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style="margin-bottom:18px">
+          <rect width="64" height="64" rx="4" fill="rgba(10,15,46,0.06)"/>
+          <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 16 L32 36 L42 16" stroke="rgba(10,15,46,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="11" r="3" fill="#C9A84C"/>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:var(--navy);line-height:1;text-align:center">VaughnMartin</div>
+        <div style="display:flex;align-items:center;gap:12px;margin:8px 0 12px"><div style="width:32px;height:1px;background:var(--gold)"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--teal)">Execution OS</div><div style="width:32px;height:1px;background:var(--gold)"></div></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:rgba(10,15,46,0.4);text-align:center">We Make Enterprises Fearless.</div>
+        <div style="margin-top:12px;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(10,15,46,0.25)">Light / Ivory Variant</div>
+      </div>
+      <div style="background:var(--gold);padding:60px 48px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style="margin-bottom:18px">
+          <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 16 L32 36 L42 16" stroke="rgba(10,15,46,0.2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="11" r="3" fill="#0A0F2E"/>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:36px;color:var(--navy);line-height:1;text-align:center">VaughnMartin</div>
+        <div style="display:flex;align-items:center;gap:12px;margin:8px 0 12px"><div style="width:32px;height:1px;background:rgba(10,15,46,0.3)"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(10,15,46,0.6)">Execution OS</div><div style="width:32px;height:1px;background:rgba(10,15,46,0.3)"></div></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:rgba(10,15,46,0.5);text-align:center">We Make Enterprises Fearless.</div>
+        <div style="margin-top:12px;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(10,15,46,0.3)">Gold Campaign Variant</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 04 — GUERRILLA CAMPAIGN                      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break">
+    <div class="section-num">Section 04</div>
+    <div class="section-title">Guerrilla Campaign Creative</div>
+    <div class="section-sub">Six campaign executions across LinkedIn, conference, digital, and ambient formats. Each uses a single headline that stops a Fortune 1000 executive mid-scroll.</div>
+  </div>
+
+  <div class="campaign-section">
+    <div class="campaign-grid">
+
+      <!-- Card 1: Dark / LinkedIn -->
+      <div class="campaign-card cc-dark">
+        <div class="campaign-format cf-dark">LinkedIn Post / Dark Card</div>
+        <div class="campaign-headline ch-dark" style="font-size:44px">YOUR STRATEGY<br><span style="color:var(--gold)">IS ALREADY<br>TOO LATE.</span></div>
+        <div class="campaign-sub cs-dark">The average enterprise takes 68 hours to mobilize after a strategic trigger. Your competitor is already moving. Execution OS deploys in 12 minutes.</div>
+        <span class="campaign-tag ctag-dark">VaughnMartin · Execution OS</span>
+        <svg class="campaign-logo-stamp" width="80" height="80" viewBox="0 0 64 64" fill="none">
+          <path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="11" r="3" fill="#C9A84C"/>
+        </svg>
+      </div>
+
+      <!-- Card 2: Gold / Provocative -->
+      <div class="campaign-card cc-gold">
+        <div class="campaign-format cf-gold">Conference Poster / Gold Disruptive</div>
+        <div class="campaign-headline ch-gold">WE MAKE<br>ENTERPRISES<br>FEARLESS.</div>
+        <div class="campaign-sub cs-gold">170 playbooks. 12-minute deployment. Built on 20 years of Fortune 500 execution and the same methodology that wins championship games.</div>
+        <span class="campaign-tag ctag-gold">VaughnMartin · Execution OS</span>
+        <svg class="campaign-logo-stamp" width="80" height="80" viewBox="0 0 64 64" fill="none">
+          <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Card 3: Light / Clean -->
+      <div class="campaign-card cc-light">
+        <div class="campaign-format cf-light">Executive Email / Print Ad</div>
+        <div class="campaign-headline ch-light" style="font-size:40px">72 HOURS.<br><span style="color:var(--teal)">→ 12 MINUTES.<br>SAME RESULT.</span></div>
+        <div class="campaign-sub cs-light">What used to take three days of cross-functional coordination now happens automatically. That's not a feature. That's a competitive weapon.</div>
+        <span class="campaign-tag ctag-light">VaughnMartin · Execution OS</span>
+      </div>
+
+      <!-- Card 4: Black / Premium -->
+      <div class="campaign-card cc-black">
+        <div class="campaign-format cf-black">Premium Print / Event Drop</div>
+        <div class="campaign-headline ch-black">PREPARED<br>TO<br><span style="color:var(--gold-lt)">RESPOND.</span></div>
+        <div class="campaign-sub cs-black">The team with the better playbook walks into the game already knowing every scenario. They walk in fearless. That's VaughnMartin.</div>
+        <span class="campaign-tag ctag-black">VaughnMartin · Execution OS</span>
+        <svg class="campaign-logo-stamp" width="80" height="80" viewBox="0 0 64 64" fill="none">
+          <path d="M12 16 L32 52 L52 16" stroke="#EDD98A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="11" r="3" fill="#EDD98A"/>
+        </svg>
+      </div>
+
+      <!-- Card 5: Navy with teal accent -->
+      <div class="campaign-card" style="background:var(--navy-mid)">
+        <div class="campaign-format" style="color:var(--teal-lt)">LinkedIn Thought Leadership</div>
+        <div class="campaign-headline" style="color:var(--white);font-size:36px">THE GAP BETWEEN<br>STRATEGY AND RESULTS<br><span style="color:var(--teal-lt)">ISN'T CAPABILITY.</span><br><span style="color:var(--gold)">IT'S COORDINATION.</span></div>
+        <div class="campaign-sub" style="color:rgba(255,255,255,0.45)">AI doesn't transform organizations. It exposes the gaps between them. Execution OS closes those gaps in real time.</div>
+        <span class="campaign-tag" style="border-color:rgba(59,175,138,0.3);color:var(--teal-lt)">VaughnMartin · Execution OS</span>
+      </div>
+
+      <!-- Card 6: Ivory / Sport metaphor -->
+      <div class="campaign-card cc-light">
+        <div class="campaign-format cf-light">Ambient / Event Activation</div>
+        <div class="campaign-headline ch-light" style="font-size:36px">60 DECISIONS<br>IN 40 SECONDS.<br><span style="color:var(--navy);font-size:28px;line-height:1.2">FOOTBALL TAUGHT US THAT.<br><span style="color:var(--teal)">EXECUTION OS DOES IT<br>FOR YOUR BOARDROOM.</span></span></div>
+        <span class="campaign-tag ctag-light">VaughnMartin · Execution OS</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 05 — BUSINESS CARDS                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break">
+    <div class="section-num">Section 05</div>
+    <div class="section-title">Business Cards</div>
+    <div class="section-sub">Two variants — dark and light. Production-ready at standard 3.5" × 2" format.</div>
+  </div>
+
+  <div class="business-card-section">
+    <div class="bc-grid">
+      <!-- Dark card front -->
+      <div class="bc-card bc-dark">
+        <div>
+          <!-- Mark + company -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:3px">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+              <path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="32" cy="11" r="4" fill="#C9A84C"/>
+            </svg>
+            <div class="bc-name">VaughnMartin</div>
+          </div>
+          <div class="bc-title">Execution OS</div>
+        </div>
+        <div class="bc-bottom">
+          <div class="bc-contact">
+            Marty Brunke<br>
+            Founder & CEO<br>
+            mbrunke@vaughnmartin.com<br>
+            executeiq.io
+          </div>
+          <div class="bc-company-block">
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.05em">We Make Enterprises</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase">Fearless.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark card back -->
+      <div class="bc-card bc-dark" style="background:var(--gold);align-items:center;justify-content:center">
+        <div style="text-align:center;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+          <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+            <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(10,15,46,0.2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="11" r="3.5" fill="#0A0F2E"/>
+          </svg>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--navy);line-height:1">VaughnMartin</div>
+          <div style="width:40px;height:1px;background:rgba(10,15,46,0.25)"></div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(10,15,46,0.5)">Execution OS</div>
+        </div>
+      </div>
+
+      <!-- Light card front -->
+      <div class="bc-card bc-light">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:3px">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
+              <path d="M12 16 L32 52 L52 16" stroke="#0A0F2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="32" cy="11" r="4" fill="#C9A84C"/>
+            </svg>
+            <div class="bc-name light">VaughnMartin</div>
+          </div>
+          <div class="bc-title light">Execution OS</div>
+        </div>
+        <div class="bc-bottom">
+          <div class="bc-contact light">
+            Marty Brunke<br>
+            Founder & CEO<br>
+            mbrunke@vaughnmartin.com<br>
+            executeiq.io
+          </div>
+          <div class="bc-company-block">
+            <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(10,15,46,0.3);letter-spacing:0.05em">We Make Enterprises</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.15em;color:var(--teal);text-transform:uppercase">Fearless.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Light card back -->
+      <div class="bc-card" style="background:var(--navy);aspect-ratio:1.75;padding:32px 36px;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+            <path d="M12 16 L32 52 L52 16" stroke="#C9A84C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 16 L32 36 L42 16" stroke="rgba(201,168,76,0.2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="11" r="3.5" fill="#C9A84C"/>
+          </svg>
+          <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(255,255,255,0.4);line-height:1.3;text-align:center">"Built on the Belief<br>That Preparation Wins."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- SECTION 06 — BRAND STANDARDS                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section-break">
+    <div class="section-num">Section 06</div>
+    <div class="section-title">Brand Standards</div>
+    <div class="section-sub">The complete rules for applying the VaughnMartin + Execution OS identity system.</div>
+  </div>
+
+  <div style="padding:32px 64px 80px;background:var(--ink)">
+
+    <!-- Color swatches -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:48px">
+      <div>
+        <div style="height:80px;background:#0A0F2E;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">MIDNIGHT NAVY</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#0A0F2E</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">Dominant · 60%</div>
+      </div>
+      <div>
+        <div style="height:80px;background:#C9A84C;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">CAMPAIGN GOLD</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#C9A84C</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">Accent · 20%</div>
+      </div>
+      <div>
+        <div style="height:80px;background:#EDD98A;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">WHITE GOLD</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#EDD98A</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">On-dark type</div>
+      </div>
+      <div>
+        <div style="height:80px;background:#2B8A6E;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">EXECUTION TEAL</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#2B8A6E</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">Product · Teal accent</div>
+      </div>
+      <div>
+        <div style="height:80px;background:#F0EDE4;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">IVORY</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#F0EDE4</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">Light surfaces</div>
+      </div>
+      <div>
+        <div style="height:80px;background:#080808;border:1px solid rgba(255,255,255,0.06)"></div>
+        <div style="padding:10px 0;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:0.2em">PREMIUM BLACK</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3)">#080808</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:2px">Premium print</div>
+      </div>
+    </div>
+
+    <!-- Typography specimens -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px">
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:32px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Cormorant Garamond · Display</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--white);line-height:1;margin-bottom:8px">VaughnMartin</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;font-style:italic;color:var(--gold-lt);line-height:1;margin-bottom:8px">Fearless.</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:rgba(255,255,255,0.4);line-height:1.4">Strategic Execution through<br>Elite Methodology</div>
+        <div style="margin-top:16px;font-size:10px;font-weight:400;color:rgba(255,255,255,0.2)">Used for: Company name, headlines, display copy, italic tagline moments</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:32px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Barlow Condensed · Campaign</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;letter-spacing:0.04em;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:8px">EXECUTION OS</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-lt);line-height:1;margin-bottom:8px">WE MAKE ENTERPRISES</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);line-height:1">FEARLESS.</div>
+        <div style="margin-top:16px;font-size:10px;font-weight:400;color:rgba(255,255,255,0.2)">Used for: Product name, campaign headlines, labels, CTAs, guerrilla copy</div>
+      </div>
+    </div>
+
+    <!-- Brand rules -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:24px;border-left:3px solid var(--gold)">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Company vs Product</div>
+        <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7"><strong style="color:var(--white);font-weight:600">VaughnMartin</strong> = the company, the legacy, the people. Always Cormorant Garamond. Never all-caps.<br><br><strong style="color:var(--white);font-weight:600">Execution OS</strong> = the product. Always Barlow Condensed. Always separated by a gold rule.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:24px;border-left:3px solid var(--teal)">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-lt);margin-bottom:12px">Gold Is Not a Background</div>
+        <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7">Gold (#C9A84C) is reserved for accents, labels, marks, and metrics. The only exception is the campaign gold card — a deliberate disruption. Never use gold as a page or screen background color.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:24px;border-left:3px solid rgba(255,255,255,0.15)">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px">The Mark's Rules</div>
+        <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7">The Ascendant V mark always appears with the gold dot above. The inner echo V may be omitted at small sizes. The mark may stand alone as an icon. Never rotate, distort, or recolor the mark outside of approved palette.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
