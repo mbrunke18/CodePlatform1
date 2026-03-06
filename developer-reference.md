@@ -701,16 +701,16 @@ Current `.replit` deployment config:
 ```toml
 [deployment]
 deploymentTarget = "autoscale"
-build = ["sh", "-c", "node_modules/.bin/esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+build = ["sh", "-c", "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
 run = ["npm", "run", "start"]
 ```
 
-**Do NOT change `build` back to `["true"]` or `["npm", "run", "build"]`.** If you ever need to reset via the deployment config tool:
+**Do NOT change `build` back to bundling all node_modules** (omitting `--packages=external`). That causes deployment timeouts. If you ever need to reset via the deployment config tool:
 ```javascript
 await deployConfig({
   deploymentTarget: "autoscale",
   run: ["npm", "run", "start"],
-  build: ["sh", "-c", "node_modules/.bin/esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+  build: ["sh", "-c", "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
 });
 ```
 
