@@ -161,13 +161,13 @@ export default function Footer() {
       <div className="border-t border-poise-gold/10 bg-gradient-to-r from-poise-navy via-poise-dark-gray/50 to-poise-navy">
         <div className="max-w-7xl mx-auto px-6 py-8 text-center">
           <p className="text-2xl font-bold text-poise-gold mb-2" data-testid="footer-idea-tagline">
-            Execution OS — Prepared to Respond.
+            We Make Enterprises Fearless.
           </p>
           <p className="text-lg text-slate-300 italic mb-4">
-            "Any situation. Coordinated response. Confidence."
+            "Stop improvising. Start executing."
           </p>
           <p className="text-sm text-poise-teal">
-            170 playbooks. Pre-defined governance. Clear decision rights. 12 minutes to execution.
+            170 playbooks. Pre-staged coordination. Clear decision rights. 12 minutes to execution.
           </p>
         </div>
       </div>

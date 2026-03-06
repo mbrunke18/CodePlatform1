@@ -5,6 +5,8 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 
 **Target audience:** The full executive layer — CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, and Boards of Directors. Designed for all C-suite and executive leadership roles across every major industry. Cross-industry by design: financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges. The homepage "Built for" tags read: CEOs & Boards · C-Suite Executives · Division Presidents · Executive Leadership. Never list only a subset of roles or specific industries as primary targets.
 
+**Brand tagline:** "We Make Enterprises Fearless." — primary brand statement used in the Footer (sitewide), Homepage closing CTA, PilotProgram CTA section, TryDemo completion screen, and FounderStory manifesto. This tagline should appear on high-impact closing moments across the product. The supporting quote is: "Stop improvising. Start executing."
+
 ## User Preferences
 - Preferred communication style: Simple, everyday language
 - Valued prioritization approach with phase-by-phase implementation
@@ -39,6 +41,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **IDEA Framework:** Core framework supporting playbook customization, AI pattern matching, coordinated orchestration, and outcome analysis.
 
 **Feature Specifications:**
+- **Founder Story / Manifesto (`/founder-story`):** `FounderStory.tsx` is a manifesto-first page. The full "We Make Enterprises Fearless" manifesto by Marty Brunke (March 2026) is the dominant centerpiece — 7 Roman-numeral sections with pull quotes, styled body text, and an inline IDEA Framework navy card. The bio strip (MB monogram + Fortune 500 company badges) and two video cards (90-second intro, 3:30 full story) appear in a separate off-white section below. Closing CTA: "Request Pilot Access" → `/pilot-program`. Do not revert to a video-first or bio-first layout.
 - **Playbook Library:** 170 active playbooks across 9 domains, plus 4 compound playbooks. Includes enriched content like `why_it_matters`, `signal_sources`, `enriched_phases`. Three free sample playbooks for unauthenticated users.
 - **Try Demo Experience:** Public-facing `/try-demo` route demonstrating the before/after value of Execution OS in 7 phases (Select, Chaos, IDENTIFY, DETECT, EXECUTE, ADVANCE, Complete).
 - **Role Availability Signal:** Admin-set flags warn the activation console when key roles are limited, ensuring the 12-minute promise.

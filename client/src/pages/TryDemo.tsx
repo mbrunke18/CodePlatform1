@@ -1281,6 +1281,7 @@ export default function TryDemo() {
                               <Rocket className="h-10 w-10 text-[#2B8A6E]" />
                             </div>
                             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>IDEA Framework Complete</h2>
+                            <p className="text-[#C9A84C] text-xs font-bold tracking-[0.2em] uppercase mb-1">We Make Enterprises Fearless.</p>
                             <p className="text-slate-600">Identify · Detect · Execute · Advance — in 12 minutes</p>
                           </div>
 

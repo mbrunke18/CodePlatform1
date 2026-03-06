@@ -795,6 +795,9 @@ export default function Homepage() {
               The Coordination Infrastructure<br />
               <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Enterprises Are Missing. Built.</em>
             </h2>
+            <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 8, marginTop: -4 }}>
+              We Make Enterprises Fearless.
+            </p>
             <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.5)", maxWidth: 520, margin: "0 auto 48px" }}>
               See Execution OS in action. When a signal fires, you're not scheduling a meeting — you're already executing. Join the pilot and run your first playbook.
             </p>

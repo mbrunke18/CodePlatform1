@@ -557,6 +557,7 @@ export default function PilotProgram() {
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-4">We Make Enterprises Fearless.</p>
             <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-cta">
               Ready to Validate Strategic Execution?
             </h2>
