@@ -113,7 +113,7 @@ export default function Homepage() {
 
       {/* ══ HERO ══ */}
       <section style={{ minHeight: "100vh", background: NAVY_BG, display: "flex", alignItems: "center", position: "relative", overflow: "hidden", padding: "120px 56px 80px" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.18) 1.5px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.18) 1.5px,transparent 1px)`, backgroundSize: "48px 48px" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
         <div style={{ position: "absolute", top: -180, right: -120, width: 1000, height: 1000, background: "radial-gradient(ellipse,rgba(43,138,110,0.22) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -120, left: "30%", width: 750, height: 750, background: "radial-gradient(ellipse,rgba(201,168,76,0.16) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "20%", left: -120, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(43,138,110,0.11) 0%,transparent 60%)", pointerEvents: "none" }} />
@@ -125,7 +125,7 @@ export default function Homepage() {
             <div style={{ marginBottom: 32 }}>
               <ExecuteIQLogo variant="icon-only" height={56} color="white" />
             </div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.14)", border: "1px solid rgba(201,168,76,0.5)", padding: "10px 22px", marginBottom: 36 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.22)", border: "1px solid rgba(201,168,76,0.7)", padding: "10px 22px", marginBottom: 36, backdropFilter: "blur(4px)" }}>
               <span style={{ width: 8, height: 8, background: GOLD, borderRadius: "50%", display: "inline-block", flexShrink: 0, animation: "hpBlink 2.5s ease infinite" }} />
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
             </div>
@@ -437,7 +437,7 @@ export default function Homepage() {
 
       {/* ══ IDEA FRAMEWORK ══ */}
       <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.18) 1.5px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.18) 1.5px,transparent 1px)`, backgroundSize: "48px 48px" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
         <div style={{ position: "absolute", top: -100, left: -100, width: 800, height: 800, background: "radial-gradient(ellipse,rgba(43,138,110,0.18) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -80, right: -60, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto" }}>
@@ -587,7 +587,7 @@ export default function Homepage() {
 
       {/* ══ BUILT FOR TODAY, READY FOR TOMORROW ══ */}
       <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.18) 1.5px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.18) 1.5px,transparent 1px)`, backgroundSize: "48px 48px" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
         <div style={{ position: "absolute", top: -80, right: -80, width: 750, height: 750, background: "radial-gradient(ellipse,rgba(43,138,110,0.19) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -60, left: "20%", width: 550, height: 550, background: "radial-gradient(ellipse,rgba(201,168,76,0.13) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
@@ -781,7 +781,7 @@ export default function Homepage() {
 
       {/* ══ CTA ══ */}
       <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.18) 1.5px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.18) 1.5px,transparent 1px)`, backgroundSize: "48px 48px" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 900, height: 900, background: "radial-gradient(ellipse,rgba(43,138,110,0.20) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: -60, right: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -60, left: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
