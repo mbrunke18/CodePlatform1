@@ -146,13 +146,13 @@ Be specific and strategic. Focus on business impact.`;
 
           // Log trigger match in monitoring history
           await db.insert(triggerMonitoringHistory).values({
-            trigger_id: trigger.id,
-            organization_id: organizationId,
-            check_timestamp: new Date(),
-            conditions_met: matchScore >= 60,
-            ai_confidence: combinedConfidence,
-            event_data: eventMetadata,
-            alert_generated: true
+            triggerId: trigger.id,
+            organizationId: organizationId,
+            checkTimestamp: new Date(),
+            conditionsMet: matchScore >= 60,
+            aiConfidence: combinedConfidence,
+            eventData: eventMetadata,
+            alertGenerated: true
           });
         }
       }
@@ -174,22 +174,22 @@ Be specific and strategic. Focus on business impact.`;
   ) {
     try {
       const [alert] = await db.insert(strategicAlerts).values({
-        organization_id: organizationId,
-        trigger_id: match.triggerId,
-        alert_type: match.analysis.classification,
+        organizationId: organizationId,
+        triggerId: match.triggerId,
+        alertType: match.analysis.classification,
         title: match.analysis.summary,
         description: match.analysis.keyInsights.join('\n\n'),
         severity: match.analysis.urgency,
-        ai_confidence: match.confidence,
-        source_type: 'ai_intelligence',
-        source_data: {
+        aiConfidence: match.confidence,
+        sourceType: 'ai_intelligence',
+        sourceData: {
           ...sourceData,
           analysis: match.analysis
         },
         status: 'new',
-        action_required: match.analysis.urgency === 'critical' || match.analysis.urgency === 'high',
-        recommended_actions: match.analysis.recommendations,
-        impact_areas: match.analysis.affectedAreas
+        actionRequired: match.analysis.urgency === 'critical' || match.analysis.urgency === 'high',
+        recommendedActions: match.analysis.recommendations,
+        impactAreas: match.analysis.affectedAreas
       }).returning();
 
       return alert;
@@ -208,17 +208,17 @@ Be specific and strategic. Focus on business impact.`;
     const alerts = await db.select()
       .from(strategicAlerts)
       .where(and(
-        eq(strategicAlerts.organization_id, organizationId),
-        gte(strategicAlerts.created_at, cutoffTime)
+        eq(strategicAlerts.organizationId, organizationId),
+        gte(strategicAlerts.createdAt, cutoffTime)
       ))
-      .orderBy(desc(strategicAlerts.created_at));
+      .orderBy(desc(strategicAlerts.createdAt));
 
     const avgConfidence = alerts.length > 0
-      ? Math.round(alerts.reduce((sum, a) => sum + (a.ai_confidence || 0), 0) / alerts.length)
+      ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length)
       : 0;
 
     const byType = alerts.reduce((acc, alert) => {
-      acc[alert.alert_type] = (acc[alert.alert_type] || 0) + 1;
+      acc[alert.alertType] = (acc[alert.alertType] || 0) + 1;
       return acc;
     }, {} as Record<string, number>);
 

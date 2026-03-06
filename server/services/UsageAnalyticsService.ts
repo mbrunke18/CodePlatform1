@@ -1,5 +1,5 @@
 import { db } from '../db.js';
-import { usageAnalytics, engagementMetrics, users, scenarios, tasks, kpis } from '@shared/schema';
+import { usageAnalytics, engagementMetrics, users, tasks, kpis } from '@shared/schema';
 import { eq, and, desc, gte, lte, sql, count } from 'drizzle-orm';
 import { databaseNotificationService } from './DatabaseNotificationService.js';
 

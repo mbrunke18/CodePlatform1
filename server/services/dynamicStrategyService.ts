@@ -277,7 +277,7 @@ export class DynamicStrategyService {
       .from(oraclePatterns)
       .where(and(
         eq(oraclePatterns.organizationId, organizationId),
-        gte(oraclePatterns.createdAt, twentyFourHoursAgo),
+        gte(oraclePatterns.detectedAt, twentyFourHoursAgo),
       ))
       .limit(1);
 
