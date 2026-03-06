@@ -57,7 +57,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
-- **Build:** `esbuild` bundles all server dependencies into a single `dist/index.js`. Frontend `dist/public/` is pre-committed and requires `npx vite build` locally before deployment.
+- **Build:** `esbuild` transpiles server code into `dist/index.js` using `--packages=external` (does NOT bundle node_modules — runtime resolves them from the installed packages). Frontend `dist/public/` is pre-committed and requires `npx vite build` locally before deployment. Build command: `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config`. This completes in ~100ms. Do NOT use `--bundle` without `--packages=external` — it causes deployment timeouts by bundling all node_modules.
 - **Server Startup Order:** HTTP server starts immediately at the top of `server/index.ts` for fast health check responses, with WebSocket attachment and background initializations running subsequently.
 
 ## External Dependencies
