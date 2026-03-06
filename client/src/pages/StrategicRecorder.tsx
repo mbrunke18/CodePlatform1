@@ -39,7 +39,14 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
       queryClient.invalidateQueries({ queryKey: ['/api/strategic-recordings'] });
       toast({ title: `${data.generatedPlaybooks?.length ?? 0} playbooks generated`, description: 'Your tribal knowledge has been captured.' });
     },
-    onError: () => toast({ title: 'Analysis failed', variant: 'destructive' }),
+    onError: (error: any) => {
+      if (error?.message?.startsWith('401')) {
+        toast({ title: 'Sign in required', description: 'Please sign in to analyze recordings.', variant: 'destructive' });
+        setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+      } else {
+        toast({ title: 'Analysis failed', description: 'An error occurred. Please try again.', variant: 'destructive' });
+      }
+    },
   });
 
   const canAnalyze = inputText.trim().length >= 50 && !analyzeMutation.isPending;

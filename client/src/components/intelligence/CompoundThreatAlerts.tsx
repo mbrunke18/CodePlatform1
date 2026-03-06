@@ -33,7 +33,14 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
       queryClient.invalidateQueries({ queryKey: ['/api/compound-threats'] });
       toast({ title: 'Analysis complete', description: 'Cross-domain synthesis finished.' });
     },
-    onError: () => toast({ title: 'Analysis failed', variant: 'destructive' }),
+    onError: (error: any) => {
+      if (error?.message?.startsWith('401')) {
+        toast({ title: 'Sign in required', description: 'Please sign in to run threat analysis.', variant: 'destructive' });
+        setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+      } else {
+        toast({ title: 'Analysis failed', description: 'An error occurred. Please try again.', variant: 'destructive' });
+      }
+    },
   });
 
   const dismissMutation = useMutation({

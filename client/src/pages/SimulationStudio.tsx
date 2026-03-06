@@ -61,7 +61,14 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
       queryClient.invalidateQueries({ queryKey: ['/api/simulation-analyses'] });
       toast({ title: 'Simulation complete', description: `Survive: ${data.surviveScore} · Thrive: ${data.thriveScore}` });
     },
-    onError: () => toast({ title: 'Simulation failed', variant: 'destructive' }),
+    onError: (error: any) => {
+      if (error?.message?.startsWith('401')) {
+        toast({ title: 'Sign in required', description: 'Please sign in to run simulations.', variant: 'destructive' });
+        setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+      } else {
+        toast({ title: 'Simulation failed', description: 'An error occurred. Please try again.', variant: 'destructive' });
+      }
+    },
   });
 
   const canRun = scenario.trim().length >= 10 && !analyzeMutation.isPending;
