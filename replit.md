@@ -60,7 +60,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
-- **Build:** `esbuild` transpiles server code into `dist/index.js` using `--packages=external` (does NOT bundle node_modules — runtime resolves them from the installed packages). Frontend `dist/public/` is pre-committed and requires `npx vite build` locally before deployment. Build command: `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config`. This completes in ~100ms. Do NOT use `--bundle` without `--packages=external` — it causes deployment timeouts by bundling all node_modules.
+- **Build:** Full build command (set in `.replit` `[deployment]` section): `npx vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config`. Step 1 compiles the frontend (~24s). Step 2 bundles the server in ~100ms. `--packages=external` is CRITICAL — it prevents esbuild from bundling node_modules, which caused deployment timeouts previously. Do NOT remove `--packages=external` under any circumstances. Do NOT use a build command that runs `npm run build` (which internally runs vite build without the esbuild step).
 - **Server Startup Order:** HTTP server starts immediately at the top of `server/index.ts` for fast health check responses, with WebSocket attachment and background initializations running subsequently.
 
 ## External Dependencies

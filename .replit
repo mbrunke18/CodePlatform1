@@ -8,7 +8,7 @@ packages = ["zip", "unzip"]
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["sh", "-c", "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+build = ["sh", "-c", "npx vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
 run = ["npm", "run", "start"]
 
 [env]
