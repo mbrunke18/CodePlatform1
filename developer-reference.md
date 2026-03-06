@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 2) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 3) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -12,6 +12,8 @@
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
 - **Human-AI partnership model** — AI monitors and recommends, human executives approve and decide.
+- **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
+- **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
 
 ---
 
@@ -196,6 +198,7 @@ npm run db:push --force
 | `sessions` | Auth sessions (Passport.js) |
 | `weakSignals` | Dynamic strategy weak signal detection |
 | `oraclePatterns` | AI pattern recognition results |
+| `investor_leads` | Gate form submissions from `/investor-resources`, `/investor-presentation`, `/board-briefings` |
 
 ### Key Enums
 ```ts
@@ -560,7 +563,9 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
 | `SignalIntelligenceHub.tsx` | `/signal-intelligence` | Live signal monitoring. Requires auth+org. Shows branded fallback if not. |
-| `BoardBriefings.tsx` | `/board-briefings` | Board reports + AI Board Deck Generator |
+| `BoardBriefings.tsx` | `/board-briefings` | Board reports + AI Board Deck Generator. **Investor-gated** (see InvestorGate). |
+| `InvestorResources.tsx` | `/investor-resources` | Full investor materials page. **Investor-gated**. |
+| `InvestorPresentation.tsx` | `/investor-presentation` | Slide deck presentation view. **Investor-gated**. |
 | `Settings.tsx` | `/settings` | Admin settings. All buttons are functional (March 2026). |
 | `OnboardingWizard.tsx` | `/onboarding` | 5-step new user setup |
 | `ExecutiveSummaryGenerator.tsx` | `/executive-summary` | AI-generated executive summaries |

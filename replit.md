@@ -3,6 +3,8 @@
 ## Overview
 VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation, enabling a 12-minute response to strategic triggers. The platform eliminates organizational lag by integrating AI-driven trigger monitoring with a library of 170 strategic playbooks across 9 domains. It operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI handles monitoring and recommendations, and human executives retain decision-making. The project aims to become "The Execution Infrastructure Enterprises Are Missing."
 
+**Target audience:** The full executive layer — CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, and Boards of Directors. Designed for all C-suite and executive leadership roles across every major industry. Cross-industry by design: financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges. The homepage "Built for" tags read: CEOs & Boards · C-Suite Executives · Division Presidents · Executive Leadership. Never list only a subset of roles or specific industries as primary targets.
+
 ## User Preferences
 - Preferred communication style: Simple, everyday language
 - Valued prioritization approach with phase-by-phase implementation
@@ -21,7 +23,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). `BrandStamp` component ensures consistent logo placement via `StandardNav` on all pages.
 - **Navigation:** Streamlined navigation with distinct CTAs for authenticated and unauthenticated users. All pages must be reachable through the UI.
 - **Layout:** `PageLayout` component wraps all pages with a `StandardNav` header and `Footer`.
-- **Homepage Messaging:** Focuses on replacing coordination with 12-minute execution, highlighting the IDEA Framework, the missing layer gap, and research-backed validation.
+- **Homepage Messaging:** Focuses on replacing coordination with 12-minute execution, highlighting the IDEA Framework, the missing layer gap, and research-backed validation. The "Built for" badge row displays: CEOs & Boards · C-Suite Executives · Division Presidents · Executive Leadership. Social proof line reads: "Active across Fortune 1000 enterprises in every major industry." Never name only specific roles or industries.
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter routing, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
@@ -44,6 +46,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Admin Customer Health View:** Admin-only route `/admin/customer-health` providing a RAG-status view of pilot organizations based on activation frequency.
 - **Execution Intelligence Dashboard + Maturity Score:** Displays a normalized 0-100 maturity score based on activation, advance closure, and trigger depth, with corresponding labels (Emerging, Developing, Operating).
 - **Playbook Performance Fingerprints:** A dedicated tab in `PlaybookDetail.tsx` showing activation count, average execution time, target met rate, and recent outcome notes for playbooks with 3+ activations.
+- **Investor Gate (`InvestorGate.tsx`):** A full-screen dark navy gate component wrapping `/investor-resources`, `/investor-presentation`, and `/board-briefings`. Captures name, work email, company, and role via a form; stores leads in the `investor_leads` DB table via `POST /api/investor-access` (public, no auth required). Access token stored in localStorage for 7 days. Admin can view all leads via `GET /api/investor-leads`.
 
 **"WOW" Features (5 Differentiators):**
 - **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence, highlighting "Value Preserved" and time saved.
