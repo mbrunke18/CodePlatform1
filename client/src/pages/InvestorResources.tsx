@@ -15,7 +15,12 @@ import {
   CheckCircle2,
   BarChart3,
   Shield,
-  Lightbulb
+  Lightbulb,
+  AlertTriangle,
+  Server,
+  Database,
+  Layers,
+  XCircle
 } from "lucide-react";
 import { Link } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -371,6 +376,205 @@ export default function InvestorResources() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Tech Architecture & Roadmap */}
+      <section className="py-20 px-6 bg-[#F8F7F4]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-[1px] w-7 bg-[#C9A84C]" />
+              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">Technical Due Diligence</span>
+              <div className="h-[1px] w-7 bg-[#C9A84C]" />
+            </div>
+            <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={CG}>Engineering Foundation & Roadmap</h2>
+            <p className="text-[#6B7280] max-w-2xl mx-auto">
+              A transparent accounting of what is production-grade, what is a known workaround, and what is an active gap — with a sequenced plan to close each one.
+            </p>
+          </div>
+
+          {/* Tech Stack */}
+          <Card className="border-[#E8E4DC] bg-white shadow-sm mb-8">
+            <CardHeader className="border-b border-[#E8E4DC]">
+              <CardTitle className="text-[#0A0F2E] flex items-center gap-2" style={CG}>
+                <Server className="h-5 w-5 text-[#2B8A6E]" />
+                Current Tech Stack
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[#E8E4DC] bg-[#0A0F2E]/3">
+                      <th className="text-left py-3 px-6 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Layer</th>
+                      <th className="text-left py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Technology</th>
+                      <th className="text-left py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Role</th>
+                      <th className="text-center py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { layer: "Frontend", tech: "React 18 + TypeScript + Vite", role: "Component architecture, type safety, optimized builds", status: "production" },
+                      { layer: "UI", tech: "Radix UI + shadcn/ui + Tailwind", role: "Accessible primitives, enforced design system", status: "production" },
+                      { layer: "Data", tech: "TanStack Query v5", role: "Server state, caching, optimistic updates", status: "production" },
+                      { layer: "Backend", tech: "Node.js + Express + TypeScript", role: "REST API — decomposition into domain files planned", status: "production" },
+                      { layer: "Database", tech: "PostgreSQL / Drizzle ORM (Neon)", role: "Schema-as-code, serverless Postgres", status: "warning", note: "Shared dev/prod" },
+                      { layer: "Auth", tech: "Replit OIDC + Passport.js", role: "Multi-tenant, role-based, session persistence", status: "production" },
+                      { layer: "Real-time", tech: "Socket.IO WebSocket", role: "Live signal updates, collaborative execution console", status: "production" },
+                      { layer: "AI", tech: "OpenAI GPT-4o", role: "Threat synthesis, playbook generation, outcome summaries", status: "production" },
+                      { layer: "Deployment", tech: "Replit Autoscale + vaughnmartin.com", role: "Custom domain, auto-scaling", status: "warning", note: "Manual CI" },
+                      { layer: "Monitoring", tech: "Not yet implemented", role: "No error tracking — Phase 1 priority", status: "gap" },
+                      { layer: "Testing", tech: "Not yet implemented", role: "No automated test suite — Phase 2 priority", status: "gap" },
+                    ].map((r, i) => (
+                      <tr key={i} className="border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4]/50">
+                        <td className="py-3 px-6 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest whitespace-nowrap">{r.layer}</td>
+                        <td className="py-3 px-4 text-[#0A0F2E] text-xs font-medium whitespace-nowrap">{r.tech}</td>
+                        <td className="py-3 px-4 text-[#6B7280] text-xs">{r.role}</td>
+                        <td className="py-3 px-4 text-center whitespace-nowrap">
+                          {r.status === "production" && (
+                            <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-[9px] font-bold uppercase tracking-widest">Production</Badge>
+                          )}
+                          {r.status === "warning" && (
+                            <Badge className="bg-[#C9A84C]/10 text-[#8B6B1A] border border-[#C9A84C]/30 text-[9px] font-bold uppercase tracking-widest">⚠ {r.note}</Badge>
+                          )}
+                          {r.status === "gap" && (
+                            <Badge className="bg-red-50 text-red-600 border border-red-200 text-[9px] font-bold uppercase tracking-widest">Gap</Badge>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Known Gaps */}
+          <Card className="border-[#E8E4DC] bg-white shadow-sm mb-8">
+            <CardHeader className="border-b border-[#E8E4DC]">
+              <CardTitle className="text-[#0A0F2E] flex items-center gap-2" style={CG}>
+                <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />
+                Known Gaps — Sequenced, Not Surprises
+              </CardTitle>
+              <p className="text-xs text-[#6B7280] mt-1">These gaps are the deliberate result of shipping a working product first. Each is operationally fixable.</p>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-[#E8E4DC] bg-[#0A0F2E]/3">
+                      <th className="text-left py-3 px-6 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Area</th>
+                      <th className="text-left py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Risk</th>
+                      <th className="text-left py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Current State</th>
+                      <th className="text-center py-3 px-4 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">Phase</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { area: "Dev/Prod Database", risk: "HIGH", state: "Single Neon instance. Bad migration during dev can corrupt live customer data.", phase: 1 },
+                      { area: "Error Monitoring", risk: "HIGH", state: "No Sentry or equivalent. Production errors are invisible until a customer reports them.", phase: 1 },
+                      { area: "CI/CD Pipeline", risk: "HIGH", state: "Deployments are manual. No build verification on commit.", phase: 1 },
+                      { area: "Deployment Process", risk: "MEDIUM", state: "Pre-publish esbuild step lives in institutional memory. Will fail when forgotten under pressure.", phase: 1 },
+                      { area: "Test Suite", risk: "HIGH", state: "No automated tests. Auth flow, activation chain — all untested. Regressions found in production.", phase: 2 },
+                      { area: "DB Migration Files", risk: "MEDIUM", state: "db:push is not safe for production. No versioned files, no rollback story for security reviews.", phase: 2 },
+                      { area: "Route Architecture", risk: "MEDIUM", state: "~8,500 line routes.ts. High onboarding risk. Decomposition planned.", phase: 2 },
+                      { area: "Security Headers", risk: "MEDIUM", state: "No helmet.js, no rate limiting. Will fail enterprise security review before second customer.", phase: 2 },
+                      { area: "Staging Environment", risk: "MEDIUM", state: "Changes go dev → production directly. No safe test environment.", phase: 3 },
+                      { area: "API Documentation", risk: "LOW", state: "No Swagger/OpenAPI spec. Enterprise IT teams require this during procurement.", phase: 3 },
+                      { area: "Backup / Recovery", risk: "MEDIUM", state: "Neon PITR available but no documented runbook. Cannot state RPO/RTO to enterprise buyer.", phase: 3 },
+                    ].map((r, i) => (
+                      <tr key={i} className="border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4]/50">
+                        <td className="py-3 px-6 font-bold text-[#0A0F2E] text-xs whitespace-nowrap">{r.area}</td>
+                        <td className="py-3 px-4 whitespace-nowrap">
+                          <Badge className={`text-[9px] font-bold uppercase tracking-widest border ${
+                            r.risk === "HIGH" ? "bg-red-50 text-red-600 border-red-200" :
+                            r.risk === "MEDIUM" ? "bg-[#C9A84C]/10 text-[#8B6B1A] border-[#C9A84C]/30" :
+                            "bg-[#0A0F2E]/5 text-[#6B7280] border-[#0A0F2E]/10"
+                          }`}>{r.risk}</Badge>
+                        </td>
+                        <td className="py-3 px-4 text-[#6B7280] text-xs">{r.state}</td>
+                        <td className="py-3 px-4 text-center">
+                          <Badge className={`text-[9px] font-bold uppercase tracking-widest border ${
+                            r.phase === 1 ? "bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20" :
+                            r.phase === 2 ? "bg-[#0A0F2E]/5 text-[#0A0F2E] border-[#0A0F2E]/10" :
+                            "bg-[#6B7280]/10 text-[#6B7280] border-[#6B7280]/20"
+                          }`}>Phase {r.phase}</Badge>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Three-Phase Plan */}
+          <div className="mb-4">
+            <h3 className="text-xl font-bold text-[#0A0F2E] mb-6 text-center" style={CG}>Three-Phase Hardening Plan</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  phase: "Phase 1", weeks: "Weeks 1–2", milestone: "Before second pilot customer",
+                  color: "#2B8A6E", bg: "#2B8A6E",
+                  items: [
+                    "Separate Dev/Prod databases — second Neon project for dev, production credentials in secrets only",
+                    "Sentry monitoring — error tracking on frontend + server, email alerts",
+                    "GitHub Actions CI — TypeScript check + build verify on every push to main",
+                    "Deployment runbook — pre-publish checklist as code-controlled config, not memory",
+                  ]
+                },
+                {
+                  phase: "Phase 2", weeks: "Weeks 3–6", milestone: "Before active sales pipeline",
+                  color: "#0A0F2E", bg: "#0A0F2E",
+                  items: [
+                    "20-test suite — Vitest + Supertest covering playbook seeding, auth, activation chain, top API routes",
+                    "Drizzle versioned migrations — replace db:push, give auditable rollback story",
+                    "Route decomposition — split routes.ts into domain-grouped files",
+                    "helmet.js + rate limiting — required before any enterprise security review",
+                  ]
+                },
+                {
+                  phase: "Phase 3", weeks: "Weeks 7–10", milestone: "Before 5+ customers",
+                  color: "#6B7280", bg: "#6B7280",
+                  items: [
+                    "Staging environment — second deployment instance mirroring production",
+                    "Swagger/OpenAPI spec — hosted at /api/docs, answers security questionnaires",
+                    "Recovery runbook — document PITR procedure, define and publish RPO/RTO",
+                    "Auth migration plan — document Replit OIDC dependencies, define portable path",
+                  ]
+                },
+              ].map((p, i) => (
+                <Card key={i} className="border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
+                  <div className="h-1.5" style={{ background: p.bg }} />
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-1">
+                      <Badge className="text-[9px] font-bold uppercase tracking-widest border" style={{ background: `${p.bg}15`, color: p.color, borderColor: `${p.bg}30` }}>{p.phase}</Badge>
+                      <span className="text-[9px] font-bold text-[#6B7280] uppercase tracking-widest">{p.weeks}</span>
+                    </div>
+                    <CardTitle className="text-sm font-bold text-[#0A0F2E]">{p.milestone}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="space-y-3">
+                      {p.items.map((item, j) => (
+                        <div key={j} className="flex items-start gap-2">
+                          <div className="mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style={{ background: `${p.bg}15` }}>
+                            <div className="w-1.5 h-1.5 rounded-full" style={{ background: p.bg }} />
+                          </div>
+                          <p className="text-xs text-[#6B7280] leading-relaxed">{item}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 p-6 bg-[#0A0F2E] rounded-lg text-center">
+            <p className="text-white font-medium text-sm mb-1">The gaps are known. The plan is sequenced. None require rebuilding — only hardening.</p>
+            <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Phase 1 closes before customer two. Phase 2 before procurement reviews. Phase 3 before parallel pilots.</p>
+          </div>
         </div>
       </section>
 
