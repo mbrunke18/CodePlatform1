@@ -758,3 +758,59 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 **Rule going forward:** Never hardcode UUIDs in source code. Always use playbook numbers for cross-environment stable references.
 
+---
+
+## 23. WOW Features — 5 Strategic Differentiators (Added March 2026)
+
+Five high-impact features that elevate the platform beyond dashboards into an irreplaceable execution layer. All are backed by GPT-4o and persisted to the database.
+
+### DB Tables Added
+| Table | Purpose |
+|---|---|
+| `compound_threat_alerts` | Cross-domain AI threat patterns |
+| `roi_snapshots` | Period ROI summaries per org |
+| `simulation_analyses` | Shadow simulation results |
+| `strategic_recordings` | AI-generated playbooks from crisis notes |
+
+### 1. Execution ROI Dashboard — `/roi-dashboard`
+- **Component:** `client/src/pages/ROIDashboard.tsx`
+- **Hero metric:** "Value Preserved This Period" in large gold type (calculated from activations × minutes saved × $3,472/min Fortune 1000 rate)
+- **Views:** Summary (KPIs + time-saved bar chart) + Board Report (printable, GPT-framed executive headline + event timeline)
+- **APIs:** `GET /api/roi/summary`, `GET /api/roi/board-report`
+
+### 2. Compound Threat Intelligence — Dashboard embedded + standalone
+- **Component:** `client/src/components/intelligence/CompoundThreatAlerts.tsx`
+- **Mounted:** Compact mode in `Dashboard.tsx` (auto-hides when no active threats)
+- **"Analyze Now"** button calls `POST /api/compound-threats/analyze` → GPT-4o cross-references all active signal categories for compound patterns
+- **Alert cards:** domains involved, confidence %, AI hypothesis, dismiss action
+- **APIs:** `GET /api/compound-threats`, `POST /api/compound-threats/analyze`, `PATCH /api/compound-threats/:id/dismiss`
+
+### 3. Shadow Strategy Simulator — `/simulation-studio`
+- **Component:** `client/src/pages/SimulationStudio.tsx` (full rebuild)
+- **Input:** Free-text scenario (pre-loaded quick-pick examples)
+- **Output:** Survive score (0-100) + Thrive score (0-100) via circular SVG gauges, AI executive analysis, activated domains, recommended playbooks, coverage gaps
+- **Score colors:** ≥70 = teal, ≥45 = gold, <45 = red
+- **APIs:** `POST /api/simulation/analyze`, `GET /api/simulation-analyses`
+
+### 4. Strategic Recorder — `/strategic-recorder`
+- **Component:** `client/src/pages/StrategicRecorder.tsx`
+- **Purpose:** Convert tribal knowledge (crisis notes, post-mortems, email threads) into custom playbook outlines in minutes
+- **Output cards:** name, domain badge, trigger, stakeholders, phase-by-phase task list, value proposition
+- **Save flow:** per-card "Save" button (state-local; full library persistence via backend)
+- **APIs:** `POST /api/strategic-recorder/analyze`, `GET /api/strategic-recordings`
+
+### 5. War Room Pulse Map — Mission Control header section
+- **Component:** `client/src/components/mission/PulseMap.tsx`
+- **Mounted:** In `MissionControl.tsx` between the navy header and content grid
+- **Visual:** 20 signal domains in 3 concentric SVG rings; nodes pulse red/orange when AT RISK/APPROACHING
+- **Node sizing:** reflects trigger count per domain
+- **Live stats panel:** at-risk count, approaching count, active activations, IDEA phase indicator
+- **Data:** reads from `/api/executive-triggers` and `/api/playbook-activations` (no new API needed)
+
+### Route Registration (App.tsx)
+```
+/roi-dashboard         → ROIDashboard
+/simulation-studio     → SimulationStudioPage  (was previously redirected to /try-demo)
+/strategic-recorder    → StrategicRecorder
+```
+
