@@ -101,12 +101,12 @@ app.get("/scenario-demo", (_req, res) => {
   res.sendFile(path.resolve("client/public/scenario-demo.html"));
 });
 
-// Domain redirect: executeiq.io → www.executeiq.io
+// Domain redirect: executeiq.io → vaughnmartin.com (legacy domain forward)
 // Placed AFTER health checks so deployment health checks always pass
 // Skips root path "/" to ensure Autoscale health checks always get 200
 app.use((req, res, next) => {
-  if (req.hostname === 'executeiq.io' && req.path !== '/' && req.path !== '/health' && req.path !== '/_health' && req.path !== '/api/health' && req.path !== '/ready') {
-    return res.redirect(301, `https://www.executeiq.io${req.originalUrl}`);
+  if (req.hostname === 'executeiq.io' || req.hostname === 'www.executeiq.io') {
+    return res.redirect(301, `https://www.vaughnmartin.com${req.originalUrl}`);
   }
   next();
 });

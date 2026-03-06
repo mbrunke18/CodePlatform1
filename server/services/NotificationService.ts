@@ -140,7 +140,7 @@ class NotificationService {
       const htmlContent = this.renderEmailTemplate(notification);
 
       await this.resend.emails.send({
-        from: 'noreply@executeiq.io',
+        from: 'noreply@vaughnmartin.com',
         to: recipient.email,
         subject: notification.title,
         html: htmlContent,

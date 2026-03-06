@@ -313,7 +313,7 @@ router.post('/apply', async (req, res) => {
       try {
         const resend = new Resend(resendKey);
         await resend.emails.send({
-          from: 'noreply@executeiq.io',
+          from: 'noreply@vaughnmartin.com',
           to: 'mbrunke@vaughnmartin.com',
           subject: `New Pilot Application — ${data.company} (${data.firstName} ${data.lastName})`,
           html: `

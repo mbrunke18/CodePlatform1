@@ -763,7 +763,7 @@ function InvestorPresentation() {
           <Mail className="w-5 h-5 text-[#2B8A6E]" />
           <span className="text-[#2B8A6E] font-medium">mbrunke@vaughnmartin.com</span>
           <span className="mx-2">|</span>
-          <span className="text-[#2B8A6E] font-medium">executeiq.io</span>
+          <span className="text-[#2B8A6E] font-medium">vaughnmartin.com</span>
         </div>
       </div>
     ),

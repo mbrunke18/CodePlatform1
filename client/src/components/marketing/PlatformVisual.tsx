@@ -461,12 +461,12 @@ export default function PlatformVisual() {
             Execution OS: The Execution Infrastructure Enterprises Are Missing
           </p>
           <a
-            href="https://www.executeiq.io"
+            href="https://www.vaughnmartin.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-poise-teal hover:underline font-medium mt-2 inline-block"
           >
-            executeiq.io
+            vaughnmartin.com
           </a>
         </motion.div>
       </div>

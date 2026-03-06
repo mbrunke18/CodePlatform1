@@ -32,7 +32,7 @@
 | Real-time | Socket.IO WebSocket server |
 | Async Jobs | PostgreSQL-backed background job queue |
 | AI | OpenAI GPT-4o |
-| Email | Resend (`RESEND_API_KEY`) from `noreply@executeiq.io` |
+| Email | Resend (`RESEND_API_KEY`) from `noreply@vaughnmartin.com` |
 
 ---
 
@@ -661,7 +661,7 @@ npm run start      # Serves pre-built dist/index.js
 
 ### Deployment Platform
 - Replit Autoscale
-- Custom domain: `executeiq.io`
+- Custom domain: `vaughnmartin.com`
 - Build command: `esbuild server/index.ts` only (~1 second) — vite frontend build is skipped because `dist/public/` is pre-committed
 - Start command: `npm run start` → `node dist/index.js`
 - First customer org: `martybrunke` — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`

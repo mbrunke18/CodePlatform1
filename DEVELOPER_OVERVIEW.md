@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Overview
-**Version:** March 2026 | **Domain:** executeiq.io
+**Version:** March 2026 | **Domain:** vaughnmartin.com
 
 ---
 
@@ -7,7 +7,7 @@
 
 A production-deployed Strategic Execution platform for Fortune 1000 companies. Core value: trigger any strategic event → the system automatically coordinates projects, tasks, documents, and budgets within 12 minutes. Built on the **IDEA Framework™** (Identify → Detect → Execute → Advance).
 
-**Live deployment:** https://executeiq.io  
+**Live deployment:** https://vaughnmartin.com  
 **Stack:** React 18 + TypeScript + Vite (frontend) / Node.js + Express + TypeScript (backend) / Neon PostgreSQL + Drizzle ORM (database)
 
 ---
@@ -159,7 +159,7 @@ WS   /                               # Socket.IO real-time collaboration
 ## Email
 
 - **Provider:** Resend (`RESEND_API_KEY`)
-- **From:** `noreply@executeiq.io`
+- **From:** `noreply@vaughnmartin.com`
 - **Fallback:** Console.log when key is absent (dev-safe)
 
 ---

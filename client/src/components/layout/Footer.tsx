@@ -184,12 +184,12 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-6">
               <a 
-                href="https://www.executeiq.io"
+                href="https://www.vaughnmartin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-poise-teal hover:text-poise-teal/80 transition-colors font-medium"
               >
-                www.executeiq.io
+                www.vaughnmartin.com
               </a>
               <a 
                 href="mailto:mbrunke@vaughnmartin.com"

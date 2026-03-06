@@ -33,7 +33,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Onboarding Guard:** `OnboardingGuard` component in `App.tsx` redirects new users to `/onboarding` once per session.
 - **Role-Based Access:** `requireRole()` middleware for write routes (admin, executive, strategist); no role means read-only.
 - **AI Services:** OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
-- **Email:** Resend (`RESEND_API_KEY`) from `noreply@executeiq.io`.
+- **Email:** Resend (`RESEND_API_KEY`) from `noreply@vaughnmartin.com`.
 - **IDEA Framework:** Core framework supporting playbook customization, AI pattern matching, coordinated orchestration, and outcome analysis.
 
 **Playbook Library:**
@@ -95,7 +95,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **War Room Pulse Map** (`PulseMap.tsx` + `MissionControl.tsx`): Animated SVG concentric ring visualization of all 20 signal domains. Each node sized by trigger count, colored by proximity score. Pulse animations for AT RISK/APPROACHING nodes. Live stats panel (at-risk count, approaching, active activations). Mounted in MissionControl between header and content grid. Component: `client/src/components/mission/PulseMap.tsx`.
 
 **Deployment:**
-- **Platform:** Replit Autoscale, custom domain `executeiq.io`.
+- **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
 - **Build Strategy:** `dist/public/` (frontend) is pre-built and committed to git. Deployment build step runs only the fast server esbuild (~1 second): `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite ...`. This avoids the 25-second vite build that was timing out on deployment infrastructure. Do NOT change back to `["true"]` or `npm run build`.
 - **Server Startup Order (critical):** HTTP server is created with `createServer(app)` and starts `server.listen()` IMMEDIATELY at the top of `server/index.ts` before the async IIFE runs. This ensures health check endpoints (`/health`, `/ping`) respond within milliseconds of startup. `registerRoutes(app, server)` accepts the pre-created server to attach WebSocket (Socket.IO). Background seeding/initialization runs after routes are registered, non-blocking. DO NOT move `server.listen()` back inside the async IIFE or registerRoutes.
 
