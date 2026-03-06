@@ -208,7 +208,7 @@ export default function StandardNav() {
               data-testid="nav-logo"
             >
               <ExecuteIQLogo
-                height={52}
+                height={58}
                 variant="full"
                 color="navy"
               />

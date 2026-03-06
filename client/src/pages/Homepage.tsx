@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
 import Footer from "@/components/layout/Footer";
+import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const NAVY = "#0A0F2E";
@@ -119,6 +120,9 @@ export default function Homepage() {
 
           {/* Left */}
           <div>
+            <div style={{ marginBottom: 32 }}>
+              <ExecuteIQLogo variant="icon-only" height={56} color="white" />
+            </div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.14)", border: "1px solid rgba(201,168,76,0.5)", padding: "10px 22px", marginBottom: 36 }}>
               <span style={{ width: 8, height: 8, background: GOLD, borderRadius: "50%", display: "inline-block", flexShrink: 0, animation: "hpBlink 2.5s ease infinite" }} />
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
@@ -775,6 +779,9 @@ export default function Homepage() {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, background: "radial-gradient(ellipse,rgba(43,138,110,0.08) 0%,transparent 65%)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <Reveal>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 36 }}>
+              <ExecuteIQLogo variant="full" height={52} color="white" />
+            </div>
             <Eyebrow color="gold" center>The Gap Isn't Talent. It's Infrastructure.</Eyebrow>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(34px,4.5vw,60px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
               The Coordination Infrastructure<br />
