@@ -2,7 +2,7 @@ import { db } from '../db';
 import { approvalTokens, executionInstances, users } from '@shared/schema';
 import { eq, and, isNull } from 'drizzle-orm';
 import { nanoid } from 'nanoid';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import pino from 'pino';
 
 export interface ApprovalContext {

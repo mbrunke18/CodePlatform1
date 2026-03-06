@@ -8,7 +8,7 @@ packages = ["zip", "unzip"]
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["sh", "-c", "node_modules/.bin/esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+build = ["sh", "-c", "esbuild server/index.ts --platform=node --bundle --format=esm --outdir=dist --banner:js=\"import { createRequire } from 'module'; const require = createRequire(import.meta.url);\" --external:vite --external:@vitejs/plugin-react --external:../vite.config --external:pg-native --external:bufferutil --external:utf-8-validate"]
 run = ["npm", "run", "start"]
 
 [env]
@@ -38,6 +38,10 @@ waitForPort = 5000
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 5001
+externalPort = 3001
 
 [[ports]]
 localPort = 5904

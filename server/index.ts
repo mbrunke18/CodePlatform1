@@ -5,7 +5,6 @@ import { registerRoutes } from "./routes";
 import { serveStatic, log } from "./vite";
 import type { setupVite } from "./vite";
 import { auditLogger } from "./middleware/audit-logging";
-import { setupSwagger } from "./swagger";
 // import { proactiveAIRadar } from "./proactive-ai-radar"; // DISABLED - causing startup hang
 import { enterpriseJobService } from "./services/EnterpriseJobService";
 import { openAIService } from "./services/OpenAIService";
@@ -310,8 +309,11 @@ server.listen(
   // Register all routes using the already-listening server
   await registerRoutes(app, server);
 
-  // Set up API documentation
-  setupSwagger(app);
+  // Set up API documentation (dev only — swagger-ui-express not bundled in production)
+  if (app.get("env") === "development") {
+    const { setupSwagger } = await import("./swagger");
+    setupSwagger(app);
+  }
 
   logger.info("✅ Routes registered - health checks already passing from startup");
 
