@@ -201,6 +201,9 @@ export const PUBLIC_ROUTES = [
   '/auth/callback',
   '/api/auth/status',
   '/api/auth/user',
+
+  // Investor Gate - public form submission (lead capture, no auth required)
+  '/api/investor-access',
 ];
 
 /**

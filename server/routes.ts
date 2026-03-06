@@ -8975,6 +8975,32 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
 
+  // ─── Investor Access Gate ───────────────────────────────────────────────────
+  app.post('/api/investor-access', async (req: any, res) => {
+    try {
+      const { name, email, company, role, pageAccessed } = req.body;
+      if (!name || !email || !company || !role) {
+        return res.status(400).json({ error: 'All fields are required' });
+      }
+      const lead = await storage.createInvestorLead({ name, email, company, role, pageAccessed: pageAccessed || '/investor-resources' });
+      res.json({ success: true, id: lead.id });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/investor-leads', async (req: any, res) => {
+    if (!req.isAuthenticated() || req.user?.role !== 'admin') {
+      return res.status(403).json({ error: 'Admin only' });
+    }
+    try {
+      const leads = await storage.getInvestorLeads();
+      res.json(leads);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   console.log('✅ WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder');
 
   return httpServer;

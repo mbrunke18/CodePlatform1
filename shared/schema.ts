@@ -6272,3 +6272,17 @@ export const strategicRecordings = pgTable('strategic_recordings', {
 export const insertStrategicRecordingSchema = createInsertSchema(strategicRecordings).omit({ id: true, createdAt: true });
 export type InsertStrategicRecording = z.infer<typeof insertStrategicRecordingSchema>;
 export type StrategicRecording = typeof strategicRecordings.$inferSelect;
+
+// Investor Leads (gate captures before accessing investor materials)
+export const investorLeads = pgTable('investor_leads', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: text('name').notNull(),
+  email: text('email').notNull(),
+  company: text('company').notNull(),
+  role: text('role').notNull(),
+  pageAccessed: text('page_accessed').notNull().default('/investor-resources'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertInvestorLeadSchema = createInsertSchema(investorLeads).omit({ id: true, createdAt: true });
+export type InsertInvestorLead = z.infer<typeof insertInvestorLeadSchema>;
+export type InvestorLead = typeof investorLeads.$inferSelect;

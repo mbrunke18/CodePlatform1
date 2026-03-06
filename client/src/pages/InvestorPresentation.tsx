@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'wouter';
 import StandardNav from '@/components/layout/StandardNav';
+import InvestorGate from '@/components/InvestorGate';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -770,6 +771,7 @@ function InvestorPresentation() {
   ];
 
   return (
+    <InvestorGate pageName="/investor-presentation">
     <div className={`min-h-screen ${isFullscreen ? 'bg-white' : 'bg-[#F8F7F4]'} transition-colors duration-500`}>
       {!isFullscreen && <StandardNav />}
       
@@ -855,6 +857,7 @@ function InvestorPresentation() {
         </div>
       )}
     </div>
+    </InvestorGate>
   );
 }
 

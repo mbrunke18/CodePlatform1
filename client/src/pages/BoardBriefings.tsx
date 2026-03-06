@@ -1,4 +1,5 @@
 import PageLayout from '@/components/layout/PageLayout';
+import InvestorGate from '@/components/InvestorGate';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -116,6 +117,7 @@ export default function BoardBriefings() {
   const acknowledgedBriefings = briefings.filter((b: any) => b.reviewed);
 
   return (
+    <InvestorGate pageName="/board-briefings">
     <PageLayout>
       <div className="space-y-6 p-6">
 
@@ -438,5 +440,6 @@ export default function BoardBriefings() {
       </div>
       </div>
     </PageLayout>
+    </InvestorGate>
   );
 }

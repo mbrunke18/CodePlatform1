@@ -147,7 +147,7 @@ import {
 } from "@shared/comprehensive-scenario-templates";
 import { db } from "./db";
 import { eq, desc, and, sql, inArray } from "drizzle-orm";
-import { decisionOutcomes } from "@shared/schema";
+import { decisionOutcomes, investorLeads } from "@shared/schema";
 
 export interface IStorage {
   // User operations (mandatory for Replit Auth)
@@ -409,6 +409,10 @@ export interface IStorage {
   
   // Orchestration status tracking
   getExecutionStatus(instanceId: string): Promise<any>;
+
+  // Investor leads
+  createInvestorLead(lead: { name: string; email: string; company: string; role: string; pageAccessed: string }): Promise<any>;
+  getInvestorLeads(): Promise<any[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -3220,6 +3224,15 @@ export class DatabaseStorage implements IStorage {
       recentOutcomes: outcomes,
       hasEnoughData: (rows[0]?.count ?? 0) >= 3,
     };
+  }
+
+  async createInvestorLead(lead: { name: string; email: string; company: string; role: string; pageAccessed: string }): Promise<any> {
+    const [row] = await db.insert(investorLeads).values(lead).returning();
+    return row;
+  }
+
+  async getInvestorLeads(): Promise<any[]> {
+    return await db.select().from(investorLeads).orderBy(desc(investorLeads.createdAt));
   }
 }
 

@@ -27,6 +27,7 @@ import StandardNav from "@/components/layout/StandardNav";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { BrandStamp } from "@/components/BrandStamp";
+import InvestorGate from "@/components/InvestorGate";
 
 export default function InvestorResources() {
   useEffect(() => {
@@ -44,6 +45,7 @@ export default function InvestorResources() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
+    <InvestorGate pageName="/investor-resources">
     <div className="min-h-screen bg-[#F8F7F4] text-[#0A0F2E]">
       <StandardNav />
 
@@ -614,5 +616,6 @@ export default function InvestorResources() {
         </div>
       </section>
     </div>
+    </InvestorGate>
   );
 }
