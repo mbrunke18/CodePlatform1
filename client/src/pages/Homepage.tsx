@@ -229,7 +229,7 @@ export default function Homepage() {
             </div>
 
             {/* Card 3 — complete */}
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "22px 26px", opacity: 0.5, animation: "hpFloat 6s ease-in-out infinite", animationDelay: "-4s" }}>
+            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.13)", padding: "22px 26px", opacity: 0.72, animation: "hpFloat 6s ease-in-out infinite", animationDelay: "-4s" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Previous</span>
                 <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px", background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}>✓ Complete</span>
