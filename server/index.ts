@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import { createServer } from "http";
 import path from "path";
 import { registerRoutes } from "./routes";
 import { serveStatic, log } from "./vite";
@@ -290,11 +291,24 @@ app.use((req, res, next) => {
   next();
 });
 
-(async () => {
-  // Health check endpoints are now registered at the top of the file
-  // before any middleware to ensure instant response for Autoscale health checks
+// Create HTTP server and start listening IMMEDIATELY
+// This ensures health check endpoints respond before route registration completes
+const port = parseInt(process.env.PORT || "5000", 10);
+const server = createServer(app);
+server.listen(
+  { port, host: "0.0.0.0", reusePort: true },
+  () => {
+    log("serving on port " + port);
+    logger.info(
+      { port, env: app.get("env") },
+      "ExecuteIQ server listening - health checks active from startup",
+    );
+  }
+);
 
-  const server = await registerRoutes(app);
+(async () => {
+  // Register all routes using the already-listening server
+  await registerRoutes(app, server);
 
   // Set up API documentation
   setupSwagger(app);
@@ -381,29 +395,11 @@ app.use((req, res, next) => {
     throw error;
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || "5000", 10);
-  server.listen(
-    {
-      port,
-      host: "0.0.0.0",
-      reusePort: true,
-    },
-    () => {
-      log("serving on port " + port);
-      logger.info(
-        { port, env: app.get("env") },
-        "ExecuteIQ server listening - health checks passing since startup",
-      );
-
-      // Minimal initialization - just seed database, no background jobs
-      // Background services will be enabled after core stability is verified
-      (async () => {
-        try {
-          logger.info("🔧 Starting database seeding (background)...");
+  // Background initialization - runs after routes and static are configured
+  // Server is already listening above, so these are truly non-blocking
+  (async () => {
+    try {
+      logger.info("🔧 Starting database seeding (background)...");
           const [result] = await db
             .select({ count: count() })
             .from(playbookLibrary);
@@ -690,9 +686,7 @@ app.use((req, res, next) => {
           console.error("🔴 Database seeding error (server still running):", error);
           // Server is already marked ready - seeding failure doesn't block the app
         }
-      })();
-    },
-  );
+  })();
 })();
 
 // Prevent process from exiting on unhandled errors - WITH DETAILED LOGGING

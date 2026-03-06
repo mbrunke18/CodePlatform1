@@ -97,6 +97,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 **Deployment:**
 - **Platform:** Replit Autoscale, custom domain `executeiq.io`.
 - **Build Strategy:** `dist/public/` (frontend) is pre-built and committed to git. Deployment build step runs only the fast server esbuild (~1 second): `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite ...`. This avoids the 25-second vite build that was timing out on deployment infrastructure. Do NOT change back to `["true"]` or `npm run build`.
+- **Server Startup Order (critical):** HTTP server is created with `createServer(app)` and starts `server.listen()` IMMEDIATELY at the top of `server/index.ts` before the async IIFE runs. This ensures health check endpoints (`/health`, `/ping`) respond within milliseconds of startup. `registerRoutes(app, server)` accepts the pre-created server to attach WebSocket (Socket.IO). Background seeding/initialization runs after routes are registered, non-blocking. DO NOT move `server.listen()` back inside the async IIFE or registerRoutes.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o

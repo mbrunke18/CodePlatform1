@@ -199,7 +199,7 @@ function calculateTaskValue(task: any): number {
   return Math.floor(baseValue * priorityMultiplier + complexityBonus);
 }
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express, existingServer?: Server): Promise<Server> {
   // Setup authentication with Replit OIDC
   await setupAuth(app);
 
@@ -1065,7 +1065,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
+  const httpServer = existingServer ?? createServer(app);
   
   // Initialize unified Socket.IO WebSocket service
   // Handles execution tracking, collaboration, and real-time updates

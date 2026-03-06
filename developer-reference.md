@@ -666,6 +666,9 @@ npm run start      # Serves pre-built dist/index.js
 - Start command: `npm run start` → `node dist/index.js`
 - First customer org: `martybrunke` — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
 
+### Server Startup Order — CRITICAL
+The HTTP server is created with `createServer(app)` and starts `server.listen()` **IMMEDIATELY** at the top of `server/index.ts` (before the async IIFE). This ensures health check endpoints respond within milliseconds of startup. `registerRoutes(app, server)` accepts the pre-created server to attach Socket.IO WebSocket. Background seeding runs non-blocking after routes register. **DO NOT move `server.listen()` back inside `registerRoutes` or the async IIFE** — this causes provision health checks to time out.
+
 ### Deployment Build Strategy — IMPORTANT
 The full `npm run build` (vite + esbuild ~25 seconds) was timing out on Replit's deployment infrastructure. The fix: the deployment build step runs **only the fast server esbuild** (~1 second), while the frontend `dist/public/` is pre-committed to git.
 
