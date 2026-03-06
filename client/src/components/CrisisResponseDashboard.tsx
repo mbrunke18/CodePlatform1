@@ -39,14 +39,16 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
   const queryClient = useQueryClient();
 
   // Fetch crisis response templates
-  const { data: crisisTemplates = [], isLoading } = useQuery<CrisisTemplate[]>({
+  const { data: crisisTemplatesRaw, isLoading } = useQuery<CrisisTemplate[]>({
     queryKey: ['/api/scenario-templates/crisis'],
   });
+  const crisisTemplates = Array.isArray(crisisTemplatesRaw) ? crisisTemplatesRaw : [];
 
   // Fetch active scenarios to show crisis response status
-  const { data: activeScenarios = [] } = useQuery<any[]>({
+  const { data: activeScenariosRaw } = useQuery<any[]>({
     queryKey: [`/api/crises?organizationId=${organizationId}`],
   });
+  const activeScenarios = Array.isArray(activeScenariosRaw) ? activeScenariosRaw : [];
 
   // Quick activation mutation for crisis scenarios
   const quickActivateMutation = useMutation({

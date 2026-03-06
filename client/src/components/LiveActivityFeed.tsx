@@ -34,10 +34,11 @@ const severityColors: Record<string, { badge: string; border: string }> = {
 };
 
 export default function LiveActivityFeed({ organizationId }: { organizationId: string }) {
-  const { data: events = [] } = useQuery<ActivityEvent[]>({
+  const { data: eventsRaw } = useQuery<ActivityEvent[]>({
     queryKey: ['/api/dynamic-strategy/activity-feed', organizationId],
     refetchInterval: 15000,
   });
+  const events = Array.isArray(eventsRaw) ? eventsRaw : [];
 
   const recentEvents = events.slice(0, 10);
 

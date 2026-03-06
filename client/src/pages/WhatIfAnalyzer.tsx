@@ -513,11 +513,15 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  const { data: organizations = [] } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const { data: organizationsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id || '95b97862-8e9d-4c4c-8609-7d8f37b68d36';
-  const { data: triggers = [] } = useQuery<any[]>({ queryKey: ['/api/executive-triggers'] });
-  const { data: playbooks = [] } = useQuery<any[]>({ queryKey: ['/api/scenarios'] });
-  const { data: scenarioTemplates = [] } = useQuery<any[]>({ queryKey: ['/api/scenario-templates'] });
+  const { data: triggersRaw } = useQuery<any[]>({ queryKey: ['/api/executive-triggers'] });
+  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
+  const { data: playbooksRaw } = useQuery<any[]>({ queryKey: ['/api/scenarios'] });
+  const playbooks = Array.isArray(playbooksRaw) ? playbooksRaw : [];
+  const { data: scenarioTemplatesRaw } = useQuery<any[]>({ queryKey: ['/api/scenario-templates'] });
+  const scenarioTemplates = Array.isArray(scenarioTemplatesRaw) ? scenarioTemplatesRaw : [];
 
   const loadTemplate = (key: string) => {
     const templates: Record<string, { name: string; desc: string; type: string; industry: string }> = {
@@ -1628,7 +1632,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
 export default function WhatIfAnalyzer() {
   const [viewMode, setViewMode] = useState<ViewMode>('choose');
 
-  const { data: savedScenarios = [] } = useQuery<any[]>({ queryKey: ['/api/what-if-scenarios'] });
+  const { data: savedScenariosRaw } = useQuery<any[]>({ queryKey: ['/api/what-if-scenarios'] });
+  const savedScenarios = Array.isArray(savedScenariosRaw) ? savedScenariosRaw : [];
 
   return (
     <PageLayout>

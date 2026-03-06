@@ -14,7 +14,8 @@ const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function PreparednessReport({ embedded }: { embedded?: boolean }) {
-  const { data: organizations = [] } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const { data: organizationsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id || '95b97862-8e9d-4c4c-8609-7d8f37b68d36';
 
   const { data: scoreData, isLoading } = useQuery<any>({
@@ -22,10 +23,11 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
     enabled: !!organizationId,
   });
 
-  const { data: scoreHistory = [] } = useQuery<any[]>({
+  const { data: scoreHistoryRaw } = useQuery<any[]>({
     queryKey: [`/api/preparedness/history?organizationId=${organizationId}&days=30`],
     enabled: !!organizationId,
   });
+  const scoreHistory = Array.isArray(scoreHistoryRaw) ? scoreHistoryRaw : [];
 
   if (isLoading || !scoreData) {
     return (

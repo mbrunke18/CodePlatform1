@@ -103,17 +103,14 @@ export default function MissionControl() {
     return () => clearInterval(timer);
   }, []);
 
-  const { data: playbooks = [] } = useQuery<any[]>({
-    queryKey: ['/api/playbooks'],
-  });
+  const { data: playbooksRaw } = useQuery<any[]>({ queryKey: ['/api/playbooks'] });
+  const playbooks = Array.isArray(playbooksRaw) ? playbooksRaw : [];
 
-  const { data: realPlaybooks = [] } = useQuery<any[]>({
-    queryKey: ['/api/scenarios'],
-  });
+  const { data: realPlaybooksRaw } = useQuery<any[]>({ queryKey: ['/api/scenarios'] });
+  const realPlaybooks = Array.isArray(realPlaybooksRaw) ? realPlaybooksRaw : [];
 
-  const { data: triggers = [] } = useQuery<any[]>({
-    queryKey: ['/api/triggers'],
-  });
+  const { data: triggersRaw } = useQuery<any[]>({ queryKey: ['/api/triggers'] });
+  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
 
   const [pendingTriggers, setPendingTriggers] = useState<PendingTrigger[]>([
     {

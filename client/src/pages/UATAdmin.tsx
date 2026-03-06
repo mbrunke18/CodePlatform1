@@ -88,22 +88,25 @@ export default function UATAdmin() {
   });
 
   // Fetch organizations for UAT
-  const { data: organizations = [], isLoading: orgLoading } = useQuery({
+  const { data: organizationsRaw, isLoading: orgLoading } = useQuery({
     queryKey: ['/api/organizations'],
     enabled: true
   });
+  const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
 
   // Fetch users for UAT
-  const { data: users = [], isLoading: usersLoading } = useQuery({
+  const { data: usersRaw, isLoading: usersLoading } = useQuery({
     queryKey: ['/api/users'],
     enabled: true
   });
+  const users = Array.isArray(usersRaw) ? usersRaw : [];
 
   // Fetch decision outcomes for UAT validation
-  const { data: decisionOutcomes = [], isLoading: decisionsLoading } = useQuery({
+  const { data: decisionOutcomesRaw, isLoading: decisionsLoading } = useQuery({
     queryKey: ['/api/decision-outcomes'],
     enabled: true
   });
+  const decisionOutcomes = Array.isArray(decisionOutcomesRaw) ? decisionOutcomesRaw : [];
 
   // Create organization mutation
   const createOrgMutation = useMutation({

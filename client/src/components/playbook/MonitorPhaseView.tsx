@@ -123,7 +123,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
   });
   const { toast } = useToast();
 
-  const { data: items = [], isLoading } = useQuery<MonitorItem[]>({
+  const { data: itemsRaw, isLoading } = useQuery<MonitorItem[]>({
     queryKey: ['/api/playbook-library', playbookId, 'monitor-items', { organizationId }],
     queryFn: async () => {
       const response = await fetch(
@@ -134,6 +134,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
     },
     enabled: !!playbookId && !!organizationId,
   });
+  const items = Array.isArray(itemsRaw) ? itemsRaw : [];
 
   const createItemMutation = useMutation({
     mutationFn: async (data: Partial<MonitorItem>) => {

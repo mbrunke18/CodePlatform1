@@ -48,9 +48,10 @@ interface PlaybookLearningsPanelProps {
 }
 
 export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
-  const { data: learnings = [], isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
+  const { data: learningsRaw, isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
     queryKey: ['/api/dynamic-strategy/playbook-learnings', scenarioId],
   });
+  const learnings = Array.isArray(learningsRaw) ? learningsRaw : [];
 
   const getCategoryIcon = (category: string) => {
     switch (category) {

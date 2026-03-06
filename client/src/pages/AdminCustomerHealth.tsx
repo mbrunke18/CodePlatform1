@@ -38,10 +38,11 @@ function daysSince(dateStr: string | null): string {
 
 export default function AdminCustomerHealth() {
   const { user } = useAuth();
-  const { data: customers = [], isLoading } = useQuery<any[]>({
+  const { data: customersRaw, isLoading } = useQuery<any[]>({
     queryKey: ["/api/admin/customer-health"],
     enabled: !!user,
   });
+  const customers = Array.isArray(customersRaw) ? customersRaw : [];
 
   const greenCount = customers.filter(c => c.ragStatus === "green").length;
   const amberCount = customers.filter(c => c.ragStatus === "amber").length;

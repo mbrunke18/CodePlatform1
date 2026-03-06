@@ -98,9 +98,10 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
 
   const COMMON_ROLES = ['CEO', 'CFO', 'COO', 'CTO', 'CISO', 'CMO', 'CLO', 'CPO', 'Head of Legal', 'Head of Communications', 'Head of HR', 'Head of Finance'];
 
-  const { data: availabilityFlags = [] } = useQuery<any[]>({
+  const { data: availabilityFlagsRaw } = useQuery<any[]>({
     queryKey: ['/api/role-availability'],
   });
+  const availabilityFlags = Array.isArray(availabilityFlagsRaw) ? availabilityFlagsRaw : [];
 
   const upsertAvailabilityMutation = useMutation({
     mutationFn: (data: { roleName: string; isLimited: boolean; note?: string }) =>

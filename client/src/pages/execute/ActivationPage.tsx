@@ -18,9 +18,10 @@ interface PlaybookActivation {
 }
 
 export default function ActivationPage() {
-  const { data: activations = [], isLoading } = useQuery<PlaybookActivation[]>({
+  const { data: activationsRaw, isLoading } = useQuery<PlaybookActivation[]>({
     queryKey: ['/api/playbook-activations'],
   });
+  const activations = Array.isArray(activationsRaw) ? activationsRaw : [];
 
   const avgRating = activations.length > 0
     ? Math.round(activations.reduce((sum, a) => sum + (a.successRating || 0), 0) / activations.length)

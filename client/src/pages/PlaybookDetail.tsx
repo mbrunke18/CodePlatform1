@@ -145,9 +145,10 @@ export default function PlaybookDetail() {
   const { toast } = useToast();
   const { isAuthenticated, login, user } = useAuth();
 
-  const { data: organizations = [] } = useQuery<any[]>({
+  const { data: organizationsRaw } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
   });
+  const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id;
 
   const isPlaybookNumber = /^\d+$/.test(id || '');
@@ -190,10 +191,11 @@ export default function PlaybookDetail() {
     enabled: !!playbookUuid && !!organizationId,
   });
 
-  const { data: users = [] } = useQuery<any[]>({
+  const { data: usersRaw } = useQuery<any[]>({
     queryKey: ['/api/users'],
     enabled: !!organizationId,
   });
+  const users = Array.isArray(usersRaw) ? usersRaw : [];
 
   const activatePlaybookMutation = useMutation({
     mutationFn: async () => {

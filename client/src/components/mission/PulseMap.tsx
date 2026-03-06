@@ -38,8 +38,10 @@ function polar(cx: number, cy: number, r: number, angleDeg: number) {
 }
 
 export default function PulseMap() {
-  const { data: triggers = [] } = useQuery<any[]>({ queryKey: ['/api/executive-triggers'] });
-  const { data: activations = [] } = useQuery<any[]>({ queryKey: ['/api/playbook-activations'] });
+  const { data: triggersRaw } = useQuery<any[]>({ queryKey: ['/api/executive-triggers'] });
+  const { data: activationsRaw } = useQuery<any[]>({ queryKey: ['/api/playbook-activations'] });
+  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
+  const activations = Array.isArray(activationsRaw) ? activationsRaw : [];
   const [tick, setTick] = useState(0);
   const animRef = useRef<NodeJS.Timeout | null>(null);
 

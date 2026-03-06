@@ -46,9 +46,10 @@ function getEffectivenessColor(effectiveness: string): string {
 export default function DecisionVelocityDashboard({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
 
-  const { data: decisions = [], isLoading } = useQuery<any[]>({
+  const { data: decisionsRaw, isLoading } = useQuery<any[]>({
     queryKey: ['/api/decision-outcomes'],
   });
+  const decisions = Array.isArray(decisionsRaw) ? decisionsRaw : [];
 
   const confidenceToScore: Record<string, number> = { very_high: 95, high: 80, medium: 60, low: 40 };
   const effectivenessToScore: Record<string, number> = { excellent: 95, high: 80, moderate: 60, low: 40, poor: 20 };

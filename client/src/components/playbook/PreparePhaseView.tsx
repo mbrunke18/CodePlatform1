@@ -115,7 +115,7 @@ export function PreparePhaseView({ playbookId, organizationId, isEditable = true
   });
   const { toast } = useToast();
 
-  const { data: items = [], isLoading } = useQuery<PrepareItem[]>({
+  const { data: itemsRaw, isLoading } = useQuery<PrepareItem[]>({
     queryKey: ['/api/playbook-library', playbookId, 'prepare-items', { organizationId }],
     queryFn: async () => {
       const response = await fetch(
@@ -126,6 +126,7 @@ export function PreparePhaseView({ playbookId, organizationId, isEditable = true
     },
     enabled: !!playbookId && !!organizationId,
   });
+  const items = Array.isArray(itemsRaw) ? itemsRaw : [];
 
   const createItemMutation = useMutation({
     mutationFn: async (data: Partial<PrepareItem>) => {

@@ -39,10 +39,11 @@ export default function StakeholderAlignmentDashboard({
   scenarioId, 
   executionId 
 }: StakeholderAlignmentDashboardProps) {
-  const { data: alignmentData = [], isLoading } = useQuery<StakeholderAlignmentData[]>({
+  const { data: alignmentDataRaw, isLoading } = useQuery<StakeholderAlignmentData[]>({
     queryKey: ['/api/stakeholder-alignment', scenarioId, executionId],
     enabled: !!scenarioId,
   });
+  const alignmentData = Array.isArray(alignmentDataRaw) ? alignmentDataRaw : [];
 
   const createAlignmentMutation = useMutation({
     mutationFn: async (data: any) => {

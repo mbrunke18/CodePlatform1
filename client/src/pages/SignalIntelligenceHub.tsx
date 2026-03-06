@@ -332,11 +332,12 @@ export default function SignalIntelligenceHub() {
     placeholderData: null
   });
 
-  const { data: triggers = [], isLoading: triggersLoading } = useQuery<any[]>({
+  const { data: triggersRaw, isLoading: triggersLoading } = useQuery<any[]>({
     queryKey: ['/api/dynamic-strategy/triggers'],
     retry: false,
     placeholderData: []
   });
+  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
 
   const saveTriggerMutation = useMutation({
     mutationFn: (triggerData: any) => {

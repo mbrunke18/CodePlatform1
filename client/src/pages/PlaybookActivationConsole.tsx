@@ -63,16 +63,18 @@ export default function PlaybookActivationConsole() {
   });
 
   // Fetch tasks for this playbook
-  const { data: tasks = [] } = useQuery<any[]>({
+  const { data: tasksRaw } = useQuery<any[]>({
     queryKey: [`/api/tasks?playbookId=${params?.playbookId}`],
     enabled: !!params?.playbookId,
   });
+  const tasks = Array.isArray(tasksRaw) ? tasksRaw : [];
 
   // Role availability check — extract role names from playbook and check for flags
-  const { data: roleAvailabilityFlags = [] } = useQuery<any[]>({
+  const { data: roleAvailabilityFlagsRaw } = useQuery<any[]>({
     queryKey: ['/api/role-availability'],
     enabled: !activationConfirmed,
   });
+  const roleAvailabilityFlags = Array.isArray(roleAvailabilityFlagsRaw) ? roleAvailabilityFlagsRaw : [];
 
   const playbookRoleNames: string[] = playbook ? [
     ...(typeof playbook.tier1Stakeholders === 'object' && playbook.tier1Stakeholders

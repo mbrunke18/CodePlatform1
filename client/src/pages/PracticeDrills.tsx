@@ -46,9 +46,8 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const [selectedPlaybookId, setSelectedPlaybookId] = useState('');
 
   // Fetch organizations
-  const { data: organizations = [] } = useQuery<any[]>({ 
-    queryKey: ['/api/organizations'] 
-  });
+  const { data: organizationsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id;
 
   // Fetch playbooks for selection
@@ -58,10 +57,11 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const playbooks = libraryData?.playbooks || [];
 
   // Fetch scheduled drills
-  const { data: drills = [], isLoading: drillsLoading } = useQuery<any[]>({
+  const { data: drillsRaw, isLoading: drillsLoading } = useQuery<any[]>({
     queryKey: ['/api/practice-drills', organizationId],
     enabled: !!organizationId,
   });
+  const drills = Array.isArray(drillsRaw) ? drillsRaw : [];
 
   // Fetch drill performance data
   const { data: performanceData } = useQuery<any>({

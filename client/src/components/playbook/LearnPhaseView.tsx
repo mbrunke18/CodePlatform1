@@ -107,7 +107,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
   });
   const { toast } = useToast();
 
-  const { data: items = [], isLoading } = useQuery<LearnItem[]>({
+  const { data: itemsRaw, isLoading } = useQuery<LearnItem[]>({
     queryKey: ['/api/playbook-library', playbookId, 'learn-items', { organizationId }],
     queryFn: async () => {
       const response = await fetch(
@@ -118,6 +118,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
     },
     enabled: !!playbookId && !!organizationId,
   });
+  const items = Array.isArray(itemsRaw) ? itemsRaw : [];
 
   const createItemMutation = useMutation({
     mutationFn: async (data: Partial<LearnItem>) => {

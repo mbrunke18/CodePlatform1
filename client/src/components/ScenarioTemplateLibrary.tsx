@@ -66,14 +66,16 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
   // Fetch all scenario templates
-  const { data: allTemplates = [], isLoading } = useQuery<ComprehensiveScenarioTemplate[]>({
+  const { data: allTemplatesRaw, isLoading } = useQuery<ComprehensiveScenarioTemplate[]>({
     queryKey: ['/api/scenario-templates'],
   });
+  const allTemplates = Array.isArray(allTemplatesRaw) ? allTemplatesRaw : [];
 
   // Fetch crisis templates
-  const { data: crisisTemplates = [] } = useQuery<ComprehensiveScenarioTemplate[]>({
+  const { data: crisisTemplatesRaw } = useQuery<ComprehensiveScenarioTemplate[]>({
     queryKey: ['/api/scenario-templates/crisis'],
   });
+  const crisisTemplates = Array.isArray(crisisTemplatesRaw) ? crisisTemplatesRaw : [];
 
   // Create scenario from template mutation
   const createFromTemplateMutation = useMutation({

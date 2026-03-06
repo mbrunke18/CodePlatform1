@@ -36,10 +36,11 @@ export default function FutureReadinessWidget({ organizationId }: { organization
     refetchInterval: 30000,
   });
 
-  const { data: weakSignals = [] } = useQuery<WeakSignal[]>({
+  const { data: weakSignalsRaw } = useQuery<WeakSignal[]>({
     queryKey: ['/api/dynamic-strategy/weak-signals', organizationId],
     refetchInterval: 30000,
   });
+  const weakSignals = Array.isArray(weakSignalsRaw) ? weakSignalsRaw : [];
 
   const score = readinessData?.overallScore || 84.4;
   const trend = readinessData?.trend || 'up';
