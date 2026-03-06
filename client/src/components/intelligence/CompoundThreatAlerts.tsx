@@ -22,9 +22,10 @@ function confidenceColor(c: number) {
 export default function CompoundThreatAlerts({ compact = false }: { compact?: boolean }) {
   const { toast } = useToast();
 
-  const { data: threats = [], isLoading } = useQuery<any[]>({
+  const { data: threatsRaw, isLoading } = useQuery<any[]>({
     queryKey: ['/api/compound-threats'],
   });
+  const threats = Array.isArray(threatsRaw) ? threatsRaw : [];
 
   const analyzeMutation = useMutation({
     mutationFn: () => apiRequest('POST', '/api/compound-threats/analyze', {}),

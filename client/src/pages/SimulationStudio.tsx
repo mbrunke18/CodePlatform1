@@ -51,7 +51,8 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
   const [result, setResult] = useState<any>(null);
   const { toast } = useToast();
 
-  const { data: history = [] } = useQuery<any[]>({ queryKey: ['/api/simulation-analyses'] });
+  const { data: historyRaw } = useQuery<any[]>({ queryKey: ['/api/simulation-analyses'] });
+  const history = Array.isArray(historyRaw) ? historyRaw : [];
 
   const analyzeMutation = useMutation({
     mutationFn: () => apiRequest('POST', '/api/simulation/analyze', { scenarioText: scenario }),

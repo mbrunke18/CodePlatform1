@@ -29,7 +29,8 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
   const [savedIds, setSavedIds] = useState<Set<number>>(new Set());
   const { toast } = useToast();
 
-  const { data: history = [] } = useQuery<any[]>({ queryKey: ['/api/strategic-recordings'] });
+  const { data: historyRaw } = useQuery<any[]>({ queryKey: ['/api/strategic-recordings'] });
+  const history = Array.isArray(historyRaw) ? historyRaw : [];
 
   const analyzeMutation = useMutation({
     mutationFn: () => apiRequest('POST', '/api/strategic-recorder/analyze', { inputText }),

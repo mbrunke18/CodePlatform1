@@ -48,13 +48,15 @@ function Bar({ label, value, max, color, suffix = 'min' }: { label: string; valu
 export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
   const [view, setView] = useState<'summary' | 'board'>('summary');
 
-  const { data: summary, isLoading: sumLoading } = useQuery<any>({
+  const { data: summaryRaw, isLoading: sumLoading } = useQuery<any>({
     queryKey: ['/api/roi/summary'],
   });
-  const { data: board, isLoading: boardLoading } = useQuery<any>({
+  const { data: boardRaw, isLoading: boardLoading } = useQuery<any>({
     queryKey: ['/api/roi/board-report'],
     enabled: view === 'board',
   });
+  const summary = summaryRaw && typeof summaryRaw === 'object' && !summaryRaw.error ? summaryRaw : null;
+  const board = boardRaw && typeof boardRaw === 'object' && !boardRaw.error ? boardRaw : null;
 
   const isLoading = sumLoading || (view === 'board' && boardLoading);
 
