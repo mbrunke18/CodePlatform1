@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 2) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -214,24 +214,31 @@ playbookPhaseEnum: 'prepare' | 'monitor' | 'execute' | 'learn'
 ```tsx
 import { useQuery } from '@tanstack/react-query';
 
-// Simple — default queryFn handles fetch + auth
-const { data: playbooks = [], isLoading } = useQuery<StrategicScenario[]>({
+// ✅ CORRECT — null-safe array pattern (ALWAYS use this for array queries)
+// The default queryFn returns null (not undefined) for 401 responses.
+// Destructuring default `= []` only catches undefined, NOT null — use Array.isArray instead.
+const { data: playbooksRaw, isLoading } = useQuery<StrategicScenario[]>({
   queryKey: ['/api/scenarios'],
 });
+const playbooks = Array.isArray(playbooksRaw) ? playbooksRaw : [];
+
+// ❌ WRONG — crashes with "null is not iterable" when user is not authenticated
+// const { data: playbooks = [] } = useQuery<StrategicScenario[]>({ queryKey: ['/api/scenarios'] });
 
 // With params (hierarchical key — invalidation works properly)
-const { data: tasks } = useQuery<Task[]>({
-  queryKey: ['/api/tasks', scenarioId],
-  queryKey: [`/api/tasks?scenarioId=${scenarioId}`],   // also valid
+const { data: tasksRaw } = useQuery<Task[]>({
+  queryKey: [`/api/tasks?scenarioId=${scenarioId}`],
   enabled: !!scenarioId,
 });
+const tasks = Array.isArray(tasksRaw) ? tasksRaw : [];
 
-// Handling unauthenticated endpoints gracefully
-const { data, error } = useQuery<StatusData | null>({
-  queryKey: ['/api/dynamic-strategy/status'],
+// For object queries (not arrays), null is safe — optional chain where needed:
+const { data: scoreData } = useQuery<ScoreData | null>({
+  queryKey: ['/api/preparedness/score'],
   retry: false,
   placeholderData: null,
 });
+// scoreData?.overallScore ?? 0  — safe
 ```
 
 ### Making a Mutation (POST/PATCH/DELETE)
@@ -249,8 +256,14 @@ const createMutation = useMutation({
     queryClient.invalidateQueries({ queryKey: ['/api/scenarios'] });
     toast({ title: 'Playbook created successfully' });
   },
-  onError: (error) => {
-    toast({ title: 'Error', description: error.message, variant: 'destructive' });
+  onError: (error: any) => {
+    // ✅ Always check for 401 — apiRequest throws Error("401: ...") for unauthenticated requests
+    if (error?.message?.startsWith('401')) {
+      toast({ title: 'Sign in required', description: 'Please sign in to continue.', variant: 'destructive' });
+      setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+    } else {
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+    }
   },
 });
 
@@ -703,6 +716,10 @@ await deployConfig({
 8. **Frontend env vars** use `import.meta.env.VITE_*`, not `process.env.*`.
 9. **Navigation** — use Wouter's `<Link href=...>` and `setLocation()`. Never `window.location.href` for internal routes (except auth redirects which need `window.top`).
 10. **Arrays in Drizzle schema** — use `text().array()` not `array(text())`.
+11. **NEVER use `data: x = []` array destructuring with `useQuery`.** The default `getQueryFn` returns `null` (not `undefined`) for 401 unauthenticated responses. The `= []` default only catches `undefined`, so it silently fails with `null` and causes "null is not iterable" crashes. Always use: `const { data: raw } = useQuery(...); const x = Array.isArray(raw) ? raw : [];`
+12. **All mutations that call protected POST endpoints must handle 401 in `onError`.** Check `error?.message?.startsWith('401')` and redirect to `/api/login` with a brief toast warning. Without this, unauthenticated users see a generic "failed" error with no path to signing in. See Section 7 mutation pattern for the full template.
+13. **Domain is `vaughnmartin.com`.** All user-visible URLs, email senders, and copy must reference `vaughnmartin.com`. The server 301-redirects `executeiq.io` → `vaughnmartin.com`. Do NOT use the old domain in any new code or copy.
+14. **Before deploying: run `npx vite build` locally** to update `dist/public/` (the pre-committed frontend bundle). The deployment build step only runs the fast server esbuild — it does NOT rebuild the frontend. If you skip this step, production will serve stale UI.
 
 ---
 
@@ -816,4 +833,7 @@ Five high-impact features that elevate the platform beyond dashboards into an ir
 /simulation-studio     → SimulationStudioPage  (was previously redirected to /try-demo)
 /strategic-recorder    → StrategicRecorder
 ```
+
+### WOW Feature 401 Handling (Critical)
+SimulationStudio, StrategicRecorder, and CompoundThreatAlerts all call protected POST endpoints from their primary action buttons ("Run Simulation", "Analyze Recording", "Analyze Now"). If the user is not authenticated, `apiRequest` throws `Error("401: ...")`. Each of these components has `onError` handlers that detect the 401 prefix and redirect to `/api/login` after a brief toast — rather than showing a generic "failed" message. This pattern must be preserved on any future WOW feature that calls a POST endpoint.
 

@@ -12,6 +12,35 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - Brand placement and visual memory is a priority — logo should appear on every key page
 - Desktop-first layout; mobile adjustments only if non-disruptive
 
+## Critical Coding Rules (Enforced March 2026)
+
+**Null-safe array queries — ALWAYS use this pattern:**
+The default `getQueryFn` in `queryClient.ts` returns `null` (not `undefined`) for 401 unauthenticated responses. Destructuring with `= []` only catches `undefined`, causing silent "null is not iterable" crashes on protected pages. ALWAYS use:
+```ts
+const { data: raw } = useQuery({ queryKey: ['/api/endpoint'] });
+const items = Array.isArray(raw) ? raw : [];
+```
+NEVER use: `const { data: items = [] } = useQuery(...)` — this is broken for authenticated routes.
+
+**401 error handling in mutations — ALWAYS redirect to sign-in:**
+When a mutation calls a protected POST endpoint and the user is unauthenticated, `apiRequest` throws `Error("401: ...")`. The `onError` handler must detect this and redirect:
+```ts
+onError: (error: any) => {
+  if (error?.message?.startsWith('401')) {
+    toast({ title: 'Sign in required', variant: 'destructive' });
+    setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+  } else {
+    toast({ title: 'Error', description: error.message, variant: 'destructive' });
+  }
+}
+```
+
+**Domain is `vaughnmartin.com` — permanently:**
+All user-visible copy, email senders (`noreply@vaughnmartin.com`), and links use `vaughnmartin.com`. The server 301-redirects the old `executeiq.io` domain. Do NOT use `executeiq.io` in any new code.
+
+**Pre-deployment frontend build required:**
+The deployment build command only runs the fast server esbuild (~1 second). The frontend `dist/public/` is pre-committed and NOT rebuilt on deploy. Before publishing, always run `npx vite build` locally to update `dist/public/` with your latest source changes.
+
 ## System Architecture
 
 **UI/UX Decisions:**
