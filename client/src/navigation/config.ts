@@ -38,6 +38,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Build a new playbook from scratch or template'
         },
         {
+          id: 'strategic-recorder',
+          label: 'Strategic Recorder',
+          path: '/strategic-recorder',
+          icon: '🎙️',
+          description: 'Paste crisis notes — AI builds custom playbooks instantly'
+        },
+        {
           id: 'sla',
           label: 'SLA & Timeframes',
           path: '/identify/sla',
@@ -89,6 +96,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Real-time threat identification and warnings'
         },
         {
+          id: 'compound-threats',
+          label: 'Compound Threat Intelligence',
+          path: '/dashboard',
+          icon: '🔗',
+          description: 'AI-detected cross-domain threat patterns'
+        },
+        {
           id: 'trends',
           label: 'Trend Analysis',
           path: '/detect/trends',
@@ -113,10 +127,17 @@ export const navigationConfig: NavigationConfig = {
       items: [
         {
           id: 'war-room',
-          label: 'War Room',
-          path: '/execute/war-room',
+          label: 'War Room / Pulse Map',
+          path: '/mission-control',
           icon: '🛡️',
-          description: 'Leadership coordination and command center'
+          description: 'Live pulse visualization of all 20 signal domains'
+        },
+        {
+          id: 'shadow-simulator',
+          label: 'Shadow Simulator',
+          path: '/simulation-studio',
+          icon: '🧪',
+          description: 'Dry-run scenarios before activation — Survive vs. Thrive'
         },
         {
           id: 'activation',
@@ -162,6 +183,13 @@ export const navigationConfig: NavigationConfig = {
       icon: '📈',
       color: 'from-green-600 to-emerald-600',
       items: [
+        {
+          id: 'roi-dashboard',
+          label: 'Execution ROI Dashboard',
+          path: '/roi-dashboard',
+          icon: '💰',
+          description: 'Board-ready value preserved metrics & response time ROI'
+        },
         {
           id: 'metrics',
           label: 'Execution Metrics',

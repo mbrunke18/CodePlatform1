@@ -72,7 +72,8 @@ export default function StandardNav() {
       links: [
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
         { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Assess execution readiness by domain" },
-        { label: "What-If Analyzer", path: "/what-if-analyzer", icon: FlaskConical, description: "Scenario modeling & simulation" },
+        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — Survive vs. Thrive scoring" },
+        { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn crisis notes into custom playbooks with AI" },
         { label: "Executive Summary", path: "/executive-summary", icon: FileText, description: "One-click executive reports" },
       ],
     },
@@ -88,9 +89,12 @@ export default function StandardNav() {
   ];
 
   const platformLinks: NavLink[] = [
-    { label: "Execution OS Hub", path: "/mission-control", icon: Compass, description: "Strategic operations hub" },
+    { label: "Execution OS Hub", path: "/mission-control", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
     { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
     { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
+    { label: "Execution ROI", path: "/roi-dashboard", icon: Calculator, description: "Value preserved — board-ready ROI metrics" },
+    { label: "Shadow Simulator", path: "/simulation-studio", icon: Shield, description: "Survive vs. Thrive scenario dry-run" },
+    { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "AI-generated playbooks from crisis notes" },
     { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, description: "Transformation progress tracking" },
     { label: "Playbook Factory", path: "/workspaces/identify", icon: Layers, description: "Build & customize playbooks" },
     { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
