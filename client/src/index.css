@@ -169,6 +169,52 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── VaughnMartin Brand Typography Utilities ── */
+
+/* Company wordmark — Cormorant Garamond, use for "VaughnMartin" display text */
+.vm-wordmark {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1;
+}
+
+/* Product / section display label — Barlow Condensed, use for "EXECUTION OS",
+   section headers, KPI labels, stat callouts */
+.vm-display-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Overline label — small all-caps gold rule line above headings */
+.vm-overline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #C9A84C;
+}
+
+/* Condensed campaign headline — Barlow Condensed heavy, for impact statements */
+.vm-campaign-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+/* Italic serif accent — Cormorant Garamond italic, for gold/italic emphasis */
+.vm-serif-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
 .sidebar-nav-item:hover {
   background-color: hsl(232, 50%, 20%);
 }
