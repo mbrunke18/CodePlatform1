@@ -39,15 +39,16 @@
 ## 3. Design System — The Only Colors Allowed
 
 ```
-NAVY    = "#0A0F2E"   → hero sections, headings, primary buttons, dark backgrounds
-NAVY_MID= "#141B45"   → hover states, secondary dark surfaces
-GOLD    = "#C9A84C"   → accents, labels, metric numbers, CTA highlights (NEVER as background)
-GOLD_LT = "#DFC178"   → gold on dark backgrounds, hover gold
-TEAL    = "#2B8A6E"   → success, offense playbooks, progress bars, teal CTAs
-TEAL_LT = "#3BAF8A"   → teal on dark backgrounds
-OFF     = "#F8F7F4"   → off-white page backgrounds, light card surfaces
-BORDER  = "#E8E4DC"   → card borders, dividers, input borders
-MUTED   = "#6B7280"   → helper text, secondary labels, timestamps
+NAVY     = "#0A0F2E"   → headings, text, borders, small dark elements, buttons
+NAVY_BG  = "#132558"   → large dark section backgrounds on Homepage (lighter — reads as genuine navy blue rather than near-black)
+NAVY_MID = "#141B45"   → hover states, secondary dark surfaces
+GOLD     = "#C9A84C"   → accents, labels, metric numbers, CTA highlights (NEVER as background)
+GOLD_LT  = "#DFC178"   → gold on dark backgrounds, hover gold
+TEAL     = "#2B8A6E"   → success, offense playbooks, progress bars, teal CTAs
+TEAL_LT  = "#3BAF8A"   → teal on dark backgrounds
+OFF      = "#F8F7F4"   → off-white page backgrounds, light card surfaces
+BORDER   = "#E8E4DC"   → card borders, dividers, input borders
+MUTED    = "#6B7280"   → helper text, secondary labels, timestamps
 ```
 
 **Rules:**
@@ -57,7 +58,13 @@ MUTED   = "#6B7280"   → helper text, secondary labels, timestamps
 - Light neutrals `bg-gray-50`, `bg-slate-50` are acceptable
 - OFFENSE playbooks = Teal. DEFENSE = Navy. SPECIAL_TEAMS = Gold.
 
-**Color variable trap:** `Homepage.tsx` uses the local name `TEXT_MUTED` (not `MUTED`). Every other file uses `MUTED`. Always check the constants block at the top of each file before referencing color variables.
+**Color variable trap:** `Homepage.tsx` uses the local name `TEXT_MUTED` (not `MUTED`), and defines both `NAVY` and `NAVY_BG` locally. `NAVY_BG` is only used for large `<section>` backgrounds on the homepage — do NOT use it for text, borders, or buttons. Every other file uses only `NAVY`. Always check the constants block at the top of each file before referencing color variables.
+
+**Homepage dark section visual treatment (do not remove):**
+All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
+1. Gold grid overlay — `backgroundImage` linear-gradient at `rgba(201,168,76,0.09)`, `1px` lines, `48px` grid
+2. Radial gradient orbs — large teal and gold ellipses (600–1000px) positioned at edges/corners, opacity 0.11–0.22
+3. `backdropFilter: "blur(4px)"` on inline badges/pills that sit on top of the grid
 
 ---
 
