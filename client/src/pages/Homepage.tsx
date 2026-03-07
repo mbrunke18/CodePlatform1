@@ -483,7 +483,7 @@ export default function Homepage() {
                   { label: "Signal Ingested", stat: "216 data points", sub: "Every 15 min", color: GOLD, dot: GOLD },
                   { label: "Pattern Matched", stat: "Compound AI", sub: "Cross-domain", color: TEAL_LIGHT, dot: TEAL_LIGHT },
                   { label: "Dry-Run Validated", stat: "Simulation Studio", sub: "Before commitment", color: "#A78BFA", dot: "#A78BFA" },
-                  { label: "Playbooks Deploy", stat: "170 playbooks", sub: "Simultaneously", color: GOLD, dot: GOLD },
+                  { label: "Playbook Activated", stat: "From 170 library", sub: "Auto-matched", color: GOLD, dot: GOLD },
                   { label: "Execution Complete", stat: "12 minutes", sub: "From trigger", color: TEAL_LIGHT, dot: TEAL_LIGHT },
                 ] as { label: string; stat: string; sub: string; color: string; dot: string }[]).map((node, i, arr) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", flex: i < arr.length - 1 ? "1 1 auto" : "0 0 auto" }}>
@@ -521,22 +521,22 @@ export default function Homepage() {
           </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
             {([
-              { num: "01", name: "Financial Performance", icon: "◈", color: TEAL },
-              { num: "02", name: "Competitive Intelligence", icon: "◈", color: GOLD },
-              { num: "03", name: "Regulatory & Compliance", icon: "◈", color: TEAL },
-              { num: "04", name: "M&A Activity", icon: "◈", color: GOLD },
-              { num: "05", name: "Talent & Leadership", icon: "◈", color: TEAL },
-              { num: "06", name: "Technology Disruption", icon: "◈", color: GOLD },
-              { num: "07", name: "Supply Chain", icon: "◈", color: TEAL },
-              { num: "08", name: "Cyber & Security", icon: "◈", color: GOLD },
-              { num: "09", name: "Market Dynamics", icon: "◈", color: TEAL },
-              { num: "10", name: "Customer Intelligence", icon: "◈", color: GOLD },
-              { num: "11", name: "ESG & Sustainability", icon: "◈", color: TEAL },
-              { num: "12", name: "Macroeconomic Indicators", icon: "◈", color: GOLD },
-              { num: "13", name: "Geopolitical Risk", icon: "◈", color: TEAL },
-              { num: "14", name: "Brand & Reputation", icon: "◈", color: GOLD },
-              { num: "15", name: "Innovation & R&D", icon: "◈", color: TEAL },
-              { num: "16", name: "Operational Performance", icon: "◈", color: GOLD },
+              { num: "01", name: "Competitive Movement", icon: "◈", color: TEAL },
+              { num: "02", name: "Market Dynamics", icon: "◈", color: GOLD },
+              { num: "03", name: "Financial & Investment", icon: "◈", color: TEAL },
+              { num: "04", name: "Regulatory & Policy", icon: "◈", color: GOLD },
+              { num: "05", name: "Supply Chain & Operational", icon: "◈", color: TEAL },
+              { num: "06", name: "Customer Sentiment", icon: "◈", color: GOLD },
+              { num: "07", name: "Talent & Workforce", icon: "◈", color: TEAL },
+              { num: "08", name: "Technology Disruption", icon: "◈", color: GOLD },
+              { num: "09", name: "Media & Reputation", icon: "◈", color: TEAL },
+              { num: "10", name: "Geopolitical & Macro", icon: "◈", color: GOLD },
+              { num: "11", name: "Economic Indicators", icon: "◈", color: TEAL },
+              { num: "12", name: "Partnership & Ecosystem", icon: "◈", color: GOLD },
+              { num: "13", name: "Internal Execution", icon: "◈", color: TEAL },
+              { num: "14", name: "Customer Behavior", icon: "◈", color: GOLD },
+              { num: "15", name: "Innovation Pipeline", icon: "◈", color: TEAL },
+              { num: "16", name: "ESG & Sustainability", icon: "◈", color: GOLD },
             ] as { num: string; name: string; icon: string; color: string }[]).map((cat, i) => (
               <Reveal key={i} delay={i * 0.04}>
                 <div
