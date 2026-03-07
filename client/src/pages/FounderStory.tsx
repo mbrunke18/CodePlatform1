@@ -121,7 +121,7 @@ export default function FounderStory() {
             Not responding. Not executing. Aligning.
           </Body>
           <Body>
-            I watched it happen again at the next company. And the one after that. Ford. Lockheed Martin. Eli Lilly. Charles Schwab. Vantiv. Boyd Gaming. Churchill Downs. Across industries, across market positions, across leadership styles and organizational structures and cultures — the same failure repeated itself with remarkable consistency.
+            I watched it happen again at the next company. And the one after that. Ford. Lockheed Martin. Toyota. Charles Schwab. Vantiv. Boyd Gaming. Churchill Downs. Across industries, across market positions, across leadership styles and organizational structures and cultures — the same failure repeated itself with remarkable consistency.
           </Body>
           <Body>
             A signal fires. The enterprise stirs. Emails go out. Calendars get checked. Decks get built to explain the situation to people who need to be briefed before anyone can decide anything. Seventy-two hours later — sometimes more — the organization is finally aligned enough to begin moving. By which point the moment has often passed, the competitor has established position, or the window for advantage has closed.
@@ -349,7 +349,7 @@ export default function FounderStory() {
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, marginBottom: 4 }}>Martin Brunke</h3>
               <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Founder & CEO, VaughnMartin</p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {["Ford", "Lockheed Martin", "Eli Lilly", "Charles Schwab", "Vantiv", "Boyd Gaming", "Churchill Downs"].map(c => (
+                {["Ford", "Lockheed Martin", "Toyota", "Charles Schwab", "Vantiv", "Boyd Gaming", "Churchill Downs"].map(c => (
                   <span key={c} style={{ border: `1px solid ${BORDER}`, padding: "5px 12px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>{c}</span>
                 ))}
               </div>
