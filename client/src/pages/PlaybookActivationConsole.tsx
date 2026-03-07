@@ -268,6 +268,22 @@ export default function PlaybookActivationConsole() {
               )}
             </div>
 
+            {/* Dry-Run Prompt */}
+            <div style={{ border: `1px solid rgba(167,139,250,0.35)`, background: "rgba(167,139,250,0.04)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#A78BFA", flexShrink: 0 }} />
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Pre-Deployment Dry-Run Available</div>
+                  <div style={{ fontSize: 12, color: MUTED }}>Validate your response strategy before committing resources — see Survive vs. Thrive probability.</div>
+                </div>
+              </div>
+              <Link href="/simulation-studio">
+                <Button variant="outline" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, border: "1px solid #A78BFA", color: "#7C3AED", background: "transparent", whiteSpace: "nowrap", flexShrink: 0 }}>
+                  Run Dry-Run →
+                </Button>
+              </Link>
+            </div>
+
             {/* Role Availability Warning Banner */}
             {limitedPlaybookRoles.length > 0 && (
               <div style={{ border: '1px solid #D97706', borderLeft: '4px solid #D97706', background: 'rgba(217, 119, 6, 0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 2 }}>

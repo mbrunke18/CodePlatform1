@@ -471,6 +471,117 @@ export default function Homepage() {
               </Reveal>
             ))}
           </div>
+
+          {/* ── Signal Flow Timeline ── */}
+          <Reveal delay={0.2}>
+            <div style={{ marginTop: 64, padding: "40px 48px", background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", textAlign: "center", marginBottom: 36 }}>
+                How a Signal Becomes an Execution — in Real Time
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto" }}>
+                {([
+                  { label: "Signal Ingested", stat: "216 data points", sub: "Every 15 min", color: GOLD, dot: GOLD },
+                  { label: "Pattern Matched", stat: "Compound AI", sub: "Cross-domain", color: TEAL_LIGHT, dot: TEAL_LIGHT },
+                  { label: "Dry-Run Validated", stat: "Simulation Studio", sub: "Before commitment", color: "#A78BFA", dot: "#A78BFA" },
+                  { label: "Playbooks Deploy", stat: "170 playbooks", sub: "Simultaneously", color: GOLD, dot: GOLD },
+                  { label: "Execution Complete", stat: "12 minutes", sub: "From trigger", color: TEAL_LIGHT, dot: TEAL_LIGHT },
+                ] as { label: string; stat: string; sub: string; color: string; dot: string }[]).map((node, i, arr) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", flex: i < arr.length - 1 ? "1 1 auto" : "0 0 auto" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 130, flexShrink: 0 }}>
+                      <div style={{ width: 12, height: 12, borderRadius: "50%", background: node.dot, boxShadow: `0 0 12px ${node.dot}`, marginBottom: 12 }} />
+                      <div style={{ fontSize: 11, fontWeight: 700, color: node.color, letterSpacing: "0.05em", marginBottom: 4, textAlign: "center" }}>{node.stat}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", textAlign: "center", marginBottom: 4 }}>{node.label}</div>
+                      <div style={{ fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.35)", textAlign: "center" }}>{node.sub}</div>
+                    </div>
+                    {i < arr.length - 1 && (
+                      <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg,${node.dot}60,${arr[i+1].dot}60)`, margin: "0 8px", position: "relative", top: -24 }}>
+                        <div style={{ position: "absolute", right: -5, top: -4, width: 9, height: 9, border: `1px solid ${arr[i+1].dot}`, borderRadius: "50%", background: "transparent" }} />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ══ 16 SIGNAL CATEGORIES ══ */}
+      <section style={{ padding: "100px 56px", background: "#fff" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <Reveal style={{ textAlign: "center" }}>
+            <Eyebrow color="teal" center>The Sentinel Layer</Eyebrow>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
+              216 Data Points.<br />
+              <em style={{ fontStyle: "italic", color: TEAL }}>16 Strategic Categories.</em>
+            </h2>
+            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: TEXT_MUTED, maxWidth: 560, margin: "0 auto 64px" }}>
+              The system isn't scanning the noise — it's watching the 16 specific domains where Fortune 1000 strategy gets made or broken. Every signal refreshes every 15 minutes.
+            </p>
+          </Reveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
+            {([
+              { num: "01", name: "Financial Performance", icon: "◈", color: TEAL },
+              { num: "02", name: "Competitive Intelligence", icon: "◈", color: GOLD },
+              { num: "03", name: "Regulatory & Compliance", icon: "◈", color: TEAL },
+              { num: "04", name: "M&A Activity", icon: "◈", color: GOLD },
+              { num: "05", name: "Talent & Leadership", icon: "◈", color: TEAL },
+              { num: "06", name: "Technology Disruption", icon: "◈", color: GOLD },
+              { num: "07", name: "Supply Chain", icon: "◈", color: TEAL },
+              { num: "08", name: "Cyber & Security", icon: "◈", color: GOLD },
+              { num: "09", name: "Market Dynamics", icon: "◈", color: TEAL },
+              { num: "10", name: "Customer Intelligence", icon: "◈", color: GOLD },
+              { num: "11", name: "ESG & Sustainability", icon: "◈", color: TEAL },
+              { num: "12", name: "Macroeconomic Indicators", icon: "◈", color: GOLD },
+              { num: "13", name: "Geopolitical Risk", icon: "◈", color: TEAL },
+              { num: "14", name: "Brand & Reputation", icon: "◈", color: GOLD },
+              { num: "15", name: "Innovation & R&D", icon: "◈", color: TEAL },
+              { num: "16", name: "Operational Performance", icon: "◈", color: GOLD },
+            ] as { num: string; name: string; icon: string; color: string }[]).map((cat, i) => (
+              <Reveal key={i} delay={i * 0.04}>
+                <div
+                  style={{ border: `1px solid ${BORDER}`, padding: "20px 22px", transition: "all 0.25s", cursor: "default", background: "#fff" }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = cat.color;
+                    el.style.background = cat.color === TEAL ? "rgba(43,138,110,0.04)" : "rgba(201,168,76,0.04)";
+                    el.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = BORDER;
+                    el.style.background = "#fff";
+                    el.style.transform = "translateY(0)";
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: "#D1D5DB" }}>{cat.num}</span>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: cat.color }} />
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, lineHeight: 1.3 }}>{cat.name}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={0.3}>
+            <div style={{ marginTop: 48, padding: "28px 40px", background: OFF_WHITE, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
+              <div style={{ display: "flex", gap: 48 }}>
+                {([
+                  { val: "216", label: "Monitored data points" },
+                  { val: "15 min", label: "Refresh cycle" },
+                  { val: "12", label: "Enterprise integrations" },
+                ] as { val: string; label: string }[]).map((s, i) => (
+                  <div key={i}>
+                    <div style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY, lineHeight: 1 }}>{s.val}</div>
+                    <div style={{ fontSize: 11, fontWeight: 500, color: TEXT_MUTED, marginTop: 4 }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 400, color: TEXT_MUTED, maxWidth: 360, lineHeight: 1.7 }}>
+                Every category runs on a 15-minute detection cycle. Compound Threat Intelligence identifies patterns that cross multiple categories — the signals human analysts miss when focused on a single domain.
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

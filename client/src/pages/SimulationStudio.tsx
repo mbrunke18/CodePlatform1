@@ -89,10 +89,10 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: GOLD }}>EXECUTE</span>
                 <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
-                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>Digital Twin Simulator</span>
+                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>Pre-Deployment Dry-Run</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.8rem', color: NAVY, lineHeight: 1 }}>Shadow Strategy Simulator</h1>
-              <p className="text-xs text-gray-400 mt-0.5">Dry-run any strategic scenario before it happens. See your Survive vs. Thrive probability.</p>
+              <p className="text-xs text-gray-400 mt-0.5">Validate your response before committing resources — AI scores your Survive and Thrive probability across every relevant playbook.</p>
             </div>
           </div>
         </div>
