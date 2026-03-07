@@ -61,7 +61,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
 - **Build:** Both `dist/index.js` (server bundle) and `dist/public/` (frontend) are pre-built and committed to the repo. The deployment build command is a no-op (`sh -c ":"`), so the bundle phase completes instantly. Before publishing, always run locally: (1) `npx vite build` to update `dist/public/`, and (2) `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. Commit both before publishing. The deployment run command is `npm run start` = `NODE_ENV=production node dist/index.js`.
-- **Server Startup Order:** HTTP server starts immediately at the top of `server/index.ts` for fast health check responses, with WebSocket attachment and background initializations running subsequently.
+- **Server Startup Order:** HTTP server starts immediately. In production, `express.static(dist/public)` and `app.get("/", sendFile(index.html))` are registered BEFORE `server.listen()` so Replit's healthcheck (GET /) returns 200 from the very first millisecond. Routes and background initialization run async after listen. Without this, GET / returns 500 during the startup window and healthchecks fail.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o

@@ -45601,6 +45601,12 @@ app.use((req, res, next) => {
   });
   next();
 });
+if (app.get("env") !== "development") {
+  const distPublicPath = path2.resolve(process.cwd(), "dist/public");
+  app.use(express2.static(distPublicPath));
+  const indexHtmlPath = path2.resolve(distPublicPath, "index.html");
+  app.get("/", (_req, res) => res.sendFile(indexHtmlPath));
+}
 var port = parseInt(process.env.PORT || "5000", 10);
 var server = createServer2(app);
 server.listen(

@@ -290,6 +290,17 @@ app.use((req, res, next) => {
   next();
 });
 
+// PRODUCTION: Serve static files BEFORE server.listen() so GET / returns 200
+// from the very first healthcheck. API routes registered later take precedence
+// for /api/* paths because express.static only matches real files.
+if (app.get("env") !== "development") {
+  const distPublicPath = path.resolve(process.cwd(), "dist/public");
+  app.use(express.static(distPublicPath));
+  const indexHtmlPath = path.resolve(distPublicPath, "index.html");
+  // Handle GET / immediately — this is what Replit's healthcheck hits
+  app.get("/", (_req, res) => res.sendFile(indexHtmlPath));
+}
+
 // Create HTTP server and start listening IMMEDIATELY
 // This ensures health check endpoints respond before route registration completes
 const port = parseInt(process.env.PORT || "5000", 10);
