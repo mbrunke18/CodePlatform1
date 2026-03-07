@@ -1,0 +1,36 @@
+To move an organization from a 72-hour lag to a 12-minute execution window, Execution OS replaces manual meetings with an automated coordination infrastructure. The process is designed to operate like a high-performance sideline, where preparation collapses the time between a signal and a coordinated response.
+Technical Workflow: From Signal to Result
+The following workflow illustrates the path a strategic event takes through the IDEA framework.
+graph TD
+    A[<b>IDENTIFY</b><br/>216 Data Points / 16 Categories] -->|Refresh every 15m| B(<b>DETECT</b><br/>Compound Threat Intelligence)
+    B -->|Pattern Recognized| C{<b>DECIDE</b><br/>Shadow Strategy Simulator}
+    C -->|Dry-run Validated| D[<b>EXECUTE</b><br/>170 Simultaneous Playbooks]
+    D -->|12-Minute Completion| E(<b>ADVANCE</b><br/>Outcome Data Capture)
+    E -->|Feedback Loop| A
+
+I. The Sentinel Layer (Identify & Detect)
+This phase eliminates "surprises" by maintaining constant situational awareness.
+ * Continuous Monitoring: The system scans 216 data points across 16 categories every 15 minutes.
+ * Cross-Domain Intelligence: Using Compound Threat Intelligence, the OS identifies patterns that span multiple departments, catching signals that human analysts might miss while focused on a single domain.
+ * Early Detection: Recognition fires before a crisis peaks, shifting the organization from a reactive to a proactive stance.
+II. The Decision Layer (Simulation)
+Before resources are committed, the system uses AI to validate the response.
+ * The Shadow Strategy Simulator: GPT-4o-driven surfaces run a "dry-run" of the proposed strategic pivot to forecast outcomes.
+ * Eliminating the "Huddle": Because playbooks are pre-staged via the Strategic Recorder, leadership does not need to build the response from scratch under pressure.
+III. The Coordination Layer (Execute)
+This is the core of the 12-minute promise, moving the enterprise from sequential to simultaneous action.
+ * Pre-Staged Infrastructure: The system activates a library of 170 pre-built playbooks.
+ * Simultaneous Deployment: Rather than waiting for one department to finish before the next begins, workstreams deploy in parallel across the coordination layer.
+ * Real-time Pivots: If the situation changes "at the line of scrimmage," the system allows for an instant shift in assignments without requiring a new meeting or a timeout.
+IV. The Feedback Layer (Advance)
+The final stage ensures the organization's "execution muscle" grows stronger with every use.
+ * Data Generation: Every activation produces granular outcome data.
+ * Compounding Library: The system learns from the results of each execution, making the next response faster and more accurate.
+Strategic Summary Table
+| Phase | Goal | Technical Driver | Timeframe |
+|---|---|---|---|
+| Identify | Eliminate Surprise | 216 Real-time Signals | Every 15 Mins |
+| Detect | Recognize Patterns | Compound Threat Intelligence | Immediate |
+| Execute | Coordinated Action | 170 Pre-built Playbooks | 12 Minutes |
+| Advance | Institutional Growth | Outcome Data Feedback | Continuous |
+Would you like me to help you draft the data schema for one of the 16 signal categories to see exactly what the OS would be monitoring?
