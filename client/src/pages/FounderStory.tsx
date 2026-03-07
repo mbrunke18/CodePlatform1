@@ -88,16 +88,25 @@ export default function FounderStory() {
           {/* I */}
           <RomanDivider num="I" />
           <Body>
-            I stood on a sideline for five years watching something most people never see up close.
+            I stood on a sideline for five years — major college football — watching something most people never see up close.
           </Body>
           <Body>
-            Twenty-two human beings — different sizes, different roles, different assignments, different reads on what the defense was doing — had forty seconds to achieve perfect coordinated execution. Every single play. No lag. No confusion. No one waiting to be told what to do next. The call came in. The play was set. Everyone moved.
+            Sixty to eighty decisions in three hours. Each one made in forty seconds or less. Offense on the field to score. Defense on the field to stop. Special teams on the field to change field position. Three distinct units, each with eleven players, each with completely different assignments, each drawn from a roster of over a hundred who all have to know their role the moment their number is called. In front of a hundred thousand people. On national television. With every coordinator on both sidelines watching for the same vulnerability to exploit.
           </Body>
           <Body>
-            Not because they were exceptional athletes. Because they had spent months building the infrastructure that made instant coordination possible. The playbook wasn't a document. It was a shared nervous system. When a signal fired, the response was already staged. The only question was execution.
+            It is the same system that runs every NFL franchise — the most operationally complex, most financially scrutinized, most publicly accountable organizations in American sport. Billion-dollar businesses built entirely around the ability to make the right coordinated decision in forty seconds. The same infrastructure principle. The same forty-second window. The same consequence for getting it wrong in front of everyone watching.
           </Body>
           <Body>
-            I loved that. The clarity of it. The discipline of it. The way preparation collapsed the distance between a decision and its consequence to almost nothing.
+            And then it gets harder. The play gets called. The team breaks the huddle. They line up. And the defense shifts. What the coaches saw from the booth is no longer what the quarterback sees at the line. The entire response has to change — instantly, without a timeout, without a meeting, without anyone asking for clarification. The quarterback reads the new situation, makes the call, and eleven people pivot to a completely different assignment in the same forty seconds.
+          </Body>
+          <PullQuote>
+            "That is coordination infrastructure performing under the highest pressure I have ever witnessed."
+          </PullQuote>
+          <Body>
+            Not because the players were exceptional — though many were. Because the system was built before the game started. The playbook wasn't assembled on the sideline. Every scenario had already been prepared for. Every role had already been defined. Every pivot had already been rehearsed. When the situation changed at the line of scrimmage, nobody panicked. They already knew what to do next.
+          </Body>
+          <Body>
+            I loved that. The clarity of it. The way preparation collapsed the distance between a changing situation and a perfectly coordinated response to almost nothing.
           </Body>
           <Body style={{ fontWeight: 600, color: NAVY }}>
             Then I walked into corporate America.
@@ -169,7 +178,7 @@ export default function FounderStory() {
             I was not an outsider who spotted a market opportunity. I was inside these organizations for twenty years watching the same failure repeat. Role after role. Company after company. I knew what the solution looked like because I had watched the version of it work in real time under conditions that would embarrass most enterprise response timelines.
           </Body>
           <Body style={{ fontWeight: 600, color: NAVY }}>
-            Forty seconds. Twenty-two people. Zero confusion. Every play.
+            Sixty to eighty decisions. Forty seconds each. Three units. Over a hundred people ready to execute the moment their number is called. And a system built to pivot in real time when the situation changes at the line.
           </Body>
           <Body>
             The pre-staged playbook. The shared coordination infrastructure. The response already built before the signal fires. That is not a football concept. It is how elite execution works anywhere the cost of lag is high. Which is everywhere. Every industry. Every scale.
