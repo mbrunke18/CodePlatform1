@@ -744,7 +744,7 @@ await deployConfig({
 
 ---
 
-## 19. Critical Rules for Any Developer
+## 20. Critical Rules for Any Developer
 
 1. **Never write raw SQL.** Always modify `shared/schema.ts` and run `npm run db:push`.
 2. **Never edit `package.json` scripts, `vite.config.ts`, or `drizzle.config.ts`.**
@@ -763,7 +763,7 @@ await deployConfig({
 
 ---
 
-## 20. Playbook Seeding (Production)
+## 21. Playbook Seeding (Production)
 
 Seeding logic is in `server/index.ts` as an additive migration:
 - If playbook count < 170, only inserts missing compound playbooks by name lookup
@@ -772,7 +772,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 21. Environment Variables
+## 22. Environment Variables
 
 | Variable | Required | Purpose |
 |---|---|---|
@@ -793,7 +793,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 22. Playbook ID Strategy — Stable vs. Environment-Specific UUIDs
+## 23. Playbook ID Strategy — Stable vs. Environment-Specific UUIDs
 
 **Problem solved (March 2026):** The production and development databases seed playbooks with different UUIDs because `gen_random_uuid()` runs at insert time. Any code that hardcodes a UUID will fail in one environment.
 
@@ -823,7 +823,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 23. WOW Features — 5 Strategic Differentiators (Added March 2026)
+## 24. WOW Features — 5 Strategic Differentiators (Added March 2026)
 
 Five high-impact features that elevate the platform beyond dashboards into an irreplaceable execution layer. All are backed by GPT-4o and persisted to the database.
 
@@ -882,7 +882,7 @@ SimulationStudio, StrategicRecorder, and CompoundThreatAlerts all call protected
 
 ---
 
-## 24. AI-Backed Activation Features (Added March 2026)
+## 25. AI-Backed Activation Features (Added March 2026)
 
 Three new features wired into the playbook execution flow, backed by GPT-4o.
 
@@ -928,7 +928,7 @@ const major = parseFloat(versionStr.split('.')[0] || '1');
 
 ---
 
-## 25. Orphaned Pages — Decision Log (March 2026)
+## 26. Orphaned Pages — Decision Log (March 2026)
 
 Seven page files were previously routed in `App.tsx` but had no navigation entry points — accessible only by direct URL. Each was reviewed and given an explicit disposition.
 
@@ -956,7 +956,7 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 
 ---
 
-## 26. Route Architecture — Server-Side Decomposition (March 2026)
+## 27. Route Architecture — Server-Side Decomposition (March 2026)
 
 `server/routes.ts` was decomposed from a 9,341-line monolith to approximately 6,800 lines by extracting domain-scoped sections into dedicated route module files.
 
@@ -995,7 +995,7 @@ optionalAuth               // middleware: sets req.userId if present, no error i
 
 ---
 
-## 27. Sentry Error Monitoring (March 2026)
+## 28. Sentry Error Monitoring (March 2026)
 
 Sentry is wired into both the server and frontend. Both are optional — the app starts and runs normally when the DSN env vars are absent.
 
