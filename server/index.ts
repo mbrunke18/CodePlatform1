@@ -23,6 +23,7 @@ import { openAIService } from "./services/OpenAIService";
 import { seedPlaybookLibrary } from "./seeds/playbookLibrarySeed";
 import { seedTriggers, getTriggerStats } from "./seeds/triggersSeed";
 import { seedDemoScenarios } from "./seeds/demoScenariosSeed";
+import { seedEnrichedPlaybooks } from "./seeds/enrichPlaybooksStartupSeed";
 import { db } from "./db";
 import { playbookLibrary, executiveTriggers } from "@shared/schema";
 import { count, eq, sql } from "drizzle-orm";
@@ -572,6 +573,9 @@ server.listen(
               `✅ Database already seeded with ${playbookCount} playbooks`,
             );
           }
+
+          // Seed enriched playbook content (phases, why it matters, signal sources)
+          await seedEnrichedPlaybooks();
 
           // Ensure playbooks table has all required columns (production migration)
           try {
