@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import IDEALayout from '@/components/layout/IDEALayout';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -172,7 +172,7 @@ export default function MissionControl() {
   };
 
   return (
-    <IDEALayout showBackButton={false}>
+    <PageLayout>
       <div style={{ background: OFF, minHeight: "100vh" }}>
         {/* Navy Header Section */}
         <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
@@ -427,6 +427,6 @@ export default function MissionControl() {
           </div>
         </div>
       </div>
-    </IDEALayout>
+    </PageLayout>
   );
 }

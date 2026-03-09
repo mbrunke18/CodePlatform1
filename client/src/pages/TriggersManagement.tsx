@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -88,11 +89,21 @@ function findDataPoint(dpId: string) {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
+  const [location] = useLocation();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('category');
+  });
   const [isWizardOpen, setIsWizardOpen]             = useState(false);
   const [editTriggerData, setEditTriggerData]       = useState<any>(null);
   const [viewTrigger, setViewTrigger]               = useState<any>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('category');
+    if (cat) setSelectedCategoryId(cat);
+  }, [location]);
 
   const { data: triggersData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
