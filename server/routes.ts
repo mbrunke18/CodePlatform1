@@ -8375,6 +8375,85 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
+  // DOOM-LOOP DETECTOR: Tasks stuck in pending/in_progress past threshold
+  // Inspired by: repeated-tool-call fingerprinting from AI agent research
+  app.get('/api/stuck-tasks', requireOrgAccess, async (req: any, res) => {
+    try {
+      const organizationId = req.session?.organizationId;
+      const thresholdHours = parseInt(req.query.hours as string) || 4;
+      const thresholdMs = thresholdHours * 60 * 60 * 1000;
+      const cutoff = new Date(Date.now() - thresholdMs);
+
+      // Find all active instances for this org
+      const activeInstances = await db.select()
+        .from(executionInstances)
+        .where(and(
+          eq(executionInstances.organizationId, organizationId),
+          sql`${executionInstances.status} IN ('pending', 'running')`
+        ));
+
+      if (!activeInstances.length) return res.json([]);
+
+      const instanceIds = activeInstances.map(i => i.id);
+
+      // Find tasks stuck in pending or in_progress past the cutoff
+      const stuckTasks = await db.select({
+        id: executionInstanceTasks.id,
+        executionInstanceId: executionInstanceTasks.executionInstanceId,
+        planTaskId: executionInstanceTasks.planTaskId,
+        status: executionInstanceTasks.status,
+        blockedReason: executionInstanceTasks.blockedReason,
+        assignedUserId: executionInstanceTasks.assignedUserId,
+        createdAt: executionInstanceTasks.createdAt,
+        updatedAt: executionInstanceTasks.updatedAt,
+        taskTitle: executionPlanTasks.title,
+        taskRole: executionPlanTasks.ownerRole,
+        taskPriority: executionPlanTasks.priority,
+        taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
+      })
+      .from(executionInstanceTasks)
+      .leftJoin(executionPlanTasks, eq(executionInstanceTasks.planTaskId, executionPlanTasks.id))
+      .where(and(
+        sql`${executionInstanceTasks.executionInstanceId} = ANY(${sql`ARRAY[${sql.join(instanceIds.map(id => sql`${id}::uuid`), sql`, `)}]`})`,
+        sql`${executionInstanceTasks.status} IN ('pending', 'in_progress')`,
+        sql`${executionInstanceTasks.updatedAt} < ${cutoff}`
+      ));
+
+      // Annotate with hours stuck and severity
+      const now = Date.now();
+      const annotated = stuckTasks.map(t => {
+        const hoursStuck = Math.floor((now - new Date(t.updatedAt!).getTime()) / 3600000);
+        const severity = hoursStuck >= thresholdHours * 3 ? 'critical' : hoursStuck >= thresholdHours ? 'warning' : 'watch';
+        return { ...t, hoursStuck, severity };
+      }).sort((a, b) => b.hoursStuck - a.hoursStuck);
+
+      res.json(annotated);
+    } catch (error) {
+      console.error('Failed to fetch stuck tasks:', error);
+      res.status(500).json({ error: 'Failed to fetch stuck tasks' });
+    }
+  });
+
+  // DOOM-LOOP RESOLVER: Mark a stuck task as escalated or re-assigned
+  app.patch('/api/stuck-tasks/:taskId/escalate', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { taskId } = req.params;
+      const { notes } = req.body;
+      const [updated] = await db.update(executionInstanceTasks)
+        .set({ 
+          status: 'in_progress',
+          notes: notes || 'Escalated via Stuck Task Detector',
+          updatedAt: new Date()
+        })
+        .where(eq(executionInstanceTasks.id, taskId))
+        .returning();
+      res.json(updated);
+    } catch (error) {
+      console.error('Failed to escalate stuck task:', error);
+      res.status(500).json({ error: 'Failed to escalate task' });
+    }
+  });
+
   // Get execution coordination metrics
   app.get('/api/execution-coordination/metrics', requireOrgAccess, async (req: any, res) => {
     try {

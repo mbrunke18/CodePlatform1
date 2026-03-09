@@ -44329,6 +44329,63 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to update task status" });
     }
   });
+  app2.get("/api/stuck-tasks", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.session?.organizationId;
+      const thresholdHours = parseInt(req.query.hours) || 4;
+      const thresholdMs = thresholdHours * 60 * 60 * 1e3;
+      const cutoff = new Date(Date.now() - thresholdMs);
+      const activeInstances = await db.select().from(executionInstances2).where(and23(
+        eq34(executionInstances2.organizationId, organizationId),
+        sql17`${executionInstances2.status} IN ('pending', 'running')`
+      ));
+      if (!activeInstances.length) return res.json([]);
+      const instanceIds = activeInstances.map((i) => i.id);
+      const stuckTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        executionInstanceId: executionInstanceTasks2.executionInstanceId,
+        planTaskId: executionInstanceTasks2.planTaskId,
+        status: executionInstanceTasks2.status,
+        blockedReason: executionInstanceTasks2.blockedReason,
+        assignedUserId: executionInstanceTasks2.assignedUserId,
+        createdAt: executionInstanceTasks2.createdAt,
+        updatedAt: executionInstanceTasks2.updatedAt,
+        taskTitle: executionPlanTasks3.title,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and23(
+        sql17`${executionInstanceTasks2.executionInstanceId} = ANY(${sql17`ARRAY[${sql17.join(instanceIds.map((id) => sql17`${id}::uuid`), sql17`, `)}]`})`,
+        sql17`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
+        sql17`${executionInstanceTasks2.updatedAt} < ${cutoff}`
+      ));
+      const now = Date.now();
+      const annotated = stuckTasks.map((t) => {
+        const hoursStuck = Math.floor((now - new Date(t.updatedAt).getTime()) / 36e5);
+        const severity = hoursStuck >= thresholdHours * 3 ? "critical" : hoursStuck >= thresholdHours ? "warning" : "watch";
+        return { ...t, hoursStuck, severity };
+      }).sort((a, b) => b.hoursStuck - a.hoursStuck);
+      res.json(annotated);
+    } catch (error) {
+      console.error("Failed to fetch stuck tasks:", error);
+      res.status(500).json({ error: "Failed to fetch stuck tasks" });
+    }
+  });
+  app2.patch("/api/stuck-tasks/:taskId/escalate", requireOrgAccess, async (req, res) => {
+    try {
+      const { taskId } = req.params;
+      const { notes } = req.body;
+      const [updated] = await db.update(executionInstanceTasks2).set({
+        status: "in_progress",
+        notes: notes || "Escalated via Stuck Task Detector",
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq34(executionInstanceTasks2.id, taskId)).returning();
+      res.json(updated);
+    } catch (error) {
+      console.error("Failed to escalate stuck task:", error);
+      res.status(500).json({ error: "Failed to escalate task" });
+    }
+  });
   app2.get("/api/execution-coordination/metrics", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
