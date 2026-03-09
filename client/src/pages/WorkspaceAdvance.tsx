@@ -152,7 +152,7 @@ function DoomLoopDetector() {
 
   const { data: stuckTasks = [], isLoading, refetch } = useQuery<StuckTask[]>({
     queryKey: ['/api/stuck-tasks', threshold],
-    queryFn: () => fetch(`/api/stuck-tasks?hours=${threshold}`, { credentials: 'include' }).then(r => r.json()),
+    queryFn: () => fetch(`/api/stuck-tasks?hours=${threshold}`, { credentials: 'include' }).then(r => r.ok ? r.json() : []),
     refetchInterval: 60000,
   });
 

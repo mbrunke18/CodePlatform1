@@ -144,7 +144,7 @@ function TwoPhasePlaybookSelector() {
     queryFn: () => {
       const params = new URLSearchParams({ limit: '30' });
       if (search.trim()) params.set('search', search.trim());
-      return fetch(`/api/playbooks/metadata?${params}`, { credentials: 'include' }).then(r => r.json());
+      return fetch(`/api/playbooks/metadata?${params}`, { credentials: 'include' }).then(r => r.ok ? r.json() : []);
     },
   });
 
@@ -155,7 +155,7 @@ function TwoPhasePlaybookSelector() {
     enabled: !!selectedId,
   });
 
-  const filtered = metaList.filter(p =>
+  const filtered = (Array.isArray(metaList) ? metaList : []).filter(p =>
     !search.trim() || p.name.toLowerCase().includes(search.toLowerCase()) || (p.domain || '').toLowerCase().includes(search.toLowerCase())
   );
 
