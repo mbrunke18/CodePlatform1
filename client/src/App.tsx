@@ -167,6 +167,13 @@ const IndustryExperience = lazy(() => import("./pages/IndustryExperience"));
 const ROIDashboard = lazy(() => import("./pages/ROIDashboard"));
 const SimulationStudioPage = lazy(() => import("./pages/SimulationStudio"));
 const StrategicRecorder = lazy(() => import("./pages/StrategicRecorder"));
+const DemoRouter = lazy(() => import("./pages/DemoRouter"));
+const MarketingLanding = lazy(() => import("./pages/MarketingLanding"));
+const OneClickDemo = lazy(() => import("./pages/OneClickDemo"));
+const ComprehensiveAIIntelligence = lazy(() => import("./pages/ComprehensiveAIIntelligence"));
+const LiveActivationCenter = lazy(() => import("./pages/LiveActivationCenter"));
+const EnterpriseMetrics = lazy(() => import("./pages/EnterpriseMetrics"));
+const UnifiedEnterprisePlatform = lazy(() => import("./pages/UnifiedEnterprisePlatform"));
 
 const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
@@ -462,6 +469,15 @@ function Router() {
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
         <Route path="/approval-error" component={lazy(() => import('./pages/ApprovalError'))} />
+
+        {/* Additional Pages */}
+        <Route path="/demo-router" component={DemoRouter} />
+        <Route path="/marketing-landing" component={MarketingLanding} />
+        <Route path="/one-click-demo" component={OneClickDemo} />
+        <Route path="/ai-intelligence-suite" component={ComprehensiveAIIntelligence} />
+        <Route path="/live-activation-center" component={LiveActivationCenter} />
+        <Route path="/enterprise-metrics" component={EnterpriseMetrics} />
+        <Route path="/unified-platform" component={UnifiedEnterprisePlatform} />
 
         {/* Industry Demos */}
         {renderRoutes(["/industry-demos", "/crisis-demos"], IndustryDemosHub)}
