@@ -168,8 +168,6 @@ const ROIDashboard = lazy(() => import("./pages/ROIDashboard"));
 const SimulationStudioPage = lazy(() => import("./pages/SimulationStudio"));
 const StrategicRecorder = lazy(() => import("./pages/StrategicRecorder"));
 const DemoRouter = lazy(() => import("./pages/DemoRouter"));
-const MarketingLanding = lazy(() => import("./pages/MarketingLanding"));
-const OneClickDemo = lazy(() => import("./pages/OneClickDemo"));
 const ComprehensiveAIIntelligence = lazy(() => import("./pages/ComprehensiveAIIntelligence"));
 const LiveActivationCenter = lazy(() => import("./pages/LiveActivationCenter"));
 const EnterpriseMetrics = lazy(() => import("./pages/EnterpriseMetrics"));
@@ -472,8 +470,8 @@ function Router() {
 
         {/* Additional Pages */}
         <Route path="/demo-router" component={DemoRouter} />
-        <Route path="/marketing-landing" component={MarketingLanding} />
-        <Route path="/one-click-demo" component={OneClickDemo} />
+        <Route path="/marketing-landing">{() => { window.location.replace('/'); return null; }}</Route>
+        <Route path="/one-click-demo">{() => { window.location.replace('/try-demo'); return null; }}</Route>
         <Route path="/ai-intelligence-suite" component={ComprehensiveAIIntelligence} />
         <Route path="/live-activation-center" component={LiveActivationCenter} />
         <Route path="/enterprise-metrics" component={EnterpriseMetrics} />

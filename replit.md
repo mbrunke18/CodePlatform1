@@ -30,7 +30,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter routing, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
 - **Backend:** Node.js, Express.js, TypeScript.
-- **Database:** PostgreSQL (Neon serverless) via Drizzle ORM.
+- **Database:** PostgreSQL (Neon serverless) via Drizzle ORM. Dev mode prefers `DATABASE_URL_DEV`; falls back to `DATABASE_URL` with a console warning so engineers don't accidentally touch production.
 - **Real-time:** Socket.IO WebSocket server for real-time collaboration.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
 - **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles, with 16 signal categories and 216+ data points.
@@ -39,6 +39,8 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **AI Services:** OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
 - **Email:** Resend from `noreply@vaughnmartin.com`.
 - **IDEA Framework:** Core framework supporting playbook customization, AI pattern matching, coordinated orchestration, and outcome analysis.
+- **Error Monitoring:** Sentry — server uses `SENTRY_DSN`, frontend uses `VITE_SENTRY_DSN`. Both optional; graceful no-op when absent.
+- **Route Architecture:** `server/routes.ts` is the main router (~6,800 lines). Domain logic is extracted into `server/routes/` modules: `helpers.ts` (auth middleware), `activation-routes.ts`, `org-setup-routes.ts`, `dynamic-strategy-routes.ts`, `onboarding-routes.ts`, `execution-sync-routes.ts`, `decision-coordination-routes.ts`, `intelligence-routes.ts`, `pilot-routes.ts`, `incident-routes.ts`, `playbookLibraryRoutes.ts`, `practiceDrillRoutes.ts`, `webhookRoutes.ts`, `oauth-routes.ts`, `integrations.ts`.
 
 **Feature Specifications:**
 - **Founder Story / Manifesto (`/founder-story`):** `FounderStory.tsx` is a manifesto-first page. The full "We Make Enterprises Fearless" manifesto by Marty Brunke (March 2026) is the dominant centerpiece — 7 Roman-numeral sections with pull quotes, styled body text, and an inline IDEA Framework navy card. The bio strip (MB monogram + Fortune 500 company badges) and two video cards (90-second intro, 3:30 full story) appear in a separate off-white section below. Closing CTA: "Request Pilot Access" → `/pilot-program`. Do not revert to a video-first or bio-first layout.

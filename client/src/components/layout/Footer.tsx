@@ -26,6 +26,7 @@ export default function Footer() {
       links: [
         { label: "Signal Intelligence Hub", path: "/signal-intelligence" },
         { label: "AI Trigger Monitoring", path: "/triggers-management" },
+        { label: "AI Intelligence Suite", path: "/ai-intelligence-suite" },
         { label: "AI Radar Dashboard", path: "/ai-radar" },
         { label: "Foresight Radar", path: "/foresight-radar" },
         { label: "Weak Signal Detection", path: "/pulse-intelligence" },
@@ -36,6 +37,7 @@ export default function Footer() {
       links: [
         { label: "Command Center", path: "/command-center" },
         { label: "Crisis Response", path: "/crisis" },
+        { label: "Live Activation Center", path: "/live-activation-center" },
         { label: "Situation Room", path: "/war-room" },
         { label: "Practice Drills", path: "/drill-tracking" },
         { label: "Team Collaboration", path: "/collaboration" },
@@ -47,6 +49,7 @@ export default function Footer() {
         { label: "Institutional Memory", path: "/institutional-memory" },
         { label: "Decision Velocity", path: "/decision-velocity" },
         { label: "Executive Analytics", path: "/analytics" },
+        { label: "Enterprise Metrics", path: "/enterprise-metrics" },
         { label: "AI Intelligence Hub", path: "/ai" },
         { label: "Executive Dashboard", path: "/executive-dashboard" },
       ]
@@ -55,6 +58,8 @@ export default function Footer() {
       title: "Experience",
       links: [
         { label: "Try Demo", path: "/try-demo" },
+        { label: "Demo Hub", path: "/demo-router" },
+        { label: "Unified Platform", path: "/unified-platform" },
         { label: "ROI Calculator", path: "/roi-calculator" },
         { label: "Readiness Assessment", path: "/readiness-assessment" },
       ]

@@ -1,3 +1,15 @@
+import * as Sentry from "@sentry/node";
+
+// Initialize Sentry before any other imports — no-op when SENTRY_DSN is not set
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV || "development",
+    tracesSampleRate: 0.1,
+    integrations: [Sentry.httpIntegration(), Sentry.expressIntegration()],
+  });
+}
+
 import express, { type Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import path from "path";
@@ -327,6 +339,11 @@ server.listen(
   }
 
   logger.info("✅ Routes registered - health checks already passing from startup");
+
+  // Sentry error handler — must be registered before other error middleware
+  if (process.env.SENTRY_DSN) {
+    Sentry.setupExpressErrorHandler(app);
+  }
 
   // Enhanced error handling with structured logging and security
   app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
