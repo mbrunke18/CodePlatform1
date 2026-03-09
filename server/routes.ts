@@ -1898,6 +1898,43 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+  // TWO-PHASE LOADING: Lightweight metadata-only endpoint for list views
+  // Full playbook data (enrichedPhases, signalSources, executionSteps, etc.) only loads via /api/playbooks/:id
+  app.get('/api/playbooks/metadata', async (req: any, res) => {
+    try {
+      const { organizationId, domain, search, limit = '50' } = req.query;
+      const { playbooks } = await import('@shared/schema');
+
+      const conditions: any[] = [];
+      if (organizationId) conditions.push(eq(playbooks.organizationId, organizationId));
+      if (domain) conditions.push(eq(playbooks.domain, domain));
+      if (search) conditions.push(like(playbooks.name, `%${search}%`));
+
+      let query = db.select({
+        id: playbooks.id,
+        name: playbooks.name,
+        domain: playbooks.domain,
+        category: playbooks.category,
+        description: playbooks.description,
+        priority: playbooks.priority,
+        timesUsed: playbooks.timesUsed,
+        sourceType: playbooks.sourceType,
+        approvalStatus: playbooks.approvalStatus,
+        status: playbooks.status,
+        createdAt: playbooks.createdAt,
+      }).from(playbooks);
+
+      if (conditions.length > 0) query = query.where(and(...conditions)) as any;
+
+      const limitNum = Math.min(200, Math.max(1, parseInt(limit as string)));
+      const results = await query.orderBy(desc(playbooks.timesUsed)).limit(limitNum);
+      res.json(results);
+    } catch (error) {
+      console.error("Error fetching playbook metadata:", error);
+      res.status(500).json({ error: 'Failed to fetch playbook metadata' });
+    }
+  });
+
   // GET playbook templates - returns playbookLibrary items marked for use as templates
   app.get('/api/playbooks/templates', async (req: any, res) => {
     try {
@@ -8451,6 +8488,134 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     } catch (error) {
       console.error('Failed to escalate stuck task:', error);
       res.status(500).json({ error: 'Failed to escalate task' });
+    }
+  });
+
+  // ROLE-SCOPED ACTION SURFACE: Tasks from a run filtered to the requesting user's role
+  app.get('/api/execution-runs/:runId/my-tasks', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { runId } = req.params;
+      const userRole: string = (req.user as any)?.role || (req.user as any)?.claims?.role || '';
+
+      const allTasks = await db.select({
+        id: executionInstanceTasks.id,
+        executionInstanceId: executionInstanceTasks.executionInstanceId,
+        status: executionInstanceTasks.status,
+        blockedReason: executionInstanceTasks.blockedReason,
+        notes: executionInstanceTasks.notes,
+        outcome: executionInstanceTasks.outcome,
+        startedAt: executionInstanceTasks.startedAt,
+        completedAt: executionInstanceTasks.completedAt,
+        updatedAt: executionInstanceTasks.updatedAt,
+        taskTitle: executionPlanTasks.title,
+        taskDescription: executionPlanTasks.description,
+        taskRole: executionPlanTasks.ownerRole,
+        taskPriority: executionPlanTasks.priority,
+        taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
+        isParallel: executionPlanTasks.isParallel,
+        phaseId: executionPlanTasks.phaseId,
+      })
+      .from(executionInstanceTasks)
+      .leftJoin(executionPlanTasks, eq(executionInstanceTasks.planTaskId, executionPlanTasks.id))
+      .where(eq(executionInstanceTasks.executionInstanceId, runId));
+
+      // Schema-gate: return only tasks whose ownerRole matches the user's role
+      // If user has no role (admin/executive), return all tasks
+      const isScopedRole = userRole && !['admin', 'executive'].includes(userRole.toLowerCase());
+      const scopedTasks = isScopedRole
+        ? allTasks.filter(t => t.taskRole && t.taskRole.toLowerCase().includes(userRole.toLowerCase()))
+        : allTasks;
+
+      // Annotate with ownership context
+      const annotated = scopedTasks.map(t => ({
+        ...t,
+        isMyTask: !isScopedRole || (t.taskRole?.toLowerCase().includes(userRole.toLowerCase()) ?? false),
+        isScopedView: isScopedRole,
+        userRole,
+      }));
+
+      res.json(annotated);
+    } catch (error) {
+      console.error('Failed to fetch role-scoped tasks:', error);
+      res.status(500).json({ error: 'Failed to fetch tasks for role' });
+    }
+  });
+
+  // JIT CONTEXT: Playbook objective + current phase context for re-injection at execution checkpoints
+  app.get('/api/execution-runs/:runId/context', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { runId } = req.params;
+
+      const [instance] = await db.select().from(executionInstances).where(eq(executionInstances.id, runId));
+      if (!instance) return res.status(404).json({ error: 'Execution not found' });
+
+      // Get all tasks to derive current phase and completion state
+      const allTasks = await db.select({
+        id: executionInstanceTasks.id,
+        status: executionInstanceTasks.status,
+        taskTitle: executionPlanTasks.title,
+        taskRole: executionPlanTasks.ownerRole,
+        taskPriority: executionPlanTasks.priority,
+        taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
+        phaseId: executionPlanTasks.phaseId,
+      })
+      .from(executionInstanceTasks)
+      .leftJoin(executionPlanTasks, eq(executionInstanceTasks.planTaskId, executionPlanTasks.id))
+      .where(eq(executionInstanceTasks.executionInstanceId, runId));
+
+      const total = allTasks.length;
+      const completed = allTasks.filter(t => t.status === 'completed' || t.status === 'skipped').length;
+      const inProgress = allTasks.filter(t => t.status === 'in_progress').length;
+      const blocked = allTasks.filter(t => t.status === 'blocked').length;
+      const completionPct = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+      // Derive current phase label from completion
+      const phaseLabel = completionPct < 30 ? 'IMMEDIATE — Activate & Align'
+        : completionPct < 65 ? 'SECONDARY — Execute & Coordinate'
+        : completionPct < 90 ? 'FOLLOW-UP — Verify & Close'
+        : 'COMPLETION — Outcome & Capture';
+
+      const phaseGuidance = completionPct < 30
+        ? 'Focus: get all key roles notified and initial tasks started. Speed is the priority — do not wait for perfect information.'
+        : completionPct < 65
+        ? 'Focus: coordinate parallel workstreams, remove blockers, keep stakeholders aligned. Watch for tasks that stop moving.'
+        : completionPct < 90
+        ? 'Focus: close open tasks, verify deliverables, confirm outcomes with task owners before marking complete.'
+        : 'Focus: capture lessons, confirm target met status, seed institutional memory for future activations.';
+
+      // Get plan details for strategic objective
+      const [plan] = await db.select().from(scenarioExecutionPlans)
+        .where(eq(scenarioExecutionPlans.id, instance.executionPlanId));
+
+      const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
+      const elapsedMinutes = Math.floor((Date.now() - startedMs) / 60000);
+      const targetMinutes = plan?.targetCompletionTime || 720;
+      const minutesRemaining = Math.max(0, targetMinutes - elapsedMinutes);
+
+      res.json({
+        instanceId: instance.id,
+        status: instance.status,
+        objective: plan?.name || 'Strategic Execution',
+        description: plan?.description,
+        currentPhase: instance.currentPhase,
+        phaseLabel,
+        phaseGuidance,
+        completionPct,
+        total,
+        completed,
+        inProgress,
+        blocked,
+        elapsedMinutes,
+        minutesRemaining,
+        targetMinutes,
+        startedAt: instance.startedAt,
+        criticalConstraint: blocked > 0
+          ? `${blocked} task${blocked > 1 ? 's' : ''} currently blocked — resolve before proceeding`
+          : null,
+      });
+    } catch (error) {
+      console.error('Failed to fetch execution context:', error);
+      res.status(500).json({ error: 'Failed to fetch execution context' });
     }
   });
 

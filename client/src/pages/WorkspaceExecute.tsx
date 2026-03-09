@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
 import PageLayout from '@/components/layout/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -20,7 +22,15 @@ import {
   TrendingUp,
   Zap,
   CheckCircle,
-  Calendar
+  Calendar,
+  BookOpen,
+  Target,
+  AlertOctagon,
+  User,
+  Clock,
+  Loader2,
+  RefreshCw,
+  MapPin
 } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 
@@ -89,7 +99,288 @@ const executionMetrics = [
   { label: "Avg Response Time", value: "12m", icon: Timer, color: "text-[#C9A84C]" }
 ];
 
+type ExecutionRun = {
+  id: string;
+  status: string;
+  startedAt: string | null;
+  completedAt: string | null;
+  outcome: string | null;
+};
+
+type ExecutionContext = {
+  instanceId: string;
+  status: string;
+  objective: string;
+  description: string | null;
+  currentPhase: string | null;
+  phaseLabel: string;
+  phaseGuidance: string;
+  completionPct: number;
+  total: number;
+  completed: number;
+  inProgress: number;
+  blocked: number;
+  elapsedMinutes: number;
+  minutesRemaining: number;
+  targetMinutes: number;
+  startedAt: string | null;
+  criticalConstraint: string | null;
+};
+
+type MyTask = {
+  id: string;
+  status: string;
+  taskTitle: string | null;
+  taskDescription: string | null;
+  taskRole: string | null;
+  taskPriority: string | null;
+  taskEstimatedMinutes: number | null;
+  isMyTask: boolean;
+  isScopedView: boolean;
+  userRole: string;
+  blockedReason: string | null;
+  updatedAt: string;
+};
+
+const STATUS_COLORS: Record<string, string> = {
+  completed: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20',
+  in_progress: 'bg-blue-50 text-blue-700 border-blue-200',
+  pending: 'bg-gray-100 text-gray-600 border-gray-200',
+  blocked: 'bg-red-50 text-red-700 border-red-200',
+};
+
+const PRIORITY_BORDER: Record<string, string> = {
+  critical: 'border-l-red-500',
+  high: 'border-l-orange-400',
+  medium: 'border-l-[#C9A84C]',
+  low: 'border-l-gray-300',
+};
+
+function JITContextBanner({ runId }: { runId: string }) {
+  const { data: ctx, isLoading, refetch } = useQuery<ExecutionContext>({
+    queryKey: ['/api/execution-runs', runId, 'context'],
+    queryFn: () => fetch(`/api/execution-runs/${runId}/context`, { credentials: 'include' }).then(r => r.json()),
+    refetchInterval: 30000,
+    enabled: !!runId,
+  });
+
+  if (isLoading) {
+    return (
+      <div className="mb-6 p-4 rounded-xl bg-[#C9A84C]/5 border border-[#C9A84C]/20 flex items-center gap-3 text-[#6B7280]">
+        <Loader2 className="h-4 w-4 animate-spin text-[#C9A84C]" />
+        <span className="text-sm">Loading execution context...</span>
+      </div>
+    );
+  }
+
+  if (!ctx) return null;
+
+  const isUrgent = ctx.blocked > 0 || ctx.minutesRemaining < 60;
+
+  return (
+    <Card className={`mb-6 overflow-hidden border-2 ${isUrgent ? 'border-[#C9A84C]' : 'border-[#C9A84C]/30'}`}>
+      <div className="bg-[#0A0F2E] px-5 py-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-[#C9A84C]/20">
+              <MapPin className="h-5 w-5 text-[#C9A84C]" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-white font-semibold text-sm" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {ctx.objective}
+                </span>
+                <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold text-xs uppercase tracking-wider">
+                  EXECUTE
+                </Badge>
+              </div>
+              <p className="text-[#C9A84C] text-xs font-semibold uppercase tracking-wider mt-0.5">{ctx.phaseLabel}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <div className="text-right">
+              <p className="text-white text-lg font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{ctx.completionPct}%</p>
+              <p className="text-white/50 text-xs">{ctx.completed}/{ctx.total} tasks</p>
+            </div>
+            <button onClick={() => refetch()} className="text-white/40 hover:text-white/80 transition-colors">
+              <RefreshCw className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-3">
+          <Progress value={ctx.completionPct} className="h-1.5 bg-white/10 [&>div]:bg-[#C9A84C]" />
+        </div>
+      </div>
+
+      <CardContent className="p-4 bg-white dark:bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Phase guidance — JIT re-injection */}
+          <div className="flex gap-3">
+            <div className="p-2 rounded-lg bg-[#C9A84C]/10 h-fit">
+              <BookOpen className="h-4 w-4 text-[#C9A84C]" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-[#0A0F2E] dark:text-white uppercase tracking-wider mb-1">Phase Guidance</p>
+              <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/70 leading-relaxed">{ctx.phaseGuidance}</p>
+            </div>
+          </div>
+
+          {/* Status snapshot */}
+          <div className="space-y-2">
+            <p className="text-xs font-bold text-[#0A0F2E] dark:text-white uppercase tracking-wider mb-2">Live Status</p>
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-sm text-[#6B7280]">
+                <Activity className="h-3.5 w-3.5 text-blue-500" /> In Progress
+              </span>
+              <span className="font-bold text-[#0A0F2E] dark:text-white text-sm">{ctx.inProgress}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-sm text-[#6B7280]">
+                <Clock className="h-3.5 w-3.5 text-[#C9A84C]" /> Time Elapsed
+              </span>
+              <span className="font-bold text-[#0A0F2E] dark:text-white text-sm">{ctx.elapsedMinutes}m</span>
+            </div>
+            {ctx.blocked > 0 && (
+              <div className="flex items-center gap-2 mt-2 p-2 rounded-lg bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20">
+                <AlertOctagon className="h-3.5 w-3.5 text-red-500 flex-shrink-0" />
+                <span className="text-xs text-red-700 dark:text-red-400 font-medium">{ctx.criticalConstraint}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function MyActionsPanel({ runId }: { runId: string }) {
+  const { data: myTasks = [], isLoading } = useQuery<MyTask[]>({
+    queryKey: ['/api/execution-runs', runId, 'my-tasks'],
+    queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.json()),
+    refetchInterval: 30000,
+  });
+
+  const pending = myTasks.filter(t => t.status === 'pending' || t.status === 'in_progress');
+  const done = myTasks.filter(t => t.status === 'completed' || t.status === 'skipped');
+  const blocked = myTasks.filter(t => t.status === 'blocked');
+  const isScopedView = myTasks[0]?.isScopedView;
+  const userRole = myTasks[0]?.userRole;
+
+  return (
+    <Card className="mb-8 border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 overflow-hidden">
+      <CardHeader className="pb-4 border-b border-[#E8E4DC] dark:border-[#C9A84C]/10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+              <User className="h-5 w-5 text-[#C9A84C]" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <CardTitle className="text-base text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  My Actions
+                </CardTitle>
+                {isScopedView && userRole && (
+                  <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 dark:bg-white/10 dark:text-white text-xs font-bold uppercase tracking-wider">
+                    {userRole}
+                  </Badge>
+                )}
+                {!isScopedView && (
+                  <Badge variant="outline" className="text-xs text-[#6B7280]">All roles visible</Badge>
+                )}
+              </div>
+              <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">
+                {isScopedView
+                  ? `Schema-gated to your role — other roles' actions are not shown`
+                  : 'Full action surface — admin or executive view'}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            {blocked.length > 0 && (
+              <Badge className="bg-red-100 text-red-700 border-red-200 font-bold">{blocked.length} blocked</Badge>
+            )}
+            <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 font-bold">{done.length}/{myTasks.length} done</Badge>
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent className="p-0">
+        {isLoading ? (
+          <div className="flex items-center justify-center py-10 gap-2 text-[#6B7280]">
+            <Loader2 className="h-4 w-4 animate-spin" />
+            <span className="text-sm">Loading your actions...</span>
+          </div>
+        ) : myTasks.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-10 gap-3">
+            <CheckCircle className="h-8 w-8 text-[#2B8A6E]" />
+            <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">No tasks assigned to your role</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">Tasks will appear here when this execution assigns your role</p>
+          </div>
+        ) : (
+          <div className="divide-y divide-[#E8E4DC] dark:divide-white/10">
+            {[...blocked, ...pending, ...done].map(task => (
+              <div key={task.id} className={`px-5 py-4 flex items-start gap-4 border-l-4 ${PRIORITY_BORDER[task.taskPriority || 'medium'] || 'border-l-[#C9A84C]'} ${task.status === 'completed' ? 'opacity-60' : ''}`}>
+                <div className="flex-shrink-0 mt-0.5">
+                  {task.status === 'completed' ? (
+                    <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
+                  ) : task.status === 'blocked' ? (
+                    <AlertOctagon className="h-4 w-4 text-red-500" />
+                  ) : task.status === 'in_progress' ? (
+                    <Activity className="h-4 w-4 text-blue-500" />
+                  ) : (
+                    <Clock className="h-4 w-4 text-[#6B7280]" />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <span className={`font-semibold text-sm ${task.status === 'completed' ? 'line-through text-[#6B7280]' : 'text-[#0A0F2E] dark:text-white'}`}>
+                      {task.taskTitle || 'Unnamed Task'}
+                    </span>
+                    <Badge className={`text-xs border ${STATUS_COLORS[task.status] || STATUS_COLORS.pending}`}>
+                      {task.status.replace('_', ' ')}
+                    </Badge>
+                  </div>
+                  {task.taskDescription && (
+                    <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60 mb-1 leading-relaxed">{task.taskDescription}</p>
+                  )}
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-[#6B7280] dark:text-[#C9A84C]/60">
+                    {task.taskRole && (
+                      <span className="flex items-center gap-1">
+                        <User className="h-3 w-3" /> {task.taskRole}
+                      </span>
+                    )}
+                    {task.taskEstimatedMinutes && (
+                      <span className="flex items-center gap-1">
+                        <Timer className="h-3 w-3" /> Est. {task.taskEstimatedMinutes}m
+                      </span>
+                    )}
+                    {task.blockedReason && (
+                      <span className="text-red-500 flex items-center gap-1">
+                        <AlertTriangle className="h-3 w-3" /> {task.blockedReason}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function WorkspaceExecute() {
+  // Fetch active execution runs to power the JIT context and My Actions panels
+  const { data: runsRaw } = useQuery<ExecutionRun[]>({
+    queryKey: ['/api/execution-runs'],
+    queryFn: () => fetch('/api/execution-runs', { credentials: 'include' }).then(r => r.json()),
+  });
+
+  const runs = Array.isArray(runsRaw) ? runsRaw : [];
+  const activeRun = runs.find(r => r.status === 'running' || r.status === 'pending') || null;
+
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
@@ -144,34 +435,32 @@ export default function WorkspaceExecute() {
                 <h3 className="font-semibold text-[#0A0F2E] dark:text-white">IDEA Framework Progress</h3>
                 <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Phase 3 of 4</span>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="flex-1 flex items-center gap-2">
-                  <Link href="/workspaces/identify">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
-                      <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
-                      <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
-                    </div>
-                  </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
-                  <Link href="/workspaces/detect">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10, 15, 46, 0.2)" }}>
-                      <Radar className="h-4 w-4 text-[#0A0F2E]" />
-                      <span className="text-sm text-[#0A0F2E]">DETECT</span>
-                    </div>
-                  </Link>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
-                    <Compass className="h-4 w-4 text-[#C9A84C]" />
-                    <span className="text-sm font-bold text-[#C9A84C] uppercase tracking-wider">EXECUTE</span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <Link href="/workspaces/identify">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                    <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
+                    <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                   </div>
-                  <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
-                  <Link href="/workspaces/advance">
-                    <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43, 138, 110, 0.2)" }}>
-                      <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
-                      <span className="text-sm text-[#2B8A6E] font-medium">ADVANCE</span>
-                    </div>
-                  </Link>
+                </Link>
+                <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
+                <Link href="/workspaces/detect">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
+                    <Radar className="h-4 w-4 text-[#0A0F2E]" />
+                    <span className="text-sm text-[#0A0F2E]">DETECT</span>
+                  </div>
+                </Link>
+                <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
+                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
+                  <Compass className="h-4 w-4 text-[#C9A84C]" />
+                  <span className="text-sm font-bold text-[#C9A84C] uppercase tracking-wider">EXECUTE</span>
                 </div>
+                <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
+                <Link href="/workspaces/advance">
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                    <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
+                    <span className="text-sm text-[#2B8A6E] font-medium">ADVANCE</span>
+                  </div>
+                </Link>
               </div>
             </CardContent>
           </Card>
@@ -190,6 +479,12 @@ export default function WorkspaceExecute() {
               </Card>
             ))}
           </div>
+
+          {/* JIT CONTEXT BANNER — re-injects playbook intent at execution checkpoints */}
+          {activeRun && <JITContextBanner runId={activeRun.id} />}
+
+          {/* ROLE-SCOPED MY ACTIONS — schema-gated to user's role */}
+          {activeRun && <MyActionsPanel runId={activeRun.id} />}
 
           {/* 12-Minute Promise Banner */}
           <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-[#C9A84C]/10">

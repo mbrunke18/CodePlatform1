@@ -39412,6 +39412,36 @@ async function registerRoutes(app2, existingServer) {
       });
     }
   });
+  app2.get("/api/playbooks/metadata", async (req, res) => {
+    try {
+      const { organizationId, domain, search, limit = "50" } = req.query;
+      const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const conditions = [];
+      if (organizationId) conditions.push(eq34(playbooks2.organizationId, organizationId));
+      if (domain) conditions.push(eq34(playbooks2.domain, domain));
+      if (search) conditions.push(like(playbooks2.name, `%${search}%`));
+      let query = db.select({
+        id: playbooks2.id,
+        name: playbooks2.name,
+        domain: playbooks2.domain,
+        category: playbooks2.category,
+        description: playbooks2.description,
+        priority: playbooks2.priority,
+        timesUsed: playbooks2.timesUsed,
+        sourceType: playbooks2.sourceType,
+        approvalStatus: playbooks2.approvalStatus,
+        status: playbooks2.status,
+        createdAt: playbooks2.createdAt
+      }).from(playbooks2);
+      if (conditions.length > 0) query = query.where(and23(...conditions));
+      const limitNum = Math.min(200, Math.max(1, parseInt(limit)));
+      const results = await query.orderBy(desc16(playbooks2.timesUsed)).limit(limitNum);
+      res.json(results);
+    } catch (error) {
+      console.error("Error fetching playbook metadata:", error);
+      res.status(500).json({ error: "Failed to fetch playbook metadata" });
+    }
+  });
   app2.get("/api/playbooks/templates", async (req, res) => {
     try {
       const templates = await db.select({
@@ -44384,6 +44414,92 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     } catch (error) {
       console.error("Failed to escalate stuck task:", error);
       res.status(500).json({ error: "Failed to escalate task" });
+    }
+  });
+  app2.get("/api/execution-runs/:runId/my-tasks", requireOrgAccess, async (req, res) => {
+    try {
+      const { runId } = req.params;
+      const userRole = req.user?.role || req.user?.claims?.role || "";
+      const allTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        executionInstanceId: executionInstanceTasks2.executionInstanceId,
+        status: executionInstanceTasks2.status,
+        blockedReason: executionInstanceTasks2.blockedReason,
+        notes: executionInstanceTasks2.notes,
+        outcome: executionInstanceTasks2.outcome,
+        startedAt: executionInstanceTasks2.startedAt,
+        completedAt: executionInstanceTasks2.completedAt,
+        updatedAt: executionInstanceTasks2.updatedAt,
+        taskTitle: executionPlanTasks3.title,
+        taskDescription: executionPlanTasks3.description,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
+        isParallel: executionPlanTasks3.isParallel,
+        phaseId: executionPlanTasks3.phaseId
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
+      const isScopedRole = userRole && !["admin", "executive"].includes(userRole.toLowerCase());
+      const scopedTasks = isScopedRole ? allTasks.filter((t) => t.taskRole && t.taskRole.toLowerCase().includes(userRole.toLowerCase())) : allTasks;
+      const annotated = scopedTasks.map((t) => ({
+        ...t,
+        isMyTask: !isScopedRole || (t.taskRole?.toLowerCase().includes(userRole.toLowerCase()) ?? false),
+        isScopedView: isScopedRole,
+        userRole
+      }));
+      res.json(annotated);
+    } catch (error) {
+      console.error("Failed to fetch role-scoped tasks:", error);
+      res.status(500).json({ error: "Failed to fetch tasks for role" });
+    }
+  });
+  app2.get("/api/execution-runs/:runId/context", requireOrgAccess, async (req, res) => {
+    try {
+      const { runId } = req.params;
+      const [instance] = await db.select().from(executionInstances2).where(eq34(executionInstances2.id, runId));
+      if (!instance) return res.status(404).json({ error: "Execution not found" });
+      const allTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        status: executionInstanceTasks2.status,
+        taskTitle: executionPlanTasks3.title,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
+        phaseId: executionPlanTasks3.phaseId
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
+      const total = allTasks.length;
+      const completed = allTasks.filter((t) => t.status === "completed" || t.status === "skipped").length;
+      const inProgress = allTasks.filter((t) => t.status === "in_progress").length;
+      const blocked = allTasks.filter((t) => t.status === "blocked").length;
+      const completionPct = total > 0 ? Math.round(completed / total * 100) : 0;
+      const phaseLabel = completionPct < 30 ? "IMMEDIATE \u2014 Activate & Align" : completionPct < 65 ? "SECONDARY \u2014 Execute & Coordinate" : completionPct < 90 ? "FOLLOW-UP \u2014 Verify & Close" : "COMPLETION \u2014 Outcome & Capture";
+      const phaseGuidance = completionPct < 30 ? "Focus: get all key roles notified and initial tasks started. Speed is the priority \u2014 do not wait for perfect information." : completionPct < 65 ? "Focus: coordinate parallel workstreams, remove blockers, keep stakeholders aligned. Watch for tasks that stop moving." : completionPct < 90 ? "Focus: close open tasks, verify deliverables, confirm outcomes with task owners before marking complete." : "Focus: capture lessons, confirm target met status, seed institutional memory for future activations.";
+      const [plan] = await db.select().from(scenarioExecutionPlans5).where(eq34(scenarioExecutionPlans5.id, instance.executionPlanId));
+      const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
+      const elapsedMinutes = Math.floor((Date.now() - startedMs) / 6e4);
+      const targetMinutes = plan?.targetCompletionTime || 720;
+      const minutesRemaining = Math.max(0, targetMinutes - elapsedMinutes);
+      res.json({
+        instanceId: instance.id,
+        status: instance.status,
+        objective: plan?.name || "Strategic Execution",
+        description: plan?.description,
+        currentPhase: instance.currentPhase,
+        phaseLabel,
+        phaseGuidance,
+        completionPct,
+        total,
+        completed,
+        inProgress,
+        blocked,
+        elapsedMinutes,
+        minutesRemaining,
+        targetMinutes,
+        startedAt: instance.startedAt,
+        criticalConstraint: blocked > 0 ? `${blocked} task${blocked > 1 ? "s" : ""} currently blocked \u2014 resolve before proceeding` : null
+      });
+    } catch (error) {
+      console.error("Failed to fetch execution context:", error);
+      res.status(500).json({ error: "Failed to fetch execution context" });
     }
   });
   app2.get("/api/execution-coordination/metrics", requireOrgAccess, async (req, res) => {
