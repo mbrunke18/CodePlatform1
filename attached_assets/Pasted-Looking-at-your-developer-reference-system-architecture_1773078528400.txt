@@ -1,0 +1,69 @@
+Looking at your developer reference, system architecture doc, and what I know about the codebase — here's an honest assessment.
+
+---
+
+## What's Built and Working
+
+**The Core Infrastructure is Solid**
+
+The IDEA Framework loop is fully functional end-to-end. Signal monitoring (216+ points, 15-min cycles), trigger detection, playbook activation, task execution, and ADVANCE closure all exist. That's the core thesis, and it works. The 170 playbooks are seeded, stable, and cross-referenced. The 12-minute claim has a technical mechanism behind it, not just marketing copy.
+
+**The Product Surface is Surprisingly Deep**
+
+For a solo founder / small team build, the feature count is unusually high — and importantly, most of it is wired, not fake. The 5 WOW features (ROI Dashboard, Compound Threat Intelligence, Simulation Studio, Strategic Recorder, Pulse Map) are backed by GPT-4o and persisted. The Try Demo is a legitimate 7-phase conversion tool. The Investor Gate captures real leads. The Execution Brief generates real AI output. Settings buttons have real handlers.
+
+**The Demo-to-Pilot Conversion Path Exists**
+
+/try-demo → /pilot-program → Investor Gate → /board-briefings is a real funnel with real data capture at the gate. That's a complete enterprise sales motion in prototype form.
+
+---
+
+## Honest Gaps — Categorized by Risk
+
+**Risk 1: The Database Is a Single Point of Failure**
+
+Shared dev/prod database (Neon, no separation) is the most dangerous thing in the codebase right now. One bad migration in a demo context wipes production data. One accidental `db:push --force` during development ends the pilot. This is the highest-priority technical debt on the board — not because it's likely to break, but because the consequence if it does is catastrophic at exactly the wrong moment.
+
+**Risk 2: No Test Coverage**
+
+Zero integration tests, zero unit tests against routes.ts (8,500 lines). That file is the entire business logic of the product in one place. A refactor, a new feature, or a rushed fix during a live pilot demonstration could silently break the activation flow. You'd find out in the room.
+
+**Risk 3: routes.ts is Approaching Unmanageable**
+
+8,500 lines in a single file is not a code smell — it's a structural risk. As you add pilot-specific features, emergency fixes, or enterprise customizations, the blast radius of any change grows. This file needs decomposition before you have a second pilot customer.
+
+**Risk 4: Seven Orphaned Pages**
+
+/demo-router, /marketing-landing, /one-click-demo, /ai-intelligence-suite, /live-activation-center, /enterprise-metrics, /unified-platform — all routed, none linked. These aren't neutral. They represent either abandoned product decisions or unfinished work. A pilot customer or investor who discovers them via URL will see incomplete or inconsistent experiences. They need to either be wired into navigation with intentional placement, or removed from routing entirely.
+
+**Risk 5: No Error Monitoring**
+
+No Sentry, no structured logging, no alerting. You're flying blind in production. If the signal monitoring loop silently fails, if GPT-4o calls start erroring, if the activation flow breaks mid-pilot — you won't know until someone tells you.
+
+**Risk 6: Manual Deployment Process**
+
+The pre-built dist/ committed to git strategy works, but it requires developer discipline on every single deploy. Forget to run both builds before commit and production serves stale code. No CI/CD means no guardrail against this. For a solo operation this is manageable — for a platform with live pilot customers it is a risk.
+
+---
+
+## Product Positioning Assessment
+
+**What's strong:** The manifesto-first FounderStory page, the IDEA Framework as a navigational metaphor, the 72-hours-to-12-minutes contrast, the cross-industry positioning, and the "human-AI partnership" framing are all differentiated. These aren't generic SaaS claims.
+
+**What's missing:** The platform has no persistent evidence that the 12-minute claim has been validated by a real execution. The ROI Dashboard calculates value from activations — but if the only activation data is from the demo org (martybrunke), the board report and ROI numbers are essentially self-referential. A single documented pilot case, even internal, would change the entire credibility profile of the product.
+
+**The gap the paper identified applies here:** Your ADVANCE phase is architecturally present but passive. It records outcomes, generates summaries, updates maturity scores. It does not yet re-inject learning back into the activation flow in real time. The doom-loop detection, the just-in-time coordination reminders, the two-phase playbook loading — those were identified as enhancements, not existing features. ADVANCE as currently built is a reporting layer, not an active execution layer.
+
+---
+
+## Priority Stack if You're Heading into a Second Pilot
+
+1. **Separate dev/prod databases** — one afternoon, eliminates catastrophic risk
+2. **Decompose routes.ts** into domain-based route files (scenarios, triggers, activations, signals, ai, admin)
+3. **Wire or remove the 7 orphaned pages** — no ambiguous experiences in a pilot context
+4. **Add Sentry** — know before your pilot customer does
+5. **Document one real activation** as a case example, even if it's internal — the ROI Dashboard needs a real anchor
+
+---
+
+**Bottom line:** The product is further along than most platforms at this stage of go-to-market. The infrastructure is real, the demo path is real, and the positioning is differentiated. The risks are not product risks — they are operational risks that compound exactly when you have live customers and can least afford them.
