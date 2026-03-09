@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 3) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 4) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -77,7 +77,7 @@ All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
 ├── client/src/
 │   ├── App.tsx                  ← All client-side routes (lazy-loaded)
 │   ├── main.tsx                 ← React entry point
-│   ├── pages/                   ← 146 page components
+│   ├── pages/                   ← 151 page components
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── PageLayout.tsx   ← Wraps every page (StandardNav + Footer)
@@ -333,7 +333,13 @@ GET    /api/dynamic-strategy/readiness     ← Future Readiness Index (requires 
 GET    /api/dynamic-strategy/weak-signals  ← Active weak signals (requires auth+org)
 GET    /api/dynamic-strategy/oracle-patterns ← AI patterns (requires auth+org)
 GET    /api/playbook-library               ← 170 playbook taxonomy
+GET    /api/playbook-library/:id           ← Single playbook detail (returns { playbook: {...} })
+GET    /api/playbook-library/by-number/:n  ← Playbook by stable number (cross-env safe)
+GET    /api/playbook-library/domains       ← 9 domain list
+GET    /api/playbooks/:id/execution-brief  ← AI commander brief (auth required; fallback if OpenAI down)
 GET    /api/practice-drills                ← Fire drill simulation
+POST   /api/investor-access               ← Investor gate lead capture (public, no auth required)
+GET    /api/investor-leads                ← Admin: view all investor gate leads (auth required)
 ```
 
 ---
@@ -677,43 +683,51 @@ npm run dev        # Starts Vite + Express on port 5000
 npm run db:push    # Push schema changes to DB (never write raw SQL)
 ```
 
-### Production Build
+### Production Build — Pre-built Strategy
 ```bash
-npm run build      # Builds to dist/ (~22 seconds)
-npm run start      # Serves pre-built dist/index.js
+# Run BOTH of these locally before publishing, then commit dist/:
+npx vite build                                         # Rebuilds dist/public/ (~27 seconds)
+npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config
+                                                       # Rebuilds dist/index.js (~1 second)
+
+npm run start      # Production: NODE_ENV=production node dist/index.js
 ```
 
-**The `dist/public/` folder (frontend) is committed to the repo.** Always run `npm run build` locally before publishing so `dist/public/` is current.
+**Both `dist/public/` (frontend assets) and `dist/index.js` (server bundle) are committed to the repo.** The deployment build command is a complete no-op — the deployment platform runs nothing and serves the pre-committed bundles.
 
 ### Deployment Platform
 - Replit Autoscale
 - Custom domain: `vaughnmartin.com`
-- Build command: `esbuild server/index.ts` only (~1 second) — vite frontend build is skipped because `dist/public/` is pre-committed
-- Start command: `npm run start` → `node dist/index.js`
+- Build command: **no-op** (`sh -c ":"`) — completes in milliseconds; all bundles are pre-committed
+- Run command: `npm run start` → `NODE_ENV=production node dist/index.js`
 - First customer org: `martybrunke` — org ID `aa9d3bf3-ab20-4fb6-a1da-e91aabbfb576`
 
 ### Server Startup Order — CRITICAL
 The HTTP server is created with `createServer(app)` and starts `server.listen()` **IMMEDIATELY** at the top of `server/index.ts` (before the async IIFE). This ensures health check endpoints respond within milliseconds of startup. `registerRoutes(app, server)` accepts the pre-created server to attach Socket.IO WebSocket. Background seeding runs non-blocking after routes register. **DO NOT move `server.listen()` back inside `registerRoutes` or the async IIFE** — this causes provision health checks to time out.
 
+In production, `express.static('dist/public')` and `app.get('/', sendFile(index.html))` are also registered **before** `server.listen()` (lines 293–301 of `server/index.ts`) so the healthcheck `GET /` returns 200 from the very first millisecond.
+
 ### Deployment Build Strategy — IMPORTANT
-The full `npm run build` (vite + esbuild ~25 seconds) was timing out on Replit's deployment infrastructure. The fix: the deployment build step runs **only the fast server esbuild** (~1 second), while the frontend `dist/public/` is pre-committed to git.
+The full `npm run build` (vite + esbuild, ~25-30 seconds) was timing out on Replit's deployment infrastructure. The fix: **both** dist bundles are pre-built locally and committed to git. The deployment build step is a shell no-op:
 
 Current `.replit` deployment config:
 ```toml
 [deployment]
 deploymentTarget = "autoscale"
-build = ["sh", "-c", "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+build = ["sh", "-c", ":"]
 run = ["npm", "run", "start"]
 ```
 
-**Do NOT change `build` back to bundling all node_modules** (omitting `--packages=external`). That causes deployment timeouts. If you ever need to reset via the deployment config tool:
+**Do NOT change `build` to any real build command.** It will time out in the Replit deployment environment. If the config ever gets reset, restore it with:
 ```javascript
 await deployConfig({
   deploymentTarget: "autoscale",
   run: ["npm", "run", "start"],
-  build: ["sh", "-c", "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config"]
+  build: ["sh", "-c", ":"]
 });
 ```
+
+**Rule 14 amendment:** Before publishing, always run BOTH local builds and commit the updated `dist/` folder. The no-op build means the deployment platform uses exactly what is in git.
 
 ---
 
@@ -732,7 +746,7 @@ await deployConfig({
 11. **NEVER use `data: x = []` array destructuring with `useQuery`.** The default `getQueryFn` returns `null` (not `undefined`) for 401 unauthenticated responses. The `= []` default only catches `undefined`, so it silently fails with `null` and causes "null is not iterable" crashes. Always use: `const { data: raw } = useQuery(...); const x = Array.isArray(raw) ? raw : [];`
 12. **All mutations that call protected POST endpoints must handle 401 in `onError`.** Check `error?.message?.startsWith('401')` and redirect to `/api/login` with a brief toast warning. Without this, unauthenticated users see a generic "failed" error with no path to signing in. See Section 7 mutation pattern for the full template.
 13. **Domain is `vaughnmartin.com`.** All user-visible URLs, email senders, and copy must reference `vaughnmartin.com`. The server 301-redirects `executeiq.io` → `vaughnmartin.com`. Do NOT use the old domain in any new code or copy.
-14. **Before deploying: run `npx vite build` locally** to update `dist/public/` (the pre-committed frontend bundle). The deployment build step only runs the fast server esbuild — it does NOT rebuild the frontend. If you skip this step, production will serve stale UI.
+14. **Before deploying: run BOTH local builds and commit `dist/`.** The deployment build step is a no-op (`sh -c ":"`). The deployment platform serves exactly what is in git. Run: (1) `npx vite build` to update `dist/public/`, and (2) `npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. If you skip this, production will serve stale UI and/or stale server code.
 
 ---
 
@@ -849,4 +863,68 @@ Five high-impact features that elevate the platform beyond dashboards into an ir
 
 ### WOW Feature 401 Handling (Critical)
 SimulationStudio, StrategicRecorder, and CompoundThreatAlerts all call protected POST endpoints from their primary action buttons ("Run Simulation", "Analyze Recording", "Analyze Now"). If the user is not authenticated, `apiRequest` throws `Error("401: ...")`. Each of these components has `onError` handlers that detect the 401 prefix and redirect to `/api/login` after a brief toast — rather than showing a generic "failed" message. This pattern must be preserved on any future WOW feature that calls a POST endpoint.
+
+---
+
+## 24. AI-Backed Activation Features (Added March 2026)
+
+Three new features wired into the playbook execution flow, backed by GPT-4o.
+
+### 1. AI Execution Brief — `PlaybookActivationConsole.tsx`
+
+**What it does:** Before a pilot customer confirms activation, a GPT-4o-generated "commander brief" is displayed as a navy card. It reframes the playbook in military-command style with 6 structured fields.
+
+**API endpoint:** `GET /api/playbooks/:id/execution-brief?triggerId=<uuid>`
+- Route must be placed **before** `GET /api/playbooks/:id` in `routes.ts` to avoid the catch-all absorbing it
+- Returns: `{ situationFraming, missionObjective, criticalRoles, topRisks, successIndicators, commanderNote }`
+- Auth-gated: returns 401 if unauthenticated
+- Falls back to a static template if OpenAI is unavailable (never shows an error state)
+
+**Frontend query key:** `['/api/playbooks', playbookId, 'execution-brief', triggerId]`
+
+**Display:** Navy card with shield icon header, rendered above `<PreActivationImpactPreview>`. Loader while fetching. If `briefData` is null (OpenAI unavailable), shows a static fallback with the playbook name.
+
+### 2. Graduated Attention — Completed Task Collapse — `WorkspaceExecute.tsx`
+
+**What it does:** In the MyActionsPanel inside WorkspaceExecute, completed tasks are collapsed into a single teal summary bar ("X tasks completed") with an expand/collapse chevron toggle. Active/pending tasks stay visible. This reduces visual noise for executives managing live executions.
+
+**Component:** `MyActionsPanel` (sub-function inside WorkspaceExecute.tsx)
+- `useState` for `showCompleted` (default: false)
+- Completed tasks count shown in teal bar; clicking toggles visibility
+- Collapsed view: teal `CheckCircle2` icon + "X tasks completed" + `ChevronDown/Up`
+
+### 3. Source Governance Indicator — `PlaybookDetail.tsx`
+
+**What it does:** A color-coded version status badge in the playbook detail sidebar that signals the governance state of the playbook's source data.
+
+**Logic:**
+```ts
+const versionStr = playbook.version || '1.0';
+const major = parseFloat(versionStr.split('.')[0] || '1');
+// major >= 4 → 'recertification' (red)
+// major >= 2 → 'review' (gold)
+// else       → 'current' (teal)
+```
+
+**Colors:** Teal = Current (v1.x) | Gold = Under Review (v2–3.x) | Red = Recertification Required (v4+)
+
+**Location in sidebar:** Renders as a card below the playbook stats, labeled "Source Governance." Uses an IIFE `{(() => { ... })()}` inside JSX for the version computation. Safely defaults to `'1.0'` if `playbook.version` is undefined (which it is for all current playbooks — all show Teal/Current).
+
+---
+
+## 25. Additional Routed Pages (March 2026)
+
+Seven previously orphaned page files wired into routing in `App.tsx`:
+
+| Route | Component | Purpose |
+|---|---|---|
+| `/demo-router` | `DemoRouter.tsx` | Demo orchestration hub linking to scenario-specific demos |
+| `/marketing-landing` | `MarketingLanding.tsx` | Alternative marketing landing page |
+| `/one-click-demo` | `OneClickDemo.tsx` | Single-click demo flow |
+| `/ai-intelligence-suite` | `ComprehensiveAIIntelligence.tsx` | Full AI intelligence capabilities overview |
+| `/live-activation-center` | `LiveActivationCenter.tsx` | Live playbook activation monitoring interface |
+| `/enterprise-metrics` | `EnterpriseMetrics.tsx` | Enterprise-wide KPI metrics dashboard |
+| `/unified-platform` | `UnifiedEnterprisePlatform.tsx` | Unified platform overview |
+
+These pages have no navigation links pointing to them — they are accessible by direct URL only. They were built as exploratory/demo pages.
 
