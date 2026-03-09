@@ -21,7 +21,10 @@ import {
   Building2,
   Cpu,
   PenLine,
-  RefreshCw
+  RefreshCw,
+  Compass,
+  Eye,
+  AlertTriangle
 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -485,6 +488,80 @@ export default function HowItWorks() {
               <CheckItem text="Matched playbooks from your library" />
               <CheckItem text="Coverage gaps identified by domain" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EXECUTION INTELLIGENCE — BUILT IN ── */}
+      <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <SectionLabel text="Built-In Intelligence" color={GOLD} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 64 }}>
+            <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: "#fff", maxWidth: 600 }}>
+              The Platform Works While You Execute
+            </h2>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 580, lineHeight: 1.7, fontWeight: 500 }}>
+              Execution OS includes four layers of intelligence that prevent the coordination failures Fortune 1000 enterprises experience every day — silently running in the background so your team stays on course.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
+            {[
+              {
+                label: "ADVANCE WORKSPACE",
+                icon: AlertTriangle,
+                color: GOLD,
+                title: "Stuck Execution Alerts",
+                body: "The platform monitors every active task. If a task is assigned but hasn't moved past a configurable threshold — 2 hours, 4 hours, 8 hours — it surfaces automatically with severity labels (Watch, Warning, Critical) and a one-click escalation. The enterprise doom-loop — tasks silently re-assigned three times with no progress — gets fingerprinted and broken before it costs you the window.",
+                items: ["Configurable threshold by urgency level", "Watch / Warning / Critical severity tiers", "One-click re-escalation from the ADVANCE workspace"]
+              },
+              {
+                label: "IDENTIFY WORKSPACE",
+                icon: BookOpen,
+                color: TEAL,
+                title: "Smart Playbook Finder",
+                body: "Searching 170 playbooks shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
+                items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 170"]
+              },
+              {
+                label: "EXECUTE WORKSPACE",
+                icon: Eye,
+                color: "#6B7280",
+                title: "Your Actions, Your Role",
+                body: "When a playbook activates, most executives don't need to see every task across the entire execution. The platform schema-gates the action surface to your role — a VP of Finance sees finance tasks, a CISO sees security tasks, an HR lead sees people tasks. Not filtered display — actually gated at the data layer. Each executive works their lane without the noise of the full 40-task execution.",
+                items: ["Role-scoped at the data layer, not the display layer", "Admins and executives retain full visibility", "Reduces decision fatigue during high-stakes execution"]
+              },
+              {
+                label: "EXECUTE WORKSPACE",
+                icon: Compass,
+                color: GOLD,
+                title: "Live Execution Compass",
+                body: "Execution drift is a well-documented failure mode: teams start fast, then forget the original intent as tasks multiply. The platform re-injects playbook context at every checkpoint — your strategic objective, the current phase name and what it means right now, any blocked tasks requiring immediate resolution, and elapsed time vs. target. The mission stays visible throughout execution, not just at the moment of activation.",
+                items: ["Objective and phase guidance shown at every checkpoint", "Blocked task alerts appear inline before drift compounds", "Auto-refreshes every 30 seconds during live execution"]
+              }
+            ].map((card, i) => (
+              <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.12)", padding: "44px 40px" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 20 }}>{card.label}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
+                  <div style={{ width: 40, height: 40, background: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <card.icon style={{ width: 18, height: 18, color: card.color === "#6B7280" ? "rgba(255,255,255,0.7)" : card.color }} />
+                  </div>
+                  <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: "#fff" }}>{card.title}</div>
+                </div>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.8, fontWeight: 400, marginBottom: 24 }}>{card.body}</p>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 20, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {card.items.map((item, j) => (
+                    <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                      <div style={{ width: 14, height: 14, background: "rgba(201,168,76,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                        <div style={{ width: 4, height: 4, background: GOLD }} />
+                      </div>
+                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", fontWeight: 500, lineHeight: 1.5 }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

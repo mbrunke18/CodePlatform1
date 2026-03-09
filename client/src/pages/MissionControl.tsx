@@ -357,6 +357,67 @@ export default function MissionControl() {
                 </CardContent>
               </Card>
 
+              {/* Platform Intelligence Capabilities */}
+              <Card style={{ background: "#fff" }} className="border-[#E8E4DC] rounded-none shadow-sm">
+                <CardContent className="p-6">
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                    <div style={{ width: 20, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Platform Intelligence</span>
+                  </div>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        icon: AlertTriangle,
+                        color: "#C9A84C",
+                        title: "Stuck Execution Alerts",
+                        desc: "Tasks that stop moving are surfaced automatically — before they silently loop.",
+                        path: "/workspaces/advance",
+                        label: "View in ADVANCE"
+                      },
+                      {
+                        icon: Layers,
+                        color: TEAL,
+                        title: "Smart Playbook Finder",
+                        desc: "Browse 170 playbooks instantly. Full detail loads only when you select one.",
+                        path: "/workspaces/identify",
+                        label: "Open in IDENTIFY"
+                      },
+                      {
+                        icon: Eye,
+                        color: NAVY,
+                        title: "Your Actions, Your Role",
+                        desc: "Each executive sees only their assigned actions — not everything across the org.",
+                        path: "/workspaces/execute",
+                        label: "View in EXECUTE"
+                      },
+                      {
+                        icon: Sparkles,
+                        color: GOLD,
+                        title: "Live Execution Compass",
+                        desc: "Playbook intent and phase guidance reappear at every checkpoint so teams don't drift.",
+                        path: "/workspaces/execute",
+                        label: "View in EXECUTE"
+                      }
+                    ].map((item, i) => (
+                      <Link key={i} href={item.path}>
+                        <div className="group flex items-start gap-3 p-3 hover:bg-[#F8F7F4] cursor-pointer transition-colors border border-transparent hover:border-[#E8E4DC]">
+                          <div style={{ width: 32, height: 32, background: item.color === NAVY ? NAVY : `${item.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <item.icon style={{ width: 14, height: 14, color: item.color === NAVY ? "#fff" : item.color }} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-1">
+                              <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{item.title}</span>
+                              <ChevronRight style={{ width: 12, height: 12, color: GOLD, flexShrink: 0 }} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5, fontWeight: 500, marginTop: 2 }}>{item.desc}</p>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
               <div className="pt-4">
                 <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280]">
                   Confidential Operational View • VaughnMartin
