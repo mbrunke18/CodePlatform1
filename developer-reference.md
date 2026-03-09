@@ -216,6 +216,19 @@ playbookPhaseEnum: 'prepare' | 'monitor' | 'execute' | 'learn'
 4. Implement methods in `DrizzleStorage` class
 5. Run `npm run db:push`
 
+### Dev / Production Database Separation
+`server/db.ts` protects production data using a conditional connection strategy:
+```ts
+const connectionString =
+  process.env.NODE_ENV !== 'production' && process.env.DATABASE_URL_DEV
+    ? process.env.DATABASE_URL_DEV
+    : process.env.DATABASE_URL;
+```
+- **Production** (`NODE_ENV=production`): always uses `DATABASE_URL`.
+- **Development**: prefers `DATABASE_URL_DEV` if set; falls back to `DATABASE_URL` with an orange `⚠️ DEV WARNING` banner printed to the console at startup.
+- **Setup:** Create a Neon branch from the production database → copy the branch connection string → add it as `DATABASE_URL_DEV` in Replit Secrets.
+- **Rule:** Never run `npm run db:push` without first confirming which database is active. The startup warning tells you.
+
 ---
 
 ## 7. API Patterns
@@ -761,15 +774,18 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ## 21. Environment Variables
 
-| Variable | Purpose |
-|---|---|
-| `DATABASE_URL` | Neon PostgreSQL connection string |
-| `SESSION_SECRET` | Express session signing secret |
-| `REPL_ID` | Replit OIDC client ID |
-| `ISSUER_URL` | OIDC issuer (default: `https://replit.com/oidc`) |
-| `OPENAI_API_KEY` | GPT-4o access |
-| `RESEND_API_KEY` | Email delivery (falls back to console log if absent) |
-| `GITHUB_TOKEN` | Available if needed for GitHub integration |
+| Variable | Required | Purpose |
+|---|---|---|
+| `DATABASE_URL` | Yes | Neon PostgreSQL production connection string |
+| `DATABASE_URL_DEV` | Dev only | Neon branch connection string for development (optional — falls back to `DATABASE_URL` with a startup warning) |
+| `SESSION_SECRET` | Yes | Express session signing secret |
+| `REPL_ID` | Yes | Replit OIDC client ID |
+| `ISSUER_URL` | Yes | OIDC issuer (default: `https://replit.com/oidc`) |
+| `OPENAI_API_KEY` | Yes | GPT-4o access |
+| `RESEND_API_KEY` | Yes | Email delivery (falls back to console log if absent) |
+| `SENTRY_DSN` | Optional | Sentry project DSN for server-side error monitoring (graceful no-op if absent) |
+| `VITE_SENTRY_DSN` | Optional | Sentry project DSN for frontend error monitoring (must be prefixed `VITE_` to be visible in browser) |
+| `GITHUB_TOKEN` | Optional | Available if needed for GitHub integration |
 
 ---
 
@@ -912,19 +928,98 @@ const major = parseFloat(versionStr.split('.')[0] || '1');
 
 ---
 
-## 25. Additional Routed Pages (March 2026)
+## 25. Orphaned Pages — Decision Log (March 2026)
 
-Seven previously orphaned page files wired into routing in `App.tsx`:
+Seven page files were previously routed in `App.tsx` but had no navigation entry points — accessible only by direct URL. Each was reviewed and given an explicit disposition.
 
-| Route | Component | Purpose |
+### Wired into Navigation (Footer)
+
+| Route | Component | Lines | Decision & Rationale |
+|---|---|---|---|
+| `/ai-intelligence-suite` | `ComprehensiveAIIntelligence.tsx` | 851 | **Wired — Footer "Platform" column.** Full-featured AI intelligence hub with signal analysis, threat synthesis, and pattern detection. Substantive product capability, not a demo artifact. Deserves a permanent home; Footer is appropriate until a dedicated nav dropdown is added. |
+| `/live-activation-center` | `LiveActivationCenter.tsx` | 887 | **Wired — Footer "Platform" column.** Real-time playbook monitoring with Socket.IO live updates. This is core EXECUTE-phase infrastructure. Should eventually be promoted to a primary nav item or linked from the activation console's "Monitor Live" button. |
+| `/enterprise-metrics` | `EnterpriseMetrics.tsx` | 215 | **Wired — Footer "Platform" column.** Enterprise KPI dashboard with an `embedded` prop for use inside other pages. Small, focused, functional. Linked from Footer until it can be embedded into Dashboard or ROI Dashboard. |
+| `/demo-router` | `DemoRouter.tsx` | 226 | **Wired — Footer "Demo" column.** Orchestration hub linking to all scenario-specific industry demos. Logical landing point for prospects exploring demo options. Complements `/try-demo` without duplicating it. |
+| `/unified-platform` | `UnifiedEnterprisePlatform.tsx` | 1955 | **Wired — Footer "Platform" column.** Comprehensive platform overview (1,955 lines). Quality is high; content is relevant. Footer placement is appropriate as a deep-dive for prospects who want the full picture. Review for potential promotion to a primary nav item in a future session. |
+
+### Converted to Redirects (Removed from Routing)
+
+| Old Route | Component | Decision & Rationale |
 |---|---|---|
-| `/demo-router` | `DemoRouter.tsx` | Demo orchestration hub linking to scenario-specific demos |
-| `/marketing-landing` | `MarketingLanding.tsx` | Alternative marketing landing page |
-| `/one-click-demo` | `OneClickDemo.tsx` | Single-click demo flow |
-| `/ai-intelligence-suite` | `ComprehensiveAIIntelligence.tsx` | Full AI intelligence capabilities overview |
-| `/live-activation-center` | `LiveActivationCenter.tsx` | Live playbook activation monitoring interface |
-| `/enterprise-metrics` | `EnterpriseMetrics.tsx` | Enterprise-wide KPI metrics dashboard |
-| `/unified-platform` | `UnifiedEnterprisePlatform.tsx` | Unified platform overview |
+| `/marketing-landing` | `MarketingLanding.tsx` | **Redirects → `/`.** 349-line page that duplicated the Homepage. No unique content. Keeping the route would split SEO and confuse pilot customers. Redirect preserves any inbound links without exposing a duplicate. |
+| `/one-click-demo` | `OneClickDemo.tsx` | **Redirects → `/try-demo`.** 511-line demo flow that duplicated TryDemo. The 7-phase TryDemo (`/try-demo`) is the canonical public demo experience. OneClickDemo had no differentiating content. Redirect preserves any inbound links. |
 
-These pages have no navigation links pointing to them — they are accessible by direct URL only. They were built as exploratory/demo pages.
+### Implementation Notes
+- Both redirects use Wouter's `<Redirect>` component, not `useLocation`. No lazy import remains for either component.
+- All five wired pages remain lazy-loaded in `App.tsx` and appear in the Footer under their relevant columns.
+- `LiveActivationCenter` is a candidate for a future "Monitor Live" deep-link from `PlaybookActivationConsole.tsx` — this would be the natural user journey once a playbook is activated.
+
+---
+
+## 26. Route Architecture — Server-Side Decomposition (March 2026)
+
+`server/routes.ts` was decomposed from a 9,341-line monolith to approximately 6,800 lines by extracting domain-scoped sections into dedicated route module files.
+
+### Route Module Map
+
+| File | Routes Covered | Auth Pattern |
+|---|---|---|
+| `server/routes/helpers.ts` | Shared auth middleware | — |
+| `server/routes/activation-routes.ts` | `/api/activations/*`, `/api/playbooks/:id/execute` | `requireAuth` |
+| `server/routes/org-setup-routes.ts` | `/api/config/triggers`, `/api/config/departments`, `/api/config/escalation-policies`, `/api/config/communication-channels`, `/api/config/success-metrics`, `/api/config/setup-progress` | `requireOrgAccess` |
+| `server/routes/dynamic-strategy-routes.ts` | `/api/dynamic-strategy/*` (readiness, weak-signals, oracle-patterns, activity-feed) | `requireAuth` |
+| `server/routes/onboarding-routes.ts` | `/api/onboarding-session`, `/api/onboarding/save`, `/api/onboarding/complete`, `/api/onboarding/seed-demo-data` | `getUserId` / `isAuthenticated` |
+| `server/routes/execution-sync-routes.ts` | `/api/sync/*`, `/api/pre-approved-resources/*`, `/api/execution-orchestration/*` | `requireOrgAccess` / `requireAuth` |
+| `server/routes/decision-coordination-routes.ts` | `/api/decision-trees/*`, `/api/execution/*`, `/api/strategic-objectives/*` | `requireAuth` / `requireOrgAccess` |
+| `server/routes/intelligence-routes.ts` | Signal intelligence endpoints | `requireAuth` |
+| `server/routes/pilot-routes.ts` | Pilot program endpoints | `requireAuth` |
+| `server/routes/incident-routes.ts` | Incident management endpoints | `requireAuth` |
+| `server/routes/playbookLibraryRoutes.ts` | `/api/playbook-library/*`, `/api/practice-drills/*` | Mixed |
+| `server/routes/practiceDrillRoutes.ts` | Practice drill simulation | `requireAuth` |
+| `server/routes/webhookRoutes.ts` | `/api/webhooks/*` (12 enterprise systems) | HMAC-verified |
+| `server/routes/oauth-routes.ts` | `/api/oauth/*` (Jira, Slack) | Session-based |
+| `server/routes/integrations.ts` | `/api/integrations/*` | `requireAuth` |
+
+### Registration Pattern
+Each module exports a `register[Domain]Routes(app: Express)` function (sync or async). `server/routes.ts` imports and calls each at the correct position in registration order. Async registrars (`registerExecutionSyncRoutes`, `registerDecisionCoordinationRoutes`) are called with `await` since they contain top-level `await import()` calls.
+
+### Auth Helpers (`server/routes/helpers.ts`)
+```ts
+getUserId(req)             // throws 401 if not authenticated
+getOrgIdForUser(userId)    // looks up org from user record
+requireOrgAccess           // middleware: sets req.orgId or 401
+requireRole(...roles)      // middleware: checks req.user role
+requireAuth                // middleware: isAuthenticated + getUserId
+optionalAuth               // middleware: sets req.userId if present, no error if absent
+```
+
+---
+
+## 27. Sentry Error Monitoring (March 2026)
+
+Sentry is wired into both the server and frontend. Both are optional — the app starts and runs normally when the DSN env vars are absent.
+
+### Server (`server/index.ts`)
+```ts
+import * as Sentry from "@sentry/node";
+if (process.env.SENTRY_DSN) {
+  Sentry.init({ dsn: process.env.SENTRY_DSN, tracesSampleRate: 1.0 });
+}
+// After all routes are registered:
+Sentry.setupExpressErrorHandler(app);
+```
+
+### Frontend (`client/src/main.tsx`)
+```ts
+import * as Sentry from "@sentry/react";
+if (import.meta.env.VITE_SENTRY_DSN) {
+  Sentry.init({ dsn: import.meta.env.VITE_SENTRY_DSN, tracesSampleRate: 1.0 });
+}
+```
+
+### Setup (when ready to activate)
+1. Create a Sentry project at sentry.io → get the DSN
+2. Add `SENTRY_DSN` to Replit Secrets (server)
+3. Add `VITE_SENTRY_DSN` to Replit Secrets (frontend — must be prefixed `VITE_` to reach the browser)
+4. Redeploy — Sentry will begin capturing errors automatically
 

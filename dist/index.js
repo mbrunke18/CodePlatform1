@@ -9,11 +9,11 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __copyProps = (to, from, except, desc17) => {
+var __copyProps = (to, from, except, desc20) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc17 = __getOwnPropDesc(from, key)) || desc17.enumerable });
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc20 = __getOwnPropDesc(from, key)) || desc20.enumerable });
   }
   return to;
 };
@@ -22,7 +22,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // shared/models/chat.ts
 import { pgTable, serial, integer, text, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
-import { sql } from "drizzle-orm";
+import { sql as sql2 } from "drizzle-orm";
 var conversations, messages, insertConversationSchema, insertMessageSchema;
 var init_chat = __esm({
   "shared/models/chat.ts"() {
@@ -30,14 +30,14 @@ var init_chat = __esm({
     conversations = pgTable("conversations", {
       id: serial("id").primaryKey(),
       title: text("title").notNull(),
-      createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`).notNull()
+      createdAt: timestamp("created_at").default(sql2`CURRENT_TIMESTAMP`).notNull()
     });
     messages = pgTable("messages", {
       id: serial("id").primaryKey(),
       conversationId: integer("conversation_id").notNull().references(() => conversations.id, { onDelete: "cascade" }),
       role: text("role").notNull(),
       content: text("content").notNull(),
-      createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`).notNull()
+      createdAt: timestamp("created_at").default(sql2`CURRENT_TIMESTAMP`).notNull()
     });
     insertConversationSchema = createInsertSchema(conversations).omit({
       id: true,
@@ -424,7 +424,7 @@ __export(schema_exports, {
   whatIfScenarios: () => whatIfScenarios,
   workflowTemplates: () => workflowTemplates
 });
-import { sql as sql2 } from "drizzle-orm";
+import { sql as sql3 } from "drizzle-orm";
 import {
   index,
   jsonb,
@@ -480,7 +480,7 @@ var init_schema = __esm({
       (table) => [index("IDX_session_expire").on(table.expire)]
     );
     users = pgTable2("users", {
-      id: varchar("id").primaryKey().default(sql2`gen_random_uuid()`),
+      id: varchar("id").primaryKey().default(sql3`gen_random_uuid()`),
       email: varchar("email").unique(),
       firstName: varchar("first_name"),
       lastName: varchar("last_name"),
@@ -2927,7 +2927,7 @@ var init_schema = __esm({
       // Success Metrics (80% Pre-filled - Section 7)
       targetResponseSpeed: integer2("target_response_speed").default(12),
       // Target minutes to coordination
-      targetStakeholderReach: decimal("target_stakeholder_reach", { precision: 3, scale: 2 }).default(sql2`1.00`),
+      targetStakeholderReach: decimal("target_stakeholder_reach", { precision: 3, scale: 2 }).default(sql3`1.00`),
       // Target % Tier 1 participation
       outcomeMetrics: jsonb("outcome_metrics"),
       // Market share retention, customer churn, etc.
@@ -8805,18 +8805,33 @@ __export(db_exports, {
 import { Pool, neonConfig } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import ws from "ws";
-var pool, db;
+var isProduction, connectionString, pool, db;
 var init_db = __esm({
   "server/db.ts"() {
     "use strict";
     init_schema();
     neonConfig.webSocketConstructor = ws;
-    if (!process.env.DATABASE_URL) {
-      throw new Error(
-        "DATABASE_URL must be set. Did you forget to provision a database?"
-      );
+    isProduction = process.env.NODE_ENV === "production";
+    if (isProduction) {
+      if (!process.env.DATABASE_URL) {
+        throw new Error("DATABASE_URL must be set in production.");
+      }
+      connectionString = process.env.DATABASE_URL;
+    } else {
+      if (process.env.DATABASE_URL_DEV) {
+        connectionString = process.env.DATABASE_URL_DEV;
+      } else if (process.env.DATABASE_URL) {
+        console.warn(
+          "\n\u26A0\uFE0F  DEV WARNING: DATABASE_URL_DEV is not set. The development server is connecting to the PRODUCTION database.\n   To protect production data, create a Neon database branch and set DATABASE_URL_DEV.\n   See developer-reference.md Section 6 for setup instructions.\n"
+        );
+        connectionString = process.env.DATABASE_URL;
+      } else {
+        throw new Error(
+          "No database connection string found. Set DATABASE_URL or DATABASE_URL_DEV."
+        );
+      }
     }
-    pool = new Pool({ connectionString: process.env.DATABASE_URL });
+    pool = new Pool({ connectionString });
     db = drizzle({ client: pool, schema: schema_exports });
   }
 });
@@ -9076,7 +9091,7 @@ var init_CredentialEncryptionService = __esm({
 });
 
 // server/storage.ts
-import { eq, desc, and, sql as sql3, inArray } from "drizzle-orm";
+import { eq, desc, and, sql as sql4, inArray } from "drizzle-orm";
 var DatabaseStorage, storage;
 var init_storage = __esm({
   "server/storage.ts"() {
@@ -9267,11 +9282,11 @@ var init_storage = __esm({
         }).from(strategicScenarios).leftJoin(users, eq(strategicScenarios.createdBy, users.id)).orderBy(desc(strategicScenarios.createdAt)).limit(10);
         const scenariosWithTaskCount = await Promise.all(
           scenarios3.map(async (scenario) => {
-            const [{ count: count8 }] = await db.select({ count: sql3`count(*)` }).from(tasks).where(eq(tasks.scenarioId, scenario.id));
+            const [{ count: count9 }] = await db.select({ count: sql4`count(*)` }).from(tasks).where(eq(tasks.scenarioId, scenario.id));
             return {
               ...scenario,
               creatorName: scenario.creatorName || "Unknown",
-              taskCount: Number(count8)
+              taskCount: Number(count9)
             };
           })
         );
@@ -9376,12 +9391,12 @@ var init_storage = __esm({
       async getUserMetrics(userId) {
         const userOrgs = await this.getUserOrganizations(userId);
         const orgIds = userOrgs.map((org) => org.id);
-        const [{ activeScenarios }] = await db.select({ activeScenarios: sql3`count(*)` }).from(strategicScenarios).where(and(
+        const [{ activeScenarios }] = await db.select({ activeScenarios: sql4`count(*)` }).from(strategicScenarios).where(and(
           eq(strategicScenarios.status, "active"),
           inArray(strategicScenarios.organizationId, orgIds)
         ));
-        const [{ pendingTasks }] = await db.select({ pendingTasks: sql3`count(*)` }).from(tasks).where(eq(tasks.status, "To Do"));
-        const [{ teamMembers }] = await db.select({ teamMembers: sql3`count(*)` }).from(users);
+        const [{ pendingTasks }] = await db.select({ pendingTasks: sql4`count(*)` }).from(tasks).where(eq(tasks.status, "To Do"));
+        const [{ teamMembers }] = await db.select({ teamMembers: sql4`count(*)` }).from(users);
         const agilityScore = Math.min(10, Math.max(
           1,
           Number(activeScenarios) * 0.3 + (50 - Number(pendingTasks)) * 0.1 + Number(teamMembers) * 0.2 + 5
@@ -9778,7 +9793,7 @@ var init_storage = __esm({
         try {
           await db.update(actionHooks).set({
             lastTriggered: /* @__PURE__ */ new Date(),
-            successCount: sql3`${actionHooks.successCount} + 1`
+            successCount: sql4`${actionHooks.successCount} + 1`
           }).where(eq(actionHooks.id, hookId));
           return {
             success: true,
@@ -9788,7 +9803,7 @@ var init_storage = __esm({
           };
         } catch (error) {
           await db.update(actionHooks).set({
-            failureCount: sql3`${actionHooks.failureCount} + 1`
+            failureCount: sql4`${actionHooks.failureCount} + 1`
           }).where(eq(actionHooks.id, hookId));
           throw error;
         }
@@ -9910,11 +9925,11 @@ var init_storage = __esm({
       // Playbook Telemetry operations
       async getPlaybookTelemetry(playbookId, organizationId) {
         const [result] = await db.select({
-          lastUsedAt: sql3`MAX(${playbookActivations.activatedAt})`,
-          avgOutcomeScore: sql3`ROUND(AVG(${playbookActivations.successRating})::numeric, 1)`,
-          avgExecutionTime: sql3`ROUND(AVG(${playbookActivations.actualExecutionTime})::numeric, 1)`,
-          executionCount: sql3`COUNT(*)::int`,
-          targetMetRate: sql3`ROUND((SUM(CASE WHEN ${playbookActivations.targetMet} THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0)) * 100, 1)`
+          lastUsedAt: sql4`MAX(${playbookActivations.activatedAt})`,
+          avgOutcomeScore: sql4`ROUND(AVG(${playbookActivations.successRating})::numeric, 1)`,
+          avgExecutionTime: sql4`ROUND(AVG(${playbookActivations.actualExecutionTime})::numeric, 1)`,
+          executionCount: sql4`COUNT(*)::int`,
+          targetMetRate: sql4`ROUND((SUM(CASE WHEN ${playbookActivations.targetMet} THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0)) * 100, 1)`
         }).from(playbookActivations).where(and(
           eq(playbookActivations.playbookId, playbookId),
           eq(playbookActivations.organizationId, organizationId)
@@ -9931,9 +9946,9 @@ var init_storage = __esm({
       async getAllPlaybookTelemetry(organizationId) {
         const results = await db.select({
           playbookId: playbookActivations.playbookId,
-          lastUsedAt: sql3`MAX(${playbookActivations.activatedAt})`,
-          avgOutcomeScore: sql3`ROUND(AVG(${playbookActivations.successRating})::numeric, 1)`,
-          executionCount: sql3`COUNT(*)::int`
+          lastUsedAt: sql4`MAX(${playbookActivations.activatedAt})`,
+          avgOutcomeScore: sql4`ROUND(AVG(${playbookActivations.successRating})::numeric, 1)`,
+          executionCount: sql4`COUNT(*)::int`
         }).from(playbookActivations).where(eq(playbookActivations.organizationId, organizationId)).groupBy(playbookActivations.playbookId);
         const telemetryMap = {};
         for (const row of results) {
@@ -10008,7 +10023,7 @@ var init_storage = __esm({
             default:
               startDate = new Date(now.getFullYear(), 0, 1);
           }
-          conditions.push(sql3`${decisionOutcomes.createdAt} >= ${startDate}`);
+          conditions.push(sql4`${decisionOutcomes.createdAt} >= ${startDate}`);
         }
         return await db.select().from(decisionOutcomes).where(and(...conditions)).orderBy(desc(decisionOutcomes.createdAt));
       }
@@ -10221,16 +10236,16 @@ var init_storage = __esm({
       async getDepartments(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM departments WHERE organization_id = ${organizationId} ORDER BY name`
+            sql4`SELECT * FROM departments WHERE organization_id = ${organizationId} ORDER BY name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM departments ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM departments ORDER BY name`);
         return result.rows;
       }
       async createDepartment(department) {
         const result = await db.execute(
-          sql3`INSERT INTO departments (id, organization_id, name, description, head_name, head_email, headcount, budget, parent_department_id)
+          sql4`INSERT INTO departments (id, organization_id, name, description, head_name, head_email, headcount, budget, parent_department_id)
           VALUES (gen_random_uuid(), ${department.organizationId}, ${department.name}, ${department.description}, 
                   ${department.headName}, ${department.headEmail}, ${department.headcount || 0}, 
                   ${department.budget || 0}, ${department.parentDepartmentId})
@@ -10240,7 +10255,7 @@ var init_storage = __esm({
       }
       async updateDepartment(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE departments SET 
+          sql4`UPDATE departments SET 
           name = COALESCE(${updates.name}, name),
           description = COALESCE(${updates.description}, description),
           head_name = COALESCE(${updates.headName}, head_name),
@@ -10254,21 +10269,21 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteDepartment(id) {
-        await db.execute(sql3`DELETE FROM departments WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM departments WHERE id = ${id}`);
       }
       async getEscalationPolicies(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM escalation_policies WHERE organization_id = ${organizationId} ORDER BY name`
+            sql4`SELECT * FROM escalation_policies WHERE organization_id = ${organizationId} ORDER BY name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM escalation_policies ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM escalation_policies ORDER BY name`);
         return result.rows;
       }
       async createEscalationPolicy(policy) {
         const result = await db.execute(
-          sql3`INSERT INTO escalation_policies (id, organization_id, name, description, trigger_conditions, escalation_levels, notification_channels, sla_minutes)
+          sql4`INSERT INTO escalation_policies (id, organization_id, name, description, trigger_conditions, escalation_levels, notification_channels, sla_minutes)
           VALUES (gen_random_uuid(), ${policy.organizationId}, ${policy.name}, ${policy.description},
                   ${JSON.stringify(policy.triggerConditions || {})}, ${JSON.stringify(policy.escalationLevels || [])},
                   ${JSON.stringify(policy.notificationChannels || [])}, ${policy.slaMinutes || 60})
@@ -10278,7 +10293,7 @@ var init_storage = __esm({
       }
       async updateEscalationPolicy(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE escalation_policies SET
+          sql4`UPDATE escalation_policies SET
           name = COALESCE(${updates.name}, name),
           description = COALESCE(${updates.description}, description),
           trigger_conditions = COALESCE(${JSON.stringify(updates.triggerConditions)}, trigger_conditions),
@@ -10292,21 +10307,21 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteEscalationPolicy(id) {
-        await db.execute(sql3`DELETE FROM escalation_policies WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM escalation_policies WHERE id = ${id}`);
       }
       async getCommunicationChannels(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM communication_channels WHERE organization_id = ${organizationId} ORDER BY name`
+            sql4`SELECT * FROM communication_channels WHERE organization_id = ${organizationId} ORDER BY name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM communication_channels ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM communication_channels ORDER BY name`);
         return result.rows;
       }
       async createCommunicationChannel(channel) {
         const result = await db.execute(
-          sql3`INSERT INTO communication_channels (id, organization_id, name, channel_type, configuration, is_active, priority)
+          sql4`INSERT INTO communication_channels (id, organization_id, name, channel_type, configuration, is_active, priority)
           VALUES (gen_random_uuid(), ${channel.organizationId}, ${channel.name}, ${channel.channelType},
                   ${JSON.stringify(channel.configuration || {})}, ${channel.isActive ?? true}, ${channel.priority || 1})
           RETURNING *`
@@ -10315,7 +10330,7 @@ var init_storage = __esm({
       }
       async updateCommunicationChannel(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE communication_channels SET
+          sql4`UPDATE communication_channels SET
           name = COALESCE(${updates.name}, name),
           channel_type = COALESCE(${updates.channelType}, channel_type),
           configuration = COALESCE(${JSON.stringify(updates.configuration)}, configuration),
@@ -10328,21 +10343,21 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteCommunicationChannel(id) {
-        await db.execute(sql3`DELETE FROM communication_channels WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM communication_channels WHERE id = ${id}`);
       }
       async getCustomTriggers(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM custom_triggers WHERE organization_id = ${organizationId} ORDER BY name`
+            sql4`SELECT * FROM custom_triggers WHERE organization_id = ${organizationId} ORDER BY name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM custom_triggers ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM custom_triggers ORDER BY name`);
         return result.rows;
       }
       async createCustomTrigger(trigger) {
         const result = await db.execute(
-          sql3`INSERT INTO custom_triggers (id, organization_id, name, description, category, conditions, threshold_config, notification_settings, playbook_mappings, is_active)
+          sql4`INSERT INTO custom_triggers (id, organization_id, name, description, category, conditions, threshold_config, notification_settings, playbook_mappings, is_active)
           VALUES (gen_random_uuid(), ${trigger.organizationId}, ${trigger.name}, ${trigger.description},
                   ${trigger.category}, ${JSON.stringify(trigger.conditions || {})}, 
                   ${JSON.stringify(trigger.thresholdConfig || {})}, ${JSON.stringify(trigger.notificationSettings || {})},
@@ -10353,7 +10368,7 @@ var init_storage = __esm({
       }
       async updateCustomTrigger(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE custom_triggers SET
+          sql4`UPDATE custom_triggers SET
           name = COALESCE(${updates.name}, name),
           description = COALESCE(${updates.description}, description),
           category = COALESCE(${updates.category}, category),
@@ -10369,21 +10384,21 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteCustomTrigger(id) {
-        await db.execute(sql3`DELETE FROM custom_triggers WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM custom_triggers WHERE id = ${id}`);
       }
       async getSuccessMetricsConfig(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM success_metrics_config WHERE organization_id = ${organizationId} ORDER BY metric_name`
+            sql4`SELECT * FROM success_metrics_config WHERE organization_id = ${organizationId} ORDER BY metric_name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM success_metrics_config ORDER BY metric_name`);
+        const result = await db.execute(sql4`SELECT * FROM success_metrics_config ORDER BY metric_name`);
         return result.rows;
       }
       async createSuccessMetric(metric) {
         const result = await db.execute(
-          sql3`INSERT INTO success_metrics_config (id, organization_id, metric_name, description, metric_type, target_value, current_value, baseline_value, target_unit, review_cadence, is_active)
+          sql4`INSERT INTO success_metrics_config (id, organization_id, metric_name, description, metric_type, target_value, current_value, baseline_value, target_unit, review_cadence, is_active)
           VALUES (gen_random_uuid(), ${metric.organizationId}, ${metric.name || metric.metricName}, ${metric.description},
                   ${metric.metricType}, ${metric.targetValue || 0}, ${metric.currentValue || 0},
                   ${metric.baselineValue || 0}, ${metric.unit || metric.targetUnit || "%"}, ${metric.reviewCadence || "weekly"}, ${metric.isActive ?? true})
@@ -10393,7 +10408,7 @@ var init_storage = __esm({
       }
       async updateSuccessMetric(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE success_metrics_config SET
+          sql4`UPDATE success_metrics_config SET
           metric_name = COALESCE(${updates.name || updates.metricName}, metric_name),
           description = COALESCE(${updates.description}, description),
           metric_type = COALESCE(${updates.metricType}, metric_type),
@@ -10410,17 +10425,17 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteSuccessMetric(id) {
-        await db.execute(sql3`DELETE FROM success_metrics_config WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM success_metrics_config WHERE id = ${id}`);
       }
       async getOrganizationSetupProgress(organizationId) {
         const result = await db.execute(
-          sql3`SELECT * FROM organization_setup_progress WHERE organization_id = ${organizationId}`
+          sql4`SELECT * FROM organization_setup_progress WHERE organization_id = ${organizationId}`
         );
         return result.rows[0] || null;
       }
       async upsertOrganizationSetupProgress(progress) {
         const result = await db.execute(
-          sql3`INSERT INTO organization_setup_progress (id, organization_id, departments_configured, executives_configured, approval_chains_configured, escalation_policies_configured, communication_channels_configured, setup_completed_at)
+          sql4`INSERT INTO organization_setup_progress (id, organization_id, departments_configured, executives_configured, approval_chains_configured, escalation_policies_configured, communication_channels_configured, setup_completed_at)
           VALUES (gen_random_uuid(), ${progress.organizationId}, ${progress.departmentsConfigured ?? false},
                   ${progress.executivesConfigured ?? false}, ${progress.approvalChainsConfigured ?? false},
                   ${progress.escalationPoliciesConfigured ?? false}, ${progress.communicationChannelsConfigured ?? false},
@@ -10444,20 +10459,20 @@ var init_storage = __esm({
       async getExportTemplates(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM execution_plan_export_templates WHERE organization_id = ${organizationId} AND is_active = true ORDER BY name`
+            sql4`SELECT * FROM execution_plan_export_templates WHERE organization_id = ${organizationId} AND is_active = true ORDER BY name`
           );
           return result2.rows;
         }
-        const result = await db.execute(sql3`SELECT * FROM execution_plan_export_templates WHERE is_active = true ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM execution_plan_export_templates WHERE is_active = true ORDER BY name`);
         return result.rows;
       }
       async getExportTemplate(id) {
-        const result = await db.execute(sql3`SELECT * FROM execution_plan_export_templates WHERE id = ${id}`);
+        const result = await db.execute(sql4`SELECT * FROM execution_plan_export_templates WHERE id = ${id}`);
         return result.rows[0] || null;
       }
       async createExportTemplate(template) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_plan_export_templates 
+          sql4`INSERT INTO execution_plan_export_templates 
           (id, organization_id, name, description, platform, project_name_template, project_description_template,
            phase_mapping, field_mappings, custom_fields, automation_rules, default_labels, sync_direction,
            sync_frequency, is_default, is_active, created_by)
@@ -10473,7 +10488,7 @@ var init_storage = __esm({
       }
       async updateExportTemplate(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE execution_plan_export_templates SET
+          sql4`UPDATE execution_plan_export_templates SET
           name = COALESCE(${updates.name}, name),
           description = COALESCE(${updates.description}, description),
           platform = COALESCE(${updates.platform}, platform),
@@ -10495,13 +10510,13 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteExportTemplate(id) {
-        await db.execute(sql3`UPDATE execution_plan_export_templates SET is_active = false WHERE id = ${id}`);
+        await db.execute(sql4`UPDATE execution_plan_export_templates SET is_active = false WHERE id = ${id}`);
       }
       // Sync Records CRUD
       async getSyncRecords(executionInstanceId) {
         if (executionInstanceId) {
           const result2 = await db.execute(
-            sql3`SELECT sr.*, et.name as template_name, et.platform 
+            sql4`SELECT sr.*, et.name as template_name, et.platform 
             FROM execution_plan_sync_records sr
             JOIN execution_plan_export_templates et ON sr.export_template_id = et.id
             WHERE sr.execution_instance_id = ${executionInstanceId}
@@ -10510,7 +10525,7 @@ var init_storage = __esm({
           return result2.rows;
         }
         const result = await db.execute(
-          sql3`SELECT sr.*, et.name as template_name, et.platform 
+          sql4`SELECT sr.*, et.name as template_name, et.platform 
           FROM execution_plan_sync_records sr
           JOIN execution_plan_export_templates et ON sr.export_template_id = et.id
           ORDER BY sr.created_at DESC`
@@ -10519,7 +10534,7 @@ var init_storage = __esm({
       }
       async getSyncRecord(id) {
         const result = await db.execute(
-          sql3`SELECT sr.*, et.name as template_name, et.platform 
+          sql4`SELECT sr.*, et.name as template_name, et.platform 
           FROM execution_plan_sync_records sr
           JOIN execution_plan_export_templates et ON sr.export_template_id = et.id
           WHERE sr.id = ${id}`
@@ -10528,7 +10543,7 @@ var init_storage = __esm({
       }
       async createSyncRecord(record) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_plan_sync_records 
+          sql4`INSERT INTO execution_plan_sync_records 
           (id, execution_instance_id, export_template_id, integration_id, external_project_id,
            external_project_url, external_project_key, sync_status, task_sync_map, sync_settings)
           VALUES (gen_random_uuid(), ${record.executionInstanceId}, ${record.exportTemplateId},
@@ -10541,7 +10556,7 @@ var init_storage = __esm({
       }
       async updateSyncRecord(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE execution_plan_sync_records SET
+          sql4`UPDATE execution_plan_sync_records SET
           external_project_id = COALESCE(${updates.externalProjectId}, external_project_id),
           external_project_url = COALESCE(${updates.externalProjectUrl}, external_project_url),
           external_project_key = COALESCE(${updates.externalProjectKey}, external_project_key),
@@ -10560,16 +10575,16 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteSyncRecord(id) {
-        await db.execute(sql3`DELETE FROM execution_plan_sync_records WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM execution_plan_sync_records WHERE id = ${id}`);
       }
       // Extended Task Properties CRUD
       async getExtendedTaskProperties(taskId) {
-        const result = await db.execute(sql3`SELECT * FROM execution_plan_tasks_extended WHERE task_id = ${taskId}`);
+        const result = await db.execute(sql4`SELECT * FROM execution_plan_tasks_extended WHERE task_id = ${taskId}`);
         return result.rows[0] || null;
       }
       async upsertExtendedTaskProperties(props) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_plan_tasks_extended 
+          sql4`INSERT INTO execution_plan_tasks_extended 
           (task_id, external_id_prefix, acceptance_criteria, deliverables, subtasks,
            original_estimate_minutes, remaining_estimate_minutes, time_spent_minutes,
            labels, external_links, watcher_user_ids, initial_comments, custom_field_values)
@@ -10601,7 +10616,7 @@ var init_storage = __esm({
       async getDocumentTemplates(organizationId, playbookId) {
         if (playbookId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM execution_document_templates 
+            sql4`SELECT * FROM execution_document_templates 
             WHERE playbook_id = ${playbookId} AND is_active = true AND is_latest = true
             ORDER BY name`
           );
@@ -10609,24 +10624,24 @@ var init_storage = __esm({
         }
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM execution_document_templates 
+            sql4`SELECT * FROM execution_document_templates 
             WHERE organization_id = ${organizationId} AND is_active = true AND is_latest = true
             ORDER BY name`
           );
           return result2.rows;
         }
         const result = await db.execute(
-          sql3`SELECT * FROM execution_document_templates WHERE is_active = true AND is_latest = true ORDER BY name`
+          sql4`SELECT * FROM execution_document_templates WHERE is_active = true AND is_latest = true ORDER BY name`
         );
         return result.rows;
       }
       async getDocumentTemplate(id) {
-        const result = await db.execute(sql3`SELECT * FROM execution_document_templates WHERE id = ${id}`);
+        const result = await db.execute(sql4`SELECT * FROM execution_document_templates WHERE id = ${id}`);
         return result.rows[0] || null;
       }
       async createDocumentTemplate(template) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_document_templates 
+          sql4`INSERT INTO execution_document_templates 
           (id, organization_id, playbook_id, task_id, name, document_type, template_content,
            required_variables, output_formats, storage_integration, storage_path, requires_approval,
            approver_role_id, auto_generate_on_activation, auto_distribute, distribution_list,
@@ -10644,7 +10659,7 @@ var init_storage = __esm({
       }
       async updateDocumentTemplate(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE execution_document_templates SET
+          sql4`UPDATE execution_document_templates SET
           name = COALESCE(${updates.name}, name),
           template_content = COALESCE(${updates.templateContent}, template_content),
           required_variables = COALESCE(${JSON.stringify(updates.requiredVariables)}, required_variables),
@@ -10664,13 +10679,13 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deleteDocumentTemplate(id) {
-        await db.execute(sql3`UPDATE execution_document_templates SET is_active = false WHERE id = ${id}`);
+        await db.execute(sql4`UPDATE execution_document_templates SET is_active = false WHERE id = ${id}`);
       }
       // Pre-Approved Resources CRUD
       async getPreApprovedResources(organizationId, playbookId) {
         if (playbookId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM execution_pre_approved_resources 
+            sql4`SELECT * FROM execution_pre_approved_resources 
             WHERE playbook_id = ${playbookId} AND is_active = true
             ORDER BY resource_type, name`
           );
@@ -10678,24 +10693,24 @@ var init_storage = __esm({
         }
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM execution_pre_approved_resources 
+            sql4`SELECT * FROM execution_pre_approved_resources 
             WHERE organization_id = ${organizationId} AND is_active = true
             ORDER BY resource_type, name`
           );
           return result2.rows;
         }
         const result = await db.execute(
-          sql3`SELECT * FROM execution_pre_approved_resources WHERE is_active = true ORDER BY resource_type, name`
+          sql4`SELECT * FROM execution_pre_approved_resources WHERE is_active = true ORDER BY resource_type, name`
         );
         return result.rows;
       }
       async getPreApprovedResource(id) {
-        const result = await db.execute(sql3`SELECT * FROM execution_pre_approved_resources WHERE id = ${id}`);
+        const result = await db.execute(sql4`SELECT * FROM execution_pre_approved_resources WHERE id = ${id}`);
         return result.rows[0] || null;
       }
       async createPreApprovedResource(resource) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_pre_approved_resources 
+          sql4`INSERT INTO execution_pre_approved_resources 
           (id, organization_id, playbook_id, task_id, resource_type, name, description,
            budget_amount, budget_currency, budget_account_code, budget_category,
            vendor_id, vendor_name, vendor_contact_info, contract_reference, master_service_agreement,
@@ -10718,7 +10733,7 @@ var init_storage = __esm({
       }
       async updatePreApprovedResource(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE execution_pre_approved_resources SET
+          sql4`UPDATE execution_pre_approved_resources SET
           name = COALESCE(${updates.name}, name),
           description = COALESCE(${updates.description}, description),
           budget_amount = COALESCE(${updates.budgetAmount}, budget_amount),
@@ -10752,11 +10767,11 @@ var init_storage = __esm({
         return result.rows[0];
       }
       async deletePreApprovedResource(id) {
-        await db.execute(sql3`UPDATE execution_pre_approved_resources SET is_active = false WHERE id = ${id}`);
+        await db.execute(sql4`UPDATE execution_pre_approved_resources SET is_active = false WHERE id = ${id}`);
       }
       async activatePreApprovedResource(id) {
         const result = await db.execute(
-          sql3`UPDATE execution_pre_approved_resources SET
+          sql4`UPDATE execution_pre_approved_resources SET
           last_activated_at = NOW(),
           activation_count = activation_count + 1,
           updated_at = NOW()
@@ -10769,7 +10784,7 @@ var init_storage = __esm({
       async getGeneratedDocuments(executionInstanceId, templateId) {
         if (executionInstanceId) {
           const result2 = await db.execute(
-            sql3`SELECT gd.*, dt.name as template_name 
+            sql4`SELECT gd.*, dt.name as template_name 
             FROM execution_generated_documents gd
             JOIN execution_document_templates dt ON gd.template_id = dt.id
             WHERE gd.execution_instance_id = ${executionInstanceId}
@@ -10779,7 +10794,7 @@ var init_storage = __esm({
         }
         if (templateId) {
           const result2 = await db.execute(
-            sql3`SELECT gd.*, dt.name as template_name 
+            sql4`SELECT gd.*, dt.name as template_name 
             FROM execution_generated_documents gd
             JOIN execution_document_templates dt ON gd.template_id = dt.id
             WHERE gd.template_id = ${templateId}
@@ -10788,7 +10803,7 @@ var init_storage = __esm({
           return result2.rows;
         }
         const result = await db.execute(
-          sql3`SELECT gd.*, dt.name as template_name 
+          sql4`SELECT gd.*, dt.name as template_name 
           FROM execution_generated_documents gd
           JOIN execution_document_templates dt ON gd.template_id = dt.id
           ORDER BY gd.created_at DESC
@@ -10797,12 +10812,12 @@ var init_storage = __esm({
         return result.rows;
       }
       async getGeneratedDocument(id) {
-        const result = await db.execute(sql3`SELECT * FROM execution_generated_documents WHERE id = ${id}`);
+        const result = await db.execute(sql4`SELECT * FROM execution_generated_documents WHERE id = ${id}`);
         return result.rows[0] || null;
       }
       async createGeneratedDocument(doc) {
         const result = await db.execute(
-          sql3`INSERT INTO execution_generated_documents 
+          sql4`INSERT INTO execution_generated_documents 
           (id, template_id, execution_instance_id, name, document_type, generated_content,
            variables_used, file_url, file_format, file_size, external_storage_id,
            approval_status, generated_by)
@@ -10816,7 +10831,7 @@ var init_storage = __esm({
       }
       async updateGeneratedDocument(id, updates) {
         const result = await db.execute(
-          sql3`UPDATE execution_generated_documents SET
+          sql4`UPDATE execution_generated_documents SET
           generated_content = COALESCE(${updates.generatedContent}, generated_content),
           file_url = COALESCE(${updates.fileUrl}, file_url),
           file_format = COALESCE(${updates.fileFormat}, file_format),
@@ -10835,7 +10850,7 @@ var init_storage = __esm({
       }
       async approveGeneratedDocument(id, approvedBy) {
         const result = await db.execute(
-          sql3`UPDATE execution_generated_documents SET
+          sql4`UPDATE execution_generated_documents SET
           approval_status = 'approved',
           approved_by = ${approvedBy},
           approved_at = NOW()
@@ -10846,7 +10861,7 @@ var init_storage = __esm({
       }
       async rejectGeneratedDocument(id, reason) {
         const result = await db.execute(
-          sql3`UPDATE execution_generated_documents SET
+          sql4`UPDATE execution_generated_documents SET
           approval_status = 'rejected',
           rejection_reason = ${reason}
           WHERE id = ${id}
@@ -10891,27 +10906,27 @@ var init_storage = __esm({
       async getEnterpriseIntegrations(organizationId) {
         if (organizationId) {
           const result2 = await db.execute(
-            sql3`SELECT * FROM enterprise_integrations WHERE organization_id = ${organizationId} ORDER BY name`
+            sql4`SELECT * FROM enterprise_integrations WHERE organization_id = ${organizationId} ORDER BY name`
           );
           return result2.rows.map((row) => this.processIntegrationForRead(row));
         }
-        const result = await db.execute(sql3`SELECT * FROM enterprise_integrations ORDER BY name`);
+        const result = await db.execute(sql4`SELECT * FROM enterprise_integrations ORDER BY name`);
         return result.rows.map((row) => this.processIntegrationForRead(row));
       }
       async getEnterpriseIntegration(id) {
-        const result = await db.execute(sql3`SELECT * FROM enterprise_integrations WHERE id = ${id}`);
+        const result = await db.execute(sql4`SELECT * FROM enterprise_integrations WHERE id = ${id}`);
         return this.processIntegrationForRead(result.rows[0]);
       }
       async getEnterpriseIntegrationByVendor(organizationId, vendor) {
         const result = await db.execute(
-          sql3`SELECT * FROM enterprise_integrations WHERE organization_id = ${organizationId} AND vendor = ${vendor} LIMIT 1`
+          sql4`SELECT * FROM enterprise_integrations WHERE organization_id = ${organizationId} AND vendor = ${vendor} LIMIT 1`
         );
         return this.processIntegrationForRead(result.rows[0]);
       }
       async createEnterpriseIntegration(integration) {
         const encryptedConfig = this.encryptIntegrationConfig(integration.configuration || {});
         const result = await db.execute(
-          sql3`INSERT INTO enterprise_integrations 
+          sql4`INSERT INTO enterprise_integrations 
           (id, organization_id, name, integration_type, vendor, status, configuration, data_mapping,
            sync_frequency, api_endpoint, webhook_url, authentication_type, metadata, installed_by)
           VALUES (gen_random_uuid(), ${integration.organizationId}, ${integration.name},
@@ -10929,7 +10944,7 @@ var init_storage = __esm({
           encryptedConfig = JSON.stringify(this.encryptIntegrationConfig(updates.configuration));
         }
         const result = await db.execute(
-          sql3`UPDATE enterprise_integrations SET
+          sql4`UPDATE enterprise_integrations SET
           name = COALESCE(${updates.name}, name),
           status = COALESCE(${updates.status}, status),
           configuration = COALESCE(${encryptedConfig}, configuration),
@@ -10949,7 +10964,7 @@ var init_storage = __esm({
         return this.processIntegrationForRead(result.rows[0]);
       }
       async deleteEnterpriseIntegration(id) {
-        await db.execute(sql3`DELETE FROM enterprise_integrations WHERE id = ${id}`);
+        await db.execute(sql4`DELETE FROM enterprise_integrations WHERE id = ${id}`);
       }
       // ─── Signal Monitoring Config ────────────────────────────────────────────────
       async getSignalMonitoringConfig(organizationId) {
@@ -11024,21 +11039,21 @@ var init_storage = __esm({
         }).from(organizations);
         const results = await Promise.all(orgs.map(async (org) => {
           const activationRows = await db.select({
-            count: sql3`COUNT(*)::int`,
-            lastAt: sql3`MAX(${playbookActivations.activatedAt})`,
-            completedCount: sql3`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`
+            count: sql4`COUNT(*)::int`,
+            lastAt: sql4`MAX(${playbookActivations.activatedAt})`,
+            completedCount: sql4`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`
           }).from(playbookActivations).where(eq(playbookActivations.organizationId, org.id));
           const actRow = activationRows[0];
           const totalActivations = actRow?.count ?? 0;
           const completedActivations = actRow?.completedCount ?? 0;
           const lastActivationAt = actRow?.lastAt ?? null;
-          const memberRows = await db.select({ count: sql3`COUNT(*)::int` }).from(users).where(eq(users.organizationId, org.id));
+          const memberRows = await db.select({ count: sql4`COUNT(*)::int` }).from(users).where(eq(users.organizationId, org.id));
           const memberCount = memberRows[0]?.count ?? 0;
-          const triggerRows = await db.select({ count: sql3`COUNT(*)::int` }).from(executiveTriggers2).where(eq(executiveTriggers2.organizationId, org.id));
+          const triggerRows = await db.select({ count: sql4`COUNT(*)::int` }).from(executiveTriggers2).where(eq(executiveTriggers2.organizationId, org.id));
           const triggerCount = triggerRows[0]?.count ?? 0;
-          const outcomeRows = await db.select({ count: sql3`COUNT(*)::int` }).from(activationOutcomes).where(and(
+          const outcomeRows = await db.select({ count: sql4`COUNT(*)::int` }).from(activationOutcomes).where(and(
             eq(activationOutcomes.organizationId, org.id),
-            sql3`${activationOutcomes.humanNote} IS NOT NULL`
+            sql4`${activationOutcomes.humanNote} IS NOT NULL`
           ));
           const closedLoopCount = outcomeRows[0]?.count ?? 0;
           let ragStatus = "red";
@@ -11055,14 +11070,14 @@ var init_storage = __esm({
       // ─── Execution Maturity Score ───────────────────────────────────────────────
       async getExecutionMaturityScore(organizationId) {
         const actRows = await db.select({
-          total: sql3`COUNT(*)::int`,
-          completed: sql3`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`,
-          targetMets: sql3`SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::int`
+          total: sql4`COUNT(*)::int`,
+          completed: sql4`SUM(CASE WHEN ${playbookActivations.completedAt} IS NOT NULL THEN 1 ELSE 0 END)::int`,
+          targetMets: sql4`SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::int`
         }).from(playbookActivations).where(eq(playbookActivations.organizationId, organizationId));
-        const trigRows = await db.select({ count: sql3`COUNT(*)::int` }).from(executiveTriggers2).where(eq(executiveTriggers2.organizationId, organizationId));
-        const outcomeRows = await db.select({ count: sql3`COUNT(*)::int` }).from(activationOutcomes).where(and(
+        const trigRows = await db.select({ count: sql4`COUNT(*)::int` }).from(executiveTriggers2).where(eq(executiveTriggers2.organizationId, organizationId));
+        const outcomeRows = await db.select({ count: sql4`COUNT(*)::int` }).from(activationOutcomes).where(and(
           eq(activationOutcomes.organizationId, organizationId),
-          sql3`${activationOutcomes.humanNote} IS NOT NULL`
+          sql4`${activationOutcomes.humanNote} IS NOT NULL`
         ));
         const totalActivations = actRows[0]?.total ?? 0;
         const completedActivations = actRows[0]?.completed ?? 0;
@@ -11091,11 +11106,11 @@ var init_storage = __esm({
       // ─── Playbook Performance Fingerprint ──────────────────────────────────────
       async getPlaybookPerformanceFingerprint(organizationId, playbookId) {
         const rows = await db.select({
-          count: sql3`COUNT(*)::int`,
-          avgTime: sql3`ROUND(AVG(${playbookActivations.actualExecutionTime}), 1)`,
-          targetMetRate: sql3`ROUND(SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0) * 100, 1)`,
-          avgRating: sql3`ROUND(AVG(${playbookActivations.successRating}), 1)`,
-          lastUsed: sql3`MAX(${playbookActivations.activatedAt})`
+          count: sql4`COUNT(*)::int`,
+          avgTime: sql4`ROUND(AVG(${playbookActivations.actualExecutionTime}), 1)`,
+          targetMetRate: sql4`ROUND(SUM(CASE WHEN ${playbookActivations.targetMet} = true THEN 1 ELSE 0 END)::numeric / NULLIF(COUNT(*), 0) * 100, 1)`,
+          avgRating: sql4`ROUND(AVG(${playbookActivations.successRating}), 1)`,
+          lastUsed: sql4`MAX(${playbookActivations.activatedAt})`
         }).from(playbookActivations).where(and(
           eq(playbookActivations.organizationId, organizationId),
           eq(playbookActivations.playbookId, playbookId)
@@ -11132,7 +11147,7 @@ var init_storage = __esm({
 });
 
 // server/services/PostgreSQLJobQueue.ts
-import { eq as eq2, and as and2, sql as sql4, lt } from "drizzle-orm";
+import { eq as eq2, and as and2, sql as sql5, lt } from "drizzle-orm";
 import pino from "pino";
 var logger, PostgreSQLJobQueue;
 var init_PostgreSQLJobQueue = __esm({
@@ -11215,7 +11230,7 @@ var init_PostgreSQLJobQueue = __esm({
               eq2(backgroundJobs.status, "pending"),
               lt(backgroundJobs.runAt, /* @__PURE__ */ new Date())
             )
-          ).orderBy(sql4`${backgroundJobs.priority} DESC, ${backgroundJobs.createdAt} ASC`).limit(10);
+          ).orderBy(sql5`${backgroundJobs.priority} DESC, ${backgroundJobs.createdAt} ASC`).limit(10);
           for (const job of jobs) {
             await this.processJob(job);
           }
@@ -11292,7 +11307,7 @@ var init_PostgreSQLJobQueue = __esm({
             and2(
               eq2(backgroundJobs.queueName, this.queueName),
               lt(backgroundJobs.updatedAt, cutoffDate),
-              sql4`status IN ('completed', 'failed')`
+              sql5`status IN ('completed', 'failed')`
             )
           );
           if (deleted.rowCount && deleted.rowCount > 0) {
@@ -11309,7 +11324,7 @@ var init_PostgreSQLJobQueue = __esm({
         try {
           const stats = await db.select({
             status: backgroundJobs.status,
-            count: sql4`count(*)`
+            count: sql5`count(*)`
           }).from(backgroundJobs).where(eq2(backgroundJobs.queueName, this.queueName)).groupBy(backgroundJobs.status);
           const result = {
             pending: 0,
@@ -14577,13 +14592,392 @@ Provide strategic analysis and actionable recommendations.`;
   }
 });
 
+// server/services/dynamicStrategyService.ts
+var dynamicStrategyService_exports = {};
+__export(dynamicStrategyService_exports, {
+  DynamicStrategyService: () => DynamicStrategyService,
+  dynamicStrategyService: () => dynamicStrategyService
+});
+import { eq as eq7, desc as desc4, and as and6, gte as gte2 } from "drizzle-orm";
+import OpenAI3 from "openai";
+var openai2, DynamicStrategyService, dynamicStrategyService;
+var init_dynamicStrategyService = __esm({
+  "server/services/dynamicStrategyService.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    openai2 = new OpenAI3({
+      apiKey: process.env.OPENAI_API_KEY || ""
+    });
+    DynamicStrategyService = class {
+      /**
+       * Calculate and update Future Readiness Index for an organization
+       */
+      async calculateReadinessScore(organizationId) {
+        const playbooks2 = await db.select().from(strategicScenarios).where(eq7(strategicScenarios.organizationId, organizationId));
+        const playbooksReady = playbooks2.filter((p) => p.readinessState === "green").length;
+        const playbooksTotal = playbooks2.length;
+        const recentExecutions = await db.select().from(executionInstances).where(
+          and6(
+            eq7(executionInstances.organizationId, organizationId),
+            gte2(executionInstances.createdAt, new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3))
+          )
+        );
+        const activeWeakSignals = await db.select().from(weakSignals).where(
+          and6(
+            eq7(weakSignals.organizationId, organizationId),
+            eq7(weakSignals.status, "active")
+          )
+        );
+        const completedExecutions = recentExecutions.filter((e) => e.actualExecutionTime);
+        const averageResponseTime = completedExecutions.length > 0 ? Math.round(
+          completedExecutions.reduce((sum, e) => sum + (e.actualExecutionTime || 0), 0) / completedExecutions.length
+        ) : 12;
+        const foresightScore = this.calculateForesightScore(activeWeakSignals.length, playbooksTotal);
+        const velocityScore = this.calculateVelocityScore(averageResponseTime);
+        const agilityScore = this.calculateAgilityScore(playbooksReady, playbooksTotal);
+        const learningScore = await this.calculateLearningScore(organizationId);
+        const adaptabilityScore = this.calculateAdaptabilityScore(recentExecutions.length);
+        const overallScore = Number(
+          (foresightScore * 0.2 + velocityScore * 0.25 + agilityScore * 0.25 + learningScore * 0.15 + adaptabilityScore * 0.15).toFixed(1)
+        );
+        const previousMetric = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc4(readinessMetrics.measurementDate)).limit(1);
+        let trend = "stable";
+        if (previousMetric.length > 0) {
+          const previousScore = Number(previousMetric[0].overallScore);
+          if (overallScore > previousScore + 1) trend = "up";
+          else if (overallScore < previousScore - 1) trend = "down";
+        }
+        const [newMetric] = await db.insert(readinessMetrics).values({
+          organizationId,
+          overallScore: overallScore.toString(),
+          foresightScore: foresightScore.toString(),
+          velocityScore: velocityScore.toString(),
+          agilityScore: agilityScore.toString(),
+          learningScore: learningScore.toString(),
+          adaptabilityScore: adaptabilityScore.toString(),
+          activeScenarios: recentExecutions.filter((e) => e.status === "running").length,
+          weakSignalsDetected: activeWeakSignals.length,
+          playbooksReady,
+          playbooksTotal,
+          averageResponseTime,
+          trend
+        }).returning();
+        return this.parseReadinessMetricNumbers(newMetric);
+      }
+      calculateForesightScore(weakSignals2, playbooksTotal) {
+        const signalScore = Math.min(100, weakSignals2 * 10);
+        const playbookCoverage = playbooksTotal > 0 ? Math.min(100, playbooksTotal * 2) : 0;
+        return Math.round(signalScore * 0.6 + playbookCoverage * 0.4);
+      }
+      calculateVelocityScore(avgResponseTime) {
+        if (avgResponseTime <= 12) return 100;
+        if (avgResponseTime <= 20) return 90;
+        if (avgResponseTime <= 30) return 80;
+        if (avgResponseTime <= 45) return 70;
+        if (avgResponseTime <= 60) return 60;
+        return Math.max(40, 100 - avgResponseTime);
+      }
+      calculateAgilityScore(playbooksReady, playbooksTotal) {
+        if (playbooksTotal === 0) return 0;
+        const readinessPercentage = playbooksReady / playbooksTotal * 100;
+        return Math.round(readinessPercentage);
+      }
+      async calculateLearningScore(organizationId) {
+        const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
+        const scenarios3 = await db.select().from(strategicScenarios).where(eq7(strategicScenarios.organizationId, organizationId));
+        if (scenarios3.length === 0) return 0;
+        const recentLearnings = await db.select().from(playbookLearnings).where(
+          and6(
+            eq7(playbookLearnings.scenarioId, scenarios3[0].id),
+            gte2(playbookLearnings.extractedAt, thirtyDaysAgo)
+          )
+        );
+        const appliedLearnings = recentLearnings.filter((l) => l.appliedAt).length;
+        const totalLearnings = recentLearnings.length;
+        if (totalLearnings === 0) return 60;
+        const applicationRate = appliedLearnings / totalLearnings * 100;
+        return Math.round(Math.min(100, 60 + applicationRate * 0.4));
+      }
+      calculateAdaptabilityScore(recentExecutions) {
+        if (recentExecutions >= 10) return 100;
+        if (recentExecutions >= 5) return 90;
+        if (recentExecutions >= 3) return 80;
+        if (recentExecutions >= 1) return 70;
+        return 50;
+      }
+      /**
+       * Detect weak signals using AI pattern detection
+       */
+      async detectWeakSignals(organizationId) {
+        const signalTypes = [
+          { type: "regulatory", confidence: 73, timeline: "3-6 months", impact: "high" },
+          { type: "competitor", confidence: 61, timeline: "1-2 months", impact: "medium" },
+          { type: "technology", confidence: 85, timeline: "6-12 months", impact: "high" },
+          { type: "market", confidence: 67, timeline: "2-4 weeks", impact: "low" },
+          { type: "supply_chain", confidence: 79, timeline: "1-3 months", impact: "critical" }
+        ];
+        const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1e3);
+        const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and6(
+          eq7(weakSignals.organizationId, organizationId),
+          gte2(weakSignals.detectedAt, twelveHoursAgo)
+        )).limit(1);
+        if (recentSignals.length > 0) {
+          return [];
+        }
+        const hourIndex = (/* @__PURE__ */ new Date()).getUTCHours() % signalTypes.length;
+        const signal = signalTypes[hourIndex];
+        const [newSignal] = await db.insert(weakSignals).values({
+          organizationId,
+          signalType: signal.type,
+          description: `Potential ${signal.type} shift detected requiring strategic attention`,
+          confidence: signal.confidence.toString(),
+          timeline: signal.timeline,
+          impact: signal.impact,
+          source: "AI Pattern Detection",
+          status: "active"
+        }).returning();
+        await this.logActivity(organizationId, {
+          eventType: "weak_signal",
+          title: `New weak signal detected: ${signal.type}`,
+          description: `${signal.confidence}% confidence, ${signal.timeline} timeline`,
+          severity: signal.impact === "critical" ? "critical" : "warning",
+          relatedEntityType: "signal",
+          relatedEntityId: newSignal.id
+        });
+        return [newSignal];
+      }
+      /**
+       * Detect oracle patterns from weak signals
+       */
+      async detectOraclePatterns(organizationId) {
+        const activeSignals = await db.select().from(weakSignals).where(
+          and6(
+            eq7(weakSignals.organizationId, organizationId),
+            eq7(weakSignals.status, "active")
+          )
+        ).orderBy(desc4(weakSignals.detectedAt)).limit(10);
+        if (activeSignals.length < 3) return [];
+        const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1e3);
+        const recentPatterns = await db.select({ id: oraclePatterns.id }).from(oraclePatterns).where(and6(
+          eq7(oraclePatterns.organizationId, organizationId),
+          gte2(oraclePatterns.detectedAt, twentyFourHoursAgo)
+        )).limit(1);
+        if (recentPatterns.length > 0) {
+          return [];
+        }
+        const signalTypeCounts = {};
+        for (const s of activeSignals) {
+          signalTypeCounts[s.signalType] = (signalTypeCounts[s.signalType] || 0) + 1;
+        }
+        const dominantType = Object.entries(signalTypeCounts).sort((a, b) => b[1] - a[1])[0][0];
+        const patternTypes = [
+          {
+            type: "regulatory_shift",
+            description: "Emerging regulatory changes detected across multiple signals",
+            impact: "high"
+          },
+          {
+            type: "market_disruption",
+            description: "Convergence of market trends suggesting potential disruption",
+            impact: "critical"
+          },
+          {
+            type: "supply_chain_risk",
+            description: "Multiple supply chain vulnerabilities identified",
+            impact: "high"
+          }
+        ];
+        const patternMatch = patternTypes.find((p) => p.type.includes(dominantType)) || patternTypes[0];
+        const pattern = patternMatch;
+        const confidence = Math.min(95, 50 + activeSignals.length * 5);
+        const recommendations2 = [
+          "Pre-load relevant compliance playbooks",
+          "Schedule executive briefing session",
+          "Run simulation exercise with key stakeholders",
+          "Review and update affected playbooks"
+        ];
+        const [newPattern] = await db.insert(oraclePatterns).values({
+          organizationId,
+          patternType: pattern.type,
+          description: pattern.description,
+          confidence: confidence.toString(),
+          impact: pattern.impact,
+          timeline: "2-4 months",
+          recommendations: recommendations2,
+          affectedScenarios: [],
+          evidenceSignals: activeSignals.slice(0, 3).map((s) => s.id),
+          status: "detected"
+        }).returning();
+        await this.logActivity(organizationId, {
+          eventType: "pattern_detected",
+          title: `Oracle: ${pattern.type} detected`,
+          description: `${confidence}% confidence, ${pattern.impact} impact`,
+          severity: pattern.impact === "critical" ? "critical" : "warning",
+          relatedEntityType: "pattern",
+          relatedEntityId: newPattern.id
+        });
+        return [newPattern];
+      }
+      /**
+       * Extract learnings from execution instance using AI
+       */
+      async extractLearnings(executionInstanceId, scenarioId) {
+        const execution = await db.select().from(executionInstances).where(eq7(executionInstances.id, executionInstanceId)).limit(1);
+        if (execution.length === 0 || !execution[0].lessonsLearned) {
+          return [];
+        }
+        const prompt = `Analyze this execution outcome and extract specific, actionable learnings:
+
+Execution Notes: ${execution[0].lessonsLearned}
+Outcome: ${execution[0].outcome}
+Execution Time: ${execution[0].actualExecutionTime} minutes
+
+Extract 2-3 specific learnings in the following categories:
+- communication: improvements to stakeholder communication
+- timing: better timing or sequencing of activities
+- resource_allocation: resource optimization opportunities
+- escalation: escalation protocol improvements
+
+Format each learning as a concise action statement.`;
+        try {
+          const response = await openai2.chat.completions.create({
+            model: "gpt-4o",
+            messages: [
+              {
+                role: "system",
+                content: "You are an AI assistant that extracts actionable learnings from strategic execution outcomes."
+              },
+              { role: "user", content: prompt }
+            ],
+            temperature: 0.3
+          });
+          const learningsText = response.choices[0]?.message?.content || "";
+          const learningsList = learningsText.split("\n").filter((l) => l.trim().length > 10).slice(0, 3);
+          const learnings = await Promise.all(
+            learningsList.map(async (learning) => {
+              const category = this.categorizeLearning(learning);
+              const [newLearning] = await db.insert(playbookLearnings).values({
+                scenarioId,
+                executionInstanceId,
+                learning: learning.trim(),
+                category,
+                impact: "medium",
+                confidence: "0.85"
+              }).returning();
+              return newLearning;
+            })
+          );
+          return learnings;
+        } catch (error) {
+          console.error("Error extracting learnings:", error);
+          return [];
+        }
+      }
+      categorizeLearning(learning) {
+        const lower = learning.toLowerCase();
+        if (lower.includes("communication") || lower.includes("notify") || lower.includes("inform")) {
+          return "communication";
+        }
+        if (lower.includes("timing") || lower.includes("sequence") || lower.includes("earlier") || lower.includes("later")) {
+          return "timing";
+        }
+        if (lower.includes("resource") || lower.includes("allocation") || lower.includes("capacity")) {
+          return "resource_allocation";
+        }
+        if (lower.includes("escalate") || lower.includes("alert") || lower.includes("priority")) {
+          return "escalation";
+        }
+        return "other";
+      }
+      /**
+       * Log activity to activity feed
+       */
+      async logActivity(organizationId, activity) {
+        const [event] = await db.insert(activityFeedEvents).values({
+          organizationId,
+          ...activity
+        }).returning();
+        return event;
+      }
+      /**
+       * Get latest readiness metrics
+       */
+      async getLatestReadinessMetric(organizationId) {
+        const metrics = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc4(readinessMetrics.measurementDate)).limit(1);
+        const metric = metrics[0];
+        if (!metric) return null;
+        return this.parseReadinessMetricNumbers(metric);
+      }
+      /**
+       * Parse decimal strings to numbers for frontend consumption
+       */
+      parseReadinessMetricNumbers(metric) {
+        return {
+          ...metric,
+          overallScore: metric.overallScore ? parseFloat(metric.overallScore) : 0,
+          foresightScore: metric.foresightScore ? parseFloat(metric.foresightScore) : 0,
+          velocityScore: metric.velocityScore ? parseFloat(metric.velocityScore) : 0,
+          agilityScore: metric.agilityScore ? parseFloat(metric.agilityScore) : 0,
+          learningScore: metric.learningScore ? parseFloat(metric.learningScore) : 0,
+          adaptabilityScore: metric.adaptabilityScore ? parseFloat(metric.adaptabilityScore) : 0
+        };
+      }
+      /**
+       * Get recent activity feed
+       */
+      async getActivityFeed(organizationId, limit = 20) {
+        return db.select().from(activityFeedEvents).where(eq7(activityFeedEvents.organizationId, organizationId)).orderBy(desc4(activityFeedEvents.createdAt)).limit(limit);
+      }
+      /**
+       * Get consolidated system status for Command Center
+       */
+      async getSystemStatus(organizationId) {
+        const latestMetric = await this.getLatestReadinessMetric(organizationId);
+        const activeScenarios = await db.select().from(strategicScenarios).where(
+          and6(
+            eq7(strategicScenarios.organizationId, organizationId),
+            eq7(strategicScenarios.readinessState, "green")
+          )
+        );
+        const activeWeakSignals = await db.select().from(weakSignals).where(
+          and6(
+            eq7(weakSignals.organizationId, organizationId),
+            eq7(weakSignals.status, "active")
+          )
+        );
+        const activeOraclePatterns = await db.select().from(oraclePatterns).where(
+          and6(
+            eq7(oraclePatterns.organizationId, organizationId),
+            eq7(oraclePatterns.status, "detected")
+          )
+        );
+        let systemStatus = "operational";
+        const score = latestMetric?.overallScore || 0;
+        if (score < 60) systemStatus = "critical";
+        else if (score < 75) systemStatus = "degraded";
+        return {
+          readinessScore: latestMetric?.overallScore || 84.4,
+          activeScenarios: activeScenarios.length,
+          weakSignalsDetected: activeWeakSignals.length,
+          oraclePatternsActive: activeOraclePatterns.length,
+          playbooksReady: latestMetric?.playbooksReady || 148,
+          systemStatus,
+          lastUpdated: (/* @__PURE__ */ new Date()).toISOString()
+        };
+      }
+    };
+    dynamicStrategyService = new DynamicStrategyService();
+  }
+});
+
 // server/services/PreparednessEngine.ts
 var PreparednessEngine_exports = {};
 __export(PreparednessEngine_exports, {
   PreparednessEngine: () => PreparednessEngine,
   preparednessEngine: () => preparednessEngine
 });
-import { eq as eq8, and as and6, desc as desc5 } from "drizzle-orm";
+import { eq as eq13, and as and9, desc as desc9 } from "drizzle-orm";
 var PreparednessEngine, preparednessEngine;
 var init_PreparednessEngine = __esm({
   "server/services/PreparednessEngine.ts"() {
@@ -14597,12 +14991,12 @@ var init_PreparednessEngine = __esm({
       async calculateScore(organizationId) {
         try {
           const [scenarios3, activations, alignment, simulations] = await Promise.all([
-            db.select().from(strategicScenarios).where(eq8(strategicScenarios.organizationId, organizationId)),
-            db.select().from(warRoomSessions).where(eq8(warRoomSessions.organizationId, organizationId)),
-            db.select().from(stakeholderAlignment).where(eq8(stakeholderAlignment.organizationId, organizationId)).orderBy(desc5(stakeholderAlignment.createdAt)).limit(1),
-            db.select().from(crisisSimulations).where(and6(
-              eq8(crisisSimulations.organizationId, organizationId),
-              eq8(crisisSimulations.status, "completed")
+            db.select().from(strategicScenarios).where(eq13(strategicScenarios.organizationId, organizationId)),
+            db.select().from(warRoomSessions).where(eq13(warRoomSessions.organizationId, organizationId)),
+            db.select().from(stakeholderAlignment).where(eq13(stakeholderAlignment.organizationId, organizationId)).orderBy(desc9(stakeholderAlignment.createdAt)).limit(1),
+            db.select().from(crisisSimulations).where(and9(
+              eq13(crisisSimulations.organizationId, organizationId),
+              eq13(crisisSimulations.status, "completed")
             ))
           ]);
           const weights = {
@@ -14705,7 +15099,7 @@ var init_PreparednessEngine = __esm({
        */
       async getPreparednessTimeline(organizationId, months = 6) {
         const currentScore = await this.calculateScore(organizationId);
-        const activations = await db.select().from(warRoomSessions).where(eq8(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
+        const activations = await db.select().from(warRoomSessions).where(eq13(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
         const timeline = [];
         const now = /* @__PURE__ */ new Date();
         for (let i = months; i >= 0; i--) {
@@ -16348,7 +16742,7 @@ Contact: ${stakeholder.name}`;
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq9, and as and7, desc as desc6, isNull as isNull2, sql as sql8 } from "drizzle-orm";
+import { eq as eq14, and as and10, desc as desc10, isNull as isNull2, sql as sql10 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -16404,7 +16798,7 @@ var init_DatabaseNotificationService = __esm({
             notification: notifications,
             user: users,
             organization: organizations
-          }).from(notifications).leftJoin(users, eq9(notifications.userId, users.id)).leftJoin(organizations, eq9(notifications.organizationId, organizations.id)).where(eq9(notifications.id, notificationId));
+          }).from(notifications).leftJoin(users, eq14(notifications.userId, users.id)).leftJoin(organizations, eq14(notifications.organizationId, organizations.id)).where(eq14(notifications.id, notificationId));
           if (!notification) {
             throw new Error(`Notification ${notificationId} not found`);
           }
@@ -16423,7 +16817,7 @@ ${notification.notification.message}`,
             severity,
             metadata
           );
-          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq9(notifications.id, notificationId));
+          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq14(notifications.id, notificationId));
           console.log(`\u2705 Notification ${notificationId} delivered successfully`);
         } catch (error) {
           console.error(`\u274C Failed to deliver notification ${notificationId}:`, error);
@@ -16434,11 +16828,11 @@ ${notification.notification.message}`,
        * Get notifications for a user with pagination
        */
       async getUserNotifications(userId, organizationId, limit = 50, offset = 0) {
-        const whereConditions = [eq9(notifications.userId, userId)];
+        const whereConditions = [eq14(notifications.userId, userId)];
         if (organizationId) {
-          whereConditions.push(eq9(notifications.organizationId, organizationId));
+          whereConditions.push(eq14(notifications.organizationId, organizationId));
         }
-        return await db.select().from(notifications).where(and7(...whereConditions)).orderBy(desc6(notifications.createdAt)).limit(limit).offset(offset);
+        return await db.select().from(notifications).where(and10(...whereConditions)).orderBy(desc10(notifications.createdAt)).limit(limit).offset(offset);
       }
       /**
        * Mark notification as read
@@ -16449,9 +16843,9 @@ ${notification.notification.message}`,
             isRead: true,
             readAt: /* @__PURE__ */ new Date()
           }).where(
-            and7(
-              eq9(notifications.id, notificationId),
-              eq9(notifications.userId, userId)
+            and10(
+              eq14(notifications.id, notificationId),
+              eq14(notifications.userId, userId)
             )
           ).returning();
           return !!updated;
@@ -16465,13 +16859,13 @@ ${notification.notification.message}`,
        */
       async getUnreadCount(userId, organizationId) {
         const whereConditions = [
-          eq9(notifications.userId, userId),
-          eq9(notifications.isRead, false)
+          eq14(notifications.userId, userId),
+          eq14(notifications.isRead, false)
         ];
         if (organizationId) {
-          whereConditions.push(eq9(notifications.organizationId, organizationId));
+          whereConditions.push(eq14(notifications.organizationId, organizationId));
         }
-        const result = await db.select({ count: notifications.id }).from(notifications).where(and7(...whereConditions));
+        const result = await db.select({ count: notifications.id }).from(notifications).where(and10(...whereConditions));
         return result.length;
       }
       /**
@@ -16495,10 +16889,10 @@ ${notification.notification.message}`,
       async processScheduledNotifications() {
         try {
           const dueNotifications = await db.select().from(notifications).where(
-            and7(
+            and10(
               isNull2(notifications.sentAt),
-              sql8`${notifications.scheduledFor} IS NOT NULL`,
-              sql8`${notifications.scheduledFor} <= NOW()`
+              sql10`${notifications.scheduledFor} IS NOT NULL`,
+              sql10`${notifications.scheduledFor} <= NOW()`
             )
           );
           console.log(`\u{1F4C5} Processing ${dueNotifications.length} scheduled notifications`);
@@ -16515,9 +16909,9 @@ ${notification.notification.message}`,
       async createStrategicAlert(organizationId, alertData) {
         try {
           const executiveUsers = await db.select().from(users).where(
-            and7(
-              eq9(users.organizationId, organizationId),
-              eq9(users.department, "Executive")
+            and10(
+              eq14(users.organizationId, organizationId),
+              eq14(users.department, "Executive")
               // Or check role-based access
             )
           );
@@ -16567,9 +16961,9 @@ ${notification.notification.message}`,
           const cutoffDate = /* @__PURE__ */ new Date();
           cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
           await db.delete(notifications).where(
-            and7(
-              eq9(notifications.isRead, true),
-              sql8`${notifications.createdAt} <= ${cutoffDate}`
+            and10(
+              eq14(notifications.isRead, true),
+              sql10`${notifications.createdAt} <= ${cutoffDate}`
             )
           );
           console.log(`\u{1F9F9} Cleaned up old notifications`);
@@ -16590,7 +16984,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq10, and as and8, desc as desc7, gte as gte3, lte } from "drizzle-orm";
+import { eq as eq15, and as and11, desc as desc11, gte as gte4, lte } from "drizzle-orm";
 import pino6 from "pino";
 var logger6, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -16958,7 +17352,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async updateMetricsFromEvent(event) {
         try {
-          const relevantMetrics = await db.select().from(roiMetrics).where(eq10(roiMetrics.organizationId, event.organizationId));
+          const relevantMetrics = await db.select().from(roiMetrics).where(eq15(roiMetrics.organizationId, event.organizationId));
           for (const metric of relevantMetrics) {
             let shouldUpdate = false;
             let newValue = parseFloat(metric.currentValue || "0");
@@ -17017,7 +17411,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
                 dataPoints: updatedDataPoints,
                 lastCalculated: /* @__PURE__ */ new Date(),
                 updatedAt: /* @__PURE__ */ new Date()
-              }).where(eq10(roiMetrics.id, metric.id));
+              }).where(eq15(roiMetrics.id, metric.id));
             }
           }
         } catch (error) {
@@ -17029,7 +17423,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async calculateMetricROI(metricId) {
         try {
-          const [metric] = await db.select().from(roiMetrics).where(eq10(roiMetrics.id, metricId));
+          const [metric] = await db.select().from(roiMetrics).where(eq15(roiMetrics.id, metricId));
           if (!metric) {
             throw new Error(`Metric ${metricId} not found`);
           }
@@ -17083,17 +17477,17 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async generateExecutiveROIReport(organizationId, startDate, endDate) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq10(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq15(roiMetrics.organizationId, organizationId));
           const keyMetrics = await Promise.all(
             metrics.map((metric) => this.calculateMetricROI(metric.id))
           );
           const valueEvents = await db.select().from(valueTrackingEvents).where(
-            and8(
-              eq10(valueTrackingEvents.organizationId, organizationId),
-              gte3(valueTrackingEvents.createdAt, startDate),
+            and11(
+              eq15(valueTrackingEvents.organizationId, organizationId),
+              gte4(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
             )
-          ).orderBy(desc7(valueTrackingEvents.valueGenerated)).limit(10);
+          ).orderBy(desc11(valueTrackingEvents.valueGenerated)).limit(10);
           const totalValueGenerated = keyMetrics.reduce((sum, m) => sum + Math.max(0, m.estimatedAnnualValue), 0);
           const totalCostAvoided = valueEvents.reduce((sum, e) => sum + parseFloat(e.costAvoided || "0"), 0);
           const platformCost = 5e5;
@@ -17205,7 +17599,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async checkROIAlerts(organizationId) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq10(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq15(roiMetrics.organizationId, organizationId));
           for (const metric of metrics) {
             const calculation = await this.calculateMetricROI(metric.id);
             if (calculation.improvementPercentage > 25 && calculation.confidenceLevel > 0.7) {
@@ -17797,7 +18191,7 @@ __export(ROITracker_exports, {
   ROITracker: () => ROITracker,
   roiTracker: () => roiTracker
 });
-import { eq as eq11, and as and9, desc as desc8 } from "drizzle-orm";
+import { eq as eq16, and as and12, desc as desc12 } from "drizzle-orm";
 var ROITracker, roiTracker;
 var init_ROITracker = __esm({
   "server/services/ROITracker.ts"() {
@@ -17810,10 +18204,10 @@ var init_ROITracker = __esm({
        */
       async calculateRealROI(organizationId) {
         try {
-          const activations = await db.select().from(warRoomSessions).where(and9(
-            eq11(warRoomSessions.organizationId, organizationId),
-            eq11(warRoomSessions.status, "completed")
-          )).orderBy(desc8(warRoomSessions.createdAt));
+          const activations = await db.select().from(warRoomSessions).where(and12(
+            eq16(warRoomSessions.organizationId, organizationId),
+            eq16(warRoomSessions.status, "completed")
+          )).orderBy(desc12(warRoomSessions.createdAt));
           let totalSavings = 0;
           let totalHoursSaved = 0;
           const successfulActivations = activations.filter((a) => a.outcome !== "failed");
@@ -17871,7 +18265,7 @@ var init_ROITracker = __esm({
         try {
           await db.update(warRoomSessions).set({
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq11(warRoomSessions.id, activationId));
+          }).where(eq16(warRoomSessions.id, activationId));
         } catch (error) {
           console.error("Error tracking business impact:", error);
           throw error;
@@ -17910,7 +18304,7 @@ var init_ROITracker = __esm({
         for (const activation of activations) {
           let category = "Other";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq11(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq16(strategicScenarios.id, activation.scenarioId)).limit(1);
             category = scenario[0]?.templateCategory || "Other";
           }
           const value = await this.calculateActivationValue(activation);
@@ -17963,12 +18357,12 @@ var init_ROITracker = __esm({
        * Calculate value per scenario type
        */
       async getValueByScenarioType(organizationId) {
-        const activations = await db.select().from(warRoomSessions).where(eq11(warRoomSessions.organizationId, organizationId));
+        const activations = await db.select().from(warRoomSessions).where(eq16(warRoomSessions.organizationId, organizationId));
         const typeMap = /* @__PURE__ */ new Map();
         for (const activation of activations) {
           let type = "Unknown";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq11(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq16(strategicScenarios.id, activation.scenarioId)).limit(1);
             type = scenario[0]?.type || "Unknown";
           }
           const value = await this.calculateActivationValue(activation);
@@ -17997,15 +18391,15 @@ __export(TriggerIntelligenceService_exports, {
   TriggerIntelligenceService: () => TriggerIntelligenceService,
   triggerIntelligence: () => triggerIntelligence
 });
-import OpenAI4 from "openai";
-import { eq as eq12, and as and10, gte as gte5, desc as desc9 } from "drizzle-orm";
-var openai3, TriggerIntelligenceService, triggerIntelligence;
+import OpenAI5 from "openai";
+import { eq as eq17, and as and13, gte as gte6, desc as desc13 } from "drizzle-orm";
+var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    openai3 = new OpenAI4({
+    openai4 = new OpenAI5({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -18032,7 +18426,7 @@ Provide analysis in JSON format with:
 7. recommendations: array of 2-3 specific actionable recommendations
 
 Be specific and strategic. Focus on business impact.`;
-          const response = await openai3.chat.completions.create({
+          const response = await openai4.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -18065,9 +18459,9 @@ Be specific and strategic. Focus on business impact.`;
        */
       async matchTriggers(organizationId, analysis, eventMetadata) {
         try {
-          const triggers = await db.select().from(executiveTriggers2).where(and10(
-            eq12(executiveTriggers2.organizationId, organizationId),
-            eq12(executiveTriggers2.isActive, true)
+          const triggers = await db.select().from(executiveTriggers2).where(and13(
+            eq17(executiveTriggers2.organizationId, organizationId),
+            eq17(executiveTriggers2.isActive, true)
           ));
           const matches = [];
           for (const trigger of triggers) {
@@ -18153,10 +18547,10 @@ Be specific and strategic. Focus on business impact.`;
        */
       async getIntelligenceMetrics(organizationId, timeWindowHours = 24) {
         const cutoffTime = new Date(Date.now() - timeWindowHours * 60 * 60 * 1e3);
-        const alerts = await db.select().from(strategicAlerts).where(and10(
-          eq12(strategicAlerts.organizationId, organizationId),
-          gte5(strategicAlerts.createdAt, cutoffTime)
-        )).orderBy(desc9(strategicAlerts.createdAt));
+        const alerts = await db.select().from(strategicAlerts).where(and13(
+          eq17(strategicAlerts.organizationId, organizationId),
+          gte6(strategicAlerts.createdAt, cutoffTime)
+        )).orderBy(desc13(strategicAlerts.createdAt));
         const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length) : 0;
         const byType = alerts.reduce((acc, alert) => {
           acc[alert.alertType] = (acc[alert.alertType] || 0) + 1;
@@ -18223,16 +18617,16 @@ __export(ExecutiveBriefingService_exports, {
   ExecutiveBriefingService: () => ExecutiveBriefingService,
   executiveBriefing: () => executiveBriefing
 });
-import OpenAI5 from "openai";
-import { eq as eq13, and as and11, gte as gte6, desc as desc10 } from "drizzle-orm";
-var openai4, ExecutiveBriefingService, executiveBriefing;
+import OpenAI6 from "openai";
+import { eq as eq18, and as and14, gte as gte7, desc as desc14 } from "drizzle-orm";
+var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
     "use strict";
     init_db();
     init_schema();
     init_PreparednessEngine();
-    openai4 = new OpenAI5({
+    openai5 = new OpenAI6({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -18310,7 +18704,7 @@ Generate a comprehensive situation report with:
 6. DECISION POINTS (requires executive attention)
 
 Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
-          const response = await openai4.chat.completions.create({
+          const response = await openai5.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -18350,24 +18744,24 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         const cutoffTime = new Date(Date.now() - hoursBack * 60 * 60 * 1e3);
         const [alerts, scenarios3, metrics, preparedness, recentActivations] = await Promise.all([
           // Recent alerts
-          db.select().from(strategicAlerts).where(and11(
-            eq13(strategicAlerts.organizationId, organizationId),
-            gte6(strategicAlerts.createdAt, cutoffTime)
-          )).orderBy(desc10(strategicAlerts.createdAt)),
+          db.select().from(strategicAlerts).where(and14(
+            eq18(strategicAlerts.organizationId, organizationId),
+            gte7(strategicAlerts.createdAt, cutoffTime)
+          )).orderBy(desc14(strategicAlerts.createdAt)),
           // Active scenarios
-          db.select().from(strategicScenarios).where(eq13(strategicScenarios.organizationId, organizationId)).limit(20),
+          db.select().from(strategicScenarios).where(eq18(strategicScenarios.organizationId, organizationId)).limit(20),
           // Key metrics
-          db.select().from(kpis).where(and11(
-            eq13(kpis.organizationId, organizationId),
-            eq13(kpis.isActive, true)
+          db.select().from(kpis).where(and14(
+            eq18(kpis.organizationId, organizationId),
+            eq18(kpis.isActive, true)
           )).limit(10),
           // Preparedness score
           preparednessEngine.calculateScore(organizationId),
           // Recent war room sessions (playbook activations)
-          db.select().from(warRoomSessions).where(and11(
-            eq13(warRoomSessions.organizationId, organizationId),
-            gte6(warRoomSessions.createdAt, cutoffTime)
-          )).orderBy(desc10(warRoomSessions.createdAt)).limit(5)
+          db.select().from(warRoomSessions).where(and14(
+            eq18(warRoomSessions.organizationId, organizationId),
+            gte7(warRoomSessions.createdAt, cutoffTime)
+          )).orderBy(desc14(warRoomSessions.createdAt)).limit(5)
         ]);
         return {
           alerts,
@@ -18429,7 +18823,7 @@ Generate a concise executive briefing with these sections:
 [Strategic opportunities identified]
 
 Keep it concise, strategic, and actionable. Use bullet points where appropriate.`;
-        const response = await openai4.chat.completions.create({
+        const response = await openai5.chat.completions.create({
           model: "gpt-4o",
           messages: [
             {
@@ -18498,7 +18892,7 @@ Keep it concise, strategic, and actionable. Use bullet points where appropriate.
         alerts.forEach((a) => {
           types[a.alertType] = (types[a.alertType] || 0) + 1;
         });
-        return Object.entries(types).map(([type, count8]) => `${count8} ${type}`).join(", ");
+        return Object.entries(types).map(([type, count9]) => `${count9} ${type}`).join(", ");
       }
     };
     executiveBriefing = new ExecutiveBriefingService();
@@ -18512,7 +18906,7 @@ __export(eventIngestion_exports, {
   pollNewsFeeds: () => pollNewsFeeds,
   startEventIngestion: () => startEventIngestion
 });
-import { eq as eq14 } from "drizzle-orm";
+import { eq as eq19 } from "drizzle-orm";
 async function pollNewsFeeds() {
   try {
     const newsApiKey = process.env.NEWS_API_KEY;
@@ -18532,7 +18926,7 @@ async function pollNewsFeeds() {
     console.log(`Fetched ${articles.length} news articles for analysis`);
     const organizations3 = await db.selectDistinct({
       organizationId: executiveTriggers2.organizationId
-    }).from(executiveTriggers2).where(eq14(executiveTriggers2.isActive, true));
+    }).from(executiveTriggers2).where(eq19(executiveTriggers2.isActive, true));
     for (const article of articles.slice(0, 10)) {
       try {
         const analysis = await triggerIntelligence.analyzeEvent({
@@ -18603,7 +18997,7 @@ __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
 import { Resend as Resend2 } from "resend";
-import { eq as eq15 } from "drizzle-orm";
+import { eq as eq20 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
   "server/services/NotificationService.ts"() {
@@ -18631,7 +19025,7 @@ var init_NotificationService = __esm({
       async deliverNotification(notificationId) {
         try {
           const notification = await db.query.notifications.findFirst({
-            where: eq15(notifications.id, notificationId),
+            where: eq20(notifications.id, notificationId),
             with: {
               user: true
             }
@@ -18677,7 +19071,7 @@ var init_NotificationService = __esm({
           if (anySuccess) {
             await db.update(notifications).set({
               sentAt: /* @__PURE__ */ new Date()
-            }).where(eq15(notifications.id, notificationId));
+            }).where(eq20(notifications.id, notificationId));
           } else {
             console.error(`All delivery channels failed for notification ${notificationId}:`, deliveryResults);
           }
@@ -18950,12 +19344,12 @@ __export(PlaybookLearningService_exports, {
   default: () => PlaybookLearningService_default,
   playbookLearningService: () => playbookLearningService
 });
-import { eq as eq16 } from "drizzle-orm";
+import { eq as eq21 } from "drizzle-orm";
 import pino7 from "pino";
 async function analyzeExecution(metrics) {
   try {
     log.info({ metrics }, "Analyzing execution for learning opportunities");
-    const playbook = await db.select().from(playbookLibrary).where(eq16(playbookLibrary.id, metrics.playbookId)).limit(1);
+    const playbook = await db.select().from(playbookLibrary).where(eq21(playbookLibrary.id, metrics.playbookId)).limit(1);
     if (!playbook.length) {
       throw new Error("Playbook not found");
     }
@@ -19038,10 +19432,10 @@ async function getSuggestions(playbookId, organizationId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq37, and: and25 } = await import("drizzle-orm");
-    const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and25(
-      eq37(aiOptimizationSuggestions2.playbookId, playbookId),
-      eq37(aiOptimizationSuggestions2.organizationId, organizationId)
+    const { eq: eq40, and: and26 } = await import("drizzle-orm");
+    const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and26(
+      eq40(aiOptimizationSuggestions2.playbookId, playbookId),
+      eq40(aiOptimizationSuggestions2.organizationId, organizationId)
     ));
     return suggestions;
   } catch (error) {
@@ -19053,8 +19447,8 @@ async function acceptSuggestion(suggestionId, userId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq37 } = await import("drizzle-orm");
-    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq37(aiOptimizationSuggestions2.id, suggestionId));
+    const { eq: eq40 } = await import("drizzle-orm");
+    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq40(aiOptimizationSuggestions2.id, suggestionId));
   } catch (error) {
     console.error("Error accepting suggestion:", error);
     throw error;
@@ -19078,7 +19472,7 @@ __export(PreFlightCheckService_exports, {
   PreFlightCheckService: () => PreFlightCheckService,
   preFlightCheckService: () => preFlightCheckService
 });
-import { eq as eq17, and as and12, inArray as inArray2 } from "drizzle-orm";
+import { eq as eq22, and as and15, inArray as inArray2 } from "drizzle-orm";
 import pino8 from "pino";
 var logger7, PreFlightCheckService, preFlightCheckService;
 var init_PreFlightCheckService = __esm({
@@ -19143,9 +19537,9 @@ var init_PreFlightCheckService = __esm({
        * Get execution plan and associated tasks
        */
       async getExecutionPlan(executionPlanId) {
-        const plan = await db.select().from(scenarioExecutionPlans).where(eq17(scenarioExecutionPlans.id, executionPlanId)).limit(1);
-        const tasks4 = await db.select().from(executionPlanTasks).where(eq17(executionPlanTasks.executionPlanId, executionPlanId));
-        const phases = await db.select().from(executionPlanPhases).where(eq17(executionPlanPhases.executionPlanId, executionPlanId));
+        const plan = await db.select().from(scenarioExecutionPlans).where(eq22(scenarioExecutionPlans.id, executionPlanId)).limit(1);
+        const tasks4 = await db.select().from(executionPlanTasks).where(eq22(executionPlanTasks.executionPlanId, executionPlanId));
+        const phases = await db.select().from(executionPlanPhases).where(eq22(executionPlanPhases.executionPlanId, executionPlanId));
         return { plan: plan[0], tasks: tasks4, phases };
       }
       /**
@@ -19159,15 +19553,15 @@ var init_PreFlightCheckService = __esm({
           return warnings;
         }
         const usersWithRoles = await db.select().from(users).where(
-          and12(
-            eq17(users.organizationId, organizationId),
+          and15(
+            eq22(users.organizationId, organizationId),
             inArray2(users.roleId, requiredRoleIds)
           )
         );
         for (const roleId of requiredRoleIds) {
           const usersForRole = usersWithRoles.filter((u) => u.roleId === roleId);
           const tasksForRole = tasks4.filter((t) => t.requiredRoleId === roleId);
-          const roleData = await db.select().from(roles).where(eq17(roles.id, roleId)).limit(1);
+          const roleData = await db.select().from(roles).where(eq22(roles.id, roleId)).limit(1);
           const roleName = roleData[0]?.name || "Unknown Role";
           if (usersForRole.length === 0) {
             warnings.push({
@@ -19302,8 +19696,8 @@ var init_PreFlightCheckService = __esm({
         const requiredRoleIdsSet = new Set(tasks4.map((t) => t.requiredRoleId).filter(Boolean));
         const requiredRoleIds = Array.from(requiredRoleIdsSet);
         const usersWithRoles = await db.select().from(users).where(
-          and12(
-            eq17(users.organizationId, organizationId),
+          and15(
+            eq22(users.organizationId, organizationId),
             inArray2(users.roleId, requiredRoleIds)
           )
         );
@@ -19325,7 +19719,7 @@ __export(ComplianceCheckService_exports, {
   ComplianceCheckService: () => ComplianceCheckService,
   complianceCheckService: () => complianceCheckService
 });
-import { eq as eq18, and as and13 } from "drizzle-orm";
+import { eq as eq23, and as and16 } from "drizzle-orm";
 import pino9 from "pino";
 var logger8, ComplianceCheckService, complianceCheckService;
 var init_ComplianceCheckService = __esm({
@@ -19364,7 +19758,7 @@ var init_ComplianceCheckService = __esm({
             };
           }
           totalControls = allControlIds.size;
-          const frameworks = await db.select().from(complianceFrameworks).where(eq18(complianceFrameworks.organizationId, organizationId));
+          const frameworks = await db.select().from(complianceFrameworks).where(eq23(complianceFrameworks.organizationId, organizationId));
           for (const framework of frameworks) {
             let frameworkControls = framework.controls;
             if (frameworkControls && typeof frameworkControls === "object" && !Array.isArray(frameworkControls)) {
@@ -19454,9 +19848,9 @@ var init_ComplianceCheckService = __esm({
        */
       async getFrameworkStatus(frameworkId, organizationId) {
         const framework = await db.select().from(complianceFrameworks).where(
-          and13(
-            eq18(complianceFrameworks.id, frameworkId),
-            eq18(complianceFrameworks.organizationId, organizationId)
+          and16(
+            eq23(complianceFrameworks.id, frameworkId),
+            eq23(complianceFrameworks.organizationId, organizationId)
           )
         ).limit(1);
         if (framework.length === 0) {
@@ -19476,7 +19870,7 @@ var init_ComplianceCheckService = __esm({
        */
       async createAuditTrail(params) {
         const { organizationId, executionPlanId, decision, complianceCheck, approvedBy, notes } = params;
-        const frameworks = await db.select().from(complianceFrameworks).where(eq18(complianceFrameworks.organizationId, organizationId)).limit(1);
+        const frameworks = await db.select().from(complianceFrameworks).where(eq23(complianceFrameworks.organizationId, organizationId)).limit(1);
         if (frameworks.length > 0) {
           await db.insert(complianceReports).values({
             organizationId: frameworks[0].organizationId,
@@ -19504,14 +19898,14 @@ var init_ComplianceCheckService = __esm({
       async mapControlToTask(taskId, controlIds) {
         await db.update(executionPlanTasks).set({
           complianceControlIds: controlIds
-        }).where(eq18(executionPlanTasks.id, taskId));
+        }).where(eq23(executionPlanTasks.id, taskId));
         this.log.info({ taskId, controlCount: controlIds.length }, "Compliance controls mapped to task");
       }
       /**
        * Get compliance framework details
        */
       async getFrameworkDetails(frameworkId) {
-        return await db.select().from(complianceFrameworks).where(eq18(complianceFrameworks.id, frameworkId)).limit(1);
+        return await db.select().from(complianceFrameworks).where(eq23(complianceFrameworks.id, frameworkId)).limit(1);
       }
     };
     complianceCheckService = new ComplianceCheckService();
@@ -19524,7 +19918,7 @@ __export(ApprovalTokenService_exports, {
   ApprovalTokenService: () => ApprovalTokenService,
   approvalTokenService: () => approvalTokenService
 });
-import { eq as eq19, and as and14, isNull as isNull3 } from "drizzle-orm";
+import { eq as eq24, and as and17, isNull as isNull3 } from "drizzle-orm";
 import { nanoid as nanoid2 } from "nanoid";
 import bcrypt from "bcryptjs";
 import pino10 from "pino";
@@ -19636,7 +20030,7 @@ var init_ApprovalTokenService = __esm({
             usedBy: userId,
             ipAddress,
             userAgent
-          }).where(eq19(approvalTokens.id, record.id));
+          }).where(eq24(approvalTokens.id, record.id));
           if (record.action === "approve") {
             await this.approveExecution(record.executionInstanceId, userId);
           } else if (record.action === "reject") {
@@ -19661,7 +20055,7 @@ var init_ApprovalTokenService = __esm({
       async approveExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "running"
-        }).where(eq19(executionInstances.id, executionInstanceId));
+        }).where(eq24(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution approved via email");
       }
       /**
@@ -19670,7 +20064,7 @@ var init_ApprovalTokenService = __esm({
       async rejectExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "cancelled"
-        }).where(eq19(executionInstances.id, executionInstanceId));
+        }).where(eq24(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution rejected via email");
       }
       /**
@@ -19679,9 +20073,9 @@ var init_ApprovalTokenService = __esm({
       async getActiveTokens(userId) {
         const now = /* @__PURE__ */ new Date();
         return await db.select().from(approvalTokens).where(
-          and14(
-            eq19(approvalTokens.userId, userId),
-            eq19(approvalTokens.usedAt, null)
+          and17(
+            eq24(approvalTokens.userId, userId),
+            eq24(approvalTokens.usedAt, null)
           )
         );
       }
@@ -19692,14 +20086,14 @@ var init_ApprovalTokenService = __esm({
         await db.update(approvalTokens).set({
           usedAt: /* @__PURE__ */ new Date(),
           usedBy: userId
-        }).where(eq19(approvalTokens.id, tokenId));
+        }).where(eq24(approvalTokens.id, tokenId));
         this.log.info({ tokenId, userId }, "Token revoked");
       }
       /**
        * Get token audit trail
        */
       async getAuditTrail(executionInstanceId) {
-        const tokens = await db.select().from(approvalTokens).where(eq19(approvalTokens.executionInstanceId, executionInstanceId));
+        const tokens = await db.select().from(approvalTokens).where(eq24(approvalTokens.executionInstanceId, executionInstanceId));
         return tokens.map((token) => ({
           action: token.action,
           createdAt: token.createdAt,
@@ -19723,7 +20117,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq20, and as and15, desc as desc11, gte as gte7, count as count4 } from "drizzle-orm";
+import { eq as eq25, and as and18, desc as desc15, gte as gte8, count as count5 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -19733,7 +20127,7 @@ async function processPulseAnalysis(jobData) {
     return { status: "skipped", reason: "Invalid or missing organizationId" };
   }
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1e3);
-  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and15(eq20(weakSignals.organizationId, orgId), gte7(weakSignals.detectedAt, sixHoursAgo))).limit(1);
+  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and18(eq25(weakSignals.organizationId, orgId), gte8(weakSignals.detectedAt, sixHoursAgo))).limit(1);
   if (recentSignals.length > 0) {
     console.log("\u23ED\uFE0F Pulse analysis skipped \u2014 signal already created in last 6 hours");
     return { status: "skipped", reason: "Signal already created recently" };
@@ -19778,10 +20172,10 @@ async function processRiskAssessment(jobData) {
     return assessment2;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count4() }).from(weakSignals).where(and15(
-    eq20(weakSignals.organizationId, orgId),
-    eq20(weakSignals.status, "active"),
-    gte7(weakSignals.detectedAt, thirtyDaysAgo)
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and18(
+    eq25(weakSignals.organizationId, orgId),
+    eq25(weakSignals.status, "active"),
+    gte8(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
   const score = Math.min(100, signals * 8);
@@ -19798,21 +20192,21 @@ async function processOpportunityDetection(jobData) {
     return { status: "skipped", reason: "No valid organizationId" };
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count4() }).from(weakSignals).where(and15(
-    eq20(weakSignals.organizationId, orgId),
-    eq20(weakSignals.status, "active"),
-    gte7(weakSignals.detectedAt, thirtyDaysAgo)
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and18(
+    eq25(weakSignals.organizationId, orgId),
+    eq25(weakSignals.status, "active"),
+    gte8(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
   if (signals < 3) {
     console.log(`\u23ED\uFE0F Opportunity detection skipped \u2014 only ${signals} signals (need 3+)`);
     return { status: "skipped", reason: `Insufficient signals (${signals}/3)` };
   }
-  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and15(
-    eq20(weakSignals.organizationId, orgId),
-    eq20(weakSignals.status, "active"),
-    gte7(weakSignals.detectedAt, thirtyDaysAgo)
-  )).orderBy(desc11(weakSignals.detectedAt)).limit(10);
+  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and18(
+    eq25(weakSignals.organizationId, orgId),
+    eq25(weakSignals.status, "active"),
+    gte8(weakSignals.detectedAt, thirtyDaysAgo)
+  )).orderBy(desc15(weakSignals.detectedAt)).limit(10);
   const highImpactCount = recentSignals.filter((s) => s.impact === "high").length;
   const opportunityName = highImpactCount >= 2 ? "Strategic response window identified" : "Emerging market opportunity detected";
   const confidence = Math.min(95, 50 + signals * 5);
@@ -19851,14 +20245,14 @@ async function processExecutiveSummary(jobData) {
     return empty;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: tasksCompleted }] = await db.select({ value: count4() }).from(continuousOperationsTasks).where(and15(
-    eq20(continuousOperationsTasks.organizationId, orgId),
-    eq20(continuousOperationsTasks.status, "completed"),
-    gte7(continuousOperationsTasks.createdAt, thirtyDaysAgo)
+  const [{ value: tasksCompleted }] = await db.select({ value: count5() }).from(continuousOperationsTasks).where(and18(
+    eq25(continuousOperationsTasks.organizationId, orgId),
+    eq25(continuousOperationsTasks.status, "completed"),
+    gte8(continuousOperationsTasks.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
-  const [{ value: execCount }] = await db.select({ value: count4() }).from(executionInstances).where(and15(
-    eq20(executionInstances.organizationId, orgId),
-    gte7(executionInstances.createdAt, thirtyDaysAgo)
+  const [{ value: execCount }] = await db.select({ value: count5() }).from(executionInstances).where(and18(
+    eq25(executionInstances.organizationId, orgId),
+    gte8(executionInstances.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const tasks4 = Number(tasksCompleted) || 0;
   const execs = Number(execCount) || 0;
@@ -19899,7 +20293,7 @@ __export(BackgroundJobService_exports, {
   BackgroundJobService: () => BackgroundJobService,
   backgroundJobService: () => backgroundJobService
 });
-import { eq as eq21 } from "drizzle-orm";
+import { eq as eq26 } from "drizzle-orm";
 import pino11 from "pino";
 var logger10, BackgroundJobService, backgroundJobService;
 var init_BackgroundJobService = __esm({
@@ -19964,7 +20358,7 @@ var init_BackgroundJobService = __esm({
        */
       async processNextJob() {
         try {
-          const pendingJobs = await db.select().from(backgroundJobs).where(eq21(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
+          const pendingJobs = await db.select().from(backgroundJobs).where(eq26(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
           if (pendingJobs.length === 0) {
             return;
           }
@@ -19974,13 +20368,13 @@ var init_BackgroundJobService = __esm({
             status: "processing",
             startedAt: /* @__PURE__ */ new Date(),
             attempts: (job.attempts || 0) + 1
-          }).where(eq21(backgroundJobs.id, job.id));
+          }).where(eq26(backgroundJobs.id, job.id));
           try {
             await this.executeJob(job);
             await db.update(backgroundJobs).set({
               status: "completed",
               completedAt: /* @__PURE__ */ new Date()
-            }).where(eq21(backgroundJobs.id, job.id));
+            }).where(eq26(backgroundJobs.id, job.id));
             this.log.info({ jobId: job.id, jobType: job.jobType }, "Job completed successfully");
           } catch (error) {
             this.log.error({ error, jobId: job.id, jobType: job.jobType }, "Job failed");
@@ -19990,14 +20384,14 @@ var init_BackgroundJobService = __esm({
               await db.update(backgroundJobs).set({
                 status: "pending",
                 error: error.message
-              }).where(eq21(backgroundJobs.id, job.id));
+              }).where(eq26(backgroundJobs.id, job.id));
               this.log.info({ jobId: job.id, attempts: currentAttempts + 1 }, "Job will be retried");
             } else {
               await db.update(backgroundJobs).set({
                 status: "failed",
                 error: error.message,
                 completedAt: /* @__PURE__ */ new Date()
-              }).where(eq21(backgroundJobs.id, job.id));
+              }).where(eq26(backgroundJobs.id, job.id));
               this.log.error({ jobId: job.id, error }, "Job failed after max retries");
             }
           }
@@ -20076,385 +20470,6 @@ var init_BackgroundJobService = __esm({
     };
     backgroundJobService = new BackgroundJobService();
     backgroundJobService.startProcessing();
-  }
-});
-
-// server/services/dynamicStrategyService.ts
-var dynamicStrategyService_exports = {};
-__export(dynamicStrategyService_exports, {
-  DynamicStrategyService: () => DynamicStrategyService,
-  dynamicStrategyService: () => dynamicStrategyService
-});
-import { eq as eq22, desc as desc12, and as and16, gte as gte8 } from "drizzle-orm";
-import OpenAI6 from "openai";
-var openai5, DynamicStrategyService, dynamicStrategyService;
-var init_dynamicStrategyService = __esm({
-  "server/services/dynamicStrategyService.ts"() {
-    "use strict";
-    init_db();
-    init_schema();
-    openai5 = new OpenAI6({
-      apiKey: process.env.OPENAI_API_KEY || ""
-    });
-    DynamicStrategyService = class {
-      /**
-       * Calculate and update Future Readiness Index for an organization
-       */
-      async calculateReadinessScore(organizationId) {
-        const playbooks2 = await db.select().from(strategicScenarios).where(eq22(strategicScenarios.organizationId, organizationId));
-        const playbooksReady = playbooks2.filter((p) => p.readinessState === "green").length;
-        const playbooksTotal = playbooks2.length;
-        const recentExecutions = await db.select().from(executionInstances).where(
-          and16(
-            eq22(executionInstances.organizationId, organizationId),
-            gte8(executionInstances.createdAt, new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3))
-          )
-        );
-        const activeWeakSignals = await db.select().from(weakSignals).where(
-          and16(
-            eq22(weakSignals.organizationId, organizationId),
-            eq22(weakSignals.status, "active")
-          )
-        );
-        const completedExecutions = recentExecutions.filter((e) => e.actualExecutionTime);
-        const averageResponseTime = completedExecutions.length > 0 ? Math.round(
-          completedExecutions.reduce((sum, e) => sum + (e.actualExecutionTime || 0), 0) / completedExecutions.length
-        ) : 12;
-        const foresightScore = this.calculateForesightScore(activeWeakSignals.length, playbooksTotal);
-        const velocityScore = this.calculateVelocityScore(averageResponseTime);
-        const agilityScore = this.calculateAgilityScore(playbooksReady, playbooksTotal);
-        const learningScore = await this.calculateLearningScore(organizationId);
-        const adaptabilityScore = this.calculateAdaptabilityScore(recentExecutions.length);
-        const overallScore = Number(
-          (foresightScore * 0.2 + velocityScore * 0.25 + agilityScore * 0.25 + learningScore * 0.15 + adaptabilityScore * 0.15).toFixed(1)
-        );
-        const previousMetric = await db.select().from(readinessMetrics).where(eq22(readinessMetrics.organizationId, organizationId)).orderBy(desc12(readinessMetrics.measurementDate)).limit(1);
-        let trend = "stable";
-        if (previousMetric.length > 0) {
-          const previousScore = Number(previousMetric[0].overallScore);
-          if (overallScore > previousScore + 1) trend = "up";
-          else if (overallScore < previousScore - 1) trend = "down";
-        }
-        const [newMetric] = await db.insert(readinessMetrics).values({
-          organizationId,
-          overallScore: overallScore.toString(),
-          foresightScore: foresightScore.toString(),
-          velocityScore: velocityScore.toString(),
-          agilityScore: agilityScore.toString(),
-          learningScore: learningScore.toString(),
-          adaptabilityScore: adaptabilityScore.toString(),
-          activeScenarios: recentExecutions.filter((e) => e.status === "running").length,
-          weakSignalsDetected: activeWeakSignals.length,
-          playbooksReady,
-          playbooksTotal,
-          averageResponseTime,
-          trend
-        }).returning();
-        return this.parseReadinessMetricNumbers(newMetric);
-      }
-      calculateForesightScore(weakSignals2, playbooksTotal) {
-        const signalScore = Math.min(100, weakSignals2 * 10);
-        const playbookCoverage = playbooksTotal > 0 ? Math.min(100, playbooksTotal * 2) : 0;
-        return Math.round(signalScore * 0.6 + playbookCoverage * 0.4);
-      }
-      calculateVelocityScore(avgResponseTime) {
-        if (avgResponseTime <= 12) return 100;
-        if (avgResponseTime <= 20) return 90;
-        if (avgResponseTime <= 30) return 80;
-        if (avgResponseTime <= 45) return 70;
-        if (avgResponseTime <= 60) return 60;
-        return Math.max(40, 100 - avgResponseTime);
-      }
-      calculateAgilityScore(playbooksReady, playbooksTotal) {
-        if (playbooksTotal === 0) return 0;
-        const readinessPercentage = playbooksReady / playbooksTotal * 100;
-        return Math.round(readinessPercentage);
-      }
-      async calculateLearningScore(organizationId) {
-        const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-        const scenarios3 = await db.select().from(strategicScenarios).where(eq22(strategicScenarios.organizationId, organizationId));
-        if (scenarios3.length === 0) return 0;
-        const recentLearnings = await db.select().from(playbookLearnings).where(
-          and16(
-            eq22(playbookLearnings.scenarioId, scenarios3[0].id),
-            gte8(playbookLearnings.extractedAt, thirtyDaysAgo)
-          )
-        );
-        const appliedLearnings = recentLearnings.filter((l) => l.appliedAt).length;
-        const totalLearnings = recentLearnings.length;
-        if (totalLearnings === 0) return 60;
-        const applicationRate = appliedLearnings / totalLearnings * 100;
-        return Math.round(Math.min(100, 60 + applicationRate * 0.4));
-      }
-      calculateAdaptabilityScore(recentExecutions) {
-        if (recentExecutions >= 10) return 100;
-        if (recentExecutions >= 5) return 90;
-        if (recentExecutions >= 3) return 80;
-        if (recentExecutions >= 1) return 70;
-        return 50;
-      }
-      /**
-       * Detect weak signals using AI pattern detection
-       */
-      async detectWeakSignals(organizationId) {
-        const signalTypes = [
-          { type: "regulatory", confidence: 73, timeline: "3-6 months", impact: "high" },
-          { type: "competitor", confidence: 61, timeline: "1-2 months", impact: "medium" },
-          { type: "technology", confidence: 85, timeline: "6-12 months", impact: "high" },
-          { type: "market", confidence: 67, timeline: "2-4 weeks", impact: "low" },
-          { type: "supply_chain", confidence: 79, timeline: "1-3 months", impact: "critical" }
-        ];
-        const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1e3);
-        const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and16(
-          eq22(weakSignals.organizationId, organizationId),
-          gte8(weakSignals.detectedAt, twelveHoursAgo)
-        )).limit(1);
-        if (recentSignals.length > 0) {
-          return [];
-        }
-        const hourIndex = (/* @__PURE__ */ new Date()).getUTCHours() % signalTypes.length;
-        const signal = signalTypes[hourIndex];
-        const [newSignal] = await db.insert(weakSignals).values({
-          organizationId,
-          signalType: signal.type,
-          description: `Potential ${signal.type} shift detected requiring strategic attention`,
-          confidence: signal.confidence.toString(),
-          timeline: signal.timeline,
-          impact: signal.impact,
-          source: "AI Pattern Detection",
-          status: "active"
-        }).returning();
-        await this.logActivity(organizationId, {
-          eventType: "weak_signal",
-          title: `New weak signal detected: ${signal.type}`,
-          description: `${signal.confidence}% confidence, ${signal.timeline} timeline`,
-          severity: signal.impact === "critical" ? "critical" : "warning",
-          relatedEntityType: "signal",
-          relatedEntityId: newSignal.id
-        });
-        return [newSignal];
-      }
-      /**
-       * Detect oracle patterns from weak signals
-       */
-      async detectOraclePatterns(organizationId) {
-        const activeSignals = await db.select().from(weakSignals).where(
-          and16(
-            eq22(weakSignals.organizationId, organizationId),
-            eq22(weakSignals.status, "active")
-          )
-        ).orderBy(desc12(weakSignals.detectedAt)).limit(10);
-        if (activeSignals.length < 3) return [];
-        const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1e3);
-        const recentPatterns = await db.select({ id: oraclePatterns.id }).from(oraclePatterns).where(and16(
-          eq22(oraclePatterns.organizationId, organizationId),
-          gte8(oraclePatterns.detectedAt, twentyFourHoursAgo)
-        )).limit(1);
-        if (recentPatterns.length > 0) {
-          return [];
-        }
-        const signalTypeCounts = {};
-        for (const s of activeSignals) {
-          signalTypeCounts[s.signalType] = (signalTypeCounts[s.signalType] || 0) + 1;
-        }
-        const dominantType = Object.entries(signalTypeCounts).sort((a, b) => b[1] - a[1])[0][0];
-        const patternTypes = [
-          {
-            type: "regulatory_shift",
-            description: "Emerging regulatory changes detected across multiple signals",
-            impact: "high"
-          },
-          {
-            type: "market_disruption",
-            description: "Convergence of market trends suggesting potential disruption",
-            impact: "critical"
-          },
-          {
-            type: "supply_chain_risk",
-            description: "Multiple supply chain vulnerabilities identified",
-            impact: "high"
-          }
-        ];
-        const patternMatch = patternTypes.find((p) => p.type.includes(dominantType)) || patternTypes[0];
-        const pattern = patternMatch;
-        const confidence = Math.min(95, 50 + activeSignals.length * 5);
-        const recommendations2 = [
-          "Pre-load relevant compliance playbooks",
-          "Schedule executive briefing session",
-          "Run simulation exercise with key stakeholders",
-          "Review and update affected playbooks"
-        ];
-        const [newPattern] = await db.insert(oraclePatterns).values({
-          organizationId,
-          patternType: pattern.type,
-          description: pattern.description,
-          confidence: confidence.toString(),
-          impact: pattern.impact,
-          timeline: "2-4 months",
-          recommendations: recommendations2,
-          affectedScenarios: [],
-          evidenceSignals: activeSignals.slice(0, 3).map((s) => s.id),
-          status: "detected"
-        }).returning();
-        await this.logActivity(organizationId, {
-          eventType: "pattern_detected",
-          title: `Oracle: ${pattern.type} detected`,
-          description: `${confidence}% confidence, ${pattern.impact} impact`,
-          severity: pattern.impact === "critical" ? "critical" : "warning",
-          relatedEntityType: "pattern",
-          relatedEntityId: newPattern.id
-        });
-        return [newPattern];
-      }
-      /**
-       * Extract learnings from execution instance using AI
-       */
-      async extractLearnings(executionInstanceId, scenarioId) {
-        const execution = await db.select().from(executionInstances).where(eq22(executionInstances.id, executionInstanceId)).limit(1);
-        if (execution.length === 0 || !execution[0].lessonsLearned) {
-          return [];
-        }
-        const prompt = `Analyze this execution outcome and extract specific, actionable learnings:
-
-Execution Notes: ${execution[0].lessonsLearned}
-Outcome: ${execution[0].outcome}
-Execution Time: ${execution[0].actualExecutionTime} minutes
-
-Extract 2-3 specific learnings in the following categories:
-- communication: improvements to stakeholder communication
-- timing: better timing or sequencing of activities
-- resource_allocation: resource optimization opportunities
-- escalation: escalation protocol improvements
-
-Format each learning as a concise action statement.`;
-        try {
-          const response = await openai5.chat.completions.create({
-            model: "gpt-4o",
-            messages: [
-              {
-                role: "system",
-                content: "You are an AI assistant that extracts actionable learnings from strategic execution outcomes."
-              },
-              { role: "user", content: prompt }
-            ],
-            temperature: 0.3
-          });
-          const learningsText = response.choices[0]?.message?.content || "";
-          const learningsList = learningsText.split("\n").filter((l) => l.trim().length > 10).slice(0, 3);
-          const learnings = await Promise.all(
-            learningsList.map(async (learning) => {
-              const category = this.categorizeLearning(learning);
-              const [newLearning] = await db.insert(playbookLearnings).values({
-                scenarioId,
-                executionInstanceId,
-                learning: learning.trim(),
-                category,
-                impact: "medium",
-                confidence: "0.85"
-              }).returning();
-              return newLearning;
-            })
-          );
-          return learnings;
-        } catch (error) {
-          console.error("Error extracting learnings:", error);
-          return [];
-        }
-      }
-      categorizeLearning(learning) {
-        const lower = learning.toLowerCase();
-        if (lower.includes("communication") || lower.includes("notify") || lower.includes("inform")) {
-          return "communication";
-        }
-        if (lower.includes("timing") || lower.includes("sequence") || lower.includes("earlier") || lower.includes("later")) {
-          return "timing";
-        }
-        if (lower.includes("resource") || lower.includes("allocation") || lower.includes("capacity")) {
-          return "resource_allocation";
-        }
-        if (lower.includes("escalate") || lower.includes("alert") || lower.includes("priority")) {
-          return "escalation";
-        }
-        return "other";
-      }
-      /**
-       * Log activity to activity feed
-       */
-      async logActivity(organizationId, activity) {
-        const [event] = await db.insert(activityFeedEvents).values({
-          organizationId,
-          ...activity
-        }).returning();
-        return event;
-      }
-      /**
-       * Get latest readiness metrics
-       */
-      async getLatestReadinessMetric(organizationId) {
-        const metrics = await db.select().from(readinessMetrics).where(eq22(readinessMetrics.organizationId, organizationId)).orderBy(desc12(readinessMetrics.measurementDate)).limit(1);
-        const metric = metrics[0];
-        if (!metric) return null;
-        return this.parseReadinessMetricNumbers(metric);
-      }
-      /**
-       * Parse decimal strings to numbers for frontend consumption
-       */
-      parseReadinessMetricNumbers(metric) {
-        return {
-          ...metric,
-          overallScore: metric.overallScore ? parseFloat(metric.overallScore) : 0,
-          foresightScore: metric.foresightScore ? parseFloat(metric.foresightScore) : 0,
-          velocityScore: metric.velocityScore ? parseFloat(metric.velocityScore) : 0,
-          agilityScore: metric.agilityScore ? parseFloat(metric.agilityScore) : 0,
-          learningScore: metric.learningScore ? parseFloat(metric.learningScore) : 0,
-          adaptabilityScore: metric.adaptabilityScore ? parseFloat(metric.adaptabilityScore) : 0
-        };
-      }
-      /**
-       * Get recent activity feed
-       */
-      async getActivityFeed(organizationId, limit = 20) {
-        return db.select().from(activityFeedEvents).where(eq22(activityFeedEvents.organizationId, organizationId)).orderBy(desc12(activityFeedEvents.createdAt)).limit(limit);
-      }
-      /**
-       * Get consolidated system status for Command Center
-       */
-      async getSystemStatus(organizationId) {
-        const latestMetric = await this.getLatestReadinessMetric(organizationId);
-        const activeScenarios = await db.select().from(strategicScenarios).where(
-          and16(
-            eq22(strategicScenarios.organizationId, organizationId),
-            eq22(strategicScenarios.readinessState, "green")
-          )
-        );
-        const activeWeakSignals = await db.select().from(weakSignals).where(
-          and16(
-            eq22(weakSignals.organizationId, organizationId),
-            eq22(weakSignals.status, "active")
-          )
-        );
-        const activeOraclePatterns = await db.select().from(oraclePatterns).where(
-          and16(
-            eq22(oraclePatterns.organizationId, organizationId),
-            eq22(oraclePatterns.status, "detected")
-          )
-        );
-        let systemStatus = "operational";
-        const score = latestMetric?.overallScore || 0;
-        if (score < 60) systemStatus = "critical";
-        else if (score < 75) systemStatus = "degraded";
-        return {
-          readinessScore: latestMetric?.overallScore || 84.4,
-          activeScenarios: activeScenarios.length,
-          weakSignalsDetected: activeWeakSignals.length,
-          oraclePatternsActive: activeOraclePatterns.length,
-          playbooksReady: latestMetric?.playbooksReady || 148,
-          systemStatus,
-          lastUpdated: (/* @__PURE__ */ new Date()).toISOString()
-        };
-      }
-    };
-    dynamicStrategyService = new DynamicStrategyService();
   }
 });
 
@@ -20686,7 +20701,7 @@ var init_DataIntegrationManager = __esm({
 });
 
 // server/services/integrationManager.ts
-import { eq as eq23 } from "drizzle-orm";
+import { eq as eq27 } from "drizzle-orm";
 import crypto2 from "crypto";
 var ENCRYPTION_KEY, ALGORITHM2, IntegrationManager, integrationManager;
 var init_integrationManager = __esm({
@@ -20763,13 +20778,13 @@ var init_integrationManager = __esm({
               status: "active",
               lastSyncAt: /* @__PURE__ */ new Date(),
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq23(enterpriseIntegrations.id, integration.id));
+            }).where(eq27(enterpriseIntegrations.id, integration.id));
           } else {
             await db.update(enterpriseIntegrations).set({
               status: "error",
               errorLog: { message: "Connection test failed" },
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq23(enterpriseIntegrations.id, integration.id));
+            }).where(eq27(enterpriseIntegrations.id, integration.id));
           }
           return {
             ...integration,
@@ -20788,7 +20803,7 @@ var init_integrationManager = __esm({
           await db.update(enterpriseIntegrations).set({
             status: "inactive",
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq23(enterpriseIntegrations.id, integrationId));
+          }).where(eq27(enterpriseIntegrations.id, integrationId));
           return { success: true };
         } catch (error) {
           console.error("Failed to disconnect integration:", error);
@@ -20800,7 +20815,7 @@ var init_integrationManager = __esm({
        */
       async testConnection(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq23(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq27(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return false;
           }
@@ -20918,7 +20933,7 @@ var init_integrationManager = __esm({
             status: enterpriseIntegrations.status,
             lastSyncAt: enterpriseIntegrations.lastSyncAt,
             createdAt: enterpriseIntegrations.createdAt
-          }).from(enterpriseIntegrations).where(eq23(enterpriseIntegrations.organizationId, organizationId));
+          }).from(enterpriseIntegrations).where(eq27(enterpriseIntegrations.organizationId, organizationId));
           return integrations;
         } catch (error) {
           console.error("Failed to get integrations:", error);
@@ -20930,7 +20945,7 @@ var init_integrationManager = __esm({
        */
       async getCredentials(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq23(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq27(enterpriseIntegrations.id, integrationId)).limit(1);
           const config = integration?.configuration;
           if (!integration || !config?.encryptedCredentials) {
             return null;
@@ -20965,7 +20980,7 @@ var init_integrationManager = __esm({
        */
       async getIntegrationHealth(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq23(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq27(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return { healthy: false, message: "Integration not found" };
           }
@@ -20989,7 +21004,7 @@ var init_integrationManager = __esm({
 });
 
 // server/services/dataSourceService.ts
-import { eq as eq24 } from "drizzle-orm";
+import { eq as eq28 } from "drizzle-orm";
 var DataSourceService, dataSourceService;
 var init_dataSourceService = __esm({
   "server/services/dataSourceService.ts"() {
@@ -21007,7 +21022,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq24(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq28(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -21033,7 +21048,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq24(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq28(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -21059,7 +21074,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq24(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq28(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -21364,7 +21379,7 @@ var init_dataSourceService = __esm({
 });
 
 // server/services/syncEngine.ts
-import { eq as eq25 } from "drizzle-orm";
+import { eq as eq29 } from "drizzle-orm";
 var SyncEngine, syncEngine;
 var init_syncEngine = __esm({
   "server/services/syncEngine.ts"() {
@@ -21672,11 +21687,11 @@ var init_syncEngine = __esm({
           calendar: null
         };
         try {
-          const [scenario] = await db.select().from(strategicScenarios).where(eq25(strategicScenarios.id, scenarioId)).limit(1);
+          const [scenario] = await db.select().from(strategicScenarios).where(eq29(strategicScenarios.id, scenarioId)).limit(1);
           if (!scenario) {
             return { success: false, results, errors: ["Scenario not found"] };
           }
-          const scenarioTasks = await db.select().from(tasks).where(eq25(tasks.scenarioId, scenarioId));
+          const scenarioTasks = await db.select().from(tasks).where(eq29(tasks.scenarioId, scenarioId));
           if (integrations.slack) {
             const slackResult = await this.createSlackChannel(integrations.slack, {
               name: `crisis-${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}`,
@@ -21743,11 +21758,11 @@ __export(integrations_exports, {
 });
 import { Router as Router5 } from "express";
 import { z as z5 } from "zod";
-function getUserId(req) {
+function getUserId4(req) {
   return req.user?.claims?.sub || req.user?.sub || req.user?.id || null;
 }
-function requireAuth(req, res, next) {
-  const userId = getUserId(req);
+function requireAuth4(req, res, next) {
+  const userId = getUserId4(req);
   if (!userId) {
     return res.status(401).json({ error: "Authentication required" });
   }
@@ -21946,7 +21961,7 @@ var init_integrations = __esm({
         res.status(500).json({ message: "Health check failed" });
       }
     });
-    router5.get("/jira/auth", requireAuth, (req, res) => {
+    router5.get("/jira/auth", requireAuth4, (req, res) => {
       if (!JIRA_CLIENT_ID) {
         return res.status(500).json({ error: "Jira OAuth not configured on server (JIRA_CLIENT_ID missing)" });
       }
@@ -22026,7 +22041,7 @@ var init_integrations = __esm({
         res.status(500).send(`Authentication failed: ${error instanceof Error ? error.message : "Unknown error"}`);
       }
     });
-    router5.get("/enterprise/:organizationId", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:organizationId", requireAuth4, async (req, res) => {
       try {
         const { organizationId } = req.params;
         const integrations = await integrationManager.getIntegrations(organizationId);
@@ -22039,7 +22054,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/connect", requireAuth, async (req, res) => {
+    router5.post("/enterprise/connect", requireAuth4, async (req, res) => {
       try {
         const validationResult = connectIntegrationSchema.safeParse(req.body);
         if (!validationResult.success) {
@@ -22066,7 +22081,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/disconnect", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/disconnect", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const result = await integrationManager.disconnectIntegration(integrationId);
@@ -22079,7 +22094,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.get("/enterprise/:integrationId/test", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:integrationId/test", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const isHealthy = await integrationManager.testConnection(integrationId);
@@ -22092,7 +22107,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.get("/enterprise/:integrationId/health", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:integrationId/health", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const health = await integrationManager.getIntegrationHealth(integrationId);
@@ -22105,7 +22120,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.get("/enterprise/:integrationId/stakeholders", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:integrationId/stakeholders", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const { department, role, level } = req.query;
@@ -22123,7 +22138,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.get("/enterprise/:integrationId/channels", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:integrationId/channels", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const channels = await dataSourceService.queryCommunicationChannels(integrationId);
@@ -22136,7 +22151,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.get("/enterprise/:integrationId/projects", requireAuth, async (req, res) => {
+    router5.get("/enterprise/:integrationId/projects", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const projects2 = await dataSourceService.queryProjects(integrationId);
@@ -22149,7 +22164,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/slack/create-channel", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/slack/create-channel", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const validationResult = createSlackChannelSchema.safeParse(req.body);
@@ -22176,7 +22191,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/slack/send-message", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/slack/send-message", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const validationResult = sendSlackMessageSchema.safeParse(req.body);
@@ -22200,7 +22215,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/jira/create-tasks", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/jira/create-tasks", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const validationResult = createJiraTasksSchema.safeParse(req.body);
@@ -22221,7 +22236,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/jira/update-status", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/jira/update-status", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const validationResult = updateJiraStatusSchema.safeParse(req.body);
@@ -22242,7 +22257,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/:integrationId/calendar/create-event", requireAuth, async (req, res) => {
+    router5.post("/enterprise/:integrationId/calendar/create-event", requireAuth4, async (req, res) => {
       try {
         const { integrationId } = req.params;
         const validationResult = createCalendarEventSchema.safeParse(req.body);
@@ -22270,7 +22285,7 @@ var init_integrations = __esm({
         });
       }
     });
-    router5.post("/enterprise/activate-playbook", requireAuth, async (req, res) => {
+    router5.post("/enterprise/activate-playbook", requireAuth4, async (req, res) => {
       try {
         const validationResult = activatePlaybookSchema.safeParse(req.body);
         if (!validationResult.success) {
@@ -22454,13 +22469,13 @@ __export(oauth_routes_exports, {
 });
 import { Router as Router6 } from "express";
 import crypto3 from "crypto";
-import { eq as eq26 } from "drizzle-orm";
+import { eq as eq30 } from "drizzle-orm";
 function getBaseUrl(req) {
   const proto = req.headers["x-forwarded-proto"] || req.protocol || "https";
   const host = req.headers["x-forwarded-host"] || req.headers.host;
   return `${proto}://${host}`;
 }
-function getUserId2(req) {
+function getUserId5(req) {
   return req.user?.claims?.sub || req.user?.sub || req.user?.id || null;
 }
 var router6, JIRA_CLIENT_ID2, JIRA_CLIENT_SECRET2, SLACK_CLIENT_ID, SLACK_CLIENT_SECRET, pendingOAuthStates, oauth_routes_default;
@@ -22484,7 +22499,7 @@ var init_oauth_routes = __esm({
       keysToDelete.forEach((k) => pendingOAuthStates.delete(k));
     }, 6e4);
     router6.get("/jira/authorize", (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const organizationId = req.query.organizationId;
       if (!organizationId) return res.status(400).json({ error: "organizationId required" });
@@ -22571,12 +22586,12 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/jira/refresh", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.refreshToken) return res.status(400).json({ error: "No refresh token available" });
@@ -22591,7 +22606,7 @@ var init_oauth_routes = __esm({
           })
         });
         if (!tokenRes.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq26(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq30(enterpriseIntegrations.id, integrationId));
           return res.status(500).json({ error: "Token refresh failed" });
         }
         const tokens = await tokenRes.json();
@@ -22604,7 +22619,7 @@ var init_oauth_routes = __esm({
             expiresAt: Date.now() + tokens.expires_in * 1e3
           },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq26(enterpriseIntegrations.id, integrationId));
+        }).where(eq30(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Jira token refresh error:", err);
@@ -22612,7 +22627,7 @@ var init_oauth_routes = __esm({
       }
     });
     router6.get("/slack/authorize", (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const organizationId = req.query.organizationId;
       if (!organizationId) return res.status(400).json({ error: "organizationId required" });
@@ -22697,7 +22712,7 @@ var init_oauth_routes = __esm({
       }
     });
     router6.get("/status", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const organizationId = req.query.organizationId;
       if (!organizationId) return res.status(400).json({ error: "organizationId required" });
@@ -22711,7 +22726,7 @@ var init_oauth_routes = __esm({
           lastSyncAt: enterpriseIntegrations.lastSyncAt,
           createdAt: enterpriseIntegrations.createdAt,
           configuration: enterpriseIntegrations.configuration
-        }).from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.organizationId, organizationId));
+        }).from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.organizationId, organizationId));
         const available = {
           jira: { configured: !!JIRA_CLIENT_ID2, provider: "Atlassian Jira" },
           slack: { configured: !!SLACK_CLIENT_ID, provider: "Slack" }
@@ -22723,12 +22738,12 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/disconnect", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         if (integration.vendor === "slack") {
           const metadata = integration.metadata;
@@ -22747,7 +22762,7 @@ var init_oauth_routes = __esm({
           status: "inactive",
           metadata: { disconnectedAt: (/* @__PURE__ */ new Date()).toISOString(), disconnectedBy: userId },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq26(enterpriseIntegrations.id, integrationId));
+        }).where(eq30(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Failed to disconnect:", err);
@@ -22755,11 +22770,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/jira/test", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -22769,10 +22784,10 @@ var init_oauth_routes = __esm({
         });
         if (testRes.ok) {
           const user = await testRes.json();
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq26(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq30(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, user: { displayName: user.displayName, email: user.emailAddress } });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq26(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq30(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: `API returned ${testRes.status}` });
         }
       } catch (err) {
@@ -22780,11 +22795,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/slack/test", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.json({ healthy: false, error: "Missing credentials" });
@@ -22794,10 +22809,10 @@ var init_oauth_routes = __esm({
         });
         const data = await testRes.json();
         if (data.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq26(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq30(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, team: data.team, user: data.user });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq26(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq30(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: data.error });
         }
       } catch (err) {
@@ -22805,11 +22820,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/slack/send", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, channel, text: text3, blocks } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -22825,11 +22840,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.post("/jira/create-issue", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, projectKey, summary, description, issueType, priority, assignee } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -22875,11 +22890,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.get("/jira/projects", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -22901,11 +22916,11 @@ var init_oauth_routes = __esm({
       }
     });
     router6.get("/slack/channels", async (req, res) => {
-      const userId = getUserId2(req);
+      const userId = getUserId5(req);
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq26(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq30(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -23179,7 +23194,7 @@ var seedPipelineData_exports = {};
 __export(seedPipelineData_exports, {
   seedPipelineData: () => seedPipelineData
 });
-import { sql as sql11, count as count5 } from "drizzle-orm";
+import { sql as sql13, count as count6 } from "drizzle-orm";
 function getTasksForPlaybook(domainName, playbookIndex) {
   const templates = DOMAIN_TASK_TEMPLATES[domainName];
   if (!templates) return [];
@@ -23222,12 +23237,12 @@ async function seedPipelineData() {
   console.log(`[Seed] Using primary user: ${userRows[0].firstName} ${userRows[0].lastName} (${primaryUserId})`);
   const scenarioRows = await db.select().from(strategicScenarios).limit(10);
   console.log(`[Seed] Found ${scenarioRows.length} strategic scenarios`);
-  const [taskSeqCount] = await db.select({ cnt: count5() }).from(playbookTaskSequences);
+  const [taskSeqCount] = await db.select({ cnt: count6() }).from(playbookTaskSequences);
   if (Number(taskSeqCount.cnt) > 0) {
     console.log(`[Seed] Playbook task sequences already seeded (${taskSeqCount.cnt} rows). Skipping.`);
   } else {
     console.log("[Seed] Seeding playbook task sequences for 170 playbooks...");
-    const playbooks2 = await db.execute(sql11`
+    const playbooks2 = await db.execute(sql13`
       SELECT pl.id, pl.playbook_number, pl.name, pl.strategic_category, pd.name as domain_name
       FROM playbook_library pl
       JOIN playbook_domains pd ON pl.domain_id = pd.id
@@ -23261,7 +23276,7 @@ async function seedPipelineData() {
     }
     console.log(`[Seed] \u2713 Inserted ${allTaskRows.length} playbook task sequences across ${playbookIdx} playbooks`);
   }
-  const [irCount] = await db.select({ cnt: count5() }).from(intelligenceReports);
+  const [irCount] = await db.select({ cnt: count6() }).from(intelligenceReports);
   if (Number(irCount.cnt) > 0) {
     console.log(`[Seed] Intelligence reports already seeded (${irCount.cnt} rows). Skipping.`);
   } else {
@@ -23355,7 +23370,7 @@ async function seedPipelineData() {
     ]);
     console.log("[Seed] \u2713 Inserted 5 intelligence reports");
   }
-  const [doCount] = await db.select({ cnt: count5() }).from(decisionOutcomes);
+  const [doCount] = await db.select({ cnt: count6() }).from(decisionOutcomes);
   if (Number(doCount.cnt) > 0) {
     console.log(`[Seed] Decision outcomes already seeded (${doCount.cnt} rows). Skipping.`);
   } else {
@@ -23537,7 +23552,7 @@ async function seedPipelineData() {
     ]);
     console.log("[Seed] \u2713 Inserted 8 decision outcomes");
   }
-  const [wrCount] = await db.select({ cnt: count5() }).from(warRoomSessions);
+  const [wrCount] = await db.select({ cnt: count6() }).from(warRoomSessions);
   if (Number(wrCount.cnt) > 0) {
     console.log(`[Seed] War room sessions already seeded (${wrCount.cnt} rows). Skipping.`);
   } else {
@@ -23650,7 +23665,7 @@ async function seedPipelineData() {
     ]);
     console.log("[Seed] \u2713 Inserted 3 war room sessions");
   }
-  const [paCount] = await db.select({ cnt: count5() }).from(playbookActivations);
+  const [paCount] = await db.select({ cnt: count6() }).from(playbookActivations);
   if (Number(paCount.cnt) > 0) {
     console.log(`[Seed] Playbook activations already seeded (${paCount.cnt} rows). Skipping.`);
   } else {
@@ -24394,7 +24409,7 @@ Metric: ${Trigger?.MetricName} (${Trigger?.Namespace})`,
 });
 
 // server/services/preparedness-scoring.ts
-import { eq as eq28, desc as desc13 } from "drizzle-orm";
+import { eq as eq32, desc as desc16 } from "drizzle-orm";
 function calculatePreparednessScore(customization, playbook) {
   if (!customization) {
     return 80;
@@ -24411,12 +24426,12 @@ function calculatePreparednessScore(customization, playbook) {
   return Math.round(score);
 }
 async function getPlaybookInsights(playbookId) {
-  const [playbook] = await db.select().from(playbookLibrary).where(eq28(playbookLibrary.id, playbookId)).limit(1);
+  const [playbook] = await db.select().from(playbookLibrary).where(eq32(playbookLibrary.id, playbookId)).limit(1);
   if (!playbook) {
     throw new Error(`Playbook ${playbookId} not found`);
   }
-  const [customization] = await db.select().from(playbookCustomizations).where(eq28(playbookCustomizations.playbookId, playbookId)).limit(1);
-  const activations = await db.select().from(playbookActivations).where(eq28(playbookActivations.playbookId, playbookId)).orderBy(desc13(playbookActivations.activatedAt)).limit(10);
+  const [customization] = await db.select().from(playbookCustomizations).where(eq32(playbookCustomizations.playbookId, playbookId)).limit(1);
+  const activations = await db.select().from(playbookActivations).where(eq32(playbookActivations.playbookId, playbookId)).orderBy(desc16(playbookActivations.activatedAt)).limit(10);
   const preparednessScore = calculatePreparednessScore(customization, playbook);
   let readinessStatus = "not_started";
   if (preparednessScore >= 95) readinessStatus = "ready";
@@ -24490,12 +24505,7 @@ var init_preparedness_scoring = __esm({
 });
 
 // server/services/ExecutionPlanSyncService.ts
-var ExecutionPlanSyncService_exports = {};
-__export(ExecutionPlanSyncService_exports, {
-  ExecutionPlanSyncService: () => ExecutionPlanSyncService,
-  executionPlanSyncService: () => executionPlanSyncService
-});
-import { sql as sql12 } from "drizzle-orm";
+import { sql as sql14 } from "drizzle-orm";
 var JiraAdapter2, AsanaAdapter, MondayAdapter, MSProjectAdapter, ServiceNowAdapter2, ExecutionPlanSyncService, executionPlanSyncService;
 var init_ExecutionPlanSyncService = __esm({
   "server/services/ExecutionPlanSyncService.ts"() {
@@ -24782,14 +24792,14 @@ var init_ExecutionPlanSyncService = __esm({
     };
     MondayAdapter = class {
       platform = "monday";
-      async graphqlRequest(credentials, query, variables2) {
+      async graphqlRequest(credentials, query, variables) {
         const response = await fetch("https://api.monday.com/v2", {
           method: "POST",
           headers: {
             "Authorization": credentials.apiKey || "",
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ query, variables: variables2 })
+          body: JSON.stringify({ query, variables })
         });
         if (!response.ok) {
           throw new Error(`Monday.com API error: ${response.statusText}`);
@@ -25113,7 +25123,7 @@ var init_ExecutionPlanSyncService = __esm({
             return { success: false, errors: ["Invalid or expired credentials"] };
           }
           const instanceResult = await db.execute(
-            sql12`SELECT ei.*, ss.title as scenario_title, ss.description as scenario_description
+            sql14`SELECT ei.*, ss.title as scenario_title, ss.description as scenario_description
             FROM execution_instances ei
             LEFT JOIN strategic_scenarios ss ON ei.scenario_id = ss.id
             WHERE ei.id = ${executionInstanceId}`
@@ -25136,7 +25146,7 @@ var init_ExecutionPlanSyncService = __esm({
             metadata: template.custom_fields
           });
           const tasksResult = await db.execute(
-            sql12`SELECT ept.*, epp.name as phase_name
+            sql14`SELECT ept.*, epp.name as phase_name
             FROM execution_plan_tasks ept
             LEFT JOIN execution_plan_phases epp ON ept.phase_id = epp.id
             LEFT JOIN scenario_execution_plans sep ON epp.plan_id = sep.id
@@ -25238,7 +25248,7 @@ var init_ExecutionPlanSyncService = __esm({
               try {
                 const status = await adapter.getTaskStatus(credentials, mapping.externalId);
                 await db.execute(
-                  sql12`UPDATE execution_plan_tasks SET 
+                  sql14`UPDATE execution_plan_tasks SET 
                   status = ${this.mapExternalStatus(status.status)},
                   updated_at = NOW()
                   WHERE id = ${internalTaskId}`
@@ -25250,7 +25260,7 @@ var init_ExecutionPlanSyncService = __esm({
             }
           } else {
             const tasksResult = await db.execute(
-              sql12`SELECT id, status FROM execution_plan_tasks WHERE id = ANY(${Object.keys(taskSyncMap)}::uuid[])`
+              sql14`SELECT id, status FROM execution_plan_tasks WHERE id = ANY(${Object.keys(taskSyncMap)}::uuid[])`
             );
             for (const task of tasksResult.rows) {
               const mapping = taskSyncMap[task.id];
@@ -25309,9 +25319,9 @@ var init_ExecutionPlanSyncService = __esm({
           expiresAt: config.expiresAt ? new Date(config.expiresAt) : void 0
         };
       }
-      interpolateTemplate(template, variables2) {
+      interpolateTemplate(template, variables) {
         return template.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-          return variables2[key] !== void 0 ? String(variables2[key]) : match;
+          return variables[key] !== void 0 ? String(variables[key]) : match;
         });
       }
       mapPriority(internal) {
@@ -27794,7 +27804,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq29, desc as desc14, sql as sql13, and as and20 } from "drizzle-orm";
+import { eq as eq33, desc as desc17, sql as sql15, and as and22 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -27860,7 +27870,7 @@ function getFallbackLibraryData() {
   });
   return { domains, categories: [], playbooks: playbooks2 };
 }
-function requireAuth2(req, res, next) {
+function requireAuth5(req, res, next) {
   if (!req.isAuthenticated || !req.isAuthenticated()) {
     return res.status(401).json({ error: "Authentication required" });
   }
@@ -27877,20 +27887,20 @@ function isValidUUID(str) {
 }
 async function recalculateReadinessScore(playbookId, organizationId) {
   try {
-    const prepareItems = await db.select().from(playbookPrepareItems).where(and20(
-      eq29(playbookPrepareItems.playbookId, playbookId),
-      eq29(playbookPrepareItems.organizationId, organizationId)
+    const prepareItems = await db.select().from(playbookPrepareItems).where(and22(
+      eq33(playbookPrepareItems.playbookId, playbookId),
+      eq33(playbookPrepareItems.organizationId, organizationId)
     ));
-    const monitorItems = await db.select().from(playbookMonitorItems).where(and20(
-      eq29(playbookMonitorItems.playbookId, playbookId),
-      eq29(playbookMonitorItems.organizationId, organizationId)
+    const monitorItems = await db.select().from(playbookMonitorItems).where(and22(
+      eq33(playbookMonitorItems.playbookId, playbookId),
+      eq33(playbookMonitorItems.organizationId, organizationId)
     ));
-    const learnItems = await db.select().from(playbookLearnItems).where(and20(
-      eq29(playbookLearnItems.playbookId, playbookId),
-      eq29(playbookLearnItems.organizationId, organizationId)
+    const learnItems = await db.select().from(playbookLearnItems).where(and22(
+      eq33(playbookLearnItems.playbookId, playbookId),
+      eq33(playbookLearnItems.organizationId, organizationId)
     ));
-    const tasks4 = await db.select().from(playbookTaskSequences).where(eq29(playbookTaskSequences.playbookId, playbookId));
-    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq29(playbookDecisionTrees.playbookId, playbookId));
+    const tasks4 = await db.select().from(playbookTaskSequences).where(eq33(playbookTaskSequences.playbookId, playbookId));
+    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq33(playbookDecisionTrees.playbookId, playbookId));
     const prepareCompleted = prepareItems.filter((i) => i.status === "completed").length;
     const prepareTotal = prepareItems.length || 1;
     const prepareScore = Math.round(prepareCompleted / prepareTotal * 100);
@@ -27898,9 +27908,9 @@ async function recalculateReadinessScore(playbookId, organizationId) {
     const monitorScore = monitorItems.length > 0 ? monitorActive > 0 ? 100 : 50 : 0;
     const executeScore = tasks4.length > 0 ? 100 : decisionTrees2.length > 0 ? 50 : 0;
     const learnScore = learnItems.length > 0 ? 100 : 0;
-    const [existingScore] = await db.select().from(playbookReadinessScores).where(and20(
-      eq29(playbookReadinessScores.playbookId, playbookId),
-      eq29(playbookReadinessScores.organizationId, organizationId)
+    const [existingScore] = await db.select().from(playbookReadinessScores).where(and22(
+      eq33(playbookReadinessScores.playbookId, playbookId),
+      eq33(playbookReadinessScores.organizationId, organizationId)
     ));
     const prepareWeight = existingScore?.prepareWeight ?? 40;
     const monitorWeight = existingScore?.monitorWeight ?? 20;
@@ -27942,7 +27952,7 @@ async function recalculateReadinessScore(playbookId, organizationId) {
       updatedAt: /* @__PURE__ */ new Date()
     };
     if (existingScore) {
-      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq29(playbookReadinessScores.id, existingScore.id)).returning();
+      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq33(playbookReadinessScores.id, existingScore.id)).returning();
       return updated;
     } else {
       const [created] = await db.insert(playbookReadinessScores).values(scoreData).returning();
@@ -28095,7 +28105,7 @@ function aggregateLearningInsights(learnings) {
       allThemes[theme] = (allThemes[theme] || 0) + 1;
     });
   });
-  const topThemes = Object.entries(allThemes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([theme, count8]) => ({ theme, frequency: count8 }));
+  const topThemes = Object.entries(allThemes).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([theme, count9]) => ({ theme, frequency: count9 }));
   const allActions = [];
   learnings.forEach((l) => {
     const actions = l.improvementActions || [];
@@ -28175,7 +28185,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/domains/:domainId/categories", async (req, res) => {
       try {
         const { domainId } = req.params;
-        const categories = await db.select().from(playbookCategories).where(eq29(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
+        const categories = await db.select().from(playbookCategories).where(eq33(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
         res.json(categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -28195,7 +28205,7 @@ var init_playbookLibraryRoutes = __esm({
         }
         let playbooks2 = rawPlaybooks;
         if (organizationId) {
-          const readinessScores = await db.select().from(playbookReadinessScores).where(eq29(playbookReadinessScores.organizationId, organizationId));
+          const readinessScores = await db.select().from(playbookReadinessScores).where(eq33(playbookReadinessScores.organizationId, organizationId));
           const scoreMap = new Map(
             readinessScores.map((score) => [score.playbookId, score])
           );
@@ -28245,10 +28255,10 @@ var init_playbookLibraryRoutes = __esm({
     });
     playbookLibraryRouter.get("/featured", async (req, res) => {
       try {
-        const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql13`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
+        const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql15`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
         const playbooksWithDomains = await Promise.all(
           featuredPlaybooks.map(async (playbook) => {
-            const [domain] = await db.select().from(playbookDomains).where(eq29(playbookDomains.id, playbook.domainId));
+            const [domain] = await db.select().from(playbookDomains).where(eq33(playbookDomains.id, playbook.domainId));
             return {
               ...playbook,
               domain: domain || null
@@ -28264,11 +28274,11 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/by-number/:playbookNumber", async (req, res) => {
       try {
         const { playbookNumber } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq29(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const [domain] = await db.select().from(playbookDomains).where(eq29(playbookDomains.id, playbook.domainId));
+        const [domain] = await db.select().from(playbookDomains).where(eq33(playbookDomains.id, playbook.domainId));
         res.json({
           ...playbook,
           domain: domain || null
@@ -28281,14 +28291,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/:playbookId", async (req, res) => {
       try {
         const { playbookId } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq29(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const templates = await db.select().from(playbookCommunicationTemplates).where(eq29(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
-        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq29(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
-        const [domain] = await db.select().from(playbookDomains).where(eq29(playbookDomains.id, playbook.domainId));
-        const [category] = await db.select().from(playbookCategories).where(eq29(playbookCategories.id, playbook.categoryId));
+        const templates = await db.select().from(playbookCommunicationTemplates).where(eq33(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
+        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq33(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
+        const [domain] = await db.select().from(playbookDomains).where(eq33(playbookDomains.id, playbook.domainId));
+        const [category] = await db.select().from(playbookCategories).where(eq33(playbookCategories.id, playbook.categoryId));
         res.json({
           playbook,
           domain,
@@ -28311,7 +28321,7 @@ var init_playbookLibraryRoutes = __esm({
         res.status(500).json({ error: "Failed to fetch playbook insights" });
       }
     });
-    playbookLibraryRouter.get("/:playbookId/telemetry", requireAuth2, async (req, res) => {
+    playbookLibraryRouter.get("/:playbookId/telemetry", requireAuth5, async (req, res) => {
       try {
         const { playbookId } = req.params;
         const organizationId = req.query.organizationId;
@@ -28341,7 +28351,7 @@ var init_playbookLibraryRoutes = __esm({
         res.status(500).json({ error: "Failed to fetch playbook telemetry" });
       }
     });
-    playbookLibraryRouter.get("/telemetry", requireAuth2, async (req, res) => {
+    playbookLibraryRouter.get("/telemetry", requireAuth5, async (req, res) => {
       try {
         const organizationId = req.query.organizationId;
         const userId = req.validatedUserId;
@@ -28363,7 +28373,7 @@ var init_playbookLibraryRoutes = __esm({
         res.status(500).json({ error: "Failed to fetch playbook telemetry" });
       }
     });
-    playbookLibraryRouter.post("/:playbookId/execute", requireAuth2, async (req, res) => {
+    playbookLibraryRouter.post("/:playbookId/execute", requireAuth5, async (req, res) => {
       try {
         const { playbookId } = req.params;
         const organizationId = req.body.organizationId;
@@ -28398,12 +28408,12 @@ var init_playbookLibraryRoutes = __esm({
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
         const coverage = await Promise.all(
           domains.map(async (domain) => {
-            const [playbookCount] = await db.select({ count: sql13`count(*)::int` }).from(playbookLibrary).where(eq29(playbookLibrary.domainId, domain.id));
-            const [drillCount] = await db.select({ count: sql13`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq29(practiceDrills.playbookId, playbookLibrary.id)).where(
-              sql13`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
+            const [playbookCount] = await db.select({ count: sql15`count(*)::int` }).from(playbookLibrary).where(eq33(playbookLibrary.domainId, domain.id));
+            const [drillCount] = await db.select({ count: sql15`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq33(practiceDrills.playbookId, playbookLibrary.id)).where(
+              sql15`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
             );
-            const [activationCount] = await db.select({ count: sql13`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq29(playbookActivations.playbookId, playbookLibrary.id)).where(
-              sql13`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
+            const [activationCount] = await db.select({ count: sql15`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq33(playbookActivations.playbookId, playbookLibrary.id)).where(
+              sql15`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
             );
             const totalPlaybooks2 = playbookCount?.count || 0;
             const preparedPlaybooks = Math.min(
@@ -28443,7 +28453,7 @@ var init_playbookLibraryRoutes = __esm({
           activation: playbookActivations,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(playbookActivations).leftJoin(playbookLibrary, eq29(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq29(playbookLibrary.domainId, playbookDomains.id)).where(eq29(playbookActivations.organizationId, organizationId)).orderBy(desc14(playbookActivations.activatedAt));
+        }).from(playbookActivations).leftJoin(playbookLibrary, eq33(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq33(playbookLibrary.domainId, playbookDomains.id)).where(eq33(playbookActivations.organizationId, organizationId)).orderBy(desc17(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -28478,14 +28488,14 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        const whereConditions = [eq29(aiOptimizationSuggestions.organizationId, organizationId)];
+        const whereConditions = [eq33(aiOptimizationSuggestions.organizationId, organizationId)];
         if (status) {
-          whereConditions.push(eq29(aiOptimizationSuggestions.status, status));
+          whereConditions.push(eq33(aiOptimizationSuggestions.status, status));
         }
         const suggestions = await db.select({
           suggestion: aiOptimizationSuggestions,
           playbook: playbookLibrary
-        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq29(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql13`${sql13.join(whereConditions, sql13.raw(" AND "))}`).orderBy(desc14(aiOptimizationSuggestions.generatedAt));
+        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq33(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql15`${sql15.join(whereConditions, sql15.raw(" AND "))}`).orderBy(desc17(aiOptimizationSuggestions.generatedAt));
         res.json(suggestions);
       } catch (error) {
         console.error("Error fetching AI suggestions:", error);
@@ -28501,7 +28511,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedBy,
           reviewedAt: /* @__PURE__ */ new Date(),
           implementedAt: status === "accepted" ? /* @__PURE__ */ new Date() : void 0
-        }).where(eq29(aiOptimizationSuggestions.id, suggestionId)).returning();
+        }).where(eq33(aiOptimizationSuggestions.id, suggestionId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating suggestion:", error);
@@ -28559,7 +28569,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.outcomeMetrics = customizations.outcomeMetrics;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq29(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq33(playbookLibrary.id, playbookId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error saving playbook customizations:", error);
@@ -28578,7 +28588,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.targetResponseSpeed = `${settings.executionTimeout} minutes`;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq29(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq33(playbookLibrary.id, playbookId)).returning();
         res.json({ success: true, playbook: updated, settingsSaved: settings });
       } catch (error) {
         console.error("Error saving playbook settings:", error);
@@ -28591,12 +28601,12 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookPrepareItems);
         if (organizationId) {
-          query = query.where(and20(
-            eq29(playbookPrepareItems.playbookId, playbookId),
-            eq29(playbookPrepareItems.organizationId, organizationId)
+          query = query.where(and22(
+            eq33(playbookPrepareItems.playbookId, playbookId),
+            eq33(playbookPrepareItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq29(playbookPrepareItems.playbookId, playbookId));
+          query = query.where(eq33(playbookPrepareItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookPrepareItems.sequence);
         res.json(items);
@@ -28623,7 +28633,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq29(playbookPrepareItems.id, itemId)).returning();
+        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq33(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28642,7 +28652,7 @@ var init_playbookLibraryRoutes = __esm({
           completedAt: /* @__PURE__ */ new Date(),
           completedBy,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq29(playbookPrepareItems.id, itemId)).returning();
+        }).where(eq33(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28655,8 +28665,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/prepare-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookPrepareItems).where(eq29(playbookPrepareItems.id, itemId));
-        await db.delete(playbookPrepareItems).where(eq29(playbookPrepareItems.id, itemId));
+        const [item] = await db.select().from(playbookPrepareItems).where(eq33(playbookPrepareItems.id, itemId));
+        await db.delete(playbookPrepareItems).where(eq33(playbookPrepareItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28672,12 +28682,12 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookMonitorItems);
         if (organizationId) {
-          query = query.where(and20(
-            eq29(playbookMonitorItems.playbookId, playbookId),
-            eq29(playbookMonitorItems.organizationId, organizationId)
+          query = query.where(and22(
+            eq33(playbookMonitorItems.playbookId, playbookId),
+            eq33(playbookMonitorItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq29(playbookMonitorItems.playbookId, playbookId));
+          query = query.where(eq33(playbookMonitorItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookMonitorItems.sequence);
         res.json(items);
@@ -28704,7 +28714,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq29(playbookMonitorItems.id, itemId)).returning();
+        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq33(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28717,14 +28727,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.patch("/:playbookId/monitor-items/:itemId/toggle", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [current] = await db.select().from(playbookMonitorItems).where(eq29(playbookMonitorItems.id, itemId));
+        const [current] = await db.select().from(playbookMonitorItems).where(eq33(playbookMonitorItems.id, itemId));
         if (!current) {
           return res.status(404).json({ error: "Monitor item not found" });
         }
         const [item] = await db.update(playbookMonitorItems).set({
           isActive: !current.isActive,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq29(playbookMonitorItems.id, itemId)).returning();
+        }).where(eq33(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28737,8 +28747,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/monitor-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookMonitorItems).where(eq29(playbookMonitorItems.id, itemId));
-        await db.delete(playbookMonitorItems).where(eq29(playbookMonitorItems.id, itemId));
+        const [item] = await db.select().from(playbookMonitorItems).where(eq33(playbookMonitorItems.id, itemId));
+        await db.delete(playbookMonitorItems).where(eq33(playbookMonitorItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28754,12 +28764,12 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookLearnItems);
         if (organizationId) {
-          query = query.where(and20(
-            eq29(playbookLearnItems.playbookId, playbookId),
-            eq29(playbookLearnItems.organizationId, organizationId)
+          query = query.where(and22(
+            eq33(playbookLearnItems.playbookId, playbookId),
+            eq33(playbookLearnItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq29(playbookLearnItems.playbookId, playbookId));
+          query = query.where(eq33(playbookLearnItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookLearnItems.sequence);
         res.json(items);
@@ -28786,7 +28796,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq29(playbookLearnItems.id, itemId)).returning();
+        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq33(playbookLearnItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28799,8 +28809,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/learn-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookLearnItems).where(eq29(playbookLearnItems.id, itemId));
-        await db.delete(playbookLearnItems).where(eq29(playbookLearnItems.id, itemId));
+        const [item] = await db.select().from(playbookLearnItems).where(eq33(playbookLearnItems.id, itemId));
+        await db.delete(playbookLearnItems).where(eq33(playbookLearnItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28817,24 +28827,24 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        let [score] = await db.select().from(playbookReadinessScores).where(and20(
-          eq29(playbookReadinessScores.playbookId, playbookId),
-          eq29(playbookReadinessScores.organizationId, organizationId)
+        let [score] = await db.select().from(playbookReadinessScores).where(and22(
+          eq33(playbookReadinessScores.playbookId, playbookId),
+          eq33(playbookReadinessScores.organizationId, organizationId)
         ));
         if (!score) {
           score = await recalculateReadinessScore(playbookId, organizationId);
         }
-        const prepareItems = await db.select().from(playbookPrepareItems).where(and20(
-          eq29(playbookPrepareItems.playbookId, playbookId),
-          eq29(playbookPrepareItems.organizationId, organizationId)
+        const prepareItems = await db.select().from(playbookPrepareItems).where(and22(
+          eq33(playbookPrepareItems.playbookId, playbookId),
+          eq33(playbookPrepareItems.organizationId, organizationId)
         ));
-        const monitorItems = await db.select().from(playbookMonitorItems).where(and20(
-          eq29(playbookMonitorItems.playbookId, playbookId),
-          eq29(playbookMonitorItems.organizationId, organizationId)
+        const monitorItems = await db.select().from(playbookMonitorItems).where(and22(
+          eq33(playbookMonitorItems.playbookId, playbookId),
+          eq33(playbookMonitorItems.organizationId, organizationId)
         ));
-        const learnItems = await db.select().from(playbookLearnItems).where(and20(
-          eq29(playbookLearnItems.playbookId, playbookId),
-          eq29(playbookLearnItems.organizationId, organizationId)
+        const learnItems = await db.select().from(playbookLearnItems).where(and22(
+          eq33(playbookLearnItems.playbookId, playbookId),
+          eq33(playbookLearnItems.organizationId, organizationId)
         ));
         res.json({
           score,
@@ -28885,9 +28895,9 @@ var init_playbookLibraryRoutes = __esm({
         if (totalWeight !== 100) {
           return res.status(400).json({ error: "Weights must sum to 100" });
         }
-        const [existingScore] = await db.select().from(playbookReadinessScores).where(and20(
-          eq29(playbookReadinessScores.playbookId, playbookId),
-          eq29(playbookReadinessScores.organizationId, organizationId)
+        const [existingScore] = await db.select().from(playbookReadinessScores).where(and22(
+          eq33(playbookReadinessScores.playbookId, playbookId),
+          eq33(playbookReadinessScores.organizationId, organizationId)
         ));
         if (existingScore) {
           await db.update(playbookReadinessScores).set({
@@ -28896,7 +28906,7 @@ var init_playbookLibraryRoutes = __esm({
             executeWeight,
             learnWeight,
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq29(playbookReadinessScores.id, existingScore.id));
+          }).where(eq33(playbookReadinessScores.id, existingScore.id));
         } else {
           await db.insert(playbookReadinessScores).values({
             playbookId,
@@ -28917,7 +28927,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/readiness/organization/:organizationId", async (req, res) => {
       try {
         const { organizationId } = req.params;
-        const scores = await db.select().from(playbookReadinessScores).where(eq29(playbookReadinessScores.organizationId, organizationId)).orderBy(desc14(playbookReadinessScores.overallScore));
+        const scores = await db.select().from(playbookReadinessScores).where(eq33(playbookReadinessScores.organizationId, organizationId)).orderBy(desc17(playbookReadinessScores.overallScore));
         res.json(scores);
       } catch (error) {
         console.error("Error fetching organization readiness scores:", error);
@@ -28964,14 +28974,14 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(executionLearnings);
         if (organizationId) {
-          query = query.where(and20(
-            eq29(executionLearnings.playbookId, playbookId),
-            eq29(executionLearnings.organizationId, organizationId)
+          query = query.where(and22(
+            eq33(executionLearnings.playbookId, playbookId),
+            eq33(executionLearnings.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq29(executionLearnings.playbookId, playbookId));
+          query = query.where(eq33(executionLearnings.playbookId, playbookId));
         }
-        const learnings = await query.orderBy(desc14(executionLearnings.capturedAt));
+        const learnings = await query.orderBy(desc17(executionLearnings.capturedAt));
         res.json(learnings);
       } catch (error) {
         console.error("Error fetching execution learnings:", error);
@@ -28985,9 +28995,9 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        const learnings = await db.select().from(executionLearnings).where(and20(
-          eq29(executionLearnings.playbookId, playbookId),
-          eq29(executionLearnings.organizationId, organizationId)
+        const learnings = await db.select().from(executionLearnings).where(and22(
+          eq33(executionLearnings.playbookId, playbookId),
+          eq33(executionLearnings.organizationId, organizationId)
         ));
         if (learnings.length === 0) {
           return res.json({
@@ -29016,7 +29026,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedAt: /* @__PURE__ */ new Date(),
           status: status || "reviewed",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq29(executionLearnings.id, learningId)).returning();
+        }).where(eq33(executionLearnings.id, learningId)).returning();
         res.json(learning);
       } catch (error) {
         console.error("Error reviewing execution learning:", error);
@@ -29036,13 +29046,13 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        const [playbook] = await db.select().from(playbookLibrary).where(eq29(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const [readinessScore] = await db.select().from(playbookReadinessScores).where(and20(
-          eq29(playbookReadinessScores.playbookId, playbookId),
-          eq29(playbookReadinessScores.organizationId, organizationId)
+        const [readinessScore] = await db.select().from(playbookReadinessScores).where(and22(
+          eq33(playbookReadinessScores.playbookId, playbookId),
+          eq33(playbookReadinessScores.organizationId, organizationId)
         ));
         const overallScore = readinessScore?.overallScore ?? 0;
         if (overallScore < 50) {
@@ -29087,7 +29097,7 @@ var init_playbookLibraryRoutes = __esm({
           activatedBy: triggeredBy || "system",
           activationReason: "Manual activation from playbook detail page"
         }).returning();
-        const taskSequences = await db.select().from(playbookTaskSequences).where(eq29(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+        const taskSequences = await db.select().from(playbookTaskSequences).where(eq33(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
         const phases = [
           { name: "Immediate Response", phase: "immediate", startMin: 0, endMin: 2, sequence: 1 },
           { name: "Secondary Actions", phase: "secondary", startMin: 2, endMin: 5, sequence: 2 },
@@ -29191,14 +29201,14 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookActivations);
         if (organizationId) {
-          query = query.where(and20(
-            eq29(playbookActivations.playbookId, playbookId),
-            eq29(playbookActivations.organizationId, organizationId)
+          query = query.where(and22(
+            eq33(playbookActivations.playbookId, playbookId),
+            eq33(playbookActivations.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq29(playbookActivations.playbookId, playbookId));
+          query = query.where(eq33(playbookActivations.playbookId, playbookId));
         }
-        const activations = await query.orderBy(desc14(playbookActivations.activatedAt));
+        const activations = await query.orderBy(desc17(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -29214,7 +29224,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             successRating: successRating || 85,
             lessonsLearned: outcome || "Execution completed successfully"
-          }).where(eq29(playbookActivations.id, activationId));
+          }).where(eq33(playbookActivations.id, activationId));
         }
         if (executionInstanceId) {
           await db.update(executionInstances).set({
@@ -29222,7 +29232,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             outcome: outcome || "successful",
             outcomeNotes: `Completed by ${completedBy || "system"}`
-          }).where(eq29(executionInstances.id, executionInstanceId));
+          }).where(eq33(executionInstances.id, executionInstanceId));
         }
         res.json({ success: true, message: "Playbook execution completed" });
       } catch (error) {
@@ -29239,7 +29249,7 @@ __export(practiceDrillRoutes_exports, {
   practiceDrillRouter: () => practiceDrillRouter
 });
 import { Router as Router9 } from "express";
-import { eq as eq30, desc as desc15, and as and21 } from "drizzle-orm";
+import { eq as eq34, desc as desc18, and as and23 } from "drizzle-orm";
 import { z as z6 } from "zod";
 var practiceDrillRouter;
 var init_practiceDrillRoutes = __esm({
@@ -29252,15 +29262,15 @@ var init_practiceDrillRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        let conditions = [eq30(practiceDrills.organizationId, organizationId)];
+        let conditions = [eq34(practiceDrills.organizationId, organizationId)];
         if (status) {
-          conditions.push(eq30(practiceDrills.status, status));
+          conditions.push(eq34(practiceDrills.status, status));
         }
         const drills = await db.select({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq30(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq30(playbookLibrary.domainId, playbookDomains.id)).where(and21(...conditions)).orderBy(desc15(practiceDrills.scheduledDate));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq34(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(and23(...conditions)).orderBy(desc18(practiceDrills.scheduledDate));
         res.json(drills);
       } catch (error) {
         console.error("Error fetching practice drills:", error);
@@ -29274,11 +29284,11 @@ var init_practiceDrillRoutes = __esm({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq30(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq30(playbookLibrary.domainId, playbookDomains.id)).where(eq30(practiceDrills.id, drillId));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq34(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(eq34(practiceDrills.id, drillId));
         if (!drill) {
           return res.status(404).json({ error: "Practice drill not found" });
         }
-        const [performance] = await db.select().from(drillPerformance).where(eq30(drillPerformance.drillId, drillId));
+        const [performance] = await db.select().from(drillPerformance).where(eq34(drillPerformance.drillId, drillId));
         res.json({
           ...drill,
           performance
@@ -29312,7 +29322,7 @@ var init_practiceDrillRoutes = __esm({
         const [updated] = await db.update(practiceDrills).set({
           ...updates,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq30(practiceDrills.id, drillId)).returning();
+        }).where(eq34(practiceDrills.id, drillId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating practice drill:", error);
@@ -29326,7 +29336,7 @@ var init_practiceDrillRoutes = __esm({
           status: "in_progress",
           startedAt: /* @__PURE__ */ new Date(),
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq30(practiceDrills.id, drillId)).returning();
+        }).where(eq34(practiceDrills.id, drillId)).returning();
         res.json(drill);
       } catch (error) {
         console.error("Error starting drill:", error);
@@ -29344,8 +29354,8 @@ var init_practiceDrillRoutes = __esm({
           actualDuration: performanceData.actualExecutionTime || 0,
           actualParticipants: performanceData.actualParticipants || [],
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq30(practiceDrills.id, drillId)).returning();
-        const [drillDetails] = await db.select().from(practiceDrills).where(eq30(practiceDrills.id, drillId));
+        }).where(eq34(practiceDrills.id, drillId)).returning();
+        const [drillDetails] = await db.select().from(practiceDrills).where(eq34(practiceDrills.id, drillId));
         console.log("[COMPLETE DRILL] Drill details:", { organizationId: drillDetails.organizationId, playbookId: drillDetails.playbookId });
         const performancePayload = {
           drillId,
@@ -29380,7 +29390,7 @@ var init_practiceDrillRoutes = __esm({
           playbook: playbookLibrary,
           domain: playbookDomains,
           drill: practiceDrills
-        }).from(drillPerformance).leftJoin(practiceDrills, eq30(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq30(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq30(playbookLibrary.domainId, playbookDomains.id)).where(eq30(drillPerformance.organizationId, organizationId)).orderBy(desc15(drillPerformance.createdAt));
+        }).from(drillPerformance).leftJoin(practiceDrills, eq34(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq34(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(eq34(drillPerformance.organizationId, organizationId)).orderBy(desc18(drillPerformance.createdAt));
         const totalDrills = performances.length;
         const passedDrills = performances.filter((p) => p.performance.passed).length;
         const averageScore = totalDrills > 0 ? Math.round(
@@ -29411,7 +29421,7 @@ var init_practiceDrillRoutes = __esm({
         await db.update(practiceDrills).set({
           status: "cancelled",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq30(practiceDrills.id, drillId));
+        }).where(eq34(practiceDrills.id, drillId));
         res.json({ success: true });
       } catch (error) {
         console.error("Error cancelling drill:", error);
@@ -29517,7 +29527,7 @@ __export(PlaybookExecutor_exports, {
   completeExecution: () => completeExecution,
   getExecutionProgress: () => getExecutionProgress
 });
-import { eq as eq31 } from "drizzle-orm";
+import { eq as eq35 } from "drizzle-orm";
 import pino13 from "pino";
 async function activatePlaybook(organizationId, playbookId, scenarioId, executionPlanId, triggeredBy) {
   log3.info(`\u{1F680} Activating playbook ${playbookId} for scenario ${scenarioId}`);
@@ -29536,7 +29546,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
     };
     const [instance] = await db.insert(executionInstances).values(executionData).returning();
     log3.info({ instanceId: instance.id }, "\u2705 Execution instance created");
-    const stakeholders = await db.select().from(scenarioStakeholders).where(eq31(scenarioStakeholders.scenarioId, scenarioId));
+    const stakeholders = await db.select().from(scenarioStakeholders).where(eq35(scenarioStakeholders.scenarioId, scenarioId));
     for (const stakeholder of stakeholders) {
       const userId = stakeholder.userId;
       if (userId) {
@@ -29569,7 +29579,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
 }
 async function getExecutionProgress(executionId) {
   try {
-    const execution = await db.select().from(executionInstances).where(eq31(executionInstances.id, executionId));
+    const execution = await db.select().from(executionInstances).where(eq35(executionInstances.id, executionId));
     if (!execution.length) return null;
     const instance = execution[0];
     const startedAt = instance.startedAt || /* @__PURE__ */ new Date();
@@ -29599,7 +29609,7 @@ async function completeExecution(executionId, outcome, notes) {
       outcome,
       outcomeNotes: notes,
       actualExecutionTime: await calculateActualTime(executionId)
-    }).where(eq31(executionInstances.id, executionId)).returning();
+    }).where(eq35(executionInstances.id, executionId)).returning();
     log3.info({ executionId, outcome }, "\u2705 Execution completed");
     return updated;
   } catch (error) {
@@ -29608,7 +29618,7 @@ async function completeExecution(executionId, outcome, notes) {
   }
 }
 async function calculateActualTime(executionId) {
-  const [instance] = await db.select().from(executionInstances).where(eq31(executionInstances.id, executionId));
+  const [instance] = await db.select().from(executionInstances).where(eq35(executionInstances.id, executionId));
   if (!instance?.startedAt) return 0;
   return Math.round((Date.now() - instance.startedAt.getTime()) / 1e3 / 60);
 }
@@ -29682,7 +29692,7 @@ __export(triggersSeed_exports, {
   getTriggerStats: () => getTriggerStats,
   seedTriggers: () => seedTriggers
 });
-import { eq as eq32, sql as sql14 } from "drizzle-orm";
+import { eq as eq36, sql as sql16 } from "drizzle-orm";
 function operatorToSymbol(op) {
   const map = {
     "gt": ">",
@@ -29733,7 +29743,7 @@ async function seedTriggers() {
   console.log(`   Found ${totalDataPoints} data points across ${SIGNAL_CATEGORIES.length} signal categories`);
   const DEMO_USER_EMAIL = "system@m-platform.io";
   const DEMO_ORG_NAME = "Innovate Dynamics";
-  let [user] = await db.select().from(users).where(eq32(users.email, DEMO_USER_EMAIL));
+  let [user] = await db.select().from(users).where(eq36(users.email, DEMO_USER_EMAIL));
   if (!user) {
     console.log("   \u{1F4E6} Creating demo system user for trigger seeding...");
     const [newUser] = await db.insert(users).values({
@@ -29745,7 +29755,7 @@ async function seedTriggers() {
     user = newUser;
     console.log(`   \u2705 Created demo user: ${user.email} (${user.id})`);
   }
-  let [org] = await db.select().from(organizations).where(eq32(organizations.name, DEMO_ORG_NAME));
+  let [org] = await db.select().from(organizations).where(eq36(organizations.name, DEMO_ORG_NAME));
   if (!org) {
     console.log("   \u{1F4E6} Creating demo organization for trigger seeding...");
     const [newOrg] = await db.insert(organizations).values({
@@ -29767,12 +29777,12 @@ async function seedTriggers() {
   }
   if (user.organizationId !== org.id) {
     console.log(`   \u{1F517} Linking demo user to demo organization...`);
-    await db.update(users).set({ organizationId: org.id }).where(eq32(users.id, user.id));
+    await db.update(users).set({ organizationId: org.id }).where(eq36(users.id, user.id));
   }
   return seedTriggersForOrg(org.id, user.id, allDataPoints);
 }
 async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
-  const existingTriggers = await db.select().from(executiveTriggers2).where(eq32(executiveTriggers2.organizationId, organizationId));
+  const existingTriggers = await db.select().from(executiveTriggers2).where(eq36(executiveTriggers2.organizationId, organizationId));
   if (existingTriggers.length >= 170) {
     console.log(`   \u2705 Already have ${existingTriggers.length} triggers (target: 178)`);
     await seedTriggerSignals(organizationId, createdBy);
@@ -29781,7 +29791,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
   console.log(`   Clearing ${existingTriggers.length} existing triggers...`);
   if (existingTriggers.length > 0) {
     await db.delete(playbookTriggerAssociations);
-    await db.delete(executiveTriggers2).where(eq32(executiveTriggers2.organizationId, organizationId));
+    await db.delete(executiveTriggers2).where(eq36(executiveTriggers2.organizationId, organizationId));
   }
   const domains = await db.select().from(playbookDomains);
   const domainMap = new Map(domains.map((d) => [d.name, d.id]));
@@ -29838,7 +29848,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
     if (matchingPlaybooks.length > 0) {
       await db.update(executiveTriggers2).set({
         recommendedPlaybooks: [...category.recommendedPlaybooks || [], ...matchingPlaybooks].slice(0, 5)
-      }).where(eq32(executiveTriggers2.id, trigger.id));
+      }).where(eq36(executiveTriggers2.id, trigger.id));
     }
     if (triggersCreated % 20 === 0) {
       console.log(`   Created ${triggersCreated}/${allDataPoints.length} triggers...`);
@@ -29851,13 +29861,13 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
 }
 async function seedTriggerSignals(organizationId, createdBy) {
   console.log("   \u{1F4E1} Seeding trigger signals...");
-  const existingSignals = await db.select().from(triggerSignals).where(eq32(triggerSignals.organizationId, organizationId));
+  const existingSignals = await db.select().from(triggerSignals).where(eq36(triggerSignals.organizationId, organizationId));
   if (existingSignals.length >= 80) {
     console.log(`   \u2705 Already have ${existingSignals.length} trigger signals`);
     return;
   }
   if (existingSignals.length > 0) {
-    await db.delete(triggerSignals).where(eq32(triggerSignals.organizationId, organizationId));
+    await db.delete(triggerSignals).where(eq36(triggerSignals.organizationId, organizationId));
   }
   const allDataPoints = getAllDataPoints();
   let signalsCreated = 0;
@@ -29883,9 +29893,9 @@ async function seedTriggerSignals(organizationId, createdBy) {
   console.log(`   \u2705 Created ${signalsCreated} trigger signals`);
 }
 async function getTriggerStats() {
-  const triggers = await db.select({ count: sql14`count(*)` }).from(executiveTriggers2);
-  const associations = await db.select({ count: sql14`count(*)` }).from(playbookTriggerAssociations);
-  const signals = await db.select({ count: sql14`count(*)` }).from(triggerSignals);
+  const triggers = await db.select({ count: sql16`count(*)` }).from(executiveTriggers2);
+  const associations = await db.select({ count: sql16`count(*)` }).from(playbookTriggerAssociations);
+  const signals = await db.select({ count: sql16`count(*)` }).from(triggerSignals);
   return {
     triggers: Number(triggers[0]?.count || 0),
     associations: Number(associations[0]?.count || 0),
@@ -29923,1500 +29933,6 @@ var init_triggersSeed = __esm({
   }
 });
 
-// server/services/DocumentTemplateEngine.ts
-var DocumentTemplateEngine_exports = {};
-__export(DocumentTemplateEngine_exports, {
-  DocumentTemplateEngine: () => DocumentTemplateEngine,
-  documentTemplateEngine: () => documentTemplateEngine
-});
-import { sql as sql15 } from "drizzle-orm";
-var DEFAULT_TEMPLATES, DocumentTemplateEngine, documentTemplateEngine;
-var init_DocumentTemplateEngine = __esm({
-  "server/services/DocumentTemplateEngine.ts"() {
-    "use strict";
-    init_db();
-    DEFAULT_TEMPLATES = {
-      press_release: {
-        name: "Press Release",
-        sections: [
-          { id: "header", title: "Header", content: "**FOR IMMEDIATE RELEASE**\n\n{{organization_name}}\n{{date}}", order: 1 },
-          { id: "headline", title: "Headline", content: "# {{headline}}", order: 2 },
-          { id: "lead", title: "Lead Paragraph", content: "{{location}}, {{date}} \u2014 {{lead_paragraph}}", order: 3 },
-          { id: "body", title: "Body", content: "{{body_content}}", order: 4 },
-          { id: "quote", title: "Executive Quote", content: '> "{{executive_quote}}"\n> \u2014 **{{executive_name}}**, {{executive_title}}', order: 5 },
-          { id: "boilerplate", title: "About", content: "## About {{organization_name}}\n\n{{organization_description}}", order: 6 },
-          { id: "contact", title: "Media Contact", content: "**Media Contact:**\n{{contact_name}}\n{{contact_email}}\n{{contact_phone}}", order: 7 }
-        ],
-        variables: [
-          { name: "organization_name", type: "string", required: true, source: "organization" },
-          { name: "headline", type: "string", required: true, source: "user_input" },
-          { name: "location", type: "string", required: true, source: "organization" },
-          { name: "date", type: "date", required: true, source: "calculated", defaultValue: "today" },
-          { name: "lead_paragraph", type: "string", required: true, source: "user_input" },
-          { name: "body_content", type: "string", required: true, source: "user_input" },
-          { name: "executive_quote", type: "string", required: false, source: "user_input" },
-          { name: "executive_name", type: "string", required: false, source: "user_input" },
-          { name: "executive_title", type: "string", required: false, source: "user_input" },
-          { name: "organization_description", type: "string", required: true, source: "organization" },
-          { name: "contact_name", type: "string", required: true, source: "user_input" },
-          { name: "contact_email", type: "string", required: true, source: "user_input" },
-          { name: "contact_phone", type: "string", required: false, source: "user_input" }
-        ]
-      },
-      stakeholder_memo: {
-        name: "Stakeholder Memo",
-        sections: [
-          { id: "header", title: "Header", content: "**CONFIDENTIAL MEMORANDUM**\n\n**TO:** {{recipients}}\n**FROM:** {{sender_name}}, {{sender_title}}\n**DATE:** {{date}}\n**RE:** {{subject}}", order: 1 },
-          { id: "executive_summary", title: "Executive Summary", content: "## Executive Summary\n\n{{executive_summary}}", order: 2 },
-          { id: "situation", title: "Current Situation", content: "## Current Situation\n\n{{situation_overview}}", order: 3 },
-          { id: "recommendations", title: "Recommendations", content: "## Recommendations\n\n{{recommendations}}", order: 4 },
-          { id: "timeline", title: "Timeline", content: "## Timeline\n\n{{timeline}}", order: 5 },
-          { id: "resources", title: "Resources Required", content: "## Resources Required\n\n{{resources_required}}", order: 6 },
-          { id: "next_steps", title: "Next Steps", content: "## Immediate Next Steps\n\n{{next_steps}}", order: 7 }
-        ],
-        variables: [
-          { name: "recipients", type: "string", required: true, source: "user_input" },
-          { name: "sender_name", type: "string", required: true, source: "user_input" },
-          { name: "sender_title", type: "string", required: true, source: "user_input" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "subject", type: "string", required: true, source: "scenario" },
-          { name: "executive_summary", type: "string", required: true, source: "user_input" },
-          { name: "situation_overview", type: "string", required: true, source: "user_input" },
-          { name: "recommendations", type: "string", required: true, source: "user_input" },
-          { name: "timeline", type: "string", required: false, source: "execution_instance" },
-          { name: "resources_required", type: "string", required: false, source: "user_input" },
-          { name: "next_steps", type: "string", required: true, source: "user_input" }
-        ]
-      },
-      executive_briefing: {
-        name: "Executive Briefing",
-        sections: [
-          { id: "header", title: "Header", content: "# Executive Briefing: {{title}}\n\n**Prepared for:** {{executive_name}}\n**Date:** {{date}}\n**Classification:** {{classification}}", order: 1 },
-          { id: "situation", title: "Situation Overview", content: "## Situation Overview\n\n{{situation_overview}}\n\n**Severity Level:** {{severity_level}}", order: 2 },
-          { id: "key_facts", title: "Key Facts", content: "## Key Facts\n\n{{key_facts}}", order: 3 },
-          { id: "impact", title: "Business Impact", content: "## Business Impact Assessment\n\n{{business_impact}}", order: 4 },
-          { id: "options", title: "Response Options", content: "## Response Options\n\n{{response_options}}", order: 5 },
-          { id: "recommendation", title: "Recommended Action", content: "## Recommended Action\n\n{{recommended_action}}", order: 6 },
-          { id: "decision_required", title: "Decision Required", content: "## Decision Required\n\n{{decision_required}}\n\n**Decision Deadline:** {{decision_deadline}}", order: 7 }
-        ],
-        variables: [
-          { name: "title", type: "string", required: true, source: "scenario" },
-          { name: "executive_name", type: "string", required: true, source: "user_input" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "classification", type: "string", required: true, defaultValue: "Confidential", source: "user_input" },
-          { name: "situation_overview", type: "string", required: true, source: "scenario" },
-          { name: "severity_level", type: "string", required: true, source: "scenario" },
-          { name: "key_facts", type: "string", required: true, source: "user_input" },
-          { name: "business_impact", type: "string", required: true, source: "user_input" },
-          { name: "response_options", type: "string", required: true, source: "user_input" },
-          { name: "recommended_action", type: "string", required: true, source: "user_input" },
-          { name: "decision_required", type: "string", required: true, source: "user_input" },
-          { name: "decision_deadline", type: "date", required: true, source: "user_input" }
-        ]
-      },
-      project_charter: {
-        name: "Project Charter",
-        sections: [
-          { id: "header", title: "Header", content: "# Project Charter\n\n**Project Name:** {{project_name}}\n**Version:** {{version}}\n**Date:** {{date}}", order: 1 },
-          { id: "overview", title: "Project Overview", content: "## Project Overview\n\n{{project_overview}}", order: 2 },
-          { id: "objectives", title: "Objectives", content: "## Project Objectives\n\n{{objectives}}", order: 3 },
-          { id: "scope", title: "Scope", content: "## Scope\n\n### In Scope\n{{in_scope}}\n\n### Out of Scope\n{{out_of_scope}}", order: 4 },
-          { id: "stakeholders", title: "Stakeholders", content: "## Key Stakeholders\n\n{{stakeholders}}", order: 5 },
-          { id: "timeline", title: "Timeline", content: "## Timeline\n\n**Start Date:** {{start_date}}\n**End Date:** {{end_date}}\n\n{{milestones}}", order: 6 },
-          { id: "budget", title: "Budget", content: "## Budget\n\n**Total Budget:** {{total_budget}}\n\n{{budget_breakdown}}", order: 7 },
-          { id: "risks", title: "Risks", content: "## Key Risks\n\n{{key_risks}}", order: 8 },
-          { id: "success_criteria", title: "Success Criteria", content: "## Success Criteria\n\n{{success_criteria}}", order: 9 },
-          { id: "approvals", title: "Approvals", content: "## Approvals\n\n| Role | Name | Signature | Date |\n|------|------|-----------|------|\n{{approval_table}}", order: 10 }
-        ],
-        variables: [
-          { name: "project_name", type: "string", required: true, source: "scenario" },
-          { name: "version", type: "string", required: true, defaultValue: "1.0", source: "calculated" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "project_overview", type: "string", required: true, source: "scenario" },
-          { name: "objectives", type: "string", required: true, source: "user_input" },
-          { name: "in_scope", type: "string", required: true, source: "user_input" },
-          { name: "out_of_scope", type: "string", required: false, source: "user_input" },
-          { name: "stakeholders", type: "string", required: true, source: "execution_instance" },
-          { name: "start_date", type: "date", required: true, source: "execution_instance" },
-          { name: "end_date", type: "date", required: true, source: "execution_instance" },
-          { name: "milestones", type: "string", required: false, source: "execution_instance" },
-          { name: "total_budget", type: "string", required: false, source: "user_input" },
-          { name: "budget_breakdown", type: "string", required: false, source: "user_input" },
-          { name: "key_risks", type: "string", required: false, source: "user_input" },
-          { name: "success_criteria", type: "string", required: true, source: "user_input" },
-          { name: "approval_table", type: "string", required: false, source: "user_input" }
-        ]
-      },
-      risk_assessment: {
-        name: "Risk Assessment Report",
-        sections: [
-          { id: "header", title: "Header", content: "# Risk Assessment Report\n\n**Assessment Date:** {{date}}\n**Prepared By:** {{prepared_by}}\n**Review Period:** {{review_period}}", order: 1 },
-          { id: "executive_summary", title: "Executive Summary", content: "## Executive Summary\n\n{{executive_summary}}", order: 2 },
-          { id: "risk_matrix", title: "Risk Matrix", content: "## Risk Assessment Matrix\n\n{{risk_matrix}}", order: 3 },
-          { id: "critical_risks", title: "Critical Risks", content: "## Critical Risks\n\n{{critical_risks}}", order: 4 },
-          { id: "mitigation", title: "Mitigation Strategies", content: "## Mitigation Strategies\n\n{{mitigation_strategies}}", order: 5 },
-          { id: "monitoring", title: "Monitoring Plan", content: "## Monitoring Plan\n\n{{monitoring_plan}}", order: 6 }
-        ],
-        variables: [
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "prepared_by", type: "string", required: true, source: "user_input" },
-          { name: "review_period", type: "string", required: true, source: "user_input" },
-          { name: "executive_summary", type: "string", required: true, source: "user_input" },
-          { name: "risk_matrix", type: "string", required: true, source: "user_input" },
-          { name: "critical_risks", type: "string", required: true, source: "user_input" },
-          { name: "mitigation_strategies", type: "string", required: true, source: "user_input" },
-          { name: "monitoring_plan", type: "string", required: false, source: "user_input" }
-        ]
-      },
-      action_plan: {
-        name: "Action Plan",
-        sections: [
-          { id: "header", title: "Header", content: "# Action Plan: {{title}}\n\n**Plan Owner:** {{plan_owner}}\n**Created:** {{date}}\n**Target Completion:** {{target_date}}", order: 1 },
-          { id: "objective", title: "Objective", content: "## Objective\n\n{{objective}}", order: 2 },
-          { id: "actions", title: "Action Items", content: "## Action Items\n\n{{action_items}}", order: 3 },
-          { id: "resources", title: "Resources", content: "## Resources Required\n\n{{resources}}", order: 4 },
-          { id: "timeline", title: "Timeline", content: "## Timeline\n\n{{timeline}}", order: 5 },
-          { id: "success_metrics", title: "Success Metrics", content: "## Success Metrics\n\n{{success_metrics}}", order: 6 }
-        ],
-        variables: [
-          { name: "title", type: "string", required: true, source: "scenario" },
-          { name: "plan_owner", type: "string", required: true, source: "user_input" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "target_date", type: "date", required: true, source: "execution_instance" },
-          { name: "objective", type: "string", required: true, source: "scenario" },
-          { name: "action_items", type: "string", required: true, source: "execution_instance" },
-          { name: "resources", type: "string", required: false, source: "user_input" },
-          { name: "timeline", type: "string", required: false, source: "execution_instance" },
-          { name: "success_metrics", type: "string", required: true, source: "user_input" }
-        ]
-      },
-      status_report: {
-        name: "Status Report",
-        sections: [
-          { id: "header", title: "Header", content: "# Status Report\n\n**Report Date:** {{date}}\n**Reporting Period:** {{period}}\n**Project/Scenario:** {{project_name}}", order: 1 },
-          { id: "summary", title: "Executive Summary", content: "## Executive Summary\n\n**Overall Status:** {{overall_status}}\n\n{{executive_summary}}", order: 2 },
-          { id: "progress", title: "Progress Update", content: "## Progress Update\n\n{{progress_update}}", order: 3 },
-          { id: "kpis", title: "Key Metrics", content: "## Key Metrics\n\n{{key_metrics}}", order: 4 },
-          { id: "issues", title: "Issues & Blockers", content: "## Issues & Blockers\n\n{{issues}}", order: 5 },
-          { id: "next_steps", title: "Next Steps", content: "## Next Steps\n\n{{next_steps}}", order: 6 }
-        ],
-        variables: [
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "period", type: "string", required: true, source: "user_input" },
-          { name: "project_name", type: "string", required: true, source: "scenario" },
-          { name: "overall_status", type: "string", required: true, source: "execution_instance" },
-          { name: "executive_summary", type: "string", required: true, source: "user_input" },
-          { name: "progress_update", type: "string", required: true, source: "execution_instance" },
-          { name: "key_metrics", type: "string", required: false, source: "execution_instance" },
-          { name: "issues", type: "string", required: false, source: "user_input" },
-          { name: "next_steps", type: "string", required: true, source: "user_input" }
-        ]
-      },
-      board_presentation: {
-        name: "Board Presentation",
-        sections: [
-          { id: "cover", title: "Cover", content: "# {{title}}\n\n**Board Meeting:** {{meeting_date}}\n**Presented By:** {{presenter}}", order: 1 },
-          { id: "agenda", title: "Agenda", content: "## Agenda\n\n{{agenda}}", order: 2 },
-          { id: "executive_summary", title: "Executive Summary", content: "## Executive Summary\n\n{{executive_summary}}", order: 3 },
-          { id: "key_highlights", title: "Key Highlights", content: "## Key Highlights\n\n{{key_highlights}}", order: 4 },
-          { id: "financials", title: "Financial Overview", content: "## Financial Overview\n\n{{financial_overview}}", order: 5 },
-          { id: "strategic_initiatives", title: "Strategic Initiatives", content: "## Strategic Initiatives\n\n{{strategic_initiatives}}", order: 6 },
-          { id: "risks", title: "Risk Summary", content: "## Risk Summary\n\n{{risk_summary}}", order: 7 },
-          { id: "decisions", title: "Decisions Required", content: "## Decisions Required\n\n{{decisions_required}}", order: 8 }
-        ],
-        variables: [
-          { name: "title", type: "string", required: true, source: "user_input" },
-          { name: "meeting_date", type: "date", required: true, source: "user_input" },
-          { name: "presenter", type: "string", required: true, source: "user_input" },
-          { name: "agenda", type: "string", required: true, source: "user_input" },
-          { name: "executive_summary", type: "string", required: true, source: "user_input" },
-          { name: "key_highlights", type: "string", required: true, source: "user_input" },
-          { name: "financial_overview", type: "string", required: false, source: "user_input" },
-          { name: "strategic_initiatives", type: "string", required: false, source: "user_input" },
-          { name: "risk_summary", type: "string", required: false, source: "user_input" },
-          { name: "decisions_required", type: "string", required: true, source: "user_input" }
-        ]
-      },
-      customer_communication: {
-        name: "Customer Communication",
-        sections: [
-          { id: "header", title: "Header", content: "**{{organization_name}}**\n\n{{date}}", order: 1 },
-          { id: "greeting", title: "Greeting", content: "Dear {{customer_name}},", order: 2 },
-          { id: "body", title: "Body", content: "{{message_body}}", order: 3 },
-          { id: "action", title: "Call to Action", content: "{{call_to_action}}", order: 4 },
-          { id: "closing", title: "Closing", content: "{{closing_message}}\n\n{{sender_name}}\n{{sender_title}}\n{{organization_name}}", order: 5 },
-          { id: "contact", title: "Contact Info", content: "---\n**Questions?** Contact us at {{support_email}} or {{support_phone}}", order: 6 }
-        ],
-        variables: [
-          { name: "organization_name", type: "string", required: true, source: "organization" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "customer_name", type: "string", required: true, source: "user_input" },
-          { name: "message_body", type: "string", required: true, source: "user_input" },
-          { name: "call_to_action", type: "string", required: false, source: "user_input" },
-          { name: "closing_message", type: "string", required: true, defaultValue: "Sincerely,", source: "user_input" },
-          { name: "sender_name", type: "string", required: true, source: "user_input" },
-          { name: "sender_title", type: "string", required: true, source: "user_input" },
-          { name: "support_email", type: "string", required: true, source: "organization" },
-          { name: "support_phone", type: "string", required: false, source: "organization" }
-        ]
-      },
-      regulatory_filing: {
-        name: "Regulatory Filing",
-        sections: [
-          { id: "header", title: "Header", content: "# Regulatory Filing\n\n**Filing Type:** {{filing_type}}\n**Filing Date:** {{date}}\n**Organization:** {{organization_name}}\n**Filing Reference:** {{reference_number}}", order: 1 },
-          { id: "summary", title: "Filing Summary", content: "## Filing Summary\n\n{{filing_summary}}", order: 2 },
-          { id: "background", title: "Background", content: "## Background\n\n{{background}}", order: 3 },
-          { id: "details", title: "Filing Details", content: "## Filing Details\n\n{{filing_details}}", order: 4 },
-          { id: "supporting", title: "Supporting Documentation", content: "## Supporting Documentation\n\n{{supporting_docs}}", order: 5 },
-          { id: "certification", title: "Certification", content: "## Certification\n\n{{certification_statement}}\n\n**Authorized Signatory:** {{signatory_name}}\n**Title:** {{signatory_title}}\n**Date:** {{date}}", order: 6 }
-        ],
-        variables: [
-          { name: "filing_type", type: "string", required: true, source: "user_input" },
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "organization_name", type: "string", required: true, source: "organization" },
-          { name: "reference_number", type: "string", required: true, source: "calculated" },
-          { name: "filing_summary", type: "string", required: true, source: "user_input" },
-          { name: "background", type: "string", required: true, source: "user_input" },
-          { name: "filing_details", type: "string", required: true, source: "user_input" },
-          { name: "supporting_docs", type: "string", required: false, source: "user_input" },
-          { name: "certification_statement", type: "string", required: true, source: "user_input" },
-          { name: "signatory_name", type: "string", required: true, source: "user_input" },
-          { name: "signatory_title", type: "string", required: true, source: "user_input" }
-        ]
-      },
-      budget_request: {
-        name: "Budget Request",
-        sections: [
-          { id: "header", title: "Header", content: "# Budget Request\n\n**Request Date:** {{date}}\n**Requested By:** {{requestor_name}}\n**Department:** {{department}}\n**Request Amount:** {{total_amount}}", order: 1 },
-          { id: "justification", title: "Business Justification", content: "## Business Justification\n\n{{business_justification}}", order: 2 },
-          { id: "breakdown", title: "Budget Breakdown", content: "## Budget Breakdown\n\n{{budget_breakdown}}", order: 3 },
-          { id: "timeline", title: "Spending Timeline", content: "## Spending Timeline\n\n{{spending_timeline}}", order: 4 },
-          { id: "roi", title: "Expected ROI", content: "## Expected Return on Investment\n\n{{expected_roi}}", order: 5 },
-          { id: "alternatives", title: "Alternatives Considered", content: "## Alternatives Considered\n\n{{alternatives}}", order: 6 },
-          { id: "approval", title: "Approval", content: "## Approval\n\n**Approval Authority:** {{approval_authority}}\n**Account Code:** {{account_code}}", order: 7 }
-        ],
-        variables: [
-          { name: "date", type: "date", required: true, source: "calculated" },
-          { name: "requestor_name", type: "string", required: true, source: "user_input" },
-          { name: "department", type: "string", required: true, source: "user_input" },
-          { name: "total_amount", type: "string", required: true, source: "user_input" },
-          { name: "business_justification", type: "string", required: true, source: "user_input" },
-          { name: "budget_breakdown", type: "string", required: true, source: "user_input" },
-          { name: "spending_timeline", type: "string", required: false, source: "user_input" },
-          { name: "expected_roi", type: "string", required: false, source: "user_input" },
-          { name: "alternatives", type: "string", required: false, source: "user_input" },
-          { name: "approval_authority", type: "string", required: true, source: "user_input" },
-          { name: "account_code", type: "string", required: false, source: "user_input" }
-        ]
-      },
-      resource_allocation: {
-        name: "Resource Allocation Plan",
-        sections: [
-          { id: "header", title: "Header", content: "# Resource Allocation Plan\n\n**Project/Scenario:** {{project_name}}\n**Effective Date:** {{effective_date}}\n**Duration:** {{duration}}", order: 1 },
-          { id: "overview", title: "Resource Overview", content: "## Resource Overview\n\n{{resource_overview}}", order: 2 },
-          { id: "personnel", title: "Personnel Allocation", content: "## Personnel Allocation\n\n{{personnel_allocation}}", order: 3 },
-          { id: "budget", title: "Budget Allocation", content: "## Budget Allocation\n\n{{budget_allocation}}", order: 4 },
-          { id: "equipment", title: "Equipment & Tools", content: "## Equipment & Tools\n\n{{equipment_allocation}}", order: 5 },
-          { id: "external", title: "External Resources", content: "## External Resources (Vendors/Contractors)\n\n{{external_resources}}", order: 6 },
-          { id: "constraints", title: "Constraints", content: "## Resource Constraints\n\n{{constraints}}", order: 7 }
-        ],
-        variables: [
-          { name: "project_name", type: "string", required: true, source: "scenario" },
-          { name: "effective_date", type: "date", required: true, source: "user_input" },
-          { name: "duration", type: "string", required: true, source: "user_input" },
-          { name: "resource_overview", type: "string", required: true, source: "user_input" },
-          { name: "personnel_allocation", type: "string", required: true, source: "execution_instance" },
-          { name: "budget_allocation", type: "string", required: false, source: "user_input" },
-          { name: "equipment_allocation", type: "string", required: false, source: "user_input" },
-          { name: "external_resources", type: "string", required: false, source: "user_input" },
-          { name: "constraints", type: "string", required: false, source: "user_input" }
-        ]
-      }
-    };
-    DocumentTemplateEngine = class {
-      getAvailableTemplates() {
-        return Object.entries(DEFAULT_TEMPLATES).map(([type, template]) => ({
-          type,
-          name: template.name,
-          description: `Pre-built template for ${template.name.toLowerCase()} documents`
-        }));
-      }
-      getTemplateVariables(templateType) {
-        const template = DEFAULT_TEMPLATES[templateType];
-        return template ? template.variables : [];
-      }
-      getTemplateSections(templateType) {
-        const template = DEFAULT_TEMPLATES[templateType];
-        return template ? template.sections : [];
-      }
-      async generateDocument(templateType, variables2, options2 = {}) {
-        const template = DEFAULT_TEMPLATES[templateType];
-        if (!template) {
-          throw new Error(`Unknown template type: ${templateType}`);
-        }
-        const enrichedVariables = await this.enrichVariables(
-          template.variables,
-          variables2,
-          options2
-        );
-        let content = "";
-        for (const section of template.sections.sort((a, b) => a.order - b.order)) {
-          if (section.isConditional && section.condition) {
-            const conditionMet = this.evaluateCondition(section.condition, enrichedVariables);
-            if (!conditionMet) continue;
-          }
-          const sectionContent = this.interpolate(section.content, enrichedVariables);
-          content += sectionContent + "\n\n";
-        }
-        const wordCount = content.split(/\s+/).filter((word) => word.length > 0).length;
-        return {
-          id: `doc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-          name: `${template.name} - ${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}`,
-          content: content.trim(),
-          format: "markdown",
-          metadata: {
-            templateId: templateType,
-            generatedAt: /* @__PURE__ */ new Date(),
-            variablesUsed: enrichedVariables,
-            wordCount
-          }
-        };
-      }
-      async enrichVariables(templateVariables, providedVariables, options2) {
-        const enriched = { ...providedVariables };
-        for (const variable of templateVariables) {
-          if (enriched[variable.name] !== void 0) continue;
-          if (variable.source === "calculated") {
-            if (variable.name === "date" || variable.defaultValue === "today") {
-              enriched[variable.name] = (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-              });
-            } else if (variable.name === "version") {
-              enriched[variable.name] = variable.defaultValue || "1.0";
-            } else if (variable.name === "reference_number") {
-              enriched[variable.name] = `REF-${Date.now().toString(36).toUpperCase()}`;
-            }
-          }
-          if (variable.source === "scenario" && options2.scenarioId) {
-            const scenarioData = await this.fetchScenarioData(options2.scenarioId);
-            if (scenarioData) {
-              if (variable.name === "title" || variable.name === "subject" || variable.name === "project_name") {
-                enriched[variable.name] = scenarioData.title || "";
-              } else if (variable.name === "situation_overview" || variable.name === "project_overview" || variable.name === "objective") {
-                enriched[variable.name] = scenarioData.description || "";
-              } else if (variable.name === "severity_level") {
-                enriched[variable.name] = scenarioData.priority || "Medium";
-              }
-            }
-          }
-          if (variable.source === "organization" && options2.organizationId) {
-            const orgData = await this.fetchOrganizationData(options2.organizationId);
-            if (orgData) {
-              if (variable.name === "organization_name") {
-                enriched[variable.name] = orgData.name || "";
-              } else if (variable.name === "organization_description") {
-                enriched[variable.name] = orgData.description || "";
-              } else if (variable.name === "location") {
-                enriched[variable.name] = orgData.location || "";
-              } else if (variable.name === "support_email") {
-                enriched[variable.name] = orgData.contactEmail || "";
-              }
-            }
-          }
-          if (variable.source === "execution_instance" && options2.executionInstanceId) {
-            const instanceData = await this.fetchExecutionInstanceData(options2.executionInstanceId);
-            if (instanceData) {
-              if (variable.name === "overall_status") {
-                enriched[variable.name] = instanceData.status || "In Progress";
-              } else if (variable.name === "start_date") {
-                enriched[variable.name] = instanceData.startDate || "";
-              } else if (variable.name === "end_date" || variable.name === "target_date") {
-                enriched[variable.name] = instanceData.endDate || "";
-              }
-            }
-          }
-          if (enriched[variable.name] === void 0 && variable.defaultValue !== void 0) {
-            enriched[variable.name] = variable.defaultValue;
-          }
-          if (enriched[variable.name] === void 0 && !variable.required) {
-            enriched[variable.name] = "";
-          }
-        }
-        return enriched;
-      }
-      interpolate(content, variables2) {
-        return content.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-          const value = variables2[key];
-          if (value === void 0 || value === null) return match;
-          if (value instanceof Date) {
-            return value.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-          }
-          return String(value);
-        });
-      }
-      evaluateCondition(condition, variables) {
-        try {
-          const interpolated = this.interpolate(condition, variables);
-          return Boolean(eval(interpolated));
-        } catch {
-          return true;
-        }
-      }
-      async fetchScenarioData(scenarioId) {
-        try {
-          const result = await db.execute(
-            sql15`SELECT title, description, priority FROM strategic_scenarios WHERE id = ${scenarioId}`
-          );
-          return result.rows[0] || null;
-        } catch {
-          return null;
-        }
-      }
-      async fetchOrganizationData(organizationId) {
-        try {
-          const result = await db.execute(
-            sql15`SELECT name, description FROM organizations WHERE id = ${organizationId}`
-          );
-          return result.rows[0] || null;
-        } catch {
-          return null;
-        }
-      }
-      async fetchExecutionInstanceData(executionInstanceId) {
-        try {
-          const result = await db.execute(
-            sql15`SELECT status, started_at as "startDate", completed_at as "endDate" 
-            FROM execution_instances WHERE id = ${executionInstanceId}`
-          );
-          return result.rows[0] || null;
-        } catch {
-          return null;
-        }
-      }
-      convertToHtml(markdown) {
-        let html = markdown.replace(/^### (.+)$/gm, "<h3>$1</h3>").replace(/^## (.+)$/gm, "<h2>$1</h2>").replace(/^# (.+)$/gm, "<h1>$1</h1>").replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>").replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>").replace(/^- (.+)$/gm, "<li>$1</li>").replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>");
-        html = `<div class="document">${html}</div>`;
-        html = html.replace(/<li>/g, "<ul><li>").replace(/<\/li>(?!<li>)/g, "</li></ul>");
-        return html;
-      }
-    };
-    documentTemplateEngine = new DocumentTemplateEngine();
-  }
-});
-
-// server/services/FileExportService.ts
-var FileExportService_exports = {};
-__export(FileExportService_exports, {
-  FileExportService: () => FileExportService,
-  fileExportService: () => fileExportService
-});
-import { sql as sql16 } from "drizzle-orm";
-var FileExportService, fileExportService;
-var init_FileExportService = __esm({
-  "server/services/FileExportService.ts"() {
-    "use strict";
-    init_db();
-    FileExportService = class {
-      async exportExecutionPlan(executionInstanceId, format) {
-        const tasks4 = await this.fetchExecutionTasks(executionInstanceId);
-        const metadata = await this.fetchExecutionMetadata(executionInstanceId);
-        switch (format) {
-          case "csv":
-            return this.exportToCsv(tasks4, metadata);
-          case "xlsx":
-            return this.exportToXlsx(tasks4, metadata);
-          case "json":
-            return this.exportToJson(tasks4, metadata);
-          case "ms_project_xml":
-            return this.exportToMsProjectXml(tasks4, metadata);
-          default:
-            throw new Error(`Unsupported export format: ${format}`);
-        }
-      }
-      async fetchExecutionTasks(executionInstanceId) {
-        const result = await db.execute(
-          sql16`SELECT 
-            ept.id,
-            ept.name,
-            ept.description,
-            epp.name as phase,
-            ept.assigned_to as assignee,
-            ept.priority,
-            ept.status,
-            ept.start_date as "startDate",
-            ept.due_date as "dueDate",
-            ept.estimated_hours as "estimatedHours",
-            ept.dependencies,
-            eit.progress as "percentComplete"
-          FROM execution_plan_tasks ept
-          LEFT JOIN execution_plan_phases epp ON ept.phase_id = epp.id
-          LEFT JOIN scenario_execution_plans sep ON epp.plan_id = sep.id
-          LEFT JOIN execution_instances ei ON sep.scenario_id = ei.scenario_id
-          LEFT JOIN execution_instance_tasks eit ON eit.execution_instance_id = ei.id AND eit.task_id::text = ept.id::text
-          WHERE ei.id = ${executionInstanceId}
-          ORDER BY epp.sequence_order, ept.sequence_order`
-        );
-        return result.rows.map((row) => ({
-          id: row.id,
-          name: row.name || "",
-          description: row.description || "",
-          phase: row.phase || "Unassigned",
-          assignee: row.assignee || "",
-          priority: row.priority || "medium",
-          status: row.status || "pending",
-          startDate: row.startDate ? new Date(row.startDate) : void 0,
-          dueDate: row.dueDate ? new Date(row.dueDate) : void 0,
-          estimatedHours: row.estimatedHours,
-          dependencies: row.dependencies || [],
-          percentComplete: row.percentComplete || 0
-        }));
-      }
-      async fetchExecutionMetadata(executionInstanceId) {
-        const result = await db.execute(
-          sql16`SELECT 
-            ss.title as "projectName",
-            ss.description,
-            ei.started_at as "startDate",
-            ei.completed_at as "endDate",
-            o.name as "organizationName"
-          FROM execution_instances ei
-          LEFT JOIN strategic_scenarios ss ON ei.scenario_id = ss.id
-          LEFT JOIN organizations o ON ss.organization_id = o.id
-          WHERE ei.id = ${executionInstanceId}`
-        );
-        const row = result.rows[0] || {};
-        return {
-          projectName: row.projectName || "Execution Plan",
-          description: row.description || "",
-          startDate: row.startDate ? new Date(row.startDate) : void 0,
-          endDate: row.endDate ? new Date(row.endDate) : void 0,
-          organizationName: row.organizationName || "Organization"
-        };
-      }
-      exportToCsv(tasks4, metadata) {
-        const headers = [
-          "ID",
-          "Task Name",
-          "Description",
-          "Phase",
-          "Assignee",
-          "Priority",
-          "Status",
-          "Start Date",
-          "Due Date",
-          "Estimated Hours",
-          "Percent Complete",
-          "Dependencies"
-        ];
-        const rows = tasks4.map((task) => [
-          task.id,
-          this.escapeCsvField(task.name),
-          this.escapeCsvField(task.description),
-          task.phase,
-          task.assignee || "",
-          task.priority,
-          task.status,
-          task.startDate?.toISOString().split("T")[0] || "",
-          task.dueDate?.toISOString().split("T")[0] || "",
-          task.estimatedHours?.toString() || "",
-          task.percentComplete?.toString() || "0",
-          (task.dependencies || []).join("; ")
-        ]);
-        const csvContent = [
-          `# Project: ${metadata.projectName}`,
-          `# Organization: ${metadata.organizationName}`,
-          `# Exported: ${(/* @__PURE__ */ new Date()).toISOString()}`,
-          "",
-          headers.join(","),
-          ...rows.map((row) => row.join(","))
-        ].join("\n");
-        return {
-          success: true,
-          format: "csv",
-          content: csvContent,
-          filename: `${this.sanitizeFilename(metadata.projectName)}_execution_plan.csv`,
-          mimeType: "text/csv",
-          size: Buffer.byteLength(csvContent, "utf8")
-        };
-      }
-      exportToXlsx(tasks4, metadata) {
-        const workbook = this.createXlsxContent(tasks4, metadata);
-        return {
-          success: true,
-          format: "xlsx",
-          content: workbook,
-          filename: `${this.sanitizeFilename(metadata.projectName)}_execution_plan.xlsx`,
-          mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-          size: Buffer.byteLength(workbook, "utf8")
-        };
-      }
-      createXlsxContent(tasks4, metadata) {
-        const sheetData = [
-          ["Project:", metadata.projectName],
-          ["Organization:", metadata.organizationName],
-          ["Exported:", (/* @__PURE__ */ new Date()).toISOString()],
-          [],
-          ["ID", "Task Name", "Description", "Phase", "Assignee", "Priority", "Status", "Start Date", "Due Date", "Est. Hours", "% Complete"],
-          ...tasks4.map((task) => [
-            task.id,
-            task.name,
-            task.description,
-            task.phase,
-            task.assignee || "",
-            task.priority,
-            task.status,
-            task.startDate?.toISOString().split("T")[0] || "",
-            task.dueDate?.toISOString().split("T")[0] || "",
-            task.estimatedHours || "",
-            task.percentComplete || 0
-          ])
-        ];
-        const xmlSheet = this.createSpreadsheetML(sheetData);
-        return xmlSheet;
-      }
-      createSpreadsheetML(data) {
-        const rows = data.map((row, rowIndex) => {
-          const cells = row.map((cell, colIndex) => {
-            const cellRef = this.getCellRef(colIndex, rowIndex);
-            const cellValue = cell !== null && cell !== void 0 ? String(cell) : "";
-            const isNumber = typeof cell === "number";
-            if (isNumber) {
-              return `<c r="${cellRef}"><v>${cell}</v></c>`;
-            } else {
-              return `<c r="${cellRef}" t="inlineStr"><is><t>${this.escapeXml(cellValue)}</t></is></c>`;
-            }
-          }).join("");
-          return `<row r="${rowIndex + 1}">${cells}</row>`;
-        }).join("");
-        return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheetData>
-    ${rows}
-  </sheetData>
-</worksheet>`;
-      }
-      getCellRef(col, row) {
-        let colRef = "";
-        let colNum = col;
-        while (colNum >= 0) {
-          colRef = String.fromCharCode(colNum % 26 + 65) + colRef;
-          colNum = Math.floor(colNum / 26) - 1;
-        }
-        return `${colRef}${row + 1}`;
-      }
-      exportToJson(tasks4, metadata) {
-        const jsonContent = JSON.stringify({
-          metadata: {
-            projectName: metadata.projectName,
-            description: metadata.description,
-            organization: metadata.organizationName,
-            exportedAt: (/* @__PURE__ */ new Date()).toISOString(),
-            taskCount: tasks4.length
-          },
-          phases: this.groupTasksByPhase(tasks4),
-          tasks: tasks4.map((task) => ({
-            ...task,
-            startDate: task.startDate?.toISOString(),
-            dueDate: task.dueDate?.toISOString()
-          }))
-        }, null, 2);
-        return {
-          success: true,
-          format: "json",
-          content: jsonContent,
-          filename: `${this.sanitizeFilename(metadata.projectName)}_execution_plan.json`,
-          mimeType: "application/json",
-          size: Buffer.byteLength(jsonContent, "utf8")
-        };
-      }
-      exportToMsProjectXml(tasks4, metadata) {
-        const projectStart = metadata.startDate || /* @__PURE__ */ new Date();
-        const projectEnd = metadata.endDate || this.addDays(projectStart, 30);
-        const taskElements = tasks4.map((task, index2) => {
-          const uid = index2 + 1;
-          const startDate = task.startDate || projectStart;
-          const endDate = task.dueDate || this.addDays(startDate, 1);
-          const durationDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1e3 * 60 * 60 * 24));
-          return `
-      <Task>
-        <UID>${uid}</UID>
-        <ID>${uid}</ID>
-        <Name>${this.escapeXml(task.name)}</Name>
-        <Type>0</Type>
-        <IsNull>0</IsNull>
-        <CreateDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CreateDate>
-        <WBS>${uid}</WBS>
-        <OutlineNumber>${uid}</OutlineNumber>
-        <OutlineLevel>1</OutlineLevel>
-        <Priority>${this.mapPriorityToMsProject(task.priority)}</Priority>
-        <Start>${this.formatMsProjectDate(startDate)}</Start>
-        <Finish>${this.formatMsProjectDate(endDate)}</Finish>
-        <Duration>PT${durationDays * 8}H0M0S</Duration>
-        <DurationFormat>7</DurationFormat>
-        <Work>PT${task.estimatedHours || durationDays * 8}H0M0S</Work>
-        <Stop>${this.formatMsProjectDate(endDate)}</Stop>
-        <Resume>${this.formatMsProjectDate(startDate)}</Resume>
-        <ResumeValid>0</ResumeValid>
-        <EffortDriven>1</EffortDriven>
-        <Recurring>0</Recurring>
-        <OverAllocated>0</OverAllocated>
-        <Estimated>1</Estimated>
-        <Milestone>0</Milestone>
-        <Summary>0</Summary>
-        <Critical>0</Critical>
-        <IsSubproject>0</IsSubproject>
-        <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
-        <ExternalTask>0</ExternalTask>
-        <EarlyStart>${this.formatMsProjectDate(startDate)}</EarlyStart>
-        <EarlyFinish>${this.formatMsProjectDate(endDate)}</EarlyFinish>
-        <LateStart>${this.formatMsProjectDate(startDate)}</LateStart>
-        <LateFinish>${this.formatMsProjectDate(endDate)}</LateFinish>
-        <StartVariance>0</StartVariance>
-        <FinishVariance>0</FinishVariance>
-        <WorkVariance>0</WorkVariance>
-        <FreeSlack>0</FreeSlack>
-        <TotalSlack>0</TotalSlack>
-        <FixedCost>0</FixedCost>
-        <FixedCostAccrual>3</FixedCostAccrual>
-        <PercentComplete>${task.percentComplete || 0}</PercentComplete>
-        <PercentWorkComplete>${task.percentComplete || 0}</PercentWorkComplete>
-        <Cost>0</Cost>
-        <OvertimeCost>0</OvertimeCost>
-        <OvertimeWork>PT0H0M0S</OvertimeWork>
-        <ActualStart>${task.percentComplete ? this.formatMsProjectDate(startDate) : ""}</ActualStart>
-        <ActualDuration>PT0H0M0S</ActualDuration>
-        <ActualCost>0</ActualCost>
-        <ActualOvertimeCost>0</ActualOvertimeCost>
-        <ActualWork>PT0H0M0S</ActualWork>
-        <ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
-        <RegularWork>PT${task.estimatedHours || durationDays * 8}H0M0S</RegularWork>
-        <RemainingDuration>PT${durationDays * 8}H0M0S</RemainingDuration>
-        <RemainingCost>0</RemainingCost>
-        <RemainingWork>PT${task.estimatedHours || durationDays * 8}H0M0S</RemainingWork>
-        <RemainingOvertimeCost>0</RemainingOvertimeCost>
-        <RemainingOvertimeWork>PT0H0M0S</RemainingOvertimeWork>
-        <ACWP>0</ACWP>
-        <CV>0</CV>
-        <ConstraintType>0</ConstraintType>
-        <CalendarUID>-1</CalendarUID>
-        <LevelAssignments>1</LevelAssignments>
-        <LevelingCanSplit>1</LevelingCanSplit>
-        <LevelingDelay>0</LevelingDelay>
-        <LevelingDelayFormat>8</LevelingDelayFormat>
-        <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
-        <Notes>${this.escapeXml(task.description)}</Notes>
-        <HideBar>0</HideBar>
-        <Rollup>0</Rollup>
-        <BCWS>0</BCWS>
-        <BCWP>0</BCWP>
-        <PhysicalPercentComplete>0</PhysicalPercentComplete>
-        <EarnedValueMethod>0</EarnedValueMethod>
-        <IsPublished>1</IsPublished>
-        <StatusManager>${this.escapeXml(task.assignee || "")}</StatusManager>
-        <CommitmentType>0</CommitmentType>
-      </Task>`;
-        }).join("");
-        const resourceElements = this.getUniqueAssignees(tasks4).map(
-          (assignee, index2) => `
-      <Resource>
-        <UID>${index2 + 1}</UID>
-        <ID>${index2 + 1}</ID>
-        <Name>${this.escapeXml(assignee)}</Name>
-        <Type>1</Type>
-        <IsNull>0</IsNull>
-        <MaxUnits>1</MaxUnits>
-        <PeakUnits>1</PeakUnits>
-        <OverAllocated>0</OverAllocated>
-        <CanLevel>1</CanLevel>
-        <AccrueAt>3</AccrueAt>
-        <Work>PT0H0M0S</Work>
-        <RegularWork>PT0H0M0S</RegularWork>
-        <OvertimeWork>PT0H0M0S</OvertimeWork>
-        <ActualWork>PT0H0M0S</ActualWork>
-        <RemainingWork>PT0H0M0S</RemainingWork>
-        <ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
-        <RemainingOvertimeWork>PT0H0M0S</RemainingOvertimeWork>
-        <PercentWorkComplete>0</PercentWorkComplete>
-        <StandardRate>0</StandardRate>
-        <StandardRateFormat>2</StandardRateFormat>
-        <Cost>0</Cost>
-        <OvertimeRate>0</OvertimeRate>
-        <OvertimeRateFormat>2</OvertimeRateFormat>
-        <OvertimeCost>0</OvertimeCost>
-        <CostPerUse>0</CostPerUse>
-        <ActualCost>0</ActualCost>
-        <ActualOvertimeCost>0</ActualOvertimeCost>
-        <RemainingCost>0</RemainingCost>
-        <RemainingOvertimeCost>0</RemainingOvertimeCost>
-        <WorkVariance>0</WorkVariance>
-        <CostVariance>0</CostVariance>
-        <SV>0</SV>
-        <CV>0</CV>
-        <ACWP>0</ACWP>
-        <CalendarUID>-1</CalendarUID>
-        <BCWS>0</BCWS>
-        <BCWP>0</BCWP>
-        <IsGeneric>0</IsGeneric>
-        <IsInactive>0</IsInactive>
-        <IsEnterprise>0</IsEnterprise>
-        <BookingType>0</BookingType>
-        <IsBudget>0</IsBudget>
-      </Resource>`
-        ).join("");
-        const assignmentElements = tasks4.map((task, taskIndex) => {
-          if (!task.assignee) return "";
-          const resourceIndex = this.getUniqueAssignees(tasks4).indexOf(task.assignee);
-          if (resourceIndex === -1) return "";
-          return `
-      <Assignment>
-        <UID>${taskIndex + 1}</UID>
-        <TaskUID>${taskIndex + 1}</TaskUID>
-        <ResourceUID>${resourceIndex + 1}</ResourceUID>
-        <PercentWorkComplete>${task.percentComplete || 0}</PercentWorkComplete>
-        <Units>1</Units>
-        <Work>PT${task.estimatedHours || 8}H0M0S</Work>
-        <RegularWork>PT${task.estimatedHours || 8}H0M0S</RegularWork>
-        <ActualWork>PT0H0M0S</ActualWork>
-        <RemainingWork>PT${task.estimatedHours || 8}H0M0S</RemainingWork>
-        <Start>${this.formatMsProjectDate(task.startDate || /* @__PURE__ */ new Date())}</Start>
-        <Finish>${this.formatMsProjectDate(task.dueDate || /* @__PURE__ */ new Date())}</Finish>
-        <OvertimeWork>PT0H0M0S</OvertimeWork>
-        <ActualOvertimeWork>PT0H0M0S</ActualOvertimeWork>
-        <RemainingOvertimeWork>PT0H0M0S</RemainingOvertimeWork>
-        <Cost>0</Cost>
-        <ActualCost>0</ActualCost>
-        <RemainingCost>0</RemainingCost>
-        <ActualOvertimeCost>0</ActualOvertimeCost>
-        <RemainingOvertimeCost>0</RemainingOvertimeCost>
-        <BCWS>0</BCWS>
-        <BCWP>0</BCWP>
-        <BookingType>0</BookingType>
-        <ActualWorkProtected>PT0H0M0S</ActualWorkProtected>
-        <ActualOvertimeWorkProtected>PT0H0M0S</ActualOvertimeWorkProtected>
-        <CreationDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CreationDate>
-        <HasFixedRateUnits>1</HasFixedRateUnits>
-        <FixedMaterial>0</FixedMaterial>
-      </Assignment>`;
-        }).filter(Boolean).join("");
-        const xmlContent = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Project xmlns="http://schemas.microsoft.com/project">
-  <SaveVersion>14</SaveVersion>
-  <Name>${this.escapeXml(metadata.projectName)}</Name>
-  <Title>${this.escapeXml(metadata.projectName)}</Title>
-  <Subject>${this.escapeXml(metadata.description)}</Subject>
-  <Author>M Strategic Execution OS</Author>
-  <CreationDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CreationDate>
-  <LastSaved>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</LastSaved>
-  <ScheduleFromStart>1</ScheduleFromStart>
-  <StartDate>${this.formatMsProjectDate(projectStart)}</StartDate>
-  <FinishDate>${this.formatMsProjectDate(projectEnd)}</FinishDate>
-  <FYStartDate>1</FYStartDate>
-  <CriticalSlackLimit>0</CriticalSlackLimit>
-  <CurrencyDigits>2</CurrencyDigits>
-  <CurrencySymbol>$</CurrencySymbol>
-  <CurrencySymbolPosition>0</CurrencySymbolPosition>
-  <CalendarUID>1</CalendarUID>
-  <DefaultStartTime>08:00:00</DefaultStartTime>
-  <DefaultFinishTime>17:00:00</DefaultFinishTime>
-  <MinutesPerDay>480</MinutesPerDay>
-  <MinutesPerWeek>2400</MinutesPerWeek>
-  <DaysPerMonth>20</DaysPerMonth>
-  <DefaultTaskType>1</DefaultTaskType>
-  <DefaultFixedCostAccrual>3</DefaultFixedCostAccrual>
-  <DefaultStandardRate>0</DefaultStandardRate>
-  <DefaultOvertimeRate>0</DefaultOvertimeRate>
-  <DurationFormat>7</DurationFormat>
-  <WorkFormat>2</WorkFormat>
-  <EditableActualCosts>0</EditableActualCosts>
-  <HonorConstraints>0</HonorConstraints>
-  <InsertedProjectsLikeSummary>1</InsertedProjectsLikeSummary>
-  <MultipleCriticalPaths>0</MultipleCriticalPaths>
-  <NewTasksEffortDriven>1</NewTasksEffortDriven>
-  <NewTasksEstimated>1</NewTasksEstimated>
-  <SplitsInProgressTasks>1</SplitsInProgressTasks>
-  <SpreadActualCost>0</SpreadActualCost>
-  <SpreadPercentComplete>0</SpreadPercentComplete>
-  <TaskUpdatesResource>1</TaskUpdatesResource>
-  <FiscalYearStart>0</FiscalYearStart>
-  <WeekStartDay>1</WeekStartDay>
-  <MoveCompletedEndsBack>0</MoveCompletedEndsBack>
-  <MoveRemainingStartsBack>0</MoveRemainingStartsBack>
-  <MoveRemainingStartsForward>0</MoveRemainingStartsForward>
-  <MoveCompletedEndsForward>0</MoveCompletedEndsForward>
-  <BaselineForEarnedValue>0</BaselineForEarnedValue>
-  <AutoAddNewResourcesAndTasks>1</AutoAddNewResourcesAndTasks>
-  <CurrentDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CurrentDate>
-  <MicrosoftProjectServerURL>1</MicrosoftProjectServerURL>
-  <Autolink>1</Autolink>
-  <NewTaskStartDate>0</NewTaskStartDate>
-  <DefaultTaskEVMethod>0</DefaultTaskEVMethod>
-  <ProjectExternallyEdited>0</ProjectExternallyEdited>
-  <AdminProject>0</AdminProject>
-  <Calendars>
-    <Calendar>
-      <UID>1</UID>
-      <Name>Standard</Name>
-      <IsBaseCalendar>1</IsBaseCalendar>
-      <IsBaselineCalendar>0</IsBaselineCalendar>
-      <BaseCalendarUID>-1</BaseCalendarUID>
-      <WeekDays>
-        <WeekDay>
-          <DayType>1</DayType>
-          <DayWorking>0</DayWorking>
-        </WeekDay>
-        <WeekDay>
-          <DayType>2</DayType>
-          <DayWorking>1</DayWorking>
-          <WorkingTimes>
-            <WorkingTime><FromTime>08:00:00</FromTime><ToTime>12:00:00</ToTime></WorkingTime>
-            <WorkingTime><FromTime>13:00:00</FromTime><ToTime>17:00:00</ToTime></WorkingTime>
-          </WorkingTimes>
-        </WeekDay>
-        <WeekDay>
-          <DayType>3</DayType>
-          <DayWorking>1</DayWorking>
-          <WorkingTimes>
-            <WorkingTime><FromTime>08:00:00</FromTime><ToTime>12:00:00</ToTime></WorkingTime>
-            <WorkingTime><FromTime>13:00:00</FromTime><ToTime>17:00:00</ToTime></WorkingTime>
-          </WorkingTimes>
-        </WeekDay>
-        <WeekDay>
-          <DayType>4</DayType>
-          <DayWorking>1</DayWorking>
-          <WorkingTimes>
-            <WorkingTime><FromTime>08:00:00</FromTime><ToTime>12:00:00</ToTime></WorkingTime>
-            <WorkingTime><FromTime>13:00:00</FromTime><ToTime>17:00:00</ToTime></WorkingTime>
-          </WorkingTimes>
-        </WeekDay>
-        <WeekDay>
-          <DayType>5</DayType>
-          <DayWorking>1</DayWorking>
-          <WorkingTimes>
-            <WorkingTime><FromTime>08:00:00</FromTime><ToTime>12:00:00</ToTime></WorkingTime>
-            <WorkingTime><FromTime>13:00:00</FromTime><ToTime>17:00:00</ToTime></WorkingTime>
-          </WorkingTimes>
-        </WeekDay>
-        <WeekDay>
-          <DayType>6</DayType>
-          <DayWorking>1</DayWorking>
-          <WorkingTimes>
-            <WorkingTime><FromTime>08:00:00</FromTime><ToTime>12:00:00</ToTime></WorkingTime>
-            <WorkingTime><FromTime>13:00:00</FromTime><ToTime>17:00:00</ToTime></WorkingTime>
-          </WorkingTimes>
-        </WeekDay>
-        <WeekDay>
-          <DayType>7</DayType>
-          <DayWorking>0</DayWorking>
-        </WeekDay>
-      </WeekDays>
-    </Calendar>
-  </Calendars>
-  <Tasks>
-    <Task>
-      <UID>0</UID>
-      <ID>0</ID>
-      <Name>${this.escapeXml(metadata.projectName)}</Name>
-      <Type>1</Type>
-      <IsNull>0</IsNull>
-      <CreateDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CreateDate>
-      <WBS>0</WBS>
-      <OutlineNumber>0</OutlineNumber>
-      <OutlineLevel>0</OutlineLevel>
-      <Priority>500</Priority>
-      <Start>${this.formatMsProjectDate(projectStart)}</Start>
-      <Finish>${this.formatMsProjectDate(projectEnd)}</Finish>
-      <Duration>PT0H0M0S</Duration>
-      <DurationFormat>7</DurationFormat>
-      <Work>PT0H0M0S</Work>
-      <ResumeValid>0</ResumeValid>
-      <EffortDriven>0</EffortDriven>
-      <Recurring>0</Recurring>
-      <OverAllocated>0</OverAllocated>
-      <Estimated>0</Estimated>
-      <Milestone>0</Milestone>
-      <Summary>1</Summary>
-      <Critical>0</Critical>
-      <IsSubproject>0</IsSubproject>
-      <IsSubprojectReadOnly>0</IsSubprojectReadOnly>
-      <ExternalTask>0</ExternalTask>
-      <FixedCostAccrual>3</FixedCostAccrual>
-      <ConstraintType>0</ConstraintType>
-      <CalendarUID>-1</CalendarUID>
-      <LevelAssignments>1</LevelAssignments>
-      <LevelingCanSplit>1</LevelingCanSplit>
-      <LevelingDelay>0</LevelingDelay>
-      <LevelingDelayFormat>8</LevelingDelayFormat>
-      <IgnoreResourceCalendar>0</IgnoreResourceCalendar>
-      <HideBar>0</HideBar>
-      <Rollup>0</Rollup>
-      <EarnedValueMethod>0</EarnedValueMethod>
-      <IsPublished>1</IsPublished>
-      <CommitmentType>0</CommitmentType>
-    </Task>
-    ${taskElements}
-  </Tasks>
-  <Resources>
-    ${resourceElements}
-  </Resources>
-  <Assignments>
-    ${assignmentElements}
-  </Assignments>
-</Project>`;
-        return {
-          success: true,
-          format: "ms_project_xml",
-          content: xmlContent,
-          filename: `${this.sanitizeFilename(metadata.projectName)}_execution_plan.xml`,
-          mimeType: "application/xml",
-          size: Buffer.byteLength(xmlContent, "utf8")
-        };
-      }
-      groupTasksByPhase(tasks4) {
-        return tasks4.reduce((acc, task) => {
-          const phase = task.phase || "Unassigned";
-          if (!acc[phase]) acc[phase] = [];
-          acc[phase].push(task);
-          return acc;
-        }, {});
-      }
-      getUniqueAssignees(tasks4) {
-        return Array.from(new Set(tasks4.map((t) => t.assignee).filter((a) => Boolean(a))));
-      }
-      formatMsProjectDate(date) {
-        return date.toISOString().replace("Z", "");
-      }
-      mapPriorityToMsProject(priority) {
-        const map = {
-          critical: 1e3,
-          high: 700,
-          medium: 500,
-          low: 300
-        };
-        return map[priority.toLowerCase()] || 500;
-      }
-      addDays(date, days) {
-        const result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-      }
-      escapeCsvField(value) {
-        if (value.includes(",") || value.includes('"') || value.includes("\n")) {
-          return `"${value.replace(/"/g, '""')}"`;
-        }
-        return value;
-      }
-      escapeXml(value) {
-        return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-      }
-      sanitizeFilename(name) {
-        return name.replace(/[^a-zA-Z0-9\s-]/g, "").replace(/\s+/g, "_").substring(0, 50);
-      }
-    };
-    fileExportService = new FileExportService();
-  }
-});
-
-// server/services/ExecutionOrchestrator.ts
-var ExecutionOrchestrator_exports = {};
-__export(ExecutionOrchestrator_exports, {
-  ExecutionOrchestrator: () => ExecutionOrchestrator,
-  executionOrchestrator: () => executionOrchestrator
-});
-import { eq as eq33 } from "drizzle-orm";
-import pino14 from "pino";
-var logger11, ExecutionOrchestrator, executionOrchestrator;
-var init_ExecutionOrchestrator = __esm({
-  "server/services/ExecutionOrchestrator.ts"() {
-    "use strict";
-    init_db();
-    init_schema();
-    init_PreFlightCheckService();
-    init_ExecutionPlanSyncService();
-    init_DocumentTemplateEngine();
-    init_SlackNotificationService();
-    logger11 = pino14({ name: "execution-orchestrator" });
-    ExecutionOrchestrator = class {
-      preflightService;
-      syncService;
-      documentEngine;
-      constructor() {
-        this.preflightService = new PreFlightCheckService();
-        this.syncService = new ExecutionPlanSyncService();
-        this.documentEngine = new DocumentTemplateEngine();
-      }
-      async activate(request) {
-        const startTime = Date.now();
-        const result = {
-          success: false,
-          documentsGenerated: 0,
-          stakeholdersNotified: 0,
-          errors: [],
-          events: []
-        };
-        let executionInstanceId;
-        try {
-          logger11.info({ request }, "\u{1F680} Starting one-click activation");
-          if (!request.skipPreflight) {
-            const preflightStart = Date.now();
-            const preflightResult = await this.runPreflight(request);
-            result.preflightResult = preflightResult;
-            result.events.push({
-              type: preflightResult.canProceed ? "preflight_passed" : "preflight_failed",
-              success: preflightResult.canProceed,
-              durationMs: Date.now() - preflightStart
-            });
-            if (!preflightResult.canProceed) {
-              result.errors.push("Pre-flight check failed: blocking issues detected");
-              logger11.warn({ preflightResult }, "\u274C Pre-flight check failed");
-              return result;
-            }
-          }
-          const instanceStart = Date.now();
-          const activationTime = /* @__PURE__ */ new Date();
-          const executionDeadline = new Date(activationTime.getTime() + 12 * 60 * 1e3);
-          const [instance] = await db.insert(executionInstances).values({
-            organizationId: request.organizationId,
-            scenarioId: request.scenarioId || null,
-            executionPlanId: request.executionPlanId,
-            triggeredBy: request.triggeredBy,
-            triggerData: { playbookId: request.playbookId, activatedAt: activationTime.toISOString() },
-            status: "in_progress",
-            currentPhase: "immediate",
-            startedAt: activationTime
-          }).returning();
-          executionInstanceId = instance.id;
-          result.executionInstanceId = executionInstanceId;
-          result.deadline = executionDeadline;
-          await this.recordEvent(executionInstanceId, request.organizationId, "activation_started", {
-            playbookId: request.playbookId,
-            deadline: executionDeadline.toISOString()
-          }, true, Date.now() - instanceStart);
-          result.events.push({
-            type: "activation_started",
-            success: true,
-            durationMs: Date.now() - instanceStart
-          });
-          if (request.syncPlatform) {
-            const syncStart = Date.now();
-            try {
-              const syncResult = await this.syncToExternalPlatform(
-                executionInstanceId,
-                request
-              );
-              result.projectSync = syncResult;
-              result.events.push({
-                type: "project_created",
-                success: true,
-                durationMs: Date.now() - syncStart
-              });
-            } catch (error) {
-              logger11.error({ error }, "External sync failed");
-              result.errors.push(`External sync failed: ${error.message}`);
-              result.events.push({
-                type: "project_created",
-                success: false,
-                durationMs: Date.now() - syncStart
-              });
-            }
-          }
-          const docStart = Date.now();
-          try {
-            const docsGenerated = await this.generateDocuments(executionInstanceId, request);
-            result.documentsGenerated = docsGenerated;
-            result.events.push({
-              type: "documents_generated",
-              success: true,
-              durationMs: Date.now() - docStart
-            });
-          } catch (error) {
-            logger11.error({ error }, "Document generation failed");
-            result.errors.push(`Document generation failed: ${error.message}`);
-          }
-          const notifyStart = Date.now();
-          try {
-            const notified = await this.notifyStakeholders(executionInstanceId, request, executionDeadline);
-            result.stakeholdersNotified = notified;
-            result.events.push({
-              type: "stakeholders_notified",
-              success: true,
-              durationMs: Date.now() - notifyStart
-            });
-          } catch (error) {
-            logger11.error({ error }, "Stakeholder notification failed");
-            result.errors.push(`Notification failed: ${error.message}`);
-          }
-          const budgetStart = Date.now();
-          try {
-            const budgetResult = await this.unlockBudgets(executionInstanceId, request);
-            if (budgetResult) {
-              result.budgetUnlocked = budgetResult;
-              result.events.push({
-                type: "budget_unlocked",
-                success: true,
-                durationMs: Date.now() - budgetStart
-              });
-            }
-          } catch (error) {
-            logger11.error({ error }, "Budget unlock failed");
-            result.errors.push(`Budget unlock failed: ${error.message}`);
-          }
-          await this.recordEvent(executionInstanceId, request.organizationId, "activation_completed", {
-            totalDurationMs: Date.now() - startTime,
-            documentsGenerated: result.documentsGenerated,
-            stakeholdersNotified: result.stakeholdersNotified
-          }, true, Date.now() - startTime);
-          result.success = true;
-          logger11.info({
-            executionInstanceId,
-            durationMs: Date.now() - startTime
-          }, "\u2705 One-click activation completed");
-          return result;
-        } catch (error) {
-          logger11.error({ error }, "\u274C Activation failed");
-          result.errors.push(error.message);
-          if (executionInstanceId) {
-            await this.recordEvent(executionInstanceId, request.organizationId, "activation_failed", {
-              error: error.message
-            }, false, Date.now() - startTime);
-          }
-          return result;
-        }
-      }
-      async runPreflight(request) {
-        const result = await this.preflightService.performCheck({
-          executionPlanId: request.executionPlanId,
-          organizationId: request.organizationId
-        });
-        try {
-          await db.insert(preflightCheckResults).values({
-            executionPlanId: request.executionPlanId,
-            organizationId: request.organizationId,
-            canProceed: result.canProceed,
-            readinessScore: result.readinessScore,
-            estimatedCompletionTime: result.estimatedCompletionTime,
-            criticalIssues: result.criticalIssues,
-            warnings: result.warnings,
-            metadata: result.metadata,
-            checkedBy: request.triggeredBy,
-            expiresAt: new Date(Date.now() + 30 * 60 * 1e3)
-            // 30 min validity
-          });
-        } catch (err) {
-          logger11.warn({ err }, "Failed to store preflight result");
-        }
-        return result;
-      }
-      async syncToExternalPlatform(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.id, request.playbookId));
-        const tasks4 = await db.select().from(executionPlanTasks).where(eq33(executionPlanTasks.executionPlanId, request.executionPlanId));
-        const projectName = playbook ? `M: ${playbook.name}` : "M Strategic Response";
-        const projectKey = `M${Date.now().toString(36).toUpperCase().slice(-6)}`;
-        const [syncRecord] = await db.insert(externalProjectSyncs).values({
-          executionInstanceId,
-          organizationId: request.organizationId,
-          platform: request.syncPlatform || "jira",
-          externalProjectKey: projectKey,
-          externalProjectUrl: `https://demo.atlassian.net/jira/software/projects/${projectKey}`,
-          tasksCreated: tasks4.length,
-          taskMappings: tasks4.map((t, i) => ({
-            internalId: t.id,
-            externalId: `${projectKey}-${i + 1}`,
-            externalKey: `${projectKey}-${i + 1}`
-          })),
-          syncStatus: "synced",
-          lastSyncAt: /* @__PURE__ */ new Date()
-        }).returning();
-        return {
-          platform: request.syncPlatform || "jira",
-          projectUrl: syncRecord.externalProjectUrl || void 0,
-          tasksCreated: tasks4.length
-        };
-      }
-      async generateDocuments(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.id, request.playbookId));
-        if (!playbook) return 0;
-        const documentsToGenerate = [
-          { name: "Executive Briefing", type: "briefing" },
-          { name: "Stakeholder Communication", type: "communication" },
-          { name: "Execution Checklist", type: "checklist" }
-        ];
-        let generatedCount = 0;
-        for (const doc of documentsToGenerate) {
-          try {
-            const content = this.generateSimpleDocument(doc.type, {
-              playbookName: playbook.name,
-              playbookDescription: playbook.description,
-              activationTime: (/* @__PURE__ */ new Date()).toISOString(),
-              deadline: new Date(Date.now() + 12 * 60 * 1e3).toISOString()
-            });
-            await db.insert(generatedDocuments).values({
-              executionInstanceId,
-              organizationId: request.organizationId,
-              documentName: doc.name,
-              documentType: doc.type,
-              content,
-              format: "markdown",
-              variablesUsed: { playbookId: request.playbookId },
-              generatedBy: "system"
-            });
-            generatedCount++;
-          } catch (err) {
-            logger11.warn({ err, docType: doc.type }, "Failed to generate document");
-          }
-        }
-        return generatedCount;
-      }
-      async notifyStakeholders(executionInstanceId, request, deadline) {
-        const stakeholders = await db.select().from(scenarioStakeholders).where(eq33(scenarioStakeholders.scenarioId, request.scenarioId));
-        let notifiedCount = 0;
-        for (const stakeholder of stakeholders) {
-          try {
-            await db.insert(stakeholderAcknowledgments).values({
-              executionInstanceId,
-              stakeholderId: stakeholder.id,
-              userId: stakeholder.userId,
-              notificationChannel: "in_app"
-            });
-            if (stakeholder.userId) {
-              await db.insert(notifications).values({
-                organizationId: request.organizationId,
-                userId: stakeholder.userId,
-                type: "playbook_activation",
-                title: "Strategic Playbook Activated",
-                message: `Coordinated response initiated. Execute by ${deadline.toLocaleTimeString()}`,
-                status: "unread"
-              });
-            }
-            notifiedCount++;
-          } catch (err) {
-            logger11.warn({ err, stakeholderId: stakeholder.id }, "Failed to notify stakeholder");
-          }
-        }
-        notifyPlaybookActivation(request.playbookId, notifiedCount, deadline).catch((err) => {
-          logger11.warn({ err }, "Slack notification failed");
-        });
-        return notifiedCount;
-      }
-      async unlockBudgets(executionInstanceId, request) {
-        const [playbook] = await db.select().from(playbookLibrary).where(eq33(playbookLibrary.id, request.playbookId));
-        if (!playbook?.preApprovedBudget) return null;
-        const budgetAmount = Number(playbook.preApprovedBudget) || 0;
-        if (budgetAmount === 0) return null;
-        const budgets = [{
-          category: "general",
-          amount: budgetAmount,
-          currency: "USD"
-        }];
-        if (!budgets || budgets.length === 0) return null;
-        let totalAmount = 0;
-        const categories = [];
-        for (const budget of budgets) {
-          try {
-            await db.insert(budgetUnlocks).values({
-              executionInstanceId,
-              organizationId: request.organizationId,
-              playbookId: request.playbookId,
-              budgetCategory: budget.category,
-              preApprovedAmount: String(budget.amount),
-              currency: budget.currency || "USD",
-              approvedBy: budget.approvedBy,
-              unlockedBy: request.triggeredBy,
-              status: "unlocked"
-            });
-            totalAmount += budget.amount;
-            categories.push(budget.category);
-          } catch (err) {
-            logger11.warn({ err, category: budget.category }, "Failed to unlock budget");
-          }
-        }
-        return {
-          totalAmount,
-          currency: budgets[0]?.currency || "USD",
-          categories
-        };
-      }
-      async recordEvent(executionInstanceId, organizationId, eventType, eventData, success, durationMs) {
-        try {
-          await db.insert(activationEvents).values({
-            executionInstanceId,
-            organizationId,
-            eventType,
-            eventData,
-            success,
-            durationMs
-          });
-        } catch (err) {
-          logger11.warn({ err, eventType }, "Failed to record activation event");
-        }
-      }
-      generateSimpleDocument(docType, vars) {
-        const templates = {
-          briefing: `# Executive Briefing: ${vars.playbookName}
-
-**Activated:** ${vars.activationTime}
-**Deadline:** ${vars.deadline}
-
-## Situation
-${vars.playbookDescription || "Strategic response activated."}
-
-## Immediate Actions
-1. Review assigned tasks
-2. Acknowledge receipt
-3. Begin execution within 2 minutes
-
-## Success Criteria
-- Complete all Phase 1 tasks within 2 minutes
-- Full execution within 12 minutes
-`,
-          communication: `# Stakeholder Communication
-
-**Subject:** Strategic Playbook Activated - ${vars.playbookName}
-
-A strategic playbook has been activated requiring immediate attention.
-
-**Action Required:** Please acknowledge receipt and review your assigned tasks.
-
-**Deadline:** ${vars.deadline}
-`,
-          checklist: `# Execution Checklist: ${vars.playbookName}
-
-- [ ] Acknowledge notification
-- [ ] Review briefing document
-- [ ] Identify assigned tasks
-- [ ] Begin Phase 1 tasks
-- [ ] Report completion status
-`
-        };
-        return templates[docType] || `# ${vars.playbookName}
-
-Document generated at ${vars.activationTime}`;
-      }
-      async getActivationStatus(executionInstanceId) {
-        const [instance] = await db.select().from(executionInstances).where(eq33(executionInstances.id, executionInstanceId));
-        if (!instance) return null;
-        const [events, stakeholderAcks, documents, projectSyncs, budgets] = await Promise.all([
-          db.select().from(activationEvents).where(eq33(activationEvents.executionInstanceId, executionInstanceId)),
-          db.select().from(stakeholderAcknowledgments).where(eq33(stakeholderAcknowledgments.executionInstanceId, executionInstanceId)),
-          db.select().from(generatedDocuments).where(eq33(generatedDocuments.executionInstanceId, executionInstanceId)),
-          db.select().from(externalProjectSyncs).where(eq33(externalProjectSyncs.executionInstanceId, executionInstanceId)),
-          db.select().from(budgetUnlocks).where(eq33(budgetUnlocks.executionInstanceId, executionInstanceId))
-        ]);
-        return {
-          instance,
-          events,
-          stakeholderAcks,
-          documents,
-          projectSync: projectSyncs[0] || null,
-          budgets
-        };
-      }
-    };
-    executionOrchestrator = new ExecutionOrchestrator();
-  }
-});
-
 // server/vite.ts
 var vite_exports = {};
 __export(vite_exports, {
@@ -31429,7 +29945,7 @@ import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 import { nanoid as nanoid3 } from "nanoid";
-import pino15 from "pino";
+import pino14 from "pino";
 function log4(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
     hour: "numeric",
@@ -31488,11 +30004,11 @@ function serveStatic(app2) {
     res.sendFile("/app/dist/public/index.html");
   });
 }
-var logger12, viteLogger;
+var logger11, viteLogger;
 var init_vite = __esm({
   "server/vite.ts"() {
     "use strict";
-    logger12 = pino15({ name: "vite-service" });
+    logger11 = pino14({ name: "vite-service" });
     viteLogger = createLogger();
   }
 });
@@ -31773,6 +30289,7 @@ var init_swagger = __esm({
 });
 
 // server/index.ts
+import * as Sentry from "@sentry/node";
 import express2 from "express";
 import { createServer as createServer2 } from "http";
 import path2 from "path";
@@ -33046,7 +31563,7 @@ import { Router } from "express";
 init_db();
 init_schema();
 init_intelligence_signals();
-import { eq as eq4, desc as desc3, and as and4, sql as sql6, count as count2 } from "drizzle-orm";
+import { eq as eq4, desc as desc3, and as and4, sql as sql7, count as count2 } from "drizzle-orm";
 var IntelligenceSignalService = class {
   /**
    * Get the signal catalog (all 16 categories with metadata)
@@ -33069,33 +31586,33 @@ var IntelligenceSignalService = class {
       const [alertsResult] = await db.select({ count: count2() }).from(strategicAlerts).where(
         and4(
           eq4(strategicAlerts.status, "active"),
-          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`
+          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql7`1=1`
         )
       );
       const [criticalAlertsResult] = await db.select({ count: count2() }).from(strategicAlerts).where(
         and4(
           eq4(strategicAlerts.status, "active"),
           eq4(strategicAlerts.severity, "critical"),
-          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`
+          organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql7`1=1`
         )
       );
       const [triggersResult] = await db.select({ count: count2() }).from(executiveTriggers2).where(
         and4(
           eq4(executiveTriggers2.isActive, true),
-          organizationId ? eq4(executiveTriggers2.organizationId, organizationId) : sql6`1=1`
+          organizationId ? eq4(executiveTriggers2.organizationId, organizationId) : sql7`1=1`
         )
       );
       const [dataSourcesResult] = await db.select({ count: count2() }).from(dataSources).where(
         and4(
           eq4(dataSources.isActive, true),
-          organizationId ? eq4(dataSources.organizationId, organizationId) : sql6`1=1`
+          organizationId ? eq4(dataSources.organizationId, organizationId) : sql7`1=1`
         )
       );
-      const recentAlerts = await db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(10);
+      const recentAlerts = await db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql7`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(10);
       const activeWeakSignals = await db.select().from(weakSignals).where(
         and4(
           eq4(weakSignals.status, "active"),
-          organizationId ? eq4(weakSignals.organizationId, organizationId) : sql6`1=1`
+          organizationId ? eq4(weakSignals.organizationId, organizationId) : sql7`1=1`
         )
       ).orderBy(desc3(weakSignals.detectedAt)).limit(20);
       const categoryStatuses = SIGNAL_CATEGORIES.map((cat) => ({
@@ -33170,7 +31687,7 @@ var IntelligenceSignalService = class {
    */
   async getTriggers(organizationId) {
     try {
-      const triggers = await db.select().from(executiveTriggers2).where(organizationId ? eq4(executiveTriggers2.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(executiveTriggers2.createdAt));
+      const triggers = await db.select().from(executiveTriggers2).where(organizationId ? eq4(executiveTriggers2.organizationId, organizationId) : sql7`1=1`).orderBy(desc3(executiveTriggers2.createdAt));
       return triggers;
     } catch (error) {
       console.error("Error fetching triggers:", error);
@@ -33241,8 +31758,8 @@ var IntelligenceSignalService = class {
   async getAlerts(organizationId, limit = 50) {
     try {
       const [alerts, signals] = await Promise.all([
-        db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(limit),
-        db.select().from(weakSignals).where(organizationId ? eq4(weakSignals.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(weakSignals.detectedAt)).limit(limit)
+        db.select().from(strategicAlerts).where(organizationId ? eq4(strategicAlerts.organizationId, organizationId) : sql7`1=1`).orderBy(desc3(strategicAlerts.createdAt)).limit(limit),
+        db.select().from(weakSignals).where(organizationId ? eq4(weakSignals.organizationId, organizationId) : sql7`1=1`).orderBy(desc3(weakSignals.detectedAt)).limit(limit)
       ]);
       return {
         strategicAlerts: alerts,
@@ -33289,7 +31806,7 @@ var IntelligenceSignalService = class {
    */
   async getDataSources(organizationId) {
     try {
-      const sources = await db.select().from(dataSources).where(organizationId ? eq4(dataSources.organizationId, organizationId) : sql6`1=1`).orderBy(desc3(dataSources.createdAt));
+      const sources = await db.select().from(dataSources).where(organizationId ? eq4(dataSources.organizationId, organizationId) : sql7`1=1`).orderBy(desc3(dataSources.createdAt));
       return sources;
     } catch (error) {
       console.error("Error fetching data sources:", error);
@@ -36830,6 +35347,532 @@ function registerActivationRoutes(app2) {
   });
 }
 
+// server/routes/org-setup-routes.ts
+init_storage();
+
+// server/routes/helpers.ts
+init_storage();
+function getUserId(req) {
+  if (req.isAuthenticated() && req.user?.claims?.sub) {
+    return req.user.claims.sub;
+  }
+  return void 0;
+}
+async function getOrgIdForUser(userId) {
+  const orgs = await storage.getUserOrganizations(userId);
+  return orgs[0]?.id;
+}
+async function requireOrgAccess(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: "Unauthorized - Please sign in" });
+  }
+  const userId = getUserId(req);
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  const orgId = await getOrgIdForUser(userId);
+  if (!orgId) {
+    return res.status(403).json({ message: "Forbidden - User has no organization" });
+  }
+  const requestedOrgId = req.params.orgId || req.params.organizationId || req.query.organizationId || req.body.organizationId;
+  if (requestedOrgId && requestedOrgId !== "default" && requestedOrgId !== orgId) {
+    return res.status(403).json({
+      message: "Forbidden - Insufficient permissions for this organization"
+    });
+  }
+  req.userId = userId;
+  req.orgId = orgId;
+  next();
+}
+function requireAuth(req, res, next) {
+  const userId = getUserId(req);
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized - Please sign in" });
+  }
+  req.userId = userId;
+  next();
+}
+
+// server/routes/org-setup-routes.ts
+function registerOrgSetupRoutes(app2) {
+  app2.get("/api/config/triggers", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId;
+      const triggers = await storage.getCustomTriggers(organizationId);
+      res.json(triggers);
+    } catch (error) {
+      console.error("Error fetching custom triggers:", error);
+      res.status(500).json({ error: "Failed to fetch triggers" });
+    }
+  });
+  app2.post("/api/config/triggers", requireOrgAccess, async (req, res) => {
+    try {
+      const trigger = await storage.createCustomTrigger(req.body);
+      res.json({ success: true, trigger, message: "Custom trigger created successfully" });
+    } catch (error) {
+      console.error("Error creating custom trigger:", error);
+      res.status(400).json({ error: "Failed to create trigger", details: error.message });
+    }
+  });
+  app2.patch("/api/config/triggers/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const trigger = await storage.updateCustomTrigger(req.params.id, req.body);
+      res.json({ success: true, trigger, message: "Trigger updated successfully" });
+    } catch (error) {
+      console.error("Error updating trigger:", error);
+      res.status(400).json({ error: "Failed to update trigger", details: error.message });
+    }
+  });
+  app2.delete("/api/config/triggers/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteCustomTrigger(req.params.id);
+      res.json({ success: true, triggerId: req.params.id, message: "Trigger deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting trigger:", error);
+      res.status(400).json({ error: "Failed to delete trigger", details: error.message });
+    }
+  });
+  app2.get("/api/config/departments", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId;
+      const departments2 = await storage.getDepartments(organizationId);
+      res.json(departments2);
+    } catch (error) {
+      console.error("Error fetching departments:", error);
+      res.status(500).json({ error: "Failed to fetch departments" });
+    }
+  });
+  app2.post("/api/config/departments", requireOrgAccess, async (req, res) => {
+    try {
+      const department = await storage.createDepartment(req.body);
+      res.json({ success: true, department, message: "Department created successfully" });
+    } catch (error) {
+      console.error("Error creating department:", error);
+      res.status(400).json({ error: "Failed to create department", details: error.message });
+    }
+  });
+  app2.patch("/api/config/departments/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const department = await storage.updateDepartment(req.params.id, req.body);
+      res.json({ success: true, department, message: "Department updated successfully" });
+    } catch (error) {
+      console.error("Error updating department:", error);
+      res.status(400).json({ error: "Failed to update department", details: error.message });
+    }
+  });
+  app2.delete("/api/config/departments/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteDepartment(req.params.id);
+      res.json({ success: true, departmentId: req.params.id, message: "Department deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting department:", error);
+      res.status(400).json({ error: "Failed to delete department", details: error.message });
+    }
+  });
+  app2.get("/api/config/escalation-policies", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId;
+      const policies = await storage.getEscalationPolicies(organizationId);
+      res.json(policies);
+    } catch (error) {
+      console.error("Error fetching escalation policies:", error);
+      res.status(500).json({ error: "Failed to fetch escalation policies" });
+    }
+  });
+  app2.post("/api/config/escalation-policies", requireOrgAccess, async (req, res) => {
+    try {
+      const policy = await storage.createEscalationPolicy(req.body);
+      res.json({ success: true, policy, message: "Escalation policy created successfully" });
+    } catch (error) {
+      console.error("Error creating escalation policy:", error);
+      res.status(400).json({ error: "Failed to create escalation policy", details: error.message });
+    }
+  });
+  app2.patch("/api/config/escalation-policies/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const policy = await storage.updateEscalationPolicy(req.params.id, req.body);
+      res.json({ success: true, policy, message: "Escalation policy updated successfully" });
+    } catch (error) {
+      console.error("Error updating escalation policy:", error);
+      res.status(400).json({ error: "Failed to update escalation policy", details: error.message });
+    }
+  });
+  app2.delete("/api/config/escalation-policies/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteEscalationPolicy(req.params.id);
+      res.json({ success: true, policyId: req.params.id, message: "Escalation policy deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting escalation policy:", error);
+      res.status(400).json({ error: "Failed to delete escalation policy", details: error.message });
+    }
+  });
+  app2.get("/api/config/communication-channels", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId;
+      const channels = await storage.getCommunicationChannels(organizationId);
+      res.json(channels);
+    } catch (error) {
+      console.error("Error fetching communication channels:", error);
+      res.status(500).json({ error: "Failed to fetch communication channels" });
+    }
+  });
+  app2.post("/api/config/communication-channels", requireOrgAccess, async (req, res) => {
+    try {
+      const channel = await storage.createCommunicationChannel(req.body);
+      res.json({ success: true, channel, message: "Communication channel created successfully" });
+    } catch (error) {
+      console.error("Error creating communication channel:", error);
+      res.status(400).json({ error: "Failed to create communication channel", details: error.message });
+    }
+  });
+  app2.patch("/api/config/communication-channels/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const channel = await storage.updateCommunicationChannel(req.params.id, req.body);
+      res.json({ success: true, channel, message: "Communication channel updated successfully" });
+    } catch (error) {
+      console.error("Error updating communication channel:", error);
+      res.status(400).json({ error: "Failed to update communication channel", details: error.message });
+    }
+  });
+  app2.delete("/api/config/communication-channels/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteCommunicationChannel(req.params.id);
+      res.json({ success: true, channelId: req.params.id, message: "Communication channel deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting communication channel:", error);
+      res.status(400).json({ error: "Failed to delete communication channel", details: error.message });
+    }
+  });
+  app2.get("/api/config/success-metrics", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId;
+      const metrics = await storage.getSuccessMetricsConfig(organizationId);
+      res.json(metrics);
+    } catch (error) {
+      console.error("Error fetching success metrics:", error);
+      res.status(500).json({ error: "Failed to fetch success metrics" });
+    }
+  });
+  app2.post("/api/config/success-metrics", requireOrgAccess, async (req, res) => {
+    try {
+      const metric = await storage.createSuccessMetric(req.body);
+      res.json({ success: true, metric, message: "Success metric created successfully" });
+    } catch (error) {
+      console.error("Error creating success metric:", error);
+      res.status(400).json({ error: "Failed to create success metric", details: error.message });
+    }
+  });
+  app2.patch("/api/config/success-metrics/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const metric = await storage.updateSuccessMetric(req.params.id, req.body);
+      res.json({ success: true, metric, message: "Success metric updated successfully" });
+    } catch (error) {
+      console.error("Error updating success metric:", error);
+      res.status(400).json({ error: "Failed to update success metric", details: error.message });
+    }
+  });
+  app2.delete("/api/config/success-metrics/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteSuccessMetric(req.params.id);
+      res.json({ success: true, metricId: req.params.id, message: "Success metric deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting success metric:", error);
+      res.status(400).json({ error: "Failed to delete success metric", details: error.message });
+    }
+  });
+  app2.get("/api/config/setup-progress/:organizationId", requireOrgAccess, async (req, res) => {
+    try {
+      const progress = await storage.getOrganizationSetupProgress(req.orgId);
+      res.json(progress || {
+        departmentsConfigured: false,
+        executivesConfigured: false,
+        approvalChainsConfigured: false,
+        escalationPoliciesConfigured: false,
+        communicationChannelsConfigured: false
+      });
+    } catch (error) {
+      console.error("Error fetching setup progress:", error);
+      res.status(500).json({ error: "Failed to fetch setup progress" });
+    }
+  });
+  app2.post("/api/config/setup-progress", requireOrgAccess, async (req, res) => {
+    try {
+      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
+      res.json({ success: true, progress, message: "Setup progress updated successfully" });
+    } catch (error) {
+      console.error("Error updating setup progress:", error);
+      res.status(400).json({ error: "Failed to update setup progress", details: error.message });
+    }
+  });
+  app2.patch("/api/config/setup-progress/:organizationId", requireOrgAccess, async (req, res) => {
+    try {
+      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
+      res.json({ success: true, progress, message: "Setup progress saved" });
+    } catch (error) {
+      console.error("Error saving setup progress:", error);
+      res.status(400).json({ error: "Failed to save setup progress", details: error.message });
+    }
+  });
+}
+
+// server/routes/dynamic-strategy-routes.ts
+init_db();
+init_schema();
+import { eq as eq8, desc as desc5 } from "drizzle-orm";
+async function registerDynamicStrategyRoutes(app2) {
+  app2.get("/api/dynamic-strategy/readiness", requireAuth, async (req, res) => {
+    try {
+      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const metric = await dynamicStrategyService2.getLatestReadinessMetric(user[0].organizationId);
+      if (!metric) {
+        const newMetric = await dynamicStrategyService2.calculateReadinessScore(user[0].organizationId);
+        return res.json(newMetric);
+      }
+      res.json(metric);
+    } catch (error) {
+      console.error("Error fetching readiness metric:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.post("/api/dynamic-strategy/readiness/calculate", requireAuth, async (req, res) => {
+    try {
+      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const metric = await dynamicStrategyService2.calculateReadinessScore(user[0].organizationId);
+      res.json(metric);
+    } catch (error) {
+      console.error("Error calculating readiness:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/weak-signals", requireAuth, async (req, res) => {
+    try {
+      const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { and: and26 } = await import("drizzle-orm");
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const signals = await db.select().from(weakSignals2).where(and26(eq8(weakSignals2.organizationId, user[0].organizationId), eq8(weakSignals2.status, "active"))).orderBy(desc5(weakSignals2.detectedAt)).limit(50);
+      res.json(signals);
+    } catch (error) {
+      console.error("Error fetching weak signals:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/oracle-patterns", requireAuth, async (req, res) => {
+    try {
+      const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const patterns = await db.select().from(oraclePatterns2).where(eq8(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc5(oraclePatterns2.detectedAt)).limit(50);
+      res.json(patterns);
+    } catch (error) {
+      console.error("Error fetching oracle patterns:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/status", requireAuth, async (req, res) => {
+    try {
+      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const status = await dynamicStrategyService2.getSystemStatus(user[0].organizationId);
+      res.json(status);
+    } catch (error) {
+      console.error("Error fetching dynamic strategy status:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/activity-feed", requireAuth, async (req, res) => {
+    try {
+      const { activityFeedEvents: activityFeedEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const limit = parseInt(req.query.limit) || 20;
+      const events = await db.select().from(activityFeedEvents2).where(eq8(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc5(activityFeedEvents2.createdAt)).limit(limit);
+      res.json(events);
+    } catch (error) {
+      console.error("Error fetching activity feed:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/playbook-learnings/:id", requireAuth, async (req, res) => {
+    try {
+      const { playbookLearnings: playbookLearnings2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const scenarioId = req.params.id;
+      const learnings = await db.select().from(playbookLearnings2).where(eq8(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc5(playbookLearnings2.extractedAt)).limit(50);
+      res.json(learnings);
+    } catch (error) {
+      console.error("Error fetching playbook learnings:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.post("/api/dynamic-strategy/generate-demo-data", requireAuth, async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
+      if (!user[0]?.organizationId) {
+        return res.status(404).json({ error: "Organization not found" });
+      }
+      const organizationId = user[0].organizationId;
+      const { readinessMetrics: readinessMetrics2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      await db.insert(readinessMetrics2).values({
+        organizationId,
+        overallScore: "84.4",
+        foresightScore: "88",
+        velocityScore: "83",
+        agilityScore: "79",
+        learningScore: "79",
+        adaptabilityScore: "87",
+        activeScenarios: 3,
+        weakSignalsDetected: 5,
+        playbooksReady: 12,
+        playbooksTotal: 18,
+        averageResponseTime: 8,
+        trend: "up",
+        measurementDate: /* @__PURE__ */ new Date()
+      });
+      const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const demoSignals = [
+        {
+          organizationId,
+          signalType: "regulatory",
+          title: "Emerging Data Privacy Regulation",
+          description: "New data privacy legislation being discussed in key markets",
+          confidence: "78",
+          urgency: "medium",
+          impact: "high",
+          source: "Regulatory Monitor",
+          status: "active"
+        },
+        {
+          organizationId,
+          signalType: "competitor",
+          title: "Competitor Product Launch Signals",
+          description: "Competitor hiring surge in product development team",
+          confidence: "82",
+          urgency: "high",
+          impact: "medium",
+          source: "Market Intelligence",
+          status: "active"
+        },
+        {
+          organizationId,
+          signalType: "market",
+          title: "Supply Chain Tension Points",
+          description: "Minor disruptions detected in secondary supplier network",
+          confidence: "71",
+          urgency: "low",
+          impact: "medium",
+          source: "Supply Chain Monitor",
+          status: "active"
+        }
+      ];
+      for (const signal of demoSignals) {
+        await db.insert(weakSignals2).values(signal);
+      }
+      const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const demoPatterns = [
+        {
+          organizationId,
+          patternType: "market_disruption",
+          title: "AI-Driven Market Consolidation Pattern",
+          description: "Historical pattern suggests 40% likelihood of market consolidation in next 12 months",
+          confidence: "85",
+          impact: "high",
+          timeline: "6-12 months",
+          recommendations: ["Prepare M&A defense playbook", "Strengthen customer relationships"],
+          status: "detected"
+        },
+        {
+          organizationId,
+          patternType: "regulatory_shift",
+          title: "Regulatory Harmonization Trend",
+          description: "Multiple jurisdictions showing convergence in compliance requirements",
+          confidence: "73",
+          impact: "medium",
+          timeline: "3-6 months",
+          recommendations: ["Update compliance framework", "Engage regulatory affairs"],
+          status: "analyzing"
+        }
+      ];
+      for (const pattern of demoPatterns) {
+        await db.insert(oraclePatterns2).values(pattern);
+      }
+      const { activityFeedEvents: activityFeedEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const demoActivities = [
+        {
+          organizationId,
+          eventType: "weak_signal",
+          title: "New Weak Signal Detected",
+          description: "AI detected emerging data privacy regulation signals",
+          severity: "warning",
+          relatedEntityType: "signal",
+          createdBy: userId
+        },
+        {
+          organizationId,
+          eventType: "pattern_detected",
+          title: "Oracle Pattern Identified",
+          description: "Market consolidation pattern detected with 85% confidence",
+          severity: "info",
+          relatedEntityType: "pattern",
+          createdBy: userId
+        },
+        {
+          organizationId,
+          eventType: "readiness_update",
+          title: "Readiness Score Updated",
+          description: "Overall readiness improved to 84.4%",
+          severity: "info",
+          createdBy: userId
+        }
+      ];
+      for (const activity of demoActivities) {
+        await db.insert(activityFeedEvents2).values(activity);
+      }
+      res.json({
+        success: true,
+        message: "Demo data generated successfully",
+        data: {
+          readinessMetrics: 1,
+          weakSignals: demoSignals.length,
+          oraclePatterns: demoPatterns.length,
+          activityEvents: demoActivities.length
+        }
+      });
+    } catch (error) {
+      console.error("Error generating demo data:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+}
+
+// server/routes/onboarding-routes.ts
+init_db();
+init_schema();
+import { eq as eq9 } from "drizzle-orm";
+
 // server/replitAuth.ts
 init_storage();
 import * as client from "openid-client";
@@ -36967,28 +36010,1443 @@ var isAuthenticated = async (req, res, next) => {
   return next();
 };
 
+// server/routes/onboarding-routes.ts
+function registerOnboardingRoutes(app2) {
+  app2.get("/api/onboarding-session", async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      const userOrgs = await db.select().from(organizations).where(eq9(organizations.ownerId, userId)).limit(1);
+      if (userOrgs.length === 0) {
+        return res.json({
+          session: null,
+          isNewUser: true
+        });
+      }
+      const org = userOrgs[0];
+      const onboarding = await db.select().from(organizationOnboarding).where(eq9(organizationOnboarding.organizationId, org.id)).limit(1);
+      if (onboarding.length === 0) {
+        return res.json({
+          session: null,
+          organization: org,
+          isNewUser: false
+        });
+      }
+      res.json({
+        session: onboarding[0],
+        organization: org,
+        isNewUser: false
+      });
+    } catch (error) {
+      console.error("Error fetching onboarding session:", error);
+      res.status(500).json({ message: "Failed to fetch onboarding session" });
+    }
+  });
+  app2.post("/api/onboarding/save", async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      const {
+        step,
+        companyName,
+        industry,
+        employeeCount,
+        role,
+        priorities,
+        selectedPlaybooks,
+        enabledSignals,
+        successMetrics
+      } = req.body;
+      let org = await db.select().from(organizations).where(eq9(organizations.ownerId, userId)).limit(1);
+      if (org.length === 0 && companyName) {
+        const [newOrg] = await db.insert(organizations).values({
+          name: companyName,
+          description: `${companyName} - ${industry || "Enterprise"} organization`,
+          ownerId: userId,
+          industry,
+          size: employeeCount,
+          type: "enterprise",
+          domain: companyName.toLowerCase().replace(/\s+/g, "-"),
+          onboardingCompleted: false
+        }).returning();
+        org = [newOrg];
+      }
+      if (org.length === 0) {
+        return res.status(400).json({ message: "Organization required" });
+      }
+      const orgId = org[0].id;
+      const existingOnboarding = await db.select().from(organizationOnboarding).where(eq9(organizationOnboarding.organizationId, orgId)).limit(1);
+      const onboardingData = {
+        currentStep: step || 1,
+        completedSteps: step ? Array.from({ length: step }, (_, i) => i + 1) : [],
+        selectedPriorities: priorities || [],
+        selectedPlaybooks: selectedPlaybooks || [],
+        enabledSignalCategories: enabledSignals?.map((s) => s.id) || [],
+        signalThresholds: enabledSignals?.reduce((acc, s) => {
+          acc[s.id] = s.threshold;
+          return acc;
+        }, {}) || {},
+        friTarget: successMetrics?.friTarget?.toString() || "84.4",
+        lastActivityAt: /* @__PURE__ */ new Date()
+      };
+      if (existingOnboarding.length === 0) {
+        await db.insert(organizationOnboarding).values({
+          organizationId: orgId,
+          ...onboardingData
+        });
+      } else {
+        await db.update(organizationOnboarding).set(onboardingData).where(eq9(organizationOnboarding.organizationId, orgId));
+      }
+      if (companyName || industry || employeeCount || role) {
+        await db.update(organizations).set({
+          ...companyName && { name: companyName },
+          ...industry && { industry },
+          ...employeeCount && { size: employeeCount },
+          updatedAt: /* @__PURE__ */ new Date()
+        }).where(eq9(organizations.id, orgId));
+      }
+      res.json({ success: true, organizationId: orgId });
+    } catch (error) {
+      console.error("Error saving onboarding progress:", error);
+      res.status(500).json({ message: "Failed to save onboarding progress" });
+    }
+  });
+  app2.post("/api/onboarding/commit", async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      const {
+        organizationId,
+        selectedPlaybooks,
+        enabledSignals,
+        successMetrics
+      } = req.body;
+      const orgs = await db.select().from(organizations).where(eq9(organizations.id, organizationId)).limit(1);
+      if (orgs.length === 0) {
+        return res.status(404).json({ message: "Organization not found" });
+      }
+      await db.update(organizations).set({
+        onboardingCompleted: true,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq9(organizations.id, organizationId));
+      await db.update(organizationOnboarding).set({
+        stage4Learn: true,
+        onboardingCompletedAt: /* @__PURE__ */ new Date(),
+        lastActivityAt: /* @__PURE__ */ new Date()
+      }).where(eq9(organizationOnboarding.organizationId, organizationId));
+      res.json({
+        success: true,
+        message: "Onboarding completed successfully",
+        organizationId
+      });
+    } catch (error) {
+      console.error("Error completing onboarding:", error);
+      res.status(500).json({ message: "Failed to complete onboarding" });
+    }
+  });
+  app2.post("/api/onboarding/complete", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ error: "Authentication required" });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(404).json({ error: "No organization found" });
+      await db.update(organizations).set({ onboardingCompleted: true, updatedAt: /* @__PURE__ */ new Date() }).where(eq9(organizations.id, orgId));
+      res.json({ success: true });
+    } catch (err) {
+      console.error("Error completing onboarding:", err);
+      res.status(500).json({ error: "Failed to complete onboarding" });
+    }
+  });
+  app2.post("/api/onboarding/seed-demo-data", isAuthenticated, async (req, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ error: "Authentication required" });
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.status(404).json({ error: "No organization found" });
+      const samplePlaybooks = await db.select().from(playbookLibrary).limit(3);
+      const scenarioInserts = samplePlaybooks.map((pb, i) => ({
+        organizationId: orgId,
+        createdBy: userId,
+        name: pb.name,
+        title: pb.name,
+        description: pb.description || `Sample scenario for ${pb.name}`,
+        type: pb.strategicCategory || "competitive_threat",
+        status: "draft",
+        impact: i === 0 ? "high" : "medium"
+      }));
+      const inserted = [];
+      for (const scenario of scenarioInserts) {
+        try {
+          const [s] = await db.insert(strategicScenarios).values(scenario).returning();
+          inserted.push(s);
+        } catch {
+        }
+      }
+      console.log(`[Seed] Created ${inserted.length} sample scenarios for org ${orgId}`);
+      res.json({ success: true, seeded: { scenarios: inserted.length } });
+    } catch (err) {
+      console.error("Error seeding demo data:", err);
+      res.status(500).json({ error: "Failed to seed demo data" });
+    }
+  });
+}
+
+// server/routes/execution-sync-routes.ts
+init_db();
+init_storage();
+import { eq as eq10, desc as desc6 } from "drizzle-orm";
+async function registerExecutionSyncRoutes(app2) {
+  console.log("\u{1F4E1} Registering Execution Plan Sync API endpoints...");
+  app2.get("/api/sync/templates", requireOrgAccess, async (req, res) => {
+    try {
+      const { organizationId } = req.query;
+      const templates = await storage.getExportTemplates(organizationId);
+      res.json(templates);
+    } catch (error) {
+      console.error("Failed to get export templates:", error);
+      res.status(500).json({ error: "Failed to get export templates" });
+    }
+  });
+  app2.get("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.getExportTemplate(req.params.id);
+      if (!template) {
+        return res.status(404).json({ error: "Template not found" });
+      }
+      res.json(template);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get template" });
+    }
+  });
+  app2.post("/api/sync/templates", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.createExportTemplate({
+        ...req.body,
+        createdBy: req.userId
+      });
+      res.status(201).json(template);
+    } catch (error) {
+      console.error("Failed to create export template:", error);
+      res.status(500).json({ error: "Failed to create export template" });
+    }
+  });
+  app2.patch("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.updateExportTemplate(req.params.id, req.body);
+      res.json(template);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update template" });
+    }
+  });
+  app2.delete("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteExportTemplate(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete template" });
+    }
+  });
+  app2.get("/api/sync/records", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionInstanceId } = req.query;
+      const records = await storage.getSyncRecords(executionInstanceId);
+      res.json(records);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get sync records" });
+    }
+  });
+  app2.get("/api/sync/records/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const record = await storage.getSyncRecord(req.params.id);
+      if (!record) {
+        return res.status(404).json({ error: "Sync record not found" });
+      }
+      res.json(record);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get sync record" });
+    }
+  });
+  app2.post("/api/sync/export", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionInstanceId, templateId, integrationId } = req.body;
+      if (!executionInstanceId || !templateId || !integrationId) {
+        return res.status(400).json({
+          error: "Missing required fields: executionInstanceId, templateId, integrationId"
+        });
+      }
+      const { executionPlanSyncService: executionPlanSyncService2 } = await import("./services/ExecutionPlanSyncService");
+      const result = await executionPlanSyncService2.exportExecutionPlan(
+        executionInstanceId,
+        templateId,
+        integrationId
+      );
+      if (result.success) {
+        res.status(201).json(result);
+      } else {
+        res.status(400).json(result);
+      }
+    } catch (error) {
+      console.error("Export failed:", error);
+      res.status(500).json({
+        error: "Failed to export execution plan",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.post("/api/sync/records/:id/sync", requireOrgAccess, async (req, res) => {
+    try {
+      const { direction = "pull" } = req.body;
+      const { executionPlanSyncService: executionPlanSyncService2 } = await import("./services/ExecutionPlanSyncService");
+      const result = await executionPlanSyncService2.syncTaskStatus(
+        req.params.id,
+        direction
+      );
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to sync tasks" });
+    }
+  });
+  app2.delete("/api/sync/records/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteSyncRecord(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete sync record" });
+    }
+  });
+  app2.post("/api/sync/start", requireOrgAccess, async (req, res) => {
+    try {
+      const { integrationId, platform, executionInstanceId, organizationId } = req.body;
+      if (!integrationId || !platform) {
+        return res.status(400).json({ error: "integrationId and platform are required" });
+      }
+      const syncRecord = await storage.createSyncRecord({
+        executionInstanceId,
+        integrationId,
+        syncStatus: "pending",
+        externalProjectId: null,
+        externalProjectUrl: null,
+        externalProjectKey: platform,
+        exportTemplateId: null,
+        taskSyncMap: {},
+        syncSettings: { platform, organizationId: organizationId || req.userId }
+      });
+      res.status(201).json({
+        success: true,
+        syncRecord,
+        message: `Sync initiated with ${platform}`
+      });
+    } catch (error) {
+      console.error("Failed to start sync:", error);
+      res.status(500).json({
+        error: "Failed to start sync",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.get("/api/documents/templates", requireOrgAccess, async (req, res) => {
+    try {
+      const { organizationId, playbookId } = req.query;
+      const templates = await storage.getDocumentTemplates(
+        organizationId,
+        playbookId
+      );
+      res.json(templates);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get document templates" });
+    }
+  });
+  app2.get("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.getDocumentTemplate(req.params.id);
+      if (!template) {
+        return res.status(404).json({ error: "Document template not found" });
+      }
+      res.json(template);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get document template" });
+    }
+  });
+  app2.post("/api/documents/templates", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.createDocumentTemplate({
+        ...req.body,
+        createdBy: req.userId
+      });
+      res.status(201).json(template);
+    } catch (error) {
+      console.error("Failed to create document template:", error);
+      res.status(500).json({ error: "Failed to create document template" });
+    }
+  });
+  app2.patch("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const template = await storage.updateDocumentTemplate(req.params.id, req.body);
+      res.json(template);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update document template" });
+    }
+  });
+  app2.delete("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteDocumentTemplate(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete document template" });
+    }
+  });
+  app2.get("/api/documents/generated", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionInstanceId, templateId } = req.query;
+      const documents = await storage.getGeneratedDocuments(
+        executionInstanceId,
+        templateId
+      );
+      res.json(documents);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get generated documents" });
+    }
+  });
+  app2.get("/api/documents/generated/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const document = await storage.getGeneratedDocument(req.params.id);
+      if (!document) {
+        return res.status(404).json({ error: "Document not found" });
+      }
+      res.json(document);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get document" });
+    }
+  });
+  app2.post("/api/documents/generate", requireOrgAccess, async (req, res) => {
+    try {
+      const { templateId, executionInstanceId, variables } = req.body;
+      const template = await storage.getDocumentTemplate(templateId);
+      if (!template) {
+        return res.status(404).json({ error: "Template not found" });
+      }
+      let generatedContent = template.template_content || "";
+      const variablesUsed = variables || {};
+      for (const [key, value] of Object.entries(variablesUsed)) {
+        const regex = new RegExp(`\\{\\{${key}\\}\\}`, "g");
+        generatedContent = generatedContent.replace(regex, String(value));
+      }
+      const document = await storage.createGeneratedDocument({
+        templateId,
+        executionInstanceId,
+        name: `${template.name} - ${(/* @__PURE__ */ new Date()).toISOString()}`,
+        documentType: template.document_type,
+        generatedContent,
+        variablesUsed,
+        fileFormat: "html",
+        generatedBy: req.userId
+      });
+      res.status(201).json(document);
+    } catch (error) {
+      console.error("Failed to generate document:", error);
+      res.status(500).json({ error: "Failed to generate document" });
+    }
+  });
+  app2.post("/api/documents/generated/:id/approve", requireOrgAccess, async (req, res) => {
+    try {
+      const document = await storage.approveGeneratedDocument(req.params.id, req.userId);
+      res.json(document);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to approve document" });
+    }
+  });
+  app2.post("/api/documents/generated/:id/reject", requireOrgAccess, async (req, res) => {
+    try {
+      const { reason } = req.body;
+      const document = await storage.rejectGeneratedDocument(req.params.id, reason);
+      res.json(document);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to reject document" });
+    }
+  });
+  app2.get("/api/resources/pre-approved", requireOrgAccess, async (req, res) => {
+    try {
+      const { organizationId, playbookId } = req.query;
+      const resources = await storage.getPreApprovedResources(
+        organizationId,
+        playbookId
+      );
+      res.json(resources);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get pre-approved resources" });
+    }
+  });
+  app2.get("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const resource = await storage.getPreApprovedResource(req.params.id);
+      if (!resource) {
+        return res.status(404).json({ error: "Resource not found" });
+      }
+      res.json(resource);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get resource" });
+    }
+  });
+  app2.post("/api/resources/pre-approved", requireOrgAccess, async (req, res) => {
+    try {
+      const resource = await storage.createPreApprovedResource(req.body);
+      res.status(201).json(resource);
+    } catch (error) {
+      console.error("Failed to create pre-approved resource:", error);
+      res.status(500).json({ error: "Failed to create pre-approved resource" });
+    }
+  });
+  app2.patch("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const resource = await storage.updatePreApprovedResource(req.params.id, req.body);
+      res.json(resource);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update resource" });
+    }
+  });
+  app2.delete("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deletePreApprovedResource(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete resource" });
+    }
+  });
+  app2.post("/api/resources/pre-approved/:id/activate", requireOrgAccess, async (req, res) => {
+    try {
+      const resource = await storage.activatePreApprovedResource(req.params.id);
+      res.json(resource);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to activate resource" });
+    }
+  });
+  app2.get("/api/enterprise-integrations", requireOrgAccess, async (req, res) => {
+    try {
+      const { organizationId } = req.query;
+      const integrations = await storage.getEnterpriseIntegrations(organizationId);
+      res.json(integrations);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get integrations" });
+    }
+  });
+  app2.get("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const integration = await storage.getEnterpriseIntegration(req.params.id);
+      if (!integration) {
+        return res.status(404).json({ error: "Integration not found" });
+      }
+      res.json(integration);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get integration" });
+    }
+  });
+  app2.post("/api/enterprise-integrations", requireOrgAccess, async (req, res) => {
+    try {
+      const integration = await storage.createEnterpriseIntegration({
+        ...req.body,
+        installedBy: req.userId
+      });
+      res.status(201).json(integration);
+    } catch (error) {
+      console.error("Failed to create integration:", error);
+      res.status(500).json({ error: "Failed to create integration" });
+    }
+  });
+  app2.patch("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const integration = await storage.updateEnterpriseIntegration(req.params.id, req.body);
+      res.json(integration);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to update integration" });
+    }
+  });
+  app2.delete("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
+    try {
+      await storage.deleteEnterpriseIntegration(req.params.id);
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: "Failed to delete integration" });
+    }
+  });
+  app2.post("/api/enterprise-integrations/:id/test", requireOrgAccess, async (req, res) => {
+    try {
+      const integration = await storage.getEnterpriseIntegration(req.params.id);
+      if (!integration) {
+        return res.status(404).json({ error: "Integration not found" });
+      }
+      const { executionPlanSyncService: executionPlanSyncService2 } = await import("./services/ExecutionPlanSyncService");
+      const adapter = executionPlanSyncService2.getAdapter(integration.vendor);
+      if (!adapter) {
+        return res.json({ success: false, error: "No adapter available for this platform" });
+      }
+      const credentials = integration.configuration || {};
+      const isValid = await adapter.validateCredentials({
+        accessToken: credentials.accessToken || credentials.access_token,
+        apiKey: credentials.apiKey || credentials.api_key,
+        cloudId: credentials.cloudId || credentials.cloud_id,
+        apiUrl: credentials.apiUrl || credentials.api_url || integration.api_endpoint,
+        workspaceId: credentials.workspaceId || credentials.workspace_id
+      });
+      if (isValid) {
+        await storage.updateEnterpriseIntegration(req.params.id, { status: "active" });
+      }
+      res.json({
+        success: isValid,
+        message: isValid ? "Connection successful" : "Connection failed - check credentials"
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: error instanceof Error ? error.message : "Connection test failed"
+      });
+    }
+  });
+  app2.get("/api/sync/platforms", requireOrgAccess, async (req, res) => {
+    res.json([
+      { id: "jira", name: "Jira", icon: "jira", description: "Atlassian Jira Software" },
+      { id: "asana", name: "Asana", icon: "asana", description: "Asana Project Management" },
+      { id: "monday", name: "Monday.com", icon: "monday", description: "Monday.com Work OS" },
+      { id: "ms_project", name: "Microsoft Planner", icon: "microsoft", description: "Microsoft Planner / Project" },
+      { id: "servicenow", name: "ServiceNow", icon: "servicenow", description: "ServiceNow Project Management" }
+    ]);
+  });
+  app2.get("/api/documents/template-types", requireOrgAccess, async (req, res) => {
+    try {
+      const { documentTemplateEngine } = await import("./services/DocumentTemplateEngine");
+      const templates = documentTemplateEngine.getAvailableTemplates();
+      res.json(templates);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get template types" });
+    }
+  });
+  app2.get("/api/documents/template-types/:type/variables", requireOrgAccess, async (req, res) => {
+    try {
+      const { documentTemplateEngine } = await import("./services/DocumentTemplateEngine");
+      const variables = documentTemplateEngine.getTemplateVariables(req.params.type);
+      res.json(variables);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to get template variables" });
+    }
+  });
+  app2.post("/api/documents/generate-from-type", requireOrgAccess, async (req, res) => {
+    try {
+      const { templateType, variables, executionInstanceId, scenarioId, organizationId } = req.body;
+      const { documentTemplateEngine } = await import("./services/DocumentTemplateEngine");
+      const document = await documentTemplateEngine.generateDocument(
+        templateType,
+        variables || {},
+        { executionInstanceId, scenarioId, organizationId }
+      );
+      res.status(201).json(document);
+    } catch (error) {
+      console.error("Document generation failed:", error);
+      res.status(500).json({
+        error: "Failed to generate document",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.get("/api/export/execution/:executionInstanceId", requireOrgAccess, async (req, res) => {
+    try {
+      const { format = "csv" } = req.query;
+      const { fileExportService } = await import("./services/FileExportService");
+      const result = await fileExportService.exportExecutionPlan(
+        req.params.executionInstanceId,
+        format
+      );
+      if (!result.success) {
+        return res.status(400).json({ error: "Export failed" });
+      }
+      res.setHeader("Content-Type", result.mimeType);
+      res.setHeader("Content-Disposition", `attachment; filename="${result.filename}"`);
+      res.send(result.content);
+    } catch (error) {
+      console.error("Export failed:", error);
+      res.status(500).json({
+        error: "Failed to export execution plan",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.get("/api/export/formats", requireOrgAccess, async (req, res) => {
+    res.json([
+      { id: "csv", name: "CSV", description: "Comma-separated values for Excel/Sheets", icon: "file-spreadsheet" },
+      { id: "xlsx", name: "Excel (XML)", description: "SpreadsheetML format", icon: "file-spreadsheet" },
+      { id: "json", name: "JSON", description: "Structured data format", icon: "file-json" },
+      { id: "ms_project_xml", name: "MS Project", description: "Microsoft Project XML format", icon: "file-chart" }
+    ]);
+  });
+  console.log("\u2705 Execution Plan Sync API endpoints registered");
+  const { executionPreApprovedResources: executionPreApprovedResources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+  app2.get("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId || req.userId;
+      const resources = await db.select().from(executionPreApprovedResources2).where(eq10(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc6(executionPreApprovedResources2.createdAt));
+      res.json(resources);
+    } catch (error) {
+      console.error("Failed to fetch pre-approved resources:", error);
+      res.status(500).json({
+        error: "Failed to fetch pre-approved resources",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.post("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
+    try {
+      const resourceData = {
+        ...req.body,
+        organizationId: req.body.organizationId || req.userId,
+        approvedBy: req.userId,
+        approvedAt: /* @__PURE__ */ new Date()
+      };
+      const [resource] = await db.insert(executionPreApprovedResources2).values(resourceData).returning();
+      res.status(201).json(resource);
+    } catch (error) {
+      console.error("Failed to create pre-approved resource:", error);
+      res.status(500).json({
+        error: "Failed to create pre-approved resource",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.get("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [resource] = await db.select().from(executionPreApprovedResources2).where(eq10(executionPreApprovedResources2.id, id));
+      if (!resource) {
+        return res.status(404).json({ error: "Pre-approved resource not found" });
+      }
+      res.json(resource);
+    } catch (error) {
+      console.error("Failed to fetch pre-approved resource:", error);
+      res.status(500).json({
+        error: "Failed to fetch pre-approved resource",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.patch("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [resource] = await db.update(executionPreApprovedResources2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq10(executionPreApprovedResources2.id, id)).returning();
+      if (!resource) {
+        return res.status(404).json({ error: "Pre-approved resource not found" });
+      }
+      res.json(resource);
+    } catch (error) {
+      console.error("Failed to update pre-approved resource:", error);
+      res.status(500).json({
+        error: "Failed to update pre-approved resource",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.delete("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [deleted] = await db.delete(executionPreApprovedResources2).where(eq10(executionPreApprovedResources2.id, id)).returning();
+      if (!deleted) {
+        return res.status(404).json({ error: "Pre-approved resource not found" });
+      }
+      res.json({ success: true, deleted });
+    } catch (error) {
+      console.error("Failed to delete pre-approved resource:", error);
+      res.status(500).json({
+        error: "Failed to delete pre-approved resource",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.post("/api/pre-approved-resources/:id/activate", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [resource] = await db.update(executionPreApprovedResources2).set({
+        lastActivatedAt: /* @__PURE__ */ new Date(),
+        activationCount: sql`COALESCE(${executionPreApprovedResources2.activationCount}, 0) + 1`,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq10(executionPreApprovedResources2.id, id)).returning();
+      if (!resource) {
+        return res.status(404).json({ error: "Pre-approved resource not found" });
+      }
+      res.json(resource);
+    } catch (error) {
+      console.error("Failed to activate pre-approved resource:", error);
+      res.status(500).json({
+        error: "Failed to activate pre-approved resource",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  console.log("\u2705 Pre-Approved Resources API endpoints registered");
+  app2.get("/api/execution/preflight/:executionPlanId", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionPlanId } = req.params;
+      const organizationId = req.query.organizationId || req.userId;
+      const { preFlightCheckService: preFlightCheckService2 } = await import("./services/PreFlightCheckService");
+      const result = await preFlightCheckService2.performCheck({
+        executionPlanId,
+        organizationId
+      });
+      res.json(result);
+    } catch (error) {
+      console.error("Pre-flight check failed:", error);
+      res.status(500).json({
+        error: "Pre-flight check failed",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.post("/api/execution/activate", requireOrgAccess, async (req, res) => {
+    try {
+      const {
+        organizationId,
+        scenarioId,
+        executionPlanId,
+        playbookId,
+        syncPlatform,
+        skipPreflight
+      } = req.body;
+      if (!organizationId || !executionPlanId || !playbookId) {
+        return res.status(400).json({
+          error: "Missing required fields: organizationId, executionPlanId, playbookId"
+        });
+      }
+      const { executionOrchestrator } = await import("./services/ExecutionOrchestrator");
+      const result = await executionOrchestrator.activate({
+        organizationId,
+        scenarioId,
+        executionPlanId,
+        playbookId,
+        triggeredBy: req.userId,
+        syncPlatform,
+        skipPreflight
+      });
+      res.status(result.success ? 201 : 400).json(result);
+    } catch (error) {
+      console.error("Activation failed:", error);
+      res.status(500).json({
+        success: false,
+        error: "Activation failed",
+        details: error instanceof Error ? error.message : String(error),
+        errors: [error instanceof Error ? error.message : String(error)],
+        events: [],
+        documentsGenerated: 0,
+        stakeholdersNotified: 0
+      });
+    }
+  });
+  app2.get("/api/execution/status/:executionInstanceId", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionInstanceId } = req.params;
+      const { executionOrchestrator } = await import("./services/ExecutionOrchestrator");
+      const status = await executionOrchestrator.getActivationStatus(executionInstanceId);
+      if (!status) {
+        return res.status(404).json({ error: "Execution instance not found" });
+      }
+      res.json(status);
+    } catch (error) {
+      console.error("Failed to get activation status:", error);
+      res.status(500).json({
+        error: "Failed to get activation status",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  app2.post("/api/execution/acknowledge/:executionInstanceId", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionInstanceId } = req.params;
+      const userId = req.userId;
+      const { stakeholderAcknowledgments: stakeholderAcknowledgments2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      await db.update(stakeholderAcknowledgments2).set({ acknowledgedAt: /* @__PURE__ */ new Date() }).where(
+        sql`${stakeholderAcknowledgments2.executionInstanceId} = ${executionInstanceId} 
+            AND ${stakeholderAcknowledgments2.userId} = ${userId}`
+      );
+      res.json({ success: true, acknowledgedAt: /* @__PURE__ */ new Date() });
+    } catch (error) {
+      console.error("Acknowledgment failed:", error);
+      res.status(500).json({
+        error: "Acknowledgment failed",
+        details: error instanceof Error ? error.message : String(error)
+      });
+    }
+  });
+  console.log("\u2705 Execution Orchestration API endpoints registered");
+}
+
+// server/routes/decision-coordination-routes.ts
+init_db();
+import { eq as eq11, desc as desc7, and as and8, sql as sql8 } from "drizzle-orm";
+async function registerDecisionCoordinationRoutes(app2) {
+  const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+  app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const trees = await db.select().from(decisionTrees2).where(eq11(decisionTrees2.organizationId, organizationId)).orderBy(desc7(decisionTrees2.createdAt));
+      res.json(trees);
+    } catch (error) {
+      console.error("Failed to fetch decision trees:", error);
+      res.status(500).json({ error: "Failed to fetch decision trees" });
+    }
+  });
+  app2.get("/api/decision-trees/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [tree] = await db.select().from(decisionTrees2).where(eq11(decisionTrees2.id, id));
+      if (!tree) {
+        return res.status(404).json({ error: "Decision tree not found" });
+      }
+      res.json(tree);
+    } catch (error) {
+      console.error("Failed to fetch decision tree:", error);
+      res.status(500).json({ error: "Failed to fetch decision tree" });
+    }
+  });
+  app2.post("/api/decision-trees", requireOrgAccess, async (req, res) => {
+    try {
+      const data = req.body;
+      const [newTree] = await db.insert(decisionTrees2).values({
+        organizationId: req.orgId,
+        name: data.name,
+        scenario: data.scenario,
+        domain: data.domain,
+        category: data.category,
+        decisionPoints: data.decisionPoints || [],
+        isActive: true
+      }).returning();
+      res.status(201).json(newTree);
+    } catch (error) {
+      console.error("Failed to create decision tree:", error);
+      res.status(500).json({ error: "Failed to create decision tree" });
+    }
+  });
+  app2.patch("/api/decision-trees/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const data = req.body;
+      const [updated] = await db.update(decisionTrees2).set({
+        ...data,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq11(decisionTrees2.id, id)).returning();
+      res.json(updated);
+    } catch (error) {
+      console.error("Failed to update decision tree:", error);
+      res.status(500).json({ error: "Failed to update decision tree" });
+    }
+  });
+  app2.get("/api/decision-log", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const logs = await db.select().from(decisionLog2).where(eq11(decisionLog2.organizationId, organizationId)).orderBy(desc7(decisionLog2.timestamp)).limit(50);
+      res.json(logs);
+    } catch (error) {
+      console.error("Failed to fetch decision log:", error);
+      res.status(500).json({ error: "Failed to fetch decision log" });
+    }
+  });
+  app2.post("/api/decision-log", requireOrgAccess, async (req, res) => {
+    try {
+      const data = req.body;
+      const [newLog] = await db.insert(decisionLog2).values({
+        organizationId: req.orgId,
+        decisionTreeId: data.decisionTreeId,
+        scenario: data.scenario,
+        question: data.question,
+        decisionMaker: data.decisionMaker,
+        optionChosen: data.optionChosen,
+        decisionTimeMinutes: data.decisionTimeMinutes,
+        outcome: data.outcome,
+        lessons: data.lessons
+      }).returning();
+      res.status(201).json(newLog);
+    } catch (error) {
+      console.error("Failed to log decision:", error);
+      res.status(500).json({ error: "Failed to log decision" });
+    }
+  });
+  app2.get("/api/decision-velocity/metrics", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const logs = await db.select().from(decisionLog2).where(eq11(decisionLog2.organizationId, organizationId));
+      const totalDecisions = logs.length;
+      const avgDecisionTime = totalDecisions > 0 ? logs.reduce((sum, d) => sum + (d.decisionTimeMinutes || 0), 0) / totalDecisions : 0;
+      const onTimeDecisions = logs.filter((d) => (d.decisionTimeMinutes || 0) <= 20).length;
+      const onTimeRate = totalDecisions > 0 ? onTimeDecisions / totalDecisions * 100 : 0;
+      const baselineMinutes = 4320;
+      const speedMultiplier = avgDecisionTime > 0 ? Math.round(baselineMinutes / avgDecisionTime) : 0;
+      res.json({
+        totalDecisions,
+        avgDecisionTimeMinutes: Math.round(avgDecisionTime * 10) / 10,
+        onTimeRate: Math.round(onTimeRate),
+        speedMultiplier,
+        baselineMinutes
+      });
+    } catch (error) {
+      console.error("Failed to get decision velocity metrics:", error);
+      res.status(500).json({ error: "Failed to get decision velocity metrics" });
+    }
+  });
+  console.log("\u2705 Decision Velocity API endpoints registered");
+  const {
+    executionInstances: executionInstances2,
+    executionInstanceTasks: executionInstanceTasks2,
+    executionPlanTasks: executionPlanTasks3,
+    executionPlanPhases: executionPlanPhases3,
+    scenarioExecutionPlans: scenarioExecutionPlans3,
+    executionCheckpoints: executionCheckpoints2,
+    checkpointValidations: checkpointValidations2,
+    documentTemplates: documentTemplates2,
+    executionTaskDependencies: executionTaskDependencies2
+  } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+  app2.get("/api/execution-runs", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const runs = await db.select().from(executionInstances2).where(eq11(executionInstances2.organizationId, organizationId)).orderBy(desc7(executionInstances2.createdAt)).limit(20);
+      res.json(runs);
+    } catch (error) {
+      console.error("Failed to fetch execution runs:", error);
+      res.status(500).json({ error: "Failed to fetch execution runs" });
+    }
+  });
+  app2.get("/api/execution-runs/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [run] = await db.select().from(executionInstances2).where(eq11(executionInstances2.id, id));
+      if (!run) {
+        return res.status(404).json({ error: "Execution run not found" });
+      }
+      const tasks4 = await db.select().from(executionInstanceTasks2).where(eq11(executionInstanceTasks2.executionInstanceId, id));
+      const checkpoints = await db.select().from(checkpointValidations2).where(eq11(checkpointValidations2.executionInstanceId, id));
+      res.json({
+        ...run,
+        tasks: tasks4,
+        checkpoints
+      });
+    } catch (error) {
+      console.error("Failed to fetch execution run:", error);
+      res.status(500).json({ error: "Failed to fetch execution run" });
+    }
+  });
+  app2.post("/api/execution-runs", requireOrgAccess, async (req, res) => {
+    try {
+      const { executionPlanId, scenarioId, organizationId, triggeredBy, triggerData } = req.body;
+      const [newRun] = await db.insert(executionInstances2).values({
+        executionPlanId,
+        scenarioId,
+        organizationId: req.orgId,
+        triggeredBy: triggeredBy || req.userId,
+        triggerData,
+        status: "running",
+        startedAt: /* @__PURE__ */ new Date()
+      }).returning();
+      const planTasks = await db.select().from(executionPlanTasks3).where(eq11(executionPlanTasks3.executionPlanId, executionPlanId));
+      const instanceTasks = await Promise.all(planTasks.map(async (planTask) => {
+        const [task] = await db.insert(executionInstanceTasks2).values({
+          executionInstanceId: newRun.id,
+          planTaskId: planTask.id,
+          status: planTask.isParallel ? "ready" : "pending"
+        }).returning();
+        return task;
+      }));
+      res.status(201).json({
+        ...newRun,
+        tasks: instanceTasks
+      });
+    } catch (error) {
+      console.error("Failed to launch execution run:", error);
+      res.status(500).json({ error: "Failed to launch execution run" });
+    }
+  });
+  app2.patch("/api/execution-runs/:runId/tasks/:taskId", requireOrgAccess, async (req, res) => {
+    try {
+      const { runId, taskId } = req.params;
+      const { status, notes, outcome } = req.body;
+      const [currentTask] = await db.select().from(executionInstanceTasks2).where(eq11(executionInstanceTasks2.id, taskId));
+      if (!currentTask) {
+        return res.status(404).json({ error: "Task not found" });
+      }
+      if (status === "in_progress" && currentTask.planTaskId) {
+        const dependencies = await db.select().from(executionTaskDependencies2).where(eq11(executionTaskDependencies2.taskId, currentTask.planTaskId));
+        if (dependencies.length > 0) {
+          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq11(executionInstanceTasks2.executionInstanceId, runId));
+          const dependencyPlanTaskIds = dependencies.map((d) => d.dependsOnTaskId);
+          const dependencyInstanceTasks = allInstanceTasks.filter(
+            (t) => dependencyPlanTaskIds.includes(t.planTaskId)
+          );
+          const allDepsComplete = dependencyInstanceTasks.every(
+            (t) => t.status === "completed" || t.status === "skipped"
+          );
+          if (!allDepsComplete) {
+            return res.status(400).json({
+              error: "Cannot start task - dependencies not complete",
+              blockedBy: dependencyInstanceTasks.filter((t) => t.status !== "completed" && t.status !== "skipped")
+            });
+          }
+        }
+      }
+      const updateData = {
+        status,
+        updatedAt: /* @__PURE__ */ new Date()
+      };
+      if (status === "in_progress") {
+        updateData.startedAt = /* @__PURE__ */ new Date();
+      }
+      if (status === "completed") {
+        updateData.completedAt = /* @__PURE__ */ new Date();
+        if (currentTask.startedAt) {
+          updateData.actualMinutes = Math.round(((/* @__PURE__ */ new Date()).getTime() - new Date(currentTask.startedAt).getTime()) / 6e4);
+        }
+      }
+      if (notes) updateData.notes = notes;
+      if (outcome) updateData.outcome = outcome;
+      const [updated] = await db.update(executionInstanceTasks2).set(updateData).where(eq11(executionInstanceTasks2.id, taskId)).returning();
+      if (status === "completed" && currentTask.planTaskId) {
+        const dependentRelations = await db.select().from(executionTaskDependencies2).where(eq11(executionTaskDependencies2.dependsOnTaskId, currentTask.planTaskId));
+        if (dependentRelations.length > 0) {
+          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq11(executionInstanceTasks2.executionInstanceId, runId));
+          for (const dep of dependentRelations) {
+            const dependentInstanceTask = allInstanceTasks.find((t) => t.planTaskId === dep.taskId);
+            if (dependentInstanceTask && dependentInstanceTask.status === "pending") {
+              const allDepsForTask = await db.select().from(executionTaskDependencies2).where(eq11(executionTaskDependencies2.taskId, dep.taskId));
+              const allDepsComplete = allDepsForTask.every((d) => {
+                const depTask = allInstanceTasks.find((t) => t.planTaskId === d.dependsOnTaskId);
+                return depTask && (depTask.status === "completed" || depTask.status === "skipped");
+              });
+              if (allDepsComplete) {
+                await db.update(executionInstanceTasks2).set({ status: "ready", updatedAt: /* @__PURE__ */ new Date() }).where(eq11(executionInstanceTasks2.id, dependentInstanceTask.id));
+              }
+            }
+          }
+        }
+      }
+      const allTasks = await db.select().from(executionInstanceTasks2).where(eq11(executionInstanceTasks2.executionInstanceId, runId));
+      const allComplete = allTasks.every((t) => t.status === "completed" || t.status === "skipped");
+      if (allComplete) {
+        const startTime = await db.select().from(executionInstances2).where(eq11(executionInstances2.id, runId));
+        const actualTime = startTime[0]?.startedAt ? Math.round(((/* @__PURE__ */ new Date()).getTime() - new Date(startTime[0].startedAt).getTime()) / 6e4) : null;
+        await db.update(executionInstances2).set({
+          status: "completed",
+          completedAt: /* @__PURE__ */ new Date(),
+          actualExecutionTime: actualTime,
+          outcome: "successful",
+          updatedAt: /* @__PURE__ */ new Date()
+        }).where(eq11(executionInstances2.id, runId));
+      }
+      res.json(updated);
+    } catch (error) {
+      console.error("Failed to update task status:", error);
+      res.status(500).json({ error: "Failed to update task status" });
+    }
+  });
+  app2.get("/api/stuck-tasks", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.session?.organizationId;
+      const thresholdHours = parseInt(req.query.hours) || 4;
+      const thresholdMs = thresholdHours * 60 * 60 * 1e3;
+      const cutoff = new Date(Date.now() - thresholdMs);
+      const activeInstances = await db.select().from(executionInstances2).where(and8(
+        eq11(executionInstances2.organizationId, organizationId),
+        sql8`${executionInstances2.status} IN ('pending', 'running')`
+      ));
+      if (!activeInstances.length) return res.json([]);
+      const instanceIds = activeInstances.map((i) => i.id);
+      const stuckTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        executionInstanceId: executionInstanceTasks2.executionInstanceId,
+        planTaskId: executionInstanceTasks2.planTaskId,
+        status: executionInstanceTasks2.status,
+        blockedReason: executionInstanceTasks2.blockedReason,
+        assignedUserId: executionInstanceTasks2.assignedUserId,
+        createdAt: executionInstanceTasks2.createdAt,
+        updatedAt: executionInstanceTasks2.updatedAt,
+        taskTitle: executionPlanTasks3.title,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq11(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and8(
+        sql8`${executionInstanceTasks2.executionInstanceId} = ANY(${sql8`ARRAY[${sql8.join(instanceIds.map((id) => sql8`${id}::uuid`), sql8`, `)}]`})`,
+        sql8`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
+        sql8`${executionInstanceTasks2.updatedAt} < ${cutoff}`
+      ));
+      const now = Date.now();
+      const annotated = stuckTasks.map((t) => {
+        const hoursStuck = Math.floor((now - new Date(t.updatedAt).getTime()) / 36e5);
+        const severity = hoursStuck >= thresholdHours * 3 ? "critical" : hoursStuck >= thresholdHours ? "warning" : "watch";
+        return { ...t, hoursStuck, severity };
+      }).sort((a, b) => b.hoursStuck - a.hoursStuck);
+      res.json(annotated);
+    } catch (error) {
+      console.error("Failed to fetch stuck tasks:", error);
+      res.status(500).json({ error: "Failed to fetch stuck tasks" });
+    }
+  });
+  app2.patch("/api/stuck-tasks/:taskId/escalate", requireOrgAccess, async (req, res) => {
+    try {
+      const { taskId } = req.params;
+      const { notes } = req.body;
+      const [updated] = await db.update(executionInstanceTasks2).set({
+        status: "in_progress",
+        notes: notes || "Escalated via Stuck Task Detector",
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq11(executionInstanceTasks2.id, taskId)).returning();
+      res.json(updated);
+    } catch (error) {
+      console.error("Failed to escalate stuck task:", error);
+      res.status(500).json({ error: "Failed to escalate task" });
+    }
+  });
+  app2.get("/api/execution-runs/:runId/my-tasks", requireOrgAccess, async (req, res) => {
+    try {
+      const { runId } = req.params;
+      const userRole = req.user?.role || req.user?.claims?.role || "";
+      const allTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        executionInstanceId: executionInstanceTasks2.executionInstanceId,
+        status: executionInstanceTasks2.status,
+        blockedReason: executionInstanceTasks2.blockedReason,
+        notes: executionInstanceTasks2.notes,
+        outcome: executionInstanceTasks2.outcome,
+        startedAt: executionInstanceTasks2.startedAt,
+        completedAt: executionInstanceTasks2.completedAt,
+        updatedAt: executionInstanceTasks2.updatedAt,
+        taskTitle: executionPlanTasks3.title,
+        taskDescription: executionPlanTasks3.description,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
+        isParallel: executionPlanTasks3.isParallel,
+        phaseId: executionPlanTasks3.phaseId
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq11(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq11(executionInstanceTasks2.executionInstanceId, runId));
+      const isScopedRole = userRole && !["admin", "executive"].includes(userRole.toLowerCase());
+      const scopedTasks = isScopedRole ? allTasks.filter((t) => t.taskRole && t.taskRole.toLowerCase().includes(userRole.toLowerCase())) : allTasks;
+      const annotated = scopedTasks.map((t) => ({
+        ...t,
+        isMyTask: !isScopedRole || (t.taskRole?.toLowerCase().includes(userRole.toLowerCase()) ?? false),
+        isScopedView: isScopedRole,
+        userRole
+      }));
+      res.json(annotated);
+    } catch (error) {
+      console.error("Failed to fetch role-scoped tasks:", error);
+      res.status(500).json({ error: "Failed to fetch tasks for role" });
+    }
+  });
+  app2.get("/api/execution-runs/:runId/context", requireOrgAccess, async (req, res) => {
+    try {
+      const { runId } = req.params;
+      const [instance] = await db.select().from(executionInstances2).where(eq11(executionInstances2.id, runId));
+      if (!instance) return res.status(404).json({ error: "Execution not found" });
+      const allTasks = await db.select({
+        id: executionInstanceTasks2.id,
+        status: executionInstanceTasks2.status,
+        taskTitle: executionPlanTasks3.title,
+        taskRole: executionPlanTasks3.ownerRole,
+        taskPriority: executionPlanTasks3.priority,
+        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
+        phaseId: executionPlanTasks3.phaseId
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq11(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq11(executionInstanceTasks2.executionInstanceId, runId));
+      const total = allTasks.length;
+      const completed = allTasks.filter((t) => t.status === "completed" || t.status === "skipped").length;
+      const inProgress = allTasks.filter((t) => t.status === "in_progress").length;
+      const blocked = allTasks.filter((t) => t.status === "blocked").length;
+      const completionPct = total > 0 ? Math.round(completed / total * 100) : 0;
+      const phaseLabel = completionPct < 30 ? "IMMEDIATE \u2014 Activate & Align" : completionPct < 65 ? "SECONDARY \u2014 Execute & Coordinate" : completionPct < 90 ? "FOLLOW-UP \u2014 Verify & Close" : "COMPLETION \u2014 Outcome & Capture";
+      const phaseGuidance = completionPct < 30 ? "Focus: get all key roles notified and initial tasks started. Speed is the priority \u2014 do not wait for perfect information." : completionPct < 65 ? "Focus: coordinate parallel workstreams, remove blockers, keep stakeholders aligned. Watch for tasks that stop moving." : completionPct < 90 ? "Focus: close open tasks, verify deliverables, confirm outcomes with task owners before marking complete." : "Focus: capture lessons, confirm target met status, seed institutional memory for future activations.";
+      const [plan] = await db.select().from(scenarioExecutionPlans3).where(eq11(scenarioExecutionPlans3.id, instance.executionPlanId));
+      const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
+      const elapsedMinutes = Math.floor((Date.now() - startedMs) / 6e4);
+      const targetMinutes = plan?.targetCompletionTime || 720;
+      const minutesRemaining = Math.max(0, targetMinutes - elapsedMinutes);
+      res.json({
+        instanceId: instance.id,
+        status: instance.status,
+        objective: plan?.name || "Strategic Execution",
+        description: plan?.description,
+        currentPhase: instance.currentPhase,
+        phaseLabel,
+        phaseGuidance,
+        completionPct,
+        total,
+        completed,
+        inProgress,
+        blocked,
+        elapsedMinutes,
+        minutesRemaining,
+        targetMinutes,
+        startedAt: instance.startedAt,
+        criticalConstraint: blocked > 0 ? `${blocked} task${blocked > 1 ? "s" : ""} currently blocked \u2014 resolve before proceeding` : null
+      });
+    } catch (error) {
+      console.error("Failed to fetch execution context:", error);
+      res.status(500).json({ error: "Failed to fetch execution context" });
+    }
+  });
+  app2.get("/api/execution-coordination/metrics", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const runs = await db.select().from(executionInstances2).where(eq11(executionInstances2.organizationId, organizationId));
+      const completedRuns = runs.filter((r) => r.status === "completed");
+      const avgExecutionTime = completedRuns.length > 0 ? completedRuns.reduce((sum, r) => sum + (r.actualExecutionTime || 0), 0) / completedRuns.length : 0;
+      const activeRuns = runs.filter((r) => r.status === "running");
+      res.json({
+        totalRuns: runs.length,
+        activeRuns: activeRuns.length,
+        completedRuns: completedRuns.length,
+        avgExecutionTimeMinutes: Math.round(avgExecutionTime),
+        successRate: completedRuns.length > 0 ? Math.round(completedRuns.filter((r) => r.outcome === "successful").length / completedRuns.length * 100) : 0
+      });
+    } catch (error) {
+      console.error("Failed to get coordination metrics:", error);
+      res.status(500).json({ error: "Failed to get coordination metrics" });
+    }
+  });
+  app2.get("/api/document-templates", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const templates = await db.select().from(documentTemplates2).where(eq11(documentTemplates2.organizationId, organizationId));
+      res.json(templates);
+    } catch (error) {
+      console.error("Failed to fetch templates:", error);
+      res.status(500).json({ error: "Failed to fetch templates" });
+    }
+  });
+  app2.post("/api/document-templates", requireOrgAccess, async (req, res) => {
+    try {
+      const [template] = await db.insert(documentTemplates2).values({
+        organizationId: req.orgId,
+        name: req.body.name,
+        category: req.body.category,
+        domain: req.body.domain,
+        templateContent: req.body.templateContent,
+        mergeFields: req.body.mergeFields || [],
+        createdBy: req.userId
+      }).returning();
+      res.status(201).json(template);
+    } catch (error) {
+      console.error("Failed to create template:", error);
+      res.status(500).json({ error: "Failed to create template" });
+    }
+  });
+  app2.post("/api/document-templates/:id/populate", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { context } = req.body;
+      const [template] = await db.select().from(documentTemplates2).where(eq11(documentTemplates2.id, id));
+      if (!template) {
+        return res.status(404).json({ error: "Template not found" });
+      }
+      let populatedContent = template.templateContent;
+      for (const [key, value] of Object.entries(context || {})) {
+        populatedContent = populatedContent.replace(new RegExp(`\\{\\{${key}\\}\\}`, "g"), String(value));
+      }
+      res.json({
+        templateId: id,
+        templateName: template.name,
+        populatedContent,
+        populatedAt: /* @__PURE__ */ new Date()
+      });
+    } catch (error) {
+      console.error("Failed to populate template:", error);
+      res.status(500).json({ error: "Failed to populate template" });
+    }
+  });
+  console.log("\u2705 Execution Coordination API endpoints registered");
+  const { strategicObjectives: strategicObjectives2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+  app2.get("/api/strategic-objectives", requireOrgAccess, async (req, res) => {
+    try {
+      const organizationId = req.orgId;
+      const objectives = await db.select().from(strategicObjectives2).where(eq11(strategicObjectives2.organizationId, organizationId)).orderBy(asc(strategicObjectives2.priority));
+      res.json(objectives);
+    } catch (error) {
+      console.error("Failed to fetch strategic objectives:", error);
+      res.status(500).json({ error: "Failed to fetch strategic objectives" });
+    }
+  });
+  app2.get("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [objective] = await db.select().from(strategicObjectives2).where(eq11(strategicObjectives2.id, id));
+      if (!objective) {
+        return res.status(404).json({ error: "Strategic objective not found" });
+      }
+      res.json(objective);
+    } catch (error) {
+      console.error("Failed to fetch strategic objective:", error);
+      res.status(500).json({ error: "Failed to fetch strategic objective" });
+    }
+  });
+  app2.post("/api/strategic-objectives", requireOrgAccess, async (req, res) => {
+    try {
+      const [objective] = await db.insert(strategicObjectives2).values({
+        organizationId: req.orgId,
+        name: req.body.name,
+        description: req.body.description,
+        targetDate: req.body.targetDate,
+        targetValue: req.body.targetValue,
+        currentValue: req.body.currentValue || "0",
+        valueUnit: req.body.valueUnit,
+        leadershipCapability: req.body.leadershipCapability,
+        priority: req.body.priority || 1,
+        status: req.body.status || "active",
+        progress: req.body.progress || 0,
+        createdBy: req.userId
+      }).returning();
+      res.status(201).json(objective);
+    } catch (error) {
+      console.error("Failed to create strategic objective:", error);
+      res.status(500).json({ error: "Failed to create strategic objective" });
+    }
+  });
+  app2.patch("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [updated] = await db.update(strategicObjectives2).set({
+        ...req.body,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq11(strategicObjectives2.id, id)).returning();
+      if (!updated) {
+        return res.status(404).json({ error: "Strategic objective not found" });
+      }
+      res.json(updated);
+    } catch (error) {
+      console.error("Failed to update strategic objective:", error);
+      res.status(500).json({ error: "Failed to update strategic objective" });
+    }
+  });
+  app2.delete("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [deleted] = await db.delete(strategicObjectives2).where(eq11(strategicObjectives2.id, id)).returning();
+      if (!deleted) {
+        return res.status(404).json({ error: "Strategic objective not found" });
+      }
+      res.json({ message: "Strategic objective deleted", id });
+    } catch (error) {
+      console.error("Failed to delete strategic objective:", error);
+      res.status(500).json({ error: "Failed to delete strategic objective" });
+    }
+  });
+  console.log("\u2705 Strategic Objectives API endpoints registered");
+}
+
 // server/replit_integrations/chat/storage.ts
 init_db();
 init_schema();
-import { eq as eq7, desc as desc4 } from "drizzle-orm";
+import { eq as eq12, desc as desc8 } from "drizzle-orm";
 var chatStorage = {
   async getConversation(id) {
-    const [conversation] = await db.select().from(conversations).where(eq7(conversations.id, id));
+    const [conversation] = await db.select().from(conversations).where(eq12(conversations.id, id));
     return conversation;
   },
   async getAllConversations() {
-    return db.select().from(conversations).orderBy(desc4(conversations.createdAt));
+    return db.select().from(conversations).orderBy(desc8(conversations.createdAt));
   },
   async createConversation(title) {
     const [conversation] = await db.insert(conversations).values({ title }).returning();
     return conversation;
   },
   async deleteConversation(id) {
-    await db.delete(messages).where(eq7(messages.conversationId, id));
-    await db.delete(conversations).where(eq7(conversations.id, id));
+    await db.delete(messages).where(eq12(messages.conversationId, id));
+    await db.delete(conversations).where(eq12(conversations.id, id));
   },
   async getMessagesByConversation(conversationId) {
-    return db.select().from(messages).where(eq7(messages.conversationId, conversationId)).orderBy(messages.createdAt);
+    return db.select().from(messages).where(eq12(messages.conversationId, conversationId)).orderBy(messages.createdAt);
   },
   async createMessage(conversationId, role, content) {
     const [message] = await db.insert(messages).values({ conversationId, role, content }).returning();
@@ -36997,13 +37455,13 @@ var chatStorage = {
 };
 
 // server/replit_integrations/audio/client.ts
-import OpenAI3, { toFile } from "openai";
-var openai2 = new OpenAI3({
+import OpenAI4, { toFile } from "openai";
+var openai3 = new OpenAI4({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
 });
 async function textToSpeechStream(text3, voice = "alloy") {
-  const stream = await openai2.chat.completions.create({
+  const stream = await openai3.chat.completions.create({
     model: "gpt-audio-mini",
     modalities: ["text", "audio"],
     audio: { voice, format: "pcm16" },
@@ -37025,7 +37483,7 @@ async function textToSpeechStream(text3, voice = "alloy") {
 }
 async function speechToText(audioBuffer, format = "wav") {
   const file = await toFile(audioBuffer, `audio.${format}`);
-  const response = await openai2.audio.transcriptions.create({
+  const response = await openai3.audio.transcriptions.create({
     file,
     model: "gpt-4o-mini-transcribe"
   });
@@ -37085,7 +37543,7 @@ async function* voiceChatWithTextModel(audioBuffer, options2 = {}) {
     ...chatHistory,
     { role: "user", content: userText }
   ];
-  const textStream = await openai2.chat.completions.create({
+  const textStream = await openai3.chat.completions.create({
     model: textModel,
     messages: messages2,
     stream: true
@@ -37164,7 +37622,7 @@ function registerAudioRoutes(app2) {
       if (!text3) {
         return res.status(400).json({ error: "Text is required" });
       }
-      const response = await openai2.audio.speech.create({
+      const response = await openai3.audio.speech.create({
         model: "tts-1",
         voice,
         input: text3,
@@ -37247,7 +37705,7 @@ function registerAudioRoutes(app2) {
       res.write(`data: ${JSON.stringify({ type: "user_transcript", data: userTranscript })}
 
 `);
-      const stream = await openai2.chat.completions.create({
+      const stream = await openai3.chat.completions.create({
         model: "gpt-audio-mini",
         modalities: ["text", "audio"],
         audio: { voice, format: "pcm16" },
@@ -38032,26 +38490,26 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq34, desc as desc16, sql as sql17, like, and as and23, asc, count as count6 } from "drizzle-orm";
-function getUserId3(req) {
+import { eq as eq37, desc as desc19, sql as sql17, like, and as and24, asc as asc2, count as count7 } from "drizzle-orm";
+function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
   }
   return void 0;
 }
-async function getOrgIdForUser(userId) {
+async function getOrgIdForUser4(userId) {
   const orgs = await storage.getUserOrganizations(userId);
   return orgs[0]?.id;
 }
-async function requireOrgAccess(req, res, next) {
+async function requireOrgAccess2(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.status(401).json({ message: "Unauthorized - Please sign in" });
   }
-  const userId = getUserId3(req);
+  const userId = getUserId6(req);
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  const orgId = await getOrgIdForUser(userId);
+  const orgId = await getOrgIdForUser4(userId);
   if (!orgId) {
     return res.status(403).json({ message: "Forbidden - User has no organization" });
   }
@@ -38068,7 +38526,7 @@ function requireRole(...allowedRoles) {
     if (!req.isAuthenticated()) {
       return res.status(401).json({ message: "Unauthorized - Please sign in" });
     }
-    const userId = getUserId3(req);
+    const userId = getUserId6(req);
     if (!userId) {
       return res.status(401).json({ message: "Unauthorized" });
     }
@@ -38093,8 +38551,8 @@ function requireRole(...allowedRoles) {
     }
   };
 }
-function requireAuth3(req, res, next) {
-  const userId = getUserId3(req);
+function requireAuth6(req, res, next) {
+  const userId = getUserId6(req);
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized - Please sign in" });
   }
@@ -38186,7 +38644,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/scenarios/from-template", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38210,7 +38668,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/scenarios/:id/import", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38249,7 +38707,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/war-room/sessions", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38280,7 +38738,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/war-room/sessions/:sessionId/updates", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38319,7 +38777,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/executive-briefings", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38339,7 +38797,7 @@ async function registerRoutes(app2, existingServer) {
     try {
       const { briefingId } = req.params;
       const briefing = await storage.acknowledgeExecutiveBriefing(briefingId);
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (userId) {
         broadcast(userId, {
           type: "EXECUTIVE_BRIEFING_ACKNOWLEDGED",
@@ -38364,7 +38822,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/board-reports", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38382,7 +38840,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.patch("/api/board-reports/:reportId/approve", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38422,7 +38880,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/custom-data-points", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38439,7 +38897,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/custom-data-points/categories", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38456,7 +38914,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/custom-data-points/:id", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38473,7 +38931,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/custom-data-points", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38495,7 +38953,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.patch("/api/custom-data-points/:id", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38513,7 +38971,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.delete("/api/custom-data-points/:id", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38531,7 +38989,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/strategic-alerts", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38549,7 +39007,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.patch("/api/strategic-alerts/:alertId/acknowledge", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38577,7 +39035,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/executive-insights", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38605,7 +39063,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/action-hooks", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38634,7 +39092,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/preparedness/score", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38691,7 +39149,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/preparedness/calculate", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38712,7 +39170,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/preparedness/history", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38729,7 +39187,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/preparedness/activity", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38808,7 +39266,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.get("/api/dashboard/metrics", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38821,7 +39279,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/organizations", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -38849,7 +39307,7 @@ async function registerRoutes(app2, existingServer) {
   app2.get("/api/organizations/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const org = await db.select().from(organizations).where(eq34(organizations.id, id)).limit(1);
+      const org = await db.select().from(organizations).where(eq37(organizations.id, id)).limit(1);
       if (org.length === 0) {
         return res.status(404).json({ message: "Organization not found" });
       }
@@ -38877,7 +39335,7 @@ async function registerRoutes(app2, existingServer) {
         status: organizations.status,
         createdAt: organizations.createdAt,
         updatedAt: organizations.updatedAt
-      }).from(organizations).orderBy(desc16(organizations.createdAt));
+      }).from(organizations).orderBy(desc19(organizations.createdAt));
       res.json(orgList);
     } catch (error) {
       console.error("Error fetching organizations:", error);
@@ -38887,13 +39345,13 @@ async function registerRoutes(app2, existingServer) {
   app2.put("/api/organizations/:id", isAuthenticated, requireRole("admin"), async (req, res) => {
     try {
       const { id } = req.params;
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       const updateData = req.body;
-      const existing = await db.select().from(organizations).where(eq34(organizations.id, id)).limit(1);
+      const existing = await db.select().from(organizations).where(eq37(organizations.id, id)).limit(1);
       if (existing.length === 0) {
         return res.status(404).json({ error: "Organization not found" });
       }
-      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq34(organizations.id, id)).returning();
+      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq37(organizations.id, id)).returning();
       await storage.createActivity({
         userId,
         action: `updated organization settings`,
@@ -38908,7 +39366,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/budgets/approve", isAuthenticated, requireRole("executive", "admin"), async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       const { playbookId, amount, currency = "USD", notes } = req.body;
       if (!playbookId || !amount) {
         return res.status(400).json({ error: "playbookId and amount are required" });
@@ -38934,183 +39392,10 @@ async function registerRoutes(app2, existingServer) {
       res.status(500).json({ error: "Failed to approve budget" });
     }
   });
-  app2.get("/api/onboarding-session", async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      const userOrgs = await db.select().from(organizations).where(eq34(organizations.ownerId, userId)).limit(1);
-      if (userOrgs.length === 0) {
-        return res.json({
-          session: null,
-          isNewUser: true
-        });
-      }
-      const org = userOrgs[0];
-      const onboarding = await db.select().from(organizationOnboarding).where(eq34(organizationOnboarding.organizationId, org.id)).limit(1);
-      if (onboarding.length === 0) {
-        return res.json({
-          session: null,
-          organization: org,
-          isNewUser: false
-        });
-      }
-      res.json({
-        session: onboarding[0],
-        organization: org,
-        isNewUser: false
-      });
-    } catch (error) {
-      console.error("Error fetching onboarding session:", error);
-      res.status(500).json({ message: "Failed to fetch onboarding session" });
-    }
-  });
-  app2.post("/api/onboarding/save", async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      const {
-        step,
-        companyName,
-        industry,
-        employeeCount,
-        role,
-        priorities,
-        selectedPlaybooks,
-        enabledSignals,
-        successMetrics
-      } = req.body;
-      let org = await db.select().from(organizations).where(eq34(organizations.ownerId, userId)).limit(1);
-      if (org.length === 0 && companyName) {
-        const [newOrg] = await db.insert(organizations).values({
-          name: companyName,
-          description: `${companyName} - ${industry || "Enterprise"} organization`,
-          ownerId: userId,
-          industry,
-          size: employeeCount,
-          type: "enterprise",
-          domain: companyName.toLowerCase().replace(/\s+/g, "-"),
-          onboardingCompleted: false
-        }).returning();
-        org = [newOrg];
-      }
-      if (org.length === 0) {
-        return res.status(400).json({ message: "Organization required" });
-      }
-      const orgId = org[0].id;
-      const existingOnboarding = await db.select().from(organizationOnboarding).where(eq34(organizationOnboarding.organizationId, orgId)).limit(1);
-      const onboardingData = {
-        currentStep: step || 1,
-        completedSteps: step ? Array.from({ length: step }, (_, i) => i + 1) : [],
-        selectedPriorities: priorities || [],
-        selectedPlaybooks: selectedPlaybooks || [],
-        enabledSignalCategories: enabledSignals?.map((s) => s.id) || [],
-        signalThresholds: enabledSignals?.reduce((acc, s) => {
-          acc[s.id] = s.threshold;
-          return acc;
-        }, {}) || {},
-        friTarget: successMetrics?.friTarget?.toString() || "84.4",
-        lastActivityAt: /* @__PURE__ */ new Date()
-      };
-      if (existingOnboarding.length === 0) {
-        await db.insert(organizationOnboarding).values({
-          organizationId: orgId,
-          ...onboardingData
-        });
-      } else {
-        await db.update(organizationOnboarding).set(onboardingData).where(eq34(organizationOnboarding.organizationId, orgId));
-      }
-      if (companyName || industry || employeeCount || role) {
-        await db.update(organizations).set({
-          ...companyName && { name: companyName },
-          ...industry && { industry },
-          ...employeeCount && { size: employeeCount },
-          updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq34(organizations.id, orgId));
-      }
-      res.json({ success: true, organizationId: orgId });
-    } catch (error) {
-      console.error("Error saving onboarding progress:", error);
-      res.status(500).json({ message: "Failed to save onboarding progress" });
-    }
-  });
-  app2.post("/api/onboarding/commit", async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      const {
-        organizationId,
-        selectedPlaybooks,
-        enabledSignals,
-        successMetrics
-      } = req.body;
-      const orgs = await db.select().from(organizations).where(eq34(organizations.id, organizationId)).limit(1);
-      if (orgs.length === 0) {
-        return res.status(404).json({ message: "Organization not found" });
-      }
-      await db.update(organizations).set({
-        onboardingCompleted: true,
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq34(organizations.id, organizationId));
-      await db.update(organizationOnboarding).set({
-        stage4Learn: true,
-        onboardingCompletedAt: /* @__PURE__ */ new Date(),
-        lastActivityAt: /* @__PURE__ */ new Date()
-      }).where(eq34(organizationOnboarding.organizationId, organizationId));
-      res.json({
-        success: true,
-        message: "Onboarding completed successfully",
-        organizationId
-      });
-    } catch (error) {
-      console.error("Error completing onboarding:", error);
-      res.status(500).json({ message: "Failed to complete onboarding" });
-    }
-  });
-  app2.post("/api/onboarding/complete", isAuthenticated, async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      if (!userId) return res.status(401).json({ error: "Authentication required" });
-      const orgId = await getOrgIdForUser(userId);
-      if (!orgId) return res.status(404).json({ error: "No organization found" });
-      await db.update(organizations).set({ onboardingCompleted: true, updatedAt: /* @__PURE__ */ new Date() }).where(eq34(organizations.id, orgId));
-      res.json({ success: true });
-    } catch (err) {
-      console.error("Error completing onboarding:", err);
-      res.status(500).json({ error: "Failed to complete onboarding" });
-    }
-  });
-  app2.post("/api/onboarding/seed-demo-data", isAuthenticated, async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      if (!userId) return res.status(401).json({ error: "Authentication required" });
-      const orgId = await getOrgIdForUser(userId);
-      if (!orgId) return res.status(404).json({ error: "No organization found" });
-      const samplePlaybooks = await db.select().from(playbookLibrary).limit(3);
-      const scenarioInserts = samplePlaybooks.map((pb, i) => ({
-        organizationId: orgId,
-        createdBy: userId,
-        name: pb.name,
-        title: pb.name,
-        description: pb.description || `Sample scenario for ${pb.name}`,
-        type: pb.strategicCategory || "competitive_threat",
-        status: "draft",
-        impact: i === 0 ? "high" : "medium"
-      }));
-      const inserted = [];
-      for (const scenario of scenarioInserts) {
-        try {
-          const [s] = await db.insert(strategicScenarios).values(scenario).returning();
-          inserted.push(s);
-        } catch {
-        }
-      }
-      console.log(`[Seed] Created ${inserted.length} sample scenarios for org ${orgId}`);
-      res.json({ success: true, seeded: { scenarios: inserted.length } });
-    } catch (err) {
-      console.error("Error seeding demo data:", err);
-      res.status(500).json({ error: "Failed to seed demo data" });
-    }
-  });
+  registerOnboardingRoutes(app2);
   app2.post("/api/scenarios/comprehensive", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -39235,7 +39520,7 @@ async function registerRoutes(app2, existingServer) {
   });
   app2.post("/api/scenarios", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -39276,7 +39561,7 @@ async function registerRoutes(app2, existingServer) {
       const isValidUUID2 = uuidRegex.test(id);
       let scenario = null;
       if (isValidUUID2) {
-        const scenarios3 = await db.select().from(strategicScenarios).where(eq34(strategicScenarios.id, id));
+        const scenarios3 = await db.select().from(strategicScenarios).where(eq37(strategicScenarios.id, id));
         scenario = scenarios3[0];
       } else {
         try {
@@ -39332,7 +39617,7 @@ async function registerRoutes(app2, existingServer) {
     try {
       const { id } = req.params;
       const updateData = req.body;
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -39364,35 +39649,35 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
       if (organizationId) {
-        conditions.push(eq34(playbooks2.organizationId, organizationId));
+        conditions.push(eq37(playbooks2.organizationId, organizationId));
       }
       if (domain) {
-        conditions.push(eq34(playbooks2.domain, domain));
+        conditions.push(eq37(playbooks2.domain, domain));
       }
       if (category) {
-        conditions.push(eq34(playbooks2.category, category));
+        conditions.push(eq37(playbooks2.category, category));
       }
       if (search) {
         conditions.push(like(playbooks2.name, `%${search}%`));
       }
       let query = db.select().from(playbooks2);
       if (conditions.length > 0) {
-        query = query.where(and23(...conditions));
+        query = query.where(and24(...conditions));
       }
       const validSortFields = ["createdAt", "name", "timesUsed", "avgResponseTimeSeconds"];
       const sortField = validSortFields.includes(sortBy) ? sortBy : "createdAt";
       if (sortOrder === "asc") {
-        query = query.orderBy(asc(playbooks2[sortField]));
+        query = query.orderBy(asc2(playbooks2[sortField]));
       } else {
-        query = query.orderBy(desc16(playbooks2[sortField]));
+        query = query.orderBy(desc19(playbooks2[sortField]));
       }
       const pageNum = Math.max(1, parseInt(page));
       const limitNum = Math.min(100, Math.max(1, parseInt(limit)));
       const offset = (pageNum - 1) * limitNum;
       const results = await query.limit(limitNum).offset(offset);
-      let countQuery = db.select({ count: count6() }).from(playbooks2);
+      let countQuery = db.select({ count: count7() }).from(playbooks2);
       if (conditions.length > 0) {
-        countQuery = countQuery.where(and23(...conditions));
+        countQuery = countQuery.where(and24(...conditions));
       }
       const [{ count: totalCount }] = await countQuery;
       res.json({
@@ -39417,8 +39702,8 @@ async function registerRoutes(app2, existingServer) {
       const { organizationId, domain, search, limit = "50" } = req.query;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
-      if (organizationId) conditions.push(eq34(playbooks2.organizationId, organizationId));
-      if (domain) conditions.push(eq34(playbooks2.domain, domain));
+      if (organizationId) conditions.push(eq37(playbooks2.organizationId, organizationId));
+      if (domain) conditions.push(eq37(playbooks2.domain, domain));
       if (search) conditions.push(like(playbooks2.name, `%${search}%`));
       let query = db.select({
         id: playbooks2.id,
@@ -39433,9 +39718,9 @@ async function registerRoutes(app2, existingServer) {
         status: playbooks2.status,
         createdAt: playbooks2.createdAt
       }).from(playbooks2);
-      if (conditions.length > 0) query = query.where(and23(...conditions));
+      if (conditions.length > 0) query = query.where(and24(...conditions));
       const limitNum = Math.min(200, Math.max(1, parseInt(limit)));
-      const results = await query.orderBy(desc16(playbooks2.timesUsed)).limit(limitNum);
+      const results = await query.orderBy(desc19(playbooks2.timesUsed)).limit(limitNum);
       res.json(results);
     } catch (error) {
       console.error("Error fetching playbook metadata:", error);
@@ -39458,7 +39743,7 @@ async function registerRoutes(app2, existingServer) {
         severityScore: playbookLibrary.severityScore,
         playbookNumber: playbookLibrary.playbookNumber,
         domainName: playbookDomains.name
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(eq34(playbookLibrary.isActive, true)).limit(200);
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(playbookLibrary.isActive, true)).limit(200);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
         const execMins = t.targetExecutionTime || 240;
@@ -39492,15 +39777,15 @@ async function registerRoutes(app2, existingServer) {
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [playbook] = await db.select().from(playbooks2).where(eq34(playbooks2.id, id)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq37(playbooks2.id, id)).limit(1);
       if (playbook) {
         return res.json(playbook);
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq34(playbookLibrary.id, id)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq37(playbookLibrary.id, id)).limit(1);
       if (template) {
         let domainSequence = 1;
         if (template.domainId) {
-          const [domain] = await db.select().from(playbookDomains).where(eq34(playbookDomains.id, template.domainId)).limit(1);
+          const [domain] = await db.select().from(playbookDomains).where(eq37(playbookDomains.id, template.domainId)).limit(1);
           if (domain) {
             domainSequence = domain.sequence || 1;
           }
@@ -39539,12 +39824,12 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2, executiveTriggers: executiveTriggers4 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       let playbookName = "Strategic Response Playbook";
       let playbookDescription = "";
-      const [orgPlaybook] = await db.select().from(playbooks2).where(eq34(playbooks2.id, id)).limit(1);
+      const [orgPlaybook] = await db.select().from(playbooks2).where(eq37(playbooks2.id, id)).limit(1);
       if (orgPlaybook) {
         playbookName = orgPlaybook.name || playbookName;
         playbookDescription = orgPlaybook.description || "";
       } else {
-        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq34(playbookLibrary.id, id)).limit(1);
+        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq37(playbookLibrary.id, id)).limit(1);
         if (libPlaybook) {
           playbookName = libPlaybook.name || playbookName;
           playbookDescription = libPlaybook.description || "";
@@ -39552,7 +39837,7 @@ async function registerRoutes(app2, existingServer) {
       }
       let triggerContext = "";
       if (triggerId && triggerId !== "manual") {
-        const [trigger] = await db.select().from(executiveTriggers4).where(eq34(executiveTriggers4.id, triggerId)).limit(1);
+        const [trigger] = await db.select().from(executiveTriggers4).where(eq37(executiveTriggers4.id, triggerId)).limit(1);
         if (trigger) {
           triggerContext = `This activation was triggered by: "${trigger.name}" (severity: ${trigger.severity || "high"}, category: ${trigger.category || "strategic"}).`;
         }
@@ -39632,13 +39917,13 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!organizationId) {
         return res.status(400).json({ message: "Organization ID is required" });
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq34(playbookLibrary.id, templateId)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq37(playbookLibrary.id, templateId)).limit(1);
       if (!template) {
         return res.status(404).json({ message: "Template not found" });
       }
       let domainSequence = 1;
       if (template.domainId) {
-        const [domain] = await db.select().from(playbookDomains).where(eq34(playbookDomains.id, template.domainId)).limit(1);
+        const [domain] = await db.select().from(playbookDomains).where(eq37(playbookDomains.id, template.domainId)).limit(1);
         if (domain) {
           domainSequence = domain.sequence || 1;
         }
@@ -39691,7 +39976,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq34(playbooks2.id, id)).returning();
+      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq37(playbooks2.id, id)).returning();
       if (!updated) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -39705,7 +39990,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [deleted] = await db.delete(playbooks2).where(eq34(playbooks2.id, id)).returning();
+      const [deleted] = await db.delete(playbooks2).where(eq37(playbooks2.id, id)).returning();
       if (!deleted) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -39738,7 +40023,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         const scenarios3 = await storage.getScenariosByOrganization(organizationId);
         res.json(scenarios3);
       } else {
-        const userId = getUserId3(req);
+        const userId = getUserId6(req);
         if (userId) {
           const scenarios3 = await storage.getRecentScenarios(userId);
           res.json(scenarios3);
@@ -39760,7 +40045,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/scenarios/recent", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -39792,7 +40077,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           isDemo: true
         });
       }
-      const taskResults = await db.select().from(tasks).where(eq34(tasks.id, taskId));
+      const taskResults = await db.select().from(tasks).where(eq37(tasks.id, taskId));
       const task = taskResults[0];
       if (!task) {
         return res.status(404).json({ message: "Task not found", requestedId: taskId });
@@ -39823,7 +40108,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         const tasks4 = await storage.getTasksByOrganization(organizationId);
         res.json(tasks4);
       } else {
-        const userId = getUserId3(req);
+        const userId = getUserId6(req);
         const userTasks = await storage.getRecentTasks(userId);
         if (!userTasks || userTasks.length === 0) {
           return res.json([]);
@@ -39837,7 +40122,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/tasks/priority", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -39854,7 +40139,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       const { completed } = req.body;
       const task = await storage.updateTaskStatus(taskId, completed);
       try {
-        const userId = getUserId3(req);
+        const userId = getUserId6(req);
         if (userId) {
           await storage.createActivity({
             userId,
@@ -39873,7 +40158,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           const completedAt = /* @__PURE__ */ new Date();
           const timeToResolution = Math.floor((completedAt.getTime() - createdAt.getTime()) / (1e3 * 60));
           const taskValue = calculateTaskValue(task);
-          const scenario = await db.select().from(strategicScenarios).where(eq34(strategicScenarios.id, task.scenarioId)).limit(1);
+          const scenario = await db.select().from(strategicScenarios).where(eq37(strategicScenarios.id, task.scenarioId)).limit(1);
           const organizationId = scenario[0]?.organizationId || "default-org";
           await roiMeasurementService2.trackValueEvent({
             organizationId,
@@ -39907,7 +40192,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/activities/recent", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40000,7 +40285,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/projects", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40034,7 +40319,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/pulse-metrics", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40079,7 +40364,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/flux-adaptations", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40115,7 +40400,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/prism-insights", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40160,7 +40445,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/echo-cultural-metrics", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40205,7 +40490,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/nova-innovations", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40240,7 +40525,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/intelligence-reports", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40265,7 +40550,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/intelligence-reports", async (req, res) => {
     try {
-      const result = await db.select().from(intelligenceReports).orderBy(desc16(intelligenceReports.id));
+      const result = await db.select().from(intelligenceReports).orderBy(desc19(intelligenceReports.id));
       res.json(result);
     } catch (error) {
       console.error("Error fetching all intelligence reports:", error);
@@ -40304,7 +40589,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/analytics/user-usage", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40654,7 +40939,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/pulse/generate", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40676,7 +40961,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/prism/generate", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40697,7 +40982,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/nova/generate", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40719,7 +41004,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/nlq/query", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40756,7 +41041,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/nlq/conversations/:conversationId", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40882,7 +41167,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/learning-patterns", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40901,7 +41186,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.get("/api/strategic-scenarios/:organizationId", async (req, res) => {
     try {
       const { organizationId } = req.params;
-      const scenarios3 = await db.select().from(strategicScenarios).where(eq34(strategicScenarios.organizationId, organizationId));
+      const scenarios3 = await db.select().from(strategicScenarios).where(eq37(strategicScenarios.organizationId, organizationId));
       res.json(scenarios3);
     } catch (error) {
       console.error("Error fetching strategic scenarios:", error);
@@ -40930,7 +41215,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.post("/api/crisis-simulations", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (!userId) {
         return res.status(401).json({ error: "Authentication required" });
       }
@@ -40970,7 +41255,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       const { id } = req.params;
       const { status } = req.body;
       const simulation = await storage.updateCrisisSimulationStatus(id, status);
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       if (userId) {
         broadcast(userId, {
           type: "CRISIS_SIMULATION_STATUS_UPDATED",
@@ -41318,7 +41603,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to update trigger status" });
     }
   });
-  app2.get("/api/trigger-signals", requireAuth3, async (req, res) => {
+  app2.get("/api/trigger-signals", requireAuth6, async (req, res) => {
     try {
       const { category } = req.query;
       const signals = await storage.getExecutiveTriggerSignals(category);
@@ -41425,7 +41710,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to delete what-if scenario" });
     }
   });
-  app2.get("/api/decision-confidence/:scenarioId", requireAuth3, async (req, res) => {
+  app2.get("/api/decision-confidence/:scenarioId", requireAuth6, async (req, res) => {
     try {
       const confidence = await storage.getDecisionConfidence(req.params.scenarioId, req.userId);
       if (!confidence) {
@@ -41437,7 +41722,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch confidence score" });
     }
   });
-  app2.post("/api/decision-confidence", requireAuth3, async (req, res) => {
+  app2.post("/api/decision-confidence", requireAuth6, async (req, res) => {
     try {
       const validated = insertDecisionConfidenceSchema.parse({
         ...req.body,
@@ -41453,7 +41738,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to create confidence score" });
     }
   });
-  app2.get("/api/stakeholder-alignment/:scenarioId", requireAuth3, async (req, res) => {
+  app2.get("/api/stakeholder-alignment/:scenarioId", requireAuth6, async (req, res) => {
     try {
       const { executionId } = req.query;
       const alignment = await storage.getStakeholderAlignment(req.params.scenarioId, executionId);
@@ -41463,7 +41748,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch stakeholder alignment" });
     }
   });
-  app2.post("/api/stakeholder-alignment", requireAuth3, async (req, res) => {
+  app2.post("/api/stakeholder-alignment", requireAuth6, async (req, res) => {
     try {
       const validated = insertStakeholderAlignmentSchema.parse(req.body);
       const alignment = await storage.createStakeholderAlignment(validated);
@@ -41476,7 +41761,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to create stakeholder alignment" });
     }
   });
-  app2.put("/api/stakeholder-alignment/:id", requireAuth3, async (req, res) => {
+  app2.put("/api/stakeholder-alignment/:id", requireAuth6, async (req, res) => {
     try {
       const alignment = await storage.updateStakeholderAlignment(req.params.id, req.body);
       if (!alignment) {
@@ -41488,7 +41773,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to update stakeholder alignment" });
     }
   });
-  app2.get("/api/execution-validation-reports/:scenarioId", requireAuth3, async (req, res) => {
+  app2.get("/api/execution-validation-reports/:scenarioId", requireAuth6, async (req, res) => {
     try {
       const reports = await storage.getExecutionValidationReports(req.params.scenarioId);
       res.json(reports);
@@ -41497,7 +41782,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch validation reports" });
     }
   });
-  app2.get("/api/execution-validation-reports/execution/:executionId", requireAuth3, async (req, res) => {
+  app2.get("/api/execution-validation-reports/execution/:executionId", requireAuth6, async (req, res) => {
     try {
       const report = await storage.getExecutionValidationReportByExecutionId(req.params.executionId);
       if (!report) {
@@ -41509,7 +41794,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch validation report" });
     }
   });
-  app2.post("/api/execution-validation-reports", requireAuth3, async (req, res) => {
+  app2.post("/api/execution-validation-reports", requireAuth6, async (req, res) => {
     try {
       const validated = insertExecutionValidationReportSchema.parse({
         ...req.body,
@@ -41525,7 +41810,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to create validation report" });
     }
   });
-  app2.put("/api/execution-validation-reports/:id", requireAuth3, async (req, res) => {
+  app2.put("/api/execution-validation-reports/:id", requireAuth6, async (req, res) => {
     try {
       const report = await storage.updateExecutionValidationReport(req.params.id, req.body);
       if (!report) {
@@ -41537,7 +41822,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to update validation report" });
     }
   });
-  app2.get("/api/roi-metrics/:organizationId", requireAuth3, async (req, res) => {
+  app2.get("/api/roi-metrics/:organizationId", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.params;
       const { period } = req.query;
@@ -41562,7 +41847,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       });
     }
   });
-  app2.get("/api/decision-outcomes/:organizationId", requireAuth3, async (req, res) => {
+  app2.get("/api/decision-outcomes/:organizationId", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.params;
       const { period } = req.query;
@@ -41573,7 +41858,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch decision outcomes" });
     }
   });
-  app2.post("/api/board-reports/generate", requireAuth3, async (req, res) => {
+  app2.post("/api/board-reports/generate", requireAuth6, async (req, res) => {
     try {
       const { organizationId, reportType, period } = req.body;
       const roiMetrics2 = await storage.getROIMetrics(organizationId, period);
@@ -41608,7 +41893,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   const { preparednessEngine: preparednessEngine2 } = await Promise.resolve().then(() => (init_PreparednessEngine(), PreparednessEngine_exports));
   const { executiveBriefing: executiveBriefing2 } = await Promise.resolve().then(() => (init_ExecutiveBriefingService(), ExecutiveBriefingService_exports));
   const { roiTracker: roiTracker2 } = await Promise.resolve().then(() => (init_ROITracker(), ROITracker_exports));
-  app2.get("/api/intelligence/real-time/:organizationId", requireAuth3, async (req, res) => {
+  app2.get("/api/intelligence/real-time/:organizationId", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.params;
       const { hoursBack } = req.query;
@@ -41626,7 +41911,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch intelligence metrics" });
     }
   });
-  app2.post("/api/intelligence/analyze-event", requireAuth3, async (req, res) => {
+  app2.post("/api/intelligence/analyze-event", requireAuth6, async (req, res) => {
     try {
       const { source, title, content, organizationId } = req.body;
       const analysis = await triggerIntelligence2.analyzeEvent({
@@ -41660,7 +41945,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to analyze event" });
     }
   });
-  app2.get("/api/preparedness/real-score/:organizationId", requireAuth3, async (req, res) => {
+  app2.get("/api/preparedness/real-score/:organizationId", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.params;
       const score = await preparednessEngine2.calculateScore(organizationId);
@@ -41678,7 +41963,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to calculate preparedness score" });
     }
   });
-  app2.post("/api/briefings/generate-daily", requireAuth3, async (req, res) => {
+  app2.post("/api/briefings/generate-daily", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.body;
       const briefing = await executiveBriefing2.generateDailyBriefing(organizationId);
@@ -41692,7 +41977,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to generate briefing" });
     }
   });
-  app2.post("/api/briefings/situation-report", requireAuth3, async (req, res) => {
+  app2.post("/api/briefings/situation-report", requireAuth6, async (req, res) => {
     try {
       const { organizationId, focus } = req.body;
       const report = await executiveBriefing2.generateSituationReport(
@@ -41709,7 +41994,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to generate situation report" });
     }
   });
-  app2.get("/api/roi/real-metrics/:organizationId", requireAuth3, async (req, res) => {
+  app2.get("/api/roi/real-metrics/:organizationId", requireAuth6, async (req, res) => {
     try {
       const { organizationId } = req.params;
       const metrics = await roiTracker2.calculateRealROI(organizationId);
@@ -41727,7 +42012,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to calculate ROI" });
     }
   });
-  app2.post("/api/roi/track-impact", requireAuth3, async (req, res) => {
+  app2.post("/api/roi/track-impact", requireAuth6, async (req, res) => {
     try {
       const { activationId, impact } = req.body;
       await roiTracker2.trackBusinessImpact(activationId, impact);
@@ -41740,7 +42025,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to track business impact" });
     }
   });
-  app2.post("/api/intelligence/poll-news", requireAuth3, async (req, res) => {
+  app2.post("/api/intelligence/poll-news", requireAuth6, async (req, res) => {
     try {
       const { pollNewsFeeds: pollNewsFeeds2 } = await Promise.resolve().then(() => (init_eventIngestion(), eventIngestion_exports));
       pollNewsFeeds2().catch((err) => console.error("News polling error:", err));
@@ -41756,7 +42041,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.post("/api/demo/what-if-analysis", async (req, res) => {
     try {
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const { scenario, variables: variables2 } = req.body;
+      const { scenario, variables } = req.body;
       const prompt = `Analyze this strategic scenario and provide outcome predictions:
 
 Scenario: ${scenario.name || "Strategic Initiative"}
@@ -41764,7 +42049,7 @@ Department: ${scenario.department || "Executive"}
 Stakeholders: ${scenario.stakeholders || "Cross-functional team"}
 
 Variables:
-${Object.entries(variables2 || {}).map(([key, value]) => `- ${key}: ${value}`).join("\n")}
+${Object.entries(variables || {}).map(([key, value]) => `- ${key}: ${value}`).join("\n")}
 
 Provide:
 1. Most likely outcome (with probability %)
@@ -42303,7 +42588,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       });
     }
   });
-  app2.get("/api/demo-leads", requireAuth3, async (req, res) => {
+  app2.get("/api/demo-leads", requireAuth6, async (req, res) => {
     try {
       const leads = await storage.getDemoLeads();
       res.json(leads);
@@ -42312,231 +42597,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to fetch demo leads" });
     }
   });
-  app2.get("/api/config/triggers", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId;
-      const triggers = await storage.getCustomTriggers(organizationId);
-      res.json(triggers);
-    } catch (error) {
-      console.error("Error fetching custom triggers:", error);
-      res.status(500).json({ error: "Failed to fetch triggers" });
-    }
-  });
-  app2.post("/api/config/triggers", requireOrgAccess, async (req, res) => {
-    try {
-      const triggerData = req.body;
-      const trigger = await storage.createCustomTrigger(triggerData);
-      res.json({ success: true, trigger, message: "Custom trigger created successfully" });
-    } catch (error) {
-      console.error("Error creating custom trigger:", error);
-      res.status(400).json({ error: "Failed to create trigger", details: error.message });
-    }
-  });
-  app2.patch("/api/config/triggers/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const updates = req.body;
-      const trigger = await storage.updateCustomTrigger(id, updates);
-      res.json({ success: true, trigger, message: "Trigger updated successfully" });
-    } catch (error) {
-      console.error("Error updating trigger:", error);
-      res.status(400).json({ error: "Failed to update trigger", details: error.message });
-    }
-  });
-  app2.delete("/api/config/triggers/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      await storage.deleteCustomTrigger(id);
-      res.json({ success: true, triggerId: id, message: "Trigger deleted successfully" });
-    } catch (error) {
-      console.error("Error deleting trigger:", error);
-      res.status(400).json({ error: "Failed to delete trigger", details: error.message });
-    }
-  });
-  app2.get("/api/config/departments", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId;
-      const departments2 = await storage.getDepartments(organizationId);
-      res.json(departments2);
-    } catch (error) {
-      console.error("Error fetching departments:", error);
-      res.status(500).json({ error: "Failed to fetch departments" });
-    }
-  });
-  app2.post("/api/config/departments", requireOrgAccess, async (req, res) => {
-    try {
-      const department = await storage.createDepartment(req.body);
-      res.json({ success: true, department, message: "Department created successfully" });
-    } catch (error) {
-      console.error("Error creating department:", error);
-      res.status(400).json({ error: "Failed to create department", details: error.message });
-    }
-  });
-  app2.patch("/api/config/departments/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const department = await storage.updateDepartment(id, req.body);
-      res.json({ success: true, department, message: "Department updated successfully" });
-    } catch (error) {
-      console.error("Error updating department:", error);
-      res.status(400).json({ error: "Failed to update department", details: error.message });
-    }
-  });
-  app2.delete("/api/config/departments/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      await storage.deleteDepartment(id);
-      res.json({ success: true, departmentId: id, message: "Department deleted successfully" });
-    } catch (error) {
-      console.error("Error deleting department:", error);
-      res.status(400).json({ error: "Failed to delete department", details: error.message });
-    }
-  });
-  app2.get("/api/config/escalation-policies", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId;
-      const policies = await storage.getEscalationPolicies(organizationId);
-      res.json(policies);
-    } catch (error) {
-      console.error("Error fetching escalation policies:", error);
-      res.status(500).json({ error: "Failed to fetch escalation policies" });
-    }
-  });
-  app2.post("/api/config/escalation-policies", requireOrgAccess, async (req, res) => {
-    try {
-      const policy = await storage.createEscalationPolicy(req.body);
-      res.json({ success: true, policy, message: "Escalation policy created successfully" });
-    } catch (error) {
-      console.error("Error creating escalation policy:", error);
-      res.status(400).json({ error: "Failed to create escalation policy", details: error.message });
-    }
-  });
-  app2.patch("/api/config/escalation-policies/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const policy = await storage.updateEscalationPolicy(id, req.body);
-      res.json({ success: true, policy, message: "Escalation policy updated successfully" });
-    } catch (error) {
-      console.error("Error updating escalation policy:", error);
-      res.status(400).json({ error: "Failed to update escalation policy", details: error.message });
-    }
-  });
-  app2.delete("/api/config/escalation-policies/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      await storage.deleteEscalationPolicy(id);
-      res.json({ success: true, policyId: id, message: "Escalation policy deleted successfully" });
-    } catch (error) {
-      console.error("Error deleting escalation policy:", error);
-      res.status(400).json({ error: "Failed to delete escalation policy", details: error.message });
-    }
-  });
-  app2.get("/api/config/communication-channels", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId;
-      const channels = await storage.getCommunicationChannels(organizationId);
-      res.json(channels);
-    } catch (error) {
-      console.error("Error fetching communication channels:", error);
-      res.status(500).json({ error: "Failed to fetch communication channels" });
-    }
-  });
-  app2.post("/api/config/communication-channels", requireOrgAccess, async (req, res) => {
-    try {
-      const channel = await storage.createCommunicationChannel(req.body);
-      res.json({ success: true, channel, message: "Communication channel created successfully" });
-    } catch (error) {
-      console.error("Error creating communication channel:", error);
-      res.status(400).json({ error: "Failed to create communication channel", details: error.message });
-    }
-  });
-  app2.patch("/api/config/communication-channels/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const channel = await storage.updateCommunicationChannel(id, req.body);
-      res.json({ success: true, channel, message: "Communication channel updated successfully" });
-    } catch (error) {
-      console.error("Error updating communication channel:", error);
-      res.status(400).json({ error: "Failed to update communication channel", details: error.message });
-    }
-  });
-  app2.delete("/api/config/communication-channels/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      await storage.deleteCommunicationChannel(id);
-      res.json({ success: true, channelId: id, message: "Communication channel deleted successfully" });
-    } catch (error) {
-      console.error("Error deleting communication channel:", error);
-      res.status(400).json({ error: "Failed to delete communication channel", details: error.message });
-    }
-  });
-  app2.get("/api/config/success-metrics", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId;
-      const metrics = await storage.getSuccessMetricsConfig(organizationId);
-      res.json(metrics);
-    } catch (error) {
-      console.error("Error fetching success metrics:", error);
-      res.status(500).json({ error: "Failed to fetch success metrics" });
-    }
-  });
-  app2.post("/api/config/success-metrics", requireOrgAccess, async (req, res) => {
-    try {
-      const metric = await storage.createSuccessMetric(req.body);
-      res.json({ success: true, metric, message: "Success metric created successfully" });
-    } catch (error) {
-      console.error("Error creating success metric:", error);
-      res.status(400).json({ error: "Failed to create success metric", details: error.message });
-    }
-  });
-  app2.patch("/api/config/success-metrics/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const metric = await storage.updateSuccessMetric(id, req.body);
-      res.json({ success: true, metric, message: "Success metric updated successfully" });
-    } catch (error) {
-      console.error("Error updating success metric:", error);
-      res.status(400).json({ error: "Failed to update success metric", details: error.message });
-    }
-  });
-  app2.delete("/api/config/success-metrics/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      await storage.deleteSuccessMetric(id);
-      res.json({ success: true, metricId: id, message: "Success metric deleted successfully" });
-    } catch (error) {
-      console.error("Error deleting success metric:", error);
-      res.status(400).json({ error: "Failed to delete success metric", details: error.message });
-    }
-  });
-  app2.get("/api/config/setup-progress/:organizationId", requireOrgAccess, async (req, res) => {
-    try {
-      const orgId = req.orgId;
-      const progress = await storage.getOrganizationSetupProgress(orgId);
-      res.json(progress || { departmentsConfigured: false, executivesConfigured: false, approvalChainsConfigured: false, escalationPoliciesConfigured: false, communicationChannelsConfigured: false });
-    } catch (error) {
-      console.error("Error fetching setup progress:", error);
-      res.status(500).json({ error: "Failed to fetch setup progress" });
-    }
-  });
-  app2.post("/api/config/setup-progress", requireOrgAccess, async (req, res) => {
-    try {
-      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
-      res.json({ success: true, progress, message: "Setup progress updated successfully" });
-    } catch (error) {
-      console.error("Error updating setup progress:", error);
-      res.status(400).json({ error: "Failed to update setup progress", details: error.message });
-    }
-  });
-  app2.patch("/api/config/setup-progress/:organizationId", requireOrgAccess, async (req, res) => {
-    try {
-      const progress = await storage.upsertOrganizationSetupProgress({ ...req.body, organizationId: req.orgId });
-      res.json({ success: true, progress, message: "Setup progress saved" });
-    } catch (error) {
-      console.error("Error saving setup progress:", error);
-      res.status(400).json({ error: "Failed to save setup progress", details: error.message });
-    }
-  });
+  registerOrgSetupRoutes(app2);
   app2.post("/api/activations/demo", async (req, res) => {
     try {
       const { stakeholderCount = 30, accelerated = true, targetDuration = 12, stakeholderRoster } = req.body;
@@ -42564,25 +42625,25 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
   app2.post("/api/activations/orchestrate", async (req, res) => {
     try {
-      const userId = getUserId3(req);
+      const userId = getUserId6(req);
       const { playbookId, triggerId, scenarioId, context = {} } = req.body;
       if (!playbookId || !scenarioId) {
         return res.status(400).json({
           error: "playbookId and scenarioId are required"
         });
       }
-      const playbook = await db.select().from(playbookLibrary).where(eq34(playbookLibrary.id, playbookId)).limit(1);
+      const playbook = await db.select().from(playbookLibrary).where(eq37(playbookLibrary.id, playbookId)).limit(1);
       if (!playbook || playbook.length === 0) {
         return res.status(404).json({ error: "Playbook not found" });
       }
-      const scenario = await db.select().from(strategicScenarios).where(eq34(strategicScenarios.id, scenarioId)).limit(1);
+      const scenario = await db.select().from(strategicScenarios).where(eq37(strategicScenarios.id, scenarioId)).limit(1);
       if (!scenario || scenario.length === 0) {
         return res.status(404).json({ error: "Scenario not found" });
       }
       const organizationId = scenario[0].organizationId;
-      let executionPlan = await db.select().from(scenarioExecutionPlans5).where(eq34(scenarioExecutionPlans5.scenarioId, scenarioId)).limit(1);
+      let executionPlan = await db.select().from(scenarioExecutionPlans).where(eq37(scenarioExecutionPlans.scenarioId, scenarioId)).limit(1);
       if (!executionPlan || executionPlan.length === 0) {
-        const [newPlan] = await db.insert(scenarioExecutionPlans5).values({
+        const [newPlan] = await db.insert(scenarioExecutionPlans).values({
           scenarioId,
           organizationId,
           name: `Execution Plan: ${playbook[0].name}`,
@@ -42607,8 +42668,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         currentPhase: "immediate",
         startedAt: now
       });
-      const stakeholders = await db.select().from(scenarioStakeholders).where(eq34(scenarioStakeholders.scenarioId, scenarioId));
-      const taskSequences = await db.select().from(playbookTaskSequences).where(eq34(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+      const stakeholders = await db.select().from(scenarioStakeholders).where(eq37(scenarioStakeholders.scenarioId, scenarioId));
+      const taskSequences = await db.select().from(playbookTaskSequences).where(eq37(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
       const executionTasks = [];
       const taskMap = /* @__PURE__ */ new Map();
       for (let i = 0; i < taskSequences.length; i++) {
@@ -42720,7 +42781,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       const { notificationId } = req.params;
       const acknowledgedAt = /* @__PURE__ */ new Date();
       const notification = await db.query.notifications.findFirst({
-        where: eq34(notifications.id, notificationId)
+        where: eq37(notifications.id, notificationId)
       });
       if (!notification) {
         return res.status(404).json({ error: "Notification not found" });
@@ -42734,7 +42795,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
           acknowledgedAt: acknowledgedAt.toISOString(),
           responseTimeMinutes: responseTime
         }
-      }).where(eq34(notifications.id, notificationId));
+      }).where(eq37(notifications.id, notificationId));
       let coordinationComplete = false;
       if (notification.entityType === "execution_instance" && notification.entityId) {
         const executionStatus = await storage.getExecutionStatus(notification.entityId);
@@ -42952,257 +43013,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: error.message });
     }
   });
-  app2.get("/api/dynamic-strategy/readiness", requireAuth3, async (req, res) => {
-    try {
-      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const metric = await dynamicStrategyService2.getLatestReadinessMetric(user[0].organizationId);
-      if (!metric) {
-        const newMetric = await dynamicStrategyService2.calculateReadinessScore(user[0].organizationId);
-        return res.json(newMetric);
-      }
-      res.json(metric);
-    } catch (error) {
-      console.error("Error fetching readiness metric:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.post("/api/dynamic-strategy/readiness/calculate", requireAuth3, async (req, res) => {
-    try {
-      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const metric = await dynamicStrategyService2.calculateReadinessScore(user[0].organizationId);
-      res.json(metric);
-    } catch (error) {
-      console.error("Error calculating readiness:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.get("/api/dynamic-strategy/weak-signals", requireAuth3, async (req, res) => {
-    try {
-      const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { and: and25, eq: eq37 } = await import("drizzle-orm");
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq37(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const signals = await db.select().from(weakSignals2).where(
-        and25(
-          eq37(weakSignals2.organizationId, user[0].organizationId),
-          eq37(weakSignals2.status, "active")
-        )
-      ).orderBy(desc16(weakSignals2.detectedAt)).limit(50);
-      res.json(signals);
-    } catch (error) {
-      console.error("Error fetching weak signals:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.get("/api/dynamic-strategy/oracle-patterns", requireAuth3, async (req, res) => {
-    try {
-      const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const patterns = await db.select().from(oraclePatterns2).where(eq34(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc16(oraclePatterns2.detectedAt)).limit(20);
-      res.json(patterns);
-    } catch (error) {
-      console.error("Error fetching oracle patterns:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.get("/api/dynamic-strategy/status", requireAuth3, async (req, res) => {
-    try {
-      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const status = await dynamicStrategyService2.getSystemStatus(user[0].organizationId);
-      res.json(status);
-    } catch (error) {
-      console.error("Error fetching system status:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.get("/api/dynamic-strategy/activity-feed", async (req, res) => {
-    try {
-      const { dynamicStrategyService: dynamicStrategyService2 } = await Promise.resolve().then(() => (init_dynamicStrategyService(), dynamicStrategyService_exports));
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const limit = parseInt(req.query.limit) || 20;
-      const activities2 = await dynamicStrategyService2.getActivityFeed(user[0].organizationId, limit);
-      res.json(activities2);
-    } catch (error) {
-      console.error("Error fetching activity feed:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.get("/api/dynamic-strategy/playbook-learnings/:scenarioId", async (req, res) => {
-    try {
-      const { playbookLearnings: playbookLearnings2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { scenarioId } = req.params;
-      const learnings = await db.select().from(playbookLearnings2).where(eq34(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc16(playbookLearnings2.extractedAt)).limit(50);
-      res.json(learnings);
-    } catch (error) {
-      console.error("Error fetching playbook learnings:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
-  app2.post("/api/dynamic-strategy/generate-demo-data", async (req, res) => {
-    try {
-      const userId = getUserId3(req);
-      const user = await db.select().from(users).where(eq34(users.id, userId)).limit(1);
-      if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
-      }
-      const organizationId = user[0].organizationId;
-      const { readinessMetrics: readinessMetrics2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      await db.insert(readinessMetrics2).values({
-        organizationId,
-        overallScore: "84.4",
-        foresightScore: "88",
-        velocityScore: "83",
-        agilityScore: "79",
-        learningScore: "79",
-        adaptabilityScore: "87",
-        activeScenarios: 3,
-        weakSignalsDetected: 5,
-        playbooksReady: 12,
-        playbooksTotal: 18,
-        averageResponseTime: 8,
-        trend: "up",
-        measurementDate: /* @__PURE__ */ new Date()
-      });
-      const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const demoSignals = [
-        {
-          organizationId,
-          signalType: "regulatory",
-          title: "Emerging Data Privacy Regulation",
-          description: "New data privacy legislation being discussed in key markets",
-          confidence: "78",
-          urgency: "medium",
-          impact: "high",
-          source: "Regulatory Monitor",
-          status: "active"
-        },
-        {
-          organizationId,
-          signalType: "competitor",
-          title: "Competitor Product Launch Signals",
-          description: "Competitor hiring surge in product development team",
-          confidence: "82",
-          urgency: "high",
-          impact: "medium",
-          source: "Market Intelligence",
-          status: "active"
-        },
-        {
-          organizationId,
-          signalType: "market",
-          title: "Supply Chain Tension Points",
-          description: "Minor disruptions detected in secondary supplier network",
-          confidence: "71",
-          urgency: "low",
-          impact: "medium",
-          source: "Supply Chain Monitor",
-          status: "active"
-        }
-      ];
-      for (const signal of demoSignals) {
-        await db.insert(weakSignals2).values(signal);
-      }
-      const { oraclePatterns: oraclePatterns2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const demoPatterns = [
-        {
-          organizationId,
-          patternType: "market_disruption",
-          title: "AI-Driven Market Consolidation Pattern",
-          description: "Historical pattern suggests 40% likelihood of market consolidation in next 12 months",
-          confidence: "85",
-          impact: "high",
-          timeline: "6-12 months",
-          recommendations: ["Prepare M&A defense playbook", "Strengthen customer relationships"],
-          status: "detected"
-        },
-        {
-          organizationId,
-          patternType: "regulatory_shift",
-          title: "Regulatory Harmonization Trend",
-          description: "Multiple jurisdictions showing convergence in compliance requirements",
-          confidence: "73",
-          impact: "medium",
-          timeline: "3-6 months",
-          recommendations: ["Update compliance framework", "Engage regulatory affairs"],
-          status: "analyzing"
-        }
-      ];
-      for (const pattern of demoPatterns) {
-        await db.insert(oraclePatterns2).values(pattern);
-      }
-      const { activityFeedEvents: activityFeedEvents2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const demoActivities = [
-        {
-          organizationId,
-          eventType: "weak_signal",
-          title: "New Weak Signal Detected",
-          description: "AI detected emerging data privacy regulation signals",
-          severity: "warning",
-          relatedEntityType: "signal",
-          createdBy: userId
-        },
-        {
-          organizationId,
-          eventType: "pattern_detected",
-          title: "Oracle Pattern Identified",
-          description: "Market consolidation pattern detected with 85% confidence",
-          severity: "info",
-          relatedEntityType: "pattern",
-          createdBy: userId
-        },
-        {
-          organizationId,
-          eventType: "readiness_update",
-          title: "Readiness Score Updated",
-          description: "Overall readiness improved to 84.4%",
-          severity: "info",
-          createdBy: userId
-        }
-      ];
-      for (const activity of demoActivities) {
-        await db.insert(activityFeedEvents2).values(activity);
-      }
-      res.json({
-        success: true,
-        message: "Demo data generated successfully",
-        data: {
-          readinessMetrics: 1,
-          weakSignals: demoSignals.length,
-          oraclePatterns: demoPatterns.length,
-          activityEvents: demoActivities.length
-        }
-      });
-    } catch (error) {
-      console.error("Error generating demo data:", error);
-      res.status(500).json({ error: error.message });
-    }
-  });
+  registerDynamicStrategyRoutes(app2);
   app2.get("/api/health", async (req, res) => {
     try {
       await db.execute(sql17`SELECT 1`);
@@ -43226,13 +43037,13 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   app2.get("/api/diagnostics/db-stats", async (req, res) => {
     try {
       const schema = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [triggersResult] = await db.select({ count: count6() }).from(schema.executiveTriggers);
-      const [playbooksResult] = await db.select({ count: count6() }).from(schema.playbookLibrary);
-      const [orgsResult] = await db.select({ count: count6() }).from(schema.organizations);
-      const [usersResult] = await db.select({ count: count6() }).from(schema.users);
-      const [domainsResult] = await db.select({ count: count6() }).from(schema.playbookDomains);
-      const [signalsResult] = await db.select({ count: count6() }).from(schema.triggerSignals);
-      const [associationsResult] = await db.select({ count: count6() }).from(schema.playbookTriggerAssociations);
+      const [triggersResult] = await db.select({ count: count7() }).from(schema.executiveTriggers);
+      const [playbooksResult] = await db.select({ count: count7() }).from(schema.playbookLibrary);
+      const [orgsResult] = await db.select({ count: count7() }).from(schema.organizations);
+      const [usersResult] = await db.select({ count: count7() }).from(schema.users);
+      const [domainsResult] = await db.select({ count: count7() }).from(schema.playbookDomains);
+      const [signalsResult] = await db.select({ count: count7() }).from(schema.triggerSignals);
+      const [associationsResult] = await db.select({ count: count7() }).from(schema.playbookTriggerAssociations);
       res.status(200).json({
         status: "ok",
         timestamp: (/* @__PURE__ */ new Date()).toISOString(),
@@ -43343,7 +43154,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name,
         strategicCategory: playbookLibrary.strategicCategory
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq34(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq37(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequences:", error);
@@ -43356,7 +43167,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         domainName: playbookDomains.name,
         playbookCount: sql17`count(distinct ${playbookLibrary.id})`,
         taskCount: sql17`count(${playbookTaskSequences.id})`
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq34(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq37(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequence summary:", error);
@@ -43375,14 +43186,14 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         activatedAt: playbookActivations.activatedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name
-      }).from(playbookActivations).innerJoin(playbookLibrary, eq34(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql17`${playbookActivations.activatedAt} DESC`);
+      }).from(playbookActivations).innerJoin(playbookLibrary, eq37(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql17`${playbookActivations.activatedAt} DESC`);
       res.json(result);
     } catch (error) {
       console.error("Error fetching playbook activations:", error);
       res.status(500).json({ error: "Failed to fetch activations" });
     }
   });
-  app2.post("/api/playbook-activations", requireOrgAccess, async (req, res) => {
+  app2.post("/api/playbook-activations", requireOrgAccess2, async (req, res) => {
     try {
       const { playbookId, actualExecutionTime, targetMet, activationReason, situationSummary, triggerEventId } = req.body;
       if (!playbookId) return res.status(400).json({ error: "playbookId required" });
@@ -43410,7 +43221,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log("\u2705 Playbook & Drill endpoints registered");
   console.log("   \u2192 /api/playbook-library - 110 Playbook taxonomy");
   console.log("   \u2192 /api/practice-drills - Fire drill simulation system");
-  app2.post("/api/playbook-library/:playbookId/activate", requireRole("admin", "executive"), requireOrgAccess, async (req, res) => {
+  app2.post("/api/playbook-library/:playbookId/activate", requireRole("admin", "executive"), requireOrgAccess2, async (req, res) => {
     try {
       const { playbookId } = req.params;
       const { scenarioId } = req.body;
@@ -43424,7 +43235,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to activate playbook" });
     }
   });
-  app2.get("/api/execution/:executionId/progress", requireOrgAccess, async (req, res) => {
+  app2.get("/api/execution/:executionId/progress", requireOrgAccess2, async (req, res) => {
     try {
       const { executionId } = req.params;
       const { getExecutionProgress: getExecutionProgress2 } = await Promise.resolve().then(() => (init_PlaybookExecutor(), PlaybookExecutor_exports));
@@ -43434,7 +43245,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to fetch progress" });
     }
   });
-  app2.post("/api/roi/calculate", requireOrgAccess, async (req, res) => {
+  app2.post("/api/roi/calculate", requireOrgAccess2, async (req, res) => {
     try {
       const { calculateROI: calculateROI2 } = await Promise.resolve().then(() => (init_ROICalculator(), ROICalculator_exports));
       const roi = calculateROI2(req.body);
@@ -43443,7 +43254,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to calculate ROI" });
     }
   });
-  app2.get("/api/roi/report", requireOrgAccess, async (req, res) => {
+  app2.get("/api/roi/report", requireOrgAccess2, async (req, res) => {
     try {
       const { generateROIReport: generateROIReport2 } = await Promise.resolve().then(() => (init_ROICalculator(), ROICalculator_exports));
       const emptyHistory = Array(12).fill(null).map(() => ({
@@ -43456,7 +43267,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to generate report" });
     }
   });
-  app2.post("/api/integrations/slack/send", requireOrgAccess, async (req, res) => {
+  app2.post("/api/integrations/slack/send", requireOrgAccess2, async (req, res) => {
     try {
       const { channelId, message, metadata } = req.body;
       console.log("\u{1F4E4} Slack message queued:", { channelId, message, metadata });
@@ -43498,1231 +43309,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       });
     }
   });
-  console.log("\u{1F4E1} Registering Execution Plan Sync API endpoints...");
-  app2.get("/api/sync/templates", requireOrgAccess, async (req, res) => {
-    try {
-      const { organizationId } = req.query;
-      const templates = await storage.getExportTemplates(organizationId);
-      res.json(templates);
-    } catch (error) {
-      console.error("Failed to get export templates:", error);
-      res.status(500).json({ error: "Failed to get export templates" });
-    }
-  });
-  app2.get("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.getExportTemplate(req.params.id);
-      if (!template) {
-        return res.status(404).json({ error: "Template not found" });
-      }
-      res.json(template);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get template" });
-    }
-  });
-  app2.post("/api/sync/templates", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.createExportTemplate({
-        ...req.body,
-        createdBy: req.userId
-      });
-      res.status(201).json(template);
-    } catch (error) {
-      console.error("Failed to create export template:", error);
-      res.status(500).json({ error: "Failed to create export template" });
-    }
-  });
-  app2.patch("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.updateExportTemplate(req.params.id, req.body);
-      res.json(template);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to update template" });
-    }
-  });
-  app2.delete("/api/sync/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      await storage.deleteExportTemplate(req.params.id);
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: "Failed to delete template" });
-    }
-  });
-  app2.get("/api/sync/records", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionInstanceId } = req.query;
-      const records = await storage.getSyncRecords(executionInstanceId);
-      res.json(records);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get sync records" });
-    }
-  });
-  app2.get("/api/sync/records/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const record = await storage.getSyncRecord(req.params.id);
-      if (!record) {
-        return res.status(404).json({ error: "Sync record not found" });
-      }
-      res.json(record);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get sync record" });
-    }
-  });
-  app2.post("/api/sync/export", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionInstanceId, templateId, integrationId } = req.body;
-      if (!executionInstanceId || !templateId || !integrationId) {
-        return res.status(400).json({
-          error: "Missing required fields: executionInstanceId, templateId, integrationId"
-        });
-      }
-      const { executionPlanSyncService: executionPlanSyncService2 } = await Promise.resolve().then(() => (init_ExecutionPlanSyncService(), ExecutionPlanSyncService_exports));
-      const result = await executionPlanSyncService2.exportExecutionPlan(
-        executionInstanceId,
-        templateId,
-        integrationId
-      );
-      if (result.success) {
-        res.status(201).json(result);
-      } else {
-        res.status(400).json(result);
-      }
-    } catch (error) {
-      console.error("Export failed:", error);
-      res.status(500).json({
-        error: "Failed to export execution plan",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.post("/api/sync/records/:id/sync", requireOrgAccess, async (req, res) => {
-    try {
-      const { direction = "pull" } = req.body;
-      const { executionPlanSyncService: executionPlanSyncService2 } = await Promise.resolve().then(() => (init_ExecutionPlanSyncService(), ExecutionPlanSyncService_exports));
-      const result = await executionPlanSyncService2.syncTaskStatus(
-        req.params.id,
-        direction
-      );
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to sync tasks" });
-    }
-  });
-  app2.delete("/api/sync/records/:id", requireOrgAccess, async (req, res) => {
-    try {
-      await storage.deleteSyncRecord(req.params.id);
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: "Failed to delete sync record" });
-    }
-  });
-  app2.post("/api/sync/start", requireOrgAccess, async (req, res) => {
-    try {
-      const { integrationId, platform, executionInstanceId, organizationId } = req.body;
-      if (!integrationId || !platform) {
-        return res.status(400).json({ error: "integrationId and platform are required" });
-      }
-      const syncRecord = await storage.createSyncRecord({
-        executionInstanceId,
-        integrationId,
-        syncStatus: "pending",
-        externalProjectId: null,
-        externalProjectUrl: null,
-        externalProjectKey: platform,
-        exportTemplateId: null,
-        taskSyncMap: {},
-        syncSettings: { platform, organizationId: organizationId || req.userId }
-      });
-      res.status(201).json({
-        success: true,
-        syncRecord,
-        message: `Sync initiated with ${platform}`
-      });
-    } catch (error) {
-      console.error("Failed to start sync:", error);
-      res.status(500).json({
-        error: "Failed to start sync",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.get("/api/documents/templates", requireOrgAccess, async (req, res) => {
-    try {
-      const { organizationId, playbookId } = req.query;
-      const templates = await storage.getDocumentTemplates(
-        organizationId,
-        playbookId
-      );
-      res.json(templates);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get document templates" });
-    }
-  });
-  app2.get("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.getDocumentTemplate(req.params.id);
-      if (!template) {
-        return res.status(404).json({ error: "Document template not found" });
-      }
-      res.json(template);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get document template" });
-    }
-  });
-  app2.post("/api/documents/templates", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.createDocumentTemplate({
-        ...req.body,
-        createdBy: req.userId
-      });
-      res.status(201).json(template);
-    } catch (error) {
-      console.error("Failed to create document template:", error);
-      res.status(500).json({ error: "Failed to create document template" });
-    }
-  });
-  app2.patch("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const template = await storage.updateDocumentTemplate(req.params.id, req.body);
-      res.json(template);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to update document template" });
-    }
-  });
-  app2.delete("/api/documents/templates/:id", requireOrgAccess, async (req, res) => {
-    try {
-      await storage.deleteDocumentTemplate(req.params.id);
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: "Failed to delete document template" });
-    }
-  });
-  app2.get("/api/documents/generated", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionInstanceId, templateId } = req.query;
-      const documents = await storage.getGeneratedDocuments(
-        executionInstanceId,
-        templateId
-      );
-      res.json(documents);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get generated documents" });
-    }
-  });
-  app2.get("/api/documents/generated/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const document = await storage.getGeneratedDocument(req.params.id);
-      if (!document) {
-        return res.status(404).json({ error: "Document not found" });
-      }
-      res.json(document);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get document" });
-    }
-  });
-  app2.post("/api/documents/generate", requireOrgAccess, async (req, res) => {
-    try {
-      const { templateId, executionInstanceId, variables: variables2 } = req.body;
-      const template = await storage.getDocumentTemplate(templateId);
-      if (!template) {
-        return res.status(404).json({ error: "Template not found" });
-      }
-      let generatedContent = template.template_content || "";
-      const variablesUsed = variables2 || {};
-      for (const [key, value] of Object.entries(variablesUsed)) {
-        const regex = new RegExp(`\\{\\{${key}\\}\\}`, "g");
-        generatedContent = generatedContent.replace(regex, String(value));
-      }
-      const document = await storage.createGeneratedDocument({
-        templateId,
-        executionInstanceId,
-        name: `${template.name} - ${(/* @__PURE__ */ new Date()).toISOString()}`,
-        documentType: template.document_type,
-        generatedContent,
-        variablesUsed,
-        fileFormat: "html",
-        generatedBy: req.userId
-      });
-      res.status(201).json(document);
-    } catch (error) {
-      console.error("Failed to generate document:", error);
-      res.status(500).json({ error: "Failed to generate document" });
-    }
-  });
-  app2.post("/api/documents/generated/:id/approve", requireOrgAccess, async (req, res) => {
-    try {
-      const document = await storage.approveGeneratedDocument(req.params.id, req.userId);
-      res.json(document);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to approve document" });
-    }
-  });
-  app2.post("/api/documents/generated/:id/reject", requireOrgAccess, async (req, res) => {
-    try {
-      const { reason } = req.body;
-      const document = await storage.rejectGeneratedDocument(req.params.id, reason);
-      res.json(document);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to reject document" });
-    }
-  });
-  app2.get("/api/resources/pre-approved", requireOrgAccess, async (req, res) => {
-    try {
-      const { organizationId, playbookId } = req.query;
-      const resources = await storage.getPreApprovedResources(
-        organizationId,
-        playbookId
-      );
-      res.json(resources);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get pre-approved resources" });
-    }
-  });
-  app2.get("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const resource = await storage.getPreApprovedResource(req.params.id);
-      if (!resource) {
-        return res.status(404).json({ error: "Resource not found" });
-      }
-      res.json(resource);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get resource" });
-    }
-  });
-  app2.post("/api/resources/pre-approved", requireOrgAccess, async (req, res) => {
-    try {
-      const resource = await storage.createPreApprovedResource(req.body);
-      res.status(201).json(resource);
-    } catch (error) {
-      console.error("Failed to create pre-approved resource:", error);
-      res.status(500).json({ error: "Failed to create pre-approved resource" });
-    }
-  });
-  app2.patch("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const resource = await storage.updatePreApprovedResource(req.params.id, req.body);
-      res.json(resource);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to update resource" });
-    }
-  });
-  app2.delete("/api/resources/pre-approved/:id", requireOrgAccess, async (req, res) => {
-    try {
-      await storage.deletePreApprovedResource(req.params.id);
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: "Failed to delete resource" });
-    }
-  });
-  app2.post("/api/resources/pre-approved/:id/activate", requireOrgAccess, async (req, res) => {
-    try {
-      const resource = await storage.activatePreApprovedResource(req.params.id);
-      res.json(resource);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to activate resource" });
-    }
-  });
-  app2.get("/api/enterprise-integrations", requireOrgAccess, async (req, res) => {
-    try {
-      const { organizationId } = req.query;
-      const integrations = await storage.getEnterpriseIntegrations(organizationId);
-      res.json(integrations);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get integrations" });
-    }
-  });
-  app2.get("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const integration = await storage.getEnterpriseIntegration(req.params.id);
-      if (!integration) {
-        return res.status(404).json({ error: "Integration not found" });
-      }
-      res.json(integration);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get integration" });
-    }
-  });
-  app2.post("/api/enterprise-integrations", requireOrgAccess, async (req, res) => {
-    try {
-      const integration = await storage.createEnterpriseIntegration({
-        ...req.body,
-        installedBy: req.userId
-      });
-      res.status(201).json(integration);
-    } catch (error) {
-      console.error("Failed to create integration:", error);
-      res.status(500).json({ error: "Failed to create integration" });
-    }
-  });
-  app2.patch("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const integration = await storage.updateEnterpriseIntegration(req.params.id, req.body);
-      res.json(integration);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to update integration" });
-    }
-  });
-  app2.delete("/api/enterprise-integrations/:id", requireOrgAccess, async (req, res) => {
-    try {
-      await storage.deleteEnterpriseIntegration(req.params.id);
-      res.status(204).send();
-    } catch (error) {
-      res.status(500).json({ error: "Failed to delete integration" });
-    }
-  });
-  app2.post("/api/enterprise-integrations/:id/test", requireOrgAccess, async (req, res) => {
-    try {
-      const integration = await storage.getEnterpriseIntegration(req.params.id);
-      if (!integration) {
-        return res.status(404).json({ error: "Integration not found" });
-      }
-      const { executionPlanSyncService: executionPlanSyncService2 } = await Promise.resolve().then(() => (init_ExecutionPlanSyncService(), ExecutionPlanSyncService_exports));
-      const adapter = executionPlanSyncService2.getAdapter(integration.vendor);
-      if (!adapter) {
-        return res.json({ success: false, error: "No adapter available for this platform" });
-      }
-      const credentials = integration.configuration || {};
-      const isValid = await adapter.validateCredentials({
-        accessToken: credentials.accessToken || credentials.access_token,
-        apiKey: credentials.apiKey || credentials.api_key,
-        cloudId: credentials.cloudId || credentials.cloud_id,
-        apiUrl: credentials.apiUrl || credentials.api_url || integration.api_endpoint,
-        workspaceId: credentials.workspaceId || credentials.workspace_id
-      });
-      if (isValid) {
-        await storage.updateEnterpriseIntegration(req.params.id, { status: "active" });
-      }
-      res.json({
-        success: isValid,
-        message: isValid ? "Connection successful" : "Connection failed - check credentials"
-      });
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        error: error instanceof Error ? error.message : "Connection test failed"
-      });
-    }
-  });
-  app2.get("/api/sync/platforms", requireOrgAccess, async (req, res) => {
-    res.json([
-      { id: "jira", name: "Jira", icon: "jira", description: "Atlassian Jira Software" },
-      { id: "asana", name: "Asana", icon: "asana", description: "Asana Project Management" },
-      { id: "monday", name: "Monday.com", icon: "monday", description: "Monday.com Work OS" },
-      { id: "ms_project", name: "Microsoft Planner", icon: "microsoft", description: "Microsoft Planner / Project" },
-      { id: "servicenow", name: "ServiceNow", icon: "servicenow", description: "ServiceNow Project Management" }
-    ]);
-  });
-  app2.get("/api/documents/template-types", requireOrgAccess, async (req, res) => {
-    try {
-      const { documentTemplateEngine: documentTemplateEngine2 } = await Promise.resolve().then(() => (init_DocumentTemplateEngine(), DocumentTemplateEngine_exports));
-      const templates = documentTemplateEngine2.getAvailableTemplates();
-      res.json(templates);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get template types" });
-    }
-  });
-  app2.get("/api/documents/template-types/:type/variables", requireOrgAccess, async (req, res) => {
-    try {
-      const { documentTemplateEngine: documentTemplateEngine2 } = await Promise.resolve().then(() => (init_DocumentTemplateEngine(), DocumentTemplateEngine_exports));
-      const variables2 = documentTemplateEngine2.getTemplateVariables(req.params.type);
-      res.json(variables2);
-    } catch (error) {
-      res.status(500).json({ error: "Failed to get template variables" });
-    }
-  });
-  app2.post("/api/documents/generate-from-type", requireOrgAccess, async (req, res) => {
-    try {
-      const { templateType, variables: variables2, executionInstanceId, scenarioId, organizationId } = req.body;
-      const { documentTemplateEngine: documentTemplateEngine2 } = await Promise.resolve().then(() => (init_DocumentTemplateEngine(), DocumentTemplateEngine_exports));
-      const document = await documentTemplateEngine2.generateDocument(
-        templateType,
-        variables2 || {},
-        { executionInstanceId, scenarioId, organizationId }
-      );
-      res.status(201).json(document);
-    } catch (error) {
-      console.error("Document generation failed:", error);
-      res.status(500).json({
-        error: "Failed to generate document",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.get("/api/export/execution/:executionInstanceId", requireOrgAccess, async (req, res) => {
-    try {
-      const { format = "csv" } = req.query;
-      const { fileExportService: fileExportService2 } = await Promise.resolve().then(() => (init_FileExportService(), FileExportService_exports));
-      const result = await fileExportService2.exportExecutionPlan(
-        req.params.executionInstanceId,
-        format
-      );
-      if (!result.success) {
-        return res.status(400).json({ error: "Export failed" });
-      }
-      res.setHeader("Content-Type", result.mimeType);
-      res.setHeader("Content-Disposition", `attachment; filename="${result.filename}"`);
-      res.send(result.content);
-    } catch (error) {
-      console.error("Export failed:", error);
-      res.status(500).json({
-        error: "Failed to export execution plan",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.get("/api/export/formats", requireOrgAccess, async (req, res) => {
-    res.json([
-      { id: "csv", name: "CSV", description: "Comma-separated values for Excel/Sheets", icon: "file-spreadsheet" },
-      { id: "xlsx", name: "Excel (XML)", description: "SpreadsheetML format", icon: "file-spreadsheet" },
-      { id: "json", name: "JSON", description: "Structured data format", icon: "file-json" },
-      { id: "ms_project_xml", name: "MS Project", description: "Microsoft Project XML format", icon: "file-chart" }
-    ]);
-  });
-  console.log("\u2705 Execution Plan Sync API endpoints registered");
-  const { executionPreApprovedResources: executionPreApprovedResources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-  app2.get("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.query.organizationId || req.userId;
-      const resources = await db.select().from(executionPreApprovedResources2).where(eq34(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc16(executionPreApprovedResources2.createdAt));
-      res.json(resources);
-    } catch (error) {
-      console.error("Failed to fetch pre-approved resources:", error);
-      res.status(500).json({
-        error: "Failed to fetch pre-approved resources",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.post("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
-    try {
-      const resourceData = {
-        ...req.body,
-        organizationId: req.body.organizationId || req.userId,
-        approvedBy: req.userId,
-        approvedAt: /* @__PURE__ */ new Date()
-      };
-      const [resource] = await db.insert(executionPreApprovedResources2).values(resourceData).returning();
-      res.status(201).json(resource);
-    } catch (error) {
-      console.error("Failed to create pre-approved resource:", error);
-      res.status(500).json({
-        error: "Failed to create pre-approved resource",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.get("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [resource] = await db.select().from(executionPreApprovedResources2).where(eq34(executionPreApprovedResources2.id, id));
-      if (!resource) {
-        return res.status(404).json({ error: "Pre-approved resource not found" });
-      }
-      res.json(resource);
-    } catch (error) {
-      console.error("Failed to fetch pre-approved resource:", error);
-      res.status(500).json({
-        error: "Failed to fetch pre-approved resource",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.patch("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [resource] = await db.update(executionPreApprovedResources2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq34(executionPreApprovedResources2.id, id)).returning();
-      if (!resource) {
-        return res.status(404).json({ error: "Pre-approved resource not found" });
-      }
-      res.json(resource);
-    } catch (error) {
-      console.error("Failed to update pre-approved resource:", error);
-      res.status(500).json({
-        error: "Failed to update pre-approved resource",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.delete("/api/pre-approved-resources/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [deleted] = await db.delete(executionPreApprovedResources2).where(eq34(executionPreApprovedResources2.id, id)).returning();
-      if (!deleted) {
-        return res.status(404).json({ error: "Pre-approved resource not found" });
-      }
-      res.json({ success: true, deleted });
-    } catch (error) {
-      console.error("Failed to delete pre-approved resource:", error);
-      res.status(500).json({
-        error: "Failed to delete pre-approved resource",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.post("/api/pre-approved-resources/:id/activate", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [resource] = await db.update(executionPreApprovedResources2).set({
-        lastActivatedAt: /* @__PURE__ */ new Date(),
-        activationCount: sql17`COALESCE(${executionPreApprovedResources2.activationCount}, 0) + 1`,
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq34(executionPreApprovedResources2.id, id)).returning();
-      if (!resource) {
-        return res.status(404).json({ error: "Pre-approved resource not found" });
-      }
-      res.json(resource);
-    } catch (error) {
-      console.error("Failed to activate pre-approved resource:", error);
-      res.status(500).json({
-        error: "Failed to activate pre-approved resource",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  console.log("\u2705 Pre-Approved Resources API endpoints registered");
-  app2.get("/api/execution/preflight/:executionPlanId", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionPlanId } = req.params;
-      const organizationId = req.query.organizationId || req.userId;
-      const { preFlightCheckService: preFlightCheckService3 } = await Promise.resolve().then(() => (init_PreFlightCheckService(), PreFlightCheckService_exports));
-      const result = await preFlightCheckService3.performCheck({
-        executionPlanId,
-        organizationId
-      });
-      res.json(result);
-    } catch (error) {
-      console.error("Pre-flight check failed:", error);
-      res.status(500).json({
-        error: "Pre-flight check failed",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.post("/api/execution/activate", requireOrgAccess, async (req, res) => {
-    try {
-      const {
-        organizationId,
-        scenarioId,
-        executionPlanId,
-        playbookId,
-        syncPlatform,
-        skipPreflight
-      } = req.body;
-      if (!organizationId || !executionPlanId || !playbookId) {
-        return res.status(400).json({
-          error: "Missing required fields: organizationId, executionPlanId, playbookId"
-        });
-      }
-      const { executionOrchestrator: executionOrchestrator2 } = await Promise.resolve().then(() => (init_ExecutionOrchestrator(), ExecutionOrchestrator_exports));
-      const result = await executionOrchestrator2.activate({
-        organizationId,
-        scenarioId,
-        executionPlanId,
-        playbookId,
-        triggeredBy: req.userId,
-        syncPlatform,
-        skipPreflight
-      });
-      res.status(result.success ? 201 : 400).json(result);
-    } catch (error) {
-      console.error("Activation failed:", error);
-      res.status(500).json({
-        success: false,
-        error: "Activation failed",
-        details: error instanceof Error ? error.message : String(error),
-        errors: [error instanceof Error ? error.message : String(error)],
-        events: [],
-        documentsGenerated: 0,
-        stakeholdersNotified: 0
-      });
-    }
-  });
-  app2.get("/api/execution/status/:executionInstanceId", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionInstanceId } = req.params;
-      const { executionOrchestrator: executionOrchestrator2 } = await Promise.resolve().then(() => (init_ExecutionOrchestrator(), ExecutionOrchestrator_exports));
-      const status = await executionOrchestrator2.getActivationStatus(executionInstanceId);
-      if (!status) {
-        return res.status(404).json({ error: "Execution instance not found" });
-      }
-      res.json(status);
-    } catch (error) {
-      console.error("Failed to get activation status:", error);
-      res.status(500).json({
-        error: "Failed to get activation status",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  app2.post("/api/execution/acknowledge/:executionInstanceId", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionInstanceId } = req.params;
-      const userId = req.userId;
-      const { stakeholderAcknowledgments: stakeholderAcknowledgments2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      await db.update(stakeholderAcknowledgments2).set({ acknowledgedAt: /* @__PURE__ */ new Date() }).where(
-        sql17`${stakeholderAcknowledgments2.executionInstanceId} = ${executionInstanceId} 
-              AND ${stakeholderAcknowledgments2.userId} = ${userId}`
-      );
-      res.json({ success: true, acknowledgedAt: /* @__PURE__ */ new Date() });
-    } catch (error) {
-      console.error("Acknowledgment failed:", error);
-      res.status(500).json({
-        error: "Acknowledgment failed",
-        details: error instanceof Error ? error.message : String(error)
-      });
-    }
-  });
-  console.log("\u2705 Execution Orchestration API endpoints registered");
-  const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-  app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const trees = await db.select().from(decisionTrees2).where(eq34(decisionTrees2.organizationId, organizationId)).orderBy(desc16(decisionTrees2.createdAt));
-      res.json(trees);
-    } catch (error) {
-      console.error("Failed to fetch decision trees:", error);
-      res.status(500).json({ error: "Failed to fetch decision trees" });
-    }
-  });
-  app2.get("/api/decision-trees/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [tree] = await db.select().from(decisionTrees2).where(eq34(decisionTrees2.id, id));
-      if (!tree) {
-        return res.status(404).json({ error: "Decision tree not found" });
-      }
-      res.json(tree);
-    } catch (error) {
-      console.error("Failed to fetch decision tree:", error);
-      res.status(500).json({ error: "Failed to fetch decision tree" });
-    }
-  });
-  app2.post("/api/decision-trees", requireOrgAccess, async (req, res) => {
-    try {
-      const data = req.body;
-      const [newTree] = await db.insert(decisionTrees2).values({
-        organizationId: req.orgId,
-        name: data.name,
-        scenario: data.scenario,
-        domain: data.domain,
-        category: data.category,
-        decisionPoints: data.decisionPoints || [],
-        isActive: true
-      }).returning();
-      res.status(201).json(newTree);
-    } catch (error) {
-      console.error("Failed to create decision tree:", error);
-      res.status(500).json({ error: "Failed to create decision tree" });
-    }
-  });
-  app2.patch("/api/decision-trees/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const data = req.body;
-      const [updated] = await db.update(decisionTrees2).set({
-        ...data,
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq34(decisionTrees2.id, id)).returning();
-      res.json(updated);
-    } catch (error) {
-      console.error("Failed to update decision tree:", error);
-      res.status(500).json({ error: "Failed to update decision tree" });
-    }
-  });
-  app2.get("/api/decision-log", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const logs = await db.select().from(decisionLog2).where(eq34(decisionLog2.organizationId, organizationId)).orderBy(desc16(decisionLog2.timestamp)).limit(50);
-      res.json(logs);
-    } catch (error) {
-      console.error("Failed to fetch decision log:", error);
-      res.status(500).json({ error: "Failed to fetch decision log" });
-    }
-  });
-  app2.post("/api/decision-log", requireOrgAccess, async (req, res) => {
-    try {
-      const data = req.body;
-      const [newLog] = await db.insert(decisionLog2).values({
-        organizationId: req.orgId,
-        decisionTreeId: data.decisionTreeId,
-        scenario: data.scenario,
-        question: data.question,
-        decisionMaker: data.decisionMaker,
-        optionChosen: data.optionChosen,
-        decisionTimeMinutes: data.decisionTimeMinutes,
-        outcome: data.outcome,
-        lessons: data.lessons
-      }).returning();
-      res.status(201).json(newLog);
-    } catch (error) {
-      console.error("Failed to log decision:", error);
-      res.status(500).json({ error: "Failed to log decision" });
-    }
-  });
-  app2.get("/api/decision-velocity/metrics", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const logs = await db.select().from(decisionLog2).where(eq34(decisionLog2.organizationId, organizationId));
-      const totalDecisions = logs.length;
-      const avgDecisionTime = totalDecisions > 0 ? logs.reduce((sum, d) => sum + (d.decisionTimeMinutes || 0), 0) / totalDecisions : 0;
-      const onTimeDecisions = logs.filter((d) => (d.decisionTimeMinutes || 0) <= 20).length;
-      const onTimeRate = totalDecisions > 0 ? onTimeDecisions / totalDecisions * 100 : 0;
-      const baselineMinutes = 4320;
-      const speedMultiplier = avgDecisionTime > 0 ? Math.round(baselineMinutes / avgDecisionTime) : 0;
-      res.json({
-        totalDecisions,
-        avgDecisionTimeMinutes: Math.round(avgDecisionTime * 10) / 10,
-        onTimeRate: Math.round(onTimeRate),
-        speedMultiplier,
-        baselineMinutes
-      });
-    } catch (error) {
-      console.error("Failed to get decision velocity metrics:", error);
-      res.status(500).json({ error: "Failed to get decision velocity metrics" });
-    }
-  });
-  console.log("\u2705 Decision Velocity API endpoints registered");
-  const {
-    executionInstances: executionInstances2,
-    executionInstanceTasks: executionInstanceTasks2,
-    executionPlanTasks: executionPlanTasks3,
-    executionPlanPhases: executionPlanPhases4,
-    scenarioExecutionPlans: scenarioExecutionPlans5,
-    executionCheckpoints: executionCheckpoints2,
-    checkpointValidations: checkpointValidations2,
-    documentTemplates: documentTemplates2,
-    executionTaskDependencies: executionTaskDependencies2
-  } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-  app2.get("/api/execution-runs", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const runs = await db.select().from(executionInstances2).where(eq34(executionInstances2.organizationId, organizationId)).orderBy(desc16(executionInstances2.createdAt)).limit(20);
-      res.json(runs);
-    } catch (error) {
-      console.error("Failed to fetch execution runs:", error);
-      res.status(500).json({ error: "Failed to fetch execution runs" });
-    }
-  });
-  app2.get("/api/execution-runs/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [run] = await db.select().from(executionInstances2).where(eq34(executionInstances2.id, id));
-      if (!run) {
-        return res.status(404).json({ error: "Execution run not found" });
-      }
-      const tasks4 = await db.select().from(executionInstanceTasks2).where(eq34(executionInstanceTasks2.executionInstanceId, id));
-      const checkpoints = await db.select().from(checkpointValidations2).where(eq34(checkpointValidations2.executionInstanceId, id));
-      res.json({
-        ...run,
-        tasks: tasks4,
-        checkpoints
-      });
-    } catch (error) {
-      console.error("Failed to fetch execution run:", error);
-      res.status(500).json({ error: "Failed to fetch execution run" });
-    }
-  });
-  app2.post("/api/execution-runs", requireOrgAccess, async (req, res) => {
-    try {
-      const { executionPlanId, scenarioId, organizationId, triggeredBy, triggerData } = req.body;
-      const [newRun] = await db.insert(executionInstances2).values({
-        executionPlanId,
-        scenarioId,
-        organizationId: req.orgId,
-        triggeredBy: triggeredBy || req.userId,
-        triggerData,
-        status: "running",
-        startedAt: /* @__PURE__ */ new Date()
-      }).returning();
-      const planTasks = await db.select().from(executionPlanTasks3).where(eq34(executionPlanTasks3.executionPlanId, executionPlanId));
-      const instanceTasks = await Promise.all(planTasks.map(async (planTask) => {
-        const [task] = await db.insert(executionInstanceTasks2).values({
-          executionInstanceId: newRun.id,
-          planTaskId: planTask.id,
-          status: planTask.isParallel ? "ready" : "pending"
-        }).returning();
-        return task;
-      }));
-      res.status(201).json({
-        ...newRun,
-        tasks: instanceTasks
-      });
-    } catch (error) {
-      console.error("Failed to launch execution run:", error);
-      res.status(500).json({ error: "Failed to launch execution run" });
-    }
-  });
-  app2.patch("/api/execution-runs/:runId/tasks/:taskId", requireOrgAccess, async (req, res) => {
-    try {
-      const { runId, taskId } = req.params;
-      const { status, notes, outcome } = req.body;
-      const [currentTask] = await db.select().from(executionInstanceTasks2).where(eq34(executionInstanceTasks2.id, taskId));
-      if (!currentTask) {
-        return res.status(404).json({ error: "Task not found" });
-      }
-      if (status === "in_progress" && currentTask.planTaskId) {
-        const dependencies = await db.select().from(executionTaskDependencies2).where(eq34(executionTaskDependencies2.taskId, currentTask.planTaskId));
-        if (dependencies.length > 0) {
-          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
-          const dependencyPlanTaskIds = dependencies.map((d) => d.dependsOnTaskId);
-          const dependencyInstanceTasks = allInstanceTasks.filter(
-            (t) => dependencyPlanTaskIds.includes(t.planTaskId)
-          );
-          const allDepsComplete = dependencyInstanceTasks.every(
-            (t) => t.status === "completed" || t.status === "skipped"
-          );
-          if (!allDepsComplete) {
-            return res.status(400).json({
-              error: "Cannot start task - dependencies not complete",
-              blockedBy: dependencyInstanceTasks.filter((t) => t.status !== "completed" && t.status !== "skipped")
-            });
-          }
-        }
-      }
-      const updateData = {
-        status,
-        updatedAt: /* @__PURE__ */ new Date()
-      };
-      if (status === "in_progress") {
-        updateData.startedAt = /* @__PURE__ */ new Date();
-      }
-      if (status === "completed") {
-        updateData.completedAt = /* @__PURE__ */ new Date();
-        if (currentTask.startedAt) {
-          updateData.actualMinutes = Math.round(((/* @__PURE__ */ new Date()).getTime() - new Date(currentTask.startedAt).getTime()) / 6e4);
-        }
-      }
-      if (notes) updateData.notes = notes;
-      if (outcome) updateData.outcome = outcome;
-      const [updated] = await db.update(executionInstanceTasks2).set(updateData).where(eq34(executionInstanceTasks2.id, taskId)).returning();
-      if (status === "completed" && currentTask.planTaskId) {
-        const dependentRelations = await db.select().from(executionTaskDependencies2).where(eq34(executionTaskDependencies2.dependsOnTaskId, currentTask.planTaskId));
-        if (dependentRelations.length > 0) {
-          const allInstanceTasks = await db.select().from(executionInstanceTasks2).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
-          for (const dep of dependentRelations) {
-            const dependentInstanceTask = allInstanceTasks.find((t) => t.planTaskId === dep.taskId);
-            if (dependentInstanceTask && dependentInstanceTask.status === "pending") {
-              const allDepsForTask = await db.select().from(executionTaskDependencies2).where(eq34(executionTaskDependencies2.taskId, dep.taskId));
-              const allDepsComplete = allDepsForTask.every((d) => {
-                const depTask = allInstanceTasks.find((t) => t.planTaskId === d.dependsOnTaskId);
-                return depTask && (depTask.status === "completed" || depTask.status === "skipped");
-              });
-              if (allDepsComplete) {
-                await db.update(executionInstanceTasks2).set({ status: "ready", updatedAt: /* @__PURE__ */ new Date() }).where(eq34(executionInstanceTasks2.id, dependentInstanceTask.id));
-              }
-            }
-          }
-        }
-      }
-      const allTasks = await db.select().from(executionInstanceTasks2).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
-      const allComplete = allTasks.every((t) => t.status === "completed" || t.status === "skipped");
-      if (allComplete) {
-        const startTime = await db.select().from(executionInstances2).where(eq34(executionInstances2.id, runId));
-        const actualTime = startTime[0]?.startedAt ? Math.round(((/* @__PURE__ */ new Date()).getTime() - new Date(startTime[0].startedAt).getTime()) / 6e4) : null;
-        await db.update(executionInstances2).set({
-          status: "completed",
-          completedAt: /* @__PURE__ */ new Date(),
-          actualExecutionTime: actualTime,
-          outcome: "successful",
-          updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq34(executionInstances2.id, runId));
-      }
-      res.json(updated);
-    } catch (error) {
-      console.error("Failed to update task status:", error);
-      res.status(500).json({ error: "Failed to update task status" });
-    }
-  });
-  app2.get("/api/stuck-tasks", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.session?.organizationId;
-      const thresholdHours = parseInt(req.query.hours) || 4;
-      const thresholdMs = thresholdHours * 60 * 60 * 1e3;
-      const cutoff = new Date(Date.now() - thresholdMs);
-      const activeInstances = await db.select().from(executionInstances2).where(and23(
-        eq34(executionInstances2.organizationId, organizationId),
-        sql17`${executionInstances2.status} IN ('pending', 'running')`
-      ));
-      if (!activeInstances.length) return res.json([]);
-      const instanceIds = activeInstances.map((i) => i.id);
-      const stuckTasks = await db.select({
-        id: executionInstanceTasks2.id,
-        executionInstanceId: executionInstanceTasks2.executionInstanceId,
-        planTaskId: executionInstanceTasks2.planTaskId,
-        status: executionInstanceTasks2.status,
-        blockedReason: executionInstanceTasks2.blockedReason,
-        assignedUserId: executionInstanceTasks2.assignedUserId,
-        createdAt: executionInstanceTasks2.createdAt,
-        updatedAt: executionInstanceTasks2.updatedAt,
-        taskTitle: executionPlanTasks3.title,
-        taskRole: executionPlanTasks3.ownerRole,
-        taskPriority: executionPlanTasks3.priority,
-        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and23(
-        sql17`${executionInstanceTasks2.executionInstanceId} = ANY(${sql17`ARRAY[${sql17.join(instanceIds.map((id) => sql17`${id}::uuid`), sql17`, `)}]`})`,
-        sql17`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
-        sql17`${executionInstanceTasks2.updatedAt} < ${cutoff}`
-      ));
-      const now = Date.now();
-      const annotated = stuckTasks.map((t) => {
-        const hoursStuck = Math.floor((now - new Date(t.updatedAt).getTime()) / 36e5);
-        const severity = hoursStuck >= thresholdHours * 3 ? "critical" : hoursStuck >= thresholdHours ? "warning" : "watch";
-        return { ...t, hoursStuck, severity };
-      }).sort((a, b) => b.hoursStuck - a.hoursStuck);
-      res.json(annotated);
-    } catch (error) {
-      console.error("Failed to fetch stuck tasks:", error);
-      res.status(500).json({ error: "Failed to fetch stuck tasks" });
-    }
-  });
-  app2.patch("/api/stuck-tasks/:taskId/escalate", requireOrgAccess, async (req, res) => {
-    try {
-      const { taskId } = req.params;
-      const { notes } = req.body;
-      const [updated] = await db.update(executionInstanceTasks2).set({
-        status: "in_progress",
-        notes: notes || "Escalated via Stuck Task Detector",
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq34(executionInstanceTasks2.id, taskId)).returning();
-      res.json(updated);
-    } catch (error) {
-      console.error("Failed to escalate stuck task:", error);
-      res.status(500).json({ error: "Failed to escalate task" });
-    }
-  });
-  app2.get("/api/execution-runs/:runId/my-tasks", requireOrgAccess, async (req, res) => {
-    try {
-      const { runId } = req.params;
-      const userRole = req.user?.role || req.user?.claims?.role || "";
-      const allTasks = await db.select({
-        id: executionInstanceTasks2.id,
-        executionInstanceId: executionInstanceTasks2.executionInstanceId,
-        status: executionInstanceTasks2.status,
-        blockedReason: executionInstanceTasks2.blockedReason,
-        notes: executionInstanceTasks2.notes,
-        outcome: executionInstanceTasks2.outcome,
-        startedAt: executionInstanceTasks2.startedAt,
-        completedAt: executionInstanceTasks2.completedAt,
-        updatedAt: executionInstanceTasks2.updatedAt,
-        taskTitle: executionPlanTasks3.title,
-        taskDescription: executionPlanTasks3.description,
-        taskRole: executionPlanTasks3.ownerRole,
-        taskPriority: executionPlanTasks3.priority,
-        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
-        isParallel: executionPlanTasks3.isParallel,
-        phaseId: executionPlanTasks3.phaseId
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
-      const isScopedRole = userRole && !["admin", "executive"].includes(userRole.toLowerCase());
-      const scopedTasks = isScopedRole ? allTasks.filter((t) => t.taskRole && t.taskRole.toLowerCase().includes(userRole.toLowerCase())) : allTasks;
-      const annotated = scopedTasks.map((t) => ({
-        ...t,
-        isMyTask: !isScopedRole || (t.taskRole?.toLowerCase().includes(userRole.toLowerCase()) ?? false),
-        isScopedView: isScopedRole,
-        userRole
-      }));
-      res.json(annotated);
-    } catch (error) {
-      console.error("Failed to fetch role-scoped tasks:", error);
-      res.status(500).json({ error: "Failed to fetch tasks for role" });
-    }
-  });
-  app2.get("/api/execution-runs/:runId/context", requireOrgAccess, async (req, res) => {
-    try {
-      const { runId } = req.params;
-      const [instance] = await db.select().from(executionInstances2).where(eq34(executionInstances2.id, runId));
-      if (!instance) return res.status(404).json({ error: "Execution not found" });
-      const allTasks = await db.select({
-        id: executionInstanceTasks2.id,
-        status: executionInstanceTasks2.status,
-        taskTitle: executionPlanTasks3.title,
-        taskRole: executionPlanTasks3.ownerRole,
-        taskPriority: executionPlanTasks3.priority,
-        taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes,
-        phaseId: executionPlanTasks3.phaseId
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq34(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(eq34(executionInstanceTasks2.executionInstanceId, runId));
-      const total = allTasks.length;
-      const completed = allTasks.filter((t) => t.status === "completed" || t.status === "skipped").length;
-      const inProgress = allTasks.filter((t) => t.status === "in_progress").length;
-      const blocked = allTasks.filter((t) => t.status === "blocked").length;
-      const completionPct = total > 0 ? Math.round(completed / total * 100) : 0;
-      const phaseLabel = completionPct < 30 ? "IMMEDIATE \u2014 Activate & Align" : completionPct < 65 ? "SECONDARY \u2014 Execute & Coordinate" : completionPct < 90 ? "FOLLOW-UP \u2014 Verify & Close" : "COMPLETION \u2014 Outcome & Capture";
-      const phaseGuidance = completionPct < 30 ? "Focus: get all key roles notified and initial tasks started. Speed is the priority \u2014 do not wait for perfect information." : completionPct < 65 ? "Focus: coordinate parallel workstreams, remove blockers, keep stakeholders aligned. Watch for tasks that stop moving." : completionPct < 90 ? "Focus: close open tasks, verify deliverables, confirm outcomes with task owners before marking complete." : "Focus: capture lessons, confirm target met status, seed institutional memory for future activations.";
-      const [plan] = await db.select().from(scenarioExecutionPlans5).where(eq34(scenarioExecutionPlans5.id, instance.executionPlanId));
-      const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
-      const elapsedMinutes = Math.floor((Date.now() - startedMs) / 6e4);
-      const targetMinutes = plan?.targetCompletionTime || 720;
-      const minutesRemaining = Math.max(0, targetMinutes - elapsedMinutes);
-      res.json({
-        instanceId: instance.id,
-        status: instance.status,
-        objective: plan?.name || "Strategic Execution",
-        description: plan?.description,
-        currentPhase: instance.currentPhase,
-        phaseLabel,
-        phaseGuidance,
-        completionPct,
-        total,
-        completed,
-        inProgress,
-        blocked,
-        elapsedMinutes,
-        minutesRemaining,
-        targetMinutes,
-        startedAt: instance.startedAt,
-        criticalConstraint: blocked > 0 ? `${blocked} task${blocked > 1 ? "s" : ""} currently blocked \u2014 resolve before proceeding` : null
-      });
-    } catch (error) {
-      console.error("Failed to fetch execution context:", error);
-      res.status(500).json({ error: "Failed to fetch execution context" });
-    }
-  });
-  app2.get("/api/execution-coordination/metrics", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const runs = await db.select().from(executionInstances2).where(eq34(executionInstances2.organizationId, organizationId));
-      const completedRuns = runs.filter((r) => r.status === "completed");
-      const avgExecutionTime = completedRuns.length > 0 ? completedRuns.reduce((sum, r) => sum + (r.actualExecutionTime || 0), 0) / completedRuns.length : 0;
-      const activeRuns = runs.filter((r) => r.status === "running");
-      res.json({
-        totalRuns: runs.length,
-        activeRuns: activeRuns.length,
-        completedRuns: completedRuns.length,
-        avgExecutionTimeMinutes: Math.round(avgExecutionTime),
-        successRate: completedRuns.length > 0 ? Math.round(completedRuns.filter((r) => r.outcome === "successful").length / completedRuns.length * 100) : 0
-      });
-    } catch (error) {
-      console.error("Failed to get coordination metrics:", error);
-      res.status(500).json({ error: "Failed to get coordination metrics" });
-    }
-  });
-  app2.get("/api/document-templates", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const templates = await db.select().from(documentTemplates2).where(eq34(documentTemplates2.organizationId, organizationId));
-      res.json(templates);
-    } catch (error) {
-      console.error("Failed to fetch templates:", error);
-      res.status(500).json({ error: "Failed to fetch templates" });
-    }
-  });
-  app2.post("/api/document-templates", requireOrgAccess, async (req, res) => {
-    try {
-      const [template] = await db.insert(documentTemplates2).values({
-        organizationId: req.orgId,
-        name: req.body.name,
-        category: req.body.category,
-        domain: req.body.domain,
-        templateContent: req.body.templateContent,
-        mergeFields: req.body.mergeFields || [],
-        createdBy: req.userId
-      }).returning();
-      res.status(201).json(template);
-    } catch (error) {
-      console.error("Failed to create template:", error);
-      res.status(500).json({ error: "Failed to create template" });
-    }
-  });
-  app2.post("/api/document-templates/:id/populate", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const { context } = req.body;
-      const [template] = await db.select().from(documentTemplates2).where(eq34(documentTemplates2.id, id));
-      if (!template) {
-        return res.status(404).json({ error: "Template not found" });
-      }
-      let populatedContent = template.templateContent;
-      for (const [key, value] of Object.entries(context || {})) {
-        populatedContent = populatedContent.replace(new RegExp(`\\{\\{${key}\\}\\}`, "g"), String(value));
-      }
-      res.json({
-        templateId: id,
-        templateName: template.name,
-        populatedContent,
-        populatedAt: /* @__PURE__ */ new Date()
-      });
-    } catch (error) {
-      console.error("Failed to populate template:", error);
-      res.status(500).json({ error: "Failed to populate template" });
-    }
-  });
-  console.log("\u2705 Execution Coordination API endpoints registered");
-  const { strategicObjectives: strategicObjectives2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-  app2.get("/api/strategic-objectives", requireOrgAccess, async (req, res) => {
-    try {
-      const organizationId = req.orgId;
-      const objectives = await db.select().from(strategicObjectives2).where(eq34(strategicObjectives2.organizationId, organizationId)).orderBy(asc(strategicObjectives2.priority));
-      res.json(objectives);
-    } catch (error) {
-      console.error("Failed to fetch strategic objectives:", error);
-      res.status(500).json({ error: "Failed to fetch strategic objectives" });
-    }
-  });
-  app2.get("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [objective] = await db.select().from(strategicObjectives2).where(eq34(strategicObjectives2.id, id));
-      if (!objective) {
-        return res.status(404).json({ error: "Strategic objective not found" });
-      }
-      res.json(objective);
-    } catch (error) {
-      console.error("Failed to fetch strategic objective:", error);
-      res.status(500).json({ error: "Failed to fetch strategic objective" });
-    }
-  });
-  app2.post("/api/strategic-objectives", requireOrgAccess, async (req, res) => {
-    try {
-      const [objective] = await db.insert(strategicObjectives2).values({
-        organizationId: req.orgId,
-        name: req.body.name,
-        description: req.body.description,
-        targetDate: req.body.targetDate,
-        targetValue: req.body.targetValue,
-        currentValue: req.body.currentValue || "0",
-        valueUnit: req.body.valueUnit,
-        leadershipCapability: req.body.leadershipCapability,
-        priority: req.body.priority || 1,
-        status: req.body.status || "active",
-        progress: req.body.progress || 0,
-        createdBy: req.userId
-      }).returning();
-      res.status(201).json(objective);
-    } catch (error) {
-      console.error("Failed to create strategic objective:", error);
-      res.status(500).json({ error: "Failed to create strategic objective" });
-    }
-  });
-  app2.patch("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [updated] = await db.update(strategicObjectives2).set({
-        ...req.body,
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq34(strategicObjectives2.id, id)).returning();
-      if (!updated) {
-        return res.status(404).json({ error: "Strategic objective not found" });
-      }
-      res.json(updated);
-    } catch (error) {
-      console.error("Failed to update strategic objective:", error);
-      res.status(500).json({ error: "Failed to update strategic objective" });
-    }
-  });
-  app2.delete("/api/strategic-objectives/:id", requireOrgAccess, async (req, res) => {
-    try {
-      const { id } = req.params;
-      const [deleted] = await db.delete(strategicObjectives2).where(eq34(strategicObjectives2.id, id)).returning();
-      if (!deleted) {
-        return res.status(404).json({ error: "Strategic objective not found" });
-      }
-      res.json({ message: "Strategic objective deleted", id });
-    } catch (error) {
-      console.error("Failed to delete strategic objective:", error);
-      res.status(500).json({ error: "Failed to delete strategic objective" });
-    }
-  });
-  console.log("\u2705 Strategic Objectives API endpoints registered");
-  app2.get("/api/role-availability", requireOrgAccess, async (req, res) => {
+  await registerExecutionSyncRoutes(app2);
+  await registerDecisionCoordinationRoutes(app2);
+  app2.get("/api/role-availability", requireOrgAccess2, async (req, res) => {
     try {
       const flags = await storage.getRoleAvailabilityFlags(req.user.organizationId);
       res.json(flags);
@@ -44730,7 +43319,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to fetch role availability flags" });
     }
   });
-  app2.post("/api/role-availability", requireOrgAccess, async (req, res) => {
+  app2.post("/api/role-availability", requireOrgAccess2, async (req, res) => {
     try {
       const { roleName, isLimited, note } = req.body;
       if (!roleName) return res.status(400).json({ error: "roleName is required" });
@@ -44746,7 +43335,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to update role availability" });
     }
   });
-  app2.post("/api/role-availability/check", requireOrgAccess, async (req, res) => {
+  app2.post("/api/role-availability/check", requireOrgAccess2, async (req, res) => {
     try {
       const { roleNames } = req.body;
       const limited = await storage.getLimitedRolesForPlaybook(req.user.organizationId, roleNames || []);
@@ -44755,7 +43344,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to check role availability" });
     }
   });
-  app2.get("/api/activation-outcomes/:activationId", requireOrgAccess, async (req, res) => {
+  app2.get("/api/activation-outcomes/:activationId", requireOrgAccess2, async (req, res) => {
     try {
       const outcome = await storage.getActivationOutcome(req.params.activationId);
       if (!outcome) return res.status(404).json({ error: "Outcome not found" });
@@ -44764,7 +43353,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to fetch activation outcome" });
     }
   });
-  app2.post("/api/activation-outcomes", requireOrgAccess, async (req, res) => {
+  app2.post("/api/activation-outcomes", requireOrgAccess2, async (req, res) => {
     try {
       const { activationId, playbookId } = req.body;
       if (!activationId || !playbookId) return res.status(400).json({ error: "activationId and playbookId required" });
@@ -44774,7 +43363,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to create activation outcome" });
     }
   });
-  app2.patch("/api/activation-outcomes/:id/note", requireOrgAccess, async (req, res) => {
+  app2.patch("/api/activation-outcomes/:id/note", requireOrgAccess2, async (req, res) => {
     try {
       const { humanNote } = req.body;
       if (!humanNote) return res.status(400).json({ error: "humanNote is required" });
@@ -44784,7 +43373,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ error: "Failed to save note" });
     }
   });
-  app2.post("/api/activation-outcomes/:id/generate", requireOrgAccess, async (req, res) => {
+  app2.post("/api/activation-outcomes/:id/generate", requireOrgAccess2, async (req, res) => {
     try {
       const outcome = await storage.getActivationOutcome(req.params.id);
       if (!outcome) return res.status(404).json({ error: "Outcome not found" });
@@ -44815,7 +43404,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: "Failed to fetch customer health data" });
     }
   });
-  app2.get("/api/intelligence/maturity-score", requireOrgAccess, async (req, res) => {
+  app2.get("/api/intelligence/maturity-score", requireOrgAccess2, async (req, res) => {
     try {
       const score = await storage.getExecutionMaturityScore(req.user.organizationId);
       res.json(score);
@@ -44823,7 +43412,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: "Failed to compute maturity score" });
     }
   });
-  app2.get("/api/playbook-performance/:playbookId", requireOrgAccess, async (req, res) => {
+  app2.get("/api/playbook-performance/:playbookId", requireOrgAccess2, async (req, res) => {
     try {
       const fingerprint = await storage.getPlaybookPerformanceFingerprint(
         req.user.organizationId,
@@ -44834,7 +43423,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: "Failed to fetch playbook performance data" });
     }
   });
-  app2.get("/api/signal-monitoring-config", requireOrgAccess, async (req, res) => {
+  app2.get("/api/signal-monitoring-config", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.user.organizationId;
       const config = await storage.getSignalMonitoringConfig(orgId);
@@ -44843,7 +43432,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: err.message });
     }
   });
-  app2.patch("/api/signal-monitoring-config", requireOrgAccess, async (req, res) => {
+  app2.patch("/api/signal-monitoring-config", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.user.organizationId;
       const { disabledDataPoints } = req.body;
@@ -44857,20 +43446,20 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
   console.log("\u2705 Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config");
-  app2.get("/api/compound-threats", requireOrgAccess, async (req, res) => {
+  app2.get("/api/compound-threats", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const threats = await db.select().from(compoundThreatAlerts).where(eq34(compoundThreatAlerts.organizationId, orgId)).orderBy(desc16(compoundThreatAlerts.detectedAt)).limit(20);
+      const threats = await db.select().from(compoundThreatAlerts).where(eq37(compoundThreatAlerts.organizationId, orgId)).orderBy(desc19(compoundThreatAlerts.detectedAt)).limit(20);
       res.json(threats);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
-  app2.post("/api/compound-threats/analyze", requireOrgAccess, async (req, res) => {
+  app2.post("/api/compound-threats/analyze", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const triggers = await db.select().from(executiveTriggers).where(eq34(executiveTriggers.organizationId, orgId)).limit(100);
+      const triggers = await db.select().from(executiveTriggers).where(eq37(executiveTriggers.organizationId, orgId)).limit(100);
       const activeDomains = [...new Set(triggers.filter((t) => t.isActive).map((t) => t.category))];
       const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
 
@@ -44912,18 +43501,18 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.patch("/api/compound-threats/:id/dismiss", requireOrgAccess, async (req, res) => {
+  app2.patch("/api/compound-threats/:id/dismiss", requireOrgAccess2, async (req, res) => {
     try {
-      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq34(compoundThreatAlerts.id, req.params.id));
+      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq37(compoundThreatAlerts.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/roi/summary", requireOrgAccess, async (req, res) => {
+  app2.get("/api/roi/summary", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq34(playbookActivations.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq37(playbookActivations.organizationId, orgId));
       const completed = activations.filter((a) => a.completedAt && a.actualExecutionTime);
       const avgMinutes = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 0), 0) / completed.length) : 0;
       const industryBenchmark = 4320;
@@ -44945,11 +43534,11 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/roi/board-report", requireOrgAccess, async (req, res) => {
+  app2.get("/api/roi/board-report", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq34(playbookActivations.organizationId, orgId)).orderBy(desc16(playbookActivations.activatedAt)).limit(50);
-      const outcomes = await db.select().from(activationOutcomes).where(eq34(activationOutcomes.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq37(playbookActivations.organizationId, orgId)).orderBy(desc19(playbookActivations.activatedAt)).limit(50);
+      const outcomes = await db.select().from(activationOutcomes).where(eq37(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const events = activations.map((a) => {
         const outcome = outcomeMap.get(a.id);
@@ -44969,13 +43558,13 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.post("/api/simulation/analyze", requireOrgAccess, async (req, res) => {
+  app2.post("/api/simulation/analyze", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
       const { scenarioText } = req.body;
       if (!scenarioText) return res.status(400).json({ error: "scenarioText required" });
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq34(playbookLibrary.isActive, true)).limit(50);
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq37(playbookLibrary.isActive, true)).limit(50);
       const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
 
 SCENARIO: "${scenarioText}"
@@ -45013,15 +43602,15 @@ Respond as JSON: { "surviveScore": 72, "thriveScore": 45, "activatedPlaybooks": 
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/simulation-analyses", requireOrgAccess, async (req, res) => {
+  app2.get("/api/simulation-analyses", requireOrgAccess2, async (req, res) => {
     try {
-      const analyses = await db.select().from(simulationAnalyses).where(eq34(simulationAnalyses.organizationId, req.orgId)).orderBy(desc16(simulationAnalyses.createdAt)).limit(20);
+      const analyses = await db.select().from(simulationAnalyses).where(eq37(simulationAnalyses.organizationId, req.orgId)).orderBy(desc19(simulationAnalyses.createdAt)).limit(20);
       res.json(analyses);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
-  app2.post("/api/strategic-recorder/analyze", requireOrgAccess, async (req, res) => {
+  app2.post("/api/strategic-recorder/analyze", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
       const { inputText } = req.body;
@@ -45053,15 +43642,15 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         generated = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
       } catch {
       }
-      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq34(strategicRecordings.id, recording.id));
+      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq37(strategicRecordings.id, recording.id));
       res.json({ id: recording.id, generatedPlaybooks: generated, status: "complete" });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/strategic-recordings", requireOrgAccess, async (req, res) => {
+  app2.get("/api/strategic-recordings", requireOrgAccess2, async (req, res) => {
     try {
-      const recordings = await db.select().from(strategicRecordings).where(eq34(strategicRecordings.organizationId, req.orgId)).orderBy(desc16(strategicRecordings.createdAt)).limit(10);
+      const recordings = await db.select().from(strategicRecordings).where(eq37(strategicRecordings.organizationId, req.orgId)).orderBy(desc19(strategicRecordings.createdAt)).limit(10);
       res.json(recordings);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45140,7 +43729,7 @@ init_triggersSeed();
 // server/seeds/demoScenariosSeed.ts
 init_db();
 init_schema();
-import { eq as eq35, and as and24 } from "drizzle-orm";
+import { eq as eq38, and as and25 } from "drizzle-orm";
 var DEMO_SCENARIOS = [
   {
     name: "DEMO: Competitor Breakthrough Innovation Response",
@@ -45479,7 +44068,7 @@ var DEMO_SCENARIOS = [
 async function seedDemoScenarios() {
   console.log("\u{1F3AD} Seeding 5 Demo Scenarios with Full 4-Phase Configurations...");
   const org = await db.query.organizations.findFirst({
-    where: eq35(organizations.name, "Innovate Dynamics")
+    where: eq38(organizations.name, "Innovate Dynamics")
   });
   if (!org) {
     console.log("\u26A0\uFE0F  Default organization not found, skipping demo scenario seed");
@@ -45491,9 +44080,9 @@ async function seedDemoScenarios() {
     return;
   }
   const existingDemos = await db.query.strategicScenarios.findFirst({
-    where: and24(
-      eq35(strategicScenarios.organizationId, org.id),
-      eq35(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
+    where: and25(
+      eq38(strategicScenarios.organizationId, org.id),
+      eq38(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
     )
   });
   if (existingDemos) {
@@ -45503,7 +44092,7 @@ async function seedDemoScenarios() {
   for (const demo of DEMO_SCENARIOS) {
     console.log(`\u251C\u2500 Creating demo: ${demo.name}`);
     const matchingPlaybook = await db.query.playbookLibrary.findFirst({
-      where: eq35(playbookLibrary.name, demo.playbook.name)
+      where: eq38(playbookLibrary.name, demo.playbook.name)
     });
     const [scenario] = await db.insert(strategicScenarios).values({
       organizationId: org.id,
@@ -45606,8 +44195,8 @@ async function seedDemoScenarios() {
 // server/index.ts
 init_db();
 init_schema();
-import { count as count7, eq as eq36, sql as sql18 } from "drizzle-orm";
-import pino16 from "pino";
+import { count as count8, eq as eq39, sql as sql18 } from "drizzle-orm";
+import pino15 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
@@ -45647,7 +44236,15 @@ function rawBodyParser(req, res, next) {
 }
 
 // server/index.ts
-var logger13 = pino16({
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    environment: process.env.NODE_ENV || "development",
+    tracesSampleRate: 0.1,
+    integrations: [Sentry.httpIntegration(), Sentry.expressIntegration()]
+  });
+}
+var logger12 = pino15({
   level: process.env.LOG_LEVEL || "info",
   redact: ["password", "email", "apiKey", "token", "authorization"],
   formatters: {
@@ -45657,7 +44254,7 @@ var logger13 = pino16({
   }
 });
 var httpLogger = pinoHttp({
-  logger: logger13,
+  logger: logger12,
   redact: [
     "req.headers.authorization",
     "req.headers.cookie",
@@ -45834,7 +44431,7 @@ app.use((req, res, next) => {
         const responseStr = JSON.stringify(capturedJsonResponse);
         logData.responsePreview = responseStr.length > 100 ? responseStr.slice(0, 100) + "\u2026" : responseStr;
       }
-      logger13.info(logData, `API ${req.method} ${path3}`);
+      logger12.info(logData, `API ${req.method} ${path3}`);
       let legacyLogLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse && legacyLogLine.length < 80) {
         const responseStr = JSON.stringify(capturedJsonResponse);
@@ -45860,7 +44457,7 @@ server.listen(
   { port, host: "0.0.0.0", reusePort: true },
   () => {
     log4("serving on port " + port);
-    logger13.info(
+    logger12.info(
       { port, env: app.get("env") },
       "ExecuteIQ server listening - health checks active from startup"
     );
@@ -45872,7 +44469,10 @@ server.listen(
     const { setupSwagger: setupSwagger2 } = await Promise.resolve().then(() => (init_swagger(), swagger_exports));
     setupSwagger2(app);
   }
-  logger13.info("\u2705 Routes registered - health checks already passing from startup");
+  logger12.info("\u2705 Routes registered - health checks already passing from startup");
+  if (process.env.SENTRY_DSN) {
+    Sentry.setupExpressErrorHandler(app);
+  }
   app.use((err, req, res, _next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
@@ -45892,9 +44492,9 @@ server.listen(
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     };
     if (status >= 500) {
-      logger13.error(errorContext, "Server error occurred");
+      logger12.error(errorContext, "Server error occurred");
     } else {
-      logger13.warn(errorContext, "Client error occurred");
+      logger12.warn(errorContext, "Client error occurred");
     }
     const errorResponse = {
       error: {
@@ -45911,14 +44511,14 @@ server.listen(
   });
   try {
     if (app.get("env") === "development") {
-      logger13.info("\u{1F527} Setting up Vite development server...");
+      logger12.info("\u{1F527} Setting up Vite development server...");
       const { setupVite: setupViteFn } = await Promise.resolve().then(() => (init_vite(), vite_exports));
       await setupViteFn(app, server);
-      logger13.info("\u2705 Vite setup complete");
+      logger12.info("\u2705 Vite setup complete");
     } else {
-      logger13.info("\u{1F4E6} Serving static files for production...");
+      logger12.info("\u{1F4E6} Serving static files for production...");
       const distPublicPath = path2.resolve(process.cwd(), "dist/public");
-      logger13.info({ distPublicPath }, "Static file path resolved");
+      logger12.info({ distPublicPath }, "Static file path resolved");
       app.use(express2.static(distPublicPath));
       const indexHtmlPath = path2.resolve(distPublicPath, "index.html");
       app.use("*", (req, res, next) => {
@@ -45927,20 +44527,20 @@ server.listen(
         }
         res.sendFile(indexHtmlPath);
       });
-      logger13.info("\u2705 Production static file serving configured");
+      logger12.info("\u2705 Production static file serving configured");
     }
   } catch (error) {
-    logger13.error({ error }, "\u274C Vite/static setup failed");
+    logger12.error({ error }, "\u274C Vite/static setup failed");
     throw error;
   }
   (async () => {
     try {
-      logger13.info("\u{1F527} Starting database seeding (background)...");
-      const [result] = await db.select({ count: count7() }).from(playbookLibrary);
+      logger12.info("\u{1F527} Starting database seeding (background)...");
+      const [result] = await db.select({ count: count8() }).from(playbookLibrary);
       const playbookCount = Number(result?.count || 0);
       const REQUIRED_PLAYBOOK_COUNT = 170;
       if (playbookCount < REQUIRED_PLAYBOOK_COUNT) {
-        logger13.info(
+        logger12.info(
           `\u{1F4E6} Database has ${playbookCount}/${REQUIRED_PLAYBOOK_COUNT} playbooks - adding missing entries...`
         );
         const { playbookDomains: playbookDomains2, playbookCategories: playbookCategories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -46057,28 +44657,28 @@ server.listen(
         let added = 0;
         for (const p of compoundPlaybooks) {
           if (!p.domainId) {
-            logger13.warn(`\u26A0\uFE0F Domain not found for compound playbook: ${p.name}`);
+            logger12.warn(`\u26A0\uFE0F Domain not found for compound playbook: ${p.name}`);
             continue;
           }
-          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq36(playbookLibrary.name, p.name)).limit(1);
+          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq39(playbookLibrary.name, p.name)).limit(1);
           if (existing.length === 0) {
             await db.insert(playbookLibrary).values(p);
             added++;
-            logger13.info(`\u2705 Added missing playbook: ${p.name}`);
+            logger12.info(`\u2705 Added missing playbook: ${p.name}`);
           }
         }
-        logger13.info(`\u2705 Additive migration complete: added ${added} missing compound playbooks (total now ${playbookCount + added})`);
+        logger12.info(`\u2705 Additive migration complete: added ${added} missing compound playbooks (total now ${playbookCount + added})`);
       } else {
-        logger13.info(
+        logger12.info(
           `\u2705 Database already seeded with ${playbookCount} playbooks`
         );
       }
       try {
         await db.execute(sql18`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS strategic_objectives jsonb`);
         await db.execute(sql18`ALTER TABLE playbooks ADD COLUMN IF NOT EXISTS execution_progress_toward_goal integer DEFAULT 0`);
-        logger13.info("\u2705 Ensured playbooks columns exist (strategic_objectives, execution_progress_toward_goal)");
+        logger12.info("\u2705 Ensured playbooks columns exist (strategic_objectives, execution_progress_toward_goal)");
       } catch (e) {
-        logger13.warn("Could not add playbooks columns (may already exist)");
+        logger12.warn("Could not add playbooks columns (may already exist)");
       }
       try {
         await db.execute(sql18`CREATE TABLE IF NOT EXISTS action_items (
@@ -46104,11 +44704,11 @@ server.listen(
               created_at TIMESTAMP DEFAULT NOW(),
               updated_at TIMESTAMP DEFAULT NOW()
             )`);
-        logger13.info("\u2705 Ensured action_items table exists");
+        logger12.info("\u2705 Ensured action_items table exists");
       } catch (e) {
-        logger13.warn("Could not create action_items table (may already exist)");
+        logger12.warn("Could not create action_items table (may already exist)");
       }
-      logger13.info("\u{1F527} [v2] Checking strategic category distribution...");
+      logger12.info("\u{1F527} [v2] Checking strategic category distribution...");
       const categoryCheck = await db.execute(sql18`
           SELECT strategic_category, COUNT(*) as cnt 
           FROM playbook_library 
@@ -46118,12 +44718,12 @@ server.listen(
       for (const row of categoryCheck.rows) {
         categoryCounts[row.strategic_category] = Number(row.cnt);
       }
-      logger13.info({ categoryCounts }, "Current category distribution");
+      logger12.info({ categoryCounts }, "Current category distribution");
       const offenseCount = categoryCounts["offense"] || 0;
       const defenseCount = categoryCounts["defense"] || 0;
       const specialTeamsCount = categoryCounts["special_teams"] || 0;
       if (offenseCount !== 58 || defenseCount !== 56 || specialTeamsCount !== 52) {
-        logger13.info("\u{1F527} Fixing strategic category assignments using domain names (UUID-safe)...");
+        logger12.info("\u{1F527} Fixing strategic category assignments using domain names (UUID-safe)...");
         await db.execute(
           sql18`UPDATE playbook_library SET strategic_category = 'offense' WHERE domain_id IN (SELECT id FROM playbook_domains WHERE name IN ('Market Dynamics', 'Market Opportunities'))`
         );
@@ -46163,34 +44763,34 @@ server.listen(
         for (const row of verifyCheck.rows) {
           newCounts[row.strategic_category] = Number(row.cnt);
         }
-        logger13.info({ newCounts }, "\u2705 Strategic categories fixed");
+        logger12.info({ newCounts }, "\u2705 Strategic categories fixed");
       } else {
-        logger13.info("\u2705 Strategic categories already correct (58/56/52)");
+        logger12.info("\u2705 Strategic categories already correct (58/56/52)");
       }
-      logger13.info(
+      logger12.info(
         "\u{1F3AF} Checking/seeding intelligence triggers for demo organization..."
       );
       await seedTriggers();
       const stats = await getTriggerStats();
-      logger13.info(
+      logger12.info(
         `\u2705 Trigger seeding check completed: ${stats.triggers} triggers, ${stats.associations} associations, ${stats.signals} signals`
       );
-      logger13.info("\u{1F3AD} Checking demo scenarios...");
+      logger12.info("\u{1F3AD} Checking demo scenarios...");
       await seedDemoScenarios();
-      logger13.info("\u{1F527} Initializing Enterprise Job Service...");
+      logger12.info("\u{1F527} Initializing Enterprise Job Service...");
       await enterpriseJobService.initialize();
       seedingComplete = true;
       console.log("\u2705 BACKGROUND SEEDING COMPLETE");
-      logger13.info("\u2705 Background initialization complete - all systems ready");
+      logger12.info("\u2705 Background initialization complete - all systems ready");
     } catch (error) {
-      logger13.error({ error }, "\u274C Database seeding failed (non-blocking)");
+      logger12.error({ error }, "\u274C Database seeding failed (non-blocking)");
       console.error("\u{1F534} Database seeding error (server still running):", error);
     }
   })();
 })();
 process.on("unhandledRejection", (reason, promise) => {
   const errorDetail = reason instanceof Error ? { message: reason.message, stack: reason.stack } : reason;
-  logger13.error(
+  logger12.error(
     {
       reason: errorDetail,
       promiseState: String(promise),
@@ -46201,7 +44801,7 @@ process.on("unhandledRejection", (reason, promise) => {
   console.error("\u{1F534} UNHANDLED REJECTION:", errorDetail);
 });
 process.on("uncaughtException", (error) => {
-  logger13.error(
+  logger12.error(
     {
       message: error.message,
       stack: error.stack
