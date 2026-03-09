@@ -18,7 +18,10 @@ import {
   PauseCircle,
   Trophy,
   MessageSquare,
-  Zap
+  Zap,
+  Loader2,
+  Shield,
+  Crosshair
 } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -75,6 +78,18 @@ export default function PlaybookActivationConsole() {
     enabled: !activationConfirmed,
   });
   const roleAvailabilityFlags = Array.isArray(roleAvailabilityFlagsRaw) ? roleAvailabilityFlagsRaw : [];
+
+  // AI-generated Execution Brief — fetched once playbook ID is known
+  const { data: briefData, isLoading: briefLoading } = useQuery<any>({
+    queryKey: ['/api/playbooks', params?.playbookId, 'execution-brief', params?.triggerId],
+    queryFn: () => {
+      const url = `/api/playbooks/${params?.playbookId}/execution-brief${!isManualExecution && params?.triggerId ? `?triggerId=${params.triggerId}` : ''}`;
+      return fetch(url, { credentials: 'include' }).then(r => r.ok ? r.json() : null);
+    },
+    enabled: !!params?.playbookId && !activationConfirmed,
+    staleTime: 5 * 60 * 1000,
+  });
+  const brief = briefData?.brief;
 
   const playbookRoleNames: string[] = playbook ? [
     ...(typeof playbook.tier1Stakeholders === 'object' && playbook.tier1Stakeholders
@@ -303,6 +318,97 @@ export default function PlaybookActivationConsole() {
                 </div>
               </div>
             )}
+
+            {/* AI Execution Brief */}
+            <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid #7C3AED`, background: "#fff", marginBottom: 24 }}>
+              <div style={{ padding: "18px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(124,58,237,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Shield style={{ width: 14, height: 14, color: "#7C3AED" }} />
+                  </div>
+                  <div>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#7C3AED" }}>AI Execution Brief</span>
+                    <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>GPT-4o — generated for this activation</div>
+                  </div>
+                </div>
+                {briefLoading && <Loader2 style={{ width: 16, height: 16, color: "#7C3AED", animation: "spin 1s linear infinite" }} />}
+              </div>
+
+              {briefLoading ? (
+                <div style={{ padding: "32px 24px", textAlign: "center" as const }}>
+                  <div style={{ fontSize: 13, color: MUTED }}>Generating your execution brief...</div>
+                </div>
+              ) : brief ? (
+                <div style={{ padding: "20px 24px" }}>
+                  {/* Situation + Objective */}
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 8 }}>Situation</div>
+                    <p style={{ fontSize: 14, color: NAVY, lineHeight: 1.65, marginBottom: 12 }}>{brief.situationFraming}</p>
+                    <div style={{ padding: "10px 14px", background: `${NAVY}06`, border: `1px solid ${BORDER}`, display: "flex", alignItems: "flex-start", gap: 8 }}>
+                      <Crosshair style={{ width: 14, height: 14, color: NAVY, flexShrink: 0, marginTop: 2 }} />
+                      <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{brief.missionObjective}</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ marginBottom: 20 }}>
+                    {/* Critical Roles */}
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 8 }}>Critical Roles</div>
+                      <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                        {(brief.criticalRoles || []).map((role: string, i: number) => (
+                          <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: GOLD, flexShrink: 0 }} />
+                            <span style={{ fontSize: 13, color: NAVY, fontWeight: 500 }}>{role}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Success Indicators */}
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 8 }}>Success Indicators</div>
+                      <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                        {(brief.successIndicators || []).map((indicator: string, i: number) => (
+                          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                            <CheckCircle2 style={{ width: 13, height: 13, color: TEAL, flexShrink: 0, marginTop: 2 }} />
+                            <span style={{ fontSize: 12, color: "#374151", lineHeight: 1.5 }}>{indicator}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Top Risks */}
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 8 }}>Top Execution Risks</div>
+                    <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+                      {(brief.topRisks || []).map((r: { risk: string; mitigation: string }, i: number) => (
+                        <div key={i} style={{ padding: "10px 14px", background: "rgba(239,68,68,0.04)", border: "1px solid rgba(239,68,68,0.15)", display: "flex", gap: 12 }}>
+                          <AlertTriangle style={{ width: 13, height: 13, color: "#EF4444", flexShrink: 0, marginTop: 2 }} />
+                          <div>
+                            <div style={{ fontSize: 12, fontWeight: 600, color: "#B91C1C", marginBottom: 2 }}>{r.risk}</div>
+                            <div style={{ fontSize: 11, color: MUTED }}>→ {r.mitigation}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Commander Note */}
+                  {brief.commanderNote && (
+                    <div style={{ padding: "12px 16px", background: NAVY, display: "flex", alignItems: "center", gap: 10 }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0 }}>Commander</div>
+                      <div style={{ width: 1, height: 24, background: `${GOLD}40`, flexShrink: 0 }} />
+                      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontStyle: "italic", lineHeight: 1.5 }}>{brief.commanderNote}</p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div style={{ padding: "20px 24px", color: MUTED, fontSize: 13 }}>
+                  Brief generation unavailable — proceed with manual review.
+                </div>
+              )}
+            </div>
 
             {/* Pre-Activation Impact Preview */}
             <PreActivationImpactPreview 

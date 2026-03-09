@@ -2047,6 +2047,95 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+  // GET AI-generated Execution Brief for pre-activation review
+  app.get('/api/playbooks/:id/execution-brief', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { triggerId } = req.query;
+
+      // Load playbook details
+      const { playbooks, executiveTriggers } = await import('@shared/schema');
+      let playbookName = 'Strategic Response Playbook';
+      let playbookDescription = '';
+
+      const [orgPlaybook] = await db.select().from(playbooks).where(eq(playbooks.id, id)).limit(1);
+      if (orgPlaybook) {
+        playbookName = orgPlaybook.name || playbookName;
+        playbookDescription = orgPlaybook.description || '';
+      } else {
+        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq(playbookLibrary.id, id)).limit(1);
+        if (libPlaybook) {
+          playbookName = libPlaybook.name || playbookName;
+          playbookDescription = libPlaybook.description || '';
+        }
+      }
+
+      // Load trigger context if provided
+      let triggerContext = '';
+      if (triggerId && triggerId !== 'manual') {
+        const [trigger] = await db.select()
+          .from(executiveTriggers)
+          .where(eq(executiveTriggers.id, triggerId as string))
+          .limit(1);
+        if (trigger) {
+          triggerContext = `This activation was triggered by: "${trigger.name}" (severity: ${trigger.severity || 'high'}, category: ${trigger.category || 'strategic'}).`;
+        }
+      }
+
+      const { openAIService } = await import('./services/OpenAIService.js');
+
+      const prompt = `You are a strategic execution advisor for Fortune 1000 enterprises.
+
+Generate a concise AI Execution Brief for this playbook activation:
+
+Playbook: "${playbookName}"
+${playbookDescription ? `Description: ${playbookDescription}` : ''}
+${triggerContext ? `Trigger Context: ${triggerContext}` : 'This is a manual activation.'}
+
+Return ONLY a JSON object with this exact structure (no markdown, no explanation):
+{
+  "situationFraming": "2-sentence strategic situation summary — why this activation matters right now",
+  "missionObjective": "One clear sentence stating the primary objective of this execution",
+  "criticalRoles": ["Role 1", "Role 2", "Role 3"],
+  "topRisks": [
+    { "risk": "Risk description", "mitigation": "Mitigation action" },
+    { "risk": "Risk description", "mitigation": "Mitigation action" },
+    { "risk": "Risk description", "mitigation": "Mitigation action" }
+  ],
+  "successIndicators": ["Indicator 1", "Indicator 2", "Indicator 3"],
+  "executionWindow": "Recommended execution window (e.g., '12–18 minutes for initial coordination')",
+  "commanderNote": "One sentence of strategic commander guidance for this specific situation"
+}`;
+
+      const briefJson = await openAIService.analyzeText(prompt);
+
+      let brief;
+      try {
+        const clean = briefJson.replace(/```json|```/g, '').trim();
+        brief = JSON.parse(clean);
+      } catch {
+        brief = {
+          situationFraming: `${playbookName} has been queued for activation. Your team is ready to execute.`,
+          missionObjective: `Execute ${playbookName} to protect strategic position and maintain execution velocity.`,
+          criticalRoles: ['Chief Executive Officer', 'Chief Operating Officer', 'Head of Strategy'],
+          topRisks: [
+            { risk: 'Stakeholder availability constraints', mitigation: 'Pre-notify all Tier 1 roles immediately' },
+            { risk: 'Information gap during first 3 minutes', mitigation: 'Activate context briefing in parallel' },
+            { risk: 'Resource contention with active initiatives', mitigation: 'Audit pre-approved budget before task assignment' }
+          ],
+          successIndicators: ['All Tier 1 stakeholders acknowledged within 4 minutes', 'First task assigned within 8 minutes', 'Full coordination achieved within 12 minutes'],
+          executionWindow: '12–18 minutes for full coordination',
+          commanderNote: 'Speed is your advantage — initiate now and course-correct in real time.'
+        };
+      }
+
+      res.json({ brief, generatedAt: new Date().toISOString() });
+    } catch (error: any) {
+      console.error('Execution brief error:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // POST create new playbook (custom or customized from template)
   app.post('/api/playbooks', requireRole('admin', 'strategist'), async (req: any, res) => {
     try {

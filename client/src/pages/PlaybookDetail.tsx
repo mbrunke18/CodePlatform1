@@ -835,6 +835,52 @@ export default function PlaybookDetail() {
                 </ul>
               </div>
 
+              {/* Playbook Governance Indicator */}
+              {(() => {
+                const versionStr: string = playbook.version || '1.0';
+                const major = parseFloat(versionStr.split('.')[0] || '1');
+                const status = major >= 4 ? 'recertification' : major >= 2 ? 'review' : 'current';
+                const statusConfig = {
+                  current: { label: 'Current', color: TEAL, bg: `${TEAL}10`, borderColor: TEAL },
+                  review: { label: 'Review Recommended', color: GOLD, bg: `${GOLD}10`, borderColor: GOLD },
+                  recertification: { label: 'Recertification Required', color: '#EF4444', bg: 'rgba(239,68,68,0.06)', borderColor: '#EF4444' },
+                };
+                const cfg = statusConfig[status];
+                return (
+                  <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${cfg.borderColor}`, padding: "20px 24px", background: "#fff" }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 12 }}>Source Governance</div>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <GitBranch size={14} color={cfg.color} />
+                        <span style={{ fontSize: 13, fontWeight: 700, color: cfg.color }}>{cfg.label}</span>
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 600, color: MUTED, background: OFF, padding: "2px 8px", border: `1px solid ${BORDER}` }}>v{versionStr}</span>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
+                        <span>Playbook No.</span>
+                        <span style={{ fontWeight: 600, color: NAVY }}>#{playbook.playbookNumber || '—'}</span>
+                      </div>
+                      {playbook.domain && (
+                        <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
+                          <span>Domain</span>
+                          <span style={{ fontWeight: 600, color: NAVY }}>{playbook.domain}</span>
+                        </div>
+                      )}
+                      <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
+                        <span>Library Status</span>
+                        <span style={{ fontWeight: 600, color: TEAL }}>Active</span>
+                      </div>
+                    </div>
+                    {status !== 'current' && (
+                      <div style={{ marginTop: 14, padding: "8px 12px", background: cfg.bg, border: `1px solid ${cfg.borderColor}`, fontSize: 11, color: cfg.color, lineHeight: 1.5 }}>
+                        {status === 'review' ? 'This playbook has undergone significant revisions. Validate against current operating conditions.' : 'High version count — schedule a formal recertification review with your strategy team.'}
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
+
               {/* Quick-jump nav for enriched sections */}
               {phases.length > 0 && (
                 <div style={{ border: `1px solid ${BORDER}`, padding: 24, background: "#fff" }}>

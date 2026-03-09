@@ -255,6 +255,7 @@ function JITContextBanner({ runId }: { runId: string }) {
 }
 
 function MyActionsPanel({ runId }: { runId: string }) {
+  const [showCompleted, setShowCompleted] = useState(false);
   const { data: myTasks = [], isLoading } = useQuery<MyTask[]>({
     queryKey: ['/api/execution-runs', runId, 'my-tasks'],
     queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.json()),
@@ -319,8 +320,8 @@ function MyActionsPanel({ runId }: { runId: string }) {
           </div>
         ) : (
           <div className="divide-y divide-[#E8E4DC] dark:divide-white/10">
-            {[...blocked, ...pending, ...done].map(task => (
-              <div key={task.id} className={`px-5 py-4 flex items-start gap-4 border-l-4 ${PRIORITY_BORDER[task.taskPriority || 'medium'] || 'border-l-[#C9A84C]'} ${task.status === 'completed' ? 'opacity-60' : ''}`}>
+            {[...blocked, ...pending].map(task => (
+              <div key={task.id} className={`px-5 py-4 flex items-start gap-4 border-l-4 ${PRIORITY_BORDER[task.taskPriority || 'medium'] || 'border-l-[#C9A84C]'}`}>
                 <div className="flex-shrink-0 mt-0.5">
                   {task.status === 'completed' ? (
                     <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
@@ -364,6 +365,47 @@ function MyActionsPanel({ runId }: { runId: string }) {
                 </div>
               </div>
             ))}
+            {done.length > 0 && (
+              <>
+                <button
+                  onClick={() => setShowCompleted(prev => !prev)}
+                  className="w-full px-5 py-3 flex items-center justify-between bg-[#F8F7F4] dark:bg-white/5 hover:bg-[#2B8A6E]/5 transition-colors border-l-4 border-l-[#2B8A6E]"
+                >
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
+                    <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">
+                      {done.length} task{done.length !== 1 ? 's' : ''} completed
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-[#6B7280]">{showCompleted ? 'Hide' : 'Show'}</span>
+                    <ChevronRight className={`h-4 w-4 text-[#6B7280] transition-transform duration-200 ${showCompleted ? 'rotate-90' : ''}`} />
+                  </div>
+                </button>
+                {showCompleted && done.map(task => (
+                  <div key={task.id} className={`px-5 py-4 flex items-start gap-4 border-l-4 border-l-[#2B8A6E] opacity-60`}>
+                    <div className="flex-shrink-0 mt-0.5">
+                      <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <span className="font-semibold text-sm line-through text-[#6B7280]">
+                          {task.taskTitle || 'Unnamed Task'}
+                        </span>
+                        <Badge className={`text-xs border ${STATUS_COLORS[task.status] || STATUS_COLORS.pending}`}>
+                          {task.status.replace('_', ' ')}
+                        </Badge>
+                      </div>
+                      {task.taskRole && (
+                        <div className="flex items-center gap-1 text-xs text-[#6B7280]">
+                          <User className="h-3 w-3" /> {task.taskRole}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         )}
       </CardContent>
