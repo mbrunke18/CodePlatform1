@@ -586,6 +586,40 @@ server.listen(
             logger.warn("Could not add playbooks columns (may already exist)");
           }
 
+          // Ensure investor_leads table exists (production migration — investor gate)
+          try {
+            await db.execute(sql`CREATE TABLE IF NOT EXISTS investor_leads (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              name TEXT NOT NULL,
+              email TEXT NOT NULL,
+              company TEXT NOT NULL,
+              role TEXT NOT NULL,
+              page_accessed TEXT NOT NULL DEFAULT '/investor-resources',
+              created_at TIMESTAMP DEFAULT NOW()
+            )`);
+            logger.info("✅ Ensured investor_leads table exists");
+          } catch (e) {
+            logger.warn("Could not ensure investor_leads table");
+          }
+
+          // Ensure strategic_recordings table exists (production migration — Strategic Recorder WOW feature)
+          try {
+            await db.execute(sql`CREATE TABLE IF NOT EXISTS strategic_recordings (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              organization_id UUID NOT NULL,
+              user_id TEXT NOT NULL,
+              title TEXT NOT NULL,
+              raw_input TEXT NOT NULL,
+              input_type TEXT NOT NULL DEFAULT 'text',
+              generated_playbooks JSONB,
+              status TEXT NOT NULL DEFAULT 'processing',
+              created_at TIMESTAMP DEFAULT NOW()
+            )`);
+            logger.info("✅ Ensured strategic_recordings table exists");
+          } catch (e) {
+            logger.warn("Could not ensure strategic_recordings table");
+          }
+
           // Ensure action_items table exists (production migration)
           try {
             await db.execute(sql`CREATE TABLE IF NOT EXISTS action_items (

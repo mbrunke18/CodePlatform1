@@ -28288,6 +28288,28 @@ var init_playbookLibraryRoutes = __esm({
         res.status(500).json({ error: "Failed to fetch playbook" });
       }
     });
+    playbookLibraryRouter.get("/telemetry", requireAuth5, async (req, res) => {
+      try {
+        const organizationId = req.query.organizationId;
+        const userId = req.validatedUserId;
+        if (!organizationId) {
+          return res.status(400).json({ error: "organizationId query parameter is required" });
+        }
+        if (!isValidUUID(organizationId)) {
+          return res.status(400).json({ error: "Invalid organizationId format" });
+        }
+        const userOrgs = await storage.getUserOrganizations(userId);
+        const hasAccess = userOrgs.some((org) => org.id === organizationId);
+        if (!hasAccess) {
+          return res.status(403).json({ error: "Forbidden - You do not have access to this organization" });
+        }
+        const telemetry = await storage.getAllPlaybookTelemetry(organizationId);
+        res.json(telemetry);
+      } catch (error) {
+        console.error("Error fetching bulk playbook telemetry:", error);
+        res.status(500).json({ error: "Failed to fetch playbook telemetry" });
+      }
+    });
     playbookLibraryRouter.get("/:playbookId", async (req, res) => {
       try {
         const { playbookId } = req.params;
@@ -28348,28 +28370,6 @@ var init_playbookLibraryRoutes = __esm({
         });
       } catch (error) {
         console.error("Error fetching playbook telemetry:", error);
-        res.status(500).json({ error: "Failed to fetch playbook telemetry" });
-      }
-    });
-    playbookLibraryRouter.get("/telemetry", requireAuth5, async (req, res) => {
-      try {
-        const organizationId = req.query.organizationId;
-        const userId = req.validatedUserId;
-        if (!organizationId) {
-          return res.status(400).json({ error: "organizationId query parameter is required" });
-        }
-        if (!isValidUUID(organizationId)) {
-          return res.status(400).json({ error: "Invalid organizationId format" });
-        }
-        const userOrgs = await storage.getUserOrganizations(userId);
-        const hasAccess = userOrgs.some((org) => org.id === organizationId);
-        if (!hasAccess) {
-          return res.status(403).json({ error: "Forbidden - You do not have access to this organization" });
-        }
-        const telemetry = await storage.getAllPlaybookTelemetry(organizationId);
-        res.json(telemetry);
-      } catch (error) {
-        console.error("Error fetching bulk playbook telemetry:", error);
         res.status(500).json({ error: "Failed to fetch playbook telemetry" });
       }
     });
@@ -44744,6 +44744,36 @@ server.listen(
         logger12.info("\u2705 Ensured playbooks columns exist (strategic_objectives, execution_progress_toward_goal)");
       } catch (e) {
         logger12.warn("Could not add playbooks columns (may already exist)");
+      }
+      try {
+        await db.execute(sql18`CREATE TABLE IF NOT EXISTS investor_leads (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              name TEXT NOT NULL,
+              email TEXT NOT NULL,
+              company TEXT NOT NULL,
+              role TEXT NOT NULL,
+              page_accessed TEXT NOT NULL DEFAULT '/investor-resources',
+              created_at TIMESTAMP DEFAULT NOW()
+            )`);
+        logger12.info("\u2705 Ensured investor_leads table exists");
+      } catch (e) {
+        logger12.warn("Could not ensure investor_leads table");
+      }
+      try {
+        await db.execute(sql18`CREATE TABLE IF NOT EXISTS strategic_recordings (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              organization_id UUID NOT NULL,
+              user_id TEXT NOT NULL,
+              title TEXT NOT NULL,
+              raw_input TEXT NOT NULL,
+              input_type TEXT NOT NULL DEFAULT 'text',
+              generated_playbooks JSONB,
+              status TEXT NOT NULL DEFAULT 'processing',
+              created_at TIMESTAMP DEFAULT NOW()
+            )`);
+        logger12.info("\u2705 Ensured strategic_recordings table exists");
+      } catch (e) {
+        logger12.warn("Could not ensure strategic_recordings table");
       }
       try {
         await db.execute(sql18`CREATE TABLE IF NOT EXISTS action_items (

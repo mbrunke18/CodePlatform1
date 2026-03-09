@@ -333,6 +333,40 @@ playbookLibraryRouter.get('/by-number/:playbookNumber', async (req, res) => {
 });
 
 /**
+ * GET /api/playbook-library/telemetry
+ * Get bulk execution telemetry for all playbooks in an organization
+ * Requires authentication and organization membership validation
+ * NOTE: Must be registered BEFORE /:playbookId to avoid route collision
+ */
+playbookLibraryRouter.get('/telemetry', requireAuth, async (req: any, res) => {
+  try {
+    const organizationId = req.query.organizationId as string;
+    const userId = req.validatedUserId;
+
+    if (!organizationId) {
+      return res.status(400).json({ error: 'organizationId query parameter is required' });
+    }
+
+    if (!isValidUUID(organizationId)) {
+      return res.status(400).json({ error: 'Invalid organizationId format' });
+    }
+
+    const userOrgs = await storage.getUserOrganizations(userId);
+    const hasAccess = userOrgs.some(org => org.id === organizationId);
+
+    if (!hasAccess) {
+      return res.status(403).json({ error: 'Forbidden - You do not have access to this organization' });
+    }
+
+    const telemetry = await storage.getAllPlaybookTelemetry(organizationId);
+    res.json(telemetry);
+  } catch (error) {
+    console.error('Error fetching bulk playbook telemetry:', error);
+    res.status(500).json({ error: 'Failed to fetch playbook telemetry' });
+  }
+});
+
+/**
  * GET /api/playbook-library/:playbookId
  * Get detailed playbook information including templates and decision trees
  */
@@ -469,38 +503,6 @@ playbookLibraryRouter.get('/:playbookId/telemetry', requireAuth, async (req: any
   }
 });
 
-/**
- * GET /api/playbook-library/telemetry
- * Get bulk execution telemetry for all playbooks in an organization
- * Requires authentication and organization membership validation
- */
-playbookLibraryRouter.get('/telemetry', requireAuth, async (req: any, res) => {
-  try {
-    const organizationId = req.query.organizationId as string;
-    const userId = req.validatedUserId;
-    
-    if (!organizationId) {
-      return res.status(400).json({ error: 'organizationId query parameter is required' });
-    }
-    
-    if (!isValidUUID(organizationId)) {
-      return res.status(400).json({ error: 'Invalid organizationId format' });
-    }
-
-    const userOrgs = await storage.getUserOrganizations(userId);
-    const hasAccess = userOrgs.some(org => org.id === organizationId);
-    
-    if (!hasAccess) {
-      return res.status(403).json({ error: 'Forbidden - You do not have access to this organization' });
-    }
-
-    const telemetry = await storage.getAllPlaybookTelemetry(organizationId);
-    res.json(telemetry);
-  } catch (error) {
-    console.error('Error fetching bulk playbook telemetry:', error);
-    res.status(500).json({ error: 'Failed to fetch playbook telemetry' });
-  }
-});
 
 /**
  * POST /api/playbook-library/:playbookId/execute
