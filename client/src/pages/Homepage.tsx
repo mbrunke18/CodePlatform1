@@ -1,19 +1,38 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import { Link } from "wouter";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const NAVY = "#0A0F2E";
-const NAVY_BG = "#132558";
-const GOLD = "#C9A84C";
-const GOLD_LIGHT = "#DFC178";
-const TEAL = "#2B8A6E";
-const TEAL_LIGHT = "#3BAF8A";
-const OFF_WHITE = "#F8F7F4";
-const BORDER = "#E8E4DC";
-const TEXT_MUTED = "#6B7280";
+// ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
+const NAVY        = "#0A0F2E";
+const GOLD        = "#C9A84C";
+const GOLD_LIGHT  = "#DFC178";
+const TEAL_LIGHT  = "#3BAF8A";
+const IVORY       = "#F0EDE4";
+const MID_NAVY    = "#141B45";
+const FOOTER_NAVY = "#060B1E";
+const RED_CRISIS  = "#C0392B";
+const MUTED_STACK = "#3D4A6B";
+const MUTED_DARK  = "#C8D4E8";
+const MUTED_LIGHT = "#6B7280";
+const BORDER      = "#E8E4DC";
+const TEAL        = "#2B8A6E";
+
+const GOLD_GRID_BG: React.CSSProperties = {
+  backgroundImage: `linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)`,
+  backgroundSize: "80px 80px",
+};
+
+const GEO: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
+const DM: React.CSSProperties  = { fontFamily: "'DM Sans', 'Inter', sans-serif" };
+const CONTAINER: React.CSSProperties = { maxWidth: 1100, margin: "0 auto", padding: "0 24px" };
+
+function trackCTA(loc: string) {
+  try {
+    if (typeof window !== "undefined" && (window as any).dataLayer) {
+      (window as any).dataLayer.push({ event: "pilot_cta_click", location: loc });
+    }
+  } catch (_) {}
+}
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -22,7 +41,7 @@ function useReveal() {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
       { threshold: 0.1 }
     );
     obs.observe(el);
@@ -31,11 +50,7 @@ function useReveal() {
   return { ref, visible };
 }
 
-function Reveal({ children, delay = 0, style = {} }: {
-  children: React.ReactNode;
-  delay?: number;
-  style?: React.CSSProperties;
-}) {
+function Reveal({ children, delay = 0, style = {} }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const { ref, visible } = useReveal();
   return (
     <div ref={ref} style={{
@@ -49,900 +64,542 @@ function Reveal({ children, delay = 0, style = {} }: {
   );
 }
 
-function Eyebrow({ color, center = false, children }: {
-  color: "gold" | "teal" | "white";
-  center?: boolean;
-  children: string;
-}) {
-  const colors = {
-    gold: GOLD,
-    teal: TEAL,
-    white: "rgba(255,255,255,0.4)",
-  };
-  const c = colors[color];
+function SectionLabel({ children }: { children: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20, justifyContent: center ? "center" : "flex-start" }}>
-      <div style={{ width: 36, height: 2, background: c, flexShrink: 0 }} />
-      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: c }}>
-        {children}
-      </span>
+    <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
+      {children}
     </div>
   );
 }
 
-const DOMAINS = [
-  { num: "01", title: "Financial Response", count: "24 Playbooks", desc: "Earnings misses, budget overruns, cash flow events, and board-level financial response protocols.", accent: false },
-  { num: "02", title: "Competitive Intelligence", count: "22 Playbooks", desc: "Competitor launches, pricing moves, market entry, M&A activity, and talent poaching responses.", accent: false },
-  { num: "03", title: "Regulatory & Compliance", count: "19 Playbooks", desc: "New regulation response, audit preparation, compliance breach containment, and government relations.", accent: false },
-  { num: "04", title: "Go-to-Market", count: "21 Playbooks", desc: "Product launches, market entry, sales force activation, pricing changes, and channel expansion.", accent: false },
-  { num: "05", title: "M&A Integration", count: "18 Playbooks", desc: "Acquisition announcement, due diligence, integration planning, talent retention, and culture merger.", accent: false },
-  { num: "06", title: "Crisis Management", count: "20 Playbooks", desc: "PR crisis, supply chain disruption, cybersecurity incident, and reputational risk containment.", accent: false },
-  { num: "07", title: "Talent & Organization", count: "16 Playbooks", desc: "Executive succession, workforce restructuring, culture change programs, and key talent retention.", accent: false },
-  { num: "08", title: "Technology & Digital", count: "17 Playbooks", desc: "Digital transformation, system outage response, tech vendor failure, and AI adoption acceleration.", accent: false },
-  { num: "09", title: "Strategic Opportunity", count: "13 Playbooks", desc: "Emerging market entry, strategic partnership activation, innovation pivot, and breakout growth plays.", accent: true },
-];
+// ─── SECTION 1: Navigation ────────────────────────────────────────────────────
+function HomepageNav() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-const INTEGRATIONS = [
-  "Salesforce", "HubSpot", "ServiceNow", "Jira", "Slack", "Microsoft Teams",
-  "Google Workspace", "Outlook / Exchange", "AWS CloudWatch", "Workday", "Okta", "Microsoft Active Directory",
-];
-
-export default function Homepage() {
-  const [, setLocation] = useLocation();
-  const [cardProgress, setCardProgress] = useState(52);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setCardProgress(p => { const n = p + 0.22; return n > 78 ? 42 : n; });
-    }, 80);
-    return () => clearInterval(id);
-  }, []);
-
-  const go = (path: string) => setLocation(path);
+  const scrollTo = (id: string) => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+  };
 
   return (
-    <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, background: "#fff", color: NAVY, overflowX: "hidden", lineHeight: 1.6 }}>
+    <>
+      <nav style={{
+        position: "sticky", top: 0, zIndex: 100,
+        background: NAVY,
+        borderBottom: "1px solid rgba(201,168,76,0.15)",
+        height: 64,
+        display: "flex", alignItems: "center",
+      }}>
+        <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+            <ExecuteIQLogo size={36} />
+            <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 14 }}>
+              VAUGHNMARTIN
+            </span>
+          </Link>
+
+          {/* Desktop nav — hidden below 768px via CSS */}
+          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+            <button
+              onClick={() => scrollTo("how-it-works")}
+              style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, padding: 0, transition: "color 0.2s" }}
+            >
+              How It Works
+            </button>
+            <Link href="/playbook-library" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Playbooks</Link>
+            <Link href="/pricing" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Pricing</Link>
+            <Link href="/founder-story" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>About</Link>
+            <Link
+              href="/pilot-program"
+              onClick={() => trackCTA("nav")}
+              style={{
+                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
+                padding: "10px 20px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
+              }}
+            >
+              Request a Pilot
+            </Link>
+          </div>
+
+          {/* Hamburger — shown below 768px via CSS */}
+          <button
+            className="hp-hamburger"
+            onClick={() => setMenuOpen(v => !v)}
+            style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8, flexDirection: "column", gap: 5 }}
+            aria-label="Open menu"
+          >
+            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile full-screen overlay */}
+      {menuOpen && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 200,
+          background: NAVY,
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0,
+        }}>
+          <button
+            onClick={() => setMenuOpen(false)}
+            style={{ position: "absolute", top: 20, right: 24, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 28, lineHeight: 1 }}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+          {[
+            { label: "How It Works", onPress: () => scrollTo("how-it-works") },
+            { label: "Playbooks",    href: "/playbook-library" },
+            { label: "Pricing",      href: "/pricing" },
+            { label: "About",        href: "/founder-story" },
+          ].map(item =>
+            item.onPress
+              ? <button key={item.label} onClick={item.onPress} style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", letterSpacing: "0.02em" }}>{item.label}</button>
+              : <Link key={item.label} href={item.href!} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
+          )}
+          <Link
+            href="/pilot-program"
+            onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
+            style={{
+              ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
+              padding: "18px 24px", borderRadius: 4, textDecoration: "none",
+              textAlign: "center", marginTop: 32, width: "calc(100% - 48px)", display: "block",
+            }}
+          >
+            Request a Pilot
+          </Link>
+        </div>
+      )}
 
       <style>{`
-        @keyframes hpBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-        @keyframes hpFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-        @keyframes hpSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @media (max-width: 768px) {
+          .hp-desktop-nav { display: none !important; }
+          .hp-hamburger   { display: flex !important; }
+          .hp-stat-row    { flex-direction: column !important; gap: 24px !important; }
+          .hp-stat-div    { display: none !important; }
+          .hp-prob-grid   { flex-direction: column !important; }
+          .hp-idea-grid   { grid-template-columns: 1fr !important; }
+          .hp-footer-cols { flex-direction: column !important; gap: 40px !important; text-align: center; }
+          .hp-hero-h1     { font-size: 36px !important; }
+          .hp-missing-h2  { font-size: 30px !important; }
+          .hp-cta-h2      { font-size: 30px !important; }
+          .hp-cta-btn     { display: block !important; width: calc(100% - 48px) !important; text-align: center; }
+          .hp-sec         { padding: 64px 0 !important; }
+        }
+        @media (max-width: 375px) {
+          .hp-hero-h1 { font-size: 28px !important; }
+        }
       `}</style>
+    </>
+  );
+}
 
-      <StandardNav />
+// ─── SECTION 2: Hero ─────────────────────────────────────────────────────────
+function HeroSection() {
+  return (
+    <section style={{
+      ...GOLD_GRID_BG,
+      background: NAVY,
+      minHeight: "100vh",
+      display: "flex", alignItems: "center",
+      paddingTop: 80, paddingBottom: 80,
+    }}>
+      <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
+        <Reveal>
+          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
+            EXECUTION INFRASTRUCTURE · FORTUNE 1000
+          </div>
 
-      {/* ══ HERO ══ */}
-      <section style={{ minHeight: "100vh", background: NAVY_BG, display: "flex", alignItems: "center", position: "relative", overflow: "hidden", padding: "120px 56px 80px" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
-        <div style={{ position: "absolute", top: -180, right: -120, width: 1000, height: 1000, background: "radial-gradient(ellipse,rgba(43,138,110,0.22) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -120, left: "30%", width: 750, height: 750, background: "radial-gradient(ellipse,rgba(201,168,76,0.16) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "20%", left: -120, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(43,138,110,0.11) 0%,transparent 60%)", pointerEvents: "none" }} />
+          <h1 className="hp-hero-h1" style={{
+            ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
+            lineHeight: 1.15, maxWidth: 800, margin: "0 auto 28px",
+          }}>
+            Your organization has{" "}
+            <span style={{ color: RED_CRISIS }}>72 hours</span>
+            {" "}to respond.
+            <br />
+            Execution OS gives you{" "}
+            <span style={{ color: TEAL_LIGHT }}>12 minutes</span>.
+          </h1>
 
-        <div style={{ position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", maxWidth: 1200, width: "100%", margin: "0 auto" }}>
+          <p style={{ ...DM, fontSize: 18, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
+            170 pre-staged playbooks. 216+ signals monitored. One trigger fires — every stakeholder knows their role in under 12 minutes. No calls. No improvisation. Full organizational deployment.
+          </p>
+
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+            <Link
+              href="/pilot-program"
+              onClick={() => trackCTA("hero")}
+              style={{
+                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
+                padding: "16px 40px", borderRadius: 4, textDecoration: "none",
+                letterSpacing: "0.04em", transition: "all 0.2s ease", display: "inline-block",
+              }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-1px)"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; }}
+            >
+              Request a Pilot
+            </Link>
+            <button
+              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+              style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, display: "flex", alignItems: "center", gap: 6 }}
+            >
+              See How It Works <span>→</span>
+            </button>
+          </div>
+        </Reveal>
+
+        {/* Stat strip */}
+        <Reveal delay={0.2}>
+          <div className="hp-stat-row" style={{
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 48,
+            marginTop: 64, paddingTop: 40,
+            borderTop: "1px solid rgba(201,168,76,0.15)",
+          }}>
+            {[
+              { num: "170",    label: "Pre-Staged Playbooks" },
+              { num: "216+",   label: "Signals Monitored" },
+              { num: "12 min", label: "Full Org Deployment" },
+            ].map((s, i) => (
+              <div key={s.num} style={{ display: "contents" }}>
+                {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)", flexShrink: 0 }} />}
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.num}</div>
+                  <div style={{ ...DM, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em", color: MUTED_DARK, marginTop: 6 }}>{s.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 3: The Problem ───────────────────────────────────────────────────
+function ProblemSection() {
+  return (
+    <section className="hp-sec" style={{ background: IVORY, padding: "100px 0" }}>
+      <div style={{ ...CONTAINER }}>
+        <div className="hp-prob-grid" style={{ display: "flex", gap: 60, alignItems: "flex-start" }}>
 
           {/* Left */}
-          <div>
-            <div style={{ marginBottom: 32 }}>
-              <ExecuteIQLogo variant="icon-only" height={56} color="white" />
-            </div>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.22)", border: "1px solid rgba(201,168,76,0.7)", padding: "10px 22px", marginBottom: 36, backdropFilter: "blur(4px)" }}>
-              <span style={{ width: 8, height: 8, background: GOLD, borderRadius: "50%", display: "inline-block", flexShrink: 0, animation: "hpBlink 2.5s ease infinite" }} />
-              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD_LIGHT }}>Operational in your organization in 2–4 weeks · Now accepting pilots</span>
-            </div>
-
-            <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(42px, 5.2vw, 70px)", lineHeight: 1.05, color: "#fff", marginBottom: 12 }}>
-              They spend 72 hours<br />getting the right people<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>in a room.</em>
-            </h1>
-
-            <div style={{ width: 60, height: 2, background: `linear-gradient(90deg,${TEAL},transparent)`, margin: "28px 0" }} />
-
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.58)", maxWidth: 500, marginBottom: 48 }}>
-              <strong style={{ color: "rgba(255,255,255,0.88)", fontWeight: 600 }}>You spend 12 minutes already in execution.</strong>{" "}
-              Execution OS doesn't accelerate coordination. It replaces it. When a signal fires, you're not scheduling a meeting — you're running a playbook.
+          <Reveal style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%" }}>
+            <SectionLabel>THE PROBLEM</SectionLabel>
+            <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 32 }}>
+              The decision takes minutes.
+              <br />
+              The organization takes 72 hours.
+            </h2>
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
+              A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment is NOW.
             </p>
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
+              Your organization spends 72 hours in emergency calls, improvised documents, and unclear ownership before a single coordinated action is taken.
+            </p>
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7 }}>
+              By the time you're aligned, the window has moved.
+            </p>
+          </Reveal>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-              <a
-                href="/pilot-program"
-                style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "16px 36px", textDecoration: "none", transition: "all 0.25s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
-              >
-                Request Pilot
-              </a>
-              <button
-                onClick={() => document.getElementById("platform")?.scrollIntoView({ behavior: "smooth" })}
-                style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = GOLD_LIGHT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)"; }}
-              >
-                See How It Works
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke={GOLD} strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Three-stat strip */}
-            <div style={{ display: "flex", gap: 0, marginTop: 28, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 24 }}>
-              {[
-                { num: "12 min", label: "Execution speed once live" },
-                { num: "2–4 wk", label: "Time to full operation" },
-                { num: "170+", label: "Playbooks ready at go-live" },
-              ].map((s, i) => (
-                <div key={i} style={{ flex: 1, paddingRight: i < 2 ? 24 : 0, borderRight: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none", paddingLeft: i > 0 ? 24 : 0 }}>
-                  <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: GOLD, lineHeight: 1, marginBottom: 4 }}>{s.num}</div>
-                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>{s.label}</div>
+          {/* Right — failure cards */}
+          <div style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%", display: "flex", flexDirection: "column", gap: 16 }}>
+            {[
+              { num: "01", title: "The Trigger Fires",  body: "A competitor announcement. A market shift. A leadership departure. The strategic moment arrives." },
+              { num: "02", title: "72 Hours of Chaos",  body: "Emergency calls. Improvised documents. No clear ownership. Every team waiting for direction from above." },
+              { num: "03", title: "The Window Closes",  body: "By the time your org aligns, competitors have responded. The advantage is gone." },
+            ].map((c, i) => (
+              <Reveal key={c.num} delay={i * 0.1}>
+                <div style={{
+                  background: "#fff", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`,
+                  padding: 24, borderRadius: 2, position: "relative", overflow: "hidden",
+                }}>
+                  <div style={{ ...GEO, fontSize: 48, fontWeight: 700, color: "rgba(192,57,43,0.12)", position: "absolute", bottom: 8, right: 16, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
+                    {c.num}
+                  </div>
+                  <div style={{ ...DM, fontSize: 14, fontWeight: 700, color: "#1A1A2E", marginBottom: 8 }}>{c.title}</div>
+                  <div style={{ ...DM, fontSize: 14, color: "#555", lineHeight: 1.6 }}>{c.body}</div>
+                  {i < 2 && <div style={{ ...DM, color: GOLD, fontSize: 14, marginTop: 12, textAlign: "center" }}>↓</div>}
                 </div>
-              ))}
-            </div>
-
-            {/* Who it's for + Social Proof */}
-            <div style={{ marginTop: 40, paddingTop: 28, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 14 }}>Built for</div>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 18 }}>
-                {(["CEOs & Boards", "C-Suite Executives", "Division Presidents", "Executive Leadership"] as string[]).map((r, i) => (
-                  <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: "5px 14px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", color: GOLD_LIGHT, letterSpacing: "0.08em" }}>{r}</span>
-                ))}
-              </div>
-              <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.3)", letterSpacing: "0.02em" }}>
-                Active across Fortune 1000 enterprises in every major industry
-              </div>
-            </div>
-          </div>
-
-          {/* Right — execution cards */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {/* Card 1 */}
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "22px 26px", animation: "hpFloat 6s ease-in-out infinite" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Trigger Detected</span>
-                <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px", background: "rgba(43,138,110,0.2)", color: TEAL_LIGHT }}>● Live</span>
-              </div>
-              <div style={{ ...CG, fontSize: 17, fontWeight: 500, color: "#fff", marginBottom: 6, lineHeight: 1.2 }}>Q4 Revenue Miss — Board Response Required</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 14 }}>Playbook #47 · Financial Response · Auto-matched by AI</div>
-              <div style={{ height: 2, background: "rgba(255,255,255,0.08)", position: "relative" }}>
-                <div style={{ position: "absolute", inset: 0, background: `linear-gradient(90deg,${TEAL},${TEAL_LIGHT})` }} />
-              </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
-                <span style={{ fontSize: 10, fontWeight: 600, color: TEAL_LIGHT }}>Triggered 0:42 ago</span>
-                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>Executing now</span>
-              </div>
-            </div>
-
-            {/* Card 2 — live progress */}
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "22px 26px", animation: "hpFloat 6s ease-in-out infinite", animationDelay: "-2s" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: TEAL_LIGHT }}>Executing</span>
-                <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px", background: "rgba(201,168,76,0.15)", color: GOLD }}>⟳ Running</span>
-              </div>
-              <div style={{ ...CG, fontSize: 17, fontWeight: 500, color: "#fff", marginBottom: 6, lineHeight: 1.2 }}>Cross-Functional Response Deployed</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 14 }}>14 tasks assigned · 6 stakeholders notified · Budget allocated</div>
-              <div style={{ height: 2, background: "rgba(255,255,255,0.08)", position: "relative", overflow: "hidden" }}>
-                <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${cardProgress}%`, background: `linear-gradient(90deg,${TEAL},${TEAL_LIGHT})`, transition: "width 0.3s linear" }} />
-              </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
-                <span style={{ fontSize: 10, fontWeight: 600, color: TEAL_LIGHT }}>8 min 14 sec</span>
-                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>9 of 14 tasks complete</span>
-              </div>
-            </div>
-
-            {/* Card 3 — complete */}
-            <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.13)", padding: "22px 26px", opacity: 0.72, animation: "hpFloat 6s ease-in-out infinite", animationDelay: "-4s" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Previous</span>
-                <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px", background: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}>✓ Complete</span>
-              </div>
-              <div style={{ ...CG, fontSize: 17, fontWeight: 500, color: "#fff", marginBottom: 6, lineHeight: 1.2 }}>Competitor Launch — Market Response</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 14 }}>Playbook #112 · Completed in 11m 03s</div>
-              <div style={{ height: 2, background: "rgba(255,255,255,0.15)" }} />
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
-                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.25)" }}>3 hours ago</span>
-                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>14 / 14 ✓</span>
-              </div>
-            </div>
+              </Reveal>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* ══ STATS BAR ══ */}
-      <div style={{ background: OFF_WHITE, borderBottom: `1px solid ${BORDER}`, padding: "36px 56px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", maxWidth: 1200, margin: "0 auto" }}>
-          {([
-            { num: "12m", label: "Trigger-to-Execution", gold: true },
-            { num: "170", label: "Strategic Playbooks", gold: false },
-            { num: "9", label: "Execution Domains", gold: false },
-            { num: "72h", label: "Avg Lag Eliminated", gold: false },
-            { num: "F1000", label: "Target Enterprise", gold: false },
-          ] as { num: string; label: string; gold: boolean }[]).map((s, i) => (
-            <div key={i} style={{ padding: "0 32px", borderRight: i < 4 ? `1px solid ${BORDER}` : "none", ...(i === 0 && { paddingLeft: 0 }) }}>
-              <div style={{ ...CG, fontWeight: 600, fontSize: 44, color: s.gold ? GOLD : NAVY, lineHeight: 1, marginBottom: 4 }}>{s.num}</div>
-              <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: TEXT_MUTED }}>{s.label}</div>
-            </div>
+// ─── SECTION 4: The Missing Layer ────────────────────────────────────────────
+function MissingLayerSection() {
+  const rows = [
+    { label: "STRATEGY",         sub: "Board Decisions · Planning · Vision",  hi: false },
+    { label: "ERP / CRM / ITSM", sub: "SAP · Salesforce · ServiceNow",        hi: false },
+    { label: "EXECUTION OS",     sub: "The Coordination Layer",                hi: true  },
+    { label: "TASK MANAGEMENT",  sub: "Jira · Monday · Asana",                 hi: false },
+    { label: "PEOPLE",           sub: "Your Organization",                     hi: false },
+  ];
+
+  return (
+    <section className="hp-sec" style={{ ...GOLD_GRID_BG, background: NAVY, padding: "120px 0" }}>
+      <div style={{ ...CONTAINER, textAlign: "center" }}>
+        <Reveal>
+          <SectionLabel>THE MISSING LAYER</SectionLabel>
+          <h2 className="hp-missing-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, maxWidth: 860, margin: "0 auto 32px" }}>
+            ERP. CRM. ITSM. Strategy decks.
+            <br />
+            <span style={{ color: GOLD }}>Nobody built the coordination layer.</span>
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
+            The tools that manage tasks, relationships, and IT workflows all exist. What nobody built is the infrastructure that deploys your entire organization — with roles, tasks, documents, and budget — the moment a strategic trigger fires.
+          </p>
+          <p style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 64 }}>Until now.</p>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0, maxWidth: 480, margin: "0 auto" }}>
+            {rows.map((row, i) => (
+              <div key={row.label} style={{ width: "100%" }}>
+                <div style={{
+                  width: "100%", padding: "14px 24px", borderRadius: 4, textAlign: "center",
+                  background: row.hi ? GOLD : "rgba(61,74,107,0.4)",
+                  border: row.hi ? "none" : `1px solid rgba(61,74,107,0.6)`,
+                  boxShadow: row.hi ? "0 0 32px rgba(201,168,76,0.25)" : "none",
+                }}>
+                  <div style={{ ...DM, fontSize: 13, fontWeight: row.hi ? 700 : 500, letterSpacing: "0.08em", textTransform: "uppercase", color: row.hi ? NAVY : MUTED_DARK }}>
+                    {row.label}
+                  </div>
+                  <div style={{ ...DM, fontSize: 11, color: row.hi ? "rgba(10,15,46,0.65)" : "rgba(200,212,232,0.55)", marginTop: 3 }}>
+                    {row.sub}
+                  </div>
+                </div>
+                {i < rows.length - 1 && (
+                  <div style={{ display: "flex", justifyContent: "center", height: 8 }}>
+                    <div style={{ width: 1, height: "100%", background: MUTED_STACK }} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
+function IDEASection() {
+  const cards = [
+    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Playbooks",        body: "Every scenario is mapped before the trigger fires. Roles, tasks, documents, and budget pre-assigned across 9 strategic domains.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "216+ Signals, Every 15 Minutes",  body: "AI monitors competitive, regulatory, financial, and operational signals continuously. The system surfaces the trigger before it becomes a crisis.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One human approval. The system distributes roles, tasks, documents, and budgets to every stakeholder simultaneously. No coordination calls.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation closes the loop. What worked, what didn't, and what to pre-stage better next time — automatically fed back into your playbook library.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+  ];
+
+  return (
+    <section id="how-it-works" className="hp-sec" style={{ background: "#F8F7F4", padding: "100px 0" }}>
+      <div style={{ ...CONTAINER }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <SectionLabel>HOW IT WORKS</SectionLabel>
+            <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2 }}>
+              Trigger fires. Organization deploys.
+              <br />
+              In 12 minutes.
+            </h2>
+          </div>
+        </Reveal>
+
+        <div className="hp-idea-grid" style={{
+          display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24,
+          maxWidth: 960, margin: "60px auto 0",
+        }}>
+          {cards.map((c, i) => (
+            <Reveal key={c.letter} delay={i * 0.1}>
+              <div
+                style={{
+                  background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${c.accent}`,
+                  padding: 32, borderRadius: 2, boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                  position: "relative", overflow: "hidden", transition: "all 0.2s ease", cursor: "default",
+                }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "0 2px 12px rgba(0,0,0,0.04)"; }}
+              >
+                <div style={{ ...GEO, fontSize: 96, fontWeight: 700, color: c.wm, position: "absolute", bottom: 16, right: 24, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
+                  {c.letter}
+                </div>
+                <div style={{ ...GEO, fontSize: 28, fontWeight: 700, color: c.accent, marginBottom: 4 }}>{c.letter}</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "#1A1A2E", marginBottom: 6 }}>{c.title}</div>
+                <div style={{ ...DM, fontSize: 12, fontWeight: 600, color: c.accent, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 16 }}>{c.subtitle}</div>
+                <p style={{ ...DM, fontSize: 15, color: "#555", lineHeight: 1.65 }}>{c.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* ══ PROBLEM / THE GAP ══ */}
-      <section id="platform" style={{ padding: "100px 56px", background: OFF_WHITE }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", maxWidth: 1200, margin: "0 auto" }}>
+// ─── SECTION 6: Credibility ───────────────────────────────────────────────────
+function CredibilitySection() {
+  return (
+    <section style={{ background: MID_NAVY, padding: "60px 0" }}>
+      <div style={{ ...CONTAINER, textAlign: "center" }}>
+        <Reveal>
+          <p style={{ ...DM, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK, marginBottom: 32 }}>
+            Built by someone who ran execution at Ford · Lockheed Martin · Eli Lilly · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
+          </p>
+          <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
+            <p style={{ ...GEO, fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 16 }}>
+              "After the fifth company I stopped being patient.
+              <br />
+              I built the infrastructure nobody else would."
+            </p>
+            <footer style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 600 }}>
+              — Martin Brunke, Founder
+            </footer>
+          </blockquote>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 7: Primary CTA ───────────────────────────────────────────────────
+function CTASection() {
+  return (
+    <section className="hp-sec" style={{ ...GOLD_GRID_BG, background: NAVY, padding: "120px 0" }}>
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+        <Reveal>
+          <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
+            Your organization is{" "}
+            <span style={{ color: RED_CRISIS }}>72 hours</span> behind.
+            <br />
+            Fix that in <span style={{ color: GOLD }}>30 days</span>.
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.65 }}>
+            We're opening 3–5 pilot partnerships. If your organization takes more than 24 hours to fully mobilize after a strategic decision, this conversation is worth 30 minutes.
+          </p>
           <div>
-            <Reveal><Eyebrow color="teal">The Real Cost of Alignment</Eyebrow></Reveal>
-            <Reveal delay={0.1}>
-              <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px, 4vw, 52px)", lineHeight: 1.1, color: NAVY, marginBottom: 20 }}>
-                After 72 Hours,<br />They're Ready to Start<br />
-                <em style={{ fontStyle: "italic", color: TEAL }}>Planning.</em>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480 }}>
-                Most enterprises have systematized finance (ERP), customers (CRM), and tickets (ITSM). But strategic coordination — the moments that determine competitive outcomes — still runs on <strong style={{ color: NAVY, fontWeight: 700 }}>email chains, ad hoc war rooms, and 72-hour alignment cycles.</strong>
-              </p>
-              <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginTop: 16 }}>
-                After 12 minutes with Execution OS, you're already in motion — roles clear, tasks assigned, decisions made. That's not an incremental improvement. That's a structural advantage.
-              </p>
-            </Reveal>
-          </div>
-
-          <div>
-            <Reveal delay={0.15}>
-              <div style={{ marginBottom: 20 }}>
-                {([
-                  { label: "Without Execution OS", pct: 85, color: "#EF4444" },
-                  { label: "Industry Average", pct: 55, color: "#F59E0B" },
-                  { label: "With Execution OS", pct: 12, color: TEAL },
-                ] as { label: string; pct: number; color: string }[]).map((b, i) => (
-                  <div key={i} style={{ marginBottom: 20 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                      <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{b.label}</span>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: b.color }}>{b.pct}h avg lag</span>
-                    </div>
-                    <div style={{ height: 8, background: "#E5E7EB", borderRadius: 4, overflow: "hidden" }}>
-                      <div style={{ height: "100%", width: `${b.pct}%`, background: b.color, borderRadius: 4, transition: "width 1s ease" }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.25}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                {([
-                  { title: "Who Should Own This?", desc: "Decision rights undefined until a meeting can be scheduled" },
-                  { title: "Who Needs to Be Involved?", desc: "Roles negotiated in real time while the moment passes" },
-                  { title: "What's Our Plan?", desc: "Playbook built from scratch after the trigger fires" },
-                  { title: "Ready to Start Figuring It Out", desc: "72 hours later — they haven't executed. They've aligned." },
-                ] as { title: string; desc: string }[]).map((c, i) => (
-                  <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "20px 22px" }}>
-                    <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 12 }} />
-                    <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{c.title}</div>
-                    <div style={{ fontSize: 12, fontWeight: 400, color: "#6B7280", lineHeight: 1.6 }}>{c.desc}</div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ AI URGENCY BRIDGE ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff", borderTop: `1px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-          <Reveal>
-            <Eyebrow color="teal">Why This Matters Now</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 20 }}>
-              AI Is About to<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>Expose the Gap.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginBottom: 16 }}>
-              Fifteen major firms — McKinsey, Deloitte, IBM, BCG, Accenture, Gartner and others — independently reached the same conclusion: organizations aren't failing at AI because of the technology. They're failing because the coordination layer underneath it hasn't been made explicit.
-            </p>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151", maxWidth: 480, marginBottom: 36 }}>
-              AI doesn't transform your organization. It exposes it. The fuzzy decision rights, undefined accountability, and coordination chaos that slowed you down before — AI makes them existential.
-            </p>
-            <button
-              onClick={() => go("/why-executeiq")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: NAVY, background: "none", border: `1px solid ${NAVY}`, padding: "14px 28px", cursor: "pointer", transition: "all 0.3s" }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = NAVY; el.style.color = "#fff"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "none"; el.style.color = NAVY; }}
+            <Link
+              href="/pilot-program"
+              onClick={() => trackCTA("cta_section")}
+              className="hp-cta-btn"
+              style={{
+                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 18,
+                padding: "20px 56px", borderRadius: 4, textDecoration: "none",
+                letterSpacing: "0.04em", display: "inline-block", transition: "all 0.2s ease",
+              }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 32px rgba(201,168,76,0.3)"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
             >
-              See the Research
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </Reveal>
+              Request a Pilot
+            </Link>
+          </div>
+          <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 16 }}>
+            No commitment required. Pilot pricing available.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
-          <Reveal delay={0.15}>
-            <div style={{ background: NAVY_BG, padding: "56px 48px" }}>
-              <div style={{ width: 36, height: 2, background: GOLD, marginBottom: 32 }} />
-              <blockquote style={{ ...CG, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 500, fontStyle: "italic", lineHeight: 1.4, color: "#fff", marginBottom: 28 }}>
-                "You can't automate what hasn't been made explicit."
-              </blockquote>
-              <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.8, color: "rgba(255,255,255,0.5)", marginBottom: 28 }}>
-                Execution OS makes your coordination logic explicit — decision rights mapped, roles defined, playbooks ready — so AI has something real to act on. Coordination infrastructure is the prerequisite for AI transformation.
-              </p>
-              <div style={{ display: "flex", gap: 48, paddingTop: 28, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                {([
-                  { num: "15", label: "Major firms agree" },
-                  { num: "170", label: "Playbooks ready" },
-                ] as { num: string; label: string }[]).map((s, i) => (
-                  <div key={i}>
-                    <div style={{ ...CG, fontSize: 40, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{s.num}</div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginTop: 6 }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
+// ─── SECTION 8: Footer ───────────────────────────────────────────────────────
+function HomepageFooter() {
+  return (
+    <footer style={{ background: FOOTER_NAVY, borderTop: "1px solid rgba(201,168,76,0.2)", padding: "60px 0 40px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div className="hp-footer-cols" style={{ display: "flex", gap: 48, marginBottom: 40 }}>
+
+          {/* Brand */}
+          <div style={{ flex: "0 0 280px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <ExecuteIQLogo size={32} />
+              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13 }}>VAUGHNMARTIN</span>
             </div>
-          </Reveal>
-        </div>
-      </section>
+            <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
+            <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
+          </div>
 
-      {/* ══ THE MISSING LAYER ══ */}
-      <section style={{ padding: "100px 56px", background: OFF_WHITE }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="gold" center>The Missing Layer</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              We Systematized Everything<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>Except Execution.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 560, margin: "0 auto 64px" }}>
-              Enterprise software has a category for everything except the layer that determines whether strategy actually happens.
-            </p>
-          </Reveal>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, background: BORDER, marginBottom: 48 }}>
-            {([
-              { system: "ERP", category: "Finance", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
-              { system: "CRM", category: "Customers", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
-              { system: "ITSM", category: "Tickets", label: "Systematized", color: TEXT_MUTED, bg: "#fff" },
-              { system: "Execution OS", category: "Strategy Execution", label: "Now Built", color: GOLD, bg: NAVY },
-            ] as { system: string; category: string; label: string; color: string; bg: string }[]).map((item, i) => (
-              <div key={i} style={{ background: item.bg, padding: "40px 32px" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: item.color, marginBottom: 16 }}>{item.label}</div>
-                <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: i === 3 ? "#fff" : NAVY, lineHeight: 1, marginBottom: 8 }}>{item.system}</div>
-                <div style={{ fontSize: 13, fontWeight: 500, color: i === 3 ? "rgba(255,255,255,0.55)" : "#6B7280" }}>→ {item.category}</div>
-                {i === 3 && <div style={{ width: 32, height: 2, background: GOLD, marginTop: 20 }} />}
-              </div>
+          {/* Product */}
+          <div style={{ flex: 1 }}>
+            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>PRODUCT</div>
+            {[
+              { label: "How It Works", scroll: true },
+              { label: "Playbooks",    href: "/playbook-library" },
+              { label: "Pricing",      href: "/pricing" },
+              { label: "Request a Pilot", href: "/pilot-program" },
+            ].map(l => (
+              l.scroll
+                ? <button key={l.label} onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })} style={{ ...DM, display: "block", background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textAlign: "left", transition: "color 0.2s" }}>{l.label}</button>
+                : <Link key={l.label} href={l.href!} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
-            <Reveal>
-              <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "#374151" }}>
-                Finance has ERP. Customers have CRM. IT tickets have ITSM. But strategic coordination — the moments that determine whether your organization wins or loses — still runs on email chains, ad hoc war rooms, and 72-hour alignment cycles. <strong style={{ color: NAVY, fontWeight: 700 }}>Execution OS is the layer nobody built.</strong>
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                {([
-                  "Decision rights mapped before the moment hits",
-                  "Roles clarified with precision — no negotiation under pressure",
-                  "170 playbooks that execute in minutes, not days",
-                  "Signal detection that triggers action, not meetings",
-                  "AI-ready foundation — coordination logic AI can act on",
-                ] as string[]).map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, padding: "14px 20px", background: "#fff", border: `1px solid ${BORDER}` }}>
-                    <div style={{ width: 6, height: 6, background: TEAL, borderRadius: "50%", marginTop: 7, flexShrink: 0 }} />
-                    <span style={{ fontSize: 14, fontWeight: 500, color: NAVY, lineHeight: 1.6 }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ IDEA FRAMEWORK ══ */}
-      <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
-        <div style={{ position: "absolute", top: -100, left: -100, width: 800, height: 800, background: "radial-gradient(ellipse,rgba(43,138,110,0.18) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -80, right: -60, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="gold" center>The IDEA Framework™</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
-              Four Phases. One Operating Rhythm.
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(255,255,255,0.5)", maxWidth: 580, margin: "0 auto 56px" }}>
-              Execution OS structures every strategic response through the IDEA Framework — a repeatable execution infrastructure built for Fortune 1000 speed.
-            </p>
-          </Reveal>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, background: "rgba(255,255,255,0.06)" }}>
-            {([
-              { phase: "I", word: "IDENTIFY", color: GOLD, desc: "Monitor 170+ strategic trigger categories across financial, competitive, regulatory, and operational domains. AI pattern-matching surfaces the right playbook in seconds." },
-              { phase: "D", word: "DETECT", color: TEAL_LIGHT, desc: "Real-time signal ingestion from 12 enterprise systems. Weak signals become strong alerts before the market reacts. No lag between event and awareness." },
-              { phase: "E", word: "EXECUTE", color: "#C9A84C", desc: "12-minute trigger-to-execution. Projects created, tasks assigned, documents staged, budgets allocated — all before your first committee email is sent." },
-              { phase: "A", word: "ADVANCE", color: "#2B8A6E", desc: "Capture institutional memory. Every execution becomes training data for future responses. The organization gets smarter with each event." },
-            ] as { phase: string; word: string; color: string; desc: string }[]).map((f, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{ background: "rgba(255,255,255,0.03)", padding: "40px 32px", minHeight: 280, transition: "background 0.3s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-                >
-                  <div style={{ ...CG, fontSize: 52, fontWeight: 300, color: f.color, lineHeight: 1, marginBottom: 8 }}>{f.phase}</div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", color: f.color, marginBottom: 20 }}>{f.word}</div>
-                  <div style={{ width: 32, height: 1, background: "rgba(255,255,255,0.15)", marginBottom: 20 }} />
-                  <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.8, color: "rgba(255,255,255,0.5)" }}>{f.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* ── Signal Flow Timeline ── */}
-          <Reveal delay={0.2}>
-            <div style={{ marginTop: 64, padding: "40px 48px", background: "rgba(0,0,0,0.25)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", textAlign: "center", marginBottom: 36 }}>
-                How a Signal Becomes an Execution — in Real Time
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto" }}>
-                {([
-                  { label: "Signal Ingested", stat: "216 data points", sub: "Every 15 min", color: GOLD, dot: GOLD },
-                  { label: "Pattern Matched", stat: "Compound AI", sub: "Cross-domain", color: TEAL_LIGHT, dot: TEAL_LIGHT },
-                  { label: "Dry-Run Validated", stat: "Simulation Studio", sub: "Before commitment", color: "#A78BFA", dot: "#A78BFA" },
-                  { label: "Playbook Activated", stat: "From 170 library", sub: "Auto-matched", color: GOLD, dot: GOLD },
-                  { label: "Execution Complete", stat: "12 minutes", sub: "From trigger", color: TEAL_LIGHT, dot: TEAL_LIGHT },
-                ] as { label: string; stat: string; sub: string; color: string; dot: string }[]).map((node, i, arr) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", flex: i < arr.length - 1 ? "1 1 auto" : "0 0 auto" }}>
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 130, flexShrink: 0 }}>
-                      <div style={{ width: 12, height: 12, borderRadius: "50%", background: node.dot, boxShadow: `0 0 12px ${node.dot}`, marginBottom: 12 }} />
-                      <div style={{ fontSize: 11, fontWeight: 700, color: node.color, letterSpacing: "0.05em", marginBottom: 4, textAlign: "center" }}>{node.stat}</div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", textAlign: "center", marginBottom: 4 }}>{node.label}</div>
-                      <div style={{ fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.35)", textAlign: "center" }}>{node.sub}</div>
-                    </div>
-                    {i < arr.length - 1 && (
-                      <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg,${node.dot}60,${arr[i+1].dot}60)`, margin: "0 8px", position: "relative", top: -24 }}>
-                        <div style={{ position: "absolute", right: -5, top: -4, width: 9, height: 9, border: `1px solid ${arr[i+1].dot}`, borderRadius: "50%", background: "transparent" }} />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ 16 SIGNAL CATEGORIES ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="teal" center>The Sentinel Layer</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              216 Data Points.<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>16 Strategic Categories.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: TEXT_MUTED, maxWidth: 560, margin: "0 auto 64px" }}>
-              The system isn't scanning the noise — it's watching the 16 specific domains where Fortune 1000 strategy gets made or broken. Every signal refreshes every 15 minutes.
-            </p>
-          </Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
-            {([
-              { num: "01", name: "Competitive Movement", icon: "◈", color: TEAL },
-              { num: "02", name: "Market Dynamics", icon: "◈", color: GOLD },
-              { num: "03", name: "Financial & Investment", icon: "◈", color: TEAL },
-              { num: "04", name: "Regulatory & Policy", icon: "◈", color: GOLD },
-              { num: "05", name: "Supply Chain & Operational", icon: "◈", color: TEAL },
-              { num: "06", name: "Customer Sentiment", icon: "◈", color: GOLD },
-              { num: "07", name: "Talent & Workforce", icon: "◈", color: TEAL },
-              { num: "08", name: "Technology Disruption", icon: "◈", color: GOLD },
-              { num: "09", name: "Media & Reputation", icon: "◈", color: TEAL },
-              { num: "10", name: "Geopolitical & Macro", icon: "◈", color: GOLD },
-              { num: "11", name: "Economic Indicators", icon: "◈", color: TEAL },
-              { num: "12", name: "Partnership & Ecosystem", icon: "◈", color: GOLD },
-              { num: "13", name: "Internal Execution", icon: "◈", color: TEAL },
-              { num: "14", name: "Customer Behavior", icon: "◈", color: GOLD },
-              { num: "15", name: "Innovation Pipeline", icon: "◈", color: TEAL },
-              { num: "16", name: "ESG & Sustainability", icon: "◈", color: GOLD },
-            ] as { num: string; name: string; icon: string; color: string }[]).map((cat, i) => (
-              <Reveal key={i} delay={i * 0.04}>
-                <div
-                  style={{ border: `1px solid ${BORDER}`, padding: "20px 22px", transition: "all 0.25s", cursor: "default", background: "#fff" }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = cat.color;
-                    el.style.background = cat.color === TEAL ? "rgba(43,138,110,0.04)" : "rgba(201,168,76,0.04)";
-                    el.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = BORDER;
-                    el.style.background = "#fff";
-                    el.style.transform = "translateY(0)";
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", color: "#D1D5DB" }}>{cat.num}</span>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: cat.color }} />
-                  </div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, lineHeight: 1.3 }}>{cat.name}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.3}>
-            <div style={{ marginTop: 48, padding: "28px 40px", background: OFF_WHITE, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
-              <div style={{ display: "flex", gap: 48 }}>
-                {([
-                  { val: "216", label: "Monitored data points" },
-                  { val: "15 min", label: "Refresh cycle" },
-                  { val: "12", label: "Enterprise integrations" },
-                ] as { val: string; label: string }[]).map((s, i) => (
-                  <div key={i}>
-                    <div style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY, lineHeight: 1 }}>{s.val}</div>
-                    <div style={{ fontSize: 11, fontWeight: 500, color: TEXT_MUTED, marginTop: 4 }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ fontSize: 13, fontWeight: 400, color: TEXT_MUTED, maxWidth: 360, lineHeight: 1.7 }}>
-                Every category runs on a 15-minute detection cycle. Compound Threat Intelligence identifies patterns that cross multiple categories — the signals human analysts miss when focused on a single domain.
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ PLAYBOOK DOMAINS ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="teal" center>170 Strategic Playbooks</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              Execution-Ready Plans.<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>Not Templates to Discuss.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 560, margin: "0 auto 64px" }}>
-              Each playbook includes decision rights mapped before the moment, roles defined with precision, tasks assigned automatically, and escalation paths built in — with a timeline running from activation, not from your first alignment meeting.
-            </p>
-          </Reveal>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
-            {DOMAINS.map((d, i) => (
-              <Reveal key={i} delay={i * 0.07}>
-                <div
-                  style={{ border: `1px solid ${d.accent ? TEAL : BORDER}`, padding: "32px 28px", cursor: "pointer", transition: "all 0.3s", position: "relative", background: d.accent ? `linear-gradient(135deg,rgba(43,138,110,0.04),rgba(43,138,110,0.08))` : "#fff" }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = d.accent ? TEAL_LIGHT : TEAL;
-                    el.style.transform = "translateY(-3px)";
-                    el.style.boxShadow = "0 8px 32px rgba(43,138,110,0.12)";
-                  }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = d.accent ? TEAL : BORDER;
-                    el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "none";
-                  }}
-                  onClick={() => go("/playbook-library")}
-                >
-                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: "#D1D5DB" }}>{d.num}</span>
-                    <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "3px 10px", background: d.accent ? "rgba(43,138,110,0.12)" : "rgba(10,15,46,0.06)", color: d.accent ? TEAL : "#6B7280" }}>{d.count}</span>
-                  </div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 12, lineHeight: 1.2 }}>{d.title}</h3>
-                  <p style={{ fontSize: 13, fontWeight: 400, lineHeight: 1.75, color: "#6B7280" }}>{d.desc}</p>
-                  {d.accent && (
-                    <div style={{ position: "absolute", top: 0, right: 0, width: 3, height: "100%", background: TEAL }} />
-                  )}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.3} style={{ textAlign: "center", marginTop: 48 }}>
-            <button
-              onClick={() => go("/playbook-library")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL, background: "none", border: `1px solid ${TEAL}`, padding: "14px 32px", cursor: "pointer", transition: "all 0.3s" }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = TEAL; el.style.color = "#fff"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "none"; el.style.color = TEAL; }}
-            >
-              Browse Full Playbook Library
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ AI + HUMAN PARTNERSHIP ══ */}
-      <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: -100, left: -100, width: 800, height: 800, background: "radial-gradient(ellipse,rgba(43,138,110,0.20) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -100, right: -100, width: 650, height: 650, background: "radial-gradient(ellipse,rgba(201,168,76,0.15) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center", maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal>
-            <Eyebrow color="gold">Human-AI Partnership</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-              AI Does the Work.<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Humans Make the Call.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>
-              Execution OS is built on a clear philosophy: AI handles monitoring, pattern detection, playbook selection, and orchestration. Human executives retain ultimate decision authority.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              {([
-                { label: "AI", role: "Monitors 1,000+ signals in real-time, matches triggers to playbooks, auto-assigns tasks, stages documents" },
-                { label: "Human", role: "Approves activation, modifies assignments, makes final escalation decisions, captures strategic insight" },
-              ] as { label: string; role: string }[]).map((r, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "18px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", padding: "3px 10px", background: i === 0 ? "rgba(43,138,110,0.2)" : "rgba(201,168,76,0.15)", color: i === 0 ? TEAL_LIGHT : GOLD, flexShrink: 0 }}>{r.label}</span>
-                  <span style={{ fontSize: 13, fontWeight: 400, color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>{r.role}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", padding: "40px 36px" }}>
-              <div style={{ ...CG, fontSize: 11, fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 24 }}>Live Execution Pulse</div>
-              {([
-                { label: "Signal Monitoring", val: "Active", color: TEAL_LIGHT },
-                { label: "Pattern Detection", val: "Real-time", color: TEAL_LIGHT },
-                { label: "Playbook Matching", val: "AI Assisted", color: GOLD },
-                { label: "Task Orchestration", val: "Automated", color: GOLD },
-                { label: "Approval Gate", val: "Human Required", color: "#2B8A6E" },
-                { label: "Budget Release", val: "Human Required", color: "#2B8A6E" },
-              ] as { label: string; val: string; color: string }[]).map((row, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                  <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>{row.label}</span>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: row.color }}>{row.val}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ BUILT FOR TODAY, READY FOR TOMORROW ══ */}
-      <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
-        <div style={{ position: "absolute", top: -80, right: -80, width: 750, height: 750, background: "radial-gradient(ellipse,rgba(43,138,110,0.19) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -60, left: "20%", width: 550, height: 550, background: "radial-gradient(ellipse,rgba(201,168,76,0.13) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-          <Reveal>
-            <Eyebrow color="gold">The Foundation</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-              A Living System<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>That Evolves With You.</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.55)", marginBottom: 32 }}>
-              Execution OS isn't a one-time implementation. It's the coordination foundation that grows with your organization — adapting as context shifts, integrating as AI capabilities expand, absorbing change instead of breaking under it.
-            </p>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.4)", marginBottom: 40 }}>
-              The pace of change isn't slowing down. Your ability to evolve shouldn't depend on heroics.
-            </p>
-            <button
-              onClick={() => go("/why-executeiq")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 10, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, background: "none", border: `1px solid ${GOLD}`, padding: "14px 28px", cursor: "pointer", transition: "all 0.3s" }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.color = NAVY; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "none"; el.style.color = GOLD; }}
-            >
-              Why This Matters Now
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </Reveal>
-
-          <Reveal delay={0.15}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "rgba(255,255,255,0.06)" }}>
-              {([
-                { label: "Playbooks adapt based on usage", sub: "Every execution becomes institutional memory" },
-                { label: "Decision rights evolve as context shifts", sub: "The system learns how your org makes decisions" },
-                { label: "Coordination logic integrates with AI", sub: "Pre-mapped structure AI can act on directly" },
-                { label: "Infrastructure that absorbs change", sub: "Built to bend, not break under pressure" },
-              ] as { label: string; sub: string }[]).map((item, i) => (
-                <div key={i} style={{ padding: "24px 28px", background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "flex-start", gap: 16 }}>
-                  <div style={{ width: 8, height: 8, background: TEAL_LIGHT, borderRadius: "50%", marginTop: 6, flexShrink: 0 }} />
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#fff", marginBottom: 4 }}>{item.label}</div>
-                    <div style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.4)" }}>{item.sub}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ HOW IT WORKS ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="teal" center>How It Works</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              From Signal to Execution<br />
-              <em style={{ fontStyle: "italic", color: TEAL }}>in 12 Minutes</em>
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, color: "#6B7280", maxWidth: 500, margin: "0 auto 64px", lineHeight: 1.85 }}>
-              Four steps that replace the 72-hour alignment cycle. No meetings to schedule. No coordination to negotiate.
-            </p>
-          </Reveal>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0, position: "relative" }}>
-            <div style={{ position: "absolute", top: 40, left: "12.5%", right: "12.5%", height: 1, background: `linear-gradient(90deg,${TEAL},${GOLD})`, zIndex: 0 }} />
-            {([
-              { step: "01", time: "0:00", title: "Signal Detected", desc: "Execution OS integrates with Jira, Slack, Teams, Salesforce, and ServiceNow — detecting the signals that matter before your next committee email is drafted." },
-              { step: "02", time: "0:45", title: "Playbook Activated", desc: "The right playbook fires automatically. No meetings to schedule. No alignment to negotiate. One click deploys the entire coordinated response." },
-              { step: "03", time: "3:00", title: "Roles Assigned", desc: "Everyone knows their part. Decision rights are mapped. Tasks are distributed to the right people with deadlines and pre-approved budgets." },
-              { step: "04", time: "12:00", title: "Execution Underway", desc: "You're not planning a response. You're already executing one. Status visible in real-time. The market doesn't wait — now neither do you." },
-            ] as { step: string; time: string; title: string; desc: string }[]).map((s, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{ padding: "0 32px", textAlign: "center", position: "relative", zIndex: 1 }}>
-                  <div style={{ width: 80, height: 80, borderRadius: "50%", background: "#fff", border: `2px solid ${i === 0 || i === 3 ? TEAL : GOLD}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}>
-                    <span style={{ ...CG, fontSize: 22, fontWeight: 600, color: i === 0 || i === 3 ? TEAL : GOLD }}>{s.step}</span>
-                  </div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, marginBottom: 8 }}>{s.time} min</div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: NAVY, marginBottom: 12 }}>{s.title}</h3>
-                  <p style={{ fontSize: 13, fontWeight: 400, color: "#6B7280", lineHeight: 1.75 }}>{s.desc}</p>
-                </div>
-              </Reveal>
+          {/* Company */}
+          <div style={{ flex: 1 }}>
+            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>COMPANY</div>
+            {[
+              { label: "About",              href: "/founder-story" },
+              { label: "vaughnmartin.com",   href: "/" },
+              { label: "LinkedIn",           href: "https://linkedin.com/company/vaughnmartin", external: true },
+            ].map(l => (
+              l.external
+                ? <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</a>
+                : <Link key={l.label} href={l.href!} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* ══ INTEGRATIONS ══ */}
-      <section style={{ padding: "80px 56px", background: OFF_WHITE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: TEXT_MUTED, marginBottom: 32 }}>
-              Connects With Your Enterprise Stack
-            </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
-              {INTEGRATIONS.map((name, i) => (
-                <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: "8px 18px", background: "#fff", border: `1px solid ${BORDER}`, color: "#374151", letterSpacing: "0.02em" }}>
-                  {name}
-                </span>
-              ))}
-            </div>
-          </Reveal>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}>
+          <p style={{ ...DM, fontSize: 11, color: MUTED_LIGHT }}>
+            VaughnMartin · Execution OS · Built for Fortune 1000 · Confidential
+          </p>
         </div>
-      </section>
+      </div>
+    </footer>
+  );
+}
 
-      {/* ══ VALIDATION ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <Reveal style={{ textAlign: "center" }}>
-            <Eyebrow color="gold" center>The Industry Is Catching Up</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,52px)", lineHeight: 1.1, color: NAVY, marginBottom: 16 }}>
-              The Bottleneck Isn't Technology.
-            </h2>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "#6B7280", maxWidth: 580, margin: "0 auto 56px" }}>
-              McKinsey, Deloitte, BCG, Bain, IBM, Accenture — all circling the same conclusion: the operating model underneath the technology is the problem. Execution OS is the layer they're describing. And it's already built.
-            </p>
-          </Reveal>
+// ─── Scroll depth analytics (Spec §11) ───────────────────────────────────────
+function useScrollDepth() {
+  useEffect(() => {
+    const fired = new Set<number>();
+    const handler = () => {
+      const total = document.body.scrollHeight - window.innerHeight;
+      if (total <= 0) return;
+      const pct = Math.round((window.scrollY / total) * 100);
+      [25, 50, 75, 100].forEach(t => {
+        if (pct >= t && !fired.has(t)) {
+          fired.add(t);
+          try { if ((window as any).dataLayer) (window as any).dataLayer.push({ event: "scroll_depth", percent: t }); } catch (_) {}
+        }
+      });
+    };
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+}
 
-          <Reveal>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 1, background: BORDER, marginBottom: 56 }}>
-              {(["McKinsey", "Deloitte", "BCG", "Bain", "IBM", "Accenture", "Gartner", "Forrester", "PwC", "Microsoft", "Google Cloud", "WEF"] as string[]).map((firm, i) => (
-                <div key={i} style={{ flex: "1 1 16%", background: "#fff", padding: "20px 24px", textAlign: "center" }}>
-                  <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: NAVY }}>{firm}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
-            {([
-              {
-                firm: "McKinsey & Company",
-                theme: "AI Adoption & Operating Model",
-                conclusion: "The primary barrier to capturing AI value is not the technology itself — it is the organizational operating model surrounding it. Without explicit coordination infrastructure, AI amplifies existing dysfunction.",
-                source: "State of AI in Organizations research series",
-              },
-              {
-                firm: "Deloitte Insights",
-                theme: "AI Governance & Decision Architecture",
-                conclusion: "Firms that deploy AI without pre-defined decision rights and accountability structures consistently report that AI accelerates poor decisions at scale rather than improving outcomes.",
-                source: "Global AI Governance Survey",
-              },
-              {
-                firm: "Boston Consulting Group",
-                theme: "Strategy Execution Gap",
-                conclusion: "Execution capability has emerged as the primary competitive differentiator in transformation-era enterprises. The gap between strategic intent and coordinated action remains the most costly and least addressed problem in the Fortune 500.",
-                source: "BCG Transformation & Execution research",
-              },
-            ] as { firm: string; theme: string; conclusion: string; source: string }[]).map((item, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{ border: `1px solid ${BORDER}`, padding: "36px 32px", background: OFF_WHITE, height: "100%", display: "flex", flexDirection: "column" }}>
-                  <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>Research Finding</div>
-                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: NAVY }}>{item.firm}</div>
-                    <div style={{ fontSize: 11, fontWeight: 500, color: TEXT_MUTED, marginTop: 2 }}>{item.theme}</div>
-                  </div>
-                  <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.8, color: NAVY, flex: 1, marginBottom: 20 }}>{item.conclusion}</p>
-                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: TEXT_MUTED, borderTop: `1px solid ${BORDER}`, paddingTop: 14 }}>
-                    Based on: {item.source}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal style={{ textAlign: "center", marginTop: 56 }}>
-            <p style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 500, color: NAVY, marginBottom: 8 }}>
-              Execution OS is the layer they're describing.
-            </p>
-            <p style={{ ...CG, fontSize: "clamp(20px,2.5vw,28px)", fontWeight: 600, fontStyle: "italic", color: TEAL }}>
-              And it's already built.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ QUOTE ══ */}
-      <section style={{ padding: "100px 56px", background: "#fff" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <div style={{ width: 48, height: 1, background: GOLD, margin: "0 auto 40px" }} />
-            <blockquote style={{ ...CG, fontSize: "clamp(26px,3.5vw,44px)", fontWeight: 400, fontStyle: "italic", lineHeight: 1.35, color: NAVY, marginBottom: 32 }}>
-              "This isn't the same thing done faster. It's a different outcome. Traditional coordination ends with a meeting scheduled. Execution OS ends with execution underway."
-            </blockquote>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEXT_MUTED }}>
-              Built from 20+ years of Fortune 500 transformation · VaughnMartin
-            </div>
-            <div style={{ width: 48, height: 1, background: GOLD, margin: "40px auto 0" }} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ══ CTA ══ */}
-      <section style={{ padding: "100px 56px", background: NAVY_BG, position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 900, height: 900, background: "radial-gradient(ellipse,rgba(43,138,110,0.20) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: -60, right: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -60, left: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
-          <Reveal>
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 36 }}>
-              <ExecuteIQLogo variant="full" height={52} color="white" />
-            </div>
-            <Eyebrow color="gold" center>The Gap Isn't Talent. It's Infrastructure.</Eyebrow>
-            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(34px,4.5vw,60px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-              The Coordination Infrastructure<br />
-              <em style={{ fontStyle: "italic", color: GOLD_LIGHT }}>Enterprises Are Missing. Built.</em>
-            </h2>
-            <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 8, marginTop: -4 }}>
-              We Make Enterprises Fearless.
-            </p>
-            <p style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.9, color: "rgba(255,255,255,0.5)", maxWidth: 520, margin: "0 auto 48px" }}>
-              See Execution OS in action. When a signal fires, you're not scheduling a meeting — you're already executing. Join the pilot and run your first playbook.
-            </p>
-            <div style={{ display: "flex", alignItems: "center", gap: 20, justifyContent: "center" }}>
-              <a
-                href="/pilot-program"
-                style={{ display: "inline-block", background: GOLD, color: NAVY, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "18px 44px", textDecoration: "none", transition: "all 0.25s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
-              >
-                Request Pilot
-              </a>
-              <button
-                onClick={() => go("/try-demo")}
-                style={{ display: "inline-block", fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "18px 44px", background: "none", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", cursor: "pointer", transition: "all 0.25s" }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.color = GOLD; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(255,255,255,0.2)"; el.style.color = "rgba(255,255,255,0.7)"; }}
-              >
-                Watch Live Demo
-              </button>
-            </div>
-            <div style={{ marginTop: 40, display: "flex", alignItems: "center", justifyContent: "center", gap: 32 }}>
-              {(["Fortune 500 validated", "2–4 week implementation", "170 playbooks at go-live"] as string[]).map((t, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL_LIGHT }} />
-                  <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>{t}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <Footer />
+// ─── Page ─────────────────────────────────────────────────────────────────────
+export default function Homepage() {
+  useScrollDepth();
+  return (
+    <div style={{ background: NAVY, margin: 0, padding: 0 }}>
+      <HomepageNav />
+      <HeroSection />
+      <ProblemSection />
+      <MissingLayerSection />
+      <IDEASection />
+      <CredibilitySection />
+      <CTASection />
+      <HomepageFooter />
     </div>
   );
 }
