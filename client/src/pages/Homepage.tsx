@@ -218,16 +218,15 @@ function HeroSection() {
             ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
             lineHeight: 1.15, maxWidth: 800, margin: "0 auto 28px",
           }}>
-            Your organization has{" "}
-            <span style={{ color: RED_CRISIS }}>72 hours</span>
-            {" "}to respond.
+            At <span style={{ color: TEAL_LIGHT }}>12 minutes</span>,
+            {" "}you're executing.
             <br />
-            Execution OS gives you{" "}
-            <span style={{ color: TEAL_LIGHT }}>12 minutes</span>.
+            At <span style={{ color: RED_CRISIS }}>72 hours</span>,
+            {" "}they're still getting in the room.
           </h1>
 
           <p style={{ ...DM, fontSize: 18, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            170 pre-staged playbooks. 216+ signals monitored. One trigger fires — every stakeholder knows their role in under 12 minutes. No calls. No improvisation. Full organizational deployment.
+            170 pre-staged playbooks. 216+ signals monitored. One trigger fires — every stakeholder is deployed and executing in under 12 minutes. While your competitors are still on their first emergency call, you're three days into response.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
@@ -291,9 +290,9 @@ function ProblemSection() {
           <Reveal style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%" }}>
             <SectionLabel>THE PROBLEM</SectionLabel>
             <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 32 }}>
-              The decision takes minutes.
+              The trigger fires in minutes.
               <br />
-              The organization takes 72 hours.
+              72 hours later, they're finally in the room.
             </h2>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
               A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment is NOW.
@@ -310,7 +309,7 @@ function ProblemSection() {
           <div style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%", display: "flex", flexDirection: "column", gap: 16 }}>
             {[
               { num: "01", title: "The Trigger Fires",  body: "A competitor announcement. A market shift. A leadership departure. The strategic moment arrives." },
-              { num: "02", title: "72 Hours of Chaos",  body: "Emergency calls. Improvised documents. No clear ownership. Every team waiting for direction from above." },
+              { num: "02", title: "72 Hours Just to Assemble",  body: "Emergency calls. Competing priorities. No clear ownership. After three days of coordination, they finally have everyone in a room — and haven't executed a single thing." },
               { num: "03", title: "The Window Closes",  body: "By the time your org aligns, competitors have responded. The advantage is gone." },
             ].map((c, i) => (
               <Reveal key={c.num} delay={i * 0.1}>
@@ -477,10 +476,11 @@ function CTASection() {
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
           <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
-            Your organization is{" "}
-            <span style={{ color: RED_CRISIS }}>72 hours</span> behind.
+            At <span style={{ color: RED_CRISIS }}>72 hours</span>, they're
+            {" "}finally in the room.
             <br />
-            Fix that in <span style={{ color: GOLD }}>30 days</span>.
+            You've been executing for{" "}
+            <span style={{ color: GOLD }}>71 hours</span>.
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.65 }}>
             We're opening 3–5 pilot partnerships. If your organization takes more than 24 hours to fully mobilize after a strategic decision, this conversation is worth 30 minutes.
