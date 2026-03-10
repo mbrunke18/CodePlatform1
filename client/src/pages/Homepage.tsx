@@ -87,7 +87,7 @@ function HomepageNav() {
     <>
       <nav style={{
         position: "sticky", top: 0, zIndex: 100,
-        background: NAVY,
+        background: "#132558",
         borderBottom: "1px solid rgba(201,168,76,0.15)",
         height: 64,
         display: "flex", alignItems: "center",
@@ -95,7 +95,7 @@ function HomepageNav() {
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <ExecuteIQLogo size={36} />
-            <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 14 }}>
+            <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: "#FFFFFF", fontSize: 14 }}>
               VAUGHNMARTIN
             </span>
           </Link>
@@ -521,7 +521,7 @@ function HomepageFooter() {
           <div style={{ flex: "0 0 280px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
               <ExecuteIQLogo size={32} />
-              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13 }}>VAUGHNMARTIN</span>
+              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: "#FFFFFF", fontSize: 13 }}>VAUGHNMARTIN</span>
             </div>
             <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
