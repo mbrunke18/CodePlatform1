@@ -4,6 +4,7 @@ import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
+const NAVY_BG     = "#132558";
 const GOLD        = "#C9A84C";
 const GOLD_LIGHT  = "#DFC178";
 const TEAL_LIGHT  = "#3BAF8A";
@@ -18,8 +19,19 @@ const BORDER      = "#E8E4DC";
 const TEAL        = "#2B8A6E";
 
 const GOLD_GRID_BG: React.CSSProperties = {
-  backgroundImage: `linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)`,
-  backgroundSize: "80px 80px",
+  backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.09) 1px, transparent 1px)`,
+  backgroundSize: "48px 48px",
+};
+
+const SECTION_DARK_BG: React.CSSProperties = {
+  backgroundColor: NAVY_BG,
+  backgroundImage: [
+    `radial-gradient(ellipse 900px 700px at -5% 0%, rgba(43,138,110,0.15) 0%, transparent 55%)`,
+    `radial-gradient(ellipse 1000px 800px at 105% 100%, rgba(201,168,76,0.11) 0%, transparent 55%)`,
+    `linear-gradient(rgba(201,168,76,0.09) 1px, transparent 1px)`,
+    `linear-gradient(90deg, rgba(201,168,76,0.09) 1px, transparent 1px)`,
+  ].join(", "),
+  backgroundSize: "100% 100%, 100% 100%, 48px 48px, 48px 48px",
 };
 
 const GEO: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
@@ -94,7 +106,7 @@ function HomepageNav() {
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <ExecuteIQLogo size={36} />
+            <ExecuteIQLogo variant="icon-only" height={36} color="white" />
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 2 }}>
               <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 14, lineHeight: 1 }}>VAUGHNMARTIN</span>
               <span style={{ ...GEO, fontStyle: "italic", fontSize: 10, color: GOLD_LIGHT, lineHeight: 1 }}>We Make Enterprises Fearless.</span>
@@ -203,8 +215,7 @@ function HomepageNav() {
 function HeroSection() {
   return (
     <section style={{
-      ...GOLD_GRID_BG,
-      background: NAVY,
+      ...SECTION_DARK_BG,
       minHeight: "100vh",
       display: "flex", alignItems: "center",
       paddingTop: 80, paddingBottom: 80,
@@ -345,7 +356,7 @@ function MissingLayerSection() {
   ];
 
   return (
-    <section className="hp-sec" style={{ ...GOLD_GRID_BG, background: NAVY, padding: "120px 0" }}>
+    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0" }}>
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <SectionLabel>THE MISSING LAYER</SectionLabel>
@@ -473,7 +484,7 @@ function CredibilitySection() {
 // ─── SECTION 7: Primary CTA ───────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="hp-sec" style={{ ...GOLD_GRID_BG, background: NAVY, padding: "120px 0" }}>
+    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0" }}>
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
           <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
@@ -521,7 +532,7 @@ function HomepageFooter() {
           {/* Brand */}
           <div style={{ flex: "0 0 280px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <ExecuteIQLogo size={32} />
+              <ExecuteIQLogo variant="icon-only" height={32} color="white" />
               <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13 }}>VAUGHNMARTIN</span>
             </div>
             <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
