@@ -89,14 +89,14 @@ function HomepageNav() {
         position: "sticky", top: 0, zIndex: 100,
         background: NAVY,
         borderBottom: "1px solid rgba(201,168,76,0.15)",
-        height: 72,
+        height: 64,
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <ExecuteIQLogo variant="icon-only" height={36} color="white" />
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 3 }}>
-              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13, lineHeight: 1 }}>VAUGHNMARTIN</span>
+            <ExecuteIQLogo size={36} />
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 2 }}>
+              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 14, lineHeight: 1 }}>VAUGHNMARTIN</span>
               <span style={{ ...GEO, fontStyle: "italic", fontSize: 10, color: GOLD_LIGHT, lineHeight: 1 }}>We Make Enterprises Fearless.</span>
             </div>
           </Link>
@@ -520,13 +520,11 @@ function HomepageFooter() {
 
           {/* Brand */}
           <div style={{ flex: "0 0 280px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-              <ExecuteIQLogo variant="icon-only" height={32} color="white" />
-              <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-                <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13, lineHeight: 1 }}>VAUGHNMARTIN</span>
-                <span style={{ ...GEO, fontStyle: "italic", fontSize: 10, color: GOLD_LIGHT, lineHeight: 1 }}>We Make Enterprises Fearless.</span>
-              </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <ExecuteIQLogo size={32} />
+              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13 }}>VAUGHNMARTIN</span>
             </div>
+            <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
           </div>
 
