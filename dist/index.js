@@ -35347,6 +35347,77 @@ function registerActivationRoutes(app2) {
   });
 }
 
+// server/routes/demoAccessRoute.ts
+init_storage();
+var DEMO_USER_ID = "vm-demo-exec-2026";
+var DEFAULT_TOKEN = "VMdemo2026";
+function registerDemoAccessRoute(app2) {
+  app2.get("/api/demo-access", async (req, res) => {
+    try {
+      const token = req.query.token;
+      const expectedToken = process.env.DEMO_ACCESS_TOKEN || DEFAULT_TOKEN;
+      if (!token || token !== expectedToken) {
+        return res.status(401).send(`
+          <!DOCTYPE html>
+          <html>
+          <head><title>Access Denied \u2014 VaughnMartin</title></head>
+          <body style="font-family:'DM Sans',sans-serif;background:#0A0F2E;color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;padding:40px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:16px;">VaughnMartin \xB7 Execution OS</div>
+              <h1 style="font-size:28px;font-weight:600;color:#fff;margin:0 0 12px">Access Denied</h1>
+              <p style="color:rgba(255,255,255,0.5);font-size:14px;">Invalid or missing access token. Contact your VaughnMartin representative.</p>
+            </div>
+          </body>
+          </html>
+        `);
+      }
+      await storage.upsertUser({
+        id: DEMO_USER_ID,
+        email: "demo@vaughnmartin.com",
+        firstName: "Demo",
+        lastName: "Executive",
+        profileImageUrl: null
+      });
+      const userOrgs = await storage.getUserOrganizations(DEMO_USER_ID);
+      if (userOrgs.length === 0) {
+        await storage.createOrganization({
+          name: "Acme Corporation \u2014 Executive Demo",
+          description: "Fortune 1000 enterprise pilot demonstration environment",
+          ownerId: DEMO_USER_ID,
+          industry: "Financial Services",
+          onboardingCompleted: true
+        });
+      }
+      const demoSessionUser = {
+        claims: {
+          sub: DEMO_USER_ID,
+          email: "demo@vaughnmartin.com",
+          first_name: "Demo",
+          last_name: "Executive",
+          profile_image_url: null,
+          exp: Math.floor(Date.now() / 1e3) + 7 * 24 * 60 * 60,
+          iat: Math.floor(Date.now() / 1e3)
+        },
+        access_token: "demo-session",
+        refresh_token: "demo-session",
+        expires_at: Math.floor(Date.now() / 1e3) + 7 * 24 * 60 * 60
+      };
+      req.login(demoSessionUser, (err) => {
+        if (err) {
+          console.error("[DemoAccess] Session error:", err);
+          return res.status(500).send("Session setup failed. Please try again.");
+        }
+        const returnTo = req.query.returnTo || "/mission-control";
+        console.log(`[DemoAccess] Demo session established \u2192 ${returnTo}`);
+        res.redirect(returnTo);
+      });
+    } catch (error) {
+      console.error("[DemoAccess] Error:", error);
+      res.status(500).send("Demo access setup failed. Please try again.");
+    }
+  });
+}
+
 // server/routes/org-setup-routes.ts
 init_storage();
 
@@ -37798,6 +37869,8 @@ function registerAudioRoutes(app2) {
 
 // server/authConfig.ts
 var PUBLIC_ROUTES = [
+  // Demo access bypass — shareable link for investors and pilot prospects
+  "/api/demo-access",
   // Marketing & Demo Routes - allow prospects to view content
   "/api/tts",
   // Text-to-speech for founder story narration
@@ -38584,6 +38657,7 @@ async function registerRoutes(app2, existingServer) {
   app2.use("/api/incidents", incident_routes_default);
   app2.use("/api/readiness", incident_routes_default);
   registerActivationRoutes(app2);
+  registerDemoAccessRoute(app2);
   registerAudioRoutes(app2);
   app2.get("/api/scenario-templates", async (req, res) => {
     try {
