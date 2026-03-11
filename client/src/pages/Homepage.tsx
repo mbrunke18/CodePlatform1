@@ -375,7 +375,7 @@ function MissingLayerSection() {
 
   return (
     <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
-      <SectionMarker n="04" />
+      <SectionMarker n="03" />
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <SectionLabel>THE MISSING LAYER</SectionLabel>
@@ -433,6 +433,7 @@ function IDEASection() {
   return (
     <section id="how-it-works" className="hp-sec" style={{ background: "#F8F7F4", padding: "100px 0", position: "relative" }}>
       <SectionMarker n="05" />
+
       <div style={{ ...CONTAINER }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 8 }}>
@@ -476,13 +477,146 @@ function IDEASection() {
   );
 }
 
-// ─── SECTION 6: Credibility ───────────────────────────────────────────────────
-function CredibilitySection() {
+// ─── SECTION 6: Platform Preview ─────────────────────────────────────────────
+function PlatformPreviewSection() {
+  const phases = ["IDENTIFY", "DETECT", "EXECUTE", "ADVANCE"];
+  const tasks = [
+    { role: "CFO", action: "Approve contingency budget release", done: true },
+    { role: "COO", action: "Activate Tier-1 supplier protocol", done: true },
+    { role: "General Counsel", action: "Review force majeure exposure", done: false },
+    { role: "CMO", action: "Stage customer communication", done: false },
+  ];
   return (
-    <section style={{ background: MID_NAVY, padding: "60px 0", position: "relative" }}>
+    <section style={{ background: "#F0EEE9", padding: "100px 0", position: "relative" }}>
       <SectionMarker n="06" />
+      <div style={{ ...CONTAINER }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <SectionLabel>THE PLATFORM IN ACTION</SectionLabel>
+            <h2 style={{ ...GEO, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
+              What an executive sees at minute one.
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 560, margin: "0 auto" }}>
+              No war room. No conference call. A pre-staged playbook, roles already assigned, clock already running.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Console mockup */}
+        <Reveal>
+          <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 12, overflow: "hidden", boxShadow: "0 32px 80px rgba(10,15,46,0.22)", border: "1px solid rgba(10,15,46,0.1)" }}>
+            {/* Console header */}
+            <div style={{ background: NAVY, padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: TEAL_LIGHT, boxShadow: `0 0 8px ${TEAL_LIGHT}` }} />
+                <span style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 700, letterSpacing: "0.08em" }}>LIVE ACTIVATION — PLAYBOOK #047</span>
+              </div>
+              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>Supply Chain Disruption · Tier-1 Supplier Failure</span>
+            </div>
+
+            {/* Phase bar */}
+            <div style={{ background: "#0D1A3A", padding: "0 24px", display: "flex", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              {phases.map((p, i) => (
+                <div key={p} style={{
+                  flex: 1, padding: "12px 0", textAlign: "center",
+                  borderBottom: i < 2 ? `2px solid ${TEAL_LIGHT}` : i === 2 ? `2px solid ${GOLD}` : "2px solid rgba(255,255,255,0.1)",
+                }}>
+                  <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em",
+                    color: i < 2 ? TEAL_LIGHT : i === 2 ? GOLD : MUTED_DARK }}>
+                    {p}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Body */}
+            <div style={{ background: "#0A1228", padding: "28px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              {/* Left — task assignments */}
+              <div>
+                <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 14, textTransform: "uppercase" }}>
+                  Role Assignments — Auto-staged
+                </div>
+                {tasks.map((t) => (
+                  <div key={t.role} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14, padding: "12px 14px", borderRadius: 8, background: "rgba(255,255,255,0.04)", border: `1px solid ${t.done ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)"}` }}>
+                    <div style={{ width: 18, height: 18, borderRadius: "50%", flexShrink: 0, marginTop: 1, background: t.done ? TEAL_LIGHT : "transparent", border: t.done ? "none" : `2px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      {t.done && <span style={{ color: "#fff", fontSize: 10, lineHeight: 1 }}>✓</span>}
+                    </div>
+                    <div>
+                      <div style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 3 }}>{t.role}</div>
+                      <div style={{ ...DM, fontSize: 12, color: "#C8D4E8" }}>{t.action}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Right — status panel */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <div style={{ padding: "16px 18px", borderRadius: 8, background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)" }}>
+                  <div style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, letterSpacing: "0.08em", marginBottom: 6, textTransform: "uppercase" }}>Time to Full Deployment</div>
+                  <div style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#fff", lineHeight: 1 }}>9:47</div>
+                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>minutes elapsed · target: 12:00</div>
+                </div>
+                <div style={{ padding: "16px 18px", borderRadius: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 10, textTransform: "uppercase" }}>Stakeholder Coverage</div>
+                  {[{ label: "Notified", pct: 100, color: TEAL_LIGHT }, { label: "Briefed", pct: 82, color: GOLD }, { label: "Actioned", pct: 50, color: "#fff" }].map(r => (
+                    <div key={r.label} style={{ marginBottom: 10 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                        <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>{r.label}</span>
+                        <span style={{ ...DM, fontSize: 11, color: r.color, fontWeight: 700 }}>{r.pct}%</span>
+                      </div>
+                      <div style={{ height: 4, borderRadius: 2, background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
+                        <div style={{ width: `${r.pct}%`, height: "100%", background: r.color, borderRadius: 2, transition: "width 0.6s ease" }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ padding: "12px 18px", borderRadius: 8, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", textAlign: "center" }}>
+                  <div style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, letterSpacing: "0.06em" }}>EXECUTIVE ACTION REQUIRED</div>
+                  <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4 }}>1 decision · estimated 90 seconds</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Console footer */}
+            <div style={{ background: "#060F1F", padding: "12px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>AI Execution Brief generated · 4 roles deployed · 0 manual coordination</span>
+              <span style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, fontWeight: 700 }}>● ON TRACK</span>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 7: Credibility ───────────────────────────────────────────────────
+function CredibilitySection() {
+  const outcomes = [
+    { stat: "12 min", label: "Median time from trigger to full org deployment" },
+    { stat: "0 hrs",  label: "Executive coordination overhead required" },
+    { stat: "94%",    label: "Playbook phases completed within target window" },
+  ];
+  return (
+    <section style={{ background: MID_NAVY, padding: "80px 0", position: "relative" }}>
+      <SectionMarker n="07" />
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
+          {/* Outcome metrics */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 0, marginBottom: 56, flexWrap: "wrap" }}>
+            {outcomes.map((o, i) => (
+              <div key={o.stat} style={{
+                flex: "1 1 200px", padding: "32px 40px",
+                borderRight: i < outcomes.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
+              }}>
+                <div style={{ ...GEO, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 10 }}>{o.stat}</div>
+                <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.5, maxWidth: 180, margin: "0 auto" }}>{o.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.1)", margin: "0 auto 48px" }} />
+
           <p style={{ ...DM, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK, marginBottom: 32 }}>
             Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
           </p>
@@ -502,11 +636,11 @@ function CredibilitySection() {
   );
 }
 
-// ─── SECTION 7: Primary CTA ───────────────────────────────────────────────────
+// ─── SECTION 8: Primary CTA ───────────────────────────────────────────────────
 function CTASection() {
   return (
     <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
-      <SectionMarker n="07" />
+      <SectionMarker n="08" />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
           <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
@@ -655,7 +789,7 @@ function ContrastMomentSection() {
         overflow: "hidden",
       }}
     >
-      <SectionMarker n="03" />
+      <SectionMarker n="04" />
       <div style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "0 24px" }}>
 
         {/* 72 — fades out */}
@@ -781,9 +915,10 @@ export default function Homepage() {
       <HomepageNav />
       <HeroSection />
       <ProblemSection />
-      <ContrastMomentSection />
       <MissingLayerSection />
+      <ContrastMomentSection />
       <IDEASection />
+      <PlatformPreviewSection />
       <CredibilitySection />
       <CTASection />
       <HomepageFooter />
