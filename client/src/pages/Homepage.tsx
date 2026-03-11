@@ -262,11 +262,11 @@ function HeroSection() {
             ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
             lineHeight: 1.25, maxWidth: 800, margin: "0 auto 20px",
           }}>
-            The decision takes <span style={{ color: TEAL_LIGHT }}>minutes.</span>
+            The decision to act takes <span style={{ color: TEAL_LIGHT }}>minutes.</span>
             <br />
-            The response takes <span style={{ color: RED_CRISIS }}>days.</span>
+            The right response takes <span style={{ color: RED_CRISIS }}>days to form.</span>
             <br />
-            The execution takes <span style={{ color: RED_CRISIS, opacity: 0.75 }}>weeks.</span>
+            Execution takes <span style={{ color: RED_CRISIS, opacity: 0.75 }}>weeks to begin.</span>
           </h1>
 
           <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 16px", lineHeight: 1.4 }}>
