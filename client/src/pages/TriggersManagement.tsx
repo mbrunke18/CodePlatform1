@@ -26,6 +26,36 @@ const SEV_COLOR: Record<string, string> = {
   critical: '#EF4444', high: '#F97316', medium: GOLD, low: '#6B7280',
 };
 
+const SOURCE_LABELS: Record<string, string> = {
+  'news-api': 'News API', 'press-releases': 'Press Releases', 'competitor-monitoring': 'Competitor Monitoring',
+  'web-scraping': 'Web Intelligence', 'competitive-intel': 'Competitive Intel', 'uspto': 'USPTO',
+  'epo': 'EPO', 'wipo': 'WIPO', 'linkedin': 'LinkedIn', 'indeed': 'Indeed', 'sec-filings': 'SEC Filings',
+  'bloomberg': 'Bloomberg', 'semrush': 'SEMrush', 'similarweb': 'SimilarWeb', 'adbeat': 'Adbeat',
+  'sprout-social': 'Sprout Social', 'brandwatch': 'Brandwatch', 'regulatory-filings': 'Regulatory Filings',
+  'g2': 'G2', 'capterra': 'Capterra', 'crm-salesforce': 'Salesforce CRM', 'crm-hubspot': 'HubSpot CRM',
+  'crm': 'CRM', 'pitchbook': 'PitchBook', 'crunchbase': 'Crunchbase', 'capital-iq': 'S&P Capital IQ',
+  'hr-systems': 'HR Systems', 'hris': 'HRIS', 'workday': 'Workday', 'glassdoor': 'Glassdoor',
+  'greenhouse': 'Greenhouse ATS', 'erp': 'ERP', 'erp-systems': 'ERP Systems', 'sap': 'SAP',
+  'federal-register': 'Federal Register', 'ftc': 'FTC', 'fda': 'FDA', 'doj': 'DOJ',
+  'congress-api': 'Congress.gov', 'govtrack': 'GovTrack', 'state-agencies': 'State Agencies',
+  'fred': 'Fed FRED', 'fed': 'Federal Reserve', 'bis': 'BIS', 'world-bank': 'World Bank',
+  'treasury': 'US Treasury', 'bls': 'Bureau of Labor Statistics', 'forex-data': 'Forex Data',
+  'earnings-transcripts': 'Earnings Transcripts', 'analyst-reports': 'Analyst Reports',
+  'github': 'GitHub', 'github-api': 'GitHub API', 'datadog': 'Datadog', 'aws': 'AWS',
+  'aws-cloudwatch': 'AWS CloudWatch', 'azure': 'Azure', 'api-monitoring': 'API Monitoring',
+  'threat-intel': 'Threat Intelligence', 'cisa-alerts': 'CISA Alerts', 'darkweb-monitoring': 'Dark Web Monitoring',
+  'google-news-api': 'Google News', 'twitter-api': 'X (Twitter)', 'survey-platforms': 'Survey Platforms',
+  'supplier-database': 'Supplier Database', 'supplier-monitoring': 'Supplier Monitoring',
+  'freight-indices': 'Freight Indices', 'commodity-exchanges': 'Commodity Exchanges',
+  'gainsight': 'Gainsight', 'zendesk': 'Zendesk', 'customer-success': 'Customer Success Platform',
+  'gartner': 'Gartner', 'forrester': 'Forrester', 'sustainability-platform': 'Sustainability Platform',
+  'weather-api': 'Weather API', 'eiu': 'Economist Intelligence Unit',
+};
+
+function sourceLabel(src: string): string {
+  return SOURCE_LABELS[src] ?? src.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
 // ── Proximity scoring ────────────────────────────────────────────────────────
 // Produces 0–100 score for how close a trigger is to firing
 function proximityScore(trigger: any): number {
@@ -439,11 +469,22 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 </div>
                               )}
 
+                              {/* Monitored from — data sources */}
+                              {dp?.sources?.length > 0 && (
+                                <div className="mt-2">
+                                  <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mr-2">Monitored via:</span>
+                                  <span className="inline-flex flex-wrap gap-1">
+                                    {dp.sources.map((src: string) => (
+                                      <span key={src} className="text-[9px] font-semibold px-2 py-0.5"
+                                        style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.2)' }}>
+                                        {sourceLabel(src)}
+                                      </span>
+                                    ))}
+                                  </span>
+                                </div>
+                              )}
                               {/* Meta row */}
                               <div className="flex items-center gap-4 mt-2">
-                                {dp?.sources?.slice(0, 2).map(src => (
-                                  <span key={src} className="text-[9px] bg-gray-100 text-gray-400 px-1.5 py-0.5">{src}</span>
-                                ))}
                                 {trigger.updatedAt && (
                                   <div className="flex items-center gap-1 text-[9px] text-gray-400">
                                     <Clock className="w-3 h-3" />
@@ -638,10 +679,26 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 </SheetHeader>
                 <div className="space-y-4">
                   {dp && (
-                    <div className="p-4 border border-[#E8E4DC] bg-[#F8F7F4]">
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Watching</p>
-                      <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
-                      <p className="text-xs text-gray-500 mt-1">{dp.description}</p>
+                    <div className="p-4 border border-[#E8E4DC] bg-[#F8F7F4] space-y-3">
+                      <div>
+                        <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Watching</p>
+                        <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
+                        <p className="text-xs text-gray-500 mt-1">{dp.description}</p>
+                      </div>
+                      {dp.sources?.length > 0 && (
+                        <div className="pt-3 border-t border-[#E8E4DC]">
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Monitored From</p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {dp.sources.map((src: string) => (
+                              <span key={src} className="text-[10px] font-semibold px-2.5 py-1"
+                                style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.25)' }}>
+                                {sourceLabel(src)}
+                              </span>
+                            ))}
+                          </div>
+                          <p className="text-[9px] text-gray-400 mt-2">{dp.sources.length} data {dp.sources.length === 1 ? 'source' : 'sources'} feeding this signal</p>
+                        </div>
+                      )}
                     </div>
                   )}
                   <div className="p-4" style={{ borderLeft: `2px solid ${TEAL}`, background: 'rgba(43,138,110,0.04)' }}>
