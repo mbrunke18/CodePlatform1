@@ -1004,7 +1004,6 @@ export default function Homepage() {
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
-      <AnonymousQuoteSection />
       <CredibilitySection />
       <CTASection />
       <HomepageFooter />
