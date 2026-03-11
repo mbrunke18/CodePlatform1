@@ -328,6 +328,34 @@ function HeroSection() {
 
 // ─── SECTION 3: The Problem ───────────────────────────────────────────────────
 function ProblemSection() {
+  const RED_BORDER = "#C0392B";
+  const cards = [
+    {
+      num: "01", title: "The Trigger Fires", time: "T+0",
+      timeLabel: "Seconds",
+      body: "A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment is NOW — and it won't wait.",
+      accent: GOLD, terminal: false,
+    },
+    {
+      num: "02", title: "72 Hours Just to Assemble", time: "T+72hrs",
+      timeLabel: "Days Lost",
+      body: "Emergency calls. Competing priorities. No clear ownership. Three days of coordination pass before everyone is finally in the room — and nothing has been executed.",
+      accent: GOLD, terminal: false,
+    },
+    {
+      num: "03", title: "Execution Takes Weeks to Begin", time: "T+3 weeks",
+      timeLabel: "Weeks Lost",
+      body: "Now that everyone is aligned, the real delay starts. Roles assigned manually. Documents drafted from scratch. Budgets negotiated. Tasks staged one by one. Weeks pass before a single coordinated action lands.",
+      accent: RED_BORDER, terminal: false,
+    },
+    {
+      num: "04", title: "The Window Has Already Closed", time: "T+∞",
+      timeLabel: "Advantage Gone",
+      body: "Competitors responded weeks ago. The market moved. The board is asking questions. The opportunity — or the crisis — has already been decided. Without you.",
+      accent: RED_BORDER, terminal: true,
+    },
+  ];
+
   return (
     <section className="hp-sec" style={{ background: IVORY, padding: "100px 0", position: "relative" }}>
       <SectionMarker n="02" />
@@ -338,39 +366,64 @@ function ProblemSection() {
           <Reveal style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%" }}>
             <SectionLabel>THE PROBLEM</SectionLabel>
             <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 32 }}>
-              The trigger fires in minutes.
+              The trigger fires in seconds.
               <br />
-              72 hours later, they're finally in the room.
+              Execution begins weeks later.
             </h2>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment is NOW.
+              A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment arrives instantly.
             </p>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              Your organization spends 72 hours in emergency calls, improvised documents, and unclear ownership before a single coordinated action is taken.
+              Your organization spends 72 hours in emergency calls before anyone is aligned — then weeks more manually staging roles, documents, tasks, and budgets before a single coordinated action is taken.
             </p>
-            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7 }}>
-              By the time you're aligned, the window has moved.
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 40 }}>
+              By the time execution begins, the window has already moved.
             </p>
+
+            {/* Timeline contrast callout */}
+            <div style={{ borderTop: `2px solid ${GOLD}`, paddingTop: 24 }}>
+              <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
+                Without Execution OS
+              </div>
+              {[
+                { label: "Trigger detected",    val: "Instantly" },
+                { label: "Room assembled",       val: "72 hours" },
+                { label: "Execution begins",     val: "3–4 weeks" },
+                { label: "Competitive window",   val: "Closed" },
+              ].map((row) => (
+                <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: 10, marginBottom: 10, borderBottom: `1px solid ${BORDER}` }}>
+                  <span style={{ ...DM, fontSize: 14, color: "#555" }}>{row.label}</span>
+                  <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: row.val === "Closed" ? RED_BORDER : "#1A1A2E" }}>{row.val}</span>
+                </div>
+              ))}
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4, padding: "12px 16px", background: "#0A0F2E", borderRadius: 4 }}>
+                <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: GOLD }}>With Execution OS</span>
+                <span style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "#fff" }}>12 minutes</span>
+              </div>
+            </div>
           </Reveal>
 
           {/* Right — failure cards */}
-          <div style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%", display: "flex", flexDirection: "column", gap: 16 }}>
-            {[
-              { num: "01", title: "The Trigger Fires",  body: "A competitor announcement. A market shift. A leadership departure. The strategic moment arrives." },
-              { num: "02", title: "72 Hours Just to Assemble",  body: "Emergency calls. Competing priorities. No clear ownership. After three days of coordination, they finally have everyone in a room — and haven't executed a single thing." },
-              { num: "03", title: "The Window Closes",  body: "By the time your org aligns, competitors have responded. The advantage is gone." },
-            ].map((c, i) => (
+          <div style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%", display: "flex", flexDirection: "column", gap: 12 }}>
+            {cards.map((c, i) => (
               <Reveal key={c.num} delay={i * 0.1}>
                 <div style={{
-                  background: "#fff", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`,
-                  padding: 24, borderRadius: 2, position: "relative", overflow: "hidden",
+                  background: c.terminal ? "rgba(192,57,43,0.04)" : "#fff",
+                  border: `1px solid ${c.terminal ? "rgba(192,57,43,0.25)" : BORDER}`,
+                  borderLeft: `3px solid ${c.accent}`,
+                  padding: "20px 24px", borderRadius: 2, position: "relative", overflow: "hidden",
                 }}>
-                  <div style={{ ...GEO, fontSize: 48, fontWeight: 700, color: "rgba(192,57,43,0.12)", position: "absolute", bottom: 8, right: 16, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
+                  <div style={{ ...GEO, fontSize: 42, fontWeight: 700, color: c.terminal ? "rgba(192,57,43,0.1)" : "rgba(192,57,43,0.09)", position: "absolute", bottom: 6, right: 14, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
                     {c.num}
                   </div>
-                  <div style={{ ...DM, fontSize: 14, fontWeight: 700, color: "#1A1A2E", marginBottom: 8 }}>{c.title}</div>
-                  <div style={{ ...DM, fontSize: 14, color: "#555", lineHeight: 1.6 }}>{c.body}</div>
-                  {i < 2 && <div style={{ ...DM, color: GOLD, fontSize: 14, marginTop: 12, textAlign: "center" }}>↓</div>}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                    <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: c.terminal ? RED_BORDER : "#1A1A2E" }}>{c.title}</span>
+                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: c.terminal ? RED_BORDER : GOLD, background: c.terminal ? "rgba(192,57,43,0.08)" : "rgba(201,168,76,0.12)", padding: "2px 8px", borderRadius: 2 }}>{c.timeLabel}</span>
+                  </div>
+                  <div style={{ ...DM, fontSize: 13, color: "#555", lineHeight: 1.6 }}>{c.body}</div>
+                  {i < cards.length - 1 && (
+                    <div style={{ ...DM, color: i >= 1 ? RED_BORDER : GOLD, fontSize: 14, marginTop: 10, textAlign: "center", opacity: 0.6 }}>↓</div>
+                  )}
                 </div>
               </Reveal>
             ))}
