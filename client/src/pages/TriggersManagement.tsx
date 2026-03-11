@@ -516,7 +516,13 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               )}
                               {isAuthenticated ? (
                                 <button
-                                  onClick={() => setLocation('/identify/playbook-library')}
+                                  onClick={() => {
+                                    const rec = trigger.recommendedPlaybooks?.[0];
+                                    const searchTerm = rec
+                                      ? rec.replace(/-/g, ' ')
+                                      : trigger.name || '';
+                                    setLocation(`/identify/playbook-library?search=${encodeURIComponent(searchTerm)}`);
+                                  }}
                                   className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
                                   style={{ background: GOLD, color: NAVY }}
                                 >

@@ -331,7 +331,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const [, setLocation] = useLocation();
   const [activeDomain, setActiveDomain] = useState("all");
   const [activeUrgency, setActiveUrgency] = useState("all");
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('search') || '';
+  });
   const { isAuthenticated } = useAuth();
 
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };

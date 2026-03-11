@@ -399,7 +399,7 @@ function ProblemSection() {
                   ...DM, fontSize: 11, fontWeight: 700, color: GOLD,
                   background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`,
                   padding: "3px 10px", borderRadius: 2,
-                }}>+233 more triggers monitored</span>
+                }}>170 playbooks · 20 categories · 248 data points</span>
               </div>
             </div>
 
