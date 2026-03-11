@@ -329,7 +329,10 @@ function CompoundDisruptionSection() {
 
 export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
-  const [activeDomain, setActiveDomain] = useState("all");
+  const [activeDomain, setActiveDomain] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('domain') || 'all';
+  });
   const [activeUrgency, setActiveUrgency] = useState("all");
   const [search, setSearch] = useState(() => {
     const params = new URLSearchParams(window.location.search);

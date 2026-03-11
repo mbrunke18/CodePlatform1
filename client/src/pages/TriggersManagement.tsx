@@ -21,6 +21,26 @@ import { format } from 'date-fns';
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
 const TEAL = '#2B8A6E';
+
+const TRIGGER_CATEGORY_TO_DOMAIN: Record<string, string> = {
+  behavior:     'gtm',
+  competitive:  'competitive',
+  customer:     'gtm',
+  cyber:        'crisis',
+  economic:     'financial',
+  esg:          'regulatory',
+  execution:    'gtm',
+  financial:    'financial',
+  geopolitical: 'strategic',
+  innovation:   'technology',
+  market:       'competitive',
+  media:        'technology',
+  partnership:  'ma',
+  regulatory:   'regulatory',
+  supplychain:  'gtm',
+  talent:       'talent',
+  technology:   'crisis',
+};
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const SEV_COLOR: Record<string, string> = {
@@ -459,19 +479,30 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 </span>
                               </div>
 
-                              {/* Pre-activate recommendation */}
-                              {preActivate && trigger.recommendedPlaybooks?.length > 0 && (
-                                <div className="flex items-center gap-2 px-3 py-1.5 mt-1"
-                                  style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.25)' }}>
-                                  <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
-                                  <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>
-                                    Consider pre-activating:
-                                  </span>
-                                  <span className="text-[9px] text-gray-600">
-                                    {trigger.recommendedPlaybooks.slice(0, 2).map((p: string) =>
-                                      p.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())
-                                    ).join(' · ')}
-                                  </span>
+                              {/* Aligned Playbooks — always visible */}
+                              {trigger.recommendedPlaybooks?.length > 0 && (
+                                <div className="mt-2 px-3 py-2"
+                                  style={{ background: 'rgba(10,15,46,0.04)', border: '1px solid rgba(201,168,76,0.3)', borderLeft: `3px solid ${GOLD}` }}>
+                                  <div className="flex items-center gap-1.5 mb-1.5">
+                                    <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
+                                    <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>
+                                      Aligned Playbooks
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-wrap gap-1">
+                                    {trigger.recommendedPlaybooks.map((p: string) => (
+                                      <span key={p}
+                                        className="text-[9px] font-semibold px-2 py-0.5 cursor-pointer hover:opacity-80"
+                                        style={{ background: 'rgba(10,15,46,0.07)', color: NAVY, border: `1px solid rgba(10,15,46,0.15)`, borderRadius: 2 }}
+                                        onClick={() => {
+                                          const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
+                                          setLocation(`/identify/playbook-library?domain=${domain}`);
+                                        }}
+                                      >
+                                        {p.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                                      </span>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
 
@@ -517,11 +548,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               {isAuthenticated ? (
                                 <button
                                   onClick={() => {
-                                    const rec = trigger.recommendedPlaybooks?.[0];
-                                    const searchTerm = rec
-                                      ? rec.replace(/-/g, ' ')
-                                      : trigger.name || '';
-                                    setLocation(`/identify/playbook-library?search=${encodeURIComponent(searchTerm)}`);
+                                    const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
+                                    setLocation(`/identify/playbook-library?domain=${domain}`);
                                   }}
                                   className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
                                   style={{ background: GOLD, color: NAVY }}
