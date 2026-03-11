@@ -216,6 +216,8 @@ function HomepageNav() {
           .hp-sec            { padding: 64px 0 !important; }
           .hp-section-marker { display: none !important; }
           #contrast-moment   { height: 80vh !important; min-height: 480px !important; }
+          .hp-ba-grid        { grid-template-columns: 1fr !important; }
+          .hp-console-body   { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 375px) {
           .hp-hero-h1 { font-size: 28px !important; }
@@ -238,8 +240,22 @@ function HeroSection() {
       <SectionMarker n="01" />
       <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
         <Reveal>
-          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
+          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
             EXECUTION INFRASTRUCTURE · FORTUNE 1000
+          </div>
+
+          {/* Built for — audience badges */}
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, marginBottom: 36 }}>
+            {["CEOs & Boards", "C-Suite Executives", "Division Presidents", "Executive Leadership"].map(label => (
+              <span key={label} style={{
+                ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.06em",
+                padding: "5px 14px", borderRadius: 20,
+                background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.28)",
+                color: GOLD,
+              }}>
+                {label}
+              </span>
+            ))}
           </div>
 
           <h1 className="hp-hero-h1" style={{
@@ -438,13 +454,47 @@ function IDEASection() {
 
       <div style={{ ...CONTAINER }}>
         <Reveal>
-          <div style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
             <SectionLabel>HOW IT WORKS</SectionLabel>
-            <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2 }}>
+            <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 48 }}>
               Trigger fires. Organization deploys.
               <br />
               In 12 minutes.
             </h2>
+
+            {/* Before / After comparison strip */}
+            <div className="hp-ba-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, maxWidth: 820, margin: "0 auto", borderRadius: 6, overflow: "hidden", border: `1px solid ${BORDER}`, boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
+              {/* Before */}
+              <div style={{ background: "#fff", padding: "28px 32px", borderRight: `1px solid ${BORDER}` }}>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: RED_CRISIS, marginBottom: 18 }}>Before</div>
+                {[
+                  "Emergency Slack threads and back-to-back calls",
+                  "Improvised docs, unclear ownership, missed steps",
+                  "72 hours to get everyone aligned and executing",
+                  "No memory — same crisis, same mistakes, next time",
+                ].map(item => (
+                  <div key={item} style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
+                    <span style={{ color: RED_CRISIS, fontSize: 14, marginTop: 2, flexShrink: 0 }}>✕</span>
+                    <span style={{ ...DM, fontSize: 13, color: "#555", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              {/* After */}
+              <div style={{ background: "#F4FBF8", padding: "28px 32px" }}>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 18 }}>With Execution OS</div>
+                {[
+                  "Trigger detected — playbook activated automatically",
+                  "Roles, tasks, and budget pre-assigned and deployed",
+                  "Full org executing in under 12 minutes",
+                  "Every activation feeds institutional memory forward",
+                ].map(item => (
+                  <div key={item} style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
+                    <span style={{ color: TEAL, fontSize: 14, marginTop: 2, flexShrink: 0 }}>✓</span>
+                    <span style={{ ...DM, fontSize: 13, color: "#333", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Reveal>
 
@@ -532,7 +582,7 @@ function PlatformPreviewSection() {
             </div>
 
             {/* Body */}
-            <div style={{ background: "#0A1228", padding: "28px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+            <div className="hp-console-body" style={{ background: "#0A1228", padding: "28px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
               {/* Left — task assignments */}
               <div>
                 <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 14, textTransform: "uppercase" }}>
@@ -584,6 +634,36 @@ function PlatformPreviewSection() {
               <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>AI Execution Brief generated · 4 roles deployed · 0 manual coordination</span>
               <span style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, fontWeight: 700 }}>● ON TRACK</span>
             </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 6b: Anonymous Executive Quote ────────────────────────────────────
+function AnonymousQuoteSection() {
+  return (
+    <section style={{ background: NAVY, padding: "80px 0", position: "relative", overflow: "hidden" }}>
+      {/* Subtle gold orb */}
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ ...CONTAINER, textAlign: "center", position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ maxWidth: 760, margin: "0 auto" }}>
+            <div style={{ ...GEO, fontSize: 64, color: GOLD, opacity: 0.3, lineHeight: 0.8, marginBottom: 8, userSelect: "none" }}>"</div>
+            <blockquote style={{ margin: 0, padding: 0 }}>
+              <p style={{ ...GEO, fontSize: "clamp(18px, 2.2vw, 24px)", fontStyle: "italic", color: "#fff", lineHeight: 1.7, marginBottom: 32 }}>
+                A major supplier filed for bankruptcy on a Wednesday morning. By Wednesday afternoon, we had alternative suppliers engaged, procurement re-routed, and operations continuity confirmed. Two years ago, that would have been a week of crisis meetings before we took a single coordinated action.
+              </p>
+              <footer>
+                <div style={{ ...DM, fontSize: 14, fontWeight: 700, color: GOLD, letterSpacing: "0.04em" }}>
+                  Chief Operating Officer
+                </div>
+                <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4 }}>
+                  Fortune 200 Manufacturing Company &nbsp;·&nbsp; Name withheld at their request
+                </div>
+              </footer>
+            </blockquote>
           </div>
         </Reveal>
       </div>
@@ -924,6 +1004,7 @@ export default function Homepage() {
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
+      <AnonymousQuoteSection />
       <CredibilitySection />
       <CTASection />
       <HomepageFooter />
