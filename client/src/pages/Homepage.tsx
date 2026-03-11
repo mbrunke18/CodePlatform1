@@ -262,11 +262,11 @@ function HeroSection() {
             ...GEO, fontSize: 44, fontWeight: 700, color: "#fff",
             lineHeight: 1.3, maxWidth: 780, margin: "0 auto 20px",
           }}>
-            <span style={{ color: RED_CRISIS }}>Days</span> just to reach a decision.
+            <span style={{ color: RED_CRISIS, fontWeight: 900 }}>Days</span> just to reach a decision.
             <br />
-            <span style={{ color: RED_CRISIS }}>More days</span> just to align the right people.
+            <span style={{ color: RED_CRISIS, fontWeight: 900 }}>More days</span> just to align the right people.
             <br />
-            <span style={{ color: RED_CRISIS }}>Weeks</span> just to begin executing.
+            <span style={{ color: RED_CRISIS, fontWeight: 900 }}>Weeks</span> just to begin executing.
           </h1>
 
           <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 16px", lineHeight: 1.4 }}>
