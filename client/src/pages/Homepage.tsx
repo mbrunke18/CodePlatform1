@@ -133,7 +133,7 @@ function HomepageNav() {
             >
               How It Works
             </button>
-            <Link href="/playbook-library" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Playbooks</Link>
+            <Link href="/platform-overview" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Execution OS</Link>
             <Link href="/pricing" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Pricing</Link>
             <Link href="/founder-story" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>About</Link>
             <Link
