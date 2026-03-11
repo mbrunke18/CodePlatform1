@@ -1,11 +1,7 @@
 # VaughnMartin — Execution Operating System
 
 ## Overview
-VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation, enabling a 12-minute response to strategic triggers. The platform eliminates organizational lag by integrating AI-driven trigger monitoring with a library of 170 strategic playbooks across 9 domains. It operates on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), fostering a human-AI partnership where AI handles monitoring and recommendations, and human executives retain decision-making. The project aims to become "The Execution Infrastructure Enterprises Are Missing."
-
-**Target audience:** The full executive layer — CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, and Boards of Directors. Designed for all C-suite and executive leadership roles across every major industry. Cross-industry by design: financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges. The homepage "Built for" tags read: CEOs & Boards · C-Suite Executives · Division Presidents · Executive Leadership. Never list only a subset of roles or specific industries as primary targets.
-
-**Brand tagline:** "We Make Enterprises Fearless." — primary brand statement used in the Footer (sitewide), Homepage closing CTA, PilotProgram CTA section, TryDemo completion screen, and FounderStory manifesto. This tagline should appear on high-impact closing moments across the product. The supporting quote is: "Stop improvising. Start executing."
+VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies. It automates project creation, task assignment, document staging, and budget allocation, enabling a 12-minute response to strategic triggers. The platform integrates AI-driven trigger monitoring with 170 strategic playbooks across 9 domains, operating on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE). It fosters a human-AI partnership, with AI handling monitoring and recommendations while human executives retain decision-making. The project aims to become "The Execution Infrastructure Enterprises Are Missing," targeting C-suite executives and boards across all major industries. Its brand tagline is "We Make Enterprises Fearless."
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -20,60 +16,58 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 ## System Architecture
 
 **UI/UX Decisions:**
-- **Default Theme:** Light mode with pure white backgrounds; dark mode supported.
+- **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
-- **Branding:** Uses `VaughnMartin` (company) and `Execution OS` (product). `BrandStamp` component ensures consistent logo placement via `StandardNav` on all pages.
-- **Navigation:** Streamlined navigation with distinct CTAs for authenticated and unauthenticated users. All pages must be reachable through the UI.
-- **Layout:** `PageLayout` component wraps all pages with a `StandardNav` header and `Footer`.
-- **Homepage Messaging:** Focuses on replacing coordination with 12-minute execution, highlighting the IDEA Framework, the missing layer gap, and research-backed validation. The "Built for" badge row displays: CEOs & Boards · C-Suite Executives · Division Presidents · Executive Leadership. Social proof line reads: "Active across Fortune 1000 enterprises in every major industry." Never name only specific roles or industries.
+- **Branding:** Consistent `VaughnMartin` (company) and `Execution OS` (product) branding with logo placement on all key pages.
+- **Navigation:** Streamlined navigation with distinct CTAs for authenticated and unauthenticated users.
+- **Layout:** All pages are wrapped by a `PageLayout` component including `StandardNav` and `Footer`.
+- **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation, targeting a broad executive audience.
 
 **Technical Implementations:**
-- **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter routing, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
+- **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
 - **Backend:** Node.js, Express.js, TypeScript.
-- **Database:** PostgreSQL (Neon serverless) via Drizzle ORM. Dev mode prefers `DATABASE_URL_DEV`; falls back to `DATABASE_URL` with a console warning so engineers don't accidentally touch production.
-- **Real-time:** Socket.IO WebSocket server for real-time collaboration.
+- **Database:** PostgreSQL (Neon serverless) with Drizzle ORM.
+- **Real-time:** Socket.IO WebSocket server.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
-- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles, with 20 signal categories and 248+ data points.
-- **Authentication:** Replit OIDC with Passport.js; new users auto-get an org on first login.
-- **Role-Based Access:** `requireRole()` middleware for write routes (admin, executive, strategist); no role means read-only.
+- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles across 20 categories and 248+ data points.
+- **Authentication:** Replit OIDC with Passport.js; new users get an organization on first login.
+- **Role-Based Access:** `requireRole()` middleware enforces permissions for write routes.
 - **AI Services:** OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
-- **Email:** Resend from `noreply@vaughnmartin.com`.
-- **IDEA Framework:** Core framework supporting playbook customization, AI pattern matching, coordinated orchestration, and outcome analysis.
-- **Error Monitoring:** Sentry — server uses `SENTRY_DSN`, frontend uses `VITE_SENTRY_DSN`. Both optional; graceful no-op when absent.
-- **Route Architecture:** `server/routes.ts` is the main router (~6,800 lines). Domain logic is extracted into `server/routes/` modules: `helpers.ts` (auth middleware), `activation-routes.ts`, `org-setup-routes.ts`, `dynamic-strategy-routes.ts`, `onboarding-routes.ts`, `execution-sync-routes.ts`, `decision-coordination-routes.ts`, `intelligence-routes.ts`, `pilot-routes.ts`, `incident-routes.ts`, `playbookLibraryRoutes.ts`, `practiceDrillRoutes.ts`, `webhookRoutes.ts`, `oauth-routes.ts`, `integrations.ts`.
+- **Error Monitoring:** Sentry integration for server and frontend.
+- **Route Architecture:** Centralized `server/routes.ts` with domain logic extracted into modular files.
 
 **Feature Specifications:**
-- **Founder Story / Manifesto (`/founder-story`):** `FounderStory.tsx` is a manifesto-first page. The full "We Make Enterprises Fearless" manifesto by Marty Brunke (March 2026) is the dominant centerpiece — 7 Roman-numeral sections with pull quotes, styled body text, and an inline IDEA Framework navy card. The bio strip (MB monogram + Fortune 500 company badges) and two video cards (90-second intro, 3:30 full story) appear in a separate off-white section below. Closing CTA: "Request Pilot Access" → `/pilot-program`. Do not revert to a video-first or bio-first layout.
-- **Playbook Library:** 170 active playbooks across 9 domains, plus 4 compound playbooks. Includes enriched content like `why_it_matters`, `signal_sources`, `enriched_phases`. Three free sample playbooks for unauthenticated users.
-- **Try Demo Experience:** Public-facing `/try-demo` route demonstrating the before/after value of Execution OS in 7 phases (Select, Chaos, IDENTIFY, DETECT, EXECUTE, ADVANCE, Complete).
-- **Role Availability Signal:** Admin-set flags warn the activation console when key roles are limited, ensuring the 12-minute promise.
-- **Activation Outcome Card:** Closes the ADVANCE loop by seeding an outcome record for every completed playbook activation, showing task stats, target met status, human input, and GPT-4o executive summary.
-- **Admin Customer Health View:** Admin-only route `/admin/customer-health` providing a RAG-status view of pilot organizations based on activation frequency.
-- **Execution Intelligence Dashboard + Maturity Score:** Displays a normalized 0-100 maturity score based on activation, advance closure, and trigger depth, with corresponding labels (Emerging, Developing, Operating).
-- **Playbook Performance Fingerprints:** A dedicated tab in `PlaybookDetail.tsx` showing activation count, average execution time, target met rate, and recent outcome notes for playbooks with 3+ activations.
-- **Investor Gate (`InvestorGate.tsx`):** A full-screen dark navy gate component wrapping `/investor-resources`, `/investor-presentation`, and `/board-briefings`. Captures name, work email, company, and role via a form; stores leads in the `investor_leads` DB table via `POST /api/investor-access` (public, no auth required). Access token stored in localStorage for 7 days. Admin can view all leads via `GET /api/investor-leads`.
-- **AI Execution Brief (`PlaybookActivationConsole.tsx`):** Before confirming a playbook activation, an AI-generated commander-style brief is shown. Endpoint `GET /api/playbooks/:id/execution-brief` calls GPT-4o and returns 6 structured fields: situation framing, mission objective, critical roles, top risks, success indicators, and commander note. Displays as a navy card above the PreActivationImpactPreview. Falls back to a static template if OpenAI is unavailable. Auth-gated (401 for unauthenticated).
-- **Graduated Attention — Completed Task Collapse (`WorkspaceExecute.tsx`):** In the MyActionsPanel, completed tasks collapse into a teal summary bar ("X tasks completed") with an expand/collapse toggle. Keeps active tasks front-and-center without losing completed work context.
-- **Source Governance Indicator (`PlaybookDetail.tsx`):** A version-based color-coded status badge in the sidebar of every playbook detail page. Teal = Current (v1.x), Gold = Under Review (v2–3.x), Red = Recertification Required (v4+). Uses `playbook.version` with `'1.0'` as the default fallback.
-- **Trigger Monitor Auth Gating (`TriggersManagement.tsx`):** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggle switches) are hidden from unauthenticated visitors. Non-auth users see a grayed-out "Sign In to Activate" button that navigates to `/get-started`. `SOURCE_LABELS` map converts raw source IDs to human-readable labels (e.g., `'crm-salesforce'` → `'Salesforce CRM'`). The trigger data itself remains visible to unauthenticated users so the platform demonstrates value before sign-in.
-- **Homepage Hero Headline:** Three-line gold-on-navy problem statement — `GOLD_LIGHT` weight-900 for the time words, white weight-700 for the body. Lines: *"Days just to reach a decision. / More days just to align the right people. / Weeks just to begin executing."* Subtitle: *"We collapse all three into 12 minutes."* Do not revert to red highlights or teal/red mixed colors.
-- **Homepage Problem Section (`ProblemSection`):** Four failure cards (Seconds → Days Lost → Weeks Lost → Advantage Gone) with escalating red borders on cards 3–4. Left side includes a trigger category tag strip labeled "Every situation. Every trigger. Same problem." showing 15 trigger types + "+233 more triggers monitored". Timeline contrast table at the bottom shows the before/after: 72 hours + 3–4 weeks → 12 minutes.
+- **Founder Story / Manifesto (`/founder-story`):** Manifesto-first page emphasizing the "We Make Enterprises Fearless" statement, supported by bio and video content.
+- **Playbook Library:** 170 active playbooks across 9 domains, with enriched content and free samples for unauthenticated users.
+- **Try Demo Experience (`/try-demo`):** Public route demonstrating the platform's value through a 7-phase process.
+- **Role Availability Signal:** Admin-set flags for managing key role limitations to ensure 12-minute response.
+- **Activation Outcome Card:** Records outcomes for completed playbook activations, including task stats and AI summaries.
+- **Admin Customer Health View:** Admin-only dashboard showing RAG status of pilot organizations.
+- **Execution Intelligence Dashboard + Maturity Score:** Displays a 0-100 maturity score based on platform usage.
+- **Playbook Performance Fingerprints:** Details activation count, execution time, and target met rate for playbooks.
+- **Investor Gate (`InvestorGate.tsx`):** Secure access to investor resources, capturing leads via a form.
+- **AI Execution Brief (`PlaybookActivationConsole.tsx`):** AI-generated commander-style brief before playbook activation.
+- **Graduated Attention — Completed Task Collapse (`WorkspaceExecute.tsx`):** Collapses completed tasks in the MyActionsPanel for better focus.
+- **Source Governance Indicator (`PlaybookDetail.tsx`):** Version-based color-coded status badge for playbooks.
+- **Trigger Monitor Auth Gating (`TriggersManagement.tsx`):** Interactive controls hidden from unauthenticated users, while trigger data remains visible.
+- **Trigger Configuration Wizard (`TriggerConfigurationWizard.tsx`):** 4-step wizard for configuring triggers using 248 data points and mapping to playbooks.
+- **Homepage Hero Headline:** Three-line gold-on-navy problem statement highlighting time savings.
+- **Homepage Problem Section:** Four failure cards illustrating escalating losses, contrasting old and new execution timelines.
 
 **"WOW" Features (5 Differentiators):**
-- **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence, highlighting "Value Preserved" and time saved.
-- **Compound Threat Intelligence:** GPT-4o cross-domain threat synthesis detecting patterns across multiple signal domains.
-- **Shadow Strategy Simulator (`/simulation-studio`):** Digital Twin scenario dry-run, providing Survive/Thrive scores and identifying relevant playbooks/coverage gaps.
-- **Strategic Recorder (`/strategic-recorder`):** Generates custom playbook outlines from crisis notes or transcripts using GPT-4o.
-- **War Room Pulse Map:** Animated SVG concentric ring visualization of 20 signal domains, showing trigger counts, proximity scores, and pulse animations for at-risk nodes.
+- **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence.
+- **Compound Threat Intelligence:** GPT-4o-powered cross-domain threat synthesis.
+- **Shadow Strategy Simulator (`/simulation-studio`):** Digital Twin scenario dry-run.
+- **Strategic Recorder (`/strategic-recorder`):** Generates playbook outlines from crisis notes using GPT-4o.
+- **War Room Pulse Map:** Animated SVG visualization of signal domains.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
-- **Build:** Both `dist/index.js` (server bundle) and `dist/public/` (frontend) are pre-built and committed to the repo. The deployment build command is a no-op (`sh -c ":"`), so the bundle phase completes instantly. Before publishing, always run locally: (1) `npx vite build` to update `dist/public/`, and (2) `esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. Commit both before publishing. The deployment run command is `npm run start` = `NODE_ENV=production node dist/index.js`.
-- **Server Startup Order:** HTTP server starts immediately. In production, `express.static(dist/public)` and `app.get("/", sendFile(index.html))` are registered BEFORE `server.listen()` so Replit's healthcheck (GET /) returns 200 from the very first millisecond. Routes and background initialization run async after listen. Without this, GET / returns 500 during the startup window and healthchecks fail.
-- **Startup Migrations (server/index.ts):** On every boot, the server runs `CREATE TABLE IF NOT EXISTS` for: `action_items`, `investor_leads`, `strategic_recordings`. This ensures production DB stays in sync with new tables without requiring a manual `db:push`. Add any new tables here alongside their Drizzle schema definition.
-- **Playbook Enrichment Seed:** `server/seeds/enrichPlaybooksStartupSeed.ts` runs on every boot and seeds enriched playbook content from `server/seeds/data/enrichedPlaybooksData.json` (2.1MB embedded in dist). Any playbook with null `enrichedPhases` is automatically backfilled.
-- **Route Ordering Rule:** In Express routers, specific named routes (e.g., `/telemetry`, `/featured`) MUST be registered BEFORE parameterized catch-all routes (e.g., `/:playbookId`). Violating this causes the parameterized route to shadow the specific one — resulting in 500 errors instead of the expected 200/401.
-- **Stale Archive Warning:** Never leave large `.tar.gz` or archive files in the workspace root. Replit bundles the entire workspace directory for deployment; stale archives can push the bundle past timeout limits.
+- **Build:** Frontend and server bundles pre-built and committed to the repo, with a no-op deployment build command.
+- **Server Startup Order:** HTTP server starts immediately, serving static assets before asynchronous initialization.
+- **Startup Migrations:** `CREATE TABLE IF NOT EXISTS` for key tables on every boot.
+- **Playbook Enrichment Seed:** Seeds enriched playbook content from JSON on every boot.
+- **Route Ordering Rule:** Specific named routes registered before parameterized catch-all routes.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
