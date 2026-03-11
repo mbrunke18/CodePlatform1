@@ -259,14 +259,14 @@ function HeroSection() {
           </div>
 
           <h1 className="hp-hero-h1" style={{
-            ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
-            lineHeight: 1.25, maxWidth: 800, margin: "0 auto 20px",
+            ...GEO, fontSize: 44, fontWeight: 700, color: "#fff",
+            lineHeight: 1.3, maxWidth: 780, margin: "0 auto 20px",
           }}>
-            The decision to act takes <span style={{ color: TEAL_LIGHT }}>minutes.</span>
+            The decision to act takes <span style={{ color: "rgba(255,255,255,0.9)" }}>minutes.</span>
             <br />
-            The right response takes <span style={{ color: RED_CRISIS }}>days to form.</span>
+            The right response takes <span style={{ color: GOLD_LIGHT }}>days to form.</span>
             <br />
-            Execution takes <span style={{ color: RED_CRISIS, opacity: 0.75 }}>weeks to begin.</span>
+            Execution takes <span style={{ color: RED_CRISIS }}>weeks to begin.</span>
           </h1>
 
           <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 16px", lineHeight: 1.4 }}>
