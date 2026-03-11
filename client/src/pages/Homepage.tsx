@@ -88,8 +88,8 @@ function SectionMarker({ n }: { n: string }) {
   return (
     <div className="hp-section-marker" style={{
       position: "absolute", left: 24, top: 40,
-      ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
-      color: MUTED_DARK, opacity: 0.45, userSelect: "none", pointerEvents: "none",
+      ...DM, fontSize: 12, fontWeight: 700, letterSpacing: "0.10em",
+      color: GOLD, opacity: 0.75, userSelect: "none", pointerEvents: "none",
     }}>
       [{n}]
     </div>
