@@ -12,6 +12,7 @@ import pilotRoutes from "./routes/pilot-routes";
 import demoRiskRoutes from "./routes/demoRiskRoutes";
 import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
+import { registerDemoAccessRoute } from "./routes/demoAccessRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
 import { registerOnboardingRoutes } from "./routes/onboarding-routes";
@@ -228,6 +229,9 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // Live Activation routes
   registerActivationRoutes(app);
+
+  // Demo access bypass (shareable link for investors and pilot prospects)
+  registerDemoAccessRoute(app);
 
   // Audio/TTS routes for voice features
   registerAudioRoutes(app);

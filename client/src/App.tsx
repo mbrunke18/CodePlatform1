@@ -150,6 +150,7 @@ const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
+const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
@@ -397,6 +398,7 @@ function Router() {
         <Route path="/playbook-customization" component={PlaybookCustomization} />
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
         <Route path="/get-started" component={GetStarted} />
+        <Route path="/demo-access" component={DemoAccess} />
         {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}
         {renderRoutes(["/new-user-journey", "/start", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/preparedness-report" component={PreparednessReport} />

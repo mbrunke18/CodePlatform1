@@ -10,6 +10,9 @@
  * These are typically used for marketing, demos, and public information
  */
 export const PUBLIC_ROUTES = [
+  // Demo access bypass — shareable link for investors and pilot prospects
+  '/api/demo-access',
+
   // Marketing & Demo Routes - allow prospects to view content
   '/api/tts', // Text-to-speech for founder story narration
   '/api/scenario-templates',
