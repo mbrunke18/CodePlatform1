@@ -244,17 +244,19 @@ function HeroSection() {
 
           <h1 className="hp-hero-h1" style={{
             ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
-            lineHeight: 1.15, maxWidth: 800, margin: "0 auto 28px",
+            lineHeight: 1.15, maxWidth: 800, margin: "0 auto 20px",
           }}>
-            At <span style={{ color: TEAL_LIGHT }}>12 minutes</span>,
-            {" "}you're executing.
+            The decision takes <span style={{ color: TEAL_LIGHT }}>minutes.</span>
             <br />
-            At <span style={{ color: RED_CRISIS }}>72 hours</span>,
-            {" "}they're still getting in the room.
+            The response takes <span style={{ color: RED_CRISIS }}>days.</span>
           </h1>
 
-          <p style={{ ...DM, fontSize: 18, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            170 pre-staged playbooks. 216+ signals monitored. One trigger fires — every stakeholder is deployed and executing in under 12 minutes. While your competitors are still on their first emergency call, you're three days into response.
+          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 560, margin: "0 auto 16px", lineHeight: 1.4 }}>
+            We built the infrastructure that closes that gap.
+          </p>
+
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 620, margin: "0 auto 40px", lineHeight: 1.7 }}>
+            Execution OS is the coordination infrastructure Fortune 1000 enterprises use to deploy a full organizational response in under 12 minutes — pre-staged, pre-assigned, zero improvisation.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
