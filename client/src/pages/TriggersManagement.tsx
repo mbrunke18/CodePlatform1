@@ -494,7 +494,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                       <span key={p.id}
                                         className="text-[9px] font-semibold px-2 py-0.5 cursor-pointer hover:opacity-80 flex items-center gap-1"
                                         style={{ background: 'rgba(10,15,46,0.07)', color: NAVY, border: `1px solid rgba(10,15,46,0.15)`, borderRadius: 2 }}
-                                        onClick={() => setLocation(`/identify/playbooks/${p.id}`)}
+                                        onClick={() => setLocation(`/playbook-library/${p.id}`)}
                                         title={`Open: ${p.name}`}
                                       >
                                         {p.name}
@@ -548,7 +548,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                   onClick={() => {
                                     const first = trigger.linkedPlaybooks?.[0];
                                     if (first?.id) {
-                                      setLocation(`/identify/playbooks/${first.id}`);
+                                      setLocation(`/playbook-library/${first.id}`);
                                     } else {
                                       const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
                                       setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
