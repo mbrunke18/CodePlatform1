@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { SIGNAL_CATEGORIES as INTEL_CATEGORIES } from '@shared/intelligence-signals';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -245,10 +246,30 @@ export default function TriggerConfigurationWizard({
     }
   }, [editTrigger, isOpen]);
   
-  // Fetch available playbooks
+  // Fetch available playbooks (all 170 templates)
   const { data: playbooks } = useQuery({
-    queryKey: ['/api/playbooks'],
+    queryKey: ['/api/playbooks/templates'],
   });
+
+  // Map trigger categories to playbook domains for smart filtering
+  const CATEGORY_TO_DOMAIN: Record<string, string> = {
+    competitive: 'Market Dynamics', market: 'Market Dynamics',
+    financial: 'Financial Strategy', economic: 'Financial Strategy',
+    regulatory: 'Regulatory & Compliance', esg: 'Regulatory & Compliance',
+    talent: 'Talent & Leadership', customer: 'Operational Excellence',
+    supplychain: 'Operational Excellence', execution: 'Operational Excellence',
+    behavior: 'Operational Excellence', partnership: 'Market Opportunities',
+    technology: 'Technology & Innovation', cyber: 'Technology & Innovation',
+    innovation: 'Technology & Innovation', media: 'Brand & Reputation',
+    geopolitical: 'AI Governance',
+  };
+
+  const relevantPlaybooks = Array.isArray(playbooks)
+    ? playbooks.filter((p: any) => !selectedCategory || p.domain === CATEGORY_TO_DOMAIN[selectedCategory])
+    : [];
+  const otherPlaybooks = Array.isArray(playbooks)
+    ? playbooks.filter((p: any) => selectedCategory && p.domain !== CATEGORY_TO_DOMAIN[selectedCategory])
+    : [];
   
   // Create/Update trigger mutation
   const saveTriggerMutation = useMutation({
@@ -425,15 +446,41 @@ export default function TriggerConfigurationWizard({
         
         <Separator className="my-4" />
         
-        {/* Step 1: Category & Basics */}
+        {/* Step 1: Situation & Category */}
         {step === 1 && (
           <div className="space-y-6">
+            {/* Situation framing */}
+            <div className="p-4 rounded-lg border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
+              <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>What strategic situation do you want to prepare for?</p>
+              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right playbook the moment it fires.</p>
+              <div className="flex flex-wrap gap-2 mt-3">
+                {[
+                  { label: 'Competitor price cut', cat: 'competitive', desc: 'Competitor cuts prices significantly' },
+                  { label: 'Key executive departure', cat: 'talent', desc: 'Critical leadership role becomes vacant' },
+                  { label: 'Regulatory mandate', cat: 'regulatory', desc: 'New regulation requires immediate compliance' },
+                  { label: 'Supply chain disruption', cat: 'supplychain', desc: 'Supplier failure or logistics breakdown' },
+                  { label: 'Cybersecurity incident', cat: 'cyber', desc: 'Security breach or threat detected' },
+                  { label: 'Market share decline', cat: 'market', desc: 'Measurable loss of market position' },
+                ].map(ex => (
+                  <button key={ex.label}
+                    className="text-xs px-2.5 py-1 rounded border font-medium hover:opacity-80 transition-opacity"
+                    style={{ background: selectedCategory === ex.cat ? '#0A0F2E' : '#F0EDE8', color: selectedCategory === ex.cat ? '#fff' : '#444', borderColor: selectedCategory === ex.cat ? '#0A0F2E' : '#E8E4DC' }}
+                    onClick={() => {
+                      setSelectedCategory(ex.cat);
+                      if (!triggerName) setTriggerName(ex.label);
+                      if (!description) setDescription(ex.desc);
+                    }}
+                  >{ex.label}</button>
+                ))}
+              </div>
+            </div>
+
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="trigger-name">Trigger Name *</Label>
+                <Label htmlFor="trigger-name">Situation Name *</Label>
                 <Input
                   id="trigger-name"
-                  placeholder="e.g., NPS Score Drop Alert"
+                  placeholder="e.g., Competitor Price Cut Alert"
                   value={triggerName}
                   onChange={(e) => setTriggerName(e.target.value)}
                   data-testid="input-trigger-name"
@@ -441,10 +488,10 @@ export default function TriggerConfigurationWizard({
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description">What happens in this situation?</Label>
                 <Textarea
                   id="description"
-                  placeholder="Describe when this trigger should fire and what action should be taken..."
+                  placeholder="Describe the scenario and what outcome you want to avoid or capture..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   data-testid="input-trigger-description"
@@ -507,15 +554,15 @@ export default function TriggerConfigurationWizard({
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label>Select Metric to Monitor *</Label>
+                <Label>Select Data Point to Monitor *</Label>
                 <Select value={selectedField} onValueChange={setSelectedField}>
                   <SelectTrigger data-testid="select-field">
-                    <SelectValue placeholder="Choose a metric..." />
+                    <SelectValue placeholder="Choose a data point..." />
                   </SelectTrigger>
                   <SelectContent>
-                    {SIGNAL_FIELDS[selectedCategory]?.map((field) => (
-                      <SelectItem key={field.id} value={field.id}>
-                        {field.name} ({field.unit})
+                    {INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints?.map((dp: any) => (
+                      <SelectItem key={dp.id} value={dp.id}>
+                        {dp.name} ({dp.metricType || 'value'})
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -777,47 +824,72 @@ export default function TriggerConfigurationWizard({
             </div>
             
             <div className="space-y-4">
-              <Label className="text-lg font-semibold">Recommended Playbooks</Label>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                Select playbooks that should be suggested when this trigger fires
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[300px] overflow-y-auto">
-                {Array.isArray(playbooks) && playbooks.length > 0 ? (
-                  playbooks.map((playbook: any) => (
-                    <Card 
-                      key={playbook.id}
-                      className={`cursor-pointer transition-all ${
-                        selectedPlaybooks.includes(playbook.id)
-                          ? 'ring-2 ring-green-600 bg-green-50 dark:bg-green-900/20'
-                          : 'hover:shadow-md'
-                      }`}
-                      onClick={() => togglePlaybook(playbook.id)}
-                      data-testid={`playbook-card-${playbook.id}`}
-                    >
-                      <CardContent className="p-4">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="font-medium">{playbook.name || playbook.title}</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">{playbook.category}</p>
-                          </div>
-                          {selectedPlaybooks.includes(playbook.id) && (
-                            <Check className="h-5 w-5 text-green-600" />
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))
-                ) : (
-                  <Card className="col-span-2">
-                    <CardContent className="p-8 text-center">
-                      <PlayCircle className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
-                      <p className="text-gray-600">No playbooks available</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">Create playbooks first to link them to triggers</p>
-                    </CardContent>
-                  </Card>
-                )}
+              <div className="flex items-center justify-between">
+                <Label className="text-lg font-semibold">Link Playbooks to This Trigger</Label>
+                <span className="text-xs font-semibold px-2 py-1 rounded" style={{ background: 'rgba(201,168,76,0.12)', color: '#C9A84C' }}>
+                  {selectedPlaybooks.length} selected
+                </span>
               </div>
+              <p className="text-sm text-gray-600">
+                When this trigger fires, these playbooks will be immediately surfaced for decision-maker approval and execution.
+              </p>
+
+              {relevantPlaybooks.length > 0 && (
+                <>
+                  <div className="text-xs font-bold uppercase tracking-wider" style={{ color: '#C9A84C' }}>
+                    Recommended for this situation ({relevantPlaybooks.length} playbooks)
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto">
+                    {relevantPlaybooks.map((playbook: any) => (
+                      <div key={playbook.id}
+                        className="cursor-pointer p-3 rounded border transition-all hover:opacity-90"
+                        style={{
+                          background: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#fff',
+                          borderColor: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#E8E4DC',
+                          borderLeft: `3px solid ${selectedPlaybooks.includes(playbook.id) ? '#C9A84C' : '#E8E4DC'}`,
+                        }}
+                        onClick={() => togglePlaybook(playbook.id)}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div>
+                            <p className="text-sm font-semibold" style={{ color: selectedPlaybooks.includes(playbook.id) ? '#fff' : '#0A0F2E' }}>{playbook.name}</p>
+                            <p className="text-xs mt-0.5" style={{ color: selectedPlaybooks.includes(playbook.id) ? 'rgba(255,255,255,0.6)' : '#6B7280' }}>{playbook.domain}</p>
+                          </div>
+                          {selectedPlaybooks.includes(playbook.id) && <Check className="h-4 w-4 flex-shrink-0" style={{ color: '#C9A84C' }} />}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+
+              {otherPlaybooks.length > 0 && (
+                <>
+                  <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-2">
+                    Other playbooks ({otherPlaybooks.length})
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[140px] overflow-y-auto opacity-70">
+                    {otherPlaybooks.map((playbook: any) => (
+                      <div key={playbook.id}
+                        className="cursor-pointer p-3 rounded border transition-all hover:opacity-90"
+                        style={{
+                          background: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#F8F7F4',
+                          borderColor: selectedPlaybooks.includes(playbook.id) ? '#0A0F2E' : '#E8E4DC',
+                        }}
+                        onClick={() => togglePlaybook(playbook.id)}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <div>
+                            <p className="text-sm font-medium" style={{ color: selectedPlaybooks.includes(playbook.id) ? '#fff' : '#0A0F2E' }}>{playbook.name}</p>
+                            <p className="text-xs" style={{ color: selectedPlaybooks.includes(playbook.id) ? 'rgba(255,255,255,0.6)' : '#9CA3AF' }}>{playbook.domain}</p>
+                          </div>
+                          {selectedPlaybooks.includes(playbook.id) && <Check className="h-4 w-4 flex-shrink-0 text-green-500" />}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
             
             {/* Summary */}
