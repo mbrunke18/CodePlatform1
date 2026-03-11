@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/useAuth';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import {
@@ -119,7 +120,7 @@ function findDataPoint(dpId: string) {
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get('category');
@@ -128,6 +129,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
   const [editTriggerData, setEditTriggerData]       = useState<any>(null);
   const [viewTrigger, setViewTrigger]               = useState<any>(null);
   const { toast } = useToast();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -221,12 +223,14 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 <p className="text-xs text-gray-400 mt-0.5">Categories ranked by how close they are to firing an alert</p>
               </div>
             </div>
-            <Button
-              style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
-              onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
-            >
-              <Plus className="w-4 h-4 mr-2" /> Add Alert Rule
-            </Button>
+            {isAuthenticated && (
+              <Button
+                style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+                onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
+              >
+                <Plus className="w-4 h-4 mr-2" /> Add Alert Rule
+              </Button>
+            )}
           </div>
 
           {/* Stats strip */}
@@ -372,13 +376,15 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         </div>
                       </div>
                     </div>
-                    <Button
-                      size="sm"
-                      onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
-                      style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}
-                    >
-                      <Plus className="w-3.5 h-3.5 mr-1" /> Add Rule
-                    </Button>
+                    {isAuthenticated && (
+                      <Button
+                        size="sm"
+                        onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
+                        style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}
+                      >
+                        <Plus className="w-3.5 h-3.5 mr-1" /> Add Rule
+                      </Button>
+                    )}
                   </div>
                 </div>
 
@@ -496,30 +502,45 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
                             {/* Right: toggle + edit + activate */}
                             <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                              <div className="flex items-center gap-2">
-                                <span className="text-[9px] font-bold uppercase tracking-wider"
-                                  style={{ color: trigger.isActive ? TEAL : '#9CA3AF' }}>
-                                  {trigger.isActive ? 'On' : 'Off'}
-                                </span>
-                                <Switch
-                                  checked={trigger.isActive}
-                                  onCheckedChange={(isActive) => toggleMutation.mutate({ id: trigger.id, isActive })}
-                                />
-                              </div>
-                              <button
-                                onClick={() => setLocation('/identify/playbook-library')}
-                                className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
-                                style={{ background: GOLD, color: NAVY }}
-                              >
-                                <BookOpen className="w-3 h-3" /> Activate Playbook
-                              </button>
-                              <button
-                                onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
-                                className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
-                                style={{ background: NAVY, color: '#fff' }}
-                              >
-                                <Settings className="w-3 h-3" /> Edit
-                              </button>
+                              {isAuthenticated && (
+                                <div className="flex items-center gap-2">
+                                  <span className="text-[9px] font-bold uppercase tracking-wider"
+                                    style={{ color: trigger.isActive ? TEAL : '#9CA3AF' }}>
+                                    {trigger.isActive ? 'On' : 'Off'}
+                                  </span>
+                                  <Switch
+                                    checked={trigger.isActive}
+                                    onCheckedChange={(isActive) => toggleMutation.mutate({ id: trigger.id, isActive })}
+                                  />
+                                </div>
+                              )}
+                              {isAuthenticated ? (
+                                <button
+                                  onClick={() => setLocation('/identify/playbook-library')}
+                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
+                                  style={{ background: GOLD, color: NAVY }}
+                                >
+                                  <BookOpen className="w-3 h-3" /> Activate Playbook
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() => setLocation('/get-started')}
+                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
+                                  style={{ background: '#E8E4DC', color: '#9CA3AF', cursor: 'pointer' }}
+                                  title="Sign in to activate playbooks"
+                                >
+                                  <BookOpen className="w-3 h-3" /> Sign In to Activate
+                                </button>
+                              )}
+                              {isAuthenticated && (
+                                <button
+                                  onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
+                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
+                                  style={{ background: NAVY, color: '#fff' }}
+                                >
+                                  <Settings className="w-3 h-3" /> Edit
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -543,14 +564,26 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       {selectedEntry.proximity}%
                     </span>
                   </p>
-                  <button
-                    onClick={() => setLocation('/identify/playbook-library')}
-                    className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
-                    style={{ background: GOLD, color: NAVY }}
-                  >
-                    <BookOpen className="w-3.5 h-3.5" />
-                    Activate a Playbook for This Trigger
-                  </button>
+                  {isAuthenticated ? (
+                    <button
+                      onClick={() => setLocation('/identify/playbook-library')}
+                      className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
+                      style={{ background: GOLD, color: NAVY }}
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      Activate a Playbook for This Trigger
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setLocation('/get-started')}
+                      className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
+                      style={{ background: '#E8E4DC', color: '#9CA3AF' }}
+                      title="Sign in to activate playbooks"
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      Sign In to Activate Playbooks
+                    </button>
+                  )}
                   <span className="text-[9px] text-gray-400 hidden">
                     {selectedEntry.sc.dataPoints.length} data points available in this category
                   </span>
@@ -707,10 +740,12 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       Fires when {formatOp(viewTrigger.conditions?.operator, viewTrigger.conditions?.value)}
                     </p>
                   </div>
-                  <Button className="w-full" style={{ background: NAVY, color: '#fff', fontWeight: 700 }}
-                    onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}>
-                    <Settings className="w-4 h-4 mr-2" /> Edit This Rule
-                  </Button>
+                  {isAuthenticated && (
+                    <Button className="w-full" style={{ background: NAVY, color: '#fff', fontWeight: 700 }}
+                      onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}>
+                      <Settings className="w-4 h-4 mr-2" /> Edit This Rule
+                    </Button>
+                  )}
                 </div>
               </>
             );
