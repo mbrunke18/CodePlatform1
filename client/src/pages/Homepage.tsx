@@ -84,6 +84,18 @@ function SectionLabel({ children }: { children: string }) {
   );
 }
 
+function SectionMarker({ n }: { n: string }) {
+  return (
+    <div className="hp-section-marker" style={{
+      position: "absolute", left: 24, top: 40,
+      ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
+      color: MUTED_DARK, opacity: 0.45, userSelect: "none", pointerEvents: "none",
+    }}>
+      [{n}]
+    </div>
+  );
+}
+
 // ─── SECTION 1: Navigation ────────────────────────────────────────────────────
 function HomepageNav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -190,18 +202,20 @@ function HomepageNav() {
 
       <style>{`
         @media (max-width: 768px) {
-          .hp-desktop-nav { display: none !important; }
-          .hp-hamburger   { display: flex !important; }
-          .hp-stat-row    { flex-direction: column !important; gap: 24px !important; }
-          .hp-stat-div    { display: none !important; }
-          .hp-prob-grid   { flex-direction: column !important; }
-          .hp-idea-grid   { grid-template-columns: 1fr !important; }
-          .hp-footer-cols { flex-direction: column !important; gap: 40px !important; text-align: center; }
-          .hp-hero-h1     { font-size: 36px !important; }
-          .hp-missing-h2  { font-size: 30px !important; }
-          .hp-cta-h2      { font-size: 30px !important; }
-          .hp-cta-btn     { display: block !important; width: calc(100% - 48px) !important; text-align: center; }
-          .hp-sec         { padding: 64px 0 !important; }
+          .hp-desktop-nav    { display: none !important; }
+          .hp-hamburger      { display: flex !important; }
+          .hp-stat-row       { flex-direction: column !important; gap: 24px !important; }
+          .hp-stat-div       { display: none !important; }
+          .hp-prob-grid      { flex-direction: column !important; }
+          .hp-idea-grid      { grid-template-columns: 1fr !important; }
+          .hp-footer-cols    { flex-direction: column !important; gap: 40px !important; text-align: center; }
+          .hp-hero-h1        { font-size: 36px !important; }
+          .hp-missing-h2     { font-size: 30px !important; }
+          .hp-cta-h2         { font-size: 30px !important; }
+          .hp-cta-btn        { display: block !important; width: calc(100% - 48px) !important; text-align: center; }
+          .hp-sec            { padding: 64px 0 !important; }
+          .hp-section-marker { display: none !important; }
+          #contrast-moment   { height: 80vh !important; min-height: 480px !important; }
         }
         @media (max-width: 375px) {
           .hp-hero-h1 { font-size: 28px !important; }
@@ -216,10 +230,12 @@ function HeroSection() {
   return (
     <section style={{
       ...SECTION_DARK_BG,
+      position: "relative",
       minHeight: "100vh",
       display: "flex", alignItems: "center",
       paddingTop: 80, paddingBottom: 80,
     }}>
+      <SectionMarker n="01" />
       <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
         <Reveal>
           <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
@@ -272,15 +288,16 @@ function HeroSection() {
             borderTop: "1px solid rgba(201,168,76,0.15)",
           }}>
             {[
-              { num: "170",    label: "Pre-Staged Playbooks" },
-              { num: "216+",   label: "Signals Monitored" },
-              { num: "12 min", label: "Full Org Deployment" },
+              { num: "170",    label: "Zero improvisation when the trigger fires",   sub: "Pre-staged playbooks across 9 strategic domains" },
+              { num: "216+",   label: "Threats detected before they become crises",  sub: "Signals monitored every 15 minutes" },
+              { num: "12 min", label: "Full organizational deployment",              sub: "Before the first emergency call ends" },
             ].map((s, i) => (
               <div key={s.num} style={{ display: "contents" }}>
                 {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)", flexShrink: 0 }} />}
-                <div style={{ textAlign: "center" }}>
+                <div style={{ textAlign: "center", maxWidth: 200 }}>
                   <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.num}</div>
-                  <div style={{ ...DM, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em", color: MUTED_DARK, marginTop: 6 }}>{s.label}</div>
+                  <div style={{ ...DM, fontSize: 13, fontWeight: 600, color: "#fff", marginTop: 8, lineHeight: 1.3 }}>{s.label}</div>
+                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, marginTop: 4, lineHeight: 1.4, opacity: 0.8 }}>{s.sub}</div>
                 </div>
               </div>
             ))}
@@ -294,7 +311,8 @@ function HeroSection() {
 // ─── SECTION 3: The Problem ───────────────────────────────────────────────────
 function ProblemSection() {
   return (
-    <section className="hp-sec" style={{ background: IVORY, padding: "100px 0" }}>
+    <section className="hp-sec" style={{ background: IVORY, padding: "100px 0", position: "relative" }}>
+      <SectionMarker n="02" />
       <div style={{ ...CONTAINER }}>
         <div className="hp-prob-grid" style={{ display: "flex", gap: 60, alignItems: "flex-start" }}>
 
@@ -356,7 +374,8 @@ function MissingLayerSection() {
   ];
 
   return (
-    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0" }}>
+    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
+      <SectionMarker n="04" />
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <SectionLabel>THE MISSING LAYER</SectionLabel>
@@ -412,7 +431,8 @@ function IDEASection() {
   ];
 
   return (
-    <section id="how-it-works" className="hp-sec" style={{ background: "#F8F7F4", padding: "100px 0" }}>
+    <section id="how-it-works" className="hp-sec" style={{ background: "#F8F7F4", padding: "100px 0", position: "relative" }}>
+      <SectionMarker n="05" />
       <div style={{ ...CONTAINER }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 8 }}>
@@ -459,7 +479,8 @@ function IDEASection() {
 // ─── SECTION 6: Credibility ───────────────────────────────────────────────────
 function CredibilitySection() {
   return (
-    <section style={{ background: MID_NAVY, padding: "60px 0" }}>
+    <section style={{ background: MID_NAVY, padding: "60px 0", position: "relative" }}>
+      <SectionMarker n="06" />
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <p style={{ ...DM, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK, marginBottom: 32 }}>
@@ -484,7 +505,8 @@ function CredibilitySection() {
 // ─── SECTION 7: Primary CTA ───────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0" }}>
+    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
+      <SectionMarker n="07" />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
           <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
@@ -599,6 +621,158 @@ function useScrollDepth() {
   }, []);
 }
 
+// ─── SECTION 3: Cinematic Contrast Moment ────────────────────────────────────
+function ContrastMomentSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setAnimated(true); obs.disconnect(); }
+    }, { threshold: 0.4 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const t = (delay: number, dur = 0.6): React.CSSProperties => ({
+    transition: `opacity ${dur}s ease ${delay}s, transform ${dur}s ease ${delay}s`,
+  });
+
+  return (
+    <section
+      id="contrast-moment"
+      ref={ref}
+      style={{
+        ...SECTION_DARK_BG,
+        position: "relative",
+        height: "100vh",
+        minHeight: 520,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+      }}
+    >
+      <SectionMarker n="03" />
+      <div style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "0 24px" }}>
+
+        {/* 72 — fades out */}
+        <div
+          className="cm-stat-72"
+          style={{
+            ...GEO,
+            fontSize: "clamp(80px, 20vw, 180px)",
+            fontWeight: 700,
+            color: RED_CRISIS,
+            lineHeight: 1,
+            opacity: animated ? 0.15 : 1,
+            transform: animated ? "scale(0.4)" : "scale(1)",
+            ...t(1.6),
+          }}
+        >
+          72 hrs
+        </div>
+
+        {/* Label for 72 */}
+        <div
+          style={{
+            ...DM, fontSize: 14, color: MUTED_DARK, marginTop: 12, letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            opacity: animated ? 0 : 1,
+            ...t(0.8, 0.5),
+          }}
+        >
+          Current enterprise response time
+        </div>
+
+        {/* 12 min — builds in */}
+        <div
+          className="cm-stat-12"
+          style={{
+            ...GEO,
+            fontSize: "clamp(80px, 20vw, 180px)",
+            fontWeight: 700,
+            color: TEAL_LIGHT,
+            lineHeight: 1,
+            marginTop: 8,
+            opacity: animated ? 1 : 0,
+            transform: animated ? "scale(1)" : "scale(0.6)",
+            ...t(2.0),
+          }}
+        >
+          12 min
+        </div>
+
+        {/* Label for 12 */}
+        <div
+          style={{
+            ...DM, fontSize: 14, color: MUTED_DARK, marginTop: 12, letterSpacing: "0.06em",
+            textTransform: "uppercase",
+            opacity: animated ? 1 : 0,
+            ...t(2.4, 0.5),
+          }}
+        >
+          With Execution OS
+        </div>
+
+        {/* Tagline */}
+        <div
+          style={{
+            ...GEO,
+            fontStyle: "italic",
+            fontSize: "clamp(16px, 2vw, 22px)",
+            color: "#fff",
+            marginTop: 48,
+            opacity: animated ? 1 : 0,
+            ...t(2.8, 0.5),
+          }}
+        >
+          The difference is infrastructure.
+        </div>
+
+        {/* Scroll chevron */}
+        <div
+          style={{
+            marginTop: 56,
+            opacity: animated ? 1 : 0,
+            ...t(3.4, 0.5),
+          }}
+        >
+          <div
+            className="cm-chevron"
+            style={{
+              display: "inline-block",
+              color: GOLD,
+              fontSize: 22,
+              animation: animated ? "cm-pulse 1.4s ease-in-out infinite" : "none",
+            }}
+          >
+            ↓
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes cm-pulse {
+          0%, 100% { opacity: 0.5; transform: translateY(0); }
+          50%       { opacity: 1;   transform: translateY(6px); }
+        }
+        @media (max-width: 768px) {
+          #contrast-moment .cm-stat-72 { opacity: 0.15 !important; transform: scale(0.4) !important; transition: none !important; }
+          #contrast-moment .cm-stat-12 { opacity: 1   !important; transform: scale(1)   !important; transition: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          #contrast-moment * { transition: none !important; animation: none !important; }
+          #contrast-moment .cm-stat-72 { opacity: 0.15 !important; transform: scale(0.4) !important; }
+          #contrast-moment .cm-stat-12 { opacity: 1   !important; transform: scale(1)   !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Homepage() {
   useScrollDepth();
@@ -607,6 +781,7 @@ export default function Homepage() {
       <HomepageNav />
       <HeroSection />
       <ProblemSection />
+      <ContrastMomentSection />
       <MissingLayerSection />
       <IDEASection />
       <CredibilitySection />
