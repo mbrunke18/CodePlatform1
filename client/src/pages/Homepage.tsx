@@ -463,7 +463,7 @@ function CredibilitySection() {
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <p style={{ ...DM, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK, marginBottom: 32 }}>
-            Built by someone who ran execution at Ford · Lockheed Martin · Eli Lilly · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
+            Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
           </p>
           <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
             <p style={{ ...GEO, fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 16 }}>
