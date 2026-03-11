@@ -4165,14 +4165,16 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           }
         }
 
-        // Fill remaining slots with domain-matched playbooks ranked by keyword relevance
-        if (matched.length < 4 && domain) {
-          const domainPlaybooks = allPlaybooks
+        // Supplement with domain playbooks that have genuine keyword relevance (score > 0 only).
+        // Never pad to a fixed number — only add playbooks that actually relate to this trigger.
+        if (domain && matched.length < 6) {
+          const relevant = allPlaybooks
             .filter(p => p.domainName === domain && !usedIds.has(p.id))
             .map(p => ({ p, score: scoreMatch(trigger.name || '', p.name, p.triggerCriteria) }))
+            .filter(({ score }) => score > 0)   // only genuine keyword matches
             .sort((a, b) => b.score - a.score)
-            .slice(0, 4 - matched.length);
-          for (const { p } of domainPlaybooks) {
+            .slice(0, 6 - matched.length);       // cap total at 6
+          for (const { p } of relevant) {
             matched.push({ id: p.id, name: p.name, domain: p.domainName || '' });
             usedIds.add(p.id);
           }

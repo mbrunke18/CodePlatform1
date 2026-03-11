@@ -53,6 +53,14 @@ const DOMAIN_DB_MAP: Record<string, string[]> = {
   strategic: ["AI Governance"],
 };
 
+// Reverse map: full domain name → DOMAIN_DB_MAP key
+// Allows ?domain=Operational Excellence (from trigger routing) to resolve correctly
+const DOMAIN_NAME_TO_KEY: Record<string, string> = Object.entries(DOMAIN_DB_MAP)
+  .reduce((acc, [key, names]) => {
+    names.forEach(n => { acc[n] = key; });
+    return acc;
+  }, {} as Record<string, string>);
+
 const compoundScenarios = [
   {
     scenario: "Cyber + Regulatory",
@@ -331,7 +339,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const [, setLocation] = useLocation();
   const [activeDomain, setActiveDomain] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get('domain') || 'all';
+    const raw = params.get('domain') || 'all';
+    // Accept either a short key ("gtm") or a full domain name ("Operational Excellence")
+    return DOMAIN_NAME_TO_KEY[raw] || raw;
   });
   const [activeUrgency, setActiveUrgency] = useState("all");
   const [search, setSearch] = useState(() => {

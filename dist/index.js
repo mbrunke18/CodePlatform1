@@ -41663,9 +41663,9 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
             usedIds.add(found.id);
           }
         }
-        if (matched.length < 4 && domain) {
-          const domainPlaybooks = allPlaybooks.filter((p) => p.domainName === domain && !usedIds.has(p.id)).map((p) => ({ p, score: scoreMatch(trigger.name || "", p.name, p.triggerCriteria) })).sort((a, b) => b.score - a.score).slice(0, 4 - matched.length);
-          for (const { p } of domainPlaybooks) {
+        if (domain && matched.length < 6) {
+          const relevant = allPlaybooks.filter((p) => p.domainName === domain && !usedIds.has(p.id)).map((p) => ({ p, score: scoreMatch(trigger.name || "", p.name, p.triggerCriteria) })).filter(({ score }) => score > 0).sort((a, b) => b.score - a.score).slice(0, 6 - matched.length);
+          for (const { p } of relevant) {
             matched.push({ id: p.id, name: p.name, domain: p.domainName || "" });
             usedIds.add(p.id);
           }
