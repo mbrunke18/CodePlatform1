@@ -371,10 +371,38 @@ function ProblemSection() {
               Execution begins weeks later.
             </h2>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment arrives instantly.
+              It doesn't matter what kind of trigger it is. A cybersecurity breach. A competitor acquisition. A regulatory mandate. A supply chain failure. A leadership departure. A market shift. The strategic moment arrives instantly — and it demands an immediate, coordinated response.
             </p>
+
+            {/* Trigger category tags */}
+            <div style={{ marginBottom: 24 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
+                Every situation. Every trigger. Same problem.
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {[
+                  "Cybersecurity Breach", "Competitor Acquisition", "Regulatory Mandate",
+                  "Supply Chain Failure", "Executive Departure", "Market Shift",
+                  "ESG Crisis", "Financial Shock", "Geopolitical Risk",
+                  "Talent Crisis", "Product Recall", "Reputational Threat",
+                  "Technology Disruption", "M&A Pressure", "Customer Crisis",
+                ].map((tag) => (
+                  <span key={tag} style={{
+                    ...DM, fontSize: 11, fontWeight: 600, color: "#444",
+                    background: "#F0EDE8", border: `1px solid ${BORDER}`,
+                    padding: "3px 10px", borderRadius: 2,
+                  }}>{tag}</span>
+                ))}
+                <span style={{
+                  ...DM, fontSize: 11, fontWeight: 700, color: GOLD,
+                  background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`,
+                  padding: "3px 10px", borderRadius: 2,
+                }}>+233 more triggers monitored</span>
+              </div>
+            </div>
+
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              Your organization spends 72 hours in emergency calls before anyone is aligned — then weeks more manually staging roles, documents, tasks, and budgets before a single coordinated action is taken.
+              Yet every time, your organization spends 72 hours in emergency calls before anyone is aligned — then weeks more manually staging roles, documents, tasks, and budgets before a single coordinated action is taken.
             </p>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 40 }}>
               By the time execution begins, the window has already moved.
