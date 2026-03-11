@@ -242,7 +242,11 @@ export default function TriggerConfigurationWizard({
       setWebhookEnabled(editTrigger.notificationSettings?.webhook ?? false);
       setEscalationEnabled(editTrigger.notificationSettings?.escalation ?? true);
       setEscalationTimeout(String(editTrigger.escalationTimeout || '30'));
-      setSelectedPlaybooks(editTrigger.recommendedPlaybooks || []);
+      // Use resolved linkedPlaybooks IDs if available, fall back to stored recommendedPlaybooks
+      const preloadIds = editTrigger.linkedPlaybooks?.map((p: any) => p.id)
+        || editTrigger.recommendedPlaybooks
+        || [];
+      setSelectedPlaybooks(preloadIds);
     }
   }, [editTrigger, isOpen]);
   

@@ -41612,9 +41612,68 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/executive-triggers", async (req, res) => {
     try {
+      let scoreMatch2 = function(triggerName, playbookName, triggerCriteria) {
+        const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
+        const trigWords = new Set(normalize(triggerName).split(" ").filter((w) => w.length > 3));
+        const pbWords = normalize(playbookName + " " + (triggerCriteria || "")).split(" ");
+        let score = 0;
+        for (const w of pbWords) if (trigWords.has(w)) score++;
+        return score;
+      };
+      var scoreMatch = scoreMatch2;
       const { organizationId, category, status } = req.query;
       const triggers = await storage.getExecutiveTriggers(organizationId, category, status);
-      res.json(triggers);
+      const TRIGGER_DOMAIN_MAP = {
+        competitive: "Market Dynamics",
+        market: "Market Dynamics",
+        financial: "Financial Strategy",
+        economic: "Financial Strategy",
+        regulatory: "Regulatory & Compliance",
+        esg: "Regulatory & Compliance",
+        talent: "Talent & Leadership",
+        customer: "Operational Excellence",
+        supplychain: "Operational Excellence",
+        execution: "Operational Excellence",
+        behavior: "Operational Excellence",
+        partnership: "Market Opportunities",
+        technology: "Technology & Innovation",
+        cyber: "Technology & Innovation",
+        innovation: "Technology & Innovation",
+        media: "Brand & Reputation",
+        geopolitical: "AI Governance"
+      };
+      const allPlaybooks = await db.select({
+        id: playbookLibrary.id,
+        name: playbookLibrary.name,
+        triggerCriteria: playbookLibrary.triggerCriteria,
+        domainName: playbookDomains.name
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(playbookLibrary.isActive, true));
+      const enriched = triggers.map((trigger) => {
+        const domain = TRIGGER_DOMAIN_MAP[trigger.category] || null;
+        const storedIds = Array.isArray(trigger.recommendedPlaybooks) ? trigger.recommendedPlaybooks : [];
+        const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+        const matched = [];
+        const usedIds = /* @__PURE__ */ new Set();
+        for (const stored of storedIds) {
+          const normStored = normalize(stored);
+          const found = allPlaybooks.find(
+            (p) => normalize(p.name) === normStored || normalize(p.name).includes(normStored) || normStored.includes(normalize(p.name).substring(0, 8))
+          );
+          if (found && !usedIds.has(found.id)) {
+            matched.push({ id: found.id, name: found.name, domain: found.domainName || "" });
+            usedIds.add(found.id);
+          }
+        }
+        if (matched.length < 4 && domain) {
+          const domainPlaybooks = allPlaybooks.filter((p) => p.domainName === domain && !usedIds.has(p.id)).map((p) => ({ p, score: scoreMatch2(trigger.name || "", p.name, p.triggerCriteria) })).sort((a, b) => b.score - a.score).slice(0, 4 - matched.length);
+          for (const { p } of domainPlaybooks) {
+            matched.push({ id: p.id, name: p.name, domain: p.domainName || "" });
+            usedIds.add(p.id);
+          }
+        }
+        return { ...trigger, linkedPlaybooks: matched };
+      });
+      res.json(enriched);
     } catch (error) {
       console.error("Error fetching executive triggers:", error);
       res.status(500).json({ error: "Failed to fetch executive triggers" });

@@ -479,27 +479,25 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 </span>
                               </div>
 
-                              {/* Aligned Playbooks — always visible */}
-                              {trigger.recommendedPlaybooks?.length > 0 && (
+                              {/* Aligned Playbooks — specific playbooks built for this situation */}
+                              {trigger.linkedPlaybooks?.length > 0 && (
                                 <div className="mt-2 px-3 py-2"
                                   style={{ background: 'rgba(10,15,46,0.04)', border: '1px solid rgba(201,168,76,0.3)', borderLeft: `3px solid ${GOLD}` }}>
                                   <div className="flex items-center gap-1.5 mb-1.5">
                                     <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
                                     <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>
-                                      Aligned Playbooks
+                                      Execute With
                                     </span>
                                   </div>
                                   <div className="flex flex-wrap gap-1">
-                                    {trigger.recommendedPlaybooks.map((p: string) => (
-                                      <span key={p}
-                                        className="text-[9px] font-semibold px-2 py-0.5 cursor-pointer hover:opacity-80"
+                                    {trigger.linkedPlaybooks.map((p: { id: string; name: string; domain: string }) => (
+                                      <span key={p.id}
+                                        className="text-[9px] font-semibold px-2 py-0.5 cursor-pointer hover:opacity-80 flex items-center gap-1"
                                         style={{ background: 'rgba(10,15,46,0.07)', color: NAVY, border: `1px solid rgba(10,15,46,0.15)`, borderRadius: 2 }}
-                                        onClick={() => {
-                                          const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
-                                          setLocation(`/identify/playbook-library?domain=${domain}`);
-                                        }}
+                                        onClick={() => setLocation(`/identify/playbooks/${p.id}`)}
+                                        title={`Open: ${p.name}`}
                                       >
-                                        {p.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                                        {p.name}
                                       </span>
                                     ))}
                                   </div>
@@ -548,13 +546,18 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               {isAuthenticated ? (
                                 <button
                                   onClick={() => {
-                                    const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
-                                    setLocation(`/identify/playbook-library?domain=${domain}`);
+                                    const first = trigger.linkedPlaybooks?.[0];
+                                    if (first?.id) {
+                                      setLocation(`/identify/playbooks/${first.id}`);
+                                    } else {
+                                      const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
+                                      setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
+                                    }
                                   }}
                                   className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
                                   style={{ background: GOLD, color: NAVY }}
                                 >
-                                  <BookOpen className="w-3 h-3" /> Activate Playbook
+                                  <BookOpen className="w-3 h-3" /> Execute Playbook
                                 </button>
                               ) : (
                                 <button
@@ -643,7 +646,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     const lbl      = proximityLabel(proximity);
                     const barColor = proximityBarColor(proximity);
                     const topTrigger = triggers[0];
-                    const preActivate = proximity >= 55 && topTrigger?.recommendedPlaybooks?.length > 0;
+                    const preActivate = proximity >= 55 && topTrigger?.linkedPlaybooks?.length > 0;
 
                     return (
                       <button
