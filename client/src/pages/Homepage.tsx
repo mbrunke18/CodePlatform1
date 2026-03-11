@@ -260,15 +260,17 @@ function HeroSection() {
 
           <h1 className="hp-hero-h1" style={{
             ...GEO, fontSize: 52, fontWeight: 700, color: "#fff",
-            lineHeight: 1.15, maxWidth: 800, margin: "0 auto 20px",
+            lineHeight: 1.25, maxWidth: 800, margin: "0 auto 20px",
           }}>
             The decision takes <span style={{ color: TEAL_LIGHT }}>minutes.</span>
             <br />
             The response takes <span style={{ color: RED_CRISIS }}>days.</span>
+            <br />
+            The execution takes <span style={{ color: RED_CRISIS, opacity: 0.75 }}>weeks.</span>
           </h1>
 
-          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 560, margin: "0 auto 16px", lineHeight: 1.4 }}>
-            We built the infrastructure that closes that gap.
+          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 16px", lineHeight: 1.4 }}>
+            We collapse all three into 12 minutes.
           </p>
 
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 620, margin: "0 auto 40px", lineHeight: 1.7 }}>
