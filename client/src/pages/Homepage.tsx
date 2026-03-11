@@ -470,7 +470,7 @@ function IDEASection() {
                 {[
                   "Emergency Slack threads and back-to-back calls",
                   "Improvised docs, unclear ownership, missed steps",
-                  "72 hours to get everyone aligned and executing",
+                  "72 hours just to get everyone in the room — zero execution taken",
                   "No memory — same crisis, same mistakes, next time",
                 ].map(item => (
                   <div key={item} style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
@@ -903,7 +903,7 @@ function ContrastMomentSection() {
             ...t(0.8, 0.5),
           }}
         >
-          Current enterprise response time
+          Just to assemble. Execution hasn't started.
         </div>
 
         {/* 12 min — builds in */}
@@ -933,7 +933,7 @@ function ContrastMomentSection() {
             ...t(2.4, 0.5),
           }}
         >
-          With Execution OS
+          Full organizational execution underway
         </div>
 
         {/* Tagline */}
