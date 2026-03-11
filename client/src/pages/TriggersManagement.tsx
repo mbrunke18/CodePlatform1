@@ -453,7 +453,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               </div>
                             </div>
 
-                            {/* Right: toggle + edit */}
+                            {/* Right: toggle + edit + activate */}
                             <div className="flex flex-col items-end gap-2 flex-shrink-0">
                               <div className="flex items-center gap-2">
                                 <span className="text-[9px] font-bold uppercase tracking-wider"
@@ -465,6 +465,13 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                   onCheckedChange={(isActive) => toggleMutation.mutate({ id: trigger.id, isActive })}
                                 />
                               </div>
+                              <button
+                                onClick={() => setLocation('/identify/playbook-library')}
+                                className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
+                                style={{ background: GOLD, color: NAVY }}
+                              >
+                                <BookOpen className="w-3 h-3" /> Activate Playbook
+                              </button>
                               <button
                                 onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
                                 className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
@@ -481,7 +488,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 </div>
 
                 {/* Footer */}
-                <div className="flex-shrink-0 px-6 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
+                <div className="flex-shrink-0 px-6 py-4 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between gap-4">
                   <p className="text-[10px] text-gray-500">
                     <span className="font-bold" style={{ color: NAVY }}>
                       {selectedEntry.triggers.length}
@@ -495,7 +502,15 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       {selectedEntry.proximity}%
                     </span>
                   </p>
-                  <span className="text-[9px] text-gray-400">
+                  <button
+                    onClick={() => setLocation('/identify/playbook-library')}
+                    className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
+                    style={{ background: GOLD, color: NAVY }}
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    Activate a Playbook for This Trigger
+                  </button>
+                  <span className="text-[9px] text-gray-400 hidden">
                     {selectedEntry.sc.dataPoints.length} data points available in this category
                   </span>
                 </div>
