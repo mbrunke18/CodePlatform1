@@ -652,8 +652,11 @@ function CTASection() {
             You've been executing for{" "}
             <span style={{ color: GOLD }}>71 hours</span>.
           </h2>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            We're opening 3–5 pilot partnerships. If your organization takes more than 24 hours to fully mobilize after a strategic decision, this conversation is worth 30 minutes.
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 580, margin: "0 auto 16px", lineHeight: 1.7 }}>
+            We're selecting 3–5 pilot partners this quarter. The organizations that move first build an execution advantage their competitors will spend years trying to close.
+          </p>
+          <p style={{ ...DM, fontSize: 15, color: MUTED_DARK, maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.6, opacity: 0.75 }}>
+            The conversation is 30 minutes.
           </p>
           <div>
             <Link
@@ -671,8 +674,8 @@ function CTASection() {
               Request a Pilot
             </Link>
           </div>
-          <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 16 }}>
-            No commitment required. Pilot pricing available.
+          <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
+            Pilot pricing available · No long-term commitment required
           </p>
         </Reveal>
       </div>
