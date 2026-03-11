@@ -66,104 +66,6 @@ const SIGNAL_CATEGORIES = [
   { id: 'innovation', name: 'Innovation Pipeline', icon: PlayCircle, color: 'text-sky-500', description: 'Monitor R&D progress, patent filings' },
 ];
 
-const SIGNAL_FIELDS: Record<string, Array<{ id: string; name: string; unit: string }>> = {
-  competitive: [
-    { id: 'market_share_change', name: 'Market Share Change', unit: '%' },
-    { id: 'competitor_price_change', name: 'Competitor Price Change', unit: '%' },
-    { id: 'new_product_launches', name: 'New Product Launches', unit: 'count' },
-    { id: 'competitor_hiring', name: 'Competitor Hiring Activity', unit: 'count' },
-  ],
-  market: [
-    { id: 'demand_index', name: 'Demand Index', unit: 'score' },
-    { id: 'market_sentiment', name: 'Market Sentiment Score', unit: '%' },
-    { id: 'search_volume', name: 'Search Volume Change', unit: '%' },
-    { id: 'industry_growth', name: 'Industry Growth Rate', unit: '%' },
-  ],
-  financial: [
-    { id: 'revenue_variance', name: 'Revenue Variance', unit: '%' },
-    { id: 'margin_change', name: 'Gross Margin Change', unit: '%' },
-    { id: 'cash_flow_ratio', name: 'Cash Flow Ratio', unit: 'ratio' },
-    { id: 'debt_to_equity', name: 'Debt to Equity Ratio', unit: 'ratio' },
-  ],
-  regulatory: [
-    { id: 'compliance_score', name: 'Compliance Score', unit: '%' },
-    { id: 'policy_change_count', name: 'Policy Changes', unit: 'count' },
-    { id: 'audit_findings', name: 'Audit Findings', unit: 'count' },
-    { id: 'regulatory_risk', name: 'Regulatory Risk Score', unit: 'score' },
-  ],
-  supplychain: [
-    { id: 'supplier_health', name: 'Supplier Health Score', unit: '%' },
-    { id: 'lead_time_variance', name: 'Lead Time Variance', unit: 'days' },
-    { id: 'inventory_turnover', name: 'Inventory Turnover', unit: 'ratio' },
-    { id: 'disruption_risk', name: 'Disruption Risk Level', unit: 'score' },
-  ],
-  customer: [
-    { id: 'nps_score', name: 'Net Promoter Score', unit: 'score' },
-    { id: 'churn_rate', name: 'Churn Rate', unit: '%' },
-    { id: 'csat_score', name: 'Customer Satisfaction', unit: '%' },
-    { id: 'ticket_volume', name: 'Support Ticket Volume', unit: 'count' },
-  ],
-  talent: [
-    { id: 'attrition_rate', name: 'Attrition Rate', unit: '%' },
-    { id: 'engagement_score', name: 'Employee Engagement', unit: '%' },
-    { id: 'time_to_hire', name: 'Time to Hire', unit: 'days' },
-    { id: 'training_completion', name: 'Training Completion', unit: '%' },
-  ],
-  geopolitical: [
-    { id: 'stability_index', name: 'Political Stability Index', unit: 'score' },
-    { id: 'trade_risk', name: 'Trade Risk Level', unit: 'score' },
-    { id: 'currency_volatility', name: 'Currency Volatility', unit: '%' },
-    { id: 'sanctions_risk', name: 'Sanctions Risk', unit: 'score' },
-  ],
-  technology: [
-    { id: 'system_uptime', name: 'System Uptime', unit: '%' },
-    { id: 'tech_debt_score', name: 'Technical Debt Score', unit: 'score' },
-    { id: 'deployment_frequency', name: 'Deployment Frequency', unit: 'per_week' },
-    { id: 'incident_count', name: 'Incident Count', unit: 'count' },
-  ],
-  media: [
-    { id: 'sentiment_score', name: 'Brand Sentiment', unit: '%' },
-    { id: 'mention_volume', name: 'Media Mentions', unit: 'count' },
-    { id: 'share_of_voice', name: 'Share of Voice', unit: '%' },
-    { id: 'crisis_probability', name: 'Crisis Probability', unit: '%' },
-  ],
-  cyber: [
-    { id: 'threat_level', name: 'Threat Level', unit: 'score' },
-    { id: 'vulnerability_count', name: 'Open Vulnerabilities', unit: 'count' },
-    { id: 'failed_logins', name: 'Failed Login Attempts', unit: 'count' },
-    { id: 'anomaly_score', name: 'Anomaly Score', unit: 'score' },
-  ],
-  economic: [
-    { id: 'gdp_growth', name: 'GDP Growth Forecast', unit: '%' },
-    { id: 'inflation_rate', name: 'Inflation Rate', unit: '%' },
-    { id: 'interest_rate', name: 'Interest Rate Change', unit: '%' },
-    { id: 'unemployment_rate', name: 'Unemployment Rate', unit: '%' },
-  ],
-  partnership: [
-    { id: 'partner_health', name: 'Partner Health Score', unit: '%' },
-    { id: 'contract_risk', name: 'Contract Risk', unit: 'score' },
-    { id: 'revenue_share', name: 'Revenue Share Variance', unit: '%' },
-    { id: 'sla_compliance', name: 'SLA Compliance', unit: '%' },
-  ],
-  execution: [
-    { id: 'project_velocity', name: 'Project Velocity', unit: 'score' },
-    { id: 'deadline_variance', name: 'Deadline Variance', unit: 'days' },
-    { id: 'resource_utilization', name: 'Resource Utilization', unit: '%' },
-    { id: 'milestone_completion', name: 'Milestone Completion', unit: '%' },
-  ],
-  behavior: [
-    { id: 'engagement_rate', name: 'User Engagement Rate', unit: '%' },
-    { id: 'session_duration', name: 'Avg Session Duration', unit: 'minutes' },
-    { id: 'feature_adoption', name: 'Feature Adoption', unit: '%' },
-    { id: 'conversion_rate', name: 'Conversion Rate', unit: '%' },
-  ],
-  innovation: [
-    { id: 'rd_velocity', name: 'R&D Velocity', unit: 'score' },
-    { id: 'patent_filings', name: 'Patent Filings', unit: 'count' },
-    { id: 'prototype_completion', name: 'Prototype Completion', unit: '%' },
-    { id: 'innovation_index', name: 'Innovation Index', unit: 'score' },
-  ],
-};
 
 const OPERATORS = [
   { id: 'gt', name: 'Greater than', symbol: '>' },
@@ -356,7 +258,8 @@ export default function TriggerConfigurationWizard({
   };
   
   const handleSubmit = () => {
-    const selectedFieldData = SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField);
+    const catDataPoints = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)?.dataPoints;
+    const selectedFieldData = catDataPoints?.find((dp: any) => dp.id === selectedField);
     
     const triggerData = {
       name: triggerName,
@@ -366,7 +269,7 @@ export default function TriggerConfigurationWizard({
       conditionField: selectedFieldData?.name || selectedField,
       conditionOperator: operator,
       conditionValue: parseFloat(thresholdValue),
-      conditionUnit: selectedFieldData?.unit || '',
+      conditionUnit: (selectedFieldData as any)?.metricType || '',
       severity,
       monitoringFrequency,
       autoActivatePlaybook,
@@ -386,8 +289,16 @@ export default function TriggerConfigurationWizard({
   
   const getFieldUnit = () => {
     if (!selectedCategory || !selectedField) return '';
-    const field = SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField);
-    return field?.unit || '';
+    const dp = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)
+      ?.dataPoints?.find((d: any) => d.id === selectedField);
+    return (dp as any)?.metricType || '';
+  };
+
+  const getFieldName = () => {
+    if (!selectedCategory || !selectedField) return selectedField;
+    const dp = INTEL_CATEGORIES.find(c => (c as any).id === selectedCategory)
+      ?.dataPoints?.find((d: any) => d.id === selectedField);
+    return dp?.name || selectedField;
   };
   
   const togglePlaybook = (playbookId: string) => {
@@ -659,7 +570,7 @@ export default function TriggerConfigurationWizard({
                   <p className="text-lg font-medium">
                     Alert when{' '}
                     <span className="text-[#0A0F2E]">
-                      {SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField)?.name}
+                      {getFieldName()}
                     </span>{' '}
                     <span className="text-orange-600">
                       {OPERATORS.find(o => o.id === operator)?.symbol} {thresholdValue} {getFieldUnit()}
@@ -917,7 +828,7 @@ export default function TriggerConfigurationWizard({
                   <div>
                     <span className="text-gray-600 dark:text-gray-300">Condition:</span>
                     <p className="font-medium">
-                      {SIGNAL_FIELDS[selectedCategory]?.find(f => f.id === selectedField)?.name}{' '}
+                      {getFieldName()}{' '}
                       {OPERATORS.find(o => o.id === operator)?.symbol} {thresholdValue} {getFieldUnit()}
                     </p>
                   </div>

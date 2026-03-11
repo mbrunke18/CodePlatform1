@@ -4134,14 +4134,14 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         .where(eq(playbookLibrary.isActive, true));
 
       // Score a playbook's relevance to a trigger by keyword overlap
-      function scoreMatch(triggerName: string, playbookName: string, triggerCriteria: string | null): number {
-        const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
-        const trigWords = new Set(normalize(triggerName).split(' ').filter(w => w.length > 3));
-        const pbWords = normalize(playbookName + ' ' + (triggerCriteria || '')).split(' ');
+      const scoreMatch = (triggerName: string, playbookName: string, triggerCriteria: string | null): number => {
+        const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+        const trigWords = new Set(norm(triggerName).split(' ').filter((w: string) => w.length > 3));
+        const pbWords = norm(playbookName + ' ' + (triggerCriteria || '')).split(' ');
         let score = 0;
         for (const w of pbWords) if (trigWords.has(w)) score++;
         return score;
-      }
+      };
 
       const enriched = triggers.map((trigger: any) => {
         const domain = TRIGGER_DOMAIN_MAP[trigger.category] || null;

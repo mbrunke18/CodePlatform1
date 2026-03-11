@@ -41612,15 +41612,6 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/executive-triggers", async (req, res) => {
     try {
-      let scoreMatch2 = function(triggerName, playbookName, triggerCriteria) {
-        const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
-        const trigWords = new Set(normalize(triggerName).split(" ").filter((w) => w.length > 3));
-        const pbWords = normalize(playbookName + " " + (triggerCriteria || "")).split(" ");
-        let score = 0;
-        for (const w of pbWords) if (trigWords.has(w)) score++;
-        return score;
-      };
-      var scoreMatch = scoreMatch2;
       const { organizationId, category, status } = req.query;
       const triggers = await storage.getExecutiveTriggers(organizationId, category, status);
       const TRIGGER_DOMAIN_MAP = {
@@ -41648,6 +41639,14 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         triggerCriteria: playbookLibrary.triggerCriteria,
         domainName: playbookDomains.name
       }).from(playbookLibrary).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(playbookLibrary.isActive, true));
+      const scoreMatch = (triggerName, playbookName, triggerCriteria) => {
+        const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
+        const trigWords = new Set(norm(triggerName).split(" ").filter((w) => w.length > 3));
+        const pbWords = norm(playbookName + " " + (triggerCriteria || "")).split(" ");
+        let score = 0;
+        for (const w of pbWords) if (trigWords.has(w)) score++;
+        return score;
+      };
       const enriched = triggers.map((trigger) => {
         const domain = TRIGGER_DOMAIN_MAP[trigger.category] || null;
         const storedIds = Array.isArray(trigger.recommendedPlaybooks) ? trigger.recommendedPlaybooks : [];
@@ -41665,7 +41664,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           }
         }
         if (matched.length < 4 && domain) {
-          const domainPlaybooks = allPlaybooks.filter((p) => p.domainName === domain && !usedIds.has(p.id)).map((p) => ({ p, score: scoreMatch2(trigger.name || "", p.name, p.triggerCriteria) })).sort((a, b) => b.score - a.score).slice(0, 4 - matched.length);
+          const domainPlaybooks = allPlaybooks.filter((p) => p.domainName === domain && !usedIds.has(p.id)).map((p) => ({ p, score: scoreMatch(trigger.name || "", p.name, p.triggerCriteria) })).sort((a, b) => b.score - a.score).slice(0, 4 - matched.length);
           for (const { p } of domainPlaybooks) {
             matched.push({ id: p.id, name: p.name, domain: p.domainName || "" });
             usedIds.add(p.id);
