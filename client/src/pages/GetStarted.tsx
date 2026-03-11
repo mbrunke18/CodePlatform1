@@ -36,7 +36,7 @@ const ICON_STYLES = [
 ];
 
 const STEPS = [
-  { num: "01", label: "Sign In", desc: "Continue with Google, GitHub, or Apple — no password needed" },
+  { num: "01", label: "Sign In", desc: "Authenticate securely — no password required" },
   { num: "02", label: "Set Up Your Org", desc: "2-minute setup: name, industry, key departments" },
   { num: "03", label: "Pick Your Playbooks", desc: "Choose the 3–5 most relevant to your role" },
   { num: "04", label: "Run the Platform", desc: "Real signals, real AI, real execution — fully live" },
@@ -164,30 +164,30 @@ export default function GetStarted() {
         </div>
       </section>
 
-      {/* DIFFERENTIATION — Trial vs Pilot */}
+      {/* DIFFERENTIATION — Demo vs Pilot */}
       <section style={{ padding: "72px 56px", background: "#fff" }}>
         <div style={{ maxWidth: 840, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <h2 style={{ ...CG, fontSize: "clamp(28px,3vw,42px)", fontWeight: 600, color: NAVY }}>
-              Not sure which path is right?
+              Two ways to experience Execution OS
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: BORDER }}>
-            {/* Free Trial */}
+            {/* Interactive Demo */}
             <div style={{ background: "#fff", padding: "40px 36px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: TEAL, textTransform: "uppercase", marginBottom: 16 }}>Free Trial</div>
-              <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, marginBottom: 12 }}>Self-Serve Access</h3>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: TEAL, textTransform: "uppercase", marginBottom: 16 }}>Interactive Demo</div>
+              <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, marginBottom: 12 }}>See It in Action</h3>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, marginBottom: 24 }}>
-                Sign in, explore the full platform at your own pace. No commitment, no sales call required. Best for individuals and small teams evaluating the platform.
+                Walk through a live scenario — signal fires, playbook activates, stakeholders mobilize. No commitment, no sales call. Ideal for initial evaluation before engaging your executive team.
               </p>
-              {["Full platform access", "170 playbooks immediately", "AI tools & signal monitoring", "No time limit", "Self-guided onboarding"].map((f, i) => (
+              {["Live 7-phase walkthrough", "Real Supply Chain scenario", "AI brief + role assignments", "Stakeholder coordination view", "No sign-in required"].map((f, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                   <CheckCircle size={14} style={{ color: TEAL, flexShrink: 0 }} />
                   <span style={{ fontSize: 13, color: "#374151" }}>{f}</span>
                 </div>
               ))}
               <button
-                onClick={handleStart}
+                onClick={() => setLocation("/try-demo")}
                 style={{
                   marginTop: 28, background: NAVY, color: "#fff", fontWeight: 600, fontSize: 13,
                   padding: "12px 28px", border: "none", cursor: "pointer",
@@ -196,8 +196,8 @@ export default function GetStarted() {
                 onMouseEnter={e => (e.currentTarget.style.background = NAVY_MID)}
                 onMouseLeave={e => (e.currentTarget.style.background = NAVY)}
               >
-                <LogIn size={14} />
-                {isAuthenticated ? "Open Platform" : "Start Free Trial"}
+                <Compass size={14} />
+                Try the Demo
               </button>
             </div>
 
@@ -225,7 +225,7 @@ export default function GetStarted() {
                 onMouseLeave={e => (e.currentTarget.style.background = GOLD)}
               >
                 <Clock size={14} />
-                Learn About the Pilot
+                Request Pilot Access
               </button>
             </div>
           </div>
@@ -240,22 +240,37 @@ export default function GetStarted() {
             The platform is waiting.
           </h2>
           <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.7, marginBottom: 32 }}>
-            No demo. No simulation. Sign in and run the real Execution OS.
+            Existing pilot customers can sign in to access your organization's platform. New to Execution OS? Request pilot access below.
           </p>
-          <button
-            onClick={handleStart}
-            style={{
-              background: GOLD, color: NAVY, fontWeight: 700, fontSize: 15,
-              padding: "16px 40px", border: "none", cursor: "pointer",
-              display: "inline-flex", alignItems: "center", gap: 10, transition: "background 0.2s"
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = GOLD_LT)}
-            onMouseLeave={e => (e.currentTarget.style.background = GOLD)}
-          >
-            <LogIn size={18} />
-            {isAuthenticated ? "Open the Platform" : "Sign In & Start Free Trial"}
-            <ArrowRight size={16} />
-          </button>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
+            <button
+              onClick={handleStart}
+              style={{
+                background: GOLD, color: NAVY, fontWeight: 700, fontSize: 15,
+                padding: "16px 40px", border: "none", cursor: "pointer",
+                display: "inline-flex", alignItems: "center", gap: 10, transition: "background 0.2s"
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = GOLD_LT)}
+              onMouseLeave={e => (e.currentTarget.style.background = GOLD)}
+            >
+              <LogIn size={18} />
+              {isAuthenticated ? "Open the Platform" : "Sign In to Platform"}
+              <ArrowRight size={16} />
+            </button>
+            <button
+              onClick={() => setLocation("/pilot-program")}
+              style={{
+                background: "transparent", color: NAVY, fontWeight: 600, fontSize: 15,
+                padding: "16px 40px", border: `1px solid ${BORDER}`, cursor: "pointer",
+                display: "inline-flex", alignItems: "center", gap: 10, transition: "border-color 0.2s"
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = NAVY)}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = BORDER)}
+            >
+              Request Pilot Access
+              <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
       </section>
 

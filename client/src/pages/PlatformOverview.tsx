@@ -78,10 +78,10 @@ const timelineSteps = [
       "Prepares executive summary for post-event review",
     ],
     humanRole: [
-      "Reviews live execution status",
-      "Resolves blockers and escalations",
+      "Reviews live execution status and resolves blockers",
+      "Escalates or deprioritizes workstreams based on ground truth",
       "Communicates status to board and leadership",
-      "All response now operational — organization coordinated",
+      "Captures institutional lessons in the playbook for future events",
     ],
     color: "#2B8A6E",
     badge: "ADVANCE_PHASE",
@@ -280,7 +280,7 @@ export default function PlatformOverview() {
                   Try Interactive Demo
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link href="/pilot-program">
                 <Button
                   size="lg"
                   className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10 px-8"
