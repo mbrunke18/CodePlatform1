@@ -33,7 +33,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Database:** PostgreSQL (Neon serverless) via Drizzle ORM. Dev mode prefers `DATABASE_URL_DEV`; falls back to `DATABASE_URL` with a console warning so engineers don't accidentally touch production.
 - **Real-time:** Socket.IO WebSocket server for real-time collaboration.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
-- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles, with 16 signal categories and 216+ data points.
+- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles, with 20 signal categories and 248+ data points.
 - **Authentication:** Replit OIDC with Passport.js; new users auto-get an org on first login.
 - **Role-Based Access:** `requireRole()` middleware for write routes (admin, executive, strategist); no role means read-only.
 - **AI Services:** OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
@@ -55,6 +55,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **AI Execution Brief (`PlaybookActivationConsole.tsx`):** Before confirming a playbook activation, an AI-generated commander-style brief is shown. Endpoint `GET /api/playbooks/:id/execution-brief` calls GPT-4o and returns 6 structured fields: situation framing, mission objective, critical roles, top risks, success indicators, and commander note. Displays as a navy card above the PreActivationImpactPreview. Falls back to a static template if OpenAI is unavailable. Auth-gated (401 for unauthenticated).
 - **Graduated Attention — Completed Task Collapse (`WorkspaceExecute.tsx`):** In the MyActionsPanel, completed tasks collapse into a teal summary bar ("X tasks completed") with an expand/collapse toggle. Keeps active tasks front-and-center without losing completed work context.
 - **Source Governance Indicator (`PlaybookDetail.tsx`):** A version-based color-coded status badge in the sidebar of every playbook detail page. Teal = Current (v1.x), Gold = Under Review (v2–3.x), Red = Recertification Required (v4+). Uses `playbook.version` with `'1.0'` as the default fallback.
+- **Trigger Monitor Auth Gating (`TriggersManagement.tsx`):** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggle switches) are hidden from unauthenticated visitors. Non-auth users see a grayed-out "Sign In to Activate" button that navigates to `/get-started`. `SOURCE_LABELS` map converts raw source IDs to human-readable labels (e.g., `'crm-salesforce'` → `'Salesforce CRM'`). The trigger data itself remains visible to unauthenticated users so the platform demonstrates value before sign-in.
 
 **"WOW" Features (5 Differentiators):**
 - **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence, highlighting "Value Preserved" and time saved.

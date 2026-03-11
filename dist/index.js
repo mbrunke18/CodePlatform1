@@ -12091,7 +12091,7 @@ var init_intelligence_signals = __esm({
             name: "Analyst Rating Changes",
             description: "Buy/sell/hold rating changes",
             metricType: "text",
-            sources: ["bloomberg", "sp-capital-iq"],
+            sources: ["bloomberg", "sp-capital-iq", "refinitiv", "factset", "morningstar"],
             defaultThreshold: { operator: "contains", value: "downgrade", urgency: "critical" }
           },
           {

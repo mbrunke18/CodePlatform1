@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 4) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 5) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -8,7 +8,7 @@
 **Execution OS** by VaughnMartin is a Strategic Execution platform for Fortune 1000 companies. It automates project creation, task assignment, document staging, and budget allocation within 12 minutes of a strategic trigger firing.
 
 - **170 active playbooks** across 9 domains
-- **216+ data points** across 16 signal categories, monitored in 15-minute cycles
+- **248+ data points** across 20 signal categories, monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
 - **Human-AI partnership model** — AI monitors and recommends, human executives approve and decide.
@@ -103,7 +103,7 @@ All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
 │   └── services/                ← AI, signal ingestion, dynamic strategy services
 ├── shared/
 │   ├── schema.ts                ← Drizzle schema — single source of truth for all types
-│   └── intelligence-signals.ts  ← 216 signal data points across 16 categories
+│   └── intelligence-signals.ts  ← 248+ signal data points across 20 signal categories
 ├── dist/                        ← Pre-built production bundle (committed to repo)
 ├── replit.md                    ← Project memory / architecture notes
 └── developer-reference.md       ← This file
@@ -579,7 +579,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `MissionControl.tsx` | `/mission-control` | Executive war room. Trigger activation → PlaybookActivationConsole. |
 | `PlaybookLibraryV2.tsx` | `/playbook-library` | 170 playbooks with domain filter + free samples |
 | `PlaybookActivationConsole.tsx` | `/playbook-activation/:triggerId/:playbookId` | Live execution flow. `triggerId='manual'` skips trigger fetch. |
-| `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. |
+| `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. **Auth gating:** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggles) are hidden from unauthenticated users — non-auth users see a "Sign In to Activate" button. Trigger data is visible to all. `SOURCE_LABELS` map (top of file) converts raw source IDs to readable labels shown as teal tags. `[location, setLocation] = useLocation()` — must destructure both. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
 | `SignalIntelligenceHub.tsx` | `/signal-intelligence` | Live signal monitoring. Requires auth+org. Shows branded fallback if not. |
 | `FounderStory.tsx` | `/founder-story` | Manifesto-first page. "We Make Enterprises Fearless" by Marty Brunke (March 2026) — 7 Roman-numeral sections, pull quotes, inline IDEA Framework navy card. Bio strip + video cards (90s intro, 3:30 full) are supporting sections below. Closing CTA → `/pilot-program`. **Do not revert to video-first or bio-first layout.** |
