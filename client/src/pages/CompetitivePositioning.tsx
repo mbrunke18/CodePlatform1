@@ -118,7 +118,7 @@ const categoryComparison = [
 const useCases = [
   {
     trigger: "Competitor launches new product",
-    without: "48–72 hours to assemble the right team, define the response strategy, assign owners, and begin execution",
+    without: "48–72 hours just to assemble the right team and define the response strategy — execution hasn't started",
     with: "Execution OS detects the launch, fires the Competitive Response playbook, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
     icon: Target,
   },

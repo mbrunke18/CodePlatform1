@@ -548,8 +548,8 @@ function PlatformPreviewSection() {
             <h2 style={{ ...GEO, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
               What an executive sees at minute one.
             </h2>
-            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 560, margin: "0 auto" }}>
-              No war room. No conference call. A pre-staged playbook, roles already assigned, clock already running.
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 600, margin: "0 auto" }}>
+              If the playbook calls for a war room, it's already booked. If it calls for an all-hands, it's pre-distributed. Every role, task, approval, and escalation path is pre-staged — so when the trigger fires, the organization executes instead of improvises.
             </p>
           </div>
         </Reveal>
