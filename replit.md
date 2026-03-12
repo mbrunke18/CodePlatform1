@@ -19,7 +19,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
 - **Branding:** Consistent `VaughnMartin` (company) and `Execution OS` (product) branding with logo placement on all key pages.
-- **Navigation:** Streamlined navigation with distinct CTAs for authenticated and unauthenticated users.
+- **Navigation:** Four-section nav (Product, Experience, Platform, Investors) with no duplicates. Product = marketing/education. Experience = AI tools + get started. Platform = 7 authenticated hub pages only. Footer mirrors nav structure organized by IDEA phases. "Crisis Hub" retired — replaced by "Situations Hub" covering all 9 strategic domains.
 - **Layout:** All pages are wrapped by a `PageLayout` component including `StandardNav` and `Footer`.
 - **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation, targeting a broad executive audience.
 
