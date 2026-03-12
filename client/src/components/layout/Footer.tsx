@@ -14,67 +14,64 @@ export default function Footer() {
     {
       title: "IDENTIFY",
       links: [
-        { label: "Playbook Library (170)", path: "/playbook-library" },
-        { label: "Scenario Planning Hub", path: "/strategic" },
+        { label: "Playbook Library — 170", path: "/playbooks" },
+        { label: "Sample Playbooks", path: "/playbook-library" },
+        { label: "Situations Hub", path: "/situations-hub" },
         { label: "Strategic Readiness Report", path: "/preparedness-report" },
-        { label: "What-If Analyzer", path: "/what-if-analyzer" },
         { label: "Board Briefings", path: "/board-briefings" },
       ]
     },
     {
       title: "DETECT",
       links: [
-        { label: "Signal Intelligence Hub", path: "/signal-intelligence" },
+        { label: "Signal Intelligence", path: "/signal-intelligence" },
         { label: "AI Trigger Monitoring", path: "/triggers-management" },
-        { label: "AI Intelligence Suite", path: "/ai-intelligence-suite" },
-        { label: "AI Radar Dashboard", path: "/ai-radar" },
-        { label: "Foresight Radar", path: "/foresight-radar" },
-        { label: "Weak Signal Detection", path: "/pulse-intelligence" },
+        { label: "Signal Configuration", path: "/signal-configuration" },
+        { label: "AI Radar", path: "/ai-radar" },
+        { label: "Intelligence Hub", path: "/intelligence-hub" },
       ]
     },
     {
       title: "EXECUTE",
       links: [
-        { label: "Command Center", path: "/command-center" },
-        { label: "Crisis Response", path: "/crisis" },
+        { label: "Mission Control", path: "/mission-control" },
+        { label: "Workspace", path: "/workspace" },
         { label: "Live Activation Center", path: "/live-activation-center" },
-        { label: "Situation Room", path: "/war-room" },
-        { label: "Practice Drills", path: "/drill-tracking" },
-        { label: "Team Collaboration", path: "/collaboration" },
+        { label: "Practice Drills", path: "/practice-drills" },
+        { label: "Execution Coordination", path: "/execution-coordination" },
       ]
     },
     {
       title: "ADVANCE",
       links: [
-        { label: "Institutional Memory", path: "/institutional-memory" },
+        { label: "Executive Hub", path: "/executive-hub" },
+        { label: "ROI Dashboard", path: "/roi-dashboard" },
         { label: "Decision Velocity", path: "/decision-velocity" },
         { label: "Executive Analytics", path: "/analytics" },
         { label: "Enterprise Metrics", path: "/enterprise-metrics" },
-        { label: "AI Intelligence Hub", path: "/ai" },
-        { label: "Executive Dashboard", path: "/executive-dashboard" },
       ]
     },
     {
       title: "Experience",
       links: [
         { label: "Try Demo", path: "/try-demo" },
-        { label: "Demo Hub", path: "/demo-router" },
-        { label: "Unified Platform", path: "/unified-platform" },
-        { label: "ROI Calculator", path: "/roi-calculator" },
+        { label: "Shadow Simulator", path: "/simulation-studio" },
+        { label: "Strategic Recorder", path: "/strategic-recorder" },
         { label: "Readiness Assessment", path: "/readiness-assessment" },
+        { label: "ROI Calculator", path: "/roi-calculator" },
       ]
     },
     {
       title: "Company",
       links: [
-        { label: "How It Works", path: "/how-it-works" },
-        { label: "Our Story", path: "/our-story" },
+        { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Execution OS", path: "/why-executeiq" },
+        { label: "Platform Overview", path: "/platform-overview" },
+        { label: "Founder's Story", path: "/founder-story" },
         { label: "Integrations", path: "/integrations" },
-        { label: "Pricing", path: "/pricing" },
+        { label: "Request Pilot", path: "/pilot-program" },
+        { label: "Investors", path: "/investors" },
         { label: "Contact", path: "/contact" },
-        { label: "Settings", path: "/settings" },
-        { label: "Sitemap", path: "/sitemap" },
       ]
     },
   ];
@@ -151,12 +148,12 @@ export default function Footer() {
               <div className="text-xs text-slate-300">AI Monitoring</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-white">16</div>
+              <div className="text-xl font-bold text-white">20</div>
               <div className="text-xs text-slate-300">Signal Categories</div>
             </div>
             <div>
-              <div className="text-xl font-bold text-white">216+</div>
-              <div className="text-xs text-slate-300">Data Points</div>
+              <div className="text-xl font-bold text-white">248+</div>
+              <div className="text-xs text-slate-300">Live Data Points</div>
             </div>
           </div>
         </div>
