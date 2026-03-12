@@ -39,29 +39,26 @@ export default function StandardNav() {
       heading: "Understand",
       links: [
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "I·D·E·A — the execution operating model" },
-        { label: "How It Works", path: "/how-it-works", icon: Target, description: "Overview of the full system" },
-        { label: "Why Execution OS", path: "/why-executeiq", icon: Shield, description: "The execution gap" },
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every component, connected" },
+        { label: "Why Execution OS", path: "/why-executeiq", icon: Shield, description: "The execution gap enterprises face" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected" },
       ],
     },
     {
       heading: "Capabilities",
       links: [
-        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 domains" },
-        { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "20 categories · 248+ live data points" },
-        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated trigger detection" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time signal monitoring" },
-        { label: "AI Radar", path: "/ai-radar", icon: Brain, description: "Predictive pattern matching" },
-        { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise connections" },
+        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 strategic domains" },
+        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ signals" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 20 categories" },
+        { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Configure your live data points" },
+        { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise system connections" },
       ],
     },
     {
       heading: "Explore",
       links: [
-        { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks for your C-suite role" },
-        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape" },
-        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Impact & savings analysis" },
-        { label: "Decision Velocity", path: "/decision-velocity", icon: Zap, description: "Accelerate decision-making" },
+        { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite role" },
+        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Estimate impact & cost savings" },
+        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape & differentiation" },
       ],
     },
   ];
@@ -71,19 +68,19 @@ export default function StandardNav() {
       heading: "AI Tools",
       links: [
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
-        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Assess execution readiness by domain" },
         { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — Survive vs. Thrive scoring" },
-        { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn crisis notes into custom playbooks with AI" },
-        { label: "Executive Summary", path: "/executive-summary", icon: FileText, description: "One-click executive reports" },
+        { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn strategic notes into custom playbooks" },
+        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score execution readiness across 9 domains" },
+        { label: "Executive Summary", path: "/executive-summary", icon: FileText, description: "One-click AI-generated executive reports" },
       ],
     },
     {
-      heading: "Access",
+      heading: "Get Started",
       links: [
-        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Scripted simulation — no login required" },
-        { label: "Live Playbook Examples", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in required" },
+        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Live simulation — no login required" },
+        { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
         { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
-        { label: "Sign In", path: "/get-started", icon: LogIn, description: "Access your live platform" },
+        { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprises onboard & scale" },
       ],
     },
   ];
@@ -94,10 +91,8 @@ export default function StandardNav() {
     { label: "Executive Hub", path: "/executive-hub", icon: BarChart3, description: "Intelligence, velocity, readiness & analytics" },
     { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
     { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & coordination" },
+    { label: "ROI Dashboard", path: "/roi-dashboard", icon: Calculator, description: "Live value metrics — board-ready ROI reporting" },
     { label: "Settings", path: "/settings-hub", icon: Settings, description: "Organization, stakeholders & integrations" },
-    { label: "Execution ROI", path: "/roi-dashboard", icon: Calculator, description: "Value preserved — board-ready ROI metrics" },
-    { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Survive vs. Thrive scenario dry-run" },
-    { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "AI-generated playbooks from crisis notes" },
   ];
 
   const investorsLinks: NavLink[] = [
