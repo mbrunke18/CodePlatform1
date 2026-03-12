@@ -63,12 +63,22 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 
 **Data Consistency Standards (enforced across all pages):**
 - Response time: **12 minutes** (never "4 min" or "4-minute activation")
-- Speed advantage: **340x faster** (never "15,000x")
-- Playbooks: **170** across **9 strategic domains**
+- Speed advantage: **340x faster** (never "500x", "15,000x", or "10x faster")
+- Playbooks: **170** across **9 strategic domains** (never "166")
 - Signal categories: **20** (never "16")
 - Data points: **248+** (never "216+")
 - Executive triggers: **221**
 - Navigation: All nav links verified working for both public and authenticated users — zero dead links.
+- Brand name: **Execution OS** (never "ExecuteIQ" — fully purged from all pages, docs, and data files)
+
+**Investor Page Standards (critical for YC/investor reviews):**
+- `/investors` — Rebuilt with code-based architecture + positioning diagrams (images with stale branding removed)
+- Scenario cards show illustrative context only — no fabricated client claims (LVMH/Toyota/Fortune 500 banks removed as proof points)
+- All 6 investor markdown documents renamed `ExecutionOS-*.md` and purged of ExecuteIQ references
+- InvestorPresentation (`/pitch-deck`) verified clean
+- Industry demo pages (LVMH, Toyota scenarios) clearly framed as simulation demos, not claimed customers
+- Stale "500x faster" → "340x faster" fixed in InvestorLanding hero
+- Stale "10x faster" → "340x faster" fixed in Investors hero paragraph
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
