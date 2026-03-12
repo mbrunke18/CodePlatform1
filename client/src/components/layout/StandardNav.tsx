@@ -89,17 +89,15 @@ export default function StandardNav() {
   ];
 
   const platformLinks: NavLink[] = [
-    { label: "Execution OS Hub", path: "/mission-control", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
-    { label: "Command Center", path: "/command-center", icon: Target, description: "Live execution coordination" },
-    { label: "Executive Dashboard", path: "/executive-dashboard", icon: BarChart3, description: "Performance metrics & KPIs" },
+    { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
+    { label: "Workspace", path: "/workspace", icon: Layers, description: "IDEA Framework — Identify · Detect · Execute · Advance" },
+    { label: "Executive Hub", path: "/executive-hub", icon: BarChart3, description: "Intelligence, velocity, readiness & analytics" },
+    { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
+    { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & coordination" },
+    { label: "Settings", path: "/settings-hub", icon: Settings, description: "Organization, stakeholders & integrations" },
     { label: "Execution ROI", path: "/roi-dashboard", icon: Calculator, description: "Value preserved — board-ready ROI metrics" },
-    { label: "Shadow Simulator", path: "/simulation-studio", icon: Shield, description: "Survive vs. Thrive scenario dry-run" },
+    { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Survive vs. Thrive scenario dry-run" },
     { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "AI-generated playbooks from crisis notes" },
-    { label: "Strategy Execution", path: "/strategy-execution", icon: TrendingUp, description: "Transformation progress tracking" },
-    { label: "Playbook Factory", path: "/workspaces/identify", icon: Layers, description: "Build & customize playbooks" },
-    { label: "Signal Ops Center", path: "/workspaces/detect", icon: Radar, description: "Configure signal sources" },
-    { label: "Pulse Intelligence", path: "/pulse-intelligence", icon: Radar, description: "Weak signal analysis" },
-    { label: "Institutional Memory", path: "/institutional-memory", icon: BookOpen, description: "Organizational learning" },
   ];
 
   const investorsLinks: NavLink[] = [

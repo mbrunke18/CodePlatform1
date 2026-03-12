@@ -371,7 +371,7 @@ export default function MissionControl() {
                         color: "#C9A84C",
                         title: "Stuck Execution Alerts",
                         desc: "Tasks that stop moving are surfaced automatically — before they silently loop.",
-                        path: "/workspaces/advance",
+                        path: "/workspace?tab=advance",
                         label: "View in ADVANCE"
                       },
                       {
@@ -379,7 +379,7 @@ export default function MissionControl() {
                         color: TEAL,
                         title: "Smart Playbook Finder",
                         desc: "Browse 170 playbooks instantly. Full detail loads only when you select one.",
-                        path: "/workspaces/identify",
+                        path: "/workspace?tab=identify",
                         label: "Open in IDENTIFY"
                       },
                       {
@@ -387,7 +387,7 @@ export default function MissionControl() {
                         color: NAVY,
                         title: "Your Actions, Your Role",
                         desc: "Each executive sees only their assigned actions — not everything across the org.",
-                        path: "/workspaces/execute",
+                        path: "/workspace?tab=execute",
                         label: "View in EXECUTE"
                       },
                       {
@@ -395,7 +395,7 @@ export default function MissionControl() {
                         color: GOLD,
                         title: "Live Execution Compass",
                         desc: "Playbook intent and phase guidance reappear at every checkpoint so teams don't drift.",
-                        path: "/workspaces/execute",
+                        path: "/workspace?tab=execute",
                         label: "View in EXECUTE"
                       }
                     ].map((item, i) => (

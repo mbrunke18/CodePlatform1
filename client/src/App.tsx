@@ -93,6 +93,10 @@ const ExecutionLearningDashboard = lazy(() => import("./pages/NFLLearningDashboa
 const RoadshowResources = lazy(() => import("./pages/RoadshowResources"));
 const AIIntelligenceHub = lazy(() => import("./pages/AIIntelligenceHub"));
 const IntelligenceControlCenter = lazy(() => import("./pages/IntelligenceControlCenter"));
+const ExecutiveHub = lazy(() => import("./pages/ExecutiveHub"));
+const IntelligenceHub = lazy(() => import("./pages/IntelligenceHub"));
+const SettingsHub = lazy(() => import("./pages/SettingsHub"));
+const SituationalHub = lazy(() => import("./pages/SituationalHub"));
 const ExecutiveScorecard = lazy(() => import("./pages/ExecutiveScorecard"));
 const ExecutiveSummaryGenerator = lazy(() => import("./pages/ExecutiveSummaryGenerator"));
 const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
@@ -136,6 +140,7 @@ const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
+const WorkspaceHub = lazy(() => import("./pages/WorkspaceHub"));
 const WorkspaceIdentify = lazy(() => import("./pages/WorkspaceIdentify"));
 const WorkspaceDetect = lazy(() => import("./pages/WorkspaceDetect"));
 const WorkspaceExecute = lazy(() => import("./pages/WorkspaceExecute"));
@@ -287,10 +292,11 @@ function Router() {
             <Route path="/" component={Homepage} />
             <Route path="/home" component={Homepage} />
             <Route path="/mission-control" component={MissionControl} />
-            <Route path="/workspaces/identify" component={WorkspaceIdentify} />
-            <Route path="/workspaces/detect" component={WorkspaceDetect} />
-            <Route path="/workspaces/execute" component={WorkspaceExecute} />
-            <Route path="/workspaces/advance" component={WorkspaceAdvance} />
+            <Route path="/workspace" component={WorkspaceHub} />
+            <Route path="/workspaces/identify">{() => <Redirect to="/workspace?tab=identify" />}</Route>
+            <Route path="/workspaces/detect">{() => <Redirect to="/workspace?tab=detect" />}</Route>
+            <Route path="/workspaces/execute">{() => <Redirect to="/workspace?tab=execute" />}</Route>
+            <Route path="/workspaces/advance">{() => <Redirect to="/workspace?tab=advance" />}</Route>
 
         {/* IDENTIFY Phase */}
         <Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
@@ -337,6 +343,13 @@ function Router() {
         <Route path="/learn/role-demo" component={LearnRoleDemoPage} />
         <Route path="/learn/drills" component={LearnDrillsPage} />
         <Route path="/learn/help" component={LearnHelpPage} />
+
+        {/* Hub Pages */}
+        <Route path="/executive-hub" component={ExecutiveHub} />
+        <Route path="/intelligence-hub" component={IntelligenceHub} />
+        <Route path="/settings-hub" component={SettingsHub} />
+        <Route path="/situations-hub" component={SituationalHub} />
+        {renderRedirects(["/crisis-hub"], "/situations-hub")}
 
         {/* Dashboards & Intelligence */}
         <Route path="/executive-dashboard" component={ExecutiveDashboard} />
