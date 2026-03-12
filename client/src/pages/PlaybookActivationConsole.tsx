@@ -21,7 +21,12 @@ import {
   Zap,
   Loader2,
   Shield,
-  Crosshair
+  Crosshair,
+  Award,
+  Brain,
+  BarChart3,
+  TrendingUp,
+  ArrowRight
 } from "lucide-react";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -461,7 +466,7 @@ export default function PlaybookActivationConsole() {
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em" }}>
                 <strong style={{ color: GOLD }}>INDUSTRY BENCHMARK:</strong> Traditional coordination takes 72 hours average.
-                <strong style={{ color: GOLD, marginLeft: 16 }}>M TARGET:</strong> 12 minutes or less.
+                <strong style={{ color: GOLD, marginLeft: 16 }}>OUR TARGET:</strong> 12 minutes or less.
               </div>
               <div className="flex items-center gap-4">
                 {elapsedMinutes > 0 && (
@@ -761,45 +766,150 @@ export default function PlaybookActivationConsole() {
           </Button>
         </div>
 
-        {/* Success Message */}
-        {executionStatus === 'completed' && (
-          <>
-            <div style={{ background: NAVY, padding: "64px 48px", textAlign: "center", color: "#fff", position: "relative", overflow: "hidden" }}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
-              <div className="relative z-10 space-y-4">
-                <Trophy className="h-16 w-16 mx-auto" style={{ color: GOLD }} />
-                <h2 style={{ ...CG, fontSize: "clamp(32px,5vw,48px)", fontWeight: 600 }}>Playbook Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em></h2>
-                <div style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                  Completed in {formatTime(elapsedSeconds)} • {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x faster than industry standard
-                </div>
-                <p style={{ color: GOLD_LT, fontSize: 18 }}>
-                  Mission critical time saved: {Math.floor(timeSaved / 60)}h {(timeSaved % 60).toFixed(0)}m
-                </p>
-                {activationDbId && (
-                  <Link href={`/activation-outcome/${activationDbId}`}>
-                    <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, borderRadius: 0, marginTop: 8 }}>
-                      Close the Loop — View Outcome Report →
-                    </Button>
-                  </Link>
-                )}
-              </div>
-            </div>
+        {/* Post-Activation Debrief */}
+        {executionStatus === 'completed' && (() => {
+          const perfScore = Math.min(100, Math.round(
+            (completedTasks / Math.max(safeTasks.length, 1)) * 60 +
+            (isOnTrack ? 30 : 10) + 10
+          ));
+          const roiValue = Math.round(Math.max(timeSaved, 0) * 40);
+          const roiFormatted = roiValue >= 1000000
+            ? `$${(roiValue / 1000000).toFixed(1)}M`
+            : `$${(roiValue / 1000).toFixed(0)}K`;
+          const perfLabel = perfScore >= 90 ? 'Exceptional' : perfScore >= 75 ? 'Strong' : perfScore >= 60 ? 'On Track' : 'Needs Review';
+          const perfColor = perfScore >= 90 ? TEAL : perfScore >= 75 ? GOLD : perfScore >= 60 ? NAVY : '#B91C1C';
+          const recommendation = perfScore >= 90
+            ? 'Outstanding execution. This playbook is ready to be promoted as a benchmark across your portfolio. Consider sharing learnings with your strategic leadership team.'
+            : perfScore >= 75
+            ? 'Strong execution. Review task-level performance in the ADVANCE workspace to identify 1–2 optimizations for the next activation cycle.'
+            : perfScore >= 60
+            ? 'Solid execution. Focus your ADVANCE debrief on timeline adherence — explore where time was lost and update task estimates accordingly.'
+            : 'This activation surfaced areas for improvement. Use the ADVANCE workspace to run a full debrief before the next trigger fires.';
 
-            {/* Post-Execution Validation Report */}
-            {params?.playbookId && (
-              <>
-                <ExecutionValidationReport 
-                  scenarioId={params.playbookId}
-                  executionId={executionId}
-                  executionCompleted={true}
-                />
-                
-                {/* AI-Powered Learning Extraction */}
-                <PlaybookLearningsPanel scenarioId={params.playbookId} />
-              </>
-            )}
-          </>
-        )}
+          return (
+            <>
+              {/* Hero Completion Banner */}
+              <div style={{ background: NAVY, padding: "56px 48px", textAlign: "center", color: "#fff", position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
+                <div className="relative z-10">
+                  <Trophy className="h-14 w-14 mx-auto mb-4" style={{ color: GOLD }} />
+                  <h2 style={{ ...CG, fontSize: "clamp(28px,5vw,44px)", fontWeight: 700, marginBottom: 12 }}>
+                    Playbook Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em>
+                  </h2>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 20 }}>
+                    Completed in {formatTime(elapsedSeconds)} &nbsp;·&nbsp; {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x faster than the 72-hour industry standard
+                  </div>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.15)", border: `1px solid ${GOLD}`, padding: "12px 28px", marginBottom: 28 }}>
+                    <BarChart3 className="h-4 w-4" style={{ color: GOLD }} />
+                    <span style={{ color: GOLD_LT, fontSize: 15, fontWeight: 700 }}>
+                      {roiFormatted} decision time preserved &nbsp;·&nbsp; {Math.floor(timeSaved / 60)}h {Math.round(timeSaved % 60)}m vs. 72-hour benchmark
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center gap-3 flex-wrap">
+                    <Link href="/workspace?tab=advance">
+                      <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, padding: "11px 28px", borderRadius: 0, fontSize: 12, letterSpacing: "0.05em" }}>
+                        Proceed to ADVANCE <ArrowRight className="h-4 w-4 ml-2 inline" />
+                      </Button>
+                    </Link>
+                    <Link href="/roi-dashboard">
+                      <Button variant="outline" style={{ border: `1.5px solid rgba(255,255,255,0.3)`, color: "#fff", background: "transparent", fontWeight: 600, padding: "11px 28px", borderRadius: 0, fontSize: 12 }}>
+                        View ROI Dashboard
+                      </Button>
+                    </Link>
+                    {activationDbId && (
+                      <Link href={`/activation-outcome/${activationDbId}`}>
+                        <Button variant="outline" style={{ border: `1.5px solid rgba(255,255,255,0.3)`, color: "rgba(255,255,255,0.7)", background: "transparent", fontWeight: 600, padding: "11px 28px", borderRadius: 0, fontSize: 12 }}>
+                          Outcome Report
+                        </Button>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* ADVANCE Debrief Strip */}
+              <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}`, padding: "40px 48px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+                  <div style={{ width: 24, height: 2, background: GOLD }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>ADVANCE — Execution Debrief</span>
+                </div>
+
+                {/* 4 Metric Cards */}
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, marginBottom: 28 }}>
+                  {/* Performance Score */}
+                  <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${perfColor}`, padding: 20 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                      <Award className="h-3.5 w-3.5" style={{ color: perfColor }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Performance Score</span>
+                    </div>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: perfColor, lineHeight: 1 }}>{perfScore}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: perfColor, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{perfLabel}</div>
+                  </div>
+
+                  {/* Time Saved */}
+                  <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${TEAL}`, padding: 20 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                      <Clock className="h-3.5 w-3.5" style={{ color: TEAL }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Time Preserved</span>
+                    </div>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{Math.floor(timeSaved / 60)}h</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>vs. 72-hr standard</div>
+                  </div>
+
+                  {/* Tasks Completed */}
+                  <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${NAVY}`, padding: 20 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                      <CheckCircle2 className="h-3.5 w-3.5" style={{ color: NAVY }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Tasks Completed</span>
+                    </div>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{completedTasks}/{safeTasks.length}</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>
+                      {safeTasks.length > 0 ? `${Math.round((completedTasks / safeTasks.length) * 100)}% completion rate` : 'No tasks tracked'}
+                    </div>
+                  </div>
+
+                  {/* Decision Velocity */}
+                  <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${GOLD}`, padding: 20 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+                      <Zap className="h-3.5 w-3.5" style={{ color: GOLD }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Decision Velocity</span>
+                    </div>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: GOLD, lineHeight: 1 }}>
+                      {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x
+                    </div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>faster than benchmark</div>
+                  </div>
+                </div>
+
+                {/* AI Recommendation */}
+                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderLeft: `4px solid ${perfColor}`, padding: "20px 24px", display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <Brain className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: perfColor }} />
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: perfColor, marginBottom: 6 }}>AI Execution Recommendation</div>
+                    <p style={{ fontSize: 13, color: NAVY, fontWeight: 500, lineHeight: 1.6, margin: 0 }}>{recommendation}</p>
+                    <Link href="/workspace?tab=advance">
+                      <button style={{ marginTop: 12, fontSize: 11, fontWeight: 700, color: perfColor, background: "none", border: "none", cursor: "pointer", letterSpacing: "0.05em", textTransform: "uppercase" as const, padding: 0, display: "flex", alignItems: "center", gap: 4 }}>
+                        Open ADVANCE Workspace <ArrowRight className="h-3 w-3" />
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Post-Execution Validation Report */}
+              {params?.playbookId && (
+                <>
+                  <ExecutionValidationReport
+                    scenarioId={params.playbookId}
+                    executionId={executionId}
+                    executionCompleted={true}
+                  />
+                  <PlaybookLearningsPanel scenarioId={params.playbookId} />
+                </>
+              )}
+            </>
+          );
+        })()}
       </div>
     </div>
     </PageLayout>
