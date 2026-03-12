@@ -900,7 +900,29 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 
 **Display:** Navy card with shield icon header, rendered above `<PreActivationImpactPreview>`. Loader while fetching. If `briefData` is null (OpenAI unavailable), shows a static fallback with the playbook name.
 
-### 2. Graduated Attention — Completed Task Collapse — `WorkspaceExecute.tsx`
+### 2. Post-Activation Debrief Screen — `PlaybookActivationConsole.tsx`
+
+**What it does:** Replaces the old plain success message when `executionStatus === 'completed'`. Automatically surfaces a full debrief — no navigation required.
+
+**Sections rendered:**
+- **Hero banner:** Trophy icon, "Playbook Executed Successfully", speed multiplier (e.g. 360x vs. 72-hr standard), ROI dollar value pill (time saved × $40/min Fortune 1000 rate, formatted as $XK or $X.XM)
+- **3 CTAs:** "Proceed to ADVANCE" (→ `/workspace?tab=advance`), "View ROI Dashboard" (→ `/roi-dashboard`), "Outcome Report" (→ `/activation-outcome/:id`)
+- **ADVANCE Debrief Strip:** 4 metric cards — Performance Score (0–100), Time Preserved (hours), Tasks Completed (X/Y with %), Decision Velocity (Nx multiplier)
+- **AI Recommendation:** Single actionable sentence based on score tier (Exceptional ≥90 / Strong ≥75 / On Track ≥60 / Needs Review <60), with link to ADVANCE workspace
+
+**Performance score formula (local, no API call):**
+```ts
+const perfScore = Math.min(100, Math.round(
+  (completedTasks / Math.max(safeTasks.length, 1)) * 60 +
+  (isOnTrack ? 30 : 10) + 10
+));
+```
+
+**ROI formula:** `timeSaved (minutes) × $40/min` → formatted as $XK or $X.XM. `timeSaved = industryStandard (72×60) - elapsedMinutes`.
+
+**Pattern:** Uses an IIFE `{executionStatus === 'completed' && (() => { ... })()}` to scope local constants without adding state.
+
+### 3. Graduated Attention — Completed Task Collapse — `WorkspaceExecute.tsx`
 
 **What it does:** In the MyActionsPanel inside WorkspaceExecute, completed tasks are collapsed into a single teal summary bar ("X tasks completed") with an expand/collapse chevron toggle. Active/pending tasks stay visible. This reduces visual noise for executives managing live executions.
 
