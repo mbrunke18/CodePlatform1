@@ -913,7 +913,7 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 **Performance score formula (local, no API call):**
 ```ts
 const perfScore = Math.min(100, Math.round(
-  (completedTasks / Math.max(safeTasks.length, 1)) * 60 +
+  (completedTasks / Math.max(displayTasks.length, 1)) * 60 +
   (isOnTrack ? 30 : 10) + 10
 ));
 ```
@@ -922,7 +922,49 @@ const perfScore = Math.min(100, Math.round(
 
 **Pattern:** Uses an IIFE `{executionStatus === 'completed' && (() => { ... })()}` to scope local constants without adding state.
 
-### 3. Graduated Attention — Completed Task Collapse — `WorkspaceExecute.tsx`
+### 3. Auto-Task Seeding — `PlaybookActivationConsole.tsx`
+
+**What it does:** When a playbook is activated with zero tasks in the database, the console automatically generates 7 domain-specific tasks and displays them as if they were real tasks — with live auto-progression every 20 seconds. This means any playbook in the library delivers an immediately compelling demo without requiring customer setup or database pre-population.
+
+**Key variables:**
+- `localDemoTasks: DemoTask[]` — state array holding generated tasks when no real tasks exist
+- `displayTasks` — derived value: `safeTasks.length > 0 ? safeTasks : localDemoTasks`. Used everywhere instead of `safeTasks` for rendering, progress calc, score formula, and debrief.
+
+**Domain task map (`DOMAIN_TASKS`):** 9 domain keys (Financial Strategy, Market Dynamics, Operational Excellence, Technology & Innovation, AI Governance, Brand & Reputation, Regulatory & Compliance, Talent & Leadership) each with 7 professional task descriptions. Falls back to `GENERIC_TASKS` (7 items) if domain doesn't match.
+
+**Auto-progression `useEffect`:**
+- Fires when `executionStatus === 'active'` and `localDemoTasks.length > 0`
+- On mount: immediately sets first `pending` task to `in_progress`
+- `setInterval` every 20 seconds: completes the current `in_progress` task AND starts the next `pending` task in one state update
+- Cleans up interval on unmount
+
+**Seeding trigger (in `handleConfirmActivation`):**
+```ts
+if (safeTasks.length === 0) {
+  const domain = playbook?.domain || playbook?.strategicCategory || '';
+  setLocalDemoTasks(generateDemoTasks(domain));
+}
+```
+
+**Important:** `DemoTask` objects have `id: 'demo-task-N'` — never clash with real UUID task IDs. The debrief screen, progress bar, and all metric cards use `displayTasks` consistently.
+
+### 4. Workspace Pages Embeddable Prop
+
+**What it does:** All four IDEA workspace pages (`WorkspaceIdentify`, `WorkspaceDetect`, `WorkspaceExecute`, `WorkspaceAdvance`) accept an optional `{ embedded?: boolean }` prop. When `embedded=true`, the `<PageLayout>` wrapper is suppressed and just the inner content `<div>` is returned — enabling these pages to be composed as tab panels inside `WorkspaceHub.tsx` without double-wrapping the nav and footer.
+
+**Pattern used in each file:**
+```tsx
+export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } = {}) {
+  const inner = (
+    <div className="min-h-screen bg-[#F8F7F4]">
+      {/* all content */}
+    </div>
+  );
+  return embedded ? inner : <PageLayout>{inner}</PageLayout>;
+}
+```
+
+### 5. Graduated Attention — Completed Task Collapse — `WorkspaceExecute.tsx`
 
 **What it does:** In the MyActionsPanel inside WorkspaceExecute, completed tasks are collapsed into a single teal summary bar ("X tasks completed") with an expand/collapse chevron toggle. Active/pending tasks stay visible. This reduces visual noise for executives managing live executions.
 
