@@ -1,4 +1,4 @@
-# ExecuteIQ: "Why Now" Slide Content
+# Execution OS: "Why Now" Slide Content
 ## 2-3 Slides of Narrative and Data for Investor Deck
 
 ---
@@ -9,7 +9,7 @@
 **Three Forces Converging to Create SEOS**
 
 ### Visual Concept
-Three circles converging into one center point labeled "ExecuteIQ"
+Three circles converging into one center point labeled "Execution OS"
 
 ### Content
 
@@ -34,7 +34,7 @@ Three circles converging into one center point labeled "ExecuteIQ"
 - *Urgency didn't exist before 2020*
 
 ### Bottom Line
-> "The technology exists. The infrastructure exists. The buyer urgency exists. ExecuteIQ is the first platform purpose-built to serve this moment."
+> "The technology exists. The infrastructure exists. The buyer urgency exists. Execution OS is the first platform purpose-built to serve this moment."
 
 ---
 
@@ -78,7 +78,7 @@ Two lines diverging over time:
 ### Visual Concept
 Market map showing:
 - Existing categories (CRM, ERP, ITSM, Risk Management) as established boxes
-- Open space in the center labeled "Strategic Execution OS" with ExecuteIQ logo
+- Open space in the center labeled "Strategic Execution OS" with Execution OS logo
 
 ### Content
 
@@ -145,7 +145,7 @@ Use these stats in conversation to reinforce the slides:
 - Source citations in small footer text
 
 ### Slide 3: The Window
-- Market map visual with ExecuteIQ in the white space
+- Market map visual with Execution OS in the white space
 - Timeline bar showing "18-24 month window"
 - Urgency framing: "The window is closing"
 
@@ -169,7 +169,7 @@ The convergence is happening now:
 
 **The gap is growing.** Markets move in minutes; enterprises respond in days. IBM found that 30-day breach containment saves $1.76M. McKinsey warns that the speed gap is widening. Companies that close it will win.
 
-**The category is open.** No platform today connects signal → playbook → coordinated execution → learning. Risk tools focus on compliance. PM tools focus on tasks. Crisis tools focus on notification. ExecuteIQ is the first Strategic Execution Operating System.
+**The category is open.** No platform today connects signal → playbook → coordinated execution → learning. Risk tools focus on compliance. PM tools focus on tasks. Crisis tools focus on notification. Execution OS is the first Strategic Execution Operating System.
 
 **The window is 18-24 months.** First mover defines the category. Incumbents are distracted by AI features, not new platforms. The opportunity is now.
 

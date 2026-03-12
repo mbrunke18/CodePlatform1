@@ -1,4 +1,4 @@
-# ExecuteIQ: Pre-Roadshow Checklist
+# Execution OS: Pre-Roadshow Checklist
 ## Detailed Task List with Priorities and Timeline
 
 ---
@@ -36,7 +36,7 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 | 10 | Standardize "12 minutes" claim across all pages | Dev | D-7 | ☐ |
 | 11 | Resolve "92 signals" vs "12 sources" inconsistency | Martin | D-7 | ☐ |
 | 12 | Document source for "$144M value gap" or remove | Martin | D-7 | ☐ |
-| 13 | Review ExecuteIQ-Validated-Statistics-QuickRef.md | Martin | D-7 | ☐ |
+| 13 | Review Execution OS-Validated-Statistics-QuickRef.md | Martin | D-7 | ☐ |
 | 14 | Print 5 copies of claims validation document | Martin | D-3 | ☐ |
 
 ### Materials Preparation
@@ -100,7 +100,7 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 | 41 | Draft follow-up email template | Martin | D-3 | ☐ |
 | 42 | Create LinkedIn connection request template | Martin | D-3 | ☐ |
 | 43 | Prepare data room access credentials | Martin | D-3 | ☐ |
-| 44 | Update personal LinkedIn with ExecuteIQ info | Martin | D-5 | ☐ |
+| 44 | Update personal LinkedIn with Execution OS info | Martin | D-5 | ☐ |
 
 ### Product Polish
 
@@ -258,4 +258,4 @@ Reason:
 
 ---
 
-*Pre-roadshow checklist for ExecuteIQ Strategic Execution Operating System. Update status daily as roadshow approaches.*
+*Pre-roadshow checklist for Execution OS Strategic Execution Operating System. Update status daily as roadshow approaches.*

@@ -20,12 +20,12 @@ import {
 import StandardNav from '@/components/layout/StandardNav';
 import { useLocation } from 'wouter';
 
-import investorFaqContent from '@/data/ExecuteIQ-Investor-FAQ.md?raw';
-import pilotProgramContent from '@/data/ExecuteIQ-Pilot-Program-OnePager.md?raw';
-import demoScriptContent from '@/data/ExecuteIQ-Demo-Script-3min.md?raw';
-import whyNowContent from '@/data/ExecuteIQ-WhyNow-SlideContent.md?raw';
-import competitiveMoatContent from '@/data/ExecuteIQ-Competitive-Moat-TalkingPoints.md?raw';
-import checklistContent from '@/data/ExecuteIQ-PreRoadshow-Checklist.md?raw';
+import investorFaqContent from '@/data/ExecutionOS-Investor-FAQ.md?raw';
+import pilotProgramContent from '@/data/ExecutionOS-Pilot-Program-OnePager.md?raw';
+import demoScriptContent from '@/data/ExecutionOS-Demo-Script-3min.md?raw';
+import whyNowContent from '@/data/ExecutionOS-WhyNow-SlideContent.md?raw';
+import competitiveMoatContent from '@/data/ExecutionOS-Competitive-Moat-TalkingPoints.md?raw';
+import checklistContent from '@/data/ExecutionOS-PreRoadshow-Checklist.md?raw';
 import { BrandStamp } from "@/components/BrandStamp";
 
 const NAVY = "#0A0F2E";

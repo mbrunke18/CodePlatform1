@@ -1,13 +1,13 @@
-# ExecuteIQ Strategic Execution Operating System
+# Execution OS Strategic Execution Operating System
 ## Enterprise Pilot Program
 
 ---
 
 ## Program Overview
 
-The ExecuteIQ Pilot Program is a 90-day engagement designed to demonstrate measurable value in strategic response coordination. Pilot customers receive full platform access, dedicated implementation support, and executive-level partnership to ensure success.
+The Execution OS Pilot Program is a 90-day engagement designed to demonstrate measurable value in strategic response coordination. Pilot customers receive full platform access, dedicated implementation support, and executive-level partnership to ensure success.
 
-**Pilot Objective:** Prove that ExecuteIQ reduces strategic response initiation time by 80%+ compared to current processes.
+**Pilot Objective:** Prove that Execution OS reduces strategic response initiation time by 80%+ compared to current processes.
 
 ---
 
@@ -89,7 +89,7 @@ We measure pilot success on four dimensions:
 ## What's Included
 
 ### Platform Access
-- Full ExecuteIQ platform for up to 50 users
+- Full Execution OS platform for up to 50 users
 - 166 playbook templates across 9 domains (including AI Governance)
 - AI signal monitoring (12 intelligence sources)
 - Real-time coordination dashboard
@@ -110,14 +110,14 @@ We measure pilot success on four dimensions:
 ### Executive Partnership
 - Weekly check-ins with CSM
 - Bi-weekly executive sponsor updates
-- Direct access to ExecuteIQ leadership
+- Direct access to Execution OS leadership
 - Priority feature consideration
 
 ---
 
 ## Ideal Pilot Candidate
 
-The ExecuteIQ Pilot Program is designed for organizations that:
+The Execution OS Pilot Program is designed for organizations that:
 
 | Criteria | Description |
 |----------|-------------|
@@ -193,10 +193,10 @@ A: We recommend 90 days to get meaningful results, but can discuss 60-day option
 
 ## Contact
 
-**To discuss the ExecuteIQ Pilot Program:**
+**To discuss the Execution OS Pilot Program:**
 
 [Your Name]  
-Founder & CEO, ExecuteIQ Strategic Execution OS  
+Founder & CEO, Execution OS Strategic Execution OS  
 [Email]  
 [Phone]  
 [Calendar booking link]

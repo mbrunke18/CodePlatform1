@@ -283,7 +283,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Quick Demo (5 min)',
           path: '/learn/quick-demo',
           icon: '▶️',
-          description: 'What is ExecuteIQ? Interactive overview'
+          description: 'What is Execution OS? Interactive overview'
         },
         {
           id: 'role-demo',
