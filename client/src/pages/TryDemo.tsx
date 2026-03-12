@@ -636,7 +636,7 @@ export default function TryDemo() {
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your playbook was already built. The system was already watching.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
-                      { min: '0 min', text: 'AI detects the trigger across 216+ signal sources', color: GOLD },
+                      { min: '0 min', text: 'AI detects the trigger across 248+ signal sources', color: GOLD },
                       { min: '2 min', text: 'Matched playbook activates — tasks assigned to named owners', color: '#3BAF8A' },
                       { min: '5 min', text: 'War room channel open, board communication staged', color: '#3BAF8A' },
                       { min: '8 min', text: 'Budget exception routed for approval automatically', color: '#3BAF8A' },
@@ -649,7 +649,7 @@ export default function TryDemo() {
                     ))}
                   </div>
                   <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', gap: 20 }}>
-                    {[['170', 'Playbooks ready'], ['216+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
+                    {[['170', 'Playbooks ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
                       <div key={label}>
                         <p style={{ fontSize: 17, fontWeight: 700, color: GOLD, margin: 0, lineHeight: 1 }}>{val}</p>
                         <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>
@@ -1016,7 +1016,7 @@ export default function TryDemo() {
                         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>execution-os — signal-monitor — live</span>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
                           <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
-                          <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 216+ SOURCES</span>
+                          <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 248+ SOURCES</span>
                         </div>
                       </div>
 
@@ -1024,7 +1024,7 @@ export default function TryDemo() {
                       <div style={{ background: 'rgba(201,168,76,0.07)', borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '7px 18px', display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em' }}>DEMO MODE</span>
                         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>—</span>
-                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 216+ sources.</span>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 248+ sources.</span>
                       </div>
 
                       <div style={{ padding: '20px 20px 24px' }}>
@@ -1423,10 +1423,10 @@ export default function TryDemo() {
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
                       </div>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 216+ sources — replaced by continuous AI monitoring.</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous AI monitoring.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Execution OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-                        {[['216+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
+                        {[['248+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
                           <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '8px 10px', textAlign: 'center' }}>
                             <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0 }}>{val}</p>
                             <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', margin: 0, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>

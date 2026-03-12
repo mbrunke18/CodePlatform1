@@ -36,7 +36,7 @@ export default function IntelligenceControlCenter() {
   useEffect(() => {
     updatePageMetadata({
       title: "Intelligence Control Center - Execution OS Strategic Execution OS",
-      description: "Monitor 216+ data points across 16 signal categories. AI-powered pattern detection, trigger management, and strategic intelligence.",
+      description: "Monitor 248+ data points across 20 signal categories. AI-powered pattern detection, trigger management, and strategic intelligence.",
       ogTitle: "M Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with AI-powered pattern detection and 12-minute response coordination.",
     });
@@ -71,8 +71,8 @@ export default function IntelligenceControlCenter() {
       icon: Radio,
       color: 'navy',
       status: 'active',
-      features: ['16 Signal Categories', '216+ Data Points', 'Custom Triggers', 'Alert Management'],
-      badge: '216+ DATA POINTS'
+      features: ['20 Signal Categories', '248+ Data Points', 'Custom Triggers', 'Alert Management'],
+      badge: '248+ DATA POINTS'
     },
     {
       id: 'foresight-radar',

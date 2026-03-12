@@ -191,7 +191,7 @@ export default function FounderStory() {
           <div style={{ background: NAVY, padding: "48px 40px", margin: "48px 0" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
               {[
-                { letter: "I", word: "IDENTIFY", desc: "216+ signals across 16 categories. Every 15 minutes. Before you ask." },
+                { letter: "I", word: "IDENTIFY", desc: "248+ signals across 20 categories. Every 15 minutes. Before you ask." },
                 { letter: "D", word: "DETECT", desc: "Pattern recognition fires before the crisis peaks. Not after." },
                 { letter: "E", word: "EXECUTE", desc: "170 pre-built playbooks deploy simultaneously. Twelve minutes." },
                 { letter: "A", word: "ADVANCE", desc: "Every activation makes the next one smarter. The library compounds." },
@@ -208,7 +208,7 @@ export default function FounderStory() {
           </div>
 
           <Body>
-            IDENTIFY means the system is already watching. 216 data points across 16 signal categories, every fifteen minutes. The organization is not waiting to be surprised. It knows what is moving before anyone calls a meeting about it.
+            IDENTIFY means the system is already watching. 216 data points across 20 signal categories, every fifteen minutes. The organization is not waiting to be surprised. It knows what is moving before anyone calls a meeting about it.
           </Body>
           <Body>
             DETECT means pattern recognition fires before the crisis peaks. Not after the call comes in. Not after someone builds a deck to explain what is happening. The system reads cross-domain signal combinations that human analysts miss because they are watching one domain at a time.

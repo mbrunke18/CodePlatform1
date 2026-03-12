@@ -37,14 +37,14 @@ export default function BusinessIntelligence() {
       competitor: "Traditional Consulting Firms",
       strength: "Established relationships",
       weakness: "Slow response times (6+ months)",
-      ourAdvantage: "4-minute crisis activation vs 6-month traditional process",
+      ourAdvantage: "12-minute strategic response vs 6-month traditional process",
       marketPosition: "Disrupting"
     },
     {
       competitor: "Business Intelligence Platforms", 
       strength: "Data visualization",
-      weakness: "No crisis response integration",
-      ourAdvantage: "AI intelligence + immediate crisis protocols",
+      weakness: "No strategic execution integration",
+      ourAdvantage: "AI intelligence + immediate execution coordination",
       marketPosition: "Leading"
     },
     {
@@ -57,9 +57,9 @@ export default function BusinessIntelligence() {
   ];
 
   const performanceIndicators = [
-    { kpi: "Decision Intelligence Speed", current: "4 min", target: "2 min", progress: 80 },
+    { kpi: "Strategic Response Speed", current: "12 min", target: "8 min", progress: 85 },
     { kpi: "AI Prediction Accuracy", current: "91%", target: "95%", progress: 92 },
-    { kpi: "Crisis Response Readiness", current: "97%", target: "99%", progress: 97 },
+    { kpi: "Execution Readiness", current: "97%", target: "99%", progress: 97 },
     { kpi: "Platform Adoption Rate", current: "87%", target: "95%", progress: 87 }
   ];
 

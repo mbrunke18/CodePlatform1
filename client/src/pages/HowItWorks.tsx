@@ -149,7 +149,7 @@ export default function HowItWorks() {
                 icon: Radio,
                 color: TEAL,
                 desc: "Your selected signal categories go live. The AI begins monitoring from the moment setup completes — every 15 minutes, across your chosen domains.",
-                items: ["16 signal categories available", "Monitoring starts immediately", "15-minute refresh cycles", "Threshold triggers configured"]
+                items: ["20 signal categories available", "Monitoring starts immediately", "15-minute refresh cycles", "Threshold triggers configured"]
               }
             ].map((card, i) => (
               <div key={i} style={{ background: i % 3 === 1 ? OFF : "#fff", border: `1px solid ${BORDER}`, padding: "48px 40px" }}>
@@ -199,7 +199,7 @@ export default function HowItWorks() {
               {[
                 { num: "170", label: "Pre-Built Playbooks", sub: "Across 9 strategic domains", color: GOLD },
                 { num: "9", label: "Strategic Domains", sub: "Full enterprise coverage", color: TEAL },
-                { num: "216+", label: "Signal Data Points", sub: "Monitoring your environment", color: NAVY },
+                { num: "248+", label: "Signal Data Points", sub: "Monitoring your environment", color: NAVY },
                 { num: "12 min", label: "Execution Window", sub: "From trigger to coordination", color: GOLD },
               ].map((stat, i) => (
                 <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "28px 32px", display: "flex", alignItems: "center", gap: 24 }}>
@@ -360,7 +360,7 @@ export default function HowItWorks() {
                 color: GOLD,
                 bg: "#fff",
                 title: "AI Monitoring — Every 15 Min",
-                desc: "The signal engine scans 216+ data points across 16 categories — competitive shifts, regulatory changes, market signals, and more. When AI confidence crosses your threshold, an alert fires.",
+                desc: "The signal engine scans 248+ data points across 20 categories — competitive shifts, regulatory changes, market signals, and more. When AI confidence crosses your threshold, an alert fires.",
                 sub: "No scrambling to figure out what happened."
               },
               {
@@ -598,7 +598,7 @@ export default function HowItWorks() {
                 title: "Signal & Trigger Layer",
                 what: "Define exactly what activates your playbooks — and how sensitive each trigger is.",
                 controls: [
-                  "16 signal categories to choose from",
+                  "20 signal categories to choose from",
                   "Custom activation conditions per playbook",
                   "AND / OR / Threshold multi-condition logic",
                   "Spike / Drop / Threshold operators",

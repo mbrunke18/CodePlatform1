@@ -309,7 +309,7 @@ function HeroSection() {
           }}>
             {[
               { num: "170",    label: "Zero improvisation when the trigger fires",   sub: "Pre-staged playbooks across 9 strategic domains" },
-              { num: "216+",   label: "Threats detected before they become crises",  sub: "Signals monitored every 15 minutes" },
+              { num: "248+",   label: "Threats detected before they become crises",  sub: "Signals monitored every 15 minutes" },
               { num: "12 min", label: "Full organizational deployment",              sub: "Before the first emergency call ends" },
             ].map((s, i) => (
               <div key={s.num} style={{ display: "contents" }}>
@@ -526,7 +526,7 @@ function MissingLayerSection() {
 function IDEASection() {
   const cards = [
     { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Playbooks",        body: "Every scenario is mapped before the trigger fires. Roles, tasks, documents, and budget pre-assigned across 9 strategic domains.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "D", title: "Detect",   subtitle: "216+ Signals, Every 15 Minutes",  body: "AI monitors competitive, regulatory, financial, and operational signals continuously. The system surfaces the trigger before it becomes a crisis.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors competitive, regulatory, financial, and operational signals continuously. The system surfaces the trigger before it becomes a crisis.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
     { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One human approval. The system distributes roles, tasks, documents, and budgets to every stakeholder simultaneously. No coordination calls.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation closes the loop. What worked, what didn't, and what to pre-stage better next time — automatically fed back into your playbook library.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];

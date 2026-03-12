@@ -502,7 +502,7 @@ export default function ExecutiveDashboard() {
                     <div className="text-center py-12 flex flex-col items-center gap-3">
                       <CheckCircle className="h-10 w-10" style={{ color: TEAL }} />
                       <p className="text-sm font-semibold" style={{ color: NAVY }}>No active signals detected</p>
-                      <p className="text-xs text-gray-400">AI monitoring is active across all 216+ data points</p>
+                      <p className="text-xs text-gray-400">AI monitoring is active across all 248+ data points</p>
                     </div>
                   ) : (
                     <div className="space-y-3">
@@ -603,7 +603,7 @@ export default function ExecutiveDashboard() {
                       { title: 'Crisis Response Center', desc: 'Full crisis coordination hub — active playbooks, war rooms, and task tracking', link: '/crisis-response', icon: Shield },
                       { title: 'Crisis Exposure Matrix', desc: 'Cross-scenario risk mapping across business units and geographies', link: '/crisis-exposure', icon: BarChart3 },
                       { title: 'Preparedness Report', desc: 'Drill completion rates, coverage gaps, and improvement recommendations', link: '/preparedness-report', icon: TrendingUp },
-                      { title: 'Signal Intelligence Hub', desc: 'Live monitoring of 216+ data points across 16 signal categories', link: '/signal-intelligence', icon: Radio },
+                      { title: 'Signal Intelligence Hub', desc: 'Live monitoring of 248+ data points across 20 signal categories', link: '/signal-intelligence', icon: Radio },
                     ].map((item, i) => (
                       <Link key={i} to={item.link}>
                         <div className="p-4 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors bg-[#F8F7F4] hover:bg-white cursor-pointer flex items-start gap-4">

@@ -40,16 +40,16 @@ export default function VCPresentations() {
     },
     {
       title: "Current Traction",
-      value: "178",
-      subtitle: "Enterprise components deployed",
-      growth: "98/100 quality score",
+      value: "170",
+      subtitle: "Active playbooks across 9 strategic domains",
+      growth: "221 executive triggers mapped",
       color: "text-[#2B8A6E]"
     },
     {
       title: "Competitive Advantage",
-      value: "4 min",
-      subtitle: "Crisis response vs 6-month traditional",
-      growth: "15,000x faster",
+      value: "12 min",
+      subtitle: "Strategic response vs 72-hour industry average",
+      growth: "340x faster",
       color: "text-[#0A0F2E]"
     },
     {
@@ -82,7 +82,7 @@ export default function VCPresentations() {
     },
     {
       title: "Product Demo Presentation",
-      description: "Live platform demonstration showcasing AI intelligence and crisis response",
+      description: "Live platform demonstration showcasing AI signal monitoring and strategic execution",
       slides: 16,
       duration: "12 min",
       status: "Live Demo",
@@ -119,10 +119,10 @@ export default function VCPresentations() {
   ];
 
   const keyInvestmentThesis = [
-    "First platform to combine AI intelligence with immediate crisis response",
-    "15,000x faster crisis activation than traditional consulting approaches",
-    "Fortune 1000 enterprises require both strategic intelligence and crisis readiness",
-    "Market-leading AI accuracy (85-92%) for strategic decision support",
+    "First platform to combine AI signal monitoring with immediate strategic execution",
+    "340x faster response than traditional consulting approaches (12 min vs 72 hours)",
+    "Fortune 1000 enterprises require both strategic intelligence and execution velocity",
+    "170 playbooks across 9 domains — the broadest strategic response coverage available",
     "Scalable enterprise architecture serving organizations with 10,000+ employees"
   ];
 
@@ -258,7 +258,7 @@ export default function VCPresentations() {
                       <span className="text-lg font-bold" style={CG}>Investment Readiness: 96/100</span>
                     </div>
                     <p className="text-sm text-[#141B45] italic opacity-80 leading-relaxed">
-                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in enterprise intelligence and crisis response."
+                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in AI-driven signal monitoring and strategic execution velocity."
                     </p>
                   </div>
                 </CardContent>

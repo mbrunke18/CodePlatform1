@@ -26,7 +26,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) {
   const enterpriseKPIs = [
     { title: "Platform Uptime", value: "99.97%", target: "99.99%", progress: 99.7, color: "text-[#2B8A6E]" },
-    { title: "Response Time", value: "4 min", target: "2 min", progress: 80, color: "text-[#0A0F2E]" },
+    { title: "Response Time", value: "12 min", target: "8 min", progress: 85, color: "text-[#0A0F2E]" },
     { title: "User Adoption", value: "94%", target: "98%", progress: 94, color: "text-[#C9A84C]" },
     { title: "Cost Efficiency", value: "$847K", target: "$1.2M", progress: 85, color: "text-[#C9A84C]" }
   ];

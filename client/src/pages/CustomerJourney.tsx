@@ -161,7 +161,7 @@ export default function CustomerJourney() {
               From Strategy to <span className="text-[#C9A84C]">Execution Mastery</span>
             </h1>
             <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-medium">
-              Our 4-phase transformation model for modern enterprise operating systems.
+              Our 7-phase transformation model — from first evaluation to continuous strategic mastery.
             </p>
           </div>
 
