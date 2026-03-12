@@ -100,7 +100,6 @@ export default function StandardNav() {
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor deck" },
     { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Materials & deck" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive reporting" },
-    { label: "Our Story", path: "/our-story", icon: BookOpen, description: "The Execution OS journey" },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Execution OS" },
   ];
 
