@@ -1,0 +1,212 @@
+Connect WebSocket for real-time execution tracking:
+
+CONTEXT:
+- Frontend has PlaybookActivationConsole showing coordination progress
+- Backend creates executionInstances and tracks acknowledgments
+- We need live updates when stakeholders acknowledge
+
+WHAT I NEED:
+
+1. INSTALL SOCKET.IO:
+npm install socket.io socket.io-client
+
+2. SERVER-SIDE WEBSOCKET:
+
+File: /services/WebSocketService.ts
+
+import { Server as SocketIOServer } from 'socket.io';
+import { db } from '../db/client';
+
+class WebSocketService {
+  private io: SocketIOServer;
+  
+  initialize(httpServer: any) {
+    this.io = new SocketIOServer(httpServer, {
+      cors: {
+        origin: '*',
+        methods: ['GET', 'POST']
+      }
+    });
+    
+    this.io.on('connection', (socket) => {
+      console.log('Client connected:', socket.id);
+      
+      // Join execution instance room
+      socket.on('join-execution', (executionInstanceId: string) => {
+        socket.join(`execution-${executionInstanceId}`);
+        console.log(`Client joined execution-${executionInstanceId}`);
+      });
+      
+      socket.on('disconnect', () => {
+        console.log('Client disconnected:', socket.id);
+      });
+    });
+  }
+  
+  // Broadcast stakeholder acknowledged
+  broadcastAcknowledgment(executionInstanceId: string, data: any) {
+    this.io.to(`execution-${executionInstanceId}`).emit('stakeholder-acknowledged', data);
+  }
+  
+  // Broadcast coordination complete
+  broadcastCoordinationComplete(executionInstanceId: string, metrics: any) {
+    this.io.to(`execution-${executionInstanceId}`).emit('coordination-complete', metrics);
+  }
+  
+  // Broadcast task updated
+  broadcastTaskUpdate(executionInstanceId: string, task: any) {
+    this.io.to(`execution-${executionInstanceId}`).emit('task-updated', task);
+  }
+}
+
+export const wsService = new WebSocketService();
+
+3. UPDATE SERVER.TS:
+
+import { createServer } from 'http';
+import { wsService } from './services/WebSocketService';
+
+// After Express app creation:
+const httpServer = createServer(app);
+wsService.initialize(httpServer);
+
+// Change app.listen to httpServer.listen:
+httpServer.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log('WebSocket server ready');
+});
+
+4. UPDATE ACKNOWLEDGMENT ENDPOINT:
+
+In POST /api/notifications/:notificationId/acknowledge:
+
+// After updating notification
+const notification = await db.query.notifications.findFirst({
+  where: eq(notifications.id, notificationId),
+  with: { recipient: true }
+});
+
+// Get execution instance
+const execution = await db.query.executionInstances.findFirst({
+  where: eq(executionInstances.id, notification.metadata.executionInstanceId)
+});
+
+// Broadcast live update
+wsService.broadcastAcknowledgment(execution.id, {
+  stakeholderId: notification.recipientId,
+  stakeholderName: notification.recipient.name,
+  acknowledgedAt: notification.acknowledgedAt,
+  responseTime: (notification.acknowledgedAt - notification.sentAt) / 1000 / 60 // minutes
+});
+
+// Check if coordination complete (80% acknowledged)
+const totalStakeholders = await db.query.notifications.count({
+  where: eq(notifications.metadata.executionInstanceId, execution.id)
+});
+const acknowledgedCount = await db.query.notifications.count({
+  where: and(
+    eq(notifications.metadata.executionInstanceId, execution.id),
+    isNotNull(notifications.acknowledgedAt)
+  )
+});
+
+if (acknowledgedCount / totalStakeholders >= 0.8 && !execution.coordinationCompleteTime) {
+  // Mark coordination complete
+  const coordinationTime = (Date.now() - execution.coordinationStartTime) / 1000 / 60;
+  
+  await db.update(executionInstances)
+    .set({
+      coordinationCompleteTime: new Date(),
+      coordinationDurationMinutes: coordinationTime
+    })
+    .where(eq(executionInstances.id, execution.id));
+  
+  // Broadcast completion
+  wsService.broadcastCoordinationComplete(execution.id, {
+    coordinationTime,
+    acknowledgedCount,
+    totalStakeholders,
+    acknowledgmentRate: (acknowledgedCount / totalStakeholders) * 100
+  });
+}
+
+5. FRONTEND WEBSOCKET CONNECTION:
+
+File: /src/hooks/useExecutionWebSocket.ts
+
+import { useEffect, useState } from 'react';
+import { io, Socket } from 'socket.io-client';
+
+export function useExecutionWebSocket(executionInstanceId: string) {
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const [acknowledgments, setAcknowledgments] = useState<any[]>([]);
+  const [isComplete, setIsComplete] = useState(false);
+  const [metrics, setMetrics] = useState<any>(null);
+  
+  useEffect(() => {
+    const socketInstance = io(window.location.origin);
+    
+    socketInstance.on('connect', () => {
+      console.log('WebSocket connected');
+      socketInstance.emit('join-execution', executionInstanceId);
+    });
+    
+    socketInstance.on('stakeholder-acknowledged', (data) => {
+      console.log('Stakeholder acknowledged:', data);
+      setAcknowledgments(prev => [...prev, data]);
+    });
+    
+    socketInstance.on('coordination-complete', (data) => {
+      console.log('Coordination complete:', data);
+      setIsComplete(true);
+      setMetrics(data);
+    });
+    
+    socketInstance.on('task-updated', (data) => {
+      console.log('Task updated:', data);
+      // Handle task updates
+    });
+    
+    setSocket(socketInstance);
+    
+    return () => {
+      socketInstance.disconnect();
+    };
+  }, [executionInstanceId]);
+  
+  return { socket, acknowledgments, isComplete, metrics };
+}
+
+6. USE IN PLAYBOOK ACTIVATION CONSOLE:
+
+In PlaybookActivationConsole component:
+
+import { useExecutionWebSocket } from '@/hooks/useExecutionWebSocket';
+
+function PlaybookActivationConsole({ executionInstanceId }) {
+  const { acknowledgments, isComplete, metrics } = useExecutionWebSocket(executionInstanceId);
+  
+  // Update UI in real-time as acknowledgments come in
+  useEffect(() => {
+    if (acknowledgments.length > 0) {
+      // Update stakeholder status to "acknowledged"
+      // Animate checkmark appearing
+      // Update progress bar
+    }
+  }, [acknowledgments]);
+  
+  useEffect(() => {
+    if (isComplete) {
+      // Show celebration animation
+      // Display final metrics
+      // Confetti effect
+    }
+  }, [isComplete]);
+  
+  // Rest of component...
+}
+
+This connects:
+- Backend acknowledgments → Live frontend updates
+- Real coordination progress → Real-time dashboard
+- Simulated timer → Actual orchestration tracking

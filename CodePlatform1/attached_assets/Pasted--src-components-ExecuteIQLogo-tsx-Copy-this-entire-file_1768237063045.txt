@@ -1,0 +1,274 @@
+// /src/components/ExecuteIQLogo.tsx
+// Copy this entire file to your Replit /src/components/ folder
+
+import React from 'react';
+
+interface ExecuteIQLogo {
+  width?: number;
+  height?: number;
+  variant?: 'full' | 'icon-only' | 'text-only';
+  showTagline?: boolean;
+  className?: string;
+  color?: 'navy' | 'gold' | 'teal' | 'white';
+  animate?: boolean;
+}
+
+export default function ExecuteIQLogo({
+  width = 240,
+  height = 72,
+  variant = 'full',
+  showTagline = true,
+  className = '',
+  color = 'navy',
+  animate = false,
+}: ExecuteIQLogo) {
+  const colors = {
+    navy: '#1A2B3D',
+    gold: '#D4AF37',
+    teal: '#00A8A8',
+    white: '#FFFFFF',
+  };
+
+  const iconColor = color === 'white' ? '#FFFFFF' : colors.navy;
+  const accentColor = colors.gold;
+  const accentTeal = colors.teal;
+
+  // Icon variant styles
+  const iconStyles = animate ? {
+    filter: 'drop-shadow(0 2px 8px rgba(26, 43, 61, 0.15))',
+  } : {
+    filter: 'drop-shadow(0 2px 4px rgba(26, 43, 61, 0.15))',
+  };
+
+  const ringAnimation = animate ? `
+    @keyframes ring-pulse {
+      0%, 100% { opacity: 0.3; stroke-width: 1.5; }
+      50% { opacity: 0.6; stroke-width: 1.8; }
+    }
+    .ring-outer { animation: ring-pulse 3s ease-in-out infinite; }
+    .ring-2 { animation: ring-pulse 3s ease-in-out 0.3s infinite; }
+    .ring-3 { animation: ring-pulse 3s ease-in-out 0.6s infinite; }
+    .ring-4 { animation: ring-pulse 3s ease-in-out 0.9s infinite; }
+    .ring-core { animation: ring-pulse 3s ease-in-out 1.2s infinite; }
+  ` : '';
+
+  if (variant === 'icon-only') {
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox="0 0 120 120"
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+        style={iconStyles}
+      >
+        {animate && <defs><style>{ringAnimation}</style></defs>}
+
+        {/* Outer Ring 1 */}
+        <circle
+          cx="60"
+          cy="60"
+          r="54"
+          fill="none"
+          stroke={accentTeal}
+          strokeWidth="1.5"
+          opacity="0.3"
+          className={animate ? 'ring-outer' : ''}
+        />
+
+        {/* Ring 2 */}
+        <circle
+          cx="60"
+          cy="60"
+          r="42"
+          fill="none"
+          stroke={accentTeal}
+          strokeWidth="1.5"
+          opacity="0.4"
+          className={animate ? 'ring-2' : ''}
+        />
+
+        {/* Ring 3 */}
+        <circle
+          cx="60"
+          cy="60"
+          r="30"
+          fill="none"
+          stroke={iconColor}
+          strokeWidth="1.5"
+          opacity="0.5"
+          className={animate ? 'ring-3' : ''}
+        />
+
+        {/* Ring 4 */}
+        <circle
+          cx="60"
+          cy="60"
+          r="18"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="2"
+          opacity="0.7"
+          className={animate ? 'ring-4' : ''}
+        />
+
+        {/* Core Ring */}
+        <circle
+          cx="60"
+          cy="60"
+          r="8"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="2.5"
+          className={animate ? 'ring-core' : ''}
+        />
+
+        {/* Central Command Point */}
+        <circle cx="60" cy="60" r="4" fill={accentColor} />
+      </svg>
+    );
+  }
+
+  if (variant === 'text-only') {
+    return (
+      <div className={className}>
+        <h1
+          style={{
+            fontSize: `${height * 0.65}px`,
+            fontWeight: 700,
+            fontFamily: "'Montserrat', sans-serif",
+            margin: 0,
+            color: color === 'white' ? '#FFFFFF' : colors.navy,
+            letterSpacing: '-0.5px',
+          }}
+        >
+          ExecuteIQ
+        </h1>
+        {showTagline && (
+          <p
+            style={{
+              fontSize: `${height * 0.15}px`,
+              fontWeight: 600,
+              fontFamily: "'Montserrat', sans-serif",
+              margin: '4px 0 0 0',
+              color: colors.gold,
+              letterSpacing: '1.2px',
+              textTransform: 'uppercase',
+            }}
+          >
+            Execute Decisions at Scale
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Full logo (default)
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 400 120"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <defs>
+        <style>{`
+          .executeiq-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+          }
+          .executeiq-text-main {
+            font-size: 48px;
+            fill: ${color === 'white' ? '#FFFFFF' : colors.navy};
+          }
+          .executeiq-text-sub {
+            font-size: 11px;
+            fill: ${colors.gold};
+            font-weight: 600;
+            letter-spacing: 1.2px;
+          }
+          ${ringAnimation}
+        `}</style>
+      </defs>
+
+      {/* Signature Icon */}
+      <g style={iconStyles} transform="translate(15, 20)">
+        {/* Outer Ring 1 */}
+        <circle
+          cx="30"
+          cy="30"
+          r="28"
+          fill="none"
+          stroke={accentTeal}
+          strokeWidth="1"
+          opacity="0.3"
+          className={animate ? 'ring-outer' : ''}
+        />
+
+        {/* Ring 2 */}
+        <circle
+          cx="30"
+          cy="30"
+          r="22"
+          fill="none"
+          stroke={accentTeal}
+          strokeWidth="1"
+          opacity="0.4"
+          className={animate ? 'ring-2' : ''}
+        />
+
+        {/* Ring 3 */}
+        <circle
+          cx="30"
+          cy="30"
+          r="16"
+          fill="none"
+          stroke={iconColor}
+          strokeWidth="1"
+          opacity="0.5"
+          className={animate ? 'ring-3' : ''}
+        />
+
+        {/* Ring 4 */}
+        <circle
+          cx="30"
+          cy="30"
+          r="10"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="1.5"
+          opacity="0.7"
+          className={animate ? 'ring-4' : ''}
+        />
+
+        {/* Core Ring */}
+        <circle
+          cx="30"
+          cy="30"
+          r="5"
+          fill="none"
+          stroke={accentColor}
+          strokeWidth="1.5"
+          className={animate ? 'ring-core' : ''}
+        />
+
+        {/* Central Point */}
+        <circle cx="30" cy="30" r="2" fill={accentColor} />
+      </g>
+
+      {/* Wordmark */}
+      <text x="110" y="62" className="executeiq-text executeiq-text-main">
+        ExecuteIQ
+      </text>
+
+      {/* Tagline */}
+      {showTagline && (
+        <text x="110" y="78" className="executeiq-text executeiq-text-sub">
+          EXECUTE DECISIONS AT SCALE
+        </text>
+      )}
+    </svg>
+  );
+}

@@ -1,0 +1,1466 @@
+# M Platform: Operating Model Alignment Feature
+
+## Feature Specification for Replit Implementation
+
+-----
+
+## Executive Summary
+
+Add a new “Operating Model Alignment” module that maps enterprise operating model choices to recommended M Platform playbooks. Based on McKinsey’s “Organize to Value” 12-element framework, this feature positions M Platform as the **execution layer** for operating model redesigns.
+
+**Value Proposition**: “McKinsey gives you the operating model fingerprint. M Platform gives you the playbooks to execute it.”
+
+-----
+
+## Feature Overview
+
+### New Navigation Item
+
+Add to main navigation: **“Operating Model”** (between Dashboard and Playbook Library)
+
+### Core Functionality
+
+1. **Operating Model Diagnostic** - Assessment tool mapping 12 elements
+1. **Fingerprint Visualization** - Radar chart showing current vs. target state
+1. **Playbook Recommendations** - AI-driven mapping to relevant playbooks
+1. **Gap Analysis** - Strategy-to-execution gap scoring
+
+-----
+
+## Data Model
+
+### Operating Model Elements (12 Elements)
+
+```javascript
+const operatingModelElements = [
+  {
+    id: 'purpose',
+    name: 'Purpose',
+    description: 'How the organization defines its core reason for being',
+    category: 'foundation',
+    questions: [
+      'Is your purpose clearly articulated and understood across the organization?',
+      'Does your purpose guide strategic decision-making?',
+      'How well does your purpose resonate with employees and stakeholders?'
+    ],
+    playbookDomains: ['transformation', 'market-entry']
+  },
+  {
+    id: 'value-agenda',
+    name: 'Value Agenda',
+    description: 'How the organization creates value',
+    category: 'foundation',
+    questions: [
+      'Is your value creation strategy clearly defined?',
+      'Are resources optimally allocated to highest-value activities?',
+      'How well do you measure value creation across business units?'
+    ],
+    playbookDomains: ['competitive-response', 'ma-integration', 'product-launch']
+  },
+  {
+    id: 'structure',
+    name: 'Structure',
+    description: 'How accountable units and mission teams are designed',
+    category: 'organization',
+    questions: [
+      'Is accountability clear across the organization?',
+      'Are spans of control appropriate for your strategy?',
+      'How effectively does your structure support cross-functional work?'
+    ],
+    playbookDomains: ['transformation', 'ma-integration']
+  },
+  {
+    id: 'ecosystem',
+    name: 'Ecosystem',
+    description: 'How the organization works with partners to create value',
+    category: 'organization',
+    questions: [
+      'Do you have strategic partnerships that extend your capabilities?',
+      'How well do you integrate external partners into your operations?',
+      'Is your partner ecosystem a source of competitive advantage?'
+    ],
+    playbookDomains: ['market-entry', 'product-launch', 'competitive-response']
+  },
+  {
+    id: 'leadership',
+    name: 'Leadership',
+    description: 'How leaders make decisions and catalyze action',
+    category: 'governance',
+    questions: [
+      'Are decision rights clear across leadership levels?',
+      'Is your leadership style (decisive vs. empowering) aligned to strategy?',
+      'How quickly can leaders mobilize resources for new initiatives?'
+    ],
+    playbookDomains: ['crisis-response', 'transformation', 'ma-integration']
+  },
+  {
+    id: 'governance',
+    name: 'Governance',
+    description: 'How to set priorities, allocate resources, and manage performance',
+    category: 'governance',
+    questions: [
+      'Are governance mechanisms effective at setting enterprise priorities?',
+      'Is resource allocation transparent and aligned to strategy?',
+      'How well does your governance support rapid reallocation when needed?'
+    ],
+    playbookDomains: ['crisis-response', 'regulatory-change', 'transformation']
+  },
+  {
+    id: 'processes',
+    name: 'Processes',
+    description: 'How workflows are designed',
+    category: 'execution',
+    questions: [
+      'Are core processes standardized where appropriate?',
+      'How well do your processes balance control with agility?',
+      'Are workflows optimized for speed and quality?'
+    ],
+    playbookDomains: ['product-launch', 'regulatory-change', 'ma-integration']
+  },
+  {
+    id: 'technology',
+    name: 'Technology',
+    description: 'How digital, data, and AI enable value creation',
+    category: 'execution',
+    questions: [
+      'Is your technology stack enabling or constraining your strategy?',
+      'How well are you leveraging AI and automation?',
+      'Is data accessible and actionable across the organization?'
+    ],
+    playbookDomains: ['cyber-incidents', 'product-launch', 'competitive-response']
+  },
+  {
+    id: 'behaviors',
+    name: 'Behaviors',
+    description: 'How culture is nurtured across the organization',
+    category: 'people',
+    questions: [
+      'Is there a distinctive culture that creates competitive advantage?',
+      'Are desired behaviors consistently reinforced?',
+      'How well does your culture support change and adaptation?'
+    ],
+    playbookDomains: ['transformation', 'ma-integration']
+  },
+  {
+    id: 'rewards',
+    name: 'Rewards',
+    description: 'How people are rewarded for performance',
+    category: 'people',
+    questions: [
+      'Are incentives aligned to strategic priorities?',
+      'Do rewards support collaboration or individual performance?',
+      'How well do rewards drive desired behaviors?'
+    ],
+    playbookDomains: ['transformation', 'competitive-response']
+  },
+  {
+    id: 'footprint',
+    name: 'Footprint',
+    description: 'How the organization locates and deploys talent',
+    category: 'people',
+    questions: [
+      'Is your geographic footprint optimized for your strategy?',
+      'How effectively do you deploy talent across locations?',
+      'Are location decisions supporting cost and capability goals?'
+    ],
+    playbookDomains: ['market-entry', 'ma-integration', 'transformation']
+  },
+  {
+    id: 'talent',
+    name: 'Talent',
+    description: 'How the organization attracts and develops talent',
+    category: 'people',
+    questions: [
+      'Do you have the capabilities needed for your strategy?',
+      'How effective is your talent development pipeline?',
+      'Are you winning the competition for critical skills?'
+    ],
+    playbookDomains: ['transformation', 'competitive-response', 'market-entry']
+  }
+];
+```
+
+### Structure Types (6 Operating Model Structures)
+
+```javascript
+const structureTypes = [
+  {
+    id: 'business-unit',
+    name: 'Business Unit / Holding Company',
+    category: 'traditional',
+    description: 'Decentralized units with high autonomy, corporate provides capital and governance',
+    strengths: ['Clear P&L accountability', 'Entrepreneurial culture', 'Fast local decisions'],
+    challenges: ['Duplication of capabilities', 'Limited synergies', 'Inconsistent customer experience'],
+    bestFor: ['Diversified conglomerates', 'Portfolio companies', 'Franchise models']
+  },
+  {
+    id: 'matrix',
+    name: 'Matrix Management',
+    category: 'traditional',
+    description: 'Dual reporting lines balancing business and functional priorities',
+    strengths: ['Balances local and global', 'Shares resources effectively', 'Develops broad talent'],
+    challenges: ['Slow decisions', 'Unclear accountability', 'Political complexity'],
+    bestFor: ['Global enterprises', 'Complex product portfolios', 'Knowledge-intensive industries']
+  },
+  {
+    id: 'functional',
+    name: 'Functional Organization',
+    category: 'traditional',
+    description: 'Organized by specialized functions with centralized leadership',
+    strengths: ['Deep expertise', 'Economies of scale', 'Clear career paths'],
+    challenges: ['Siloed thinking', 'Slow cross-functional work', 'Limited business ownership'],
+    bestFor: ['Single product/service', 'Early-stage companies', 'Highly regulated industries']
+  },
+  {
+    id: 'product-platform',
+    name: 'Product Platform Model',
+    category: 'emerging',
+    description: 'Platform teams provide shared capabilities, product teams build on top',
+    strengths: ['Reusable components', 'Fast product iteration', 'Clear ownership'],
+    challenges: ['Platform/product tension', 'Coordination overhead', 'Requires strong architecture'],
+    bestFor: ['Technology companies', 'Digital products', 'API-first businesses']
+  },
+  {
+    id: 'enterprise-agile',
+    name: 'Enterprise Agile',
+    category: 'emerging',
+    description: 'Cross-functional squads organized around customer outcomes',
+    strengths: ['Speed to market', 'Customer focus', 'High engagement'],
+    challenges: ['Scaling coordination', 'Career development', 'Enterprise governance'],
+    bestFor: ['Digital transformation', 'Customer-centric strategies', 'Innovation-focused']
+  },
+  {
+    id: 'decentralized-network',
+    name: 'Decentralized Network',
+    category: 'emerging',
+    description: 'Autonomous nodes connected through shared purpose and protocols',
+    strengths: ['Maximum agility', 'Resilience', 'Innovation at edges'],
+    challenges: ['Coherence', 'Quality control', 'Shared identity'],
+    bestFor: ['Professional services', 'Creative industries', 'Distributed workforces']
+  }
+];
+```
+
+### Playbook Domain Mapping
+
+```javascript
+const playbookDomainMapping = {
+  'crisis-response': {
+    name: 'Crisis Response',
+    playbookCount: 24,
+    primaryElements: ['leadership', 'governance', 'processes'],
+    description: 'Rapid mobilization and coordinated response to unexpected events'
+  },
+  'cyber-incidents': {
+    name: 'Cyber Incidents',
+    playbookCount: 18,
+    primaryElements: ['technology', 'governance', 'processes'],
+    description: 'Detection, containment, and recovery from security threats'
+  },
+  'market-entry': {
+    name: 'Market Entry',
+    playbookCount: 22,
+    primaryElements: ['ecosystem', 'footprint', 'purpose'],
+    description: 'Entering new markets, geographies, or customer segments'
+  },
+  'ma-integration': {
+    name: 'M&A Integration',
+    playbookCount: 16,
+    primaryElements: ['structure', 'processes', 'behaviors'],
+    description: 'Post-merger integration and synergy capture'
+  },
+  'product-launch': {
+    name: 'Product Launch',
+    playbookCount: 20,
+    primaryElements: ['technology', 'processes', 'ecosystem'],
+    description: 'Bringing new products and services to market'
+  },
+  'competitive-response': {
+    name: 'Competitive Response',
+    playbookCount: 18,
+    primaryElements: ['value-agenda', 'technology', 'rewards'],
+    description: 'Responding to competitive threats and market shifts'
+  },
+  'regulatory-change': {
+    name: 'Regulatory Change',
+    playbookCount: 14,
+    primaryElements: ['governance', 'processes', 'footprint'],
+    description: 'Adapting to new regulations and compliance requirements'
+  },
+  'transformation': {
+    name: 'Transformation',
+    playbookCount: 16,
+    primaryElements: ['purpose', 'structure', 'behaviors', 'talent'],
+    description: 'Large-scale organizational change and capability building'
+  }
+};
+```
+
+-----
+
+## UI Components
+
+### 1. Operating Model Dashboard
+
+```jsx
+// OperatingModelDashboard.jsx
+import React, { useState } from 'react';
+
+const OperatingModelDashboard = () => {
+  const [assessmentComplete, setAssessmentComplete] = useState(false);
+  const [currentFingerprint, setCurrentFingerprint] = useState(null);
+  
+  return (
+    <div className="operating-model-dashboard">
+      {/* Header */}
+      <div className="dashboard-header">
+        <h1>Operating Model Alignment</h1>
+        <p className="subtitle">
+          Map your operating model to execution playbooks
+        </p>
+      </div>
+      
+      {/* Quick Stats */}
+      <div className="stats-grid">
+        <StatCard 
+          title="Strategy-Execution Gap"
+          value="30%"
+          subtitle="Industry average"
+          trend="down"
+        />
+        <StatCard 
+          title="Recommended Playbooks"
+          value="47"
+          subtitle="Based on your fingerprint"
+        />
+        <StatCard 
+          title="Alignment Score"
+          value={assessmentComplete ? "78%" : "—"}
+          subtitle="Complete assessment to see"
+        />
+        <StatCard 
+          title="Priority Elements"
+          value="3"
+          subtitle="Requiring attention"
+        />
+      </div>
+      
+      {/* Main Content */}
+      <div className="dashboard-content">
+        {!assessmentComplete ? (
+          <AssessmentPrompt onStart={() => {/* navigate to assessment */}} />
+        ) : (
+          <>
+            <FingerprintVisualization data={currentFingerprint} />
+            <PlaybookRecommendations fingerprint={currentFingerprint} />
+            <GapAnalysis fingerprint={currentFingerprint} />
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+```
+
+### 2. Operating Model Assessment
+
+```jsx
+// OperatingModelAssessment.jsx
+import React, { useState } from 'react';
+
+const OperatingModelAssessment = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [responses, setResponses] = useState({});
+  
+  const steps = [
+    { id: 'structure', title: 'Structure Selection' },
+    { id: 'elements', title: 'Element Assessment' },
+    { id: 'priorities', title: 'Strategic Priorities' },
+    { id: 'results', title: 'Your Fingerprint' }
+  ];
+  
+  return (
+    <div className="assessment-container">
+      {/* Progress Bar */}
+      <div className="progress-bar">
+        {steps.map((step, index) => (
+          <div 
+            key={step.id}
+            className={`progress-step ${index <= currentStep ? 'active' : ''}`}
+          >
+            <span className="step-number">{index + 1}</span>
+            <span className="step-title">{step.title}</span>
+          </div>
+        ))}
+      </div>
+      
+      {/* Step Content */}
+      {currentStep === 0 && (
+        <StructureSelection 
+          onSelect={(structure) => {
+            setResponses({...responses, structure});
+            setCurrentStep(1);
+          }}
+        />
+      )}
+      
+      {currentStep === 1 && (
+        <ElementAssessment 
+          onComplete={(elementScores) => {
+            setResponses({...responses, elements: elementScores});
+            setCurrentStep(2);
+          }}
+        />
+      )}
+      
+      {currentStep === 2 && (
+        <PrioritySelection 
+          onComplete={(priorities) => {
+            setResponses({...responses, priorities});
+            setCurrentStep(3);
+          }}
+        />
+      )}
+      
+      {currentStep === 3 && (
+        <FingerprintResults responses={responses} />
+      )}
+    </div>
+  );
+};
+```
+
+### 3. Structure Selection Component
+
+```jsx
+// StructureSelection.jsx
+const StructureSelection = ({ onSelect }) => {
+  const [selected, setSelected] = useState(null);
+  const [showComparison, setShowComparison] = useState(false);
+  
+  return (
+    <div className="structure-selection">
+      <h2>What structure best describes your organization?</h2>
+      <p className="helper-text">
+        Select the primary structure. Most organizations use a hybrid, 
+        but identify the dominant pattern.
+      </p>
+      
+      {/* Structure Categories */}
+      <div className="structure-categories">
+        <div className="category">
+          <h3>Traditional Structures</h3>
+          <p>89% of organizations use these established models</p>
+          <div className="structure-options">
+            {structureTypes
+              .filter(s => s.category === 'traditional')
+              .map(structure => (
+                <StructureCard 
+                  key={structure.id}
+                  structure={structure}
+                  selected={selected === structure.id}
+                  onSelect={() => setSelected(structure.id)}
+                />
+              ))
+            }
+          </div>
+        </div>
+        
+        <div className="category">
+          <h3>Emerging Structures</h3>
+          <p>11% of organizations—often outperform on key trends</p>
+          <div className="structure-options">
+            {structureTypes
+              .filter(s => s.category === 'emerging')
+              .map(structure => (
+                <StructureCard 
+                  key={structure.id}
+                  structure={structure}
+                  selected={selected === structure.id}
+                  onSelect={() => setSelected(structure.id)}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      
+      {/* Comparison Toggle */}
+      <button 
+        className="compare-btn"
+        onClick={() => setShowComparison(!showComparison)}
+      >
+        {showComparison ? 'Hide' : 'Show'} Structure Comparison
+      </button>
+      
+      {showComparison && <StructureComparisonTable />}
+      
+      {/* Continue Button */}
+      <button 
+        className="primary-btn"
+        disabled={!selected}
+        onClick={() => onSelect(selected)}
+      >
+        Continue with {selected ? structureTypes.find(s => s.id === selected).name : '...'}
+      </button>
+    </div>
+  );
+};
+```
+
+### 4. Element Assessment Component
+
+```jsx
+// ElementAssessment.jsx
+const ElementAssessment = ({ onComplete }) => {
+  const [scores, setScores] = useState({});
+  const [currentElement, setCurrentElement] = useState(0);
+  
+  const categories = [
+    { id: 'foundation', name: 'Foundation', elements: ['purpose', 'value-agenda'] },
+    { id: 'organization', name: 'Organization', elements: ['structure', 'ecosystem'] },
+    { id: 'governance', name: 'Governance', elements: ['leadership', 'governance'] },
+    { id: 'execution', name: 'Execution', elements: ['processes', 'technology'] },
+    { id: 'people', name: 'People', elements: ['behaviors', 'rewards', 'footprint', 'talent'] }
+  ];
+  
+  const handleScore = (elementId, questionIndex, score) => {
+    setScores(prev => ({
+      ...prev,
+      [elementId]: {
+        ...prev[elementId],
+        [questionIndex]: score
+      }
+    }));
+  };
+  
+  const calculateElementScore = (elementId) => {
+    const elementScores = scores[elementId] || {};
+    const values = Object.values(elementScores);
+    if (values.length === 0) return null;
+    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+  };
+  
+  return (
+    <div className="element-assessment">
+      <h2>Assess Your Operating Model Elements</h2>
+      
+      {/* Category Tabs */}
+      <div className="category-tabs">
+        {categories.map(cat => (
+          <button 
+            key={cat.id}
+            className={`tab ${currentElement >= getElementIndex(cat.elements[0]) ? 'active' : ''}`}
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
+      
+      {/* Current Element */}
+      <div className="element-card">
+        <ElementQuestion 
+          element={operatingModelElements[currentElement]}
+          scores={scores[operatingModelElements[currentElement].id] || {}}
+          onScore={(qIndex, score) => 
+            handleScore(operatingModelElements[currentElement].id, qIndex, score)
+          }
+        />
+      </div>
+      
+      {/* Navigation */}
+      <div className="assessment-nav">
+        <button 
+          disabled={currentElement === 0}
+          onClick={() => setCurrentElement(currentElement - 1)}
+        >
+          Previous
+        </button>
+        
+        <span>{currentElement + 1} of {operatingModelElements.length}</span>
+        
+        {currentElement < operatingModelElements.length - 1 ? (
+          <button onClick={() => setCurrentElement(currentElement + 1)}>
+            Next
+          </button>
+        ) : (
+          <button 
+            className="primary-btn"
+            onClick={() => onComplete(scores)}
+          >
+            See Results
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Individual Question Component
+const ElementQuestion = ({ element, scores, onScore }) => {
+  return (
+    <div className="element-question">
+      <div className="element-header">
+        <h3>{element.name}</h3>
+        <p className="description">{element.description}</p>
+      </div>
+      
+      <div className="questions">
+        {element.questions.map((question, index) => (
+          <div key={index} className="question-row">
+            <p>{question}</p>
+            <div className="score-options">
+              {[1, 2, 3, 4, 5].map(score => (
+                <button
+                  key={score}
+                  className={`score-btn ${scores[index] === score ? 'selected' : ''}`}
+                  onClick={() => onScore(index, score)}
+                >
+                  {score}
+                </button>
+              ))}
+            </div>
+            <div className="score-labels">
+              <span>Weak</span>
+              <span>Strong</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Linked Playbook Domains */}
+      <div className="linked-domains">
+        <span className="label">Related playbook domains:</span>
+        {element.playbookDomains.map(domain => (
+          <span key={domain} className="domain-tag">
+            {playbookDomainMapping[domain].name}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+```
+
+### 5. Fingerprint Visualization (Radar Chart)
+
+```jsx
+// FingerprintVisualization.jsx
+import React from 'react';
+
+const FingerprintVisualization = ({ data }) => {
+  const elements = operatingModelElements.map(e => e.name);
+  const scores = operatingModelElements.map(e => data.elements[e.id] || 0);
+  
+  // Calculate radar chart points
+  const centerX = 200;
+  const centerY = 200;
+  const radius = 150;
+  
+  const getPoint = (index, score) => {
+    const angle = (index / elements.length) * 2 * Math.PI - Math.PI / 2;
+    const r = (score / 5) * radius;
+    return {
+      x: centerX + r * Math.cos(angle),
+      y: centerY + r * Math.sin(angle)
+    };
+  };
+  
+  const currentPath = scores.map((score, i) => {
+    const point = getPoint(i, score);
+    return `${i === 0 ? 'M' : 'L'} ${point.x} ${point.y}`;
+  }).join(' ') + ' Z';
+  
+  return (
+    <div className="fingerprint-viz">
+      <h3>Your Operating Model Fingerprint</h3>
+      
+      <svg viewBox="0 0 400 400" className="radar-chart">
+        {/* Background circles */}
+        {[1, 2, 3, 4, 5].map(level => (
+          <circle
+            key={level}
+            cx={centerX}
+            cy={centerY}
+            r={(level / 5) * radius}
+            fill="none"
+            stroke="#e5e7eb"
+            strokeWidth="1"
+          />
+        ))}
+        
+        {/* Axis lines */}
+        {elements.map((_, index) => {
+          const point = getPoint(index, 5);
+          return (
+            <line
+              key={index}
+              x1={centerX}
+              y1={centerY}
+              x2={point.x}
+              y2={point.y}
+              stroke="#e5e7eb"
+              strokeWidth="1"
+            />
+          );
+        })}
+        
+        {/* Current scores polygon */}
+        <path
+          d={currentPath}
+          fill="rgba(37, 99, 235, 0.2)"
+          stroke="#2563eb"
+          strokeWidth="2"
+        />
+        
+        {/* Score points */}
+        {scores.map((score, index) => {
+          const point = getPoint(index, score);
+          return (
+            <circle
+              key={index}
+              cx={point.x}
+              cy={point.y}
+              r="6"
+              fill="#2563eb"
+            />
+          );
+        })}
+        
+        {/* Labels */}
+        {elements.map((name, index) => {
+          const point = getPoint(index, 5.8);
+          return (
+            <text
+              key={index}
+              x={point.x}
+              y={point.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="element-label"
+              fontSize="11"
+            >
+              {name}
+            </text>
+          );
+        })}
+      </svg>
+      
+      {/* Legend */}
+      <div className="fingerprint-legend">
+        <div className="legend-item">
+          <span className="dot current"></span>
+          Current State
+        </div>
+        <div className="score-summary">
+          <strong>Average Score:</strong> {(scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1)} / 5
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### 6. Playbook Recommendations Component
+
+```jsx
+// PlaybookRecommendations.jsx
+const PlaybookRecommendations = ({ fingerprint }) => {
+  const [filter, setFilter] = useState('all');
+  
+  // Calculate recommended playbooks based on fingerprint
+  const getRecommendations = () => {
+    const recommendations = [];
+    
+    Object.entries(playbookDomainMapping).forEach(([domainId, domain]) => {
+      // Calculate relevance score based on element scores
+      const elementScores = domain.primaryElements.map(
+        elementId => fingerprint.elements[elementId] || 3
+      );
+      const avgScore = elementScores.reduce((a, b) => a + b, 0) / elementScores.length;
+      
+      // Lower scores = higher priority (needs more help)
+      const priority = avgScore < 3 ? 'high' : avgScore < 4 ? 'medium' : 'low';
+      
+      recommendations.push({
+        domainId,
+        ...domain,
+        priority,
+        relevanceScore: 5 - avgScore,
+        reasoning: generateReasoning(domainId, elementScores, fingerprint)
+      });
+    });
+    
+    return recommendations.sort((a, b) => b.relevanceScore - a.relevanceScore);
+  };
+  
+  const recommendations = getRecommendations();
+  const filteredRecs = filter === 'all' 
+    ? recommendations 
+    : recommendations.filter(r => r.priority === filter);
+  
+  return (
+    <div className="playbook-recommendations">
+      <div className="section-header">
+        <h3>Recommended Playbooks</h3>
+        <p>Based on your operating model fingerprint</p>
+      </div>
+      
+      {/* Filter Tabs */}
+      <div className="filter-tabs">
+        <button 
+          className={filter === 'all' ? 'active' : ''}
+          onClick={() => setFilter('all')}
+        >
+          All ({recommendations.length} domains)
+        </button>
+        <button 
+          className={filter === 'high' ? 'active' : ''}
+          onClick={() => setFilter('high')}
+        >
+          High Priority ({recommendations.filter(r => r.priority === 'high').length})
+        </button>
+        <button 
+          className={filter === 'medium' ? 'active' : ''}
+          onClick={() => setFilter('medium')}
+        >
+          Medium ({recommendations.filter(r => r.priority === 'medium').length})
+        </button>
+      </div>
+      
+      {/* Recommendations Grid */}
+      <div className="recommendations-grid">
+        {filteredRecs.map(rec => (
+          <RecommendationCard key={rec.domainId} recommendation={rec} />
+        ))}
+      </div>
+      
+      {/* Total Playbooks */}
+      <div className="total-summary">
+        <strong>{filteredRecs.reduce((sum, r) => sum + r.playbookCount, 0)}</strong> playbooks 
+        recommended across <strong>{filteredRecs.length}</strong> domains
+      </div>
+    </div>
+  );
+};
+
+const RecommendationCard = ({ recommendation }) => {
+  const [expanded, setExpanded] = useState(false);
+  
+  return (
+    <div className={`recommendation-card priority-${recommendation.priority}`}>
+      <div className="card-header">
+        <span className={`priority-badge ${recommendation.priority}`}>
+          {recommendation.priority} priority
+        </span>
+        <span className="playbook-count">
+          {recommendation.playbookCount} playbooks
+        </span>
+      </div>
+      
+      <h4>{recommendation.name}</h4>
+      <p className="description">{recommendation.description}</p>
+      
+      {/* Primary Elements */}
+      <div className="primary-elements">
+        <span className="label">Key elements:</span>
+        {recommendation.primaryElements.map(elementId => (
+          <span key={elementId} className="element-tag">
+            {operatingModelElements.find(e => e.id === elementId)?.name}
+          </span>
+        ))}
+      </div>
+      
+      {/* Reasoning */}
+      {expanded && (
+        <div className="reasoning">
+          <p>{recommendation.reasoning}</p>
+        </div>
+      )}
+      
+      <div className="card-actions">
+        <button 
+          className="text-btn"
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? 'Hide' : 'Show'} reasoning
+        </button>
+        <button className="primary-btn">
+          View Playbooks →
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+
+### 7. Gap Analysis Component
+
+```jsx
+// GapAnalysis.jsx
+const GapAnalysis = ({ fingerprint }) => {
+  const calculateGap = () => {
+    const elementScores = Object.values(fingerprint.elements);
+    const avgScore = elementScores.reduce((a, b) => a + b, 0) / elementScores.length;
+    const maxScore = 5;
+    const gapPercentage = Math.round(((maxScore - avgScore) / maxScore) * 100);
+    return gapPercentage;
+  };
+  
+  const gap = calculateGap();
+  
+  // Identify weakest elements
+  const weakestElements = operatingModelElements
+    .map(e => ({
+      ...e,
+      score: fingerprint.elements[e.id] || 3
+    }))
+    .sort((a, b) => a.score - b.score)
+    .slice(0, 3);
+  
+  return (
+    <div className="gap-analysis">
+      <div className="section-header">
+        <h3>Strategy-to-Execution Gap</h3>
+        <p>McKinsey research shows average companies have a 30% gap</p>
+      </div>
+      
+      {/* Gap Visualization */}
+      <div className="gap-meter">
+        <div className="meter-bar">
+          <div 
+            className="meter-fill"
+            style={{ width: `${100 - gap}%` }}
+          />
+          <div className="meter-marker" style={{ left: '70%' }}>
+            <span>Industry Avg (30%)</span>
+          </div>
+        </div>
+        <div className="gap-value">
+          <span className="percentage">{gap}%</span>
+          <span className="label">Your Gap</span>
+        </div>
+      </div>
+      
+      {/* Gap Interpretation */}
+      <div className="gap-interpretation">
+        {gap < 25 && (
+          <div className="interpretation good">
+            <span className="icon">✓</span>
+            <p>Your operating model alignment is <strong>better than average</strong>. 
+            Focus on the priority playbooks to maintain competitive advantage.</p>
+          </div>
+        )}
+        {gap >= 25 && gap < 35 && (
+          <div className="interpretation average">
+            <span className="icon">→</span>
+            <p>Your gap is <strong>near industry average</strong>. 
+            Targeted improvements in weak areas can yield significant performance gains.</p>
+          </div>
+        )}
+        {gap >= 35 && (
+          <div className="interpretation attention">
+            <span className="icon">!</span>
+            <p>Your gap is <strong>above average</strong>. 
+            Consider a comprehensive operating model refresh starting with priority elements.</p>
+          </div>
+        )}
+      </div>
+      
+      {/* Priority Elements */}
+      <div className="priority-elements">
+        <h4>Priority Elements to Address</h4>
+        <div className="elements-list">
+          {weakestElements.map((element, index) => (
+            <div key={element.id} className="priority-element">
+              <span className="rank">#{index + 1}</span>
+              <div className="element-info">
+                <strong>{element.name}</strong>
+                <p>{element.description}</p>
+              </div>
+              <div className="score-badge">
+                {element.score}/5
+              </div>
+              <button className="link-btn">
+                View {element.playbookDomains.length} related domains →
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Four Outcomes Framework */}
+      <div className="outcomes-framework">
+        <h4>Four Critical Outcomes</h4>
+        <p>A fit-for-purpose operating model delivers:</p>
+        <div className="outcomes-grid">
+          <OutcomeCard 
+            title="Clarity"
+            description="Resources and accountabilities aligned to strategy"
+            score={calculateOutcomeScore(fingerprint, 'clarity')}
+          />
+          <OutcomeCard 
+            title="Speed"
+            description="Workflows are fast, tech-enabled, and frictionless"
+            score={calculateOutcomeScore(fingerprint, 'speed')}
+          />
+          <OutcomeCard 
+            title="Skills"
+            description="Future-ready workforce equipped to deliver value"
+            score={calculateOutcomeScore(fingerprint, 'skills')}
+          />
+          <OutcomeCard 
+            title="Commitment"
+            description="Performance-oriented culture driving results"
+            score={calculateOutcomeScore(fingerprint, 'commitment')}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const OutcomeCard = ({ title, description, score }) => (
+  <div className="outcome-card">
+    <div className="outcome-header">
+      <h5>{title}</h5>
+      <span className={`score ${score >= 4 ? 'good' : score >= 3 ? 'medium' : 'low'}`}>
+        {score.toFixed(1)}/5
+      </span>
+    </div>
+    <p>{description}</p>
+    <div className="score-bar">
+      <div className="bar-fill" style={{ width: `${(score / 5) * 100}%` }} />
+    </div>
+  </div>
+);
+
+// Helper function to calculate outcome scores
+const calculateOutcomeScore = (fingerprint, outcome) => {
+  const outcomeElementMapping = {
+    clarity: ['purpose', 'value-agenda', 'structure', 'governance'],
+    speed: ['processes', 'technology', 'leadership'],
+    skills: ['talent', 'footprint', 'technology'],
+    commitment: ['behaviors', 'rewards', 'purpose']
+  };
+  
+  const elements = outcomeElementMapping[outcome];
+  const scores = elements.map(e => fingerprint.elements[e] || 3);
+  return scores.reduce((a, b) => a + b, 0) / scores.length;
+};
+```
+
+-----
+
+## CSS Styles
+
+```css
+/* Operating Model Styles */
+.operating-model-dashboard {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a2332;
+  margin-bottom: 8px;
+}
+
+.dashboard-header .subtitle {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+/* Structure Selection */
+.structure-selection {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.structure-categories {
+  margin: 32px 0;
+}
+
+.category h3 {
+  font-size: 18px;
+  color: #1a2332;
+  margin-bottom: 8px;
+}
+
+.category p {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.structure-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.structure-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.structure-card:hover {
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.structure-card.selected {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* Fingerprint Visualization */
+.fingerprint-viz {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.radar-chart {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.element-label {
+  fill: #4b5563;
+  font-weight: 500;
+}
+
+/* Recommendations */
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.recommendation-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.recommendation-card.priority-high {
+  border-left-color: #ef4444;
+}
+
+.recommendation-card.priority-medium {
+  border-left-color: #f59e0b;
+}
+
+.recommendation-card.priority-low {
+  border-left-color: #10b981;
+}
+
+.priority-badge {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.priority-badge.high {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.priority-badge.medium {
+  background: #fffbeb;
+  color: #f59e0b;
+}
+
+.priority-badge.low {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+/* Gap Analysis */
+.gap-meter {
+  margin: 24px 0;
+  position: relative;
+}
+
+.meter-bar {
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #2563eb);
+  border-radius: 12px;
+  transition: width 0.5s ease;
+}
+
+.gap-value {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.gap-value .percentage {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a2332;
+}
+
+/* Outcomes Grid */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.outcome-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.outcome-card h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2332;
+}
+
+.score-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 3px;
+}
+
+/* Primary Button */
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.primary-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+```
+
+-----
+
+## Integration Points
+
+### 1. Navigation Update
+
+Add to your main navigation:
+
+```jsx
+// In your navigation component
+const navItems = [
+  { id: 'dashboard', label: 'Dashboard', icon: 'home' },
+  { id: 'operating-model', label: 'Operating Model', icon: 'layers', badge: 'NEW' }, // ADD THIS
+  { id: 'playbooks', label: 'Playbook Library', icon: 'book' },
+  // ... rest of nav
+];
+```
+
+### 2. Route Setup
+
+```jsx
+// In your router/App.jsx
+<Route path="/operating-model" element={<OperatingModelDashboard />} />
+<Route path="/operating-model/assessment" element={<OperatingModelAssessment />} />
+```
+
+### 3. Playbook Library Integration
+
+When users click “View Playbooks” from recommendations, filter the playbook library:
+
+```jsx
+// In PlaybookLibrary.jsx
+const PlaybookLibrary = () => {
+  const { domain } = useSearchParams();
+  
+  // If domain param exists, pre-filter to that domain
+  const [activeFilter, setActiveFilter] = useState(domain || 'all');
+  
+  // ...
+};
+```
+
+### 4. Dashboard Widget
+
+Add an Operating Model summary widget to the main dashboard:
+
+```jsx
+// OperatingModelWidget.jsx
+const OperatingModelWidget = ({ fingerprint }) => {
+  if (!fingerprint) {
+    return (
+      <div className="widget">
+        <h4>Operating Model Alignment</h4>
+        <p>Assess your operating model to get personalized playbook recommendations</p>
+        <Link to="/operating-model/assessment" className="btn">
+          Start Assessment →
+        </Link>
+      </div>
+    );
+  }
+  
+  return (
+    <div className="widget">
+      <h4>Operating Model Alignment</h4>
+      <div className="score-display">
+        <span className="score">{100 - fingerprint.gap}%</span>
+        <span className="label">Aligned</span>
+      </div>
+      <p>{fingerprint.recommendedPlaybooks} playbooks recommended</p>
+      <Link to="/operating-model" className="btn">
+        View Details →
+      </Link>
+    </div>
+  );
+};
+```
+
+-----
+
+## Data Persistence
+
+### Local Storage (MVP)
+
+```javascript
+// Store assessment results
+const saveFingerprint = (fingerprint) => {
+  localStorage.setItem('m-platform-fingerprint', JSON.stringify({
+    ...fingerprint,
+    timestamp: new Date().toISOString()
+  }));
+};
+
+const loadFingerprint = () => {
+  const saved = localStorage.getItem('m-platform-fingerprint');
+  return saved ? JSON.parse(saved) : null;
+};
+```
+
+### Future: Backend API
+
+```javascript
+// POST /api/operating-model/assessment
+// Body: { structure, elements, priorities }
+// Returns: { fingerprint, recommendations, gap }
+
+// GET /api/operating-model/fingerprint/:userId
+// Returns: { fingerprint, lastUpdated }
+```
+
+-----
+
+## Implementation Checklist
+
+### Phase 1: Core Assessment (Week 1)
+
+- [ ] Add navigation item
+- [ ] Create OperatingModelDashboard component
+- [ ] Build StructureSelection component
+- [ ] Build ElementAssessment component (all 12 elements)
+- [ ] Implement local storage for results
+
+### Phase 2: Visualization & Recommendations (Week 2)
+
+- [ ] Create FingerprintVisualization (radar chart)
+- [ ] Build PlaybookRecommendations with domain mapping
+- [ ] Implement GapAnalysis component
+- [ ] Add four outcomes scoring
+
+### Phase 3: Integration (Week 3)
+
+- [ ] Connect to Playbook Library filters
+- [ ] Add Dashboard widget
+- [ ] Create “Start Assessment” CTA on relevant pages
+- [ ] Add “Re-assess” functionality
+
+### Phase 4: Polish (Week 4)
+
+- [ ] Responsive design for all components
+- [ ] Animation/transitions
+- [ ] Export/share fingerprint
+- [ ] Comparison mode (current vs. target state)
+
+-----
+
+## Value Messaging
+
+Use these talking points when demoing this feature:
+
+**For Investors:**
+
+> “McKinsey research shows a 30% strategy-execution gap in even high-performing companies. M Platform’s Operating Model Alignment feature diagnoses that gap and prescribes the exact playbooks to close it.”
+
+**For Customers:**
+
+> “You’ve invested in operating model design. Now execute it. M Platform maps your 12 operating model elements to 148 pre-built playbooks, turning strategic design into coordinated action.”
+
+**For Differentiation:**
+
+> “ServiceNow tells you what happened. McKinsey tells you what to build. M Platform tells you how to execute it—in 12 minutes instead of 72 hours.”
+
+-----
+
+## Source Attribution
+
+This feature is inspired by McKinsey’s “Organize to Value” framework from their June 2025 article “A new operating model for a new world.” The framework identifies 12 elements of effective operating model design:
+
+1. Purpose
+1. Value Agenda
+1. Structure
+1. Ecosystem
+1. Leadership
+1. Governance
+1. Processes
+1. Technology
+1. Behaviors
+1. Rewards
+1. Footprint
+1. Talent
+
+M Platform translates these diagnostic elements into executable playbooks.

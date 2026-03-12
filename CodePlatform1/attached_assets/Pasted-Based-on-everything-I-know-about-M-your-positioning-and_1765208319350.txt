@@ -1,0 +1,148 @@
+Based on everything I know about M, your positioning, and where the product currently stands, here are my recommendations for next steps before the roadshow.
+
+---
+
+## Priority Framework
+
+I'm organizing this around **what will move investors** and **what will close customers**. Roadshows are about creating urgency and credibility. You need:
+
+1. **Proof the product works** (demos that don't break)
+2. **Proof the market exists** (validated claims, customer signals)
+3. **Proof you're the one to build it** (founder story, methodology credibility)
+
+You already have #3 nailed with the OurStory page. Let's focus on #1 and #2.
+
+---
+
+## Top 5 Priorities Before Roadshow
+
+### 1. Lock Down the Demo Experience
+
+**Why it matters:** Investors will watch you demo. If anything breaks, stutters, or confuses, you lose credibility. The demo IS the product at this stage.
+
+**Specific actions:**
+
+| Task | Details |
+|------|---------|
+| **Audit demo paths** | Walk through `/demo/live-activation`, `/executive-simulation`, and at least 2 industry demos end-to-end. Document any bugs. |
+| **Add demo completion screen** | After demo ends, show: response time achieved, comparison to 72-hour baseline, clear CTA (Schedule Call / Request Access) |
+| **Create "Investor Demo" preset** | A locked, predictable demo path that you control. No randomness, no edge cases. Same data every time. |
+| **Practice 3-minute pitch demo** | You should be able to show the core value (signal detection → playbook activation → task deployment → time saved) in under 3 minutes cold. |
+
+**Deliverable:** A bulletproof 3-minute demo you can run on any device, any time, without internet hiccups affecting the experience.
+
+---
+
+### 2. Validate and Source Your Statistics
+
+**Why it matters:** Sophisticated investors will challenge your numbers. You need to either cite sources or clearly label proprietary research.
+
+**Current gaps:**
+
+| Claim | Issue | Fix |
+|-------|-------|-----|
+| "148 playbooks" | Need to verify actual count | Audit database or PlaybookLibrary component |
+| "92 intelligence signals" vs "12 intelligence sources" | Inconsistent across pages | Pick one and standardize |
+| "$144M Annual Value Gap" | No source | Either cite source OR reframe as "Based on our analysis of Fortune 500 strategic delays" |
+| "10,000x Speed Difference" | Sounds hyperbolic | Consider "100x faster" or "orders of magnitude" |
+| "12 minutes" | Need to demonstrate this is achievable | Time your actual demo; adjust claim if needed |
+
+**Deliverable:** One-page "Claims Validation" document you can hand to investors if challenged. Shows your work.
+
+I already created `/mnt/user-data/outputs/M-Validated-Statistics-QuickRef.md` in our earlier session — review and update it.
+
+---
+
+### 3. Create a Customer-Ready Pilot Framework
+
+**Why it matters:** Investors want to know your go-to-market. "We're talking to customers" is weak. "We have 3 pilots launching in Q1 with defined success criteria" is strong.
+
+**What you need:**
+
+| Element | Description |
+|---------|-------------|
+| **Pilot structure** | 90-day engagement, 3 phases (Setup, Activation, Measurement) |
+| **Success metrics** | Response time reduction (target: 80%), playbook activation rate, user adoption |
+| **Pricing for pilots** | Discounted pilot rate ($50K-$100K) with conversion to full contract |
+| **Ideal customer profile** | Fortune 1000, specific verticals (Financial Services, Healthcare, Manufacturing first) |
+| **Entry point** | CSO, CRO, or Head of Strategy — not IT |
+
+**Deliverable:** One-page "Pilot Program Overview" you can leave with prospects. Shows you're ready to deploy, not just demo.
+
+---
+
+### 4. Build the "Why Now" Narrative
+
+**Why it matters:** Investors need to believe the timing is right. M needs a forcing function — why is 2025 the year this becomes urgent?
+
+**Potential "Why Now" angles:**
+
+| Angle | Evidence |
+|-------|----------|
+| **AI maturity** | LLMs now capable of real-time signal analysis; wasn't possible 2 years ago |
+| **Increased disruption frequency** | PwC 2023: 91% of orgs faced major disruption; average 3.5 per 2 years |
+| **Post-COVID executive awareness** | Leaders now understand "black swan" events aren't rare |
+| **Competitor response windows shrinking** | Digital-native competitors move in days, not quarters |
+| **Regulatory pressure** | SEC, EU regulations require faster disclosure and response |
+
+**Deliverable:** 2-3 slides in your investor deck that answer "Why is this the moment?" with hard data.
+
+---
+
+### 5. Prepare Your Competitive Moat Answers
+
+**Why it matters:** "Why can't Salesforce/ServiceNow/Microsoft build this?" is coming. You need a crisp answer.
+
+**Your moat arguments:**
+
+| Moat | Explanation |
+|------|-------------|
+| **Domain expertise** | 20+ years Fortune 500 strategic execution + 5 years coaching methodology. This isn't a feature; it's an operating system. Generalists can't replicate the playbook depth. |
+| **148 pre-built playbooks** | 2+ years of content development. Competitors would need to build from scratch. |
+| **Category creation** | SEOS doesn't exist yet. First mover defines the category. ServiceNow is IT workflows; Salesforce is CRM; M is strategic execution. Different buyer, different budget. |
+| **Speed to value** | Enterprise platforms take 12-18 months to deploy. M targets 6-week activation. |
+
+**Deliverable:** Practice answering "Why can't [BigCo] just add this?" in 60 seconds.
+
+---
+
+## Secondary Priorities (If Time Permits)
+
+### 6. Mobile Polish
+Test the full experience on iPhone and Android. Executives often browse on phones. Fix any responsive issues.
+
+### 7. Customer Testimonial Strategy
+You may not have testimonials yet, but prepare the framework. Who are your first 3 design partners? Can you get quotes from advisors or early reviewers?
+
+### 8. Investor FAQ Document
+Anticipate the 20 most likely questions and write crisp answers. Practice delivering them.
+
+---
+
+## Roadshow Checklist
+
+**Before you walk into any investor meeting:**
+
+- [ ] 3-minute demo runs flawlessly on your device
+- [ ] Backup demo available (screen recording or hosted video)
+- [ ] Statistics source document ready if challenged
+- [ ] Pilot program one-pager in your bag
+- [ ] "Why now" narrative rehearsed
+- [ ] Competitive moat answer rehearsed
+- [ ] OurStory page URL memorized (this is your closer)
+- [ ] Contact form works and captures leads
+
+---
+
+## What I Can Help Create Right Now
+
+| Document | Description | Time to Create |
+|----------|-------------|----------------|
+| **Investor FAQ** | 20 anticipated questions with crisp answers | 30 min |
+| **Pilot Program One-Pager** | Structure, pricing, success metrics, timeline | 20 min |
+| **Demo Script** | Exact talking points for 3-minute investor demo | 20 min |
+| **"Why Now" Slide Content** | 2-3 slides worth of narrative and data | 15 min |
+| **Competitive Moat Talking Points** | 1-page reference for common objections | 15 min |
+| **Pre-Roadshow Checklist** | Detailed task list with owners and deadlines | 10 min |
+
+Which of these would be most valuable for you right now? Or would you prefer I tackle a different priority you're seeing?

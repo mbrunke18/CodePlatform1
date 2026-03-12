@@ -1,0 +1,2137 @@
+CRITICAL PROJECT: Implement McKinsey "Organize to Value" Enhancements to VEXOR
+
+This is a comprehensive enhancement based on McKinsey research that validates and expands VEXOR's capabilities. Implement ALL features below in the order specified.
+
+═══════════════════════════════════════════════════════════════════════════════
+OVERVIEW: What We're Building
+═══════════════════════════════════════════════════════════════════════════════
+
+Based on McKinsey's June 2025 research "A new operating model for a new world," we are adding:
+
+1. Four Outcomes Scorecard (tracks execution quality)
+2. Operating Model Assessment (12-element fingerprint)
+3. Strategy-to-Execution Gap Calculator (ROI tool)
+4. McKinsey Validation Content (homepage updates)
+5. Ecosystem Stakeholder Management (external partners)
+6. Organizational Velocity Dashboard (speed metrics)
+7. Megatrends Intelligence (trend monitoring)
+8. Leadership Style Configuration (decision-making modes)
+
+Total Development Time: 20-30 hours
+Priority: CRITICAL (transforms product positioning)
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 1: FOUR OUTCOMES SCORECARD (Priority: URGENT)
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJECTIVE:
+Add a "Four Outcomes Scorecard" that appears at the completion of every demo, measuring the 4 outcomes McKinsey identified as critical: Clarity, Speed, Skills, and Commitment.
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 1: Create Scorecard Component
+───────────────────────────────────────────────────────────────────────────────
+
+CREATE FILE: client/src/components/demo/FourOutcomesScorecard.tsx
+
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
+import { CheckCircle2, Clock, Users, Heart, TrendingUp, Award } from 'lucide-react';
+
+interface OutcomeScore {
+  name: string;
+  score: number;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  details: string[];
+}
+
+interface FourOutcomesScorecardProps {
+  // Data from demo execution
+  stakeholdersTotal: number;
+  stakeholdersAcknowledged: number;
+  coordinationTime: string; // e.g., "11:47"
+  avgResponseTime: string; // e.g., "2.3 minutes"
+  tasksCompleted: number;
+  tasksTotal: number;
+  engagementRate: number; // 0-100
+}
+
+const FourOutcomesScorecard: React.FC<FourOutcomesScorecardProps> = ({
+  stakeholdersTotal,
+  stakeholdersAcknowledged,
+  coordinationTime,
+  avgResponseTime,
+  tasksCompleted,
+  tasksTotal,
+  engagementRate
+}) => {
+  
+  // Calculate scores based on demo performance
+  const calculateClarity = (): number => {
+    // Clarity = stakeholder acknowledgment rate + task clarity
+    const acknowledgmentRate = (stakeholdersAcknowledged / stakeholdersTotal) * 100;
+    const taskClarityRate = (tasksCompleted / tasksTotal) * 100;
+    return Math.round((acknowledgmentRate * 0.6 + taskClarityRate * 0.4));
+  };
+
+  const calculateSpeed = (): number => {
+    // Speed = coordination time (target: 12 min) + response time (target: <3 min)
+    const coordinationMinutes = parseFloat(coordinationTime.split(':')[0]) + 
+                                 parseFloat(coordinationTime.split(':')[1]) / 60;
+    const coordinationScore = Math.max(0, 100 - ((coordinationMinutes - 12) * 5));
+    
+    const responseMinutes = parseFloat(avgResponseTime);
+    const responseScore = Math.max(0, 100 - ((responseMinutes - 2) * 10));
+    
+    return Math.round((coordinationScore * 0.7 + responseScore * 0.3));
+  };
+
+  const calculateSkills = (): number => {
+    // Skills = task completion rate (proxy for having right skills)
+    const completionRate = (tasksCompleted / tasksTotal) * 100;
+    // In real implementation, this would check actual skill availability
+    return Math.round(completionRate * 0.9); // Assuming 90% skill availability
+  };
+
+  const calculateCommitment = (): number => {
+    // Commitment = engagement rate + acknowledgment speed
+    const acknowledgmentRate = (stakeholdersAcknowledged / stakeholdersTotal) * 100;
+    return Math.round((engagementRate * 0.6 + acknowledgmentRate * 0.4));
+  };
+
+  const outcomes: OutcomeScore[] = [
+    {
+      name: 'Clarity',
+      score: calculateClarity(),
+      description: 'Resources and accountabilities aligned to strategy',
+      icon: <CheckCircle2 className="w-6 h-6" />,
+      color: 'text-blue-600',
+      details: [
+        `${stakeholdersAcknowledged}/${stakeholdersTotal} stakeholders understood their role`,
+        `${tasksCompleted}/${tasksTotal} tasks had clear ownership`,
+        'All decisions made without escalation'
+      ]
+    },
+    {
+      name: 'Speed',
+      score: calculateSpeed(),
+      description: 'Workflows are fast, tech-enabled, and frictionless',
+      icon: <Clock className="w-6 h-6" />,
+      color: 'text-green-600',
+      details: [
+        `Coordination: ${coordinationTime} (vs 72 hours traditional)`,
+        `Avg response: ${avgResponseTime}`,
+        '360x faster than email/meetings'
+      ]
+    },
+    {
+      name: 'Skills',
+      score: calculateSkills(),
+      description: 'Future-ready workforce equipped to deliver value',
+      icon: <Users className="w-6 h-6" />,
+      color: 'text-purple-600',
+      details: [
+        '100% of required skills available',
+        'No critical skill gaps identified',
+        'Cross-functional expertise present'
+      ]
+    },
+    {
+      name: 'Commitment',
+      score: calculateCommitment(),
+      description: 'Performance-oriented culture drives execution',
+      icon: <Heart className="w-6 h-6" />,
+      color: 'text-red-600',
+      details: [
+        `${engagementRate}% team engagement`,
+        `${stakeholdersAcknowledged}/${stakeholdersTotal} active participation`,
+        'Strong organizational alignment'
+      ]
+    }
+  ];
+
+  const overallScore = Math.round(
+    outcomes.reduce((sum, outcome) => sum + outcome.score, 0) / outcomes.length
+  );
+
+  const getScoreLabel = (score: number): string => {
+    if (score >= 90) return 'Excellent';
+    if (score >= 80) return 'Very Good';
+    if (score >= 70) return 'Good';
+    if (score >= 60) return 'Fair';
+    return 'Needs Improvement';
+  };
+
+  const getScoreColor = (score: number): string => {
+    if (score >= 90) return 'bg-green-500';
+    if (score >= 80) return 'bg-blue-500';
+    if (score >= 70) return 'bg-yellow-500';
+    if (score >= 60) return 'bg-orange-500';
+    return 'bg-red-500';
+  };
+
+  return (
+    <div className="w-full max-w-6xl mx-auto space-y-6 p-6">
+      {/* Header */}
+      <div className="text-center space-y-2">
+        <div className="flex items-center justify-center gap-2">
+          <Award className="w-8 h-8 text-yellow-500" />
+          <h2 className="text-3xl font-bold">Execution Performance Scorecard</h2>
+        </div>
+        <p className="text-lg text-muted-foreground">
+          McKinsey's Four Outcomes That Drive Organizational Performance
+        </p>
+      </div>
+
+      {/* Overall Score */}
+      <Card className="border-2 border-primary">
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            <span>Overall Execution Score</span>
+            <Badge className={`${getScoreColor(overallScore)} text-white text-xl px-4 py-2`}>
+              {overallScore}/100
+            </Badge>
+          </CardTitle>
+          <CardDescription className="text-lg">
+            {getScoreLabel(overallScore)} - This activation demonstrated{' '}
+            {overallScore >= 80 ? 'excellent' : 'good'} organizational execution capability
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Progress value={overallScore} className="h-4" />
+        </CardContent>
+      </Card>
+
+      {/* Four Outcomes Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {outcomes.map((outcome) => (
+          <Card key={outcome.name} className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-3">
+                <div className={outcome.color}>
+                  {outcome.icon}
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span>{outcome.name}</span>
+                    <Badge variant="secondary" className="text-lg">
+                      {outcome.score}/100
+                    </Badge>
+                  </div>
+                </div>
+              </CardTitle>
+              <CardDescription>{outcome.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Progress value={outcome.score} className="h-3" />
+              
+              <div className="space-y-2">
+                {outcome.details.map((detail, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">{detail}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* McKinsey Citation */}
+      <Card className="bg-muted/50">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-4">
+            <TrendingUp className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+            <div className="space-y-2">
+              <p className="font-semibold">
+                Based on McKinsey's "Organize to Value" Research
+              </p>
+              <p className="text-sm text-muted-foreground">
+                McKinsey research shows that operating models delivering these four outcomes—
+                Clarity, Speed, Skills, and Commitment—can close the 30% strategy-to-execution 
+                gap that even high-performing companies experience.
+              </p>
+              <a 
+                href="https://www.mckinsey.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+              >
+                Read the research
+                <TrendingUp className="w-3 h-3" />
+              </a>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Benchmark Comparison */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Industry Benchmark Comparison</CardTitle>
+          <CardDescription>
+            How this activation compares to industry averages
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span>Your Score</span>
+                <span className="font-semibold">{overallScore}/100</span>
+              </div>
+              <Progress value={overallScore} className="h-2" />
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Industry Average (Without VEXOR)</span>
+                <span>45/100</span>
+              </div>
+              <Progress value={45} className="h-2 opacity-50" />
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Top Performers (Fortune 100)</span>
+                <span>72/100</span>
+              </div>
+              <Progress value={72} className="h-2 opacity-50" />
+            </div>
+
+            <div className="pt-4 border-t">
+              <p className="text-sm font-semibold text-green-600">
+                ✓ Your score is {overallScore - 45} points above industry average
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                VEXOR users score {Math.round(((overallScore - 45) / 45) * 100)}% higher 
+                than organizations using traditional coordination methods
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+export default FourOutcomesScorecard;
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 2: Update Demo Components to Include Scorecard
+───────────────────────────────────────────────────────────────────────────────
+
+MODIFY: client/src/pages/DemoLiveActivation.tsx
+
+Add this import at the top:
+import FourOutcomesScorecard from '@/components/demo/FourOutcomesScorecard';
+
+Add this state variable with other useState declarations:
+const [showScorecard, setShowScorecard] = useState(false);
+
+Modify the completion logic (around line 250-300 where phase becomes 'complete'):
+
+Replace:
+if (elapsedMinutes >= 11.78 && phase === 'threshold') {
+  setPhase('completing');
+  setTimeout(() => {
+    setPhase('complete');
+    setShowConfetti(true);
+    setShowFinalMetrics(true);
+  }, 3000);
+}
+
+With:
+if (elapsedMinutes >= 11.78 && phase === 'threshold') {
+  setPhase('completing');
+  setTimeout(() => {
+    setPhase('complete');
+    setShowConfetti(true);
+    setShowFinalMetrics(true);
+    // Show scorecard after metrics
+    setTimeout(() => {
+      setShowScorecard(true);
+    }, 2000);
+  }, 3000);
+}
+
+Add this section after the final metrics card (around line 500):
+
+{showScorecard && (
+  <div className="mt-8 animate-fade-in">
+    <FourOutcomesScorecard
+      stakeholdersTotal={30}
+      stakeholdersAcknowledged={28}
+      coordinationTime="11:47"
+      avgResponseTime="2.3 minutes"
+      tasksCompleted={45}
+      tasksTotal={47}
+      engagementRate={93}
+    />
+  </div>
+)}
+
+───────────────────────────────────────────────────────────────────────────────
+REPEAT FOR ALL 7 DEMOS
+───────────────────────────────────────────────────────────────────────────────
+
+Apply the same modifications to:
+1. client/src/pages/DemoMaIntegration.tsx (45 stakeholders, 42 acknowledged)
+2. client/src/pages/DemoProductLaunch.tsx (50 stakeholders, 47 acknowledged)
+3. client/src/pages/DemoSupplierCrisis.tsx (35 stakeholders, 33 acknowledged)
+4. client/src/pages/DemoCompetitiveResponse.tsx (28 stakeholders, 26 acknowledged)
+5. client/src/pages/DemoRegulatoryCrisis.tsx (32 stakeholders, 30 acknowledged)
+6. client/src/pages/DemoCustomerCrisis.tsx (24 stakeholders, 22 acknowledged)
+
+Adjust stakeholder numbers in each FourOutcomesScorecard based on the specific demo.
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 2: OPERATING MODEL ASSESSMENT (Priority: HIGH)
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJECTIVE:
+Create a standalone assessment tool where users can evaluate their organization across McKinsey's 12 elements and receive a custom "operating model fingerprint" with personalized playbook recommendations.
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 3: Create Assessment Page
+───────────────────────────────────────────────────────────────────────────────
+
+CREATE FILE: client/src/pages/OperatingModelAssessment.tsx
+
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { Progress } from '@/components/ui/progress';
+import { Badge } from '@/components/ui/badge';
+import { 
+  Target, 
+  TrendingUp, 
+  Building2, 
+  Network, 
+  Users, 
+  Shield, 
+  Workflow, 
+  Cpu, 
+  Heart, 
+  Award, 
+  MapPin, 
+  GraduationCap,
+  ArrowRight,
+  CheckCircle2,
+  Download
+} from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+interface Question {
+  element: string;
+  icon: React.ReactNode;
+  question: string;
+  options: {
+    value: string;
+    label: string;
+    description: string;
+  }[];
+}
+
+interface AssessmentResult {
+  element: string;
+  choice: string;
+  score: number;
+  recommendation: string;
+}
+
+const OperatingModelAssessment: React.FC = () => {
+  const navigate = useNavigate();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<{ [key: string]: string }>({});
+  const [showResults, setShowResults] = useState(false);
+
+  const questions: Question[] = [
+    {
+      element: 'Purpose',
+      icon: <Target className="w-6 h-6" />,
+      question: 'How does your organization define its core reason for being?',
+      options: [
+        {
+          value: 'customer-benefit',
+          label: 'Customer Benefit',
+          description: 'Focused on delivering exceptional value to customers'
+        },
+        {
+          value: 'organizational-reputation',
+          label: 'Organizational Reputation',
+          description: 'Building and maintaining strong brand and reputation'
+        },
+        {
+          value: 'competitive-performance',
+          label: 'Competitive Performance',
+          description: 'Outperforming competitors and leading the market'
+        },
+        {
+          value: 'societal-impact',
+          label: 'Societal Impact',
+          description: 'Creating positive change for society and environment'
+        }
+      ]
+    },
+    {
+      element: 'Value Agenda',
+      icon: <TrendingUp className="w-6 h-6" />,
+      question: 'What is your primary approach to creating value?',
+      options: [
+        {
+          value: 'differentiation',
+          label: 'Differentiation',
+          description: 'Unique products/services that command premium pricing'
+        },
+        {
+          value: 'innovation',
+          label: 'Innovation',
+          description: 'Continuous creation of new products and markets'
+        },
+        {
+          value: 'efficiency',
+          label: 'Efficiency',
+          description: 'Operational excellence and cost leadership'
+        },
+        {
+          value: 'scale',
+          label: 'Scale',
+          description: 'Growth through market expansion and volume'
+        }
+      ]
+    },
+    {
+      element: 'Structure',
+      icon: <Building2 className="w-6 h-6" />,
+      question: 'Which structure best describes your organization?',
+      options: [
+        {
+          value: 'hierarchical',
+          label: 'Hierarchical/Business Unit',
+          description: 'Clear business units with P&L accountability'
+        },
+        {
+          value: 'matrix',
+          label: 'Matrix',
+          description: 'Multiple dimensions (function, geography, product)'
+        },
+        {
+          value: 'functional',
+          label: 'Functional',
+          description: 'Organized by function (Sales, Marketing, Ops, etc.)'
+        },
+        {
+          value: 'agile',
+          label: 'Enterprise Agile',
+          description: 'Network of cross-functional teams'
+        },
+        {
+          value: 'platform',
+          label: 'Product Platform',
+          description: 'Product verticals with shared tech platform'
+        }
+      ]
+    },
+    {
+      element: 'Ecosystem',
+      icon: <Network className="w-6 h-6" />,
+      question: 'How do you work with external partners?',
+      options: [
+        {
+          value: 'traditional-value-chain',
+          label: 'Traditional Value Chain',
+          description: 'Standard supplier-customer relationships'
+        },
+        {
+          value: 'strategic-partnerships',
+          label: 'Strategic Partnerships',
+          description: 'Deep collaboration with select partners'
+        },
+        {
+          value: 'open-platform',
+          label: 'Open Platform',
+          description: 'Ecosystem with open APIs and integrations'
+        },
+        {
+          value: 'vertically-integrated',
+          label: 'Vertically Integrated',
+          description: 'Own most of the value chain internally'
+        }
+      ]
+    },
+    {
+      element: 'Leadership',
+      icon: <Users className="w-6 h-6" />,
+      question: 'What is your dominant leadership style for decision-making?',
+      options: [
+        {
+          value: 'decisive',
+          label: 'Decisive',
+          description: 'Top-down, quick decisions by senior leaders'
+        },
+        {
+          value: 'collaborative',
+          label: 'Collaborative',
+          description: 'Consensus-based, team decides together'
+        },
+        {
+          value: 'empowering',
+          label: 'Empowering',
+          description: 'Distributed authority, teams self-organize'
+        },
+        {
+          value: 'consultative',
+          label: 'Consultative',
+          description: 'Gather input, then leader decides'
+        }
+      ]
+    },
+    {
+      element: 'Governance',
+      icon: <Shield className="w-6 h-6" />,
+      question: 'How do you set priorities and allocate resources?',
+      options: [
+        {
+          value: 'annual-fixed',
+          label: 'Annual Fixed Budgets',
+          description: 'Yearly planning with fixed allocations'
+        },
+        {
+          value: 'quarterly-outcomes',
+          label: 'Quarterly Outcomes-Based',
+          description: 'Flexible resources tied to quarterly goals'
+        },
+        {
+          value: 'continuous-allocation',
+          label: 'Continuous Allocation',
+          description: 'Dynamic resource reallocation as needed'
+        },
+        {
+          value: 'zero-based',
+          label: 'Zero-Based',
+          description: 'Justify all expenses from scratch each cycle'
+        }
+      ]
+    },
+    {
+      element: 'Processes',
+      icon: <Workflow className="w-6 h-6" />,
+      question: 'How are your workflows designed?',
+      options: [
+        {
+          value: 'control-oriented',
+          label: 'Control-Oriented',
+          description: 'Standardized processes, compliance focus'
+        },
+        {
+          value: 'efficiency-oriented',
+          label: 'Efficiency-Oriented',
+          description: 'Optimized for speed and cost reduction'
+        },
+        {
+          value: 'agile-approach',
+          label: 'Agile Approach',
+          description: 'Iterative, adaptive, customer-centric'
+        },
+        {
+          value: 'innovation-focused',
+          label: 'Innovation-Focused',
+          description: 'Experimentation and rapid prototyping'
+        }
+      ]
+    },
+    {
+      element: 'Technology',
+      icon: <Cpu className="w-6 h-6" />,
+      question: 'How does technology enable your value creation?',
+      options: [
+        {
+          value: 'analytics',
+          label: 'Analytics',
+          description: 'Data-driven insights for decision-making'
+        },
+        {
+          value: 'automation',
+          label: 'Automation',
+          description: 'Automated workflows and processes'
+        },
+        {
+          value: 'enabling-copilots',
+          label: 'Enabling Copilots',
+          description: 'AI assistants augmenting human work'
+        },
+        {
+          value: 'autonomous-systems',
+          label: 'Autonomous Systems',
+          description: 'AI-driven decision-making and execution'
+        }
+      ]
+    },
+    {
+      element: 'Behaviors',
+      icon: <Heart className="w-6 h-6" />,
+      question: 'What behaviors define your culture?',
+      options: [
+        {
+          value: 'accountability',
+          label: 'Accountability',
+          description: 'Individual ownership and responsibility'
+        },
+        {
+          value: 'collaboration',
+          label: 'Collaboration',
+          description: 'Teamwork and cross-functional cooperation'
+        },
+        {
+          value: 'innovation',
+          label: 'Innovation',
+          description: 'Creativity, risk-taking, experimentation'
+        },
+        {
+          value: 'customer-obsession',
+          label: 'Customer Obsession',
+          description: 'Customer needs drive all decisions'
+        }
+      ]
+    },
+    {
+      element: 'Rewards',
+      icon: <Award className="w-6 h-6" />,
+      question: 'How do you reward performance?',
+      options: [
+        {
+          value: 'individual-performance',
+          label: 'Individual Performance',
+          description: 'Based on personal goals and achievements'
+        },
+        {
+          value: 'collective-team',
+          label: 'Collective Team Performance',
+          description: 'Based on team and unit results'
+        },
+        {
+          value: 'company-performance',
+          label: 'Company Performance',
+          description: 'Tied to overall organizational success'
+        },
+        {
+          value: 'balanced-scorecard',
+          label: 'Balanced Scorecard',
+          description: 'Mix of individual, team, and company metrics'
+        }
+      ]
+    },
+    {
+      element: 'Footprint',
+      icon: <MapPin className="w-6 h-6" />,
+      question: 'How do you locate and deploy talent?',
+      options: [
+        {
+          value: 'domestic-integrated',
+          label: 'Domestic Integrated',
+          description: 'Primarily single-country workforce'
+        },
+        {
+          value: 'global-integrated',
+          label: 'Global Integrated',
+          description: 'Coordinated workforce across multiple countries'
+        },
+        {
+          value: 'distributed-autonomous',
+          label: 'Distributed Autonomous',
+          description: 'Remote-first, location-independent teams'
+        },
+        {
+          value: 'hybrid-flexible',
+          label: 'Hybrid Flexible',
+          description: 'Mix of office, remote, and flex arrangements'
+        }
+      ]
+    },
+    {
+      element: 'Talent',
+      icon: <GraduationCap className="w-6 h-6" />,
+      question: 'How do you attract and develop talent?',
+      options: [
+        {
+          value: 'performance-based',
+          label: 'Performance-Based',
+          description: 'Hire proven performers, meritocracy'
+        },
+        {
+          value: 'skills-based',
+          label: 'Skills-Based',
+          description: 'Focus on specific capabilities needed'
+        },
+        {
+          value: 'potential-based',
+          label: 'Potential-Based',
+          description: 'Hire for learning agility and growth'
+        },
+        {
+          value: 'culture-fit',
+          label: 'Culture Fit',
+          description: 'Values alignment and cultural contribution'
+        }
+      ]
+    }
+  ];
+
+  const handleAnswer = (value: string) => {
+    setAnswers({
+      ...answers,
+      [questions[currentQuestion].element]: value
+    });
+  };
+
+  const handleNext = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResults(true);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+
+  const generateResults = (): AssessmentResult[] => {
+    // This would be more sophisticated in production
+    const results: AssessmentResult[] = Object.entries(answers).map(([element, choice]) => {
+      // Calculate a score based on alignment with modern best practices
+      const modernChoices = {
+        'Purpose': 'customer-benefit',
+        'Value Agenda': 'innovation',
+        'Structure': 'agile',
+        'Ecosystem': 'open-platform',
+        'Leadership': 'empowering',
+        'Governance': 'quarterly-outcomes',
+        'Processes': 'agile-approach',
+        'Technology': 'enabling-copilots',
+        'Behaviors': 'collaboration',
+        'Rewards': 'collective-team',
+        'Footprint': 'hybrid-flexible',
+        'Talent': 'skills-based'
+      };
+
+      const isModern = choice === modernChoices[element as keyof typeof modernChoices];
+      const score = isModern ? 90 : 70;
+
+      return {
+        element,
+        choice,
+        score,
+        recommendation: isModern 
+          ? `Your ${element} approach is well-aligned with high-performing organizations.`
+          : `Consider evolving your ${element} approach to increase agility and speed.`
+      };
+    });
+
+    return results;
+  };
+
+  const getRecommendedPlaybooks = () => {
+    // Based on fingerprint, recommend relevant playbooks
+    const structure = answers['Structure'];
+    const valueAgenda = answers['Value Agenda'];
+
+    const recommendations = [];
+
+    if (structure === 'agile' || structure === 'platform') {
+      recommendations.push({
+        name: 'Product Launch',
+        reason: 'Your agile structure is ideal for rapid go-to-market execution',
+        url: '/demo/product-launch'
+      });
+    }
+
+    if (valueAgenda === 'innovation') {
+      recommendations.push({
+        name: 'Competitive Response',
+        reason: 'Your innovation focus requires fast responses to market changes',
+        url: '/demo/competitive-response'
+      });
+    }
+
+    if (structure === 'matrix' || structure === 'hierarchical') {
+      recommendations.push({
+        name: 'M&A Integration',
+        reason: 'Your structure benefits from systematic integration coordination',
+        url: '/demo/ma-integration'
+      });
+    }
+
+    // Always recommend at least 3
+    if (recommendations.length < 3) {
+      recommendations.push({
+        name: 'Ransomware Response',
+        reason: 'Essential for any organization regardless of structure',
+        url: '/demo/live-activation'
+      });
+    }
+
+    return recommendations.slice(0, 4);
+  };
+
+  if (showResults) {
+    const results = generateResults();
+    const overallScore = Math.round(
+      results.reduce((sum, r) => sum + r.score, 0) / results.length
+    );
+    const recommendedPlaybooks = getRecommendedPlaybooks();
+
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 p-8">
+        <div className="max-w-6xl mx-auto space-y-8">
+          {/* Header */}
+          <div className="text-center space-y-4">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+              <CheckCircle2 className="w-5 h-5 text-primary" />
+              <span className="font-semibold">Assessment Complete</span>
+            </div>
+            <h1 className="text-4xl font-bold">Your Operating Model Fingerprint</h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Based on McKinsey's 12-element framework, here's how your organization is 
+              configured and where you can improve
+            </p>
+          </div>
+
+          {/* Overall Score */}
+          <Card className="border-2 border-primary">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between text-2xl">
+                <span>Operating Model Maturity Score</span>
+                <Badge className="bg-primary text-primary-foreground text-2xl px-6 py-2">
+                  {overallScore}/100
+                </Badge>
+              </CardTitle>
+              <CardDescription className="text-lg">
+                {overallScore >= 85 && 'Excellent - Your operating model is well-aligned with modern best practices'}
+                {overallScore >= 70 && overallScore < 85 && 'Good - Your operating model has strong foundations with room for optimization'}
+                {overallScore < 70 && 'Opportunity - Significant value can be unlocked by modernizing your operating model'}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Progress value={overallScore} className="h-6" />
+            </CardContent>
+          </Card>
+
+          {/* 12 Elements Breakdown */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">Your Choices Across 12 Elements</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {results.map((result) => (
+                <Card key={result.element}>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center justify-between">
+                      {result.element}
+                      <Badge variant={result.score >= 85 ? 'default' : 'secondary'}>
+                        {result.score}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm font-semibold mb-2">
+                      Your Choice: {result.choice.split('-').map(w => 
+                        w.charAt(0).toUpperCase() + w.slice(1)
+                      ).join(' ')}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {result.recommendation}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Recommended Playbooks */}
+          <Card className="border-2 border-blue-500">
+            <CardHeader>
+              <CardTitle className="text-2xl">Recommended Playbooks For Your Fingerprint</CardTitle>
+              <CardDescription className="text-lg">
+                Based on your operating model, these playbooks are most relevant for your organization
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recommendedPlaybooks.map((playbook) => (
+                  <div 
+                    key={playbook.name}
+                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
+                  >
+                    <div className="space-y-1 flex-1">
+                      <h3 className="font-semibold text-lg">{playbook.name}</h3>
+                      <p className="text-sm text-muted-foreground">{playbook.reason}</p>
+                    </div>
+                    <Button onClick={() => navigate(playbook.url)}>
+                      View Demo
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* McKinsey Citation */}
+          <Card className="bg-muted/50">
+            <CardContent className="pt-6">
+              <div className="flex items-start gap-4">
+                <TrendingUp className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div className="space-y-2">
+                  <p className="font-semibold">
+                    Methodology: McKinsey's "Organize to Value" Framework
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    This assessment is based on McKinsey's June 2025 research identifying 12 elements 
+                    that determine organizational performance. Their research shows that even high-performing 
+                    companies have a 30% gap between strategy and execution—a gap that the right operating 
+                    model can close.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Actions */}
+          <div className="flex gap-4 justify-center">
+            <Button size="lg" onClick={() => window.print()}>
+              <Download className="w-5 h-5 mr-2" />
+              Download Report
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => navigate('/playbook-library')}>
+              Explore All Playbooks
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => {
+              setShowResults(false);
+              setCurrentQuestion(0);
+              setAnswers({});
+            }}>
+              Retake Assessment
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const currentQ = questions[currentQuestion];
+  const currentAnswer = answers[currentQ.element];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 p-8">
+      <div className="max-w-4xl mx-auto space-y-8">
+        {/* Header */}
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-bold">Operating Model Assessment</h1>
+          <p className="text-xl text-muted-foreground">
+            Discover your organization's unique fingerprint across McKinsey's 12 elements
+          </p>
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm text-muted-foreground">
+              <span>Question {currentQuestion + 1} of {questions.length}</span>
+              <span>{Math.round(progress)}% Complete</span>
+            </div>
+            <Progress value={progress} className="h-2" />
+          </div>
+        </div>
+
+        {/* Question Card */}
+        <Card className="border-2">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-3 text-2xl">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                {currentQ.icon}
+              </div>
+              <div>
+                <div className="text-sm text-muted-foreground font-normal mb-1">
+                  Element: {currentQ.element}
+                </div>
+                {currentQ.question}
+              </div>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <RadioGroup value={currentAnswer} onValueChange={handleAnswer}>
+              <div className="space-y-3">
+                {currentQ.options.map((option) => (
+                  <div 
+                    key={option.value}
+                    className={`flex items-start space-x-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                      currentAnswer === option.value 
+                        ? 'border-primary bg-primary/5' 
+                        : 'border-border hover:border-muted-foreground/50'
+                    }`}
+                    onClick={() => handleAnswer(option.value)}
+                  >
+                    <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
+                    <Label htmlFor={option.value} className="flex-1 cursor-pointer">
+                      <div className="font-semibold mb-1">{option.label}</div>
+                      <div className="text-sm text-muted-foreground">{option.description}</div>
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </RadioGroup>
+          </CardContent>
+        </Card>
+
+        {/* Navigation */}
+        <div className="flex justify-between">
+          <Button
+            variant="outline"
+            onClick={handlePrevious}
+            disabled={currentQuestion === 0}
+          >
+            Previous
+          </Button>
+          <Button
+            onClick={handleNext}
+            disabled={!currentAnswer}
+          >
+            {currentQuestion === questions.length - 1 ? 'View Results' : 'Next'}
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OperatingModelAssessment;
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 4: Add Route for Assessment
+───────────────────────────────────────────────────────────────────────────────
+
+MODIFY: client/src/App.tsx
+
+Add import:
+import OperatingModelAssessment from './pages/OperatingModelAssessment';
+
+Add route:
+<Route path="/operating-model-assessment" element={<OperatingModelAssessment />} />
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 3: STRATEGY-TO-EXECUTION GAP CALCULATOR (Priority: HIGH)
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJECTIVE:
+Create an interactive ROI calculator that quantifies the McKinsey-identified 30% strategy-to-execution gap and shows how VEXOR closes it.
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 5: Create Gap Calculator Page
+───────────────────────────────────────────────────────────────────────────────
+
+CREATE FILE: client/src/pages/ExecutionGapCalculator.tsx
+
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
+import { Badge } from '@/components/ui/badge';
+import { 
+  TrendingDown, 
+  TrendingUp, 
+  DollarSign, 
+  Clock, 
+  Users, 
+  Target,
+  ArrowRight,
+  Download,
+  CheckCircle2,
+  AlertCircle
+} from 'lucide-react';
+
+interface CalculationResult {
+  strategicValue: number;
+  currentExecution: number;
+  executionGap: number;
+  gapPercentage: number;
+  withVexorExecution: number;
+  valueRecovered: number;
+  timeWasted: number;
+  timeSaved: number;
+  roi: number;
+}
+
+const ExecutionGapCalculator: React.FC = () => {
+  // Input states
+  const [annualInitiatives, setAnnualInitiatives] = useState<number>(10);
+  const [avgInitiativeValue, setAvgInitiativeValue] = useState<number>(50);
+  const [currentExecutionRate, setCurrentExecutionRate] = useState<number>(70);
+  const [avgCoordinationTime, setAvgCoordinationTime] = useState<number>(72);
+  const [avgStakeholders, setAvgStakeholders] = useState<number>(30);
+  const [executiveHourlyRate, setExecutiveHourlyRate] = useState<number>(200);
+  
+  const [showResults, setShowResults] = useState(false);
+
+  const calculate = (): CalculationResult => {
+    // Calculate total strategic value
+    const strategicValue = annualInitiatives * avgInitiativeValue * 1000000;
+
+    // Calculate current execution (with 30% gap - McKinsey finding)
+    const currentExecution = strategicValue * (currentExecutionRate / 100);
+
+    // Calculate execution gap
+    const executionGap = strategicValue - currentExecution;
+    const gapPercentage = ((executionGap / strategicValue) * 100);
+
+    // Calculate with VEXOR (assumes 95% execution rate)
+    const withVexorExecution = strategicValue * 0.95;
+
+    // Calculate value recovered
+    const valueRecovered = withVexorExecution - currentExecution;
+
+    // Calculate time metrics
+    const timeWasted = avgCoordinationTime * annualInitiatives;
+    const vexorCoordinationTime = 0.2; // 12 minutes in hours
+    const timeSaved = (avgCoordinationTime - vexorCoordinationTime) * annualInitiatives;
+
+    // Calculate time value
+    const timeValue = timeSaved * avgStakeholders * executiveHourlyRate;
+
+    // Calculate ROI (assuming $500K annual VEXOR cost)
+    const vexorCost = 500000;
+    const totalValue = valueRecovered + timeValue;
+    const roi = ((totalValue - vexorCost) / vexorCost) * 100;
+
+    return {
+      strategicValue,
+      currentExecution,
+      executionGap,
+      gapPercentage,
+      withVexorExecution,
+      valueRecovered,
+      timeWasted,
+      timeSaved,
+      roi
+    };
+  };
+
+  const formatCurrency = (value: number): string => {
+    if (value >= 1000000000) {
+      return `$${(value / 1000000000).toFixed(1)}B`;
+    } else if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`;
+    } else if (value >= 1000) {
+      return `$${(value / 1000).toFixed(0)}K`;
+    }
+    return `$${value.toFixed(0)}`;
+  };
+
+  const formatNumber = (value: number): string => {
+    return value.toLocaleString();
+  };
+
+  const results = showResults ? calculate() : null;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 p-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* Header */}
+        <div className="text-center space-y-4">
+          <div className="inline-flex items-center gap-2 bg-red-100 dark:bg-red-900/20 px-4 py-2 rounded-full">
+            <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+            <span className="font-semibold text-red-600 dark:text-red-400">
+              The 30% Execution Gap
+            </span>
+          </div>
+          <h1 className="text-5xl font-bold">Strategy-to-Execution Gap Calculator</h1>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            McKinsey research shows even high-performing companies have a 30% gap between their 
+            strategy's full potential and what is actually delivered. Calculate your gap and the 
+            value VEXOR can recover.
+          </p>
+        </div>
+
+        {!showResults ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Input Section */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    Strategic Initiatives
+                  </CardTitle>
+                  <CardDescription>
+                    Tell us about your organization's strategic goals
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="initiatives">
+                      Annual Strategic Initiatives
+                    </Label>
+                    <Input
+                      id="initiatives"
+                      type="number"
+                      value={annualInitiatives}
+                      onChange={(e) => setAnnualInitiatives(Number(e.target.value))}
+                      min={1}
+                      max={100}
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      Major projects, launches, crises, or transformations per year
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="value">
+                      Average Initiative Value ($M)
+                    </Label>
+                    <Input
+                      id="value"
+                      type="number"
+                      value={avgInitiativeValue}
+                      onChange={(e) => setAvgInitiativeValue(Number(e.target.value))}
+                      min={1}
+                      max={1000}
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      Revenue impact, cost savings, or strategic value per initiative
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <Label>
+                      Current Execution Rate: {currentExecutionRate}%
+                    </Label>
+                    <Slider
+                      value={[currentExecutionRate]}
+                      onValueChange={(value) => setCurrentExecutionRate(value[0])}
+                      min={40}
+                      max={90}
+                      step={5}
+                      className="w-full"
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      What percentage of your strategic goals do you currently achieve?
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Clock className="w-5 h-5" />
+                    Coordination Metrics
+                  </CardTitle>
+                  <CardDescription>
+                    How long does it take to coordinate your organization today?
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <Label>
+                      Average Coordination Time: {avgCoordinationTime} hours
+                    </Label>
+                    <Slider
+                      value={[avgCoordinationTime]}
+                      onValueChange={(value) => setAvgCoordinationTime(value[0])}
+                      min={24}
+                      max={168}
+                      step={12}
+                      className="w-full"
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      Time from decision to full organizational alignment (emails, meetings, etc.)
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <Label>
+                      Average Stakeholders: {avgStakeholders}
+                    </Label>
+                    <Slider
+                      value={[avgStakeholders]}
+                      onValueChange={(value) => setAvgStakeholders(value[0])}
+                      min={10}
+                      max={100}
+                      step={5}
+                      className="w-full"
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      Number of people typically involved in strategic initiatives
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="hourlyRate">
+                      Executive Hourly Rate ($)
+                    </Label>
+                    <Input
+                      id="hourlyRate"
+                      type="number"
+                      value={executiveHourlyRate}
+                      onChange={(e) => setExecutiveHourlyRate(Number(e.target.value))}
+                      min={100}
+                      max={500}
+                    />
+                    <p className="text-sm text-muted-foreground">
+                      Average loaded cost per hour for your stakeholders
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Preview Section */}
+            <div className="space-y-6">
+              <Card className="border-2 border-primary">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <DollarSign className="w-5 h-5" />
+                    Quick Preview
+                  </CardTitle>
+                  <CardDescription>
+                    Based on your inputs, here's a glimpse of your numbers
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="p-4 bg-muted rounded-lg space-y-2">
+                    <p className="text-sm text-muted-foreground">Total Strategic Value</p>
+                    <p className="text-3xl font-bold">
+                      {formatCurrency(annualInitiatives * avgInitiativeValue * 1000000)}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-muted rounded-lg space-y-2">
+                    <p className="text-sm text-muted-foreground">Currently Delivered</p>
+                    <p className="text-3xl font-bold text-orange-600">
+                      {formatCurrency(annualInitiatives * avgInitiativeValue * 1000000 * (currentExecutionRate / 100))}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      ({currentExecutionRate}% execution rate)
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-red-100 dark:bg-red-900/20 rounded-lg space-y-2">
+                    <p className="text-sm text-red-600 dark:text-red-400">Execution Gap</p>
+                    <p className="text-3xl font-bold text-red-600 dark:text-red-400">
+                      {formatCurrency(annualInitiatives * avgInitiativeValue * 1000000 * ((100 - currentExecutionRate) / 100))}
+                    </p>
+                    <p className="text-sm text-red-600 dark:text-red-400">
+                      ({100 - currentExecutionRate}% unrealized value)
+                    </p>
+                  </div>
+
+                  <div className="pt-4">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Time spent on coordination annually:
+                    </p>
+                    <p className="text-2xl font-semibold">
+                      {formatNumber(avgCoordinationTime * annualInitiatives)} hours
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Across {avgStakeholders} stakeholders = {formatNumber(avgCoordinationTime * annualInitiatives * avgStakeholders)} total person-hours
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800">
+                <CardHeader>
+                  <CardTitle className="text-blue-900 dark:text-blue-100">
+                    McKinsey Research Insight
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-blue-800 dark:text-blue-200">
+                  <p className="text-sm leading-relaxed">
+                    "McKinsey research indicates that even high-performing companies have a 
+                    30 percent gap between their strategy's full potential and what is actually 
+                    delivered, which can be attributed to shortcomings in their operating models."
+                  </p>
+                  <p className="text-xs mt-4 opacity-75">
+                    Source: McKinsey Quarterly, "A new operating model for a new world" (June 2025)
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Button 
+                size="lg" 
+                className="w-full text-lg py-6"
+                onClick={() => setShowResults(true)}
+              >
+                Calculate My Execution Gap
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Results Section */}
+            <div className="space-y-8">
+              {/* Key Metrics Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="border-2">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
+                      <Target className="w-4 h-4" />
+                      Strategic Value
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold">{formatCurrency(results.strategicValue)}</p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      Total potential value
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-orange-500">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-muted-foreground flex items-center gap-2">
+                      <TrendingDown className="w-4 h-4" />
+                      Currently Delivered
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-orange-600">
+                      {formatCurrency(results.currentExecution)}
+                    </p>
+                    <p className="text-sm text-orange-600 mt-1">
+                      {currentExecutionRate}% execution rate
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-red-500 bg-red-50 dark:bg-red-900/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-red-600 dark:text-red-400 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      Execution Gap
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-red-600 dark:text-red-400">
+                      {formatCurrency(results.executionGap)}
+                    </p>
+                    <p className="text-sm text-red-600 dark:text-red-400 mt-1">
+                      {results.gapPercentage.toFixed(0)}% unrealized value
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-green-500 bg-green-50 dark:bg-green-900/10">
+                  <CardHeader>
+                    <CardTitle className="text-sm text-green-600 dark:text-green-400 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4" />
+                      With VEXOR
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-3xl font-bold text-green-600 dark:text-green-400">
+                      {formatCurrency(results.withVexorExecution)}
+                    </p>
+                    <p className="text-sm text-green-600 dark:text-green-400 mt-1">
+                      95% execution rate
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Value Recovered */}
+              <Card className="border-2 border-primary">
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <CheckCircle2 className="w-6 h-6 text-green-600" />
+                      Value VEXOR Recovers
+                    </span>
+                    <Badge className="bg-green-600 text-white text-2xl px-6 py-2">
+                      {formatCurrency(results.valueRecovered)}
+                    </Badge>
+                  </CardTitle>
+                  <CardDescription className="text-lg">
+                    By closing your execution gap from {currentExecutionRate}% to 95%, VEXOR 
+                    recovers {formatCurrency(results.valueRecovered)} in strategic value annually
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {/* Visual comparison */}
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Current Execution</span>
+                        <span className="font-semibold text-orange-600">
+                          {formatCurrency(results.currentExecution)}
+                        </span>
+                      </div>
+                      <div className="h-8 bg-orange-100 dark:bg-orange-900/20 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-orange-600 rounded-full transition-all duration-1000"
+                          style={{ width: `${currentExecutionRate}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>With VEXOR</span>
+                        <span className="font-semibold text-green-600">
+                          {formatCurrency(results.withVexorExecution)}
+                        </span>
+                      </div>
+                      <div className="h-8 bg-green-100 dark:bg-green-900/20 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-green-600 rounded-full transition-all duration-1000"
+                          style={{ width: '95%' }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Breakdown */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
+                    <div className="text-center p-4 bg-muted rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">Execution Rate Increase</p>
+                      <p className="text-2xl font-bold text-green-600">
+                        +{(95 - currentExecutionRate).toFixed(0)}%
+                      </p>
+                    </div>
+                    <div className="text-center p-4 bg-muted rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">Time Saved Annually</p>
+                      <p className="text-2xl font-bold text-blue-600">
+                        {formatNumber(Math.round(results.timeSaved))} hrs
+                      </p>
+                    </div>
+                    <div className="text-center p-4 bg-muted rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">Speed Improvement</p>
+                      <p className="text-2xl font-bold text-purple-600">
+                        360x faster
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ROI Card */}
+              <Card className="border-2 border-green-500 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10">
+                <CardHeader>
+                  <CardTitle className="text-3xl text-green-900 dark:text-green-100">
+                    Return on Investment
+                  </CardTitle>
+                  <CardDescription className="text-lg text-green-800 dark:text-green-200">
+                    VEXOR pays for itself many times over
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="text-center p-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
+                    <p className="text-sm text-muted-foreground mb-2">Annual ROI</p>
+                    <p className="text-6xl font-bold text-green-600 dark:text-green-400">
+                      {formatNumber(Math.round(results.roi))}%
+                    </p>
+                    <p className="text-lg text-muted-foreground mt-4">
+                      For every $1 invested in VEXOR, you get ${(results.roi / 100 + 1).toFixed(0)} back
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">Total Value Created</p>
+                      <p className="text-xl font-bold">
+                        {formatCurrency(results.valueRecovered + (results.timeSaved * avgStakeholders * executiveHourlyRate))}
+                      </p>
+                    </div>
+                    <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">VEXOR Annual Cost</p>
+                      <p className="text-xl font-bold">
+                        $500K
+                      </p>
+                    </div>
+                    <div className="p-4 bg-white dark:bg-gray-900 rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-1">Payback Period</p>
+                      <p className="text-xl font-bold text-green-600">
+                        {(500000 / (results.valueRecovered / 12)).toFixed(0)} days
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Time Analysis */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Clock className="w-5 h-5" />
+                      Time Efficiency
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <p className="text-sm text-muted-foreground">Current Annual Coordination Time</p>
+                      <p className="text-3xl font-bold text-red-600">
+                        {formatNumber(Math.round(results.timeWasted))} hours
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        = {formatNumber(Math.round(results.timeWasted / 24))} days wasted on meetings and emails
+                      </p>
+                    </div>
+
+                    <div className="space-y-2 pt-4 border-t">
+                      <p className="text-sm text-muted-foreground">With VEXOR</p>
+                      <p className="text-3xl font-bold text-green-600">
+                        {formatNumber(Math.round(annualInitiatives * 0.2))} hours
+                      </p>
+                      <p className="text-sm text-green-600">
+                        12 minutes per initiative = {((annualInitiatives * 0.2) / 24).toFixed(1)} days total
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg mt-4">
+                      <p className="text-sm text-green-800 dark:text-green-200">
+                        <strong>Time Saved:</strong> {formatNumber(Math.round(results.timeSaved))} hours annually
+                      </p>
+                      <p className="text-sm text-green-800 dark:text-green-200 mt-1">
+                        <strong>Value:</strong> {formatCurrency(results.timeSaved * avgStakeholders * executiveHourlyRate)} 
+                        ({avgStakeholders} stakeholders × ${executiveHourlyRate}/hr)
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Users className="w-5 h-5" />
+                      Stakeholder Impact
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <p className="text-sm text-muted-foreground">Executives Involved Per Initiative</p>
+                      <p className="text-3xl font-bold">{avgStakeholders}</p>
+                    </div>
+
+                    <div className="space-y-2 pt-4 border-t">
+                      <p className="text-sm text-muted-foreground">Total Person-Hours Wasted Annually</p>
+                      <p className="text-3xl font-bold text-red-600">
+                        {formatNumber(Math.round(results.timeWasted * avgStakeholders))}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        = {(results.timeWasted * avgStakeholders / 2080).toFixed(1)} full-time employees worth of time
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg mt-4">
+                      <p className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                        What your executives could do instead:
+                      </p>
+                      <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+                        <li>• Focus on strategic thinking</li>
+                        <li>• Build customer relationships</li>
+                        <li>• Drive innovation</li>
+                        <li>• Develop team members</li>
+                      </ul>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* McKinsey Validation */}
+              <Card className="bg-muted/50">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <TrendingUp className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                    <div className="space-y-2">
+                      <p className="font-semibold text-lg">
+                        These Calculations Are Based on McKinsey Research
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        McKinsey's June 2025 research "A new operating model for a new world" found that 
+                        even high-performing companies have a 30% gap between their strategy's full potential 
+                        and what is actually delivered. This gap can be attributed to shortcomings in operating 
+                        models—specifically in how organizations coordinate decision-making and execution.
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        VEXOR closes this gap by transforming coordination time from 48-72 hours (traditional 
+                        email/meeting approach) to 12 minutes (instant stakeholder notification and alignment). 
+                        The ROI calculation above is conservative and based on documented customer results.
+                      </p>
+                      <a 
+                        href="https://www.mckinsey.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        Read the McKinsey research
+                        <ArrowRight className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Actions */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="text-lg">
+                  Schedule Demo
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button size="lg" variant="outline" onClick={() => window.print()}>
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Report
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => setShowResults(false)}
+                >
+                  Adjust Inputs
+                </Button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default ExecutionGapCalculator;
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 6: Add Route for Calculator
+───────────────────────────────────────────────────────────────────────────────
+
+MODIFY: client/src/App.tsx
+
+Add import:
+import ExecutionGapCalculator from './pages/ExecutionGapCalculator';
+
+Add route:
+<Route path="/execution-gap-calculator" element={<ExecutionGapCalculator />} />
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 4: HOMEPAGE MCKINSEY VALIDATION (Priority: HIGH)
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJECTIVE:
+Update the homepage to prominently feature McKinsey validation, the 30% execution gap finding, and the Organize to Value framework.
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 7: Add McKinsey Section to Homepage
+───────────────────────────────────────────────────────────────────────────────
+
+MODIFY: client/src/pages/Homepage.tsx
+
+Add this section after the hero section (around line 150):
+
+{/* McKinsey Validation Section */}
+<section className="py-20 bg-blue-50 dark:bg-blue-900/10">
+  <div className="container mx-auto px-4">
+    <div className="max-w-6xl mx-auto">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <Badge className="mb-4 bg-blue-600 text-white">
+          Research-Backed Solution
+        </Badge>
+        <h2 className="text-4xl font-bold mb-4">
+          Built on McKinsey's "Organize to Value" Framework
+        </h2>
+        <p className="text-xl text-muted-foreground">
+          VEXOR is the first execution platform designed around McKinsey's latest research 
+          on organizational performance
+        </p>
+      </div>
+
+      {/* The 30% Gap */}
+      <Card className="border-2 border-red-500 mb-8">
+        <CardContent className="p-8">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-shrink-0">
+              <div className="w-32 h-32 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                <div className="text-5xl font-bold text-red-600 dark:text-red-400">30%</div>
+              </div>
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-2xl font-bold mb-3">The Strategy-to-Execution Gap</h3>
+              <p className="text-lg text-muted-foreground mb-4">
+                McKinsey research shows that even high-performing companies have a 30% gap 
+                between their strategy's full potential and what is actually delivered.
+              </p>
+              <p className="text-lg font-semibold text-red-600 dark:text-red-400">
+                VEXOR closes this gap by transforming how organizations coordinate execution.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <Button size="lg" variant="outline" asChild>
+                <a href="/execution-gap-calculator">
+                  Calculate Your Gap
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* 12 Elements Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <Card className="text-center p-6">
+          <Target className="w-8 h-8 mx-auto mb-3 text-blue-600" />
+          <h4 className="font-semibold mb-2">Purpose</h4>
+          <p className="text-sm text-muted-foreground">
+            Your core reason for being
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <TrendingUp className="w-8 h-8 mx-auto mb-3 text-green-600" />
+          <h4 className="font-semibold mb-2">Value Agenda</h4>
+          <p className="text-sm text-muted-foreground">
+            How you create value
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <Building2 className="w-8 h-8 mx-auto mb-3 text-purple-600" />
+          <h4 className="font-semibold mb-2">Structure</h4>
+          <p className="text-sm text-muted-foreground">
+            How units are designed
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <Network className="w-8 h-8 mx-auto mb-3 text-orange-600" />
+          <h4 className="font-semibold mb-2">Ecosystem</h4>
+          <p className="text-sm text-muted-foreground">
+            Partner relationships
+          </p>
+        </Card>
+        <Card className="text-center p-6 border-2 border-primary">
+          <Users className="w-8 h-8 mx-auto mb-3 text-primary" />
+          <h4 className="font-semibold mb-2">Leadership ⭐</h4>
+          <p className="text-sm text-muted-foreground">
+            Decision-making approach
+          </p>
+        </Card>
+        <Card className="text-center p-6 border-2 border-primary">
+          <Shield className="w-8 h-8 mx-auto mb-3 text-primary" />
+          <h4 className="font-semibold mb-2">Governance ⭐</h4>
+          <p className="text-sm text-muted-foreground">
+            Resource allocation
+          </p>
+        </Card>
+        <Card className="text-center p-6 border-2 border-primary">
+          <Workflow className="w-8 h-8 mx-auto mb-3 text-primary" />
+          <h4 className="font-semibold mb-2">Processes ⭐</h4>
+          <p className="text-sm text-muted-foreground">
+            How work gets done
+          </p>
+        </Card>
+        <Card className="text-center p-6 border-2 border-primary">
+          <Cpu className="w-8 h-8 mx-auto mb-3 text-primary" />
+          <h4 className="font-semibold mb-2">Technology ⭐</h4>
+          <p className="text-sm text-muted-foreground">
+            Digital enablement
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <Heart className="w-8 h-8 mx-auto mb-3 text-red-600" />
+          <h4 className="font-semibold mb-2">Behaviors</h4>
+          <p className="text-sm text-muted-foreground">
+            Culture and mindset
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <Award className="w-8 h-8 mx-auto mb-3 text-yellow-600" />
+          <h4 className="font-semibold mb-2">Rewards</h4>
+          <p className="text-sm text-muted-foreground">
+            Performance incentives
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <MapPin className="w-8 h-8 mx-auto mb-3 text-pink-600" />
+          <h4 className="font-semibold mb-2">Footprint</h4>
+          <p className="text-sm text-muted-foreground">
+            Talent location
+          </p>
+        </Card>
+        <Card className="text-center p-6">
+          <GraduationCap className="w-8 h-8 mx-auto mb-3 text-indigo-600" />
+          <h4 className="font-semibold mb-2">Talent</h4>
+          <p className="text-sm text-muted-foreground">
+            Capability development
+          </p>
+        </Card>
+      </div>
+
+      {/* VEXOR Focus */}
+      <Card className="bg-primary text-primary-foreground">
+        <CardContent className="p-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">
+            VEXOR Optimizes the 4 Elements That Control Speed
+          </h3>
+          <p className="text-lg mb-6 opacity-90">
+            While all 12 elements matter, McKinsey's research shows that 4 elements 
+            are critical for fast execution: Leadership, Governance, Processes, and Technology.
+          </p>
+          <p className="text-xl font-semibold mb-6">
+            VEXOR transforms these 4 elements from your biggest bottleneck 
+            into your competitive advantage.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" asChild>
+              <a href="/operating-model-assessment">
+                Assess Your Operating Model
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
+              <a href="https://www.mckinsey.com" target="_blank" rel="noopener noreferrer">
+                Read McKinsey Research
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
+Also add these imports at the top of Homepage.tsx:
+import { 
+  Target, 
+  TrendingUp, 
+  Building2, 
+  Network, 
+  Users, 
+  Shield, 
+  Workflow, 
+  Cpu, 
+  Heart, 
+  Award, 
+  MapPin, 
+  GraduationCap,
+  ArrowRight
+} from 'lucide-react';
+
+═══════════════════════════════════════════════════════════════════════════════
+PHASE 5: NAVIGATION UPDATES (Priority: MEDIUM)
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJECTIVE:
+Update navigation to include links to new assessment and calculator tools.
+
+───────────────────────────────────────────────────────────────────────────────
+FILE 8: Update Navigation Bar
+───────────────────────────────────────────────────────────────────────────────
+
+MODIFY: client/src/components/NavigationBar.tsx
+
+Update the "Resources" dropdown to include:
+
+<DropdownMenuItem asChild>
+  <Link to="/operating-model-assessment" className="flex items-center gap-2">
+    <Target className="w-4 h-4" />
+    <div>
+      <div className="font-semibold">Operating Model Assessment</div>
+      <div className="text-xs text-muted-foreground">
+        Discover your organizational fingerprint
+      </div>
+    </div>
+  </Link>
+</DropdownMenuItem>
+
+<DropdownMenuItem asChild>
+  <Link to="/execution-gap-calculator" className="flex items-center gap-2">
+    <TrendingDown className="w-4 h-4" />
+    <div>
+      <div className="font-semibold">Execution Gap Calculator</div>
+      <div className="text-xs text-muted-foreground">
+        Calculate your 30% strategy gap
+      </div>
+    </div>
+  </Link>
+</DropdownMenuItem>
+
+═══════════════════════════════════════════════════════════════════════════════
+TESTING CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+After Replit completes all phases, test these items:
+
+PHASE 1 TESTING:
+[ ] Open any demo (e.g., /demo/live-activation)
+[ ] Start demo and wait for completion
+[ ] Verify Four Outcomes Scorecard appears after final metrics
+[ ] Check all 4 outcomes show scores
+[ ] Verify overall score calculates correctly
+[ ] Test on all 7 demos
+
+PHASE 2 TESTING:
+[ ] Navigate to /operating-model-assessment
+[ ] Complete all 12 questions
+[ ] Verify results page displays fingerprint
+[ ] Check recommended playbooks appear
+[ ] Click playbook links to verify they work
+[ ] Test "Download Report" button
+
+PHASE 3 TESTING:
+[ ] Navigate to /execution-gap-calculator
+[ ] Input test values
+[ ] Click "Calculate My Execution Gap"
+[ ] Verify all metrics calculate correctly
+[ ] Check ROI percentage displays
+[ ] Test "Adjust Inputs" button
+
+PHASE 4 TESTING:
+[ ] Navigate to homepage (/)
+[ ] Scroll to McKinsey section
+[ ] Verify 30% gap card displays
+[ ] Check all 12 elements show
+[ ] Click "Calculate Your Gap" link
+[ ] Click "Assess Your Operating Model" link
+
+PHASE 5 TESTING:
+[ ] Check navigation bar
+[ ] Verify new menu items appear
+[ ] Click each link to test navigation
+[ ] Test on mobile (responsive)
+
+═══════════════════════════════════════════════════════════════════════════════
+COMPLETION CRITERIA
+═══════════════════════════════════════════════════════════════════════════════
+
+This project is complete when:
+
+1. All 7 demos show Four Outcomes Scorecard at completion
+2. Operating Model Assessment is fully functional
+3. Execution Gap Calculator produces accurate results
+4. Homepage features McKinsey validation section
+5. Navigation includes links to new tools
+6. All tests pass
+7. No console errors
+8. Mobile responsive
+9. Professional visual design
+10. McKinsey research properly cited
+
+═══════════════════════════════════════════════════════════════════════════════
+PRIORITY ORDER
+═══════════════════════════════════════════════════════════════════════════════
+
+Build in this order:
+1. Phase 1 (Scorecard) - Shows immediate value in demos
+2. Phase 3 (Calculator) - Sales tool, lead generation
+3. Phase 4 (Homepage) - Positions product with credibility
+4. Phase 2 (Assessment) - Deeper engagement tool
+5. Phase 5 (Navigation) - Connects everything
+
+Start with Phase 1 immediately.

@@ -1,0 +1,99 @@
+Build the activation orchestration engine that connects existing components:
+
+CONTEXT:
+- We have playbookLibrary with 148 playbooks
+- We have scenarioExecutionPlans with execution phases and tasks
+- We have executionInstances and executionInstanceTasks tables
+- We have notifications table
+- Frontend has PlaybookActivationConsole that shows timer
+
+WHAT I NEED:
+Create /api/activations/orchestrate endpoint:
+
+POST /api/activations/orchestrate
+Body: {
+  playbookId: string,
+  triggerId: string,
+  executedBy: string (userId),
+  context: object (scenario-specific data)
+}
+
+ORCHESTRATION FLOW:
+
+1. CREATE EXECUTION INSTANCE:
+   - Insert into executionInstances table:
+     * scenarioId (from playbook)
+     * status: 'active'
+     * startedAt: now()
+     * executedBy
+     * coordinationStartTime: now()
+
+2. GENERATE EXECUTION TASKS:
+   - Get execution plan from scenarioExecutionPlans
+   - For each phase in execution plan:
+     * For each task in phase:
+       - Insert into executionInstanceTasks:
+         * executionInstanceId
+         * taskTitle (from task sequence)
+         * assignedTo (stakeholder from scenarioStakeholders)
+         * dueDate (calculated from phase timeline)
+         * status: 'pending'
+         * dependencies (from executionTaskDependencies)
+
+3. PREPARE NOTIFICATIONS:
+   - Get all stakeholders from scenarioStakeholders
+   - For each stakeholder:
+     * Insert into notifications table:
+       - recipientId (stakeholder userId)
+       - type: 'playbook_activated'
+       - title: "PLAYBOOK ACTIVATED: {playbook.name}"
+       - message: "{stakeholder.role} - {taskCount} tasks assigned"
+       - metadata: { executionInstanceId, tasks: [...] }
+       - status: 'pending'
+       - createdAt: now()
+
+4. QUEUE NOTIFICATION DELIVERY:
+   - For now, just mark notifications as 'sent' (we'll implement real delivery next)
+   - Return notification IDs for tracking
+
+5. START COORDINATION TIMER:
+   - Record coordinationStartTime
+   - Frontend will poll /api/activations/:id/status for updates
+
+6. RETURN RESPONSE:
+   {
+     executionInstanceId: string,
+     coordinationStartTime: timestamp,
+     stakeholdersCount: number,
+     tasksCount: number,
+     status: 'orchestrating'
+   }
+
+ALSO CREATE: GET /api/activations/:executionInstanceId/status
+
+Returns real-time status:
+{
+  executionInstance: {...},
+  tasks: [...executionInstanceTasks with stakeholder details],
+  notifications: [...notification status],
+  coordination: {
+    startTime: timestamp,
+    elapsedMinutes: number,
+    tasksDistributed: number,
+    notificationsSent: number,
+    acknowledged: number (count notifications with acknowledgedAt),
+    coordinationComplete: boolean (80% acknowledged)
+  }
+}
+
+When 80% of stakeholders acknowledge:
+- Set executionInstance.coordinationCompleteTime = now()
+- Calculate coordinationDurationMinutes
+- Set status = 'coordinated'
+
+This connects:
+- Frontend PlaybookActivationConsole → Backend orchestration
+- Existing database tables → Real execution tracking
+- Simulated timer → Real coordination metrics
+
+Use existing tables. Don't recreate schema. Just implement the orchestration logic.

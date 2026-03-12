@@ -1,0 +1,42 @@
+The site is rendering as a React SPA so I can only see the title tag — the content is client-side rendered. Let me look at what Astra OS does well visually and cross-reference against what I know about your current homepage to give you concrete recommendations.Fetched: Astra OS | Healthcare Supply Chain Resiliency PlatformFetched: Astra OS | Healthcare Supply Chain Resiliency PlatformGood — I have enough to work with. Based on your documented homepage (from the system notes) and what Astra OS does well, here are the most actionable improvements:
+
+What Astra OS Does That You Should Borrow
+1. Named, Modular Feature Cards with Icons
+Astra OS presents each capability as a discrete named module — Disruption Monitor, Substitute Manager, Oculus AI — each with its own icon and one-line description. This is highly scannable for executives who won't read paragraphs.
+Your IDEA Framework phases and playbook domains deserve the same treatment. Right now your homepage explains the system narratively. Executives need to be able to glance and immediately understand the product surface area.
+2. The Numbered Section Anchors ([01], [02], [03])
+Simple but effective — it signals "this is a structured system, not a marketing page." Conveys product thinking. Very aligned with your execution-infrastructure positioning.
+3. Integration Logo Strip
+Astra shows EHR, ERP, GPO etc. as a scrolling badge strip near the hero. You have planned integrations (Jira, Salesforce, Slack, Teams, ServiceNow) — even listing them as "coming" in a similar strip immediately signals enterprise credibility to buyers evaluating fit.
+
+Your Specific Homepage Gaps
+Based on your documented current state:
+Gap 1: No social proof above the fold
+Your hero opens strong with the 72-hour/12-minute contrast. But there's nothing anchoring it as real — no customer quote, no "trusted by" line, no metric. Even one line like "Active at Fortune 500 organizations across financial services and gaming" (without naming CDI specifically) would dramatically increase credibility.
+Gap 2: The IDEA Framework needs a visual, not just text
+IDENTIFY → DETECT → EXECUTE → ADVANCE is your proprietary IP and your core differentiator. It needs a visual flow diagram on the homepage — not just a text explanation. Astra uses module illustrations throughout. Your framework deserves the same treatment. A simple four-step horizontal flow with your teal/gold color system would do it.
+Gap 3: No "How Fast" proof section
+Astra's "Go live in 4 weeks" is a conversion anchor — it removes the objection "this will take forever to implement." You have an equivalent answer: 12-minute activation, 15-minute signal cycles, pre-staged plans. That deserves a dedicated visual section showing the timeline from trigger to execution, not just a headline.
+Gap 4: The playbook library isn't surfaced on the homepage
+170 playbooks across 9 domains is a massive proof-of-completeness signal. It shows buyers you've already done the work of mapping their world. Astra surfaces its module count prominently. A simple stat bar — "170 Execution Playbooks. 9 Strategic Domains. Pre-staged and ready." — with a link to the free samples would convert curious visitors into demo requests.
+Gap 5: No clear "who this is for" statement
+Astra immediately signals "hospitals and suppliers." Your current positioning is broad C-suite. A single line like "Built for COOs, CSOs, and PMO leaders at Fortune 1000 companies" would help the right buyer self-identify immediately.
+
+Priority Order
+If you're going to make changes, I'd tackle them in this sequence since some are content-only and others require component work:
+Quick wins (content changes only):
+
+Add the integration logo strip to the hero section
+Add a one-line social proof anchor near the hero CTA
+Add a "who this is for" role callout
+Surface the 170 playbook stat as a visual metric
+
+Medium effort (new components):
+
+IDEA Framework visual flow diagram replacing or supplementing the text explanation
+Numbered section anchors ([01], [02], [03]) restructuring the page flow
+Named module cards for key capabilities
+
+Bigger lift:
+
+A "Signal to Execution" animated timeline showing the 12-minute flow visually

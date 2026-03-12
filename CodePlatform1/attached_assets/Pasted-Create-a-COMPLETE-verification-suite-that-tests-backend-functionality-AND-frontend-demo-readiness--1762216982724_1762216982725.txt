@@ -1,0 +1,881 @@
+Create a COMPLETE verification suite that tests backend functionality AND frontend demo readiness.
+
+═══════════════════════════════════════════════════════════════════════════════
+FILE 1: /scripts/complete-system-verification.ts
+═══════════════════════════════════════════════════════════════════════════════
+
+import { db } from '../db/client';
+import { eq, and, isNotNull } from 'drizzle-orm';
+import { 
+  executionInstances, 
+  notifications, 
+  executionInstanceTasks,
+  playbookLibrary,
+  scenarioStakeholders
+} from '../db/schema';
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { resolve, join } from 'path';
+
+interface TestResult {
+  category: string;
+  test: string;
+  status: 'PASS' | 'FAIL' | 'WARN' | 'INFO';
+  message: string;
+  details?: any;
+}
+
+const results: TestResult[] = [];
+
+function pass(category: string, test: string, message: string, details?: any) {
+  results.push({ category, test, status: 'PASS', message, details });
+  console.log(`✅ ${test}: ${message}`);
+}
+
+function fail(category: string, test: string, message: string, details?: any) {
+  results.push({ category, test, status: 'FAIL', message, details });
+  console.log(`❌ ${test}: ${message}`);
+}
+
+function warn(category: string, test: string, message: string, details?: any) {
+  results.push({ category, test, status: 'WARN', message, details });
+  console.log(`⚠️  ${test}: ${message}`);
+}
+
+function info(category: string, test: string, message: string, details?: any) {
+  results.push({ category, test, status: 'INFO', message, details });
+  console.log(`ℹ️  ${test}: ${message}`);
+}
+
+async function runCompleteVerification() {
+  console.log('╔═══════════════════════════════════════════════════════════════╗');
+  console.log('║     VEXOR COMPLETE SYSTEM VERIFICATION (Backend + Demo)      ║');
+  console.log('╚═══════════════════════════════════════════════════════════════╝\n');
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 1: BACKEND CODE STRUCTURE
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n📁 PART 1: BACKEND CODE STRUCTURE\n');
+  console.log('─'.repeat(70));
+  
+  // Check orchestration endpoint
+  const orchestrateFiles = [
+    'api/activations/orchestrate.ts',
+    'api/activations/orchestrate.js',
+    'api/routes/activations.ts',
+    'server/routes/activations.ts',
+    'src/server/routes/activations.ts'
+  ];
+  
+  let orchestrateFound = false;
+  let orchestratePath = '';
+  
+  for (const file of orchestrateFiles) {
+    const fullPath = resolve(process.cwd(), file);
+    if (existsSync(fullPath)) {
+      orchestrateFound = true;
+      orchestratePath = file;
+      pass('Backend', 'Orchestration Endpoint', `Found at ${file}`);
+      
+      const content = readFileSync(fullPath, 'utf-8');
+      
+      // Check for completeness
+      const todoCount = (content.match(/TODO:|FIXME:|IMPLEMENT THIS/gi) || []).length;
+      if (todoCount > 0) {
+        warn('Backend', 'Code Completeness', `${todoCount} TODO/FIXME comments found`);
+      } else {
+        pass('Backend', 'Code Completeness', 'No TODO comments');
+      }
+      
+      // Check for key operations
+      const hasDbInsert = content.includes('db.insert') || content.includes('INSERT INTO');
+      const hasNotifications = content.includes('notifications');
+      const hasTasks = content.includes('executionInstanceTasks') || content.includes('tasks');
+      
+      if (hasDbInsert) pass('Backend', 'DB Operations', 'Database inserts present');
+      else fail('Backend', 'DB Operations', 'No database insert operations found');
+      
+      if (hasNotifications) pass('Backend', 'Notifications', 'Notification logic present');
+      else fail('Backend', 'Notifications', 'No notification logic found');
+      
+      if (hasTasks) pass('Backend', 'Task Generation', 'Task generation logic present');
+      else warn('Backend', 'Task Generation', 'Task logic may be missing');
+      
+      break;
+    }
+  }
+  
+  if (!orchestrateFound) {
+    fail('Backend', 'Orchestration Endpoint', 'File not found in expected locations');
+  }
+  
+  // Check NotificationService
+  const notificationServiceFiles = [
+    'services/NotificationService.ts',
+    'services/NotificationService.js',
+    'lib/NotificationService.ts',
+    'server/services/NotificationService.ts',
+    'src/services/NotificationService.ts'
+  ];
+  
+  let notificationServiceFound = false;
+  
+  for (const file of notificationServiceFiles) {
+    const fullPath = resolve(process.cwd(), file);
+    if (existsSync(fullPath)) {
+      notificationServiceFound = true;
+      pass('Backend', 'NotificationService', `Found at ${file}`);
+      
+      const content = readFileSync(fullPath, 'utf-8');
+      
+      const hasEmailCapability = content.includes('nodemailer') || 
+                                  content.includes('@sendgrid/mail') || 
+                                  content.includes('transporter') ||
+                                  content.includes('console.log'); // Demo mode fallback
+      
+      if (hasEmailCapability) {
+        pass('Backend', 'Email Capability', 'Email or console fallback present');
+      } else {
+        warn('Backend', 'Email Capability', 'No email delivery mechanism found');
+      }
+      
+      break;
+    }
+  }
+  
+  if (!notificationServiceFound) {
+    fail('Backend', 'NotificationService', 'File not found');
+  }
+  
+  // Check WebSocketService
+  const wsServiceFiles = [
+    'services/WebSocketService.ts',
+    'services/WebSocketService.js',
+    'lib/WebSocketService.ts',
+    'server/services/WebSocketService.ts',
+    'src/services/WebSocketService.ts'
+  ];
+  
+  let wsServiceFound = false;
+  
+  for (const file of wsServiceFiles) {
+    const fullPath = resolve(process.cwd(), file);
+    if (existsSync(fullPath)) {
+      wsServiceFound = true;
+      pass('Backend', 'WebSocketService', `Found at ${file}`);
+      
+      const content = readFileSync(fullPath, 'utf-8');
+      
+      if (content.includes('socket.io')) {
+        pass('Backend', 'Socket.IO', 'Integrated');
+      } else {
+        fail('Backend', 'Socket.IO', 'Not found in WebSocketService');
+      }
+      
+      if (content.includes('broadcast') || content.includes('emit')) {
+        pass('Backend', 'Broadcasting', 'Broadcast methods present');
+      } else {
+        warn('Backend', 'Broadcasting', 'Broadcast methods may be missing');
+      }
+      
+      break;
+    }
+  }
+  
+  if (!wsServiceFound) {
+    fail('Backend', 'WebSocketService', 'File not found');
+  }
+  
+  // Check dependencies
+  const packageJsonPath = resolve(process.cwd(), 'package.json');
+  if (existsSync(packageJsonPath)) {
+    const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
+    const deps = { ...packageJson.dependencies, ...packageJson.devDependencies };
+    
+    const requiredPackages = {
+      'socket.io': 'WebSocket server',
+      'socket.io-client': 'WebSocket client',
+      'drizzle-orm': 'Database ORM'
+    };
+    
+    for (const [pkg, purpose] of Object.entries(requiredPackages)) {
+      if (deps[pkg]) {
+        pass('Backend', 'Dependencies', `${pkg} installed`);
+      } else {
+        fail('Backend', 'Dependencies', `${pkg} missing - ${purpose}`);
+      }
+    }
+    
+    // Email package (either nodemailer or sendgrid is fine)
+    if (deps['nodemailer'] || deps['@sendgrid/mail']) {
+      pass('Backend', 'Dependencies', 'Email package installed');
+    } else {
+      warn('Backend', 'Dependencies', 'No email package (will use console fallback)');
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 2: DATABASE VERIFICATION
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n💾 PART 2: DATABASE VERIFICATION\n');
+  console.log('─'.repeat(70));
+  
+  try {
+    // Check critical tables
+    const tableChecks = [
+      { name: 'executionInstances', query: db.query.executionInstances },
+      { name: 'notifications', query: db.query.notifications },
+      { name: 'executionInstanceTasks', query: db.query.executionInstanceTasks },
+      { name: 'playbookLibrary', query: db.query.playbookLibrary },
+      { name: 'scenarioStakeholders', query: db.query.scenarioStakeholders }
+    ];
+    
+    for (const table of tableChecks) {
+      try {
+        const count = await table.query.count();
+        pass('Database', `${table.name}`, `Accessible (${count} records)`);
+      } catch (error) {
+        fail('Database', `${table.name}`, `Not accessible: ${error.message}`);
+      }
+    }
+    
+    // Check playbook seeding
+    const playbookCount = await db.query.playbookLibrary.count();
+    if (playbookCount >= 148) {
+      pass('Database', 'Playbook Library', `${playbookCount} playbooks seeded`);
+    } else if (playbookCount >= 50) {
+      warn('Database', 'Playbook Library', `${playbookCount} playbooks (expected 148)`);
+    } else if (playbookCount > 0) {
+      warn('Database', 'Playbook Library', `Only ${playbookCount} playbooks - needs seeding`);
+    } else {
+      fail('Database', 'Playbook Library', 'No playbooks - database not seeded');
+    }
+    
+  } catch (error) {
+    fail('Database', 'Connection', `Failed: ${error.message}`);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 3: API ENDPOINT TESTING
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🌐 PART 3: API ENDPOINT TESTING\n');
+  console.log('─'.repeat(70));
+  
+  let executionInstanceId: string | null = null;
+  
+  // Test orchestration endpoint
+  try {
+    const response = await fetch('http://localhost:3000/api/activations/orchestrate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        playbookId: 'verification-test-' + Date.now(),
+        triggerId: 'test-trigger',
+        executedBy: '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59',
+        context: { verification: true, timestamp: new Date().toISOString() }
+      })
+    });
+    
+    if (response.status === 404) {
+      fail('API', 'Orchestration Endpoint', 'Not found (404) - route not registered');
+    } else if (response.status === 501) {
+      fail('API', 'Orchestration Endpoint', 'Not implemented (501)');
+    } else if (response.status === 500) {
+      const error = await response.text();
+      fail('API', 'Orchestration Endpoint', `Server error: ${error.substring(0, 100)}`);
+    } else if (response.ok) {
+      pass('API', 'Orchestration Endpoint', 'Working (200 OK)');
+      
+      const data = await response.json();
+      
+      if (data.executionInstanceId) {
+        pass('API', 'Response Data', 'Contains executionInstanceId');
+        executionInstanceId = data.executionInstanceId;
+      } else {
+        fail('API', 'Response Data', 'Missing executionInstanceId');
+      }
+      
+      if (data.coordinationStartTime) {
+        pass('API', 'Response Data', 'Contains coordinationStartTime');
+      } else {
+        warn('API', 'Response Data', 'Missing coordinationStartTime');
+      }
+      
+    } else {
+      fail('API', 'Orchestration Endpoint', `Unexpected status: ${response.status}`);
+    }
+  } catch (error) {
+    fail('API', 'Orchestration Endpoint', `Request failed: ${error.message}`);
+  }
+  
+  // Test status endpoint
+  if (executionInstanceId) {
+    try {
+      const statusResponse = await fetch(`http://localhost:3000/api/activations/${executionInstanceId}/status`);
+      
+      if (statusResponse.ok) {
+        pass('API', 'Status Endpoint', 'Working');
+        
+        const statusData = await statusResponse.json();
+        
+        if (statusData.executionInstance) {
+          pass('API', 'Status Data', 'Contains execution instance');
+        } else {
+          warn('API', 'Status Data', 'Missing executionInstance');
+        }
+        
+        if (statusData.coordination) {
+          pass('API', 'Status Data', 'Contains coordination metrics');
+        } else {
+          warn('API', 'Status Data', 'Missing coordination metrics');
+        }
+        
+      } else {
+        fail('API', 'Status Endpoint', `Failed: ${statusResponse.status}`);
+      }
+    } catch (error) {
+      fail('API', 'Status Endpoint', `Request failed: ${error.message}`);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 4: DATABASE PERSISTENCE
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n💿 PART 4: DATABASE PERSISTENCE\n');
+  console.log('─'.repeat(70));
+  
+  if (executionInstanceId) {
+    try {
+      // Check execution instance
+      const execution = await db.query.executionInstances.findFirst({
+        where: eq(executionInstances.id, executionInstanceId)
+      });
+      
+      if (execution) {
+        pass('Persistence', 'Execution Instance', 'Created in database');
+        
+        const requiredFields = ['id', 'status', 'startedAt', 'coordinationStartTime'];
+        const missingFields = requiredFields.filter(field => !execution[field]);
+        
+        if (missingFields.length === 0) {
+          pass('Persistence', 'Required Fields', 'All fields populated');
+        } else {
+          fail('Persistence', 'Required Fields', `Missing: ${missingFields.join(', ')}`);
+        }
+        
+      } else {
+        fail('Persistence', 'Execution Instance', 'NOT saved to database');
+      }
+      
+      // Check notifications
+      const notifs = await db.query.notifications.findMany({
+        where: eq(notifications.metadata.executionInstanceId, executionInstanceId),
+        limit: 100
+      });
+      
+      if (notifs.length > 0) {
+        pass('Persistence', 'Notifications', `${notifs.length} created`);
+        
+        const sentCount = notifs.filter(n => n.status === 'sent' || n.sentAt).length;
+        if (sentCount > 0) {
+          pass('Persistence', 'Notification Delivery', `${sentCount} marked as sent`);
+        } else {
+          warn('Persistence', 'Notification Delivery', 'None marked as sent yet');
+        }
+        
+      } else {
+        fail('Persistence', 'Notifications', 'None created');
+      }
+      
+      // Check tasks
+      const tasks = await db.query.executionInstanceTasks.findMany({
+        where: eq(executionInstanceTasks.executionInstanceId, executionInstanceId),
+        limit: 100
+      });
+      
+      if (tasks.length > 0) {
+        pass('Persistence', 'Tasks', `${tasks.length} created`);
+      } else {
+        warn('Persistence', 'Tasks', 'None created (may not be implemented)');
+      }
+      
+      // Test acknowledgment
+      if (notifs.length > 0) {
+        try {
+          const ackResponse = await fetch(`http://localhost:3000/api/notifications/${notifs[0].id}/acknowledge`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+          });
+          
+          if (ackResponse.ok) {
+            pass('Persistence', 'Acknowledgment Endpoint', 'Working');
+            
+            await new Promise(resolve => setTimeout(resolve, 100));
+            
+            const updatedNotif = await db.query.notifications.findFirst({
+              where: eq(notifications.id, notifs[0].id)
+            });
+            
+            if (updatedNotif?.acknowledgedAt) {
+              pass('Persistence', 'Acknowledgment Tracking', 'Saved to database');
+            } else {
+              fail('Persistence', 'Acknowledgment Tracking', 'NOT saved to database');
+            }
+            
+          } else {
+            fail('Persistence', 'Acknowledgment Endpoint', `Failed: ${ackResponse.status}`);
+          }
+        } catch (error) {
+          fail('Persistence', 'Acknowledgment Endpoint', `Error: ${error.message}`);
+        }
+      }
+      
+    } catch (error) {
+      fail('Persistence', 'Database Queries', `Error: ${error.message}`);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 5: WEBSOCKET VERIFICATION
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🔌 PART 5: WEBSOCKET VERIFICATION\n');
+  console.log('─'.repeat(70));
+  
+  try {
+    const socketIOClient = await import('socket.io-client');
+    pass('WebSocket', 'Socket.IO Client', 'Package available');
+    
+    try {
+      const socket = socketIOClient.io('http://localhost:3000', {
+        transports: ['websocket'],
+        timeout: 5000
+      });
+      
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          socket.disconnect();
+          reject(new Error('Connection timeout'));
+        }, 5000);
+        
+        socket.on('connect', () => {
+          clearTimeout(timeout);
+          pass('WebSocket', 'Server Connection', 'Successfully connected');
+          
+          socket.emit('join-execution', 'test-verification');
+          pass('WebSocket', 'Room Join', 'Event sent successfully');
+          
+          socket.disconnect();
+          resolve(true);
+        });
+        
+        socket.on('connect_error', (error) => {
+          clearTimeout(timeout);
+          reject(error);
+        });
+      });
+      
+    } catch (error) {
+      if (error.message.includes('timeout')) {
+        warn('WebSocket', 'Server Connection', 'Timeout - server may not be initialized');
+      } else {
+        fail('WebSocket', 'Server Connection', `Failed: ${error.message}`);
+      }
+    }
+    
+  } catch (error) {
+    fail('WebSocket', 'Socket.IO Client', 'Package not available');
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 6: FRONTEND COMPONENTS (NEW - CRITICAL FOR DEMOS)
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🎨 PART 6: FRONTEND COMPONENTS & DEMO READINESS\n');
+  console.log('─'.repeat(70));
+  
+  // Check for React source directory
+  const frontendDirs = ['src', 'client', 'frontend', 'app'];
+  let srcDir = '';
+  
+  for (const dir of frontendDirs) {
+    if (existsSync(resolve(process.cwd(), dir))) {
+      srcDir = dir;
+      pass('Frontend', 'Source Directory', `Found at /${dir}`);
+      break;
+    }
+  }
+  
+  if (!srcDir) {
+    fail('Frontend', 'Source Directory', 'No src/client directory found');
+  }
+  
+  // Check for key pages needed for demo
+  const requiredPages = [
+    { name: 'Playbook Library', paths: ['pages/PlaybookLibrary', 'pages/playbook-library', 'routes/PlaybookLibrary'] },
+    { name: 'Dashboard', paths: ['pages/Dashboard', 'pages/dashboard', 'routes/Dashboard'] },
+    { name: 'Activation Console', paths: ['pages/ActivationConsole', 'pages/PlaybookActivation', 'components/ActivationConsole'] }
+  ];
+  
+  for (const page of requiredPages) {
+    let found = false;
+    for (const path of page.paths) {
+      const checkPaths = [
+        resolve(process.cwd(), srcDir, path + '.tsx'),
+        resolve(process.cwd(), srcDir, path + '.jsx'),
+        resolve(process.cwd(), srcDir, path + '.ts'),
+        resolve(process.cwd(), srcDir, path + '.js'),
+        resolve(process.cwd(), srcDir, path, 'index.tsx'),
+        resolve(process.cwd(), srcDir, path, 'index.jsx')
+      ];
+      
+      for (const checkPath of checkPaths) {
+        if (existsSync(checkPath)) {
+          pass('Frontend', page.name, `Found at ${checkPath.replace(process.cwd(), '')}`);
+          found = true;
+          break;
+        }
+      }
+      if (found) break;
+    }
+    
+    if (!found) {
+      warn('Frontend', page.name, 'Component not found in expected locations');
+    }
+  }
+  
+  // Check for key components
+  const keyComponents = [
+    { name: 'PlaybookCustomizationWizard', purpose: 'Customize playbooks' },
+    { name: 'TwelveMinuteTimer', purpose: 'Show coordination timer' },
+    { name: 'ROICalculator', purpose: 'Sales demos' },
+    { name: 'ExecutionDashboard', purpose: 'View activation results' }
+  ];
+  
+  for (const component of keyComponents) {
+    let found = false;
+    
+    if (srcDir) {
+      const searchDirs = [
+        resolve(process.cwd(), srcDir, 'components'),
+        resolve(process.cwd(), srcDir, 'pages'),
+        resolve(process.cwd(), srcDir)
+      ];
+      
+      for (const dir of searchDirs) {
+        if (existsSync(dir)) {
+          const files = readdirSync(dir, { recursive: true, withFileTypes: true });
+          
+          for (const file of files) {
+            if (file.isFile() && file.name.includes(component.name)) {
+              pass('Frontend', component.name, `Found - ${component.purpose}`);
+              found = true;
+              break;
+            }
+          }
+        }
+        if (found) break;
+      }
+    }
+    
+    if (!found) {
+      warn('Frontend', component.name, `Not found - needed for: ${component.purpose}`);
+    }
+  }
+  
+  // Check for industry demo pages
+  const industryDemos = ['luxury-demo', 'financial-demo', 'pharma-demo', 'lvmh-demo', 'shein-demo', 'spacex-demo'];
+  let demoCount = 0;
+  
+  if (srcDir) {
+    for (const demo of industryDemos) {
+      const demoPaths = [
+        resolve(process.cwd(), srcDir, 'pages', demo + '.tsx'),
+        resolve(process.cwd(), srcDir, 'pages', demo + '.jsx'),
+        resolve(process.cwd(), srcDir, 'routes', demo + '.tsx')
+      ];
+      
+      for (const path of demoPaths) {
+        if (existsSync(path)) {
+          demoCount++;
+          break;
+        }
+      }
+    }
+  }
+  
+  if (demoCount >= 6) {
+    pass('Frontend', 'Industry Demos', `${demoCount} demo pages found`);
+  } else if (demoCount > 0) {
+    warn('Frontend', 'Industry Demos', `Only ${demoCount} found (expected 9)`);
+  } else {
+    warn('Frontend', 'Industry Demos', 'No industry demo pages found');
+  }
+  
+  // Check for WebSocket hook
+  const wsHookPaths = [
+    'hooks/useExecutionWebSocket.ts',
+    'hooks/useExecutionWebSocket.tsx',
+    'hooks/useWebSocket.ts',
+    'lib/hooks/useExecutionWebSocket.ts'
+  ];
+  
+  let wsHookFound = false;
+  if (srcDir) {
+    for (const hookPath of wsHookPaths) {
+      if (existsSync(resolve(process.cwd(), srcDir, hookPath))) {
+        pass('Frontend', 'WebSocket Hook', `Found at ${hookPath}`);
+        wsHookFound = true;
+        break;
+      }
+    }
+  }
+  
+  if (!wsHookFound) {
+    warn('Frontend', 'WebSocket Hook', 'useExecutionWebSocket not found');
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 7: DEMO FLOW VERIFICATION
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n🎬 PART 7: DEMO FLOW VERIFICATION\n');
+  console.log('─'.repeat(70));
+  
+  // Check for routing
+  const routingFiles = [
+    'App.tsx',
+    'App.jsx',
+    'routes.tsx',
+    'routes.js',
+    'router.tsx',
+    'main.tsx'
+  ];
+  
+  let routingFound = false;
+  if (srcDir) {
+    for (const file of routingFiles) {
+      const path = resolve(process.cwd(), srcDir, file);
+      if (existsSync(path)) {
+        pass('Demo Flow', 'Routing', `Found at ${file}`);
+        routingFound = true;
+        
+        const content = readFileSync(path, 'utf-8');
+        
+        // Check for key routes
+        const hasPlaybookLibrary = content.includes('playbook-library') || content.includes('PlaybookLibrary');
+        const hasDashboard = content.includes('/dashboard') || content.includes('Dashboard');
+        const hasActivation = content.includes('activation') || content.includes('Activation');
+        
+        if (hasPlaybookLibrary) {
+          pass('Demo Flow', 'Playbook Library Route', 'Registered');
+        } else {
+          warn('Demo Flow', 'Playbook Library Route', 'May not be registered');
+        }
+        
+        if (hasDashboard) {
+          pass('Demo Flow', 'Dashboard Route', 'Registered');
+        } else {
+          warn('Demo Flow', 'Dashboard Route', 'May not be registered');
+        }
+        
+        if (hasActivation) {
+          pass('Demo Flow', 'Activation Route', 'Registered');
+        } else {
+          warn('Demo Flow', 'Activation Route', 'May not be registered');
+        }
+        
+        break;
+      }
+    }
+  }
+  
+  if (!routingFound) {
+    warn('Demo Flow', 'Routing', 'No routing file found');
+  }
+  
+  // Check for demo script or documentation
+  const demoDocPaths = [
+    'docs/DEMO_SCRIPT.md',
+    'docs/demo-script.md',
+    'DEMO.md',
+    'scripts/QUICK_TEST.md'
+  ];
+  
+  let demoDocFound = false;
+  for (const path of demoDocPaths) {
+    if (existsSync(resolve(process.cwd(), path))) {
+      pass('Demo Flow', 'Demo Documentation', `Found at ${path}`);
+      demoDocFound = true;
+      break;
+    }
+  }
+  
+  if (!demoDocFound) {
+    info('Demo Flow', 'Demo Documentation', 'No demo script found (optional)');
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PART 8: DEMO READINESS CHECKLIST
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n✅ PART 8: DEMO READINESS CHECKLIST\n');
+  console.log('─'.repeat(70));
+  
+  const demoReadiness = {
+    backend: results.filter(r => r.category === 'Backend' && r.status === 'PASS').length,
+    database: results.filter(r => r.category === 'Database' && r.status === 'PASS').length,
+    api: results.filter(r => r.category === 'API' && r.status === 'PASS').length,
+    persistence: results.filter(r => r.category === 'Persistence' && r.status === 'PASS').length,
+    websocket: results.filter(r => r.category === 'WebSocket' && r.status === 'PASS').length,
+    frontend: results.filter(r => r.category === 'Frontend' && r.status === 'PASS').length,
+    demoFlow: results.filter(r => r.category === 'Demo Flow' && r.status === 'PASS').length
+  };
+  
+  console.log('Component Readiness:');
+  console.log(`  Backend:      ${demoReadiness.backend} checks passed`);
+  console.log(`  Database:     ${demoReadiness.database} checks passed`);
+  console.log(`  API:          ${demoReadiness.api} checks passed`);
+  console.log(`  Persistence:  ${demoReadiness.persistence} checks passed`);
+  console.log(`  WebSocket:    ${demoReadiness.websocket} checks passed`);
+  console.log(`  Frontend:     ${demoReadiness.frontend} checks passed`);
+  console.log(`  Demo Flow:    ${demoReadiness.demoFlow} checks passed`);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SUMMARY
+  // ═══════════════════════════════════════════════════════════════════════════
+  
+  console.log('\n╔═══════════════════════════════════════════════════════════════╗');
+  console.log('║                        FINAL SUMMARY                          ║');
+  console.log('╚═══════════════════════════════════════════════════════════════╝\n');
+  
+  const passCount = results.filter(r => r.status === 'PASS').length;
+  const failCount = results.filter(r => r.status === 'FAIL').length;
+  const warnCount = results.filter(r => r.status === 'WARN').length;
+  const total = results.length;
+  
+  console.log(`✅ Passed:   ${passCount}/${total}`);
+  console.log(`❌ Failed:   ${failCount}/${total}`);
+  console.log(`⚠️  Warnings: ${warnCount}/${total}`);
+  console.log(`📊 Success Rate: ${((passCount / total) * 100).toFixed(1)}%\n`);
+  
+  // Calculate readiness score
+  const backendReady = demoReadiness.backend >= 5 && demoReadiness.api >= 3;
+  const databaseReady = demoReadiness.database >= 3;
+  const frontendReady = demoReadiness.frontend >= 3;
+  
+  console.log('🎯 DEMO READINESS ASSESSMENT:\n');
+  
+  if (backendReady && databaseReady && frontendReady && failCount === 0) {
+    console.log('🎉 FULLY DEMO READY!\n');
+    console.log('✓ Backend orchestration working');
+    console.log('✓ Database persisting data');
+    console.log('✓ Frontend components present');
+    console.log('✓ Zero critical failures\n');
+    console.log('NEXT STEPS:');
+    console.log('1. Run manual demo test (browse → customize → activate)');
+    console.log('2. Practice 15-minute demo script');
+    console.log('3. Schedule first customer demo\n');
+  } else if (backendReady && databaseReady && failCount <= 2) {
+    console.log('✅ BACKEND READY, FRONTEND NEEDS ATTENTION\n');
+    console.log('✓ Backend orchestration working');
+    console.log('✓ Database persisting data');
+    console.log('⚠️ Some frontend components may need work\n');
+    console.log('NEXT STEPS:');
+    console.log('1. Review frontend warnings above');
+    console.log('2. Test activation flow manually');
+    console.log('3. Polish UI components as needed\n');
+  } else if (failCount <= 5) {
+    console.log('⚠️ PARTIALLY READY - NEEDS FIXES\n');
+    console.log(`${failCount} critical issues to address`);
+    console.log('Review failures below\n');
+    console.log('NEXT STEPS:');
+    console.log('1. Fix critical failures');
+    console.log('2. Re-run verification');
+    console.log('3. Proceed to demos once tests pass\n');
+  } else {
+    console.log('❌ NOT READY - SIGNIFICANT WORK NEEDED\n');
+    console.log(`${failCount} major issues found`);
+    console.log('Implementation may be incomplete\n');
+    console.log('NEXT STEPS:');
+    console.log('1. Review all failures below');
+    console.log('2. Share verification report');
+    console.log('3. Rebuild missing components\n');
+  }
+  
+  // Show failures
+  const failures = results.filter(r => r.status === 'FAIL');
+  if (failures.length > 0) {
+    console.log('🔴 CRITICAL FAILURES:\n');
+    for (const failure of failures) {
+      console.log(`   [${failure.category}] ${failure.test}`);
+      console.log(`   → ${failure.message}\n`);
+    }
+  }
+  
+  // Show warnings
+  const warnings = results.filter(r => r.status === 'WARN');
+  if (warnings.length > 0 && warnings.length <= 15) {
+    console.log('⚠️  WARNINGS (Non-Critical):\n');
+    for (const warning of warnings) {
+      console.log(`   [${warning.category}] ${warning.test}`);
+      console.log(`   → ${warning.message}\n`);
+    }
+  }
+  
+  // Export report
+  const reportPath = resolve(process.cwd(), 'complete-verification-report.json');
+  const fs = await import('fs');
+  fs.writeFileSync(reportPath, JSON.stringify({
+    timestamp: new Date().toISOString(),
+    summary: { total, passed: passCount, failed: failCount, warnings: warnCount },
+    demoReadiness,
+    results,
+    assessment: {
+      backendReady,
+      databaseReady,
+      frontendReady,
+      overallReady: backendReady && databaseReady && frontendReady && failCount === 0
+    }
+  }, null, 2));
+  
+  console.log(`📄 Complete report saved to: complete-verification-report.json\n`);
+}
+
+runCompleteVerification().catch(error => {
+  console.error('\n❌ VERIFICATION FAILED:\n');
+  console.error(error);
+  process.exit(1);
+});
+
+═══════════════════════════════════════════════════════════════════════════════
+FILE 2: Update package.json
+═══════════════════════════════════════════════════════════════════════════════
+
+Add to "scripts" section:
+
+{
+  "scripts": {
+    "verify:complete": "tsx scripts/complete-system-verification.ts",
+    "verify": "tsx scripts/complete-system-verification.ts"
+  }
+}
+
+═══════════════════════════════════════════════════════════════════════════════
+DONE - Run the verification
+═══════════════════════════════════════════════════════════════════════════════
+
+After creating the file, run:
+
+npm run verify
+
+This will test:
+✅ All backend functionality (APIs, database, WebSocket)
+✅ All frontend components (pages, components, hooks)
+✅ Demo flow readiness (routing, pages, UI)
+✅ Complete system integration
+
+Show me the full output.

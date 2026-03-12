@@ -1,0 +1,896 @@
+# Bastion: The 110 Situation Playbook Library
+
+## Complete Taxonomy of Executive Crisis Scenarios
+
+-----
+
+## DOMAIN 1: COMPETITIVE THREATS (18 Playbooks)
+
+### Market Position Threats
+
+**#001 - New Market Entrant (Funded Startup)**
+
+- Trigger: VC-backed competitor enters your core market segment
+- Key Stakeholders: CEO, CMO, CPO, Strategy
+- Primary Response: Competitive positioning, pricing strategy, product acceleration
+
+**#002 - New Market Entrant (Established Player)**
+
+- Trigger: Fortune 500 company announces entry into your market
+- Key Stakeholders: CEO, Board, CFO, Strategy
+- Primary Response: Partnership exploration, differentiation strategy, market defense
+
+**#003 - Competitor Product Launch (Feature Parity)**
+
+- Trigger: Competitor releases product matching your core capabilities
+- Key Stakeholders: CPO, CTO, CMO, Sales
+- Primary Response: Feature acceleration, messaging pivot, customer retention
+
+**#004 - Competitor Product Launch (Breakthrough Innovation)**
+
+- Trigger: Competitor announces technology that leapfrogs your offerings
+- Key Stakeholders: CEO, CTO, CPO, Board
+- Primary Response: Technology assessment, R&D pivot, market repositioning
+
+**#005 - Aggressive Pricing Disruption**
+
+- Trigger: Competitor cuts prices 30%+ or introduces disruptive pricing model
+- Key Stakeholders: CFO, CMO, Sales, Pricing
+- Primary Response: Value proposition reinforcement, pricing analysis, margin defense
+
+**#006 - Patent Infringement Claim (Incoming)**
+
+- Trigger: Competitor alleges your product infringes their patents
+- Key Stakeholders: CEO, CLO, CTO, Board
+- Primary Response: Legal defense, product review, prior art search
+
+**#007 - Patent Infringement Claim (Outgoing)**
+
+- Trigger: Discovery that competitor may be infringing your patents
+- Key Stakeholders: CLO, CEO, CPO, Board
+- Primary Response: Legal assessment, enforcement strategy, licensing negotiation
+
+**#008 - Key Talent Poaching Campaign**
+
+- Trigger: Competitor systematically recruiting your top talent (5+ departures)
+- Key Stakeholders: CHRO, CEO, Business Unit Leads
+- Primary Response: Retention offers, culture reinforcement, talent pipeline acceleration
+
+**#009 - Competitor M&A (Consolidation)**
+
+- Trigger: Two competitors merge, creating larger rival
+- Key Stakeholders: CEO, CFO, Strategy, Board
+- Primary Response: Competitive reassessment, partnership exploration, market positioning
+
+**#010 - Competitor Acquires Strategic Asset**
+
+- Trigger: Competitor buys key supplier, distributor, or technology company
+- Key Stakeholders: CEO, COO, Strategy
+- Primary Response: Supply chain security, alternative partnerships, M&A response
+
+### Go-to-Market Threats
+
+**#011 - Channel Conflict (Direct vs. Partner)**
+
+- Trigger: Channel partners threaten to drop your product
+- Key Stakeholders: COO, Sales, Channel Management
+- Primary Response: Partner negotiation, channel strategy revision, conflict resolution
+
+**#012 - Customer Consolidation to Competitor**
+
+- Trigger: Major customer announces switch to competitor (>$5M ARR)
+- Key Stakeholders: CEO, Sales, Customer Success
+- Primary Response: Save campaign, relationship repair, product gap analysis
+
+**#013 - Sales Team Defection**
+
+- Trigger: Competitor hires your top sales reps (3+ in quarter)
+- Key Stakeholders: CRO, CHRO, CEO
+- Primary Response: Client relationship protection, pipeline recovery, compensation review
+
+**#014 - Geographic Market Entry by Competitor**
+
+- Trigger: Competitor enters your stronghold geography
+- Key Stakeholders: CEO, GM (Region), Sales
+- Primary Response: Regional defense, local partnerships, market protection
+
+**#015 - Negative Comparison Campaign**
+
+- Trigger: Competitor launches marketing attacking your product
+- Key Stakeholders: CMO, CLO, CEO
+- Primary Response: Counter-messaging, factual correction, legal assessment
+
+**#016 - Customer Advisory Board Defection**
+
+- Trigger: Strategic advisory board members join competitor board
+- Key Stakeholders: CEO, Strategy, Customer Success
+- Primary Response: Relationship repair, board reconstitution, loyalty reinforcement
+
+**#017 - Competitor Launches Free/Freemium Tier**
+
+- Trigger: Competitor introduces free version of paid product
+- Key Stakeholders: CPO, CMO, CFO, Pricing
+- Primary Response: Business model assessment, value differentiation, customer communication
+
+**#018 - Industry Standards Battle**
+
+- Trigger: Competitor attempts to establish incompatible industry standard
+- Key Stakeholders: CTO, Strategy, Standards Team
+- Primary Response: Coalition building, standards participation, interoperability strategy
+
+-----
+
+## DOMAIN 2: OPERATIONAL DISRUPTIONS (16 Playbooks)
+
+### Supply Chain Crises
+
+**#019 - Primary Supplier Failure**
+
+- Trigger: Main supplier experiences bankruptcy, fire, or production halt
+- Key Stakeholders: COO, Procurement, Manufacturing
+- Primary Response: Alternative supplier activation, inventory management, production continuity
+
+**#020 - Critical Component Shortage**
+
+- Trigger: Industry-wide shortage of essential component (chips, raw materials)
+- Key Stakeholders: COO, CFO, Manufacturing, Procurement
+- Primary Response: Substitute sourcing, production prioritization, customer allocation
+
+**#021 - Transportation/Logistics Disruption**
+
+- Trigger: Strike, natural disaster, or infrastructure failure blocks distribution
+- Key Stakeholders: COO, Logistics, Customer Service
+- Primary Response: Alternative routing, customer communication, fulfillment workarounds
+
+**#022 - Quality Defect Discovery (Pre-Ship)**
+
+- Trigger: Critical quality issue found before product ships
+- Key Stakeholders: COO, Quality, Manufacturing, Sales
+- Primary Response: Production halt, root cause analysis, customer communication
+
+**#023 - Quality Defect Discovery (Post-Ship)**
+
+- Trigger: Critical quality issue discovered in field/customer site
+- Key Stakeholders: COO, Quality, Customer Success, CLO
+- Primary Response: Field remediation, customer notification, regulatory reporting
+
+**#024 - Supplier Price Shock**
+
+- Trigger: Supplier increases prices 20%+ due to force majeure
+- Key Stakeholders: CFO, COO, Procurement
+- Primary Response: Cost absorption analysis, pricing adjustment, alternative sourcing
+
+### Facility & Infrastructure
+
+**#025 - Manufacturing Facility Disruption**
+
+- Trigger: Fire, flood, equipment failure halts production facility
+- Key Stakeholders: COO, Manufacturing, Safety, Insurance
+- Primary Response: Production rerouting, capacity reallocation, recovery planning
+
+**#026 - Warehouse/Distribution Center Failure**
+
+- Trigger: Primary distribution center becomes inoperable
+- Key Stakeholders: COO, Logistics, Customer Service
+- Primary Response: Inventory redistribution, alternative fulfillment, delivery recovery
+
+**#027 - Data Center Outage**
+
+- Trigger: Primary data center experiences extended outage
+- Key Stakeholders: CTO, COO, Customer Success
+- Primary Response: Failover execution, customer communication, service restoration
+
+**#028 - Office Evacuation (Safety Threat)**
+
+- Trigger: Bomb threat, gas leak, or safety issue requires building evacuation
+- Key Stakeholders: Facilities, Safety, CHRO, Crisis Management
+- Primary Response: Employee safety, remote work activation, facility security
+
+**#029 - Natural Disaster (Facility Impact)**
+
+- Trigger: Hurricane, earthquake, flood impacts primary operations
+- Key Stakeholders: COO, Facilities, Safety, Insurance
+- Primary Response: Employee safety, operations continuity, recovery coordination
+
+**#030 - Pandemic/Health Crisis**
+
+- Trigger: Infectious disease outbreak impacts workforce/operations
+- Key Stakeholders: CEO, CHRO, Facilities, Safety
+- Primary Response: Remote work activation, safety protocols, business continuity
+
+### Third-Party Dependencies
+
+**#031 - Critical Vendor Service Interruption**
+
+- Trigger: Essential SaaS provider, cloud host, or service experiences outage
+- Key Stakeholders: CTO, Vendor Management, Operations
+- Primary Response: Backup activation, vendor escalation, customer notification
+
+**#032 - Technology Partner Bankruptcy**
+
+- Trigger: Critical technology partner files bankruptcy/ceases operations
+- Key Stakeholders: CTO, CLO, Procurement
+- Primary Response: Technology migration, intellectual property protection, alternative sourcing
+
+**#033 - Payment Processor Disruption**
+
+- Trigger: Payment gateway, merchant services, or banking disruption
+- Key Stakeholders: CFO, Finance, Customer Service
+- Primary Response: Alternative payment activation, customer communication, transaction recovery
+
+**#034 - Critical API/Integration Failure**
+
+- Trigger: Essential third-party API service fails or changes unexpectedly
+- Key Stakeholders: CTO, Engineering, Product
+- Primary Response: Integration repair, fallback mode, customer impact mitigation
+
+-----
+
+## DOMAIN 3: FINANCIAL CRISES (14 Playbooks)
+
+### Liquidity & Capital
+
+**#035 - Cash Flow Crisis**
+
+- Trigger: Cash runway drops below 6 months, unexpected burn spike
+- Key Stakeholders: CFO, CEO, Board
+- Primary Response: Cost reduction, fundraising acceleration, bridge financing
+
+**#036 - Failed Fundraising Round**
+
+- Trigger: Expected investment round falls through or significantly delayed
+- Key Stakeholders: CEO, CFO, Board
+- Primary Response: Alternative financing, burn reduction, strategic options
+
+**#037 - Bank Credit Line Revocation**
+
+- Trigger: Bank reduces or eliminates line of credit
+- Key Stakeholders: CFO, CEO, Treasury
+- Primary Response: Alternative lender sourcing, liquidity preservation, covenant negotiation
+
+**#038 - Major Customer Payment Default**
+
+- Trigger: Large customer fails to pay invoice (>$1M outstanding)
+- Key Stakeholders: CFO, Sales, Collections, CLO
+- Primary Response: Payment recovery, credit policy revision, cash flow management
+
+**#039 - Currency Crisis (FX Exposure)**
+
+- Trigger: Significant currency devaluation impacts international revenue/costs
+- Key Stakeholders: CFO, Treasury, International Operations
+- Primary Response: Hedging strategy, pricing adjustment, expense management
+
+### Market Valuation
+
+**#040 - Stock Price Crash (Public Company)**
+
+- Trigger: Stock price drops 30%+ in single session or week
+- Key Stakeholders: CEO, CFO, IR, Board
+- Primary Response: Investor communication, analyst briefing, stability messaging
+
+**#041 - Activist Investor Campaign**
+
+- Trigger: Activist shareholder takes significant position, demands changes
+- Key Stakeholders: CEO, CFO, Board, CLO
+- Primary Response: Investor engagement, defense strategy, board communication
+
+**#042 - Hostile Takeover Attempt**
+
+- Trigger: Unsolicited acquisition offer or proxy fight initiated
+- Key Stakeholders: CEO, Board, CLO, Investment Bankers
+- Primary Response: Defense activation, shareholder communication, strategic alternatives
+
+**#043 - Credit Rating Downgrade**
+
+- Trigger: Rating agency lowers credit rating, impacts borrowing costs
+- Key Stakeholders: CFO, Treasury, CEO, IR
+- Primary Response: Investor communication, capital structure optimization, rating agency engagement
+
+### Financial Reporting
+
+**#044 - Revenue Shortfall (Miss Guidance)**
+
+- Trigger: Quarter tracking significantly below public guidance
+- Key Stakeholders: CFO, CEO, IR, Board
+- Primary Response: Guidance revision, investor communication, recovery plan
+
+**#045 - Accounting Irregularity Discovery**
+
+- Trigger: Internal audit discovers material accounting error or policy violation
+- Key Stakeholders: CFO, CEO, Audit Committee, CLO
+- Primary Response: Investigation, restatement assessment, disclosure planning
+
+**#046 - Auditor Disagreement**
+
+- Trigger: External auditor challenges accounting treatment or control
+- Key Stakeholders: CFO, Audit Committee, CLO
+- Primary Response: Resolution negotiation, documentation, potential restatement
+
+**#047 - Financial Control Failure**
+
+- Trigger: Material weakness in internal controls discovered
+- Key Stakeholders: CFO, Audit Committee, Controller
+- Primary Response: Remediation plan, disclosure, control enhancement
+
+**#048 - Unexpected Tax Liability**
+
+- Trigger: Tax authority assessment or audit findings create material liability
+- Key Stakeholders: CFO, Tax, CLO
+- Primary Response: Assessment challenge, settlement negotiation, reserve establishment
+
+-----
+
+## DOMAIN 4: REGULATORY & LEGAL (15 Playbooks)
+
+### Government Investigations
+
+**#049 - SEC Investigation Notice**
+
+- Trigger: Securities and Exchange Commission opens investigation
+- Key Stakeholders: CEO, CFO, CLO, Board
+- Primary Response: External counsel engagement, document preservation, cooperation strategy
+
+**#050 - DOJ/Criminal Investigation**
+
+- Trigger: Department of Justice initiates criminal investigation
+- Key Stakeholders: CEO, CLO, Board
+- Primary Response: Criminal defense counsel, privilege protection, crisis management
+
+**#051 - FTC Antitrust Investigation**
+
+- Trigger: Federal Trade Commission investigates competitive practices
+- Key Stakeholders: CEO, CLO, Strategy
+- Primary Response: Antitrust defense, practice review, regulator cooperation
+
+**#052 - State Attorney General Investigation**
+
+- Trigger: State AG launches consumer protection or business practice investigation
+- Key Stakeholders: CLO, CEO, State Operations
+- Primary Response: Legal response, practice assessment, settlement exploration
+
+**#053 - Congressional Investigation/Hearing**
+
+- Trigger: Congressional committee requests testimony or documents
+- Key Stakeholders: CEO, CLO, Government Affairs, Board
+- Primary Response: Testimony preparation, document production, public affairs strategy
+
+### Compliance Violations
+
+**#054 - Data Privacy Violation (GDPR/CCPA)**
+
+- Trigger: Discovery of data protection law violation or regulatory complaint
+- Key Stakeholders: CLO, CTO, Privacy Officer, Board
+- Primary Response: Regulatory notification, remediation, affected party communication
+
+**#055 - Export Control Violation**
+
+- Trigger: Discovery of unauthorized export of controlled technology
+- Key Stakeholders: CLO, Trade Compliance, CEO
+- Primary Response: Voluntary disclosure, shipment investigation, license application
+
+**#056 - Environmental Compliance Violation**
+
+- Trigger: EPA or state environmental agency violation notice
+- Key Stakeholders: CLO, Operations, Environmental Health & Safety
+- Primary Response: Compliance restoration, agency negotiation, remediation plan
+
+**#057 - Workplace Safety Violation (OSHA)**
+
+- Trigger: OSHA citation or serious workplace injury investigation
+- Key Stakeholders: CLO, CHRO, Safety, Operations
+- Primary Response: Safety remediation, worker protection, OSHA negotiation
+
+**#058 - Financial Services Compliance Breach**
+
+- Trigger: Banking, securities, or financial regulation violation
+- Key Stakeholders: CLO, CFO, Compliance Officer
+- Primary Response: Regulatory notification, remediation, penalty negotiation
+
+### Litigation
+
+**#059 - Class Action Lawsuit Filed**
+
+- Trigger: Class action complaint filed (securities, consumer, employment)
+- Key Stakeholders: CLO, CEO, Board, Insurance
+- Primary Response: Defense counsel engagement, motion to dismiss, settlement assessment
+
+**#060 - Intellectual Property Litigation**
+
+- Trigger: Patent, trademark, or copyright lawsuit filed
+- Key Stakeholders: CLO, CTO, CFO
+- Primary Response: IP counsel engagement, validity assessment, defense or settlement
+
+**#061 - Major Contract Dispute**
+
+- Trigger: Customer or partner files breach of contract lawsuit
+- Key Stakeholders: CLO, Business Unit Lead, CFO
+- Primary Response: Legal defense, commercial negotiation, relationship management
+
+**#062 - Employment Discrimination Lawsuit**
+
+- Trigger: Employee or EEOC files discrimination claim
+- Key Stakeholders: CLO, CHRO, CEO
+- Primary Response: Legal defense, investigation, policy review
+
+**#063 - Product Liability Lawsuit**
+
+- Trigger: Customer injury or property damage attributed to product
+- Key Stakeholders: CLO, COO, Quality, Insurance
+- Primary Response: Legal defense, investigation, recall assessment
+
+-----
+
+## DOMAIN 5: TECHNOLOGY FAILURES (13 Playbooks)
+
+### Cybersecurity Incidents
+
+**#064 - Data Breach (Customer Data)**
+
+- Trigger: Unauthorized access to customer PII, payment, or sensitive data
+- Key Stakeholders: CISO, CTO, CLO, CEO, Board
+- Primary Response: Containment, forensics, customer notification, regulatory reporting
+
+**#065 - Ransomware Attack**
+
+- Trigger: Ransomware encrypts critical systems, ransom demanded
+- Key Stakeholders: CISO, CTO, CEO, CLO
+- Primary Response: Isolation, recovery from backup, law enforcement notification, ransom evaluation
+
+**#066 - DDoS Attack**
+
+- Trigger: Distributed denial of service attack disrupts services
+- Key Stakeholders: CISO, CTO, Operations
+- Primary Response: Traffic mitigation, ISP coordination, customer communication
+
+**#067 - Insider Threat (Malicious Employee)**
+
+- Trigger: Employee discovered stealing data, sabotaging systems, or fraud
+- Key Stakeholders: CISO, CHRO, CLO, CEO
+- Primary Response: Access termination, forensic investigation, legal action, damage assessment
+
+**#068 - Third-Party Data Breach (Vendor)**
+
+- Trigger: Vendor breach exposes your company or customer data
+- Key Stakeholders: CISO, CLO, Vendor Management
+- Primary Response: Impact assessment, vendor accountability, customer notification
+
+**#069 - Vulnerability Disclosure (Zero-Day)**
+
+- Trigger: Critical security vulnerability discovered in your product
+- Key Stakeholders: CISO, CTO, CPO, Customer Success
+- Primary Response: Patch development, customer notification, coordinated disclosure
+
+### System Failures
+
+**#070 - Critical System Outage (SaaS)**
+
+- Trigger: Primary application experiences extended downtime
+- Key Stakeholders: CTO, COO, Customer Success, CEO
+- Primary Response: Incident response, customer communication, root cause analysis, SLA credits
+
+**#071 - Database Corruption/Loss**
+
+- Trigger: Database corruption or data loss affects operations or customer data
+- Key Stakeholders: CTO, CIO, Engineering
+- Primary Response: Data recovery, integrity verification, backup restoration, customer notification
+
+**#072 - Cloud Provider Outage**
+
+- Trigger: AWS, Azure, or GCP region failure impacts services
+- Key Stakeholders: CTO, Engineering, Customer Success
+- Primary Response: Failover execution, provider escalation, customer communication
+
+**#073 - Software Update/Release Failure**
+
+- Trigger: New software release causes critical bugs or system instability
+- Key Stakeholders: CTO, CPO, Engineering
+- Primary Response: Rollback, hotfix, customer communication, quality process review
+
+**#074 - Integration/API Breaking Change**
+
+- Trigger: System integration or API change breaks customer workflows
+- Key Stakeholders: CTO, CPO, Customer Success
+- Primary Response: Fix deployment, customer support, migration assistance
+
+### Technology Obsolescence
+
+**#075 - End-of-Life Technology Dependency**
+
+- Trigger: Critical technology stack component reaches EOL, vendor discontinues support
+- Key Stakeholders: CTO, Engineering, Architecture
+- Primary Response: Migration planning, alternative evaluation, timeline communication
+
+**#076 - Technology Standards Shift**
+
+- Trigger: Industry adopts new standard making your technology approach obsolete
+- Key Stakeholders: CTO, CPO, Strategy
+- Primary Response: Roadmap pivot, standards adoption, customer migration support
+
+-----
+
+## DOMAIN 6: HUMAN CAPITAL CRISES (12 Playbooks)
+
+### Leadership Transitions
+
+**#077 - CEO Sudden Departure**
+
+- Trigger: CEO resignation, termination, illness, or death
+- Key Stakeholders: Board, Executive Team, CHRO
+- Primary Response: Succession activation, stakeholder communication, interim leadership
+
+**#078 - Executive Team Member Departure (Unexpected)**
+
+- Trigger: C-level executive sudden resignation or termination
+- Key Stakeholders: CEO, CHRO, Board
+- Primary Response: Interim coverage, transition plan, external/internal search
+
+**#079 - Board Member Resignation**
+
+- Trigger: Board member resigns unexpectedly or amid controversy
+- Key Stakeholders: Board Chair, CEO, Nominating Committee
+- Primary Response: Board composition assessment, replacement search, governance continuity
+
+### Workforce Issues
+
+**#080 - Mass Layoff/RIF Execution**
+
+- Trigger: Company announces significant workforce reduction
+- Key Stakeholders: CEO, CHRO, CFO, Communications
+- Primary Response: Legal compliance, employee communication, morale management, media handling
+
+**#081 - Key Talent Attrition Spike**
+
+- Trigger: Abnormal increase in voluntary departures (>20% above baseline)
+- Key Stakeholders: CHRO, CEO, Business Unit Leads
+- Primary Response: Stay interviews, compensation review, culture assessment, retention plan
+
+**#082 - Critical Role Vacancy (Unfillable)**
+
+- Trigger: Unable to fill essential technical or leadership role for 6+ months
+- Key Stakeholders: CHRO, Hiring Manager, CEO
+- Primary Response: Recruiting strategy pivot, compensation adjustment, contractor/interim solution
+
+**#083 - Unionization Campaign**
+
+- Trigger: Union begins organizing campaign at non-union facility
+- Key Stakeholders: CHRO, CLO, CEO, Operations
+- Primary Response: Labor counsel engagement, supervisor training, employee communication
+
+**#084 - Workplace Violence Threat**
+
+- Trigger: Credible threat of violence from employee or external party
+- Key Stakeholders: CHRO, Security, Facilities, CLO
+- Primary Response: Threat assessment, law enforcement notification, protective measures
+
+**#085 - Employee Misconduct (Senior Leader)**
+
+- Trigger: Allegations of harassment, discrimination, or ethical violation by senior leader
+- Key Stakeholders: CHRO, CLO, CEO, Board
+- Primary Response: Investigation, suspension, legal counsel, stakeholder communication
+
+### Culture & Morale
+
+**#086 - Glassdoor/Public Review Crisis**
+
+- Trigger: Wave of negative employee reviews damages employer brand
+- Key Stakeholders: CHRO, CEO, Communications
+- Primary Response: Internal listening, issue remediation, employer brand recovery
+
+**#087 - Strike or Work Stoppage**
+
+- Trigger: Union authorizes strike or employees stage walkout
+- Key Stakeholders: CHRO, CLO, COO, CEO
+- Primary Response: Operations continuity, negotiation, employee communication
+
+**#088 - Diversity & Inclusion Crisis**
+
+- Trigger: Public allegations of systemic discrimination or hostile culture
+- Key Stakeholders: CEO, CHRO, D&I Leadership, Board
+- Primary Response: Investigation, remediation plan, transparency, stakeholder communication
+
+-----
+
+## DOMAIN 7: REPUTATIONAL CRISES (13 Playbooks)
+
+### Media & Public Relations
+
+**#089 - Negative Investigative Journalism**
+
+- Trigger: Major media outlet publishes damaging investigative piece
+- Key Stakeholders: CEO, Communications, CLO
+- Primary Response: Fact correction, media statement, stakeholder briefing
+
+**#090 - Social Media Firestorm**
+
+- Trigger: Viral negative social media campaign against company
+- Key Stakeholders: CMO, Communications, CEO
+- Primary Response: Social monitoring, response strategy, influencer engagement
+
+**#091 - Boycott Campaign**
+
+- Trigger: Organized consumer boycott of products/services
+- Key Stakeholders: CEO, CMO, Communications, Sales
+- Primary Response: Issue assessment, dialogue, stakeholder engagement, positioning
+
+**#092 - Executive Personal Scandal**
+
+- Trigger: CEO or senior executive personal conduct becomes public scandal
+- Key Stakeholders: Board, Communications, CLO
+- Primary Response: Executive status assessment, crisis communication, separation if necessary
+
+**#093 - Misinformation/Fake News Attack**
+
+- Trigger: False information about company spreads virally
+- Key Stakeholders: Communications, CMO, CLO
+- Primary Response: Fact verification, correction campaign, platform notification
+
+### Customer Relations
+
+**#094 - Viral Customer Complaint**
+
+- Trigger: Customer service failure becomes viral sensation
+- Key Stakeholders: Customer Success, Communications, CEO
+- Primary Response: Individual resolution, systemic fix, public apology, policy change
+
+**#095 - Product Recall (Safety)**
+
+- Trigger: Product safety issue requires voluntary or mandated recall
+- Key Stakeholders: COO, Quality, CLO, Communications, CEO
+- Primary Response: Recall execution, customer notification, regulatory compliance, replacement program
+
+**#096 - Service Level Agreement Mass Breach**
+
+- Trigger: Widespread SLA violations trigger contractual penalties
+- Key Stakeholders: COO, CFO, Customer Success, CLO
+- Primary Response: Customer communication, credit processing, service restoration, root cause
+
+**#097 - Major Customer Public Criticism**
+
+- Trigger: Prominent customer publicly criticizes company/product
+- Key Stakeholders: CEO, Sales, Customer Success, Communications
+- Primary Response: Relationship repair, issue resolution, narrative management
+
+### Stakeholder Trust
+
+**#098 - ESG Rating Downgrade**
+
+- Trigger: Environmental, social, governance rating significantly drops
+- Key Stakeholders: CEO, Sustainability, IR, Board
+- Primary Response: Issue remediation, investor communication, ESG improvement plan
+
+**#099 - Short Seller Report**
+
+- Trigger: Short seller publishes research alleging fraud or business problems
+- Key Stakeholders: CEO, CFO, IR, CLO, Board
+- Primary Response: Fact rebuttal, investor communication, legal assessment
+
+**#100 - Partner Relationship Termination**
+
+- Trigger: Strategic partner publicly ends relationship amid controversy
+- Key Stakeholders: CEO, Business Development, Communications
+- Primary Response: Relationship salvage attempt, alternative partnerships, market communication
+
+**#101 - Industry Award/Certification Revocation**
+
+- Trigger: Industry body revokes certification, ranking, or award
+- Key Stakeholders: CEO, Communications, Quality/Compliance
+- Primary Response: Remediation, reinstatement effort, alternative recognition
+
+-----
+
+## DOMAIN 8: MARKET DISRUPTIONS (9 Playbooks)
+
+### Economic Shocks
+
+**#102 - Recession/Economic Downturn**
+
+- Trigger: Economic indicators signal recession, demand collapse anticipated
+- Key Stakeholders: CEO, CFO, Board, Business Unit Leads
+- Primary Response: Cost structure optimization, scenario planning, customer retention focus
+
+**#103 - Interest Rate Shock**
+
+- Trigger: Rapid interest rate increases impact capital costs, customer buying
+- Key Stakeholders: CFO, Treasury, Strategy, Board
+- Primary Response: Capital structure adjustment, pricing strategy, demand management
+
+**#104 - Trade War/Tariff Imposition**
+
+- Trigger: New tariffs or trade restrictions impact supply chain or markets
+- Key Stakeholders: CFO, COO, Trade Compliance, Strategy
+- Primary Response: Supply chain adjustment, pricing strategy, geographic diversification
+
+### Technology Disruption
+
+**#105 - AI/Automation Disrupts Business Model**
+
+- Trigger: AI technology enables competitors to deliver service at fraction of cost
+- Key Stakeholders: CEO, CTO, Strategy, Board
+- Primary Response: Technology adoption, business model evolution, workforce transition
+
+**#106 - Platform Shift (Cloud, Mobile, etc.)**
+
+- Trigger: Market rapidly adopts new platform, rendering current approach obsolete
+- Key Stakeholders: CTO, CPO, Strategy
+- Primary Response: Platform migration, product roadmap pivot, go-to-market adjustment
+
+**#107 - Disintermediation Threat**
+
+- Trigger: Technology enables customers to bypass your value chain position
+- Key Stakeholders: CEO, Strategy, Product
+- Primary Response: Value proposition evolution, direct channel, business model innovation
+
+### Regulatory Changes
+
+**#108 - New Regulation Impacts Business Model**
+
+- Trigger: New law or regulation makes current business model illegal or uneconomical
+- Key Stakeholders: CEO, CLO, Strategy, Board
+- Primary Response: Compliance strategy, business model adaptation, advocacy/lobbying
+
+**#109 - Geographic Market Regulatory Change**
+
+- Trigger: Key market implements regulations restricting operations
+- Key Stakeholders: CEO, CLO, Geographic GM, Strategy
+- Primary Response: Compliance assessment, market exit/adaptation, geographic diversification
+
+**#110 - Industry Consolidation Wave**
+
+- Trigger: Multiple competitors merge, fundamentally changing industry structure
+- Key Stakeholders: CEO, CFO, Strategy, Board
+- Primary Response: Strategic positioning, M&A consideration, partnership strategy
+
+-----
+
+## Playbook Organization Framework
+
+### By Executive Role (C-Suite Accountability)
+
+**CEO Primary Responsibility (32 playbooks)**
+All Domain 1 (Competitive), Domain 8 (Market Disruptions), plus major crises from other domains
+
+**COO Primary Responsibility (21 playbooks)**
+All Domain 2 (Operational Disruptions), supply chain, facilities
+
+**CFO Primary Responsibility (19 playbooks)**
+All Domain 3 (Financial Crises), plus financial reporting
+
+**CLO Primary Responsibility (18 playbooks)**
+All Domain 4 (Regulatory & Legal), litigation, compliance
+
+**CTO/CISO Primary Responsibility (13 playbooks)**
+All Domain 5 (Technology Failures), cybersecurity, infrastructure
+
+**CHRO Primary Responsibility (12 playbooks)**
+All Domain 6 (Human Capital Crises), workforce, culture
+
+**CMO/Communications Primary Responsibility (13 playbooks)**
+Domain 7 (Reputational Crises), media, customer relations
+
+**Board Primary Responsibility (7 playbooks)**
+Governance crises, CEO transition, major strategic threats
+
+-----
+
+## Playbook Template Structure (The 80% Rule Applied)
+
+### Every Playbook Contains These Pre-Filled Sections:
+
+**1. SITUATION DEFINITION (100% pre-filled)**
+
+- Trigger criteria (specific, measurable)
+- Threat/impact assessment scoring (0-100)
+- Time sensitivity (critical window for response)
+- Historical frequency (how often this occurs)
+
+**2. STAKEHOLDER MATRIX (90% pre-filled)**
+
+- Tier 1: Decision makers (8-12 people, pre-assigned by role)
+- Tier 2: Execution team (30-50 people, pre-assigned by function)
+- Tier 3: Notification group (100-200 people, auto-distribution lists)
+- External parties (lawyers, consultants, agencies - pre-contracted)
+
+**3. DECISION TREE (85% pre-filled)**
+
+- Decision checkpoints (5-8 critical go/no-go decisions)
+- Decision criteria (quantitative thresholds, qualitative factors)
+- Decision authority (who can approve at each level)
+- Escalation paths (when to involve Board, external counsel)
+
+**4. COMMUNICATION TEMPLATES (80% pre-filled)**
+
+- Board memo (draft with variables)
+- Customer email (draft with variables)
+- Employee all-hands talking points (draft with variables)
+- Media statement (draft with variables)
+- Regulator notification (draft with variables)
+- Social media response (draft with variables)
+
+**5. TASK SEQUENCES (75% pre-filled)**
+
+- Minute-by-minute timeline (first 2 hours)
+- Hour-by-hour timeline (first 24 hours)
+- Day-by-day timeline (first week)
+- Week-by-week timeline (first month)
+- Task owners (pre-assigned by role)
+- Task dependencies (mapped relationships)
+
+**6. BUDGET AUTHORITY (100% pre-filled)**
+
+- Pre-approved emergency budget (up to $X without board)
+- Vendor contracts (pre-negotiated hourly rates)
+- External resource roster (lawyers, PR firms, consultants on retainer)
+
+**7. SUCCESS METRICS (80% pre-filled)**
+
+- Response speed (target: 12 minutes to coordination)
+- Stakeholder reach (target: 100% Tier 1 participation)
+- Outcome metrics (market share retention, customer churn, etc.)
+- Learning metrics (what to measure for improvement)
+
+**8. LESSONS LEARNED (0% pre-filled, populated post-execution)**
+
+- What worked well
+- What could improve
+- Playbook modifications needed
+- Institutional knowledge captured
+
+-----
+
+## Customization Required (The 20%)
+
+### Fields That Must Be Filled During Activation:
+
+**Situation-Specific Details:**
+
+- Specific competitor name / product / announcement
+- Specific customer name / contract value / relationship
+- Specific financial figures / exposure / timeline
+- Specific employee names / roles / circumstances
+- Specific system names / data affected / breach scope
+
+**Company-Specific Context:**
+
+- Current market conditions affecting response
+- Recent related events adding complexity
+- Stakeholder availability (who’s on vacation, unavailable)
+- Resource constraints (budget, personnel, timing)
+- Strategic priorities affecting decision
+
+**Execution Decisions:**
+
+- Which decision tree branch to follow (Option A, B, or C)
+- Budget allocation within pre-approved limits
+- Timeline adjustments based on circumstances
+- Communication tone/messaging fine-tuning
+- External resource deployment (which firms to activate)
+
+-----
+
+## Playbook Activation Frequency (Projected Annual Usage)
+
+**HIGH FREQUENCY (10+ times/year)**
+
+- #070 Critical System Outage
+- #064 Data Breach (Customer Data)
+- #076 Technology Standards Shift
+- #081 Key Talent Attrition Spike
+
+**MEDIUM FREQUENCY (3-9 times/year)**
+
+- #003 Competitor Product Launch (Feature Parity)
+- #019 Primary Supplier Failure
+- #089 Negative Investigative Journalism
+- #044 Revenue Shortfall
+
+**LOW FREQUENCY (1-2 times/year)**
+
+- #004 Competitor Product Launch (Breakthrough)
+- #035 Cash Flow Crisis
+- #059 Class Action Lawsuit Filed
+- #095 Product Recall
+
+**RARE (Once every 2-5 years)**
+
+- #077 CEO Sudden Departure
+- #042 Hostile Takeover

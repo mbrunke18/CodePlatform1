@@ -1,0 +1,141 @@
+Here's a prioritized breakdown, organized by risk and dependency order — not alphabetically, not by effort, but by **what breaks you first if left unaddressed**.
+
+---
+
+## Tier 1 — Customer-Risk Items (Fix Before Second Pilot)
+
+**1. Separate Dev and Production Databases**
+
+This is the single highest-risk item. Right now a bad `npm run db:push` during development hits your live customer's data.
+
+- Provision a second Neon project/branch specifically for development
+- Update your local `.env` to point to the dev database URL
+- Production `DATABASE_URL` stays in Replit secrets only — never in any local file
+- Establish a rule: `db:push` is only run in dev. Production schema changes go through a deliberate promotion process (even if manual at this stage)
+
+**2. Resolve the .replit Deployment Race Condition**
+
+The persistent build step reset is a ticking clock — it will eventually deploy broken during a high-stakes moment.
+
+- Document the exact Replit `deployConfig` API call that removes the build step as a written runbook, not just institutional memory
+- Create a pre-publish checklist (even a simple markdown file in the repo): run `npm run build`, verify `dist/` is updated, run the API config override, then publish
+- Longer term: evaluate moving off Replit Autoscale to Railway, Render, or Fly.io where deployment config is code-controlled and doesn't reset
+
+**3. Basic Error Monitoring**
+
+Right now if something breaks in production you find out when your customer tells you.
+
+- Add Sentry (free tier covers this) to both the frontend (`client/src/main.tsx`) and the Express server (`server/index.ts`)
+- Configure it to email you on new errors
+- This takes about two hours and immediately closes a blind spot that could embarrass you during a pilot
+
+---
+
+## Tier 2 — Operational Maturity (Fix Before Active Sales Conversations)
+
+**4. CI/CD Pipeline**
+
+Every manual deployment is a risk. Every deployment without tests is a gamble.
+
+- GitHub Actions is the right tool here given your existing stack
+- Start minimal: one workflow that runs on push to `main` — installs dependencies, runs TypeScript type-check (`tsc --noEmit`), builds the bundle
+- This catches the most common breakage (type errors, failed builds) without requiring a full test suite first
+- Add deployment automation to Replit or your eventual target platform as a second step
+
+**5. Minimum Viable Test Suite**
+
+You don't need 100% coverage. You need tests around the things that would be catastrophic to break.
+
+Priority order:
+- **Playbook seeding logic** — the additive migration in `server/index.ts`. A regression here corrupts your core product data
+- **Auth flow** — `getUserId()`, organization lookup, the onboarding guard redirect logic
+- **Playbook activation flow** — the Mission Control → `/api/scenarios` name-match → navigation chain
+- **API route smoke tests** — at minimum, that your 10 most-used endpoints return 200 with valid auth and 401 without
+
+Use Vitest (already compatible with your Vite setup) for unit tests and Supertest for API route tests. Don't try to boil the ocean — 20 focused tests covering the above is worth more than 200 tests on low-risk utilities.
+
+**6. Database Migration Strategy**
+
+`npm run db:push --force` with a "data-loss warning" is not a production migration process.
+
+- Add Drizzle's migration file generation: `drizzle-kit generate` creates versioned SQL migration files
+- Commit those migration files to the repo — they become your audit trail
+- Switch production schema changes from `db:push` to `drizzle-kit migrate` (applies only pending migrations, never destructive without explicit intent)
+- This also gives you the rollback story that enterprise security teams will ask about
+
+---
+
+## Tier 3 — Sales-Enablement Items (Fix Before Closing Second Customer)
+
+**7. API Documentation**
+
+When an enterprise IT or security team gets involved in a pilot — and they will — the first thing they ask for is API documentation and a data flow diagram.
+
+- Use the existing route structure in `server/routes.ts` to generate a Swagger/OpenAPI spec
+- Tools like `swagger-jsdoc` can annotate your existing Express routes with minimal changes
+- The output is a hosted `/api/docs` endpoint that looks professional and answers 80% of security questionnaire questions automatically
+
+**8. Admin Documentation / Runbook**
+
+Right now operational knowledge lives in `developer-reference.md` and your own head. That's fine while you're the only operator. It becomes a liability if you ever need to hand off, hire, or bring in a contractor for a specific sprint.
+
+Document these specific procedures:
+- How to onboard a new enterprise customer (create org, assign admin user, seed data)
+- How to promote a schema change from dev to production safely
+- How to roll back a bad deployment
+- How to manually trigger the playbook seeding if it gets out of sync
+- The Replit deployment override procedure
+
+One Google Doc or a `/docs` folder in the repo. Doesn't need to be beautiful.
+
+**9. Data Backup and Recovery**
+
+Neon provides point-in-time recovery on paid plans, but you need to know the answer to "what's your RPO/RTO?" before an enterprise asks.
+
+- Verify your Neon plan includes PITR and document the recovery window
+- Set up a weekly automated export of critical tables (organizations, users, strategicScenarios, playbookActivations) to a separate storage location — even an S3 bucket or Google Drive
+- Write down the recovery procedure. You never need to use it until you desperately do.
+
+---
+
+## Tier 4 — Scale-Readiness (Fix Before 5+ Customers)
+
+**10. Dev/Staging/Production Environment Parity**
+
+Right now you have dev (local) and production (Replit). You need a staging environment that mirrors production before changes go live.
+
+- A second Replit deployment (or Railway instance) pointed at the dev database, running the same `npm run start` command
+- Pilots get a staging URL to preview changes before they hit production
+- This also gives you a safe environment to test the deployment process itself
+
+**11. Session and Auth Hardening**
+
+Replit OIDC is fine for now, but it creates a platform dependency that could become a migration forcing function later.
+
+- Document which aspects of auth are Replit-specific vs. portable
+- Ensure `SESSION_SECRET` is a long random string (not a memorable password) and rotated periodically
+- Verify session expiration is configured appropriately for enterprise security policies (most require 8-hour or 24-hour session limits)
+
+**12. Rate Limiting and Basic Security Headers**
+
+Before any enterprise security review:
+
+- Add `helmet.js` to the Express server — one line, sets 12 security headers automatically
+- Add `express-rate-limit` on API routes — prevents both abuse and embarrassing security audit findings
+- Ensure all API routes that touch org data validate that the requesting user's `organizationId` matches the requested resource (multi-tenant data isolation check)
+
+---
+
+## The Sequence That Makes Sense
+
+If you're working this as a prioritized sprint rather than all at once:
+
+**Week 1-2:** Dev/prod database separation + Sentry error monitoring + pre-publish checklist for the .replit issue
+
+**Week 3-4:** GitHub Actions CI pipeline (type-check + build) + 20 focused tests on critical paths
+
+**Week 5-6:** Drizzle migration files + API documentation stub + admin runbook
+
+**Before closing customer #2:** Staging environment + data backup verification + security headers
+
+The discipline here isn't about perfection — it's about ensuring the platform's operational behavior matches the confidence the positioning promises. When you tell a Fortune 1000 company that Execution OS responds in 12 minutes, their implicit question is "and what happens when it doesn't?" Right now the honest answer is "we find out when you tell us." These steps change that answer.

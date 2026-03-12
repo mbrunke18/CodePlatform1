@@ -1,0 +1,127 @@
+Create a test script to validate the activation orchestration engine:
+
+CREATE FILE: /scripts/test-activation.ts
+
+import { db } from '../db/client';
+import { eq } from 'drizzle-orm';
+import { playbookLibrary, scenarioStakeholders, executionInstances, notifications } from '../db/schema';
+
+async function testActivation() {
+  console.log('🧪 Testing Activation Engine...\n');
+  
+  // Step 1: Find a playbook to test with
+  const playbook = await db.query.playbookLibrary.findFirst({
+    where: eq(playbookLibrary.domain, 'Crisis Management'),
+    limit: 1
+  });
+  
+  if (!playbook) {
+    console.error('❌ No playbook found');
+    return;
+  }
+  
+  console.log(`✅ Found playbook: ${playbook.name}`);
+  
+  // Step 2: Test orchestration endpoint
+  console.log('\n📡 Calling /api/activations/orchestrate...');
+  
+  const response = await fetch('http://localhost:3000/api/activations/orchestrate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      playbookId: playbook.id,
+      triggerId: 'test-trigger-123',
+      executedBy: '7cd941d8-5c5f-461e-87ea-9d2b1d81cb59', // Demo user
+      context: {
+        testMode: true,
+        scenario: 'End-to-end validation'
+      }
+    })
+  });
+  
+  if (!response.ok) {
+    console.error('❌ Orchestration failed:', await response.text());
+    return;
+  }
+  
+  const result = await response.json();
+  console.log('✅ Orchestration response:', JSON.stringify(result, null, 2));
+  
+  const executionInstanceId = result.executionInstanceId;
+  
+  // Step 3: Verify execution instance created
+  console.log('\n🔍 Checking database...');
+  
+  const execution = await db.query.executionInstances.findFirst({
+    where: eq(executionInstances.id, executionInstanceId)
+  });
+  
+  if (!execution) {
+    console.error('❌ Execution instance not found in database');
+    return;
+  }
+  
+  console.log(`✅ Execution instance created:`, {
+    id: execution.id,
+    status: execution.status,
+    startedAt: execution.startedAt
+  });
+  
+  // Step 4: Verify notifications created
+  const notifs = await db.query.notifications.findMany({
+    where: eq(notifications.metadata.executionInstanceId, executionInstanceId)
+  });
+  
+  console.log(`✅ Notifications created: ${notifs.length}`);
+  console.log('   Sample notification:', {
+    title: notifs[0]?.title,
+    status: notifs[0]?.status,
+    recipientId: notifs[0]?.recipientId
+  });
+  
+  // Step 5: Test status endpoint
+  console.log('\n📡 Calling /api/activations/status...');
+  
+  const statusResponse = await fetch(`http://localhost:3000/api/activations/${executionInstanceId}/status`);
+  
+  if (!statusResponse.ok) {
+    console.error('❌ Status endpoint failed');
+    return;
+  }
+  
+  const status = await statusResponse.json();
+  console.log('✅ Status response:', JSON.stringify(status, null, 2));
+  
+  // Step 6: Test acknowledgment
+  console.log('\n📡 Testing acknowledgment...');
+  
+  if (notifs.length > 0) {
+    const ackResponse = await fetch(`http://localhost:3000/api/notifications/${notifs[0].id}/acknowledge`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    
+    if (ackResponse.ok) {
+      const ackResult = await ackResponse.json();
+      console.log('✅ Acknowledgment successful:', ackResult);
+    } else {
+      console.error('❌ Acknowledgment failed');
+    }
+  }
+  
+  console.log('\n✨ Test complete!\n');
+  console.log('SUMMARY:');
+  console.log(`- Playbook: ${playbook.name}`);
+  console.log(`- Execution Instance: ${executionInstanceId}`);
+  console.log(`- Notifications Created: ${notifs.length}`);
+  console.log(`- Status: ${status.coordination?.coordinationComplete ? 'COORDINATED' : 'IN PROGRESS'}`);
+}
+
+testActivation().catch(console.error);
+
+Add to package.json scripts:
+{
+  "test:activation": "tsx scripts/test-activation.ts"
+}
+
+Run this test and show me the output.

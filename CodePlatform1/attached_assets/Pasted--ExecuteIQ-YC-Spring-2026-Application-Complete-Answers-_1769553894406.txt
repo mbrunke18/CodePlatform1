@@ -1,0 +1,404 @@
+# ExecuteIQ — YC Spring 2026 Application
+
+## Complete Answers (Copy-Paste Ready)
+
+-----
+
+# FOUNDERS
+
+## Who writes code, or does other technical work on your product? Was any of it done by a non-founder?
+
+I built the MVP myself. Started late 2024—Next.js/TypeScript, pushing to GitHub, shipping features weekly. As scope grew, I added AI coding tools (Claude, Cursor, Replit) to move faster. Current stack: React frontend, Node backend, PostgreSQL database. Functional, demo-ready, deployed.
+
+All technical work is mine. I can ship alone; I want a cofounder to scale, not to start.
+
+-----
+
+## Are you looking for a cofounder?
+
+Yes. Actively seeking a technical cofounder to own product engineering while I own customers and GTM. Looking for a senior full-stack engineer with enterprise SaaS experience who wants meaningful equity and a real building partner—not a job. Ready to move fast once we find the right fit.
+
+-----
+
+## Founder Video
+
+[RECORD THIS — aim for 55-60 seconds]
+
+**Script:**
+
+“The NFL is a $20 billion industry. College football programs are worth hundreds of millions. Every game, 60-80 critical decisions in 3 hours—wins, revenue, rankings, brand value on the line.
+
+They execute at that speed because of preparation. Playbooks built before the season. Decisions triggered by what the defense shows. 40 seconds to read, call, execute. 60-80 times.
+
+I coached college football for five years. I lived that methodology.
+
+Then 20 years in Fortune 500—Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs. Same stakes. M&A worth billions. Crises that move markets. But no playbooks. Every situation handled ad-hoc.
+
+72 hours getting meetings on calendars, still defining work. After 72 hours—maybe a plan. Execution hasn’t started.
+
+The NFL would never operate that way. Neither should a $10 billion enterprise.
+
+That’s ExecuteIQ. NFL-grade execution methodology for business. 166 playbooks. Roles pre-defined. In 12 minutes, execution begins—not planning, execution.
+
+I built the tool I wish I’d had.”
+
+-----
+
+# COMPANY
+
+## Company name
+
+ExecuteIQ
+
+-----
+
+## Describe what your company does in 50 characters or less
+
+NFL-grade execution methodology for enterprise
+
+-----
+
+## Company URL, if any
+
+https://code-platform-martybrunke.replit.app
+
+-----
+
+## Demo video
+
+[RECORD 2-3 MIN — see demo script at end of document]
+
+-----
+
+## Link to product
+
+https://code-platform-martybrunke.replit.app
+
+-----
+
+## Login credentials (if required)
+
+[INSERT IF NEEDED]
+
+-----
+
+## What is your company going to make? Please describe your product and what it does or will do.
+
+ExecuteIQ brings NFL-grade execution methodology to enterprise.
+
+**The insight:**
+
+The NFL is a $20B+ industry. College football programs are worth hundreds of millions. Every game, 60-80 critical decisions in 3 hours—wins, revenue, rankings, recruiting, brand value all on the line.
+
+These organizations execute at speed not because of talent, but because of preparation:
+
+- Playbooks built before the season starts
+- Decisions triggered by situational and data awareness (what the defense shows)
+- Roles pre-assigned—everyone knows their job before the snap
+- 40 seconds to read, call, align, execute. 60-80 times.
+
+**The problem:**
+
+Fortune 500 companies face the same stakes—M&A worth billions, crises that move markets, competitive threats that reshape industries. But they improvise every time.
+
+72 hours getting meetings on calendars, figuring out who owns what, defining the work. After 72 hours—maybe there’s a plan. Execution hasn’t started.
+
+The NFL would never operate that way. Neither should a $10B enterprise.
+
+**The solution:**
+
+ExecuteIQ brings that methodology to business:
+
+- 166 pre-built playbooks across 9 domains (market entry, M&A, crisis, transformation, etc.)
+- Roles, tasks, and ownership pre-defined—everyone knows their assignment before the moment
+- Decisions triggered by situational awareness
+- Execution begins in 12 minutes, not 72 hours
+
+**What the MVP does today:**
+
+- 166 playbooks built and ready
+- One-click activation with roles, tasks, owners pre-defined
+- Real-time coordination—teams execute in parallel, leadership sees progress
+
+**What’s next:**
+
+- AI signal detection (trigger playbooks from market/competitive/regulatory signals)
+- Enterprise integrations (Slack, Jira, ServiceNow)
+
+**The cost of the 72-hour gap:**
+
+- Ransomware: $136K/hour delayed (IBM)
+- M&A delay: $5-50M synergy erosion
+- Crisis delay: reputational damage compounds hourly
+
+ExecuteIQ at $250K/year vs. one incident costing $5-50M. Payback on first use.
+
+-----
+
+## Where do you live now, and where would the company be based after YC?
+
+Louisville, Kentucky, USA / San Francisco Bay Area, USA
+
+-----
+
+## Explain your decision regarding location.
+
+Currently in Louisville (Director of PMO at Churchill Downs). Post-YC, relocating to Bay Area for customer access, talent, and investor proximity. Enterprise sales requires being where Fortune 1000 decisions happen.
+
+-----
+
+# PROGRESS
+
+## How far along are you?
+
+Working MVP deployed. 166 playbooks across 9 domains. Full stack: React/TypeScript, Node, PostgreSQL. Ready for pilots.
+
+-----
+
+## How long have each of you been working on this? How much of that has been full-time?
+
+18 months part-time. Currently Director of PMO at Churchill Downs—nights, weekends, PTO. ~20-25 hours/week on ExecuteIQ. Will go full-time upon YC acceptance or first signed pilot.
+
+-----
+
+## What tech stack are you using, or planning to use?
+
+**Current:**
+
+- Frontend: React 18, TypeScript, Vite, Tailwind, shadcn/ui
+- Backend: Node.js, Express, TypeScript
+- Database: PostgreSQL with Drizzle ORM
+- Real-time: WebSocket
+- Auth: Passport.js/OAuth
+- Hosting: Replit (migrating to Railway/Vercel for production)
+
+**Development approach:**
+
+- Started late 2024 building locally, pushing to GitHub
+- Use AI tools (Claude, Cursor) to accelerate—but architecture decisions and product direction are mine
+
+**Planned:**
+
+- Enterprise SSO (Okta, Azure AD)
+- Integrations: Slack, Jira, ServiceNow, Salesforce
+- AI-assisted signal detection (augments the methodology, not the moat)
+
+**The moat is the playbook methodology—how billion-dollar football programs execute under pressure, encoded into software for enterprise.**
+
+-----
+
+## Are people using your product?
+
+No. This is enterprise software requiring executive sponsorship and pilot deployment—not self-serve. First users will be paid pilots, not free signups. Currently in conversations with gaming/hospitality contacts from my 20 years in the industry.
+
+-----
+
+## When will you have a version people can use?
+
+Now. Product is deployed and demo-ready. Can onboard first pilot customer within 30 days of signed agreement.
+
+-----
+
+## Do you have revenue?
+
+No
+
+-----
+
+## If you are applying with the same idea as a previous batch, did anything change?
+
+N/A — First application
+
+-----
+
+## If you have already participated in an incubator, accelerator, or pre-accelerator program, please tell us about it.
+
+None.
+
+-----
+
+# IDEA
+
+## Why did you pick this idea to work on? Do you have domain expertise in this area? How do you know people need what you’re making?
+
+I’ve lived both sides.
+
+The NFL is a $20B industry. College football programs are worth hundreds of millions. Every game, 60-80 critical decisions—wins, revenue, rankings, recruiting on the line. They execute at speed because of preparation: playbooks built before the season, decisions triggered by situational awareness, roles pre-assigned, 40 seconds to execute.
+
+I coached college football for 5 years. I lived that methodology.
+
+Then 20 years in Fortune 500—Ford, Toyota, Lockheed Martin, Eli Lilly, Boyd Gaming, Churchill Downs. Same stakes: M&A worth billions, crises that move markets. But no playbooks. Every strategic moment handled ad-hoc.
+
+The pattern was always the same: 72 hours getting meetings on calendars, still defining work and ownership. After 72 hours—maybe a plan. Execution hasn’t started.
+
+The NFL would never operate that way. I built the tool that brings their methodology to enterprise.
+
+How do I know people need it? Every executive I’ve talked to immediately recognizes the 72-hour gap. They’ve all lived it. And they’ve all watched billions in value slip away while they were still scheduling meetings.
+
+-----
+
+## Who are your competitors? What do you understand about your business that they don’t?
+
+**Adjacent tools (we don’t replace them—we sit above them):**
+
+- **Project management** (Asana, Monday, Jira): Track tasks over weeks. Don’t pre-stage strategic responses or launch execution in minutes.
+- **Business continuity** (Fusion, Castellan): Disaster recovery documentation. Don’t handle opportunities, M&A, or transformation.
+- **Strategy platforms** (Workboard, Quantive): Track OKRs quarterly. Don’t activate response when something happens.
+- **ServiceNow**: Workflow automation for IT. DNA is tickets, not strategic moments.
+
+**What I understand that they don’t:**
+
+1. **The methodology matters.** The NFL doesn’t run on Asana. They execute 60-80 plays because of preparation—playbooks, pre-assigned roles, decisions triggered by situational awareness. No enterprise tool brings that methodology to business. ExecuteIQ does.
+1. **The problem is activation, not tracking.** Competitors monitor over quarters. I launch execution in minutes. Different problem.
+1. **Pre-staging is everything.** The preparation happens before the moment—not during. That’s how football works. That’s how enterprises should work.
+1. **The moat is the methodology.** ServiceNow can build features. They can’t encode 25 years of Fortune 500 execution experience combined with how billion-dollar football programs actually operate.
+
+-----
+
+## How do or will you make money? How much could you make?
+
+**Revenue model:** Enterprise SaaS
+
+**Go-to-market:** Land with single-domain pilot, expand account-wide.
+
+**Pricing:**
+
+- Pilot: $75K (90 days, one business unit, 3 domains)
+- Growth: $250K/year (5 domains, 50 users)
+- Enterprise: $750K-$1.5M/year (unlimited)
+
+**Why they pay:**
+
+|Scenario    |Cost of 72-Hour Delay       |
+|------------|----------------------------|
+|Ransomware  |$9.8M ($136K/hr × 72)       |
+|M&A delay   |$5-50M synergy erosion      |
+|Crisis delay|$10-100M reputational damage|
+
+$250K/year vs. $5-50M incident. Payback on first use.
+
+**Unit economics (target):**
+
+- ACV: $500K-$750K
+- Gross margin: 70-75%
+- Sales cycle: 4-6 months
+- NRR: 120%+ (expand within accounts)
+
+**Market:**
+
+|Segment             |Companies|ACV  |TAM      |
+|--------------------|---------|-----|---------|
+|Fortune 500         |500      |$750K|$375M    |
+|Fortune 501-1000    |500      |$175K|$87M     |
+|Enterprise 1001-2000|1,000    |$112K|$112M    |
+|Mid-Market          |5,000    |$50K |$250M    |
+|**Total**           |         |     |**$825M**|
+
+5-year target: 50-100 customers, $25-75M ARR.
+
+-----
+
+## Which category best applies to your company?
+
+**B2B SaaS**
+
+-----
+
+## If you had any other ideas you considered applying with, please list them.
+
+1. **AI Governance Platform** — Audit trails and approval workflows for enterprise AI agents. Now a domain within ExecuteIQ.
+1. **Executive Decision Dashboard** — Real-time visibility into strategic initiatives. Built as a feature, not standalone.
+1. **PMO-as-a-Service for Gaming** — Productized consulting. Scalable as software, not services.
+
+ExecuteIQ encompasses all three.
+
+-----
+
+# EQUITY
+
+## Have you formed ANY legal entity yet?
+
+No
+
+-----
+
+## Please list all legal entities you have and in what state or country each was formed.
+
+None. Will form Delaware C-Corp upon funding or first customer.
+
+-----
+
+## Please describe the breakdown of equity ownership in percentages among founders, employees, and any other stockholders.
+
+Martin Brunke (Founder/CEO): 100%
+
+No other stockholders yet.
+
+-----
+
+## Have you taken any investment yet?
+
+No
+
+-----
+
+## Are you currently fundraising?
+
+Curious
+
+-----
+
+# CURIOUS
+
+## What convinced you to apply to Y Combinator? Did someone encourage you to apply?
+
+Three reasons:
+
+1. **Network.** Enterprise sales needs warm intros. YC opens doors I can’t open alone.
+1. **Credibility.** “YC-backed” changes conversations with Fortune 1000 buyers.
+1. **Cofounder matching.** Need a technical cofounder. YC’s network is the best place to find one.
+
+No one encouraged me—I’ve followed YC for years and knew this was the right time: working product, clear market, domain expertise.
+
+-----
+
+## How did you hear about Y Combinator?
+
+Hacker News, YC YouTube, following portfolio companies for years.
+
+-----
+
+# BATCH PREFERENCE
+
+## What batch do you want to apply for?
+
+Spring 2026
+
+-----
+
+# BEFORE SUBMITTING
+
+- [x] Company URL: https://code-platform-martybrunke.replit.app
+- [ ] Founder video (55-60 seconds)
+- [ ] Demo video (2-3 minutes)
+- [x] Incorporation: No (Delaware C-Corp upon funding)
+- [ ] Login credentials (if needed)
+
+-----
+
+# DEMO VIDEO SCRIPT (2-3 minutes)
+
+**What to show:**
+
+1. **Open with the insight (15 sec):** “The NFL executes 60-80 plays a game because of preparation—playbooks ready, roles defined, decisions triggered by what they see. ExecuteIQ brings that methodology to enterprise.”
+1. **Trigger moment (15 sec):** “A competitive threat just hit. Normally this takes 72 hours to coordinate. Watch what happens.”
+1. **Playbook selection (20 sec):** Show the playbook library. Select “Competitive Response.” Highlight that roles, tasks, and owners are pre-defined—just like a football playbook.
+1. **One-click activation (15 sec):** Click activate. Show tasks populating with assigned owners. “Everyone knows their assignment before the moment hits.”
+1. **Execution view (30 sec):** Show the dashboard—tasks in progress, owners visible, real-time status. “In 12 minutes, execution is underway. Not planning—execution.”
+1. **Close (20 sec):** “The NFL would never improvise 60-80 times a game. Fortune 500 companies shouldn’t improvise their most critical moments either. That’s ExecuteIQ.”
+
+**Keep it tight. Show motion. No slides—just product.**
+
+-----
+
+*Updated with NFL methodology as the DNA. Ready.*

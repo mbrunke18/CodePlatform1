@@ -1,0 +1,1740 @@
+// ============================================================================
+// M PLATFORM - IDEA FRAMEWORK COMPLETE IMPLEMENTATION
+// Copy this entire file into your Replit project
+// ============================================================================
+// 
+// FILE PLACEMENT GUIDE:
+// 1. Schema section → shared/schema.ts (merge with existing)
+// 2. Constants section → shared/constants/framework.ts (new file)
+// 3. AI Functions → server/ai/idea-engine.ts (new file)
+// 4. API Routes → server/routes/idea.ts (new file)
+// 5. React Components → client/src/components/framework/ (new folder)
+// 6. UI Copy/Content → use throughout your existing components
+//
+// ============================================================================
+
+// ============================================================================
+// SECTION 1: DATABASE SCHEMA (shared/schema.ts)
+// ============================================================================
+
+import { pgTable, uuid, varchar, text, integer, boolean, timestamp, jsonb } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
+
+// ----- CORE TABLES -----
+
+export const organizations = pgTable('organizations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 255 }).notNull(),
+  
+  // Pilot tier tracking
+  pilotTier: varchar('pilot_tier', { length: 50 }), // 'poc' | 'domain' | 'enterprise'
+  pilotStartDate: timestamp('pilot_start_date'),
+  pilotEndDate: timestamp('pilot_end_date'),
+  pilotValue: integer('pilot_value'), // In cents ($125,000 = 12500000)
+  
+  // Industry targeting (Gaming & Hospitality beachhead)
+  industry: varchar('industry', { length: 100 }),
+  isBeachheadCustomer: boolean('is_beachhead_customer').default(false),
+  
+  // IDEA Framework metrics
+  gameDayReadinessScore: integer('game_day_readiness_score'), // 0-100
+  avgResponseTimeMinutes: integer('avg_response_time_minutes'),
+  totalExecutions: integer('total_executions').default(0),
+  strategicValueRecovered: integer('strategic_value_recovered'), // In cents
+  
+  // CSM assignment
+  dedicatedCsmId: uuid('dedicated_csm_id'),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const playbooks = pgTable('playbooks', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  
+  // IDEA Framework categorization
+  domain: varchar('domain', { length: 100 }).notNull(), // 9 strategic domains
+  category: varchar('category', { length: 50 }).notNull(), // offense | defense | special_teams
+  
+  // Playbook content
+  description: text('description'),
+  triggerConditions: jsonb('trigger_conditions').$type<TriggerCondition[]>(),
+  tasks: jsonb('tasks').$type<PlaybookTask[]>(),
+  
+  // Execution metadata
+  estimatedDurationMinutes: integer('estimated_duration_minutes'),
+  requiredStakeholders: jsonb('required_stakeholders').$type<string[]>(),
+  approvalChain: jsonb('approval_chain').$type<ApprovalStep[]>(),
+  
+  // Template status
+  isTemplate: boolean('is_template').default(false),
+  templateSource: varchar('template_source', { length: 100 }), // 'mplatform' | 'custom'
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const decisionTrees = pgTable('decision_trees', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  playbookId: uuid('playbook_id'),
+  
+  name: varchar('name', { length: 255 }).notNull(),
+  domain: varchar('domain', { length: 100 }).notNull(),
+  scenario: text('scenario'),
+  
+  // Decision tree structure
+  decisionPoints: jsonb('decision_points').$type<DecisionPoint[]>(),
+  triggerConditions: jsonb('trigger_conditions').$type<TriggerCondition[]>(),
+  
+  // AI enhancement
+  aiConfidenceThreshold: integer('ai_confidence_threshold').default(75),
+  aiEnabled: boolean('ai_enabled').default(true),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const executions = pgTable('executions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  playbookId: uuid('playbook_id').notNull(),
+  
+  // Execution status
+  status: varchar('status', { length: 50 }).notNull(), // 'active' | 'completed' | 'paused' | 'cancelled'
+  phase: varchar('phase', { length: 50 }).notNull(), // 'identify' | 'detect' | 'execute' | 'advance'
+  
+  // Timing (the 72hr → 12min proof point)
+  startedAt: timestamp('started_at').notNull(),
+  completedAt: timestamp('completed_at'),
+  targetCompletionMinutes: integer('target_completion_minutes'),
+  actualDurationMinutes: integer('actual_duration_minutes'),
+  
+  // Context
+  triggerEvent: jsonb('trigger_event').$type<TriggerEvent>(),
+  scenarioType: varchar('scenario_type', { length: 100 }),
+  
+  // Task tracking
+  tasksTotal: integer('tasks_total').default(0),
+  tasksCompleted: integer('tasks_completed').default(0),
+  currentTaskId: uuid('current_task_id'),
+  
+  // Outcome tracking (for ADVANCE phase)
+  outcome: varchar('outcome', { length: 100 }), // 'success' | 'partial' | 'failed'
+  lessonsLearned: jsonb('lessons_learned').$type<LessonLearned[]>(),
+  valueImpact: integer('value_impact'), // Estimated $ impact in cents
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const signals = pgTable('signals', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  
+  // Signal classification
+  source: varchar('source', { length: 100 }).notNull(), // 'market' | 'competitive' | 'regulatory' | 'internal' | 'customer'
+  type: varchar('type', { length: 100 }).notNull(),
+  domain: varchar('domain', { length: 100 }),
+  
+  // Signal content
+  title: varchar('title', { length: 500 }).notNull(),
+  description: text('description'),
+  rawData: jsonb('raw_data'),
+  
+  // AI analysis
+  confidenceScore: integer('confidence_score'), // 0-100
+  matchedPlaybookIds: jsonb('matched_playbook_ids').$type<string[]>(),
+  recommendedAction: text('recommended_action'),
+  
+  // Status
+  status: varchar('status', { length: 50 }).default('new'), // 'new' | 'reviewing' | 'actioned' | 'dismissed'
+  actionedExecutionId: uuid('actioned_execution_id'),
+  
+  detectedAt: timestamp('detected_at').defaultNow(),
+  reviewedAt: timestamp('reviewed_at'),
+  reviewedBy: uuid('reviewed_by'),
+});
+
+export const stakeholders = pgTable('stakeholders', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull(),
+  
+  // Identity
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }),
+  role: varchar('role', { length: 100 }),
+  department: varchar('department', { length: 100 }),
+  
+  // RACI mapping
+  domains: jsonb('domains').$type<string[]>(), // Which domains they're involved in
+  defaultRaciRole: varchar('default_raci_role', { length: 50 }), // 'responsible' | 'accountable' | 'consulted' | 'informed'
+  
+  // Notification preferences
+  notificationChannels: jsonb('notification_channels').$type<NotificationChannel[]>(),
+  escalationPriority: integer('escalation_priority').default(3), // 1-5, 1 = highest
+  
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+// ----- TYPE DEFINITIONS -----
+
+export interface TriggerCondition {
+  id: string;
+  type: 'keyword' | 'threshold' | 'pattern' | 'schedule' | 'manual';
+  field?: string;
+  operator?: 'equals' | 'contains' | 'greater_than' | 'less_than' | 'matches';
+  value: string | number;
+  weight?: number; // For AI confidence scoring
+}
+
+export interface PlaybookTask {
+  id: string;
+  title: string;
+  description?: string;
+  order: number;
+  
+  // Assignment
+  assigneeType: 'role' | 'stakeholder' | 'ai';
+  assigneeId?: string;
+  assigneeRole?: string;
+  
+  // Timing
+  estimatedMinutes: number;
+  deadlineMinutes?: number; // From playbook start
+  
+  // Dependencies
+  dependsOn?: string[]; // Task IDs
+  blockedBy?: string[];
+  
+  // Completion
+  completionCriteria?: string;
+  requiresApproval?: boolean;
+  approverRole?: string;
+  
+  // AI assistance
+  aiAssisted?: boolean;
+  aiPrompt?: string;
+  templateContent?: string;
+}
+
+export interface ApprovalStep {
+  id: string;
+  order: number;
+  approverRole: string;
+  approverId?: string;
+  timeoutMinutes?: number;
+  autoApproveOnTimeout?: boolean;
+}
+
+export interface DecisionPoint {
+  id: string;
+  question: string;
+  order: number;
+  options: DecisionOption[];
+  aiRecommendationEnabled?: boolean;
+}
+
+export interface DecisionOption {
+  id: string;
+  label: string;
+  description?: string;
+  nextDecisionPointId?: string; // For branching
+  triggersPlaybookId?: string;
+  automatedAction?: string;
+}
+
+export interface TriggerEvent {
+  id: string;
+  type: string;
+  source: string;
+  timestamp: string;
+  data: Record<string, unknown>;
+  signalId?: string;
+}
+
+export interface LessonLearned {
+  id: string;
+  category: 'process' | 'timing' | 'communication' | 'decision' | 'resource';
+  observation: string;
+  recommendation: string;
+  appliedToPlaybook?: boolean;
+}
+
+export interface NotificationChannel {
+  type: 'email' | 'slack' | 'sms' | 'teams' | 'inapp';
+  address: string;
+  priority: 'all' | 'urgent' | 'critical';
+}
+
+
+// ============================================================================
+// SECTION 2: FRAMEWORK CONSTANTS (shared/constants/framework.ts)
+// ============================================================================
+
+// ----- IDEA FRAMEWORK DEFINITIONS -----
+
+export const IDEA_PHASES = {
+  IDENTIFY: {
+    id: 'identify',
+    name: 'IDENTIFY',
+    subtitle: 'Build Your Depth Chart',
+    description: 'Map your operating model to execution playbooks. Pre-stage responses across 9 strategic domains. Know who does what before anything happens.',
+    icon: 'ClipboardList', // Lucide icon name
+    color: '#3B82F6', // Blue
+    capabilities: [
+      'Operating Model Alignment diagnostic',
+      '166 pre-built playbooks ready to deploy',
+      'Stakeholder accountability mapping',
+      'Game Day Readiness scoring'
+    ]
+  },
+  DETECT: {
+    id: 'detect',
+    name: 'DETECT',
+    subtitle: 'Scout the Field',
+    description: 'AI-powered monitoring spots signals early. Real-time triggers across market, competitive, and regulatory landscapes. Scouting reports, not surprises.',
+    icon: 'Radar', // Lucide icon name
+    color: '#10B981', // Green
+    capabilities: [
+      'AI pattern recognition across 10,000+ scenarios',
+      'Competitive intelligence scouting',
+      'Early warning trigger system',
+      'Market signal monitoring'
+    ]
+  },
+  EXECUTE: {
+    id: 'execute',
+    name: 'EXECUTE',
+    subtitle: 'Run the Play',
+    description: 'Coordinated action in 12 minutes vs. 72-hour industry average. Everyone aligned, nothing lost in translation.',
+    icon: 'Play', // Lucide icon name
+    color: '#F59E0B', // Amber
+    capabilities: [
+      'Automated stakeholder routing',
+      'Real-time play clock tracking',
+      'Two-Minute Drill mode for urgent response',
+      'Halftime Adjustments for mid-execution pivots'
+    ]
+  },
+  ADVANCE: {
+    id: 'advance',
+    name: 'ADVANCE',
+    subtitle: 'Review the Film',
+    description: 'Every execution makes you stronger. Automated retrospectives capture what worked. Institutional knowledge compounds, not walks out the door.',
+    icon: 'TrendingUp', // Lucide icon name
+    color: '#8B5CF6', // Purple
+    capabilities: [
+      'Film Room post-action analysis',
+      'Playbook refinement recommendations',
+      'Performance benchmarking',
+      'Organizational learning capture'
+    ]
+  }
+} as const;
+
+export const IDEA_PHASES_ARRAY = Object.values(IDEA_PHASES);
+
+// ----- 9 STRATEGIC DOMAINS -----
+
+export const STRATEGIC_DOMAINS = {
+  CRISIS_RESPONSE: {
+    id: 'crisis-response',
+    name: 'Crisis Response',
+    description: 'Rapid response to unexpected events threatening operations or reputation',
+    icon: 'AlertTriangle',
+    playbookCount: 22,
+    examples: ['Ransomware attack', 'Data breach', 'Natural disaster', 'Executive crisis']
+  },
+  CYBER_INCIDENTS: {
+    id: 'cyber-incidents',
+    name: 'Cyber Incidents',
+    description: 'Detection and response to cybersecurity threats and vulnerabilities',
+    icon: 'Shield',
+    playbookCount: 18,
+    examples: ['Phishing campaign', 'System intrusion', 'DDoS attack', 'Insider threat']
+  },
+  MARKET_OPPORTUNITY: {
+    id: 'market-opportunity',
+    name: 'Market Opportunity',
+    description: 'Capitalize on emerging market conditions and competitive openings',
+    icon: 'TrendingUp',
+    playbookCount: 20,
+    examples: ['Competitor weakness', 'Market expansion', 'New segment entry', 'Partnership opportunity']
+  },
+  REGULATORY_CHANGE: {
+    id: 'regulatory-change',
+    name: 'Regulatory Change',
+    description: 'Adapt to new regulations, compliance requirements, and policy shifts',
+    icon: 'Scale',
+    playbookCount: 16,
+    examples: ['New compliance mandate', 'License requirement', 'Policy change', 'Audit preparation']
+  },
+  MA_INTEGRATION: {
+    id: 'ma-integration',
+    name: 'M&A Integration',
+    description: 'Orchestrate mergers, acquisitions, divestitures, and integrations',
+    icon: 'GitMerge',
+    playbookCount: 14,
+    examples: ['Day 1 readiness', 'System integration', 'Culture alignment', 'Synergy capture']
+  },
+  PRODUCT_LAUNCH: {
+    id: 'product-launch',
+    name: 'Product Launch',
+    description: 'Coordinate cross-functional product and service launches',
+    icon: 'Rocket',
+    playbookCount: 18,
+    examples: ['New product release', 'Feature rollout', 'Market launch', 'Beta program']
+  },
+  SUPPLY_CHAIN: {
+    id: 'supply-chain',
+    name: 'Supply Chain',
+    description: 'Respond to supplier disruptions and logistics challenges',
+    icon: 'Truck',
+    playbookCount: 16,
+    examples: ['Supplier failure', 'Logistics disruption', 'Quality issue', 'Demand surge']
+  },
+  TALENT_STRATEGY: {
+    id: 'talent-strategy',
+    name: 'Talent Strategy',
+    description: 'Execute workforce planning, retention, and organizational changes',
+    icon: 'Users',
+    playbookCount: 14,
+    examples: ['Key person departure', 'Restructuring', 'Hiring surge', 'Culture initiative']
+  },
+  INNOVATION_RESPONSE: {
+    id: 'innovation-response',
+    name: 'Innovation Response',
+    description: 'React to technological disruption and innovation opportunities',
+    icon: 'Lightbulb',
+    playbookCount: 18,
+    examples: ['Technology shift', 'AI adoption', 'Digital transformation', 'Competitive innovation']
+  }
+} as const;
+
+export const STRATEGIC_DOMAINS_ARRAY = Object.values(STRATEGIC_DOMAINS);
+
+// ----- PLAYBOOK CATEGORIES (Football Metaphor) -----
+
+export const PLAYBOOK_CATEGORIES = {
+  OFFENSE: {
+    id: 'offense',
+    name: 'Offense',
+    description: 'Proactive plays to capture opportunities and drive growth',
+    count: 58,
+    color: '#10B981', // Green
+    icon: 'Swords'
+  },
+  DEFENSE: {
+    id: 'defense',
+    name: 'Defense',
+    description: 'Reactive plays to protect against threats and minimize damage',
+    count: 56,
+    color: '#EF4444', // Red
+    icon: 'Shield'
+  },
+  SPECIAL_TEAMS: {
+    id: 'special_teams',
+    name: 'Special Teams',
+    description: 'Specialized plays for unique situations and transitions',
+    count: 52,
+    color: '#F59E0B', // Amber
+    icon: 'Star'
+  }
+} as const;
+
+export const PLAYBOOK_CATEGORIES_ARRAY = Object.values(PLAYBOOK_CATEGORIES);
+
+// ----- PILOT TIERS -----
+
+export const PILOT_TIERS = {
+  POC: {
+    id: 'poc',
+    name: 'Proof of Concept',
+    price: 125000, // $125,000
+    duration: '90 days',
+    playbooks: 30,
+    domains: 1,
+    features: [
+      'Single domain focus',
+      '30 customized playbooks',
+      'AI detection for selected scenarios',
+      'Basic analytics dashboard',
+      'Email support'
+    ],
+    idealFor: 'Teams validating the approach'
+  },
+  DOMAIN: {
+    id: 'domain',
+    name: 'Domain Mastery',
+    price: 250000, // $250,000
+    duration: '90 days',
+    playbooks: 56,
+    domains: 3,
+    features: [
+      'Three domain coverage',
+      '56 customized playbooks',
+      'Full AI detection suite',
+      'Advanced analytics & reporting',
+      'Dedicated CSM',
+      'Slack/Teams integration'
+    ],
+    idealFor: 'Departments proving ROI'
+  },
+  ENTERPRISE: {
+    id: 'enterprise',
+    name: 'Enterprise',
+    price: 500000, // $500,000
+    duration: '12 months',
+    playbooks: 166,
+    domains: 9,
+    features: [
+      'All 9 domains',
+      '166 customized playbooks',
+      'Unlimited AI detection',
+      'Executive dashboard',
+      'Dedicated CSM + TAM',
+      'Full system integration',
+      'Custom playbook development',
+      'Board reporting package'
+    ],
+    idealFor: 'Enterprise-wide transformation'
+  }
+} as const;
+
+export const PILOT_TIERS_ARRAY = Object.values(PILOT_TIERS);
+
+// ----- BRAND COPY & MESSAGING -----
+
+export const BRAND = {
+  name: 'M Platform',
+  tagline: 'Success Favors the Prepared',
+  taglineShort: "That's the IDEA.",
+  taglineLegacy: 'Execute Strategy at the Speed of Disruption',
+  
+  // Value propositions
+  speedClaim: {
+    before: '72 hours',
+    after: '12 minutes',
+    improvement: '360x faster'
+  },
+  
+  // Key stats (from McKinsey research)
+  stats: {
+    strategyValueLost: '30%',
+    annualLossRange: '$270M–$900M',
+    operatingModelRedesign: '67%',
+    strategyConsultingSpend: '$50B'
+  },
+  
+  // Problem statement
+  problemStatement: 'Your Strategy Is Better Than Your Execution',
+  problemSubtext: 'McKinsey research shows even high-performing companies lose 30% of their strategy\'s value in execution.',
+  
+  // Solution statement
+  solutionStatement: 'M Platform: The Execution Layer',
+  solutionSubtext: 'The first Strategic Execution Operating System—software that turns operating model design into coordinated action.',
+  
+  // Football metaphors
+  footballTerms: {
+    readiness: 'Game Day Readiness',
+    urgent: 'Two-Minute Drill',
+    adjustment: 'Halftime Adjustment',
+    review: 'Film Room',
+    preparation: 'Depth Chart',
+    monitoring: 'Scout the Field',
+    execution: 'Run the Play'
+  }
+} as const;
+
+// ----- UI COPY HELPERS -----
+
+export const UI_COPY = {
+  // Empty states
+  emptyStates: {
+    playbooks: {
+      title: 'Build Your Depth Chart',
+      description: 'Success favors the prepared. Add your first playbook to start.',
+      cta: 'Create Playbook'
+    },
+    signals: {
+      title: 'Scout the Field',
+      description: 'No signals detected yet. Your AI is monitoring for strategic triggers.',
+      cta: 'Configure Detection'
+    },
+    executions: {
+      title: 'Ready to Run the Play',
+      description: 'No active executions. Trigger a playbook when opportunity strikes.',
+      cta: 'Start Execution'
+    }
+  },
+  
+  // Dashboard headers
+  dashboardHeaders: {
+    identify: 'IDENTIFY Zone — Build Your Depth Chart',
+    detect: 'DETECT Zone — Scout the Field',
+    execute: 'EXECUTE Zone — Run the Play',
+    advance: 'ADVANCE Zone — Review the Film'
+  },
+  
+  // Action labels
+  actions: {
+    startExecution: 'Run the Play',
+    pauseExecution: 'Call Timeout',
+    urgentMode: 'Two-Minute Drill',
+    adjustMidstream: 'Halftime Adjustment',
+    reviewExecution: 'Film Room',
+    viewReadiness: 'Game Day Readiness'
+  },
+  
+  // Status labels
+  statuses: {
+    prepared: 'Game Ready',
+    inProgress: 'On the Field',
+    completed: 'Victory',
+    failed: 'Turnover',
+    paused: 'Timeout'
+  }
+} as const;
+
+// ----- PLAYBOOK COUNTS BY DOMAIN & CATEGORY -----
+
+export const PLAYBOOK_DISTRIBUTION = {
+  'crisis-response': { offense: 4, defense: 14, special_teams: 4 },
+  'cyber-incidents': { offense: 2, defense: 14, special_teams: 2 },
+  'market-opportunity': { offense: 16, defense: 2, special_teams: 2 },
+  'regulatory-change': { offense: 4, defense: 10, special_teams: 2 },
+  'ma-integration': { offense: 8, defense: 2, special_teams: 4 },
+  'product-launch': { offense: 14, defense: 2, special_teams: 2 },
+  'supply-chain': { offense: 2, defense: 10, special_teams: 4 },
+  'talent-strategy': { offense: 6, defense: 4, special_teams: 4 },
+  'innovation-response': { offense: 10, defense: 2, special_teams: 6 }
+} as const;
+
+// Total: Offense 58, Defense 56, Special Teams 52 = 166 playbooks
+
+
+// ============================================================================
+// SECTION 3: AI ENGINE (server/ai/idea-engine.ts)
+// ============================================================================
+
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+// ----- DETECT PHASE: Scenario Detection -----
+
+export interface IncomingEvent {
+  id: string;
+  source: string;
+  type: string;
+  title: string;
+  description: string;
+  timestamp: string;
+  metadata?: Record<string, unknown>;
+}
+
+export interface ScenarioMatch {
+  playbookId: string;
+  playbookName: string;
+  domain: string;
+  confidenceScore: number;
+  matchReason: string;
+  recommendedUrgency: 'normal' | 'elevated' | 'critical';
+}
+
+export async function detectScenario(
+  event: IncomingEvent,
+  availablePlaybooks: Array<{ id: string; name: string; domain: string; triggerConditions: TriggerCondition[] }>
+): Promise<ScenarioMatch[]> {
+  
+  // 1. Generate embedding for incoming event
+  const eventEmbedding = await openai.embeddings.create({
+    model: 'text-embedding-3-large',
+    input: `${event.title} ${event.description}`
+  });
+  
+  // 2. Compare against playbook trigger conditions
+  const matches: ScenarioMatch[] = [];
+  
+  for (const playbook of availablePlaybooks) {
+    const playbookText = `${playbook.name} ${playbook.triggerConditions.map(t => t.value).join(' ')}`;
+    
+    const playbookEmbedding = await openai.embeddings.create({
+      model: 'text-embedding-3-large',
+      input: playbookText
+    });
+    
+    // Calculate cosine similarity
+    const similarity = cosineSimilarity(
+      eventEmbedding.data[0].embedding,
+      playbookEmbedding.data[0].embedding
+    );
+    
+    const confidenceScore = Math.round(similarity * 100);
+    
+    if (confidenceScore >= 60) { // Threshold for match
+      matches.push({
+        playbookId: playbook.id,
+        playbookName: playbook.name,
+        domain: playbook.domain,
+        confidenceScore,
+        matchReason: await generateMatchReason(event, playbook),
+        recommendedUrgency: confidenceScore >= 85 ? 'critical' : confidenceScore >= 70 ? 'elevated' : 'normal'
+      });
+    }
+  }
+  
+  return matches.sort((a, b) => b.confidenceScore - a.confidenceScore);
+}
+
+function cosineSimilarity(a: number[], b: number[]): number {
+  const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dotProduct / (magnitudeA * magnitudeB);
+}
+
+async function generateMatchReason(event: IncomingEvent, playbook: { name: string }): Promise<string> {
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4-turbo',
+    messages: [{
+      role: 'system',
+      content: 'Generate a brief (1-2 sentence) explanation of why this event matches this playbook. Be specific and actionable.'
+    }, {
+      role: 'user',
+      content: `Event: ${event.title} - ${event.description}\nPlaybook: ${playbook.name}`
+    }],
+    max_tokens: 100
+  });
+  
+  return response.choices[0].message.content || 'Pattern match detected.';
+}
+
+// ----- EXECUTE PHASE: Decision Analysis -----
+
+export interface DecisionAnalysis {
+  recommendation: string;
+  confidence: number;
+  reasoning: string;
+  alternativeOptions: Array<{
+    option: string;
+    pros: string[];
+    cons: string[];
+  }>;
+}
+
+export async function analyzeDecisionOptions(
+  decisionTree: { name: string; decisionPoints: DecisionPoint[] },
+  currentContext: Record<string, unknown>
+): Promise<DecisionAnalysis> {
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4-turbo',
+    messages: [{
+      role: 'system',
+      content: `You are a strategic advisor analyzing decision options for M Platform.
+      Provide objective analysis based on the decision tree criteria and current context.
+      Format your response as JSON with fields: recommendation, confidence (0-100), reasoning, alternativeOptions.
+      Each alternativeOption should have: option, pros (array), cons (array).`
+    }, {
+      role: 'user',
+      content: JSON.stringify({ decisionTree, currentContext })
+    }],
+    response_format: { type: 'json_object' }
+  });
+  
+  return JSON.parse(response.choices[0].message.content || '{}');
+}
+
+// ----- EXECUTE PHASE: Template Population -----
+
+export async function populateTemplate(
+  template: string,
+  context: Record<string, unknown>
+): Promise<string> {
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4-turbo',
+    messages: [{
+      role: 'system',
+      content: `Populate this template with data from context.
+      Maintain professional tone and precision.
+      Replace all {{variable}} placeholders with appropriate values.
+      If a value is not available, use a reasonable placeholder like [TBD] or [Pending].`
+    }, {
+      role: 'user',
+      content: JSON.stringify({ template, context })
+    }]
+  });
+  
+  return response.choices[0].message.content || template;
+}
+
+// ----- ADVANCE PHASE: Execution Analysis -----
+
+export interface ExecutionInsights {
+  overallAssessment: string;
+  timeAnalysis: {
+    plannedMinutes: number;
+    actualMinutes: number;
+    variance: number;
+    bottlenecks: string[];
+  };
+  coordinationAnalysis: {
+    smoothHandoffs: string[];
+    problemAreas: string[];
+  };
+  recommendations: Array<{
+    category: 'process' | 'timing' | 'communication' | 'resource';
+    suggestion: string;
+    priority: 'high' | 'medium' | 'low';
+    applyToPlaybook: boolean;
+  }>;
+  successScore: number; // 0-100
+}
+
+export async function analyzeExecution(
+  execution: {
+    playbookName: string;
+    tasks: Array<{ title: string; plannedMinutes: number; actualMinutes: number; assignee: string; notes?: string }>;
+    outcome: string;
+    totalPlannedMinutes: number;
+    totalActualMinutes: number;
+  }
+): Promise<ExecutionInsights> {
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4-turbo',
+    messages: [{
+      role: 'system',
+      content: `Analyze this strategic execution using the M Platform ADVANCE framework (Film Room analysis).
+      Identify:
+      1. Tasks that took longer than expected (and why)
+      2. Bottlenecks in coordination
+      3. What went well
+      4. Specific recommendations for playbook improvement
+      
+      Return JSON with: overallAssessment, timeAnalysis, coordinationAnalysis, recommendations, successScore (0-100).`
+    }, {
+      role: 'user',
+      content: JSON.stringify(execution)
+    }],
+    response_format: { type: 'json_object' }
+  });
+  
+  return JSON.parse(response.choices[0].message.content || '{}');
+}
+
+// ----- IDENTIFY PHASE: Game Day Readiness Score -----
+
+export async function calculateReadinessScore(
+  organization: {
+    playbookCount: number;
+    domainsConfigured: number;
+    stakeholdersMapped: number;
+    avgExecutionTime: number;
+    lastExecutionDate: string | null;
+  }
+): Promise<{
+  score: number;
+  breakdown: Record<string, number>;
+  recommendations: string[];
+}> {
+  const breakdown = {
+    playbookCoverage: Math.min((organization.playbookCount / 166) * 100, 100) * 0.25,
+    domainCoverage: (organization.domainsConfigured / 9) * 100 * 0.20,
+    stakeholderReadiness: Math.min(organization.stakeholdersMapped / 20, 1) * 100 * 0.20,
+    executionSpeed: organization.avgExecutionTime > 0 
+      ? Math.max(0, 100 - (organization.avgExecutionTime / 60) * 10) * 0.20 
+      : 50 * 0.20,
+    recentActivity: organization.lastExecutionDate 
+      ? calculateRecencyScore(organization.lastExecutionDate) * 0.15
+      : 25 * 0.15
+  };
+  
+  const score = Math.round(Object.values(breakdown).reduce((a, b) => a + b, 0));
+  
+  const recommendations: string[] = [];
+  if (breakdown.playbookCoverage < 20) recommendations.push('Add more playbooks to improve coverage');
+  if (breakdown.domainCoverage < 15) recommendations.push('Configure additional strategic domains');
+  if (breakdown.stakeholderReadiness < 15) recommendations.push('Map more stakeholders for better coordination');
+  if (breakdown.executionSpeed < 15) recommendations.push('Focus on reducing execution time');
+  if (breakdown.recentActivity < 10) recommendations.push('Run a drill to maintain readiness');
+  
+  return { score, breakdown, recommendations };
+}
+
+function calculateRecencyScore(lastExecutionDate: string): number {
+  const daysSince = Math.floor((Date.now() - new Date(lastExecutionDate).getTime()) / (1000 * 60 * 60 * 24));
+  if (daysSince <= 7) return 100;
+  if (daysSince <= 14) return 80;
+  if (daysSince <= 30) return 60;
+  if (daysSince <= 60) return 40;
+  return 20;
+}
+
+
+// ============================================================================
+// SECTION 4: API ROUTES (server/routes/idea.ts)
+// ============================================================================
+
+import { Router } from 'express';
+import { db } from '../db';
+import { playbooks, executions, signals, organizations } from '../../shared/schema';
+import { eq, and, desc } from 'drizzle-orm';
+import { detectScenario, analyzeExecution, calculateReadinessScore } from '../ai/idea-engine';
+
+const router = Router();
+
+// ----- IDENTIFY PHASE ROUTES -----
+
+// Get Game Day Readiness Score
+router.get('/readiness/:organizationId', async (req, res) => {
+  try {
+    const { organizationId } = req.params;
+    
+    const [org] = await db.select().from(organizations).where(eq(organizations.id, organizationId));
+    if (!org) return res.status(404).json({ error: 'Organization not found' });
+    
+    const orgPlaybooks = await db.select().from(playbooks).where(eq(playbooks.organizationId, organizationId));
+    const recentExecutions = await db.select().from(executions)
+      .where(eq(executions.organizationId, organizationId))
+      .orderBy(desc(executions.completedAt))
+      .limit(10);
+    
+    const domainsConfigured = new Set(orgPlaybooks.map(p => p.domain)).size;
+    const avgExecutionTime = recentExecutions.length > 0
+      ? recentExecutions.reduce((sum, e) => sum + (e.actualDurationMinutes || 0), 0) / recentExecutions.length
+      : 0;
+    
+    const readiness = await calculateReadinessScore({
+      playbookCount: orgPlaybooks.length,
+      domainsConfigured,
+      stakeholdersMapped: 0, // TODO: Query stakeholders
+      avgExecutionTime,
+      lastExecutionDate: recentExecutions[0]?.completedAt?.toISOString() || null
+    });
+    
+    res.json(readiness);
+  } catch (error) {
+    console.error('Readiness calculation error:', error);
+    res.status(500).json({ error: 'Failed to calculate readiness' });
+  }
+});
+
+// Get playbooks by domain and category
+router.get('/playbooks/:organizationId', async (req, res) => {
+  try {
+    const { organizationId } = req.params;
+    const { domain, category } = req.query;
+    
+    let query = db.select().from(playbooks).where(eq(playbooks.organizationId, organizationId));
+    
+    const results = await query;
+    
+    // Filter in memory for simplicity (could optimize with SQL)
+    let filtered = results;
+    if (domain) filtered = filtered.filter(p => p.domain === domain);
+    if (category) filtered = filtered.filter(p => p.category === category);
+    
+    res.json(filtered);
+  } catch (error) {
+    console.error('Playbooks fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch playbooks' });
+  }
+});
+
+// ----- DETECT PHASE ROUTES -----
+
+// Process incoming signal and match to playbooks
+router.post('/detect', async (req, res) => {
+  try {
+    const { organizationId, event } = req.body;
+    
+    // Get organization's playbooks
+    const orgPlaybooks = await db.select().from(playbooks)
+      .where(eq(playbooks.organizationId, organizationId));
+    
+    // Run AI detection
+    const matches = await detectScenario(event, orgPlaybooks.map(p => ({
+      id: p.id,
+      name: p.name,
+      domain: p.domain,
+      triggerConditions: (p.triggerConditions as TriggerCondition[]) || []
+    })));
+    
+    // Store signal
+    const [signal] = await db.insert(signals).values({
+      organizationId,
+      source: event.source,
+      type: event.type,
+      title: event.title,
+      description: event.description,
+      confidenceScore: matches[0]?.confidenceScore || 0,
+      matchedPlaybookIds: matches.map(m => m.playbookId),
+      recommendedAction: matches[0]?.matchReason || null,
+      status: matches.length > 0 ? 'reviewing' : 'new'
+    }).returning();
+    
+    res.json({ signal, matches });
+  } catch (error) {
+    console.error('Detection error:', error);
+    res.status(500).json({ error: 'Failed to process signal' });
+  }
+});
+
+// Get active signals
+router.get('/signals/:organizationId', async (req, res) => {
+  try {
+    const { organizationId } = req.params;
+    const { status } = req.query;
+    
+    let results = await db.select().from(signals)
+      .where(eq(signals.organizationId, organizationId))
+      .orderBy(desc(signals.detectedAt))
+      .limit(50);
+    
+    if (status) {
+      results = results.filter(s => s.status === status);
+    }
+    
+    res.json(results);
+  } catch (error) {
+    console.error('Signals fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch signals' });
+  }
+});
+
+// ----- EXECUTE PHASE ROUTES -----
+
+// Start execution from playbook
+router.post('/execute', async (req, res) => {
+  try {
+    const { organizationId, playbookId, triggerEvent, urgencyMode } = req.body;
+    
+    const [playbook] = await db.select().from(playbooks).where(eq(playbooks.id, playbookId));
+    if (!playbook) return res.status(404).json({ error: 'Playbook not found' });
+    
+    const tasks = playbook.tasks as PlaybookTask[] || [];
+    
+    const [execution] = await db.insert(executions).values({
+      organizationId,
+      playbookId,
+      status: 'active',
+      phase: 'execute',
+      startedAt: new Date(),
+      targetCompletionMinutes: urgencyMode === 'two-minute-drill' ? 15 : playbook.estimatedDurationMinutes,
+      triggerEvent,
+      scenarioType: playbook.domain,
+      tasksTotal: tasks.length,
+      tasksCompleted: 0,
+      currentTaskId: tasks[0]?.id || null
+    }).returning();
+    
+    res.json(execution);
+  } catch (error) {
+    console.error('Execution start error:', error);
+    res.status(500).json({ error: 'Failed to start execution' });
+  }
+});
+
+// Update execution progress
+router.patch('/execute/:executionId', async (req, res) => {
+  try {
+    const { executionId } = req.params;
+    const { tasksCompleted, currentTaskId, status, phase } = req.body;
+    
+    const updateData: Record<string, unknown> = { updatedAt: new Date() };
+    if (tasksCompleted !== undefined) updateData.tasksCompleted = tasksCompleted;
+    if (currentTaskId !== undefined) updateData.currentTaskId = currentTaskId;
+    if (status !== undefined) updateData.status = status;
+    if (phase !== undefined) updateData.phase = phase;
+    
+    if (status === 'completed') {
+      updateData.completedAt = new Date();
+      
+      // Calculate actual duration
+      const [execution] = await db.select().from(executions).where(eq(executions.id, executionId));
+      if (execution) {
+        const durationMs = new Date().getTime() - new Date(execution.startedAt).getTime();
+        updateData.actualDurationMinutes = Math.round(durationMs / 60000);
+      }
+    }
+    
+    const [updated] = await db.update(executions)
+      .set(updateData)
+      .where(eq(executions.id, executionId))
+      .returning();
+    
+    res.json(updated);
+  } catch (error) {
+    console.error('Execution update error:', error);
+    res.status(500).json({ error: 'Failed to update execution' });
+  }
+});
+
+// ----- ADVANCE PHASE ROUTES -----
+
+// Analyze completed execution (Film Room)
+router.post('/advance/analyze/:executionId', async (req, res) => {
+  try {
+    const { executionId } = req.params;
+    const { taskDetails } = req.body; // Array of task completion details
+    
+    const [execution] = await db.select().from(executions).where(eq(executions.id, executionId));
+    if (!execution) return res.status(404).json({ error: 'Execution not found' });
+    
+    const [playbook] = await db.select().from(playbooks).where(eq(playbooks.id, execution.playbookId));
+    
+    const insights = await analyzeExecution({
+      playbookName: playbook?.name || 'Unknown',
+      tasks: taskDetails,
+      outcome: execution.outcome || 'completed',
+      totalPlannedMinutes: execution.targetCompletionMinutes || 60,
+      totalActualMinutes: execution.actualDurationMinutes || 0
+    });
+    
+    // Store lessons learned
+    await db.update(executions)
+      .set({
+        lessonsLearned: insights.recommendations.map(r => ({
+          id: crypto.randomUUID(),
+          category: r.category,
+          observation: r.suggestion,
+          recommendation: r.suggestion,
+          appliedToPlaybook: r.applyToPlaybook
+        }))
+      })
+      .where(eq(executions.id, executionId));
+    
+    res.json(insights);
+  } catch (error) {
+    console.error('Analysis error:', error);
+    res.status(500).json({ error: 'Failed to analyze execution' });
+  }
+});
+
+// Get execution history with insights
+router.get('/advance/history/:organizationId', async (req, res) => {
+  try {
+    const { organizationId } = req.params;
+    
+    const results = await db.select().from(executions)
+      .where(and(
+        eq(executions.organizationId, organizationId),
+        eq(executions.status, 'completed')
+      ))
+      .orderBy(desc(executions.completedAt))
+      .limit(20);
+    
+    res.json(results);
+  } catch (error) {
+    console.error('History fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch history' });
+  }
+});
+
+export default router;
+
+
+// ============================================================================
+// SECTION 5: REACT COMPONENTS (client/src/components/framework/)
+// ============================================================================
+
+// ----- IDEAPhaseIndicator.tsx -----
+
+import React from 'react';
+import { IDEA_PHASES, IDEA_PHASES_ARRAY } from '@/shared/constants/framework';
+import { ClipboardList, Radar, Play, TrendingUp } from 'lucide-react';
+
+const iconMap = {
+  ClipboardList,
+  Radar,
+  Play,
+  TrendingUp
+};
+
+interface IDEAPhaseIndicatorProps {
+  currentPhase: 'identify' | 'detect' | 'execute' | 'advance';
+  compact?: boolean;
+}
+
+export function IDEAPhaseIndicator({ currentPhase, compact = false }: IDEAPhaseIndicatorProps) {
+  return (
+    <div className={`flex ${compact ? 'gap-2' : 'gap-4'} items-center`}>
+      {IDEA_PHASES_ARRAY.map((phase, index) => {
+        const Icon = iconMap[phase.icon as keyof typeof iconMap];
+        const isActive = phase.id === currentPhase;
+        const isPast = IDEA_PHASES_ARRAY.findIndex(p => p.id === currentPhase) > index;
+        
+        return (
+          <React.Fragment key={phase.id}>
+            <div 
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all ${
+                isActive 
+                  ? 'bg-opacity-20 ring-2 ring-offset-2' 
+                  : isPast 
+                    ? 'opacity-60' 
+                    : 'opacity-40'
+              }`}
+              style={{ 
+                backgroundColor: isActive ? `${phase.color}20` : 'transparent',
+                borderColor: phase.color,
+                ringColor: isActive ? phase.color : 'transparent'
+              }}
+            >
+              <Icon 
+                className={`${compact ? 'w-4 h-4' : 'w-5 h-5'}`} 
+                style={{ color: phase.color }}
+              />
+              {!compact && (
+                <div>
+                  <div className="font-bold text-sm" style={{ color: phase.color }}>
+                    {phase.name}
+                  </div>
+                  <div className="text-xs text-gray-500">{phase.subtitle}</div>
+                </div>
+              )}
+            </div>
+            
+            {index < IDEA_PHASES_ARRAY.length - 1 && (
+              <div className={`h-0.5 ${compact ? 'w-4' : 'w-8'} bg-gray-300`} />
+            )}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+}
+
+
+// ----- GameDayReadiness.tsx -----
+
+import React from 'react';
+import { BRAND } from '@/shared/constants/framework';
+
+interface GameDayReadinessProps {
+  score: number;
+  breakdown?: Record<string, number>;
+  recommendations?: string[];
+}
+
+export function GameDayReadiness({ score, breakdown, recommendations }: GameDayReadinessProps) {
+  const getScoreColor = (s: number) => {
+    if (s >= 80) return '#10B981'; // Green
+    if (s >= 60) return '#F59E0B'; // Amber
+    if (s >= 40) return '#F97316'; // Orange
+    return '#EF4444'; // Red
+  };
+  
+  const getScoreLabel = (s: number) => {
+    if (s >= 80) return 'Game Ready';
+    if (s >= 60) return 'Practice Squad';
+    if (s >= 40) return 'Training Camp';
+    return 'Draft Day';
+  };
+  
+  return (
+    <div className="bg-white rounded-xl shadow-lg p-6">
+      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+        🏈 {BRAND.footballTerms.readiness}
+      </h3>
+      
+      <div className="flex items-center gap-6">
+        {/* Score Circle */}
+        <div 
+          className="relative w-32 h-32 rounded-full flex items-center justify-center"
+          style={{ 
+            background: `conic-gradient(${getScoreColor(score)} ${score * 3.6}deg, #E5E7EB ${score * 3.6}deg)`
+          }}
+        >
+          <div className="absolute inset-2 bg-white rounded-full flex flex-col items-center justify-center">
+            <span className="text-3xl font-bold" style={{ color: getScoreColor(score) }}>
+              {score}
+            </span>
+            <span className="text-xs text-gray-500">{getScoreLabel(score)}</span>
+          </div>
+        </div>
+        
+        {/* Breakdown */}
+        {breakdown && (
+          <div className="flex-1 space-y-2">
+            {Object.entries(breakdown).map(([key, value]) => (
+              <div key={key} className="flex items-center gap-2">
+                <div className="w-24 text-xs text-gray-600 capitalize">
+                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                </div>
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full rounded-full transition-all"
+                    style={{ 
+                      width: `${(value / 25) * 100}%`,
+                      backgroundColor: getScoreColor(value * 4)
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      
+      {/* Recommendations */}
+      {recommendations && recommendations.length > 0 && (
+        <div className="mt-4 p-3 bg-amber-50 rounded-lg">
+          <div className="text-sm font-medium text-amber-800 mb-2">Coach's Notes:</div>
+          <ul className="text-sm text-amber-700 space-y-1">
+            {recommendations.map((rec, i) => (
+              <li key={i}>• {rec}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+// ----- DomainSelector.tsx -----
+
+import React from 'react';
+import { STRATEGIC_DOMAINS_ARRAY } from '@/shared/constants/framework';
+import * as Icons from 'lucide-react';
+
+interface DomainSelectorProps {
+  selectedDomains: string[];
+  onChange: (domains: string[]) => void;
+  maxSelections?: number;
+}
+
+export function DomainSelector({ selectedDomains, onChange, maxSelections = 9 }: DomainSelectorProps) {
+  const toggleDomain = (domainId: string) => {
+    if (selectedDomains.includes(domainId)) {
+      onChange(selectedDomains.filter(d => d !== domainId));
+    } else if (selectedDomains.length < maxSelections) {
+      onChange([...selectedDomains, domainId]);
+    }
+  };
+  
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {STRATEGIC_DOMAINS_ARRAY.map(domain => {
+        const Icon = Icons[domain.icon as keyof typeof Icons] as React.ComponentType<{ className?: string }>;
+        const isSelected = selectedDomains.includes(domain.id);
+        
+        return (
+          <button
+            key={domain.id}
+            onClick={() => toggleDomain(domain.id)}
+            className={`p-4 rounded-xl border-2 transition-all text-left ${
+              isSelected 
+                ? 'border-blue-500 bg-blue-50' 
+                : 'border-gray-200 hover:border-gray-300'
+            }`}
+          >
+            <div className="flex items-center gap-3 mb-2">
+              {Icon && <Icon className={`w-5 h-5 ${isSelected ? 'text-blue-600' : 'text-gray-400'}`} />}
+              <span className={`font-medium ${isSelected ? 'text-blue-900' : 'text-gray-700'}`}>
+                {domain.name}
+              </span>
+            </div>
+            <p className="text-xs text-gray-500 mb-2">{domain.description}</p>
+            <div className="text-xs text-gray-400">{domain.playbookCount} playbooks</div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+
+// ----- PlaybookCard.tsx -----
+
+import React from 'react';
+import { PLAYBOOK_CATEGORIES } from '@/shared/constants/framework';
+import { Play, Clock, Users } from 'lucide-react';
+
+interface PlaybookCardProps {
+  playbook: {
+    id: string;
+    name: string;
+    domain: string;
+    category: 'offense' | 'defense' | 'special_teams';
+    description?: string;
+    estimatedDurationMinutes?: number;
+    requiredStakeholders?: string[];
+  };
+  onExecute?: (id: string) => void;
+}
+
+export function PlaybookCard({ playbook, onExecute }: PlaybookCardProps) {
+  const category = PLAYBOOK_CATEGORIES[playbook.category.toUpperCase() as keyof typeof PLAYBOOK_CATEGORIES];
+  
+  return (
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-5">
+      <div className="flex items-start justify-between mb-3">
+        <div>
+          <span 
+            className="inline-block px-2 py-1 rounded text-xs font-medium text-white mb-2"
+            style={{ backgroundColor: category?.color || '#6B7280' }}
+          >
+            {category?.name || playbook.category}
+          </span>
+          <h4 className="font-semibold text-gray-900">{playbook.name}</h4>
+        </div>
+      </div>
+      
+      {playbook.description && (
+        <p className="text-sm text-gray-600 mb-4 line-clamp-2">{playbook.description}</p>
+      )}
+      
+      <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+        {playbook.estimatedDurationMinutes && (
+          <div className="flex items-center gap-1">
+            <Clock className="w-3 h-3" />
+            {playbook.estimatedDurationMinutes} min
+          </div>
+        )}
+        {playbook.requiredStakeholders && (
+          <div className="flex items-center gap-1">
+            <Users className="w-3 h-3" />
+            {playbook.requiredStakeholders.length} roles
+          </div>
+        )}
+      </div>
+      
+      {onExecute && (
+        <button
+          onClick={() => onExecute(playbook.id)}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+        >
+          <Play className="w-4 h-4" />
+          Run the Play
+        </button>
+      )}
+    </div>
+  );
+}
+
+
+// ----- ExecutionTimer.tsx (The 72hr → 12min visual) -----
+
+import React, { useState, useEffect } from 'react';
+import { BRAND } from '@/shared/constants/framework';
+
+interface ExecutionTimerProps {
+  startTime: Date;
+  targetMinutes: number;
+  isUrgent?: boolean;
+}
+
+export function ExecutionTimer({ startTime, targetMinutes, isUrgent = false }: ExecutionTimerProps) {
+  const [elapsed, setElapsed] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setElapsed(Math.floor((Date.now() - startTime.getTime()) / 1000));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [startTime]);
+  
+  const elapsedMinutes = Math.floor(elapsed / 60);
+  const elapsedSeconds = elapsed % 60;
+  const progress = Math.min((elapsed / 60 / targetMinutes) * 100, 100);
+  const isOvertime = elapsedMinutes > targetMinutes;
+  
+  return (
+    <div className={`rounded-xl p-6 ${isUrgent ? 'bg-red-50 border-2 border-red-200' : 'bg-gray-50'}`}>
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <div className="text-sm text-gray-500">
+            {isUrgent ? '🚨 Two-Minute Drill' : '⏱️ Play Clock'}
+          </div>
+          <div className={`text-4xl font-mono font-bold ${isOvertime ? 'text-red-600' : 'text-gray-900'}`}>
+            {String(elapsedMinutes).padStart(2, '0')}:{String(elapsedSeconds).padStart(2, '0')}
+          </div>
+        </div>
+        
+        <div className="text-right">
+          <div className="text-sm text-gray-500">Target</div>
+          <div className="text-2xl font-bold text-gray-400">{targetMinutes}:00</div>
+        </div>
+      </div>
+      
+      {/* Progress bar */}
+      <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+        <div 
+          className={`h-full transition-all duration-1000 ${
+            isOvertime ? 'bg-red-500' : progress > 75 ? 'bg-amber-500' : 'bg-green-500'
+          }`}
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+      
+      {/* Comparison callout */}
+      <div className="mt-4 flex items-center justify-center gap-2 text-sm">
+        <span className="text-gray-400 line-through">{BRAND.speedClaim.before}</span>
+        <span className="text-gray-400">→</span>
+        <span className="text-green-600 font-semibold">{BRAND.speedClaim.after}</span>
+        <span className="text-gray-500">({BRAND.speedClaim.improvement})</span>
+      </div>
+    </div>
+  );
+}
+
+
+// ----- SignalCard.tsx -----
+
+import React from 'react';
+import { AlertTriangle, TrendingUp, Shield, Zap } from 'lucide-react';
+
+interface SignalCardProps {
+  signal: {
+    id: string;
+    title: string;
+    description?: string;
+    source: string;
+    confidenceScore?: number;
+    recommendedAction?: string;
+    status: string;
+  };
+  onAction?: (signalId: string, action: 'review' | 'dismiss' | 'execute') => void;
+}
+
+export function SignalCard({ signal, onAction }: SignalCardProps) {
+  const getUrgencyIcon = (score?: number) => {
+    if (!score) return <Zap className="w-5 h-5 text-gray-400" />;
+    if (score >= 85) return <AlertTriangle className="w-5 h-5 text-red-500" />;
+    if (score >= 70) return <TrendingUp className="w-5 h-5 text-amber-500" />;
+    return <Shield className="w-5 h-5 text-blue-500" />;
+  };
+  
+  return (
+    <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-blue-500">
+      <div className="flex items-start gap-3">
+        {getUrgencyIcon(signal.confidenceScore)}
+        
+        <div className="flex-1">
+          <div className="flex items-center justify-between mb-1">
+            <h4 className="font-semibold text-gray-900">{signal.title}</h4>
+            {signal.confidenceScore && (
+              <span className="text-sm font-medium text-gray-500">
+                {signal.confidenceScore}% match
+              </span>
+            )}
+          </div>
+          
+          {signal.description && (
+            <p className="text-sm text-gray-600 mb-3">{signal.description}</p>
+          )}
+          
+          {signal.recommendedAction && (
+            <div className="bg-blue-50 rounded-lg p-3 mb-3">
+              <div className="text-xs text-blue-600 font-medium mb-1">AI Recommendation:</div>
+              <div className="text-sm text-blue-800">{signal.recommendedAction}</div>
+            </div>
+          )}
+          
+          {onAction && signal.status === 'reviewing' && (
+            <div className="flex gap-2">
+              <button
+                onClick={() => onAction(signal.id, 'execute')}
+                className="px-3 py-1.5 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700"
+              >
+                Run Playbook
+              </button>
+              <button
+                onClick={() => onAction(signal.id, 'dismiss')}
+                className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-lg hover:bg-gray-200"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+// ----- FrameworkExplainer.tsx (For /learn or /methodology page) -----
+
+import React from 'react';
+import { IDEA_PHASES_ARRAY, BRAND, STRATEGIC_DOMAINS_ARRAY, PLAYBOOK_CATEGORIES_ARRAY } from '@/shared/constants/framework';
+
+export function FrameworkExplainer() {
+  return (
+    <div className="max-w-4xl mx-auto py-12 px-6">
+      {/* Hero */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          The IDEA Framework™
+        </h1>
+        <p className="text-xl text-gray-600 mb-2">
+          Four phases. One system. Prepared to execute—no matter the situation.
+        </p>
+        <p className="text-2xl font-semibold text-blue-600">
+          {BRAND.taglineShort}
+        </p>
+      </div>
+      
+      {/* Problem Statement */}
+      <div className="bg-red-50 rounded-2xl p-8 mb-12">
+        <h2 className="text-2xl font-bold text-red-900 mb-4">{BRAND.problemStatement}</h2>
+        <p className="text-red-800 mb-4">{BRAND.problemSubtext}</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-white rounded-lg p-4 text-center">
+            <div className="text-3xl font-bold text-red-600">{BRAND.stats.strategyValueLost}</div>
+            <div className="text-sm text-gray-600">Value lost in execution</div>
+          </div>
+          <div className="bg-white rounded-lg p-4 text-center">
+            <div className="text-3xl font-bold text-red-600">{BRAND.stats.annualLossRange}</div>
+            <div className="text-sm text-gray-600">Annual F500 loss</div>
+          </div>
+          <div className="bg-white rounded-lg p-4 text-center">
+            <div className="text-3xl font-bold text-red-600">{BRAND.speedClaim.before}</div>
+            <div className="text-sm text-gray-600">Avg response time</div>
+          </div>
+          <div className="bg-white rounded-lg p-4 text-center">
+            <div className="text-3xl font-bold text-green-600">{BRAND.speedClaim.after}</div>
+            <div className="text-sm text-gray-600">With M Platform</div>
+          </div>
+        </div>
+      </div>
+      
+      {/* IDEA Phases */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-center mb-8">I · D · E · A</h2>
+        <div className="space-y-8">
+          {IDEA_PHASES_ARRAY.map((phase, index) => (
+            <div 
+              key={phase.id}
+              className="flex gap-6 items-start p-6 rounded-2xl"
+              style={{ backgroundColor: `${phase.color}10` }}
+            >
+              <div 
+                className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0"
+                style={{ backgroundColor: phase.color }}
+              >
+                {phase.name.charAt(0)}
+              </div>
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-xl font-bold" style={{ color: phase.color }}>
+                    {phase.name}
+                  </h3>
+                  <span className="text-gray-500">— "{phase.subtitle}"</span>
+                </div>
+                <p className="text-gray-700 mb-4">{phase.description}</p>
+                <ul className="grid grid-cols-2 gap-2">
+                  {phase.capabilities.map((cap, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                      <span style={{ color: phase.color }}>✓</span> {cap}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Strategic Domains */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-center mb-8">9 Strategic Domains</h2>
+        <div className="grid grid-cols-3 gap-4">
+          {STRATEGIC_DOMAINS_ARRAY.map(domain => (
+            <div key={domain.id} className="bg-gray-50 rounded-xl p-4">
+              <h4 className="font-semibold text-gray-900 mb-1">{domain.name}</h4>
+              <p className="text-xs text-gray-500 mb-2">{domain.description}</p>
+              <div className="text-sm text-blue-600">{domain.playbookCount} playbooks</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Playbook Categories */}
+      <div className="mb-16">
+        <h2 className="text-2xl font-bold text-center mb-8">166 Playbooks</h2>
+        <div className="flex justify-center gap-8">
+          {PLAYBOOK_CATEGORIES_ARRAY.map(cat => (
+            <div key={cat.id} className="text-center">
+              <div 
+                className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl font-bold mb-3 mx-auto"
+                style={{ backgroundColor: cat.color }}
+              >
+                {cat.count}
+              </div>
+              <div className="font-semibold">{cat.name}</div>
+              <div className="text-xs text-gray-500 max-w-[120px]">{cat.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Tagline */}
+      <div className="text-center py-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl text-white">
+        <p className="text-2xl font-light mb-2">{BRAND.tagline}</p>
+        <p className="text-4xl font-bold">{BRAND.taglineShort}</p>
+      </div>
+    </div>
+  );
+}
+
+
+// ============================================================================
+// SECTION 6: QUICK REFERENCE - FILE PLACEMENT
+// ============================================================================
+
+/*
+COPY THESE SECTIONS TO THESE FILES IN REPLIT:
+
+1. SECTION 1 (Schema) 
+   → shared/schema.ts
+   → Merge with your existing schema, add the new tables
+
+2. SECTION 2 (Constants)
+   → Create new file: shared/constants/framework.ts
+   → Import where needed: import { IDEA_PHASES, BRAND } from '@/shared/constants/framework'
+
+3. SECTION 3 (AI Engine)
+   → Create new file: server/ai/idea-engine.ts
+   → Make sure OPENAI_API_KEY is in your .env
+
+4. SECTION 4 (API Routes)
+   → Create new file: server/routes/idea.ts
+   → Add to server/index.ts: 
+     import ideaRoutes from './routes/idea';
+     app.use('/api/idea', ideaRoutes);
+
+5. SECTION 5 (React Components)
+   → Create new folder: client/src/components/framework/
+   → Create individual files for each component:
+     - IDEAPhaseIndicator.tsx
+     - GameDayReadiness.tsx
+     - DomainSelector.tsx
+     - PlaybookCard.tsx
+     - ExecutionTimer.tsx
+     - SignalCard.tsx
+     - FrameworkExplainer.tsx
+   → Create index.ts to export all:
+     export * from './IDEAPhaseIndicator';
+     export * from './GameDayReadiness';
+     // etc.
+
+DEPENDENCIES TO ADD (if not already installed):
+npm install openai lucide-react
+
+ENV VARS NEEDED:
+OPENAI_API_KEY=sk-your-key-here
+
+*/
+
+
+// ============================================================================
+// END OF FILE
+// ============================================================================

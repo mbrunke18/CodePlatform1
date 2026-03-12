@@ -1,0 +1,259 @@
+import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "wouter";
+
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+
+import {
+  ArrowRight,
+  Layers,
+  BookOpen,
+  Shield,
+  Zap,
+  Radar,
+  Radio,
+  BarChart3,
+  Clock,
+  Users,
+  Sparkles,
+  AlertTriangle,
+} from "lucide-react";
+
+import type { Playbook } from "@shared/schema";
+
+/**
+ * MAX-VALUE Canonical Playbook Library
+ * Product signals > content listing
+ */
+
+const CATEGORIES = {
+  offense: { label: "OFFENSE", tagline: "Seize Opportunities", icon: Zap },
+  defense: { label: "DEFENSE", tagline: "Protect Value", icon: Shield },
+  special_teams: { label: "SPECIAL TEAMS", tagline: "Change the Game", icon: BookOpen },
+} as const;
+
+type Category = keyof typeof CATEGORIES;
+
+const PHASES = {
+  identify: { label: "Identify", badge: "bg-violet-100 text-violet-700" },
+  detect: { label: "Detect", badge: "bg-blue-100 text-blue-700" },
+  execute: { label: "Execute", badge: "bg-emerald-100 text-emerald-700" },
+  advance: { label: "Advance", badge: "bg-amber-100 text-amber-700" },
+} as const;
+
+type PhaseKey = keyof typeof PHASES;
+
+export default function PlaybookLibrary() {
+  const [, setLocation] = useLocation();
+  const [search, setSearch] = useState("");
+
+  const { data, isLoading } = useQuery<Playbook[]>({
+    queryKey: ["/api/playbooks"],
+  });
+
+  const filtered = useMemo(() => {
+    if (!data) return [];
+    const q = search.toLowerCase();
+    return data.filter(
+      (pb) =>
+        pb.name.toLowerCase().includes(q) ||
+        pb.domain.toLowerCase().includes(q)
+    );
+  }, [data, search]);
+
+  const grouped = useMemo(() => {
+    const base: Record<Category, Playbook[]> = {
+      offense: [],
+      defense: [],
+      special_teams: [],
+    };
+
+    filtered.forEach((pb) => {
+      if (!pb.category) return;
+      if (pb.category in base) {
+        base[pb.category as Category].push(pb);
+      }
+    });
+
+    return base;
+  }, [filtered]);
+
+  const totalCount = filtered.length;
+
+  return (
+    <>
+      <StandardNav />
+
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        {/* Header */}
+        <header className="mb-10">
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
+            Playbook Library
+          </h1>
+          <p className="text-slate-600 dark:text-slate-400 mt-2">
+            From signal to coordinated action in minutes—not days.
+          </p>
+        </header>
+
+        {/* Search */}
+        <div className="mb-10 max-w-md">
+          <Input
+            placeholder="Search by scenario, domain, or objective…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            data-testid="input-search"
+          />
+        </div>
+
+        {/* Stats */}
+        {!isLoading && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
+            <Stat label="Total Playbooks" value={totalCount} />
+            <Stat label="Offense" value={grouped.offense.length} />
+            <Stat label="Defense" value={grouped.defense.length} />
+            <Stat label="Special Teams" value={grouped.special_teams.length} />
+          </div>
+        )}
+
+        {/* Loading */}
+        {isLoading && (
+          <div className="py-24 text-center text-slate-500">
+            <Layers className="h-8 w-8 mx-auto mb-3 animate-pulse" />
+            Loading strategic plays…
+          </div>
+        )}
+
+        {/* Empty */}
+        {!isLoading && totalCount === 0 && (
+          <div className="py-24 text-center text-slate-500">
+            No playbooks found. Strategy gaps often hide here.
+          </div>
+        )}
+
+        {/* Categories */}
+        {!isLoading &&
+          (Object.keys(CATEGORIES) as Category[]).map((category) => {
+            const meta = CATEGORIES[category];
+            const playbooks = grouped[category];
+
+            if (playbooks.length === 0) return null;
+
+            return (
+              <section key={category} className="mb-16">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <meta.icon className="h-6 w-6 text-slate-500" />
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                        {meta.label}
+                      </h2>
+                      <p className="text-slate-500">{meta.tagline}</p>
+                    </div>
+                  </div>
+
+                  <Badge variant="secondary">
+                    {playbooks.length}
+                  </Badge>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {playbooks.map((playbook) => {
+                    const phaseKey = (playbook as any).phase as PhaseKey | undefined;
+                    const phase = phaseKey ? PHASES[phaseKey] : null;
+
+                    const tasks = Array.isArray((playbook as any).tasks)
+                      ? (playbook as any).tasks.length
+                      : 0;
+
+                    const urgency = tasks > 12 ? "high" : tasks > 6 ? "medium" : "low";
+
+                    return (
+                      <Card
+                        key={playbook.id}
+                        className="cursor-pointer transition hover:shadow-xl"
+                        onClick={() => setLocation(`/playbooks/${playbook.id}`)}
+                      >
+                        <CardHeader className="space-y-3">
+                          <CardTitle>{playbook.name}</CardTitle>
+                          <CardDescription>{playbook.domain}</CardDescription>
+
+                          <div className="flex flex-wrap gap-2">
+                            {phase && (
+                              <Badge className={phase.badge}>
+                                {phase.label}
+                              </Badge>
+                            )}
+
+                            <Badge variant="outline">
+                              <Clock className="h-3 w-3 mr-1" />
+                              ~12 min
+                            </Badge>
+
+                            <Badge variant="outline">
+                              <Users className="h-3 w-3 mr-1" />
+                              Human-led
+                            </Badge>
+
+                            <Badge variant="outline">
+                              <Sparkles className="h-3 w-3 mr-1" />
+                              AI-assisted
+                            </Badge>
+
+                            {urgency === "high" && (
+                              <Badge className="bg-red-100 text-red-700">
+                                <AlertTriangle className="h-3 w-3 mr-1" />
+                                High urgency
+                              </Badge>
+                            )}
+                          </div>
+                        </CardHeader>
+
+                        <CardContent className="space-y-4">
+                          {playbook.description && (
+                            <p className="text-sm text-slate-600 dark:text-slate-400">
+                              {playbook.description}
+                            </p>
+                          )}
+
+                          <div className="text-sm text-slate-500">
+                            {tasks} coordinated actions
+                          </div>
+
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-between"
+                          >
+                            Open Playbook
+                            <ArrowRight className="h-4 w-4" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="text-center">
+      <div className="text-2xl font-bold text-slate-900 dark:text-white">
+        {value}
+      </div>
+      <div className="text-sm text-slate-500">{label}</div>
+    </div>
+  );
+}

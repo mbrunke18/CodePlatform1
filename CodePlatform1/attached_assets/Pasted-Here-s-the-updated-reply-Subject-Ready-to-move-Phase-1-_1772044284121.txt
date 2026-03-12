@@ -1,0 +1,73 @@
+Here's the updated reply:
+
+---
+
+**Subject:** Ready to move — Phase 1 priorities + integration scope
+
+---
+
+Thanks for the detailed roadmap. This is well-structured and I'm ready to move.
+
+A few updates and clarifications before we start:
+
+**Naming:**
+- Company: VaughnMartin
+- Product: Execution OS
+
+Please update any references in the codebase accordingly.
+
+**Phase 1 — Confirmed priorities:**
+1. Fix tenant isolation (critical path)
+2. Replace simulated metrics with real database queries
+3. Build admin panel for org/user management
+4. Wire SendGrid for email delivery (I'll verify sender domain this week)
+5. Deploy to production
+
+**Phase 2 — Adjustments:**
+
+*Remove:*
+- Stripe billing — not needed for now. Finance will handle invoicing manually for early customers.
+
+*Expand integrations to cover categories, not single tools:*
+
+| Category | Products to Support |
+|----------|---------------------|
+| Project/Issue Tracking | Jira, Azure DevOps, Asana, Monday.com, Linear, Shortcut |
+| Communication | Slack, Microsoft Teams, Google Chat |
+| CRM | Salesforce, HubSpot, Microsoft Dynamics |
+| IT Service Management | ServiceNow, Jira Service Management, Zendesk |
+| Documentation | Confluence, Notion, SharePoint |
+| Source Control | GitHub, GitLab, Azure Repos, Bitbucket |
+
+**Phase 2 build priority:**
+
+| Category | Build First | Build Second |
+|----------|-------------|--------------|
+| Project Tracking | Jira | Azure DevOps |
+| Communication | Slack | Microsoft Teams |
+| CRM | Salesforce | HubSpot |
+| ITSM | ServiceNow | Jira Service Management |
+
+Build these behind an abstraction layer so adding future adapters doesn't require rewriting core logic. Each adapter should translate tool-specific data into a standard signal format.
+
+**Customer onboarding flow should ask:**
+1. "What do you use for project tracking?" → dropdown with options + "Other (coming soon)"
+2. "What do you use for communication?" → dropdown with options + "Other (coming soon)"
+3. Connect via OAuth
+4. Ready
+
+**Questions for you:**
+1. How long do you estimate for the tenant isolation fix? This is the blocker — I want to make sure it's fully scoped.
+2. For the integration abstraction layer — is that already in place, or does it need to be built?
+3. What do you need from me this week to unblock Phase 1?
+
+I'll handle:
+- SendGrid domain verification
+- Pricing decisions (for when we add billing later)
+- First customer targeting
+
+Let's get Phase 1 done in the next 2 weeks.
+
+---
+
+Ready to send?

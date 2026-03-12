@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaughnMartin — Site Architecture & Page Frames</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --navy:      #0A0F2E;
+  --navy-mid:  #141B45;
+  --gold:      #C9A84C;
+  --gold-lt:   #DFC178;
+  --teal:      #2B8A6E;
+  --teal-lt:   #3BAF8A;
+  --white:     #FFFFFF;
+  --off:       #F8F7F4;
+  --border:    #E8E4DC;
+  --muted:     #6B7280;
+  --label:     #9CA3AF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  background: #F0EDE8;
+  color: var(--navy);
+}
+
+/* ─── TOP NAV (persistent) ─── */
+.site-nav {
+  position: sticky;
+  top: 0; z-index: 999;
+  background: var(--navy);
+  padding: 0 40px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.site-nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+
+.site-nav-logo svg { width: 28px; height: 28px; }
+
+.site-nav-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 16px;
+  color: var(--white); letter-spacing: 0.02em;
+}
+
+.site-nav-product {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-left: 2px;
+}
+
+.site-nav-links {
+  display: flex; gap: 28px; list-style: none;
+}
+
+.site-nav-links a {
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none; letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.site-nav-links a:hover,
+.site-nav-links a.active { color: var(--gold); }
+
+.site-nav-btns { display: flex; gap: 8px; }
+
+.snb {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 6px 16px; text-decoration: none;
+}
+
+.snb-ghost {
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.6);
+}
+
+.snb-gold { background: var(--gold); color: var(--navy); }
+
+/* ─── SECTION HEADER ─── */
+.section-header {
+  background: var(--navy);
+  padding: 20px 40px;
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sh-left { display: flex; align-items: center; gap: 16px; }
+
+.sh-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.3em;
+}
+
+.sh-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--white);
+}
+
+.sh-url {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  padding: 4px 12px; border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sh-tags { display: flex; gap: 8px; }
+
+.sh-tag {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 3px 10px; border: 1px solid;
+}
+
+.sh-tag.public { border-color: rgba(43,138,110,0.4); color: var(--teal-lt); }
+.sh-tag.auth { border-color: rgba(201,168,76,0.4); color: var(--gold); }
+.sh-tag.admin { border-color: rgba(220,38,38,0.4); color: #F87171; }
+
+/* ─── PAGE FRAME ─── */
+.page-frame {
+  margin: 32px 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(10,15,46,0.1);
+  overflow: hidden;
+}
+
+.pf-spacer { margin-bottom: 48px; }
+
+/* ─── SHARED FRAME ELEMENTS ─── */
+.frame-nav {
+  height: 64px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.fn-logo { display: flex; align-items: center; gap: 10px; }
+
+.fn-mark {
+  width: 32px; height: 32px;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.fn-company {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 17px; color: var(--navy);
+}
+
+.fn-product {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+.fn-links { display: flex; gap: 28px; list-style: none; }
+
+.fn-links a {
+  font-size: 12px; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+}
+
+.fn-links a.active { color: var(--navy); font-weight: 700; }
+
+.fn-btns { display: flex; gap: 8px; }
+
+.fnb {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 7px 16px; text-decoration: none;
+}
+
+.fnb-demo { border: 1.5px solid var(--border); color: var(--navy); }
+.fnb-pilot { background: var(--navy); color: var(--white); }
+
+/* ─── HERO VARIANTS ─── */
+.hero-navy {
+  background: var(--navy);
+  padding: 64px 48px;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-navy .bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.hero-white {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 48px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-off {
+  background: var(--off);
+  border-bottom: 1px solid var(--border);
+  padding: 56px 48px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
+}
+
+.hero-split-left {
+  background: var(--navy);
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-split-right {
+  background: var(--off);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+}
+
+/* ─── EYEBROW ─── */
+.ey {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ey-line { height: 2px; width: 28px; }
+.ey-line.g { background: var(--gold); }
+.ey-line.t { background: var(--teal); }
+.ey-line.w { background: rgba(255,255,255,0.35); }
+
+.ey-text {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+}
+
+.ey-text.g { color: var(--gold); }
+.ey-text.t { color: var(--teal); }
+.ey-text.w { color: rgba(255,255,255,0.45); }
+
+/* ─── TYPOGRAPHY ─── */
+.h1-dark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 48px;
+  line-height: 1.05; color: var(--white);
+}
+
+.h1-light {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 48px;
+  line-height: 1.05; color: var(--navy);
+}
+
+.h2-dark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 36px;
+  line-height: 1.1; color: var(--white);
+}
+
+.h2-light {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 36px;
+  line-height: 1.1; color: var(--navy);
+}
+
+.em-gold { font-style: italic; color: var(--gold-lt); }
+.em-teal { font-style: italic; color: var(--teal-lt); }
+
+.p-dark {
+  font-size: 14px; font-weight: 400; line-height: 1.8;
+  color: rgba(255,255,255,0.5); max-width: 480px;
+}
+
+.p-light {
+  font-size: 14px; font-weight: 400; line-height: 1.8;
+  color: var(--muted); max-width: 480px;
+}
+
+/* ─── LAYOUT SKELETONS ─── */
+.skel {
+  background: var(--off);
+  border: 1px solid var(--border);
+}
+
+.skel.dark { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+
+.skel-row {
+  height: 12px; border-radius: 0;
+  background: rgba(0,0,0,0.08);
+  margin-bottom: 8px;
+}
+
+.skel-row.dark { background: rgba(255,255,255,0.08); }
+
+.skel-row.w30 { width: 30%; }
+.skel-row.w50 { width: 50%; }
+.skel-row.w70 { width: 70%; }
+.skel-row.w90 { width: 90%; }
+.skel-row.full { width: 100%; }
+
+/* ─── CONTENT ZONES ─── */
+.content-zone {
+  padding: 40px 48px;
+  background: var(--white);
+}
+
+.content-zone.off { background: var(--off); }
+.content-zone.navy { background: var(--navy); }
+
+/* ─── GRID SYSTEMS ─── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+.g-sidebar { display: grid; grid-template-columns: 260px 1fr; gap: 0; }
+
+/* ─── CARD TYPES ─── */
+.card-outline {
+  border: 1px solid var(--border);
+  padding: 24px;
+  background: var(--white);
+}
+
+.card-outline:hover { border-color: var(--navy); }
+
+.card-navy {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 24px;
+}
+
+.card-gold {
+  border: 1px solid rgba(201,168,76,0.2);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  background: var(--white);
+}
+
+.card-teal {
+  border: 1px solid rgba(43,138,110,0.2);
+  border-left: 3px solid var(--teal);
+  padding: 20px 24px;
+  background: var(--white);
+}
+
+.card-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--label); margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 15px; font-weight: 700;
+  color: var(--navy); margin-bottom: 6px;
+}
+
+.card-title.dark { color: var(--white); }
+
+.card-body {
+  font-size: 12px; font-weight: 400;
+  color: var(--muted); line-height: 1.7;
+}
+
+.card-body.dark { color: rgba(255,255,255,0.4); }
+
+/* ─── SIDEBAR ─── */
+.sidebar-left {
+  background: var(--off);
+  border-right: 1px solid var(--border);
+  padding: 32px 24px;
+  min-height: 400px;
+}
+
+.sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar-nav li a {
+  display: block; padding: 10px 14px;
+  font-size: 13px; font-weight: 500;
+  color: var(--muted); text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sidebar-nav li a:hover { color: var(--navy); background: var(--border); }
+.sidebar-nav li a.active {
+  color: var(--navy); font-weight: 700;
+  background: var(--white);
+  border-left: 2px solid var(--gold);
+  padding-left: 12px;
+}
+
+.sidebar-section-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--label); padding: 16px 14px 6px;
+}
+
+/* ─── TABLE ─── */
+.data-table {
+  width: 100%; border-collapse: collapse;
+}
+
+.data-table th {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  background: var(--off);
+}
+
+.data-table td {
+  padding: 14px 16px;
+  font-size: 13px; font-weight: 500;
+  color: var(--navy);
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table tr:hover td { background: rgba(201,168,76,0.03); }
+
+/* ─── BADGES ─── */
+.badge {
+  display: inline-flex; align-items: center;
+  gap: 5px; padding: 3px 10px;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+.badge.live { background: rgba(43,138,110,0.12); color: var(--teal-lt); }
+.badge.live .badge-dot { background: var(--teal-lt); }
+
+.badge.pending { background: rgba(201,168,76,0.12); color: var(--gold); }
+.badge.pending .badge-dot { background: var(--gold); }
+
+.badge.done { background: rgba(0,0,0,0.05); color: var(--muted); }
+.badge.done .badge-dot { background: var(--label); }
+
+/* ─── FORM ELEMENTS ─── */
+.form-field { margin-bottom: 20px; }
+
+.form-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 6px;
+  display: block;
+}
+
+.form-input {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--navy); background: var(--white);
+  outline: none; transition: border-color 0.2s;
+}
+
+.form-input:focus { border-color: var(--navy); }
+
+.form-select {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--navy); background: var(--white);
+  appearance: none;
+}
+
+/* ─── METRIC BLOCK ─── */
+.metric-block {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.metric-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 600;
+  line-height: 1; color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.metric-num.gold { color: var(--gold); }
+.metric-num.teal { color: var(--teal); }
+
+.metric-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── STEP INDICATOR ─── */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  background: var(--off);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  gap: 0;
+}
+
+.si-step {
+  display: flex; align-items: center; gap: 10px;
+  flex: 1;
+}
+
+.si-num {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+}
+
+.si-num.done { background: var(--teal); color: var(--white); }
+.si-num.active { background: var(--navy); color: var(--gold); }
+.si-num.todo { background: var(--border); color: var(--muted); }
+
+.si-label { font-size: 11px; font-weight: 600; color: var(--navy); }
+.si-label.todo { color: var(--muted); font-weight: 500; }
+
+.si-divider {
+  height: 1px; background: var(--border);
+  flex: 1; max-width: 40px; margin: 0 8px;
+}
+
+/* ─── FOOTER FRAME ─── */
+.frame-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+}
+
+.ff-desc {
+  font-size: 12px; font-weight: 400;
+  color: rgba(255,255,255,0.3); line-height: 1.8;
+  max-width: 280px;
+}
+
+.ff-col-title {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); margin-bottom: 14px;
+}
+
+.ff-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.ff-links a {
+  font-size: 12px; font-weight: 400;
+  color: rgba(255,255,255,0.35); text-decoration: none;
+}
+
+.frame-footer-bottom {
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ffb-copy {
+  font-size: 10px; color: rgba(255,255,255,0.18);
+}
+
+/* ─── ANNOTATION SYSTEM ─── */
+.annotation {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 40px;
+}
+
+.ann-num {
+  width: 22px; height: 22px; flex-shrink: 0;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+
+.ann-text {
+  font-size: 12px; font-weight: 400;
+  color: #4B3F2A; line-height: 1.6;
+  padding-top: 2px;
+}
+
+.ann-text strong { font-weight: 700; color: var(--navy); }
+
+/* ─── DIVIDER BETWEEN PAGES ─── */
+.page-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 48px 0;
+}
+
+/* ─── SPEC TABLE ─── */
+.spec-table {
+  margin: 0 40px 32px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  overflow: hidden;
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.spec-row:last-child { border-bottom: none; }
+
+.spec-row > div {
+  padding: 12px 16px;
+  font-size: 12px;
+  border-right: 1px solid var(--border);
+}
+
+.spec-row > div:last-child { border-right: none; }
+
+.spec-key {
+  font-weight: 700; color: var(--navy);
+  background: var(--off);
+}
+
+.spec-val { font-weight: 400; color: var(--muted); }
+
+.spec-header > div {
+  font-size: 9px; font-weight: 800;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+  background: var(--navy);
+  padding: 10px 16px;
+}
+
+/* ─── PLAYBOOK ROW ─── */
+.pb-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+
+.pb-row:hover { background: var(--off); }
+
+.pb-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 400;
+  color: var(--label); text-align: center;
+}
+
+.pb-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--navy); margin-bottom: 2px;
+}
+
+.pb-meta {
+  font-size: 11px; font-weight: 400;
+  color: var(--muted);
+}
+
+.pb-domain {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 3px 10px; border: 1px solid var(--border);
+  color: var(--navy);
+}
+
+.pb-time {
+  font-size: 11px; font-weight: 700;
+  color: var(--teal);
+}
+
+.pb-btn {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--navy); color: var(--white);
+  padding: 6px 14px; text-decoration: none;
+}
+
+/* ─── DASHBOARD SIDEBAR NAV ─── */
+.dash-sidebar {
+  background: var(--navy);
+  width: 220px;
+  padding: 0;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.dash-sidebar-logo {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.dash-nav { list-style: none; padding: 12px 0; }
+
+.dash-nav li a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none; transition: all 0.2s;
+}
+
+.dash-nav li a:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+
+.dash-nav li a.active {
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  border-left: 2px solid var(--gold);
+  padding-left: 18px;
+}
+
+.dash-nav-section {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  padding: 14px 20px 4px;
+}
+
+/* ─── TIMELINE ─── */
+.timeline { padding: 0 48px; }
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 80px 24px 1fr;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  position: relative;
+}
+
+.tl-time {
+  font-size: 11px; font-weight: 600;
+  color: var(--muted); text-align: right; padding-top: 2px;
+}
+
+.tl-dot-wrap {
+  display: flex; flex-direction: column;
+  align-items: center;
+}
+
+.tl-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.tl-dot.filled { background: var(--gold); }
+.tl-dot.teal { border-color: var(--teal); background: var(--teal); }
+
+.tl-line {
+  flex: 1; width: 1px;
+  background: var(--border); margin-top: 4px;
+}
+
+.tl-content { padding-bottom: 16px; }
+
+.tl-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--navy); margin-bottom: 4px;
+}
+
+.tl-body {
+  font-size: 12px; font-weight: 400;
+  color: var(--muted); line-height: 1.6;
+}
+
+/* ─── PAGE INDEX ─── */
+.page-index {
+  background: var(--navy);
+  padding: 32px 40px;
+  margin-bottom: 0;
+}
+
+.pi-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; font-size: 28px;
+  color: var(--white); margin-bottom: 6px;
+}
+
+.pi-sub {
+  font-size: 12px; font-weight: 400;
+  color: rgba(255,255,255,0.4); margin-bottom: 24px;
+}
+
+.pi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.pi-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.pi-item:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.2);
+}
+
+.pi-item-num {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.pi-item-name {
+  font-size: 12px; font-weight: 600;
+  color: var(--white); line-height: 1.3;
+}
+
+.pi-item-url {
+  font-size: 9px; color: rgba(255,255,255,0.25);
+  margin-top: 4px;
+}
+
+/* ─── PROGRESS BAR ─── */
+.prog-bar {
+  height: 4px; background: var(--border);
+  margin-top: 6px; position: relative;
+}
+
+.prog-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+}
+
+.prog-fill.gold { background: var(--gold); }
+.prog-fill.teal { background: var(--teal); }
+.prog-fill.navy { background: var(--navy); }
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════ -->
+
+  <!-- PERSISTENT SITE NAV (shown on all frames)     -->
+
+  <!-- ══════════════════════════════════════════════ -->
+
+  <nav class="site-nav">
+    <a href="#" class="site-nav-logo">
+      <svg viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="2" fill="#141B45"/>
+        <path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 8L14 15" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div class="site-nav-name">VaughnMartin</div>
+        <div class="site-nav-product">Execution OS · Site Architecture</div>
+      </div>
+    </a>
+    <ul class="site-nav-links">
+      <li><a href="#p1">Homepage</a></li>
+      <li><a href="#p2">Platform</a></li>
+      <li><a href="#p3">Playbooks</a></li>
+      <li><a href="#p4">IDEA Framework</a></li>
+      <li><a href="#p5">Pricing</a></li>
+      <li><a href="#p6">Demo</a></li>
+      <li><a href="#p7">Dashboard</a></li>
+      <li><a href="#p8">Onboarding</a></li>
+    </ul>
+    <div class="site-nav-btns">
+      <span class="snb snb-ghost" style="padding:6px 12px;font-size:10px;cursor:default;">8 Pages · 3 App Views</span>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════ -->
+
+  <!-- PAGE INDEX                             -->
+
+  <!-- ══════════════════════════════════════ -->
+
+  <div class="page-index">
+    <div class="pi-title">VaughnMartin Execution OS — Full Site Architecture</div>
+    <div class="pi-sub">Click to jump to any page frame. Public pages use light mode. Authenticated app views use navy/sidebar layout.</div>
+    <div class="pi-grid">
+      <a href="#p1" class="pi-item">
+        <div class="pi-item-num">01 · PUBLIC</div>
+        <div class="pi-item-name">Homepage</div>
+        <div class="pi-item-url">/</div>
+      </a>
+      <a href="#p2" class="pi-item">
+        <div class="pi-item-num">02 · PUBLIC</div>
+        <div class="pi-item-name">Platform Overview</div>
+        <div class="pi-item-url">/platform</div>
+      </a>
+      <a href="#p3" class="pi-item">
+        <div class="pi-item-num">03 · PUBLIC</div>
+        <div class="pi-item-name">Playbook Library</div>
+        <div class="pi-item-url">/playbooks</div>
+      </a>
+      <a href="#p4" class="pi-item">
+        <div class="pi-item-num">04 · PUBLIC</div>
+        <div class="pi-item-name">IDEA Framework</div>
+        <div class="pi-item-url">/idea-framework</div>
+      </a>
+      <a href="#p5" class="pi-item">
+        <div class="pi-item-num">05 · PUBLIC</div>
+        <div class="pi-item-name">Pricing</div>
+        <div class="pi-item-url">/pricing</div>
+      </a>
+      <a href="#p6" class="pi-item">
+        <div class="pi-item-num">06 · PUBLIC</div>
+        <div class="pi-item-name">Pilot Demo</div>
+        <div class="pi-item-url">/demo</div>
+      </a>
+      <a href="#p7" class="pi-item">
+        <div class="pi-item-num">07 · AUTH</div>
+        <div class="pi-item-name">Executive Dashboard</div>
+        <div class="pi-item-url">/dashboard</div>
+      </a>
+      <a href="#p8" class="pi-item">
+        <div class="pi-item-num">08 · AUTH</div>
+        <div class="pi-item-name">Onboarding Wizard</div>
+        <div class="pi-item-url">/onboarding</div>
+      </a>
+      <a href="#p9" class="pi-item">
+        <div class="pi-item-num">09 · AUTH</div>
+        <div class="pi-item-name">Playbook Detail</div>
+        <div class="pi-item-url">/playbooks/:id</div>
+      </a>
+      <a href="#p10" class="pi-item">
+        <div class="pi-item-num">10 · AUTH</div>
+        <div class="pi-item-name">Execution Plan</div>
+        <div class="pi-item-url">/executions/:id</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 01 · HOMEPAGE /                        -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p1">
+    <div class="section-header">
+      <div class="sh-left">
+        <span class="sh-num">01</span>
+        <span class="sh-title">Homepage</span>
+        <span class="sh-url">/</span>
+      </div>
+      <div class="sh-tags">
+        <span class="sh-tag public">Public</span>
+      </div>
+    </div>
+
+```
+<div class="page-frame">
+  <!-- Nav -->
+  <div class="frame-nav">
+    <div class="fn-logo">
+      <div class="fn-mark">
+        <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
+          <path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="fn-company">VaughnMartin</div>
+        <div class="fn-product">Execution OS</div>
+      </div>
+    </div>
+    <ul class="fn-links">
+      <li><a href="#">Platform</a></li>
+      <li><a href="#">Playbooks</a></li>
+      <li><a href="#">IDEA Framework</a></li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+    <div class="fn-btns">
+      <a class="fnb fnb-demo">Try Demo</a>
+      <a class="fnb fnb-pilot">Start Pilot</a>
+    </div>
+  </div>
+
+  <!-- Hero: navy full-width with grid + dual column -->
+  <div class="hero-navy" style="min-height:320px">
+    <div class="bg-grid"></div>
+    <div style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%">
+      <div>
+        <div class="ey" style="margin-bottom:20px">
+          <div class="ey-line w"></div>
+          <span class="ey-text w">Execution OS · Now in Pilot</span>
+        </div>
+        <div class="h1-dark">The Execution<br>Infrastructure<br><span class="em-gold">Enterprises Are Missing</span></div>
+        <div style="width:56px;height:2px;background:var(--teal);margin:20px 0"></div>
+        <div class="p-dark">Trigger-to-full-execution in 12 minutes. 170 AI-powered playbooks. Fortune 1000 grade.</div>
+        <div style="display:flex;gap:12px;margin-top:28px">
+          <div style="background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:12px 28px">Request Pilot</div>
+          <div style="border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px">See How It Works →</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card-navy" style="border-color:rgba(43,138,110,0.2)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <span class="badge live"><span class="badge-dot"></span> Live Trigger</span>
+            <span style="font-size:10px;color:rgba(255,255,255,0.25)">0:42 ago</span>
+          </div>
+          <div class="card-title dark" style="font-size:13px">Q4 Revenue Miss — Board Response</div>
+          <div class="prog-bar" style="margin-top:10px"><div class="prog-fill teal" style="width:100%"></div></div>
+        </div>
+        <div class="card-navy">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <span class="badge pending"><span class="badge-dot"></span> Executing</span>
+            <span style="font-size:10px;font-weight:700;color:var(--teal-lt)">8m 14s</span>
+          </div>
+          <div class="card-title dark" style="font-size:13px">Cross-Functional Response Deployed</div>
+          <div class="prog-bar" style="margin-top:10px"><div class="prog-fill gold" style="width:64%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);background:var(--off);border-bottom:1px solid var(--border)">
+    <div class="metric-block"><div class="metric-num gold" style="font-size:36px">12<sup style="font-size:18px">m</sup></div><div class="metric-label">Trigger-to-Execution</div></div>
+    <div class="metric-block"><div class="metric-num" style="font-size:36px">170</div><div class="metric-label">Playbooks</div></div>
+    <div class="metric-block"><div class="metric-num" style="font-size:36px">9</div><div class="metric-label">Domains</div></div>
+    <div class="metric-block"><div class="metric-num" style="font-size:36px">72<sup style="font-size:18px">h</sup></div><div class="metric-label">Lag Eliminated</div></div>
+    <div class="metric-block" style="border:none"><div class="metric-num" style="font-size:24px;padding-top:8px">F<span style="font-size:16px">1000</span></div><div class="metric-label">Target Market</div></div>
+  </div>
+
+  <!-- 3 section previews -->
+  <div class="g3" style="gap:0">
+    <div class="content-zone" style="border-right:1px solid var(--border)">
+      <div class="ey"><div class="ey-line t"></div><span class="ey-text t">The Execution Gap</span></div>
+      <div class="h2-light" style="font-size:26px">Enterprises React.<br><span style="color:var(--teal);font-style:italic">Leaders Execute.</span></div>
+      <div class="p-light" style="margin-top:12px;font-size:13px">72-hour average lag after strategic triggers. We close it to 12 minutes.</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:6px">
+        <div style="display:grid;grid-template-columns:100px 1fr 60px;gap:8px;align-items:center">
+          <span style="font-size:10px;font-weight:600;color:var(--navy)">Earnings Miss</span>
+          <div style="height:6px;background:var(--border);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:90%;background:#DC2626"></div></div>
+          <span style="font-size:10px;font-weight:700;color:#DC2626;text-align:right">68 hrs</span>
+        </div>
+        <div style="display:grid;grid-template-columns:100px 1fr 60px;gap:8px;align-items:center">
+          <span style="font-size:10px;font-weight:700;color:var(--teal)">With Exec OS</span>
+          <div style="height:6px;background:var(--border);position:relative"><div style="position:absolute;left:0;top:0;bottom:0;width:3%;background:var(--teal)"></div></div>
+          <span style="font-size:10px;font-weight:700;color:var(--teal);text-align:right">12 min</span>
+        </div>
+      </div>
+    </div>
+    <div class="content-zone off" style="border-right:1px solid var(--border)">
+      <div class="ey"><div class="ey-line g"></div><span class="ey-text g">IDEA Framework™</span></div>
+      <div class="h2-light" style="font-size:26px">Four Stages.<br><span class="em-gold">One System.</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px">
+        <div style="background:var(--white);border:1px solid var(--border);padding:12px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--gold);line-height:1">I</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)">Identify</div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);padding:12px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--gold-lt);line-height:1">D</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)">Detect</div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);padding:12px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--teal-lt);line-height:1">E</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)">Execute</div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);padding:12px">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--teal);line-height:1">A</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)">Advance</div>
+        </div>
+      </div>
+    </div>
+    <div class="content-zone">
+      <div class="ey"><div class="ey-line g"></div><span class="ey-text g">Join the Founding 10</span></div>
+      <div class="h2-light" style="font-size:26px">Ready to Execute at <em class="em-gold">Speed?</em></div>
+      <div class="p-light" style="margin-top:12px;font-size:13px">First Fortune 1000 pilot cohort. Limited. Direct access to the founding team.</div>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+        <div class="fnb fnb-pilot" style="text-align:center;font-size:10px">Start Pilot Conversation</div>
+        <div style="border:1.5px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:9px;text-align:center">Watch 5-Min Demo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="frame-footer">
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white);margin-bottom:2px">VaughnMartin</div>
+      <div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Execution OS</div>
+      <div class="ff-desc">The execution infrastructure Fortune 1000 enterprises are missing. 170 playbooks. 12 minutes. mbrunke@vaughnmartin.com</div>
+    </div>
+    <div>
+      <div class="ff-col-title">Platform</div>
+      <ul class="ff-links">
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">IDEA Framework™</a></li>
+        <li><a href="#">Playbook Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ff-col-title">Connect</div>
+      <ul class="ff-links">
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Start Pilot</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="frame-footer-bottom">
+    <span class="ffb-copy">© 2026 VaughnMartin. Execution OS and IDEA Framework™ are trademarks of VaughnMartin.</span>
+    <span class="ffb-copy">Privacy · Terms · Security</span>
+  </div>
+</div>
+
+<!-- Annotation -->
+<div class="annotation">
+  <div class="ann-num">↑</div>
+  <div class="ann-text"><strong>Homepage pattern:</strong> Navy hero with live execution cards + stats strip + 3-column content preview + navy footer. This layout repeats the navy/white/off rhythm throughout the site.</div>
+</div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 02 · PLATFORM /platform                -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p2">
+    <div class="section-header">
+      <div class="sh-left">
+        <span class="sh-num">02</span>
+        <span class="sh-title">Platform Overview</span>
+        <span class="sh-url">/platform</span>
+      </div>
+      <div class="sh-tags"><span class="sh-tag public">Public</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <div class="frame-nav">
+    <div class="fn-logo"><div class="fn-mark"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="fn-company">VaughnMartin</div><div class="fn-product">Execution OS</div></div></div>
+    <ul class="fn-links"><li><a href="#" class="active">Platform</a></li><li><a href="#">Playbooks</a></li><li><a href="#">IDEA Framework</a></li><li><a href="#">Pricing</a></li></ul>
+    <div class="fn-btns"><a class="fnb fnb-demo">Try Demo</a><a class="fnb fnb-pilot">Start Pilot</a></div>
+  </div>
+
+  <!-- White hero with teal accent -->
+  <div class="hero-white">
+    <div>
+      <div class="ey"><div class="ey-line t"></div><span class="ey-text t">How It Works</span></div>
+      <div class="h1-light">From <em style="font-style:italic;color:var(--gold)">Strategic Trigger</em><br>to Full Execution</div>
+      <div class="p-light" style="margin-top:16px">A complete walkthrough of the Execution OS architecture — how AI monitoring, playbook matching, and automated deployment work together to eliminate organizational lag.</div>
+    </div>
+  </div>
+
+  <!-- 4-step architecture -->
+  <div class="content-zone off">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border)">
+      <div style="padding:28px;border-right:1px solid var(--border);background:var(--white)">
+        <div style="width:32px;height:32px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold)">1</span></div>
+        <div class="card-title">Trigger Detected</div>
+        <div class="card-body" style="margin-top:6px">AI monitors in 15-min cycles. Signal identified.</div>
+        <div style="font-size:10px;font-weight:700;color:var(--teal);margin-top:12px;letter-spacing:0.1em">0:00 — Real-Time</div>
+      </div>
+      <div style="padding:28px;border-right:1px solid var(--border);background:var(--off)">
+        <div style="width:32px;height:32px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold)">2</span></div>
+        <div class="card-title">Playbook Matched</div>
+        <div class="card-body" style="margin-top:6px">GPT-4o matches optimal playbook. Executive briefing generated.</div>
+        <div style="font-size:10px;font-weight:700;color:var(--teal);margin-top:12px;letter-spacing:0.1em">1:30 — AI Analysis</div>
+      </div>
+      <div style="padding:28px;border-right:1px solid var(--border);background:var(--white)">
+        <div style="width:32px;height:32px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold)">3</span></div>
+        <div class="card-title">Executive Approves</div>
+        <div class="card-body" style="margin-top:6px">Leadership reviews briefing. One-click approval.</div>
+        <div style="font-size:10px;font-weight:700;color:var(--gold);margin-top:12px;letter-spacing:0.1em">4:00 — Human Decision</div>
+      </div>
+      <div style="padding:28px;background:var(--off)">
+        <div style="width:32px;height:32px;background:var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><span style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--white)">4</span></div>
+        <div class="card-title" style="color:var(--teal)">Full Deployment</div>
+        <div class="card-body" style="margin-top:6px">Projects, tasks, docs, budgets — all deployed automatically.</div>
+        <div style="font-size:10px;font-weight:700;color:var(--teal);margin-top:12px;letter-spacing:0.1em">12:00 — Deployed ✓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-col AI vs Human -->
+  <div class="g2" style="gap:0">
+    <div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);padding:36px 40px">
+      <div class="ey"><div class="ey-line g"></div><span class="ey-text g">AI Role</span></div>
+      <div class="h2-light" style="font-size:24px">Always monitoring.<br>Always ready.</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+        <div class="card-gold"><div class="card-body">→ Signal monitoring in 15-min cycles</div></div>
+        <div class="card-gold"><div class="card-body">→ Pattern matching across 170 playbooks</div></div>
+        <div class="card-gold"><div class="card-body">→ GPT-4o executive briefing generation</div></div>
+        <div class="card-gold"><div class="card-body">→ Risk & urgency scoring</div></div>
+      </div>
+    </div>
+    <div style="background:rgba(43,138,110,0.05);border:1px solid rgba(43,138,110,0.15);padding:36px 40px">
+      <div class="ey"><div class="ey-line t"></div><span class="ey-text t">Human Role</span></div>
+      <div class="h2-light" style="font-size:24px">Authority always<br>stays with you.</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px">
+        <div class="card-teal"><div class="card-body">→ Review AI briefing and context</div></div>
+        <div class="card-teal"><div class="card-body">→ Approve, modify, or decline playbook</div></div>
+        <div class="card-teal"><div class="card-body">→ Monitor real-time execution dashboard</div></div>
+        <div class="card-teal"><div class="card-body">→ Drive stakeholder relationships</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frame-footer">
+    <div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white)">VaughnMartin</div><div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Execution OS</div><div class="ff-desc">The execution infrastructure Fortune 1000 enterprises are missing.</div></div>
+    <div><div class="ff-col-title">Platform</div><ul class="ff-links"><li><a href="#">Architecture</a></li><li><a href="#">IDEA Framework™</a></li><li><a href="#">Integrations</a></li></ul></div>
+    <div><div class="ff-col-title">Start</div><ul class="ff-links"><li><a href="#">Try Demo</a></li><li><a href="#">Start Pilot</a></li></ul></div>
+  </div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Platform page pattern:</strong> White hero (no navy) for a clean breath of air after the homepage. 4-step architecture grid + AI vs Human two-column split. Uses same card language as homepage.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 03 · PLAYBOOK LIBRARY /playbooks        -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p3">
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">03</span><span class="sh-title">Playbook Library</span><span class="sh-url">/playbooks</span></div>
+      <div class="sh-tags"><span class="sh-tag public">Public</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <div class="frame-nav">
+    <div class="fn-logo"><div class="fn-mark"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="fn-company">VaughnMartin</div><div class="fn-product">Execution OS</div></div></div>
+    <ul class="fn-links"><li><a href="#">Platform</a></li><li><a href="#" class="active">Playbooks</a></li><li><a href="#">IDEA Framework</a></li><li><a href="#">Pricing</a></li></ul>
+    <div class="fn-btns"><a class="fnb fnb-demo">Try Demo</a><a class="fnb fnb-pilot">Start Pilot</a></div>
+  </div>
+
+  <!-- Off-white hero -->
+  <div class="hero-off">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;width:100%">
+      <div>
+        <div class="ey"><div class="ey-line g"></div><span class="ey-text g">170 Playbooks · 9 Domains</span></div>
+        <div class="h1-light">A Playbook for Every<br><em class="em-gold">Strategic Scenario</em></div>
+        <div class="p-light" style="margin-top:12px">Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;max-width:320px;align-items:flex-end">
+        <div style="border:1px solid var(--border);padding:6px 14px;font-size:11px;font-weight:600;color:var(--navy);background:var(--white)">All Domains</div>
+        <div style="border:1px solid var(--gold);padding:6px 14px;font-size:11px;font-weight:600;color:var(--gold)">Financial</div>
+        <div style="border:1px solid var(--border);padding:6px 14px;font-size:11px;font-weight:600;color:var(--muted)">Competitive</div>
+        <div style="border:1px solid var(--border);padding:6px 14px;font-size:11px;font-weight:600;color:var(--muted)">Regulatory</div>
+        <div style="border:1px solid var(--border);padding:6px 14px;font-size:11px;font-weight:600;color:var(--muted)">Crisis</div>
+        <div style="border:1px solid var(--border);padding:6px 14px;font-size:11px;font-weight:600;color:var(--muted)">M&A</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domain tabs + playbook table -->
+  <div class="g-sidebar" style="min-height:400px">
+    <div class="sidebar-left">
+      <div class="sidebar-section-label">Domains</div>
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active">All (170)</a></li>
+        <li><a href="#">Financial Response (24)</a></li>
+        <li><a href="#">Competitive Intel (22)</a></li>
+        <li><a href="#">Go-to-Market (21)</a></li>
+        <li><a href="#">Crisis Mgmt (20)</a></li>
+        <li><a href="#">Regulatory (19)</a></li>
+        <li><a href="#">M&A Integration (18)</a></li>
+        <li><a href="#">Technology (17)</a></li>
+        <li><a href="#">Talent & Org (16)</a></li>
+        <li><a href="#">Strategic Opp (13)</a></li>
+      </ul>
+      <div class="sidebar-section-label" style="margin-top:8px">Filter by Urgency</div>
+      <ul class="sidebar-nav">
+        <li><a href="#">🔴 Critical (48)</a></li>
+        <li><a href="#">🟡 High (76)</a></li>
+        <li><a href="#">🟢 Standard (46)</a></li>
+      </ul>
+    </div>
+    <div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Playbook Title</th>
+            <th>Domain</th>
+            <th>Avg. Execution</th>
+            <th>Urgency</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--label)">47</span></td>
+            <td><div class="pb-title">Q4 Revenue Miss — Board Response</div><div class="pb-meta">Earnings · Investor comms · Board deck</div></td>
+            <td><span class="pb-domain">Financial</span></td>
+            <td><span class="pb-time">11m 03s</span></td>
+            <td><span class="badge pending"><span class="badge-dot"></span>Critical</span></td>
+            <td><a class="pb-btn">View →</a></td>
+          </tr>
+          <tr>
+            <td><span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--label)">112</span></td>
+            <td><div class="pb-title">Competitor Product Launch Response</div><div class="pb-meta">Market intel · Pricing · Sales enablement</div></td>
+            <td><span class="pb-domain">Competitive</span></td>
+            <td><span class="pb-time">9m 42s</span></td>
+            <td><span class="badge pending"><span class="badge-dot"></span>Critical</span></td>
+            <td><a class="pb-btn">View →</a></td>
+          </tr>
+          <tr>
+            <td><span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--label)">31</span></td>
+            <td><div class="pb-title">Regulatory Change Compliance Response</div><div class="pb-meta">Legal review · Policy update · Training</div></td>
+            <td><span class="pb-domain">Regulatory</span></td>
+            <td><span class="pb-time">10m 18s</span></td>
+            <td><span class="badge live"><span class="badge-dot"></span>High</span></td>
+            <td><a class="pb-btn">View →</a></td>
+          </tr>
+          <tr>
+            <td><span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--label)">88</span></td>
+            <td><div class="pb-title">Executive Leadership Transition</div><div class="pb-meta">Succession · Communications · Stability plan</div></td>
+            <td><span class="pb-domain">Talent</span></td>
+            <td><span class="pb-time">11m 55s</span></td>
+            <td><span class="badge pending"><span class="badge-dot"></span>Critical</span></td>
+            <td><a class="pb-btn">View →</a></td>
+          </tr>
+          <tr style="opacity:0.5">
+            <td colspan="6" style="text-align:center;padding:20px;font-size:12px;color:var(--muted)">+ 166 more playbooks — sign in to unlock full library</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="frame-footer"><div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white)">VaughnMartin</div><div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Execution OS</div><div class="ff-desc">170 playbooks. 9 domains. Built for Fortune 1000 strategic velocity.</div></div><div><div class="ff-col-title">Browse</div><ul class="ff-links"><li><a href="#">All Playbooks</a></li><li><a href="#">By Domain</a></li><li><a href="#">By Urgency</a></li></ul></div><div><div class="ff-col-title">Get Access</div><ul class="ff-links"><li><a href="#">Start Pilot</a></li><li><a href="#">Try Demo</a></li></ul></div></div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Playbook Library pattern:</strong> Off-white hero with domain filter chips. Left sidebar navigation for filtering. Data table with playbook rows, domain badges, urgency badges. Teaser rows locked for non-authenticated users.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 04 · IDEA FRAMEWORK /idea-framework    -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p4">
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">04</span><span class="sh-title">IDEA Framework™</span><span class="sh-url">/idea-framework</span></div>
+      <div class="sh-tags"><span class="sh-tag public">Public</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <div class="frame-nav"><div class="fn-logo"><div class="fn-mark"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="fn-company">VaughnMartin</div><div class="fn-product">Execution OS</div></div></div><ul class="fn-links"><li><a href="#">Platform</a></li><li><a href="#">Playbooks</a></li><li><a href="#" class="active">IDEA Framework</a></li><li><a href="#">Pricing</a></li></ul><div class="fn-btns"><a class="fnb fnb-demo">Try Demo</a><a class="fnb fnb-pilot">Start Pilot</a></div></div>
+
+  <!-- Full navy hero for this page -->
+  <div class="hero-navy" style="min-height:260px;justify-content:center;text-align:center;flex-direction:column">
+    <div class="bg-grid"></div>
+    <div style="position:relative;z-index:2;max-width:640px;margin:0 auto">
+      <div class="ey" style="justify-content:center"><div class="ey-line w"></div><span class="ey-text w">Proprietary Methodology</span></div>
+      <div class="h1-dark" style="font-size:52px;text-align:center">The IDEA Framework™</div>
+      <div class="p-dark" style="text-align:center;max-width:520px;margin:16px auto 0">Four stages. Two preparation. Two execution. AI handles detection — humans make the calls.</div>
+    </div>
+  </div>
+
+  <!-- 4-stage deep dive -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)">
+    <div style="background:var(--white);padding:36px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:8px">I</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Identify</div>
+      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Signal Recognition</div>
+      <div style="font-size:12px;font-weight:400;color:var(--muted);line-height:1.7">AI monitors 15-minute market cycles, internal KPIs, and external triggers across your strategic landscape.</div>
+      <div style="margin-top:16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);padding:6px 12px;display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)">AI-Powered</div>
+    </div>
+    <div style="background:var(--off);padding:36px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--gold-lt);line-height:1;margin-bottom:8px">D</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Detect</div>
+      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Pattern Matching</div>
+      <div style="font-size:12px;font-weight:400;color:var(--muted);line-height:1.7">GPT-4o analyzes signals against 170-playbook library. Scores urgency. Generates executive briefing.</div>
+      <div style="margin-top:16px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);padding:6px 12px;display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)">AI-Powered</div>
+    </div>
+    <div style="background:var(--white);padding:36px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--teal-lt);line-height:1;margin-bottom:8px">E</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Execute</div>
+      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Coordinated Deployment</div>
+      <div style="font-size:12px;font-weight:400;color:var(--muted);line-height:1.7">Upon executive approval — projects created, tasks assigned, docs staged, budgets allocated. Under 12 min.</div>
+      <div style="margin-top:16px;background:rgba(43,138,110,0.08);border:1px solid rgba(43,138,110,0.15);padding:6px 12px;display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal)">Human-Led</div>
+    </div>
+    <div style="background:var(--off);padding:36px 28px">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:600;color:var(--teal);line-height:1;margin-bottom:8px">A</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Advance</div>
+      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Outcome Analysis</div>
+      <div style="font-size:12px;font-weight:400;color:var(--muted);line-height:1.7">Real-time tracking, performance scoring, lessons-learned capture. Playbooks get smarter with each cycle.</div>
+      <div style="margin-top:16px;background:rgba(43,138,110,0.08);border:1px solid rgba(43,138,110,0.15);padding:6px 12px;display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal)">Human-Led</div>
+    </div>
+  </div>
+
+  <div class="frame-footer"><div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white)">VaughnMartin</div><div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Execution OS</div><div class="ff-desc">IDEA Framework™ is proprietary to VaughnMartin.</div></div><div><div class="ff-col-title">Learn More</div><ul class="ff-links"><li><a href="#">Platform Overview</a></li><li><a href="#">Playbook Library</a></li></ul></div><div><div class="ff-col-title">Get Access</div><ul class="ff-links"><li><a href="#">Start Pilot</a></li></ul></div></div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>IDEA Framework pattern:</strong> Full navy hero (highest gravity page — proprietary IP). 4-stage grid alternates white/off-white backgrounds. AI vs Human tags distinguish ownership of each stage.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 05 · PRICING /pricing                  -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p5">
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">05</span><span class="sh-title">Pricing</span><span class="sh-url">/pricing</span></div>
+      <div class="sh-tags"><span class="sh-tag public">Public</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <div class="frame-nav"><div class="fn-logo"><div class="fn-mark"><svg width="18" height="18" viewBox="0 0 28 28" fill="none"><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="fn-company">VaughnMartin</div><div class="fn-product">Execution OS</div></div></div><ul class="fn-links"><li><a href="#">Platform</a></li><li><a href="#">Playbooks</a></li><li><a href="#">IDEA Framework</a></li><li><a href="#" class="active">Pricing</a></li></ul><div class="fn-btns"><a class="fnb fnb-demo">Try Demo</a><a class="fnb fnb-pilot">Start Pilot</a></div></div>
+
+  <div class="hero-white">
+    <div style="text-align:center;width:100%">
+      <div class="ey" style="justify-content:center"><div class="ey-line g"></div><span class="ey-text g">Enterprise Pricing</span></div>
+      <div class="h1-light" style="text-align:center">Built for <em class="em-gold">Fortune 1000</em> Scale</div>
+      <div class="p-light" style="text-align:center;margin:12px auto">Custom enterprise agreements. Pilot-first. Direct founding team access. No hidden fees.</div>
+    </div>
+  </div>
+
+  <div class="content-zone off">
+    <div class="g3" style="gap:16px">
+      <div style="border:1px solid var(--border);background:var(--white);padding:32px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Pilot Program</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--navy);margin-bottom:4px">Founding 10</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:24px">Limited Cohort · Direct Access</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div class="card-body">✓ Full platform deployment</div>
+          <div class="card-body">✓ All 170 playbooks unlocked</div>
+          <div class="card-body">✓ Founding team white-glove</div>
+          <div class="card-body">✓ Custom playbook development</div>
+        </div>
+        <div style="background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:12px;text-align:center">Apply for Pilot</div>
+      </div>
+      <div style="border:2px solid var(--navy);background:var(--navy);padding:32px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Enterprise</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--white);margin-bottom:4px">Custom</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:24px">Annual Contract · F1000</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.55);">✓ Unlimited executions</div>
+          <div style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.55);">✓ Full playbook library</div>
+          <div style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.55);">✓ Enterprise SSO + RBAC</div>
+          <div style="font-size:12px;font-weight:400;color:rgba(255,255,255,0.55);">✓ Dedicated CS + SLA</div>
+        </div>
+        <div style="background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:12px;text-align:center">Request Quote</div>
+      </div>
+      <div style="border:1px solid var(--border);background:var(--white);padding:32px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Add-Ons</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--navy);margin-bottom:4px">Services</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:24px">Strategic Advisory · Custom Build</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+          <div class="card-body">✓ Custom playbook development</div>
+          <div class="card-body">✓ Executive advisory sessions</div>
+          <div class="card-body">✓ Change management programs</div>
+          <div class="card-body">✓ Integration professional services</div>
+        </div>
+        <div style="border:1.5px solid var(--border);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:11px;text-align:center">Contact Us</div>
+      </div>
+    </div>
+  </div>
+  <div class="frame-footer"><div><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:var(--white)">VaughnMartin</div><div style="font-size:8px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Execution OS</div><div class="ff-desc">Enterprise pricing. Direct access. Built for Fortune 1000.</div></div><div><div class="ff-col-title">Pricing</div><ul class="ff-links"><li><a href="#">Pilot Program</a></li><li><a href="#">Enterprise</a></li><li><a href="#">Services</a></li></ul></div><div><div class="ff-col-title">Start</div><ul class="ff-links"><li><a href="#">Apply Now</a></li></ul></div></div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Pricing pattern:</strong> White hero (clean, neutral). 3-column pricing with navy featured tier in center. No distracting elements — the cards do the work.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 07 · EXECUTIVE DASHBOARD (AUTH)        -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p7">
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">07</span><span class="sh-title">Executive Dashboard</span><span class="sh-url">/dashboard</span></div>
+      <div class="sh-tags"><span class="sh-tag auth">Auth Required</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <!-- App nav — different from marketing nav -->
+  <div style="background:var(--navy);height:52px;display:flex;align-items:center;padding:0 24px;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07)">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="2" fill="#141B45"/><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:var(--white)">VaughnMartin</span>
+      <span style="font-size:7px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-left:2px">Execution OS</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <span class="badge live"><span class="badge-dot"></span> 2 Active Triggers</span>
+      <div style="width:28px;height:28px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--navy)">MB</div>
+    </div>
+  </div>
+
+  <!-- Sidebar + main -->
+  <div style="display:grid;grid-template-columns:220px 1fr;min-height:500px">
+    <!-- Dash sidebar -->
+    <div class="dash-sidebar">
+      <div class="dash-sidebar-logo">
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25)">Org: Marty Brunke</div>
+      </div>
+      <ul class="dash-nav">
+        <li class="dash-nav-section">Command</li>
+        <li><a href="#" class="active">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="1" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="6" height="6" stroke="currentColor" stroke-width="1.2"/></svg>
+          Dashboard
+        </a></li>
+        <li><a href="#">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Active Triggers
+        </a></li>
+        <li><a href="#">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Execution Plans
+        </a></li>
+        <li class="dash-nav-section">Library</li>
+        <li><a href="#">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Playbooks
+        </a></li>
+        <li><a href="#">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Task Library
+        </a></li>
+        <li class="dash-nav-section">Reports</li>
+        <li><a href="#">Execution History</a></li>
+        <li><a href="#">Performance Analytics</a></li>
+        <li class="dash-nav-section">Admin</li>
+        <li><a href="#">Team & Roles</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </div>
+
+    <!-- Main content -->
+    <div style="background:var(--off)">
+      <!-- Top metrics row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--white);border-bottom:1px solid var(--border)">
+        <div class="metric-block"><div class="metric-num gold" style="font-size:36px">2</div><div class="metric-label">Active Triggers</div></div>
+        <div class="metric-block"><div class="metric-num teal" style="font-size:36px">14</div><div class="metric-label">Executions This Month</div></div>
+        <div class="metric-block"><div class="metric-num" style="font-size:36px">11<sup style="font-size:18px">m</sup></div><div class="metric-label">Avg. Execution Time</div></div>
+        <div class="metric-block" style="border:none"><div class="metric-num" style="font-size:36px">97<sup style="font-size:18px">%</sup></div><div class="metric-label">On-Time Completion</div></div>
+      </div>
+
+      <!-- Live triggers -->
+      <div style="padding:24px;background:var(--white);margin:16px;border:1px solid var(--border)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--navy)">Live Triggers Requiring Action</div>
+          <span class="badge live"><span class="badge-dot"></span>2 Active</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:16px;padding:14px 16px;border:1px solid rgba(43,138,110,0.2);background:rgba(43,138,110,0.03)">
+            <div><div class="pb-title">Q4 Revenue Miss — Board Response Required</div><div class="pb-meta">Playbook #47 matched · Financial Response · 14 tasks pre-staged</div></div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--teal)">8m 14s</div>
+            <div style="background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;cursor:pointer">Review & Approve →</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:16px;padding:14px 16px;border:1px solid rgba(201,168,76,0.2);background:rgba(201,168,76,0.03)">
+            <div><div class="pb-title">Competitor Product Launch — Market Response</div><div class="pb-meta">Playbook #112 matched · Competitive Intel · Awaiting approval</div></div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--gold)">2m 01s</div>
+            <div style="background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 16px;cursor:pointer">Review & Approve →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent executions table -->
+      <div style="margin:0 16px 16px;background:var(--white);border:1px solid var(--border)">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--navy)">Recent Executions</div>
+        <table class="data-table" style="margin:0">
+          <thead><tr><th>Playbook</th><th>Domain</th><th>Triggered</th><th>Duration</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="pb-title" style="font-size:12px">Regulatory Change Compliance</div></td><td><span class="pb-domain">Regulatory</span></td><td><span style="font-size:12px;color:var(--muted)">2h ago</span></td><td><span class="pb-time">10m 18s</span></td><td><span class="badge live"><span class="badge-dot"></span>Complete</span></td></tr>
+            <tr><td><div class="pb-title" style="font-size:12px">Executive Succession Activation</div></td><td><span class="pb-domain">Talent</span></td><td><span style="font-size:12px;color:var(--muted)">Yesterday</span></td><td><span class="pb-time">11m 55s</span></td><td><span class="badge live"><span class="badge-dot"></span>Complete</span></td></tr>
+            <tr><td><div class="pb-title" style="font-size:12px">Supply Chain Disruption Response</div></td><td><span class="pb-domain">Crisis</span></td><td><span style="font-size:12px;color:var(--muted)">3 days ago</span></td><td><span class="pb-time">9m 42s</span></td><td><span class="badge live"><span class="badge-dot"></span>Complete</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Dashboard pattern:</strong> Full app shell — navy left sidebar with icon nav, off-white main area. Top metrics strip, live trigger action cards, recent execution table. No marketing nav — this is the authenticated product experience.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- PAGE 08 · ONBOARDING WIZARD (AUTH)          -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div id="p8">
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">08</span><span class="sh-title">Onboarding Wizard (5-Step)</span><span class="sh-url">/onboarding</span></div>
+      <div class="sh-tags"><span class="sh-tag auth">Auth Required</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <div style="background:var(--navy);height:52px;display:flex;align-items:center;padding:0 32px;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:10px"><svg width="24" height="24" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="2" fill="#141B45"/><path d="M6 8L14 21L22 8" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:var(--white)">VaughnMartin</span><span style="font-size:7px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-left:2px">Execution OS</span></div>
+    <span style="font-size:11px;font-weight:500;color:rgba(255,255,255,0.35)">Setup your organization to get started</span>
+  </div>
+
+  <!-- Step progress bar -->
+  <div class="step-indicator">
+    <div class="si-step"><div class="si-num done">✓</div><div class="si-label">Organization</div></div>
+    <div class="si-divider"></div>
+    <div class="si-step"><div class="si-num done">✓</div><div class="si-label">Industry</div></div>
+    <div class="si-divider"></div>
+    <div class="si-step"><div class="si-num active">3</div><div class="si-label">Domains</div></div>
+    <div class="si-divider"></div>
+    <div class="si-step"><div class="si-num todo">4</div><div class="si-label todo">Team Roles</div></div>
+    <div class="si-divider"></div>
+    <div class="si-step"><div class="si-num todo">5</div><div class="si-label todo">Integrations</div></div>
+  </div>
+
+  <!-- Step content -->
+  <div class="content-zone" style="min-height:340px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+    <div>
+      <div class="ey"><div class="ey-line g"></div><span class="ey-text g">Step 3 of 5</span></div>
+      <div class="h2-light">Select Your<br><em class="em-gold">Priority Domains</em></div>
+      <div class="p-light" style="margin-top:12px">Which execution domains matter most to your organization? We'll prioritize these playbooks in your library.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:24px">
+        <div style="border:2px solid var(--navy);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">✓ Financial Response</div>
+        </div>
+        <div style="border:2px solid var(--teal);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--teal)">✓ Competitive Intel</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--muted)">Crisis Management</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--muted)">Regulatory</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--muted)">M&A Integration</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:12px 14px;cursor:pointer">
+          <div style="font-size:12px;font-weight:700;color:var(--muted)">Talent & Org</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--off);border:1px solid var(--border);padding:28px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px">Your Selection Summary</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card-gold"><div class="card-title" style="font-size:13px">Financial Response</div><div class="card-body">24 playbooks · Earnings, Board, Investor</div></div>
+        <div class="card-teal"><div class="card-title" style="font-size:13px">Competitive Intel</div><div class="card-body">22 playbooks · Launches, Pricing, M&A</div></div>
+      </div>
+      <div style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px">
+        <div style="font-size:11px;font-weight:600;color:var(--muted)">46 playbooks selected · 8 domains remaining</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:20px">
+        <div style="border:1.5px solid var(--border);color:var(--muted);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px 16px">← Back</div>
+        <div style="flex:1;background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:10px;text-align:center;cursor:pointer">Continue →</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Onboarding pattern:</strong> No sidebar — single-task focus. Step progress indicator replaces nav. Left-right split: form/selection on left, live preview/summary on right. Gold = selected/active, teal = confirmed.</div></div>
+```
+
+  </div>
+
+  <div class="page-divider"></div>
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- DESIGN SYSTEM REFERENCE                      -->
+
+  <!-- ════════════════════════════════════════════ -->
+
+  <div>
+    <div class="section-header">
+      <div class="sh-left"><span class="sh-num">REF</span><span class="sh-title">Design System Reference</span></div>
+      <div class="sh-tags"><span class="sh-tag admin">Internal</span></div>
+    </div>
+
+```
+<div class="page-frame">
+  <!-- Spec table -->
+  <div class="spec-table" style="margin:32px">
+    <div class="spec-row spec-header"><div>Token</div><div>Value</div><div>Usage</div></div>
+    <div class="spec-row"><div class="spec-key">--navy</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#0A0F2E;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#0A0F2E</div><div class="spec-val">Heros, sidebars, CTAs, footer, primary text</div></div>
+    <div class="spec-row"><div class="spec-key">--gold</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#C9A84C;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#C9A84C</div><div class="spec-val">Accents, labels, metrics, logo product text, primary CTA fill</div></div>
+    <div class="spec-row"><div class="spec-key">--teal</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#2B8A6E;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#2B8A6E</div><div class="spec-val">Human-led tags, secondary accents, execution timing, success states</div></div>
+    <div class="spec-row"><div class="spec-key">--white</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#FFFFFF;border:1px solid #E8E4DC;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#FFFFFF</div><div class="spec-val">Default page background, card fills</div></div>
+    <div class="spec-row"><div class="spec-key">--off</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#F8F7F4;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#F8F7F4</div><div class="spec-val">Alternating section backgrounds, sidebar, form containers</div></div>
+    <div class="spec-row"><div class="spec-key">--border</div><div class="spec-val"><span style="display:inline-block;width:12px;height:12px;background:#E8E4DC;border-radius:2px;margin-right:6px;vertical-align:middle"></span>#E8E4DC</div><div class="spec-val">All borders, dividers, table lines</div></div>
+    <div class="spec-row"><div class="spec-key">Font: Display</div><div class="spec-val">Cormorant Garamond</div><div class="spec-val">All headings, metric numbers, logo name, large IDEA letters</div></div>
+    <div class="spec-row"><div class="spec-key">Font: Body</div><div class="spec-val">DM Sans 500</div><div class="spec-val">All body copy, nav, labels, buttons — minimum weight 500</div></div>
+  </div>
+
+  <!-- Component samples row -->
+  <div style="padding:0 32px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Badges</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span class="badge live"><span class="badge-dot"></span>Active</span>
+        <span class="badge pending"><span class="badge-dot"></span>Pending</span>
+        <span class="badge done"><span class="badge-dot"></span>Complete</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Buttons</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--navy);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:10px 16px;text-align:center">Primary</div>
+        <div style="background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:10px 16px;text-align:center">Gold Fill</div>
+        <div style="border:1.5px solid var(--border);color:var(--navy);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:9px 16px;text-align:center">Outline</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Cards</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="card-outline"><div class="card-title" style="font-size:12px">Standard Card</div></div>
+        <div class="card-gold"><div class="card-title" style="font-size:12px">Gold Accent</div></div>
+        <div class="card-teal"><div class="card-title" style="font-size:12px">Teal Accent</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Typography</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--navy);line-height:1">Heading H1</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--navy);line-height:1">Heading H2</div>
+        <div style="font-size:13px;font-weight:500;color:var(--navy)">Body — DM Sans 500</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold)">Label / Eyebrow</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="annotation"><div class="ann-num">↑</div><div class="ann-text"><strong>Design System:</strong> Token reference, badge variants, button hierarchy (navy primary → gold fill → outline), card accents (standard/gold/teal), and type scale. All 8 pages draw from this exact system.</div></div>
+```
+
+  </div>
+
+</body>
+</html>

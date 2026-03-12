@@ -1,0 +1,39 @@
+To move from your current "Pilot Ready" state to a robust, production-hardened platform capable of supporting Fortune 1000 enterprise stability, you need to transition from "rapid iteration" to "resilient engineering."
+
+Here is your Production Hardening Checklist for the VaughnMartin Execution OS.
+
+1. Architectural Refactoring (Debt Management)
+[ ] Modularize routes.ts: Break the 8,500-line routes.ts into a routes/ directory (e.g., auth.ts, scenarios.ts, triggers.ts, intelligence.ts). Use an index file to mount these sub-routers to the main app instance.
+
+[ ] Service Layer Extraction: Ensure no business logic resides directly in the Express route handlers. Move all complex logic into the server/services/ directory and use the route handlers purely for request validation and response formatting.
+
+[ ] Type Safety Audit: Verify that all API request/response bodies are validated against shared/schema.ts schemas. If you are using any types in route handlers, replace them with the specific inferred Zod types.
+
+2. Deployment & CI/CD Hardening
+[ ] Automate the Build: Remove the manual requirement to commit dist/. Configure a CI/CD pipeline (e.g., GitHub Actions or Replit Deployments) that runs npm run build in a clean environment and deploys the resulting artifact.
+
+[ ] Environment Secret Management: Audit all process variables. Ensure DATABASE_URL, OPENAI_API_KEY, and RESEND_API_KEY are injected via secure environment variable providers, never hardcoded or stored in plain-text git files.
+
+[ ] Database Migrations: Implement a formal migration tool (like drizzle-kit) to manage schema evolution. While db:push is great for development, production requires explicit migration files for repeatability and rollback safety.
+
+3. Operational Resilience
+[ ] Logging & Observability: You have Audit Logging links, but ensure these logs are shipping to an external service (like Datadog, LogRocket, or Sentry) so you have visibility into failures before a customer reports them.
+
+[ ] Rate Limiting: Implement rate limiting on your API routes (especially POST /api/executive-triggers and POST /api/scenarios) to prevent accidental or malicious system exhaustion.
+
+[ ] Graceful Degradation: Your Signal Intelligence Hub already handles errors well. Apply this "branded fallback" pattern to all external API integrations (OpenAI, Resend, etc.).
+
+4. Security & Compliance
+[ ] PII Masking: Review shared/schema.ts and ensure any fields containing sensitive user/enterprise data are clearly marked. Implement logic to strip PII before logging to your monitoring services.
+
+[ ] Session Hardening: Review your Passport.js configuration in server/replitAuth.ts. Ensure session cookies are set to httpOnly: true, secure: true, and have appropriate sameSite policies.
+
+[ ] Role-Based Access Control (RBAC) Verification: Create a automated test suite that attempts to access admin-only routes as a standard user to ensure the requireRole middleware is firing correctly on every write route.
+
+5. Performance Optimization
+[ ] Query Performance: With 170 playbooks and complex signal triggers, verify your PostgreSQL indexes. Ensure any column used in a WHERE or JOIN clause (e.g., organizationId, triggerId, scenarioId) is indexed.
+
+[ ] Static Asset Serving: Ensure your dist/public/ assets are being served with correct caching headers (Cache-Control: public, max-age=31536000, immutable) to reduce load times for returning executive users.
+
+Suggested Next Step
+Breaking down that 8,500-line routes.ts file is the most high-impact move you can make right now for long-term stability.

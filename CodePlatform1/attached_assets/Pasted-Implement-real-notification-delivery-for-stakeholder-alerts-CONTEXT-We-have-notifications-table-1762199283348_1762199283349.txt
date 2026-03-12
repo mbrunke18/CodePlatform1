@@ -1,0 +1,224 @@
+Implement real notification delivery for stakeholder alerts:
+
+CONTEXT:
+- We have notifications table with recipientId, type, message, status
+- Backend creates notifications with status='pending'
+- We need to actually deliver them via email and Slack
+
+WHAT I NEED:
+
+1. INSTALL DEPENDENCIES:
+npm install @sendgrid/mail nodemailer
+
+2. CREATE NOTIFICATION SERVICE:
+
+File: /services/NotificationService.ts
+
+class NotificationService {
+  async deliverNotification(notificationId: string) {
+    // Get notification from database
+    const notification = await db.query.notifications.findFirst({
+      where: eq(notifications.id, notificationId),
+      with: { recipient: true }
+    });
+    
+    if (!notification) throw new Error('Notification not found');
+    
+    // Determine delivery method (email, slack, both)
+    const methods = this.getDeliveryMethods(notification.recipient);
+    
+    // Send via each method
+    const results = await Promise.allSettled([
+      methods.email ? this.sendEmail(notification) : null,
+      methods.slack ? this.sendSlack(notification) : null
+    ]);
+    
+    // Update notification status
+    const allSuccess = results.every(r => r.status === 'fulfilled');
+    
+    await db.update(notifications)
+      .set({
+        status: allSuccess ? 'sent' : 'failed',
+        sentAt: new Date(),
+        deliveryMetadata: { results }
+      })
+      .where(eq(notifications.id, notificationId));
+      
+    return { success: allSuccess, results };
+  }
+  
+  private async sendEmail(notification: Notification) {
+    // Use SMTP for now (SendGrid requires API key)
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+    
+    // Email template
+    const htmlContent = this.renderEmailTemplate(notification);
+    
+    await transporter.sendMail({
+      from: '"VEXOR" <alerts@vexor.ai>',
+      to: notification.recipient.email,
+      subject: notification.title,
+      html: htmlContent
+    });
+    
+    return { channel: 'email', success: true };
+  }
+  
+  private async sendSlack(notification: Notification) {
+    // Slack webhook (if user has connected Slack)
+    if (!notification.recipient.slackWebhookUrl) {
+      return { channel: 'slack', success: false, reason: 'no_webhook' };
+    }
+    
+    await fetch(notification.recipient.slackWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: notification.title,
+        blocks: [
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: `*${notification.title}*\n${notification.message}`
+            }
+          },
+          {
+            type: 'actions',
+            elements: [
+              {
+                type: 'button',
+                text: { type: 'plain_text', text: 'Acknowledge' },
+                url: `${process.env.APP_URL}/acknowledge/${notification.id}`,
+                style: 'primary'
+              }
+            ]
+          }
+        ]
+      })
+    });
+    
+    return { channel: 'slack', success: true };
+  }
+  
+  private renderEmailTemplate(notification: Notification): string {
+    // HTML email template
+    return `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: #3B82F6; color: white; padding: 20px; text-align: center; }
+          .content { padding: 20px; background: #f9f9f9; }
+          .button { 
+            display: inline-block; 
+            padding: 12px 24px; 
+            background: #3B82F6; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            margin-top: 20px;
+          }
+          .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>🚨 VEXOR ALERT</h1>
+          </div>
+          <div class="content">
+            <h2>${notification.title}</h2>
+            <p>${notification.message}</p>
+            
+            ${notification.metadata?.tasks ? `
+              <h3>Your Assigned Tasks:</h3>
+              <ul>
+                ${notification.metadata.tasks.map(t => `<li>${t.title}</li>`).join('')}
+              </ul>
+            ` : ''}
+            
+            <a href="${process.env.APP_URL}/acknowledge/${notification.id}" class="button">
+              Acknowledge Receipt
+            </a>
+          </div>
+          <div class="footer">
+            <p>This is an automated alert from VEXOR Strategic Execution Platform</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+  }
+  
+  private getDeliveryMethods(recipient: User) {
+    return {
+      email: !!recipient.email,
+      slack: !!recipient.slackWebhookUrl
+    };
+  }
+}
+
+export const notificationService = new NotificationService();
+
+3. UPDATE ORCHESTRATION ENDPOINT:
+
+In /api/activations/orchestrate, after creating notifications:
+
+// Queue notification delivery
+const deliveryPromises = notificationIds.map(id => 
+  notificationService.deliverNotification(id)
+);
+
+// Don't wait for all deliveries (async)
+// But track failures
+Promise.allSettled(deliveryPromises).then(results => {
+  const failures = results.filter(r => r.status === 'rejected');
+  if (failures.length > 0) {
+    console.error('Notification delivery failures:', failures);
+  }
+});
+
+4. CREATE ACKNOWLEDGMENT ENDPOINT:
+
+POST /api/notifications/:notificationId/acknowledge
+
+Updates notification:
+- Set acknowledgedAt = now()
+- Calculate responseTime (acknowledgedAt - sentAt)
+- Update executionInstance coordination status (check if 80% acknowledged)
+
+Response:
+{
+  success: true,
+  responseTime: number (minutes),
+  coordinationComplete: boolean
+}
+
+5. ENVIRONMENT VARIABLES:
+
+Add to .env:
+SMTP_HOST=smtp.gmail.com
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-specific-password
+APP_URL=https://your-replit-url.repl.co
+
+6. TESTING:
+
+Create test endpoint:
+POST /api/test-notification
+Body: { email: 'test@example.com', message: 'Test alert' }
+
+Sends real email to verify SMTP works.
+
+This makes notifications REAL instead of simulated.

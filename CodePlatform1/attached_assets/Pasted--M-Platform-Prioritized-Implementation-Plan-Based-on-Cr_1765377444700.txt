@@ -1,0 +1,469 @@
+# M Platform: Prioritized Implementation Plan
+
+## Based on Cross-Reference Results + Engine Architecture Direction
+
+Generated: December 9, 2025
+
+---
+
+## EXECUTIVE SUMMARY
+
+| Category | Status | Action |
+|----------|--------|--------|
+| Database Schema | 95% ✅ | Minor verification only |
+| API Routes | 70% ⚠️ | Complete CRUD verification |
+| Frontend Components | 60% ⚠️ | Wizard steps needed |
+| Navigation | 100% ✅ | Done |
+| Messaging/Stats | 75% ⚠️ | Fix 240x → 360x immediately |
+| Investor Materials | 100% ✅ | Done |
+| Demo Improvements | 0% ❌ | Priority for investor meetings |
+| Simulation Engine | 0% ❌ | Post-funding or Phase 2 |
+
+---
+
+## PHASE 1: IMMEDIATE FIXES (Do Now - 30 minutes)
+
+### 1.1 Fix Math Error: 240x → 360x
+
+**Why it matters:** Investors will do the math. 72 hours ÷ 12 minutes = 360x, not 240x. Wrong math undermines credibility.
+
+**Files to update:**
+
+```typescript
+// FILE 1: client/src/pages/InvestorDemo.tsx
+// Find and replace "240x" with "360x" (appears ~2 times)
+
+// FILE 2: client/src/pages/DemoLiveActivation.tsx  
+// Find and replace "240x" with "360x" (line ~1153)
+
+// FILE 3: client/src/components/McKinseyIntelligenceCenter.tsx
+// Find and replace "240x" with "360x" (line ~352)
+
+// FILE 4: client/src/components/demo/DemoCompletionScreen.tsx
+// Find and replace "240x" with "360x" (line ~71)
+```
+
+**Verification command:**
+```bash
+grep -r "240x" client/src/ --include="*.tsx"
+# Expected result: 0 matches after fix
+```
+
+---
+
+## PHASE 2: INVESTOR DEMO IMPROVEMENTS (This Week - Priority for Roadshow)
+
+### 2.1 Add Skip/Fast-Forward to InvestorDemo.tsx
+
+**Why it matters:** Busy investors won't wait 3 minutes. Respecting their time shows professionalism.
+
+**Add to InvestorDemo.tsx:**
+
+```typescript
+// Add state for speed control
+const [playbackSpeed, setPlaybackSpeed] = useState(1);
+const [showSpeedControls, setShowSpeedControls] = useState(false);
+
+// Modify the interval in useEffect
+const interval = setInterval(() => {
+  setElapsedTime(prev => {
+    const next = prev + playbackSpeed; // Use speed multiplier
+    // ... rest of logic
+  });
+}, 1000);
+
+// Add UI controls after the Play/Pause buttons:
+<div className="flex items-center gap-2 mt-4">
+  <span className="text-sm text-slate-400">Speed:</span>
+  <Button 
+    size="sm" 
+    variant={playbackSpeed === 1 ? "default" : "outline"}
+    onClick={() => setPlaybackSpeed(1)}
+  >
+    1x
+  </Button>
+  <Button 
+    size="sm"
+    variant={playbackSpeed === 3 ? "default" : "outline"} 
+    onClick={() => setPlaybackSpeed(3)}
+  >
+    3x
+  </Button>
+  <Button 
+    size="sm"
+    variant={playbackSpeed === 10 ? "default" : "outline"}
+    onClick={() => setPlaybackSpeed(10)}
+  >
+    10x
+  </Button>
+</div>
+
+// Add "Skip to End" button
+<Button 
+  variant="ghost" 
+  onClick={() => {
+    setElapsedTime(DEMO_DURATION);
+    setCurrentStageIndex(DEMO_STAGES.length - 1);
+    setAcknowledgedStakeholders(STAKEHOLDER_ACKNOWLEDGMENTS);
+    setIsComplete(true);
+    setShowConfetti(true);
+  }}
+  className="text-slate-400 hover:text-white"
+>
+  Skip to Results →
+</Button>
+```
+
+### 2.2 Add Click-Through Mode
+
+**Why it matters:** Some investors prefer to control the pace themselves.
+
+```typescript
+// Add state
+const [manualMode, setManualMode] = useState(false);
+
+// Add toggle in header
+<Button 
+  variant="outline" 
+  size="sm"
+  onClick={() => setManualMode(!manualMode)}
+  className="border-slate-600"
+>
+  {manualMode ? "Auto Mode" : "Manual Mode"}
+</Button>
+
+// In manual mode, show "Next Stage" button instead of timer
+{manualMode && currentStageIndex < DEMO_STAGES.length - 1 && (
+  <Button 
+    onClick={() => {
+      setCurrentStageIndex(prev => prev + 1);
+      setElapsedTime(DEMO_STAGES[currentStageIndex + 1].time);
+    }}
+    className="bg-emerald-600 hover:bg-emerald-700"
+  >
+    Next Stage →
+  </Button>
+)}
+```
+
+---
+
+## PHASE 3: COMPLETE 4-PHASE WIZARD (Week 1-2)
+
+### 3.1 Create Missing Wizard Step Components
+
+**Location:** `client/src/components/playbook/wizard/`
+
+**Files to create:**
+
+#### PrepareOverviewStep.tsx
+```typescript
+// Purpose: Configure PREPARE phase items (stakeholders, documents, resources)
+// Shows checklist of readiness items with completion tracking
+// Allows adding custom prepare items
+// Displays readiness score for this phase
+
+export default function PrepareOverviewStep({ 
+  playbookId, 
+  prepareItems, 
+  onUpdate 
+}: PrepareStepProps) {
+  // Render checklist UI
+  // Each item: type, description, assignee, status, due date
+  // Add new item button
+  // Phase completion percentage
+}
+```
+
+#### MonitorTriggersStep.tsx
+```typescript
+// Purpose: Configure MONITOR phase signals and triggers
+// Define what signals activate this playbook
+// Set thresholds, patterns, data sources
+// Configure who gets notified when triggered
+
+export default function MonitorTriggersStep({
+  playbookId,
+  monitorItems,
+  onUpdate
+}: MonitorStepProps) {
+  // Signal type selector (competitive, regulatory, market, etc.)
+  // Trigger condition builder
+  // Notification role assignment
+  // Auto-activation settings
+}
+```
+
+#### ExecuteTasksStep.tsx
+```typescript
+// Purpose: Configure EXECUTE phase tasks with sub-phases
+// Organize tasks into: IMMEDIATE → COORDINATE → RESOLVE → CLOSE
+// Set dependencies between tasks (DAG structure)
+// Assign roles and estimated durations
+
+export default function ExecuteTasksStep({
+  playbookId,
+  tasks,
+  onUpdate
+}: ExecuteStepProps) {
+  // Sub-phase tabs: Immediate | Coordinate | Resolve | Close
+  // Drag-drop task ordering
+  // Dependency selector (which tasks must complete first)
+  // Role assignment dropdown
+  // Duration estimate input
+}
+```
+
+#### LearnConfigStep.tsx
+```typescript
+// Purpose: Configure LEARN phase activities
+// Define post-execution debrief requirements
+// Set up surveys, metrics review, documentation tasks
+// Configure improvement workflow
+
+export default function LearnConfigStep({
+  playbookId,
+  learnItems,
+  onUpdate
+}: LearnStepProps) {
+  // Learn item type selector (debrief, survey, metrics, etc.)
+  // Timing configuration (within 24h, 48h, 1 week)
+  // Participant requirements
+  // Improvement task auto-creation toggle
+}
+```
+
+### 3.2 Update PlaybookCustomizationWizard.tsx
+
+**Restructure STEPS array to use 4-phase model:**
+
+```typescript
+const WIZARD_STEPS = [
+  { id: 'overview', label: 'Overview', component: PlaybookOverviewStep },
+  { id: 'prepare', label: 'PREPARE', component: PrepareOverviewStep, phase: true },
+  { id: 'monitor', label: 'MONITOR', component: MonitorTriggersStep, phase: true },
+  { id: 'execute', label: 'EXECUTE', component: ExecuteTasksStep, phase: true },
+  { id: 'learn', label: 'LEARN', component: LearnConfigStep, phase: true },
+  { id: 'review', label: 'Review & Save', component: PlaybookReviewStep }
+];
+```
+
+---
+
+## PHASE 4: API ROUTE VERIFICATION (Week 1)
+
+### 4.1 Verify All CRUD Operations Work
+
+**Test each endpoint:**
+
+```bash
+# PREPARE items
+curl -X GET  http://localhost:5000/api/playbook-library/1/prepare-items
+curl -X POST http://localhost:5000/api/playbook-library/1/prepare-items \
+  -H "Content-Type: application/json" \
+  -d '{"type": "stakeholder_assignment", "title": "Assign CISO"}'
+curl -X PUT  http://localhost:5000/api/playbook-library/1/prepare-items/1 \
+  -d '{"status": "completed"}'
+curl -X DELETE http://localhost:5000/api/playbook-library/1/prepare-items/1
+
+# MONITOR items
+curl -X GET  http://localhost:5000/api/playbook-library/1/monitor-items
+curl -X POST http://localhost:5000/api/playbook-library/1/monitor-items \
+  -H "Content-Type: application/json" \
+  -d '{"signalType": "security", "triggerType": "threshold"}'
+
+# LEARN items
+curl -X GET  http://localhost:5000/api/playbook-library/1/learn-items
+curl -X POST http://localhost:5000/api/playbook-library/1/learn-items \
+  -H "Content-Type: application/json" \
+  -d '{"type": "debrief_meeting", "title": "Post-Incident Review"}'
+
+# Readiness
+curl -X GET  http://localhost:5000/api/playbook-library/1/readiness
+curl -X POST http://localhost:5000/api/playbook-library/1/readiness/recalculate
+```
+
+**If any endpoint returns 404 or error, implement it.**
+
+---
+
+## PHASE 5: SIMULATION ENGINE (Post-Funding / Month 2-3)
+
+### 5.1 The Vision
+
+Transform InvestorDemo from a "movie" (scripted animation) to a "game engine" (real simulation with dependencies and state).
+
+**Why this matters:**
+- Tasks unlock only when dependencies complete (shows real coordination)
+- User choices affect outcome (interactive, not passive)
+- Random events can inject chaos (proves adaptability)
+- Metrics decay if tasks stall (proves the "time savings" claim with logic)
+
+### 5.2 Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     CURRENT STATE                                │
+│  InvestorDemo.tsx → setInterval → hardcoded DEMO_STAGES          │
+│  (Movie: same every time, no logic, no interaction)              │
+└─────────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────────┐
+│                     TARGET STATE                                 │
+│  PlaybookEngine.ts (Backend)                                     │
+│    ├── Task dependency resolution (DAG)                          │
+│    ├── State machine (PENDING → READY → IN_PROGRESS → DONE)      │
+│    ├── Automated tasks (System AI completes some tasks)          │
+│    ├── Metrics calculation (alignment score)                     │
+│    └── WebSocket broadcast to frontend                           │
+│                              ↓                                   │
+│  InvestorDemo.tsx (Frontend)                                     │
+│    ├── WebSocket connection to engine                            │
+│    ├── Dynamic task rendering from engine state                  │
+│    ├── User can approve/complete manual tasks                    │
+│    └── Real-time metrics display                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 5.3 Implementation Files (When Ready)
+
+| File | Purpose |
+|------|---------|
+| `server/src/engine/types.ts` | Task, TaskStatus, Playbook, SimulationState types |
+| `server/src/engine/PlaybookEngine.ts` | Core simulation logic with tick(), checkDependencies() |
+| `server/src/data/Scenario_Ransomware.ts` | Structured playbook with task dependencies |
+| `server/src/routes/simulation.ts` | WebSocket endpoint for real-time state |
+| Updated `InvestorDemo.tsx` | Replace setInterval with WebSocket consumer |
+
+### 5.4 Key Engine Features
+
+```typescript
+// Task with dependencies
+{
+  id: 'T-201',
+  title: 'Notify Insurance Carrier',
+  assigneeRole: 'GC',
+  dependencies: ['T-102'], // Cannot start until T-102 completes
+  isAutomated: false,      // Requires human action
+  status: 'PENDING'
+}
+
+// Dependency resolution (the "magic")
+private checkDependencies() {
+  this.state.tasks.forEach((task) => {
+    if (task.status !== TaskStatus.PENDING) return;
+    
+    const allParentsDone = task.dependencies
+      .map(id => this.state.tasks.get(id))
+      .every(p => p?.status === TaskStatus.COMPLETED);
+    
+    if (allParentsDone) {
+      task.status = TaskStatus.READY;
+      this.emit('task_unlocked', task);
+    }
+  });
+}
+```
+
+### 5.5 Timeline Recommendation
+
+| When | What |
+|------|------|
+| **Now** | Keep current demo, add speed controls |
+| **Post-funding Week 1-2** | Build PlaybookEngine core |
+| **Post-funding Week 3-4** | Create Ransomware scenario with real dependencies |
+| **Post-funding Week 5-6** | Connect InvestorDemo to engine via WebSocket |
+| **Pilot delivery** | Use engine for customer-specific playbook simulations |
+
+---
+
+## PHASE 6: HERO MESSAGING DECISION
+
+### Current State
+```
+"Coordinated Strategic Response At the Speed of Disruption"
+```
+
+### Approved Alternative
+```
+"Growth favors the prepared. M is the Strategic Execution Operating System 
+that fundamentally changes how Fortune 1000 leaders work—replacing reactive 
+scrambles with coordinated precision, turning emerging opportunities into 
+decisive action, and transforming risk into competitive advantage."
+```
+
+### Recommendation
+
+**Keep current hero for now.** The "Speed of Disruption" messaging is punchy and works. The longer "Growth favors the prepared" copy is better suited for:
+- About page / Our Story
+- Investor materials
+- Email campaigns
+
+**However**, consider A/B testing if you have analytics set up.
+
+---
+
+## IMPLEMENTATION CHECKLIST FOR REPLIT
+
+### Do Immediately (Today)
+- [ ] Fix 240x → 360x in 4 files
+- [ ] Verify fix with grep command
+
+### Do This Week (Before Investor Meetings)
+- [ ] Add speed controls to InvestorDemo (1x, 3x, 10x)
+- [ ] Add "Skip to Results" button
+- [ ] Add manual click-through mode toggle
+- [ ] Test all demo paths work smoothly
+
+### Do Next Week
+- [ ] Create PrepareOverviewStep.tsx
+- [ ] Create MonitorTriggersStep.tsx
+- [ ] Create ExecuteTasksStep.tsx
+- [ ] Create LearnConfigStep.tsx
+- [ ] Update PlaybookCustomizationWizard.tsx to use new steps
+- [ ] Verify all API CRUD operations
+
+### Do Post-Funding (or if time permits)
+- [ ] Design PlaybookEngine architecture
+- [ ] Implement core engine with dependency resolution
+- [ ] Create Ransomware scenario with real task graph
+- [ ] Add WebSocket endpoint for simulation
+- [ ] Retrofit InvestorDemo to use engine
+
+---
+
+## VERIFICATION COMMANDS
+
+After implementing, run these to confirm:
+
+```bash
+# 1. No more 240x anywhere
+grep -r "240x" client/src/ --include="*.tsx"
+# Expected: 0 matches
+
+# 2. Wizard components exist
+ls -la client/src/components/playbook/wizard/
+# Expected: 4+ .tsx files
+
+# 3. API routes respond
+curl http://localhost:5000/api/playbook-library/1/readiness
+# Expected: JSON with score
+
+# 4. All imports resolve (no build errors)
+npm run build
+# Expected: Success
+```
+
+---
+
+## SUMMARY: PRIORITY ORDER
+
+| Priority | Task | Time | Impact |
+|----------|------|------|--------|
+| 🔴 P0 | Fix 240x → 360x | 5 min | Credibility |
+| 🔴 P1 | Add demo speed controls | 2 hrs | Investor experience |
+| 🟡 P2 | Create wizard step components | 1 week | Product completeness |
+| 🟡 P2 | Verify API CRUD | 2 hrs | Backend stability |
+| 🟢 P3 | Simulation engine | 4-6 weeks | Product differentiation |
+
+**Start with P0 and P1. They're quick wins that directly improve investor meetings.**

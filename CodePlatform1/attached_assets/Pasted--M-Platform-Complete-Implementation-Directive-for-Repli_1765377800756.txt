@@ -1,0 +1,1472 @@
+# M Platform: Complete Implementation Directive for Replit
+
+## Instructions
+Implement ALL items below in the order listed. Each section builds on the previous. Confirm completion of each section before moving to the next.
+
+---
+
+## SECTION 1: IMMEDIATE FIXES (Do First - 30 minutes)
+
+### 1.1 Fix 240x → 360x Math Error
+
+The correct math: 72 hours = 4,320 minutes. 4,320 ÷ 12 = **360x** (not 240x)
+
+**Find and replace "240x" with "360x" in these 4 files:**
+
+1. `client/src/pages/InvestorDemo.tsx`
+2. `client/src/pages/DemoLiveActivation.tsx`
+3. `client/src/components/McKinseyIntelligenceCenter.tsx`
+4. `client/src/components/demo/DemoCompletionScreen.tsx`
+
+**Verification:**
+```bash
+grep -r "240x" client/src/ --include="*.tsx"
+# Must return 0 matches
+```
+
+---
+
+## SECTION 2: INVESTOR DEMO IMPROVEMENTS (Do Second - 2-3 hours)
+
+### 2.1 Add Speed Controls to InvestorDemo.tsx
+
+Add playback speed options (1x, 3x, 10x) so investors can fast-forward:
+
+```typescript
+// Add state
+const [playbackSpeed, setPlaybackSpeed] = useState(1);
+
+// Modify the interval - multiply increment by playbackSpeed
+const interval = setInterval(() => {
+  setElapsedTime(prev => {
+    const next = prev + playbackSpeed;
+    // ... rest of existing logic
+    return next;
+  });
+}, 1000);
+
+// Add UI after Play/Pause buttons:
+<div className="flex items-center gap-2 mt-4 justify-center">
+  <span className="text-sm text-slate-400">Speed:</span>
+  {[1, 3, 10].map(speed => (
+    <Button 
+      key={speed}
+      size="sm" 
+      variant={playbackSpeed === speed ? "default" : "outline"}
+      onClick={() => setPlaybackSpeed(speed)}
+      className={playbackSpeed === speed ? "bg-emerald-600" : "border-slate-600 text-slate-300"}
+    >
+      {speed}x
+    </Button>
+  ))}
+</div>
+```
+
+### 2.2 Add "Skip to Results" Button
+
+Allow investors to jump to the completion state:
+
+```typescript
+// Add after the speed controls or in the button group:
+<Button 
+  variant="ghost" 
+  onClick={() => {
+    setElapsedTime(DEMO_DURATION);
+    setCurrentStageIndex(DEMO_STAGES.length - 1);
+    setAcknowledgedStakeholders(STAKEHOLDER_ACKNOWLEDGMENTS);
+    setIsPlaying(false);
+    setIsComplete(true);
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 5000);
+  }}
+  className="text-slate-400 hover:text-white text-sm"
+>
+  Skip to Results →
+</Button>
+```
+
+### 2.3 Add Manual Click-Through Mode
+
+Let investors advance stages manually instead of waiting:
+
+```typescript
+// Add state
+const [manualMode, setManualMode] = useState(false);
+
+// Add toggle button in header area:
+<Button 
+  variant="outline" 
+  size="sm"
+  onClick={() => {
+    setManualMode(!manualMode);
+    if (!manualMode) setIsPlaying(false); // Pause when entering manual
+  }}
+  className="border-slate-600 text-slate-300"
+>
+  {manualMode ? "⏵ Auto Mode" : "👆 Manual Mode"}
+</Button>
+
+// Disable auto-play interval when in manual mode:
+// In useEffect, wrap interval creation:
+if (!manualMode) {
+  // existing setInterval logic
+}
+
+// Show "Next Stage" button in manual mode:
+{manualMode && !isComplete && (
+  <Button 
+    onClick={() => {
+      const nextIndex = Math.min(currentStageIndex + 1, DEMO_STAGES.length - 1);
+      setCurrentStageIndex(nextIndex);
+      setElapsedTime(DEMO_STAGES[nextIndex].time);
+      
+      // Add stakeholders up to this point
+      const stakeholdersToAdd = STAKEHOLDER_ACKNOWLEDGMENTS.filter(
+        s => s.time <= DEMO_STAGES[nextIndex].time
+      );
+      setAcknowledgedStakeholders(stakeholdersToAdd);
+      
+      // Check completion
+      if (nextIndex === DEMO_STAGES.length - 1) {
+        setIsComplete(true);
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 5000);
+      }
+    }}
+    className="bg-emerald-600 hover:bg-emerald-700 text-white"
+    disabled={currentStageIndex >= DEMO_STAGES.length - 1}
+  >
+    Next Stage →
+  </Button>
+)}
+```
+
+---
+
+## SECTION 3: CREATE 4-PHASE WIZARD COMPONENTS (Do Third - 1-2 days)
+
+Create these files in `client/src/components/playbook/wizard/`:
+
+### 3.1 PrepareOverviewStep.tsx
+
+```typescript
+import { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { 
+  CheckCircle2, Circle, AlertCircle, Plus, Users, FileText, 
+  DollarSign, GraduationCap, Key, Building, ClipboardList 
+} from 'lucide-react';
+
+interface PrepareItem {
+  id: string;
+  type: string;
+  title: string;
+  description?: string;
+  assigneeRole?: string;
+  status: 'not_started' | 'in_progress' | 'completed' | 'needs_review' | 'blocked';
+  dueDate?: string;
+}
+
+interface PrepareOverviewStepProps {
+  playbookId: string;
+  prepareItems: PrepareItem[];
+  onUpdate: (items: PrepareItem[]) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+const ITEM_TYPE_CONFIG = {
+  stakeholder_assignment: { icon: Users, label: 'Stakeholder Assignment', color: 'text-blue-400' },
+  document_template: { icon: FileText, label: 'Document Template', color: 'text-purple-400' },
+  resource_staging: { icon: Building, label: 'Resource Staging', color: 'text-amber-400' },
+  communication_template: { icon: FileText, label: 'Communication Template', color: 'text-emerald-400' },
+  training_completion: { icon: GraduationCap, label: 'Training Completion', color: 'text-cyan-400' },
+  system_access: { icon: Key, label: 'System Access', color: 'text-red-400' },
+  vendor_contract: { icon: Building, label: 'Vendor Contract', color: 'text-orange-400' },
+  budget_approval: { icon: DollarSign, label: 'Budget Approval', color: 'text-green-400' },
+  checklist_item: { icon: ClipboardList, label: 'Checklist Item', color: 'text-slate-400' },
+};
+
+const STATUS_CONFIG = {
+  not_started: { icon: Circle, color: 'text-slate-400', bg: 'bg-slate-500/20' },
+  in_progress: { icon: Circle, color: 'text-amber-400', bg: 'bg-amber-500/20' },
+  completed: { icon: CheckCircle2, color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
+  needs_review: { icon: AlertCircle, color: 'text-purple-400', bg: 'bg-purple-500/20' },
+  blocked: { icon: AlertCircle, color: 'text-red-400', bg: 'bg-red-500/20' },
+};
+
+export default function PrepareOverviewStep({
+  playbookId,
+  prepareItems,
+  onUpdate,
+  onNext,
+  onBack
+}: PrepareOverviewStepProps) {
+  const completedCount = prepareItems.filter(i => i.status === 'completed').length;
+  const totalCount = prepareItems.length;
+  const readinessPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+  const updateItemStatus = (itemId: string, newStatus: PrepareItem['status']) => {
+    const updated = prepareItems.map(item => 
+      item.id === itemId ? { ...item, status: newStatus } : item
+    );
+    onUpdate(updated);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Phase Header */}
+      <div className="text-center">
+        <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 mb-2">
+          Phase 1 of 4
+        </Badge>
+        <h2 className="text-2xl font-bold text-white">PREPARE</h2>
+        <p className="text-slate-400">Configure what must be ready before this playbook can activate</p>
+      </div>
+
+      {/* Readiness Score */}
+      <Card className="bg-slate-900 border-slate-700">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-slate-400">Preparation Readiness</span>
+            <span className="text-lg font-bold text-emerald-400">{readinessPercent}%</span>
+          </div>
+          <Progress value={readinessPercent} className="h-2" />
+          <p className="text-xs text-slate-500 mt-2">
+            {completedCount} of {totalCount} items completed
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Items List */}
+      <div className="space-y-3">
+        {prepareItems.map((item) => {
+          const typeConfig = ITEM_TYPE_CONFIG[item.type as keyof typeof ITEM_TYPE_CONFIG] || ITEM_TYPE_CONFIG.checklist_item;
+          const statusConfig = STATUS_CONFIG[item.status];
+          const TypeIcon = typeConfig.icon;
+          const StatusIcon = statusConfig.icon;
+
+          return (
+            <Card key={item.id} className="bg-slate-800/50 border-slate-700">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-4">
+                  <div className={`p-2 rounded-lg ${statusConfig.bg}`}>
+                    <TypeIcon className={`h-5 w-5 ${typeConfig.color}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-medium text-white">{item.title}</h4>
+                      <Badge variant="outline" className={`${statusConfig.color} border-current text-xs`}>
+                        {item.status.replace('_', ' ')}
+                      </Badge>
+                    </div>
+                    {item.description && (
+                      <p className="text-sm text-slate-400 mb-2">{item.description}</p>
+                    )}
+                    {item.assigneeRole && (
+                      <p className="text-xs text-slate-500">Assigned to: {item.assigneeRole}</p>
+                    )}
+                  </div>
+                  <select
+                    value={item.status}
+                    onChange={(e) => updateItemStatus(item.id, e.target.value as PrepareItem['status'])}
+                    className="bg-slate-700 border-slate-600 text-slate-300 text-sm rounded px-2 py-1"
+                  >
+                    <option value="not_started">Not Started</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="needs_review">Needs Review</option>
+                    <option value="blocked">Blocked</option>
+                  </select>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Add Item Button */}
+      <Button variant="outline" className="w-full border-dashed border-slate-600 text-slate-400">
+        <Plus className="h-4 w-4 mr-2" />
+        Add Preparation Item
+      </Button>
+
+      {/* Navigation */}
+      <div className="flex justify-between pt-4">
+        <Button variant="outline" onClick={onBack} className="border-slate-600 text-slate-300">
+          ← Back
+        </Button>
+        <Button onClick={onNext} className="bg-emerald-600 hover:bg-emerald-700">
+          Continue to MONITOR →
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+### 3.2 MonitorTriggersStep.tsx
+
+```typescript
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { 
+  Radio, AlertTriangle, TrendingUp, Shield, DollarSign, 
+  Users, Truck, Cpu, Globe, Scale, Plus, Trash2 
+} from 'lucide-react';
+
+interface MonitorItem {
+  id: string;
+  signalType: string;
+  signalName: string;
+  description?: string;
+  triggerType: 'threshold' | 'pattern' | 'event' | 'manual' | 'scheduled';
+  triggerConditions: Record<string, any>;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  notifyRoles: string[];
+  isActive: boolean;
+}
+
+interface MonitorTriggersStepProps {
+  playbookId: string;
+  monitorItems: MonitorItem[];
+  onUpdate: (items: MonitorItem[]) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+const SIGNAL_TYPES = [
+  { value: 'competitive', label: 'Competitive', icon: TrendingUp, color: 'text-blue-400' },
+  { value: 'regulatory', label: 'Regulatory', icon: Scale, color: 'text-purple-400' },
+  { value: 'market', label: 'Market', icon: Globe, color: 'text-cyan-400' },
+  { value: 'operational', label: 'Operational', icon: Cpu, color: 'text-amber-400' },
+  { value: 'financial', label: 'Financial', icon: DollarSign, color: 'text-green-400' },
+  { value: 'security', label: 'Security', icon: Shield, color: 'text-red-400' },
+  { value: 'reputation', label: 'Reputation', icon: Radio, color: 'text-pink-400' },
+  { value: 'talent', label: 'Talent', icon: Users, color: 'text-indigo-400' },
+  { value: 'supply_chain', label: 'Supply Chain', icon: Truck, color: 'text-orange-400' },
+  { value: 'technology', label: 'Technology', icon: Cpu, color: 'text-teal-400' },
+];
+
+const SEVERITY_CONFIG = {
+  low: { color: 'bg-slate-500', label: 'Low' },
+  medium: { color: 'bg-amber-500', label: 'Medium' },
+  high: { color: 'bg-orange-500', label: 'High' },
+  critical: { color: 'bg-red-500', label: 'Critical' },
+};
+
+export default function MonitorTriggersStep({
+  playbookId,
+  monitorItems,
+  onUpdate,
+  onNext,
+  onBack
+}: MonitorTriggersStepProps) {
+  const activeCount = monitorItems.filter(i => i.isActive).length;
+
+  const toggleActive = (itemId: string) => {
+    const updated = monitorItems.map(item =>
+      item.id === itemId ? { ...item, isActive: !item.isActive } : item
+    );
+    onUpdate(updated);
+  };
+
+  const removeItem = (itemId: string) => {
+    onUpdate(monitorItems.filter(item => item.id !== itemId));
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Phase Header */}
+      <div className="text-center">
+        <Badge className="bg-amber-500/20 text-amber-300 border-amber-500/30 mb-2">
+          Phase 2 of 4
+        </Badge>
+        <h2 className="text-2xl font-bold text-white">MONITOR</h2>
+        <p className="text-slate-400">Define signals and triggers that activate this playbook</p>
+      </div>
+
+      {/* Active Triggers Count */}
+      <Card className="bg-slate-900 border-slate-700">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-slate-400">Active Triggers</p>
+              <p className="text-2xl font-bold text-amber-400">{activeCount}</p>
+            </div>
+            <AlertTriangle className="h-8 w-8 text-amber-400/50" />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Triggers List */}
+      <div className="space-y-3">
+        {monitorItems.map((item) => {
+          const signalConfig = SIGNAL_TYPES.find(s => s.value === item.signalType) || SIGNAL_TYPES[0];
+          const SignalIcon = signalConfig.icon;
+          const severityConfig = SEVERITY_CONFIG[item.severity];
+
+          return (
+            <Card 
+              key={item.id} 
+              className={`border transition-all ${
+                item.isActive 
+                  ? 'bg-slate-800/80 border-amber-500/50' 
+                  : 'bg-slate-900/50 border-slate-700 opacity-60'
+              }`}
+            >
+              <CardContent className="p-4">
+                <div className="flex items-start gap-4">
+                  <div className={`p-2 rounded-lg bg-slate-700`}>
+                    <SignalIcon className={`h-5 w-5 ${signalConfig.color}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-medium text-white">{item.signalName}</h4>
+                      <Badge className={`${severityConfig.color} text-white text-xs`}>
+                        {severityConfig.label}
+                      </Badge>
+                      <Badge variant="outline" className="text-xs text-slate-400">
+                        {item.triggerType}
+                      </Badge>
+                    </div>
+                    {item.description && (
+                      <p className="text-sm text-slate-400 mb-2">{item.description}</p>
+                    )}
+                    <p className="text-xs text-slate-500">
+                      Notifies: {item.notifyRoles.join(', ') || 'None configured'}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="sm"
+                      variant={item.isActive ? "default" : "outline"}
+                      onClick={() => toggleActive(item.id)}
+                      className={item.isActive ? "bg-amber-600 hover:bg-amber-700" : ""}
+                    >
+                      {item.isActive ? 'Active' : 'Inactive'}
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => removeItem(item.id)}
+                      className="text-red-400 hover:text-red-300 hover:bg-red-500/20"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Add Trigger Button */}
+      <Button variant="outline" className="w-full border-dashed border-slate-600 text-slate-400">
+        <Plus className="h-4 w-4 mr-2" />
+        Add Trigger Condition
+      </Button>
+
+      {/* Navigation */}
+      <div className="flex justify-between pt-4">
+        <Button variant="outline" onClick={onBack} className="border-slate-600 text-slate-300">
+          ← Back to PREPARE
+        </Button>
+        <Button onClick={onNext} className="bg-emerald-600 hover:bg-emerald-700">
+          Continue to EXECUTE →
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+### 3.3 ExecuteTasksStep.tsx
+
+```typescript
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Zap, Users, CheckCircle, Flag, Plus, GripVertical, 
+  Clock, User, ArrowRight, Link 
+} from 'lucide-react';
+
+interface ExecuteTask {
+  id: string;
+  title: string;
+  description?: string;
+  assigneeRole: string;
+  estimatedDuration: number; // minutes
+  subphase: 'immediate' | 'coordinate' | 'resolve' | 'close';
+  dependencies: string[];
+  isAutomated: boolean;
+  sequence: number;
+}
+
+interface ExecuteTasksStepProps {
+  playbookId: string;
+  tasks: ExecuteTask[];
+  onUpdate: (tasks: ExecuteTask[]) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+const SUBPHASE_CONFIG = {
+  immediate: { 
+    label: 'Immediate', 
+    icon: Zap, 
+    color: 'text-red-400', 
+    bg: 'bg-red-500/20',
+    description: 'First response actions (0-5 min)'
+  },
+  coordinate: { 
+    label: 'Coordinate', 
+    icon: Users, 
+    color: 'text-amber-400', 
+    bg: 'bg-amber-500/20',
+    description: 'Stakeholder alignment (5-30 min)'
+  },
+  resolve: { 
+    label: 'Resolve', 
+    icon: CheckCircle, 
+    color: 'text-emerald-400', 
+    bg: 'bg-emerald-500/20',
+    description: 'Core resolution tasks (30-60 min)'
+  },
+  close: { 
+    label: 'Close', 
+    icon: Flag, 
+    color: 'text-blue-400', 
+    bg: 'bg-blue-500/20',
+    description: 'Wrap-up and handoff (60+ min)'
+  },
+};
+
+export default function ExecuteTasksStep({
+  playbookId,
+  tasks,
+  onUpdate,
+  onNext,
+  onBack
+}: ExecuteTasksStepProps) {
+  const [activeSubphase, setActiveSubphase] = useState<string>('immediate');
+
+  const getTasksBySubphase = (subphase: string) => 
+    tasks.filter(t => t.subphase === subphase).sort((a, b) => a.sequence - b.sequence);
+
+  const totalDuration = tasks.reduce((sum, t) => sum + t.estimatedDuration, 0);
+
+  return (
+    <div className="space-y-6">
+      {/* Phase Header */}
+      <div className="text-center">
+        <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 mb-2">
+          Phase 3 of 4
+        </Badge>
+        <h2 className="text-2xl font-bold text-white">EXECUTE</h2>
+        <p className="text-slate-400">Configure tasks organized by response sub-phase</p>
+      </div>
+
+      {/* Summary Stats */}
+      <div className="grid grid-cols-3 gap-4">
+        <Card className="bg-slate-900 border-slate-700">
+          <CardContent className="p-4 text-center">
+            <p className="text-2xl font-bold text-white">{tasks.length}</p>
+            <p className="text-xs text-slate-400">Total Tasks</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-slate-900 border-slate-700">
+          <CardContent className="p-4 text-center">
+            <p className="text-2xl font-bold text-emerald-400">{totalDuration} min</p>
+            <p className="text-xs text-slate-400">Est. Duration</p>
+          </CardContent>
+        </Card>
+        <Card className="bg-slate-900 border-slate-700">
+          <CardContent className="p-4 text-center">
+            <p className="text-2xl font-bold text-blue-400">
+              {tasks.filter(t => t.isAutomated).length}
+            </p>
+            <p className="text-xs text-slate-400">Automated</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Sub-phase Tabs */}
+      <Tabs value={activeSubphase} onValueChange={setActiveSubphase}>
+        <TabsList className="grid grid-cols-4 bg-slate-800">
+          {Object.entries(SUBPHASE_CONFIG).map(([key, config]) => {
+            const Icon = config.icon;
+            const count = getTasksBySubphase(key).length;
+            return (
+              <TabsTrigger 
+                key={key} 
+                value={key}
+                className="data-[state=active]:bg-slate-700"
+              >
+                <Icon className={`h-4 w-4 mr-1.5 ${config.color}`} />
+                {config.label}
+                <Badge variant="secondary" className="ml-1.5 text-xs">{count}</Badge>
+              </TabsTrigger>
+            );
+          })}
+        </TabsList>
+
+        {Object.entries(SUBPHASE_CONFIG).map(([key, config]) => (
+          <TabsContent key={key} value={key} className="mt-4">
+            <p className="text-sm text-slate-400 mb-4">{config.description}</p>
+            
+            <div className="space-y-2">
+              {getTasksBySubphase(key).map((task, index) => (
+                <Card key={task.id} className="bg-slate-800/50 border-slate-700">
+                  <CardContent className="p-3">
+                    <div className="flex items-center gap-3">
+                      <GripVertical className="h-4 w-4 text-slate-600 cursor-move" />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-white">{task.title}</span>
+                          {task.isAutomated && (
+                            <Badge className="bg-blue-500/20 text-blue-300 text-xs">Auto</Badge>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-4 mt-1 text-xs text-slate-400">
+                          <span className="flex items-center gap-1">
+                            <User className="h-3 w-3" />
+                            {task.assigneeRole}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {task.estimatedDuration} min
+                          </span>
+                          {task.dependencies.length > 0 && (
+                            <span className="flex items-center gap-1">
+                              <Link className="h-3 w-3" />
+                              {task.dependencies.length} dependencies
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <ArrowRight className="h-4 w-4 text-slate-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <Button 
+              variant="outline" 
+              className="w-full mt-3 border-dashed border-slate-600 text-slate-400"
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Add {config.label} Task
+            </Button>
+          </TabsContent>
+        ))}
+      </Tabs>
+
+      {/* Navigation */}
+      <div className="flex justify-between pt-4">
+        <Button variant="outline" onClick={onBack} className="border-slate-600 text-slate-300">
+          ← Back to MONITOR
+        </Button>
+        <Button onClick={onNext} className="bg-emerald-600 hover:bg-emerald-700">
+          Continue to LEARN →
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+### 3.4 LearnConfigStep.tsx
+
+```typescript
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
+import { 
+  BookOpen, MessageSquare, BarChart3, FileText, 
+  RefreshCw, GraduationCap, Lightbulb, Plus, Clock 
+} from 'lucide-react';
+
+interface LearnItem {
+  id: string;
+  type: string;
+  title: string;
+  description?: string;
+  timing: string;
+  offsetHours: number;
+  responsibleRole?: string;
+  requiredParticipants: string[];
+  isRequired: boolean;
+  autoCreateImprovementTask: boolean;
+}
+
+interface LearnConfigStepProps {
+  playbookId: string;
+  learnItems: LearnItem[];
+  onUpdate: (items: LearnItem[]) => void;
+  onFinish: () => void;
+  onBack: () => void;
+}
+
+const LEARN_TYPES = {
+  debrief_meeting: { icon: MessageSquare, label: 'Debrief Meeting', color: 'text-blue-400' },
+  survey: { icon: BookOpen, label: 'Survey', color: 'text-purple-400' },
+  metrics_review: { icon: BarChart3, label: 'Metrics Review', color: 'text-emerald-400' },
+  documentation: { icon: FileText, label: 'Documentation', color: 'text-amber-400' },
+  playbook_update: { icon: RefreshCw, label: 'Playbook Update', color: 'text-cyan-400' },
+  training_update: { icon: GraduationCap, label: 'Training Update', color: 'text-pink-400' },
+  process_improvement: { icon: Lightbulb, label: 'Process Improvement', color: 'text-orange-400' },
+};
+
+const TIMING_OPTIONS = [
+  { value: 'within_24_hours', label: 'Within 24 hours', hours: 24 },
+  { value: 'within_48_hours', label: 'Within 48 hours', hours: 48 },
+  { value: 'within_1_week', label: 'Within 1 week', hours: 168 },
+  { value: 'within_2_weeks', label: 'Within 2 weeks', hours: 336 },
+];
+
+export default function LearnConfigStep({
+  playbookId,
+  learnItems,
+  onUpdate,
+  onFinish,
+  onBack
+}: LearnConfigStepProps) {
+  const toggleRequired = (itemId: string) => {
+    const updated = learnItems.map(item =>
+      item.id === itemId ? { ...item, isRequired: !item.isRequired } : item
+    );
+    onUpdate(updated);
+  };
+
+  const toggleAutoImprovement = (itemId: string) => {
+    const updated = learnItems.map(item =>
+      item.id === itemId ? { ...item, autoCreateImprovementTask: !item.autoCreateImprovementTask } : item
+    );
+    onUpdate(updated);
+  };
+
+  const requiredCount = learnItems.filter(i => i.isRequired).length;
+
+  return (
+    <div className="space-y-6">
+      {/* Phase Header */}
+      <div className="text-center">
+        <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 mb-2">
+          Phase 4 of 4
+        </Badge>
+        <h2 className="text-2xl font-bold text-white">LEARN</h2>
+        <p className="text-slate-400">Configure post-execution learning and improvement activities</p>
+      </div>
+
+      {/* Summary */}
+      <Card className="bg-gradient-to-r from-purple-950/50 to-blue-950/50 border-purple-500/30">
+        <CardContent className="p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-slate-400">Learning Activities</p>
+              <p className="text-2xl font-bold text-white">
+                {learnItems.length} configured
+              </p>
+              <p className="text-xs text-slate-500">{requiredCount} required</p>
+            </div>
+            <BookOpen className="h-10 w-10 text-purple-400/50" />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Learn Items */}
+      <div className="space-y-3">
+        {learnItems.map((item) => {
+          const typeConfig = LEARN_TYPES[item.type as keyof typeof LEARN_TYPES] || LEARN_TYPES.documentation;
+          const TypeIcon = typeConfig.icon;
+
+          return (
+            <Card key={item.id} className="bg-slate-800/50 border-slate-700">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-slate-700">
+                    <TypeIcon className={`h-5 w-5 ${typeConfig.color}`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h4 className="font-medium text-white">{item.title}</h4>
+                      {item.isRequired && (
+                        <Badge className="bg-red-500/20 text-red-300 text-xs">Required</Badge>
+                      )}
+                    </div>
+                    {item.description && (
+                      <p className="text-sm text-slate-400 mb-2">{item.description}</p>
+                    )}
+                    <div className="flex items-center gap-4 text-xs text-slate-500">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {item.timing.replace(/_/g, ' ')}
+                      </span>
+                      {item.responsibleRole && (
+                        <span>Owner: {item.responsibleRole}</span>
+                      )}
+                    </div>
+
+                    {/* Toggles */}
+                    <div className="flex items-center gap-6 mt-3 pt-3 border-t border-slate-700">
+                      <div className="flex items-center gap-2">
+                        <Switch
+                          checked={item.isRequired}
+                          onCheckedChange={() => toggleRequired(item.id)}
+                        />
+                        <span className="text-xs text-slate-400">Required</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Switch
+                          checked={item.autoCreateImprovementTask}
+                          onCheckedChange={() => toggleAutoImprovement(item.id)}
+                        />
+                        <span className="text-xs text-slate-400">Auto-create improvement task</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Add Item */}
+      <Button variant="outline" className="w-full border-dashed border-slate-600 text-slate-400">
+        <Plus className="h-4 w-4 mr-2" />
+        Add Learning Activity
+      </Button>
+
+      {/* Navigation */}
+      <div className="flex justify-between pt-4">
+        <Button variant="outline" onClick={onBack} className="border-slate-600 text-slate-300">
+          ← Back to EXECUTE
+        </Button>
+        <Button onClick={onFinish} className="bg-emerald-600 hover:bg-emerald-700">
+          Save Playbook ✓
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+### 3.5 Update PlaybookCustomizationWizard.tsx
+
+Import and integrate the new step components into the existing wizard.
+
+---
+
+## SECTION 4: VERIFY API ROUTES (Do Fourth - 1 hour)
+
+Run these tests to confirm all CRUD operations work:
+
+```bash
+# Start server if not running
+npm run dev
+
+# Test PREPARE endpoints
+curl -X GET http://localhost:5000/api/playbook-library/1/prepare-items
+curl -X POST http://localhost:5000/api/playbook-library/1/prepare-items \
+  -H "Content-Type: application/json" \
+  -d '{"type":"stakeholder_assignment","title":"Test Item","status":"not_started"}'
+
+# Test MONITOR endpoints  
+curl -X GET http://localhost:5000/api/playbook-library/1/monitor-items
+curl -X POST http://localhost:5000/api/playbook-library/1/monitor-items \
+  -H "Content-Type: application/json" \
+  -d '{"signalType":"security","signalName":"Test Signal","triggerType":"threshold"}'
+
+# Test LEARN endpoints
+curl -X GET http://localhost:5000/api/playbook-library/1/learn-items
+curl -X POST http://localhost:5000/api/playbook-library/1/learn-items \
+  -H "Content-Type: application/json" \
+  -d '{"type":"debrief_meeting","title":"Post-Incident Review"}'
+
+# Test Readiness
+curl -X GET http://localhost:5000/api/playbook-library/1/readiness
+```
+
+**If any endpoint returns 404, implement it in server/routes.ts**
+
+---
+
+## SECTION 5: SIMULATION ENGINE (Do Fifth - 1-2 weeks)
+
+### 5.1 Create Engine Types
+
+**File: `server/src/engine/types.ts`**
+
+```typescript
+export type Role = 'CISO' | 'CEO' | 'COO' | 'GC' | 'VP_HR' | 'CFO' | 'CCO' | 'SYSTEM_AI';
+
+export enum TaskStatus {
+  PENDING = 'PENDING',
+  READY = 'READY',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+  BLOCKED = 'BLOCKED',
+  FAILED = 'FAILED'
+}
+
+export interface EngineTask {
+  id: string;
+  title: string;
+  description: string;
+  assigneeRole: Role;
+  estimatedDuration: number; // seconds
+  dependencies: string[];
+  isAutomated: boolean;
+  status: TaskStatus;
+  startTime?: number;
+  endTime?: number;
+  assignedUser?: string;
+}
+
+export interface PlaybookPhase {
+  id: string;
+  name: string;
+  order: number;
+  tasks: EngineTask[];
+}
+
+export interface EnginePlaybook {
+  id: string;
+  title: string;
+  triggerType: string;
+  phases: PlaybookPhase[];
+}
+
+export interface SimulationState {
+  playbookId: string;
+  status: 'INITIALIZING' | 'ACTIVE' | 'PAUSED' | 'RESOLVED' | 'FAILED';
+  tick: number;
+  tasks: Map<string, EngineTask>;
+  logs: string[];
+  alignmentScore: number;
+  startedAt?: Date;
+  completedAt?: Date;
+}
+```
+
+### 5.2 Create Playbook Engine
+
+**File: `server/src/engine/PlaybookEngine.ts`**
+
+```typescript
+import { EventEmitter } from 'events';
+import { EnginePlaybook, SimulationState, EngineTask, TaskStatus, Role } from './types';
+
+export class PlaybookEngine extends EventEmitter {
+  private state: SimulationState;
+  private intervalId: NodeJS.Timeout | null = null;
+  private tickRate: number = 1000;
+
+  constructor(playbook: EnginePlaybook) {
+    super();
+    this.state = this.initializeState(playbook);
+  }
+
+  private initializeState(playbook: EnginePlaybook): SimulationState {
+    const taskMap = new Map<string, EngineTask>();
+    
+    playbook.phases.forEach(phase => {
+      phase.tasks.forEach(task => {
+        taskMap.set(task.id, {
+          ...task,
+          status: TaskStatus.PENDING,
+          startTime: undefined,
+          endTime: undefined
+        });
+      });
+    });
+
+    return {
+      playbookId: playbook.id,
+      status: 'INITIALIZING',
+      tick: 0,
+      tasks: taskMap,
+      logs: ['Simulation initialized. Awaiting start command.'],
+      alignmentScore: 100
+    };
+  }
+
+  public start(): void {
+    if (this.state.status === 'ACTIVE') return;
+    
+    this.state.status = 'ACTIVE';
+    this.state.startedAt = new Date();
+    this.log('Simulation STARTED');
+    this.emit('start', this.getPublicState());
+
+    // Immediately check for tasks with no dependencies
+    this.checkDependencies();
+
+    this.intervalId = setInterval(() => {
+      this.tick();
+    }, this.tickRate);
+  }
+
+  public pause(): void {
+    if (this.state.status !== 'ACTIVE') return;
+    this.state.status = 'PAUSED';
+    if (this.intervalId) clearInterval(this.intervalId);
+    this.log('Simulation PAUSED');
+    this.emit('pause', this.getPublicState());
+  }
+
+  public resume(): void {
+    if (this.state.status !== 'PAUSED') return;
+    this.state.status = 'ACTIVE';
+    this.intervalId = setInterval(() => this.tick(), this.tickRate);
+    this.log('Simulation RESUMED');
+    this.emit('resume', this.getPublicState());
+  }
+
+  private tick(): void {
+    this.state.tick++;
+    
+    this.checkDependencies();
+    this.processAutomatedTasks();
+    this.updateMetrics();
+
+    this.emit('tick', this.getPublicState());
+
+    if (this.checkCompletion()) {
+      this.complete();
+    }
+  }
+
+  private checkDependencies(): void {
+    this.state.tasks.forEach((task) => {
+      if (task.status !== TaskStatus.PENDING) return;
+
+      const allParentsDone = task.dependencies.every(depId => {
+        const parent = this.state.tasks.get(depId);
+        return parent?.status === TaskStatus.COMPLETED;
+      });
+
+      if (allParentsDone) {
+        task.status = TaskStatus.READY;
+        this.log(`Task READY: [${task.title}] → Assigned to ${task.assigneeRole}`);
+        this.emit('task_ready', { taskId: task.id, task });
+
+        // Auto-start automated tasks
+        if (task.isAutomated) {
+          this.startTask(task.id, 'SYSTEM_AI');
+        }
+      }
+    });
+  }
+
+  private processAutomatedTasks(): void {
+    this.state.tasks.forEach((task) => {
+      if (task.status === TaskStatus.IN_PROGRESS && task.isAutomated) {
+        const elapsed = this.state.tick - (task.startTime || 0);
+        if (elapsed >= task.estimatedDuration) {
+          this.completeTask(task.id, 'SYSTEM_AI');
+        }
+      }
+    });
+  }
+
+  public startTask(taskId: string, userId: string): boolean {
+    const task = this.state.tasks.get(taskId);
+    if (!task || task.status !== TaskStatus.READY) return false;
+
+    task.status = TaskStatus.IN_PROGRESS;
+    task.startTime = this.state.tick;
+    task.assignedUser = userId;
+    
+    this.log(`Task STARTED: [${task.title}] by ${userId}`);
+    this.emit('task_started', { taskId, task, userId });
+    return true;
+  }
+
+  public completeTask(taskId: string, userId: string): boolean {
+    const task = this.state.tasks.get(taskId);
+    if (!task || task.status !== TaskStatus.IN_PROGRESS) return false;
+
+    task.status = TaskStatus.COMPLETED;
+    task.endTime = this.state.tick;
+    task.assignedUser = userId;
+
+    this.log(`Task COMPLETED: [${task.title}] by ${userId}`);
+    this.emit('task_completed', { taskId, task, userId });
+
+    // Immediately check if this unlocks other tasks
+    this.checkDependencies();
+    return true;
+  }
+
+  private updateMetrics(): void {
+    let staleTasks = 0;
+    this.state.tasks.forEach(task => {
+      if (task.status === TaskStatus.READY) {
+        const waitTime = this.state.tick - (task.startTime || this.state.tick);
+        if (waitTime > 30) staleTasks++;
+      }
+    });
+
+    if (staleTasks > 0) {
+      this.state.alignmentScore = Math.max(0, this.state.alignmentScore - 0.5);
+    }
+  }
+
+  private checkCompletion(): boolean {
+    return Array.from(this.state.tasks.values())
+      .every(t => t.status === TaskStatus.COMPLETED);
+  }
+
+  private complete(): void {
+    if (this.intervalId) clearInterval(this.intervalId);
+    this.state.status = 'RESOLVED';
+    this.state.completedAt = new Date();
+    
+    const duration = this.state.tick;
+    this.log(`Simulation COMPLETE in ${duration} seconds`);
+    this.emit('complete', this.getPublicState());
+  }
+
+  private log(message: string): void {
+    const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
+    this.state.logs.push(`[${timestamp}] ${message}`);
+  }
+
+  public getPublicState(): object {
+    return {
+      playbookId: this.state.playbookId,
+      status: this.state.status,
+      tick: this.state.tick,
+      tasks: Object.fromEntries(this.state.tasks),
+      logs: this.state.logs,
+      alignmentScore: this.state.alignmentScore,
+      startedAt: this.state.startedAt,
+      completedAt: this.state.completedAt
+    };
+  }
+
+  public destroy(): void {
+    if (this.intervalId) clearInterval(this.intervalId);
+    this.removeAllListeners();
+  }
+}
+```
+
+### 5.3 Create Ransomware Scenario
+
+**File: `server/src/data/scenarios/Ransomware.ts`**
+
+```typescript
+import { EnginePlaybook } from '../engine/types';
+
+export const RansomwarePlaybook: EnginePlaybook = {
+  id: 'PB-012',
+  title: 'Ransomware Containment Protocol',
+  triggerType: 'RANSOMWARE',
+  phases: [
+    {
+      id: 'PH-1',
+      name: 'Immediate Response',
+      order: 1,
+      tasks: [
+        {
+          id: 'T-101',
+          title: 'Isolate Infected Network Segments',
+          description: 'Sever VLAN connections to affected data centers',
+          assigneeRole: 'SYSTEM_AI',
+          estimatedDuration: 5,
+          dependencies: [],
+          isAutomated: true,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-102',
+          title: 'Verify Containment',
+          description: 'Confirm zero lateral traffic from infected IPs',
+          assigneeRole: 'CISO',
+          estimatedDuration: 20,
+          dependencies: ['T-101'],
+          isAutomated: false,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-103',
+          title: 'Activate Incident Response Team',
+          description: 'Send emergency notifications to IR team members',
+          assigneeRole: 'SYSTEM_AI',
+          estimatedDuration: 3,
+          dependencies: [],
+          isAutomated: true,
+          status: 'PENDING'
+        }
+      ]
+    },
+    {
+      id: 'PH-2',
+      name: 'Stakeholder Coordination',
+      order: 2,
+      tasks: [
+        {
+          id: 'T-201',
+          title: 'Brief Executive Team',
+          description: 'Provide situation summary to C-suite',
+          assigneeRole: 'CISO',
+          estimatedDuration: 15,
+          dependencies: ['T-102'],
+          isAutomated: false,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-202',
+          title: 'Notify Insurance Carrier',
+          description: 'Initiate cyber insurance claim process',
+          assigneeRole: 'GC',
+          estimatedDuration: 30,
+          dependencies: ['T-102'],
+          isAutomated: false,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-203',
+          title: 'Draft Customer Communication',
+          description: 'Prepare holding statement using Template #4',
+          assigneeRole: 'CCO',
+          estimatedDuration: 45,
+          dependencies: ['T-201'],
+          isAutomated: false,
+          status: 'PENDING'
+        }
+      ]
+    },
+    {
+      id: 'PH-3',
+      name: 'Resolution',
+      order: 3,
+      tasks: [
+        {
+          id: 'T-301',
+          title: 'Approve External Communications',
+          description: 'Final sign-off on customer statement',
+          assigneeRole: 'CEO',
+          estimatedDuration: 10,
+          dependencies: ['T-202', 'T-203'],
+          isAutomated: false,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-302',
+          title: 'Deploy Communications',
+          description: 'Send approved statement to all channels',
+          assigneeRole: 'SYSTEM_AI',
+          estimatedDuration: 2,
+          dependencies: ['T-301'],
+          isAutomated: true,
+          status: 'PENDING'
+        },
+        {
+          id: 'T-303',
+          title: 'Schedule Post-Incident Review',
+          description: 'Set debrief meeting for 24h after resolution',
+          assigneeRole: 'COO',
+          estimatedDuration: 5,
+          dependencies: ['T-302'],
+          isAutomated: false,
+          status: 'PENDING'
+        }
+      ]
+    }
+  ]
+};
+```
+
+### 5.4 Create WebSocket Route
+
+**File: `server/src/routes/simulation.ts`**
+
+```typescript
+import { WebSocketServer, WebSocket } from 'ws';
+import { PlaybookEngine } from '../engine/PlaybookEngine';
+import { RansomwarePlaybook } from '../data/scenarios/Ransomware';
+
+const engines = new Map<string, PlaybookEngine>();
+
+export function setupSimulationWebSocket(wss: WebSocketServer) {
+  wss.on('connection', (ws: WebSocket, req) => {
+    const playbookId = req.url?.split('/').pop() || 'PB-012';
+    
+    // Create or get existing engine
+    let engine = engines.get(playbookId);
+    if (!engine) {
+      // For now, only support ransomware scenario
+      engine = new PlaybookEngine(RansomwarePlaybook);
+      engines.set(playbookId, engine);
+    }
+
+    // Send initial state
+    ws.send(JSON.stringify({
+      type: 'INIT',
+      payload: engine.getPublicState()
+    }));
+
+    // Forward engine events to client
+    const onTick = (state: object) => {
+      ws.send(JSON.stringify({ type: 'TICK', payload: state }));
+    };
+    const onTaskReady = (data: object) => {
+      ws.send(JSON.stringify({ type: 'TASK_READY', payload: data }));
+    };
+    const onTaskCompleted = (data: object) => {
+      ws.send(JSON.stringify({ type: 'TASK_COMPLETED', payload: data }));
+    };
+    const onComplete = (state: object) => {
+      ws.send(JSON.stringify({ type: 'COMPLETE', payload: state }));
+    };
+
+    engine.on('tick', onTick);
+    engine.on('task_ready', onTaskReady);
+    engine.on('task_completed', onTaskCompleted);
+    engine.on('complete', onComplete);
+
+    // Handle client messages
+    ws.on('message', (data) => {
+      try {
+        const msg = JSON.parse(data.toString());
+        
+        switch (msg.action) {
+          case 'START':
+            engine?.start();
+            break;
+          case 'PAUSE':
+            engine?.pause();
+            break;
+          case 'RESUME':
+            engine?.resume();
+            break;
+          case 'COMPLETE_TASK':
+            engine?.completeTask(msg.taskId, msg.userId || 'Guest');
+            break;
+          case 'START_TASK':
+            engine?.startTask(msg.taskId, msg.userId || 'Guest');
+            break;
+        }
+      } catch (err) {
+        console.error('Invalid message:', err);
+      }
+    });
+
+    // Cleanup on disconnect
+    ws.on('close', () => {
+      engine?.off('tick', onTick);
+      engine?.off('task_ready', onTaskReady);
+      engine?.off('task_completed', onTaskCompleted);
+      engine?.off('complete', onComplete);
+    });
+  });
+}
+```
+
+### 5.5 Update InvestorDemo to Use Engine
+
+Once the engine and WebSocket are ready, update `InvestorDemo.tsx` to connect:
+
+```typescript
+// Replace the setInterval logic with WebSocket
+useEffect(() => {
+  const ws = new WebSocket(`ws://${window.location.host}/simulation/PB-012`);
+  
+  ws.onmessage = (event) => {
+    const { type, payload } = JSON.parse(event.data);
+    
+    switch (type) {
+      case 'INIT':
+      case 'TICK':
+        setElapsedTime(payload.tick);
+        setTasks(payload.tasks);
+        setAlignmentScore(payload.alignmentScore);
+        break;
+      case 'TASK_READY':
+        // Show notification that task is ready for action
+        break;
+      case 'COMPLETE':
+        setIsComplete(true);
+        setShowConfetti(true);
+        break;
+    }
+  };
+
+  return () => ws.close();
+}, []);
+
+// User actions send to engine
+const handleCompleteTask = (taskId: string) => {
+  ws.send(JSON.stringify({
+    action: 'COMPLETE_TASK',
+    taskId,
+    userId: 'Investor_Demo'
+  }));
+};
+```
+
+---
+
+## VERIFICATION CHECKLIST
+
+After completing all sections, verify:
+
+```bash
+# 1. No 240x remaining
+grep -r "240x" client/src/ --include="*.tsx"
+# Expected: 0 matches
+
+# 2. Wizard components exist
+ls client/src/components/playbook/wizard/*.tsx
+# Expected: 4 files (Prepare, Monitor, Execute, Learn)
+
+# 3. Engine files exist
+ls server/src/engine/
+# Expected: types.ts, PlaybookEngine.ts
+
+# 4. Scenario exists
+ls server/src/data/scenarios/
+# Expected: Ransomware.ts
+
+# 5. Build succeeds
+npm run build
+# Expected: No errors
+
+# 6. InvestorDemo has speed controls
+grep -c "playbackSpeed" client/src/pages/InvestorDemo.tsx
+# Expected: 3+ matches
+```
+
+---
+
+## COMPLETION REPORT
+
+After implementation, provide status:
+
+| Section | Status | Notes |
+|---------|--------|-------|
+| 1. Math fix (240x→360x) | ☐ Done | |
+| 2. Investor demo improvements | ☐ Done | |
+| 3. Wizard components | ☐ Done | |
+| 4. API route verification | ☐ Done | |
+| 5. Simulation engine | ☐ Done | |
+
+Report any blockers or issues encountered.

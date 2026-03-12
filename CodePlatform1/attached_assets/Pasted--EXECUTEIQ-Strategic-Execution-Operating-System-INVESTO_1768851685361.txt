@@ -1,0 +1,659 @@
+# EXECUTEIQ
+## Strategic Execution Operating System
+
+### **INVESTOR PRESENTATION DECK**
+
+---
+
+## SLIDE 1: COVER
+
+# ExecuteIQ
+### Execute Decisions at Scale. From Crisis to Innovation to Opportunity.
+
+**The Strategic Execution Operating System for Fortune 1000 Companies**
+
+**Founder:** Marty Brunke  
+**20+ Years Fortune 500 Transformation Experience**  
+**Boyd Gaming | Ford | Vantiv | Lockheed Martin | Eli Lilly**
+
+*"Strategy is 10% of the work. Execution is 90%. ExecuteIQ is built for the 90%."*
+
+---
+
+## SLIDE 2: THE PROBLEM
+
+### Execution at Scale Is Broken — Across All Strategic Scenarios
+
+**The Hidden Work (McKinsey):**
+95% of strategy execution happens **outside** the strategy room.
+
+**Where Companies Lose Value:**
+
+| Scenario | Current State | Cost/Impact |
+|----------|---------------|-----------|
+| **Crisis Response** | 72 hours to coordinate | $5-50M per hour delayed |
+| **Market Opportunity** | Miss 30-40% of windows | $10-100M in lost revenue |
+| **Product Launch** | 18 months to market | Competitors ship in 9 months |
+| **M&A Integration** | Coordination failures | $500M average integration loss |
+| **Digital Transformation** | Execution chaos | 65% fail (strategy was good) |
+| **Regulatory Compliance** | Ad-hoc response | $5-20M in fines + delays |
+
+**The Root Cause:**
+No playbooks. No pre-staged coordination. Teams improvising in real-time.
+
+**The Hidden Cost:**
+Strategy execution failure costs **3x more** than the strategy itself
+- Strategy design: 10% of effort
+- **Execution coordination: 90% of effort** ← Where $100B+ in value disappears annually
+
+**The Competitive Reality:**
+Companies that execute fast win. Period.
+- Win market opportunities (first-mover advantage)
+- Respond to crises before damage spreads
+- Launch products before competitors
+- Close M&A faster (speed = value creation)
+- Transform faster (competitive advantage)
+
+---
+
+## SLIDE 3: THE SOLUTION
+
+### ExecuteIQ: The Operating System for Strategic Execution at Scale
+
+**What It Does:**
+- **166 pre-built playbooks** for every scenario (crisis, opportunity, innovation, transformation)
+- **IDEA Framework** (Identify → Detect → Execute → Advance) — proven execution methodology
+- **AI-powered signal detection** — identifies what needs executing in real-time
+- **One-click activation** — turns days of coordination into minutes
+- **Real-time collaboration** — teams execute in parallel, not serial
+- **Measurable ROI** — tracks execution velocity and value creation
+
+**The 166 Playbooks Cover 3 Strategic Categories:**
+
+**OFFENSE (58 Playbooks) — Win Growth**
+- Market entry & expansion
+- M&A integration
+- Product launches
+- Competitive positioning
+- New market exploration
+
+**DEFENSE (56 Playbooks) — Protect Value**
+- Crisis response (cyber, reputational, supply chain, regulatory)
+- Compliance execution
+- Risk mitigation
+- Regulatory response
+- Incident management
+
+**SPECIAL TEAMS (52 Playbooks) — Transform the Org**
+- Digital transformation
+- AI/ML implementation & governance
+- Organizational redesign
+- Change management
+- Innovation initiatives
+
+**The IDEA Framework:**
+1. **Identify** — What's happening? (opportunity, threat, initiative)
+2. **Detect** — AI confirms signal, recommends playbook
+3. **Execute** — One-click activation, roles assigned, teams move in parallel
+4. **Advance** — Real-time metrics track progress, adjust as needed
+
+**Result:**
+Organizations using ExecuteIQ execute **340x faster** than industry standard.
+- Crisis response: 72 hours → 12 minutes
+- Opportunity capture: 30 days → 1 day
+- Product launch: 18 months → 4 months
+- M&A integration: 24 months → 6 months
+
+---
+
+## SLIDE 4: THE MARKET
+
+### $13-20 Billion TAM — Strategic Execution Is Everything
+
+**Target Market:**
+- **8,000+ Fortune 500-10,000 companies** globally
+- Average annual spend on execution/operations: **$500K-2M**
+- Geographic expansion: North America → Europe → APAC
+
+**Market Segments & Drivers:**
+
+**Financial Services ($5-8B segment)**
+- Crisis frequency highest in industry
+- Board mandate for crisis preparedness
+- Regulatory pressure (CCAR, stress tests)
+- M&A integration critical
+- Opportunity window responsiveness
+
+**Healthcare & Pharma ($3-5B segment)**
+- Product recalls = execution speed matters
+- Regulatory compliance critical
+- Transformation initiatives continuous
+- M&A integration (vertical integration trend)
+
+**Retail & Logistics ($2-3B segment)**
+- Supply chain crisis response needed
+- Market opportunity windows (seasonality)
+- Digital transformation ongoing
+- Competitive positioning critical
+
+**Manufacturing & Energy ($1-2B segment)**
+- Crisis response (facility failures, safety)
+- Supply chain execution
+- Digital transformation
+- Regulatory compliance
+
+**Tech & Aerospace ($1-2B segment)**
+- Crisis response (security breaches, product issues)
+- Launch coordination critical
+- Rapid market response (opportunity windows)
+- Government contracts (compliance)
+
+**Market Growth:**
+- 15-20% CAGR in enterprise operations software
+- Crisis/risk management: Fastest-growing segment
+- Strategic execution tools: Emerging category (no clear leader)
+- AI-enhanced operations: Highest growth area
+
+**Why Now:**
+1. Crisis frequency increasing (cyber, climate, supply chain, social)
+2. Board pressure for execution velocity (post-pandemic)
+3. AI maturity enabling smart playbook recommendations
+4. Competitive advantage now = execution speed
+5. Enterprise transformation budgets allocated
+
+---
+
+## SLIDE 5: PRODUCT ARCHITECTURE
+
+### 166 Strategic Playbooks Across 9 Execution Domains
+
+**The 166 Playbooks:**
+
+| Domain | # | Category | Purpose |
+|--------|---|----------|---------|
+| **Market Entry** | 18 | Offense | Go-to-market execution, geographical expansion, new market entry |
+| **M&A Integration** | 18 | Offense | Post-acquisition coordination, synergy capture, integration sequencing |
+| **Product Launch** | 24 | Mixed | GTM, manufacturing coordination, quality assurance, market timing |
+| **Crisis Response** | 20 | Defense | Emergency protocols, breach response, reputational crisis, supply chain |
+| **Cyber Security** | 18 | Defense | Breach response, threat containment, stakeholder notification, recovery |
+| **Regulatory** | 18 | Defense | Compliance execution, audit response, regulatory investigation, penalty mitigation |
+| **Digital Transformation** | 18 | Special Teams | Change management, technology rollout, organizational change, culture shift |
+| **Competitive Response** | 16 | Special Teams | Market moves, pricing response, product positioning, competitive threat |
+| **AI Governance** | 18 | Special Teams | AI implementation, safety protocols, bias mitigation, policy enforcement |
+| **TOTAL** | **166** | — | — |
+
+**Strategic Balance:**
+- **58 Offense Playbooks** — Growth initiatives, market capture, innovation
+- **56 Defense Playbooks** — Risk mitigation, crisis response, compliance
+- **52 Special Teams Playbooks** — Transformation, change, strategic initiatives
+
+**What's In Each Playbook:**
+- Pre-staged checklists (what to do, in what order)
+- Role assignments (who does what, decision authority)
+- Communication templates (what to say to board, stakeholders, media)
+- Decision trees (if X happens, do Y — removes cognitive load)
+- KPI tracking (measure success in real-time)
+- Compliance checkpoints (audit trail for regulators)
+- Time-based milestones (know if you're on track)
+- Risk escalation paths (know when to escalate)
+
+---
+
+## SLIDE 6: TECHNICAL FOUNDATION
+
+### Enterprise-Grade Architecture Built for Scale
+
+**Backend Services (45+ Microservices)**
+
+**Execution Engine:**
+- ExecutionOrchestrator — Real-time coordination
+- PlaybookExecutor — Activates playbook steps in sequence
+- ExecutionPlanSyncService — Keeps all teams synchronized
+- TaskManagement — Distributes work, tracks completion
+
+**Intelligence Layer:**
+- AIConfidenceService — ML confidence scoring
+- RAGIntelligenceService — AI knowledge retrieval
+- TriggerIntelligenceService — Signal-to-playbook mapping
+- SignalGenerator — Detects emerging signals
+
+**Operational Tools:**
+- DocumentTemplateEngine — Auto-generates board briefs, reports
+- FileExportService — Multi-format output (PDF, Excel, Word)
+- CrisisSimulationService — Scenario testing & drills
+- PracticeDrills — Team readiness training
+
+**Enterprise Integration:**
+- EnterpriseIntegrationService — Slack, email, CRM, tools
+- WebSocketService — Real-time collaboration
+- WarRoomWebhookService — External system integration
+- SlackNotificationService — Alert management
+
+**Analytics & Compliance:**
+- ROIMeasurementService — 3-year value impact
+- UsageAnalyticsService — Adoption & execution velocity
+- ComplianceService — Regulatory audit trails
+- AuditLoggingCenter — Complete execution history
+- BenchmarkingService — Compare to peer performance
+
+**Frontend (100+ Components)**
+
+**Executive Layer:**
+- ExecutiveDashboard — KPI overview
+- MissionControl — Live execution tracking
+- CommandCenter — Real-time operations center
+- InvestorPresentation — Board-ready dashboards
+
+**User Tools:**
+- PlaybookLibrary — Discovery & browsing
+- PlaybookCustomize — Edit & personalize playbooks
+- SignalIntelligenceHub — Threat & opportunity detection
+- SandboxDemo — Interactive scenario testing
+- PracticeDrills — Team training & readiness scoring
+
+**Analysis & Planning:**
+- WhatIfAnalyzer — Model execution scenarios
+- DecisionTreeBuilder — Build decision logic
+- ROICalculator — Project value impact
+- ExecutionCoordination — Team synchronization
+
+**Database:**
+- PostgreSQL with audit trails
+- 166 playbook definitions + signal mappings
+- Team structure & role definitions
+- Real-time metrics & KPI tracking
+- Complete execution audit log
+
+---
+
+## SLIDE 7: CAPABILITIES THAT MATTER
+
+### What ExecuteIQ Does Better Than Competitors
+
+**Speed of Execution:**
+- ✅ One-click playbook activation (vs. 72-hour manual coordination)
+- ✅ Real-time team synchronization (vs. email chains & meetings)
+- ✅ AI auto-recommends playbooks (vs. consultant-driven selection)
+- ✅ 12-minute full coordination (from crisis to execution plan)
+- ✅ Opportunity windows aren't missed (speed of response)
+
+**Intelligence & Decision-Making:**
+- ✅ AI-powered signal detection (identifies emerging situations early)
+- ✅ Confidence scoring (tells you how confident the recommendation is)
+- ✅ Scenario simulation (test response before execution)
+- ✅ What-if analysis (model different decision paths)
+- ✅ Competitive intelligence integration (market context)
+
+**Execution Rigor:**
+- ✅ Pre-staged playbooks (no reinventing during crisis/opportunity)
+- ✅ Role-based task assignment (everyone knows their job)
+- ✅ Decision trees (reduces cognitive load during chaos)
+- ✅ Real-time metrics (see progress in real-time)
+- ✅ Parallel execution (teams move simultaneously, not sequentially)
+
+**Governance & Compliance:**
+- ✅ Automatic audit trails (every decision recorded)
+- ✅ Board-ready reporting (automated executive briefs)
+- ✅ Compliance checkpoints (built into every playbook)
+- ✅ Risk documentation (who decided what, when, why)
+- ✅ Readiness drills (regular scenario testing)
+
+**Flexibility:**
+- ✅ Custom playbook building (not locked into templates)
+- ✅ Integration with existing tools (Slack, email, CRM, etc.)
+- ✅ API access (connect to enterprise systems)
+- ✅ Real-time collaboration (teams work in parallel)
+- ✅ Domain-specific versions (industry playbooks built-in)
+
+---
+
+## SLIDE 8: UNIT ECONOMICS
+
+### Proven Business Model for Enterprise SaaS
+
+**Per-Customer Economics:**
+
+| Metric | Value |
+|--------|-------|
+| **Annual Contract Value (ACV)** | $750K - $1.5M |
+| **Implementation Timeline** | 8-12 weeks |
+| **Implementation Cost (to customer)** | $100-200K |
+| **Training & Onboarding** | 4-6 weeks |
+| **Payback Period** | 3-4 months |
+| **5-Year Customer Lifetime Value** | $3.75M - $7.5M |
+| **Gross Margin** | 70-75% |
+| **Net Revenue Retention** | 120%+ (with upsells) |
+
+**Value Justification:**
+- **Single crisis prevented:** $5-50M in value
+- **Single market opportunity won:** $10-100M in revenue
+- **Product launch acceleration:** $5-20M in time-to-market value
+- **Decision velocity improvement:** $500K-1M/year in better execution
+- **Compliance automation:** $100-300K/year in risk reduction
+- **M&A integration:** $50-200M in synergy capture
+
+**Customer Acquisition:**
+- **Sales Cycle:** 4-6 months (enterprise)
+- **Deal Size:** $750K-1.5M ACV
+- **Close Rate:** 30-40% (warm lead)
+- **Customer Acquisition Cost:** $100-150K
+- **Payback Period:** 3-4 months
+
+**Expansion Path:**
+1. **Land:** Single business unit (security, ops, strategy, transformation)
+2. **Expand:** Org-wide rollout (+2-3x ACV)
+3. **Upsell:** Additional domain playbooks (+$250K/domain)
+4. **Vertical:** Industry-specific playbook packs
+
+---
+
+## SLIDE 9: MARKET ADVANTAGE
+
+### Why ExecuteIQ Can't Be Easily Copied
+
+**Time-to-Build Moat (18+ months):**
+- 166 playbooks require McKinsey/BCG-level expertise
+- Each playbook tested across industries
+- Playbooks improve with customer feedback
+- Competitors starting today = 18 months behind
+
+**AI Learning Moat:**
+- Proprietary signal detection trained on execution data
+- Continuously improves with every customer activation
+- Confidence scoring based on historical outcomes
+- Competitors would need 18+ months of customer data to catch up
+
+**Switching Costs (high):**
+- Implementation cost: $100-200K per customer
+- Org processes tied to ExecuteIQ playbooks
+- Teams trained on IDEA framework
+- Integrated with enterprise systems
+
+**Intellectual Property:**
+- Patent-pending IDEA framework (proprietary methodology)
+- Trade secrets in playbook algorithms
+- Trademark: ExecuteIQ brand
+
+**Strategic Lock-In:**
+- Becomes "source of truth" for strategic execution
+- Board requires ExecuteIQ for major initiatives
+- Org culture shifts to playbook-driven execution
+- Becomes embedded in how company thinks about strategy
+
+---
+
+## SLIDE 10: DEMO SCENARIOS
+
+### 15+ Industry-Specific Use Cases Ready to Demonstrate
+
+**Financial Services:**
+- Ransomware attack coordinated response
+- Fraud outbreak management
+- Regulatory investigation response
+- Merger integration coordination
+
+**Healthcare & Pharma:**
+- Product recall (multi-nation coordination)
+- Cyber breach response protocol
+- Clinical trial incident response
+- Regulatory audit response
+
+**Retail & Consumer:**
+- Food safety crisis (retail chain)
+- Supply chain disruption response
+- Reputational crisis management
+- Market opportunity (competitor response)
+- Product launch coordination
+
+**Manufacturing & Energy:**
+- Supply chain failure response
+- Energy infrastructure failure
+- Critical equipment breakdown
+- Production line crisis
+
+**Tech & Aerospace:**
+- Product security vulnerability response
+- Data center outage recovery
+- Launch scenario coordination
+- Compliance audit response
+
+**Each Demo Shows:**
+- Real-world scenario setup
+- Automated playbook recommendation
+- Live team coordination
+- KPI impact calculations
+- Board briefing generation
+- ROI value demonstration
+
+---
+
+## SLIDE 11: GO-TO-MARKET STRATEGY
+
+### How We Sell ExecuteIQ to Fortune 1000
+
+**Target Segments (Priority Order):**
+
+**1. Financial Services (35% of TAM)**
+- Highest crisis frequency (fraud, cyber, regulatory)
+- Largest budgets for operations/compliance
+- Board mandate for crisis preparedness
+- M&A activity high (integration coordination)
+- Expansion: 100 companies Y1 → 500 in Y3
+
+**2. Healthcare & Pharma (25% of TAM)**
+- Regulatory environment drives crisis planning
+- Product recalls require coordinated response
+- Compliance requirements strict
+- M&A integration critical (consolidation trend)
+- Expansion: Hospital systems → Pharma → MedTech
+
+**3. Retail & Manufacturing (20% of TAM)**
+- Supply chain crises increasingly common
+- Reputational risk management critical
+- Multi-facility coordination needed
+- Market opportunity responsiveness critical
+- Expansion: Large retailers → manufacturers → logistics
+
+**4. Insurance & Risk (15% of TAM)**
+- Our largest advocates (sell to their clients)
+- White-label opportunity
+- High-margin resale path
+- Channel partnership with existing relationships
+
+**5. Aerospace & Defense (5% of TAM)**
+- Highest deal values ($2-3M ACV)
+- Regulatory environment strict
+- Classified operations (specialized version)
+- Long cycles but high stickiness
+
+**Sales Motion:**
+
+**Phase 1: Account-Based Marketing (Year 1)**
+- Target 50 named accounts
+- Executive outreach (CEO/COO/CRO)
+- Board presentation to risk/operations committee
+- 10-15 customer pilots
+- Target: $11.25M ARR
+
+**Phase 2: Sales Team Scaling (Year 2)**
+- Build 8-10 person enterprise sales team
+- Expand to 100+ customers
+- Develop industry-specific playbooks
+- Launch partner channel program
+- Target: $45M ARR
+
+**Phase 3: Market Expansion (Year 3)**
+- 500+ customers globally
+- Geographic expansion (Europe, APAC)
+- Vertical specialization (industry playbooks)
+- Partner channel revenue
+- Target: $165M ARR
+
+---
+
+## SLIDE 12: THE INVESTMENT OPPORTUNITY
+
+### Series A Raise for Market Expansion
+
+**Raise Structure:**
+- **Series A: $10-15M** (18-month runway)
+
+**Use of Funds:**
+- **Sales & Marketing:** $5-6M (build enterprise sales team, customer acquisition)
+- **Product & Engineering:** $2-3M (expand playbook library, AI capabilities)
+- **Operations & Finance:** $1-2M (infrastructure scaling, compliance)
+- **G&A:** $2-3M (management, legal, finance functions)
+
+**Path to Exit:**
+- **Strategic Exit:** IBM, Salesforce, ServiceNow (crisis/ops division) — 2026-2027
+- **IPO Path:** $100M+ ARR public company — 2028-2029
+- **Timeline:** 5-7 years to exit
+
+**Why Now:**
+1. **Execution speed = competitive advantage** (increasingly critical)
+2. **Crisis frequency increasing** (cyber, climate, supply chain)
+3. **Board pressure for preparedness** (post-2020 pandemic)
+4. **AI maturity enabling signal detection** (models proven)
+5. **Enterprise digital transformation budgets available** (post-COVID)
+6. **Founder credibility** (20+ years Fortune 500 operations)
+
+**Why ExecuteIQ Wins:**
+- First-mover in integrated playbook + AI + execution category
+- 166 playbooks = 18-month competitive advantage
+- IDEA framework = proprietary methodology
+- Founder domain expertise = credibility with C-suite buyers
+
+---
+
+## SLIDE 13: FINANCIAL PROJECTIONS
+
+### Conservative 5-Year Model
+
+**Revenue Assumptions:**
+- **Y1:** 15 customers × $750K ACV = $11.25M
+- **Y2:** 50 customers × $900K ACV = $45M
+- **Y3:** 150 customers × $1.1M ACV = $165M
+- **Y4:** 300 customers × $1.2M ACV = $360M
+- **Y5:** 500 customers × $1.3M ACV = $650M
+
+**Profitability Path:**
+- **Y1:** -$5M (heavy sales/marketing investment)
+- **Y2:** -$2M (approaching breakeven)
+- **Y3:** +$20M (operating leverage kicks in)
+- **Y4:** +$75M (scaled profitable)
+- **Y5:** +$150M (market leader)
+
+**Key Metrics (Year 3):**
+- **ARR:** $165M
+- **Magic Number:** 1.2 (top-tier SaaS)
+- **CAC Payback:** 3 months
+- **Gross Margin:** 72%
+- **Operating Margin:** 12%
+- **Customer Count:** 150
+- **Net Retention Rate:** 120%
+
+**Exit Valuation (Year 5):**
+- At 10x revenue: $6.5B (strategic exit)
+- At 7x revenue: $4.55B (IPO)
+- At 5x revenue: $3.25B (minimum)
+
+---
+
+## SLIDE 14: TEAM & FOUNDER
+
+### Founder with Proven Execution Track Record
+
+**Marty Brunke - Founder & CEO**
+
+**Unique Positioning:**
+Elite sports methodology applied to Fortune 500 execution
+
+**Professional Background (20+ years):**
+- **Boyd Gaming** — Gaming industry transformation
+- **Ford & Toyota** — Automotive supply chain execution
+- **Vantiv/Worldpay/Charles Schwab** — Financial services crisis management
+- **Lockheed Martin** — Aerospace mission-critical operations
+- **Eli Lilly** — Pharmaceutical regulatory execution
+- **Energy sector** — Energy infrastructure operations
+
+**Coaching Background (5 years):**
+- Major college football (strategic team execution)
+- Built cultures around disciplined execution
+- Managed crisis situations (games, championships)
+- Transformed underperforming teams
+
+**Why He Owns This Problem:**
+- Has lived every type of crisis/opportunity scenario
+- Understands Fortune 500 decision-making intimately
+- Knows what C-suite executives actually need
+- Brings sports-level discipline to business execution
+- Proven ability to execute transformations across industries
+
+**Execution Track Record:**
+- Multiple successful large-scale transformations
+- Built cross-functional teams at enterprise scale
+- Navigated real crises (has the scars)
+- Knows buyer pain from lived experience
+- Credible with Fortune 500 leadership
+
+---
+
+## SLIDE 15: COMPETITIVE POSITIONING
+
+### How ExecuteIQ Compares to Alternatives
+
+| Feature | ExecuteIQ | BOND | ServiceNow Crisis | Consulting |
+|---------|-----------|------|---|---|
+| **Pre-built Playbooks** | 166 across 9 domains | 10-15 generic | 0 (build your own) | As-needed custom |
+| **AI Signal Detection** | ✅ Yes (auto-recommends) | ❌ No | ❌ No | ❌ No |
+| **One-Click Activation** | ✅ Yes | ❌ No | ❌ No | ❌ No |
+| **Real-Time Collab** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
+| **Audit Ready** | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Industry-Specific** | ✅ 9 domains | ❌ Generic | ❌ Generic | ✅ Custom |
+| **Price Point** | $750K-1.5M | $200-500K | $150-400K | $1-3M/project |
+| **Ongoing Cost** | Fixed ACV | Fixed | Fixed | Per-project |
+| **Time-to-Value** | 3-6 months | 6-12 months | 6-9 months | 6-18 months |
+| **Execution Velocity** | **340x faster** | 5x faster | 3x faster | 1x (no improvement) |
+
+**ExecuteIQ Advantages:**
+- **More playbooks** = handles more scenarios
+- **Only one with AI** = automatic playbook recommendations
+- **Fastest activation** = 1-click vs. building from scratch
+- **Clearest ROI** = measurable execution velocity
+- **Industry expertise built-in** = not generic templates
+- **Ongoing improvement** = gets better with use
+
+---
+
+## SLIDE 16: CALL TO ACTION
+
+### The Opportunity
+
+**The Future of Strategic Execution:**
+
+Companies that execute 12 minutes faster than competitors will:
+- **Win market opportunities** (capture revenue before competitors)
+- **Survive crises** (respond before damage spreads)
+- **Launch faster** (get to market first)
+- **Integrate better** (capture M&A synergies)
+- **Transform effectively** (change sticks because execution is disciplined)
+
+**The Competitive Reality:**
+Speed of execution = competitive advantage.
+
+ExecuteIQ is the operating system that makes execution fast, disciplined, and repeatable at Fortune 1000 scale.
+
+**We're building the platform that C-suite executives demand.**
+
+**The board requires it. The market is ready. The timing is perfect.**
+
+---
+
+**CONTACT**
+
+**Marty Brunke**  
+Founder & CEO, ExecuteIQ  
+mbrunke18@gmail.com  
+LinkedIn: [Your Profile]
+
+**"Strategy is 10% of the work. Execution is 90%. ExecuteIQ is built for the 90%."**

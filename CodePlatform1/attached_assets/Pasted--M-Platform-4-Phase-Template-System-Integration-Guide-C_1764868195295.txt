@@ -1,0 +1,841 @@
+# M Platform: 4-Phase Template System Integration Guide
+
+## Current State Analysis
+
+Your existing codebase already has significant infrastructure for playbooks. Here's what exists:
+
+### Existing Database Tables (in `/shared/schema.ts`)
+
+| Table | Purpose | Status |
+|-------|---------|--------|
+| `playbookDomains` | 8 strategic domains | ✅ Exists |
+| `playbookCategories` | Categories within domains | ✅ Exists |
+| `playbookLibrary` | 148 playbook definitions | ✅ Exists |
+| `playbookTaskSequences` | Tasks within playbooks | ✅ Exists |
+| `playbookCommunicationTemplates` | Pre-drafted communications | ✅ Exists |
+| `playbookDecisionTrees` | Decision logic | ✅ Exists |
+| `scenarioExecutionPlans` | Execution plan templates | ✅ Exists |
+| `executionPlanPhases` | 3 phases (immediate, secondary, follow_up) | ⚠️ Needs update to 4 phases |
+| `executionPlanTasks` | Tasks within phases | ✅ Exists |
+| `executionInstances` | Runtime execution tracking | ✅ Exists |
+
+### Existing UI Components (in `/client/src/components/playbook/`)
+
+| Component | Purpose | Status |
+|-----------|---------|--------|
+| `PlaybookCustomizationWizard.tsx` | 8-step wizard | ⚠️ Needs restructuring to 4 phases |
+| `wizard/SituationDefinitionStep.tsx` | Trigger definition | ✅ Maps to MONITOR phase |
+| `wizard/StakeholderMatrixStep.tsx` | Stakeholder assignment | ✅ Maps to PREPARE phase |
+| `wizard/CommunicationTemplatesStep.tsx` | Message templates | ✅ Maps to PREPARE phase |
+| `wizard/TaskSequencesStep.tsx` | Task definition | ✅ Maps to EXECUTE phase |
+| `wizard/BudgetAuthorityStep.tsx` | Pre-approved budgets | ✅ Maps to PREPARE phase |
+| `wizard/SuccessMetricsStep.tsx` | KPIs | ✅ Maps to LEARN phase |
+| `wizard/LessonsLearnedStep.tsx` | Post-execution | ✅ Maps to LEARN phase |
+
+### Existing API Routes (in `/server/routes/playbookLibraryRoutes.ts`)
+
+| Endpoint | Purpose | Status |
+|----------|---------|--------|
+| `GET /api/playbook-library` | List all playbooks | ✅ Exists |
+| `GET /api/playbook-library/domains` | List domains | ✅ Exists |
+| `GET /api/playbook-library/:id` | Get single playbook | ✅ Exists |
+| `PATCH /api/playbook-library/:id/customize` | Save customizations | ✅ Exists |
+| `POST /api/playbook-library/:id/activate` | Trigger execution | ✅ Exists |
+
+---
+
+## Integration Strategy
+
+The 4-phase template system **extends** your existing infrastructure rather than replacing it. Here's the mapping:
+
+### Phase Mapping: Current → New
+
+```
+CURRENT WIZARD STEPS          →    NEW 4-PHASE MODEL
+─────────────────────────────────────────────────────────
+1. Situation Definition       →    MONITOR (triggers, signals)
+2. Stakeholder Matrix         →    PREPARE (stakeholder assignments)
+3. Decision Trees             →    EXECUTE (decision logic during execution)
+4. Communication Templates    →    PREPARE (pre-drafted docs)
+5. Task Sequences             →    EXECUTE (tasks with sub-phases)
+6. Budget Authority           →    PREPARE (pre-approved resources)
+7. Success Metrics            →    LEARN (KPIs, metrics)
+8. Lessons Learned            →    LEARN (post-execution capture)
+```
+
+### Current Phase Enum → New Phase Enum
+
+```typescript
+// CURRENT (in schema.ts line 36)
+export const executionPhaseEnum = pgEnum('execution_phase', ['immediate', 'secondary', 'follow_up']);
+
+// NEW (add to schema.ts)
+export const playbookPhaseEnum = pgEnum('playbook_phase', ['prepare', 'monitor', 'execute', 'learn']);
+
+// Keep both - executionPhaseEnum is for sub-phases within EXECUTE
+// playbookPhaseEnum is for the lifecycle
+```
+
+---
+
+## Step-by-Step Integration
+
+### Step 1: Schema Migration
+
+Add the new tables alongside existing ones. No breaking changes.
+
+```typescript
+// Add to /shared/schema.ts AFTER existing playbook tables (around line 1500)
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 4-PHASE PLAYBOOK TEMPLATE SYSTEM (PREPARE → MONITOR → EXECUTE → LEARN)
+// ═══════════════════════════════════════════════════════════════════════════
+
+export const playbookPhaseEnum = pgEnum('playbook_phase', ['prepare', 'monitor', 'execute', 'learn']);
+
+// PREPARE Phase Items - What must be ready before activation
+export const playbookPrepareItems = pgTable('playbook_prepare_items', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  playbookId: uuid('playbook_id').references(() => playbookLibrary.id, { onDelete: 'cascade' }).notNull(),
+  
+  itemType: varchar('item_type', { length: 50 }).notNull(),
+  // 'stakeholder_assignment', 'document_template', 'resource_staging', 
+  // 'communication_template', 'training_completion', 'system_access',
+  // 'vendor_contract', 'budget_approval', 'checklist_item'
+  
+  title: varchar('title', { length: 255 }).notNull(),
+  description: text('description'),
+  
+  responsibleRole: varchar('responsible_role', { length: 100 }),
+  responsibleUserId: varchar('responsible_user_id').references(() => users.id),
+  
+  status: varchar('status', { length: 50 }).default('not_started'),
+  // 'not_started', 'in_progress', 'completed', 'needs_review', 'blocked'
+  
+  completedAt: timestamp('completed_at'),
+  completedBy: varchar('completed_by').references(() => users.id),
+  
+  verificationMethod: varchar('verification_method', { length: 100 }),
+  lastVerifiedAt: timestamp('last_verified_at'),
+  verificationFrequencyDays: integer('verification_frequency_days').default(90),
+  
+  dependsOn: jsonb('depends_on').default('[]'),
+  priority: varchar('priority', { length: 20 }).default('medium'),
+  isRequired: boolean('is_required').default(true),
+  
+  notes: text('notes'),
+  attachments: jsonb('attachments').default('[]'),
+  sequence: integer('sequence').default(0),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// MONITOR Phase Items - Signals and triggers to watch
+export const playbookMonitorItems = pgTable('playbook_monitor_items', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  playbookId: uuid('playbook_id').references(() => playbookLibrary.id, { onDelete: 'cascade' }).notNull(),
+  
+  signalType: varchar('signal_type', { length: 50 }).notNull(),
+  // 'competitive', 'regulatory', 'market', 'operational', 'financial', 
+  // 'security', 'reputation', 'talent', 'supply_chain', 'technology'
+  
+  signalName: varchar('signal_name', { length: 255 }).notNull(),
+  signalDescription: text('signal_description'),
+  
+  dataSource: varchar('data_source', { length: 100 }),
+  dataSourceConfig: jsonb('data_source_config'),
+  
+  triggerType: varchar('trigger_type', { length: 50 }).notNull(),
+  // 'threshold', 'pattern', 'event', 'manual', 'scheduled'
+  
+  triggerConditions: jsonb('trigger_conditions').notNull(),
+  
+  severity: varchar('severity', { length: 20 }).default('medium'),
+  responseUrgency: varchar('response_urgency', { length: 50 }).default('standard'),
+  
+  notifyRoles: jsonb('notify_roles').default('[]'),
+  requiresConfirmation: boolean('requires_confirmation').default(true),
+  confirmationRole: varchar('confirmation_role', { length: 100 }),
+  autoActivateAfterMinutes: integer('auto_activate_after_minutes'),
+  
+  isActive: boolean('is_active').default(true),
+  lastCheckedAt: timestamp('last_checked_at'),
+  checkFrequencyMinutes: integer('check_frequency_minutes').default(60),
+  
+  sequence: integer('sequence').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// EXECUTE Phase - Extend existing executionPlanTasks with sub-phase concept
+// Note: This augments your existing table, doesn't replace it
+export const playbookExecuteSubphaseEnum = pgEnum('execute_subphase', ['immediate', 'coordinate', 'resolve', 'close']);
+
+// Add column to existing executionPlanTasks (migration):
+// ALTER TABLE execution_plan_tasks ADD COLUMN execute_subphase execute_subphase DEFAULT 'immediate';
+
+// LEARN Phase Items - Post-execution learning activities
+export const playbookLearnItems = pgTable('playbook_learn_items', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  playbookId: uuid('playbook_id').references(() => playbookLibrary.id, { onDelete: 'cascade' }).notNull(),
+  
+  learnType: varchar('learn_type', { length: 50 }).notNull(),
+  // 'debrief_meeting', 'survey', 'metrics_review', 'documentation', 
+  // 'playbook_update', 'training_update', 'process_improvement'
+  
+  title: varchar('title', { length: 255 }).notNull(),
+  description: text('description'),
+  
+  timing: varchar('timing', { length: 50 }).default('within_24_hours'),
+  offsetHours: integer('offset_hours').default(24),
+  
+  responsibleRole: varchar('responsible_role', { length: 100 }),
+  responsibleUserId: varchar('responsible_user_id').references(() => users.id),
+  
+  requiredParticipants: jsonb('required_participants').default('[]'),
+  optionalParticipants: jsonb('optional_participants').default('[]'),
+  
+  learningPrompts: jsonb('learning_prompts').default('[]'),
+  expectedOutputs: jsonb('expected_outputs').default('[]'),
+  
+  autoCreateImprovementTask: boolean('auto_create_improvement_task').default(true),
+  isRequired: boolean('is_required').default(true),
+  sequence: integer('sequence').default(0),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// Captured learnings from actual executions
+export const executionLearnings = pgTable('execution_learnings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  executionInstanceId: uuid('execution_instance_id').references(() => executionInstances.id).notNull(),
+  playbookId: uuid('playbook_id').references(() => playbookLibrary.id).notNull(),
+  learnItemId: uuid('learn_item_id').references(() => playbookLearnItems.id),
+  
+  responses: jsonb('responses').notNull(),
+  executionMetrics: jsonb('execution_metrics'),
+  improvementActions: jsonb('improvement_actions').default('[]'),
+  
+  status: varchar('status', { length: 50 }).default('pending'),
+  
+  capturedBy: varchar('captured_by').references(() => users.id),
+  capturedAt: timestamp('captured_at').defaultNow(),
+  reviewedBy: varchar('reviewed_by').references(() => users.id),
+  reviewedAt: timestamp('reviewed_at'),
+});
+
+// Readiness score tracking per playbook
+export const playbookReadinessScores = pgTable('playbook_readiness_scores', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  playbookId: uuid('playbook_id').references(() => playbookLibrary.id, { onDelete: 'cascade' }).notNull(),
+  organizationId: uuid('organization_id').references(() => organizations.id).notNull(),
+  
+  overallScore: integer('overall_score').default(0), // 0-100
+  prepareScore: integer('prepare_score').default(0),
+  monitorScore: integer('monitor_score').default(0),
+  executeScore: integer('execute_score').default(0),
+  learnScore: integer('learn_score').default(0),
+  
+  // Breakdown
+  stakeholdersAssigned: integer('stakeholders_assigned').default(0),
+  stakeholdersTotal: integer('stakeholders_total').default(0),
+  documentsReady: integer('documents_ready').default(0),
+  documentsTotal: integer('documents_total').default(0),
+  resourcesStaged: integer('resources_staged').default(0),
+  resourcesTotal: integer('resources_total').default(0),
+  triggersConfigured: integer('triggers_configured').default(0),
+  tasksConfigured: integer('tasks_configured').default(0),
+  
+  lastCalculatedAt: timestamp('last_calculated_at').defaultNow(),
+  lastDrilledAt: timestamp('last_drilled_at'),
+  lastActivatedAt: timestamp('last_activated_at'),
+  
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+```
+
+### Step 2: Add to Existing Playbook Library Table
+
+Extend the existing `playbookLibrary` table with 4-phase configuration:
+
+```sql
+-- Migration: Add 4-phase configuration to existing playbooks
+ALTER TABLE playbook_library 
+ADD COLUMN prepare_config JSONB DEFAULT '{}',
+ADD COLUMN monitor_config JSONB DEFAULT '{}',
+ADD COLUMN execute_config JSONB DEFAULT '{}',
+ADD COLUMN learn_config JSONB DEFAULT '{}',
+ADD COLUMN readiness_score INTEGER DEFAULT 0,
+ADD COLUMN last_reviewed_at TIMESTAMP,
+ADD COLUMN approval_status VARCHAR(50) DEFAULT 'draft',
+ADD COLUMN approved_by VARCHAR REFERENCES users(id),
+ADD COLUMN approved_at TIMESTAMP;
+```
+
+### Step 3: Update API Routes
+
+Add new endpoints to `/server/routes/playbookLibraryRoutes.ts`:
+
+```typescript
+// Add to existing playbookLibraryRoutes.ts
+
+/**
+ * GET /api/playbook-library/:playbookId/prepare-items
+ * Get PREPARE phase items for a playbook
+ */
+playbookLibraryRouter.get('/:playbookId/prepare-items', async (req, res) => {
+  try {
+    const { playbookId } = req.params;
+    
+    const items = await db
+      .select()
+      .from(playbookPrepareItems)
+      .where(eq(playbookPrepareItems.playbookId, playbookId))
+      .orderBy(playbookPrepareItems.sequence);
+    
+    res.json(items);
+  } catch (error) {
+    console.error('Error fetching prepare items:', error);
+    res.status(500).json({ error: 'Failed to fetch prepare items' });
+  }
+});
+
+/**
+ * POST /api/playbook-library/:playbookId/prepare-items
+ * Add a PREPARE phase item
+ */
+playbookLibraryRouter.post('/:playbookId/prepare-items', async (req, res) => {
+  try {
+    const { playbookId } = req.params;
+    const itemData = req.body;
+    
+    const [item] = await db
+      .insert(playbookPrepareItems)
+      .values({ ...itemData, playbookId })
+      .returning();
+    
+    // Recalculate readiness score
+    await recalculateReadinessScore(playbookId);
+    
+    res.json(item);
+  } catch (error) {
+    console.error('Error creating prepare item:', error);
+    res.status(500).json({ error: 'Failed to create prepare item' });
+  }
+});
+
+/**
+ * PATCH /api/playbook-library/:playbookId/prepare-items/:itemId/complete
+ * Mark a PREPARE item as complete
+ */
+playbookLibraryRouter.patch('/:playbookId/prepare-items/:itemId/complete', async (req, res) => {
+  try {
+    const { playbookId, itemId } = req.params;
+    const { completedBy } = req.body;
+    
+    const [item] = await db
+      .update(playbookPrepareItems)
+      .set({ 
+        status: 'completed', 
+        completedAt: new Date(),
+        completedBy 
+      })
+      .where(eq(playbookPrepareItems.id, itemId))
+      .returning();
+    
+    // Recalculate readiness score
+    await recalculateReadinessScore(playbookId);
+    
+    res.json(item);
+  } catch (error) {
+    console.error('Error completing prepare item:', error);
+    res.status(500).json({ error: 'Failed to complete prepare item' });
+  }
+});
+
+/**
+ * GET /api/playbook-library/:playbookId/monitor-items
+ * Get MONITOR phase items (triggers/signals) for a playbook
+ */
+playbookLibraryRouter.get('/:playbookId/monitor-items', async (req, res) => {
+  try {
+    const { playbookId } = req.params;
+    
+    const items = await db
+      .select()
+      .from(playbookMonitorItems)
+      .where(eq(playbookMonitorItems.playbookId, playbookId))
+      .orderBy(playbookMonitorItems.sequence);
+    
+    res.json(items);
+  } catch (error) {
+    console.error('Error fetching monitor items:', error);
+    res.status(500).json({ error: 'Failed to fetch monitor items' });
+  }
+});
+
+/**
+ * GET /api/playbook-library/:playbookId/learn-items
+ * Get LEARN phase items for a playbook
+ */
+playbookLibraryRouter.get('/:playbookId/learn-items', async (req, res) => {
+  try {
+    const { playbookId } = req.params;
+    
+    const items = await db
+      .select()
+      .from(playbookLearnItems)
+      .where(eq(playbookLearnItems.playbookId, playbookId))
+      .orderBy(playbookLearnItems.sequence);
+    
+    res.json(items);
+  } catch (error) {
+    console.error('Error fetching learn items:', error);
+    res.status(500).json({ error: 'Failed to fetch learn items' });
+  }
+});
+
+/**
+ * GET /api/playbook-library/:playbookId/readiness
+ * Get full readiness assessment for a playbook
+ */
+playbookLibraryRouter.get('/:playbookId/readiness', async (req, res) => {
+  try {
+    const { playbookId } = req.params;
+    const organizationId = req.query.organizationId as string;
+    
+    // Get or calculate readiness score
+    let [score] = await db
+      .select()
+      .from(playbookReadinessScores)
+      .where(eq(playbookReadinessScores.playbookId, playbookId));
+    
+    if (!score) {
+      score = await recalculateReadinessScore(playbookId, organizationId);
+    }
+    
+    // Get detailed breakdown
+    const prepareItems = await db
+      .select()
+      .from(playbookPrepareItems)
+      .where(eq(playbookPrepareItems.playbookId, playbookId));
+    
+    const monitorItems = await db
+      .select()
+      .from(playbookMonitorItems)
+      .where(eq(playbookMonitorItems.playbookId, playbookId));
+    
+    const learnItems = await db
+      .select()
+      .from(playbookLearnItems)
+      .where(eq(playbookLearnItems.playbookId, playbookId));
+    
+    res.json({
+      score,
+      breakdown: {
+        prepare: {
+          items: prepareItems,
+          completed: prepareItems.filter(i => i.status === 'completed').length,
+          total: prepareItems.length
+        },
+        monitor: {
+          items: monitorItems,
+          active: monitorItems.filter(i => i.isActive).length,
+          total: monitorItems.length
+        },
+        learn: {
+          items: learnItems,
+          configured: learnItems.length
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching readiness:', error);
+    res.status(500).json({ error: 'Failed to fetch readiness' });
+  }
+});
+
+// Helper function to recalculate readiness score
+async function recalculateReadinessScore(playbookId: string, organizationId?: string): Promise<any> {
+  const prepareItems = await db
+    .select()
+    .from(playbookPrepareItems)
+    .where(eq(playbookPrepareItems.playbookId, playbookId));
+  
+  const monitorItems = await db
+    .select()
+    .from(playbookMonitorItems)
+    .where(eq(playbookMonitorItems.playbookId, playbookId));
+  
+  const learnItems = await db
+    .select()
+    .from(playbookLearnItems)
+    .where(eq(playbookLearnItems.playbookId, playbookId));
+  
+  // Calculate scores
+  const prepareCompleted = prepareItems.filter(i => i.status === 'completed').length;
+  const prepareTotal = prepareItems.length || 1;
+  const prepareScore = Math.round((prepareCompleted / prepareTotal) * 100);
+  
+  const monitorActive = monitorItems.filter(i => i.isActive).length;
+  const monitorScore = monitorItems.length > 0 ? (monitorActive > 0 ? 100 : 50) : 0;
+  
+  const learnScore = learnItems.length > 0 ? 100 : 0;
+  
+  // Execute score based on task configuration (from existing tables)
+  const executeTasks = await db
+    .select()
+    .from(executionPlanTasks)
+    .where(eq(executionPlanTasks.executionPlanId, playbookId));
+  const executeScore = executeTasks.length > 0 ? 100 : 0;
+  
+  // Overall weighted score
+  const overallScore = Math.round(
+    (prepareScore * 0.4) + 
+    (monitorScore * 0.2) + 
+    (executeScore * 0.3) + 
+    (learnScore * 0.1)
+  );
+  
+  // Upsert readiness score
+  const [score] = await db
+    .insert(playbookReadinessScores)
+    .values({
+      playbookId,
+      organizationId: organizationId || null,
+      overallScore,
+      prepareScore,
+      monitorScore,
+      executeScore,
+      learnScore,
+      stakeholdersAssigned: prepareItems.filter(i => i.itemType === 'stakeholder_assignment' && i.status === 'completed').length,
+      stakeholdersTotal: prepareItems.filter(i => i.itemType === 'stakeholder_assignment').length,
+      documentsReady: prepareItems.filter(i => i.itemType === 'document_template' && i.status === 'completed').length,
+      documentsTotal: prepareItems.filter(i => i.itemType === 'document_template').length,
+      resourcesStaged: prepareItems.filter(i => ['budget_approval', 'vendor_contract'].includes(i.itemType) && i.status === 'completed').length,
+      resourcesTotal: prepareItems.filter(i => ['budget_approval', 'vendor_contract'].includes(i.itemType)).length,
+      triggersConfigured: monitorItems.filter(i => i.isActive).length,
+      tasksConfigured: executeTasks.length,
+      lastCalculatedAt: new Date()
+    })
+    .onConflictDoUpdate({
+      target: [playbookReadinessScores.playbookId],
+      set: {
+        overallScore,
+        prepareScore,
+        monitorScore,
+        executeScore,
+        learnScore,
+        lastCalculatedAt: new Date()
+      }
+    })
+    .returning();
+  
+  return score;
+}
+```
+
+### Step 4: Update the UI Wizard
+
+Restructure the existing wizard to use the 4-phase model:
+
+```typescript
+// Update /client/src/components/playbook/PlaybookCustomizationWizard.tsx
+
+// Change the STEPS array to reflect 4 phases
+const STEPS = [
+  // PREPARE Phase
+  { 
+    id: 1, 
+    phase: 'prepare',
+    name: 'Stakeholder Matrix', 
+    prefilled: '90%', 
+    component: StakeholderMatrixStep, 
+    aiTip: 'Define who does what when this playbook activates',
+    icon: '👥'
+  },
+  { 
+    id: 2, 
+    phase: 'prepare',
+    name: 'Communication Templates', 
+    prefilled: '80%', 
+    component: CommunicationTemplatesStep, 
+    aiTip: 'Pre-write messages for rapid deployment',
+    icon: '📝'
+  },
+  { 
+    id: 3, 
+    phase: 'prepare',
+    name: 'Budget & Resources', 
+    prefilled: '100%', 
+    component: BudgetAuthorityStep, 
+    aiTip: 'Pre-approve budgets and vendor contracts',
+    icon: '💰'
+  },
+  
+  // MONITOR Phase
+  { 
+    id: 4, 
+    phase: 'monitor',
+    name: 'Triggers & Signals', 
+    prefilled: '100%', 
+    component: SituationDefinitionStep, 
+    aiTip: 'Set conditions that activate this playbook',
+    icon: '📡'
+  },
+  
+  // EXECUTE Phase
+  { 
+    id: 5, 
+    phase: 'execute',
+    name: 'Task Sequences', 
+    prefilled: '75%', 
+    component: TaskSequencesStep, 
+    aiTip: 'Define tasks across immediate/coordinate/resolve/close sub-phases',
+    icon: '⚡'
+  },
+  { 
+    id: 6, 
+    phase: 'execute',
+    name: 'Decision Trees', 
+    prefilled: '85%', 
+    component: DecisionTreesStep, 
+    aiTip: 'Map escalation paths and conditional logic',
+    icon: '🌳'
+  },
+  
+  // LEARN Phase
+  { 
+    id: 7, 
+    phase: 'learn',
+    name: 'Success Metrics', 
+    prefilled: '80%', 
+    component: SuccessMetricsStep, 
+    aiTip: 'Define KPIs to measure execution quality',
+    icon: '📊'
+  },
+  { 
+    id: 8, 
+    phase: 'learn',
+    name: 'Lessons Learned', 
+    prefilled: '0%', 
+    component: LessonsLearnedStep, 
+    aiTip: 'Configure post-execution learning capture',
+    icon: '📚'
+  },
+];
+
+// Add phase indicators in the UI
+const PHASES = [
+  { id: 'prepare', name: 'Prepare', color: 'purple', icon: '🎯', steps: [1, 2, 3] },
+  { id: 'monitor', name: 'Monitor', color: 'blue', icon: '📡', steps: [4] },
+  { id: 'execute', name: 'Execute', color: 'orange', icon: '⚡', steps: [5, 6] },
+  { id: 'learn', name: 'Learn', color: 'green', icon: '📚', steps: [7, 8] },
+];
+```
+
+### Step 5: Create Phase Progress Component
+
+Add a new component to show progress across all 4 phases:
+
+```typescript
+// Create /client/src/components/playbook/PhaseProgressBar.tsx
+
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { CheckCircle, Circle, AlertCircle } from 'lucide-react';
+
+interface PhaseProgressBarProps {
+  prepareScore: number;
+  monitorScore: number;
+  executeScore: number;
+  learnScore: number;
+  currentPhase?: 'prepare' | 'monitor' | 'execute' | 'learn';
+}
+
+export function PhaseProgressBar({
+  prepareScore,
+  monitorScore,
+  executeScore,
+  learnScore,
+  currentPhase
+}: PhaseProgressBarProps) {
+  const phases = [
+    { id: 'prepare', name: 'Prepare', score: prepareScore, color: 'bg-purple-500', icon: '🎯' },
+    { id: 'monitor', name: 'Monitor', score: monitorScore, color: 'bg-blue-500', icon: '📡' },
+    { id: 'execute', name: 'Execute', score: executeScore, color: 'bg-orange-500', icon: '⚡' },
+    { id: 'learn', name: 'Learn', score: learnScore, color: 'bg-green-500', icon: '📚' },
+  ];
+
+  const overallScore = Math.round((prepareScore * 0.4) + (monitorScore * 0.2) + (executeScore * 0.3) + (learnScore * 0.1));
+
+  return (
+    <div className="space-y-4">
+      {/* Overall progress */}
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium text-slate-300">Playbook Readiness</span>
+        <Badge variant={overallScore >= 80 ? 'default' : overallScore >= 50 ? 'secondary' : 'destructive'}>
+          {overallScore}%
+        </Badge>
+      </div>
+      
+      {/* Phase breakdown */}
+      <div className="grid grid-cols-4 gap-2">
+        {phases.map((phase) => (
+          <div 
+            key={phase.id}
+            className={`p-3 rounded-lg border ${
+              currentPhase === phase.id 
+                ? 'border-white bg-slate-800' 
+                : 'border-slate-700 bg-slate-900/50'
+            }`}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span>{phase.icon}</span>
+              <span className="text-xs font-medium text-slate-300">{phase.name}</span>
+            </div>
+            <Progress value={phase.score} className="h-1.5" />
+            <div className="flex items-center justify-between mt-1">
+              <span className="text-xs text-slate-500">{phase.score}%</span>
+              {phase.score === 100 ? (
+                <CheckCircle className="h-3 w-3 text-green-500" />
+              ) : phase.score > 0 ? (
+                <Circle className="h-3 w-3 text-yellow-500" />
+              ) : (
+                <AlertCircle className="h-3 w-3 text-red-500" />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## File-by-File Changes Summary
+
+### Files to Modify
+
+| File | Changes |
+|------|---------|
+| `/shared/schema.ts` | Add new tables: `playbookPrepareItems`, `playbookMonitorItems`, `playbookLearnItems`, `executionLearnings`, `playbookReadinessScores` |
+| `/server/routes/playbookLibraryRoutes.ts` | Add new endpoints for each phase's CRUD operations |
+| `/client/src/components/playbook/PlaybookCustomizationWizard.tsx` | Restructure STEPS to reflect 4-phase model |
+| `/client/src/pages/PlaybookLibrary.tsx` | Add phase progress indicators |
+
+### New Files to Create
+
+| File | Purpose |
+|------|---------|
+| `/client/src/components/playbook/PhaseProgressBar.tsx` | Visual 4-phase progress indicator |
+| `/client/src/components/playbook/wizard/PrepareOverviewStep.tsx` | PREPARE phase summary view |
+| `/client/src/components/playbook/wizard/MonitorTriggersStep.tsx` | MONITOR phase trigger configuration |
+| `/client/src/components/playbook/wizard/ExecuteTasksStep.tsx` | EXECUTE phase with sub-phases |
+| `/client/src/components/playbook/wizard/LearnConfigStep.tsx` | LEARN phase setup |
+| `/server/services/ReadinessScoreService.ts` | Calculate and track readiness scores |
+
+### Database Migration
+
+```sql
+-- Create migration file: migrations/20240115_add_4phase_system.sql
+
+-- 1. Add new phase enum
+CREATE TYPE playbook_phase AS ENUM ('prepare', 'monitor', 'execute', 'learn');
+CREATE TYPE execute_subphase AS ENUM ('immediate', 'coordinate', 'resolve', 'close');
+
+-- 2. Add columns to existing playbook_library
+ALTER TABLE playbook_library 
+ADD COLUMN IF NOT EXISTS prepare_config JSONB DEFAULT '{}',
+ADD COLUMN IF NOT EXISTS monitor_config JSONB DEFAULT '{}',
+ADD COLUMN IF NOT EXISTS execute_config JSONB DEFAULT '{}',
+ADD COLUMN IF NOT EXISTS learn_config JSONB DEFAULT '{}',
+ADD COLUMN IF NOT EXISTS readiness_score INTEGER DEFAULT 0,
+ADD COLUMN IF NOT EXISTS approval_status VARCHAR(50) DEFAULT 'draft';
+
+-- 3. Add subphase to existing execution_plan_tasks
+ALTER TABLE execution_plan_tasks 
+ADD COLUMN IF NOT EXISTS execute_subphase execute_subphase DEFAULT 'immediate';
+
+-- 4. Create new tables (as defined in schema additions above)
+-- ... (playbookPrepareItems, playbookMonitorItems, playbookLearnItems, etc.)
+```
+
+---
+
+## Visual: How It Fits Together
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        EXISTING M ARCHITECTURE                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐       │
+│  │  playbookLibrary │───▶│ playbookDomains  │    │ executionPlans   │       │
+│  │  (148 playbooks) │    │ (8 domains)      │    │ (phases/tasks)   │       │
+│  └────────┬─────────┘    └──────────────────┘    └──────────────────┘       │
+│           │                                                                  │
+│           │ NEW 4-PHASE EXTENSION                                           │
+│           ▼                                                                  │
+│  ┌────────────────────────────────────────────────────────────────────────┐ │
+│  │                                                                         │ │
+│  │   🎯 PREPARE              📡 MONITOR           ⚡ EXECUTE    📚 LEARN  │ │
+│  │   ────────────           ───────────           ──────────    ─────────  │ │
+│  │   playbookPrepareItems   playbookMonitorItems  (existing     playbookLearnItems
+│  │   • Stakeholders         • Signals/Triggers    execution     • Debrief config
+│  │   • Documents            • Thresholds          PlanTasks +   • Surveys
+│  │   • Resources            • Confirmation        subphase)     • Metrics
+│  │   • Training             • Auto-activate                     • Improvement
+│  │                                                                         │ │
+│  └────────────────────────────────────────────────────────────────────────┘ │
+│                                                                              │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                    playbookReadinessScores                              ││
+│  │    Overall: 78%   Prepare: 85%   Monitor: 100%   Execute: 70%  Learn: 50% │
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Implementation Priority
+
+### Phase 1: Foundation (Week 1)
+1. Add schema tables to `/shared/schema.ts`
+2. Create database migration
+3. Add basic CRUD endpoints to routes
+
+### Phase 2: UI Integration (Week 2)
+1. Create `PhaseProgressBar` component
+2. Update `PlaybookCustomizationWizard` with 4-phase structure
+3. Add phase indicators to `PlaybookLibrary` page
+
+### Phase 3: Readiness Scoring (Week 3)
+1. Create `ReadinessScoreService`
+2. Add readiness calculation on item completion
+3. Display readiness in playbook cards
+
+### Phase 4: Full Feature Parity (Week 4)
+1. Complete all step components for each phase
+2. Add validation rules
+3. Connect to existing activation flow
+
+---
+
+## Key Point
+
+**This is an extension, not a rewrite.** Your existing 148 playbooks, domains, categories, and execution infrastructure all remain. The 4-phase system adds:
+
+1. **PREPARE tracking** — What's ready vs. what's not
+2. **MONITOR configuration** — When to activate
+3. **Sub-phase structure** — immediate/coordinate/resolve/close within EXECUTE
+4. **LEARN capture** — Post-execution improvement loop
+5. **Readiness scoring** — Quantified preparedness
+
+The existing activation flow (`/api/playbook-library/:id/activate`) still works. The difference is now you can see whether the playbook is *ready* to activate before you try.

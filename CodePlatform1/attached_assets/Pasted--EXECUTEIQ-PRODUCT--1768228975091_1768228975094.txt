@@ -1,0 +1,306 @@
+================================================================================
+EXECUTEIQ PRODUCT ENHANCEMENTS - REPLIT IMPLEMENTATION GUIDE
+Based on Fisk Leadership Model: "Orchestration as a System"
+================================================================================
+
+CORE INSIGHT:
+Transform ExecuteIQ from "Crisis Responder" to "Strategy Orchestrator"
+Leadership today requires orchestrating multiple interconnected systems simultaneously.
+Every playbook execution advances strategic priorities, not just responds to threats.
+
+================================================================================
+CHANGE 1: ADD STRATEGIC ALIGNMENT LAYER TO PLAYBOOKS (PRIORITY: HIGH)
+================================================================================
+
+DATABASE SCHEMA UPDATE:
+Add to playbooks table:
+  - strategic_objective_id (foreign key)
+  - strategic_objective_name (text: "Revenue Growth 2026", "Market Leadership", "Digital First", etc.)
+  - alignment_weight (0-100: how much does this playbook advance this objective?)
+  - execution_progress_toward_goal (auto-calculated from playboo executions)
+
+PLAYBOOK EXECUTION FLOW:
+1. Playbook fires (Signal detected)
+2. System prompts: "Which strategic priority does this advance?" (dropdown from org's 3-5 strategic goals)
+3. Team executes playbook
+4. Execution logged with strategic context
+5. Dashboard auto-updates: "X% of Market Entry playbook executions advanced Objective A"
+
+NEW FIELDS IN UI:
+- Each playbook details page shows: "Primary Strategic Objective" + "Secondary Objectives"
+- Playbook execution form adds: "Strategic Goal This Advances" (required field)
+- Command Center shows: Next to each executed playbook "→ Advanced [Strategic Goal Name]"
+
+BACKEND LOGIC:
+- Create strategic_objectives table with org-level goals
+- Create playbook_strategic_alignment table (junction) to map playbooks to goals
+- Add execution_strategic_impact table to log each execution's strategic contribution
+- Auto-calculate: SUM(executions advancing Goal A) / TOTAL(executions) = Strategic Alignment Score
+
+================================================================================
+CHANGE 2: BUILD TRANSFORMATION DASHBOARD (PRIORITY: HIGH)
+================================================================================
+
+NEW DASHBOARD TAB: "Strategy Execution" (in Command Center)
+
+SECTION 1: QUARTERLY TRANSFORMATION PROGRESS
+  Display:
+  - "Q1 2026: 18 Market Entry opportunities detected & executed"
+  - "Strategic progress toward 2026 revenue goal: +$2.3B" (if available)
+  - "Cross-domain activation: 7 of 9 domains activated this quarter"
+  - Timeline chart: Playbooks fired over time, colored by strategic objective
+
+SECTION 2: ORCHESTRATION HEALTH SCORE
+  Display:
+  - "Orchestration Health: 94%" (measures: domain balance, cross-domain coordination, execution speed)
+  - Domain activation gauge: Shows which domains active this period
+  - Execution velocity: Trend from 72h → 12m responses
+  - Strategic alignment: % of executions directly advancing stated goals
+
+SECTION 3: ANTICIPATION SIGNAL
+  Display:
+  - "3 emerging opportunities detected in adjacent markets"
+  - "12 weak signals converted to playbook executions this quarter"
+  - "Anticipation window improved: 2 weeks → 6 weeks"
+  - Emerging risks & opportunities listed with confidence scores
+
+SECTION 4: QUARTERLY REPORTS
+  Button: "Download Execution Intelligence Report"
+  Contains:
+  - Playbooks activated (what changed, execution speed, outcome)
+  - Strategic progress (which goals advanced, by how much)
+  - Domain balance (over-indexed on crisis vs. innovation?)
+  - Cross-domain wins (where 3+ domains coordinated = outsized impact)
+  - Anticipation insights (what did you see early that competitors missed?)
+
+UI IMPLEMENTATION:
+- New React component: StrategyExecutionDashboard.tsx
+- New color coding: Playbooks color-coded by strategic objective (not just domain)
+- Charts: Recharts components for timeline, gauge, trend analysis
+- Export: PDF/Excel generation for quarterly reports
+
+================================================================================
+CHANGE 3: RENAME 9 DOMAINS TO LEADERSHIP CAPABILITIES (PRIORITY: MEDIUM)
+================================================================================
+
+CURRENT → NEW MAPPING:
+
+OLD DOMAIN                          → NEW "LEADERSHIP CAPABILITY" MAPPING
+Market Entry                        → Foresight: Anticipate & Shape Markets
+Competitive Response                → Foresight: Anticipate & Shape Markets
+M&A                                 → Courage: Bold Bets with Incomplete Data
+Product Launch                      → Courage: Bold Bets with Incomplete Data
+Digital Transformation              → Agility: Continuous Reinvention
+AI Governance                       → Agility: Continuous Reinvention
+Regulatory                          → Purpose: Maintain Stakeholder Trust
+Crisis Management                   → Purpose: Maintain Stakeholder Trust
+Orchestration/Cross-Domain          → Orchestration: Align 9 Domains Simultaneously
+
+PRODUCT CHANGES:
+1. Update domain_categories table with new capability_name field
+2. Add capability_description (what this leadership capability enables)
+3. Update all playbook listings to show: "Foresight Capability → Market Entry Playbook"
+4. Executive dashboard shows: "This quarter, your org demonstrated:"
+   - 12 Foresight wins (Market Entry + Competitive Response)
+   - 3 Courage wins (M&A + Product Launch)
+   - 8 Agility wins (Digital Transformation + AI Governance)
+   - 14 Purpose wins (Regulatory + Crisis)
+
+UI IMPLEMENTATION:
+- Update Playbook library page: Filter/group by "Leadership Capability" not just domain
+- Update Command Center: Show capability icons (Foresight=telescope, Courage=shield, Agility=lightning, Purpose=heart)
+- Update reports: Show "Your organization demonstrated X% increase in Foresight capability this quarter"
+
+================================================================================
+CHANGE 4: ADD ANTICIPATION SCORING TO SIGNAL DETECTION (PRIORITY: HIGH)
+================================================================================
+
+SIGNAL DETECTION ENHANCEMENT:
+
+When Signal detects a potential threat/opportunity, add scoring:
+
+MAGNITUDE SCORE (1-10):
+  - 1-3: Manageable, contained impact
+  - 4-6: Significant, affects multiple domains
+  - 7-10: Strategic, could reshape market/business
+
+TIME HORIZON SCORE:
+  - Immediate (0-24h): Must act now
+  - Urgent (1-7 days): Week-level decision needed
+  - Emerging (1-4 weeks): Early warning, shape response
+  - Developing (1-3 months): Horizon signal for anticipation
+
+STRATEGIC RELEVANCE SCORE (1-10):
+  - Aligned with stated strategic priorities? (1-3 = low, 7-10 = high)
+  - Does this threaten stated strategy?
+  - Does this enable stated strategy?
+
+ANTICIPATION VALUE SCORE:
+  - Could we have seen this coming? (Yes/No)
+  - If yes: "6 weeks early" = high anticipation value
+  - Track over time: Is our anticipation window improving?
+
+DATABASE SCHEMA:
+Add to signals table:
+  - magnitude_score (1-10)
+  - time_horizon (text: immediate/urgent/emerging/developing)
+  - strategic_relevance_score (1-10)
+  - anticipation_value (boolean)
+  - anticipation_window_days (calculated: days before threshold triggered)
+  - could_have_anticipated (boolean)
+
+DASHBOARD DISPLAY:
+Signal card shows: "Market Entry Opportunity | Magnitude: 8 | Timeline: 2 weeks | Strategic Fit: 9/10 | Anticipation Window: 6 weeks"
+
+QUARTERLY REPORTING:
+- "X signals converted to playbook executions this quarter"
+- "Anticipation window improved from 2 weeks to 6 weeks"
+- "Y signals flagged as strategic opportunities vs. threats"
+
+BACKEND LOGIC:
+- Create scoring algorithm (can be simple initial version)
+- Store historical scores to track improvement over time
+- Auto-generate insights: "Your org is getting better at anticipation"
+
+================================================================================
+CHANGE 5: CREATE EXECUTION INTELLIGENCE REPORTS (PRIORITY: MEDIUM)
+================================================================================
+
+NEW REPORT: "Monthly/Quarterly Execution Intelligence Report"
+
+REPORT SECTIONS:
+
+1. ORCHESTRATION SUMMARY
+   - Total playbooks executed: X
+   - Execution speed improvement: From 72h to 12m average
+   - Cross-domain activations: Y (shows how many playbooks coordinated across 2+ domains)
+   - Strategic goal advancement: Z% of executions directly advanced stated priorities
+
+2. STRATEGIC PROGRESS
+   - Strategic Objective A: Advanced by 14 playbook executions
+   - Strategic Objective B: Advanced by 8 playbook executions
+   - Strategic Objective C: Advanced by 6 playbook executions
+   - % of execution bandwidth toward each objective (pie chart)
+
+3. DOMAIN BALANCE
+   - Foresight (Market Entry + Competitive Response): 40% of execution bandwidth
+   - Courage (M&A + Product Launch): 15% of execution bandwidth
+   - Agility (Digital Transformation + AI Governance): 25% of execution bandwidth
+   - Purpose (Regulatory + Crisis): 20% of execution bandwidth
+   - Assessment: "Balanced across all leadership capabilities" or "Over-indexed on [domain]"
+
+4. CROSS-DOMAIN WINS
+   - "Market Entry + Regulatory Playbook coordination created $5M opportunity"
+   - "M&A + Digital Transformation + AI Governance execution improved integration speed by 40%"
+   - Lists where coordinating 3+ domains created outsized impact
+
+5. ANTICIPATION INSIGHTS
+   - "3 signals detected 4+ weeks before threshold, enabling proactive response"
+   - "Your organization saw this coming: [List of anticipated threats/opportunities]"
+   - "Competitors likely still reacting to what you anticipated"
+   - Improvement trend: "Anticipation window improved 20% this quarter"
+
+6. NEXT QUARTER RECOMMENDATIONS
+   - "Consider increasing Foresight capability activation"
+   - "Cross-domain wins in [domain] suggest untapped orchestration opportunity"
+   - "These playbooks should be monitored more closely for early signals"
+
+REPORT FORMAT:
+- Executive summary (1 page)
+- Full report (5-7 pages)
+- Downloadable as PDF/PowerPoint for board presentations
+- Shareable dashboard link for real-time updates
+
+IMPLEMENTATION:
+- Create report_generator service that queries execution_strategic_impact table
+- Use template engine (handlebars) for PDF generation
+- Schedule monthly/quarterly generation (cron job)
+- Add "Download Report" button to Strategy Execution Dashboard
+
+================================================================================
+MESSAGING SHIFT (FOR MARKETING/SALES)
+================================================================================
+
+OLD: "ExecuteIQ turns 72-hour responses into 12-minute execution"
+
+NEW: "ExecuteIQ is the orchestration layer that lets leaders balance transformation + 
+stability across all 9 strategic domains simultaneously—detecting opportunities early, 
+executing with precision, and continuously advancing toward strategy."
+
+ELEVATOR PITCH OPTIONS:
+
+For Board/Investors:
+"ExecuteIQ transforms leadership from guardians of continuity into architects of 
+transformation. We're the orchestration layer that enables Fortune 1000 leaders to 
+sense change early, act decisively, and mobilize across 9 strategic domains in 12 
+minutes instead of 72 hours."
+
+For CMO/Chief Strategy Officer:
+"Executives like Sam Altman anticipate futures. Executives like Aicha Evans orchestrate 
+transformations. ExecuteIQ gives you both: AI-powered early sensing + pre-staged playbooks 
+across market entry, M&A, cyber, product launch, and 5 more domains. Transform faster 
+than disruption arrives."
+
+For COO/Chief Operations Officer:
+"Personal agility doesn't scale. ExecuteIQ does. We institutionalize your best responses 
+across 9 domains so your teams execute with founder-level precision, every time, without 
+waiting for leadership approval."
+
+================================================================================
+IMPLEMENTATION PRIORITY & TIMELINE
+================================================================================
+
+WEEK 1:
+✓ Add Strategic Alignment layer to playbooks (database + UI)
+✓ Update playbook execution flow to prompt for strategic objective
+✓ Rename domains to Leadership Capabilities (UI + messaging)
+
+WEEK 2:
+✓ Build Strategy Execution Dashboard (new tab in Command Center)
+✓ Create basic Transformation Progress widgets
+✓ Add Orchestration Health Score calculation
+
+WEEK 3:
+✓ Add Anticipation Scoring to Signal detection
+✓ Create signal card enhancement with scoring display
+✓ Build historical tracking for anticipation window improvement
+
+WEEK 4:
+✓ Create Execution Intelligence Report generator
+✓ Build report download functionality
+✓ Test quarterly report generation
+✓ Update all marketing/sales messaging to "Orchestration" positioning
+
+================================================================================
+TECHNICAL NOTES
+================================================================================
+
+Database Changes:
+- strategic_objectives table (new)
+- playbook_strategic_alignment table (new junction)
+- execution_strategic_impact table (new)
+- Add fields to: playbooks, signals, executions tables
+
+Frontend Changes:
+- StrategyExecutionDashboard.tsx (new component)
+- Update PlaybookLibrary.tsx (add capability filtering)
+- Update SignalCard.tsx (add scoring display)
+- Update ExecutionForm.tsx (add strategic objective prompt)
+- Create ReportGenerator.tsx (new)
+
+Backend Changes:
+- Create /api/strategic-objectives endpoints
+- Create /api/execution-intelligence/report endpoint
+- Add scoring algorithms to signal processing
+- Add report generation service
+- Add cron job for scheduled report generation
+
+Testing:
+- Mock strategic execution data for demo
+- Ensure dashboard loads correctly with 166 playbooks
+- Test report generation with various data scenarios
+- Validate scoring accuracy
+
+================================================================================
+COPY THIS ENTIRE DOCUMENT INTO REPLIT
+================================================================================

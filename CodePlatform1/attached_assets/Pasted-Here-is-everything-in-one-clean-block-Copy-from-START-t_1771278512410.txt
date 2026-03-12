@@ -1,0 +1,473 @@
+Here is everything in one clean block. Copy from START to END:
+
+---
+
+START COPY HERE
+
+---
+
+EXECUTEIQ ENHANCEMENT BUILD INSTRUCTIONS
+
+Add these new features to the existing ExecuteIQ platform to create a powerful entry experience where users describe a past incident and see how ExecuteIQ would have changed the outcome.
+
+OVERVIEW OF NEW FEATURES TO BUILD
+
+1. Incident Analyzer at /incident-analyzer - AI analyzes user's crisis description
+2. Playbook Generator at /playbook-generator - Creates custom playbook from analysis
+3. Live Simulation at /simulation - Real-time activation demonstration
+4. Readiness Assessment at /readiness - 5-question diagnostic that scores preparedness
+5. What-If Analyzer at /what-if - Test playbook modifications
+6. PDF Export - Downloadable reports and board briefings
+7. Dashboard Update - New hero section as entry point
+
+FEATURE 1 INCIDENT ANALYZER
+
+Route: /incident-analyzer
+
+Purpose: User describes a past crisis in plain text. AI analyzes it and shows what went wrong plus a side-by-side comparison of their reality versus what would happen with ExecuteIQ.
+
+User Interface:
+
+Header with title "See What Should Have Happened" and subtitle "Describe a real crisis or coordination failure. Our AI will analyze it."
+
+Large textarea input with placeholder text: "Example: Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge. By then it had spread to 4 other locations. We didn't know who could authorize the $2M recovery spend. Legal wasn't looped in until day 2..."
+
+Button labeled "Analyze My Incident" with teal gradient styling.
+
+Loading state shows pulsing animation with text "Analyzing your incident..."
+
+Results section displays after analysis completes:
+
+Incident Classification Card showing incident type badge like RANSOMWARE in red or SUPPLIER FAILURE in amber, severity indicator, estimated impact such as $12-15M, and time to resolution such as 3 days.
+
+What Went Wrong panel with bulleted list and red X icons showing points like "No clear owner for 72+ hours" and "No pre-built playbook" and "Ad-hoc communication".
+
+Root Causes panel with cards showing "Execution Gap" and "No Pre-Authorization" and "Missing Stakeholder Map".
+
+Side-by-side comparison which is the most important element:
+
+Left column labeled "Your Reality" with dark red background showing timeline of Hour 1 "Who owns this?" then Hour 8 "Still identifying stakeholders" then Hour 24 "News breaks externally" then Hour 72 "Finally contained" with cost in large red text at bottom.
+
+Right column labeled "With ExecuteIQ" with teal background showing timeline of 0:00 "Trigger detected, playbook activated" then 0:02 "6 stakeholders notified via Slack/SMS" then 0:05 "All critical roles acknowledged" then 0:11 "Contained, tasks assigned" with cost avoided in large green text at bottom.
+
+Call to action buttons: Primary button "Build This Playbook" navigates to /playbook-generator. Secondary button "Download Analysis" generates PDF.
+
+Backend API: POST /api/analyze-incident
+
+Request body contains description field with user's incident text.
+
+Claude API prompt for this endpoint:
+
+You are an expert in enterprise crisis management and organizational coordination. Analyze this incident description and extract key insights.
+
+INCIDENT DESCRIPTION:
+[insert user description here]
+
+Respond with this exact JSON structure:
+{
+  "incident_type": "ransomware or data_breach or supplier_failure or pr_crisis or regulatory or m_and_a or market_entry or product_recall or executive_departure or other",
+  "incident_label": "Human readable label like Ransomware Attack or Critical Supplier Failure",
+  "severity": "critical or high or medium",
+  "industry_detected": "financial_services or healthcare or manufacturing or technology or retail or other",
+  "what_went_wrong": [
+    "Specific point extracted from their description",
+    "Another specific failure point",
+    "Up to 5 points"
+  ],
+  "root_causes": [
+    {"cause": "No Clear Ownership", "description": "No one knew who was responsible for coordinating response"},
+    {"cause": "Missing Playbook", "description": "No pre-built response plan existed"},
+    {"cause": "Ad-hoc Communication", "description": "Used random calls and emails instead of structured notification"}
+  ],
+  "estimated_cost": {
+    "low": 5000000,
+    "high": 15000000,
+    "display": "$5-15M"
+  },
+  "time_to_resolution": {
+    "hours": 72,
+    "display": "3 days"
+  },
+  "without_executeiq": {
+    "timeline": [
+      {"time": "Hour 1", "event": "Incident detected, confusion about ownership"},
+      {"time": "Hour 4", "event": "Still identifying who should be involved"},
+      {"time": "Hour 8", "event": "First coordination meeting scheduled"},
+      {"time": "Hour 24", "event": "External parties become aware"},
+      {"time": "Hour 72", "event": "Finally contained after significant damage"}
+    ],
+    "outcome": "Description of negative outcome"
+  },
+  "with_executeiq": {
+    "timeline": [
+      {"time": "0:00", "event": "Trigger detected, playbook activated"},
+      {"time": "0:02", "event": "6 stakeholders notified via Slack, SMS, and phone"},
+      {"time": "0:04", "event": "CISO and CEO acknowledged, tasks auto-assigned"},
+      {"time": "0:08", "event": "All critical stakeholders aligned"},
+      {"time": "0:11", "event": "Contained, board briefing auto-generated"}
+    ],
+    "outcome": "Contained in under 12 minutes, minimal damage",
+    "cost_avoided": "$12M+"
+  }
+}
+
+Store analysis result in state to pass to playbook generator.
+
+FEATURE 2 PLAYBOOK GENERATOR
+
+Route: /playbook-generator
+
+Purpose: Takes incident analysis and generates complete editable playbook. User can customize triggers, stakeholders, tasks, and thresholds then save or test live.
+
+User Interface:
+
+Header shows playbook icon plus generated name like "Ransomware Response — Multi-Site Protocol" with playbook code badge like #SEC-001 and subtitle "Generated from your incident" with inline edit capability for name.
+
+Four section layout using tabs or accordion on mobile:
+
+TRIGGERS section shows list of 4-6 trigger conditions. Each has checkbox, condition text, edit button, delete button. Add Trigger button at bottom. Example triggers include "Encryption activity detected on 10+ servers" and "Ransom note discovered on any system" and "Security vendor critical alert received".
+
+STAKEHOLDERS section shows table with columns Role, Name, Email, RACI, Tier, Channels. Example rows: CISO with editable name and email fields, Responsible RACI, Tier 1, channels Slack SMS Phone. CEO with Accountable RACI, Tier 1, channels Slack SMS. CTO with Consulted RACI, Tier 2, channels Slack Email. RACI dropdown options are Responsible, Accountable, Consulted, Informed. Tier dropdown options are 1 Immediate, 2 Fast, 3 Informed. Channels is multi-select with Slack, Email, SMS, Phone options. Add Stakeholder button at bottom.
+
+TASKS section shows ordered list with columns for sequence number, Task, Owner, Priority, Duration. Example rows: 1 Isolate affected systems, CISO, Critical, 5 min. 2 Verify backup integrity, CTO, Critical, 10 min. 3 Initiate legal hold, General Counsel, Critical, 5 min. Drag to reorder capability. Priority dropdown has Critical, High, Medium options. Owner dropdown populated from stakeholders. Add Task button at bottom.
+
+THRESHOLDS section shows pre-authorized decisions with columns Action, Limit, Approver. Example rows: Emergency security vendor, $500K, CISO. External legal counsel, $200K, General Counsel. Customer notification, dash, CEO. Add Threshold button at bottom.
+
+Action bar sticky at bottom on mobile with buttons: Save to Library saves to existing Playbook Library and shows success toast. Test This Playbook is primary teal button navigating to /simulation. Export PDF downloads playbook as PDF.
+
+Backend API: POST /api/generate-playbook
+
+Request body contains analysis object from previous step.
+
+Claude API prompt for this endpoint:
+
+Based on this incident analysis, generate a complete ExecuteIQ playbook.
+
+INCIDENT ANALYSIS:
+[insert analysis JSON here]
+
+Generate a comprehensive playbook with this JSON structure:
+{
+  "name": "Descriptive Playbook Name",
+  "code": "#XXX-001 format based on type where SEC is for security, OPS for operations, MKT for market, MA for mergers",
+  "domain": "Security & Compliance or Operations or M&A or Market Dynamics",
+  "type": "defense or offense",
+  "description": "One paragraph description of what this playbook handles",
+  "triggers": [
+    "Specific, measurable trigger condition 1",
+    "Specific, measurable trigger condition 2",
+    "Up to 6 triggers"
+  ],
+  "stakeholders": [
+    {
+      "role": "CISO",
+      "raci": "responsible",
+      "tier": 1,
+      "channels": ["slack", "sms", "phone"],
+      "responsibilities": "Owns the technical response"
+    },
+    {
+      "role": "CEO",
+      "raci": "accountable",
+      "tier": 1,
+      "channels": ["slack", "sms"],
+      "responsibilities": "Final decision authority"
+    }
+  ],
+  "tasks": [
+    {
+      "sequence": 1,
+      "title": "Specific action task",
+      "owner_role": "CISO",
+      "priority": "critical",
+      "duration": "5 min",
+      "description": "Detailed description of what this task involves"
+    }
+  ],
+  "thresholds": [
+    {
+      "action": "What can be authorized",
+      "limit": "$500K",
+      "approver": "Role who can approve",
+      "condition": "When this applies"
+    }
+  ],
+  "success_metrics": {
+    "target_coordination_time": "12 minutes",
+    "target_acknowledgment_rate": "100% within 5 minutes",
+    "target_task_assignment": "All critical tasks assigned within 10 minutes"
+  }
+}
+
+FEATURE 3 LIVE SIMULATION
+
+Route: /simulation
+
+Purpose: Simulates real playbook activation with notifications going out, acknowledgments coming in, and tasks being assigned all animated in real-time.
+
+User Interface:
+
+Pre-activation state:
+
+Alert banner with red or amber background, warning icon, title "INCOMING: [Incident Type]", description from trigger, timestamp showing current time.
+
+Playbook info card showing playbook name and code, stakeholders count, tasks count.
+
+Optional email input section with label "Want to receive a real notification?" and email input field and helper text "We'll send you exactly what your team would receive".
+
+Large centered activation button labeled "Activate Playbook" with rocket emoji, teal gradient styling.
+
+Active simulation state after clicking activate:
+
+Header bar with left side showing "EXECUTEIQ ACTIVE" with pulsing green dot, center showing playbook name, right side showing large elapsed time counter in 00:00 format updating every 100ms.
+
+Progress bar labeled "Coordination Progress" showing "X/Y stakeholders acknowledged" with animated fill.
+
+Three column layout that stacks on mobile:
+
+Column 1 Notifications with header "Notifications Sent" and send icon. List of stakeholders appearing one by one with animation showing avatar or icon, name and role, channel icons for Slack SMS etc, timestamp when sent, status showing checkmark Sent in teal. Stakeholders appear based on tier with Tier 1 first then Tier 2 then Tier 3.
+
+Column 2 Acknowledgments with header "Acknowledged" and checkmark icon. List updating as stakeholders acknowledge showing name and role, Acknowledged badge in green, timestamp. Stakeholders who have not acknowledged show as Pending with hourglass in amber.
+
+Column 3 Tasks with header "Tasks Assigned" and clipboard icon. List of tasks appearing after acknowledgments start showing priority badge with Critical in red and High in amber, task title, arrow with Assigned to Role, checkmark when assigned.
+
+Live message preview at bottom panel labeled "Latest Notification Sent" showing realistic Slack message mockup with ExecuteIQ bot avatar, message content showing playbook activation, acknowledge button. Updates as each notification goes out.
+
+Completion state after approximately 60 seconds:
+
+Success banner with green background, checkmark, "COORDINATION COMPLETE", total time displayed large.
+
+Results cards showing Coordination Time as 00:58, Stakeholders Aligned as 6/6, Tasks Assigned as 8/8, Estimated Value Protected as $36M+.
+
+Comparison showing Without ExecuteIQ from analysis and With ExecuteIQ with actual simulation results.
+
+Action buttons: Download Board Briefing as PDF, Save Playbook to Library, Schedule Live Drill linking to contact or calendar, Run Another Scenario going back to incident analyzer.
+
+Frontend Simulation Logic:
+
+Configuration object with totalDuration 60000ms, tier1NotifyDelay 2000ms, tier2NotifyDelay 8000ms, tier3NotifyDelay 15000ms, ackDelayMin 3000ms, ackDelayMax 10000ms, taskAssignStart 20000ms, taskAssignInterval 3000ms.
+
+State variables for elapsed time, notified array, acknowledged array, tasksAssigned array, phase as ready or active or complete.
+
+startSimulation function sets phase to active, records start time, starts interval that runs every 100ms. On each tick calculate elapsed time, notify stakeholders based on their tier when elapsed exceeds their delay threshold, schedule acknowledgment after random delay between min and max, assign tasks after taskAssignStart with new task every taskAssignInterval. When elapsed exceeds totalDuration clear interval and set phase to complete.
+
+Backend API: POST /api/send-simulation-notification
+
+Optional but creates powerful wow factor. If user provides email, send real notification.
+
+Request body contains email, playbook_name, simulation_id.
+
+Uses Resend or SendGrid to send actual email that looks like ExecuteIQ notification. Email contains link to acknowledge. When clicked, hits endpoint that emits WebSocket event to update dashboard in real-time.
+
+FEATURE 4 READINESS ASSESSMENT
+
+Route: /readiness
+
+Purpose: 5-question diagnostic revealing gaps in user's current preparedness. Creates urgency by showing what they do not have.
+
+User Interface:
+
+Progress header showing "Question X of 5" with progress bar.
+
+Questions displayed one at a time or scrolling:
+
+Question 1: "If ransomware hit your company right now, who gets the first call?" Text input for name and role. Helper text "Be specific — name and role".
+
+Question 2: "What's their direct phone number?" Phone input. Helper text "Not the main office line".
+
+Question 3: "What are the first 3 actions in your incident playbook?" Three numbered text inputs. Helper text "In order of priority".
+
+Question 4: "Who can authorize a $500K emergency spend without a meeting?" Text input. Helper text "Name and title".
+
+Question 5: "Where is your incident response playbook documented?" Radio buttons with options: Confluence/Notion, SharePoint/Google Drive, Someone's head, We don't have one.
+
+Submit button labeled "See My Score".
+
+Results page:
+
+Preparedness Score shown as large circular gauge or number, score out of 100, color red if below 40 amber if 40-70 green if above 70.
+
+Gaps Identified as list of what is missing based on answers: "No documented first responder", "No direct contact info on file", "No written playbook exists", "No pre-authorized spending thresholds" each with red X icon.
+
+Benchmark comparison text "You're less prepared than 73% of enterprises in your industry" with bar chart showing where they fall.
+
+CTA buttons: "Build Your Playbook Now" going to /incident-analyzer, "Schedule a Consultation" going to calendar link.
+
+Scoring Logic:
+
+Start with score of 0.
+
+Question 1: If answer exists and length greater than 3, add 20 points.
+
+Question 2: If answer exists and contains 10 digits, add 20 points.
+
+Question 3: Count how many of the three action inputs have length greater than 5. Multiply count by 7 for up to 21 points.
+
+Question 4: If answer exists and length greater than 3, add 19 points.
+
+Question 5: If confluence add 20, if sharepoint add 15, if someones_head add 5, if none add 0.
+
+Return minimum of calculated score and 100.
+
+FEATURE 5 WHAT-IF ANALYZER
+
+Route: /what-if
+
+Purpose: Lets users test modifications to a playbook and see impact on coordination time.
+
+User Interface:
+
+Playbook selector dropdown to choose from saved playbooks. Shows playbook summary when selected.
+
+Modification options as checkboxes or cards: "Add board approval step before major actions", "Require legal review on all external communications", "Add regulatory notification requirement", "Remove a tier-1 stakeholder (simulate unavailability)", "Change primary channel from Slack to Email only".
+
+Analyze Impact button.
+
+Results:
+
+Time comparison showing Original as 12 minutes in teal, Modified as 47 minutes in amber or red, Delta as +35 minutes with arrow.
+
+Visual timeline comparison with two horizontal timelines, original is compact, modified is stretched showing delays.
+
+Impact analysis text: "Adding board approval introduces 35-minute delay", "This moves coordination from immediate to delayed category", risk assessment.
+
+AI Recommendation: "Not recommended for time-critical incidents", "Consider: Pre-authorize board for incidents under $X", alternative suggestions.
+
+Action buttons: Apply This Change updates playbook, Discard returns to original, Save as Variant creates new playbook version.
+
+Backend API: POST /api/what-if-analysis
+
+Claude API prompt:
+
+Analyze the impact of this modification to an ExecuteIQ playbook:
+
+ORIGINAL PLAYBOOK:
+[insert playbook JSON here]
+
+MODIFICATION:
+[insert modification description here]
+
+Calculate and return:
+{
+  "original_time_minutes": 12,
+  "modified_time_minutes": 47,
+  "delta_minutes": 35,
+  "delay_factors": [
+    {"factor": "Board availability", "delay": "20-30 min", "description": "Board members may not be immediately available"},
+    {"factor": "Meeting coordination", "delay": "10-15 min", "description": "Scheduling adds overhead"}
+  ],
+  "risk_assessment": "This modification significantly increases exposure window during critical incidents",
+  "recommendation": "Not recommended for time-critical scenarios. Consider pre-authorization thresholds instead.",
+  "alternatives": [
+    "Pre-authorize board for incidents under $5M",
+    "Implement async board notification with 30-min auto-approval",
+    "Designate board delegate for after-hours incidents"
+  ]
+}
+
+FEATURE 6 PDF EXPORT SERVICE
+
+Backend API: POST /api/generate-pdf
+
+Request body contains type as incident_analysis or playbook or board_briefing or simulation_results, data object with relevant content, company_name string.
+
+Use PDFKit or Puppeteer or react-pdf on server to generate.
+
+PDF Templates:
+
+Incident Analysis Report: Cover page with company name and date, executive summary, what went wrong section, root causes section, side-by-side comparison, recommendations, footer "Prepared by ExecuteIQ".
+
+Playbook Export: Cover page, playbook overview, triggers list, RACI matrix, task list, thresholds, activation instructions.
+
+Board Briefing: Executive summary as 1 page, incident overview, response timeline, actions taken, costs avoided, lessons learned, recommendations.
+
+FEATURE 7 DASHBOARD UPDATE
+
+Update main Dashboard to feature new entry point with hero section at top:
+
+Large headline "See What Should Have Happened"
+
+Subtext "Describe a past crisis or coordination failure. Our AI will show you exactly how ExecuteIQ would have changed the outcome."
+
+Large text input with placeholder "Describe your incident..."
+
+Primary button "Analyze My Incident" with arrow
+
+Below hero section show existing dashboard content.
+
+NAVIGATION UPDATES
+
+Update main navigation sidebar to include:
+
+Dashboard (existing)
+Incident Analyzer at /incident-analyzer with star icon as featured (NEW)
+Readiness Assessment at /readiness (NEW)
+Crisis Response (existing)
+Playbook Library (existing) with Playbook Generator at /playbook-generator accessed from analyzer (NEW)
+Live Simulation at /simulation (NEW)
+What-If Analyzer at /what-if (NEW)
+Intelligence dropdown (existing) containing AI Intelligence, Business Intelligence, Pulse Intelligence
+Executive Suite (existing)
+Integrations (existing)
+Settings (existing)
+
+Add prominent "Analyze an Incident" CTA button in header navbar.
+
+PROOF POINTS FOOTER
+
+Add footer component appearing on all pages:
+
+Left section: "166 Playbooks Ready"
+Center section: "11 min Avg Coordination"
+Right section: "$450M+ Protected"
+
+Below that: "Validated by: McKinsey • BCG • Deloitte • PwC • Bain"
+Tagline: "The agentic execution infrastructure enterprises need"
+
+API ROUTES TO ADD
+
+In server/routes.ts add:
+
+POST /api/analyze-incident for incident analysis
+POST /api/generate-playbook for playbook generation
+POST /api/what-if-analysis for what-if scenarios
+POST /api/generate-pdf for PDF generation
+POST /api/send-simulation-notification for real email notifications
+GET /api/simulation/:id/acknowledge for handling email acknowledgment clicks
+
+Set up WebSocket or socket.io for real-time simulation updates.
+
+ENVIRONMENT VARIABLES
+
+Add to .env file:
+
+ANTHROPIC_API_KEY=your_claude_api_key
+RESEND_API_KEY=your_resend_api_key
+
+STYLING GUIDELINES
+
+Use existing design system with Tailwind and shadcn components.
+Dark theme with slate-950 background and teal-500 accents.
+Cards use slate-800/50 background with slate-700 borders.
+Success states use emerald-500.
+Warning states use amber-500.
+Error and critical states use red-500.
+Animations use smooth fade-in and slide-up for appearing elements.
+Mobile responsive with stacked columns and full-width buttons.
+
+BUILD PRIORITY ORDER
+
+1. Incident Analyzer (highest impact, entry point)
+2. Playbook Generator (immediate value after analysis)
+3. Live Simulation (proves the concept)
+4. Dashboard hero section update (ties it together)
+5. Readiness Assessment (creates urgency)
+6. PDF Export (gives tangible takeaway)
+7. What-If Analyzer (advanced feature)
+8. Real email notifications (wow factor)
+
+Build these features and integrate them with the existing ExecuteIQ platform. Maintain consistency with existing UI patterns and component library.
+
+---
+
+END COPY HERE

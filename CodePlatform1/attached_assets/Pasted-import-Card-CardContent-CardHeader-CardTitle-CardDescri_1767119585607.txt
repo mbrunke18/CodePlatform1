@@ -1,0 +1,318 @@
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import StandardNav from "@/components/layout/StandardNav";
+import Footer from "@/components/layout/Footer";
+import { ArrowLeft, Plus, Save, AlertCircle } from "lucide-react";
+import { useLocation } from "wouter";
+import { useState } from "react";
+
+export default function DecisionTreeBuilder() {
+  const [, setLocation] = useLocation();
+  const [scenario, setScenario] = useState('');
+  const [domain, setDomain] = useState('crisis-response');
+  
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <StandardNav />
+      
+      <div className="container mx-auto px-4 py-20 max-w-5xl">
+        <Button 
+          variant="ghost" 
+          className="mb-6"
+          onClick={() => setLocation('/decisions')}
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Dashboard
+        </Button>
+        
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
+            Create Decision Tree
+          </h1>
+          <p className="text-lg text-slate-600 dark:text-slate-400">
+            Pre-stage critical decisions before scenarios occur. Head coaches prepare decision trees all week—so should you.
+          </p>
+        </div>
+        
+        {/* Info Banner */}
+        <Card className="mb-8 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="h-6 w-6 text-blue-600 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-bold text-blue-900 dark:text-blue-200 mb-2">
+                  Why Pre-Stage Decision Trees?
+                </h3>
+                <p className="text-sm text-blue-800 dark:text-blue-300">
+                  Head coaches don't decide plays in the moment—they pre-stage the decision tree all week. 
+                  When game day comes, they execute decisions in 40 seconds because the options, criteria, 
+                  and stakeholders are already mapped. Do the same for your business.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Basic Information */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Scenario Information</CardTitle>
+            <CardDescription>What high-stakes decision needs a pre-staged tree?</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                Scenario Name
+              </label>
+              <Input 
+                placeholder="e.g., Customer Data Breach Response"
+                value={scenario}
+                onChange={(e) => setScenario(e.target.value)}
+                data-testid="input-scenario"
+              />
+              <p className="text-xs text-slate-500 mt-1">
+                What situation triggers this decision?
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Domain
+                </label>
+                <select 
+                  className="w-full p-2 border rounded-md bg-white dark:bg-slate-800"
+                  value={domain}
+                  onChange={(e) => setDomain(e.target.value)}
+                >
+                  <option value="crisis-response">Crisis Response</option>
+                  <option value="regulatory-compliance">Regulatory Compliance</option>
+                  <option value="cyber-incidents">Cyber Incidents</option>
+                  <option value="competitive-response">Competitive Response</option>
+                  <option value="market-entry">Market Entry</option>
+                  <option value="ma-integration">M&A Integration</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Category
+                </label>
+                <select className="w-full p-2 border rounded-md bg-white dark:bg-slate-800">
+                  <option value="defense">Defense - Protect Value</option>
+                  <option value="offense">Offense - Seize Opportunities</option>
+                  <option value="special_teams">Special Teams - Change the Game</option>
+                </select>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Decision Point */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle>Decision Point #1</CardTitle>
+                <CardDescription>The critical question that needs a fast answer</CardDescription>
+              </div>
+              <Badge className="bg-emerald-100 text-emerald-700">
+                Target: 15 min
+              </Badge>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                Decision Question
+              </label>
+              <Textarea 
+                placeholder="e.g., Should we disclose the breach publicly immediately?"
+                rows={2}
+              />
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Primary Decision Maker
+                </label>
+                <select className="w-full p-2 border rounded-md bg-white dark:bg-slate-800">
+                  <option>CEO</option>
+                  <option>CFO</option>
+                  <option>COO</option>
+                  <option>General Counsel</option>
+                  <option>CISO</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Time Window
+                </label>
+                <Input type="number" placeholder="15" />
+                <p className="text-xs text-slate-500 mt-1">minutes</p>
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                Must Weigh In Before Decision
+              </label>
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="rounded" defaultChecked />
+                  <span className="text-sm">General Counsel</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="rounded" defaultChecked />
+                  <span className="text-sm">Chief Communications Officer</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="rounded" defaultChecked />
+                  <span className="text-sm">CISO</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" className="rounded" />
+                  <span className="text-sm">CFO</span>
+                </label>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Pre-Staged Options */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle>Pre-Staged Decision Options</CardTitle>
+                <CardDescription>Map out all possible choices before crisis hits</CardDescription>
+              </div>
+              <Button variant="outline" size="sm">
+                <Plus className="mr-2 h-4 w-4" />
+                Add Option
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Option A */}
+            <div className="p-6 border-2 border-emerald-200 dark:border-emerald-800 rounded-lg bg-emerald-50 dark:bg-emerald-900/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">
+                  A
+                </div>
+                <Input 
+                  placeholder="Option name (e.g., Disclose Immediately)"
+                  className="flex-1 bg-white dark:bg-slate-800"
+                />
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    Description
+                  </label>
+                  <Textarea 
+                    placeholder="What does this option entail?"
+                    rows={2}
+                    className="bg-white dark:bg-slate-800"
+                  />
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Pros
+                    </label>
+                    <Textarea 
+                      placeholder="• Regulatory compliance
+- Transparency
+- Customer trust"
+                      rows={3}
+                      className="bg-white dark:bg-slate-800"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Cons
+                    </label>
+                    <Textarea 
+                      placeholder="• Media reaction
+- Stock impact
+- Incomplete information"
+                      rows={3}
+                      className="bg-white dark:bg-slate-800"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    Choose This Option If:
+                  </label>
+                  <Textarea 
+                    placeholder="• >100K customers affected
+- Personal data compromised
+- Regulatory deadline <24 hours"
+                    rows={3}
+                    className="bg-white dark:bg-slate-800"
+                  />
+                  <p className="text-xs text-slate-500 mt-1">
+                    Decision criteria help executives choose fast
+                  </p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                    If Chosen → Trigger Playbook
+                  </label>
+                  <select className="w-full p-2 border rounded-md bg-white dark:bg-slate-800">
+                    <option>Select playbook...</option>
+                    <option>Public Disclosure Playbook</option>
+                    <option>Crisis Communications Playbook</option>
+                    <option>Regulatory Notification Playbook</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            {/* Option B */}
+            <div className="p-6 border-2 border-blue-200 dark:border-blue-800 rounded-lg bg-blue-50 dark:bg-blue-900/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
+                  B
+                </div>
+                <Input 
+                  placeholder="Option name (e.g., Investigate First)"
+                  className="flex-1 bg-white dark:bg-slate-800"
+                />
+              </div>
+              
+              <p className="text-sm text-slate-500 italic">
+                [Configure options B and C with same fields as Option A]
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        
+        {/* Action Buttons */}
+        <div className="flex gap-4">
+          <Button size="lg" className="flex-1">
+            <Save className="mr-2 h-5 w-5" />
+            Save Decision Tree
+          </Button>
+          <Button size="lg" variant="outline" onClick={() => setLocation('/decisions')}>
+            Cancel
+          </Button>
+        </div>
+      </div>
+      
+      <Footer />
+    </div>
+  );
+}

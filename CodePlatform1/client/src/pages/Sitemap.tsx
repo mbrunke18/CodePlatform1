@@ -1,0 +1,197 @@
+import StandardNav from '@/components/layout/StandardNav';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLocation } from "wouter";
+import { ChevronRight } from "lucide-react";
+
+export default function Sitemap() {
+  const [, setLocation] = useLocation();
+
+  const sections = [
+    {
+      title: "Core Pages",
+      pages: [
+        { name: "Home", path: "/" },
+        { name: "Demo Selector", path: "/demo-selector" },
+        { name: "Playbook Library", path: "/playbook-library" },
+        { name: "Dashboard", path: "/dashboard" },
+        { name: "Executive Suite", path: "/executive-suite" },
+        { name: "ROI Calculator", path: "/calculator" },
+      ]
+    },
+    {
+      title: "Live Interactive Demos",
+      pages: [
+        { name: "4-Phase System Demo", path: "/four-phase-demo" },
+        { name: "Ransomware Response", path: "/demo/ransomware" },
+        { name: "M&A Integration", path: "/demo/ma-integration" },
+        { name: "Product Launch", path: "/demo/product-launch" },
+        { name: "Supplier Crisis", path: "/demo/supplier-crisis" },
+        { name: "Competitive Response", path: "/demo/competitive-response" },
+        { name: "Regulatory Crisis", path: "/demo/regulatory-crisis" },
+        { name: "Customer Crisis", path: "/demo/customer-crisis" },
+      ]
+    },
+    {
+      title: "Industry Crisis Demos",
+      pages: [
+        { name: "Industry Demos Hub", path: "/industry-demos" },
+        { name: "Luxury Crisis Demo", path: "/luxury-crisis-demo" },
+        { name: "Financial Ransomware Demo", path: "/financial-demo" },
+        { name: "Pharmaceutical Recall Demo", path: "/pharma-demo" },
+        { name: "Manufacturing Supplier Demo", path: "/manufacturing-demo" },
+        { name: "Retail Food Safety Demo", path: "/retail-demo" },
+        { name: "Energy Grid Failure Demo", path: "/energy-demo" },
+      ]
+    },
+    {
+      title: "Strategic Opportunity Demos",
+      pages: [
+        { name: "LVMH Market Entry", path: "/lvmh-demo" },
+        { name: "SHEIN Trend Response", path: "/shein-demo" },
+        { name: "SpaceX Launch Coordination", path: "/spacex-demo" },
+      ]
+    },
+    {
+      title: "Strategic Operations",
+      pages: [
+        { name: "Strategic Monitoring", path: "/strategic-monitoring" },
+        { name: "Command Center", path: "/command-center" },
+        { name: "Collaboration", path: "/collaboration" },
+        { name: "Decision Velocity", path: "/decision-velocity" },
+        { name: "What-If Analyzer", path: "/what-if-analyzer" },
+      ]
+    },
+    {
+      title: "AI Intelligence",
+      pages: [
+        { name: "AI Intelligence Hub", path: "/ai" },
+        { name: "AI Radar Dashboard", path: "/ai-radar" },
+        { name: "Pulse Intelligence", path: "/pulse" },
+        { name: "Flux Adaptations", path: "/flux" },
+        { name: "Prism Insights", path: "/prism" },
+        { name: "Echo Cultural Analytics", path: "/echo" },
+        { name: "Nova Innovations", path: "/nova" },
+      ]
+    },
+    {
+      title: "Planning & Preparedness",
+      pages: [
+        { name: "Strategic Planning Hub", path: "/strategic" },
+        { name: "Triggers Management", path: "/triggers-management" },
+        { name: "Preparedness Report", path: "/preparedness-report" },
+        { name: "Practice Drills", path: "/practice-drills" },
+        { name: "Drill Tracking", path: "/drill-tracking" },
+        { name: "Crisis Exposure Matrix", path: "/crisis-exposure-matrix" },
+        { name: "Simulation Studio", path: "/simulation-studio" },
+        { name: "Execution Learning Dashboard", path: "/execution-learning" },
+      ]
+    },
+    {
+      title: "Analytics & Reporting",
+      pages: [
+        { name: "Advanced Analytics", path: "/analytics" },
+        { name: "Executive Analytics", path: "/executive-analytics-dashboard" },
+        { name: "Audit Logging Center", path: "/audit-logging-center" },
+        { name: "Business Intelligence", path: "/business-intelligence" },
+        { name: "Operating Model Alignment", path: "/operating-model" },
+        { name: "Operating Model Health", path: "/operating-model-health" },
+        { name: "ROI Breakdown", path: "/roi-breakdown" },
+      ]
+    },
+    {
+      title: "Enterprise Features",
+      pages: [
+        { name: "Integration Hub", path: "/integration-hub" },
+        { name: "Integrations", path: "/integrations" },
+        { name: "Institutional Memory", path: "/institutional-memory" },
+        { name: "Board Briefings", path: "/board-briefings" },
+        { name: "Platform", path: "/platform" },
+      ]
+    },
+    {
+      title: "Demo Experiences",
+      pages: [
+        { name: "How It Works", path: "/how-it-works" },
+        { name: "Watch Demo", path: "/watch-demo" },
+        { name: "Trade Show Demo", path: "/trade-show-demo" },
+        { name: "Executive Demo", path: "/executive-demo" },
+        { name: "Hybrid Demo", path: "/hybrid-demo" },
+        { name: "Executive Walkthrough", path: "/executive-demo-walkthrough" },
+      ]
+    },
+    {
+      title: "Company & Resources",
+      pages: [
+        { name: "Our Story", path: "/our-story" },
+        { name: "Pricing", path: "/pricing" },
+        { name: "Contact", path: "/contact" },
+        { name: "Early Access", path: "/early-access" },
+        { name: "Settings", path: "/settings" },
+      ]
+    }
+  ];
+
+  return (
+    <div className="bg-white min-h-screen text-[#0A0F2E] p-8 pt-24">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h1 className="text-5xl font-bold mb-4 text-[#0A0F2E] font-serif">
+            Execution OS Sitemap
+          </h1>
+          <p className="text-xl text-[#6B7280] font-light">
+            Complete directory of all pages and features available in Execution OS
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sections.map((section) => (
+            <Card key={section.title} className="bg-white border-[#E8E4DC] rounded-none shadow-none hover:border-[#C9A84C] transition-colors group">
+              <CardHeader className="border-b border-[#F8F7F4] mb-4">
+                <CardTitle className="text-lg text-[#0A0F2E] font-serif group-hover:text-[#C9A84C] transition-colors">{section.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  {section.pages.map((page) => (
+                    <li key={page.path}>
+                      <button
+                        onClick={() => setLocation(page.path)}
+                        className="text-[#6B7280] hover:text-[#0A0F2E] text-xs font-bold uppercase tracking-widest text-left w-full transition-colors flex items-center group/link"
+                      >
+                        <ChevronRight className="w-3 h-3 mr-2 text-[#C9A84C] opacity-0 group-hover/link:opacity-100 transition-all" />
+                        {page.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <Card className="mt-8 bg-[#0A0F2E] border-none rounded-none">
+          <CardContent className="p-12">
+            <h2 className="text-2xl font-serif mb-8 text-[#C9A84C] text-center">System Capabilities</h2>
+            <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-bold text-[#2B8A6E] mb-2">7</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Live Interactive Demos</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">10</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Industry Demos</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">170</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Strategic Playbooks</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-[#C9A84C] mb-2">70+</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Total Pages</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}

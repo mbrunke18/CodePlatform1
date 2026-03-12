@@ -1,0 +1,198 @@
+Of course. Let's break down exactly how to create the "Golden Demo" script and integrate it directly into your Acuetic platform.
+This process will give you a repeatable, one-command way to set up a perfect demo environment, ensuring every presentation is consistent, impressive, and bug-free.
+Here is a step-by-step technical guide tailored to your stack (Node.js, Drizzle, TypeScript, React).
+Overview of the Goal
+We will create a script that, when run, will:
+1. Wipe any existing data in your database to ensure a clean slate.
+2. Seed the database with a curated, fictional dataset that tells a compelling story.
+3. Create a dedicated demo user login (e.g., demo@acuetic.com).
+This script will be integrated as an npm command, so you can reset your entire platform to the "Golden Demo" state at any time by running npm run db:seed.
+Step 1: Define the Narrative of the "Golden Demo"
+Before writing any code, write down the 3-5 minute story you want to tell. A good demo isn't a feature list; it's a narrative that solves a problem.
+Example Narrative:
+1. The Hook (The Problem): The user logs in as a Chief Strategy Officer at a fictional tech company, "Innovate Dynamics." The dashboard (Pulse module) immediately shows a high-risk alert: "Unexpected competitor product launch in the APAC region."
+2. The Investigation (The Insight): They click into the alert. The Prism and Flux modules show simulated market data, sentiment analysis, and AI-generated impact assessments, predicting a 15% potential market share loss.
+3. The Response (The Collaboration): The user initiates a "Crisis Response" from a pre-built template called "Competitor Blitz Response." They use the real-time collaboration features to assign tasks to their team members (who are also seeded as fictional users).
+4. The Resolution (The Outcome): Using the Nova analytics, they model two potential strategic pivots. They choose one, an action plan is generated, and the crisis is moved to a "Monitoring" state.
+5. The "Wow" Moment: The demo ends by showing how Acuetic took them from a chaotic, unknown threat to a decisive, data-driven action plan in minutes.
+This narrative now dictates exactly what data we need to create.
+Step 2: Create the Database Seeding Logic
+In your project's root directory, create a new folder named scripts. Inside this folder, create a file named seed.ts.
+
+Now, let's write the code for scripts/seed.ts. This script will connect to your database using Drizzle and perform the wipe-and-seed operation.
+// scripts/seed.ts
+
+import { drizzle } from 'drizzle-orm/neon-http';
+import { neon } from '@neondatabase/serverless';
+import * as schema from '../server/db/schema'; // Adjust path to your schema file
+import { hash } from 'bcrypt';
+import { nanoid } from 'nanoid';
+
+// IMPORTANT: Use environment variables for your database URL
+const databaseUrl = process.env.DATABASE_URL;
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL environment variable is not set");
+}
+
+const sql = neon(databaseUrl);
+const db = drizzle(sql, { schema });
+
+async function main() {
+  console.log('🌱 Starting database seeding...');
+
+  // ----------------------------------------------------------------
+  // 1. WIPE EXISTING DATA (in reverse order of dependencies)
+  // ----------------------------------------------------------------
+  console.log('🗑️  Deleting existing data...');
+  // Example: If tasks depend on users, delete tasks first.
+  // Add all your tables here in the correct order.
+  await db.delete(schema.tasks);
+  await db.delete(schema.scenarios);
+  await db.delete(schema.crisisSessions);
+  await db.delete(schema.users);
+  await db.delete(schema.organizations);
+  console.log('✅ Existing data deleted.');
+
+  // ----------------------------------------------------------------
+  // 2. SEED NEW DATA
+  // ----------------------------------------------------------------
+  console.log('✨ Seeding new data...');
+
+  // Create the Organization
+  const [org] = await db.insert(schema.organizations).values({
+    id: `org_${nanoid()}`,
+    name: 'Innovate Dynamics',
+  }).returning();
+
+  // Create the Demo User
+  const hashedPassword = await hash('demo1234', 10);
+  const [demoUser] = await db.insert(schema.users).values({
+    id: `user_${nanoid()}`,
+    organizationId: org.id,
+    email: 'demo@acuetic.com',
+    name: 'Alex Chen',
+    role: 'admin', // or 'cso', 'executive', etc.
+    hashedPassword: hashedPassword,
+  }).returning();
+
+  // Create other fictional team members
+  await db.insert(schema.users).values([
+    { id: `user_${nanoid()}`, organizationId: org.id, email: 'sara@innovatedynamics.com', name: 'Sara Lee', role: 'user' },
+    { id: `user_${nanoid()}`, organizationId: org.id, email: 'mike@innovatedynamics.com', name: 'Mike Rivera', role: 'user' },
+  ]);
+
+  // Create the Crisis Scenario based on our narrative
+  const [crisis] = await db.insert(schema.crisisSessions).values({
+    id: `crisis_${nanoid()}`,
+    organizationId: org.id,
+    title: 'Competitor Blitz: APAC Region',
+    status: 'active',
+    severity: 'high',
+    createdBy: demoUser.id,
+  }).returning();
+
+  // Create associated AI intelligence data (Prism, Flux, etc.)
+  // This will be specific to your schema, but here's an example:
+  await db.insert(schema.aiInsights).values([
+    { id: `insight_${nanoid()}`, sessionId: crisis.id, module: 'Prism', data: { competitor: 'Synergize Corp', launch: 'Q4 2025', impact: '15% market share risk' }},
+    { id: `insight_${nanoid()}`, sessionId: crisis.id, module: 'Flux', data: { marketSentiment: 'negative', socialMediaMentions: 15000 }},
+  ]);
+
+  console.log('✅ New data seeded successfully.');
+}
+
+main().catch((error) => {
+  console.error('❌ Seeding failed:', error);
+  process.exit(1);
+}).finally(() => {
+  console.log('🌱 Seeding script finished.');
+  process.exit(0);
+});
+
+Step 3: Integrate the Script into Your Product Workflow
+Now we make this script easy to run.
+
+Add the Script to package.json:
+Open your package.json file and add a new command to the "scripts" section.
+
+  "name": "acuetic-platform",
+  "version": "2.0.0",
+  ...
+  "scripts": {
+    "dev": "NODE_ENV=development tsx server/index.ts",
+    "build": "...",
+    "test": "vitest",
+    ...
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx ./scripts/seed.ts" // <-- ADD THIS LINE
+  },
+  ...
+}
+
+Run the Script:
+From your terminal, you can now set up the entire "Golden Demo" environment with one command: npm run db:seed
+
+This will execute the seed.ts file, wiping and re-populating your database. You are now ready to start a demo.
+
+Step 4: (Optional) Advanced Integration for Interactive Trials
+To make this even more powerful, you can create a "Reset Demo" button right in the UI for yourself or for sandboxed customer trials.
+
+Create a Secure API Endpoint:
+In your server/routes.ts, add a new endpoint that can only be accessed by an admin.
+// server/routes.ts
+import { Router } from 'express';
+import { isAuthenticated, isAdmin } from './auth-middleware'; // Example middleware
+import { runSeed } from './services/seeding-service'; // We'll create this
+
+const router = Router();
+
+// ... your other routes
+
+router.post(
+  '/api/admin/reset-demo',
+  isAuthenticated,
+  isAdmin, // Protect this heavily!
+  async (req, res) => {
+    try {
+      await runSeed(); // Execute the seeding logic
+      res.status(200).json({ message: 'Demo environment reset successfully.' });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to reset demo environment.' });
+    }
+  }
+);
+
+export default router;
+
+Refactor the Seeding Logic:
+Move the main function from scripts/seed.ts into a reusable function in server/services/seeding-service.ts that can be called by both the script and the API endpoint.
+
+Add a Button in the Frontend:
+In a hidden admin panel or on a specific settings page in your React app, add a button.
+// client/src/components/AdminPanel.tsx
+
+const AdminPanel = () => {
+  const handleResetDemo = async () => {
+    if (window.confirm('Are you sure you want to reset the entire demo environment? This is irreversible.')) {
+      try {
+        await fetch('/api/admin/reset-demo', { method: 'POST' });
+        alert('Demo environment has been reset!');
+        window.location.reload();
+      } catch (error) {
+        alert('Failed to reset demo.');
+      }
+    }
+  };
+
+  return (
+    <div>
+      <h3>Admin Controls</h3>
+      <button onClick={handleResetDemo} style={{ backgroundColor: 'red', color: 'white' }}>
+        Reset Demo Environment
+      </button>
+    </div>
+  );
+};
+
+You have now successfully created and integrated a robust demo-seeding system. This makes your platform instantly demonstrable and ready for interactive customer trials.
