@@ -58,8 +58,17 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence.
 - **Compound Threat Intelligence:** GPT-4o-powered cross-domain threat synthesis.
 - **Shadow Strategy Simulator (`/simulation-studio`):** Digital Twin scenario dry-run.
-- **Strategic Recorder (`/strategic-recorder`):** Generates playbook outlines from crisis notes using GPT-4o.
+- **Strategic Recorder (`/strategic-recorder`):** Generates playbook outlines from strategic notes using GPT-4o.
 - **War Room Pulse Map:** Animated SVG visualization of signal domains.
+
+**Data Consistency Standards (enforced across all pages):**
+- Response time: **12 minutes** (never "4 min" or "4-minute activation")
+- Speed advantage: **340x faster** (never "15,000x")
+- Playbooks: **170** across **9 strategic domains**
+- Signal categories: **20** (never "16")
+- Data points: **248+** (never "216+")
+- Executive triggers: **221**
+- Navigation: All nav links verified working for both public and authenticated users — zero dead links.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
