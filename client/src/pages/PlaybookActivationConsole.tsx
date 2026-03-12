@@ -46,6 +46,110 @@ interface ExecutionCheckpoint {
   completedAt?: Date;
 }
 
+interface DemoTask {
+  id: string;
+  description: string;
+  status: 'pending' | 'in_progress' | 'completed';
+  priority: string;
+  assignedTo: null;
+}
+
+const DOMAIN_TASKS: Record<string, string[]> = {
+  'Financial Strategy': [
+    'Brief CFO and treasury team — assess immediate liquidity exposure',
+    'Engage investment bank advisors for rapid situation assessment',
+    'Activate board finance committee for emergency session',
+    'Initiate regulatory disclosure review with legal counsel',
+    'Model 3 financial response scenarios with downside protection',
+    'Deploy investor relations protocol — prepare stakeholder messaging',
+    'Establish war room with real-time financial monitoring dashboard',
+  ],
+  'Market Dynamics': [
+    'Activate competitive intelligence sweep across all monitored channels',
+    'Brief sales leadership — identify accounts at immediate risk',
+    'Deploy customer retention task force for top 20 accounts',
+    'Engage marketing for rapid positioning response campaign',
+    'Convene pricing strategy team for emergency review session',
+    'Launch win/loss analysis on recent competitive deals',
+    'Prepare board competitive briefing with response options',
+  ],
+  'Operational Excellence': [
+    'Stand up cross-functional operations war room',
+    'Activate backup vendor and supplier protocols',
+    'Brief operations leadership on containment priorities',
+    'Deploy rapid process audit across critical workflows',
+    'Initiate SLA review and customer impact triage',
+    'Mobilize field teams for immediate assessment',
+    'Establish 24-hour status reporting cadence',
+  ],
+  'Technology & Innovation': [
+    'Activate technology risk assessment and impact analysis',
+    'Brief CTO and engineering leads on containment options',
+    'Initiate vendor and platform dependency audit',
+    'Deploy security and compliance review team',
+    'Launch accelerated evaluation of alternative technology paths',
+    'Establish engineering war room with real-time system monitoring',
+    'Prepare board technology briefing with response timeline',
+  ],
+  'AI Governance': [
+    'Activate AI governance review committee',
+    'Initiate model audit and bias detection sweep',
+    'Brief legal and compliance on regulatory exposure',
+    'Deploy AI ethics review across affected systems',
+    'Establish AI incident response protocol',
+    'Engage external AI governance advisors',
+    'Prepare board briefing on AI risk and remediation timeline',
+  ],
+  'Brand & Reputation': [
+    'Activate crisis communications team — assess narrative exposure',
+    'Brief CEO and executive team on messaging protocol',
+    'Engage PR firm for rapid media monitoring and response',
+    'Deploy social media containment and monitoring protocol',
+    'Prepare holding statement and customer communication drafts',
+    'Launch stakeholder outreach to key partners and investors',
+    'Establish 24-hour media monitoring war room',
+  ],
+  'Regulatory & Compliance': [
+    'Engage outside legal counsel for immediate regulatory review',
+    'Brief board audit committee on exposure and disclosure obligations',
+    'Activate compliance team for rapid assessment and response',
+    'Initiate document preservation and litigation hold protocol',
+    'Prepare regulatory agency communication strategy',
+    'Deploy cross-functional compliance task force',
+    'Establish government affairs engagement protocol',
+  ],
+  'Talent & Leadership': [
+    'Brief CHRO and people leadership on talent risk exposure',
+    'Activate retention protocol for critical role holders',
+    'Deploy leadership succession review and contingency planning',
+    'Initiate employee communication and engagement protocol',
+    'Engage executive search firm for contingency pipeline',
+    'Launch culture and sentiment rapid assessment',
+    'Prepare board talent briefing with risk and response options',
+  ],
+};
+
+const GENERIC_TASKS = [
+  'Initiate executive response protocol — notify leadership team',
+  'Activate cross-functional response task force',
+  'Brief board and key stakeholders on situation and response plan',
+  'Deploy legal and compliance review team',
+  'Launch stakeholder communication and messaging protocol',
+  'Establish real-time monitoring and escalation framework',
+  'Prepare executive briefing with response options and timeline',
+];
+
+function generateDemoTasks(domain: string): DemoTask[] {
+  const descriptions = DOMAIN_TASKS[domain] || GENERIC_TASKS;
+  return descriptions.map((desc, i) => ({
+    id: `demo-task-${i}`,
+    description: desc,
+    status: 'pending' as const,
+    priority: i === 0 ? 'critical' : i < 3 ? 'high' : 'medium',
+    assignedTo: null,
+  }));
+}
+
 export default function PlaybookActivationConsole() {
   const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
   const { toast } = useToast();
@@ -56,6 +160,7 @@ export default function PlaybookActivationConsole() {
   const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
   const [executionId] = useState(`exec-${Date.now()}`);
   const [activationDbId, setActivationDbId] = useState<string | null>(null);
+  const [localDemoTasks, setLocalDemoTasks] = useState<DemoTask[]>([]);
 
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';
@@ -128,11 +233,43 @@ export default function PlaybookActivationConsole() {
     return () => clearInterval(interval);
   }, [executionStartTime, executionStatus]);
 
+  // Auto-progress demo tasks every 20 seconds when active
+  useEffect(() => {
+    if (executionStatus !== 'active' || localDemoTasks.length === 0) return;
+    // Immediately set first pending task to in_progress
+    setLocalDemoTasks(prev => {
+      const firstPending = prev.findIndex(t => t.status === 'pending');
+      if (firstPending === -1) return prev;
+      return prev.map((t, i) => i === firstPending ? { ...t, status: 'in_progress' } : t);
+    });
+    const interval = setInterval(() => {
+      setLocalDemoTasks(prev => {
+        const inProgressIdx = prev.findIndex(t => t.status === 'in_progress');
+        const nextPendingIdx = prev.findIndex(t => t.status === 'pending');
+        if (inProgressIdx !== -1 && nextPendingIdx !== -1) {
+          return prev.map((t, i) => {
+            if (i === inProgressIdx) return { ...t, status: 'completed' };
+            if (i === nextPendingIdx) return { ...t, status: 'in_progress' };
+            return t;
+          });
+        } else if (inProgressIdx !== -1) {
+          return prev.map((t, i) => i === inProgressIdx ? { ...t, status: 'completed' } : t);
+        }
+        return prev;
+      });
+    }, 20000);
+    return () => clearInterval(interval);
+  }, [executionStatus, localDemoTasks.length]);
+
   // Handle activation confirmation
   const handleConfirmActivation = () => {
     setActivationConfirmed(true);
     setExecutionStartTime(new Date());
     setExecutionStatus('active');
+    if (safeTasks.length === 0) {
+      const domain = playbook?.domain || playbook?.strategicCategory || '';
+      setLocalDemoTasks(generateDemoTasks(domain));
+    }
     toast({
       title: "Playbook Activated",
       description: "Execution timer started. Rally your team!",
@@ -225,8 +362,9 @@ export default function PlaybookActivationConsole() {
   };
 
   const safeTasks = tasks || [];
-  const completedTasks = safeTasks.filter((t: any) => t.status === 'completed').length;
-  const progressPercent = safeTasks.length > 0 ? (completedTasks / safeTasks.length) * 100 : 0;
+  const displayTasks = safeTasks.length > 0 ? safeTasks : localDemoTasks;
+  const completedTasks = displayTasks.filter((t: any) => t.status === 'completed').length;
+  const progressPercent = displayTasks.length > 0 ? (completedTasks / displayTasks.length) * 100 : 0;
   
   // SuccessMetrics:
   const targetTime = 12; // 12 minutes target
@@ -645,7 +783,7 @@ export default function PlaybookActivationConsole() {
               <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Progress</span>
             </div>
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>
-              {completedTasks} of {safeTasks.length} tasks completed
+              {completedTasks} of {displayTasks.length} tasks completed
             </span>
           </div>
           <div className="space-y-6">
@@ -657,12 +795,12 @@ export default function PlaybookActivationConsole() {
             </div>
             
             <div className="space-y-3">
-              {safeTasks.length === 0 ? (
+              {displayTasks.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
                   No tasks defined for this playbook
                 </div>
               ) : (
-                safeTasks.map((task: any, index: number) => (
+                displayTasks.map((task: any, index: number) => (
                   <div 
                     key={task.id} 
                     style={{ 
@@ -769,7 +907,7 @@ export default function PlaybookActivationConsole() {
         {/* Post-Activation Debrief */}
         {executionStatus === 'completed' && (() => {
           const perfScore = Math.min(100, Math.round(
-            (completedTasks / Math.max(safeTasks.length, 1)) * 60 +
+            (completedTasks / Math.max(displayTasks.length, 1)) * 60 +
             (isOnTrack ? 30 : 10) + 10
           ));
           const roiValue = Math.round(Math.max(timeSaved, 0) * 40);
@@ -862,9 +1000,9 @@ export default function PlaybookActivationConsole() {
                       <CheckCircle2 className="h-3.5 w-3.5" style={{ color: NAVY }} />
                       <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Tasks Completed</span>
                     </div>
-                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{completedTasks}/{safeTasks.length}</div>
+                    <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{completedTasks}/{displayTasks.length}</div>
                     <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>
-                      {safeTasks.length > 0 ? `${Math.round((completedTasks / safeTasks.length) * 100)}% completion rate` : 'No tasks tracked'}
+                      {displayTasks.length > 0 ? `${Math.round((completedTasks / displayTasks.length) * 100)}% completion rate` : 'No tasks tracked'}
                     </div>
                   </div>
 

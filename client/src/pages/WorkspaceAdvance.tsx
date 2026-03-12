@@ -329,9 +329,8 @@ function DoomLoopDetector() {
   );
 }
 
-export default function WorkspaceAdvance() {
-  return (
-    <PageLayout>
+export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = {}) {
+  const inner = (
       <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
@@ -569,6 +568,6 @@ export default function WorkspaceAdvance() {
 
         </div>
       </div>
-    </PageLayout>
   );
+  return embedded ? inner : <PageLayout>{inner}</PageLayout>;
 }

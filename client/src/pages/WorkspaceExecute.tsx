@@ -413,7 +413,7 @@ function MyActionsPanel({ runId }: { runId: string }) {
   );
 }
 
-export default function WorkspaceExecute() {
+export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = {}) {
   // Fetch active execution runs to power the JIT context and My Actions panels
   const { data: runsRaw } = useQuery<ExecutionRun[]>({
     queryKey: ['/api/execution-runs'],
@@ -423,8 +423,7 @@ export default function WorkspaceExecute() {
   const runs = Array.isArray(runsRaw) ? runsRaw : [];
   const activeRun = runs.find(r => r.status === 'running' || r.status === 'pending') || null;
 
-  return (
-    <PageLayout>
+  const inner = (
       <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
@@ -650,6 +649,6 @@ export default function WorkspaceExecute() {
           </Card>
         </div>
       </div>
-    </PageLayout>
   );
+  return embedded ? inner : <PageLayout>{inner}</PageLayout>;
 }
