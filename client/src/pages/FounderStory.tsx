@@ -208,7 +208,7 @@ export default function FounderStory() {
           </div>
 
           <Body>
-            IDENTIFY means the system is already watching. 216 data points across 20 signal categories, every fifteen minutes. The organization is not waiting to be surprised. It knows what is moving before anyone calls a meeting about it.
+            IDENTIFY means the system is already watching. 248+ data points across 20 signal categories, every fifteen minutes. The organization is not waiting to be surprised. It knows what is moving before anyone calls a meeting about it.
           </Body>
           <Body>
             DETECT means pattern recognition fires before the crisis peaks. Not after the call comes in. Not after someone builds a deck to explain what is happening. The system reads cross-domain signal combinations that human analysts miss because they are watching one domain at a time.

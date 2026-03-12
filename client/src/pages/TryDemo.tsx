@@ -1092,7 +1092,7 @@ export default function TryDemo() {
                           <div style={{ textAlign: 'center', paddingTop: 8 }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.4)' }}>
                               <div style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: GOLD, borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-                              <span style={{ fontSize: 12, fontFamily: 'monospace' }}>Correlating signals across {216 - detectStep * 30}+ sources...</span>
+                              <span style={{ fontSize: 12, fontFamily: 'monospace' }}>Correlating signals across {248 - detectStep * 30}+ sources...</span>
                             </div>
                           </div>
                         )}
