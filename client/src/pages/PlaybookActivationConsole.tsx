@@ -56,6 +56,9 @@ export default function PlaybookActivationConsole() {
   const isManualExecution = params?.triggerId === 'manual';
   const { data: trigger } = useQuery<any>({
     queryKey: ['/api/executive-triggers', params?.triggerId],
+    queryFn: () =>
+      fetch(`/api/executive-triggers/${params?.triggerId}`, { credentials: 'include' })
+        .then(r => r.ok ? r.json() : null),
     enabled: !!params?.triggerId && !isManualExecution,
   });
 

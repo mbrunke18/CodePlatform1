@@ -548,7 +548,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                   onClick={() => {
                                     const first = trigger.linkedPlaybooks?.[0];
                                     if (first?.id) {
-                                      setLocation(`/playbook-library/${first.id}`);
+                                      // Go directly to the activation console — trigger + playbook wired together
+                                      setLocation(`/playbook-activation/${trigger.id}/${first.id}`);
                                     } else {
                                       const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
                                       setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
