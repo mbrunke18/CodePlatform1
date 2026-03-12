@@ -32,7 +32,7 @@ This checklist covers everything needed before investor meetings. Tasks are orga
 
 | # | Task | Owner | Due | Status |
 |---|------|-------|-----|--------|
-| 9 | Audit actual playbook count (verify 166) | Martin | D-10 | ☐ |
+| 9 | Audit actual playbook count (verify 170) | Martin | D-10 | ☐ |
 | 10 | Standardize "12 minutes" claim across all pages | Dev | D-7 | ☐ |
 | 11 | Resolve "92 signals" vs "12 sources" inconsistency | Martin | D-7 | ☐ |
 | 12 | Document source for "$144M value gap" or remove | Martin | D-7 | ☐ |

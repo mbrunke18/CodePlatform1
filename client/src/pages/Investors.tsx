@@ -191,7 +191,7 @@ export default function Investors() {
             </h1>
             
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
-              Execution OS transforms how enterprises respond to strategic events—achieving 10x faster execution with 12-minute playbook activation while keeping humans in control.
+              Execution OS transforms how enterprises respond to strategic events—achieving 340x faster response with 12-minute playbook activation while keeping humans in control.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">

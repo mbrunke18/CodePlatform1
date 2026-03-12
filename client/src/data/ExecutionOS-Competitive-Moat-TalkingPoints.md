@@ -108,7 +108,7 @@ This document gives you crisp answers.
 
 ### "What about Microsoft?"
 
-> "Microsoft sells productivity and infrastructure. Execution OS is a strategic application layer. We run on Azure, integrate with Teams, connect to M365. We're a customer of Microsoft, not a competitor. For them to compete, they'd need to build 166 industry-specific playbooks and sell to CSOs—that's not their core business."
+> "Microsoft sells productivity and infrastructure. Execution OS is a strategic application layer. We run on Azure, integrate with Teams, connect to M365. We're a customer of Microsoft, not a competitor. For them to compete, they'd need to build 170 industry-specific playbooks and sell to CSOs—that's not their core business."
 
 ### "What about ServiceNow?"
 

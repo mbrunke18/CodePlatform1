@@ -38,7 +38,7 @@ ServiceNow automates IT workflows. Salesforce manages customer relationships. Ex
 
 **ServiceNow:** "Your laptop is broken → ticket created → IT fixes it"  
 **Salesforce:** "Lead comes in → sales process → deal closes"  
-**M:** "Competitor launches product → playbook activates → CFO, CMO, CPO, Legal all receive coordinated tasks → response launches in 12 minutes"
+**Execution OS:** "Competitor launches product → playbook activates → CFO, CMO, CPO, Legal all receive coordinated tasks → response launches in 12 minutes"
 
 These tools might be *downstream* of M—Execution OS can push tasks into ServiceNow or Salesforce—but they can't replace the strategic coordination layer.
 

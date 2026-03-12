@@ -162,7 +162,7 @@ This opens dialogue instead of continuing to present.
 
 ### For Operator-Type Investors
 - Lead with the 4-phase system
-- Show the playbook library depth (166)
+- Show the playbook library depth (170)
 - Emphasize the methodology (PREPARE → MONITOR → EXECUTE → LEARN)
 
 ### For Technical Investors

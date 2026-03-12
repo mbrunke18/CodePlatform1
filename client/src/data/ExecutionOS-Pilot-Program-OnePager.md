@@ -90,7 +90,7 @@ We measure pilot success on four dimensions:
 
 ### Platform Access
 - Full Execution OS platform for up to 50 users
-- 166 playbook templates across 9 domains (including AI Governance)
+- 170 playbook templates across 9 domains (including AI Governance)
 - AI signal monitoring (12 intelligence sources)
 - Real-time coordination dashboard
 - Mobile access for executives
