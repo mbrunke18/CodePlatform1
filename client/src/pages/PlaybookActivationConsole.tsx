@@ -62,11 +62,16 @@ export default function PlaybookActivationConsole() {
     enabled: !!params?.triggerId && !isManualExecution,
   });
 
-  // Fetch playbook details
-  const { data: playbook } = useQuery<any>({
-    queryKey: ['/api/scenarios', params?.playbookId],
+  // Fetch playbook details from playbookLibrary (IDs come from linkedPlaybooks on triggers)
+  const { data: playbookRaw } = useQuery<any>({
+    queryKey: ['/api/playbook-library', params?.playbookId],
+    queryFn: () =>
+      fetch(`/api/playbook-library/${params?.playbookId}`, { credentials: 'include' })
+        .then(r => r.ok ? r.json() : null),
     enabled: !!params?.playbookId,
   });
+  // Normalize: playbookLibrary returns { playbook: {...} }, scenarios returns the object directly
+  const playbook = playbookRaw?.playbook ?? playbookRaw;
 
   // Fetch tasks for this playbook
   const { data: tasksRaw } = useQuery<any[]>({
