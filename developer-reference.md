@@ -669,14 +669,14 @@ Scenarios: `ransomware`, `competitor`, `regulatory`, `deal-risk`. Each `Scenario
 
 ### DETECT Terminal Design
 - Navy Mac-style window chrome with 3 dots + monospace title
-- Gold-tinted `DEMO MODE` bar below header: *"Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 216+ sources."*
+- Gold-tinted `DEMO MODE` bar below header: *"Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 248+ sources."*
 - Confidence meter animates from 0% → signal strengths → 96%
 - Green glow "Trigger Threshold Crossed" reveal when `detectStep >= 3`
 
 ### Phase-Specific Sidebar Narration
 Each IDEA phase renders a contextual navy card in the right sidebar that explains WHY this phase is remarkable vs. the current state. Controlled by `currentPhase` value:
 - `identify` → "Why This Was Ready" (playbook was pre-built before the crisis)
-- `detect` → "What AI Just Replaced" (216+ sources vs. manual analyst scanning)
+- `detect` → "What AI Just Replaced" (248+ sources vs. manual analyst scanning)
 - `execute` → "What's Happening Right Now" (6 simultaneous actions listed)
 - `advance` → "How The System Gets Smarter" (institutional memory explanation)
 
