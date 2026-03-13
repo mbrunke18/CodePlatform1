@@ -776,6 +776,17 @@ function AnonymousQuoteSection() {
 }
 
 // ─── SECTION 7: Credibility ───────────────────────────────────────────────────
+const RESEARCH_FIRMS = [
+  { firm: "McKinsey & Company", finding: "Organizations without execution infrastructure capture only 30% of expected strategy value — regardless of planning quality." },
+  { firm: "IBM Institute for Business Value", finding: "60% of AI transformation failures trace to execution infrastructure gaps. The technology works. The coordination doesn't." },
+  { firm: "World Economic Forum", finding: "Coordination lag — not capital constraints — is the #1 barrier to strategic agility in large enterprises globally." },
+  { firm: "BCG Henderson Institute", finding: "Companies that can activate strategic responses within hours vs. days sustain 3× the competitive advantage over a 5-year horizon." },
+  { firm: "Deloitte Insights", finding: "72% of C-suite leaders cite organizational responsiveness — not strategy quality — as their primary execution gap." },
+  { firm: "Accenture Research", finding: "The difference between market leaders and laggards is execution velocity. Leaders respond to competitive triggers 8× faster." },
+  { firm: "Gartner", finding: "By 2026, 75% of organizations that can't respond to strategic triggers within 4 hours will lose measurable market share." },
+  { firm: "Google Cloud / Alphabet", finding: "Enterprise AI adoption stalls not at the model layer but at the coordination layer — the infrastructure to act on AI insight is absent." },
+];
+
 function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
@@ -783,16 +794,50 @@ function CredibilitySection() {
     { stat: "94%",    label: "Playbook phases completed within target window" },
   ];
   return (
-    <section style={{ background: MID_NAVY, padding: "80px 0", position: "relative" }}>
+    <section style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
       <SectionMarker n="07" />
-      <div style={{ ...CONTAINER, textAlign: "center" }}>
+      {/* Subtle grid overlay */}
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+      <div style={{ ...CONTAINER }}>
         <Reveal>
+          {/* Label */}
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
+              <span style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)" }}>External Validation</span>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
+            </div>
+            <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,38px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
+              15 independent research organizations.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>All reached the same conclusion.</em>
+            </h2>
+            <p style={{ ...DM, fontSize: 15, color: MUTED_DARK, maxWidth: 560, margin: "0 auto" }}>
+              The missing layer isn't better strategy. It isn't more AI. It's the infrastructure to execute — fast, coordinated, without improvisation.
+            </p>
+          </div>
+
+          {/* Research firm cards — 4-column grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(260px,1fr))", gap: 1, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.06)", marginBottom: 64 }}>
+            {RESEARCH_FIRMS.map((r) => (
+              <div key={r.firm} style={{ padding: "24px 20px", background: "rgba(10,15,46,0.6)", transition: "background 0.2s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.07)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(10,15,46,0.6)"; }}>
+                <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>{r.firm}</div>
+                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, fontStyle: "italic" }}>"{r.finding}"</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 56px" }} />
+
           {/* Outcome metrics */}
           <div style={{ display: "flex", justifyContent: "center", gap: 0, marginBottom: 56, flexWrap: "wrap" }}>
             {outcomes.map((o, i) => (
               <div key={o.stat} style={{
                 flex: "1 1 200px", padding: "32px 40px",
                 borderRight: i < outcomes.length - 1 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                textAlign: "center",
               }}>
                 <div style={{ ...GEO, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 10 }}>{o.stat}</div>
                 <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.5, maxWidth: 180, margin: "0 auto" }}>{o.label}</div>
@@ -801,21 +846,24 @@ function CredibilitySection() {
           </div>
 
           {/* Divider */}
-          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.1)", margin: "0 auto 48px" }} />
+          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 48px" }} />
 
-          <p style={{ ...DM, fontSize: 13, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK, marginBottom: 32 }}>
-            Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
-          </p>
-          <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
-            <p style={{ ...GEO, fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 16 }}>
-              "After the fifth company I stopped being patient.
-              <br />
-              I built the infrastructure nobody else would."
+          {/* Founder story */}
+          <div style={{ textAlign: "center" }}>
+            <p style={{ ...DM, fontSize: 12, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 24 }}>
+              Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
             </p>
-            <footer style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 600 }}>
-              — Martin Brunke, Founder
-            </footer>
-          </blockquote>
+            <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
+              <p style={{ ...GEO, fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 16 }}>
+                "After the fifth company I stopped being patient.
+                <br />
+                I built the infrastructure nobody else would."
+              </p>
+              <footer style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 600 }}>
+                — Martin Brunke, Founder
+              </footer>
+            </blockquote>
+          </div>
         </Reveal>
       </div>
     </section>
