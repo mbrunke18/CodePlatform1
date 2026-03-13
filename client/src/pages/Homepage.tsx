@@ -1095,6 +1095,187 @@ function ContrastMomentSection() {
   );
 }
 
+// ─── Shadow Strategy Simulator Section ───────────────────────────────────────
+function ShadowSimulatorSection() {
+  const ref = useRef<HTMLElement>(null);
+  const [animated, setAnimated] = useState(false);
+  const [scenario, setScenario] = useState('');
+  const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setAnimated(true); }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const SCENARIOS = [
+    'A key competitor just announced they are acquiring our largest distributor.',
+    'Activist investor has acquired 9.8% stake — board seat demanded by Friday.',
+    'Our primary cloud vendor had a breach; customer data may be compromised.',
+    'Top regulator opened a formal inquiry into our pricing practices.',
+  ];
+
+  async function analyze() {
+    if (!scenario.trim() || loading) return;
+    setLoading(true);
+    setError('');
+    setResult(null);
+    try {
+      const res = await fetch('/api/simulation/public-analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenarioText: scenario }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Analysis failed');
+      setResult(data);
+    } catch (e: any) {
+      setError(e.message || 'Analysis failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const urgencyColor = (u: string) => u === 'critical' ? '#C0392B' : u === 'high' ? GOLD : TEAL;
+
+  return (
+    <section ref={ref} id="shadow-simulator" style={{ ...SECTION_DARK_BG, padding: "96px 0" }}>
+      <div style={CONTAINER}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 56, opacity: animated ? 1 : 0, transition: "opacity 0.8s ease" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+            <div style={{ width: 28, height: 1, background: GOLD }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
+            <div style={{ width: 28, height: 1, background: GOLD }} />
+          </div>
+          <h2 style={{ ...GEO, fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
+            Test Your Organization Against<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>Any Threat — Right Now</em>
+          </h2>
+          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto" }}>
+            Describe a real scenario your company is facing. Our AI scores your Survive and Thrive probability in seconds — and maps the exact playbooks you'd need.
+          </p>
+        </div>
+
+        {/* Quick-select scenario chips */}
+        <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8, justifyContent: "center", marginBottom: 24, opacity: animated ? 1 : 0, transition: "opacity 0.8s ease 0.2s" }}>
+          {SCENARIOS.map((s) => (
+            <button
+              key={s}
+              onClick={() => { setScenario(s); setResult(null); setError(''); }}
+              style={{
+                fontSize: 11, fontWeight: 600, padding: "6px 14px",
+                background: scenario === s ? GOLD : "rgba(255,255,255,0.06)",
+                color: scenario === s ? NAVY : MUTED_DARK,
+                border: `1px solid ${scenario === s ? GOLD : "rgba(255,255,255,0.12)"}`,
+                cursor: "pointer", transition: "all 0.2s ease",
+              }}
+            >
+              {s.length > 52 ? s.slice(0, 52) + '…' : s}
+            </button>
+          ))}
+        </div>
+
+        {/* Input box */}
+        <div style={{ maxWidth: 680, margin: "0 auto 32px", opacity: animated ? 1 : 0, transition: "opacity 0.8s ease 0.3s" }}>
+          <textarea
+            value={scenario}
+            onChange={(e) => { setScenario(e.target.value); setResult(null); setError(''); }}
+            placeholder="Describe the threat or strategic scenario your organization is facing…"
+            rows={3}
+            style={{
+              width: "100%", padding: "14px 18px", fontSize: 14, color: "#fff",
+              background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.18)",
+              resize: "none" as const, outline: "none", lineHeight: 1.6,
+              fontFamily: "'Inter', sans-serif",
+            }}
+          />
+          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 10 }}>
+            <button
+              onClick={analyze}
+              disabled={loading || !scenario.trim()}
+              style={{
+                fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
+                padding: "10px 28px", background: loading || !scenario.trim() ? "rgba(201,168,76,0.4)" : GOLD,
+                color: NAVY, border: "none", cursor: loading || !scenario.trim() ? "not-allowed" : "pointer",
+                transition: "background 0.2s ease", display: "flex", alignItems: "center", gap: 8,
+              }}
+            >
+              {loading ? (
+                <>
+                  <span style={{ display: "inline-block", width: 12, height: 12, border: `2px solid ${NAVY}`, borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
+                  Analyzing…
+                </>
+              ) : 'Analyze My Scenario →'}
+            </button>
+          </div>
+          {error && <div style={{ marginTop: 10, fontSize: 12, color: "#f87171", textAlign: "center" }}>{error}</div>}
+        </div>
+
+        {/* Results */}
+        {result && (
+          <div style={{ maxWidth: 780, margin: "0 auto", animation: "fadeInUp 0.5s ease" }}>
+            {/* Score cards */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
+              <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${TEAL}`, textAlign: "center" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>Survive Score</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{result.surviveScore}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>/ 100</div>
+              </div>
+              <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${GOLD}`, textAlign: "center" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Thrive Score</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{result.thriveScore}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>/ 100</div>
+              </div>
+              <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: `1px solid ${urgencyColor(result.urgencyLevel)}`, borderTop: `3px solid ${urgencyColor(result.urgencyLevel)}`, textAlign: "center" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: urgencyColor(result.urgencyLevel), marginBottom: 8 }}>Urgency</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "#fff", lineHeight: 1, textTransform: "capitalize" as const, marginTop: 8 }}>{result.urgencyLevel}</div>
+                <div style={{ fontSize: 10, color: MUTED_DARK, marginTop: 8 }}>{result.timeToRespond}</div>
+              </div>
+            </div>
+
+            {/* AI Analysis */}
+            <div style={{ padding: "20px 24px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderLeft: `3px solid ${GOLD}`, marginBottom: 16 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>GPT-4o Executive Assessment</div>
+              <p style={{ fontSize: 13, color: MUTED_DARK, lineHeight: 1.7 }}>{result.aiAnalysis}</p>
+            </div>
+
+            {/* Recommended Playbooks */}
+            {result.activatedPlaybooks?.length > 0 && (
+              <div style={{ padding: "16px 20px", background: "rgba(43,138,110,0.07)", border: "1px solid rgba(43,138,110,0.25)", marginBottom: 28 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Playbooks That Would Activate</div>
+                <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8 }}>
+                  {result.activatedPlaybooks.map((p: string, i: number) => (
+                    <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: "4px 12px", background: "rgba(43,138,110,0.12)", color: "#3BAF8A", border: "1px solid rgba(43,138,110,0.25)" }}>{p}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* CTA */}
+            <div style={{ textAlign: "center" }}>
+              <p style={{ fontSize: 13, color: MUTED_DARK, marginBottom: 16 }}>
+                See how Execution OS would mobilize your entire organization in 12 minutes.
+              </p>
+              <a href="/request-pilot" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "12px 32px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+                Request a Pilot →
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
+    </section>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Homepage() {
   useScrollDepth();
@@ -1108,6 +1289,7 @@ export default function Homepage() {
       <IDEASection />
       <PlatformPreviewSection />
       <CredibilitySection />
+      <ShadowSimulatorSection />
       <CTASection />
       <HomepageFooter />
     </div>

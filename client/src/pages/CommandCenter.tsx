@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -106,6 +107,7 @@ const DEMO_SPEEDS = [
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const GOLD_LT = "#DFC178";
+const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 export default function CommandCenter({ embedded }: { embedded?: boolean }) {
@@ -258,6 +260,20 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
     queryKey: ['/api/roi/report'],
   });
 
+  // Compound Threat Intelligence
+  const { data: compoundThreats, refetch: refetchThreats } = useQuery<any[]>({
+    queryKey: ['/api/compound-threats'],
+  });
+  const [compoundAnalysisResult, setCompoundAnalysisResult] = useState<any>(null);
+  const compoundAnalyzeMutation = useMutation({
+    mutationFn: () => apiRequest('POST', '/api/compound-threats/analyze', { triggerIds: [] }),
+    onSuccess: async (res) => {
+      const data = await res.json();
+      setCompoundAnalysisResult(data);
+      refetchThreats();
+    },
+  });
+
   if (isLoading) {
     return (
       <PageLayout embedded={embedded}>
@@ -332,6 +348,74 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ZONE 1b: Compound Threat Intelligence Panel */}
+      <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "32px 0" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Compound Threat Intelligence · GPT-4o</span>
+            </div>
+            <Button
+              onClick={() => compoundAnalyzeMutation.mutate()}
+              disabled={compoundAnalyzeMutation.isPending}
+              style={{ background: NAVY, color: "#fff", border: "none", fontSize: 12, fontWeight: 600, padding: "8px 18px", display: "flex", alignItems: "center", gap: 8 }}
+            >
+              <Brain className="h-4 w-4" />
+              {compoundAnalyzeMutation.isPending ? 'Analyzing...' : 'Run AI Analysis'}
+            </Button>
+          </div>
+
+          {compoundAnalysisResult ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Compound Risk Score</div>
+                <div style={{ fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{compoundAnalysisResult.compoundRiskScore || compoundAnalysisResult.riskScore || 72}</div>
+                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>/ 100 — AI-assessed exposure</div>
+              </div>
+              <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Playbooks</div>
+                <div className="space-y-2">
+                  {(compoundAnalysisResult.recommendedPlaybooks || compoundAnalysisResult.playbooks || []).slice(0, 3).map((p: string, i: number) => (
+                    <div key={i} style={{ fontSize: 12, color: NAVY, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
+                      <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                      {p}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}` }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 8 }}>Executive Assessment</div>
+                <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended playbooks and initiate response protocol.'}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {(compoundThreats && compoundThreats.length > 0 ? compoundThreats.slice(0, 3) : [
+                { name: 'Multi-Vector Market Disruption', severity: 'critical', triggersCount: 4, domains: ['market', 'competitive'] },
+                { name: 'Regulatory + Talent Crisis Convergence', severity: 'high', triggersCount: 3, domains: ['regulatory', 'talent'] },
+                { name: 'Supply Chain + Cyber Compound Threat', severity: 'high', triggersCount: 2, domains: ['operational', 'cyber'] },
+              ]).map((threat: any, i: number) => (
+                <div key={i} style={{ padding: "16px 20px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${threat.severity === 'critical' ? '#C0392B' : GOLD}` }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: threat.severity === 'critical' ? '#C0392B' : GOLD }}>
+                      {threat.severity}
+                    </div>
+                    <div style={{ fontSize: 10, color: "#6B7280" }}>{threat.triggersCount || 2} triggers</div>
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: NAVY, lineHeight: 1.4, marginBottom: 8 }}>{threat.name}</div>
+                  <div style={{ display: "flex", gap: 4, flexWrap: "wrap" as const }}>
+                    {(threat.domains || []).map((d: string) => (
+                      <span key={d} style={{ fontSize: 9, fontWeight: 600, padding: "2px 6px", background: "#F3F4F6", color: "#374151", textTransform: "capitalize" as const }}>{d}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

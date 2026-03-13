@@ -56,6 +56,7 @@ interface DemoTask {
   timeTarget?: string | null;    // From enrichedPhases: "90 sec", "2 min", etc.
   phase?: string | null;         // From enrichedPhases: phase name e.g. "DETECT & VALIDATE"
   decisionGate?: { question: string; yes: string; no: string } | null; // After last task of a phase
+  isAIGenerated?: boolean; // True for GPT-4o generated scenario-specific tasks
 }
 
 // ─── Brand constants (module-level so helper components can use them) ──────
@@ -524,7 +525,22 @@ export default function PlaybookActivationConsole() {
     if (safeTasks.length === 0) {
       // Use expert enrichedPhases tasks if available — otherwise fall back to domain templates
       const enrichedPhases = Array.isArray(playbook?.enrichedPhases) ? playbook.enrichedPhases : null;
-      setLocalDemoTasks(generateDemoTasks(domain, enrichedPhases ?? undefined));
+      const baseTasks = generateDemoTasks(domain, enrichedPhases ?? undefined);
+      // Prepend GPT-4o scenario-specific tasks from the Execution Brief if available
+      const aiTasks: DemoTask[] = Array.isArray(brief?.scenarioTasks)
+        ? brief.scenarioTasks.map((t: any, idx: number) => ({
+            id: `ai-task-${idx}`,
+            description: t.action || 'AI-generated task',
+            status: 'pending' as const,
+            priority: t.priority || 'high',
+            assignedTo: null,
+            assignedRole: t.role || null,
+            timeTarget: t.timeTarget || null,
+            phase: 'AI SCENARIO INTELLIGENCE',
+            isAIGenerated: true,
+          }))
+        : [];
+      setLocalDemoTasks([...aiTasks, ...baseTasks]);
     }
     const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
     setStakeholderStatuses(domainStakeholders.map(s => ({ ...s, status: 'pending' as const })));
@@ -1109,13 +1125,23 @@ export default function PlaybookActivationConsole() {
                   <div key={task.id}>
                     {/* Phase header — appears when a new phase begins */}
                     {isNewPhase && (
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0 6px", margin: "4px 0 0" }}>
-                        <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${NAVY}, transparent)` }} />
-                        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "3px 10px", background: NAVY, color: "#fff" }}>
-                          {task.phase}
+                      task.phase === 'AI SCENARIO INTELLIGENCE' ? (
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 0 8px", margin: "4px 0 0" }}>
+                          <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${GOLD}, transparent)` }} />
+                          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "4px 12px", background: GOLD, color: NAVY }}>
+                            <span>✦</span> GPT-4o SCENARIO TASKS <span>✦</span>
+                          </div>
+                          <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${GOLD}, transparent)` }} />
                         </div>
-                        <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${NAVY}, transparent)` }} />
-                      </div>
+                      ) : (
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0 6px", margin: "4px 0 0" }}>
+                          <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${NAVY}, transparent)` }} />
+                          <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "3px 10px", background: NAVY, color: "#fff" }}>
+                            {task.phase}
+                          </div>
+                          <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${NAVY}, transparent)` }} />
+                        </div>
+                      )
                     )}
 
                   <div 
@@ -1124,9 +1150,9 @@ export default function PlaybookActivationConsole() {
                       alignItems: "flex-start", 
                       gap: 12, 
                       padding: 16, 
-                      background: isDone ? "rgba(43,138,110,0.03)" : isActive ? "rgba(201,168,76,0.03)" : "#fff",
-                      border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`,
-                      borderLeft: `3px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`,
+                      background: isDone ? "rgba(43,138,110,0.03)" : isActive ? "rgba(201,168,76,0.03)" : task.isAIGenerated ? "rgba(201,168,76,0.04)" : "#fff",
+                      border: `1px solid ${isDone ? TEAL : isActive ? GOLD : task.isAIGenerated ? GOLD : BORDER}`,
+                      borderLeft: `3px solid ${isDone ? TEAL : isActive ? GOLD : task.isAIGenerated ? GOLD : BORDER}`,
                       transition: "all 0.3s ease",
                     }}
                     data-testid={`task-item-${index}`}

@@ -2140,7 +2140,12 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   ],
   "successIndicators": ["Indicator 1", "Indicator 2", "Indicator 3"],
   "executionWindow": "Recommended execution window (e.g., '12–18 minutes for initial coordination')",
-  "commanderNote": "One sentence of strategic commander guidance for this specific situation"
+  "commanderNote": "One sentence of strategic commander guidance for this specific situation",
+  "scenarioTasks": [
+    { "action": "Specific tactical task 1 — tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "critical", "timeTarget": "2 min" },
+    { "action": "Specific tactical task 2 — tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "high", "timeTarget": "5 min" },
+    { "action": "Specific tactical task 3 — tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "high", "timeTarget": "8 min" }
+  ]
 }`;
 
       const briefJson = await openAIService.analyzeText(prompt);
@@ -2161,7 +2166,12 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           ],
           successIndicators: ['All Tier 1 stakeholders acknowledged within 4 minutes', 'First task assigned within 8 minutes', 'Full coordination achieved within 12 minutes'],
           executionWindow: '12–18 minutes for full coordination',
-          commanderNote: 'Speed is your advantage — initiate now and course-correct in real time.'
+          commanderNote: 'Speed is your advantage — initiate now and course-correct in real time.',
+          scenarioTasks: [
+            { action: `Immediately brief CEO and board — confirm ${playbookName} activation authority`, role: 'Chief Executive Officer', priority: 'critical', timeTarget: '2 min' },
+            { action: 'Freeze pre-approved budget allocation and confirm resource availability', role: 'Chief Financial Officer', priority: 'high', timeTarget: '5 min' },
+            { action: 'Brief General Counsel — assess legal exposure and initiate protective measures', role: 'General Counsel', priority: 'high', timeTarget: '8 min' },
+          ]
         };
       }
 
@@ -7253,6 +7263,61 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
     try {
       const results = await seedFlagshipPlaybooks();
       res.json({ success: true, updated: results });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // Shadow Strategy Simulator — PUBLIC (no auth required — for homepage/demo use)
+  app.post('/api/simulation/public-analyze', async (req: any, res) => {
+    try {
+      const { scenarioText } = req.body;
+      if (!scenarioText || scenarioText.trim().length < 10) {
+        return res.status(400).json({ error: 'Please describe your scenario (minimum 10 characters)' });
+      }
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain })
+        .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(60);
+
+      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their likely readiness and recommend specific playbooks.
+
+SCENARIO: "${scenarioText}"
+
+Available playbooks from the Execution OS library (170 total across 9 domains):
+${playbooks.map((p: any) => `- ${p.name} (${p.domain})`).slice(0, 40).join('\n')}
+
+Respond ONLY as JSON with this structure:
+{
+  "surviveScore": 72,
+  "thriveScore": 38,
+  "activatedPlaybooks": ["Playbook Name 1", "Playbook Name 2", "Playbook Name 3"],
+  "aiAnalysis": "3-sentence executive-level analysis of why this scenario is a strategic risk and what separates organizations that thrive from those that merely survive",
+  "urgencyLevel": "critical|high|medium",
+  "timeToRespond": "e.g. 12 minutes with Execution OS vs 72 hours without"
+}`;
+
+      const raw = await openAIService.analyzeText(prompt);
+      let result: any = {
+        surviveScore: 65,
+        thriveScore: 30,
+        activatedPlaybooks: ['Strategic Response Protocol', 'Crisis Communications Playbook', 'Executive Coordination Framework'],
+        aiAnalysis: 'This scenario requires immediate cross-functional coordination across multiple stakeholder groups. Organizations with pre-staged playbooks respond 340x faster than those without structured execution frameworks. The difference between surviving and thriving is measured in minutes, not days.',
+        urgencyLevel: 'high',
+        timeToRespond: '12 minutes with Execution OS vs 72 hours without'
+      };
+      try {
+        const jsonMatch = raw.match(/\{[\s\S]*\}/);
+        if (jsonMatch) result = { ...result, ...JSON.parse(jsonMatch[0]) };
+      } catch {}
+
+      res.json({
+        surviveScore: Math.min(100, Math.max(0, result.surviveScore || 65)),
+        thriveScore: Math.min(100, Math.max(0, result.thriveScore || 30)),
+        activatedPlaybooks: result.activatedPlaybooks || [],
+        aiAnalysis: result.aiAnalysis || '',
+        urgencyLevel: result.urgencyLevel || 'high',
+        timeToRespond: result.timeToRespond || '12 minutes with Execution OS vs 72 hours without',
+      });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
