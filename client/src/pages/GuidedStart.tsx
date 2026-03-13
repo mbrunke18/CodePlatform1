@@ -84,18 +84,22 @@ export default function GuidedStart() {
   const [detectStep, setDetectStep] = useState(0);
   const [playbookId, setPlaybookId] = useState<string | null>(null);
 
-  const { data: playbookMeta } = useQuery<any[]>({
-    queryKey: ['/api/playbooks/metadata'],
-    queryFn: () => fetch('/api/playbooks/metadata?limit=50', { credentials: 'include' }).then(r => r.ok ? r.json() : []),
+  const { data: playbookResponse } = useQuery<any>({
+    queryKey: ['/api/playbooks'],
+    queryFn: () => fetch('/api/playbooks?limit=50', { credentials: 'include' }).then(r => r.ok ? r.json() : { data: [] }),
   });
 
+  const playbookList: any[] = Array.isArray(playbookResponse?.data)
+    ? playbookResponse.data
+    : Array.isArray(playbookResponse) ? playbookResponse : [];
+
   function findPlaybook(scenario: Scenario): string | null {
-    if (!Array.isArray(playbookMeta)) return null;
-    const byKeyword = playbookMeta.find(p =>
+    if (playbookList.length === 0) return null;
+    const byKeyword = playbookList.find(p =>
       p.name?.toLowerCase().includes(scenario.playbookKeyword) ||
       p.domain?.toLowerCase().includes(scenario.domain.toLowerCase().split(' ')[0])
     );
-    return byKeyword?.id || playbookMeta[0]?.id || null;
+    return byKeyword?.id || playbookList[0]?.id || null;
   }
 
   function handleScenarioSelect(scenario: Scenario) {
@@ -105,6 +109,12 @@ export default function GuidedStart() {
     const pid = findPlaybook(scenario);
     setPlaybookId(pid);
   }
+
+  useEffect(() => {
+    if (selected && !playbookId && playbookList) {
+      setPlaybookId(findPlaybook(selected));
+    }
+  }, [playbookList, selected]);
 
   useEffect(() => {
     if (phase !== 'detect' || !selected) return;
@@ -125,8 +135,17 @@ export default function GuidedStart() {
 
   function handleActivate() {
     if (!selected) return;
-    const pid = playbookId || 'demo';
-    setLocation(`/playbook-activation/manual/${pid}`);
+    let pid = playbookId;
+    if (!pid) {
+      pid = findPlaybook(selected);
+    }
+    if (!pid) {
+      const list = Array.isArray(playbookList) ? playbookList : [];
+      pid = list[0]?.id || null;
+    }
+    if (pid) {
+      setLocation(`/playbook-activation/manual/${pid}`);
+    }
   }
 
   if (phase === 'select') {
@@ -336,17 +355,19 @@ export default function GuidedStart() {
           {/* Activate button */}
           <button
             onClick={handleActivate}
+            disabled={playbookList.length === 0}
             style={{
-              background: GOLD, color: NAVY_INK, border: 'none', padding: '16px 48px',
+              background: playbookList.length === 0 ? 'rgba(201,168,76,0.4)' : GOLD,
+              color: NAVY_INK, border: 'none', padding: '16px 48px',
               fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 10,
-              transition: 'opacity 0.2s',
+              cursor: playbookList.length === 0 ? 'not-allowed' : 'pointer',
+              display: 'inline-flex', alignItems: 'center', gap: 10, transition: 'opacity 0.2s',
             }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
+            onMouseEnter={e => { if (playbookList.length > 0) e.currentTarget.style.opacity = '0.88'; }}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
             <Zap style={{ width: 16, height: 16 }} />
-            Activate Execution Protocol
+            {playbookList.length === 0 ? 'Preparing Protocol...' : 'Activate Execution Protocol'}
             <ArrowRight style={{ width: 16, height: 16 }} />
           </button>
 
