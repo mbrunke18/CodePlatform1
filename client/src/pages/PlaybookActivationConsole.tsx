@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageLayout from '@/components/layout/PageLayout';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -139,6 +139,88 @@ const GENERIC_TASKS = [
   'Prepare executive briefing with response options and timeline',
 ];
 
+const DOMAIN_STAKEHOLDERS: Record<string, { name: string; title: string; method: string }[]> = {
+  'Financial Strategy': [
+    { name: 'Sarah Chen', title: 'Chief Financial Officer', method: 'Direct call' },
+    { name: 'Board Finance Committee', title: 'Board of Directors', method: 'Emergency alert' },
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Executive briefing' },
+    { name: 'Diana Reeves', title: 'General Counsel', method: 'Secure messaging' },
+    { name: 'Tyler Ross', title: 'VP Investor Relations', method: 'Secure portal' },
+  ],
+  'Market Dynamics': [
+    { name: 'James Harlow', title: 'Chief Revenue Officer', method: 'Direct call' },
+    { name: 'Priya Shah', title: 'Chief Marketing Officer', method: 'Emergency briefing' },
+    { name: 'VP Sales Leadership', title: 'VP Sales', method: 'War room invite' },
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Executive briefing' },
+    { name: 'Board of Directors', title: 'Board', method: 'Emergency notification' },
+  ],
+  'Brand & Reputation': [
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Direct briefing' },
+    { name: 'Priya Shah', title: 'Chief Marketing Officer', method: 'Crisis war room' },
+    { name: 'Diana Reeves', title: 'General Counsel', method: 'Secure messaging' },
+    { name: 'Board of Directors', title: 'Board', method: 'Emergency notification' },
+    { name: 'External PR Firm', title: 'Edelman Crisis Group', method: 'Hotline activation' },
+  ],
+  'Regulatory & Compliance': [
+    { name: 'Diana Reeves', title: 'General Counsel', method: 'Direct call' },
+    { name: 'Board Audit Committee', title: 'Board of Directors', method: 'Emergency alert' },
+    { name: 'Anna Ferris', title: 'Chief Compliance Officer', method: 'Secure portal' },
+    { name: 'Sarah Chen', title: 'Chief Financial Officer', method: 'Executive briefing' },
+    { name: 'Government Affairs Lead', title: 'VP Government Affairs', method: 'Secure messaging' },
+  ],
+  'Operational Excellence': [
+    { name: 'Tom Bradley', title: 'Chief Operating Officer', method: 'Direct call' },
+    { name: 'Lena Park', title: 'Chief Technology Officer', method: 'War room invite' },
+    { name: 'VP Operations', title: 'Operations Leadership', method: 'Emergency alert' },
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Executive briefing' },
+    { name: 'Site Leadership', title: 'Regional Directors', method: 'Cascade notification' },
+  ],
+  'Technology & Innovation': [
+    { name: 'Lena Park', title: 'Chief Technology Officer', method: 'Direct call' },
+    { name: 'CISO', title: 'Chief Information Security Officer', method: 'Emergency alert' },
+    { name: 'VP Engineering', title: 'Engineering Leadership', method: 'War room invite' },
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Executive briefing' },
+    { name: 'Board Tech Committee', title: 'Board of Directors', method: 'Emergency notification' },
+  ],
+  'AI Governance': [
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Direct briefing' },
+    { name: 'Lena Park', title: 'Chief Technology Officer', method: 'Emergency alert' },
+    { name: 'Ethics & Governance Board', title: 'Board of Directors', method: 'Emergency notification' },
+    { name: 'Diana Reeves', title: 'General Counsel', method: 'Secure messaging' },
+    { name: 'External AI Advisors', title: 'Governance Counsel', method: 'Secure portal' },
+  ],
+  'Talent & Leadership': [
+    { name: 'Rachel Kim', title: 'Chief Human Resources Officer', method: 'Direct call' },
+    { name: 'Marcus Webb', title: 'Chief Executive Officer', method: 'Executive briefing' },
+    { name: 'Board of Directors', title: 'Board', method: 'Emergency notification' },
+    { name: 'Executive Search Partner', title: 'Spencer Stuart', method: 'Secure portal' },
+    { name: 'People Leadership', title: 'HR Leadership Team', method: 'War room invite' },
+  ],
+};
+
+const GENERIC_STAKEHOLDERS = [
+  { name: 'Chief Executive Officer', title: 'CEO', method: 'Direct briefing' },
+  { name: 'Board of Directors', title: 'Board', method: 'Emergency notification' },
+  { name: 'General Counsel', title: 'Chief Legal Officer', method: 'Secure messaging' },
+  { name: 'Chief Operating Officer', title: 'COO', method: 'War room invite' },
+  { name: 'Chief Financial Officer', title: 'CFO', method: 'Executive briefing' },
+];
+
+function getTaskActionType(desc: string): string {
+  const d = desc.toLowerCase();
+  if (d.includes('brief') || d.includes('notify') || d.includes('notify')) return 'BRIEFING';
+  if (d.includes('activate') || d.includes('deploy') || d.includes('stand up')) return 'DEPLOYMENT';
+  if (d.includes('review') || d.includes('assess') || d.includes('audit') || d.includes('analysis')) return 'ASSESSMENT';
+  if (d.includes('prepare') || d.includes('draft') || d.includes('model')) return 'PREPARATION';
+  if (d.includes('establish') || d.includes('coordinate') || d.includes('war room')) return 'COORDINATION';
+  if (d.includes('engage') || d.includes('launch') || d.includes('initiate')) return 'ENGAGEMENT';
+  return 'EXECUTION';
+}
+
+function formatEventTime(): string {
+  return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
 function generateDemoTasks(domain: string): DemoTask[] {
   const descriptions = DOMAIN_TASKS[domain] || GENERIC_TASKS;
   return descriptions.map((desc, i) => ({
@@ -161,6 +243,9 @@ export default function PlaybookActivationConsole() {
   const [executionId] = useState(`exec-${Date.now()}`);
   const [activationDbId, setActivationDbId] = useState<string | null>(null);
   const [localDemoTasks, setLocalDemoTasks] = useState<DemoTask[]>([]);
+  const [liveEvents, setLiveEvents] = useState<{ time: string; text: string; type: 'start' | 'complete' | 'notify' | 'init' }[]>([]);
+  const [stakeholderStatuses, setStakeholderStatuses] = useState<{ name: string; title: string; method: string; status: 'pending' | 'notified' | 'acknowledged' }[]>([]);
+  const prevTasksRef = useRef<DemoTask[]>([]);
 
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';
@@ -261,15 +346,77 @@ export default function PlaybookActivationConsole() {
     return () => clearInterval(interval);
   }, [executionStatus, localDemoTasks.length]);
 
+  // Track task state changes → emit live events + advance stakeholder statuses
+  useEffect(() => {
+    const prev = prevTasksRef.current;
+    if (prev.length === 0 || localDemoTasks.length === 0) {
+      prevTasksRef.current = localDemoTasks;
+      return;
+    }
+    localDemoTasks.forEach((task, i) => {
+      const prevTask = prev[i];
+      if (!prevTask) return;
+      if (prevTask.status !== 'in_progress' && task.status === 'in_progress') {
+        const actionType = getTaskActionType(task.description);
+        setLiveEvents(ev => [
+          { time: formatEventTime(), text: `[${actionType}] ${task.description}`, type: 'start' },
+          ...ev,
+        ].slice(0, 20));
+      }
+      if (prevTask.status !== 'completed' && task.status === 'completed') {
+        setLiveEvents(ev => [
+          { time: formatEventTime(), text: `✓ Completed — ${task.description}`, type: 'complete' },
+          ...ev,
+        ].slice(0, 20));
+        setStakeholderStatuses(prev => {
+          const firstPending = prev.findIndex(s => s.status === 'pending');
+          const firstNotified = prev.findIndex(s => s.status === 'notified');
+          if (firstPending !== -1) {
+            const updated = [...prev];
+            updated[firstPending] = { ...updated[firstPending], status: 'notified' };
+            setTimeout(() => {
+              setLiveEvents(ev => [
+                { time: formatEventTime(), text: `📣 ${updated[firstPending].name} notified via ${updated[firstPending].method}`, type: 'notify' },
+                ...ev,
+              ].slice(0, 20));
+            }, 2000);
+            return updated;
+          }
+          if (firstNotified !== -1) {
+            const updated = [...prev];
+            updated[firstNotified] = { ...updated[firstNotified], status: 'acknowledged' };
+            setTimeout(() => {
+              setLiveEvents(ev => [
+                { time: formatEventTime(), text: `✅ ${updated[firstNotified].name} acknowledged — response confirmed`, type: 'notify' },
+                ...ev,
+              ].slice(0, 20));
+            }, 3500);
+            return updated;
+          }
+          return prev;
+        });
+      }
+    });
+    prevTasksRef.current = localDemoTasks;
+  }, [localDemoTasks]);
+
   // Handle activation confirmation
   const handleConfirmActivation = () => {
     setActivationConfirmed(true);
     setExecutionStartTime(new Date());
     setExecutionStatus('active');
+    const domain = playbook?.domain || playbook?.strategicCategory || '';
     if (safeTasks.length === 0) {
-      const domain = playbook?.domain || playbook?.strategicCategory || '';
       setLocalDemoTasks(generateDemoTasks(domain));
     }
+    const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
+    setStakeholderStatuses(domainStakeholders.map(s => ({ ...s, status: 'pending' as const })));
+    const now = formatEventTime();
+    setLiveEvents([
+      { time: now, text: `⚡ Execution protocol activated — 12-minute response clock started`, type: 'init' },
+      { time: now, text: `🔒 War room secured — ${domainStakeholders.length} stakeholders queued for notification`, type: 'init' },
+      { time: now, text: `📊 Real-time monitoring dashboard initialized`, type: 'init' },
+    ]);
     toast({
       title: "Playbook Activated",
       description: "Execution timer started. Rally your team!",
@@ -767,8 +914,55 @@ export default function PlaybookActivationConsole() {
           />
         )}
 
-        {/* Stakeholder Alignment Dashboard - shown during active execution */}
-        {executionStatus !== 'completed' && params?.playbookId && (
+        {/* Stakeholder Notification Tracker */}
+        {executionStatus === 'active' && stakeholderStatuses.length > 0 && (
+          <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, padding: "20px 24px", background: "#fff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+              <Users className="h-5 w-5" style={{ color: GOLD }} />
+              <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Stakeholder Notification Status</span>
+              <div style={{ marginLeft: "auto", display: "flex", gap: 12, fontSize: 11 }}>
+                <span style={{ color: MUTED }}><span style={{ fontWeight: 700, color: TEAL }}>{stakeholderStatuses.filter(s => s.status === 'acknowledged').length}</span> acknowledged</span>
+                <span style={{ color: MUTED }}><span style={{ fontWeight: 700, color: GOLD }}>{stakeholderStatuses.filter(s => s.status === 'notified').length}</span> notified</span>
+                <span style={{ color: MUTED }}><span style={{ fontWeight: 700, color: '#999' }}>{stakeholderStatuses.filter(s => s.status === 'pending').length}</span> pending</span>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
+              {stakeholderStatuses.map((s, i) => (
+                <div key={i} style={{
+                  display: "flex", alignItems: "center", gap: 12, padding: "12px 14px",
+                  border: `1px solid ${s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : BORDER}`,
+                  borderLeft: `3px solid ${s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : '#ccc'}`,
+                  background: s.status === 'acknowledged' ? "rgba(43,138,110,0.04)" : s.status === 'notified' ? "rgba(201,168,76,0.04)" : "#fafafa",
+                }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
+                    background: s.status === 'acknowledged' ? "rgba(43,138,110,0.15)" : s.status === 'notified' ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.06)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 12, fontWeight: 700, color: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : MUTED,
+                  }}>
+                    {s.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontWeight: 600, fontSize: 13, color: NAVY, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{s.name}</div>
+                    <div style={{ fontSize: 11, color: MUTED }}>{s.title}</div>
+                    <div style={{ fontSize: 10, color: MUTED, marginTop: 2 }}>via {s.method}</div>
+                  </div>
+                  <div style={{
+                    fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
+                    padding: "3px 8px", whiteSpace: "nowrap",
+                    background: s.status === 'acknowledged' ? "rgba(43,138,110,0.12)" : s.status === 'notified' ? "rgba(201,168,76,0.12)" : "rgba(0,0,0,0.05)",
+                    color: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : MUTED,
+                  }}>
+                    {s.status === 'acknowledged' ? '✓ Confirmed' : s.status === 'notified' ? '📣 Notified' : '⏳ Pending'}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Stakeholder Alignment Dashboard - shown during active execution when real data exists */}
+        {executionStatus !== 'completed' && params?.playbookId && stakeholderStatuses.length === 0 && (
           <StakeholderAlignmentDashboard 
             scenarioId={params.playbookId}
             executionId={executionId}
@@ -800,7 +994,11 @@ export default function PlaybookActivationConsole() {
                   No tasks defined for this playbook
                 </div>
               ) : (
-                displayTasks.map((task: any, index: number) => (
+                displayTasks.map((task: any, index: number) => {
+                  const actionType = getTaskActionType(task.description || '');
+                  const isActive = task.status === 'in_progress';
+                  const isDone = task.status === 'completed';
+                  return (
                   <div 
                     key={task.id} 
                     style={{ 
@@ -808,48 +1006,98 @@ export default function PlaybookActivationConsole() {
                       alignItems: "flex-start", 
                       gap: 12, 
                       padding: 16, 
-                      background: task.status === 'completed' ? "rgba(43,138,110,0.03)" : "#fff",
-                      border: `1px solid ${task.status === 'completed' ? TEAL : BORDER}`,
-                      borderLeft: `3px solid ${task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : BORDER}`
+                      background: isDone ? "rgba(43,138,110,0.03)" : isActive ? "rgba(201,168,76,0.03)" : "#fff",
+                      border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`,
+                      borderLeft: `3px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`,
+                      transition: "all 0.3s ease",
                     }}
                     data-testid={`task-item-${index}`}
                   >
-                    {task.status === 'completed' ? (
-                      <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: TEAL }} />
-                    ) : (
-                      <Circle className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: BORDER }} />
-                    )}
+                    <div style={{ position: "relative", flexShrink: 0, marginTop: 2 }}>
+                      {isDone ? (
+                        <CheckCircle2 className="h-5 w-5" style={{ color: TEAL }} />
+                      ) : isActive ? (
+                        <>
+                          <div style={{
+                            width: 20, height: 20, borderRadius: "50%", border: `2px solid ${GOLD}`,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                          }}>
+                            <div style={{ width: 8, height: 8, borderRadius: "50%", background: GOLD, animation: "pulse 1.2s ease-in-out infinite" }} />
+                          </div>
+                        </>
+                      ) : (
+                        <Circle className="h-5 w-5" style={{ color: BORDER }} />
+                      )}
+                    </div>
                     <div className="flex-1">
-                      <div style={{ fontWeight: 600, color: NAVY, fontSize: 14 }}>{task.description}</div>
-                      <div className="text-xs text-muted-foreground mt-1 flex items-center gap-4">
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" as const }}>
+                        <div style={{
+                          fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
+                          padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.12)" : isDone ? "rgba(43,138,110,0.08)" : "rgba(0,0,0,0.05)",
+                          color: isActive ? GOLD : isDone ? TEAL : MUTED,
+                        }}>
+                          {actionType}
+                        </div>
+                        {isActive && (
+                          <div style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                            ● IN PROGRESS
+                          </div>
+                        )}
+                      </div>
+                      <div style={{ fontWeight: 600, color: isDone ? "#666" : NAVY, fontSize: 14, textDecoration: isDone ? "line-through" : "none", opacity: isDone ? 0.7 : 1 }}>
+                        {task.description}
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 6, flexWrap: "wrap" as const }}>
                         {task.assignedTo && (
-                          <span className="flex items-center gap-1">
+                          <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: MUTED }}>
                             <Users className="h-3 w-3" />
                             {task.assignedTo}
                           </span>
                         )}
                         {task.estimatedHours && (
-                          <span className="flex items-center gap-1">
+                          <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: MUTED }}>
                             <Clock className="h-3 w-3" />
                             {task.estimatedHours}h target
                           </span>
                         )}
+                        {isDone && (
+                          <span style={{ fontSize: 11, color: TEAL, fontWeight: 600 }}>✓ Complete</span>
+                        )}
                       </div>
                     </div>
-                    <div style={{ 
-                      display:"inline-flex", alignItems:"center", gap:5, 
-                      background: task.status === 'completed' ? "rgba(43,138,110,0.12)" : task.status === 'in_progress' ? "rgba(201,168,76,0.12)" : "rgba(0,0,0,0.05)", 
-                      color: task.status === 'completed' ? TEAL : task.status === 'in_progress' ? GOLD : MUTED, 
-                      fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"2px 8px"
-                    }}>
-                      {task.status}
-                    </div>
                   </div>
-                ))
+                  );
+                })
               )}
             </div>
           </div>
         </div>
+
+        {/* Live Activity Feed */}
+        {executionStatus === 'active' && liveEvents.length > 0 && (
+          <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, background: "#fff" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "16px 24px", borderBottom: `1px solid ${BORDER}` }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, animation: "pulse 1.5s ease-in-out infinite" }} />
+              <span style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>Live Execution Feed</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginLeft: 4 }}>● LIVE</span>
+            </div>
+            <div style={{ padding: "12px 24px", maxHeight: 260, overflowY: "auto" as const, display: "flex", flexDirection: "column" as const, gap: 0 }}>
+              {liveEvents.map((ev, i) => (
+                <div key={i} style={{
+                  display: "flex", alignItems: "baseline", gap: 12, padding: "7px 0",
+                  borderBottom: i < liveEvents.length - 1 ? `1px solid rgba(0,0,0,0.04)` : "none",
+                  opacity: i === 0 ? 1 : Math.max(0.4, 1 - i * 0.08),
+                }}>
+                  <span style={{ fontSize: 10, fontWeight: 600, color: MUTED, whiteSpace: "nowrap" as const, flexShrink: 0, fontFamily: "monospace" }}>{ev.time}</span>
+                  <span style={{
+                    fontSize: 12, fontWeight: 500,
+                    color: ev.type === 'complete' ? TEAL : ev.type === 'notify' ? GOLD : ev.type === 'init' ? NAVY : "#444",
+                  }}>{ev.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Execution Notes */}
         <div className="bg-white border border-[#E8E4DC] p-6">
