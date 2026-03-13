@@ -96,7 +96,7 @@ export default function ExecutiveHub() {
                   </div>
                   <div>
                     <div className="flex items-center gap-3">
-                      <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Executive Intelligence Center</h1>
+                      <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Executive Hub</h1>
                       <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge>
                     </div>
                     <p className="text-[#6B7280] mt-1">Unified view of organizational gravity, velocity, and readiness</p>

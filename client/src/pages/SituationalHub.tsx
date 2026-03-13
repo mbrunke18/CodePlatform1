@@ -71,10 +71,10 @@ export default function SituationalHub() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-0.5" style={{ background: GOLD }} />
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>Strategic Scenarios</span>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>Platform · Situations</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-3" style={CG}>
-                Situational <em style={{ color: GOLD, fontStyle: 'italic' }}>Response Center</em>
+                Situations <em style={{ color: GOLD, fontStyle: 'italic' }}>Hub</em>
               </h1>
               <p className="text-white/60 max-w-xl">
                 Pre-staged response protocols across all 9 strategic domains — from M&A integration to competitive disruption, regulatory change, digital transformation, and beyond.
