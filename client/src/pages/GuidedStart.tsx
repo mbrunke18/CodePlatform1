@@ -90,16 +90,12 @@ export default function GuidedStart() {
     queryFn: () => fetch('/api/playbook-library?limit=50', { credentials: 'include' }).then(r => r.ok ? r.json() : []),
   });
 
-  // /api/playbook-library returns { domains: [{ playbooks: [...] }] } — flatten to a list
+  // /api/playbook-library returns { domains: [...], categories: [...], playbooks: [...] }
   const playbookList: any[] = (() => {
     if (!playbookResponse) return [];
     if (Array.isArray(playbookResponse)) return playbookResponse;
+    if (Array.isArray(playbookResponse?.playbooks)) return playbookResponse.playbooks;
     if (Array.isArray(playbookResponse?.data)) return playbookResponse.data;
-    if (Array.isArray(playbookResponse?.domains)) {
-      return playbookResponse.domains.flatMap((d: any) =>
-        Array.isArray(d.playbooks) ? d.playbooks : []
-      );
-    }
     return [];
   })();
 
