@@ -292,7 +292,8 @@ function HeroSection() {
               Request a Pilot
             </Link>
             <Link
-              href="/begin"
+              href="/12-minute-experience"
+              onClick={() => trackCTA("hero_testdrive")}
               style={{
                 ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
                 padding: "12px 32px", borderRadius: 4, textDecoration: "none",
@@ -301,7 +302,7 @@ function HeroSection() {
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
               onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
             >
-              Experience 12-Minute Execution →
+              Take the 12-Minute Test Drive →
             </Link>
           </div>
         </Reveal>
@@ -1095,6 +1096,155 @@ function ContrastMomentSection() {
   );
 }
 
+// ─── Personalized ROI Calculator Section ──────────────────────────────────────
+const REV_BRACKETS = [
+  { label: '$1B – $5B', execRate: 650, revenueRiskPct: 0.003, label2: '$1B–5B' },
+  { label: '$5B – $25B', execRate: 900, revenueRiskPct: 0.0035, label2: '$5B–25B' },
+  { label: '$25B – $100B', execRate: 1200, revenueRiskPct: 0.004, label2: '$25B–100B' },
+  { label: '$100B+', execRate: 1800, revenueRiskPct: 0.005, label2: '$100B+' },
+];
+const INDUSTRIES = ['Financial Services', 'Healthcare / Pharma', 'Technology', 'Manufacturing', 'Retail / Consumer', 'Energy & Utilities', 'Industrials', 'Aerospace & Defense'];
+const EXEC_COUNTS = [{ label: '50–200 executives', val: 125 }, { label: '200–500 executives', val: 350 }, { label: '500–1,000 executives', val: 750 }, { label: '1,000+ executives', val: 1200 }];
+const SCENARIO_COUNTS = [{ label: '2–5 / year', val: 3.5 }, { label: '5–12 / year', val: 8.5 }, { label: '12–25 / year', val: 18 }, { label: '25+ / year', val: 32 }];
+
+function fmt(n: number) { if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`; if (n >= 1e6) return `$${Math.round(n / 1e6)}M`; return `$${Math.round(n / 1e3)}K`; }
+
+function PersonalizedROISection() {
+  const ref = useRef<HTMLElement>(null);
+  const [animated, setAnimated] = useState(false);
+  const [revIdx, setRevIdx] = useState(1);
+  const [industry, setIndustry] = useState(INDUSTRIES[0]);
+  const [execIdx, setExecIdx] = useState(1);
+  const [scenIdx, setScenIdx] = useState(1);
+
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setAnimated(true); }, { threshold: 0.1 });
+    obs.observe(el); return () => obs.disconnect();
+  }, []);
+
+  const rb = REV_BRACKETS[revIdx];
+  const execCount = EXEC_COUNTS[execIdx].val;
+  const scenYear = SCENARIO_COUNTS[scenIdx].val;
+  const execsPerCrisis = Math.min(12, Math.round(execCount * 0.025));
+  const hoursWithout = execsPerCrisis * 18;
+  const hoursWith = execsPerCrisis * 0.25;
+  const hoursSaved = hoursWithout - hoursWith;
+  const execTimeSavedPerScen = hoursSaved * rb.execRate;
+  const revAtRisk = (revIdx === 0 ? 2e9 : revIdx === 1 ? 12e9 : revIdx === 2 ? 50e9 : 200e9) * rb.revenueRiskPct;
+  const revProtected = revAtRisk * 0.68;
+  const valPerScen = execTimeSavedPerScen + revProtected;
+  const annualVal = valPerScen * scenYear;
+  const speed = '340x';
+
+  const selStyle = (active: boolean): React.CSSProperties => ({
+    fontSize: 12, fontWeight: active ? 700 : 500, padding: "8px 16px", cursor: "pointer",
+    background: active ? GOLD : "rgba(255,255,255,0.06)",
+    color: active ? NAVY : MUTED_DARK,
+    border: `1px solid ${active ? GOLD : "rgba(255,255,255,0.12)"}`,
+    transition: "all 0.18s ease",
+  });
+
+  return (
+    <section ref={ref} style={{ background: MID_NAVY, padding: "88px 0", borderTop: `1px solid rgba(201,168,76,0.15)` }}>
+      <div style={CONTAINER}>
+        <div style={{ textAlign: "center", marginBottom: 52, opacity: animated ? 1 : 0, transition: "opacity 0.7s ease" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
+            <div style={{ width: 24, height: 1, background: GOLD }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution ROI Calculator</span>
+            <div style={{ width: 24, height: 1, background: GOLD }} />
+          </div>
+          <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
+            What Is Slow Execution<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>Costing Your Organization?</em>
+          </h2>
+          <p style={{ ...DM, fontSize: 15, color: MUTED_DARK, maxWidth: 500, margin: "0 auto" }}>
+            Configure your organization profile and see your personalized annual value from 12-minute execution.
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, opacity: animated ? 1 : 0, transition: "opacity 0.7s ease 0.2s" }}>
+          {/* Inputs */}
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 28 }}>
+            {/* Revenue */}
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Annual Revenue</div>
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+                {REV_BRACKETS.map((r, i) => (
+                  <button key={r.label} onClick={() => setRevIdx(i)} style={selStyle(revIdx === i)}>{r.label}</button>
+                ))}
+              </div>
+            </div>
+            {/* Industry */}
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Industry</div>
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+                {INDUSTRIES.map(ind => (
+                  <button key={ind} onClick={() => setIndustry(ind)} style={selStyle(industry === ind)}>{ind}</button>
+                ))}
+              </div>
+            </div>
+            {/* Exec count */}
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Executive Population</div>
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+                {EXEC_COUNTS.map((e, i) => (
+                  <button key={e.label} onClick={() => setExecIdx(i)} style={selStyle(execIdx === i)}>{e.label}</button>
+                ))}
+              </div>
+            </div>
+            {/* Scenarios/year */}
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Critical Scenarios / Year</div>
+              <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 6 }}>
+                {SCENARIO_COUNTS.map((s, i) => (
+                  <button key={s.label} onClick={() => setScenIdx(i)} style={selStyle(scenIdx === i)}>{s.label}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Output */}
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+            <div style={{ padding: "24px 28px", background: "rgba(201,168,76,0.08)", border: `1px solid ${GOLD}`, borderTop: `3px solid ${GOLD}` }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Annual Value — {industry}</div>
+              <div style={{ fontSize: "clamp(40px,6vw,64px)", fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 4 }}>{fmt(annualVal)}</div>
+              <div style={{ fontSize: 12, color: MUTED_DARK }}>estimated annual value from 12-minute execution across {Math.round(scenYear)} scenarios</div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Executive Time Saved</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(execTimeSavedPerScen * scenYear)}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>{Math.round(hoursSaved * scenYear).toLocaleString()} exec-hours/yr</div>
+              </div>
+              <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Revenue Protected</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(revProtected * scenYear)}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>68% faster containment</div>
+              </div>
+              <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Speed Advantage</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{speed}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>vs. reactive organizations</div>
+              </div>
+              <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Value Per Scenario</div>
+                <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(valPerScen)}</div>
+                <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>per critical event response</div>
+              </div>
+            </div>
+            <div style={{ textAlign: "center", paddingTop: 8 }}>
+              <a href="/request-pilot" onClick={() => trackCTA('roi-calculator')} style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "11px 28px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+                Build My Custom ROI Case →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Shadow Strategy Simulator Section ───────────────────────────────────────
 function ShadowSimulatorSection() {
   const ref = useRef<HTMLElement>(null);
@@ -1289,6 +1439,7 @@ export default function Homepage() {
       <IDEASection />
       <PlatformPreviewSection />
       <CredibilitySection />
+      <PersonalizedROISection />
       <ShadowSimulatorSection />
       <CTASection />
       <HomepageFooter />

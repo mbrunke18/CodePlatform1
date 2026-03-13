@@ -44,11 +44,14 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **IDEA Framework Implementation:** Full Trigger → Playbook IDEA Chain (`TriggersManagement.tsx` and API) for detecting triggers and recommending playbooks.
 - **Enhanced Task Management:** Task Acknowledgment & Audit Trail with action buttons (Acknowledge, Escalate, Delegate) and DB persistence.
 - **Reporting & Analytics:** Execution History Dashboard (`/execution-history`) with KPIs, response time trajectory, and activation log.
-- **Flagship Playbooks:** 5 enriched flagship playbooks with 4-phase expert content, specific task owners, time targets, decision gates, and `why_it_matters` statements.
+- **Flagship Playbooks:** 14 enriched flagship playbooks (5 original + 9 added: Activist Investor Defense, M&A Integration, Brand Crisis, Product Recall, Talent Flight, ESG Crisis, Ransomware, Financial Fraud, IPO Market Disruption) — each with 4-phase expert content, specific task owners, time targets, decision gates, and `why_it_matters` statements.
 - **Configuration Wizards:** Trigger Configuration Wizard for setting up situations, conditions, notifications, and playbook mapping.
 - **Key Differentiators ("WOW" Features):** Execution ROI Dashboard, Compound Threat Intelligence (GPT-4o), Shadow Strategy Simulator (Digital Twin), Strategic Recorder (GPT-4o), War Room Pulse Map.
 - **Data Consistency Standards:** Strict adherence to consistent values for response time (12 minutes), speed advantage (340x faster), playbooks (170 across 9 domains), signal categories (20), data points (248+), executive triggers (221), and brand naming (Execution OS).
 - **Investor Page Standards:** Rebuilt `/investors` page with code-based architecture, illustrative scenario cards, and purged all references to outdated branding/claims.
+- **Personalized ROI Calculator** (`PersonalizedROISection`): Homepage section with 4 chip-selectors (revenue bracket, industry, exec count, scenarios/year); real-time calculation of annual value, exec time saved, revenue protected, 340x speed advantage.
+- **12-Minute Test Drive** (`/12-minute-experience`, `/test-drive`): Public 4-step sequential page — scenario selection → GPT-4o AI brief → live war room with countdown and auto-progressing tasks → debrief with metrics + Request a Pilot CTA.
+- **War Room Escalate/Delegate Consequences:** Escalating injects 3 cascading live feed events (🚨 banner, C-Suite loop, stakeholder channel); delegating injects ownership transfer + delegate tracking confirmation.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.

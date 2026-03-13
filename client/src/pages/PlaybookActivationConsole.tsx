@@ -346,8 +346,23 @@ export default function PlaybookActivationConsole() {
   const submitAcknowledgment = useCallback(async (taskId: string, taskLabel: string, taskIndex: number) => {
     const at = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
     setAckMap(prev => ({ ...prev, [taskId]: { by: ackName, role: ackRole, at, actionType: ackActionType } }));
-    const actionVerb = ackActionType === 'complete' ? '✓ Acknowledged' : ackActionType === 'escalate' ? '↑ Escalated' : '→ Delegated';
-    setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ${actionVerb} — ${taskLabel}`, type: 'complete' }, ...prev]);
+    
+    if (ackActionType === 'escalate') {
+      setLiveEvents(prev => [
+        { time: at, text: `🚨 ESCALATION — "${taskLabel.slice(0, 60)}${taskLabel.length > 60 ? '…' : ''}"`, type: 'start' },
+        { time: at, text: `↑ [${ackRole}] escalated to Senior Leadership — response required within 2 minutes`, type: 'complete' },
+        { time: at, text: `📲 Emergency stakeholder loop activated — C-Suite channel opened`, type: 'init' },
+        ...prev,
+      ]);
+    } else if (ackActionType === 'delegate') {
+      setLiveEvents(prev => [
+        { time: at, text: `→ [${ackRole}] delegated task — ownership transferred and tracking initiated`, type: 'complete' },
+        { time: at, text: `🔔 Delegate notified via Execution OS — task marked for real-time progress monitoring`, type: 'init' },
+        ...prev,
+      ]);
+    } else {
+      setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ✓ Acknowledged — "${taskLabel.slice(0, 55)}${taskLabel.length > 55 ? '…' : ''}"`, type: 'complete' }, ...prev]);
+    }
     setAckFormTaskId(null);
     try {
       await apiRequest('POST', '/api/task-acknowledgments', {

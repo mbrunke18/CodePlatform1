@@ -49,6 +49,7 @@ import NotFound from "@/pages/not-found";
 const Homepage = lazy(() => import("./pages/Homepage"));
 const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const TryDemo = lazy(() => import("./pages/TryDemo"));
+const TwelveMinuteTestDrive = lazy(() => import("./pages/TwelveMinuteTestDrive"));
 const IncidentAnalyzer = lazy(() => import("./pages/IncidentAnalyzer"));
 const ReadinessAssessment = lazy(() => import("./pages/ReadinessAssessment"));
 const WhatIfAnalyzer = lazy(() => import("./pages/WhatIfAnalyzer"));
@@ -470,6 +471,8 @@ function Router() {
         ], TryDemo)}
         <Route path="/board-export" component={BoardExport} />
         {renderRedirects(["/sandbox-demo", "/pilot-demo"], "/try-demo")}
+        <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
+        <Route path="/test-drive" component={TwelveMinuteTestDrive} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />
         {renderRoutes(["/video", "/cinematic", "/sizzle", "/2-minute", "/spots", "/30-second", "/brand-films"], VideoLanding)}

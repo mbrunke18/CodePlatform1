@@ -455,6 +455,277 @@ async function seedFlagshipPlaybooks() {
         outcomeMetrics: { at12hours: ['Interim authority established with board mandate', 'All employees messaged by interim leader', 'Top 15 retention risks identified and contacted', 'All Tier 1 external stakeholders personally briefed'], at30days: ['Retention rate of senior leadership team >90%', 'Permanent search launched with shortlist', 'No material customer or investor departures', 'Operational continuity maintained — no missed deliverables'], failureModes: ['Letting employees hear through rumors or media before leadership communication', 'Failing to identify retention risks within first 24 hours', 'Creating a power vacuum by delaying interim authority appointment'] },
       }
     },
+    // ─── NEW ENRICHED PLAYBOOKS ──────────────────────────────────────────────
+    {
+      pattern: '%activist%',
+      data: {
+        whyItMatters: 'Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built activist defense playbooks respond 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.',
+        enrichedPhases: [
+          { name: 'INTELLIGENCE GATHERING', timeWindow: '0–2 min', objective: 'Know more about the activist\'s position than they expect you to know', tasks: [
+            { owner: 'General Counsel', action: 'Confirm Schedule 13D/13G filing: stake %, acquisition date, stated intentions, associated entities. Access SEC EDGAR immediately', timeTarget: '90 sec' },
+            { owner: 'CFO', action: 'Run activist profile: past campaigns, win rate, typical demands (board seat / strategic sale / spin-off / cost cuts), holding duration', timeTarget: '2 min' },
+            { owner: 'Chief Strategy Officer', action: 'Map activist\'s thesis: what is the perceived value gap they will argue? Identify where they are right and where they are wrong', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Is stake >5% AND activist has history of proxy fights or forced asset sales?', yes: 'Tier 1 Full Defense — board notification + poison pill review', no: 'Monitor — engage IR to assess activist intent through back-channel' } },
+          { name: 'BOARD & ADVISOR ACTIVATION', timeWindow: '2–5 min', objective: 'The board must speak with one voice before the activist speaks publicly', tasks: [
+            { owner: 'Board Chair', action: 'Convene emergency board session within 2 hours. Brief all directors: stake size, activist profile, likely demands, and defense options', timeTarget: '3 min' },
+            { owner: 'CEO', action: 'Engage M&A defense counsel, proxy solicitor, and investor relations advisor. Retain all three before activist makes first contact', timeTarget: '4 min' },
+            { owner: 'CFO', action: 'Run activist-adjusted valuation: what does the activist argue the company is worth vs. current price? Build your counter-narrative with data', timeTarget: '5 min' },
+          ] },
+          { name: 'INSTITUTIONAL HOLDER OFFENSIVE', timeWindow: '5–8 min', objective: 'Win the ISS and Glass Lewis vote before the proxy fight begins — if it gets that far', tasks: [
+            { owner: 'CEO + CFO', action: 'Schedule calls with top 10 institutional holders (by % ownership) within 24 hours. Lead with: value creation plan, governance strength, activist risk', timeTarget: '6 min' },
+            { owner: 'Chief IR Officer', action: 'Prepare investor presentation: 3-year value creation roadmap with specific milestones, capital return policy, and governance enhancements', timeTarget: '7 min' },
+            { owner: 'General Counsel', action: 'Review shareholder rights plan (poison pill) status. Brief board on trigger thresholds and activation timeline if needed', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Do institutional holders representing >40% of shares support current management?', yes: 'Negotiate from strength — offer 1 board observer, no control concessions', no: 'Consider proactive compromise: 1 board seat + value creation commitments' } },
+          { name: 'PUBLIC NARRATIVE CONTROL', timeWindow: '8–12 min', objective: 'You define the story — or the activist does', tasks: [
+            { owner: 'CMO + General Counsel', action: 'Draft company response statement: confident, forward-looking, focused on value creation. No defensive language. Pre-approve for rapid release', timeTarget: '10 min' },
+            { owner: 'CEO', action: 'Record video briefing for employees: what this means, what it does not mean, and why your strategy is right', timeTarget: '11 min' },
+            { owner: 'Chief Strategy Officer', action: 'Accelerate any planned value-creation announcements that were in pipeline. Beat the activist\'s narrative with your own news', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Institutional investor outreach + board leadership + public narrative', escalationTime: '0 min' }, { role: 'Board Chair', responsibility: 'Board coordination + poison pill authority + settlement decisions', escalationTime: '0 min' }, { role: 'CFO', responsibility: 'Activist valuation counter-narrative + institutional holder modeling', escalationTime: '1 min' }, { role: 'General Counsel', responsibility: 'SEC filings + poison pill + proxy fight defense + settlement terms', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['All directors briefed', 'Defense advisors retained', 'Institutional holder contact schedule confirmed', 'Counter-narrative developed with financial data'], at30days: ['Top 20 institutional holders personally engaged', 'Proxy solicitor vote count favorable', 'Value creation plan publicly communicated', 'Settlement terms (if any) board-approved'], failureModes: ['Waiting for activist to make public statement before preparing response', 'Letting proxy advisors (ISS/Glass Lewis) form opinions without your input', 'Underestimating activist preparedness — they have researched you for months'] },
+      }
+    },
+    {
+      pattern: '%merger%',
+      data: {
+        whyItMatters: 'Failed M&A integrations destroy an average of $1.6B in shareholder value per deal. The first 100 days of integration determine 70% of total deal outcome. Companies with pre-built integration playbooks achieve target synergies 2.4x faster and retain 31% more acquired talent.',
+        enrichedPhases: [
+          { name: 'DAY-ONE READINESS', timeWindow: '0–2 min', objective: 'Day 1 must feel seamless to employees, customers, and partners — regardless of what is still being figured out', tasks: [
+            { owner: 'Integration Management Officer', action: 'Activate Day 1 command center. Confirm all systems access, communication channels, and escalation paths are live and tested', timeTarget: '90 sec' },
+            { owner: 'CHRO', action: 'Confirm: all employees have received their Day 1 communication, their manager knows their status, and no terminations occur on Day 1 without prior notice', timeTarget: '2 min' },
+            { owner: 'CTO', action: 'Execute IT Day 1 protocol: email domain migration, VPN access, single sign-on, and security credential integration for all acquired employees', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Are all Day 1 critical systems operational AND have all acquired employees received their welcome communication?', yes: 'Proceed to synergy acceleration', no: 'Escalate to CEO — Day 1 failures become cultural myths that damage integration for months' } },
+          { name: 'TALENT RETENTION LOCK', timeWindow: '2–5 min', objective: 'The best people from the acquired company have competing offers within 48 hours — retain them first', tasks: [
+            { owner: 'CHRO', action: 'Execute retention package delivery to top 50 acquired talent. Pre-negotiated RSU grants, role clarity, and direct access to leadership', timeTarget: '3 min' },
+            { owner: 'CEO', action: 'Record personal video for all acquired employees: vision, role in combined company, and commitment to their development', timeTarget: '4 min' },
+            { owner: 'Business Unit Leaders', action: 'Schedule 1:1 meetings with all acquired senior managers within 72 hours. Listen first — do not announce org changes in these meetings', timeTarget: '5 min' },
+          ] },
+          { name: 'SYNERGY ACCELERATION', timeWindow: '5–8 min', objective: 'Lock in the financial synergies the deal thesis promised — before the board starts asking', tasks: [
+            { owner: 'CFO', action: 'Activate synergy tracking dashboard. Establish week-by-week synergy realization targets for Year 1. Red-line any target with >4-week delay risk', timeTarget: '6 min' },
+            { owner: 'Chief Procurement Officer', action: 'Initiate combined vendor consolidation: renegotiate top 20 contracts using combined purchasing power within 60 days', timeTarget: '7 min' },
+            { owner: 'Chief Revenue Officer', action: 'Launch cross-sell motion: identify top 50 acquired customers who are candidates for parent company products. Begin outreach within 30 days', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Are Year 1 synergy targets on track (>90% of run-rate)?', yes: 'Continue integration velocity', no: 'CEO-level escalation: root-cause each at-risk synergy — human, process, or system issue?' } },
+          { name: 'CULTURE INTEGRATION', timeWindow: '8–12 min', objective: 'Culture clash is the #1 cause of failed integrations — address it before it becomes visible to customers', tasks: [
+            { owner: 'CHRO + CEO', action: 'Launch combined culture pulse survey within 30 days. Measure: psychological safety, clarity of direction, trust in leadership, excitement about combination', timeTarget: '10 min' },
+            { owner: 'Business Unit Leaders', action: 'Identify 10 "culture ambassadors" from acquired company — high-performers who believe in the integration. Activate them as integration champions', timeTarget: '11 min' },
+            { owner: 'Integration Management Officer', action: 'Complete 90-day integration scorecard: synergy realization %, talent retention %, customer retention %, system integration %, culture score', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Cultural integration + board reporting + strategic direction', escalationTime: '0 min' }, { role: 'CHRO', responsibility: 'Talent retention + org design + cultural integration', escalationTime: '0 min' }, { role: 'CFO', responsibility: 'Synergy tracking + financial integration + cost elimination', escalationTime: '1 min' }, { role: 'CTO', responsibility: 'Systems integration + technology migration + security', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Day 1 fully operational', 'Retention packages delivered to top 50 talent', 'All acquired employees received personal communication from CEO', 'Synergy tracking dashboard live'], at30days: ['Key talent retention >90%', 'Year 1 synergy run-rate at 80%+ of target', 'Customer retention of acquired base >95%', 'Combined vendor consolidation savings identified'], failureModes: ['Announcing org structure before retention packages are in hand', 'Letting financial synergies take priority over talent retention in first 90 days', 'Underestimating the acquired company\'s cultural identity and pride'] },
+      }
+    },
+    {
+      pattern: '%brand%',
+      data: {
+        whyItMatters: 'Brand crises that go uncontained within 12 hours result in an average 23% decline in brand trust scores and take 14 months to recover. Companies that respond within 12 hours with a clear, empathetic, and action-oriented message retain 81% of brand equity.',
+        enrichedPhases: [
+          { name: 'CRISIS CHARACTERIZATION', timeWindow: '0–2 min', objective: 'Know exactly what you are dealing with before you say a word publicly', tasks: [
+            { owner: 'CMO', action: 'Pull crisis monitoring data: source, velocity (shares/hour), sentiment trajectory, media pickup rate, and influencer amplification', timeTarget: '90 sec' },
+            { owner: 'General Counsel', action: 'Assess legal exposure: is this a factual error, perception issue, policy failure, or product/service failure? Determines statement latitude', timeTarget: '2 min' },
+            { owner: 'CEO', action: 'Make hold-or-respond decision with CMO and General Counsel. Every 30-minute delay in a viral crisis costs 40% more amplification', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Is the crisis based on factual error (you can refute) OR operational failure (you must own)?', yes: 'Factual refutation track — move fast with evidence', no: 'Ownership track — lead with accountability, not defense' } },
+          { name: 'STATEMENT CRAFTING', timeWindow: '2–5 min', objective: 'One voice, one message, approved and ready to deploy on all channels simultaneously', tasks: [
+            { owner: 'CMO + General Counsel', action: 'Draft holding statement (3 sentences max): what you know, what you are doing, when you will provide more information. No speculation', timeTarget: '3 min' },
+            { owner: 'CEO', action: 'Review and approve statement. If crisis involves safety or significant customer harm — CEO must be the voice, not CMO or spokesperson', timeTarget: '4 min' },
+            { owner: 'Head of PR', action: 'Prepare social, web, email, and media distribution in parallel. All channels go live simultaneously — no staggered release', timeTarget: '5 min' },
+          ] },
+          { name: 'STAKEHOLDER CASCADES', timeWindow: '5–8 min', objective: 'Employees, customers, partners, and investors hear from you — not from social media', tasks: [
+            { owner: 'CHRO', action: 'Send employee briefing: what happened, what the company is saying, how to respond if asked by customers/media. One consistent message', timeTarget: '6 min' },
+            { owner: 'Chief Revenue Officer', action: 'Brief top 20 enterprise customers personally. Arm them with the same narrative before their employees and boards ask them about it', timeTarget: '7 min' },
+            { owner: 'CFO', action: 'Issue investor relations update if crisis has potential material impact. Avoid speculation — focus on facts and response actions', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Is crisis fully contained (velocity declining, sentiment stabilizing)?', yes: 'Shift to recovery narrative', no: 'Escalate: CEO live statement, media availability, or product/policy change announcement' } },
+          { name: 'RECOVERY & TRUST REBUILD', timeWindow: '8–12 min', objective: 'Turn the crisis into evidence of who you are — not just what went wrong', tasks: [
+            { owner: 'CMO', action: 'Launch recovery narrative: concrete action taken, what changed, and what customers/stakeholders can expect next. Lead with actions not apologies', timeTarget: '10 min' },
+            { owner: 'CEO', action: 'Record a direct-to-camera accountability statement for your top 3 stakeholder groups. Authentic over polished. Specific over generic', timeTarget: '11 min' },
+            { owner: 'CMO + CHRO', action: 'Initiate brand trust monitoring: NPS, social sentiment, media coverage tone. Weekly reporting for 90 days', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Final statement approval + face of accountability + investor communication', escalationTime: '0 min' }, { role: 'CMO', responsibility: 'Crisis monitoring + messaging strategy + channel deployment', escalationTime: '0 min' }, { role: 'General Counsel', responsibility: 'Legal exposure + statement latitude + litigation risk', escalationTime: '1 min' }, { role: 'Head of PR', responsibility: 'Media management + spokesperson prep + coverage monitoring', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Public statement live on all channels', 'Employees briefed with consistent narrative', 'Top 20 customers personally contacted', 'Social sentiment trajectory stabilizing'], at30days: ['Brand trust score recovery to pre-crisis baseline or better', 'Media narrative shifted from crisis to recovery', 'Customer NPS recovered', 'Root cause publicly addressed with specific changes'], failureModes: ['Saying "no comment" (interpreted as guilt)', 'Staggering channel releases (creates information arbitrage)', 'Letting legal review delay first response beyond 2 hours in viral situations'] },
+      }
+    },
+    {
+      pattern: '%product recall%',
+      data: {
+        whyItMatters: 'Product recalls cost Fortune 1000 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.',
+        enrichedPhases: [
+          { name: 'SAFETY CONFIRMATION', timeWindow: '0–2 min', objective: 'Establish facts before committing to public action — but commit to investigation immediately', tasks: [
+            { owner: 'Chief Quality Officer', action: 'Retrieve full defect incident report: complaint volume, injury reports, CPSC/FDA complaints, geographic concentration, product batch IDs', timeTarget: '90 sec' },
+            { owner: 'General Counsel', action: 'Assess regulatory notification obligations: FDA (72hr), CPSC (24hr), NHTSA (5 days). Start regulatory clock NOW regardless of recall decision', timeTarget: '2 min' },
+            { owner: 'CFO', action: 'Estimate financial impact: recall scope × unit cost × return processing + potential litigation reserve. Present range to CEO', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Is there confirmed injury risk AND/OR regulatory notification threshold triggered?', yes: 'Voluntary recall — self-initiate before regulatory compulsion', no: 'Enhanced monitoring — daily injury report review + accelerated investigation' } },
+          { name: 'SUPPLY CHAIN HALT', timeWindow: '2–5 min', objective: 'Stop the product moving forward — every unit sold after you knew is a liability', tasks: [
+            { owner: 'COO', action: 'Issue immediate production hold on all affected SKUs. Quarantine all affected inventory in distribution network with batch tracking', timeTarget: '3 min' },
+            { owner: 'Chief Procurement Officer', action: 'Halt all affected component orders. Notify affected suppliers of quality issue for joint investigation. Preserve all component samples', timeTarget: '4 min' },
+            { owner: 'Chief Revenue Officer', action: 'Issue retail partner stop-sale notification for all affected SKUs. Confirm compliance within 2 hours via retailer confirmation', timeTarget: '5 min' },
+          ] },
+          { name: 'CUSTOMER NOTIFICATION', timeWindow: '5–8 min', objective: 'Tell every customer before they hear from a competitor, media, or regulator', tasks: [
+            { owner: 'CMO + General Counsel', action: 'Draft recall notice: specific products affected, safety risk description, what to do immediately, how to return/replace. Legal pre-approved template', timeTarget: '6 min' },
+            { owner: 'CEO', action: 'Record personal video recall notification for high-value customers. Safety first — compensation second. Be direct and specific', timeTarget: '7 min' },
+            { owner: 'Head of Customer Service', action: 'Stand up dedicated recall hotline and chat support. Script all agents on recall process, return process, and replacement timeline', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Has regulatory notification been filed AND are all retailers confirmed with stop-sale?', yes: 'Execute full consumer notification campaign', no: 'Do not release consumer notification until regulatory filing is confirmed' } },
+          { name: 'RECOVERY & INVESTIGATION', timeWindow: '8–12 min', objective: 'Recover market trust faster than competitors expect — own the narrative of quality leadership', tasks: [
+            { owner: 'Chief Quality Officer', action: 'Launch root cause investigation with external lab partner. 30-day investigation timeline with weekly board updates', timeTarget: '10 min' },
+            { owner: 'CMO', action: 'Execute trust-recovery campaign: what changed, enhanced testing protocols, and independent certification of fix before relaunch', timeTarget: '11 min' },
+            { owner: 'CFO', action: 'File product liability insurance claim. Establish separate recall accounting center for all related costs — critical for insurance recovery', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Recall decision authority + customer accountability + board notification', escalationTime: '0 min' }, { role: 'Chief Quality Officer', responsibility: 'Defect confirmation + investigation + corrective action', escalationTime: '0 min' }, { role: 'General Counsel', responsibility: 'Regulatory notification + litigation hold + consumer communication approval', escalationTime: '1 min' }, { role: 'COO', responsibility: 'Production halt + supply chain quarantine + inventory control', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Production halt executed', 'Retailer stop-sale confirmed', 'Regulatory notification filed', 'Customer notification deployed'], at30days: ['100% affected inventory recovered', 'Root cause identified and corrected', 'Product relaunched with enhanced safety certification', 'Customer trust score recovery initiated'], failureModes: ['Waiting for regulatory action before self-initiating recall', 'Continuing to sell affected product after internal confirmation of defect', 'Inadequate consumer notification (must reach >90% of affected purchasers)'] },
+      }
+    },
+    {
+      pattern: '%talent%',
+      data: {
+        whyItMatters: 'Mass talent departures in critical roles cost Fortune 1000 companies 3–5x the departing employees\' combined annual salaries in replacement and productivity loss. Companies with talent retention playbooks stabilize within 14 days vs. 4+ months for reactive organizations.',
+        enrichedPhases: [
+          { name: 'FLIGHT RISK TRIAGE', timeWindow: '0–2 min', objective: 'Know exactly who is at risk and why — before the next resignation hits your inbox', tasks: [
+            { owner: 'CHRO', action: 'Pull talent flight risk model: identify all employees with >70% departure probability based on engagement score, tenure, compensation percentile, manager quality', timeTarget: '90 sec' },
+            { owner: 'CEO', action: 'Identify the 25 mission-critical roles where departure would cause immediate operational or customer impact. These are your Priority 1 retention targets', timeTarget: '2 min' },
+            { owner: 'CFO', action: 'Authorize emergency retention budget: discretionary equity grants, compensation adjustments, and spot bonuses. Board pre-approval required above $5M', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Are more than 10 Priority 1 roles showing high departure risk?', yes: 'Declare talent emergency — CEO-level retention program', no: 'Targeted interventions — CHRO-led, biweekly CEO review' } },
+          { name: 'CEO RETENTION OFFENSIVE', timeWindow: '2–5 min', objective: 'The CEO personally calling is worth more than any retention bonus for top talent', tasks: [
+            { owner: 'CEO', action: 'Schedule personal calls with all Priority 1 retention risks within 48 hours. Agenda: listen first, then share vision, then discuss compensation if appropriate', timeTarget: '3 min' },
+            { owner: 'CHRO', action: 'Design 18-month retention package for top 25: equity vesting acceleration, role expansion, development investment, and flexibility agreements', timeTarget: '4 min' },
+            { owner: 'Business Unit Leaders', action: 'Conduct skip-level conversations with all direct reports in at-risk segments. Identify and eliminate the specific operational frustrations driving departure intent', timeTarget: '5 min' },
+          ] },
+          { name: 'ROOT CAUSE ELIMINATION', timeWindow: '5–8 min', objective: 'Fix the actual problem — not the symptom — or the retention effort is just buying time', tasks: [
+            { owner: 'CHRO', action: 'Run rapid exit interview analysis: what are the top 3 specific, consistent reasons people are leaving? Each must become an action item with an owner and deadline', timeTarget: '6 min' },
+            { owner: 'CEO', action: 'Make one visible, immediate structural change that addresses the #1 departure driver. Symbolism matters — employees need to see decisions, not promises', timeTarget: '7 min' },
+            { owner: 'Head of Total Rewards', action: 'Benchmark compensation against current market (not last year\'s survey). Eliminate all roles where you are more than 15% below market for critical skills', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Can root causes (compensation, culture, leadership, opportunity) be addressed within 30 days?', yes: 'Commit to specific changes with public accountability', no: 'Structural transformation required — engage board on leadership or strategy changes' } },
+          { name: 'CULTURE REINFORCEMENT', timeWindow: '8–12 min', objective: 'Turn the retention crisis into a culture-defining moment that improves engagement for all employees', tasks: [
+            { owner: 'CEO', action: 'All-hands meeting within 72 hours: acknowledge challenges, share the specific changes being made, and invite candid questions. No prepared Q&A filtering', timeTarget: '10 min' },
+            { owner: 'CHRO', action: 'Launch 90-day culture initiative: monthly pulse surveys, manager training on retention conversations, and public progress reporting', timeTarget: '11 min' },
+            { owner: 'CFO + CHRO', action: 'Establish talent health scorecard: voluntary attrition rate, engagement score, time-to-fill critical roles, internal promotion rate. Board-level quarterly reporting', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Personal retention calls + structural changes + all-hands commitment', escalationTime: '0 min' }, { role: 'CHRO', responsibility: 'Flight risk modeling + retention program design + culture initiative', escalationTime: '0 min' }, { role: 'CFO', responsibility: 'Retention budget + compensation benchmarking + board approval', escalationTime: '1 min' }, { role: 'Business Unit Leaders', responsibility: 'Skip-level conversations + root cause elimination + daily retention actions', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Priority 1 retention risks identified', 'CEO call schedule confirmed', 'Retention budget authorized', 'Root cause analysis initiated'], at30days: ['Priority 1 retention rate >90%', 'Compensation gaps eliminated for critical roles', '#1 departure driver structurally addressed', 'Engagement score improvement trajectory confirmed'], failureModes: ['Using only financial retention tools without addressing root causes', 'Delegating Priority 1 retention calls to CHRO instead of CEO', 'Announcing changes without following through on specific commitments made in retention conversations'] },
+      }
+    },
+    {
+      pattern: '%esg%',
+      data: {
+        whyItMatters: 'ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG response playbooks contain institutional sell-pressure 3x more effectively.',
+        enrichedPhases: [
+          { name: 'ESG INCIDENT CLASSIFICATION', timeWindow: '0–2 min', objective: 'Classify accurately — an environmental violation and a governance failure require entirely different responses', tasks: [
+            { owner: 'Chief Sustainability Officer', action: 'Classify ESG incident: Environmental (E), Social (S), or Governance (G). Severity: Tier 1 (material, public) / Tier 2 (internal, manageable) / Tier 3 (emerging risk)', timeTarget: '90 sec' },
+            { owner: 'General Counsel', action: 'Assess disclosure obligations: SEC ESG rule implications, ESG rating agency impact (MSCI, Sustainalytics), proxy advisor implications (ISS ESG policy)', timeTarget: '2 min' },
+            { owner: 'CFO', action: 'Model institutional investor impact: which ESG-mandated funds have trigger rules that would force a sell at this ESG rating level?', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Will this incident trigger ESG rating downgrade OR institutional investor ESG screening exclusion?', yes: 'Tier 1 — proactive engagement with top 10 institutional holders within 24 hours', no: 'Tier 2 — internal remediation + ESG report update cycle' } },
+          { name: 'REMEDIATION COMMITMENT', timeWindow: '2–5 min', objective: 'Commit to specific, measurable changes — not aspirational language', tasks: [
+            { owner: 'Chief Sustainability Officer', action: 'Design remediation plan: specific targets, timelines, investment amounts, and third-party verification. Every commitment must be quantifiable', timeTarget: '3 min' },
+            { owner: 'CEO', action: 'Personally brief Board ESG Committee. Present incident, remediation plan, and request board-level accountability sponsor for follow-through', timeTarget: '4 min' },
+            { owner: 'Head of Investor Relations', action: 'Prepare ESG investor brief: incident context, root cause, remediation commitments, and enhanced monitoring. Lead with accountability, not minimization', timeTarget: '5 min' },
+          ] },
+          { name: 'INSTITUTIONAL ENGAGEMENT', timeWindow: '5–8 min', objective: 'Reach institutional ESG officers before they receive the news from an NGO or media outlet', tasks: [
+            { owner: 'CEO + Chief Sustainability Officer', action: 'Call top 5 institutional ESG officers within 24 hours. Present: what happened, what changed, what you are committed to. Offer ongoing ESG dialogue', timeTarget: '6 min' },
+            { owner: 'Head of IR', action: 'Request urgent ESG analyst calls with MSCI, Sustainalytics, and ISS. Provide full incident documentation + remediation plan', timeTarget: '7 min' },
+            { owner: 'Chief Sustainability Officer', action: 'File ESG incident disclosure in CDP, GRI, or applicable framework. Voluntary disclosure before mandated is significantly less damaging', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Have top 10 institutional ESG officers been briefed AND rating agency review meetings scheduled?', yes: 'Proceed to public remediation reporting', no: 'Delay any public statement until institutional outreach is complete' } },
+          { name: 'PUBLIC COMMITMENT', timeWindow: '8–12 min', objective: 'Turn the ESG incident into evidence of your ESG leadership — not despite it, but through how you respond', tasks: [
+            { owner: 'CEO', action: 'Public statement: acknowledge incident, specific remediation steps, board accountability, and enhanced ESG commitments. Third-party verification of all claims', timeTarget: '10 min' },
+            { owner: 'Chief Sustainability Officer', action: 'Publish interim ESG remediation report within 30 days. Include: what went wrong, what changed, measurable progress against commitments', timeTarget: '11 min' },
+            { owner: 'CFO', action: 'Tie ESG remediation milestones to executive compensation. Announce this publicly — it is the most credible commitment signal to institutional investors', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Institutional holder engagement + board accountability + public commitment', escalationTime: '0 min' }, { role: 'Chief Sustainability Officer', responsibility: 'Incident assessment + remediation design + ESG disclosure', escalationTime: '0 min' }, { role: 'CFO', responsibility: 'Institutional investor modeling + compensation link + financial disclosure', escalationTime: '1 min' }, { role: 'General Counsel', responsibility: 'Regulatory disclosure + ESG rating agency + litigation risk', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['ESG incident classified and board notified', 'Top 10 institutional ESG officers scheduled', 'Remediation plan board-approved', 'Rating agency engagement scheduled'], at30days: ['ESG rating maintained or limited downgrade', 'Institutional investor sell pressure contained', 'Voluntary disclosure filed', 'Remediation commitments publicly published'], failureModes: ['Responding with aspirational language instead of specific commitments', 'Waiting for institutional investors to call you vs. calling them first', 'Failing to engage ESG rating agencies proactively before they downgrade'] },
+      }
+    },
+    {
+      pattern: '%ransomware%',
+      data: {
+        whyItMatters: 'Ransomware attacks cost enterprises an average of $4.54M per incident, with 83% of victims paying ransom when they lack proper backups and response protocols. The first 12 minutes determine whether the organization pays or recovers cleanly.',
+        enrichedPhases: [
+          { name: 'ATTACK CONFIRMATION', timeWindow: '0–2 min', objective: 'Confirm scope and immediately stop the encryption spread — every second matters', tasks: [
+            { owner: 'CISO', action: 'Confirm ransomware variant via endpoint detection. Classify: locker (access denial only) vs. crypto (file encryption) vs. double-extortion (encryption + data theft)', timeTarget: '60 sec' },
+            { owner: 'CTO', action: 'IMMEDIATE: physically isolate all affected network segments. Pull the network cable on affected systems — do NOT shut down (preserves memory for forensics)', timeTarget: '90 sec' },
+            { owner: 'General Counsel', action: 'Engage law enforcement (FBI Cyber Division) and notify cyber insurer. Do NOT pay ransom before insurance carrier authorization', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Are critical systems (ERP, customer data, financial systems) encrypted or inaccessible?', yes: 'Tier 1 — Business Continuity Protocol + CEO board notification NOW', no: 'Tier 2 — Containment only, continue monitoring scope' } },
+          { name: 'BUSINESS CONTINUITY ACTIVATION', timeWindow: '2–5 min', objective: 'The business continues to operate — even if on manual/backup systems', tasks: [
+            { owner: 'COO', action: 'Activate Business Continuity Plan: identify all manual workarounds for affected systems. No revenue-critical operation can be paused waiting for IT recovery', timeTarget: '3 min' },
+            { owner: 'CTO', action: 'Validate backup integrity: when were last clean backups? Are they offline/immutable (ransomware cannot reach them)? Establish Recovery Time Objective', timeTarget: '4 min' },
+            { owner: 'CFO', action: 'Activate cyber insurance. Engage pre-approved ransomware response firm (Mandiant, CrowdStrike, or equivalent). Cyber insurer may require specific vendors', timeTarget: '5 min' },
+          ] },
+          { name: 'PAYMENT DECISION', timeWindow: '5–8 min', objective: 'This decision requires legal, insurance, and law enforcement input — not just IT', tasks: [
+            { owner: 'CEO + CFO + General Counsel', action: 'Ransomware payment decision: consider (1) clean backup availability, (2) data exfiltration confirmed, (3) insurance carrier guidance, (4) OFAC sanctions check on threat actor', timeTarget: '6 min' },
+            { owner: 'CISO', action: 'Parallel track: begin clean restoration from verified backups regardless of payment decision. Paying ransom does NOT guarantee full recovery', timeTarget: '7 min' },
+            { owner: 'General Counsel', action: 'OFAC sanctions check: paying sanctioned threat actors (some ransomware groups are OFAC-listed) is a federal offense. Clear this before any payment authorization', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Are clean, recent backups confirmed AND operational restoration achievable within business continuity tolerance?', yes: 'Do NOT pay — execute clean restoration', no: 'Payment decision to CEO with insurance carrier, legal, and law enforcement input' } },
+          { name: 'RECOVERY & HARDENING', timeWindow: '8–12 min', objective: 'Come back stronger — attackers often return within 60 days if vulnerabilities remain', tasks: [
+            { owner: 'CTO + CISO', action: 'Execute clean restoration from verified backups. Rebuild affected systems from clean images — never restore from encrypted states', timeTarget: '10 min' },
+            { owner: 'CEO', action: 'Employee communication: what happened, what data was affected, what was done to protect them, and what changes will prevent recurrence', timeTarget: '11 min' },
+            { owner: 'CISO', action: 'Mandatory security hardening before any reconnection: patch zero-days exploited, MFA on all accounts, email security enhancement, EDR on all endpoints', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CISO', responsibility: 'Attack containment + forensics + recovery oversight', escalationTime: '0 min' }, { role: 'CTO', responsibility: 'Network isolation + backup restoration + system recovery', escalationTime: '0 min' }, { role: 'CEO', responsibility: 'Payment decision authority + employee communication + board notification', escalationTime: '1 min' }, { role: 'General Counsel', responsibility: 'Law enforcement + OFAC compliance + regulatory notification', escalationTime: '1 min' }, { role: 'CFO', responsibility: 'Cyber insurance activation + payment authorization + financial impact', escalationTime: '2 min' }],
+        outcomeMetrics: { at12hours: ['Attack contained and isolated', 'Clean backup integrity confirmed', 'Payment decision made with all required parties', 'Business continuity operations active'], at30days: ['Full system restoration complete', 'Root cause (initial attack vector) eliminated', 'Security hardening implemented', 'Regulatory notifications filed'], failureModes: ['Paying ransom without insurance carrier authorization', 'Restoring from potentially infected backups', 'Reconnecting systems before hardening complete', 'Failing OFAC sanctions check before payment'] },
+      }
+    },
+    {
+      pattern: '%financial%',
+      data: {
+        whyItMatters: 'Financial fraud events trigger an average 31% stock price decline and $2.1B in regulatory fines for companies that fail to self-report promptly. Organizations with pre-built financial fraud playbooks self-report 4x faster, receive 67% lower penalties, and restore investor confidence 2.8x faster.',
+        enrichedPhases: [
+          { name: 'ALLEGATION ASSESSMENT', timeWindow: '0–2 min', objective: 'Establish credibility of allegation before any external action — but assume it could be true', tasks: [
+            { owner: 'General Counsel', action: 'Assess allegation source and specificity: internal whistleblower, SEC complaint, short-seller report, or regulatory inquiry. Each has different required response timelines', timeTarget: '90 sec' },
+            { owner: 'CFO', action: 'Immediately ring-fence all financial systems, accounts, and records related to the allegation. Preserve all documentation — litigation hold NOW', timeTarget: '2 min' },
+            { owner: 'Audit Committee Chair', action: 'Convene emergency audit committee session. The audit committee — not management — must direct this investigation for independence and credibility', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Does preliminary review indicate potential material misstatement OR regulatory disclosure obligation?', yes: 'Self-report to SEC within required timeframe — voluntary disclosure is significantly more favorable', no: 'Continue independent investigation — maintain strict confidentiality' } },
+          { name: 'INDEPENDENT INVESTIGATION', timeWindow: '2–5 min', objective: 'Independence is everything — any investigation management controls will be discredited', tasks: [
+            { owner: 'Audit Committee Chair', action: 'Retain independent outside counsel (not company\'s regular counsel) and independent forensic accountants. Engagement letter to establish attorney-client privilege', timeTarget: '3 min' },
+            { owner: 'General Counsel', action: 'Issue litigation hold for all potentially relevant documents, communications, and financial records. Preserve all emails for a minimum 3-year lookback', timeTarget: '4 min' },
+            { owner: 'CEO', action: 'Step back from investigation. Your role is to ensure the investigation is fully resourced and independent — not to shape its findings', timeTarget: '5 min' },
+          ] },
+          { name: 'REGULATORY ENGAGEMENT', timeWindow: '5–8 min', objective: 'Regulators reward cooperation and self-disclosure — they punish cover-up more than the underlying offense', tasks: [
+            { owner: 'General Counsel + Outside Counsel', action: 'Assess voluntary disclosure decision: self-report to SEC, DOJ, or relevant regulator? Voluntary disclosure typically reduces fines by 50–70%', timeTarget: '6 min' },
+            { owner: 'Audit Committee Chair + Outside Counsel', action: 'Brief audit committee on initial findings and disclosure recommendation. Audit committee must approve any regulatory communication', timeTarget: '7 min' },
+            { owner: 'CFO + Outside Counsel', action: 'Assess restatement risk: will financial statements require restatement? Engage auditors for independent assessment. Do not delay this assessment', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Has independent investigation confirmed material misstatement AND voluntary disclosure decision made?', yes: 'File disclosure within regulatory timeframe', no: 'Continue investigation — do not delay indefinitely (regulators track investigation duration)' } },
+          { name: 'INVESTOR COMMUNICATION', timeWindow: '8–12 min', objective: 'Investors will forgive honest mistakes — they will not forgive delayed disclosure or cover-up', tasks: [
+            { owner: 'CEO + Board Chair', action: 'Investor communication strategy: full disclosure proactively vs. in conjunction with regulatory filing. General Counsel and outside counsel must approve final approach', timeTarget: '10 min' },
+            { owner: 'CFO', action: 'If restatement required: develop restatement scope, affected periods, and corrected financial statements with auditor. Set disclosure timeline', timeTarget: '11 min' },
+            { owner: 'CEO + General Counsel', action: 'Employee communication: consistent message about investigation, no speculation on outcomes, assurance of compliance culture reinforcement', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'Audit Committee Chair', responsibility: 'Investigation oversight + outside counsel engagement + regulatory approval', escalationTime: '0 min' }, { role: 'General Counsel', responsibility: 'Litigation hold + disclosure strategy + regulatory engagement', escalationTime: '0 min' }, { role: 'CEO', responsibility: 'Board leadership + employee communication + operational continuity', escalationTime: '1 min' }, { role: 'CFO', responsibility: 'Financial records preservation + restatement assessment + insurance notification', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Litigation hold issued', 'Independent investigators retained', 'Audit committee convened', 'Regulatory disclosure timeline assessed'], at30days: ['Investigation complete with independent findings', 'Regulatory cooperation established', 'Disclosure decision made and executed', 'Internal controls remediation underway'], failureModes: ['Management directing (or appearing to direct) the investigation', 'Delayed regulatory disclosure beyond required timeframes', 'Destroying or failing to preserve relevant documents and communications'] },
+      }
+    },
+    {
+      pattern: '%ipo%',
+      data: {
+        whyItMatters: 'IPO pricing missteps and market timing failures cost companies an average 22% in underpriced share value or result in withdrawn offerings. Companies with pre-built IPO response playbooks navigate pricing windows 3x more effectively and maintain institutional demand through market volatility.',
+        enrichedPhases: [
+          { name: 'MARKET WINDOW ASSESSMENT', timeWindow: '0–2 min', objective: 'Determine if this is a timing issue (delay) or a structural issue (pricing reset)', tasks: [
+            { owner: 'CFO + Investment Bankers', action: 'Pull real-time IPO comps: recent IPO performance in your sector, institutional book-build status, and current market sentiment index for your industry', timeTarget: '90 sec' },
+            { owner: 'CEO + CFO', action: 'Assess delay options: 2-week pricing window push vs. 60-90 day full delay. Each has different implications for roadshow momentum and institutional appetite', timeTarget: '2 min' },
+            { owner: 'General Counsel', action: 'If delay is likely: assess SEC registration statement freshness requirements, quiet period obligations, and board-approved financial statements currency', timeTarget: '2 min' },
+          ], decisionGate: { question: 'Is market disruption temporary (2-4 weeks) OR structural (requires pricing reset)?', yes: 'Tactical delay — maintain roadshow momentum', no: 'Strategic reset — update S-1, re-engage anchors, re-price range' } },
+          { name: 'ANCHOR INVESTOR LOCK', timeWindow: '2–5 min', objective: 'The 5–10 institutional anchors make or break IPO pricing — protect them first', tasks: [
+            { owner: 'CEO + CFO', action: 'Personal calls to all anchor investors within 4 hours: update on market conditions, reaffirm company fundamentals, and confirm their anchor commitment', timeTarget: '3 min' },
+            { owner: 'Investment Bankers', action: 'Assess book-build status: what % of deal is covered, what is the price sensitivity of top 20 book-build participants?', timeTarget: '4 min' },
+            { owner: 'CFO', action: 'Pricing scenario modeling: $1 per share change in price × total shares = impact on company proceeds and founder dilution at each price point', timeTarget: '5 min' },
+          ] },
+          { name: 'NARRATIVE PROTECTION', timeWindow: '5–8 min', objective: 'Control the IPO narrative — media and analyst opinion form before you can respond', tasks: [
+            { owner: 'CMO + IR Lead', action: 'Monitor and respond to IPO coverage: social media, analyst reports, and financial press. Quiet period restrictions apply — coordinate every statement with legal', timeTarget: '6 min' },
+            { owner: 'CEO', action: 'Internal communication to all employees: IPO process update, confirmation of timeline, and instruction on quiet period compliance (no public statements)', timeTarget: '7 min' },
+            { owner: 'Investment Bankers', action: 'Assess green shoe option: partial exercise of overallotment option can stabilize secondary market pricing on day 1 and day 2 of trading', timeTarget: '8 min' },
+          ], decisionGate: { question: 'Is book-build >110% covered at acceptable price range AND anchor commitments confirmed?', yes: 'Proceed to pricing — coordinate with underwriters on final price', no: 'Evaluate range reduction or voluntary delay with banking team' } },
+          { name: 'PRICING & FIRST DAY PREP', timeWindow: '8–12 min', objective: 'The first day of trading is a marketing event — you only get one opening', tasks: [
+            { owner: 'CEO + CFO', action: 'Final IPO price decision with banking team: price to create first-day pop (institutional appetite) vs. price to maximize proceeds. This is a strategic — not financial — decision', timeTarget: '10 min' },
+            { owner: 'Head of IR', action: 'First-day trading protocol: designated market maker briefed, floor communications plan confirmed, real-time stock monitoring dashboard activated', timeTarget: '11 min' },
+            { owner: 'CMO', action: 'First-day media plan: press release timing, CEO media availability schedule, employee celebration communication, and customer notification of public company status', timeTarget: '12 min' },
+          ] },
+        ],
+        tier1Stakeholders: [{ role: 'CEO', responsibility: 'Anchor investor engagement + pricing decision + public narrative', escalationTime: '0 min' }, { role: 'CFO', responsibility: 'Book-build analysis + pricing modeling + SEC compliance', escalationTime: '0 min' }, { role: 'General Counsel', responsibility: 'SEC registration + quiet period compliance + disclosure obligations', escalationTime: '1 min' }, { role: 'Head of IR', responsibility: 'Institutional communication + first-day trading protocol + analyst relations', escalationTime: '1 min' }],
+        outcomeMetrics: { at12hours: ['Anchor investor commitments confirmed', 'Pricing scenario range defined', 'Media and quiet period strategy confirmed', 'Book-build coverage assessed'], at30days: ['IPO proceeds within 10% of target', 'First-day pop within target range (15–25%)', 'Institutional holders locked with 90-day lockup confirmation', 'Analyst coverage initiated within 25-day quiet period expiry'], failureModes: ['Quiet period violations by company spokespeople', 'Failing to call anchor investors personally during market volatility', 'Under-pricing out of fear vs. strategic pricing for long-term institutional support'] },
+      }
+    },
   ];
 
   const results: string[] = [];
