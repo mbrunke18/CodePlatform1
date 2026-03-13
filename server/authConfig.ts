@@ -13,6 +13,9 @@ export const PUBLIC_ROUTES = [
   // Demo access bypass — shareable link for investors and pilot prospects
   '/api/demo-access',
 
+  // Peer Review Questionnaire — public submission (no auth required to submit feedback)
+  '/api/peer-reviews',
+
   // Marketing & Demo Routes - allow prospects to view content
   '/api/tts', // Text-to-speech for founder story narration
   '/api/scenario-templates',

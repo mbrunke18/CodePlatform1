@@ -6286,3 +6286,78 @@ export const investorLeads = pgTable('investor_leads', {
 export const insertInvestorLeadSchema = createInsertSchema(investorLeads).omit({ id: true, createdAt: true });
 export type InsertInvestorLead = z.infer<typeof insertInvestorLeadSchema>;
 export type InvestorLead = typeof investorLeads.$inferSelect;
+
+// Peer Review Questionnaire — Independent Product Evaluation
+export const peerReviews = pgTable('peer_reviews', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  createdAt: timestamp('created_at').defaultNow(),
+  reviewerType: text('reviewer_type').notNull().default('peer'), // 'customer' | 'investor' | 'peer'
+  sourceUrl: text('source_url').default(''),
+
+  // Identity
+  reviewerName: text('reviewer_name').notNull(),
+  reviewerRole: text('reviewer_role').notNull(),
+  reviewerOrg: text('reviewer_org').notNull(),
+  reviewerIndustry: text('reviewer_industry').default(''),
+  yearsExperience: text('years_experience').default(''),
+
+  // Section A — Problem Space
+  q1Scale: integer('q1_scale'),
+  q1Text: text('q1_text').default(''),
+  q2Selection: text('q2_selection').default(''),
+  q2Text: text('q2_text').default(''),
+  q3Scale: integer('q3_scale'),
+  q3Text: text('q3_text').default(''),
+  q4Scale: integer('q4_scale'),
+  q4Text: text('q4_text').default(''),
+
+  // Section B — Product Clarity
+  q5Scale: integer('q5_scale'),
+  q5Text: text('q5_text').default(''),
+  q6Text: text('q6_text').default(''),
+  q7Scale: integer('q7_scale'),
+  q7Text: text('q7_text').default(''),
+  q8Scale: integer('q8_scale'),
+  q8Text: text('q8_text').default(''),
+  q9Selections: text('q9_selections').array().default([]),
+  q9Text: text('q9_text').default(''),
+
+  // Section C — Market Viability
+  q10Scale: integer('q10_scale'),
+  q10Text: text('q10_text').default(''),
+  q11Selection: text('q11_selection').default(''),
+  q11Text: text('q11_text').default(''),
+  q12Selections: text('q12_selections').array().default([]),
+  q12Text: text('q12_text').default(''),
+  q13Selection: text('q13_selection').default(''),
+  q13Text: text('q13_text').default(''),
+  q14Rankings: jsonb('q14_rankings').default([]),
+
+  // Section D — Product Gaps
+  q15Text: text('q15_text').default(''),
+  q16Ratings: jsonb('q16_ratings').default({}),
+  q17Text: text('q17_text').default(''),
+  q18Text: text('q18_text').default(''),
+  q19Text: text('q19_text').default(''),
+
+  // Section E — Competitive Landscape
+  q20Selection: text('q20_selection').default(''),
+  q20Text: text('q20_text').default(''),
+  q21Scale: integer('q21_scale'),
+  q21Text: text('q21_text').default(''),
+  q22Text: text('q22_text').default(''),
+
+  // Section F — Overall Verdict
+  q23Scale: integer('q23_scale'),
+  q24Selection: text('q24_selection').default(''),
+  q24Text: text('q24_text').default(''),
+  q25Scale: integer('q25_scale'),
+  q25Text: text('q25_text').default(''),
+  q26Selection: text('q26_selection').default(''),
+  q27Text: text('q27_text').default(''),
+  q28Text: text('q28_text').default(''),
+});
+
+export const insertPeerReviewSchema = createInsertSchema(peerReviews).omit({ id: true, createdAt: true });
+export type InsertPeerReview = z.infer<typeof insertPeerReviewSchema>;
+export type PeerReview = typeof peerReviews.$inferSelect;

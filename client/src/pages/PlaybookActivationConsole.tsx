@@ -1253,6 +1253,16 @@ export default function PlaybookActivationConsole() {
                       </Link>
                     )}
                   </div>
+                  <div style={{ textAlign: "center", marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginBottom: 8 }}>
+                      Evaluating Execution OS for your organization?
+                    </p>
+                    <Link href="/peer-review">
+                      <span style={{ fontSize: 13, color: "#C9A84C", textDecoration: "underline", cursor: "pointer", fontWeight: 600 }}>
+                        Share your independent assessment →
+                      </span>
+                    </Link>
+                  </div>
                 </div>
               </div>
 

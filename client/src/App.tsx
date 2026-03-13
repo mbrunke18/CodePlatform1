@@ -153,6 +153,8 @@ const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsCon
 const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const GuidedStart = lazy(() => import("./pages/GuidedStart"));
+const PeerReview = lazy(() => import("./pages/PeerReview"));
+const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
@@ -413,6 +415,8 @@ function Router() {
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
         <Route path="/get-started" component={GetStarted} />
         <Route path="/demo-access" component={DemoAccess} />
+        <Route path="/peer-review" component={PeerReview} />
+        <Route path="/peer-review-report" component={PeerReviewReport} />
         {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/begin" component={GuidedStart} />
