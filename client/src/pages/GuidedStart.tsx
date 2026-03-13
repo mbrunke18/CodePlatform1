@@ -84,20 +84,24 @@ export default function GuidedStart() {
   const [detectStep, setDetectStep] = useState(0);
   const [playbookId, setPlaybookId] = useState<string | null>(null);
 
+  // Use playbook-library IDs — PlaybookActivationConsole fetches from /api/playbook-library/:id
   const { data: playbookResponse } = useQuery<any>({
-    queryKey: ['/api/playbooks'],
-    queryFn: () => fetch('/api/playbooks?limit=50', { credentials: 'include' }).then(r => r.ok ? r.json() : { data: [] }),
+    queryKey: ['/api/playbook-library'],
+    queryFn: () => fetch('/api/playbook-library?limit=50', { credentials: 'include' }).then(r => r.ok ? r.json() : []),
   });
 
-  const playbookList: any[] = Array.isArray(playbookResponse?.data)
-    ? playbookResponse.data
-    : Array.isArray(playbookResponse) ? playbookResponse : [];
+  const playbookList: any[] = Array.isArray(playbookResponse)
+    ? playbookResponse
+    : Array.isArray(playbookResponse?.data) ? playbookResponse.data : [];
 
   function findPlaybook(scenario: Scenario): string | null {
     if (playbookList.length === 0) return null;
+    const keyword = scenario.playbookKeyword.toLowerCase();
+    const domainWord = scenario.domain.toLowerCase().split(' ')[0];
     const byKeyword = playbookList.find(p =>
-      p.name?.toLowerCase().includes(scenario.playbookKeyword) ||
-      p.domain?.toLowerCase().includes(scenario.domain.toLowerCase().split(' ')[0])
+      p.name?.toLowerCase().includes(keyword) ||
+      p.domain?.toLowerCase().includes(domainWord) ||
+      p.category?.toLowerCase().includes(domainWord)
     );
     return byKeyword?.id || playbookList[0]?.id || null;
   }
