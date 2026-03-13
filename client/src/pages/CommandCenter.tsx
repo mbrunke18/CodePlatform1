@@ -104,6 +104,26 @@ const DEMO_SPEEDS = [
   { label: '10x', value: 10, icon: '🚀' },
 ];
 
+const SIGNAL_PLAYBOOK_MAP: Array<{ keywords: string[]; playbook: string; domain: string; urgency: string; domainParam: string }> = [
+  { keywords: ['acquisition', 'merger', 'm&a', 'bid'], playbook: 'Activist Investor Defense', domain: 'Financial Strategy', urgency: 'CRITICAL — 12-min window', domainParam: 'financial' },
+  { keywords: ['ransomware', 'cyber', 'malware', 'breach', 'lateral movement'], playbook: 'Cyber Incident Response', domain: 'Technology & Innovation', urgency: 'CRITICAL — immediate action', domainParam: 'crisis' },
+  { keywords: ['supply chain', 'port', 'supplier', 'logistics'], playbook: 'Supply Chain Disruption Response', domain: 'Operational Excellence', urgency: 'HIGH — 2-hr window', domainParam: 'gtm' },
+  { keywords: ['executive departure', 'c-suite', 'ceo', 'cfo', 'talent', 'resigned', 'attrition'], playbook: 'Leadership Continuity Protocol', domain: 'Talent & Leadership', urgency: 'HIGH — board notification required', domainParam: 'talent' },
+  { keywords: ['sec', 'disclosure', 'inquiry', 'regulatory', 'compliance'], playbook: 'SEC Disclosure Filing', domain: 'Regulatory & Compliance', urgency: 'HIGH — legal deadline', domainParam: 'regulatory' },
+  { keywords: ['sentiment', 'brand', 'reputation', 'social', 'media'], playbook: 'Brand Crisis Response', domain: 'Brand & Reputation', urgency: 'MEDIUM — monitor & respond', domainParam: 'technology' },
+  { keywords: ['activist investor', 'institutional', 'position', 'shareholder'], playbook: 'Activist Investor Defense', domain: 'Financial Strategy', urgency: 'CRITICAL — 48-hr window', domainParam: 'financial' },
+  { keywords: ['recall', 'fda', 'product', 'safety'], playbook: 'Product Recall Management', domain: 'Operational Excellence', urgency: 'CRITICAL — FDA 48-hr requirement', domainParam: 'gtm' },
+  { keywords: ['integration', 'synergy', 'friction', 'm&a'], playbook: 'M&A Integration Playbook', domain: 'Market Opportunities', urgency: 'HIGH — 30-day milestone at risk', domainParam: 'ma' },
+  { keywords: ['esg', 'carbon', 'sustainability', 'climate'], playbook: 'ESG Crisis Response', domain: 'Regulatory & Compliance', urgency: 'MEDIUM — investor reporting deadline', domainParam: 'regulatory' },
+  { keywords: ['geopolitical', 'trade', 'emea', 'sanctions'], playbook: 'Geopolitical Risk Protocol', domain: 'Market Opportunities', urgency: 'HIGH — cross-border exposure', domainParam: 'ma' },
+  { keywords: ['fraud', 'financial', 'anomaly', 'disbursement'], playbook: 'Financial Fraud Detection Response', domain: 'Financial Strategy', urgency: 'CRITICAL — forensic audit triggered', domainParam: 'financial' },
+  { keywords: ['ai governance', 'ai', 'compliance', 'deployment'], playbook: 'AI Governance Compliance', domain: 'AI Governance', urgency: 'MEDIUM — regulatory exposure', domainParam: 'strategic' },
+  { keywords: ['churn', 'customer', 'retention', 'velocity'], playbook: 'Customer Retention Rapid Response', domain: 'Market Opportunities', urgency: 'HIGH — revenue protection window', domainParam: 'ma' },
+  { keywords: ['board', 'legal counsel', 'governance'], playbook: 'Board Crisis Protocol', domain: 'Financial Strategy', urgency: 'CRITICAL — fiduciary trigger', domainParam: 'financial' },
+  { keywords: ['ipo', 'pricing', 'capital markets', 'window'], playbook: 'IPO Market Disruption Response', domain: 'Financial Strategy', urgency: 'CRITICAL — window closing', domainParam: 'financial' },
+  { keywords: ['competitor', 'pricing', 'market', 'disruption'], playbook: 'Aggressive Pricing Disruption', domain: 'Market Dynamics', urgency: 'HIGH — competitive response window', domainParam: 'competitive' },
+];
+
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const GOLD_LT = "#DFC178";
@@ -233,20 +253,53 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const coordinationTimeline: CoordinationEvent[] = [
-    { id: '1', time: '2 min ago', team: 'Legal', action: 'Approved crisis communication draft', status: 'completed' },
-    { id: '2', time: '5 min ago', team: 'Communications', action: 'Drafting stakeholder message', status: 'in-progress' },
-    { id: '3', time: '8 min ago', team: 'Operations', action: 'Activated supply chain backup', status: 'completed' },
-    { id: '4', time: '10 min ago', team: 'Executive', action: 'CEO briefing scheduled', status: 'pending' },
-    { id: '5', time: '12 min ago', team: 'IT Security', action: 'System isolation complete', status: 'completed' },
+  const ALL_SIGNALS: SignalAlert[] = [
+    { id: 's1',  severity: 'critical', title: 'Competitor announces $2.4B acquisition bid',     source: 'Reuters / Bloomberg Feed',       time: '1 min ago' },
+    { id: 's2',  severity: 'critical', title: 'Ransomware alert: lateral movement detected',    source: 'CrowdStrike / SIEM Integration', time: '3 min ago' },
+    { id: 's3',  severity: 'high',     title: 'Supply chain disruption — APAC ports offline',  source: 'Operations Monitor',             time: '7 min ago' },
+    { id: 's4',  severity: 'high',     title: 'Key executive departure signal — C-suite',       source: 'LinkedIn Pulse / HR Intel',      time: '11 min ago' },
+    { id: 's5',  severity: 'high',     title: 'SEC inquiry flagged — disclosure window open',   source: 'Compliance Radar',               time: '14 min ago' },
+    { id: 's6',  severity: 'medium',   title: 'Social sentiment decline — brand score -18pt',  source: 'Echo Cultural Analytics',        time: '22 min ago' },
+    { id: 's7',  severity: 'medium',   title: 'Activist investor building 5% position',         source: 'Institutional Monitor',          time: '29 min ago' },
+    { id: 's8',  severity: 'medium',   title: 'Product recall risk: FDA preliminary notice',    source: 'Regulatory Watch',               time: '35 min ago' },
+    { id: 's9',  severity: 'high',     title: 'M&A integration friction — 3 synergies at risk', source: 'Integration Tracker',            time: '41 min ago' },
+    { id: 's10', severity: 'low',      title: 'ESG reporting deadline in 14 days',              source: 'Compliance Watch',               time: '52 min ago' },
+    { id: 's11', severity: 'critical', title: 'Geopolitical escalation — EMEA trade route',    source: 'Global Risk Feed',               time: '2 min ago' },
+    { id: 's12', severity: 'high',     title: 'Financial fraud anomaly — AP disbursements',    source: 'Finance AI Monitor',             time: '8 min ago' },
+    { id: 's13', severity: 'medium',   title: 'AI governance gap detected in new deployment',  source: 'Tech Compliance Scanner',        time: '18 min ago' },
+    { id: 's14', severity: 'high',     title: 'Talent exodus: 4 senior engineers resigned',    source: 'HR Signal Engine',               time: '26 min ago' },
+    { id: 's15', severity: 'low',      title: 'GDPR amendment — new consent requirements',     source: 'EU Regulatory Feed',             time: '1 hr ago' },
+    { id: 's16', severity: 'critical', title: 'IPO pricing window narrowing — market shift',   source: 'Capital Markets Desk',           time: '4 min ago' },
+    { id: 's17', severity: 'medium',   title: 'Customer churn velocity up 23% this quarter',   source: 'CRM Insight Engine',             time: '33 min ago' },
+    { id: 's18', severity: 'high',     title: 'Board member seeks independent legal counsel',  source: 'Governance Monitor',             time: '19 min ago' },
+    { id: 's19', severity: 'low',      title: 'Competitor pricing move — 12% discount launch', source: 'Market Intel',                   time: '48 min ago' },
+    { id: 's20', severity: 'medium',   title: 'Carbon disclosure audit triggered by investor', source: 'ESG Signal Feed',                time: '37 min ago' },
   ];
 
-  const signalAlerts: SignalAlert[] = [
-    { id: '1', severity: 'critical', title: 'Competitor acquisition announced', source: 'Market Intel', time: '1 min ago' },
-    { id: '2', severity: 'high', title: 'Supply chain disruption - Region APAC', source: 'Operations Monitor', time: '15 min ago' },
-    { id: '3', severity: 'medium', title: 'Social sentiment shift detected', source: 'Echo Analytics', time: '32 min ago' },
-    { id: '4', severity: 'low', title: 'Regulatory update - GDPR amendment', source: 'Compliance Watch', time: '1 hr ago' },
+  const signalAlerts = useMemo(() => {
+    const offset = (currentTime.getHours() * 4 + Math.floor(currentTime.getMinutes() / 5)) % ALL_SIGNALS.length;
+    const pool = [...ALL_SIGNALS.slice(offset), ...ALL_SIGNALS.slice(0, offset)];
+    return pool.slice(0, 6);
+  }, [currentTime.getHours(), Math.floor(currentTime.getMinutes() / 5)]);
+
+  const ALL_COORDINATION: CoordinationEvent[] = [
+    { id: 'c1', time: '1 min ago',  team: 'Legal',         action: 'Approved crisis communication draft',       status: 'completed' },
+    { id: 'c2', time: '3 min ago',  team: 'Communications', action: 'Drafting stakeholder notification message', status: 'in-progress' },
+    { id: 'c3', time: '6 min ago',  team: 'Operations',    action: 'Activated supply chain contingency plan',   status: 'completed' },
+    { id: 'c4', time: '9 min ago',  team: 'Executive',     action: 'CEO briefing deck staged and reviewed',     status: 'pending' },
+    { id: 'c5', time: '11 min ago', team: 'IT Security',   action: 'System isolation and containment complete', status: 'completed' },
+    { id: 'c6', time: '2 min ago',  team: 'Finance',       action: '$500K emergency budget authority granted',  status: 'completed' },
+    { id: 'c7', time: '4 min ago',  team: 'Board',         action: 'Emergency meeting invite dispatched',       status: 'in-progress' },
+    { id: 'c8', time: '7 min ago',  team: 'HR',            action: 'All-hands communication drafted',           status: 'completed' },
+    { id: 'c9', time: '10 min ago', team: 'Strategy',      action: 'Competitive response brief completed',      status: 'completed' },
+    { id: 'c10', time: '13 min ago', team: 'Risk',         action: 'Impact assessment matrix finalized',        status: 'pending' },
   ];
+
+  const coordinationTimeline = useMemo(() => {
+    const offset = (currentTime.getHours() * 2 + Math.floor(currentTime.getMinutes() / 10)) % ALL_COORDINATION.length;
+    const pool = [...ALL_COORDINATION.slice(offset), ...ALL_COORDINATION.slice(0, offset)];
+    return pool.slice(0, 5);
+  }, [currentTime.getHours(), Math.floor(currentTime.getMinutes() / 10)]);
 
   const severityColors = {
     critical: 'bg-red-500 text-white',
@@ -254,6 +307,18 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
     medium: 'bg-[#2B8A6E] text-white',
     low: 'bg-[#0A0F2E] text-white'
   };
+
+  const ideaRecommendation = useMemo(() => {
+    const topSignal = signalAlerts.find(a => a.severity === 'critical') || signalAlerts.find(a => a.severity === 'high') || signalAlerts[0];
+    if (!topSignal) return null;
+    const title = topSignal.title.toLowerCase();
+    for (const entry of SIGNAL_PLAYBOOK_MAP) {
+      if (entry.keywords.some(kw => title.includes(kw))) {
+        return { ...entry, signal: topSignal };
+      }
+    }
+    return { playbook: 'Strategic Response Protocol', domain: 'Market Dynamics', urgency: 'HIGH — review recommended', domainParam: 'competitive', signal: topSignal };
+  }, [signalAlerts]);
 
   // Fetch ROI metrics
   const { data: roiReport } = useQuery<any>({
@@ -641,22 +706,59 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 </CardContent>
               </Card>
 
-              <Card className="border border-[#E8E4DC] bg-[#0A0F2E] text-white">
-                <CardContent className="p-6 space-y-4">
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                    <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>ORACLE PATTERNS</span>
-                  </div>
-                  <h3 style={{ ...CG, fontSize: 20, fontWeight: 600 }}>Pattern Detected</h3>
-                  <p className="text-sm text-white/70">
-                    Multiple weak signals indicate a competitor move in the APAC region. 
-                    Recommended protocol: APAC Market Defense.
-                  </p>
-                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
-                    Review Full Pattern Analysis
-                  </Button>
-                </CardContent>
-              </Card>
+              {ideaRecommendation && (
+                <Card className="border border-[#E8E4DC] bg-[#0A0F2E] text-white overflow-hidden">
+                  <CardContent className="p-0">
+                    {/* IDEA Framework header */}
+                    <div style={{ background: "rgba(201,168,76,0.15)", borderBottom: "1px solid rgba(201,168,76,0.25)", padding: "10px 20px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <div style={{ display: "flex", gap: 4 }}>
+                          {['I','D','E','A'].map((letter, i) => (
+                            <span key={letter} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", color: i === 1 ? '#C9A84C' : "rgba(255,255,255,0.35)", padding: "1px 5px", background: i === 1 ? "rgba(201,168,76,0.2)" : "transparent", border: i === 1 ? "1px solid rgba(201,168,76,0.4)" : "none" }}>{letter}</span>
+                          ))}
+                        </div>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>DETECT — Signal Fired</span>
+                      </div>
+                    </div>
+                    <div className="p-5 space-y-4">
+                      {/* Signal that fired */}
+                      <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)", padding: "10px 14px" }}>
+                        <div className="flex items-center gap-2 mb-1">
+                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#ef4444", flexShrink: 0 }} className="animate-pulse" />
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(239,68,68,0.9)" }}>LIVE TRIGGER</span>
+                        </div>
+                        <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{ideaRecommendation.signal.title}</p>
+                        <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 10, marginTop: 2 }}>{ideaRecommendation.signal.source} · {ideaRecommendation.signal.time}</p>
+                      </div>
+
+                      {/* Recommended playbook */}
+                      <div>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>EXECUTE — Recommended Playbook</div>
+                        <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>{ideaRecommendation.playbook}</h3>
+                        <div className="flex items-center gap-2">
+                          <span style={{ fontSize: 9, fontWeight: 700, color: "#C9A84C", background: "rgba(201,168,76,0.15)", padding: "2px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>{ideaRecommendation.domain}</span>
+                          <span style={{ fontSize: 9, fontWeight: 700, color: "rgba(239,68,68,0.9)" }}>{ideaRecommendation.urgency}</span>
+                        </div>
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="space-y-2">
+                        <Link href={`/playbook-library?domain=${ideaRecommendation.domainParam}`}>
+                          <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] text-xs uppercase tracking-wider">
+                            <Zap className="h-3.5 w-3.5 mr-1.5" />
+                            Activate Playbook Now
+                          </Button>
+                        </Link>
+                        <Link href="/playbook-library">
+                          <Button variant="outline" className="w-full border-white/20 text-white/60 hover:text-white hover:border-white/40 text-xs uppercase tracking-wider bg-transparent">
+                            Browse All 170 Playbooks
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
 
             {/* Middle Column: Coordination & Timeline */}

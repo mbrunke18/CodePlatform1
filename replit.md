@@ -52,6 +52,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Personalized ROI Calculator** (`PersonalizedROISection`): Homepage section with 4 chip-selectors (revenue bracket, industry, exec count, scenarios/year); real-time calculation of annual value, exec time saved, revenue protected, 340x speed advantage.
 - **12-Minute Test Drive** (`/12-minute-experience`, `/test-drive`): Public 4-step sequential page — scenario selection → GPT-4o AI brief → live war room with countdown and auto-progressing tasks → debrief with metrics + Request a Pilot CTA.
 - **War Room Escalate/Delegate Consequences:** Escalating injects 3 cascading live feed events (🚨 banner, C-Suite loop, stakeholder channel); delegating injects ownership transfer + delegate tracking confirmation.
+- **Dynamic Command Center Intelligence:** Rotating pool of 20 realistic intelligence signals (shifts every 5 min); rotating coordination timeline (10-event pool, shifts every 10 min); live IDEA Framework recommendation card (`SIGNAL_PLAYBOOK_MAP`: 17 signal patterns → named playbooks with domain/urgency).
+- **Playbook Library Deep Enrichment:** `/api/playbooks/templates` returns `whyItMatters`, `phaseCount`, `signalSourceCount`, `preApprovedBudget`, `priority` for all 170 playbooks; cards show gold-bordered "Why Speed Matters" excerpt + phase/signal/stakeholder/budget badges.
+- **Living Playbooks Connected Data:** `LivingPlaybooks.tsx` fetches from `/api/playbooks/templates`, shows top 6 playbooks sorted by severity score with activation counts, success rates, version numbers, and domain-specific AI improvement narratives.
+- **IDEAFramework Stats Bar:** Platform stats section between hero and phase strip (170 playbooks, 221 triggers, 248+ data points, 12m response window).
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.

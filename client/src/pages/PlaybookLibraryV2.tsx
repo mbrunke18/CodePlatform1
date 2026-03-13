@@ -10,10 +10,29 @@ import {
   Search, ChevronDown, ChevronRight, Shield, Zap, Brain,
   Network, AlertTriangle, BookOpen, Clock, Users, ArrowRight,
   Lock, TrendingUp, DollarSign, Globe2, Layers, Target,
-  HeartHandshake, Lightbulb, Check, ChevronLeft, Eye
+  HeartHandshake, Lightbulb, Check, ChevronLeft, Eye,
+  Radio, Wallet
 } from "lucide-react";
-import type { Playbook } from "@shared/schema";
 import { useAuth } from "@/hooks/useAuth";
+
+interface LibraryPlaybook {
+  id: string;
+  name: string;
+  description?: string;
+  domain: string;
+  category?: string;
+  priority: string;
+  phaseCount: number;
+  signalSourceCount: number;
+  stakeholderCount: number;
+  preApprovedBudget?: number | null;
+  whyItMatters?: string | null;
+  estimatedDuration: string;
+  complexity: string;
+  severityScore?: number;
+  tasks: number;
+  isTemplate: boolean;
+}
 
 const DOMAINS = [
   { id: "all", label: "All Domains", count: 170 },
@@ -358,7 +377,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   const BORDER = "#E8E4DC";
   const MUTED = "#6B7280";
 
-  const { data: templates } = useQuery<Playbook[]>({
+  const { data: templates } = useQuery<LibraryPlaybook[]>({
     queryKey: ["/api/playbooks/templates"],
   });
 
@@ -368,7 +387,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     return mapped.some((d) => t.domain === d);
   });
 
-  const searchFiltered = domainFilteredTemplates.filter((t) => {
+  const urgencyFiltered = domainFilteredTemplates.filter((t) => {
+    if (activeUrgency === "all") return true;
+    return (t.priority || "standard") === activeUrgency;
+  });
+
+  const searchFiltered = urgencyFiltered.filter((t) => {
     if (!search) return true;
     return (
       t.name?.toLowerCase().includes(search.toLowerCase()) ||
@@ -528,8 +552,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             {sortedFiltered.map((playbook) => {
               const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
               return (
-              <Card key={playbook.id} className={`group transition-all duration-300 bg-white ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
-                <div className="p-5">
+              <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
+                <div className="p-5 flex flex-col flex-1">
+                  {/* Header: tier label + urgency badge */}
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
                       {isAuthenticated ? (
@@ -551,40 +576,96 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     </div>
                     <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
                   </div>
+
+                  {/* Name */}
                   <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-base font-bold mb-1.5 group-hover:text-[#C9A84C] transition-colors leading-snug">{playbook.name}</h3>
-                  <p style={{ color: "#6B7280" }} className="text-xs line-clamp-2 mb-4 leading-relaxed">
+
+                  {/* Description */}
+                  <p style={{ color: "#6B7280" }} className="text-xs line-clamp-2 mb-3 leading-relaxed">
                     {playbook.description}
                   </p>
-                  <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: "#F8F7F4" }}>
+
+                  {/* Why Speed Matters excerpt — gold accent */}
+                  {playbook.whyItMatters && (
+                    <div className="mb-3 pl-3" style={{ borderLeft: `2px solid #C9A84C`, background: "#C9A84C08", padding: "8px 10px 8px 12px" }}>
+                      <p style={{ color: "#374151", fontSize: 11, lineHeight: 1.55, fontStyle: "italic" }} className="line-clamp-2">
+                        {playbook.whyItMatters.slice(0, 130)}{playbook.whyItMatters.length > 130 ? "…" : ""}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Depth stats row */}
+                  <div className="flex items-center gap-2 mb-3 flex-wrap">
+                    <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
+                      <Zap className="h-2.5 w-2.5 text-[#C9A84C]" />
+                      {playbook.phaseCount || 4} Phases
+                    </span>
+                    {playbook.signalSourceCount > 0 && (
+                      <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
+                        <Radio className="h-2.5 w-2.5 text-[#2B8A6E]" />
+                        {playbook.signalSourceCount} Live Sources
+                      </span>
+                    )}
+                    {playbook.stakeholderCount > 0 && (
+                      <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
+                        <Users className="h-2.5 w-2.5 text-[#6B7280]" />
+                        {playbook.stakeholderCount} Stakeholders
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Pre-approved budget if available */}
+                  {playbook.preApprovedBudget && playbook.preApprovedBudget > 0 && (
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <Wallet className="h-3 w-3 text-[#C9A84C]" />
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280" }}>Pre-Approved Budget:</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
+                        ${Number(playbook.preApprovedBudget).toLocaleString()}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Domain + Actions */}
+                  <div className="flex items-center justify-between pt-3 mt-auto border-t" style={{ borderColor: "#F8F7F4" }}>
                     <div className="flex flex-col">
                       <span className="text-[9px] font-bold text-[#6B7280] uppercase">Domain</span>
-                      <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[100px]">{playbook.domain}</span>
+                      <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[90px]">{playbook.domain}</span>
                     </div>
-                    <Button
-                      size="sm"
-                      style={{
-                        background: isAuthenticated || SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? "#0A0F2E" : "#0A0F2E",
-                        color: "white", fontSize: 10, padding: "4px 12px", height: "auto"
-                      }}
-                      className="font-bold uppercase tracking-wider"
-                      onClick={() => {
-                        if (isAuthenticated) {
-                          setLocation(`/playbooks/customize?template=${playbook.id}`);
-                        } else if (SAMPLE_PLAYBOOK_NAMES.has(playbook.name)) {
-                          setLocation(`/playbook-library/${playbook.id}`);
-                        } else {
-                          setLocation("/early-access");
-                        }
-                      }}
-                    >
-                      {isAuthenticated ? (
-                        <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
-                      ) : SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? (
-                        <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
-                      ) : (
-                        <span>Get Access</span>
+                    <div className="flex items-center gap-2">
+                      {isAuthenticated && (
+                        <button
+                          onClick={() => setLocation(`/playbooks/${playbook.id}/preview`)}
+                          style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}
+                        >
+                          Preview
+                        </button>
                       )}
-                    </Button>
+                      <Button
+                        size="sm"
+                        style={{
+                          background: "#0A0F2E",
+                          color: "white", fontSize: 10, padding: "4px 12px", height: "auto"
+                        }}
+                        className="font-bold uppercase tracking-wider"
+                        onClick={() => {
+                          if (isAuthenticated) {
+                            setLocation(`/playbooks/customize?template=${playbook.id}`);
+                          } else if (SAMPLE_PLAYBOOK_NAMES.has(playbook.name)) {
+                            setLocation(`/playbook-library/${playbook.id}`);
+                          } else {
+                            setLocation("/early-access");
+                          }
+                        }}
+                      >
+                        {isAuthenticated ? (
+                          <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
+                        ) : SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? (
+                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
+                        ) : (
+                          <span>Get Access</span>
+                        )}
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Card>

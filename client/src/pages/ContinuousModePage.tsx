@@ -1,4 +1,4 @@
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -76,7 +76,8 @@ export default function ContinuousModePage() {
   const { continuousMode } = useDynamicStrategy();
 
   return (
-    <div className="page-background min-h-screen bg-white p-8">
+    <PageLayout>
+    <div className="min-h-screen bg-white p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-start justify-between">
@@ -286,5 +287,6 @@ export default function ContinuousModePage() {
         </Card>
       </div>
     </div>
+    </PageLayout>
   );
 }

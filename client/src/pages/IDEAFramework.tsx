@@ -178,6 +178,24 @@ export default function IDEAFramework() {
           </div>
         </section>
 
+        {/* Platform Stats Bar */}
+        <section style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC" }}>
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
+            {[
+              { value: "170", label: "Strategic Playbooks", sublabel: "Across 9 Domains", color: NAVY },
+              { value: "221", label: "Executive Triggers", sublabel: "Pre-Configured", color: TEAL },
+              { value: "248+", label: "Live Data Points", sublabel: "Continuously Monitored", color: GOLD },
+              { value: "12m", label: "Response Window", sublabel: "Signal → Execution", color: NAVY },
+            ].map((stat, i) => (
+              <div key={i} className="flex flex-col items-center py-8 px-6 border-r border-[#E8E4DC] last:border-r-0" style={{ textAlign: "center" }}>
+                <div className="font-serif font-bold text-4xl mb-1" style={{ color: stat.color }}>{stat.value}</div>
+                <div className="text-[11px] font-bold uppercase tracking-widest text-[#0A0F2E] mb-0.5">{stat.label}</div>
+                <div className="text-[10px] text-[#6B7280] uppercase tracking-wider">{stat.sublabel}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* 4 Phase Strip — phase overview */}
         <section className="border-b border-[#E8E4DC] bg-white">
           <div className="max-w-5xl mx-auto grid grid-cols-4">

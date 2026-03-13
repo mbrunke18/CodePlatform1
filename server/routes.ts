@@ -2259,6 +2259,11 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         severityScore: playbookLibrary.severityScore,
         playbookNumber: playbookLibrary.playbookNumber,
         domainName: playbookDomains.name,
+        whyItMatters: playbookLibrary.whyItMatters,
+        enrichedPhases: playbookLibrary.enrichedPhases,
+        signalSources: playbookLibrary.signalSources,
+        preApprovedBudget: playbookLibrary.preApprovedBudget,
+        primaryResponseStrategy: playbookLibrary.primaryResponseStrategy,
       })
         .from(playbookLibrary)
         .leftJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
@@ -2275,6 +2280,11 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         const complexity: 'low'|'medium'|'high' = stakeholderCount > 15 || execMins > 480 ? 'high'
           : stakeholderCount > 8 || execMins > 120 ? 'medium' : 'low';
         const tasks = Math.max(8, Math.floor(stakeholderCount * 1.8) + (t.playbookNumber % 7));
+        const score = t.severityScore || 0;
+        const priority = score >= 80 ? 'critical' : score >= 60 ? 'high' : 'standard';
+        const phaseCount = Array.isArray(t.enrichedPhases) ? (t.enrichedPhases as any[]).length : 4;
+        const signalSourceCount = Array.isArray(t.signalSources) ? (t.signalSources as string[]).length : 3;
+        const budget = t.preApprovedBudget ? Number(t.preApprovedBudget) : null;
         return {
           id: t.id,
           name: t.name,
@@ -2291,6 +2301,11 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
           stakeholderCount,
           tasks,
           severityScore: t.severityScore,
+          priority,
+          phaseCount,
+          signalSourceCount,
+          preApprovedBudget: budget,
+          whyItMatters: t.whyItMatters,
         };
       }));
     } catch (error) {
