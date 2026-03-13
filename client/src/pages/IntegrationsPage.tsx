@@ -198,7 +198,7 @@ export default function IntegrationsPage() {
               <div className="w-14 h-14 mb-6 bg-[#0A0F2E]/5 rounded-none flex items-center justify-center">
                 <Zap className="w-7 h-7 text-[#0A0F2E]" />
               </div>
-              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Poise Orchestrates</h3>
+              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Execution OS Orchestrates</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
@@ -206,7 +206,7 @@ export default function IntegrationsPage() {
                 <Database className="w-7 h-7 text-[#C9A84C]" />
               </div>
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Tools Execute</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Poise.</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Execution OS.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
               <div className="w-14 h-14 mb-6 bg-[#2B8A6E]/5 rounded-none flex items-center justify-center">

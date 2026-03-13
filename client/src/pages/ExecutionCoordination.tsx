@@ -492,8 +492,8 @@ export default function ExecutionCoordination() {
                   Industry Comparison
                 </h3>
                 <p className="text-[#6B7280] leading-relaxed">
-                  Without Poise, this coordinated response would take <span className="font-bold text-[#DC2626]">72 hours to decide + 2 weeks to execute</span>. 
-                  With Poise, you're on track to complete in <span className="font-bold text-[#2B8A6E]">~45 minutes total</span>.
+                  Without Execution OS, this coordinated response would take <span className="font-bold text-[#DC2626]">72 hours to decide + 2 weeks to execute</span>. 
+                  With Execution OS, you're on track to complete in <span className="font-bold text-[#2B8A6E]">~45 minutes total</span>.
                 </p>
               </div>
             </div>
