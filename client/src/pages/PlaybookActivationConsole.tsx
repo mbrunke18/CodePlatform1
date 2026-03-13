@@ -489,37 +489,32 @@ export default function PlaybookActivationConsole() {
       const executionTime = Math.floor(elapsedSeconds / 60);
       const prevCount = playbook?.executionCount || 0;
       const prevAvg = playbook?.averageExecutionTime || 0;
-      
-      // Calculate weighted rolling average: (prevAvg * prevCount + newTime) / (prevCount + 1)
       const newAverage = prevCount > 0
         ? Math.round((prevAvg * prevCount + executionTime) / (prevCount + 1))
         : executionTime;
-      
-      // Update scenario with execution data
-      const response1 = await fetch(`/api/scenarios/${params?.playbookId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          executionCount: prevCount + 1,
-          averageExecutionTime: newAverage,
-          lastTriggered: new Date().toISOString(),
-        }),
-      });
-      
-      if (!response1.ok) throw new Error('Failed to update scenario');
 
-      // Update trigger status back to green (only for trigger-based executions)
-      if (!isManualExecution) {
-        const response2 = await fetch(`/api/executive-triggers/${params?.triggerId}/status`, {
-          method: 'POST',
+      // Non-fatal stat updates — 404s are expected when playbook is from library (not scenarios table)
+      try {
+        await fetch(`/api/scenarios/${params?.playbookId}`, {
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            status: 'green',
-            currentValue: null,
+            executionCount: prevCount + 1,
+            averageExecutionTime: newAverage,
+            lastTriggered: new Date().toISOString(),
           }),
         });
-        
-        if (!response2.ok) throw new Error('Failed to update trigger status');
+      } catch (_) {}
+
+      // Non-fatal trigger status reset
+      if (!isManualExecution && params?.triggerId && params.triggerId !== 'guided') {
+        try {
+          await fetch(`/api/executive-triggers/${params.triggerId}/status`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: 'green', currentValue: null }),
+          });
+        } catch (_) {}
       }
     },
     onSuccess: async () => {
@@ -530,7 +525,6 @@ export default function PlaybookActivationConsole() {
         title: "✅ Playbook Execution Completed",
         description: `Executed in ${formatTime(elapsedSeconds)}`,
       });
-      // Create activation DB record and auto-seed outcome card
       try {
         const executionTime = Math.floor(elapsedSeconds / 60);
         const targetMet = executionTime <= 12;
@@ -541,13 +535,12 @@ export default function PlaybookActivationConsole() {
             playbookId: params?.playbookId,
             actualExecutionTime: executionTime,
             targetMet,
-            triggerEventId: !isManualExecution ? params?.triggerId : null,
+            triggerEventId: !isManualExecution && params?.triggerId !== 'guided' ? params?.triggerId : null,
           }),
         });
         if (actRes.ok) {
           const act = await actRes.json();
           setActivationDbId(act.id);
-          // Auto-create outcome record
           await fetch('/api/activation-outcomes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -555,6 +548,14 @@ export default function PlaybookActivationConsole() {
           });
         }
       } catch (_) {}
+    },
+    onError: () => {
+      // Still advance to debrief — stat updates are non-critical
+      setExecutionStatus('completed');
+      toast({
+        title: "✅ Execution Complete",
+        description: `Executed in ${formatTime(elapsedSeconds)}`,
+      });
     },
   });
 
@@ -1253,14 +1254,20 @@ export default function PlaybookActivationConsole() {
                       </Link>
                     )}
                   </div>
-                  <div style={{ textAlign: "center", marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginBottom: 8 }}>
+                  <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+                    <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", marginBottom: 14, textAlign: "center" }}>
                       Evaluating Execution OS for your organization?
                     </p>
                     <Link href="/peer-review">
-                      <span style={{ fontSize: 13, color: "#C9A84C", textDecoration: "underline", cursor: "pointer", fontWeight: 600 }}>
-                        Share your independent assessment →
-                      </span>
+                      <button style={{
+                        display: "block", width: "100%", padding: "14px 24px",
+                        background: "transparent", border: `2px solid ${GOLD}`,
+                        borderRadius: 8, color: GOLD, fontSize: 13, fontWeight: 700,
+                        letterSpacing: "0.08em", textTransform: "uppercase" as const,
+                        cursor: "pointer", transition: "all 0.2s",
+                      }}>
+                        Share Your Independent Assessment →
+                      </button>
                     </Link>
                   </div>
                 </div>

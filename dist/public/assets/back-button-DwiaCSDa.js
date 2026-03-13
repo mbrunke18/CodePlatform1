@@ -1,0 +1,1 @@
+import{j as t,B as e,J as n}from"./index-CY1z2V7a.js";function i({label:s="Back",className:o=""}){const a=()=>{window.history.length>1?window.history.back():window.location.href="/"};return t.jsxs(e,{variant:"ghost",size:"sm",onClick:a,className:`text-gray-600 hover:text-white hover:bg-slate-800 gap-2 ${o}`,children:[t.jsx(n,{className:"h-4 w-4"}),s]})}export{i as B};
