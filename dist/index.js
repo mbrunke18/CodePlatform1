@@ -409,6 +409,7 @@ __export(schema_exports, {
   syncPlatformEnum: () => syncPlatformEnum,
   syncStatusEnum: () => syncStatusEnum,
   syntheticScenarios: () => syntheticScenarios,
+  taskAcknowledgments: () => taskAcknowledgments,
   taskDocumentTemplates: () => taskDocumentTemplates,
   tasks: () => tasks,
   tasksRelations: () => tasksRelations,
@@ -444,7 +445,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -3282,6 +3283,22 @@ var init_schema = __esm({
       status: varchar("status", { length: 50 }).default("pending"),
       generatedAt: timestamp2("generated_at"),
       createdAt: timestamp2("created_at").defaultNow()
+    });
+    taskAcknowledgments = pgTable2("task_acknowledgments", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      sessionId: varchar("session_id", { length: 255 }).notNull(),
+      // Activation ID or demo session key
+      taskLabel: text2("task_label").notNull(),
+      // Task description text
+      taskIndex: integer2("task_index"),
+      // Position in task list
+      acknowledgedBy: varchar("acknowledged_by", { length: 255 }).notNull(),
+      acknowledgedRole: varchar("acknowledged_role", { length: 100 }).notNull(),
+      actionType: varchar("action_type", { length: 50 }).notNull().default("complete"),
+      // complete|escalate|delegate|note
+      notes: text2("notes"),
+      acknowledgedAt: timestamp2("acknowledged_at").defaultNow().notNull(),
+      organizationId: uuid("organization_id").references(() => organizations.id)
     });
     insertActivationOutcomeSchema = createInsertSchema2(activationOutcomes).pick({
       activationId: true,
@@ -38874,6 +38891,310 @@ function calculateTaskValue(task) {
   const complexityBonus = hasStrategicKeyword ? 1e3 : 0;
   return Math.floor(baseValue * priorityMultiplier + complexityBonus);
 }
+function buildDemoExecutionHistory() {
+  const now = Date.now();
+  const day = 864e5;
+  const activations = [
+    { id: "demo-1", playbookName: "Competitive Threat Response", domain: "Market Dynamics", actualExecutionTime: 47, successRating: 62, targetMet: false, activatedAt: new Date(now - 87 * day), completedAt: new Date(now - 87 * day + 47 * 6e4) },
+    { id: "demo-2", playbookName: "Supply Chain Disruption Protocol", domain: "Operational Excellence", actualExecutionTime: 38, successRating: 71, targetMet: false, activatedAt: new Date(now - 71 * day), completedAt: new Date(now - 71 * day + 38 * 6e4) },
+    { id: "demo-3", playbookName: "Regulatory Compliance Sprint", domain: "Regulatory & Compliance", actualExecutionTime: 29, successRating: 78, targetMet: false, activatedAt: new Date(now - 55 * day), completedAt: new Date(now - 55 * day + 29 * 6e4) },
+    { id: "demo-4", playbookName: "Cybersecurity Breach Response", domain: "Technology & Security", actualExecutionTime: 22, successRating: 84, targetMet: false, activatedAt: new Date(now - 40 * day), completedAt: new Date(now - 40 * day + 22 * 6e4) },
+    { id: "demo-5", playbookName: "Competitive Threat Response", domain: "Market Dynamics", actualExecutionTime: 18, successRating: 88, targetMet: false, activatedAt: new Date(now - 28 * day), completedAt: new Date(now - 28 * day + 18 * 6e4) },
+    { id: "demo-6", playbookName: "Executive Leadership Crisis", domain: "Brand & Reputation", actualExecutionTime: 15, successRating: 91, targetMet: false, activatedAt: new Date(now - 17 * day), completedAt: new Date(now - 17 * day + 15 * 6e4) },
+    { id: "demo-7", playbookName: "Supply Chain Disruption Protocol", domain: "Operational Excellence", actualExecutionTime: 13, successRating: 94, targetMet: false, activatedAt: new Date(now - 9 * day), completedAt: new Date(now - 9 * day + 13 * 6e4) },
+    { id: "demo-8", playbookName: "Regulatory Compliance Sprint", domain: "Regulatory & Compliance", actualExecutionTime: 11, successRating: 97, targetMet: true, activatedAt: new Date(now - 3 * day), completedAt: new Date(now - 3 * day + 11 * 6e4) }
+  ];
+  const completed = activations.filter((a) => a.completedAt);
+  const avgTime = Math.round(completed.reduce((s, a) => s + a.actualExecutionTime, 0) / completed.length);
+  const avgScore = Math.round(completed.reduce((s, a) => s + a.successRating, 0) / completed.length);
+  return {
+    summary: { total: activations.length, avgTime, targetMetCount: 1, avgScore, timeSaved: 8 * 60, isDemo: true },
+    activations
+  };
+}
+async function seedFlagshipPlaybooks() {
+  const flagship = [
+    {
+      pattern: "%competitive%",
+      data: {
+        whyItMatters: "Research shows that companies responding to competitive threats within 12 hours retain 94% of at-risk customers vs. 61% for 72-hour responders \u2014 a $340M revenue differential for a mid-market enterprise.",
+        enrichedPhases: [
+          {
+            name: "DETECT & VALIDATE",
+            timeWindow: "0\u20132 min",
+            objective: "Confirm the competitive signal and assess threat credibility",
+            tasks: [
+              { owner: "Chief Intelligence Officer", action: "Pull competitive signal from monitoring platform and validate source credibility (confidence threshold \u226585%)", timeTarget: "90 sec" },
+              { owner: "CEO", action: "Receive automated brief on threat summary, affected revenue segments, and recommended response tier (1/2/3)", timeTarget: "2 min" },
+              { owner: "CFO", action: "Pre-authorize emergency response budget up to pre-approved threshold ($2M) without board approval", timeTarget: "2 min" }
+            ],
+            decisionGate: { question: "Is threat credibility \u226585% AND affected revenue \u2265$50M?", yes: "Escalate to Tier 1 Full Response", no: "Maintain monitoring \u2014 reassess in 4 hours" }
+          },
+          {
+            name: "ASSEMBLE WAR ROOM",
+            timeWindow: "2\u20135 min",
+            objective: "Mobilize the exact right people \u2014 no one else",
+            tasks: [
+              { owner: "COO", action: "Activate Competitive Response Team: CEO, CFO, CMO, Chief Strategy Officer, Head of Sales, General Counsel", timeTarget: "3 min" },
+              { owner: "CMO", action: "Pull competitive intelligence dossier \u2014 pricing, positioning, ICP overlap, recent wins/losses against this competitor", timeTarget: "4 min" },
+              { owner: "Chief Strategy Officer", action: "Retrieve pre-built competitive response playbook options (Defensive Hold / Counter-Offensive / Market Pivot)", timeTarget: "5 min" }
+            ]
+          },
+          {
+            name: "STRATEGY LOCK",
+            timeWindow: "5\u20138 min",
+            objective: "Make one clear decision \u2014 which response strategy and who owns each action",
+            tasks: [
+              { owner: "CEO", action: "Select primary response strategy from 3 pre-built options with ROI projections for each", timeTarget: "6 min" },
+              { owner: "CMO", action: "Activate counter-messaging: update battlecards, brief sales team, prepare customer-facing narrative", timeTarget: "7 min" },
+              { owner: "Head of Sales", action: "Identify top 20 at-risk accounts. Assign executive sponsors. Schedule outreach within next 2 hours", timeTarget: "8 min" }
+            ],
+            decisionGate: { question: "Have all Tier 1 stakeholders acknowledged their assigned actions?", yes: "Begin parallel execution", no: "Escalate to COO for reassignment" }
+          },
+          {
+            name: "EXECUTE & DOCUMENT",
+            timeWindow: "8\u201312 min",
+            objective: "Launch all response actions simultaneously \u2014 not sequentially",
+            tasks: [
+              { owner: "General Counsel", action: "Review competitive claims for legal exposure. Clear all external communications within 30 minutes", timeTarget: "10 min" },
+              { owner: "CFO", action: "Initiate financial modeling: cost of response vs. cost of inaction across 30/60/90-day scenarios", timeTarget: "10 min" },
+              { owner: "Chief Strategy Officer", action: "Document decision rationale, escalation path, and first 24-hour milestones in execution log", timeTarget: "12 min" }
+            ]
+          }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Decision authority + external statement approval", escalationTime: "0 min" }, { role: "CFO", responsibility: "Budget authorization + financial modeling", escalationTime: "1 min" }, { role: "CMO", responsibility: "Messaging + competitive positioning", escalationTime: "1 min" }, { role: "Chief Strategy Officer", responsibility: "Response strategy selection + scenario modeling", escalationTime: "2 min" }, { role: "Head of Sales", responsibility: "At-risk account identification + executive outreach", escalationTime: "2 min" }, { role: "General Counsel", responsibility: "Legal review + external communication clearance", escalationTime: "3 min" }],
+        outcomeMetrics: { at12hours: ["100% Tier 1 stakeholders briefed", "Response strategy selected and documented", "Top 20 at-risk accounts assigned executive sponsors", "External communications drafted and legal-cleared"], at30days: ["Customer retention rate vs. pre-threat baseline", "Win/loss rate change vs. this specific competitor", "Revenue recovered from at-risk pipeline", "Competitive positioning score (internal benchmark)"], failureModes: ["Delayed response (>4 hours) allowing competitor to establish narrative", "Fragmented messaging creating customer confusion", "Over-reaction triggering price war that damages margins"] },
+        riskIndicators: { green: ["Competitor announced \u2014 no customer contact yet", "Signal confidence 70\u201385%", "Affected revenue <$25M"], yellow: ["2+ customer inquiries about competitor received", "Signal confidence \u226585%", "Affected revenue $25M\u2013$100M"], red: ["Active deal losses to this competitor in last 48 hours", "Signal confidence \u226595%", "Affected revenue >$100M or strategic account at risk"] }
+      }
+    },
+    {
+      pattern: "%cybersecurity%",
+      data: {
+        whyItMatters: "The average enterprise cybersecurity breach costs $4.45M (IBM 2024). Companies containing a breach within 12 hours reduce total damage by 68%. Every hour of delayed response costs approximately $370,000 in compounding exposure.",
+        enrichedPhases: [
+          {
+            name: "BREACH CONFIRMATION",
+            timeWindow: "0\u20132 min",
+            objective: "Confirm breach, classify severity, and initiate containment protocol",
+            tasks: [
+              { owner: "CISO", action: "Confirm breach signal from SIEM. Classify: Tier 1 (data exfiltration) / Tier 2 (system access) / Tier 3 (attempted intrusion)", timeTarget: "90 sec" },
+              { owner: "CTO", action: "Activate network isolation protocol for affected systems. Preserve forensic evidence \u2014 no system reboots", timeTarget: "2 min" },
+              { owner: "General Counsel", action: "Begin regulatory clock: GDPR = 72hr, SEC = 4 business days, HIPAA = 60 days. Log exact breach detection time", timeTarget: "2 min" }
+            ],
+            decisionGate: { question: "Is PII, financial data, or IP confirmed as accessed?", yes: "Tier 1 Full Response \u2014 notify CEO and board liaison immediately", no: "Tier 2 Containment Response \u2014 monitor and reassess hourly" }
+          },
+          {
+            name: "WAR ROOM ASSEMBLY",
+            timeWindow: "2\u20134 min",
+            objective: "Right team, right information, right decisions \u2014 simultaneously",
+            tasks: [
+              { owner: "CEO", action: "Join secure incident command channel. Receive 60-second brief: what was accessed, what is contained, what is unknown", timeTarget: "3 min" },
+              { owner: "CFO", action: "Pre-authorize incident response budget. Engage cyber insurance carrier. Initiate financial exposure assessment", timeTarget: "3 min" },
+              { owner: "CHRO", action: "Determine if employee data is involved. Prepare internal communication for affected staff. Legal review required before release", timeTarget: "4 min" }
+            ]
+          },
+          {
+            name: "CONTAINMENT & FORENSICS",
+            timeWindow: "4\u20138 min",
+            objective: "Stop the bleeding without destroying evidence",
+            tasks: [
+              { owner: "CISO", action: "Deploy forensic preservation tools. Begin chain-of-custody documentation required for law enforcement and litigation", timeTarget: "6 min" },
+              { owner: "CTO", action: "Implement emergency access controls. Force credential rotation for all privileged accounts. Enable enhanced logging", timeTarget: "6 min" },
+              { owner: "General Counsel", action: "Engage outside forensic counsel. Establish attorney-client privilege over investigation findings", timeTarget: "7 min" }
+            ],
+            decisionGate: { question: "Is breach fully contained (no ongoing exfiltration)?", yes: "Begin notification planning", no: "Escalate containment \u2014 engage FBI Cyber Division if nation-state indicators present" }
+          },
+          {
+            name: "NOTIFICATION & RECOVERY",
+            timeWindow: "8\u201312 min",
+            objective: "Communicate proactively, recover systematically, document everything",
+            tasks: [
+              { owner: "CMO + General Counsel", action: "Draft and approve external statement. Be first to notify \u2014 do not let customers learn from news media", timeTarget: "10 min" },
+              { owner: "CEO", action: "Personally notify board chair and top 5 enterprise customers if their data was involved", timeTarget: "11 min" },
+              { owner: "CISO", action: "Initiate recovery from clean backups. Establish recovery time objective (RTO) and communicate to ops team", timeTarget: "12 min" }
+            ]
+          }
+        ],
+        tier1Stakeholders: [{ role: "CISO", responsibility: "Incident command + technical containment + forensics", escalationTime: "0 min" }, { role: "CTO", responsibility: "System isolation + access control + recovery architecture", escalationTime: "0 min" }, { role: "CEO", responsibility: "Board notification + customer communication + regulatory accountability", escalationTime: "1 min" }, { role: "General Counsel", responsibility: "Regulatory clock management + attorney-client privilege + law enforcement", escalationTime: "1 min" }, { role: "CFO", responsibility: "Cyber insurance activation + financial exposure + budget authorization", escalationTime: "2 min" }, { role: "CMO", responsibility: "External communications + media response + customer trust", escalationTime: "3 min" }],
+        riskIndicators: { green: ["Attempted intrusion \u2014 no confirmed access", "Single system affected", "No PII or regulated data in scope"], yellow: ["Confirmed unauthorized access to internal systems", "PII of <10,000 records potentially exposed", "Ransomware detected but not deployed"], red: ["Active data exfiltration confirmed", "PII/PHI/financial data of >10,000 records accessed", "Ransomware deployed \u2014 systems encrypted"] },
+        outcomeMetrics: { at12hours: ["Breach fully contained", "Forensic preservation complete", "Regulatory notification timeline confirmed", "Board and top customers personally notified"], at30days: ["Full forensic report complete", "All regulatory notifications filed", "Root cause remediated", "Cyber insurance claim submitted"], failureModes: ["Destroying evidence by rebooting systems", "Public disclosure before containment complete", "Underestimating regulatory notification timelines", "Failing to establish attorney-client privilege early"] }
+      }
+    },
+    {
+      pattern: "%supply chain%",
+      data: {
+        whyItMatters: "Supply chain disruptions cost the average Fortune 1000 company $184M annually. Companies with pre-built response playbooks recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.",
+        enrichedPhases: [
+          {
+            name: "DISRUPTION ASSESSMENT",
+            timeWindow: "0\u20132 min",
+            objective: "Quantify the disruption \u2014 what, where, how much, how long",
+            tasks: [
+              { owner: "COO", action: "Pull disruption data: affected supplier tier, % of supply at risk, lead time impact, geographic scope", timeTarget: "90 sec" },
+              { owner: "CFO", action: "Run revenue-at-risk calculation: production days affected \xD7 daily revenue. Apply buffer stock coverage days", timeTarget: "2 min" },
+              { owner: "Chief Procurement Officer", action: "Query approved alternate supplier list. Identify which alternates can scale to required volume within 72 hours", timeTarget: "2 min" }
+            ],
+            decisionGate: { question: "Will disruption cause production stoppage within 14 days at current inventory?", yes: "Tier 1 Emergency Response", no: "Tier 2 Monitoring \u2014 daily status updates" }
+          },
+          {
+            name: "SUPPLY CONTINUITY",
+            timeWindow: "2\u20135 min",
+            objective: "Secure alternative supply \u2014 do not wait for primary supplier resolution",
+            tasks: [
+              { owner: "Chief Procurement Officer", action: "Issue emergency POs to top 3 alternate suppliers simultaneously. Pre-negotiated rates apply \u2014 no re-negotiation required", timeTarget: "4 min" },
+              { owner: "COO", action: "Activate buffer stock release protocol. Prioritize production schedules to highest-margin, longest-contracted orders first", timeTarget: "4 min" },
+              { owner: "Head of Logistics", action: "Reroute inbound freight. Expedite air freight for critical components if margin supports it", timeTarget: "5 min" }
+            ]
+          },
+          {
+            name: "CUSTOMER COMMUNICATION",
+            timeWindow: "5\u20138 min",
+            objective: "Tell customers before they ask \u2014 and give them a recovery date",
+            tasks: [
+              { owner: "Chief Revenue Officer", action: "Identify customers at risk of delivery delays. Segment by contract penalty exposure and strategic importance", timeTarget: "6 min" },
+              { owner: "CEO / CRO", action: "Personally call top 10 affected enterprise customers. Offer concrete recovery date, compensation option, and executive contact", timeTarget: "7 min" },
+              { owner: "CMO", action: "Draft customer communication with specific timeline commitments. General Counsel review required before release", timeTarget: "8 min" }
+            ],
+            decisionGate: { question: "Can alternate supply cover >80% of committed orders within 14 days?", yes: "Maintain delivery commitments", no: "Invoke force majeure and negotiate timeline extensions with legal support" }
+          },
+          {
+            name: "STABILIZE & DOCUMENT",
+            timeWindow: "8\u201312 min",
+            objective: "Lock in recovery timeline, document decisions, prevent recurrence",
+            tasks: [
+              { owner: "COO", action: "Set 30-day supply continuity milestone: restore to 100% primary supplier capacity or confirm permanent alternate sourcing", timeTarget: "10 min" },
+              { owner: "Chief Procurement Officer", action: "Initiate supplier resilience review: dual-source requirements, geographic diversification criteria, safety stock minimums", timeTarget: "11 min" },
+              { owner: "CFO", action: "File business interruption insurance claim if applicable. Document all incremental costs for recovery", timeTarget: "12 min" }
+            ]
+          }
+        ],
+        tier1Stakeholders: [{ role: "COO", responsibility: "Production continuity + operations command", escalationTime: "0 min" }, { role: "Chief Procurement Officer", responsibility: "Alternate supplier activation + emergency POs", escalationTime: "0 min" }, { role: "CFO", responsibility: "Financial exposure + insurance + budget authorization", escalationTime: "1 min" }, { role: "Chief Revenue Officer", responsibility: "Customer communication + contract management", escalationTime: "2 min" }, { role: "CEO", responsibility: "Strategic customer calls + board notification", escalationTime: "3 min" }, { role: "General Counsel", responsibility: "Contract review + force majeure + insurance claims", escalationTime: "3 min" }],
+        outcomeMetrics: { at12hours: ["Alternate supply secured for >80% of at-risk volume", "Top 10 customers personally contacted", "Recovery timeline communicated", "Insurance claim initiated if applicable"], at30days: ["Primary supply fully restored or permanent alternate in place", "Customer churn from disruption <5%", "Dual-sourcing implemented for all Tier 1 suppliers", "Post-event resilience audit complete"], failureModes: ["Waiting for primary supplier to resolve before sourcing alternates", "Letting customers find out through missed delivery vs. proactive notification", "Under-communicating recovery timeline certainty"] }
+      }
+    },
+    {
+      pattern: "%regulatory%",
+      data: {
+        whyItMatters: "Regulatory non-compliance costs Fortune 1000 companies an average of $14.8M per incident in fines, legal fees, and remediation. Companies with pre-built regulatory response protocols reduce compliance risk by 71% and respond 4x faster than reactive organizations.",
+        enrichedPhases: [
+          {
+            name: "REGULATION INTAKE",
+            timeWindow: "0\u20132 min",
+            objective: "Understand exactly what changed, what it requires, and what the deadline is",
+            tasks: [
+              { owner: "General Counsel", action: "Pull full regulatory text. Extract: effective date, mandatory requirements, voluntary provisions, and enforcement mechanism", timeTarget: "90 sec" },
+              { owner: "Chief Compliance Officer", action: "Run gap assessment against current practices: what is compliant today vs. what requires change", timeTarget: "2 min" },
+              { owner: "CFO", action: "Estimate cost of compliance vs. cost of non-compliance (fines + reputational). Present to CEO with recommendation", timeTarget: "2 min" }
+            ],
+            decisionGate: { question: "Does this regulation require material operational changes OR carries fines >$5M for non-compliance?", yes: "Tier 1 Full Response \u2014 board notification required", no: "Tier 2 Standard Compliance Track" }
+          },
+          {
+            name: "IMPACT MAPPING",
+            timeWindow: "2\u20135 min",
+            objective: "Map every business unit, product, and process affected \u2014 no surprises later",
+            tasks: [
+              { owner: "Chief Compliance Officer", action: "Map regulation to: affected products, business units, data flows, vendor contracts, and customer agreements", timeTarget: "4 min" },
+              { owner: "CISO / CTO", action: "Assess technology compliance requirements: data residency, encryption standards, access controls, audit logging", timeTarget: "4 min" },
+              { owner: "General Counsel", action: "Review customer contracts for regulatory pass-through obligations and notification requirements", timeTarget: "5 min" }
+            ]
+          },
+          {
+            name: "COMPLIANCE ROADMAP",
+            timeWindow: "5\u20138 min",
+            objective: "Build a credible, resourced, deadline-anchored compliance plan",
+            tasks: [
+              { owner: "Chief Compliance Officer", action: "Draft compliance roadmap with milestones anchored to effective date. Identify critical path vs. parallel workstreams", timeTarget: "7 min" },
+              { owner: "CFO", action: "Allocate compliance budget. Identify if outside counsel, technology vendors, or additional headcount are required", timeTarget: "7 min" },
+              { owner: "CHRO", action: "Assess training requirements. Build compliance training schedule for all affected employees", timeTarget: "8 min" }
+            ],
+            decisionGate: { question: "Can full compliance be achieved before the effective date with current resources?", yes: "Execute roadmap", no: "Request regulatory extension AND engage outside counsel for interim safe harbor strategy" }
+          },
+          {
+            name: "STAKEHOLDER ALIGNMENT",
+            timeWindow: "8\u201312 min",
+            objective: "Board, customers, and regulators all receive the same confident message",
+            tasks: [
+              { owner: "CEO", action: "Brief board on regulation, business impact, compliance timeline, and budget. Obtain board endorsement of approach", timeTarget: "10 min" },
+              { owner: "Chief Compliance Officer", action: "File acknowledgment with regulator if required. Establish ongoing dialogue channel with regulatory body", timeTarget: "11 min" },
+              { owner: "CMO + General Counsel", action: "Prepare customer communication: what this regulation means for their data/contracts and your compliance timeline", timeTarget: "12 min" }
+            ]
+          }
+        ],
+        tier1Stakeholders: [{ role: "General Counsel", responsibility: "Regulatory interpretation + legal exposure + enforcement risk", escalationTime: "0 min" }, { role: "Chief Compliance Officer", responsibility: "Gap assessment + compliance roadmap + regulator engagement", escalationTime: "0 min" }, { role: "CFO", responsibility: "Cost modeling + budget authorization + financial disclosure", escalationTime: "1 min" }, { role: "CEO", responsibility: "Board communication + strategic decisions on compliance approach", escalationTime: "2 min" }, { role: "CISO", responsibility: "Technology compliance requirements + data security standards", escalationTime: "2 min" }, { role: "CHRO", responsibility: "Training requirements + HR policy updates + employment law implications", escalationTime: "3 min" }],
+        outcomeMetrics: { at12hours: ["Full regulatory text analyzed", "Gap assessment complete", "Compliance roadmap with milestones created", "Board briefed and approach endorsed"], at30days: ["All high-priority compliance gaps resolved", "Staff training completed", "Customer notifications sent", "Regulator engagement established"], failureModes: ["Treating all regulations as equal priority", "Starting compliance work before gap assessment is complete", "Failing to notify customers when their data practices are affected"] }
+      }
+    },
+    {
+      pattern: "%leadership%",
+      data: {
+        whyItMatters: "Unmanaged executive departures cause an average 9.2% stock price decline in the first 72 hours. Companies with succession playbooks pre-activated recover 3.7x faster and retain 89% more senior talent during the transition.",
+        enrichedPhases: [
+          {
+            name: "SITUATION CONFIRMATION",
+            timeWindow: "0\u20132 min",
+            objective: "Establish what is known, what is unknown, and who has authority now",
+            tasks: [
+              { owner: "Board Chair", action: "Confirm departure type: voluntary resignation, involuntary termination, incapacitation, or death. Each triggers a different protocol", timeTarget: "1 min" },
+              { owner: "General Counsel", action: "Review departure executive's employment agreement: severance triggers, non-compete scope, equity treatment, non-disparagement", timeTarget: "90 sec" },
+              { owner: "Board Chair", action: "Invoke succession plan: confirm interim leader authority, scope, and duration. Board resolution may be required", timeTarget: "2 min" }
+            ],
+            decisionGate: { question: "Is there an approved successor OR interim leader with board mandate?", yes: "Execute transition playbook", no: "Emergency board meeting required within 4 hours to designate interim authority" }
+          },
+          {
+            name: "INTERNAL STABILIZATION",
+            timeWindow: "2\u20135 min",
+            objective: "Prevent panic, rumors, and talent flight \u2014 in that order",
+            tasks: [
+              { owner: "CHRO", action: "Brief the departing executive's direct reports (if applicable). Be direct about what is known and what the timeline for more information is", timeTarget: "3 min" },
+              { owner: "Interim CEO / Board Chair", action: "Record a 90-second video message for all employees: what happened, who is in charge, what stays the same, what changes", timeTarget: "4 min" },
+              { owner: "CHRO", action: "Identify top 15 retention risks: senior leaders likely to leave or be recruited. Initiate retention conversations within 24 hours", timeTarget: "5 min" }
+            ]
+          },
+          {
+            name: "EXTERNAL COMMUNICATION",
+            timeWindow: "5\u20138 min",
+            objective: "Be the first to tell every important stakeholder \u2014 and tell them the same thing",
+            tasks: [
+              { owner: "General Counsel + CFO", action: "Assess if departure triggers SEC 8-K disclosure requirement (within 4 business days). Engage outside securities counsel", timeTarget: "6 min" },
+              { owner: "CMO + General Counsel", action: "Draft and approve external press release. Tone: controlled, confident, forward-looking. Avoid: evasive, uncertain, or defensive language", timeTarget: "7 min" },
+              { owner: "CEO / Board Chair", action: "Personally call: top 5 investors, top 5 customers, key board members not yet notified, and any pending deal counterparties", timeTarget: "8 min" }
+            ],
+            decisionGate: { question: "Are all Tier 1 external stakeholders personally contacted before press release goes live?", yes: "Release statement", no: "Delay release until personal contacts complete \u2014 no one learns from media first" }
+          },
+          {
+            name: "SUCCESSION EXECUTION",
+            timeWindow: "8\u201312 min",
+            objective: "Transfer authority cleanly, lock in transition timeline, prevent power vacuums",
+            tasks: [
+              { owner: "Interim Leader", action: "Conduct first leadership meeting: confirm team structure, ongoing decisions that need authority, and 30-day priorities", timeTarget: "10 min" },
+              { owner: "CHRO", action: "Engage executive search firm if permanent replacement needed. Brief on candidate profile, timeline, and confidentiality requirements", timeTarget: "11 min" },
+              { owner: "General Counsel", action: "Execute all departure documentation: separation agreement, equity schedule, benefit continuation, IP assignment confirmation", timeTarget: "12 min" }
+            ]
+          }
+        ],
+        tier1Stakeholders: [{ role: "Board Chair", responsibility: "Succession authority + board resolution + investor communication", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "Employment agreement + SEC disclosure + departure documentation", escalationTime: "0 min" }, { role: "CHRO", responsibility: "Internal communication + retention risk + executive search", escalationTime: "1 min" }, { role: "CFO", responsibility: "Equity treatment + financial disclosure + budget continuity", escalationTime: "1 min" }, { role: "CMO", responsibility: "External communications + media response + brand continuity", escalationTime: "2 min" }, { role: "Interim CEO", responsibility: "Operational continuity + team stabilization + decision authority", escalationTime: "2 min" }],
+        outcomeMetrics: { at12hours: ["Interim authority established with board mandate", "All employees messaged by interim leader", "Top 15 retention risks identified and contacted", "All Tier 1 external stakeholders personally briefed"], at30days: ["Retention rate of senior leadership team >90%", "Permanent search launched with shortlist", "No material customer or investor departures", "Operational continuity maintained \u2014 no missed deliverables"], failureModes: ["Letting employees hear through rumors or media before leadership communication", "Failing to identify retention risks within first 24 hours", "Creating a power vacuum by delaying interim authority appointment"] }
+      }
+    }
+  ];
+  const results = [];
+  for (const { pattern, data } of flagship) {
+    try {
+      const matches = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name }).from(playbookLibrary).where(sql17`lower(${playbookLibrary.name}) like ${pattern}`).limit(3);
+      if (matches.length === 0) {
+        results.push(`No match for pattern: ${pattern}`);
+        continue;
+      }
+      for (const match of matches) {
+        await db.update(playbookLibrary).set(data).where(eq37(playbookLibrary.id, match.id));
+        results.push(`\u2713 Enriched: ${match.name}`);
+      }
+    } catch (err) {
+      results.push(`\u2717 Error for ${pattern}: ${err.message}`);
+    }
+  }
+  return results;
+}
 async function registerRoutes(app2, existingServer) {
   await setupAuth(app2);
   app2.use("/api", conditionalAuth);
@@ -44034,6 +44355,81 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
     try {
       const leads = await storage.getInvestorLeads();
       res.json(leads);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/task-acknowledgments", async (req, res) => {
+    try {
+      const { sessionId, taskLabel, taskIndex, acknowledgedBy, acknowledgedRole, actionType, notes } = req.body;
+      if (!sessionId || !taskLabel || !acknowledgedBy || !acknowledgedRole) {
+        return res.status(400).json({ error: "Missing required fields" });
+      }
+      const orgId = req.orgId || null;
+      const [ack] = await db.insert(taskAcknowledgments).values({
+        sessionId,
+        taskLabel,
+        taskIndex: taskIndex ?? null,
+        acknowledgedBy,
+        acknowledgedRole,
+        actionType: actionType || "complete",
+        notes: notes || null,
+        organizationId: orgId
+      }).returning();
+      res.json(ack);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/task-acknowledgments/:sessionId", async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      const acks = await db.select().from(taskAcknowledgments).where(eq37(taskAcknowledgments.sessionId, sessionId)).orderBy(asc2(taskAcknowledgments.acknowledgedAt));
+      res.json(acks);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/execution-history", async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      if (!orgId) {
+        const demoHistory = buildDemoExecutionHistory();
+        return res.json(demoHistory);
+      }
+      const activations = await db.select({
+        id: playbookActivations.id,
+        playbookId: playbookActivations.playbookId,
+        activatedAt: playbookActivations.activatedAt,
+        completedAt: playbookActivations.completedAt,
+        actualExecutionTime: playbookActivations.actualExecutionTime,
+        successRating: playbookActivations.successRating,
+        targetMet: playbookActivations.targetMet,
+        lessonsLearned: playbookActivations.lessonsLearned,
+        playbookName: playbookLibrary.name,
+        playbookDomainId: playbookLibrary.domainId,
+        severityScore: playbookLibrary.severityScore
+      }).from(playbookActivations).leftJoin(playbookLibrary, eq37(playbookActivations.playbookId, playbookLibrary.id)).where(eq37(playbookActivations.organizationId, orgId)).orderBy(desc20(playbookActivations.activatedAt)).limit(50);
+      const total = activations.length;
+      const completed = activations.filter((a) => a.completedAt);
+      const avgTime = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 12), 0) / completed.length) : null;
+      const targetMetCount = activations.filter((a) => a.targetMet).length;
+      const avgScore = completed.length ? Math.round(completed.reduce((s, a) => s + (a.successRating || 75), 0) / completed.length) : null;
+      res.json({
+        summary: { total, avgTime, targetMetCount, avgScore, timeSaved: total * 60 },
+        activations
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/admin/seed-flagship-playbooks", async (req, res) => {
+    if (!req.isAuthenticated() || req.user?.role !== "admin") {
+      return res.status(403).json({ error: "Admin only" });
+    }
+    try {
+      const results = await seedFlagshipPlaybooks();
+      res.json({ success: true, updated: results });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }

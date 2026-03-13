@@ -131,6 +131,7 @@ const McKinseyIntelligenceCenter = lazy(() => import("./pages/mckinsey/McKinseyI
 const StrategyExecutionDashboard = lazy(() => import("./pages/StrategyExecutionDashboard"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
 const CommandCenter = lazy(() => import("./pages/CommandCenter"));
+const ExecutionHistory = lazy(() => import("./pages/ExecutionHistory"));
 const FutureGym = lazy(() => import("./pages/FutureGym"));
 const ForesightRadar = lazy(() => import("./pages/ForesightRadar"));
 const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
@@ -375,6 +376,7 @@ function Router() {
         <Route path="/strategic-monitoring/:id" component={CrisisDetail} />
         <Route path="/command-center" component={CommandCenter} />
         <Route path="/command-center-dynamic" component={CommandCenter} />
+        <Route path="/execution-history" component={ExecutionHistory} />
         <Route path="/collaboration" component={RealTimeCollaboration} />
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
 

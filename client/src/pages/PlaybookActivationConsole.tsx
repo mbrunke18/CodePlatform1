@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import PageLayout from '@/components/layout/PageLayout';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -302,6 +302,34 @@ export default function PlaybookActivationConsole() {
   const [liveEvents, setLiveEvents] = useState<{ time: string; text: string; type: 'start' | 'complete' | 'notify' | 'init' }[]>([]);
   const [stakeholderStatuses, setStakeholderStatuses] = useState<{ name: string; title: string; method: string; status: 'pending' | 'notified' | 'acknowledged' }[]>([]);
   const prevTasksRef = useRef<DemoTask[]>([]);
+
+  // T1: Task Acknowledgment & Audit Trail
+  const sessionIdRef = useRef<string>(`session-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  const [ackMap, setAckMap] = useState<Record<string, { by: string; role: string; at: string; actionType: string }>>({});
+  const [ackFormTaskId, setAckFormTaskId] = useState<string | null>(null);
+  const [ackName, setAckName] = useState("Executive");
+  const [ackRole, setAckRole] = useState("CEO");
+  const [ackActionType, setAckActionType] = useState<'complete' | 'escalate' | 'delegate'>('complete');
+
+  const submitAcknowledgment = useCallback(async (taskId: string, taskLabel: string, taskIndex: number) => {
+    const at = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+    setAckMap(prev => ({ ...prev, [taskId]: { by: ackName, role: ackRole, at, actionType: ackActionType } }));
+    const actionVerb = ackActionType === 'complete' ? '✓ Acknowledged' : ackActionType === 'escalate' ? '↑ Escalated' : '→ Delegated';
+    setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ${actionVerb} — ${taskLabel}`, type: 'complete' }, ...prev]);
+    setAckFormTaskId(null);
+    try {
+      await apiRequest('POST', '/api/task-acknowledgments', {
+        sessionId: sessionIdRef.current,
+        taskLabel,
+        taskIndex,
+        acknowledgedBy: ackName,
+        acknowledgedRole: ackRole,
+        actionType: ackActionType,
+      });
+    } catch {
+      // Non-fatal: UI already updated
+    }
+  }, [ackName, ackRole, ackActionType]);
 
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';
@@ -1108,6 +1136,65 @@ export default function PlaybookActivationConsole() {
                           <span style={{ fontSize: 11, color: TEAL, fontWeight: 600 }}>✓ Complete</span>
                         )}
                       </div>
+
+                      {/* Acknowledgment section */}
+                      {ackMap[task.id] ? (
+                        <div style={{ marginTop: 10, padding: "6px 12px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 5, display: "flex", alignItems: "center", gap: 10 }}>
+                          <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                          <span style={{ fontSize: 11, color: TEAL, fontWeight: 700 }}>
+                            {ackMap[task.id].actionType === 'escalate' ? '↑ Escalated' : ackMap[task.id].actionType === 'delegate' ? '→ Delegated' : '✓ Acknowledged'} by {ackMap[task.id].role} — {ackMap[task.id].at}
+                          </span>
+                        </div>
+                      ) : (isActive || isDone) && ackFormTaskId !== task.id ? (
+                        <div style={{ marginTop: 10, display: "flex", gap: 8 }}>
+                          <button
+                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('complete'); }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 4, cursor: "pointer" }}
+                          >✓ Acknowledge</button>
+                          <button
+                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('escalate'); }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 4, cursor: "pointer" }}
+                          >↑ Escalate</button>
+                          <button
+                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('delegate'); }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(10,15,46,0.05)", border: `1px solid rgba(10,15,46,0.2)`, color: NAVY, borderRadius: 4, cursor: "pointer" }}
+                          >→ Delegate</button>
+                        </div>
+                      ) : null}
+
+                      {/* Inline acknowledgment form */}
+                      {ackFormTaskId === task.id && (
+                        <div style={{ marginTop: 12, padding: "14px 16px", background: "#F8F9FC", border: `1px solid ${BORDER}`, borderRadius: 6 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 10 }}>
+                            {ackActionType === 'escalate' ? '↑ Escalate Task' : ackActionType === 'delegate' ? '→ Delegate Task' : '✓ Acknowledge Task'}
+                          </div>
+                          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" as const }}>
+                            <input
+                              value={ackName}
+                              onChange={e => setAckName(e.target.value)}
+                              placeholder="Your name"
+                              style={{ flex: "1 1 120px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, color: NAVY, minWidth: 100 }}
+                            />
+                            <select
+                              value={ackRole}
+                              onChange={e => setAckRole(e.target.value)}
+                              style={{ flex: "1 1 100px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, color: NAVY, background: "#fff" }}
+                            >
+                              {['CEO','CFO','COO','CMO','CTO','CISO','CHRO','General Counsel','Chief Strategy Officer','Chief Revenue Officer','Chief Procurement Officer','Board Chair','VP Operations','VP Finance','Head of Sales'].map(r => (
+                                <option key={r} value={r}>{r}</option>
+                              ))}
+                            </select>
+                            <button
+                              onClick={() => submitAcknowledgment(task.id, task.description || '', index)}
+                              style={{ padding: "7px 18px", background: ackActionType === 'complete' ? TEAL : ackActionType === 'escalate' ? GOLD : NAVY, color: "#fff", border: "none", borderRadius: 4, fontSize: 12, fontWeight: 700, cursor: "pointer" }}
+                            >Confirm</button>
+                            <button
+                              onClick={() => setAckFormTaskId(null)}
+                              style={{ padding: "7px 12px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, cursor: "pointer" }}
+                            >Cancel</button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                   );

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -617,7 +618,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </Card>
 
               {/* Action Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card className="border border-[#E8E4DC] hover:border-[#0A0F2E] transition-colors bg-[#F8F7F4]">
                   <CardContent className="p-6">
                     <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
@@ -646,6 +647,21 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     <Button variant="outline" className="w-full" style={{ border:"1.5px solid #E8E4DC", color: NAVY, fontSize: 10, fontWeight: 700 }}>
                       MANAGE TRIGGERS
                     </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border border-[#C9A84C]/40 hover:border-[#C9A84C] transition-colors bg-white">
+                  <CardContent className="p-6">
+                    <div style={{ width: 32, height: 32, background: "#C9A84C", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                      <Clock className="w-4 h-4 text-white" />
+                    </div>
+                    <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Execution History</h3>
+                    <p className="text-sm text-gray-600 mb-4">Track response time trajectory and performance scores across all activations.</p>
+                    <Link href="/execution-history">
+                      <Button className="w-full" style={{ background: "#0A0F2E", color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em" }}>
+                        VIEW TRAJECTORY
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               </div>

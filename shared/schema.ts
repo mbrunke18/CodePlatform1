@@ -2912,6 +2912,23 @@ export const activationOutcomes = pgTable('activation_outcomes', {
 export type ActivationOutcome = typeof activationOutcomes.$inferSelect;
 export type InsertActivationOutcome = typeof activationOutcomes.$inferInsert;
 
+// Task Acknowledgment Audit Trail — records who acknowledged each war room task and when
+export const taskAcknowledgments = pgTable('task_acknowledgments', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  sessionId: varchar('session_id', { length: 255 }).notNull(), // Activation ID or demo session key
+  taskLabel: text('task_label').notNull(),                     // Task description text
+  taskIndex: integer('task_index'),                            // Position in task list
+  acknowledgedBy: varchar('acknowledged_by', { length: 255 }).notNull(),
+  acknowledgedRole: varchar('acknowledged_role', { length: 100 }).notNull(),
+  actionType: varchar('action_type', { length: 50 }).notNull().default('complete'), // complete|escalate|delegate|note
+  notes: text('notes'),
+  acknowledgedAt: timestamp('acknowledged_at').defaultNow().notNull(),
+  organizationId: uuid('organization_id').references(() => organizations.id),
+});
+
+export type TaskAcknowledgment = typeof taskAcknowledgments.$inferSelect;
+export type InsertTaskAcknowledgment = typeof taskAcknowledgments.$inferInsert;
+
 export const insertActivationOutcomeSchema = createInsertSchema(activationOutcomes).pick({
   activationId: true,
   organizationId: true,

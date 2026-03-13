@@ -1,7 +1,7 @@
 # VaughnMartin — Execution Operating System
 
 ## Overview
-VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 companies. It automates project creation, task assignment, document staging, and budget allocation, enabling a 12-minute response to strategic triggers. The platform integrates AI-driven trigger monitoring with 170 strategic playbooks across 9 domains, operating on the IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE). It fosters a human-AI partnership, with AI handling monitoring and recommendations while human executives retain decision-making. The project aims to become "The Execution Infrastructure Enterprises Are Missing," targeting C-suite executives and boards across all major industries. Its brand tagline is "We Make Enterprises Fearless."
+VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortune 1000 companies. Its primary purpose is to automate project creation, task assignment, document staging, and budget allocation, enabling a rapid 12-minute response to strategic triggers. The platform leverages AI-driven trigger monitoring and integrates 170 strategic playbooks across 9 domains, all operating within the proprietary IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE). It emphasizes a human-AI partnership, where AI handles monitoring and recommendations, while human executives retain ultimate decision-making authority. The project's vision is to become "The Execution Infrastructure Enterprises Are Missing," targeting C-suite executives and boards across all major industries, with the brand tagline "We Make Enterprises Fearless."
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -18,11 +18,11 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 **UI/UX Decisions:**
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
-- **Branding:** Consistent `VaughnMartin` (company) and `Execution OS` (product) branding with logo placement on all key pages.
-- **Navigation:** Four-section nav (Product, Experience, Platform, Investors) with no duplicates. Product = marketing/education. Experience = AI tools + get started. Platform = 7 authenticated hub pages only. Footer mirrors nav structure organized by IDEA phases. "Crisis Hub" retired — replaced by "Situations Hub" covering all 9 strategic domains. Investors dropdown has 5 links: For Investors, Pitch Deck, Investor Resources, Board Briefings, Founder's Story. "Our Story" removed as redundant with Founder's Story.
-- **Hub Route Consolidation (completed):** 30+ pages consolidated into 6 hub pages with tab navigation. Old routes redirect to hubs: `/dashboard`, `/executive-dashboard`, `/mission-control`, `/scorecard` → `/command-center`; `/analytics`, `/advanced-analytics`, `/executive-analytics-dashboard` → `/intelligence-hub`; `/settings` → `/settings-hub`; `/workspaces/*` → `/workspace?tab=*`; `/crisis-hub` → `/situations-hub`. "Mission Control" label retired — replaced by "Command Center" across nav, footer, and all component links.
+- **Branding:** Consistent `VaughnMartin` and `Execution OS` branding with logo placement on all key pages.
+- **Navigation:** Four-section navigation (Product, Experience, Platform, Investors) with a consolidated "Situations Hub" for strategic domains and an "Investors" dropdown.
+- **Hub Route Consolidation:** Over 30 pages consolidated into 6 hub pages with tab navigation (e.g., `/dashboard` routes to `/command-center`).
 - **Layout:** All pages are wrapped by a `PageLayout` component including `StandardNav` and `Footer`.
-- **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation, targeting a broad executive audience.
+- **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation.
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
@@ -30,70 +30,33 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Database:** PostgreSQL (Neon serverless) with Drizzle ORM.
 - **Real-time:** Socket.IO WebSocket server.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
-- **Live Signal Ingestion:** Real-time signal monitoring in 15-minute cycles across 20 categories and 248+ data points.
+- **Live Signal Ingestion:** Real-time signal monitoring across 20 categories and 248+ data points.
 - **Authentication:** Replit OIDC with Passport.js; new users get an organization on first login.
-- **Role-Based Access:** `requireRole()` middleware enforces permissions for write routes.
-- **AI Services:** OpenAI GPT-4o for pulse analysis, risk assessment, executive summaries, and opportunity detection.
+- **Role-Based Access:** `requireRole()` middleware for permission enforcement.
+- **AI Services:** OpenAI GPT-4o for various analytical and generative tasks.
 - **Error Monitoring:** Sentry integration for server and frontend.
-- **Route Architecture:** Centralized `server/routes.ts` with domain logic extracted into modular files.
+- **Route Architecture:** Centralized `server/routes.ts` with modular domain logic.
 
 **Feature Specifications:**
-- **Founder Story / Manifesto (`/founder-story`):** Manifesto-first page emphasizing the "We Make Enterprises Fearless" statement, supported by bio and video content.
-- **Playbook Library:** 170 active playbooks across 9 domains, with enriched content and free samples for unauthenticated users.
-- **Try Demo Experience (`/try-demo`):** Public route demonstrating the platform's value through a 7-phase process.
-- **Role Availability Signal:** Admin-set flags for managing key role limitations to ensure 12-minute response.
-- **Activation Outcome Card:** Records outcomes for completed playbook activations, including task stats and AI summaries.
-- **Admin Customer Health View:** Admin-only dashboard showing RAG status of pilot organizations.
-- **Execution Intelligence Dashboard + Maturity Score:** Displays a 0-100 maturity score based on platform usage.
-- **Playbook Performance Fingerprints:** Details activation count, execution time, and target met rate for playbooks.
-- **Investor Gate (`InvestorGate.tsx`):** Secure access to investor resources, capturing leads via a form.
-- **AI Execution Brief (`PlaybookActivationConsole.tsx`):** AI-generated commander-style brief before playbook activation. While generating, a 5-step animated `BriefLoadingState` component ticks through: domain analysis → signal synthesis → stakeholder mapping → risk assessment → Commander Brief composition. Brand constants (NAVY, GOLD, TEAL, MUTED, etc.) are defined at module level so all helper components share them.
-- **Execution Console Live War Room (`PlaybookActivationConsole.tsx`):** During execution, shows: Stakeholder Notification Tracker (domain-matched C-suite contacts with Pending→Notified→Acknowledged progression); Live Activity Feed (timestamped war-room log entries); task cards with action-type badges (ANALYZE / NOTIFY / CONVENE / BRIEF) and a gold pulse dot on the active in-progress task.
-- **Post-Activation Debrief Screen (`PlaybookActivationConsole.tsx`):** Automatically surfaces when execution completes — shows a 0–100 performance score (color-coded Exceptional/Strong/On Track/Needs Review), ROI dollar value ($40/min × time saved vs. 72hr benchmark), 4 metric cards (Performance Score, Time Preserved, Tasks Completed, Decision Velocity), an AI recommendation, and CTAs to ADVANCE workspace, ROI Dashboard, and Outcome Report. Replaces the old plain success message.
-- **Auto-Task Seeding (`PlaybookActivationConsole.tsx`):** When a playbook is activated with zero tasks in the database, 7 domain-specific tasks are automatically generated based on the playbook's strategic domain (Financial Strategy, Market Dynamics, Brand & Reputation, etc.) or a professional generic set. Tasks begin `in_progress` immediately on activation and auto-progress every 20 seconds — completing one and starting the next — giving demos a live, realistic execution feel without any customer setup. `displayTasks` merges real DB tasks with generated demo tasks; all progress, debrief scores, and ROI calculations reflect both sources identically.
-- **Workspace Pages Embeddable (`WorkspaceIdentify/Detect/Execute/Advance.tsx`):** All four workspace IDEA pages accept an optional `embedded` prop. When `embedded=true`, the `PageLayout` wrapper is suppressed, allowing these pages to be rendered as tab content inside `WorkspaceHub.tsx` without double-wrapping the nav and footer.
-- **Graduated Attention — Completed Task Collapse (`WorkspaceExecute.tsx`):** Collapses completed tasks in the MyActionsPanel for better focus.
-- **Source Governance Indicator (`PlaybookDetail.tsx`):** Version-based color-coded status badge for playbooks.
-- **Guided Start Experience (`/begin`, `/start`):** Single guided entry path — no nav, no dashboards. Three high-drama scenario cards show financial stakes grids ($2.1B deal, $340M revenue at risk, etc.) with domain, window, and stakes metadata. Selecting one triggers a DETECT animation phase with animated signal counter (0→248), two-column layout (step-by-step confirmation + domain signal categories panel), and a threat level panel at step 3. READY screen has side-by-side "What's at Stake" vs "What Happens Next" panels with scenario-specific data. Auto-navigates to `PlaybookActivationConsole` with a real domain-matched playbook from `/api/playbook-library`. No login required.
-- **Simulation Context Banner (Debrief):** When `safeTasks.length === 0` (demo/guided-start run), the debrief screen shows a teal "Concept Simulation — Evidence of Execution Velocity" strip explaining that performance scores and ROI are modeled against the 72-hour industry benchmark — honest framing without undermining the value demonstration.
-- **Trigger → Playbook IDEA Chain (`TriggersManagement.tsx` + `GET /api/executive-triggers`):** The IDEA Framework is fully wired: data points DETECT a trigger → specific playbooks surface for EXECUTE. The API resolves each trigger's `recommendedPlaybooks` slugs to real `playbookLibrary` records via fuzzy name matching then keyword-scored domain fallback — returning `linkedPlaybooks: [{id, name, domain}]` with real UUIDs. UI shows "Execute With" tags that link to `/identify/playbooks/:id`. "Execute Playbook" button routes to first specific linked playbook. Do NOT revert to domain-filter routing. Auth gating: all interactive controls hidden from unauthenticated users; trigger data remains visible to demonstrate value before sign-in.
-- **Trigger Configuration Wizard (`TriggerConfigurationWizard.tsx`):** 4-step wizard: (1) Situation & Category — 6 scenario quick-selects auto-fill name/category; (2) Conditions — full 248 data points from `shared/intelligence-signals.ts` per category; (3) Notifications; (4) Playbook Mapping — fetches `/api/playbooks/templates`, shows "Recommended" (domain-matched) first then "Other". Saves actual playbook UUIDs. On edit, pre-loads from `linkedPlaybooks` IDs not old slugs. Do NOT revert to `/api/playbooks` or hardcoded `SIGNAL_FIELDS`.
-- **Homepage Hero Headline:** Three-line gold-on-navy problem statement highlighting time savings.
-- **Homepage Problem Section:** Four failure cards illustrating escalating losses, contrasting old and new execution timelines.
-
-**"WOW" Features (5 Differentiators):**
-- **Execution ROI Dashboard (`/roi-dashboard`):** Board-ready value intelligence.
-- **Compound Threat Intelligence:** GPT-4o-powered cross-domain threat synthesis.
-- **Shadow Strategy Simulator (`/simulation-studio`):** Digital Twin scenario dry-run.
-- **Strategic Recorder (`/strategic-recorder`):** Generates playbook outlines from strategic notes using GPT-4o.
-- **War Room Pulse Map:** Animated SVG visualization of signal domains.
-
-**Data Consistency Standards (enforced across all pages):**
-- Response time: **12 minutes** (never "4 min" or "4-minute activation")
-- Speed advantage: **340x faster** (never "500x", "15,000x", or "10x faster")
-- Playbooks: **170** across **9 strategic domains** (never "166")
-- Signal categories: **20** (never "16")
-- Data points: **248+** (never "216+")
-- Executive triggers: **221**
-- Navigation: All nav links verified working for both public and authenticated users — zero dead links.
-- Brand name: **Execution OS** (never "ExecuteIQ" — fully purged from all pages, docs, and data files)
-
-**Investor Page Standards (critical for YC/investor reviews):**
-- `/investors` — Rebuilt with code-based architecture + positioning diagrams (images with stale branding removed)
-- Scenario cards show illustrative context only — no fabricated client claims (LVMH/Toyota/Fortune 500 banks removed as proof points)
-- All 6 investor markdown documents renamed `ExecutionOS-*.md` and purged of ExecuteIQ references
-- InvestorPresentation (`/pitch-deck`) verified clean
-- Industry demo pages (LVMH, Toyota scenarios) clearly framed as simulation demos, not claimed customers
-- Stale "500x faster" → "340x faster" fixed in InvestorLanding hero
-- Stale "10x faster" → "340x faster" fixed in Investors hero paragraph
+- **Core Platform Features:** Founder Story, Playbook Library (170 playbooks across 9 domains), Try Demo Experience, Role Availability Signal, Activation Outcome Card, Admin Customer Health View, Execution Intelligence Dashboard + Maturity Score, Playbook Performance Fingerprints, Investor Gate.
+- **AI-Powered Execution:** AI Execution Brief before playbook activation, Live War Room during execution (Stakeholder Notification Tracker, Live Activity Feed, task cards with action-type badges), Post-Activation Debrief Screen (performance score, ROI calculation, AI recommendations).
+- **Automation & Simulation:** Auto-Task Seeding for demos, embeddable Workspace Pages, Graduated Attention for completed tasks, Source Governance Indicator for playbooks, Guided Start Experience with scenario cards, Simulation Context Banner for demo runs.
+- **IDEA Framework Implementation:** Full Trigger → Playbook IDEA Chain (`TriggersManagement.tsx` and API) for detecting triggers and recommending playbooks.
+- **Enhanced Task Management:** Task Acknowledgment & Audit Trail with action buttons (Acknowledge, Escalate, Delegate) and DB persistence.
+- **Reporting & Analytics:** Execution History Dashboard (`/execution-history`) with KPIs, response time trajectory, and activation log.
+- **Flagship Playbooks:** 5 enriched flagship playbooks with 4-phase expert content, specific task owners, time targets, decision gates, and `why_it_matters` statements.
+- **Configuration Wizards:** Trigger Configuration Wizard for setting up situations, conditions, notifications, and playbook mapping.
+- **Key Differentiators ("WOW" Features):** Execution ROI Dashboard, Compound Threat Intelligence (GPT-4o), Shadow Strategy Simulator (Digital Twin), Strategic Recorder (GPT-4o), War Room Pulse Map.
+- **Data Consistency Standards:** Strict adherence to consistent values for response time (12 minutes), speed advantage (340x faster), playbooks (170 across 9 domains), signal categories (20), data points (248+), executive triggers (221), and brand naming (Execution OS).
+- **Investor Page Standards:** Rebuilt `/investors` page with code-based architecture, illustrative scenario cards, and purged all references to outdated branding/claims.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
-- **Build:** Frontend and server bundles pre-built and committed to the repo, with a no-op deployment build command.
-- **Server Startup Order:** HTTP server starts immediately, serving static assets before asynchronous initialization.
+- **Build:** Frontend and server bundles pre-built and committed to the repo.
+- **Server Startup:** HTTP server starts immediately, serving static assets before asynchronous initialization.
 - **Startup Migrations:** `CREATE TABLE IF NOT EXISTS` for key tables on every boot.
 - **Playbook Enrichment Seed:** Seeds enriched playbook content from JSON on every boot.
-- **Route Ordering Rule:** Specific named routes registered before parameterized catch-all routes.
+- **Route Ordering:** Specific named routes registered before parameterized catch-all routes.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
