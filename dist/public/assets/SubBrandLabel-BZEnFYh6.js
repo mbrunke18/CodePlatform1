@@ -1,0 +1,1 @@
+import{j as s}from"./index-BN-U7c6j.js";import{V as o}from"./Footer-CFhBxa3a.js";const r=["Playbook™","Signal™","Compass™","Retrospect™"];function c({name:n,size:a=14,className:i=""}){return s.jsxs("span",{className:`inline-flex items-center gap-1 ${i}`,children:[s.jsx(o,{variant:"icon-only",height:a}),n]})}function l(n){return r.includes(n)}export{c as S,l as i};
