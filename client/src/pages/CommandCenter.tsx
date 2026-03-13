@@ -312,7 +312,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Command Center · Compass™</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", color: NAVY, marginBottom: 16 }}>
-                Execution <em style={{ fontStyle: "italic", color: GOLD }}>Command Center</em>
+                Command <em style={{ fontStyle: "italic", color: GOLD }}>Center</em>
               </h1>
               <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6">
                 Your organization's nerve center for strategic execution. When a critical event is detected, 
