@@ -6,9 +6,11 @@ import {
   Radio, Activity, AlertTriangle, CheckCircle2, ArrowRight, Lock
 } from 'lucide-react';
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
+const NAVY_BG  = "#132558";
+const MID_NAVY = "#141B45";
+const NAVY_INK = "#0A0F2E";
+const GOLD     = "#C9A84C";
+const TEAL     = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 interface Scenario {
@@ -129,11 +131,11 @@ export default function GuidedStart() {
 
   if (phase === 'select') {
     return (
-      <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ minHeight: '100vh', background: NAVY_BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
         {/* Grid overlay */}
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px', pointerEvents: 'none' }} />
         {/* Orb */}
-        <div style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.13) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div className="relative z-10 w-full max-w-5xl">
           {/* Logo / back link */}
@@ -219,8 +221,8 @@ export default function GuidedStart() {
   if (phase === 'detect' && selected) {
     const Icon = selected.icon;
     return (
-      <div style={{ minHeight: '100vh', background: '#070C1F', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
+      <div style={{ minHeight: '100vh', background: MID_NAVY, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
 
         <div className="relative z-10 w-full max-w-xl" style={{ textAlign: 'center' }}>
           {/* Phase label */}
@@ -290,9 +292,9 @@ export default function GuidedStart() {
   if (phase === 'ready' && selected) {
     const Icon = selected.icon;
     return (
-      <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
-        <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 800, height: 400, borderRadius: '50% 50% 0 0', background: 'radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%)' }} />
+      <div style={{ minHeight: '100vh', background: NAVY_BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 900, height: 500, borderRadius: '50% 50% 0 0', background: 'radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%)' }} />
 
         <div className="relative z-10 w-full max-w-2xl" style={{ textAlign: 'center' }}>
           {/* TRIGGER CONFIRMED badge */}
@@ -335,7 +337,7 @@ export default function GuidedStart() {
           <button
             onClick={handleActivate}
             style={{
-              background: GOLD, color: NAVY, border: 'none', padding: '16px 48px',
+              background: GOLD, color: NAVY_INK, border: 'none', padding: '16px 48px',
               fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
               cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 10,
               transition: 'opacity 0.2s',
