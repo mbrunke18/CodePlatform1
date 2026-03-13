@@ -442,7 +442,7 @@ Return ONLY raw JSON (no markdown, no code fences):
   "comparison_metrics": {
     "time_to_coordination": {"reality": "extracted timeline", "execution_os": "12 minutes"},
     "stakeholder_alignment": {"reality": "description", "execution_os": "Parallel in minutes"},
-    "outcome": {"reality": "negative outcome", "executeiq": "positive outcome"}
+    "outcome": {"reality": "negative outcome", "execution_os": "positive outcome"}
   }
 }
 

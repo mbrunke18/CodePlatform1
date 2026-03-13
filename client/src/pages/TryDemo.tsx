@@ -519,7 +519,7 @@ export default function TryDemo() {
         hoursRecovered: 98,
         costOfDelay: Math.round((scenario?.dealValue || 5000000) * 0.15),
         traditionalTime: '20-72 hours',
-        executeiqTime: '12 minutes',
+        responseTime: '12 minutes',
       },
       nextExecutionRecommendations: [
         'Apply improved playbook to similar scenarios in pipeline',

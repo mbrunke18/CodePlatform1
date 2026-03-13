@@ -1,14 +1,14 @@
 // ============================================================================
-// EXECUTEIQ - STRATEGIC EXECUTION OPERATING SYSTEM
+// EXECUTION OS - STRATEGIC EXECUTION OPERATING SYSTEM
 // Centralized definitions for the 4-phase IDEA Framework and 9 Strategic Domains
 // "Orchestration as a System"
 // ============================================================================
 
-// ----- EXECUTEIQ BRAND CONSTANTS -----
+// ----- EXECUTION OS BRAND CONSTANTS -----
 
-export const EXECUTEIQ_BRAND = {
-  name: 'ExecuteIQ',
-  fullName: 'ExecuteIQ - Strategic Execution OS',
+export const EXECUTION_OS_BRAND = {
+  name: 'Execution OS',
+  fullName: 'VaughnMartin - Execution OS',
   tagline: 'Orchestration as a System.',
   extendedTagline: 'Detect Early. Execute Precisely. Advance Strategy.',
   alternateTaglines: [
@@ -27,12 +27,13 @@ export const EXECUTEIQ_BRAND = {
     detect: { name: 'VaughnMartin Signal™', description: 'AI-powered signal monitoring and detection' },
     execute: { name: 'VaughnMartin Compass™', description: 'Coordinated response and execution' },
     advance: { name: 'VaughnMartin Retrospect™', description: 'Institutional learning and improvement' },
-    executive: { name: 'ExecuteIQ One™', description: 'Single-pane executive view' }
+    executive: { name: 'Execution OS One™', description: 'Single-pane executive view' }
   }
 } as const;
 
 // Backward compatibility alias
-export const ExecuteIQ_BRAND = EXECUTEIQ_BRAND;
+export const ExecuteIQ_BRAND = EXECUTION_OS_BRAND;
+export const EXECUTEIQ_BRAND = EXECUTION_OS_BRAND;
 
 // ----- LEADERSHIP CAPABILITIES (Fisk Leadership Model) -----
 export const LEADERSHIP_CAPABILITIES = {
@@ -338,7 +339,7 @@ export const TIMING_BENCHMARKS = {
     activationUnit: 'minutes',
     fullExecutionTime: 90,
     fullExecutionUnit: 'minutes',
-    description: 'ExecuteIQ enables 12-minute playbook activation and 90-minute coordinated execution',
+    description: 'Execution OS enables 12-minute playbook activation and 90-minute coordinated execution',
     // Backward compatibility
     decisionTime: 12,
     decisionUnit: 'minutes',
@@ -347,6 +348,7 @@ export const TIMING_BENCHMARKS = {
   },
   // Backward compatibility aliases
   get ExecuteIQ() { return this.EXECUTEIQ; },
+  get EXECUTION_OS() { return this.EXECUTEIQ; },
   get M_PLATFORM() { return this.EXECUTEIQ; },
   INDUSTRY_AVERAGE: {
     coordinationStartTime: 24,

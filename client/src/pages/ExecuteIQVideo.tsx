@@ -31,7 +31,7 @@ const SCENES = [
   { id: "outro", component: Outro, duration: 5000, label: "CTA" },
 ];
 
-export default function ExecuteIQVideo() {
+export default function ExecutionOSVideo() {
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);

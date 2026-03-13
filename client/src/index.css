@@ -945,12 +945,12 @@ html:not(.dark) [class*="border-zinc-9"] {
 .bg-vm-gold { background-color: var(--exos-gold); }
 .bg-vm-teal { background-color: var(--exos-success); }
 .bg-vm-dark { background-color: var(--exos-midnight-mid); }
-.text-executeiq-navy { color: var(--exos-midnight); }
-.text-executeiq-gold { color: var(--exos-gold); }
-.text-executeiq-teal { color: var(--exos-success); }
-.border-executeiq-navy { border-color: var(--exos-midnight); }
-.border-executeiq-gold { border-color: var(--exos-gold); }
-.border-executeiq-teal { border-color: var(--exos-success); }
+.text-vm-navy { color: var(--exos-midnight); }
+.text-vm-gold { color: var(--exos-gold); }
+.text-vm-teal { color: var(--exos-success); }
+.border-vm-navy { border-color: var(--exos-midnight); }
+.border-vm-gold { border-color: var(--exos-gold); }
+.border-vm-teal { border-color: var(--exos-success); }
 
 /* ========================================
    GOLD DIVIDER — BRAND DETAIL

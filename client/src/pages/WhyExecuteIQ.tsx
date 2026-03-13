@@ -36,7 +36,7 @@ const TEAL = "#2B8A6E";
 const OFF = "#F8F7F4";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
-export default function WhyExecuteIQ() {
+export default function WhyExecutionOS() {
   useEffect(() => {
     updatePageMetadata({
       title: "Why Execution OS - The Infrastructure 15 Firms Say Is Missing",
