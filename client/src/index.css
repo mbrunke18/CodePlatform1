@@ -27,26 +27,26 @@
   --exos-special-teams: #2B8A6E;
 
   /* ===== LEGACY ALIASES (backward compat) ===== */
-  --executeiq-navy: #0A0F2E;
-  --executeiq-gold: #C9A84C;
-  --executeiq-teal: #2B8A6E;
-  --executeiq-white: #F0EDE4;
-  --executeiq-dark-gray: #111740;
-  --executeiq-light-gray: #F7F5EE;
-  --executeiq-success: #2B8A6E;
-  --executeiq-warning: #C9A84C;
-  --executeiq-error: #C0392B;
-  --executeiq-info: #2B6CB0;
-  --executeiq-text-primary: #0A0F2E;
-  --executeiq-text-secondary: #2C2C3A;
-  --executeiq-text-muted: #8B8BA0;
-  --executeiq-text-inverse: #F0EDE4;
-  --executeiq-bg-primary: #F0EDE4;
-  --executeiq-bg-secondary: #F7F5EE;
-  --executeiq-bg-dark: #0A0F2E;
-  --executeiq-border: #D8D2C4;
-  --executeiq-border-light: #ECE8DF;
-  --executeiq-border-dark: #1C2455;
+  --vm-navy: #0A0F2E;
+  --vm-gold: #C9A84C;
+  --vm-teal: #2B8A6E;
+  --vm-white: #F0EDE4;
+  --vm-dark-gray: #111740;
+  --vm-light-gray: #F7F5EE;
+  --vm-success: #2B8A6E;
+  --vm-warning: #C9A84C;
+  --vm-error: #C0392B;
+  --vm-info: #2B6CB0;
+  --vm-text-primary: #0A0F2E;
+  --vm-text-secondary: #2C2C3A;
+  --vm-text-muted: #8B8BA0;
+  --vm-text-inverse: #F0EDE4;
+  --vm-bg-primary: #F0EDE4;
+  --vm-bg-secondary: #F7F5EE;
+  --vm-bg-dark: #0A0F2E;
+  --vm-border: #D8D2C4;
+  --vm-border-light: #ECE8DF;
+  --vm-border-dark: #1C2455;
 
   /* ===== SHADCN/UI THEME — LIGHT MODE ===== */
   /* Pure white backgrounds, midnight navy text, gold accents */
@@ -895,18 +895,18 @@ html:not(.dark) [class*="border-zinc-9"] {
 }
 
 /* Legacy aliases */
-.executeiq-heading {
+.vm-heading {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   color: var(--exos-midnight);
   letter-spacing: 0.03em;
 }
 
-.dark .executeiq-heading {
+.dark .vm-heading {
   color: var(--exos-off-white);
 }
 
-.executeiq-tagline {
+.vm-tagline {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -915,12 +915,12 @@ html:not(.dark) [class*="border-zinc-9"] {
   text-transform: uppercase;
 }
 
-.executeiq-brand-accent {
+.vm-brand-accent {
   color: var(--exos-gold);
   font-weight: 600;
 }
 
-.executeiq-teal-accent {
+.vm-teal-accent {
   color: var(--exos-success);
   font-weight: 600;
 }
@@ -941,10 +941,10 @@ html:not(.dark) [class*="border-zinc-9"] {
 .border-exos-gold-subtle { border-color: rgba(201, 168, 76, 0.25); }
 
 /* Legacy aliases */
-.bg-executeiq-navy { background-color: var(--exos-midnight); }
-.bg-executeiq-gold { background-color: var(--exos-gold); }
-.bg-executeiq-teal { background-color: var(--exos-success); }
-.bg-executeiq-dark { background-color: var(--exos-midnight-mid); }
+.bg-vm-navy { background-color: var(--exos-midnight); }
+.bg-vm-gold { background-color: var(--exos-gold); }
+.bg-vm-teal { background-color: var(--exos-success); }
+.bg-vm-dark { background-color: var(--exos-midnight-mid); }
 .text-executeiq-navy { color: var(--exos-midnight); }
 .text-executeiq-gold { color: var(--exos-gold); }
 .text-executeiq-teal { color: var(--exos-success); }

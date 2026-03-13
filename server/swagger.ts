@@ -6,10 +6,10 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'ExecuteIQ Strategic Execution Platform API',
+      title: 'VaughnMartin Execution OS API',
       version: '2.0.0',
       description: `
-        ExecuteIQ is a comprehensive Strategic Execution Platform that enables organizations to:
+        Execution OS is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -28,7 +28,7 @@ const options: swaggerJsdoc.Options = {
         This API uses Replit's OpenID Connect (OIDC) authentication for secure access.
       `,
       contact: {
-        name: 'ExecuteIQ Platform Team',
+        name: 'VaughnMartin Platform Team',
         email: 'platform@poise.app'
       }
     },

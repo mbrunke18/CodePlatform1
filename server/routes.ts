@@ -3371,7 +3371,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
 
   // === AI-POWERED ENTERPRISE INTELLIGENCE ENDPOINTS ===
 
-  // Signal-to-Action Intelligence Feed - The core value demonstration of ExecuteIQ
+  // Signal-to-Action Intelligence Feed - The core value demonstration of Execution OS
   app.get('/api/pulse/intelligence-feed', async (req: any, res) => {
     try {
       const { SIGNAL_CATEGORIES } = await import('@shared/intelligence-signals');

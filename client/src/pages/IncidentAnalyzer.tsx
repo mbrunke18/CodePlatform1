@@ -154,7 +154,7 @@ export default function IncidentAnalyzer() {
         metricsArray = Object.entries(rawMetrics).map(([key, val]: [string, any]) => ({
           metric: key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
           without: val.reality || val.without || val.before || val.current || '',
-          with: val.executeiq || val.with || val.after || val.improved || '',
+          with: val.execution_os || val.executeiq || val.with || val.after || val.improved || '',
         }));
       } else if (Array.isArray(rawMetrics)) {
         metricsArray = rawMetrics;
@@ -172,7 +172,7 @@ export default function IncidentAnalyzer() {
         estimatedImpact: raw.estimatedImpact || raw.estimated_impact,
         timeToCoordination: raw.timeToCoordination || raw.time_to_coordination,
         your_reality: raw.your_reality || raw.yourReality || [],
-        with_executeiq: raw.with_executeiq || raw.withExecuteiq || [],
+        with_executeiq: raw.with_execution_os || raw.with_executeiq || raw.withExecuteiq || [],
         cost_without: raw.cost_without || raw.costWithout,
         cost_with: raw.cost_with || raw.costWith,
         costWithout: raw.cost_without || raw.costWithout,
@@ -354,7 +354,7 @@ export default function IncidentAnalyzer() {
     const comparisonData = analysis?.comparison || analysis?.your_reality?.map((r: any, i: number) => ({
       phase: r.phase || r.label || `Phase ${i + 1}`,
       without: r.description || r.without || r.yourReality || "",
-      with: analysis?.with_executeiq?.[i]?.description || analysis?.with_executeiq?.[i]?.with || analysis?.with_executeiq?.[i]?.withExecutionOS || "",
+      with: (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.description || (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.with || (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.withExecutionOS || "",
     }));
 
     if (comparisonData?.length) {
@@ -513,7 +513,7 @@ export default function IncidentAnalyzer() {
   const comparisonRows = analysis?.comparison || analysis?.your_reality?.map((r: any, i: number) => ({
     phase: r.phase || r.label || r.time || `Phase ${i + 1}`,
     without: r.description || r.without || r.yourReality || "",
-    with: analysis?.with_executeiq?.[i]?.description || analysis?.with_executeiq?.[i]?.with || analysis?.with_executeiq?.[i]?.withExecutionOS || "",
+    with: (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.description || (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.with || (analysis?.with_execution_os ?? analysis?.with_executeiq)?.[i]?.withExecutionOS || "",
   }));
 
   const simBannerConfig = (() => {

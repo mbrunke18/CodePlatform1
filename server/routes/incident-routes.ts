@@ -68,9 +68,9 @@ function getDomainFallback(domain: string, description: string) {
       cost_without: '$30M opportunity lost',
       cost_with: '$2M investment, $30M+ captured',
       comparison_metrics: {
-        time_to_coordination: { reality: '6-9 months', executeiq: '12 minutes' },
-        stakeholder_alignment: { reality: 'Sequential over months', executeiq: 'Parallel in minutes' },
-        outcome: { reality: 'Missed opportunity', executeiq: 'First mover advantage' }
+        time_to_coordination: { reality: '6-9 months', execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: 'Sequential over months', execution_os: "Parallel in minutes" },
+        outcome: { reality: 'Missed opportunity', execution_os: "First mover advantage" }
       }
     },
     defense: {
@@ -116,9 +116,9 @@ function getDomainFallback(domain: string, description: string) {
       cost_without: '$12M',
       cost_with: '$200K',
       comparison_metrics: {
-        time_to_coordination: { reality: '48-72 hours', executeiq: '12 minutes' },
-        stakeholder_alignment: { reality: 'Manual over days', executeiq: 'Automated in minutes' },
-        outcome: { reality: 'Significant damage', executeiq: 'Contained quickly' }
+        time_to_coordination: { reality: '48-72 hours', execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: 'Manual over days', execution_os: "Automated in minutes" },
+        outcome: { reality: 'Significant damage', execution_os: "Contained quickly" }
       }
     },
     special_teams: {
@@ -164,9 +164,9 @@ function getDomainFallback(domain: string, description: string) {
       cost_without: '$40M (30% delivered)',
       cost_with: '$35M (100% delivered on schedule)',
       comparison_metrics: {
-        time_to_coordination: { reality: '6+ months', executeiq: '12 minutes' },
-        stakeholder_alignment: { reality: 'Sequential over months', executeiq: 'Day 1 alignment' },
-        outcome: { reality: '30% delivered', executeiq: '100% on schedule' }
+        time_to_coordination: { reality: '6+ months', execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: 'Sequential over months', execution_os: "Day 1 alignment" },
+        outcome: { reality: '30% delivered', execution_os: "100% on schedule" }
       }
     }
   };
@@ -440,8 +440,8 @@ Return ONLY raw JSON (no markdown, no code fences):
   "cost_without": "$XM - actual cost/loss/opportunity missed",
   "cost_with": "$XK - estimated cost with Execution OS",
   "comparison_metrics": {
-    "time_to_coordination": {"reality": "extracted timeline", "executeiq": "12 minutes"},
-    "stakeholder_alignment": {"reality": "description", "executeiq": "Parallel in minutes"},
+    "time_to_coordination": {"reality": "extracted timeline", "execution_os": "12 minutes"},
+    "stakeholder_alignment": {"reality": "description", "execution_os": "Parallel in minutes"},
     "outcome": {"reality": "negative outcome", "executeiq": "positive outcome"}
   }
 }

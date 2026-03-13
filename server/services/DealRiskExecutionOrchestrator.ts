@@ -26,7 +26,7 @@ export interface ExecutionResult {
     sync: { updated: boolean; recordsAffected: number };
   };
   comparisonMetrics: {
-    executeiqTime: number;
+    responseTime: number;
     industryAverage: number;
     timeSaved: number;
     efficiency: string;
@@ -106,7 +106,7 @@ export class DealRiskExecutionOrchestrator {
         sync: { updated: true, recordsAffected: 5 },
       },
       comparisonMetrics: {
-        executeiqTime: 12,
+        responseTime: 12,
         industryAverage: 180,
         timeSaved: 168,
         efficiency: '15x faster',

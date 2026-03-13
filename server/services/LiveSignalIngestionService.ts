@@ -125,7 +125,7 @@ class LiveSignalIngestionService {
 
       const res = await fetch(feed.url, {
         signal: controller.signal,
-        headers: { 'User-Agent': 'ExecuteIQ-Signal-Monitor/1.0' },
+        headers: { 'User-Agent': 'VaughnMartin-Signal-Monitor/1.0' },
       });
       clearTimeout(timeout);
 

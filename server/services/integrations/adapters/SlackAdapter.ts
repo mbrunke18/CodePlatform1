@@ -32,7 +32,7 @@ export class SlackAdapter implements IntegrationAdapter {
         if (chanData.ok) {
           const channels = chanData.channels || [];
           const preferred = channels.find((c: any) =>
-            c.name === 'general' || c.name === 'executeiq' || c.name === 'strategy' || c.name === 'operations'
+            c.name === 'general' || c.name === 'execution-os' || c.name === 'strategy' || c.name === 'operations'
           );
           channelId = preferred?.id || channels[0]?.id;
         }

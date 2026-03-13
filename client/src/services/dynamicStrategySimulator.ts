@@ -71,7 +71,7 @@ class DynamicStrategySimulator {
   start() {
     if (this.isRunning) return;
     
-    console.log('🚀 ExecuteIQ Dynamic Strategy Simulator: STARTING');
+    console.log('🚀 Execution OS Dynamic Strategy Simulator: STARTING');
     this.isRunning = true;
     this.startRealTimeUpdates();
     this.initializeOracle();
@@ -79,7 +79,7 @@ class DynamicStrategySimulator {
   }
 
   stop() {
-    console.log('⏸️ ExecuteIQ Dynamic Strategy Simulator: STOPPING');
+    console.log('⏸️ Execution OS Dynamic Strategy Simulator: STOPPING');
     this.isRunning = false;
     
     if (this.realTimeInterval) clearInterval(this.realTimeInterval);
@@ -169,7 +169,7 @@ class DynamicStrategySimulator {
   }
 
   private alertPattern(pattern: OraclePattern) {
-    console.log(`🔮 ExecuteIQ Oracle: ${pattern.type} detected (${pattern.confidence}% confidence)`);
+    console.log(`🔮 Execution OS Oracle: ${pattern.type} detected (${pattern.confidence}% confidence)`);
     
     this.logActivity({
       eventType: 'oracle_pattern_detected',

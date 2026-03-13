@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-interface ExecuteIQLogoProps {
+interface VaughnMartinLogoProps {
   width?: number;
   height?: number;
   variant?: 'full' | 'icon-only' | 'text-only';
@@ -15,7 +15,7 @@ const GOLD     = '#C9A84C';
 const GOLD_LT  = '#DFC178';
 const OFF_WHITE = '#FDFCFA';
 
-export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
+export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   width,
   height = 48,
   variant = 'full',
@@ -146,3 +146,4 @@ export const ExecuteIQLogo: FC<ExecuteIQLogoProps> = ({
 };
 
 export default ExecuteIQLogo;
+export const ExecuteIQLogo = VaughnMartinLogo;

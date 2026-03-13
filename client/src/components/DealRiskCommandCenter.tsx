@@ -37,7 +37,7 @@ interface ExecutionResult {
     calendar: { scheduled: boolean; attendees: string[] };
   };
   comparisonMetrics: {
-    executeiqTime: number;
+    responseTime: number;
     industryAverage: number;
     timeSaved: number;
     efficiency: string;
@@ -162,7 +162,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
             <div className="flex items-center justify-center gap-2 mb-2">
               <Clock className="h-5 w-5 text-[#2B8A6E]" />
               <span className="text-3xl font-bold text-[#2B8A6E]">
-                {execution.comparisonMetrics.executeiqTime} min
+                {execution.comparisonMetrics.responseTime} min
               </span>
             </div>
             <p className="text-sm text-gray-600">Execution OS Response Time</p>
