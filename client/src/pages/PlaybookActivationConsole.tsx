@@ -52,6 +52,10 @@ interface DemoTask {
   status: 'pending' | 'in_progress' | 'completed';
   priority: string;
   assignedTo: null;
+  assignedRole?: string | null;  // From enrichedPhases: the specific C-suite owner
+  timeTarget?: string | null;    // From enrichedPhases: "90 sec", "2 min", etc.
+  phase?: string | null;         // From enrichedPhases: phase name e.g. "DETECT & VALIDATE"
+  decisionGate?: { question: string; yes: string; no: string } | null; // After last task of a phase
 }
 
 // ─── Brand constants (module-level so helper components can use them) ──────
@@ -233,7 +237,30 @@ function formatEventTime(): string {
   return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 }
 
-function generateDemoTasks(domain: string): DemoTask[] {
+function generateDemoTasks(domain: string, enrichedPhases?: any[]): DemoTask[] {
+  // ── Priority 1: Use expert content from enrichedPhases if available ──────────
+  if (enrichedPhases && Array.isArray(enrichedPhases) && enrichedPhases.length > 0) {
+    const tasks: DemoTask[] = [];
+    enrichedPhases.forEach((phase: any) => {
+      const phaseTasks: any[] = Array.isArray(phase.tasks) ? phase.tasks : [];
+      phaseTasks.forEach((t: any, taskIdx: number) => {
+        const isLastInPhase = taskIdx === phaseTasks.length - 1;
+        tasks.push({
+          id: `flagship-${tasks.length}`,
+          description: t.action || t.description || '',
+          status: 'pending' as const,
+          priority: tasks.length === 0 ? 'critical' : tasks.length < 3 ? 'high' : 'medium',
+          assignedTo: null,
+          assignedRole: t.owner || null,
+          timeTarget: t.timeTarget || null,
+          phase: phase.name || null,
+          decisionGate: (isLastInPhase && phase.decisionGate) ? phase.decisionGate : null,
+        });
+      });
+    });
+    if (tasks.length > 0) return tasks;
+  }
+  // ── Fallback: domain-based template tasks ───────────────────────────────────
   const descriptions = DOMAIN_TASKS[domain] || GENERIC_TASKS;
   return descriptions.map((desc, i) => ({
     id: `demo-task-${i}`,
@@ -241,6 +268,10 @@ function generateDemoTasks(domain: string): DemoTask[] {
     status: 'pending' as const,
     priority: i === 0 ? 'critical' : i < 3 ? 'high' : 'medium',
     assignedTo: null,
+    assignedRole: null,
+    timeTarget: null,
+    phase: null,
+    decisionGate: null,
   }));
 }
 
@@ -491,7 +522,9 @@ export default function PlaybookActivationConsole() {
     setExecutionStatus('active');
     const domain = playbook?.domain || playbook?.strategicCategory || '';
     if (safeTasks.length === 0) {
-      setLocalDemoTasks(generateDemoTasks(domain));
+      // Use expert enrichedPhases tasks if available — otherwise fall back to domain templates
+      const enrichedPhases = Array.isArray(playbook?.enrichedPhases) ? playbook.enrichedPhases : null;
+      setLocalDemoTasks(generateDemoTasks(domain, enrichedPhases ?? undefined));
     }
     const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
     setStakeholderStatuses(domainStakeholders.map(s => ({ ...s, status: 'pending' as const })));
@@ -1070,9 +1103,22 @@ export default function PlaybookActivationConsole() {
                   const actionType = getTaskActionType(task.description || '');
                   const isActive = task.status === 'in_progress';
                   const isDone = task.status === 'completed';
+                  const prevTask = displayTasks[index - 1] as any;
+                  const isNewPhase = task.phase && task.phase !== prevTask?.phase;
                   return (
+                  <div key={task.id}>
+                    {/* Phase header — appears when a new phase begins */}
+                    {isNewPhase && (
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0 6px", margin: "4px 0 0" }}>
+                        <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${NAVY}, transparent)` }} />
+                        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "3px 10px", background: NAVY, color: "#fff" }}>
+                          {task.phase}
+                        </div>
+                        <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${NAVY}, transparent)` }} />
+                      </div>
+                    )}
+
                   <div 
-                    key={task.id} 
                     style={{ 
                       display: "flex", 
                       alignItems: "flex-start", 
@@ -1110,6 +1156,18 @@ export default function PlaybookActivationConsole() {
                         }}>
                           {actionType}
                         </div>
+                        {/* Role owner badge — only shows for flagship playbooks with expert content */}
+                        {task.assignedRole && (
+                          <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 2 }}>
+                            {task.assignedRole}
+                          </div>
+                        )}
+                        {/* Time target badge */}
+                        {task.timeTarget && (
+                          <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.08em", padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.04)", color: isActive ? GOLD : MUTED, borderRadius: 2, display: "flex", alignItems: "center", gap: 4 }}>
+                            ⏱ {task.timeTarget}
+                          </div>
+                        )}
                         {isActive && (
                           <div style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
                             ● IN PROGRESS
@@ -1196,6 +1254,25 @@ export default function PlaybookActivationConsole() {
                         </div>
                       )}
                     </div>
+                  </div>
+
+                    {/* Decision Gate — shown after last task of each phase */}
+                    {task.decisionGate && (
+                      <div style={{ margin: "6px 0 10px", padding: "10px 16px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.12)`, borderLeft: `3px solid ${GOLD}` }}>
+                        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>⬥ Decision Gate</div>
+                        <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, marginBottom: 8 }}>{task.decisionGate.question}</div>
+                        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
+                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.25)`, borderRadius: 3 }}>
+                            <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 2 }}>✓ YES — Advance</div>
+                            <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.yes}</div>
+                          </div>
+                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(201,168,76,0.07)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 3 }}>
+                            <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>✗ NO — Contain</div>
+                            <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.no}</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   );
                 })
