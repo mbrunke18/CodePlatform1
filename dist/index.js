@@ -16733,7 +16733,7 @@ var init_NotificationManager = __esm({
       async sendNotification(stakeholder, message, severity, metadata) {
         const channel = stakeholder.preferredChannel;
         const severityIcon = this.getSeverityIcon(severity);
-        const formattedMessage = `${severityIcon} ExecuteIQ ALERT
+        const formattedMessage = `${severityIcon} Execution OS Alert
 
 ${message}
 
@@ -19362,7 +19362,7 @@ ${notification.message}`
       <body>
         <div class="container">
           <div class="header">
-            <h1>\u{1F6A8} ExecuteIQ ALERT</h1>
+            <h1>\u{1F6A8} Execution OS Alert</h1>
             <div class="priority-badge">${notification.priority?.toUpperCase() || "HIGH"} PRIORITY</div>
           </div>
           <div class="content">
@@ -19385,7 +19385,7 @@ ${notification.message}`
             </center>
           </div>
           <div class="footer">
-            <p><strong>ExecuteIQ Strategic Execution Platform</strong></p>
+            <p><strong>VaughnMartin Execution OS</strong></p>
             <p>This is an automated alert. Please acknowledge immediately.</p>
           </div>
         </div>
@@ -21414,7 +21414,7 @@ var init_dataSourceService = __esm({
         ];
       }
       /**
-       * Transform external data to ExecuteIQ format
+       * Transform external data to Execution OS format
        * This is where we handle different data structures from various sources
        */
       transformData(rawData, transformFunction) {
@@ -22000,7 +22000,7 @@ var init_integrations = __esm({
         await notificationManager.sendScenarioAlert(
           scenarioType || "test",
           severity || "medium",
-          message || "Test notification from ExecuteIQ Executive System",
+          message || "Test notification from Execution OS",
           { source: "api-test", timestamp: (/* @__PURE__ */ new Date()).toISOString() }
         );
         res.json({ message: "Test notification sent successfully" });
@@ -23131,7 +23131,7 @@ var init_LiveSignalIngestionService = __esm({
           const timeout = setTimeout(() => controller.abort(), 1e4);
           const res = await fetch(feed.url, {
             signal: controller.signal,
-            headers: { "User-Agent": "ExecuteIQ-Signal-Monitor/1.0" }
+            headers: { "User-Agent": "VaughnMartin-Signal-Monitor/1.0" }
           });
           clearTimeout(timeout);
           if (!res.ok) {
@@ -29445,7 +29445,7 @@ var init_practiceDrillRoutes = __esm({
           organizationId: drillDetails.organizationId,
           playbookId: drillDetails.playbookId,
           targetExecutionTime: 12,
-          // ExecuteIQ standard: 12-minute coordinated response
+          // Execution OS standard: 12-minute coordinated response
           ...performanceData
         };
         console.log("[COMPLETE DRILL] Performance payload before validation:", JSON.stringify(performancePayload, null, 2));
@@ -29831,7 +29831,7 @@ async function seedTriggers() {
     console.log("   \u{1F4E6} Creating demo system user for trigger seeding...");
     const [newUser] = await db.insert(users).values({
       email: DEMO_USER_EMAIL,
-      firstName: "ExecuteIQ Platform",
+      firstName: "Execution OS",
       lastName: "System",
       accessLevel: "admin"
     }).returning();
@@ -29843,7 +29843,7 @@ async function seedTriggers() {
     console.log("   \u{1F4E6} Creating demo organization for trigger seeding...");
     const [newOrg] = await db.insert(organizations).values({
       name: DEMO_ORG_NAME,
-      description: "Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for ExecuteIQ Platform.",
+      description: "Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for VaughnMartin Execution OS.",
       ownerId: user.id,
       industry: "Technology",
       size: 5e3,
@@ -30128,10 +30128,10 @@ var init_swagger = __esm({
       definition: {
         openapi: "3.0.0",
         info: {
-          title: "ExecuteIQ Strategic Execution Platform API",
+          title: "VaughnMartin Execution OS API",
           version: "2.0.0",
           description: `
-        ExecuteIQ is a comprehensive Strategic Execution Platform that enables organizations to:
+        Execution OS is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -30150,7 +30150,7 @@ var init_swagger = __esm({
         This API uses Replit's OpenID Connect (OIDC) authentication for secure access.
       `,
           contact: {
-            name: "ExecuteIQ Platform Team",
+            name: "VaughnMartin Platform Team",
             email: "platform@poise.app"
           }
         },
@@ -32352,7 +32352,7 @@ function generateEmailHTML(trigger, playbook, executionId) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExecuteIQ Platform - Playbook Activated</title>
+  <title>VaughnMartin Execution OS - Playbook Activated</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc;">
   <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -32366,7 +32366,7 @@ function generateEmailHTML(trigger, playbook, executionId) {
               <table role="presentation" style="width: 100%;">
                 <tr>
                   <td>
-                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">ExecuteIQ</h1>
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">VaughnMartin</h1>
                     <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Execution OS</p>
                   </td>
                   <td align="right">
@@ -32668,7 +32668,7 @@ var JiraAdapter = class {
       const issueData = {
         fields: {
           project: { key: projectKey },
-          summary: `[ExecuteIQ] ${payload.title}`,
+          summary: `[Execution OS] ${payload.title}`,
           issuetype: { name: "Task" },
           description: {
             type: "doc",
@@ -32767,7 +32767,7 @@ var SlackAdapter = class {
         if (chanData.ok) {
           const channels = chanData.channels || [];
           const preferred = channels.find(
-            (c) => c.name === "general" || c.name === "executeiq" || c.name === "strategy" || c.name === "operations"
+            (c) => c.name === "general" || c.name === "execution-os" || c.name === "strategy" || c.name === "operations"
           );
           channelId = preferred?.id || channels[0]?.id;
         }
@@ -32849,7 +32849,7 @@ var SalesforceAdapter = class {
     }
     try {
       const taskData = {
-        Subject: `[ExecuteIQ] ${payload.title}`,
+        Subject: `[Execution OS] ${payload.title}`,
         Description: payload.description,
         Priority: this.mapPriority(payload.priority),
         Status: "Not Started",
@@ -32979,7 +32979,7 @@ var ServiceNowAdapter = class {
       const baseUrl = this.getBaseUrl(instanceUrl);
       const tableName = config.config.tableName || "incident";
       const body = {
-        short_description: `[ExecuteIQ] ${payload.title}`,
+        short_description: `[Execution OS] ${payload.title}`,
         description: payload.description,
         priority: this.mapPriority(payload.priority),
         ...payload.metadata
@@ -33137,7 +33137,7 @@ var LiveIntegrationDispatcher = class {
 Phase: ${task.phase}
 Owner: ${task.owner}
 
-Auto-created by ExecuteIQ during playbook activation.`,
+Auto-created by Execution OS during playbook activation.`,
             phase: task.phase,
             owner: task.owner
           };
@@ -33152,7 +33152,7 @@ Auto-created by ExecuteIQ during playbook activation.`,
           title: `\u{1F680} VaughnMartin Playbook Activated: ${playbookName}`,
           message: `*Playbook activated at ${(/* @__PURE__ */ new Date()).toLocaleTimeString()}*
 
-ExecuteIQ is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`,
+Execution OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`,
           blocks: [
             {
               type: "header",
@@ -33164,7 +33164,7 @@ ExecuteIQ is coordinating response across ${stakeholders.length} stakeholders an
                 type: "mrkdwn",
                 text: `*Playbook activated at ${(/* @__PURE__ */ new Date()).toLocaleTimeString()}*
 
-ExecuteIQ is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`
+Execution OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`
               }
             },
             { type: "divider" },
@@ -33182,7 +33182,7 @@ ${stakeholderList}` }
             {
               type: "context",
               elements: [
-                { type: "mrkdwn", text: "\u26A1 Powered by ExecuteIQ Strategic Execution OS | Response coordinated in <12 minutes" }
+                { type: "mrkdwn", text: "\u26A1 Powered by VaughnMartin Execution OS | Response coordinated in <12 minutes" }
               ]
             }
           ]
@@ -33585,7 +33585,7 @@ var DealRiskExecutionOrchestrator = class {
         sync: { updated: true, recordsAffected: 5 }
       },
       comparisonMetrics: {
-        executeiqTime: 12,
+        responseTime: 12,
         industryAverage: 180,
         timeSaved: 168,
         efficiency: "15x faster"
@@ -33672,7 +33672,7 @@ var DealRiskExecutionOrchestrator = class {
       {
         timestamp: this.formatTime(new Date(startTime.getTime() + 800)),
         action: "Logged execution in Command Center",
-        system: "ExecuteIQ",
+        system: "Execution OS",
         status: "completed",
         duration: 200
       }
@@ -33983,9 +33983,9 @@ function getDomainFallback(domain, description) {
       cost_without: "$30M opportunity lost",
       cost_with: "$2M investment, $30M+ captured",
       comparison_metrics: {
-        time_to_coordination: { reality: "6-9 months", executeiq: "12 minutes" },
-        stakeholder_alignment: { reality: "Sequential over months", executeiq: "Parallel in minutes" },
-        outcome: { reality: "Missed opportunity", executeiq: "First mover advantage" }
+        time_to_coordination: { reality: "6-9 months", execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: "Sequential over months", execution_os: "Parallel in minutes" },
+        outcome: { reality: "Missed opportunity", execution_os: "First mover advantage" }
       }
     },
     defense: {
@@ -34031,9 +34031,9 @@ function getDomainFallback(domain, description) {
       cost_without: "$12M",
       cost_with: "$200K",
       comparison_metrics: {
-        time_to_coordination: { reality: "48-72 hours", executeiq: "12 minutes" },
-        stakeholder_alignment: { reality: "Manual over days", executeiq: "Automated in minutes" },
-        outcome: { reality: "Significant damage", executeiq: "Contained quickly" }
+        time_to_coordination: { reality: "48-72 hours", execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: "Manual over days", execution_os: "Automated in minutes" },
+        outcome: { reality: "Significant damage", execution_os: "Contained quickly" }
       }
     },
     special_teams: {
@@ -34079,9 +34079,9 @@ function getDomainFallback(domain, description) {
       cost_without: "$40M (30% delivered)",
       cost_with: "$35M (100% delivered on schedule)",
       comparison_metrics: {
-        time_to_coordination: { reality: "6+ months", executeiq: "12 minutes" },
-        stakeholder_alignment: { reality: "Sequential over months", executeiq: "Day 1 alignment" },
-        outcome: { reality: "30% delivered", executeiq: "100% on schedule" }
+        time_to_coordination: { reality: "6+ months", execution_os: "12 minutes" },
+        stakeholder_alignment: { reality: "Sequential over months", execution_os: "Day 1 alignment" },
+        outcome: { reality: "30% delivered", execution_os: "100% on schedule" }
       }
     }
   };
@@ -34326,14 +34326,14 @@ Return ONLY raw JSON (no markdown, no code fences):
     {"time": "0:05", "description": "Acknowledged and tasks assigned"},
     {"time": "0:08", "description": "Coordinated execution underway"},
     {"time": "0:11", "description": "Aligned and executing"},
-    {"time": "Final", "description": "Outcome with ExecuteIQ"}
+    {"time": "Final", "description": "Outcome with Execution OS"}
   ],
   "cost_without": "$XM - actual cost/loss/opportunity missed",
-  "cost_with": "$XK - estimated cost with ExecuteIQ",
+  "cost_with": "$XK - estimated cost with Execution OS",
   "comparison_metrics": {
-    "time_to_coordination": {"reality": "extracted timeline", "executeiq": "12 minutes"},
-    "stakeholder_alignment": {"reality": "description", "executeiq": "Parallel in minutes"},
-    "outcome": {"reality": "negative outcome", "executeiq": "positive outcome"}
+    "time_to_coordination": {"reality": "extracted timeline", "execution_os": "12 minutes"},
+    "stakeholder_alignment": {"reality": "description", "execution_os": "Parallel in minutes"},
+    "outcome": {"reality": "negative outcome", "execution_os": "positive outcome"}
   }
 }
 
@@ -34507,11 +34507,11 @@ router4.post("/simulate", async (req, res) => {
           await sendgrid.client.send({
             to: email,
             from: sendgrid.fromEmail,
-            subject: `[ExecuteIQ] URGENT: ${playbook.name || "Incident Response"} \u2014 Action Required`,
+            subject: `[Execution OS] URGENT: ${playbook.name || "Incident Response"} \u2014 Action Required`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                 <div style="text-align: center; margin-bottom: 24px;">
-                  <h1 style="color: #14b8a6; margin: 0;">ExecuteIQ Alert</h1>
+                  <h1 style="color: #14b8a6; margin: 0;">Execution OS Alert</h1>
                   <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution OS</p>
                 </div>
                 <div style="background: #1e293b; padding: 24px; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 24px;">
@@ -34522,7 +34522,7 @@ router4.post("/simulate", async (req, res) => {
                 <div style="text-align: center; margin: 24px 0;">
                   <a href="${ackUrl}" style="background: #14b8a6; color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">Acknowledge & Accept Assignment</a>
                 </div>
-                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from ExecuteIQ. Your response updates the dashboard in real-time.</p>
+                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from Execution OS. Your response updates the dashboard in real-time.</p>
               </div>
             `
           });
@@ -34623,12 +34623,12 @@ router4.get("/simulate/acknowledge", (req, res) => {
   }
   res.send(`
     <html>
-    <head><title>ExecuteIQ - Acknowledged</title></head>
+    <head><title>Execution OS - Acknowledged</title></head>
     <body style="background: #0f172a; color: white; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
       <div style="text-align: center; max-width: 500px; padding: 40px;">
         <div style="font-size: 64px; margin-bottom: 16px;">\u2713</div>
         <h1 style="color: #14b8a6;">Assignment Acknowledged</h1>
-        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The ExecuteIQ dashboard has been updated in real-time.</p>
+        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The Execution OS dashboard has been updated in real-time.</p>
         <p style="color: #64748b; font-size: 14px; margin-top: 24px;">You can close this window and return to the simulation.</p>
       </div>
     </body>
@@ -34681,7 +34681,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one") {
         gaps.push("No documented market entry playbook");
-        recommendations2.push("Use ExecuteIQ's 58 Offense playbooks to build your market entry protocols");
+        recommendations2.push("Use Execution OS's 58 Offense playbooks to build your market entry protocols");
       } else if (answers.playbookLocation) {
         score += 15;
         if (["Confluence/SharePoint", "Spreadsheets"].includes(answers.playbookLocation)) {
@@ -34727,7 +34727,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one" || answers.playbookLocation === "Don't have one") {
         gaps.push("No documented response playbook exists");
-        recommendations2.push("Use ExecuteIQ's 56 Defense playbooks to build your crisis response protocols");
+        recommendations2.push("Use Execution OS's 56 Defense playbooks to build your crisis response protocols");
       } else if (answers.playbookLocation) {
         score += 20;
         if (["Confluence/SharePoint", "Spreadsheets", "Confluence", "SharePoint", "Google Doc"].includes(answers.playbookLocation)) {
@@ -34756,7 +34756,7 @@ router4.post("/assess", async (req, res) => {
         gaps.push("RACI matrices exist for some but not all scenarios");
       } else {
         gaps.push("No pre-defined RACI matrices for transformation scenarios");
-        recommendations2.push("Build RACI matrices for your top transformation scenarios using ExecuteIQ templates");
+        recommendations2.push("Build RACI matrices for your top transformation scenarios using Execution OS templates");
       }
       if (answers.resourceAuthority && answers.resourceAuthority.length > 3 && !answers.resourceAuthority.toLowerCase().includes("steering committee")) {
         score += 20;
@@ -34766,7 +34766,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one") {
         gaps.push("No documented transformation playbook");
-        recommendations2.push("Use ExecuteIQ's 52 Special Teams playbooks for transformation initiatives");
+        recommendations2.push("Use Execution OS's 52 Special Teams playbooks for transformation initiatives");
       } else if (answers.playbookLocation) {
         score += 15;
         if (["Confluence/SharePoint", "Spreadsheets"].includes(answers.playbookLocation)) {
@@ -35107,7 +35107,7 @@ var LiveActivationService = class {
         elapsedSeconds: elapsed
       });
     };
-    addLog("activation-started", "ExecuteIQ System", "Platform", `Playbook "${state.playbookName}" activated \u2014 coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
+    addLog("activation-started", "Execution OS", "Platform", `Playbook "${state.playbookName}" activated \u2014 coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
     emitCallback("phase-change", { activationId, phase: "activation-started", timestamp: now.toISOString() });
     const t0 = setTimeout(() => {
       state.stakeholders.forEach((s) => {
@@ -35121,7 +35121,7 @@ var LiveActivationService = class {
           responseTimeSeconds: null
         });
       });
-      addLog("notifications-sent", "ExecuteIQ System", "Platform", `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
+      addLog("notifications-sent", "Execution OS", "Platform", `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
       emitCallback("phase-change", { activationId, phase: "immediate", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
       updateMetrics();
     }, 500);
@@ -35173,7 +35173,7 @@ var LiveActivationService = class {
       if (phaseTasks.length === 0) return;
       const phaseTimer = setTimeout(() => {
         emitCallback("phase-change", { activationId, phase: phaseName, timestamp: (/* @__PURE__ */ new Date()).toISOString() });
-        addLog("phase-started", "ExecuteIQ System", "Platform", `Phase "${phaseName}" initiated`);
+        addLog("phase-started", "Execution OS", "Platform", `Phase "${phaseName}" initiated`);
       }, startDelayMs);
       timers.push(phaseTimer);
       phaseTasks.forEach((task, i) => {
@@ -35256,7 +35256,7 @@ var LiveActivationService = class {
       state.metrics.tasksCompleted = state.metrics.totalTasks;
       const totalTimeSeconds = Math.round((Date.now() - startTime) / 1e3);
       state.metrics.elapsedSeconds = totalTimeSeconds;
-      addLog("activation-complete", "ExecuteIQ System", "Platform", `Playbook "${state.playbookName}" execution complete \u2014 ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
+      addLog("activation-complete", "Execution OS", "Platform", `Playbook "${state.playbookName}" execution complete \u2014 ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
       emitCallback("metrics-update", {
         activationId,
         coordinationPercent: 100,
@@ -39175,6 +39175,277 @@ async function seedFlagshipPlaybooks() {
         tier1Stakeholders: [{ role: "Board Chair", responsibility: "Succession authority + board resolution + investor communication", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "Employment agreement + SEC disclosure + departure documentation", escalationTime: "0 min" }, { role: "CHRO", responsibility: "Internal communication + retention risk + executive search", escalationTime: "1 min" }, { role: "CFO", responsibility: "Equity treatment + financial disclosure + budget continuity", escalationTime: "1 min" }, { role: "CMO", responsibility: "External communications + media response + brand continuity", escalationTime: "2 min" }, { role: "Interim CEO", responsibility: "Operational continuity + team stabilization + decision authority", escalationTime: "2 min" }],
         outcomeMetrics: { at12hours: ["Interim authority established with board mandate", "All employees messaged by interim leader", "Top 15 retention risks identified and contacted", "All Tier 1 external stakeholders personally briefed"], at30days: ["Retention rate of senior leadership team >90%", "Permanent search launched with shortlist", "No material customer or investor departures", "Operational continuity maintained \u2014 no missed deliverables"], failureModes: ["Letting employees hear through rumors or media before leadership communication", "Failing to identify retention risks within first 24 hours", "Creating a power vacuum by delaying interim authority appointment"] }
       }
+    },
+    // ─── NEW ENRICHED PLAYBOOKS ──────────────────────────────────────────────
+    {
+      pattern: "%activist%",
+      data: {
+        whyItMatters: "Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built activist defense playbooks respond 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.",
+        enrichedPhases: [
+          { name: "INTELLIGENCE GATHERING", timeWindow: "0\u20132 min", objective: "Know more about the activist's position than they expect you to know", tasks: [
+            { owner: "General Counsel", action: "Confirm Schedule 13D/13G filing: stake %, acquisition date, stated intentions, associated entities. Access SEC EDGAR immediately", timeTarget: "90 sec" },
+            { owner: "CFO", action: "Run activist profile: past campaigns, win rate, typical demands (board seat / strategic sale / spin-off / cost cuts), holding duration", timeTarget: "2 min" },
+            { owner: "Chief Strategy Officer", action: "Map activist's thesis: what is the perceived value gap they will argue? Identify where they are right and where they are wrong", timeTarget: "2 min" }
+          ], decisionGate: { question: "Is stake >5% AND activist has history of proxy fights or forced asset sales?", yes: "Tier 1 Full Defense \u2014 board notification + poison pill review", no: "Monitor \u2014 engage IR to assess activist intent through back-channel" } },
+          { name: "BOARD & ADVISOR ACTIVATION", timeWindow: "2\u20135 min", objective: "The board must speak with one voice before the activist speaks publicly", tasks: [
+            { owner: "Board Chair", action: "Convene emergency board session within 2 hours. Brief all directors: stake size, activist profile, likely demands, and defense options", timeTarget: "3 min" },
+            { owner: "CEO", action: "Engage M&A defense counsel, proxy solicitor, and investor relations advisor. Retain all three before activist makes first contact", timeTarget: "4 min" },
+            { owner: "CFO", action: "Run activist-adjusted valuation: what does the activist argue the company is worth vs. current price? Build your counter-narrative with data", timeTarget: "5 min" }
+          ] },
+          { name: "INSTITUTIONAL HOLDER OFFENSIVE", timeWindow: "5\u20138 min", objective: "Win the ISS and Glass Lewis vote before the proxy fight begins \u2014 if it gets that far", tasks: [
+            { owner: "CEO + CFO", action: "Schedule calls with top 10 institutional holders (by % ownership) within 24 hours. Lead with: value creation plan, governance strength, activist risk", timeTarget: "6 min" },
+            { owner: "Chief IR Officer", action: "Prepare investor presentation: 3-year value creation roadmap with specific milestones, capital return policy, and governance enhancements", timeTarget: "7 min" },
+            { owner: "General Counsel", action: "Review shareholder rights plan (poison pill) status. Brief board on trigger thresholds and activation timeline if needed", timeTarget: "8 min" }
+          ], decisionGate: { question: "Do institutional holders representing >40% of shares support current management?", yes: "Negotiate from strength \u2014 offer 1 board observer, no control concessions", no: "Consider proactive compromise: 1 board seat + value creation commitments" } },
+          { name: "PUBLIC NARRATIVE CONTROL", timeWindow: "8\u201312 min", objective: "You define the story \u2014 or the activist does", tasks: [
+            { owner: "CMO + General Counsel", action: "Draft company response statement: confident, forward-looking, focused on value creation. No defensive language. Pre-approve for rapid release", timeTarget: "10 min" },
+            { owner: "CEO", action: "Record video briefing for employees: what this means, what it does not mean, and why your strategy is right", timeTarget: "11 min" },
+            { owner: "Chief Strategy Officer", action: "Accelerate any planned value-creation announcements that were in pipeline. Beat the activist's narrative with your own news", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Institutional investor outreach + board leadership + public narrative", escalationTime: "0 min" }, { role: "Board Chair", responsibility: "Board coordination + poison pill authority + settlement decisions", escalationTime: "0 min" }, { role: "CFO", responsibility: "Activist valuation counter-narrative + institutional holder modeling", escalationTime: "1 min" }, { role: "General Counsel", responsibility: "SEC filings + poison pill + proxy fight defense + settlement terms", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["All directors briefed", "Defense advisors retained", "Institutional holder contact schedule confirmed", "Counter-narrative developed with financial data"], at30days: ["Top 20 institutional holders personally engaged", "Proxy solicitor vote count favorable", "Value creation plan publicly communicated", "Settlement terms (if any) board-approved"], failureModes: ["Waiting for activist to make public statement before preparing response", "Letting proxy advisors (ISS/Glass Lewis) form opinions without your input", "Underestimating activist preparedness \u2014 they have researched you for months"] }
+      }
+    },
+    {
+      pattern: "%merger%",
+      data: {
+        whyItMatters: "Failed M&A integrations destroy an average of $1.6B in shareholder value per deal. The first 100 days of integration determine 70% of total deal outcome. Companies with pre-built integration playbooks achieve target synergies 2.4x faster and retain 31% more acquired talent.",
+        enrichedPhases: [
+          { name: "DAY-ONE READINESS", timeWindow: "0\u20132 min", objective: "Day 1 must feel seamless to employees, customers, and partners \u2014 regardless of what is still being figured out", tasks: [
+            { owner: "Integration Management Officer", action: "Activate Day 1 command center. Confirm all systems access, communication channels, and escalation paths are live and tested", timeTarget: "90 sec" },
+            { owner: "CHRO", action: "Confirm: all employees have received their Day 1 communication, their manager knows their status, and no terminations occur on Day 1 without prior notice", timeTarget: "2 min" },
+            { owner: "CTO", action: "Execute IT Day 1 protocol: email domain migration, VPN access, single sign-on, and security credential integration for all acquired employees", timeTarget: "2 min" }
+          ], decisionGate: { question: "Are all Day 1 critical systems operational AND have all acquired employees received their welcome communication?", yes: "Proceed to synergy acceleration", no: "Escalate to CEO \u2014 Day 1 failures become cultural myths that damage integration for months" } },
+          { name: "TALENT RETENTION LOCK", timeWindow: "2\u20135 min", objective: "The best people from the acquired company have competing offers within 48 hours \u2014 retain them first", tasks: [
+            { owner: "CHRO", action: "Execute retention package delivery to top 50 acquired talent. Pre-negotiated RSU grants, role clarity, and direct access to leadership", timeTarget: "3 min" },
+            { owner: "CEO", action: "Record personal video for all acquired employees: vision, role in combined company, and commitment to their development", timeTarget: "4 min" },
+            { owner: "Business Unit Leaders", action: "Schedule 1:1 meetings with all acquired senior managers within 72 hours. Listen first \u2014 do not announce org changes in these meetings", timeTarget: "5 min" }
+          ] },
+          { name: "SYNERGY ACCELERATION", timeWindow: "5\u20138 min", objective: "Lock in the financial synergies the deal thesis promised \u2014 before the board starts asking", tasks: [
+            { owner: "CFO", action: "Activate synergy tracking dashboard. Establish week-by-week synergy realization targets for Year 1. Red-line any target with >4-week delay risk", timeTarget: "6 min" },
+            { owner: "Chief Procurement Officer", action: "Initiate combined vendor consolidation: renegotiate top 20 contracts using combined purchasing power within 60 days", timeTarget: "7 min" },
+            { owner: "Chief Revenue Officer", action: "Launch cross-sell motion: identify top 50 acquired customers who are candidates for parent company products. Begin outreach within 30 days", timeTarget: "8 min" }
+          ], decisionGate: { question: "Are Year 1 synergy targets on track (>90% of run-rate)?", yes: "Continue integration velocity", no: "CEO-level escalation: root-cause each at-risk synergy \u2014 human, process, or system issue?" } },
+          { name: "CULTURE INTEGRATION", timeWindow: "8\u201312 min", objective: "Culture clash is the #1 cause of failed integrations \u2014 address it before it becomes visible to customers", tasks: [
+            { owner: "CHRO + CEO", action: "Launch combined culture pulse survey within 30 days. Measure: psychological safety, clarity of direction, trust in leadership, excitement about combination", timeTarget: "10 min" },
+            { owner: "Business Unit Leaders", action: 'Identify 10 "culture ambassadors" from acquired company \u2014 high-performers who believe in the integration. Activate them as integration champions', timeTarget: "11 min" },
+            { owner: "Integration Management Officer", action: "Complete 90-day integration scorecard: synergy realization %, talent retention %, customer retention %, system integration %, culture score", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Cultural integration + board reporting + strategic direction", escalationTime: "0 min" }, { role: "CHRO", responsibility: "Talent retention + org design + cultural integration", escalationTime: "0 min" }, { role: "CFO", responsibility: "Synergy tracking + financial integration + cost elimination", escalationTime: "1 min" }, { role: "CTO", responsibility: "Systems integration + technology migration + security", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Day 1 fully operational", "Retention packages delivered to top 50 talent", "All acquired employees received personal communication from CEO", "Synergy tracking dashboard live"], at30days: ["Key talent retention >90%", "Year 1 synergy run-rate at 80%+ of target", "Customer retention of acquired base >95%", "Combined vendor consolidation savings identified"], failureModes: ["Announcing org structure before retention packages are in hand", "Letting financial synergies take priority over talent retention in first 90 days", "Underestimating the acquired company's cultural identity and pride"] }
+      }
+    },
+    {
+      pattern: "%brand%",
+      data: {
+        whyItMatters: "Brand crises that go uncontained within 12 hours result in an average 23% decline in brand trust scores and take 14 months to recover. Companies that respond within 12 hours with a clear, empathetic, and action-oriented message retain 81% of brand equity.",
+        enrichedPhases: [
+          { name: "CRISIS CHARACTERIZATION", timeWindow: "0\u20132 min", objective: "Know exactly what you are dealing with before you say a word publicly", tasks: [
+            { owner: "CMO", action: "Pull crisis monitoring data: source, velocity (shares/hour), sentiment trajectory, media pickup rate, and influencer amplification", timeTarget: "90 sec" },
+            { owner: "General Counsel", action: "Assess legal exposure: is this a factual error, perception issue, policy failure, or product/service failure? Determines statement latitude", timeTarget: "2 min" },
+            { owner: "CEO", action: "Make hold-or-respond decision with CMO and General Counsel. Every 30-minute delay in a viral crisis costs 40% more amplification", timeTarget: "2 min" }
+          ], decisionGate: { question: "Is the crisis based on factual error (you can refute) OR operational failure (you must own)?", yes: "Factual refutation track \u2014 move fast with evidence", no: "Ownership track \u2014 lead with accountability, not defense" } },
+          { name: "STATEMENT CRAFTING", timeWindow: "2\u20135 min", objective: "One voice, one message, approved and ready to deploy on all channels simultaneously", tasks: [
+            { owner: "CMO + General Counsel", action: "Draft holding statement (3 sentences max): what you know, what you are doing, when you will provide more information. No speculation", timeTarget: "3 min" },
+            { owner: "CEO", action: "Review and approve statement. If crisis involves safety or significant customer harm \u2014 CEO must be the voice, not CMO or spokesperson", timeTarget: "4 min" },
+            { owner: "Head of PR", action: "Prepare social, web, email, and media distribution in parallel. All channels go live simultaneously \u2014 no staggered release", timeTarget: "5 min" }
+          ] },
+          { name: "STAKEHOLDER CASCADES", timeWindow: "5\u20138 min", objective: "Employees, customers, partners, and investors hear from you \u2014 not from social media", tasks: [
+            { owner: "CHRO", action: "Send employee briefing: what happened, what the company is saying, how to respond if asked by customers/media. One consistent message", timeTarget: "6 min" },
+            { owner: "Chief Revenue Officer", action: "Brief top 20 enterprise customers personally. Arm them with the same narrative before their employees and boards ask them about it", timeTarget: "7 min" },
+            { owner: "CFO", action: "Issue investor relations update if crisis has potential material impact. Avoid speculation \u2014 focus on facts and response actions", timeTarget: "8 min" }
+          ], decisionGate: { question: "Is crisis fully contained (velocity declining, sentiment stabilizing)?", yes: "Shift to recovery narrative", no: "Escalate: CEO live statement, media availability, or product/policy change announcement" } },
+          { name: "RECOVERY & TRUST REBUILD", timeWindow: "8\u201312 min", objective: "Turn the crisis into evidence of who you are \u2014 not just what went wrong", tasks: [
+            { owner: "CMO", action: "Launch recovery narrative: concrete action taken, what changed, and what customers/stakeholders can expect next. Lead with actions not apologies", timeTarget: "10 min" },
+            { owner: "CEO", action: "Record a direct-to-camera accountability statement for your top 3 stakeholder groups. Authentic over polished. Specific over generic", timeTarget: "11 min" },
+            { owner: "CMO + CHRO", action: "Initiate brand trust monitoring: NPS, social sentiment, media coverage tone. Weekly reporting for 90 days", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Final statement approval + face of accountability + investor communication", escalationTime: "0 min" }, { role: "CMO", responsibility: "Crisis monitoring + messaging strategy + channel deployment", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "Legal exposure + statement latitude + litigation risk", escalationTime: "1 min" }, { role: "Head of PR", responsibility: "Media management + spokesperson prep + coverage monitoring", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Public statement live on all channels", "Employees briefed with consistent narrative", "Top 20 customers personally contacted", "Social sentiment trajectory stabilizing"], at30days: ["Brand trust score recovery to pre-crisis baseline or better", "Media narrative shifted from crisis to recovery", "Customer NPS recovered", "Root cause publicly addressed with specific changes"], failureModes: ['Saying "no comment" (interpreted as guilt)', "Staggering channel releases (creates information arbitrage)", "Letting legal review delay first response beyond 2 hours in viral situations"] }
+      }
+    },
+    {
+      pattern: "%product recall%",
+      data: {
+        whyItMatters: "Product recalls cost Fortune 1000 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.",
+        enrichedPhases: [
+          { name: "SAFETY CONFIRMATION", timeWindow: "0\u20132 min", objective: "Establish facts before committing to public action \u2014 but commit to investigation immediately", tasks: [
+            { owner: "Chief Quality Officer", action: "Retrieve full defect incident report: complaint volume, injury reports, CPSC/FDA complaints, geographic concentration, product batch IDs", timeTarget: "90 sec" },
+            { owner: "General Counsel", action: "Assess regulatory notification obligations: FDA (72hr), CPSC (24hr), NHTSA (5 days). Start regulatory clock NOW regardless of recall decision", timeTarget: "2 min" },
+            { owner: "CFO", action: "Estimate financial impact: recall scope \xD7 unit cost \xD7 return processing + potential litigation reserve. Present range to CEO", timeTarget: "2 min" }
+          ], decisionGate: { question: "Is there confirmed injury risk AND/OR regulatory notification threshold triggered?", yes: "Voluntary recall \u2014 self-initiate before regulatory compulsion", no: "Enhanced monitoring \u2014 daily injury report review + accelerated investigation" } },
+          { name: "SUPPLY CHAIN HALT", timeWindow: "2\u20135 min", objective: "Stop the product moving forward \u2014 every unit sold after you knew is a liability", tasks: [
+            { owner: "COO", action: "Issue immediate production hold on all affected SKUs. Quarantine all affected inventory in distribution network with batch tracking", timeTarget: "3 min" },
+            { owner: "Chief Procurement Officer", action: "Halt all affected component orders. Notify affected suppliers of quality issue for joint investigation. Preserve all component samples", timeTarget: "4 min" },
+            { owner: "Chief Revenue Officer", action: "Issue retail partner stop-sale notification for all affected SKUs. Confirm compliance within 2 hours via retailer confirmation", timeTarget: "5 min" }
+          ] },
+          { name: "CUSTOMER NOTIFICATION", timeWindow: "5\u20138 min", objective: "Tell every customer before they hear from a competitor, media, or regulator", tasks: [
+            { owner: "CMO + General Counsel", action: "Draft recall notice: specific products affected, safety risk description, what to do immediately, how to return/replace. Legal pre-approved template", timeTarget: "6 min" },
+            { owner: "CEO", action: "Record personal video recall notification for high-value customers. Safety first \u2014 compensation second. Be direct and specific", timeTarget: "7 min" },
+            { owner: "Head of Customer Service", action: "Stand up dedicated recall hotline and chat support. Script all agents on recall process, return process, and replacement timeline", timeTarget: "8 min" }
+          ], decisionGate: { question: "Has regulatory notification been filed AND are all retailers confirmed with stop-sale?", yes: "Execute full consumer notification campaign", no: "Do not release consumer notification until regulatory filing is confirmed" } },
+          { name: "RECOVERY & INVESTIGATION", timeWindow: "8\u201312 min", objective: "Recover market trust faster than competitors expect \u2014 own the narrative of quality leadership", tasks: [
+            { owner: "Chief Quality Officer", action: "Launch root cause investigation with external lab partner. 30-day investigation timeline with weekly board updates", timeTarget: "10 min" },
+            { owner: "CMO", action: "Execute trust-recovery campaign: what changed, enhanced testing protocols, and independent certification of fix before relaunch", timeTarget: "11 min" },
+            { owner: "CFO", action: "File product liability insurance claim. Establish separate recall accounting center for all related costs \u2014 critical for insurance recovery", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Recall decision authority + customer accountability + board notification", escalationTime: "0 min" }, { role: "Chief Quality Officer", responsibility: "Defect confirmation + investigation + corrective action", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "Regulatory notification + litigation hold + consumer communication approval", escalationTime: "1 min" }, { role: "COO", responsibility: "Production halt + supply chain quarantine + inventory control", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Production halt executed", "Retailer stop-sale confirmed", "Regulatory notification filed", "Customer notification deployed"], at30days: ["100% affected inventory recovered", "Root cause identified and corrected", "Product relaunched with enhanced safety certification", "Customer trust score recovery initiated"], failureModes: ["Waiting for regulatory action before self-initiating recall", "Continuing to sell affected product after internal confirmation of defect", "Inadequate consumer notification (must reach >90% of affected purchasers)"] }
+      }
+    },
+    {
+      pattern: "%talent%",
+      data: {
+        whyItMatters: "Mass talent departures in critical roles cost Fortune 1000 companies 3\u20135x the departing employees' combined annual salaries in replacement and productivity loss. Companies with talent retention playbooks stabilize within 14 days vs. 4+ months for reactive organizations.",
+        enrichedPhases: [
+          { name: "FLIGHT RISK TRIAGE", timeWindow: "0\u20132 min", objective: "Know exactly who is at risk and why \u2014 before the next resignation hits your inbox", tasks: [
+            { owner: "CHRO", action: "Pull talent flight risk model: identify all employees with >70% departure probability based on engagement score, tenure, compensation percentile, manager quality", timeTarget: "90 sec" },
+            { owner: "CEO", action: "Identify the 25 mission-critical roles where departure would cause immediate operational or customer impact. These are your Priority 1 retention targets", timeTarget: "2 min" },
+            { owner: "CFO", action: "Authorize emergency retention budget: discretionary equity grants, compensation adjustments, and spot bonuses. Board pre-approval required above $5M", timeTarget: "2 min" }
+          ], decisionGate: { question: "Are more than 10 Priority 1 roles showing high departure risk?", yes: "Declare talent emergency \u2014 CEO-level retention program", no: "Targeted interventions \u2014 CHRO-led, biweekly CEO review" } },
+          { name: "CEO RETENTION OFFENSIVE", timeWindow: "2\u20135 min", objective: "The CEO personally calling is worth more than any retention bonus for top talent", tasks: [
+            { owner: "CEO", action: "Schedule personal calls with all Priority 1 retention risks within 48 hours. Agenda: listen first, then share vision, then discuss compensation if appropriate", timeTarget: "3 min" },
+            { owner: "CHRO", action: "Design 18-month retention package for top 25: equity vesting acceleration, role expansion, development investment, and flexibility agreements", timeTarget: "4 min" },
+            { owner: "Business Unit Leaders", action: "Conduct skip-level conversations with all direct reports in at-risk segments. Identify and eliminate the specific operational frustrations driving departure intent", timeTarget: "5 min" }
+          ] },
+          { name: "ROOT CAUSE ELIMINATION", timeWindow: "5\u20138 min", objective: "Fix the actual problem \u2014 not the symptom \u2014 or the retention effort is just buying time", tasks: [
+            { owner: "CHRO", action: "Run rapid exit interview analysis: what are the top 3 specific, consistent reasons people are leaving? Each must become an action item with an owner and deadline", timeTarget: "6 min" },
+            { owner: "CEO", action: "Make one visible, immediate structural change that addresses the #1 departure driver. Symbolism matters \u2014 employees need to see decisions, not promises", timeTarget: "7 min" },
+            { owner: "Head of Total Rewards", action: "Benchmark compensation against current market (not last year's survey). Eliminate all roles where you are more than 15% below market for critical skills", timeTarget: "8 min" }
+          ], decisionGate: { question: "Can root causes (compensation, culture, leadership, opportunity) be addressed within 30 days?", yes: "Commit to specific changes with public accountability", no: "Structural transformation required \u2014 engage board on leadership or strategy changes" } },
+          { name: "CULTURE REINFORCEMENT", timeWindow: "8\u201312 min", objective: "Turn the retention crisis into a culture-defining moment that improves engagement for all employees", tasks: [
+            { owner: "CEO", action: "All-hands meeting within 72 hours: acknowledge challenges, share the specific changes being made, and invite candid questions. No prepared Q&A filtering", timeTarget: "10 min" },
+            { owner: "CHRO", action: "Launch 90-day culture initiative: monthly pulse surveys, manager training on retention conversations, and public progress reporting", timeTarget: "11 min" },
+            { owner: "CFO + CHRO", action: "Establish talent health scorecard: voluntary attrition rate, engagement score, time-to-fill critical roles, internal promotion rate. Board-level quarterly reporting", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Personal retention calls + structural changes + all-hands commitment", escalationTime: "0 min" }, { role: "CHRO", responsibility: "Flight risk modeling + retention program design + culture initiative", escalationTime: "0 min" }, { role: "CFO", responsibility: "Retention budget + compensation benchmarking + board approval", escalationTime: "1 min" }, { role: "Business Unit Leaders", responsibility: "Skip-level conversations + root cause elimination + daily retention actions", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Priority 1 retention risks identified", "CEO call schedule confirmed", "Retention budget authorized", "Root cause analysis initiated"], at30days: ["Priority 1 retention rate >90%", "Compensation gaps eliminated for critical roles", "#1 departure driver structurally addressed", "Engagement score improvement trajectory confirmed"], failureModes: ["Using only financial retention tools without addressing root causes", "Delegating Priority 1 retention calls to CHRO instead of CEO", "Announcing changes without following through on specific commitments made in retention conversations"] }
+      }
+    },
+    {
+      pattern: "%esg%",
+      data: {
+        whyItMatters: "ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG response playbooks contain institutional sell-pressure 3x more effectively.",
+        enrichedPhases: [
+          { name: "ESG INCIDENT CLASSIFICATION", timeWindow: "0\u20132 min", objective: "Classify accurately \u2014 an environmental violation and a governance failure require entirely different responses", tasks: [
+            { owner: "Chief Sustainability Officer", action: "Classify ESG incident: Environmental (E), Social (S), or Governance (G). Severity: Tier 1 (material, public) / Tier 2 (internal, manageable) / Tier 3 (emerging risk)", timeTarget: "90 sec" },
+            { owner: "General Counsel", action: "Assess disclosure obligations: SEC ESG rule implications, ESG rating agency impact (MSCI, Sustainalytics), proxy advisor implications (ISS ESG policy)", timeTarget: "2 min" },
+            { owner: "CFO", action: "Model institutional investor impact: which ESG-mandated funds have trigger rules that would force a sell at this ESG rating level?", timeTarget: "2 min" }
+          ], decisionGate: { question: "Will this incident trigger ESG rating downgrade OR institutional investor ESG screening exclusion?", yes: "Tier 1 \u2014 proactive engagement with top 10 institutional holders within 24 hours", no: "Tier 2 \u2014 internal remediation + ESG report update cycle" } },
+          { name: "REMEDIATION COMMITMENT", timeWindow: "2\u20135 min", objective: "Commit to specific, measurable changes \u2014 not aspirational language", tasks: [
+            { owner: "Chief Sustainability Officer", action: "Design remediation plan: specific targets, timelines, investment amounts, and third-party verification. Every commitment must be quantifiable", timeTarget: "3 min" },
+            { owner: "CEO", action: "Personally brief Board ESG Committee. Present incident, remediation plan, and request board-level accountability sponsor for follow-through", timeTarget: "4 min" },
+            { owner: "Head of Investor Relations", action: "Prepare ESG investor brief: incident context, root cause, remediation commitments, and enhanced monitoring. Lead with accountability, not minimization", timeTarget: "5 min" }
+          ] },
+          { name: "INSTITUTIONAL ENGAGEMENT", timeWindow: "5\u20138 min", objective: "Reach institutional ESG officers before they receive the news from an NGO or media outlet", tasks: [
+            { owner: "CEO + Chief Sustainability Officer", action: "Call top 5 institutional ESG officers within 24 hours. Present: what happened, what changed, what you are committed to. Offer ongoing ESG dialogue", timeTarget: "6 min" },
+            { owner: "Head of IR", action: "Request urgent ESG analyst calls with MSCI, Sustainalytics, and ISS. Provide full incident documentation + remediation plan", timeTarget: "7 min" },
+            { owner: "Chief Sustainability Officer", action: "File ESG incident disclosure in CDP, GRI, or applicable framework. Voluntary disclosure before mandated is significantly less damaging", timeTarget: "8 min" }
+          ], decisionGate: { question: "Have top 10 institutional ESG officers been briefed AND rating agency review meetings scheduled?", yes: "Proceed to public remediation reporting", no: "Delay any public statement until institutional outreach is complete" } },
+          { name: "PUBLIC COMMITMENT", timeWindow: "8\u201312 min", objective: "Turn the ESG incident into evidence of your ESG leadership \u2014 not despite it, but through how you respond", tasks: [
+            { owner: "CEO", action: "Public statement: acknowledge incident, specific remediation steps, board accountability, and enhanced ESG commitments. Third-party verification of all claims", timeTarget: "10 min" },
+            { owner: "Chief Sustainability Officer", action: "Publish interim ESG remediation report within 30 days. Include: what went wrong, what changed, measurable progress against commitments", timeTarget: "11 min" },
+            { owner: "CFO", action: "Tie ESG remediation milestones to executive compensation. Announce this publicly \u2014 it is the most credible commitment signal to institutional investors", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Institutional holder engagement + board accountability + public commitment", escalationTime: "0 min" }, { role: "Chief Sustainability Officer", responsibility: "Incident assessment + remediation design + ESG disclosure", escalationTime: "0 min" }, { role: "CFO", responsibility: "Institutional investor modeling + compensation link + financial disclosure", escalationTime: "1 min" }, { role: "General Counsel", responsibility: "Regulatory disclosure + ESG rating agency + litigation risk", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["ESG incident classified and board notified", "Top 10 institutional ESG officers scheduled", "Remediation plan board-approved", "Rating agency engagement scheduled"], at30days: ["ESG rating maintained or limited downgrade", "Institutional investor sell pressure contained", "Voluntary disclosure filed", "Remediation commitments publicly published"], failureModes: ["Responding with aspirational language instead of specific commitments", "Waiting for institutional investors to call you vs. calling them first", "Failing to engage ESG rating agencies proactively before they downgrade"] }
+      }
+    },
+    {
+      pattern: "%ransomware%",
+      data: {
+        whyItMatters: "Ransomware attacks cost enterprises an average of $4.54M per incident, with 83% of victims paying ransom when they lack proper backups and response protocols. The first 12 minutes determine whether the organization pays or recovers cleanly.",
+        enrichedPhases: [
+          { name: "ATTACK CONFIRMATION", timeWindow: "0\u20132 min", objective: "Confirm scope and immediately stop the encryption spread \u2014 every second matters", tasks: [
+            { owner: "CISO", action: "Confirm ransomware variant via endpoint detection. Classify: locker (access denial only) vs. crypto (file encryption) vs. double-extortion (encryption + data theft)", timeTarget: "60 sec" },
+            { owner: "CTO", action: "IMMEDIATE: physically isolate all affected network segments. Pull the network cable on affected systems \u2014 do NOT shut down (preserves memory for forensics)", timeTarget: "90 sec" },
+            { owner: "General Counsel", action: "Engage law enforcement (FBI Cyber Division) and notify cyber insurer. Do NOT pay ransom before insurance carrier authorization", timeTarget: "2 min" }
+          ], decisionGate: { question: "Are critical systems (ERP, customer data, financial systems) encrypted or inaccessible?", yes: "Tier 1 \u2014 Business Continuity Protocol + CEO board notification NOW", no: "Tier 2 \u2014 Containment only, continue monitoring scope" } },
+          { name: "BUSINESS CONTINUITY ACTIVATION", timeWindow: "2\u20135 min", objective: "The business continues to operate \u2014 even if on manual/backup systems", tasks: [
+            { owner: "COO", action: "Activate Business Continuity Plan: identify all manual workarounds for affected systems. No revenue-critical operation can be paused waiting for IT recovery", timeTarget: "3 min" },
+            { owner: "CTO", action: "Validate backup integrity: when were last clean backups? Are they offline/immutable (ransomware cannot reach them)? Establish Recovery Time Objective", timeTarget: "4 min" },
+            { owner: "CFO", action: "Activate cyber insurance. Engage pre-approved ransomware response firm (Mandiant, CrowdStrike, or equivalent). Cyber insurer may require specific vendors", timeTarget: "5 min" }
+          ] },
+          { name: "PAYMENT DECISION", timeWindow: "5\u20138 min", objective: "This decision requires legal, insurance, and law enforcement input \u2014 not just IT", tasks: [
+            { owner: "CEO + CFO + General Counsel", action: "Ransomware payment decision: consider (1) clean backup availability, (2) data exfiltration confirmed, (3) insurance carrier guidance, (4) OFAC sanctions check on threat actor", timeTarget: "6 min" },
+            { owner: "CISO", action: "Parallel track: begin clean restoration from verified backups regardless of payment decision. Paying ransom does NOT guarantee full recovery", timeTarget: "7 min" },
+            { owner: "General Counsel", action: "OFAC sanctions check: paying sanctioned threat actors (some ransomware groups are OFAC-listed) is a federal offense. Clear this before any payment authorization", timeTarget: "8 min" }
+          ], decisionGate: { question: "Are clean, recent backups confirmed AND operational restoration achievable within business continuity tolerance?", yes: "Do NOT pay \u2014 execute clean restoration", no: "Payment decision to CEO with insurance carrier, legal, and law enforcement input" } },
+          { name: "RECOVERY & HARDENING", timeWindow: "8\u201312 min", objective: "Come back stronger \u2014 attackers often return within 60 days if vulnerabilities remain", tasks: [
+            { owner: "CTO + CISO", action: "Execute clean restoration from verified backups. Rebuild affected systems from clean images \u2014 never restore from encrypted states", timeTarget: "10 min" },
+            { owner: "CEO", action: "Employee communication: what happened, what data was affected, what was done to protect them, and what changes will prevent recurrence", timeTarget: "11 min" },
+            { owner: "CISO", action: "Mandatory security hardening before any reconnection: patch zero-days exploited, MFA on all accounts, email security enhancement, EDR on all endpoints", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CISO", responsibility: "Attack containment + forensics + recovery oversight", escalationTime: "0 min" }, { role: "CTO", responsibility: "Network isolation + backup restoration + system recovery", escalationTime: "0 min" }, { role: "CEO", responsibility: "Payment decision authority + employee communication + board notification", escalationTime: "1 min" }, { role: "General Counsel", responsibility: "Law enforcement + OFAC compliance + regulatory notification", escalationTime: "1 min" }, { role: "CFO", responsibility: "Cyber insurance activation + payment authorization + financial impact", escalationTime: "2 min" }],
+        outcomeMetrics: { at12hours: ["Attack contained and isolated", "Clean backup integrity confirmed", "Payment decision made with all required parties", "Business continuity operations active"], at30days: ["Full system restoration complete", "Root cause (initial attack vector) eliminated", "Security hardening implemented", "Regulatory notifications filed"], failureModes: ["Paying ransom without insurance carrier authorization", "Restoring from potentially infected backups", "Reconnecting systems before hardening complete", "Failing OFAC sanctions check before payment"] }
+      }
+    },
+    {
+      pattern: "%financial%",
+      data: {
+        whyItMatters: "Financial fraud events trigger an average 31% stock price decline and $2.1B in regulatory fines for companies that fail to self-report promptly. Organizations with pre-built financial fraud playbooks self-report 4x faster, receive 67% lower penalties, and restore investor confidence 2.8x faster.",
+        enrichedPhases: [
+          { name: "ALLEGATION ASSESSMENT", timeWindow: "0\u20132 min", objective: "Establish credibility of allegation before any external action \u2014 but assume it could be true", tasks: [
+            { owner: "General Counsel", action: "Assess allegation source and specificity: internal whistleblower, SEC complaint, short-seller report, or regulatory inquiry. Each has different required response timelines", timeTarget: "90 sec" },
+            { owner: "CFO", action: "Immediately ring-fence all financial systems, accounts, and records related to the allegation. Preserve all documentation \u2014 litigation hold NOW", timeTarget: "2 min" },
+            { owner: "Audit Committee Chair", action: "Convene emergency audit committee session. The audit committee \u2014 not management \u2014 must direct this investigation for independence and credibility", timeTarget: "2 min" }
+          ], decisionGate: { question: "Does preliminary review indicate potential material misstatement OR regulatory disclosure obligation?", yes: "Self-report to SEC within required timeframe \u2014 voluntary disclosure is significantly more favorable", no: "Continue independent investigation \u2014 maintain strict confidentiality" } },
+          { name: "INDEPENDENT INVESTIGATION", timeWindow: "2\u20135 min", objective: "Independence is everything \u2014 any investigation management controls will be discredited", tasks: [
+            { owner: "Audit Committee Chair", action: "Retain independent outside counsel (not company's regular counsel) and independent forensic accountants. Engagement letter to establish attorney-client privilege", timeTarget: "3 min" },
+            { owner: "General Counsel", action: "Issue litigation hold for all potentially relevant documents, communications, and financial records. Preserve all emails for a minimum 3-year lookback", timeTarget: "4 min" },
+            { owner: "CEO", action: "Step back from investigation. Your role is to ensure the investigation is fully resourced and independent \u2014 not to shape its findings", timeTarget: "5 min" }
+          ] },
+          { name: "REGULATORY ENGAGEMENT", timeWindow: "5\u20138 min", objective: "Regulators reward cooperation and self-disclosure \u2014 they punish cover-up more than the underlying offense", tasks: [
+            { owner: "General Counsel + Outside Counsel", action: "Assess voluntary disclosure decision: self-report to SEC, DOJ, or relevant regulator? Voluntary disclosure typically reduces fines by 50\u201370%", timeTarget: "6 min" },
+            { owner: "Audit Committee Chair + Outside Counsel", action: "Brief audit committee on initial findings and disclosure recommendation. Audit committee must approve any regulatory communication", timeTarget: "7 min" },
+            { owner: "CFO + Outside Counsel", action: "Assess restatement risk: will financial statements require restatement? Engage auditors for independent assessment. Do not delay this assessment", timeTarget: "8 min" }
+          ], decisionGate: { question: "Has independent investigation confirmed material misstatement AND voluntary disclosure decision made?", yes: "File disclosure within regulatory timeframe", no: "Continue investigation \u2014 do not delay indefinitely (regulators track investigation duration)" } },
+          { name: "INVESTOR COMMUNICATION", timeWindow: "8\u201312 min", objective: "Investors will forgive honest mistakes \u2014 they will not forgive delayed disclosure or cover-up", tasks: [
+            { owner: "CEO + Board Chair", action: "Investor communication strategy: full disclosure proactively vs. in conjunction with regulatory filing. General Counsel and outside counsel must approve final approach", timeTarget: "10 min" },
+            { owner: "CFO", action: "If restatement required: develop restatement scope, affected periods, and corrected financial statements with auditor. Set disclosure timeline", timeTarget: "11 min" },
+            { owner: "CEO + General Counsel", action: "Employee communication: consistent message about investigation, no speculation on outcomes, assurance of compliance culture reinforcement", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "Audit Committee Chair", responsibility: "Investigation oversight + outside counsel engagement + regulatory approval", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "Litigation hold + disclosure strategy + regulatory engagement", escalationTime: "0 min" }, { role: "CEO", responsibility: "Board leadership + employee communication + operational continuity", escalationTime: "1 min" }, { role: "CFO", responsibility: "Financial records preservation + restatement assessment + insurance notification", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Litigation hold issued", "Independent investigators retained", "Audit committee convened", "Regulatory disclosure timeline assessed"], at30days: ["Investigation complete with independent findings", "Regulatory cooperation established", "Disclosure decision made and executed", "Internal controls remediation underway"], failureModes: ["Management directing (or appearing to direct) the investigation", "Delayed regulatory disclosure beyond required timeframes", "Destroying or failing to preserve relevant documents and communications"] }
+      }
+    },
+    {
+      pattern: "%ipo%",
+      data: {
+        whyItMatters: "IPO pricing missteps and market timing failures cost companies an average 22% in underpriced share value or result in withdrawn offerings. Companies with pre-built IPO response playbooks navigate pricing windows 3x more effectively and maintain institutional demand through market volatility.",
+        enrichedPhases: [
+          { name: "MARKET WINDOW ASSESSMENT", timeWindow: "0\u20132 min", objective: "Determine if this is a timing issue (delay) or a structural issue (pricing reset)", tasks: [
+            { owner: "CFO + Investment Bankers", action: "Pull real-time IPO comps: recent IPO performance in your sector, institutional book-build status, and current market sentiment index for your industry", timeTarget: "90 sec" },
+            { owner: "CEO + CFO", action: "Assess delay options: 2-week pricing window push vs. 60-90 day full delay. Each has different implications for roadshow momentum and institutional appetite", timeTarget: "2 min" },
+            { owner: "General Counsel", action: "If delay is likely: assess SEC registration statement freshness requirements, quiet period obligations, and board-approved financial statements currency", timeTarget: "2 min" }
+          ], decisionGate: { question: "Is market disruption temporary (2-4 weeks) OR structural (requires pricing reset)?", yes: "Tactical delay \u2014 maintain roadshow momentum", no: "Strategic reset \u2014 update S-1, re-engage anchors, re-price range" } },
+          { name: "ANCHOR INVESTOR LOCK", timeWindow: "2\u20135 min", objective: "The 5\u201310 institutional anchors make or break IPO pricing \u2014 protect them first", tasks: [
+            { owner: "CEO + CFO", action: "Personal calls to all anchor investors within 4 hours: update on market conditions, reaffirm company fundamentals, and confirm their anchor commitment", timeTarget: "3 min" },
+            { owner: "Investment Bankers", action: "Assess book-build status: what % of deal is covered, what is the price sensitivity of top 20 book-build participants?", timeTarget: "4 min" },
+            { owner: "CFO", action: "Pricing scenario modeling: $1 per share change in price \xD7 total shares = impact on company proceeds and founder dilution at each price point", timeTarget: "5 min" }
+          ] },
+          { name: "NARRATIVE PROTECTION", timeWindow: "5\u20138 min", objective: "Control the IPO narrative \u2014 media and analyst opinion form before you can respond", tasks: [
+            { owner: "CMO + IR Lead", action: "Monitor and respond to IPO coverage: social media, analyst reports, and financial press. Quiet period restrictions apply \u2014 coordinate every statement with legal", timeTarget: "6 min" },
+            { owner: "CEO", action: "Internal communication to all employees: IPO process update, confirmation of timeline, and instruction on quiet period compliance (no public statements)", timeTarget: "7 min" },
+            { owner: "Investment Bankers", action: "Assess green shoe option: partial exercise of overallotment option can stabilize secondary market pricing on day 1 and day 2 of trading", timeTarget: "8 min" }
+          ], decisionGate: { question: "Is book-build >110% covered at acceptable price range AND anchor commitments confirmed?", yes: "Proceed to pricing \u2014 coordinate with underwriters on final price", no: "Evaluate range reduction or voluntary delay with banking team" } },
+          { name: "PRICING & FIRST DAY PREP", timeWindow: "8\u201312 min", objective: "The first day of trading is a marketing event \u2014 you only get one opening", tasks: [
+            { owner: "CEO + CFO", action: "Final IPO price decision with banking team: price to create first-day pop (institutional appetite) vs. price to maximize proceeds. This is a strategic \u2014 not financial \u2014 decision", timeTarget: "10 min" },
+            { owner: "Head of IR", action: "First-day trading protocol: designated market maker briefed, floor communications plan confirmed, real-time stock monitoring dashboard activated", timeTarget: "11 min" },
+            { owner: "CMO", action: "First-day media plan: press release timing, CEO media availability schedule, employee celebration communication, and customer notification of public company status", timeTarget: "12 min" }
+          ] }
+        ],
+        tier1Stakeholders: [{ role: "CEO", responsibility: "Anchor investor engagement + pricing decision + public narrative", escalationTime: "0 min" }, { role: "CFO", responsibility: "Book-build analysis + pricing modeling + SEC compliance", escalationTime: "0 min" }, { role: "General Counsel", responsibility: "SEC registration + quiet period compliance + disclosure obligations", escalationTime: "1 min" }, { role: "Head of IR", responsibility: "Institutional communication + first-day trading protocol + analyst relations", escalationTime: "1 min" }],
+        outcomeMetrics: { at12hours: ["Anchor investor commitments confirmed", "Pricing scenario range defined", "Media and quiet period strategy confirmed", "Book-build coverage assessed"], at30days: ["IPO proceeds within 10% of target", "First-day pop within target range (15\u201325%)", "Institutional holders locked with 90-day lockup confirmation", "Analyst coverage initiated within 25-day quiet period expiry"], failureModes: ["Quiet period violations by company spokespeople", "Failing to call anchor investors personally during market volatility", "Under-pricing out of fear vs. strategic pricing for long-term institutional support"] }
+      }
     }
   ];
   const results = [];
@@ -40364,7 +40635,12 @@ async function registerRoutes(app2, existingServer) {
         targetExecutionTime: playbookLibrary.targetExecutionTime,
         severityScore: playbookLibrary.severityScore,
         playbookNumber: playbookLibrary.playbookNumber,
-        domainName: playbookDomains.name
+        domainName: playbookDomains.name,
+        whyItMatters: playbookLibrary.whyItMatters,
+        enrichedPhases: playbookLibrary.enrichedPhases,
+        signalSources: playbookLibrary.signalSources,
+        preApprovedBudget: playbookLibrary.preApprovedBudget,
+        primaryResponseStrategy: playbookLibrary.primaryResponseStrategy
       }).from(playbookLibrary).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(playbookLibrary.isActive, true)).limit(200);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
@@ -40372,6 +40648,11 @@ async function registerRoutes(app2, existingServer) {
         const estimatedDuration = execMins <= 60 ? `${execMins} minutes` : execMins <= 480 ? `${Math.floor(execMins / 60)}-${Math.ceil(execMins / 60) + 1} hours` : execMins <= 2880 ? `${Math.floor(execMins / 60 / 24) + 1}-${Math.ceil(execMins / 60 / 24) + 1} days` : `${Math.round(execMins / 60 / 24 / 7)}-${Math.round(execMins / 60 / 24 / 7) + 1} weeks`;
         const complexity = stakeholderCount > 15 || execMins > 480 ? "high" : stakeholderCount > 8 || execMins > 120 ? "medium" : "low";
         const tasks4 = Math.max(8, Math.floor(stakeholderCount * 1.8) + t.playbookNumber % 7);
+        const score = t.severityScore || 0;
+        const priority = score >= 80 ? "critical" : score >= 60 ? "high" : "standard";
+        const phaseCount = Array.isArray(t.enrichedPhases) ? t.enrichedPhases.length : 4;
+        const signalSourceCount = Array.isArray(t.signalSources) ? t.signalSources.length : 3;
+        const budget = t.preApprovedBudget ? Number(t.preApprovedBudget) : null;
         return {
           id: t.id,
           name: t.name,
@@ -40387,7 +40668,12 @@ async function registerRoutes(app2, existingServer) {
           complexity,
           stakeholderCount,
           tasks: tasks4,
-          severityScore: t.severityScore
+          severityScore: t.severityScore,
+          priority,
+          phaseCount,
+          signalSourceCount,
+          preApprovedBudget: budget,
+          whyItMatters: t.whyItMatters
         };
       }));
     } catch (error) {
@@ -40485,7 +40771,12 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   ],
   "successIndicators": ["Indicator 1", "Indicator 2", "Indicator 3"],
   "executionWindow": "Recommended execution window (e.g., '12\u201318 minutes for initial coordination')",
-  "commanderNote": "One sentence of strategic commander guidance for this specific situation"
+  "commanderNote": "One sentence of strategic commander guidance for this specific situation",
+  "scenarioTasks": [
+    { "action": "Specific tactical task 1 \u2014 tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "critical", "timeTarget": "2 min" },
+    { "action": "Specific tactical task 2 \u2014 tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "high", "timeTarget": "5 min" },
+    { "action": "Specific tactical task 3 \u2014 tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "high", "timeTarget": "8 min" }
+  ]
 }`;
       const briefJson = await openAIService2.analyzeText(prompt);
       let brief;
@@ -40504,7 +40795,12 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           ],
           successIndicators: ["All Tier 1 stakeholders acknowledged within 4 minutes", "First task assigned within 8 minutes", "Full coordination achieved within 12 minutes"],
           executionWindow: "12\u201318 minutes for full coordination",
-          commanderNote: "Speed is your advantage \u2014 initiate now and course-correct in real time."
+          commanderNote: "Speed is your advantage \u2014 initiate now and course-correct in real time.",
+          scenarioTasks: [
+            { action: `Immediately brief CEO and board \u2014 confirm ${playbookName} activation authority`, role: "Chief Executive Officer", priority: "critical", timeTarget: "2 min" },
+            { action: "Freeze pre-approved budget allocation and confirm resource availability", role: "Chief Financial Officer", priority: "high", timeTarget: "5 min" },
+            { action: "Brief General Counsel \u2014 assess legal exposure and initiate protective measures", role: "General Counsel", priority: "high", timeTarget: "8 min" }
+          ]
         };
       }
       res.json({ brief, generatedAt: (/* @__PURE__ */ new Date()).toISOString() });
@@ -44434,6 +44730,56 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
       res.status(500).json({ error: err.message });
     }
   });
+  app2.post("/api/simulation/public-analyze", async (req, res) => {
+    try {
+      const { scenarioText } = req.body;
+      if (!scenarioText || scenarioText.trim().length < 10) {
+        return res.status(400).json({ error: "Please describe your scenario (minimum 10 characters)" });
+      }
+      const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq37(playbookLibrary.isActive, true)).limit(60);
+      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their likely readiness and recommend specific playbooks.
+
+SCENARIO: "${scenarioText}"
+
+Available playbooks from the Execution OS library (170 total across 9 domains):
+${playbooks2.map((p) => `- ${p.name} (${p.domain})`).slice(0, 40).join("\n")}
+
+Respond ONLY as JSON with this structure:
+{
+  "surviveScore": 72,
+  "thriveScore": 38,
+  "activatedPlaybooks": ["Playbook Name 1", "Playbook Name 2", "Playbook Name 3"],
+  "aiAnalysis": "3-sentence executive-level analysis of why this scenario is a strategic risk and what separates organizations that thrive from those that merely survive",
+  "urgencyLevel": "critical|high|medium",
+  "timeToRespond": "e.g. 12 minutes with Execution OS vs 72 hours without"
+}`;
+      const raw = await openAIService2.analyzeText(prompt);
+      let result = {
+        surviveScore: 65,
+        thriveScore: 30,
+        activatedPlaybooks: ["Strategic Response Protocol", "Crisis Communications Playbook", "Executive Coordination Framework"],
+        aiAnalysis: "This scenario requires immediate cross-functional coordination across multiple stakeholder groups. Organizations with pre-staged playbooks respond 340x faster than those without structured execution frameworks. The difference between surviving and thriving is measured in minutes, not days.",
+        urgencyLevel: "high",
+        timeToRespond: "12 minutes with Execution OS vs 72 hours without"
+      };
+      try {
+        const jsonMatch = raw.match(/\{[\s\S]*\}/);
+        if (jsonMatch) result = { ...result, ...JSON.parse(jsonMatch[0]) };
+      } catch {
+      }
+      res.json({
+        surviveScore: Math.min(100, Math.max(0, result.surviveScore || 65)),
+        thriveScore: Math.min(100, Math.max(0, result.thriveScore || 30)),
+        activatedPlaybooks: result.activatedPlaybooks || [],
+        aiAnalysis: result.aiAnalysis || "",
+        urgencyLevel: result.urgencyLevel || "high",
+        timeToRespond: result.timeToRespond || "12 minutes with Execution OS vs 72 hours without"
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   console.log("\u2705 WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder");
   return httpServer;
 }
@@ -45101,12 +45447,12 @@ app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
 });
 app.get("/api/health", (_req, res) => {
-  res.status(200).json({ status: "ok", app: "ExecuteIQ", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
+  res.status(200).json({ status: "ok", app: "Execution OS", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
 });
 app.get("/api/health-check", (_req, res) => {
   res.status(200).json({
     status: "ok",
-    app: "ExecuteIQ",
+    app: "Execution OS",
     seeded: seedingComplete,
     timestamp: (/* @__PURE__ */ new Date()).toISOString()
   });
@@ -45278,7 +45624,7 @@ server.listen(
     log4("serving on port " + port);
     logger12.info(
       { port, env: app.get("env") },
-      "ExecuteIQ server listening - health checks active from startup"
+      "Execution OS server listening - health checks active from startup"
     );
   }
 );
