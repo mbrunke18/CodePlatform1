@@ -39,7 +39,7 @@ export default function StandardNav() {
       heading: "Understand",
       links: [
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "I·D·E·A — the execution operating model" },
-        { label: "Why Execution OS", path: "/why-executeiq", icon: Shield, description: "The execution gap enterprises face" },
+        { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The execution gap enterprises face" },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected" },
       ],
     },

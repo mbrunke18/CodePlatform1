@@ -65,7 +65,7 @@ export default function Footer() {
       title: "Company",
       links: [
         { label: "IDEA Framework", path: "/idea-framework" },
-        { label: "Why Execution OS", path: "/why-executeiq" },
+        { label: "Why Execution OS", path: "/why-execution-os" },
         { label: "Platform Overview", path: "/platform-overview" },
         { label: "Founder's Story", path: "/founder-story" },
         { label: "Integrations", path: "/integrations" },

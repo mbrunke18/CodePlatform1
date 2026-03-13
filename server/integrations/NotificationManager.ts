@@ -231,7 +231,7 @@ export class NotificationManager {
   ): Promise<void> {
     const channel = stakeholder.preferredChannel;
     const severityIcon = this.getSeverityIcon(severity);
-    const formattedMessage = `${severityIcon} ExecuteIQ ALERT\n\n${message}\n\nContact: ${stakeholder.name}`;
+    const formattedMessage = `${severityIcon} Execution OS Alert\n\n${message}\n\nContact: ${stakeholder.name}`;
 
     try {
       switch (channel) {

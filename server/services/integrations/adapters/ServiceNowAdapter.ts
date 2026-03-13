@@ -47,7 +47,7 @@ export class ServiceNowAdapter implements IntegrationAdapter {
       const tableName = config.config.tableName || 'incident';
       
       const body = {
-        short_description: `[ExecuteIQ] ${payload.title}`,
+        short_description: `[Execution OS] ${payload.title}`,
         description: payload.description,
         priority: this.mapPriority(payload.priority),
         ...payload.metadata

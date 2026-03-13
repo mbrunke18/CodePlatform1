@@ -193,7 +193,7 @@ router.post('/test-notification', async (req, res) => {
     await notificationManager.sendScenarioAlert(
       scenarioType || 'test',
       severity || 'medium',
-      message || 'Test notification from ExecuteIQ Executive System',
+      message || 'Test notification from Execution OS',
       { source: 'api-test', timestamp: new Date().toISOString() }
     );
 
