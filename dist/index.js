@@ -9,11 +9,11 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __copyProps = (to, from, except, desc20) => {
+var __copyProps = (to, from, except, desc21) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc20 = __getOwnPropDesc(from, key)) || desc20.enumerable });
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc21 = __getOwnPropDesc(from, key)) || desc21.enumerable });
   }
   return to;
 };
@@ -218,6 +218,7 @@ __export(schema_exports, {
   insertOrganizationSchema: () => insertOrganizationSchema,
   insertOutcomeExecutionLogSchema: () => insertOutcomeExecutionLogSchema,
   insertPeerBenchmarkSchema: () => insertPeerBenchmarkSchema,
+  insertPeerReviewSchema: () => insertPeerReviewSchema,
   insertPilotApplicationSchema: () => insertPilotApplicationSchema,
   insertPlaybookActivationSchema: () => insertPlaybookActivationSchema,
   insertPlaybookCategorySchema: () => insertPlaybookCategorySchema,
@@ -326,6 +327,7 @@ __export(schema_exports, {
   outcomeTypeEnum: () => outcomeTypeEnum,
   peerBenchmarks: () => peerBenchmarks,
   peerComparisons: () => peerComparisons,
+  peerReviews: () => peerReviews,
   permissions: () => permissions,
   pilotApplications: () => pilotApplications,
   playbookActivations: () => playbookActivations,
@@ -442,7 +444,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -5956,6 +5958,70 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertInvestorLeadSchema = createInsertSchema2(investorLeads).omit({ id: true, createdAt: true });
+    peerReviews = pgTable2("peer_reviews", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      createdAt: timestamp2("created_at").defaultNow(),
+      reviewerType: text2("reviewer_type").notNull().default("peer"),
+      // 'customer' | 'investor' | 'peer'
+      sourceUrl: text2("source_url").default(""),
+      // Identity
+      reviewerName: text2("reviewer_name").notNull(),
+      reviewerRole: text2("reviewer_role").notNull(),
+      reviewerOrg: text2("reviewer_org").notNull(),
+      reviewerIndustry: text2("reviewer_industry").default(""),
+      yearsExperience: text2("years_experience").default(""),
+      // Section A — Problem Space
+      q1Scale: integer2("q1_scale"),
+      q1Text: text2("q1_text").default(""),
+      q2Selection: text2("q2_selection").default(""),
+      q2Text: text2("q2_text").default(""),
+      q3Scale: integer2("q3_scale"),
+      q3Text: text2("q3_text").default(""),
+      q4Scale: integer2("q4_scale"),
+      q4Text: text2("q4_text").default(""),
+      // Section B — Product Clarity
+      q5Scale: integer2("q5_scale"),
+      q5Text: text2("q5_text").default(""),
+      q6Text: text2("q6_text").default(""),
+      q7Scale: integer2("q7_scale"),
+      q7Text: text2("q7_text").default(""),
+      q8Scale: integer2("q8_scale"),
+      q8Text: text2("q8_text").default(""),
+      q9Selections: text2("q9_selections").array().default([]),
+      q9Text: text2("q9_text").default(""),
+      // Section C — Market Viability
+      q10Scale: integer2("q10_scale"),
+      q10Text: text2("q10_text").default(""),
+      q11Selection: text2("q11_selection").default(""),
+      q11Text: text2("q11_text").default(""),
+      q12Selections: text2("q12_selections").array().default([]),
+      q12Text: text2("q12_text").default(""),
+      q13Selection: text2("q13_selection").default(""),
+      q13Text: text2("q13_text").default(""),
+      q14Rankings: jsonb("q14_rankings").default([]),
+      // Section D — Product Gaps
+      q15Text: text2("q15_text").default(""),
+      q16Ratings: jsonb("q16_ratings").default({}),
+      q17Text: text2("q17_text").default(""),
+      q18Text: text2("q18_text").default(""),
+      q19Text: text2("q19_text").default(""),
+      // Section E — Competitive Landscape
+      q20Selection: text2("q20_selection").default(""),
+      q20Text: text2("q20_text").default(""),
+      q21Scale: integer2("q21_scale"),
+      q21Text: text2("q21_text").default(""),
+      q22Text: text2("q22_text").default(""),
+      // Section F — Overall Verdict
+      q23Scale: integer2("q23_scale"),
+      q24Selection: text2("q24_selection").default(""),
+      q24Text: text2("q24_text").default(""),
+      q25Scale: integer2("q25_scale"),
+      q25Text: text2("q25_text").default(""),
+      q26Selection: text2("q26_selection").default(""),
+      q27Text: text2("q27_text").default(""),
+      q28Text: text2("q28_text").default("")
+    });
+    insertPeerReviewSchema = createInsertSchema2(peerReviews).omit({ id: true, createdAt: true });
   }
 });
 
@@ -14598,7 +14664,7 @@ __export(dynamicStrategyService_exports, {
   DynamicStrategyService: () => DynamicStrategyService,
   dynamicStrategyService: () => dynamicStrategyService
 });
-import { eq as eq7, desc as desc4, and as and6, gte as gte2 } from "drizzle-orm";
+import { eq as eq7, desc as desc5, and as and6, gte as gte2 } from "drizzle-orm";
 import OpenAI3 from "openai";
 var openai2, DynamicStrategyService, dynamicStrategyService;
 var init_dynamicStrategyService = __esm({
@@ -14641,7 +14707,7 @@ var init_dynamicStrategyService = __esm({
         const overallScore = Number(
           (foresightScore * 0.2 + velocityScore * 0.25 + agilityScore * 0.25 + learningScore * 0.15 + adaptabilityScore * 0.15).toFixed(1)
         );
-        const previousMetric = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc4(readinessMetrics.measurementDate)).limit(1);
+        const previousMetric = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc5(readinessMetrics.measurementDate)).limit(1);
         let trend = "stable";
         if (previousMetric.length > 0) {
           const previousScore = Number(previousMetric[0].overallScore);
@@ -14756,7 +14822,7 @@ var init_dynamicStrategyService = __esm({
             eq7(weakSignals.organizationId, organizationId),
             eq7(weakSignals.status, "active")
           )
-        ).orderBy(desc4(weakSignals.detectedAt)).limit(10);
+        ).orderBy(desc5(weakSignals.detectedAt)).limit(10);
         if (activeSignals.length < 3) return [];
         const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1e3);
         const recentPatterns = await db.select({ id: oraclePatterns.id }).from(oraclePatterns).where(and6(
@@ -14904,7 +14970,7 @@ Format each learning as a concise action statement.`;
        * Get latest readiness metrics
        */
       async getLatestReadinessMetric(organizationId) {
-        const metrics = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc4(readinessMetrics.measurementDate)).limit(1);
+        const metrics = await db.select().from(readinessMetrics).where(eq7(readinessMetrics.organizationId, organizationId)).orderBy(desc5(readinessMetrics.measurementDate)).limit(1);
         const metric = metrics[0];
         if (!metric) return null;
         return this.parseReadinessMetricNumbers(metric);
@@ -14927,7 +14993,7 @@ Format each learning as a concise action statement.`;
        * Get recent activity feed
        */
       async getActivityFeed(organizationId, limit = 20) {
-        return db.select().from(activityFeedEvents).where(eq7(activityFeedEvents.organizationId, organizationId)).orderBy(desc4(activityFeedEvents.createdAt)).limit(limit);
+        return db.select().from(activityFeedEvents).where(eq7(activityFeedEvents.organizationId, organizationId)).orderBy(desc5(activityFeedEvents.createdAt)).limit(limit);
       }
       /**
        * Get consolidated system status for Command Center
@@ -14977,7 +15043,7 @@ __export(PreparednessEngine_exports, {
   PreparednessEngine: () => PreparednessEngine,
   preparednessEngine: () => preparednessEngine
 });
-import { eq as eq13, and as and9, desc as desc9 } from "drizzle-orm";
+import { eq as eq13, and as and9, desc as desc10 } from "drizzle-orm";
 var PreparednessEngine, preparednessEngine;
 var init_PreparednessEngine = __esm({
   "server/services/PreparednessEngine.ts"() {
@@ -14993,7 +15059,7 @@ var init_PreparednessEngine = __esm({
           const [scenarios3, activations, alignment, simulations] = await Promise.all([
             db.select().from(strategicScenarios).where(eq13(strategicScenarios.organizationId, organizationId)),
             db.select().from(warRoomSessions).where(eq13(warRoomSessions.organizationId, organizationId)),
-            db.select().from(stakeholderAlignment).where(eq13(stakeholderAlignment.organizationId, organizationId)).orderBy(desc9(stakeholderAlignment.createdAt)).limit(1),
+            db.select().from(stakeholderAlignment).where(eq13(stakeholderAlignment.organizationId, organizationId)).orderBy(desc10(stakeholderAlignment.createdAt)).limit(1),
             db.select().from(crisisSimulations).where(and9(
               eq13(crisisSimulations.organizationId, organizationId),
               eq13(crisisSimulations.status, "completed")
@@ -16742,7 +16808,7 @@ Contact: ${stakeholder.name}`;
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq14, and as and10, desc as desc10, isNull as isNull2, sql as sql10 } from "drizzle-orm";
+import { eq as eq14, and as and10, desc as desc11, isNull as isNull2, sql as sql10 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -16832,7 +16898,7 @@ ${notification.notification.message}`,
         if (organizationId) {
           whereConditions.push(eq14(notifications.organizationId, organizationId));
         }
-        return await db.select().from(notifications).where(and10(...whereConditions)).orderBy(desc10(notifications.createdAt)).limit(limit).offset(offset);
+        return await db.select().from(notifications).where(and10(...whereConditions)).orderBy(desc11(notifications.createdAt)).limit(limit).offset(offset);
       }
       /**
        * Mark notification as read
@@ -16984,7 +17050,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq15, and as and11, desc as desc11, gte as gte4, lte } from "drizzle-orm";
+import { eq as eq15, and as and11, desc as desc12, gte as gte4, lte } from "drizzle-orm";
 import pino6 from "pino";
 var logger6, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -17487,7 +17553,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
               gte4(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
             )
-          ).orderBy(desc11(valueTrackingEvents.valueGenerated)).limit(10);
+          ).orderBy(desc12(valueTrackingEvents.valueGenerated)).limit(10);
           const totalValueGenerated = keyMetrics.reduce((sum, m) => sum + Math.max(0, m.estimatedAnnualValue), 0);
           const totalCostAvoided = valueEvents.reduce((sum, e) => sum + parseFloat(e.costAvoided || "0"), 0);
           const platformCost = 5e5;
@@ -18191,7 +18257,7 @@ __export(ROITracker_exports, {
   ROITracker: () => ROITracker,
   roiTracker: () => roiTracker
 });
-import { eq as eq16, and as and12, desc as desc12 } from "drizzle-orm";
+import { eq as eq16, and as and12, desc as desc13 } from "drizzle-orm";
 var ROITracker, roiTracker;
 var init_ROITracker = __esm({
   "server/services/ROITracker.ts"() {
@@ -18207,7 +18273,7 @@ var init_ROITracker = __esm({
           const activations = await db.select().from(warRoomSessions).where(and12(
             eq16(warRoomSessions.organizationId, organizationId),
             eq16(warRoomSessions.status, "completed")
-          )).orderBy(desc12(warRoomSessions.createdAt));
+          )).orderBy(desc13(warRoomSessions.createdAt));
           let totalSavings = 0;
           let totalHoursSaved = 0;
           const successfulActivations = activations.filter((a) => a.outcome !== "failed");
@@ -18392,7 +18458,7 @@ __export(TriggerIntelligenceService_exports, {
   triggerIntelligence: () => triggerIntelligence
 });
 import OpenAI5 from "openai";
-import { eq as eq17, and as and13, gte as gte6, desc as desc13 } from "drizzle-orm";
+import { eq as eq17, and as and13, gte as gte6, desc as desc14 } from "drizzle-orm";
 var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
@@ -18550,7 +18616,7 @@ Be specific and strategic. Focus on business impact.`;
         const alerts = await db.select().from(strategicAlerts).where(and13(
           eq17(strategicAlerts.organizationId, organizationId),
           gte6(strategicAlerts.createdAt, cutoffTime)
-        )).orderBy(desc13(strategicAlerts.createdAt));
+        )).orderBy(desc14(strategicAlerts.createdAt));
         const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length) : 0;
         const byType = alerts.reduce((acc, alert) => {
           acc[alert.alertType] = (acc[alert.alertType] || 0) + 1;
@@ -18618,7 +18684,7 @@ __export(ExecutiveBriefingService_exports, {
   executiveBriefing: () => executiveBriefing
 });
 import OpenAI6 from "openai";
-import { eq as eq18, and as and14, gte as gte7, desc as desc14 } from "drizzle-orm";
+import { eq as eq18, and as and14, gte as gte7, desc as desc15 } from "drizzle-orm";
 var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
@@ -18747,7 +18813,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
           db.select().from(strategicAlerts).where(and14(
             eq18(strategicAlerts.organizationId, organizationId),
             gte7(strategicAlerts.createdAt, cutoffTime)
-          )).orderBy(desc14(strategicAlerts.createdAt)),
+          )).orderBy(desc15(strategicAlerts.createdAt)),
           // Active scenarios
           db.select().from(strategicScenarios).where(eq18(strategicScenarios.organizationId, organizationId)).limit(20),
           // Key metrics
@@ -18761,7 +18827,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
           db.select().from(warRoomSessions).where(and14(
             eq18(warRoomSessions.organizationId, organizationId),
             gte7(warRoomSessions.createdAt, cutoffTime)
-          )).orderBy(desc14(warRoomSessions.createdAt)).limit(5)
+          )).orderBy(desc15(warRoomSessions.createdAt)).limit(5)
         ]);
         return {
           alerts,
@@ -20117,7 +20183,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq25, and as and18, desc as desc15, gte as gte8, count as count5 } from "drizzle-orm";
+import { eq as eq25, and as and18, desc as desc16, gte as gte8, count as count5 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -20206,7 +20272,7 @@ async function processOpportunityDetection(jobData) {
     eq25(weakSignals.organizationId, orgId),
     eq25(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
-  )).orderBy(desc15(weakSignals.detectedAt)).limit(10);
+  )).orderBy(desc16(weakSignals.detectedAt)).limit(10);
   const highImpactCount = recentSignals.filter((s) => s.impact === "high").length;
   const opportunityName = highImpactCount >= 2 ? "Strategic response window identified" : "Emerging market opportunity detected";
   const confidence = Math.min(95, 50 + signals * 5);
@@ -24409,7 +24475,7 @@ Metric: ${Trigger?.MetricName} (${Trigger?.Namespace})`,
 });
 
 // server/services/preparedness-scoring.ts
-import { eq as eq32, desc as desc16 } from "drizzle-orm";
+import { eq as eq32, desc as desc17 } from "drizzle-orm";
 function calculatePreparednessScore(customization, playbook) {
   if (!customization) {
     return 80;
@@ -24431,7 +24497,7 @@ async function getPlaybookInsights(playbookId) {
     throw new Error(`Playbook ${playbookId} not found`);
   }
   const [customization] = await db.select().from(playbookCustomizations).where(eq32(playbookCustomizations.playbookId, playbookId)).limit(1);
-  const activations = await db.select().from(playbookActivations).where(eq32(playbookActivations.playbookId, playbookId)).orderBy(desc16(playbookActivations.activatedAt)).limit(10);
+  const activations = await db.select().from(playbookActivations).where(eq32(playbookActivations.playbookId, playbookId)).orderBy(desc17(playbookActivations.activatedAt)).limit(10);
   const preparednessScore = calculatePreparednessScore(customization, playbook);
   let readinessStatus = "not_started";
   if (preparednessScore >= 95) readinessStatus = "ready";
@@ -27804,7 +27870,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq33, desc as desc17, sql as sql15, and as and22 } from "drizzle-orm";
+import { eq as eq33, desc as desc18, sql as sql15, and as and22 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -28453,7 +28519,7 @@ var init_playbookLibraryRoutes = __esm({
           activation: playbookActivations,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(playbookActivations).leftJoin(playbookLibrary, eq33(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq33(playbookLibrary.domainId, playbookDomains.id)).where(eq33(playbookActivations.organizationId, organizationId)).orderBy(desc17(playbookActivations.activatedAt));
+        }).from(playbookActivations).leftJoin(playbookLibrary, eq33(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq33(playbookLibrary.domainId, playbookDomains.id)).where(eq33(playbookActivations.organizationId, organizationId)).orderBy(desc18(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -28495,7 +28561,7 @@ var init_playbookLibraryRoutes = __esm({
         const suggestions = await db.select({
           suggestion: aiOptimizationSuggestions,
           playbook: playbookLibrary
-        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq33(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql15`${sql15.join(whereConditions, sql15.raw(" AND "))}`).orderBy(desc17(aiOptimizationSuggestions.generatedAt));
+        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq33(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql15`${sql15.join(whereConditions, sql15.raw(" AND "))}`).orderBy(desc18(aiOptimizationSuggestions.generatedAt));
         res.json(suggestions);
       } catch (error) {
         console.error("Error fetching AI suggestions:", error);
@@ -28927,7 +28993,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/readiness/organization/:organizationId", async (req, res) => {
       try {
         const { organizationId } = req.params;
-        const scores = await db.select().from(playbookReadinessScores).where(eq33(playbookReadinessScores.organizationId, organizationId)).orderBy(desc17(playbookReadinessScores.overallScore));
+        const scores = await db.select().from(playbookReadinessScores).where(eq33(playbookReadinessScores.organizationId, organizationId)).orderBy(desc18(playbookReadinessScores.overallScore));
         res.json(scores);
       } catch (error) {
         console.error("Error fetching organization readiness scores:", error);
@@ -28981,7 +29047,7 @@ var init_playbookLibraryRoutes = __esm({
         } else {
           query = query.where(eq33(executionLearnings.playbookId, playbookId));
         }
-        const learnings = await query.orderBy(desc17(executionLearnings.capturedAt));
+        const learnings = await query.orderBy(desc18(executionLearnings.capturedAt));
         res.json(learnings);
       } catch (error) {
         console.error("Error fetching execution learnings:", error);
@@ -29208,7 +29274,7 @@ var init_playbookLibraryRoutes = __esm({
         } else {
           query = query.where(eq33(playbookActivations.playbookId, playbookId));
         }
-        const activations = await query.orderBy(desc17(playbookActivations.activatedAt));
+        const activations = await query.orderBy(desc18(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -29249,7 +29315,7 @@ __export(practiceDrillRoutes_exports, {
   practiceDrillRouter: () => practiceDrillRouter
 });
 import { Router as Router9 } from "express";
-import { eq as eq34, desc as desc18, and as and23 } from "drizzle-orm";
+import { eq as eq34, desc as desc19, and as and23 } from "drizzle-orm";
 import { z as z6 } from "zod";
 var practiceDrillRouter;
 var init_practiceDrillRoutes = __esm({
@@ -29270,7 +29336,7 @@ var init_practiceDrillRoutes = __esm({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq34(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(and23(...conditions)).orderBy(desc18(practiceDrills.scheduledDate));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq34(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(and23(...conditions)).orderBy(desc19(practiceDrills.scheduledDate));
         res.json(drills);
       } catch (error) {
         console.error("Error fetching practice drills:", error);
@@ -29390,7 +29456,7 @@ var init_practiceDrillRoutes = __esm({
           playbook: playbookLibrary,
           domain: playbookDomains,
           drill: practiceDrills
-        }).from(drillPerformance).leftJoin(practiceDrills, eq34(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq34(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(eq34(drillPerformance.organizationId, organizationId)).orderBy(desc18(drillPerformance.createdAt));
+        }).from(drillPerformance).leftJoin(practiceDrills, eq34(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq34(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq34(playbookLibrary.domainId, playbookDomains.id)).where(eq34(drillPerformance.organizationId, organizationId)).orderBy(desc19(drillPerformance.createdAt));
         const totalDrills = performances.length;
         const passedDrills = performances.filter((p) => p.performance.passed).length;
         const averageScore = totalDrills > 0 ? Math.round(
@@ -35418,6 +35484,161 @@ function registerDemoAccessRoute(app2) {
   });
 }
 
+// server/routes/peerReviewRoute.ts
+init_db();
+init_schema();
+import { desc as desc4 } from "drizzle-orm";
+function registerPeerReviewRoute(app2) {
+  app2.post("/api/peer-reviews", async (req, res) => {
+    try {
+      const data = req.body;
+      if (!data.reviewerName || !data.reviewerRole || !data.reviewerOrg) {
+        return res.status(400).json({ error: "Name, role, and organization are required." });
+      }
+      const [row] = await db.insert(peerReviews).values({
+        ...data,
+        sourceUrl: req.headers.referer || data.sourceUrl || ""
+      }).returning();
+      res.json({ success: true, id: row.id });
+    } catch (err) {
+      console.error("[PeerReview] Submit error:", err);
+      res.status(500).json({ error: "Failed to save review." });
+    }
+  });
+  app2.get("/api/peer-reviews", async (req, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      const rows = await db.select().from(peerReviews).orderBy(desc4(peerReviews.createdAt));
+      res.json(rows);
+    } catch (err) {
+      console.error("[PeerReview] Fetch error:", err);
+      res.status(500).json({ error: "Failed to fetch reviews." });
+    }
+  });
+  app2.get("/api/peer-reviews/report", async (req, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      const rows = await db.select().from(peerReviews).orderBy(desc4(peerReviews.createdAt));
+      if (rows.length === 0) return res.json({ total: 0, rows: [] });
+      const avg2 = (field) => {
+        const vals = rows.map((r) => r[field]).filter((v) => v != null && v > 0);
+        return vals.length ? +(vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2) : null;
+      };
+      const dist = (field) => {
+        const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        rows.forEach((r) => {
+          if (r[field] && r[field] > 0) counts[r[field]] = (counts[r[field]] || 0) + 1;
+        });
+        return counts;
+      };
+      const multiFreq = (field) => {
+        const freq = {};
+        rows.forEach((r) => {
+          const arr = r[field] || [];
+          arr.forEach((v) => {
+            freq[v] = (freq[v] || 0) + 1;
+          });
+        });
+        return Object.entries(freq).sort((a, b) => b[1] - a[1]);
+      };
+      const singleFreq = (field) => {
+        const freq = {};
+        rows.forEach((r) => {
+          if (r[field]) freq[r[field]] = (freq[r[field]] || 0) + 1;
+        });
+        return Object.entries(freq).sort((a, b) => b[1] - a[1]);
+      };
+      const textResponses = (field) => rows.map((r) => ({ id: r.id, name: r.reviewerName, role: r.reviewerRole, org: r.reviewerOrg, text: r[field] })).filter((r) => r.text && r.text.trim().length > 0);
+      const report = {
+        total: rows.length,
+        reviewerTypes: singleFreq("reviewerType"),
+        submittedAt: rows.map((r) => r.createdAt),
+        // Scale averages
+        scales: {
+          q1: { avg: avg2("q1Scale"), dist: dist("q1Scale"), label: "Problem significance (strategic trigger gap)" },
+          q3: { avg: avg2("q3Scale"), dist: dist("q3Scale"), label: "Frequency of missed strategic windows" },
+          q4: { avg: avg2("q4Scale"), dist: dist("q4Scale"), label: "Pre-staged response maturity" },
+          q5: { avg: avg2("q5Scale"), dist: dist("q5Scale"), label: "Product clarity" },
+          q7: { avg: avg2("q7Scale"), dist: dist("q7Scale"), label: "12-minute claim credibility" },
+          q8: { avg: avg2("q8Scale"), dist: dist("q8Scale"), label: "Value proposition strength" },
+          q10: { avg: avg2("q10Scale"), dist: dist("q10Scale"), label: "Market need" },
+          q21: { avg: avg2("q21Scale"), dist: dist("q21Scale"), label: "vs existing tools" },
+          q23: { avg: avg2("q23Scale"), dist: dist("q23Scale"), label: "Overall product rating" },
+          q25: { avg: avg2("q25Scale"), dist: dist("q25Scale"), label: "Commercial viability" }
+        },
+        // Selects
+        q2Selection: singleFreq("q2Selection"),
+        q9Selections: multiFreq("q9Selections"),
+        q11Selection: singleFreq("q11Selection"),
+        q12Selections: multiFreq("q12Selections"),
+        q13Selection: singleFreq("q13Selection"),
+        q20Selection: singleFreq("q20Selection"),
+        q24Selection: singleFreq("q24Selection"),
+        q26Selection: singleFreq("q26Selection"),
+        // Q16 ratings matrix aggregation
+        q16Matrix: (() => {
+          const dims = {};
+          rows.forEach((r) => {
+            const m = r.q16Ratings || {};
+            Object.entries(m).forEach(([dim, val]) => {
+              if (!dims[dim]) dims[dim] = [];
+              if (val?.score) dims[dim].push(val.score);
+            });
+          });
+          return Object.entries(dims).map(([dim, scores]) => ({
+            dimension: dim,
+            avg: +(scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2),
+            n: scores.length
+          })).sort((a, b) => b.avg - a.avg);
+        })(),
+        // Qualitative responses
+        qualitative: {
+          q1: textResponses("q1Text"),
+          q2: textResponses("q2Text"),
+          q3: textResponses("q3Text"),
+          q4: textResponses("q4Text"),
+          q5: textResponses("q5Text"),
+          q6: textResponses("q6Text"),
+          q7: textResponses("q7Text"),
+          q8: textResponses("q8Text"),
+          q10: textResponses("q10Text"),
+          q11blocker: textResponses("q11Text"),
+          q13: textResponses("q13Text"),
+          q15: textResponses("q15Text"),
+          q17: textResponses("q17Text"),
+          q18: textResponses("q18Text"),
+          q19: textResponses("q19Text"),
+          q21: textResponses("q21Text"),
+          q22: textResponses("q22Text"),
+          q25: textResponses("q25Text"),
+          q27: textResponses("q27Text"),
+          q28: textResponses("q28Text")
+        },
+        rows: rows.map((r) => ({
+          id: r.id,
+          createdAt: r.createdAt,
+          reviewerName: r.reviewerName,
+          reviewerRole: r.reviewerRole,
+          reviewerOrg: r.reviewerOrg,
+          reviewerType: r.reviewerType,
+          q23Scale: r.q23Scale,
+          q25Scale: r.q25Scale,
+          q24Selection: r.q24Selection,
+          q26Selection: r.q26Selection
+        }))
+      };
+      res.json(report);
+    } catch (err) {
+      console.error("[PeerReview] Report error:", err);
+      res.status(500).json({ error: "Failed to generate report." });
+    }
+  });
+}
+
 // server/routes/org-setup-routes.ts
 init_storage();
 
@@ -35689,7 +35910,7 @@ function registerOrgSetupRoutes(app2) {
 // server/routes/dynamic-strategy-routes.ts
 init_db();
 init_schema();
-import { eq as eq8, desc as desc5 } from "drizzle-orm";
+import { eq as eq8, desc as desc6 } from "drizzle-orm";
 async function registerDynamicStrategyRoutes(app2) {
   app2.get("/api/dynamic-strategy/readiness", requireAuth, async (req, res) => {
     try {
@@ -35734,7 +35955,7 @@ async function registerDynamicStrategyRoutes(app2) {
       if (!user[0]?.organizationId) {
         return res.status(404).json({ error: "Organization not found" });
       }
-      const signals = await db.select().from(weakSignals2).where(and26(eq8(weakSignals2.organizationId, user[0].organizationId), eq8(weakSignals2.status, "active"))).orderBy(desc5(weakSignals2.detectedAt)).limit(50);
+      const signals = await db.select().from(weakSignals2).where(and26(eq8(weakSignals2.organizationId, user[0].organizationId), eq8(weakSignals2.status, "active"))).orderBy(desc6(weakSignals2.detectedAt)).limit(50);
       res.json(signals);
     } catch (error) {
       console.error("Error fetching weak signals:", error);
@@ -35749,7 +35970,7 @@ async function registerDynamicStrategyRoutes(app2) {
       if (!user[0]?.organizationId) {
         return res.status(404).json({ error: "Organization not found" });
       }
-      const patterns = await db.select().from(oraclePatterns2).where(eq8(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc5(oraclePatterns2.detectedAt)).limit(50);
+      const patterns = await db.select().from(oraclePatterns2).where(eq8(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc6(oraclePatterns2.detectedAt)).limit(50);
       res.json(patterns);
     } catch (error) {
       console.error("Error fetching oracle patterns:", error);
@@ -35780,7 +36001,7 @@ async function registerDynamicStrategyRoutes(app2) {
         return res.status(404).json({ error: "Organization not found" });
       }
       const limit = parseInt(req.query.limit) || 20;
-      const events = await db.select().from(activityFeedEvents2).where(eq8(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc5(activityFeedEvents2.createdAt)).limit(limit);
+      const events = await db.select().from(activityFeedEvents2).where(eq8(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc6(activityFeedEvents2.createdAt)).limit(limit);
       res.json(events);
     } catch (error) {
       console.error("Error fetching activity feed:", error);
@@ -35791,7 +36012,7 @@ async function registerDynamicStrategyRoutes(app2) {
     try {
       const { playbookLearnings: playbookLearnings2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const scenarioId = req.params.id;
-      const learnings = await db.select().from(playbookLearnings2).where(eq8(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc5(playbookLearnings2.extractedAt)).limit(50);
+      const learnings = await db.select().from(playbookLearnings2).where(eq8(playbookLearnings2.scenarioId, scenarioId)).orderBy(desc6(playbookLearnings2.extractedAt)).limit(50);
       res.json(learnings);
     } catch (error) {
       console.error("Error fetching playbook learnings:", error);
@@ -36262,7 +36483,7 @@ function registerOnboardingRoutes(app2) {
 // server/routes/execution-sync-routes.ts
 init_db();
 init_storage();
-import { eq as eq10, desc as desc6 } from "drizzle-orm";
+import { eq as eq10, desc as desc7 } from "drizzle-orm";
 async function registerExecutionSyncRoutes(app2) {
   console.log("\u{1F4E1} Registering Execution Plan Sync API endpoints...");
   app2.get("/api/sync/templates", requireOrgAccess, async (req, res) => {
@@ -36749,7 +36970,7 @@ async function registerExecutionSyncRoutes(app2) {
   app2.get("/api/pre-approved-resources", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.query.organizationId || req.userId;
-      const resources = await db.select().from(executionPreApprovedResources2).where(eq10(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc6(executionPreApprovedResources2.createdAt));
+      const resources = await db.select().from(executionPreApprovedResources2).where(eq10(executionPreApprovedResources2.organizationId, organizationId)).orderBy(desc7(executionPreApprovedResources2.createdAt));
       res.json(resources);
     } catch (error) {
       console.error("Failed to fetch pre-approved resources:", error);
@@ -36943,13 +37164,13 @@ async function registerExecutionSyncRoutes(app2) {
 
 // server/routes/decision-coordination-routes.ts
 init_db();
-import { eq as eq11, desc as desc7, and as and8, sql as sql8 } from "drizzle-orm";
+import { eq as eq11, desc as desc8, and as and8, sql as sql8 } from "drizzle-orm";
 async function registerDecisionCoordinationRoutes(app2) {
   const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
   app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const trees = await db.select().from(decisionTrees2).where(eq11(decisionTrees2.organizationId, organizationId)).orderBy(desc7(decisionTrees2.createdAt));
+      const trees = await db.select().from(decisionTrees2).where(eq11(decisionTrees2.organizationId, organizationId)).orderBy(desc8(decisionTrees2.createdAt));
       res.json(trees);
     } catch (error) {
       console.error("Failed to fetch decision trees:", error);
@@ -37004,7 +37225,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/decision-log", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const logs = await db.select().from(decisionLog2).where(eq11(decisionLog2.organizationId, organizationId)).orderBy(desc7(decisionLog2.timestamp)).limit(50);
+      const logs = await db.select().from(decisionLog2).where(eq11(decisionLog2.organizationId, organizationId)).orderBy(desc8(decisionLog2.timestamp)).limit(50);
       res.json(logs);
     } catch (error) {
       console.error("Failed to fetch decision log:", error);
@@ -37068,7 +37289,7 @@ async function registerDecisionCoordinationRoutes(app2) {
   app2.get("/api/execution-runs", requireOrgAccess, async (req, res) => {
     try {
       const organizationId = req.orgId;
-      const runs = await db.select().from(executionInstances2).where(eq11(executionInstances2.organizationId, organizationId)).orderBy(desc7(executionInstances2.createdAt)).limit(20);
+      const runs = await db.select().from(executionInstances2).where(eq11(executionInstances2.organizationId, organizationId)).orderBy(desc8(executionInstances2.createdAt)).limit(20);
       res.json(runs);
     } catch (error) {
       console.error("Failed to fetch execution runs:", error);
@@ -37499,14 +37720,14 @@ async function registerDecisionCoordinationRoutes(app2) {
 // server/replit_integrations/chat/storage.ts
 init_db();
 init_schema();
-import { eq as eq12, desc as desc8 } from "drizzle-orm";
+import { eq as eq12, desc as desc9 } from "drizzle-orm";
 var chatStorage = {
   async getConversation(id) {
     const [conversation] = await db.select().from(conversations).where(eq12(conversations.id, id));
     return conversation;
   },
   async getAllConversations() {
-    return db.select().from(conversations).orderBy(desc8(conversations.createdAt));
+    return db.select().from(conversations).orderBy(desc9(conversations.createdAt));
   },
   async createConversation(title) {
     const [conversation] = await db.insert(conversations).values({ title }).returning();
@@ -37871,6 +38092,8 @@ function registerAudioRoutes(app2) {
 var PUBLIC_ROUTES = [
   // Demo access bypass — shareable link for investors and pilot prospects
   "/api/demo-access",
+  // Peer Review Questionnaire — public submission (no auth required to submit feedback)
+  "/api/peer-reviews",
   // Marketing & Demo Routes - allow prospects to view content
   "/api/tts",
   // Text-to-speech for founder story narration
@@ -38566,7 +38789,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq37, desc as desc19, sql as sql17, like, and as and24, asc as asc2, count as count7 } from "drizzle-orm";
+import { eq as eq37, desc as desc20, sql as sql17, like, and as and24, asc as asc2, count as count7 } from "drizzle-orm";
 function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
@@ -38661,6 +38884,7 @@ async function registerRoutes(app2, existingServer) {
   app2.use("/api/readiness", incident_routes_default);
   registerActivationRoutes(app2);
   registerDemoAccessRoute(app2);
+  registerPeerReviewRoute(app2);
   registerAudioRoutes(app2);
   app2.get("/api/scenario-templates", async (req, res) => {
     try {
@@ -39412,7 +39636,7 @@ async function registerRoutes(app2, existingServer) {
         status: organizations.status,
         createdAt: organizations.createdAt,
         updatedAt: organizations.updatedAt
-      }).from(organizations).orderBy(desc19(organizations.createdAt));
+      }).from(organizations).orderBy(desc20(organizations.createdAt));
       res.json(orgList);
     } catch (error) {
       console.error("Error fetching organizations:", error);
@@ -39746,7 +39970,7 @@ async function registerRoutes(app2, existingServer) {
       if (sortOrder === "asc") {
         query = query.orderBy(asc2(playbooks2[sortField]));
       } else {
-        query = query.orderBy(desc19(playbooks2[sortField]));
+        query = query.orderBy(desc20(playbooks2[sortField]));
       }
       const pageNum = Math.max(1, parseInt(page));
       const limitNum = Math.min(100, Math.max(1, parseInt(limit)));
@@ -39797,7 +40021,7 @@ async function registerRoutes(app2, existingServer) {
       }).from(playbooks2);
       if (conditions.length > 0) query = query.where(and24(...conditions));
       const limitNum = Math.min(200, Math.max(1, parseInt(limit)));
-      const results = await query.orderBy(desc19(playbooks2.timesUsed)).limit(limitNum);
+      const results = await query.orderBy(desc20(playbooks2.timesUsed)).limit(limitNum);
       res.json(results);
     } catch (error) {
       console.error("Error fetching playbook metadata:", error);
@@ -40627,7 +40851,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/intelligence-reports", async (req, res) => {
     try {
-      const result = await db.select().from(intelligenceReports).orderBy(desc19(intelligenceReports.id));
+      const result = await db.select().from(intelligenceReports).orderBy(desc20(intelligenceReports.id));
       res.json(result);
     } catch (error) {
       console.error("Error fetching all intelligence reports:", error);
@@ -43584,7 +43808,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app2.get("/api/compound-threats", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const threats = await db.select().from(compoundThreatAlerts).where(eq37(compoundThreatAlerts.organizationId, orgId)).orderBy(desc19(compoundThreatAlerts.detectedAt)).limit(20);
+      const threats = await db.select().from(compoundThreatAlerts).where(eq37(compoundThreatAlerts.organizationId, orgId)).orderBy(desc20(compoundThreatAlerts.detectedAt)).limit(20);
       res.json(threats);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -43672,7 +43896,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/roi/board-report", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq37(playbookActivations.organizationId, orgId)).orderBy(desc19(playbookActivations.activatedAt)).limit(50);
+      const activations = await db.select().from(playbookActivations).where(eq37(playbookActivations.organizationId, orgId)).orderBy(desc20(playbookActivations.activatedAt)).limit(50);
       const outcomes = await db.select().from(activationOutcomes).where(eq37(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const events = activations.map((a) => {
@@ -43739,7 +43963,7 @@ Respond as JSON: { "surviveScore": 72, "thriveScore": 45, "activatedPlaybooks": 
   });
   app2.get("/api/simulation-analyses", requireOrgAccess2, async (req, res) => {
     try {
-      const analyses = await db.select().from(simulationAnalyses).where(eq37(simulationAnalyses.organizationId, req.orgId)).orderBy(desc19(simulationAnalyses.createdAt)).limit(20);
+      const analyses = await db.select().from(simulationAnalyses).where(eq37(simulationAnalyses.organizationId, req.orgId)).orderBy(desc20(simulationAnalyses.createdAt)).limit(20);
       res.json(analyses);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -43785,7 +44009,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
   });
   app2.get("/api/strategic-recordings", requireOrgAccess2, async (req, res) => {
     try {
-      const recordings = await db.select().from(strategicRecordings).where(eq37(strategicRecordings.organizationId, req.orgId)).orderBy(desc19(strategicRecordings.createdAt)).limit(10);
+      const recordings = await db.select().from(strategicRecordings).where(eq37(strategicRecordings.organizationId, req.orgId)).orderBy(desc20(strategicRecordings.createdAt)).limit(10);
       res.json(recordings);
     } catch (err) {
       res.status(500).json({ error: err.message });
