@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 5) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 6) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -591,6 +591,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `ExecutiveSummaryGenerator.tsx` | `/executive-summary` | AI-generated executive summaries |
 | `PilotProgram.tsx` | `/pilot-program` | Primary enterprise conversion page |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
+| `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
 
 ---
 
@@ -604,6 +605,21 @@ When a pilot customer clicks "Activate Response" on a pending trigger in Mission
 4. `PlaybookActivationConsole` receives `triggerId='manual'` (skips trigger lookup) and `playbookId` from the real DB
 
 If no playbook matches by name, uses `realPlaybooks[0]?.id`. If DB is empty, falls back to `/triggers-management`.
+
+### PlaybookActivationConsole — Key Architecture
+
+**Brand constants at module level.** `NAVY`, `GOLD`, `TEAL`, `MUTED`, `OFF`, `BORDER`, `CG` etc. are declared at the top of the file (outside the component function) so all helper sub-components defined in the same file can reference them without prop-drilling.
+
+**BriefLoadingState component.** A standalone component defined *before* the `PlaybookActivationConsole` function in the same file. While GPT-4o generates the execution brief, it shows a 5-step animated checklist ticking through: Domain Analysis → Signal Synthesis → Stakeholder Mapping → Risk Assessment → Commander Brief. Uses `@keyframes scanBeam` and `@keyframes fadeInUp` defined in `index.css`.
+
+**Execution Console Live War Room** (during active execution):
+- **Stakeholder Notification Tracker** — domain-matched C-suite contacts (CFO/COO/CLO etc.) cycling through `Pending → Notified → Acknowledged`
+- **Live Activity Feed** — timestamped war-room log entries appended every few seconds
+- **Task cards** with action-type badge (ANALYZE / NOTIFY / CONVENE / BRIEF) and a gold pulse dot on the current in-progress task
+
+**Auto-Task Seeding.** When a playbook is activated with zero DB tasks, 7 domain-specific tasks are generated in-memory keyed to the playbook's strategic domain. Tasks start `in_progress` and auto-progress every 20 seconds. `displayTasks` merges real DB tasks + seeded demo tasks identically for debrief scoring.
+
+**Post-Activation Debrief.** Surfaces automatically on completion: 0–100 performance score, ROI dollar value (`$40/min × time saved vs 72hr benchmark`), 4 metric cards, AI recommendation, CTAs. Shows "Concept Simulation" banner when running on seeded demo tasks.
 
 ---
 
@@ -688,7 +704,37 @@ This is critical — without it, first-time viewers cannot tell whether the floo
 
 ---
 
-## 19. Build & Deployment
+## 19. GuidedStart Experience (`/begin`)
+
+**File:** `client/src/pages/GuidedStart.tsx` | **Routes:** `/begin`, `/start` | **Auth:** None required
+
+The highest-drama public entry point. No `PageLayout`, no nav, no header — full-screen immersive flow.
+
+### Flow Phases
+
+| Phase | What Happens |
+|---|---|
+| **SCENARIOS** | 3 cards with financial stakes grid ($2.1B deal, $340M revenue at risk, etc.), domain badge, urgency window, stakes label |
+| **DETECT** | Animated signal counter counts 0→248. Two-column layout: left = step-by-step confirmation checklist; right = domain signal categories panel. Threat level gauge at step 3. |
+| **READY** | Side-by-side "What's at Stake" vs "What Happens Next" panels. Scenario-specific financial figures and stakeholder count. |
+| **→ Console** | Auto-fetches domain-matched playbook from `/api/playbook-library` (not `/api/playbooks`). Navigates to `PlaybookActivationConsole`. |
+
+### Key Rules
+- **Always use `/api/playbook-library`** — returns `{ playbooks: [...] }` at the top level. Filter by `domain` to find a match. Do NOT use `/api/playbooks` (different table, different shape).
+- No login required at any point — entire flow is public.
+- The DETECT animation runs ~12 seconds total to give the signal counter time to feel real.
+
+### Natural Transition CTAs (site-wide pattern)
+In-content links to `/begin` appear throughout the marketing site as plain underlined text (gold or teal, no button) to give the page a natural editorial flow:
+- **Homepage ProblemSection** — end of section: "There is a better way — experience the 12-minute alternative live →"
+- **Homepage IDEASection** — end of section: "Experience the IDEA Framework in real time →"
+- **TryDemo** — mid-page between industry demos and playbook examples
+- **HowItWorks** — final CTA block
+- **Homepage hero** — primary CTA button: "Experience 12-Minute Execution"
+
+---
+
+## 20. Build & Deployment
 
 ### Development
 ```bash
@@ -744,7 +790,7 @@ await deployConfig({
 
 ---
 
-## 20. Critical Rules for Any Developer
+## 21. Critical Rules for Any Developer
 
 1. **Never write raw SQL.** Always modify `shared/schema.ts` and run `npm run db:push`.
 2. **Never edit `package.json` scripts, `vite.config.ts`, or `drizzle.config.ts`.**
@@ -763,7 +809,7 @@ await deployConfig({
 
 ---
 
-## 21. Playbook Seeding (Production)
+## 22. Playbook Seeding (Production)
 
 Seeding logic is in `server/index.ts` as an additive migration:
 - If playbook count < 170, only inserts missing compound playbooks by name lookup
@@ -772,7 +818,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 22. Environment Variables
+## 23. Environment Variables
 
 | Variable | Required | Purpose |
 |---|---|---|
@@ -793,7 +839,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 23. Playbook ID Strategy — Stable vs. Environment-Specific UUIDs
+## 24. Playbook ID Strategy — Stable vs. Environment-Specific UUIDs
 
 **Problem solved (March 2026):** The production and development databases seed playbooks with different UUIDs because `gen_random_uuid()` runs at insert time. Any code that hardcodes a UUID will fail in one environment.
 
@@ -823,7 +869,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-## 24. WOW Features — 5 Strategic Differentiators (Added March 2026)
+## 25. WOW Features — 5 Strategic Differentiators (Added March 2026)
 
 Five high-impact features that elevate the platform beyond dashboards into an irreplaceable execution layer. All are backed by GPT-4o and persisted to the database.
 
@@ -882,7 +928,7 @@ SimulationStudio, StrategicRecorder, and CompoundThreatAlerts all call protected
 
 ---
 
-## 25. AI-Backed Activation Features (Added March 2026)
+## 26. AI-Backed Activation Features (Added March 2026)
 
 Three new features wired into the playbook execution flow, backed by GPT-4o.
 
@@ -992,7 +1038,7 @@ const major = parseFloat(versionStr.split('.')[0] || '1');
 
 ---
 
-## 26. Orphaned Pages — Decision Log (March 2026)
+## 27. Orphaned Pages — Decision Log (March 2026)
 
 Seven page files were previously routed in `App.tsx` but had no navigation entry points — accessible only by direct URL. Each was reviewed and given an explicit disposition.
 
@@ -1020,7 +1066,7 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 
 ---
 
-## 27. Route Architecture — Server-Side Decomposition (March 2026)
+## 28. Route Architecture — Server-Side Decomposition (March 2026)
 
 `server/routes.ts` was decomposed from a 9,341-line monolith to approximately 6,800 lines by extracting domain-scoped sections into dedicated route module files.
 
@@ -1059,7 +1105,7 @@ optionalAuth               // middleware: sets req.userId if present, no error i
 
 ---
 
-## 28. Sentry Error Monitoring (March 2026)
+## 29. Sentry Error Monitoring (March 2026)
 
 Sentry is wired into both the server and frontend. Both are optional — the app starts and runs normally when the DSN env vars are absent.
 
