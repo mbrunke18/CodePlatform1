@@ -131,6 +131,7 @@ export const PUBLIC_ROUTES = [
   '/api/scenarios/:id',
   '/api/scenarios/recent',
   '/api/playbooks',
+  '/api/playbooks/metadata',
   '/api/playbooks/:id',
   
   // Tasks - demo access for playbook activation console

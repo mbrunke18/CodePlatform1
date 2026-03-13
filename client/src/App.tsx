@@ -152,6 +152,7 @@ const PlaybookCustomize = lazy(() => import("./pages/PlaybookCustomize"));
 const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsConfiguration"));
 const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
+const GuidedStart = lazy(() => import("./pages/GuidedStart"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
@@ -413,7 +414,9 @@ function Router() {
         <Route path="/get-started" component={GetStarted} />
         <Route path="/demo-access" component={DemoAccess} />
         {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}
-        {renderRoutes(["/new-user-journey", "/start", "/welcome", "/journey", "/experience"], NewUserJourney)}
+        {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
+        <Route path="/begin" component={GuidedStart} />
+        <Route path="/start" component={GuidedStart} />
         <Route path="/preparedness-report" component={PreparednessReport} />
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
         {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], PlaybookLibraryV2)}

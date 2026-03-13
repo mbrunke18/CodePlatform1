@@ -965,6 +965,25 @@ export default function PlaybookActivationConsole() {
                 </div>
               </div>
 
+              {/* Simulation Context Banner — shown when demo tasks were used */}
+              {safeTasks.length === 0 && (
+                <div style={{ background: "rgba(43,138,110,0.06)", borderBottom: "1px solid rgba(43,138,110,0.2)", padding: "16px 48px", display: "flex", alignItems: "flex-start", gap: 14 }}>
+                  <div style={{ flexShrink: 0, marginTop: 1 }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 4 }}>
+                      Concept Simulation — Evidence of Execution Velocity
+                    </p>
+                    <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55 }}>
+                      This simulation demonstrates what your organization could achieve with Execution OS in a live strategic event.
+                      Performance scores, ROI estimates, and task completion rates are modeled against the <strong>72-hour industry benchmark</strong> for comparable crisis response events.
+                      Actual results vary by organization readiness and playbook configuration.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* ADVANCE Debrief Strip */}
               <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}`, padding: "40px 48px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>

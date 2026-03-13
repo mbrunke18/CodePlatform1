@@ -89,13 +89,13 @@ export default function MarketingLanding() {
           <div className="text-center mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
               <Button 
-                onClick={() => { window.location.href = '/try-demo'; }}
+                onClick={() => { window.location.href = '/begin'; }}
                 size="lg"
                 className="bg-[#C9A84C] border border-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
                 data-testid="button-try-demo"
               >
                 <Play className="mr-3 h-4 w-4" />
-                Try Interactive Demo
+                Experience 12-Minute Execution
               </Button>
               
               <Button 
