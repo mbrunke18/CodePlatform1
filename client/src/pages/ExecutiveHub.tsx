@@ -325,6 +325,32 @@ export default function ExecutiveHub() {
                 ))}
               </div>
 
+              {/* Board Narrative */}
+              <Card className="border-[#C9A84C]/30 mb-6" style={{ background: NAVY }}>
+                <CardContent className="p-8">
+                  <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-4" style={{ color: 'rgba(201,168,76,0.6)' }}>Board-Ready Headline</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.35rem', fontWeight: 600, color: '#fff', lineHeight: 1.5 }}>
+                    "Execution OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
+                    <span style={{ color: GOLD }}>47 activations</span> this period, with an average response time of{' '}
+                    <span style={{ color: GOLD }}>11.4 minutes</span> — <span style={{ color: GOLD }}>340× faster</span>{' '}
+                    than industry baseline. No strategic trigger went unaddressed."
+                  </p>
+                  <div className="flex items-center gap-6 mt-6 pt-6 border-t border-white/10">
+                    {[
+                      { v: '47', l: 'Activations' },
+                      { v: '11.4m', l: 'Avg Response' },
+                      { v: '1,240', l: 'Stakeholders Coordinated' },
+                      { v: '78%', l: 'Target Met Rate' },
+                    ].map(s => (
+                      <div key={s.l} className="text-center">
+                        <div className="text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: GOLD }}>{s.v}</div>
+                        <div className="text-[9px] font-bold uppercase tracking-widest mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.l}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
               <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-white/10"><BarChart3 className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">See the full analytics suite</h3><p className="text-sm text-white/60">Department breakdowns, ROI dashboard, and historical trends</p></div></div><Link href="/analytics"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Full Analytics <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
             </>
           )}

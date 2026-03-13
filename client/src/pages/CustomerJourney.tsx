@@ -141,27 +141,50 @@ export default function CustomerJourney() {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4] text-[#0A0F2E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          
-          <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-8">
-            <Link href="/dashboard">
-              <span className="text-[#6B7280] hover:text-[#2B8A6E] cursor-pointer">Execution OS One™</span>
-            </Link>
-            <ChevronRight className="h-3 w-3 text-[#6B7280]" />
-            <span className="text-[#2B8A6E]">Execution OS North Star™</span>
-          </nav>
 
-          <div className="text-center mb-16">
+        {/* ── Dark Navy Hero ─────────────────────────────────────────── */}
+        <section style={{ background: NAVY, padding: "72px 48px 64px", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
+          <div style={{ position: "absolute", top: "-200px", right: "-200px", width: 700, height: 700, background: "radial-gradient(circle, rgba(43,138,110,0.13) 0%, transparent 65%)", pointerEvents: "none" }} />
+          <div className="max-w-5xl mx-auto text-center relative z-10">
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)" }}>The Customer Lifecycle</span>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
+            </div>
+            <h1 style={{ ...CG, fontWeight: 700, fontSize: "clamp(38px,5vw,60px)", lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
+              From Strategy to <em style={{ fontStyle: "italic", color: GOLD }}>Execution Mastery</em>
+            </h1>
+            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, maxWidth: 680, margin: "0 auto 48px", lineHeight: 1.65, fontWeight: 500 }}>
+              Our 7-phase transformation model takes Fortune 1000 organizations from first evaluation to continuous strategic dominance — in 90 days.
+            </p>
+            {/* Canonical numbers stat bar */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, maxWidth: 780, margin: "0 auto", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 2 }}>
+              {[
+                { value: "12", unit: "min", label: "Strategic Response" },
+                { value: "340×", unit: "", label: "Faster Than Industry" },
+                { value: "170", unit: "", label: "Playbooks Ready" },
+                { value: "90", unit: "days", label: "To Full Mastery" },
+              ].map(s => (
+                <div key={s.label} style={{ padding: "20px 16px", textAlign: "center" }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.value}<span style={{ fontSize: 16, fontWeight: 500 }}>{s.unit}</span></div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 6 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+          <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
-              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">The Customer Lifecycle</span>
+              <span className="text-[#C9A84C] text-[9px] font-bold uppercase tracking-[0.2em]">7 Phases · 90 Days</span>
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>
-              From Strategy to <span className="text-[#C9A84C]">Execution Mastery</span>
-            </h1>
-            <p className="text-xl text-[#6B7280] max-w-3xl mx-auto font-medium">
-              Our 7-phase transformation model — from first evaluation to continuous strategic mastery.
+            <p className="text-lg text-[#6B7280] max-w-3xl mx-auto font-medium">
+              Each phase builds on the last — turning your organization from reactive to fearlessly proactive.
             </p>
           </div>
 
