@@ -37880,6 +37880,8 @@ var PUBLIC_ROUTES = [
   "/api/scenario-templates/comprehensive",
   "/api/scenario-templates/:id",
   // Playbook Library & Practice Drills (public demo access)
+  "/api/playbooks/:id/execution-brief",
+  // AI brief — accessible to unauthenticated guided-start users
   "/api/playbook-library",
   "/api/playbook-library/domains",
   "/api/playbook-library/domains/:domainId/categories",
@@ -37979,6 +37981,7 @@ var PUBLIC_ROUTES = [
   "/api/scenarios/:id",
   "/api/scenarios/recent",
   "/api/playbooks",
+  "/api/playbooks/metadata",
   "/api/playbooks/:id",
   // Tasks - demo access for playbook activation console
   "/api/tasks",

@@ -54,6 +54,18 @@ interface DemoTask {
   assignedTo: null;
 }
 
+// ─── Brand constants (module-level so helper components can use them) ──────
+const NAVY   = "#0A0F2E";
+const NAVY_MID = "#141B45";
+const GOLD   = "#C9A84C";
+const GOLD_LT  = "#DFC178";
+const TEAL   = "#2B8A6E";
+const TEAL_LT  = "#3BAF8A";
+const OFF    = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED  = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
 const DOMAIN_TASKS: Record<string, string[]> = {
   'Financial Strategy': [
     'Brief CFO and treasury team — assess immediate liquidity exposure',
@@ -230,6 +242,50 @@ function generateDemoTasks(domain: string): DemoTask[] {
     priority: i === 0 ? 'critical' : i < 3 ? 'high' : 'medium',
     assignedTo: null,
   }));
+}
+
+const BRIEF_LOADING_STEPS = [
+  'Analyzing strategic domain and playbook configuration',
+  'Synthesizing intelligence signals from 248+ data points',
+  'Mapping critical roles and stakeholder dependencies',
+  'Generating risk and mitigation assessment',
+  'Composing Commander Brief — final review',
+];
+
+function BriefLoadingState() {
+  const [step, setStep] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setStep(s => Math.min(s + 1, BRIEF_LOADING_STEPS.length - 1)), 900);
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <div style={{ padding: "28px 24px", background: "rgba(124,58,237,0.02)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {BRIEF_LOADING_STEPS.map((s, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, opacity: i > step ? 0.25 : 1, transition: "opacity 0.5s" }}>
+            <div style={{ width: 18, height: 18, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {i < step ? (
+                <CheckCircle2 style={{ width: 14, height: 14, color: TEAL }} />
+              ) : i === step ? (
+                <Loader2 style={{ width: 14, height: 14, color: "#7C3AED", animation: "spin 0.8s linear infinite" }} />
+              ) : (
+                <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#ccc" }} />
+              )}
+            </div>
+            <span style={{
+              fontSize: 12,
+              fontWeight: i === step ? 600 : 400,
+              color: i < step ? MUTED : i === step ? "#7C3AED" : "#bbb",
+              transition: "color 0.4s",
+            }}>{s}</span>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop: 20, fontSize: 11, color: MUTED, fontStyle: "italic" }}>
+        GPT-4o analyzing strategic context — your brief will be ready momentarily
+      </div>
+    </div>
+  );
 }
 
 export default function PlaybookActivationConsole() {
@@ -520,17 +576,6 @@ export default function PlaybookActivationConsole() {
   const industryStandard = 72 * 60; // 72 hours in minutes
   const timeSaved = industryStandard - elapsedMinutes;
 
-  const NAVY = "#0A0F2E";
-  const NAVY_MID = "#141B45";
-  const GOLD = "#C9A84C";
-  const GOLD_LT = "#DFC178";
-  const TEAL = "#2B8A6E";
-  const TEAL_LT = "#3BAF8A";
-  const OFF = "#F8F7F4";
-  const BORDER = "#E8E4DC";
-  const MUTED = "#6B7280";
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-
   // For manual executions, only wait for playbook. For trigger-based, wait for both.
   if (!playbook || (!isManualExecution && !trigger)) {
     return <PageLayout><div className="p-6" style={{ background: OFF, minHeight: "100vh", color: NAVY }}>Loading activation console...</div></PageLayout>;
@@ -633,9 +678,7 @@ export default function PlaybookActivationConsole() {
               </div>
 
               {briefLoading ? (
-                <div style={{ padding: "32px 24px", textAlign: "center" as const }}>
-                  <div style={{ fontSize: 13, color: MUTED }}>Generating your execution brief...</div>
-                </div>
+                <BriefLoadingState />
               ) : brief ? (
                 <div style={{ padding: "20px 24px" }}>
                   {/* Situation + Objective */}

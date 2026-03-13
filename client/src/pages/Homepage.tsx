@@ -303,12 +303,6 @@ function HeroSection() {
             >
               Experience 12-Minute Execution →
             </Link>
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, display: "flex", alignItems: "center", gap: 6 }}
-            >
-              See How It Works <span>→</span>
-            </button>
           </div>
         </Reveal>
 
