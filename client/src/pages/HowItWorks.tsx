@@ -655,9 +655,9 @@ export default function HowItWorks() {
                 Request Pilot Access
               </Button>
             </Link>
-            <Link href="/try-demo">
+            <Link href="/begin">
               <Button style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.25)" }}>
-                Try the Demo
+                Experience 12-Min Execution
               </Button>
             </Link>
             <Link href="/simulation-studio">

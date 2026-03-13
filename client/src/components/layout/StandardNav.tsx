@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -31,7 +31,7 @@ export default function StandardNav() {
     return location.startsWith(path);
   };
 
-  type NavLink = { label: string; path: string; icon: any; description: string };
+  type NavLink = { label: string; path: string; icon: any; description: string; featured?: boolean };
   type NavSection = { heading: string; links: NavLink[] };
 
   const productSections: NavSection[] = [
@@ -77,6 +77,7 @@ export default function StandardNav() {
     {
       heading: "Get Started",
       links: [
+        { label: "Experience 12-Min Execution", path: "/begin", icon: Play, description: "Live guided demo — see full execution in real time", featured: true },
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Live simulation — no login required" },
         { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
         { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
@@ -127,7 +128,24 @@ export default function StandardNav() {
     </button>
   );
 
-  const renderNavItem = (link: NavLink) => (
+  const renderNavItem = (link: NavLink) => link.featured ? (
+    <DropdownMenuItem
+      key={link.path + link.label}
+      onClick={() => navigateTo(link.path)}
+      className="flex items-center gap-3 py-2.5 cursor-pointer focus:bg-amber-50 rounded-lg mx-1 mb-1"
+      style={{ background: "linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.07))", border: "1px solid rgba(201,168,76,0.35)" }}
+      data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+    >
+      <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "rgba(201,168,76,0.18)" }}>
+        <link.icon className="h-4 w-4" style={{ color: "#C9A84C" }} />
+      </div>
+      <div className="flex-1">
+        <div className="font-semibold text-sm" style={{ color: "#0A0F2E" }}>{link.label}</div>
+        <span className="text-xs" style={{ color: "#6B7280" }}>{link.description}</span>
+      </div>
+      <div className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: "#C9A84C", color: "#0A0F2E" }}>LIVE</div>
+    </DropdownMenuItem>
+  ) : (
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}

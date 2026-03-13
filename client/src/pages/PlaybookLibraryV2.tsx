@@ -435,6 +435,22 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         </div>
       )}
 
+      {/* ─── Experience CTA Banner ─── */}
+      <div style={{ background: NAVY, borderBottom: "1px solid rgba(201,168,76,0.2)" }}>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+          <div className="flex items-center gap-3">
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#C9A84C", animation: "pulse 2s infinite" }} />
+            <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 12, fontWeight: 500 }}>
+              See any of these activate live — from signal detection to coordinated execution in 12 minutes
+            </span>
+          </div>
+          <a href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", padding: "9px 20px", borderRadius: 2, textDecoration: "none", flexShrink: 0 }}>
+            Experience 12-Min Execution
+            <ArrowRight style={{ width: 12, height: 12 }} />
+          </a>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
           <div className="sticky top-24">
