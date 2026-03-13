@@ -55,9 +55,9 @@ export default function GetStarted() {
 
   const handleStart = () => {
     if (isAuthenticated) {
-      setLocation("/mission-control");
+      setLocation("/command-center");
     } else {
-      login("/mission-control");
+      login("/command-center");
     }
   };
 

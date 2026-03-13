@@ -103,7 +103,7 @@ export default function ExecutiveHub() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <Link href="/executive-dashboard"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Dashboard</Button></Link>
+                  <Link href="/command-center"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Dashboard</Button></Link>
                 </div>
               </div>
 

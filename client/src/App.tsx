@@ -294,7 +294,7 @@ function Router() {
             <Switch>
             <Route path="/" component={Homepage} />
             <Route path="/home" component={Homepage} />
-            <Route path="/mission-control" component={MissionControl} />
+            <Route path="/mission-control">{() => <Redirect to="/command-center" />}</Route>
             <Route path="/workspace" component={WorkspaceHub} />
             <Route path="/workspaces/identify">{() => <Redirect to="/workspace?tab=identify" />}</Route>
             <Route path="/workspaces/detect">{() => <Redirect to="/workspace?tab=detect" />}</Route>
@@ -355,7 +355,7 @@ function Router() {
         {renderRedirects(["/crisis-hub"], "/situations-hub")}
 
         {/* Dashboards & Intelligence */}
-        <Route path="/executive-dashboard" component={ExecutiveDashboard} />
+        <Route path="/executive-dashboard">{() => <Redirect to="/command-center" />}</Route>
         <Route path="/strategy-execution" component={StrategyExecutionDashboard} />
         <Route path="/business-intelligence" component={BusinessIntelligence} />
         <Route path="/intelligence" component={IntelligenceControlCenter} />
@@ -411,7 +411,7 @@ function Router() {
         <Route path="/triggers-management" component={TriggersManagement} />
         <Route path="/signal-configuration" component={SignalConfiguration} />
         <Route path="/organization-setup" component={OrganizationSetup} />
-        <Route path="/playbook-customization" component={PlaybookCustomization} />
+        <Route path="/playbook-customization">{() => <Redirect to="/playbooks" />}</Route>
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
         <Route path="/get-started" component={GetStarted} />
         <Route path="/demo-access" component={DemoAccess} />
@@ -450,9 +450,9 @@ function Router() {
         <Route path="/continuous-mode" component={ContinuousModePage} />
 
         {/* Analytics */}
-        <Route path="/analytics" component={AdvancedAnalytics} />
-        <Route path="/advanced-analytics" component={AdvancedAnalytics} />
-        <Route path="/executive-analytics-dashboard" component={ExecutiveAnalyticsDashboard} />
+        <Route path="/analytics">{() => <Redirect to="/intelligence-hub" />}</Route>
+        <Route path="/advanced-analytics">{() => <Redirect to="/intelligence-hub" />}</Route>
+        <Route path="/executive-analytics-dashboard">{() => <Redirect to="/intelligence-hub" />}</Route>
         {renderRoutes(["/executive-summary", "/executive-summary-generator", "/report-generator"], ExecutiveSummaryGenerator)}
         <Route path="/audit-logging-center" component={AuditLoggingCenter} />
         <Route path="/roi-calculator" component={ROICalculator} />
@@ -526,7 +526,7 @@ function Router() {
 
         {/* Settings & Administration */}
         <Route path="/vc-presentations" component={VCPresentations} />
-        <Route path="/settings" component={Settings} />
+        <Route path="/settings">{() => <Redirect to="/settings-hub" />}</Route>
         <Route path="/uat-admin" component={UATAdmin} />
         <Route path="/pilot-monitoring" component={PilotMonitoring} />
         <Route path="/admin/customer-health" component={AdminCustomerHealth} />
@@ -539,7 +539,7 @@ function Router() {
           "/scorecard", "/executive-scorecard", "/executive-suite",
           "/dashboard", "/platform", "/operating-model-health",
           "/future-readiness", "/readiness"
-        ], "/executive-dashboard")}
+        ], "/command-center")}
         {renderRedirects([
           "/scenarios", "/scenario-library", "/scenario-gallery",
           "/comprehensive-scenarios", "/templates"

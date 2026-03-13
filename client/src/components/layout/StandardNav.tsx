@@ -86,7 +86,7 @@ export default function StandardNav() {
   ];
 
   const platformLinks: NavLink[] = [
-    { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
+    { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
     { label: "Workspace", path: "/workspace", icon: Layers, description: "IDEA Framework — Identify · Detect · Execute · Advance" },
     { label: "Executive Hub", path: "/executive-hub", icon: BarChart3, description: "Intelligence, velocity, readiness & analytics" },
     { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
@@ -252,7 +252,7 @@ export default function StandardNav() {
                   Request Pilot
                 </Button>
                 <Button
-                  onClick={() => navigateTo("/mission-control")}
+                  onClick={() => navigateTo("/command-center")}
                   className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-poise-teal !text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
                   data-testid="nav-open-platform"
                 >
@@ -274,7 +274,7 @@ export default function StandardNav() {
                   <DropdownMenuContent align="end" className="w-48">
                     <DropdownMenuLabel className="text-xs text-gray-500 font-normal">{user.email}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => navigateTo("/settings")} className="cursor-pointer">
+                    <DropdownMenuItem onClick={() => navigateTo("/settings-hub")} className="cursor-pointer">
                       <Settings className="h-4 w-4 mr-2 opacity-60" />
                       Settings
                     </DropdownMenuItem>
@@ -331,7 +331,7 @@ export default function StandardNav() {
           <div className="flex lg:hidden items-center gap-2">
             {isAuthenticated && user && (
               <Button
-                onClick={() => navigateTo("/mission-control")}
+                onClick={() => navigateTo("/command-center")}
                 size="sm"
                 className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white"
                 data-testid="nav-mobile-open-platform"
@@ -355,7 +355,7 @@ export default function StandardNav() {
               {isAuthenticated && user ? (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/mission-control")}
+                    onClick={() => navigateTo("/command-center")}
                     className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white w-full justify-center h-12 text-base font-semibold"
                     data-testid="nav-mobile-open-platform"
                   >
@@ -492,7 +492,7 @@ export default function StandardNav() {
                     <span className="text-sm text-gray-800 dark:text-gray-200 flex-1">{user.firstName || user.email}</span>
                   </div>
                   <button
-                    onClick={() => navigateTo("/settings")}
+                    onClick={() => navigateTo("/settings-hub")}
                     className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
                     data-testid="nav-mobile-settings"
                   >

@@ -537,7 +537,7 @@ export default function OperatingModelAlignment() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-            <Link href="/executive-dashboard" className="hover:text-foreground" data-testid="link-breadcrumb-dashboard">Dashboard</Link>
+            <Link href="/command-center" className="hover:text-foreground" data-testid="link-breadcrumb-dashboard">Dashboard</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-foreground">Operating Model Alignment</span>
           </div>

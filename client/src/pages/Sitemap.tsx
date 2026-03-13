@@ -126,7 +126,7 @@ export default function Sitemap() {
         { name: "Pricing", path: "/pricing" },
         { name: "Contact", path: "/contact" },
         { name: "Early Access", path: "/early-access" },
-        { name: "Settings", path: "/settings" },
+        { name: "Settings", path: "/settings-hub" },
       ]
     }
   ];

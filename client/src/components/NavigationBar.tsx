@@ -38,7 +38,7 @@ export default function NavigationBar() {
   };
 
   const productLinks = [
-    { title: "Executive Dashboard", href: "/executive-dashboard", description: "Unified command center: FRI, velocity, preparedness", featured: true },
+    { title: "Command Center", href: "/command-center", description: "Unified command center: FRI, velocity, preparedness", featured: true },
     { title: "Playbook Library", href: "/playbook-library", description: "170 pre-built strategic playbooks" },
     { title: "Live Demos", href: "/demo-hub", description: "Watch Execution OS in action" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },

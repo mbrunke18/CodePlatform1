@@ -62,7 +62,7 @@ const workspaceTools = [
   {
     title: "Executive Dashboard",
     description: "Strategic overview of organizational readiness and performance",
-    path: "/executive-dashboard",
+    path: "/command-center",
     icon: BarChart3,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
@@ -336,7 +336,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
-            <Link href="/mission-control">
+            <Link href="/command-center">
               <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
@@ -368,7 +368,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
                   View Learnings
                 </Button>
               </Link>
-              <Link href="/executive-dashboard">
+              <Link href="/command-center">
                 <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5 dark:text-white dark:border-[#C9A84C]/20">
                   <BarChart3 className="h-4 w-4 mr-2" />
                   Dashboard

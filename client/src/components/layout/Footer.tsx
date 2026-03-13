@@ -34,7 +34,7 @@ export default function Footer() {
     {
       title: "EXECUTE",
       links: [
-        { label: "Mission Control", path: "/mission-control" },
+        { label: "Command Center", path: "/command-center" },
         { label: "Workspace", path: "/workspace" },
         { label: "Live Activation Center", path: "/live-activation-center" },
         { label: "Practice Drills", path: "/practice-drills" },

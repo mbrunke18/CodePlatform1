@@ -38,7 +38,7 @@ const workspaceTools = [
   {
     title: "Command Center",
     description: "Real-time coordination hub for active playbook execution",
-    path: "/mission-control",
+    path: "/command-center",
     icon: Compass,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
@@ -429,7 +429,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
-            <Link href="/mission-control">
+            <Link href="/command-center">
               <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
@@ -454,7 +454,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
               </div>
             </div>
             <div className="flex gap-3">
-              <Link href="/mission-control">
+              <Link href="/command-center">
                 <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
                   <Compass className="h-4 w-4 mr-2" />
                   Open Command Center
@@ -560,7 +560,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 45 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Jan 28</span>
                 </div>
-                <Link href="/mission-control">
+                <Link href="/command-center">
                   <Button size="sm" variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
                     View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
                   </Button>
@@ -582,7 +582,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                   <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" /> 18 stakeholders</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> Feb 15</span>
                 </div>
-                <Link href="/mission-control">
+                <Link href="/command-center">
                   <Button size="sm" variant="outline" className="border-[#C9A84C]/20 text-[#C9A84C] hover:bg-[#C9A84C]/5">
                     View Details <ChevronRight className="h-3.5 w-3.5 ml-1" />
                   </Button>

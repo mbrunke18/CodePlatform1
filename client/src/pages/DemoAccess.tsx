@@ -8,7 +8,7 @@ export default function DemoAccess() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
-    const returnTo = params.get("returnTo") || "/mission-control";
+    const returnTo = params.get("returnTo") || "/command-center";
 
     if (!token) {
       setStatus("error");
