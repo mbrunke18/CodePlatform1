@@ -1623,6 +1623,16 @@ export default function TryDemo() {
         </div>
       </section>
 
+      {/* Natural transition → full experience */}
+      <div style={{ background: "#F0EEE9", borderTop: "1px solid #E8E4DC", padding: "36px 24px", textAlign: "center" }}>
+        <p style={{ fontSize: 13, color: "#6B7280", fontWeight: 500, marginBottom: 12 }}>
+          These simulations show the shape of the response. The guided experience shows you the full 12-minute execution.
+        </p>
+        <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "#0A0F2E", fontSize: 13, fontWeight: 700, borderBottom: "2px solid #C9A84C", paddingBottom: 3, textDecoration: "none" }}>
+          Experience the full 12-minute execution — live, guided, no login →
+        </Link>
+      </div>
+
       {/* Live Playbook Examples Section */}
       <section style={{ background: NAVY, padding: '72px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>

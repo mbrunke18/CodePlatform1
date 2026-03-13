@@ -77,7 +77,6 @@ export default function StandardNav() {
     {
       heading: "Get Started",
       links: [
-        { label: "Experience 12-Min Execution", path: "/begin", icon: Play, description: "Live guided demo — see full execution in real time", featured: true },
         { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Live simulation — no login required" },
         { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
         { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },

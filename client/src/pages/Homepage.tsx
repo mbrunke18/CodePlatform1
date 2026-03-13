@@ -465,6 +465,13 @@ function ProblemSection() {
             ))}
           </div>
         </div>
+
+        {/* Natural transition → demo */}
+        <div style={{ textAlign: "center", paddingTop: 52, paddingBottom: 8 }}>
+          <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: NAVY, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${GOLD}`, paddingBottom: 3, textDecoration: "none" }}>
+            There is a better way — experience the 12-minute alternative live →
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -612,6 +619,13 @@ function IDEASection() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        {/* Natural transition → demo */}
+        <div style={{ textAlign: "center", paddingTop: 48, paddingBottom: 0 }}>
+          <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: TEAL, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${TEAL}`, paddingBottom: 3, textDecoration: "none" }}>
+            Experience the IDEA Framework in real time — guided, live, no login required →
+          </Link>
         </div>
       </div>
     </section>
