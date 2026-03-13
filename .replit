@@ -8,7 +8,7 @@ packages = ["zip", "unzip"]
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["npm", "run", "build"]
+build = ["sh", "-c", ":"]
 run = ["npm", "run", "start"]
 
 [env]
