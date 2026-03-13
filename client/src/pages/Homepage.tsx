@@ -291,6 +291,18 @@ function HeroSection() {
             >
               Request a Pilot
             </Link>
+            <Link
+              href="/begin"
+              style={{
+                ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
+                padding: "12px 32px", borderRadius: 4, textDecoration: "none",
+                letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
+              }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
+            >
+              Experience 12-Minute Execution →
+            </Link>
             <button
               onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
               style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, display: "flex", alignItems: "center", gap: 6 }}
