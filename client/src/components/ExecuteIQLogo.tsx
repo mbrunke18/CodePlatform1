@@ -145,5 +145,5 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   );
 };
 
-export default ExecuteIQLogo;
 export const ExecuteIQLogo = VaughnMartinLogo;
+export default ExecuteIQLogo;
