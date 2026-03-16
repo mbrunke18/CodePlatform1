@@ -19,10 +19,11 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
 - **Branding:** Consistent `VaughnMartin` and `Execution OS` branding with logo placement on all key pages.
-- **Navigation:** Four-section navigation (Product, Experience, Platform, Investors) with a consolidated "Situations Hub" for strategic domains and an "Investors" dropdown.
+- **Navigation:** Four-section navigation (Product, Experience, Platform, Investors) with a consolidated "Situations Hub" for strategic domains and an "Investors" dropdown. "How It Works" is in Product → Understand dropdown in StandardNav AND linked in the homepage's own sticky nav bar and footer — all pointing to `/how-it-works` (not a scroll anchor).
 - **Route Architecture:** All pages are direct routes — no hub consolidation redirects. Each page is a distinct component at its own URL. Do NOT add redirects that replace real pages with hub pages.
 - **Layout:** All pages are wrapped by a `PageLayout` component including `StandardNav` and `Footer`.
 - **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation.
+- **Homepage Nav Rule:** The homepage has its OWN sticky nav bar (separate from StandardNav) with links: How It Works, Execution OS, Pricing, About, and a mobile hamburger menu. These must be kept in sync with StandardNav. "How It Works" links in homepage nav must use `<Link href="/how-it-works">` — never a scroll anchor.
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion, Lucide React/react-icons.
@@ -56,6 +57,9 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Playbook Library Deep Enrichment:** `/api/playbooks/templates` returns `whyItMatters`, `phaseCount`, `signalSourceCount`, `preApprovedBudget`, `priority` for all 170 playbooks; cards show gold-bordered "Why Speed Matters" excerpt + phase/signal/stakeholder/budget badges.
 - **Living Playbooks Connected Data:** `LivingPlaybooks.tsx` fetches from `/api/playbooks/templates`, shows top 6 playbooks sorted by severity score with activation counts, success rates, version numbers, and domain-specific AI improvement narratives.
 - **IDEAFramework Stats Bar:** Platform stats section between hero and phase strip (170 playbooks, 221 triggers, 248+ data points, 12m response window).
+- **ExecutionGapDiagram** (`ExecutionGapDiagram.tsx`): SVG comparison diagram (72 hrs vs 12 min). Bottom bar is a proof-numbers strip (170 playbooks · 221 triggers · 248+ data points · 12 min to live execution) — NOT a football analogy. viewBox `0 0 1320 762`. Used on Homepage and Investors page.
+- **ExecutionProcessDiagram** (`ExecutionProcessDiagram.tsx`): SVG 3-layer process diagram (Strategic Layer → Orchestration Layer → Delivery Systems). Embedded at the TOP of `/how-it-works`, immediately after the phase nav bar. This is the "mechanics proof" diagram. Do NOT move it back to the bottom of the page.
+- **How It Works page** (`/how-it-works`): Diagram section appears first (after hero + phase nav), followed by sections 01–05 (Onboarding → Ongoing Value), then Final CTA.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.

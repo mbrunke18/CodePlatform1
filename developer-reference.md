@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 6) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 2026 (rev 7) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -568,6 +568,27 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 - Authenticated CTAs: "Try Demo" + "Request Pilot" always visible (same as unauthenticated — execs share these with prospects), "Open Platform" (teal, → /mission-control), user name as a **dropdown** with: Settings (→ /settings), Organization Setup (→ /organization-setup), Sign Out
 - **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
 - Footer includes Settings and Sitemap links in the Company column for full coverage
+- **Product → Understand section includes:** IDEA Framework (`/idea-framework`), Why Execution OS (`/why-execution-os`), **How It Works** (`/how-it-works`), Platform Overview (`/platform-overview`)
+
+### Homepage Nav (SEPARATE from StandardNav)
+- `Homepage.tsx` has its **own sticky nav bar** that is completely separate from `StandardNav`. It is NOT a `PageLayout` page — it manages its own header.
+- Desktop links: **How It Works** → `/how-it-works`, Execution OS → `/platform-overview`, Pricing → `/pricing`, About → `/founder-story`
+- Mobile hamburger menu: same four links, rendered as `<Link>` components (not `<button>` with `onClick`)
+- Footer product column: same four links + "Request a Pilot"
+- **CRITICAL:** "How It Works" in the homepage nav MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor section exists on the homepage but the nav link goes to the standalone page.
+
+### `ExecutionGapDiagram`
+- Location: `client/src/components/ExecutionGapDiagram.tsx`
+- SVG comparison: left panel = "72 HOURS LATER — STILL FIGURING IT OUT" (navy/red); right panel = "EXECUTION IS LIVE" (navy/teal)
+- viewBox: `0 0 1320 762`
+- Bottom bar: proof-numbers strip — 170 playbooks · 221 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
+- Used on: `Homepage.tsx`, `Investors.tsx`
+
+### `ExecutionProcessDiagram`
+- Location: `client/src/components/ExecutionProcessDiagram.tsx`
+- SVG 3-layer flow: Strategic Layer (triggers) → Orchestration Layer (6 steps: context analysis, playbook selection, impact analysis, role assignment, task orchestration, communications) → Delivery Systems (Slack, Jira, Asana, Smartsheet, etc.) with 3-audience views (Teams/Managers/Executives)
+- Embedded in: `HowItWorks.tsx` — **at the TOP of the page**, immediately after the phase nav bar (before section 01). Do NOT move it to the bottom.
+- Section heading: "How 12 Minutes Actually Happens"
 
 ---
 
@@ -592,6 +613,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `PilotProgram.tsx` | `/pilot-program` | Primary enterprise conversion page |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
 | `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
+| `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
 
 ---
 
