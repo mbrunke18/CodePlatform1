@@ -489,10 +489,10 @@ function ExecutionGapSection() {
             THE ARCHITECTURE BEHIND THE SPEED
           </div>
           <div style={{ fontSize: 36, fontWeight: 700, color: "#0A0F2E", fontFamily: "'Cormorant Garamond', Georgia, serif", lineHeight: 1.15 }}>
-            One Layer Replaces Twelve Weeks of Coordination
+            72 Hours to Still Be Planning. 12 Minutes to Live Execution.
           </div>
-          <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 580, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
-            Traditional enterprises spend 72 hours organizing before execution begins. Execution OS collapses that to 12 minutes — automatically.
+          <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 620, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
+            The traditional enterprise spends 72 hours just getting the right people in the room. Execution OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
           </div>
         </div>
         <ExecutionGapDiagram />

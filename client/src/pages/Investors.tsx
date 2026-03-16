@@ -423,8 +423,8 @@ export default function Investors() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.22 }} className="mb-20">
             <div className="text-center mb-8">
               <p className="text-xs font-bold tracking-widest uppercase text-[#C9A84C] mb-3">THE ARCHITECTURE</p>
-              <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">One Layer. Twelve Minutes. Every Time.</h2>
-              <p className="text-[#6B7280] text-sm font-medium max-w-xl mx-auto">Traditional enterprises spend 72 hours organizing before execution begins. Execution OS collapses that to 12 minutes — automatically, with human approval at every gate.</p>
+              <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">72 Hours to Still Be Planning. 12 Minutes to Live Execution.</h2>
+              <p className="text-[#6B7280] text-sm font-medium max-w-2xl mx-auto">Traditional enterprises spend 72 hours just getting the right people in the room — roles unassigned, tasks undefined, communications not sent. Execution OS delivers a fully deployed organization in 12 minutes. Execution is already underway before competitors have scheduled their first call.</p>
             </div>
             <ExecutionGapDiagram className="rounded-2xl shadow-sm border border-[#E8E4DC]" />
           </motion.div>
