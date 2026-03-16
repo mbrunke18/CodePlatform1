@@ -1,0 +1,490 @@
+<svg viewBox="0 0 1600 1480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0F2E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2850;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B8A6E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#236B56;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C9A84C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d4b560;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="lightBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F7FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8EDF2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="1480" fill="url(#lightBg)"/>
+
+  <!-- Title Section -->
+  <rect x="0" y="0" width="1600" height="120" fill="#FFFFFF"/>
+  <text x="800" y="55" font-family="'DM Sans', Arial, sans-serif" font-size="38" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+    Execution OS: The Journey from Decision to Execution
+  </text>
+  <text x="800" y="90" font-family="'DM Sans', Arial, sans-serif" font-size="16" fill="#2B8A6E" text-anchor="middle">
+    How strategic decisions activate across your organization in 12 minutes
+  </text>
+
+  <!-- SECTION 1: THE TRIGGER -->
+  <g id="trigger-section">
+    <rect x="50" y="150" width="1500" height="180" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+    
+    <text x="800" y="190" font-family="'DM Sans', Arial, sans-serif" font-size="18" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      YOUR STRATEGIC LAYER
+    </text>
+    <line x1="300" y1="205" x2="1300" y2="205" stroke="#E8EDF2" stroke-width="2"/>
+
+    <!-- Strategic input boxes -->
+    <rect x="100" y="220" width="230" height="85" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+    <text x="215" y="245" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      BOARD DECISIONS
+    </text>
+    <text x="215" y="265" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Market expansion • Strategic pivots
+    </text>
+    <text x="215" y="280" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Major investments • M&A activity
+    </text>
+    <text x="215" y="295" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Org restructuring
+    </text>
+
+    <rect x="360" y="220" width="230" height="85" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+    <text x="475" y="245" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      EXECUTIVE PRIORITIES
+    </text>
+    <text x="475" y="265" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Annual planning • Initiative launches
+    </text>
+    <text x="475" y="280" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      OKRs/KPIs • Quarterly goals
+    </text>
+    <text x="475" y="295" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Performance targets
+    </text>
+
+    <rect x="620" y="220" width="230" height="85" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+    <text x="735" y="245" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      CHANGE INITIATIVES
+    </text>
+    <text x="735" y="265" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Platform cutovers • Tech migrations
+    </text>
+    <text x="735" y="280" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Compliance mandates • Audits
+    </text>
+    <text x="735" y="295" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Process redesigns
+    </text>
+
+    <rect x="880" y="220" width="230" height="85" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+    <text x="995" y="245" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      CRISIS RESPONSE
+    </text>
+    <text x="995" y="265" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Regulatory changes • Incidents
+    </text>
+    <text x="995" y="280" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Market disruptions • Threats
+    </text>
+    <text x="995" y="295" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Competitive moves
+    </text>
+
+    <!-- Example trigger callout -->
+    <rect x="1140" y="220" width="350" height="85" rx="6" fill="#C9A84C"/>
+    <text x="1315" y="242" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      EXAMPLE TRIGGER
+    </text>
+    <text x="1315" y="267" font-family="'Cormorant Garamond', Georgia, serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      "Competitor launches 30% price
+    </text>
+    <text x="1315" y="287" font-family="'Cormorant Garamond', Georgia, serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      reduction in key markets"
+    </text>
+    <text x="1315" y="302" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+      Market Intelligence Alert | Monday 7:30 AM
+    </text>
+  </g>
+
+  <!-- Arrow down -->
+  <path d="M 800 330 L 800 380" stroke="#2B8A6E" stroke-width="4" fill="none"/>
+  <polygon points="800,390 790,375 810,375" fill="#2B8A6E"/>
+
+  <!-- SECTION 2: EXECUTION OS ORCHESTRATION -->
+  <g id="orchestration-section">
+    <rect x="50" y="400" width="1500" height="520" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+    
+    <!-- Header -->
+    <rect x="50" y="400" width="1500" height="60" rx="8" fill="url(#tealGrad)"/>
+    <text x="800" y="440" font-family="'DM Sans', Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      EXECUTION OS ORCHESTRATION LAYER
+    </text>
+
+    <!-- 12-minute deployment badge -->
+    <circle cx="1450" cy="430" r="35" fill="#C9A84C"/>
+    <text x="1450" y="422" font-family="'DM Sans', Arial, sans-serif" font-size="10" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      DEPLOY
+    </text>
+    <text x="1450" y="440" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      12m
+    </text>
+
+    <!-- Process flow -->
+    <g id="process-steps">
+      <!-- Row 1: Steps 1-3 -->
+      <g id="step1">
+        <rect x="90" y="490" width="280" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="120" cy="520" r="20" fill="#2B8A6E"/>
+        <text x="120" y="528" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+        <text x="160" y="525" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          CONTEXT ANALYSIS
+        </text>
+        <text x="105" y="550" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Maps to your org structure
+        </text>
+        <text x="105" y="565" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Identifies stakeholders across depts
+        </text>
+        <text x="105" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Reads current system state
+        </text>
+      </g>
+
+      <!-- Arrow -->
+      <polygon points="385,545 400,545 400,535 415,550 400,565 400,555 385,555" fill="#C9A84C"/>
+
+      <g id="step2">
+        <rect x="430" y="490" width="280" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="460" cy="520" r="20" fill="#2B8A6E"/>
+        <text x="460" y="528" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+        <text x="500" y="525" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          PLAYBOOK SELECTION
+        </text>
+        <text x="445" y="550" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ "Competitive Response - Pricing"
+        </text>
+        <text x="445" y="565" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Customized to your structure
+        </text>
+        <text x="445" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Adapts to your tools & processes
+        </text>
+      </g>
+
+      <!-- Arrow -->
+      <polygon points="725,545 740,545 740,535 755,550 740,565 740,555 725,555" fill="#C9A84C"/>
+
+      <g id="step3">
+        <rect x="770" y="490" width="280" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="800" cy="520" r="20" fill="#2B8A6E"/>
+        <text x="800" y="528" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+        <text x="840" y="525" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          SIGNAL DETECTION
+        </text>
+        <text x="785" y="550" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Contract terms, margin thresholds
+        </text>
+        <text x="785" y="565" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Customer churn risk detected
+        </text>
+        <text x="785" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Sales pipeline impact quantified
+        </text>
+      </g>
+
+      <!-- Arrow -->
+      <polygon points="1065,545 1080,545 1080,535 1095,550 1080,565 1080,555 1065,555" fill="#C9A84C"/>
+
+      <g id="step4">
+        <rect x="1110" y="490" width="400" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="1140" cy="520" r="20" fill="#2B8A6E"/>
+        <text x="1140" y="528" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+        <text x="1180" y="525" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          ROLE ASSIGNMENT
+        </text>
+        <text x="1125" y="550" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Legal (contracts) • Finance (margin) • Sales (retention)
+        </text>
+        <text x="1125" y="565" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Marketing (positioning) • Product (competitive parity)
+        </text>
+        <text x="1125" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Named individuals, clear accountability
+        </text>
+      </g>
+
+      <!-- Row 2: Steps 5-6 -->
+      <!-- Vertical arrow from step 3 to step 5 -->
+      <path d="M 570 600 L 570 640" stroke="#C9A84C" stroke-width="3" fill="none"/>
+      <polygon points="570,655 560,640 580,640" fill="#C9A84C"/>
+
+      <g id="step5">
+        <rect x="430" y="665" width="280" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="460" cy="695" r="20" fill="#2B8A6E"/>
+        <text x="460" y="703" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+        <text x="500" y="700" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          TASK ORCHESTRATION
+        </text>
+        <text x="445" y="725" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ 52 tasks across 5 teams created
+        </text>
+        <text x="445" y="740" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Jira, Asana, Smartsheet, ServiceNow
+        </text>
+        <text x="445" y="755" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Dependencies visible, timeline set
+        </text>
+      </g>
+
+      <!-- Arrow -->
+      <polygon points="725,720 740,720 740,710 755,725 740,740 740,730 725,730" fill="#C9A84C"/>
+
+      <g id="step6">
+        <rect x="770" y="665" width="280" height="110" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="2"/>
+        <circle cx="800" cy="695" r="20" fill="#2B8A6E"/>
+        <text x="800" y="703" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+        <text x="840" y="700" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E">
+          COMMUNICATIONS
+        </text>
+        <text x="785" y="725" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Slack messages sent to teams
+        </text>
+        <text x="785" y="740" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Stakeholder emails drafted
+        </text>
+        <text x="785" y="755" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E">
+          ✓ Kickoff meeting scheduled
+        </text>
+      </g>
+
+      <!-- Execution Live badge -->
+      <rect x="1110" y="665" width="400" height="110" rx="6" fill="#C9A84C"/>
+      <text x="1310" y="700" font-family="'DM Sans', Arial, sans-serif" font-size="18" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        ✓ EXECUTION LIVE
+      </text>
+      <text x="1310" y="730" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#0A0F2E" text-anchor="middle">
+        Teams already moving | Roles clear
+      </text>
+      <text x="1310" y="748" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#0A0F2E" text-anchor="middle">
+        Tasks assigned | Communications sent
+      </text>
+      <text x="1310" y="766" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#0A0F2E" text-anchor="middle">
+        Strategy preserved end-to-end
+      </text>
+    </g>
+
+    <!-- Bottom summary -->
+    <rect x="90" y="810" width="1420" height="85" rx="6" fill="#F5F7FA"/>
+    <text x="800" y="840" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      THE COMPRESSION: What takes traditional enterprises 72 hours to plan (and weeks to execute)...
+    </text>
+    <text x="800" y="865" font-family="'Cormorant Garamond', Georgia, serif" font-size="20" font-weight="700" fill="#2B8A6E" text-anchor="middle">
+      Execution OS delivers in 12 minutes — from trigger to live organizational execution
+    </text>
+  </g>
+
+  <!-- Arrow down -->
+  <path d="M 800 920 L 800 970" stroke="#2B8A6E" stroke-width="4" fill="none"/>
+  <polygon points="800,980 790,965 810,965" fill="#2B8A6E"/>
+
+  <!-- SECTION 3: YOUR EXISTING SYSTEMS -->
+  <g id="systems-section">
+    <rect x="50" y="990" width="1500" height="380" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+    
+    <text x="800" y="1030" font-family="'DM Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+      DELIVERED INTO YOUR EXISTING SYSTEMS
+    </text>
+    <text x="800" y="1055" font-family="'DM Sans', Arial, sans-serif" font-size="13" fill="#2B8A6E" text-anchor="middle">
+      No replacement. No new tools. Just orchestration across what you already have.
+    </text>
+    <line x1="300" y1="1070" x2="1300" y2="1070" stroke="#E8EDF2" stroke-width="2"/>
+
+    <!-- System cards grid -->
+    <g id="system-cards">
+      <!-- Row 1 -->
+      <rect x="80" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="165" y="1120" font-size="28" text-anchor="middle">💬</text>
+      <text x="165" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Slack
+      </text>
+      <text x="165" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Real-time coordination
+      </text>
+      <text x="165" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Team updates
+      </text>
+
+      <rect x="270" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="355" y="1120" font-size="28" text-anchor="middle">📋</text>
+      <text x="355" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Jira
+      </text>
+      <text x="355" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Issue tracking
+      </text>
+      <text x="355" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Dev workflow
+      </text>
+
+      <rect x="460" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="545" y="1120" font-size="28" text-anchor="middle">✓</text>
+      <text x="545" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Asana
+      </text>
+      <text x="545" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Task management
+      </text>
+      <text x="545" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Project tracking
+      </text>
+
+      <rect x="650" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="735" y="1120" font-size="28" text-anchor="middle">📊</text>
+      <text x="735" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Smartsheet
+      </text>
+      <text x="735" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Timeline visibility
+      </text>
+      <text x="735" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Resource planning
+      </text>
+
+      <rect x="840" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="925" y="1120" font-size="28" text-anchor="middle">🔧</text>
+      <text x="925" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        ServiceNow
+      </text>
+      <text x="925" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Change management
+      </text>
+      <text x="925" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Incident response
+      </text>
+
+      <rect x="1030" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="1115" y="1120" font-size="28" text-anchor="middle">📧</text>
+      <text x="1115" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Email
+      </text>
+      <text x="1115" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Stakeholder comms
+      </text>
+      <text x="1115" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Executive briefs
+      </text>
+
+      <rect x="1220" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="1305" y="1120" font-size="28" text-anchor="middle">📝</text>
+      <text x="1305" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Confluence
+      </text>
+      <text x="1305" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Documentation
+      </text>
+      <text x="1305" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Runbooks
+      </text>
+
+      <rect x="1410" y="1090" width="170" height="100" rx="6" fill="#F5F7FA" stroke="#2B8A6E" stroke-width="1.5"/>
+      <text x="1495" y="1120" font-size="28" text-anchor="middle">💼</text>
+      <text x="1495" y="1148" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        Salesforce
+      </text>
+      <text x="1495" y="1165" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Customer alerts
+      </text>
+      <text x="1495" y="1178" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#2B8A6E" text-anchor="middle">
+        Account updates
+      </text>
+
+      <!-- Row 2: What people see -->
+      <rect x="100" y="1220" width="450" height="120" rx="6" fill="#F5F7FA" stroke="#0A0F2E" stroke-width="1.5"/>
+      <text x="325" y="1250" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        WHAT YOUR TEAMS SEE
+      </text>
+      <text x="325" y="1275" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Tasks in their normal workflow (not a new system)
+      </text>
+      <text x="325" y="1293" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Slack messages: "You own X, here's context"
+      </text>
+      <text x="325" y="1311" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Clear accountability from day one
+      </text>
+      <text x="325" y="1329" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • No confusion, no coordination latency
+      </text>
+
+      <rect x="580" y="1220" width="450" height="120" rx="6" fill="#F5F7FA" stroke="#0A0F2E" stroke-width="1.5"/>
+      <text x="805" y="1250" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        WHAT YOUR MANAGERS SEE
+      </text>
+      <text x="805" y="1275" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Real-time progress across all playbooks
+      </text>
+      <text x="805" y="1293" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Escalation alerts before problems surface
+      </text>
+      <text x="805" y="1311" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Trade-off decisions surfaced with context
+      </text>
+      <text x="805" y="1329" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • No status meetings required
+      </text>
+
+      <rect x="1060" y="1220" width="450" height="120" rx="6" fill="#F5F7FA" stroke="#0A0F2E" stroke-width="1.5"/>
+      <text x="1285" y="1250" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        WHAT YOUR EXECUTIVES SEE
+      </text>
+      <text x="1285" y="1275" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Decision → execution status in real-time
+      </text>
+      <text x="1285" y="1293" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Strategy preserved through every layer
+      </text>
+      <text x="1285" y="1311" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Outcomes tracked against original intent
+      </text>
+      <text x="1285" y="1329" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        • Pattern recognition for future decisions
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom tagline -->
+  <rect x="0" y="1400" width="1600" height="80" fill="#0A0F2E"/>
+  <text x="800" y="1445" font-family="'Cormorant Garamond', Georgia, serif" font-size="20" font-style="italic" fill="#C9A84C" text-anchor="middle">
+    "Strategy is executed by systems, not executives."
+  </text>
+  <text x="800" y="1470" font-family="'DM Sans', Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">
+    Execution OS is that system — embedded in yours.
+  </text>
+
+  <!-- Divider line for visual interest -->
+  <line x1="0" y1="1400" x2="1600" y2="1400" stroke="#C9A84C" stroke-width="2"/>
+
+</svg>
