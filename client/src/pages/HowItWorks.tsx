@@ -107,6 +107,22 @@ export default function HowItWorks() {
         ))}
       </div>
 
+      {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
+      <section style={{ background: OFF, padding: "80px 56px 100px", borderBottom: `1px solid ${BORDER}` }}>
+        <div className="max-w-7xl mx-auto">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <SectionLabel text="The Complete Execution Sequence" />
+            <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16 }}>
+              How 12 Minutes Actually Happens
+            </h2>
+            <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
+              Every step the traditional enterprise spends 72 hours negotiating — context analysis, role assignment, task orchestration, communications — Execution OS delivers automatically, end to end, into the tools your teams already use.
+            </p>
+          </div>
+          <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />
+        </div>
+      </section>
+
       {/* ── 01: ONBOARDING ── */}
       <section style={{ background: "#fff", padding: "100px 56px" }}>
         <div className="max-w-6xl mx-auto">
@@ -635,22 +651,6 @@ export default function HowItWorks() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
-      <section style={{ background: OFF, padding: "100px 56px 80px", borderTop: `1px solid ${BORDER}` }}>
-        <div className="max-w-7xl mx-auto">
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <SectionLabel text="The Complete Execution Sequence" />
-            <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16 }}>
-              How 12 Minutes Actually Happens
-            </h2>
-            <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
-              Every step the traditional enterprise spends 72 hours negotiating — context analysis, role assignment, task orchestration, communications — Execution OS delivers automatically, end to end, delivered into the tools your teams already use.
-            </p>
-          </div>
-          <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />
         </div>
       </section>
 
