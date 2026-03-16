@@ -1,0 +1,365 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0F2E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#162145;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B8A6E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#236B56;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9A84C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8953D;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Arrow markers -->
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#E74C3C" />
+    </marker>
+    
+    <marker id="arrowTeal" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2B8A6E" />
+    </marker>
+
+    <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#C9A84C" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="900" fill="#F8F9FA"/>
+
+  <!-- Title -->
+  <text x="700" y="45" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+    The Execution OS Solution: Collapsing the Middle Layer
+  </text>
+
+  <!-- LEFT SIDE: THE PROBLEM -->
+  <g id="problem-side">
+    <!-- Section title -->
+    <text x="320" y="95" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#E74C3C" text-anchor="middle">
+      THE TRADITIONAL EXECUTION GAP
+    </text>
+
+    <!-- Boardroom box -->
+    <rect x="200" y="120" width="240" height="70" rx="8" fill="#0A0F2E" opacity="0.9"/>
+    <text x="320" y="145" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      BOARDROOM STRATEGY
+    </text>
+    <text x="320" y="165" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#C9A84C" text-anchor="middle">
+      "Expand into new markets"
+    </text>
+    <text x="320" y="180" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">
+      Clear direction defined
+    </text>
+
+    <!-- The tangled middle layer -->
+    <g id="middle-chaos">
+      <!-- Multiple diverging paths showing dilution -->
+      <path d="M 320 190 Q 280 250 260 320" stroke="#E74C3C" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M 320 190 Q 300 250 295 320" stroke="#E74C3C" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M 320 190 Q 320 250 325 320" stroke="#E74C3C" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M 320 190 Q 340 250 345 320" stroke="#E74C3C" stroke-width="3" fill="none" opacity="0.7"/>
+      <path d="M 320 190 Q 360 250 380 320" stroke="#E74C3C" stroke-width="3" fill="none" opacity="0.7"/>
+
+      <!-- Middle layer annotations -->
+      <rect x="210" y="240" width="220" height="100" rx="6" fill="#FFFFFF" stroke="#E74C3C" stroke-width="2" opacity="0.95"/>
+      <text x="320" y="260" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#E74C3C" text-anchor="middle">
+        MIDDLE MANAGEMENT
+      </text>
+      <text x="320" y="278" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        ⚠ Local priorities override
+      </text>
+      <text x="320" y="293" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        ⚠ Exceptions accumulate
+      </text>
+      <text x="320" y="308" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        ⚠ Escalation loops
+      </text>
+      <text x="320" y="323" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#0A0F2E" text-anchor="middle">
+        ⚠ Ownership diffusion
+      </text>
+    </g>
+
+    <!-- Further fragmentation continues -->
+    <path d="M 260 340 Q 240 420 230 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 280 340 Q 270 420 265 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 300 340 Q 295 420 295 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 320 340 Q 320 420 320 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 340 340 Q 345 420 345 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 360 340 Q 370 420 375 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+    <path d="M 380 340 Q 400 420 410 500" stroke="#E74C3C" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5,5"/>
+
+    <!-- Text showing execution never happens -->
+    <text x="320" y="450" font-family="'DM Sans', Arial, sans-serif" font-size="12" font-style="italic" fill="#E74C3C" text-anchor="middle" opacity="0.8">
+      Execution delayed...
+    </text>
+    <text x="320" y="470" font-family="'DM Sans', Arial, sans-serif" font-size="10" font-style="italic" fill="#E74C3C" text-anchor="middle" opacity="0.6">
+      More meetings scheduled
+    </text>
+    <text x="320" y="488" font-family="'DM Sans', Arial, sans-serif" font-size="10" font-style="italic" fill="#E74C3C" text-anchor="middle" opacity="0.6">
+      Weeks → Months → Never
+    </text>
+
+    <!-- Time metric -->
+    <rect x="210" y="520" width="220" height="70" rx="6" fill="#E74C3C" opacity="0.9"/>
+    <text x="320" y="538" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      TIME JUST TO PLAN
+    </text>
+    <text x="320" y="562" font-family="'DM Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      72 HOURS
+    </text>
+    <text x="320" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#C9A84C" text-anchor="middle">
+      (execution weeks/months away)
+    </text>
+
+    <!-- Layer count -->
+    <rect x="210" y="610" width="220" height="60" rx="6" fill="#FFFFFF" stroke="#E74C3C" stroke-width="2"/>
+    <text x="320" y="630" font-family="'DM Sans', Arial, sans-serif" font-size="12" font-weight="700" fill="#E74C3C" text-anchor="middle">
+      LAYER COUNT
+    </text>
+    <text x="320" y="655" font-family="'DM Sans', Arial, sans-serif" font-size="28" font-weight="700" fill="#E74C3C" text-anchor="middle">
+      4-6
+    </text>
+  </g>
+
+  <!-- DIVIDER -->
+  <line x1="520" y1="100" x2="520" y2="690" stroke="#0A0F2E" stroke-width="2" opacity="0.2"/>
+
+  <!-- RIGHT SIDE: THE SOLUTION -->
+  <g id="solution-side">
+    <!-- Section title -->
+    <text x="960" y="95" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#2B8A6E" text-anchor="middle">
+      THE EXECUTION OS ARCHITECTURE
+    </text>
+
+    <!-- Boardroom box -->
+    <rect x="840" y="120" width="240" height="70" rx="8" fill="#0A0F2E" opacity="0.9"/>
+    <text x="960" y="145" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      STRATEGIC DECISION
+    </text>
+    <text x="960" y="165" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#C9A84C" text-anchor="middle">
+      "Expand into new markets"
+    </text>
+    <text x="960" y="180" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">
+      Triggers playbook
+    </text>
+
+    <!-- Single clean arrow to Execution OS layer -->
+    <path d="M 960 190 L 960 230" stroke="#2B8A6E" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+
+    <!-- THE EXECUTION OS LAYER (compressed middle) -->
+    <rect x="730" y="240" width="460" height="180" rx="8" fill="url(#tealGrad)"/>
+    
+    <text x="960" y="265" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      EXECUTION OS
+    </text>
+    <text x="960" y="283" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#C9A84C" text-anchor="middle">
+      The Single Orchestration Layer
+    </text>
+
+    <!-- Three columns showing the architecture -->
+    <g id="playbooks">
+      <rect x="745" y="295" width="135" height="110" rx="4" fill="#FFFFFF" opacity="0.95"/>
+      <text x="812" y="312" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        170 PLAYBOOKS
+      </text>
+      <text x="812" y="328" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+        Pre-staged across
+      </text>
+      <text x="812" y="342" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+        9 domains:
+      </text>
+      <text x="812" y="358" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        • Market Entry
+      </text>
+      <text x="812" y="370" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        • Platform Cutover
+      </text>
+      <text x="812" y="382" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        • Compliance
+      </text>
+      <text x="812" y="394" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        + 6 more
+      </text>
+    </g>
+
+    <g id="signals">
+      <rect x="892" y="295" width="135" height="110" rx="4" fill="#FFFFFF" opacity="0.95"/>
+      <text x="960" y="312" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        216+ SIGNALS
+      </text>
+      <text x="960" y="328" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#0A0F2E" text-anchor="middle">
+        Context detection:
+      </text>
+      <text x="960" y="345" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Trade-offs identified
+      </text>
+      <text x="960" y="358" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Escalations prevented
+      </text>
+      <text x="960" y="371" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Ownership assigned
+      </text>
+      <text x="960" y="384" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Dependencies mapped
+      </text>
+      <text x="960" y="397" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Exceptions handled
+      </text>
+    </g>
+
+    <g id="deployment">
+      <rect x="1040" y="295" width="135" height="110" rx="4" fill="#FFFFFF" opacity="0.95"/>
+      <text x="1107" y="312" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#0A0F2E" text-anchor="middle">
+        FULL DEPLOYMENT
+      </text>
+      <text x="1107" y="328" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Roles assigned
+      </text>
+      <text x="1107" y="340" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Tasks staged
+      </text>
+      <text x="1107" y="352" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Comms drafted
+      </text>
+      <text x="1107" y="364" font-family="'DM Sans', Arial, sans-serif" font-size="8" fill="#0A0F2E" text-anchor="middle">
+        ✓ Execution LIVE
+      </text>
+      <text x="1107" y="385" font-family="'DM Sans', Arial, sans-serif" font-size="18" font-weight="700" fill="#2B8A6E" text-anchor="middle">
+        12 MIN
+      </text>
+      <text x="1107" y="400" font-family="'DM Sans', Arial, sans-serif" font-size="7" fill="#0A0F2E" text-anchor="middle">
+        to live execution
+      </text>
+    </g>
+
+    <!-- Single arrow down to operations -->
+    <path d="M 960 420 L 960 430" stroke="#2B8A6E" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+
+    <!-- Operations box -->
+    <rect x="840" y="430" width="240" height="70" rx="8" fill="#0A0F2E" opacity="0.9"/>
+    <text x="960" y="455" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      EXECUTION UNDERWAY
+    </text>
+    <text x="960" y="475" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#2B8A6E" text-anchor="middle">
+      Teams already moving
+    </text>
+    <text x="960" y="490" font-family="'DM Sans', Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">
+      Strategy preserved end-to-end
+    </text>
+
+    <!-- Time metric -->
+    <rect x="850" y="520" width="220" height="70" rx="6" fill="#2B8A6E" opacity="0.9"/>
+    <text x="960" y="540" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      TIME TO EXECUTION
+    </text>
+    <text x="960" y="562" font-family="'DM Sans', Arial, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      12 MINUTES
+    </text>
+    <text x="960" y="580" font-family="'DM Sans', Arial, sans-serif" font-size="9" fill="#C9A84C" text-anchor="middle">
+      (execution already live)
+    </text>
+
+    <!-- Layer count -->
+    <rect x="850" y="610" width="220" height="60" rx="6" fill="#FFFFFF" stroke="#2B8A6E" stroke-width="2"/>
+    <text x="960" y="630" font-family="'DM Sans', Arial, sans-serif" font-size="12" font-weight="700" fill="#2B8A6E" text-anchor="middle">
+      LAYER COUNT
+    </text>
+    <text x="960" y="655" font-family="'DM Sans', Arial, sans-serif" font-size="28" font-weight="700" fill="#2B8A6E" text-anchor="middle">
+      1
+    </text>
+  </g>
+
+  <!-- BOTTOM: THE FOOTBALL ANALOGY -->
+  <g id="football-analogy">
+    <rect x="100" y="700" width="1200" height="170" rx="10" fill="url(#navyGrad)"/>
+    
+    <text x="700" y="730" font-family="'Cormorant Garamond', Georgia, serif" font-size="20" font-weight="700" fill="#C9A84C" text-anchor="middle">
+      THE FOOTBALL COORDINATION PRINCIPLE
+    </text>
+
+    <!-- Left: Football -->
+    <circle cx="280" cy="800" r="50" fill="#2B8A6E" opacity="0.2"/>
+    <text x="280" y="795" font-family="'DM Sans', Arial, sans-serif" font-size="40" text-anchor="middle">🏈</text>
+    <text x="280" y="860" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      FOOTBALL TEAM
+    </text>
+    <text x="180" y="795" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#C9A84C" text-anchor="start">
+      Huddle → Snap
+    </text>
+    <text x="180" y="810" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      Roles assigned
+    </text>
+    <text x="180" y="823" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      Play executed
+    </text>
+    <text x="180" y="840" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#2B8A6E" text-anchor="start">
+      40 seconds
+    </text>
+
+    <!-- Arrow -->
+    <path d="M 380 800 L 540 800" stroke="#C9A84C" stroke-width="3" marker-end="url(#arrowGold)"/>
+    <text x="460" y="790" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#C9A84C" text-anchor="middle">
+      Same complexity
+    </text>
+
+    <!-- Right: Enterprise -->
+    <circle cx="700" cy="800" r="50" fill="#E74C3C" opacity="0.2"/>
+    <text x="700" y="795" font-family="'DM Sans', Arial, sans-serif" font-size="40" text-anchor="middle">🏢</text>
+    <text x="700" y="860" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      TRADITIONAL ENTERPRISE
+    </text>
+    <text x="790" y="795" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#C9A84C" text-anchor="start">
+      Same decision
+    </text>
+    <text x="790" y="810" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      72 hours: still planning
+    </text>
+    <text x="790" y="823" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      Execution? Weeks away
+    </text>
+    <text x="790" y="840" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#E74C3C" text-anchor="start">
+      (if it happens)
+    </text>
+
+    <!-- Arrow -->
+    <path d="M 860 800 L 1020 800" stroke="#C9A84C" stroke-width="3" marker-end="url(#arrowGold)"/>
+    <text x="940" y="790" font-family="'DM Sans', Arial, sans-serif" font-size="11" font-weight="700" fill="#C9A84C" text-anchor="middle">
+      Execution OS fixes
+    </text>
+
+    <!-- Right: Execution OS -->
+    <circle cx="1120" cy="800" r="50" fill="#2B8A6E" opacity="0.3"/>
+    <text x="1120" y="810" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      EXECUTION
+    </text>
+    <text x="1120" y="828" font-family="'DM Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+      OS
+    </text>
+    <text x="1120" y="860" font-family="'DM Sans', Arial, sans-serif" font-size="13" font-weight="700" fill="#C9A84C" text-anchor="middle">
+      ENTERPRISE SPEED
+    </text>
+    <text x="1210" y="795" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#C9A84C" text-anchor="start">
+      Same decision
+    </text>
+    <text x="1210" y="810" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      Roles, tasks, comms
+    </text>
+    <text x="1210" y="823" font-family="'DM Sans', Arial, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="start">
+      Execution LIVE
+    </text>
+    <text x="1210" y="840" font-family="'DM Sans', Arial, sans-serif" font-size="14" font-weight="700" fill="#2B8A6E" text-anchor="start">
+      12 minutes
+    </text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="700" y="885" font-family="'Cormorant Garamond', Georgia, serif" font-size="15" font-style="italic" fill="#C9A84C" text-anchor="middle">
+    "Strategy is executed by systems, not executives. Execution OS is that system."
+  </text>
+</svg>
