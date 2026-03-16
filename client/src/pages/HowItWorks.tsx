@@ -1,4 +1,5 @@
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionProcessDiagram from '@/components/ExecutionProcessDiagram';
 import { Button } from "@/components/ui/button";
 import {
   Target,
@@ -637,6 +638,22 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
+      <section style={{ background: OFF, padding: "100px 56px 80px", borderTop: `1px solid ${BORDER}` }}>
+        <div className="max-w-7xl mx-auto">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <SectionLabel text="The Complete Execution Sequence" />
+            <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16 }}>
+              How 12 Minutes Actually Happens
+            </h2>
+            <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
+              Every step the traditional enterprise spends 72 hours negotiating — context analysis, role assignment, task orchestration, communications — Execution OS delivers automatically, end to end, delivered into the tools your teams already use.
+            </p>
+          </div>
+          <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />
+        </div>
+      </section>
+
       {/* ── FINAL CTA ── */}
       <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
@@ -647,7 +664,7 @@ export default function HowItWorks() {
             We Make Enterprises Fearless.
           </h2>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.7)", marginBottom: 48, fontWeight: 500, maxWidth: 520, margin: "0 auto 48px" }}>
-            Stop improvising. Start executing. The infrastructure is ready — with 170 playbooks, AI signal monitoring, and a 12-minute coordination window built before the moment arrives.
+            Stop improvising. Start executing. The infrastructure is ready — with 170 playbooks, AI signal monitoring, and execution already staged before the moment arrives.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/pilot-program">
