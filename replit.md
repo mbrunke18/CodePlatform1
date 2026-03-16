@@ -20,7 +20,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
 - **Branding:** Consistent `VaughnMartin` and `Execution OS` branding with logo placement on all key pages.
 - **Navigation:** Four-section navigation (Product, Experience, Platform, Investors) with a consolidated "Situations Hub" for strategic domains and an "Investors" dropdown.
-- **Hub Route Consolidation:** Over 30 pages consolidated into 6 hub pages with tab navigation (e.g., `/dashboard` routes to `/command-center`).
+- **Route Architecture:** All pages are direct routes — no hub consolidation redirects. Each page is a distinct component at its own URL. Do NOT add redirects that replace real pages with hub pages.
 - **Layout:** All pages are wrapped by a `PageLayout` component including `StandardNav` and `Footer`.
 - **Homepage Messaging:** Focuses on 12-minute execution, the IDEA Framework, and research-backed validation.
 
@@ -67,14 +67,14 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 
 ## Critical Access Links (NEVER CHANGE WITHOUT UPDATING HERE)
 - **Public site (limited access):** `https://vaughnmartin.com` — homepage, playbook library, ROI calculator, investor page, pilot program
-- **Executive full access:** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — branded loading screen → establishes session via `/api/demo-access` → lands on `/command-center`
+- **Executive full access:** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — branded loading screen → establishes session via `/api/demo-access` → lands on `/mission-control`
 - **Backup full access (same deployment):** `https://martybrunke.replit.app/demo-access?token=VMdemo2026`
 - **Token:** `VMdemo2026` (default; overridable via `DEMO_ACCESS_TOKEN` env var)
-- **Post-login destination:** `/command-center`
+- **Post-login destination:** `/mission-control` (radar page with clickable triggers)
 - **Feedback questionnaire:** `https://vaughnmartin.com/peer-review`
 - **Customer Journey:** `https://vaughnmartin.com/customer-journey`
 
-**Access Flow:** `/demo-access` (React) → auto-redirects to `/api/demo-access` (Express) → session established → `/command-center`
+**Access Flow:** `/demo-access` (React) → auto-redirects to `/api/demo-access` (Express) → session established → `/mission-control`
 
 **Deployment Rule:** NEVER change `build` in `.replit` deployment config away from `["sh", "-c", ":"]`. The dist must be pre-built locally and committed. Remote builds on Replit's servers break the demo-access session flow.
 

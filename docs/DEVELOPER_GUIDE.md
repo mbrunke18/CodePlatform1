@@ -1,8 +1,8 @@
-# ExecuteIQ Developer Guide
+# VaughnMartin — Execution OS Developer Guide
 
 **Strategic Execution OS for Fortune 1000 Companies**
 
-This guide provides everything developers need to understand, review, and contribute to ExecuteIQ.
+This guide provides everything developers need to understand, review, and contribute to the VaughnMartin Execution OS.
 
 ---
 
@@ -25,11 +25,11 @@ The app runs on port 5000 with hot reload enabled.
 
 ## Project Overview
 
-ExecuteIQ transforms 72-hour strategic coordination into 12-minute execution through:
-- **166 pre-built playbooks** across 9 strategic domains
-- **IDEA Framework** (Identify, Detect, Execute, Advance)
-- **Human-AI partnership** for decision support
-- **Enterprise integrations** (Jira, Slack, etc.)
+VaughnMartin Execution OS transforms 72-hour strategic coordination into 12-minute execution through:
+- **170 pre-built playbooks** across 9 strategic domains
+- **IDEA Framework™** (Identify, Detect, Execute, Advance)
+- **Human-AI partnership** for decision support — AI monitors and recommends, humans approve and decide
+- **248+ data points** across 20 signal categories, monitored in real time
 
 ---
 
@@ -131,12 +131,12 @@ import StandardNav from '@/components/layout/StandardNav';
 
 | Phase | Module | Description |
 |-------|--------|-------------|
-| **I**DENTIFY | ExecuteIQ Playbook™ | Build/customize playbooks from 166 templates |
-| **D**ETECT | ExecuteIQ Signal™ | AI-powered trigger monitoring |
-| **E**XECUTE | ExecuteIQ Compass™ | 12-minute coordinated response |
-| **A**DVANCE | ExecuteIQ Retrospect™ | Institutional learning |
+| **I**DENTIFY | Playbook Library | Build/customize playbooks from 170 templates |
+| **D**ETECT | Signal Intelligence | AI-powered trigger monitoring across 248+ data points |
+| **E**XECUTE | War Room | 12-minute coordinated response |
+| **A**DVANCE | Execution History | Institutional learning and debrief |
 
-Plus **ExecuteIQ One™** - Single-pane executive overview
+Plus **Mission Control** — executive radar with clickable triggers → playbook activation
 
 ---
 
