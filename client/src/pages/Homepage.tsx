@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -473,6 +474,28 @@ function ProblemSection() {
             There is a better way — experience the 12-minute alternative live →
           </Link>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 3b: Execution Gap Diagram ───────────────────────────────────────
+function ExecutionGapSection() {
+  return (
+    <section style={{ background: "#F0EDE4", padding: "80px 0 60px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C9A84C", marginBottom: 12, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+            THE ARCHITECTURE BEHIND THE SPEED
+          </div>
+          <div style={{ fontSize: 36, fontWeight: 700, color: "#0A0F2E", fontFamily: "'Cormorant Garamond', Georgia, serif", lineHeight: 1.15 }}>
+            One Layer Replaces Twelve Weeks of Coordination
+          </div>
+          <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 580, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
+            Traditional enterprises spend 72 hours organizing before execution begins. Execution OS collapses that to 12 minutes — automatically.
+          </div>
+        </div>
+        <ExecutionGapDiagram />
       </div>
     </section>
   );
@@ -1482,6 +1505,7 @@ export default function Homepage() {
       <HomepageNav />
       <HeroSection />
       <ProblemSection />
+      <ExecutionGapSection />
       <MissingLayerSection />
       <ContrastMomentSection />
       <IDEASection />
