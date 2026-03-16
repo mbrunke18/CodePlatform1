@@ -98,7 +98,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-[#0A0F2E] font-medium mb-1">Recommended for executives</p>
                 <p className="text-sm text-gray-800 mb-3">
-                  See how Execution OS delivers 12-minute coordinated response with predictive AI and role-specific wins.
+                  See how Execution OS delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving — with predictive AI and role-specific wins.
                 </p>
                 <Button
                   onClick={() => setLocation('/customer-demo')}

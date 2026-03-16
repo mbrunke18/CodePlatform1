@@ -11,7 +11,7 @@ interface SceneProps {
 const capabilities = [
   { icon: ClipboardList, label: "Identify", desc: "170 ready playbooks" },
   { icon: Radar, label: "Detect", desc: "AI signal detection" },
-  { icon: Play, label: "Execute", desc: "12-min coordinated response" },
+  { icon: Play, label: "Execute", desc: "12 min to live execution" },
   { icon: TrendingUp, label: "Advance", desc: "Continuous improvement" },
 ];
 

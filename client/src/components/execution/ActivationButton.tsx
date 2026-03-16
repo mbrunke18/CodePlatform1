@@ -189,7 +189,7 @@ export function ActivationButton({
         </div>
         <Progress value={currentProgress} className="h-2" />
         <div className="flex justify-between text-xs text-muted-foreground">
-          <span>Executing coordinated response</span>
+          <span>Execution live — roles assigned, tasks staged</span>
           <span>{Math.round(currentProgress)}%</span>
         </div>
       </div>
@@ -225,7 +225,7 @@ export function ActivationButton({
           </AlertDialogTitle>
           <AlertDialogDescription className="space-y-4">
             <p>
-              This will trigger the coordinated response immediately. The following actions will occur:
+              This will put your organization into live execution immediately. The following actions will occur:
             </p>
             <div className="grid grid-cols-2 gap-3 py-2">
               <div className="flex items-center gap-2 text-sm">

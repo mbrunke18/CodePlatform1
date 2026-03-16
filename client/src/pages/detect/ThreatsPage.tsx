@@ -189,7 +189,7 @@ export default function ThreatsPage() {
         <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
           <Shield size={12} color={TEAL} />
           <span style={{ fontSize: 11, color: MUTED }}>
-            Each detected threat maps directly to a pre-built response playbook across 9 strategic domains. Response time target: 12 minutes from detection to coordinated action.
+            Each detected threat maps directly to a pre-built response playbook across 9 strategic domains. Target: roles assigned, tasks staged, communications sent — execution live in 12 minutes.
           </span>
         </div>
       </div>

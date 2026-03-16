@@ -331,7 +331,7 @@ export default function DemoGallery() {
             <CardContent className="p-8 text-center">
               <h3 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Ready to Transform Your Strategic Execution?</h3>
               <p className="text-gray-800 mb-6 max-w-xl mx-auto">
-                Join Fortune 1000 companies achieving 12-minute coordinated response with Execution OS
+                Join Fortune 1000 companies achieving live execution in 12 minutes — roles assigned, tasks staged, teams already moving
               </p>
               <div className="flex justify-center gap-4 flex-wrap">
                 <Link href="/pilot-demo">

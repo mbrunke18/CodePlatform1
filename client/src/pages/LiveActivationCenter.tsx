@@ -93,29 +93,29 @@ const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
     icon: 'shield',
     stakeholderCount: 10,
     taskCount: 12,
-    duration: '12-min coordination',
+    duration: '12 min to live execution',
     color: 'teal'
   },
   {
     key: 'ransomware',
     name: 'Ransomware Response',
     category: 'DEFENSE',
-    description: 'Execute rapid incident response protocol with coordinated containment, stakeholder notification, and recovery procedures.',
+    description: 'Execute rapid incident response protocol — roles assigned, containment tasks staged, stakeholders notified, recovery underway.',
     icon: 'alert-triangle',
     stakeholderCount: 10,
     taskCount: 12,
-    duration: '12-min coordination',
+    duration: '12 min to live execution',
     color: 'navy'
   },
   {
     key: 'ai-governance',
     name: 'AI Governance Framework',
     category: 'SPECIAL TEAMS',
-    description: 'Deploy comprehensive AI governance framework with cross-functional alignment, policy activation, and compliance verification.',
+    description: 'Deploy comprehensive AI governance framework — roles assigned, policies activated, compliance tasks staged and execution underway.',
     icon: 'brain',
     stakeholderCount: 9,
     taskCount: 10,
-    duration: '12-min coordination',
+    duration: '12 min to live execution',
     color: 'gold'
   }
 ];
@@ -396,7 +396,7 @@ export default function LiveActivationCenter() {
 
     setTimeout(() => {
       setActivationState('IN_PROGRESS');
-      addActivity('system', 'Playbook activated — coordination sequence initiated', 0);
+      addActivity('system', 'Playbook activated — roles assigned, tasks staged, execution live', 0);
     }, 1500);
 
     const socket = io({ path: '/socket.io/' });
@@ -534,7 +534,7 @@ export default function LiveActivationCenter() {
                 <div className="w-10 h-[2px] bg-[#C9A84C]" />
               </div>
               <h1 style={CG} className="text-6xl font-bold text-[#0A0F2E]">Live Playbook Engagement</h1>
-              <p className="text-[#6B7280] text-xl max-w-2xl mx-auto">Select a strategic scenario to activate the synchronized coordination engine.</p>
+              <p className="text-[#6B7280] text-xl max-w-2xl mx-auto">Select a strategic scenario. Roles assign, tasks stage, communications send — execution is live in 12 minutes.</p>
             </div>
 
             <div className="grid gap-6">

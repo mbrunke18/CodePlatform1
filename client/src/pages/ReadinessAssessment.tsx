@@ -726,7 +726,7 @@ export default function ReadinessAssessment() {
                         },
                         {
                           step: "3",
-                          title: "EXECUTE — 12-minute coordinated response",
+                          title: "EXECUTE — 12 minutes to live execution",
                           description: "From trigger detection to full team activation in under 12 minutes. Automated role assignment, stakeholder notification, and decision escalation.",
                           icon: Clock,
                         },

@@ -151,7 +151,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
                   <strong className="text-gray-900">Interactive Demo:</strong> Sample data shown for illustration purposes. Scenarios and workflows reflect M's design capabilities and championship-level execution methodology.
                 </p>
                 <p className="text-gray-700 text-sm">
-                  Experience how preparation-driven execution transforms 72-hour coordination into 12-minute strategic response.
+                  Experience how preparation-driven execution transforms 72 hours of getting the right people in the room into 12 minutes of live execution — roles assigned, tasks staged, teams already moving.
                 </p>
               </div>
             </div>

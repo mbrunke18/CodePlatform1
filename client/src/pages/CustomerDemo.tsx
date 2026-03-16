@@ -332,7 +332,7 @@ export default function CustomerDemo() {
               Execute Strategy at the Speed of Disruption
             </h1>
             <p className="text-lg text-white/80">
-              From strategic event to coordinated response in 12 minutes. Success favors the prepared.
+              From strategic event to live execution in 12 minutes — roles assigned, tasks staged, teams already moving. Success favors the prepared.
             </p>
           </div>
 

@@ -829,7 +829,7 @@ export default function NewUserJourney() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-[#0A0F2E] mb-1">Decision Velocity Target</h3>
                             <p className="text-sm text-[#6B7280] mb-4">
-                              Target time from signal detection to coordinated response
+                              Target time from signal detection to live execution — roles assigned, tasks staged, teams moving
                             </p>
                             <div className="flex items-center gap-4">
                               <Input

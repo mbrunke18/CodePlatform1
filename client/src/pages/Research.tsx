@@ -92,7 +92,7 @@ export default function Research() {
                   <ArrowRight className="h-8 w-8" style={{ color: NAVY }} />
                   <div className="text-center">
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: TEAL, lineHeight: 1 }}>12 min</div>
-                    <p className="text-sm text-muted-foreground">Execution OS' coordinated response</p>
+                    <p className="text-sm text-muted-foreground">Execution OS: live in 12 min</p>
                   </div>
                 </div>
               </div>
@@ -432,7 +432,7 @@ export default function Research() {
                     <h4 className="font-bold text-foreground mb-2">Faster Containment</h4>
                     <p className="text-sm text-muted-foreground mb-3">
                       $1.76M saved by containing within 30 days. Execution OS' pre-staged playbooks 
-                      get you to coordinated response in minutes.
+                      get your organization into live execution in minutes — roles assigned, tasks staged, teams already moving.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>12-Minute Activation</div>
                   </div>

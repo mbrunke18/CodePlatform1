@@ -30,7 +30,7 @@ export default function VideoLanding() {
       title: "Execution OS - Strategic Execution Operating System | 72 Hours → 12 Minutes",
       description: "Watch how Execution OS transforms strategic coordination from 72 hours to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
       ogTitle: "Execution OS - The Speed to Execute",
-      ogDescription: "170 playbooks. 12 minutes to coordinated execution. The Strategic Execution Operating System.",
+      ogDescription: "170 playbooks. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Execution Operating System.",
     });
   }, []);
 

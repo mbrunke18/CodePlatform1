@@ -162,7 +162,7 @@ export default function DealRiskDemo() {
             Deal Risk Response Demo
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and orchestrates a coordinated response in 12 minutes.
+            Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving.
           </p>
           <Button 
             variant="outline" 

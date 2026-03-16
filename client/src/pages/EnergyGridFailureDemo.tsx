@@ -64,7 +64,7 @@ export default function EnergyGridFailureDemo() {
             {energyDemoData.crisis.subtitle}
           </p>
           <p className="text-sm text-white/60 max-w-3xl mx-auto">
-            Experience how Execution OS prevents catastrophic infrastructure failure through coordinated response—
+            Experience how Execution OS prevents catastrophic infrastructure failure through live execution in 12 minutes —
             transforming a potential 3-5 day blackout affecting 8.2M customers into controlled 3-hour stabilization.
           </p>
         </div>

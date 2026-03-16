@@ -25,8 +25,8 @@ const phaseSLAs = [
     icon: '⚡',
     color: 'from-orange-600 to-red-600',
     target: '12 minutes',
-    description: 'Time to complete all coordinated actions',
-    benchmark: 'Industry: 24-72 hours'
+    description: 'Roles assigned. Tasks staged. Comms sent. Execution live.',
+    benchmark: 'Industry: 24–72 hrs (still planning)'
   },
   {
     phase: 'ADVANCE',
@@ -84,9 +84,10 @@ export default function SLAPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              Execution OS transforms strategic response from the industry standard of 20-72 hours 
-              into a coordinated 12-minute execution cycle. This 10x improvement in velocity 
-              creates measurable competitive advantage.
+              The traditional enterprise spends 20–72 hours just getting the right people in the room.
+              Execution OS delivers a fully deployed organization — roles assigned, tasks staged,
+              communications sent — in 12 minutes. Execution is already underway while competitors
+              are still scheduling their kickoff call.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-muted/50 rounded-lg">

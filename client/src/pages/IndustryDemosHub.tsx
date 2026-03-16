@@ -260,7 +260,7 @@ export default function IndustryDemosHub() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mt-8">
               <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Offense & Defense</span>
-              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12-minute coordination</span>
+              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12 minutes to live execution</span>
               <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-[#C9A84C]" /> Real enterprise impact</span>
               <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#0A0F2E]" /> Live stakeholder orchestration</span>
             </div>
@@ -273,7 +273,7 @@ export default function IndustryDemosHub() {
               <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">OFFENSE</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
-              When opportunities emerge — market shifts, competitive windows, strategic launches — 12-minute coordination enables your organization to execute while competitors are still scheduling meetings.
+              When opportunities emerge — market shifts, competitive windows, strategic launches — by the time competitors are scheduling their first planning call, Execution OS has already assigned roles, staged tasks, drafted communications, and put your organization into live execution. In 12 minutes.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {offensiveDemos.map(renderDemoCard)}
@@ -287,7 +287,7 @@ export default function IndustryDemosHub() {
               <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">DEFENSE</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
-              When crises hit — ransomware, recalls, supplier failures — traditional coordination takes days. Execution OS compresses response to minutes, protecting value before the situation escalates.
+              When crises hit — ransomware, recalls, supplier failures — the traditional enterprise spends 72 hours just getting the right people in the room. Execution OS puts your organization into live execution in 12 minutes: roles assigned, tasks staged, containment already underway.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {defensiveDemos.map(renderDemoCard)}
@@ -298,19 +298,19 @@ export default function IndustryDemosHub() {
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-3xl font-serif text-[#0A0F2E] mb-4">The Detection-Execution Gap</h3>
               <p className="text-lg text-[#6B7280] mb-10 font-light leading-relaxed">
-                Every industry has invested billions in AI for detection. But when action is needed, coordination still happens at email speed. Execution OS bridges that gap.
+                Every industry has invested billions in AI for detection. But when action is needed, the traditional enterprise spends 72 hours just getting the right people in the room. Execution OS bridges that gap — delivering live execution in 12 minutes.
               </p>
               <div className="grid grid-cols-3 gap-8 mb-12">
                 <div>
                   <div className="text-3xl font-bold text-[#0A0F2E] mb-2">48-72 hrs</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Traditional coordination</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Still in planning</div>
                 </div>
                 <div className="flex items-center justify-center">
                   <ArrowRight className="w-8 h-8 text-[#C9A84C]" />
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-[#2B8A6E] mb-2">12 min</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">ExOS coordination</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Execution live</div>
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">

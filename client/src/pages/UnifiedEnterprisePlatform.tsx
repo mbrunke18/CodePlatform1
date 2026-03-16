@@ -364,7 +364,7 @@ export default function UnifiedEnterprisePlatform() {
                   <div>
                     <h2 className="text-xl font-bold mb-2">Identify → Detect → Execute → Advance</h2>
                     <p className="text-sm text-white/70">
-                      Build playbooks from 80+ templates. AI watches your triggers 24/7. Execute in 12 minutes when conditions hit.
+                      Build playbooks from 80+ templates. AI monitors 221 triggers 24/7. When one fires: roles assigned, tasks staged, comms sent — execution live in 12 minutes.
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -424,7 +424,7 @@ export default function UnifiedEnterprisePlatform() {
                     </Badge>
                   </div>
                   <p className="text-sm text-[#6B7280] mt-2">
-                    Execution infrastructure in action: From detection to coordinated execution in 12 minutes. Pre-defined governance for high-stakes situations.
+                    From trigger detection to live execution in 12 minutes: roles assigned, tasks staged, communications sent, teams already moving. Pre-defined governance ensures every gate is cleared.
                   </p>
                 </CardHeader>
                 <CardContent>

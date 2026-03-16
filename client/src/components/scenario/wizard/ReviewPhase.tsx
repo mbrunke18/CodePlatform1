@@ -128,7 +128,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
                 <p className="text-xs text-gray-700 mt-1">
                   {readinessScore >= 80 ? (
                     <>
-                      <span className="text-green-400 font-semibold">12-minute coordination ready</span> - Your scenario has all critical elements for rapid execution.
+                      <span className="text-green-400 font-semibold">12-minute execution ready</span> - Roles, tasks, and communications are staged. Execution goes live on activation.
                     </>
                   ) : readinessScore >= 60 ? (
                     <>
