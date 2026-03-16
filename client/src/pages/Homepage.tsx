@@ -128,12 +128,7 @@ function HomepageNav() {
 
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <button
-              onClick={() => scrollTo("how-it-works")}
-              style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, padding: 0, transition: "color 0.2s" }}
-            >
-              How It Works
-            </button>
+            <Link href="/how-it-works" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>How It Works</Link>
             <Link href="/platform-overview" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Execution OS</Link>
             <Link href="/pricing" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Pricing</Link>
             <Link href="/founder-story" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>About</Link>
@@ -178,7 +173,7 @@ function HomepageNav() {
             ✕
           </button>
           {[
-            { label: "How It Works", onPress: () => scrollTo("how-it-works") },
+            { label: "How It Works", href: "/how-it-works" },
             { label: "Playbooks",    href: "/playbook-library" },
             { label: "Pricing",      href: "/pricing" },
             { label: "About",        href: "/founder-story" },
@@ -959,14 +954,12 @@ function HomepageFooter() {
           <div style={{ flex: 1 }}>
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>PRODUCT</div>
             {[
-              { label: "How It Works", scroll: true },
-              { label: "Playbooks",    href: "/playbook-library" },
-              { label: "Pricing",      href: "/pricing" },
+              { label: "How It Works",   href: "/how-it-works" },
+              { label: "Playbooks",      href: "/playbook-library" },
+              { label: "Pricing",        href: "/pricing" },
               { label: "Request a Pilot", href: "/pilot-program" },
             ].map(l => (
-              l.scroll
-                ? <button key={l.label} onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })} style={{ ...DM, display: "block", background: "none", border: "none", cursor: "pointer", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textAlign: "left", transition: "color 0.2s" }}>{l.label}</button>
-                : <Link key={l.label} href={l.href!} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
+              <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}
           </div>
 
