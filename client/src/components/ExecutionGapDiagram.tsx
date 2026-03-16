@@ -8,7 +8,7 @@ const WHITE = '#FFFFFF';
 
 const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => (
   <svg
-    viewBox="0 0 1320 800"
+    viewBox="0 0 1320 762"
     xmlns="http://www.w3.org/2000/svg"
     className={`w-full ${className}`}
     aria-label="The real comparison: 72 hours to still be planning vs 12 minutes to live execution"
@@ -196,43 +196,35 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="920" y="641" textAnchor="middle" fontSize="13" fontWeight="700" fill={TEAL}
       fontFamily="'DM Sans', Arial, sans-serif">Execution underway.</text>
 
-    {/* ── FOOTBALL ANALOGY BAR ── */}
-    <rect x="60" y="666" width="1200" height="110" rx="10" fill={NAVY} opacity="0.96" />
-    <text x="660" y="692" textAnchor="middle" fontSize="10" fontWeight="700" letterSpacing="0.12em"
-      fill={GOLD} fontFamily="'DM Sans', Arial, sans-serif">THE FOOTBALL ANALOGY</text>
-    <line x1="80" y1="700" x2="1240" y2="700" stroke="rgba(201,168,76,0.2)" strokeWidth="1" />
+    {/* ── PROOF NUMBERS BAR ── */}
+    <rect x="0" y="666" width="1320" height="96" fill={NAVY} />
+    <line x1="0" y1="666" x2="1320" y2="666" stroke={GOLD} strokeWidth="1.5" opacity="0.4" />
 
-    {/* Football */}
-    <text x="215" y="722" textAnchor="middle" fontSize="10" fontWeight="700" fill={GOLD}
-      fontFamily="'DM Sans', Arial, sans-serif">🏈  NFL OFFENSE</text>
-    <text x="215" y="740" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">40 seconds: huddle → snap</text>
-    <text x="215" y="756" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">→ roles clear → play executed</text>
+    {/* 4 stats — equally spaced */}
+    {[
+      { x: 165,  num: '170',   label: 'Pre-Built Playbooks' },
+      { x: 495,  num: '221',   label: 'Executive Triggers' },
+      { x: 825,  num: '248+',  label: 'Signal Data Points' },
+      { x: 1155, num: '12 min', label: 'To Live Execution' },
+    ].map(({ x, num, label }) => (
+      <g key={label}>
+        <text x={x} y="706" textAnchor="middle" fontSize="22" fontWeight="700" fill={GOLD}
+          fontFamily="'Cormorant Garamond', Georgia, serif">{num}</text>
+        <text x={x} y="726" textAnchor="middle" fontSize="9" fontWeight="700" letterSpacing="0.14em"
+          fill="rgba(255,255,255,0.55)" fontFamily="'DM Sans', Arial, sans-serif">{label.toUpperCase()}</text>
+      </g>
+    ))}
 
-    {/* Traditional */}
-    <text x="660" y="722" textAnchor="middle" fontSize="10" fontWeight="700" fill={RED}
-      fontFamily="'DM Sans', Arial, sans-serif">⚠  TRADITIONAL ENTERPRISE</text>
-    <text x="660" y="740" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">72 hours: still trying to get</text>
-    <text x="660" y="756" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">the right people in the room</text>
+    {/* Vertical dividers */}
+    <line x1="330"  y1="682" x2="330"  y2="742" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+    <line x1="660"  y1="682" x2="660"  y2="742" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+    <line x1="990"  y1="682" x2="990"  y2="742" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
 
-    {/* Execution OS */}
-    <text x="1105" y="722" textAnchor="middle" fontSize="10" fontWeight="700" fill={TEAL}
-      fontFamily="'DM Sans', Arial, sans-serif">⚡  EXECUTION OS</text>
-    <text x="1105" y="740" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">12 minutes: roles assigned, tasks</text>
-    <text x="1105" y="756" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.75)"
-      fontFamily="'DM Sans', Arial, sans-serif">staged, comms sent → execution live</text>
-
-    {/* Dividers in football bar */}
-    <line x1="430" y1="710" x2="430" y2="766" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-    <line x1="890" y1="710" x2="890" y2="766" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
-
-    {/* Arrows between football entries */}
-    <text x="545" y="746" textAnchor="middle" fontSize="16" fill={GOLD} fontFamily="'DM Sans', Arial, sans-serif">→</text>
-    <text x="1000" y="746" textAnchor="middle" fontSize="16" fill={GOLD} fontFamily="'DM Sans', Arial, sans-serif">→</text>
+    {/* Tagline */}
+    <text x="660" y="752" textAnchor="middle" fontSize="10" fontStyle="italic"
+      fill="rgba(255,255,255,0.35)" fontFamily="'Cormorant Garamond', Georgia, serif">
+      The infrastructure behind the 12-minute promise — built before the moment arrives.
+    </text>
   </svg>
 );
 
