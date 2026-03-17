@@ -1405,7 +1405,14 @@ function ShadowSimulatorSection() {
               fontFamily: "'Inter', sans-serif",
             }}
           />
-          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 10 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 10, gap: 12 }}>
+            {!scenario.trim() && !loading ? (
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+                ↑ Select a scenario above or type your own to unlock analysis
+              </span>
+            ) : (
+              <span />
+            )}
             <button
               onClick={analyze}
               disabled={loading || !scenario.trim()}
@@ -1413,13 +1420,13 @@ function ShadowSimulatorSection() {
                 fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
                 padding: "10px 28px", background: loading || !scenario.trim() ? "rgba(201,168,76,0.4)" : GOLD,
                 color: NAVY, border: "none", cursor: loading || !scenario.trim() ? "not-allowed" : "pointer",
-                transition: "background 0.2s ease", display: "flex", alignItems: "center", gap: 8,
+                transition: "background 0.2s ease", display: "flex", alignItems: "center", gap: 8, flexShrink: 0,
               }}
             >
               {loading ? (
                 <>
                   <span style={{ display: "inline-block", width: 12, height: 12, border: `2px solid ${NAVY}`, borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
-                  Analyzing…
+                  Analyzing with GPT-4o…
                 </>
               ) : 'Analyze My Scenario →'}
             </button>
