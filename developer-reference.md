@@ -564,11 +564,26 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 
 ### `StandardNav`
 - Carries the logo on every page. Do NOT add a second logo inside page hero content.
+- **Nav height: 130px** (`h-[130px]`). Logo: `<ExecuteIQLogo height={130} variant="full" color="navy" />`.
 - Unauthenticated CTAs: "Try Demo" (outline, → /try-demo), "Request Pilot" (gold, → /pilot-program), "Sign In" (ghost)
 - Authenticated CTAs: "Try Demo" + "Request Pilot" always visible (same as unauthenticated — execs share these with prospects), "Open Platform" (teal, → /mission-control), user name as a **dropdown** with: Settings (→ /settings), Organization Setup (→ /organization-setup), Sign Out
 - **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
 - Footer includes Settings and Sitemap links in the Company column for full coverage
 - **Product → Understand section includes:** IDEA Framework (`/idea-framework`), Why Execution OS (`/why-execution-os`), **How It Works** (`/how-it-works`), Platform Overview (`/platform-overview`)
+
+### Logo Sizing Reference (`ExecuteIQLogo` / `VaughnMartinLogo`)
+- **`full` variant:** seal scales as `height * 0.88`; wordmark text is FIXED at 26px (VaughnMartin) + 10.5px (Execution OS) regardless of height
+- **No simplified mode** — all seal details (arc text, dividers, diamonds, dot rays) render at every size
+- **`navy` color on white/light bg:** full gold gradient ring, gold ticks, gold VM monogram, navy VAUGHNMARTIN text, teal EXECUTION OS text
+- **`white`/`teal` on dark bg:** gold gradient ring + gold elements on dark interior
+- **Sizing guide:**
+  - Homepage nav: `height={130}`, nav `height: 130`
+  - StandardNav: `height={130}`, `h-[130px]`
+  - Footer top band: `height={80} color="white"`
+  - Footer bottom bar: `height={72} color="light"` (via VaughnMartinLogo)
+  - PageHero: `height={64} color="light"`
+  - InvestorGate / InvestorLanding hero: `height={80} color="white"`
+  - Homepage footer brand: `height={80} color="white"`
 
 ### Homepage Nav (SEPARATE from StandardNav)
 - `Homepage.tsx` has its **own sticky nav bar** that is completely separate from `StandardNav`. It is NOT a `PageLayout` page — it manages its own header.
