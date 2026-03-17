@@ -62,28 +62,7 @@ const VaughnMartinSeal: FC<{ size: number; color: string }> = ({ size, color }) 
     </defs>
   );
 
-  /* ── Simplified seal for small sizes (< 60px) ────────────────────────
-     Below 60px the arc text and fine detail become sub-pixel.
-     Show only: bold outer ring, inner ring, 4 cardinal ticks, VM monogram, gold dot.
-  ──────────────────────────────────────────────────────────────────────── */
-  if (size < 60) {
-    return (
-      <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-        {defs}
-        <circle cx="100" cy="100" r="95" stroke={ringStroke}  strokeWidth="5.5" fill="none"/>
-        <circle cx="100" cy="100" r="84" stroke={ringStroke2} strokeWidth="1.5" fill="none"/>
-        <circle cx="100" cy="100" r="83" fill={interior}/>
-        <line x1="100" y1="5"   x2="100" y2="17"  stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
-        <line x1="100" y1="183" x2="100" y2="195" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
-        <line x1="5"   y1="100" x2="17"  y2="100" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
-        <line x1="183" y1="100" x2="195" y2="100" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
-        <path d="M 66 72 L 100 122 L 134 72" stroke={vmStroke} strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-        <circle cx="100" cy="66" r="6" fill={dotFill}/>
-      </svg>
-    );
-  }
-
-  /* ── Full-detail seal for larger sizes ──────────────────────────────── */
+  /* ── Full seal — all details always visible ──────────────────────────── */
   return (
     <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
       {defs}

@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VaughnMartin · Execution OS — Emblem System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #0A0F2E;
+      --nmid:   #141B45;
+      --gold:   #C9A84C;
+      --goldlt: #DFC178;
+      --goldwh: #EDD98A;
+      --golddk: #8A6E30;
+      --teal:   #2B8A6E;
+      --teallt: #3BAF8A;
+      --ivory:  #F0EDE4;
+      --idk:    #E0DBD0;
+      --white:  #FDFCFA;
+      --ink:    #06060E;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      background: var(--ink);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── COVER ── */
+    .cover {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    .cover-texture {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 85% 40%, rgba(201,168,76,0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(43,138,110,0.04) 0%, transparent 60%);
+    }
+    .cover-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .cover-top {
+      position: relative; z-index: 2;
+      padding: 44px 72px;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cover-agency {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cover-doc {
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: rgba(255,255,255,0.18);
+    }
+    .cover-main {
+      position: relative; z-index: 2;
+      flex: 1; display: flex;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 40px;
+      padding: 60px 72px;
+    }
+    .cover-emblem-preview {
+      animation: floatIn 1.2s cubic-bezier(0.22,1,0.36,1) forwards;
+      opacity: 0;
+    }
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(32px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .cover-wordmark {
+      text-align: center;
+      animation: floatIn 1.2s 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+      opacity: 0;
+    }
+    .cover-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 68px;
+      color: var(--white); letter-spacing: 0.03em; line-height: 1;
+    }
+    .cover-product-line {
+      display: flex; align-items: center; gap: 18px;
+      justify-content: center; margin-top: 12px;
+    }
+    .cover-rule { height: 1px; width: 48px; background: var(--gold); }
+    .cover-product {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 13px;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .cover-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 20px; font-weight: 400;
+      color: rgba(255,255,255,0.3); letter-spacing: 0.06em;
+      margin-top: 16px;
+    }
+    .cover-bottom {
+      position: relative; z-index: 2;
+      padding: 32px 72px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cover-toc { display: flex; gap: 48px; }
+    .toc-item { display: flex; flex-direction: column; gap: 3px; }
+    .toc-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 300; color: var(--gold); line-height: 1;
+    }
+    .toc-l {
+      font-size: 9px; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .sh {
+      padding: 56px 72px 28px;
+      background: var(--ink);
+    }
+    .sh-ey {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .sh-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 38px; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--white); line-height: 1;
+    }
+    .sh-sub {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      margin-top: 10px; max-width: 640px; line-height: 1.75;
+    }
+
+    /* ── STAGE ── */
+    .stage { padding: 0 72px 72px; background: var(--ink); }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+
+    /* ── PANELS ── */
+    .panel {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 64px 40px; min-height: 380px;
+      position: relative; overflow: hidden;
+    }
+    .p-navy  { background: var(--navy); }
+    .p-nmid  { background: var(--nmid); }
+    .p-ivory { background: var(--ivory); }
+    .p-gold  { background: var(--gold); }
+    .p-ink   { background: #040408; }
+    .p-warm  { background: #0F0C07; }
+
+    .panel-bg-label {
+      position: absolute; bottom: 14px; right: 18px;
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      opacity: 0.25;
+    }
+
+    /* ── WORDMARK UNDER SEAL ── */
+    .wm-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .wm-name-d {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 36px;
+      color: var(--white); letter-spacing: 0.03em; line-height: 1;
+    }
+    .wm-name-l {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 36px;
+      color: var(--navy); letter-spacing: 0.03em; line-height: 1;
+    }
+    .wm-name-g {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 36px;
+      color: var(--navy); letter-spacing: 0.03em; line-height: 1;
+    }
+    .wm-div {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; margin: 10px 0;
+    }
+    .wm-line { height: 1px; flex: 1; }
+    .wm-line-g { background: var(--gold); }
+    .wm-line-n { background: rgba(10,15,46,0.2); }
+    .wm-line-ng { background: rgba(10,15,46,0.25); }
+    .wm-prod-d {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap;
+    }
+    .wm-prod-l {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--teal); white-space: nowrap;
+    }
+    .wm-prod-g {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 10px;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: rgba(10,15,46,0.5); white-space: nowrap;
+    }
+
+    /* ── ANATOMY ── */
+    .anatomy {
+      background: var(--nmid);
+      padding: 52px 64px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+    .anote {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 22px;
+    }
+    .anote:last-child { margin-bottom: 0; }
+    .anote-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .anote-title {
+      font-size: 13px; font-weight: 600;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .anote-body {
+      font-size: 12px; font-weight: 300;
+      color: rgba(255,255,255,0.4); line-height: 1.7;
+    }
+
+    /* ── SCALE ROW ── */
+    .scale-row {
+      background: var(--navy);
+      padding: 32px 48px;
+      display: flex;
+      align-items: flex-end;
+      gap: 36px;
+      flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+    .scale-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+    }
+    .scale-dim {
+      font-size: 8px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── ARCH SECTION ── */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      margin-bottom: 3px;
+    }
+    .arch-left {
+      background: var(--navy);
+      padding: 48px 44px;
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .arch-right {
+      background: rgba(43,138,110,0.05);
+      padding: 48px 44px;
+      border: 1px solid rgba(43,138,110,0.15);
+    }
+    .arch-sep { background: linear-gradient(180deg, transparent, var(--gold), transparent); }
+    .arch-lbl {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .arch-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 600; line-height: 1;
+      margin-bottom: 16px;
+    }
+    .arch-desc {
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.4); line-height: 1.8;
+    }
+    .arch-rules { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 9px; }
+    .arch-rules li {
+      font-size: 12px; font-weight: 400;
+      color: rgba(255,255,255,0.3);
+      display: flex; gap: 8px;
+    }
+    .arch-rules li::before { content: '–'; flex-shrink: 0; }
+
+    /* ── FINAL LOCKUP ── */
+    .lockup-hero {
+      min-height: 520px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .lh-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .lh-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .lh-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+    }
+
+    /* ── COLOR SWATCHES ── */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 3px; margin-bottom: 3px;
+    }
+    .swatch {
+      aspect-ratio: 0.9;
+      padding: 14px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .sw-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      line-height: 1.3; margin-bottom: 3px;
+    }
+    .sw-hex { font-size: 10px; font-weight: 400; opacity: 0.65; }
+    .sw-role { font-size: 9px; font-weight: 300; opacity: 0.45; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<section class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-lines"></div>
+
+  <div class="cover-top">
+    <span class="cover-agency">VaughnMartin · Brand System · 2026</span>
+    <span class="cover-doc">Emblem Edition · Two-Brand Architecture</span>
+  </div>
+
+  <div class="cover-main">
+    <!-- Cover emblem preview -->
+    <div class="cover-emblem-preview">
+      <svg width="180" height="180" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#EDD98A"/>
+            <stop offset="45%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8A6E30"/>
+          </linearGradient>
+          <linearGradient id="goldGrad2" x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#8A6E30"/>
+            <stop offset="55%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#EDD98A"/>
+          </linearGradient>
+        </defs>
+
+        <!-- OUTER RING — thick, premium -->
+        <circle cx="100" cy="100" r="95" stroke="url(#goldGrad)" stroke-width="3.5" fill="none"/>
+        <!-- INNER RING — thin, breathing room -->
+        <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.25)" stroke-width="1" fill="none"/>
+
+        <!-- OUTER RING TICK MARKS — 12 positions like a watch -->
+        <line x1="100" y1="7"  x2="100" y2="16" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="7"   y1="100" x2="16"  y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Diagonal ticks — smaller -->
+        <line x1="27"  y1="27"  x2="33"  y2="33"  stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="27"  x2="167" y2="33"  stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27"  y1="173" x2="33"  y2="167" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+
+        <!-- INTERIOR FIELD — very subtle fill -->
+        <circle cx="100" cy="100" r="85" fill="rgba(10,15,46,0.6)"/>
+
+        <!-- TOP BANNER ARC — "VAUGHNMARTIN" text path -->
+        <!-- Simulated arc text with SVG path text -->
+        <path id="topArc" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed', sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#C9A84C" text-anchor="middle">
+          <textPath href="#topArc" startOffset="50%">VAUGHNMARTIN</textPath>
+        </text>
+
+        <!-- BOTTOM BANNER ARC — "EXECUTION OS" -->
+        <path id="botArc" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+        <text font-family="'Barlow Condensed', sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(201,168,76,0.55)" text-anchor="middle">
+          <textPath href="#botArc" startOffset="50%">EXECUTION  OS</textPath>
+        </text>
+
+        <!-- HORIZONTAL DIVIDER LINES flanking center VM -->
+        <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+        <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+        <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+        <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+
+        <!-- CENTER VM MONOGRAM — Cormorant-style serif V + M -->
+        <!-- V stroke left -->
+        <path d="M 72 78 L 100 118 L 128 78" stroke="url(#goldGrad2)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- VM inner thin echo -->
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(201,168,76,0.18)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+        <!-- TOP DOT — the fearless moment -->
+        <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+        <!-- Tiny rays from dot -->
+        <line x1="100" y1="65" x2="100" y2="62" stroke="rgba(201,168,76,0.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="106" y1="67" x2="108" y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="94"  y1="67" x2="92"  y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+
+        <!-- STAR / DIAMOND ornaments left and right of VM -->
+        <!-- Left diamond -->
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.7"/>
+        <!-- Right diamond -->
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.7"/>
+
+        <!-- BOTTOM ORNAMENT — thin horizontal bar with center diamond -->
+        <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+        <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(201,168,76,0.6)"/>
+
+        <!-- OUTER RING — second thin overlay for depth -->
+        <circle cx="100" cy="100" r="95" stroke="rgba(237,217,138,0.12)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="cover-wordmark">
+      <div class="cover-name">VaughnMartin</div>
+      <div class="cover-product-line">
+        <div class="cover-rule"></div>
+        <span class="cover-product">Execution OS</span>
+        <div class="cover-rule"></div>
+      </div>
+      <div class="cover-tagline">We Make Enterprises Fearless.</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <span style="font-size:10px;color:rgba(255,255,255,0.15);letter-spacing:0.1em">mbrunke@vaughnmartin.com</span>
+    <div class="cover-toc">
+      <div class="toc-item"><span class="toc-n">01</span><span class="toc-l">The Seal</span></div>
+      <div class="toc-item"><span class="toc-n">02</span><span class="toc-l">All Colorways</span></div>
+      <div class="toc-item"><span class="toc-n">03</span><span class="toc-l">Lockup System</span></div>
+      <div class="toc-item"><span class="toc-n">04</span><span class="toc-l">Architecture</span></div>
+      <div class="toc-item"><span class="toc-n">05</span><span class="toc-l">Brand Standards</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ 01 · THE SEAL ══════════ -->
+<div class="sh">
+  <div class="sh-ey">Section 01</div>
+  <div class="sh-title">The Seal — Primary Mark</div>
+  <div class="sh-sub">A structured emblem that carries institutional authority, warmth, and precision in a single form. The outer ring anchors the brand. The VM monogram carries the name and the legacy. The gold dot holds the meaning.</div>
+</div>
+
+<div class="stage">
+
+  <!-- LARGE DARK — PRIMARY -->
+  <div class="panel p-navy" style="min-height:480px;margin-bottom:3px">
+    <svg width="260" height="260" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gA" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#EDD98A"/>
+          <stop offset="45%" stop-color="#C9A84C"/>
+          <stop offset="100%" stop-color="#8A6E30"/>
+        </linearGradient>
+        <linearGradient id="gB" x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#8A6E30"/>
+          <stop offset="55%" stop-color="#C9A84C"/>
+          <stop offset="100%" stop-color="#EDD98A"/>
+        </linearGradient>
+      </defs>
+      <circle cx="100" cy="100" r="95" stroke="url(#gA)" stroke-width="3.5" fill="none"/>
+      <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.25)" stroke-width="1" fill="none"/>
+      <line x1="100" y1="7"  x2="100" y2="16" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="7"   y1="100" x2="16"  y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="27"  y1="27"  x2="33"  y2="33"  stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="173" y1="27"  x2="167" y2="33"  stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="27"  y1="173" x2="33"  y2="167" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.55)"/>
+      <path id="tA1" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+      <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#C9A84C" text-anchor="middle">
+        <textPath href="#tA1" startOffset="50%">VAUGHNMARTIN</textPath>
+      </text>
+      <path id="bA1" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+      <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(201,168,76,0.55)" text-anchor="middle">
+        <textPath href="#bA1" startOffset="50%">EXECUTION  OS</textPath>
+      </text>
+      <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+      <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+      <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+      <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+      <path d="M 72 78 L 100 118 L 128 78" stroke="url(#gB)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(201,168,76,0.18)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+      <line x1="100" y1="65" x2="100" y2="62" stroke="rgba(201,168,76,0.5)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="106" y1="67" x2="108" y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="94"  y1="67" x2="92"  y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+      <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.7"/>
+      <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.7"/>
+      <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+      <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+      <circle cx="100" cy="132" r="2.5" fill="rgba(201,168,76,0.6)"/>
+      <circle cx="100" cy="100" r="95" stroke="rgba(237,217,138,0.12)" stroke-width="1" fill="none"/>
+    </svg>
+    <span class="panel-bg-label" style="color:rgba(255,255,255,0.25)">Primary · Midnight Navy</span>
+  </div>
+
+  <!-- FOUR COLORWAYS -->
+  <div class="g2" style="margin-bottom:3px">
+
+    <!-- IVORY -->
+    <div class="panel p-ivory" style="min-height:340px">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="95" stroke="#0A0F2E" stroke-width="3.5" fill="none" opacity="0.6"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(10,15,46,0.15)" stroke-width="1" fill="none"/>
+        <line x1="100" y1="7"  x2="100" y2="16" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="7"   y1="100" x2="16"  y2="100" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="27" y1="27" x2="33" y2="33" stroke="rgba(10,15,46,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="27" x2="167" y2="33" stroke="rgba(10,15,46,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="173" x2="33" y2="167" stroke="rgba(10,15,46,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(10,15,46,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+        <path id="tL" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#0A0F2E" text-anchor="middle" opacity="0.7">
+          <textPath href="#tL" startOffset="50%">VAUGHNMARTIN</textPath>
+        </text>
+        <path id="bL" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="#2B8A6E" text-anchor="middle" opacity="0.7">
+          <textPath href="#bL" startOffset="50%">EXECUTION  OS</textPath>
+        </text>
+        <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(10,15,46,0.15)" stroke-width="0.75"/>
+        <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(10,15,46,0.15)" stroke-width="0.75"/>
+        <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(10,15,46,0.1)" stroke-width="0.75"/>
+        <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(10,15,46,0.1)" stroke-width="0.75"/>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#0A0F2E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.75"/>
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(10,15,46,0.15)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.6"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.6"/>
+        <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(10,15,46,0.2)" stroke-width="0.75"/>
+        <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(10,15,46,0.2)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(10,15,46,0.35)"/>
+      </svg>
+      <span class="panel-bg-label" style="color:rgba(10,15,46,0.3)">Light · Ivory</span>
+    </div>
+
+    <!-- GOLD CAMPAIGN -->
+    <div class="panel p-gold" style="min-height:340px">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="95" stroke="#0A0F2E" stroke-width="3.5" fill="none" opacity="0.5"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(10,15,46,0.12)" stroke-width="1" fill="none"/>
+        <line x1="100" y1="7"  x2="100" y2="16" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="7"   y1="100" x2="16"  y2="100" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#0A0F2E" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <line x1="27" y1="27" x2="33" y2="33" stroke="rgba(10,15,46,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="27" x2="167" y2="33" stroke="rgba(10,15,46,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="173" x2="33" y2="167" stroke="rgba(10,15,46,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(10,15,46,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+        <path id="tG" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#0A0F2E" text-anchor="middle" opacity="0.65">
+          <textPath href="#tG" startOffset="50%">VAUGHNMARTIN</textPath>
+        </text>
+        <path id="bG" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(10,15,46,0.5)" text-anchor="middle">
+          <textPath href="#bG" startOffset="50%">EXECUTION  OS</textPath>
+        </text>
+        <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(10,15,46,0.15)" stroke-width="0.75"/>
+        <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(10,15,46,0.15)" stroke-width="0.75"/>
+        <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(10,15,46,0.1)" stroke-width="0.75"/>
+        <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(10,15,46,0.1)" stroke-width="0.75"/>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#0A0F2E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7"/>
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(10,15,46,0.15)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#0A0F2E" opacity="0.7"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#0A0F2E" opacity="0.5"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#0A0F2E" opacity="0.5"/>
+        <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(10,15,46,0.2)" stroke-width="0.75"/>
+        <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(10,15,46,0.2)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(10,15,46,0.4)"/>
+      </svg>
+      <span class="panel-bg-label" style="color:rgba(10,15,46,0.3)">Campaign · Gold</span>
+    </div>
+  </div>
+
+  <!-- BLACK + TEAL -->
+  <div class="g2" style="margin-bottom:3px">
+
+    <!-- PREMIUM BLACK -->
+    <div class="panel p-ink" style="min-height:320px">
+      <svg width="190" height="190" viewBox="0 0 200 200" fill="none">
+        <defs>
+          <linearGradient id="gWG" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#EDD98A"/>
+            <stop offset="50%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#9A7A35"/>
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="95" stroke="url(#gWG)" stroke-width="3" fill="none"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(237,217,138,0.15)" stroke-width="1" fill="none"/>
+        <line x1="100" y1="7"  x2="100" y2="16" stroke="#EDD98A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#EDD98A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7"   y1="100" x2="16"  y2="100" stroke="#EDD98A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#EDD98A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="27" y1="27" x2="33" y2="33" stroke="rgba(237,217,138,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="27" x2="167" y2="33" stroke="rgba(237,217,138,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="173" x2="33" y2="167" stroke="rgba(237,217,138,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(237,217,138,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        <path id="tB" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#EDD98A" text-anchor="middle">
+          <textPath href="#tB" startOffset="50%">VAUGHNMARTIN</textPath>
+        </text>
+        <path id="bB" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(237,217,138,0.45)" text-anchor="middle">
+          <textPath href="#bB" startOffset="50%">EXECUTION  OS</textPath>
+        </text>
+        <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(237,217,138,0.2)" stroke-width="0.75"/>
+        <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(237,217,138,0.2)" stroke-width="0.75"/>
+        <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(237,217,138,0.15)" stroke-width="0.75"/>
+        <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(237,217,138,0.15)" stroke-width="0.75"/>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#EDD98A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(237,217,138,0.15)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#EDD98A"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#EDD98A" opacity="0.65"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#EDD98A" opacity="0.65"/>
+        <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(237,217,138,0.3)" stroke-width="0.75"/>
+        <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(237,217,138,0.3)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(237,217,138,0.5)"/>
+      </svg>
+      <span class="panel-bg-label" style="color:rgba(255,255,255,0.15)">Premium · Black</span>
+    </div>
+
+    <!-- WARM DARK — for print/events -->
+    <div class="panel p-warm" style="min-height:320px">
+      <div class="wm-wrap" style="gap:8px">
+        <svg width="140" height="140" viewBox="0 0 200 200" fill="none" style="margin-bottom:16px">
+          <defs>
+            <linearGradient id="gWarm" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#EDD98A"/>
+              <stop offset="50%" stop-color="#C9A84C"/>
+              <stop offset="100%" stop-color="#8A6E30"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="95" stroke="url(#gWarm)" stroke-width="3.5" fill="none"/>
+          <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="none"/>
+          <line x1="100" y1="7"  x2="100" y2="16" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="7"   y1="100" x2="16"  y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+          <path id="tW" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#C9A84C" text-anchor="middle">
+            <textPath href="#tW" startOffset="50%">VAUGHNMARTIN</textPath>
+          </text>
+          <path id="bW" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+          <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(201,168,76,0.5)" text-anchor="middle">
+            <textPath href="#bW" startOffset="50%">EXECUTION  OS</textPath>
+          </text>
+          <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(201,168,76,0.25)" stroke-width="0.75"/>
+          <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(201,168,76,0.25)" stroke-width="0.75"/>
+          <path d="M 72 78 L 100 118 L 128 78" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(201,168,76,0.18)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+          <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.65"/>
+          <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.65"/>
+          <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(201,168,76,0.35)" stroke-width="0.75"/>
+          <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.35)" stroke-width="0.75"/>
+          <circle cx="100" cy="132" r="2.5" fill="rgba(201,168,76,0.55)"/>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:28px;color:#EDD98A;letter-spacing:0.04em">VaughnMartin</div>
+        <div class="wm-div" style="width:240px">
+          <div class="wm-line" style="background:rgba(201,168,76,0.3)"></div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(201,168,76,0.55)">Execution OS</div>
+          <div class="wm-line" style="background:rgba(201,168,76,0.3)"></div>
+        </div>
+      </div>
+      <span class="panel-bg-label" style="color:rgba(255,255,255,0.15)">Warm Dark · Print</span>
+    </div>
+  </div>
+
+  <!-- ANATOMY -->
+  <div class="anatomy">
+    <div style="display:flex;align-items:center;justify-content:center">
+      <svg width="240" height="240" viewBox="0 0 200 200" fill="none">
+        <!-- Annotation lines -->
+        <line x1="100" y1="5" x2="210" y2="30" stroke="rgba(201,168,76,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="148" y1="100" x2="210" y2="80" stroke="rgba(201,168,76,0.15)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="100" y1="73" x2="210" y2="130" stroke="rgba(201,168,76,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="100" y1="132" x2="210" y2="175" stroke="rgba(201,168,76,0.15)" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <!-- Mark -->
+        <circle cx="100" cy="100" r="95" stroke="rgba(201,168,76,0.5)" stroke-width="3" fill="none"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.15)" stroke-width="1" fill="none"/>
+        <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.4)"/>
+        <line x1="100" y1="7" x2="100" y2="16" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7" y1="100" x2="16" y2="100" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+        <path id="tAn" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="12" font-weight="700" letter-spacing="4.5" fill="rgba(201,168,76,0.7)" text-anchor="middle">
+          <textPath href="#tAn" startOffset="50%">VAUGHNMARTIN</textPath>
+        </text>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#C9A84C" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(201,168,76,0.2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.6"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.6"/>
+        <line x1="60" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(201,168,76,0.5)"/>
+        <!-- Annotation dots -->
+        <circle cx="148" cy="100" r="3" fill="rgba(201,168,76,0.4)"/>
+        <circle cx="100" cy="5"   r="3" fill="rgba(201,168,76,0.4)"/>
+        <circle cx="100" cy="73"  r="6" stroke="rgba(201,168,76,0.5)" stroke-width="1" fill="none"/>
+        <circle cx="100" cy="132" r="5" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:28px">Seal Anatomy</div>
+      <div class="anote">
+        <div class="anote-dot" style="background:var(--gold)"></div>
+        <div><div class="anote-title">The Outer Ring — Institutional Authority</div><div class="anote-body">The enclosing circle is the language of seals, medals, and institutions that endure. Graduated gold — light at top, deep at bottom — gives it weight and warmth rather than flatness. Tick marks at 12, 3, 6, 9 o'clock add precision without feeling military.</div></div>
+      </div>
+      <div class="anote">
+        <div class="anote-dot" style="background:rgba(201,168,76,0.4)"></div>
+        <div><div class="anote-title">Arc Typography — Name on Ring</div><div class="anote-body">VAUGHNMARTIN runs the upper arc, EXECUTION OS runs the lower arc — the two-brand system built directly into the geometry of the mark. At small sizes, the text softens into the ring. At display size, it reads perfectly.</div></div>
+      </div>
+      <div class="anote">
+        <div class="anote-dot" style="background:var(--gold)"></div>
+        <div><div class="anote-title">Center VM — The Monogram</div><div class="anote-body">The VM stroke set is refined, not heavy. The outer V is bold and reads immediately. The inner echo V is subtle — a reward for a second look, encoding the preparation-before-execution philosophy in the mark itself.</div></div>
+      </div>
+      <div class="anote">
+        <div class="anote-dot" style="background:rgba(201,168,76,0.6)"></div>
+        <div><div class="anote-title">Diamond Ornaments + Base Detail</div><div class="anote-body">The flanking diamonds read as precision, authority, and symmetry. They break the coldness of pure geometry. The base ornament with center circle closes the seal — a full, resolved composition that looks complete at every scale.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCALE TEST -->
+  <div class="scale-row">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);min-width:80px">Scale Test</div>
+    <!-- 120px -->
+    <div class="scale-item">
+      <svg width="120" height="120" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="95" stroke="#C9A84C" stroke-width="3.5" fill="none"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="none"/>
+        <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.5)"/>
+        <line x1="100" y1="7" x2="100" y2="16" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="7" y1="100" x2="16" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <path id="ts1" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#C9A84C" text-anchor="middle"><textPath href="#ts1" startOffset="50%">VAUGHNMARTIN</textPath></text>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#C9A84C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.6"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.6"/>
+      </svg>
+      <span class="scale-dim">120px</span>
+    </div>
+    <!-- 80px -->
+    <div class="scale-item">
+      <svg width="80" height="80" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="95" stroke="#C9A84C" stroke-width="4" fill="none"/>
+        <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.5)"/>
+        <line x1="100" y1="7" x2="100" y2="16" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="100" x2="16" y2="100" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="#C9A84C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="5" fill="#C9A84C"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.55"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.55"/>
+      </svg>
+      <span class="scale-dim">80px</span>
+    </div>
+    <!-- 48px -->
+    <div class="scale-item">
+      <svg width="48" height="48" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="95" stroke="#C9A84C" stroke-width="5" fill="none"/>
+        <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.6)"/>
+        <line x1="100" y1="7" x2="100" y2="18" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="7" y1="100" x2="18" y2="100" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="182" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+        <line x1="100" y1="182" x2="100" y2="193" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+        <path d="M 70 76 L 100 120 L 130 76" stroke="#C9A84C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="70" r="7" fill="#C9A84C"/>
+      </svg>
+      <span class="scale-dim">48px</span>
+    </div>
+    <!-- 32px -->
+    <div class="scale-item">
+      <svg width="32" height="32" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="94" stroke="#C9A84C" stroke-width="6" fill="none"/>
+        <circle cx="100" cy="100" r="84" fill="rgba(8,10,30,0.7)"/>
+        <path d="M 68 76 L 100 124 L 132 76" stroke="#C9A84C" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="68" r="9" fill="#C9A84C"/>
+      </svg>
+      <span class="scale-dim">32px</span>
+    </div>
+    <!-- 24px -->
+    <div class="scale-item">
+      <svg width="24" height="24" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="94" stroke="#C9A84C" stroke-width="7" fill="rgba(10,15,46,0.8)"/>
+        <path d="M 65 78 L 100 128 L 135 78" stroke="#C9A84C" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="65" r="11" fill="#C9A84C"/>
+      </svg>
+      <span class="scale-dim">24px</span>
+    </div>
+    <!-- Favicon 16px -->
+    <div class="scale-item">
+      <svg width="16" height="16" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="98" fill="#C9A84C"/>
+        <path d="M 55 85 L 100 145 L 145 85" stroke="#0A0F2E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="58" r="16" fill="#0A0F2E"/>
+      </svg>
+      <span class="scale-dim">Favicon</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ 03 · FULL LOCKUPS ══════════ -->
+<div class="sh">
+  <div class="sh-ey">Section 03</div>
+  <div class="sh-title">Lockup System</div>
+  <div class="sh-sub">The seal paired with the wordmark. Stacked for display. Horizontal for nav and compact contexts. The seal and wordmark never merge — always two distinct elements.</div>
+</div>
+
+<div class="stage">
+  <!-- Stacked primary -->
+  <div class="panel p-navy" style="min-height:420px;margin-bottom:3px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+      <svg width="160" height="160" viewBox="0 0 200 200" fill="none">
+        <defs>
+          <linearGradient id="gLU" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#EDD98A"/>
+            <stop offset="45%" stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8A6E30"/>
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="95" stroke="url(#gLU)" stroke-width="3.5" fill="none"/>
+        <circle cx="100" cy="100" r="86" stroke="rgba(201,168,76,0.25)" stroke-width="1" fill="none"/>
+        <line x1="100" y1="7" x2="100" y2="16" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="100" y1="184" x2="100" y2="193" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="7" y1="100" x2="16" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="184" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="27" y1="27" x2="33" y2="33" stroke="rgba(201,168,76,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="27" x2="167" y2="33" stroke="rgba(201,168,76,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="27" y1="173" x2="33" y2="167" stroke="rgba(201,168,76,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="173" y1="173" x2="167" y2="167" stroke="rgba(201,168,76,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.5)"/>
+        <path id="tLU" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="13" font-weight="700" letter-spacing="5" fill="#C9A84C" text-anchor="middle"><textPath href="#tLU" startOffset="50%">VAUGHNMARTIN</textPath></text>
+        <path id="bLU" d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
+        <text font-family="'Barlow Condensed',sans-serif" font-size="10.5" font-weight="700" letter-spacing="5.5" fill="rgba(201,168,76,0.5)" text-anchor="middle"><textPath href="#bLU" startOffset="50%">EXECUTION  OS</textPath></text>
+        <line x1="28" y1="93" x2="70" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+        <line x1="130" y1="93" x2="172" y2="93" stroke="rgba(201,168,76,0.3)" stroke-width="0.75"/>
+        <line x1="28" y1="120" x2="68" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+        <line x1="132" y1="120" x2="172" y2="120" stroke="rgba(201,168,76,0.2)" stroke-width="0.75"/>
+        <path d="M 72 78 L 100 118 L 128 78" stroke="url(#gLU)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M 82 78 L 100 108 L 118 78" stroke="rgba(201,168,76,0.18)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="100" cy="73" r="4" fill="#C9A84C"/>
+        <line x1="100" y1="65" x2="100" y2="62" stroke="rgba(201,168,76,0.5)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="106" y1="67" x2="108" y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+        <line x1="94" y1="67" x2="92" y2="64" stroke="rgba(201,168,76,0.35)" stroke-width="1" stroke-linecap="round"/>
+        <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill="#C9A84C" opacity="0.7"/>
+        <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill="#C9A84C" opacity="0.7"/>
+        <line x1="60" y1="132" x2="95" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+        <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.4)" stroke-width="0.75"/>
+        <circle cx="100" cy="132" r="2.5" fill="rgba(201,168,76,0.6)"/>
+      </svg>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:48px;color:var(--white);letter-spacing:0.03em;line-height:1">VaughnMartin</div>
+        <div style="display:flex;align-items:center;gap:16px;margin:10px 0">
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.5))"></div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.45em;text-transform:uppercase;color:var(--gold)">Execution OS</div>
+          <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(201,168,76,0.5),transparent)"></div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(255,255,255,0.3);letter-spacing:0.06em">We Make Enterprises Fearless.</div>
+      </div>
+    </div>
+    <span class="panel-bg-label" style="color:rgba(255,255,255,0.2)">Primary Stacked · Dark</span>
+  </div>
+
+  <!-- Horizontal nav lockup -->
+  <div class="panel p-nmid" style="min-height:120px;padding:32px 56px;flex-direction:row;gap:20px;justify-content:flex-start;margin-bottom:3px">
+    <svg width="48" height="48" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="95" stroke="#C9A84C" stroke-width="5" fill="none"/>
+      <circle cx="100" cy="100" r="85" fill="rgba(8,10,30,0.6)"/>
+      <line x1="100" y1="7" x2="100" y2="18" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+      <line x1="7" y1="100" x2="18" y2="100" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+      <line x1="182" y1="100" x2="193" y2="100" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+      <line x1="100" y1="182" x2="100" y2="193" stroke="#C9A84C" stroke-width="4" stroke-linecap="round"/>
+      <path d="M 70 76 L 100 120 L 130 76" stroke="#C9A84C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="100" cy="70" r="7" fill="#C9A84C"/>
+      <path d="M 52 106 L 57 100 L 52 94 L 47 100 Z" fill="#C9A84C" opacity="0.6"/>
+      <path d="M 148 106 L 153 100 L 148 94 L 143 100 Z" fill="#C9A84C" opacity="0.6"/>
+    </svg>
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:var(--white);letter-spacing:0.03em;line-height:1">VaughnMartin</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-top:4px">Execution OS</div>
+    </div>
+    <span class="panel-bg-label" style="color:rgba(255,255,255,0.2)">Horizontal Nav · Compact</span>
+  </div>
+</div>
+
+
+<!-- ══════════ 04 · BRAND ARCHITECTURE ══════════ -->
+<div class="sh">
+  <div class="sh-ey">Section 04</div>
+  <div class="sh-title">Brand Architecture</div>
+  <div class="sh-sub">Two names. One seal. The architecture is intentional and non-negotiable.</div>
+</div>
+
+<div class="stage">
+  <div class="arch-grid" style="margin-bottom:3px">
+    <div class="arch-left">
+      <div class="arch-lbl" style="color:var(--gold)">The Company</div>
+      <div class="arch-name" style="color:var(--white)">VaughnMartin</div>
+      <div class="arch-desc">Named for Vaughn. The legacy, the advisory relationship, the 20+ years of Fortune 500 transformation that makes the platform credible. This is the name on the door.</div>
+      <ul class="arch-rules">
+        <li>Always Cormorant Garamond · never Barlow</li>
+        <li>One word · mixed case · always</li>
+        <li>White on dark · Navy on light</li>
+        <li>Carries the seal mark</li>
+      </ul>
+    </div>
+    <div class="arch-sep"></div>
+    <div class="arch-right">
+      <div class="arch-lbl" style="color:var(--teallt)">The Product</div>
+      <div class="arch-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--teallt)">Execution OS</div>
+      <div class="arch-desc">170 playbooks. 9 domains. IDEA Framework. 12-minute deployment. The platform that operationalizes VaughnMartin's methodology at Fortune 1000 scale.</div>
+      <ul class="arch-rules" style="color:rgba(255,255,255,0.3)">
+        <li>Always Barlow Condensed · all caps</li>
+        <li>Teal on light · Gold on dark</li>
+        <li>Separated by gold rule from company name</li>
+        <li>Lives in the lower arc of the seal</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DO / DON'T -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px">
+    <div style="background:rgba(43,138,110,0.06);border:1px solid rgba(43,138,110,0.15);padding:24px">
+      <div style="font-size:9px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--teallt);margin-bottom:12px">✓ Correct</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--white)">VaughnMartin</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:4px">One word · mixed case</div>
+    </div>
+    <div style="background:rgba(43,138,110,0.06);border:1px solid rgba(43,138,110,0.15);padding:24px">
+      <div style="font-size:9px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--teallt);margin-bottom:12px">✓ Correct</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teallt)">EXECUTION OS</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-top:4px">All caps · always</div>
+    </div>
+    <div style="background:rgba(220,38,38,0.04);border:1px solid rgba(220,38,38,0.15);padding:24px">
+      <div style="font-size:9px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:#F87171;margin-bottom:12px">✗ Never</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:rgba(255,255,255,0.25);text-decoration:line-through">VaughnMartin OS</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:4px">Collapses two brands</div>
+    </div>
+    <div style="background:rgba(220,38,38,0.04);border:1px solid rgba(220,38,38,0.15);padding:24px">
+      <div style="font-size:9px;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:#F87171;margin-bottom:12px">✗ Never</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:line-through">Vaughn Martin</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:4px">No space between names</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ 05 · COLOR + TYPE ══════════ -->
+<div class="sh">
+  <div class="sh-ey">Section 05</div>
+  <div class="sh-title">Color System · Typography</div>
+</div>
+
+<div class="stage">
+  <div class="swatches">
+    <div class="swatch" style="background:#0A0F2E">
+      <div class="sw-name" style="color:rgba(255,255,255,0.6)">Midnight Navy</div>
+      <div class="sw-hex" style="color:rgba(255,255,255,0.35)">#0A0F2E</div>
+      <div class="sw-role" style="color:rgba(255,255,255,0.25)">Dominant · 60%</div>
+    </div>
+    <div class="swatch" style="background:#C9A84C">
+      <div class="sw-name" style="color:rgba(10,15,46,0.75)">Campaign Gold</div>
+      <div class="sw-hex" style="color:rgba(10,15,46,0.45)">#C9A84C</div>
+      <div class="sw-role" style="color:rgba(10,15,46,0.35)">Seal · Accents</div>
+    </div>
+    <div class="swatch" style="background:#EDD98A">
+      <div class="sw-name" style="color:rgba(10,15,46,0.7)">White Gold</div>
+      <div class="sw-hex" style="color:rgba(10,15,46,0.4)">#EDD98A</div>
+      <div class="sw-role" style="color:rgba(10,15,46,0.3)">Dark bg display</div>
+    </div>
+    <div class="swatch" style="background:#2B8A6E">
+      <div class="sw-name" style="color:rgba(255,255,255,0.7)">Execution Teal</div>
+      <div class="sw-hex" style="color:rgba(255,255,255,0.4)">#2B8A6E</div>
+      <div class="sw-role" style="color:rgba(255,255,255,0.3)">Product tier only</div>
+    </div>
+    <div class="swatch" style="background:#F0EDE4;border:1px solid #D0CAB8">
+      <div class="sw-name" style="color:rgba(10,15,46,0.55)">Ivory</div>
+      <div class="sw-hex" style="color:rgba(10,15,46,0.3)">#F0EDE4</div>
+      <div class="sw-role" style="color:rgba(10,15,46,0.25)">Light surfaces</div>
+    </div>
+    <div class="swatch" style="background:#040408">
+      <div class="sw-name" style="color:rgba(255,255,255,0.4)">Premium Black</div>
+      <div class="sw-hex" style="color:rgba(255,255,255,0.25)">#040408</div>
+      <div class="sw-role" style="color:rgba(255,255,255,0.18)">Luxury print</div>
+    </div>
+  </div>
+
+  <!-- Type specimens -->
+  <div class="g2">
+    <div style="background:var(--navy);padding:40px">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Cormorant Garamond · Display</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;color:var(--white);line-height:1;margin-bottom:6px">VaughnMartin</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;font-style:italic;color:var(--goldlt);line-height:1;margin-bottom:6px">Fearless.</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:rgba(255,255,255,0.35)">Strategic Execution · Elite Methodology</div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:11px;font-weight:300;color:rgba(255,255,255,0.2)">Company name · Headlines · Display · Italic tagline moments</div>
+    </div>
+    <div style="background:var(--nmid);padding:40px">
+      <div style="font-size:9px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Barlow Condensed · Campaign</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:900;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);line-height:1;margin-bottom:6px">EXECUTION OS</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teallt);line-height:1;margin-bottom:6px">WE MAKE ENTERPRISES</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)">FEARLESS.</div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:11px;font-weight:300;color:rgba(255,255,255,0.2)">Product name · Campaign headlines · Labels · CTAs · Guerrilla copy</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
