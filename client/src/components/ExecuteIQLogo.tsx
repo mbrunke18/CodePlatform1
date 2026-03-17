@@ -18,46 +18,75 @@ const OFF_WHITE = '#FDFCFA';
 const VaughnMartinSeal: FC<{ size: number; color: string }> = ({ size, color }) => {
   const uid = useId().replace(/:/g, 's');
 
-  const onDark  = color === 'white' || color === 'teal';
-  const onGold  = color === 'gold';
-  const onLight = color === 'navy';
+  const onDark  = color === 'white' || color === 'teal'; // dark bg → gold elements
+  const onGold  = color === 'gold';                      // gold bg → navy elements
+  const onLight = color === 'navy';                      // white/light bg → navy elements, gold dot accent
 
   const gradId1   = `${uid}g1`;
   const gradId2   = `${uid}g2`;
   const topArcId  = `${uid}ta`;
   const botArcId  = `${uid}ba`;
 
-  const ringStroke  = onGold  ? NAVY   : `url(#${gradId1})`;
-  const ringStroke2 = onGold  ? 'rgba(10,15,46,0.12)' : 'rgba(201,168,76,0.25)';
-  const tickMain    = onGold  ? NAVY   : GOLD;
-  const tickMainOp  = onGold  ? 0.5   : 1;
-  const tickDiag    = onGold  ? 'rgba(10,15,46,0.2)' : 'rgba(201,168,76,0.5)';
-  const interior    = onGold  ? 'rgba(10,15,46,0.12)' : onLight ? 'transparent' : 'rgba(8,10,30,0.55)';
-  const vmStroke    = onGold  ? NAVY   : `url(#${gradId2})`;
-  const vmInner     = onGold  ? 'rgba(10,15,46,0.15)' : 'rgba(201,168,76,0.18)';
-  const topText     = onGold  ? NAVY   : GOLD;
-  const topTextOp   = onGold  ? 0.7   : 1;
-  const botText     = onGold  ? 'rgba(10,15,46,0.55)' : 'rgba(201,168,76,0.55)';
-  const line1       = onGold  ? 'rgba(10,15,46,0.15)' : 'rgba(201,168,76,0.3)';
-  const line2       = onGold  ? 'rgba(10,15,46,0.1)'  : 'rgba(201,168,76,0.2)';
-  const dotFill     = onGold  ? NAVY   : GOLD;
-  const diaFill     = onGold  ? NAVY   : GOLD;
-  const botDot      = onGold  ? 'rgba(10,15,46,0.35)' : 'rgba(201,168,76,0.6)';
+  // Light bg (navy): dark navy elements — maximum contrast on white
+  // Dark bg (white/teal): gold elements — glows against navy
+  // Gold bg (gold): navy elements
+  const ringStroke  = onLight ? 'rgba(10,15,46,0.70)' : onGold ? NAVY  : `url(#${gradId1})`;
+  const ringStroke2 = onLight ? 'rgba(10,15,46,0.18)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
+  const tickMain    = onLight ? NAVY   : onGold ? NAVY  : GOLD;
+  const tickMainOp  = onLight ? 0.65  : onGold ? 0.60  : 1;
+  const tickDiag    = onLight ? 'rgba(10,15,46,0.22)' : onGold ? 'rgba(10,15,46,0.25)' : 'rgba(201,168,76,0.6)';
+  const interior    = onLight ? 'transparent'         : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(8,10,30,0.60)';
+  const vmStroke    = onLight ? 'rgba(10,15,46,0.82)' : onGold ? NAVY  : `url(#${gradId2})`;
+  const vmInner     = onLight ? 'rgba(10,15,46,0.14)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.22)';
+  const topText     = onLight ? NAVY   : onGold ? NAVY  : GOLD;
+  const topTextOp   = onLight ? 0.78  : onGold ? 0.75  : 1;
+  const botText     = onLight ? '#2B8A6E'              : onGold ? 'rgba(10,15,46,0.55)' : 'rgba(201,168,76,0.60)';
+  const line1       = onLight ? 'rgba(10,15,46,0.14)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
+  const line2       = onLight ? 'rgba(10,15,46,0.09)' : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(201,168,76,0.22)';
+  const dotFill     = GOLD; // gold dot is always the accent — never changes
+  const diaFill     = onLight ? GOLD   : onGold ? NAVY  : GOLD;
+  const botDot      = onLight ? 'rgba(201,168,76,0.70)' : onGold ? 'rgba(10,15,46,0.4)' : 'rgba(201,168,76,0.65)';
 
+  const defs = (
+    <defs>
+      <linearGradient id={gradId1} x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stopColor="#EDD98A"/>
+        <stop offset="45%"  stopColor="#C9A84C"/>
+        <stop offset="100%" stopColor="#8A6E30"/>
+      </linearGradient>
+      <linearGradient id={gradId2} x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0%"   stopColor="#8A6E30"/>
+        <stop offset="55%"  stopColor="#C9A84C"/>
+        <stop offset="100%" stopColor="#EDD98A"/>
+      </linearGradient>
+    </defs>
+  );
+
+  /* ── Simplified seal for small sizes (< 60px) ────────────────────────
+     Below 60px the arc text and fine detail become sub-pixel.
+     Show only: bold outer ring, inner ring, 4 cardinal ticks, VM monogram, gold dot.
+  ──────────────────────────────────────────────────────────────────────── */
+  if (size < 60) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+        {defs}
+        <circle cx="100" cy="100" r="95" stroke={ringStroke}  strokeWidth="5.5" fill="none"/>
+        <circle cx="100" cy="100" r="84" stroke={ringStroke2} strokeWidth="1.5" fill="none"/>
+        <circle cx="100" cy="100" r="83" fill={interior}/>
+        <line x1="100" y1="5"   x2="100" y2="17"  stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
+        <line x1="100" y1="183" x2="100" y2="195" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
+        <line x1="5"   y1="100" x2="17"  y2="100" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
+        <line x1="183" y1="100" x2="195" y2="100" stroke={tickMain} strokeWidth="4" strokeLinecap="round" opacity={tickMainOp}/>
+        <path d="M 66 72 L 100 122 L 134 72" stroke={vmStroke} strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+        <circle cx="100" cy="66" r="6" fill={dotFill}/>
+      </svg>
+    );
+  }
+
+  /* ── Full-detail seal for larger sizes ──────────────────────────────── */
   return (
     <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-      <defs>
-        <linearGradient id={gradId1} x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#EDD98A"/>
-          <stop offset="45%"  stopColor="#C9A84C"/>
-          <stop offset="100%" stopColor="#8A6E30"/>
-        </linearGradient>
-        <linearGradient id={gradId2} x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#8A6E30"/>
-          <stop offset="55%"  stopColor="#C9A84C"/>
-          <stop offset="100%" stopColor="#EDD98A"/>
-        </linearGradient>
-      </defs>
+      {defs}
 
       {/* Outer ring — gold gradient or navy */}
       <circle cx="100" cy="100" r="95" stroke={ringStroke} strokeWidth="3.5" fill="none"/>

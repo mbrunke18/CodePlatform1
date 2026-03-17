@@ -112,32 +112,30 @@ function HomepageNav() {
     <>
       <nav style={{
         position: "sticky", top: 0, zIndex: 100,
-        background: NAVY_BG,
-        borderBottom: "1px solid rgba(201,168,76,0.15)",
-        height: 64,
+        background: "#fff",
+        borderBottom: "1px solid rgba(10,15,46,0.10)",
+        boxShadow: "0 1px 12px rgba(10,15,46,0.07)",
+        height: 76,
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <ExecuteIQLogo variant="icon-only" height={36} color="white" />
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 2 }}>
-              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 14, lineHeight: 1 }}>VAUGHNMARTIN</span>
-              <span style={{ ...GEO, fontStyle: "italic", fontSize: 10, color: GOLD_LIGHT, lineHeight: 1 }}>We Make Enterprises Fearless.</span>
-            </div>
+          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+            <ExecuteIQLogo variant="full" height={62} color="navy" />
           </Link>
 
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <Link href="/how-it-works" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>How It Works</Link>
-            <Link href="/platform-overview" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Execution OS</Link>
-            <Link href="/pricing" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>Pricing</Link>
-            <Link href="/founder-story" style={{ ...DM, color: MUTED_DARK, fontSize: 14, textDecoration: "none" }}>About</Link>
+            <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
+            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Execution OS</Link>
+            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Pricing</Link>
+            <Link href="/founder-story" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>About</Link>
             <Link
               href="/pilot-program"
               onClick={() => trackCTA("nav")}
               style={{
-                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
-                padding: "10px 20px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
+                ...DM, background: NAVY, color: "#fff", fontWeight: 700, fontSize: 14,
+                padding: "10px 22px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
+                border: `2px solid ${GOLD}`,
               }}
             >
               Request a Pilot
@@ -151,9 +149,9 @@ function HomepageNav() {
             style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8, flexDirection: "column", gap: 5 }}
             aria-label="Open menu"
           >
-            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
-            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
-            <span style={{ display: "block", width: 22, height: 2, background: MUTED_DARK, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
           </button>
         </div>
       </nav>
@@ -942,9 +940,8 @@ function HomepageFooter() {
 
           {/* Brand */}
           <div style={{ flex: "0 0 280px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <ExecuteIQLogo variant="icon-only" height={32} color="white" />
-              <span style={{ ...DM, fontWeight: 700, letterSpacing: "0.12em", color: GOLD, fontSize: 13 }}>VAUGHNMARTIN</span>
+            <div style={{ marginBottom: 16 }}>
+              <ExecuteIQLogo variant="full" height={52} color="white" />
             </div>
             <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
