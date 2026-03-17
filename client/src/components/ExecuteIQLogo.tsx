@@ -146,10 +146,10 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   const ruleColor     = onGold ? 'rgba(10,15,46,0.35)' : onDark ? GOLD_LT : GOLD;
 
   const sealSize    = width ?? height;
-  const iconSz      = Math.round(height * 0.80);
-  const wordmarkSz  = Math.round(height * 0.44);
-  const productSz   = Math.round(height * 0.175);
-  const gap         = Math.round(height * 0.28);
+  const iconSz      = Math.round(height * 0.88);
+  const wordmarkSz  = 26;
+  const productSz   = 10.5;
+  const gap         = 16;
 
   if (variant === 'icon-only') {
     return (

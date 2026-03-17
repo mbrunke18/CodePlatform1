@@ -115,12 +115,12 @@ function HomepageNav() {
         background: "#fff",
         borderBottom: "1px solid rgba(10,15,46,0.10)",
         boxShadow: "0 1px 12px rgba(10,15,46,0.07)",
-        height: 108,
+        height: 130,
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <ExecuteIQLogo variant="full" height={100} color="navy" />
+            <ExecuteIQLogo variant="full" height={130} color="navy" />
           </Link>
 
           {/* Desktop nav — hidden below 768px via CSS */}
