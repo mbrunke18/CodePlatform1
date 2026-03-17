@@ -169,6 +169,33 @@ export default function FounderStory() {
             Until now.
           </Body>
 
+          {/* ── The Layer Nobody Built — manifesto anchor ───────────────────── */}
+          <div style={{ margin: "56px -32px", background: NAVY, padding: "64px 56px", position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
+            <div style={{ position: "absolute", top: -80, right: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(43,138,110,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
+            <div style={{ maxWidth: 680, margin: "0 auto", position: "relative", zIndex: 2, textAlign: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 16, justifyContent: "center", marginBottom: 32 }}>
+                <div style={{ height: 1, width: 28, background: "rgba(201,168,76,0.4)" }} />
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: GOLD_LIGHT }}>Category Statement</span>
+                <div style={{ height: 1, width: 28, background: "rgba(201,168,76,0.4)" }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(36px,4.5vw,54px)", fontWeight: 600, color: "#fff", lineHeight: 1.05, marginBottom: 28, letterSpacing: "-0.01em" }}>
+                The layer nobody built.
+              </h2>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontWeight: 500, marginBottom: 20 }}>
+                Organizations systematized finance. Customers. Tickets. Supply chains. Every layer of operational life became dedicated infrastructure. Purpose-built. Institutionalized.
+              </p>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, fontWeight: 500, marginBottom: 36 }}>
+                But never the layer that determines whether strategy actually happens. Never the system whose sole purpose is to compress the distance between a strategic signal and full organizational response. That layer — the coordination infrastructure between decision and execution — was left to improvisation. Every time. Until now.
+              </p>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", padding: "14px 28px" }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 16, fontWeight: 600, color: GOLD_LIGHT, letterSpacing: "0.04em" }}>VaughnMartin</span>
+                <span style={{ width: 1, height: 16, background: "rgba(201,168,76,0.3)" }} />
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)" }}>The Execution Infrastructure Enterprises Were Missing</span>
+              </div>
+            </div>
+          </div>
+
           {/* IV */}
           <RomanDivider num="IV" />
           <Body>

@@ -380,6 +380,61 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* ── Category Manifesto ─────────────────────────────────────────── */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mb-20">
+            <div style={{ background: '#0A0F2E', padding: '72px 56px', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
+              <div style={{ position: 'absolute', top: -120, right: -80, width: 700, height: 700, background: 'radial-gradient(ellipse,rgba(43,138,110,0.12) 0%,transparent 60%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: -80, left: -60, width: 500, height: 500, background: 'radial-gradient(ellipse,rgba(201,168,76,0.09) 0%,transparent 60%)', pointerEvents: 'none' }} />
+
+              <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 2 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 36 }}>
+                  <div style={{ height: 1, width: 32, background: '#C9A84C' }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#C9A84C' }}>The Category Argument</span>
+                  <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
+                </div>
+
+                <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px,4vw,52px)', fontWeight: 600, color: '#fff', lineHeight: 1.08, marginBottom: 32, letterSpacing: '-0.01em' }}>
+                  The layer nobody built.
+                </h2>
+
+                <div style={{ borderLeft: '2px solid rgba(201,168,76,0.4)', paddingLeft: 28, marginBottom: 36 }}>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, fontWeight: 500 }}>
+                    Organizations systematized finance. Customers. Tickets. Supply chains. Every layer of operational life has dedicated infrastructure — purpose-built systems that transformed improvised work into institutional capability.
+                  </p>
+                </div>
+
+                <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, fontWeight: 500, marginBottom: 24 }}>
+                  But never the layer that determines whether strategy actually happens. Never the system whose sole purpose is to compress the distance between a strategic signal and full organizational response. That layer — the coordination infrastructure between decision and execution — has never existed as a dedicated platform. Every response has been improvised. Every time, something was lost.
+                </p>
+
+                <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, fontWeight: 600, marginBottom: 40 }}>
+                  ERP did not solve it. CRM did not solve it. Project management did not solve it. This is a new category. And Execution OS is the first system built to fill it.
+                </p>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+                  {[
+                    { sys: 'ERP', owns: 'Financial operations', missing: 'Strategic response' },
+                    { sys: 'CRM', owns: 'Customer relationships', missing: 'Competitive reaction' },
+                    { sys: 'ITSM', owns: 'Technology incidents', missing: 'Enterprise coordination' },
+                  ].map(({ sys, owns, missing }) => (
+                    <div key={sys} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(201,168,76,0.12)', padding: '20px 24px' }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 8 }}>{sys}</div>
+                      <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontWeight: 500, marginBottom: 6 }}>Owns: <span style={{ color: 'rgba(255,255,255,0.8)' }}>{owns}</span></div>
+                      <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', fontWeight: 500 }}>Gap: <span style={{ color: '#C9A84C' }}>{missing}</span></div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ marginTop: 36, paddingTop: 32, borderTop: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', gap: 20 }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.02em', flexShrink: 0 }}>Execution OS</div>
+                  <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>The missing infrastructure layer.</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Market Validation */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">Market Validation</h2>
