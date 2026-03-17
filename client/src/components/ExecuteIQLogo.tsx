@@ -27,25 +27,25 @@ const VaughnMartinSeal: FC<{ size: number; color: string }> = ({ size, color }) 
   const topArcId  = `${uid}ta`;
   const botArcId  = `${uid}ba`;
 
-  // Light bg (navy): dark navy elements — maximum contrast on white
+  // Light bg (navy): gold gradient ring + teal/gold elements for vivid color on white
   // Dark bg (white/teal): gold elements — glows against navy
   // Gold bg (gold): navy elements
-  const ringStroke  = onLight ? 'rgba(10,15,46,0.70)' : onGold ? NAVY  : `url(#${gradId1})`;
-  const ringStroke2 = onLight ? 'rgba(10,15,46,0.18)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
-  const tickMain    = onLight ? NAVY   : onGold ? NAVY  : GOLD;
-  const tickMainOp  = onLight ? 0.65  : onGold ? 0.60  : 1;
-  const tickDiag    = onLight ? 'rgba(10,15,46,0.22)' : onGold ? 'rgba(10,15,46,0.25)' : 'rgba(201,168,76,0.6)';
-  const interior    = onLight ? 'transparent'         : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(8,10,30,0.60)';
-  const vmStroke    = onLight ? 'rgba(10,15,46,0.82)' : onGold ? NAVY  : `url(#${gradId2})`;
-  const vmInner     = onLight ? 'rgba(10,15,46,0.14)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.22)';
+  const ringStroke  = onGold ? NAVY : `url(#${gradId1})`;
+  const ringStroke2 = onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
+  const tickMain    = onLight ? GOLD  : onGold ? NAVY  : GOLD;
+  const tickMainOp  = onLight ? 1.0  : onGold ? 0.60  : 1;
+  const tickDiag    = onLight ? 'rgba(201,168,76,0.55)' : onGold ? 'rgba(10,15,46,0.25)' : 'rgba(201,168,76,0.6)';
+  const interior    = onLight ? 'rgba(10,15,46,0.05)'  : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(8,10,30,0.60)';
+  const vmStroke    = onGold ? NAVY  : `url(#${gradId2})`;
+  const vmInner     = onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.22)';
   const topText     = onLight ? NAVY   : onGold ? NAVY  : GOLD;
-  const topTextOp   = onLight ? 0.78  : onGold ? 0.75  : 1;
+  const topTextOp   = onLight ? 0.85  : onGold ? 0.75  : 1;
   const botText     = onLight ? '#2B8A6E'              : onGold ? 'rgba(10,15,46,0.55)' : 'rgba(201,168,76,0.60)';
-  const line1       = onLight ? 'rgba(10,15,46,0.14)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
-  const line2       = onLight ? 'rgba(10,15,46,0.09)' : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(201,168,76,0.22)';
-  const dotFill     = GOLD; // gold dot is always the accent — never changes
-  const diaFill     = onLight ? GOLD   : onGold ? NAVY  : GOLD;
-  const botDot      = onLight ? 'rgba(201,168,76,0.70)' : onGold ? 'rgba(10,15,46,0.4)' : 'rgba(201,168,76,0.65)';
+  const line1       = onLight ? 'rgba(201,168,76,0.40)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
+  const line2       = onLight ? 'rgba(201,168,76,0.25)' : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(201,168,76,0.22)';
+  const dotFill     = onGold ? NAVY : GOLD;
+  const diaFill     = onGold ? NAVY : GOLD;
+  const botDot      = onGold ? 'rgba(10,15,46,0.4)' : 'rgba(201,168,76,0.70)';
 
   const defs = (
     <defs>

@@ -33,7 +33,7 @@ export function PageHero({ title, subtitle, badge, eyebrow, actions, size = "md"
 
       <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ marginBottom: 20 }}>
-          <VaughnMartinLogo height={32} variant="full" color="dark" />
+          <VaughnMartinLogo height={64} variant="full" color="light" />
         </div>
 
         {eyebrow && (

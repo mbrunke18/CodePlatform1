@@ -84,7 +84,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <ExecuteIQLogo
-                height={54}
+                height={80}
                 variant="full"
                 color="white"
               />
@@ -179,7 +179,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-col gap-1">
-              <VaughnMartinLogo height={40} color="light" />
+              <VaughnMartinLogo height={72} color="light" />
               <p className="text-xs text-gray-500" style={{ paddingLeft: '2px' }}>
                 © {new Date().getFullYear()} VaughnMartin — Execution OS
               </p>

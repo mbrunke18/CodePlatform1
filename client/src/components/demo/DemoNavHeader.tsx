@@ -41,10 +41,9 @@ export default function DemoNavHeader({
               className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               data-testid="button-home"
             >
-              <ExecuteIQLogo 
-                width={32} 
-                height={32}
-                variant="icon-only"
+              <ExecuteIQLogo
+                height={72}
+                variant="full"
                 color="white"
               />
               <div className="hidden md:block">

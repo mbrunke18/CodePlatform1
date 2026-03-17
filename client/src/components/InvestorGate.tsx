@@ -87,7 +87,7 @@ export default function InvestorGate({ children, pageName = "/investor-resources
 
       <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 480 }}>
         <div style={{ marginBottom: 40, textAlign: "center" }}>
-          <ExecuteIQLogo variant="full" height={52} color="white" />
+          <ExecuteIQLogo variant="full" height={80} color="white" />
         </div>
 
         <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)", padding: "44px 40px" }}>

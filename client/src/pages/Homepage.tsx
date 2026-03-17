@@ -941,7 +941,7 @@ function HomepageFooter() {
           {/* Brand */}
           <div style={{ flex: "0 0 280px" }}>
             <div style={{ marginBottom: 16 }}>
-              <ExecuteIQLogo variant="full" height={52} color="white" />
+              <ExecuteIQLogo variant="full" height={80} color="white" />
             </div>
             <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
