@@ -112,7 +112,7 @@ function HomepageNav() {
     <>
       <nav style={{
         position: "sticky", top: 0, zIndex: 100,
-        background: NAVY,
+        background: NAVY_BG,
         borderBottom: "1px solid rgba(201,168,76,0.15)",
         height: 64,
         display: "flex", alignItems: "center",
@@ -162,7 +162,7 @@ function HomepageNav() {
       {menuOpen && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 200,
-          background: NAVY,
+          background: NAVY_BG,
           display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0,
         }}>
           <button
