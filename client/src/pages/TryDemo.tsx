@@ -1628,7 +1628,7 @@ export default function TryDemo() {
         <p style={{ fontSize: 13, color: "#6B7280", fontWeight: 500, marginBottom: 12 }}>
           These simulations show the shape of the response. The guided experience shows you the full 12-minute execution.
         </p>
-        <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "#0A0F2E", fontSize: 13, fontWeight: 700, borderBottom: "2px solid #C9A84C", paddingBottom: 3, textDecoration: "none" }}>
+        <Link href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "#0A0F2E", fontSize: 13, fontWeight: 700, borderBottom: "2px solid #C9A84C", paddingBottom: 3, textDecoration: "none" }}>
           Experience the full 12-minute execution — live, guided, no login →
         </Link>
       </div>

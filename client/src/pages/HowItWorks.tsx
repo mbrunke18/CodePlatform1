@@ -672,7 +672,7 @@ export default function HowItWorks() {
                 Request Pilot Access
               </Button>
             </Link>
-            <Link href="/begin">
+            <Link href="/12-minute-experience">
               <Button style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.25)" }}>
                 Experience 12-Min Execution
               </Button>

@@ -193,7 +193,7 @@ export default function TwelveMinuteTestDrive() {
             </div>
           ))}
         </div>
-        <Link href="/request-pilot">
+        <Link href="/pilot-program">
           <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button>
         </Link>
       </div>
@@ -454,7 +454,7 @@ export default function TwelveMinuteTestDrive() {
                 Ready to deploy this in your organization — with your real team, your real scenarios, and your real response infrastructure?
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="/request-pilot" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
+                <a href="/pilot-program" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
                   Request a Pilot →
                 </a>
                 <button

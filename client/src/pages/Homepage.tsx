@@ -463,7 +463,7 @@ function ProblemSection() {
 
         {/* Natural transition → demo */}
         <div style={{ textAlign: "center", paddingTop: 52, paddingBottom: 8 }}>
-          <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: NAVY, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${GOLD}`, paddingBottom: 3, textDecoration: "none" }}>
+          <Link href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: NAVY, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${GOLD}`, paddingBottom: 3, textDecoration: "none" }}>
             There is a better way — experience the 12-minute alternative live →
           </Link>
         </div>
@@ -640,7 +640,7 @@ function IDEASection() {
 
         {/* Natural transition → demo */}
         <div style={{ textAlign: "center", paddingTop: 48, paddingBottom: 0 }}>
-          <Link href="/begin" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: TEAL, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${TEAL}`, paddingBottom: 3, textDecoration: "none" }}>
+          <Link href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: TEAL, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${TEAL}`, paddingBottom: 3, textDecoration: "none" }}>
             Experience the IDEA Framework in real time — guided, live, no login required →
           </Link>
         </div>
@@ -1295,7 +1295,7 @@ function PersonalizedROISection() {
               </div>
             </div>
             <div style={{ textAlign: "center", paddingTop: 8 }}>
-              <a href="/request-pilot" onClick={() => trackCTA('roi-calculator')} style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "11px 28px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+              <a href="/pilot-program" onClick={() => trackCTA('roi-calculator')} style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "11px 28px", background: GOLD, color: NAVY, textDecoration: "none" }}>
                 Build My Custom ROI Case →
               </a>
             </div>
@@ -1472,7 +1472,7 @@ function ShadowSimulatorSection() {
               <p style={{ fontSize: 13, color: MUTED_DARK, marginBottom: 16 }}>
                 See how Execution OS would mobilize your entire organization in 12 minutes.
               </p>
-              <a href="/request-pilot" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "12px 32px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+              <a href="/pilot-program" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "12px 32px", background: GOLD, color: NAVY, textDecoration: "none" }}>
                 Request a Pilot →
               </a>
             </div>
