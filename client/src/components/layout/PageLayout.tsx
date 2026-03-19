@@ -11,10 +11,6 @@ interface PageLayoutProps {
   embedded?: boolean;
 }
 
-/**
- * Unified Platform Layout - Single top navigation, full-width content
- * Replaces the old sidebar-based layout with a cleaner horizontal navigation
- */
 export default function PageLayout({ 
   children, 
   className = "",
@@ -31,7 +27,7 @@ export default function PageLayout({
       <StandardNav />
       
       {showBackButton && (
-        <div className="bg-gray-50 border-b border-gray-200">
+        <div style={{ background: '#fff', borderBottom: '1px solid rgba(201,168,76,0.15)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2">
             <BackButton label={backButtonLabel} />
           </div>

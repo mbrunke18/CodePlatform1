@@ -128,33 +128,22 @@ export default function Footer() {
       </div>
 
       {/* Key Stats Bar */}
-      <div className="border-t border-poise-gold/10 bg-poise-dark-gray/30">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-center">
-            <div>
-              <div className="text-xl font-bold text-poise-gold">170</div>
-              <div className="text-xs text-slate-300">Strategic Playbooks</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">9</div>
-              <div className="text-xs text-slate-300">Executive Domains</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-poise-teal">12 min</div>
-              <div className="text-xs text-slate-300">Decision Time</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">24/7</div>
-              <div className="text-xs text-slate-300">AI Monitoring</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">20</div>
-              <div className="text-xs text-slate-300">Signal Categories</div>
-            </div>
-            <div>
-              <div className="text-xl font-bold text-white">248+</div>
-              <div className="text-xs text-slate-300">Live Data Points</div>
-            </div>
+      <div style={{ borderTop: '1px solid rgba(201,168,76,0.1)', background: 'rgba(255,255,255,0.03)' }}>
+        <div className="max-w-7xl mx-auto px-6 py-5">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14 text-center">
+            {[
+              { value: '170', label: 'Strategic Playbooks', color: '#C9A84C' },
+              { value: '9', label: 'Executive Domains', color: '#C9A84C' },
+              { value: '12 min', label: 'To Live Execution', color: '#2B8A6E' },
+              { value: '340×', label: 'Speed Advantage', color: '#2B8A6E' },
+              { value: '221', label: 'Executive Triggers', color: '#C9A84C' },
+              { value: '248+', label: 'Live Data Points', color: '#2B8A6E' },
+            ].map(({ value, label, color }) => (
+              <div key={label}>
+                <div className="text-xl font-bold" style={{ color }}>{value}</div>
+                <div className="text-xs" style={{ color: 'rgba(240,237,228,0.45)', marginTop: 2 }}>{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

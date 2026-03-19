@@ -15,6 +15,10 @@ import {
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+
 export default function StandardNav() {
   const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -116,15 +120,21 @@ export default function StandardNav() {
 
   const renderDropdownButton = (label: string, highlighted?: boolean) => (
     <button
-      className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors flex items-center gap-1.5 ${
-        highlighted
-          ? 'text-poise-gold hover:text-amber-500 hover:bg-amber-50 dark:hover:bg-amber-900/20'
-          : 'text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-      }`}
+      className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-1.5"
+      style={{
+        color: highlighted ? GOLD : NAVY,
+        background: 'transparent',
+      }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLElement).style.background = highlighted ? 'rgba(201,168,76,0.06)' : 'rgba(10,15,46,0.04)';
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLElement).style.background = 'transparent';
+      }}
       data-testid={`nav-${label.toLowerCase().replace(/\s+/g, '-')}-dropdown`}
     >
       {label}
-      <ChevronDown className="h-3 w-3" />
+      <ChevronDown className="h-3 w-3 opacity-60" />
     </button>
   );
 
@@ -137,25 +147,28 @@ export default function StandardNav() {
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
       <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "rgba(201,168,76,0.18)" }}>
-        <link.icon className="h-4 w-4" style={{ color: "#C9A84C" }} />
+        <link.icon className="h-4 w-4" style={{ color: GOLD }} />
       </div>
       <div className="flex-1">
-        <div className="font-semibold text-sm" style={{ color: "#0A0F2E" }}>{link.label}</div>
+        <div className="font-semibold text-sm" style={{ color: NAVY }}>{link.label}</div>
         <span className="text-xs" style={{ color: "#6B7280" }}>{link.description}</span>
       </div>
-      <div className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: "#C9A84C", color: "#0A0F2E" }}>LIVE</div>
+      <div className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: GOLD, color: NAVY }}>LIVE</div>
     </DropdownMenuItem>
   ) : (
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 focus:bg-gray-50 dark:focus:bg-gray-800"
+      className="flex items-center gap-3 py-2 cursor-pointer rounded-lg mx-0.5 focus:outline-none"
+      style={{ transition: 'background 0.12s' }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.04)'; }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400 flex-shrink-0" />
+      <link.icon className="h-4 w-4 flex-shrink-0" style={{ color: TEAL }} />
       <div className="flex-1">
-        <div className="font-medium text-sm text-gray-900 dark:text-gray-100">{link.label}</div>
-        <span className="text-xs text-gray-600 dark:text-gray-400">{link.description}</span>
+        <div className="font-semibold text-sm" style={{ color: NAVY }}>{link.label}</div>
+        <span className="text-xs" style={{ color: "#6B7280" }}>{link.description}</span>
       </div>
     </DropdownMenuItem>
   );
@@ -167,12 +180,20 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl p-1"
+        className="w-72 max-h-[80vh] overflow-y-auto shadow-xl rounded-xl p-1.5"
+        style={{
+          background: '#fff',
+          border: `1px solid rgba(10,15,46,0.1)`,
+          boxShadow: '0 8px 32px rgba(10,15,46,0.12), 0 2px 8px rgba(10,15,46,0.06)',
+        }}
       >
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
-            {sIdx > 0 && <DropdownMenuSeparator className="bg-gray-100 dark:bg-gray-700" />}
-            <DropdownMenuLabel className="text-[11px] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold px-3 pt-2 pb-1">
+            {sIdx > 0 && <DropdownMenuSeparator style={{ background: 'rgba(10,15,46,0.06)', margin: '4px 0' }} />}
+            <DropdownMenuLabel
+              className="text-[10px] uppercase tracking-widest font-bold px-3 pt-2.5 pb-1"
+              style={{ color: GOLD }}
+            >
               {section.heading}
             </DropdownMenuLabel>
             {section.links.map(renderNavItem)}
@@ -189,7 +210,12 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-xl p-1"
+        className="w-72 shadow-xl rounded-xl p-1.5"
+        style={{
+          background: '#fff',
+          border: `1px solid rgba(10,15,46,0.1)`,
+          boxShadow: '0 8px 32px rgba(10,15,46,0.12), 0 2px 8px rgba(10,15,46,0.06)',
+        }}
       >
         {links.map(renderNavItem)}
       </DropdownMenuContent>
@@ -197,15 +223,29 @@ export default function StandardNav() {
   );
 
   return (
-    <nav className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-[130px]">
+    <nav
+      className="sticky top-0 z-50"
+      style={{
+        background: '#ffffff',
+        borderBottom: `1px solid rgba(201,168,76,0.2)`,
+        boxShadow: '0 1px 16px rgba(10,15,46,0.06)',
+      }}
+    >
+      {/* Gold accent line at very top */}
+      <div style={{ height: 2, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 50%, ${GOLD} 100%)`, opacity: 0.7 }} />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between" style={{ height: 130 }}>
+
+          {/* Left: Back + Logo */}
           <div className="flex items-center gap-2">
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors text-sm"
+                className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-all text-sm font-medium"
+                style={{ color: NAVY, background: 'transparent' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 data-testid="nav-back-button"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -213,18 +253,15 @@ export default function StandardNav() {
               </button>
             )}
             <div
-              className="flex items-center cursor-pointer hover:opacity-80 transition-opacity"
+              className="flex items-center cursor-pointer transition-opacity hover:opacity-80"
               onClick={() => navigateTo('/')}
               data-testid="nav-logo"
             >
-              <ExecuteIQLogo
-                height={130}
-                variant="full"
-                color="navy"
-              />
+              <ExecuteIQLogo height={130} variant="full" color="navy" />
             </div>
           </div>
 
+          {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
             {renderSectionedDropdown("Product", productSections)}
             {renderSectionedDropdown("Experience", experienceSections, true)}
@@ -232,6 +269,7 @@ export default function StandardNav() {
             {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>
 
+          {/* Right: CTAs */}
           <div className="hidden lg:flex items-center gap-2">
             {isLoading ? (
               <div className="h-9 w-48 bg-gray-100 animate-pulse rounded-lg" />
@@ -240,21 +278,26 @@ export default function StandardNav() {
                 <Button
                   variant="outline"
                   onClick={() => navigateTo("/try-demo")}
-                  className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 h-9 px-3 font-medium text-sm"
+                  className="h-9 px-3 text-sm font-semibold"
+                  style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                   data-testid="nav-try-demo"
                 >
                   Try Demo
                 </Button>
                 <Button
                   onClick={() => navigateTo("/pilot-program")}
-                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-3 font-semibold text-sm"
+                  className="h-9 px-3 text-sm font-bold"
+                  style={{ background: GOLD, color: NAVY, border: 'none' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
                   Request Pilot
                 </Button>
                 <Button
                   onClick={() => navigateTo("/command-center")}
-                  className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] hover:from-[#2B8A6E] hover:to-poise-teal !text-white font-semibold h-9 px-4 shadow-md shadow-poise-teal/20"
+                  className="h-9 px-4 text-sm font-bold text-white shadow-md"
+                  style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
                   data-testid="nav-open-platform"
                 >
                   <Compass className="h-4 w-4 mr-1.5" />
@@ -264,31 +307,32 @@ export default function StandardNav() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
-                      className="flex items-center gap-2 px-3 py-1.5 h-9 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="flex items-center gap-2 px-3 py-1.5 h-9"
+                      style={{ color: NAVY }}
                       data-testid="nav-user-menu"
                     >
-                      <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                      <span className="hidden xl:inline text-sm">{user.firstName || user.email?.split('@')[0]}</span>
-                      <ChevronDown className="h-3 w-3 opacity-50" />
+                      <User className="h-4 w-4" style={{ color: TEAL }} />
+                      <span className="hidden xl:inline text-sm font-medium">{user.firstName || user.email?.split('@')[0]}</span>
+                      <ChevronDown className="h-3 w-3 opacity-40" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-48">
-                    <DropdownMenuLabel className="text-xs text-gray-500 font-normal">{user.email}</DropdownMenuLabel>
+                  <DropdownMenuContent align="end" className="w-48" style={{ border: `1px solid rgba(10,15,46,0.1)` }}>
+                    <DropdownMenuLabel className="text-xs font-normal" style={{ color: '#6B7280' }}>{user.email}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={() => navigateTo("/settings-hub")} className="cursor-pointer">
-                      <Settings className="h-4 w-4 mr-2 opacity-60" />
+                    <DropdownMenuItem onClick={() => navigateTo("/settings-hub")} className="cursor-pointer" style={{ color: NAVY }}>
+                      <Settings className="h-4 w-4 mr-2 opacity-50" />
                       Settings
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigateTo("/organization-setup")} className="cursor-pointer">
-                      <Building className="h-4 w-4 mr-2 opacity-60" />
+                    <DropdownMenuItem onClick={() => navigateTo("/organization-setup")} className="cursor-pointer" style={{ color: NAVY }}>
+                      <Building className="h-4 w-4 mr-2 opacity-50" />
                       Organization Setup
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigateTo("/admin/customer-health")} className="cursor-pointer">
-                      <BarChart3 className="h-4 w-4 mr-2 opacity-60" />
+                    <DropdownMenuItem onClick={() => navigateTo("/admin/customer-health")} className="cursor-pointer" style={{ color: NAVY }}>
+                      <BarChart3 className="h-4 w-4 mr-2 opacity-50" />
                       Customer Health
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={logout} className="cursor-pointer text-red-600 dark:text-red-400" data-testid="nav-logout">
+                    <DropdownMenuItem onClick={logout} className="cursor-pointer" style={{ color: '#DC2626' }} data-testid="nav-logout">
                       <LogOut className="h-4 w-4 mr-2" />
                       Sign Out
                     </DropdownMenuItem>
@@ -300,14 +344,18 @@ export default function StandardNav() {
                 <Button
                   variant="outline"
                   onClick={() => navigateTo("/try-demo")}
-                  className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 h-9 px-4 font-medium text-sm"
+                  className="h-9 px-4 text-sm font-semibold"
+                  style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                   data-testid="nav-try-demo"
                 >
                   Try Demo
                 </Button>
                 <Button
                   onClick={() => navigateTo("/pilot-program")}
-                  className="bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E] h-9 px-4 font-semibold text-sm"
+                  className="h-9 px-4 text-sm font-bold"
+                  style={{ background: GOLD, color: NAVY, border: 'none' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
                   Request Pilot
@@ -315,13 +363,14 @@ export default function StandardNav() {
                 <Button
                   variant="ghost"
                   onClick={() => login()}
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 h-9 px-3 text-sm"
+                  className="h-9 px-3 text-sm font-medium"
+                  style={{ color: NAVY }}
                   data-testid="nav-login"
                 >
                   <span className="flex items-center gap-1.5">
-                    <SiGoogle className="h-3 w-3 opacity-70" />
-                    <SiGithub className="h-3.5 w-3.5 opacity-70" />
-                    <SiApple className="h-3.5 w-3.5 opacity-70" />
+                    <SiGoogle className="h-3 w-3 opacity-60" />
+                    <SiGithub className="h-3.5 w-3.5 opacity-60" />
+                    <SiApple className="h-3.5 w-3.5 opacity-60" />
                     <span className="ml-0.5">Sign In</span>
                   </span>
                 </Button>
@@ -329,19 +378,24 @@ export default function StandardNav() {
             )}
           </div>
 
+          {/* Mobile: open platform + hamburger */}
           <div className="flex lg:hidden items-center gap-2">
             {isAuthenticated && user && (
               <Button
                 onClick={() => navigateTo("/command-center")}
                 size="sm"
-                className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white"
+                className="text-white"
+                style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
                 data-testid="nav-mobile-open-platform"
               >
                 <Compass className="h-4 w-4" />
               </Button>
             )}
             <button
-              className="p-2 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              className="p-2 rounded-lg transition-colors"
+              style={{ color: NAVY }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="nav-mobile-menu-toggle"
             >
@@ -350,14 +404,19 @@ export default function StandardNav() {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100 dark:border-gray-700 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto bg-white dark:bg-gray-900">
+          <div
+            className="lg:hidden py-4 animate-in slide-in-from-top-2 duration-200 max-h-[80vh] overflow-y-auto"
+            style={{ borderTop: `1px solid rgba(201,168,76,0.15)` }}
+          >
             <div className="flex flex-col gap-1">
               {isAuthenticated && user ? (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
                     onClick={() => navigateTo("/command-center")}
-                    className="bg-gradient-to-r from-poise-teal to-[#3BAF8A] !text-white w-full justify-center h-12 text-base font-semibold"
+                    className="w-full justify-center h-12 text-base font-bold text-white"
+                    style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)` }}
                     data-testid="nav-mobile-open-platform"
                   >
                     <Compass className="h-5 w-5 mr-2" />
@@ -367,14 +426,16 @@ export default function StandardNav() {
                     <Button
                       onClick={() => navigateTo("/try-demo")}
                       variant="outline"
-                      className="flex-1 justify-center h-10 text-sm font-medium border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                      className="flex-1 justify-center h-10 text-sm font-semibold"
+                      style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                       data-testid="nav-mobile-try-demo"
                     >
                       Try Demo
                     </Button>
                     <Button
                       onClick={() => navigateTo("/pilot-program")}
-                      className="flex-1 justify-center h-10 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
+                      className="flex-1 justify-center h-10 text-sm font-bold"
+                      style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
                     >
                       Request Pilot
@@ -386,7 +447,8 @@ export default function StandardNav() {
                   <Button
                     onClick={() => navigateTo("/try-demo")}
                     variant="outline"
-                    className="w-full justify-center h-11 text-sm font-medium border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
+                    className="w-full justify-center h-11 text-sm font-semibold"
+                    style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                     data-testid="nav-mobile-try-demo"
                   >
                     <Rocket className="h-4 w-4 mr-2" />
@@ -394,7 +456,8 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     onClick={() => navigateTo("/pilot-program")}
-                    className="w-full justify-center h-11 text-sm font-semibold bg-[#C9A84C] hover:bg-[#DFC178] !text-[#0A0F2E]"
+                    className="w-full justify-center h-11 text-sm font-bold"
+                    style={{ background: GOLD, color: NAVY }}
                     data-testid="nav-mobile-request-pilot"
                   >
                     <Target className="h-4 w-4 mr-2" />
@@ -403,135 +466,105 @@ export default function StandardNav() {
                   <Button
                     variant="ghost"
                     onClick={() => login()}
-                    className="w-full justify-center h-9 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="w-full justify-center h-9 text-sm"
+                    style={{ color: NAVY }}
                     data-testid="nav-mobile-login"
                   >
                     <span className="flex items-center gap-1.5">
-                      <SiGoogle className="h-3 w-3 opacity-70" />
-                      <SiGithub className="h-3.5 w-3.5 opacity-70" />
-                      <SiApple className="h-3.5 w-3.5 opacity-70" />
+                      <SiGoogle className="h-3 w-3 opacity-60" />
+                      <SiGithub className="h-3.5 w-3.5 opacity-60" />
+                      <SiApple className="h-3.5 w-3.5 opacity-60" />
                       <span className="ml-0.5">Sign In</span>
                     </span>
                   </Button>
                 </div>
               )}
 
-              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
+              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '12px 0' }} />
 
               {productSections.map((section) => (
                 <div key={section.heading}>
-                  <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">{section.heading}</p>
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
                   {section.links.map((link) => (
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className={`w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 ${
-                        isActivePath(link.path)
-                          ? 'text-poise-navy dark:text-white bg-gray-100 dark:bg-gray-800 font-medium'
-                          : 'text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
-                      }`}
+                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                      style={{
+                        color: isActivePath(link.path) ? NAVY : '#374151',
+                        fontWeight: isActivePath(link.path) ? 600 : 500,
+                        background: isActivePath(link.path) ? 'rgba(10,15,46,0.05)' : 'transparent',
+                      }}
                     >
-                      <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                      <link.icon className="h-4 w-4" style={{ color: TEAL }} />
                       {link.label}
                     </button>
                   ))}
                 </div>
               ))}
 
-              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
+              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
               {experienceSections.map((section) => (
                 <div key={section.heading}>
-                  <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">{section.heading}</p>
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
                   {section.links.map((link) => (
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                      style={{ color: '#374151', fontWeight: 500 }}
                     >
-                      <link.icon className="h-4 w-4 text-poise-gold" />
+                      <link.icon className="h-4 w-4" style={{ color: GOLD }} />
                       {link.label}
                     </button>
                   ))}
                 </div>
               ))}
 
-              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
+              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-xs text-poise-teal uppercase tracking-wide font-semibold">Platform</p>
+              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Platform</p>
               {platformLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                  style={{ color: '#374151', fontWeight: 500 }}
                 >
-                  <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                  <link.icon className="h-4 w-4" style={{ color: TEAL }} />
                   {link.label}
                 </button>
               ))}
 
-              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
+              <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-xs text-poise-gold uppercase tracking-wide font-semibold">Investors</p>
+              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>Investors</p>
               {investorsLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
+                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                  style={{ color: '#374151', fontWeight: 500 }}
                 >
-                  <link.icon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                  <link.icon className="h-4 w-4" style={{ color: GOLD }} />
                   {link.label}
                 </button>
               ))}
 
-              <div className="border-t border-gray-100 dark:border-gray-700 my-3" />
-
-              {isAuthenticated && user ? (
-                <div className="flex flex-col gap-1 px-1">
-                  <div className="flex items-center gap-2 px-3 py-2">
-                    <User className="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                    <span className="text-sm text-gray-800 dark:text-gray-200 flex-1">{user.firstName || user.email}</span>
-                  </div>
+              {isAuthenticated && user && (
+                <>
+                  <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
                   <button
-                    onClick={() => navigateTo("/settings-hub")}
-                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-                    data-testid="nav-mobile-settings"
-                  >
-                    <Settings className="h-4 w-4 opacity-60" />
-                    Settings
-                  </button>
-                  <button
-                    onClick={() => navigateTo("/organization-setup")}
-                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800"
-                  >
-                    <Building className="h-4 w-4 opacity-60" />
-                    Organization Setup
-                  </button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
                     onClick={logout}
-                    className="w-full justify-start text-red-600 dark:text-red-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 h-10 px-4 gap-3"
-                    data-testid="nav-mobile-signout"
+                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-sm font-medium"
+                    style={{ color: '#DC2626' }}
+                    data-testid="nav-mobile-logout"
                   >
                     <LogOut className="h-4 w-4" />
                     Sign Out
-                  </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="ghost"
-                  onClick={() => login()}
-                  className="text-gray-800 hover:text-gray-900 hover:bg-gray-100 w-full justify-center h-10"
-                  data-testid="nav-mobile-signin"
-                >
-                  <span className="flex items-center gap-1.5">
-                    <SiGoogle className="h-3 w-3 opacity-70" />
-                    <SiGithub className="h-3.5 w-3.5 opacity-70" />
-                    <SiApple className="h-3.5 w-3.5 opacity-70" />
-                    <span className="ml-0.5">Sign In</span>
-                  </span>
-                </Button>
+                  </button>
+                </>
               )}
             </div>
           </div>
