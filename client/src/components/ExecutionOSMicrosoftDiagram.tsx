@@ -338,20 +338,25 @@ export default function ExecutionOSMicrosoftDiagram() {
       <rect x={eosX + eosW - 115} y={eosY + 104} width={105} height={58} rx={8}
         fill={`${GOLD}0C`} stroke={`${GOLD}40`} strokeWidth={1}
       />
-      <text x={eosX + eosW - 63} y={eosY + 124} textAnchor="middle"
+      <text x={eosX + eosW - 63} y={eosY + 121} textAnchor="middle"
         fill={GOLD} fontSize={18} fontWeight={700}
         fontFamily="'Barlow Condensed',sans-serif">
         340×
       </text>
-      <text x={eosX + eosW - 63} y={eosY + 140} textAnchor="middle"
-        fill={IVORY} fontSize={8.5} opacity={0.5}
+      <text x={eosX + eosW - 63} y={eosY + 136} textAnchor="middle"
+        fill={IVORY} fontSize={8} opacity={0.55}
         fontFamily="'DM Mono',monospace">
-        SPEED ADVANTAGE
+        HEAD START
       </text>
-      <text x={eosX + eosW - 63} y={eosY + 156} textAnchor="middle"
-        fill={TEAL} fontSize={8.5} fontWeight={600}
+      <text x={eosX + eosW - 63} y={eosY + 149} textAnchor="middle"
+        fill={TEAL} fontSize={7.5} fontWeight={600}
         fontFamily="'DM Mono',monospace">
-        vs. 72-hr avg
+        in execution while
+      </text>
+      <text x={eosX + eosW - 63} y={eosY + 159} textAnchor="middle"
+        fill={TEAL} fontSize={7.5} fontWeight={600}
+        fontFamily="'DM Mono',monospace">
+        others still mobilize
       </text>
 
       {/* ── Layer label arrows ── */}

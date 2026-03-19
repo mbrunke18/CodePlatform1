@@ -278,8 +278,8 @@ function FuturePositioningDiagram() {
           <ul className="space-y-2">
             {[
               "170 pre-built playbooks ready to deploy",
-              "12-minute response replaces 72-hour scramble",
-              "340x faster than traditional coordination",
+              "12 min to full execution — others spend 72 hrs just to mobilize",
+              "340× execution head start while competitors still plan",
               "Human executives retain full decision authority",
               "Enterprise integrations (Jira, Slack, ServiceNow)",
             ].map((item, i) => (
@@ -362,7 +362,7 @@ export default function Investors() {
               <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
-              Execution OS transforms how enterprises respond to strategic events — achieving 340x faster response with 12-minute playbook activation while keeping humans in control.
+              Execution OS transforms how enterprises respond to strategic events — in 12 minutes you're in full execution mode while competitors spend 72 hours just figuring out who needs to be in the room, what work is needed, and what plan to put together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">

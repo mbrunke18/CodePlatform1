@@ -869,7 +869,7 @@ function MicrosoftEcosystemBanner() {
             {[
               { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '🔒' },
               { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '⚡' },
-              { label: '4-Agent IDEA Framework', sublabel: 'Parallel AI — 340× faster', icon: '◈' },
+              { label: '4-Agent IDEA Framework', sublabel: '340× head start — in execution while others mobilize', icon: '◈' },
               { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◉' },
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
