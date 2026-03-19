@@ -272,7 +272,7 @@ export default function SettingsPage() {
                       variant="outline" 
                       data-testid="button-view-logs" 
                       className="rounded-none border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4]"
-                      onClick={() => setLocation('/audit-logging')}
+                      onClick={() => setLocation('/audit-logging-center')}
                     >
                       <FileText className="w-4 h-4 mr-2" />
                       View System Logs
@@ -684,7 +684,7 @@ export default function SettingsPage() {
                 <Button 
                   className="h-16 bg-white/10 hover:bg-white/20 text-white border border-[#C9A84C]/30 rounded-none" 
                   data-testid="button-security-scan"
-                  onClick={() => setLocation('/audit-logging')}
+                  onClick={() => setLocation('/audit-logging-center')}
                 >
                   <Shield className="w-5 h-5 mr-2 text-[#C9A84C]" />
                   Security Scan
