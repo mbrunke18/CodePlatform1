@@ -69,7 +69,7 @@ export function registerDemoAccessRoute(app: Express) {
           console.error("[DemoAccess] Session error:", err);
           return res.status(500).send("Session setup failed. Please try again.");
         }
-        const returnTo = (req.query.returnTo as string) || "/mission-control";
+        const returnTo = (req.query.returnTo as string) || "/command-center";
         console.log(`[DemoAccess] Demo session established → ${returnTo}`);
         res.redirect(returnTo);
       });

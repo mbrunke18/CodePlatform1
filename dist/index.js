@@ -35490,7 +35490,7 @@ function registerDemoAccessRoute(app2) {
           console.error("[DemoAccess] Session error:", err);
           return res.status(500).send("Session setup failed. Please try again.");
         }
-        const returnTo = req.query.returnTo || "/mission-control";
+        const returnTo = req.query.returnTo || "/command-center";
         console.log(`[DemoAccess] Demo session established \u2192 ${returnTo}`);
         res.redirect(returnTo);
       });

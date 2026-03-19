@@ -72,14 +72,14 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 
 ## Critical Access Links (NEVER CHANGE WITHOUT UPDATING HERE)
 - **Public site (limited access):** `https://vaughnmartin.com` — homepage, playbook library, ROI calculator, investor page, pilot program
-- **Executive full access:** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — branded loading screen → establishes session via `/api/demo-access` → lands on `/mission-control`
+- **Executive full access:** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — branded loading screen → establishes session via `/api/demo-access` → lands on `/command-center`
 - **Backup full access (same deployment):** `https://martybrunke.replit.app/demo-access?token=VMdemo2026`
 - **Token:** `VMdemo2026` (default; overridable via `DEMO_ACCESS_TOKEN` env var)
-- **Post-login destination:** `/mission-control` (radar page with clickable triggers)
+- **Post-login destination:** `/command-center` (CommandLanding — Bloomberg Terminal-style hub with Activate, Signal Radar, Playbooks, Mission Control, and Performance tiles)
 - **Feedback questionnaire:** `https://vaughnmartin.com/peer-review`
 - **Customer Journey:** `https://vaughnmartin.com/customer-journey`
 
-**Access Flow:** `/demo-access` (React) → auto-redirects to `/api/demo-access` (Express) → session established → `/mission-control`
+**Access Flow:** `/demo-access` (React) → auto-redirects to `/api/demo-access` (Express) → session established → `/command-center`
 
 **Deployment Rule:** NEVER change `build` in `.replit` deployment config away from `["sh", "-c", ":"]`. The dist must be pre-built locally and committed. Remote builds on Replit's servers break the demo-access session flow.
 
