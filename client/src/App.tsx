@@ -170,6 +170,7 @@ const FounderStory = lazy(() => import("./pages/FounderStory"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
+const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
 const VideoLanding = lazy(() => import("./pages/VideoLanding"));
 const PlaybookManagement = lazy(() => import("./pages/PlaybookManagement"));
@@ -463,6 +464,8 @@ function Router() {
         <Route path="/audit-logging-center" component={AuditLoggingCenter} />
         <Route path="/roi-calculator" component={ROICalculator} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
+        <Route path="/future-readiness" component={FutureReadinessDashboard} />
+        <Route path="/readiness" component={FutureReadinessDashboard} />
 
         {/* Demo & Sales Tools */}
         {renderRoutes([
@@ -546,8 +549,7 @@ function Router() {
         {/* Legacy Redirects */}
         {renderRedirects([
           "/scorecard", "/executive-scorecard", "/executive-suite",
-          "/dashboard", "/platform", "/operating-model-health",
-          "/future-readiness", "/readiness"
+          "/dashboard", "/platform", "/operating-model-health"
         ], "/command-center")}
         {renderRedirects([
           "/scenarios", "/scenario-library", "/scenario-gallery",

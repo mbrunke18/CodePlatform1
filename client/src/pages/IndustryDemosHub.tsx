@@ -245,28 +245,94 @@ export default function IndustryDemosHub() {
   return (
     <PageLayout>
       <div className="min-h-screen bg-white text-[#0A0F2E]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-16">
-          <div className="text-center mb-12">
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+
+        {/* ─── Dark Category Tile Header ─────────────────────────────────── */}
+        <div style={{ background: "#0A0F2E", padding: "36px 0 0" }}>
+          <style>{`
+            @keyframes idh-fadeup { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+            .idh-tile-1{animation:idh-fadeup 0.45s ease 0.05s both}
+            .idh-tile-2{animation:idh-fadeup 0.45s ease 0.14s both}
+            .idh-stat-1{animation:idh-fadeup 0.45s ease 0.22s both}
+            .idh-stat-2{animation:idh-fadeup 0.45s ease 0.28s both}
+            .idh-stat-3{animation:idh-fadeup 0.45s ease 0.34s both}
+            .idh-stat-4{animation:idh-fadeup 0.45s ease 0.4s both}
+          `}</style>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Industry Demos</span>
+              <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Industry Scenarios</span>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A0F2E] font-serif">
-              Industry <em className="italic text-[#C9A84C]">Scenarios</em>
-            </h1>
-            <p className="text-lg md:text-xl text-[#6B7280] max-w-3xl mx-auto mt-6 font-light">
-              See Execution OS coordinate strategic execution across industries — from market entry opportunities to crisis response.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mt-8">
-              <span className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#0A0F2E]" /> Offense & Defense</span>
-              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-[#2B8A6E]" /> 12 minutes to live execution</span>
-              <span className="flex items-center gap-1.5"><DollarSign className="w-4 h-4 text-[#C9A84C]" /> Real enterprise impact</span>
-              <span className="flex items-center gap-1.5"><Users className="w-4 h-4 text-[#0A0F2E]" /> Live stakeholder orchestration</span>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: "#F0EDE4", marginBottom: 8 }}>
+              Industry <em style={{ color: "#C9A84C" }}>Scenarios</em>
+            </div>
+            <div style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", maxWidth: 540, marginBottom: 28, lineHeight: 1.5 }}>
+              Offense & defense. Market entry to crisis response. By the time competitors schedule their first call — Execution OS has already started execution.
+            </div>
+
+            {/* Two Category Tiles */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 0 }}>
+              <a href="#offense">
+                <div
+                  className="idh-tile-1"
+                  style={{ background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.25)", borderBottom: "3px solid #2B8A6E", padding: "20px 24px", cursor: "pointer", transition: "all 0.2s" }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <Target style={{ width: 18, height: 18, color: "#2B8A6E" }} />
+                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2B8A6E" }}>OFFENSE</span>
+                    </div>
+                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: "#2B8A6E", border: "1px solid rgba(43,138,110,0.35)", padding: "2px 8px" }}>3 SCENARIOS</span>
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>Strategic Opportunities</div>
+                  <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)", marginBottom: 14, lineHeight: 1.5 }}>Market entry, trend capitalization, launch acceleration. When the window opens — you're already executing.</div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: "#2B8A6E" }}>€1.68B+</div>
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.3)" }}>VIEW SCENARIOS →</span>
+                  </div>
+                </div>
+              </a>
+              <a href="#defense">
+                <div
+                  className="idh-tile-2"
+                  style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderBottom: "3px solid #C9A84C", padding: "20px 24px", cursor: "pointer", transition: "all 0.2s" }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <Shield style={{ width: 18, height: 18, color: "#C9A84C" }} />
+                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#C9A84C" }}>DEFENSE</span>
+                    </div>
+                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.35)", padding: "2px 8px" }}>5 SCENARIOS</span>
+                  </div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>Crisis Response</div>
+                  <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)", marginBottom: 14, lineHeight: 1.5 }}>Ransomware, recalls, supplier failures, grid failures. While competitors are still assembling — containment is already underway.</div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: "#C9A84C" }}>$3.2B+</div>
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.3)" }}>VIEW SCENARIOS →</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Stats Strip */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 1, background: "rgba(255,255,255,0.03)" }}>
+              {[
+                { label: "Industries Covered", value: "7", sub: "and growing", anim: "idh-stat-1" },
+                { label: "Response Time", value: "12 min", sub: "to live execution", anim: "idh-stat-2" },
+                { label: "Scenarios Available", value: "8", sub: "offense & defense", anim: "idh-stat-3" },
+                { label: "Execution Head Start", value: "340×", sub: "vs. traditional enterprise", anim: "idh-stat-4" },
+              ].map(s => (
+                <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>
+                  <div style={{ fontSize: 9, color: "rgba(240,237,228,0.35)", marginTop: 3 }}>{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          <div className="mb-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <div className="mb-14" id="offense">
             <div className="flex items-center gap-3 mb-6">
               <Target className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Strategic Opportunities</h2>
@@ -280,7 +346,7 @@ export default function IndustryDemosHub() {
             </div>
           </div>
 
-          <div className="mb-14">
+          <div className="mb-14" id="defense">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Crisis Response</h2>

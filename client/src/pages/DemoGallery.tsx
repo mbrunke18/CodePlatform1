@@ -161,94 +161,84 @@ export default function DemoGallery() {
   return (
     <PageLayout>
       <div className="min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          
-          {/* Header */}
-          <div className="text-center mb-8">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
-            <Badge className="mb-4 bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
-              Experience Execution OS
-            </Badge>
-            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-4">
-              Demo Gallery
-            </h1>
-            <p className="text-gray-800 max-w-2xl mx-auto mb-6">
-              Choose your experience: interactive simulations, guided tours, or industry-specific scenarios
-            </p>
-          </div>
 
-          {/* North Star Journey Connection */}
-          <Card className="mb-10 bg-[#2B8A6E]/5 border-[#2B8A6E]/30">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-[#2B8A6E]/10">
-                    <Rocket className="h-6 w-6 text-[#2B8A6E]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#0A0F2E]">Your Journey Starts Here</h3>
-                    <p className="text-sm text-gray-800">
-                      These demos map to Phase 1 of your Execution OS North Star™ journey — Discovery to 12-minute execution
-                    </p>
-                  </div>
-                </div>
-                <Link href="/north-star">
-                  <Button variant="outline" className="border-[#2B8A6E] text-[#2B8A6E] hover:bg-[#2B8A6E] hover:text-white">
-                    View Full Journey
-                    <ChevronRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+        {/* ─── Dark Command Deck ─────────────────────────────────────────── */}
+        <div style={{ background: "#0A0F2E", padding: "36px 0 0" }}>
+          <style>{`
+            @keyframes dg-fadeup { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+            .dg-tile-1{animation:dg-fadeup 0.45s ease 0.04s both}
+            .dg-tile-2{animation:dg-fadeup 0.45s ease 0.13s both}
+            .dg-tile-3{animation:dg-fadeup 0.45s ease 0.22s both}
+            .dg-tile-4{animation:dg-fadeup 0.45s ease 0.31s both}
+            .dg-stat-1{animation:dg-fadeup 0.45s ease 0.18s both}
+            .dg-stat-2{animation:dg-fadeup 0.45s ease 0.24s both}
+            .dg-stat-3{animation:dg-fadeup 0.45s ease 0.3s both}
+            .dg-stat-4{animation:dg-fadeup 0.45s ease 0.36s both}
+          `}</style>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Experience Center</span>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+            </div>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: "#F0EDE4", marginBottom: 8 }}>
+              Demo <em style={{ color: "#C9A84C" }}>Gallery</em>
+            </div>
+            <div style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", maxWidth: 540, marginBottom: 28, lineHeight: 1.5 }}>
+              Interactive simulations, guided tours, industry scenarios. Start anywhere — every path leads to 12-minute execution.
+            </div>
 
-          {/* Featured Demos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {demos.filter(d => d.featured).map((demo) => (
-              <Link key={demo.id} href={demo.path}>
-                <Card className="h-full hover:shadow-xl transition-all cursor-pointer group border-2 border-transparent hover:border-[#2B8A6E]/50">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-6">
-                      <div className={`p-4 rounded-2xl ${demo.bgColor}`}>
-                        <demo.icon className={`h-8 w-8 ${demo.color}`} />
+            {/* Featured Demo Tiles — 2 large */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 1 }}>
+              {demos.filter(d => d.featured).map((demo, i) => {
+                const accent = i === 0 ? "#2B8A6E" : "#C9A84C";
+                const accentBg = i === 0 ? "rgba(43,138,110,0.08)" : "rgba(201,168,76,0.06)";
+                const accentBorder = i === 0 ? "rgba(43,138,110,0.25)" : "rgba(201,168,76,0.2)";
+                return (
+                  <Link key={demo.id} href={demo.path}>
+                    <div
+                      className={i === 0 ? "dg-tile-1" : "dg-tile-2"}
+                      style={{ background: accentBg, borderTop: `1px solid ${accentBorder}`, borderLeft: `1px solid ${accentBorder}`, borderRight: `1px solid ${accentBorder}`, borderBottom: `3px solid ${accent}`, padding: "22px 24px", cursor: "pointer" }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <demo.icon style={{ width: 18, height: 18, color: accent }} />
+                          <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: accent }}>FEATURED</span>
+                        </div>
+                        <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{demo.duration}</span>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2 flex-wrap">
-                          <Badge variant="secondary" className="text-xs bg-[#E8E4DC] text-[#0A0F2E]">Featured</Badge>
-                          <Badge variant="outline" className="text-xs border-[#E8E4DC] text-[#6B7280]">
-                            <Clock className="h-3 w-3 mr-1" />
-                            {demo.duration}
-                          </Badge>
-                          {(demo as any).journeyPhase && (
-                            <Badge className="text-xs bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
-                              {(demo as any).journeyPhase}
-                            </Badge>
-                          )}
-                        </div>
-                        <h3 className="text-2xl font-bold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors mb-2">
-                          {demo.title}
-                        </h3>
-                        <p className="text-gray-800 mb-4">
-                          {demo.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {demo.tags.map((tag) => (
-                            <Badge key={tag} variant="outline" className="text-xs border-[#E8E4DC] text-[#6B7280]">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-2 mt-4 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
-                          <span className="text-sm font-medium">Start Demo</span>
-                          <ChevronRight className="h-4 w-4" />
-                        </div>
+                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>{demo.title}</div>
+                      <div style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginBottom: 16, lineHeight: 1.5 }}>{demo.description}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" as const, marginBottom: 14 }}>
+                        {demo.tags.map(tag => (
+                          <span key={tag} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{tag}</span>
+                        ))}
                       </div>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.25)" }}>LAUNCH DEMO →</div>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Stats Strip */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 1, background: "rgba(255,255,255,0.03)", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+              {[
+                { label: "Demo Experiences", value: "8", anim: "dg-stat-1" },
+                { label: "Execution Time", value: "12 min", anim: "dg-stat-2" },
+                { label: "Industries Covered", value: "7+", anim: "dg-stat-3" },
+                { label: "Execution Head Start", value: "340×", anim: "dg-stat-4" },
+              ].map(s => (
+                <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>
+                  <div style={{ fontSize: 9, color: "rgba(240,237,228,0.35)", marginTop: 3 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
           {/* Filter Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">

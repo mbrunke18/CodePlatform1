@@ -112,7 +112,7 @@ export default function ExecutiveHub() {
                 {[
                   { label: "Future Readiness Index™", value: `${friScore.toFixed(1)}%`, desc: "Strategic preparedness score", icon: Target, color: getScoreColor(friScore), link: '/future-readiness' },
                   { label: "Decision Velocity", value: `${velocityScore}%`, desc: "Execution speed vs. baseline", icon: Zap, color: getScoreColor(velocityScore), link: '/decision-velocity' },
-                  { label: "Organizational Agility", value: `${agilityScore}%`, desc: "Cross-functional response score", icon: Activity, color: getScoreColor(agilityScore), link: '/executive-dashboard' },
+                  { label: "Organizational Agility", value: `${agilityScore}%`, desc: "Cross-functional response score", icon: Activity, color: getScoreColor(agilityScore), link: '/agility-assessment' },
                   { label: "Active Triggers", value: String(activeTriggers), desc: "Signals being monitored", icon: Eye, color: 'text-[#0A0F2E]', link: '/triggers-management' },
                 ].map(kpi => (
                   <Link key={kpi.label} href={kpi.link}>

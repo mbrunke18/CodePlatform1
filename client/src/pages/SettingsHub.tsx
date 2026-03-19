@@ -101,57 +101,90 @@ export default function SettingsHub() {
             <div className="flex-1 min-w-0">
 
               {/* ── OVERVIEW ── */}
-              {activeSection === 'overview' && (
-                <div className="space-y-6">
-                  <div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Settings Overview</h2><p className="text-[#6B7280] mt-1">All configuration sections at a glance</p></div>
+              {activeSection === 'overview' && (() => {
+                const SECTION_META: Record<string, { desc: string; stat: string; statSub: string; accent: string }> = {
+                  organization: { desc: 'Company name, industry, pilot parameters, and response window.', stat: org?.name ? '1 Org' : 'Pending', statSub: 'configuration', accent: TEAL },
+                  stakeholders: { desc: 'Manage who gets notified for each playbook activation and trigger.', stat: `${stakeholders.length}`, statSub: 'stakeholders configured', accent: GOLD },
+                  metrics: { desc: 'Define success criteria and KPIs for all execution outcomes.', stat: `${metrics.length}`, statSub: 'metrics tracked', accent: TEAL },
+                  roles: { desc: 'Control who can authorize playbook activation and view intel.', stat: '4', statSub: 'permission levels', accent: '#7C9DB5' },
+                  integrations: { desc: 'Connect enterprise systems — Teams, Copilot, Azure, Entra.', stat: '10+', statSub: 'connectors available', accent: GOLD },
+                  notifications: { desc: 'Alert preferences and delivery settings for the 12-min window.', stat: 'Live', statSub: 'alert system', accent: TEAL },
+                };
+                return (
+                  <div>
+                    <style>{`
+                      @keyframes sh-fadeup { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+                      .sh-tile-1{animation:sh-fadeup 0.38s ease 0.04s both}
+                      .sh-tile-2{animation:sh-fadeup 0.38s ease 0.09s both}
+                      .sh-tile-3{animation:sh-fadeup 0.38s ease 0.14s both}
+                      .sh-tile-4{animation:sh-fadeup 0.38s ease 0.19s both}
+                      .sh-tile-5{animation:sh-fadeup 0.38s ease 0.24s both}
+                      .sh-tile-6{animation:sh-fadeup 0.38s ease 0.29s both}
+                    `}</style>
 
-                  {/* Quick Status */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {[
-                      { label: 'Organization', value: org?.name || 'Not configured', status: org ? 'good' : 'warn', icon: Building2, action: () => setActiveSection('organization') },
-                      { label: 'Stakeholders', value: `${stakeholders.length} configured`, status: stakeholders.length > 0 ? 'good' : 'warn', icon: Users, action: () => setActiveSection('stakeholders') },
-                      { label: 'Success Metrics', value: `${metrics.length} tracked`, status: metrics.length > 0 ? 'good' : 'warn', icon: Target, action: () => setActiveSection('metrics') },
-                    ].map(item => {
-                      const Icon = item.icon;
-                      return (
-                        <Card key={item.label} className="border-[#E8E4DC] bg-white hover:shadow-md transition-shadow cursor-pointer" onClick={item.action}>
-                          <CardContent className="p-5">
-                            <div className="flex items-center justify-between mb-3"><Icon className="h-5 w-5 text-[#0A0F2E]" />{item.status === 'good' ? <CheckCircle className="h-4 w-4 text-[#2B8A6E]" /> : <div className="w-2 h-2 rounded-full bg-[#C9A84C]" />}</div>
-                            <p className="font-bold text-[#0A0F2E] text-sm">{item.label}</p>
-                            <p className="text-sm text-[#6B7280] mt-0.5">{item.value}</p>
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
-                  </div>
-
-                  {/* Section Cards */}
-                  <div className="space-y-3">
-                    {SECTIONS.slice(1).map(s => {
-                      const Icon = s.icon;
-                      return (
-                        <Card key={s.id} className="border-[#E8E4DC] bg-white hover:shadow-md transition-shadow cursor-pointer" onClick={() => setActiveSection(s.id)}>
-                          <CardContent className="p-5 flex items-center gap-4">
-                            <div className="p-3 rounded-xl flex-shrink-0" style={{ background: `${s.color}12` }}><Icon className="h-5 w-5" style={{ color: s.color }} /></div>
-                            <div className="flex-1 min-w-0">
-                              <h3 className="font-semibold text-[#0A0F2E]">{s.label}</h3>
-                              <p className="text-sm text-[#6B7280]">{
-                                s.id === 'organization' ? 'Company name, industry, and pilot configuration' :
-                                s.id === 'stakeholders' ? 'Manage who gets notified for each playbook and trigger' :
-                                s.id === 'metrics' ? 'Define success criteria for executions' :
-                                s.id === 'roles' ? 'Control who can authorize playbook activation' :
-                                s.id === 'integrations' ? 'Connect enterprise systems and data sources' :
-                                'Alert preferences and delivery settings'
-                              }</p>
+                    {/* Status strip */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: NAVY, marginBottom: 20 }}>
+                      {[
+                        { label: 'Organization', value: org?.name || 'Not configured', status: org ? 'good' : 'warn', icon: Building2, action: () => setActiveSection('organization') },
+                        { label: 'Stakeholders', value: `${stakeholders.length} configured`, status: stakeholders.length > 0 ? 'good' : 'warn', icon: Users, action: () => setActiveSection('stakeholders') },
+                        { label: 'Success Metrics', value: `${metrics.length} tracked`, status: metrics.length > 0 ? 'good' : 'warn', icon: Target, action: () => setActiveSection('metrics') },
+                      ].map(item => {
+                        const Icon = item.icon;
+                        return (
+                          <div key={item.label} onClick={item.action} style={{ background: 'rgba(255,255,255,0.04)', padding: '14px 18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                              <Icon style={{ width: 14, height: 14, color: GOLD }} />
+                              <div>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: '#F0EDE4' }}>{item.label}</div>
+                                <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.4)' }}>{item.value}</div>
+                              </div>
                             </div>
-                            <ChevronRight className="h-4 w-4 text-[#6B7280] flex-shrink-0" />
-                          </CardContent>
-                        </Card>
-                      );
-                    })}
+                            {item.status === 'good'
+                              ? <CheckCircle style={{ width: 14, height: 14, color: TEAL }} />
+                              : <div style={{ width: 7, height: 7, borderRadius: '50%', background: GOLD }} />}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Section Tiles */}
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
+                      {SECTIONS.slice(1).map((s, i) => {
+                        const Icon = s.icon;
+                        const meta = SECTION_META[s.id];
+                        return (
+                          <div
+                            key={s.id}
+                            className={`sh-tile-${i + 1}`}
+                            onClick={() => setActiveSection(s.id)}
+                            style={{
+                              background: NAVY,
+                              border: `1px solid rgba(255,255,255,0.07)`,
+                              borderBottom: `3px solid ${meta.accent}`,
+                              padding: '18px 20px',
+                              cursor: 'pointer',
+                              transition: 'all 0.18s ease',
+                            }}
+                          >
+                            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10 }}>
+                              <div style={{ width: 34, height: 34, background: `${meta.accent}20`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <Icon style={{ width: 16, height: 16, color: meta.accent }} />
+                              </div>
+                              <div style={{ textAlign: 'right' }}>
+                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: meta.accent, lineHeight: 1 }}>{meta.stat}</div>
+                                <div style={{ fontSize: 8, color: 'rgba(240,237,228,0.35)', marginTop: 1 }}>{meta.statSub}</div>
+                              </div>
+                            </div>
+                            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', marginBottom: 4 }}>{s.label}</div>
+                            <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)', lineHeight: 1.4, marginBottom: 12 }}>{meta.desc}</div>
+                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'rgba(240,237,228,0.25)' }}>CONFIGURE →</div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {/* ── ORGANIZATION ── */}
               {activeSection === 'organization' && (

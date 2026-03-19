@@ -1,19 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { 
-  Activity, 
-  Brain, 
-  Zap, 
-  Users, 
-  Sparkles,
-  TrendingUp,
-  Target,
-  AlertCircle
-} from 'lucide-react';
+import { Activity, Brain, Zap, Users, Sparkles } from 'lucide-react';
 
 // Import existing AI module components
 import PulseIntelligence from './PulseIntelligence';
@@ -102,76 +90,75 @@ export default function AIIntelligenceHub() {
   return (
     <PageLayout>
       <div className="page-background min-h-screen bg-white">
-        {/* Page Title Section */}
-        <div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Brain className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Intelligence Suite</span>
+
+        {/* ─── Dark Tile Module Hub ─────────────────────────────────────── */}
+        <div style={{ background: NAVY, padding: '28px 0 0' }}>
+          <style>{`
+            @keyframes ai-fadeup { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+            .ai-tile-1{animation:ai-fadeup 0.4s ease 0.04s both}
+            .ai-tile-2{animation:ai-fadeup 0.4s ease 0.1s both}
+            .ai-tile-3{animation:ai-fadeup 0.4s ease 0.16s both}
+            .ai-tile-4{animation:ai-fadeup 0.4s ease 0.22s both}
+            .ai-tile-5{animation:ai-fadeup 0.4s ease 0.28s both}
+          `}</style>
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ width: 36, height: 36, background: 'rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Brain style={{ width: 18, height: 18, color: GOLD }} />
                 </div>
-                <h1 style={{ ...CG, fontWeight: 600, fontSize: "1.5rem", color: NAVY }}>AI Intelligence Hub</h1>
-                <p className="text-sm text-gray-500">Strategic co-pilots for executive decision-making</p>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 2 }}>
+                    <div style={{ width: 20, height: 1.5, background: GOLD }} />
+                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Intelligence Suite</span>
+                  </div>
+                  <div style={{ ...CG, fontSize: 21, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>AI Intelligence Hub</div>
+                </div>
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 8, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
+                <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                All Systems Active
               </div>
             </div>
-            <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border: "1px solid rgba(43,138,110,0.3)" }}>
-              <div className="w-2 h-2 bg-[#3BAF8A] rounded-full mr-1 animate-pulse" />
-              All Systems Active
+
+            {/* Module Tiles */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 10 }}>
+              {modules.map((module, i) => {
+                const Icon = module.icon;
+                const isActive = activeTab === module.id;
+                const accentColor = module.id === 'flux' || module.id === 'echo' ? '#2B8A6E' : GOLD;
+                return (
+                  <div
+                    key={module.id}
+                    className={`ai-tile-${i + 1}`}
+                    onClick={() => setActiveTab(module.id)}
+                    data-testid={`ai-module-${module.id}`}
+                    style={{
+                      background: isActive ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.025)',
+                      border: `1px solid ${isActive ? accentColor : 'rgba(255,255,255,0.08)'}`,
+                      borderBottom: `3px solid ${isActive ? accentColor : 'transparent'}`,
+                      padding: '16px 14px',
+                      cursor: 'pointer',
+                      transition: 'all 0.18s ease',
+                      textAlign: 'center',
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 10 }}>
+                      <div style={{ width: 34, height: 34, background: isActive ? `${accentColor}22` : 'rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Icon style={{ width: 16, height: 16, color: isActive ? accentColor : 'rgba(240,237,228,0.4)' }} />
+                      </div>
+                    </div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: isActive ? '#F0EDE4' : 'rgba(240,237,228,0.5)', marginBottom: 4, letterSpacing: '0.01em' }}>{module.name}</div>
+                    <div style={{ fontSize: 9, color: 'rgba(240,237,228,0.3)', lineHeight: 1.3 }}>{module.description}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* Module Navigation */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="border-b border-[#E8E4DC] bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-              <TabsList className="grid w-full grid-cols-5 bg-transparent gap-2 h-auto p-0 border-0">
-                {modules.map((module) => {
-                  const Icon = module.icon;
-                  const isActive = activeTab === module.id;
-                  return (
-                    <TabsTrigger
-                      key={module.id}
-                      value={module.id}
-                      className={`
-                        flex flex-col items-center gap-2 py-4 px-4 rounded-none border-b-2 transition-all
-                        ${isActive 
-                          ? `border-[#C9A84C] bg-[#F8F7F4]` 
-                          : 'border-transparent hover:bg-gray-50'
-                        }
-                        data-[state=active]:shadow-none
-                      `}
-                      data-testid={`ai-module-${module.id}`}
-                    >
-                      <div className={`p-2 rounded-lg ${isActive ? module.bgColor : 'bg-[#F8F7F4]'}`}>
-                        <Icon className={`h-5 w-5 ${isActive ? (module.id === 'flux' || module.id === 'echo' ? 'text-[#2B8A6E]' : 'text-[#C9A84C]') : 'text-gray-400'}`} />
-                      </div>
-                      <div className="text-center">
-                        <p style={{ fontSize: "14px", fontWeight: 600, color: isActive ? NAVY : "#6B7280" }}>
-                          {module.name}
-                        </p>
-                        <p className="text-[10px] text-gray-400 mt-0.5">
-                          {module.description}
-                        </p>
-                      </div>
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
-            </div>
-          </div>
-
-          {/* Module Content */}
-          {modules.map((module) => (
-            <TabsContent key={module.id} value={module.id} className="m-0 focus-visible:outline-none">
-              <ActiveComponent />
-            </TabsContent>
-          ))}
-        </Tabs>
+        {/* Module Content */}
+        <ActiveComponent />
       </div>
     </PageLayout>
   );

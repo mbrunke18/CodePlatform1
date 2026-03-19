@@ -256,6 +256,123 @@ function ToolsGrid({ tools, label }: { tools: typeof identifyTools; label: strin
   );
 }
 
+// ─── IDEA PHASE TILES DATA ─────────────────────────────────────────────────────
+const IDEA_PHASE_TILES = [
+  {
+    id: 'identify',
+    phase: 'Phase 1',
+    label: 'IDENTIFY',
+    name: 'Playbook Factory',
+    desc: 'Build, customize, and manage strategic playbooks for every scenario your organization will face.',
+    stat: '170 Playbooks',
+    statSub: 'across 9 domains',
+    accentColor: TEAL,
+    borderHover: TEAL,
+    anim: 'wh-tile-1',
+  },
+  {
+    id: 'detect',
+    phase: 'Phase 2',
+    label: 'DETECT',
+    name: 'Signal Ops',
+    desc: 'Monitor 248+ data points across 20 signal categories. AI flags triggers before competitors see them.',
+    stat: '248+ Data Points',
+    statSub: '20 signal categories',
+    accentColor: GOLD,
+    borderHover: GOLD,
+    anim: 'wh-tile-2',
+  },
+  {
+    id: 'execute',
+    phase: 'Phase 3',
+    label: 'EXECUTE',
+    name: 'Compass Command',
+    desc: 'Coordinate full organizational response. Roles assigned, tasks staged, stakeholders notified.',
+    stat: '12 Minutes',
+    statSub: 'to live execution',
+    accentColor: GOLD,
+    borderHover: GOLD,
+    anim: 'wh-tile-3',
+  },
+  {
+    id: 'advance',
+    phase: 'Phase 4',
+    label: 'ADVANCE',
+    name: 'Retrospect Lab',
+    desc: 'Capture learnings, refine playbooks, improve decision velocity. Every execution makes you faster.',
+    stat: '+34%',
+    statSub: 'decision velocity',
+    accentColor: TEAL,
+    borderHover: TEAL,
+    anim: 'wh-tile-4',
+  },
+];
+
+function IDEAPhaseLanding({ activeTab, onSelect }: { activeTab: string; onSelect: (id: string) => void }) {
+  const [hovered, setHovered] = useState<string | null>(null);
+  return (
+    <div style={{ background: NAVY, borderBottom: `1px solid rgba(201,168,76,0.15)`, padding: '32px 0 0' }}>
+      <style>{`
+        @keyframes wh-fadeup { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+        .wh-tile-1{animation:wh-fadeup 0.45s ease 0.05s both}
+        .wh-tile-2{animation:wh-fadeup 0.45s ease 0.12s both}
+        .wh-tile-3{animation:wh-fadeup 0.45s ease 0.19s both}
+        .wh-tile-4{animation:wh-fadeup 0.45s ease 0.26s both}
+      `}</style>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+          <div style={{ width: 28, height: 1.5, background: GOLD }} />
+          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>IDEA Framework™</span>
+          <div style={{ width: 28, height: 1.5, background: GOLD }} />
+          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginLeft: 4 }}>Execution Workspace</span>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, paddingBottom: 0 }}>
+          {IDEA_PHASE_TILES.map(tile => {
+            const isActive = activeTab === tile.id;
+            const isHov = hovered === tile.id;
+            return (
+              <div
+                key={tile.id}
+                className={tile.anim}
+                onClick={() => onSelect(tile.id)}
+                onMouseEnter={() => setHovered(tile.id)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  background: isActive ? 'rgba(255,255,255,0.06)' : isHov ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.025)',
+                  borderTop: `1px solid ${isActive ? tile.accentColor : isHov ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderLeft: `1px solid ${isActive ? tile.accentColor : isHov ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderRight: `1px solid ${isActive ? tile.accentColor : isHov ? 'rgba(201,168,76,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                  borderBottom: `3px solid ${isActive ? tile.accentColor : 'transparent'}`,
+                  padding: '20px 20px 16px',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  position: 'relative',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                  <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: tile.accentColor }}>{tile.phase}</span>
+                  <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.3)', border: `1px solid ${isActive ? tile.accentColor : 'rgba(255,255,255,0.1)'}`, padding: '2px 7px' }}>{tile.label}</span>
+                </div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: '#F0EDE4', marginBottom: 6, lineHeight: 1.1 }}>{tile.name}</div>
+                <p style={{ fontSize: 11, color: 'rgba(240,237,228,0.5)', lineHeight: 1.5, marginBottom: 14, minHeight: 48 }}>{tile.desc}</p>
+                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: tile.accentColor, lineHeight: 1 }}>{tile.stat}</div>
+                    <div style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.1em', marginTop: 2 }}>{tile.statSub}</div>
+                  </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.3)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                    {isActive ? 'ACTIVE' : 'ENTER'} <span style={{ fontSize: 12 }}>→</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── MAIN HUB ─────────────────────────────────────────────────────────────────
 export default function WorkspaceHub() {
   const [location] = useLocation();
@@ -280,6 +397,9 @@ export default function WorkspaceHub() {
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
+
+        {/* ─── IDEA Phase Tile Landing ───────────────────────────────────── */}
+        <IDEAPhaseLanding activeTab={activeTab} onSelect={setActiveTab} />
 
         {/* ─── IDEA Tab Bar ─────────────────────────────────────────────── */}
         <div className="bg-white border-b border-[#E8E4DC] sticky top-0 z-20">
