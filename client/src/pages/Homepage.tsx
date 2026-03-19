@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
+import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -805,6 +806,7 @@ const RESEARCH_FIRMS = [
 
 // ─── Microsoft Ecosystem Banner ───────────────────────────────────────────────
 function MicrosoftEcosystemBanner() {
+  const [, setLocation] = useLocation();
   const MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
   const msStack = [
     { name: 'Azure AI', icon: '◈', color: '#0078D4' },
@@ -862,6 +864,29 @@ function MicrosoftEcosystemBanner() {
                 <div style={{ ...DM, fontSize: 12, color: 'rgba(240,237,228,0.35)' }}>{sublabel}</div>
               </div>
             ))}
+          </div>
+        </Reveal>
+
+        {/* Architecture Diagram */}
+        <Reveal delay={0.25}>
+          <div style={{ marginTop: 40, padding: '0 0 4px', borderRadius: 14, overflow: 'hidden', border: `1px solid rgba(201,168,76,0.15)` }}>
+            <ExecutionOSMicrosoftDiagram />
+          </div>
+        </Reveal>
+
+        {/* Link to full page */}
+        <Reveal delay={0.3}>
+          <div style={{ textAlign: 'center', marginTop: 20 }}>
+            <button
+              onClick={() => setLocation('/ecosystem')}
+              style={{
+                ...MONO, fontSize: 10, color: GOLD, letterSpacing: 2,
+                textTransform: 'uppercase', background: 'transparent',
+                border: 'none', cursor: 'pointer', textDecoration: 'underline',
+                textUnderlineOffset: 4, opacity: 0.7,
+              }}>
+              View Full Architecture Overview →
+            </button>
           </div>
         </Reveal>
       </div>

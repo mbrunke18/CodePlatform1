@@ -497,6 +497,7 @@ function Router() {
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
         <Route path="/approval-error" component={lazy(() => import('./pages/ApprovalError'))} />
+        <Route path="/ecosystem" component={lazy(() => import('./pages/EcosystemDiagramPage'))} />
 
         {/* Additional Pages */}
         <Route path="/demo-router" component={DemoRouter} />
