@@ -435,6 +435,68 @@ export default function Investors() {
             </div>
           </motion.div>
 
+          {/* Microsoft Ecosystem — Go-to-Market Fit */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.09 }} className="mb-20">
+            <div style={{ background: '#0A0F2E', borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
+              <div style={{ position: 'absolute', top: -80, right: -40, width: 500, height: 400, background: 'radial-gradient(ellipse,rgba(0,120,212,0.1) 0%,transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: -60, left: -20, width: 400, height: 300, background: 'radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 65%)', pointerEvents: 'none' }} />
+              <div style={{ padding: '56px 48px', position: 'relative', zIndex: 2 }}>
+                {/* Header */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
+                  <div style={{ height: 1, width: 28, background: '#C9A84C' }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Go-to-Market Fit</span>
+                  <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
+                </div>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 600, color: '#fff', lineHeight: 1.1, marginBottom: 16 }}>
+                  Every Microsoft enterprise customer<br />is an <em style={{ color: '#C9A84C' }}>immediately addressable</em> prospect.
+                </h2>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 680, lineHeight: 1.7, marginBottom: 36, fontWeight: 500 }}>
+                  Execution OS deploys <em>above</em> the Microsoft stack — not alongside it, not in competition with it.
+                  It orchestrates Azure AI, Teams, Copilot Studio, Entra, and M365 inside a single 12-minute response motion.
+                  No rip-and-replace. No migration. No change management. This is the fastest enterprise sales motion in the category.
+                </p>
+                {/* 5 Integration tiles */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(170px,1fr))', gap: 12, marginBottom: 36 }}>
+                  {[
+                    { name: 'Azure AI', color: '#0078D4', detail: 'GPT-4o + 4 IDEA agents' },
+                    { name: 'Microsoft Teams', color: '#6264A7', detail: 'War room + notifications' },
+                    { name: 'Copilot Studio', color: '#5BA3E8', detail: 'Custom Execution OS agent' },
+                    { name: 'Microsoft Entra', color: '#107C10', detail: 'RBAC + identity governance' },
+                    { name: 'Power Platform', color: '#742774', detail: 'Workflow automation' },
+                  ].map(({ name, color, detail }) => (
+                    <div key={name} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `2px solid ${color}`, borderRadius: 8, padding: '14px 16px' }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{name}</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{detail}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* Investor stat strip */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, paddingTop: 28, borderTop: '1px solid rgba(201,168,76,0.2)' }}>
+                  {[
+                    { stat: '1B+', label: 'Microsoft 365 monthly active users' },
+                    { stat: '~95%', label: 'Fortune 500 use Microsoft products' },
+                    { stat: '0', label: 'competing products in this specific layer' },
+                    { stat: '12 min', label: 'to full strategic response — no other vendor claims this' },
+                  ].map(({ stat, label }) => (
+                    <div key={stat} style={{ flex: '1 1 160px' }}>
+                      <div style={{ fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{stat}</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4, lineHeight: 1.5, fontWeight: 500 }}>{label}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* CTA */}
+                <div style={{ marginTop: 32 }}>
+                  <Link href="/ecosystem">
+                    <button style={{ background: 'transparent', border: '1px solid #C9A84C', color: '#C9A84C', padding: '10px 24px', borderRadius: 4, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, cursor: 'pointer' }}>
+                      View Full Architecture Diagram →
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Market Validation */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">Market Validation</h2>

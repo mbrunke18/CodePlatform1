@@ -56,7 +56,7 @@ export default function StandardNav() {
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 20 categories" },
         { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Configure your live data points" },
         { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise system connections" },
-        { label: "Microsoft Ecosystem", path: "/ecosystem", icon: Layers, description: "How Execution OS sits above the Microsoft stack" },
+        { label: "Microsoft Ecosystem", path: "/ecosystem", icon: Layers, description: "How Execution OS sits above the Microsoft stack", featured: true },
       ],
     },
     {

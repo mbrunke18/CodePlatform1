@@ -817,18 +817,32 @@ function MicrosoftEcosystemBanner() {
     { name: 'Power Platform', icon: '◈', color: '#742774' },
   ];
   return (
-    <section style={{ background: '#060B1E', padding: '56px 0', borderTop: '1px solid rgba(240,237,228,0.06)', borderBottom: '1px solid rgba(240,237,228,0.06)' }}>
-      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+    <section style={{ background: '#060B1E', padding: '72px 0 56px', borderTop: `1px solid ${GOLD}22`, borderBottom: `1px solid ${GOLD}15`, position: 'relative', overflow: 'hidden' }}>
+      {/* Subtle orbs */}
+      <div style={{ position: 'absolute', top: -80, right: -40, width: 500, height: 400, background: 'radial-gradient(ellipse,rgba(0,120,212,0.08) 0%,transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: -60, left: -40, width: 400, height: 300, background: `radial-gradient(ellipse,${GOLD}0D 0%,transparent 65%)`, pointerEvents: 'none' }} />
+
+      <div style={{ ...CONTAINER, maxWidth: 1180 }}>
         <Reveal>
-          <div style={{ textAlign: 'center', marginBottom: 36 }}>
-            <div style={{ ...MONO, fontSize: 9, letterSpacing: 4, color: GOLD, textTransform: 'uppercase', marginBottom: 14 }}>
-              Enterprise Ecosystem Compatibility
+          <div style={{ textAlign: 'center', marginBottom: 40 }}>
+            {/* Eyebrow with gold dot */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, borderRadius: 2, padding: '5px 16px' }}>
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, display: 'inline-block' }} />
+              <span style={{ ...MONO, fontSize: 9, letterSpacing: 4, color: GOLD, textTransform: 'uppercase' as const, fontWeight: 700 }}>
+                No rip-and-replace — deploys on what you already have
+              </span>
             </div>
-            <h3 style={{ ...GEO, fontSize: 26, fontWeight: 600, color: IVORY, lineHeight: 1.3, marginBottom: 12 }}>
-              Built for the Microsoft enterprise stack.
-            </h3>
-            <p style={{ ...DM, fontSize: 15, color: 'rgba(240,237,228,0.5)', maxWidth: 560, margin: '0 auto' }}>
-              When the trigger fires, Execution OS deploys inside the tools your executives already use — not alongside them.
+            <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: IVORY, lineHeight: 1.15, marginBottom: 16 }}>
+              The strategic command layer<br />
+              <em style={{ color: GOLD, fontStyle: 'italic' }}>above</em> your Microsoft stack.
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: 'rgba(240,237,228,0.55)', maxWidth: 620, margin: '0 auto 8px' }}>
+              Execution OS doesn't replace your Microsoft investment — it orchestrates it.
+              When a strategic trigger fires, the response deploys inside Teams, Azure AI, and M365
+              within 12 minutes. No new portals. No migration. No change management.
+            </p>
+            <p style={{ ...DM, fontSize: 13, color: TEAL, fontWeight: 600 }}>
+              For investors: every Microsoft enterprise customer is an immediately addressable prospect.
             </p>
           </div>
         </Reveal>
@@ -1858,9 +1872,9 @@ export default function Homepage() {
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
+      <MicrosoftEcosystemBanner />
       <CommandCenterShowcaseSection />
       <CredibilitySection />
-      <MicrosoftEcosystemBanner />
       <PersonalizedROISection />
       <ShadowSimulatorSection />
       <CTASection />
