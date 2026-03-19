@@ -77,7 +77,8 @@ export function DynamicStrategyProvider({ children }: { children: ReactNode }) {
 
   const isLoading = statusLoading || readinessLoading || signalsLoading || patternsLoading;
 
-  const status = statusData?.status || {
+  const rawStatus = statusData?.status;
+  const status = (rawStatus && typeof rawStatus === 'object') ? rawStatus : {
     activeScenarios: 0,
     weakSignals: 0,
     oraclePatterns: 0,
@@ -137,9 +138,9 @@ export function DynamicStrategyProvider({ children }: { children: ReactNode }) {
   ];
 
   const continuousMode: ContinuousMode = {
-    enabled: status.continuousMode.enabled,
-    tasksScheduled: status.continuousMode.tasksScheduled,
-    nextRun: status.continuousMode.nextRun ? new Date(status.continuousMode.nextRun) : null,
+    enabled: status.continuousMode?.enabled ?? false,
+    tasksScheduled: status.continuousMode?.tasksScheduled ?? 0,
+    nextRun: status.continuousMode?.nextRun ? new Date(status.continuousMode.nextRun) : null,
   };
 
   const state: DynamicStrategyState = {

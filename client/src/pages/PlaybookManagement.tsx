@@ -379,7 +379,7 @@ export default function PlaybookManagement() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/playbook-command/${playbook.id}`)}
+                              onClick={() => setLocation(`/playbook-library/${playbook.id}`)}
                               data-testid={`menu-view-${playbook.id}`}
                             >
                               <Eye className="h-4 w-4 mr-2" />

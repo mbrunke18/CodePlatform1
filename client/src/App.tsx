@@ -27,7 +27,8 @@ class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryStat
               <RefreshCw size={22} color="#C9A84C" />
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0A0F2E', margin: '0 0 0.5rem' }}>Page Encountered an Error</h2>
-            <p style={{ fontSize: '0.875rem', color: '#6B7280', margin: '0 0 1.75rem', lineHeight: 1.6 }}>Something went wrong loading this page. This has been logged. Use the buttons below to recover.</p>
+            <p style={{ fontSize: '0.875rem', color: '#6B7280', margin: '0 0 0.75rem', lineHeight: 1.6 }}>Something went wrong loading this page.</p>
+            {this.state.error && <pre style={{ fontSize: '0.7rem', background: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: 4, padding: '0.75rem', textAlign: 'left', overflow: 'auto', maxHeight: 120, margin: '0 0 1rem', color: '#374151', whiteSpace: 'pre-wrap', wordBreak: 'break-all' }}>{this.state.error.message}</pre>}
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
               <button onClick={() => window.location.href = '/'} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '0.6rem 1.25rem', background: '#0A0F2E', color: '#fff', border: 'none', borderRadius: 4, fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer' }}>
                 <Home size={14} /> Return Home
