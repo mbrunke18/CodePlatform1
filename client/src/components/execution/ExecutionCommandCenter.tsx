@@ -236,7 +236,7 @@ export function ExecutionCommandCenter({
                 72 hrs → 12 min
               </div>
               <p className="text-sm text-muted-foreground">
-                Execution OS eliminates the planning phase entirely
+                72 hours is how long others spend just to mobilize — figuring out who, what, and how. You're in execution in 12 minutes.
               </p>
             </div>
             <ActivationButton

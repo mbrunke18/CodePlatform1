@@ -12,7 +12,7 @@ import { Link } from "wouter";
 const SCENE_NARRATIONS = [
   "Every Fortune 1000 company faces an average of 4 to 6 major strategic events per year.",
   "Companies that respond decisively within the first 24 hours are 340 times more likely to achieve their desired outcome than those who wait.",
-  "Seventy-two hours. That's how long it takes most Fortune 500 companies to respond to a strategic event. Conference calls. Slack messages flying. Waiting on the right people to get organized.",
+  "Seventy-two hours. That's how long it takes most Fortune 500 companies just to mobilize — before a single task is assigned, before a single document is staged, before execution begins. Conference calls. Slack messages flying. Three days figuring out who owns what.",
   "What does delay cost? In M&A, $1.3 million in value erosion per day. In crisis response, $4.88 million average breach cost. In competitive response, market windows that close forever.",
   "The reason? Companies improvise. Every time something hits, they start from zero. No playbook. No pre-assigned roles. Just scrambling.",
   "I'm Martin Brunke. I spent 20 years inside Fortune 500 companies watching this happen.",
@@ -23,7 +23,7 @@ const SCENE_NARRATIONS = [
   "170 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
-  "From signal detection to coordinated execution. 12 minutes. That's 340 times faster than the industry average.",
+  "From signal detection to coordinated execution. 12 minutes. While competitors spend 72 hours just figuring out who needs to be in the room, what work is needed, and what plan to put together — you're already 72 hours deep into actual execution. That's the 340× head start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",

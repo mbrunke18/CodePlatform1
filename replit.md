@@ -5,6 +5,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
+- **LOCKED MESSAGING — NEVER CHANGE:** The 340× metric is NOT a generic "speed advantage." The 72 hours represents the time a typical organization spends just to MOBILIZE before execution even begins — figuring out who needs to be in the room, what work is needed, and what plan to put together. By the time competitors are ready to start executing, Execution OS customers are already 72 hours deep into actual execution. This is the core force multiplier. The correct label is always "340× Execution Head Start" — never "340× Speed Advantage," never "340× faster." Every instance of this metric on the platform must reflect this framing.
 - Valued prioritization approach with phase-by-phase implementation
 - Maintain core product vision of human-AI partnership for strategic velocity
 - Executive professional language required across UI/UX

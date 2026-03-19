@@ -136,7 +136,7 @@ export default function Footer() {
               { value: '170', label: 'Strategic Playbooks', color: '#C9A84C' },
               { value: '9', label: 'Executive Domains', color: '#C9A84C' },
               { value: '12 min', label: 'To Live Execution', color: '#2B8A6E' },
-              { value: '340×', label: 'Speed Advantage', color: '#2B8A6E' },
+              { value: '340×', label: 'Execution Head Start', color: '#2B8A6E' },
               { value: '221', label: 'Executive Triggers', color: '#C9A84C' },
               { value: '248+', label: 'Live Data Points', color: '#2B8A6E' },
             ].map(({ value, label, color }) => (
