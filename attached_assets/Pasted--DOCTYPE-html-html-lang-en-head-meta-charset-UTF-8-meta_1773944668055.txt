@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Execution OS — Command Landing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F2E;
+    --navy-mid: #111830;
+    --navy-light: #1A2448;
+    --gold: #C9A84C;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-glow: rgba(201,168,76,0.3);
+    --teal: #2B8A6E;
+    --teal-dim: rgba(43,138,110,0.15);
+    --teal-glow: rgba(43,138,110,0.35);
+    --ivory: #F0EDE4;
+    --white: #FFFFFF;
+    --text-muted: rgba(240,237,228,0.45);
+    --text-dim: rgba(240,237,228,0.25);
+    --border: rgba(240,237,228,0.08);
+    --border-gold: rgba(201,168,76,0.2);
+    --border-teal: rgba(43,138,110,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: 'Crimson Pro', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* Grid background */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+  }
+
+  /* Top header bar */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(10,15,46,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 100;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--gold);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .logo-mark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: var(--ivory);
+  }
+
+  .logo-text span {
+    color: var(--gold);
+  }
+
+  .header-status {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  .status-dot.gold {
+    background: var(--gold);
+    animation-delay: 0.5s;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-user {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .header-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  /* Side nav */
+  .side-nav {
+    position: fixed;
+    left: 0;
+    top: 64px;
+    bottom: 0;
+    width: 56px;
+    background: rgba(10,15,46,0.85);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    gap: 8px;
+    z-index: 90;
+    backdrop-filter: blur(20px);
+  }
+
+  .nav-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    border: 1px solid transparent;
+  }
+
+  .nav-item:hover {
+    background: var(--gold-dim);
+    border-color: var(--border-gold);
+  }
+
+  .nav-item.active {
+    background: var(--gold-dim);
+    border-color: var(--border-gold);
+  }
+
+  .nav-item svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-muted);
+  }
+
+  .nav-item.active svg,
+  .nav-item:hover svg {
+    stroke: var(--gold);
+  }
+
+  .nav-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 56px;
+    margin-top: 64px;
+    padding: 40px 40px 40px 48px;
+    min-height: calc(100vh - 64px);
+  }
+
+  /* Page header */
+  .page-header {
+    margin-bottom: 36px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .page-header-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .page-datetime {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .page-headline {
+    font-family: 'Crimson Pro', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--ivory);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+
+  .page-headline strong {
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* Tile grid */
+  .tile-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    max-width: 1400px;
+  }
+
+  /* Base tile */
+  .tile {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .tile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .tile:hover {
+    transform: translateY(-2px);
+    border-color: rgba(240,237,228,0.15);
+  }
+
+  .tile:hover::before {
+    opacity: 1;
+  }
+
+  /* ACTIVATE tile — spans 2 rows, col 1 */
+  .tile-activate {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: linear-gradient(135deg, #1A1200 0%, #0A0F2E 60%);
+    border-color: var(--border-gold);
+    padding: 36px;
+  }
+
+  .tile-activate::before {
+    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  .tile-activate:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 40px rgba(201,168,76,0.12), 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  /* RADAR tile — col 2, row 1 */
+  .tile-radar {
+    grid-column: 2;
+    grid-row: 1;
+    background: linear-gradient(135deg, #001A12 0%, #0A0F2E 60%);
+    border-color: var(--border-teal);
+    min-height: 320px;
+  }
+
+  .tile-radar::before {
+    background: radial-gradient(ellipse at 50% 50%, rgba(43,138,110,0.08) 0%, transparent 70%);
+  }
+
+  .tile-radar:hover {
+    border-color: var(--teal);
+    box-shadow: 0 0 40px rgba(43,138,110,0.1), 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  /* PLAYBOOKS tile — col 3, row 1 */
+  .tile-playbooks {
+    grid-column: 3;
+    grid-row: 1;
+    min-height: 320px;
+  }
+
+  .tile-playbooks:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  /* MISSION CONTROL tile — col 2, row 2 */
+  .tile-mission {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* PERFORMANCE tile — col 3, row 2 */
+  .tile-performance {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  /* Animation delays */
+  .tile:nth-child(1) { animation-delay: 0.1s; }
+  .tile:nth-child(2) { animation-delay: 0.2s; }
+  .tile:nth-child(3) { animation-delay: 0.25s; }
+  .tile:nth-child(4) { animation-delay: 0.3s; }
+  .tile:nth-child(5) { animation-delay: 0.35s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tile label */
+  .tile-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tile-label-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  /* ACTIVATE tile content */
+  .activate-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 0.95;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .activate-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(240,237,228,0.65);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 320px;
+  }
+
+  .activate-sub em {
+    color: var(--ivory);
+    font-style: italic;
+  }
+
+  /* Timer display */
+  .timer-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .timer-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .timer-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+  }
+
+  /* CTA button */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .cta-btn:hover {
+    background: #DFB85C;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+
+  .cta-btn-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-btn:hover .cta-btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-secondary:hover {
+    border-color: var(--border-gold);
+    color: var(--gold);
+  }
+
+  /* Domain pills */
+  .domain-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 24px;
+  }
+
+  .domain-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .domain-pill.offense { border-color: rgba(43,138,110,0.3); color: var(--teal); }
+  .domain-pill.defense { border-color: var(--border-gold); color: var(--gold); }
+  .domain-pill.special { border-color: rgba(130,100,200,0.3); color: rgba(180,150,255,0.7); }
+
+  /* Radar canvas container */
+  .radar-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 0;
+  }
+
+  canvas#radar {
+    width: 180px;
+    height: 180px;
+  }
+
+  .radar-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .radar-center-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .radar-center-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* Signal list */
+  .signal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .signal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    background: rgba(43,138,110,0.05);
+    border: 1px solid rgba(43,138,110,0.1);
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+  }
+
+  .signal-name {
+    color: var(--ivory);
+    letter-spacing: 0.5px;
+  }
+
+  .signal-badge {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .signal-badge.high {
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+
+  .signal-badge.med {
+    background: rgba(43,138,110,0.15);
+    color: var(--teal);
+    border: 1px solid rgba(43,138,110,0.25);
+  }
+
+  .signal-badge.low {
+    background: rgba(240,237,228,0.05);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  /* Tile headline */
+  .tile-headline {
+    font-family: 'Crimson Pro', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .tile-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  /* Playbook grid preview */
+  .playbook-domains {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 16px 0;
+  }
+
+  .playbook-domain-card {
+    padding: 12px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .playbook-domain-card:hover {
+    border-color: var(--border-gold);
+    background: var(--gold-dim);
+  }
+
+  .playbook-domain-card:nth-child(1) { border-color: rgba(43,138,110,0.2); }
+  .playbook-domain-card:nth-child(1):hover { border-color: var(--teal); background: var(--teal-dim); }
+  .playbook-domain-card:nth-child(2) { border-color: var(--border-gold); }
+  .playbook-domain-card:nth-child(3) { border-color: rgba(130,100,200,0.2); }
+  .playbook-domain-card:nth-child(3):hover { border-color: rgba(180,150,255,0.5); background: rgba(130,100,200,0.08); }
+
+  .domain-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .domain-card-label.offense { color: var(--teal); }
+  .domain-card-label.defense { color: var(--gold); }
+  .domain-card-label.special { color: rgba(180,150,255,0.8); }
+
+  .domain-card-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .domain-card-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .stat-block {
+    flex: 1;
+    padding: 12px;
+    background: rgba(240,237,228,0.03);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-value.gold { color: var(--gold); }
+  .stat-value.teal { color: var(--teal); }
+  .stat-value.white { color: var(--white); }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* Performance bars */
+  .perf-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .perf-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .perf-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    width: 100px;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .perf-bar-track {
+    flex: 1;
+    height: 4px;
+    background: rgba(240,237,228,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .perf-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .perf-bar-fill.gold { background: var(--gold); }
+  .perf-bar-fill.teal { background: var(--teal); }
+  .perf-bar-fill.white { background: rgba(240,237,228,0.4); }
+
+  .perf-bar-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    width: 32px;
+    text-align: right;
+  }
+
+  /* Mission control active indicator */
+  .mission-live {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse-live 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse-live {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(43,138,110,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(43,138,110,0); }
+  }
+
+  .live-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Active execution preview */
+  .execution-preview {
+    background: rgba(43,138,110,0.05);
+    border: 1px solid rgba(43,138,110,0.15);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+
+  .execution-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ivory);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .execution-progress {
+    height: 3px;
+    background: rgba(240,237,228,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .execution-progress-fill {
+    height: 100%;
+    width: 67%;
+    background: linear-gradient(90deg, var(--teal), rgba(43,138,110,0.6));
+    border-radius: 2px;
+    animation: progress-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes progress-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .execution-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+  }
+
+  /* Tile arrow */
+  .tile-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+  }
+
+  .tile:hover .tile-arrow {
+    opacity: 1;
+    border-color: rgba(240,237,228,0.2);
+  }
+
+  .tile-activate .tile-arrow {
+    display: none;
+  }
+
+  /* Bottom status bar */
+  .status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 56px;
+    right: 0;
+    height: 36px;
+    background: rgba(10,15,46,0.92);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 32px;
+    backdrop-filter: blur(20px);
+    z-index: 90;
+  }
+
+  .status-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .status-bar-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .status-bar-item .dot.gold {
+    background: var(--gold);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo-mark"></div>
+    <div class="logo-text">EXECUTION <span>OS</span></div>
+  </div>
+  <div class="header-status">
+    <div class="status-item">
+      <div class="status-dot"></div>
+      SIGNALS ACTIVE
+    </div>
+    <div class="status-item">
+      <div class="status-dot gold"></div>
+      248 MONITORING
+    </div>
+    <div class="status-item">
+      NO ACTIVE TRIGGERS
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-user">BRUNKE · CEO</div>
+    <div class="header-avatar">MB</div>
+  </div>
+</header>
+
+<!-- Side nav -->
+<nav class="side-nav">
+  <!-- Home -->
+  <div class="nav-item active" title="Command Center">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+  </div>
+  <!-- Signals -->
+  <div class="nav-item" title="Signal Intelligence">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.809 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+  </div>
+  <!-- Playbooks -->
+  <div class="nav-item" title="Playbook Library">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+  </div>
+  <div class="nav-divider"></div>
+  <!-- Execute -->
+  <div class="nav-item" title="Mission Control">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+  </div>
+  <!-- Advance -->
+  <div class="nav-item" title="Performance & ROI">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+  </div>
+  <div class="nav-divider"></div>
+  <!-- Settings -->
+  <div class="nav-item" title="Settings">
+    <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+  </div>
+</nav>
+
+<!-- Main content -->
+<main class="main" style="padding-bottom: 60px;">
+
+  <div class="page-header">
+    <div class="page-header-top">
+      <div class="page-title">Command Center</div>
+      <div class="page-datetime" id="datetime"></div>
+    </div>
+    <div class="page-headline">Good morning, <strong>Martin.</strong> Your environment is stable. No active triggers.</div>
+  </div>
+
+  <div class="tile-grid">
+
+    <!-- TILE 1: ACTIVATE -->
+    <div class="tile tile-activate">
+      <div class="tile-label" style="color: var(--gold);">
+        <div class="tile-label-dot" style="background: var(--gold); animation: pulse-dot 1.5s infinite;"></div>
+        Primary Action
+      </div>
+
+      <div class="activate-headline">ACTIVATE<br>PLAYBOOK</div>
+
+      <div class="activate-sub">A strategic event just fired.<br><em>Start here.</em> Deploy a pre-staged response architecture in under 12 minutes.</div>
+
+      <div class="timer-display">
+        <div class="timer-number">12</div>
+        <div class="timer-label">MIN TO<br>EXECUTION</div>
+      </div>
+
+      <button class="cta-btn">
+        SELECT PLAYBOOK & ACTIVATE
+        <svg class="cta-btn-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </button>
+
+      <button class="cta-secondary">
+        RUN SIMULATION FIRST
+      </button>
+
+      <div class="domain-pills">
+        <div class="domain-pill offense">Competitive</div>
+        <div class="domain-pill offense">M&A</div>
+        <div class="domain-pill defense">Crisis</div>
+        <div class="domain-pill defense">Cyber</div>
+        <div class="domain-pill defense">Regulatory</div>
+        <div class="domain-pill special">AI Gov</div>
+        <div class="domain-pill special">Transform</div>
+      </div>
+    </div>
+
+    <!-- TILE 2: SIGNAL RADAR -->
+    <div class="tile tile-radar">
+      <div class="tile-label" style="color: var(--teal);">
+        <div class="tile-label-dot" style="background: var(--teal); animation: pulse-dot 2s infinite 0.3s;"></div>
+        Signal Intelligence
+      </div>
+
+      <div class="radar-container">
+        <canvas id="radar" width="180" height="180"></canvas>
+        <div class="radar-center-label">
+          <div class="radar-center-number">248</div>
+          <div class="radar-center-sub">SIGNALS</div>
+        </div>
+      </div>
+
+      <div class="signal-list">
+        <div class="signal-item">
+          <span class="signal-name">Market Dynamics</span>
+          <span class="signal-badge high">Elevated</span>
+        </div>
+        <div class="signal-item">
+          <span class="signal-name">Competitive Intel</span>
+          <span class="signal-badge med">Nominal</span>
+        </div>
+        <div class="signal-item">
+          <span class="signal-name">Regulatory</span>
+          <span class="signal-badge low">Stable</span>
+        </div>
+      </div>
+
+      <div class="tile-arrow">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </div>
+    </div>
+
+    <!-- TILE 3: PLAYBOOKS -->
+    <div class="tile tile-playbooks">
+      <div class="tile-label" style="color: var(--text-muted);">
+        <div class="tile-label-dot" style="background: rgba(240,237,228,0.3);"></div>
+        Playbook Library
+      </div>
+
+      <div class="tile-headline">170 Response<br>Architectures</div>
+      <div class="tile-desc">Pre-built, AI-informed execution playbooks across 9 strategic domains.</div>
+
+      <div class="playbook-domains">
+        <div class="playbook-domain-card">
+          <div class="domain-card-label offense">Offense</div>
+          <div class="domain-card-count">58</div>
+          <div class="domain-card-sub">playbooks</div>
+        </div>
+        <div class="playbook-domain-card">
+          <div class="domain-card-label defense">Defense</div>
+          <div class="domain-card-count">56</div>
+          <div class="domain-card-sub">playbooks</div>
+        </div>
+        <div class="playbook-domain-card">
+          <div class="domain-card-label special">Sp. Teams</div>
+          <div class="domain-card-count">56</div>
+          <div class="domain-card-sub">playbooks</div>
+        </div>
+      </div>
+
+      <div class="tile-arrow">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </div>
+    </div>
+
+    <!-- TILE 4: MISSION CONTROL -->
+    <div class="tile tile-mission">
+      <div class="tile-label" style="color: var(--text-muted);">
+        <div class="tile-label-dot" style="background: rgba(240,237,228,0.3);"></div>
+        Mission Control
+      </div>
+
+      <div class="mission-live">
+        <div class="live-dot"></div>
+        <div class="live-label">Live Coordination</div>
+      </div>
+
+      <div class="execution-preview">
+        <div class="execution-title">No active executions</div>
+        <div class="execution-progress">
+          <div style="width: 0%; height: 100%; background: var(--teal); border-radius: 2px;"></div>
+        </div>
+        <div class="execution-meta">
+          <span>Awaiting activation</span>
+          <span>221 triggers ready</span>
+        </div>
+      </div>
+
+      <div class="tile-desc" style="margin-bottom: 0; font-size: 13px;">Real-time coordination hub. When a playbook activates, your war room opens here.</div>
+
+      <div class="tile-arrow">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </div>
+    </div>
+
+    <!-- TILE 5: PERFORMANCE -->
+    <div class="tile tile-performance">
+      <div class="tile-label" style="color: var(--text-muted);">
+        <div class="tile-label-dot" style="background: rgba(240,237,228,0.3);"></div>
+        Performance & ROI
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-block">
+          <div class="stat-value gold">0</div>
+          <div class="stat-label">Activations</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value teal">—</div>
+          <div class="stat-label">Avg Score</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value white">$0</div>
+          <div class="stat-label">ROI Tracked</div>
+        </div>
+      </div>
+
+      <div class="perf-bars">
+        <div class="perf-bar-row">
+          <div class="perf-bar-label">Maturity Score</div>
+          <div class="perf-bar-track"><div class="perf-bar-fill gold" style="width: 12%"></div></div>
+          <div class="perf-bar-val">12</div>
+        </div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label">Decision Velocity</div>
+          <div class="perf-bar-track"><div class="perf-bar-fill teal" style="width: 0%"></div></div>
+          <div class="perf-bar-val">—</div>
+        </div>
+        <div class="perf-bar-row">
+          <div class="perf-bar-label">Readiness</div>
+          <div class="perf-bar-track"><div class="perf-bar-fill white" style="width: 35%"></div></div>
+          <div class="perf-bar-val">35</div>
+        </div>
+      </div>
+
+      <div class="tile-arrow">
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Status bar -->
+<div class="status-bar">
+  <div class="status-bar-item"><div class="dot"></div>PLATFORM ACTIVE</div>
+  <div class="status-bar-item"><div class="dot"></div>SIGNALS: 248 MONITORED · 20 CATEGORIES</div>
+  <div class="status-bar-item"><div class="dot gold"></div>TRIGGERS: 221 CONFIGURED</div>
+  <div class="status-bar-item">LAST SCAN: <span id="lastscan" style="margin-left: 4px;">JUST NOW</span></div>
+  <div class="status-bar-item" style="margin-left: auto;">EXECUTION OS v2.0</div>
+</div>
+
+<script>
+  // DateTime
+  function updateTime() {
+    const now = new Date();
+    const opts = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', opts).toUpperCase();
+  }
+  updateTime();
+  setInterval(updateTime, 1000);
+
+  // Last scan
+  let scanSeconds = 0;
+  setInterval(() => {
+    scanSeconds++;
+    const el = document.getElementById('lastscan');
+    if (scanSeconds < 60) el.textContent = scanSeconds + 'S AGO';
+    else el.textContent = Math.floor(scanSeconds/60) + 'M AGO';
+  }, 1000);
+
+  // Radar canvas
+  const canvas = document.getElementById('radar');
+  const ctx = canvas.getContext('2d');
+  const cx = 90, cy = 90, maxR = 82;
+
+  // Blips
+  const blips = Array.from({length: 12}, () => ({
+    angle: Math.random() * Math.PI * 2,
+    r: 20 + Math.random() * 58,
+    speed: (Math.random() - 0.5) * 0.004,
+    size: 2 + Math.random() * 2.5,
+    alpha: 0.4 + Math.random() * 0.6,
+    color: Math.random() > 0.6 ? '#C9A84C' : '#2B8A6E',
+    pulse: Math.random() * Math.PI * 2
+  }));
+
+  // Sweep angle
+  let sweep = 0;
+
+  function drawRadar() {
+    ctx.clearRect(0, 0, 180, 180);
+
+    // Rings
+    for (let i = 1; i <= 4; i++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, (maxR / 4) * i, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(43,138,110,0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Cross hairs
+    ctx.strokeStyle = 'rgba(43,138,110,0.1)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cx, cy - maxR); ctx.lineTo(cx, cy + maxR); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx - maxR, cy); ctx.lineTo(cx + maxR, cy); ctx.stroke();
+
+    // Sweep gradient
+    const sweepGrad = ctx.createConicalGradient
+      ? null
+      : null;
+
+    // Sweep arc
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(sweep);
+
+    const grad = ctx.createLinearGradient(0, 0, maxR, 0);
+    grad.addColorStop(0, 'rgba(43,138,110,0.5)');
+    grad.addColorStop(1, 'rgba(43,138,110,0)');
+
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.arc(0, 0, maxR, -0.4, 0.4);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(43,138,110,0.12)';
+    ctx.fill();
+
+    // Sweep line
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(maxR, 0);
+    ctx.strokeStyle = 'rgba(43,138,110,0.7)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    ctx.restore();
+
+    // Blips
+    blips.forEach(b => {
+      b.angle += b.speed;
+      b.pulse += 0.05;
+      const x = cx + Math.cos(b.angle) * b.r;
+      const y = cy + Math.sin(b.angle) * b.r;
+      const alpha = b.alpha * (0.7 + 0.3 * Math.sin(b.pulse));
+
+      ctx.beginPath();
+      ctx.arc(x, y, b.size, 0, Math.PI * 2);
+      ctx.fillStyle = b.color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+      ctx.fill();
+
+      // Glow
+      ctx.beginPath();
+      ctx.arc(x, y, b.size * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = b.color + '15';
+      ctx.fill();
+    });
+
+    // Center dot
+    ctx.beginPath();
+    ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(43,138,110,0.8)';
+    ctx.fill();
+
+    sweep += 0.018;
+    requestAnimationFrame(drawRadar);
+  }
+
+  drawRadar();
+</script>
+
+</body>
+</html>
