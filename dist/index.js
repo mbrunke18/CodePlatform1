@@ -35935,7 +35935,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json(null);
       }
       const metric = await dynamicStrategyService2.getLatestReadinessMetric(user[0].organizationId);
       if (!metric) {
@@ -35954,7 +35954,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json(null);
       }
       const metric = await dynamicStrategyService2.calculateReadinessScore(user[0].organizationId);
       res.json(metric);
@@ -35970,7 +35970,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json([]);
       }
       const signals = await db.select().from(weakSignals2).where(and26(eq8(weakSignals2.organizationId, user[0].organizationId), eq8(weakSignals2.status, "active"))).orderBy(desc6(weakSignals2.detectedAt)).limit(50);
       res.json(signals);
@@ -35985,7 +35985,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json([]);
       }
       const patterns = await db.select().from(oraclePatterns2).where(eq8(oraclePatterns2.organizationId, user[0].organizationId)).orderBy(desc6(oraclePatterns2.detectedAt)).limit(50);
       res.json(patterns);
@@ -36000,7 +36000,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json({ status: "inactive", message: "Organization setup required" });
       }
       const status = await dynamicStrategyService2.getSystemStatus(user[0].organizationId);
       res.json(status);
@@ -36015,7 +36015,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json([]);
       }
       const limit = parseInt(req.query.limit) || 20;
       const events = await db.select().from(activityFeedEvents2).where(eq8(activityFeedEvents2.organizationId, user[0].organizationId)).orderBy(desc6(activityFeedEvents2.createdAt)).limit(limit);
@@ -36041,7 +36041,7 @@ async function registerDynamicStrategyRoutes(app2) {
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq8(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: "Organization not found" });
+        return res.status(200).json({ success: false, message: "Organization not configured" });
       }
       const organizationId = user[0].organizationId;
       const { readinessMetrics: readinessMetrics2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -44197,6 +44197,47 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log("\u2705 Playbook & Drill endpoints registered");
   console.log("   \u2192 /api/playbook-library - 110 Playbook taxonomy");
   console.log("   \u2192 /api/practice-drills - Fire drill simulation system");
+  app2.get("/api/playbook-library/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [template] = await db.select().from(playbookLibrary).where(eq37(playbookLibrary.id, id)).limit(1);
+      if (template) {
+        let domainSequence = 1;
+        if (template.domainId) {
+          const [domain] = await db.select().from(playbookDomains).where(eq37(playbookDomains.id, template.domainId)).limit(1);
+          if (domain) domainSequence = domain.sequence || 1;
+        }
+        const sampleData = generateFullPlaybookData(
+          domainSequence,
+          template.name,
+          template.preApprovedBudget ? parseFloat(String(template.preApprovedBudget)) : 5e5
+        );
+        return res.json({
+          playbook: {
+            id: template.id,
+            name: template.name,
+            description: template.description,
+            domain: template.triggerCriteria,
+            category: template.strategicCategory,
+            priority: "high",
+            isActive: true,
+            status: "ready",
+            totalBudget: template.preApprovedBudget || 5e5,
+            budgetCurrency: "USD",
+            ...sampleData,
+            isTemplate: true
+          }
+        });
+      }
+      const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const [playbook] = await db.select().from(playbooks2).where(eq37(playbooks2.id, id)).limit(1);
+      if (playbook) return res.json({ playbook });
+      res.status(404).json({ message: "Playbook not found" });
+    } catch (error) {
+      console.error("Error fetching playbook-library item:", error);
+      res.status(500).json({ message: "Failed to fetch playbook" });
+    }
+  });
   app2.post("/api/playbook-library/:playbookId/activate", requireRole("admin", "executive"), requireOrgAccess2, async (req, res) => {
     try {
       const { playbookId } = req.params;

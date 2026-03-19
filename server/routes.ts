@@ -6932,6 +6932,49 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   console.log('   → /api/playbook-library - 110 Playbook taxonomy');
   console.log('   → /api/practice-drills - Fire drill simulation system');
 
+  // ===== PLAYBOOK LIBRARY GET BY ID (alias for PlaybookDetail page) =====
+  app.get('/api/playbook-library/:id', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const [template] = await db.select().from(playbookLibrary).where(eq(playbookLibrary.id, id)).limit(1);
+      if (template) {
+        let domainSequence = 1;
+        if (template.domainId) {
+          const [domain] = await db.select().from(playbookDomains).where(eq(playbookDomains.id, template.domainId)).limit(1);
+          if (domain) domainSequence = domain.sequence || 1;
+        }
+        const sampleData = generateFullPlaybookData(
+          domainSequence,
+          template.name,
+          template.preApprovedBudget ? parseFloat(String(template.preApprovedBudget)) : 500000
+        );
+        return res.json({
+          playbook: {
+            id: template.id,
+            name: template.name,
+            description: template.description,
+            domain: template.triggerCriteria,
+            category: template.strategicCategory,
+            priority: 'high',
+            isActive: true,
+            status: 'ready',
+            totalBudget: template.preApprovedBudget || 500000,
+            budgetCurrency: 'USD',
+            ...sampleData,
+            isTemplate: true,
+          }
+        });
+      }
+      const { playbooks } = await import('@shared/schema');
+      const [playbook] = await db.select().from(playbooks).where(eq(playbooks.id, id)).limit(1);
+      if (playbook) return res.json({ playbook });
+      res.status(404).json({ message: 'Playbook not found' });
+    } catch (error) {
+      console.error('Error fetching playbook-library item:', error);
+      res.status(500).json({ message: 'Failed to fetch playbook' });
+    }
+  });
+
   // ===== PLAYBOOK ACTIVATION ENDPOINTS =====
   app.post('/api/playbook-library/:playbookId/activate', requireRole('admin', 'executive'), requireOrgAccess, async (req: any, res) => {
     try {

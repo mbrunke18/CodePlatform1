@@ -15,7 +15,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json(null);
       }
       const metric = await dynamicStrategyService.getLatestReadinessMetric(user[0].organizationId);
       if (!metric) {
@@ -35,7 +35,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json(null);
       }
       const metric = await dynamicStrategyService.calculateReadinessScore(user[0].organizationId);
       res.json(metric);
@@ -52,7 +52,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json([]);
       }
       const signals = await db
         .select()
@@ -73,7 +73,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json([]);
       }
       const patterns = await db
         .select()
@@ -94,7 +94,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json({ status: 'inactive', message: 'Organization setup required' });
       }
       const status = await dynamicStrategyService.getSystemStatus(user[0].organizationId);
       res.json(status);
@@ -110,7 +110,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json([]);
       }
       const limit = parseInt(req.query.limit as string) || 20;
       const events = await db
@@ -148,7 +148,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
-        return res.status(404).json({ error: 'Organization not found' });
+        return res.status(200).json({ success: false, message: 'Organization not configured' });
       }
       const organizationId = user[0].organizationId;
 
