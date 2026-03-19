@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 2026 (rev 7) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 19, 2026 (rev 8) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -12,6 +12,7 @@
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
 - **Human-AI partnership model** — AI monitors and recommends, human executives approve and decide.
+- **Microsoft Ecosystem positioning** — Execution OS is positioned as "The strategic command layer *above* Microsoft's agentic stack." It does NOT replace Azure AI, Teams, Copilot Studio, Entra, or Power Platform — it orchestrates them. This is a key GTM message: every Microsoft enterprise customer is an immediately addressable prospect with no rip-and-replace required. The full architecture diagram lives at `/ecosystem`.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
 
@@ -629,6 +630,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
 | `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
 | `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
+| `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
 
 ---
 
