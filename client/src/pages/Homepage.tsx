@@ -1494,6 +1494,270 @@ function ShadowSimulatorSection() {
   );
 }
 
+// ─── Command Center Showcase Section ─────────────────────────────────────────
+function MiniRadar() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const frameRef = useRef(0);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const W = 140, H = 140, cx = 70, cy = 70, r = 58;
+    const dots: { angle: number; dist: number; age: number; size: number }[] = [];
+    for (let i = 0; i < 7; i++) dots.push({ angle: Math.random() * Math.PI * 2, dist: 0.3 + Math.random() * 0.65, age: Math.random() * 120, size: 1.5 + Math.random() * 2 });
+    let sweep = 0;
+    function draw() {
+      ctx!.clearRect(0, 0, W, H);
+      [0.33, 0.66, 1].forEach(f => {
+        ctx!.beginPath(); ctx!.arc(cx, cy, r * f, 0, Math.PI * 2);
+        ctx!.strokeStyle = "rgba(43,138,110,0.18)"; ctx!.lineWidth = 1; ctx!.stroke();
+      });
+      ctx!.strokeStyle = "rgba(43,138,110,0.12)"; ctx!.lineWidth = 0.5;
+      [[cx, cy - r, cx, cy + r], [cx - r, cy, cx + r, cy]].forEach(([x1, y1, x2, y2]) => {
+        ctx!.beginPath(); ctx!.moveTo(x1, y1); ctx!.lineTo(x2, y2); ctx!.stroke();
+      });
+      ctx!.save(); ctx!.translate(cx, cy); ctx!.rotate(sweep);
+      const sg = ctx!.createLinearGradient(0, 0, r, 0);
+      sg.addColorStop(0, "rgba(43,138,110,0.5)"); sg.addColorStop(1, "rgba(43,138,110,0)");
+      ctx!.beginPath(); ctx!.moveTo(0, 0); ctx!.arc(0, 0, r, -Math.PI * 0.35, 0); ctx!.closePath();
+      ctx!.fillStyle = sg; ctx!.fill(); ctx!.restore();
+      ctx!.beginPath(); ctx!.moveTo(cx, cy); ctx!.lineTo(cx + Math.cos(sweep) * r, cy + Math.sin(sweep) * r);
+      ctx!.strokeStyle = "rgba(43,138,110,0.9)"; ctx!.lineWidth = 1.5; ctx!.stroke();
+      dots.forEach(dot => {
+        const diff = (sweep - dot.angle + Math.PI * 2) % (Math.PI * 2);
+        const op = diff < 0.6 ? (1 - diff / 0.6) * 0.9 : Math.max(0, 0.4 - dot.age / 200);
+        if (op <= 0) return;
+        ctx!.beginPath(); ctx!.arc(cx + Math.cos(dot.angle) * r * dot.dist, cy + Math.sin(dot.angle) * r * dot.dist, dot.size, 0, Math.PI * 2);
+        ctx!.fillStyle = `rgba(43,138,110,${op})`; ctx!.fill();
+        dot.age++;
+        if (dot.age > 160) { dot.age = 0; dot.angle = Math.random() * Math.PI * 2; dot.dist = 0.3 + Math.random() * 0.65; }
+      });
+      sweep = (sweep + 0.018) % (Math.PI * 2);
+      frameRef.current = requestAnimationFrame(draw);
+    }
+    frameRef.current = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, []);
+  return <canvas ref={canvasRef} width={140} height={140} style={{ width: 140, height: 140 }} />;
+}
+
+function CommandCenterShowcaseSection() {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
+  const BEBAS: React.CSSProperties = { fontFamily: "'Bebas Neue','Barlow Condensed','Oxanium',sans-serif" };
+  const SERIF: React.CSSProperties = { fontFamily: "Georgia,'Times New Roman',serif" };
+
+  const tileBase: React.CSSProperties = {
+    background: "#111830", borderRadius: 10, padding: 22, position: "relative", overflow: "hidden",
+    border: "1px solid rgba(240,237,228,0.08)", transition: "all 0.25s ease", cursor: "pointer",
+  };
+
+  return (
+    <section style={{ ...SECTION_DARK_BG, padding: "100px 0 80px", position: "relative", overflow: "hidden" }}>
+      <SectionMarker n="07" />
+      <div style={{ ...CONTAINER, maxWidth: 1160 }}>
+
+        {/* Header */}
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <SectionLabel>INSIDE THE PLATFORM</SectionLabel>
+            <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 16 }}>
+              Your command center — ready at the trigger.
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: "rgba(240,237,228,0.6)", maxWidth: 580, margin: "0 auto" }}>
+              When a strategic event fires, executives don't improvise. They open this. Every response pre-staged, every role pre-assigned, execution in motion within 12 minutes.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Browser frame */}
+        <Reveal>
+          <div style={{ borderRadius: 14, overflow: "hidden", boxShadow: "0 48px 120px rgba(0,0,0,0.55), 0 0 0 1px rgba(240,237,228,0.1)", border: "1px solid rgba(240,237,228,0.12)" }}>
+
+            {/* Browser chrome */}
+            <div style={{ background: "#06091A", padding: "10px 16px", display: "flex", alignItems: "center", gap: 12, borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
+              <div style={{ display: "flex", gap: 6 }}>
+                {["#FF5F57","#FFBC2E","#28C840"].map((c, i) => <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: c, opacity: 0.7 }} />)}
+              </div>
+              <div style={{ flex: 1, background: "rgba(240,237,228,0.06)", borderRadius: 4, padding: "4px 12px", display: "flex", alignItems: "center", gap: 8, maxWidth: 320, margin: "0 auto" }}>
+                <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,228,0.3)" strokeWidth={2}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.35)", letterSpacing: 0.3 }}>app.vaughnmartin.com/command-center</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                {[{ dot: TEAL, label: "SIGNALS ACTIVE" }, { dot: GOLD, label: "248 MONITORING" }].map(({ dot, label }) => (
+                  <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, ...MONO, fontSize: 9, color: "rgba(240,237,228,0.4)" }}>
+                    <span style={{ width: 5, height: 5, borderRadius: "50%", background: dot, display: "inline-block" }} />
+                    {label}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Side nav strip */}
+            <div style={{ display: "flex" }}>
+              <div style={{ width: 44, background: "rgba(10,15,46,0.85)", borderRight: "1px solid rgba(240,237,228,0.06)", display: "flex", flexDirection: "column", alignItems: "center", padding: "16px 0", gap: 8, minHeight: 460 }}>
+                {[
+                  <path key="a" strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />,
+                  <path key="b" strokeLinecap="round" strokeLinejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M12 12h.008v.007H12V12z" />,
+                  <path key="c" strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />,
+                ].map((iconPath, i) => (
+                  <div key={i} style={{ width: 32, height: 32, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", background: i === 0 ? "rgba(201,168,76,0.12)" : "transparent" }}>
+                    <svg width={15} height={15} fill="none" viewBox="0 0 24 24" stroke={i === 0 ? GOLD : "rgba(240,237,228,0.3)"} strokeWidth={1.5}>{iconPath}</svg>
+                  </div>
+                ))}
+              </div>
+
+              {/* Tile grid */}
+              <div style={{ flex: 1, background: NAVY, padding: "20px 20px 16px", display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 12, minHeight: 460 }}>
+
+                {/* ACTIVATE tile — spans 2 rows */}
+                <div
+                  style={{ ...tileBase, gridColumn: 1, gridRow: "1 / 3", background: "linear-gradient(135deg, #1A1200 0%, #0A0F2E 60%)", borderColor: hovered === "activate" ? "rgba(201,168,76,0.4)" : "rgba(201,168,76,0.2)" }}
+                  onMouseEnter={() => setHovered("activate")} onMouseLeave={() => setHovered(null)}
+                >
+                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: GOLD, textTransform: "uppercase", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, display: "inline-block" }} />Primary Action
+                  </div>
+                  <div style={{ ...BEBAS, fontSize: 40, lineHeight: 0.95, color: GOLD, letterSpacing: 2, marginBottom: 14 }}>ACTIVATE<br />PLAYBOOK</div>
+                  <div style={{ ...SERIF, fontSize: 13, fontWeight: 300, color: "rgba(240,237,228,0.6)", lineHeight: 1.5, marginBottom: 24, maxWidth: 240 }}>
+                    A strategic event just fired. Deploy a pre-staged response in under 12 minutes.
+                  </div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 22 }}>
+                    <div style={{ ...MONO, fontSize: 40, fontWeight: 300, color: GOLD, lineHeight: 1 }}>12</div>
+                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.4)", letterSpacing: 2 }}>MIN TO<br />EXECUTION</div>
+                  </div>
+                  <div style={{ background: GOLD, color: NAVY, ...MONO, fontSize: 10, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", padding: "11px 18px", borderRadius: 5, textAlign: "center", marginBottom: 8 }}>
+                    SELECT PLAYBOOK & ACTIVATE →
+                  </div>
+                  <div style={{ border: "1px solid rgba(240,237,228,0.1)", color: "rgba(240,237,228,0.4)", ...MONO, fontSize: 9, letterSpacing: 1.5, padding: "8px 14px", borderRadius: 5, textAlign: "center" }}>
+                    RUN SIMULATION FIRST
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 18 }}>
+                    {["Competitive","Crisis","M&A","Cyber","Regulatory"].map(t => (
+                      <div key={t} style={{ ...MONO, fontSize: 8, letterSpacing: 1.5, padding: "3px 8px", borderRadius: 3, border: "1px solid rgba(201,168,76,0.2)", color: "rgba(201,168,76,0.7)" }}>{t}</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Signal Radar tile */}
+                <div
+                  style={{ ...tileBase, gridColumn: 2, gridRow: 1, background: "linear-gradient(135deg, #001A12 0%, #0A0F2E 60%)", borderColor: hovered === "radar" ? "rgba(43,138,110,0.5)" : "rgba(43,138,110,0.2)" }}
+                  onMouseEnter={() => setHovered("radar")} onMouseLeave={() => setHovered(null)}
+                >
+                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: TEAL, textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, display: "inline-block" }} />Signal Intelligence
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "center", margin: "6px 0 8px" }}>
+                    <div style={{ position: "relative" }}>
+                      <MiniRadar />
+                      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center", pointerEvents: "none" }}>
+                        <div style={{ ...BEBAS, fontSize: 22, color: TEAL, lineHeight: 1 }}>248</div>
+                        <div style={{ ...MONO, fontSize: 8, color: "rgba(240,237,228,0.3)", letterSpacing: 1 }}>SIGNALS</div>
+                      </div>
+                    </div>
+                  </div>
+                  {[{ name: "Market Dynamics", level: "Elevated" }, { name: "Competitive Intel", level: "Nominal" }, { name: "Regulatory", level: "Stable" }].map(({ name, level }) => (
+                    <div key={name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 8px", background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.1)", borderRadius: 3, marginBottom: 4 }}>
+                      <span style={{ ...MONO, fontSize: 9, color: IVORY, letterSpacing: 0.3 }}>{name}</span>
+                      <span style={{ ...MONO, fontSize: 8, padding: "1px 5px", borderRadius: 2, letterSpacing: 1, textTransform: "uppercase" as const, background: level === "Elevated" ? "rgba(201,168,76,0.15)" : level === "Nominal" ? "rgba(43,138,110,0.15)" : "rgba(240,237,228,0.06)", color: level === "Elevated" ? GOLD : level === "Nominal" ? TEAL : "rgba(240,237,228,0.4)", border: `1px solid ${level === "Elevated" ? "rgba(201,168,76,0.25)" : level === "Nominal" ? "rgba(43,138,110,0.25)" : "rgba(240,237,228,0.1)"}` }}>{level}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Playbooks tile */}
+                <div
+                  style={{ ...tileBase, gridColumn: 3, gridRow: 1 }}
+                  onMouseEnter={() => setHovered("playbooks")} onMouseLeave={() => setHovered(null)}
+                >
+                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.35)", textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(240,237,228,0.3)", display: "inline-block" }} />Playbook Library
+                  </div>
+                  <div style={{ ...SERIF, fontSize: 18, fontWeight: 600, color: IVORY, lineHeight: 1.2, marginBottom: 6 }}>170 Response<br />Architectures</div>
+                  <div style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.4)", lineHeight: 1.5, marginBottom: 14 }}>Pre-built across 9 strategic domains.</div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+                    {[{ label: "Offense", count: 58, color: TEAL }, { label: "Defense", count: 58, color: GOLD }, { label: "Sp. Teams", count: 54, color: "rgba(180,150,255,0.8)" }].map(({ label, count, color }) => (
+                      <div key={label} style={{ padding: "10px 6px", borderRadius: 5, textAlign: "center", border: `1px solid ${color}28` }}>
+                        <div style={{ ...MONO, fontSize: 8, letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 3, color }}>{label}</div>
+                        <div style={{ ...BEBAS, fontSize: 24, lineHeight: 1, color: IVORY }}>{count}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Mission Control — locked overlay */}
+                <div style={{ ...tileBase, gridColumn: 2, gridRow: 2, position: "relative" }}>
+                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Mission Control</div>
+                  <div style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.2)", lineHeight: 1.5, marginBottom: 10 }}>Real-time war room coordination. Live task feeds, stakeholder tracking, escalation chains.</div>
+                  <div style={{ height: 8, background: "rgba(43,138,110,0.08)", borderRadius: 4, marginBottom: 8 }} />
+                  <div style={{ height: 8, background: "rgba(240,237,228,0.04)", borderRadius: 4, width: "60%" }} />
+                  {/* Lock overlay */}
+                  <div style={{ position: "absolute", inset: 0, borderRadius: 10, background: "rgba(10,15,46,0.72)", backdropFilter: "blur(3px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                    <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="rgba(240,237,228,0.3)" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
+                  </div>
+                </div>
+
+                {/* Performance — locked overlay */}
+                <div style={{ ...tileBase, gridColumn: 3, gridRow: 2, position: "relative" }}>
+                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Performance & ROI</div>
+                  <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
+                    {["Activations","Avg Score","ROI Tracked"].map(l => <div key={l} style={{ flex: 1, padding: "8px 4px", background: "rgba(240,237,228,0.02)", border: "1px solid rgba(240,237,228,0.05)", borderRadius: 5, textAlign: "center" }}><div style={{ height: 16, background: "rgba(240,237,228,0.05)", borderRadius: 3 }} /></div>)}
+                  </div>
+                  {["Maturity Score","Decision Velocity","Readiness"].map((l, i) => (
+                    <div key={l} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                      <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.15)", width: 90 }}>{l}</div>
+                      <div style={{ flex: 1, height: 3, background: "rgba(240,237,228,0.04)", borderRadius: 2 }} />
+                    </div>
+                  ))}
+                  {/* Lock overlay */}
+                  <div style={{ position: "absolute", inset: 0, borderRadius: 10, background: "rgba(10,15,46,0.72)", backdropFilter: "blur(3px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                    <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="rgba(240,237,228,0.3)" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Status bar */}
+            <div style={{ background: "#06091A", borderTop: "1px solid rgba(240,237,228,0.06)", padding: "8px 24px 8px 68px", display: "flex", alignItems: "center", gap: 28 }}>
+              {[{ dot: TEAL, label: "248 signals monitored" }, { dot: GOLD, label: "221 triggers configured" }, { dot: "rgba(240,237,228,0.3)", label: "170 playbooks ready" }].map(({ dot, label }) => (
+                <div key={label} style={{ display: "flex", alignItems: "center", gap: 6, ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 0.5 }}>
+                  <span style={{ width: 4, height: 4, borderRadius: "50%", background: dot, display: "inline-block" }} />{label}
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </Reveal>
+
+        {/* CTA */}
+        <Reveal delay={0.15}>
+          <div style={{ textAlign: "center", marginTop: 48 }}>
+            <p style={{ ...DM, fontSize: 14, color: "rgba(240,237,228,0.45)", marginBottom: 24 }}>
+              Full command center access — including live war room, performance analytics, and ROI tracking — is provisioned for executive pilot teams.
+            </p>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center" }}>
+              <Link href="/pilot-program">
+                <a onClick={() => trackCTA("showcase-pilot")} style={{ background: GOLD, color: NAVY, ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
+                  Request Executive Access →
+                </a>
+              </Link>
+              <Link href="/12-minute-experience">
+                <a style={{ border: "1px solid rgba(240,237,228,0.2)", color: "rgba(240,237,228,0.65)", ...DM, fontSize: 13, padding: "14px 28px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
+                  Run the 12-Minute Test Drive
+                </a>
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+
+      </div>
+    </section>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Homepage() {
   useScrollDepth();
@@ -1507,6 +1771,7 @@ export default function Homepage() {
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
+      <CommandCenterShowcaseSection />
       <CredibilitySection />
       <PersonalizedROISection />
       <ShadowSimulatorSection />
