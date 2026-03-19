@@ -298,23 +298,23 @@ export default function ExecutionOSMicrosoftDiagram() {
         by VaughnMartin — We Make Enterprises Fearless
       </text>
 
-      {/* IDEA phase chips */}
+      {/* IDEA phase chips — width 148, spaced to leave clear room for 340× box */}
       {[
-        { label: "IDENTIFY", sub: "Triggers · Signals", color: GOLD,  x: eosX + 60 },
-        { label: "DETECT",   sub: "AI Radar · 248+ pts", color: TEAL,  x: eosX + 265 },
-        { label: "EXECUTE",  sub: "Playbooks · War Room", color: TEAL,  x: eosX + 470 },
-        { label: "ADVANCE",  sub: "ROI · Analytics",     color: GOLD,  x: eosX + 675 },
+        { label: "IDENTIFY", sub: "Triggers · Signals",  color: GOLD, x: eosX + 48 },
+        { label: "DETECT",   sub: "AI Radar · 248+ pts", color: TEAL, x: eosX + 210 },
+        { label: "EXECUTE",  sub: "Playbooks · War Room", color: TEAL, x: eosX + 372 },
+        { label: "ADVANCE",  sub: "ROI · Analytics",     color: GOLD, x: eosX + 534 },
       ].map((phase) => (
         <g key={phase.label}>
-          <rect x={phase.x} y={eosY + 104} width={160} height={58} rx={8}
+          <rect x={phase.x} y={eosY + 104} width={148} height={58} rx={8}
             fill={`${phase.color}14`} stroke={phase.color} strokeWidth={1.5} strokeOpacity={0.5}
           />
-          <text x={phase.x + 80} y={eosY + 128} textAnchor="middle"
+          <text x={phase.x + 74} y={eosY + 128} textAnchor="middle"
             fill={phase.color} fontSize={13} fontWeight={700}
             fontFamily="'Barlow Condensed',sans-serif" letterSpacing={2.5}>
             {phase.label}
           </text>
-          <text x={phase.x + 80} y={eosY + 146} textAnchor="middle"
+          <text x={phase.x + 74} y={eosY + 146} textAnchor="middle"
             fill={IVORY} fontSize={9} fontWeight={400} opacity={0.55}
             fontFamily="'DM Mono',monospace">
             {phase.sub}
