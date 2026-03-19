@@ -2003,7 +2003,7 @@ export default function SandboxDemo() {
             <CardContent className="p-6 text-center">
               <Zap className="h-8 w-8 mx-auto mb-2 opacity-80 text-white" />
               <div className="text-4xl font-bold mb-1 text-white">{roi.speedMultiplier}X</div>
-              <div className="text-sm opacity-80 text-white">Faster Than Industry</div>
+              <div className="text-sm opacity-80 text-white">Execution Head Start</div>
             </CardContent>
           </Card>
           <Card className="bg-gradient-to-br from-[#2B8A6E] to-[#3BAF8A] text-white">

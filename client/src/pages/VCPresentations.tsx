@@ -49,7 +49,7 @@ export default function VCPresentations() {
       title: "Competitive Advantage",
       value: "12 min",
       subtitle: "Strategic response vs 72-hour industry average",
-      growth: "340x faster",
+      growth: "340× Execution Head Start",
       color: "text-[#0A0F2E]"
     },
     {
@@ -120,7 +120,7 @@ export default function VCPresentations() {
 
   const keyInvestmentThesis = [
     "First platform to combine AI signal monitoring with immediate strategic execution",
-    "340x faster response than traditional consulting approaches (12 min vs 72 hours)",
+    "340× Execution Head Start: while rivals spend 72 hours mobilizing, Execution OS customers are deep in execution — in 12 minutes",
     "Fortune 1000 enterprises require both strategic intelligence and execution velocity",
     "170 playbooks across 9 domains — the broadest strategic response coverage available",
     "Scalable enterprise architecture serving organizations with 10,000+ employees"

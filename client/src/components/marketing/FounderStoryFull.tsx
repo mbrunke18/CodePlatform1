@@ -849,7 +849,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-2xl font-bold text-amber-400"
                 >
-                  That's 340x faster.
+                  That's a 340× Execution Head Start.
                 </motion.p>
               </div>
             </Scene>

@@ -332,8 +332,8 @@ export default function ExecutiveHub() {
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.35rem', fontWeight: 600, color: '#fff', lineHeight: 1.5 }}>
                     "Execution OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
                     <span style={{ color: GOLD }}>47 activations</span> this period, with an average response time of{' '}
-                    <span style={{ color: GOLD }}>11.4 minutes</span> — <span style={{ color: GOLD }}>340× faster</span>{' '}
-                    than industry baseline. No strategic trigger went unaddressed."
+                    <span style={{ color: GOLD }}>11.4 minutes</span> — a <span style={{ color: GOLD }}>340× Execution Head Start</span>{' '}
+                    over the industry baseline. No strategic trigger went unaddressed."
                   </p>
                   <div className="flex items-center gap-6 mt-6 pt-6 border-t border-white/10">
                     {[

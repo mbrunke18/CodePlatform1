@@ -1389,7 +1389,7 @@ function PersonalizedROISection() {
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>68% faster containment</div>
               </div>
               <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Speed Advantage</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Execution Head Start</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{speed}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>vs. reactive organizations</div>
               </div>

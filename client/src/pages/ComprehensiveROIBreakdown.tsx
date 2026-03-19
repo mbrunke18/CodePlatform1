@@ -110,7 +110,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
 
           <Card className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 border-2 border-[#0A0F2E]/30">
             <CardHeader className="pb-3">
-              <CardDescription className="text-[#0A0F2E] dark:text-[#C9A84C]">Avg Speed Advantage</CardDescription>
+              <CardDescription className="text-[#0A0F2E] dark:text-[#C9A84C]">Execution Head Start</CardDescription>
               <CardTitle className="text-4xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="text-avg-speed">
                 {avgSpeedImprovement} days
               </CardTitle>
@@ -251,7 +251,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         <th className="text-left py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Scenario</th>
                         <th className="text-left py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Category</th>
                         <th className="text-right py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Annual Value</th>
-                        <th className="text-right py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Speed Advantage</th>
+                        <th className="text-right py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Execution Head Start</th>
                         <th className="text-right py-3 px-4 font-semibold text-[#0A0F2E] dark:text-white">Elements</th>
                       </tr>
                     </thead>

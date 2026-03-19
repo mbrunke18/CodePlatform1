@@ -131,7 +131,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 { label: 'Activations', value: s.activationCount ?? 0, color: NAVY, icon: Zap, suffix: '' },
                 { label: 'Avg Response', value: responseMin, color: TEAL, icon: Clock, suffix: ' min' },
                 { label: '12-Min Target Rate', value: `${targetRate}%`, color: GOLD, icon: Target, suffix: '' },
-                { label: 'Faster Than Industry', value: `${improvement}%`, color: '#2B8A6E', icon: TrendingUp, suffix: '' },
+                { label: 'Execution Head Start', value: `${improvement}%`, color: '#2B8A6E', icon: TrendingUp, suffix: '' },
               ].map(k => {
                 const Icon = k.icon;
                 return (

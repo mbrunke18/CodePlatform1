@@ -537,7 +537,7 @@ export default function NFLLearningDashboard() {
 
                     <div className="p-6 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                       <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">
-                        Speed Advantage
+                        Execution Head Start
                       </div>
                       <div className="text-4xl font-bold text-[#2B8A6E]" style={CG}>
                         340X
