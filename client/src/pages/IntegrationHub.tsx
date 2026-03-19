@@ -479,11 +479,32 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         configuration: { syncFrequency: 'real-time', dataMapping: ['stories', 'epics', 'iterations'] }
       },
       {
-        id: 'int-018', name: 'Microsoft Teams', category: 'communication', status: 'pending', comingSoon: true,
-        description: 'Enterprise communication, meetings, and collaboration platform', provider: 'Microsoft', version: '2.0',
-        lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
-        features: ['Channels', 'Meetings', 'Chat', 'Apps', 'File Sharing'],
-        configuration: { syncFrequency: 'real-time', dataMapping: ['messages', 'channels', 'meetings'] }
+        id: 'int-018', name: 'Microsoft Teams', category: 'communication', status: 'available',
+        description: 'War room notifications delivered directly to Teams channels on playbook activation. Configure your incoming webhook URL to enable.', provider: 'Microsoft', version: '2.0',
+        lastSync: '', health: 0, endpoints: 3, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['War Room Alerts', 'Playbook Activation Notifications', 'Escalation Pings', 'Delegation Notices', 'Adaptive Cards'],
+        configuration: { syncFrequency: 'event-driven', dataMapping: ['playbook_activations', 'escalations', 'war_room_events'] }
+      },
+      {
+        id: 'int-024', name: 'Microsoft Copilot Studio', category: 'ai', status: 'available',
+        description: 'Surface Execution OS playbook recommendations inside Microsoft 365 Copilot. Executives can query "What playbooks should activate right now?" directly from Teams or Outlook.', provider: 'Microsoft', version: '2025',
+        lastSync: '', health: 0, endpoints: 5, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Playbook Query Agent', 'Trigger Alert Surfacing', 'IDEA Framework Connector', 'Teams & Outlook Native', 'Executive Brief Delivery'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['playbook_recommendations', 'trigger_signals', 'execution_briefs'] }
+      },
+      {
+        id: 'int-025', name: 'Azure AI / Azure OpenAI', category: 'ai', status: 'available',
+        description: 'Enterprise-grade AI with data residency, SOC 2 compliance, and GDPR guarantees. Set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY to route all AI analysis through Azure instead of OpenAI direct.', provider: 'Microsoft', version: 'GPT-4o',
+        lastSync: '', health: 0, endpoints: 4, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Azure Data Residency', 'SOC 2 Type II', 'GDPR Compliant', 'HIPAA Ready', 'Multi-Agent IDEA Framework', 'Entra Agent ID'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['execution_briefs', 'signal_analysis', 'playbook_recommendations'] }
+      },
+      {
+        id: 'int-026', name: 'Microsoft Entra ID', category: 'security', status: 'available',
+        description: 'Enterprise SSO and agent identity management. Every AI action taken by Execution OS can be identity-stamped via Entra Agent ID for full audit trail and CISO compliance.', provider: 'Microsoft', version: '2025',
+        lastSync: '', health: 0, endpoints: 2, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
+        features: ['Enterprise SSO', 'Agent Identity Stamps', 'Audit Trail per AI Action', 'CISO Compliance', 'Zero Trust Ready'],
+        configuration: { syncFrequency: 'real-time', dataMapping: ['user_identities', 'agent_actions', 'audit_events'] }
       },
       {
         id: 'int-019', name: 'Google Chat', category: 'communication', status: 'pending', comingSoon: true,

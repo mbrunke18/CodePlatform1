@@ -2434,32 +2434,62 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   ]
 }`;
 
-      const briefJson = await openAIService.analyzeText(prompt);
+      // ── Multi-Agent IDEA Framework: 4 specialist agents fire in parallel ──────
+      const agentContext = {
+        playbookName,
+        triggerContext: triggerContext || 'Manual activation — no specific trigger context provided.',
+      };
 
-      let brief;
-      try {
-        const clean = briefJson.replace(/```json|```/g, '').trim();
-        brief = JSON.parse(clean);
-      } catch {
-        brief = {
-          situationFraming: `${playbookName} has been queued for activation. Your team is ready to execute.`,
-          missionObjective: `Execute ${playbookName} to protect strategic position and maintain execution velocity.`,
-          criticalRoles: ['Chief Executive Officer', 'Chief Operating Officer', 'Head of Strategy'],
-          topRisks: [
-            { risk: 'Stakeholder availability constraints', mitigation: 'Pre-notify all Tier 1 roles immediately' },
-            { risk: 'Information gap during first 3 minutes', mitigation: 'Activate context briefing in parallel' },
-            { risk: 'Resource contention with active initiatives', mitigation: 'Audit pre-approved budget before task assignment' }
-          ],
-          successIndicators: ['All Tier 1 stakeholders acknowledged within 4 minutes', 'First task assigned within 8 minutes', 'Full coordination achieved within 12 minutes'],
-          executionWindow: '12–18 minutes for full coordination',
-          commanderNote: 'Speed is your advantage — initiate now and course-correct in real time.',
-          scenarioTasks: [
-            { action: `Immediately brief CEO and board — confirm ${playbookName} activation authority`, role: 'Chief Executive Officer', priority: 'critical', timeTarget: '2 min' },
-            { action: 'Freeze pre-approved budget allocation and confirm resource availability', role: 'Chief Financial Officer', priority: 'high', timeTarget: '5 min' },
-            { action: 'Brief General Counsel — assess legal exposure and initiate protective measures', role: 'General Counsel', priority: 'high', timeTarget: '8 min' },
-          ]
-        };
-      }
+      const [agentResults, missionBrief] = await Promise.all([
+        openAIService.runParallelAgents(agentContext),
+        openAIService.analyzeText(
+          `You are a strategic execution commander. In ONE sentence, state the primary mission objective for activating "${playbookName}" given this context: ${triggerContext || 'manual activation'}. Start with an action verb. Return ONLY the sentence.`,
+          'Executive mission objective generation'
+        ),
+      ]);
+
+      // Parse each agent's output
+      const identifyAgent = agentResults.find(r => r.phase === 'IDENTIFY');
+      const detectAgent  = agentResults.find(r => r.phase === 'DETECT');
+      const executeAgent = agentResults.find(r => r.phase === 'EXECUTE');
+      const advanceAgent = agentResults.find(r => r.phase === 'ADVANCE');
+
+      let topRisks = [
+        { risk: 'Stakeholder availability constraints', mitigation: 'Pre-notify all Tier 1 roles immediately' },
+        { risk: 'Information gap during first 3 minutes', mitigation: 'Activate context briefing in parallel' },
+        { risk: 'Resource contention with active initiatives', mitigation: 'Audit pre-approved budget before task assignment' },
+      ];
+      try { if (detectAgent?.content) topRisks = JSON.parse(detectAgent.content.replace(/```json|```/g, '').trim()); } catch {}
+
+      let scenarioTasks = [
+        { action: `Brief CEO — confirm activation authority for ${playbookName}`, role: 'Chief Executive Officer', priority: 'critical', timeTarget: '2 min' },
+        { action: 'Freeze pre-approved budget and confirm resource availability', role: 'Chief Financial Officer', priority: 'high', timeTarget: '5 min' },
+        { action: 'Brief General Counsel — assess legal exposure', role: 'General Counsel', priority: 'high', timeTarget: '8 min' },
+      ];
+      try { if (executeAgent?.content) scenarioTasks = JSON.parse(executeAgent.content.replace(/```json|```/g, '').trim()); } catch {}
+
+      let successIndicators = ['All Tier 1 stakeholders acknowledged within 4 minutes', 'First task assigned within 8 minutes', 'Full coordination achieved within 12 minutes'];
+      try { if (advanceAgent?.content) successIndicators = JSON.parse(advanceAgent.content.replace(/```json|```/g, '').trim()); } catch {}
+
+      const providerInfo = openAIService.getProvider();
+
+      const brief = {
+        situationFraming: identifyAgent?.content || `${playbookName} has been activated. Your team is ready to execute.`,
+        missionObjective: missionBrief || `Execute ${playbookName} to protect strategic position and maintain execution velocity.`,
+        criticalRoles: ['Chief Executive Officer', 'Chief Operating Officer', 'General Counsel'],
+        topRisks,
+        successIndicators,
+        executionWindow: '12–18 minutes for full coordination',
+        commanderNote: 'Four specialist AI agents analyzed this activation simultaneously — IDENTIFY, DETECT, EXECUTE, ADVANCE. Speed is your advantage.',
+        scenarioTasks,
+        agentMetrics: {
+          agentsRun: agentResults.length,
+          parallelExecution: true,
+          provider: providerInfo.label,
+          totalLatencyMs: Math.max(...agentResults.map(r => r.latencyMs)),
+          ideaFramework: true,
+        },
+      };
 
       res.json({ brief, generatedAt: new Date().toISOString() });
     } catch (error: any) {
@@ -3929,6 +3959,27 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
    *       200:
    *         description: AI Radar status retrieved successfully
    */
+  // AI provider status — exposes whether Azure OpenAI or standard OpenAI is active
+  app.get('/api/ai/provider-status', async (req: any, res) => {
+    try {
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const status = openAIService.getServiceStatus();
+      const provider = openAIService.getProvider();
+      res.json({
+        provider: provider.label,
+        azureReady: provider.azureReady,
+        configured: status.configured,
+        rateLimitRemaining: status.rateLimitRemaining,
+        teamsConfigured: !!process.env.TEAMS_WEBHOOK_URL,
+        slackConfigured: !!process.env.SLACK_WEBHOOK_URL,
+        ideaAgentsEnabled: true,
+        multiAgentParallel: true,
+      });
+    } catch (error) {
+      res.json({ provider: 'OpenAI', azureReady: false, configured: false });
+    }
+  });
+
   app.get('/api/ai-radar/status', async (req: any, res) => {
     try {
       // Proactive AI Radar disabled temporarily

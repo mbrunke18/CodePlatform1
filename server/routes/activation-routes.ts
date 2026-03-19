@@ -2,6 +2,7 @@ import type { Express } from 'express';
 import { liveActivationService } from '../services/LiveActivationService';
 import { wsService } from '../services/WebSocketService';
 import { liveIntegrationDispatcher } from '../services/LiveIntegrationDispatcher';
+import { notifyTeamsPlaybookActivation } from '../services/TeamsNotificationService';
 
 export function registerActivationRoutes(app: Express): void {
 
@@ -80,6 +81,15 @@ export function registerActivationRoutes(app: Express): void {
 
       // Start the simulation (non-blocking)
       liveActivationService.startSimulation(activationId, emitCallback);
+
+      // Fire Teams notification (non-blocking, best-effort)
+      const appUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+      notifyTeamsPlaybookActivation({
+        playbookName: activationState.playbookName || playbookKey,
+        organizationName: 'Execution OS',
+        triggeredBy: 'Execution OS Platform',
+        appUrl,
+      }).catch(() => {}); // never block activation on notification failure
 
       res.status(201).json({ 
         success: true, 

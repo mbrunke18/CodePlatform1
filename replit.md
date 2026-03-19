@@ -31,11 +31,12 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Backend:** Node.js, Express.js, TypeScript.
 - **Database:** PostgreSQL (Neon serverless) with Drizzle ORM.
 - **Real-time:** Socket.IO WebSocket server.
+- **Microsoft Ecosystem:** Teams war room notifications (`TeamsNotificationService.ts`, `TEAMS_WEBHOOK_URL`), Azure OpenAI support (`AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_KEY`, `AZURE_OPENAI_DEPLOYMENT`), Copilot Studio connector (IntegrationHub), Microsoft Entra Agent ID (IntegrationHub).
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
 - **Live Signal Ingestion:** Real-time signal monitoring across 20 categories and 248+ data points.
 - **Authentication:** Replit OIDC with Passport.js; new users get an organization on first login.
 - **Role-Based Access:** `requireRole()` middleware for permission enforcement.
-- **AI Services:** OpenAI GPT-4o for various analytical and generative tasks.
+- **AI Services:** Azure OpenAI (primary, when `AZURE_OPENAI_ENDPOINT` + `AZURE_OPENAI_KEY` set) with graceful fallback to OpenAI GPT-4o. Multi-agent IDEA Framework runs 4 specialist agents in parallel (IDENTIFY · DETECT · EXECUTE · ADVANCE). Provider status exposed at `/api/ai/provider-status`.
 - **Error Monitoring:** Sentry integration for server and frontend.
 - **Route Architecture:** Centralized `server/routes.ts` with modular domain logic.
 

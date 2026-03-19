@@ -803,6 +803,72 @@ const RESEARCH_FIRMS = [
   { firm: "Google Cloud / Alphabet", finding: "Enterprise AI adoption stalls not at the model layer but at the coordination layer — the infrastructure to act on AI insight is absent." },
 ];
 
+// ─── Microsoft Ecosystem Banner ───────────────────────────────────────────────
+function MicrosoftEcosystemBanner() {
+  const MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
+  const msStack = [
+    { name: 'Azure AI', icon: '◈', color: '#0078D4' },
+    { name: 'Microsoft Teams', icon: '⬡', color: '#6264A7' },
+    { name: 'Copilot Studio', icon: '◉', color: '#5BA3E8' },
+    { name: 'Microsoft Entra', icon: '◎', color: '#107C10' },
+    { name: 'Microsoft 365', icon: '◆', color: '#D83B01' },
+    { name: 'Power Platform', icon: '◈', color: '#742774' },
+  ];
+  return (
+    <section style={{ background: '#060B1E', padding: '56px 0', borderTop: '1px solid rgba(240,237,228,0.06)', borderBottom: '1px solid rgba(240,237,228,0.06)' }}>
+      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 36 }}>
+            <div style={{ ...MONO, fontSize: 9, letterSpacing: 4, color: GOLD, textTransform: 'uppercase', marginBottom: 14 }}>
+              Enterprise Ecosystem Compatibility
+            </div>
+            <h3 style={{ ...GEO, fontSize: 26, fontWeight: 600, color: IVORY, lineHeight: 1.3, marginBottom: 12 }}>
+              Built for the Microsoft enterprise stack.
+            </h3>
+            <p style={{ ...DM, fontSize: 15, color: 'rgba(240,237,228,0.5)', maxWidth: 560, margin: '0 auto' }}>
+              When the trigger fires, Execution OS deploys inside the tools your executives already use — not alongside them.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 32 }}>
+            {msStack.map(({ name, icon, color }) => (
+              <div key={name} style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '9px 16px', borderRadius: 6,
+                background: 'rgba(240,237,228,0.04)',
+                border: '1px solid rgba(240,237,228,0.1)',
+                transition: 'all 0.2s ease',
+              }}>
+                <span style={{ color, fontSize: 12 }}>{icon}</span>
+                <span style={{ ...MONO, fontSize: 10, color: 'rgba(240,237,228,0.65)', letterSpacing: 0.5 }}>{name}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
+            {[
+              { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '🔒' },
+              { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '⚡' },
+              { label: '4-Agent IDEA Framework', sublabel: 'Parallel AI — 340× faster', icon: '◈' },
+              { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◉' },
+            ].map(({ label, sublabel, icon }) => (
+              <div key={label} style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 18, marginBottom: 6 }}>{icon}</div>
+                <div style={{ ...MONO, fontSize: 10, color: GOLD, letterSpacing: 1, marginBottom: 3 }}>{label}</div>
+                <div style={{ ...DM, fontSize: 12, color: 'rgba(240,237,228,0.35)' }}>{sublabel}</div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
@@ -1739,15 +1805,11 @@ function CommandCenterShowcaseSection() {
               Full command center access — including live war room, performance analytics, and ROI tracking — is provisioned for executive pilot teams.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center" }}>
-              <Link href="/pilot-program">
-                <a onClick={() => trackCTA("showcase-pilot")} style={{ background: GOLD, color: NAVY, ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
-                  Request Executive Access →
-                </a>
+              <Link href="/pilot-program" onClick={() => trackCTA("showcase-pilot")} style={{ background: GOLD, color: NAVY, ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
+                Request Executive Access →
               </Link>
-              <Link href="/12-minute-experience">
-                <a style={{ border: "1px solid rgba(240,237,228,0.2)", color: "rgba(240,237,228,0.65)", ...DM, fontSize: 13, padding: "14px 28px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
-                  Run the 12-Minute Test Drive
-                </a>
+              <Link href="/12-minute-experience" style={{ border: "1px solid rgba(240,237,228,0.2)", color: "rgba(240,237,228,0.65)", ...DM, fontSize: 13, padding: "14px 28px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
+                Run the 12-Minute Test Drive
               </Link>
             </div>
           </div>
@@ -1773,6 +1835,7 @@ export default function Homepage() {
       <PlatformPreviewSection />
       <CommandCenterShowcaseSection />
       <CredibilitySection />
+      <MicrosoftEcosystemBanner />
       <PersonalizedROISection />
       <ShadowSimulatorSection />
       <CTASection />

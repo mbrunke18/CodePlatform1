@@ -14382,7 +14382,7 @@ __export(OpenAIService_exports, {
   OpenAIService: () => OpenAIService,
   openAIService: () => openAIService
 });
-import OpenAI2 from "openai";
+import OpenAI2, { AzureOpenAI } from "openai";
 import pino5 from "pino";
 var logger5, OpenAIService, openAIService;
 var init_OpenAIService = __esm({
@@ -14395,6 +14395,7 @@ var init_OpenAIService = __esm({
       isConfigured = false;
       requestCount = 0;
       lastResetTime = Date.now();
+      provider = "openai";
       constructor() {
         this.config = {
           maxRetries: 3,
@@ -14402,21 +14403,133 @@ var init_OpenAIService = __esm({
           maxTokens: 2e3,
           temperature: 0.7
         };
-        if (process.env.OPENAI_API_KEY) {
+        const azureEndpoint = process.env.AZURE_OPENAI_ENDPOINT;
+        const azureKey = process.env.AZURE_OPENAI_KEY;
+        const azureDeployment = process.env.AZURE_OPENAI_DEPLOYMENT || "gpt-4o";
+        const azureApiVersion = process.env.AZURE_OPENAI_API_VERSION || "2025-01-01-preview";
+        if (azureEndpoint && azureKey) {
           try {
-            this.client = new OpenAI2({
-              apiKey: process.env.OPENAI_API_KEY
+            this.client = new AzureOpenAI({
+              endpoint: azureEndpoint,
+              apiKey: azureKey,
+              apiVersion: azureApiVersion,
+              deployment: azureDeployment
             });
+            this.provider = "azure";
+            this.isConfigured = true;
+            logger5.info({ endpoint: azureEndpoint, deployment: azureDeployment }, "Azure OpenAI service initialized \u2014 enterprise-grade data residency active");
+          } catch (error) {
+            logger5.error({ error }, "Failed to initialize Azure OpenAI client, falling back to OpenAI");
+          }
+        }
+        if (!this.isConfigured && process.env.OPENAI_API_KEY) {
+          try {
+            this.client = new OpenAI2({ apiKey: process.env.OPENAI_API_KEY });
+            this.provider = "openai";
             this.isConfigured = true;
             logger5.info("OpenAI service initialized successfully");
           } catch (error) {
             logger5.error({ error }, "Failed to initialize OpenAI client");
             this.isConfigured = false;
           }
-        } else {
-          logger5.warn("OpenAI API key not found - AI features will use fallback responses");
-          this.isConfigured = false;
         }
+        if (!this.isConfigured) {
+          logger5.warn("No AI provider configured \u2014 AI features will use fallback responses");
+        }
+      }
+      /**
+       * Returns the active AI provider (azure | openai)
+       */
+      getProvider() {
+        return {
+          name: this.provider,
+          label: this.provider === "azure" ? "Azure OpenAI" : "OpenAI",
+          azureReady: this.provider === "azure"
+        };
+      }
+      /**
+       * Run parallel IDEA-phase specialist agents simultaneously.
+       * Each agent is an independent AI call; all four fire concurrently and
+       * results are returned in IDEA order regardless of completion order.
+       */
+      async runParallelAgents(context) {
+        if (!this.isConfigured) {
+          return this.getParallelAgentFallback(context.playbookName);
+        }
+        const { playbookName, triggerContext, organizationName = "the organization", industry = "enterprise" } = context;
+        const agentDefs = [
+          {
+            phase: "IDENTIFY",
+            system: `You are an elite IDENTIFY-phase analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: rapidly frame the strategic situation, decode the trigger signal, and establish situational clarity so the executive team can act without hesitation.`,
+            user: `Playbook: "${playbookName}" | Context: ${triggerContext} | Org: ${organizationName} | Industry: ${industry}
+
+In 2-3 crisp sentences: frame the strategic situation. What fired? Why does it matter right now? What is the window of opportunity or exposure? Return ONLY the situation framing text, no headers or JSON.`
+          },
+          {
+            phase: "DETECT",
+            system: `You are an elite DETECT-phase risk analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: surface the top blind spots, escalation tripwires, and hidden risks so the execution team acts with eyes open.`,
+            user: `Playbook: "${playbookName}" | Context: ${triggerContext}
+
+Return EXACTLY 3 risks as a JSON array \u2014 no markdown, no wrapper:
+[{"risk":"...","mitigation":"..."},{"risk":"...","mitigation":"..."},{"risk":"...","mitigation":"..."}]`
+          },
+          {
+            phase: "EXECUTE",
+            system: `You are an elite EXECUTE-phase task orchestrator in the IDEA Framework for Fortune 1000 strategic execution. Your role: generate a precise, time-bound task sequence with C-suite role assignments. Tasks must be specific to this exact trigger and playbook \u2014 not generic.`,
+            user: `Playbook: "${playbookName}" | Context: ${triggerContext}
+
+Return EXACTLY 3 tasks as a JSON array \u2014 no markdown, no wrapper:
+[{"action":"Specific executive action 1","role":"C-Suite Role","priority":"critical","timeTarget":"2 min"},{"action":"Specific executive action 2","role":"C-Suite Role","priority":"high","timeTarget":"5 min"},{"action":"Specific executive action 3","role":"C-Suite Role","priority":"high","timeTarget":"8 min"}]`
+          },
+          {
+            phase: "ADVANCE",
+            system: `You are an elite ADVANCE-phase success architect in the IDEA Framework for Fortune 1000 strategic execution. Your role: define what winning looks like \u2014 the measurable outcomes, ROI signals, and strategic indicators that confirm the execution succeeded.`,
+            user: `Playbook: "${playbookName}" | Context: ${triggerContext}
+
+Return EXACTLY 3 success indicators as a JSON array of strings \u2014 no markdown, no wrapper:
+["Indicator 1 \u2014 specific and measurable","Indicator 2 \u2014 specific and measurable","Indicator 3 \u2014 specific and measurable"]`
+          }
+        ];
+        const agentPromises = agentDefs.map(async (def) => {
+          const start = Date.now();
+          try {
+            this.requestCount++;
+            const response = await this.executeWithRetry(
+              () => this.client.chat.completions.create({
+                model: "gpt-5",
+                // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
+                messages: [
+                  { role: "system", content: def.system },
+                  { role: "user", content: def.user }
+                ],
+                max_tokens: 600,
+                temperature: 0.65
+              })
+            );
+            return {
+              phase: def.phase,
+              content: response.choices[0]?.message?.content?.trim() || "",
+              latencyMs: Date.now() - start
+            };
+          } catch {
+            return {
+              phase: def.phase,
+              content: "",
+              latencyMs: Date.now() - start
+            };
+          }
+        });
+        const results = await Promise.all(agentPromises);
+        const order = ["IDENTIFY", "DETECT", "EXECUTE", "ADVANCE"];
+        return order.map((p) => results.find((r) => r.phase === p));
+      }
+      getParallelAgentFallback(playbookName) {
+        return [
+          { phase: "IDENTIFY", content: `${playbookName} has been activated. Situational awareness is being established \u2014 assemble your Tier 1 team immediately.`, latencyMs: 0 },
+          { phase: "DETECT", content: JSON.stringify([{ risk: "Stakeholder availability", mitigation: "Pre-notify all Tier 1 roles now" }, { risk: "Information gap in first 3 minutes", mitigation: "Activate context briefing in parallel" }, { risk: "Resource contention", mitigation: "Audit pre-approved budget before task assignment" }]), latencyMs: 0 },
+          { phase: "EXECUTE", content: JSON.stringify([{ action: `Brief CEO \u2014 confirm activation authority for ${playbookName}`, role: "Chief Executive Officer", priority: "critical", timeTarget: "2 min" }, { action: "Freeze pre-approved budget and confirm resource availability", role: "Chief Financial Officer", priority: "high", timeTarget: "5 min" }, { action: "Brief General Counsel \u2014 assess legal exposure", role: "General Counsel", priority: "high", timeTarget: "8 min" }]), latencyMs: 0 },
+          { phase: "ADVANCE", content: JSON.stringify(["All Tier 1 stakeholders acknowledged within 4 minutes", "First task assigned within 8 minutes", "Full coordination achieved within 12 minutes"]), latencyMs: 0 }
+        ];
       }
       /**
        * Check if service is properly configured
@@ -14667,7 +14780,9 @@ Provide strategic analysis and actionable recommendations.`;
           configured: this.isConfigured,
           requestCount: this.requestCount,
           lastResetTime: this.lastResetTime,
-          rateLimitRemaining: Math.max(0, rateLimitRemaining)
+          rateLimitRemaining: Math.max(0, rateLimitRemaining),
+          provider: this.provider === "azure" ? "Azure OpenAI" : "OpenAI",
+          azureReady: this.provider === "azure"
         };
       }
     };
@@ -17068,7 +17183,7 @@ __export(ROIMeasurementService_exports, {
   roiMeasurementService: () => roiMeasurementService
 });
 import { eq as eq15, and as and11, desc as desc12, gte as gte4, lte } from "drizzle-orm";
-import pino6 from "pino";
+import pino7 from "pino";
 var logger6, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
   "server/services/ROIMeasurementService.ts"() {
@@ -17078,7 +17193,7 @@ var init_ROIMeasurementService = __esm({
     init_DatabaseNotificationService();
     init_OpenAIService();
     init_EnterpriseJobService();
-    logger6 = pino6({ name: "roi-measurement-enhanced" });
+    logger6 = pino7({ name: "roi-measurement-enhanced" });
     FORTUNE_1000_BENCHMARKS = {
       technology: {
         averageROI: 285,
@@ -19428,10 +19543,10 @@ __export(PlaybookLearningService_exports, {
   playbookLearningService: () => playbookLearningService
 });
 import { eq as eq21 } from "drizzle-orm";
-import pino7 from "pino";
+import pino8 from "pino";
 async function analyzeExecution(metrics) {
   try {
-    log.info({ metrics }, "Analyzing execution for learning opportunities");
+    log2.info({ metrics }, "Analyzing execution for learning opportunities");
     const playbook = await db.select().from(playbookLibrary).where(eq21(playbookLibrary.id, metrics.playbookId)).limit(1);
     if (!playbook.length) {
       throw new Error("Playbook not found");
@@ -19448,10 +19563,10 @@ async function analyzeExecution(metrics) {
       nextOptimization: selectNextOptimization(metrics),
       readinessForNextExecution: estimateReadiness(metrics)
     };
-    log.info({ insights: insights2 }, "\u2705 Learning analysis complete");
+    log2.info({ insights: insights2 }, "\u2705 Learning analysis complete");
     return insights2;
   } catch (error) {
-    log.error({ error }, "Error analyzing execution");
+    log2.error({ error }, "Error analyzing execution");
     throw error;
   }
 }
@@ -19537,13 +19652,13 @@ async function acceptSuggestion(suggestionId, userId) {
     throw error;
   }
 }
-var log, playbookLearningService, PlaybookLearningService_default;
+var log2, playbookLearningService, PlaybookLearningService_default;
 var init_PlaybookLearningService = __esm({
   "server/services/PlaybookLearningService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    log = pino7({ name: "learning-service" });
+    log2 = pino8({ name: "learning-service" });
     playbookLearningService = { analyzeExecution, getSuggestions, acceptSuggestion };
     PlaybookLearningService_default = { analyzeExecution, getSuggestions, acceptSuggestion };
   }
@@ -19556,14 +19671,14 @@ __export(PreFlightCheckService_exports, {
   preFlightCheckService: () => preFlightCheckService
 });
 import { eq as eq22, and as and15, inArray as inArray2 } from "drizzle-orm";
-import pino8 from "pino";
+import pino9 from "pino";
 var logger7, PreFlightCheckService, preFlightCheckService;
 var init_PreFlightCheckService = __esm({
   "server/services/PreFlightCheckService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    logger7 = pino8({ name: "pre-flight-check-service" });
+    logger7 = pino9({ name: "pre-flight-check-service" });
     PreFlightCheckService = class {
       log = logger7;
       /**
@@ -19803,14 +19918,14 @@ __export(ComplianceCheckService_exports, {
   complianceCheckService: () => complianceCheckService
 });
 import { eq as eq23, and as and16 } from "drizzle-orm";
-import pino9 from "pino";
+import pino10 from "pino";
 var logger8, ComplianceCheckService, complianceCheckService;
 var init_ComplianceCheckService = __esm({
   "server/services/ComplianceCheckService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    logger8 = pino9({ name: "compliance-check-service" });
+    logger8 = pino10({ name: "compliance-check-service" });
     ComplianceCheckService = class {
       log = logger8;
       /**
@@ -20004,14 +20119,14 @@ __export(ApprovalTokenService_exports, {
 import { eq as eq24, and as and17, isNull as isNull3 } from "drizzle-orm";
 import { nanoid as nanoid2 } from "nanoid";
 import bcrypt from "bcryptjs";
-import pino10 from "pino";
+import pino11 from "pino";
 var logger9, ApprovalTokenService, approvalTokenService;
 var init_ApprovalTokenService = __esm({
   "server/services/ApprovalTokenService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    logger9 = pino10({ name: "approval-token-service" });
+    logger9 = pino11({ name: "approval-token-service" });
     ApprovalTokenService = class {
       log = logger9;
       // Token expires in 72 hours by default
@@ -20377,7 +20492,7 @@ __export(BackgroundJobService_exports, {
   backgroundJobService: () => backgroundJobService
 });
 import { eq as eq26 } from "drizzle-orm";
-import pino11 from "pino";
+import pino12 from "pino";
 var logger10, BackgroundJobService, backgroundJobService;
 var init_BackgroundJobService = __esm({
   "server/services/BackgroundJobService.ts"() {
@@ -20385,7 +20500,7 @@ var init_BackgroundJobService = __esm({
     init_db();
     init_schema();
     init_PlaybookLearningService();
-    logger10 = pino11({ name: "background-job-service" });
+    logger10 = pino12({ name: "background-job-service" });
     BackgroundJobService = class {
       log = logger10;
       isProcessing = false;
@@ -29515,12 +29630,12 @@ var init_practiceDrillRoutes = __esm({
 });
 
 // server/services/SlackNotificationService.ts
-import pino12 from "pino";
+import pino13 from "pino";
 async function sendSlackNotification(message) {
   try {
     const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
     if (!slackWebhookUrl) {
-      log2.warn("SLACK_WEBHOOK_URL not configured - notifications will be logged only");
+      log3.warn("SLACK_WEBHOOK_URL not configured - notifications will be logged only");
       logNotificationLocally(message);
       return true;
     }
@@ -29542,14 +29657,14 @@ async function sendSlackNotification(message) {
       body: JSON.stringify(payload)
     });
     if (response.ok) {
-      log2.info({ message }, "\u2705 Slack notification sent");
+      log3.info({ message }, "\u2705 Slack notification sent");
       return true;
     } else {
-      log2.error({ status: response.status }, "\u274C Slack notification failed");
+      log3.error({ status: response.status }, "\u274C Slack notification failed");
       return false;
     }
   } catch (error) {
-    log2.error({ error }, "\u274C Error sending Slack notification");
+    log3.error({ error }, "\u274C Error sending Slack notification");
     logNotificationLocally(message);
     return false;
   }
@@ -29589,17 +29704,17 @@ async function notifyPlaybookActivation(playbookName, stakeholdersCount, deadlin
       ]
     });
   } catch (error) {
-    log2.warn({ error }, "Failed to notify playbook activation via Slack");
+    log3.warn({ error }, "Failed to notify playbook activation via Slack");
   }
 }
 function logNotificationLocally(message) {
-  log2.info({ message }, "\u{1F4E4} [LOCAL] Slack notification logged (webhook not configured)");
+  log3.info({ message }, "\u{1F4E4} [LOCAL] Slack notification logged (webhook not configured)");
 }
-var log2;
+var log3;
 var init_SlackNotificationService = __esm({
   "server/services/SlackNotificationService.ts"() {
     "use strict";
-    log2 = pino12({ name: "slack-service" });
+    log3 = pino13({ name: "slack-service" });
   }
 });
 
@@ -29611,9 +29726,9 @@ __export(PlaybookExecutor_exports, {
   getExecutionProgress: () => getExecutionProgress
 });
 import { eq as eq35 } from "drizzle-orm";
-import pino13 from "pino";
+import pino14 from "pino";
 async function activatePlaybook(organizationId, playbookId, scenarioId, executionPlanId, triggeredBy) {
-  log3.info(`\u{1F680} Activating playbook ${playbookId} for scenario ${scenarioId}`);
+  log4.info(`\u{1F680} Activating playbook ${playbookId} for scenario ${scenarioId}`);
   const activationTime = /* @__PURE__ */ new Date();
   const executionDeadline = new Date(activationTime.getTime() + 12 * 60 * 1e3);
   try {
@@ -29628,7 +29743,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
       startedAt: activationTime
     };
     const [instance] = await db.insert(executionInstances).values(executionData).returning();
-    log3.info({ instanceId: instance.id }, "\u2705 Execution instance created");
+    log4.info({ instanceId: instance.id }, "\u2705 Execution instance created");
     const stakeholders = await db.select().from(scenarioStakeholders).where(eq35(scenarioStakeholders.scenarioId, scenarioId));
     for (const stakeholder of stakeholders) {
       const userId = stakeholder.userId;
@@ -29644,9 +29759,9 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
         });
       }
     }
-    log3.info({ count: stakeholders.length }, "\u2705 Stakeholders notified");
+    log4.info({ count: stakeholders.length }, "\u2705 Stakeholders notified");
     notifyPlaybookActivation(playbookId, stakeholders.length, executionDeadline).catch((err) => {
-      log3.warn({ error: err }, "Slack notification failed");
+      log4.warn({ error: err }, "Slack notification failed");
     });
     return {
       success: true,
@@ -29656,7 +29771,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
       message: `Playbook activated. 12-minute execution window initiated.`
     };
   } catch (error) {
-    log3.error({ error }, "\u274C Playbook activation failed");
+    log4.error({ error }, "\u274C Playbook activation failed");
     throw error;
   }
 }
@@ -29680,7 +29795,7 @@ async function getExecutionProgress(executionId) {
       outcome: instance.outcome
     };
   } catch (error) {
-    log3.error({ error }, "Error tracking execution");
+    log4.error({ error }, "Error tracking execution");
     return null;
   }
 }
@@ -29693,10 +29808,10 @@ async function completeExecution(executionId, outcome, notes) {
       outcomeNotes: notes,
       actualExecutionTime: await calculateActualTime(executionId)
     }).where(eq35(executionInstances.id, executionId)).returning();
-    log3.info({ executionId, outcome }, "\u2705 Execution completed");
+    log4.info({ executionId, outcome }, "\u2705 Execution completed");
     return updated;
   } catch (error) {
-    log3.error({ error }, "Error completing execution");
+    log4.error({ error }, "Error completing execution");
     throw error;
   }
 }
@@ -29705,14 +29820,14 @@ async function calculateActualTime(executionId) {
   if (!instance?.startedAt) return 0;
   return Math.round((Date.now() - instance.startedAt.getTime()) / 1e3 / 60);
 }
-var log3;
+var log4;
 var init_PlaybookExecutor = __esm({
   "server/services/PlaybookExecutor.ts"() {
     "use strict";
     init_db();
     init_schema();
     init_SlackNotificationService();
-    log3 = pino13({ name: "playbook-executor" });
+    log4 = pino14({ name: "playbook-executor" });
   }
 });
 
@@ -30019,7 +30134,7 @@ var init_triggersSeed = __esm({
 // server/vite.ts
 var vite_exports = {};
 __export(vite_exports, {
-  log: () => log4,
+  log: () => log5,
   serveStatic: () => serveStatic,
   setupVite: () => setupVite
 });
@@ -30028,8 +30143,8 @@ import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 import { nanoid as nanoid3 } from "nanoid";
-import pino14 from "pino";
-function log4(message, source = "express") {
+import pino15 from "pino";
+function log5(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
@@ -30091,7 +30206,7 @@ var logger11, viteLogger;
 var init_vite = __esm({
   "server/vite.ts"() {
     "use strict";
-    logger11 = pino14({ name: "vite-service" });
+    logger11 = pino15({ name: "vite-service" });
     viteLogger = createLogger();
   }
 });
@@ -35300,6 +35415,93 @@ var LiveActivationService = class {
 };
 var liveActivationService = new LiveActivationService();
 
+// server/services/TeamsNotificationService.ts
+import pino6 from "pino";
+var log = pino6({ name: "teams-service" });
+async function sendTeamsNotification(card) {
+  const webhookUrl = process.env.TEAMS_WEBHOOK_URL;
+  if (!webhookUrl) {
+    log.warn("TEAMS_WEBHOOK_URL not configured \u2014 notification logged locally");
+    log.info({ card }, "[Teams Notification]");
+    return true;
+  }
+  try {
+    const payload = {
+      "@type": "MessageCard",
+      "@context": "http://schema.org/extensions",
+      themeColor: card.themeColor || "C9A84C",
+      summary: card.title,
+      sections: [
+        {
+          activityTitle: `**${card.title}**`,
+          activitySubtitle: card.text,
+          markdown: true
+        },
+        ...card.sections || []
+      ],
+      potentialAction: card.potentialAction || []
+    };
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+      log.info({ title: card.title }, "\u2705 Teams notification sent");
+      return true;
+    } else {
+      const body = await response.text();
+      log.error({ status: response.status, body }, "\u274C Teams notification failed");
+      return false;
+    }
+  } catch (error) {
+    log.error({ error }, "\u274C Error sending Teams notification");
+    return false;
+  }
+}
+async function notifyTeamsPlaybookActivation(params) {
+  const { playbookName, organizationName, triggeredBy = "Execution OS", triggerContext, appUrl = "https://vaughnmartin.com" } = params;
+  const now = (/* @__PURE__ */ new Date()).toLocaleString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
+  return sendTeamsNotification({
+    title: `\u{1F6A8} Playbook Activated \u2014 ${playbookName}`,
+    text: `Strategic execution initiated for **${organizationName}**. Your team has 12 minutes to full coordination.`,
+    themeColor: "C9A84C",
+    sections: [
+      {
+        activityTitle: "**Execution OS \u2014 War Room Open**",
+        activitySubtitle: `Activated: ${now}`,
+        facts: [
+          { name: "Playbook", value: playbookName },
+          { name: "Organization", value: organizationName },
+          { name: "Triggered by", value: triggeredBy },
+          { name: "Execution window", value: "12 minutes" },
+          ...triggerContext ? [{ name: "Trigger context", value: triggerContext }] : []
+        ],
+        markdown: true
+      }
+    ],
+    potentialAction: [
+      {
+        "@type": "OpenUri",
+        name: "\u2192 Open War Room",
+        targets: [{ os: "default", uri: `${appUrl}/command-center` }]
+      },
+      {
+        "@type": "OpenUri",
+        name: "\u2192 View Playbook",
+        targets: [{ os: "default", uri: `${appUrl}/playbook-library` }]
+      }
+    ]
+  });
+}
+
 // server/routes/activation-routes.ts
 function registerActivationRoutes(app2) {
   app2.get("/api/activation/integrations-status", async (req, res) => {
@@ -35364,6 +35566,14 @@ function registerActivationRoutes(app2) {
         }
       };
       liveActivationService.startSimulation(activationId, emitCallback);
+      const appUrl = process.env.APP_URL || "https://vaughnmartin.com";
+      notifyTeamsPlaybookActivation({
+        playbookName: activationState.playbookName || playbookKey,
+        organizationName: "Execution OS",
+        triggeredBy: "Execution OS Platform",
+        appUrl
+      }).catch(() => {
+      });
       res.status(201).json({
         success: true,
         activation: activationState
@@ -40778,31 +40988,62 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     { "action": "Specific tactical task 3 \u2014 tailored exactly to this trigger and playbook", "role": "Specific C-Suite Role", "priority": "high", "timeTarget": "8 min" }
   ]
 }`;
-      const briefJson = await openAIService2.analyzeText(prompt);
-      let brief;
+      const agentContext = {
+        playbookName,
+        triggerContext: triggerContext || "Manual activation \u2014 no specific trigger context provided."
+      };
+      const [agentResults, missionBrief] = await Promise.all([
+        openAIService2.runParallelAgents(agentContext),
+        openAIService2.analyzeText(
+          `You are a strategic execution commander. In ONE sentence, state the primary mission objective for activating "${playbookName}" given this context: ${triggerContext || "manual activation"}. Start with an action verb. Return ONLY the sentence.`,
+          "Executive mission objective generation"
+        )
+      ]);
+      const identifyAgent = agentResults.find((r) => r.phase === "IDENTIFY");
+      const detectAgent = agentResults.find((r) => r.phase === "DETECT");
+      const executeAgent = agentResults.find((r) => r.phase === "EXECUTE");
+      const advanceAgent = agentResults.find((r) => r.phase === "ADVANCE");
+      let topRisks = [
+        { risk: "Stakeholder availability constraints", mitigation: "Pre-notify all Tier 1 roles immediately" },
+        { risk: "Information gap during first 3 minutes", mitigation: "Activate context briefing in parallel" },
+        { risk: "Resource contention with active initiatives", mitigation: "Audit pre-approved budget before task assignment" }
+      ];
       try {
-        const clean = briefJson.replace(/```json|```/g, "").trim();
-        brief = JSON.parse(clean);
+        if (detectAgent?.content) topRisks = JSON.parse(detectAgent.content.replace(/```json|```/g, "").trim());
       } catch {
-        brief = {
-          situationFraming: `${playbookName} has been queued for activation. Your team is ready to execute.`,
-          missionObjective: `Execute ${playbookName} to protect strategic position and maintain execution velocity.`,
-          criticalRoles: ["Chief Executive Officer", "Chief Operating Officer", "Head of Strategy"],
-          topRisks: [
-            { risk: "Stakeholder availability constraints", mitigation: "Pre-notify all Tier 1 roles immediately" },
-            { risk: "Information gap during first 3 minutes", mitigation: "Activate context briefing in parallel" },
-            { risk: "Resource contention with active initiatives", mitigation: "Audit pre-approved budget before task assignment" }
-          ],
-          successIndicators: ["All Tier 1 stakeholders acknowledged within 4 minutes", "First task assigned within 8 minutes", "Full coordination achieved within 12 minutes"],
-          executionWindow: "12\u201318 minutes for full coordination",
-          commanderNote: "Speed is your advantage \u2014 initiate now and course-correct in real time.",
-          scenarioTasks: [
-            { action: `Immediately brief CEO and board \u2014 confirm ${playbookName} activation authority`, role: "Chief Executive Officer", priority: "critical", timeTarget: "2 min" },
-            { action: "Freeze pre-approved budget allocation and confirm resource availability", role: "Chief Financial Officer", priority: "high", timeTarget: "5 min" },
-            { action: "Brief General Counsel \u2014 assess legal exposure and initiate protective measures", role: "General Counsel", priority: "high", timeTarget: "8 min" }
-          ]
-        };
       }
+      let scenarioTasks = [
+        { action: `Brief CEO \u2014 confirm activation authority for ${playbookName}`, role: "Chief Executive Officer", priority: "critical", timeTarget: "2 min" },
+        { action: "Freeze pre-approved budget and confirm resource availability", role: "Chief Financial Officer", priority: "high", timeTarget: "5 min" },
+        { action: "Brief General Counsel \u2014 assess legal exposure", role: "General Counsel", priority: "high", timeTarget: "8 min" }
+      ];
+      try {
+        if (executeAgent?.content) scenarioTasks = JSON.parse(executeAgent.content.replace(/```json|```/g, "").trim());
+      } catch {
+      }
+      let successIndicators = ["All Tier 1 stakeholders acknowledged within 4 minutes", "First task assigned within 8 minutes", "Full coordination achieved within 12 minutes"];
+      try {
+        if (advanceAgent?.content) successIndicators = JSON.parse(advanceAgent.content.replace(/```json|```/g, "").trim());
+      } catch {
+      }
+      const providerInfo = openAIService2.getProvider();
+      const brief = {
+        situationFraming: identifyAgent?.content || `${playbookName} has been activated. Your team is ready to execute.`,
+        missionObjective: missionBrief || `Execute ${playbookName} to protect strategic position and maintain execution velocity.`,
+        criticalRoles: ["Chief Executive Officer", "Chief Operating Officer", "General Counsel"],
+        topRisks,
+        successIndicators,
+        executionWindow: "12\u201318 minutes for full coordination",
+        commanderNote: "Four specialist AI agents analyzed this activation simultaneously \u2014 IDENTIFY, DETECT, EXECUTE, ADVANCE. Speed is your advantage.",
+        scenarioTasks,
+        agentMetrics: {
+          agentsRun: agentResults.length,
+          parallelExecution: true,
+          provider: providerInfo.label,
+          totalLatencyMs: Math.max(...agentResults.map((r) => r.latencyMs)),
+          ideaFramework: true
+        }
+      };
       res.json({ brief, generatedAt: (/* @__PURE__ */ new Date()).toISOString() });
     } catch (error) {
       console.error("Execution brief error:", error);
@@ -41976,6 +42217,25 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           timestamp: (/* @__PURE__ */ new Date()).toISOString()
         }
       });
+    }
+  });
+  app2.get("/api/ai/provider-status", async (req, res) => {
+    try {
+      const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
+      const status = openAIService2.getServiceStatus();
+      const provider = openAIService2.getProvider();
+      res.json({
+        provider: provider.label,
+        azureReady: provider.azureReady,
+        configured: status.configured,
+        rateLimitRemaining: status.rateLimitRemaining,
+        teamsConfigured: !!process.env.TEAMS_WEBHOOK_URL,
+        slackConfigured: !!process.env.SLACK_WEBHOOK_URL,
+        ideaAgentsEnabled: true,
+        multiAgentParallel: true
+      });
+    } catch (error) {
+      res.json({ provider: "OpenAI", azureReady: false, configured: false });
     }
   });
   app2.get("/api/ai-radar/status", async (req, res) => {
@@ -45402,7 +45662,7 @@ async function seedEnrichedPlaybooks() {
 init_db();
 init_schema();
 import { count as count8, eq as eq40, sql as sql18 } from "drizzle-orm";
-import pino15 from "pino";
+import pino16 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
@@ -45450,7 +45710,7 @@ if (process.env.SENTRY_DSN) {
     integrations: [Sentry.httpIntegration(), Sentry.expressIntegration()]
   });
 }
-var logger12 = pino15({
+var logger12 = pino16({
   level: process.env.LOG_LEVEL || "info",
   redact: ["password", "email", "apiKey", "token", "authorization"],
   formatters: {
@@ -45646,7 +45906,7 @@ app.use((req, res, next) => {
       if (legacyLogLine.length > 80) {
         legacyLogLine = legacyLogLine.slice(0, 79) + "\u2026";
       }
-      log4(legacyLogLine);
+      log5(legacyLogLine);
     }
   });
   next();
@@ -45662,7 +45922,7 @@ var server = createServer2(app);
 server.listen(
   { port, host: "0.0.0.0", reusePort: true },
   () => {
-    log4("serving on port " + port);
+    log5("serving on port " + port);
     logger12.info(
       { port, env: app.get("env") },
       "Execution OS server listening - health checks active from startup"

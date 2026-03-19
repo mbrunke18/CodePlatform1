@@ -4,6 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
 import { ExecuteIQLogo } from '@/components/ExecuteIQLogo';
 
+interface ProviderStatus {
+  provider: string;
+  azureReady: boolean;
+  configured: boolean;
+  teamsConfigured: boolean;
+  slackConfigured: boolean;
+  ideaAgentsEnabled: boolean;
+  multiAgentParallel: boolean;
+}
+
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
 const TEAL = '#2B8A6E';
@@ -223,6 +233,7 @@ export default function CommandLanding() {
   const { data: statusData } = useQuery<any>({ queryKey: ['/api/dynamic-strategy/status'], retry: false });
   const { data: signalsData } = useQuery<any>({ queryKey: ['/api/dynamic-strategy/weak-signals'], retry: false });
   const { data: maturityData } = useQuery<any>({ queryKey: ['/api/intelligence/maturity-score'], retry: false });
+  const { data: providerData } = useQuery<ProviderStatus>({ queryKey: ['/api/ai/provider-status'], retry: false, staleTime: 60000 });
 
   const rawStatus = statusData?.status;
   const status = (rawStatus && typeof rawStatus === 'object') ? rawStatus : null;
@@ -303,7 +314,23 @@ export default function CommandLanding() {
             <ExecuteIQLogo height={38} color="white" variant="full" />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            {/* AI Provider badge */}
+            {providerData && (
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '4px 10px', borderRadius: 4,
+                background: providerData.azureReady ? 'rgba(0,120,212,0.12)' : 'rgba(43,138,110,0.1)',
+                border: `1px solid ${providerData.azureReady ? 'rgba(0,120,212,0.25)' : 'rgba(43,138,110,0.2)'}`,
+              }}>
+                <svg width={9} height={9} viewBox="0 0 24 24" fill={providerData.azureReady ? '#0078D4' : TEAL}>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 1.5, color: providerData.azureReady ? '#5BA3E8' : TEAL }}>
+                  {providerData.azureReady ? 'AZURE AI' : 'AI'} · {providerData.multiAgentParallel ? '4 AGENTS' : 'READY'}
+                </span>
+              </div>
+            )}
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, fontFamily: "'DM Mono', monospace", fontSize: 11, color: 'rgba(240,237,228,0.5)' }}>
               <PulseDot color={TEAL} />SIGNALS ACTIVE
             </div>
@@ -658,7 +685,8 @@ export default function CommandLanding() {
             { dot: TEAL, label: `${signalCount} signals monitored` },
             { dot: GOLD, label: '221 executive triggers configured' },
             { dot: 'rgba(240,237,228,0.3)', label: '170 playbooks ready' },
-            { dot: 'rgba(240,237,228,0.3)', label: `Maturity score: ${maturity}` },
+            { dot: providerData?.multiAgentParallel ? TEAL : 'rgba(240,237,228,0.3)', label: providerData?.multiAgentParallel ? '4-agent IDEA framework active' : 'AI agents ready' },
+            { dot: providerData?.teamsConfigured ? TEAL : GOLD, label: providerData?.teamsConfigured ? 'Teams notifications active' : 'Teams webhook: configure in integrations' },
           ].map(({ dot, label }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: dot, display: 'inline-block' }} />
