@@ -21,16 +21,20 @@ if (import.meta.env.VITE_SENTRY_DSN) {
 // resulting TypeError from reaching either the error boundary or Vite's overlay.
 
 // 1) Patch getComputedStyle so that when it is called with a non-Element
-//    (null, window, etc.) it re-throws the original browser message.
-//    This aborts handleScroll at line 767 BEFORE it reaches null.contains()
-//    at line 770, so only one error fires (which the suppressor below catches).
+//    (null, window, etc.) it returns a safe empty proxy instead of throwing.
+//    Throwing inside React's Suspense/event cycle stalls lazy-loaded pages.
+//    Any null.contains() that follows fires as a plain window error caught below.
 const _nativeGetComputedStyle = window.getComputedStyle;
 (window as any).getComputedStyle = function (
   element: unknown,
   pseudoElt?: string | null
 ): CSSStyleDeclaration {
   if (!element || !(element instanceof Element)) {
-    throw new TypeError("parameter 1 is not of type 'Element'.");
+    // Return a safe proxy instead of throwing — throwing inside React's
+    // event cycle (e.g. Radix DropdownMenu close) interrupts Suspense lazy
+    // loads and stalls newly-visited pages. Any null.contains() that follows
+    // will fire as a plain window error and be caught by suppressScrollLockError.
+    return new Proxy({} as CSSStyleDeclaration, { get: () => "" });
   }
   return _nativeGetComputedStyle.call(window, element as Element, pseudoElt);
 };
