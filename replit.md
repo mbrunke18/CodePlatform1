@@ -66,6 +66,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **ExecutionOSMicrosoftDiagram:** SVG 3-layer architecture diagram illustrating Execution OS orchestrating the Microsoft stack.
 - **EcosystemDiagramPage:** Standalone page (`/ecosystem`) detailing Microsoft integration.
 - **How It Works page:** Features diagrams and sections on the process from onboarding to ongoing value.
+- **InvestorLanding CTAs:** `/investor-landing` and `/executive-access` both serve `InvestorLanding.tsx`. Hero and closing CTA updated to prioritise "Schedule a Conversation" → `/pilot-program` and "Investor Resources" → `/investor-resources`. Closing section includes `investor@vaughnmartin.com` contact line.
+- **Homepage — Microsoft Section CTA:** "Also integrates with" badge row (Google Workspace, Salesforce, AWS, SAP, ServiceNow, Workday) + gold-outlined "View All 7 Enterprise Ecosystems →" button linking to `/ecosystems` replaces old faint text link.
+- **Homepage — WHY THE WORLD NEEDED THIS heading:** "Enterprise work was designed for a world **without AI.**" / "Nobody redesigned it." — two deliberate lines, no mid-sentence forced break.
+- **Executive Access Link (LOCKED):** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — token-gated entry that validates and drops visitor into the platform.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
