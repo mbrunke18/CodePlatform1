@@ -11,25 +11,25 @@ import { Link } from "wouter";
 
 const SCENE_NARRATIONS = [
   "Every Fortune 1000 company faces an average of 4 to 6 major strategic events per year.",
-  "Companies that respond decisively within the first 24 hours are 340 times more likely to achieve their desired outcome than those who wait.",
-  "Seventy-two hours. That's how long it takes most Fortune 500 companies just to mobilize — before a single task is assigned, before a single document is staged, before execution begins. Conference calls. Slack messages flying. Three days figuring out who owns what.",
+  "Enterprise work was designed for a world without AI. Committees. Alignment cycles. 30-day response times. These exist because humans couldn't process information fast enough to act decisively. So we built bureaucracy to slow decisions down to a pace we could manage.",
+  "AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The window closes anyway.",
   "What does delay cost? In M&A, $1.3 million in value erosion per day. In crisis response, $4.88 million average breach cost. In competitive response, market windows that close forever.",
-  "The reason? Companies improvise. Every time something hits, they start from zero. No playbook. No pre-assigned roles. Just scrambling.",
+  "The reason? Companies improvise. Every time something hits, they start from zero. No playbook. No pre-assigned roles. Just scrambling. This isn't a technology problem. It's a workflow architecture problem.",
   "I'm Martin Brunke. I spent 20 years inside Fortune 500 companies watching this happen.",
   "Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I lived it. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "Before all that? Football coach. 5 years. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
-  "But in business? We wing it. Every single time. It's insane when you think about it.",
-  "So I built Execution OS. The Strategic Execution Operating System.",
+  "But in business? We wing it. Every single time. It's insane when you think about it. And now that AI has removed the processing constraint — there is no excuse left for the old model.",
+  "So I built Execution OS. Not another AI tool. The new operating model. Redesigned from first principles for the AI era.",
   "170 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
-  "From signal detection to coordinated execution. 12 minutes. While competitors spend weeks just figuring out who needs to be in the room, what work is needed, and what plan to put together — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
+  "From signal detection to coordinated execution. 12 minutes. That's 30 days of mobilization compressed to 12 minutes. While competitors are still scheduling their first alignment call — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
-  "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",
+  "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model Fortune 1000s have been running for 40 years.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
   "Execution OS has an 18-month head start. 170 playbooks built. Platform validated with enterprise customers. The moat widens every day.",
-  "The companies that figure this out first don't just survive. They dominate. Welcome to Execution OS. Let's execute decisions at scale.",
+  "The companies that figure this out first don't just survive. They dominate. Welcome to Execution OS. The new operating model for AI-native enterprises.",
 ];
 
 function useTTSNarration() {

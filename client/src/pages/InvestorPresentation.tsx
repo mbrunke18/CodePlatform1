@@ -87,10 +87,13 @@ function InvestorPresentation() {
           10.3% revenue impact within 12 months
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-6 leading-tight">
-          The Strategic Execution OS<br />for Fortune 1000
+          We redesign how work flows<br />in the age of AI
         </h1>
-        <p className="text-xl md:text-2xl text-[#0A0F2E] max-w-3xl mb-12">
-          170 pre-built playbooks that compress weeks of mobilization into 12 minutes of live execution
+        <p className="text-xl md:text-2xl text-[#0A0F2E] max-w-3xl mb-6">
+          The new operating model for Fortune 1000 enterprises — 170 pre-staged playbooks that compress 30 days of mobilization into 12 minutes of live execution
+        </p>
+        <p className="text-base text-[#6B7280] max-w-2xl mb-12">
+          Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
         </p>
         <div className="flex items-center gap-2 text-[#0A0F2E] text-lg">
           <span className="font-semibold text-[#0A0F2E]">Martin Brunke</span>
@@ -110,10 +113,10 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl w-full">
           <div className="space-y-4">
             <p className="text-[#0A0F2E] text-lg leading-relaxed">
-              When a strategic trigger hits — a competitor launches, regulations shift, a cyber threat emerges — enterprises descend into coordination chaos.
+              Enterprise work was designed for a world without AI. Committees exist because humans couldn't process information fast enough to act alone. Alignment cycles exist because coordination was expensive. AI changed the constraint.
             </p>
             <p className="text-[#0A0F2E] text-lg leading-relaxed">
-              Teams scramble across Slack, email, and ad-hoc meetings. Playbooks don't exist. Stakeholders aren't pre-identified. Budgets aren't pre-approved. The result: weeks of fumbling — calls, meetings, misaligned stakeholders — while value evaporates.
+              But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. We're not competing with Copilot. We're competing with the 40-year-old operating model itself.
             </p>
           </div>
           <div className="space-y-4">

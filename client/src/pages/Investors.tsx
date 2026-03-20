@@ -395,21 +395,21 @@ export default function Investors() {
                 </div>
 
                 <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(34px,4vw,52px)', fontWeight: 600, color: '#fff', lineHeight: 1.08, marginBottom: 32, letterSpacing: '-0.01em' }}>
-                  The layer nobody built.
+                  Enterprise work was designed for a world without AI. Nobody redesigned it.
                 </h2>
 
                 <div style={{ borderLeft: '2px solid rgba(201,168,76,0.4)', paddingLeft: 28, marginBottom: 36 }}>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, fontWeight: 500 }}>
-                    Organizations systematized finance. Customers. Tickets. Supply chains. Every layer of operational life has dedicated infrastructure — purpose-built systems that transformed improvised work into institutional capability.
+                    Committees exist because humans couldn't process information fast enough to act alone. Alignment cycles exist because coordination was expensive. 30-day response times exist because that's how long it took to get the right people in the right room with the right context.
                   </p>
                 </div>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, fontWeight: 500, marginBottom: 24 }}>
-                  But never the layer that determines whether strategy actually happens. Never the system whose sole purpose is to compress the distance between a strategic signal and full organizational response. That layer — the coordination infrastructure between decision and execution — has never existed as a dedicated platform. Every response has been improvised. Every time, something was lost.
+                  AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway. We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model Fortune 1000s have been running for 40 years.
                 </p>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, fontWeight: 600, marginBottom: 40 }}>
-                  ERP did not solve it. CRM did not solve it. Project management did not solve it. This is a new category. And Execution OS is the first system built to fill it.
+                  VaughnMartin rebuilt how work flows from first principles. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Execution OS is the first system built for the AI-native enterprise.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
@@ -429,7 +429,7 @@ export default function Investors() {
                 <div style={{ marginTop: 36, paddingTop: 32, borderTop: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', gap: 20 }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.02em', flexShrink: 0 }}>Execution OS</div>
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
-                  <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>The missing infrastructure layer.</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>The new operating model for AI-native enterprises.</div>
                 </div>
               </div>
             </div>

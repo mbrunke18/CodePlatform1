@@ -236,7 +236,7 @@ function HeroSection() {
       <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
         <Reveal>
           <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
-            EXECUTION INFRASTRUCTURE · FORTUNE 1000
+            WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
           </div>
 
           {/* Built for — audience badges */}
@@ -268,8 +268,11 @@ function HeroSection() {
             We collapse all three into 12 minutes.
           </p>
 
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 620, margin: "0 auto 40px", lineHeight: 1.7 }}>
-            Execution OS is the coordination infrastructure Fortune 1000 enterprises use to deploy a full organizational response in under 12 minutes — pre-staged, pre-assigned, zero improvisation.
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 12px", lineHeight: 1.7 }}>
+            Enterprise work was designed for a world without AI. Committees. Alignment cycles. Coordination delays. Every vendor bolted AI onto the same broken model.
+          </p>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.7 }}>
+            Execution OS is the new operating model — redesigned from first principles for the AI era. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12 minutes replaces 30 days.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
@@ -341,9 +344,9 @@ function ProblemSection() {
       accent: GOLD, terminal: false,
     },
     {
-      num: "02", title: "72 Hours Just to Assemble", time: "T+72hrs",
-      timeLabel: "Days Lost",
-      body: "Emergency calls. Competing priorities. No clear ownership. Three days of coordination pass before everyone is finally in the room — and nothing has been executed.",
+      num: "02", title: "Weeks Just to Get Everyone Aligned", time: "T+Weeks",
+      timeLabel: "Weeks Lost",
+      body: "Emergency calls. Competing priorities. No clear ownership. Weeks of coordination pass before everyone is finally in the room — and nothing has been executed. The old model wasn't built for speed. It was built for a world where humans needed time to process.",
       accent: GOLD, terminal: false,
     },
     {
@@ -500,7 +503,7 @@ function MissingLayerSection() {
   const rows = [
     { label: "STRATEGY",         sub: "Board Decisions · Planning · Vision",  hi: false },
     { label: "ERP / CRM / ITSM", sub: "SAP · Salesforce · ServiceNow",        hi: false },
-    { label: "EXECUTION OS",     sub: "The Coordination Layer",                hi: true  },
+    { label: "EXECUTION OS",     sub: "New Operating Model · AI-Native Enterprises", hi: true  },
     { label: "TASK MANAGEMENT",  sub: "Jira · Monday · Asana",                 hi: false },
     { label: "PEOPLE",           sub: "Your Organization",                     hi: false },
   ];
@@ -510,16 +513,20 @@ function MissingLayerSection() {
       <SectionMarker n="03" />
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
-          <SectionLabel>THE MISSING LAYER</SectionLabel>
+          <SectionLabel>WHY THE WORLD NEEDED THIS</SectionLabel>
           <h2 className="hp-missing-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, maxWidth: 860, margin: "0 auto 32px" }}>
-            ERP. CRM. ITSM. Strategy decks.
+            Enterprise work was designed for a world
             <br />
-            <span style={{ color: GOLD }}>Nobody built the coordination layer.</span>
+            <span style={{ color: GOLD }}>without AI. Nobody redesigned it.</span>
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
-            The tools that manage tasks, relationships, and IT workflows all exist. What nobody built is the infrastructure that deploys your entire organization — with roles, tasks, documents, and budget — the moment a strategic trigger fires.
+            Committees exist because humans couldn't process information fast enough to act alone. Alignment cycles exist because coordination was expensive. 30-day response times exist because that's how long it took to get the right people in the right room with the right context.
           </p>
-          <p style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 64 }}>Until now.</p>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
+            AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway.
+          </p>
+          <p style={{ ...GEO, fontSize: 26, fontWeight: 700, color: GOLD, marginBottom: 16 }}>We didn't add AI to the old model.</p>
+          <p style={{ ...GEO, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 64 }}>We redesigned how strategic work flows.</p>
         </Reveal>
 
         <Reveal delay={0.2}>
@@ -833,13 +840,12 @@ function MicrosoftEcosystemBanner() {
               </span>
             </div>
             <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: IVORY, lineHeight: 1.15, marginBottom: 16 }}>
-              The strategic command layer<br />
-              <em style={{ color: GOLD, fontStyle: 'italic' }}>above</em> your Microsoft stack.
+              Every enterprise has Microsoft's AI stack.
+              <br />
+              <em style={{ color: GOLD, fontStyle: 'italic' }}>None have the operating model to use it.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: 'rgba(240,237,228,0.55)', maxWidth: 620, margin: '0 auto 8px' }}>
-              Execution OS doesn't replace your Microsoft investment — it orchestrates it.
-              When a strategic trigger fires, the response deploys inside Teams, Azure AI, and M365
-              within 12 minutes. No new portals. No migration. No change management.
+              Execution OS is the operating model layer above your Microsoft investment. When a strategic trigger fires, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
             </p>
             <p style={{ ...DM, fontSize: 13, color: TEAL, fontWeight: 600 }}>
               For investors: every Microsoft enterprise customer is an immediately addressable prospect.

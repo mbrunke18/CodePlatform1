@@ -119,11 +119,11 @@ export default function VCPresentations() {
   ];
 
   const keyInvestmentThesis = [
-    "First platform to combine AI signal monitoring with immediate strategic execution",
-    "3,600× Execution Head Start: while rivals spend weeks mobilizing, Execution OS customers are deep in execution — in 12 minutes",
-    "Fortune 1000 enterprises require both strategic intelligence and execution velocity",
-    "170 playbooks across 9 domains — the broadest strategic response coverage available",
-    "Scalable enterprise architecture serving organizations with 10,000+ employees"
+    "We redesign how work flows in the age of AI — not another AI tool bolted onto the old model",
+    "Enterprise work was built for a world without AI: committees, alignment cycles, 30-day delays were the best humans could do. AI changed the constraint — we changed the operating model",
+    "3,600× Execution Head Start: 30 days of mobilization compressed to 12 minutes — before rivals have scheduled their first alignment call",
+    "170 pre-staged playbooks replace real-time coordination — the broadest AI-native strategic response coverage available",
+    "We're not competing with Copilot. We're competing with the meeting-heavy, committee-bound operating model Fortune 1000s have run for 40 years"
   ];
 
   return (

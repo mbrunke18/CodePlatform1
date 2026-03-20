@@ -99,6 +99,23 @@ export default function InvestorLanding() {
               Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Execution OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Execution OS customers are already deep into coordinated response — in 12 minutes.
             </p>
 
+            {/* VaughnMartin Thesis Block */}
+            <div className="max-w-3xl mx-auto mb-10 rounded-2xl border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">
+              <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C9A84C] mb-4">The VaughnMartin Thesis</div>
+              <p className="text-base text-white/90 leading-relaxed mb-3 font-medium">
+                The way enterprises work was designed for a world without AI. Committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act alone.
+              </p>
+              <p className="text-base text-white/70 leading-relaxed mb-3">
+                AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays.
+              </p>
+              <p className="text-base font-bold leading-relaxed" style={{ color: '#C9A84C' }}>
+                VaughnMartin redesigned how work flows from first principles for the AI era. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
+              </p>
+              <div className="mt-4 pt-4 border-t border-white/10 text-sm text-white/50 italic">
+                We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model Fortune 1000s have been running for 40 years.
+              </div>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg"
