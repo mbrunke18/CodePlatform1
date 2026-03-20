@@ -20,7 +20,9 @@ import {
   Globe2,
   FileText,
   Quote,
-  AlertTriangle
+  AlertTriangle,
+  Mail,
+  Calendar
 } from "lucide-react";
 import { useLocation } from "wouter";
 import StandardNav from "@/components/layout/StandardNav";
@@ -117,33 +119,33 @@ export default function InvestorLanding() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">
-              <Button 
+              <Button
+                size="lg"
+                onClick={() => setLocation("/pilot-program")}
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
+                data-testid="button-request-pilot"
+              >
+                <Calendar className="mr-2 h-5 w-5" />
+                Schedule a Conversation
+              </Button>
+              <Button
                 size="lg"
                 onClick={() => setLocation("/executive-demo-walkthrough")}
-                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
+                className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
                 data-testid="button-see-demo"
               >
-                <Rocket className="mr-2 h-5 w-5" />
+                <Rocket className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 See 8-Minute Demo
               </Button>
-              <Button 
-                size="lg"
-                onClick={() => setLocation("/incident-analyzer")}
-                className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
-                data-testid="button-incident-analyzer"
-              >
-                <AlertTriangle className="mr-2 h-5 w-5 text-[#C9A84C]" />
-                Try the Strategic Analyzer
-              </Button>
-              <Button 
+              <Button
                 size="lg"
                 variant="outline"
-                onClick={() => setLocation("/readiness-assessment")}
-                className="border-white/20 text-white hover:bg-[#0A0F2E]"
-                data-testid="button-readiness-assessment"
+                onClick={() => setLocation("/investor-resources")}
+                className="border-white/20 text-white hover:bg-white/10"
+                data-testid="button-investor-resources"
               >
-                <Shield className="mr-2 h-5 w-5 text-[#C9A84C]" />
-                Check Your Readiness
+                <FileText className="mr-2 h-5 w-5 text-[#C9A84C]" />
+                Investor Resources
               </Button>
             </div>
           </div>
@@ -1103,33 +1105,50 @@ export default function InvestorLanding() {
         {/* CTA Section */}
         <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C9A84C] mb-4">Ready to Move Forward</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" data-testid="heading-cta">
-              Join Us in Creating a New Software Category
+              Let's Build This Together
             </h2>
-            <p className="text-xl mb-8 text-white/80" data-testid="text-cta-description">
-              Execution OS is defining the Strategic Execution Operating System category—a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+            <p className="text-xl mb-4 text-white/80" data-testid="text-cta-description">
+              Execution OS is defining the Strategic Execution Operating System category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <p className="text-base mb-10 text-white/60">
+              Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center mb-8">
+              <Button
+                size="lg"
+                onClick={() => setLocation("/pilot-program")}
+                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
+                data-testid="button-cta-schedule"
+              >
+                <Calendar className="mr-2 h-5 w-5" />
+                Schedule a Conversation
+              </Button>
               <Button
                 size="lg"
                 onClick={() => setLocation("/executive-demo-walkthrough")}
-                className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
+                className="bg-white/10 text-white hover:bg-white/20 border border-white/20"
                 data-testid="button-cta-demo"
               >
-                <Rocket className="mr-2 h-5 w-5" />
+                <Rocket className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 Experience the Platform
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => setLocation("/dashboard")}
+                onClick={() => setLocation("/investor-resources")}
                 className="border-white/20 text-white hover:bg-white/10"
-                data-testid="button-cta-dashboard"
+                data-testid="button-cta-resources"
               >
-                Explore Dashboard
+                <FileText className="mr-2 h-5 w-5 text-[#C9A84C]" />
+                Investor Resources
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
+            <p className="text-sm text-white/40">
+              VaughnMartin · Strategic Execution Operating System · <span className="text-[#C9A84C]">investor@vaughnmartin.com</span>
+            </p>
           </div>
         </section>
     </div>
