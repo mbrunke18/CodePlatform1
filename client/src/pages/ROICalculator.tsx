@@ -148,11 +148,10 @@ export default function ROICalculator() {
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
-              Quantify the <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Cost of Inaction</em>
+              The Competitive Window <em style={{ fontStyle: "italic", color: "#C9A84C" }}>You're Leaving Open</em>
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
-              Calculate the potential savings by compressing your organization's response time from 
-              industry average (30-day mobilization cycle) to Execution OS standard (12 minutes).
+              Every hour between when AI detects a signal and when your organization executes is a window your competitor can use. Quantify exactly what closing that gap — from 30 days to 12 minutes — means for your enterprise.
             </p>
           </div>
         </section>
@@ -279,7 +278,7 @@ export default function ROICalculator() {
                     </div>
                     <div className="flex justify-between py-3 border-b border-white/10">
                       <span className="text-white/60 text-sm">Response Time Reduction</span>
-                      <span className="font-mono text-teal-400 font-bold">72h → 12m</span>
+                      <span className="font-mono text-teal-400 font-bold">30 days → 12 min</span>
                     </div>
                   </div>
 

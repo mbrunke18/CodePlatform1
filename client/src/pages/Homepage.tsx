@@ -255,24 +255,22 @@ function HeroSection() {
 
           <h1 className="hp-hero-h1" style={{
             ...GEO, fontSize: 44, fontWeight: 700, color: "#fff",
-            lineHeight: 1.3, maxWidth: 780, margin: "0 auto 20px",
+            lineHeight: 1.25, maxWidth: 820, margin: "0 auto 20px",
           }}>
-            <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Days</span> just to reach a decision.
+            AI is generating signals at machine speed.
             <br />
-            <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>More days</span> just to align the right people.
-            <br />
-            <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Weeks</span> just to begin executing.
+            <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Your organization is still taking 30 days to respond.</span>
           </h1>
 
           <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.4 }}>
-            We collapse all three into 12 minutes.
+            Execution OS closes that gap — in 12 minutes.
           </p>
 
           <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.75 }}>
-            Enterprise work was designed for a world without AI. Committees. Alignment cycles. Coordination delays. Every vendor bolted AI onto the same broken model.
+            The bottleneck is no longer information — AI detects competitive threats, regulatory shifts, and market signals faster than any human team. The bottleneck is execution. Every vendor bolted AI onto the same 40-year-old operating model.
           </p>
           <p style={{ ...DM, fontSize: 16, color: "rgba(200,212,232,0.85)", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.75, fontWeight: 500 }}>
-            Execution OS is the new operating model — redesigned from first principles for the AI era. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12 minutes replaces 30 days.
+            Execution OS is the bridge — the vehicle that lets human organizational action keep pace with AI-generated intelligence. Pre-built execution architecture deploys the moment AI detects the signal. Not a faster spreadsheet. A redesigned operating model.
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
@@ -665,6 +663,82 @@ function IDEASection() {
 }
 
 // ─── SECTION 6: Platform Preview ─────────────────────────────────────────────
+function SignalTimelineBar() {
+  const [activeStage, setActiveStage] = useState(0);
+
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setActiveStage(1), 900),
+      setTimeout(() => setActiveStage(2), 2100),
+      setTimeout(() => setActiveStage(3), 3600),
+    ];
+    const loop = setInterval(() => {
+      setActiveStage(0);
+      setTimeout(() => setActiveStage(1), 900);
+      setTimeout(() => setActiveStage(2), 2100);
+      setTimeout(() => setActiveStage(3), 3600);
+    }, 7000);
+    return () => { timers.forEach(clearTimeout); clearInterval(loop); };
+  }, []);
+
+  const stages = [
+    { label: "Signal Detected", time: "0:00", sub: "AI identifies trigger", color: TEAL_LIGHT },
+    { label: "Commander Brief", time: "0:47", sub: "AI generates executive summary", color: GOLD },
+    { label: "Playbook Staged", time: "4:12", sub: "Roles, tasks, budgets pre-assigned", color: GOLD_LIGHT },
+    { label: "Full Execution", time: "12:00", sub: "Organization executing", color: TEAL_LIGHT },
+  ];
+
+  return (
+    <div style={{ maxWidth: 860, margin: "0 auto 48px", padding: "32px 36px", background: NAVY, borderRadius: 10, border: `1px solid rgba(201,168,76,0.18)` }}>
+      <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 24, textAlign: "center" }}>
+        From Signal to Execution — The 12-Minute Chain
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, position: "relative" }}>
+        {/* Connector line */}
+        <div style={{ position: "absolute", top: 20, left: "12.5%", right: "12.5%", height: 2, background: "rgba(255,255,255,0.08)", zIndex: 0 }}>
+          <div style={{
+            height: "100%",
+            background: `linear-gradient(90deg, ${TEAL_LIGHT}, ${GOLD})`,
+            width: activeStage === 0 ? "0%" : activeStage === 1 ? "33%" : activeStage === 2 ? "66%" : "100%",
+            transition: "width 0.8s ease",
+          }} />
+        </div>
+        {stages.map((s, i) => {
+          const lit = activeStage > i;
+          const active = activeStage === i + 1;
+          return (
+            <div key={s.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, position: "relative", zIndex: 1 }}>
+              <div style={{
+                width: 40, height: 40, borderRadius: "50%",
+                background: lit || active ? s.color : "rgba(255,255,255,0.06)",
+                border: `2px solid ${lit || active ? s.color : "rgba(255,255,255,0.12)"}`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                boxShadow: active ? `0 0 16px ${s.color}60` : "none",
+                transition: "all 0.5s ease",
+              }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: lit || active ? NAVY : "rgba(255,255,255,0.25)" }}>
+                  {i + 1}
+                </span>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: lit || active ? s.color : "rgba(255,255,255,0.2)", fontVariantNumeric: "tabular-nums", transition: "color 0.5s ease" }}>
+                  {s.time}
+                </div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, color: lit || active ? "#fff" : "rgba(255,255,255,0.3)", marginTop: 4, letterSpacing: "0.03em", transition: "color 0.5s ease" }}>
+                  {s.label}
+                </div>
+                <div style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 3 }}>
+                  {s.sub}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function PlatformPreviewSection() {
   const phases = ["IDENTIFY", "DETECT", "EXECUTE", "ADVANCE"];
   const tasks = [
@@ -687,6 +761,11 @@ function PlatformPreviewSection() {
               If the playbook calls for a war room, it's already booked. If it calls for an all-hands, it's pre-distributed. Every role, task, approval, and escalation path is pre-staged — so when the trigger fires, the organization executes instead of improvises.
             </p>
           </div>
+        </Reveal>
+
+        {/* Signal-to-Execution animated timeline */}
+        <Reveal delay={0.1}>
+          <SignalTimelineBar />
         </Reveal>
 
         {/* Console mockup */}
