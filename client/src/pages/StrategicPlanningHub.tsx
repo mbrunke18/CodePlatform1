@@ -25,8 +25,18 @@ import {
   Download, 
   Share, 
   ArrowLeft, 
-  Home
+  Home,
+  ArrowRight,
+  Activity,
+  Shield,
+  Zap,
+  Map
 } from 'lucide-react';
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 interface StrategicScenario {
   id: string;
@@ -258,67 +268,39 @@ export default function StrategicPlanningHub() {
           </div>
         </div>
 
-        {/* Portfolio Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Total Scenarios</h3>
-                <Target className="h-5 w-5 text-[#C9A84C]" />
+        {/* Portfolio Command Tiles */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { label: "Active Scenarios", value: String(portfolioMetrics.activeProjects), sub: `${portfolioMetrics.totalScenarios} total in portfolio`, icon: Target, accent: GOLD, tag: "IN FLIGHT" },
+            { label: "Portfolio Health", value: `${portfolioMetrics.portfolioHealth}%`, sub: "Milestone velocity on track", icon: Activity, accent: TEAL, tag: "HEALTHY" },
+            { label: "Total Budget", value: formatCurrency(portfolioMetrics.totalBudget), sub: "Across all active scenarios", icon: DollarSign, accent: GOLD, tag: "AUTHORIZED" },
+            { label: "Completed This Quarter", value: String(portfolioMetrics.completedThisQuarter), sub: "Closed with post-mortem review", icon: CheckCircle, accent: TEAL, tag: "CLOSED" },
+            { label: "Risk Exposure", value: `${portfolioMetrics.riskExposure}%`, sub: "Mitigated via playbook automation", icon: Shield, accent: GOLD, tag: "MONITORED" },
+            { label: "Avg. ROI Realized", value: "245%", sub: "Across completed scenarios", icon: TrendingUp, accent: TEAL, tag: "VERIFIED" },
+          ].map(({ label, value, sub, icon: Icon, accent, tag }) => (
+            <div
+              key={label}
+              style={{
+                background: NAVY,
+                borderTop: `1px solid ${accent}40`,
+                borderLeft: `1px solid ${accent}20`,
+                borderRight: `1px solid ${accent}20`,
+                borderBottom: `3px solid ${accent}`,
+                borderRadius: 12,
+              }}
+              className="p-5 hover:scale-[1.02] transition-transform duration-200 cursor-default"
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div className="p-2 rounded-lg" style={{ background: `${accent}18` }}>
+                  <Icon className="h-5 w-5" style={{ color: accent }} />
+                </div>
+                <span className="text-xs font-bold tracking-widest" style={{ color: `${accent}99` }}>{tag}</span>
               </div>
-              <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.totalScenarios}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Active Projects</h3>
-                <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.activeProjects}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Completed Q1</h3>
-                <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.completedThisQuarter}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Total Budget</h3>
-                <DollarSign className="h-5 w-5 text-[#C9A84C]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatCurrency(portfolioMetrics.totalBudget)}</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Portfolio Health</h3>
-                <BarChart3 className="h-5 w-5 text-[#2B8A6E]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.portfolioHealth}%</div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-[#0A0F2E] dark:text-white">Risk Exposure</h3>
-                <AlertCircle className="h-5 w-5 text-[#C9A84C]" />
-              </div>
-              <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{portfolioMetrics.riskExposure}%</div>
-            </CardContent>
-          </Card>
+              <div className="text-3xl font-bold mb-1" style={{ ...CG, color: accent }}>{value}</div>
+              <div className="text-sm font-semibold text-white mb-0.5">{label}</div>
+              <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{sub}</div>
+            </div>
+          ))}
         </div>
 
         {/* Main Content Tabs */}
@@ -531,37 +513,42 @@ export default function StrategicPlanningHub() {
 
           {/* Planning Tools */}
           <TabsContent value="planning" className="space-y-6">
-            <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
-              <CardHeader>
-                <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Planning Tools</CardTitle>
-              </CardHeader>
-              <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Button className="h-24 bg-[#0A0F2E] text-white hover:bg-[#141B45] flex-col gap-2">
-                  <Lightbulb className="w-8 h-8" />
-                  Scenario Builder
-                </Button>
-                <Button className="h-24 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] flex-col gap-2">
-                  <BarChart3 className="w-8 h-8" />
-                  Impact Analysis
-                </Button>
-                <Button className="h-24 bg-[#0A0F2E] text-white hover:bg-[#141B45] flex-col gap-2">
-                  <Users className="w-8 h-8" />
-                  Stakeholder Mapping
-                </Button>
-                <Button className="h-24 bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] flex-col gap-2">
-                  <AlertCircle className="w-8 h-8" />
-                  Risk Assessment
-                </Button>
-                <Button className="h-24 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] flex-col gap-2">
-                  <DollarSign className="w-8 h-8" />
-                  Budget Planning
-                </Button>
-                <Button className="h-24 bg-[#0A0F2E] text-white hover:bg-[#141B45] flex-col gap-2">
-                  <Calendar className="w-8 h-8" />
-                  Timeline Builder
-                </Button>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                { title: "Scenario Builder", desc: "Model strategic situations and define response playbooks with AI-guided prompts", icon: Lightbulb, accent: GOLD, tag: "AI-POWERED", path: "/simulation-studio" },
+                { title: "Impact Analysis", desc: "Quantify potential outcomes, cost exposure, and revenue risk across scenarios", icon: BarChart3, accent: TEAL, tag: "ANALYTICS", path: "/analytics" },
+                { title: "Stakeholder Mapping", desc: "Define who needs to be in the room — roles, authority, and notification tiers", icon: Users, accent: GOLD, tag: "COORDINATION", path: "/setup/team" },
+                { title: "Risk Assessment", desc: "Score probability and severity across all active and planned strategic initiatives", icon: Shield, accent: TEAL, tag: "INTELLIGENCE", path: "/ai-radar" },
+                { title: "Budget Planning", desc: "Pre-authorize response budgets and resource thresholds before a trigger fires", icon: DollarSign, accent: GOLD, tag: "FINANCIAL", path: "/roi-dashboard" },
+                { title: "Timeline Builder", desc: "Map milestones, decision gates, and escalation checkpoints across every phase", icon: Map, accent: TEAL, tag: "EXECUTION", path: "/execution-learning" },
+              ].map(({ title, desc, icon: Icon, accent, tag, path }) => (
+                <Link key={title} to={path}>
+                  <div
+                    style={{
+                      background: NAVY,
+                      borderTop: `1px solid ${accent}40`,
+                      borderLeft: `1px solid ${accent}20`,
+                      borderRight: `1px solid ${accent}20`,
+                      borderBottom: `3px solid ${accent}`,
+                      borderRadius: 12,
+                    }}
+                    className="p-5 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group h-full"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="p-2 rounded-lg" style={{ background: `${accent}18` }}>
+                        <Icon className="h-5 w-5" style={{ color: accent }} />
+                      </div>
+                      <span className="text-xs font-bold tracking-widest" style={{ color: `${accent}99` }}>{tag}</span>
+                    </div>
+                    <div className="text-base font-bold text-white mb-1.5">{title}</div>
+                    <div className="text-xs leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.5)" }}>{desc}</div>
+                    <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: accent }}>
+                      Open Tool <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </TabsContent>
         </Tabs>
       </div>

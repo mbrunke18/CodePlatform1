@@ -56,11 +56,13 @@ export default function NFLLearningDashboard() {
   const activations = activationsData ?? [];
 
   // Fetch drill performance data
-  const { data: drillPerformancesData } = useQuery<any[]>({
+  const { data: drillPerformancesData } = useQuery<any>({
     queryKey: [`/api/practice-drills/performance`, organizationId],
     enabled: !!organizationId,
   });
-  const drillPerformances = drillPerformancesData ?? [];
+  const drillPerformances: any[] = Array.isArray(drillPerformancesData)
+    ? drillPerformancesData
+    : (drillPerformancesData?.performances ?? []);
 
   // Fetch playbook library for context
   const { data: libraryDataRaw } = useQuery<any>({
