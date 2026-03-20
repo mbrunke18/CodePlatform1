@@ -500,13 +500,14 @@ function Router() {
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
         <Route path="/approval-error" component={lazy(() => import('./pages/ApprovalError'))} />
-        <Route path="/ecosystem" component={lazy(() => import('./pages/EcosystemDiagramPage'))} />
+        <Route path="/ecosystems" component={lazy(() => import('./pages/ecosystems/EcosystemsHub'))} />
         <Route path="/ecosystem/google" component={lazy(() => import('./pages/ecosystems/GoogleEcosystem'))} />
         <Route path="/ecosystem/salesforce" component={lazy(() => import('./pages/ecosystems/SalesforceEcosystem'))} />
         <Route path="/ecosystem/aws" component={lazy(() => import('./pages/ecosystems/AWSEcosystem'))} />
         <Route path="/ecosystem/sap" component={lazy(() => import('./pages/ecosystems/SAPEcosystem'))} />
         <Route path="/ecosystem/servicenow" component={lazy(() => import('./pages/ecosystems/ServiceNowEcosystem'))} />
         <Route path="/ecosystem/workday" component={lazy(() => import('./pages/ecosystems/WorkdayEcosystem'))} />
+        <Route path="/ecosystem" component={lazy(() => import('./pages/EcosystemDiagramPage'))} />
 
         {/* Additional Pages */}
         <Route path="/demo-router" component={DemoRouter} />

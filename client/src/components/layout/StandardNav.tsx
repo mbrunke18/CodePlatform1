@@ -56,18 +56,7 @@ export default function StandardNav() {
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 20 categories" },
         { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Configure your live data points" },
         { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise system connections" },
-        { label: "Microsoft Ecosystem", path: "/ecosystem", icon: Layers, description: "How Execution OS sits above the Microsoft stack", featured: true },
-      ],
-    },
-    {
-      heading: "Ecosystems",
-      links: [
-        { label: "Google Cloud", path: "/ecosystem/google", icon: Globe, description: "AI everywhere, coordination nowhere" },
-        { label: "Salesforce", path: "/ecosystem/salesforce", icon: Layers, description: "Every department automated, nobody orchestrated" },
-        { label: "AWS", path: "/ecosystem/aws", icon: Zap, description: "Infinite infrastructure, zero strategic coordination" },
-        { label: "SAP / Oracle ERP", path: "/ecosystem/sap", icon: Building, description: "Runs the business, can't run the response" },
-        { label: "ServiceNow", path: "/ecosystem/servicenow", icon: Shield, description: "Workflows for IT, not strategy" },
-        { label: "Workday", path: "/ecosystem/workday", icon: Users, description: "Manages your people, can't mobilize them" },
+        { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
       ],
     },
     {
