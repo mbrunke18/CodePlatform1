@@ -1079,3 +1079,41 @@ button[class~="bg-[#DFC178]"],
 button[class*=" bg-[#DFC178]"] {
   color: #0A0F2E !important;
 }
+
+/* ── Large Screen Typography Scaling ─────────────────────────────────────── */
+@media (min-width: 1440px) {
+  body {
+    font-size: 17px;
+  }
+  .text-sm   { font-size: 0.9rem !important; }
+  .text-base { font-size: 1.05rem !important; }
+  .text-lg   { font-size: 1.18rem !important; }
+  .text-xl   { font-size: 1.3rem !important; }
+  .text-2xl  { font-size: 1.65rem !important; }
+  .text-3xl  { font-size: 2rem !important; }
+  .text-4xl  { font-size: 2.5rem !important; }
+}
+
+@media (min-width: 1920px) {
+  body {
+    font-size: 18px;
+  }
+  .text-sm   { font-size: 0.95rem !important; }
+  .text-base { font-size: 1.1rem !important; }
+  .text-lg   { font-size: 1.25rem !important; }
+  .text-xl   { font-size: 1.4rem !important; }
+  .text-2xl  { font-size: 1.75rem !important; }
+  .text-3xl  { font-size: 2.1rem !important; }
+  .text-4xl  { font-size: 2.65rem !important; }
+}
+
+/* ── Large Screen Container Max-Width ────────────────────────────────────── */
+@media (min-width: 1440px) {
+  .max-w-6xl { max-width: 80rem !important; }
+  .max-w-5xl { max-width: 72rem !important; }
+  .max-w-4xl { max-width: 64rem !important; }
+}
+@media (min-width: 1920px) {
+  .max-w-6xl { max-width: 90rem !important; }
+  .max-w-7xl { max-width: 96rem !important; }
+}

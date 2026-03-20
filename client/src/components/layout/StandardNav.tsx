@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
@@ -19,10 +19,25 @@ const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 
+function useNavLogoHeight() {
+  const [h, setH] = useState(130);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setH(w >= 1920 ? 180 : w >= 1440 ? 160 : 130);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return h;
+}
+
 export default function StandardNav() {
   const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isAuthenticated, isLoading, login, logout } = useAuth();
+  const navLogoHeight = useNavLogoHeight();
 
   const navigateTo = (path: string) => {
     setLocation(path);
@@ -237,7 +252,7 @@ export default function StandardNav() {
       <div style={{ height: 2, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 50%, ${GOLD} 100%)`, opacity: 0.7 }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between" style={{ height: 130 }}>
+        <div className="flex items-center justify-between" style={{ height: navLogoHeight }}>
 
           {/* Left: Back + Logo */}
           <div className="flex items-center gap-2">
@@ -259,7 +274,7 @@ export default function StandardNav() {
               onClick={() => navigateTo('/')}
               data-testid="nav-logo"
             >
-              <ExecuteIQLogo height={130} variant="full" color="navy" />
+              <ExecuteIQLogo height={navLogoHeight} variant="full" color="navy" />
             </div>
           </div>
 

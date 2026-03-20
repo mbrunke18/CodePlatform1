@@ -38,7 +38,7 @@ const SECTION_DARK_BG: React.CSSProperties = {
 
 const GEO: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
 const DM: React.CSSProperties  = { fontFamily: "'DM Sans', 'Inter', sans-serif" };
-const CONTAINER: React.CSSProperties = { maxWidth: 1100, margin: "0 auto", padding: "0 24px" };
+const CONTAINER: React.CSSProperties = { maxWidth: 1280, margin: "0 auto", padding: "0 32px" };
 
 function trackCTA(loc: string) {
   try {
@@ -216,6 +216,16 @@ function HomepageNav() {
         }
         @media (max-width: 375px) {
           .hp-hero-h1 { font-size: 28px !important; }
+        }
+        @media (min-width: 1440px) {
+          .hp-hero-h1    { font-size: 56px !important; }
+          .hp-missing-h2 { font-size: 52px !important; }
+          .hp-cta-h2     { font-size: 52px !important; }
+        }
+        @media (min-width: 1920px) {
+          .hp-hero-h1    { font-size: 68px !important; }
+          .hp-missing-h2 { font-size: 62px !important; }
+          .hp-cta-h2     { font-size: 62px !important; }
         }
       `}</style>
     </>
