@@ -110,12 +110,12 @@ export default function AIIntelligenceHub() {
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 2 }}>
                     <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Intelligence Suite</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Intelligence Suite</span>
                   </div>
                   <div style={{ ...CG, fontSize: 21, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>AI Intelligence Hub</div>
                 </div>
               </div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 8, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
                 <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
                 All Systems Active
               </div>
@@ -149,7 +149,7 @@ export default function AIIntelligenceHub() {
                       </div>
                     </div>
                     <div style={{ fontSize: 12, fontWeight: 700, color: isActive ? '#F0EDE4' : 'rgba(240,237,228,0.5)', marginBottom: 4, letterSpacing: '0.01em' }}>{module.name}</div>
-                    <div style={{ fontSize: 9, color: 'rgba(240,237,228,0.3)', lineHeight: 1.3 }}>{module.description}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)', lineHeight: 1.35 }}>{module.description}</div>
                   </div>
                 );
               })}

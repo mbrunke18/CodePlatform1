@@ -133,12 +133,12 @@ export default function IntelligenceControlCenter() {
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 2 }}>
                   <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                  <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Strategic Intelligence</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Strategic Intelligence</span>
                 </div>
                 <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>Intelligence Control Center</div>
               </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 8, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
               <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block', animation: 'pulse 2s infinite' }} />
               All Systems Online
             </div>
@@ -166,7 +166,7 @@ export default function IntelligenceControlCenter() {
 
           {/* Intelligence Module Tiles */}
           <div style={{ marginBottom: 24 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 14 }}>Intelligence Modules</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.45)', marginBottom: 14 }}>Intelligence Modules</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 }} data-testid="grid-modules">
               {intelligenceModules.map(mod => {
                 const isHov = hovered === mod.id;
@@ -194,21 +194,21 @@ export default function IntelligenceControlCenter() {
                         <div style={{ width: 36, height: 36, background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           <Icon style={{ width: 18, height: 18, color: mod.accentColor }} />
                         </div>
-                        <span style={{ fontSize: 7, fontWeight: 700, letterSpacing: '0.2em', color: mod.accentColor, border: `1px solid ${mod.accentColor}40`, padding: '2px 6px' }}>{mod.badge}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: mod.accentColor, border: `1px solid ${mod.accentColor}40`, padding: '2px 7px' }}>{mod.badge}</span>
                       </div>
                       <div style={{ ...CG, fontSize: 17, fontWeight: 600, color: '#F0EDE4', marginBottom: 4, lineHeight: 1.1 }}>{mod.title}</div>
                       <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)', marginBottom: 12, lineHeight: 1.4 }}>{mod.description}</div>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 12 }}>
                         {mod.features.slice(0, 3).map(f => (
-                          <span key={f} style={{ fontSize: 8, color: 'rgba(240,237,228,0.4)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', padding: '2px 7px' }}>{f}</span>
+                          <span key={f} style={{ fontSize: 10, color: 'rgba(240,237,228,0.5)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', padding: '2px 7px' }}>{f}</span>
                         ))}
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div>
                           <div style={{ ...CG, fontSize: 16, fontWeight: 700, color: mod.accentColor, lineHeight: 1 }}>{mod.stat}</div>
-                          <div style={{ fontSize: 8, color: 'rgba(240,237,228,0.3)', marginTop: 1 }}>{mod.statSub}</div>
+                          <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.4)', marginTop: 2 }}>{mod.statSub}</div>
                         </div>
-                        <div style={{ fontSize: 9, fontWeight: 700, color: isHov ? mod.accentColor : 'rgba(240,237,228,0.25)', transition: 'color 0.2s' }}>ENTER →</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: isHov ? mod.accentColor : 'rgba(240,237,228,0.3)', transition: 'color 0.2s' }}>ENTER →</div>
                       </div>
                     </div>
                   </Link>

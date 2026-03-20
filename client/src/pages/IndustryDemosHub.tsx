@@ -260,7 +260,7 @@ export default function IndustryDemosHub() {
           <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
-              <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Industry Scenarios</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C9A84C" }}>Industry Scenarios</span>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: "#F0EDE4", marginBottom: 8 }}>
@@ -280,15 +280,15 @@ export default function IndustryDemosHub() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <Target style={{ width: 18, height: 18, color: "#2B8A6E" }} />
-                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#2B8A6E" }}>OFFENSE</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#2B8A6E" }}>OFFENSE</span>
                     </div>
-                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: "#2B8A6E", border: "1px solid rgba(43,138,110,0.35)", padding: "2px 8px" }}>3 SCENARIOS</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#2B8A6E", border: "1px solid rgba(43,138,110,0.35)", padding: "2px 8px" }}>3 SCENARIOS</span>
                   </div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>Strategic Opportunities</div>
                   <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)", marginBottom: 14, lineHeight: 1.5 }}>Market entry, trend capitalization, launch acceleration. When the window opens — you're already executing.</div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: "#2B8A6E" }}>€1.68B+</div>
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.3)" }}>VIEW SCENARIOS →</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "rgba(240,237,228,0.4)" }}>VIEW SCENARIOS →</span>
                   </div>
                 </div>
               </a>
@@ -300,15 +300,15 @@ export default function IndustryDemosHub() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <Shield style={{ width: 18, height: 18, color: "#C9A84C" }} />
-                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#C9A84C" }}>DEFENSE</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C9A84C" }}>DEFENSE</span>
                     </div>
-                    <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.35)", padding: "2px 8px" }}>5 SCENARIOS</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.35)", padding: "2px 8px" }}>5 SCENARIOS</span>
                   </div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>Crisis Response</div>
                   <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)", marginBottom: 14, lineHeight: 1.5 }}>Ransomware, recalls, supplier failures, grid failures. While competitors are still assembling — containment is already underway.</div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: "#C9A84C" }}>$3.2B+</div>
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.3)" }}>VIEW SCENARIOS →</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "rgba(240,237,228,0.4)" }}>VIEW SCENARIOS →</span>
                   </div>
                 </div>
               </a>
@@ -324,7 +324,7 @@ export default function IndustryDemosHub() {
               ].map(s => (
                 <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 9, color: "rgba(240,237,228,0.35)", marginTop: 3 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(240,237,228,0.45)", marginTop: 4 }}>{s.label}</div>
                 </div>
               ))}
             </div>

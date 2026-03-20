@@ -178,7 +178,7 @@ export default function DemoGallery() {
           <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
-              <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Experience Center</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#C9A84C" }}>Experience Center</span>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: "#F0EDE4", marginBottom: 8 }}>
@@ -203,18 +203,18 @@ export default function DemoGallery() {
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <demo.icon style={{ width: 18, height: 18, color: accent }} />
-                          <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: accent }}>FEATURED</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: accent }}>FEATURED</span>
                         </div>
-                        <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{demo.duration}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{demo.duration}</span>
                       </div>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: "#F0EDE4", marginBottom: 6 }}>{demo.title}</div>
                       <div style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginBottom: 16, lineHeight: 1.5 }}>{demo.description}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" as const, marginBottom: 14 }}>
                         {demo.tags.map(tag => (
-                          <span key={tag} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{tag}</span>
+                          <span key={tag} style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 8px" }}>{tag}</span>
                         ))}
                       </div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", color: "rgba(240,237,228,0.25)" }}>LAUNCH DEMO →</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "rgba(240,237,228,0.4)" }}>LAUNCH DEMO →</div>
                     </div>
                   </Link>
                 );
@@ -231,7 +231,7 @@ export default function DemoGallery() {
               ].map(s => (
                 <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 9, color: "rgba(240,237,228,0.35)", marginTop: 3 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(240,237,228,0.45)", marginTop: 4 }}>{s.label}</div>
                 </div>
               ))}
             </div>

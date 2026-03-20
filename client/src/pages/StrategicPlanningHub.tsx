@@ -227,81 +227,105 @@ export default function StrategicPlanningHub() {
 
   return (
     <PageLayout>
-      <div className="flex-1 bg-[#F8F7F4] dark:bg-[#0A0F2E] overflow-y-auto p-8 space-y-8">
-        
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-sm text-[#6B7280]">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-[#6B7280] hover:text-[#0A0F2E] dark:hover:text-white p-1 h-auto">
-                <Home className="h-4 w-4" />
-              </Button>
-            </Link>
-            <span>/</span>
-            <span>Strategic Operations</span>
-            <span>/</span>
-            <span className="text-[#0A0F2E] dark:text-[#C9A84C]">Strategic Planning Hub</span>
-          </div>
-        </div>
 
-        {/* Strategic Planning Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Planning Hub</h1>
-            <p className="text-[#6B7280]">Comprehensive scenario planning and strategic execution management</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/">
-              <Button variant="secondary" className="bg-white hover:bg-[#F8F7F4] text-[#0A0F2E] border-[#E8E4DC]">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Dashboard
-              </Button>
-            </Link>
-            <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
-              <Plus className="w-4 h-4 mr-2" />
-              New Scenario
-            </Button>
-            <Button variant="outline" className="bg-transparent border-[#E8E4DC] text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5">
-              <Download className="w-4 h-4 mr-2" />
-              Export Portfolio
-            </Button>
-          </div>
-        </div>
+      {/* ─── Dark Hub Header Strip ──────────────────────────────────────── */}
+      <div style={{ background: NAVY, padding: '36px 0 32px' }}>
+        <style>{`
+          @keyframes sph-fadeup { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+          .sph-tile-1{animation:sph-fadeup 0.38s ease 0.05s both}
+          .sph-tile-2{animation:sph-fadeup 0.38s ease 0.10s both}
+          .sph-tile-3{animation:sph-fadeup 0.38s ease 0.15s both}
+          .sph-tile-4{animation:sph-fadeup 0.38s ease 0.20s both}
+          .sph-tile-5{animation:sph-fadeup 0.38s ease 0.25s both}
+          .sph-tile-6{animation:sph-fadeup 0.38s ease 0.30s both}
+        `}</style>
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
 
-        {/* Portfolio Command Tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            { label: "Active Scenarios", value: String(portfolioMetrics.activeProjects), sub: `${portfolioMetrics.totalScenarios} total in portfolio`, icon: Target, accent: GOLD, tag: "IN FLIGHT" },
-            { label: "Portfolio Health", value: `${portfolioMetrics.portfolioHealth}%`, sub: "Milestone velocity on track", icon: Activity, accent: TEAL, tag: "HEALTHY" },
-            { label: "Total Budget", value: formatCurrency(portfolioMetrics.totalBudget), sub: "Across all active scenarios", icon: DollarSign, accent: GOLD, tag: "AUTHORIZED" },
-            { label: "Completed This Quarter", value: String(portfolioMetrics.completedThisQuarter), sub: "Closed with post-mortem review", icon: CheckCircle, accent: TEAL, tag: "CLOSED" },
-            { label: "Risk Exposure", value: `${portfolioMetrics.riskExposure}%`, sub: "Mitigated via playbook automation", icon: Shield, accent: GOLD, tag: "MONITORED" },
-            { label: "Avg. ROI Realized", value: "245%", sub: "Across completed scenarios", icon: TrendingUp, accent: TEAL, tag: "VERIFIED" },
-          ].map(({ label, value, sub, icon: Icon, accent, tag }) => (
-            <div
-              key={label}
-              style={{
-                background: NAVY,
-                borderTop: `1px solid ${accent}40`,
-                borderLeft: `1px solid ${accent}20`,
-                borderRight: `1px solid ${accent}20`,
-                borderBottom: `3px solid ${accent}`,
-                borderRadius: 12,
-              }}
-              className="p-5 hover:scale-[1.02] transition-transform duration-200 cursor-default"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div className="p-2 rounded-lg" style={{ background: `${accent}18` }}>
-                  <Icon className="h-5 w-5" style={{ color: accent }} />
-                </div>
-                <span className="text-xs font-bold tracking-widest" style={{ color: `${accent}99` }}>{tag}</span>
+          {/* Header row */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ width: 38, height: 38, background: 'rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Map style={{ width: 18, height: 18, color: GOLD }} />
               </div>
-              <div className="text-3xl font-bold mb-1" style={{ ...CG, color: accent }}>{value}</div>
-              <div className="text-sm font-semibold text-white mb-0.5">{label}</div>
-              <div className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{sub}</div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 3 }}>
+                  <div style={{ width: 20, height: 1.5, background: GOLD }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Strategic Operations</span>
+                </div>
+                <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>Strategic Planning Hub</div>
+                <div style={{ fontSize: 12, color: 'rgba(240,237,228,0.45)', marginTop: 4 }}>Scenario portfolio · milestone tracking · risk exposure</div>
+              </div>
             </div>
-          ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '5px 14px', border: '1px solid rgba(43,138,110,0.3)' }}>
+                <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                Portfolio Active
+              </div>
+              <button
+                onClick={() => {}}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', padding: '8px 18px', border: 'none', cursor: 'pointer' }}
+              >
+                <Plus style={{ width: 14, height: 14 }} />
+                New Scenario
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Stats Strip */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, marginBottom: 24, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.06)' }}>
+            {[
+              { label: 'Active Scenarios', value: String(portfolioMetrics.activeProjects), color: GOLD },
+              { label: 'Portfolio Health', value: `${portfolioMetrics.portfolioHealth}%`, color: TEAL },
+              { label: 'Risk Exposure', value: `${portfolioMetrics.riskExposure}%`, color: GOLD },
+              { label: 'Avg. ROI Realized', value: '245%', color: TEAL },
+            ].map(stat => (
+              <div key={stat.label} style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.025)' }}>
+                <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.4)', marginBottom: 4 }}>{stat.label}</div>
+                <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Portfolio Command Tiles */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10 }}>
+            {[
+              { label: "Active Scenarios", value: String(portfolioMetrics.activeProjects), sub: `${portfolioMetrics.totalScenarios} total in portfolio`, icon: Target, accent: GOLD, tag: "IN FLIGHT", cls: 'sph-tile-1' },
+              { label: "Portfolio Health", value: `${portfolioMetrics.portfolioHealth}%`, sub: "Milestone velocity on track", icon: Activity, accent: TEAL, tag: "HEALTHY", cls: 'sph-tile-2' },
+              { label: "Total Budget", value: formatCurrency(portfolioMetrics.totalBudget), sub: "Across all active scenarios", icon: DollarSign, accent: GOLD, tag: "AUTHORIZED", cls: 'sph-tile-3' },
+              { label: "Completed This Quarter", value: String(portfolioMetrics.completedThisQuarter), sub: "Closed with post-mortem review", icon: CheckCircle, accent: TEAL, tag: "CLOSED", cls: 'sph-tile-4' },
+              { label: "Risk Exposure", value: `${portfolioMetrics.riskExposure}%`, sub: "Mitigated via playbook automation", icon: Shield, accent: GOLD, tag: "MONITORED", cls: 'sph-tile-5' },
+              { label: "Avg. ROI Realized", value: "245%", sub: "Across completed scenarios", icon: TrendingUp, accent: TEAL, tag: "VERIFIED", cls: 'sph-tile-6' },
+            ].map(({ label, value, sub, icon: Icon, accent, tag, cls }) => (
+              <div
+                key={label}
+                className={cls}
+                style={{
+                  background: 'rgba(255,255,255,0.035)',
+                  borderTop: `1px solid ${accent}45`,
+                  borderLeft: `1px solid ${accent}20`,
+                  borderRight: `1px solid ${accent}20`,
+                  borderBottom: `3px solid ${accent}`,
+                  padding: '18px 20px',
+                  cursor: 'default',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10 }}>
+                  <div style={{ width: 34, height: 34, background: `${accent}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Icon style={{ width: 16, height: 16, color: accent }} />
+                  </div>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', color: `${accent}99` }}>{tag}</span>
+                </div>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: accent, lineHeight: 1, marginBottom: 4 }}>{value}</div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#F0EDE4', marginBottom: 2 }}>{label}</div>
+                <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.4)' }}>{sub}</div>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* ─── Light Body ─────────────────────────────────────────────────── */}
+      <div className="flex-1 bg-[#F8F7F4] overflow-y-auto p-8 space-y-6">
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">

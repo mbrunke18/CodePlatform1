@@ -264,14 +264,14 @@ function HeroSection() {
             <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Weeks</span> just to begin executing.
           </h1>
 
-          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 16px", lineHeight: 1.4 }}>
+          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.4 }}>
             We collapse all three into 12 minutes.
           </p>
 
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 12px", lineHeight: 1.7 }}>
+          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.75 }}>
             Enterprise work was designed for a world without AI. Committees. Alignment cycles. Coordination delays. Every vendor bolted AI onto the same broken model.
           </p>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.7 }}>
+          <p style={{ ...DM, fontSize: 16, color: "rgba(200,212,232,0.85)", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.75, fontWeight: 500 }}>
             Execution OS is the new operating model — redesigned from first principles for the AI era. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12 minutes replaces 30 days.
           </p>
 
@@ -321,8 +321,8 @@ function HeroSection() {
                 {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)", flexShrink: 0 }} />}
                 <div style={{ textAlign: "center", maxWidth: 200 }}>
                   <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.num}</div>
-                  <div style={{ ...DM, fontSize: 13, fontWeight: 600, color: "#fff", marginTop: 8, lineHeight: 1.3 }}>{s.label}</div>
-                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, marginTop: 4, lineHeight: 1.4, opacity: 0.8 }}>{s.sub}</div>
+                  <div style={{ ...DM, fontSize: 13, fontWeight: 600, color: "#fff", marginTop: 8, lineHeight: 1.4 }}>{s.label}</div>
+                  <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
                 </div>
               </div>
             ))}
@@ -525,8 +525,14 @@ function MissingLayerSection() {
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
             AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway.
           </p>
-          <p style={{ ...GEO, fontSize: 26, fontWeight: 700, color: GOLD, marginBottom: 16 }}>We didn't add AI to the old model.</p>
-          <p style={{ ...GEO, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 64 }}>We redesigned how strategic work flows.</p>
+          <div style={{ margin: "32px auto 64px", maxWidth: 660, borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, textAlign: "left" }}>
+            <p style={{ ...GEO, fontSize: 22, fontWeight: 700, color: GOLD, marginBottom: 6, lineHeight: 1.35 }}>
+              We didn't add AI to the old model.
+            </p>
+            <p style={{ ...GEO, fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1.35 }}>
+              We redesigned how strategic work flows.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={0.2}>
@@ -835,7 +841,7 @@ function MicrosoftEcosystemBanner() {
             {/* Eyebrow with gold dot */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, borderRadius: 2, padding: '5px 16px' }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, display: 'inline-block' }} />
-              <span style={{ ...MONO, fontSize: 9, letterSpacing: 4, color: GOLD, textTransform: 'uppercase' as const, fontWeight: 700 }}>
+              <span style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: GOLD, textTransform: 'uppercase' as const, fontWeight: 700 }}>
                 No rip-and-replace — deploys on what you already have
               </span>
             </div>
@@ -880,8 +886,8 @@ function MicrosoftEcosystemBanner() {
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 18, marginBottom: 6 }}>{icon}</div>
-                <div style={{ ...MONO, fontSize: 10, color: GOLD, letterSpacing: 1, marginBottom: 3 }}>{label}</div>
-                <div style={{ ...DM, fontSize: 12, color: 'rgba(240,237,228,0.35)' }}>{sublabel}</div>
+                <div style={{ ...MONO, fontSize: 11, color: GOLD, letterSpacing: 1, marginBottom: 4, fontWeight: 600 }}>{label}</div>
+                <div style={{ ...DM, fontSize: 12, color: 'rgba(240,237,228,0.55)' }}>{sublabel}</div>
               </div>
             ))}
           </div>
@@ -931,7 +937,7 @@ function CredibilitySection() {
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
-              <span style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)" }}>External Validation</span>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.8)" }}>External Validation</span>
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
             </div>
             <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,38px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
@@ -949,8 +955,8 @@ function CredibilitySection() {
               <div key={r.firm} style={{ padding: "24px 20px", background: "rgba(10,15,46,0.6)", transition: "background 0.2s" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(201,168,76,0.07)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(10,15,46,0.6)"; }}>
-                <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>{r.firm}</div>
-                <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, fontStyle: "italic" }}>"{r.finding}"</p>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>{r.firm}</div>
+                <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, fontStyle: "italic" }}>"{r.finding}"</p>
               </div>
             ))}
           </div>
@@ -977,7 +983,7 @@ function CredibilitySection() {
 
           {/* Founder story */}
           <div style={{ textAlign: "center" }}>
-            <p style={{ ...DM, fontSize: 12, fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 24 }}>
+            <p style={{ ...DM, fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.45)", marginBottom: 24, letterSpacing: "0.02em" }}>
               Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
             </p>
             <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
@@ -1153,12 +1159,12 @@ function ContrastMomentSection() {
       <SectionMarker n="04" />
       <div style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "0 24px" }}>
 
-        {/* 72 — fades out */}
+        {/* 30 Days — fades out */}
         <div
           className="cm-stat-72"
           style={{
             ...GEO,
-            fontSize: "clamp(80px, 20vw, 180px)",
+            fontSize: "clamp(60px, 15vw, 140px)",
             fontWeight: 700,
             color: RED_CRISIS,
             lineHeight: 1,
@@ -1167,10 +1173,10 @@ function ContrastMomentSection() {
             ...t(1.6),
           }}
         >
-          72 hrs
+          30 Days
         </div>
 
-        {/* Label for 72 */}
+        {/* Label for 30 days */}
         <div
           style={{
             ...DM, fontSize: 14, color: MUTED_DARK, marginTop: 12, letterSpacing: "0.06em",
@@ -1179,7 +1185,7 @@ function ContrastMomentSection() {
             ...t(0.8, 0.5),
           }}
         >
-          Just to assemble. Execution hasn't started.
+          Just to mobilize. Execution hasn't started.
         </div>
 
         {/* 12 min — builds in */}

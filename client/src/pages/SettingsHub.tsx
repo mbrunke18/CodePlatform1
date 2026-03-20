@@ -172,12 +172,12 @@ export default function SettingsHub() {
                               </div>
                               <div style={{ textAlign: 'right' }}>
                                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: meta.accent, lineHeight: 1 }}>{meta.stat}</div>
-                                <div style={{ fontSize: 8, color: 'rgba(240,237,228,0.35)', marginTop: 1 }}>{meta.statSub}</div>
+                                <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.45)', marginTop: 2 }}>{meta.statSub}</div>
                               </div>
                             </div>
                             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: '#F0EDE4', marginBottom: 4 }}>{s.label}</div>
                             <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)', lineHeight: 1.4, marginBottom: 12 }}>{meta.desc}</div>
-                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: 'rgba(240,237,228,0.25)' }}>CONFIGURE →</div>
+                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(240,237,228,0.4)' }}>CONFIGURE →</div>
                           </div>
                         );
                       })}
