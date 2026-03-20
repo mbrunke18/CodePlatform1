@@ -536,7 +536,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Minutes to Coordinated Response</h3>
-                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Execution OS delivers a 340× Execution Head Start — while rivals spend 72 hours mobilizing, you're already executing</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Execution OS delivers a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing</p>
                 </div>
               </div>
             </CardContent>

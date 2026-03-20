@@ -278,8 +278,8 @@ function FuturePositioningDiagram() {
           <ul className="space-y-2">
             {[
               "170 pre-built playbooks ready to deploy",
-              "12 min to full execution — others spend 72 hrs just to mobilize",
-              "340× execution head start while competitors still plan",
+              "12 min to full execution — others spend weeks just to mobilize",
+              "3,600× Execution Head Start while competitors still plan",
               "Human executives retain full decision authority",
               "Enterprise integrations (Jira, Slack, ServiceNow)",
             ].map((item, i) => (

@@ -757,8 +757,8 @@ export default function PilotDemo() {
                                 <div className="text-xs text-gray-800 dark:text-slate-300">Executive Time Recovered</div>
                               </div>
                               <div>
-                                <div className="text-2xl font-bold text-[#C9A84C] dark:text-amber-400">340x</div>
-                                <div className="text-xs text-gray-800 dark:text-slate-300">Faster Response</div>
+                                <div className="text-2xl font-bold text-[#C9A84C] dark:text-amber-400">3,600×</div>
+                                <div className="text-xs text-gray-800 dark:text-slate-300">Execution Head Start</div>
                               </div>
                             </div>
                           </div>

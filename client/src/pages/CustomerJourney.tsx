@@ -24,7 +24,7 @@ import {
 const valueMetrics = [
   { label: "Time to First Value", value: "30 days", description: "Organization configured and team onboarded" },
   { label: "Time to First Execution", value: "75 days", description: "Complete trigger-to-response cycle proven" },
-  { label: "Execution Head Start", value: "340×", description: "When rivals are still mobilizing, you're 72 hrs deep in execution" },
+  { label: "Execution Head Start", value: "3,600×", description: "When rivals are still mobilizing weeks later, you've been executing since minute 12" },
   { label: "Average ROI Impact", value: "10.3%", description: "Revenue growth acceleration" }
 ];
 
@@ -162,7 +162,7 @@ export default function CustomerJourney() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, maxWidth: 780, margin: "0 auto", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 2 }}>
               {[
                 { value: "12", unit: "min", label: "Strategic Response" },
-                { value: "340×", unit: "", label: "Execution Head Start" },
+                { value: "3,600×", unit: "", label: "Execution Head Start" },
                 { value: "170", unit: "", label: "Playbooks Ready" },
                 { value: "90", unit: "days", label: "To Full Mastery" },
               ].map(s => (

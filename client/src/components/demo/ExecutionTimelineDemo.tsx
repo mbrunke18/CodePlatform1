@@ -249,8 +249,8 @@ export default function ExecutionTimelineDemo({
                 <div className="text-xs text-gray-800 dark:text-gray-200">Stakeholders</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-green-400">360x</div>
-                <div className="text-xs text-gray-800 dark:text-gray-200">Faster than 72 hours</div>
+                <div className="text-2xl font-bold text-green-400">3,600×</div>
+                <div className="text-xs text-gray-800 dark:text-gray-200">Execution Head Start</div>
               </div>
             </div>
           </div>

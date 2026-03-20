@@ -91,7 +91,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'es-roi',
         title: 'ROI & Value Metrics',
-        description: '$5.8M annual value comes from faster decisions (48x ROI), reduced coordination time (720 hours saved), and 12-minute execution vs 72-hour industry standard.',
+        description: '$5.8M annual value comes from faster decisions (48x ROI), reduced coordination time (720 hours saved), and 12-minute execution vs weeks of traditional mobilization.',
         targetElement: 'card-roi-banner',
         position: 'bottom',
         phase: 'ADVANCE'
@@ -99,7 +99,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'es-velocity',
         title: 'Execution Velocity',
-        description: 'M compresses 72-hour coordination into 12-minute execution. Track your performance against this benchmark.',
+        description: 'M compresses weeks of coordination into 12-minute execution. Track your performance against this benchmark.',
         phase: 'EXECUTE'
       }
     ]

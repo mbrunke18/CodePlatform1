@@ -95,9 +95,9 @@ export default function FourOutcomesScorecard({
       icon: <Clock className="w-6 h-6" />,
       color: 'text-[#2B8A6E] dark:text-[#3BAF8A]',
       details: [
-        `Coordination time: ${coordinationTime} (vs 72 hours traditional)`,
+        `Coordination time: ${coordinationTime} (vs weeks of traditional mobilization)`,
         `Average response time: ${avgResponseTime}`,
-        '360x faster than email/meetings',
+        '3,600× Execution Head Start',
         'Time to first action: 37 seconds'
       ]
     },

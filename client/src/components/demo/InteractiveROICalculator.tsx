@@ -190,7 +190,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               <div className="flex items-center justify-center gap-4">
                 <div>
                   <div className="text-sm text-gray-700">Industry Standard</div>
-                  <div className="text-3xl font-bold text-red-400">72 hours</div>
+                  <div className="text-3xl font-bold text-red-400">Weeks–Months</div>
                 </div>
                 <div className="text-2xl text-gray-800">→</div>
                 <div>

@@ -25,7 +25,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       icon: Clock, 
       value: "12 min", 
       label: "Target Execution Time",
-      comparison: "Design goal vs 72-hour industry standard",
+      comparison: "vs weeks of traditional mobilization",
       color: "text-green-400"
     },
     { 
@@ -52,7 +52,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
   ];
 
   const demoHighlights = [
-    "12-Minute Execution Playbooks (vs 72-hour industry standard)",
+    "12-Minute Execution Playbooks (vs weeks of traditional mobilization)",
     "Strategic Work Breakdown Structure with phases & dependencies",
     "All 5 AI Intelligence Modules in action",
     "Trigger-activated coordinated execution",
@@ -80,7 +80,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
               Welcome to M's Live Demo
             </h1>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              See how M's elite methodology transforms 72-hour strategic coordination into 12-minute execution—the Strategic Execution Operating System in action
+              See how M's elite methodology compresses weeks of strategic mobilization into 12-minute execution—the Strategic Execution Operating System in action
             </p>
           </div>
 
@@ -151,7 +151,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
                   <strong className="text-gray-900">Interactive Demo:</strong> Sample data shown for illustration purposes. Scenarios and workflows reflect M's design capabilities and championship-level execution methodology.
                 </p>
                 <p className="text-gray-700 text-sm">
-                  Experience how preparation-driven execution transforms 72 hours of getting the right people in the room into 12 minutes of live execution — roles assigned, tasks staged, teams already moving.
+                  Experience how preparation-driven execution transforms weeks of getting the right people in the room into 12 minutes of live execution — roles assigned, tasks staged, teams already moving.
                 </p>
               </div>
             </div>

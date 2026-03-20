@@ -332,7 +332,7 @@ export default function ExecutiveHub() {
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.35rem', fontWeight: 600, color: '#fff', lineHeight: 1.5 }}>
                     "Execution OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
                     <span style={{ color: GOLD }}>47 activations</span> this period, with an average response time of{' '}
-                    <span style={{ color: GOLD }}>11.4 minutes</span> — a <span style={{ color: GOLD }}>340× Execution Head Start</span>{' '}
+                    <span style={{ color: GOLD }}>11.4 minutes</span> — a <span style={{ color: GOLD }}>3,600× Execution Head Start</span>{' '}
                     over the industry baseline. No strategic trigger went unaddressed."
                   </p>
                   <div className="flex items-center gap-6 mt-6 pt-6 border-t border-white/10">
@@ -406,7 +406,7 @@ export default function ExecutiveHub() {
                     <h2 className="text-3xl font-bold text-white mb-4" style={CG}>AI handles complexity. Humans retain authority.</h2>
                     <p className="text-white/70 leading-relaxed">The IDEA Framework is built on a fundamental principle: AI is extraordinarily good at monitoring, pattern recognition, and orchestration — but strategic decisions require human judgment, organizational context, and accountability. We never let AI make strategy decisions.</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                      {[{ v: '170', l: 'Playbooks' }, { v: '12min', l: 'Response SLA' }, { v: '248', l: 'Data Points' }, { v: '340×', l: 'Faster' }].map(s => (
+                      {[{ v: '170', l: 'Playbooks' }, { v: '12min', l: 'Response SLA' }, { v: '248', l: 'Data Points' }, { v: '3,600×', l: 'Head Start' }].map(s => (
                         <div key={s.l} className="text-center"><div className="text-3xl font-bold text-[#C9A84C]" style={CG}>{s.v}</div><div className="text-xs font-bold uppercase tracking-widest text-white/50 mt-1">{s.l}</div></div>
                       ))}
                     </div>

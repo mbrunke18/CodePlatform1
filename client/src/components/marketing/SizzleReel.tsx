@@ -131,7 +131,7 @@ export default function SizzleReel() {
                   className="mb-8"
                 >
                   <span className="text-lg text-gray-800 uppercase tracking-widest">
-                    Anatomy of 72 Hours
+                    Anatomy of 30 Days of Mobilization
                   </span>
                 </motion.div>
                 
@@ -406,7 +406,7 @@ export default function SizzleReel() {
                   transition={{ duration: 0.6, delay: 2.2 }}
                   className="flex items-center justify-center gap-4"
                 >
-                  <span className="text-4xl font-bold text-red-500 line-through opacity-60">72 hrs</span>
+                  <span className="text-4xl font-bold text-red-500 line-through opacity-60">30 days</span>
                   <ArrowRight className="h-8 w-8 text-[#2B8A6E]" />
                   <span className="text-4xl font-bold text-[#2B8A6E]">12 min</span>
                 </motion.div>

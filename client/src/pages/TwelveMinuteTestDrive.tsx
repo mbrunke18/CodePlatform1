@@ -291,7 +291,7 @@ export default function TwelveMinuteTestDrive() {
                 <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
                   <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
-                    {brief?.aiAnalysis || `This ${scenario.title.toLowerCase()} scenario demands immediate cross-functional coordination across your entire C-Suite. Organizations with pre-staged response infrastructure gain a 340× Execution Head Start — while rivals spend 72 hours mobilizing, you're already executing. The difference between a controlled response and a cascading crisis is measured in the first 12 minutes.`}
+                    {brief?.aiAnalysis || `This ${scenario.title.toLowerCase()} scenario demands immediate cross-functional coordination across your entire C-Suite. Organizations with pre-staged response infrastructure gain a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing. The difference between a controlled response and a cascading crisis is measured in the first 12 minutes.`}
                   </p>
                 </div>
                 {brief?.activatedPlaybooks?.length > 0 && (
@@ -427,9 +427,9 @@ export default function TwelveMinuteTestDrive() {
             {/* Performance metrics */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 40 }}>
               {[
-                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. 72-hr industry avg', color: TEAL },
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. weeks of mobilization', color: TEAL },
                 { label: 'Tasks Completed', value: `${completedTasks}/${tasks.length}`, sub: `${Math.round((completedTasks / tasks.length) * 100)}% completion rate`, color: GOLD },
-                { label: 'Execution Head Start', value: '340×', sub: 'while rivals are still mobilizing', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'while rivals are still mobilizing', color: GOLD },
                 { label: 'Damage Contained', value: '68%', sub: 'avg reduction in impact', color: TEAL },
               ].map(m => (
                 <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>

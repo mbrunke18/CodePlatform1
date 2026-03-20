@@ -520,7 +520,7 @@ export default function WorkspaceHub() {
               </div>
               {activeRun && <JITContextBanner runId={activeRun.id} />}
               {activeRun && <MyActionsPanel runId={activeRun.id} />}
-              <Card className="mb-8 bg-white border border-[#E8E4DC]"><CardContent className="p-6"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-[#0A0F2E]/10"><Timer className="h-8 w-8 text-[#C9A84C]" /></div><div><h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>12 Minutes to Coordinated Response</h3><p className="text-[#6B7280]">Execution OS delivers a 340× Execution Head Start — while rivals mobilize, you execute</p></div></div></CardContent></Card>
+              <Card className="mb-8 bg-white border border-[#E8E4DC]"><CardContent className="p-6"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-[#0A0F2E]/10"><Timer className="h-8 w-8 text-[#C9A84C]" /></div><div><h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>12 Minutes to Coordinated Response</h3><p className="text-[#6B7280]">Execution OS delivers a 3,600× Execution Head Start — 30 days of mobilization compressed to 12 minutes</p></div></div></CardContent></Card>
               <h2 className="text-xl font-bold mb-4" style={{ ...CG, color: NAVY }}>Active Executions</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {[{ name: "M&A Integration — CloudTech Acquisition", pct: 78, tasks: "28 of 45", stakeholders: "45", date: "Jan 28", badge: "Active" },{ name: "Competitive Response — Market Counter-Strategy", pct: 34, tasks: "8 of 24", stakeholders: "18", date: "Feb 15", badge: "In Progress" }].map(ex => (

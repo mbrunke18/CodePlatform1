@@ -320,7 +320,7 @@ export default function IndustryDemosHub() {
                 { label: "Industries Covered", value: "7", sub: "and growing", anim: "idh-stat-1" },
                 { label: "Response Time", value: "12 min", sub: "to live execution", anim: "idh-stat-2" },
                 { label: "Scenarios Available", value: "8", sub: "offense & defense", anim: "idh-stat-3" },
-                { label: "Execution Head Start", value: "340×", sub: "vs. traditional enterprise", anim: "idh-stat-4" },
+                { label: "Execution Head Start", value: "3,600×", sub: "30 days → 12 minutes", anim: "idh-stat-4" },
               ].map(s => (
                 <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>
@@ -353,7 +353,7 @@ export default function IndustryDemosHub() {
               <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">DEFENSE</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
-              When crises hit — ransomware, recalls, supplier failures — the traditional enterprise spends 72 hours just getting the right people in the room. Execution OS puts your organization into live execution in 12 minutes: roles assigned, tasks staged, containment already underway.
+              When crises hit — ransomware, recalls, supplier failures — the traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Execution OS puts your organization into live execution in 12 minutes: roles assigned, tasks staged, containment already underway.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {defensiveDemos.map(renderDemoCard)}
@@ -364,12 +364,12 @@ export default function IndustryDemosHub() {
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-3xl font-serif text-[#0A0F2E] mb-4">The Detection-Execution Gap</h3>
               <p className="text-lg text-[#6B7280] mb-10 font-light leading-relaxed">
-                Every industry has invested billions in AI for detection. But when action is needed, the traditional enterprise spends 72 hours just getting the right people in the room. Execution OS bridges that gap — delivering live execution in 12 minutes.
+                Every industry has invested billions in AI for detection. But when action is needed, the traditional enterprise spends weeks — sometimes months — just mobilizing before execution can begin. Execution OS bridges that gap — delivering live execution in 12 minutes.
               </p>
               <div className="grid grid-cols-3 gap-8 mb-12">
                 <div>
-                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">48-72 hrs</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Still in planning</div>
+                  <div className="text-3xl font-bold text-[#0A0F2E] mb-2">Weeks–Months</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Still mobilizing</div>
                 </div>
                 <div className="flex items-center justify-center">
                   <ArrowRight className="w-8 h-8 text-[#C9A84C]" />

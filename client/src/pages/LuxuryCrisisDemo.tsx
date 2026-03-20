@@ -278,7 +278,7 @@ export default function LuxuryCrisisDemo() {
               <h2 className="text-4xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Demo Complete</h2>
               <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                 You've just experienced how Execution OS transforms the gap between AI detection 
-                and human execution—from 72 hours of coordination chaos to 12 minutes of 
+                and human execution—from weeks of coordination chaos to 12 minutes of 
                 orchestrated response.
               </p>
 
@@ -301,7 +301,7 @@ export default function LuxuryCrisisDemo() {
                 <p className="font-semibold mb-2 text-white">The Strategic Insight</p>
                 <p className="text-sm text-white/80">
                   Luxury brands are spending billions on AI for detection. But without Execution OS' 
-                  execution layer, they're still losing 72 hours—and hundreds of millions—to 
+                  execution layer, they're still losing weeks—and hundreds of millions—to 
                   coordination chaos. Execution OS is the missing piece that turns AI insights into 
                   coordinated action at Fortune 1000 speed and scale.
                 </p>

@@ -227,7 +227,7 @@ export default function DemoGallery() {
                 { label: "Demo Experiences", value: "8", anim: "dg-stat-1" },
                 { label: "Execution Time", value: "12 min", anim: "dg-stat-2" },
                 { label: "Industries Covered", value: "7+", anim: "dg-stat-3" },
-                { label: "Execution Head Start", value: "340×", anim: "dg-stat-4" },
+                { label: "Execution Head Start", value: "3,600×", anim: "dg-stat-4" },
               ].map(s => (
                 <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#C9A84C", lineHeight: 1 }}>{s.value}</div>

@@ -90,7 +90,7 @@ function InvestorPresentation() {
           The Strategic Execution OS<br />for Fortune 1000
         </h1>
         <p className="text-xl md:text-2xl text-[#0A0F2E] max-w-3xl mb-12">
-          170 pre-built playbooks that transform enterprise response from 72 hours to 12 minutes
+          170 pre-built playbooks that compress weeks of mobilization into 12 minutes of live execution
         </p>
         <div className="flex items-center gap-2 text-[#0A0F2E] text-lg">
           <span className="font-semibold text-[#0A0F2E]">Martin Brunke</span>
@@ -113,12 +113,12 @@ function InvestorPresentation() {
               When a strategic trigger hits — a competitor launches, regulations shift, a cyber threat emerges — enterprises descend into coordination chaos.
             </p>
             <p className="text-[#0A0F2E] text-lg leading-relaxed">
-              Teams scramble across Slack, email, and ad-hoc meetings. Playbooks don't exist. Stakeholders aren't pre-identified. Budgets aren't pre-approved. The result: 72+ hours of fumbling while value evaporates.
+              Teams scramble across Slack, email, and ad-hoc meetings. Playbooks don't exist. Stakeholders aren't pre-identified. Budgets aren't pre-approved. The result: weeks of fumbling — calls, meetings, misaligned stakeholders — while value evaporates.
             </p>
           </div>
           <div className="space-y-4">
             {[
-              { value: '72 hours', label: 'Average strategic response time', sub: 'Signal to coordinated action' },
+              { value: 'Weeks–Months', label: 'Typical mobilization time', sub: 'Signal to first coordinated action' },
               { value: '30%', label: 'Strategic value lost', sub: 'McKinsey research' },
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
@@ -143,7 +143,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           {[
             { icon: <AlertTriangle className="w-8 h-8 text-[#0A0F2E]" />, value: '$22-50M', label: 'Average cost per ransomware incident', sub: 'IBM Security 2025', color: 'border-[#0A0F2E]/30' },
-            { icon: <Zap className="w-8 h-8 text-[#2B8A6E]" />, value: '340x', label: 'Faster with Execution OS', sub: '72 hours → 12 minutes', color: 'border-[#2B8A6E]/30' },
+            { icon: <Zap className="w-8 h-8 text-[#2B8A6E]" />, value: '3,600×', label: 'Execution Head Start', sub: '30 days compressed to 12 minutes', color: 'border-[#2B8A6E]/30' },
             { icon: <DollarSign className="w-8 h-8 text-[#2B8A6E]" />, value: '$21-33M', label: 'Value created per crisis averted', sub: 'Revenue protection + opportunity capture', color: 'border-[#2B8A6E]/30' },
           ].map((c, i) => (
             <div key={i} className={`bg-white border ${c.color} rounded-xl p-8 text-center`}>
@@ -341,7 +341,7 @@ function InvestorPresentation() {
             <h3 className="text-xl font-bold text-[#0A0F2E] mb-2 uppercase tracking-tight">The Dead Model</h3>
             <p className="text-[#6B7280] text-xs font-bold uppercase mb-4 tracking-widest">Predict → Plan → Execute</p>
             <div className="space-y-3">
-              {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', '72-hour coordination loops', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
+              {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', 'Weeks of coordination loops before action', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-[#0A0F2E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm font-medium">{t}</span>
@@ -487,7 +487,7 @@ function InvestorPresentation() {
         <div className="grid grid-cols-3 gap-8 max-w-3xl w-full">
           {[
             { value: '10.3%', label: 'Revenue impact' },
-            { value: '340x', label: 'Faster response' },
+            { value: '3,600×', label: 'Execution Head Start' },
             { value: '60x', label: 'Execution improvement' },
           ].map((s, i) => (
             <div key={i} className="text-center bg-white border border-[#E8E4DC] rounded-xl p-6">
@@ -594,7 +594,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Defense playbooks (crisis/cyber). Prove 340x speed improvement. Build case studies.', color: 'border-[#0A0F2E]/30' },
+            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Defense playbooks (crisis/cyber). Prove 3,600× Execution Head Start. Build case studies.', color: 'border-[#0A0F2E]/30' },
             { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Offense domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-[#2B8A6E]/30' },
             { phase: 'Year 3+', title: 'Market Leadership', target: '500+ accounts', desc: 'Full platform adoption. International expansion. Industry standard for strategic execution.', color: 'border-[#C9A84C]/30' },
           ].map((p, i) => (
@@ -746,7 +746,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[
-            { value: '340x', label: 'Faster' },
+            { value: '3,600×', label: 'Head Start' },
             { value: '170', label: 'Playbooks' },
             { value: '10.3%', label: 'Revenue Impact' },
             { value: '$20B', label: 'TAM' },

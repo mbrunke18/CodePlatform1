@@ -464,8 +464,8 @@ export default function OneClickDemo() {
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
                 <div className="bg-[#F8F7F4] rounded-lg p-4">
-                  <div className="text-3xl font-bold text-[#2B8A6E]">340X</div>
-                  <div className="text-sm text-gray-800">Faster Response</div>
+                  <div className="text-3xl font-bold text-[#2B8A6E]">3,600×</div>
+                  <div className="text-sm text-gray-800">Execution Head Start</div>
                 </div>
                 <div className="bg-[#F8F7F4] rounded-lg p-4">
                   <div className="text-3xl font-bold text-[#0A0F2E]">$47M</div>

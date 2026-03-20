@@ -27,7 +27,7 @@ export function HeroMetricsOverlay() {
       icon: Zap,
       label: 'Decision Velocity',
       value: '12 min',
-      comparison: 'others: 72 hrs just to mobilize',
+      comparison: 'others: weeks just to mobilize',
       color: 'text-amber-400',
       bgColor: 'bg-amber-500/10',
       borderColor: 'border-amber-500/30'

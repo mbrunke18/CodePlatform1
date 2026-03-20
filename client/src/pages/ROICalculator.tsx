@@ -401,7 +401,7 @@ export default function ROICalculator() {
             </div>
             <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 40 }}>
               {[
-                { value: "340×", label: "Execution Head Start" },
+                { value: "3,600×", label: "Execution Head Start" },
                 { value: "170", label: "Pre-Built Playbooks" },
                 { value: "12 min", label: "Guaranteed Response Time" },
               ].map(s => (

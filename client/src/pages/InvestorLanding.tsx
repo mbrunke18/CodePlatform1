@@ -96,7 +96,7 @@ export default function InvestorLanding() {
             </p>
             
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-4xl mx-auto" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Execution OS creates a new software category worth $127B TAM, delivering a 340× Execution Head Start: while rivals are still mobilizing, Execution OS customers are already 72 hours deep into coordinated response — in 12 minutes.
+              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Execution OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Execution OS customers are already deep into coordinated response — in 12 minutes.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">

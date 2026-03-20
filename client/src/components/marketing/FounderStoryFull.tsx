@@ -23,7 +23,7 @@ const SCENE_NARRATIONS = [
   "170 playbooks across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built playbooks ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a playbook. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
-  "From signal detection to coordinated execution. 12 minutes. While competitors spend 72 hours just figuring out who needs to be in the room, what work is needed, and what plan to put together — you're already 72 hours deep into actual execution. That's the 340× head start.",
+  "From signal detection to coordinated execution. 12 minutes. While competitors spend weeks just figuring out who needs to be in the room, what work is needed, and what plan to put together — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "In a world where everyone has access to AI tools, execution becomes the competitive advantage. The companies that can move decisively will dominate.",
@@ -849,7 +849,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-2xl font-bold text-amber-400"
                 >
-                  That's a 340× Execution Head Start.
+                  That's a 3,600× Execution Head Start.
                 </motion.p>
               </div>
             </Scene>

@@ -163,11 +163,11 @@ export function StrategyReality() {
               <div className="p-2 bg-red-500/10 rounded-lg">
                 <Clock className="w-6 h-6 text-red-500" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">The 72-Hour Problem</h3>
+              <h3 className="text-xl font-bold text-gray-900">The Mobilization Problem</h3>
             </div>
             <p className="text-gray-800 mb-6">
               Every time a strategic situation emerges—competitive threat, M&A opportunity, 
-              crisis, transformation—organizations lose <span className="text-gray-900 font-semibold">72 hours</span> in 
+              crisis, transformation—organizations lose <span className="text-gray-900 font-semibold">weeks</span> in 
               the "work around the strategy."
             </p>
             <ul className="space-y-3 text-gray-800">
@@ -278,7 +278,7 @@ export function StrategyRealityCompact() {
           <span className="text-gray-900 font-bold">95%</span> execution ecosystem.
         </p>
         <p className="text-sm text-gray-800 mt-1">
-          That's the 72 hours Execution OS compresses to 12 minutes.
+          That's the weeks of mobilization Execution OS compresses to 12 minutes.
         </p>
       </div>
     </div>
@@ -307,7 +307,7 @@ export function StrategyRealityHero() {
           className="text-xl md:text-2xl text-gray-800 mb-12 max-w-2xl mx-auto"
         >
           The other 95%—alignment, coordination, execution—is where organizations 
-          lose <span className="text-gray-900">72 hours</span> every time a strategic situation emerges.
+          lose <span className="text-gray-900">weeks</span> every time a strategic situation emerges.
         </motion.p>
 
         <motion.div

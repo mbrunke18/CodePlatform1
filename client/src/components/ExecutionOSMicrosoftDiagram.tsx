@@ -298,7 +298,7 @@ export default function ExecutionOSMicrosoftDiagram() {
         by VaughnMartin — We Make Enterprises Fearless
       </text>
 
-      {/* IDEA phase chips — width 148, spaced to leave clear room for 340× box */}
+      {/* IDEA phase chips — width 148, spaced to leave clear room for 3,600× box */}
       {[
         { label: "IDENTIFY", sub: "Triggers · Signals",  color: GOLD, x: eosX + 48 },
         { label: "DETECT",   sub: "AI Radar · 248+ pts", color: TEAL, x: eosX + 210 },
@@ -327,7 +327,7 @@ export default function ExecutionOSMicrosoftDiagram() {
         { v: "12 min", l: "to execution" },
         { v: "170", l: "playbooks" },
         { v: "221", l: "triggers" },
-        { v: "340×", l: "speed" },
+        { v: "3,600×", l: "head start" },
       ].map((m, i) => (
         <g key={m.l}>
           <text x={eosX + 895 + i * 0} y={eosY + 0} textAnchor="middle" fill={IVORY} fontSize={0} />
@@ -339,9 +339,9 @@ export default function ExecutionOSMicrosoftDiagram() {
         fill={`${GOLD}0C`} stroke={`${GOLD}40`} strokeWidth={1}
       />
       <text x={eosX + eosW - 63} y={eosY + 121} textAnchor="middle"
-        fill={GOLD} fontSize={18} fontWeight={700}
+        fill={GOLD} fontSize={16} fontWeight={700}
         fontFamily="'Barlow Condensed',sans-serif">
-        340×
+        3,600×
       </text>
       <text x={eosX + eosW - 63} y={eosY + 136} textAnchor="middle"
         fill={IVORY} fontSize={8} opacity={0.55}

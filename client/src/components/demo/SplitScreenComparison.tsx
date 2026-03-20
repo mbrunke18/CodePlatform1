@@ -65,7 +65,7 @@ const stepData: Record<number, StepData> = {
       m: [
         '✅ CEO notified instantly',
         '✅ War room protocol ready',
-        '✅ 72-hour head start vs competitors'
+        '✅ 30-day execution head start vs competitors'
       ]
     }
   },
@@ -141,7 +141,7 @@ const stepData: Record<number, StepData> = {
     mState: '11 min - Fully coordinated',
     metrics: [
       {
-        traditional: { value: '72 hours', sublabel: 'Response time', trend: 'danger' },
+        traditional: { value: 'Weeks–Months', sublabel: 'Mobilization time', trend: 'danger' },
         m: { value: '11 min', sublabel: 'Full deployment', trend: 'success' }
       },
       {

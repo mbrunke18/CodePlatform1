@@ -406,7 +406,7 @@ function ProblemSection() {
             </div>
 
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              Yet every time, your organization spends 72 hours in emergency calls before anyone is aligned — then weeks more manually staging roles, documents, tasks, and budgets before a single coordinated action is taken.
+              Yet every time, your organization spends weeks — sometimes months — in emergency calls, alignment meetings, and planning sessions before a single coordinated action is taken.
             </p>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 40 }}>
               By the time execution begins, the window has already moved.
@@ -419,7 +419,7 @@ function ProblemSection() {
               </div>
               {[
                 { label: "Trigger detected",    val: "Instantly" },
-                { label: "Room assembled",       val: "72 hours" },
+                { label: "Leadership aligned",    val: "2–4 weeks" },
                 { label: "Execution begins",     val: "3–4 weeks" },
                 { label: "Competitive window",   val: "Closed" },
               ].map((row) => (
@@ -483,10 +483,10 @@ function ExecutionGapSection() {
             THE ARCHITECTURE BEHIND THE SPEED
           </div>
           <div style={{ fontSize: 36, fontWeight: 700, color: "#0A0F2E", fontFamily: "'Cormorant Garamond', Georgia, serif", lineHeight: 1.15 }}>
-            72 Hours to Still Be Planning. 12 Minutes to Live Execution.
+            30 Days of Mobilization. 12 Minutes to Live Execution.
           </div>
           <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 620, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
-            The traditional enterprise spends 72 hours just getting the right people in the room. Execution OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
+            The traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Execution OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
           </div>
         </div>
         <ExecutionGapDiagram />
@@ -584,7 +584,7 @@ function IDEASection() {
                 {[
                   "Emergency Slack threads and back-to-back calls",
                   "Improvised docs, unclear ownership, missed steps",
-                  "72 hours just to get everyone in the room — zero execution taken",
+                  "Weeks of calls and meetings — still no coordinated execution",
                   "No memory — same crisis, same mistakes, next time",
                 ].map(item => (
                   <div key={item} style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "flex-start" }}>
@@ -869,7 +869,7 @@ function MicrosoftEcosystemBanner() {
             {[
               { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '🔒' },
               { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '⚡' },
-              { label: '4-Agent IDEA Framework', sublabel: '340× head start — in execution while others mobilize', icon: '◈' },
+              { label: '4-Agent IDEA Framework', sublabel: '3,600× head start — in execution while others mobilize', icon: '◈' },
               { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◉' },
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
@@ -999,11 +999,11 @@ function CTASection() {
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
           <h2 className="hp-cta-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 24 }}>
-            At <span style={{ color: RED_CRISIS }}>72 hours</span>, they're
+            At <span style={{ color: RED_CRISIS }}>week four</span>, they're
             {" "}finally in the room.
             <br />
             You've been executing for{" "}
-            <span style={{ color: GOLD }}>71 hours</span>.
+            <span style={{ color: GOLD }}>29 days, 23 hours</span>.
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 580, margin: "0 auto 16px", lineHeight: 1.7 }}>
             We're selecting 3–5 pilot partners this quarter. The organizations that move first build an execution advantage their competitors will spend years trying to close.
@@ -1301,7 +1301,7 @@ function PersonalizedROISection() {
   const revProtected = revAtRisk * 0.68;
   const valPerScen = execTimeSavedPerScen + revProtected;
   const annualVal = valPerScen * scenYear;
-  const speed = '340x';
+  const speed = '3,600×';
 
   const selStyle = (active: boolean): React.CSSProperties => ({
     fontSize: 12, fontWeight: active ? 700 : 500, padding: "8px 16px", cursor: "pointer",

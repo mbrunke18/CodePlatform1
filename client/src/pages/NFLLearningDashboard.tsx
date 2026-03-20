@@ -542,10 +542,10 @@ export default function NFLLearningDashboard() {
                         Execution Head Start
                       </div>
                       <div className="text-4xl font-bold text-[#2B8A6E]" style={CG}>
-                        340X
+                        3,600×
                       </div>
                       <div className="text-[10px] font-bold text-[#2B8A6E] mt-2 uppercase tracking-wider">
-                        vs INDUSTRY AVG
+                        EXECUTION HEAD START
                       </div>
                     </div>
                   </div>

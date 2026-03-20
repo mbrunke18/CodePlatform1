@@ -434,9 +434,9 @@ export default function SituationalHub() {
                       <p className="text-xs text-[#6B7280]">When coordination is pre-staged, stakeholders receive role-specific briefs, tasks are auto-assigned, and documents are staged within minutes.</p>
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-[#0A0F2E] mb-2" style={CG}>340×</div>
-                      <p className="text-sm font-semibold text-[#0A0F2E] mb-1">Faster than ad-hoc response</p>
-                      <p className="text-xs text-[#6B7280]">Organizations with pre-staged coordination protocols respond 340× faster than those building coordination structures during an event.</p>
+                      <div className="text-3xl font-bold text-[#0A0F2E] mb-2" style={CG}>3,600×</div>
+                      <p className="text-sm font-semibold text-[#0A0F2E] mb-1">Execution Head Start</p>
+                      <p className="text-xs text-[#6B7280]">Organizations with pre-staged coordination protocols enter live execution in 12 minutes — while others spend weeks building coordination structures during the event.</p>
                     </div>
                   </div>
                 </CardContent>

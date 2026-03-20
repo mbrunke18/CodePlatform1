@@ -246,7 +246,7 @@ export function DemoStrategicROIResults() {
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
               <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Response Time</div>
               <div className="text-3xl font-bold text-[#2B8A6E] dark:text-green-400">12 min</div>
-              <div className="text-xs text-[#2B8A6E] dark:text-green-400">vs 72 hours traditional</div>
+              <div className="text-xs text-[#2B8A6E] dark:text-green-400">vs weeks of mobilization</div>
             </div>
             
             <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
