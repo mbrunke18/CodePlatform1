@@ -514,10 +514,10 @@ function MissingLayerSection() {
       <div style={{ ...CONTAINER, textAlign: "center" }}>
         <Reveal>
           <SectionLabel>WHY THE WORLD NEEDED THIS</SectionLabel>
-          <h2 className="hp-missing-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.2, maxWidth: 860, margin: "0 auto 32px" }}>
-            Enterprise work was designed for a world
-            <br />
-            <span style={{ color: GOLD }}>without AI. Nobody redesigned it.</span>
+          <h2 className="hp-missing-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.25, maxWidth: 860, margin: "0 auto 32px" }}>
+            Enterprise work was designed for a world{" "}
+            <span style={{ color: GOLD }}>without AI.</span>{" "}
+            Nobody redesigned it.
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
             Committees exist because humans couldn't process information fast enough to act alone. Alignment cycles exist because coordination was expensive. 30-day response times exist because that's how long it took to get the right people in the right room with the right context.
