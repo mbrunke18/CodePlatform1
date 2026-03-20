@@ -98,6 +98,7 @@ export default function StandardNav() {
     { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
     { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & coordination" },
     { label: "ROI Dashboard", path: "/roi-dashboard", icon: Calculator, description: "Live value metrics — board-ready ROI reporting" },
+    { label: "Strategic Learning Center", path: "/execution-learning", icon: Lightbulb, description: "AI-powered performance intelligence & continuous improvement", featured: true },
     { label: "Settings", path: "/settings-hub", icon: Settings, description: "Organization, stakeholders & integrations" },
   ];
 

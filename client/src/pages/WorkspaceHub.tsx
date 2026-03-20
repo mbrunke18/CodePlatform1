@@ -187,7 +187,8 @@ function MyActionsPanel({ runId }: { runId: string }) {
 
 // ─── ADVANCE DATA ─────────────────────────────────────────────────────────────
 const advanceTools = [
-  { title: "Institutional Memory", description: "Capture and preserve organizational learnings from every execution", path: "/institutional-memory", icon: BookOpen, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Knowledge base", featured: true },
+  { title: "Strategic Learning Center", description: "AI-powered performance intelligence — review what worked, refine what didn't, and close the improvement loop", path: "/execution-learning", icon: Brain, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "AI optimization", featured: true },
+  { title: "Institutional Memory", description: "Capture and preserve organizational learnings from every execution", path: "/institutional-memory", icon: BookOpen, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Knowledge base" },
   { title: "Decision Velocity", description: "Track and improve organizational decision-making speed", path: "/decision-velocity", icon: Activity, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Performance metrics" },
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
   { title: "Executive Analytics", description: "Deep-dive analytics on playbook effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
