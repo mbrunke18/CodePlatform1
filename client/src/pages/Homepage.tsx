@@ -900,18 +900,45 @@ function MicrosoftEcosystemBanner() {
           </div>
         </Reveal>
 
-        {/* Link to full page */}
+        {/* Other ecosystems teaser + CTA */}
         <Reveal delay={0.3}>
-          <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <div style={{ textAlign: 'center', marginTop: 40, paddingTop: 36, borderTop: `1px solid rgba(201,168,76,0.12)` }}>
+            <p style={{ ...DM, fontSize: 13, color: 'rgba(240,237,228,0.45)', marginBottom: 16, letterSpacing: '0.04em' }}>
+              Also integrates with
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 28 }}>
+              {[
+                { name: 'Google Workspace', color: '#4285F4' },
+                { name: 'Salesforce', color: '#00A1E0' },
+                { name: 'AWS', color: '#FF9900' },
+                { name: 'SAP', color: '#0FAAFF' },
+                { name: 'ServiceNow', color: '#62D84E' },
+                { name: 'Workday', color: '#F5A623' },
+              ].map(({ name, color }) => (
+                <div key={name} style={{
+                  padding: '6px 14px', borderRadius: 4,
+                  background: 'rgba(240,237,228,0.04)',
+                  border: '1px solid rgba(240,237,228,0.08)',
+                }}>
+                  <span style={{ ...MONO, fontSize: 10, color: 'rgba(240,237,228,0.50)', letterSpacing: 0.5 }}>{name}</span>
+                </div>
+              ))}
+            </div>
             <button
-              onClick={() => setLocation('/ecosystem')}
+              onClick={() => setLocation('/ecosystems')}
               style={{
-                ...MONO, fontSize: 10, color: GOLD, letterSpacing: 2,
-                textTransform: 'uppercase', background: 'transparent',
-                border: 'none', cursor: 'pointer', textDecoration: 'underline',
-                textUnderlineOffset: 4, opacity: 0.7,
-              }}>
-              View Full Architecture Overview →
+                ...DM, fontSize: 13, fontWeight: 700, letterSpacing: '0.08em',
+                textTransform: 'uppercase' as const,
+                padding: '12px 32px', borderRadius: 6, cursor: 'pointer',
+                background: 'transparent',
+                border: `1px solid ${GOLD}`,
+                color: GOLD,
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}18`; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
+            >
+              View All 7 Enterprise Ecosystems →
             </button>
           </div>
         </Reveal>
