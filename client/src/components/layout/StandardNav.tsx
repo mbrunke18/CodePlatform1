@@ -60,6 +60,17 @@ export default function StandardNav() {
       ],
     },
     {
+      heading: "Ecosystems",
+      links: [
+        { label: "Google Cloud", path: "/ecosystem/google", icon: Globe, description: "AI everywhere, coordination nowhere" },
+        { label: "Salesforce", path: "/ecosystem/salesforce", icon: Layers, description: "Every department automated, nobody orchestrated" },
+        { label: "AWS", path: "/ecosystem/aws", icon: Zap, description: "Infinite infrastructure, zero strategic coordination" },
+        { label: "SAP / Oracle ERP", path: "/ecosystem/sap", icon: Building, description: "Runs the business, can't run the response" },
+        { label: "ServiceNow", path: "/ecosystem/servicenow", icon: Shield, description: "Workflows for IT, not strategy" },
+        { label: "Workday", path: "/ecosystem/workday", icon: Users, description: "Manages your people, can't mobilize them" },
+      ],
+    },
+    {
       heading: "Explore",
       links: [
         { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite role" },
