@@ -9,13 +9,13 @@ import { AlertTriangle, Clock, TrendingUp, Shield, ArrowRight, CheckCircle2 } fr
 
 const INDUSTRY_SCENARIOS: Record<string, Array<{ title: string; trigger: string; without: string; with: string; cost: string }>> = {
   financial_services: [
-    { title: "Regulatory Inquiry Response", trigger: "SEC enforcement letter received 9 AM", without: "72 hours to organize legal, compliance, and communications teams — market speculation drives 4% stock decline", with: "Full response team assembled with pre-staged regulatory playbook in 12 minutes. Investor relations notified before markets open.", cost: "$2.1M–$8.4M prevented" },
+    { title: "Regulatory Inquiry Response", trigger: "SEC enforcement letter received 9 AM", without: "Weeks to organize legal, compliance, and communications teams — market speculation drives 4% stock decline", with: "Full response team assembled with pre-staged regulatory playbook in 12 minutes. Investor relations notified before markets open.", cost: "$2.1M–$8.4M prevented" },
     { title: "Competitor Product Launch", trigger: "Major rival announces competing product", without: "3 days to convene product, sales, and marketing. Customers field calls with no unified message.", with: "Competitive response playbook activates. Sales talking points, retention offers, and PR strategy deployed before EOD.", cost: "$4.2M retained" },
     { title: "Ransomware Incident", trigger: "Critical systems encrypted 3 AM", without: "20+ hours of ad-hoc crisis management. Board unaware until media reports. Regulatory filing missed.", with: "Crisis playbook activates. CISO, General Counsel, Board Chair, and regulators notified with coordinated comms in 12 minutes.", cost: "$18M exposure reduced" },
   ],
   healthcare: [
     { title: "Product Recall Event", trigger: "FDA adverse event report triggers recall threshold", without: "4 days to coordinate legal, supply chain, patient safety, and communications — regulatory penalties compound", with: "Recall playbook stages physician notifications, supply chain holds, and FDA response in parallel — 12 minutes to full coordination", cost: "$6.8M–$22M prevented" },
-    { title: "Clinical Trial Result", trigger: "Phase 3 trial data released — mixed results", without: "72 hours of internal debate before investor and partner communications. Stock drops 18% on uncertainty.", with: "IR, medical affairs, and legal aligned in 12 minutes with pre-cleared messaging templates and board briefing staged.", cost: "$31M market cap protected" },
+    { title: "Clinical Trial Result", trigger: "Phase 3 trial data released — mixed results", without: "Weeks of internal debate before investor and partner communications. Stock drops 18% on uncertainty.", with: "IR, medical affairs, and legal aligned in 12 minutes with pre-cleared messaging templates and board briefing staged.", cost: "$31M market cap protected" },
     { title: "Supply Chain Disruption", trigger: "Critical API supplier halts production", without: "3-week delay in identifying alternates. Manufacturing paused. Patient supply at risk.", with: "Supplier backup playbook activates. 4 qualified alternates contacted with pre-approved qualification protocols within hours.", cost: "$9.2M revenue protected" },
   ],
   technology: [
@@ -86,7 +86,7 @@ export default function ROICalculator() {
     industry: 'financial_services',
     annualRevenue: 5000000000, // $5B
     strategicEventsPerYear: 24,
-    avgResponseTimeHours: 72,
+    avgResponseTimeHours: 720,
     executivesInvolved: 8,
     avgExecutiveSalary: 400000,
   });
@@ -152,7 +152,7 @@ export default function ROICalculator() {
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
               Calculate the potential savings by compressing your organization's response time from 
-              industry average (72 hours) to Execution OS standard (12 minutes).
+              industry average (30-day mobilization cycle) to Execution OS standard (12 minutes).
             </p>
           </div>
         </section>
@@ -305,7 +305,7 @@ export default function ROICalculator() {
                 <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(28px,3.5vw,42px)", color: "#0A0F2E", marginBottom: 12 }}>
-                What 72 Hours of Hesitation Costs Your Industry
+                What 30 Days of Hesitation Costs Your Industry
               </h2>
               <p style={{ color: "#6B7280", fontSize: 16, maxWidth: 580, margin: "0 auto", fontWeight: 500 }}>
                 Three scenarios your peers have faced — and the difference execution speed makes.

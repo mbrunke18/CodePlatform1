@@ -426,7 +426,7 @@ export default function ExecutiveSimulationDemo() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span>See how Execution OS compresses 72-hour responses to 12 minutes</span>
+                    <span>See how Execution OS compresses 30-day mobilization cycles to 12 minutes</span>
                   </li>
                 </ul>
               </div>
@@ -495,7 +495,7 @@ export default function ExecutiveSimulationDemo() {
                   <div>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-white/80">Traditional Approach</span>
-                      <span className="text-[#C9A84C]">48-72 hours</span>
+                      <span className="text-[#C9A84C]">30 days</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                       <div className="h-full bg-[#141B45] rounded-full" style={{ width: '100%' }}></div>

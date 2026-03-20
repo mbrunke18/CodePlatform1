@@ -380,7 +380,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                     <div className="space-y-4">
                       <div>
                         <div className="text-sm text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Average Response Time</div>
-                        <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>72 hours</div>
+                        <div className="text-2xl font-bold text-[#0A0F2E] dark:text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>30 days</div>
                       </div>
                       <div>
                         <div className="text-sm text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Decision Process</div>
@@ -446,7 +446,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                       </h4>
                       <p className="text-sm text-white/80">
                         Stop losing ${totalAnnualValue.toFixed(0)}M annually to slow, reactive decision-making. 
-                        Get execution infrastructure that coordinates in 12 minutes, not 72 hours.
+                        Get execution infrastructure that coordinates in 12 minutes, not 30 days.
                       </p>
                     </div>
                     <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] gap-2" data-testid="button-schedule-demo">

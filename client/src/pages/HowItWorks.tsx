@@ -116,7 +116,7 @@ export default function HowItWorks() {
               How 12 Minutes Actually Happens
             </h2>
             <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
-              Every step the traditional enterprise spends 72 hours negotiating — context analysis, role assignment, task orchestration, communications — Execution OS delivers automatically, end to end, into the tools your teams already use.
+              Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Execution OS delivers automatically, end to end, into the tools your teams already use.
             </p>
           </div>
           <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />

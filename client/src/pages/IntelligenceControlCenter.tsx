@@ -147,8 +147,8 @@ export default function IntelligenceControlCenter() {
           {/* Quick Stats Strip */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, marginBottom: 24, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.07)' }} data-testid="grid-quick-stats">
             {[
-              { label: 'Data Points Monitored', value: '92+', icon: Activity, color: GOLD, id: 'data-points' },
-              { label: 'Signal Categories', value: '16', icon: Layers, color: TEAL, id: 'signal-categories' },
+              { label: 'Data Points Monitored', value: '248+', icon: Activity, color: GOLD, id: 'data-points' },
+              { label: 'Signal Categories', value: '20', icon: Layers, color: TEAL, id: 'signal-categories' },
               { label: 'Weak Signals', value: String(dynamicStatus?.weakSignalsDetected ?? 0), icon: AlertCircle, color: GOLD, id: 'weak-signals' },
               { label: 'Active Patterns', value: String(dynamicStatus?.oraclePatternsActive ?? 0), icon: TrendingUp, color: TEAL, id: 'active-patterns' },
             ].map(stat => (

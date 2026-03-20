@@ -70,7 +70,7 @@ const industryDemos: IndustryDemo[] = [
     playbook: "#146 Trend Capitalization",
     playbookKey: "ma-day1",
     impact: "47M TikTok views, $180M opportunity",
-    timeSaved: "48-72 hours → 12 minutes",
+    timeSaved: "30 days → 12 minutes",
     valueSaved: "$108M additional revenue",
     stakeholders: 5847,
     type: "OFFENSE"
@@ -104,7 +104,7 @@ const industryDemos: IndustryDemo[] = [
     playbook: "#065 Ransomware Attack Response",
     playbookKey: "ransomware",
     impact: "$2.3B market cap, 2M active borrowers",
-    timeSaved: "72 hours → 12 minutes",
+    timeSaved: "30 days → 12 minutes",
     valueSaved: "$22M cost avoided",
     stakeholders: 150,
     type: "DEFENSE"
@@ -191,53 +191,72 @@ export default function IndustryDemosHub() {
 
   const renderDemoCard = (demo: IndustryDemo) => {
     const DemoIcon = demo.icon;
+    const isOffense = demo.type === "OFFENSE";
+    const accent = isOffense ? "#2B8A6E" : "#C9A84C";
+    const accentBg = isOffense ? "rgba(43,138,110,0.07)" : "rgba(201,168,76,0.05)";
+    const accentBorder = isOffense ? "rgba(43,138,110,0.22)" : "rgba(201,168,76,0.18)";
     return (
       <Link key={demo.id} href={`/industry-experience/${demo.id}`}>
-        <Card className="bg-white border-[#E8E4DC] hover:border-[#0A0F2E] transition-all duration-300 cursor-pointer rounded-none h-full group shadow-none hover:shadow-2xl">
-          <div className="p-6">
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-none bg-[#F8F7F4] group-hover:bg-[#0A0F2E] transition-colors ${demo.iconColor} group-hover:text-[#C9A84C]`}>
-                  <DemoIcon className="w-6 h-6 transition-colors" />
+        <div
+          style={{
+            background: "#0A0F2E",
+            border: `1px solid rgba(255,255,255,0.08)`,
+            borderBottom: `3px solid ${accent}`,
+            padding: "22px 22px 18px",
+            cursor: "pointer",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            transition: "all 0.2s ease",
+            position: "relative",
+            overflow: "hidden",
+          }}
+          className="group hover:border-opacity-50"
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(10,15,46,0.92)"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "#0A0F2E"; }}
+        >
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px)", backgroundSize: "44px 44px", pointerEvents: "none" }} />
+          <div className="relative z-10 flex flex-col h-full">
+            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 36, height: 36, background: accentBg, border: `1px solid ${accentBorder}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <DemoIcon style={{ width: 17, height: 17, color: accent }} />
                 </div>
                 <div>
-                  <div className="font-serif text-lg text-[#0A0F2E]">{demo.title}</div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">{demo.industry}</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#F0EDE4", lineHeight: 1.1 }}>{demo.title}</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.4)", marginTop: 2 }}>{demo.industry}</div>
                 </div>
               </div>
-              <Badge className={`text-[9px] font-bold tracking-widest uppercase border rounded-none px-3 py-1 ${categoryBadge(demo.type)}`}>
-                {demo.type}
-              </Badge>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 7px", flexShrink: 0 }}>{demo.type}</span>
             </div>
 
-            <div className="space-y-4 mb-6">
-              <div>
-                <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#C9A84C] mb-1">Scenario</div>
-                <div className="text-sm font-medium text-[#0A0F2E] leading-relaxed">{demo.scenario}</div>
-              </div>
-              <div>
-                <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#C9A84C] mb-1">Organization</div>
-                <div className="text-sm text-[#6B7280] font-light">{demo.organization}</div>
-              </div>
+            <div style={{ marginBottom: 14, flex: 1 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accent, marginBottom: 4 }}>Scenario</div>
+              <div style={{ fontSize: 12, color: "rgba(240,237,228,0.75)", lineHeight: 1.5, marginBottom: 10 }}>{demo.scenario}</div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Organization</div>
+              <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)" }}>{demo.organization}</div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 border-t border-[#F8F7F4] pt-4 mb-6">
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 12, marginBottom: 12 }}>
               <div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Speed</div>
-                <div className="text-xs font-bold text-[#0A0F2E]">{demo.timeSaved}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Speed</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: accent }}>{demo.timeSaved}</div>
               </div>
               <div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Value</div>
-                <div className="text-xs font-bold text-[#2B8A6E]">{demo.valueSaved}</div>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Value Preserved</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#F0EDE4" }}>{demo.valueSaved}</div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-              <span className="flex items-center gap-2"><Play className="w-3 h-3 text-[#C9A84C]" />{demo.playbook}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                <Play style={{ width: 11, height: 11, color: accent }} />
+                <span style={{ fontSize: 10, fontWeight: 700, color: "rgba(240,237,228,0.4)", letterSpacing: "0.1em" }}>{demo.playbook}</span>
+              </div>
+              <span style={{ fontSize: 10, fontWeight: 700, color: accent, letterSpacing: "0.1em" }}>ENTER →</span>
             </div>
           </div>
-        </Card>
+        </div>
       </Link>
     );
   };

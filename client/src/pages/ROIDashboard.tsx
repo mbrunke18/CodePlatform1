@@ -63,7 +63,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
   const s = summary || {};
   const valueM = s.estimatedValuePreservedMillions ?? 0;
   const responseMin = s.avgResponseMinutes ?? 0;
-  const benchMin = s.industryBenchmarkMinutes ?? 4320;
+  const benchMin = s.industryBenchmarkMinutes ?? 43200;
   const saved = s.minutesSavedPerEvent ?? 0;
   const targetRate = s.targetMetRate ?? 0;
   const improvement = s.avgResponseVsBenchmark ?? 0;
@@ -118,7 +118,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 {valueM > 0 && <span className="text-2xl font-bold text-white/60 mb-3">M</span>}
               </div>
               <p className="text-white/60 text-sm max-w-lg mx-auto">
-                Based on {s.completedCount ?? 0} completed activations. Calculated against industry-average 72-hour response lag at Fortune 1000 revenue rates.
+                Based on {s.completedCount ?? 0} completed activations. Calculated against the industry-average 30-day strategic mobilization cycle at Fortune 1000 revenue rates.
               </p>
               {valueM === 0 && (
                 <p className="text-white/40 text-xs mt-2">Complete activations to generate ROI data</p>
@@ -152,7 +152,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
               <div className="p-6 border border-[#E8E4DC]">
                 <h3 className="text-sm font-bold mb-4" style={{ color: NAVY }}>Response Time Comparison</h3>
-                <Bar label="Industry Average (72h lag)" value={benchMin} max={benchMin} color="#EF4444" suffix="min" />
+                <Bar label="Industry Average (30-day mobilization)" value={benchMin} max={benchMin} color="#EF4444" suffix="min" />
                 <Bar label="Execution OS Average" value={responseMin || 12} max={benchMin} color={TEAL} suffix="min" />
                 <div className="mt-4 px-4 py-3 border-l-2" style={{ borderColor: GOLD, background: 'rgba(201,168,76,0.06)' }}>
                   <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Time Saved Per Event</p>
@@ -164,7 +164,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 <h3 className="text-sm font-bold mb-4" style={{ color: NAVY }}>Value Methodology</h3>
                 <div className="space-y-3 text-xs text-gray-600">
                   {[
-                    { label: 'Industry benchmark lag', val: '72 hours (4,320 min)' },
+                    { label: 'Industry mobilization baseline', val: '30 days (43,200 min)' },
                     { label: 'Revenue rate assumption', val: '~$5M/day Fortune 1000' },
                     { label: 'Per-minute value', val: '$3,472/min' },
                     { label: 'Formula', val: 'Time Saved × Rate × Events' },

@@ -26,7 +26,7 @@ const phaseSLAs = [
     color: 'from-orange-600 to-red-600',
     target: '12 minutes',
     description: 'Roles assigned. Tasks staged. Comms sent. Execution live.',
-    benchmark: 'Industry: 24–72 hrs (still planning)'
+    benchmark: 'Industry: 30 days (still planning)'
   },
   {
     phase: 'ADVANCE',
@@ -84,7 +84,7 @@ export default function SLAPage() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              The traditional enterprise spends 20–72 hours just getting the right people in the room.
+              The traditional enterprise spends weeks just getting the right people in the room.
               Execution OS delivers a fully deployed organization — roles assigned, tasks staged,
               communications sent — in 12 minutes. Execution is already underway while competitors
               are still scheduling their kickoff call.

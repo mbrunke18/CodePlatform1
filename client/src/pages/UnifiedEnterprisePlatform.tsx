@@ -441,7 +441,7 @@ export default function UnifiedEnterprisePlatform() {
                       </div>
                       <div className="mt-2 flex items-center gap-1">
                         <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
-                        <span className="text-xs text-[#2B8A6E]">85% faster than industry avg (72 hrs)</span>
+                        <span className="text-xs text-[#2B8A6E]">85% faster than industry avg (30-day mobilization)</span>
                       </div>
                     </div>
 

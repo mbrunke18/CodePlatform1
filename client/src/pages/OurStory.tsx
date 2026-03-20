@@ -226,7 +226,7 @@ export default function OurStory() {
           </TimelineChapter>
 
           <PullQuote author="The Execution OS Philosophy">
-            Why do Fortune 1000 enterprises take 72 hours for decisions that championship teams make in 40 seconds?
+            Why do Fortune 1000 enterprises take 30 days for decisions that championship teams make in 40 seconds?
           </PullQuote>
 
           {/* Chapter 2 */}

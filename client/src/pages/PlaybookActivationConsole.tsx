@@ -666,7 +666,7 @@ export default function PlaybookActivationConsole() {
   const targetTime = 12; // 12 minutes target
   const elapsedMinutes = elapsedSeconds / 60;
   const isOnTrack = elapsedMinutes <= targetTime;
-  const industryStandard = 72 * 60; // 72 hours in minutes
+  const industryStandard = 30 * 24 * 60; // 30 days in minutes (canonical mobilization baseline)
   const timeSaved = industryStandard - elapsedMinutes;
 
   // For manual executions, only wait for playbook. For trigger-based, wait for both.
@@ -886,7 +886,7 @@ export default function PlaybookActivationConsole() {
             <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px", opacity: 0.5 }} />
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", letterSpacing: "0.05em" }}>
-                <strong style={{ color: GOLD }}>INDUSTRY BENCHMARK:</strong> Traditional coordination takes 72 hours average.
+                <strong style={{ color: GOLD }}>INDUSTRY BENCHMARK:</strong> Traditional mobilization takes 30 days from trigger to execution.
                 <strong style={{ color: GOLD, marginLeft: 16 }}>OUR TARGET:</strong> 12 minutes or less.
               </div>
               <div className="flex items-center gap-4">
@@ -950,7 +950,7 @@ export default function PlaybookActivationConsole() {
                 {elapsedMinutes > 0 ? `${(industryStandard / elapsedMinutes).toFixed(0)}x` : '360x+'}
               </div>
               <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: MUTED, marginTop:8 }}>
-                Faster than 72hr standard
+                3,600× Execution Head Start
               </div>
             </div>
 
@@ -1432,12 +1432,12 @@ export default function PlaybookActivationConsole() {
                     Playbook Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em>
                   </h2>
                   <div style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 20 }}>
-                    Completed in {formatTime(elapsedSeconds)} &nbsp;·&nbsp; {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x faster than the 72-hour industry standard
+                    Completed in {formatTime(elapsedSeconds)} &nbsp;·&nbsp; 3,600× Execution Head Start vs. 30-day industry mobilization cycle
                   </div>
                   <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.15)", border: `1px solid ${GOLD}`, padding: "12px 28px", marginBottom: 28 }}>
                     <BarChart3 className="h-4 w-4" style={{ color: GOLD }} />
                     <span style={{ color: GOLD_LT, fontSize: 15, fontWeight: 700 }}>
-                      {roiFormatted} decision time preserved &nbsp;·&nbsp; {Math.floor(timeSaved / 60)}h {Math.round(timeSaved % 60)}m vs. 72-hour benchmark
+                      {roiFormatted} decision time preserved &nbsp;·&nbsp; 30-day mobilization cycle compressed to 12 minutes
                     </span>
                   </div>
                   <div className="flex items-center justify-center gap-3 flex-wrap">
@@ -1495,7 +1495,7 @@ export default function PlaybookActivationConsole() {
                     </p>
                     <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55 }}>
                       This simulation demonstrates what your organization could achieve with Execution OS in a live strategic event.
-                      Performance scores, ROI estimates, and task completion rates are modeled against the <strong>72-hour industry benchmark</strong> for comparable crisis response events.
+                      Performance scores, ROI estimates, and task completion rates are modeled against the <strong>30-day industry mobilization benchmark</strong> for comparable strategic response events.
                       Actual results vary by organization readiness and playbook configuration.
                     </p>
                   </div>
@@ -1528,7 +1528,7 @@ export default function PlaybookActivationConsole() {
                       <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED }}>Time Preserved</span>
                     </div>
                     <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{Math.floor(timeSaved / 60)}h</div>
-                    <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>vs. 72-hr standard</div>
+                    <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>vs. 30-day standard</div>
                   </div>
 
                   {/* Tasks Completed */}

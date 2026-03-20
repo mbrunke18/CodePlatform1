@@ -173,8 +173,8 @@ const IDEA_STORY = [
     ],
     metrics: [
       { label: "Time to Align", value: "12 min" },
-      { label: "vs. Traditional", value: "72 hrs" },
-      { label: "Faster", value: "360x" }
+      { label: "vs. Traditional", value: "30 days" },
+      { label: "Head Start", value: "3,600×" }
     ],
     smartDefaults: {
       title: "What Happens in 12 Minutes",

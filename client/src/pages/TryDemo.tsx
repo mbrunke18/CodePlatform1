@@ -261,7 +261,7 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
     stat: '$4.9M ransom avoided through rapid containment',
   },
   competitor: {
-    patterns: ['91% of at-risk pipeline contacted within 12 hours', 'Battle card deployed to 47 AEs before first customer call', 'Pricing committee decision made in 38 minutes vs. 72-hour norm'],
+    patterns: ['91% of at-risk pipeline contacted within 12 hours', 'Battle card deployed to 47 AEs before first customer call', 'Pricing committee decision made in 38 minutes vs. 30-day norm'],
     improvements: ['Add competitive intelligence trigger at 20% price delta (current: 30%)', 'Include channel partners in Phase 1 stakeholder notification', 'Stage CEO quote approval in Phase 2 communication assets'],
     stat: '$42M at-risk pipeline retained through rapid response',
   },

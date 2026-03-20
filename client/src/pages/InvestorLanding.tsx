@@ -480,7 +480,7 @@ export default function InvestorLanding() {
                 Complete End-to-End Platform
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
-                From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 72-hour scrambles
+                From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 30-day mobilization scrambles
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">

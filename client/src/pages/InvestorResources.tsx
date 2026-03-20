@@ -103,7 +103,7 @@ export default function InvestorResources() {
                   <div className="p-2 bg-[#0A0F2E]/5 rounded-lg">
                     <Clock className="h-6 w-6 text-[#0A0F2E]" />
                   </div>
-                  The Problem: 72-Hour Gap
+                  The Problem: 30-Day Mobilization Gap
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8 space-y-6">
@@ -116,7 +116,7 @@ export default function InvestorResources() {
                     { time: '4-12 hrs', label: 'Ad-hoc calls to identify who should be involved' },
                     { time: '12-24 hrs', label: 'Scramble to find relevant documents and data' },
                     { time: '24-48 hrs', label: 'Debate about authority, budget, and approach' },
-                    { time: '48-72 hrs', label: 'Finally begin coordinated response' },
+                    { time: 'Days 3–30', label: 'Debate continues — coordinated response still hasn\'t started' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-4">
                       <div className="w-20 shrink-0 text-[10px] font-bold text-[#0A0F2E] uppercase tracking-widest bg-[#0A0F2E]/5 py-1 px-2 rounded text-center border border-[#0A0F2E]/10">
@@ -190,7 +190,7 @@ export default function InvestorResources() {
             {[
               { val: "170", label: "Strategic Playbooks", sub: "Across 9 domains" },
               { val: "248+", label: "Data Points Monitored", sub: "Real-time signals" },
-              { val: "12 min", label: "Response Time", sub: "vs 72 hrs industry avg" },
+              { val: "12 min", label: "Response Time", sub: "vs 30-day industry avg" },
               { val: "24/7", label: "AI Intelligence", sub: "Continuous monitoring" },
             ].map((m, i) => (
               <Card key={i} className="text-center border-[#E8E4DC] bg-white">
