@@ -41,14 +41,23 @@ const TEAL = "#2B8A6E";
 
 const workspaceTools = [
   {
+    title: "Strategic Learning Center",
+    description: "AI-powered performance intelligence — review what worked, refine what didn't, and close the improvement loop",
+    path: "/execution-learning",
+    icon: Brain,
+    color: "text-[#C9A84C]",
+    bgColor: "bg-[#C9A84C]/10",
+    stats: "AI optimization",
+    featured: true
+  },
+  {
     title: "Institutional Memory",
     description: "Capture and preserve organizational learnings from every execution",
     path: "/institutional-memory",
     icon: BookOpen,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
-    stats: "Knowledge base",
-    featured: true
+    stats: "Knowledge base"
   },
   {
     title: "Decision Velocity",

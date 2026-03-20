@@ -184,6 +184,13 @@ export const navigationConfig: NavigationConfig = {
       color: 'from-green-600 to-emerald-600',
       items: [
         {
+          id: 'learning-center',
+          label: 'Strategic Learning Center',
+          path: '/execution-learning',
+          icon: '🧠',
+          description: 'AI-powered performance intelligence and continuous improvement'
+        },
+        {
           id: 'roi-dashboard',
           label: 'Execution ROI Dashboard',
           path: '/roi-dashboard',

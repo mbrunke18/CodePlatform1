@@ -1441,9 +1441,14 @@ export default function PlaybookActivationConsole() {
                     </span>
                   </div>
                   <div className="flex items-center justify-center gap-3 flex-wrap">
-                    <Link href="/workspace?tab=advance">
+                    <Link href="/execution-learning">
                       <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, padding: "11px 28px", borderRadius: 0, fontSize: 12, letterSpacing: "0.05em" }}>
-                        Proceed to ADVANCE <ArrowRight className="h-4 w-4 ml-2 inline" />
+                        Review in Learning Center <ArrowRight className="h-4 w-4 ml-2 inline" />
+                      </Button>
+                    </Link>
+                    <Link href="/workspace?tab=advance">
+                      <Button variant="outline" style={{ border: `1.5px solid rgba(255,255,255,0.3)`, color: "#fff", background: "transparent", fontWeight: 600, padding: "11px 28px", borderRadius: 0, fontSize: 12 }}>
+                        Proceed to ADVANCE
                       </Button>
                     </Link>
                     <Link href="/roi-dashboard">
