@@ -16,38 +16,36 @@ if (import.meta.env.VITE_SENTRY_DSN) {
 }
 
 // ─── Scroll-lock safety patches ───────────────────────────────────────────────
-// react-remove-scroll / use-sidecar (bundled via @radix-ui/react-scroll-area)
-// can leave stale scroll locks after HMR reloads. These three patches prevent
-// the resulting TypeError from reaching either the error boundary or Vite's
-// dev overlay, and ensure the page remains scrollable.
+// react-remove-scroll / use-sidecar leave stale scroll locks after HMR reloads
+// or navigation when lockRef.current becomes null. These patches prevent the
+// resulting TypeError from reaching either the error boundary or Vite's overlay.
 
-// 1) Patch getComputedStyle so it never throws when called with a non-Element
-//    (happens when lockRef.current becomes window after an HMR cycle).
+// 1) Patch getComputedStyle so that when it is called with a non-Element
+//    (null, window, etc.) it re-throws the original browser message.
+//    This aborts handleScroll at line 767 BEFORE it reaches null.contains()
+//    at line 770, so only one error fires (which the suppressor below catches).
 const _nativeGetComputedStyle = window.getComputedStyle;
 (window as any).getComputedStyle = function (
   element: unknown,
   pseudoElt?: string | null
 ): CSSStyleDeclaration {
   if (!element || !(element instanceof Element)) {
-    return { direction: "ltr", overflow: "auto" } as unknown as CSSStyleDeclaration;
+    throw new TypeError("parameter 1 is not of type 'Element'.");
   }
   return _nativeGetComputedStyle.call(window, element as Element, pseudoElt);
 };
 
-// 2) Ensure window.contains exists so the subsequent endTarget.contains() call
-//    inside use-sidecar's handleScroll doesn't throw.
-if (typeof (window as any).contains !== "function") {
-  (window as any).contains = () => false;
-}
-
-// 3) Suppress residual ErrorEvent propagation (belt-and-suspenders; runs before
-//    Vite's dev overlay because we're in capture phase).
+// 2) Suppress both the getComputedStyle error AND the fallback null.contains
+//    error in the rare case the patched code path is skipped.
+//    Runs in capture phase — before Vite's bubble-phase overlay listener.
 const suppressScrollLockError = (event: ErrorEvent) => {
   const msg = event.message || "";
   if (
     msg.includes("getComputedStyle") ||
     msg.includes("parameter 1 is not of type") ||
-    msg.includes("not of type 'Element'")
+    msg.includes("not of type 'Element'") ||
+    (msg.includes("null") && msg.includes("contains")) ||
+    (msg.includes("null") && msg.includes("reading 'contains'"))
   ) {
     event.stopImmediatePropagation();
     event.preventDefault();
@@ -55,12 +53,11 @@ const suppressScrollLockError = (event: ErrorEvent) => {
 };
 window.addEventListener("error", suppressScrollLockError, true);
 
-// 4) After every HMR update, clear any scroll-lock styles that react-remove-scroll
-//    left on <body> / <html>. This restores scroll-ability between hot reloads.
+// 3) After every HMR update, clear scroll-lock styles react-remove-scroll
+//    left on <body> / <html> so the page stays scrollable between hot reloads.
 function clearStaleScrollLocks() {
   try {
-    const targets = [document.body, document.documentElement];
-    targets.forEach((el) => {
+    [document.body, document.documentElement].forEach((el) => {
       if (!el) return;
       el.removeAttribute("data-scroll-locked");
       el.style.overflow = "";

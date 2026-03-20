@@ -1,4 +1,5 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import StandardNav from './StandardNav';
 import Footer from './Footer';
 import { BackButton } from '@/components/ui/back-button';
@@ -18,6 +19,23 @@ export default function PageLayout({
   backButtonLabel = "Back",
   embedded = false
 }: PageLayoutProps) {
+  const [location] = useLocation();
+
+  // Clear any stale scroll locks left by Radix overlay components
+  // (Dialog, Popover, Select, DropdownMenu) after every route change.
+  // react-remove-scroll occasionally leaves data-scroll-locked on <body>
+  // when components unmount during navigation, locking the page.
+  useEffect(() => {
+    try {
+      [document.body, document.documentElement].forEach((el) => {
+        if (!el) return;
+        el.removeAttribute('data-scroll-locked');
+        el.style.overflow = '';
+        el.style.paddingRight = '';
+      });
+    } catch (_) {}
+  }, [location]);
+
   if (embedded) {
     return <div className={className}>{children}</div>;
   }
