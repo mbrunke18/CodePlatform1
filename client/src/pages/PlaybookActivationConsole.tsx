@@ -684,7 +684,7 @@ export default function PlaybookActivationConsole() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Pre-Activation Review</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Pre-Activation Review</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
                   Review <em style={{ fontStyle: "italic", color: GOLD }}>Projected Impact</em>
@@ -831,7 +831,7 @@ export default function PlaybookActivationConsole() {
                   {/* Commander Note */}
                   {brief.commanderNote && (
                     <div style={{ padding: "12px 16px", background: NAVY, display: "flex", alignItems: "center", gap: 10 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0 }}>Commander</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0 }}>Commander</div>
                       <div style={{ width: 1, height: 24, background: `${GOLD}40`, flexShrink: 0 }} />
                       <p style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontStyle: "italic", lineHeight: 1.5 }}>{brief.commanderNote}</p>
                     </div>
@@ -865,7 +865,7 @@ export default function PlaybookActivationConsole() {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Live Execution Console</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Live Execution Console</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
                 Execute Your <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Playbook</em>
@@ -1084,7 +1084,7 @@ export default function PlaybookActivationConsole() {
                     <div style={{ fontSize: 10, color: MUTED, marginTop: 2 }}>via {s.method}</div>
                   </div>
                   <div style={{
-                    fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
+                    fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const,
                     padding: "3px 8px", whiteSpace: "nowrap",
                     background: s.status === 'acknowledged' ? "rgba(43,138,110,0.12)" : s.status === 'notified' ? "rgba(201,168,76,0.12)" : "rgba(0,0,0,0.05)",
                     color: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : MUTED,
@@ -1143,7 +1143,7 @@ export default function PlaybookActivationConsole() {
                       task.phase === 'AI SCENARIO INTELLIGENCE' ? (
                         <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 0 8px", margin: "4px 0 0" }}>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${GOLD}, transparent)` }} />
-                          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "4px 12px", background: GOLD, color: NAVY }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "4px 12px", background: GOLD, color: NAVY }}>
                             <span>✦</span> GPT-4o SCENARIO TASKS <span>✦</span>
                           </div>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${GOLD}, transparent)` }} />
@@ -1151,7 +1151,7 @@ export default function PlaybookActivationConsole() {
                       ) : (
                         <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0 6px", margin: "4px 0 0" }}>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${NAVY}, transparent)` }} />
-                          <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "3px 10px", background: NAVY, color: "#fff" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "3px 10px", background: NAVY, color: "#fff" }}>
                             {task.phase}
                           </div>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${NAVY}, transparent)` }} />
@@ -1191,7 +1191,7 @@ export default function PlaybookActivationConsole() {
                     <div className="flex-1">
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" as const }}>
                         <div style={{
-                          fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const,
+                          fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const,
                           padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.12)" : isDone ? "rgba(43,138,110,0.08)" : "rgba(0,0,0,0.05)",
                           color: isActive ? GOLD : isDone ? TEAL : MUTED,
                         }}>
@@ -1199,18 +1199,18 @@ export default function PlaybookActivationConsole() {
                         </div>
                         {/* Role owner badge — only shows for flagship playbooks with expert content */}
                         {task.assignedRole && (
-                          <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 2 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 2 }}>
                             {task.assignedRole}
                           </div>
                         )}
                         {/* Time target badge */}
                         {task.timeTarget && (
-                          <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.08em", padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.04)", color: isActive ? GOLD : MUTED, borderRadius: 2, display: "flex", alignItems: "center", gap: 4 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.04)", color: isActive ? GOLD : MUTED, borderRadius: 2, display: "flex", alignItems: "center", gap: 4 }}>
                             ⏱ {task.timeTarget}
                           </div>
                         )}
                         {isActive && (
-                          <div style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>
                             ● IN PROGRESS
                           </div>
                         )}
@@ -1300,15 +1300,15 @@ export default function PlaybookActivationConsole() {
                     {/* Decision Gate — shown after last task of each phase */}
                     {task.decisionGate && (
                       <div style={{ margin: "6px 0 10px", padding: "10px 16px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.12)`, borderLeft: `3px solid ${GOLD}` }}>
-                        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>⬥ Decision Gate</div>
+                        <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>⬥ Decision Gate</div>
                         <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, marginBottom: 8 }}>{task.decisionGate.question}</div>
                         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
                           <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.25)`, borderRadius: 3 }}>
-                            <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 2 }}>✓ YES — Advance</div>
+                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 2 }}>✓ YES — Advance</div>
                             <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.yes}</div>
                           </div>
                           <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(201,168,76,0.07)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 3 }}>
-                            <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>✗ NO — Contain</div>
+                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>✗ NO — Contain</div>
                             <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.no}</div>
                           </div>
                         </div>
@@ -1506,7 +1506,7 @@ export default function PlaybookActivationConsole() {
               <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}`, padding: "40px 48px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
                   <div style={{ width: 24, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>ADVANCE — Execution Debrief</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>ADVANCE — Execution Debrief</span>
                 </div>
 
                 {/* 4 Metric Cards */}
@@ -1515,7 +1515,7 @@ export default function PlaybookActivationConsole() {
                   <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${perfColor}`, padding: 20 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
                       <Award className="h-3.5 w-3.5" style={{ color: perfColor }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Performance Score</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED }}>Performance Score</span>
                     </div>
                     <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: perfColor, lineHeight: 1 }}>{perfScore}</div>
                     <div style={{ fontSize: 10, fontWeight: 700, color: perfColor, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{perfLabel}</div>
@@ -1525,7 +1525,7 @@ export default function PlaybookActivationConsole() {
                   <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${TEAL}`, padding: 20 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
                       <Clock className="h-3.5 w-3.5" style={{ color: TEAL }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Time Preserved</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED }}>Time Preserved</span>
                     </div>
                     <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{Math.floor(timeSaved / 60)}h</div>
                     <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>vs. 72-hr standard</div>
@@ -1535,7 +1535,7 @@ export default function PlaybookActivationConsole() {
                   <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${NAVY}`, padding: 20 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
                       <CheckCircle2 className="h-3.5 w-3.5" style={{ color: NAVY }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Tasks Completed</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED }}>Tasks Completed</span>
                     </div>
                     <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{completedTasks}/{displayTasks.length}</div>
                     <div style={{ fontSize: 10, fontWeight: 600, color: MUTED, marginTop: 6, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>
@@ -1547,7 +1547,7 @@ export default function PlaybookActivationConsole() {
                   <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${GOLD}`, padding: 20 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
                       <Zap className="h-3.5 w-3.5" style={{ color: GOLD }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED }}>Decision Velocity</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: MUTED }}>Decision Velocity</span>
                     </div>
                     <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: GOLD, lineHeight: 1 }}>
                       {(industryStandard / Math.max(elapsedMinutes, 1)).toFixed(0)}x

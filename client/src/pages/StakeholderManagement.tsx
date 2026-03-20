@@ -280,7 +280,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         <div className="relative z-10 max-w-7xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Stakeholder Directory</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.55)" }}>Stakeholder Directory</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -326,7 +326,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <Users className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.total}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Stakeholders</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Total Stakeholders</div>
               </div>
             </CardContent>
           </Card>
@@ -338,7 +338,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <Shield className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.cSuite}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>C-Suite</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>C-Suite</div>
               </div>
             </CardContent>
           </Card>
@@ -350,7 +350,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <Building2 className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.executives}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Executives</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Executives</div>
               </div>
             </CardContent>
           </Card>
@@ -362,7 +362,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   <UserCircle className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.active}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
               </div>
             </CardContent>
           </Card>
@@ -536,7 +536,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         <div className="mt-16 mb-8">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
             <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Engagement Analytics</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Engagement Analytics</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="border-[#E8E4DC]">

@@ -374,15 +374,13 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div className="max-w-2xl">
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Command Center · Compass™</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD }}>Command Center · Compass™</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", color: NAVY, marginBottom: 16 }}>
                 Command <em style={{ fontStyle: "italic", color: GOLD }}>Center</em>
               </h1>
-              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6">
-                Your organization's nerve center for strategic execution. When a critical event is detected, 
-                Execution OS coordinates your entire response — tasks, teams, documents, budgets, and integrations — 
-                in under 12 minutes.
+              <p className="text-base text-gray-600 leading-relaxed mb-6">
+                When a trigger fires, Execution OS coordinates your full response — tasks, teams, documents, budgets — in 12 minutes. Not days.
               </p>
               <OnboardingTrigger pageId="command-center" autoStart={true} />
             </div>
@@ -391,7 +389,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {activeScenarios.length}
                 </div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                   Active Scenarios
                 </div>
               </div>
@@ -399,7 +397,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {teamsCoordinating}
                 </div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                   Teams Ready
                 </div>
               </div>
@@ -407,7 +405,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY }}>
                   {percentOnTrack}%
                 </div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                   On Track
                 </div>
               </div>
@@ -422,7 +420,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Compound Threat Intelligence · GPT-4o</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Compound Threat Intelligence · GPT-4o</span>
             </div>
             <Button
               onClick={() => compoundAnalyzeMutation.mutate()}
@@ -437,12 +435,12 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           {compoundAnalysisResult ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}` }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Compound Risk Score</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Compound Risk Score</div>
                 <div style={{ fontSize: 40, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{compoundAnalysisResult.compoundRiskScore || compoundAnalysisResult.riskScore || 72}</div>
                 <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>/ 100 — AI-assessed exposure</div>
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Playbooks</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Playbooks</div>
                 <div className="space-y-2">
                   {(compoundAnalysisResult.recommendedPlaybooks || compoundAnalysisResult.playbooks || []).slice(0, 3).map((p: string, i: number) => (
                     <div key={i} style={{ fontSize: 12, color: NAVY, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
@@ -453,7 +451,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 </div>
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}` }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 8 }}>Executive Assessment</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 8 }}>Executive Assessment</div>
                 <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended playbooks and initiate response protocol.'}</p>
               </div>
             </div>
@@ -466,7 +464,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               ]).map((threat: any, i: number) => (
                 <div key={i} style={{ padding: "16px 20px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${threat.severity === 'critical' ? '#C0392B' : GOLD}` }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: threat.severity === 'critical' ? '#C0392B' : GOLD }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: threat.severity === 'critical' ? '#C0392B' : GOLD }}>
                       {threat.severity}
                     </div>
                     <div style={{ fontSize: 10, color: "#6B7280" }}>{threat.triggersCount || 2} triggers</div>
@@ -474,7 +472,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   <div style={{ fontSize: 13, fontWeight: 600, color: NAVY, lineHeight: 1.4, marginBottom: 8 }}>{threat.name}</div>
                   <div style={{ display: "flex", gap: 4, flexWrap: "wrap" as const }}>
                     {(threat.domains || []).map((d: string) => (
-                      <span key={d} style={{ fontSize: 9, fontWeight: 600, padding: "2px 6px", background: "#F3F4F6", color: "#374151", textTransform: "capitalize" as const }}>{d}</span>
+                      <span key={d} style={{ fontSize: 10, fontWeight: 600, padding: "2px 7px", background: "#F3F4F6", color: "#374151", textTransform: "capitalize" as const }}>{d}</span>
                     ))}
                   </div>
                 </div>
@@ -497,7 +495,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#fff" }} data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
                       </div>
-                      <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>remaining</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>remaining</div>
                     </div>
                   </div>
                   {demoExecution.active && (
@@ -508,7 +506,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                       <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>LIVE EXECUTION</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>LIVE EXECUTION</span>
                     </div>
                   </div>
                   <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>
@@ -516,9 +514,9 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   </h2>
                   <div className="flex items-center gap-2">
                     {demoExecution.active ? (
-                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>LIVE</div>
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:10, fontWeight:700, letterSpacing:"0.12em", textTransform:"uppercase", padding:"3px 10px" }}>LIVE</div>
                     ) : (
-                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.2)", color:"#fff", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>COMPLETED</div>
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.2)", color:"#fff", fontSize:10, fontWeight:700, letterSpacing:"0.12em", textTransform:"uppercase", padding:"3px 10px" }}>COMPLETED</div>
                     )}
                     <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13 }}>
                       Phase: {EXECUTION_PHASES[demoExecution.phase]?.name}
@@ -530,17 +528,17 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="grid grid-cols-3 gap-2 sm:flex sm:items-center sm:gap-4">
                   <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
                     <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff" }}>{demoExecution.completedTasks.length}</div>
-                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Tasks</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>Tasks</div>
                   </div>
                   <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
                     <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: GOLD_LT }} data-testid="text-roi-value">
                       ${(demoExecution.accumulatedValue / 1000).toFixed(0)}K
                     </div>
-                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Value</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>Value</div>
                   </div>
                   <div style={{ padding: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center", minWidth: 80 }}>
                     <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff" }}>8</div>
-                    <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Teams</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>Teams</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -549,7 +547,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       key={speed.value}
                       size="sm"
                       variant="ghost"
-                      style={{ border: demoSpeed === speed.value ? "1px solid #C9A84C" : "1px solid rgba(255,255,255,0.1)", color: demoSpeed === speed.value ? "#C9A84C" : "rgba(255,255,255,0.6)", fontSize: 9, fontWeight: 700 }}
+                      style={{ border: demoSpeed === speed.value ? "1px solid #C9A84C" : "1px solid rgba(255,255,255,0.1)", color: demoSpeed === speed.value ? "#C9A84C" : "rgba(255,255,255,0.6)", fontSize: 11, fontWeight: 700 }}
                       onClick={() => setDemoSpeed(speed.value)}
                       data-testid={`button-speed-${speed.value}x`}
                     >
@@ -574,7 +572,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 return (
                   <div key={phase.id} className="flex-1" data-testid={`phase-progress-${phase.id}`}>
                     <div className="flex items-center justify-between mb-2">
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: isActive ? "#fff" : "rgba(255,255,255,0.4)" }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: isActive ? "#fff" : "rgba(255,255,255,0.45)" }}>
                         {phase.icon} {phase.name}
                       </span>
                       {isComplete && <CheckCircle2 className="w-3 h-3 text-[#3BAF8A]" />}
@@ -639,7 +637,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>EXECUTION SUCCESSFUL</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#2B8A6E" }}>EXECUTION SUCCESSFUL</span>
                   </div>
                   <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY }}>
                     Execution Complete
@@ -714,10 +712,10 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                         <div style={{ display: "flex", gap: 4 }}>
                           {['I','D','E','A'].map((letter, i) => (
-                            <span key={letter} style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", color: i === 1 ? '#C9A84C' : "rgba(255,255,255,0.35)", padding: "1px 5px", background: i === 1 ? "rgba(201,168,76,0.2)" : "transparent", border: i === 1 ? "1px solid rgba(201,168,76,0.4)" : "none" }}>{letter}</span>
+                            <span key={letter} style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.05em", color: i === 1 ? '#C9A84C' : "rgba(255,255,255,0.4)", padding: "1px 6px", background: i === 1 ? "rgba(201,168,76,0.2)" : "transparent", border: i === 1 ? "1px solid rgba(201,168,76,0.4)" : "none" }}>{letter}</span>
                           ))}
                         </div>
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>DETECT — Signal Fired</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>DETECT — Signal Fired</span>
                       </div>
                     </div>
                     <div className="p-5 space-y-4">
@@ -725,7 +723,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)", padding: "10px 14px" }}>
                         <div className="flex items-center gap-2 mb-1">
                           <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#ef4444", flexShrink: 0 }} className="animate-pulse" />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(239,68,68,0.9)" }}>LIVE TRIGGER</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(239,68,68,0.9)" }}>LIVE TRIGGER</span>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{ideaRecommendation.signal.title}</p>
                         <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 10, marginTop: 2 }}>{ideaRecommendation.signal.source} · {ideaRecommendation.signal.time}</p>
@@ -733,11 +731,11 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
                       {/* Recommended playbook */}
                       <div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>EXECUTE — Recommended Playbook</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Playbook</div>
                         <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>{ideaRecommendation.playbook}</h3>
                         <div className="flex items-center gap-2">
-                          <span style={{ fontSize: 9, fontWeight: 700, color: "#C9A84C", background: "rgba(201,168,76,0.15)", padding: "2px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>{ideaRecommendation.domain}</span>
-                          <span style={{ fontSize: 9, fontWeight: 700, color: "rgba(239,68,68,0.9)" }}>{ideaRecommendation.urgency}</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: "#C9A84C", background: "rgba(201,168,76,0.15)", padding: "2px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>{ideaRecommendation.domain}</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: "rgba(239,68,68,0.9)" }}>{ideaRecommendation.urgency}</span>
                         </div>
                       </div>
 
@@ -768,7 +766,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-between">
                     <CardTitle style={{ ...CG, color: NAVY }}>Execution Coordination</CardTitle>
                     <div className="flex items-center gap-2">
-                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                      <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:10, fontWeight:700, letterSpacing:"0.12em", textTransform:"uppercase", padding:"3px 10px" }}>
                         Synced
                       </div>
                     </div>
@@ -793,7 +791,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                             <p style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{event.team}: {event.action}</p>
                             <p style={{ color: "#6B7280", fontSize: 12 }}>{event.time}</p>
                           </div>
-                          <Badge variant="outline" style={{ fontSize: 9, color: "#6B7280" }}>
+                          <Badge variant="outline" style={{ fontSize: 10, color: "#6B7280" }}>
                             {event.status.toUpperCase()}
                           </Badge>
                         </div>

@@ -370,7 +370,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Task Management</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.55)" }}>Task Management</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -416,7 +416,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <ListChecks className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Tasks</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Total Tasks</div>
               </div>
             </CardContent>
           </Card>
@@ -428,7 +428,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <Circle className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.pending}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Pending</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Pending</div>
               </div>
             </CardContent>
           </Card>
@@ -440,7 +440,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <Timer className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.inProgress}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Execution</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Active Execution</div>
               </div>
             </CardContent>
           </Card>
@@ -452,7 +452,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <CheckCircle2 className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.completed}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Completed</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Completed</div>
               </div>
             </CardContent>
           </Card>
@@ -464,7 +464,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   <Clock className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.totalMinutes}m</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Duration</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>Total Duration</div>
               </div>
             </CardContent>
           </Card>

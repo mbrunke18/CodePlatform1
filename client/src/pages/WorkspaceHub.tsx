@@ -323,9 +323,9 @@ function IDEAPhaseLanding({ activeTab, onSelect }: { activeTab: string; onSelect
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
           <div style={{ width: 28, height: 1.5, background: GOLD }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>IDEA Framework™</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>IDEA Framework™</span>
           <div style={{ width: 28, height: 1.5, background: GOLD }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginLeft: 4 }}>Execution Workspace</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.5)', marginLeft: 4 }}>Execution Workspace</span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, paddingBottom: 0 }}>
           {IDEA_PHASE_TILES.map(tile => {
@@ -351,17 +351,17 @@ function IDEAPhaseLanding({ activeTab, onSelect }: { activeTab: string; onSelect
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-                  <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: tile.accentColor }}>{tile.phase}</span>
-                  <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.3)', border: `1px solid ${isActive ? tile.accentColor : 'rgba(255,255,255,0.1)'}`, padding: '2px 7px' }}>{tile.label}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: tile.accentColor }}>{tile.phase}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.4)', border: `1px solid ${isActive ? tile.accentColor : 'rgba(255,255,255,0.1)'}`, padding: '2px 7px' }}>{tile.label}</span>
                 </div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: '#F0EDE4', marginBottom: 6, lineHeight: 1.1 }}>{tile.name}</div>
                 <p style={{ fontSize: 11, color: 'rgba(240,237,228,0.5)', lineHeight: 1.5, marginBottom: 14, minHeight: 48 }}>{tile.desc}</p>
                 <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
                   <div>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: tile.accentColor, lineHeight: 1 }}>{tile.stat}</div>
-                    <div style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.1em', marginTop: 2 }}>{tile.statSub}</div>
+                    <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.5)', letterSpacing: '0.06em', marginTop: 2 }}>{tile.statSub}</div>
                   </div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.3)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: isActive ? tile.accentColor : 'rgba(240,237,228,0.4)', display: 'flex', alignItems: 'center', gap: 4 }}>
                     {isActive ? 'ACTIVE' : 'ENTER'} <span style={{ fontSize: 12 }}>→</span>
                   </div>
                 </div>
