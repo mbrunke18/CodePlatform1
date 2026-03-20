@@ -624,14 +624,17 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `BoardBriefings.tsx` | `/board-briefings` | Board reports + AI Board Deck Generator. **Investor-gated** (see InvestorGate). |
 | `InvestorResources.tsx` | `/investor-resources` | Full investor materials page. **Investor-gated**. |
 | `InvestorPresentation.tsx` | `/investor-presentation` | Slide deck presentation view. **Investor-gated**. |
+| `InvestorLanding.tsx` | `/investor-landing`, `/executive-access` | Full investor pitch page. Hero primary CTA: "Schedule a Conversation" → `/pilot-program`. Secondary: "See 8-Minute Demo" + "Investor Resources". Closing CTA section: "Let's Build This Together" with same priority order + `investor@vaughnmartin.com` contact line. **Previously redirected to `/how-it-works` — now a live route.** Public (not gated). |
 | `Settings.tsx` | `/settings` | Admin settings. All buttons are functional (March 2026). |
 | `OnboardingWizard.tsx` | `/onboarding` | 5-step new user setup |
 | `ExecutiveSummaryGenerator.tsx` | `/executive-summary` | AI-generated executive summaries |
 | `PilotProgram.tsx` | `/pilot-program` | Primary enterprise conversion page |
+| `DemoAccess.tsx` | `/demo-access` | Token-gated executive access entry point. Reads `?token=` param, validates via `/api/demo-access`, then redirects to `/mission-control` (or `?returnTo=` value). **LOCKED executive access link: `https://vaughnmartin.com/demo-access?token=VMdemo2026`** — do not change this URL or token. |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
 | `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
 | `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
 | `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
+| `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
 
 ---
 
