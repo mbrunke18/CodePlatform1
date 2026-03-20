@@ -328,7 +328,7 @@ export default function PlaybookDetail() {
               <div style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${GOLD}`, padding: 40, background: "#fff" }}>
                 <div className="flex items-center gap-3 mb-6">
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Playbook No. {playbook.playbookNumber}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Playbook No. {playbook.playbookNumber}</span>
                 </div>
                 <h1 style={{ ...CG, fontSize: "clamp(32px,5vw,48px)", fontWeight: 600, color: NAVY, lineHeight: 1.05, marginBottom: 24 }}>
                   {playbook.name}
@@ -742,7 +742,7 @@ export default function PlaybookDetail() {
               <div style={{ border: `1px solid ${BORDER}`, padding: 32, background: "#fff", textAlign: "center" }}>
                 {isSampleView ? (
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
                     <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>
                       167 more playbooks are waiting for your team
                     </div>
@@ -896,10 +896,10 @@ export default function PlaybookDetail() {
                         style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", background: expandedPhase === phase.id ? `${NAVY}08` : "transparent", border: `1px solid ${expandedPhase === phase.id ? NAVY : BORDER}`, cursor: "pointer", textAlign: "left" }}
                       >
                         <div style={{ width: 20, height: 20, borderRadius: "50%", background: expandedPhase === phase.id ? NAVY : OFF, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <span style={{ fontSize: 9, fontWeight: 700, color: expandedPhase === phase.id ? "#fff" : MUTED }}>{pi + 1}</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: expandedPhase === phase.id ? "#fff" : MUTED }}>{pi + 1}</span>
                         </div>
                         <div>
-                          <div style={{ fontSize: 9, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>{phase.timeWindow}</div>
+                          <div style={{ fontSize: 10, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em" }}>{phase.timeWindow}</div>
                           <div style={{ fontSize: 11, fontWeight: 600, color: NAVY }}>{phase.name}</div>
                         </div>
                       </button>
@@ -913,7 +913,7 @@ export default function PlaybookDetail() {
           {isSampleView && (
             <div style={{ background: NAVY, padding: "64px 48px", marginTop: 0 }}>
               <div className="max-w-3xl mx-auto text-center">
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
                   VaughnMartin · Execution OS
                 </div>
                 <div style={{ ...CG, fontSize: "clamp(28px,4vw,40px)", fontWeight: 600, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>

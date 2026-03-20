@@ -76,7 +76,7 @@ export default function BusinessIntelligence() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Analytics</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Analytics</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>Business Intelligence Center</h1>
               </div>

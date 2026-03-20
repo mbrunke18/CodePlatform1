@@ -96,7 +96,7 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Now in Pilot</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Now in Pilot</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
@@ -146,7 +146,7 @@ export default function Contact() {
                 </div>
 
                 <div style={{ background: "#0A0F2E", borderLeft: `4px solid ${GOLD}`, padding: "20px", marginTop: "32px" }}>
-                  <p style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 8 }}>Selection Process</p>
+                  <p style={{ color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 8 }}>Selection Process</p>
                   <p className="text-white/60 text-xs leading-relaxed">
                     Executive interview → Use case assessment → Partnership agreement → Week 1 onboarding
                   </p>

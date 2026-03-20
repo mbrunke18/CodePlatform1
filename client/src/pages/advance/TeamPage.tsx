@@ -43,7 +43,7 @@ export default function TeamPage() {
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
             <div style={{ width: 20, height: 2, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
               Advance · Team Performance
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function TeamPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '14px 20px', borderBottom: `1px solid ${BORDER}` }}>
               <Trophy size={14} color={GOLD} />
               <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>Executive Execution Leaderboard</span>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: TEAL, marginLeft: 'auto' }}>Q1 2026</span>
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: TEAL, marginLeft: 'auto' }}>Q1 2026</span>
             </div>
 
             {TEAM.map((member, idx) => {
@@ -102,7 +102,7 @@ export default function TeamPage() {
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
                       <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{member.name}</span>
-                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '1px 7px', background: badge.bg, color: badge.color }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' as const, padding: '2px 7px', background: badge.bg, color: badge.color }}>
                         {member.badge}
                       </span>
                     </div>
@@ -111,17 +111,17 @@ export default function TeamPage() {
 
                   <div style={{ textAlign: 'center' as const, minWidth: 55 }}>
                     <div style={{ fontSize: 15, fontWeight: 800, color: NAVY }}>{member.executions}</div>
-                    <div style={{ fontSize: 9, color: MUTED }}>executions</div>
+                    <div style={{ fontSize: 10, color: MUTED }}>executions</div>
                   </div>
 
                   <div style={{ textAlign: 'center' as const, minWidth: 65 }}>
                     <div style={{ fontSize: 15, fontWeight: 800, color: TEAL }}>{member.avgTime}</div>
-                    <div style={{ fontSize: 9, color: MUTED }}>avg time</div>
+                    <div style={{ fontSize: 10, color: MUTED }}>avg time</div>
                   </div>
 
                   <div style={{ textAlign: 'center' as const, minWidth: 55 }}>
                     <div style={{ fontSize: 15, fontWeight: 800, color: slaColor }}>{member.sla}%</div>
-                    <div style={{ fontSize: 9, color: MUTED }}>SLA</div>
+                    <div style={{ fontSize: 10, color: MUTED }}>SLA</div>
                   </div>
 
                   <div style={{ fontSize: 11, fontWeight: 700, color: TEAL, minWidth: 40, textAlign: 'right' as const }}>

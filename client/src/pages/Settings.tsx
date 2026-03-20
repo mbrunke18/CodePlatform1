@@ -133,7 +133,7 @@ export default function SettingsPage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Platform Settings</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Platform Settings</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -296,15 +296,15 @@ export default function SettingsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>1,247</div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Users</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active Users</div>
                       </div>
                       <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E" }}>94%</div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Platform Adoption</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Platform Adoption</div>
                       </div>
                       <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-none">
                         <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C" }}>47</div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Admin Users</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Admin Users</div>
                       </div>
                     </div>
 

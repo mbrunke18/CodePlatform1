@@ -228,10 +228,10 @@ export default function PulseMap() {
               whiteSpace: 'nowrap',
               zIndex: 10,
             }}>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', color: GOLD, textTransform: 'uppercase' }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: GOLD, textTransform: 'uppercase' }}>
                 {hoveredNode.fullName}
               </span>
-              <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginLeft: 8 }}>
+              <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', marginLeft: 8 }}>
                 {hoveredNode.triggerCount} trigger{hoveredNode.triggerCount !== 1 ? 's' : ''} · click to view
               </span>
             </div>

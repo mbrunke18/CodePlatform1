@@ -358,7 +358,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                 <div className="col-span-4 space-y-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Priority Signals</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Priority Signals</span>
                   </div>
                   
                   <div className="space-y-4 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
@@ -372,9 +372,9 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                         <div className="flex items-start justify-between mb-4">
                           <h4 style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#0A0F2E" }}>{signal.title}</h4>
                           <span style={{ 
-                            fontSize: 8, 
+                            fontSize: 10, 
                             fontWeight: 700, 
-                            letterSpacing: "0.1em", 
+                            letterSpacing: "0.08em", 
                             textTransform: "uppercase", 
                             padding: "2px 8px",
                             background: signal.impact === 'critical' ? 'rgba(220,38,38,0.1)' : 'rgba(201,168,76,0.1)',
@@ -404,7 +404,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               <div className="mt-24">
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Pattern recognition</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Pattern recognition</span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-8">
@@ -483,11 +483,11 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Confidence</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Confidence</div>
                       <div style={{ fontSize: 20, fontWeight: 600, color: NAVY }}>{selectedSignal.confidence}%</div>
                     </div>
                     <div style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Impact</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>Impact</div>
                       <div style={{ fontSize: 20, fontWeight: 600, color: selectedSignal.impact === 'critical' ? '#dc2626' : GOLD }}>{selectedSignal.impact.toUpperCase()}</div>
                     </div>
                   </div>
@@ -526,15 +526,15 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                   </div>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="text-center p-4 bg-white border border-[#E8E4DC]">
-                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Accuracy</div>
+                      <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" }}>Accuracy</div>
                       <div style={{ fontSize: 24, fontWeight: 600, color: GOLD }}>{selectedPattern.accuracy}%</div>
                     </div>
                     <div className="text-center p-4 bg-white border border-[#E8E4DC]">
-                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Signals</div>
+                      <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" }}>Signals</div>
                       <div style={{ fontSize: 24, fontWeight: 600, color: NAVY }}>{selectedPattern.signals}</div>
                     </div>
                     <div className="text-center p-4 bg-white border border-[#E8E4DC]">
-                      <div style={{ fontSize: 9, color: "#6B7280", textTransform: "uppercase" }}>Trend</div>
+                      <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" }}>Trend</div>
                       <div style={{ fontSize: 12, fontWeight: 700, color: TEAL, marginTop: 8 }}>{selectedPattern.trend.toUpperCase()}</div>
                     </div>
                   </div>

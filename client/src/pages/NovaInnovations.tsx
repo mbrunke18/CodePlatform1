@@ -201,7 +201,7 @@ export default function NovaInnovations() {
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Innovation Intelligence</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Innovation Intelligence</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
                     Nova <em style={{ fontStyle: "italic", color: GOLD }}>Innovations</em>
@@ -333,7 +333,7 @@ export default function NovaInnovations() {
                               <span style={{ color: "#4B5563" }}>{milestone.name}</span>
                               <div className="flex items-center gap-3">
                                 <span style={{ color: "#6B7280", fontSize: 12 }}>{milestone.date}</span>
-                                <span style={{ display:"inline-flex", alignItems:"center", background: milestone.status === 'completed' ? 'rgba(43,138,110,0.12)' : 'rgba(201,168,76,0.12)', color: milestone.status === 'completed' ? TEAL : GOLD, fontSize:8, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"2px 8px" }}>
+                                <span style={{ display:"inline-flex", alignItems:"center", background: milestone.status === 'completed' ? 'rgba(43,138,110,0.12)' : 'rgba(201,168,76,0.12)', color: milestone.status === 'completed' ? TEAL : GOLD, fontSize:10, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", padding:"2px 8px" }}>
                                   {milestone.status}
                                 </span>
                               </div>
@@ -365,7 +365,7 @@ export default function NovaInnovations() {
               <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48, borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Nova Analysis</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Nova Analysis</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Innovation <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

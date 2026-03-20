@@ -194,7 +194,7 @@ export default function IntelligenceControlCenter() {
                         <div style={{ width: 36, height: 36, background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           <Icon style={{ width: 18, height: 18, color: mod.accentColor }} />
                         </div>
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: mod.accentColor, border: `1px solid ${mod.accentColor}40`, padding: '2px 7px' }}>{mod.badge}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', color: mod.accentColor, border: `1px solid ${mod.accentColor}40`, padding: '2px 7px' }}>{mod.badge}</span>
                       </div>
                       <div style={{ ...CG, fontSize: 17, fontWeight: 600, color: '#F0EDE4', marginBottom: 4, lineHeight: 1.1 }}>{mod.title}</div>
                       <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)', marginBottom: 12, lineHeight: 1.4 }}>{mod.description}</div>

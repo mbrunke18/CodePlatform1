@@ -1329,7 +1329,7 @@ function PersonalizedROISection() {
         <div style={{ textAlign: "center", marginBottom: 52, opacity: animated ? 1 : 0, transition: "opacity 0.7s ease" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
             <div style={{ width: 24, height: 1, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution ROI Calculator</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution ROI Calculator</span>
             <div style={{ width: 24, height: 1, background: GOLD }} />
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 12 }}>
@@ -1391,22 +1391,22 @@ function PersonalizedROISection() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
               <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Executive Time Saved</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Executive Time Saved</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(execTimeSavedPerScen * scenYear)}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>{Math.round(hoursSaved * scenYear).toLocaleString()} exec-hours/yr</div>
               </div>
               <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Revenue Protected</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Revenue Protected</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(revProtected * scenYear)}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>68% faster containment</div>
               </div>
               <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Execution Head Start</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Execution Head Start</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{speed}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>vs. reactive organizations</div>
               </div>
               <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Value Per Scenario</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Value Per Scenario</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff" }}>{fmt(valPerScen)}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>per critical event response</div>
               </div>
@@ -1477,7 +1477,7 @@ function ShadowSimulatorSection() {
         <div style={{ textAlign: "center", marginBottom: 56, opacity: animated ? 1 : 0, transition: "opacity 0.8s ease" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
             <div style={{ width: 28, height: 1, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
             <div style={{ width: 28, height: 1, background: GOLD }} />
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
@@ -1557,17 +1557,17 @@ function ShadowSimulatorSection() {
             {/* Score cards */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
               <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${TEAL}`, textAlign: "center" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>Survive Score</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>Survive Score</div>
                 <div style={{ fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{result.surviveScore}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>/ 100</div>
               </div>
               <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${GOLD}`, textAlign: "center" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Thrive Score</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Thrive Score</div>
                 <div style={{ fontSize: 52, fontWeight: 700, color: "#fff", lineHeight: 1 }}>{result.thriveScore}</div>
                 <div style={{ fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>/ 100</div>
               </div>
               <div style={{ padding: "24px 20px", background: "rgba(255,255,255,0.05)", border: `1px solid ${urgencyColor(result.urgencyLevel)}`, borderTop: `3px solid ${urgencyColor(result.urgencyLevel)}`, textAlign: "center" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: urgencyColor(result.urgencyLevel), marginBottom: 8 }}>Urgency</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: urgencyColor(result.urgencyLevel), marginBottom: 8 }}>Urgency</div>
                 <div style={{ fontSize: 28, fontWeight: 700, color: "#fff", lineHeight: 1, textTransform: "capitalize" as const, marginTop: 8 }}>{result.urgencyLevel}</div>
                 <div style={{ fontSize: 10, color: MUTED_DARK, marginTop: 8 }}>{result.timeToRespond}</div>
               </div>
@@ -1575,14 +1575,14 @@ function ShadowSimulatorSection() {
 
             {/* AI Analysis */}
             <div style={{ padding: "20px 24px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderLeft: `3px solid ${GOLD}`, marginBottom: 16 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>GPT-4o Executive Assessment</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>GPT-4o Executive Assessment</div>
               <p style={{ fontSize: 13, color: MUTED_DARK, lineHeight: 1.7 }}>{result.aiAnalysis}</p>
             </div>
 
             {/* Recommended Playbooks */}
             {result.activatedPlaybooks?.length > 0 && (
               <div style={{ padding: "16px 20px", background: "rgba(43,138,110,0.07)", border: "1px solid rgba(43,138,110,0.25)", marginBottom: 28 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Playbooks That Would Activate</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Playbooks That Would Activate</div>
                 <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8 }}>
                   {result.activatedPlaybooks.map((p: string, i: number) => (
                     <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: "4px 12px", background: "rgba(43,138,110,0.12)", color: "#3BAF8A", border: "1px solid rgba(43,138,110,0.25)" }}>{p}</span>
@@ -1703,7 +1703,7 @@ function CommandCenterShowcaseSection() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 {[{ dot: TEAL, label: "SIGNALS ACTIVE" }, { dot: GOLD, label: "248 MONITORING" }].map(({ dot, label }) => (
-                  <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, ...MONO, fontSize: 9, color: "rgba(240,237,228,0.4)" }}>
+                  <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, ...MONO, fontSize: 10, color: "rgba(240,237,228,0.4)" }}>
                     <span style={{ width: 5, height: 5, borderRadius: "50%", background: dot, display: "inline-block" }} />
                     {label}
                   </div>
@@ -1733,7 +1733,7 @@ function CommandCenterShowcaseSection() {
                   style={{ ...tileBase, gridColumn: 1, gridRow: "1 / 3", background: "linear-gradient(135deg, #1A1200 0%, #0A0F2E 60%)", borderColor: hovered === "activate" ? "rgba(201,168,76,0.4)" : "rgba(201,168,76,0.2)" }}
                   onMouseEnter={() => setHovered("activate")} onMouseLeave={() => setHovered(null)}
                 >
-                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: GOLD, textTransform: "uppercase", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: GOLD, textTransform: "uppercase", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, display: "inline-block" }} />Primary Action
                   </div>
                   <div style={{ ...BEBAS, fontSize: 40, lineHeight: 0.95, color: GOLD, letterSpacing: 2, marginBottom: 14 }}>ACTIVATE<br />PLAYBOOK</div>
@@ -1742,17 +1742,17 @@ function CommandCenterShowcaseSection() {
                   </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 22 }}>
                     <div style={{ ...MONO, fontSize: 40, fontWeight: 300, color: GOLD, lineHeight: 1 }}>12</div>
-                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.4)", letterSpacing: 2 }}>MIN TO<br />EXECUTION</div>
+                    <div style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.4)", letterSpacing: 2 }}>MIN TO<br />EXECUTION</div>
                   </div>
                   <div style={{ background: GOLD, color: NAVY, ...MONO, fontSize: 10, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", padding: "11px 18px", borderRadius: 5, textAlign: "center", marginBottom: 8 }}>
                     SELECT PLAYBOOK & ACTIVATE →
                   </div>
-                  <div style={{ border: "1px solid rgba(240,237,228,0.1)", color: "rgba(240,237,228,0.4)", ...MONO, fontSize: 9, letterSpacing: 1.5, padding: "8px 14px", borderRadius: 5, textAlign: "center" }}>
+                  <div style={{ border: "1px solid rgba(240,237,228,0.1)", color: "rgba(240,237,228,0.4)", ...MONO, fontSize: 10, letterSpacing: 1.5, padding: "8px 14px", borderRadius: 5, textAlign: "center" }}>
                     RUN SIMULATION FIRST
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginTop: 18 }}>
                     {["Competitive","Crisis","M&A","Cyber","Regulatory"].map(t => (
-                      <div key={t} style={{ ...MONO, fontSize: 8, letterSpacing: 1.5, padding: "3px 8px", borderRadius: 3, border: "1px solid rgba(201,168,76,0.2)", color: "rgba(201,168,76,0.7)" }}>{t}</div>
+                      <div key={t} style={{ ...MONO, fontSize: 10, letterSpacing: 1, padding: "3px 8px", borderRadius: 3, border: "1px solid rgba(201,168,76,0.2)", color: "rgba(201,168,76,0.7)" }}>{t}</div>
                     ))}
                   </div>
                 </div>
@@ -1762,7 +1762,7 @@ function CommandCenterShowcaseSection() {
                   style={{ ...tileBase, gridColumn: 2, gridRow: 1, background: "linear-gradient(135deg, #001A12 0%, #0A0F2E 60%)", borderColor: hovered === "radar" ? "rgba(43,138,110,0.5)" : "rgba(43,138,110,0.2)" }}
                   onMouseEnter={() => setHovered("radar")} onMouseLeave={() => setHovered(null)}
                 >
-                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: TEAL, textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: TEAL, textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, display: "inline-block" }} />Signal Intelligence
                   </div>
                   <div style={{ display: "flex", justifyContent: "center", margin: "6px 0 8px" }}>
@@ -1770,14 +1770,14 @@ function CommandCenterShowcaseSection() {
                       <MiniRadar />
                       <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", textAlign: "center", pointerEvents: "none" }}>
                         <div style={{ ...BEBAS, fontSize: 22, color: TEAL, lineHeight: 1 }}>248</div>
-                        <div style={{ ...MONO, fontSize: 8, color: "rgba(240,237,228,0.3)", letterSpacing: 1 }}>SIGNALS</div>
+                        <div style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.4)", letterSpacing: 1 }}>SIGNALS</div>
                       </div>
                     </div>
                   </div>
                   {[{ name: "Market Dynamics", level: "Elevated" }, { name: "Competitive Intel", level: "Nominal" }, { name: "Regulatory", level: "Stable" }].map(({ name, level }) => (
                     <div key={name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 8px", background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.1)", borderRadius: 3, marginBottom: 4 }}>
-                      <span style={{ ...MONO, fontSize: 9, color: IVORY, letterSpacing: 0.3 }}>{name}</span>
-                      <span style={{ ...MONO, fontSize: 8, padding: "1px 5px", borderRadius: 2, letterSpacing: 1, textTransform: "uppercase" as const, background: level === "Elevated" ? "rgba(201,168,76,0.15)" : level === "Nominal" ? "rgba(43,138,110,0.15)" : "rgba(240,237,228,0.06)", color: level === "Elevated" ? GOLD : level === "Nominal" ? TEAL : "rgba(240,237,228,0.4)", border: `1px solid ${level === "Elevated" ? "rgba(201,168,76,0.25)" : level === "Nominal" ? "rgba(43,138,110,0.25)" : "rgba(240,237,228,0.1)"}` }}>{level}</span>
+                      <span style={{ ...MONO, fontSize: 10, color: IVORY, letterSpacing: 0.3 }}>{name}</span>
+                      <span style={{ ...MONO, fontSize: 10, padding: "2px 6px", borderRadius: 2, letterSpacing: 0.5, textTransform: "uppercase" as const, background: level === "Elevated" ? "rgba(201,168,76,0.15)" : level === "Nominal" ? "rgba(43,138,110,0.15)" : "rgba(240,237,228,0.06)", color: level === "Elevated" ? GOLD : level === "Nominal" ? TEAL : "rgba(240,237,228,0.4)", border: `1px solid ${level === "Elevated" ? "rgba(201,168,76,0.25)" : level === "Nominal" ? "rgba(43,138,110,0.25)" : "rgba(240,237,228,0.1)"}` }}>{level}</span>
                     </div>
                   ))}
                 </div>
@@ -1787,7 +1787,7 @@ function CommandCenterShowcaseSection() {
                   style={{ ...tileBase, gridColumn: 3, gridRow: 1 }}
                   onMouseEnter={() => setHovered("playbooks")} onMouseLeave={() => setHovered(null)}
                 >
-                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.35)", textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                  <div style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: "rgba(240,237,228,0.35)", textTransform: "uppercase", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ width: 4, height: 4, borderRadius: "50%", background: "rgba(240,237,228,0.3)", display: "inline-block" }} />Playbook Library
                   </div>
                   <div style={{ ...SERIF, fontSize: 18, fontWeight: 600, color: IVORY, lineHeight: 1.2, marginBottom: 6 }}>170 Response<br />Architectures</div>
@@ -1795,7 +1795,7 @@ function CommandCenterShowcaseSection() {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
                     {[{ label: "Offense", count: 58, color: TEAL }, { label: "Defense", count: 58, color: GOLD }, { label: "Sp. Teams", count: 54, color: "rgba(180,150,255,0.8)" }].map(({ label, count, color }) => (
                       <div key={label} style={{ padding: "10px 6px", borderRadius: 5, textAlign: "center", border: `1px solid ${color}28` }}>
-                        <div style={{ ...MONO, fontSize: 8, letterSpacing: 2, textTransform: "uppercase" as const, marginBottom: 3, color }}>{label}</div>
+                        <div style={{ ...MONO, fontSize: 10, letterSpacing: 1.5, textTransform: "uppercase" as const, marginBottom: 3, color }}>{label}</div>
                         <div style={{ ...BEBAS, fontSize: 24, lineHeight: 1, color: IVORY }}>{count}</div>
                       </div>
                     ))}
@@ -1804,33 +1804,33 @@ function CommandCenterShowcaseSection() {
 
                 {/* Mission Control — locked overlay */}
                 <div style={{ ...tileBase, gridColumn: 2, gridRow: 2, position: "relative" }}>
-                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Mission Control</div>
+                  <div style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Mission Control</div>
                   <div style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.2)", lineHeight: 1.5, marginBottom: 10 }}>Real-time war room coordination. Live task feeds, stakeholder tracking, escalation chains.</div>
                   <div style={{ height: 8, background: "rgba(43,138,110,0.08)", borderRadius: 4, marginBottom: 8 }} />
                   <div style={{ height: 8, background: "rgba(240,237,228,0.04)", borderRadius: 4, width: "60%" }} />
                   {/* Lock overlay */}
                   <div style={{ position: "absolute", inset: 0, borderRadius: 10, background: "rgba(10,15,46,0.72)", backdropFilter: "blur(3px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
                     <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="rgba(240,237,228,0.3)" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
-                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
+                    <div style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
                   </div>
                 </div>
 
                 {/* Performance — locked overlay */}
                 <div style={{ ...tileBase, gridColumn: 3, gridRow: 2, position: "relative" }}>
-                  <div style={{ ...MONO, fontSize: 9, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Performance & ROI</div>
+                  <div style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: "rgba(240,237,228,0.2)", textTransform: "uppercase", marginBottom: 10 }}>Performance & ROI</div>
                   <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
                     {["Activations","Avg Score","ROI Tracked"].map(l => <div key={l} style={{ flex: 1, padding: "8px 4px", background: "rgba(240,237,228,0.02)", border: "1px solid rgba(240,237,228,0.05)", borderRadius: 5, textAlign: "center" }}><div style={{ height: 16, background: "rgba(240,237,228,0.05)", borderRadius: 3 }} /></div>)}
                   </div>
                   {["Maturity Score","Decision Velocity","Readiness"].map((l, i) => (
                     <div key={l} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                      <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.15)", width: 90 }}>{l}</div>
+                      <div style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.15)", width: 90 }}>{l}</div>
                       <div style={{ flex: 1, height: 3, background: "rgba(240,237,228,0.04)", borderRadius: 2 }} />
                     </div>
                   ))}
                   {/* Lock overlay */}
                   <div style={{ position: "absolute", inset: 0, borderRadius: 10, background: "rgba(10,15,46,0.72)", backdropFilter: "blur(3px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
                     <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="rgba(240,237,228,0.3)" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
-                    <div style={{ ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
+                    <div style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.3)", letterSpacing: 1.5, textAlign: "center" }}>EXECUTIVE ACCESS<br />REQUIRED</div>
                   </div>
                 </div>
 
@@ -1840,7 +1840,7 @@ function CommandCenterShowcaseSection() {
             {/* Status bar */}
             <div style={{ background: "#06091A", borderTop: "1px solid rgba(240,237,228,0.06)", padding: "8px 24px 8px 68px", display: "flex", alignItems: "center", gap: 28 }}>
               {[{ dot: TEAL, label: "248 signals monitored" }, { dot: GOLD, label: "221 triggers configured" }, { dot: "rgba(240,237,228,0.3)", label: "170 playbooks ready" }].map(({ dot, label }) => (
-                <div key={label} style={{ display: "flex", alignItems: "center", gap: 6, ...MONO, fontSize: 9, color: "rgba(240,237,228,0.3)", letterSpacing: 0.5 }}>
+                <div key={label} style={{ display: "flex", alignItems: "center", gap: 6, ...MONO, fontSize: 10, color: "rgba(240,237,228,0.3)", letterSpacing: 0.5 }}>
                   <span style={{ width: 4, height: 4, borderRadius: "50%", background: dot, display: "inline-block" }} />{label}
                 </div>
               ))}

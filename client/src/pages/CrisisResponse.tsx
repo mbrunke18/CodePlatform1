@@ -39,7 +39,7 @@ export default function CrisisResponse() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Immediate Response Protocols</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Immediate Response Protocols</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
                   Crisis Response <em style={{ fontStyle: "italic", color: "#DFC178" }}>Center</em>
@@ -49,7 +49,7 @@ export default function CrisisResponse() {
               <div className="text-right hidden md:block">
                 <div className="flex items-center gap-2 mb-2 justify-end">
                   <div className="w-2 h-2 bg-[#3BAF8A] rounded-full animate-pulse"></div>
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#3BAF8A" }}>System Operational</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#3BAF8A" }}>System Operational</span>
                 </div>
                 <div className="text-white/40 text-xs tracking-widest uppercase">24/7 Monitoring Active</div>
               </div>

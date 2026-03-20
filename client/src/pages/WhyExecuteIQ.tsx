@@ -103,7 +103,7 @@ export default function WhyExecutionOS() {
         <div className="max-w-5xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Consensus</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Consensus</span>
           </div>
           <h2 className="text-center mb-16" style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
             What 15 Major Firms All Concluded
@@ -131,7 +131,7 @@ export default function WhyExecutionOS() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Gap</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Gap</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
               The Missing Infrastructure Layer
@@ -166,7 +166,7 @@ export default function WhyExecutionOS() {
 
           <div style={{ background: "#0A0F2E", padding: "48px", textAlign: "center" }}>
             <p style={{ ...CG, fontSize: 32, color: "#fff", marginBottom: 16 }}>
-              Result: 72 hours to coordinate what should take <em style={{ fontStyle: "italic", color: "#DFC178" }}>minutes</em>.
+              Result: 30 days to mobilize what should take <em style={{ fontStyle: "italic", color: "#DFC178" }}>minutes</em>.
             </p>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 16 }}>
               Without execution infrastructure, every strategic moment is handled ad-hoc—no matter how talented the team.
@@ -181,7 +181,7 @@ export default function WhyExecutionOS() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>The Solution</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>The Solution</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
               Execution OS Provides the Infrastructure
@@ -220,7 +220,7 @@ export default function WhyExecutionOS() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>The Agentic Layer</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>The Agentic Layer</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
               Agentic Execution Infrastructure
@@ -272,7 +272,7 @@ export default function WhyExecutionOS() {
         <div className="max-w-4xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Founder</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Founder</span>
           </div>
           <h2 className="text-center mb-16" style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
             Built by Someone Who Lived the Problem

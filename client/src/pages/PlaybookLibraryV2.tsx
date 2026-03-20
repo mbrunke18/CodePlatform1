@@ -192,7 +192,7 @@ const compoundScenarios = [
 function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "critical") {
     return (
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
         <span className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
         Critical
       </span>
@@ -200,14 +200,14 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   }
   if (urgency === "high") {
     return (
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
+      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
         <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
         High
       </span>
     );
   }
   return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
       <span className="w-2 h-2 rounded-full" style={{ background: "#2B8A6E" }} />
       Standard
     </span>
@@ -418,7 +418,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
-                  <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
+                  <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
                 </div>
                 <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
                   A Playbook for Every<br />
@@ -462,7 +462,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
           <div className="sticky top-24">
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
             <nav className="space-y-0.5">
               {DOMAINS.map((domain) => {
                 const Icon = domain.icon;
@@ -560,17 +560,17 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       {isAuthenticated ? (
                         <>
                           <Check className="h-3 w-3 text-[#2B8A6E]" />
-                          <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Enterprise Tier</span>
+                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Enterprise Tier</span>
                         </>
                       ) : SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? (
                         <>
                           <Eye className="h-3 w-3 text-[#2B8A6E]" />
-                          <span style={{ color: "#2B8A6E", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Free Sample</span>
+                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Sample</span>
                         </>
                       ) : (
                         <>
                           <Lock className="h-3 w-3 text-[#C9A84C]" />
-                          <span style={{ color: "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Execution Ready</span>
+                          <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Execution Ready</span>
                         </>
                       )}
                     </div>

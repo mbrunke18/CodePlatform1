@@ -35,7 +35,7 @@ export default function InvestorResources() {
       title: "Investor Resources | Execution OS Strategic Execution OS",
       description: "Investment overview for Execution OS, the first Strategic Execution Operating System. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
       ogTitle: "Invest in Execution OS - Category-Defining Opportunity",
-      ogDescription: "Transform 72-hour strategic coordination into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",
+      ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",
     });
   }, []);
 

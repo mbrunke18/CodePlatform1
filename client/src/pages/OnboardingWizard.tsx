@@ -157,7 +157,7 @@ export default function OnboardingWizard() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Phase 1 of 3 — Foundation</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Phase 1 of 3 — Foundation</span>
             </div>
             <button
               onClick={() => completeOnboardingMutation.mutate()}
@@ -481,7 +481,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
           <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Welcome to Execution OS</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Welcome to Execution OS</span>
         </div>
 
         <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,62px)", color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
@@ -496,7 +496,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
           {PHASES.map((phase, i) => (
             <div key={phase.num} style={{ background: i === 0 ? "rgba(201,168,76,0.06)" : "rgba(255,255,255,0.02)", padding: "36px 32px", borderTop: `3px solid ${phase.color}`, position: "relative" }}>
               {i === 0 && (
-                <div style={{ position: "absolute", top: 16, right: 16, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", padding: "4px 10px", background: GOLD, color: NAVY }}>Today</div>
+                <div style={{ position: "absolute", top: 16, right: 16, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", padding: "4px 10px", background: GOLD, color: NAVY }}>Today</div>
               )}
               <div style={{ ...CG, fontSize: 48, fontWeight: 300, color: phase.color, lineHeight: 1, marginBottom: 4 }}>{phase.num}</div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{phase.label}</div>
@@ -647,7 +647,7 @@ function SectionLabel({ num, text }: { num: string; text: string }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
       <div style={{ width: 32, height: 2, background: GOLD }} />
-      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>[{num}] {text}</span>
+      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>[{num}] {text}</span>
     </div>
   );
 }

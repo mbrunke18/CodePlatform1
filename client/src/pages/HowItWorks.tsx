@@ -43,7 +43,7 @@ function SectionLabel({ text, color = GOLD }: { text: string; color?: string }) 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
       <div style={{ width: 28, height: 2, background: color, flexShrink: 0 }} />
-      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color }}>{text}</span>
+      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color }}>{text}</span>
     </div>
   );
 }
@@ -101,7 +101,7 @@ export default function HowItWorks() {
           { label: "Ongoing Value", num: "05" },
         ].map((item, i) => (
           <div key={i} style={{ padding: "20px 32px", borderRight: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-            <span style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{item.num}</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{item.num}</span>
             <span style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{item.label}</span>
           </div>
         ))}
@@ -175,7 +175,7 @@ export default function HowItWorks() {
                     <card.icon style={{ width: 18, height: 18, color: "#fff" }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 2 }}>{card.step}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 2 }}>{card.step}</div>
                     <div style={{ fontSize: 18, fontWeight: 700, color: NAVY }}>{card.title}</div>
                   </div>
                 </div>
@@ -312,7 +312,7 @@ export default function HowItWorks() {
               <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "36px 28px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                   <col.icon style={{ width: 16, height: 16, color: col.color }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: col.color }}>{col.phase}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: col.color }}>{col.phase}</span>
                 </div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 20 }}>{col.title}</div>
                 {col.items.map((item, j) => (
@@ -401,7 +401,7 @@ export default function HowItWorks() {
             ].map((phase, i) => (
               <div key={i} style={{ background: phase.bg, borderTop: `3px solid ${phase.color}`, padding: "48px 36px", borderRight: i < 3 ? `1px solid ${BORDER}` : "none" }}>
                 <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: phase.color, lineHeight: 1, marginBottom: 8 }}>{phase.letter}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: phase.color, marginBottom: 20 }}>{phase.phase}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: phase.color, marginBottom: 20 }}>{phase.phase}</div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>{phase.title}</div>
                 <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, marginBottom: 20, fontWeight: 500 }}>{phase.desc}</p>
                 <div style={{ fontSize: 11, fontWeight: 700, color: phase.color, letterSpacing: "0.05em" }}>{phase.sub}</div>
@@ -486,7 +486,7 @@ export default function HowItWorks() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Playbook</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 After every playbook closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your playbook library — so knowledge stays with the organization, not the individual.
@@ -496,7 +496,7 @@ export default function HowItWorks() {
               <CheckItem text="Refinement suggestions surfaced automatically" />
             </div>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Simulation Studio</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Simulation Studio</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Test Scenarios Before They Happen</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual playbook library. It returns Survive and Thrive scores, shows which playbooks would activate, and identifies coverage gaps — before you commit anything.
@@ -559,7 +559,7 @@ export default function HowItWorks() {
               }
             ].map((card, i) => (
               <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.12)", padding: "44px 40px" }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 20 }}>{card.label}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 20 }}>{card.label}</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
                   <div style={{ width: 40, height: 40, background: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <card.icon style={{ width: 18, height: 18, color: card.color === "#6B7280" ? "rgba(255,255,255,0.7)" : card.color }} />

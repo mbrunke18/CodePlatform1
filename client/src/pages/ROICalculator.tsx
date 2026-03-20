@@ -144,7 +144,7 @@ export default function ROICalculator() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Value Engineering</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Value Engineering</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
@@ -301,7 +301,7 @@ export default function ROICalculator() {
             <div style={{ textAlign: "center", marginBottom: 56 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>{INDUSTRY_MULTIPLIERS[inputs.industry]?.label || "Your Industry"} · Real-World Scenarios</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>{INDUSTRY_MULTIPLIERS[inputs.industry]?.label || "Your Industry"} · Real-World Scenarios</span>
                 <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(28px,3.5vw,42px)", color: "#0A0F2E", marginBottom: 12 }}>
@@ -320,7 +320,7 @@ export default function ROICalculator() {
                       <AlertTriangle style={{ width: 16, height: 16, color: "#C9A84C" }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 4 }}>Trigger Event</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 4 }}>Trigger Event</div>
                       <div style={{ fontWeight: 700, color: "#0A0F2E", fontSize: 15 }}>{s.title}</div>
                       <div style={{ color: "#6B7280", fontSize: 13, marginTop: 2 }}>{s.trigger}</div>
                     </div>
@@ -329,14 +329,14 @@ export default function ROICalculator() {
                     <div style={{ padding: "24px 28px", borderRight: "1px solid #F0EDE8", background: "#FFF8F8" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                         <Clock style={{ width: 13, height: 13, color: "#EF4444" }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#EF4444" }}>Without Execution OS</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#EF4444" }}>Without Execution OS</span>
                       </div>
                       <p style={{ color: "#374151", fontSize: 13, lineHeight: 1.6 }}>{s.without}</p>
                     </div>
                     <div style={{ padding: "24px 28px", background: "#F0FAF6" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                         <CheckCircle2 style={{ width: 13, height: 13, color: "#2B8A6E" }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>With Execution OS · 12 Minutes</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>With Execution OS · 12 Minutes</span>
                       </div>
                       <p style={{ color: "#374151", fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>{s.with}</p>
                       <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.1)", padding: "4px 12px", borderRadius: 2 }}>
@@ -355,7 +355,7 @@ export default function ROICalculator() {
         <section style={{ background: "#0A0F2E", padding: "48px", borderTop: "1px solid rgba(201,168,76,0.15)" }}>
           <div className="max-w-5xl mx-auto">
             <div style={{ textAlign: "center", marginBottom: 36 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)" }}>Research Validation</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)" }}>Research Validation</span>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: "#fff", marginTop: 8 }}>
                 15 independent firms reached the same conclusion
               </p>
@@ -367,7 +367,7 @@ export default function ROICalculator() {
                 { firm: "World Economic Forum", finding: "Coordination lag — not capital — is the #1 barrier to strategic agility for large enterprises" },
               ].map(r => (
                 <div key={r.firm} style={{ padding: "28px 24px", background: "#0A0F2E" }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10 }}>{r.firm}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10 }}>{r.firm}</div>
                   <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.6, fontStyle: "italic" }}>"{r.finding}"</p>
                 </div>
               ))}
@@ -380,7 +380,7 @@ export default function ROICalculator() {
           <div className="max-w-4xl mx-auto" style={{ textAlign: "center" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Take the Next Step</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Take the Next Step</span>
               <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
             </div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "clamp(28px,3.5vw,44px)", color: "#0A0F2E", marginBottom: 16 }}>

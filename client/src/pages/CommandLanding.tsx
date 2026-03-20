@@ -125,7 +125,7 @@ function RadarCanvas({ signalCount }: { signalCount: number }) {
       <canvas ref={canvasRef} width={180} height={180} style={{ width: 180, height: 180 }} />
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', textAlign: 'center', pointerEvents: 'none' }}>
         <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, color: TEAL, lineHeight: 1 }}>{signalCount}</div>
-        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(240,237,228,0.3)', letterSpacing: 1 }}>SIGNALS</div>
+        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 1 }}>SIGNALS</div>
       </div>
     </div>
   );
@@ -326,7 +326,7 @@ export default function CommandLanding() {
                 <svg width={9} height={9} viewBox="0 0 24 24" fill={providerData.azureReady ? '#0078D4' : TEAL}>
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 1.5, color: providerData.azureReady ? '#5BA3E8' : TEAL }}>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, color: providerData.azureReady ? '#5BA3E8' : TEAL }}>
                   {providerData.azureReady ? 'AZURE AI' : 'AI'} · {providerData.multiAgentParallel ? '4 AGENTS' : 'READY'}
                 </span>
               </div>
@@ -491,7 +491,7 @@ export default function CommandLanding() {
                         { label: 'Transform', type: 'special' },
                       ].map(({ label, type }) => (
                         <div key={label} style={{
-                          fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase',
+                          fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
                           padding: '4px 10px', borderRadius: 3,
                           border: `1px solid ${type === 'offense' ? 'rgba(43,138,110,0.3)' : type === 'defense' ? 'rgba(201,168,76,0.25)' : 'rgba(130,100,200,0.3)'}`,
                           color: type === 'offense' ? TEAL : type === 'defense' ? GOLD : 'rgba(180,150,255,0.7)',
@@ -532,7 +532,7 @@ export default function CommandLanding() {
                             fontFamily: "'DM Mono', monospace", fontSize: 10,
                           }}>
                             <span style={{ color: '#F0EDE4', letterSpacing: 0.5 }}>{sig.name}</span>
-                            <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 2, letterSpacing: 1, textTransform: 'uppercase', background: b.bg, color: b.color, border: `1px solid ${b.border}` }}>
+                            <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 2, letterSpacing: 1, textTransform: 'uppercase', background: b.bg, color: b.color, border: `1px solid ${b.border}` }}>
                               {b.label}
                             </span>
                           </div>
@@ -576,9 +576,9 @@ export default function CommandLanding() {
                           border: `1px solid ${type === 'offense' ? 'rgba(43,138,110,0.2)' : type === 'defense' ? 'rgba(201,168,76,0.2)' : 'rgba(130,100,200,0.2)'}`,
                           transition: 'all 0.2s ease',
                         }}>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4, color: type === 'offense' ? TEAL : type === 'defense' ? GOLD : 'rgba(180,150,255,0.8)' }}>{label}</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4, color: type === 'offense' ? TEAL : type === 'defense' ? GOLD : 'rgba(180,150,255,0.8)' }}>{label}</div>
                           <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, lineHeight: 1, color: '#fff' }}>{count}</div>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>playbooks</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>playbooks</div>
                         </div>
                       ))}
                     </div>
@@ -610,7 +610,7 @@ export default function CommandLanding() {
                       <div style={{ height: 3, background: 'rgba(240,237,228,0.06)', borderRadius: 2, overflow: 'hidden', marginBottom: 6 }}>
                         <div style={{ width: activeScenarios > 0 ? '67%' : '0%', height: '100%', background: `linear-gradient(90deg, ${TEAL}, rgba(43,138,110,0.6))`, borderRadius: 2, animation: activeScenarios > 0 ? 'cl-prog 2s ease-in-out infinite' : 'none' }} />
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'DM Mono', monospace", fontSize: 9, color: 'rgba(240,237,228,0.3)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)' }}>
                         <span>Awaiting activation</span>
                         <span>221 triggers ready</span>
                       </div>
@@ -643,7 +643,7 @@ export default function CommandLanding() {
                       ].map(({ value, label, color }) => (
                         <div key={label} style={{ flex: 1, padding: 12, background: 'rgba(240,237,228,0.03)', border: '1px solid rgba(240,237,228,0.08)', borderRadius: 6, textAlign: 'center' }}>
                           <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, lineHeight: 1, marginBottom: 4, color }}>{value}</div>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', color: 'rgba(240,237,228,0.3)' }}>{label}</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', color: 'rgba(240,237,228,0.3)' }}>{label}</div>
                         </div>
                       ))}
                     </div>

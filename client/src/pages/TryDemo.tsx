@@ -652,7 +652,7 @@ export default function TryDemo() {
                     {[['170', 'Playbooks ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
                       <div key={label}>
                         <p style={{ fontSize: 17, fontWeight: 700, color: GOLD, margin: 0, lineHeight: 1 }}>{val}</p>
-                        <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>
+                        <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</p>
                       </div>
                     ))}
                   </div>
@@ -675,8 +675,8 @@ export default function TryDemo() {
                       <div className="flex-1">
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: scenario.demoType === 'offensive' ? TEAL : GOLD, flexShrink: 0 }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: scenario.demoType === 'offensive' ? TEAL : GOLD }}>{scenario.industry}</span>
-                          <span style={{ fontSize: 9, color: MUTED, fontWeight: 600 }}>· 1 of {scenario.domainCount} {scenario.domain} playbooks</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: scenario.demoType === 'offensive' ? TEAL : GOLD }}>{scenario.industry}</span>
+                          <span style={{ fontSize: 10, color: MUTED, fontWeight: 600 }}>· 1 of {scenario.domainCount} {scenario.domain} playbooks</span>
                         </div>
                         <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>{scenario.name}</h3>
                         <p className="text-slate-600 mb-6 text-sm leading-relaxed">
@@ -699,7 +699,7 @@ export default function TryDemo() {
                 <div className="text-center mb-10">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                     <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Industry Deep Dives</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Industry Deep Dives</span>
                     <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
                   </div>
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
@@ -1040,9 +1040,9 @@ export default function TryDemo() {
                             <div style={{ height: '100%', borderRadius: 3, transition: 'width 0.6s ease, background 0.4s ease', background: detectStep >= 3 ? '#22c55e' : GOLD, width: detectStep === 0 ? '2%' : detectStep === 1 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34}%` : detectStep === 2 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68}%` : `${SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96}%` }} />
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-                            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)' }}>Monitoring</span>
-                            <span style={{ fontSize: 9, color: GOLD }}>Threshold: 80%</span>
-                            <span style={{ fontSize: 9, color: '#22c55e' }}>Trigger</span>
+                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Monitoring</span>
+                            <span style={{ fontSize: 10, color: GOLD }}>Threshold: 80%</span>
+                            <span style={{ fontSize: 10, color: '#22c55e' }}>Trigger</span>
                           </div>
                         </div>
 
@@ -1429,7 +1429,7 @@ export default function TryDemo() {
                         {[['248+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
                           <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '8px 10px', textAlign: 'center' }}>
                             <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0 }}>{val}</p>
-                            <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', margin: 0, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</p>
+                            <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', margin: 0, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</p>
                           </div>
                         ))}
                       </div>

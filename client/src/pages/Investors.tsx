@@ -390,7 +390,7 @@ export default function Investors() {
               <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 2 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 36 }}>
                   <div style={{ height: 1, width: 32, background: '#C9A84C' }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#C9A84C' }}>The Category Argument</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase', color: '#C9A84C' }}>The Category Argument</span>
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
                 </div>
 
@@ -445,7 +445,7 @@ export default function Investors() {
                 {/* Header */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
                   <div style={{ height: 1, width: 28, background: '#C9A84C' }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Go-to-Market Fit</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Go-to-Market Fit</span>
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
                 </div>
                 <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,3.5vw,44px)', fontWeight: 600, color: '#fff', lineHeight: 1.1, marginBottom: 16 }}>

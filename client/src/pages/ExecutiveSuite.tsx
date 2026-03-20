@@ -83,7 +83,7 @@ export default function ExecutiveSuite() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>C-Suite Intelligence</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>C-Suite Intelligence</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
                   Executive <em style={{ fontStyle: "italic", color: GOLD_LT }}>Command Center</em>
@@ -141,7 +141,7 @@ export default function ExecutiveSuite() {
             <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px", background: "#fff" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Strategic Documentation</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Strategic Documentation</span>
               </div>
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 24 }}>Board Reports</h2>
               <div className="space-y-4">
@@ -156,7 +156,7 @@ export default function ExecutiveSuite() {
                         <p className="text-xs text-[#6B7280]">{report.type} • {report.date}</p>
                       </div>
                     </div>
-                    <span style={{ background: report.status === 'Completed' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: report.status === 'Completed' ? "#3BAF8A" : "#C9A84C", fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
+                    <span style={{ background: report.status === 'Completed' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: report.status === 'Completed' ? "#3BAF8A" : "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "3px 10px" }}>
                       {report.status}
                     </span>
                   </div>
@@ -171,7 +171,7 @@ export default function ExecutiveSuite() {
             <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: "32px", background: "#fff" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution Focus</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Execution Focus</span>
               </div>
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 24 }}>Current Priorities</h2>
               <div className="space-y-4 mb-8">
@@ -197,7 +197,7 @@ export default function ExecutiveSuite() {
           <div style={{ background: NAVY, padding: "48px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Command Override</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Command Override</span>
             </div>
             <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 32 }}>Executive Command Actions</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

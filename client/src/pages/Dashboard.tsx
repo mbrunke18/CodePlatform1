@@ -110,7 +110,7 @@ function PhaseCard({
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accentColor }}>{phase}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: accentColor }}>{phase}</div>
                 <CardTitle style={{ ...CG, fontSize: "20px", fontWeight: 600, color: "#0A0F2E" }}>{title}</CardTitle>
               </div>
             </div>
@@ -360,7 +360,7 @@ export default function Dashboard() {
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>System Status</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>System Status</span>
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">

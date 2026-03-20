@@ -137,7 +137,7 @@ export default function NFLLearningDashboard() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
               <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase</span>
             </div>
             <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="page-title">
               Strategic Learning Center

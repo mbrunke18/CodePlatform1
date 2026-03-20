@@ -140,7 +140,7 @@ export default function FluxAdaptations() {
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Dynamic Adaptation</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Dynamic Adaptation</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
                     Flux <em style={{ fontStyle: "italic", color: "#DFC178" }}>Adaptations</em>
@@ -184,10 +184,10 @@ export default function FluxAdaptations() {
                             </div>
                           </div>
                           <div className="flex flex-col items-end gap-2">
-                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.priority === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: strategy.priority === 'critical' ? '#ef4444' : GOLD, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.priority === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: strategy.priority === 'critical' ? '#ef4444' : GOLD, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                               {strategy.priority}
                             </span>
-                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.status === 'active' ? 'rgba(43,138,110,0.12)' : 'rgba(0,0,0,0.05)', color: strategy.status === 'active' ? TEAL : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                            <span style={{ display:"inline-flex", alignItems:"center", gap:5, background: strategy.status === 'active' ? 'rgba(43,138,110,0.12)' : 'rgba(0,0,0,0.05)', color: strategy.status === 'active' ? TEAL : "#6B7280", fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                               {strategy.status}
                             </span>
                           </div>
@@ -243,7 +243,7 @@ export default function FluxAdaptations() {
                   <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                       <div style={{ width: 28, height: 2, background: GOLD }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Intelligence</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Intelligence</span>
                     </div>
                     <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Strategy <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

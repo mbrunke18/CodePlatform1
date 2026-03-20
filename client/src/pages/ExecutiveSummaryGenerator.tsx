@@ -295,7 +295,7 @@ export default function ExecutiveSummaryGenerator() {
           <div className="relative z-10 max-w-6xl mx-auto">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
                 Executive Intelligence
               </span>
             </div>
@@ -406,7 +406,7 @@ export default function ExecutiveSummaryGenerator() {
                   <CardContent className="p-6">
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                       <div style={{ width: 20, height: 2, background: GOLD }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Metadata</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Metadata</span>
                     </div>
                     <div className="space-y-3">
                       <div className="flex justify-between text-[10px]">

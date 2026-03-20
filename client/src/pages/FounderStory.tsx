@@ -70,7 +70,7 @@ export default function FounderStory() {
 
         <div className="max-w-4xl mx-auto relative" style={{ zIndex: 2 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.3)", padding: "8px 20px", marginBottom: 28, backdropFilter: "blur(4px)" }}>
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: GOLD_LIGHT }}>THE MANIFESTO</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: GOLD_LIGHT }}>THE MANIFESTO</span>
           </div>
           <h1 style={{ ...CG, fontSize: "clamp(42px,5.5vw,64px)", fontWeight: 600, color: "#fff", lineHeight: 1.05, marginBottom: 24 }}>
             We Make Enterprises <em style={{ color: GOLD_LIGHT, fontStyle: "italic" }}>Fearless</em>
@@ -176,7 +176,7 @@ export default function FounderStory() {
             <div style={{ maxWidth: 680, margin: "0 auto", position: "relative", zIndex: 2, textAlign: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 16, justifyContent: "center", marginBottom: 32 }}>
                 <div style={{ height: 1, width: 28, background: "rgba(201,168,76,0.4)" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: GOLD_LIGHT }}>Category Statement</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: GOLD_LIGHT }}>Category Statement</span>
                 <div style={{ height: 1, width: 28, background: "rgba(201,168,76,0.4)" }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(36px,4.5vw,54px)", fontWeight: 600, color: "#fff", lineHeight: 1.05, marginBottom: 28, letterSpacing: "-0.01em" }}>
@@ -226,7 +226,7 @@ export default function FounderStory() {
                 <div key={letter} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1, flexShrink: 0, width: 36 }}>{letter}</div>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>{word}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>{word}</div>
                     <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", lineHeight: 1.6 }}>{desc}</p>
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function FounderStory() {
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Hear It Directly</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Hear It Directly</div>
             <h2 style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY }}>The Story in Marty's Own Words</h2>
           </div>
 
@@ -354,7 +354,7 @@ export default function FounderStory() {
                   <div style={{ width: 56, height: 56, border: `1px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Play style={{ width: 20, height: 20, color: GOLD }} />
                   </div>
-                  <div style={{ position: "absolute", bottom: 14, right: 14, fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{label}</div>
+                  <div style={{ position: "absolute", bottom: 14, right: 14, fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{label}</div>
                 </div>
                 <div style={{ padding: "28px 28px 32px" }}>
                   <h3 style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 10 }}>{title}</h3>

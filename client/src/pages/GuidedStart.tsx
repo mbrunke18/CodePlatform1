@@ -314,7 +314,7 @@ export default function GuidedStart() {
                       <div style={{ padding: '9px', background: `${scenario.urgencyColor}18`, borderRadius: 2 }}>
                         <Icon style={{ width: 20, height: 20, color: scenario.urgencyColor }} />
                       </div>
-                      <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: scenario.urgencyColor, paddingTop: 3 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: scenario.urgencyColor, paddingTop: 3 }}>
                         {scenario.urgency}
                       </span>
                     </div>
@@ -331,14 +331,14 @@ export default function GuidedStart() {
                     {scenario.stakeMetrics.map((m) => (
                       <div key={m.label} style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 12px', border: '1px solid rgba(255,255,255,0.06)' }}>
                         <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: m.color, lineHeight: 1 }}>{m.value}</div>
-                        <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>{m.label}</div>
+                        <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>{m.label}</div>
                       </div>
                     ))}
                   </div>
 
                   {/* CTA */}
                   <div style={{ padding: '12px 22px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>
                       {scenario.domain}
                     </span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: scenario.urgencyColor }}>
@@ -383,21 +383,21 @@ export default function GuidedStart() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginBottom: 28 }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{signalCount}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Data points scanned</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Data points scanned</div>
               </div>
               <div style={{ width: 1, background: 'rgba(255,255,255,0.08)' }} />
               <div style={{ textAlign: 'center' }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1 }}>
                   {detectStep >= 3 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Trigger confirmed</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Trigger confirmed</div>
               </div>
               <div style={{ width: 1, background: 'rgba(255,255,255,0.08)' }} />
               <div style={{ textAlign: 'center' }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: detectStep >= 5 ? '#fff' : 'rgba(255,255,255,0.2)', lineHeight: 1 }}>
                   {detectStep >= 5 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Playbook matched</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Playbook matched</div>
               </div>
             </div>
 
@@ -411,7 +411,7 @@ export default function GuidedStart() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
             {/* Detection steps */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 4 }}>System Scan Progress</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 4 }}>System Scan Progress</div>
               {BASE_DETECT_STEPS.map((step, i) => {
                 const isComplete = i < detectStep;
                 const isActive = i === detectStep;
@@ -447,11 +447,11 @@ export default function GuidedStart() {
 
             {/* Signal categories */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 12 }}>Domain Signal Categories</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 12 }}>Domain Signal Categories</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                 {selected.allSignals.map((sig, i) => (
                   <span key={sig} style={{
-                    fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                    fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                     padding: '5px 9px',
                     background: detectStep > i ? 'rgba(43,138,110,0.18)' : 'rgba(255,255,255,0.04)',
                     border: `1px solid ${detectStep > i ? 'rgba(43,138,110,0.45)' : 'rgba(255,255,255,0.08)'}`,
@@ -468,17 +468,17 @@ export default function GuidedStart() {
                 <div style={{ marginTop: 20, padding: '14px 16px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                     <AlertTriangle style={{ width: 13, height: 13, color: RED }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: RED }}>Trigger Confirmed</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: RED }}>Trigger Confirmed</span>
                   </div>
                   <div style={{ fontSize: 12, fontWeight: 600, color: '#fff' }}>{selected.triggerName}</div>
                   <div style={{ display: 'flex', gap: 16, marginTop: 8 }}>
                     <div>
                       <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: selected.urgencyColor }}>{selected.stakes}</div>
-                      <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.stakesLabel}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.stakesLabel}</div>
                     </div>
                     <div>
                       <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: TEAL }}>{selected.window}</div>
-                      <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.windowLabel}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.windowLabel}</div>
                     </div>
                   </div>
                 </div>
@@ -522,7 +522,7 @@ export default function GuidedStart() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 32 }}>
             {/* What's at stake */}
             <div style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)', borderTop: `3px solid ${selected.urgencyColor}`, padding: '20px 22px' }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: selected.urgencyColor, marginBottom: 16 }}>What's at Stake</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: selected.urgencyColor, marginBottom: 16 }}>What's at Stake</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {selected.stakeMetrics.map(m => (
                   <div key={m.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -535,7 +535,7 @@ export default function GuidedStart() {
 
             {/* What happens next */}
             <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderTop: `3px solid ${TEAL}`, padding: '20px 22px' }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL, marginBottom: 16 }}>What Happens Next</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL, marginBottom: 16 }}>What Happens Next</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {selected.whatHappensNext.map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>

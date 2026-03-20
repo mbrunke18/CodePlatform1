@@ -27,7 +27,7 @@ export default function DecisionVelocityPage() {
           <div className="max-w-7xl mx-auto relative z-10">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Performance Analytics</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Performance Analytics</span>
             </div>
             <div className="flex items-end justify-between">
               <div>

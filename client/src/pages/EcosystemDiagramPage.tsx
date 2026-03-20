@@ -33,7 +33,7 @@ export default function EcosystemDiagramPage() {
           <div style={{
             textAlign: "center",
             fontFamily: "'DM Mono',monospace",
-            fontSize: 9, letterSpacing: 4, color: GOLD,
+            fontSize: 10, letterSpacing: 4, color: GOLD,
             textTransform: "uppercase", marginBottom: 14,
           }}>
             How the layers work together
@@ -74,7 +74,7 @@ export default function EcosystemDiagramPage() {
               }}>
                 <div style={{
                   fontFamily: "'DM Mono',monospace",
-                  fontSize: 9, letterSpacing: 3, color, fontWeight: 700,
+                  fontSize: 10, letterSpacing: 3, color, fontWeight: 700,
                   marginBottom: 12,
                 }}>
                   STEP {phase}
@@ -145,7 +145,7 @@ export default function EcosystemDiagramPage() {
       <section style={{ background: NAVY, padding: "64px 24px", textAlign: "center" }}>
         <div style={{
           fontFamily: "'DM Mono',monospace",
-          fontSize: 9, letterSpacing: 4, color: GOLD,
+          fontSize: 10, letterSpacing: 4, color: GOLD,
           textTransform: "uppercase", marginBottom: 16,
         }}>
           Ready to deploy

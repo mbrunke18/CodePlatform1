@@ -30,7 +30,7 @@ export default function Pricing() {
         <div className="max-w-5xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Enterprise Pricing</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Enterprise Pricing</span>
           </div>
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
             Built for <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Fortune 1000</em> Scale
@@ -50,7 +50,7 @@ export default function Pricing() {
           <div className="text-center mb-12">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>Q1 2026 Founding Partner Program</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>Q1 2026 Founding Partner Program</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 16 }}>
               Join Our Founding Partners
@@ -132,7 +132,7 @@ export default function Pricing() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Annual Enterprise Pricing</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Annual Enterprise Pricing</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
               Transparent, Value-Based Tiers
@@ -176,7 +176,7 @@ export default function Pricing() {
 
             {/* Enterprise Plus Tier */}
             <div style={{ background: "#0A0F2E", border: "2px solid #0A0F2E", padding: "40px 32px", position: "relative" }} data-testid="card-tier-enterprise-plus">
-              <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#C9A84C", color: "#0A0F2E", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "4px 12px" }}>Most Popular</div>
+              <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "4px 12px" }}>Most Popular</div>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Tier 2</div>
               <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Enterprise Plus</h3>
               <p className="text-sm text-white/60 mb-6">5,000-15,000 employees</p>

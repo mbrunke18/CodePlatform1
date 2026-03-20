@@ -27,7 +27,7 @@ export default function Research() {
       title: "Research Behind Execution OS | Crisis Response Statistics & Industry Data",
       description: "Execution OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
       ogTitle: "The Research Behind Execution OS - Industry Data & Statistics",
-      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Execution OS compresses 72 hours to 12 minutes.",
+      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Execution OS compresses 30 days to 12 minutes.",
     });
   }, []);
 
@@ -39,7 +39,7 @@ export default function Research() {
           <div className="max-w-5xl mx-auto text-center">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Research & Intelligence</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Research & Intelligence</span>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
             
@@ -463,7 +463,7 @@ export default function Research() {
           <div className="max-w-5xl mx-auto text-center">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>2026 Research Landscape</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>2026 Research Landscape</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             

@@ -118,7 +118,7 @@ const categoryComparison = [
 const useCases = [
   {
     trigger: "Competitor launches new product",
-    without: "48–72 hours just to assemble the right team and define the response strategy — execution hasn't started",
+    without: "Weeks just to assemble the right team and align stakeholders — execution hasn't started",
     with: "Execution OS detects the launch, fires the Competitive Response playbook, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
     icon: Target,
   },
@@ -188,7 +188,7 @@ export default function CompetitivePositioning() {
                 <div style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Everbridge · OnSolve · Noggin</div>
               </div>
               <div style={{ flex: 1, minWidth: 180, border: `2px solid ${GOLD}`, padding: "20px 24px", background: `rgba(201,168,76,0.08)`, position: "relative" }}>
-                <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", padding: "3px 12px", textTransform: "uppercase" }}>Category of One</div>
+                <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", padding: "3px 12px", textTransform: "uppercase" }}>Category of One</div>
                 <Zap className="w-5 h-5 mb-3" style={{ color: GOLD }} />
                 <div style={{ fontWeight: 700, color: "#fff", fontSize: 15, marginBottom: 4 }}>Strategic Execution</div>
                 <div style={{ fontSize: 10, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Execution OS</div>
@@ -328,7 +328,7 @@ export default function CompetitivePositioning() {
                   zIndex: cat.featured ? 2 : 1,
                 }}>
                   {cat.featured && (
-                    <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", padding: "4px 16px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+                    <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", padding: "4px 16px", textTransform: "uppercase", whiteSpace: "nowrap" }}>
                       Category of One
                     </div>
                   )}
@@ -394,7 +394,7 @@ export default function CompetitivePositioning() {
                   <div key={i} style={{ padding: "16px 24px", textAlign: "center", borderLeft: `1px solid rgba(255,255,255,0.08)` }}>
                     <div style={{ fontSize: 12, fontWeight: 700, color: col.highlight ? GOLD : "rgba(255,255,255,0.5)", letterSpacing: "0.05em" }}>{col.label}</div>
                     {col.highlight && (
-                      <div style={{ fontSize: 9, color: "rgba(201,168,76,0.6)", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: 2 }}>Category of One</div>
+                      <div style={{ fontSize: 10, color: "rgba(201,168,76,0.6)", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: 2 }}>Category of One</div>
                     )}
                   </div>
                 ))}

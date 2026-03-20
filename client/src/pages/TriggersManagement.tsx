@@ -744,7 +744,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 <SheetHeader className="mb-6">
                   <div className="flex items-center gap-2 mb-2">
                     <div style={{ width: 16, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Alert Rule Detail</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Alert Rule Detail</span>
                   </div>
                   <SheetTitle style={{ ...CG, fontSize: '1.4rem', fontWeight: 700, color: NAVY }}>{viewTrigger.name}</SheetTitle>
                 </SheetHeader>

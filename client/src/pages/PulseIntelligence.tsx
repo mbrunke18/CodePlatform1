@@ -217,7 +217,7 @@ export default function PulseIntelligence() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                   <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Signal Intelligence</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Signal Intelligence</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
                   Signal-to-Action <em style={{ fontStyle: "italic", color: "#DFC178" }}>Intelligence</em>
@@ -226,10 +226,10 @@ export default function PulseIntelligence() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-4">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:TEAL, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(43,138,110,0.3)" }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:TEAL, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(43,138,110,0.3)" }}>
                 SCANNING {summary?.dataPointsMonitored || 0} DATA POINTS
               </div>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(201,168,76,0.12)", color:GOLD, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(201,168,76,0.3)" }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(201,168,76,0.12)", color:GOLD, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px", border:"1px solid rgba(201,168,76,0.3)" }}>
                 {summary?.signalCategories || 0} CATEGORIES
               </div>
             </div>
@@ -240,23 +240,23 @@ export default function PulseIntelligence() {
         <div style={{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", background:"#F8F7F4", borderBottom:"1px solid #E8E4DC", margin: "0 24px" }}>
           <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
             <div style={{ ...CG, fontSize:32, fontWeight:600, color:"#ef4444", lineHeight:1 }}>{summary?.criticalSignals || 0}</div>
-            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Critical</div>
+            <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Critical</div>
           </div>
           <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
             <div style={{ ...CG, fontSize:32, fontWeight:600, color:GOLD, lineHeight:1 }}>{summary?.pendingDecisions || 0}</div>
-            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Pending</div>
+            <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Pending</div>
           </div>
           <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
             <div style={{ ...CG, fontSize:32, fontWeight:600, color:TEAL, lineHeight:1 }}>{summary?.approvedActions || 0}</div>
-            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Approved</div>
+            <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Approved</div>
           </div>
           <div style={{ padding:24, borderRight:"1px solid #E8E4DC" }}>
             <div style={{ ...CG, fontSize:32, fontWeight:600, color:"#ef4444", lineHeight:1 }}>{formatCurrency(summary?.totalRevenueAtRisk || 0)}</div>
-            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>At Risk</div>
+            <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>At Risk</div>
           </div>
           <div style={{ padding:24 }}>
             <div style={{ ...CG, fontSize:32, fontWeight:600, color:NAVY, lineHeight:1 }}>{Math.round((summary?.avgConfidence || 0) * 100)}%</div>
-            <div style={{ fontSize:9, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Confidence</div>
+            <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.2em", textTransform:"uppercase", color:"#6B7280", marginTop:4 }}>Confidence</div>
           </div>
         </div>
 
@@ -268,7 +268,7 @@ export default function PulseIntelligence() {
             <div className="col-span-3 space-y-4">
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Live Signals</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Live Signals</span>
               </div>
               <div className="space-y-3 max-h-[calc(100vh-400px)] overflow-y-auto pr-2 custom-scrollbar">
                 {feed.map((item) => {
@@ -293,11 +293,11 @@ export default function PulseIntelligence() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 mb-2">
-                            <span style={{ display:"inline-flex", alignItems:"center", background: item.urgency === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: item.urgency === 'critical' ? '#ef4444' : GOLD, fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                            <span style={{ display:"inline-flex", alignItems:"center", background: item.urgency === 'critical' ? 'rgba(239,68,68,0.12)' : 'rgba(201,168,76,0.12)', color: item.urgency === 'critical' ? '#ef4444' : GOLD, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                               {item.urgency}
                             </span>
                             {status === 'approved' && (
-                              <span style={{ display:"inline-flex", alignItems:"center", background: "rgba(43,138,110,0.12)", color: TEAL, fontSize:8, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                              <span style={{ display:"inline-flex", alignItems:"center", background: "rgba(43,138,110,0.12)", color: TEAL, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                                 APPROVED
                               </span>
                             )}
@@ -322,7 +322,7 @@ export default function PulseIntelligence() {
                 <>
                   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Analysis</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Analysis</span>
                   </div>
 
                   {/* Signal Detail */}
@@ -345,7 +345,7 @@ export default function PulseIntelligence() {
                     <div className="grid grid-cols-2 gap-4">
                       {selected.dataPoints.map((dp, i) => (
                         <div key={i} style={{ padding: 16, background: OFF, border: "1px solid #E8E4DC" }}>
-                          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>{dp.label}</div>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280", marginBottom: 4 }}>{dp.label}</div>
                           <div style={{ fontSize: 16, fontWeight: 600, color: NAVY }}>{dp.value}</div>
                         </div>
                       ))}
@@ -361,7 +361,7 @@ export default function PulseIntelligence() {
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                           <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>AI Assessment</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>AI Assessment</span>
                         </div>
                         <p style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", lineHeight: 1.6, ...CG }}>{selected.aiAnalysis.summary}</p>
                         <div style={{ marginTop: 24, padding: 20, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
@@ -381,7 +381,7 @@ export default function PulseIntelligence() {
                 <>
                   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Action Required</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Action Required</span>
                   </div>
 
                   {/* Cost of Inaction */}
@@ -401,7 +401,7 @@ export default function PulseIntelligence() {
                         <Target className="h-4 w-4 text-[#2B8A6E]" />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Recommended Playbook</span>
                       </div>
-                      <span style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>{selected.recommendedPlaybook.estimatedDuration}</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>{selected.recommendedPlaybook.estimatedDuration}</span>
                     </div>
                     <h4 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>{selected.recommendedPlaybook.name}</h4>
                     <p style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>{selected.recommendedPlaybook.domain} • {selected.recommendedPlaybook.tasksCount} Automated Tasks</p>
@@ -409,7 +409,7 @@ export default function PulseIntelligence() {
                     <div className="mt-6 space-y-3">
                       {selected.recommendedPlaybook.keyActions.map((action, i) => (
                         <div key={i} className="flex items-start gap-3">
-                          <div style={{ width: 16, height: 16, background: NAVY, color: GOLD, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 2, flexShrink: 0 }}>{i + 1}</div>
+                          <div style={{ width: 16, height: 16, background: NAVY, color: GOLD, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 2, flexShrink: 0 }}>{i + 1}</div>
                           <span style={{ fontSize: 13, color: "#4B5563" }}>{action}</span>
                         </div>
                       ))}

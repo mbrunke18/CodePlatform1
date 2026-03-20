@@ -157,7 +157,7 @@ export default function PlaybookManagement() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Playbook Management</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Playbook Management</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -189,7 +189,7 @@ export default function PlaybookManagement() {
                   <FileText className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Playbooks</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Playbooks</div>
               </div>
             </CardContent>
           </Card>
@@ -201,7 +201,7 @@ export default function PlaybookManagement() {
                   <CheckCircle className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>{stats.active}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Active</div>
               </div>
             </CardContent>
           </Card>
@@ -213,7 +213,7 @@ export default function PlaybookManagement() {
                   <Play className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{stats.ready}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Ready</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Ready</div>
               </div>
             </CardContent>
           </Card>
@@ -225,7 +225,7 @@ export default function PlaybookManagement() {
                   <Edit className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.draft}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Drafts</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Drafts</div>
               </div>
             </CardContent>
           </Card>

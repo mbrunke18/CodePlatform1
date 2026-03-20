@@ -206,7 +206,7 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 24, height: 1, background: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>12-Minute Test Drive</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>12-Minute Test Drive</span>
                 <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
               <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>
@@ -233,7 +233,7 @@ export default function TwelveMinuteTestDrive() {
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
                     <span style={{ fontSize: 24 }}>{s.icon}</span>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : GOLD }}>{s.urgency}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : GOLD }}>{s.urgency}</div>
                   </div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{s.title}</div>
                   <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{s.subtitle}</div>
@@ -262,7 +262,7 @@ export default function TwelveMinuteTestDrive() {
         {step === 2 && scenario && (
           <div>
             <div style={{ textAlign: 'center', marginBottom: 40 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>AI Execution Brief · GPT-4o</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>AI Execution Brief · GPT-4o</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>
                 {scenario.icon} {scenario.title}
               </h2>
@@ -279,24 +279,24 @@ export default function TwelveMinuteTestDrive() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
                 {/* Survive/Thrive Scores */}
                 <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.25)', borderTop: `3px solid ${TEAL}` }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Execution OS)</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Execution OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 61}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — current readiness estimate</div>
                 </div>
                 <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Execution OS)</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Execution OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.thriveScore ?? 34}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with 12-minute execution</div>
                 </div>
                 <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
                   <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
                     {brief?.aiAnalysis || `This ${scenario.title.toLowerCase()} scenario demands immediate cross-functional coordination across your entire C-Suite. Organizations with pre-staged response infrastructure gain a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing. The difference between a controlled response and a cascading crisis is measured in the first 12 minutes.`}
                   </p>
                 </div>
                 {brief?.activatedPlaybooks?.length > 0 && (
                   <div style={{ gridColumn: '1 / -1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks That Will Activate</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks That Will Activate</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                       {brief.activatedPlaybooks.map((p: string, i: number) => (
                         <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>
@@ -326,11 +326,11 @@ export default function TwelveMinuteTestDrive() {
             {/* Header with countdown */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
                 <div style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{scenario.icon} {scenario.title}</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '🟢 LIVE' : '⏱ COMPLETE'}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '🟢 LIVE' : '⏱ COMPLETE'}</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
               </div>
@@ -352,7 +352,7 @@ export default function TwelveMinuteTestDrive() {
                   <div key={phase} style={{ marginBottom: 24 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                       <div style={{ height: 1, width: 24, background: NAVY }} />
-                      <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+                      <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
                       <div style={{ height: 1, flex: 1, background: NAVY }} />
                     </div>
                     {tasks.filter(t => t.phase === phase).map((t, gi) => {
@@ -389,7 +389,7 @@ export default function TwelveMinuteTestDrive() {
 
               {/* Live Feed */}
               <div style={{ background: NAVY, padding: 20 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>
                   {running ? '● LIVE FEED' : '○ FEED PAUSED'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
@@ -414,7 +414,7 @@ export default function TwelveMinuteTestDrive() {
           <div>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
                 {scenario.title} Response:<br />
                 <em style={{ fontStyle: 'italic', color: TEAL_LT }}>Contained in {fmtSecs(elapsed)}</em>
@@ -433,7 +433,7 @@ export default function TwelveMinuteTestDrive() {
                 { label: 'Damage Contained', value: '68%', sub: 'avg reduction in impact', color: TEAL },
               ].map(m => (
                 <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
                   <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
                 </div>
@@ -442,7 +442,7 @@ export default function TwelveMinuteTestDrive() {
 
             {/* What this means */}
             <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 40 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>What You Just Experienced</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>What You Just Experienced</div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
                 In this test drive, Execution OS coordinated {tasks.length} cross-functional tasks across {[...new Set(tasks.map(t => t.role))].length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
               </p>

@@ -149,7 +149,7 @@ export default function CustomerJourney() {
           <div className="max-w-5xl mx-auto text-center relative z-10">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)" }}>The Customer Lifecycle</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)" }}>The Customer Lifecycle</span>
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
             </div>
             <h1 style={{ ...CG, fontWeight: 700, fontSize: "clamp(38px,5vw,60px)", lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
@@ -168,7 +168,7 @@ export default function CustomerJourney() {
               ].map(s => (
                 <div key={s.label} style={{ padding: "20px 16px", textAlign: "center" }}>
                   <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.value}<span style={{ fontSize: 16, fontWeight: 500 }}>{s.unit}</span></div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 6 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 6 }}>{s.label}</div>
                 </div>
               ))}
             </div>

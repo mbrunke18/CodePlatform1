@@ -215,9 +215,9 @@ function SignalCategoryCard({
         </div>
         <div className="flex items-center gap-2">
           {triggerCount > 0 && (
-            <span style={{ fontSize: 9, fontWeight: 700, color: TEAL }}>{triggerCount} ACTIVE</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: TEAL }}>{triggerCount} ACTIVE</span>
           )}
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#6B7280", border: "1px solid #E8E4DC", padding: "2px 8px" }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", border: "1px solid #E8E4DC", padding: "2px 8px" }}>
             {category.phase.toUpperCase()}
           </span>
         </div>
@@ -440,7 +440,7 @@ export default function SignalIntelligenceHub() {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Signal Configuration</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>Signal Configuration</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", color: "#fff", lineHeight: 1.1 }}>
                 Intelligence <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Hub</em>
@@ -452,12 +452,12 @@ export default function SignalIntelligenceHub() {
             <div className="flex items-center gap-6">
               <div style={{ textAlign: "right" }}>
                 <div style={{ ...CG, fontSize: 32, color: GOLD, fontWeight: 600 }}>{triggers.length}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em" }}>ACTIVE MONITORS</div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em" }}>ACTIVE MONITORS</div>
               </div>
               <div style={{ width: 1, height: 40, background: "rgba(255,255,255,0.15)" }} />
               <div style={{ textAlign: "right" }}>
                 <div style={{ ...CG, fontSize: 32, color: TEAL, fontWeight: 600 }}>24/7</div>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em" }}>SURVEILLANCE</div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.45)", letterSpacing: "0.1em" }}>SURVEILLANCE</div>
               </div>
             </div>
           </div>
@@ -497,7 +497,7 @@ export default function SignalIntelligenceHub() {
                 <div className="col-span-4 space-y-4">
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Categories</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Categories</span>
                   </div>
                   <div className="grid grid-cols-1 gap-4 max-h-[800px] overflow-y-auto pr-2 custom-scrollbar">
                     {SIGNAL_CATEGORIES.map(category => (

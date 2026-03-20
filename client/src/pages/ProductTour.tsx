@@ -70,7 +70,7 @@ const TOUR_SCENES: Scene[] = [
     type: 'cinematic',
     duration: 6000,
     title: 'The Solution',
-    subtitle: 'Compress 72 hours into 12 minutes',
+    subtitle: 'Compress 30 days into 12 minutes',
     narration: 'Execution OS connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
@@ -143,7 +143,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'The Results',
     subtitle: '3,180x Faster Response',
-    narration: 'What traditionally takes 72 hours, Execution OS coordinates in under 2 minutes. That\'s strategic velocity.',
+    narration: 'What traditionally takes 30 days to mobilize, Execution OS coordinates in under 2 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
@@ -678,7 +678,7 @@ export default function ProductTour() {
             >
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Scene {currentSceneIndex + 1} of {TOUR_SCENES.length}</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Scene {currentSceneIndex + 1} of {TOUR_SCENES.length}</span>
                 <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
               </div>
               <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>

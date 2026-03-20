@@ -379,7 +379,7 @@ export default function CrisisResponseCenter() {
                 {crisisTemplates.map((template) => (
                   <Card key={template.id} className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors rounded-none flex flex-col">
                     <div className="flex items-center justify-between mb-4">
-                      <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
+                      <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#6B7280" }}>
                         {template.category}
                       </span>
                       <span style={getSeverityBadgeStyle(template.severity)} className="text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5">
@@ -441,14 +441,14 @@ export default function CrisisResponseCenter() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                       <div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Execution Progress</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Execution Progress</div>
                         <div className="text-3xl font-bold text-[#0A0F2E] mb-2">{crisis.progress}%</div>
                         <Progress value={crisis.progress} className="h-1 bg-[#E8E4DC]" />
                         <div className="mt-3 text-sm text-[#6B7280]">Currently in: <span className="text-[#0A0F2E] font-bold">{crisis.currentPhase}</span></div>
                       </div>
                       
                       <div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Assigned Command</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Assigned Command</div>
                         <div className="flex flex-wrap gap-2">
                           {crisis.assignedTeam.map((team, index) => (
                             <span key={index} style={{ border: "1px solid #E8E4DC", padding: "4px 10px", fontSize: 10, fontWeight: 600, color: "#0A0F2E", background: OFF }}>
@@ -459,7 +459,7 @@ export default function CrisisResponseCenter() {
                       </div>
                       
                       <div>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Next Protocols</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280", marginBottom: 12 }}>Next Protocols</div>
                         <div className="space-y-3">
                           {crisis.nextActions.map((action, index) => (
                             <div key={index} className="flex items-start gap-3 text-sm text-[#0A0F2E]">

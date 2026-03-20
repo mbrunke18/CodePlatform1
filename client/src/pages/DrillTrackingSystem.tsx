@@ -175,7 +175,7 @@ export default function DrillTrackingSystem() {
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Readiness Auditing</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Readiness Auditing</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
                 Drill Tracking <em style={{ fontStyle: "italic", color: "#DFC178" }}>System</em>
@@ -222,7 +222,7 @@ export default function DrillTrackingSystem() {
         <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px", background: "#fff" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: NAVY, flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Simulation Log</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Simulation Log</span>
           </div>
           <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Crisis Simulation Drills</h2>
           <p className="text-[#6B7280] mb-8">Practice playbook execution with team performance tracking and systematic auditing.</p>
@@ -244,7 +244,7 @@ export default function DrillTrackingSystem() {
                         <span style={{ ...getStatusBadgeStyle(sim.status), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
                           {sim.status}
                         </span>
-                        <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
+                        <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>
                           {sim.difficulty}
                         </span>
                       </div>

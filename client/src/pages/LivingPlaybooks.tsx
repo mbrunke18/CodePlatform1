@@ -127,7 +127,7 @@ export default function LivingPlaybooks() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
               <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase · AI-Powered</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase · AI-Powered</span>
             </div>
             <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
               <Brain className="w-10 h-10 text-[#0A0F2E]" />
@@ -297,7 +297,7 @@ export default function LivingPlaybooks() {
             <CardHeader className="relative z-10 border-b border-white/10 pb-6">
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                 <div style={{ width: 20, height: 2, background: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The ADVANCE Phase</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The ADVANCE Phase</span>
               </div>
               <CardTitle className="text-2xl" style={CG}>How Self-Learning Works</CardTitle>
               <CardDescription className="text-white/60">Every execution feeds the intelligence loop — making each playbook faster, sharper, and more precise.</CardDescription>

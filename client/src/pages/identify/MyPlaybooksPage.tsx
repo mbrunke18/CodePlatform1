@@ -84,7 +84,7 @@ export default function MyPlaybooksPage() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
               <div style={{ width: 20, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
                 Identify · My Playbooks
               </span>
             </div>
@@ -127,7 +127,7 @@ export default function MyPlaybooksPage() {
                   <div style={{ flex: 1, minWidth: 260 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6, flexWrap: 'wrap' as const }}>
                       <span style={{ fontSize: 15, fontWeight: 700, color: NAVY }}>{pb.name}</span>
-                      <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase' as const, padding: '2px 8px', background: sta.bg, color: sta.color }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '2px 8px', background: sta.bg, color: sta.color }}>
                         {sta.label}
                       </span>
                     </div>

@@ -80,7 +80,7 @@ function TimelineChapter({
         <div className="mb-8">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
             <div style={{ width: 24, height: 1, background: colors[color] }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: colors[color] }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: colors[color] }}>
               {number}
             </span>
           </div>
@@ -115,7 +115,7 @@ export default function OurStory() {
         <div className="max-w-4xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
             <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Name</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>The Name</span>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -241,7 +241,7 @@ export default function OurStory() {
               ].map(item => (
                 <div key={item.label} style={{ background: "#F8F7F4", padding: "24px 16px", textAlign: "center", border: "1px solid #E8E4DC" }}>
                   <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>{item.val}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>{item.label}</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>{item.label}</div>
                 </div>
               ))}
             </div>

@@ -189,7 +189,7 @@ export default function EchoCulturalAnalytics() {
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Cultural Intelligence</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Cultural Intelligence</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
                     Echo Cultural <em style={{ fontStyle: "italic", color: GOLD }}>Analytics</em>
@@ -244,7 +244,7 @@ export default function EchoCulturalAnalytics() {
                       <div className="grid grid-cols-2 gap-x-4 gap-y-2 pt-4 border-t border-[#E8E4DC]">
                         {Object.entries(metric.details).map(([key, value]) => (
                           <div key={key} className="flex flex-col">
-                            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280" }}>{key}</span>
+                            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#6B7280" }}>{key}</span>
                             <span style={{ fontSize: 14, fontWeight: 600, color: NAVY }}>{value}%</span>
                           </div>
                         ))}
@@ -258,7 +258,7 @@ export default function EchoCulturalAnalytics() {
               <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48, borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Echo Summary</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Echo Summary</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>Cultural Health <em style={{ fontStyle: "italic", color: GOLD }}>Summary</em></h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

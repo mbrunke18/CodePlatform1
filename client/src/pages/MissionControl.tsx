@@ -336,7 +336,7 @@ export default function MissionControl() {
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Infrastructure Status</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Infrastructure Status</span>
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
@@ -362,7 +362,7 @@ export default function MissionControl() {
                 <CardContent className="p-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Platform Intelligence</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Platform Intelligence</span>
                   </div>
                   <div className="space-y-4">
                     {[

@@ -77,7 +77,7 @@ export default function ActivationOutcome() {
             </Link>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>ADVANCE Phase · Outcome Report</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>ADVANCE Phase · Outcome Report</span>
             </div>
             <h1 style={{ ...CG, fontWeight: 700, fontSize: "clamp(28px,5vw,44px)", color: "#fff", lineHeight: 1.1, marginBottom: 8 }}>
               Activation <em style={{ fontStyle: "italic", color: GOLD }}>Outcome</em>

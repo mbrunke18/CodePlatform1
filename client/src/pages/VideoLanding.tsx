@@ -50,7 +50,7 @@ export default function VideoLanding() {
               </Link>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
               </div>
               <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-video-hub">
                 Brand Films & <em className="italic text-[#C9A84C]">Sizzle Reels</em>
@@ -174,7 +174,7 @@ export default function VideoLanding() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The Advantage</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The Advantage</span>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -230,7 +230,7 @@ export default function VideoLanding() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.3)", flexShrink: 0 }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Get Started</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Get Started</span>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.3)", flexShrink: 0 }} />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>

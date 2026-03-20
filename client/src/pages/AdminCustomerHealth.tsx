@@ -62,7 +62,7 @@ export default function AdminCustomerHealth() {
             </Link>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Admin · Internal View</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Admin · Internal View</span>
             </div>
             <h1 style={{ ...CG, fontWeight: 700, fontSize: "clamp(32px,5vw,48px)", color: "#fff", lineHeight: 1.1, marginBottom: 8 }}>
               Customer <em style={{ fontStyle: "italic", color: GOLD }}>Health</em>

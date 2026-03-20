@@ -234,7 +234,7 @@ export default function CrisisDetail() {
               <div className="space-y-4">
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Crisis Detail Report</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Crisis Detail Report</span>
                 </div>
                 <h1 style={{ ...CG, color: "#fff", fontSize: "clamp(32px,4vw,56px)", fontWeight: 600, lineHeight: 1.1 }}>
                   {crisis.title}

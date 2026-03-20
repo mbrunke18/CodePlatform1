@@ -105,7 +105,7 @@ export default function ThreatsPage() {
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
             <div style={{ width: 20, height: 2, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
               Detect · Threat Intelligence
             </span>
           </div>
@@ -134,7 +134,7 @@ export default function ThreatsPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <Radio size={13} color="#C0392B" />
               <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>Live Threat Feed</span>
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#C0392B' }}>● LIVE</span>
+              <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#C0392B' }}>● LIVE</span>
             </div>
             <span style={{ fontSize: 11, color: MUTED }}>{THREATS.length} active threats · Updated 14 min ago</span>
           </div>
@@ -157,10 +157,10 @@ export default function ThreatsPage() {
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const, marginBottom: 4 }}>
                       <span style={{ fontSize: 14, fontWeight: 700, color: NAVY }}>{threat.title}</span>
-                      <span style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase' as const, padding: '2px 8px', background: sev.bg, color: sev.color }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '2px 8px', background: sev.bg, color: sev.color }}>
                         {sev.label}
                       </span>
-                      <span style={{ fontSize: 9, fontWeight: 700, color: sta.color }}>{sta.label}</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: sta.color }}>{sta.label}</span>
                     </div>
                     <p style={{ fontSize: 12, color: '#555', margin: '4px 0 8px', lineHeight: 1.5 }}>{threat.detail}</p>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' as const }}>

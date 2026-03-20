@@ -442,7 +442,7 @@ export default function PeerReview() {
               <ScaleInput value={q7Scale} onChange={setQ7Scale} labels={["Not credible", "Fully credible"]} />
               <FollowUp label="What would make this claim more credible to you?" value={q7Text} onChange={setQ7Text} />
             </QBlock>
-            <QBlock num="Q8" question="How compelling is the core value proposition — reducing organizational response time from 72 hours to 12 minutes through pre-staged execution playbooks?">
+            <QBlock num="Q8" question="How compelling is the core value proposition — reducing organizational response time from 30 days to 12 minutes through pre-staged execution playbooks?">
               <ScaleInput value={q8Scale} onChange={setQ8Scale} labels={["Not compelling", "Highly compelling"]} />
               <FollowUp label="What would make this value proposition more compelling?" value={q8Text} onChange={setQ8Text} />
             </QBlock>

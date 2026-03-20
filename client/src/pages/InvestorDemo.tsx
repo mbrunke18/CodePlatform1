@@ -580,7 +580,7 @@ export default function InvestorDemo() {
                           <div className="bg-[#2B8A6E]/15 border border-[#2B8A6E]/30 rounded-lg p-4 text-center">
                             <CheckCircle2 className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                             <p className="text-[#2B8A6E] font-medium">Story Complete</p>
-                            <p className="text-[#0A0F2E] text-sm">72 hours: still getting the right people in the room. 12 minutes: roles assigned, tasks staged, execution live.</p>
+                            <p className="text-[#0A0F2E] text-sm">30 days: still getting the right people aligned. 12 minutes: roles assigned, tasks staged, execution live.</p>
                           </div>
                           <div className="flex gap-3">
                             <Button

@@ -80,7 +80,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
           size="sm"
           disabled={analyzeMutation.isPending}
           onClick={() => analyzeMutation.mutate()}
-          style={{ background: NAVY, color: '#fff', fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}
+          style={{ background: NAVY, color: '#fff', fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}
         >
           {analyzeMutation.isPending
             ? <><Loader2 className="w-3 h-3 mr-1 animate-spin" /> Analyzing...</>

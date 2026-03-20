@@ -108,17 +108,17 @@ export default function AIIntelligence() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Predictive Intelligence</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Predictive Intelligence</span>
                 </div>
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>AI Intelligence Center</h1>
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(43,138,110,0.12)", color:"#3BAF8A", fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 <Activity className="w-3 h-3 mr-1" />
                 All Modules Active
               </div>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                 Enterprise AI
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function AIIntelligence() {
                     <div style={{ width: 32, height: 32, background: module.color, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {module.icon && <div className="text-white">{module.icon}</div>}
                     </div>
-                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: module.status === 'active' ? "rgba(43,138,110,0.12)" : "rgba(0,0,0,0.05)", color: module.status === 'active' ? "#3BAF8A" : "#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: module.status === 'active' ? "rgba(43,138,110,0.12)" : "rgba(0,0,0,0.05)", color: module.status === 'active' ? "#3BAF8A" : "#6B7280", fontSize:10, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>
                       {module.status}
                     </div>
                   </div>
@@ -210,25 +210,25 @@ export default function AIIntelligence() {
                     {aiModules.find(m => m.id === activeModule)?.description}
                   </p>
                   <div className="flex space-x-2">
-                    <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-run-analysis">
+                    <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-run-analysis">
                       Run Deep Analysis
                     </Button>
-                    <Button size="sm" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-export-insights">
+                    <Button size="sm" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-export-insights">
                       Export Insights
                     </Button>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-predictive-analytics">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-predictive-analytics">
                     <BarChart3 className="w-4 h-4 mr-2" />
                     Run Predictive Analytics
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-scenario-modeling">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-scenario-modeling">
                     <Globe className="w-4 h-4 mr-2" />
                     AI Scenario Modeling
                   </Button>
-                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-decision-intelligence">
+                  <Button className="w-full justify-start" variant="outline" style={{ border:"1.5px solid #E8E4DC", color: NAVY, background:"transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }} data-testid="button-decision-intelligence">
                     <Target className="w-4 h-4 mr-2" />
                     Decision Intelligence
                   </Button>

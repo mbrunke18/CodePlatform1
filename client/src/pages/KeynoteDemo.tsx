@@ -315,7 +315,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="text-2xl text-white/80 max-w-4xl mb-16 leading-relaxed relative z-10"
         >
-          From signal detection to full organizational response in <span className="text-[#C9A84C] font-semibold">12 minutes</span> — not 72 hours.
+          From signal detection to full organizational response in <span className="text-[#C9A84C] font-semibold">12 minutes</span> — not 30 days.
           <br />170 pre-built playbooks. 9 strategic domains. AI-powered execution.
         </motion.p>
         <motion.div

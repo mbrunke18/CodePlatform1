@@ -64,7 +64,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Operating Officer',
     icon: Settings,
     hookQuestion: "When was the last time you executed your continuity plan at the speed it assumes?",
-    keyMetric: "72 hours → 12 minutes, $2.1M saved",
+    keyMetric: "30 days → 12 minutes, $2.1M saved",
     playbook: 'ma-day1',
     playbookLabel: 'M&A Day 1 Integration',
     category: 'OFFENSE',
@@ -257,7 +257,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <div className="text-xs text-[#0A0F2E] font-bold uppercase tracking-widest" style={{ fontSize: 9 }}>
+                        <div className="text-xs text-[#0A0F2E] font-bold uppercase tracking-widest" style={{ fontSize: 10 }}>
                           <Compass className="w-3 h-3 inline mr-1" />Configure Workspace
                         </div>
                         <ArrowRight className="w-4 h-4 text-[#0A0F2E]" />

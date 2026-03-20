@@ -316,7 +316,7 @@ export default function ExecutiveDashboard() {
                     <div className="p-12 flex-1 flex flex-col justify-center space-y-6">
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                         <div style={{ width: 28, height: 2, background: GOLD }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Status Assessment</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Status Assessment</span>
                       </div>
                       <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>Your organization is in a <em style={{ fontStyle: "italic", color: "#2B8A6E" }}>high-gravity</em> preparedness state.</h2>
                       <p className="text-[#6B7280] text-sm max-w-xl">
@@ -436,7 +436,7 @@ export default function ExecutiveDashboard() {
                     <div className="p-10 flex-1 space-y-6">
                       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                         <div style={{ width: 28, height: 2, background: GOLD }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>5-Dimension Readiness Breakdown</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>5-Dimension Readiness Breakdown</span>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[
@@ -639,7 +639,7 @@ export default function ExecutiveDashboard() {
                           <p className="text-xs text-gray-600">{s.description}</p>
                         </div>
                         <Link to="/playbook-library">
-                          <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                          <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
                             Activate Playbook
                           </Button>
                         </Link>

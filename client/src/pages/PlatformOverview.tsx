@@ -119,7 +119,7 @@ export default function PlatformOverview() {
           <div className="max-w-5xl mx-auto">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Execution OS · Platform Architecture</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Execution OS · Platform Architecture</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end gap-8">
               <div className="flex-1">
@@ -151,7 +151,7 @@ export default function PlatformOverview() {
             <div className="text-center mb-12">
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The 12-Minute Window</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The 12-Minute Window</span>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
@@ -181,7 +181,7 @@ export default function PlatformOverview() {
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                           <div style={{ width: 20, height: 1.5, background: step.color, flexShrink: 0 }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: step.color }}>{step.badge}</span>
                         </div>
                         <h3 className="text-xl font-bold" style={{ color: "#0A0F2E" }}>{step.headline}</h3>
                         <p className="text-sm text-[#6B7280]">{step.sub}</p>
@@ -232,7 +232,7 @@ export default function PlatformOverview() {
             <div className="text-center mb-10">
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>8 Integrated Components</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>8 Integrated Components</span>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
@@ -261,7 +261,7 @@ export default function PlatformOverview() {
           <div className="max-w-3xl mx-auto text-center">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Ready to See It</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Ready to See It</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>

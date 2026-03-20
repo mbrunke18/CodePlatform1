@@ -402,7 +402,7 @@ export default function NewUserJourney() {
                     </h2>
                     <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
                       Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
-                      into decisive action in <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-4">12 minutes, not 72 hours</span>
+                      into decisive action in <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-4">12 minutes, not 30 days</span>
                     </p>
                   </div>
 
@@ -843,7 +843,7 @@ export default function NewUserJourney() {
                               />
                               <span className="text-[#0A0F2E]">minutes</span>
                               <Badge variant="secondary" className="bg-[#2B8A6E]/20 text-[#2B8A6E] rounded-none">
-                                Industry avg: 72 hours
+                                Industry avg: 30 days
                               </Badge>
                             </div>
                           </div>

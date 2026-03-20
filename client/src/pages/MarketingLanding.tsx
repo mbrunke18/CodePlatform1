@@ -35,7 +35,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Execution OS - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Execution OS is the orchestration layer that transforms 72-hour strategic coordination into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Execution OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "Execution OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Identify → Detect → Execute → Advance.",
     });
@@ -207,7 +207,7 @@ export default function MarketingLanding() {
           <div className="text-center mb-16">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Strategic Value</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Strategic Value</span>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
             <h2 className="font-serif text-4xl text-[#0A0F2E] mb-4">The ROI of <em className="italic text-[#C9A84C]">12-Minute Execution</em></h2>
