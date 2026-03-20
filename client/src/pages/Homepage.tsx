@@ -516,7 +516,8 @@ function MissingLayerSection() {
           <SectionLabel>WHY THE WORLD NEEDED THIS</SectionLabel>
           <h2 className="hp-missing-h2" style={{ ...GEO, fontSize: 44, fontWeight: 700, color: "#fff", lineHeight: 1.25, maxWidth: 860, margin: "0 auto 32px" }}>
             Enterprise work was designed for a world{" "}
-            <span style={{ color: GOLD }}>without AI.</span>{" "}
+            <span style={{ color: GOLD }}>without AI.</span>
+            <br />
             Nobody redesigned it.
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
