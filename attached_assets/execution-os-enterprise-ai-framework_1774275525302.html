@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise AI Operating Model — with Execution OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #F0EDE4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 48px 24px;
+    font-family: 'Barlow', sans-serif;
+  }
+  .page {
+    width: 900px;
+    background: #F0EDE4;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #0A0F2E;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .header .subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2B8A6E;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: #C9A84C;
+    margin: 12px auto 0;
+  }
+
+  /* Layout grid */
+  .section-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 6px;
+  }
+  .section-label {
+    width: 90px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 14px;
+  }
+  .section-label span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0A0F2E;
+    opacity: 0.5;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+  .section-content {
+    flex: 1;
+  }
+
+  /* Strategy pyramid */
+  .pyramid-wrap {
+    position: relative;
+    padding: 0 0 8px;
+  }
+  .pyramid-tier {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  .pyramid-box {
+    background: #1D9E75;
+    color: #E1F5EE;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  .pyramid-box.apex { width: 200px; background: #0F6E56; color: #E1F5EE; }
+  .pyramid-box.wide { width: 380px; }
+  .pyramid-box.half { width: 240px; }
+  .pyramid-box.half + .pyramid-box.half { margin-left: 6px; }
+  .pyramid-box.full { width: 100%; }
+  .pyramid-box.lifecycle { background: #085041; color: #9FE1CB; font-size: 14px; }
+
+  /* TAOM pillars */
+  .taom-border {
+    border: 1.5px dashed #C9A84C;
+    border-radius: 10px;
+    padding: 12px;
+    background: rgba(201,168,76,0.04);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .pillar {
+    background: #fff;
+    border: 0.5px solid #1D9E75;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .pillar-head {
+    background: #1D9E75;
+    color: #E1F5EE;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 10px;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .pillar-body {
+    padding: 10px;
+  }
+  .pillar-body li {
+    font-size: 11px;
+    color: #3d3d3a;
+    line-height: 1.5;
+    list-style: none;
+    padding-left: 10px;
+    position: relative;
+    margin-bottom: 2px;
+    font-family: 'Barlow', sans-serif;
+  }
+  .pillar-body li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #1D9E75;
+    font-size: 10px;
+  }
+
+  /* Execution OS layer */
+  .eos-connector {
+    display: flex;
+    justify-content: space-around;
+    padding: 4px 60px;
+  }
+  .eos-arrow {
+    width: 1px;
+    height: 16px;
+    background: #C9A84C;
+    position: relative;
+  }
+  .eos-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -3px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 5px solid #C9A84C;
+  }
+  .eos-label-row {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #C9A84C;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .eos-layer {
+    background: #0A0F2E;
+    border: 1.5px solid #C9A84C;
+    border-radius: 10px;
+    padding: 18px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .eos-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .eos-layer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #C9A84C;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .eos-layer-sub {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: #F0EDE4;
+    opacity: 0.75;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .eos-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .eos-chip {
+    background: rgba(201,168,76,0.15);
+    border: 0.5px solid rgba(201,168,76,0.4);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #C9A84C;
+    letter-spacing: 0.5px;
+  }
+  .eos-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2B8A6E;
+    letter-spacing: 0.5px;
+    border-top: 0.5px solid rgba(201,168,76,0.25);
+    padding-top: 10px;
+  }
+  .eos-tagline strong {
+    color: #C9A84C;
+  }
+
+  /* Foundation */
+  .foundation-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .foundation-bar {
+    background: #085041;
+    color: #9FE1CB;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Legend */
+  .legend {
+    margin-top: 28px;
+    border: 0.5px solid rgba(10,15,46,0.15);
+    border-radius: 10px;
+    padding: 18px 24px;
+    background: #fff;
+    display: flex;
+    gap: 32px;
+  }
+  .legend-col { flex: 1; }
+  .legend-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0A0F2E;
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .legend-item p {
+    font-size: 11px;
+    color: #3d3d3a;
+    line-height: 1.5;
+    font-family: 'Barlow', sans-serif;
+  }
+  .legend-item p strong {
+    color: #0A0F2E;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: #0A0F2E;
+    opacity: 0.35;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Export button — screen only */
+  .export-bar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 10px;
+  }
+  .export-btn {
+    background: #0A0F2E;
+    color: #C9A84C;
+    border: 1px solid #C9A84C;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  .export-btn:hover { background: #C9A84C; color: #0A0F2E; }
+
+  @media print {
+    body { padding: 0; background: #F0EDE4; }
+    .export-bar { display: none; }
+    .page { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page" id="diagram">
+
+  <div class="header">
+    <h1>Enterprise AI Operating Model for Scalable Governance</h1>
+    <div class="subtitle">Where Execution OS fits in the stack</div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- AI STRATEGY -->
+  <div class="section-row">
+    <div class="section-label"><span>AI Strategy</span></div>
+    <div class="section-content">
+      <div class="pyramid-wrap">
+        <div class="pyramid-tier">
+          <div class="pyramid-box apex">AI Vision &amp; Strategic Objectives</div>
+        </div>
+        <div class="pyramid-tier">
+          <div class="pyramid-box wide">AI Use Case Portfolio</div>
+        </div>
+        <div class="pyramid-tier">
+          <div class="pyramid-box half">Value &amp; Feasibility Assessment</div>
+          <div class="pyramid-box half">Risk &amp; Compliance Appetite</div>
+        </div>
+        <div class="pyramid-tier">
+          <div class="pyramid-box full lifecycle">Enterprise AI Lifecycle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARGET AI OPERATING MODEL -->
+  <div class="section-row" style="margin-top:4px">
+    <div class="section-label"><span>Target Operating Model</span></div>
+    <div class="section-content">
+      <div class="taom-border">
+        <div class="pillars">
+
+          <div class="pillar">
+            <div class="pillar-head">① Use Case Prioritization</div>
+            <div class="pillar-body">
+              <ul>
+                <li>How BUs propose AI use cases</li>
+                <li>Value &amp; feasibility evaluation</li>
+                <li>Investment &amp; portfolio balancing</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-head">② Lifecycle Ownership</div>
+            <div class="pillar-body">
+              <ul>
+                <li>Model monitoring in production</li>
+                <li>Accountability for drift &amp; degradation</li>
+                <li>Updates as data &amp; markets evolve</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-head">③ Governance Integration</div>
+            <div class="pillar-body">
+              <ul>
+                <li>Use case approval</li>
+                <li>Model development &amp; testing</li>
+                <li>Validation &amp; risk assessment</li>
+                <li>Production monitoring &amp; audit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pillar">
+            <div class="pillar-head">④ Business Access &amp; Collaboration</div>
+            <div class="pillar-body">
+              <ul>
+                <li>Pathways to propose opportunities</li>
+                <li>Collaboration with AI teams</li>
+                <li>Integration into workflows</li>
+                <li>Hub-and-spoke model execution</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTOR ARROWS -->
+  <div class="section-row" style="margin: 0">
+    <div class="section-label"></div>
+    <div class="section-content">
+      <div class="eos-label-row">All four pillars route through the coordination layer</div>
+      <div class="eos-connector">
+        <div class="eos-arrow"></div>
+        <div class="eos-arrow"></div>
+        <div class="eos-arrow"></div>
+        <div class="eos-arrow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTION OS -->
+  <div class="section-row" style="margin-top: 2px">
+    <div class="section-label"><span>Coordination Layer</span></div>
+    <div class="section-content">
+      <div class="eos-layer">
+        <div class="eos-layer-title">Execution OS &nbsp;by VaughnMartin</div>
+        <div class="eos-layer-sub">The coordination infrastructure the operating model assumes but doesn't draw</div>
+        <div class="eos-chips">
+          <div class="eos-chip">170 Playbooks</div>
+          <div class="eos-chip">IDEA Framework</div>
+          <div class="eos-chip">9 Strategic Domains</div>
+          <div class="eos-chip">12-Minute Execution Cycles</div>
+          <div class="eos-chip">Fortune 1000 Enterprise</div>
+        </div>
+        <div class="eos-tagline">
+          Compresses <strong>72-hour alignment cycles</strong> into <strong>real-time coordinated action</strong> — across all four pillars simultaneously.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDATION -->
+  <div class="section-row" style="margin-top: 16px">
+    <div class="section-label"><span>Foundation</span></div>
+    <div class="section-content">
+      <div class="foundation-stack">
+        <div class="foundation-bar">Decision Rights &amp; Accountability</div>
+        <div class="foundation-bar">Enterprise AI Talent Stack</div>
+        <div class="foundation-bar">Culture, Trust &amp; AI Literacy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-col">
+      <div class="legend-title">Framework origin</div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#1D9E75"></div>
+        <p><strong>Greeshma M. Neglur's framework</strong> — governance architecture &amp; AI operating model design. Defines what decisions get made and who owns them.</p>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#0A0F2E;border:1px solid #C9A84C"></div>
+        <p><strong>Execution OS by VaughnMartin</strong> — the missing coordination layer. Ensures those decisions compress from 72-hour alignment into 12-minute action.</p>
+      </div>
+    </div>
+    <div class="legend-col">
+      <div class="legend-title">The key distinction</div>
+      <div class="legend-item" style="margin-bottom:0">
+        <p style="font-style:italic;color:#0A0F2E;line-height:1.6">"A well-designed operating model tells you <strong>what</strong> to decide and <strong>who</strong> decides it. Execution OS is what makes those decisions move — compressing organizational coordination from 72 hours of alignment into 12 minutes of action."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">VaughnMartin &nbsp;·&nbsp; Execution OS &nbsp;·&nbsp; Built on the belief that preparation wins.</div>
+
+</div>
+
+<!-- Export buttons -->
+<div class="export-bar">
+  <button class="export-btn" onclick="window.print()">Print / Save PDF</button>
+  <button class="export-btn" onclick="exportPNG()">Export PNG</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+async function exportPNG() {
+  const btn = document.querySelector('.export-bar');
+  btn.style.display = 'none';
+  const canvas = await html2canvas(document.getElementById('diagram'), {
+    scale: 2,
+    backgroundColor: '#F0EDE4',
+    useCORS: true,
+    logging: false
+  });
+  btn.style.display = 'flex';
+  const link = document.createElement('a');
+  link.download = 'execution-os-enterprise-ai-framework.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
+
+</body>
+</html>
