@@ -298,14 +298,14 @@ function FuturePositioningDiagram() {
             Tomorrow — The AI Operating Layer
           </div>
           <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Strategic Intelligence Platform</h3>
-          <p className="text-sm text-[#6B7280] font-medium mb-4">As AI agents proliferate, enterprises need a governance and coordination layer. Execution OS becomes the system of record for strategic action.</p>
+          <p className="text-sm text-[#6B7280] font-medium mb-4">As AI agents proliferate, enterprises need coordination infrastructure — the missing layer between AI capability and enterprise execution. Execution OS is that layer.</p>
           <ul className="space-y-2">
             {[
-              "AI agent orchestration across the enterprise",
-              "Autonomous trigger detection at scale",
+              "Coordination infrastructure — not another AI capability tool",
+              "Agentic execution — IDEA agents that execute tasks, not suggest them",
+              "Autonomous trigger detection at scale across 248+ data points",
               "Institutional memory of every strategic decision",
-              "Cross-domain threat synthesis and prediction",
-              "The execution layer every enterprise will require",
+              "The operating model every enterprise needs to deploy AI at scale",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-[#0A0F2E]/70 font-medium">
                 <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />

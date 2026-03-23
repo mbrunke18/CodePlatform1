@@ -178,7 +178,7 @@ export default function InvestorLanding() {
                     <span className="text-xs font-semibold text-[#0A0F2E] uppercase tracking-wider">Problem 1</span>
                   </div>
                   <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Execution Gap</h3>
-                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">20-72 hours to even begin acting when strategic moments hit</p>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Weeks to mobilize — before execution even begins</p>
                   <p className="text-xs text-[#0A0F2E] font-medium">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
                 </div>
                 <div className="border-t border-[#E8E4DC] pt-4">

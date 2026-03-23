@@ -312,6 +312,22 @@ export default function PilotProgram() {
           </div>
         </section>
 
+        {/* Differentiation Strip */}
+        <section className="py-8 px-6 bg-[#0A0F2E] border-t border-white/5">
+          <div className="max-w-5xl mx-auto grid grid-cols-3 gap-px bg-white/5" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
+            {[
+              { label: "Agentic, not a Copilot", body: "Our IDEA agents execute tasks. They don't suggest them. This is the difference between an AI tool and an execution engine." },
+              { label: "Coordination, not capability", body: "Every enterprise already has AI capability. What they're missing is the coordination layer that makes AI execute — not just recommend." },
+              { label: "Pre-staged, not inferred", body: "170 playbooks are ready before the trigger fires. No real-time inference loops. That's how you compress 30 days into 12 minutes." },
+            ].map((item) => (
+              <div key={item.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.02)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 8 }}>{item.label}</div>
+                <div style={{ fontSize: 12, color: 'rgba(240,237,228,0.55)', lineHeight: 1.6 }}>{item.body}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* 4-Phase Timeline */}
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
