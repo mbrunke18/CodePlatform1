@@ -5,7 +5,7 @@ export const enhancedROIMetrics = {
   totalCostSavings: 12400000, // $12.4M (increased from $4.2M)
   hoursRecovered: 342, // 342 hours (increased from 156 hours)
   averageExecutionTime: 12, // 12 minutes
-  executionSpeedImprovement: 500, // 500x faster (72 hours → 12 minutes)
+  executionSpeedImprovement: 3600, // 3,600× head start (30 days → 12 minutes)
   playbookActivations: 47, // Total activations
   successRate: 94, // 94% success rate
   stakeholdersCoordinated: 47, // Average stakeholders per activation
@@ -78,8 +78,8 @@ export const enhancedAIMetrics = {
 
 export const enhancedExecutionMetrics = {
   averageActivationTime: 12, // 12 minutes
-  traditionalTime: 72, // 72 hours (4,320 minutes)
-  speedImprovement: '500x', // 500x faster
+  traditionalTime: 720, // 30 days (720 hours / 43,200 minutes)
+  speedImprovement: '3,600×', // 3,600× execution head start (30 days → 12 minutes)
   stakeholdersNotified: 47, // Average stakeholders per activation
   tasksDistributed: 127, // Average tasks per activation
   automaticCoordination: 94, // 94% automated coordination

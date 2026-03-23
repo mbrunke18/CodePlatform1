@@ -518,7 +518,7 @@ export default function TryDemo() {
         dealValueProtected: scenario?.dealValue || 5000000,
         hoursRecovered: 98,
         costOfDelay: Math.round((scenario?.dealValue || 5000000) * 0.15),
-        traditionalTime: '20-72 hours',
+        traditionalTime: 'days to weeks',
         responseTime: '12 minutes',
       },
       nextExecutionRecommendations: [
@@ -605,7 +605,7 @@ export default function TryDemo() {
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#DC2626' }}>The Current State</span>
                   </div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A crisis hits. What happens next?</p>
-                  <p style={{ fontSize: 12, color: '#4B5563', marginBottom: 16, lineHeight: 1.6 }}>Your executives spend the next 72 hours doing the same thing they always do — improvising.</p>
+                  <p style={{ fontSize: 12, color: '#4B5563', marginBottom: 16, lineHeight: 1.6 }}>Your executives spend the next 30 days doing the same thing they always do — scheduling meetings, aligning stakeholders, improvising.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
                       ['4–8 hrs', 'Assembling the right people in a room'],
@@ -803,8 +803,8 @@ export default function TryDemo() {
                   </Card>
 
                   <div className="text-center text-xs text-gray-800 pt-2">
-                    <p>Industry average response time:</p>
-                    <p className="text-lg font-bold text-red-400">20-72 hours</p>
+                    <p>Industry average mobilization time:</p>
+                    <p className="text-lg font-bold text-red-400">30 days</p>
                   </div>
                 </div>
 

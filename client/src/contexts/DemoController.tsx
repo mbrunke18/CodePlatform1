@@ -143,10 +143,10 @@ const personaNarrations = {
     intro: 'Let me show you how CFOs use Execution OS for financial risk mitigation. You\'ll see how financial triggers detect exposure before quarterly reviews. The same supplier disruption that would cause weeks of impact analysis gets mitigated through coordinated financial response in 12 minutes. Traditional CFOs discover exposure through auditor findings weeks after it begins. I\'ll demonstrate supplier financial risk management.',
     detection: 'The alert banner shows "Supplier Financial Exposure Alert" - supplier disruption created $12M quarterly revenue risk with $7.2M committed orders and $4.8M production capacity exposure. Notice the financial metrics: revenue at risk, cash flow impact, balance sheet exposure. Traditional finance discovers this weeks later during quarterly reviews. This trigger enables immediate mitigation before shareholder value erodes. Click to see the financial dashboard.',
     analysis: 'The Crisis Response Center displays complete financial impact intelligence. See the revenue exposure: $12M quarterly revenue at risk, $7.2M committed purchase orders, $4.8M production capacity risk. Balance sheet shows $5.3M accounts payable to failing supplier. The playbook "FIN-001 Supplier Financial Risk" shows mitigation strategies ready. This dashboard gives you financial intelligence in 60 seconds vs 48-hour scenario modeling. Notice the EPS impact projection and credit facility utilization.',
-    decision: 'Financial strategy decision: Execute Supplier Financial Risk Playbook FIN-001. Traditional CFO response: Schedule treasury meetings, brief audit committee, coordinate with operations - 2-3 days before mitigation actions begin. Execution OS execution: One-click financial coordination. Alternative payment arrangements activate, cash flow models update, investor communication prepares, hedging strategies trigger, board notifications send. Financial mitigation in 12 minutes vs 72-hour traditional coordination.',
+    decision: 'Financial strategy decision: Execute Supplier Financial Risk Playbook FIN-001. Traditional CFO response: Schedule treasury meetings, brief audit committee, coordinate with operations - weeks before mitigation actions begin. Execution OS execution: One-click financial coordination. Alternative payment arrangements activate, cash flow models update, investor communication prepares, hedging strategies trigger, board notifications send. Financial mitigation in 12 minutes vs a 30-day traditional mobilization cycle.',
     activation: 'Playbook executing 8:03 AM: Alternative payment arrangement protocols contacting 8 backup suppliers with pricing and terms. Cash flow impact modeling running scenarios across best/expected/worst cases. Investor communication protocols preparing earnings call talking points and analyst FAQ. Hedging strategy activation reviewing commodity price protections and currency exposures. Board notification package generating financial impact summary with mitigation actions. Treasury coordinating with banking partners on credit facility optimization. Financial orchestration - no manual spreadsheets, no coordination delays.',
     execution: 'Financial orchestration: 22 financial tasks across treasury, FP&A, investor relations, audit. Alternative suppliers negotiating payment terms ($7.2M order protection), cash flow models updated (liquidity maintained at 2.8x), investor messaging prepared (proactive transparency), board briefed (full confidence in mitigation), hedging activated (commodity exposure covered). Traditional approach: Scattered analysis, delayed action, market uncertainty. Execution OS approach: Coordinated mitigation, maintained confidence, protected value. Status: $12M revenue protected, liquidity secure, shareholder communication ready.',
-    results: 'Financial excellence delivered: 12-minute exposure mitigation vs 72-hour traditional financial coordination. Revenue protection: $12M quarterly revenue secured through alternative supplier arrangements. Cash flow: Liquidity maintained at 2.8x (credit facility utilization stable at 73%). Shareholder value: EPS impact limited to $0.02 vs $0.15 unmanaged scenario - $195M market cap protection. Board confidence: Proactive mitigation prevented emergency sessions. Cost avoidance: $2.7M in rush costs and penalty fees. Your Executive Preparedness Score™ +8 points. Top 2% of CFOs for financial risk management. Quarterly value: $7.9M in protected financial performance.'
+    results: 'Financial excellence delivered: 12-minute exposure mitigation vs a 30-day traditional mobilization cycle. Revenue protection: $12M quarterly revenue secured through alternative supplier arrangements. Cash flow: Liquidity maintained at 2.8x (credit facility utilization stable at 73%). Shareholder value: EPS impact limited to $0.02 vs $0.15 unmanaged scenario - $195M market cap protection. Board confidence: Proactive mitigation prevented emergency sessions. Cost avoidance: $2.7M in rush costs and penalty fees. Your Executive Preparedness Score™ +8 points. Top 2% of CFOs for financial risk management. Quarterly value: $7.9M in protected financial performance.'
   }
 };
 
@@ -159,7 +159,7 @@ export const hybridDemoScenarios: DemoScene[] = [
   {
     id: 'executive-intro',
     title: 'M: Your Strategic Command Center',
-    subtitle: '12 Minutes vs 72 Hours - Executive Decision Velocity',
+    subtitle: '12 Minutes vs 30 Days — 3,600× Execution Head Start',
     description: 'Introduction to Strategic Execution Operating System',
     type: 'executive',
     phase: 'detection',
@@ -263,7 +263,7 @@ export const hybridDemoScenarios: DemoScene[] = [
   {
     id: 'results-roi',
     title: 'Crisis Resolution & Impact Measurement',
-    subtitle: '12 minutes vs 72 hours - Quantified value delivery',
+    subtitle: '12 minutes vs 30 days — 3,600× Execution Head Start',
     description: 'Complete ROI analysis and competitive benchmarking',
     type: 'executive',
     phase: 'measurement',

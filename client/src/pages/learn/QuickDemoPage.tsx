@@ -499,8 +499,8 @@ export default function QuickDemoPage() {
                 </Card>
 
                 <div className="text-center text-xs text-muted-foreground pt-2">
-                  <p>Industry average response time:</p>
-                  <p className="text-lg font-bold text-red-500 dark:text-red-400">20-72 hours</p>
+                  <p>Industry average mobilization time:</p>
+                  <p className="text-lg font-bold text-red-500 dark:text-red-400">30 days</p>
                 </div>
               </div>
 

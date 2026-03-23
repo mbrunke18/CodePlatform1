@@ -49,7 +49,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     </text>
     <text x="800" y="82" textAnchor="middle" fontSize="14" fill={TEAL}
       fontFamily="'DM Sans', Arial, sans-serif">
-      Every step that the traditional enterprise spends 72 hours negotiating — Execution OS delivers automatically.
+      Every step that the traditional enterprise spends weeks negotiating — Execution OS delivers automatically.
     </text>
 
     {/* ══════════════════════════════════════════════════════
@@ -216,7 +216,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="78" y="798" width="1440" height="78" rx="6" fill={OFF} />
     <text x="800" y="828" textAnchor="middle" fontSize="13" fontWeight="700" fill={NAVY}
       fontFamily="'DM Sans', Arial, sans-serif">
-      THE COMPRESSION: What traditional enterprises spend 72 hours trying to plan (and weeks to execute)...
+      THE COMPRESSION: What traditional enterprises spend 30 days trying to plan (and months to execute)...
     </text>
     <text x="800" y="858" textAnchor="middle" fontSize="18" fontWeight="700" fill={TEAL}
       fontFamily="'Cormorant Garamond', Georgia, serif">

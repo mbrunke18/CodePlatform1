@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { apiRequest } from "@/lib/queryClient";
-import { Lock, ArrowRight, Shield } from "lucide-react";
+import { Lock, ArrowRight, Shield, ArrowLeft } from "lucide-react";
 import { useLocation } from "wouter";
 
 const STORAGE_KEY = "vm_investor_access";
@@ -26,7 +26,7 @@ export default function InvestorGate({ children, pageName = "/investor-resources
   const [checking, setChecking] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   const [form, setForm] = useState({ name: "", email: "", company: "", role: "" });
 
@@ -79,8 +79,48 @@ export default function InvestorGate({ children, pageName = "/investor-resources
   if (checking) return null;
   if (granted) return <>{children}</>;
 
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      setLocation("/");
+    }
+  };
+
   return (
     <div style={{ minHeight: "100vh", background: NAVY_BG, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", position: "relative", overflow: "hidden" }}>
+
+      {/* Escape navigation bar */}
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 24px", height: 56, background: "rgba(10,15,46,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(201,168,76,0.15)" }}>
+        <button
+          onClick={handleBack}
+          style={{ display: "flex", alignItems: "center", gap: 8, color: "rgba(255,255,255,0.6)", fontSize: 13, fontWeight: 500, background: "none", border: "none", cursor: "pointer", padding: "6px 10px", transition: "color 0.2s" }}
+          onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+        >
+          <ArrowLeft size={14} />
+          Back
+        </button>
+
+        <button
+          onClick={() => setLocation("/")}
+          style={{ background: "none", border: "none", cursor: "pointer", opacity: 0.9, transition: "opacity 0.2s" }}
+          onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+          onMouseLeave={e => (e.currentTarget.style.opacity = "0.9")}
+        >
+          <ExecuteIQLogo variant="full" height={28} color="white" />
+        </button>
+
+        <button
+          onClick={() => setLocation("/")}
+          style={{ display: "flex", alignItems: "center", gap: 6, color: GOLD, fontSize: 12, fontWeight: 600, letterSpacing: "0.06em", background: "none", border: "1px solid rgba(201,168,76,0.35)", padding: "6px 14px", cursor: "pointer", transition: "all 0.2s" }}
+          onMouseEnter={e => { e.currentTarget.style.background = "rgba(201,168,76,0.1)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "none"; }}
+        >
+          Return to Platform
+        </button>
+      </div>
+
       <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
       <div style={{ position: "absolute", top: -120, right: -80, width: 700, height: 700, background: "radial-gradient(ellipse,rgba(43,138,110,0.18) 0%,transparent 60%)", pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: -100, left: -80, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(201,168,76,0.12) 0%,transparent 60%)", pointerEvents: "none" }} />

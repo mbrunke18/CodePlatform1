@@ -11,7 +11,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     viewBox="0 0 1320 762"
     xmlns="http://www.w3.org/2000/svg"
     className={`w-full ${className}`}
-    aria-label="The real comparison: 72 hours to still be planning vs 12 minutes to live execution"
+    aria-label="The real comparison: 30 days to still be planning vs 12 minutes to live execution"
   >
     <defs>
       <linearGradient id="egTeal" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -41,7 +41,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     </text>
     <text x="660" y="68" textAnchor="middle" fontSize="12" fill="#6B7280"
       fontFamily="'DM Sans', Arial, sans-serif">
-      72 hours = still trying to get the right people in the room.  12 minutes = execution already live across the organization.
+      30 days = still trying to get the right people in the room.  12 minutes = execution already live across the organization.
     </text>
 
     {/* ── SECTION LABELS ── */}
@@ -74,7 +74,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     {/* WHAT HAPPENS IN 72 HRS — still just figuring it out */}
     <rect x="76" y="240" width="328" height="170" rx="7" fill={WHITE} stroke={RED} strokeWidth="2" />
     <text x="240" y="262" textAnchor="middle" fontSize="12" fontWeight="700" fill={RED}
-      fontFamily="'DM Sans', Arial, sans-serif">72 HOURS LATER — STILL FIGURING IT OUT</text>
+      fontFamily="'DM Sans', Arial, sans-serif">30 DAYS LATER — STILL FIGURING IT OUT</text>
     <line x1="90" y1="269" x2="390" y2="269" stroke={RED} strokeWidth="1" opacity="0.2" />
 
     <text x="96" y="288" fontSize="10" fontWeight="600" fill={NAVY} fontFamily="'DM Sans', Arial, sans-serif">Who owns this response?</text>
@@ -103,7 +103,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     {/* THE BRUTAL TRUTH BOX */}
     <rect x="90" y="533" width="300" height="106" rx="8" fill="url(#egRed)" />
     <text x="240" y="557" textAnchor="middle" fontSize="9" fontWeight="700" letterSpacing="0.14em"
-      fill="rgba(255,255,255,0.75)" fontFamily="'DM Sans', Arial, sans-serif">WHAT 72 HOURS GETS YOU</text>
+      fill="rgba(255,255,255,0.75)" fontFamily="'DM Sans', Arial, sans-serif">WHAT 30 DAYS GETS YOU</text>
     <line x1="110" y1="564" x2="370" y2="564" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
     <text x="240" y="582" textAnchor="middle" fontSize="11" fill="rgba(255,255,255,0.9)"
       fontFamily="'DM Sans', Arial, sans-serif">A meeting agenda.</text>

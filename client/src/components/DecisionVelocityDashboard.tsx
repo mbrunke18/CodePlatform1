@@ -24,7 +24,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
   const velocityData: DecisionVelocityData = {
     velocityScore: 92,
     averageResponseTime: 12, // 12 minutes
-    industryStandard: 4320, // 72 hours = 4320 minutes
+    industryStandard: 43200, // 30 days = 43,200 minutes
     competitiveAdvantage: 5, // 5 days ahead
     eventsProcessed: 47,
     trend: 'up',

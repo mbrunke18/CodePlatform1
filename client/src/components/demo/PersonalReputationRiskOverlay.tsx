@@ -57,7 +57,7 @@ export function PersonalReputationRiskOverlay() {
               </div>
               <h2 className="text-3xl font-bold text-red-500">What They'll Ask You</h2>
             </div>
-            <p className="text-xl text-red-700/90">72 hours later, when the damage is done</p>
+            <p className="text-xl text-red-700/90">Weeks later, when the damage is done</p>
           </div>
 
           {/* Scenarios */}
@@ -100,7 +100,7 @@ export function PersonalReputationRiskOverlay() {
                 Your Reputation Takes Decades to Build
               </p>
               <p className="text-red-700/80 text-lg">
-                One 72-hour delay can destroy it
+                One slow mobilization can destroy it
               </p>
             </div>
           </div>

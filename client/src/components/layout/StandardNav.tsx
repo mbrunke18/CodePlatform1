@@ -128,6 +128,7 @@ export default function StandardNav() {
         { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
         { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
         { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
+        { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS", featured: true },
       ],
     },
   ];
@@ -165,7 +166,7 @@ export default function StandardNav() {
 
   const investorsLinks: NavLink[] = [
     { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Full materials — frameworks, thesis & deck", featured: true },
-    { label: "For Investors", path: "/investors", icon: TrendingUp, description: "Investment thesis & market opportunity" },
+    { label: "Investment Thesis", path: "/investors", icon: TrendingUp, description: "Market opportunity, research validation & ROI case" },
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor presentation" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive-ready board reporting" },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Execution OS" },

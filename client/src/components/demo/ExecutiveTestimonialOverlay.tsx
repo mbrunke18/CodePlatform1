@@ -65,7 +65,7 @@ export function ExecutiveTestimonialOverlay() {
                       No playbooks, no rehearsed roles, no pre-built execution plans.
                     </blockquote>
                     <div className="space-y-2 pt-2">
-                      <p className="text-red-700/80 italic">• Typical result: 72-hour coordination delay</p>
+                      <p className="text-red-700/80 italic">• Typical result: 30-day mobilization cycle</p>
                       <p className="text-red-700/80 italic">• Common outcome: Missed execution windows</p>
                       <p className="text-red-700/80 italic">• Industry standard: Reactive vs anticipatory</p>
                     </div>
