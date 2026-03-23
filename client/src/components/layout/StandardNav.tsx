@@ -77,7 +77,7 @@ export default function StandardNav() {
       links: [
         { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
         { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
-        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape & how we're different" },
+        { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
       ],
     },
   ];
@@ -87,17 +87,16 @@ export default function StandardNav() {
       heading: "Try It Now",
       links: [
         { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
+        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive probability", featured: true },
         { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
         { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
         { label: "Request a Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
       ],
     },
     {
-      heading: "AI Tools",
+      heading: "AI Power Tools",
       links: [
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
-        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — Survive vs. Thrive scoring" },
-        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score execution readiness across all 9 domains" },
         { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn strategic notes into custom playbooks" },
       ],
     },
