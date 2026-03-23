@@ -271,22 +271,22 @@ export default function PlatformOverview() {
               Watch a live trigger fire, playbooks activate, and stakeholders mobilize — in real time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/try-demo">
+              <Link href="/pilot-program">
                 <Button
                   size="lg"
                   className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                 >
-                  <Play className="mr-2 h-4 w-4" />
-                  Try Interactive Demo
+                  Request a Pilot
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/pilot-program">
+              <Link href="/try-demo">
                 <Button
                   size="lg"
-                  className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10 px-8"
+                  className="border border-white/30 text-white hover:bg-white/10 bg-transparent px-8"
                 >
-                  Request Pilot Access
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <Play className="mr-2 h-4 w-4" />
+                  See It Live
                 </Button>
               </Link>
             </div>

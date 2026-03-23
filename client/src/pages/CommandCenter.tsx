@@ -76,7 +76,7 @@ interface DemoTask {
 }
 
 const DEMO_TASKS: DemoTask[] = [
-  { id: 't1', time: 15, team: 'Executive', action: 'Crisis team activated', type: 'task', value: 5000 },
+  { id: 't1', time: 15, team: 'Executive', action: 'Execution team mobilized', type: 'task', value: 5000 },
   { id: 't2', time: 30, team: 'Legal', action: 'NDA template staged', type: 'document', value: 2500 },
   { id: 't3', time: 45, team: 'Communications', action: 'Press statement drafted', type: 'communication', value: 8000 },
   { id: 't4', time: 60, team: 'Finance', action: '$500K emergency budget unlocked', type: 'budget', value: 12000 },
@@ -421,7 +421,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Compound Threat Intelligence · GPT-4o</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Compound Signal Intelligence · GPT-4o</span>
             </div>
             <Button
               onClick={() => compoundAnalyzeMutation.mutate()}

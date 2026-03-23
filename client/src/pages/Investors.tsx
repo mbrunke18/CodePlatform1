@@ -727,24 +727,24 @@ export default function Investors() {
 
           {/* CTA */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-center">
-            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-6">Ready to Learn More?</h2>
+            <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Ready to take the next step?</h2>
+            <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the Fortune 1000 executives rethinking how strategic work flows. Pilots run in 30 days.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/try-demo">
-                <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-semibold px-8 h-12">
-                  <Play className="w-4 h-4 mr-2" />
-                  Interactive Demo
+              <Link href="/pilot-program">
+                <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12 rounded-none tracking-wide">
+                  Request a Pilot
                 </Button>
               </Link>
               <Link href="/investor-resources">
-                <Button variant="outline" className="border-[#2B8A6E]/50 text-[#2B8A6E] hover:bg-[#2B8A6E]/10 h-12 px-8 bg-transparent">
+                <Button variant="outline" className="border-[#2B8A6E]/50 text-[#2B8A6E] hover:bg-[#2B8A6E]/10 h-12 px-8 bg-transparent rounded-none">
                   <FileText className="w-4 h-4 mr-2" />
                   Investor Resources
                 </Button>
               </Link>
-              <Link href="/contact">
-                <Button variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-transparent">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Schedule Call
+              <Link href="/try-demo">
+                <Button variant="outline" className="border-[#0A0F2E]/30 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-transparent rounded-none">
+                  <Play className="w-4 h-4 mr-2" />
+                  See It Live
                 </Button>
               </Link>
             </div>

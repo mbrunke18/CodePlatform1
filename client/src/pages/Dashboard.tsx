@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { updatePageMetadata } from "@/lib/seo";
@@ -17,7 +17,10 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  TrendingUp
+  TrendingUp,
+  X,
+  ArrowRight,
+  Settings
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
@@ -133,9 +136,24 @@ function PhaseCard({
   );
 }
 
+const ORIENTATION_STEPS = [
+  { icon: Settings, label: "Configure signal monitoring", sub: "Set up your 221 armed triggers", href: "/signal-configuration", color: TEAL },
+  { icon: Target, label: "Explore your playbook library", sub: "170 pre-staged templates across 9 domains", href: "/playbook-library", color: NAVY },
+  { icon: Zap, label: "Run a live simulation", sub: "Experience the 12-minute execution cycle", href: "/command-center", color: GOLD },
+  { icon: Brain, label: "Invite your stakeholders", sub: "Map your executive decision network", href: "/stakeholder-management", color: TEAL },
+];
+
 export default function Dashboard() {
   const { isConnected } = useWebSocket();
   const { activeScenarios, weakSignals } = useDynamicStrategy();
+  const [orientationDismissed, setOrientationDismissed] = useState<boolean>(() => {
+    try { return localStorage.getItem('vm_orientation_dismissed') === 'true'; } catch { return false; }
+  });
+
+  const dismissOrientation = () => {
+    setOrientationDismissed(true);
+    try { localStorage.setItem('vm_orientation_dismissed', 'true'); } catch {}
+  };
 
   const { data: preparednessScore } = useQuery({
     queryKey: ['/api/preparedness-score'],
@@ -208,6 +226,45 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
+        {/* Orientation Panel — shown until dismissed */}
+        {!orientationDismissed && (
+          <div style={{ background: "#fff", borderBottom: "1px solid #E8E4DC" }}>
+            <div className="max-w-7xl mx-auto px-6 py-6">
+              <div className="flex items-start justify-between gap-4 mb-5">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-5 h-0.5" style={{ background: GOLD }} />
+                    <span className="text-[10px] font-bold tracking-[0.18em] uppercase" style={{ color: GOLD }}>Getting Started</span>
+                  </div>
+                  <h3 style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>Four steps to full operational readiness</h3>
+                </div>
+                <button onClick={dismissOrientation} className="shrink-0 mt-1 text-[#9CA3AF] hover:text-[#0A0F2E] transition-colors">
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {ORIENTATION_STEPS.map((step, i) => {
+                  const Icon = step.icon;
+                  return (
+                    <Link key={i} href={step.href}>
+                      <div className="group flex items-start gap-3 p-4 border border-[#E8E4DC] hover:border-[#0A0F2E] bg-[#F8F7F4] hover:bg-white transition-all cursor-pointer">
+                        <div style={{ width: 32, height: 32, background: step.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <Icon className="h-4 w-4 text-white" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold text-[#0A0F2E] mb-0.5 group-hover:text-[#2B8A6E] transition-colors leading-snug">{step.label}</p>
+                          <p className="text-[10px] text-[#6B7280] leading-snug">{step.sub}</p>
+                        </div>
+                        <ArrowRight className="h-3.5 w-3.5 text-[#E8E4DC] group-hover:text-[#0A0F2E] transition-colors mt-0.5 shrink-0" />
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
