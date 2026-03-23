@@ -1,6 +1,7 @@
 import PageLayout from "@/components/layout/PageLayout";
 import { PageHero } from "@/components/layout/PageHero";
 import { useLocation } from "wouter";
+import EnterpriseAIFrameworkDiagram from "@/components/EnterpriseAIFrameworkDiagram";
 
 const NAVY  = "#0A0F2E";
 const GOLD  = "#C9A84C";
@@ -93,6 +94,20 @@ export default function EcosystemsHub() {
           textTransform: "uppercase", opacity: 0.8,
         }}>
           Execution OS — The operating model layer above every enterprise stack
+        </div>
+      </section>
+
+      {/* Enterprise AI Framework Diagram */}
+      <section style={{ background: "#F8F7F4", padding: "56px 24px 32px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{
+            textAlign: "center", marginBottom: 28,
+            fontFamily: "'DM Mono',monospace", fontSize: 10,
+            letterSpacing: "0.22em", color: GOLD, textTransform: "uppercase",
+          }}>
+            The coordination layer all 7 stacks are missing
+          </div>
+          <EnterpriseAIFrameworkDiagram />
         </div>
       </section>
 

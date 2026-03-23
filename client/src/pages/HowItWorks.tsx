@@ -1,5 +1,6 @@
 import PageLayout from '@/components/layout/PageLayout';
 import ExecutionProcessDiagram from '@/components/ExecutionProcessDiagram';
+import EnterpriseAIFrameworkDiagram from '@/components/EnterpriseAIFrameworkDiagram';
 import { Button } from "@/components/ui/button";
 import {
   Target,
@@ -651,6 +652,20 @@ export default function HowItWorks() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── ENTERPRISE AI FRAMEWORK DIAGRAM ── */}
+      <section style={{ background: "#F8F7F4", padding: "80px 56px", borderTop: `1px solid ${BORDER}` }}>
+        <div className="max-w-6xl mx-auto">
+          <SectionLabel text="Where This Fits — Enterprise Architecture" color={TEAL} />
+          <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 600, color: NAVY, marginBottom: 12, maxWidth: 560 }}>
+            The operating model layer enterprise AI frameworks assume but never build.
+          </h2>
+          <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
+            Every major AI governance framework defines what decisions to make and who owns them. None of them build the coordination infrastructure that makes those decisions execute in 12 minutes.
+          </p>
+          <EnterpriseAIFrameworkDiagram />
         </div>
       </section>
 
