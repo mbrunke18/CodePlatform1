@@ -1,4 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
+import GartnerStackDiagram from "@/components/GartnerStackDiagram";
 import { Button } from "@/components/ui/button";
 import gartnerAIStack from "@/assets/gartner-ai-stack-2026.png";
 import { 
@@ -375,6 +376,11 @@ export default function Research() {
                 <p className="text-sm text-foreground leading-relaxed">
                   There is no layer for the operating model that <em>orchestrates</em> all of this technology into actual strategic execution. Enterprises have invested in every row of this diagram. None of them have the layer above it — the one that tells the organization what to do, when to do it, and how to move in 12 minutes when a trigger fires.
                 </p>
+              </div>
+
+              {/* "The 10th Layer" positioning diagram */}
+              <div className="my-8 py-6 px-2" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                <GartnerStackDiagram />
               </div>
 
               <div className="p-4 mb-4" style={{ background: "rgba(10,15,46,0.03)", border: "1px solid #E8E4DC" }}>
