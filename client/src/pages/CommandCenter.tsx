@@ -481,7 +481,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             </div>
           )}
           <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: "1px solid #E8E4DC" }}>
-            <span style={{ fontSize: 11, color: "#6B7280" }}>Showing top 3 compound threats · 92 total signals monitored</span>
+            <span style={{ fontSize: 11, color: "#6B7280" }}>Showing top 3 priority situations · 92 total signals monitored</span>
             <Link href="/advanced-analytics">
               <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#0A0F2E", display: "flex", alignItems: "center", gap: 4 }} className="hover:opacity-70 transition-opacity">
                 Deep-dive analysis <ChevronRight style={{ width: 13, height: 13 }} />
