@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import HofmannFrameworkDiagram from "@/components/HofmannFrameworkDiagram";
+import EnterpriseAIFrameworkDiagram from "@/components/EnterpriseAIFrameworkDiagram";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -576,6 +578,41 @@ export default function InvestorResources() {
           <div className="mt-8 p-6 bg-[#0A0F2E] rounded-lg text-center">
             <p className="text-white font-medium text-sm mb-1">The gaps are known. The plan is sequenced. None require rebuilding — only hardening.</p>
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Phase 1 closes before customer two. Phase 2 before procurement reviews. Phase 3 before parallel pilots.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Framework Validation */}
+      <section className="py-20 px-6 bg-[#F8F7F4]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-3">Independent Framework Validation</div>
+            <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={CG}>
+              Two independent frameworks. The same missing layer.
+            </h2>
+            <p className="text-[#6B7280] max-w-2xl mx-auto text-sm leading-relaxed">
+              The governance model and the build stack are separate disciplines. Both independently identify the same gap — and Execution OS is the only platform built to fill it.
+            </p>
+          </div>
+
+          <div className="space-y-10">
+            <div>
+              <div className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#2B8A6E] mb-4 flex items-center gap-3">
+                <div className="h-px flex-1 bg-[#2B8A6E]/20" />
+                Greeshma M. Neglur — AI Governance &amp; Operating Model
+                <div className="h-px flex-1 bg-[#2B8A6E]/20" />
+              </div>
+              <EnterpriseAIFrameworkDiagram />
+            </div>
+
+            <div>
+              <div className="text-[10px] font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4 flex items-center gap-3">
+                <div className="h-px flex-1 bg-[#C9A84C]/20" />
+                Adam Hofmann — Enterprise AI Transformation &amp; Build Stack
+                <div className="h-px flex-1 bg-[#C9A84C]/20" />
+              </div>
+              <HofmannFrameworkDiagram />
+            </div>
           </div>
         </div>
       </section>
