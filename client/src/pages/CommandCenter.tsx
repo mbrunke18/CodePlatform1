@@ -36,7 +36,8 @@ import {
   Send,
   Wallet,
   Calendar,
-  X
+  X,
+  ChevronRight
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
 import { BrandStamp } from "@/components/BrandStamp";
@@ -479,6 +480,14 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               ))}
             </div>
           )}
+          <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: "1px solid #E8E4DC" }}>
+            <span style={{ fontSize: 11, color: "#6B7280" }}>Showing top 3 compound threats · 92 total signals monitored</span>
+            <Link href="/advanced-analytics">
+              <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#0A0F2E", display: "flex", alignItems: "center", gap: 4 }} className="hover:opacity-70 transition-opacity">
+                Deep-dive analysis <ChevronRight style={{ width: 13, height: 13 }} />
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -678,7 +687,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="divide-y divide-[#E8E4DC]">
-                    {signalAlerts.map((alert) => (
+                    {signalAlerts.slice(0, 4).map((alert) => (
                       <div 
                         key={alert.id} 
                         className={`p-4 transition-colors cursor-pointer hover:bg-[#F8F7F4] ${selectedSignal === alert.id ? 'bg-[#F8F7F4]' : ''}`}
@@ -700,6 +709,14 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         </div>
                       </div>
                     ))}
+                  </div>
+                  <div className="border-t border-[#E8E4DC] px-4 py-3 flex items-center justify-between">
+                    <span style={{ fontSize: 11, color: "#6B7280" }}>Showing 4 of 92 active signals</span>
+                    <Link href="/ai-radar">
+                      <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, display: "flex", alignItems: "center", gap: 4 }} className="hover:opacity-70 transition-opacity">
+                        View all signals <ChevronRight style={{ width: 13, height: 13 }} />
+                      </button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

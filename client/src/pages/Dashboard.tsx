@@ -279,38 +279,77 @@ export default function Dashboard() {
               <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
                 <CardHeader className="border-b border-[#E8E4DC]">
                   <div className="flex items-center justify-between">
-                    <CardTitle style={{ ...CG, fontSize: "24px", color: "#0A0F2E" }}>Intelligence Feed</CardTitle>
+                    <CardTitle style={{ ...CG, fontSize: "24px", color: "#0A0F2E" }}>Recent Activations</CardTitle>
                     <Badge style={{ background: "rgba(10,15,46,0.05)", color: "#0A0F2E", border: "none" }} className="rounded-none">Live Updates</Badge>
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
-          <div className="divide-y divide-[#E8E4DC]">
-                    <Link href="/triggers-management">
-                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors cursor-pointer group">
-                      <div className="w-2 h-2 rounded-none bg-[#2B8A6E] mt-1.5 flex-shrink-0" />
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors">Weak signal detected</span>
-                          <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">2m ago</span>
-                        </div>
-                        <p className="text-xs text-[#6B7280]">Competitor pricing change detected across 3 regions.</p>
+                  {(!recentActivations || (recentActivations as any[]).length === 0) ? (
+                    <div className="py-12 px-6 text-center">
+                      <div style={{ width: 48, height: 48, background: "rgba(10,15,46,0.05)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                        <Zap className="h-6 w-6" style={{ color: GOLD }} />
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1" style={{ color: NAVY }}>No activations yet</h3>
+                      <p className="text-xs mb-5" style={{ color: "#6B7280" }}>Activate a playbook to begin tracking execution history and performance data.</p>
+                      <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                        <Link href="/playbook-library">
+                          <Button size="sm" className="rounded-none text-xs font-bold uppercase tracking-wider" style={{ background: NAVY, color: "#fff" }}>
+                            <Target className="h-3.5 w-3.5 mr-2" />
+                            Browse Playbooks
+                          </Button>
+                        </Link>
+                        <Link href="/command-center">
+                          <Button size="sm" variant="outline" className="rounded-none text-xs font-bold uppercase tracking-wider border-[#E8E4DC] hover:border-[#0A0F2E]">
+                            <Zap className="h-3.5 w-3.5 mr-2" />
+                            Go to Command Center
+                          </Button>
+                        </Link>
                       </div>
                     </div>
-                    </Link>
-                    <Link href="/playbook-library">
-                    <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors cursor-pointer group">
-                      <div className="w-2 h-2 rounded-none bg-[#0A0F2E] mt-1.5 flex-shrink-0" />
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors">Playbook activated</span>
-                          <span className="text-[10px] text-[#6B7280] font-bold uppercase tracking-wider">15m ago</span>
-                        </div>
-                        <p className="text-xs text-[#6B7280]">M&A Integration playbook activated for Project Phoenix.</p>
+                  ) : (
+                    <>
+                      <div className="divide-y divide-[#E8E4DC]">
+                        {(recentActivations as any[]).slice(0, 3).map((activation: any, i: number) => (
+                          <Link key={activation.id || i} href={`/live-activation-center`}>
+                            <div className="p-4 flex items-start gap-4 hover:bg-[#F8F7F4] transition-colors cursor-pointer group">
+                              <div className="w-2 h-2 rounded-none mt-1.5 flex-shrink-0" style={{ background: activation.status === 'completed' ? TEAL : activation.status === 'active' ? GOLD : "#9CA3AF" }} />
+                              <div className="flex-1">
+                                <div className="flex items-center justify-between mb-1">
+                                  <span className="text-sm font-semibold group-hover:text-[#2B8A6E] transition-colors" style={{ color: NAVY }}>{activation.playbookName || activation.name || "Playbook Activation"}</span>
+                                  <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#6B7280" }}>
+                                    {activation.createdAt ? new Date(activation.createdAt).toLocaleDateString() : "Recent"}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xs" style={{ color: "#6B7280" }}>{activation.playbookDomain || activation.domain || "Strategic"}</span>
+                                  <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: activation.status === 'completed' ? "rgba(43,138,110,0.1)" : "rgba(201,168,76,0.1)", color: activation.status === 'completed' ? TEAL : GOLD }}>{activation.status || "active"}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
                       </div>
-                    </div>
-                    </Link>
-                  </div>
+                      {(recentActivations as any[]).length > 3 && (
+                        <div className="border-t border-[#E8E4DC] px-4 py-3">
+                          <Link href="/execution-history">
+                            <button className="text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all" style={{ color: NAVY }}>
+                              View all {(recentActivations as any[]).length} activations
+                              <ChevronRight className="h-3.5 w-3.5" />
+                            </button>
+                          </Link>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </CardContent>
+                <div className="border-t border-[#E8E4DC] px-4 py-3 flex justify-end">
+                  <Link href="/execution-history">
+                    <button className="text-xs font-bold uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all" style={{ color: "#6B7280" }}>
+                      Full execution history
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </button>
+                  </Link>
+                </div>
               </Card>
             </div>
 
