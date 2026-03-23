@@ -214,8 +214,8 @@ export default function OurStory() {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Saturday Crisis Response</div>
               </div>
               <div style={{ background: "#F8F7F4", padding: "32px", textAlign: "center", border: "1px solid #E8E4DC" }}>
-                <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>72 hrs</div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Monday Crisis Response</div>
+                <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>30 days</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Traditional Mobilization Cycle</div>
               </div>
             </div>
 

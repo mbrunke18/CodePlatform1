@@ -188,7 +188,7 @@ export default function InvestorLanding() {
                   </div>
                   <p className="text-sm text-[#0A0F2E] mb-3">Pre-built infrastructure activates in 12 minutes</p>
                   <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
-                    <span className="text-[#2B8A6E] font-bold text-lg">72 hrs → 12 min</span>
+                    <span className="text-[#2B8A6E] font-bold text-lg">30 days → 12 min</span>
                   </div>
                 </div>
               </CardContent>

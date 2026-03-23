@@ -611,7 +611,7 @@ export default function TryDemo() {
                       ['4–8 hrs', 'Assembling the right people in a room'],
                       ['6–12 hrs', 'Locating documents, templates, precedents'],
                       ['12–24 hrs', 'Drafting a response plan from scratch'],
-                      ['24–72 hrs', 'Chasing budget approvals and sign-offs'],
+                      ['1–3 days', 'Chasing budget approvals and sign-offs'],
                       ['Throughout', 'Manual email chains, missed stakeholders'],
                     ].map(([time, desc]) => (
                       <div key={time} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
@@ -1488,8 +1488,8 @@ export default function TryDemo() {
                           <div className="grid grid-cols-2 gap-4">
                             <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
                               <p className="text-[10px] text-red-600 font-bold uppercase mb-1">Traditional</p>
-                              <p className="text-xl font-bold text-red-600">20-72 hrs</p>
-                              <p className="text-[10px] text-slate-500 font-medium">Industry average</p>
+                              <p className="text-xl font-bold text-red-600">30 days</p>
+                              <p className="text-[10px] text-slate-500 font-medium">Traditional mobilization</p>
                             </div>
                             <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
                               <p className="text-[10px] text-[#2B8A6E] font-bold uppercase mb-1">Execution OS</p>

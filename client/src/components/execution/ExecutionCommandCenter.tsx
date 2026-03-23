@@ -233,10 +233,10 @@ export function ExecutionCommandCenter({
             </div>
             <div className="text-center py-4">
               <div className="text-4xl font-bold text-orange-500 mb-2">
-                72 hrs → 12 min
+                30 days → 12 min
               </div>
               <p className="text-sm text-muted-foreground">
-                72 hours is how long others spend just to mobilize — figuring out who, what, and how. You're in execution in 12 minutes.
+                30 days is how long others spend just to mobilize — figuring out who, what, and how. You're in execution in 12 minutes.
               </p>
             </div>
             <ActivationButton

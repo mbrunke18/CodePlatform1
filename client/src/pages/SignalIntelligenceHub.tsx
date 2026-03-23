@@ -446,7 +446,7 @@ export default function SignalIntelligenceHub() {
                 Intelligence <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Hub</em>
               </h1>
               <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 16, fontSize: 16, maxWidth: "600px" }}>
-                Configure automated monitoring for 16 distinct categories of market, competitive, and operational intelligence.
+                Configure automated monitoring for all 16 signal categories covering market, competitive, and operational intelligence.
               </p>
             </div>
             <div className="flex items-center gap-6">

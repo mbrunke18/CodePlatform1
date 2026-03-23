@@ -86,7 +86,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     kpis: [
       { label: 'Ops Continuity', value: 'Zero downtime', color: 'text-emerald-400' },
       { label: 'Handoff Velocity', value: 'Parallel, not sequential', color: 'text-blue-400' },
-      { label: 'Integration Speed', value: '72 hrs → 12 min', color: 'text-amber-400' },
+      { label: 'Mobilization Cycle', value: '30 days → 12 min', color: 'text-amber-400' },
     ],
     completionMetrics: [
       { label: 'Operational Handoffs', before: 'Sequential over days', after: 'Parallel in minutes' },

@@ -68,7 +68,7 @@ export default function StandardNav() {
       links: [
         { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 strategic domains" },
         { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ signals" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 20 categories" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 16 signal categories" },
         { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Configure your live data points" },
         { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise system connections" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },

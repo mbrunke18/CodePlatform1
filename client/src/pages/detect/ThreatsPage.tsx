@@ -111,7 +111,7 @@ export default function ThreatsPage() {
           </div>
           <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, margin: 0 }}>Threat Detection Center</h1>
           <p style={{ fontSize: 14, color: MUTED, marginTop: 6 }}>
-            Real-time strategic threat identification across 248+ monitored data points — 20 signal categories
+            Real-time strategic threat identification across 248+ monitored data points — 16 signal categories
           </p>
         </div>
 
