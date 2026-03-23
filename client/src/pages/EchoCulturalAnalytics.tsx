@@ -162,7 +162,7 @@ export default function EchoCulturalAnalytics() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-white p-6" data-testid="echo-cultural-analytics">
+      <div className="page-background min-h-screen bg-[#F8F7F4] p-6" data-testid="echo-cultural-analytics">
         <div className="max-w-7xl mx-auto space-y-8">
           
           {/* ROI Value Context */}

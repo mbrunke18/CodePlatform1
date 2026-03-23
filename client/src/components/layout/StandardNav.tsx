@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -33,10 +33,60 @@ function useNavLogoHeight() {
   return h;
 }
 
+const SEARCH_ITEMS = [
+  { label: 'Command Center', path: '/command-center', category: 'Platform', icon: Compass },
+  { label: 'Execution Workspace', path: '/workspace', category: 'Platform', icon: Layers },
+  { label: 'Intelligence Control Center', path: '/intelligence-hub', category: 'Platform', icon: Brain },
+  { label: 'AI Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
+  { label: 'Settings Hub', path: '/settings-hub', category: 'Platform', icon: Settings },
+  { label: 'Organization Setup', path: '/organization-setup', category: 'Platform', icon: Building },
+  { label: 'Playbook Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
+  { label: 'Strategic Planning Hub', path: '/strategic', category: 'Identify', icon: Target },
+  { label: 'What-If Analyzer', path: '/what-if-analyzer', category: 'Identify', icon: Lightbulb },
+  { label: 'Playbook Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },
+  { label: 'Preparedness Report', path: '/preparedness-report', category: 'Identify', icon: Shield },
+  { label: 'AI Radar Dashboard', path: '/ai-radar', category: 'Detect', icon: Radar },
+  { label: 'Foresight Radar', path: '/foresight-radar', category: 'Detect', icon: Eye },
+  { label: 'Signal Intelligence', path: '/signal-intelligence', category: 'Detect', icon: Radio },
+  { label: 'Incident Analyzer', path: '/incident-analyzer', category: 'Detect', icon: AlertCircle },
+  { label: 'Live Activation Center', path: '/live-activation', category: 'Execute', icon: Zap },
+  { label: 'Crisis Response', path: '/crisis', category: 'Execute', icon: AlertCircle },
+  { label: 'Execution Coordination', path: '/execution-coordination', category: 'Execute', icon: Users },
+  { label: 'Decision Velocity', path: '/decision-velocity', category: 'Execute', icon: TrendingUp },
+  { label: 'War Room', path: '/war-room', category: 'Execute', icon: Globe },
+  { label: 'Advanced Analytics', path: '/advanced-analytics', category: 'Advance', icon: BarChart3 },
+  { label: 'Execution History', path: '/execution-history', category: 'Advance', icon: BarChart3 },
+  { label: 'Enterprise Metrics', path: '/enterprise-metrics', category: 'Advance', icon: TrendingUp },
+  { label: 'Stakeholder Management', path: '/stakeholder-management', category: 'Advance', icon: Users },
+  { label: 'Try Demo', path: '/try-demo', category: 'Demo', icon: Play },
+  { label: 'Pilot Demo', path: '/pilot-demo', category: 'Demo', icon: Rocket },
+  { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },
+  { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
+  { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
+  { label: 'Request a Pilot', path: '/pilot-program', category: 'Action', icon: Target },
+  { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
+  { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
+];
+
 export default function StandardNav() {
   const [location, setLocation] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { user, isAuthenticated, isLoading, login, logout } = useAuth();
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(o => !o);
+        setSearchQuery('');
+      }
+      if (e.key === 'Escape') setSearchOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
   const navLogoHeight = useNavLogoHeight();
 
   const navigateTo = (path: string) => {
@@ -302,6 +352,15 @@ export default function StandardNav() {
 
           {/* Right: CTAs */}
           <div className="hidden lg:flex items-center gap-2">
+            {/* Global Search Button */}
+            <button
+              onClick={() => { setSearchOpen(o => !o); setSearchQuery(''); }}
+              className="h-9 w-9 flex items-center justify-center rounded-lg border transition-all"
+              style={{ border: '1px solid rgba(10,15,46,0.12)', color: NAVY, background: searchOpen ? 'rgba(10,15,46,0.04)' : 'transparent' }}
+              title="Search platform (⌘K)"
+            >
+              <Search className="h-4 w-4" />
+            </button>
             {isLoading ? (
               <div className="h-9 w-48 bg-gray-100 animate-pulse rounded-lg" />
             ) : isAuthenticated && user ? (
@@ -601,6 +660,98 @@ export default function StandardNav() {
           </div>
         )}
       </div>
+
+      {/* Authenticated monitoring status bar */}
+      {isAuthenticated && user && (
+        <div style={{ background: '#0A0F2E', borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 30 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
+                </div>
+                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
+                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Armed</span>
+                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>16 Signal Categories</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Radio style={{ width: 8, height: 8, color: 'rgba(201,168,76,0.45)' }} />
+                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.3)', letterSpacing: '0.08em' }}>Scanning every 15 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Global Command Search Overlay */}
+      {searchOpen && (
+        <div
+          style={{ position: 'fixed', inset: 0, zIndex: 100, background: 'rgba(10,15,46,0.55)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            style={{ position: 'absolute', top: 80, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: 640, padding: '0 16px' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ background: '#fff', border: '1px solid rgba(10,15,46,0.12)', boxShadow: '0 24px 60px rgba(10,15,46,0.25)', overflow: 'hidden' }}>
+              {/* Search input */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', borderBottom: '1px solid #E8E4DC' }}>
+                <Search style={{ width: 16, height: 16, color: '#9CA3AF', flexShrink: 0 }} />
+                <input
+                  autoFocus
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  placeholder="Search pages, playbooks, actions…"
+                  style={{ flex: 1, border: 'none', outline: 'none', fontSize: 14, color: '#0A0F2E', fontWeight: 500, background: 'transparent' }}
+                />
+                <kbd style={{ fontSize: 10, color: '#9CA3AF', border: '1px solid #E8E4DC', padding: '2px 6px', fontFamily: 'monospace' }}>ESC</kbd>
+              </div>
+              {/* Results */}
+              <div style={{ maxHeight: 380, overflowY: 'auto' }}>
+                {(() => {
+                  const q = searchQuery.toLowerCase().trim();
+                  const filtered = q
+                    ? SEARCH_ITEMS.filter(item => item.label.toLowerCase().includes(q) || item.category.toLowerCase().includes(q))
+                    : SEARCH_ITEMS.slice(0, 10);
+                  const groups = filtered.reduce((acc: Record<string, typeof SEARCH_ITEMS>, item) => {
+                    if (!acc[item.category]) acc[item.category] = [];
+                    acc[item.category].push(item);
+                    return acc;
+                  }, {});
+                  if (filtered.length === 0) return (
+                    <div style={{ padding: '32px 18px', textAlign: 'center', color: '#9CA3AF', fontSize: 13 }}>No results for "{searchQuery}"</div>
+                  );
+                  return Object.entries(groups).map(([cat, items]) => (
+                    <div key={cat}>
+                      <div style={{ padding: '10px 18px 4px', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C' }}>{cat}</div>
+                      {items.map(item => (
+                        <button
+                          key={item.path}
+                          onClick={() => { navigateTo(item.path); setSearchOpen(false); setSearchQuery(''); }}
+                          style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '10px 18px', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'background 0.1s' }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#F8F7F4'; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                        >
+                          <div style={{ width: 28, height: 28, background: '#F0EDE4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                            <item.icon style={{ width: 13, height: 13, color: '#0A0F2E' }} />
+                          </div>
+                          <span style={{ fontSize: 13, fontWeight: 500, color: '#0A0F2E' }}>{item.label}</span>
+                          <span style={{ marginLeft: 'auto', fontSize: 10, color: '#C9A84C', fontWeight: 700, letterSpacing: '0.08em' }}>→</span>
+                        </button>
+                      ))}
+                    </div>
+                  ));
+                })()}
+              </div>
+              <div style={{ padding: '8px 18px', borderTop: '1px solid #E8E4DC', display: 'flex', gap: 16, alignItems: 'center' }}>
+                <span style={{ fontSize: 10, color: '#9CA3AF' }}><kbd style={{ fontFamily: 'monospace', fontSize: 10, background: '#F8F7F4', border: '1px solid #E8E4DC', padding: '1px 5px' }}>⌘K</kbd> to toggle</span>
+                <span style={{ fontSize: 10, color: '#9CA3AF' }}><kbd style={{ fontFamily: 'monospace', fontSize: 10, background: '#F8F7F4', border: '1px solid #E8E4DC', padding: '1px 5px' }}>↵</kbd> to navigate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

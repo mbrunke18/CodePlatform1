@@ -367,26 +367,6 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
         />
       )}
 
-      {/* SYSTEM STATUS BAR — always-visible monitoring state */}
-      <div style={{ background: NAVY, borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '0' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 36 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block', animation: 'pulse 2s infinite' }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>All Systems Monitoring</span>
-              </div>
-              <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.1)' }} />
-              <span style={{ fontSize: 10, color: 'rgba(240,237,228,0.4)', letterSpacing: '0.1em' }}>248+ Data Points · 221 Triggers Armed · 16 Signal Categories</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <Radio style={{ width: 10, height: 10, color: 'rgba(201,168,76,0.5)' }} />
-              <span style={{ fontSize: 10, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.1em' }}>Scanning every 15 min</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ZONE 1: Hero Header */}
       <div className="bg-white border-b border-[#E8E4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
