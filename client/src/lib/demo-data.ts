@@ -389,7 +389,7 @@ export const demoDashboardSummary = {
     annual: 5800000,
     multiplier: 48,
     hoursSaved: 720,
-    timeCompression: '12 min vs 72 hrs'
+    timeCompression: '12 min vs 30 days'
   },
   recentActivity: [
     {

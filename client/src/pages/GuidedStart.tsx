@@ -66,7 +66,7 @@ const SCENARIOS: Scenario[] = [
       'Sales and marketing task force auto-assigned and briefed',
       'Top 47 at-risk accounts flagged for immediate retention outreach',
       '12-minute countdown tracks your board-ready response velocity',
-      'Post-execution debrief shows ROI and decision velocity vs. 72-hr benchmark',
+      'Post-execution debrief shows ROI and decision velocity vs. 30-day baseline',
     ],
   },
   {
@@ -140,7 +140,7 @@ const SCENARIOS: Scenario[] = [
 ];
 
 const BASE_DETECT_STEPS = [
-  { label: 'Scanning 248+ data points across 20 signal categories', duration: 1600 },
+  { label: 'Scanning 248+ data points across 16 signal categories', duration: 1600 },
   { label: 'Signal threshold breach confirmed', duration: 1200 },
   { label: 'Cross-referencing 221 executive trigger conditions', duration: 1400 },
   { label: 'TRIGGER DETECTED', duration: 1100, highlight: true },

@@ -449,7 +449,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="flex items-center justify-center gap-4 md:gap-8 mb-8"
                 >
                   <div className="text-center">
-                    <div className="text-4xl md:text-6xl font-bold text-red-500 line-through opacity-60">72 hrs</div>
+                    <div className="text-4xl md:text-6xl font-bold text-red-500 line-through opacity-60">30 days</div>
                     <div className="text-sm text-gray-800 mt-1">Before</div>
                   </div>
                   <motion.div

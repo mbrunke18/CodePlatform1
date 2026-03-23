@@ -111,7 +111,7 @@ export default function ExecutionHistory() {
       unit: summary?.timeSaved ? " hrs" : "",
       icon: <Zap className="h-5 w-5" />,
       color: GOLD,
-      note: "vs. 72-hr baseline",
+      note: "vs. 30-day baseline",
     },
   ];
 

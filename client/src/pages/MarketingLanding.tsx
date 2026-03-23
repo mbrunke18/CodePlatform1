@@ -128,7 +128,7 @@ export default function MarketingLanding() {
               When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              Our AI monitors 248+ data points across 20 intelligence categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
+              Our AI monitors 248+ data points across 16 signal categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>

@@ -251,7 +251,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="flex items-center justify-center gap-8"
             >
               <div className="text-center">
-                <div className="text-4xl font-bold text-red-500">72 hrs</div>
+                <div className="text-4xl font-bold text-red-500">30 days</div>
                 <div className="text-sm text-gray-800">Company A</div>
               </div>
               <div className="text-gray-800">vs</div>
@@ -274,7 +274,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="flex items-center justify-center gap-8"
             >
               <div className="text-center opacity-50">
-                <div className="text-4xl font-bold text-red-500 line-through">72 hrs</div>
+                <div className="text-4xl font-bold text-red-500 line-through">30 days</div>
                 <div className="text-sm text-gray-800">Still scheduling</div>
               </div>
               <ArrowRight className="h-8 w-8 text-[#2B8A6E]" />

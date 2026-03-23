@@ -911,7 +911,7 @@ export default function NewUserJourney() {
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-[#2B8A6E] mb-1">{state.velocityTarget}m</div>
                         <div className="text-sm text-[#6B7280]">Target Response</div>
-                        <div className="text-xs text-[#2B8A6E] mt-1">vs 72hr industry average</div>
+                        <div className="text-xs text-[#2B8A6E] mt-1">vs 30-day industry baseline</div>
                       </CardContent>
                     </Card>
                   </div>

@@ -239,7 +239,7 @@ export default function ExecutiveScorecard() {
             title="Decision Velocity"
             value={Math.round(avgResponseTime) || '—'}
             unit={avgResponseTime > 0 ? ' min' : ''}
-            trend="vs 72hr industry avg"
+            trend="vs 30-day industry baseline"
             trendDirection={avgResponseTime <= 15 ? 'up' : avgResponseTime <= 30 ? 'neutral' : 'down'}
             status={avgResponseTime <= 15 ? 'good' : avgResponseTime <= 30 ? 'warning' : 'critical'}
             icon={Zap}
