@@ -132,16 +132,26 @@ export default function Sitemap() {
   ];
 
   return (
-    <div className="bg-white min-h-screen text-[#0A0F2E] p-8 pt-24">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-[#0A0F2E] font-serif">
-            Execution OS Sitemap
-          </h1>
-          <p className="text-xl text-[#6B7280] font-light">
-            Complete directory of all pages and features available in Execution OS
-          </p>
+    <div className="bg-[#F8F7F4] min-h-screen text-[#0A0F2E]">
+      {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+      <div style={{ background: '#0A0F2E', padding: '64px 0 40px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <div style={{ width: 28, height: 1.5, background: '#C9A84C' }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C' }}>Platform Directory</span>
+          </div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: '#F0EDE4', marginBottom: 10, lineHeight: 1.1 }}>
+            Execution OS <em style={{ color: '#C9A84C' }}>Sitemap</em>
+          </div>
+          <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
+            Complete directory of all pages, features, and demos available in Execution OS.
+          </div>
         </div>
+      </div>
+
+      <div className="p-8 pt-12">
+      <div className="max-w-7xl mx-auto">
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sections.map((section) => (
@@ -191,6 +201,7 @@ export default function Sitemap() {
             </div>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

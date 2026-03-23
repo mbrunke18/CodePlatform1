@@ -16,7 +16,7 @@ export default function ApprovalSuccess() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#0A0F2E] flex items-center justify-center p-4" style={{ backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)', backgroundSize: '44px 44px' }}>
       <Card className="max-w-md w-full border-[#E8E4DC] shadow-2xl rounded-none">
         <CardHeader className="text-center">
           <div className="mx-auto w-16 h-16 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center mb-4">

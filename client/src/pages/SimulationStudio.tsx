@@ -78,21 +78,30 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
 
   return (
     <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-white">
-        {/* Header */}
-        <div className="border-b border-[#E8E4DC] px-8 py-6">
-          <div className="flex items-center gap-4">
-            <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Shield className="w-6 h-6 text-white" />
+      <div className="min-h-screen bg-[#F8F7F4]">
+        {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+        <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 28, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Execute Phase · Pre-Deployment Dry-Run</span>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: GOLD }}>EXECUTE</span>
-                <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
-                <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>Pre-Deployment Dry-Run</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }}>
+                  Shadow Strategy <em style={{ color: GOLD }}>Simulator</em>
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
+                  Validate your response before committing resources — AI scores your Survive and Thrive probability across every relevant playbook.
+                </div>
               </div>
-              <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.8rem', color: NAVY, lineHeight: 1 }}>Shadow Strategy Simulator</h1>
-              <p className="text-xs text-gray-400 mt-0.5">Validate your response before committing resources — AI scores your Survive and Thrive probability across every relevant playbook.</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '5px 14px', border: '1px solid rgba(43,138,110,0.3)' }}>
+                  <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                  AI Simulator Active
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -77,23 +77,24 @@ export default function ContinuousModePage() {
 
   return (
     <PageLayout>
-    <div className="min-h-screen bg-white p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="flex items-start justify-between">
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Always-On Intelligence</span>
-            </div>
-            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
-              <Activity className="w-10 h-10 text-[#0A0F2E] dark:text-[#C9A84C]" />
-              Continuous Operations Mode
-            </h1>
-            <p className="text-[#6B7280]">
-              Always-on strategic monitoring, learning, and automated coordination
-            </p>
+    <div className="min-h-screen bg-[#F8F7F4]">
+      {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+      <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Advance Phase · Always-On Intelligence</span>
           </div>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }}>
+                Continuous <em style={{ color: GOLD }}>Operations Mode</em>
+              </div>
+              <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
+                Always-on strategic monitoring, learning, and automated coordination across your enterprise.
+              </div>
+            </div>
           <Button 
             size="lg"
             className={continuousMode.enabled ? "bg-[#0A0F2E] text-white hover:bg-[#141B45]" : "bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"}
@@ -111,8 +112,13 @@ export default function ContinuousModePage() {
               </>
             )}
           </Button>
+          </div>
         </div>
+      </div>
 
+      {/* ─── Content ─────────────────────────────────────────────── */}
+      <div className="p-8">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Status Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className={`border shadow-none ${continuousMode.enabled ? 
@@ -285,6 +291,7 @@ export default function ContinuousModePage() {
             </div>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
     </PageLayout>

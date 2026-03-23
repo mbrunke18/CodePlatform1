@@ -35,32 +35,34 @@ export default function VideoLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white" data-testid="page-video-landing">
+    <div className="min-h-screen bg-[#F8F7F4]" data-testid="page-video-landing">
       <StandardNav />
       
       <div className="pt-20">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <Link href="/">
-                <Button variant="ghost" className="text-[#6B7280] hover:text-[#0A0F2E] mb-4 p-0" data-testid="button-back-home">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Back to Home
-                </Button>
-              </Link>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
-              </div>
-              <h1 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-video-hub">
-                Brand Films & <em className="italic text-[#C9A84C]">Sizzle Reels</em>
-              </h1>
-              <p className="text-xl text-[#6B7280] max-w-2xl leading-relaxed">
-                Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Execution OS.
-              </p>
+        {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+        <div style={{ background: '#0A0F2E', padding: '40px 0 36px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+            <Link href="/">
+              <button style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, color: 'rgba(240,237,228,0.45)', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: 16, background: 'none', border: 'none', cursor: 'pointer' }} data-testid="button-back-home">
+                <ArrowLeft style={{ width: 14, height: 14 }} />
+                Back to Home
+              </button>
+            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+              <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
+            </div>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: '#F0EDE4', marginBottom: 10, lineHeight: 1.1 }} data-testid="heading-video-hub">
+              Brand Films & <em style={{ color: '#C9A84C' }}>Sizzle Reels</em>
+            </div>
+            <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
+              Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Execution OS.
             </div>
           </div>
+        </div>
 
+        <div className="max-w-7xl mx-auto px-6 py-12">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
               <TabsTrigger 

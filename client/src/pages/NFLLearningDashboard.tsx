@@ -131,25 +131,33 @@ export default function NFLLearningDashboard() {
 
   return (
     <PageLayout>
-      <div className="p-6 space-y-6 bg-white min-h-screen" data-testid="execution-learning-dashboard-page">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase</span>
+      <div className="bg-[#F8F7F4] min-h-screen" data-testid="execution-learning-dashboard-page">
+        {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+        <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 28, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Advance Phase · Performance Intelligence</span>
             </div>
-            <h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG} data-testid="page-title">
-              Strategic Learning Center
-            </h1>
-            <p className="text-[#6B7280] mt-1">
-              Performance intelligence and continuous optimization
-            </p>
-          </div>
-          <div className="bg-[#0A0F2E] p-3 rounded-none">
-            <Brain className="h-10 w-10 text-white" />
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }} data-testid="page-title">
+                  Strategic <em style={{ color: GOLD }}>Learning Center</em>
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 540, lineHeight: 1.6 }}>
+                  Performance intelligence and continuous optimization — AI-driven insights from every execution.
+                </div>
+              </div>
+              <div className="bg-[#0A0F2E] p-3 rounded-none" style={{ border: '1px solid rgba(201,168,76,0.2)' }}>
+                <Brain className="h-10 w-10 text-white" />
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* ─── Content ─────────────────────────────────────────────── */}
+        <div className="p-6 space-y-6">
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -577,6 +585,7 @@ export default function NFLLearningDashboard() {
             </Card>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
     </PageLayout>
   );

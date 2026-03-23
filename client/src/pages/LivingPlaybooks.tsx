@@ -120,23 +120,26 @@ export default function LivingPlaybooks() {
 
   return (
     <PageLayout>
-      <div className="bg-white p-8 min-h-screen">
-        <div className="max-w-7xl mx-auto space-y-10">
-
-          {/* Header */}
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 28, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Advance Phase · AI-Powered</span>
+      <div className="bg-[#F8F7F4] min-h-screen">
+        {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+        <div style={{ background: NAVY, padding: '36px 0 32px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 28, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Advance Phase · AI-Powered Self-Learning</span>
             </div>
-            <h1 className="text-4xl font-bold text-[#0A0F2E] mb-2 flex items-center gap-3" style={CG}>
-              <Brain className="w-10 h-10 text-[#0A0F2E]" />
-              Living Playbooks
-            </h1>
-            <p className="text-[#6B7280] max-w-2xl">
-              Self-learning strategic playbooks that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates each playbook's task sequences, stakeholder lists, and decision gates.
-            </p>
+            <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }}>
+              Living <em style={{ color: GOLD }}>Playbooks</em>
+            </div>
+            <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 620, lineHeight: 1.6 }}>
+              Self-learning strategic playbooks that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates task sequences, stakeholder lists, and decision gates.
+            </div>
           </div>
+        </div>
+
+        <div className="p-8">
+        <div className="max-w-7xl mx-auto space-y-10">
 
           {/* System Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -336,6 +339,7 @@ export default function LivingPlaybooks() {
             </CardContent>
           </Card>
 
+        </div>
         </div>
       </div>
     </PageLayout>

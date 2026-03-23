@@ -83,29 +83,30 @@ export default function ExplorePage() {
 
   return (
     <PageLayout>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#F8F7F4]">
 
-        {/* Hero */}
-        <section className="py-20 px-6 border-b border-[#E8E4DC]">
-          <div className="max-w-4xl mx-auto text-center">
-            <BrandStamp variant="dual" size="md" className="mb-8" />
+        {/* ─── Dark Hero ─────────────────────────────────────────────── */}
+        <section style={{ background: '#0A0F2E', padding: '64px 24px 56px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+          <div className="max-w-4xl mx-auto text-center" style={{ position: 'relative', zIndex: 1 }}>
+            <BrandStamp variant="dual" size="md" color="white" className="mb-8" />
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Product Experience</span>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
             </div>
-            <h1 className="text-5xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h1 className="text-5xl font-bold mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif", color: '#F0EDE4' }}>
               Experience the Platform<br />
-              <span className="text-[#C9A84C] italic">as a Real Customer</span>
+              <em style={{ color: '#C9A84C' }}>as a Real Customer</em>
             </h1>
-            <p className="text-xl text-[#6B7280] max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+            <p className="text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light" style={{ color: 'rgba(240,237,228,0.6)' }}>
               Sign in, set up your workspace, and walk through an actual playbook activation — complete with real email notifications and a live command center.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest shadow-xl"
+                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest shadow-xl"
                 onClick={() => { window.location.href = '/api/login'; }}
               >
                 <LogIn className="h-4 w-4" />
@@ -114,7 +115,7 @@ export default function ExplorePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors shadow-sm"
+                className="border-white/30 text-white hover:bg-white/10 hover:border-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors"
                 onClick={() => setLocation('/contact')}
               >
                 Apply for Pilot Program
@@ -122,7 +123,7 @@ export default function ExplorePage() {
               </Button>
             </div>
 
-            <p className="mt-6 text-[10px] text-[#6B7280] uppercase tracking-widest font-bold">
+            <p className="mt-6 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'rgba(240,237,228,0.35)' }}>
               No credit card required. Your workspace is private and under your control.
             </p>
           </div>
