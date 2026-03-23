@@ -160,6 +160,7 @@ const researchCitations = [
   { id: 5, source: "Fortune/NYU Stern", title: "M&A Analysis (40,000 deals)", year: "2024", finding: "70-75% of M&A deals fail to deliver expected value" },
   { id: 6, source: "Taylor & Francis", title: "Global Transformation Research", year: "2024", finding: "$2.3 trillion wasted globally on failed digital transformation programs" },
   { id: 7, source: "Business Continuity Institute", title: "Resilience Report", year: "2024", finding: "75% of organizations activated strategic response plans in past 12 months" },
+  { id: 8, source: "Gartner", title: "AI Technology Stack", year: "2026", finding: "Nine layers of enterprise AI investment mapped — from infrastructure to solutions — with no operating model layer identified to orchestrate execution. That gap is the market Execution OS serves." },
 ];
 
 function PlatformArchitectureDiagram() {

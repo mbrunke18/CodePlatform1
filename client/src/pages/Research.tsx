@@ -1,5 +1,6 @@
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
+import gartnerAIStack from "@/assets/gartner-ai-stack-2026.png";
 import { 
   ArrowRight, 
   Clock, 
@@ -12,6 +13,7 @@ import {
   Building2,
   CheckCircle2,
   Cpu,
+  Layers,
 } from "lucide-react";
 import { Link } from "wouter";
 import { useEffect } from "react";
@@ -342,6 +344,48 @@ export default function Research() {
               
               <p className="text-sm text-muted-foreground">
                 Source: Business Agility Institute — Business Agility Report
+              </p>
+            </div>
+
+            {/* Gartner AI Stack Section */}
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "20px 24px", background: "#fff" }} className="mb-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Layers className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">The Missing Layer in Every AI Stack</h3>
+                  <p className="text-muted-foreground">
+                    Gartner has catalogued nine layers of enterprise AI investment — from semiconductors and infrastructure all the way up to AI solutions and industry verticals. Every layer has vendors. Every layer has budget. But look at what is absent from the entire stack.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-6 flex justify-center">
+                <img
+                  src={gartnerAIStack}
+                  alt="Gartner AI Technology Stack 2026 — nine layers from AI infrastructure to AI solutions"
+                  className="w-full max-w-xl border border-[#E8E4DC]"
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+
+              <div className="p-4 mb-6" style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <p className="text-sm font-bold text-[#0A0F2E] mb-2 uppercase tracking-wider">What Gartner's stack doesn't show:</p>
+                <p className="text-sm text-foreground leading-relaxed">
+                  There is no layer for the operating model that <em>orchestrates</em> all of this technology into actual strategic execution. Enterprises have invested in every row of this diagram. None of them have the layer above it — the one that tells the organization what to do, when to do it, and how to move in 12 minutes when a trigger fires.
+                </p>
+              </div>
+
+              <div className="p-4 mb-4" style={{ background: "rgba(10,15,46,0.03)", border: "1px solid #E8E4DC" }}>
+                <p className="text-sm text-foreground font-medium italic">
+                  "Winning the AI vendor race isn't just about speed. Tech vendors must balance agility with clear direction, proactive risk management, and data-driven decisions."
+                </p>
+                <p className="text-xs text-muted-foreground mt-2">— Gartner, AI Vendor Race Research, 2026</p>
+              </div>
+
+              <p className="text-sm text-muted-foreground">
+                Source: Gartner — AI Technology Stack &amp; AI Vendor Race Research, 2026
               </p>
             </div>
 
