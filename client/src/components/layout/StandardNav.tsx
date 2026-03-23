@@ -55,73 +55,70 @@ export default function StandardNav() {
 
   const productSections: NavSection[] = [
     {
-      heading: "Understand",
+      heading: "Start Here",
       links: [
-        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "I·D·E·A — the execution operating model" },
-        { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The execution gap enterprises face" },
-        { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to live execution — step by step" },
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected" },
+        { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
+        { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
+        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance — the operating model" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
       ],
     },
     {
-      heading: "Capabilities",
+      heading: "Core Capabilities",
       links: [
-        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 playbooks across 9 strategic domains" },
-        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ signals" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "Real-time monitoring across 16 signal categories" },
-        { label: "Signal Configuration", path: "/signal-configuration", icon: Radio, description: "Configure your live data points" },
-        { label: "Integrations", path: "/integrations", icon: Globe, description: "24 enterprise system connections" },
+        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged playbooks across 9 strategic domains" },
+        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "16 signal categories — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
       ],
     },
     {
-      heading: "Explore",
+      heading: "Evaluate",
       links: [
-        { label: "By Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite role" },
-        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "Estimate impact & cost savings" },
-        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape & differentiation" },
+        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
+        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
+        { label: "Competitive Positioning", path: "/competitive-positioning", icon: Shield, description: "Market landscape & how we're different" },
       ],
     },
   ];
 
   const experienceSections: NavSection[] = [
     {
+      heading: "Try It Now",
+      links: [
+        { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
+        { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
+        { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
+        { label: "Request a Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
+      ],
+    },
+    {
       heading: "AI Tools",
       links: [
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
         { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — Survive vs. Thrive scoring" },
+        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score execution readiness across all 9 domains" },
         { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn strategic notes into custom playbooks" },
-        { label: "Readiness Assessment", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score execution readiness across 9 domains" },
-        { label: "Executive Summary", path: "/executive-summary", icon: FileText, description: "One-click AI-generated executive reports" },
-      ],
-    },
-    {
-      heading: "Get Started",
-      links: [
-        { label: "Try Demo", path: "/try-demo", icon: Rocket, description: "Live simulation — no login required" },
-        { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
-        { label: "Request Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
-        { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprises onboard & scale" },
       ],
     },
   ];
 
   const platformLinks: NavLink[] = [
-    { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub + War Room Pulse Map" },
+    { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub — your primary entry point", featured: true },
     { label: "Workspace", path: "/workspace", icon: Layers, description: "IDEA Framework — Identify · Detect · Execute · Advance" },
     { label: "Executive Hub", path: "/executive-hub", icon: BarChart3, description: "Intelligence, velocity, readiness & analytics" },
     { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
     { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & coordination" },
     { label: "ROI Dashboard", path: "/roi-dashboard", icon: Calculator, description: "Live value metrics — board-ready ROI reporting" },
-    { label: "Strategic Learning Center", path: "/execution-learning", icon: Lightbulb, description: "AI-powered performance intelligence & continuous improvement", featured: true },
+    { label: "Strategic Learning Center", path: "/execution-learning", icon: Lightbulb, description: "AI-powered performance intelligence & continuous improvement" },
     { label: "Settings", path: "/settings-hub", icon: Settings, description: "Organization, stakeholders & integrations" },
   ];
 
   const investorsLinks: NavLink[] = [
-    { label: "For Investors", path: "/investors", icon: TrendingUp, description: "Investment thesis" },
-    { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor deck" },
-    { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Materials & deck" },
-    { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive reporting" },
+    { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Full materials — frameworks, thesis & deck", featured: true },
+    { label: "For Investors", path: "/investors", icon: TrendingUp, description: "Investment thesis & market opportunity" },
+    { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor presentation" },
+    { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive-ready board reporting" },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Execution OS" },
   ];
 
@@ -143,7 +140,7 @@ export default function StandardNav() {
         background: 'transparent',
       }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.background = highlighted ? 'rgba(201,168,76,0.06)' : 'rgba(10,15,46,0.04)';
+        (e.currentTarget as HTMLElement).style.background = highlighted ? 'rgba(201,168,76,0.10)' : 'rgba(10,15,46,0.07)';
       }}
       onMouseLeave={e => {
         (e.currentTarget as HTMLElement).style.background = 'transparent';
@@ -159,33 +156,51 @@ export default function StandardNav() {
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2.5 cursor-pointer focus:bg-amber-50 rounded-lg mx-1 mb-1"
-      style={{ background: "linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.07))", border: "1px solid rgba(201,168,76,0.35)" }}
+      className="flex items-center gap-3 py-3 cursor-pointer rounded-xl mx-1 mb-1.5 focus:outline-none group"
+      style={{
+        background: "linear-gradient(135deg,rgba(201,168,76,0.10),rgba(43,138,110,0.06))",
+        border: "1px solid rgba(201,168,76,0.30)",
+        transition: 'all 0.15s',
+      }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg,rgba(201,168,76,0.18),rgba(43,138,110,0.12))";
+        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.55)";
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg,rgba(201,168,76,0.10),rgba(43,138,110,0.06))";
+        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.30)";
+      }}
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "rgba(201,168,76,0.18)" }}>
+      <div className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "rgba(201,168,76,0.15)" }}>
         <link.icon className="h-4 w-4" style={{ color: GOLD }} />
       </div>
-      <div className="flex-1">
-        <div className="font-semibold text-sm" style={{ color: NAVY }}>{link.label}</div>
-        <span className="text-xs" style={{ color: "#6B7280" }}>{link.description}</span>
+      <div className="flex-1 min-w-0">
+        <div className="font-bold text-sm leading-tight" style={{ color: NAVY }}>{link.label}</div>
+        <span className="text-xs leading-snug block mt-0.5" style={{ color: "#4B5563" }}>{link.description}</span>
       </div>
-      <div className="text-xs font-bold px-2 py-0.5 rounded" style={{ background: GOLD, color: NAVY }}>LIVE</div>
+      <div className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ml-1" style={{ background: GOLD }}>
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 12 12" style={{ color: NAVY }}>
+          <path d="M2.5 6h7m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
     </DropdownMenuItem>
   ) : (
     <DropdownMenuItem
       key={link.path + link.label}
       onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2 cursor-pointer rounded-lg mx-0.5 focus:outline-none"
+      className="flex items-center gap-3 py-2.5 cursor-pointer rounded-lg mx-1 focus:outline-none"
       style={{ transition: 'background 0.12s' }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.04)'; }}
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.06)'; }}
       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}
       data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <link.icon className="h-4 w-4 flex-shrink-0" style={{ color: TEAL }} />
-      <div className="flex-1">
-        <div className="font-semibold text-sm" style={{ color: NAVY }}>{link.label}</div>
-        <span className="text-xs" style={{ color: "#6B7280" }}>{link.description}</span>
+      <div className="flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center" style={{ background: 'rgba(43,138,110,0.08)' }}>
+        <link.icon className="h-3.5 w-3.5" style={{ color: TEAL }} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="font-semibold text-sm leading-tight" style={{ color: NAVY }}>{link.label}</div>
+        <span className="text-xs leading-snug block mt-0.5" style={{ color: "#6B7280" }}>{link.description}</span>
       </div>
     </DropdownMenuItem>
   );
@@ -197,18 +212,18 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 max-h-[80vh] overflow-y-auto shadow-xl rounded-xl p-1.5"
+        className="w-[340px] max-h-[80vh] overflow-y-auto shadow-xl rounded-xl p-2"
         style={{
           background: '#fff',
-          border: `1px solid rgba(10,15,46,0.1)`,
-          boxShadow: '0 8px 32px rgba(10,15,46,0.12), 0 2px 8px rgba(10,15,46,0.06)',
+          border: `1px solid rgba(10,15,46,0.12)`,
+          boxShadow: '0 12px 40px rgba(10,15,46,0.15), 0 2px 8px rgba(10,15,46,0.08)',
         }}
       >
         {sections.map((section, sIdx) => (
           <div key={section.heading}>
-            {sIdx > 0 && <DropdownMenuSeparator style={{ background: 'rgba(10,15,46,0.06)', margin: '4px 0' }} />}
+            {sIdx > 0 && <DropdownMenuSeparator style={{ background: 'rgba(10,15,46,0.08)', margin: '6px 0' }} />}
             <DropdownMenuLabel
-              className="text-[10px] uppercase tracking-widest font-bold px-3 pt-2.5 pb-1"
+              className="text-[11px] uppercase tracking-widest font-bold px-3 pt-3 pb-1.5"
               style={{ color: GOLD }}
             >
               {section.heading}
@@ -227,11 +242,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-72 shadow-xl rounded-xl p-1.5"
+        className="w-[340px] shadow-xl rounded-xl p-2"
         style={{
           background: '#fff',
-          border: `1px solid rgba(10,15,46,0.1)`,
-          boxShadow: '0 8px 32px rgba(10,15,46,0.12), 0 2px 8px rgba(10,15,46,0.06)',
+          border: `1px solid rgba(10,15,46,0.12)`,
+          boxShadow: '0 12px 40px rgba(10,15,46,0.15), 0 2px 8px rgba(10,15,46,0.08)',
         }}
       >
         {links.map(renderNavItem)}
