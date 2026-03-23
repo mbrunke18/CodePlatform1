@@ -89,7 +89,7 @@ export default function AIIntelligenceHub() {
 
   return (
     <PageLayout>
-      <div className="page-background min-h-screen bg-white">
+      <div className="page-background min-h-screen bg-[#F8F7F4]">
 
         {/* ─── Dark Tile Module Hub ─────────────────────────────────────── */}
         <div style={{ background: NAVY, padding: '28px 0 0' }}>

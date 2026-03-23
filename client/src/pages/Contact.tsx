@@ -89,7 +89,7 @@ export default function Contact() {
 
   return (
     <PageLayout>
-      <div className="bg-white">
+      <div className="bg-[#F8F7F4]">
         {/* Hero Section - Navy */}
         <section style={{ background: "#0A0F2E", padding: "64px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
@@ -122,7 +122,7 @@ export default function Contact() {
         </section>
 
         {/* Main Form Section */}
-        <section className="py-20 px-12 bg-white">
+        <section className="py-20 px-12 bg-[#F8F7F4]">
           <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-12">
             {/* Left Column - Value Proposition */}
             <div className="md:col-span-4">

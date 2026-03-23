@@ -342,11 +342,11 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   if (isLoading) {
     return (
       <PageLayout embedded={embedded}>
-      <div className="min-h-screen bg-white p-8">
+      <div className="min-h-screen bg-[#F8F7F4] p-8">
         <div className="max-w-7xl mx-auto">
           <div className="animate-pulse space-y-4">
-            <div className="h-12 bg-gray-100 rounded"></div>
-            <div className="h-64 bg-gray-100 rounded"></div>
+            <div className="h-12 bg-[#E8E4DC] rounded"></div>
+            <div className="h-64 bg-[#E8E4DC] rounded"></div>
           </div>
         </div>
       </div>
@@ -663,7 +663,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
       )}
 
       {/* ZONE 3: Management Grid */}
-      <div className="bg-white min-h-screen">
+      <div className="bg-[#F8F7F4] min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
