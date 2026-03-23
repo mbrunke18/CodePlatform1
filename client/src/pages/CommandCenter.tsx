@@ -367,6 +367,26 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
         />
       )}
 
+      {/* SYSTEM STATUS BAR — always-visible monitoring state */}
+      <div style={{ background: NAVY, borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '0' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 36 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>All Systems Monitoring</span>
+              </div>
+              <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,0.1)' }} />
+              <span style={{ fontSize: 10, color: 'rgba(240,237,228,0.4)', letterSpacing: '0.1em' }}>248+ Data Points · 221 Triggers Armed · 16 Signal Categories</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Radio style={{ width: 10, height: 10, color: 'rgba(201,168,76,0.5)' }} />
+              <span style={{ fontSize: 10, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.1em' }}>Scanning every 15 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ZONE 1: Hero Header */}
       <div className="bg-white border-b border-[#E8E4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
@@ -687,8 +707,8 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         <div className="flex items-start gap-3">
                           <div className={`mt-1 shrink-0 w-2 h-2 rounded-full ${
                             alert.severity === 'critical' ? 'bg-red-500' : 
-                            alert.severity === 'high' ? 'bg-[#C9A84C]' : 
-                            alert.severity === 'medium' ? 'bg-[#2B8A6E]' : 'bg-[#0A0F2E]'
+                            alert.severity === 'high' ? 'bg-orange-400' : 
+                            alert.severity === 'medium' ? 'bg-amber-300' : 'bg-gray-300'
                           }`}></div>
                           <div className="flex-1 min-w-0">
                             <p style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{alert.title}</p>
@@ -870,21 +890,24 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               <p className="text-sm text-gray-600">Select a scenario to simulate organization-wide execution coordination.</p>
               <div className="space-y-3">
                 {[
-                  { name: 'Competitor Acquisition Response', icon: '🎯' },
-                  { name: 'Ransomware Protocol Activation', icon: '🛡️' },
-                  { name: 'Supply Chain Disruption APAC', icon: '📦' },
-                  { name: 'Hostile Takeover Defense', icon: '⚔️' },
+                  { name: 'Competitor Acquisition Response', Icon: Target },
+                  { name: 'Ransomware Protocol Activation', Icon: Shield },
+                  { name: 'Supply Chain Disruption APAC', Icon: Activity },
+                  { name: 'Hostile Takeover Defense', Icon: AlertTriangle },
                 ].map((scenario) => (
                   <div 
                     key={scenario.name}
-                    className="p-4 border border-[#E8E4DC] hover:border-[#0A0F2E] cursor-pointer bg-[#F8F7F4] flex items-center gap-4 transition-colors"
+                    className="p-4 border border-[#E8E4DC] hover:border-[#0A0F2E] cursor-pointer bg-[#F8F7F4] flex items-center gap-4 transition-colors group"
                     onClick={() => {
                       launchDemoExecution(scenario.name);
                       setShowScenarioLauncher(false);
                     }}
                   >
-                    <span className="text-2xl">{scenario.icon}</span>
+                    <div style={{ width: 32, height: 32, background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <scenario.Icon className="w-4 h-4 text-white" />
+                    </div>
                     <span style={{ color: NAVY, fontWeight: 600 }}>{scenario.name}</span>
+                    <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: NAVY }} />
                   </div>
                 ))}
               </div>
