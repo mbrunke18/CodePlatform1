@@ -108,8 +108,7 @@ export default function StandardNav() {
     {
       heading: "The Operating Model",
       links: [
-        { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view", featured: true },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
         { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
@@ -311,21 +310,8 @@ export default function StandardNav() {
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between" style={{ height: navLogoHeight }}>
 
-          {/* Left: Back + Logo */}
-          <div className="flex items-center gap-2">
-            {!isHomePage && (
-              <button
-                onClick={handleBack}
-                className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-all text-sm font-medium"
-                style={{ color: NAVY, background: 'transparent' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-                data-testid="nav-back-button"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                <span className="hidden sm:inline">Back</span>
-              </button>
-            )}
+          {/* Left: Logo */}
+          <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer transition-opacity hover:opacity-80"
               onClick={() => navigateTo('/')}
@@ -353,6 +339,20 @@ export default function StandardNav() {
 
           {/* Right: CTAs */}
           <div className="hidden lg:flex items-center gap-2">
+            {/* Back button — only on inner pages, right-side so logo stays anchored */}
+            {!isHomePage && (
+              <button
+                onClick={handleBack}
+                className="h-9 w-9 flex items-center justify-center rounded-lg transition-all"
+                style={{ color: NAVY, background: 'transparent', border: '1px solid rgba(10,15,46,0.12)' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                data-testid="nav-back-button"
+                title="Go back"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+            )}
             {/* Global Search Button */}
             <button
               onClick={() => { setSearchOpen(o => !o); setSearchQuery(''); }}
