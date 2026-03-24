@@ -308,7 +308,7 @@ export default function StandardNav() {
       {/* Gold accent line at very top */}
       <div style={{ height: 2, background: `linear-gradient(90deg, ${GOLD} 0%, ${TEAL} 50%, ${GOLD} 100%)`, opacity: 0.7 }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-8">
         <div className="flex items-center justify-between" style={{ height: navLogoHeight }}>
 
           {/* Left: Back + Logo */}
@@ -665,7 +665,7 @@ export default function StandardNav() {
       {/* Authenticated monitoring status bar */}
       {isAuthenticated && user && (
         <div style={{ background: '#0A0F2E', borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto px-8">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 30 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
