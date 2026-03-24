@@ -315,7 +315,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5, delay: 1.8 }}
                   className="text-2xl md:text-3xl font-bold text-red-400"
                 >
-                  72 HOURS. TOO SLOW.
+                  30 DAYS. TOO SLOW.
                 </motion.div>
               </div>
             </Scene>

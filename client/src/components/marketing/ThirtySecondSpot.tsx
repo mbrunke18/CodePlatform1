@@ -117,7 +117,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.3 }}
             >
-              <span className="text-4xl md:text-6xl font-bold text-red-500">72 HOURS</span>
+              <span className="text-4xl md:text-6xl font-bold text-red-500">30 DAYS</span>
               <span className="text-xl text-red-400 ml-3">TOO SLOW.</span>
             </motion.div>
           </div>
@@ -368,8 +368,8 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-6xl md:text-8xl font-bold text-red-500">72</span>
-              <span className="text-3xl md:text-4xl text-red-400 ml-3">HOURS</span>
+              <span className="text-6xl md:text-8xl font-bold text-red-500">30</span>
+              <span className="text-3xl md:text-4xl text-red-400 ml-3">DAYS</span>
             </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -377,7 +377,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.5 }}
               className="text-lg text-gray-800 mt-4"
             >
-              Average time to coordinate a strategic response.
+              Average time to mobilize a strategic response.
             </motion.p>
           </div>
         </Scene>
@@ -416,10 +416,10 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="mb-6"
             >
               <span className="text-7xl md:text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                360X
+                3,600×
               </span>
               <br />
-              <span className="text-3xl md:text-4xl font-bold text-gray-900">FASTER</span>
+              <span className="text-3xl md:text-4xl font-bold text-gray-900">Execution Head Start</span>
             </motion.div>
             
             <motion.p
