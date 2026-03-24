@@ -108,7 +108,8 @@ export default function StandardNav() {
     {
       heading: "The Operating Model",
       links: [
-        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view", featured: true },
+        { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
+        { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
         { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
@@ -323,15 +324,6 @@ export default function StandardNav() {
 
           {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            <button
-              onClick={() => navigateTo("/how-it-works")}
-              className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-150"
-              style={{ color: isActivePath("/how-it-works") ? TEAL : NAVY, background: 'transparent' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-            >
-              How It Works
-            </button>
             {renderSectionedDropdown("The Platform", platformSections)}
             {renderFlatDropdown("Evidence", evidenceLinks)}
             {renderFlatDropdown("Investors", investorsLinks, true)}
