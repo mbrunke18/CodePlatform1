@@ -1,5 +1,5 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import PageLayout from '@/components/layout/PageLayout';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -67,7 +67,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
   const topScenarios = [...scenarioData].sort((a, b) => b.valueNumber - a.valueNumber).slice(0, 5);
 
   return (
-    <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
+    <PageLayout>
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -460,6 +460,6 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    </PageLayout>
   );
 }

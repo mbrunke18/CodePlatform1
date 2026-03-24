@@ -1,5 +1,5 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import PageLayout from '@/components/layout/PageLayout';
 import { useLocation } from "wouter";
 import { ChevronRight } from "lucide-react";
 
@@ -132,7 +132,7 @@ export default function Sitemap() {
   ];
 
   return (
-    <div className="bg-[#F8F7F4] min-h-screen text-[#0A0F2E]">
+    <PageLayout>
       {/* ─── Dark Hero ─────────────────────────────────────────────── */}
       <div style={{ background: '#0A0F2E', padding: '64px 0 40px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
@@ -203,6 +203,6 @@ export default function Sitemap() {
         </Card>
       </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }

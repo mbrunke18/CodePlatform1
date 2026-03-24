@@ -17,8 +17,7 @@ import {
   BarChart3
 } from "lucide-react";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 
 interface Question {
   id: string;
@@ -160,8 +159,7 @@ export default function AgilityAssessment() {
     const revenueImpact = calculateRevenueImpact(score);
 
     return (
-      <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-        <StandardNav />
+      <PageLayout>
         
         <div className="container mx-auto px-4 py-12">
           <div className="max-w-4xl mx-auto">
@@ -268,15 +266,12 @@ export default function AgilityAssessment() {
             </div>
           </div>
         </div>
-        
-        <Footer />
-      </div>
+      </PageLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
@@ -371,8 +366,6 @@ export default function AgilityAssessment() {
           </Card>
         </div>
       </div>
-      
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

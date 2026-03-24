@@ -29,8 +29,7 @@ import {
 import Confetti from 'react-confetti';
 import { useLocation } from 'wouter';
 import { BrandStamp } from "@/components/BrandStamp";
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 
 interface Task {
   id: string;
@@ -206,8 +205,7 @@ export default function OneClickDemo() {
   // Idle state - show the start button
   if (demoState === 'idle' && !isFullscreen) {
     return (
-      <div className="min-h-screen bg-[#F8F7F4]">
-        <StandardNav />
+      <PageLayout>
         
           <div className="container mx-auto px-4 py-20">
             <div className="max-w-4xl mx-auto text-center">
@@ -263,7 +261,6 @@ export default function OneClickDemo() {
           </div>
         </div>
         
-        <Footer />
       </div>
     );
   }
@@ -506,6 +503,6 @@ export default function OneClickDemo() {
           </Card>
         )}
       </div>
-    </div>
+    </PageLayout>
   );
 }

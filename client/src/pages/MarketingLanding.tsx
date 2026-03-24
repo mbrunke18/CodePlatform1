@@ -23,7 +23,7 @@ import {
 import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from '@/components/layout/PageLayout';
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import CreateScenarioButton from "@/components/scenario/CreateScenarioButton";
 import InteractiveROICalculator from "@/components/demo/InteractiveROICalculator";
@@ -42,8 +42,7 @@ export default function MarketingLanding() {
   }, []);
 
   return (
-    <div className="page-background min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
 
       {/* Hero Section */}
       <section className="py-24 px-6 text-white relative overflow-hidden bg-[#0A0F2E]">
@@ -344,6 +343,6 @@ export default function MarketingLanding() {
           Execution OS — Strategic Execution Operating System by VaughnMartin
         </p>
       </footer>
-    </div>
+    </PageLayout>
   );
 }

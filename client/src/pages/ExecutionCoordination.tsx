@@ -3,8 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from '@/components/layout/PageLayout';
 import { 
   Play, Clock, CheckCircle, Users, Target, Zap, 
   ArrowRight, Circle, AlertCircle, Pause, RotateCcw
@@ -181,8 +180,7 @@ export default function ExecutionCoordination() {
   const currentStyle = categoryStyles[activeCategory];
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] font-sans">
-      <StandardNav />
+    <PageLayout>
       
       <div className="container mx-auto px-4 py-20">
         {/* Header */}
@@ -501,7 +499,6 @@ export default function ExecutionCoordination() {
         </Card>
       </div>
       
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from "@/components/layout/PageLayout";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useRoute, useLocation } from "wouter";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
@@ -605,8 +605,7 @@ export default function PlaybookCustomize() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
       
       <div className="bg-[#0A0F2E] border-b border-[#E8E4DC]">
         <div className="max-w-[1600px] mx-auto px-6 py-12">
@@ -898,6 +897,6 @@ export default function PlaybookCustomize() {
           </div>
         </main>
       </div>
-    </div>
+    </PageLayout>
   );
 }

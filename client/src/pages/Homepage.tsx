@@ -129,7 +129,7 @@ function HomepageNav() {
             <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
             <Link href="/research" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Evidence</Link>
-            <Link href="/founder-story" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>About</Link>
+            <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
                 href="/12-minute-experience"
@@ -187,7 +187,7 @@ function HomepageNav() {
             { label: "How It Works", href: "/how-it-works" },
             { label: "The Platform", href: "/platform-overview" },
             { label: "Evidence",     href: "/research" },
-            { label: "About",        href: "/founder-story" },
+            { label: "Investors",    href: "/investors" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
           )}

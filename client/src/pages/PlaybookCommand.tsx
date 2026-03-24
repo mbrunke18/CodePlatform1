@@ -1,8 +1,7 @@
 import { useParams, useLocation } from "wouter";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -67,8 +66,7 @@ export default function PlaybookCommand() {
 
   if (isLoading) {
     return (
-      <>
-        <StandardNav />
+      <PageLayout>
         <main className="max-w-4xl mx-auto px-6 py-16">
           <Card>
             <CardHeader>
@@ -81,15 +79,13 @@ export default function PlaybookCommand() {
             </CardContent>
           </Card>
         </main>
-        <Footer />
-      </>
+      </PageLayout>
     );
   }
 
   if (!playbook) {
     return (
-      <>
-        <StandardNav />
+      <PageLayout>
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto text-[#C9A84C] mb-4" />
           <h1 className="text-2xl font-bold mb-2">Playbook Not Found</h1>
@@ -99,8 +95,7 @@ export default function PlaybookCommand() {
             Back to Library
           </Button>
         </main>
-        <Footer />
-      </>
+      </PageLayout>
     );
   }
 
@@ -110,8 +105,7 @@ export default function PlaybookCommand() {
   const badgeBg = isOffense ? "rgba(43, 138, 110, 0.1)" : isDefense ? "rgba(10, 15, 46, 0.1)" : "rgba(201, 168, 76, 0.1)";
 
   return (
-    <>
-      <StandardNav />
+    <PageLayout>
 
       <main className="max-w-4xl mx-auto px-6 py-16">
           <Button 
@@ -264,7 +258,6 @@ export default function PlaybookCommand() {
         )}
       </main>
 
-      <Footer />
-    </>
+    </PageLayout>
   );
 }

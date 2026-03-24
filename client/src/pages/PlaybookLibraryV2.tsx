@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import {
@@ -408,8 +407,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     : searchFiltered;
 
   return (
-    <div className="min-h-screen bg-white">
-      {!embedded && <StandardNav />}
+    <PageLayout embedded={embedded}>
 
       {!embedded && (
         <div style={{ background: "white", borderBottom: `1px solid #E8E4DC` }}>
@@ -677,8 +675,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         </main>
       </div>
 
-      {!embedded && <Footer />}
-    </div>
+    </PageLayout>
   );
 }
 

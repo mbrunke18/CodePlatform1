@@ -1,5 +1,5 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import PageLayout from '@/components/layout/PageLayout';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -77,7 +77,7 @@ export default function OperatingModelHealthReport() {
   const needsAttentionCount = Object.values(elementHealthScores).filter(s => s < 60).length;
 
   return (
-    <div className="page-background min-h-screen bg-gradient-to-br from-[#F8F7F4] to-[#E8E4DC] dark:from-[#0A0F2E] dark:to-[#141B45]">
+    <PageLayout>
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -373,6 +373,6 @@ export default function OperatingModelHealthReport() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </PageLayout>
   );
 }

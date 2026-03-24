@@ -4,8 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import { DealRiskCommandCenter } from '@/components/DealRiskCommandCenter';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import {
@@ -150,8 +149,7 @@ export default function DealRiskDemo() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: "#0A0F2E" }}>
-      <StandardNav />
+    <PageLayout>
       
       <main className="max-w-7xl mx-auto px-6 py-12 text-white">
         <div className="text-center mb-10">
@@ -619,7 +617,6 @@ export default function DealRiskDemo() {
           </div>
         </div>
       </main>
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

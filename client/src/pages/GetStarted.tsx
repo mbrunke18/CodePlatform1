@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { updatePageMetadata } from '@/lib/seo';
 import { ExecuteIQLogo } from '@/components/ExecuteIQLogo';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import {
   ArrowRight, CheckCircle, BookOpen, Radar, Zap, BarChart3,
   Users, Shield, Clock, LogIn, Compass
@@ -62,8 +61,7 @@ export default function GetStarted() {
   };
 
   return (
-    <div style={{ background: "#fff", minHeight: "100vh" }}>
-      <StandardNav />
+    <PageLayout>
 
       {/* HERO */}
       <section style={{ background: NAVY, padding: "80px 56px 72px", position: "relative", overflow: "hidden" }}>
@@ -274,7 +272,6 @@ export default function GetStarted() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

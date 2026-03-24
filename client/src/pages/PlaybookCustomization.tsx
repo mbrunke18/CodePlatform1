@@ -16,7 +16,6 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Link } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
-import StandardNav from '@/components/layout/StandardNav';
 import { 
   BookOpen,
   Copy,
@@ -136,10 +135,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <PageLayout>
-      <div className="min-h-screen bg-[#F8F7F4]">
-        {!embedded && <StandardNav />}
-        
+    <PageLayout embedded={embedded}>
         <div className="max-w-[1600px] mx-auto px-6 py-12">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center space-x-2 text-sm text-[#6B7280]">
@@ -394,7 +390,6 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
             </div>
           </DialogContent>
         </Dialog>
-      </div>
     </PageLayout>
   );
 }

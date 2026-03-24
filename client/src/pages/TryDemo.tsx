@@ -3,8 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import { PageHero } from '@/components/layout/PageHero';
 import { useLocation, Link } from 'wouter';
 import {
@@ -563,8 +562,7 @@ export default function TryDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <StandardNav />
+    <PageLayout>
       <PageHero
         eyebrow="Interactive Demo"
         title="Experience Execution OS"
@@ -1742,7 +1740,6 @@ export default function TryDemo() {
         </div>
       </section>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

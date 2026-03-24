@@ -1,4 +1,3 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -195,8 +195,7 @@ export default function PlaybookReadinessAudit() {
   }, [playbooks]);
 
   return (
-    <div className="page-background min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
       
       <div style={{ background: "#0A0F2E" }} className="relative text-white py-16 overflow-hidden">
         {/* Gold dot grid overlay */}
@@ -529,6 +528,6 @@ export default function PlaybookReadinessAudit() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </PageLayout>
   );
 }

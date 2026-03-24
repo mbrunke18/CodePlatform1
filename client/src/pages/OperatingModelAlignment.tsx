@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -531,8 +531,7 @@ export default function OperatingModelAlignment() {
   };
   
   return (
-    <div className="min-h-screen bg-background">
-      <StandardNav />
+    <PageLayout>
       
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="mb-8">
@@ -1009,6 +1008,6 @@ export default function OperatingModelAlignment() {
           </>
         )}
       </div>
-    </div>
+    </PageLayout>
   );
 }

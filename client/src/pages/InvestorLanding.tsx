@@ -25,7 +25,7 @@ import {
   Calendar
 } from "lucide-react";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from '@/components/layout/PageLayout';
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 const productArchitectureImg = "/images/product-architecture.png";
 const futurePositioningImg = "/images/future-positioning.png";
@@ -72,8 +72,7 @@ export default function InvestorLanding() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
 
         {/* Hero Section */}
         <section className="py-20 px-6 text-white relative overflow-hidden bg-[#0A0F2E]">
@@ -1151,6 +1150,6 @@ export default function InvestorLanding() {
             </p>
           </div>
         </section>
-    </div>
+    </PageLayout>
   );
 }

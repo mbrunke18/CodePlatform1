@@ -1,8 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { Clock, CheckCircle, TrendingUp, Trophy, ArrowRight, Zap, Target, Users, Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
@@ -68,22 +67,19 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#F8F7F4]">
-        {!embedded && <StandardNav />}
+      <PageLayout embedded={embedded}>
         <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin text-[#2B8A6E] mb-4" />
           <p className="text-lg text-[#0A0F2E]">Loading decision outcomes...</p>
         </div>
-        {!embedded && <Footer />}
-      </div>
+      </PageLayout>
     );
   }
 
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      {!embedded && <StandardNav />}
+    <PageLayout embedded={embedded}>
       
       {/* Navy Header Section */}
       <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
@@ -353,8 +349,6 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           </p>
         </div>
       </div>
-      
-      {!embedded && <Footer />}
-    </div>
+    </PageLayout>
   );
 }

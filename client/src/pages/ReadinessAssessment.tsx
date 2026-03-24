@@ -32,8 +32,7 @@ import {
   Users,
   Layers,
 } from "lucide-react";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from '@/components/layout/PageLayout';
 import { Link } from "wouter";
 import { BrandStamp } from "@/components/BrandStamp";
 
@@ -294,8 +293,7 @@ export default function ReadinessAssessment() {
   const strokeDashoffset = result ? circumference - (result.score / 100) * circumference : circumference;
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
 
       {phase === "select-domain" && (
         <section className="py-16 md:py-24 px-6 bg-[#0A0F2E] relative overflow-hidden">
@@ -825,7 +823,6 @@ export default function ReadinessAssessment() {
         </section>
       )}
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

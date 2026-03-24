@@ -3,8 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Zap, Briefcase, ArrowRight, Play, Building2, Sparkles, FileText, TrendingUp, Users } from "lucide-react";
 import { useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { BrandStamp } from "@/components/BrandStamp";
 
 export default function DemoRouter() {
@@ -70,8 +69,7 @@ export default function DemoRouter() {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <StandardNav />
+    <PageLayout>
       
       <main className="flex-1">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
@@ -220,7 +218,6 @@ export default function DemoRouter() {
         </div>
       </main>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

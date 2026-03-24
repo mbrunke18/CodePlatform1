@@ -4,8 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from "@/components/layout/PageLayout";
 import { ArrowLeft, Plus, Save, AlertCircle, Trash2, CheckCircle, BookOpen } from "lucide-react";
 import { useLocation } from "wouter";
 import { useState } from "react";
@@ -158,8 +157,7 @@ export default function DecisionTreeBuilder() {
   const buttonColors = ["#2B8A6E", "#0A0F2E", "#C9A84C", '#DFC178', '#141B45', '#3BAF8A'];
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
       
       <div className="container mx-auto px-4 py-20 max-w-5xl">
         <Button 
@@ -510,7 +508,6 @@ export default function DecisionTreeBuilder() {
         </div>
       </div>
       
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

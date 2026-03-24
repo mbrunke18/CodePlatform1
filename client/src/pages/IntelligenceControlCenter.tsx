@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import { updatePageMetadata } from '@/lib/seo';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -108,8 +107,7 @@ export default function IntelligenceControlCenter() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: '#F8F7F4' }} data-testid="intelligence-control-center">
-      <StandardNav />
+    <PageLayout>
 
       {/* ─── Dark Tile Hub Header ──────────────────────────────────────── */}
       <div style={{ background: NAVY, padding: '36px 0 0' }}>
@@ -254,7 +252,6 @@ export default function IntelligenceControlCenter() {
         </div>
       </div>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

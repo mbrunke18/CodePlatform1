@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Clock, Play, Users, Zap, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from '@/components/layout/PageLayout';
 import CinematicHero from "@/components/marketing/CinematicHero";
 import SizzleReel from "@/components/marketing/SizzleReel";
 import ThirtySecondSpot from "@/components/marketing/ThirtySecondSpot";
@@ -35,8 +35,7 @@ export default function VideoLanding() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]" data-testid="page-video-landing">
-      <StandardNav />
+    <PageLayout>
       
       <div className="pt-20">
         {/* ─── Dark Hero ─────────────────────────────────────────────── */}
@@ -272,6 +271,6 @@ export default function VideoLanding() {
           </p>
         </div>
       </footer>
-    </div>
+    </PageLayout>
   );
 }

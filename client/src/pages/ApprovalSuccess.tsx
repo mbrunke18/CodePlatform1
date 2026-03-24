@@ -1,4 +1,3 @@
-import StandardNav from '@/components/layout/StandardNav';
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { CheckCircle } from 'lucide-react';

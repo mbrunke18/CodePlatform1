@@ -17,7 +17,7 @@ import {
   Target,
   ArrowRight
 } from 'lucide-react';
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { useLocation } from 'wouter';
 
 import investorFaqContent from '@/data/ExecutionOS-Investor-FAQ.md?raw';
@@ -170,8 +170,7 @@ export default function RoadshowResources() {
   const activeDocument = DOCUMENTS.find(d => d.id === activeDoc);
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
       
       {/* Navy Hero Header */}
       <div className="py-20 px-6 text-white text-center relative overflow-hidden" style={{ background: "#0A0F2E" }}>
@@ -341,6 +340,6 @@ export default function RoadshowResources() {
           </div>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }

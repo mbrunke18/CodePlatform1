@@ -1,4 +1,4 @@
-import StandardNav from '@/components/layout/StandardNav';
+import PageLayout from '@/components/layout/PageLayout';
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -145,8 +145,7 @@ export default function FutureReadinessDashboard() {
   const signalDetection = parseFloat(readiness?.signalDetection || '0');
 
   return (
-    <div className="bg-[#F8F7F4] min-h-screen">
-      <StandardNav />
+    <PageLayout>
       
       {/* Navy Header Section */}
       <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
@@ -441,6 +440,6 @@ export default function FutureReadinessDashboard() {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    </PageLayout>
   );
 }

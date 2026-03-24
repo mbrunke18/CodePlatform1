@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from "@/components/layout/PageLayout";
 import { useQuery } from "@tanstack/react-query";
 
 export default function PilotMonitoring() {
@@ -44,23 +44,21 @@ export default function PilotMonitoring() {
   // Show loading state while initial data loads
   if (healthLoading || metricsLoading || activityLoading) {
     return (
-      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-        <StandardNav />
+      <PageLayout>
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C9A84C] mx-auto"></div>
             <p className="mt-4 text-gray-800 dark:text-slate-300">Loading monitoring dashboard...</p>
           </div>
         </div>
-      </div>
+      </PageLayout>
     );
   }
 
   // Show error state if any queries failed
   if (healthError || metricsError || activityError) {
     return (
-      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-        <StandardNav />
+      <PageLayout>
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
             <AlertCircle className="w-16 h-16 text-red-700 mx-auto mb-4" />
@@ -72,21 +70,20 @@ export default function PilotMonitoring() {
             </p>
           </div>
         </div>
-      </div>
+      </PageLayout>
     );
   }
 
   // Guard against undefined data
   if (!systemHealth || !pilotMetrics || !recentActivity) {
     return (
-      <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-        <StandardNav />
+      <PageLayout>
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
             <p className="text-gray-800 dark:text-slate-300">No monitoring data available.</p>
           </div>
         </div>
-      </div>
+      </PageLayout>
     );
   }
 
@@ -98,8 +95,7 @@ export default function PilotMonitoring() {
   ];
 
   return (
-    <div className="page-background min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
@@ -330,6 +326,6 @@ export default function PilotMonitoring() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </PageLayout>
   );
 }

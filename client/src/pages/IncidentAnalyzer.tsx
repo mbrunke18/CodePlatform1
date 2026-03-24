@@ -6,8 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from '@/components/layout/PageLayout';
 import {
   AlertTriangle,
   ArrowRight,
@@ -524,8 +523,7 @@ export default function IncidentAnalyzer() {
   })();
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4]">
-      <StandardNav />
+    <PageLayout>
 
       <main className="container mx-auto px-4 py-12 pt-24 max-w-5xl">
         {/* STEP 0: WELCOME LANDING */}
@@ -1536,7 +1534,6 @@ export default function IncidentAnalyzer() {
         </div>
       </main>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

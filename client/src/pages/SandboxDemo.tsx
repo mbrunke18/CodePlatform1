@@ -12,8 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from '@/components/layout/PageLayout';
 import { useLocation } from "wouter";
 import { BrandStamp } from "@/components/BrandStamp";
 import { 
@@ -2273,8 +2272,7 @@ export default function SandboxDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
 
       <div className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
@@ -2344,7 +2342,6 @@ export default function SandboxDemo() {
         </div>
       </div>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

@@ -25,7 +25,7 @@ import {
   XCircle
 } from "lucide-react";
 import { Link } from "wouter";
-import StandardNav from "@/components/layout/StandardNav";
+import PageLayout from '@/components/layout/PageLayout';
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { BrandStamp } from "@/components/BrandStamp";
@@ -48,8 +48,7 @@ export default function InvestorResources() {
 
   return (
     <InvestorGate pageName="/investor-resources">
-    <div className="min-h-screen bg-[#F8F7F4] text-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
 
       {/* Hero Section */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ background: NAVY }}>
@@ -652,7 +651,7 @@ export default function InvestorResources() {
           </div>
         </div>
       </section>
-    </div>
+    </PageLayout>
     </InvestorGate>
   );
 }

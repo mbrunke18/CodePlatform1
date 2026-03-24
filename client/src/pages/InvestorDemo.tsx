@@ -34,8 +34,7 @@ import {
   LineChart
 } from 'lucide-react';
 import { useLocation } from 'wouter';
-import StandardNav from '@/components/layout/StandardNav';
-import Footer from '@/components/layout/Footer';
+import PageLayout from '@/components/layout/PageLayout';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { BrandStamp } from "@/components/BrandStamp";
@@ -307,8 +306,7 @@ export default function InvestorDemo() {
   const StageIcon = currentStage.icon;
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] flex flex-col">
-      <StandardNav />
+    <PageLayout>
       
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
       
@@ -710,7 +708,6 @@ export default function InvestorDemo() {
         </div>
       </main>
       
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }

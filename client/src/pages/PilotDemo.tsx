@@ -10,8 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
-import StandardNav from "@/components/layout/StandardNav";
-import Footer from "@/components/layout/Footer";
+import PageLayout from '@/components/layout/PageLayout';
 import { PageHero } from "@/components/layout/PageHero";
 import {
   ArrowRight,
@@ -289,8 +288,7 @@ export default function PilotDemo() {
   const canProceedToReady = selectedTrigger && selectedPlaybook;
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">
-      <StandardNav />
+    <PageLayout>
       
       <PageHero
         eyebrow="Pilot Demo"
@@ -795,7 +793,6 @@ export default function PilotDemo() {
         </div>
       </main>
 
-      <Footer />
-    </div>
+    </PageLayout>
   );
 }
