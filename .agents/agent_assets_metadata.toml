@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "YKDXL8v_fNIqx4S2b26bE"
+uri = "file://VaughnMartin_Execution_OS_Users_Guide.md"
+type = "text"
+title = "VaughnMartin Execution OS — Complete User Guide"
