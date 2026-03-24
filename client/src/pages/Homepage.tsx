@@ -125,22 +125,34 @@ function HomepageNav() {
           </Link>
 
           {/* Desktop nav — hidden below 768px via CSS */}
-          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
-            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Execution OS</Link>
-            <Link href="/pricing" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Pricing</Link>
+            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
+            <Link href="/research" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Evidence</Link>
             <Link href="/founder-story" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>About</Link>
-            <Link
-              href="/pilot-program"
-              onClick={() => trackCTA("nav")}
-              style={{
-                ...DM, background: NAVY, color: "#fff", fontWeight: 700, fontSize: 14,
-                padding: "10px 22px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
-                border: `2px solid ${GOLD}`,
-              }}
-            >
-              Request a Pilot
-            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <Link
+                href="/12-minute-experience"
+                onClick={() => trackCTA("nav_demo")}
+                style={{
+                  ...DM, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 14,
+                  padding: "9px 18px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.03em",
+                  border: `1.5px solid rgba(10,15,46,0.25)`,
+                }}
+              >
+                Try It Free
+              </Link>
+              <Link
+                href="/pilot-program"
+                onClick={() => trackCTA("nav")}
+                style={{
+                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
+                  padding: "10px 22px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
+                }}
+              >
+                Request a Pilot
+              </Link>
+            </div>
           </div>
 
           {/* Hamburger — shown below 768px via CSS */}
@@ -173,21 +185,31 @@ function HomepageNav() {
           </button>
           {[
             { label: "How It Works", href: "/how-it-works" },
-            { label: "Playbooks",    href: "/playbook-library" },
-            { label: "Pricing",      href: "/pricing" },
+            { label: "The Platform", href: "/platform-overview" },
+            { label: "Evidence",     href: "/research" },
             { label: "About",        href: "/founder-story" },
           ].map(item =>
-            item.onPress
-              ? <button key={item.label} onClick={item.onPress} style={{ ...DM, background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", letterSpacing: "0.02em" }}>{item.label}</button>
-              : <Link key={item.label} href={item.href!} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
+            <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
           )}
+          <Link
+            href="/12-minute-experience"
+            onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
+            style={{
+              ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
+              padding: "16px 24px", borderRadius: 4, textDecoration: "none",
+              textAlign: "center", marginTop: 24, width: "calc(100% - 48px)", display: "block",
+              border: `1.5px solid rgba(201,168,76,0.5)`,
+            }}
+          >
+            Try It Free →
+          </Link>
           <Link
             href="/pilot-program"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
             style={{
               ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
               padding: "18px 24px", borderRadius: 4, textDecoration: "none",
-              textAlign: "center", marginTop: 32, width: "calc(100% - 48px)", display: "block",
+              textAlign: "center", marginTop: 10, width: "calc(100% - 48px)", display: "block",
             }}
           >
             Request a Pilot
@@ -276,14 +298,7 @@ function HeroSection() {
             Execution OS closes that gap — in 12 minutes.
           </p>
 
-          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.75 }}>
-            The bottleneck is no longer information — AI detects competitive threats, regulatory shifts, and market signals faster than any human team. The bottleneck is execution. Every vendor bolted AI onto the same 40-year-old operating model.
-          </p>
-          <p style={{ ...DM, fontSize: 16, color: "rgba(200,212,232,0.85)", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.75, fontWeight: 500 }}>
-            Execution OS is the bridge — the vehicle that lets human organizational action keep pace with AI-generated intelligence. Pre-built execution architecture deploys the moment AI detects the signal. Not a faster spreadsheet. A redesigned operating model.
-          </p>
-
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>
             <Link
               href="/pilot-program"
               onClick={() => trackCTA("hero")}
@@ -354,13 +369,13 @@ function ProblemSection() {
     {
       num: "02", title: "Weeks Just to Get Everyone Aligned", time: "T+Weeks",
       timeLabel: "Weeks Lost",
-      body: "Emergency calls. Competing priorities. No clear ownership. Weeks of coordination pass before everyone is finally in the room — and nothing has been executed. The old model wasn't built for speed. It was built for a world where humans needed time to process.",
+      body: "Emergency calls. Competing priorities. No clear ownership. Weeks of coordination pass before anyone is aligned — and nothing has been executed.",
       accent: GOLD, terminal: false,
     },
     {
       num: "03", title: "Execution Takes Weeks to Begin", time: "T+3 weeks",
       timeLabel: "Weeks Lost",
-      body: "Now that everyone is aligned, the real delay starts. Roles assigned manually. Documents drafted from scratch. Budgets negotiated. Tasks staged one by one. Weeks pass before a single coordinated action lands.",
+      body: "Roles assigned manually. Documents drafted from scratch. Budgets negotiated. Tasks staged one by one. Weeks pass before a single coordinated action lands.",
       accent: RED_BORDER, terminal: false,
     },
     {
@@ -385,22 +400,20 @@ function ProblemSection() {
               <br />
               Execution begins weeks later.
             </h2>
-            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              It doesn't matter what kind of trigger it is. A cybersecurity breach. A competitor acquisition. A regulatory mandate. A supply chain failure. A leadership departure. A market shift. The strategic moment arrives instantly — and it demands an immediate, coordinated response.
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 24 }}>
+              It doesn't matter what kind of trigger it is — a cybersecurity breach, a competitor acquisition, a regulatory mandate, a market shift. The strategic moment arrives instantly and demands an immediate, coordinated response.
             </p>
 
-            {/* Trigger category tags */}
-            <div style={{ marginBottom: 24 }}>
+            {/* Trigger category tags — condensed */}
+            <div style={{ marginBottom: 32 }}>
               <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
                 Every situation. Every trigger. Same problem.
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {[
                   "Cybersecurity Breach", "Competitor Acquisition", "Regulatory Mandate",
-                  "Supply Chain Failure", "Executive Departure", "Market Shift",
-                  "ESG Crisis", "Financial Shock", "Geopolitical Risk",
-                  "Talent Crisis", "Product Recall", "Reputational Threat",
-                  "Technology Disruption", "M&A Pressure", "Customer Crisis",
+                  "Supply Chain Failure", "Executive Departure", "ESG Crisis",
+                  "Geopolitical Risk", "M&A Pressure", "Reputational Threat",
                 ].map((tag) => (
                   <span key={tag} style={{
                     ...DM, fontSize: 11, fontWeight: 600, color: "#444",
@@ -412,15 +425,12 @@ function ProblemSection() {
                   ...DM, fontSize: 11, fontWeight: 700, color: GOLD,
                   background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`,
                   padding: "3px 10px", borderRadius: 2,
-                }}>170 playbooks · 20 categories · 248 data points</span>
+                }}>+ 161 more across 9 domains</span>
               </div>
             </div>
 
-            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 20 }}>
-              Yet every time, your organization spends weeks — sometimes months — in emergency calls, alignment meetings, and planning sessions before a single coordinated action is taken.
-            </p>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 40 }}>
-              By the time execution begins, the window has already moved.
+              Yet every time, your organization spends weeks in alignment meetings before a single coordinated action is taken. By the time execution begins, the window has already moved.
             </p>
 
             {/* Timeline contrast callout */}
@@ -528,11 +538,8 @@ function MissingLayerSection() {
             <br />
             Nobody redesigned it.
           </h2>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
-            Committees exist because humans couldn't process information fast enough to act alone. Alignment cycles exist because coordination was expensive. 30-day response times exist because that's how long it took to get the right people in the right room with the right context.
-          </p>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 700, margin: "0 auto 16px", lineHeight: 1.7 }}>
-            AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway.
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 680, margin: "0 auto 16px", lineHeight: 1.7 }}>
+            Committees, alignment cycles, and 30-day response times exist because humans couldn't process information fast enough to act alone. AI changed that constraint. But every vendor bolted AI onto the same 40-year-old operating model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The latency stays. The window closes anyway.
           </p>
           <div style={{ margin: "32px auto 64px", maxWidth: 660, borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, textAlign: "left" }}>
             <p style={{ ...GEO, fontSize: 22, fontWeight: 700, color: GOLD, marginBottom: 6, lineHeight: 1.35 }}>
@@ -1158,6 +1165,11 @@ function CTASection() {
           </div>
           <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
             Pilot pricing available · No long-term commitment required
+          </p>
+          <p style={{ ...DM, fontSize: 13, marginTop: 12 }}>
+            <Link href="/12-minute-experience" style={{ color: GOLD, opacity: 0.7, textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
+              Or try it yourself first — no login required →
+            </Link>
           </p>
         </Reveal>
       </div>

@@ -103,14 +103,15 @@ export default function StandardNav() {
   type NavLink = { label: string; path: string; icon: any; description: string; featured?: boolean };
   type NavSection = { heading: string; links: NavLink[] };
 
-  const productSections: NavSection[] = [
+  // THE PLATFORM — merges former "Product" + "Platform" dropdowns into one clear destination
+  const platformSections: NavSection[] = [
     {
-      heading: "Start Here",
+      heading: "The Operating Model",
       links: [
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
-        { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
-        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance — the operating model" },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
+        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
+        { label: "Why Execution OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
     },
     {
@@ -123,45 +124,36 @@ export default function StandardNav() {
       ],
     },
     {
-      heading: "Evaluate",
+      heading: "Inside the Platform",
       links: [
-        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
-        { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
-        { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
-        { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS", featured: true },
+        { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub — your primary entry point", featured: true },
+        { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
+        { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
+        { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
       ],
     },
   ];
 
+  // TRY IT — self-serve experience paths
   const experienceSections: NavSection[] = [
     {
-      heading: "Try It Now",
+      heading: "Experience It Now",
       links: [
         { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
-        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive probability", featured: true },
-        { label: "Sample Playbooks", path: "/playbook-library", icon: BookOpen, description: "3 enriched playbooks — no sign-in needed" },
-        { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
-        { label: "Request a Pilot", path: "/pilot-program", icon: Target, description: "Guided 12-week enterprise deployment" },
-      ],
-    },
-    {
-      heading: "AI Power Tools",
-      links: [
+        { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Guided 4-step sequence — feel a trigger to execution live", featured: true },
+        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive" },
+        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
-        { label: "Strategic Recorder", path: "/strategic-recorder", icon: Zap, description: "Turn strategic notes into custom playbooks" },
       ],
     },
   ];
 
-  const platformLinks: NavLink[] = [
-    { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub — your primary entry point", featured: true },
-    { label: "Workspace", path: "/workspace", icon: Layers, description: "IDEA Framework — Identify · Detect · Execute · Advance" },
-    { label: "Executive Hub", path: "/executive-hub", icon: BarChart3, description: "Intelligence, velocity, readiness & analytics" },
-    { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
-    { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & coordination" },
-    { label: "ROI Dashboard", path: "/roi-dashboard", icon: Calculator, description: "Live value metrics — board-ready ROI reporting" },
-    { label: "Strategic Learning Center", path: "/execution-learning", icon: Lightbulb, description: "AI-powered performance intelligence & continuous improvement" },
-    { label: "Settings", path: "/settings-hub", icon: Settings, description: "Organization, stakeholders & integrations" },
+  // EVIDENCE — research, proof, and ROI validation
+  const evidenceLinks: NavLink[] = [
+    { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS", featured: true },
+    { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
+    { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
+    { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
   ];
 
   const investorsLinks: NavLink[] = [
@@ -345,9 +337,9 @@ export default function StandardNav() {
 
           {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {renderSectionedDropdown("Product", productSections)}
-            {renderSectionedDropdown("Experience", experienceSections, true)}
-            {renderFlatDropdown("Platform", platformLinks)}
+            {renderSectionedDropdown("The Platform", platformSections)}
+            {renderSectionedDropdown("Try It", experienceSections, true)}
+            {renderFlatDropdown("Evidence", evidenceLinks)}
             {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>
 
@@ -573,7 +565,7 @@ export default function StandardNav() {
 
               <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '12px 0' }} />
 
-              {productSections.map((section) => (
+              {platformSections.map((section) => (
                 <div key={section.heading}>
                   <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
                   {section.links.map((link) => (
@@ -615,8 +607,8 @@ export default function StandardNav() {
 
               <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Platform</p>
-              {platformLinks.map((link) => (
+              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Evidence</p>
+              {evidenceLinks.map((link) => (
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
