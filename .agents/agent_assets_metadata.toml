@@ -18,3 +18,9 @@ id = "SA5qepgCa43-S88ZZDT6h"
 uri = "file://attached_assets/generated_images/week4-linkedin-header.png"
 type = "image"
 title = "LinkedIn Article Header — 40 Seconds"
+
+[[outputs]]
+id = "YKjy1RNszZLoEega_M53T"
+uri = "file://attached_assets/generated_images/week4-linkedin-header-v2.png"
+type = "image"
+title = "Alternative Header — Enterprise Command Center"
