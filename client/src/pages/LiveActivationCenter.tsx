@@ -841,38 +841,82 @@ export default function LiveActivationCenter() {
           </div>
         </div>
 
-        {showCompletion && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-xl bg-[#0A0F2E]/80 animate-in fade-in duration-500">
-            <Card className="max-w-2xl w-full bg-white border-[#E8E4DC] rounded-3xl shadow-[0_0_100px_rgba(201,168,76,0.15)] overflow-hidden">
+        {showCompletion && (() => {
+          const simSeconds = toSimulatedTime(elapsedSeconds);
+          const simMinutes = Math.max(1, Math.round(simSeconds / 60));
+          const acknowledgedCount = stakeholders.filter(s => s.status === 'acknowledged').length;
+          const ackPct = stakeholders.length > 0 ? Math.round((acknowledgedCount / stakeholders.length) * 100) : 100;
+          const completedTasks = tasks.filter(t => t.status === 'completed').length;
+          const taskPct = tasks.length > 0 ? Math.round((completedTasks / tasks.length) * 100) : 100;
+          const targetMet = simMinutes <= 12;
+          return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-xl bg-[#0A0F2E]/80 animate-in fade-in duration-500 overflow-y-auto">
+            <Card className="max-w-2xl w-full bg-white border-[#E8E4DC] rounded-3xl shadow-[0_0_100px_rgba(201,168,76,0.15)] overflow-hidden my-6">
               <div className="h-2 bg-[#C9A84C]" />
-              <div className="p-12 text-center space-y-8">
-                <div className="w-24 h-24 bg-[#2B8A6E]/10 rounded-3xl flex items-center justify-center mx-auto border border-[#2B8A6E]/20">
-                  <Trophy className="w-12 h-12 text-[#2B8A6E]" />
+              <div className="p-10 text-center space-y-6">
+                <div className="w-20 h-20 bg-[#2B8A6E]/10 rounded-3xl flex items-center justify-center mx-auto border border-[#2B8A6E]/20">
+                  <Trophy className="w-10 h-10 text-[#2B8A6E]" />
                 </div>
-                <div className="space-y-4">
-                  <h2 style={CG} className="text-5xl font-bold text-[#0A0F2E]">Coordination Realized</h2>
-                  <p className="text-[#6B7280] text-lg max-w-md mx-auto">Playbook execution successful. All stakeholders aligned and primary objectives secured.</p>
+                <div className="space-y-3">
+                  <h2 style={CG} className="text-4xl font-bold text-[#0A0F2E]">Coordination Realized</h2>
+                  <p className="text-[#6B7280] max-w-md mx-auto">
+                    {activePlaybook?.name || 'Playbook'} executed successfully.
+                    {targetMet ? ' 12-minute target met.' : ` Coordination completed in ${simMinutes} minutes.`}
+                  </p>
                 </div>
-                
-                <div className="grid grid-cols-3 gap-6 pt-4">
+
+                {/* Live metric cards from actual activation */}
+                <div className="grid grid-cols-3 gap-4 pt-2">
                   <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
-                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Response Time</div>
-                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">1.2s</div>
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Coordination Time</div>
+                    <div className={`text-2xl font-bold font-mono ${targetMet ? 'text-[#2B8A6E]' : 'text-[#EF4444]'}`}>{simMinutes}<span className="text-sm font-normal text-[#6B7280] ml-0.5">m</span></div>
+                    <div className="text-[9px] text-[#6B7280] mt-1">{targetMet ? '✓ Below 12-min target' : 'Above 12-min target'}</div>
                   </div>
                   <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
-                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Alignment</div>
-                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">100%</div>
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Stakeholders</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">{ackPct}%</div>
+                    <div className="text-[9px] text-[#6B7280] mt-1">{acknowledgedCount} of {stakeholders.length} acknowledged</div>
                   </div>
                   <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
-                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Integrations</div>
-                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">ACTIVE</div>
+                    <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Tasks</div>
+                    <div className="text-2xl font-bold text-[#0A0F2E] font-mono">{taskPct}%</div>
+                    <div className="text-[9px] text-[#6B7280] mt-1">{completedTasks} of {tasks.length} completed</div>
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                {/* 3,600x benchmark comparison */}
+                <div className="pt-2 pb-1 px-4 rounded-2xl border border-[#E8E4DC] bg-[#0A0F2E] mx-2">
+                  <div className="text-[9px] font-bold text-[#C9A84C] uppercase tracking-widest mb-3 mt-3">Coordination Benchmark</div>
+                  <div className="grid grid-cols-3 gap-4 mb-3">
+                    <div>
+                      <div className="text-[10px] text-white/40 mb-0.5">Industry Baseline</div>
+                      <div className="text-lg font-bold font-mono text-red-400">30 days</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-white/40 mb-0.5">This Activation</div>
+                      <div className={`text-lg font-bold font-mono ${targetMet ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>{simMinutes} min</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-white/40 mb-0.5">Head Start</div>
+                      <div className="text-lg font-bold font-mono text-[#C9A84C]">{Math.round(43200 / simMinutes).toLocaleString()}×</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <Link href="/coordination-intelligence" className="flex-1">
+                    <Button
+                      variant="outline"
+                      className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] h-12 font-bold rounded-xl"
+                      onClick={() => setShowCompletion(false)}
+                    >
+                      <BarChart3 className="w-4 h-4 mr-2" />
+                      View Coordination Record
+                    </Button>
+                  </Link>
                   <Button 
                     onClick={() => { setActivationId(null); setShowCompletion(false); }}
-                    className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 font-bold rounded-xl text-lg"
+                    className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white h-12 font-bold rounded-xl"
                   >
                     Return to Mission Control
                   </Button>
@@ -880,7 +924,8 @@ export default function LiveActivationCenter() {
               </div>
             </Card>
           </div>
-        )}
+          );
+        })()}
       </div>
     </PageLayout>
   );

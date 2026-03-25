@@ -449,6 +449,7 @@ function Router() {
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
         <Route path="/simulation-studio" component={SimulationStudioPage} />
         <Route path="/roi-dashboard" component={ROIDashboard} />
+        <Route path="/coordination-intelligence" component={lazy(() => import('./pages/CoordinationIntelligence'))} />
         <Route path="/strategic-recorder" component={StrategicRecorder} />
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
         {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}

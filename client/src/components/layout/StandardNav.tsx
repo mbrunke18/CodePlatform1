@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -129,6 +129,7 @@ export default function StandardNav() {
         { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub — your primary entry point", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
+        { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
       ],
     },

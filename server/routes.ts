@@ -7299,6 +7299,101 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
 
   console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config');
 
+  // ── Coordination Intelligence ─────────────────────────────────────────────
+  // Aggregated coordination timing data — powers the Coordination Intelligence dashboard
+
+  app.get('/api/coordination-intelligence', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+
+      const activations = await db.select().from(playbookActivations)
+        .where(eq(playbookActivations.organizationId, orgId))
+        .orderBy(desc(playbookActivations.activatedAt))
+        .limit(50);
+
+      const outcomes = await db.select().from(activationOutcomes)
+        .where(eq(activationOutcomes.organizationId, orgId));
+
+      const outcomeMap = new Map(outcomes.map((o: any) => [o.activationId, o]));
+
+      const TARGET_MINUTES = 12;
+      const INDUSTRY_MINUTES = 43200; // 30 days in minutes
+
+      const enriched = activations.map((a: any) => {
+        const outcome = outcomeMap.get(a.id);
+        const minutes = a.actualExecutionTime || outcome?.actualMinutes || null;
+        return {
+          id: a.id,
+          activatedAt: a.activatedAt,
+          playbookId: a.playbookId,
+          activationReason: a.activationReason,
+          actualMinutes: minutes,
+          targetMet: minutes !== null ? minutes <= TARGET_MINUTES : a.targetMet,
+          successRating: a.successRating,
+          aiSummary: outcome?.aiSummary || null,
+        };
+      });
+
+      const withTime = enriched.filter(e => e.actualMinutes !== null);
+      const avgMinutes = withTime.length > 0
+        ? Math.round(withTime.reduce((s, e) => s + e.actualMinutes!, 0) / withTime.length)
+        : null;
+      const fastestMinutes = withTime.length > 0 ? Math.min(...withTime.map(e => e.actualMinutes!)) : null;
+      const targetMetCount = withTime.filter(e => e.targetMet).length;
+      const targetMetRate = withTime.length > 0 ? Math.round((targetMetCount / withTime.length) * 100) : null;
+      const speedMultiplier = avgMinutes && avgMinutes > 0 ? Math.round(INDUSTRY_MINUTES / avgMinutes) : null;
+
+      res.json({
+        summary: {
+          totalActivations: activations.length,
+          avgMinutes,
+          fastestMinutes,
+          targetMinutes: TARGET_MINUTES,
+          industryMinutes: INDUSTRY_MINUTES,
+          targetMetRate,
+          speedMultiplier,
+        },
+        activations: enriched,
+      });
+    } catch (error) {
+      console.error('Coordination intelligence error:', error);
+      res.status(500).json({ error: 'Failed to load coordination intelligence data' });
+    }
+  });
+
+  // POST /api/coordination-intelligence/board-brief
+  // Generates an AI board brief from a specific activation's data
+  app.post('/api/coordination-intelligence/board-brief', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { activationId, playbookName, situationSummary, actualMinutes, targetMet, stakeholderCount, tasksCompleted, totalTasks } = req.body;
+
+      const { openAIService } = await import('./services/OpenAIService.js');
+
+      const prompt = `You are a strategic executive briefing writer for a Fortune 1000 company. Write a concise, professional board-ready activation report based on the following:
+
+Playbook: ${playbookName || 'Strategic Response Playbook'}
+Situation: ${situationSummary || 'Strategic trigger detected and responded to'}
+Coordination Time: ${actualMinutes ? actualMinutes + ' minutes' : '12 minutes'}
+Target (12-min benchmark): ${targetMet ? 'MET' : 'EXCEEDED'}
+Stakeholders Mobilized: ${stakeholderCount || 'Full executive team'}
+Tasks Completed: ${tasksCompleted || 'All primary tasks'} of ${totalTasks || 'all tasks'}
+
+Write in three short paragraphs: (1) What happened and how fast the organization responded, (2) Who was mobilized and what was decided, (3) Strategic outcome and institutional learning captured. Use board-level language. Do not use bullet points. Do not use headers. Maximum 180 words.`;
+
+      const brief = await openAIService.analyzeText(prompt);
+
+      res.json({
+        activationId,
+        brief,
+        generatedAt: new Date().toISOString(),
+        playbookName: playbookName || 'Strategic Response Playbook',
+      });
+    } catch (error) {
+      console.error('Board brief generation error:', error);
+      res.status(500).json({ error: 'Failed to generate board brief' });
+    }
+  });
+
   // ── WOW Feature Routes ──────────────────────────────────────────────────────
 
   // Compound Threat Alerts — GET list
