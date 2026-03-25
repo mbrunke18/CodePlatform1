@@ -21,7 +21,7 @@ Early in my career, I spent five years coaching major college football. I'd alre
 
 Two things from that sideline never left me.
 
-The first was the sideline itself. In a major program, you don't see waiting. You see Personnel Packages and Special Teams units coiled and ready. Every player not on the field is already standing there knowing exactly what they do the moment they're called. When their number comes up, they don't stop to ask what's needed. They've repped it a thousand times during The Install. They step in and execute.
+The first was the sideline itself. In a major program, you don't see waiting. You see Personnel Packages and Special Teams units coiled and ready. Every player not on the field is already standing there knowing exactly what they do the moment they're called. When their number comes up, they don't stop to ask what's needed. They've repped it dozens, quite possibly hundreds of times during The Install. They step in and execute.
 
 The second was the quarterback at the line of scrimmage.
 
