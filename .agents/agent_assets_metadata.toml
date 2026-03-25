@@ -30,3 +30,9 @@ id = "6tUd5yaQCmb67KntceyIu"
 uri = "file://attached_assets/generated_images/week4-linkedin-header-v3.png"
 type = "image"
 title = "Option 3 — Executive at the Window"
+
+[[outputs]]
+id = "lfvD5GFoJeFdFYV6OG9V7"
+uri = "file://attached_assets/ExecutionOS_PeerReview_Questionnaire_UPDATED.md"
+type = "text"
+title = "Peer Review Questionnaire — Updated"
