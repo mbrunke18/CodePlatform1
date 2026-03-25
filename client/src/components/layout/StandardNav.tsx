@@ -414,6 +414,10 @@ export default function StandardNav() {
                       <BarChart3 className="h-4 w-4 mr-2 opacity-50" />
                       Customer Health
                     </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => navigateTo("/peer-review-report")} className="cursor-pointer" style={{ color: NAVY }}>
+                      <BarChart3 className="h-4 w-4 mr-2 opacity-50" />
+                      Peer Review Report
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={logout} className="cursor-pointer" style={{ color: '#DC2626' }} data-testid="nav-logout">
                       <LogOut className="h-4 w-4 mr-2" />

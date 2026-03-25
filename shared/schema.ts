@@ -6378,3 +6378,18 @@ export const peerReviews = pgTable('peer_reviews', {
 export const insertPeerReviewSchema = createInsertSchema(peerReviews).omit({ id: true, createdAt: true });
 export type InsertPeerReview = z.infer<typeof insertPeerReviewSchema>;
 export type PeerReview = typeof peerReviews.$inferSelect;
+
+// Improvement actions logged from peer review insights
+export const peerReviewActions = pgTable('peer_review_actions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  createdAt: timestamp('created_at').defaultNow(),
+  category: text('category').notNull().default('general'), // 'messaging' | 'product' | 'pricing' | 'credibility' | 'general'
+  insight: text('insight').notNull(), // the feedback theme that prompted this
+  action: text('action').notNull(), // what was done or planned
+  status: text('status').notNull().default('identified'), // 'identified' | 'in_progress' | 'completed'
+  completedAt: timestamp('completed_at'),
+});
+
+export const insertPeerReviewActionSchema = createInsertSchema(peerReviewActions).omit({ id: true, createdAt: true, completedAt: true });
+export type InsertPeerReviewAction = z.infer<typeof insertPeerReviewActionSchema>;
+export type PeerReviewAction = typeof peerReviewActions.$inferSelect;

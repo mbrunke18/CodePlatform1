@@ -1,4 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import { apiRequest } from "@/lib/queryClient";
 import PageLayout from "@/components/layout/PageLayout";
 
 const NAVY = "#0A0F2E";
@@ -94,6 +96,153 @@ function Quotes({ items }: { items: { name: string; role: string; org: string; t
           <p style={{ fontSize: 11, color: MUTED, margin: 0 }}>{r.name} · {r.role}, {r.org}</p>
         </div>
       ))}
+    </div>
+  );
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  messaging: GOLD,
+  product: TEAL,
+  pricing: "#7C3AED",
+  credibility: "#DC2626",
+  general: NAVY,
+};
+
+const STATUS_COLORS: Record<string, string> = {
+  identified: GOLD,
+  in_progress: TEAL,
+  completed: "#22c55e",
+};
+
+function ImprovementLog() {
+  const qc = useQueryClient();
+  const { data: actions = [] } = useQuery<any[]>({ queryKey: ["/api/peer-review-actions"] });
+
+  const [insight, setInsight] = useState("");
+  const [action, setAction] = useState("");
+  const [category, setCategory] = useState("general");
+  const [adding, setAdding] = useState(false);
+
+  const createMutation = useMutation({
+    mutationFn: (body: any) => apiRequest("POST", "/api/peer-review-actions", body),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["/api/peer-review-actions"] });
+      setInsight(""); setAction(""); setCategory("general"); setAdding(false);
+    },
+  });
+
+  const patchMutation = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      apiRequest("PATCH", `/api/peer-review-actions/${id}`, { status }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["/api/peer-review-actions"] }),
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => apiRequest("DELETE", `/api/peer-review-actions/${id}`),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["/api/peer-review-actions"] }),
+  });
+
+  const counts = { identified: 0, in_progress: 0, completed: 0 };
+  actions.forEach((a: any) => { if (counts[a.status as keyof typeof counts] !== undefined) counts[a.status as keyof typeof counts]++; });
+
+  return (
+    <div style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 8, marginBottom: 24, borderTop: `3px solid ${TEAL}`, overflow: "hidden" }}>
+      <div style={{ padding: "20px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: "0.08em" }}>Lessons Applied — Improvement Log</h3>
+          <p style={{ fontSize: 12, color: MUTED, margin: 0 }}>Track what feedback themes were actioned and what changed as a result.</p>
+        </div>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {Object.entries(counts).map(([s, n]) => (
+            <span key={s} style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 20, background: `${STATUS_COLORS[s]}18`, color: STATUS_COLORS[s], border: `1px solid ${STATUS_COLORS[s]}40` }}>
+              {n} {s.replace("_", " ")}
+            </span>
+          ))}
+          <button onClick={() => setAdding(!adding)} style={{ background: NAVY, color: GOLD, border: "none", borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em" }}>
+            {adding ? "Cancel" : "+ Log Insight"}
+          </button>
+        </div>
+      </div>
+
+      {adding && (
+        <div style={{ padding: "20px 24px", background: OFF, borderBottom: `1px solid ${BORDER}` }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr auto", gap: 12, marginBottom: 12 }}>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Feedback Theme / Insight</label>
+              <input value={insight} onChange={e => setInsight(e.target.value)} placeholder="e.g. Multiple reviewers questioned the 12-minute claim without seeing a live example"
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+            </div>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Action Taken / Planned</label>
+              <input value={action} onChange={e => setAction(e.target.value)} placeholder="e.g. Added live activation demo to the test drive complete screen"
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+            </div>
+            <div>
+              <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Category</label>
+              <select value={category} onChange={e => setCategory(e.target.value)}
+                style={{ padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", background: "white" }}>
+                {["messaging", "product", "pricing", "credibility", "general"].map(c => (
+                  <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <button
+            onClick={() => createMutation.mutate({ insight, action, category, status: "identified" })}
+            disabled={!insight.trim() || !action.trim() || createMutation.isPending}
+            style={{ background: TEAL, color: "white", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}
+          >
+            {createMutation.isPending ? "Saving..." : "Save Action"}
+          </button>
+        </div>
+      )}
+
+      {actions.length === 0 ? (
+        <div style={{ padding: "32px 24px", textAlign: "center", color: MUTED, fontSize: 13 }}>
+          No improvement actions logged yet. Use the button above to start tracking what feedback themes are being actioned.
+        </div>
+      ) : (
+        <div>
+          {actions.map((a: any) => (
+            <div key={a.id} style={{ padding: "16px 24px", borderBottom: `1px solid ${BORDER}`, display: "grid", gridTemplateColumns: "auto 1fr 1fr auto", gap: 16, alignItems: "start" }}>
+              <div>
+                <span style={{ fontSize: 10, fontWeight: 700, padding: "3px 8px", borderRadius: 3, background: `${CATEGORY_COLORS[a.category] || NAVY}15`, color: CATEGORY_COLORS[a.category] || NAVY, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  {a.category}
+                </span>
+              </div>
+              <div>
+                <p style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.06em", margin: "0 0 3px" }}>Feedback Theme</p>
+                <p style={{ fontSize: 13, color: NAVY, margin: 0, lineHeight: 1.5 }}>{a.insight}</p>
+              </div>
+              <div>
+                <p style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.06em", margin: "0 0 3px" }}>Action Taken</p>
+                <p style={{ fontSize: 13, color: NAVY, margin: 0, lineHeight: 1.5 }}>{a.action}</p>
+                {a.completedAt && <p style={{ fontSize: 11, color: MUTED, margin: "4px 0 0" }}>Completed {new Date(a.completedAt).toLocaleDateString()}</p>}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 20, background: `${STATUS_COLORS[a.status]}18`, color: STATUS_COLORS[a.status], border: `1px solid ${STATUS_COLORS[a.status]}40`, whiteSpace: "nowrap" }}>
+                  {a.status.replace("_", " ")}
+                </span>
+                <div style={{ display: "flex", gap: 4 }}>
+                  {a.status === "identified" && (
+                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "in_progress" })} style={{ fontSize: 11, padding: "3px 8px", background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}40`, borderRadius: 4, cursor: "pointer" }}>
+                      Start
+                    </button>
+                  )}
+                  {a.status === "in_progress" && (
+                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "completed" })} style={{ fontSize: 11, padding: "3px 8px", background: "#22c55e15", color: "#22c55e", border: "1px solid #22c55e40", borderRadius: 4, cursor: "pointer" }}>
+                      Complete
+                    </button>
+                  )}
+                  <button onClick={() => deleteMutation.mutate(a.id)} style={{ fontSize: 11, padding: "3px 8px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 4, cursor: "pointer" }}>
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -265,6 +414,8 @@ export default function PeerReviewReport() {
           })}
 
           {/* Individual submissions table */}
+          <ImprovementLog />
+
           <Card title={`All Submissions (${total})`} accent={MUTED}>
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>

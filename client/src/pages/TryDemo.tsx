@@ -1392,6 +1392,35 @@ export default function TryDemo() {
                           </div>
                         </CardContent>
                       </Card>
+
+                      {/* Peer Review Invitation */}
+                      <div style={{ background: "white", border: `1px solid #E8E4DC`, borderTop: `3px solid ${GOLD}`, borderRadius: 8, padding: '24px 28px' }}>
+                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                          <div style={{ width: 44, height: 44, borderRadius: 8, background: `rgba(201,168,76,0.1)`, border: `1px solid rgba(201,168,76,0.25)`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                            <FileText style={{ width: 20, height: 20, color: GOLD }} />
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>Independent Assessment</div>
+                            <h3 style={{ fontSize: 17, fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.3, fontFamily: "'Cormorant Garamond', serif" }}>Share Your Unfiltered Assessment</h3>
+                            <p style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.65, marginBottom: 16 }}>
+                              You have now seen Execution OS in action. Your candid perspective — credibility, gaps, competitive concerns — is more valuable to us than a positive review. The assessment takes 25–35 minutes and directly shapes the product roadmap.
+                            </p>
+                            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                              <a
+                                href="/peer-review"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: NAVY, color: GOLD, fontWeight: 700, fontSize: 13, padding: '10px 20px', borderRadius: 6, textDecoration: 'none', letterSpacing: '0.04em' }}
+                              >
+                                Begin Assessment
+                                <ArrowRight style={{ width: 14, height: 14 }} />
+                              </a>
+                              <span style={{ fontSize: 12, color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: 4 }}>
+                                <Clock style={{ width: 12, height: 12 }} />
+                                25–35 minutes · 28 questions
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>

@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { db } from "../db";
-import { peerReviews } from "@shared/schema";
-import { desc } from "drizzle-orm";
+import { peerReviews, peerReviewActions } from "@shared/schema";
+import { desc, eq } from "drizzle-orm";
 
 export function registerPeerReviewRoute(app: Express) {
   // Submit a peer review (public — no auth required)
@@ -163,6 +163,73 @@ export function registerPeerReviewRoute(app: Express) {
     } catch (err) {
       console.error("[PeerReview] Report error:", err);
       res.status(500).json({ error: "Failed to generate report." });
+    }
+  });
+
+  // --- Improvement Actions (Lessons Applied) ---
+
+  app.get("/api/peer-review-actions", async (req: any, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      const rows = await db.select().from(peerReviewActions).orderBy(desc(peerReviewActions.createdAt));
+      res.json(rows);
+    } catch (err) {
+      console.error("[PeerReviewActions] Fetch error:", err);
+      res.status(500).json({ error: "Failed to fetch actions." });
+    }
+  });
+
+  app.post("/api/peer-review-actions", async (req: any, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      const { category, insight, action, status } = req.body;
+      if (!insight?.trim() || !action?.trim()) {
+        return res.status(400).json({ error: "Insight and action are required." });
+      }
+      const [row] = await db.insert(peerReviewActions).values({
+        category: category || "general",
+        insight: insight.trim(),
+        action: action.trim(),
+        status: status || "identified",
+      }).returning();
+      res.json(row);
+    } catch (err) {
+      console.error("[PeerReviewActions] Create error:", err);
+      res.status(500).json({ error: "Failed to create action." });
+    }
+  });
+
+  app.patch("/api/peer-review-actions/:id", async (req: any, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      const updates: any = {};
+      if (req.body.status) updates.status = req.body.status;
+      if (req.body.action) updates.action = req.body.action;
+      if (req.body.status === "completed") updates.completedAt = new Date();
+      const [row] = await db.update(peerReviewActions).set(updates).where(eq(peerReviewActions.id, req.params.id)).returning();
+      res.json(row);
+    } catch (err) {
+      console.error("[PeerReviewActions] Update error:", err);
+      res.status(500).json({ error: "Failed to update action." });
+    }
+  });
+
+  app.delete("/api/peer-review-actions/:id", async (req: any, res) => {
+    try {
+      if (!req.isAuthenticated?.() || req.user?.claims?.sub !== "martybrunke") {
+        return res.status(403).json({ error: "Admin access required." });
+      }
+      await db.delete(peerReviewActions).where(eq(peerReviewActions.id, req.params.id));
+      res.json({ success: true });
+    } catch (err) {
+      console.error("[PeerReviewActions] Delete error:", err);
+      res.status(500).json({ error: "Failed to delete action." });
     }
   });
 }

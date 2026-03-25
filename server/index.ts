@@ -650,6 +650,22 @@ server.listen(
             logger.warn("Could not create action_items table (may already exist)");
           }
 
+          // Ensure peer_review_actions table exists
+          try {
+            await db.execute(sql`CREATE TABLE IF NOT EXISTS peer_review_actions (
+              id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+              created_at TIMESTAMP DEFAULT NOW(),
+              category TEXT NOT NULL DEFAULT 'general',
+              insight TEXT NOT NULL,
+              action TEXT NOT NULL,
+              status TEXT NOT NULL DEFAULT 'identified',
+              completed_at TIMESTAMP
+            )`);
+            logger.info("✅ Ensured peer_review_actions table exists");
+          } catch (e) {
+            logger.warn("Could not create peer_review_actions table (may already exist)");
+          }
+
           // Fix strategic categories for existing playbooks (production migration)
           // This ensures the 58/56/52 split even for records created before category logic was added
           // Version 2: Force fix on deployment

@@ -570,6 +570,47 @@ export default function PilotProgram() {
           </div>
         </section>
 
+        {/* Independent Peer Assessment */}
+        <section className="py-16 px-6 bg-[#F8F7F4]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-3">Part of the Pilot Structure</p>
+              <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4">Independent Peer Assessment</h2>
+              <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                Every pilot participant completes a structured 28-question independent assessment. Your unfiltered perspective — credibility gaps, competitive concerns, pricing instincts — is captured and used to improve the product and sharpen the go-to-market approach.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              {[
+                { label: "Before the Pilot", description: "Section A (The Problem Space) establishes your baseline — what the execution gap looks like in your organization before you have experienced the platform.", color: "#6B7280" },
+                { label: "After the Pilot", description: "Sections B–F capture your full verdict: product clarity, market viability, gaps, competitive landscape, and whether you would buy or refer.", color: "#0A0F2E" },
+                { label: "Becomes Product Intelligence", description: "Responses feed directly into a private analytics dashboard. Patterns across reviewers drive the product roadmap and sharpen messaging.", color: "#2B8A6E" },
+              ].map(item => (
+                <div key={item.label} className="bg-white border border-[#E8E4DC] rounded-lg p-6" style={{ borderTop: `3px solid ${item.color}` }}>
+                  <h3 className="font-bold text-[#0A0F2E] mb-2 text-sm uppercase tracking-wide">{item.label}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-white border border-[#E8E4DC] rounded-lg p-8 flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-1">
+                <div className="text-xs font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-2">Independent Assessment</div>
+                <h3 className="text-xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Ready to Share Your Assessment?</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Critical and skeptical feedback is more valuable than a positive review. 28 questions across 6 sections. Estimated 25–35 minutes.</p>
+              </div>
+              <div className="flex-shrink-0">
+                <Button
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] font-bold"
+                  onClick={() => { setLocation('/peer-review'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                >
+                  <FileText className="w-4 h-4 mr-2" />
+                  Begin Peer Assessment
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
