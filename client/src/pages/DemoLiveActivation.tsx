@@ -1150,9 +1150,9 @@ function DemoLiveActivation() {
 
               <div className="border-t border-gray-200 pt-4">
                 <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">TIME SAVED</div>
-                <div className="text-4xl font-bold text-[#C9A84C]">360x</div>
+                <div className="text-4xl font-bold text-[#C9A84C]">3,600×</div>
                 <div className="text-lg text-gray-800 dark:text-slate-200 mt-2">
-                  faster execution
+                  Execution Head Start
                 </div>
               </div>
 

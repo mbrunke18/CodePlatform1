@@ -275,7 +275,7 @@ export default function UnifiedEnterprisePlatform() {
                   </div>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-[#6B7280]">vs Industry</span>
-                    <span className="text-[#2B8A6E] font-semibold">360x Faster</span>
+                    <span className="text-[#2B8A6E] font-semibold">3,600× Head Start</span>
                   </div>
                 </div>
               </CardContent>

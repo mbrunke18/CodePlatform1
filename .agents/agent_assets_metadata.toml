@@ -12,3 +12,9 @@ id = "tlHhwntoUL9ckoeA3oNNm"
 uri = "file://attached_assets/week4-LINKEDIN-FINAL.md"
 type = "text"
 title = "Week 4 — LinkedIn Final Draft"
+
+[[outputs]]
+id = "SA5qepgCa43-S88ZZDT6h"
+uri = "file://attached_assets/generated_images/week4-linkedin-header.png"
+type = "image"
+title = "LinkedIn Article Header — 40 Seconds"

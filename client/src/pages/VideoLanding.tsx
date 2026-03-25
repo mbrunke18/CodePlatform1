@@ -158,7 +158,7 @@ export default function VideoLanding() {
                 <div className="space-y-4">
                   <div className="h-1 w-12 bg-[#0A0F2E]" />
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-3">
-                    Version 3: "360X Faster"
+                    Version 3: "3,600× Execution Head Start"
                   </h3>
                   <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
                     <ThirtySecondSpot version="360x-faster" />
