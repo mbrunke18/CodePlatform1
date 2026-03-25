@@ -131,8 +131,9 @@ function RadarCanvas({ signalCount }: { signalCount: number }) {
   );
 }
 
-function NavIcon({ active, title, onClick, children }: { active?: boolean; title: string; onClick: () => void; children: React.ReactNode }) {
+function NavIcon({ active, title, label, onClick, children }: { active?: boolean; title: string; label?: string; onClick: () => void; children: React.ReactNode }) {
   const [hovered, setHovered] = useState(false);
+  const on = active || hovered;
   return (
     <div
       title={title}
@@ -140,14 +141,24 @@ function NavIcon({ active, title, onClick, children }: { active?: boolean; title
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: 40, height: 40, borderRadius: 8,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        cursor: 'pointer', transition: 'all 0.2s ease',
-        background: (active || hovered) ? 'rgba(201,168,76,0.15)' : 'transparent',
-        border: `1px solid ${(active || hovered) ? 'rgba(201,168,76,0.2)' : 'transparent'}`,
-        color: (active || hovered) ? GOLD : 'rgba(240,237,228,0.45)',
+        width: '100%', height: 36, borderRadius: 6,
+        display: 'flex', alignItems: 'center', gap: 8,
+        padding: '0 10px',
+        cursor: 'pointer', transition: 'all 0.15s ease',
+        background: on ? 'rgba(201,168,76,0.13)' : 'transparent',
+        border: `1px solid ${on ? 'rgba(201,168,76,0.18)' : 'transparent'}`,
+        color: on ? GOLD : 'rgba(240,237,228,0.45)',
       }}
-    >{children}</div>
+    >
+      <span style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>{children}</span>
+      <span style={{
+        fontFamily: "'DM Mono', monospace",
+        fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase',
+        whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        fontWeight: on ? 600 : 400,
+        color: on ? GOLD : 'rgba(240,237,228,0.4)',
+      }}>{label ?? title}</span>
+    </div>
   );
 }
 
@@ -310,8 +321,22 @@ export default function CommandLanding() {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '0 32px', zIndex: 200,
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, cursor: 'pointer' }} onClick={() => setLocation('/')}>
-            <ExecuteIQLogo height={38} color="white" variant="full" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, cursor: 'pointer' }} onClick={() => setLocation('/')}>
+              <ExecuteIQLogo height={38} color="white" variant="full" />
+            </div>
+            <div style={{ width: 1, height: 24, background: 'rgba(240,237,228,0.1)' }} />
+            <div
+              onClick={() => setLocation('/platform-overview')}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', padding: '4px 10px', borderRadius: 4, transition: 'background 0.15s' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(240,237,228,0.06)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+            >
+              <svg width={12} height={12} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} style={{ color: 'rgba(240,237,228,0.35)' }}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase' }}>Platform</span>
+            </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -357,34 +382,34 @@ export default function CommandLanding() {
 
         {/* ── SIDE NAV ── */}
         <nav style={{
-          position: 'fixed', left: 0, top: 64, bottom: 0, width: 56,
+          position: 'fixed', left: 0, top: 64, bottom: 0, width: 130,
           background: 'rgba(10,15,46,0.88)', backdropFilter: 'blur(20px)',
           borderRight: '1px solid rgba(240,237,228,0.08)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center',
-          padding: '24px 0', gap: 8, zIndex: 100,
+          display: 'flex', flexDirection: 'column', alignItems: 'stretch',
+          padding: '16px 8px', gap: 4, zIndex: 100,
         }}>
-          <NavIcon active title="Command Center" onClick={() => setLocation('/command-center')}>
+          <NavIcon active title="Command Center" label="Command" onClick={() => setLocation('/command-center')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
             </svg>
           </NavIcon>
-          <NavIcon title="Signal Intelligence" onClick={() => setLocation('/signal-intelligence')}>
+          <NavIcon title="Signal Intelligence" label="Signals" onClick={() => setLocation('/signal-intelligence')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.809 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
           </NavIcon>
-          <NavIcon title="Playbook Library" onClick={() => setLocation('/playbook-library')}>
+          <NavIcon title="Playbook Library" label="Playbooks" onClick={() => setLocation('/playbook-library')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
           </NavIcon>
           <div style={{ width: 24, height: 1, background: 'rgba(240,237,228,0.08)', margin: '8px 0' }} />
-          <NavIcon title="Mission Control" onClick={() => setLocation('/mission-control')}>
+          <NavIcon title="Mission Control" label="Mission" onClick={() => setLocation('/mission-control')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
             </svg>
           </NavIcon>
-          <NavIcon title="Performance & ROI" onClick={() => setLocation('/execution-history')}>
+          <NavIcon title="Performance & ROI" label="Performance" onClick={() => setLocation('/execution-history')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
             </svg>
@@ -399,7 +424,7 @@ export default function CommandLanding() {
         </nav>
 
         {/* ── MAIN ── */}
-        <main style={{ marginLeft: 56, marginTop: 64, padding: '40px 40px 60px 48px', minHeight: 'calc(100vh - 64px)' }}>
+        <main style={{ marginLeft: 130, marginTop: 64, padding: '40px 40px 60px 48px', minHeight: 'calc(100vh - 64px)' }}>
 
           {/* Page header */}
           <div style={{ marginBottom: 36, animation: 'cl-fadeup 0.5s ease both' }}>
@@ -676,7 +701,7 @@ export default function CommandLanding() {
 
         {/* ── BOTTOM STATUS BAR ── */}
         <div style={{
-          position: 'fixed', bottom: 0, left: 56, right: 0, height: 36,
+          position: 'fixed', bottom: 0, left: 130, right: 0, height: 36,
           background: 'rgba(10,15,46,0.94)', backdropFilter: 'blur(20px)',
           borderTop: '1px solid rgba(240,237,228,0.08)',
           display: 'flex', alignItems: 'center', padding: '0 32px', gap: 32, zIndex: 100,
