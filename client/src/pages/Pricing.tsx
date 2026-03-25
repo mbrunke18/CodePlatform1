@@ -39,7 +39,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise decision velocity
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Execution OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver a 3,600× Execution Head Start and preserve millions in revenue.
+            Execution OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver 360x faster execution and preserve millions in revenue.
           </p>
         </div>
       </section>

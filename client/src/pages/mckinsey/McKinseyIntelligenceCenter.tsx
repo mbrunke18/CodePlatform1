@@ -349,7 +349,7 @@ export default function McKinseyIntelligenceCenter() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Coordination Speed Improvement</span>
-                    <span className="font-semibold text-[#0A0F2E]" data-testid="value-speed-improvement">3,600× Execution Head Start</span>
+                    <span className="font-semibold text-[#0A0F2E]" data-testid="value-speed-improvement">360x faster</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">ROI</span>

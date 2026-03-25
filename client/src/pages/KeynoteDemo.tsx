@@ -909,7 +909,7 @@ export default function KeynoteDemo() {
             className="grid grid-cols-4 gap-6"
           >
             {[
-              { label: 'Response Speed', value: '3,600×', detail: 'Execution Head Start', color: 'text-[#2B8A6E]' },
+              { label: 'Response Speed', value: '360x', detail: 'faster', color: 'text-[#2B8A6E]' },
               { label: 'Coordination', value: '95%', detail: 'automated', color: 'text-[#0A0F2E]' },
               { label: 'Cost Savings', value: '$2.4M', detail: 'per incident', color: 'text-[#C9A84C]' },
               { label: 'Executive Time', value: '23%', detail: 'reclaimed', color: 'text-[#2B8A6E]' },

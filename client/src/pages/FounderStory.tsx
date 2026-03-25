@@ -346,7 +346,7 @@ export default function FounderStory() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 64 }}>
             {[
-              { label: "90 SECONDS", title: "Quick Intro", desc: "The 30-day problem, the football insight, and why Execution OS exists.", type: "intro" as const, cta: "Watch Now" },
+              { label: "90 SECONDS", title: "Quick Intro", desc: "The 72-hour problem, the football insight, and why Execution OS exists.", type: "intro" as const, cta: "Watch Now" },
               { label: "3:30 MINUTES", title: "The Full Story", desc: "The complete narrative: Fortune 500 experience, the IDEA framework, and the vision.", type: "full" as const, cta: "Watch Full Story" },
             ].map(({ label, title, desc, type, cta }) => (
               <div key={type} style={{ background: "#fff", border: `1px solid ${BORDER}`, overflow: "hidden" }}>

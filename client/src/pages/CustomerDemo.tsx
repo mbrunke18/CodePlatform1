@@ -225,7 +225,7 @@ const VALUE_RECOVERED = [
   { icon: Timer, title: "Executive Time", value: "50+ hours", description: "per major event" },
   { icon: DollarSign, title: "Planning Cost", value: "$10K-25K", description: "eliminated" },
   { icon: Shield, title: "Value Protected", value: "$500K-2M", description: "per event" },
-  { icon: Award, title: "Response Speed", value: "3,600×", description: "Execution Head Start" },
+  { icon: Award, title: "Response Speed", value: "360x", description: "faster than industry" },
   { icon: TrendingUp, title: "Predictive Power", value: "90 days", description: "forecasting horizon" }
 ];
 
