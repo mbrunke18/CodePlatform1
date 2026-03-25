@@ -24,3 +24,9 @@ id = "YKjy1RNszZLoEega_M53T"
 uri = "file://attached_assets/generated_images/week4-linkedin-header-v2.png"
 type = "image"
 title = "Alternative Header — Enterprise Command Center"
+
+[[outputs]]
+id = "6tUd5yaQCmb67KntceyIu"
+uri = "file://attached_assets/generated_images/week4-linkedin-header-v3.png"
+type = "image"
+title = "Option 3 — Executive at the Window"
