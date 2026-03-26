@@ -131,32 +131,32 @@ const TIERS = [
 
 const FAQS = [
   {
-    q: "Why is pricing based on capability tiers instead of users?",
-    a: "Because users don't drive value — access to coordination capability does. A 50-person company executing a crisis in 12 minutes gets the same outcome as a 50,000-person company. Charging per seat would penalize adoption and reward the wrong behavior. Every tier includes unlimited users.",
+    q: "Why is pricing based on deployment scope instead of users?",
+    a: "Because headcount doesn't drive execution value — coordination depth does. A 200-person company executing a crisis in 12 minutes gets the same outcome as a 20,000-person company executing the same playbook. Charging per seat penalizes adoption and rewards the wrong behavior. Every tier includes unlimited users so you never have to decide who gets access.",
   },
   {
-    q: "What's the difference between the tiers, really?",
-    a: "Depth of coverage and level of intelligence. Ready gives you 25 playbooks across 2 domains with basic signal awareness. Responsive adds proactive detection across 16 signal categories and broader coverage. Orchestrated is the full 170-playbook library with 248+ data point monitoring, advanced AI, and full integrations. Enterprise adds multi-org support, API access, SSO, and custom implementation.",
+    q: "What exactly changes between tiers?",
+    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 playbooks across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 playbooks across 5 domains with proactive detection across all 16 signal categories. Orchestrated is the full operating model — 170 playbooks, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
   },
   {
-    q: "Why is signal detection in all tiers?",
-    a: "Because seeing it coming is part of the core value. Ready includes awareness across 5 signal categories — enough to surface critical threats. Responsive unlocks the full 16-category detection. Orchestrated adds 248+ data point monitoring. The depth scales; the access doesn't disappear.",
+    q: "How does the ROI math work at these price points?",
+    a: "The math is consistent across all tiers: the value of a single situation handled correctly in 12 minutes — versus weeks of alignment, delay, and reactive cost — far exceeds the annual investment. A vendor dispute mishandled costs $500K–$2M. A supply chain disruption caught late costs $2M–$10M. A regulatory response delayed by 30 days costs multiples of that. The Ready tier at $75K pays for itself on the first activation. Every tier above that protects proportionally more.",
   },
   {
     q: "What's the 30-day guarantee on Ready?",
-    a: "For companies starting at the Ready tier, if you activate a playbook in a real situation within 30 days and don't see value, we'll refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
+    a: "For companies starting at the Ready tier, if you activate a playbook in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
   },
   {
-    q: "How does this relate to the Enterprise Pilot ($75K)?",
-    a: "The Pilot is for Fortune 1000 companies that want a structured 90-day validation with dedicated implementation — and the $75K is 100% credited toward Year 1. The Ready/Responsive/Orchestrated tiers are designed for growth-stage companies that want to start immediately without a pilot structure. Two different motions, two different buyers.",
+    q: "How does this relate to the Fortune 1000 Enterprise Pilot ($75K)?",
+    a: "The Enterprise Pilot is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for Fortune 1000 companies at enterprise scale. The $75K pilot fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
   },
   {
-    q: "Can I change tiers later?",
-    a: "Yes. You carry everything — configurations, activation history, playbook customizations — when you move up. There's no re-onboarding and no data loss. Tier changes take effect at the next billing cycle.",
+    q: "Can I move up tiers as we grow?",
+    a: "Yes. Everything carries forward — configurations, activation history, custom playbooks, decision rights mappings. There is no re-onboarding and no data loss. You pay the difference at the next billing cycle and immediately gain access to the expanded capability.",
   },
   {
-    q: "Is this the same platform Fortune 1000 companies use?",
-    a: "Yes. Same platform, same IDEA Framework, same playbook library, same execution infrastructure. The tier determines the depth of coverage and level of support — not a restricted version of the product.",
+    q: "Is this genuinely the same platform Fortune 1000 companies use?",
+    a: "Yes. Same IDEA Framework. Same execution engine. Same 170-playbook library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
   },
 ];
 
@@ -168,9 +168,9 @@ export default function Growth() {
   useEffect(() => {
     updatePageMetadata({
       title: "Pricing & Plans — Execution OS | VaughnMartin",
-      description: "Capability-based pricing for Execution OS. Ready ($12K/yr), Responsive ($36K/yr), Orchestrated ($96K/yr), Enterprise (custom). Unlimited users at every tier.",
-      ogTitle: "Execution OS Pricing — Capability-Based, Unlimited Users",
-      ogDescription: "Four tiers of coordination infrastructure. No user limits. The same platform Fortune 1000 companies use — with an accessible path in.",
+      description: "Capability-based pricing for Execution OS. Ready ($75K/yr), Responsive ($150K/yr), Orchestrated ($250K/yr), Enterprise (custom). Unlimited users at every tier. One activation pays for the year.",
+      ogTitle: "Execution OS Pricing — Built on Deployment Scope, Not Headcount",
+      ogDescription: "Four tiers of coordination infrastructure. Unlimited users at every tier. The same platform Fortune 1000 companies use — with a structured entry path. One situation handled pays for the year.",
     });
   }, []);
 
@@ -202,16 +202,18 @@ export default function Growth() {
           </div>
 
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(38px,5vw,58px)", lineHeight: 1.05, color: NAVY, marginBottom: 20 }}>
-            Price reflects the level of<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>coordination capability.</em>
+            Price reflects how much of the<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>operating model you activate.</em>
           </h1>
 
           <p style={{ fontSize: 18, color: "#4B5563", maxWidth: 680, margin: "0 auto 12px", lineHeight: 1.6 }}>
-            Not the number of users. Not the size of the company. The depth of coordination
-            infrastructure you need — and how much intelligence you want working for you.
+            Every tier runs the same platform — the same IDEA Framework, the same execution engine,
+            the same 12-minute activation infrastructure. What scales is the breadth of deployment:
+            how many domains, how many signals, how deep the intelligence runs.
           </p>
-          <p style={{ fontSize: 15, color: "#9CA3AF", maxWidth: 560, margin: "0 auto 40px" }}>
-            Unlimited users at every tier. Same platform Fortune 1000 companies use.
+          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.55 }}>
+            One situation handled correctly returns the annual investment many times over.
+            Unlimited users at every tier. The same platform Fortune 1000 companies use.
           </p>
 
           {/* Key signals */}
@@ -408,20 +410,20 @@ export default function Growth() {
               {
                 from: "Ready", to: "Responsive", arrow: "→", color: GOLD,
                 gain: "Early warning replaces reactive response",
-                detail: "You go from handling situations to seeing them 48–72 hours before they become crises. Full 16-signal-category monitoring activates. AI recommendations start shaping your response before you've called a meeting.",
-                jump: "$12K → $36K/yr",
+                detail: "You move from handling situations to detecting them 48–72 hours before they become crises. Full 16-signal-category monitoring activates. AI recommendations start shaping your response before you've called a meeting. The difference between ready and responsive is the difference between response and prevention.",
+                jump: "$75K → $150K/yr",
               },
               {
                 from: "Responsive", to: "Orchestrated", arrow: "→", color: NAVY,
-                gain: "Coordination becomes the operating model",
-                detail: "Every domain. All 170 playbooks. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are handled before stakeholders even convene.",
-                jump: "$36K → $96K/yr",
+                gain: "Coordination becomes invisible infrastructure",
+                detail: "Every domain. All 170 playbooks. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are neutralized before stakeholders even convene. This is where execution velocity becomes a durable competitive advantage.",
+                jump: "$150K → $250K/yr",
               },
               {
                 from: "Orchestrated", to: "Enterprise", arrow: "→", color: "#6B7280",
-                gain: "Infrastructure scales across the organization",
-                detail: "Multi-BU and multi-org deployment. API access for custom integrations. SSO, dedicated implementation, and a white-glove success team. The platform becomes the enterprise operating layer — not just a department tool.",
-                jump: "$96K → Custom",
+                gain: "The operating model scales enterprise-wide",
+                detail: "Multi-BU and multi-org deployment. API access for custom integrations. SSO, dedicated implementation, and a named success team. The platform stops being a department tool and becomes the execution infrastructure the entire enterprise runs on.",
+                jump: "$250K → Custom",
               },
             ].map((gate) => (
               <div key={gate.from} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 10, padding: "28px 24px" }}>
@@ -448,14 +450,14 @@ export default function Growth() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Built-In Pilot</span>
             </div>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(24px,3vw,34px)", color: NAVY, marginBottom: 12, lineHeight: 1.15 }}>
-              Not ready to commit?<br />
-              <em style={{ fontStyle: "italic", color: GOLD }}>The Ready tier is your pilot.</em>
+              Want to validate before committing?<br />
+              <em style={{ fontStyle: "italic", color: GOLD }}>The Ready tier is your proof point.</em>
             </h3>
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.65, marginBottom: 0 }}>
-              Start with Ready at $1,200/month (or $12K/year — 2 months free on annual). You get the full platform — 
-              all signal detection, real activations, unlimited users. Run it for 30 days in your actual environment. 
-              If it doesn't deliver, we refund you. No $75K commitment required. No 90-day timeline. 
-              Just one month to see if 12-minute execution is real for your organization.
+              Start with Ready at $7,500/month (or $75,000/year — 2 months free on annual). You get the full platform —
+              real signal detection, live activations, unlimited users — deployed across your two most critical domains.
+              Run it for 30 days in your actual environment. If it doesn't deliver, we refund the first month.
+              No 90-day structured pilot. No custom implementation timeline. Start immediately and see results in your first activation.
             </p>
           </div>
           <div style={{ flex: "0 1 280px", display: "flex", flexDirection: "column" as const, gap: 14 }}>
@@ -575,10 +577,10 @@ export default function Growth() {
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, flexShrink: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY }}>Enterprise</span>
-                <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>$150K+/yr</span>
+                <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>$250K+/yr</span>
               </div>
               <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>
-                At this scale, every day of coordination delay has a measurable dollar cost. The platform pays for itself across a single strategic initiative.
+                At Fortune 1000 scale, a single mishandled strategic trigger can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
               </p>
             </div>
           </div>
