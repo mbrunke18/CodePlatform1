@@ -184,10 +184,10 @@ export default function Footer() {
                 www.vaughnmartin.com
               </a>
               <a 
-                href="mailto:mbrunke@vaughnmartin.com"
+                href="mailto:info@vaughnmartin.com"
                 className="text-sm text-slate-300 hover:text-white transition-colors"
               >
-                mbrunke@vaughnmartin.com
+                info@vaughnmartin.com
               </a>
               <button 
                 onClick={() => navigateTo('/try-demo')}

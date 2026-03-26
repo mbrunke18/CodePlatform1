@@ -1146,7 +1146,7 @@ export default function InvestorLanding() {
               </Button>
             </div>
             <p className="text-sm text-white/40">
-              VaughnMartin · Strategic Execution Operating System · <span className="text-[#C9A84C]">investor@vaughnmartin.com</span>
+              VaughnMartin · Strategic Execution Operating System · <span className="text-[#C9A84C]">info@vaughnmartin.com</span>
             </p>
           </div>
         </section>

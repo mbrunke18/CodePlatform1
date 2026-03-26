@@ -217,7 +217,7 @@ export default function InvestorGate({ children, pageName = "/investor-resources
         </div>
 
         <p style={{ textAlign: "center", marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
-          Questions? <a href="mailto:mbrunke@vaughnmartin.com" style={{ color: GOLD_LIGHT, textDecoration: "none" }}>mbrunke@vaughnmartin.com</a>
+          Questions? <a href="mailto:info@vaughnmartin.com" style={{ color: GOLD_LIGHT, textDecoration: "none" }}>info@vaughnmartin.com</a>
         </p>
       </div>
     </div>

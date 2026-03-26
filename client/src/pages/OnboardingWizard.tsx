@@ -627,7 +627,7 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
         </div>
 
         <p style={{ fontSize: 12, color: MUTED, textAlign: "center" }}>
-          Questions? Contact your implementation team at <strong style={{ color: NAVY }}>implementation@vaughnmartin.com</strong>
+          Questions? Contact your support team at <strong style={{ color: NAVY }}>support@vaughnmartin.com</strong>
         </p>
       </div>
     </div>

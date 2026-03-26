@@ -680,7 +680,7 @@ export default function PilotProgram() {
               </Button>
             </div>
             <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
-              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">mbrunke@vaughnmartin.com</span>
+              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">pilot@vaughnmartin.com</span>
             </p>
           </div>
         </section>

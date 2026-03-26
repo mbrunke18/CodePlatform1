@@ -81,7 +81,7 @@ export default function Contact() {
     } catch {
       toast({
         title: "Submission Failed",
-        description: "Please try again or email us at mbrunke@vaughnmartin.com",
+        description: "Please try again or email us at sales@vaughnmartin.com",
         variant: "destructive",
       });
     }
@@ -310,8 +310,8 @@ export default function Contact() {
               Reach out directly or learn more about program structure and success metrics.
             </p>
             <div className="flex flex-wrap justify-center gap-8 mb-12">
-              <a href="mailto:mbrunke@vaughnmartin.com" className="text-lg font-bold text-[#0A0F2E] hover:text-[#C9A84C] transition-colors border-b-2 border-[#C9A84C] pb-1">
-                mbrunke@vaughnmartin.com
+              <a href="mailto:sales@vaughnmartin.com" className="text-lg font-bold text-[#0A0F2E] hover:text-[#C9A84C] transition-colors border-b-2 border-[#C9A84C] pb-1">
+                sales@vaughnmartin.com
               </a>
             </div>
             <div className="flex flex-wrap justify-center gap-6">

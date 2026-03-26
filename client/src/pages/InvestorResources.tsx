@@ -643,9 +643,9 @@ export default function InvestorResources() {
                 Contact Martin
               </Button>
             </Link>
-            <a href="mailto:mbrunke@vaughnmartin.com">
+            <a href="mailto:info@vaughnmartin.com">
               <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent">
-                mbrunke@vaughnmartin.com
+                info@vaughnmartin.com
               </Button>
             </a>
           </div>
