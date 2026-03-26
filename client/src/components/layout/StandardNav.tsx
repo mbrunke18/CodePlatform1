@@ -155,6 +155,7 @@ export default function StandardNav() {
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
+    { label: "Pricing & Plans", path: "/growth", icon: TrendingUp, description: "Accessible entry — full platform, grow as you scale", featured: true },
   ];
 
   const investorsLinks: NavLink[] = [

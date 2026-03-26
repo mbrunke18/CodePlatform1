@@ -163,6 +163,7 @@ const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const PilotOnboarding = lazy(() => import("./pages/PilotOnboarding"));
+const Growth = lazy(() => import("./pages/Growth"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
@@ -414,6 +415,7 @@ function Router() {
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />
         <Route path="/pilot-onboarding" component={PilotOnboarding} />
+        <Route path="/growth" component={Growth} />
         <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}
 
