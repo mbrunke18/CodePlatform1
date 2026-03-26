@@ -371,6 +371,50 @@ export default function Growth() {
         </div>
       </section>
 
+      {/* ── GROWTH PILOT CALLOUT ── */}
+      <section style={{ background: `linear-gradient(135deg, rgba(43,138,110,0.06) 0%, rgba(201,168,76,0.06) 100%)`, borderTop: `1px solid #E8E4DC`, borderBottom: `1px solid #E8E4DC`, padding: "48px 48px" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
+          <div style={{ flex: "1 1 400px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Built-In Pilot</span>
+            </div>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(24px,3vw,34px)", color: NAVY, marginBottom: 12, lineHeight: 1.15 }}>
+              Not ready to commit?<br />
+              <em style={{ fontStyle: "italic", color: GOLD }}>The Ready tier is your pilot.</em>
+            </h3>
+            <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.65, marginBottom: 0 }}>
+              Start with Ready at $1,000/month. You get the full platform — all signal detection, real activations, 
+              unlimited users. Run it for 30 days in your actual environment. If it doesn't deliver, we refund you.
+              No $75K commitment required. No 90-day timeline. Just one month to see if 12-minute execution is real for your organization.
+            </p>
+          </div>
+          <div style={{ flex: "0 1 280px", display: "flex", flexDirection: "column" as const, gap: 14 }}>
+            {[
+              { label: "Full platform access", sub: "All signal detection included" },
+              { label: "Unlimited users", sub: "Bring your whole team" },
+              { label: "30-day money-back", sub: "If it doesn't deliver, walk away" },
+            ].map((item) => (
+              <div key={item.label} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                <div style={{ width: 20, height: 20, borderRadius: "50%", background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{item.label}</div>
+                  <div style={{ fontSize: 11, color: "#9CA3AF" }}>{item.sub}</div>
+                </div>
+              </div>
+            ))}
+            <button
+              onClick={() => setLocation("/contact")}
+              style={{ marginTop: 8, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, background: TEAL, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, padding: "14px 24px", borderRadius: 6, border: "none", cursor: "pointer" }}
+            >
+              Start My Pilot <ArrowRight style={{ width: 14, height: 14 }} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* ── WHAT DRIVES VALUE ── */}
       <section style={{ background: OFF, padding: "80px 48px", borderTop: `1px solid #E8E4DC`, borderBottom: `1px solid #E8E4DC` }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
