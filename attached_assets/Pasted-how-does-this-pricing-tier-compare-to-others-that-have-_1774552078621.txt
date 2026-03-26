@@ -1,0 +1,125 @@
+how does this pricing tier compare to others that have been in this stage and or to existing similar products
+
+2:52 PM
+Great question. Let me research comparable pricing models and give you honest context.
+
+
+Searched the web
+Searched the web
+Now let me give you a comprehensive comparison:
+
+MARKET PRICING BENCHMARKS
+Per-User SaaS (Your Competitors' Model)
+Product	Entry Tier	Mid Tier	Enterprise
+Asana	$10.99/user/month (Starter) 
+CostBench
+$24.99/user/month (Advanced) 
+CostBench
+Custom ($35+/user)
+Monday.com	$9/user/month (Basic) 
+Cloudnuro
+$16/user/month (Pro) 
+Cloudnuro
+Custom
+Lattice	$11/user/month 
+ClickUp
+Add-ons available	Custom
+WorkBoard	Custom only	$35-50/user/month estimated 
+Mooncamp
+Custom
+Quantive	Contact sales	Contact sales	Custom
+Early-Stage SaaS Benchmarks
+Metric	Range	Source
+Early-stage enterprise ACV 
+Wingback
+$6,000 to $10,000 
+Wingback
+Industry standard
+More established companies 
+Wingback
+$15,000 to $25,000 or more 
+Wingback
+Industry standard
+Average OKR software cost 
+Worxmate
+$5-10/user/month basic, $10-20 advanced 
+Worxmate
+Market analysis
+SMB-focused company (Xero example) 
+Ratiotech
+$500/year average per customer 
+Ratiotech
+Public data
+Enterprise company (Apigee example) 
+Ratiotech
+$200,000 per customer average 
+Ratiotech
+Public data
+YOUR PROPOSED PRICING vs. MARKET
+Your Tier	Your Price	Market Equivalent	Assessment
+Ready ($12K/year)	$1,000/month	WorkBoard entry (~$35-50/user × 20 users = $8.4K-$12K/year)	✅ Competitive
+Responsive ($36K/year)	$3,000/month	Asana Advanced (25 users × $25 × 12 = $7.5K/year)	⚠️ Premium - need to justify
+Orchestrated ($96K/year)	$8,000/month	Enterprise OKR/strategy tools ($50K-$150K)	✅ Mid-range enterprise
+Enterprise ($150K+/year)	Custom	Large enterprise deals ($100K-$500K)	✅ Standard
+THE CRITICAL INSIGHT
+What They Price On vs. What You Price On
+Traditional SaaS	Execution OS
+Per-seat — penalizes adoption	Per-capability — encourages adoption
+More users = more revenue	More outcomes = more value
+Value in access to software	Value in coordination delivered
+Scales with headcount	Scales with strategic complexity
+Why Your Model Is Different (And Defensible)
+"Our costs are $X, so we charge $X + 30% margin." This is the worst way to price SaaS. Your costs have nothing to do with the value you deliver. If your product saves a customer $100,000 per year and your costs are $500 per month, charging $650 per month (cost + margin) is leaving $7,000+ per year on the table. Price based on value, not costs. 
+PipelineRoad
+
+You're pricing on value, not seats. That's correct.
+
+HONEST ASSESSMENT OF YOUR TIERS
+Tier	Price	Verdict	Concern
+Ready ($12K)	✅ Good entry point	Matches early-stage enterprise ACV benchmarks	Could be perceived as high for SMB
+Responsive ($36K)	⚠️ Premium	3x jump is steep	Need clear value differentiation
+Orchestrated ($96K)	✅ Reasonable for full platform	Competitive with enterprise strategy tools	Make sure feature gap from Responsive is clear
+Enterprise ($150K+)	✅ Standard	Matches market expectations	Appropriate
+WHAT I'D ADJUST
+Option A: Add a Lower Entry Point
+Tier	Price	What They Get
+Starter (NEW)	$6K/year ($500/month)	10 playbooks, 1 domain, unlimited users
+Ready	$12K/year	25 playbooks, 2 domains
+Responsive	$36K/year	75 playbooks, 5 domains, signal detection
+Orchestrated	$96K/year	Full platform
+Enterprise	$150K+	Custom
+Why: For early-stage startups, an enterprise customer might be defined with an ACV starting from $6,000 to $10,000. 
+Wingback
+ A $6K entry captures the SMB inquiries you're getting.
+
+Option B: Simplify to 3 Tiers + Enterprise
+Tier	Price	Positioning
+Foundation	$12K/year	Be prepared
+Professional	$48K/year	See it coming + act fast
+Enterprise	Custom ($100K+)	Full coordination infrastructure
+Why: Three is the standard for most B2B SaaS products, and it works for a reason: it provides a clear good-better-best framework that guides buyer decision-making. 
+PipelineRoad
+
+THE UNIQUE POSITIONING OF UNLIMITED USERS
+What Competitors Do	What You Do
+Charge per seat ($10-50/user)	Charge per capability
+50 users = $6K-$30K/year	50 users = same $12K-$96K/year
+Punish adoption	Reward adoption
+CFO pushes back on adding users	CFO says "add whoever needs it"
+This is a selling point. Make it prominent:
+
+"Unlike per-seat software that charges you more as you grow, Execution OS charges for capability, not headcount. Add everyone who needs to coordinate. The price stays the same."
+
+BOTTOM LINE
+Dimension	Assessment
+Entry point ($12K)	Reasonable but consider $6K for SMB
+Mid-tier jumps	3x jumps are aggressive — ensure clear value gates
+Enterprise pricing	Standard, appropriate
+Unlimited users model	Differentiated, defensible, strong selling point
+Value-based (not seat-based)	Correct approach for your product
+MY RECOMMENDATION
+Add a $6K "Starter" tier to capture SMB inquiries
+Keep unlimited users — it's a competitive advantage
+Make the value gates crystal clear between tiers (what you CAN'T do in lower tiers)
+Lead with ROI math — "One crisis handled well pays for the year"
+Annual contracts with monthly payment option — reduces friction
