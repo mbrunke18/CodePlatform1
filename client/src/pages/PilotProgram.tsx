@@ -611,6 +611,43 @@ export default function PilotProgram() {
           </div>
         </section>
 
+        {/* Pilot Onboarding Preview */}
+        <section className="py-14 px-6 bg-[#0A0F2E]">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-3">What Happens After You Sign</p>
+              <h2 className="text-2xl font-bold text-white mb-3">Your first 90 days, by role.</h2>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">
+                Every pilot comes with a structured onboarding guide built around the five roles present in every Fortune 1000 pilot — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {[
+                { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 10 users onboarded. Integration live. First playbook activation completed.' },
+                { phase: 'Days 31–60', label: 'Velocity', color: '#C9A84C', desc: 'Multiple activations with documented outcomes. ROI data capture begins.' },
+                { phase: 'Days 61–90', label: 'Proof', color: '#7C6FD4', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
+              ].map((t) => (
+                <div key={t.label} style={{ borderTop: `3px solid ${t.color}` }} className="bg-white/5 rounded-xl p-5">
+                  <p style={{ color: t.color }} className="text-xs font-bold tracking-widest uppercase mb-1">{t.phase}</p>
+                  <p className="text-white font-semibold text-sm mb-2">{t.label}</p>
+                  <p className="text-slate-400 text-xs leading-relaxed">{t.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="text-center">
+              <button
+                onClick={() => setLocation('/pilot-onboarding')}
+                className="inline-flex items-center gap-2 text-[#C9A84C] text-sm font-semibold hover:text-white transition-colors"
+              >
+                See the full role-by-role onboarding guide
+                <svg width={14} height={14} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
