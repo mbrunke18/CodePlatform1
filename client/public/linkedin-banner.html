@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1584px; height: 396px; overflow: hidden; background: #132558; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+
+  .banner {
+    width: 1584px;
+    height: 396px;
+    background: #132558;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Gold grid overlay */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.09) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Teal orb — left center */
+  .orb-teal {
+    position: absolute;
+    left: -120px;
+    top: -180px;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(43,138,110,0.22) 0%, transparent 65%);
+  }
+
+  /* Gold orb — right */
+  .orb-gold {
+    position: absolute;
+    right: -80px;
+    bottom: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 65%);
+  }
+
+  /* Faint teal orb — upper right */
+  .orb-teal-2 {
+    position: absolute;
+    right: 200px;
+    top: -150px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(43,138,110,0.10) 0%, transparent 70%);
+  }
+
+  /* Bottom gold rule */
+  .bottom-rule {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6) 20%, rgba(201,168,76,0.9) 50%, rgba(201,168,76,0.6) 80%, transparent);
+  }
+
+  /* Top rule — very faint */
+  .top-rule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  /* Left vertical divider */
+  .divider-left {
+    position: absolute;
+    left: 440px;
+    top: 48px;
+    bottom: 48px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.2) 30%, rgba(201,168,76,0.2) 70%, transparent);
+  }
+
+  /* Right vertical divider */
+  .divider-right {
+    position: absolute;
+    left: 1100px;
+    top: 48px;
+    bottom: 48px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.2) 30%, rgba(201,168,76,0.2) 70%, transparent);
+  }
+
+  /* ── LEFT PANEL — Brand Identity ── */
+  .panel-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 440px;
+    height: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 48px;
+    gap: 0;
+  }
+
+  .logo-seal {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 18px;
+  }
+
+  .brand-name {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: #F0EDE4;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .brand-tagline {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #C9A84C;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .brand-url {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    color: rgba(240,237,228,0.3);
+    letter-spacing: 1.5px;
+    text-transform: lowercase;
+  }
+
+  /* ── CENTER PANEL — Core Thesis ── */
+  .panel-center {
+    position: absolute;
+    left: 440px;
+    top: 0;
+    width: 660px;
+    height: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 56px;
+    text-align: center;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(240,237,228,0.3);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .thesis {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #F0EDE4;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .thesis em {
+    font-style: normal;
+    color: #C9A84C;
+  }
+
+  .thesis-sub {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    color: rgba(240,237,228,0.45);
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  /* Comparison bar */
+  .comparison {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+  }
+
+  .comp-old {
+    text-align: center;
+  }
+  .comp-old .val {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(240,237,228,0.35);
+    text-decoration: line-through;
+    text-decoration-color: rgba(240,237,228,0.2);
+  }
+  .comp-old .lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: rgba(240,237,228,0.25);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .comp-arrow {
+    font-size: 20px;
+    color: rgba(201,168,76,0.5);
+  }
+
+  .comp-new {
+    text-align: center;
+  }
+  .comp-new .val {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #2B8A6E;
+  }
+  .comp-new .lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: rgba(43,138,110,0.7);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+    border-right: 1px solid rgba(240,237,228,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-val {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(240,237,228,0.7);
+  }
+  .stat-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 1.2px;
+    color: rgba(240,237,228,0.3);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── RIGHT PANEL — Key Metric ── */
+  .panel-right {
+    position: absolute;
+    left: 1100px;
+    top: 0;
+    width: 484px;
+    height: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 48px;
+    text-align: center;
+  }
+
+  .metric-label {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(201,168,76,0.5);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .metric-number {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 88px;
+    font-weight: 900;
+    color: #C9A84C;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+  }
+
+  .metric-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(240,237,228,0.8);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .metric-desc {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    color: rgba(240,237,228,0.3);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .metric-badge {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(43,138,110,0.12);
+    border: 1px solid rgba(43,138,110,0.25);
+  }
+  .metric-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2B8A6E;
+  }
+  .metric-badge-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: #2B8A6E;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <!-- Background layers -->
+  <div class="grid"></div>
+  <div class="orb-teal"></div>
+  <div class="orb-gold"></div>
+  <div class="orb-teal-2"></div>
+
+  <!-- Rules & dividers -->
+  <div class="top-rule"></div>
+  <div class="bottom-rule"></div>
+  <div class="divider-left"></div>
+  <div class="divider-right"></div>
+
+  <!-- ── LEFT PANEL ── -->
+  <div class="panel-left">
+    <!-- VM Circular Seal Logo (SVG) -->
+    <svg class="logo-seal" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring -->
+      <circle cx="60" cy="60" r="56" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
+      <!-- Inner ring -->
+      <circle cx="60" cy="60" r="48" stroke="url(#goldGrad)" stroke-width="1" fill="none" opacity="0.5"/>
+      <!-- Tick marks -->
+      <line x1="60" y1="4" x2="60" y2="12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <line x1="60" y1="108" x2="60" y2="116" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="60" x2="12" y2="60" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <line x1="108" y1="60" x2="116" y2="60" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <line x1="19.3" y1="19.3" x2="24.9" y2="24.9" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="95.1" y1="95.1" x2="100.7" y2="100.7" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="19.3" y1="100.7" x2="24.9" y2="95.1" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="95.1" y1="24.9" x2="100.7" y2="19.3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <!-- VM Monogram -->
+      <text x="60" y="55" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800" fill="url(#goldGrad)" letter-spacing="1">VM</text>
+      <!-- Inner text -->
+      <text x="60" y="70" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(240,237,228,0.4)" letter-spacing="2">EXECUTION OS</text>
+      <defs>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#E8C96A"/>
+          <stop offset="50%" stop-color="#C9A84C"/>
+          <stop offset="100%" stop-color="#A87D2A"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="brand-name">VaughnMartin</div>
+    <div class="brand-tagline">Execution Operating System</div>
+    <div class="brand-url">vaughnmartin.com</div>
+  </div>
+
+  <!-- ── CENTER PANEL ── -->
+  <div class="panel-center">
+    <div class="eyebrow">Strategic Execution Platform · Fortune 1000</div>
+    <div class="thesis">
+      We redesign how work flows<br>
+      <em>in the age of AI.</em>
+    </div>
+    <div class="thesis-sub">
+      Enterprise work was built for a world without AI.<br>Nobody redesigned it. Until now.
+    </div>
+
+    <!-- 30 days → 12 min comparison -->
+    <div class="comparison">
+      <div class="comp-old">
+        <div class="val">30 Days</div>
+        <div class="lbl">Traditional Mobilization</div>
+      </div>
+      <div class="comp-arrow">→</div>
+      <div class="comp-new">
+        <div class="val">12 Minutes</div>
+        <div class="lbl">Execution OS</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-val">170</div>
+        <div class="stat-lbl">Playbooks</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">221</div>
+        <div class="stat-lbl">Triggers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">9</div>
+        <div class="stat-lbl">Domains</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">248+</div>
+        <div class="stat-lbl">Data Points</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RIGHT PANEL ── -->
+  <div class="panel-right">
+    <div class="metric-label">Execution Head Start</div>
+    <div class="metric-number">3,600×</div>
+    <div class="metric-title">Faster to Full Coordination</div>
+    <div class="metric-desc">
+      Before a competitor's<br>committee meets once
+    </div>
+    <div class="metric-badge">
+      <div class="metric-badge-dot"></div>
+      <div class="metric-badge-text">AI · Always On</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
