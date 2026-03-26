@@ -82,7 +82,7 @@ const TIERS = [
     badge: null,
     guarantee: false,
     cta: "Get Started",
-    ctaAction: "/pilot-program",
+    ctaAction: "/contact",
     capabilities: [
       { label: "Playbooks", value: "Full library — all 170" },
       { label: "Strategic domains", value: "All 9" },
@@ -111,7 +111,7 @@ const TIERS = [
     badge: "Custom Pricing",
     guarantee: false,
     cta: "Contact Us",
-    ctaAction: "/pilot-program",
+    ctaAction: "/contact",
     capabilities: [
       { label: "Everything in Orchestrated", value: true },
       { label: "Multi-org / Multi-BU", value: true },
