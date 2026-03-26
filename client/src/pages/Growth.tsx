@@ -5,15 +5,6 @@ import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Check, X, ArrowRight, ChevronDown, ChevronUp, Shield, Radar, Zap, Globe } from "lucide-react";
 
-function openLink(url: string) {
-  const a = document.createElement('a');
-  a.href = url;
-  a.target = url.startsWith('mailto') ? '_self' : '_blank';
-  a.rel = 'noopener noreferrer';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -33,7 +24,7 @@ const TIERS = [
     badge: null,
     guarantee: true,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Ready%20Tier",
+    ctaAction: "/contact",
     capabilities: [
       { label: "Playbooks", value: "25 essential scenarios" },
       { label: "Strategic domains", value: "2 (choose from 9)" },
@@ -62,7 +53,7 @@ const TIERS = [
     badge: "Most Popular",
     guarantee: false,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Responsive%20Tier",
+    ctaAction: "/contact",
     capabilities: [
       { label: "Playbooks", value: "75 scenarios" },
       { label: "Strategic domains", value: "5 (choose from 9)" },
@@ -91,7 +82,7 @@ const TIERS = [
     badge: null,
     guarantee: false,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Orchestrated%20Tier",
+    ctaAction: "/pilot-program",
     capabilities: [
       { label: "Playbooks", value: "Full library — all 170" },
       { label: "Strategic domains", value: "All 9" },
@@ -120,7 +111,7 @@ const TIERS = [
     badge: "Custom Pricing",
     guarantee: false,
     cta: "Contact Us",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Enterprise",
+    ctaAction: "/pilot-program",
     capabilities: [
       { label: "Everything in Orchestrated", value: true },
       { label: "Multi-org / Multi-BU", value: true },
@@ -359,18 +350,20 @@ export default function Growth() {
                   </p>
 
                   {/* CTA */}
-                  <Button
-                    onClick={() => openLink(tier.ctaAction)}
+                  <button
+                    onClick={() => setLocation(tier.ctaAction)}
                     style={{
+                      display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
                       background: tier.highlight ? GOLD : isOrchestrated || isEnterprise ? NAVY : "#fff",
                       color: tier.highlight || isOrchestrated || isEnterprise ? "#fff" : NAVY,
                       border: tier.highlight || isOrchestrated || isEnterprise ? "none" : `1px solid #E8E4DC`,
                       fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase",
-                      width: "100%", padding: "14px"
+                      width: "100%", padding: "14px", borderRadius: 6,
+                      cursor: "pointer", boxSizing: "border-box"
                     }}
                   >
-                    {tier.cta} — {tier.name} <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-                  </Button>
+                    {tier.cta} — {tier.name} <ArrowRight style={{ width: 14, height: 14 }} />
+                  </button>
                 </div>
               );
             })}
@@ -511,12 +504,12 @@ export default function Growth() {
               </div>
             ))}
           </div>
-          <Button
-            onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20PE%20Portfolio%20Inquiry")}
-            style={{ background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
+          <button
+            onClick={() => setLocation("/contact")}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
           >
-            Talk to Our Team <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+            Talk to Our Team <ArrowRight style={{ width: 16, height: 16 }} />
+          </button>
         </div>
       </section>
 
@@ -590,12 +583,12 @@ export default function Growth() {
             No user limits. No locked features. Full platform from day one.
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <Button
-              onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Pricing%20Inquiry")}
-              style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
+            <button
+              onClick={() => setLocation("/contact")}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
             >
-              Contact Sales <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+              Contact Sales <ArrowRight style={{ width: 16, height: 16 }} />
+            </button>
             <Button
               variant="outline"
               onClick={() => setLocation("/try-demo")}
@@ -605,7 +598,13 @@ export default function Growth() {
             </Button>
           </div>
           <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 20 }}>
-            Questions? <a href="mailto:sales@vaughnmartin.com" style={{ color: GOLD, textDecoration: "none" }}>sales@vaughnmartin.com</a>
+            Questions?{" "}
+            <button
+              onClick={() => setLocation("/contact")}
+              style={{ background: "none", border: "none", color: GOLD, fontSize: 13, cursor: "pointer", padding: 0, textDecoration: "underline" }}
+            >
+              Contact our team
+            </button>
           </p>
         </div>
       </section>
