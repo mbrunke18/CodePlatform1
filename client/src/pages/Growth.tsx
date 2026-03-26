@@ -353,9 +353,17 @@ export default function Growth() {
                   </ul>
 
                   {/* Best for */}
-                  <p style={{ fontSize: 12, color: "#9CA3AF", lineHeight: 1.55, marginBottom: 20, paddingTop: 12, borderTop: `1px solid #F3F4F6` }}>
+                  <p style={{ fontSize: 12, color: "#9CA3AF", lineHeight: 1.55, marginBottom: 12, paddingTop: 12, borderTop: `1px solid #F3F4F6` }}>
                     <strong style={{ color: "#6B7280" }}>Best for: </strong>{tier.bestFor}
                   </p>
+
+                  {/* ROI note */}
+                  <div style={{ background: tier.highlight ? `rgba(201,168,76,0.06)` : `rgba(10,15,46,0.03)`, borderLeft: `3px solid ${tier.color}`, padding: "12px 14px", marginBottom: 20, borderRadius: "0 4px 4px 0" }}>
+                    <p style={{ fontSize: 11, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>
+                      <strong style={{ color: NAVY, fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase" }}>ROI Math — </strong>
+                      {tier.roiNote}
+                    </p>
+                  </div>
 
                   {/* CTA */}
                   <button
