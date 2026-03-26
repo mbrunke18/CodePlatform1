@@ -33,7 +33,7 @@ const TIERS = [
     badge: null,
     guarantee: true,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution OS — Ready Tier",
+    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Ready%20Tier",
     capabilities: [
       { label: "Playbooks", value: "25 essential scenarios" },
       { label: "Strategic domains", value: "2 (choose from 9)" },
@@ -62,7 +62,7 @@ const TIERS = [
     badge: "Most Popular",
     guarantee: false,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution OS — Responsive Tier",
+    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Responsive%20Tier",
     capabilities: [
       { label: "Playbooks", value: "75 scenarios" },
       { label: "Strategic domains", value: "5 (choose from 9)" },
@@ -91,7 +91,7 @@ const TIERS = [
     badge: null,
     guarantee: false,
     cta: "Get Started",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution OS — Orchestrated Tier",
+    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Orchestrated%20Tier",
     capabilities: [
       { label: "Playbooks", value: "Full library — all 170" },
       { label: "Strategic domains", value: "All 9" },
@@ -120,7 +120,7 @@ const TIERS = [
     badge: "Custom Pricing",
     guarantee: false,
     cta: "Contact Us",
-    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution OS — Enterprise",
+    ctaAction: "mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Enterprise",
     capabilities: [
       { label: "Everything in Orchestrated", value: true },
       { label: "Multi-org / Multi-BU", value: true },
@@ -512,7 +512,7 @@ export default function Growth() {
             ))}
           </div>
           <Button
-            onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution OS — PE Portfolio Inquiry")}
+            onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20PE%20Portfolio%20Inquiry")}
             style={{ background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
           >
             Talk to Our Team <ArrowRight className="ml-2 h-4 w-4" />
@@ -591,7 +591,7 @@ export default function Growth() {
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Button
-              onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution OS — Pricing Inquiry")}
+              onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution%20OS%20-%20Pricing%20Inquiry")}
               style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
             >
               Contact Sales <ArrowRight className="ml-2 h-4 w-4" />
