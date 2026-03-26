@@ -18,7 +18,7 @@ const TIERS = [
     name: "Ready",
     headline: "Be prepared for the moments that matter.",
     annual: 12000,
-    monthly: 1000,
+    monthly: 1200,
     color: TEAL,
     highlight: false,
     badge: null,
@@ -47,7 +47,7 @@ const TIERS = [
     name: "Responsive",
     headline: "See it coming. Act before it hits.",
     annual: 36000,
-    monthly: 3000,
+    monthly: 3600,
     color: GOLD,
     highlight: true,
     badge: "Most Popular",
@@ -76,7 +76,7 @@ const TIERS = [
     name: "Orchestrated",
     headline: "Coordination made invisible.",
     annual: 96000,
-    monthly: 8000,
+    monthly: 9600,
     color: NAVY,
     highlight: false,
     badge: null,
@@ -321,9 +321,16 @@ export default function Growth() {
                         <span style={{ fontSize: 13, color: "#9CA3AF" }}>/{annual ? "year" : "month"}</span>
                       </div>
                       {annual ? (
-                        <p style={{ fontSize: 12, color: "#6B7280" }}>≈ ${tier.monthly!.toLocaleString()}/month</p>
+                        <p style={{ fontSize: 12, color: "#6B7280" }}>
+                          ≈ ${Math.round(tier.annual! / 12).toLocaleString()}/month &middot;{" "}
+                          <span style={{ color: TEAL, fontWeight: 600 }}>
+                            Save ${(tier.monthly! * 12 - tier.annual!).toLocaleString()}/yr vs. monthly
+                          </span>
+                        </p>
                       ) : (
-                        <p style={{ fontSize: 12, color: TEAL, fontWeight: 600 }}>Save with annual billing</p>
+                        <p style={{ fontSize: 12, color: TEAL, fontWeight: 600 }}>
+                          Annual saves you ${(tier.monthly! * 12 - tier.annual!).toLocaleString()}/yr — 2 months free
+                        </p>
                       )}
                       {tier.guarantee && (
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 20, padding: "3px 10px" }}>
@@ -445,9 +452,10 @@ export default function Growth() {
               <em style={{ fontStyle: "italic", color: GOLD }}>The Ready tier is your pilot.</em>
             </h3>
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.65, marginBottom: 0 }}>
-              Start with Ready at $1,000/month. You get the full platform — all signal detection, real activations, 
-              unlimited users. Run it for 30 days in your actual environment. If it doesn't deliver, we refund you.
-              No $75K commitment required. No 90-day timeline. Just one month to see if 12-minute execution is real for your organization.
+              Start with Ready at $1,200/month (or $12K/year — 2 months free on annual). You get the full platform — 
+              all signal detection, real activations, unlimited users. Run it for 30 days in your actual environment. 
+              If it doesn't deliver, we refund you. No $75K commitment required. No 90-day timeline. 
+              Just one month to see if 12-minute execution is real for your organization.
             </p>
           </div>
           <div style={{ flex: "0 1 280px", display: "flex", flexDirection: "column" as const, gap: 14 }}>
