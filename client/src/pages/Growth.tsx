@@ -5,6 +5,16 @@ import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Check, X, ArrowRight, ChevronDown, ChevronUp, Shield, Radar, Zap, Globe } from "lucide-react";
 
+function openLink(url: string) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.target = url.startsWith('mailto') ? '_self' : '_blank';
+  a.rel = 'noopener noreferrer';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
@@ -350,7 +360,7 @@ export default function Growth() {
 
                   {/* CTA */}
                   <Button
-                    onClick={() => window.location.href = tier.ctaAction}
+                    onClick={() => openLink(tier.ctaAction)}
                     style={{
                       background: tier.highlight ? GOLD : isOrchestrated || isEnterprise ? NAVY : "#fff",
                       color: tier.highlight || isOrchestrated || isEnterprise ? "#fff" : NAVY,
@@ -502,7 +512,7 @@ export default function Growth() {
             ))}
           </div>
           <Button
-            onClick={() => window.location.href = "mailto:sales@vaughnmartin.com?subject=Execution OS — PE Portfolio Inquiry"}
+            onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution OS — PE Portfolio Inquiry")}
             style={{ background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
           >
             Talk to Our Team <ArrowRight className="ml-2 h-4 w-4" />
@@ -581,7 +591,7 @@ export default function Growth() {
           </p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Button
-              onClick={() => window.location.href = "mailto:sales@vaughnmartin.com?subject=Execution OS — Pricing Inquiry"}
+              onClick={() => openLink("mailto:sales@vaughnmartin.com?subject=Execution OS — Pricing Inquiry")}
               style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
             >
               Contact Sales <ArrowRight className="ml-2 h-4 w-4" />
