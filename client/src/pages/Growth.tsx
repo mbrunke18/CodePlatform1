@@ -39,8 +39,8 @@ const TIERS = [
       { label: "Integrations", value: false },
       { label: "Support", value: "Email + docs" },
     ],
-    bestFor: "Companies who need coordination infrastructure for their 3–5 most critical scenarios. One crisis handled well pays for multiple years.",
-    roiNote: "One key employee retained or one customer saved = $50K–$500K. You're paying $12K for the infrastructure that makes that outcome reliable — every time.",
+    bestFor: "Companies who need coordination infrastructure for their 3–5 most critical scenarios. One handled situation pays for multiple years.",
+    roiNote: "A vendor dispute mishandled costs $200K–$2M. Handled with a pre-staged playbook in 12 minutes, you protect that. $12K for the infrastructure. The first activation pays for years.",
   },
   {
     id: "responsive",
@@ -68,8 +68,8 @@ const TIERS = [
       { label: "Integrations", value: "Slack + Email" },
       { label: "Support", value: "Email + chat + onboarding call" },
     ],
-    bestFor: "Companies that want proactive detection — seeing threats before they become crises. Signal detection alone changes the operating model.",
-    roiNote: "Same ROI as Ready, plus you see it coming. One threat caught early and acted on in 12 minutes is worth 10x the subscription cost.",
+    bestFor: "Companies that want proactive detection — seeing threats before they become crises. Signal detection across 16 categories changes the operating model.",
+    roiNote: "One supply chain disruption caught 48 hours early vs. reactively = $500K–$5M protected. That's the Responsive premium. At $36K/year, a single caught signal justifies the entire subscription.",
   },
   {
     id: "orchestrated",
@@ -97,8 +97,8 @@ const TIERS = [
       { label: "Integrations", value: "Slack, Teams, Jira, ServiceNow, Salesforce" },
       { label: "Support", value: "Dedicated success manager + white-glove onboarding" },
     ],
-    bestFor: "Companies that want the full coordination operating model. Every domain, every scenario, AI-powered. The organization stops coordinating and starts executing.",
-    roiNote: "This is a different operating model — not a tool. When coordination becomes invisible, the compounding effect across every domain changes what the organization can achieve.",
+    bestFor: "Companies managing multi-front risk across every domain. M&A disruptions, regulatory shifts, talent crises, competitive entries — happening simultaneously.",
+    roiNote: "Multi-front threats don't require a war room — they require a better operating model. At $96K/year, you're running 170 playbooks and 248+ data points for $8K/month. One coordinated response at this level pays for the year.",
   },
   {
     id: "enterprise",
@@ -257,6 +257,14 @@ export default function Growth() {
         </div>
       </section>
 
+      {/* ── UNLIMITED USERS BANNER ── */}
+      <div style={{ background: NAVY, padding: "14px 48px", textAlign: "center" }}>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", margin: 0 }}>
+          <span style={{ color: GOLD, fontWeight: 700 }}>Every tier includes unlimited users.</span>
+          {" "}Unlike per-seat software that charges more as you grow — you pay for execution depth, not headcount. Add everyone who needs to coordinate. The price stays the same.
+        </p>
+      </div>
+
       {/* ── TIER CARDS ── */}
       <section style={{ background: "#fff", padding: "72px 48px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -367,6 +375,51 @@ export default function Growth() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── VALUE GATE STRIP ── */}
+      <section style={{ background: OFF, borderTop: `1px solid #E8E4DC`, padding: "48px 48px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 8 }}>What You Gain When You Upgrade</p>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(22px,2.5vw,30px)", color: NAVY }}>
+              Every tier jump is a capability unlock — not a feature gate.
+            </h3>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+            {[
+              {
+                from: "Ready", to: "Responsive", arrow: "→", color: GOLD,
+                gain: "Early warning replaces reactive response",
+                detail: "You go from handling situations to seeing them 48–72 hours before they become crises. Full 16-signal-category monitoring activates. AI recommendations start shaping your response before you've called a meeting.",
+                jump: "$12K → $36K/yr",
+              },
+              {
+                from: "Responsive", to: "Orchestrated", arrow: "→", color: NAVY,
+                gain: "Coordination becomes the operating model",
+                detail: "Every domain. All 170 playbooks. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are handled before stakeholders even convene.",
+                jump: "$36K → $96K/yr",
+              },
+              {
+                from: "Orchestrated", to: "Enterprise", arrow: "→", color: "#6B7280",
+                gain: "Infrastructure scales across the organization",
+                detail: "Multi-BU and multi-org deployment. API access for custom integrations. SSO, dedicated implementation, and a white-glove success team. The platform becomes the enterprise operating layer — not just a department tool.",
+                jump: "$96K → Custom",
+              },
+            ].map((gate) => (
+              <div key={gate.from} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 10, padding: "28px 24px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{gate.from}</span>
+                  <span style={{ color: gate.color, fontWeight: 700 }}>{gate.arrow}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: gate.color, textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{gate.to}</span>
+                  <span style={{ marginLeft: "auto", fontSize: 10, color: "#9CA3AF", fontWeight: 600 }}>{gate.jump}</span>
+                </div>
+                <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.3 }}>{gate.gain}</p>
+                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{gate.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
