@@ -72,7 +72,6 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Executive Access Link (LOCKED):** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — token-gated entry that validates and drops visitor into the platform.
 - **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge). Tiers = deployment scope (domains, playbooks, signals) — NOT a discounted product. No per-seat pricing. All Growth CTAs → `/contact`. Enterprise Pilot ($75K flat, Fortune 1000) stays on `/pilot-program` and is completely separate from Growth.
 - **Email Routing:** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
-- **LinkedIn Personal Banner:** `client/public/linkedin-banner.html` — Martin Brunke's personal banner (1584×396px). Uses Cormorant Garamond serif headline, DM Mono labels, VaughnMartin brand colors. Stats: $16.5B M&A, $250M+ portfolio, 38→90% compliance, 98%+ pre-launch readiness. No job titles. Accessible at `/linkedin-banner.html`.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.
