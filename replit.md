@@ -53,7 +53,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Flagship Playbooks:** 14 enriched flagship playbooks with expert content, task owners, time targets, and decision gates.
 - **Configuration Wizards:** Trigger Configuration Wizard for setting up situations and playbook mapping.
 - **Key Differentiators:** Execution ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
-- **Data Consistency Standards:** Strict adherence to consistent values for response time (12 minutes), speed advantage (340x), number of playbooks, signals, data points, and triggers.
+- **Data Consistency Standards:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×, always labeled "3,600× Execution Head Start" — never "speed advantage," never "faster"), number of playbooks (170), signals, data points (248+), and triggers (221). Old "340×" and "72 hours" framing is RETIRED.
 - **Personalized ROI Calculator:** Homepage section calculating annual value, exec time saved, and revenue protected based on user inputs.
 - **12-Minute Test Drive:** A public 4-step sequential experience simulating execution.
 - **War Room Escalate/Delegate Consequences:** Defined consequences for task escalation and delegation.
@@ -61,7 +61,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Playbook Library Deep Enrichment:** Detailed playbook data including `whyItMatters`, `phaseCount`, `signalSourceCount`, `preApprovedBudget`, `priority`.
 - **Living Playbooks Connected Data:** Displays top 6 playbooks sorted by severity, with activation counts, success rates, and AI improvement narratives.
 - **IDEAFramework Stats Bar:** Platform statistics bar displaying key numbers.
-- **ExecutionGapDiagram:** SVG comparison diagram (72 hrs vs 12 min) with proof numbers.
+- **ExecutionGapDiagram:** SVG comparison diagram (30 days vs 12 min) with proof numbers — the "30 days" baseline reflects enterprise mobilization time, never "72 hours."
 - **ExecutionProcessDiagram:** SVG 3-layer process diagram (Strategic → Orchestration → Delivery Systems) on the "How It Works" page.
 - **ExecutionOSMicrosoftDiagram:** SVG 3-layer architecture diagram illustrating Execution OS orchestrating the Microsoft stack.
 - **EcosystemDiagramPage:** Standalone page (`/ecosystem`) detailing Microsoft integration.
@@ -70,6 +70,9 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Homepage — Microsoft Section CTA:** "Also integrates with" badge row (Google Workspace, Salesforce, AWS, SAP, ServiceNow, Workday) + gold-outlined "View All 7 Enterprise Ecosystems →" button linking to `/ecosystems` replaces old faint text link.
 - **Homepage — WHY THE WORLD NEEDED THIS heading:** "Enterprise work was designed for a world **without AI.**" / "Nobody redesigned it." — two deliberate lines, no mid-sentence forced break.
 - **Executive Access Link (LOCKED):** `https://vaughnmartin.com/demo-access?token=VMdemo2026` — token-gated entry that validates and drops visitor into the platform.
+- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge). Tiers = deployment scope (domains, playbooks, signals) — NOT a discounted product. No per-seat pricing. All Growth CTAs → `/contact`. Enterprise Pilot ($75K flat, Fortune 1000) stays on `/pilot-program` and is completely separate from Growth.
+- **Email Routing:** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
+- **LinkedIn Personal Banner:** `client/public/linkedin-banner.html` — Martin Brunke's personal banner (1584×396px). Uses Cormorant Garamond serif headline, DM Mono labels, VaughnMartin brand colors. Stats: $16.5B M&A, $250M+ portfolio, 38→90% compliance, 98%+ pre-launch readiness. No job titles. Accessible at `/linkedin-banner.html`.
 
 **Deployment & Build Strategy:**
 - **Platform:** Replit Autoscale, custom domain `vaughnmartin.com`.

@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 19, 2026 (rev 8) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 27, 2026 (rev 9) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -12,10 +12,12 @@
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
 - **Human-AI partnership model** — AI monitors and recommends, human executives approve and decide.
-- **340× Execution Head Start — LOCKED FRAMING:** The 72-hour benchmark is NOT execution time. It is the time most organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be involved, what work is needed, and what plan to put together. By the time a competitor is ready to start executing, an Execution OS customer is already 72 hours deep into actual execution. This is the core force multiplier of the product. The label is ALWAYS "340× Execution Head Start" — never "Speed Advantage," never "340× faster." Any developer or agent touching this metric must preserve this framing in full.
+- **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×" and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Execution OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster." The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
 - **Microsoft Ecosystem positioning** — Execution OS is positioned as "The strategic command layer *above* Microsoft's agentic stack." It does NOT replace Azure AI, Teams, Copilot Studio, Entra, or Power Platform — it orchestrates them. This is a key GTM message: every Microsoft enterprise customer is an immediately addressable prospect with no rip-and-replace required. The full architecture diagram lives at `/ecosystem`.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
+- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Enterprise Pilot.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. Enterprise Pilot ($75K flat fee, Fortune 1000) stays on `/pilot-program` — completely separate audience, separate page, separate CTA.
+- **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
 
 ---
 
@@ -1007,7 +1009,7 @@ const perfScore = Math.min(100, Math.round(
 ));
 ```
 
-**ROI formula:** `timeSaved (minutes) × $40/min` → formatted as $XK or $X.XM. `timeSaved = industryStandard (72×60) - elapsedMinutes`.
+**ROI formula:** `timeSaved (minutes) × $40/min` → formatted as $XK or $X.XM. `timeSaved = industryStandard (30×24×60 = 43,200 minutes, the 30-day mobilization baseline) - elapsedMinutes`. Never use 72-hour baseline — that framing is retired.
 
 **Pattern:** Uses an IIFE `{executionStatus === 'completed' && (() => { ... })()}` to scope local constants without adding state.
 
