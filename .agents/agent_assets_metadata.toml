@@ -36,3 +36,9 @@ id = "lfvD5GFoJeFdFYV6OG9V7"
 uri = "file://attached_assets/ExecutionOS_PeerReview_Questionnaire_UPDATED.md"
 type = "text"
 title = "Peer Review Questionnaire — Updated"
+
+[[outputs]]
+id = "0arWWFW37H39FuOAM44YO"
+uri = "file://attached_assets/generated_images/martin_brunke_linkedin_banner.png"
+type = "image"
+title = "Martin Brunke — LinkedIn Banner"
