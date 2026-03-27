@@ -66,6 +66,7 @@ export default function Footer() {
       links: [
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Execution OS", path: "/why-execution-os" },
+        { label: "Why Not Consulting?", path: "/vs-consulting" },
         { label: "Platform Overview", path: "/platform-overview" },
         { label: "Founder's Story", path: "/founder-story" },
         { label: "Integrations", path: "/integrations" },
