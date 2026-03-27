@@ -3,471 +3,316 @@
 <head>
 <meta charset="UTF-8">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { width: 1584px; height: 396px; overflow: hidden; background: #132558; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1584px; height: 396px; overflow: hidden; background: #0A0F2E; }
 
   .banner {
     width: 1584px;
     height: 396px;
-    background: #132558;
+    background: linear-gradient(135deg, #0A0F2E 0%, #111830 60%, #0D1628 100%);
     position: relative;
     overflow: hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
-  /* Gold grid overlay */
+  /* Gold grid */
   .grid {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(201,168,76,0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201,168,76,0.09) 1px, transparent 1px);
+      linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 
-  /* Teal orb — left center */
+  /* Orbs */
   .orb-teal {
     position: absolute;
-    left: -120px;
-    top: -180px;
-    width: 700px;
-    height: 700px;
+    left: -60px; top: -120px;
+    width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(43,138,110,0.22) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 65%);
   }
-
-  /* Gold orb — right */
   .orb-gold {
     position: absolute;
-    right: -80px;
-    bottom: -200px;
-    width: 600px;
-    height: 600px;
+    right: -60px; bottom: -160px;
+    width: 520px; height: 520px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 65%);
   }
-
-  /* Faint teal orb — upper right */
-  .orb-teal-2 {
+  .orb-mid {
     position: absolute;
-    right: 200px;
-    top: -150px;
-    width: 400px;
-    height: 400px;
+    left: 55%; top: -80px;
+    width: 360px; height: 360px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(43,138,110,0.10) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(43,138,110,0.08) 0%, transparent 65%);
   }
 
-  /* Bottom gold rule */
+  /* Gold baseline */
   .bottom-rule {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.6) 20%, rgba(201,168,76,0.9) 50%, rgba(201,168,76,0.6) 80%, transparent);
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.5) 15%, rgba(201,168,76,0.9) 50%, rgba(201,168,76,0.5) 85%, transparent 100%);
   }
-
-  /* Top rule — very faint */
   .top-rule {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 1px;
-    background: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.15);
   }
 
-  /* Left vertical divider */
-  .divider-left {
+  /* Vertical divider before right panel */
+  .divider {
     position: absolute;
-    left: 440px;
-    top: 48px;
-    bottom: 48px;
+    right: 380px;
+    top: 40px; bottom: 40px;
     width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.2) 30%, rgba(201,168,76,0.2) 70%, transparent);
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.18) 30%, rgba(201,168,76,0.18) 70%, transparent);
   }
 
-  /* Right vertical divider */
-  .divider-right {
+  /* ══ LEFT / MAIN PANEL ══ */
+  .panel-main {
     position: absolute;
-    left: 1100px;
-    top: 48px;
-    bottom: 48px;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.2) 30%, rgba(201,168,76,0.2) 70%, transparent);
-  }
-
-  /* ── LEFT PANEL — Brand Identity ── */
-  .panel-left {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 440px;
-    height: 396px;
+    left: 0; top: 0;
+    width: 1200px; height: 396px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
-    padding: 0 48px;
+    padding: 0 64px;
+  }
+
+  /* Top descriptor row */
+  .descriptor-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 18px;
+  }
+  .descriptor-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(201,168,76,0.65);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+  .descriptor-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.35);
+    margin: 0 14px;
+    flex-shrink: 0;
+  }
+
+  /* Main headline */
+  .headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: #F0EDE4;
+    line-height: 1.15;
+    margin-bottom: 22px;
+    max-width: 860px;
+  }
+  .headline em {
+    font-style: italic;
+    color: #C9A84C;
+  }
+
+  /* Industry tags */
+  .industry-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 28px;
+  }
+  .industry-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    color: rgba(240,237,228,0.38);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .industry-sep {
+    width: 16px; height: 1px;
+    background: rgba(240,237,228,0.15);
+    margin: 0 14px;
+  }
+
+  /* Bottom competency bar */
+  .competency-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(240,237,228,0.07);
+  }
+  .competency-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    font-weight: 500;
+    color: rgba(240,237,228,0.28);
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+  .competency-sep {
+    width: 24px; height: 1px;
+    background: rgba(201,168,76,0.2);
+    margin: 0 16px;
+    flex-shrink: 0;
+  }
+
+  /* VaughnMartin founder mark */
+  .founder-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .founder-mark-line {
+    width: 20px; height: 1px;
+    background: rgba(201,168,76,0.4);
+  }
+  .founder-mark-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    color: rgba(201,168,76,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ══ RIGHT PANEL — Personal Stats ══ */
+  .panel-right {
+    position: absolute;
+    right: 0; top: 0;
+    width: 384px; height: 396px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 44px;
     gap: 0;
   }
 
-  .logo-seal {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 18px;
+  .stat-block {
+    width: 100%;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(240,237,228,0.06);
+  }
+  .stat-block:last-child {
+    border-bottom: none;
   }
 
-  .brand-name {
+  .stat-number {
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 30px;
     font-weight: 800;
-    color: #F0EDE4;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    color: #C9A84C;
     line-height: 1;
-    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
   }
+  .stat-number.teal { color: #2B8A6E; }
+  .stat-number.white { color: rgba(240,237,228,0.7); }
 
-  .brand-tagline {
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 11px;
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
     font-weight: 500;
-    color: #C9A84C;
-    letter-spacing: 2.5px;
+    color: rgba(240,237,228,0.32);
+    letter-spacing: 1.8px;
     text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .brand-url {
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 10px;
-    color: rgba(240,237,228,0.3);
-    letter-spacing: 1.5px;
-    text-transform: lowercase;
-  }
-
-  /* ── CENTER PANEL — Core Thesis ── */
-  .panel-center {
-    position: absolute;
-    left: 440px;
-    top: 0;
-    width: 660px;
-    height: 396px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 56px;
-    text-align: center;
-    gap: 0;
-  }
-
-  .eyebrow {
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 9px;
-    font-weight: 500;
-    color: rgba(240,237,228,0.3);
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .thesis {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #F0EDE4;
-    line-height: 1.35;
-    margin-bottom: 8px;
-  }
-
-  .thesis em {
-    font-style: normal;
-    color: #C9A84C;
-  }
-
-  .thesis-sub {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 13px;
-    color: rgba(240,237,228,0.45);
-    line-height: 1.5;
-    margin-bottom: 28px;
-  }
-
-  /* Comparison bar */
-  .comparison {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 12px 20px;
-  }
-
-  .comp-old {
-    text-align: center;
-  }
-  .comp-old .val {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: rgba(240,237,228,0.35);
-    text-decoration: line-through;
-    text-decoration-color: rgba(240,237,228,0.2);
-  }
-  .comp-old .lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    color: rgba(240,237,228,0.25);
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  .comp-arrow {
-    font-size: 20px;
-    color: rgba(201,168,76,0.5);
-  }
-
-  .comp-new {
-    text-align: center;
-  }
-  .comp-new .val {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    color: #2B8A6E;
-  }
-  .comp-new .lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    color: rgba(43,138,110,0.7);
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* Stats row */
-  .stats-row {
-    display: flex;
-    gap: 0;
-    margin-top: 20px;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 16px;
-    border-right: 1px solid rgba(240,237,228,0.08);
-  }
-  .stat-item:last-child { border-right: none; }
-
-  .stat-val {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: rgba(240,237,228,0.7);
-  }
-  .stat-lbl {
-    font-family: 'DM Mono', monospace;
-    font-size: 8px;
-    letter-spacing: 1.2px;
-    color: rgba(240,237,228,0.3);
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* ── RIGHT PANEL — Key Metric ── */
-  .panel-right {
-    position: absolute;
-    left: 1100px;
-    top: 0;
-    width: 484px;
-    height: 396px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 48px;
-    text-align: center;
-  }
-
-  .metric-label {
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 9px;
-    font-weight: 500;
-    color: rgba(201,168,76,0.5);
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .metric-number {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 88px;
-    font-weight: 900;
-    color: #C9A84C;
-    line-height: 0.9;
-    letter-spacing: -2px;
-    margin-bottom: 10px;
-  }
-
-  .metric-title {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(240,237,228,0.8);
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-  }
-
-  .metric-desc {
-    font-family: 'DM Mono', 'Courier New', monospace;
-    font-size: 9px;
-    color: rgba(240,237,228,0.3);
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  .metric-badge {
-    margin-top: 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: rgba(43,138,110,0.12);
-    border: 1px solid rgba(43,138,110,0.25);
-  }
-  .metric-badge-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #2B8A6E;
-  }
-  .metric-badge-text {
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    color: #2B8A6E;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    line-height: 1.4;
   }
 </style>
 </head>
 <body>
 <div class="banner">
-  <!-- Background layers -->
+
+  <!-- Background -->
   <div class="grid"></div>
   <div class="orb-teal"></div>
   <div class="orb-gold"></div>
-  <div class="orb-teal-2"></div>
-
-  <!-- Rules & dividers -->
+  <div class="orb-mid"></div>
   <div class="top-rule"></div>
   <div class="bottom-rule"></div>
-  <div class="divider-left"></div>
-  <div class="divider-right"></div>
+  <div class="divider"></div>
 
-  <!-- ── LEFT PANEL ── -->
-  <div class="panel-left">
-    <!-- VM Circular Seal Logo (SVG) -->
-    <svg class="logo-seal" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Outer ring -->
-      <circle cx="60" cy="60" r="56" stroke="url(#goldGrad)" stroke-width="2" fill="none"/>
-      <!-- Inner ring -->
-      <circle cx="60" cy="60" r="48" stroke="url(#goldGrad)" stroke-width="1" fill="none" opacity="0.5"/>
-      <!-- Tick marks -->
-      <line x1="60" y1="4" x2="60" y2="12" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-      <line x1="60" y1="108" x2="60" y2="116" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-      <line x1="4" y1="60" x2="12" y2="60" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-      <line x1="108" y1="60" x2="116" y2="60" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-      <line x1="19.3" y1="19.3" x2="24.9" y2="24.9" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="95.1" y1="95.1" x2="100.7" y2="100.7" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="19.3" y1="100.7" x2="24.9" y2="95.1" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="95.1" y1="24.9" x2="100.7" y2="19.3" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <!-- VM Monogram -->
-      <text x="60" y="55" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="22" font-weight="800" fill="url(#goldGrad)" letter-spacing="1">VM</text>
-      <!-- Inner text -->
-      <text x="60" y="70" text-anchor="middle" font-family="DM Mono,monospace" font-size="6" fill="rgba(240,237,228,0.4)" letter-spacing="2">EXECUTION OS</text>
-      <defs>
-        <linearGradient id="goldGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#E8C96A"/>
-          <stop offset="50%" stop-color="#C9A84C"/>
-          <stop offset="100%" stop-color="#A87D2A"/>
-        </linearGradient>
-      </defs>
-    </svg>
+  <!-- ══ MAIN PANEL ══ -->
+  <div class="panel-main">
 
-    <div class="brand-name">VaughnMartin</div>
-    <div class="brand-tagline">Execution Operating System</div>
-    <div class="brand-url">vaughnmartin.com</div>
+    <!-- Descriptor row -->
+    <div class="descriptor-row">
+      <span class="descriptor-item">20+ Years</span>
+      <div class="descriptor-dot"></div>
+      <span class="descriptor-item">5 Industries</span>
+      <div class="descriptor-dot"></div>
+      <span class="descriptor-item">Fortune 500</span>
+      <div class="descriptor-dot"></div>
+      <span class="descriptor-item">Stanford</span>
+    </div>
+
+    <!-- Headline -->
+    <div class="headline">
+      The gap between strategy and results<br>
+      isn't capability &mdash; it's <em>coordination.</em>
+    </div>
+
+    <!-- Industries -->
+    <div class="industry-row">
+      <span class="industry-tag">Gaming</span>
+      <div class="industry-sep"></div>
+      <span class="industry-tag">Financial Services</span>
+      <div class="industry-sep"></div>
+      <span class="industry-tag">Automotive</span>
+      <div class="industry-sep"></div>
+      <span class="industry-tag">Energy</span>
+      <div class="industry-sep"></div>
+      <span class="industry-tag">Hospitality</span>
+    </div>
+
+    <!-- Competency bar -->
+    <div class="competency-bar">
+      <span class="competency-item">Enterprise Transformation</span>
+      <div class="competency-sep"></div>
+      <span class="competency-item">Portfolio Governance</span>
+      <div class="competency-sep"></div>
+      <span class="competency-item">Operating Model Design</span>
+      <div class="competency-sep"></div>
+      <span class="competency-item">Founder · VaughnMartin</span>
+    </div>
+
   </div>
 
-  <!-- ── CENTER PANEL ── -->
-  <div class="panel-center">
-    <div class="eyebrow">Strategic Execution Platform · Fortune 1000</div>
-    <div class="thesis">
-      We redesign how work flows<br>
-      <em>in the age of AI.</em>
-    </div>
-    <div class="thesis-sub">
-      Enterprise work was built for a world without AI.<br>Nobody redesigned it. Until now.
-    </div>
-
-    <!-- 30 days → 12 min comparison -->
-    <div class="comparison">
-      <div class="comp-old">
-        <div class="val">30 Days</div>
-        <div class="lbl">Traditional Mobilization</div>
-      </div>
-      <div class="comp-arrow">→</div>
-      <div class="comp-new">
-        <div class="val">12 Minutes</div>
-        <div class="lbl">Execution OS</div>
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-val">170</div>
-        <div class="stat-lbl">Playbooks</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">221</div>
-        <div class="stat-lbl">Triggers</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">9</div>
-        <div class="stat-lbl">Domains</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val">248+</div>
-        <div class="stat-lbl">Data Points</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── RIGHT PANEL ── -->
+  <!-- ══ RIGHT PANEL ══ -->
   <div class="panel-right">
-    <div class="metric-label">Execution Head Start</div>
-    <div class="metric-number">3,600×</div>
-    <div class="metric-title">Faster to Full Coordination</div>
-    <div class="metric-desc">
-      Before a competitor's<br>committee meets once
+
+    <div class="stat-block">
+      <div class="stat-number">$16.5B</div>
+      <div class="stat-label">M&A Governed</div>
     </div>
-    <div class="metric-badge">
-      <div class="metric-badge-dot"></div>
-      <div class="metric-badge-text">AI · Always On</div>
+
+    <div class="stat-block">
+      <div class="stat-number">$250M+</div>
+      <div class="stat-label">Portfolio Stewarded</div>
     </div>
+
+    <div class="stat-block">
+      <div class="stat-number teal">38→90%</div>
+      <div class="stat-label">Compliance in 90 Days</div>
+    </div>
+
+    <div class="stat-block">
+      <div class="stat-number white">98%+</div>
+      <div class="stat-label">Pre-Launch Readiness<br>5 Casino Launches</div>
+    </div>
+
   </div>
+
 </div>
 </body>
 </html>
