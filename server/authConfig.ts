@@ -13,6 +13,10 @@ export const PUBLIC_ROUTES = [
   // Demo access bypass — shareable link for investors and pilot prospects
   '/api/demo-access',
 
+  // Magic link authentication — no session required to request or verify
+  '/api/auth/magic-link/request',
+  '/api/auth/magic-link/verify',
+
   // Peer Review Questionnaire — public submission (no auth required to submit feedback)
   '/api/peer-reviews',
 

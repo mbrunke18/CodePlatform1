@@ -167,6 +167,8 @@ const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
+const RequestAccess = lazy(() => import("./pages/RequestAccess"));
+const MagicLogin = lazy(() => import("./pages/MagicLogin"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
@@ -429,6 +431,8 @@ function Router() {
         <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
         <Route path="/get-started" component={GetStarted} />
         <Route path="/demo-access" component={DemoAccess} />
+        <Route path="/request-access" component={RequestAccess} />
+        <Route path="/magic-login" component={MagicLogin} />
         <Route path="/peer-review" component={PeerReview} />
         <Route path="/peer-review-report" component={PeerReviewReport} />
         {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}

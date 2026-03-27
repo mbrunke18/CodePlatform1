@@ -13,6 +13,7 @@ import demoRiskRoutes from "./routes/demoRiskRoutes";
 import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
 import { registerDemoAccessRoute } from "./routes/demoAccessRoute";
+import { createAndSendMagicLink, verifyMagicLinkToken } from "./services/magicLinkService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -775,6 +776,59 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   // Demo access bypass (shareable link for investors and pilot prospects)
   registerDemoAccessRoute(app);
   registerPeerReviewRoute(app);
+
+  // ── Magic Link Authentication ─────────────────────────────────────────────
+  app.post('/api/auth/magic-link/request', async (req, res) => {
+    const { firstName, lastName, email, company, title } = req.body;
+    if (!firstName || !lastName || !email || !company || !title) {
+      return res.status(400).json({ error: 'All fields are required.' });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: 'Invalid email address.' });
+    }
+    const result = await createAndSendMagicLink({ firstName, lastName, email, company, title });
+    if (!result.success) {
+      return res.status(500).json({ error: 'Failed to send magic link. Please try again.' });
+    }
+    return res.json({ ok: true });
+  });
+
+  app.get('/api/auth/magic-link/verify', async (req, res) => {
+    const token = req.query.token as string;
+    if (!token) {
+      return res.status(400).json({ error: 'Token is required.', reason: 'missing_token' });
+    }
+    const result = await verifyMagicLinkToken(token);
+    if (!result.valid) {
+      return res.status(400).json({ error: 'Invalid or expired token.', reason: result.reason });
+    }
+    const { email, firstName, lastName, company, title } = result.data!;
+    const userId = `ml-${Buffer.from(email).toString('base64').slice(0, 16)}`;
+    await storage.upsertUser({ id: userId, email, firstName, lastName });
+    let userOrgs = await storage.getUserOrganizations(userId);
+    if (userOrgs.length === 0) {
+      await storage.createOrganization({
+        name: company,
+        description: `${title} at ${company}`,
+        ownerId: userId,
+        onboardingCompleted: false,
+      });
+      userOrgs = await storage.getUserOrganizations(userId);
+    }
+    const sessionUser = {
+      id: userId, email, firstName, lastName, company, title,
+      organizationId: userOrgs[0]?.id,
+      claims: { sub: userId, email, first_name: firstName, last_name: lastName },
+    };
+    req.login(sessionUser, (err) => {
+      if (err) {
+        console.error('Magic link session error:', err);
+        return res.status(500).json({ error: 'Session creation failed.' });
+      }
+      return res.json({ ok: true, redirect: '/command-center' });
+    });
+  });
 
   // Audio/TTS routes for voice features
   registerAudioRoutes(app);

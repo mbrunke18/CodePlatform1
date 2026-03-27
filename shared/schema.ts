@@ -6393,3 +6393,21 @@ export const peerReviewActions = pgTable('peer_review_actions', {
 export const insertPeerReviewActionSchema = createInsertSchema(peerReviewActions).omit({ id: true, createdAt: true, completedAt: true });
 export type InsertPeerReviewAction = z.infer<typeof insertPeerReviewActionSchema>;
 export type PeerReviewAction = typeof peerReviewActions.$inferSelect;
+
+// ── Magic Link Authentication ─────────────────────────────────────────────────
+export const magicLinkTokens = pgTable('magic_link_tokens', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: varchar('email', { length: 255 }).notNull(),
+  firstName: varchar('first_name', { length: 100 }).notNull(),
+  lastName: varchar('last_name', { length: 100 }).notNull(),
+  company: varchar('company', { length: 255 }).notNull(),
+  title: varchar('title', { length: 255 }).notNull(),
+  token: varchar('token', { length: 128 }).notNull().unique(),
+  expiresAt: timestamp('expires_at').notNull(),
+  usedAt: timestamp('used_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertMagicLinkTokenSchema = createInsertSchema(magicLinkTokens).omit({ id: true, usedAt: true, createdAt: true });
+export type InsertMagicLinkToken = z.infer<typeof insertMagicLinkTokenSchema>;
+export type MagicLinkToken = typeof magicLinkTokens.$inferSelect;
