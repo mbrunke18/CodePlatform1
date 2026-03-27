@@ -42,3 +42,9 @@ id = "0arWWFW37H39FuOAM44YO"
 uri = "file://attached_assets/generated_images/martin_brunke_linkedin_banner.png"
 type = "image"
 title = "Martin Brunke — LinkedIn Banner"
+
+[[outputs]]
+id = "ng2Jh_Lk8PmRFf7-M0kFb"
+uri = "file://attached_assets/generated_images/martin_brunke_linkedin_banner_v2.png"
+type = "image"
+title = "Martin Brunke — LinkedIn Banner v2 (Balanced)"
