@@ -58,7 +58,7 @@ const SEARCH_ITEMS = [
   { label: 'Execution History', path: '/execution-history', category: 'Advance', icon: BarChart3 },
   { label: 'Enterprise Metrics', path: '/enterprise-metrics', category: 'Advance', icon: TrendingUp },
   { label: 'Stakeholder Management', path: '/stakeholder-management', category: 'Advance', icon: Users },
-  { label: 'Try It Free', path: '/12-minute-experience', category: 'Demo', icon: Play },
+  { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
   { label: 'Pilot Demo', path: '/pilot-demo', category: 'Demo', icon: Rocket },
   { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
@@ -363,12 +363,12 @@ export default function StandardNav() {
               <>
                 <Button
                   variant="outline"
-                  onClick={() => navigateTo("/12-minute-experience")}
+                  onClick={() => navigateTo("/request-access")}
                   className="h-9 px-3 text-sm font-semibold"
                   style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                   data-testid="nav-try-demo"
                 >
-                  Try It Free
+                  Request Access
                 </Button>
                 <Button
                   onClick={() => navigateTo("/pilot-program")}
@@ -514,13 +514,13 @@ export default function StandardNav() {
                   </Button>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => navigateTo("/12-minute-experience")}
+                      onClick={() => navigateTo("/request-access")}
                       variant="outline"
                       className="flex-1 justify-center h-10 text-sm font-semibold"
                       style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                       data-testid="nav-mobile-try-demo"
                     >
-                      Try It Free
+                      Request Access
                     </Button>
                     <Button
                       onClick={() => navigateTo("/pilot-program")}
@@ -535,14 +535,14 @@ export default function StandardNav() {
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/12-minute-experience")}
+                    onClick={() => navigateTo("/request-access")}
                     variant="outline"
                     className="w-full justify-center h-11 text-sm font-semibold"
                     style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
                     data-testid="nav-mobile-try-demo"
                   >
                     <Rocket className="h-4 w-4 mr-2" />
-                    Try It Free
+                    Request Access
                   </Button>
                   <Button
                     onClick={() => navigateTo("/pilot-program")}

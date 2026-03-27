@@ -132,7 +132,7 @@ function HomepageNav() {
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
-                href="/12-minute-experience"
+                href="/request-access"
                 onClick={() => trackCTA("nav_demo")}
                 style={{
                   ...DM, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 14,
@@ -140,7 +140,7 @@ function HomepageNav() {
                   border: `1.5px solid rgba(10,15,46,0.25)`,
                 }}
               >
-                Try It Free
+                Request Access
               </Link>
               <Link
                 href="/pilot-program"
@@ -192,7 +192,7 @@ function HomepageNav() {
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
           )}
           <Link
-            href="/12-minute-experience"
+            href="/request-access"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
             style={{
               ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
@@ -201,7 +201,7 @@ function HomepageNav() {
               border: `1.5px solid rgba(201,168,76,0.5)`,
             }}
           >
-            Try It Free →
+            Request Access →
           </Link>
           <Link
             href="/pilot-program"
