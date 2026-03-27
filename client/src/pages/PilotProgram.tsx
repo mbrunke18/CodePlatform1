@@ -302,11 +302,11 @@ export default function PilotProgram() {
                 size="lg" 
                 variant="outline" 
                 className="border-white/20 text-white hover:bg-white/10"
-                onClick={() => setLocation('/try-demo')}
-                data-testid="button-see-demo"
+                onClick={() => setLocation('/request-access')}
+                data-testid="button-request-access"
               >
                 <Play className="w-5 h-5 mr-2 text-[#2B8A6E]" />
-                See Demo First
+                Request Executive Access
               </Button>
             </div>
           </div>
@@ -681,6 +681,15 @@ export default function PilotProgram() {
             </div>
             <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
               Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">pilot@vaughnmartin.com</span>
+            </p>
+            <p className="text-sm text-gray-500 mt-3">
+              Want platform access without a pilot commitment?{" "}
+              <button
+                onClick={() => setLocation('/request-access')}
+                className="text-[#C9A84C] underline underline-offset-2 bg-transparent border-none cursor-pointer p-0 font-medium"
+              >
+                Request executive access →
+              </button>
             </p>
           </div>
         </section>

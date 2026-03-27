@@ -72,6 +72,7 @@ export default function Footer() {
         { label: "Integrations", path: "/integrations" },
         { label: "Microsoft Ecosystem", path: "/ecosystem" },
         { label: "Request Pilot", path: "/pilot-program" },
+        { label: "Request Access", path: "/request-access" },
         { label: "Investors", path: "/investors" },
         { label: "Contact", path: "/contact" },
       ]

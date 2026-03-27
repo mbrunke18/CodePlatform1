@@ -433,12 +433,12 @@ export default function StandardNav() {
               <>
                 <Button
                   variant="outline"
-                  onClick={() => navigateTo("/12-minute-experience")}
+                  onClick={() => navigateTo("/request-access")}
                   className="h-9 px-4 text-sm font-semibold"
                   style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
-                  data-testid="nav-try-demo"
+                  data-testid="nav-request-access"
                 >
-                  Try It Free
+                  Request Access
                 </Button>
                 <Button
                   onClick={() => navigateTo("/pilot-program")}

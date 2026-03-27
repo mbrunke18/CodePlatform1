@@ -840,10 +840,10 @@ export default function Growth() {
             </button>
             <Button
               variant="outline"
-              onClick={() => setLocation("/try-demo")}
+              onClick={() => setLocation("/request-access")}
               style={{ borderColor: "#E8E4DC", color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
             >
-              See the Platform First
+              Request Executive Access
             </Button>
           </div>
           <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 20 }}>

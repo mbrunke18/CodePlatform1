@@ -325,6 +325,19 @@ function HeroSection() {
             >
               Take the 12-Minute Test Drive →
             </Link>
+            <Link
+              href="/request-access"
+              onClick={() => trackCTA("hero_request_access")}
+              style={{
+                ...DM, color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none",
+                letterSpacing: "0.03em", borderBottom: "1px solid rgba(255,255,255,0.2)", paddingBottom: 1,
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
+            >
+              Or request executive access — no pilot commitment required →
+            </Link>
           </div>
         </Reveal>
 
@@ -1171,6 +1184,11 @@ function CTASection() {
               Or try it yourself first — no login required →
             </Link>
           </p>
+          <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
+            <Link href="/request-access" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1 }}>
+              Request executive platform access — separate from the Pilot Program →
+            </Link>
+          </p>
         </Reveal>
       </div>
     </section>
@@ -1201,6 +1219,7 @@ function HomepageFooter() {
               { label: "Playbooks",      href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
               { label: "Request a Pilot", href: "/pilot-program" },
+              { label: "Request Access", href: "/request-access" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}

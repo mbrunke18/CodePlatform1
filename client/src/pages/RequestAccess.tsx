@@ -102,9 +102,19 @@ export default function RequestAccess() {
                 <h1 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>
                   Request Executive Access
                 </h1>
-                <p className="text-sm" style={{ color: "#6B7280" }}>
-                  We'll send a secure link to your email — no password required. Click once and you're in.
+                <p className="text-sm mb-4" style={{ color: "#6B7280" }}>
+                  We'll send a secure link to your email. Click once and you're inside the live platform — no password, no commitment.
                 </p>
+                <div
+                  className="flex items-start gap-3 p-3 rounded-lg text-xs leading-relaxed"
+                  style={{ background: "rgba(43,138,110,0.07)", border: "1px solid rgba(43,138,110,0.2)" }}
+                >
+                  <span style={{ color: TEAL, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>✓</span>
+                  <span style={{ color: "#374151" }}>
+                    <strong style={{ color: NAVY }}>This grants you Executive Access to the live platform</strong> — not the Pilot Program.{" "}
+                    The <a href="/pilot-program" style={{ color: GOLD, fontWeight: 600 }}>Pilot Program</a> is a separate formal engagement for Fortune 1000 enterprises ($75K).
+                  </span>
+                </div>
               </div>
 
               <Form {...form}>
