@@ -587,6 +587,140 @@ export default function Growth() {
         </div>
       </section>
 
+      {/* ── WHAT YOU'RE REPLACING ── */}
+      <section style={{ background: OFF, padding: "80px 48px", borderTop: `1px solid #E8E4DC` }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 24, height: 2, background: NAVY }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>
+                The Comparison
+              </span>
+              <div style={{ width: 24, height: 2, background: NAVY }} />
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", color: NAVY, marginBottom: 12 }}>
+              What the status quo actually costs you.
+            </h2>
+            <p style={{ fontSize: 16, color: "#4B5563", maxWidth: 620, margin: "0 auto", lineHeight: 1.6 }}>
+              Before comparing tier prices, compare them against what you're already spending on coordination that doesn't execute.
+            </p>
+          </div>
+
+          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, overflow: "hidden" }}>
+            {/* Table header */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", background: NAVY, padding: "14px 28px", gap: 16 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>What Companies Buy Today</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)", textAlign: "center" as const }}>Cost</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>The Problem</span>
+            </div>
+
+            {[
+              { item: "McKinsey crisis playbook engagement", cost: "$150K–$500K", problem: "One-time. Not executable. Sits on a shelf." },
+              { item: "Enterprise OKR / strategy tool", cost: "$50K–$150K/yr", problem: "Tracks goals. Doesn't execute them." },
+              { item: "War-room consulting (per incident)", cost: "$50K–$200K", problem: "Reactive. Expensive. Not repeatable." },
+              { item: "Internal strategy ops team", cost: "$500K–$2M/yr", problem: "3–5 FTEs. Still takes 30 days to coordinate." },
+              { item: "The coordination tax (hidden)", cost: "Incalculable", problem: "30% of strategy value lost in execution gaps." },
+            ].map((row, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{row.item}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#EF4444", textAlign: "center" as const }}>{row.cost}</span>
+                <span style={{ fontSize: 13, color: "#6B7280" }}>{row.problem}</span>
+              </div>
+            ))}
+
+            {/* Summary bar */}
+            <div style={{ background: `rgba(239,68,68,0.06)`, borderTop: `2px solid rgba(239,68,68,0.2)`, padding: "20px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#374151" }}>Total cost of status quo: </span>
+                <span style={{ fontSize: 16, fontWeight: 800, color: "#DC2626" }}>$750K–$2.5M/year</span>
+              </div>
+              <span style={{ fontSize: 13, color: "#6B7280", fontStyle: "italic" }}>And it still takes 30 days to coordinate.</span>
+            </div>
+          </div>
+
+          {/* Bridge to Execution OS */}
+          <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+            {[
+              { tier: "Ready", price: "$75K/yr", replace: "One consulting engagement", roi: "7–70×" },
+              { tier: "Responsive", price: "$150K/yr", replace: "Intelligence subscription + playbook development", roi: "10–100×" },
+              { tier: "Orchestrated", price: "$250K/yr", replace: "Fractional strategy ops team", roi: "2–8× (cost replacement alone)" },
+              { tier: "Enterprise", price: "$250K+/yr", replace: "Full strategy ops function", roi: "40–400×" },
+            ].map((row) => (
+              <div key={row.tier} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 10, padding: "20px 20px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: NAVY }}>{row.tier}</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: TEAL }}>{row.roi} ROI</span>
+                </div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: GOLD }}>{row.price}</div>
+                <div style={{ fontSize: 12, color: "#6B7280" }}>Replaces: {row.replace}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ONE TRIGGER HANDLED WELL ── */}
+      <section style={{ background: "#fff", padding: "80px 48px", borderTop: `1px solid #E8E4DC` }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 24, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>
+                The Math
+              </span>
+              <div style={{ width: 24, height: 2, background: GOLD }} />
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", color: NAVY, marginBottom: 12 }}>
+              One trigger handled well.
+            </h2>
+            <p style={{ fontSize: 16, color: "#4B5563", maxWidth: 580, margin: "0 auto", lineHeight: 1.6 }}>
+              Every scenario below represents a situation your organization will face. The question isn't whether — it's whether you're ready when it fires.
+            </p>
+          </div>
+
+          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, overflow: "hidden" }}>
+            {/* Header */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", background: NAVY, padding: "14px 28px", gap: 16 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Scenario</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Without Execution OS</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)", textAlign: "right" as const }}>Value Protected</span>
+            </div>
+
+            {[
+              { scenario: "Key customer at risk", without: "30 days to align. Customer churns.", value: "$500K–$5M" },
+              { scenario: "Competitor launches aggressively", without: "Weeks to respond. Market share lost.", value: "$1M–$10M" },
+              { scenario: "Regulatory change announced", without: "Months of scrambling. Potential fines.", value: "$500K–$50M" },
+              { scenario: "Key executive departs suddenly", without: "Chaos. Talent flight. Vacuum at the top.", value: "$2M–$10M" },
+              { scenario: "M&A integration begins", without: "18-month drag. Significant value leakage.", value: "20–30% of deal value" },
+            ].map((row, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{row.scenario}</span>
+                <span style={{ fontSize: 13, color: "#6B7280", fontStyle: "italic" }}>{row.without}</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: TEAL, textAlign: "right" as const }}>{row.value}</span>
+              </div>
+            ))}
+
+            {/* Conclusion bar */}
+            <div style={{ background: `rgba(43,138,110,0.06)`, borderTop: `2px solid rgba(43,138,110,0.2)`, padding: "20px 28px" }}>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#374151", margin: 0, textAlign: "center" as const }}>
+                If Execution OS helps you handle <em style={{ fontStyle: "italic", color: TEAL }}>one</em> of these situations well,
+                it pays for itself <strong style={{ color: NAVY }}>10–100×.</strong>
+              </p>
+            </div>
+          </div>
+
+          {/* Link to McKinsey comparison */}
+          <div style={{ textAlign: "center", marginTop: 28 }}>
+            <button
+              onClick={() => setLocation("/vs-consulting")}
+              style={{ background: "none", border: `1px solid #E8E4DC`, borderRadius: 6, padding: "10px 20px", cursor: "pointer", fontSize: 12, fontWeight: 600, color: "#6B7280", display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              See how this compares to a McKinsey engagement <ArrowRight style={{ width: 13, height: 13 }} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* ── PE STARTUP DARK SECTION ── */}
       <section style={{ background: NAVY, padding: "80px 48px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
