@@ -35863,7 +35863,8 @@ async function createAndSendMagicLink(data) {
   try {
     const resend = new Resend2(apiKey);
     await resend.emails.send({
-      from: "Execution OS <pilot@vaughnmartin.com>",
+      from: "Execution OS <onboarding@resend.dev>",
+      replyTo: "pilot@vaughnmartin.com",
       to: data.email,
       subject: `Your Executive Access to Execution OS, ${data.firstName}`,
       html: buildEmailHtml(data.firstName, magicUrl)
