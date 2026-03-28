@@ -35862,14 +35862,18 @@ async function createAndSendMagicLink(data) {
   }
   try {
     const resend = new Resend2(apiKey);
-    await resend.emails.send({
+    const { data: emailData, error: emailError } = await resend.emails.send({
       from: "Execution OS <onboarding@resend.dev>",
       replyTo: "pilot@vaughnmartin.com",
       to: data.email,
       subject: `Your Executive Access to Execution OS, ${data.firstName}`,
       html: buildEmailHtml(data.firstName, magicUrl)
     });
-    console.log(`\u2713 Magic link sent to ${data.email}`);
+    if (emailError) {
+      console.error(`\u2717 Magic link FAILED to ${data.email}:`, JSON.stringify(emailError));
+      return { success: false, error: emailError.message };
+    }
+    console.log(`\u2713 Magic link sent to ${data.email} | Resend ID: ${emailData?.id}`);
     return { success: true };
   } catch (err) {
     console.error("Magic link email error:", err);
