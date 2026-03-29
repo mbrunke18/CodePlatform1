@@ -131,7 +131,7 @@ export async function createAndSendMagicLink(data: {
   console.log(`   Access URL: ${magicUrl}`);
   console.log(`${'─'.repeat(70)}\n`);
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey) {
     console.log(`ℹ RESEND_API_KEY not set — email delivery skipped. Use the URL above.`);
     return { success: true, emailSent: false };

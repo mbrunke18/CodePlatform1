@@ -796,7 +796,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // ─── Resend diagnostic (admin only — remove after confirming email works) ───
   app.get('/api/admin/test-resend', async (req, res) => {
-    const apiKey = process.env.RESEND_API_KEY;
+    const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
     if (!apiKey) {
       return res.json({ ok: false, stage: 'api_key', error: 'RESEND_API_KEY is not set in Replit Secrets' });
     }
