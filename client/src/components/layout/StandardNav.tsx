@@ -157,7 +157,7 @@ export default function StandardNav() {
       links: [
         { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
         { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Feel a trigger fire and reach full execution in 12 minutes", featured: true },
-        { label: "Industry Scenarios", path: "/industry-experience", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives", featured: true },
+        { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives", featured: true },
       ],
     },
     {
