@@ -415,7 +415,6 @@ function Router() {
         <Route path="/our-story" component={OurStory} />
         <Route path="/founder-story" component={FounderStory} />
         <Route path="/execution-os-video" component={ExecuteIQVideo} />
-        <Route path="/why-execution-os" component={WhyExecuteIQ} />
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
