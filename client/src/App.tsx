@@ -119,6 +119,9 @@ const WhyExecuteIQ = lazy(() => import("./pages/WhyExecuteIQ"));
 const Research = lazy(() => import("./pages/Research"));
 const PilotMonitoring = lazy(() => import("./pages/PilotMonitoring"));
 const CrisisExposureMatrix = lazy(() => import("./pages/CrisisExposureMatrix"));
+const CrisisCommunicationsGenerator = lazy(() => import("./pages/CrisisCommunicationsGenerator"));
+const FinancialExposureEstimator = lazy(() => import("./pages/FinancialExposureEstimator"));
+const ConcurrentSituationBoard = lazy(() => import("./pages/ConcurrentSituationBoard"));
 const LuxuryCrisisDemo = lazy(() => import("./pages/LuxuryCrisisDemo"));
 const IndustryDemosHub = lazy(() => import("./pages/IndustryDemosHub"));
 const FinancialRansomwareDemo = lazy(() => import("./pages/FinancialRansomwareDemo"));
@@ -457,6 +460,9 @@ function Router() {
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
         <Route path="/practice-drills" component={PracticeDrills} />
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
+        <Route path="/crisis-communications" component={CrisisCommunicationsGenerator} />
+        <Route path="/financial-exposure" component={FinancialExposureEstimator} />
+        <Route path="/concurrent-situations" component={ConcurrentSituationBoard} />
         <Route path="/simulation-studio" component={SimulationStudioPage} />
         <Route path="/roi-dashboard" component={ROIDashboard} />
         <Route path="/coordination-intelligence" component={lazy(() => import('./pages/CoordinationIntelligence'))} />

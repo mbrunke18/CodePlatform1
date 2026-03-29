@@ -45459,6 +45459,119 @@ Respond ONLY as JSON with this structure:
       res.status(500).json({ error: err.message });
     }
   });
+  app2.post("/api/crisis-communications/generate", async (req, res) => {
+    try {
+      const { scenarioType, severity, context } = req.body;
+      if (!scenarioType || !severity) {
+        return res.status(400).json({ error: "scenarioType and severity are required" });
+      }
+      const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
+      const prompt = `You are a Fortune 1000 crisis communications expert. Generate 5 audience-specific crisis communications for an enterprise organization.
+
+SCENARIO TYPE: ${scenarioType}
+SEVERITY: ${severity}
+ADDITIONAL CONTEXT: ${context || "None provided"}
+
+Generate communications for 5 distinct audiences. Each should be appropriate for the audience and severity level.
+
+Respond ONLY as JSON with this exact structure:
+{
+  "board": "Full Board of Directors brief \u2014 3-4 bullet points with situation, financial exposure, and recommended board-level decision required. Format as: BOARD BRIEF \u2014 CONFIDENTIAL\\n[header]\\n\\nSITUATION\\n[text]\\n\\nFINANCIAL EXPOSURE\\n[text]\\n\\nDECISION REQUIRED\\n[text]",
+  "employees": "Full employee message \u2014 from CEO, reassuring, direct, tells employees what to do and not do. 3-4 paragraphs.",
+  "customers": "Full customer/partner statement \u2014 confidence-preserving, commitment to transparency and service continuity. 2-3 paragraphs.",
+  "analysts": "Full investor/analyst statement \u2014 disclosure language, financial impact framing, forward-looking cautionary statement. 2-3 paragraphs.",
+  "regulators": "Full regulatory notification \u2014 formal tone, incident details, timeline, scope, remediation commitment. Structured with headers."
+}`;
+      const raw = await openAIService2.analyzeText(prompt);
+      const fallback = {
+        board: `BOARD BRIEF \u2014 CONFIDENTIAL
+${severity.toUpperCase()} SEVERITY \xB7 ${scenarioType}
+
+SITUATION
+A ${scenarioType.replace(/-/g, " ")} event has been detected and confirmed. Immediate response protocols are active. Containment measures underway.
+
+FINANCIAL EXPOSURE
+Preliminary assessment indicates material financial exposure. Full quantification within 4 hours. CFO has been briefed.
+
+DECISION REQUIRED
+(1) Authorize external expert engagement, (2) Approve initial response budget, (3) Confirm board communication cadence.`,
+        employees: `MESSAGE FROM [CEO NAME]
+
+Team,
+
+I want to be direct with you about a situation we are managing.
+
+Our team has identified and is actively responding to a ${scenarioType.replace(/-/g, " ")} event. Our response protocols are working as designed.
+
+What this means for you:
+\u2022 Continue your work normally \u2014 our operations are not affected
+\u2022 Do not comment publicly or to media \u2014 direct all inquiries to communications@company.com
+\u2022 You will receive an update by [time] today
+
+Your leadership team is on this. We will keep you informed.
+
+[CEO Name]`,
+        customers: `STATEMENT \u2014 [COMPANY NAME]
+
+We want to inform you of a situation we are currently managing with full attention and urgency.
+
+Our team has identified and contained a ${scenarioType.replace(/-/g, " ")} incident. All services remain fully operational. We have found no evidence of impact to customer data or commitments.
+
+We are conducting a thorough review with external experts and will proactively share material updates. For questions, contact support@company.com.
+
+[Company Name] Leadership`,
+        analysts: `INVESTOR STATEMENT
+
+[Company Name] is disclosing a ${scenarioType.replace(/-/g, " ")} incident that was identified and contained on [date].
+
+Preliminary assessment: No material impact to revenue or full-year guidance anticipated at this stage. Forensic review is ongoing. Estimated remediation costs and any revision to guidance will be disclosed promptly.
+
+Forward-looking statements in this release are subject to risk factors detailed in our most recent 10-K filing.
+
+Investor Relations: ir@company.com`,
+        regulators: `INCIDENT NOTIFICATION \u2014 PRIVILEGED AND CONFIDENTIAL
+
+To: [Regulatory Body]
+From: [Chief Legal Officer]
+Date: [Date]
+Re: Formal Incident Notification \u2014 ${scenarioType.replace(/-/g, " ")}
+
+Pursuant to applicable regulatory requirements, [Company Name] hereby provides formal notification of a ${scenarioType.replace(/-/g, " ")} incident.
+
+INCIDENT SUMMARY
+Nature: ${scenarioType.replace(/-/g, " ")} \u2014 ${severity} severity
+Detected: [Date/Time]
+Contained: [Date/Time]
+Scope: Under active forensic investigation
+
+REMEDIATION
+External forensic firm engaged immediately. Full incident report to be provided within 30 days.
+
+We commit to full cooperation with any regulatory review.
+
+[Signature]`
+      };
+      let result = fallback;
+      try {
+        const jsonMatch = raw.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed.board && parsed.employees && parsed.customers && parsed.analysts && parsed.regulators) {
+            result = parsed;
+          }
+        }
+      } catch {
+      }
+      res.json({
+        ...result,
+        generatedAt: (/* @__PURE__ */ new Date()).toISOString(),
+        scenario: scenarioType,
+        severity
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   console.log("\u2705 WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder");
   return httpServer;
 }
