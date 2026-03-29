@@ -35855,30 +35855,50 @@ async function createAndSendMagicLink(data) {
   });
   const baseUrl = getBaseUrl();
   const magicUrl = `${baseUrl}/magic-login?token=${token}`;
+  console.log(`
+${"\u2500".repeat(70)}`);
+  console.log(`\u{1F4EC} MAGIC LINK REQUEST \u2014 ${data.firstName} ${data.lastName} <${data.email}>`);
+  console.log(`   Company: ${data.company} | Title: ${data.title}`);
+  console.log(`   Access URL: ${magicUrl}`);
+  console.log(`${"\u2500".repeat(70)}
+`);
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.log(`[MAGIC LINK SIMULATED] To: ${data.email} | URL: ${magicUrl}`);
-    return { success: true };
+    console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
+    return { success: true, emailSent: false };
   }
-  try {
-    const resend = new Resend2(apiKey);
-    const { data: emailData, error: emailError } = await resend.emails.send({
-      from: "Execution OS <onboarding@resend.dev>",
-      replyTo: "pilot@vaughnmartin.com",
-      to: data.email,
-      subject: `Your Executive Access to Execution OS, ${data.firstName}`,
-      html: buildEmailHtml(data.firstName, magicUrl)
-    });
-    if (emailError) {
-      console.error(`\u2717 Magic link FAILED to ${data.email}:`, JSON.stringify(emailError));
-      return { success: false, error: emailError.message };
+  const fromAddresses = [
+    "Execution OS <pilot@vaughnmartin.com>",
+    "Execution OS <onboarding@resend.dev>"
+  ];
+  for (const from of fromAddresses) {
+    try {
+      const resend = new Resend2(apiKey);
+      const { data: emailData, error: emailError } = await resend.emails.send({
+        from,
+        replyTo: "pilot@vaughnmartin.com",
+        to: data.email,
+        subject: `Your Executive Access to Execution OS, ${data.firstName}`,
+        html: buildEmailHtml(data.firstName, magicUrl)
+      });
+      if (emailError) {
+        if (emailError.message?.toLowerCase().includes("domain") || emailError.message?.toLowerCase().includes("sender")) {
+          console.warn(`\u26A0 Sender ${from} not verified \u2014 trying fallback sender`);
+          continue;
+        }
+        console.error(`\u2717 Magic link email failed to ${data.email}:`, JSON.stringify(emailError));
+        console.log(`\u2139 Token saved. Use the admin URL above to manually send access.`);
+        return { success: true, emailSent: false };
+      }
+      console.log(`\u2713 Magic link sent to ${data.email} via ${from} | Resend ID: ${emailData?.id}`);
+      return { success: true, emailSent: true };
+    } catch (err) {
+      console.warn(`\u26A0 Sender ${from} threw error: ${err.message} \u2014 trying fallback`);
+      continue;
     }
-    console.log(`\u2713 Magic link sent to ${data.email} | Resend ID: ${emailData?.id}`);
-    return { success: true };
-  } catch (err) {
-    console.error("Magic link email error:", err);
-    return { success: false, error: err.message };
   }
+  console.log(`\u26A0 All email senders failed. Token saved. Use the admin URL above to send manually.`);
+  return { success: true, emailSent: false };
 }
 async function verifyMagicLinkToken(token) {
   const rows = await db.select().from(magicLinkTokens).where(eq7(magicLinkTokens.token, token)).limit(1);
@@ -39950,9 +39970,9 @@ async function registerRoutes(app2, existingServer) {
     }
     const result = await createAndSendMagicLink({ firstName, lastName, email, company, title });
     if (!result.success) {
-      return res.status(500).json({ error: "Failed to send magic link. Please try again." });
+      return res.status(500).json({ error: "Failed to process your request. Please try again." });
     }
-    return res.json({ ok: true });
+    return res.json({ ok: true, emailSent: result.emailSent ?? true });
   });
   app2.get("/api/auth/magic-link/verify", async (req, res) => {
     const token = req.query.token;

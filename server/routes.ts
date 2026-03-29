@@ -789,9 +789,9 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
     const result = await createAndSendMagicLink({ firstName, lastName, email, company, title });
     if (!result.success) {
-      return res.status(500).json({ error: 'Failed to send magic link. Please try again.' });
+      return res.status(500).json({ error: 'Failed to process your request. Please try again.' });
     }
-    return res.json({ ok: true });
+    return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });
   });
 
   app.get('/api/auth/magic-link/verify', async (req, res) => {

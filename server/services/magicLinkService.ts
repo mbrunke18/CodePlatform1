@@ -124,33 +124,59 @@ export async function createAndSendMagicLink(data: {
   const baseUrl = getBaseUrl();
   const magicUrl = `${baseUrl}/magic-login?token=${token}`;
 
+  // Always log the URL so admins can manually send if email fails
+  console.log(`\n${'─'.repeat(70)}`);
+  console.log(`📬 MAGIC LINK REQUEST — ${data.firstName} ${data.lastName} <${data.email}>`);
+  console.log(`   Company: ${data.company} | Title: ${data.title}`);
+  console.log(`   Access URL: ${magicUrl}`);
+  console.log(`${'─'.repeat(70)}\n`);
+
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.log(`[MAGIC LINK SIMULATED] To: ${data.email} | URL: ${magicUrl}`);
-    return { success: true };
+    console.log(`ℹ RESEND_API_KEY not set — email delivery skipped. Use the URL above.`);
+    return { success: true, emailSent: false };
   }
 
-  try {
-    const resend = new Resend(apiKey);
-    const { data: emailData, error: emailError } = await resend.emails.send({
-      from: 'Execution OS <onboarding@resend.dev>',
-      replyTo: 'pilot@vaughnmartin.com',
-      to: data.email,
-      subject: `Your Executive Access to Execution OS, ${data.firstName}`,
-      html: buildEmailHtml(data.firstName, magicUrl),
-    });
+  // Try verified domain first, fall back to Resend's shared sender
+  const fromAddresses = [
+    'Execution OS <pilot@vaughnmartin.com>',
+    'Execution OS <onboarding@resend.dev>',
+  ];
 
-    if (emailError) {
-      console.error(`✗ Magic link FAILED to ${data.email}:`, JSON.stringify(emailError));
-      return { success: false, error: emailError.message };
+  for (const from of fromAddresses) {
+    try {
+      const resend = new Resend(apiKey);
+      const { data: emailData, error: emailError } = await resend.emails.send({
+        from,
+        replyTo: 'pilot@vaughnmartin.com',
+        to: data.email,
+        subject: `Your Executive Access to Execution OS, ${data.firstName}`,
+        html: buildEmailHtml(data.firstName, magicUrl),
+      });
+
+      if (emailError) {
+        // Domain not verified — try next sender
+        if (emailError.message?.toLowerCase().includes('domain') || emailError.message?.toLowerCase().includes('sender')) {
+          console.warn(`⚠ Sender ${from} not verified — trying fallback sender`);
+          continue;
+        }
+        console.error(`✗ Magic link email failed to ${data.email}:`, JSON.stringify(emailError));
+        // Email failed but token exists — still return success so prospect isn't blocked
+        console.log(`ℹ Token saved. Use the admin URL above to manually send access.`);
+        return { success: true, emailSent: false };
+      }
+
+      console.log(`✓ Magic link sent to ${data.email} via ${from} | Resend ID: ${emailData?.id}`);
+      return { success: true, emailSent: true };
+    } catch (err: any) {
+      console.warn(`⚠ Sender ${from} threw error: ${err.message} — trying fallback`);
+      continue;
     }
-
-    console.log(`✓ Magic link sent to ${data.email} | Resend ID: ${emailData?.id}`);
-    return { success: true };
-  } catch (err: any) {
-    console.error('Magic link email error:', err);
-    return { success: false, error: err.message };
   }
+
+  // All senders failed — token is saved, admin can send manually
+  console.log(`⚠ All email senders failed. Token saved. Use the admin URL above to send manually.`);
+  return { success: true, emailSent: false };
 }
 
 export async function verifyMagicLinkToken(token: string): Promise<{
