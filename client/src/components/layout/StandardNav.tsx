@@ -150,28 +150,36 @@ export default function StandardNav() {
     },
   ];
 
-  // TRY IT — self-serve experience paths
+  // EXPERIENCE — self-serve paths for first-time visitors
   const experienceSections: NavSection[] = [
     {
-      heading: "Experience It Now",
+      heading: "Try It Now",
       links: [
         { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
-        { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Guided 4-step sequence — feel a trigger to execution live", featured: true },
+        { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Feel a trigger fire and reach full execution in 12 minutes", featured: true },
+        { label: "Industry Scenarios", path: "/industry-experience", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives", featured: true },
+      ],
+    },
+    {
+      heading: "Go Deeper",
+      links: [
         { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive" },
         { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
+        { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "One-page board summary — shareable in 60 seconds" },
       ],
     },
   ];
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
-    { label: "Why Execution OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest competitive answer", featured: true },
-    { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS", featured: true },
+    { label: "Why Execution OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
+    { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
+    { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
-    { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
     { label: "Pricing & Plans", path: "/growth", icon: TrendingUp, description: "Accessible entry — full platform, grow as you scale", featured: true },
+    { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
     { label: "Why Not Consulting?", path: "/vs-consulting", icon: Scale, description: "McKinsey charges $300K–$500K for PDFs. We deliver infrastructure that executes." },
   ];
 
@@ -344,6 +352,7 @@ export default function StandardNav() {
           {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
             {renderSectionedDropdown("The Platform", platformSections)}
+            {renderSectionedDropdown("Experience", experienceSections)}
             {renderFlatDropdown("Evidence", evidenceLinks)}
             {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>

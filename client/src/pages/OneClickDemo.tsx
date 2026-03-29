@@ -261,7 +261,7 @@ export default function OneClickDemo() {
           </div>
         </div>
         
-      </div>
+      </PageLayout>
     );
   }
 
@@ -503,6 +503,6 @@ export default function OneClickDemo() {
           </Card>
         )}
       </div>
-    </PageLayout>
+    </div>
   );
 }
