@@ -220,36 +220,90 @@ export default function RequestAccess() {
               </div>
             </>
           ) : (
-            /* Success state */
-            <div className="text-center py-8">
+            /* Success state — enriched */
+            <div className="py-4">
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5"
                 style={{ background: "rgba(43,138,110,0.12)" }}
               >
                 <CheckCircle className="h-8 w-8" style={{ color: TEAL }} />
               </div>
-              <h2 className="text-2xl font-bold mb-3" style={{ color: NAVY }}>Check your inbox</h2>
-              <p className="text-sm leading-relaxed mb-2" style={{ color: "#4B5563" }}>
+              <h2 className="text-2xl font-bold mb-2 text-center" style={{ color: NAVY }}>Your link is on its way</h2>
+              <p className="text-sm text-center mb-1" style={{ color: "#4B5563" }}>
                 We've sent your access link to
               </p>
-              <p className="text-sm font-bold mb-6" style={{ color: NAVY }}>{submittedEmail}</p>
-              <p className="text-xs leading-relaxed" style={{ color: "#9CA3AF" }}>
-                The link is valid for 24 hours. If it doesn't appear within a few minutes, check your spam folder or contact{" "}
-                <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD }}>pilot@vaughnmartin.com</a>.
+              <p className="text-sm font-bold text-center mb-1" style={{ color: NAVY }}>{submittedEmail}</p>
+              <p className="text-xs text-center mb-8" style={{ color: "#9CA3AF" }}>
+                Valid for 24 hours · single sign-in · no password required
               </p>
 
+              {/* Next steps — 3 cards */}
+              <div className="mb-6">
+                <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: NAVY }}>
+                  While you wait — explore the platform
+                </p>
+                <div className="space-y-3">
+                  {[
+                    {
+                      href: "/try-demo",
+                      label: "Watch the 12-Minute Test Drive",
+                      desc: "See a trigger fire, playbooks activate, and stakeholders coordinate in real time.",
+                      badge: "Interactive",
+                    },
+                    {
+                      href: "/industry-demos",
+                      label: "See Your Industry Scenario",
+                      desc: "Financial services, pharma, manufacturing, luxury — pick the scenario closest to your risk profile.",
+                      badge: "Vertical",
+                    },
+                    {
+                      href: "/roi-calculator",
+                      label: "Calculate Your Execution ROI",
+                      desc: "Estimate annual value, executive time saved, and revenue protected for your organization.",
+                      badge: "Calculator",
+                    },
+                  ].map(({ href, label, desc, badge }) => (
+                    <a
+                      key={href}
+                      href={href}
+                      className="flex items-start gap-3 p-3 block transition-colors"
+                      style={{ border: "1px solid #E8E4DC", background: "#fff", textDecoration: "none" }}
+                    >
+                      <div
+                        className="flex-shrink-0 mt-0.5 px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase"
+                        style={{ background: "rgba(10,15,46,0.06)", color: NAVY, whiteSpace: "nowrap" }}
+                      >
+                        {badge}
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold mb-0.5" style={{ color: NAVY }}>{label}</p>
+                        <p className="text-[11px] leading-relaxed" style={{ color: "#6B7280" }}>{desc}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pilot CTA */}
               <div
-                className="mt-8 p-4 rounded-lg text-left"
+                className="p-4 text-center"
                 style={{ background: "rgba(10,15,46,0.04)", border: "1px solid rgba(10,15,46,0.08)" }}
               >
-                <p className="text-xs font-semibold mb-2" style={{ color: NAVY }}>While you wait</p>
-                <p className="text-xs" style={{ color: "#6B7280" }}>
-                  Browse the platform overview at{" "}
-                  <a href="/platform-overview" style={{ color: GOLD }}>vaughnmartin.com/platform-overview</a>{" "}
-                  or learn about the IDEA Framework at{" "}
-                  <a href="/idea-framework" style={{ color: GOLD }}>vaughnmartin.com/idea-framework</a>.
+                <p className="text-xs font-semibold mb-1" style={{ color: NAVY }}>
+                  Ready for a formal engagement?
                 </p>
+                <p className="text-xs mb-3" style={{ color: "#6B7280" }}>
+                  The 90-day Fortune 1000 Pilot Program ($75K flat) runs alongside platform access.
+                </p>
+                <a href="/pilot-program" style={{ color: GOLD, fontSize: 12, fontWeight: 700, textDecoration: "none" }}>
+                  View Pilot Program details →
+                </a>
               </div>
+
+              <p className="text-xs text-center mt-5" style={{ color: "#9CA3AF" }}>
+                Link not in your inbox? Check spam or email{" "}
+                <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD }}>pilot@vaughnmartin.com</a>
+              </p>
             </div>
           )}
         </div>

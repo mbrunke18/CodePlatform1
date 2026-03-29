@@ -69,6 +69,7 @@ const SEARCH_ITEMS = [
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Request a Pilot', path: '/pilot-program', category: 'Action', icon: Target },
+  { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
 ];

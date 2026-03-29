@@ -60,6 +60,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
+const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
 const ExecutiveDashboard = lazy(() => import("./pages/ExecutiveDashboard"));
 
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
@@ -585,6 +586,7 @@ function Router() {
         {renderRedirects(["/triggers", "/trigger-dashboard"], "/triggers-management")}
         {renderRedirects(["/interactive-demo", "/interactive-master-demo"], "/how-it-works")}
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
+        <Route path="/executive-brief" component={ExecutiveBrief} />
         {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/try-demo")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>

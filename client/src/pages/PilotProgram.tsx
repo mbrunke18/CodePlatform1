@@ -648,6 +648,91 @@ export default function PilotProgram() {
           </div>
         </section>
 
+        {/* Microsoft / Existing Stack Objection Section */}
+        <section className="py-16 px-6 bg-[#F8F7F4]">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-3">A Question Every Pilot Candidate Asks</p>
+              <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4">
+                "We already have Microsoft Copilot. Why Execution OS?"
+              </h2>
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                Every Fortune 1000 has Microsoft's AI stack. None have the operating model to execute with it. Execution OS is not a replacement — it is the coordination layer that makes your existing investment actionable.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-10">
+              {/* What Microsoft does */}
+              <div className="bg-white border border-[#E8E4DC] p-6">
+                <div className="text-xs font-bold tracking-[0.18em] uppercase text-gray-400 mb-4">Your Microsoft Investment Does</div>
+                <div className="space-y-3">
+                  {[
+                    "Copilot summarizes meetings and drafts documents",
+                    "Azure OpenAI powers intelligent search and analysis",
+                    "Teams connects your people for communication",
+                    "Purview manages data governance and compliance",
+                    "Defender monitors for security threats",
+                  ].map(item => (
+                    <div key={item} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0 mt-2" />
+                      <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 p-3 bg-amber-50 border border-amber-100">
+                  <p className="text-xs font-semibold text-amber-800">What it doesn't do</p>
+                  <p className="text-xs text-amber-700 mt-1 leading-relaxed">None of these tools coordinate your organization when a strategic trigger fires. They surface information — but someone still has to mobilize the people, assign the tasks, and execute the playbook. That coordination takes 30 days. That's the gap.</p>
+                </div>
+              </div>
+
+              {/* What Execution OS adds */}
+              <div className="bg-[#0A0F2E] border border-[#0A0F2E] p-6">
+                <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4">Execution OS Adds</div>
+                <div className="space-y-3">
+                  {[
+                    "Pre-staged playbooks — 170 across 9 domains, ready before any trigger fires",
+                    "Automated stakeholder cascade — every role notified and assigned in 12 minutes",
+                    "Trigger-to-coordination engine — detection becomes execution, not a meeting",
+                    "Decision authority preserved — AI orchestrates, your executives decide",
+                    "Continuous improvement — every activation makes your playbooks smarter",
+                  ].map(item => (
+                    <div key={item} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] flex-shrink-0 mt-2" />
+                      <span className="text-sm text-white/80 leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 p-3 border border-[#C9A84C]/30 bg-[#C9A84C]/5">
+                  <p className="text-xs font-semibold text-[#C9A84C]">The operating model layer</p>
+                  <p className="text-xs text-white/70 mt-1 leading-relaxed">Execution OS sits above your Microsoft investment — not beside it, not replacing it. Copilot detects and summarizes. Execution OS deploys your people at the speed of detection.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Stack diagram */}
+            <div className="bg-white border border-[#E8E4DC] p-6">
+              <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-5 text-center">Enterprise Stack — Where Execution OS Fits</div>
+              <div className="space-y-2 max-w-2xl mx-auto">
+                {[
+                  { layer: "Execution OS", role: "Operating Model — coordinates humans at the speed of AI detection", highlight: true },
+                  { layer: "Microsoft Copilot & Azure OpenAI", role: "AI Intelligence — detects, summarizes, analyzes", highlight: false },
+                  { layer: "Microsoft Teams & Outlook", role: "Communication Infrastructure — how people connect", highlight: false },
+                  { layer: "Jira / Asana / ServiceNow", role: "Work Management — where tasks are tracked", highlight: false },
+                  { layer: "Defender / Purview / Sentinel", role: "Security & Compliance — what is monitored", highlight: false },
+                ].map(({ layer, role, highlight }, i) => (
+                  <div key={layer} className={`flex items-center gap-4 p-3 border ${highlight ? "border-[#C9A84C] bg-[#0A0F2E]" : "border-[#E8E4DC] bg-[#F8F7F4]"}`}>
+                    <div className={`w-2 h-2 rounded-full flex-shrink-0 ${highlight ? "bg-[#C9A84C]" : "bg-gray-300"}`} />
+                    <div className={`text-sm font-semibold min-w-[240px] ${highlight ? "text-[#C9A84C]" : "text-[#0A0F2E]"}`}>{layer}</div>
+                    <div className={`text-xs ${highlight ? "text-white/70" : "text-gray-500"}`}>{role}</div>
+                    {highlight && <span className="ml-auto text-[10px] font-bold tracking-wider uppercase text-[#C9A84C] whitespace-nowrap">← Execution OS</span>}
+                    {!highlight && <span className="ml-auto text-[10px] text-gray-400 whitespace-nowrap">Already invested</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
