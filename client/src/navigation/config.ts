@@ -173,6 +173,27 @@ export const navigationConfig: NavigationConfig = {
           path: '/execute/decisions',
           icon: '👍',
           description: 'Go/no-go checkpoints and approvals'
+        },
+        {
+          id: 'concurrent-situations',
+          label: 'Concurrent Situation Board',
+          path: '/concurrent-situations',
+          icon: '🗂️',
+          description: 'Command view when multiple crises compete for bandwidth'
+        },
+        {
+          id: 'crisis-communications',
+          label: 'Crisis Communications',
+          path: '/crisis-communications',
+          icon: '📢',
+          description: '5 audience messages generated in 18 seconds'
+        },
+        {
+          id: 'financial-exposure',
+          label: 'Financial Exposure Estimator',
+          path: '/financial-exposure',
+          icon: '💵',
+          description: 'Instant dollar-range exposure at trigger point'
         }
       ]
     },

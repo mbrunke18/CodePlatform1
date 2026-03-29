@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -54,6 +54,9 @@ const SEARCH_ITEMS = [
   { label: 'Execution Coordination', path: '/execution-coordination', category: 'Execute', icon: Users },
   { label: 'Decision Velocity', path: '/decision-velocity', category: 'Execute', icon: TrendingUp },
   { label: 'War Room', path: '/war-room', category: 'Execute', icon: Globe },
+  { label: 'Concurrent Situation Board', path: '/concurrent-situations', category: 'Execute', icon: LayoutGrid },
+  { label: 'Crisis Communications Generator', path: '/crisis-communications', category: 'Execute', icon: MessageSquare },
+  { label: 'Financial Exposure Estimator', path: '/financial-exposure', category: 'Execute', icon: DollarSign },
   { label: 'Advanced Analytics', path: '/advanced-analytics', category: 'Advance', icon: BarChart3 },
   { label: 'Execution History', path: '/execution-history', category: 'Advance', icon: BarChart3 },
   { label: 'Enterprise Metrics', path: '/enterprise-metrics', category: 'Advance', icon: TrendingUp },
@@ -131,6 +134,14 @@ export default function StandardNav() {
         { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
+      ],
+    },
+    {
+      heading: "Execute Phase Tools",
+      links: [
+        { label: "Concurrent Situation Board", path: "/concurrent-situations", icon: LayoutGrid, description: "Command view when multiple crises compete for C-suite bandwidth", featured: true },
+        { label: "Crisis Communications", path: "/crisis-communications", icon: MessageSquare, description: "5 audience-specific communications generated in 18 seconds" },
+        { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar-range exposure when a trigger fires — CFO's first question answered" },
       ],
     },
   ];
