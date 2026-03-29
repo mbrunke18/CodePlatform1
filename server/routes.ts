@@ -794,6 +794,35 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });
   });
 
+  // ─── Resend diagnostic (admin only — remove after confirming email works) ───
+  app.get('/api/admin/test-resend', async (req, res) => {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return res.json({ ok: false, stage: 'api_key', error: 'RESEND_API_KEY is not set in Replit Secrets' });
+    }
+    try {
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+      const { data, error } = await resend.emails.send({
+        from: 'Execution OS <pilot@vaughnmartin.com>',
+        replyTo: 'pilot@vaughnmartin.com',
+        to: 'marty@vaughnmartin.com',
+        subject: 'Resend diagnostic — Execution OS',
+        html: '<p style="font-family:sans-serif">Resend is working. Your API key and domain are correctly configured.</p>',
+      });
+      if (error) {
+        console.error('Resend diagnostic error:', JSON.stringify(error));
+        return res.json({ ok: false, stage: 'send', error });
+      }
+      console.log('Resend diagnostic success:', data);
+      return res.json({ ok: true, emailId: data?.id, message: 'Test email sent to marty@vaughnmartin.com' });
+    } catch (err: any) {
+      console.error('Resend diagnostic exception:', err.message);
+      return res.json({ ok: false, stage: 'exception', error: err.message });
+    }
+  });
+  // ─────────────────────────────────────────────────────────────────────────
+
   app.get('/api/auth/magic-link/verify', async (req, res) => {
     const token = req.query.token as string;
     if (!token) {
