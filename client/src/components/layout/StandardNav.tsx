@@ -61,6 +61,8 @@ const SEARCH_ITEMS = [
   { label: 'Execution History', path: '/execution-history', category: 'Advance', icon: BarChart3 },
   { label: 'Enterprise Metrics', path: '/enterprise-metrics', category: 'Advance', icon: TrendingUp },
   { label: 'Stakeholder Management', path: '/stakeholder-management', category: 'Advance', icon: Users },
+  { label: 'Workforce Intelligence', path: '/workforce-intelligence', category: 'Advance', icon: Users },
+  { label: 'Strategic Innovation Pipeline', path: '/strategic-innovation', category: 'Advance', icon: Lightbulb },
   { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
   { label: 'Pilot Demo', path: '/pilot-demo', category: 'Demo', icon: Rocket },
   { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },

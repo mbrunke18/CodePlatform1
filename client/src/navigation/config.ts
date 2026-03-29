@@ -259,6 +259,20 @@ export const navigationConfig: NavigationConfig = {
           path: '/advance/audit',
           icon: '🔒',
           description: 'Governance, compliance, and full history'
+        },
+        {
+          id: 'workforce-intelligence',
+          label: 'Workforce Intelligence',
+          path: '/workforce-intelligence',
+          icon: '🧠',
+          description: 'Cultural health, team dynamics, and organizational resilience'
+        },
+        {
+          id: 'strategic-innovation',
+          label: 'Strategic Innovation Pipeline',
+          path: '/strategic-innovation',
+          icon: '🚀',
+          description: 'Innovation pipeline management and AI opportunity scoring'
         }
       ]
     },

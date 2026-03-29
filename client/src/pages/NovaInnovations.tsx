@@ -184,7 +184,7 @@ export default function NovaInnovations() {
                 <Brain className="h-5 w-5 text-white" />
               </div>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Nova Saves You Money</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY }}>How Strategic Innovation Pipeline Saves You Money</div>
                 <div style={{ fontSize: 14, color: "#6B7280" }}>Identifies breakthrough opportunities 6 months ahead of competitors, capturing $3.2M+ in first-mover advantage</div>
               </div>
             </div>
@@ -204,9 +204,9 @@ export default function NovaInnovations() {
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Innovation Intelligence</span>
                   </div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
-                    Nova <em style={{ fontStyle: "italic", color: GOLD }}>Innovations</em>
+                    Strategic Innovation <em style={{ fontStyle: "italic", color: GOLD }}>Pipeline</em>
                   </h1>
-                  <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Innovation pipeline management and breakthrough opportunity identification</p>
+                  <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Innovation pipeline management, breakthrough identification, and AI opportunity scoring</p>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-4">
@@ -365,7 +365,7 @@ export default function NovaInnovations() {
               <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48, borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: GOLD }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Nova Analysis</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Pipeline Analysis</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Innovation <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -381,7 +381,9 @@ function Router() {
         <Route path="/flux-adaptations" component={FluxAdaptations} />
         <Route path="/prism-insights" component={PrismInsights} />
         <Route path="/echo-cultural-analytics" component={EchoCulturalAnalytics} />
+        <Route path="/workforce-intelligence" component={EchoCulturalAnalytics} />
         <Route path="/nova-innovations" component={NovaInnovations} />
+        <Route path="/strategic-innovation" component={NovaInnovations} />
         {renderRoutes(["/mckinsey", "/mckinsey-intelligence"], McKinseyIntelligenceCenter)}
 
         {/* Strategic Operations */}
