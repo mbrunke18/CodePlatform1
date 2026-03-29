@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 27, 2026 (rev 9) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 29, 2026 (rev 10) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -38,7 +38,7 @@
 | Real-time | Socket.IO WebSocket server |
 | Async Jobs | PostgreSQL-backed background job queue |
 | AI | OpenAI GPT-4o |
-| Email | Resend (`RESEND_API_KEY`) from `noreply@vaughnmartin.com` |
+| Email | Resend (`RESEND_API_KEY`) — tries `pilot@vaughnmartin.com` first, falls back to `onboarding@resend.dev`; always logs admin URL to console |
 
 ---
 
@@ -569,11 +569,15 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 ### `StandardNav`
 - Carries the logo on every page. Do NOT add a second logo inside page hero content.
 - **Nav height: 130px** (`h-[130px]`). Logo: `<ExecuteIQLogo height={130} variant="full" color="navy" />`.
-- Unauthenticated CTAs: "Try Demo" (outline, → /try-demo), "Request Pilot" (gold, → /pilot-program), "Sign In" (ghost)
-- Authenticated CTAs: "Try Demo" + "Request Pilot" always visible (same as unauthenticated — execs share these with prospects), "Open Platform" (teal, → /mission-control), user name as a **dropdown** with: Settings (→ /settings), Organization Setup (→ /organization-setup), Sign Out
+- **Four dropdown menus (left):**
+  1. **The Platform** — operating model, core capabilities, platform tools, execute tools
+  2. **Experience** — Try It Now (Live Demo `/try-demo`, 12-Min Test Drive `/test-drive`, Industry Scenarios `/industry-demos`) · Go Deeper (Shadow Simulator, By Role, Strategic Analyzer, Executive Brief `/executive-brief`)
+  3. **Evidence** — Why Execution OS (featured, `/why-execution-os`), Executive Brief (featured, `/executive-brief`), Research, ROI Calc, Pricing
+  4. **Investors** — Resources, Thesis, Deck, Briefings, Founder Story
+- Unauthenticated CTAs (right): "Request Access" (outline, → /request-access), "Request a Pilot" (gold, → /pilot-program), "Sign In" (ghost)
+- Authenticated CTAs: same plus "Open Platform" (teal, → /mission-control), user name dropdown (Settings, Organization Setup, Sign Out)
 - **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
-- Footer includes Settings and Sitemap links in the Company column for full coverage
-- **Product → Understand section includes:** IDEA Framework (`/idea-framework`), Why Execution OS (`/why-execution-os`), **How It Works** (`/how-it-works`), Platform Overview (`/platform-overview`)
+- **Route conflict history:** `/why-execution-os` previously had a shadow route serving the old `WhyExecuteIQ` component (line 418 in App.tsx, removed). The legacy page now lives at `/why-execution-os-legacy`. Only `WhyExecutionOS.tsx` should ever serve `/why-execution-os`.
 
 ### Logo Sizing Reference (`ExecuteIQLogo` / `VaughnMartinLogo`)
 - **`full` variant:** seal scales as `height * 0.88`; wordmark text is FIXED at 26px (VaughnMartin) + 10.5px (Execution OS) regardless of height
@@ -591,10 +595,11 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 
 ### Homepage Nav (SEPARATE from StandardNav)
 - `Homepage.tsx` has its **own sticky nav bar** that is completely separate from `StandardNav`. It is NOT a `PageLayout` page — it manages its own header.
-- Desktop links: **How It Works** → `/how-it-works`, Execution OS → `/platform-overview`, Pricing → `/pricing`, About → `/founder-story`
-- Mobile hamburger menu: same four links, rendered as `<Link>` components (not `<button>` with `onClick`)
-- Footer product column: same four links + "Request a Pilot"
-- **CRITICAL:** "How It Works" in the homepage nav MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor section exists on the homepage but the nav link goes to the standalone page.
+- Desktop links (flat, no dropdowns): **How It Works** → `/how-it-works` · **The Platform** → `/platform-overview` · **Experience** → `/industry-demos` · **Why Execution OS** → `/why-execution-os` · **Investors** → `/investors`
+- CTA buttons (right): "Request Access" (outline, → /request-access) + "Request a Pilot" (gold, → /pilot-program)
+- Mobile hamburger menu: same five links, rendered as `<Link>` components (not `<button>` with `onClick`)
+- **CRITICAL:** "How It Works" MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor exists on the homepage but the nav link goes to the standalone page.
+- **CRITICAL:** Do NOT merge HomepageNav into StandardNav or PageLayout. They are intentionally separate components.
 
 ### `ExecutionGapDiagram`
 - Location: `client/src/components/ExecutionGapDiagram.tsx`
@@ -637,6 +642,14 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
 | `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
 | `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
+| `WhyExecutionOS.tsx` | `/why-execution-os` | Competitive analysis page. Full breakdown: Copilot vs ServiceNow vs Palantir vs Everbridge vs GRC — positioned on a 2×2 grid (Speed vs Depth, Predict vs React). Closes with Microsoft positioning ("every enterprise already owns the engine — Execution OS is the transmission"). **Route conflict fix (March 2026):** A shadow route at this path previously served the old `WhyExecuteIQ` component — that shadow route was removed from App.tsx. The legacy page lives at `/why-execution-os-legacy`. Linked from: StandardNav Evidence dropdown (featured), HomepageNav. |
+| `ExecutiveBrief.tsx` | `/executive-brief` | Shareable one-pager for board and C-suite prospects. Concise value prop, key metrics (3,600×, 12 min, 170 playbooks), IDEA Framework summary, and Microsoft positioning. Linked from: StandardNav Experience dropdown and Evidence dropdown. |
+| `RequestAccess.tsx` | `/request-access` | Magic link intake form. Fields: name, email, company, title. On submit: saves token to `magic_link_tokens` DB table, sends Resend email (`pilot@vaughnmartin.com` → fallback `onboarding@resend.dev`), logs admin URL to console. Always returns `{ ok: true, emailSent: bool }` — never fails on the user side. Paired with `/magic-login?token=<token>` which validates, creates user + session, redirects to `/mission-control`. |
+| `IndustryDemosHub.tsx` | `/industry-demos` | Hub page for all 4 industry scenario demos. Linked from: HomepageNav Experience, StandardNav Experience dropdown. |
+| `FinancialRansomwareDemo.tsx` | `/industry-demo/financial-ransomware` | Financial services ransomware response scenario (600+ lines). Real-time incident timeline, 7 IDEA-phase tasks, CFO/CTO/CISO stakeholder map, $47M exposure model. |
+| `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
+| `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
+| `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
 
 ---
 
@@ -664,7 +677,7 @@ If no playbook matches by name, uses `realPlaybooks[0]?.id`. If DB is empty, fal
 
 **Auto-Task Seeding.** When a playbook is activated with zero DB tasks, 7 domain-specific tasks are generated in-memory keyed to the playbook's strategic domain. Tasks start `in_progress` and auto-progress every 20 seconds. `displayTasks` merges real DB tasks + seeded demo tasks identically for debrief scoring.
 
-**Post-Activation Debrief.** Surfaces automatically on completion: 0–100 performance score, ROI dollar value (`$40/min × time saved vs 72hr benchmark`), 4 metric cards, AI recommendation, CTAs. Shows "Concept Simulation" banner when running on seeded demo tasks.
+**Post-Activation Debrief.** Surfaces automatically on completion: 0–100 performance score, ROI dollar value (`$40/min × time saved vs 30-day mobilization baseline`), 4 metric cards, AI recommendation, CTAs. Shows "Concept Simulation" banner when running on seeded demo tasks. **Note:** The "72 hours" framing is RETIRED — always use the 30-day baseline.
 
 ---
 
