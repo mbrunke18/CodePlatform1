@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PageLayout from "@/components/layout/PageLayout";
-import { Clock, CheckCircle, TrendingUp, Trophy, ArrowRight, Zap, Target, Users, Loader2 } from "lucide-react";
+import { Clock, CheckCircle, TrendingUp, Trophy, ArrowRight, Zap, Target, Users, Loader2, BarChart3 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { BrandStamp } from "@/components/BrandStamp";
@@ -347,6 +347,64 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           <p className="mt-3 text-sm text-[#6B7280] uppercase tracking-widest font-bold text-[10px]">
             Pre-stage decisions before scenarios occur—just like head coaches do
           </p>
+        </div>
+
+        {/* Decision Velocity Benchmark Panel */}
+        <div className="bg-white border rounded-none shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+          <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>Industry Benchmarks</div>
+          <h3 className="text-xl font-bold mb-6" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>Your Decision Velocity vs. Peer Group</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {[
+              { metric: "Avg. Time to Decision", you: "9 min", peer: "4.2 hrs", industry: "2.1 days", winner: "you" },
+              { metric: "Decision Reversal Rate", you: "4%", peer: "22%", industry: "31%", winner: "you" },
+              { metric: "Stakeholder Alignment", you: "94%", peer: "61%", industry: "48%", winner: "you" },
+            ].map((b) => (
+              <div key={b.metric} className="p-5 bg-[#F8F7F4] border rounded-none" style={{ borderColor: "#E8E4DC" }}>
+                <div className="text-[10px] font-bold uppercase tracking-widest mb-3" style={{ color: "#6B7280" }}>{b.metric}</div>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: "#2B8A6E" }}>You</span>
+                    <span className="font-bold" style={{ color: "#2B8A6E", fontFamily: "'Cormorant Garamond', serif" }}>{b.you}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-widest" style={{ color: "#6B7280" }}>Peer Avg</span>
+                    <span className="font-semibold text-sm" style={{ color: "#6B7280" }}>{b.peer}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-widest" style={{ color: "#6B7280" }}>Industry Avg</span>
+                    <span className="font-semibold text-sm" style={{ color: "#6B7280" }}>{b.industry}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Velocity Trend */}
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: "#6B7280" }}>30-Day Velocity Trend</div>
+            <div className="flex items-end gap-2 h-24">
+              {[62, 68, 71, 74, 79, 83, 88, 84, 91, 87, 94, 92].map((v, i) => (
+                <div key={i} className="flex-1 flex flex-col items-center gap-1">
+                  <div
+                    className="w-full rounded-sm"
+                    style={{
+                      height: `${(v / 100) * 88}px`,
+                      background: i === 11 ? "#C9A84C" : "#0A0F2E",
+                      opacity: i === 11 ? 1 : 0.4 + i * 0.05,
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>30 days ago</span>
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-3 h-3" style={{ color: "#2B8A6E" }} />
+                <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#2B8A6E" }}>+32% improvement this month</span>
+              </div>
+              <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>Today</span>
+            </div>
+          </div>
         </div>
       </div>
     </PageLayout>

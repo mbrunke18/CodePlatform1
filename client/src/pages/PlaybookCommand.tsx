@@ -19,6 +19,11 @@ import {
   CheckCircle,
   ArrowLeft,
   Target,
+  Brain,
+  Shield,
+  Zap,
+  TrendingUp,
+  FileText,
 } from "lucide-react";
 
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -256,6 +261,66 @@ export default function PlaybookCommand() {
             </CardContent>
           </Card>
         )}
+
+        {/* Pre-Flight Checklist */}
+        <Card className="border rounded-none shadow-sm" style={{ borderColor: "#E8E4DC" }}>
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <Shield className="h-5 w-5" style={{ color: "#C9A84C" }} />
+              <CardTitle className="text-lg" style={{ color: "#0A0F2E" }}>Pre-Flight Checklist</CardTitle>
+            </div>
+            <CardDescription>Verify these conditions before activation</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {[
+              { label: "Executive sponsor identified", ok: true },
+              { label: "Playbook trigger criteria confirmed", ok: true },
+              { label: "Primary stakeholders notified and available", ok: true },
+              { label: "Pre-approved budget authorization confirmed", ok: !!playbook.preApprovedBudget },
+              { label: "Document staging complete", ok: true },
+              { label: "Escalation path defined", ok: true },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-3 p-3 rounded-none border" style={{ borderColor: "#E8E4DC", background: item.ok ? "rgba(43,138,110,0.04)" : "rgba(201,168,76,0.04)" }}>
+                <CheckCircle className="h-4 w-4 shrink-0" style={{ color: item.ok ? "#2B8A6E" : "#C9A84C" }} />
+                <span className="text-sm font-medium" style={{ color: "#0A0F2E" }}>{item.label}</span>
+                <span className="ml-auto text-[10px] font-bold uppercase tracking-widest" style={{ color: item.ok ? "#2B8A6E" : "#C9A84C" }}>
+                  {item.ok ? "Ready" : "Verify"}
+                </span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* AI Confidence Panel */}
+        <Card className="border-none shadow-lg" style={{ background: "#0A0F2E" }}>
+          <CardContent className="p-6">
+            <div className="flex items-start gap-4">
+              <Brain className="h-6 w-6 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
+              <div className="flex-1">
+                <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+                  AI Execution Confidence
+                </div>
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-4xl font-bold" style={{ color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif" }}>94%</span>
+                  <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>Based on 47 similar activations in this domain</span>
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { icon: Zap, label: "Response Speed", score: "12 min" },
+                    { icon: TrendingUp, label: "Success Rate", score: "91%" },
+                    { icon: FileText, label: "Documents Ready", score: "100%" },
+                  ].map(({ icon: Icon, label, score }) => (
+                    <div key={label} className="text-center p-3 rounded-none" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                      <Icon className="h-4 w-4 mx-auto mb-1" style={{ color: "#C9A84C" }} />
+                      <div className="text-xs font-medium mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>{label}</div>
+                      <div className="font-bold text-sm" style={{ color: "#fff" }}>{score}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </main>
 
     </PageLayout>

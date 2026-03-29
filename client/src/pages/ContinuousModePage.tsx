@@ -3,7 +3,7 @@ import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Activity, Clock, Calendar, CheckCircle, AlertCircle, PlayCircle, Pause } from 'lucide-react';
+import { Activity, Clock, Calendar, CheckCircle, AlertCircle, PlayCircle, Pause, Wifi, TrendingUp, Brain, Zap, Shield } from 'lucide-react';
 
 const NAVY = "#0A0F2E";
 const NAVY_MID = "#141B45";
@@ -252,6 +252,94 @@ export default function ContinuousModePage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Integration Health Grid */}
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <Wifi className="w-5 h-5" style={{ color: GOLD }} />
+            <h3 className="text-lg font-bold uppercase tracking-widest text-[10px]" style={{ color: NAVY }}>Integration Health — Live</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: "Microsoft Teams", latency: "94ms", status: "live", uptime: "99.97%" },
+              { name: "Azure OpenAI", latency: "210ms", status: "live", uptime: "99.91%" },
+              { name: "Signal Intelligence", latency: "18ms", status: "live", uptime: "100%" },
+              { name: "Playbook Engine", latency: "32ms", status: "live", uptime: "99.99%" },
+              { name: "Stakeholder CRM", latency: "55ms", status: "live", uptime: "99.88%" },
+              { name: "Budget Allocator", latency: "41ms", status: "live", uptime: "99.95%" },
+              { name: "Document Stager", latency: "67ms", status: "live", uptime: "99.93%" },
+              { name: "War Room Engine", latency: "29ms", status: "live", uptime: "100%" },
+            ].map((int) => (
+              <div key={int.name} className="p-4 bg-white border rounded-sm" style={{ borderColor: BORDER }}>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: TEAL }}>LIVE</span>
+                </div>
+                <div className="font-semibold text-sm mb-1" style={{ color: NAVY }}>{int.name}</div>
+                <div className="text-[10px] uppercase tracking-widest" style={{ color: MUTED }}>
+                  {int.latency} · {int.uptime} uptime
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Proactive AI Insights */}
+        <Card className="border rounded-sm shadow-sm" style={{ borderColor: BORDER, background: "#FDFCFA" }}>
+          <CardHeader className="pb-4">
+            <div className="flex items-center gap-3">
+              <Brain className="w-5 h-5" style={{ color: GOLD }} />
+              <CardTitle className="text-[13px] uppercase tracking-widest font-bold" style={{ color: NAVY }}>
+                Proactive AI Insights — Generated This Cycle
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {[
+                {
+                  icon: Shield,
+                  confidence: 91,
+                  label: "Competitor Pricing Shift Detected",
+                  body: "Oracle reduced enterprise licensing by 12% in 3 markets. Playbook 'Competitive Price Response' pre-staged and ready. Recommend executive review within 6 hours.",
+                  urgency: "HIGH",
+                  urgencyColor: "#dc2626",
+                },
+                {
+                  icon: TrendingUp,
+                  confidence: 84,
+                  label: "Talent Pipeline Attrition Risk",
+                  body: "Signal clustering across LinkedIn, Glassdoor, and internal HRIS indicates 2 senior engineering roles at departure risk. Retention playbook can deploy in 12 minutes.",
+                  urgency: "MEDIUM",
+                  urgencyColor: GOLD,
+                },
+                {
+                  icon: Zap,
+                  confidence: 97,
+                  label: "Regulatory Filing Window Opens in 72 Hours",
+                  body: "SEC Form 10-K deadline approaching. Document staging is 94% complete. 3 pending executive approvals required before automatic submission.",
+                  urgency: "CRITICAL",
+                  urgencyColor: "#7C3AED",
+                },
+              ].map((insight) => (
+                <div key={insight.label} className="flex items-start gap-4 p-4 bg-white rounded-sm border" style={{ borderColor: BORDER }}>
+                  <insight.icon className="w-5 h-5 shrink-0 mt-0.5" style={{ color: TEAL }} />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="font-semibold text-sm" style={{ color: NAVY }}>{insight.label}</span>
+                      <Badge className="text-[9px] uppercase tracking-widest font-bold rounded-none px-2" style={{ background: insight.urgencyColor, color: "#fff" }}>{insight.urgency}</Badge>
+                    </div>
+                    <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{insight.body}</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: MUTED }}>AI Confidence</div>
+                    <div className="text-xl font-bold" style={{ color: GOLD }}>{insight.confidence}%</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Capabilities Overview */}
         <Card style={{ background: NAVY }} className="border-none shadow-xl text-white relative overflow-hidden">

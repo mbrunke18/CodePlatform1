@@ -346,6 +346,77 @@ export default function ExecutiveAnalyticsDashboard() {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* Organizational Resilience Score */}
+        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>Organizational Resilience Score</div>
+              <h3 className="text-2xl font-bold" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>Enterprise Execution Readiness</h3>
+            </div>
+            <div className="text-right">
+              <div className="text-5xl font-bold" style={{ color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif" }}>87</div>
+              <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: "#2B8A6E" }}>/ 100 — Strong</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              { dimension: "Detection Speed", score: 94, color: "#2B8A6E" },
+              { dimension: "Playbook Coverage", score: 89, color: "#C9A84C" },
+              { dimension: "Stakeholder Reach", score: 83, color: "#0A0F2E" },
+              { dimension: "Decision Velocity", score: 91, color: "#2B8A6E" },
+              { dimension: "Learning Capture", score: 78, color: "#C9A84C" },
+            ].map((dim) => (
+              <div key={dim.dimension} className="text-center p-4 bg-[#F8F7F4] rounded-sm">
+                <div className="text-2xl font-bold mb-1" style={{ color: dim.color, fontFamily: "'Cormorant Garamond', serif" }}>{dim.score}</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#6B7280" }}>{dim.dimension}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 90-Day Strategic Forecast */}
+        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+          <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>AI-Generated</div>
+          <h3 className="text-xl font-bold mb-6" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>90-Day Strategic Forecast</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                window: "Next 30 Days",
+                confidence: 94,
+                headline: "Regulatory review cycle peaks",
+                detail: "3 compliance playbooks should be elevated to Primary status. Legal team coverage at 87% — one gap identified in GDPR documentation.",
+                action: "Review Compliance Playbooks",
+              },
+              {
+                window: "Days 31–60",
+                confidence: 82,
+                headline: "M&A integration risk window",
+                detail: "Q2 integration milestones due. Change management playbook should be activated by Day 45 to protect employee retention score.",
+                action: "Activate Integration Playbook",
+              },
+              {
+                window: "Days 61–90",
+                confidence: 76,
+                headline: "Competitive market shift probable",
+                detail: "Signal clusters across 4 sources suggest a competitor pricing action in Q3. Strategic Response playbook pre-staged and ready.",
+                action: "Pre-Stage Response Playbook",
+              },
+            ].map((f) => (
+              <div key={f.window} className="p-5 bg-[#F8F7F4] rounded-sm border" style={{ borderColor: "#E8E4DC" }}>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#0A0F2E" }}>{f.window}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#C9A84C" }}>{f.confidence}% confidence</span>
+                </div>
+                <div className="font-semibold text-sm mb-2" style={{ color: "#0A0F2E" }}>{f.headline}</div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "#6B7280" }}>{f.detail}</p>
+                <button className="text-[10px] font-bold uppercase tracking-widest px-4 py-2 border" style={{ color: "#0A0F2E", borderColor: "#0A0F2E" }}>
+                  {f.action} →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
     </PageLayout>

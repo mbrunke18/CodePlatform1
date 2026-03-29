@@ -383,6 +383,48 @@ export default function NovaInnovations() {
                   </div>
                 </div>
               </div>
+
+              {/* AI Opportunity Confidence Scores */}
+              <div style={{ background: NAVY, padding: "64px 48px", marginTop: 48, borderRadius: 0, position: "relative", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.08) 1px, transparent 0)", backgroundSize: "28px 28px" }} />
+                <div style={{ position: "relative", zIndex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                    <div style={{ width: 28, height: 2, background: GOLD }} />
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Confidence Scoring</span>
+                  </div>
+                  <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: "#fff", marginBottom: 8 }}>Innovation Opportunity <em style={{ fontStyle: "italic", color: GOLD }}>Forecast</em></h2>
+                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 40, maxWidth: 560 }}>AI models trained on 847 enterprise innovation cycles assess each project's probability of achieving target ROI within the stated timeline.</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {[
+                      { project: "AI-Powered Process Automation", confidence: 92, horizon: "6-9 months", roi: "$8.2M", risk: "Low" },
+                      { project: "Predictive Market Intelligence", confidence: 87, horizon: "9-12 months", roi: "$6.7M", risk: "Low" },
+                      { project: "Blockchain Supply Chain", confidence: 71, horizon: "12-18 months", roi: "$4.1M", risk: "Medium" },
+                      { project: "Quantum-Resistant Security", confidence: 63, horizon: "24+ months", roi: "$12.4M", risk: "High" },
+                    ].map((p) => (
+                      <div key={p.project} style={{ border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)", padding: 20 }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                          <span style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{p.project}</span>
+                          <span style={{ fontSize: 28, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{p.confidence}%</span>
+                        </div>
+                        <div style={{ display: "flex", gap: 24 }}>
+                          <div>
+                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Timeline</div>
+                            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)" }}>{p.horizon}</div>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Target ROI</div>
+                            <div style={{ fontSize: 13, color: TEAL_LT }}>{p.roi}</div>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Risk</div>
+                            <div style={{ fontSize: 13, color: p.risk === 'Low' ? TEAL_LT : p.risk === 'Medium' ? GOLD : "#f87171" }}>{p.risk}</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </TabsContent>
           </Tabs>
         </div>

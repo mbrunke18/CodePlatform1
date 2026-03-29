@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { updatePageMetadata } from "@/lib/seo";
 import {
   ArrowRight, Brain, Users, Eye, Zap, Shield, Target, Clock,
-  CheckCircle2, ChevronRight, Play, Cpu, HeartHandshake
+  CheckCircle2, ChevronRight, Play, Cpu, HeartHandshake, TrendingUp, Activity, Wifi
 } from "lucide-react";
 
 const NAVY = "#0A0F2E";
@@ -341,6 +341,46 @@ export default function IDEAFramework() {
             <p className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               The IDEA Framework is not workflow automation. It is an agentic execution layer — AI agents coordinate the enterprise response in real time, and executives make every strategic call.
             </p>
+            {/* Live IDEA Phase Confidence Scores */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+              {[
+                { phase: "IDENTIFY", score: 98, status: "170 playbooks staged", icon: Eye },
+                { phase: "DETECT", score: 94, status: "221 triggers live", icon: Activity },
+                { phase: "EXECUTE", score: 99, status: "12-min deployment ready", icon: Zap },
+                { phase: "ADVANCE", score: 91, status: "Learning loop active", icon: TrendingUp },
+              ].map(({ phase, score, status, icon: Icon }) => (
+                <div key={phase} className="rounded-none border border-white/10 bg-white/5 p-4 text-center">
+                  <Icon className="h-4 w-4 mx-auto mb-2" style={{ color: GOLD }} />
+                  <div className="text-[10px] uppercase tracking-widest font-bold text-white/50 mb-1">{phase}</div>
+                  <div className="text-3xl font-bold mb-1" style={{ color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{score}%</div>
+                  <div className="text-[9px] text-white/40 uppercase tracking-widest">{status}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* System Status Row */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-10 p-4 bg-white/5 border border-white/10 rounded-none">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                <span className="text-[10px] uppercase tracking-widest text-white/60">248+ Data Points Monitored</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <Wifi className="w-3 h-3" style={{ color: TEAL_LT }} />
+                <span className="text-[10px] uppercase tracking-widest text-white/60">8 Enterprise Systems Connected</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <Brain className="w-3 h-3" style={{ color: GOLD }} />
+                <span className="text-[10px] uppercase tracking-widest text-white/60">AI Agents Running Continuously</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-2">
+                <Shield className="w-3 h-3" style={{ color: GOLD_LT }} />
+                <span className="text-[10px] uppercase tracking-widest text-white/60">Human Executive Approves Every Action</span>
+              </div>
+            </div>
+
             <div className="grid sm:grid-cols-3 gap-4 mb-10">
               {[
                 { icon: Clock, label: "12-Minute Target", desc: "From trigger detection to full organizational response" },

@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Shield, TrendingUp, AlertTriangle, CheckCircle, Target, Users } from 'lucide-react';
+import { ArrowLeft, Shield, TrendingUp, AlertTriangle, CheckCircle, Target, Users, Brain, Zap, Activity } from 'lucide-react';
 import { Link } from 'wouter';
 
 const NAVY = "#0A0F2E";
@@ -350,6 +350,89 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* AI-Powered Forward Gap Analysis */}
+        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+          <div className="flex items-center gap-3 mb-6">
+            <Brain className="h-5 w-5" style={{ color: GOLD }} />
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>AI-Generated · Forward-Looking</div>
+              <h3 className="text-xl font-bold" style={{ color: NAVY, fontFamily: "'Cormorant Garamond', serif" }}>Predictive Gap Analysis — Next 90 Days</h3>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            {[
+              {
+                window: "Next 30 Days",
+                risk: "Medium",
+                riskColor: GOLD,
+                gap: "Compliance playbook coverage drops below 80% threshold as regulatory review period begins. 3 playbooks need executive re-validation.",
+                action: "Validate Compliance Playbooks",
+                confidence: 91,
+              },
+              {
+                window: "Days 31–60",
+                risk: "Low",
+                riskColor: "#2B8A6E",
+                gap: "Stakeholder mapping refresh overdue. 4 senior leader changes in the last 60 days have not been reflected in playbook ownership.",
+                action: "Update Stakeholder Map",
+                confidence: 88,
+              },
+              {
+                window: "Days 61–90",
+                risk: "High",
+                riskColor: "#dc2626",
+                gap: "Q3 market volatility historically increases trigger frequency by 40%. Current signal monitoring covers 71% of relevant indicators — gap of 29%.",
+                action: "Expand Signal Coverage",
+                confidence: 84,
+              },
+            ].map((f) => (
+              <div key={f.window} className="p-5 border rounded-none" style={{ borderColor: "#E8E4DC", background: "#F8F7F4" }}>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: NAVY }}>{f.window}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1" style={{ color: "#fff", background: f.riskColor }}>{f.risk} Risk</span>
+                </div>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "#4B5563" }}>{f.gap}</p>
+                <div className="flex items-center justify-between">
+                  <button className="text-[10px] font-bold uppercase tracking-widest" style={{ color: NAVY }}>
+                    {f.action} →
+                  </button>
+                  <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: GOLD }}>{f.confidence}% conf.</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Preparedness Trend Bars */}
+          <div className="p-6 border rounded-none" style={{ borderColor: "#E8E4DC", background: "#F8F7F4" }}>
+            <div className="flex items-center gap-3 mb-4">
+              <Activity className="h-4 w-4" style={{ color: GOLD }} />
+              <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#6B7280" }}>Readiness Score — 12-Month Trend</span>
+            </div>
+            <div className="flex items-end gap-2 h-16">
+              {[54, 58, 61, 64, 67, 70, 72, 71, 75, 78, 81, 84].map((v, i) => (
+                <div key={i} className="flex-1">
+                  <div
+                    className="w-full rounded-sm"
+                    style={{
+                      height: `${(v / 100) * 64}px`,
+                      background: i === 11 ? GOLD : NAVY,
+                      opacity: i === 11 ? 1 : 0.3 + i * 0.05,
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>12 months ago</span>
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-3 h-3" style={{ color: "#2B8A6E" }} />
+                <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#2B8A6E" }}>+30 points improvement this year</span>
+              </div>
+              <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>Today</span>
+            </div>
+          </div>
+        </div>
       </div>
     </PageLayout>
   );

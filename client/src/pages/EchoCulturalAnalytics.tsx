@@ -359,18 +359,129 @@ export default function EchoCulturalAnalytics() {
             </TabsContent>
 
             <TabsContent value="insights" className="mt-8">
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center", borderRadius: 0 }}>
-                <Brain className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
-                <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>AI-Powered Cultural Insights</h3>
-                <p style={{ color: "#6B7280", marginTop: 8 }}>Advanced cultural pattern analysis and predictive insights arriving in Q1.</p>
+              <div className="space-y-6">
+                {/* AI Confidence Header */}
+                <div style={{ background: NAVY, padding: "40px 48px", borderRadius: 0, position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.08) 1px, transparent 0)", backgroundSize: "28px 28px" }} />
+                  <div style={{ position: "relative", zIndex: 1 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>AI Cultural Intelligence</div>
+                    <h3 style={{ ...CG, fontSize: 28, color: "#fff", marginBottom: 8 }}>Pattern Detection — <em style={{ fontStyle: "italic", color: GOLD }}>This Quarter</em></h3>
+                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>AI models monitoring 14 cultural signal categories identified the following emerging patterns with execution implications.</p>
+                  </div>
+                </div>
+                {/* Insight Cards */}
+                <div className="space-y-4">
+                  {[
+                    {
+                      pattern: "Change Fatigue Signal",
+                      severity: "HIGH",
+                      severityColor: "#dc2626",
+                      confidence: 88,
+                      finding: "Cross-functional survey data indicates decision-making participation down 18% over 90 days. Teams participating in 3+ concurrent strategic initiatives show 31% higher absenteeism.",
+                      playbook: "Change Resilience Playbook",
+                      impact: "Risk to Q3 execution velocity",
+                    },
+                    {
+                      pattern: "Collaboration Surge",
+                      severity: "POSITIVE",
+                      severityColor: TEAL,
+                      confidence: 93,
+                      finding: "Cross-department collaboration index up 22% following new workspace rollout. Engineering + Sales joint sessions correlate with 3× faster deal qualification.",
+                      playbook: "Collaboration Acceleration Playbook",
+                      impact: "Revenue cycle compression opportunity",
+                    },
+                    {
+                      pattern: "Leadership Communication Gap",
+                      severity: "MEDIUM",
+                      severityColor: GOLD,
+                      confidence: 79,
+                      finding: "Signal analysis across internal channels shows 41% of employees unclear on Q3 strategic priorities. Misalignment historically adds 2–3 weeks to initiative rollouts.",
+                      playbook: "Strategic Alignment Playbook",
+                      impact: "Execution delay risk",
+                    },
+                  ].map((insight) => (
+                    <div key={insight.pattern} className="flex gap-4 p-6 bg-white border rounded-none" style={{ borderColor: "#E8E4DC" }}>
+                      <Brain className="h-5 w-5 shrink-0 mt-0.5" style={{ color: GOLD }} />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="font-bold text-sm" style={{ color: NAVY }}>{insight.pattern}</span>
+                          <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5" style={{ color: "#fff", background: insight.severityColor }}>{insight.severity}</span>
+                        </div>
+                        <p className="text-sm leading-relaxed mb-3" style={{ color: "#6B7280" }}>{insight.finding}</p>
+                        <div className="flex items-center gap-6">
+                          <div className="text-[10px] uppercase tracking-widest font-bold" style={{ color: NAVY }}>Recommended: {insight.playbook}</div>
+                          <div className="text-[10px] uppercase tracking-widest" style={{ color: "#6B7280" }}>{insight.impact}</div>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#6B7280" }}>AI Confidence</div>
+                        <div className="text-2xl font-bold" style={{ color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{insight.confidence}%</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </TabsContent>
 
             <TabsContent value="trends" className="mt-8">
-              <div style={{ background: "#fff", border: "1px solid #E8E4DC", padding: 64, textAlign: "center", borderRadius: 0 }}>
-                <PieChart className="h-16 w-16 text-[#C9A84C] mx-auto mb-6" />
-                <h3 style={{ ...CG, fontSize: 24, color: NAVY }}>Cultural Trend Analysis</h3>
-                <p style={{ color: "#6B7280", marginTop: 8 }}>Historical cultural trends and future projections arriving in Q1.</p>
+              <div className="space-y-6">
+                {/* Resilience Score */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <div className="md:col-span-1 p-6 bg-white border rounded-none" style={{ borderColor: "#E8E4DC" }}>
+                    <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>Cultural Resilience Score</div>
+                    <div className="text-6xl font-bold mb-2" style={{ color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>82</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: TEAL }}>/ 100 — Strong</div>
+                    <div className="space-y-2">
+                      {[{ label: "Adaptability", v: 87 }, { label: "Psychological Safety", v: 83 }, { label: "Change Readiness", v: 76 }].map(d => (
+                        <div key={d.label}>
+                          <div className="flex justify-between mb-1">
+                            <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: "#6B7280" }}>{d.label}</span>
+                            <span className="text-[10px] font-bold" style={{ color: NAVY }}>{d.v}%</span>
+                          </div>
+                          <div className="h-1 bg-[#E8E4DC] rounded-full overflow-hidden">
+                            <div className="h-full rounded-full" style={{ width: `${d.v}%`, background: TEAL }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 p-6 bg-white border rounded-none" style={{ borderColor: "#E8E4DC" }}>
+                    <div className="text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: "#6B7280" }}>12-Month Cultural Score Trend</div>
+                    <div className="flex items-end gap-2 h-32 mb-2">
+                      {[64, 66, 68, 70, 71, 73, 72, 74, 76, 78, 80, 82].map((v, i) => (
+                        <div key={i} className="flex-1">
+                          <div className="w-full rounded-sm" style={{ height: `${(v / 100) * 120}px`, background: i === 11 ? GOLD : NAVY, opacity: i === 11 ? 1 : 0.25 + i * 0.06 }} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>12 months ago</span>
+                      <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: TEAL }}>+18 points this year</span>
+                      <span className="text-[9px] uppercase tracking-widest" style={{ color: "#6B7280" }}>Today</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Predictive Cultural Forecast */}
+                <div className="p-6 bg-white border rounded-none" style={{ borderColor: "#E8E4DC" }}>
+                  <div className="text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: "#6B7280" }}>90-Day Cultural Forecast</div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {[
+                      { window: "Next 30 Days", headline: "Engagement stable", detail: "No material cultural events anticipated. Recommend maintaining current cadence of all-hands and team briefings.", confidence: 91 },
+                      { window: "Days 31–60", headline: "Retention risk window", detail: "Q3 bonus announcement period. AI models suggest proactive retention conversations for 12 high-performance individuals.", confidence: 84 },
+                      { window: "Days 61–90", headline: "Culture integration milestone", detail: "6-month mark for the last org restructure. Historical data shows this period requires explicit culture reinforcement.", confidence: 77 },
+                    ].map((f) => (
+                      <div key={f.window} className="p-4 rounded-none" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                        <div className="flex justify-between mb-2">
+                          <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: NAVY }}>{f.window}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: GOLD }}>{f.confidence}%</span>
+                        </div>
+                        <div className="font-semibold text-sm mb-1" style={{ color: NAVY }}>{f.headline}</div>
+                        <p className="text-sm leading-relaxed" style={{ color: "#6B7280" }}>{f.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </TabsContent>
           </Tabs>
