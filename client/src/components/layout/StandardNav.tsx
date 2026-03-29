@@ -70,6 +70,7 @@ const SEARCH_ITEMS = [
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Request a Pilot', path: '/pilot-program', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
+  { label: 'Why Execution OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
 ];
@@ -165,6 +166,7 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
+    { label: "Why Execution OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest competitive answer", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS", featured: true },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
