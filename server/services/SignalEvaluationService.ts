@@ -1,9 +1,32 @@
 import { db } from '../db.js';
-import { triggerDetections, stakeholderContacts } from '@shared/schema';
+import { triggerDetections, stakeholderContacts, signalMonitoringConfig } from '@shared/schema';
 import { eq, desc } from 'drizzle-orm';
 import { Resend } from 'resend';
 import { wsService } from './WebSocketService';
 import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
+
+// Evaluation mode options:
+//   'configured' — customer's configured triggers only (new engine)
+//   'default'    — original 16-pattern keyword scoring only (legacy engine)
+//   'both'       — run both engines, merge and deduplicate by trigger name
+type EvaluationMode = 'configured' | 'default' | 'both';
+
+async function getOrgEvaluationMode(organizationId: string): Promise<EvaluationMode> {
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
+    return 'default'; // Non-UUID orgs (e.g. "system" demo) always use default
+  }
+  try {
+    const [config] = await db
+      .select()
+      .from(signalMonitoringConfig)
+      .where(eq(signalMonitoringConfig.organizationId, organizationId as any))
+      .limit(1);
+    const mode = (config?.evaluationMode as EvaluationMode) || 'both';
+    return ['configured', 'default', 'both'].includes(mode) ? mode : 'both';
+  } catch {
+    return 'both'; // Safe fallback on any DB error
+  }
+}
 
 // ─── Domain trigger keyword maps ─────────────────────────────────────────────
 // Each domain has primary keywords + recommended playbook + severity weight
@@ -395,46 +418,65 @@ export async function evaluateAndPersistSignals(
   }
 
   // ── EVALUATION PATH ────────────────────────────────────────────────────────
-  // Primary:  use the org's configured trigger thresholds (what they built and staged playbooks for)
-  // Fallback: use default TRIGGER_PATTERNS if the org has no configured triggers yet
+  // Mode is set per-org in signal_monitoring_config.evaluation_mode:
   //
-  // This means a trigger only fires when the customer's own parameters are met —
-  // not when a global keyword score is crossed. The playbooks surfaced are the
-  // ones the customer specifically assigned to that trigger situation.
+  //   'configured' — only fire triggers the org has configured (new engine)
+  //                  Triggers fire when the customer's own thresholds are met.
+  //                  The playbooks surfaced are the ones they staged for that situation.
+  //
+  //   'default'    — only use the original 16-pattern keyword scoring (legacy engine)
+  //                  Same behavior as before the new engine was built.
+  //
+  //   'both'       — run both engines, merge results, deduplicate by trigger name
+  //                  Broadest coverage: customer configs + platform defaults.
+  //                  Default for all orgs until they choose otherwise.
 
-  let configuredDetections: DetectedTrigger[] | null = null;
-  try {
-    configuredDetections = await evaluateSignalsWithOrgTriggers(signals, organizationId);
-  } catch (err) {
-    console.error('[SignalEvaluationService] Configured trigger evaluation failed, falling back to defaults:', err);
+  const evaluationMode = await getOrgEvaluationMode(organizationId);
+  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
+
+  const allDetectionsFlat: Array<{ detection: DetectedTrigger; signal: AnalyzedSignal }> = [];
+  const seenTriggerNames = new Set<string>(); // Deduplication key for 'both' mode
+
+  // ── Run configured engine (if mode is 'configured' or 'both') ───────────
+  if (evaluationMode === 'configured' || evaluationMode === 'both') {
+    try {
+      const configuredResults = await evaluateSignalsWithOrgTriggers(signals, organizationId);
+      if (configuredResults && configuredResults.length > 0) {
+        for (const detection of configuredResults) {
+          if (seenTriggerNames.has(detection.triggerName)) continue;
+          seenTriggerNames.add(detection.triggerName);
+          const matchingSignal = signals.find(s =>
+            s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || '')
+          ) || signals[0];
+          if (matchingSignal) {
+            allDetectionsFlat.push({ detection, signal: matchingSignal });
+          }
+        }
+        console.log(`[SignalEvaluationService] Configured engine: ${configuredResults.length} detection(s)`);
+      } else if (evaluationMode === 'configured') {
+        console.log(`[SignalEvaluationService] Configured engine: no triggers fired (org has no configured triggers or none matched)`);
+      }
+    } catch (err) {
+      console.error('[SignalEvaluationService] Configured engine error:', err);
+    }
   }
 
-  // Flatten detections per-signal for persistence loop below
-  // configuredDetections = null means "no org triggers configured" → use defaults
-  const useConfigured = configuredDetections !== null;
-  const allDetectionsFlat: Array<{ detection: DetectedTrigger; signal: AnalyzedSignal }> = [];
-
-  if (useConfigured) {
-    // Configured path: detections already evaluated against org thresholds
-    // Re-associate each detection back to the closest matching signal (by domain/keyword overlap)
-    for (const detection of (configuredDetections as DetectedTrigger[])) {
-      const matchingSignal = signals.find(s =>
-        s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || '')
-      ) || signals[0];
-      if (matchingSignal) {
-        allDetectionsFlat.push({ detection, signal: matchingSignal });
-      }
-    }
-    console.log(`[SignalEvaluationService] Configured evaluation produced ${allDetectionsFlat.length} detection(s) for org ${organizationId}`);
-  } else {
-    // Default fallback path: per-signal keyword scoring
+  // ── Run default engine (if mode is 'default' or 'both') ─────────────────
+  if (evaluationMode === 'default' || evaluationMode === 'both') {
+    let defaultCount = 0;
     for (const signal of signals) {
       const detections = evaluateSignal(signal);
       for (const detection of detections) {
+        if (seenTriggerNames.has(detection.triggerName)) continue; // Skip if already caught by configured engine
+        seenTriggerNames.add(detection.triggerName);
         allDetectionsFlat.push({ detection, signal });
+        defaultCount++;
       }
     }
-    console.log(`[SignalEvaluationService] Default evaluation produced ${allDetectionsFlat.length} detection(s) for org ${organizationId}`);
+    console.log(`[SignalEvaluationService] Default engine: ${defaultCount} detection(s)`);
+  }
+
+  console.log(`[SignalEvaluationService] Total detections to process: ${allDetectionsFlat.length} (mode: ${evaluationMode})`);
   }
 
   // Process all detections (configured or default) through the same persistence + notification path

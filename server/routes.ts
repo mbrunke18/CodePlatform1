@@ -7425,7 +7425,10 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const orgId = req.user.organizationId;
       const config = await storage.getSignalMonitoringConfig(orgId);
-      res.json({ disabledDataPoints: config?.disabledDataPoints || [] });
+      res.json({
+        disabledDataPoints: config?.disabledDataPoints || [],
+        evaluationMode: config?.evaluationMode || 'both',
+      });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }
@@ -7434,12 +7437,19 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app.patch('/api/signal-monitoring-config', requireOrgAccess, async (req: any, res) => {
     try {
       const orgId = req.user.organizationId;
-      const { disabledDataPoints } = req.body;
+      const { disabledDataPoints, evaluationMode } = req.body;
       if (!Array.isArray(disabledDataPoints)) {
         return res.status(400).json({ error: 'disabledDataPoints must be an array' });
       }
-      const config = await storage.upsertSignalMonitoringConfig(orgId, disabledDataPoints);
-      res.json({ disabledDataPoints: config.disabledDataPoints || [] });
+      const validModes = ['configured', 'default', 'both'];
+      if (evaluationMode !== undefined && !validModes.includes(evaluationMode)) {
+        return res.status(400).json({ error: `evaluationMode must be one of: ${validModes.join(', ')}` });
+      }
+      const config = await storage.upsertSignalMonitoringConfig(orgId, disabledDataPoints, evaluationMode);
+      res.json({
+        disabledDataPoints: config.disabledDataPoints || [],
+        evaluationMode: config.evaluationMode || 'both',
+      });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }

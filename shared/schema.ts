@@ -6198,6 +6198,11 @@ export const signalMonitoringConfig = pgTable('signal_monitoring_config', {
   id: uuid('id').primaryKey().defaultRandom(),
   organizationId: uuid('organization_id').notNull().references(() => organizations.id),
   disabledDataPoints: text('disabled_data_points').array().default([]),
+  // Controls which evaluation engine fires triggers:
+  //   'configured' — use the org's configured trigger thresholds only (new engine)
+  //   'default'    — use the original 16-pattern keyword scoring only (legacy engine)
+  //   'both'       — run both in parallel, merge and deduplicate detections
+  evaluationMode: varchar('evaluation_mode', { length: 20 }).default('both'),
   updatedAt: timestamp('updated_at').defaultNow(),
 });
 export const insertSignalMonitoringConfigSchema = createInsertSchema(signalMonitoringConfig).omit({ id: true, updatedAt: true });

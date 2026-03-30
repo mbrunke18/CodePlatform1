@@ -2992,17 +2992,24 @@ export class DatabaseStorage implements IStorage {
     return config || null;
   }
 
-  async upsertSignalMonitoringConfig(organizationId: string, disabledDataPoints: string[]): Promise<SignalMonitoringConfig> {
+  async upsertSignalMonitoringConfig(
+    organizationId: string,
+    disabledDataPoints: string[],
+    evaluationMode?: string
+  ): Promise<SignalMonitoringConfig> {
     const existing = await this.getSignalMonitoringConfig(organizationId);
+    const updateFields: Record<string, any> = { disabledDataPoints, updatedAt: new Date() };
+    if (evaluationMode !== undefined) updateFields.evaluationMode = evaluationMode;
+
     if (existing) {
       const [updated] = await db.update(signalMonitoringConfig)
-        .set({ disabledDataPoints, updatedAt: new Date() })
+        .set(updateFields)
         .where(eq(signalMonitoringConfig.organizationId, organizationId))
         .returning();
       return updated;
     }
     const [created] = await db.insert(signalMonitoringConfig)
-      .values({ organizationId, disabledDataPoints })
+      .values({ organizationId, disabledDataPoints, evaluationMode: evaluationMode || 'both' })
       .returning();
     return created;
   }
