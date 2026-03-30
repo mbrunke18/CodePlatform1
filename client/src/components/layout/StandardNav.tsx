@@ -279,7 +279,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
         style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -353,7 +353,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
         style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -412,7 +412,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
         style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -501,7 +501,7 @@ export default function StandardNav() {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="p-0 shadow-2xl rounded-xl overflow-hidden"
+          className="p-0 shadow-2xl rounded-xl overflow-y-auto"
           style={{
             width: 660,
             background: '#fff',
