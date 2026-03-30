@@ -51,6 +51,8 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Personalized ROI Calculator:** Homepage section calculating annual value, exec time saved, and revenue protected.
 - **12-Minute Test Drive:** A public 4-step sequential experience simulating execution.
 - **Live Signal Detection:** Real RSS ingestion from 8 sources, `SignalEvaluationService` scores signals against 16 trigger patterns, creating `trigger_detections` and sending Slack/email alerts when confidence ≥ 72%. Includes a `LiveDetectionFeed` page and Stakeholder Contact Registry.
+- **Command Tower:** Full-screen executive display page (`/command-tower`) — live trigger detections, system pulse stats, execution log, signal ticker, WebSocket real-time updates, countdown to next scan, and MONITORING/ALERT/EXECUTING status badge. First item under EXECUTE in the sidebar nav.
+- **Dual Evaluation Engine:** `SignalEvaluationService` runs configured + default engines in parallel (`'both'` mode, switchable per org). Each detection entry tracks its source engine (`'configured' | 'default'`) for accurate audit logging.
 - **Magic Link Authentication:** `/request-access` form for branded magic link login, creating tracked user identities.
 - **Growth Segment:** Permanent product track targeting SMBs and PE-backed startups with three tiers: Ready, Responsive, Orchestrated, based on deployment scope (not discounted products or per-seat pricing).
 

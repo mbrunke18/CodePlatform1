@@ -151,6 +151,7 @@ const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
+const CommandTower = lazy(() => import("./pages/CommandTower"));
 const WorkspaceHub = lazy(() => import("./pages/WorkspaceHub"));
 const WorkspaceIdentify = lazy(() => import("./pages/WorkspaceIdentify"));
 const WorkspaceDetect = lazy(() => import("./pages/WorkspaceDetect"));
@@ -312,6 +313,7 @@ function Router() {
             <Route path="/" component={Homepage} />
             <Route path="/home" component={Homepage} />
             <Route path="/mission-control" component={MissionControl} />
+            <Route path="/command-tower" component={CommandTower} />
             <Route path="/workspace" component={WorkspaceHub} />
             <Route path="/workspaces/identify">{() => <Redirect to="/workspace?tab=identify" />}</Route>
             <Route path="/workspaces/detect">{() => <Redirect to="/workspace?tab=detect" />}</Route>

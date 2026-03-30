@@ -434,7 +434,7 @@ export async function evaluateAndPersistSignals(
   const evaluationMode = await getOrgEvaluationMode(organizationId);
   console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
 
-  const allDetectionsFlat: Array<{ detection: DetectedTrigger; signal: AnalyzedSignal }> = [];
+  const allDetectionsFlat: Array<{ detection: DetectedTrigger; signal: AnalyzedSignal; engine: 'configured' | 'default' }> = [];
   const seenTriggerNames = new Set<string>(); // Deduplication key for 'both' mode
 
   // ── Run configured engine (if mode is 'configured' or 'both') ───────────
@@ -449,7 +449,7 @@ export async function evaluateAndPersistSignals(
             s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || '')
           ) || signals[0];
           if (matchingSignal) {
-            allDetectionsFlat.push({ detection, signal: matchingSignal });
+            allDetectionsFlat.push({ detection, signal: matchingSignal, engine: 'configured' });
           }
         }
         console.log(`[SignalEvaluationService] Configured engine: ${configuredResults.length} detection(s)`);
@@ -469,7 +469,7 @@ export async function evaluateAndPersistSignals(
       for (const detection of detections) {
         if (seenTriggerNames.has(detection.triggerName)) continue; // Skip if already caught by configured engine
         seenTriggerNames.add(detection.triggerName);
-        allDetectionsFlat.push({ detection, signal });
+        allDetectionsFlat.push({ detection, signal, engine: 'default' });
         defaultCount++;
       }
     }
@@ -477,10 +477,9 @@ export async function evaluateAndPersistSignals(
   }
 
   console.log(`[SignalEvaluationService] Total detections to process: ${allDetectionsFlat.length} (mode: ${evaluationMode})`);
-  }
 
   // Process all detections (configured or default) through the same persistence + notification path
-  for (const { detection, signal } of allDetectionsFlat) {
+  for (const { detection, signal, engine } of allDetectionsFlat) {
     try {
       // Check for duplicate detection in last 4 hours to avoid alert fatigue
       const recent = await db
@@ -534,7 +533,7 @@ export async function evaluateAndPersistSignals(
         notificationSent: false,
       });
 
-      console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${useConfigured ? 'customer-configured' : 'default-pattern'}]`);
+      console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === 'configured' ? 'customer-configured' : 'default-pattern'}]`);
 
       // Push real-time update via WebSocket
       try {

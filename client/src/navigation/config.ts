@@ -133,6 +133,13 @@ export const navigationConfig: NavigationConfig = {
       color: 'from-orange-600 to-red-600',
       items: [
         {
+          id: 'command-tower',
+          label: 'Command Tower',
+          path: '/command-tower',
+          icon: '🗼',
+          description: 'Executive display — live trigger detections, playbooks in flight, system status'
+        },
+        {
           id: 'war-room',
           label: 'War Room / Pulse Map',
           path: '/mission-control',
