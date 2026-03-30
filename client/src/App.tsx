@@ -537,7 +537,9 @@ function Router() {
         <Route path="/marketing-landing">{() => { window.location.replace('/'); return null; }}</Route>
         <Route path="/one-click-demo">{() => { window.location.replace('/try-demo'); return null; }}</Route>
         <Route path="/ai-intelligence-suite" component={ComprehensiveAIIntelligence} />
+        <Route path="/ai-intelligence">{() => <Redirect to="/ai-intelligence-suite" />}</Route>
         <Route path="/live-activation-center" component={LiveActivationCenter} />
+        <Route path="/live-activation">{() => <Redirect to="/live-activation-center" />}</Route>
         <Route path="/enterprise-metrics" component={EnterpriseMetrics} />
         <Route path="/unified-platform" component={UnifiedEnterprisePlatform} />
 
