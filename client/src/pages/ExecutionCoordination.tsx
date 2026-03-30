@@ -461,7 +461,7 @@ export default function ExecutionCoordination() {
             <Card className="rounded-none border-[#E8E4DC]">
               <CardContent className="p-6">
                 <p className="text-[#6B7280] text-center py-8 italic font-medium">
-                  Role-based view coming soon - see tasks grouped by assignee
+                  Select a task owner above to filter the execution board by assignee
                 </p>
               </CardContent>
             </Card>
@@ -471,7 +471,7 @@ export default function ExecutionCoordination() {
             <Card className="rounded-none border-[#E8E4DC]">
               <CardContent className="p-6">
                 <p className="text-[#6B7280] text-center py-8 italic font-medium">
-                  Dependency graph coming soon - visualize task dependencies and critical path
+                  Activate a playbook to generate the dependency graph and visualize the critical execution path
                 </p>
               </CardContent>
             </Card>

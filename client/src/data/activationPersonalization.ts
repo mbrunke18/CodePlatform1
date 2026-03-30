@@ -235,7 +235,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     completionMetrics: [
       { label: 'Revenue Protection', before: 'Pipeline at risk for weeks', after: 'Customers notified in minutes' },
       { label: 'Sales Enablement', before: 'Manual update cycle', after: 'Auto-staged materials' },
-      { label: 'Win Rate', before: 'Delayed proposals cost 5%', after: 'Maintained with speed advantage' },
+      { label: 'Win Rate', before: 'Delayed proposals cost 5%', after: 'Maintained — response in 12 minutes vs. 30-day mobilization' },
     ],
   },
 };
@@ -284,7 +284,7 @@ export const INDUSTRY_OVERLAYS: Record<string, IndustryOverlay> = {
     completionMetrics: [
       { label: 'Multi-Brand Launch', before: '6-9 months sequential', after: 'Simultaneous in 12 minutes' },
       { label: 'Market Entry Speed', before: 'Brand-by-brand rollout', after: '10 brands, 15 cities at once' },
-      { label: 'Revenue Capture', before: '€400M first-year estimate', after: '€1.68B with speed advantage' },
+      { label: 'Revenue Capture', before: '€400M first-year estimate', after: '€1.68B — 3,600× Execution Head Start over competitors' },
     ],
   },
   'fast-fashion': {

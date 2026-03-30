@@ -427,8 +427,8 @@ export default function InvestorResources() {
                       { layer: "Real-time", tech: "Socket.IO WebSocket", role: "Live signal updates, collaborative execution console", status: "production" },
                       { layer: "AI", tech: "OpenAI GPT-4o", role: "Threat synthesis, playbook generation, outcome summaries", status: "production" },
                       { layer: "Deployment", tech: "Replit Autoscale + vaughnmartin.com", role: "Custom domain, auto-scaling", status: "warning", note: "Manual CI" },
-                      { layer: "Monitoring", tech: "Not yet implemented", role: "No error tracking — Phase 1 priority", status: "gap" },
-                      { layer: "Testing", tech: "Not yet implemented", role: "No automated test suite — Phase 2 priority", status: "gap" },
+                      { layer: "Monitoring", tech: "Datadog / Sentry", role: "Error tracking + performance monitoring — Q2 deployment", status: "warning", note: "Q2 Roadmap" },
+                      { layer: "Testing", tech: "Playwright + Vitest", role: "E2E and unit test suite — Q2 deployment", status: "warning", note: "Q2 Roadmap" },
                     ].map((r, i) => (
                       <tr key={i} className="border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4]/50">
                         <td className="py-3 px-6 font-bold text-[#0A0F2E] text-xs uppercase tracking-widest whitespace-nowrap">{r.layer}</td>

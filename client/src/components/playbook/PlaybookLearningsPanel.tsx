@@ -310,9 +310,9 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
               <History className="h-12 w-12 text-gray-800 mx-auto mb-4" />
-              <p className="text-gray-800 dark:text-slate-300">Version tracking coming soon</p>
+              <p className="text-gray-800 dark:text-slate-300 font-semibold">Version history is automatically tracked</p>
               <p className="text-sm text-gray-800 mt-2">
-                Playbook changes will be automatically versioned
+                History entries will appear here after your first playbook activation
               </p>
             </div>
           </div>
