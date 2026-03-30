@@ -7447,6 +7447,20 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
 
   console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config');
 
+  // ─── Trigger Evaluation Diagnostic ─────────────────────────────────────────
+  // Returns a summary of the org's configured triggers and what confidence floors
+  // they require — so admins can verify the evaluation engine is wired correctly.
+  app.get('/api/trigger-evaluation-summary', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { getOrgTriggerSummary } = await import('./services/TriggerEvaluationEngine.js');
+      const orgId = req.user.organizationId;
+      const summary = await getOrgTriggerSummary(orgId);
+      res.json(summary);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // ── Coordination Intelligence ─────────────────────────────────────────────
   // Aggregated coordination timing data — powers the Coordination Intelligence dashboard
 

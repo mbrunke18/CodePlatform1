@@ -3,6 +3,7 @@ import { triggerDetections, stakeholderContacts } from '@shared/schema';
 import { eq, desc } from 'drizzle-orm';
 import { Resend } from 'resend';
 import { wsService } from './WebSocketService';
+import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
 
 // ─── Domain trigger keyword maps ─────────────────────────────────────────────
 // Each domain has primary keywords + recommended playbook + severity weight
@@ -393,97 +394,134 @@ export async function evaluateAndPersistSignals(
     // table may not exist yet on first run
   }
 
-  for (const signal of signals) {
-    const detections = evaluateSignal(signal);
-    if (detections.length === 0) continue;
+  // ── EVALUATION PATH ────────────────────────────────────────────────────────
+  // Primary:  use the org's configured trigger thresholds (what they built and staged playbooks for)
+  // Fallback: use default TRIGGER_PATTERNS if the org has no configured triggers yet
+  //
+  // This means a trigger only fires when the customer's own parameters are met —
+  // not when a global keyword score is crossed. The playbooks surfaced are the
+  // ones the customer specifically assigned to that trigger situation.
 
-    for (const detection of detections) {
-      try {
-        // Check for duplicate detection in last 4 hours to avoid alert fatigue
-        const recent = await db
-          .select()
-          .from(triggerDetections)
-          .where(eq(triggerDetections.triggerName, detection.triggerName))
-          .orderBy(desc(triggerDetections.detectedAt))
-          .limit(1);
+  let configuredDetections: DetectedTrigger[] | null = null;
+  try {
+    configuredDetections = await evaluateSignalsWithOrgTriggers(signals, organizationId);
+  } catch (err) {
+    console.error('[SignalEvaluationService] Configured trigger evaluation failed, falling back to defaults:', err);
+  }
 
-        const lastDetected = recent[0]?.detectedAt;
-        const hoursSince = lastDetected
-          ? (Date.now() - new Date(lastDetected).getTime()) / 3600000
-          : 999;
+  // Flatten detections per-signal for persistence loop below
+  // configuredDetections = null means "no org triggers configured" → use defaults
+  const useConfigured = configuredDetections !== null;
+  const allDetectionsFlat: Array<{ detection: DetectedTrigger; signal: AnalyzedSignal }> = [];
 
-        if (hoursSince < 4) continue; // Suppress duplicate within 4 hours
-
-        // ── Domain-specific approver routing ──────────────────────────────
-        // 1. Find contacts explicitly assigned to this trigger's domain
-        // 2. If none assigned, fall back to all active contacts (org-wide)
-        const domainApprovers = allContacts.filter(c =>
-          c.isActive &&
-          c.email &&
-          Array.isArray(c.triggerDomains) &&
-          c.triggerDomains.length > 0 &&
-          c.triggerDomains.includes(detection.triggerDomain)
-        );
-        const fallbackContacts = allContacts.filter(c =>
-          c.isActive &&
-          c.email &&
-          (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
-        );
-        const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-        const contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
-
-        if (domainApprovers.length > 0) {
-          console.log(`📬 Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
-        } else {
-          console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);
-        }
-
-        // Persist the detection
-        await db.insert(triggerDetections).values({
-          organizationId: organizationId,
-          triggerName: detection.triggerName,
-          triggerDomain: detection.triggerDomain,
-          signalDescription: signal.description,
-          signalSource: signal.source,
-          signalSourceUrl: signal.sourceUrl || null,
-          confidenceScore: detection.confidenceScore,
-          recommendedPlaybook: detection.recommendedPlaybook,
-          alternatePlaybooks: detection.alternatePlaybooks,
-          status: 'detected',
-          notificationSent: false,
-        });
-
-        console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source}`);
-
-        // Push real-time update via WebSocket so all connected clients refresh instantly
-        try {
-          const io = wsService.getIO();
-          if (io) {
-            io.emit('new-detection', {
-              triggerName: detection.triggerName,
-              triggerDomain: detection.triggerDomain,
-              confidenceScore: detection.confidenceScore,
-              organizationId,
-            });
-          }
-        } catch { /* non-blocking */ }
-
-        // Fire notifications
-        await Promise.allSettled([
-          sendDetectionSlack(detection, signal),
-          contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve(),
-        ]);
-
-        // Mark notification as sent
-        await db
-          .update(triggerDetections)
-          .set({ notificationSent: true, status: 'notified' })
-          .where(eq(triggerDetections.triggerName, detection.triggerName));
-
-        detectionsCreated++;
-      } catch (err) {
-        console.error('Error persisting detection:', err);
+  if (useConfigured) {
+    // Configured path: detections already evaluated against org thresholds
+    // Re-associate each detection back to the closest matching signal (by domain/keyword overlap)
+    for (const detection of (configuredDetections as DetectedTrigger[])) {
+      const matchingSignal = signals.find(s =>
+        s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || '')
+      ) || signals[0];
+      if (matchingSignal) {
+        allDetectionsFlat.push({ detection, signal: matchingSignal });
       }
+    }
+    console.log(`[SignalEvaluationService] Configured evaluation produced ${allDetectionsFlat.length} detection(s) for org ${organizationId}`);
+  } else {
+    // Default fallback path: per-signal keyword scoring
+    for (const signal of signals) {
+      const detections = evaluateSignal(signal);
+      for (const detection of detections) {
+        allDetectionsFlat.push({ detection, signal });
+      }
+    }
+    console.log(`[SignalEvaluationService] Default evaluation produced ${allDetectionsFlat.length} detection(s) for org ${organizationId}`);
+  }
+
+  // Process all detections (configured or default) through the same persistence + notification path
+  for (const { detection, signal } of allDetectionsFlat) {
+    try {
+      // Check for duplicate detection in last 4 hours to avoid alert fatigue
+      const recent = await db
+        .select()
+        .from(triggerDetections)
+        .where(eq(triggerDetections.triggerName, detection.triggerName))
+        .orderBy(desc(triggerDetections.detectedAt))
+        .limit(1);
+
+      const lastDetected = recent[0]?.detectedAt;
+      const hoursSince = lastDetected
+        ? (Date.now() - new Date(lastDetected).getTime()) / 3600000
+        : 999;
+
+      if (hoursSince < 4) continue; // Suppress duplicate within 4 hours
+
+      // ── Domain-specific approver routing ──────────────────────────────
+      const domainApprovers = allContacts.filter(c =>
+        c.isActive &&
+        c.email &&
+        Array.isArray(c.triggerDomains) &&
+        c.triggerDomains.length > 0 &&
+        c.triggerDomains.includes(detection.triggerDomain)
+      );
+      const fallbackContacts = allContacts.filter(c =>
+        c.isActive &&
+        c.email &&
+        (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
+      );
+      const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
+      const contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
+
+      if (domainApprovers.length > 0) {
+        console.log(`📬 Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
+      } else {
+        console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);
+      }
+
+      // Persist the detection
+      await db.insert(triggerDetections).values({
+        organizationId: organizationId,
+        triggerName: detection.triggerName,
+        triggerDomain: detection.triggerDomain,
+        signalDescription: signal.description,
+        signalSource: signal.source,
+        signalSourceUrl: signal.sourceUrl || null,
+        confidenceScore: detection.confidenceScore,
+        recommendedPlaybook: detection.recommendedPlaybook,
+        alternatePlaybooks: detection.alternatePlaybooks,
+        status: 'detected',
+        notificationSent: false,
+      });
+
+      console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${useConfigured ? 'customer-configured' : 'default-pattern'}]`);
+
+      // Push real-time update via WebSocket
+      try {
+        const io = wsService.getIO();
+        if (io) {
+          io.emit('new-detection', {
+            triggerName: detection.triggerName,
+            triggerDomain: detection.triggerDomain,
+            confidenceScore: detection.confidenceScore,
+            organizationId,
+          });
+        }
+      } catch { /* non-blocking */ }
+
+      // Fire notifications
+      await Promise.allSettled([
+        sendDetectionSlack(detection, signal),
+        contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve(),
+      ]);
+
+      // Mark notification as sent
+      await db
+        .update(triggerDetections)
+        .set({ notificationSent: true, status: 'notified' })
+        .where(eq(triggerDetections.triggerName, detection.triggerName));
+
+      detectionsCreated++;
+    } catch (err) {
+      console.error('Error persisting detection:', err);
     }
   }
 
