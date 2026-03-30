@@ -2,9 +2,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -12,36 +10,26 @@ import { useAuth } from '@/hooks/useAuth';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import {
-  Activity, Clock, Target, Settings, Zap, Pause, Plus, Bell,
-  ChevronRight, ChevronLeft, Database, BookOpen, AlertTriangle,
-  TrendingUp, Shield,
+  Activity, Clock, Target, Settings, Zap, Plus, Bell,
+  ChevronRight, BookOpen, AlertTriangle, TrendingUp, Shield,
+  Radio, Database, Layers, CheckCircle2, ArrowRight, Info,
 } from 'lucide-react';
 import { format } from 'date-fns';
 
-const NAVY = '#0A0F2E';
-const GOLD = '#C9A84C';
-const TEAL = '#2B8A6E';
-
-const TRIGGER_CATEGORY_TO_DOMAIN: Record<string, string> = {
-  behavior:     'gtm',
-  competitive:  'competitive',
-  customer:     'gtm',
-  cyber:        'crisis',
-  economic:     'financial',
-  esg:          'regulatory',
-  execution:    'gtm',
-  financial:    'financial',
-  geopolitical: 'strategic',
-  innovation:   'technology',
-  market:       'competitive',
-  media:        'technology',
-  partnership:  'ma',
-  regulatory:   'regulatory',
-  supplychain:  'gtm',
-  talent:       'talent',
-  technology:   'crisis',
-};
+const NAVY  = '#0A0F2E';
+const GOLD  = '#C9A84C';
+const TEAL  = '#2B8A6E';
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+// ── Category → domain mapping (for playbook routing) ─────────────────────────
+const TRIGGER_CATEGORY_TO_DOMAIN: Record<string, string> = {
+  behavior: 'gtm', competitive: 'competitive', customer: 'gtm',
+  cyber: 'crisis', economic: 'financial', esg: 'regulatory',
+  execution: 'gtm', financial: 'financial', geopolitical: 'strategic',
+  innovation: 'technology', market: 'competitive', media: 'technology',
+  partnership: 'ma', regulatory: 'regulatory', supplychain: 'gtm',
+  talent: 'talent', technology: 'crisis',
+};
 
 const SEV_COLOR: Record<string, string> = {
   critical: '#EF4444', high: '#F97316', medium: GOLD, low: '#6B7280',
@@ -77,23 +65,15 @@ function sourceLabel(src: string): string {
   return SOURCE_LABELS[src] ?? src.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
 
-// ── Proximity scoring ────────────────────────────────────────────────────────
-// Produces 0–100 score for how close a trigger is to firing
+// ── Proximity scoring ─────────────────────────────────────────────────────────
 function proximityScore(trigger: any): number {
-  const threshold = trigger.alertThreshold ?? 'green';
-  const severity  = trigger.severity ?? 'low';
-
   const base: Record<string, number> = { red: 80, yellow: 48, green: 12 };
   const sev:  Record<string, number> = { critical: 18, high: 11, medium: 5, low: 0 };
-
-  return Math.min(100, (base[threshold] ?? 12) + (sev[severity] ?? 0));
+  return Math.min(100, (base[trigger.alertThreshold ?? 'green'] ?? 12) + (sev[trigger.severity ?? 'low'] ?? 0));
 }
-
 function categoryProximity(triggers: any[]): number {
-  if (!triggers.length) return 0;
-  return Math.max(...triggers.map(proximityScore));
+  return triggers.length ? Math.max(...triggers.map(proximityScore)) : 0;
 }
-
 function proximityLabel(score: number): { label: string; color: string; bg: string } {
   if (score >= 80) return { label: 'AT RISK',     color: '#EF4444', bg: 'rgba(239,68,68,0.08)' };
   if (score >= 55) return { label: 'APPROACHING', color: '#F97316', bg: 'rgba(249,115,22,0.08)' };
@@ -101,7 +81,6 @@ function proximityLabel(score: number): { label: string; color: string; bg: stri
   if (score > 0)   return { label: 'STABLE',      color: '#6B7280', bg: 'rgba(107,114,128,0.06)' };
   return              { label: 'NO RULES',    color: '#D1D5DB', bg: 'transparent' };
 }
-
 function proximityBarColor(score: number): string {
   if (score >= 80) return '#EF4444';
   if (score >= 55) return '#F97316';
@@ -124,12 +103,9 @@ function formatOp(op: string, val?: any): string {
 }
 
 function resolveSignalCat(category: string) {
-  const c = (category || '').toLowerCase().replace(/-/g, '').replace(/_/g, '');
-  return SIGNAL_CATEGORIES.find(sc =>
-    sc.id.replace(/-/g, '').replace(/_/g, '') === c
-  );
+  const c = (category || '').toLowerCase().replace(/[-_]/g, '');
+  return SIGNAL_CATEGORIES.find(sc => sc.id.replace(/[-_]/g, '') === c);
 }
-
 function findDataPoint(dpId: string) {
   for (const cat of SIGNAL_CATEGORIES) {
     const dp = cat.dataPoints.find(d => d.id === dpId);
@@ -138,16 +114,23 @@ function findDataPoint(dpId: string) {
   return null;
 }
 
-// ── Component ─────────────────────────────────────────────────────────────────
+// ── Threshold level config ─────────────────────────────────────────────────────
+const THRESHOLD_CONFIG: Record<string, { label: string; color: string; desc: string }> = {
+  red:    { label: 'Critical Alert', color: '#EF4444', desc: 'Immediate action required — highest urgency' },
+  yellow: { label: 'High Alert',     color: '#F97316', desc: 'Elevated concern — executive attention needed' },
+  green:  { label: 'Watch Alert',    color: TEAL,      desc: 'Early signal — monitor closely for escalation' },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 export default function TriggersManagement({ embedded }: { embedded?: boolean }) {
   const [location, setLocation] = useLocation();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get('category');
   });
-  const [isWizardOpen, setIsWizardOpen]             = useState(false);
-  const [editTriggerData, setEditTriggerData]       = useState<any>(null);
-  const [viewTrigger, setViewTrigger]               = useState<any>(null);
+  const [selectedTriggerId, setSelectedTriggerId] = useState<string | null>(null);
+  const [isWizardOpen, setIsWizardOpen]           = useState(false);
+  const [editTriggerData, setEditTriggerData]     = useState<any>(null);
   const { toast } = useToast();
   const { isAuthenticated } = useAuth();
 
@@ -156,6 +139,9 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     const cat = params.get('category');
     if (cat) setSelectedCategoryId(cat);
   }, [location]);
+
+  // Clear trigger selection when category changes
+  useEffect(() => { setSelectedTriggerId(null); }, [selectedCategoryId]);
 
   const { data: triggersData, isLoading } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
@@ -178,7 +164,6 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     })),
   [triggersData]);
 
-  // Map all 20 signal categories → their triggers
   const triggersByCatId = useMemo(() => {
     const map: Record<string, any[]> = {};
     for (const sc of SIGNAL_CATEGORIES) map[sc.id] = [];
@@ -189,7 +174,6 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     return map;
   }, [allTriggers]);
 
-  // Sort categories: highest proximity first, then by rule count
   const sortedCats = useMemo(() =>
     [...SIGNAL_CATEGORIES]
       .map(sc => ({
@@ -202,13 +186,22 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
   const atRiskCount    = sortedCats.filter(c => c.proximity >= 80).length;
   const approachingCount = sortedCats.filter(c => c.proximity >= 55 && c.proximity < 80).length;
-  const triggeredCount = allTriggers.filter(t => t.status === 'triggered').length;
   const activeCount    = allTriggers.filter(t => t.isActive).length;
 
-  const selectedEntry  = selectedCategoryId ? sortedCats.find(c => c.sc.id === selectedCategoryId) : null;
+  const selectedEntry    = selectedCategoryId ? sortedCats.find(c => c.sc.id === selectedCategoryId) : null;
   const selectedTriggers = useMemo(() =>
     (selectedEntry?.triggers ?? []).slice().sort((a, b) => b.proximity - a.proximity),
   [selectedEntry]);
+  const selectedTrigger  = selectedTriggerId
+    ? selectedTriggers.find(t => t.id === selectedTriggerId) ?? null
+    : null;
+
+  // Resolve the data point for the selected trigger
+  const selectedDpId  = selectedTrigger?.conditions?.dataPointId
+    || selectedTrigger?.conditions?.field
+    || selectedTrigger?.conditions?.metric;
+  const selectedDpRes = selectedDpId ? findDataPoint(selectedDpId) : null;
+  const selectedDp    = selectedDpRes?.dp ?? null;
 
   if (isLoading) {
     return (
@@ -224,7 +217,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     <PageLayout embedded={embedded}>
       <div className="flex flex-col h-full overflow-hidden bg-white">
 
-        {/* ── Header ── */}
+        {/* ── Header ─────────────────────────────────────────────────────── */}
         <div className="flex-shrink-0 border-b border-[#E8E4DC] bg-white px-8 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -240,7 +233,9 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.5rem', color: NAVY, lineHeight: 1 }}>
                   Trigger Proximity Monitor
                 </h1>
-                <p className="text-xs text-gray-400 mt-0.5">Categories ranked by how close they are to firing an alert</p>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  Category → Trigger → Data Points · Select any trigger to see every data point behind it
+                </p>
               </div>
             </div>
             {isAuthenticated && (
@@ -256,11 +251,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           {/* Stats strip */}
           <div className="flex items-center gap-6 mt-4 pt-4 border-t border-[#F0EDE8]">
             {[
-              { label: 'At Risk',      value: atRiskCount,      color: '#EF4444', icon: AlertTriangle, desc: 'categories' },
-              { label: 'Approaching',  value: approachingCount, color: '#F97316', icon: TrendingUp,    desc: 'categories' },
-              { label: 'Rules Fired',  value: triggeredCount,   color: '#EF4444', icon: Bell,          desc: 'alert rules' },
-              { label: 'Rules Active', value: activeCount,      color: TEAL,      icon: Activity,      desc: 'monitoring' },
-              { label: 'Total Rules',  value: allTriggers.length, color: NAVY,    icon: Target,        desc: 'configured' },
+              { label: 'At Risk',       value: atRiskCount,       color: '#EF4444', icon: AlertTriangle, desc: 'categories' },
+              { label: 'Approaching',   value: approachingCount,  color: '#F97316', icon: TrendingUp,    desc: 'categories' },
+              { label: 'Rules Active',  value: activeCount,       color: TEAL,      icon: Activity,      desc: 'monitoring' },
+              { label: 'Total Rules',   value: allTriggers.length, color: NAVY,     icon: Target,        desc: 'configured' },
             ].map(s => {
               const Icon = s.icon;
               return (
@@ -275,19 +269,42 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                 </div>
               );
             })}
+
+            {/* Breadcrumb trail */}
+            {(selectedEntry || selectedTrigger) && (
+              <div className="ml-auto flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
+                <button onClick={() => { setSelectedCategoryId(null); setSelectedTriggerId(null); }}
+                  className="hover:text-navy transition-colors" style={{ color: GOLD }}>
+                  All Categories
+                </button>
+                {selectedEntry && (
+                  <>
+                    <ChevronRight className="w-3 h-3" />
+                    <button onClick={() => setSelectedTriggerId(null)}
+                      className="hover:opacity-70 transition-opacity" style={{ color: selectedTrigger ? '#6B7280' : NAVY }}>
+                      {selectedEntry.sc.name}
+                    </button>
+                  </>
+                )}
+                {selectedTrigger && (
+                  <>
+                    <ChevronRight className="w-3 h-3" />
+                    <span style={{ color: NAVY }}>{selectedTrigger.name}</span>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* ── Split layout ── */}
+        {/* ── Three-pane body ─────────────────────────────────────────────── */}
         <div className="flex flex-1 min-h-0 overflow-hidden">
 
-          {/* LEFT — Category proximity list */}
-          <div className="w-72 flex-shrink-0 border-r border-[#E8E4DC] overflow-y-auto bg-[#F8F7F4]">
-            <div className="px-4 py-2.5 border-b border-[#E8E4DC] flex items-center justify-between">
+          {/* ═══ PANE 1: Category list ══════════════════════════════════════ */}
+          <div className="w-60 flex-shrink-0 border-r border-[#E8E4DC] overflow-y-auto bg-[#F8F7F4]">
+            <div className="px-4 py-2.5 border-b border-[#E8E4DC]">
               <p className="text-[9px] font-black uppercase tracking-widest text-gray-400">Proximity Rank</p>
-              <Shield className="w-3.5 h-3.5 text-gray-300" />
             </div>
-
             {sortedCats.map(({ sc, triggers, proximity }, idx) => {
               const lbl        = proximityLabel(proximity);
               const barColor   = proximityBarColor(proximity);
@@ -299,17 +316,17 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   key={sc.id}
                   onClick={() => hasRules ? setSelectedCategoryId(isSelected ? null : sc.id) : undefined}
                   disabled={!hasRules}
-                  className="w-full text-left px-4 py-3 border-b border-[#EDE9E3] transition-colors"
+                  className="w-full text-left px-3 py-3 border-b border-[#EDE9E3] transition-all"
                   style={{
-                    background:   isSelected ? '#fff' : 'transparent',
-                    borderLeft:   isSelected ? `3px solid ${barColor}` : '3px solid transparent',
-                    cursor:       hasRules ? 'pointer' : 'default',
-                    opacity:      hasRules ? 1 : 0.45,
+                    background:  isSelected ? '#fff' : 'transparent',
+                    borderLeft:  isSelected ? `3px solid ${barColor}` : '3px solid transparent',
+                    cursor:      hasRules ? 'pointer' : 'default',
+                    opacity:     hasRules ? 1 : 0.4,
                   }}
                 >
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-1.5 min-w-0">
-                      <span className="text-[9px] font-black text-gray-300" style={{ minWidth: 16 }}>
+                      <span className="text-[8px] font-black text-gray-300" style={{ minWidth: 14 }}>
                         {String(idx + 1).padStart(2, '0')}
                       </span>
                       <p className="text-[11px] font-bold truncate" style={{ color: isSelected ? NAVY : '#374151' }}>
@@ -317,31 +334,25 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       </p>
                     </div>
                     {hasRules && (
-                      <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 flex-shrink-0 ml-1"
+                      <span className="text-[7px] font-black uppercase tracking-wider px-1.5 py-0.5 flex-shrink-0 ml-1 rounded"
                         style={{ background: lbl.bg, color: lbl.color }}>
                         {lbl.label}
                       </span>
                     )}
                   </div>
-
-                  {/* Proximity bar */}
                   {hasRules && (
-                    <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden mb-1.5">
-                      <div
-                        className="h-full rounded-full transition-all"
-                        style={{ width: `${proximity}%`, background: barColor }}
-                      />
+                    <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden mb-1.5">
+                      <div className="h-full rounded-full" style={{ width: `${proximity}%`, background: barColor }} />
                     </div>
                   )}
-
                   <div className="flex items-center justify-between">
                     <span className="text-[9px] text-gray-400">
-                      {hasRules ? `${triggers.length} rule${triggers.length !== 1 ? 's' : ''} · ${sc.dataPoints.length} data pts` : 'No rules configured'}
+                      {hasRules
+                        ? `${triggers.length} rule${triggers.length !== 1 ? 's' : ''}`
+                        : 'No rules'}
                     </span>
                     {hasRules && (
-                      <span className="text-[9px] font-bold" style={{ color: barColor }}>
-                        {proximity}%
-                      </span>
+                      <span className="text-[9px] font-bold" style={{ color: barColor }}>{proximity}%</span>
                     )}
                   </div>
                 </button>
@@ -349,296 +360,534 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
             })}
           </div>
 
-          {/* RIGHT — Category detail */}
-          <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+          {/* ═══ PANE 2: Trigger list ═══════════════════════════════════════ */}
+          <div className="w-80 flex-shrink-0 border-r border-[#E8E4DC] flex flex-col overflow-hidden"
+            style={{ background: selectedEntry ? '#fff' : '#FAFAF9' }}>
+
             {selectedEntry ? (
               <>
-                {/* Detail header */}
-                <div className="flex-shrink-0 px-6 py-4 border-b border-[#E8E4DC] bg-white">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-3">
-                      <button
-                        onClick={() => setSelectedCategoryId(null)}
-                        className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider hover:opacity-70 transition-opacity mt-0.5 md:hidden"
-                        style={{ color: NAVY }}
-                      >
-                        <ChevronLeft className="w-3 h-3" />
-                      </button>
-                      <div>
-                        <div className="flex items-center gap-3 mb-1">
-                          <h2 className="text-lg font-bold" style={{ color: NAVY }}>{selectedEntry.sc.name}</h2>
-                          {(() => {
-                            const lbl = proximityLabel(selectedEntry.proximity);
-                            return (
-                              <span className="text-[9px] font-black uppercase tracking-wider px-2 py-1"
-                                style={{ background: lbl.bg, color: lbl.color }}>
-                                {lbl.label}
-                              </span>
-                            );
-                          })()}
-                        </div>
-                        <p className="text-xs text-gray-500 max-w-xl">{selectedEntry.sc.description}</p>
-
-                        {/* Category proximity bar */}
-                        <div className="flex items-center gap-3 mt-2">
-                          <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full rounded-full"
-                              style={{
-                                width: `${selectedEntry.proximity}%`,
-                                background: proximityBarColor(selectedEntry.proximity),
-                              }}
-                            />
-                          </div>
-                          <span className="text-[10px] font-black" style={{ color: proximityBarColor(selectedEntry.proximity) }}>
-                            {selectedEntry.proximity}% proximity to alert
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    {isAuthenticated && (
-                      <Button
-                        size="sm"
-                        onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
-                        style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0 }}
-                      >
-                        <Plus className="w-3.5 h-3.5 mr-1" /> Add Rule
-                      </Button>
-                    )}
+                {/* Category header */}
+                <div className="flex-shrink-0 px-5 py-4 border-b border-[#E8E4DC]"
+                  style={{ background: '#F8F7F4' }}>
+                  <div className="flex items-center gap-2 mb-1">
+                    {(() => {
+                      const lbl = proximityLabel(selectedEntry.proximity);
+                      return (
+                        <span className="text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded"
+                          style={{ background: lbl.bg, color: lbl.color }}>{lbl.label}</span>
+                      );
+                    })()}
+                    <span className="text-[9px] font-bold text-gray-400">
+                      {selectedEntry.proximity}% proximity
+                    </span>
+                  </div>
+                  <h2 className="text-sm font-bold mb-0.5" style={{ color: NAVY }}>{selectedEntry.sc.name}</h2>
+                  <p className="text-[10px] text-gray-400 leading-snug">{selectedEntry.sc.description}</p>
+                  <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden mt-2">
+                    <div className="h-full rounded-full"
+                      style={{ width: `${selectedEntry.proximity}%`, background: proximityBarColor(selectedEntry.proximity) }} />
                   </div>
                 </div>
 
-                {/* Trigger rows — sorted highest proximity first */}
-                <div className="flex-1 overflow-y-auto divide-y divide-[#F0EDE8]">
+                {/* Trigger list */}
+                <div className="flex-1 overflow-y-auto">
                   {selectedTriggers.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                      <Zap className="w-8 h-8 mb-3" />
-                      <p className="text-sm font-semibold">No alert rules in this category</p>
+                    <div className="flex flex-col items-center justify-center py-16 text-gray-400 px-6 text-center">
+                      <Zap className="w-7 h-7 mb-3" />
+                      <p className="text-sm font-semibold mb-1">No rules in this category</p>
+                      <p className="text-xs">Configure your first trigger for {selectedEntry.sc.name}.</p>
                     </div>
                   ) : (
                     selectedTriggers.map(trigger => {
-                      const dpId     = trigger.conditions?.dataPointId || trigger.conditions?.field || trigger.conditions?.metric;
-                      const dpLookup = dpId ? findDataPoint(dpId) : null;
-                      const dp       = dpLookup?.dp;
-                      const condition = trigger.conditions
-                        ? formatOp(trigger.conditions.operator, trigger.conditions.value)
-                        : trigger.description;
-                      const lbl      = proximityLabel(trigger.proximity);
-                      const barColor = proximityBarColor(trigger.proximity);
-                      const preActivate = trigger.proximity >= 55;
+                      const isActive   = selectedTriggerId === trigger.id;
+                      const barColor   = proximityBarColor(trigger.proximity);
+                      const lbl        = proximityLabel(trigger.proximity);
+                      const sevColor   = SEV_COLOR[trigger.severity] ?? GOLD;
+                      const dpId       = trigger.conditions?.dataPointId || trigger.conditions?.field || trigger.conditions?.metric;
+                      const dpRes      = dpId ? findDataPoint(dpId) : null;
+                      const dp         = dpRes?.dp ?? null;
 
                       return (
-                        <div
+                        <button
                           key={trigger.id}
-                          className="px-6 py-5 hover:bg-[#FAFAF9] transition-colors"
-                          style={{ borderLeft: `3px solid ${barColor}` }}
+                          onClick={() => setSelectedTriggerId(isActive ? null : trigger.id)}
+                          className="w-full text-left px-4 py-4 border-b border-[#F0EDE8] transition-all hover:bg-[#FAFAF9]"
+                          style={{
+                            background:  isActive ? `${barColor}06` : 'transparent',
+                            borderLeft:  isActive ? `3px solid ${barColor}` : '3px solid transparent',
+                          }}
                         >
-                          {/* Top row: proximity bar + status + actions */}
-                          <div className="flex items-start gap-4">
-                            <div className="flex-1 min-w-0">
-
-                              {/* Proximity row */}
-                              <div className="flex items-center gap-3 mb-3">
-                                <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden max-w-[180px]">
-                                  <div className="h-full rounded-full transition-all"
-                                    style={{ width: `${trigger.proximity}%`, background: barColor }} />
-                                </div>
-                                <span className="text-[10px] font-black" style={{ color: barColor }}>
-                                  {trigger.proximity}%
-                                </span>
-                                <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5"
-                                  style={{ background: lbl.bg, color: lbl.color }}>
-                                  {lbl.label}
-                                </span>
-                                <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5"
-                                  style={{ background: `${SEV_COLOR[trigger.severity] ?? GOLD}18`, color: SEV_COLOR[trigger.severity] ?? GOLD }}>
-                                  {trigger.severity}
-                                </span>
-                              </div>
-
-                              {/* What it watches */}
-                              {dp && (
-                                <div className="flex items-baseline gap-2 mb-1.5">
-                                  <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400 flex-shrink-0">Watching:</span>
-                                  <span className="text-[12px] font-bold" style={{ color: NAVY }}>{dp.name}</span>
-                                  <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5" style={{ background: 'rgba(201,168,76,0.1)', color: GOLD }}>
-                                    {dp.metricType}
-                                  </span>
-                                </div>
-                              )}
-
-                              {/* Rule name */}
-                              <p className="text-[11px] font-semibold text-gray-500 mb-2">{trigger.name}</p>
-
-                              {/* Alert condition */}
-                              <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-2"
-                                style={{ background: `${barColor}0D`, border: `1px solid ${barColor}30` }}>
-                                <Zap className="w-3 h-3 flex-shrink-0" style={{ color: barColor }} />
-                                <span className="text-[11px] font-bold" style={{ color: NAVY }}>
-                                  Fires when {condition}
-                                </span>
-                              </div>
-
-                              {/* Aligned Playbooks — specific playbooks built for this situation */}
-                              {trigger.linkedPlaybooks?.length > 0 && (
-                                <div className="mt-2 px-3 py-2"
-                                  style={{ background: 'rgba(10,15,46,0.04)', border: '1px solid rgba(201,168,76,0.3)', borderLeft: `3px solid ${GOLD}` }}>
-                                  <div className="flex items-center gap-1.5 mb-1.5">
-                                    <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
-                                    <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>
-                                      Execute With
-                                    </span>
-                                  </div>
-                                  <div className="flex flex-wrap gap-1">
-                                    {trigger.linkedPlaybooks.map((p: { id: string; name: string; domain: string }) => (
-                                      <span key={p.id}
-                                        className="text-[9px] font-semibold px-2 py-0.5 cursor-pointer hover:opacity-80 flex items-center gap-1"
-                                        style={{ background: 'rgba(10,15,46,0.07)', color: NAVY, border: `1px solid rgba(10,15,46,0.15)`, borderRadius: 2 }}
-                                        onClick={() => setLocation(`/playbook-library/${p.id}`)}
-                                        title={`Open: ${p.name}`}
-                                      >
-                                        {p.name}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* Monitored from — data sources */}
-                              {dp?.sources?.length > 0 && (
-                                <div className="mt-2">
-                                  <span className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mr-2">Monitored via:</span>
-                                  <span className="inline-flex flex-wrap gap-1">
-                                    {dp.sources.map((src: string) => (
-                                      <span key={src} className="text-[9px] font-semibold px-2 py-0.5"
-                                        style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.2)' }}>
-                                        {sourceLabel(src)}
-                                      </span>
-                                    ))}
-                                  </span>
-                                </div>
-                              )}
-                              {/* Meta row */}
-                              <div className="flex items-center gap-4 mt-2">
-                                {trigger.updatedAt && (
-                                  <div className="flex items-center gap-1 text-[9px] text-gray-400">
-                                    <Clock className="w-3 h-3" />
-                                    {format(new Date(trigger.updatedAt), 'MMM d')}
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-
-                            {/* Right: toggle + edit + activate */}
-                            <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                              {isAuthenticated && (
-                                <div className="flex items-center gap-2">
-                                  <span className="text-[9px] font-bold uppercase tracking-wider"
-                                    style={{ color: trigger.isActive ? TEAL : '#9CA3AF' }}>
-                                    {trigger.isActive ? 'On' : 'Off'}
-                                  </span>
-                                  <Switch
-                                    checked={trigger.isActive}
-                                    onCheckedChange={(isActive) => toggleMutation.mutate({ id: trigger.id, isActive })}
-                                  />
-                                </div>
-                              )}
-                              {isAuthenticated ? (
-                                <button
-                                  onClick={() => {
-                                    const first = trigger.linkedPlaybooks?.[0];
-                                    if (first?.id) {
-                                      // Go directly to the activation console — trigger + playbook wired together
-                                      setLocation(`/playbook-activation/${trigger.id}/${first.id}`);
-                                    } else {
-                                      const domain = TRIGGER_CATEGORY_TO_DOMAIN[trigger.category] || 'all';
-                                      setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
-                                    }
-                                  }}
-                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
-                                  style={{ background: GOLD, color: NAVY }}
-                                >
-                                  <BookOpen className="w-3 h-3" /> Execute Playbook
-                                </button>
-                              ) : (
-                                <button
-                                  onClick={() => setLocation('/get-started')}
-                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
-                                  style={{ background: '#E8E4DC', color: '#9CA3AF', cursor: 'pointer' }}
-                                  title="Sign in to activate playbooks"
-                                >
-                                  <BookOpen className="w-3 h-3" /> Sign In to Activate
-                                </button>
-                              )}
-                              {isAuthenticated && (
-                                <button
-                                  onClick={() => { setEditTriggerData(trigger); setIsWizardOpen(true); }}
-                                  className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 hover:opacity-80 transition-opacity"
-                                  style={{ background: NAVY, color: '#fff' }}
-                                >
-                                  <Settings className="w-3 h-3" /> Edit
-                                </button>
-                              )}
-                            </div>
+                          {/* Trigger name */}
+                          <div className="flex items-start justify-between gap-2 mb-2">
+                            <p className="text-[12px] font-bold leading-snug" style={{ color: NAVY }}>
+                              {trigger.name}
+                            </p>
+                            <ChevronRight className="w-3.5 h-3.5 flex-shrink-0 mt-0.5"
+                              style={{ color: isActive ? barColor : '#D1D5DB', transform: isActive ? 'rotate(90deg)' : 'none', transition: 'transform 0.15s' }} />
                           </div>
-                        </div>
+
+                          {/* Data point being watched */}
+                          {dp && (
+                            <div className="flex items-center gap-1.5 mb-2">
+                              <Database className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
+                              <span className="text-[10px] font-semibold" style={{ color: '#555' }}>{dp.name}</span>
+                            </div>
+                          )}
+
+                          {/* Status row */}
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded"
+                              style={{ background: lbl.bg, color: lbl.color }}>{lbl.label}</span>
+                            <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded"
+                              style={{ background: `${sevColor}15`, color: sevColor }}>{trigger.severity}</span>
+                            <span className="text-[9px] font-bold ml-auto" style={{ color: barColor }}>
+                              {trigger.proximity}%
+                            </span>
+                          </div>
+
+                          {/* Proximity micro bar */}
+                          <div className="w-full h-0.5 bg-gray-100 rounded-full mt-2">
+                            <div className="h-full rounded-full" style={{ width: `${trigger.proximity}%`, background: barColor }} />
+                          </div>
+                        </button>
                       );
                     })
                   )}
                 </div>
 
-                {/* Footer */}
-                <div className="flex-shrink-0 px-6 py-4 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between gap-4">
-                  <p className="text-[10px] text-gray-500">
-                    <span className="font-bold" style={{ color: NAVY }}>
-                      {selectedEntry.triggers.length}
-                    </span>
-                    <span> rules · </span>
-                    <span className="font-bold" style={{ color: TEAL }}>
-                      {selectedEntry.triggers.filter(t => t.isActive).length} active
-                    </span>
-                    <span> · highest proximity </span>
-                    <span className="font-bold" style={{ color: proximityBarColor(selectedEntry.proximity) }}>
-                      {selectedEntry.proximity}%
-                    </span>
-                  </p>
-                  {isAuthenticated ? (
+                {/* Pane 2 footer */}
+                <div className="flex-shrink-0 px-4 py-3 border-t border-[#E8E4DC] bg-[#F8F7F4] flex items-center justify-between">
+                  <span className="text-[9px] text-gray-400">
+                    <span className="font-bold" style={{ color: NAVY }}>{selectedEntry.triggers.length}</span> rules ·{' '}
+                    <span className="font-bold" style={{ color: TEAL }}>{selectedEntry.triggers.filter(t => t.isActive).length} active</span>
+                  </span>
+                  {isAuthenticated && (
                     <button
-                      onClick={() => setLocation('/identify/playbook-library')}
-                      className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
-                      style={{ background: GOLD, color: NAVY }}
+                      onClick={() => { setEditTriggerData(null); setIsWizardOpen(true); }}
+                      className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider hover:opacity-70 transition-opacity"
+                      style={{ color: NAVY }}
                     >
-                      <BookOpen className="w-3.5 h-3.5" />
-                      Activate a Playbook for This Trigger
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => setLocation('/get-started')}
-                      className="flex items-center gap-2 px-4 py-2 font-bold uppercase tracking-wider text-[10px] hover:opacity-90 transition-opacity flex-shrink-0"
-                      style={{ background: '#E8E4DC', color: '#9CA3AF' }}
-                      title="Sign in to activate playbooks"
-                    >
-                      <BookOpen className="w-3.5 h-3.5" />
-                      Sign In to Activate Playbooks
+                      <Plus className="w-3 h-3" /> Add Rule
                     </button>
                   )}
-                  <span className="text-[9px] text-gray-400 hidden">
-                    {selectedEntry.sc.dataPoints.length} data points available in this category
-                  </span>
                 </div>
               </>
             ) : (
-              /* ── Empty state: overview of top at-risk categories ── */
+              /* No category selected */
+              <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-gray-400">
+                <Layers className="w-10 h-10 mb-4" style={{ color: '#D1D5DB' }} />
+                <p className="text-sm font-semibold mb-2" style={{ color: NAVY }}>Select a Category</p>
+                <p className="text-xs leading-relaxed">Choose a category from the left to see its configured alert rules.</p>
+              </div>
+            )}
+          </div>
+
+          {/* ═══ PANE 3: Full data detail ═══════════════════════════════════ */}
+          <div className="flex-1 flex flex-col overflow-hidden bg-white">
+            {selectedTrigger ? (
+              /* ── Trigger detail ───────────────────────────────────────────── */
+              <>
+                {/* Detail header */}
+                <div className="flex-shrink-0 px-8 py-5 border-b border-[#E8E4DC]"
+                  style={{ background: NAVY }}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: proximityBarColor(selectedTrigger.proximity) }} className="animate-pulse flex-shrink-0" />
+                        <span className="text-[9px] font-black uppercase tracking-[0.2em]" style={{ color: GOLD }}>Alert Rule · Data Evidence</span>
+                      </div>
+                      <h2 style={{ ...CG, fontSize: '1.35rem', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: 8 }}>
+                        {selectedTrigger.name}
+                      </h2>
+                      {selectedTrigger.description && (
+                        <p className="text-sm text-white/50 leading-relaxed mb-3">{selectedTrigger.description}</p>
+                      )}
+                      {/* Proximity bar in header */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-40 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                          <div className="h-full rounded-full"
+                            style={{ width: `${selectedTrigger.proximity}%`, background: proximityBarColor(selectedTrigger.proximity) }} />
+                        </div>
+                        <span className="text-[11px] font-black" style={{ color: proximityBarColor(selectedTrigger.proximity) }}>
+                          {selectedTrigger.proximity}% proximity to alert
+                        </span>
+                        <span className="text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded"
+                          style={{ background: `${SEV_COLOR[selectedTrigger.severity] ?? GOLD}25`, color: SEV_COLOR[selectedTrigger.severity] ?? GOLD }}>
+                          {selectedTrigger.severity}
+                        </span>
+                      </div>
+                    </div>
+                    {/* Toggle */}
+                    {isAuthenticated && (
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <span className="text-[9px] font-bold" style={{ color: selectedTrigger.isActive ? '#4ade80' : 'rgba(255,255,255,0.3)' }}>
+                          {selectedTrigger.isActive ? 'Active' : 'Paused'}
+                        </span>
+                        <Switch
+                          checked={selectedTrigger.isActive}
+                          onCheckedChange={(isActive) => toggleMutation.mutate({ id: selectedTrigger.id, isActive })}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Detail body — scrollable */}
+                <div className="flex-1 overflow-y-auto">
+                  <div className="p-8 space-y-8 max-w-3xl">
+
+                    {/* ── SECTION 1: Data Point ──────────────────────────────── */}
+                    <section>
+                      <div className="flex items-center gap-2 mb-4">
+                        <Database className="w-4 h-4" style={{ color: GOLD }} />
+                        <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
+                          Data Point Being Monitored
+                        </h3>
+                        <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                      </div>
+
+                      {selectedDp ? (
+                        <div className="border border-[#E8E4DC] rounded-lg overflow-hidden">
+                          {/* Data point name + type */}
+                          <div className="px-6 py-4" style={{ background: '#F8F7F4' }}>
+                            <div className="flex items-start justify-between gap-4">
+                              <div>
+                                <p className="text-base font-bold mb-1" style={{ color: NAVY }}>{selectedDp.name}</p>
+                                <p className="text-sm text-gray-500 leading-relaxed">{selectedDp.description}</p>
+                              </div>
+                              <span className="text-[9px] font-black uppercase tracking-wider px-2.5 py-1 flex-shrink-0 rounded"
+                                style={{ background: `${GOLD}15`, color: GOLD, border: `1px solid ${GOLD}30` }}>
+                                {selectedDp.metricType}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Default threshold reference */}
+                          {(selectedDp as any).defaultThreshold && (
+                            <div className="px-6 py-3 border-t border-[#E8E4DC]" style={{ background: '#fff' }}>
+                              <div className="flex items-center gap-2">
+                                <Info className="w-3.5 h-3.5 flex-shrink-0" style={{ color: TEAL }} />
+                                <span className="text-[10px] text-gray-500">
+                                  Default threshold: fires when value{' '}
+                                  <strong style={{ color: NAVY }}>
+                                    {formatOp((selectedDp as any).defaultThreshold.operator, (selectedDp as any).defaultThreshold.value)}
+                                  </strong>{' '}
+                                  · urgency: <strong style={{ color: SEV_COLOR[(selectedDp as any).defaultThreshold.urgency] ?? GOLD }}>
+                                    {(selectedDp as any).defaultThreshold.urgency}
+                                  </strong>
+                                </span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="px-5 py-4 border border-[#E8E4DC] rounded-lg text-sm text-gray-400">
+                          No data point linked to this rule. Use <strong>Edit</strong> to configure one.
+                        </div>
+                      )}
+                    </section>
+
+                    {/* ── SECTION 2: Alert Condition ─────────────────────────── */}
+                    <section>
+                      <div className="flex items-center gap-2 mb-4">
+                        <Zap className="w-4 h-4" style={{ color: TEAL }} />
+                        <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
+                          Alert Condition — When This Rule Fires
+                        </h3>
+                        <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        {/* Condition */}
+                        <div className="border border-[#E8E4DC] rounded-lg p-5">
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Fires When</p>
+                          <div className="flex items-center gap-2 px-3 py-2.5 rounded"
+                            style={{ background: `${proximityBarColor(selectedTrigger.proximity)}0D`, border: `1px solid ${proximityBarColor(selectedTrigger.proximity)}30` }}>
+                            <Zap className="w-3.5 h-3.5 flex-shrink-0" style={{ color: proximityBarColor(selectedTrigger.proximity) }} />
+                            <span className="text-sm font-bold" style={{ color: NAVY }}>
+                              {selectedTrigger.conditions
+                                ? formatOp(selectedTrigger.conditions.operator, selectedTrigger.conditions.value)
+                                : selectedTrigger.description || 'Condition not configured'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Alert level */}
+                        <div className="border border-[#E8E4DC] rounded-lg p-5">
+                          <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Alert Level</p>
+                          {(() => {
+                            const th = THRESHOLD_CONFIG[selectedTrigger.alertThreshold] ?? THRESHOLD_CONFIG.yellow;
+                            return (
+                              <div>
+                                <div className="flex items-center gap-2 mb-1.5">
+                                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: th.color, flexShrink: 0 }} />
+                                  <span className="text-sm font-bold" style={{ color: th.color }}>{th.label}</span>
+                                </div>
+                                <p className="text-[10px] text-gray-400 leading-snug">{th.desc}</p>
+                              </div>
+                            );
+                          })()}
+                        </div>
+                      </div>
+                    </section>
+
+                    {/* ── SECTION 3: Data Sources ────────────────────────────── */}
+                    {selectedDp?.sources && selectedDp.sources.length > 0 && (
+                      <section>
+                        <div className="flex items-center gap-2 mb-4">
+                          <Radio className="w-4 h-4" style={{ color: TEAL }} />
+                          <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
+                            Data Sources Feeding This Signal
+                          </h3>
+                          <span className="text-[9px] font-bold px-2 py-0.5 rounded" style={{ background: `${TEAL}12`, color: TEAL }}>
+                            {selectedDp.sources.length} sources
+                          </span>
+                          <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2.5">
+                          {selectedDp.sources.map((src: string, i: number) => (
+                            <div key={src}
+                              className="flex items-center gap-3 px-4 py-3 rounded-lg border border-[#E8E4DC]"
+                              style={{ background: '#F8F7F4' }}>
+                              <div className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                                style={{ background: `${TEAL}15` }}>
+                                <span className="text-[8px] font-black" style={{ color: TEAL }}>{i + 1}</span>
+                              </div>
+                              <div className="min-w-0">
+                                <p className="text-[11px] font-bold truncate" style={{ color: NAVY }}>{sourceLabel(src)}</p>
+                                <p className="text-[9px] text-gray-400 font-mono">{src}</p>
+                              </div>
+                              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 ml-auto animate-pulse"
+                                style={{ background: TEAL }} />
+                            </div>
+                          ))}
+                        </div>
+
+                        <p className="text-[10px] text-gray-400 mt-3 flex items-center gap-1.5">
+                          <Radio className="w-3 h-3" />
+                          All {selectedDp.sources.length} sources are continuously monitored — data refreshes every scan cycle
+                        </p>
+                      </section>
+                    )}
+
+                    {/* ── SECTION 4: Linked Playbooks ────────────────────────── */}
+                    {selectedTrigger.linkedPlaybooks?.length > 0 && (
+                      <section>
+                        <div className="flex items-center gap-2 mb-4">
+                          <BookOpen className="w-4 h-4" style={{ color: GOLD }} />
+                          <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
+                            Pre-Staged Playbooks — Ready When This Fires
+                          </h3>
+                          <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                        </div>
+
+                        <div className="space-y-2.5">
+                          {selectedTrigger.linkedPlaybooks.map((p: { id: string; name: string; domain: string }, idx: number) => (
+                            <div key={p.id}
+                              className="flex items-center gap-4 px-5 py-4 rounded-lg border cursor-pointer hover:shadow-sm transition-all"
+                              style={{ borderColor: idx === 0 ? `${GOLD}50` : '#E8E4DC', background: idx === 0 ? `${GOLD}05` : '#fff' }}
+                              onClick={() => setLocation(`/playbook-library/${p.id}`)}>
+                              <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
+                                style={{ background: idx === 0 ? `${GOLD}18` : `${NAVY}0A` }}>
+                                <BookOpen className="w-4 h-4" style={{ color: idx === 0 ? GOLD : NAVY }} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-bold" style={{ color: NAVY }}>{p.name}</p>
+                                {p.domain && <p className="text-[10px] text-gray-400 mt-0.5">{p.domain}</p>}
+                              </div>
+                              {idx === 0 && (
+                                <span className="text-[8px] font-black uppercase tracking-wider px-2 py-1 rounded flex-shrink-0"
+                                  style={{ background: `${GOLD}15`, color: GOLD }}>Primary</span>
+                              )}
+                              <ArrowRight className="w-3.5 h-3.5 flex-shrink-0 text-gray-300" />
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* One-click activate CTA */}
+                        {isAuthenticated ? (
+                          <button
+                            onClick={() => {
+                              const first = selectedTrigger.linkedPlaybooks?.[0];
+                              if (first?.id) {
+                                setLocation(`/playbook-activation/${selectedTrigger.id}/${first.id}`);
+                              } else {
+                                const domain = TRIGGER_CATEGORY_TO_DOMAIN[selectedTrigger.category] || 'all';
+                                setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
+                              }
+                            }}
+                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity rounded-lg"
+                            style={{ background: GOLD, color: NAVY }}
+                          >
+                            <Zap className="w-4 h-4" />
+                            Activate Playbook Now
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => setLocation('/get-started')}
+                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-80 transition-opacity rounded-lg"
+                            style={{ background: '#E8E4DC', color: '#9CA3AF' }}
+                          >
+                            Sign In to Activate Playbooks
+                          </button>
+                        )}
+                      </section>
+                    )}
+
+                    {/* ── SECTION 5: Category Data Points Overview ───────────── */}
+                    {selectedEntry && (
+                      <section>
+                        <div className="flex items-center gap-2 mb-4">
+                          <Layers className="w-4 h-4" style={{ color: '#6B7280' }} />
+                          <h3 className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                            All Data Points in {selectedEntry.sc.name}
+                          </h3>
+                          <span className="text-[9px] font-bold px-2 py-0.5 rounded" style={{ background: '#F0EDE4', color: '#6B7280' }}>
+                            {selectedEntry.sc.dataPoints.length} available
+                          </span>
+                          <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                        </div>
+                        <div className="grid grid-cols-1 gap-2">
+                          {selectedEntry.sc.dataPoints.map((dp: any) => {
+                            const isThisOne = dp.id === selectedDpId;
+                            return (
+                              <div key={dp.id}
+                                className="flex items-start gap-3 px-4 py-3 rounded-lg border"
+                                style={{
+                                  borderColor: isThisOne ? `${GOLD}50` : '#F0EDE8',
+                                  background:  isThisOne ? `${GOLD}06` : '#FAFAF9',
+                                }}>
+                                {isThisOne
+                                  ? <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
+                                  : <div className="w-3.5 h-3.5 rounded-full border border-gray-200 flex-shrink-0 mt-0.5" />
+                                }
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2 mb-0.5">
+                                    <p className="text-[11px] font-bold" style={{ color: isThisOne ? NAVY : '#374151' }}>{dp.name}</p>
+                                    {isThisOne && (
+                                      <span className="text-[7px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded"
+                                        style={{ background: `${GOLD}20`, color: GOLD }}>THIS RULE</span>
+                                    )}
+                                    <span className="text-[8px] text-gray-400 font-mono ml-auto">{dp.metricType}</span>
+                                  </div>
+                                  <p className="text-[10px] text-gray-400 leading-snug">{dp.description}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </section>
+                    )}
+
+                    {/* ── Edit footer ───────────────────────────────────────── */}
+                    {isAuthenticated && (
+                      <div className="flex items-center gap-3 pt-4 border-t border-[#E8E4DC]">
+                        <Button
+                          onClick={() => { setEditTriggerData(selectedTrigger); setIsWizardOpen(true); }}
+                          style={{ background: NAVY, color: '#fff', fontWeight: 700, fontSize: 12 }}
+                        >
+                          <Settings className="w-3.5 h-3.5 mr-2" /> Edit This Rule
+                        </Button>
+                        <span className="text-[9px] text-gray-400">
+                          {selectedTrigger.updatedAt && `Last updated ${format(new Date(selectedTrigger.updatedAt), 'MMM d, yyyy')}`}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : selectedEntry ? (
+              /* ── Category overview (no trigger selected) ─────────────────── */
               <div className="flex-1 overflow-y-auto p-8">
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-1">
                     <div style={{ width: 20, height: 2, background: GOLD }} />
                     <span className="text-[9px] font-black uppercase tracking-[0.25em]" style={{ color: GOLD }}>
-                      Proximity Overview
+                      Category Overview
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500">
-                    Select a category on the left to drill into its alert rules. Below are your highest-proximity categories.
+                  <h2 className="text-xl font-bold mb-1" style={{ ...CG, color: NAVY }}>
+                    {selectedEntry.sc.name}
+                  </h2>
+                  <p className="text-sm text-gray-500 mb-6 max-w-xl">{selectedEntry.sc.description}</p>
+
+                  {selectedTriggers.length > 0 ? (
+                    <div className="mb-2 flex items-center gap-2">
+                      <Info className="w-3.5 h-3.5" style={{ color: TEAL }} />
+                      <p className="text-xs text-gray-400">
+                        Select a trigger on the left to see every data point, source, and condition behind it.
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+
+                {/* All data points in this category */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Database className="w-4 h-4" style={{ color: GOLD }} />
+                    <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
+                      Available Data Points in This Category
+                    </h3>
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded"
+                      style={{ background: `${GOLD}12`, color: GOLD }}>
+                      {selectedEntry.sc.dataPoints.length} data points
+                    </span>
+                    <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-3">
+                    {selectedEntry.sc.dataPoints.map((dp: any) => {
+                      const isWatched = selectedTriggers.some(t =>
+                        (t.conditions?.dataPointId || t.conditions?.field || t.conditions?.metric) === dp.id
+                      );
+                      return (
+                        <div key={dp.id}
+                          className="border rounded-lg overflow-hidden"
+                          style={{ borderColor: isWatched ? `${TEAL}40` : '#E8E4DC' }}>
+                          <div className="px-5 py-4" style={{ background: isWatched ? `${TEAL}05` : '#F8F7F4' }}>
+                            <div className="flex items-start justify-between gap-3 mb-1">
+                              <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
+                              <div className="flex items-center gap-2 flex-shrink-0">
+                                {isWatched && (
+                                  <span className="text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded"
+                                    style={{ background: `${TEAL}15`, color: TEAL }}>
+                                    <CheckCircle2 className="w-2.5 h-2.5 inline mr-0.5" />
+                                    Monitored
+                                  </span>
+                                )}
+                                <span className="text-[9px] font-bold px-2 py-0.5 rounded"
+                                  style={{ background: `${GOLD}10`, color: GOLD }}>{dp.metricType}</span>
+                              </div>
+                            </div>
+                            <p className="text-xs text-gray-500 leading-relaxed">{dp.description}</p>
+                          </div>
+                          {dp.sources?.length > 0 && (
+                            <div className="px-5 py-2.5 border-t border-[#E8E4DC] flex flex-wrap gap-1.5">
+                              {dp.sources.map((src: string) => (
+                                <span key={src} className="text-[9px] font-semibold px-2 py-0.5 rounded"
+                                  style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.2)' }}>
+                                  {sourceLabel(src)}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ── Nothing selected ─────────────────────────────────────────── */
+              <div className="flex-1 overflow-y-auto p-8">
+                <div className="mb-8">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div style={{ width: 20, height: 2, background: GOLD }} />
+                    <span className="text-[9px] font-black uppercase tracking-[0.25em]" style={{ color: GOLD }}>Proximity Overview</span>
+                  </div>
+                  <p className="text-sm text-gray-500 max-w-xl">
+                    Select a category → choose a trigger → see every data point, source, and condition behind it.
                   </p>
                 </div>
 
@@ -647,19 +896,17 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     const lbl      = proximityLabel(proximity);
                     const barColor = proximityBarColor(proximity);
                     const topTrigger = triggers[0];
-                    const preActivate = proximity >= 55 && topTrigger?.linkedPlaybooks?.length > 0;
 
                     return (
                       <button
                         key={sc.id}
                         onClick={() => setSelectedCategoryId(sc.id)}
-                        className="text-left p-5 border hover:shadow-md transition-all group"
+                        className="text-left p-5 border rounded-lg hover:shadow-md transition-all group"
                         style={{
                           borderColor: proximity >= 55 ? `${barColor}40` : '#E8E4DC',
-                          background: proximity >= 55 ? `${barColor}05` : '#fff',
+                          background:  proximity >= 55 ? `${barColor}04` : '#fff',
                         }}
                       >
-                        {/* Header */}
                         <div className="flex items-start justify-between mb-3">
                           <div>
                             <p className="text-sm font-bold" style={{ color: NAVY }}>{sc.name}</p>
@@ -667,41 +914,25 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                               {triggers.length} rule{triggers.length !== 1 ? 's' : ''} · {sc.dataPoints.length} data pts
                             </p>
                           </div>
-                          <span className="text-[8px] font-black uppercase tracking-wider px-2 py-1"
-                            style={{ background: lbl.bg, color: lbl.color }}>
-                            {lbl.label}
-                          </span>
+                          <span className="text-[8px] font-black uppercase tracking-wider px-2 py-1 rounded"
+                            style={{ background: lbl.bg, color: lbl.color }}>{lbl.label}</span>
                         </div>
-
-                        {/* Proximity bar */}
-                        <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-2">
-                          <div className="h-full rounded-full transition-all"
-                            style={{ width: `${proximity}%`, background: barColor }} />
+                        <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                          <div className="h-full rounded-full" style={{ width: `${proximity}%`, background: barColor }} />
                         </div>
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-[9px] text-gray-400">0%</span>
                           <span className="text-[10px] font-black" style={{ color: barColor }}>{proximity}% proximity</span>
                           <span className="text-[9px] text-gray-400">100%</span>
                         </div>
-
-                        {/* Top trigger preview */}
                         {topTrigger && (
-                          <div className="text-[10px] text-gray-500 border-t border-[#F0EDE8] pt-2.5">
-                            <span className="font-bold" style={{ color: NAVY }}>Highest risk: </span>
-                            {topTrigger.name}
+                          <div className="text-[10px] text-gray-500 border-t border-[#F0EDE8] pt-2.5 flex items-center gap-1.5">
+                            <Bell className="w-3 h-3 flex-shrink-0" style={{ color: barColor }} />
+                            <span className="truncate">{topTrigger.name}</span>
                           </div>
                         )}
-
-                        {/* Pre-activate nudge */}
-                        {preActivate && (
-                          <div className="mt-2 flex items-center gap-1.5 text-[9px]" style={{ color: GOLD }}>
-                            <BookOpen className="w-3 h-3" />
-                            <span className="font-bold">Playbook pre-activation recommended</span>
-                          </div>
-                        )}
-
                         <div className="flex items-center justify-end mt-2">
-                          <span className="text-[9px] font-bold uppercase tracking-wider group-hover:gap-2 transition-all flex items-center gap-1"
+                          <span className="text-[9px] font-bold uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all"
                             style={{ color: barColor }}>
                             Drill in <ChevronRight className="w-3 h-3" />
                           </span>
@@ -716,7 +947,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
         </div>
       </div>
 
-      {/* Wizard */}
+      {/* ── Wizard ─────────────────────────────────────────────────────────── */}
       <TriggerConfigurationWizard
         isOpen={isWizardOpen}
         onClose={() => { setIsWizardOpen(false); setEditTriggerData(null); }}
@@ -731,65 +962,6 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
         }}
         editTrigger={editTriggerData}
       />
-
-      {/* Full detail sheet */}
-      <Sheet open={!!viewTrigger} onOpenChange={open => { if (!open) setViewTrigger(null); }}>
-        <SheetContent className="w-full sm:max-w-xl overflow-y-auto" style={{ borderLeft: `3px solid ${GOLD}` }}>
-          {viewTrigger && (() => {
-            const dpId     = viewTrigger.conditions?.dataPointId || viewTrigger.conditions?.field;
-            const dpLookup = dpId ? findDataPoint(dpId) : null;
-            const dp       = dpLookup?.dp;
-            return (
-              <>
-                <SheetHeader className="mb-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div style={{ width: 16, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Alert Rule Detail</span>
-                  </div>
-                  <SheetTitle style={{ ...CG, fontSize: '1.4rem', fontWeight: 700, color: NAVY }}>{viewTrigger.name}</SheetTitle>
-                </SheetHeader>
-                <div className="space-y-4">
-                  {dp && (
-                    <div className="p-4 border border-[#E8E4DC] bg-[#F8F7F4] space-y-3">
-                      <div>
-                        <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Watching</p>
-                        <p className="text-sm font-bold" style={{ color: NAVY }}>{dp.name}</p>
-                        <p className="text-xs text-gray-500 mt-1">{dp.description}</p>
-                      </div>
-                      {dp.sources?.length > 0 && (
-                        <div className="pt-3 border-t border-[#E8E4DC]">
-                          <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Monitored From</p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {dp.sources.map((src: string) => (
-                              <span key={src} className="text-[10px] font-semibold px-2.5 py-1"
-                                style={{ background: 'rgba(43,138,110,0.08)', color: TEAL, border: '1px solid rgba(43,138,110,0.25)' }}>
-                                {sourceLabel(src)}
-                              </span>
-                            ))}
-                          </div>
-                          <p className="text-[9px] text-gray-400 mt-2">{dp.sources.length} data {dp.sources.length === 1 ? 'source' : 'sources'} feeding this signal</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  <div className="p-4" style={{ borderLeft: `2px solid ${TEAL}`, background: 'rgba(43,138,110,0.04)' }}>
-                    <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-1">Alert Condition</p>
-                    <p className="text-sm font-bold" style={{ color: NAVY }}>
-                      Fires when {formatOp(viewTrigger.conditions?.operator, viewTrigger.conditions?.value)}
-                    </p>
-                  </div>
-                  {isAuthenticated && (
-                    <Button className="w-full" style={{ background: NAVY, color: '#fff', fontWeight: 700 }}
-                      onClick={() => { setViewTrigger(null); setEditTriggerData(viewTrigger); setIsWizardOpen(true); }}>
-                      <Settings className="w-4 h-4 mr-2" /> Edit This Rule
-                    </Button>
-                  )}
-                </div>
-              </>
-            );
-          })()}
-        </SheetContent>
-      </Sheet>
     </PageLayout>
   );
 }
