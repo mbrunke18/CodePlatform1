@@ -223,13 +223,28 @@ export async function loadConfiguredTriggers(organizationId: string): Promise<Co
 }
 
 // ─── Evaluate a single signal against a single configured trigger ─────────────
+//
+// AND LOGIC GATE: Every configured condition must have at least a field-level
+// keyword match in the signal text. If any condition has zero field-level
+// evidence, the trigger does NOT fire — regardless of the total score.
+// This prevents a single strong keyword from masking unmet conditions.
+
+interface ScoringResult {
+  score: number;
+  matchedTerms: string[];
+  conditionsMet: number;
+  totalConditions: number;
+  dataPoints: string[];           // human-readable labels for each condition hit
+  allConditionsMet: boolean;      // the AND gate — all conditions must pass
+}
 
 function scoreSignalAgainstConfiguredTrigger(
   signal: AnalyzedSignal,
   trigger: ConfiguredTrigger
-): { score: number; matchedTerms: string[] } {
+): ScoringResult {
   const text = (signal.description + ' ' + signal.signalType + ' ' + signal.category).toLowerCase();
   const matchedTerms: string[] = [];
+  const dataPoints: string[] = [];
   let score = 0;
 
   // Normalize conditions into an array for uniform processing
@@ -237,60 +252,70 @@ function scoreSignalAgainstConfiguredTrigger(
     ? trigger.conditions
     : [trigger.conditions];
 
+  let conditionsMet = 0;
+
   for (const condition of conditions) {
     const { field, operator, value } = condition;
+    let conditionHit = false;
 
-    // ── 1. Field-level keyword match ─────────────────────────────────────────
+    // ── 1. Field-level keyword match (primary evidence source) ────────────────
     const fieldWords = FIELD_KEYWORDS[field] || [];
     const fieldMatches = fieldWords.filter(kw => text.includes(kw.toLowerCase()));
     if (fieldMatches.length > 0) {
       score += 30 + Math.min(fieldMatches.length * 5, 20);
       matchedTerms.push(...fieldMatches);
+      conditionHit = true;
+
+      // Human-readable data point label
+      const fieldLabel = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      dataPoints.push(`${fieldLabel}: matched "${fieldMatches.slice(0, 2).join('", "')}"`);
     }
 
-    // ── 2. Category-level fallback if no field match ──────────────────────────
-    if (fieldMatches.length === 0) {
-      const catWords = CATEGORY_KEYWORDS[trigger.category] || [];
-      const catMatches = catWords.filter(kw => text.includes(kw.toLowerCase()));
-      if (catMatches.length > 0) {
-        score += 15 + Math.min(catMatches.length * 3, 15);
-        matchedTerms.push(...catMatches);
+    // ── 2. Operator-specific directional evidence (only if field hit) ─────────
+    if (conditionHit) {
+      const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
+      const opMatches = opWords.filter(kw => text.includes(kw.toLowerCase()));
+      if (opMatches.length > 0) {
+        score += 8 + opMatches.length * 3;
+        matchedTerms.push(...opMatches);
+        dataPoints[dataPoints.length - 1] += ` (${operator}: "${opMatches[0]}")`;
       }
-    }
 
-    // ── 3. Operator-specific directional boost ────────────────────────────────
-    const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
-    const opMatches = opWords.filter(kw => text.includes(kw.toLowerCase()));
-    if (opMatches.length > 0) {
-      score += 10 + opMatches.length * 4;
-      matchedTerms.push(...opMatches);
-    }
+      // ── 3. Explicit condition value in text ───────────────────────────────
+      if (typeof value === 'string' && value !== 'any' && text.includes(value.toLowerCase())) {
+        score += 6;
+        matchedTerms.push(value as string);
+      }
 
-    // ── 4. Explicit condition value in text ───────────────────────────────────
-    // If the configured value is a recognizable term (e.g., the field name itself)
-    if (typeof value === 'string' && value !== 'any' && text.includes(value.toLowerCase())) {
-      score += 8;
-      matchedTerms.push(value as string);
+      conditionsMet++;
     }
+    // NOTE: No category-level fallback — that was the source of false positives.
+    // A condition is either met by its specific field keywords or it is not met.
   }
 
-  // ── 5. Signal impact multiplier ───────────────────────────────────────────
-  if (signal.impact === 'critical') score += 12;
-  else if (signal.impact === 'high') score += 7;
-  else if (signal.impact === 'medium') score += 3;
+  // ── AND GATE: all conditions must be met ──────────────────────────────────
+  const allConditionsMet = conditionsMet === conditions.length;
 
-  // ── 6. Signal confidence contribution ────────────────────────────────────
-  // The RSS/AI signal confidence (0-100) contributes proportionally
-  score += Math.max(0, (signal.confidence - 50) * 0.25);
+  // ── Signal impact contributes only when core conditions are met ───────────
+  if (allConditionsMet) {
+    if (signal.impact === 'critical') score += 12;
+    else if (signal.impact === 'high') score += 7;
+    else if (signal.impact === 'medium') score += 3;
 
-  // ── 7. Source credibility boost ──────────────────────────────────────────
-  if (signal.source.includes('SEC') || signal.source.includes('Reuters') || signal.source.includes('Bloomberg')) {
-    score += 8;
+    score += Math.max(0, (signal.confidence - 50) * 0.25);
+
+    if (signal.source.includes('SEC') || signal.source.includes('Reuters') || signal.source.includes('Bloomberg')) {
+      score += 8;
+    }
   }
 
   return {
-    score: Math.min(Math.round(score), 97),
+    score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
     matchedTerms: [...new Set(matchedTerms)],
+    conditionsMet,
+    totalConditions: conditions.length,
+    dataPoints,
+    allConditionsMet,
   };
 }
 
@@ -299,8 +324,7 @@ function scoreSignalAgainstConfiguredTrigger(
 function buildDetection(
   trigger: ConfiguredTrigger,
   signal: AnalyzedSignal,
-  score: number,
-  matchedTerms: string[]
+  result: ScoringResult
 ): DetectedTrigger {
   // Map the org's configured recommended playbooks to the detection
   // First playbook = primary AI recommendation (what was staged for this exact situation)
@@ -310,10 +334,14 @@ function buildDetection(
   return {
     triggerName: trigger.name,
     triggerDomain: categoryToDomain(trigger.category),
-    confidenceScore: score,
+    confidenceScore: result.score,
     recommendedPlaybook: primaryPlaybook || 'Playbook Not Configured',
     alternatePlaybooks: alternates.slice(0, 2),
-    matchedKeywords: matchedTerms,
+    matchedKeywords: result.matchedTerms,
+    conditionsMet: result.conditionsMet,
+    totalConditions: result.totalConditions,
+    dataPoints: result.dataPoints,
+    engine: 'configured',
   };
 }
 
@@ -373,22 +401,31 @@ export async function evaluateSignalsWithOrgTriggers(
     const signalDetections: DetectedTrigger[] = [];
 
     for (const trigger of configuredTriggers) {
-      const { score, matchedTerms } = scoreSignalAgainstConfiguredTrigger(signal, trigger);
+      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
 
-      // Zero score = no relevant keywords found at all → skip
-      if (score === 0) continue;
+      // Zero score = AND gate failed (not all conditions met) or no field matches → skip
+      if (result.score === 0) {
+        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+          console.log(
+            `[TriggerEvaluationEngine] ✗ "${trigger.name}" — AND gate failed: ` +
+            `${result.conditionsMet}/${result.totalConditions} conditions met — will not fire`
+          );
+        }
+        continue;
+      }
 
       // The confidence floor is set by the customer's configured alertThreshold
       const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
 
-      if (score >= requiredConfidence) {
-        const detection = buildDetection(trigger, signal, score, matchedTerms);
+      if (result.score >= requiredConfidence) {
+        const detection = buildDetection(trigger, signal, result);
         signalDetections.push(detection);
 
         console.log(
-          `[TriggerEvaluationEngine] ✓ "${trigger.name}" fired at ${score}% ` +
-          `(threshold: ${requiredConfidence}% for alert level "${trigger.alertThreshold}") — ` +
-          `playbook: "${detection.recommendedPlaybook}"`
+          `[TriggerEvaluationEngine] ✓ "${trigger.name}" fired at ${result.score}% ` +
+          `(threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") — ` +
+          `ALL ${result.totalConditions} condition(s) met — ` +
+          `data points: [${result.dataPoints.join(' | ')}]`
         );
       }
     }

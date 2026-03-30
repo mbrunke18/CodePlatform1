@@ -6454,6 +6454,7 @@ export const triggerDetections = pgTable('trigger_detections', {
   status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
   notificationSent: boolean('notification_sent').default(false),
   detectedAt: timestamp('detected_at').defaultNow(),
+  matchedEvidence: jsonb('matched_evidence'), // { conditionsMet: number, totalConditions: number, dataPoints: string[], matchedKeywords: string[], engine: string }
 });
 
 export const insertTriggerDetectionSchema = createInsertSchema(triggerDetections).omit({ id: true, detectedAt: true });

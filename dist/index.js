@@ -6113,7 +6113,9 @@ var init_schema = __esm({
       status: varchar("status", { length: 50 }).default("detected"),
       // detected | notified | acknowledged | dismissed
       notificationSent: boolean("notification_sent").default(false),
-      detectedAt: timestamp2("detected_at").defaultNow()
+      detectedAt: timestamp2("detected_at").defaultNow(),
+      matchedEvidence: jsonb("matched_evidence")
+      // { conditionsMet: number, totalConditions: number, dataPoints: string[], matchedKeywords: string[], engine: string }
     });
     insertTriggerDetectionSchema = createInsertSchema2(triggerDetections).omit({ id: true, detectedAt: true });
   }
@@ -23875,56 +23877,69 @@ async function loadConfiguredTriggers(organizationId) {
 function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
   const text3 = (signal.description + " " + signal.signalType + " " + signal.category).toLowerCase();
   const matchedTerms = [];
+  const dataPoints = [];
   let score = 0;
   const conditions = Array.isArray(trigger.conditions) ? trigger.conditions : [trigger.conditions];
+  let conditionsMet = 0;
   for (const condition of conditions) {
     const { field, operator, value } = condition;
+    let conditionHit = false;
     const fieldWords = FIELD_KEYWORDS[field] || [];
     const fieldMatches = fieldWords.filter((kw) => text3.includes(kw.toLowerCase()));
     if (fieldMatches.length > 0) {
       score += 30 + Math.min(fieldMatches.length * 5, 20);
       matchedTerms.push(...fieldMatches);
+      conditionHit = true;
+      const fieldLabel = field.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+      dataPoints.push(`${fieldLabel}: matched "${fieldMatches.slice(0, 2).join('", "')}"`);
     }
-    if (fieldMatches.length === 0) {
-      const catWords = CATEGORY_KEYWORDS[trigger.category] || [];
-      const catMatches = catWords.filter((kw) => text3.includes(kw.toLowerCase()));
-      if (catMatches.length > 0) {
-        score += 15 + Math.min(catMatches.length * 3, 15);
-        matchedTerms.push(...catMatches);
+    if (conditionHit) {
+      const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
+      const opMatches = opWords.filter((kw) => text3.includes(kw.toLowerCase()));
+      if (opMatches.length > 0) {
+        score += 8 + opMatches.length * 3;
+        matchedTerms.push(...opMatches);
+        dataPoints[dataPoints.length - 1] += ` (${operator}: "${opMatches[0]}")`;
       }
-    }
-    const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
-    const opMatches = opWords.filter((kw) => text3.includes(kw.toLowerCase()));
-    if (opMatches.length > 0) {
-      score += 10 + opMatches.length * 4;
-      matchedTerms.push(...opMatches);
-    }
-    if (typeof value === "string" && value !== "any" && text3.includes(value.toLowerCase())) {
-      score += 8;
-      matchedTerms.push(value);
+      if (typeof value === "string" && value !== "any" && text3.includes(value.toLowerCase())) {
+        score += 6;
+        matchedTerms.push(value);
+      }
+      conditionsMet++;
     }
   }
-  if (signal.impact === "critical") score += 12;
-  else if (signal.impact === "high") score += 7;
-  else if (signal.impact === "medium") score += 3;
-  score += Math.max(0, (signal.confidence - 50) * 0.25);
-  if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) {
-    score += 8;
+  const allConditionsMet = conditionsMet === conditions.length;
+  if (allConditionsMet) {
+    if (signal.impact === "critical") score += 12;
+    else if (signal.impact === "high") score += 7;
+    else if (signal.impact === "medium") score += 3;
+    score += Math.max(0, (signal.confidence - 50) * 0.25);
+    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) {
+      score += 8;
+    }
   }
   return {
-    score: Math.min(Math.round(score), 97),
-    matchedTerms: [...new Set(matchedTerms)]
+    score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
+    matchedTerms: [...new Set(matchedTerms)],
+    conditionsMet,
+    totalConditions: conditions.length,
+    dataPoints,
+    allConditionsMet
   };
 }
-function buildDetection(trigger, signal, score, matchedTerms) {
+function buildDetection(trigger, signal, result) {
   const [primaryPlaybook, ...alternates] = trigger.recommendedPlaybooks;
   return {
     triggerName: trigger.name,
     triggerDomain: categoryToDomain(trigger.category),
-    confidenceScore: score,
+    confidenceScore: result.score,
     recommendedPlaybook: primaryPlaybook || "Playbook Not Configured",
     alternatePlaybooks: alternates.slice(0, 2),
-    matchedKeywords: matchedTerms
+    matchedKeywords: result.matchedTerms,
+    conditionsMet: result.conditionsMet,
+    totalConditions: result.totalConditions,
+    dataPoints: result.dataPoints,
+    engine: "configured"
   };
 }
 function categoryToDomain(category) {
@@ -23961,14 +23976,21 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
   for (const signal of signals) {
     const signalDetections = [];
     for (const trigger of configuredTriggers) {
-      const { score, matchedTerms } = scoreSignalAgainstConfiguredTrigger(signal, trigger);
-      if (score === 0) continue;
+      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
+      if (result.score === 0) {
+        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+          console.log(
+            `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 AND gate failed: ${result.conditionsMet}/${result.totalConditions} conditions met \u2014 will not fire`
+          );
+        }
+        continue;
+      }
       const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
-      if (score >= requiredConfidence) {
-        const detection = buildDetection(trigger, signal, score, matchedTerms);
+      if (result.score >= requiredConfidence) {
+        const detection = buildDetection(trigger, signal, result);
         signalDetections.push(detection);
         console.log(
-          `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${score}% (threshold: ${requiredConfidence}% for alert level "${trigger.alertThreshold}") \u2014 playbook: "${detection.recommendedPlaybook}"`
+          `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${result.score}% (threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") \u2014 ALL ${result.totalConditions} condition(s) met \u2014 data points: [${result.dataPoints.join(" | ")}]`
         );
       }
     }
@@ -23992,7 +24014,7 @@ async function getOrgTriggerSummary(organizationId) {
     triggerNames: triggers.map((t) => t.name)
   };
 }
-var THRESHOLD_CONFIDENCE_FLOOR, FIELD_KEYWORDS, CATEGORY_KEYWORDS, OPERATOR_SIGNAL_WORDS;
+var THRESHOLD_CONFIDENCE_FLOOR, FIELD_KEYWORDS, OPERATOR_SIGNAL_WORDS;
 var init_TriggerEvaluationEngine = __esm({
   "server/services/TriggerEvaluationEngine.ts"() {
     "use strict";
@@ -24049,25 +24071,6 @@ var init_TriggerEvaluationEngine = __esm({
       // ESG
       esg_controversy: ["ESG", "greenwashing", "environmental violation", "emissions", "climate", "sustainability", "carbon", "DEI", "social responsibility"]
     };
-    CATEGORY_KEYWORDS = {
-      competitive: ["competitor", "rival", "competition", "market entry", "competitive threat", "disrupt"],
-      market: ["market", "industry", "sector", "demand", "consumer", "economic"],
-      financial: ["financial", "earnings", "revenue", "profit", "fiscal", "stock", "shares"],
-      regulatory: ["regulatory", "compliance", "enforcement", "SEC", "FTC", "DOJ", "government", "legislation"],
-      supplychain: ["supply chain", "supplier", "logistics", "inventory", "manufacturing", "operations"],
-      talent: ["talent", "executive", "employee", "workforce", "HR", "hiring", "layoff"],
-      technology: ["technology", "AI", "digital", "platform", "software", "cyber", "data"],
-      cyber: ["cyber", "breach", "hack", "ransomware", "security", "data leak", "vulnerability"],
-      media: ["media", "press", "news", "coverage", "publicity", "PR", "brand"],
-      customer: ["customer", "consumer", "client", "user", "buyer", "market"],
-      geopolitical: ["geopolitical", "trade", "sanction", "tariff", "government", "political", "war", "conflict"],
-      economic: ["economic", "GDP", "inflation", "recession", "interest rate", "federal reserve"],
-      partnership: ["partnership", "alliance", "joint venture", "collaboration", "strategic partner"],
-      execution: ["execution", "operational", "performance", "delivery", "project", "initiative"],
-      behavior: ["behavior", "trend", "pattern", "consumer behavior", "shift", "change"],
-      innovation: ["innovation", "R&D", "patent", "breakthrough", "new technology", "invention"],
-      esg: ["ESG", "sustainability", "climate", "carbon", "emissions", "diversity", "governance"]
-    };
     OPERATOR_SIGNAL_WORDS = {
       spike: ["surged", "spiked", "jumped", "soared", "increased sharply", "rose dramatically", "rapid increase", "dramatic rise"],
       drop: ["fell", "dropped", "plunged", "declined", "decreased sharply", "tumbled", "slumped", "steep decline"],
@@ -24116,11 +24119,12 @@ function scoreSignalAgainstPattern(signal, pattern) {
 }
 function evaluateSignal(signal) {
   const detections = [];
-  const CONFIDENCE_THRESHOLD = 72;
+  const CONFIDENCE_THRESHOLD = 78;
+  const MIN_KEYWORD_MATCHES = 3;
   for (const pattern of TRIGGER_PATTERNS) {
     const text3 = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
-    if (matchedKeywords.length === 0) continue;
+    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore >= CONFIDENCE_THRESHOLD) {
       detections.push({
@@ -24129,7 +24133,11 @@ function evaluateSignal(signal) {
         confidenceScore,
         recommendedPlaybook: pattern.playbookName,
         alternatePlaybooks: pattern.alternatePlaybooks,
-        matchedKeywords
+        matchedKeywords,
+        conditionsMet: matchedKeywords.length,
+        totalConditions: pattern.keywords.length,
+        dataPoints: matchedKeywords.map((kw) => `Keyword signal: "${kw}"`),
+        engine: "default"
       });
     }
   }
@@ -24181,8 +24189,23 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
               </td>
             </tr>` : ""}
           </table>
+          ${detection.dataPoints && detection.dataPoints.length > 0 ? `
+          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">
+              Evidence Trail \u2014 Data Points That Fired This Trigger
+              <span style="margin-left:8px;background:#2B8A6E;color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;">${detection.conditionsMet ?? detection.dataPoints.length}/${detection.totalConditions ?? detection.dataPoints.length} CONDITIONS MET</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              ${detection.dataPoints.map((dp, i) => `
+                <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:#fff;border-radius:4px;border-left:3px solid #2B8A6E;">
+                  <span style="color:#2B8A6E;font-weight:700;font-size:11px;margin-top:1px;">${i + 1}</span>
+                  <span style="color:#0A0F2E;font-size:12px;line-height:1.4;">${dp}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>` : ""}
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Signal Detected</div>
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
             <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
           </div>
           <div style="text-align:center;margin-bottom:12px;">
@@ -24345,7 +24368,14 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         recommendedPlaybook: detection.recommendedPlaybook,
         alternatePlaybooks: detection.alternatePlaybooks,
         status: "detected",
-        notificationSent: false
+        notificationSent: false,
+        matchedEvidence: {
+          engine,
+          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
+          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
+          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
+          matchedKeywords: detection.matchedKeywords
+        }
       });
       console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === "configured" ? "customer-configured" : "default-pattern"}]`);
       try {

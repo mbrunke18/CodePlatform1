@@ -28,6 +28,14 @@ const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
 const TEAL = '#2B8A6E';
 
+interface MatchedEvidence {
+  engine?: string;
+  conditionsMet?: number;
+  totalConditions?: number;
+  dataPoints?: string[];
+  matchedKeywords?: string[];
+}
+
 interface Detection {
   id: number;
   triggerName: string;
@@ -40,6 +48,7 @@ interface Detection {
   status: string;
   notificationSent: boolean;
   detectedAt: string;
+  matchedEvidence?: MatchedEvidence;
 }
 
 interface StakeholderContact {
@@ -276,6 +285,38 @@ export default function LiveDetectionFeed() {
                             <span style={{ color: '#999', fontSize: 12 }}>{timeAgo(detection.detectedAt)}</span>
                           </div>
                         </div>
+
+                        {/* Evidence trail — which data points fired this trigger */}
+                        {detection.matchedEvidence && (detection.matchedEvidence.dataPoints?.length ?? 0) > 0 && (
+                          <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', borderRadius: 8, padding: '12px 14px', marginBottom: 12 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                              <span style={{ color: NAVY, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Evidence Trail</span>
+                              <span style={{
+                                background: TEAL, color: '#fff', fontSize: 9, fontWeight: 700,
+                                padding: '2px 7px', borderRadius: 3, letterSpacing: 0.5,
+                              }}>
+                                {detection.matchedEvidence.conditionsMet ?? detection.matchedEvidence.dataPoints?.length}/{detection.matchedEvidence.totalConditions ?? detection.matchedEvidence.dataPoints?.length} DATA POINTS MET
+                              </span>
+                              {detection.matchedEvidence.engine && (
+                                <span style={{
+                                  background: detection.matchedEvidence.engine === 'configured' ? '#C9A84C20' : '#0A0F2E10',
+                                  color: detection.matchedEvidence.engine === 'configured' ? '#92681A' : '#555',
+                                  fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 3, textTransform: 'uppercase',
+                                }}>
+                                  {detection.matchedEvidence.engine === 'configured' ? 'Your Triggers' : 'Platform Patterns'}
+                                </span>
+                              )}
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                              {detection.matchedEvidence.dataPoints!.map((dp, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '6px 10px', background: '#fff', borderRadius: 4, borderLeft: `3px solid ${TEAL}` }}>
+                                  <span style={{ color: TEAL, fontWeight: 700, fontSize: 11, minWidth: 16, marginTop: 1 }}>{i + 1}</span>
+                                  <span style={{ color: '#333', fontSize: 12, lineHeight: 1.4 }}>{dp}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
 
                         <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 4, padding: '10px 14px', fontSize: 13, color: NAVY }}>
                           <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Playbook: </span>

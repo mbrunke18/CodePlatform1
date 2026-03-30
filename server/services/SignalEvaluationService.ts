@@ -195,6 +195,11 @@ export interface DetectedTrigger {
   recommendedPlaybook: string;      // primary — AI's top recommendation
   alternatePlaybooks: string[];     // secondary options for approver to choose from
   matchedKeywords: string[];
+  // Evidence trail — which specific data points caused this trigger to fire
+  conditionsMet?: number;           // how many configured conditions were satisfied
+  totalConditions?: number;         // total configured conditions that were evaluated
+  dataPoints?: string[];            // human-readable labels of the matched data points
+  engine?: 'configured' | 'default';
 }
 
 export interface AnalyzedSignal {
@@ -232,13 +237,19 @@ function scoreSignalAgainstPattern(signal: AnalyzedSignal, pattern: TriggerPatte
 
 export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
-  const CONFIDENCE_THRESHOLD = 72; // Must clear this to count as a real detection
+  const CONFIDENCE_THRESHOLD = 78; // Raised — must be meaningfully above the base confidence floor
+
+  // Minimum keyword matches required before a default-pattern trigger can fire.
+  // This prevents a single keyword coincidence from triggering an alert.
+  // A pattern with 15 keywords needs 3 matches = 20% density minimum.
+  const MIN_KEYWORD_MATCHES = 3;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
 
-    if (matchedKeywords.length === 0) continue;
+    // Require a meaningful density — not just any keyword
+    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
 
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore >= CONFIDENCE_THRESHOLD) {
@@ -249,6 +260,10 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
         recommendedPlaybook: pattern.playbookName,
         alternatePlaybooks: pattern.alternatePlaybooks,
         matchedKeywords,
+        conditionsMet: matchedKeywords.length,
+        totalConditions: pattern.keywords.length,
+        dataPoints: matchedKeywords.map(kw => `Keyword signal: "${kw}"`),
+        engine: 'default',
       });
     }
   }
@@ -312,8 +327,23 @@ async function sendDetectionEmail(
               </td>
             </tr>` : ''}
           </table>
+          ${(detection.dataPoints && detection.dataPoints.length > 0) ? `
+          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">
+              Evidence Trail — Data Points That Fired This Trigger
+              <span style="margin-left:8px;background:#2B8A6E;color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;">${detection.conditionsMet ?? detection.dataPoints.length}/${detection.totalConditions ?? detection.dataPoints.length} CONDITIONS MET</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              ${detection.dataPoints.map((dp, i) => `
+                <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:#fff;border-radius:4px;border-left:3px solid #2B8A6E;">
+                  <span style="color:#2B8A6E;font-weight:700;font-size:11px;margin-top:1px;">${i + 1}</span>
+                  <span style="color:#0A0F2E;font-size:12px;line-height:1.4;">${dp}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>` : ''}
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Signal Detected</div>
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
             <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? '…' : ''}</div>
           </div>
           <div style="text-align:center;margin-bottom:12px;">
@@ -518,7 +548,7 @@ export async function evaluateAndPersistSignals(
         console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);
       }
 
-      // Persist the detection
+      // Persist the detection with full evidence trail
       await db.insert(triggerDetections).values({
         organizationId: organizationId,
         triggerName: detection.triggerName,
@@ -531,7 +561,14 @@ export async function evaluateAndPersistSignals(
         alternatePlaybooks: detection.alternatePlaybooks,
         status: 'detected',
         notificationSent: false,
-      });
+        matchedEvidence: {
+          engine: engine,
+          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
+          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
+          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map(kw => `Signal matched: "${kw}"`),
+          matchedKeywords: detection.matchedKeywords,
+        },
+      } as any);
 
       console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === 'configured' ? 'customer-configured' : 'default-pattern'}]`);
 
