@@ -221,104 +221,245 @@ export default function StandardNav() {
     </button>
   );
 
-  const renderNavItem = (link: NavLink) => link.featured ? (
-    <DropdownMenuItem
-      key={link.path + link.label}
-      onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-3 cursor-pointer rounded-xl mx-1 mb-1.5 focus:outline-none group"
+
+  // ── Shared mega-menu item renderer ──────────────────────────────────────────
+  const megaItem = (
+    { path, icon: Icon, label, sub, featured }: { path: string; icon: any; label: string; sub: string; featured?: boolean },
+    colBg: 'light' | 'dark' = 'light',
+  ) => (
+    <div
+      key={path}
+      onClick={() => navigateTo(path)}
       style={{
-        background: "linear-gradient(135deg,rgba(201,168,76,0.10),rgba(43,138,110,0.06))",
-        border: "1px solid rgba(201,168,76,0.30)",
-        transition: 'all 0.15s',
+        display: 'flex', gap: 11, alignItems: 'flex-start', padding: '10px 11px', marginBottom: 5, borderRadius: 10,
+        cursor: 'pointer', transition: 'all 0.14s',
+        background: featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent',
+        border: featured ? '1px solid rgba(201,168,76,0.28)' : '1px solid transparent',
       }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg,rgba(201,168,76,0.18),rgba(43,138,110,0.12))";
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.55)";
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = featured
+          ? 'linear-gradient(135deg,rgba(201,168,76,0.2),rgba(43,138,110,0.13))'
+          : colBg === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(10,15,46,0.05)';
+        el.style.borderColor = featured ? 'rgba(201,168,76,0.5)' : 'transparent';
       }}
       onMouseLeave={e => {
-        (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg,rgba(201,168,76,0.10),rgba(43,138,110,0.06))";
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.30)";
+        const el = e.currentTarget as HTMLElement;
+        el.style.background = featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent';
+        el.style.borderColor = featured ? 'rgba(201,168,76,0.28)' : 'transparent';
       }}
-      data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
     >
-      <div className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "rgba(201,168,76,0.15)" }}>
-        <link.icon className="h-4 w-4" style={{ color: GOLD }} />
+      <div style={{
+        width: 32, height: 32, flexShrink: 0, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: featured ? GOLD : colBg === 'dark' ? 'rgba(255,255,255,0.10)' : 'rgba(43,138,110,0.10)',
+      }}>
+        <Icon size={14} style={{ color: featured ? NAVY : colBg === 'dark' ? 'rgba(255,255,255,0.75)' : TEAL }} />
       </div>
-      <div className="flex-1 min-w-0">
-        <div className="font-bold text-sm leading-tight" style={{ color: NAVY }}>{link.label}</div>
-        <span className="text-xs leading-snug block mt-0.5" style={{ color: "#4B5563" }}>{link.description}</span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p style={{ fontSize: 12, fontWeight: 700, color: colBg === 'dark' ? '#fff' : NAVY, margin: '0 0 2px', lineHeight: 1.3 }}>{label}</p>
+        <p style={{ fontSize: 10.5, color: colBg === 'dark' ? 'rgba(255,255,255,0.45)' : '#6B7280', margin: 0, lineHeight: 1.45 }}>{sub}</p>
       </div>
-      <div className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ml-1" style={{ background: GOLD }}>
-        <svg className="w-3 h-3" fill="none" viewBox="0 0 12 12" style={{ color: NAVY }}>
-          <path d="M2.5 6h7m-3-3 3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </div>
-    </DropdownMenuItem>
-  ) : (
-    <DropdownMenuItem
-      key={link.path + link.label}
-      onClick={() => navigateTo(link.path)}
-      className="flex items-center gap-3 py-2.5 cursor-pointer rounded-lg mx-1 focus:outline-none"
-      style={{ transition: 'background 0.12s' }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.06)'; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = ''; }}
-      data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-    >
-      <div className="flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center" style={{ background: 'rgba(43,138,110,0.08)' }}>
-        <link.icon className="h-3.5 w-3.5" style={{ color: TEAL }} />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="font-semibold text-sm leading-tight" style={{ color: NAVY }}>{link.label}</div>
-        <span className="text-xs leading-snug block mt-0.5" style={{ color: "#6B7280" }}>{link.description}</span>
-      </div>
-    </DropdownMenuItem>
+    </div>
   );
 
-  const renderSectionedDropdown = (label: string, sections: NavSection[], highlighted?: boolean) => (
+  const megaColHeading = (text: string, light = false) => (
+    <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.35)' : GOLD, margin: '0 0 10px 2px' }}>
+      {text}
+    </p>
+  );
+
+  const megaShadow = '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)';
+  const megaBorder = '1px solid rgba(10,15,46,0.14)';
+
+  // ── THE PLATFORM mega-menu ─────────────────────────────────────────────────
+  const renderPlatformDropdown = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {renderDropdownButton(label, highlighted)}
+        {renderDropdownButton("The Platform")}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-[340px] max-h-[80vh] overflow-y-auto shadow-xl rounded-xl p-2"
-        style={{
-          background: '#fff',
-          border: `1px solid rgba(10,15,46,0.12)`,
-          boxShadow: '0 12px 40px rgba(10,15,46,0.15), 0 2px 8px rgba(10,15,46,0.08)',
-        }}
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
-        {sections.map((section, sIdx) => (
-          <div key={section.heading}>
-            {sIdx > 0 && <DropdownMenuSeparator style={{ background: 'rgba(10,15,46,0.08)', margin: '6px 0' }} />}
-            <DropdownMenuLabel
-              className="text-[11px] uppercase tracking-widest font-bold px-3 pt-3 pb-1.5"
-              style={{ color: GOLD }}
-            >
-              {section.heading}
-            </DropdownMenuLabel>
-            {section.links.map(renderNavItem)}
+        {/* Header bar */}
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+            <div>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Old Operating Model</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>Committees. Alignment. Delay.</p>
+            </div>
+            <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
+            <div>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Execution OS</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Playbooks. 12 minutes.</p>
+            </div>
           </div>
-        ))}
+          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+            <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
+            <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
+          </div>
+        </div>
+
+        {/* Two-column body */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+          {/* Left: The Model + Core Capabilities */}
+          <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
+            {megaColHeading("The Operating Model")}
+            {[
+              { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
+              { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
+              { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
+              { path: '/why-execution-os', icon: Shield, label: 'Why Execution OS', sub: 'The 30-day mobilization gap — and how we close it' },
+            ].map(l => megaItem(l))}
+            <div style={{ margin: '10px 0 8px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
+            {megaColHeading("Core Capabilities")}
+            {[
+              { path: '/playbooks', icon: ClipboardList, label: 'Playbook Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
+              { path: '/triggers-management', icon: Zap, label: 'AI Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
+              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '16 signal categories — monitored every 15 minutes' },
+              { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
+            ].map(l => megaItem(l))}
+          </div>
+
+          {/* Right: Inside the Platform + Execute Tools */}
+          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
+            {megaColHeading("Inside the Platform")}
+            {[
+              { path: '/command-center', icon: Compass, label: 'Command Center', sub: 'Strategic operations hub — your primary entry point', featured: true },
+              { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
+              { path: '/situations-hub', icon: Shield, label: 'Situations Hub', sub: 'All 9 domains — readiness, drills & live coordination' },
+              { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
+              { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'AI radar, signals & compound threat synthesis' },
+            ].map(l => megaItem(l))}
+            <div style={{ margin: '10px 0 8px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
+            {megaColHeading("Execute Phase Tools")}
+            {[
+              { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once', featured: true },
+              { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
+              { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a trigger fires' },
+            ].map(l => megaItem(l))}
+          </div>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 
-  const renderFlatDropdown = (label: string, links: NavLink[], highlighted?: boolean) => (
+  // ── EVIDENCE mega-menu ────────────────────────────────────────────────────
+  const renderEvidenceDropdown = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {renderDropdownButton(label, highlighted)}
+        {renderDropdownButton("Evidence")}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="w-[340px] shadow-xl rounded-xl p-2"
-        style={{
-          background: '#fff',
-          border: `1px solid rgba(10,15,46,0.12)`,
-          boxShadow: '0 12px 40px rgba(10,15,46,0.15), 0 2px 8px rgba(10,15,46,0.08)',
-        }}
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
-        {links.map(renderNavItem)}
+        {/* Header bar */}
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
+            <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
+          </div>
+          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+            <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
+            <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
+          </div>
+        </div>
+
+        {/* Two columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+          <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
+            {megaColHeading("The Case for Execution OS")}
+            {[
+              { path: '/why-execution-os', icon: Scale, label: 'Why Execution OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
+              { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
+              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Execution OS' },
+              { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
+            ].map(l => megaItem(l))}
+          </div>
+          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
+            {megaColHeading("Tools & Proof")}
+            {[
+              { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
+              { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
+              { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Accessible entry — full platform, grow as you scale', featured: true },
+              { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how Fortune 1000 teams onboard & scale' },
+            ].map(l => megaItem(l))}
+            <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
+              <div
+                onClick={() => navigateTo('/12-minute-experience')}
+                style={{ background: NAVY, borderRadius: 8, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
+              >
+                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>See It In Action</p>
+                <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Run the 12-Minute Test Drive — no login required →</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  // ── INVESTORS mega-menu ───────────────────────────────────────────────────
+  const renderInvestorsDropdown = () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        {renderDropdownButton("Investors", true)}
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="start"
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+      >
+        {/* Header bar */}
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div>
+            <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
+            <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Execution Infrastructure Enterprises Are Missing</p>
+          </div>
+        </div>
+
+        {/* Two columns */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+          <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
+            {megaColHeading("Investor Materials")}
+            {[
+              { path: '/investor-resources', icon: FileText, label: 'Investor Resources', sub: 'Full materials — frameworks, thesis & deck', featured: true },
+              { path: '/investors', icon: TrendingUp, label: 'Investment Thesis', sub: 'Market opportunity, research validation & ROI case' },
+              { path: '/pitch-deck', icon: Presentation, label: 'Pitch Deck', sub: 'Pre-seed investor presentation' },
+            ].map(l => megaItem(l))}
+          </div>
+          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
+            {megaColHeading("Board & Founder")}
+            {[
+              { path: '/board-briefings', icon: FileText, label: 'Board Briefings', sub: 'Executive-ready board reporting' },
+              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Execution OS', featured: true },
+            ].map(l => megaItem(l))}
+            <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
+              <div
+                onClick={() => navigateTo('/pilot-program')}
+                style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 8, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background = 'linear-gradient(135deg,rgba(201,168,76,0.22),rgba(43,138,110,0.14))';
+                  el.style.borderColor = 'rgba(201,168,76,0.5)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.background = 'linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))';
+                  el.style.borderColor = 'rgba(201,168,76,0.3)';
+                }}
+              >
+                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request a Pilot</p>
+                <p style={{ fontSize: 10.5, color: '#374151', margin: 0, lineHeight: 1.4 }}>Deploy Execution OS inside your portfolio company →</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -491,10 +632,10 @@ export default function StandardNav() {
 
           {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {renderSectionedDropdown("The Platform", platformSections)}
+            {renderPlatformDropdown()}
             {renderExperienceDropdown()}
-            {renderFlatDropdown("Evidence", evidenceLinks)}
-            {renderFlatDropdown("Investors", investorsLinks, true)}
+            {renderEvidenceDropdown()}
+            {renderInvestorsDropdown()}
           </div>
 
           {/* Right: CTAs */}
