@@ -142,8 +142,8 @@ const TOUR_SCENES: Scene[] = [
     type: 'proof',
     duration: 8000,
     title: 'The Results',
-    subtitle: '3,180x Faster Response',
-    narration: 'What traditionally takes 30 days to mobilize, Execution OS coordinates in under 2 minutes. That\'s strategic velocity.',
+    subtitle: '3,600× Execution Head Start',
+    narration: 'What traditionally takes 30 days to mobilize, Execution OS coordinates in 12 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
@@ -482,8 +482,8 @@ export default function ProductTour() {
           <div className="w-24 h-24 mx-auto bg-[#2B8A6E] rounded-none flex items-center justify-center mb-4">
             <Timer className="w-12 h-12 text-white" />
           </div>
-          <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3,180x</p>
-          <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Faster Response</p>
+          <p className="text-5xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
+          <p className="text-[#0A0F2E] font-bold uppercase tracking-widest text-[10px] mt-2">Execution Head Start</p>
         </motion.div>
         <motion.div
           initial={{ y: 50, opacity: 0 }}
