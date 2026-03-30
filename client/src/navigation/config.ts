@@ -141,10 +141,10 @@ export const navigationConfig: NavigationConfig = {
         },
         {
           id: 'war-room',
-          label: 'War Room / Pulse Map',
+          label: 'Mission Control',
           path: '/mission-control',
           icon: '🛡️',
-          description: 'Live pulse visualization of all 20 signal domains'
+          description: 'Authenticated NOC home — live alerts, domain status board, execution log'
         },
         {
           id: 'shadow-simulator',

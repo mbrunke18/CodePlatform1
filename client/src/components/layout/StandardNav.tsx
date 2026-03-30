@@ -34,7 +34,8 @@ function useNavLogoHeight() {
 }
 
 const SEARCH_ITEMS = [
-  { label: 'Command Center', path: '/command-center', category: 'Platform', icon: Compass },
+  { label: 'Mission Control', path: '/mission-control', category: 'Platform', icon: Compass },
+  { label: 'Command Tower', path: '/command-tower', category: 'Platform', icon: Radio },
   { label: 'Execution Workspace', path: '/workspace', category: 'Platform', icon: Layers },
   { label: 'Intelligence Control Center', path: '/intelligence-hub', category: 'Platform', icon: Brain },
   { label: 'AI Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
@@ -133,7 +134,8 @@ export default function StandardNav() {
     {
       heading: "Inside the Platform",
       links: [
-        { label: "Command Center", path: "/command-center", icon: Compass, description: "Strategic operations hub — your primary entry point", featured: true },
+        { label: "Mission Control", path: "/mission-control", icon: Compass, description: "NOC-style executive hub — live alerts, domain board, activation", featured: true },
+        { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Public NOC wall display — live triggers, domain status, signal ticker", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
@@ -326,7 +328,7 @@ export default function StandardNav() {
           <div style={{ padding: '12px 16px 12px 12px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("Inside the Platform")}
             {[
-              { path: '/command-center', icon: Compass, label: 'Command Center', sub: 'Strategic operations hub — your primary entry point', featured: true },
+              { path: '/mission-control', icon: Compass, label: 'Mission Control', sub: 'NOC-style executive hub — live alerts, domain board, activation', featured: true },
               { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
               { path: '/situations-hub', icon: Shield, label: 'Situations Hub', sub: 'All 9 domains — readiness, drills & live coordination' },
               { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
@@ -335,7 +337,8 @@ export default function StandardNav() {
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}
             {[
-              { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once', featured: true },
+              { path: '/command-tower', icon: Radio, label: 'Command Tower', sub: 'Public NOC wall display — live triggers, domain status, signal feed', featured: true },
+              { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once' },
               { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
               { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a trigger fires' },
             ].map(l => megaItem(l))}
