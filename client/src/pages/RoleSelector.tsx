@@ -1,11 +1,11 @@
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import PageLayout from '@/components/layout/PageLayout';
 import {
   Briefcase, DollarSign, Settings, TrendingUp, Server, Shield,
   Users, Scale, Database, FileCheck, Target, ArrowRight, Zap,
-  ChevronRight, AlertTriangle, Clock
+  ChevronRight, AlertTriangle, Clock, Play, Radio, Brain,
+  CheckCircle2, Layers, BookOpen
 } from 'lucide-react';
 
 interface RoleConfig {
@@ -196,7 +196,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             border: `1px solid ${cat.border}`,
             borderTop: `3px solid ${cat.accent}`,
             borderRadius: 12,
-            padding: '22px 22px 18px',
+            padding: '22px 22px 20px',
             cursor: 'pointer',
             transition: 'all 0.18s',
             height: '100%',
@@ -204,12 +204,14 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             flexDirection: 'column',
           }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 32px rgba(10,15,46,0.12), 0 2px 8px rgba(10,15,46,0.08)`;
-            (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+            (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 40px rgba(10,15,46,0.14), 0 2px 10px rgba(10,15,46,0.08)`;
+            (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
+            (e.currentTarget as HTMLElement).style.borderColor = cat.accent;
           }}
           onMouseLeave={e => {
             (e.currentTarget as HTMLElement).style.boxShadow = 'none';
             (e.currentTarget as HTMLElement).style.transform = 'none';
+            (e.currentTarget as HTMLElement).style.borderColor = cat.border;
           }}
         >
           {/* Role header */}
@@ -224,9 +226,14 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               </div>
               <p style={{ fontSize: 11, color: '#6B7280', margin: 0, fontWeight: 500 }}>{config.title}</p>
             </div>
+            {/* Simulation badge */}
+            <div style={{ flexShrink: 0, background: 'rgba(10,15,46,0.05)', border: '1px solid rgba(10,15,46,0.1)', borderRadius: 5, padding: '3px 7px', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Play size={8} style={{ color: NAVY }} />
+              <span style={{ fontSize: 8, fontWeight: 800, color: NAVY, letterSpacing: '0.1em', textTransform: 'uppercase' }}>12-Step</span>
+            </div>
           </div>
 
-          {/* The hook — this is the most powerful line */}
+          {/* The hook */}
           <div style={{ background: `${cat.bg}`, border: `1px solid ${cat.border}`, borderLeft: `3px solid ${cat.accent}`, borderRadius: 6, padding: '10px 12px', marginBottom: 14 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: NAVY, margin: 0, lineHeight: 1.5, fontStyle: 'italic' }}>
               "{config.hookQuestion}"
@@ -240,7 +247,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           </div>
 
           {/* Before / After outcome */}
-          <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8, padding: '10px 12px', background: '#F8F7F4', borderRadius: 8 }}>
+          <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8, padding: '10px 12px', background: '#F8F7F4', borderRadius: 8, marginBottom: 14 }}>
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Without OS</p>
               <p style={{ fontSize: 15, fontWeight: 800, color: '#f87171', margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>{config.metricBefore}</p>
@@ -252,12 +259,35 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             </div>
           </div>
 
-          {/* CTA row */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 14, paddingTop: 12, borderTop: '1px solid #E8E4DC' }}>
+          {/* Playbook label */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+            <BookOpen size={10} style={{ color: GOLD, flexShrink: 0 }} />
             <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>{config.playbook}</span>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, fontWeight: 700, color: cat.accent }}>
-              See My Experience <ChevronRight size={13} />
-            </div>
+          </div>
+
+          {/* CTA button — full width, prominent */}
+          <div
+            style={{
+              background: cat.accent,
+              color: cat.accent === GOLD ? NAVY : '#fff',
+              borderRadius: 8,
+              padding: '11px 16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              fontWeight: 700,
+              fontSize: 12,
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
+              transition: 'opacity 0.15s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = '0.88'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+          >
+            <Play size={12} />
+            Enter My {config.id.toUpperCase()} Simulation
+            <ChevronRight size={13} style={{ marginLeft: 'auto' }} />
           </div>
         </div>
       </Link>
@@ -311,6 +341,53 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(43,138,110,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Execution OS</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: '#4ade80', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
                 <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: '2px 0 0' }}>full execution underway</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Journey preview strip */}
+        <div style={{ background: '#fff', borderBottom: '1px solid #E8E4DC' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+              <div style={{ width: 18, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>What You'll Experience</span>
+              <div style={{ flex: 1, height: 1, background: '#E8E4DC' }} />
+              <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>12-step interactive simulation · No login required · ~8 minutes</span>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, position: 'relative' }}>
+              {[
+                { icon: Layers, label: 'Your Scenario', sub: 'Real situation. Your role. Real stakes.', color: NAVY, step: 1 },
+                { icon: BookOpen, label: 'Build Playbook', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
+                { icon: Radio, label: 'Trigger Fires', sub: 'Signal detected. OS pre-staged & ready.', color: GOLD, step: 3 },
+                { icon: Brain, label: 'AI Analysis', sub: '4 AI insights surface in real time.', color: '#7C3AED', step: 4 },
+                { icon: Zap, label: 'Live Execution', sub: 'Watch 8 tasks coordinate in 12 minutes.', color: '#DC2626', step: 5 },
+                { icon: CheckCircle2, label: 'Outcomes', sub: 'Before/after. Metrics. Your lesson.', color: TEAL, step: 6 },
+              ].map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', position: 'relative', padding: '0 12px' }}>
+                    {/* Connector line */}
+                    {i < 5 && (
+                      <div style={{ position: 'absolute', top: 20, left: '50%', width: '100%', height: 1, background: 'linear-gradient(90deg, #E8E4DC, transparent)', zIndex: 0 }} />
+                    )}
+                    <div style={{ width: 40, height: 40, borderRadius: '50%', background: `${item.color}12`, border: `2px solid ${item.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 1, marginBottom: 8 }}>
+                      <Icon size={16} style={{ color: item.color }} />
+                    </div>
+                    <div style={{ fontSize: 7, fontWeight: 800, color: item.color, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 3 }}>Step {item.step}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 3, lineHeight: 1.2 }}>{item.label}</div>
+                    <div style={{ fontSize: 10, color: '#9CA3AF', lineHeight: 1.4 }}>{item.sub}</div>
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 8, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD, flexShrink: 0 }} className="animate-pulse" />
+              <p style={{ fontSize: 12, color: '#374151', margin: 0, lineHeight: 1.5 }}>
+                <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your playbook, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
+              </p>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, fontWeight: 700, color: GOLD }}>
+                <Play size={10} /> No login required
               </div>
             </div>
           </div>
