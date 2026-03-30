@@ -898,16 +898,37 @@ export default function TryDemo() {
                     )}
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
-                        <div className="p-4 bg-gray-50 border border-slate-600 rounded-lg text-center">
-                          <p className="text-gray-800 text-sm mb-1">This is what happens WITHOUT Execution OS</p>
-                          <p className="text-gray-900 font-medium">Chaos. Confusion. Costly delays.</p>
+                        {/* The pivotal contrast moment */}
+                        <div style={{ background: '#0A0F2E', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
+                          <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#f87171' }} />
+                            <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Execution OS</p>
+                          </div>
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                            <div style={{ padding: '14px 16px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
+                              <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>❌ 30 Days of This</p>
+                              {['No playbook owner assigned', 'Budget stuck in committee', 'Competitor already responded', 'Board demanding answers'].map(item => (
+                                <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.45)', margin: '0 0 5px', lineHeight: 1.4 }}>— {item}</p>
+                              ))}
+                            </div>
+                            <div style={{ padding: '14px 16px', background: 'rgba(43,138,110,0.07)' }}>
+                              <p style={{ fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Execution OS</p>
+                              {['Playbook pre-staged before trigger', 'Budget pre-approved at setup', '3,600× execution head start', 'Board brief auto-generated'].map(item => (
+                                <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', margin: '0 0 5px', lineHeight: 1.4 }}>✓ {item}</p>
+                              ))}
+                            </div>
+                          </div>
+                          <div style={{ padding: '10px 16px', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
+                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Every minute you watched = {selectedScenario ? `$${(selectedScenario.revenuePerMinute / 1000).toFixed(0)}K lost` : 'revenue lost'} — that clock stops the moment Execution OS activates</span>
+                          </div>
                         </div>
                         <Button 
-                          className="w-full bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white font-semibold py-6"
+                          className="w-full text-[#0A0F2E] font-bold py-6 text-base"
+                          style={{ background: 'linear-gradient(135deg, #C9A84C, #B8972A)', boxShadow: '0 8px 32px rgba(201,168,76,0.4)', border: 'none' }}
                           onClick={moveToPrepared}
                         >
-                          <Sparkles className="mr-2 h-5 w-5" />
-                          Now See Execution OS in Action
+                          <Zap className="mr-2 h-5 w-5" />
+                          Now Watch the 12-Minute Response
                           <ArrowRight className="ml-2 h-5 w-5" />
                         </Button>
                       </div>
@@ -1341,18 +1362,37 @@ export default function TryDemo() {
                             <p className="text-slate-600">Identify · Detect · Execute · Advance — in 12 minutes</p>
                           </div>
 
-                          <div className="grid grid-cols-3 gap-4 mb-6">
-                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
-                              <p className="text-2xl font-bold text-[#2B8A6E]">12 min</p>
-                              <p className="text-xs text-slate-500 font-medium">Response Time</p>
+                          {/* Primary outcome contrast */}
+                          <div style={{ background: '#0A0F2E', borderRadius: 12, padding: '22px 24px', marginBottom: 20, border: '1px solid rgba(201,168,76,0.2)' }}>
+                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 16px', textAlign: 'center' }}>The Outcome — What Just Happened vs. What Didn't</p>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
+                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)', borderRadius: 10 }}>
+                                <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>Without OS</p>
+                                <p style={{ fontSize: 26, fontWeight: 800, color: '#f87171', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
+                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>to mobilize a response</p>
+                              </div>
+                              <div style={{ textAlign: 'center' }}>
+                                <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.15)', margin: 0 }}>→</p>
+                              </div>
+                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 10 }}>
+                                <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Execution OS</p>
+                                <p style={{ fontSize: 26, fontWeight: 800, color: '#4ade80', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>12 min</p>
+                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>full execution underway</p>
+                              </div>
                             </div>
-                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
-                              <p className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
-                              <p className="text-xs text-slate-500 font-medium">Value Protected</p>
+                          </div>
+                          <div className="grid grid-cols-3 gap-3 mb-6">
+                            <div style={{ padding: '14px 12px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 10, textAlign: 'center' }}>
+                              <p className="text-2xl font-bold" style={{ color: '#2B8A6E' }}>{formatCurrency(selectedScenario?.dealValue || 0)}</p>
+                              <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Value Protected</p>
                             </div>
-                            <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
-                              <p className="text-2xl font-bold text-[#2B8A6E]">98 days</p>
-                              <p className="text-xs text-slate-500 font-medium">Saved (IBM 2024)</p>
+                            <div style={{ padding: '14px 12px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 10, textAlign: 'center' }}>
+                              <p className="text-2xl font-bold" style={{ color: '#C9A84C' }}>3,600×</p>
+                              <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Execution Head Start</p>
+                            </div>
+                            <div style={{ padding: '14px 12px', background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 10, textAlign: 'center' }}>
+                              <p className="text-2xl font-bold" style={{ color: '#0A0F2E' }}>170</p>
+                              <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Playbooks Ready</p>
                             </div>
                           </div>
 
