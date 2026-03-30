@@ -6411,3 +6411,42 @@ export const magicLinkTokens = pgTable('magic_link_tokens', {
 export const insertMagicLinkTokenSchema = createInsertSchema(magicLinkTokens).omit({ id: true, usedAt: true, createdAt: true });
 export type InsertMagicLinkToken = z.infer<typeof insertMagicLinkTokenSchema>;
 export type MagicLinkToken = typeof magicLinkTokens.$inferSelect;
+
+// ── Stakeholder Contact Registry ──────────────────────────────────────────────
+// Maps executive roles → real contact info per org for live notifications
+export const stakeholderContacts = pgTable('stakeholder_contacts', {
+  id: serial('id').primaryKey(),
+  organizationId: varchar('organization_id', { length: 255 }).notNull(),
+  role: varchar('role', { length: 100 }).notNull(), // 'CEO', 'CFO', 'CISO', 'COO', etc.
+  name: varchar('name', { length: 255 }),
+  email: varchar('email', { length: 255 }),
+  slackUserId: varchar('slack_user_id', { length: 100 }),
+  slackChannel: varchar('slack_channel', { length: 100 }),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertStakeholderContactSchema = createInsertSchema(stakeholderContacts).omit({ id: true, createdAt: true });
+export type InsertStakeholderContact = z.infer<typeof insertStakeholderContactSchema>;
+export type StakeholderContact = typeof stakeholderContacts.$inferSelect;
+
+// ── Trigger Detection Log ──────────────────────────────────────────────────────
+// Audit trail of real signals that crossed trigger thresholds — the Tier 5 core
+export const triggerDetections = pgTable('trigger_detections', {
+  id: serial('id').primaryKey(),
+  organizationId: varchar('organization_id', { length: 255 }).notNull(),
+  triggerName: varchar('trigger_name', { length: 255 }).notNull(),
+  triggerDomain: varchar('trigger_domain', { length: 100 }),
+  signalDescription: text('signal_description').notNull(),
+  signalSource: varchar('signal_source', { length: 255 }),
+  signalSourceUrl: varchar('signal_source_url', { length: 2000 }),
+  confidenceScore: integer('confidence_score').notNull(), // 0–100
+  recommendedPlaybook: varchar('recommended_playbook', { length: 255 }),
+  status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
+  notificationSent: boolean('notification_sent').default(false),
+  detectedAt: timestamp('detected_at').defaultNow(),
+});
+
+export const insertTriggerDetectionSchema = createInsertSchema(triggerDetections).omit({ id: true, detectedAt: true });
+export type InsertTriggerDetection = z.infer<typeof insertTriggerDetectionSchema>;
+export type TriggerDetection = typeof triggerDetections.$inferSelect;

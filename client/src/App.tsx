@@ -106,6 +106,7 @@ const ExecutiveScorecard = lazy(() => import("./pages/ExecutiveScorecard"));
 const ExecutiveSummaryGenerator = lazy(() => import("./pages/ExecutiveSummaryGenerator"));
 const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
 const SignalIntelligenceHub = lazy(() => import("./pages/SignalIntelligenceHub"));
+const LiveDetectionFeed = lazy(() => import("./pages/LiveDetectionFeed"));
 const InstitutionalMemory = lazy(() => import("./pages/InstitutionalMemory"));
 const DrillTrackingSystem = lazy(() => import("./pages/DrillTrackingSystem"));
 const BoardBriefings = lazy(() => import("./pages/BoardBriefings"));
@@ -378,6 +379,7 @@ function Router() {
         <Route path="/intelligence-control-center" component={IntelligenceControlCenter} />
         <Route path="/ai-radar" component={AIRadarDashboard} />
         <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
+        <Route path="/live-detection" component={LiveDetectionFeed} />
         {renderRoutes(["/ai", "/pulse", "/flux", "/prism", "/echo", "/nova"], AIIntelligenceHub)}
         <Route path="/pulse-intelligence" component={PulseIntelligence} />
         <Route path="/flux-adaptations" component={FluxAdaptations} />

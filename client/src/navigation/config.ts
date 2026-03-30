@@ -115,6 +115,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/detect/history',
           icon: '📜',
           description: 'Historical detection log and audit trail'
+        },
+        {
+          id: 'live-detection',
+          label: 'Live Detection Feed',
+          path: '/live-detection',
+          icon: '🔴',
+          description: 'Real signals crossing trigger thresholds — Slack + email auto-fired'
         }
       ]
     },

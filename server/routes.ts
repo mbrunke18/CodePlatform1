@@ -6902,6 +6902,100 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   }, 5000);
   console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
 
+  // ── Trigger Detection API (Tier 5) ─────────────────────────────────────────
+  const { getRecentDetections } = await import('./services/SignalEvaluationService.js');
+  const { stakeholderContacts: stakeholderContactsTable, triggerDetections: triggerDetectionsTable } = await import('@shared/schema');
+
+  // GET /api/detections — recent trigger detections for an org
+  app.get('/api/detections', async (req: any, res) => {
+    try {
+      const organizationId = req.query.organizationId || req.orgId || 'system';
+      const detections = await getRecentDetections(organizationId, 20);
+      res.json({ success: true, detections });
+    } catch (err) {
+      console.error('Detections fetch error:', err);
+      res.status(500).json({ success: false, detections: [] });
+    }
+  });
+
+  // POST /api/detections/:id/acknowledge — mark a detection as acknowledged
+  app.post('/api/detections/:id/acknowledge', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { eq } = await import('drizzle-orm');
+      await db.update(triggerDetectionsTable)
+        .set({ status: 'acknowledged' })
+        .where(eq(triggerDetectionsTable.id, parseInt(id)));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // GET /api/stakeholder-contacts — list contacts for an org
+  app.get('/api/stakeholder-contacts', async (req: any, res) => {
+    try {
+      const organizationId = req.query.organizationId || req.orgId || 'system';
+      const { eq } = await import('drizzle-orm');
+      const contacts = await db.select().from(stakeholderContactsTable)
+        .where(eq(stakeholderContactsTable.organizationId, organizationId));
+      res.json({ success: true, contacts });
+    } catch (err) {
+      res.status(500).json({ success: false, contacts: [] });
+    }
+  });
+
+  // POST /api/stakeholder-contacts — add a contact
+  app.post('/api/stakeholder-contacts', async (req: any, res) => {
+    try {
+      const { organizationId, role, name, email, slackUserId, slackChannel } = req.body;
+      if (!organizationId || !role) return res.status(400).json({ error: 'organizationId and role required' });
+      const [contact] = await db.insert(stakeholderContactsTable).values({
+        organizationId, role, name, email, slackUserId, slackChannel, isActive: true,
+      }).returning();
+      res.json({ success: true, contact });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // DELETE /api/stakeholder-contacts/:id — remove a contact
+  app.delete('/api/stakeholder-contacts/:id', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const { eq } = await import('drizzle-orm');
+      await db.delete(stakeholderContactsTable).where(eq(stakeholderContactsTable.id, parseInt(id)));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+
+  // POST /api/signals/live/test-detection — manually trigger one evaluation cycle (demo tool)
+  app.post('/api/signals/live/test-detection', async (req: any, res) => {
+    try {
+      const { evaluateAndPersistSignals } = await import('./services/SignalEvaluationService.js');
+      const organizationId = req.body?.organizationId || 'system';
+      // Use a realistic test signal that will reliably cross thresholds
+      const testSignals = [{
+        signalType: 'regulatory',
+        description: 'SEC files enforcement action — major corporation faces $2.4B fine for compliance violations and antitrust investigation expands to three new markets',
+        confidence: 88,
+        impact: 'critical',
+        timeline: 'Immediate',
+        source: 'SEC EDGAR 8-K Filings',
+        sourceUrl: 'https://www.sec.gov',
+        category: 'regulatory',
+      }];
+      const detections = await evaluateAndPersistSignals(testSignals, organizationId);
+      res.json({ success: true, detectionsCreated: detections, message: `${detections} trigger detection(s) created` });
+    } catch (err) {
+      console.error('Test detection error:', err);
+      res.status(500).json({ success: false, error: err instanceof Error ? err.message : 'Unknown' });
+    }
+  });
+  console.log('✅ Trigger Detection API registered (Tier 5)');
+
   // Seed pipeline data (idempotent - only runs if tables are empty)
   setTimeout(async () => {
     try {

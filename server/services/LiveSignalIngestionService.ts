@@ -1,6 +1,7 @@
 import { db } from '../db.js';
 import { weakSignals, strategicAlerts } from '@shared/schema';
 import { eq, desc, sql } from 'drizzle-orm';
+import { evaluateAndPersistSignals } from './SignalEvaluationService.js';
 
 interface RSSItem {
   title: string;
@@ -23,11 +24,14 @@ interface AnalyzedSignal {
 }
 
 const RSS_FEEDS: { url: string; source: string; category: string }[] = [
-  { url: 'https://feeds.reuters.com/reuters/businessNews', source: 'Reuters Business', category: 'market' },
-  { url: 'https://feeds.reuters.com/reuters/technologyNews', source: 'Reuters Technology', category: 'technology' },
   { url: 'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml', source: 'NY Times Business', category: 'market' },
   { url: 'https://feeds.bbci.co.uk/news/business/rss.xml', source: 'BBC Business', category: 'market' },
   { url: 'https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom', source: 'SEC EDGAR 8-K Filings', category: 'regulatory' },
+  { url: 'https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114', source: 'CNBC Business', category: 'market' },
+  { url: 'https://feeds.marketwatch.com/marketwatch/topstories/', source: 'MarketWatch', category: 'market' },
+  { url: 'https://feeds.npr.org/1006/rss.xml', source: 'NPR Business', category: 'market' },
+  { url: 'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen', source: 'Google News Finance', category: 'market' },
+  { url: 'https://feeds.feedburner.com/entrepreneur/latest', source: 'Entrepreneur', category: 'market' },
 ];
 
 const SIGNAL_TYPE_MAP: Record<string, string[]> = {
@@ -237,19 +241,22 @@ class LiveSignalIngestionService {
     }
   }
 
-  async runIngestionCycle(organizationId: string): Promise<{ signals: number; alerts: number }> {
+  async runIngestionCycle(organizationId: string): Promise<{ signals: number; alerts: number; detections: number }> {
     console.log('📡 Running live signal ingestion cycle...');
     const signals = await this.ingestAllFeeds();
     console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
 
-    if (signals.length === 0) return { signals: 0, alerts: 0 };
+    if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
 
     const inserted = await this.persistSignals(signals, organizationId);
     await this.generateAlerts(signals, organizationId);
     const alertCount = signals.filter(s => s.impact === 'critical' || s.impact === 'high').length;
 
-    console.log(`   ✅ Persisted ${inserted} signals, generated ${Math.min(alertCount, 3)} alerts`);
-    return { signals: inserted, alerts: Math.min(alertCount, 3) };
+    // ── Tier 5: evaluate signals against trigger patterns ──────────────────
+    const detections = await evaluateAndPersistSignals(signals, organizationId);
+
+    console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
+    return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
   }
 
   start(organizationId: string, intervalMinutes: number = 15): void {

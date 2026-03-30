@@ -9,11 +9,11 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __copyProps = (to, from, except, desc21) => {
+var __copyProps = (to, from, except, desc22) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc21 = __getOwnPropDesc(from, key)) || desc21.enumerable });
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc22 = __getOwnPropDesc(from, key)) || desc22.enumerable });
   }
   return to;
 };
@@ -257,6 +257,7 @@ __export(schema_exports, {
   insertSignalMonitoringConfigSchema: () => insertSignalMonitoringConfigSchema,
   insertSimulationAnalysisSchema: () => insertSimulationAnalysisSchema,
   insertStakeholderAlignmentSchema: () => insertStakeholderAlignmentSchema,
+  insertStakeholderContactSchema: () => insertStakeholderContactSchema,
   insertStakeholderRoleSchema: () => insertStakeholderRoleSchema,
   insertStrategicAlertSchema: () => insertStrategicAlertSchema,
   insertStrategicRecordingSchema: () => insertStrategicRecordingSchema,
@@ -265,6 +266,7 @@ __export(schema_exports, {
   insertSyntheticScenarioSchema: () => insertSyntheticScenarioSchema,
   insertTaskDocumentTemplateSchema: () => insertTaskDocumentTemplateSchema,
   insertTaskSchema: () => insertTaskSchema,
+  insertTriggerDetectionSchema: () => insertTriggerDetectionSchema,
   insertTriggerMonitoringHistorySchema: () => insertTriggerMonitoringHistorySchema,
   insertTriggerSignalSchema: () => insertTriggerSignalSchema,
   insertUserSchema: () => insertUserSchema,
@@ -400,6 +402,7 @@ __export(schema_exports, {
   simulationStatusEnum: () => simulationStatusEnum,
   stakeholderAcknowledgments: () => stakeholderAcknowledgments,
   stakeholderAlignment: () => stakeholderAlignment,
+  stakeholderContacts: () => stakeholderContacts,
   stakeholderRoleEnum: () => stakeholderRoleEnum,
   stakeholderRoles: () => stakeholderRoles,
   statusEnum: () => statusEnum,
@@ -418,6 +421,7 @@ __export(schema_exports, {
   tasks: () => tasks,
   tasksRelations: () => tasksRelations,
   timeHorizonEnum: () => timeHorizonEnum,
+  triggerDetections: () => triggerDetections,
   triggerMonitoringHistory: () => triggerMonitoringHistory,
   triggerSignals: () => triggerSignals,
   usageAnalytics: () => usageAnalytics,
@@ -444,12 +448,13 @@ import {
   integer as integer2,
   decimal,
   boolean,
-  pgEnum
+  pgEnum,
+  serial as serial2
 } from "drizzle-orm/pg-core";
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers2, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6070,6 +6075,36 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertMagicLinkTokenSchema = createInsertSchema2(magicLinkTokens).omit({ id: true, usedAt: true, createdAt: true });
+    stakeholderContacts = pgTable2("stakeholder_contacts", {
+      id: serial2("id").primaryKey(),
+      organizationId: uuid("organization_id").notNull(),
+      role: varchar("role", { length: 100 }).notNull(),
+      // 'CEO', 'CFO', 'CISO', 'COO', etc.
+      name: varchar("name", { length: 255 }),
+      email: varchar("email", { length: 255 }),
+      slackUserId: varchar("slack_user_id", { length: 100 }),
+      slackChannel: varchar("slack_channel", { length: 100 }),
+      isActive: boolean("is_active").default(true),
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertStakeholderContactSchema = createInsertSchema2(stakeholderContacts).omit({ id: true, createdAt: true });
+    triggerDetections = pgTable2("trigger_detections", {
+      id: serial2("id").primaryKey(),
+      organizationId: uuid("organization_id").notNull(),
+      triggerName: varchar("trigger_name", { length: 255 }).notNull(),
+      triggerDomain: varchar("trigger_domain", { length: 100 }),
+      signalDescription: text2("signal_description").notNull(),
+      signalSource: varchar("signal_source", { length: 255 }),
+      signalSourceUrl: varchar("signal_source_url", { length: 2e3 }),
+      confidenceScore: integer2("confidence_score").notNull(),
+      // 0–100
+      recommendedPlaybook: varchar("recommended_playbook", { length: 255 }),
+      status: varchar("status", { length: 50 }).default("detected"),
+      // detected | notified | acknowledged | dismissed
+      notificationSent: boolean("notification_sent").default(false),
+      detectedAt: timestamp2("detected_at").defaultNow()
+    });
+    insertTriggerDetectionSchema = createInsertSchema2(triggerDetections).omit({ id: true, detectedAt: true });
   }
 });
 
@@ -19661,10 +19696,10 @@ async function getSuggestions(playbookId, organizationId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq43, and: and26 } = await import("drizzle-orm");
+    const { eq: eq44, and: and26 } = await import("drizzle-orm");
     const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and26(
-      eq43(aiOptimizationSuggestions2.playbookId, playbookId),
-      eq43(aiOptimizationSuggestions2.organizationId, organizationId)
+      eq44(aiOptimizationSuggestions2.playbookId, playbookId),
+      eq44(aiOptimizationSuggestions2.organizationId, organizationId)
     ));
     return suggestions;
   } catch (error) {
@@ -19676,8 +19711,8 @@ async function acceptSuggestion(suggestionId, userId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq43 } = await import("drizzle-orm");
-    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq43(aiOptimizationSuggestions2.id, suggestionId));
+    const { eq: eq44 } = await import("drizzle-orm");
+    await db2.update(aiOptimizationSuggestions2).set({ status: "accepted", reviewedBy: userId, reviewedAt: /* @__PURE__ */ new Date() }).where(eq44(aiOptimizationSuggestions2.id, suggestionId));
   } catch (error) {
     console.error("Error accepting suggestion:", error);
     throw error;
@@ -23173,6 +23208,342 @@ var init_oauth_routes = __esm({
   }
 });
 
+// server/services/SignalEvaluationService.ts
+var SignalEvaluationService_exports = {};
+__export(SignalEvaluationService_exports, {
+  evaluateAndPersistSignals: () => evaluateAndPersistSignals,
+  evaluateSignal: () => evaluateSignal,
+  getRecentDetections: () => getRecentDetections
+});
+import { eq as eq33, desc as desc17 } from "drizzle-orm";
+import { Resend as Resend4 } from "resend";
+function scoreSignalAgainstPattern(signal, pattern) {
+  const text3 = signal.description.toLowerCase();
+  const matched = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
+  if (matched.length === 0) return 0;
+  const density = matched.length / pattern.keywords.length;
+  let score = pattern.baseConfidence + density * 20;
+  score += (signal.confidence - 50) * 0.3;
+  if (signal.impact === "critical") score += 10;
+  if (signal.impact === "high") score += 5;
+  if (signal.source.includes("SEC") && pattern.domain === "Regulatory & Compliance") score += 10;
+  return Math.min(Math.round(score), 97);
+}
+function evaluateSignal(signal) {
+  const detections = [];
+  const CONFIDENCE_THRESHOLD = 72;
+  for (const pattern of TRIGGER_PATTERNS) {
+    const text3 = signal.description.toLowerCase();
+    const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
+    if (matchedKeywords.length === 0) continue;
+    const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
+    if (confidenceScore >= CONFIDENCE_THRESHOLD) {
+      detections.push({
+        triggerName: pattern.name,
+        triggerDomain: pattern.domain,
+        confidenceScore,
+        recommendedPlaybook: pattern.playbookName,
+        matchedKeywords
+      });
+    }
+  }
+  return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
+}
+async function sendDetectionEmail(detection, signal, emails, orgId) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+  const resend = new Resend4(apiKey);
+  const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#132558;padding:32px 36px;">
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Live Detection Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">${detection.confidenceScore}%</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Recommended Playbook</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.recommendedPlaybook}</td>
+            </tr>
+          </table>
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Signal Detected</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
+          </div>
+          <div style="text-align:center;">
+            <a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;">Review in Execution OS \u2192</a>
+          </div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+        </div>
+      </div>
+    </div>
+  `;
+  try {
+    await resend.emails.send({
+      from: "Execution OS <pilot@vaughnmartin.com>",
+      replyTo: "pilot@vaughnmartin.com",
+      to: emails,
+      subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+      html
+    });
+    console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
+  } catch (err) {
+    console.error("Detection email failed:", err);
+  }
+}
+async function sendDetectionSlack(detection, signal) {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  if (!webhookUrl) return;
+  const payload = {
+    text: `\u{1F534} *Strategic Trigger Detected* \u2014 ${detection.triggerName}`,
+    blocks: [
+      {
+        type: "header",
+        text: { type: "plain_text", text: "\u{1F534} Execution OS: Strategic Trigger Detected" }
+      },
+      {
+        type: "section",
+        fields: [
+          { type: "mrkdwn", text: `*Trigger:*
+${detection.triggerName}` },
+          { type: "mrkdwn", text: `*Domain:*
+${detection.triggerDomain}` },
+          { type: "mrkdwn", text: `*Confidence:*
+${detection.confidenceScore}%` },
+          { type: "mrkdwn", text: `*Playbook Ready:*
+${detection.recommendedPlaybook}` }
+        ]
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `*Signal:* ${signal.description.substring(0, 200)}${signal.description.length > 200 ? "\u2026" : ""}
+*Source:* ${signal.source}`
+        }
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: { type: "plain_text", text: "Review in Execution OS \u2192" },
+            url: `${process.env.APP_URL || "https://vaughnmartin.com"}/command-center`,
+            style: "primary"
+          }
+        ]
+      }
+    ]
+  };
+  try {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    console.log(`\u{1F4F2} Detection Slack alert sent`);
+  } catch (err) {
+    console.error("Detection Slack alert failed:", err);
+  }
+}
+async function evaluateAndPersistSignals(signals, organizationId) {
+  let detectionsCreated = 0;
+  let contactEmails = [];
+  try {
+    const contacts = await db.select().from(stakeholderContacts).where(eq33(stakeholderContacts.organizationId, organizationId));
+    contactEmails = contacts.filter((c) => c.isActive && c.email).map((c) => c.email).filter(Boolean);
+  } catch {
+  }
+  for (const signal of signals) {
+    const detections = evaluateSignal(signal);
+    if (detections.length === 0) continue;
+    for (const detection of detections) {
+      try {
+        const recent = await db.select().from(triggerDetections).where(eq33(triggerDetections.triggerName, detection.triggerName)).orderBy(desc17(triggerDetections.detectedAt)).limit(1);
+        const lastDetected = recent[0]?.detectedAt;
+        const hoursSince = lastDetected ? (Date.now() - new Date(lastDetected).getTime()) / 36e5 : 999;
+        if (hoursSince < 4) continue;
+        await db.insert(triggerDetections).values({
+          organizationId,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          signalDescription: signal.description,
+          signalSource: signal.source,
+          signalSourceUrl: signal.sourceUrl || null,
+          confidenceScore: detection.confidenceScore,
+          recommendedPlaybook: detection.recommendedPlaybook,
+          status: "detected",
+          notificationSent: false
+        });
+        console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source}`);
+        await Promise.allSettled([
+          sendDetectionSlack(detection, signal),
+          contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve()
+        ]);
+        await db.update(triggerDetections).set({ notificationSent: true, status: "notified" }).where(eq33(triggerDetections.triggerName, detection.triggerName));
+        detectionsCreated++;
+      } catch (err) {
+        console.error("Error persisting detection:", err);
+      }
+    }
+  }
+  return detectionsCreated;
+}
+async function getRecentDetections(organizationId, limit = 20) {
+  return db.select().from(triggerDetections).where(eq33(triggerDetections.organizationId, organizationId)).orderBy(desc17(triggerDetections.detectedAt)).limit(limit);
+}
+var TRIGGER_PATTERNS;
+var init_SignalEvaluationService = __esm({
+  "server/services/SignalEvaluationService.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    TRIGGER_PATTERNS = [
+      // Market Dynamics
+      {
+        name: "Competitive Market Entry",
+        domain: "Market Dynamics",
+        keywords: ["competitor", "rival", "market entry", "new entrant", "competing", "launched", "expansion", "competitive threat", "market share", "disrupt"],
+        playbookName: "Competitive Threat Response",
+        baseConfidence: 70
+      },
+      {
+        name: "M&A Activity Detected",
+        domain: "Market Dynamics",
+        keywords: ["acquisition", "merger", "buyout", "takeover", "acquires", "acquired", "deal signed", "consolidation", "private equity", "strategic acquisition"],
+        playbookName: "M&A Response Playbook",
+        baseConfidence: 75
+      },
+      {
+        name: "Market Valuation Shift",
+        domain: "Market Dynamics",
+        keywords: ["valuation", "IPO", "stock price", "market cap", "earnings miss", "guidance cut", "revenue decline", "profit warning", "downgrade", "sell-off"],
+        playbookName: "Investor Communications Protocol",
+        baseConfidence: 65
+      },
+      // Regulatory & Compliance
+      {
+        name: "Regulatory Enforcement Action",
+        domain: "Regulatory & Compliance",
+        keywords: ["SEC", "FTC", "DOJ", "enforcement", "investigation", "fine", "penalty", "sanction", "antitrust", "subpoena", "consent decree", "regulatory action"],
+        playbookName: "Regulatory Compliance Sprint",
+        baseConfidence: 80
+      },
+      {
+        name: "Legislation Change",
+        domain: "Regulatory & Compliance",
+        keywords: ["new regulation", "legislation", "compliance deadline", "regulatory change", "rule change", "policy shift", "mandate", "data privacy", "GDPR", "CCPA"],
+        playbookName: "Regulatory Compliance Sprint",
+        baseConfidence: 70
+      },
+      {
+        name: "8-K Material Event Filing",
+        domain: "Regulatory & Compliance",
+        keywords: ["8-K", "material event", "form 8-K", "SEC filing", "material change", "reportable event", "current report"],
+        playbookName: "Regulatory Disclosure Protocol",
+        baseConfidence: 85
+      },
+      // Technology & Security
+      {
+        name: "Cybersecurity Breach Signal",
+        domain: "Technology & Security",
+        keywords: ["data breach", "cyberattack", "ransomware", "hack", "hacked", "security incident", "vulnerability", "zero-day", "phishing", "malware", "data leak", "cyber incident"],
+        playbookName: "Cybersecurity Breach Response",
+        baseConfidence: 85
+      },
+      {
+        name: "AI Disruption Signal",
+        domain: "Technology & Security",
+        keywords: ["artificial intelligence", "AI model", "generative AI", "automation", "AI disruption", "large language model", "GPT", "AI launch", "AI competitor"],
+        playbookName: "Technology Disruption Response",
+        baseConfidence: 60
+      },
+      // Supply Chain & Operations
+      {
+        name: "Supply Chain Disruption",
+        domain: "Supply Chain & Operations",
+        keywords: ["supply chain", "shortage", "logistics disruption", "shipping delay", "port strike", "tariff", "trade war", "embargo", "supplier failure", "procurement crisis"],
+        playbookName: "Supply Chain Disruption Protocol",
+        baseConfidence: 75
+      },
+      {
+        name: "Operational Crisis",
+        domain: "Supply Chain & Operations",
+        keywords: ["plant shutdown", "factory fire", "operational failure", "production halt", "recall", "product defect", "quality crisis", "manufacturing issue"],
+        playbookName: "Operational Crisis Response",
+        baseConfidence: 80
+      },
+      // Brand & Reputation
+      {
+        name: "Reputational Crisis Signal",
+        domain: "Brand & Reputation",
+        keywords: ["controversy", "scandal", "backlash", "social media crisis", "viral", "boycott", "protest", "PR crisis", "reputational damage", "public outcry", "brand damage"],
+        playbookName: "Reputational Crisis Protocol",
+        baseConfidence: 70
+      },
+      {
+        name: "Executive Leadership Event",
+        domain: "Brand & Reputation",
+        keywords: ["CEO resigns", "CFO departure", "executive fired", "leadership change", "board shakeup", "C-suite", "management change", "succession"],
+        playbookName: "Executive Leadership Crisis",
+        baseConfidence: 75
+      },
+      // Financial
+      {
+        name: "Financial Distress Signal",
+        domain: "Financial",
+        keywords: ["bankruptcy", "insolvency", "debt default", "credit downgrade", "liquidity crisis", "cash crunch", "chapter 11", "restructuring", "financial distress"],
+        playbookName: "Financial Crisis Response",
+        baseConfidence: 85
+      },
+      {
+        name: "Earnings Surprise",
+        domain: "Financial",
+        keywords: ["earnings beat", "earnings miss", "revenue surprise", "profit warning", "earnings guidance", "quarterly results", "financial results"],
+        playbookName: "Investor Communications Protocol",
+        baseConfidence: 65
+      },
+      // ESG
+      {
+        name: "ESG / Climate Event",
+        domain: "ESG & Sustainability",
+        keywords: ["ESG", "climate", "sustainability", "carbon", "emissions", "greenwashing", "environmental violation", "climate risk", "net zero", "DEI controversy"],
+        playbookName: "ESG Crisis Response",
+        baseConfidence: 65
+      },
+      // Geopolitical
+      {
+        name: "Geopolitical Risk Signal",
+        domain: "Geopolitical",
+        keywords: ["sanctions", "trade war", "tariff", "geopolitical", "conflict", "war", "political instability", "export control", "national security", "government shutdown"],
+        playbookName: "Geopolitical Risk Response",
+        baseConfidence: 70
+      }
+    ];
+  }
+});
+
 // server/services/LiveSignalIngestionService.ts
 var LiveSignalIngestionService_exports = {};
 __export(LiveSignalIngestionService_exports, {
@@ -23247,12 +23618,16 @@ var init_LiveSignalIngestionService = __esm({
     "use strict";
     init_db();
     init_schema();
+    init_SignalEvaluationService();
     RSS_FEEDS = [
-      { url: "https://feeds.reuters.com/reuters/businessNews", source: "Reuters Business", category: "market" },
-      { url: "https://feeds.reuters.com/reuters/technologyNews", source: "Reuters Technology", category: "technology" },
       { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
       { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "market" },
-      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom", source: "SEC EDGAR 8-K Filings", category: "regulatory" }
+      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom", source: "SEC EDGAR 8-K Filings", category: "regulatory" },
+      { url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", source: "CNBC Business", category: "market" },
+      { url: "https://feeds.marketwatch.com/marketwatch/topstories/", source: "MarketWatch", category: "market" },
+      { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
+      { url: "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen", source: "Google News Finance", category: "market" },
+      { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" }
     ];
     SIGNAL_TYPE_MAP = {
       market: ["acquisition", "merger", "market share", "revenue", "earnings", "IPO", "stock", "valuation", "growth", "decline"],
@@ -23378,12 +23753,13 @@ var init_LiveSignalIngestionService = __esm({
         console.log("\u{1F4E1} Running live signal ingestion cycle...");
         const signals = await this.ingestAllFeeds();
         console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
-        if (signals.length === 0) return { signals: 0, alerts: 0 };
+        if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
         const inserted = await this.persistSignals(signals, organizationId);
         await this.generateAlerts(signals, organizationId);
         const alertCount = signals.filter((s) => s.impact === "critical" || s.impact === "high").length;
-        console.log(`   \u2705 Persisted ${inserted} signals, generated ${Math.min(alertCount, 3)} alerts`);
-        return { signals: inserted, alerts: Math.min(alertCount, 3) };
+        const detections = await evaluateAndPersistSignals(signals, organizationId);
+        console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
+        return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
       }
       start(organizationId, intervalMinutes = 15) {
         if (this.isRunning) return;
@@ -24638,7 +25014,7 @@ Metric: ${Trigger?.MetricName} (${Trigger?.Namespace})`,
 });
 
 // server/services/preparedness-scoring.ts
-import { eq as eq34, desc as desc17 } from "drizzle-orm";
+import { eq as eq35, desc as desc18 } from "drizzle-orm";
 function calculatePreparednessScore(customization, playbook) {
   if (!customization) {
     return 80;
@@ -24655,12 +25031,12 @@ function calculatePreparednessScore(customization, playbook) {
   return Math.round(score);
 }
 async function getPlaybookInsights(playbookId) {
-  const [playbook] = await db.select().from(playbookLibrary).where(eq34(playbookLibrary.id, playbookId)).limit(1);
+  const [playbook] = await db.select().from(playbookLibrary).where(eq35(playbookLibrary.id, playbookId)).limit(1);
   if (!playbook) {
     throw new Error(`Playbook ${playbookId} not found`);
   }
-  const [customization] = await db.select().from(playbookCustomizations).where(eq34(playbookCustomizations.playbookId, playbookId)).limit(1);
-  const activations = await db.select().from(playbookActivations).where(eq34(playbookActivations.playbookId, playbookId)).orderBy(desc17(playbookActivations.activatedAt)).limit(10);
+  const [customization] = await db.select().from(playbookCustomizations).where(eq35(playbookCustomizations.playbookId, playbookId)).limit(1);
+  const activations = await db.select().from(playbookActivations).where(eq35(playbookActivations.playbookId, playbookId)).orderBy(desc18(playbookActivations.activatedAt)).limit(10);
   const preparednessScore = calculatePreparednessScore(customization, playbook);
   let readinessStatus = "not_started";
   if (preparednessScore >= 95) readinessStatus = "ready";
@@ -28033,7 +28409,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq35, desc as desc18, sql as sql15, and as and22 } from "drizzle-orm";
+import { eq as eq36, desc as desc19, sql as sql15, and as and22 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -28117,19 +28493,19 @@ function isValidUUID(str) {
 async function recalculateReadinessScore(playbookId, organizationId) {
   try {
     const prepareItems = await db.select().from(playbookPrepareItems).where(and22(
-      eq35(playbookPrepareItems.playbookId, playbookId),
-      eq35(playbookPrepareItems.organizationId, organizationId)
+      eq36(playbookPrepareItems.playbookId, playbookId),
+      eq36(playbookPrepareItems.organizationId, organizationId)
     ));
     const monitorItems = await db.select().from(playbookMonitorItems).where(and22(
-      eq35(playbookMonitorItems.playbookId, playbookId),
-      eq35(playbookMonitorItems.organizationId, organizationId)
+      eq36(playbookMonitorItems.playbookId, playbookId),
+      eq36(playbookMonitorItems.organizationId, organizationId)
     ));
     const learnItems = await db.select().from(playbookLearnItems).where(and22(
-      eq35(playbookLearnItems.playbookId, playbookId),
-      eq35(playbookLearnItems.organizationId, organizationId)
+      eq36(playbookLearnItems.playbookId, playbookId),
+      eq36(playbookLearnItems.organizationId, organizationId)
     ));
-    const tasks4 = await db.select().from(playbookTaskSequences).where(eq35(playbookTaskSequences.playbookId, playbookId));
-    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq35(playbookDecisionTrees.playbookId, playbookId));
+    const tasks4 = await db.select().from(playbookTaskSequences).where(eq36(playbookTaskSequences.playbookId, playbookId));
+    const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq36(playbookDecisionTrees.playbookId, playbookId));
     const prepareCompleted = prepareItems.filter((i) => i.status === "completed").length;
     const prepareTotal = prepareItems.length || 1;
     const prepareScore = Math.round(prepareCompleted / prepareTotal * 100);
@@ -28138,8 +28514,8 @@ async function recalculateReadinessScore(playbookId, organizationId) {
     const executeScore = tasks4.length > 0 ? 100 : decisionTrees2.length > 0 ? 50 : 0;
     const learnScore = learnItems.length > 0 ? 100 : 0;
     const [existingScore] = await db.select().from(playbookReadinessScores).where(and22(
-      eq35(playbookReadinessScores.playbookId, playbookId),
-      eq35(playbookReadinessScores.organizationId, organizationId)
+      eq36(playbookReadinessScores.playbookId, playbookId),
+      eq36(playbookReadinessScores.organizationId, organizationId)
     ));
     const prepareWeight = existingScore?.prepareWeight ?? 40;
     const monitorWeight = existingScore?.monitorWeight ?? 20;
@@ -28181,7 +28557,7 @@ async function recalculateReadinessScore(playbookId, organizationId) {
       updatedAt: /* @__PURE__ */ new Date()
     };
     if (existingScore) {
-      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq35(playbookReadinessScores.id, existingScore.id)).returning();
+      const [updated] = await db.update(playbookReadinessScores).set(scoreData).where(eq36(playbookReadinessScores.id, existingScore.id)).returning();
       return updated;
     } else {
       const [created] = await db.insert(playbookReadinessScores).values(scoreData).returning();
@@ -28414,7 +28790,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/domains/:domainId/categories", async (req, res) => {
       try {
         const { domainId } = req.params;
-        const categories = await db.select().from(playbookCategories).where(eq35(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
+        const categories = await db.select().from(playbookCategories).where(eq36(playbookCategories.domainId, domainId)).orderBy(playbookCategories.sequence);
         res.json(categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -28434,7 +28810,7 @@ var init_playbookLibraryRoutes = __esm({
         }
         let playbooks2 = rawPlaybooks;
         if (organizationId) {
-          const readinessScores = await db.select().from(playbookReadinessScores).where(eq35(playbookReadinessScores.organizationId, organizationId));
+          const readinessScores = await db.select().from(playbookReadinessScores).where(eq36(playbookReadinessScores.organizationId, organizationId));
           const scoreMap = new Map(
             readinessScores.map((score) => [score.playbookId, score])
           );
@@ -28487,7 +28863,7 @@ var init_playbookLibraryRoutes = __esm({
         const featuredPlaybooks = await db.select().from(playbookLibrary).where(sql15`${playbookLibrary.playbookNumber} BETWEEN 6 AND 18`).orderBy(playbookLibrary.playbookNumber);
         const playbooksWithDomains = await Promise.all(
           featuredPlaybooks.map(async (playbook) => {
-            const [domain] = await db.select().from(playbookDomains).where(eq35(playbookDomains.id, playbook.domainId));
+            const [domain] = await db.select().from(playbookDomains).where(eq36(playbookDomains.id, playbook.domainId));
             return {
               ...playbook,
               domain: domain || null
@@ -28503,11 +28879,11 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/by-number/:playbookNumber", async (req, res) => {
       try {
         const { playbookNumber } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq35(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq36(playbookLibrary.playbookNumber, parseInt(playbookNumber)));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const [domain] = await db.select().from(playbookDomains).where(eq35(playbookDomains.id, playbook.domainId));
+        const [domain] = await db.select().from(playbookDomains).where(eq36(playbookDomains.id, playbook.domainId));
         res.json({
           ...playbook,
           domain: domain || null
@@ -28542,14 +28918,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/:playbookId", async (req, res) => {
       try {
         const { playbookId } = req.params;
-        const [playbook] = await db.select().from(playbookLibrary).where(eq35(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq36(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const templates = await db.select().from(playbookCommunicationTemplates).where(eq35(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
-        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq35(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
-        const [domain] = await db.select().from(playbookDomains).where(eq35(playbookDomains.id, playbook.domainId));
-        const [category] = await db.select().from(playbookCategories).where(eq35(playbookCategories.id, playbook.categoryId));
+        const templates = await db.select().from(playbookCommunicationTemplates).where(eq36(playbookCommunicationTemplates.playbookId, playbookId)).orderBy(playbookCommunicationTemplates.sendTiming);
+        const decisionTrees2 = await db.select().from(playbookDecisionTrees).where(eq36(playbookDecisionTrees.playbookId, playbookId)).orderBy(playbookDecisionTrees.sequence);
+        const [domain] = await db.select().from(playbookDomains).where(eq36(playbookDomains.id, playbook.domainId));
+        const [category] = await db.select().from(playbookCategories).where(eq36(playbookCategories.id, playbook.categoryId));
         res.json({
           playbook,
           domain,
@@ -28637,11 +29013,11 @@ var init_playbookLibraryRoutes = __esm({
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);
         const coverage = await Promise.all(
           domains.map(async (domain) => {
-            const [playbookCount] = await db.select({ count: sql15`count(*)::int` }).from(playbookLibrary).where(eq35(playbookLibrary.domainId, domain.id));
-            const [drillCount] = await db.select({ count: sql15`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq35(practiceDrills.playbookId, playbookLibrary.id)).where(
+            const [playbookCount] = await db.select({ count: sql15`count(*)::int` }).from(playbookLibrary).where(eq36(playbookLibrary.domainId, domain.id));
+            const [drillCount] = await db.select({ count: sql15`count(DISTINCT ${practiceDrills.playbookId})::int` }).from(practiceDrills).leftJoin(playbookLibrary, eq36(practiceDrills.playbookId, playbookLibrary.id)).where(
               sql15`${practiceDrills.organizationId} = ${organizationId} AND ${practiceDrills.status} = 'completed' AND ${playbookLibrary.domainId} = ${domain.id}`
             );
-            const [activationCount] = await db.select({ count: sql15`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq35(playbookActivations.playbookId, playbookLibrary.id)).where(
+            const [activationCount] = await db.select({ count: sql15`count(DISTINCT ${playbookActivations.playbookId})::int` }).from(playbookActivations).leftJoin(playbookLibrary, eq36(playbookActivations.playbookId, playbookLibrary.id)).where(
               sql15`${playbookActivations.organizationId} = ${organizationId} AND ${playbookLibrary.domainId} = ${domain.id}`
             );
             const totalPlaybooks2 = playbookCount?.count || 0;
@@ -28682,7 +29058,7 @@ var init_playbookLibraryRoutes = __esm({
           activation: playbookActivations,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(playbookActivations).leftJoin(playbookLibrary, eq35(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq35(playbookLibrary.domainId, playbookDomains.id)).where(eq35(playbookActivations.organizationId, organizationId)).orderBy(desc18(playbookActivations.activatedAt));
+        }).from(playbookActivations).leftJoin(playbookLibrary, eq36(playbookActivations.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq36(playbookLibrary.domainId, playbookDomains.id)).where(eq36(playbookActivations.organizationId, organizationId)).orderBy(desc19(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -28717,14 +29093,14 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        const whereConditions = [eq35(aiOptimizationSuggestions.organizationId, organizationId)];
+        const whereConditions = [eq36(aiOptimizationSuggestions.organizationId, organizationId)];
         if (status) {
-          whereConditions.push(eq35(aiOptimizationSuggestions.status, status));
+          whereConditions.push(eq36(aiOptimizationSuggestions.status, status));
         }
         const suggestions = await db.select({
           suggestion: aiOptimizationSuggestions,
           playbook: playbookLibrary
-        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq35(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql15`${sql15.join(whereConditions, sql15.raw(" AND "))}`).orderBy(desc18(aiOptimizationSuggestions.generatedAt));
+        }).from(aiOptimizationSuggestions).leftJoin(playbookLibrary, eq36(aiOptimizationSuggestions.playbookId, playbookLibrary.id)).where(sql15`${sql15.join(whereConditions, sql15.raw(" AND "))}`).orderBy(desc19(aiOptimizationSuggestions.generatedAt));
         res.json(suggestions);
       } catch (error) {
         console.error("Error fetching AI suggestions:", error);
@@ -28740,7 +29116,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedBy,
           reviewedAt: /* @__PURE__ */ new Date(),
           implementedAt: status === "accepted" ? /* @__PURE__ */ new Date() : void 0
-        }).where(eq35(aiOptimizationSuggestions.id, suggestionId)).returning();
+        }).where(eq36(aiOptimizationSuggestions.id, suggestionId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating suggestion:", error);
@@ -28798,7 +29174,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.outcomeMetrics = customizations.outcomeMetrics;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq35(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq36(playbookLibrary.id, playbookId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error saving playbook customizations:", error);
@@ -28817,7 +29193,7 @@ var init_playbookLibraryRoutes = __esm({
           updateData.targetResponseSpeed = `${settings.executionTimeout} minutes`;
         }
         updateData.updatedAt = /* @__PURE__ */ new Date();
-        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq35(playbookLibrary.id, playbookId)).returning();
+        const [updated] = await db.update(playbookLibrary).set(updateData).where(eq36(playbookLibrary.id, playbookId)).returning();
         res.json({ success: true, playbook: updated, settingsSaved: settings });
       } catch (error) {
         console.error("Error saving playbook settings:", error);
@@ -28831,11 +29207,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookPrepareItems);
         if (organizationId) {
           query = query.where(and22(
-            eq35(playbookPrepareItems.playbookId, playbookId),
-            eq35(playbookPrepareItems.organizationId, organizationId)
+            eq36(playbookPrepareItems.playbookId, playbookId),
+            eq36(playbookPrepareItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq35(playbookPrepareItems.playbookId, playbookId));
+          query = query.where(eq36(playbookPrepareItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookPrepareItems.sequence);
         res.json(items);
@@ -28862,7 +29238,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq35(playbookPrepareItems.id, itemId)).returning();
+        const [item] = await db.update(playbookPrepareItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq36(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28881,7 +29257,7 @@ var init_playbookLibraryRoutes = __esm({
           completedAt: /* @__PURE__ */ new Date(),
           completedBy,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq35(playbookPrepareItems.id, itemId)).returning();
+        }).where(eq36(playbookPrepareItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28894,8 +29270,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/prepare-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookPrepareItems).where(eq35(playbookPrepareItems.id, itemId));
-        await db.delete(playbookPrepareItems).where(eq35(playbookPrepareItems.id, itemId));
+        const [item] = await db.select().from(playbookPrepareItems).where(eq36(playbookPrepareItems.id, itemId));
+        await db.delete(playbookPrepareItems).where(eq36(playbookPrepareItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28912,11 +29288,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookMonitorItems);
         if (organizationId) {
           query = query.where(and22(
-            eq35(playbookMonitorItems.playbookId, playbookId),
-            eq35(playbookMonitorItems.organizationId, organizationId)
+            eq36(playbookMonitorItems.playbookId, playbookId),
+            eq36(playbookMonitorItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq35(playbookMonitorItems.playbookId, playbookId));
+          query = query.where(eq36(playbookMonitorItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookMonitorItems.sequence);
         res.json(items);
@@ -28943,7 +29319,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq35(playbookMonitorItems.id, itemId)).returning();
+        const [item] = await db.update(playbookMonitorItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq36(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28956,14 +29332,14 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.patch("/:playbookId/monitor-items/:itemId/toggle", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [current] = await db.select().from(playbookMonitorItems).where(eq35(playbookMonitorItems.id, itemId));
+        const [current] = await db.select().from(playbookMonitorItems).where(eq36(playbookMonitorItems.id, itemId));
         if (!current) {
           return res.status(404).json({ error: "Monitor item not found" });
         }
         const [item] = await db.update(playbookMonitorItems).set({
           isActive: !current.isActive,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq35(playbookMonitorItems.id, itemId)).returning();
+        }).where(eq36(playbookMonitorItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28976,8 +29352,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/monitor-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookMonitorItems).where(eq35(playbookMonitorItems.id, itemId));
-        await db.delete(playbookMonitorItems).where(eq35(playbookMonitorItems.id, itemId));
+        const [item] = await db.select().from(playbookMonitorItems).where(eq36(playbookMonitorItems.id, itemId));
+        await db.delete(playbookMonitorItems).where(eq36(playbookMonitorItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -28994,11 +29370,11 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookLearnItems);
         if (organizationId) {
           query = query.where(and22(
-            eq35(playbookLearnItems.playbookId, playbookId),
-            eq35(playbookLearnItems.organizationId, organizationId)
+            eq36(playbookLearnItems.playbookId, playbookId),
+            eq36(playbookLearnItems.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq35(playbookLearnItems.playbookId, playbookId));
+          query = query.where(eq36(playbookLearnItems.playbookId, playbookId));
         }
         const items = await query.orderBy(playbookLearnItems.sequence);
         res.json(items);
@@ -29025,7 +29401,7 @@ var init_playbookLibraryRoutes = __esm({
       try {
         const { playbookId, itemId } = req.params;
         const updates = req.body;
-        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq35(playbookLearnItems.id, itemId)).returning();
+        const [item] = await db.update(playbookLearnItems).set({ ...updates, updatedAt: /* @__PURE__ */ new Date() }).where(eq36(playbookLearnItems.id, itemId)).returning();
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -29038,8 +29414,8 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.delete("/:playbookId/learn-items/:itemId", async (req, res) => {
       try {
         const { playbookId, itemId } = req.params;
-        const [item] = await db.select().from(playbookLearnItems).where(eq35(playbookLearnItems.id, itemId));
-        await db.delete(playbookLearnItems).where(eq35(playbookLearnItems.id, itemId));
+        const [item] = await db.select().from(playbookLearnItems).where(eq36(playbookLearnItems.id, itemId));
+        await db.delete(playbookLearnItems).where(eq36(playbookLearnItems.id, itemId));
         if (item?.organizationId) {
           await recalculateReadinessScore(playbookId, item.organizationId);
         }
@@ -29057,23 +29433,23 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "organizationId is required" });
         }
         let [score] = await db.select().from(playbookReadinessScores).where(and22(
-          eq35(playbookReadinessScores.playbookId, playbookId),
-          eq35(playbookReadinessScores.organizationId, organizationId)
+          eq36(playbookReadinessScores.playbookId, playbookId),
+          eq36(playbookReadinessScores.organizationId, organizationId)
         ));
         if (!score) {
           score = await recalculateReadinessScore(playbookId, organizationId);
         }
         const prepareItems = await db.select().from(playbookPrepareItems).where(and22(
-          eq35(playbookPrepareItems.playbookId, playbookId),
-          eq35(playbookPrepareItems.organizationId, organizationId)
+          eq36(playbookPrepareItems.playbookId, playbookId),
+          eq36(playbookPrepareItems.organizationId, organizationId)
         ));
         const monitorItems = await db.select().from(playbookMonitorItems).where(and22(
-          eq35(playbookMonitorItems.playbookId, playbookId),
-          eq35(playbookMonitorItems.organizationId, organizationId)
+          eq36(playbookMonitorItems.playbookId, playbookId),
+          eq36(playbookMonitorItems.organizationId, organizationId)
         ));
         const learnItems = await db.select().from(playbookLearnItems).where(and22(
-          eq35(playbookLearnItems.playbookId, playbookId),
-          eq35(playbookLearnItems.organizationId, organizationId)
+          eq36(playbookLearnItems.playbookId, playbookId),
+          eq36(playbookLearnItems.organizationId, organizationId)
         ));
         res.json({
           score,
@@ -29125,8 +29501,8 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "Weights must sum to 100" });
         }
         const [existingScore] = await db.select().from(playbookReadinessScores).where(and22(
-          eq35(playbookReadinessScores.playbookId, playbookId),
-          eq35(playbookReadinessScores.organizationId, organizationId)
+          eq36(playbookReadinessScores.playbookId, playbookId),
+          eq36(playbookReadinessScores.organizationId, organizationId)
         ));
         if (existingScore) {
           await db.update(playbookReadinessScores).set({
@@ -29135,7 +29511,7 @@ var init_playbookLibraryRoutes = __esm({
             executeWeight,
             learnWeight,
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq35(playbookReadinessScores.id, existingScore.id));
+          }).where(eq36(playbookReadinessScores.id, existingScore.id));
         } else {
           await db.insert(playbookReadinessScores).values({
             playbookId,
@@ -29156,7 +29532,7 @@ var init_playbookLibraryRoutes = __esm({
     playbookLibraryRouter.get("/readiness/organization/:organizationId", async (req, res) => {
       try {
         const { organizationId } = req.params;
-        const scores = await db.select().from(playbookReadinessScores).where(eq35(playbookReadinessScores.organizationId, organizationId)).orderBy(desc18(playbookReadinessScores.overallScore));
+        const scores = await db.select().from(playbookReadinessScores).where(eq36(playbookReadinessScores.organizationId, organizationId)).orderBy(desc19(playbookReadinessScores.overallScore));
         res.json(scores);
       } catch (error) {
         console.error("Error fetching organization readiness scores:", error);
@@ -29204,13 +29580,13 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(executionLearnings);
         if (organizationId) {
           query = query.where(and22(
-            eq35(executionLearnings.playbookId, playbookId),
-            eq35(executionLearnings.organizationId, organizationId)
+            eq36(executionLearnings.playbookId, playbookId),
+            eq36(executionLearnings.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq35(executionLearnings.playbookId, playbookId));
+          query = query.where(eq36(executionLearnings.playbookId, playbookId));
         }
-        const learnings = await query.orderBy(desc18(executionLearnings.capturedAt));
+        const learnings = await query.orderBy(desc19(executionLearnings.capturedAt));
         res.json(learnings);
       } catch (error) {
         console.error("Error fetching execution learnings:", error);
@@ -29225,8 +29601,8 @@ var init_playbookLibraryRoutes = __esm({
           return res.status(400).json({ error: "organizationId is required" });
         }
         const learnings = await db.select().from(executionLearnings).where(and22(
-          eq35(executionLearnings.playbookId, playbookId),
-          eq35(executionLearnings.organizationId, organizationId)
+          eq36(executionLearnings.playbookId, playbookId),
+          eq36(executionLearnings.organizationId, organizationId)
         ));
         if (learnings.length === 0) {
           return res.json({
@@ -29255,7 +29631,7 @@ var init_playbookLibraryRoutes = __esm({
           reviewedAt: /* @__PURE__ */ new Date(),
           status: status || "reviewed",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq35(executionLearnings.id, learningId)).returning();
+        }).where(eq36(executionLearnings.id, learningId)).returning();
         res.json(learning);
       } catch (error) {
         console.error("Error reviewing execution learning:", error);
@@ -29275,13 +29651,13 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        const [playbook] = await db.select().from(playbookLibrary).where(eq35(playbookLibrary.id, playbookId));
+        const [playbook] = await db.select().from(playbookLibrary).where(eq36(playbookLibrary.id, playbookId));
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
         const [readinessScore] = await db.select().from(playbookReadinessScores).where(and22(
-          eq35(playbookReadinessScores.playbookId, playbookId),
-          eq35(playbookReadinessScores.organizationId, organizationId)
+          eq36(playbookReadinessScores.playbookId, playbookId),
+          eq36(playbookReadinessScores.organizationId, organizationId)
         ));
         const overallScore = readinessScore?.overallScore ?? 0;
         if (overallScore < 50) {
@@ -29326,7 +29702,7 @@ var init_playbookLibraryRoutes = __esm({
           activatedBy: triggeredBy || "system",
           activationReason: "Manual activation from playbook detail page"
         }).returning();
-        const taskSequences = await db.select().from(playbookTaskSequences).where(eq35(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+        const taskSequences = await db.select().from(playbookTaskSequences).where(eq36(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
         const phases = [
           { name: "Immediate Response", phase: "immediate", startMin: 0, endMin: 2, sequence: 1 },
           { name: "Secondary Actions", phase: "secondary", startMin: 2, endMin: 5, sequence: 2 },
@@ -29431,13 +29807,13 @@ var init_playbookLibraryRoutes = __esm({
         let query = db.select().from(playbookActivations);
         if (organizationId) {
           query = query.where(and22(
-            eq35(playbookActivations.playbookId, playbookId),
-            eq35(playbookActivations.organizationId, organizationId)
+            eq36(playbookActivations.playbookId, playbookId),
+            eq36(playbookActivations.organizationId, organizationId)
           ));
         } else {
-          query = query.where(eq35(playbookActivations.playbookId, playbookId));
+          query = query.where(eq36(playbookActivations.playbookId, playbookId));
         }
-        const activations = await query.orderBy(desc18(playbookActivations.activatedAt));
+        const activations = await query.orderBy(desc19(playbookActivations.activatedAt));
         res.json(activations);
       } catch (error) {
         console.error("Error fetching activations:", error);
@@ -29453,7 +29829,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             successRating: successRating || 85,
             lessonsLearned: outcome || "Execution completed successfully"
-          }).where(eq35(playbookActivations.id, activationId));
+          }).where(eq36(playbookActivations.id, activationId));
         }
         if (executionInstanceId) {
           await db.update(executionInstances).set({
@@ -29461,7 +29837,7 @@ var init_playbookLibraryRoutes = __esm({
             completedAt: /* @__PURE__ */ new Date(),
             outcome: outcome || "successful",
             outcomeNotes: `Completed by ${completedBy || "system"}`
-          }).where(eq35(executionInstances.id, executionInstanceId));
+          }).where(eq36(executionInstances.id, executionInstanceId));
         }
         res.json({ success: true, message: "Playbook execution completed" });
       } catch (error) {
@@ -29478,7 +29854,7 @@ __export(practiceDrillRoutes_exports, {
   practiceDrillRouter: () => practiceDrillRouter
 });
 import { Router as Router9 } from "express";
-import { eq as eq36, desc as desc19, and as and23 } from "drizzle-orm";
+import { eq as eq37, desc as desc20, and as and23 } from "drizzle-orm";
 import { z as z6 } from "zod";
 var practiceDrillRouter;
 var init_practiceDrillRoutes = __esm({
@@ -29491,15 +29867,15 @@ var init_practiceDrillRoutes = __esm({
       try {
         const { organizationId } = req.params;
         const { status } = req.query;
-        let conditions = [eq36(practiceDrills.organizationId, organizationId)];
+        let conditions = [eq37(practiceDrills.organizationId, organizationId)];
         if (status) {
-          conditions.push(eq36(practiceDrills.status, status));
+          conditions.push(eq37(practiceDrills.status, status));
         }
         const drills = await db.select({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq36(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq36(playbookLibrary.domainId, playbookDomains.id)).where(and23(...conditions)).orderBy(desc19(practiceDrills.scheduledDate));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq37(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(and23(...conditions)).orderBy(desc20(practiceDrills.scheduledDate));
         res.json(drills);
       } catch (error) {
         console.error("Error fetching practice drills:", error);
@@ -29513,11 +29889,11 @@ var init_practiceDrillRoutes = __esm({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq36(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq36(playbookLibrary.domainId, playbookDomains.id)).where(eq36(practiceDrills.id, drillId));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq37(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(practiceDrills.id, drillId));
         if (!drill) {
           return res.status(404).json({ error: "Practice drill not found" });
         }
-        const [performance] = await db.select().from(drillPerformance).where(eq36(drillPerformance.drillId, drillId));
+        const [performance] = await db.select().from(drillPerformance).where(eq37(drillPerformance.drillId, drillId));
         res.json({
           ...drill,
           performance
@@ -29551,7 +29927,7 @@ var init_practiceDrillRoutes = __esm({
         const [updated] = await db.update(practiceDrills).set({
           ...updates,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(practiceDrills.id, drillId)).returning();
+        }).where(eq37(practiceDrills.id, drillId)).returning();
         res.json(updated);
       } catch (error) {
         console.error("Error updating practice drill:", error);
@@ -29565,7 +29941,7 @@ var init_practiceDrillRoutes = __esm({
           status: "in_progress",
           startedAt: /* @__PURE__ */ new Date(),
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(practiceDrills.id, drillId)).returning();
+        }).where(eq37(practiceDrills.id, drillId)).returning();
         res.json(drill);
       } catch (error) {
         console.error("Error starting drill:", error);
@@ -29583,8 +29959,8 @@ var init_practiceDrillRoutes = __esm({
           actualDuration: performanceData.actualExecutionTime || 0,
           actualParticipants: performanceData.actualParticipants || [],
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(practiceDrills.id, drillId)).returning();
-        const [drillDetails] = await db.select().from(practiceDrills).where(eq36(practiceDrills.id, drillId));
+        }).where(eq37(practiceDrills.id, drillId)).returning();
+        const [drillDetails] = await db.select().from(practiceDrills).where(eq37(practiceDrills.id, drillId));
         console.log("[COMPLETE DRILL] Drill details:", { organizationId: drillDetails.organizationId, playbookId: drillDetails.playbookId });
         const performancePayload = {
           drillId,
@@ -29619,7 +29995,7 @@ var init_practiceDrillRoutes = __esm({
           playbook: playbookLibrary,
           domain: playbookDomains,
           drill: practiceDrills
-        }).from(drillPerformance).leftJoin(practiceDrills, eq36(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq36(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq36(playbookLibrary.domainId, playbookDomains.id)).where(eq36(drillPerformance.organizationId, organizationId)).orderBy(desc19(drillPerformance.createdAt));
+        }).from(drillPerformance).leftJoin(practiceDrills, eq37(drillPerformance.drillId, practiceDrills.id)).leftJoin(playbookLibrary, eq37(drillPerformance.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq37(playbookLibrary.domainId, playbookDomains.id)).where(eq37(drillPerformance.organizationId, organizationId)).orderBy(desc20(drillPerformance.createdAt));
         const totalDrills = performances.length;
         const passedDrills = performances.filter((p) => p.performance.passed).length;
         const averageScore = totalDrills > 0 ? Math.round(
@@ -29650,7 +30026,7 @@ var init_practiceDrillRoutes = __esm({
         await db.update(practiceDrills).set({
           status: "cancelled",
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(practiceDrills.id, drillId));
+        }).where(eq37(practiceDrills.id, drillId));
         res.json({ success: true });
       } catch (error) {
         console.error("Error cancelling drill:", error);
@@ -29756,7 +30132,7 @@ __export(PlaybookExecutor_exports, {
   completeExecution: () => completeExecution,
   getExecutionProgress: () => getExecutionProgress
 });
-import { eq as eq37 } from "drizzle-orm";
+import { eq as eq38 } from "drizzle-orm";
 import pino14 from "pino";
 async function activatePlaybook(organizationId, playbookId, scenarioId, executionPlanId, triggeredBy) {
   log4.info(`\u{1F680} Activating playbook ${playbookId} for scenario ${scenarioId}`);
@@ -29775,7 +30151,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
     };
     const [instance] = await db.insert(executionInstances).values(executionData).returning();
     log4.info({ instanceId: instance.id }, "\u2705 Execution instance created");
-    const stakeholders = await db.select().from(scenarioStakeholders).where(eq37(scenarioStakeholders.scenarioId, scenarioId));
+    const stakeholders = await db.select().from(scenarioStakeholders).where(eq38(scenarioStakeholders.scenarioId, scenarioId));
     for (const stakeholder of stakeholders) {
       const userId = stakeholder.userId;
       if (userId) {
@@ -29808,7 +30184,7 @@ async function activatePlaybook(organizationId, playbookId, scenarioId, executio
 }
 async function getExecutionProgress(executionId) {
   try {
-    const execution = await db.select().from(executionInstances).where(eq37(executionInstances.id, executionId));
+    const execution = await db.select().from(executionInstances).where(eq38(executionInstances.id, executionId));
     if (!execution.length) return null;
     const instance = execution[0];
     const startedAt = instance.startedAt || /* @__PURE__ */ new Date();
@@ -29838,7 +30214,7 @@ async function completeExecution(executionId, outcome, notes) {
       outcome,
       outcomeNotes: notes,
       actualExecutionTime: await calculateActualTime(executionId)
-    }).where(eq37(executionInstances.id, executionId)).returning();
+    }).where(eq38(executionInstances.id, executionId)).returning();
     log4.info({ executionId, outcome }, "\u2705 Execution completed");
     return updated;
   } catch (error) {
@@ -29847,7 +30223,7 @@ async function completeExecution(executionId, outcome, notes) {
   }
 }
 async function calculateActualTime(executionId) {
-  const [instance] = await db.select().from(executionInstances).where(eq37(executionInstances.id, executionId));
+  const [instance] = await db.select().from(executionInstances).where(eq38(executionInstances.id, executionId));
   if (!instance?.startedAt) return 0;
   return Math.round((Date.now() - instance.startedAt.getTime()) / 1e3 / 60);
 }
@@ -29921,7 +30297,7 @@ __export(triggersSeed_exports, {
   getTriggerStats: () => getTriggerStats,
   seedTriggers: () => seedTriggers
 });
-import { eq as eq38, sql as sql16 } from "drizzle-orm";
+import { eq as eq39, sql as sql16 } from "drizzle-orm";
 function operatorToSymbol(op) {
   const map = {
     "gt": ">",
@@ -29972,7 +30348,7 @@ async function seedTriggers() {
   console.log(`   Found ${totalDataPoints} data points across ${SIGNAL_CATEGORIES.length} signal categories`);
   const DEMO_USER_EMAIL = "system@m-platform.io";
   const DEMO_ORG_NAME = "Innovate Dynamics";
-  let [user] = await db.select().from(users).where(eq38(users.email, DEMO_USER_EMAIL));
+  let [user] = await db.select().from(users).where(eq39(users.email, DEMO_USER_EMAIL));
   if (!user) {
     console.log("   \u{1F4E6} Creating demo system user for trigger seeding...");
     const [newUser] = await db.insert(users).values({
@@ -29984,7 +30360,7 @@ async function seedTriggers() {
     user = newUser;
     console.log(`   \u2705 Created demo user: ${user.email} (${user.id})`);
   }
-  let [org] = await db.select().from(organizations).where(eq38(organizations.name, DEMO_ORG_NAME));
+  let [org] = await db.select().from(organizations).where(eq39(organizations.name, DEMO_ORG_NAME));
   if (!org) {
     console.log("   \u{1F4E6} Creating demo organization for trigger seeding...");
     const [newOrg] = await db.insert(organizations).values({
@@ -30006,12 +30382,12 @@ async function seedTriggers() {
   }
   if (user.organizationId !== org.id) {
     console.log(`   \u{1F517} Linking demo user to demo organization...`);
-    await db.update(users).set({ organizationId: org.id }).where(eq38(users.id, user.id));
+    await db.update(users).set({ organizationId: org.id }).where(eq39(users.id, user.id));
   }
   return seedTriggersForOrg(org.id, user.id, allDataPoints);
 }
 async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
-  const existingTriggers = await db.select().from(executiveTriggers2).where(eq38(executiveTriggers2.organizationId, organizationId));
+  const existingTriggers = await db.select().from(executiveTriggers2).where(eq39(executiveTriggers2.organizationId, organizationId));
   if (existingTriggers.length >= 170) {
     console.log(`   \u2705 Already have ${existingTriggers.length} triggers (target: 178)`);
     await seedTriggerSignals(organizationId, createdBy);
@@ -30020,7 +30396,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
   console.log(`   Clearing ${existingTriggers.length} existing triggers...`);
   if (existingTriggers.length > 0) {
     await db.delete(playbookTriggerAssociations);
-    await db.delete(executiveTriggers2).where(eq38(executiveTriggers2.organizationId, organizationId));
+    await db.delete(executiveTriggers2).where(eq39(executiveTriggers2.organizationId, organizationId));
   }
   const domains = await db.select().from(playbookDomains);
   const domainMap = new Map(domains.map((d) => [d.name, d.id]));
@@ -30077,7 +30453,7 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
     if (matchingPlaybooks.length > 0) {
       await db.update(executiveTriggers2).set({
         recommendedPlaybooks: [...category.recommendedPlaybooks || [], ...matchingPlaybooks].slice(0, 5)
-      }).where(eq38(executiveTriggers2.id, trigger.id));
+      }).where(eq39(executiveTriggers2.id, trigger.id));
     }
     if (triggersCreated % 20 === 0) {
       console.log(`   Created ${triggersCreated}/${allDataPoints.length} triggers...`);
@@ -30090,13 +30466,13 @@ async function seedTriggersForOrg(organizationId, createdBy, allDataPoints) {
 }
 async function seedTriggerSignals(organizationId, createdBy) {
   console.log("   \u{1F4E1} Seeding trigger signals...");
-  const existingSignals = await db.select().from(triggerSignals).where(eq38(triggerSignals.organizationId, organizationId));
+  const existingSignals = await db.select().from(triggerSignals).where(eq39(triggerSignals.organizationId, organizationId));
   if (existingSignals.length >= 80) {
     console.log(`   \u2705 Already have ${existingSignals.length} trigger signals`);
     return;
   }
   if (existingSignals.length > 0) {
-    await db.delete(triggerSignals).where(eq38(triggerSignals.organizationId, organizationId));
+    await db.delete(triggerSignals).where(eq39(triggerSignals.organizationId, organizationId));
   }
   const allDataPoints = getAllDataPoints();
   let signalsCreated = 0;
@@ -35862,7 +36238,7 @@ ${"\u2500".repeat(70)}`);
   console.log(`   Access URL: ${magicUrl}`);
   console.log(`${"\u2500".repeat(70)}
 `);
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
   if (!apiKey) {
     console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
     return { success: true, emailSent: false };
@@ -39288,7 +39664,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq39, desc as desc20, sql as sql17, like, and as and24, asc as asc2, count as count7 } from "drizzle-orm";
+import { eq as eq40, desc as desc21, sql as sql17, like, and as and24, asc as asc2, count as count7 } from "drizzle-orm";
 function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
@@ -39939,7 +40315,7 @@ async function seedFlagshipPlaybooks() {
         continue;
       }
       for (const match of matches) {
-        await db.update(playbookLibrary).set(data).where(eq39(playbookLibrary.id, match.id));
+        await db.update(playbookLibrary).set(data).where(eq40(playbookLibrary.id, match.id));
         results.push(`\u2713 Enriched: ${match.name}`);
       }
     } catch (err) {
@@ -40737,7 +41113,7 @@ async function registerRoutes(app2, existingServer) {
   app2.get("/api/organizations/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const org = await db.select().from(organizations).where(eq39(organizations.id, id)).limit(1);
+      const org = await db.select().from(organizations).where(eq40(organizations.id, id)).limit(1);
       if (org.length === 0) {
         return res.status(404).json({ message: "Organization not found" });
       }
@@ -40765,7 +41141,7 @@ async function registerRoutes(app2, existingServer) {
         status: organizations.status,
         createdAt: organizations.createdAt,
         updatedAt: organizations.updatedAt
-      }).from(organizations).orderBy(desc20(organizations.createdAt));
+      }).from(organizations).orderBy(desc21(organizations.createdAt));
       res.json(orgList);
     } catch (error) {
       console.error("Error fetching organizations:", error);
@@ -40777,11 +41153,11 @@ async function registerRoutes(app2, existingServer) {
       const { id } = req.params;
       const userId = getUserId6(req);
       const updateData = req.body;
-      const existing = await db.select().from(organizations).where(eq39(organizations.id, id)).limit(1);
+      const existing = await db.select().from(organizations).where(eq40(organizations.id, id)).limit(1);
       if (existing.length === 0) {
         return res.status(404).json({ error: "Organization not found" });
       }
-      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq39(organizations.id, id)).returning();
+      const updated = await db.update(organizations).set({ ...updateData, updatedAt: /* @__PURE__ */ new Date() }).where(eq40(organizations.id, id)).returning();
       await storage.createActivity({
         userId,
         action: `updated organization settings`,
@@ -40991,7 +41367,7 @@ async function registerRoutes(app2, existingServer) {
       const isValidUUID2 = uuidRegex.test(id);
       let scenario = null;
       if (isValidUUID2) {
-        const scenarios3 = await db.select().from(strategicScenarios).where(eq39(strategicScenarios.id, id));
+        const scenarios3 = await db.select().from(strategicScenarios).where(eq40(strategicScenarios.id, id));
         scenario = scenarios3[0];
       } else {
         try {
@@ -41079,13 +41455,13 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
       if (organizationId) {
-        conditions.push(eq39(playbooks2.organizationId, organizationId));
+        conditions.push(eq40(playbooks2.organizationId, organizationId));
       }
       if (domain) {
-        conditions.push(eq39(playbooks2.domain, domain));
+        conditions.push(eq40(playbooks2.domain, domain));
       }
       if (category) {
-        conditions.push(eq39(playbooks2.category, category));
+        conditions.push(eq40(playbooks2.category, category));
       }
       if (search) {
         conditions.push(like(playbooks2.name, `%${search}%`));
@@ -41099,7 +41475,7 @@ async function registerRoutes(app2, existingServer) {
       if (sortOrder === "asc") {
         query = query.orderBy(asc2(playbooks2[sortField]));
       } else {
-        query = query.orderBy(desc20(playbooks2[sortField]));
+        query = query.orderBy(desc21(playbooks2[sortField]));
       }
       const pageNum = Math.max(1, parseInt(page));
       const limitNum = Math.min(100, Math.max(1, parseInt(limit)));
@@ -41132,8 +41508,8 @@ async function registerRoutes(app2, existingServer) {
       const { organizationId, domain, search, limit = "50" } = req.query;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const conditions = [];
-      if (organizationId) conditions.push(eq39(playbooks2.organizationId, organizationId));
-      if (domain) conditions.push(eq39(playbooks2.domain, domain));
+      if (organizationId) conditions.push(eq40(playbooks2.organizationId, organizationId));
+      if (domain) conditions.push(eq40(playbooks2.domain, domain));
       if (search) conditions.push(like(playbooks2.name, `%${search}%`));
       let query = db.select({
         id: playbooks2.id,
@@ -41150,7 +41526,7 @@ async function registerRoutes(app2, existingServer) {
       }).from(playbooks2);
       if (conditions.length > 0) query = query.where(and24(...conditions));
       const limitNum = Math.min(200, Math.max(1, parseInt(limit)));
-      const results = await query.orderBy(desc20(playbooks2.timesUsed)).limit(limitNum);
+      const results = await query.orderBy(desc21(playbooks2.timesUsed)).limit(limitNum);
       res.json(results);
     } catch (error) {
       console.error("Error fetching playbook metadata:", error);
@@ -41178,7 +41554,7 @@ async function registerRoutes(app2, existingServer) {
         signalSources: playbookLibrary.signalSources,
         preApprovedBudget: playbookLibrary.preApprovedBudget,
         primaryResponseStrategy: playbookLibrary.primaryResponseStrategy
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq39(playbookLibrary.domainId, playbookDomains.id)).where(eq39(playbookLibrary.isActive, true)).limit(200);
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq40(playbookLibrary.domainId, playbookDomains.id)).where(eq40(playbookLibrary.isActive, true)).limit(200);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
         const execMins = t.targetExecutionTime || 240;
@@ -41222,15 +41598,15 @@ async function registerRoutes(app2, existingServer) {
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [playbook] = await db.select().from(playbooks2).where(eq39(playbooks2.id, id)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq40(playbooks2.id, id)).limit(1);
       if (playbook) {
         return res.json(playbook);
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq39(playbookLibrary.id, id)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq40(playbookLibrary.id, id)).limit(1);
       if (template) {
         let domainSequence = 1;
         if (template.domainId) {
-          const [domain] = await db.select().from(playbookDomains).where(eq39(playbookDomains.id, template.domainId)).limit(1);
+          const [domain] = await db.select().from(playbookDomains).where(eq40(playbookDomains.id, template.domainId)).limit(1);
           if (domain) {
             domainSequence = domain.sequence || 1;
           }
@@ -41269,12 +41645,12 @@ async function registerRoutes(app2, existingServer) {
       const { playbooks: playbooks2, executiveTriggers: executiveTriggers4 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       let playbookName = "Strategic Response Playbook";
       let playbookDescription = "";
-      const [orgPlaybook] = await db.select().from(playbooks2).where(eq39(playbooks2.id, id)).limit(1);
+      const [orgPlaybook] = await db.select().from(playbooks2).where(eq40(playbooks2.id, id)).limit(1);
       if (orgPlaybook) {
         playbookName = orgPlaybook.name || playbookName;
         playbookDescription = orgPlaybook.description || "";
       } else {
-        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq39(playbookLibrary.id, id)).limit(1);
+        const [libPlaybook] = await db.select().from(playbookLibrary).where(eq40(playbookLibrary.id, id)).limit(1);
         if (libPlaybook) {
           playbookName = libPlaybook.name || playbookName;
           playbookDescription = libPlaybook.description || "";
@@ -41282,7 +41658,7 @@ async function registerRoutes(app2, existingServer) {
       }
       let triggerContext = "";
       if (triggerId && triggerId !== "manual") {
-        const [trigger] = await db.select().from(executiveTriggers4).where(eq39(executiveTriggers4.id, triggerId)).limit(1);
+        const [trigger] = await db.select().from(executiveTriggers4).where(eq40(executiveTriggers4.id, triggerId)).limit(1);
         if (trigger) {
           triggerContext = `This activation was triggered by: "${trigger.name}" (severity: ${trigger.severity || "high"}, category: ${trigger.category || "strategic"}).`;
         }
@@ -41403,13 +41779,13 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!organizationId) {
         return res.status(400).json({ message: "Organization ID is required" });
       }
-      const [template] = await db.select().from(playbookLibrary).where(eq39(playbookLibrary.id, templateId)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq40(playbookLibrary.id, templateId)).limit(1);
       if (!template) {
         return res.status(404).json({ message: "Template not found" });
       }
       let domainSequence = 1;
       if (template.domainId) {
-        const [domain] = await db.select().from(playbookDomains).where(eq39(playbookDomains.id, template.domainId)).limit(1);
+        const [domain] = await db.select().from(playbookDomains).where(eq40(playbookDomains.id, template.domainId)).limit(1);
         if (domain) {
           domainSequence = domain.sequence || 1;
         }
@@ -41462,7 +41838,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq39(playbooks2.id, id)).returning();
+      const [updated] = await db.update(playbooks2).set({ ...req.body, updatedAt: /* @__PURE__ */ new Date() }).where(eq40(playbooks2.id, id)).returning();
       if (!updated) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -41476,7 +41852,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     try {
       const { id } = req.params;
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [deleted] = await db.delete(playbooks2).where(eq39(playbooks2.id, id)).returning();
+      const [deleted] = await db.delete(playbooks2).where(eq40(playbooks2.id, id)).returning();
       if (!deleted) {
         return res.status(404).json({ message: "Playbook not found" });
       }
@@ -41563,7 +41939,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           isDemo: true
         });
       }
-      const taskResults = await db.select().from(tasks).where(eq39(tasks.id, taskId));
+      const taskResults = await db.select().from(tasks).where(eq40(tasks.id, taskId));
       const task = taskResults[0];
       if (!task) {
         return res.status(404).json({ message: "Task not found", requestedId: taskId });
@@ -41644,7 +42020,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           const completedAt = /* @__PURE__ */ new Date();
           const timeToResolution = Math.floor((completedAt.getTime() - createdAt.getTime()) / (1e3 * 60));
           const taskValue = calculateTaskValue(task);
-          const scenario = await db.select().from(strategicScenarios).where(eq39(strategicScenarios.id, task.scenarioId)).limit(1);
+          const scenario = await db.select().from(strategicScenarios).where(eq40(strategicScenarios.id, task.scenarioId)).limit(1);
           const organizationId = scenario[0]?.organizationId || "default-org";
           await roiMeasurementService2.trackValueEvent({
             organizationId,
@@ -42036,7 +42412,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   });
   app2.get("/api/intelligence-reports", async (req, res) => {
     try {
-      const result = await db.select().from(intelligenceReports).orderBy(desc20(intelligenceReports.id));
+      const result = await db.select().from(intelligenceReports).orderBy(desc21(intelligenceReports.id));
       res.json(result);
     } catch (error) {
       console.error("Error fetching all intelligence reports:", error);
@@ -42691,7 +43067,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.get("/api/strategic-scenarios/:organizationId", async (req, res) => {
     try {
       const { organizationId } = req.params;
-      const scenarios3 = await db.select().from(strategicScenarios).where(eq39(strategicScenarios.organizationId, organizationId));
+      const scenarios3 = await db.select().from(strategicScenarios).where(eq40(strategicScenarios.organizationId, organizationId));
       res.json(scenarios3);
     } catch (error) {
       console.error("Error fetching strategic scenarios:", error);
@@ -43069,7 +43445,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         name: playbookLibrary.name,
         triggerCriteria: playbookLibrary.triggerCriteria,
         domainName: playbookDomains.name
-      }).from(playbookLibrary).leftJoin(playbookDomains, eq39(playbookLibrary.domainId, playbookDomains.id)).where(eq39(playbookLibrary.isActive, true));
+      }).from(playbookLibrary).leftJoin(playbookDomains, eq40(playbookLibrary.domainId, playbookDomains.id)).where(eq40(playbookLibrary.isActive, true));
       const scoreMatch = (triggerName, playbookName, triggerCriteria) => {
         const norm = (s) => s.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
         const trigWords = new Set(norm(triggerName).split(" ").filter((w) => w.length > 3));
@@ -44195,16 +44571,16 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
           error: "playbookId and scenarioId are required"
         });
       }
-      const playbook = await db.select().from(playbookLibrary).where(eq39(playbookLibrary.id, playbookId)).limit(1);
+      const playbook = await db.select().from(playbookLibrary).where(eq40(playbookLibrary.id, playbookId)).limit(1);
       if (!playbook || playbook.length === 0) {
         return res.status(404).json({ error: "Playbook not found" });
       }
-      const scenario = await db.select().from(strategicScenarios).where(eq39(strategicScenarios.id, scenarioId)).limit(1);
+      const scenario = await db.select().from(strategicScenarios).where(eq40(strategicScenarios.id, scenarioId)).limit(1);
       if (!scenario || scenario.length === 0) {
         return res.status(404).json({ error: "Scenario not found" });
       }
       const organizationId = scenario[0].organizationId;
-      let executionPlan = await db.select().from(scenarioExecutionPlans).where(eq39(scenarioExecutionPlans.scenarioId, scenarioId)).limit(1);
+      let executionPlan = await db.select().from(scenarioExecutionPlans).where(eq40(scenarioExecutionPlans.scenarioId, scenarioId)).limit(1);
       if (!executionPlan || executionPlan.length === 0) {
         const [newPlan] = await db.insert(scenarioExecutionPlans).values({
           scenarioId,
@@ -44231,8 +44607,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         currentPhase: "immediate",
         startedAt: now
       });
-      const stakeholders = await db.select().from(scenarioStakeholders).where(eq39(scenarioStakeholders.scenarioId, scenarioId));
-      const taskSequences = await db.select().from(playbookTaskSequences).where(eq39(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
+      const stakeholders = await db.select().from(scenarioStakeholders).where(eq40(scenarioStakeholders.scenarioId, scenarioId));
+      const taskSequences = await db.select().from(playbookTaskSequences).where(eq40(playbookTaskSequences.playbookId, playbookId)).orderBy(playbookTaskSequences.sequence);
       const executionTasks = [];
       const taskMap = /* @__PURE__ */ new Map();
       for (let i = 0; i < taskSequences.length; i++) {
@@ -44344,7 +44720,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       const { notificationId } = req.params;
       const acknowledgedAt = /* @__PURE__ */ new Date();
       const notification = await db.query.notifications.findFirst({
-        where: eq39(notifications.id, notificationId)
+        where: eq40(notifications.id, notificationId)
       });
       if (!notification) {
         return res.status(404).json({ error: "Notification not found" });
@@ -44358,7 +44734,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
           acknowledgedAt: acknowledgedAt.toISOString(),
           responseTimeMinutes: responseTime
         }
-      }).where(eq39(notifications.id, notificationId));
+      }).where(eq40(notifications.id, notificationId));
       let coordinationComplete = false;
       if (notification.entityType === "execution_instance" && notification.entityId) {
         const executionStatus = await storage.getExecutionStatus(notification.entityId);
@@ -44679,6 +45055,88 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     liveSignalIngestionService2.start("system", 15);
   }, 5e3);
   console.log("\u2705 Live Signal Ingestion API registered (auto-start in 5s)");
+  const { getRecentDetections: getRecentDetections2 } = await Promise.resolve().then(() => (init_SignalEvaluationService(), SignalEvaluationService_exports));
+  const { stakeholderContacts: stakeholderContactsTable, triggerDetections: triggerDetectionsTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+  app2.get("/api/detections", async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId || req.orgId || "system";
+      const detections = await getRecentDetections2(organizationId, 20);
+      res.json({ success: true, detections });
+    } catch (err) {
+      console.error("Detections fetch error:", err);
+      res.status(500).json({ success: false, detections: [] });
+    }
+  });
+  app2.post("/api/detections/:id/acknowledge", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { eq: eq44 } = await import("drizzle-orm");
+      await db.update(triggerDetectionsTable).set({ status: "acknowledged" }).where(eq44(triggerDetectionsTable.id, parseInt(id)));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+  app2.get("/api/stakeholder-contacts", async (req, res) => {
+    try {
+      const organizationId = req.query.organizationId || req.orgId || "system";
+      const { eq: eq44 } = await import("drizzle-orm");
+      const contacts = await db.select().from(stakeholderContactsTable).where(eq44(stakeholderContactsTable.organizationId, organizationId));
+      res.json({ success: true, contacts });
+    } catch (err) {
+      res.status(500).json({ success: false, contacts: [] });
+    }
+  });
+  app2.post("/api/stakeholder-contacts", async (req, res) => {
+    try {
+      const { organizationId, role, name, email, slackUserId, slackChannel } = req.body;
+      if (!organizationId || !role) return res.status(400).json({ error: "organizationId and role required" });
+      const [contact] = await db.insert(stakeholderContactsTable).values({
+        organizationId,
+        role,
+        name,
+        email,
+        slackUserId,
+        slackChannel,
+        isActive: true
+      }).returning();
+      res.json({ success: true, contact });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+  app2.delete("/api/stakeholder-contacts/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { eq: eq44 } = await import("drizzle-orm");
+      await db.delete(stakeholderContactsTable).where(eq44(stakeholderContactsTable.id, parseInt(id)));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ success: false });
+    }
+  });
+  app2.post("/api/signals/live/test-detection", async (req, res) => {
+    try {
+      const { evaluateAndPersistSignals: evaluateAndPersistSignals2 } = await Promise.resolve().then(() => (init_SignalEvaluationService(), SignalEvaluationService_exports));
+      const organizationId = req.body?.organizationId || "system";
+      const testSignals = [{
+        signalType: "regulatory",
+        description: "SEC files enforcement action \u2014 major corporation faces $2.4B fine for compliance violations and antitrust investigation expands to three new markets",
+        confidence: 88,
+        impact: "critical",
+        timeline: "Immediate",
+        source: "SEC EDGAR 8-K Filings",
+        sourceUrl: "https://www.sec.gov",
+        category: "regulatory"
+      }];
+      const detections = await evaluateAndPersistSignals2(testSignals, organizationId);
+      res.json({ success: true, detectionsCreated: detections, message: `${detections} trigger detection(s) created` });
+    } catch (err) {
+      console.error("Test detection error:", err);
+      res.status(500).json({ success: false, error: err instanceof Error ? err.message : "Unknown" });
+    }
+  });
+  console.log("\u2705 Trigger Detection API registered (Tier 5)");
   setTimeout(async () => {
     try {
       const { seedPipelineData: seedPipelineData2 } = await Promise.resolve().then(() => (init_seedPipelineData(), seedPipelineData_exports));
@@ -44717,7 +45175,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name,
         strategicCategory: playbookLibrary.strategicCategory
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq39(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq39(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq40(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq40(playbookLibrary.domainId, playbookDomains.id)).orderBy(playbookDomains.name, playbookLibrary.name, playbookTaskSequences.sequence);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequences:", error);
@@ -44730,7 +45188,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         domainName: playbookDomains.name,
         playbookCount: sql17`count(distinct ${playbookLibrary.id})`,
         taskCount: sql17`count(${playbookTaskSequences.id})`
-      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq39(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq39(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
+      }).from(playbookTaskSequences).innerJoin(playbookLibrary, eq40(playbookTaskSequences.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq40(playbookLibrary.domainId, playbookDomains.id)).groupBy(playbookDomains.name).orderBy(playbookDomains.name);
       res.json(result);
     } catch (error) {
       console.error("Error fetching task sequence summary:", error);
@@ -44749,7 +45207,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         activatedAt: playbookActivations.activatedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name
-      }).from(playbookActivations).innerJoin(playbookLibrary, eq39(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq39(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql17`${playbookActivations.activatedAt} DESC`);
+      }).from(playbookActivations).innerJoin(playbookLibrary, eq40(playbookActivations.playbookId, playbookLibrary.id)).innerJoin(playbookDomains, eq40(playbookLibrary.domainId, playbookDomains.id)).orderBy(sql17`${playbookActivations.activatedAt} DESC`);
       res.json(result);
     } catch (error) {
       console.error("Error fetching playbook activations:", error);
@@ -44787,11 +45245,11 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   app2.get("/api/playbook-library/:id", async (req, res) => {
     try {
       const { id } = req.params;
-      const [template] = await db.select().from(playbookLibrary).where(eq39(playbookLibrary.id, id)).limit(1);
+      const [template] = await db.select().from(playbookLibrary).where(eq40(playbookLibrary.id, id)).limit(1);
       if (template) {
         let domainSequence = 1;
         if (template.domainId) {
-          const [domain] = await db.select().from(playbookDomains).where(eq39(playbookDomains.id, template.domainId)).limit(1);
+          const [domain] = await db.select().from(playbookDomains).where(eq40(playbookDomains.id, template.domainId)).limit(1);
           if (domain) domainSequence = domain.sequence || 1;
         }
         const sampleData = generateFullPlaybookData(
@@ -44817,7 +45275,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         });
       }
       const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const [playbook] = await db.select().from(playbooks2).where(eq39(playbooks2.id, id)).limit(1);
+      const [playbook] = await db.select().from(playbooks2).where(eq40(playbooks2.id, id)).limit(1);
       if (playbook) return res.json({ playbook });
       res.status(404).json({ message: "Playbook not found" });
     } catch (error) {
@@ -45053,8 +45511,8 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   app2.get("/api/coordination-intelligence", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq39(playbookActivations.organizationId, orgId)).orderBy(desc20(playbookActivations.activatedAt)).limit(50);
-      const outcomes = await db.select().from(activationOutcomes).where(eq39(activationOutcomes.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq40(playbookActivations.organizationId, orgId)).orderBy(desc21(playbookActivations.activatedAt)).limit(50);
+      const outcomes = await db.select().from(activationOutcomes).where(eq40(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const TARGET_MINUTES = 12;
       const INDUSTRY_MINUTES = 43200;
@@ -45124,7 +45582,7 @@ Write in three short paragraphs: (1) What happened and how fast the organization
   app2.get("/api/compound-threats", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const threats = await db.select().from(compoundThreatAlerts).where(eq39(compoundThreatAlerts.organizationId, orgId)).orderBy(desc20(compoundThreatAlerts.detectedAt)).limit(20);
+      const threats = await db.select().from(compoundThreatAlerts).where(eq40(compoundThreatAlerts.organizationId, orgId)).orderBy(desc21(compoundThreatAlerts.detectedAt)).limit(20);
       res.json(threats);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45134,7 +45592,7 @@ Write in three short paragraphs: (1) What happened and how fast the organization
     try {
       const orgId = req.orgId;
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const triggers = await db.select().from(executiveTriggers).where(eq39(executiveTriggers.organizationId, orgId)).limit(100);
+      const triggers = await db.select().from(executiveTriggers).where(eq40(executiveTriggers.organizationId, orgId)).limit(100);
       const activeDomains = [...new Set(triggers.filter((t) => t.isActive).map((t) => t.category))];
       const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
 
@@ -45178,7 +45636,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   });
   app2.patch("/api/compound-threats/:id/dismiss", requireOrgAccess2, async (req, res) => {
     try {
-      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq39(compoundThreatAlerts.id, req.params.id));
+      await db.update(compoundThreatAlerts).set({ status: "dismissed" }).where(eq40(compoundThreatAlerts.id, req.params.id));
       res.json({ success: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45187,7 +45645,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/roi/summary", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq39(playbookActivations.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq40(playbookActivations.organizationId, orgId));
       const completed = activations.filter((a) => a.completedAt && a.actualExecutionTime);
       const avgMinutes = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 0), 0) / completed.length) : 0;
       const industryBenchmark = 4320;
@@ -45212,8 +45670,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
   app2.get("/api/roi/board-report", requireOrgAccess2, async (req, res) => {
     try {
       const orgId = req.orgId;
-      const activations = await db.select().from(playbookActivations).where(eq39(playbookActivations.organizationId, orgId)).orderBy(desc20(playbookActivations.activatedAt)).limit(50);
-      const outcomes = await db.select().from(activationOutcomes).where(eq39(activationOutcomes.organizationId, orgId));
+      const activations = await db.select().from(playbookActivations).where(eq40(playbookActivations.organizationId, orgId)).orderBy(desc21(playbookActivations.activatedAt)).limit(50);
+      const outcomes = await db.select().from(activationOutcomes).where(eq40(activationOutcomes.organizationId, orgId));
       const outcomeMap = new Map(outcomes.map((o) => [o.activationId, o]));
       const events = activations.map((a) => {
         const outcome = outcomeMap.get(a.id);
@@ -45239,7 +45697,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { scenarioText } = req.body;
       if (!scenarioText) return res.status(400).json({ error: "scenarioText required" });
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq39(playbookLibrary.isActive, true)).limit(50);
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq40(playbookLibrary.isActive, true)).limit(50);
       const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
 
 SCENARIO: "${scenarioText}"
@@ -45279,7 +45737,7 @@ Respond as JSON: { "surviveScore": 72, "thriveScore": 45, "activatedPlaybooks": 
   });
   app2.get("/api/simulation-analyses", requireOrgAccess2, async (req, res) => {
     try {
-      const analyses = await db.select().from(simulationAnalyses).where(eq39(simulationAnalyses.organizationId, req.orgId)).orderBy(desc20(simulationAnalyses.createdAt)).limit(20);
+      const analyses = await db.select().from(simulationAnalyses).where(eq40(simulationAnalyses.organizationId, req.orgId)).orderBy(desc21(simulationAnalyses.createdAt)).limit(20);
       res.json(analyses);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45317,7 +45775,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         generated = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
       } catch {
       }
-      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq39(strategicRecordings.id, recording.id));
+      await db.update(strategicRecordings).set({ generatedPlaybooks: generated, status: "complete" }).where(eq40(strategicRecordings.id, recording.id));
       res.json({ id: recording.id, generatedPlaybooks: generated, status: "complete" });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45325,7 +45783,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
   });
   app2.get("/api/strategic-recordings", requireOrgAccess2, async (req, res) => {
     try {
-      const recordings = await db.select().from(strategicRecordings).where(eq39(strategicRecordings.organizationId, req.orgId)).orderBy(desc20(strategicRecordings.createdAt)).limit(10);
+      const recordings = await db.select().from(strategicRecordings).where(eq40(strategicRecordings.organizationId, req.orgId)).orderBy(desc21(strategicRecordings.createdAt)).limit(10);
       res.json(recordings);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45379,7 +45837,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
   app2.get("/api/task-acknowledgments/:sessionId", async (req, res) => {
     try {
       const { sessionId } = req.params;
-      const acks = await db.select().from(taskAcknowledgments).where(eq39(taskAcknowledgments.sessionId, sessionId)).orderBy(asc2(taskAcknowledgments.acknowledgedAt));
+      const acks = await db.select().from(taskAcknowledgments).where(eq40(taskAcknowledgments.sessionId, sessionId)).orderBy(asc2(taskAcknowledgments.acknowledgedAt));
       res.json(acks);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -45404,7 +45862,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         playbookName: playbookLibrary.name,
         playbookDomainId: playbookLibrary.domainId,
         severityScore: playbookLibrary.severityScore
-      }).from(playbookActivations).leftJoin(playbookLibrary, eq39(playbookActivations.playbookId, playbookLibrary.id)).where(eq39(playbookActivations.organizationId, orgId)).orderBy(desc20(playbookActivations.activatedAt)).limit(50);
+      }).from(playbookActivations).leftJoin(playbookLibrary, eq40(playbookActivations.playbookId, playbookLibrary.id)).where(eq40(playbookActivations.organizationId, orgId)).orderBy(desc21(playbookActivations.activatedAt)).limit(50);
       const total = activations.length;
       const completed = activations.filter((a) => a.completedAt);
       const avgTime = completed.length ? Math.round(completed.reduce((s, a) => s + (a.actualExecutionTime || 12), 0) / completed.length) : null;
@@ -45436,7 +45894,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         return res.status(400).json({ error: "Please describe your scenario (minimum 10 characters)" });
       }
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq39(playbookLibrary.isActive, true)).limit(60);
+      const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain }).from(playbookLibrary).where(eq40(playbookLibrary.isActive, true)).limit(60);
       const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their likely readiness and recommend specific playbooks.
 
 SCENARIO: "${scenarioText}"
@@ -45642,7 +46100,7 @@ init_triggersSeed();
 // server/seeds/demoScenariosSeed.ts
 init_db();
 init_schema();
-import { eq as eq40, and as and25 } from "drizzle-orm";
+import { eq as eq41, and as and25 } from "drizzle-orm";
 var DEMO_SCENARIOS = [
   {
     name: "DEMO: Competitor Breakthrough Innovation Response",
@@ -45981,7 +46439,7 @@ var DEMO_SCENARIOS = [
 async function seedDemoScenarios() {
   console.log("\u{1F3AD} Seeding 5 Demo Scenarios with Full 4-Phase Configurations...");
   const org = await db.query.organizations.findFirst({
-    where: eq40(organizations.name, "Innovate Dynamics")
+    where: eq41(organizations.name, "Innovate Dynamics")
   });
   if (!org) {
     console.log("\u26A0\uFE0F  Default organization not found, skipping demo scenario seed");
@@ -45994,8 +46452,8 @@ async function seedDemoScenarios() {
   }
   const existingDemos = await db.query.strategicScenarios.findFirst({
     where: and25(
-      eq40(strategicScenarios.organizationId, org.id),
-      eq40(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
+      eq41(strategicScenarios.organizationId, org.id),
+      eq41(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
     )
   });
   if (existingDemos) {
@@ -46005,7 +46463,7 @@ async function seedDemoScenarios() {
   for (const demo of DEMO_SCENARIOS) {
     console.log(`\u251C\u2500 Creating demo: ${demo.name}`);
     const matchingPlaybook = await db.query.playbookLibrary.findFirst({
-      where: eq40(playbookLibrary.name, demo.playbook.name)
+      where: eq41(playbookLibrary.name, demo.playbook.name)
     });
     const [scenario] = await db.insert(strategicScenarios).values({
       organizationId: org.id,
@@ -46108,7 +46566,7 @@ async function seedDemoScenarios() {
 // server/seeds/enrichPlaybooksStartupSeed.ts
 init_db();
 init_schema();
-import { eq as eq41, isNull as isNull4 } from "drizzle-orm";
+import { eq as eq42, isNull as isNull4 } from "drizzle-orm";
 
 // server/seeds/data/enrichedPlaybooksData.json
 var enrichedPlaybooksData_default = [{ playbookNumber: 1, whyItMatters: "In VC-backed entrant situations, incumbents that publish a clear counter-position and tactical pricing response within 72 hours preserve win rates; enterprise SaaS benchmarks show competitive win-rate can drop 10\u201320 percentage points within one quarter when a new, heavily funded alternative is allowed to define the category narrative first. Across B2B funnels, first-touch speed matters: responding to competitive mentions in active opportunities within 1 hour can increase conversion 7x, while delaying beyond 24 hours commonly correlates with materially higher discounting (5\u201310% deeper concessions) and longer sales cycles (10\u201325%) once the challenger anchors price and roadmap expectations.", signalSources: ["Salesforce (or Dynamics) opportunity fields + call notes tagged with competitor name; sudden spike in competitor mentions in Stage 2\u20134 deals", "Gong/Chorus conversation intelligence: keyword alerts for entrant name, pricing claims, and \u201Cswitching\u201D language in customer/prospect calls", "6sense/Demandbase intent + G2 category traffic: abnormal lift in searches/reviews for entrant in your core segment and target account list", 'App/website analytics (Adobe/GA4) + SEM data: surge in comparison-page queries ("[Entrant] vs [Company]") and brand-conquest CPC changes'], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "Strategy Lead", items: ["Pull entrant dossier: funding round size/date, investors, hiring velocity, and target ICP from PitchBook/Crunchbase + LinkedIn headcount trend; summarize in 1-page brief", "Map entrant wedge: pricing page, packaging, integration claims, and 3 differentiators stated in launch materials; capture screenshots/URLs for legal-safe internal use", "Quantify exposure: list top 25 open opportunities + top 25 renewal accounts where entrant overlap is likely (industry/size/use case match) using CRM filters"], deadline: "T+4h", priority: "P0" }, { role: "Competitive Intel (Marketing Ops)", items: ["Set monitoring: alerts for entrant brand terms, comparison searches, and review activity; establish daily digest to Exec Team for next 14 days", "Collect field signal: request 10-min voice notes from 5 AEs and 3 CSMs on what buyers are repeating about entrant (claims, pricing, concerns)", "Spin up war-room doc: single source of truth with known facts, unknowns, and owner for each unknown; time-stamp updates"], deadline: "T+4h", priority: "P0" }], objective: "Confirm the entrant\u2019s actual offer, funding runway, and initial go-to-market wedge to prevent reacting to hype instead of facts.", timeWindow: "0-4h", decisionGate: { title: "Is this entrant an immediate revenue threat in our core segment?", criteria: ["Entrant targets the same ICP (industry + buyer persona) and advertises parity on 2+ must-have features", "At least 5 active deals or 3 renewal accounts show confirmed entrant mention in the last 7 days", "Entrant pricing undercuts by \u226515% on an apples-to-apples package or offers aggressive switching incentives"], escalation: "If 2+ criteria are met, CEO convenes 30-min decision huddle with CMO/CPO/Strategy to authorize Phase-2 actions and allocate up to $150k immediately from the pre-approved budget." }, restrictions: ["No outward-facing statements or social posts about the entrant until Legal and CEO approve; keep all intelligence factual and source-cited.", "Do not change public pricing/packaging in the first 4 hours; only prepare scenarios with modeled margin impact."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CMO (with Sales Enablement)", items: ["Publish a 1-page battle card: entrant claims vs verified facts, 3 talk tracks, and 2 proof points (case stats, security/compliance, reliability) tailored to core segment", "Stand up competitive FAQ channel for AEs/CSMs with SLA: responses in <2 hours during business time; owner rotation defined", "Create pricing guardrails for deal desk: approved promo levers (term uplift, usage credits, add-on bundling) with maximum concession thresholds by segment"], deadline: "T+24h", priority: "P0" }, { role: "CPO (with Product + Ops)", items: ["Deliver a 90-day acceleration slate: 3 shippable enhancements that neutralize entrant wedge; include effort, dependency, and customer impact score", "Identify \u201Cnon-negotiables\u201D to defend: reliability/SLA, security controls, data migration, admin features\u2014produce a checklist Sales can use in competitive evaluations", "Define fast-track customer feedback loop: schedule 8 customer calls (mix of champions + at-risk) to validate what would trigger a switch and what keeps them"], deadline: "T+24h", priority: "P0" }], objective: "Arm frontline teams with a precise counter-position, controlled discounting rules, and a product credibility narrative tied to the next 90 days.", timeWindow: "4-24h", decisionGate: { title: "Do we trigger tactical pricing and messaging changes for the next 72 hours?", criteria: ["Win-rate risk quantified: pipeline at risk \u2265$2M ARR or \u226515% of current-quarter new ARR target", "At least 2 strategic accounts request competitive pricing match or cite entrant as procurement leverage", "CPO confirms at least 2 acceleration items can ship/launch within 30 days or be credibly previewed"], escalation: "If criteria met, Strategy Lead requests CEO approval to deploy up to $250k for targeted campaigns, competitive enablement, and product acceleration overtime/vendors." }, restrictions: ["No ad hoc discounting outside deal-desk rules; avoid setting a precedent that compresses renewals next quarter.", "Do not promise roadmap items without CPO sign-off and a dated delivery window; every promise must be logged in CRM."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "Marketing (Demand Gen Lead)", items: ["Launch comparison and proof assets: one \u201CWhy [Company] for [core use case]\u201D page and one competitor-neutral evaluation guide emphasizing measurable outcomes (uptime, TCO, time-to-value)", "Run a targeted capture campaign to the top 200 ICP accounts (ABM + LinkedIn + SEM): focus on your differentiator moat and switching-risk mitigations (migration, security, scale)", "Coordinate analyst/press briefing pack (no competitor mudslinging): position category, disclose customer evidence, and pre-brief likely questions about entrant"], deadline: "T+72h", priority: "P0" }, { role: "Operations (RevOps + Customer Success Ops)", items: ["Execute \u201Cprotect list\u201D motions: outreach to top 30 renewal accounts with a structured value recap and renewal-risk check; log reasons and competitor mentions", "Implement deal desk fast lane for competitive deals: same-day pricing approvals and pre-approved levers; track concession rate and competitor disposition in CRM", "Set churn/expansion watch: daily report for 14 days on NPS dips, support severity, and product usage decline among core segment accounts"], deadline: "T+72h", priority: "P0" }], objective: "Proactively shape buyer perception in the core segment with proof-led positioning, targeted competitive capture, and account-specific retention actions.", timeWindow: "24-72h", decisionGate: { title: "Do we escalate to a 30-day structural program (product + pricing + positioning) using the full $500k?", criteria: ["Competitive loss reason appears in \u226510% of closed-lost deals in the last 2 weeks or in \u22655 deals this week", "Retention risk: \u22653 core-segment accounts signal evaluation/switching within 90 days or request early termination discussions", "Campaign indicators show entrant traction: rising comparison searches and CPC inflation \u226520% on core keywords"], escalation: "If met, CEO approves Phase-4 program scope and assigns a single accountable owner (Strategy) with weekly exec reviews; remaining budget up to $500k is allocated across product acceleration, enablement, and targeted retention offers." }, restrictions: ["Do not reference the entrant by name in paid ads unless Legal approves trademark and comparison-language rules for your jurisdictions.", "No negative claims without documented evidence; keep all external messaging centered on your verifiable strengths and customer outcomes."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Strategy (Program Owner)", items: ["Deliver segment strategy update: refreshed positioning statement, ICP refinement, and moat narrative supported by 3 quantified proof points from customer data", "Stand up ongoing competitive ops: monthly competitor scorecards, win/loss interviews (10 per month), and a maintained objection-handling repository tied to CRM fields", "Run margin + churn modeling to finalize pricing/packaging changes (if any): simulate 3 scenarios and select one with CEO/CMO/CPO sign-off"], deadline: "Day 30", priority: "P0" }, { role: "Product (Acceleration Squad Lead)", items: ["Ship the top 2 wedge-neutralizing improvements and publish release notes with customer-facing benefits mapped to core workflows", "Implement switching-friction reducers: improved onboarding, migration tooling, and admin controls that lower time-to-value and increase lock-in", "Create a 2-quarter roadmap narrative (not a promise list): themes, outcomes, and milestones for Sales/CS to use in strategic account reviews"], deadline: "Day 30", priority: "P0" }], objective: "Institutionalize a durable competitive moat through product differentiation, packaging/pricing resilience, and repeatable competitive operations.", timeWindow: "3-30d", decisionGate: null, restrictions: ["Avoid building entrant-clone features that dilute roadmap; every acceleration item must tie to measurable retention or win-rate lift in the core segment.", "Any pricing/packaging change must include a customer communication plan, renewal protection rules, and a CFO-reviewed margin impact model."] }], communicationAssets: [{ body: "Directors,\n\nA VC-backed startup has entered [Company]\u2019s core segment with a message focused on faster time-to-value and aggressive pricing. We have validated the launch assets, initial ICP targeting, and early field mentions, and we are treating this as a near-term win-rate and renewal-leverage risk. Within the next 24 hours we will deliver a verified competitor dossier, a sales battle card, and deal-desk pricing guardrails to prevent uncontrolled discounting. Within 72 hours we will deploy targeted ABM/SEM capture, publish proof-led evaluation content, and execute a protect-list retention motion for the top renewal accounts.\n\nWe have a pre-approved $500,000 budget; we will only release funds against defined triggers (pipeline/renewal exposure and observed loss reasons) and will report back with leading indicators at 12 hours and weekly for 30 days.\n\n\u2014 CEO/Strategy", type: "board_notification", subject: "Competitive Alert: VC-backed entrant launched into our core segment \u2014 72-hour response plan" }, { body: "Q1: \u201CThey\u2019re funded and cheaper\u2014why shouldn\u2019t we pick them?\u201D\nA1: Funding doesn\u2019t reduce your implementation, security, or operational risk. Anchor on outcomes: [Company] delivers proven uptime/SLA, audited security/compliance, and referenceable deployments in your exact segment. If price is the blocker, use approved levers (term uplift/credits/bundles) rather than lowering list\u2014so you keep flexibility at renewal.\n\nQ2: \u201CThey claim parity on features X and Y\u2014are we behind?\u201D\nA2: Ask for a live demo of X and Y in your workflow plus admin/security controls and migration steps; many entrants demo happy-path only. [Company] differentiates on production-grade scale, governance, and time-to-value tooling; we can also share a dated 90-day enhancement slate approved by Product for the specific gaps that matter in this use case.", type: "sales_battle_card", subject: null }], riskIndicators: { red: ["Two strategic accounts (top 20 ARR) issue competitive bake-off requirements or pricing match ultimatums tied to renewal dates", "Entrant becomes the #1 stated loss reason in weekly win/loss sampling or appears in \u226510% of closed-lost this week", "Gross margin impact forecast deteriorates by >2 points due to uncontrolled discounting or required concessions to hold renewals"], green: ["Competitive mentions are contained to <5% of active Stage 2\u20134 deals and do not increase week-over-week", "Concession rate on competitive deals remains within guardrails (no more than the pre-defined max by segment) while win-rate holds steady", "Top 30 renewal accounts complete value recap calls with no new switching evaluations initiated"], yellow: ["Comparison searches and CPC for core keywords rise 10\u201320% over baseline for 5 consecutive days", "Closed-lost notes cite entrant in \u22655 deals over two weeks, even if not primary loss reason", "CS reports 3+ customers asking for export/migration details or referencing entrant switching incentives"] }, outcomeFraming: { at30days: ["Win-rate in core segment is maintained or improved versus the prior 30-day baseline, with competitive losses explicitly tracked and addressed", "Two wedge-neutralizing product improvements shipped (or credibly previewed with dated milestones) and used in strategic account reviews", "Competitive operations are institutionalized: monthly scorecard, win/loss interview loop, and CRM fields enabling reliable competitor attribution"], at12hours: ["Entrant dossier completed with verified pricing, ICP, and wedge; unknowns have named owners and deadlines", "Protect list finalized (top opportunities + renewals) with assigned AE/CS owners and first outreach scheduled", "Draft battle card + pricing guardrails ready for CEO/CMO/CPO approval and distribution cadence set"], failureModes: ["Panic discounting outside deal desk creates a new price floor that compresses renewals and forces broader repricing", "Overreacting to entrant hype leads to cloning features that don\u2019t drive retention/wins, delaying core roadmap commitments", "Inconsistent field messaging (AEs/CSMs improvising claims) undermines credibility and increases security/procurement friction"] } }, { playbookNumber: 2, whyItMatters: "When an established Fortune 500 entrant launches, incumbent share shifts can occur within one buying cycle; in many B2B categories 50\u201370% of pipeline influenced by major brand announcements converts or stalls within 30\u201360 days. Partnership and positioning windows are short: competitive win-rate changes of 10\u201320 points are commonly observed after new-entry pricing/packaging moves, making first-week message discipline and counter-offers critical.", signalSources: ["Competitive intelligence feed (AlphaSense/Factiva) for SEC filings, press releases, earnings-call transcripts and analyst notes mentioning market entry, SKUs, pricing, and partnerships", "CRM + CPQ telemetry (Salesforce/HubSpot + deal desk) tracking competitor mentions, price-match requests, loss reasons, and discounting deltas by segment", "Digital demand signals (Similarweb/SEMrush + paid search logs) monitoring new brand keywords, landing pages, ad spend, and share-of-search by product category", "Customer/partner voice channels (support tickets, NPS verbatims, CSM call notes in Gong/Zoom transcripts) flagged for entrant mentions, churn risk language, and procurement RFP activity"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "Strategy (Tier 2) + CEO sponsor", items: ["Extract facts: entrant offerings, target segments, GTM model, stated differentiators, pricing signals, and partnership intent from primary sources", "Map overlap to our top 20 accounts and top 3 segments; estimate revenue-at-risk (ARR), pipeline-at-risk, and churn exposure", "Draft 3 options: partner-first, differentiate-and-defend, or hybrid; include assumptions and immediate actions"], deadline: "T+4h", priority: "lead" }, { role: "CFO (Tier 1) + Deal Desk", items: ["Set spend guardrails for the $500,000: max incentive/credits, legal/consulting cap, and marketing reallocation limits", "Approve temporary commercial levers: discount bands, term extensions, and price-protection policy for renewal cohort", "Define rapid ROI thresholds and reporting cadence for any spend within 72 hours"], deadline: "T+4h", priority: "required" }], objective: "Confirm entrant\u2019s scope and timing, quantify exposure by segment, and lock a 72-hour response plan within the $500,000 pre-approved budget.", timeWindow: "0-4h", decisionGate: { title: "Go/No-Go: Activate Market Defense Protocol", criteria: ["Entrant targets at least one of our top 2 segments and has credible distribution/brand advantage (e.g., existing enterprise relationships)", "Pipeline-at-risk exceeds 10% of next-quarter forecast or top-20 account overlap exceeds 5 accounts", "We can articulate a defensible differentiation angle in one sentence with supporting proof points within 24 hours"], escalation: "Escalate to CEO + Board Chair immediately if revenue-at-risk exceeds 15% of next-quarter forecast or if entrant announces below-market pricing." }, restrictions: ["No public statements, pricing changes, or customer communications without CEO + Legal approval.", "No commitments to exclusivity, MFN, or data-sharing in any partnership discussion without Board notification."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "Product (Tier 2) + Operations", items: ["Define differentiation package: 3 capability proof points, roadmap accelerations (\u226490 days), and service-level commitments we can stand behind", "Create a fast-track retention offer framework: onboarding support, migration assistance, and performance guarantees for renewal cohort", "Prepare operational capacity plan for expected spikes in demos, POCs, and customer escalations"], deadline: "T+24h", priority: "lead" }, { role: "Marketing (Tier 2) + Strategy", items: ["Publish internal positioning brief: who we win against, why now, and competitor-neutral messaging aligned to differentiation", "Stand up account-based defense lists (top 20 accounts + lookalikes) and draft targeted enablement assets for Sales/CS", "Build partnership target list (5-8 candidates) including the entrant plus complementary ecosystems; define outreach scripts and objectives"], deadline: "T+24h", priority: "required" }], objective: "Equip teams with a unified narrative, targeted defenses for exposed accounts, and a partnership exploration plan with clear redlines.", timeWindow: "4-24h", decisionGate: { title: "Choice Point: Partner-Track vs Defend-Only", criteria: ["Partnership offers a credible channel expansion or integration advantage within 90 days without diluting differentiation", "Legal/commercial redlines are workable: no exclusivity, limited data access, and clear customer ownership terms", "Defend-only path can sustain win-rate and renewal rates with approved levers and capacity"], escalation: "Escalate to Board + CFO if partnership requires material revenue share, bundling that impacts gross margin >3 points, or any equity discussion." }, restrictions: ["No negative selling or unverified claims about the entrant; all comparisons must be evidence-based and reviewable.", "No roadmap commitments to customers beyond approved deliverables and resourced timelines."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CEO (Tier 1) + Strategy", items: ["Conduct executive outreach to top 10 at-risk accounts: reaffirm commitments, share proof points, and secure next-step dates", "Initiate partnership exploration with entrant and 2 ecosystem alternatives; set agenda: integration, co-sell boundaries, and pilot criteria", "Approve a 72-hour market message: customer outcomes, reliability, and specialization; ensure alignment across channels"], deadline: "T+72h", priority: "lead" }, { role: "Marketing + Product (Tier 2)", items: ["Launch targeted campaigns for defended segments: case studies, ROI calculator, and competitive-neutral webinars", "Deploy sales enablement updates: objection handling, pricing guidance, and technical differentiation demo path", "Stand up rapid feedback loop: daily win/loss reasons, competitor pricing intel, and customer sentiment dashboard"], deadline: "T+72h", priority: "required" }], objective: "Stabilize customers and pipeline, initiate partnership discussions where advantageous, and execute differentiation and defense in-market.", timeWindow: "24-72h", decisionGate: { title: "Scale Decision: Expand Spend and Commit Resources", criteria: ["Early indicators show stabilizing: renewal save rate \u2265 baseline and no increase in late-stage deal slippage beyond 10%", "Differentiation message resonates: demo-to-proposal conversion improves or holds versus previous 2-week average", "Partnership talks yield a concrete pilot proposal (scope, timeline, governance) or a clear negative decision with rationale"], escalation: "Escalate to Board if additional funding above $500,000 is required or if entrant triggers a price war impacting margin targets." }, restrictions: ["No public partnership announcement or logo usage without signed agreement and Board-notified risk review.", "Discounting must stay within CFO-approved bands and include documented rationale tied to retention or strategic accounts."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Strategy (Tier 2) + Board oversight", items: ["Complete market defense program: segment strategy, updated ICP, channel strategy, and competitive response playbooks", "Finalize partnership decision(s): pilot results, governance model, and commercial terms; document a walk-away position", "Run a post-mortem on first 30 days: wins/losses, pricing pressure, churn drivers, and corrective actions"], deadline: "Day 30", priority: "lead" }, { role: "Product + Operations (Tier 2)", items: ["Deliver 1-2 high-impact differentiation releases or service upgrades tied to defended segments and measurable outcomes", "Implement customer retention system: churn risk scoring, executive sponsor program, and SLA escalation paths", "Update enablement and process: competitive intel capture in CRM, standardized objection tags, and monthly competitor review cadence"], deadline: "Day 30", priority: "required" }], objective: "Institutionalize market defense, finalize partnership outcomes, and harden differentiation through product, operations, and commercial systems.", timeWindow: "3-30d", decisionGate: null, restrictions: ["Any long-term pricing/packaging changes require CFO approval and Board notification if margin impact exceeds plan thresholds.", "Any integration that touches customer data requires security, privacy, and compliance review before execution."] }], communicationAssets: [{ body: "Today a Fortune 500 company publicly announced entry into our market with initial positioning, distribution advantages, and potential pricing pressure. We have validated the announcement sources and are quantifying overlap across our top segments and top accounts; initial focus is renewals and late-stage pipeline over the next 30\u201360 days. We are activating a 72-hour plan: (1) account stabilization outreach, (2) differentiation proof points and rapid enablement, and (3) partnership exploration with clear redlines (no exclusivity/MFN). We will operate within the $500,000 pre-approved budget and provide an update in 24 hours with quantified revenue-at-risk, recommended posture, and any escalations.", type: "board_notification", label: "Board Alert: Fortune 500 Entrant \u2014 72-Hour Defense + Partnership Track", timing: "Within 6 hours of trigger confirmation", subject: "[Company] Market Dynamics Alert: Fortune 500 entrant announced entry \u2014 exposure and 72-hour plan" }, { body: "Q: \u201CWhy should we stay with [Company] now that a Fortune 500 brand entered?\u201D\nA: \u201CBecause [Company] is specialized for your use case with proven outcomes: (1) fastest time-to-value in our category, (2) reliability and support SLAs tailored to your workflows, and (3) measurable ROI backed by references in your industry. We\u2019ll also offer a transition-safe plan: price protection through renewal and executive sponsorship to remove delivery risk.\u201D\n\nQ: \u201CWill you match their pricing or bundle?\u201D\nA: \u201CWe can be commercially flexible for strategic accounts within approved bands, but we won\u2019t trade away outcomes. If pricing is the main concern, we\u2019ll structure a package with performance guarantees, phased rollout, and services credits so you get a lower-risk path while keeping long-term total cost and adoption in check.\u201D", type: "sales_battle_card", label: "Entrant Response Card: Defend, Differentiate, and Explore Partnerships", timing: "Ready for Sales/CS within 24 hours; refresh daily for 7 days", subject: null }], riskIndicators: { red: ["Churn signals spike: top-20 accounts initiate RFPs, competitive bake-offs, or termination-for-convenience reviews", "Entrant launches aggressive undercut pricing or bundling that compresses our gross margin >3 points to compete", "Key partner or distributor indicates intent to prioritize entrant, limiting our access to enterprise buyers"], green: ["Win-rate and renewal save rate hold within \xB15% of baseline despite entrant mention rates increasing", "Entrant appears focused on adjacent segment or limited geography/channel with no direct overlap to top accounts", "We secure customer reaffirmations: \u226570% of top 10 at-risk accounts schedule next steps within 7 days"], yellow: ["Late-stage deals show >10% increase in slippage or procurement requests referencing entrant pricing/terms", "Support/NPS verbatims show rising concern about vendor viability or roadmap parity", "Entrant announces major channel partnership (e.g., hyperscaler/GSIs) that intersects our primary routes to market"] }, outcomeFraming: { at30days: ["Renewal cohort stabilized and competitive win-rate defended through differentiation, proof points, and disciplined offers", "Partnership decision reached: pilot launched with clear governance or formally declined with alternative ecosystem moves executed", "Structural improvements delivered: updated ICP/positioning, faster release or service upgrades, and continuous competitive sensing embedded in CRM"], at12hours: ["Confirmed entrant scope, segments, and likely GTM; quantified initial exposure (ARR + pipeline) and top at-risk accounts list", "CEO/CFO-approved defense levers and budget guardrails activated; no uncontrolled discounting or messaging drift", "Partner exploration plan defined with redlines and outreach targets; internal narrative ready for enablement"], failureModes: ["Slow, inconsistent response leads to uncontrolled discounting and margin erosion without improving retention or win-rate", "Messaging becomes reactive or negative, undermining trust and increasing churn/RFP volume among enterprise buyers", "Partnership talks proceed without redlines, causing data/commercial risk or channel conflict that weakens long-term differentiation"] } }, { playbookNumber: 3, whyItMatters: "In B2B SaaS competitive-displacement deals, win rates commonly swing 10\u201320 percentage points based on first-response enablement and narrative control within the first 48\u201372 hours. Industry benchmarks also show 5\u201310% of at-risk ARR can be exposed within 30 days of a feature-parity announcement unless retention outreach and roadmap proof points are delivered quickly and consistently.", signalSources: ["Competitive intelligence feed (Crayon/Klue) with automated alerts for launch pages, release notes, pricing, and comparison pages", "G2/Gartner Peer Insights/TrustRadius review monitoring for sudden review volume spikes and feature mentions tied to the launch", "Salesforce/CRM field intel + Gong/Chorus call keyword alerts for competitor product name and newly claimed parity features", "Web analytics and SEO monitoring (GA4/Search Console/Ahrefs) for branded search shifts, comparison-keyword rank changes, and traffic to cancellation/pricing pages"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CPO", items: ["Run parity diff: map competitor claims to [Company] requirements, edge cases, integrations, and enterprise controls; label each as true parity/partial/marketing claim", "Identify 3 acceleration candidates that defend the most revenue (top differentiators customers buy) and estimate effort with CTO", "Define a customer-safe positioning statement: what is still differentiated, what is coming, and what is not a priority"], deadline: "T+4h", priority: "lead" }, { role: "CMO", items: ["Draft rapid messaging pivot: update talk track to outcome-led differentiation (reliability, TCO, compliance, ecosystem) and remove feature-checklist framing", "Pull top 20 open opps and top 50 renewal accounts to tag as high-risk and assign comms owners with Sales/CS", "Prepare internal FAQ + competitor-claim rebuttals with evidence links (docs, benchmarks, customer logos, security attestations)"], deadline: "T+4h", priority: "required" }], objective: "Confirm the competitor\u2019s actual capabilities versus claims, quantify exposure by segment, and align Tier-1 leaders on a single working narrative and response plan.", timeWindow: "0-4h", decisionGate: { title: "Parity Reality Check & Exposure Classification", criteria: ["At least 80% of competitor claims categorized (true/partial/false) with cited evidence", "Exposure quantified: ARR at risk by segment (new biz, expansion, renewals) with top 10 accounts named", "Single approved narrative and field talk track distributed to Sales leadership"], escalation: "If exposure exceeds $2M ARR or parity is confirmed on 2+ core differentiators, escalate to CEO and call an emergency Tier-1 meeting within 2 hours to authorize acceleration scope and pricing/packaging changes." }, restrictions: ["No public statements that directly name the competitor or make unverifiable performance/security claims without Legal review.", "No roadmap commitments to specific dates for enterprise customers until CTO confirms feasibility and Ops confirms capacity."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CTO", items: ["Produce a 30/60/90 engineering plan: 2 quick wins, 1 medium initiative, and 1 strategic differentiator; include staffing and dependencies", "Stand up a tiger team with daily standup, release train, and rollback plan; define metrics (cycle time, defect escape, adoption)", "Validate feasibility and risks for any public roadmap statements; align with CPO on what can be promised as 'in progress' vs 'planned'"], deadline: "T+24h", priority: "lead" }, { role: "Sales", items: ["Deploy updated battle card and talk track; run a 30-minute mandatory enablement for AEs/SEs handling competitive deals", "Launch account save plays: top 50 renewals get executive outreach + proof assets; top 20 competitive opps get solution workshop offers", "Create discount/terms guardrails and approval path; track all competitor-driven concessions in CRM with reason codes"], deadline: "T+24h", priority: "required" }], objective: "Enable the field, lock an acceleration plan within the $500,000 budget, and launch targeted retention motions for at-risk accounts.", timeWindow: "4-24h", decisionGate: { title: "Acceleration Scope & Retention Motion Go/No-Go", criteria: ["Tier-1 approves acceleration backlog with budget allocation and delivery owners", "Field enablement delivered and CRM tagging live for competitor-threat tracking", "Top at-risk accounts have named exec sponsors and outreach scheduled within 24 hours"], escalation: "If engineering capacity cannot deliver at least 2 quick wins within 30 days, escalate to CPO/CTO to approve temporary contractors or deprioritize current roadmap items within 12 hours." }, restrictions: ["Use the $500,000 only for acceleration and retention motions that directly protect near-term ARR; no broad brand campaigns.", "All concessions (price, terms, free services) require Sales leader approval and must be logged with expected ARR impact."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CMO", items: ["Ship updated website and sales collateral: differentiation page, competitor-neutral comparison framework, and customer proof points", "Publish a product update post or webinar invite focused on outcomes and enterprise requirements; include 'what\u2019s new' and 'what\u2019s next' with safe language", "Launch targeted customer comms to admins/champions for at-risk segments emphasizing stability, security, integrations, and support advantages"], deadline: "T+72h", priority: "lead" }, { role: "CPO", items: ["Run customer advisory mini-sessions (5\u201310 key accounts) to validate which parity items matter and refine acceleration priorities", "Deliver a concise roadmap snapshot for Sales/CS with confidence levels and customer impact statements", "Define packaging or bundle adjustments (where allowed) to preserve differentiation and reduce feature-checklist comparisons"], deadline: "T+72h", priority: "required" }], objective: "Control the market narrative without over-claiming, prove momentum through tangible artifacts, and prevent churn by showing clear differentiation and near-term delivery.", timeWindow: "24-72h", decisionGate: { title: "Market Narrative & Account Risk Stabilization", criteria: ["External assets updated and distributed; customer comms sent to all tagged high-risk accounts", "At least 70% of high-risk accounts have two-way engagement (call, workshop, or exec response) within 72 hours", "Competitive pipeline and renewal risk trends reviewed; mitigation actions assigned for any account with elevated churn probability"], escalation: "If churn risk spikes (e.g., 3+ strategic accounts request termination or competitor bake-off within 72 hours), escalate to CEO and authorize an executive-led retention task force and tailored commercial packages." }, restrictions: ["No head-to-head competitive ads or negative messaging; keep communications competitor-neutral and evidence-based.", "Do not announce delivery dates unless already in active development with committed capacity and release criteria."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "Operations", items: ["Implement a recurring competitive war-room cadence (weekly) with dashboards: win/loss, concessions, churn risk, and feature delivery progress", "Create a closed-loop system from field intel to product decisions: standardized intake, triage SLA, and feedback to Sales/CS", "Audit onboarding/support capacity to ensure retention motions don\u2019t degrade SLAs; add temporary coverage if needed within budget"], deadline: "Day 30", priority: "lead" }, { role: "Strategy", items: ["Update competitive landscape and positioning: where parity is acceptable vs where [Company] must lead; define 2 defensible moats", "Quantify ROI of acceleration spend: ARR protected, win-rate changes, CAC payback impact, and roadmap trade-offs", "Recommend next-quarter moves: partnerships/integrations, pricing/packaging refinement, and differentiated enterprise features"], deadline: "Day 30", priority: "required" }], objective: "Deliver accelerated features, institutionalize competitive response, and harden differentiation through product, operations, and go-to-market systems.", timeWindow: "3-30d", decisionGate: null, restrictions: ["No new long-term programs without identifying roadmap trade-offs and an owner for ongoing operating cadence.", "All lessons learned must be codified into enablement, product planning, and customer success playbooks within 30 days."] }], communicationAssets: [{ body: "Today a primary competitor launched a product positioned as matching [Company]\u2019s core capabilities. We have verified initial claims, identified which items are true parity versus partial/marketing claims, and quantified near-term exposure across pipeline and renewals. We are executing a 72-hour plan: (1) accelerate two high-impact deliverables and lock a 30/60/90 roadmap, (2) pivot messaging to outcomes, enterprise readiness, and proven customer results, and (3) run targeted retention outreach to top at-risk accounts with executive sponsorship. We will report daily on win/loss shifts, concession levels, churn signals, and delivery progress.", type: "board_notification", label: "Board Alert: Competitor Feature-Parity Launch Response Plan", timing: "Send within 6 hours of trigger; update at 48 hours", subject: "[Company] competitive response: feature-parity launch and 72-hour stabilization plan" }, { body: "Q: The competitor now has the same core features\u2014why choose [Company]?\nA: Feature lists don\u2019t equal outcomes. [Company] differentiates on enterprise-grade reliability, security/compliance, integrations and admin controls, faster time-to-value, and proven production references; we can show evidence (customer proof, certifications, support SLAs) and a clear near-term roadmap for the few parity gaps that matter.\n\nQ: Should I ask for a discount because of parity?\nA: We will compete, but we won\u2019t trade away long-term value. Use the approved package/terms guardrails, focus on quantifiable ROI (reduced risk, lower operational overhead, faster deployment), and escalate exceptions through Sales leadership with a documented competitor threat and expected ARR impact.", type: "sales_battle_card", label: "Competitive Parity Launch: Field Q&A Card", timing: "Distribute within 12 hours; refresh at 72 hours", subject: null }], riskIndicators: { red: ["Two or more strategic accounts (top 20 by ARR) signal intent to churn or issue formal competitive RFP within 14 days", "Competitive win/loss swings >15 percentage points against the competitor across targeted segments", "Roadmap commitments are missed or quality incidents occur due to acceleration (P1 incidents or rollback events)"], green: ["Win rates in competitive deals remain stable (\xB15%) and concessions do not increase week-over-week", "At-risk renewals show normal engagement and no increase in cancellation/pricing-page traffic", "Engineering delivers at least one quick-win improvement to production with positive early adoption"], yellow: ["3\u20135 key accounts request side-by-side comparisons or bake-offs within one week", "Discounting or free-service requests increase materially and require repeated approvals", "Inbound leads and branded search shift toward comparison terms; demo-to-close cycle lengthens"] }, outcomeFraming: { at30days: ["Two accelerated improvements shipped; measurable reduction in competitor-driven objections on calls and in win/loss notes", "Renewal churn remains within plan; churn drivers categorized and mitigations embedded into CS motions", "Competitive response system operational: dashboards, intake SLAs, enablement refresh cadence, and updated positioning"], at12hours: ["Single approved narrative and talk track in the field; top exposure accounts identified and assigned owners", "Validated parity matrix (claims vs reality) with evidence and a prioritized acceleration shortlist", "Retention outreach underway for top renewals and competitive opportunities with exec sponsorship"], failureModes: ["Public over-commitment to roadmap dates creates credibility loss and increases churn when delivery slips", "Uncontrolled discounting compresses margins without improving win rates, setting a precedent for future renewals", "Acceleration trades off quality, causing incidents that erase differentiation and validate competitor messaging"] } }, { playbookNumber: 4, whyItMatters: "In enterprise tech categories, independent win/loss benchmarks show 60\u201370% of competitive deals are influenced by perceived product leadership, and a high-profile breakthrough launch can swing pipeline sentiment within days. Analyst and social coverage peaks in the first 48 hours; companies that publish a credible technical position and customer impact narrative within 24 hours typically reduce competitive FUD-driven stall rates by ~20\u201330% compared with teams that respond after the first week.", signalSources: ["Competitive intelligence feed (Crunchbase/CB Insights + vendor press release and SEC filings monitor) with keyword alerts for core technology claims", "Analyst relations channel (Gartner/Forrester/IDC inquiry notes + briefing invites) tagged to competitor and category", "Salesforce CRM telemetry (opportunity stage regression, competitor field, churn risk flags) with real-time Slack/Teams alerts", "Digital listening + PR monitoring (Brandwatch/Meltwater + Reddit/Hacker News + LinkedIn) tracking share-of-voice and claim propagation"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CTO", items: ["Stand up rapid technical review: parse announced claims, benchmarks, patents, architecture hints, and required dependencies", "Define test plan: minimum reproducible evaluation (datasets, workloads, security/compliance constraints, performance metrics)", "Deliver a 1-page technical confidence rating (credible/partial/marketing) and likely time-to-parity scenarios"], deadline: "T+4h", priority: "lead" }, { role: "Head of Strategy", items: ["Run exposure scan: top 20 open opportunities + top 20 renewal accounts mapped to competitor presence and decision timeline", "Model impact bands: best/base/worst on pipeline conversion, ASP pressure, and churn risk over next 90 days", "Draft decision brief for Tier-1: what changed, who is at risk, and initial response options within $500k"], deadline: "T+4h", priority: "required" }], objective: "Validate the competitor\u2019s breakthrough claims and quantify immediate revenue risk across active deals and at-risk customers.", timeWindow: "0-4h", decisionGate: { title: "Is the breakthrough credible and material to near-term revenue?", criteria: ["CTO rates claims as credible/likely based on available evidence and feasibility", "\u226510% of next-2-quarter pipeline or \u22655% of renewals show direct competitive pressure", "There is a plausible path to respond via repositioning, partnership, or accelerated R&D within 30 days"], escalation: "If credible AND material, CEO convenes Tier-1 within 2 hours for go/no-go on response track and budget release." }, restrictions: ["No public or customer-facing statements until legal/PR review and Tier-1 alignment on claim posture.", "Do not reprioritize R&D work or commit roadmap dates without CPO/CTO joint sign-off."] }, { id: "phase-2", name: "Internal Response", tasks: [{ role: "CPO", items: ["Create feature/benefit delta map: competitor claims vs [Company] capabilities, including non-feature differentiators (TCO, reliability, compliance)", "Define the pivot backlog: 3 candidate initiatives (accelerate, partner, acquire/build) with effort, risk, and expected customer value", "Set internal guidance: what we will/won\u2019t promise; interim roadmap language for Sales and CSM"], deadline: "T+24h", priority: "lead" }, { role: "VP Marketing", items: ["Produce messaging hierarchy: acknowledge market shift, reinforce [Company] advantages, and neutralize competitor FUD with proof points", "Draft sales enablement pack: battle card, objection handling, talk track, and competitive FAQ for SEs", "Prepare analyst brief outline and PR holding statement pending Tier-1 approval"], deadline: "T+24h", priority: "required" }], objective: "Align executives on a technical position, a customer-impact narrative, and immediate commercial countermeasures for active deals.", timeWindow: "4-24h", decisionGate: { title: "Commit response track and allocate the pre-approved $500k", criteria: ["Tier-1 agrees on the primary posture: (A) parity acceleration, (B) reposition to adjacent value, or (C) partner/buy strategy", "Named owners and weekly milestones are assigned for the next 30 days with measurable outputs", "Budget split is approved (e.g., evaluation/prototype, enablement/PR, partner diligence) with procurement path confirmed"], escalation: "If no alignment by T+24h, escalate to Board Chair for an emergency session and temporary freeze on discretionary roadmap changes." }, restrictions: ["No disparagement or unverified counter-claims; only evidence-based comparisons and customer outcomes.", "All sales messaging must match the approved technical confidence rating and approved roadmap language."] }, { id: "phase-3", name: "External Action", tasks: [{ role: "CEO", items: ["Approve and deliver top-customer outreach plan: top 10 accounts get executive calls with the agreed narrative and next steps", "Conduct analyst briefing: share [Company] position, evaluation plan, and near-term commitments without overpromising", "Authorize competitive offer levers for active deals (terms, pilots, services) within guardrails"], deadline: "T+72h", priority: "lead" }, { role: "Head of Sales", items: ["Launch deal-room protocol: red-flag opportunities, SE support, and win-plan templates for competitor-involved deals", "Track and report daily: stage movement, stall reasons, objection themes, and pricing pressure tied to competitor launch", "Deploy customer proof: reference calls, benchmarks, and case studies mapped to competitor claims"], deadline: "T+72h", priority: "required" }], objective: "Stabilize pipeline and customer confidence while shaping market perception with a credible, defensible response.", timeWindow: "24-72h", decisionGate: { title: "Do we need a major repositioning or structural move (partnership/M&A) now?", criteria: ["Pipeline impact remains elevated (e.g., \u226515% of late-stage deals stalled due to competitor claim) after enablement rollout", "Technical evaluation indicates parity would exceed 2 quarters or requires non-trivial platform changes", "There is a credible partner or acquisition target that closes the gap faster than internal build"], escalation: "If criteria met, CEO requests Board authorization for expanded spend beyond $500k and initiates formal partner/M&A process." }, restrictions: ["No bespoke discounts beyond approved thresholds; protect long-term pricing integrity and renewal baselines.", "Customer commitments must be backed by an executable plan; avoid announcing dates tied to unproven engineering work."] }, { id: "phase-4", name: "Structural Response", tasks: [{ role: "CTO", items: ["Deliver technical artifact: benchmark results, prototype, or integration demonstrating response path and performance targets", "Rebaseline engineering plan: staffing, dependencies, and risk register with weekly executive checkpoints", "Implement competitive telemetry: ongoing monitoring, regression tests, and quarterly tech scans to prevent repeat surprises"], deadline: "Day 30", priority: "lead" }, { role: "COO", items: ["Operationalize GTM changes: packaging, enablement cadence, support readiness, and rollout to regions/segments", "Update financial plan: margin impact, services capacity, and cost controls to stay within approved spend unless reauthorized", "Stand up customer retention program: targeted success plans for at-risk accounts with measurable adoption outcomes"], deadline: "Day 30", priority: "required" }], objective: "Execute the selected R&D pivot and market repositioning, proving progress with measurable artifacts and updated GTM motions.", timeWindow: "3-30d", decisionGate: null, restrictions: ["No release commitments without security, compliance, and reliability sign-offs aligned to enterprise customer requirements.", "Avoid parallel major pivots; enforce single-threaded ownership on the chosen response track to prevent dilution."] }], communicationAssets: [{ body: "Today a key competitor announced a technology they claim materially improves performance and cost in our core category. We initiated a rapid technical assessment led by the CTO and a revenue exposure scan across top pipeline and renewals. Early indicators: credibility rating pending validation tests; initial exposure concentrated in late-stage enterprise deals and two upcoming renewals. Within 24 hours we will finalize our position, approved messaging, and a response track (accelerate parity, reposition, or partner). We will deploy executive customer outreach within 72 hours. Requested: Board availability for a 30-minute update and pre-approval to deploy the $500,000 response budget.", type: "board_notification", label: "Competitor breakthrough launch \u2014 24h board situational update", timing: "Send within 12 hours of trigger; follow with live briefing within 24 hours", subject: "[Company] response to competitor breakthrough technology announcement" }, { body: "Q: \u201CDid we just become obsolete because of their breakthrough?\u201D\nA: \u201CNo. Their announcement highlights a new approach, but customers still need enterprise-grade security, reliability, integrations, and predictable TCO. We are validating the claims with comparable workloads and will share evidence-based results; meanwhile [Company] delivers proven outcomes in production with strong references.\u201D\n\nQ: \u201CDo you have a roadmap date to match this?\u201D\nA: \u201CWe will not speculate. We have an active response plan with engineering leadership, and we can propose near-term alternatives now (configuration, services, or partner options) that achieve the business outcome while we execute the chosen product path.\u201D", type: "sales_battle_card", label: "Breakthrough launch counter \u2014 field Q&A", timing: "Publish to Sales/SEs within 24 hours; refresh at 72 hours with test results", subject: null }], riskIndicators: { red: ["Multiple late-stage opportunities stall or flip to competitor within 14 days citing technology gap", "Renewal churn risk spikes (CSM escalations) and customers demand contractual commitments we cannot support", "Analysts/media position competitor as new category leader and [Company] as lagging, driving inbound cancellations or RFP disqualification"], green: ["Competitive objections are isolated to early-stage deals and do not materially change close plans", "Technical assessment finds claims overstated or not applicable to regulated/enterprise requirements", "Analyst and social narratives remain balanced with limited negative mentions of [Company]"], yellow: ["Late-stage deals request re-evaluation cycles or add competitor proof-of-concept requirements", "Pricing pressure increases (requests for concessions) explicitly tied to competitor\u2019s launch claims", "Key customers ask for written roadmap assurances or threaten to delay renewals pending clarity"] }, outcomeFraming: { at30days: ["Demonstrable response artifact delivered (benchmark/prototype/integration) and shared in controlled customer/analyst settings", "GTM repositioning implemented: updated messaging, packaging guidance, and competitive plays reflected in win plans", "Pipeline stabilization: reduced competitor-driven stalls and improved retention posture for targeted accounts"], at12hours: ["CTO technical confidence rating issued with a defined validation plan and initial feasibility view", "Exposure quantified: named top at-risk opportunities/renewals with owner and mitigation action", "Tier-1 alignment scheduled with a draft posture and budget allocation options within $500k"], failureModes: ["Overreaction: rushed roadmap promises create delivery misses and credibility loss with enterprise buyers", "Underreaction: delayed messaging enables competitor to define the narrative, increasing stall and churn rates", "Fragmented execution: multiple competing pivots dilute engineering focus and produce no compelling proof within 30 days"] } }, { playbookNumber: 5, whyItMatters: "Companies that respond within 12 hours retain an average of 91% of at-risk pipeline. Companies that take 72+ hours retain 58%. (Source: Bain competitive response analysis, 2023.)", signalSources: ["Competitor pricing page changes (web monitoring)", "Press release keywords: 'price reduction,' 'free tier,' 'accessible pricing,' 'value pricing'", "Sales team field reports: 3+ reps report same competitor pricing mention in a single week", "Win/loss data shift: competitor win rate increases 10%+ in a 30-day window"], enrichedPhases: [{ id: "phase-1", name: "Immediate Assessment", tasks: [{ role: "CFO", items: ["Pull current gross margin by product line", "Model three response scenarios: (A) Match competitor pricing, (B) Partial match with value reinforcement, (C) Hold price and accelerate value narrative", "For each scenario: calculate 90-day margin impact, customer churn risk, and revenue exposure by segment", "Bring outputs to the Phase 1 decision meeting"], deadline: "within 2 hours", priority: "lead" }, { role: "CMO", items: ["Pull NPS scores from last 18 months segmented by price sensitivity", "Identify which customer segments are highest flight risk vs. highest loyalty", "Flag any pending renewal accounts within 60 days \u2014 these are immediate exposure", "Draft a one-page competitive positioning brief (internal only)"], deadline: "within 2 hours", priority: "lead" }, { role: "Sales Leadership", items: ["Pull all open opportunities where this competitor is present (CRM query)", "Flag deals closing within 30 days \u2014 these become the priority list", "Brief regional VPs: no pricing concessions, no public commentary until Phase 2 decision", "Collect field intelligence: What are customers saying? How is the competitor framing this?"], deadline: "within 3 hours", priority: "required" }], objective: "Understand the full scope before any external communication.", timeWindow: "Hours 0\u20134", decisionGate: { title: "Phase 1 \u2192 Phase 2 Decision Gate", criteria: ["CFO scenario models completed (all three, with numbers)", "CMO has identified the top 20 at-risk accounts", "Sales has quantified the pipeline at risk (dollar amount)", "A response posture has been selected by CEO + CFO: Match / Partial / Hold"], escalation: "If decision cannot be reached, escalate to board chair. Do not proceed without a posture decision." }, restrictions: ["No press releases or public statements", "No customer communications", "No pricing changes", "No social media response"] }, { id: "phase-2", name: "Response Execution", tasks: [{ role: "CFO + Finance (Scenario A: Match)", items: ["Draft board notification memo (notification, not approval)", "Initiate pricing system updates (not live yet \u2014 pending Phase 3 sign-off)", "Activate pre-approved $500K budget for customer retention offers on at-risk accounts"], deadline: "within this phase", priority: "conditional" }, { role: "CMO + Product (Scenario B: Partial Match)", items: ["Identify 2\u20133 value-adds that can be accelerated or repriced at current margin", "Draft 'here's what you get that they don't' customer communication", "Provide sales updated battle card with specific value vs. competitor talking points"], deadline: "within this phase", priority: "conditional" }, { role: "CMO + Sales Leadership (Scenario C: Hold)", items: ["Finalize value narrative: what does the customer get for paying more?", "Draft 3 customer-facing communication versions: account retention, renewal defense, general market", "Brief investor relations if company is public \u2014 they will receive questions"], deadline: "within this phase", priority: "conditional" }, { role: "Legal", items: ["Review any planned communications for compliance (no competitor disparagement)", "Confirm pricing change process if applicable (regulatory requirements by industry)"], deadline: "within this phase", priority: "required" }], objective: "Execute the chosen posture internally. Prepare external-facing assets.", timeWindow: "Hours 4\u20138", decisionGate: { title: "Phase 2 \u2192 Phase 3 Decision Gate", criteria: ["Board has been notified (not consulted \u2014 notified)", "Legal has cleared all external communications", "Sales has received updated battle cards and briefing", "Customer-facing team knows the response posture and their talking points", "Pricing changes (if any) are staged and ready \u2014 not live yet"], escalation: null }, restrictions: [] }, { id: "phase-3", name: "Market Response", tasks: [{ role: "CEO", items: ["Call top 5 accounts personally \u2014 before anything goes public"], deadline: "before anything goes public", priority: "lead" }, { role: "Finance", items: ["Pricing changes go live (if Scenario A or B)"], deadline: "Hour 9", priority: "required" }, { role: "Account Executives", items: ["Contact the at-risk list with the retention communication"], deadline: "Hour 9", priority: "required" }, { role: "Communications", items: ["Press response goes out if competitor made public statements"], deadline: "Hour 10", priority: "required" }, { role: "Customer Success", items: ["Proactively contact all accounts in renewal window"], deadline: "Hour 12", priority: "required" }], objective: "Coordinated external execution with no contradictions across channels.", timeWindow: "Hours 8\u201312", decisionGate: null, restrictions: [] }, { id: "phase-4", name: "72-Hour Sustain", tasks: [{ role: "Sales Leadership", items: ["Daily pipeline review: which at-risk accounts have been contacted? Responses?", "Win/loss tracking begins immediately \u2014 did competitor pricing actually move deals?"], deadline: "daily", priority: "required" }, { role: "CFO", items: ["Review actual vs. projected margin impact at day 7", "If churn exceeds model: trigger secondary response budget (requires board approval above $500K)"], deadline: "day 7", priority: "required" }, { role: "CMO", items: ["Assess: Is the competitor's move gaining traction or stalling?", "Adjust narrative if market response is different than modeled"], deadline: "week 2", priority: "required" }], objective: "Monitor, measure, and adjust. Prevent the situation from drifting.", timeWindow: "Days 2\u20137", decisionGate: null, restrictions: [] }], communicationAssets: [{ body: "Board Members,\n\n[Competitor] announced a [X%] price reduction on [date]. Our response team completed scenario analysis within 4 hours. We have selected [Scenario A/B/C] as our posture.\n\nPipeline at risk: $[X]M across [N] accounts. At-risk accounts have been identified and account executive outreach begins at [time].\n\nProjected 90-day margin impact: [range from CFO model].\n\nNo board action required at this stage. We will provide a full briefing at the next scheduled meeting or sooner if conditions change materially.\n\n[CEO Name]", type: "board_notification", label: "Board Notification", timing: "Hour 6 \u2014 notification, not approval", subject: "Competitive Pricing Action \u2014 [Competitor Name] \u2014 Response Posture Selected" }, { body: `WHEN A CUSTOMER ASKS ABOUT [COMPETITOR]'S NEW PRICING:
@@ -46160,7 +46618,7 @@ async function seedEnrichedPlaybooks() {
         communicationAssets: entry.communicationAssets,
         riskIndicators: entry.riskIndicators,
         outcomeFraming: entry.outcomeFraming
-      }).where(eq41(playbookLibrary.id, row.id));
+      }).where(eq42(playbookLibrary.id, row.id));
       updated++;
     }
     console.log(`\u2705 Enriched content seeded for ${updated} playbooks`);
@@ -46172,7 +46630,7 @@ async function seedEnrichedPlaybooks() {
 // server/index.ts
 init_db();
 init_schema();
-import { count as count8, eq as eq42, sql as sql18 } from "drizzle-orm";
+import { count as count8, eq as eq43, sql as sql18 } from "drizzle-orm";
 import pino16 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
@@ -46637,7 +47095,7 @@ server.listen(
             logger12.warn(`\u26A0\uFE0F Domain not found for compound playbook: ${p.name}`);
             continue;
           }
-          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq42(playbookLibrary.name, p.name)).limit(1);
+          const existing = await db.select({ id: playbookLibrary.id }).from(playbookLibrary).where(eq43(playbookLibrary.name, p.name)).limit(1);
           if (existing.length === 0) {
             await db.insert(playbookLibrary).values(p);
             added++;
