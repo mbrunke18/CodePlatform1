@@ -42400,7 +42400,7 @@ async function registerRoutes(app2, existingServer) {
         console.error("Magic link session error:", err);
         return res.status(500).json({ error: "Session creation failed." });
       }
-      return res.json({ ok: true, redirect: "/command-center" });
+      return res.json({ ok: true, redirect: "/mission-control" });
     });
   });
   registerAudioRoutes(app2);

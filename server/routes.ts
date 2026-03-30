@@ -827,7 +827,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         console.error('Magic link session error:', err);
         return res.status(500).json({ error: 'Session creation failed.' });
       }
-      return res.json({ ok: true, redirect: '/command-center' });
+      return res.json({ ok: true, redirect: '/mission-control' });
     });
   });
 

@@ -1,430 +1,595 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import PageLayout from '@/components/layout/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { updatePageMetadata } from '@/lib/seo';
-import { IDEA_PHASES, STRATEGIC_DOMAINS } from '@shared/constants/framework';
-import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
+import { useAuth } from '@/hooks/useAuth';
+import PageLayout from '@/components/layout/PageLayout';
+import PulseMap from '@/components/mission/PulseMap';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import {
-  ClipboardList,
-  Radar,
-  Play,
-  TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Zap,
-  Target,
-  Shield,
-  Users,
-  Activity,
-  ChevronRight,
-  Sparkles,
-  Bell,
-  Rocket,
-  Globe,
-  Scale,
-  GitMerge,
-  Brain,
-  Swords,
-  Eye,
-  Radio,
-  BarChart3,
-  ArrowRight,
-  Timer,
-  PlayCircle,
-  BookOpen,
-  Lightbulb,
-  RefreshCw,
-  Settings,
-  ExternalLink,
-  Layers,
-  X,
-  Briefcase,
-  Calculator,
-  FileText
+  Radio, Shield, AlertTriangle, Zap, Clock, Activity, Target,
+  TrendingUp, ArrowRight, CheckCircle2, Circle, RefreshCw,
+  Layers, Eye, ChevronRight, BarChart3, Radar, Sparkles,
 } from 'lucide-react';
-import ExecuteIQLogo from '@/components/ExecuteIQLogo';
-import JourneyNavigator from '@/components/JourneyNavigator';
-import PulseMap from '@/components/mission/PulseMap';
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const OFF = "#F8F7F4";
-const BORDER = "#E8E4DC";
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+// ─── Brand ───────────────────────────────────────────────────────────────────
+const NAVY    = '#0A0F2E';
+const GOLD    = '#C9A84C';
+const TEAL    = '#2B8A6E';
+const RED_ALT = '#C0392B';
 
-interface PendingTrigger {
-  id: string;
-  name: string;
-  category: string;
-  severity: 'critical' | 'high' | 'medium';
+// ─── Types ───────────────────────────────────────────────────────────────────
+interface Detection {
+  id: string | number;
+  triggerName: string;
+  triggerDomain: string;
+  confidenceScore: number;
+  recommendedPlaybook: string;
+  alternatePlaybooks?: string[];
+  status: string;
+  signalDescription?: string;
+  signalSource?: string;
   detectedAt: string;
-  source: string;
-  suggestedPlaybook: string;
-  suggestedPlaybookId: string;
-  confidence: number;
 }
 
-interface ActiveExecution {
-  id: string;
-  name: string;
-  playbook: string;
-  startedAt: string;
-  progress: number;
-  status: 'active' | 'paused' | 'completed';
-  stakeholdersEngaged: number;
-  tasksCompleted: number;
-  totalTasks: number;
+interface Activation {
+  id: string | number;
+  playbookName: string;
+  domainName: string;
+  activationReason?: string;
+  activatedAt: string;
+  completedAt?: string;
+  successRating?: number;
 }
 
-export default function MissionControl() {
-  const [, setLocation] = useLocation();
-  const [currentTime, setCurrentTime] = useState(new Date());
+interface LiveStatus {
+  isRunning: boolean;
+  lastRun?: string;
+  nextRun?: string;
+  intervalMinutes?: number;
+  signalsIngested?: number;
+  detectionsCreated?: number;
+}
 
+// ─── System status ────────────────────────────────────────────────────────────
+type SystemStatus = 'executing' | 'alert' | 'monitoring';
+
+function deriveSystemStatus(detections: Detection[], activations: Activation[]): SystemStatus {
+  const now = Date.now();
+  if (activations.find(a => now - new Date(a.activatedAt).getTime() < 2 * 3600000)) return 'executing';
+  if (detections.find(d => now - new Date(d.detectedAt).getTime() < 86400000)) return 'alert';
+  return 'monitoring';
+}
+
+const STATUS_CONFIG = {
+  executing: { label: 'EXECUTION IN PROGRESS', color: RED_ALT, bg: 'rgba(192,57,43,0.14)', border: 'rgba(192,57,43,0.35)', icon: Zap, pulse: true },
+  alert:     { label: 'TRIGGER DETECTED',       color: GOLD,    bg: 'rgba(201,168,76,0.12)', border: 'rgba(201,168,76,0.35)', icon: AlertTriangle, pulse: true },
+  monitoring:{ label: 'MONITORING ACTIVE',      color: TEAL,    bg: 'rgba(43,138,110,0.12)', border: 'rgba(43,138,110,0.35)', icon: Radio, pulse: false },
+};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+function timeAgo(dateStr: string): string {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'Just now';
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  return `${Math.floor(hrs / 24)}d ago`;
+}
+
+function confidenceColor(score: number): string {
+  if (score >= 85) return RED_ALT;
+  if (score >= 72) return GOLD;
+  return TEAL;
+}
+
+function confidenceLabel(score: number): string {
+  if (score >= 85) return 'Critical';
+  if (score >= 72) return 'High';
+  if (score >= 60) return 'Moderate';
+  return 'Low';
+}
+
+function useCountdown(targetDate: string | undefined): string {
+  const [label, setLabel] = useState('—');
   useEffect(() => {
-    updatePageMetadata({
-      title: 'Mission Control | VaughnMartin Execution OS',
-      description: 'Single-pane executive overview of strategic readiness and execution status.'
-    });
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const { data: playbooksRaw } = useQuery<any[]>({ queryKey: ['/api/playbooks'] });
-  const playbooks = Array.isArray(playbooksRaw) ? playbooksRaw : [];
-
-  const { data: realPlaybooksRaw } = useQuery<any[]>({ queryKey: ['/api/scenarios'] });
-  const realPlaybooks = Array.isArray(realPlaybooksRaw) ? realPlaybooksRaw : [];
-
-  const { data: triggersRaw } = useQuery<any[]>({ queryKey: ['/api/triggers'] });
-  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
-
-  const [pendingTriggers, setPendingTriggers] = useState<PendingTrigger[]>([
-    {
-      id: 'pt-1',
-      name: 'Competitor Product Launch Detected',
-      category: 'competitive',
-      severity: 'critical',
-      detectedAt: new Date(Date.now() - 12 * 60000).toISOString(),
-      source: 'Market Intelligence',
-      suggestedPlaybook: 'Competitive Counter-Positioning',
-      suggestedPlaybookId: 'playbook-1',
-      confidence: 94
-    },
-    {
-      id: 'pt-2',
-      name: 'Regulatory Filing Deadline Approaching',
-      category: 'regulatory',
-      severity: 'high',
-      detectedAt: new Date(Date.now() - 45 * 60000).toISOString(),
-      source: 'Compliance Monitoring',
-      suggestedPlaybook: 'Regulatory Response Protocol',
-      suggestedPlaybookId: 'playbook-2',
-      confidence: 87
-    }
-  ]);
-
-  const [activeExecutions, setActiveExecutions] = useState<ActiveExecution[]>([]);
-
-  const handleActivatePlaybook = (trigger: PendingTrigger) => {
-    setPendingTriggers(prev => prev.filter(t => t.id !== trigger.id));
-    const newExecution: ActiveExecution = {
-      id: `exec-${Date.now()}`,
-      name: trigger.name,
-      playbook: trigger.suggestedPlaybook,
-      startedAt: new Date().toISOString(),
-      progress: 0,
-      status: 'active',
-      stakeholdersEngaged: 0,
-      tasksCompleted: 0,
-      totalTasks: 12
+    if (!targetDate) return;
+    const tick = () => {
+      const diff = new Date(targetDate).getTime() - Date.now();
+      if (diff <= 0) { setLabel('Now'); return; }
+      const m = Math.floor(diff / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      setLabel(`${m}m ${s < 10 ? '0' : ''}${s}s`);
     };
-    setActiveExecutions(prev => [...prev, newExecution]);
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [targetDate]);
+  return label;
+}
 
-    // Navigate to the real activation flow after a short delay
-    setTimeout(() => {
-      if (realPlaybooks.length === 0) {
-        setLocation('/triggers-management');
-        return;
-      }
+function useClock(): string {
+  const [time, setTime] = useState('');
+  useEffect(() => {
+    const tick = () => setTime(new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
-      const keyword = trigger.suggestedPlaybook.toLowerCase();
-      const matchedPlaybook = realPlaybooks.find(p => 
-        p.name.toLowerCase().includes(keyword)
-      );
+// ─── Pulse Orb ───────────────────────────────────────────────────────────────
+function PulseOrb({ color, size = 10, animate: shouldAnimate = true }: { color: string; size?: number; animate?: boolean }) {
+  return (
+    <span style={{ position: 'relative', display: 'inline-block', width: size, height: size, flexShrink: 0 }}>
+      {shouldAnimate && (
+        <motion.span
+          style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color, opacity: 0.4 }}
+          animate={{ scale: [1, 1.9, 1], opacity: [0.4, 0, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+        />
+      )}
+      <span style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color }} />
+    </span>
+  );
+}
 
-      const matchedId = matchedPlaybook?.id || realPlaybooks[0]?.id;
-      setLocation('/playbook-activation/manual/' + matchedId);
-    }, 600);
+// ─── NOC Detection Card (authenticated — real activation) ─────────────────────
+function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; scenarios: any[] }) {
+  const [, setLocation] = useLocation();
+  const cc = confidenceColor(d.confidenceScore);
+  const isCritical = d.confidenceScore >= 85;
+
+  const handleActivate = () => {
+    if (scenarios.length === 0) { setLocation('/live-activation-center'); return; }
+    const keyword = d.recommendedPlaybook.toLowerCase();
+    const match = scenarios.find((p: any) => p.name?.toLowerCase().includes(keyword.split(' ')[0]));
+    setLocation('/playbook-activation/manual/' + (match?.id || scenarios[0]?.id));
   };
 
   return (
-    <PageLayout>
-      <div style={{ background: OFF, minHeight: "100vh" }}>
-        {/* Navy Header Section */}
-        <div style={{ background: "#0A0F2E", padding: "80px 48px", position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
-          <div className="relative z-10 max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
-            <div>
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
-                <div className="w-6 h-0.5" style={{ background: "#C9A84C" }} />
-                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C9A84C" }}>
-                  Operational Center
-                </span>
-              </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6" style={CG}>
-                Mission <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Control</em> One™
-              </h1>
-              <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                Single-pane executive overview of strategic readiness and execution status. 
-                Real-time telemetry and predictive response orchestration.
-              </p>
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.06 }}
+      style={{
+        background: isCritical ? 'rgba(192,57,43,0.07)' : 'rgba(255,255,255,0.04)',
+        border: `1px solid ${isCritical ? 'rgba(192,57,43,0.3)' : 'rgba(255,255,255,0.1)'}`,
+        borderLeft: `5px solid ${cc}`,
+        borderRadius: 10, padding: '20px 22px', marginBottom: 12,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 14, marginBottom: 14 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 5 }}>
+            <PulseOrb color={cc} size={10} animate={d.status !== 'acknowledged'} />
+            <span style={{ background: cc, color: '#fff', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 3, letterSpacing: '0.1em' }}>
+              {confidenceLabel(d.confidenceScore).toUpperCase()}
+            </span>
+            <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{d.triggerDomain}</span>
+          </div>
+          <div style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.35, marginBottom: 4 }}>{d.triggerName}</div>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}</div>
+        </div>
+        <div style={{ background: `linear-gradient(135deg, ${cc}22, ${cc}11)`, border: `1px solid ${cc}55`, borderRadius: 10, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80 }}>
+          <div style={{ color: cc, fontWeight: 800, fontSize: 34, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{d.confidenceScore}</div>
+          <div style={{ color: cc, fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', marginTop: 3 }}>CONF%</div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 7, padding: '9px 14px', marginBottom: 14 }}>
+        <Target size={13} color={GOLD} />
+        <div style={{ flex: 1 }}>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>AI RECOMMENDED PLAYBOOK</div>
+          <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 8 }}>
+        <button
+          onClick={handleActivate}
+          style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 8, padding: '12px 0', fontWeight: 800, fontSize: 13, letterSpacing: '0.05em', border: 'none', cursor: 'pointer' }}
+        >
+          <Zap size={14} /> ACTIVATE PLAYBOOK
+        </button>
+        <Link href="/live-detection-feed">
+          <a style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+            Details <ArrowRight size={12} />
+          </a>
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Domain Status Grid ───────────────────────────────────────────────────────
+const DOMAINS = [
+  'Competitive', 'M&A', 'Regulatory',
+  'Talent', 'Market', 'Financial',
+  'Technology', 'Supply Chain', 'Stakeholder',
+];
+
+function DomainStatusGrid({ detections }: { detections: Detection[] }) {
+  const detectionDomains = detections.map(d => (d.triggerDomain || '').toLowerCase());
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+        <Layers size={14} color={GOLD} />
+        <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>DOMAIN STATUS BOARD</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>9 of 9 monitored</span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
+        {DOMAINS.map((domain) => {
+          const hasAlert = detectionDomains.some(d => d.includes(domain.toLowerCase().split(' ')[0]));
+          const color = hasAlert ? GOLD : TEAL;
+          return (
+            <div key={domain} style={{ background: hasAlert ? 'rgba(201,168,76,0.08)' : 'rgba(43,138,110,0.06)', border: `1px solid ${hasAlert ? 'rgba(201,168,76,0.25)' : 'rgba(43,138,110,0.18)'}`, borderRadius: 7, padding: '10px 10px 8px', textAlign: 'center' }}>
+              <PulseOrb color={color} size={8} animate={hasAlert} />
+              <div style={{ color: hasAlert ? GOLD : 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, marginTop: 6, letterSpacing: '0.04em' }}>{domain}</div>
             </div>
-            
-            <div className="flex items-center gap-8">
-              <div className="text-right hidden md:block">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">System Time</div>
-                <div style={{ ...CG, color: "#fff", fontSize: "24px", fontWeight: 500 }}>{currentTime.toLocaleTimeString()}</div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Page ────────────────────────────────────────────────────────────────
+export default function MissionControl() {
+  const { user } = useAuth() as any;
+  const clock = useClock();
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: 'Mission Control — Execution OS | VaughnMartin',
+      description: 'Single-pane executive NOC for strategic execution. Live trigger detections, domain monitoring, playbook activation.',
+    });
+  }, []);
+
+  // ── Data ──────────────────────────────────────────────────────────────────
+  const { data: detectionsData, refetch: refetchDetections } = useQuery<{ detections: Detection[] }>({
+    queryKey: ['/api/detections'], refetchInterval: 30000,
+  });
+  const { data: activationsData, refetch: refetchActivations } = useQuery<Activation[]>({
+    queryKey: ['/api/playbook-activations'], refetchInterval: 30000,
+  });
+  const { data: liveStatus, refetch: refetchStatus } = useQuery<LiveStatus>({
+    queryKey: ['/api/signals/live/status'], refetchInterval: 10000,
+  });
+  const { data: triggerSummary } = useQuery<{ total: number; byAlertLevel: Record<string, number>; byCategory: Record<string, number> }>({
+    queryKey: ['/api/trigger-evaluation-summary'], refetchInterval: 60000,
+  });
+  const { data: monitoringConfig } = useQuery<{ evaluationMode: string }>({
+    queryKey: ['/api/signal-monitoring-config'], refetchInterval: 60000,
+  });
+  const { data: triggersRaw } = useQuery<any[]>({ queryKey: ['/api/triggers'] });
+  const { data: scenariosRaw } = useQuery<any[]>({ queryKey: ['/api/scenarios'] });
+
+  const detections: Detection[] = detectionsData?.detections || [];
+  const activations: Activation[] = activationsData || [];
+  const triggers = Array.isArray(triggersRaw) ? triggersRaw : [];
+  const scenarios = Array.isArray(scenariosRaw) ? scenariosRaw : [];
+
+  const systemStatus = deriveSystemStatus(detections, activations);
+  const statusCfg = STATUS_CONFIG[systemStatus];
+  const StatusIcon = statusCfg.icon;
+  const nextScanLabel = useCountdown(liveStatus?.nextRun);
+  const triggersArmed = triggerSummary?.total || 221;
+  const evaluationMode = monitoringConfig?.evaluationMode || 'both';
+  const modeLabel = evaluationMode === 'configured' ? 'Custom Engine' : evaluationMode === 'default' ? 'Default Engine' : 'Dual Engine';
+  const criticalCount = detections.filter(d => d.confidenceScore >= 85 && Date.now() - new Date(d.detectedAt).getTime() < 86400000).length;
+  const recentDetections = detections.slice(0, 6);
+  const recentActivations = activations.slice(0, 5);
+
+  const handleRefresh = async () => {
+    await Promise.all([refetchDetections(), refetchActivations(), refetchStatus()]);
+  };
+
+  // ── WebSocket ─────────────────────────────────────────────────────────────
+  const wsRef = useRef<WebSocket | null>(null);
+  useEffect(() => {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const ws = new WebSocket(`${protocol}//${window.location.host}`);
+    wsRef.current = ws;
+    ws.onmessage = (evt) => {
+      try {
+        const data = JSON.parse(evt.data);
+        if (data.type === 'new-detection') { refetchDetections(); refetchStatus(); }
+      } catch {}
+    };
+    return () => ws.close();
+  }, []);
+
+  const firstName = (user as any)?.firstName || (user as any)?.username?.split(' ')[0] || 'Executive';
+
+  return (
+    <PageLayout>
+      <div style={{
+        minHeight: '100vh',
+        background: NAVY,
+        color: '#fff',
+        fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Ambient grid */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
+        {/* Glow orbs */}
+        <div style={{ position: 'absolute', top: -200, right: -100, width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -200, left: -100, width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 1500, margin: '0 auto', padding: '0 32px' }}>
+
+          {/* ── NOC HEADER BAR ──────────────────────────────────────────────── */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0 18px', borderBottom: '1px solid rgba(255,255,255,0.08)', marginBottom: 26 }}>
+            {/* Identity */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ width: 42, height: 42, borderRadius: '50%', border: `2px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(201,168,76,0.1)', flexShrink: 0 }}>
+                <span style={{ color: GOLD, fontWeight: 800, fontSize: 14 }}>VM</span>
               </div>
-              <div className="bg-white/5 border border-white/10 p-4 rounded-none flex items-center gap-4 h-16 px-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-none bg-[#2B8A6E] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2B8A6E]">Live Telemetry Active</span>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ color: GOLD, fontWeight: 800, fontSize: 18, letterSpacing: '0.04em' }}>MISSION CONTROL</span>
+                  <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 3, letterSpacing: '0.12em' }}>EXECUTION OS</span>
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, marginTop: 1 }}>
+                  Welcome back, {firstName} · Strategic Execution Intelligence
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Strategic Pulse Map */}
-        <PulseMap />
-
-        <div className="max-w-[1600px] mx-auto px-6 py-12 space-y-8">
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Left Column - Live Status */}
-            <div className="lg:col-span-8 space-y-8">
-              <TriggerProbabilityForecast triggers={triggers} compact={false} />
-
-              <Card className="border-[#E8E4DC] bg-white overflow-hidden">
-                <CardHeader className="border-b border-[#E8E4DC] p-6 bg-[#F8F7F4]/50">
-                  <div className="flex items-center justify-between">
-                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 28, height: 2, background: GOLD }} />
-                      <CardTitle style={{ ...CG, fontSize: "24px", color: NAVY }}>Active Telemetry Hub</CardTitle>
-                    </div>
-                    {pendingTriggers.length > 0 && (
-                      <Badge style={{ background: "rgba(201,168,76,0.1)", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.2)" }} className="px-3 py-1 font-bold rounded-none">
-                        {pendingTriggers.length} CRITICAL EVENTS
-                      </Badge>
-                    )}
-                  </div>
-                </CardHeader>
-                <CardContent className="p-0">
-                  {pendingTriggers.length > 0 ? (
-                    <div className="divide-y divide-[#E8E4DC]">
-                      {pendingTriggers.map((trigger) => (
-                        <div key={trigger.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#F8F7F4]/30 transition-colors">
-                          <div className="flex items-start gap-4">
-                            <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                              <AlertTriangle className="h-5 w-5 text-white" />
-                            </div>
-                            <div>
-                              <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">{trigger.category} signal detected</div>
-                              <div style={{ ...CG, fontSize: "20px", fontWeight: 600, color: "#C9A84C" }}>{trigger.name}</div>
-                              <div className="flex items-center gap-3 mt-1">
-                                <span className="text-xs text-[#6B7280]">Confidence: {trigger.confidence}%</span>
-                                <span className="w-1 h-1 rounded-full bg-[#E8E4DC]" />
-                                <span className="text-xs text-[#6B7280]">Source: {trigger.source}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Button 
-                              onClick={() => handleActivatePlaybook(trigger)}
-                              style={{ background: NAVY, color: "#fff" }}
-                              className="font-bold uppercase tracking-widest text-[10px] px-6 rounded-none hover:bg-[#141B45]"
-                            >
-                              Activate Response
-                            </Button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-24 text-center">
-                      <div className="text-gray-400 italic">No active triggers requiring immediate executive intervention.</div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-
-              {activeExecutions.length > 0 && (
-                <Card className="border-[#C9A84C] bg-white overflow-hidden border-t-4">
-                  <CardHeader className="border-b border-[#E8E4DC] p-6">
-                    <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Live Execution Status</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    {activeExecutions.map(exec => (
-                      <div key={exec.id} className="space-y-4">
-                        <div className="flex justify-between items-end">
-                          <div>
-                            <div style={{ ...CG, fontSize: "24px", fontWeight: 600, color: "#C9A84C" }}>{exec.playbook}</div>
-                            <div className="text-xs text-[#6B7280]">Execution active for 2m 14s</div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-2xl font-bold text-[#2B8A6E]">{exec.progress}%</div>
-                            <div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Complete</div>
-                          </div>
-                        </div>
-                        <Progress value={exec.progress} className="h-2 bg-[#F8F7F4] [&>div]:bg-[#C9A84C]" />
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
+            {/* System Status Badge */}
+            <motion.div key={systemStatus} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ display: 'flex', alignItems: 'center', gap: 10, background: statusCfg.bg, border: `1px solid ${statusCfg.border}`, borderRadius: 8, padding: '10px 22px' }}>
+              <PulseOrb color={statusCfg.color} size={11} animate={statusCfg.pulse} />
+              <StatusIcon size={16} color={statusCfg.color} />
+              <span style={{ color: statusCfg.color, fontWeight: 800, fontSize: 13, letterSpacing: '0.12em' }}>{statusCfg.label}</span>
+              {systemStatus === 'alert' && criticalCount > 0 && (
+                <span style={{ background: RED_ALT, color: '#fff', fontSize: 10, fontWeight: 800, padding: '1px 7px', borderRadius: 12, marginLeft: 4 }}>
+                  {criticalCount} CRITICAL
+                </span>
               )}
+            </motion.div>
+
+            {/* Clock + Actions */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ color: '#fff', fontWeight: 700, fontSize: 16, fontVariantNumeric: 'tabular-nums' }}>{clock}</div>
+                <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10, marginTop: 1 }}>
+                  {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
+                </div>
+              </div>
+              <button onClick={handleRefresh} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 12px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11 }}>
+                <RefreshCw size={12} /> Refresh
+              </button>
+              <Link href="/command-tower">
+                <a style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
+                  <Radar size={11} /> Wall Display
+                </a>
+              </Link>
+            </div>
+          </div>
+
+          {/* ── NOC STAT RAIL ───────────────────────────────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 14, marginBottom: 24 }}>
+            {[
+              { label: 'TRIGGERS ARMED',     value: triggersArmed.toLocaleString(), sub: '221 signals',                     icon: Target,       color: GOLD,                           bg: 'rgba(201,168,76,0.08)',  border: 'rgba(201,168,76,0.2)' },
+              { label: 'ACTIVE DETECTIONS',  value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
+              { label: 'PLAYBOOKS READY',    value: '170',                          sub: 'Pre-staged',                       icon: Layers,       color: TEAL,                           bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
+              { label: 'EXECUTIONS LOGGED',  value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', icon: TrendingUp, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
+              { label: 'NEXT SCAN',          value: nextScanLabel,                  sub: `Engine: ${modeLabel}`,             icon: Clock,        color: 'rgba(255,255,255,0.7)',        bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
+            ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
+              <div key={label} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 10, padding: '16px 18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
+                  <Icon size={13} color={color} />
+                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>{label}</span>
+                </div>
+                <div style={{ color, fontWeight: 800, fontSize: 30, fontVariantNumeric: 'tabular-nums', lineHeight: 1, marginBottom: 4 }}>{value}</div>
+                <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── NOC MAIN GRID ───────────────────────────────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 390px', gap: 20, alignItems: 'start', marginBottom: 24 }}>
+
+            {/* ── LEFT: LIVE ALERT ZONE ─────────────────────────────────── */}
+            <div style={{ background: 'rgba(255,255,255,0.02)', border: detections.length > 0 ? '1px solid rgba(201,168,76,0.2)' : '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '22px 24px' }}>
+              {/* Zone header */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ background: detections.length > 0 ? 'rgba(201,168,76,0.15)' : 'rgba(43,138,110,0.12)', border: `1px solid ${detections.length > 0 ? 'rgba(201,168,76,0.3)' : 'rgba(43,138,110,0.25)'}`, borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <PulseOrb color={detections.length > 0 ? GOLD : TEAL} size={8} animate />
+                    <span style={{ color: detections.length > 0 ? GOLD : TEAL, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em' }}>
+                      {detections.length > 0 ? `${detections.length} ALERT${detections.length > 1 ? 'S' : ''} ACTIVE` : 'ALL CLEAR'}
+                    </span>
+                  </div>
+                  <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 13, letterSpacing: '0.06em' }}>LIVE ALERT ZONE</span>
+                </div>
+                <Link href="/live-detection-feed">
+                  <a style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+                    Full Feed <ArrowRight size={11} />
+                  </a>
+                </Link>
+              </div>
+
+              <AnimatePresence mode="popLayout">
+                {recentDetections.length === 0 ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ background: 'rgba(43,138,110,0.07)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 12, padding: '56px 24px', textAlign: 'center' }}>
+                    <CheckCircle2 size={52} color={TEAL} style={{ margin: '0 auto 18px', display: 'block' }} />
+                    <div style={{ color: TEAL, fontWeight: 800, fontSize: 22, marginBottom: 10, letterSpacing: '0.04em' }}>ALL SYSTEMS CLEAR</div>
+                    <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, maxWidth: 440, margin: '0 auto', lineHeight: 1.6 }}>
+                      No trigger events detected. {triggersArmed} triggers armed and continuously monitoring across 9 strategic domains.
+                    </div>
+                    <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', gap: 12 }}>
+                      <button
+                        onClick={() => setLocation('/live-activation-center')}
+                        style={{ display: 'flex', alignItems: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 8, padding: '12px 24px', fontWeight: 800, fontSize: 13, border: 'none', cursor: 'pointer' }}
+                      >
+                        <Zap size={14} /> Activate Playbook
+                      </button>
+                      <Link href="/triggers-management">
+                        <a style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
+                          <Eye size={13} /> View Triggers
+                        </a>
+                      </Link>
+                    </div>
+                  </motion.div>
+                ) : (
+                  recentDetections.map((d, i) => <DetectionCard key={d.id} d={d} index={i} scenarios={scenarios} />)
+                )}
+              </AnimatePresence>
             </div>
 
-            {/* Right Column - System Stats */}
-            <div className="lg:col-span-4 space-y-8">
-              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
-                <CardHeader className="border-b border-[#E8E4DC]">
-                  <CardTitle style={{ ...CG, fontSize: "20px", color: NAVY }}>Readiness Matrix</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">
-                      <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>170</div>
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">Playbooks</div>
-                    </div>
-                    <div style={{ background: "#F8F7F4", padding: 20, border: "1px solid #E8E4DC" }} className="rounded-none">
-                      <div style={{ ...CG, fontSize: "32px", fontWeight: 600, color: TEAL }}>94%</div>
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-[#6B7280] mt-1">Reliability</div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-4 pt-4">
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="text-[#6B7280] font-bold uppercase tracking-widest">Signal Precision</span>
-                      <span className="font-bold text-[#0A0F2E]">89.4%</span>
-                    </div>
-                    <Progress value={89.4} className="h-1 bg-[#F8F7F4] rounded-none [&>div]:bg-[#C9A84C]" />
-                    
-                    <div className="flex justify-between items-center text-xs pt-2">
-                      <span className="text-[#6B7280] font-bold uppercase tracking-widest">Cohesion Index</span>
-                      <span className="font-bold text-[#0A0F2E]">92.1%</span>
-                    </div>
-                    <Progress value={92.1} className="h-1 bg-[#F8F7F4] rounded-none [&>div]:bg-[#C9A84C]" />
-                  </div>
-                </CardContent>
-              </Card>
+            {/* ── RIGHT: CONTROL PANELS ──────────────────────────────────── */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-              <Card style={{ background: NAVY }} className="border-none text-white rounded-none shadow-sm">
-                <CardContent className="pt-6">
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                    <div style={{ width: 20, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Infrastructure Status</span>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-white/60">Oracle AI Core</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
-                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-white/60">Telemetry Mesh</span>
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
-                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Synchronized</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Domain Status Board */}
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+                <DomainStatusGrid detections={detections} />
+              </div>
 
-              {/* Platform Intelligence Capabilities */}
-              <Card style={{ background: "#fff" }} className="border-[#E8E4DC] rounded-none shadow-sm">
-                <CardContent className="p-6">
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                    <div style={{ width: 20, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Platform Intelligence</span>
+              {/* Execution Log */}
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <TrendingUp size={14} color={TEAL} />
+                    <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>EXECUTION LOG</span>
                   </div>
-                  <div className="space-y-4">
-                    {[
-                      {
-                        icon: AlertTriangle,
-                        color: "#C9A84C",
-                        title: "Stuck Execution Alerts",
-                        desc: "Tasks that stop moving are surfaced automatically — before they silently loop.",
-                        path: "/workspace?tab=advance",
-                        label: "View in ADVANCE"
-                      },
-                      {
-                        icon: Layers,
-                        color: TEAL,
-                        title: "Smart Playbook Finder",
-                        desc: "Browse 170 playbooks instantly. Full detail loads only when you select one.",
-                        path: "/workspace?tab=identify",
-                        label: "Open in IDENTIFY"
-                      },
-                      {
-                        icon: Eye,
-                        color: NAVY,
-                        title: "Your Actions, Your Role",
-                        desc: "Each executive sees only their assigned actions — not everything across the org.",
-                        path: "/workspace?tab=execute",
-                        label: "View in EXECUTE"
-                      },
-                      {
-                        icon: Sparkles,
-                        color: GOLD,
-                        title: "Live Execution Compass",
-                        desc: "Playbook intent and phase guidance reappear at every checkpoint so teams don't drift.",
-                        path: "/workspace?tab=execute",
-                        label: "View in EXECUTE"
-                      }
-                    ].map((item, i) => (
-                      <Link key={i} href={item.path}>
-                        <div className="group flex items-start gap-3 p-3 hover:bg-[#F8F7F4] cursor-pointer transition-colors border border-transparent hover:border-[#E8E4DC]">
-                          <div style={{ width: 32, height: 32, background: item.color === NAVY ? NAVY : `${item.color}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                            <item.icon style={{ width: 14, height: 14, color: item.color === NAVY ? "#fff" : item.color }} />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between gap-1">
-                              <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{item.title}</span>
-                              <ChevronRight style={{ width: 12, height: 12, color: GOLD, flexShrink: 0 }} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {activations.length > 0 && (
+                    <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 10 }}>{activations.length} total</span>
+                  )}
+                </div>
+                {recentActivations.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '18px 12px' }}>
+                    <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
+                    <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
+                    <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>170 playbooks pre-staged. 12-minute deployment on trigger.</div>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {recentActivations.map((a, i) => {
+                      const isRecent = Date.now() - new Date(a.activatedAt).getTime() < 7200000;
+                      return (
+                        <motion.div key={a.id as string} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+                          style={{ background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isRecent ? 'rgba(43,138,110,0.25)' : 'rgba(255,255,255,0.07)'}`, borderLeft: `4px solid ${isRecent ? TEAL : 'rgba(255,255,255,0.15)'}`, borderRadius: 8, padding: '12px 14px' }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
+                            <div>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
+                                {isRecent && <PulseOrb color={TEAL} size={7} />}
+                                <span style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>{a.playbookName}</span>
+                              </div>
+                              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
                             </div>
-                            <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5, fontWeight: 500, marginTop: 2 }}>{item.desc}</p>
+                            {a.successRating != null && (
+                              <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 5, flexShrink: 0 }}>{a.successRating}%</div>
+                            )}
                           </div>
-                        </div>
-                      </Link>
-                    ))}
+                          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
+                            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
                   </div>
-                </CardContent>
-              </Card>
+                )}
+              </div>
 
-              <div className="pt-4">
-                <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[#6B7280]">
-                  Confidential Operational View • VaughnMartin
-                </p>
+              {/* Scan Timing + 3600x Metric */}
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 12 }}>
+                  <Clock size={13} color={TEAL} />
+                  <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>SCAN CYCLE</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
+                  {[
+                    { label: 'Last scan', value: liveStatus?.lastRun ? timeAgo(liveStatus.lastRun) : '—', color: '#fff' },
+                    { label: 'Next scan', value: nextScanLabel, color: TEAL },
+                    { label: 'Engine',    value: modeLabel.toUpperCase(), color: TEAL },
+                  ].map(({ label, value, color }) => (
+                    <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{label}</span>
+                      <span style={{ color, fontSize: 12, fontWeight: 700 }}>{value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ background: `linear-gradient(135deg, rgba(201,168,76,0.12), rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.2)', borderRadius: 8, padding: '14px 16px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
+                    <Zap size={12} color={GOLD} />
+                    <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
+                  </div>
+                  <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 170 playbooks pre-staged.</div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div style={{ display: 'flex', gap: 10 }}>
+                <Link href="/live-activation-center">
+                  <a style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 20px', fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none' }}>
+                    <Zap size={13} /> ACTIVATE
+                  </a>
+                </Link>
+                <Link href="/live-detection-feed">
+                  <a style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 20px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+                    <Radio size={12} /> FEED
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
+
+          {/* ── STRATEGIC PULSE MAP ─────────────────────────────────────────── */}
+          <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, overflow: 'hidden' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+              <Radar size={14} color={GOLD} />
+              <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>STRATEGIC PULSE MAP</span>
+              <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>— Domain activity visualization</span>
+            </div>
+            <PulseMap />
+          </div>
+
+          {/* ── TRIGGER FORECAST ────────────────────────────────────────────── */}
+          {triggers.length > 0 && (
+            <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, overflow: 'hidden' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+                <BarChart3 size={14} color={TEAL} />
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>TRIGGER PROBABILITY FORECAST</span>
+              </div>
+              <div style={{ padding: '4px 0' }}>
+                <TriggerProbabilityForecast triggers={triggers} compact={true} />
+              </div>
+            </div>
+          )}
+
+          {/* ── PLATFORM INTEL STRIP ────────────────────────────────────────── */}
+          <div style={{ marginBottom: 32, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <ChevronRight size={13} color={GOLD} />
+              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>NAVIGATE EXECUTION OS</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              {[
+                { label: 'Playbook Library', href: '/playbooks', gold: false },
+                { label: 'Trigger Intelligence', href: '/triggers-management', gold: false },
+                { label: 'Signal Intelligence', href: '/signal-intelligence', gold: false },
+                { label: 'Execution History', href: '/execution-history', gold: false },
+                { label: 'Settings', href: '/settings', gold: false },
+              ].map(({ label, href, gold }) => (
+                <Link key={href} href={href}>
+                  <a style={{ display: 'flex', alignItems: 'center', gap: 5, background: gold ? GOLD : 'rgba(255,255,255,0.05)', border: `1px solid ${gold ? GOLD : 'rgba(255,255,255,0.1)'}`, borderRadius: 6, padding: '6px 12px', color: gold ? NAVY : 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: gold ? 800 : 600, textDecoration: 'none' }}>
+                    {label} <ArrowRight size={10} />
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </PageLayout>

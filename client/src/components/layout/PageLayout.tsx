@@ -15,7 +15,7 @@ interface PageLayoutProps {
 }
 
 const ROUTE_MAP: Record<string, { label: string; section: string }> = {
-  '/command-center':           { label: 'Command Center', section: 'Platform' },
+  '/mission-control':          { label: 'Mission Control', section: 'Platform' },
   '/workspace':                { label: 'Execution Workspace', section: 'Platform' },
   '/intelligence-hub':         { label: 'Intelligence Control Center', section: 'Platform' },
   '/ai-intelligence':          { label: 'AI Intelligence Hub', section: 'Platform' },
@@ -74,7 +74,7 @@ function Breadcrumb({ location }: { location: string }) {
     <div style={{ background: '#FAFAF8', borderBottom: '1px solid rgba(201,168,76,0.1)', padding: '0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, height: 34 }}>
-          <Link href="/command-center">
+          <Link href="/mission-control">
             <span style={{ fontSize: 11, fontWeight: 600, color: '#9CA3AF', cursor: 'pointer', letterSpacing: '0.02em' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#0A0F2E'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#9CA3AF'; }}>

@@ -30,7 +30,7 @@ export default function MagicLogin() {
       .then(async (res) => {
         if (res.ok) {
           setState("success");
-          setTimeout(() => navigate("/command-center"), 1800);
+          setTimeout(() => navigate("/mission-control"), 1800);
         } else {
           const body = await res.json().catch(() => ({}));
           const reason = body.reason as string | undefined;

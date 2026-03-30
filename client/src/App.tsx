@@ -395,8 +395,8 @@ function Router() {
         {/* Strategic Operations */}
         <Route path="/strategic-monitoring" component={CrisisResponseCenter} />
         <Route path="/strategic-monitoring/:id" component={CrisisDetail} />
-        <Route path="/command-center" component={CommandLanding} />
-        <Route path="/command-center-dynamic" component={CommandLanding} />
+        <Route path="/command-center">{() => <Redirect to="/mission-control" />}</Route>
+        <Route path="/command-center-dynamic">{() => <Redirect to="/mission-control" />}</Route>
         <Route path="/execution-history" component={ExecutionHistory} />
         <Route path="/collaboration" component={RealTimeCollaboration} />
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
@@ -584,7 +584,8 @@ function Router() {
         {renderRedirects([
           "/scorecard", "/executive-scorecard", "/executive-suite",
           "/dashboard", "/platform", "/operating-model-health"
-        ], "/command-center")}
+        ], "/mission-control")}
+        {renderRedirects(["/command-center", "/command-center-dynamic", "/war-room"], "/mission-control")}
         {renderRedirects([
           "/scenarios", "/scenario-library", "/scenario-gallery",
           "/comprehensive-scenarios", "/templates"
@@ -598,8 +599,6 @@ function Router() {
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
         <Route path="/crisis" component={CrisisResponseCenter} />
-        <Route path="/crisis/:id" component={CrisisDetail} />
-        <Route path="/war-room">{() => <Redirect to="/command-center" />}</Route>
         <Route path="/crisis-response-center" component={CrisisResponseCenter} />
 
         <Route component={NotFound} />

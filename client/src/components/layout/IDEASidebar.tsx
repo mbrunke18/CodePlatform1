@@ -120,7 +120,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
   const sidebarContent = (
     <div className="flex flex-col h-full">
       <div className="p-4 border-b border-border/50">
-        <Link href="/command-center" className="flex items-center gap-3 group">
+        <Link href="/mission-control" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center">
             <div className="w-6 h-6 rounded-full border-2 border-white/90" />
           </div>
