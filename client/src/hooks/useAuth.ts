@@ -9,6 +9,7 @@ export interface AuthUser {
   role?: string;
   initials: string;
   needsOnboarding: boolean;
+  organizationId?: string;
 }
 
 export function useAuth() {

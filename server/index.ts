@@ -25,7 +25,7 @@ import { seedTriggers, getTriggerStats } from "./seeds/triggersSeed";
 import { seedDemoScenarios } from "./seeds/demoScenariosSeed";
 import { seedEnrichedPlaybooks } from "./seeds/enrichPlaybooksStartupSeed";
 import { db } from "./db";
-import { playbookLibrary, executiveTriggers } from "@shared/schema";
+import { playbookLibrary, executiveTriggers, stakeholderContacts } from "@shared/schema";
 import { count, eq, sql } from "drizzle-orm";
 import pino from "pino";
 import pinoHttp from "pino-http";
@@ -757,6 +757,30 @@ server.listen(
           // Seed demo scenarios for investor/customer presentations
           logger.info("🎭 Checking demo scenarios...");
           await seedDemoScenarios();
+
+          // Seed demo stakeholder contacts for live detection demo (idempotent)
+          logger.info("👥 Checking demo stakeholder contacts...");
+          try {
+            const [existingContactResult] = await db
+              .select({ count: count() })
+              .from(stakeholderContacts)
+              .where(eq(stakeholderContacts.organizationId as any, 'system'));
+            const contactCount = Number(existingContactResult?.count || 0);
+            if (contactCount === 0) {
+              await db.insert(stakeholderContacts).values([
+                { organizationId: 'system', role: 'CEO', name: 'Executive Director', email: 'pilot@vaughnmartin.com', isActive: true },
+                { organizationId: 'system', role: 'CFO', name: 'Chief Financial Officer', email: 'pilot@vaughnmartin.com', isActive: true },
+                { organizationId: 'system', role: 'CISO', name: 'Chief Information Security Officer', email: 'pilot@vaughnmartin.com', isActive: true },
+                { organizationId: 'system', role: 'General Counsel', name: 'General Counsel', email: 'pilot@vaughnmartin.com', isActive: true },
+                { organizationId: 'system', role: 'CHRO', name: 'Chief Human Resources Officer', email: 'pilot@vaughnmartin.com', isActive: true },
+              ] as any[]);
+              logger.info("✅ Demo stakeholder contacts seeded (5 contacts for system org)");
+            } else {
+              logger.info(`✅ Stakeholder contacts already present (${contactCount} contacts for system org)`);
+            }
+          } catch (contactSeedErr) {
+            logger.warn({ contactSeedErr }, "⚠️ Stakeholder contact seed skipped (non-blocking)");
+          }
 
           // Initialize Enterprise Job Service (non-blocking)
           logger.info("🔧 Initializing Enterprise Job Service...");

@@ -1,1 +1,0 @@
-import{j as i,ae as e}from"./index-cq3681i4.js";const u=({width:o,height:a=48,variant:n="full",className:t="",color:r="dark"})=>{const l=r==="light"?"white":"navy",s=n==="icon-only"?"icon-only":"full";return i.jsx(e,{width:o,height:a,variant:s,color:l,className:t})};export{u as V};

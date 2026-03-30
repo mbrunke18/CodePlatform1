@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@/hooks/useAuth';
+import { io } from 'socket.io-client';
 import {
   Radio,
   AlertTriangle,
@@ -25,8 +27,6 @@ import {
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
 const TEAL = '#2B8A6E';
-
-const ORG_ID = 'system';
 
 interface Detection {
   id: number;
@@ -71,13 +71,27 @@ function timeAgo(dateStr: string) {
 export default function LiveDetectionFeed() {
   const { toast } = useToast();
   const qc = useQueryClient();
+  const { user } = useAuth();
+  const ORG_ID = user?.organizationId || 'system';
   const [showAddContact, setShowAddContact] = useState(false);
   const [newContact, setNewContact] = useState({ role: '', name: '', email: '', slackChannel: '' });
+
+  // Real-time WebSocket listener — refreshes feed the instant a detection fires
+  useEffect(() => {
+    const socket = io(window.location.origin, {
+      path: '/socket.io/',
+      transports: ['websocket', 'polling'],
+    });
+    socket.on('new-detection', () => {
+      qc.invalidateQueries({ queryKey: ['/api/detections'] });
+    });
+    return () => { socket.disconnect(); };
+  }, [qc]);
 
   const detectionsQuery = useQuery<{ success: boolean; detections: Detection[] }>({
     queryKey: ['/api/detections', ORG_ID],
     queryFn: () => fetch(`/api/detections?organizationId=${ORG_ID}`).then(r => r.json()),
-    refetchInterval: 60000,
+    refetchInterval: 30000,
   });
 
   const contactsQuery = useQuery<{ success: boolean; contacts: StakeholderContact[] }>({

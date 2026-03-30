@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Link } from 'wouter';
 import { useDynamicStrategy } from '@/contexts/DynamicStrategyContext';
 import { useQuery, useMutation } from '@tanstack/react-query';
+import { useAuth } from '@/hooks/useAuth';
 import { apiRequest } from '@/lib/queryClient';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -254,6 +255,15 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
+  // Live trigger detections from the real ingestion engine
+  const { user } = useAuth();
+  const _liveOrgId = user?.organizationId || 'system';
+  const { data: liveDetectionsData } = useQuery<{ success: boolean; detections: any[] }>({
+    queryKey: ['/api/detections', _liveOrgId],
+    queryFn: () => fetch(`/api/detections?organizationId=${_liveOrgId}`).then(r => r.json()),
+    refetchInterval: 60000,
+  });
+
   const ALL_SIGNALS: SignalAlert[] = [
     { id: 's1',  severity: 'critical', title: 'Competitor announces $2.4B acquisition bid',     source: 'Reuters / Bloomberg Feed',       time: '1 min ago' },
     { id: 's2',  severity: 'critical', title: 'Ransomware alert: lateral movement detected',    source: 'CrowdStrike / SIEM Integration', time: '3 min ago' },
@@ -278,10 +288,21 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
   ];
 
   const signalAlerts = useMemo(() => {
+    // Prepend any real live detections so they always surface first
+    const liveSignals: SignalAlert[] = (liveDetectionsData?.detections || [])
+      .filter((d: any) => d.status !== 'acknowledged')
+      .slice(0, 3)
+      .map((d: any) => {
+        const score = d.confidenceScore as number;
+        const severity: SignalAlert['severity'] = score >= 85 ? 'critical' : score >= 75 ? 'high' : 'medium';
+        const mins = Math.round((Date.now() - new Date(d.detectedAt).getTime()) / 60000);
+        const time = mins < 1 ? 'Just now' : mins < 60 ? `${mins} min ago` : `${Math.floor(mins / 60)} hr ago`;
+        return { id: `live-${d.id}`, severity, title: `${d.triggerName} — ${score}% confidence`, source: `Live Detection · ${d.signalSource}`, time };
+      });
     const offset = (currentTime.getHours() * 4 + Math.floor(currentTime.getMinutes() / 5)) % ALL_SIGNALS.length;
-    const pool = [...ALL_SIGNALS.slice(offset), ...ALL_SIGNALS.slice(0, offset)];
-    return pool.slice(0, 6);
-  }, [currentTime.getHours(), Math.floor(currentTime.getMinutes() / 5)]);
+    const staticPool = [...ALL_SIGNALS.slice(offset), ...ALL_SIGNALS.slice(0, offset)];
+    return [...liveSignals, ...staticPool].slice(0, 6);
+  }, [currentTime, liveDetectionsData]);
 
   const ALL_COORDINATION: CoordinationEvent[] = [
     { id: 'c1', time: '1 min ago',  team: 'Legal',         action: 'Approved crisis communication draft',       status: 'completed' },
@@ -481,7 +502,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             </div>
           )}
           <div className="flex items-center justify-between mt-4 pt-4" style={{ borderTop: "1px solid #E8E4DC" }}>
-            <span style={{ fontSize: 11, color: "#6B7280" }}>Showing top 3 priority situations · 92 total signals monitored</span>
+            <span style={{ fontSize: 11, color: "#6B7280" }}>Showing top 3 priority situations · {92 + (liveDetectionsData?.detections?.filter((d: any) => d.status !== 'acknowledged').length || 0)} total signals monitored</span>
             <Link href="/advanced-analytics">
               <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#0A0F2E", display: "flex", alignItems: "center", gap: 4 }} className="hover:opacity-70 transition-opacity">
                 Deep-dive analysis <ChevronRight style={{ width: 13, height: 13 }} />
@@ -711,7 +732,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     ))}
                   </div>
                   <div className="border-t border-[#E8E4DC] px-4 py-3 flex items-center justify-between">
-                    <span style={{ fontSize: 11, color: "#6B7280" }}>Showing 4 of 92 active signals</span>
+                    <span style={{ fontSize: 11, color: "#6B7280" }}>Showing 4 of {92 + (liveDetectionsData?.detections?.filter((d: any) => d.status !== 'acknowledged').length || 0)} active signals</span>
                     <Link href="/ai-radar">
                       <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, display: "flex", alignItems: "center", gap: 4 }} className="hover:opacity-70 transition-opacity">
                         View all signals <ChevronRight style={{ width: 13, height: 13 }} />

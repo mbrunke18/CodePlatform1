@@ -2,6 +2,7 @@ import { db } from '../db.js';
 import { triggerDetections, stakeholderContacts } from '@shared/schema';
 import { eq, desc } from 'drizzle-orm';
 import { Resend } from 'resend';
+import { wsService } from './WebSocketService';
 
 // ─── Domain trigger keyword maps ─────────────────────────────────────────────
 // Each domain has primary keywords + recommended playbook + severity weight
@@ -19,21 +20,21 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Competitive Market Entry',
     domain: 'Market Dynamics',
-    keywords: ['competitor', 'rival', 'market entry', 'new entrant', 'competing', 'launched', 'expansion', 'competitive threat', 'market share', 'disrupt'],
+    keywords: ['competitor', 'rival', 'market entry', 'new entrant', 'competing', 'launched', 'expansion', 'competitive threat', 'market share', 'disrupt', 'market leader', 'outcompete', 'price war', 'competitive pressure', 'market position'],
     playbookName: 'Competitive Threat Response',
     baseConfidence: 70,
   },
   {
     name: 'M&A Activity Detected',
     domain: 'Market Dynamics',
-    keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition'],
+    keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition', 'deal closed', 'billion deal', 'purchase agreement', 'M&A', 'joint venture'],
     playbookName: 'M&A Response Playbook',
     baseConfidence: 75,
   },
   {
     name: 'Market Valuation Shift',
     domain: 'Market Dynamics',
-    keywords: ['valuation', 'IPO', 'stock price', 'market cap', 'earnings miss', 'guidance cut', 'revenue decline', 'profit warning', 'downgrade', 'sell-off'],
+    keywords: ['valuation', 'IPO', 'stock price', 'market cap', 'earnings miss', 'guidance cut', 'revenue decline', 'profit warning', 'downgrade', 'sell-off', 'quarterly results', 'analyst downgrade', 'stock decline', 'market correction', 'investor concern'],
     playbookName: 'Investor Communications Protocol',
     baseConfidence: 65,
   },
@@ -42,21 +43,21 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Regulatory Enforcement Action',
     domain: 'Regulatory & Compliance',
-    keywords: ['SEC', 'FTC', 'DOJ', 'enforcement', 'investigation', 'fine', 'penalty', 'sanction', 'antitrust', 'subpoena', 'consent decree', 'regulatory action'],
+    keywords: ['SEC', 'FTC', 'DOJ', 'enforcement', 'investigation', 'fine', 'penalty', 'sanction', 'antitrust', 'subpoena', 'consent decree', 'regulatory action', 'regulator', 'probe', 'lawsuit filed', 'class action', 'compliance failure'],
     playbookName: 'Regulatory Compliance Sprint',
     baseConfidence: 80,
   },
   {
     name: 'Legislation Change',
     domain: 'Regulatory & Compliance',
-    keywords: ['new regulation', 'legislation', 'compliance deadline', 'regulatory change', 'rule change', 'policy shift', 'mandate', 'data privacy', 'GDPR', 'CCPA'],
+    keywords: ['new regulation', 'legislation', 'compliance deadline', 'regulatory change', 'rule change', 'policy shift', 'mandate', 'data privacy', 'GDPR', 'CCPA', 'executive order', 'new law', 'compliance requirement', 'regulatory framework', 'federal rule'],
     playbookName: 'Regulatory Compliance Sprint',
     baseConfidence: 70,
   },
   {
     name: '8-K Material Event Filing',
     domain: 'Regulatory & Compliance',
-    keywords: ['8-K', 'material event', 'form 8-K', 'SEC filing', 'material change', 'reportable event', 'current report'],
+    keywords: ['8-K', 'material event', 'form 8-K', 'SEC filing', 'material change', 'reportable event', 'current report', 'material disclosure', 'securities filing'],
     playbookName: 'Regulatory Disclosure Protocol',
     baseConfidence: 85,
   },
@@ -65,30 +66,30 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Cybersecurity Breach Signal',
     domain: 'Technology & Security',
-    keywords: ['data breach', 'cyberattack', 'ransomware', 'hack', 'hacked', 'security incident', 'vulnerability', 'zero-day', 'phishing', 'malware', 'data leak', 'cyber incident'],
+    keywords: ['data breach', 'cyberattack', 'ransomware', 'hack', 'hacked', 'security incident', 'vulnerability', 'zero-day', 'phishing', 'malware', 'data leak', 'cyber incident', 'systems compromised', 'cyber attack', 'data stolen', 'unauthorized access'],
     playbookName: 'Cybersecurity Breach Response',
     baseConfidence: 85,
   },
   {
     name: 'AI Disruption Signal',
     domain: 'Technology & Security',
-    keywords: ['artificial intelligence', 'AI model', 'generative AI', 'automation', 'AI disruption', 'large language model', 'GPT', 'AI launch', 'AI competitor'],
+    keywords: ['artificial intelligence', 'AI model', 'generative AI', 'automation', 'AI disruption', 'large language model', 'GPT', 'AI launch', 'AI competitor', 'machine learning', 'ChatGPT', 'AI investment', 'workforce automation', 'AI regulation', 'tech disruption', 'AI funding'],
     playbookName: 'Technology Disruption Response',
-    baseConfidence: 60,
+    baseConfidence: 62,
   },
 
   // Supply Chain & Operations
   {
     name: 'Supply Chain Disruption',
     domain: 'Supply Chain & Operations',
-    keywords: ['supply chain', 'shortage', 'logistics disruption', 'shipping delay', 'port strike', 'tariff', 'trade war', 'embargo', 'supplier failure', 'procurement crisis'],
+    keywords: ['supply chain', 'shortage', 'logistics disruption', 'shipping delay', 'port strike', 'tariff', 'trade war', 'embargo', 'supplier failure', 'procurement crisis', 'supply shortage', 'inventory shortage', 'shipping crisis', 'disrupted supply', 'sourcing issue'],
     playbookName: 'Supply Chain Disruption Protocol',
     baseConfidence: 75,
   },
   {
     name: 'Operational Crisis',
     domain: 'Supply Chain & Operations',
-    keywords: ['plant shutdown', 'factory fire', 'operational failure', 'production halt', 'recall', 'product defect', 'quality crisis', 'manufacturing issue'],
+    keywords: ['plant shutdown', 'factory fire', 'operational failure', 'production halt', 'recall', 'product defect', 'quality crisis', 'manufacturing issue', 'facility closure', 'operations disrupted', 'product recall', 'safety recall', 'production stopped'],
     playbookName: 'Operational Crisis Response',
     baseConfidence: 80,
   },
@@ -97,14 +98,14 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Reputational Crisis Signal',
     domain: 'Brand & Reputation',
-    keywords: ['controversy', 'scandal', 'backlash', 'social media crisis', 'viral', 'boycott', 'protest', 'PR crisis', 'reputational damage', 'public outcry', 'brand damage'],
+    keywords: ['controversy', 'scandal', 'backlash', 'social media crisis', 'viral', 'boycott', 'protest', 'PR crisis', 'reputational damage', 'public outcry', 'brand damage', 'criticism', 'public backlash', 'brand crisis', 'negative coverage', 'media scrutiny'],
     playbookName: 'Reputational Crisis Protocol',
     baseConfidence: 70,
   },
   {
     name: 'Executive Leadership Event',
     domain: 'Brand & Reputation',
-    keywords: ['CEO resigns', 'CFO departure', 'executive fired', 'leadership change', 'board shakeup', 'C-suite', 'management change', 'succession'],
+    keywords: ['CEO resigns', 'CFO departure', 'executive fired', 'leadership change', 'board shakeup', 'C-suite', 'management change', 'succession', 'CEO steps down', 'executive departure', 'leadership transition', 'board resignation', 'interim CEO', 'top executive'],
     playbookName: 'Executive Leadership Crisis',
     baseConfidence: 75,
   },
@@ -113,14 +114,14 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Financial Distress Signal',
     domain: 'Financial',
-    keywords: ['bankruptcy', 'insolvency', 'debt default', 'credit downgrade', 'liquidity crisis', 'cash crunch', 'chapter 11', 'restructuring', 'financial distress'],
+    keywords: ['bankruptcy', 'insolvency', 'debt default', 'credit downgrade', 'liquidity crisis', 'cash crunch', 'chapter 11', 'restructuring', 'financial distress', 'debt crisis', 'loan default', 'credit rating cut', 'financial trouble', 'cash flow crisis'],
     playbookName: 'Financial Crisis Response',
     baseConfidence: 85,
   },
   {
     name: 'Earnings Surprise',
     domain: 'Financial',
-    keywords: ['earnings beat', 'earnings miss', 'revenue surprise', 'profit warning', 'earnings guidance', 'quarterly results', 'financial results'],
+    keywords: ['earnings beat', 'earnings miss', 'revenue surprise', 'profit warning', 'earnings guidance', 'quarterly results', 'financial results', 'beat estimates', 'missed estimates', 'revenue growth', 'profit decline', 'Q1 results', 'Q2 results', 'Q3 results', 'Q4 results', 'annual results', 'fiscal year'],
     playbookName: 'Investor Communications Protocol',
     baseConfidence: 65,
   },
@@ -129,7 +130,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'ESG / Climate Event',
     domain: 'ESG & Sustainability',
-    keywords: ['ESG', 'climate', 'sustainability', 'carbon', 'emissions', 'greenwashing', 'environmental violation', 'climate risk', 'net zero', 'DEI controversy'],
+    keywords: ['ESG', 'climate', 'sustainability', 'carbon', 'emissions', 'greenwashing', 'environmental violation', 'climate risk', 'net zero', 'DEI controversy', 'climate change', 'renewable energy', 'carbon neutral', 'environmental impact', 'social responsibility', 'diversity controversy'],
     playbookName: 'ESG Crisis Response',
     baseConfidence: 65,
   },
@@ -138,7 +139,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Geopolitical Risk Signal',
     domain: 'Geopolitical',
-    keywords: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'war', 'political instability', 'export control', 'national security', 'government shutdown'],
+    keywords: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'war', 'political instability', 'export control', 'national security', 'government shutdown', 'tariffs imposed', 'trade policy', 'economic sanctions', 'diplomatic crisis', 'military conflict', 'trade restrictions'],
     playbookName: 'Geopolitical Risk Response',
     baseConfidence: 70,
   },
@@ -399,6 +400,19 @@ export async function evaluateAndPersistSignals(
         });
 
         console.log(`🎯 TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source}`);
+
+        // Push real-time update via WebSocket so all connected clients refresh instantly
+        try {
+          const io = wsService.getIO();
+          if (io) {
+            io.emit('new-detection', {
+              triggerName: detection.triggerName,
+              triggerDomain: detection.triggerDomain,
+              confidenceScore: detection.confidenceScore,
+              organizationId,
+            });
+          }
+        } catch { /* non-blocking */ }
 
         // Fire notifications
         await Promise.allSettled([
