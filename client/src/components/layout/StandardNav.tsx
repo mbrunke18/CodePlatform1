@@ -231,7 +231,7 @@ export default function StandardNav() {
       key={path}
       onClick={() => navigateTo(path)}
       style={{
-        display: 'flex', gap: 11, alignItems: 'flex-start', padding: '10px 11px', marginBottom: 5, borderRadius: 10,
+        display: 'flex', gap: 10, alignItems: 'flex-start', padding: '7px 10px', marginBottom: 2, borderRadius: 8,
         cursor: 'pointer', transition: 'all 0.14s',
         background: featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent',
         border: featured ? '1px solid rgba(201,168,76,0.28)' : '1px solid transparent',
@@ -250,10 +250,10 @@ export default function StandardNav() {
       }}
     >
       <div style={{
-        width: 32, height: 32, flexShrink: 0, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width: 28, height: 28, flexShrink: 0, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: featured ? GOLD : colBg === 'dark' ? 'rgba(255,255,255,0.10)' : 'rgba(43,138,110,0.10)',
       }}>
-        <Icon size={14} style={{ color: featured ? NAVY : colBg === 'dark' ? 'rgba(255,255,255,0.75)' : TEAL }} />
+        <Icon size={13} style={{ color: featured ? NAVY : colBg === 'dark' ? 'rgba(255,255,255,0.75)' : TEAL }} />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <p style={{ fontSize: 12, fontWeight: 700, color: colBg === 'dark' ? '#fff' : NAVY, margin: '0 0 2px', lineHeight: 1.3 }}>{label}</p>
@@ -263,7 +263,7 @@ export default function StandardNav() {
   );
 
   const megaColHeading = (text: string, light = false) => (
-    <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.35)' : GOLD, margin: '0 0 10px 2px' }}>
+    <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.35)' : GOLD, margin: '0 0 6px 2px' }}>
       {text}
     </p>
   );
@@ -279,11 +279,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ background: NAVY, padding: '11px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div>
               <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Old Operating Model</p>
@@ -304,7 +304,7 @@ export default function StandardNav() {
         {/* Two-column body */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
           {/* Left: The Model + Core Capabilities */}
-          <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
+          <div style={{ padding: '12px 12px 12px 16px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
             {megaColHeading("The Operating Model")}
             {[
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
@@ -312,7 +312,7 @@ export default function StandardNav() {
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
               { path: '/why-execution-os', icon: Shield, label: 'Why Execution OS', sub: 'The 30-day mobilization gap — and how we close it' },
             ].map(l => megaItem(l))}
-            <div style={{ margin: '10px 0 8px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
+            <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
             {[
               { path: '/playbooks', icon: ClipboardList, label: 'Playbook Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
@@ -323,7 +323,7 @@ export default function StandardNav() {
           </div>
 
           {/* Right: Inside the Platform + Execute Tools */}
-          <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
+          <div style={{ padding: '12px 16px 12px 12px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("Inside the Platform")}
             {[
               { path: '/command-center', icon: Compass, label: 'Command Center', sub: 'Strategic operations hub — your primary entry point', featured: true },
@@ -332,7 +332,7 @@ export default function StandardNav() {
               { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
               { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'AI radar, signals & compound threat synthesis' },
             ].map(l => megaItem(l))}
-            <div style={{ margin: '10px 0 8px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
+            <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}
             {[
               { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once', featured: true },
@@ -353,11 +353,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
@@ -412,11 +412,11 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
+        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Execution Infrastructure Enterprises Are Missing</p>
@@ -501,17 +501,16 @@ export default function StandardNav() {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="p-0 shadow-2xl rounded-xl overflow-y-auto"
+          className="p-0 shadow-2xl rounded-xl overflow-hidden"
           style={{
             width: 660,
             background: '#fff',
             border: '1px solid rgba(10,15,46,0.14)',
             boxShadow: '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)',
-            maxHeight: 'calc(100vh - 70px)',
           }}
         >
           {/* Top bar — the core contrast */}
-          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
+          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
               <div>
                 <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Traditional Enterprise</p>
