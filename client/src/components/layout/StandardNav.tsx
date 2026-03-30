@@ -280,10 +280,10 @@ export default function StandardNav() {
       <DropdownMenuContent
         align="start"
         className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+        style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div>
               <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Old Operating Model</p>
@@ -354,10 +354,10 @@ export default function StandardNav() {
       <DropdownMenuContent
         align="start"
         className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+        style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
           <div>
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
@@ -413,10 +413,10 @@ export default function StandardNav() {
       <DropdownMenuContent
         align="start"
         className="p-0 shadow-2xl rounded-xl overflow-y-auto"
-        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
+        style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow, maxHeight: 'calc(100vh - 70px)' }}
       >
         {/* Header bar */}
-        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
           <div>
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Execution Infrastructure Enterprises Are Missing</p>
@@ -507,10 +507,11 @@ export default function StandardNav() {
             background: '#fff',
             border: '1px solid rgba(10,15,46,0.14)',
             boxShadow: '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)',
+            maxHeight: 'calc(100vh - 70px)',
           }}
         >
           {/* Top bar — the core contrast */}
-          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between' }}>
+          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 10 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
               <div>
                 <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Traditional Enterprise</p>
