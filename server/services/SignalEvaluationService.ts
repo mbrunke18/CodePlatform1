@@ -11,7 +11,8 @@ interface TriggerPattern {
   name: string;
   domain: string;
   keywords: string[];
-  playbookName: string;
+  playbookName: string;       // primary recommendation
+  alternatePlaybooks: string[]; // secondary options presented to approver
   baseConfidence: number;
 }
 
@@ -22,6 +23,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Market Dynamics',
     keywords: ['competitor', 'rival', 'market entry', 'new entrant', 'competing', 'launched', 'expansion', 'competitive threat', 'market share', 'disrupt', 'market leader', 'outcompete', 'price war', 'competitive pressure', 'market position'],
     playbookName: 'Competitive Threat Response',
+    alternatePlaybooks: ['Investor Communications Protocol', 'Reputational Crisis Protocol'],
     baseConfidence: 70,
   },
   {
@@ -29,6 +31,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Market Dynamics',
     keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition', 'deal closed', 'billion deal', 'purchase agreement', 'M&A', 'joint venture'],
     playbookName: 'M&A Response Playbook',
+    alternatePlaybooks: ['Investor Communications Protocol', 'Competitive Threat Response'],
     baseConfidence: 75,
   },
   {
@@ -36,6 +39,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Market Dynamics',
     keywords: ['valuation', 'IPO', 'stock price', 'market cap', 'earnings miss', 'guidance cut', 'revenue decline', 'profit warning', 'downgrade', 'sell-off', 'quarterly results', 'analyst downgrade', 'stock decline', 'market correction', 'investor concern'],
     playbookName: 'Investor Communications Protocol',
+    alternatePlaybooks: ['Financial Crisis Response', 'Reputational Crisis Protocol'],
     baseConfidence: 65,
   },
 
@@ -45,6 +49,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Regulatory & Compliance',
     keywords: ['SEC', 'FTC', 'DOJ', 'enforcement', 'investigation', 'fine', 'penalty', 'sanction', 'antitrust', 'subpoena', 'consent decree', 'regulatory action', 'regulator', 'probe', 'lawsuit filed', 'class action', 'compliance failure'],
     playbookName: 'Regulatory Compliance Sprint',
+    alternatePlaybooks: ['Regulatory Disclosure Protocol', 'Reputational Crisis Protocol'],
     baseConfidence: 80,
   },
   {
@@ -52,6 +57,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Regulatory & Compliance',
     keywords: ['new regulation', 'legislation', 'compliance deadline', 'regulatory change', 'rule change', 'policy shift', 'mandate', 'data privacy', 'GDPR', 'CCPA', 'executive order', 'new law', 'compliance requirement', 'regulatory framework', 'federal rule'],
     playbookName: 'Regulatory Compliance Sprint',
+    alternatePlaybooks: ['ESG Crisis Response', 'Regulatory Disclosure Protocol'],
     baseConfidence: 70,
   },
   {
@@ -59,6 +65,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Regulatory & Compliance',
     keywords: ['8-K', 'material event', 'form 8-K', 'SEC filing', 'material change', 'reportable event', 'current report', 'material disclosure', 'securities filing'],
     playbookName: 'Regulatory Disclosure Protocol',
+    alternatePlaybooks: ['Investor Communications Protocol', 'Regulatory Compliance Sprint'],
     baseConfidence: 85,
   },
 
@@ -68,6 +75,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Technology & Security',
     keywords: ['data breach', 'cyberattack', 'ransomware', 'hack', 'hacked', 'security incident', 'vulnerability', 'zero-day', 'phishing', 'malware', 'data leak', 'cyber incident', 'systems compromised', 'cyber attack', 'data stolen', 'unauthorized access'],
     playbookName: 'Cybersecurity Breach Response',
+    alternatePlaybooks: ['Reputational Crisis Protocol', 'Regulatory Disclosure Protocol'],
     baseConfidence: 85,
   },
   {
@@ -75,6 +83,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Technology & Security',
     keywords: ['artificial intelligence', 'AI model', 'generative AI', 'automation', 'AI disruption', 'large language model', 'GPT', 'AI launch', 'AI competitor', 'machine learning', 'ChatGPT', 'AI investment', 'workforce automation', 'AI regulation', 'tech disruption', 'AI funding'],
     playbookName: 'Technology Disruption Response',
+    alternatePlaybooks: ['Competitive Threat Response', 'Investor Communications Protocol'],
     baseConfidence: 62,
   },
 
@@ -84,6 +93,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Supply Chain & Operations',
     keywords: ['supply chain', 'shortage', 'logistics disruption', 'shipping delay', 'port strike', 'tariff', 'trade war', 'embargo', 'supplier failure', 'procurement crisis', 'supply shortage', 'inventory shortage', 'shipping crisis', 'disrupted supply', 'sourcing issue'],
     playbookName: 'Supply Chain Disruption Protocol',
+    alternatePlaybooks: ['Operational Crisis Response', 'Geopolitical Risk Response'],
     baseConfidence: 75,
   },
   {
@@ -91,6 +101,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Supply Chain & Operations',
     keywords: ['plant shutdown', 'factory fire', 'operational failure', 'production halt', 'recall', 'product defect', 'quality crisis', 'manufacturing issue', 'facility closure', 'operations disrupted', 'product recall', 'safety recall', 'production stopped'],
     playbookName: 'Operational Crisis Response',
+    alternatePlaybooks: ['Supply Chain Disruption Protocol', 'Reputational Crisis Protocol'],
     baseConfidence: 80,
   },
 
@@ -100,6 +111,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Brand & Reputation',
     keywords: ['controversy', 'scandal', 'backlash', 'social media crisis', 'viral', 'boycott', 'protest', 'PR crisis', 'reputational damage', 'public outcry', 'brand damage', 'criticism', 'public backlash', 'brand crisis', 'negative coverage', 'media scrutiny'],
     playbookName: 'Reputational Crisis Protocol',
+    alternatePlaybooks: ['Executive Leadership Crisis', 'ESG Crisis Response'],
     baseConfidence: 70,
   },
   {
@@ -107,6 +119,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Brand & Reputation',
     keywords: ['CEO resigns', 'CFO departure', 'executive fired', 'leadership change', 'board shakeup', 'C-suite', 'management change', 'succession', 'CEO steps down', 'executive departure', 'leadership transition', 'board resignation', 'interim CEO', 'top executive'],
     playbookName: 'Executive Leadership Crisis',
+    alternatePlaybooks: ['Investor Communications Protocol', 'Reputational Crisis Protocol'],
     baseConfidence: 75,
   },
 
@@ -116,6 +129,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Financial',
     keywords: ['bankruptcy', 'insolvency', 'debt default', 'credit downgrade', 'liquidity crisis', 'cash crunch', 'chapter 11', 'restructuring', 'financial distress', 'debt crisis', 'loan default', 'credit rating cut', 'financial trouble', 'cash flow crisis'],
     playbookName: 'Financial Crisis Response',
+    alternatePlaybooks: ['Investor Communications Protocol', 'Regulatory Disclosure Protocol'],
     baseConfidence: 85,
   },
   {
@@ -123,6 +137,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Financial',
     keywords: ['earnings beat', 'earnings miss', 'revenue surprise', 'profit warning', 'earnings guidance', 'quarterly results', 'financial results', 'beat estimates', 'missed estimates', 'revenue growth', 'profit decline', 'Q1 results', 'Q2 results', 'Q3 results', 'Q4 results', 'annual results', 'fiscal year'],
     playbookName: 'Investor Communications Protocol',
+    alternatePlaybooks: ['Financial Crisis Response', 'Reputational Crisis Protocol'],
     baseConfidence: 65,
   },
 
@@ -132,6 +147,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'ESG & Sustainability',
     keywords: ['ESG', 'climate', 'sustainability', 'carbon', 'emissions', 'greenwashing', 'environmental violation', 'climate risk', 'net zero', 'DEI controversy', 'climate change', 'renewable energy', 'carbon neutral', 'environmental impact', 'social responsibility', 'diversity controversy'],
     playbookName: 'ESG Crisis Response',
+    alternatePlaybooks: ['Reputational Crisis Protocol', 'Regulatory Compliance Sprint'],
     baseConfidence: 65,
   },
 
@@ -141,6 +157,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     domain: 'Geopolitical',
     keywords: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'war', 'political instability', 'export control', 'national security', 'government shutdown', 'tariffs imposed', 'trade policy', 'economic sanctions', 'diplomatic crisis', 'military conflict', 'trade restrictions'],
     playbookName: 'Geopolitical Risk Response',
+    alternatePlaybooks: ['Supply Chain Disruption Protocol', 'Operational Crisis Response'],
     baseConfidence: 70,
   },
 ];
@@ -151,7 +168,8 @@ export interface DetectedTrigger {
   triggerName: string;
   triggerDomain: string;
   confidenceScore: number;
-  recommendedPlaybook: string;
+  recommendedPlaybook: string;      // primary — AI's top recommendation
+  alternatePlaybooks: string[];     // secondary options for approver to choose from
   matchedKeywords: string[];
 }
 
@@ -205,6 +223,7 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
         triggerDomain: pattern.domain,
         confidenceScore,
         recommendedPlaybook: pattern.playbookName,
+        alternatePlaybooks: pattern.alternatePlaybooks,
         matchedKeywords,
       });
     }
@@ -255,9 +274,19 @@ async function sendDetectionEmail(
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
             </tr>
             <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Recommended Playbook</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.recommendedPlaybook}</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:700;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+              </td>
             </tr>
+            ${detection.alternatePlaybooks.length > 0 ? `
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
+                ${detection.alternatePlaybooks.join(' &nbsp;·&nbsp; ')}
+              </td>
+            </tr>` : ''}
           </table>
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
             <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Signal Detected</div>
@@ -308,7 +337,8 @@ async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSi
           { type: 'mrkdwn', text: `*Trigger:*\n${detection.triggerName}` },
           { type: 'mrkdwn', text: `*Domain:*\n${detection.triggerDomain}` },
           { type: 'mrkdwn', text: `*Confidence:*\n${detection.confidenceScore}%` },
-          { type: 'mrkdwn', text: `*Playbook Ready:*\n${detection.recommendedPlaybook}` },
+          { type: 'mrkdwn', text: `*Primary Playbook:*\n${detection.recommendedPlaybook}` },
+          ...(detection.alternatePlaybooks.length > 0 ? [{ type: 'mrkdwn', text: `*Also Consider:*\n${detection.alternatePlaybooks.join(', ')}` }] : []),
         ],
       },
       {
@@ -352,17 +382,13 @@ export async function evaluateAndPersistSignals(
 ): Promise<number> {
   let detectionsCreated = 0;
 
-  // Get stakeholder contacts for this org (for email notifications)
-  let contactEmails: string[] = [];
+  // Get stakeholder contacts for this org — used for domain-specific approver routing
+  let allContacts: { email: string | null; triggerDomains: string[] | null; isActive: boolean | null }[] = [];
   try {
-    const contacts = await db
+    allContacts = await db
       .select()
       .from(stakeholderContacts)
       .where(eq(stakeholderContacts.organizationId, organizationId as any));
-    contactEmails = contacts
-      .filter(c => c.isActive && c.email)
-      .map(c => c.email!)
-      .filter(Boolean);
   } catch {
     // table may not exist yet on first run
   }
@@ -388,6 +414,30 @@ export async function evaluateAndPersistSignals(
 
         if (hoursSince < 4) continue; // Suppress duplicate within 4 hours
 
+        // ── Domain-specific approver routing ──────────────────────────────
+        // 1. Find contacts explicitly assigned to this trigger's domain
+        // 2. If none assigned, fall back to all active contacts (org-wide)
+        const domainApprovers = allContacts.filter(c =>
+          c.isActive &&
+          c.email &&
+          Array.isArray(c.triggerDomains) &&
+          c.triggerDomains.length > 0 &&
+          c.triggerDomains.includes(detection.triggerDomain)
+        );
+        const fallbackContacts = allContacts.filter(c =>
+          c.isActive &&
+          c.email &&
+          (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
+        );
+        const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
+        const contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
+
+        if (domainApprovers.length > 0) {
+          console.log(`📬 Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
+        } else {
+          console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);
+        }
+
         // Persist the detection
         await db.insert(triggerDetections).values({
           organizationId: organizationId,
@@ -398,6 +448,7 @@ export async function evaluateAndPersistSignals(
           signalSourceUrl: signal.sourceUrl || null,
           confidenceScore: detection.confidenceScore,
           recommendedPlaybook: detection.recommendedPlaybook,
+          alternatePlaybooks: detection.alternatePlaybooks,
           status: 'detected',
           notificationSent: false,
         });

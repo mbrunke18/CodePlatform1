@@ -6423,6 +6423,9 @@ export const stakeholderContacts = pgTable('stakeholder_contacts', {
   slackUserId: varchar('slack_user_id', { length: 100 }),
   slackChannel: varchar('slack_channel', { length: 100 }),
   isActive: boolean('is_active').default(true),
+  // Domains this contact is the designated approver for (e.g. ['Financial', 'Market Dynamics'])
+  // Empty array = receives all alerts (org-wide fallback)
+  triggerDomains: text('trigger_domains').array().default([]),
   createdAt: timestamp('created_at').defaultNow(),
 });
 
@@ -6441,7 +6444,8 @@ export const triggerDetections = pgTable('trigger_detections', {
   signalSource: varchar('signal_source', { length: 255 }),
   signalSourceUrl: varchar('signal_source_url', { length: 2000 }),
   confidenceScore: integer('confidence_score').notNull(), // 0–100
-  recommendedPlaybook: varchar('recommended_playbook', { length: 255 }),
+  recommendedPlaybook: varchar('recommended_playbook', { length: 255 }), // primary recommendation
+  alternatePlaybooks: text('alternate_playbooks').array().default([]), // secondary options for approver to choose from
   status: varchar('status', { length: 50 }).default('detected'), // detected | notified | acknowledged | dismissed
   notificationSent: boolean('notification_sent').default(false),
   detectedAt: timestamp('detected_at').defaultNow(),

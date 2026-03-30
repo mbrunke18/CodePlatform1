@@ -73,9 +73,15 @@ interface PlaybookInput {
   averageExecutionTime?: number;
 }
 
+export interface ExecutionParams {
+  scope: 'full' | 'pilot';
+  timeline: 'accelerated' | 'standard' | 'extended';
+  notifyDepartments: string[];
+}
+
 interface PreActivationImpactPreviewProps {
   playbook: PlaybookInput;
-  onConfirmActivation: () => void;
+  onConfirmActivation: (params: ExecutionParams) => void;
   onCancel: () => void;
 }
 
@@ -116,7 +122,10 @@ export default function PreActivationImpactPreview({
   onCancel 
 }: PreActivationImpactPreviewProps) {
   const [acknowledged, setAcknowledged] = useState(false);
-  const [activeTab, setActiveTab] = useState<'prediction' | 'resources' | 'impact'>('prediction');
+  const [activeTab, setActiveTab] = useState<'prediction' | 'resources' | 'impact' | 'parameters'>('prediction');
+  const [execScope, setExecScope] = useState<'full' | 'pilot'>('full');
+  const [execTimeline, setExecTimeline] = useState<'accelerated' | 'standard' | 'extended'>('standard');
+  const [notifyDepts, setNotifyDepts] = useState<string[]>([]);
 
   const preview = useMemo((): ImpactPreview => {
     const seed = playbook?.id || playbook?.name || 'default';
@@ -213,6 +222,7 @@ export default function PreActivationImpactPreview({
           { id: 'prediction', label: 'Outcome Prediction', icon: Brain },
           { id: 'resources', label: 'Resources & Conflicts', icon: Users },
           { id: 'impact', label: 'Impact Estimate', icon: DollarSign },
+          { id: 'parameters', label: 'Deployment Parameters', icon: Target },
         ].map(tab => {
           const Icon = tab.icon;
           const active = activeTab === tab.id;
@@ -386,6 +396,96 @@ export default function PreActivationImpactPreview({
             </div>
           </div>
         )}
+        {/* Deployment Parameters Tab */}
+        {activeTab === 'parameters' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+
+            {/* Execution Scope */}
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Scope</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                {([
+                  { value: 'full', label: 'Full Deployment', desc: 'All teams and stakeholders activated simultaneously', icon: '⚡' },
+                  { value: 'pilot', label: 'Pilot Deployment', desc: 'Core team only — expand after initial validation', icon: '🔬' },
+                ] as const).map(opt => (
+                  <button key={opt.value} onClick={() => setExecScope(opt.value)}
+                    style={{ textAlign: 'left', padding: '14px 16px', border: `2px solid ${execScope === opt.value ? GOLD : BORDER}`, background: execScope === opt.value ? `${GOLD}08` : '#fff', cursor: 'pointer', transition: 'all 0.15s' }}>
+                    <div style={{ fontSize: 16, marginBottom: 4 }}>{opt.icon}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{opt.label}</div>
+                    <div style={{ fontSize: 10, color: '#6B7280', lineHeight: 1.5 }}>{opt.desc}</div>
+                    {execScope === opt.value && (
+                      <div style={{ marginTop: 8, fontSize: 9, fontWeight: 700, color: GOLD, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Selected</div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Timeline</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {([
+                  { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED },
+                  { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — AI-recommended pacing for this playbook', color: TEAL, recommended: true },
+                  { value: 'extended', label: 'Extended', mins: '20 min', desc: 'Deliberate pacing — additional stakeholder review cycles', color: '#9CA3AF' },
+                ] as const).map(opt => (
+                  <button key={opt.value} onClick={() => setExecTimeline(opt.value)}
+                    style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px', border: `2px solid ${execTimeline === opt.value ? opt.color : BORDER}`, background: execTimeline === opt.value ? `${opt.color}08` : '#fff', cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s' }}>
+                    <div style={{ width: 36, height: 36, background: `${opt.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: `1px solid ${opt.color}30` }}>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: opt.color }}>{opt.mins}</span>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{opt.label}</span>
+                        {opt.recommended && <span style={{ fontSize: 9, fontWeight: 700, color: TEAL, background: `${TEAL}15`, padding: '1px 6px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Recommended</span>}
+                      </div>
+                      <div style={{ fontSize: 10, color: '#6B7280' }}>{opt.desc}</div>
+                    </div>
+                    {execTimeline === opt.value && <CheckCircle2 style={{ width: 16, height: 16, color: opt.color, flexShrink: 0 }} />}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Stakeholder Notification Scope */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF' }}>Departments to Notify</div>
+                <button onClick={() => setNotifyDepts(notifyDepts.length === preview.departmentsInvolved.length ? [] : [...preview.departmentsInvolved])}
+                  style={{ fontSize: 10, fontWeight: 700, color: TEAL, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
+                  {notifyDepts.length === preview.departmentsInvolved.length ? 'Deselect All' : 'Select All'}
+                </button>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {preview.departmentsInvolved.map(dept => {
+                  const selected = notifyDepts.length === 0 || notifyDepts.includes(dept);
+                  const isExplicitlySelected = notifyDepts.includes(dept);
+                  const defaultAll = notifyDepts.length === 0;
+                  const active = defaultAll || isExplicitlySelected;
+                  return (
+                    <button key={dept} onClick={() => {
+                      if (notifyDepts.length === 0) {
+                        setNotifyDepts(preview.departmentsInvolved.filter(d => d !== dept));
+                      } else {
+                        setNotifyDepts(prev => prev.includes(dept) ? prev.filter(d => d !== dept) : [...prev, dept]);
+                      }
+                    }}
+                      style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 12px', border: `1px solid ${active ? TEAL : BORDER}`, background: active ? `${TEAL}10` : '#fff', cursor: 'pointer', fontSize: 11, fontWeight: 700, color: active ? TEAL : '#9CA3AF', transition: 'all 0.15s' }}>
+                      {active ? <CheckCircle2 style={{ width: 12, height: 12 }} /> : <XCircle style={{ width: 12, height: 12 }} />}
+                      {dept}
+                    </button>
+                  );
+                })}
+              </div>
+              <div style={{ marginTop: 8, fontSize: 10, color: '#9CA3AF' }}>
+                {notifyDepts.length === 0 ? `All ${preview.departmentsInvolved.length} departments selected (default)` : `${notifyDepts.length} of ${preview.departmentsInvolved.length} departments selected`}
+              </div>
+            </div>
+
+          </div>
+        )}
+
       </div>
 
       {/* ─── Footer Actions ─── */}
@@ -419,7 +519,11 @@ export default function PreActivationImpactPreview({
             style={{ borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', flex: 1 }}>
             Cancel
           </Button>
-          <Button onClick={onConfirmActivation} disabled={!acknowledged}
+          <Button onClick={() => onConfirmActivation({
+              scope: execScope,
+              timeline: execTimeline,
+              notifyDepartments: notifyDepts.length > 0 ? notifyDepts : preview.departmentsInvolved,
+            })} disabled={!acknowledged}
             style={{ background: acknowledged ? TEAL : '#9CA3AF', color: '#fff', borderRadius: 0, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', flex: 2, transition: 'background 0.2s' }}>
             <Zap style={{ width: 14, height: 14, marginRight: 6 }} />
             Confirm Activation — {preview.successProbability}% Predicted Success

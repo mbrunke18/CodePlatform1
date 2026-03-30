@@ -531,8 +531,12 @@ export default function PlaybookActivationConsole() {
     prevTasksRef.current = localDemoTasks;
   }, [localDemoTasks]);
 
-  // Handle activation confirmation
-  const handleConfirmActivation = () => {
+  // Handle activation confirmation — receives deployment parameters set by approver
+  const handleConfirmActivation = (params?: { scope?: string; timeline?: string; notifyDepartments?: string[] }) => {
+    const scope = params?.scope || 'full';
+    const timeline = params?.timeline || 'standard';
+    const timelineMinutes = timeline === 'accelerated' ? 8 : timeline === 'extended' ? 20 : 12;
+
     setActivationConfirmed(true);
     setExecutionStartTime(new Date());
     setExecutionStatus('active');
@@ -555,19 +559,23 @@ export default function PlaybookActivationConsole() {
             isAIGenerated: true,
           }))
         : [];
-      setLocalDemoTasks([...aiTasks, ...baseTasks]);
+      // In pilot scope, use only AI-generated tasks for the core team
+      setLocalDemoTasks(scope === 'pilot' ? [...aiTasks, ...baseTasks.slice(0, 5)] : [...aiTasks, ...baseTasks]);
     }
     const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
-    setStakeholderStatuses(domainStakeholders.map(s => ({ ...s, status: 'pending' as const })));
+    // In pilot scope, only notify first 2 stakeholders (core team)
+    const activeStakeholders = scope === 'pilot' ? domainStakeholders.slice(0, 2) : domainStakeholders;
+    setStakeholderStatuses(activeStakeholders.map(s => ({ ...s, status: 'pending' as const })));
     const now = formatEventTime();
+    const scopeLabel = scope === 'pilot' ? 'Pilot Deployment (core team)' : 'Full Deployment (all teams)';
     setLiveEvents([
-      { time: now, text: `⚡ Execution protocol activated — 12-minute response clock started`, type: 'init' },
-      { time: now, text: `🔒 War room secured — ${domainStakeholders.length} stakeholders queued for notification`, type: 'init' },
+      { time: now, text: `⚡ Execution protocol activated — ${timelineMinutes}-minute response clock started`, type: 'init' },
+      { time: now, text: `🎯 ${scopeLabel} — ${activeStakeholders.length} stakeholders queued for notification`, type: 'init' },
       { time: now, text: `📊 Real-time monitoring dashboard initialized`, type: 'init' },
     ]);
     toast({
       title: "Playbook Activated",
-      description: "Execution timer started. Rally your team!",
+      description: `${scopeLabel} · ${timelineMinutes}-min clock started.`,
     });
   };
 
