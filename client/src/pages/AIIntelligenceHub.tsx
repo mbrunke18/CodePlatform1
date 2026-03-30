@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
-import { Activity, Brain, Zap, Users, Sparkles } from 'lucide-react';
+import { Activity, Brain, Zap, Users, Sparkles, Target } from 'lucide-react';
 
 // Import existing AI module components
 import PulseIntelligence from './PulseIntelligence';

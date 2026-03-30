@@ -87,7 +87,7 @@ export default function MagicLogin() {
       style={{ background: NAVY }}
     >
       <div className="mb-12">
-        <VaughnMartinLogo color="white" size={40} variant="full" />
+        <VaughnMartinLogo color="light" height={40} variant="full" />
       </div>
 
       <div

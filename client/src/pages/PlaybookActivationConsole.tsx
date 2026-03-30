@@ -349,19 +349,19 @@ export default function PlaybookActivationConsole() {
     
     if (ackActionType === 'escalate') {
       setLiveEvents(prev => [
-        { time: at, text: `🚨 ESCALATION — "${taskLabel.slice(0, 60)}${taskLabel.length > 60 ? '…' : ''}"`, type: 'start' },
-        { time: at, text: `↑ [${ackRole}] escalated to Senior Leadership — response required within 2 minutes`, type: 'complete' },
+        { time: at, text: `🚨 ESCALATION — "${taskLabel.slice(0, 60)}${taskLabel.length > 60 ? '…' : ''}"`, type: 'start' as const },
+        { time: at, text: `↑ [${ackRole}] escalated to Senior Leadership — response required within 2 minutes`, type: 'complete' as const },
         { time: at, text: `📲 Emergency stakeholder loop activated — C-Suite channel opened`, type: 'init' },
         ...prev,
       ]);
     } else if (ackActionType === 'delegate') {
       setLiveEvents(prev => [
-        { time: at, text: `→ [${ackRole}] delegated task — ownership transferred and tracking initiated`, type: 'complete' },
+        { time: at, text: `→ [${ackRole}] delegated task — ownership transferred and tracking initiated`, type: 'complete' as const },
         { time: at, text: `🔔 Delegate notified via Execution OS — task marked for real-time progress monitoring`, type: 'init' },
         ...prev,
       ]);
     } else {
-      setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ✓ Acknowledged — "${taskLabel.slice(0, 55)}${taskLabel.length > 55 ? '…' : ''}"`, type: 'complete' }, ...prev]);
+      setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ✓ Acknowledged — "${taskLabel.slice(0, 55)}${taskLabel.length > 55 ? '…' : ''}"`, type: 'complete' as const }, ...prev]);
     }
     setAckFormTaskId(null);
     try {
@@ -490,13 +490,13 @@ export default function PlaybookActivationConsole() {
       if (prevTask.status !== 'in_progress' && task.status === 'in_progress') {
         const actionType = getTaskActionType(task.description);
         setLiveEvents(ev => [
-          { time: formatEventTime(), text: `[${actionType}] ${task.description}`, type: 'start' },
+          { time: formatEventTime(), text: `[${actionType}] ${task.description}`, type: 'start' as const },
           ...ev,
         ].slice(0, 20));
       }
       if (prevTask.status !== 'completed' && task.status === 'completed') {
         setLiveEvents(ev => [
-          { time: formatEventTime(), text: `✓ Completed — ${task.description}`, type: 'complete' },
+          { time: formatEventTime(), text: `✓ Completed — ${task.description}`, type: 'complete' as const },
           ...ev,
         ].slice(0, 20));
         setStakeholderStatuses(prev => {
@@ -507,7 +507,7 @@ export default function PlaybookActivationConsole() {
             updated[firstPending] = { ...updated[firstPending], status: 'notified' };
             setTimeout(() => {
               setLiveEvents(ev => [
-                { time: formatEventTime(), text: `📣 ${updated[firstPending].name} notified via ${updated[firstPending].method}`, type: 'notify' },
+                { time: formatEventTime(), text: `📣 ${updated[firstPending].name} notified via ${updated[firstPending].method}`, type: 'notify' as const },
                 ...ev,
               ].slice(0, 20));
             }, 2000);
@@ -518,7 +518,7 @@ export default function PlaybookActivationConsole() {
             updated[firstNotified] = { ...updated[firstNotified], status: 'acknowledged' };
             setTimeout(() => {
               setLiveEvents(ev => [
-                { time: formatEventTime(), text: `✅ ${updated[firstNotified].name} acknowledged — response confirmed`, type: 'notify' },
+                { time: formatEventTime(), text: `✅ ${updated[firstNotified].name} acknowledged — response confirmed`, type: 'notify' as const },
                 ...ev,
               ].slice(0, 20));
             }, 3500);

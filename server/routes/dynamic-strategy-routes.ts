@@ -13,7 +13,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
     try {
       const { dynamicStrategyService } = await import('../services/dynamicStrategyService.js');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json(null);
       }
@@ -33,7 +33,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
     try {
       const { dynamicStrategyService } = await import('../services/dynamicStrategyService.js');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json(null);
       }
@@ -50,7 +50,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       const { weakSignals } = await import('@shared/schema');
       const { and } = await import('drizzle-orm');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
@@ -71,7 +71,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
     try {
       const { oraclePatterns } = await import('@shared/schema');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
@@ -92,7 +92,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
     try {
       const { dynamicStrategyService } = await import('../services/dynamicStrategyService.js');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json({ status: 'inactive', message: 'Organization setup required' });
       }
@@ -108,7 +108,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
     try {
       const { activityFeedEvents } = await import('@shared/schema');
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
@@ -146,7 +146,7 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
   app.post('/api/dynamic-strategy/generate-demo-data', requireAuth, async (req: any, res) => {
     try {
       const userId = getUserId(req);
-      const user = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+      const user = await db.select().from(users).where(eq(users.id, userId as string)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json({ success: false, message: 'Organization not configured' });
       }

@@ -74,7 +74,7 @@ function RadarCanvas({ signalCount }: { signalCount: number }) {
 
       // Sweep gradient
       const a = sweepRef.angle;
-      const grad = ctx!.createConicalGradient ? null : null;
+      const grad = (ctx as any).createConicalGradient ? null : null;
       ctx!.save();
       ctx!.translate(cx, cy);
       ctx!.rotate(a);
@@ -547,7 +547,7 @@ export default function CommandLanding() {
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 8 }}>
-                      {signalItems.map((sig, i) => {
+                      {signalItems.map((sig: { name: string; level: string }, i: number) => {
                         const b = badgeColor(sig.level);
                         return (
                           <div key={i} style={{

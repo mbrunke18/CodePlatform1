@@ -42,9 +42,9 @@ import { BrandStamp } from "@/components/BrandStamp";
 interface Integration {
   id: string;
   name: string;
-  category: 'project-tracking' | 'communication' | 'crm' | 'itsm' | 'documentation' | 'source-control';
+  category: 'project-tracking' | 'communication' | 'crm' | 'itsm' | 'documentation' | 'source-control' | 'ai' | 'security';
   comingSoon?: boolean;
-  status: 'active' | 'inactive' | 'error' | 'pending';
+  status: 'active' | 'inactive' | 'error' | 'pending' | 'available';
   description: string;
   provider: string;
   version: string;

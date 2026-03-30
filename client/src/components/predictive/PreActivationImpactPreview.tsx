@@ -426,9 +426,9 @@ export default function PreActivationImpactPreview({
               <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Timeline</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {([
-                  { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED },
+                  { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED, recommended: false },
                   { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — AI-recommended pacing for this playbook', color: TEAL, recommended: true },
-                  { value: 'extended', label: 'Extended', mins: '20 min', desc: 'Deliberate pacing — additional stakeholder review cycles', color: '#9CA3AF' },
+                  { value: 'extended', label: 'Extended', mins: '20 min', desc: 'Deliberate pacing — additional stakeholder review cycles', color: '#9CA3AF', recommended: false },
                 ] as const).map(opt => (
                   <button key={opt.value} onClick={() => setExecTimeline(opt.value)}
                     style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px', border: `2px solid ${execTimeline === opt.value ? opt.color : BORDER}`, background: execTimeline === opt.value ? `${opt.color}08` : '#fff', cursor: 'pointer', textAlign: 'left', transition: 'all 0.15s' }}>

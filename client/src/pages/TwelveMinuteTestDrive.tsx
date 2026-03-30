@@ -132,7 +132,7 @@ export default function TwelveMinuteTestDrive() {
       const target = parseTime(t.time);
       if (elapsed >= target && taskStatuses[i] !== 'done') {
         setTaskStatuses(prev => ({ ...prev, [i]: elapsed >= target + 5 ? 'done' : 'active' }));
-        if (taskStatuses[i] !== 'done' && elapsed >= target) {
+        if (elapsed >= target) {
           const at = fmtSecs(elapsed);
           setLiveEvents(prev => [{ time: at, text: `[${t.role}] ✓ ${t.action.slice(0, 65)}…` }, ...prev].slice(0, 20));
         }
@@ -170,14 +170,14 @@ export default function TwelveMinuteTestDrive() {
 
   const completedTasks = Object.values(taskStatuses).filter(s => s === 'done').length;
   const pct = Math.round((elapsed / TOTAL) * 100);
-  const phases = [...new Set(tasks.map(t => t.phase))];
+  const phases = Array.from(new Set(tasks.map(t => t.phase)));
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
       {/* Nav */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/">
-          <div style={{ cursor: 'pointer' }}><ExecuteIQLogo size={32} /></div>
+          <div style={{ cursor: 'pointer' }}><ExecuteIQLogo height={32} /></div>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
@@ -444,7 +444,7 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 40 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>What You Just Experienced</div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
-                In this test drive, Execution OS coordinated {tasks.length} cross-functional tasks across {[...new Set(tasks.map(t => t.role))].length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
+                In this test drive, Execution OS coordinated {tasks.length} cross-functional tasks across {Array.from(new Set(tasks.map(t => t.role))).length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
               </p>
             </div>
 

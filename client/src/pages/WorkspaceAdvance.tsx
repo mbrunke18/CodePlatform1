@@ -169,7 +169,7 @@ function DoomLoopDetector() {
     mutationFn: ({ taskId, notes }: { taskId: string; notes: string }) =>
       apiRequest('PATCH', `/api/stuck-tasks/${taskId}/escalate`, { notes }),
     onSuccess: (_, { taskId }) => {
-      setEscalatedIds(prev => new Set([...prev, taskId]));
+      setEscalatedIds(prev => new Set([...Array.from(prev), taskId]));
       queryClient.invalidateQueries({ queryKey: ['/api/stuck-tasks'] });
       toast({ title: "Task escalated", description: "The task has been marked as re-escalated." });
     },

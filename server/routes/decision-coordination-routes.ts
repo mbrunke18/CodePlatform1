@@ -8,7 +8,7 @@ import {
   playbookActivations,
   tasks,
 } from "@shared/schema";
-import { eq, desc, and, sql, count } from "drizzle-orm";
+import { eq, desc, and, sql, count, asc } from "drizzle-orm";
 import { requireAuth, requireOrgAccess, getUserId, getOrgIdForUser } from "./helpers";
 
 export async function registerDecisionCoordinationRoutes(app: Express): Promise<void> {
@@ -461,7 +461,7 @@ app.get('/api/stuck-tasks', requireOrgAccess, async (req: any, res) => {
       createdAt: executionInstanceTasks.createdAt,
       updatedAt: executionInstanceTasks.updatedAt,
       taskTitle: executionPlanTasks.title,
-      taskRole: executionPlanTasks.ownerRole,
+      taskRole: executionPlanTasks.requiredRoleLabel,
       taskPriority: executionPlanTasks.priority,
       taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
     })
@@ -526,7 +526,7 @@ app.get('/api/execution-runs/:runId/my-tasks', requireOrgAccess, async (req: any
       updatedAt: executionInstanceTasks.updatedAt,
       taskTitle: executionPlanTasks.title,
       taskDescription: executionPlanTasks.description,
-      taskRole: executionPlanTasks.ownerRole,
+      taskRole: executionPlanTasks.requiredRoleLabel,
       taskPriority: executionPlanTasks.priority,
       taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
       isParallel: executionPlanTasks.isParallel,
@@ -571,7 +571,7 @@ app.get('/api/execution-runs/:runId/context', requireOrgAccess, async (req: any,
       id: executionInstanceTasks.id,
       status: executionInstanceTasks.status,
       taskTitle: executionPlanTasks.title,
-      taskRole: executionPlanTasks.ownerRole,
+      taskRole: executionPlanTasks.requiredRoleLabel,
       taskPriority: executionPlanTasks.priority,
       taskEstimatedMinutes: executionPlanTasks.estimatedMinutes,
       phaseId: executionPlanTasks.phaseId,
@@ -606,7 +606,7 @@ app.get('/api/execution-runs/:runId/context', requireOrgAccess, async (req: any,
 
     const startedMs = instance.startedAt ? new Date(instance.startedAt).getTime() : Date.now();
     const elapsedMinutes = Math.floor((Date.now() - startedMs) / 60000);
-    const targetMinutes = plan?.targetCompletionTime || 720;
+    const targetMinutes = plan?.targetExecutionTime || 12;
     const minutesRemaining = Math.max(0, targetMinutes - elapsedMinutes);
 
     res.json({

@@ -89,7 +89,7 @@ export default function ExplorePage() {
         <section style={{ background: '#0A0F2E', padding: '64px 24px 56px', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
           <div className="max-w-4xl mx-auto text-center" style={{ position: 'relative', zIndex: 1 }}>
-            <BrandStamp variant="dual" size="md" color="white" className="mb-8" />
+            <BrandStamp variant="dual" size="md" className="mb-8" />
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1.5, background: "#C9A84C" }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Product Experience</span>

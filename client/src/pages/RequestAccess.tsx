@@ -50,7 +50,7 @@ export default function RequestAccess() {
         style={{ background: NAVY }}
       >
         <div>
-          <VaughnMartinLogo color="white" size={44} variant="full" />
+          <VaughnMartinLogo color="light" height={44} variant="full" />
         </div>
 
         <div>
@@ -93,7 +93,7 @@ export default function RequestAccess() {
 
           {/* Mobile logo */}
           <div className="lg:hidden mb-8">
-            <VaughnMartinLogo color="navy" size={36} variant="full" />
+            <VaughnMartinLogo color="dark" height={36} variant="full" />
           </div>
 
           {!submitted ? (

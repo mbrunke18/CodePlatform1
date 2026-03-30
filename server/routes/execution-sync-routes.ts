@@ -7,7 +7,7 @@ import {
   playbookLibrary,
   playbookActivations,
 } from "@shared/schema";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { requireAuth, requireOrgAccess, getUserId, getOrgIdForUser } from "./helpers";
 
 export async function registerExecutionSyncRoutes(app: Express): Promise<void> {
@@ -104,7 +104,7 @@ app.post('/api/sync/export', requireOrgAccess, async (req: any, res) => {
       });
     }
     
-    const { executionPlanSyncService } = await import('./services/ExecutionPlanSyncService');
+    const { executionPlanSyncService } = await import('../services/ExecutionPlanSyncService');
     const result = await executionPlanSyncService.exportExecutionPlan(
       executionInstanceId,
       templateId,
@@ -130,7 +130,7 @@ app.post('/api/sync/records/:id/sync', requireOrgAccess, async (req: any, res) =
   try {
     const { direction = 'pull' } = req.body;
     
-    const { executionPlanSyncService } = await import('./services/ExecutionPlanSyncService');
+    const { executionPlanSyncService } = await import('../services/ExecutionPlanSyncService');
     const result = await executionPlanSyncService.syncTaskStatus(
       req.params.id,
       direction
@@ -450,7 +450,7 @@ app.post('/api/enterprise-integrations/:id/test', requireOrgAccess, async (req: 
       return res.status(404).json({ error: 'Integration not found' });
     }
     
-    const { executionPlanSyncService } = await import('./services/ExecutionPlanSyncService');
+    const { executionPlanSyncService } = await import('../services/ExecutionPlanSyncService');
     const adapter = executionPlanSyncService.getAdapter(integration.vendor as any);
     
     if (!adapter) {
@@ -496,7 +496,7 @@ app.get('/api/sync/platforms', requireOrgAccess, async (req: any, res) => {
 // --- Document Template Engine ---
 app.get('/api/documents/template-types', requireOrgAccess, async (req: any, res) => {
   try {
-    const { documentTemplateEngine } = await import('./services/DocumentTemplateEngine');
+    const { documentTemplateEngine } = await import('../services/DocumentTemplateEngine');
     const templates = documentTemplateEngine.getAvailableTemplates();
     res.json(templates);
   } catch (error) {
@@ -506,7 +506,7 @@ app.get('/api/documents/template-types', requireOrgAccess, async (req: any, res)
 
 app.get('/api/documents/template-types/:type/variables', requireOrgAccess, async (req: any, res) => {
   try {
-    const { documentTemplateEngine } = await import('./services/DocumentTemplateEngine');
+    const { documentTemplateEngine } = await import('../services/DocumentTemplateEngine');
     const variables = documentTemplateEngine.getTemplateVariables(req.params.type as any);
     res.json(variables);
   } catch (error) {
@@ -518,7 +518,7 @@ app.post('/api/documents/generate-from-type', requireOrgAccess, async (req: any,
   try {
     const { templateType, variables, executionInstanceId, scenarioId, organizationId } = req.body;
     
-    const { documentTemplateEngine } = await import('./services/DocumentTemplateEngine');
+    const { documentTemplateEngine } = await import('../services/DocumentTemplateEngine');
     const document = await documentTemplateEngine.generateDocument(
       templateType,
       variables || {},
@@ -540,7 +540,7 @@ app.get('/api/export/execution/:executionInstanceId', requireOrgAccess, async (r
   try {
     const { format = 'csv' } = req.query;
     
-    const { fileExportService } = await import('./services/FileExportService');
+    const { fileExportService } = await import('../services/FileExportService');
     const result = await fileExportService.exportExecutionPlan(
       req.params.executionInstanceId,
       format as any
@@ -731,7 +731,7 @@ app.get('/api/execution/preflight/:executionPlanId', requireOrgAccess, async (re
     const { executionPlanId } = req.params;
     const organizationId = req.query.organizationId || req.userId;
 
-    const { preFlightCheckService } = await import('./services/PreFlightCheckService');
+    const { preFlightCheckService } = await import('../services/PreFlightCheckService');
     const result = await preFlightCheckService.performCheck({
       executionPlanId,
       organizationId,
@@ -765,7 +765,7 @@ app.post('/api/execution/activate', requireOrgAccess, async (req: any, res) => {
       });
     }
 
-    const { executionOrchestrator } = await import('./services/ExecutionOrchestrator');
+    const { executionOrchestrator } = await import('../services/ExecutionOrchestrator');
     const result = await executionOrchestrator.activate({
       organizationId,
       scenarioId,
@@ -796,7 +796,7 @@ app.get('/api/execution/status/:executionInstanceId', requireOrgAccess, async (r
   try {
     const { executionInstanceId } = req.params;
 
-    const { executionOrchestrator } = await import('./services/ExecutionOrchestrator');
+    const { executionOrchestrator } = await import('../services/ExecutionOrchestrator');
     const status = await executionOrchestrator.getActivationStatus(executionInstanceId);
 
     if (!status) {

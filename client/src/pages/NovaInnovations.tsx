@@ -136,6 +136,7 @@ export default function NovaInnovations() {
   const NAVY = "#0A0F2E";
   const GOLD = "#C9A84C";
   const TEAL = "#2B8A6E";
+  const TEAL_LT = "rgba(43,138,110,0.85)";
   const OFF = "#F8F7F4";
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 

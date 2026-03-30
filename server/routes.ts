@@ -74,6 +74,7 @@ import {
   roiSnapshots,
   simulationAnalyses,
   strategicRecordings,
+  executiveTriggers,
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count } from 'drizzle-orm';
 import { db } from './db';
@@ -1850,7 +1851,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         .returning();
 
       await storage.createActivity({
-        userId,
+        userId: userId || '',
         action: `updated organization settings`,
         entityType: 'organization',
         entityId: id,
@@ -1873,7 +1874,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       }
 
       await storage.createActivity({
-        userId,
+        userId: userId || '',
         action: `approved budget of ${currency} ${amount} for playbook ${playbookId}`,
         entityType: 'budget',
         entityId: playbookId,
@@ -2293,7 +2294,6 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         priority: playbooks.priority,
         timesUsed: playbooks.timesUsed,
         sourceType: playbooks.sourceType,
-        approvalStatus: playbooks.approvalStatus,
         status: playbooks.status,
         createdAt: playbooks.createdAt,
       }).from(playbooks);
@@ -2845,6 +2845,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         res.json(tasks);
       } else {
         const userId = getUserId(req);
+        if (!userId) return res.json([]);
         const userTasks = await storage.getRecentTasks(userId);
         
         // Return empty response if no real tasks exist
@@ -6206,7 +6207,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
             targetExecutionTime: playbook[0].targetExecutionTime || 12,
             isActive: true,
             version: 1,
-            createdBy: userId,
+            createdBy: userId as string,
           })
           .returning();
         executionPlan = [newPlan];
@@ -7625,7 +7626,7 @@ Write in three short paragraphs: (1) What happened and how fast the organization
       const triggers = await db.select().from(executiveTriggers)
         .where(eq(executiveTriggers.organizationId, orgId))
         .limit(100);
-      const activeDomains = [...new Set(triggers.filter((t: any) => t.isActive).map((t: any) => t.category))];
+      const activeDomains = Array.from(new Set(triggers.filter((t: any) => t.isActive).map((t: any) => t.category)));
       const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
 
 Active monitoring domains: ${activeDomains.join(', ')}
@@ -7735,7 +7736,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { scenarioText } = req.body;
       if (!scenarioText) return res.status(400).json({ error: 'scenarioText required' });
       const { openAIService } = await import('./services/OpenAIService.js');
-      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain })
+      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId })
         .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(50);
       const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
 
@@ -7960,7 +7961,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
         return res.status(400).json({ error: 'Please describe your scenario (minimum 10 characters)' });
       }
       const { openAIService } = await import('./services/OpenAIService.js');
-      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domain })
+      const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId })
         .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(60);
 
       const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their likely readiness and recommend specific playbooks.

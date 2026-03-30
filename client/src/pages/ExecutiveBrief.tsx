@@ -90,7 +90,7 @@ export default function ExecutiveBrief() {
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
           <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 32, flexWrap: "wrap", marginBottom: 40 }}>
-              <VaughnMartinLogo color="white" size={44} variant="full" />
+              <VaughnMartinLogo color="light" height={44} variant="full" />
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Executive Brief</div>
                 <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>Confidential — For Internal Circulation</div>
@@ -421,7 +421,7 @@ export default function ExecutiveBrief() {
         {/* Footer mark */}
         <section style={{ background: "#F8F7F4", padding: "20px 48px", borderTop: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <VaughnMartinLogo color="navy" size={28} variant="full" />
+            <VaughnMartinLogo color="dark" height={28} variant="full" />
             <div style={{ fontSize: 11, color: "#9CA3AF" }}>
               © VaughnMartin · Confidential — For Internal Circulation Only · vaughnmartin.com
             </div>

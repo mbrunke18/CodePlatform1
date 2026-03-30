@@ -162,7 +162,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                             <p className="text-[10px] text-gray-500 mt-0.5">{pb.valueProposition}</p>
                           </div>
                           <button
-                            onClick={() => setSavedIds(s => new Set([...s, i]))}
+                            onClick={() => setSavedIds(s => new Set([...Array.from(s), i]))}
                             disabled={saved}
                             className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-wider px-3 py-1.5 flex-shrink-0"
                             style={{ background: saved ? `${TEAL}15` : NAVY, color: saved ? TEAL : '#fff' }}>
