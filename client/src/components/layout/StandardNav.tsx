@@ -323,6 +323,146 @@ export default function StandardNav() {
     </DropdownMenu>
   );
 
+  const renderExperienceDropdown = () => {
+    const primaryDemos = [
+      {
+        path: '/try-demo',
+        icon: Rocket,
+        label: 'Full Execution Simulation',
+        sub: 'Pick a crisis. Watch revenue saved live as the IDEA Framework fires in real time.',
+        featured: true,
+      },
+      {
+        path: '/12-minute-experience',
+        icon: Play,
+        label: '12-Minute War Room',
+        sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live.',
+        featured: false,
+      },
+      {
+        path: '/industry-demos',
+        icon: Globe,
+        label: 'Industry Proof Cases',
+        sub: 'LVMH · Toyota · LoanDepot · Glenmark — real scenarios, real stakes, real outcomes.',
+        featured: false,
+      },
+    ];
+    const deeperDemos = [
+      { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
+      { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Simulator', sub: 'Dry-run any scenario before it\'s real. AI scores Survive vs. Thrive.' },
+      { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },
+      { path: '/executive-brief', icon: FileText, label: 'One-Page Board Brief', sub: 'The full thesis, 3,600× metric, and ROI case — shareable in 60 seconds' },
+    ];
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          {renderDropdownButton("Experience")}
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align="start"
+          className="p-0 shadow-2xl rounded-xl overflow-hidden"
+          style={{
+            width: 660,
+            background: '#fff',
+            border: '1px solid rgba(10,15,46,0.14)',
+            boxShadow: '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)',
+          }}
+        >
+          {/* Top bar — the core contrast */}
+          <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
+              <div>
+                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Traditional Enterprise</p>
+                <p style={{ fontSize: 16, fontWeight: 700, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>30 days to mobilize</p>
+              </div>
+              <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
+              <div>
+                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Execution OS</p>
+                <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>12 minutes to execution</p>
+              </div>
+            </div>
+            <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+              <p style={{ fontSize: 15, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
+              <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
+            </div>
+          </div>
+
+          {/* Two-column content area */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            {/* Left column: primary demo paths */}
+            <div style={{ padding: '18px 14px 18px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
+              <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '0 0 12px 2px' }}>Live Demos — No Login Required</p>
+              {primaryDemos.map(({ path, icon: Icon, label, sub, featured }) => (
+                <div
+                  key={path}
+                  onClick={() => navigateTo(path)}
+                  style={{
+                    display: 'flex', gap: 11, alignItems: 'flex-start', padding: '10px 11px', marginBottom: 6, borderRadius: 10,
+                    cursor: 'pointer', transition: 'all 0.14s',
+                    background: featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent',
+                    border: featured ? '1px solid rgba(201,168,76,0.28)' : '1px solid transparent',
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.background = featured ? 'linear-gradient(135deg,rgba(201,168,76,0.2),rgba(43,138,110,0.13))' : 'rgba(10,15,46,0.05)';
+                    el.style.borderColor = featured ? 'rgba(201,168,76,0.5)' : 'transparent';
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.background = featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent';
+                    el.style.borderColor = featured ? 'rgba(201,168,76,0.28)' : 'transparent';
+                  }}
+                >
+                  <div style={{ width: 34, height: 34, background: featured ? GOLD : 'rgba(43,138,110,0.1)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon size={15} style={{ color: featured ? NAVY : TEAL }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 12, fontWeight: 700, color: NAVY, margin: '0 0 2px', lineHeight: 1.3 }}>{label}</p>
+                    <p style={{ fontSize: 10.5, color: '#6B7280', margin: 0, lineHeight: 1.45 }}>{sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right column: deeper experiences */}
+            <div style={{ padding: '18px 18px 18px 14px', background: 'rgba(248,247,244,0.55)' }}>
+              <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 12px 2px' }}>Go Deeper</p>
+              {deeperDemos.map(({ path, icon: Icon, label, sub }) => (
+                <div
+                  key={path}
+                  onClick={() => navigateTo(path)}
+                  style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '8px 10px', marginBottom: 4, borderRadius: 8, cursor: 'pointer', transition: 'background 0.12s' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.06)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                >
+                  <div style={{ width: 28, height: 28, background: 'rgba(10,15,46,0.07)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon size={13} style={{ color: NAVY }} />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 11, fontWeight: 700, color: NAVY, margin: '0 0 1px', lineHeight: 1.3 }}>{label}</p>
+                    <p style={{ fontSize: 10, color: '#6B7280', margin: 0, lineHeight: 1.4 }}>{sub}</p>
+                  </div>
+                </div>
+              ))}
+              {/* Bottom CTA */}
+              <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
+                <div
+                  onClick={() => navigateTo('/pilot-program')}
+                  style={{ background: NAVY, borderRadius: 8, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
+                >
+                  <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
+                  <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Deploy Execution OS for your team in 30 days →</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  };
+
   return (
     <nav
       className="sticky top-0 z-50"
@@ -352,7 +492,7 @@ export default function StandardNav() {
           {/* Center: Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
             {renderSectionedDropdown("The Platform", platformSections)}
-            {renderSectionedDropdown("Experience", experienceSections)}
+            {renderExperienceDropdown()}
             {renderFlatDropdown("Evidence", evidenceLinks)}
             {renderFlatDropdown("Investors", investorsLinks, true)}
           </div>

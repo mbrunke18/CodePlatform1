@@ -349,6 +349,34 @@ export default function TryDemo() {
   const [savedValue, setSavedValue] = useState(0);
   const [detectStep, setDetectStep] = useState(0);
 
+  const getChaosContext = (seconds: number) => {
+    if (seconds < 45) return {
+      dayLabel: 'Hour 0 — Crisis Detected',
+      status: 'No plan. No owner. No direction.',
+      detail: 'Your team is scrambling to figure out who needs to be in the room.',
+    };
+    if (seconds < 90) return {
+      dayLabel: 'Hour 2 — Still assembling',
+      status: 'Half the stakeholders don\'t know this is happening.',
+      detail: 'Email chains multiplying. Board asking for answers you don\'t have.',
+    };
+    if (seconds < 135) return {
+      dayLabel: 'Day 1 — First meeting scheduled',
+      status: 'For tomorrow. No decisions made today.',
+      detail: 'Your competitor just responded publicly. You haven\'t.',
+    };
+    if (seconds < 180) return {
+      dayLabel: 'Day 3 — Plan still in draft',
+      status: 'Budget approval stuck in committee.',
+      detail: 'Revenue exposure growing. Media is asking questions.',
+    };
+    return {
+      dayLabel: 'Week 2 — Improvised response',
+      status: 'Execution gaps visible to customers and regulators.',
+      detail: 'Damage compounds daily. Leadership confidence eroding.',
+    };
+  };
+
   const startDemo = (scenario: Scenario) => {
     setSelectedScenario(scenario);
     setCurrentPhase('chaos');
@@ -778,13 +806,21 @@ export default function TryDemo() {
 
                   <Card className="bg-white border-gray-200">
                     <CardContent className="p-4">
-                      <div className="text-center">
-                        <p className="text-xs text-gray-800 uppercase tracking-wide mb-1">Time Elapsed</p>
+                      <div className="text-center mb-3">
+                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Time Elapsed</p>
                         <p className="text-3xl font-bold text-gray-900 font-mono">
                           {formatTime(chaosSeconds)}
                         </p>
-                        <p className="text-xs text-gray-800 mt-1">
-                          Still no coordinated response
+                      </div>
+                      <div style={{ padding: '9px 11px', background: 'rgba(220,38,38,0.05)', borderRadius: 7, borderLeft: '3px solid #DC2626' }}>
+                        <p style={{ fontSize: 9, fontWeight: 800, color: '#DC2626', margin: '0 0 3px', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                          {getChaosContext(chaosSeconds).dayLabel}
+                        </p>
+                        <p style={{ fontSize: 11, fontWeight: 700, color: '#374151', margin: '0 0 3px', lineHeight: 1.4 }}>
+                          {getChaosContext(chaosSeconds).status}
+                        </p>
+                        <p style={{ fontSize: 10, color: '#6B7280', margin: 0, lineHeight: 1.45 }}>
+                          {getChaosContext(chaosSeconds).detail}
                         </p>
                       </div>
                     </CardContent>
@@ -1110,6 +1146,28 @@ export default function TryDemo() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
+                        {/* Narration bar — what this replaces */}
+                        <div style={{ background: 'linear-gradient(135deg,rgba(10,15,46,0.96),rgba(20,27,69,0.98))', borderRadius: 10, padding: '12px 16px', marginBottom: 14, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                          <div style={{ width: 32, height: 32, background: 'rgba(201,168,76,0.18)', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                            <Zap size={15} style={{ color: '#C9A84C' }} />
+                          </div>
+                          <div>
+                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 3px' }}>What Execution OS Just Replaced</p>
+                            <p style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.85)', margin: '0 0 2px', lineHeight: 1.45 }}>
+                              {executionSteps.length === 0
+                                ? 'Normally this would take 3–5 days just to convene the right team.'
+                                : executionSteps.length <= 2
+                                ? `Stakeholders notified automatically — no email chains, no missed alerts.`
+                                : executionSteps.length <= 4
+                                ? `Playbook activated in seconds — budget pre-approved, tasks pre-assigned.`
+                                : `Full response coordinated — what takes most enterprises 3–4 weeks done in minutes.`}
+                            </p>
+                            <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', margin: 0 }}>
+                              {executionSteps.length > 0 ? `${executionSteps.length} action${executionSteps.length !== 1 ? 's' : ''} completed automatically` : 'Orchestration beginning…'}
+                            </p>
+                          </div>
+                        </div>
+
                         {/* Timer */}
                         <div className="mb-4 p-4 bg-gradient-to-r from-[#2B8A6E]/20 to-[#3BAF8A]/20 border border-[#2B8A6E]/30 rounded-lg text-center">
                           <p className="text-xs text-[#2B8A6E] uppercase tracking-wide mb-1">Execution Time</p>
