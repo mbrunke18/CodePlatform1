@@ -957,33 +957,92 @@ export default function RoleExperience() {
     switch (currentStage.id) {
       case 'intro':
         return (
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center mx-auto mb-6`}>
-                <Icon className="h-10 w-10 text-[#0A0F2E]" />
+          <div className="max-w-4xl mx-auto">
+            {/* Role identity bar */}
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+              className="flex items-center gap-4 mb-6 p-4 bg-white border border-[#E8E4DC] rounded-xl"
+            >
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${role.gradient} flex items-center justify-center flex-shrink-0`}>
+                <Icon className="h-6 w-6 text-[#0A0F2E]" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-0.5">
+                  <span className="text-[10px] font-800 text-[#6B7280] uppercase tracking-widest font-bold">{role.title}</span>
+                  <Badge className={`text-[9px] font-bold ${role.domainCategory === 'OFFENSE' ? 'bg-[#2B8A6E]/15 text-[#2B8A6E]' : role.domainCategory === 'DEFENSE' ? 'bg-red-500/15 text-red-500' : 'bg-[#C9A84C]/15 text-[#C9A84C]'}`}>
+                    {role.domainCategory} · {role.domain}
+                  </Badge>
+                </div>
+                <p className="text-sm font-bold text-[#0A0F2E]">{role.name} · {role.company}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] text-[#6B7280] uppercase tracking-wider mb-0.5">Playbook</p>
+                <p className="text-xs font-bold text-[#0A0F2E]">{role.playbook.name}</p>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Badge className={`mb-4 ${role.domainCategory === 'OFFENSE' ? 'bg-[#0A0F2E]/20 text-[#0A0F2E]' : role.domainCategory === 'DEFENSE' ? 'bg-red-500/20 text-red-400' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{role.domainCategory} — {role.domain}</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-3">{role.name}, {role.title}</h1>
-              <p className="text-xl text-[#6B7280] mb-2">{role.company}</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-              className="mt-8 bg-white border border-[#E8E4DC] rounded-2xl p-8"
+
+            {/* THE HOOK — largest most prominent element */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+              style={{ background: '#0A0F2E', borderRadius: 14, padding: '32px 32px 28px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}
             >
-              <div className="text-sm text-[#0A0F2E] uppercase tracking-wider mb-3">Today's Scenario</div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] mb-4">{role.scenario}</h2>
-              <p className="text-lg text-[#6B7280] leading-relaxed">
-                Configure your own playbook, triggers, data sources, and customizations. Then watch your personalized execution come alive as a real signal fires.
-              </p>
+              {/* Subtle grid overlay */}
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+              <div style={{ position: 'relative' }}>
+                <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 14px' }}>The Question Every {role.title} Has to Answer</p>
+                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.35, margin: '0 0 20px' }}>
+                  "{role.signal.name.replace(/—.*/, '').trim()}"
+                </h2>
+                {/* Before / After contrast */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
+                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 8 }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
+                    <p style={{ fontSize: 22, fontWeight: 800, color: '#f87171', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>to mobilize a response</p>
+                  </div>
+                  <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)', textAlign: 'center' }}>→</div>
+                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8 }}>
+                    <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Execution OS</p>
+                    <p style={{ fontSize: 22, fontWeight: 800, color: '#4ade80', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>full execution underway</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-              className="mt-8 flex items-center justify-center gap-6 text-sm text-gray-800"
+
+            {/* Crisis scenario card */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 12, padding: '18px 20px', marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+                <div style={{ width: 36, height: 36, background: 'rgba(220,38,38,0.15)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <AlertTriangle className="h-4 w-4 text-red-400" />
+                </div>
+                <div>
+                  <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 5px' }}>Today's Live Scenario — {role.domain}</p>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.9)', margin: '0 0 5px', lineHeight: 1.4 }}>{role.scenario}</p>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.5 }}>{role.signal.detail}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* What you'll do in this demo */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
+              className="bg-white border border-[#E8E4DC] rounded-xl p-5"
             >
-              <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Playbook #{role.playbook.number}</span>
-              <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#0A0F2E]" /> {role.playbook.stakeholders} stakeholders</span>
-              <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-amber-400" /> {role.playbook.tasks} tasks</span>
-              <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-[#2B8A6E]" /> {role.playbook.budget} budget</span>
+              <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-3">What Happens Next</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { step: '01', label: 'Configure your playbook', icon: BookOpen, color: '#C9A84C' },
+                  { step: '02', label: 'Set triggers & data feeds', icon: Radio, color: '#2B8A6E' },
+                  { step: '03', label: 'Crisis fires — OS responds', icon: AlertTriangle, color: '#DC2626' },
+                  { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
+                ].map(({ step, label, icon: StepIcon, color }) => (
+                  <div key={step} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 8 }}>
+                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: `${color}15`, border: `1px solid ${color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
+                      <StepIcon size={14} style={{ color }} />
+                    </div>
+                    <p style={{ fontSize: 9, fontWeight: 800, color, margin: '0 0 3px', letterSpacing: '0.1em' }}>{step}</p>
+                    <p style={{ fontSize: 10, color: '#374151', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>{label}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         );
