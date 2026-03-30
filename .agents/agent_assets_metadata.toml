@@ -48,3 +48,9 @@ id = "ng2Jh_Lk8PmRFf7-M0kFb"
 uri = "file://attached_assets/generated_images/martin_brunke_linkedin_banner_v2.png"
 type = "image"
 title = "Martin Brunke — LinkedIn Banner v2 (Balanced)"
+
+[[outputs]]
+id = "dezCJ5kvlAOpUo30VjMMy"
+uri = "file://attached_assets/execution-os-video-production-package-UPDATED.md"
+type = "text"
+title = "Execution OS — Updated Video Production Package"
