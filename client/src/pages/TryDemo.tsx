@@ -630,7 +630,7 @@ export default function TryDemo() {
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#DC2626' }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#DC2626' }}>The Current State</span>
                   </div>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A crisis hits. What happens next?</p>
+                  <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A strategic trigger fires. What happens next?</p>
                   <p style={{ fontSize: 12, color: '#4B5563', marginBottom: 16, lineHeight: 1.6 }}>Your executives spend the next 30 days doing the same thing they always do — scheduling meetings, aligning stakeholders, improvising.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
@@ -658,7 +658,7 @@ export default function TryDemo() {
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>With Execution OS</span>
                   </div>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>The same crisis. A completely different result.</p>
+                  <p style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>The same trigger. A completely different result.</p>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your playbook was already built. The system was already watching.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
@@ -771,7 +771,7 @@ export default function TryDemo() {
                 <div>
                   <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Execution OS</p>
                   <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, margin: 0 }}>
-                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a crisis hits and no playbook exists.
+                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no playbook exists.
                   </p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto', flexShrink: 0 }}>
@@ -1038,7 +1038,7 @@ export default function TryDemo() {
                             <span className="font-medium">Time to Ready: 0 minutes</span>
                           </div>
                           <p className="text-sm text-gray-800">
-                            Everything was prepared BEFORE the crisis hit
+                            Everything was staged BEFORE the trigger fired
                           </p>
                         </div>
 
@@ -1534,7 +1534,7 @@ export default function TryDemo() {
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Why This Was Ready</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this playbook before today.</p>
-                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the crisis, not during it.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the trigger fires, not after it.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
                         <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Execution OS:</p>
                         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Spend 4–8 hours assembling a response team, locating the right people, finding documents, and getting budget approval — while the situation compounds.</p>
@@ -1664,7 +1664,7 @@ export default function TryDemo() {
                       </div>
                       <div className="flex items-start gap-2 text-xs">
                         <Badge variant="outline" className="text-[10px] shrink-0 bg-transparent text-[#0A0F2E] border-[#0A0F2E] font-bold">PagerDuty</Badge>
-                        <span className="text-slate-600 font-medium text-[11px]">3.5x faster crisis response</span>
+                        <span className="text-slate-600 font-medium text-[11px]">3.5x faster strategic execution</span>
                       </div>
                     </CardContent>
                   </Card>

@@ -13,7 +13,7 @@ interface RoleConfig {
   title: string;
   icon: any;
   hookQuestion: string;
-  crisisLine: string;
+  situationLine: string;
   keyMetric: string;
   metricBefore: string;
   metricAfter: string;
@@ -31,7 +31,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Executive Officer',
     icon: Briefcase,
     hookQuestion: 'What percentage of your strategic initiatives actually deliver on time and on budget?',
-    crisisLine: 'Board calls at 7 AM. Activist investor filed. You have no playbook.',
+    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no playbook.',
     keyMetric: '$144M execution gap closed',
     metricBefore: '30+ days',
     metricAfter: '12 min',
@@ -43,7 +43,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Financial Officer',
     icon: DollarSign,
     hookQuestion: "What's your company's biggest untracked expense that doesn't appear on any line item?",
-    crisisLine: 'Coordinated response delays. Every week without a plan costs millions.',
+    situationLine: 'Coordinated response delays. Every week without a plan costs millions.',
     keyMetric: '$114M Year 1 ROI · 6.3 week payback',
     metricBefore: '3–5 weeks',
     metricAfter: '12 min',
@@ -55,7 +55,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Information Security Officer',
     icon: Shield,
     hookQuestion: 'Breach detected at 2 AM. How long until 6 teams have roles, tasks, and execution already live?',
-    crisisLine: 'The clock starts the moment the breach is detected. Every minute is exposure.',
+    situationLine: 'The clock starts the moment the breach is detected. Every minute is exposure.',
     keyMetric: 'Breach contained in 47 min',
     metricBefore: '8 hours',
     metricAfter: '47 min',
@@ -67,7 +67,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Operating Officer',
     icon: Settings,
     hookQuestion: 'When was the last time you executed your continuity plan at the speed it assumes?',
-    crisisLine: 'Supply chain disruption live. Operations halting. You need coordinated response NOW.',
+    situationLine: 'Supply chain disruption live. Operations halting. You need coordinated response NOW.',
     keyMetric: '$2.1M saved · Full coordination',
     metricBefore: '30 days',
     metricAfter: '12 min',
@@ -79,7 +79,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Marketing Officer',
     icon: TrendingUp,
     hookQuestion: 'Competitor launches a product tomorrow. How long until your counter-campaign is in market?',
-    crisisLine: 'Competitor announcement live. Media is covering it. Your team is still in Slack.',
+    situationLine: 'Competitor announcement live. Media is covering it. Your team is still in Slack.',
     keyMetric: '$12M market share defended',
     metricBefore: '21 days',
     metricAfter: '3 days',
@@ -91,7 +91,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Technology Officer',
     icon: Server,
     hookQuestion: 'CEO announces digital transformation Monday. How long until 6 teams are coordinating?',
-    crisisLine: 'Transformation announcement made. Engineering, Product, Data, Security — all waiting.',
+    situationLine: 'Transformation announcement made. Engineering, Product, Data, Security — all waiting.',
     keyMetric: '$12M ROI · 82% adoption rate',
     metricBefore: '36 months',
     metricAfter: '22 months',
@@ -103,7 +103,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Human Resources Officer',
     icon: Users,
     hookQuestion: "What's the #1 reason your top performers give in exit interviews?",
-    crisisLine: 'Key talent departing. Culture score dropping. Nobody has a retention playbook staged.',
+    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention playbook staged.',
     keyMetric: '85% engagement · $2.1M saved',
     metricBefore: '6 weeks',
     metricAfter: '12 min',
@@ -115,7 +115,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'General Counsel',
     icon: Scale,
     hookQuestion: 'Regulatory change Friday afternoon. How long until your organization executes compliance?',
-    crisisLine: 'Friday 5 PM regulatory filing. Six teams need to move. No one has a mandate.',
+    situationLine: 'Friday 5 PM regulatory filing. Six teams need to move. No one has a mandate.',
     keyMetric: 'Deadline met with 12 days to spare',
     metricBefore: '5 weeks',
     metricAfter: '10 days',
@@ -127,7 +127,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Strategy Officer',
     icon: Target,
     hookQuestion: 'Six months later, how much of your strategy is actually executing as planned?',
-    crisisLine: 'Q3 board review reveals 30% execution gap. Strategy is not translating to action.',
+    situationLine: 'Q3 board review reveals 30% execution gap. Strategy is not translating to action.',
     keyMetric: '70% → 95% strategy delivery',
     metricBefore: '70% delivery',
     metricAfter: '95% delivery',
@@ -139,7 +139,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Revenue Officer',
     icon: TrendingUp,
     hookQuestion: "What's your average time from 'customer at risk' to 'retention plan in market'?",
-    crisisLine: 'Your #2 account signals churn. Competitive displacement happening in real time.',
+    situationLine: 'Your #2 account signals churn. Competitive displacement happening in real time.',
     keyMetric: '+5% win rate · $44M revenue added',
     metricBefore: '21 days',
     metricAfter: '5 days',
@@ -151,7 +151,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Data Officer',
     icon: Database,
     hookQuestion: 'Your data signals churn risk. How long until the organization acts on that insight?',
-    crisisLine: 'Signal fired 14 days ago. Three teams still haven\'t moved. Insight without execution.',
+    situationLine: 'Signal fired 14 days ago. Three teams still haven\'t moved. Insight without execution.',
     keyMetric: '92% customer save rate',
     metricBefore: '14 days',
     metricAfter: '2 hours',
@@ -163,7 +163,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Compliance Officer',
     icon: FileCheck,
     hookQuestion: 'Audit notification arrives Monday. How long before 6 teams have tasks staged and ready?',
-    crisisLine: 'Audit in 10 days. Six departments. No pre-staged compliance playbook. Starting from scratch.',
+    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance playbook. Starting from scratch.',
     keyMetric: 'Audit stress eliminated',
     metricBefore: '10 days scrambling',
     metricAfter: '2 days ready',
@@ -233,10 +233,10 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             </p>
           </div>
 
-          {/* Crisis line */}
+          {/* Situation line */}
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start', marginBottom: 14 }}>
             <AlertTriangle size={12} style={{ color: '#f87171', flexShrink: 0, marginTop: 2 }} />
-            <p style={{ fontSize: 11, color: '#6B7280', margin: 0, lineHeight: 1.5 }}>{config.crisisLine}</p>
+            <p style={{ fontSize: 11, color: '#6B7280', margin: 0, lineHeight: 1.5 }}>{config.situationLine}</p>
           </div>
 
           {/* Before / After outcome */}
@@ -294,10 +294,10 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
-              Your Role. Your Crisis. Your Response.
+              Your Role. Your Trigger. Your Playbook.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
-              Every C-suite role faces a different trigger. Select yours — then watch Execution OS pre-stage your playbook before the crisis even hits.
+              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Execution OS pre-stage your playbook before the trigger fires.
             </p>
             {/* The core contrast */}
             <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '14px 28px' }}>
@@ -329,7 +329,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 700, color: '#FFFFFF', margin: 0 }}>Not sure where to start?</h3>
             </div>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', maxWidth: 480, margin: '0 auto 22px', lineHeight: 1.6 }}>
-              Jump straight into the full simulation — pick any live crisis scenario and watch the IDEA Framework respond in real time.
+              Jump straight into the full simulation — pick any strategic scenario and watch the IDEA Framework execute in real time.
             </p>
             <Link href="/try-demo">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, padding: '12px 28px', height: 'auto' }}>

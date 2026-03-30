@@ -1031,7 +1031,7 @@ export default function RoleExperience() {
                 {[
                   { step: '01', label: 'Configure your playbook', icon: BookOpen, color: '#C9A84C' },
                   { step: '02', label: 'Set triggers & data feeds', icon: Radio, color: '#2B8A6E' },
-                  { step: '03', label: 'Crisis fires — OS responds', icon: AlertTriangle, color: '#DC2626' },
+                  { step: '03', label: 'Trigger fires — OS executes', icon: AlertTriangle, color: '#DC2626' },
                   { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
                 ].map(({ step, label, icon: StepIcon, color }) => (
                   <div key={step} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 8 }}>
