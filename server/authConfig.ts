@@ -114,6 +114,12 @@ export const PUBLIC_ROUTES = [
   '/api/integrations/enterprise/:organizationId',
   '/api/integrations/enterprise/connect',
   
+  // Command Tower — public executive display (TV/wall monitor, no auth required)
+  '/api/detections',
+  '/api/signals/live/status',
+  '/api/trigger-evaluation-summary',
+  '/api/signal-monitoring-config',
+
   // Playbook Task Sequences & Activations - demo access
   '/api/playbook-task-sequences',
   '/api/playbook-task-sequences/summary',

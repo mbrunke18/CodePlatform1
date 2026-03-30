@@ -16,11 +16,9 @@ import {
   CheckCircle2,
   Circle,
   RefreshCw,
-  ExternalLink,
   Layers,
   Eye,
   ChevronRight,
-  BarChart3,
 } from 'lucide-react';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
@@ -193,74 +191,148 @@ function PulseOrb({ color, size = 14, animate: shouldAnimate = true }: { color: 
   );
 }
 
-// ─── Detection Card ───────────────────────────────────────────────────────────
+// ─── Detection Card (NOC Alert Block) ────────────────────────────────────────
 function DetectionCard({ d, index }: { d: Detection; index: number }) {
   const cc = confidenceColor(d.confidenceScore);
+  const isCritical = d.confidenceScore >= 85;
   return (
     <motion.div
-      initial={{ opacity: 0, x: -16 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.07 }}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.06 }}
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        border: `1px solid rgba(255,255,255,0.08)`,
-        borderLeft: `3px solid ${cc}`,
-        borderRadius: 8,
-        padding: '16px 18px',
-        marginBottom: 10,
-        cursor: 'pointer',
+        background: isCritical ? 'rgba(192,57,43,0.07)' : 'rgba(255,255,255,0.04)',
+        border: `1px solid ${isCritical ? 'rgba(192,57,43,0.3)' : 'rgba(255,255,255,0.1)'}`,
+        borderLeft: `5px solid ${cc}`,
+        borderRadius: 10,
+        padding: '20px 22px',
+        marginBottom: 12,
       }}
-      onClick={() => window.location.href = '/live-detection-feed'}
     >
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 8 }}>
+      {/* Header row */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 14, marginBottom: 14 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-            <PulseOrb color={cc} size={9} animate={d.status !== 'acknowledged'} />
-            <span style={{ color: '#fff', fontWeight: 700, fontSize: 14, lineHeight: 1.3 }}>
-              {d.triggerName}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 5 }}>
+            <PulseOrb color={cc} size={10} animate={d.status !== 'acknowledged'} />
+            <span style={{
+              background: cc, color: '#fff',
+              fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 3, letterSpacing: '0.1em',
+            }}>
+              {confidenceLabel(d.confidenceScore).toUpperCase()}
+            </span>
+            <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>
+              {d.triggerDomain}
             </span>
           </div>
-          <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>
-            {d.triggerDomain}
+          <div style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.35, marginBottom: 4 }}>
+            {d.triggerName}
+          </div>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>
+            {d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}
           </div>
         </div>
-        <div style={{ textAlign: 'right', flexShrink: 0 }}>
-          <div style={{
-            color: cc, fontWeight: 800, fontSize: 22, lineHeight: 1,
-            fontVariantNumeric: 'tabular-nums',
-          }}>
-            {d.confidenceScore}%
-          </div>
-          <div style={{ color: cc, fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', marginTop: 2 }}>
-            {confidenceLabel(d.confidenceScore)}
-          </div>
-        </div>
-      </div>
-
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: 6,
-        background: 'rgba(201,168,76,0.08)', borderRadius: 5,
-        padding: '6px 10px', marginBottom: 8,
-      }}>
-        <Target size={11} color={GOLD} />
-        <span style={{ color: GOLD, fontSize: 12, fontWeight: 600 }}>{d.recommendedPlaybook}</span>
-        <span style={{ marginLeft: 4, background: TEAL, color: '#fff', fontSize: 9, fontWeight: 700, padding: '1px 5px', borderRadius: 3, letterSpacing: '0.06em' }}>
-          AI RECOMMENDED
-        </span>
-      </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>
-          {d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}
-        </span>
-        <span style={{
-          color: GOLD, fontSize: 11, fontWeight: 600,
-          display: 'flex', alignItems: 'center', gap: 4,
+        {/* Confidence Score — big NOC-style */}
+        <div style={{
+          background: `linear-gradient(135deg, ${cc}22 0%, ${cc}11 100%)`,
+          border: `1px solid ${cc}55`,
+          borderRadius: 10, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80,
         }}>
-          Activate <ChevronRight size={11} />
-        </span>
+          <div style={{ color: cc, fontWeight: 800, fontSize: 34, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+            {d.confidenceScore}
+          </div>
+          <div style={{ color: cc, fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', marginTop: 3 }}>
+            CONF%
+          </div>
+        </div>
+      </div>
+
+      {/* Recommended Playbook */}
+      <div style={{
+        display: 'flex', alignItems: 'center', gap: 8,
+        background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
+        borderRadius: 7, padding: '9px 14px', marginBottom: 14,
+      }}>
+        <Target size={13} color={GOLD} />
+        <div style={{ flex: 1 }}>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
+            AI RECOMMENDED PLAYBOOK
+          </div>
+          <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div style={{ display: 'flex', gap: 8 }}>
+        <a
+          href="/live-activation-center"
+          style={{
+            flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+            background: GOLD, color: NAVY,
+            borderRadius: 8, padding: '12px 0',
+            fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
+            textDecoration: 'none',
+          }}
+        >
+          <Zap size={14} /> ACTIVATE PLAYBOOK
+        </a>
+        <a
+          href="/live-detection-feed"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+            background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
+            color: 'rgba(255,255,255,0.7)',
+            borderRadius: 8, padding: '12px 16px',
+            fontWeight: 600, fontSize: 12,
+            textDecoration: 'none',
+          }}
+        >
+          Details <ArrowRight size={12} />
+        </a>
       </div>
     </motion.div>
+  );
+}
+
+// ─── Domain Status Grid ───────────────────────────────────────────────────────
+const DOMAINS = [
+  'Competitive', 'M&A', 'Regulatory',
+  'Talent', 'Market Ops', 'Financial',
+  'Technology', 'Supply Chain', 'Stakeholder',
+];
+
+function DomainStatusGrid({ detections }: { detections: Detection[] }) {
+  const detectionDomains = detections.map(d => (d.triggerDomain || '').toLowerCase());
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+        <Layers size={14} color={GOLD} />
+        <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
+          DOMAIN STATUS BOARD
+        </span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>— 9 of 9 monitored</span>
+      </div>
+      <div style={{
+        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8,
+      }}>
+        {DOMAINS.map((domain) => {
+          const hasAlert = detectionDomains.some(d => d.includes(domain.toLowerCase().split(' ')[0]));
+          const color = hasAlert ? GOLD : TEAL;
+          return (
+            <div key={domain} style={{
+              background: hasAlert ? 'rgba(201,168,76,0.08)' : 'rgba(43,138,110,0.06)',
+              border: `1px solid ${hasAlert ? 'rgba(201,168,76,0.25)' : 'rgba(43,138,110,0.2)'}`,
+              borderRadius: 7, padding: '10px 10px 8px',
+              textAlign: 'center',
+            }}>
+              <PulseOrb color={color} size={8} animate={hasAlert} />
+              <div style={{ color: hasAlert ? GOLD : 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, marginTop: 6, letterSpacing: '0.04em' }}>
+                {domain}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -469,45 +541,87 @@ export default function CommandTower() {
               <RefreshCw size={12} />
               Refresh
             </button>
-            <Link href="/dashboard">
+            <Link href="/request-access">
               <a style={{
-                color: 'rgba(255,255,255,0.4)', fontSize: 11, textDecoration: 'none',
-                display: 'flex', alignItems: 'center', gap: 4,
+                display: 'flex', alignItems: 'center', gap: 7,
+                background: GOLD, color: NAVY,
+                borderRadius: 7, padding: '9px 18px',
+                fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
+                textDecoration: 'none', whiteSpace: 'nowrap',
               }}>
-                Platform <ExternalLink size={11} />
+                ACCESS PLATFORM <ArrowRight size={13} />
               </a>
             </Link>
           </div>
         </div>
 
-        {/* ── MAIN 3-COLUMN GRID ──────────────────────────────────────────── */}
+        {/* ── NOC STAT RAIL ─────────────────────────────────────────────────── */}
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14, marginBottom: 24,
+        }}>
+          {[
+            { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '221 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
+            { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Review required' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
+            { label: 'PLAYBOOKS READY', value: '170', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
+            { label: 'NEXT SCAN', value: nextScanLabel, sub: `Engine: ${modeLabel}`, icon: Clock, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
+          ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
+            <div key={label} style={{
+              background: bg, border: `1px solid ${border}`,
+              borderRadius: 10, padding: '18px 20px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
+                <Icon size={13} color={color} />
+                <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>
+                  {label}
+                </span>
+              </div>
+              <div style={{ color, fontWeight: 800, fontSize: 32, fontVariantNumeric: 'tabular-nums', lineHeight: 1, marginBottom: 5 }}>
+                {value}
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{sub}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── NOC MAIN GRID: Alert Zone (left) + Control Panels (right) ─────── */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 240px 340px',
+          gridTemplateColumns: '1fr 380px',
           gap: 20,
           alignItems: 'start',
         }}>
 
-          {/* ── COLUMN 1: Live Detections ─────────────────────────────────── */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <AlertTriangle size={15} color={GOLD} />
-                <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
-                  LIVE DETECTIONS
-                </span>
-                {detections.length > 0 && (
-                  <span style={{
-                    background: 'rgba(201,168,76,0.2)', color: GOLD,
-                    fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 10,
-                  }}>
-                    {detections.length}
+          {/* ── LEFT: LIVE ALERT ZONE ─────────────────────────────────────── */}
+          <div style={{
+            background: 'rgba(255,255,255,0.02)',
+            border: detections.length > 0 ? '1px solid rgba(201,168,76,0.2)' : '1px solid rgba(255,255,255,0.07)',
+            borderRadius: 12, padding: '20px 22px',
+          }}>
+            {/* Zone Header */}
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: 20, paddingBottom: 16,
+              borderBottom: '1px solid rgba(255,255,255,0.07)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{
+                  background: detections.length > 0 ? 'rgba(201,168,76,0.15)' : 'rgba(43,138,110,0.12)',
+                  border: `1px solid ${detections.length > 0 ? 'rgba(201,168,76,0.3)' : 'rgba(43,138,110,0.25)'}`,
+                  borderRadius: 6, padding: '4px 10px',
+                  display: 'flex', alignItems: 'center', gap: 6,
+                }}>
+                  <PulseOrb color={detections.length > 0 ? GOLD : TEAL} size={8} animate />
+                  <span style={{ color: detections.length > 0 ? GOLD : TEAL, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em' }}>
+                    {detections.length > 0 ? `${detections.length} ALERT${detections.length > 1 ? 'S' : ''} ACTIVE` : 'ALL CLEAR'}
                   </span>
-                )}
+                </div>
+                <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 13, letterSpacing: '0.06em' }}>
+                  LIVE ALERT ZONE
+                </span>
               </div>
               <Link href="/live-detection-feed">
-                <a style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 3 }}>
-                  View all <ArrowRight size={11} />
+                <a style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  Full Feed <ArrowRight size={11} />
                 </a>
               </Link>
             </div>
@@ -518,18 +632,37 @@ export default function CommandTower() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   style={{
-                    background: 'rgba(43,138,110,0.08)',
+                    background: 'rgba(43,138,110,0.07)',
                     border: '1px solid rgba(43,138,110,0.2)',
-                    borderRadius: 10, padding: '36px 24px',
+                    borderRadius: 12, padding: '60px 24px',
                     textAlign: 'center',
                   }}
                 >
-                  <CheckCircle2 size={32} color={TEAL} style={{ margin: '0 auto 12px', display: 'block' }} />
-                  <div style={{ color: TEAL, fontWeight: 700, fontSize: 15, marginBottom: 4 }}>
-                    All Clear
+                  <CheckCircle2 size={48} color={TEAL} style={{ margin: '0 auto 16px', display: 'block' }} />
+                  <div style={{ color: TEAL, fontWeight: 800, fontSize: 22, marginBottom: 8, letterSpacing: '0.04em' }}>
+                    ALL SYSTEMS CLEAR
                   </div>
-                  <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>
-                    No active threat signals. {triggersArmed} triggers armed and monitoring.
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, maxWidth: 400, margin: '0 auto', lineHeight: 1.6 }}>
+                    No trigger events detected. {triggersArmed} triggers are armed and continuously monitoring across 9 strategic domains.
+                  </div>
+                  <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center', gap: 10 }}>
+                    <a href="/live-activation-center" style={{
+                      display: 'flex', alignItems: 'center', gap: 6,
+                      background: GOLD, color: NAVY,
+                      borderRadius: 8, padding: '11px 22px',
+                      fontWeight: 800, fontSize: 13, textDecoration: 'none',
+                    }}>
+                      <Zap size={14} /> Activate Playbook
+                    </a>
+                    <a href="/triggers-management" style={{
+                      display: 'flex', alignItems: 'center', gap: 6,
+                      background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
+                      color: 'rgba(255,255,255,0.7)',
+                      borderRadius: 8, padding: '11px 22px',
+                      fontWeight: 600, fontSize: 13, textDecoration: 'none',
+                    }}>
+                      <Eye size={13} /> View Triggers
+                    </a>
                   </div>
                 </motion.div>
               ) : (
@@ -540,215 +673,198 @@ export default function CommandTower() {
             </AnimatePresence>
           </div>
 
-          {/* ── COLUMN 2: System Pulse ────────────────────────────────────── */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-              <Activity size={15} color={GOLD} />
-              <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
-                SYSTEM PULSE
-              </span>
-            </div>
+          {/* ── RIGHT: CONTROL PANELS ─────────────────────────────────────── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-            {/* Stat blocks */}
-            {[
-              { label: 'Triggers Armed', value: triggersArmed.toLocaleString(), icon: Target, color: GOLD },
-              { label: 'Data Points', value: '248+', icon: BarChart3, color: TEAL },
-              { label: 'Domains Covered', value: '9', icon: Layers, color: 'rgba(255,255,255,0.7)' },
-              { label: 'Signals Monitored', value: '221', icon: Eye, color: 'rgba(255,255,255,0.7)' },
-            ].map(({ label, value, icon: Icon, color }) => (
-              <div key={label} style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: 8, padding: '14px 16px',
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 6 }}>
-                  <Icon size={12} color={color} />
-                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em' }}>
-                    {label.toUpperCase()}
-                  </span>
-                </div>
-                <div style={{ color: '#fff', fontWeight: 800, fontSize: 24, fontVariantNumeric: 'tabular-nums' }}>
-                  {value}
-                </div>
-              </div>
-            ))}
-
-            {/* Scan timing block */}
+            {/* Domain Status Board */}
             <div style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(255,255,255,0.07)',
-              borderRadius: 8, padding: '14px 16px',
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 12, padding: '18px 20px',
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
-                <Clock size={12} color={TEAL} />
-                <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em' }}>
-                  SCAN CYCLE
-                </span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>Last scan</span>
-                  <span style={{ color: '#fff', fontSize: 11, fontWeight: 600 }}>
-                    {liveStatus?.lastRun ? timeAgo(liveStatus.lastRun) : '—'}
-                  </span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>Next scan</span>
-                  <span style={{ color: TEAL, fontSize: 11, fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>
-                    {nextScanLabel}
-                  </span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>Engine</span>
-                  <span style={{
-                    background: 'rgba(43,138,110,0.15)', color: TEAL,
-                    fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 3, letterSpacing: '0.08em',
-                  }}>
-                    {modeLabel.toUpperCase()}
-                  </span>
-                </div>
-              </div>
+              <DomainStatusGrid detections={detections} />
             </div>
 
-            {/* Quick actions */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
-              <Link href="/live-activation-center">
-                <a style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                  background: GOLD, color: NAVY,
-                  borderRadius: 7, padding: '11px 0',
-                  fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
-                  textDecoration: 'none',
-                }}>
-                  <Zap size={13} /> ACTIVATE PLAYBOOK
-                </a>
-              </Link>
-              <Link href="/live-detection-feed">
-                <a style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                  background: 'rgba(255,255,255,0.07)', color: 'rgba(255,255,255,0.7)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 7, padding: '10px 0',
-                  fontWeight: 600, fontSize: 12, letterSpacing: '0.04em',
-                  textDecoration: 'none',
-                }}>
-                  <Radio size={12} /> DETECTION FEED
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          {/* ── COLUMN 3: Execution Log ───────────────────────────────────── */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <TrendingUp size={15} color={TEAL} />
-                <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
-                  EXECUTION LOG
-                </span>
+            {/* Execution Log */}
+            <div style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 12, padding: '18px 20px',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <TrendingUp size={14} color={TEAL} />
+                  <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
+                    EXECUTION LOG
+                  </span>
+                </div>
+                {activations.length > 0 && (
+                  <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 10 }}>
+                    {activations.length} total
+                  </span>
+                )}
               </div>
-              {recentActivations.length > 0 && (
-                <span style={{
-                  background: 'rgba(43,138,110,0.15)', color: TEAL,
-                  fontSize: 10, fontWeight: 700, padding: '1px 7px', borderRadius: 10,
-                }}>
-                  {activations.length} total
-                </span>
+
+              {recentActivations.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '20px 12px' }}>
+                  <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
+                  <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
+                  <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>
+                    170 playbooks pre-staged. 12-minute deployment on trigger.
+                  </div>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {recentActivations.map((a, i) => {
+                    const isRecent = Date.now() - new Date(a.activatedAt).getTime() < 2 * 60 * 60 * 1000;
+                    return (
+                      <motion.div
+                        key={a.id}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        style={{
+                          background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)',
+                          border: `1px solid ${isRecent ? 'rgba(43,138,110,0.25)' : 'rgba(255,255,255,0.07)'}`,
+                          borderLeft: `4px solid ${isRecent ? TEAL : 'rgba(255,255,255,0.15)'}`,
+                          borderRadius: 8, padding: '12px 14px',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
+                          <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2 }}>
+                              {isRecent && <PulseOrb color={TEAL} size={7} />}
+                              <span style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>{a.playbookName}</span>
+                            </div>
+                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
+                          </div>
+                          {a.successRating != null && (
+                            <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 5, flexShrink: 0 }}>
+                              {a.successRating}%
+                            </div>
+                          )}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
+                          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               )}
             </div>
 
-            {recentActivations.length === 0 ? (
-              <div style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.07)',
-                borderRadius: 10, padding: '28px 20px', textAlign: 'center',
-              }}>
-                <Circle size={28} color="rgba(255,255,255,0.15)" style={{ margin: '0 auto 10px', display: 'block' }} />
-                <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13, fontWeight: 600, marginBottom: 4 }}>
-                  No Active Executions
-                </div>
-                <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 11, lineHeight: 1.5 }}>
-                  170 playbooks are pre-staged and ready to deploy within 12 minutes of trigger detection.
-                </div>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                {recentActivations.map((a, i) => {
-                  const isRecent = Date.now() - new Date(a.activatedAt).getTime() < 2 * 60 * 60 * 1000;
-                  return (
-                    <motion.div
-                      key={a.id}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.06 }}
-                      style={{
-                        background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)',
-                        border: `1px solid ${isRecent ? 'rgba(43,138,110,0.3)' : 'rgba(255,255,255,0.08)'}`,
-                        borderRadius: 8, padding: '14px 16px',
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 6 }}>
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 3 }}>
-                            {isRecent && <PulseOrb color={TEAL} size={8} />}
-                            <span style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>
-                              {a.playbookName}
-                            </span>
-                          </div>
-                          <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>
-                            {a.domainName}
-                          </span>
-                        </div>
-                        {a.successRating != null && (
-                          <div style={{
-                            background: 'rgba(43,138,110,0.2)', color: TEAL,
-                            fontWeight: 800, fontSize: 14, padding: '3px 8px', borderRadius: 5,
-                            flexShrink: 0,
-                          }}>
-                            {a.successRating}%
-                          </div>
-                        )}
-                      </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>
-                          {isRecent ? '● In progress' : '✓ Completed'}
-                        </span>
-                        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10 }}>
-                          {timeAgo(a.activatedAt)}
-                        </span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            )}
-
-            {/* 12-Minute Metric */}
+            {/* Scan Timing + 3600x Metric */}
             <div style={{
-              marginTop: 16,
-              background: `linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(43,138,110,0.08) 100%)`,
-              border: '1px solid rgba(201,168,76,0.2)',
-              borderRadius: 10, padding: '18px 20px',
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 12, padding: '18px 20px',
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                <Zap size={13} color={GOLD} />
-                <span style={{ color: GOLD, fontWeight: 700, fontSize: 10, letterSpacing: '0.12em' }}>
-                  EXECUTION HEAD START
-                </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 14 }}>
+                <Clock size={13} color={TEAL} />
+                <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>SCAN CYCLE</span>
               </div>
-              <div style={{ color: '#fff', fontWeight: 800, fontSize: 28, lineHeight: 1, marginBottom: 4 }}>
-                3,600×
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
+                {[
+                  { label: 'Last scan', value: liveStatus?.lastRun ? timeAgo(liveStatus.lastRun) : '—', color: '#fff' },
+                  { label: 'Next scan', value: nextScanLabel, color: TEAL },
+                  { label: 'Engine', value: modeLabel.toUpperCase(), color: TEAL },
+                ].map(({ label, value, color }) => (
+                  <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{label}</span>
+                    <span style={{ color, fontSize: 12, fontWeight: 700 }}>{value}</span>
+                  </div>
+                ))}
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, lineHeight: 1.5 }}>
-                30 days compressed to 12 minutes. Playbooks pre-staged before the trigger fires.
+              <div style={{
+                background: `linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(43,138,110,0.08) 100%)`,
+                border: '1px solid rgba(201,168,76,0.2)',
+                borderRadius: 8, padding: '14px 16px',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
+                  <Zap size={12} color={GOLD} />
+                  <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
+                </div>
+                <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
+                <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>
+                  30 days → 12 minutes. 170 playbooks pre-staged.
+                </div>
               </div>
             </div>
+
+            {/* Quick Actions */}
+            <div style={{ display: 'flex', gap: 10 }}>
+              <a href="/live-activation-center" style={{
+                flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 0',
+                fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none',
+              }}>
+                <Zap size={13} /> ACTIVATE
+              </a>
+              <a href="/live-detection-feed" style={{
+                flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
+                color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 0',
+                fontWeight: 600, fontSize: 12, textDecoration: 'none',
+              }}>
+                <Radio size={12} /> FEED
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── DRILL-DOWN ACCESS STRIP ──────────────────────────────────────── */}
+        <div style={{
+          marginTop: 24,
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 10, padding: '14px 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+          flexWrap: 'wrap',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <ChevronRight size={13} color={GOLD} />
+            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
+              DRILL DOWN INTO EXECUTION OS
+            </span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            {[
+              { label: 'Live Detections', href: '/live-detection-feed', color: GOLD },
+              { label: 'Playbook Library', href: '/playbooks', color: 'rgba(255,255,255,0.6)' },
+              { label: 'Trigger Intelligence', href: '/triggers-management', color: 'rgba(255,255,255,0.6)' },
+              { label: 'Command Center', href: '/command-center', color: 'rgba(255,255,255,0.6)' },
+              { label: 'Signal Intelligence', href: '/signal-intelligence', color: 'rgba(255,255,255,0.6)' },
+            ].map(({ label, href, color }) => (
+              <Link key={href} href={href}>
+                <a style={{
+                  display: 'flex', alignItems: 'center', gap: 5,
+                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: 6, padding: '6px 12px',
+                  color, fontSize: 11, fontWeight: 600,
+                  textDecoration: 'none', transition: 'all 0.14s',
+                }}>
+                  {label} <ArrowRight size={10} />
+                </a>
+              </Link>
+            ))}
+            <Link href="/request-access">
+              <a style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                background: GOLD, borderRadius: 6, padding: '6px 14px',
+                color: NAVY, fontSize: 11, fontWeight: 800,
+                textDecoration: 'none', letterSpacing: '0.04em',
+              }}>
+                Get Full Access <ArrowRight size={10} />
+              </a>
+            </Link>
           </div>
         </div>
 
         {/* ── BOTTOM: Signal Ticker ────────────────────────────────────────── */}
         <div style={{
-          marginTop: 24, marginBottom: 0,
+          marginTop: 16, marginBottom: 0,
           borderTop: '1px solid rgba(255,255,255,0.07)',
           paddingTop: 14, paddingBottom: 20,
           display: 'flex', alignItems: 'center', gap: 16, overflow: 'hidden',
