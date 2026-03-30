@@ -54,3 +54,9 @@ id = "dezCJ5kvlAOpUo30VjMMy"
 uri = "file://attached_assets/execution-os-video-production-package-UPDATED.md"
 type = "text"
 title = "Execution OS — Updated Video Production Package"
+
+[[outputs]]
+id = "vxlcRyvoBcIsCwNS7GwoB"
+uri = "file://attached_assets/execution-os-video-production-package-UPDATED.docx"
+type = "word_document"
+title = "Execution OS — Updated Video Production Package (.docx)"
