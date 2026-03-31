@@ -180,7 +180,7 @@ function InvestorPresentation() {
             </div>
           ))}
         </div>
-        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-6 flex items-center justify-between gap-6">
+        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-6 flex items-center justify-between gap-6 mb-4">
           <div>
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">The Agentic Mesh Layer — McKinsey's term for what we built</div>
             <div className="text-white font-semibold text-lg">"Orchestration layer · coordination fabric · shared source of truth"</div>
@@ -191,7 +191,45 @@ function InvestorPresentation() {
             <div className="text-white/40 text-xs">Execution OS</div>
           </div>
         </div>
-        <div className="mt-4 text-[#6B7280] text-xs">Source: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026</div>
+        {/* MGI Nov 2025 second report */}
+        <div className="max-w-5xl w-full border border-[#2B8A6E]/25 rounded-xl overflow-hidden mb-3">
+          <div className="bg-[#2B8A6E]/8 border-b border-[#2B8A6E]/15 px-5 py-2.5 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E] shrink-0" />
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#2B8A6E]/70">McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025 · 80 Cases · 190 Workflows</span>
+          </div>
+          <div className="p-5 grid md:grid-cols-2 gap-6 bg-[#060B1E]">
+            <div>
+              <div className="flex gap-6 mb-4">
+                {[{ v: "90%", l: "Invested in AI" }, { v: "<40%", l: "See measurable returns" }, { v: "77%", l: "Value from agents" }].map(({ v, l }) => (
+                  <div key={v}>
+                    <div className="text-[#2B8A6E] font-mono font-bold text-xl leading-none mb-1">{v}</div>
+                    <div className="text-white/40 text-[10px] leading-tight">{l}</div>
+                  </div>
+                ))}
+              </div>
+              <blockquote className="border-l-2 border-[#2B8A6E] pl-4">
+                <p className="text-white font-semibold text-sm italic leading-relaxed mb-1">"The CEO who delegates AI to IT will lose this decade to the one who does not."</p>
+                <p className="text-white/30 text-[10px]">McKinsey Global Institute — November 2025</p>
+              </blockquote>
+            </div>
+            <div className="flex flex-col gap-2">
+              {[
+                { s: "Global Tech", r: "7–12% revenue lift", d: "Workflow redesign → sales specialists freed for negotiation" },
+                { s: "Global Pharma", r: "60% faster · 50% fewer errors", d: "Clinical reporting redesigned from the ground up" },
+                { s: "Large Utility", r: "40% AI-resolved · 50% cost cut · +6 NPS", d: "7M annual calls — CEO owned the redesign" },
+              ].map(({ s, r, d }) => (
+                <div key={s} className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/15 rounded-lg px-3 py-2">
+                  <div className="flex items-baseline gap-2 mb-0.5">
+                    <span className="text-[#2B8A6E] font-mono text-[9px] font-bold uppercase tracking-wider">{s}</span>
+                    <span className="text-white text-[11px] font-semibold">{r}</span>
+                  </div>
+                  <p className="text-white/35 text-[10px] leading-snug">{d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="text-[#6B7280] text-xs">Sources: McKinsey &amp; Company — "The Future of Enterprise Architecture" 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI" November 2025</div>
       </div>
     ),
 

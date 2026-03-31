@@ -919,7 +919,7 @@ function AnonymousQuoteSection() {
 
 // ─── SECTION 7: Credibility ───────────────────────────────────────────────────
 const RESEARCH_FIRMS = [
-  { firm: "McKinsey & Company", finding: "Organizations without execution infrastructure capture only 30% of expected strategy value — regardless of planning quality." },
+  { firm: "McKinsey & Company", finding: "Fewer than 40% of companies investing in AI report measurable gains. The gap is not the technology — it is the operating model. Executive ownership is the single common factor in every measured success." },
   { firm: "IBM Institute for Business Value", finding: "60% of AI transformation failures trace to execution infrastructure gaps. The technology works. The coordination doesn't." },
   { firm: "World Economic Forum", finding: "Coordination lag — not capital constraints — is the #1 barrier to strategic agility in large enterprises globally." },
   { firm: "BCG Henderson Institute", finding: "Companies that can activate strategic responses within hours vs. days sustain 3× the competitive advantage over a 5-year horizon." },
@@ -1489,7 +1489,7 @@ function McKinseyValidationSection() {
           </div>
 
           {/* Architecture callout */}
-          <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 14, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 40 }}>
+          <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 14, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 32 }}>
             <div style={{ flex: 1, minWidth: 260 }}>
               <div style={{ ...MONO, fontSize: 10, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 8 }}>The Agentic Mesh Layer</div>
               <div style={{ ...GEO, fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 8 }}>
@@ -1507,10 +1507,65 @@ function McKinseyValidationSection() {
             </button>
           </div>
 
+          {/* MGI Nov 2025 — second McKinsey report callout */}
+          <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 40 }}>
+            {/* Header band */}
+            <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL, display: "inline-block", flexShrink: 0 }} />
+              <span style={{ ...MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
+                McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025 · 80 Implementation Cases · 190 Workflows · 6,800 Skills
+              </span>
+            </div>
+            <div style={{ padding: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
+              {/* Left: stats row + quote */}
+              <div>
+                <div style={{ display: "flex", gap: 20, marginBottom: 24 }}>
+                  {[
+                    { pct: "90%", label: "Invested in AI" },
+                    { pct: "<40%", label: "See measurable returns" },
+                    { pct: "77%", label: "Of value from AI agents" },
+                  ].map(({ pct, label }) => (
+                    <div key={pct} style={{ flex: 1 }}>
+                      <div style={{ ...MONO, fontSize: 26, fontWeight: 700, color: TEAL, lineHeight: 1, marginBottom: 4 }}>{pct}</div>
+                      <div style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.4)", lineHeight: 1.4 }}>{label}</div>
+                    </div>
+                  ))}
+                </div>
+                <blockquote style={{ borderLeft: `2px solid ${TEAL}`, paddingLeft: 16, margin: 0 }}>
+                  <p style={{ ...GEO, fontSize: 16, fontWeight: 600, color: IVORY, lineHeight: 1.5, marginBottom: 8, fontStyle: "italic" }}>
+                    "The CEO who delegates AI to IT will lose this decade to the one who does not."
+                  </p>
+                  <p style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.35)", letterSpacing: "0.05em" }}>
+                    McKinsey Global Institute — November 2025
+                  </p>
+                </blockquote>
+              </div>
+              {/* Right: 3 case studies */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {[
+                  { sector: "Global Tech", result: "7–12% projected revenue lift", detail: "AI agents handled lead scoring — sales specialists redirected 30–50% of time to negotiation" },
+                  { sector: "Global Pharma", result: "60% faster · 50% fewer errors", detail: "Clinical reporting redesigned — time to first human-reviewed draft fell nearly 60%" },
+                  { sector: "Large Utility", result: "40% AI-resolved · 50% cost cut · +6 NPS", detail: "7 million annual calls — 40% fully resolved without human involvement" },
+                ].map(({ sector, result, detail }) => (
+                  <div key={sector} style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.12)", borderRadius: 8, padding: "12px 14px" }}>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
+                      <span style={{ ...MONO, fontSize: 10, fontWeight: 700, color: TEAL, textTransform: "uppercase" as const, letterSpacing: "0.12em" }}>{sector}</span>
+                      <span style={{ ...MONO, fontSize: 11, color: IVORY, fontWeight: 600 }}>{result}</span>
+                    </div>
+                    <p style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.35)", lineHeight: 1.5, margin: 0 }}>{detail}</p>
+                  </div>
+                ))}
+                <p style={{ ...DM, fontSize: 10, color: "rgba(240,237,228,0.2)", marginTop: 2 }}>
+                  Pattern across all three: the CEO owned the redesign. Not IT. Not a task force.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Source attribution */}
           <div style={{ textAlign: "center" }}>
             <span style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.2)", letterSpacing: "0.1em" }}>
-              Source: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026
+              Sources: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI," November 2025
             </span>
           </div>
         </Reveal>
