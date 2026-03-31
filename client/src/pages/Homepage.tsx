@@ -1516,32 +1516,50 @@ function McKinseyValidationSection() {
                 McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025 · 80 Implementation Cases · 190 Workflows · 6,800 Skills
               </span>
             </div>
-            <div style={{ padding: "28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
-              {/* Left: stats row + quote */}
-              <div>
-                <div style={{ display: "flex", gap: 20, marginBottom: 24 }}>
-                  {[
-                    { pct: "90%", label: "Invested in AI" },
-                    { pct: "<40%", label: "See measurable returns" },
-                    { pct: "77%", label: "Of value from AI agents" },
-                  ].map(({ pct, label }) => (
-                    <div key={pct} style={{ flex: 1 }}>
-                      <div style={{ ...MONO, fontSize: 26, fontWeight: 700, color: TEAL, lineHeight: 1, marginBottom: 4 }}>{pct}</div>
-                      <div style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.4)", lineHeight: 1.4 }}>{label}</div>
-                    </div>
-                  ))}
+            <div style={{ padding: "28px 28px 0" }}>
+              {/* Stats row — 4 anchors */}
+              <div style={{ display: "flex", gap: 0, marginBottom: 24, borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: 24 }}>
+                {[
+                  { pct: "$2.9T", label: "Economic value at stake by 2030", accent: GOLD },
+                  { pct: "90%", label: "Of enterprises have invested in AI", accent: TEAL },
+                  { pct: "<40%", label: "Report measurable returns", accent: TEAL },
+                  { pct: "77%", label: "Of that value comes from AI agents", accent: TEAL },
+                ].map(({ pct, label, accent }, i) => (
+                  <div key={pct} style={{ flex: 1, paddingRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none", paddingLeft: i > 0 ? 20 : 0 }}>
+                    <div style={{ ...MONO, fontSize: i === 0 ? 30 : 26, fontWeight: 700, color: accent, lineHeight: 1, marginBottom: 6 }}>{pct}</div>
+                    <div style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.4)", lineHeight: 1.4 }}>{label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Two-column: quotes left, case studies right */}
+            <div style={{ padding: "0 28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
+              {/* Left: bottleneck quote + CEO quote + 221 bridge */}
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+                {/* Bottleneck quote — verbatim, website-grade */}
+                <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "16px 18px" }}>
+                  <p style={{ ...GEO, fontSize: 15, fontWeight: 600, color: IVORY, lineHeight: 1.55, marginBottom: 8, fontStyle: "italic" as const }}>
+                    "The bottleneck is never the technology. It is always the speed of organizational redesign."
+                  </p>
+                  <p style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.35)", letterSpacing: "0.04em" }}>
+                    McKinsey Global Institute — November 2025
+                  </p>
                 </div>
+                {/* CEO ownership → 221 triggers bridge */}
                 <blockquote style={{ borderLeft: `2px solid ${TEAL}`, paddingLeft: 16, margin: 0 }}>
-                  <p style={{ ...GEO, fontSize: 16, fontWeight: 600, color: IVORY, lineHeight: 1.5, marginBottom: 8, fontStyle: "italic" }}>
+                  <p style={{ ...GEO, fontSize: 14, fontWeight: 600, color: IVORY, lineHeight: 1.5, marginBottom: 8, fontStyle: "italic" as const }}>
                     "The CEO who delegates AI to IT will lose this decade to the one who does not."
                   </p>
-                  <p style={{ ...DM, fontSize: 12, color: "rgba(240,237,228,0.35)", letterSpacing: "0.05em" }}>
+                  <p style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>
                     McKinsey Global Institute — November 2025
+                  </p>
+                  <p style={{ ...DM, fontSize: 12, color: TEAL, lineHeight: 1.55 }}>
+                    Execution OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 playbooks deploy the response. The CEO doesn't become an operator. They become the signal.
                   </p>
                 </blockquote>
               </div>
               {/* Right: 3 case studies */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
                 {[
                   { sector: "Global Tech", result: "7–12% projected revenue lift", detail: "AI agents handled lead scoring — sales specialists redirected 30–50% of time to negotiation" },
                   { sector: "Global Pharma", result: "60% faster · 50% fewer errors", detail: "Clinical reporting redesigned — time to first human-reviewed draft fell nearly 60%" },
