@@ -1012,46 +1012,15 @@ function MicrosoftEcosystemBanner() {
           </div>
         </Reveal>
 
-        {/* Other ecosystems teaser + CTA */}
+        {/* Ecosystems link */}
         <Reveal delay={0.3}>
-          <div style={{ textAlign: 'center', marginTop: 40, paddingTop: 36, borderTop: `1px solid rgba(201,168,76,0.12)` }}>
-            <p style={{ ...DM, fontSize: 13, color: 'rgba(240,237,228,0.45)', marginBottom: 16, letterSpacing: '0.04em' }}>
-              Also integrates with
+          <div style={{ textAlign: 'center', marginTop: 40, paddingTop: 32, borderTop: `1px solid rgba(201,168,76,0.12)` }}>
+            <p style={{ ...DM, fontSize: 13, color: 'rgba(240,237,228,0.45)', letterSpacing: '0.04em' }}>
+              Also integrates with Google Workspace, Salesforce, AWS, SAP, ServiceNow, and Workday —{' '}
+              <a href="/ecosystems" style={{ color: GOLD, textDecoration: 'none', fontWeight: 600 }}>
+                view all 7 enterprise ecosystems →
+              </a>
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 28 }}>
-              {[
-                { name: 'Google Workspace', color: '#4285F4' },
-                { name: 'Salesforce', color: '#00A1E0' },
-                { name: 'AWS', color: '#FF9900' },
-                { name: 'SAP', color: '#0FAAFF' },
-                { name: 'ServiceNow', color: '#62D84E' },
-                { name: 'Workday', color: '#F5A623' },
-              ].map(({ name, color }) => (
-                <div key={name} style={{
-                  padding: '6px 14px', borderRadius: 4,
-                  background: 'rgba(240,237,228,0.04)',
-                  border: '1px solid rgba(240,237,228,0.08)',
-                }}>
-                  <span style={{ ...MONO, fontSize: 10, color: 'rgba(240,237,228,0.50)', letterSpacing: 0.5 }}>{name}</span>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={() => setLocation('/ecosystems')}
-              style={{
-                ...DM, fontSize: 13, fontWeight: 700, letterSpacing: '0.08em',
-                textTransform: 'uppercase' as const,
-                padding: '12px 32px', borderRadius: 6, cursor: 'pointer',
-                background: 'transparent',
-                border: `1px solid ${GOLD}`,
-                color: GOLD,
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}18`; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; }}
-            >
-              View All 7 Enterprise Ecosystems →
-            </button>
           </div>
         </Reveal>
       </div>
@@ -1874,6 +1843,55 @@ function ShadowSimulatorSection() {
   );
 }
 
+// ─── Shadow Simulator CTA (lightweight homepage entry) ────────────────────────
+function SimulatorCTASection() {
+  return (
+    <section style={{ ...SECTION_DARK_BG, padding: "80px 0" }}>
+      <div style={{ ...CONTAINER, maxWidth: 860, textAlign: "center" }}>
+        <Reveal>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ width: 24, height: 1, background: GOLD }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
+            <div style={{ width: 24, height: 1, background: GOLD }} />
+          </div>
+          <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
+            Test Your Organization Against Any Threat
+          </h2>
+          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.65 }}>
+            Describe a real scenario your company is facing. Our AI scores your Survive and Thrive probability in seconds — and maps the exact playbooks you'd need to activate.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginBottom: 36 }}>
+            {[
+              "Competitor acquiring our largest distributor",
+              "Activist investor demands board seat",
+              "Primary cloud vendor breach",
+              "Regulatory inquiry into pricing practices",
+            ].map(s => (
+              <span key={s} style={{
+                ...DM, fontSize: 11, fontWeight: 600, padding: "5px 14px",
+                background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)",
+                color: MUTED_DARK,
+              }}>{s}</span>
+            ))}
+          </div>
+          <Link
+            href="/simulation-studio"
+            style={{
+              ...DM, display: "inline-block", fontSize: 14, fontWeight: 700, letterSpacing: "0.06em",
+              padding: "15px 40px", background: GOLD, color: NAVY, textDecoration: "none",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
+          >
+            Run My Scenario — Free, No Login →
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── Command Center Showcase Section ─────────────────────────────────────────
 function MiniRadar() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -2149,10 +2167,9 @@ export default function Homepage() {
       <IDEASection />
       <PlatformPreviewSection />
       <MicrosoftEcosystemBanner />
-      <CommandCenterShowcaseSection />
       <CredibilitySection />
       <PersonalizedROISection />
-      <ShadowSimulatorSection />
+      <SimulatorCTASection />
       <CTASection />
       <HomepageFooter />
     </div>
