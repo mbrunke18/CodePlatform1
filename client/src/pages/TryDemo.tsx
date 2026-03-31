@@ -278,22 +278,22 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
 
 const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
   ransomware: {
-    id: '65',
+    id: '247962f9-e204-4e4a-8fc0-88ffe9d98265',
     name: 'Ransomware Attack',
     badge: 'Cyber & Technology',
   },
   competitor: {
-    id: '5',
+    id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
     name: 'Aggressive Pricing Disruption',
     badge: 'Market Dynamics — Free Sample',
   },
   regulatory: {
-    id: '49',
+    id: '966f55d7-a83b-49cf-8f47-892d13bf2d43',
     name: 'SEC Investigation Notice',
     badge: 'Regulatory & Compliance',
   },
   'deal-risk': {
-    id: '12',
+    id: '410046aa-a8a7-4531-8ecb-d555c80e4b44',
     name: 'Customer Consolidation to Competitor',
     badge: 'Market Dynamics',
   },
