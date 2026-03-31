@@ -1777,7 +1777,7 @@ export default function TryDemo() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 40 }}>
             {[
               {
-                id: '5',
+                id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
                 name: 'Aggressive Pricing Disruption',
                 description: 'Competitor cuts prices 30%+ or introduces a disruptive pricing model threatening your pipeline.',
                 type: 'Offensive',
@@ -1788,7 +1788,7 @@ export default function TryDemo() {
                 icon: TrendingDown,
               },
               {
-                id: '180',
+                id: 'da7df303-a5bd-4fc0-a8b7-492f8619c500',
                 name: 'AI Competitive Disruption',
                 description: 'A competitor deploys AI capability that fundamentally changes market dynamics in your category.',
                 type: 'Defensive',
@@ -1799,7 +1799,7 @@ export default function TryDemo() {
                 icon: Brain,
               },
               {
-                id: '182',
+                id: '1a309274-6068-46f3-bb17-4303c184939c',
                 name: 'Compound: Geopolitical + Supply Chain',
                 description: 'Tariff escalations or sanctions that simultaneously disrupt supply chains and require financial restructuring.',
                 type: 'Compound',
