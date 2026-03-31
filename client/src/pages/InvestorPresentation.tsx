@@ -162,6 +162,41 @@ function InvestorPresentation() {
 
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
+        <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Independent Validation</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-3 text-center max-w-4xl">
+          McKinsey Named the Gap. We Built the Infrastructure.
+        </h2>
+        <p className="text-[#6B7280] text-base mb-8 text-center max-w-2xl">McKinsey's 2025–2026 enterprise architecture synthesis identifies an "orchestration layer · coordination fabric · shared source of truth" at the center of every enterprise AI stack — and leaves it unnamed.</p>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-8">
+          {[
+            { value: '65%', label: 'Still piloting AI', sub: 'Not yet scaling across the enterprise — the activation gap Execution OS closes', color: 'border-[#C9A84C]/40 bg-[#C9A84C]/5' },
+            { value: '1%', label: 'Fully mature', sub: 'Leaders — not employees — are the bottleneck. 221 executive triggers solve this.', color: 'border-[#2B8A6E]/40 bg-[#2B8A6E]/5' },
+            { value: '$4.4T', label: 'AI productivity potential', sub: 'Locked behind the missing coordination layer — the layer Execution OS provides', color: 'border-[#0A0F2E]/20 bg-[#0A0F2E]/5' },
+          ].map((s, i) => (
+            <div key={i} className={`border ${s.color} rounded-xl p-6 text-center`}>
+              <div className="text-4xl font-black text-[#0A0F2E] mb-2">{s.value}</div>
+              <div className="text-[#0A0F2E] font-bold mb-2">{s.label}</div>
+              <div className="text-[#6B7280] text-sm leading-relaxed">{s.sub}</div>
+            </div>
+          ))}
+        </div>
+        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-6 flex items-center justify-between gap-6">
+          <div>
+            <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">The Agentic Mesh Layer — McKinsey's term for what we built</div>
+            <div className="text-white font-semibold text-lg">"Orchestration layer · coordination fabric · shared source of truth"</div>
+            <div className="text-white/50 text-sm mt-1">McKinsey drew the architecture diagram with this box in the middle. Execution OS is the product that fills it.</div>
+          </div>
+          <div className="text-right shrink-0">
+            <div className="text-[#C9A84C] font-black text-2xl">VAUGHNMARTIN</div>
+            <div className="text-white/40 text-xs">Execution OS</div>
+          </div>
+        </div>
+        <div className="mt-4 text-[#6B7280] text-xs">Source: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026</div>
+      </div>
+    ),
+
+    () => (
+      <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">The Solution</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
           Execution OS: The IDEA Framework™

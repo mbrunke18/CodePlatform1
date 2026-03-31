@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Future of Enterprise Architecture — Annotated by VaughnMartin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #f4f4f4; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px 16px; }
+
+  .page { width: 720px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.18); }
+
+  /* Header */
+  .header { background: #0A0F2E; padding: 28px 36px 22px; display: flex; align-items: center; justify-content: space-between; }
+  .header-left { }
+  .header-title { font-size: 13px; color: rgba(240,237,228,0.5); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
+  .header-sub { font-size: 11px; color: rgba(240,237,228,0.3); }
+  .vm-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .vm-badge-label { font-size: 9px; color: rgba(201,168,76,0.6); text-transform: uppercase; letter-spacing: 0.15em; }
+  .vm-badge-name { font-size: 13px; font-weight: 700; color: #C9A84C; letter-spacing: 0.05em; }
+
+  /* Main diagram */
+  .diagram { padding: 32px 36px 28px; background: #fafaf8; }
+  .diagram-title { text-align: center; font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+  .diagram-sub { text-align: center; font-size: 12px; color: #888; margin-bottom: 28px; }
+
+  /* Top: two paths */
+  .label-row { text-align: center; font-size: 11px; font-weight: 600; color: #555; margin-bottom: 10px; letter-spacing: 0.02em; }
+  .two-paths { display: flex; align-items: center; gap: 0; justify-content: center; margin-bottom: 0; }
+  .path-box { flex: 1; max-width: 220px; padding: 14px 16px; border-radius: 10px; text-align: center; position: relative; }
+  .path-box.left { background: #E8F4F1; border: 1.5px solid #7EC8B8; }
+  .path-box.right { background: #E8EEFC; border: 1.5px solid #7EA8E8; }
+  .path-title { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+  .path-sub { font-size: 10px; color: #555; }
+  .or-divider { width: 48px; text-align: center; font-size: 12px; font-weight: 600; color: #aaa; flex-shrink: 0; }
+
+  /* Arrow section */
+  .arrow-down { display: flex; justify-content: center; margin: 8px 0 0; }
+  .arrow-svg { color: #aaa; }
+
+  /* Agentic mesh — the centerpiece */
+  .mesh-wrapper { position: relative; margin: 4px 0 0; }
+  .mesh-box { padding: 18px 20px 16px; border-radius: 12px; background: linear-gradient(135deg, #0A0F2E 0%, #142060 100%); border: 2.5px solid #C9A84C; box-shadow: 0 0 0 4px rgba(201,168,76,0.12), 0 8px 32px rgba(10,15,46,0.25); position: relative; overflow: hidden; }
+  .mesh-box::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(201,168,76,0.04) 0px, transparent 1px, transparent 47px, rgba(201,168,76,0.04) 48px), repeating-linear-gradient(rgba(201,168,76,0.04) 0px, transparent 1px, transparent 47px, rgba(201,168,76,0.04) 48px); pointer-events: none; }
+  .mesh-eyebrow { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.6); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .mesh-eyebrow::before, .mesh-eyebrow::after { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.25); }
+  .mesh-title { font-size: 17px; font-weight: 700; color: #C9A84C; text-align: center; margin-bottom: 4px; }
+  .mesh-desc { font-size: 11px; color: rgba(240,237,228,0.55); text-align: center; margin-bottom: 14px; letter-spacing: 0.02em; }
+  .mesh-vm-row { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .mesh-vm-label { font-size: 10px; color: rgba(201,168,76,0.5); letter-spacing: 0.1em; }
+  .mesh-vm-name { font-size: 15px; font-weight: 700; color: #F0EDE4; letter-spacing: 0.06em; }
+  .mesh-vm-product { font-size: 11px; font-weight: 600; color: #C9A84C; letter-spacing: 0.06em; }
+  .mesh-vm-divider { width: 1px; height: 28px; background: rgba(201,168,76,0.3); }
+  .vm-pill { display: inline-flex; align-items: center; gap: 5px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; padding: 4px 12px; font-size: 10px; color: #C9A84C; font-weight: 600; letter-spacing: 0.08em; margin-top: 10px; }
+
+  /* "We are here" callout badge */
+  .here-badge { position: absolute; top: -14px; right: 20px; background: #C9A84C; color: #0A0F2E; font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(201,168,76,0.4); }
+
+  /* Five pillars */
+  .pillars-label { text-align: center; font-size: 11px; font-weight: 600; color: #555; margin: 24px 0 10px; letter-spacing: 0.02em; }
+  .pillars { display: flex; gap: 8px; }
+  .pillar { flex: 1; background: #fff; border: 1.5px solid #E0E0D8; border-radius: 9px; padding: 11px 8px 10px; text-align: center; }
+  .pillar-name { font-size: 11px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin-bottom: 3px; }
+  .pillar-sub { font-size: 9px; color: #888; line-height: 1.35; }
+
+  /* Status row */
+  .status-label { text-align: center; font-size: 11px; font-weight: 600; color: #555; margin: 20px 0 10px; }
+  .status-row { display: flex; gap: 10px; }
+  .status-card { flex: 1; border-radius: 9px; padding: 13px 10px; text-align: center; }
+  .status-card.yellow { background: #FFF8E1; border: 1.5px solid #F6C94E; }
+  .status-card.teal { background: #E8F5F1; border: 1.5px solid #7EC8B8; }
+  .status-card.red { background: #FEF0F0; border: 1.5px solid #F5A0A0; }
+  .status-big { font-size: 18px; font-weight: 800; color: #1a1a1a; margin-bottom: 3px; }
+  .status-mid { font-size: 11px; font-weight: 600; color: #444; line-height: 1.35; margin-bottom: 3px; }
+  .status-small { font-size: 10px; color: #666; line-height: 1.35; }
+  .status-small em { font-weight: 700; font-style: normal; color: #C9A84C; }
+
+  /* Skill bar */
+  .skill-label { text-align: center; font-size: 11px; font-weight: 600; color: #555; margin: 20px 0 8px; }
+  .skill-track { height: 18px; border-radius: 9px; background: linear-gradient(90deg, #A8D5C2 0%, #7EC8B8 20%, #F6C94E 45%, #F5A55A 70%, #F5A0A0 100%); position: relative; overflow: hidden; margin-bottom: 6px; }
+  .skill-bar-row { display: flex; justify-content: space-between; font-size: 9px; color: #888; }
+
+  /* Economic stakes */
+  .econ-label { text-align: center; font-size: 11px; font-weight: 600; color: #555; margin: 20px 0 10px; }
+  .econ-row { display: flex; gap: 10px; }
+  .econ-card { flex: 1; border-radius: 9px; padding: 13px 8px; text-align: center; border: 1.5px solid #E8E4DC; background: #fff; }
+  .econ-big { font-size: 20px; font-weight: 800; color: #1a1a1a; }
+  .econ-mid { font-size: 10px; color: #444; line-height: 1.35; margin-top: 3px; }
+
+  /* EA Imperative */
+  .ea-box { margin: 20px 0 0; background: #F0EDE4; border-radius: 10px; padding: 16px 20px; border-left: 4px solid #0A0F2E; }
+  .ea-title { font-size: 13px; font-weight: 700; color: #0A0F2E; margin-bottom: 5px; }
+  .ea-body { font-size: 11px; color: #444; line-height: 1.55; }
+
+  /* VaughnMartin footer strip */
+  .vm-footer { background: #0A0F2E; padding: 18px 36px; display: flex; align-items: center; justify-content: space-between; }
+  .vm-footer-left { }
+  .vm-footer-headline { font-size: 13px; font-weight: 700; color: #C9A84C; margin-bottom: 2px; }
+  .vm-footer-sub { font-size: 11px; color: rgba(240,237,228,0.4); }
+  .vm-footer-right { text-align: right; }
+  .vm-footer-url { font-size: 11px; color: rgba(201,168,76,0.6); }
+
+  .print-note { font-size: 11px; color: #aaa; text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-title">Market Architecture — Analyst Synthesis</div>
+      <div class="header-sub">McKinsey · 2025–2026 · Annotated by VaughnMartin</div>
+    </div>
+    <div class="vm-badge">
+      <div class="vm-badge-label">Annotated by</div>
+      <div class="vm-badge-name">VAUGHNMARTIN</div>
+    </div>
+  </div>
+
+  <!-- Diagram body -->
+  <div class="diagram">
+    <div class="diagram-title">The Future of Enterprise Architecture</div>
+    <div class="diagram-sub">McKinsey synthesis · 2025–2026</div>
+
+    <!-- Two paths -->
+    <div class="label-row">Two modernization paths</div>
+    <div class="two-paths">
+      <div class="path-box left">
+        <div class="path-title">Incremental integration</div>
+        <div class="path-sub">AI layers atop legacy systems</div>
+      </div>
+      <div class="or-divider">or</div>
+      <div class="path-box right">
+        <div class="path-title">Comprehensive transformation</div>
+        <div class="path-sub">Agents replace core systems</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow-down">
+      <svg width="16" height="32" viewBox="0 0 16 32" fill="none">
+        <line x1="8" y1="0" x2="8" y2="24" stroke="#aaa" stroke-width="1.5"/>
+        <polyline points="3,18 8,26 13,18" stroke="#aaa" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- AGENTIC MESH — the centerpiece with VaughnMartin -->
+    <div class="mesh-wrapper">
+      <div class="here-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#0A0F2E"/></svg>
+        Execution OS fills this layer
+      </div>
+      <div class="mesh-box">
+        <div class="mesh-eyebrow">The coordination infrastructure layer</div>
+        <div class="mesh-title">Agentic Mesh</div>
+        <div class="mesh-desc">Orchestration layer &nbsp;·&nbsp; coordination fabric &nbsp;·&nbsp; shared source of truth</div>
+        <div class="mesh-vm-row">
+          <div style="text-align:center">
+            <div class="mesh-vm-label">Named by McKinsey · Built by</div>
+            <div class="mesh-vm-name">VAUGHNMARTIN</div>
+          </div>
+          <div class="mesh-vm-divider"></div>
+          <div style="text-align:center">
+            <div class="mesh-vm-label">The product that sits here</div>
+            <div class="mesh-vm-product">EXECUTION OS</div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div class="vm-pill">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="#C9A84C"/></svg>
+            170 Playbooks · 221 Triggers · 12-Minute Activation · 3,600× Execution Head Start
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow-down">
+      <svg width="16" height="32" viewBox="0 0 16 32" fill="none">
+        <line x1="8" y1="0" x2="8" y2="24" stroke="#aaa" stroke-width="1.5"/>
+        <polyline points="3,18 8,26 13,18" stroke="#aaa" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- Five pillars -->
+    <div class="pillars-label">Five pillars of the agentic organization</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-name">Business model</div>
+        <div class="pillar-sub">Near-zero marginal cost</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Operating model</div>
+        <div class="pillar-sub">Agentic networks</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Governance</div>
+        <div class="pillar-sub">Real-time agent monitoring</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Workforce</div>
+        <div class="pillar-sub">Human + AI skill partnerships</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-name">Tech &amp; data</div>
+        <div class="pillar-sub">Composable, agent-native infra</div>
+      </div>
+    </div>
+
+    <!-- Status row -->
+    <div class="status-label">Where organizations stand today</div>
+    <div class="status-row">
+      <div class="status-card yellow">
+        <div class="status-big">~65%</div>
+        <div class="status-mid">still piloting AI across enterprise</div>
+        <div class="status-small">Not yet scaling — <em>Execution OS closes this gap</em></div>
+      </div>
+      <div class="status-card teal">
+        <div class="status-big">62%</div>
+        <div class="status-mid">experimenting with AI agents; only 23% scaling them</div>
+        <div class="status-small">Activation gap — <em>12-min playbook execution bridges it</em></div>
+      </div>
+      <div class="status-card red">
+        <div class="status-big">Only 1%</div>
+        <div class="status-mid">mature</div>
+        <div class="status-small">Leaders — not employees — are the bottleneck. <em>221 executive triggers fix that.</em></div>
+      </div>
+    </div>
+
+    <!-- Skill bar -->
+    <div class="skill-label">Skill change index: automation exposure (next 5 years)</div>
+    <div class="skill-track"></div>
+    <div class="skill-bar-row">
+      <span>Caring &amp; social skills ← Low exposure</span>
+      <span>Leadership &amp; communication</span>
+      <span>Research &amp; project mgmt</span>
+      <span>High exposure → Accounting &amp; coding</span>
+    </div>
+
+    <!-- Economic stakes -->
+    <div class="econ-label">Economic stakes</div>
+    <div class="econ-row">
+      <div class="econ-card">
+        <div class="econ-big">$4.4T</div>
+        <div class="econ-mid">AI productivity potential from corporate use cases</div>
+      </div>
+      <div class="econ-card">
+        <div class="econ-big">$2.9T</div>
+        <div class="econ-mid">Annual US value by 2030 from agents + robots</div>
+      </div>
+      <div class="econ-card">
+        <div class="econ-big">~57%</div>
+        <div class="econ-mid">US work hours technically automatable today</div>
+      </div>
+    </div>
+
+    <!-- EA Imperative -->
+    <div class="ea-box">
+      <div class="ea-title">The EA Imperative</div>
+      <div class="ea-body">Redesign entire workflows — not just bolt on AI. Incremental change will not be enough. Governance, mesh architecture, and human-AI skill design must advance together.</div>
+    </div>
+
+  </div><!-- /diagram -->
+
+  <!-- VaughnMartin footer -->
+  <div class="vm-footer">
+    <div class="vm-footer-left">
+      <div class="vm-footer-headline">McKinsey named the gap. We built the infrastructure.</div>
+      <div class="vm-footer-sub">Execution OS is the agentic mesh layer Fortune 1000 companies are missing.</div>
+    </div>
+    <div class="vm-footer-right">
+      <div style="font-size:13px;font-weight:700;color:#C9A84C;margin-bottom:2px;">VAUGHNMARTIN</div>
+      <div class="vm-footer-url">vaughnmartin.com</div>
+    </div>
+  </div>
+
+</div>
+
+<p class="print-note">Right-click → Save image / Print to PDF for use in presentations and sales materials.</p>
+
+</body>
+</html>

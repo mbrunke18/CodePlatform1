@@ -1437,6 +1437,119 @@ const SCENARIO_COUNTS = [{ label: '2–5 / year', val: 3.5 }, { label: '5–12 /
 
 function fmt(n: number) { if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`; if (n >= 1e6) return `$${Math.round(n / 1e6)}M`; return `$${Math.round(n / 1e3)}K`; }
 
+// ─── SECTION 7b: McKinsey Market Validation ───────────────────────────────────
+function McKinseyValidationSection() {
+  const MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
+  const stats = [
+    {
+      pct: "65%",
+      headline: "Still Piloting",
+      sub: "Not yet scaling AI across the enterprise",
+      bridge: "Execution OS closes this gap — 12-minute activation vs. months of mobilization",
+      color: "#C9A84C",
+      bg: "rgba(201,168,76,0.07)",
+      border: "rgba(201,168,76,0.22)",
+    },
+    {
+      pct: "1%",
+      headline: "Fully Mature",
+      sub: "Leaders — not employees — are the bottleneck",
+      bridge: "221 executive triggers arm decision-makers so they stop being the constraint",
+      color: "#2B8A6E",
+      bg: "rgba(43,138,110,0.07)",
+      border: "rgba(43,138,110,0.22)",
+    },
+    {
+      pct: "$4.4T",
+      headline: "AI Productivity Potential",
+      sub: "Locked inside enterprises that can't activate it",
+      bridge: "The coordination layer — not the AI model — is what unlocks this value",
+      color: "#3BAF8A",
+      bg: "rgba(59,175,138,0.07)",
+      border: "rgba(59,175,138,0.22)",
+    },
+  ];
+  return (
+    <section style={{ background: "#060B1E", padding: "100px 0 80px", position: "relative", overflow: "hidden" }}>
+      <SectionMarker n="07b" />
+      {/* Subtle gold grid */}
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+      {/* Orbs */}
+      <div style={{ position: "absolute", top: -120, right: -60, width: 600, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.07) 0%,transparent 65%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: -80, left: -60, width: 500, height: 400, background: "radial-gradient(ellipse,rgba(43,138,110,0.06) 0%,transparent 65%)", pointerEvents: "none" }} />
+
+      <div style={{ ...CONTAINER }}>
+        <Reveal>
+          {/* Attribution pill */}
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 20, padding: "5px 16px" }}>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, display: "inline-block", flexShrink: 0 }} />
+              <span style={{ ...MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.5)", textTransform: "uppercase" as const }}>
+                McKinsey &amp; Company · Enterprise Architecture Synthesis 2025–2026
+              </span>
+            </div>
+          </div>
+
+          {/* Headline */}
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <h2 style={{ ...GEO, fontSize: "clamp(30px,4.5vw,54px)", fontWeight: 700, color: IVORY, lineHeight: 1.12, marginBottom: 16 }}>
+              McKinsey Named the Gap.
+              <br />
+              <span style={{ color: GOLD }}>We Built the Infrastructure.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: "clamp(15px,1.6vw,18px)", color: "rgba(240,237,228,0.5)", maxWidth: 620, margin: "0 auto", lineHeight: 1.65 }}>
+              McKinsey's 2025 enterprise architecture synthesis identifies an "orchestration layer · coordination fabric · shared source of truth" sitting at the center of every enterprise AI stack. They named the absence. We built the thing.
+            </p>
+          </div>
+
+          {/* Stat cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginBottom: 48 }}>
+            {stats.map(({ pct, headline, sub, bridge, color, bg, border }) => (
+              <div key={pct} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: "30px 26px", position: "relative", overflow: "hidden" }}>
+                <div style={{ ...MONO, fontSize: 48, fontWeight: 700, color, lineHeight: 1, marginBottom: 10 }}>{pct}</div>
+                <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: IVORY, marginBottom: 6 }}>{headline}</div>
+                <div style={{ ...DM, fontSize: 13, color: "rgba(240,237,228,0.45)", marginBottom: 18, lineHeight: 1.55 }}>{sub}</div>
+                <div style={{ borderTop: `1px solid ${border}`, paddingTop: 14 }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                    <span style={{ color, fontSize: 12, marginTop: 1, flexShrink: 0 }}>→</span>
+                    <span style={{ ...DM, fontSize: 12, color, lineHeight: 1.5 }}>{bridge}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Architecture callout */}
+          <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 14, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 40 }}>
+            <div style={{ flex: 1, minWidth: 260 }}>
+              <div style={{ ...MONO, fontSize: 10, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" as const, marginBottom: 8 }}>The Agentic Mesh Layer</div>
+              <div style={{ ...GEO, fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 8 }}>
+                "Orchestration layer · coordination fabric · shared source of truth"
+              </div>
+              <div style={{ ...DM, fontSize: 13, color: "rgba(240,237,228,0.45)", lineHeight: 1.6 }}>
+                McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Execution OS is the product that sits there: 170 pre-staged playbooks reading across all five organizational pillars simultaneously.
+              </div>
+            </div>
+            <button
+              onClick={() => window.open('/mckinsey-architecture.html', '_blank')}
+              style={{ background: GOLD, color: "#0A0F2E", ...MONO, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, padding: "14px 26px", borderRadius: 6, border: "none", cursor: "pointer", whiteSpace: "nowrap" as const, flexShrink: 0 }}
+            >
+              View Architecture Diagram →
+            </button>
+          </div>
+
+          {/* Source attribution */}
+          <div style={{ textAlign: "center" }}>
+            <span style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.2)", letterSpacing: "0.1em" }}>
+              Source: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026
+            </span>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function PersonalizedROISection() {
   const ref = useRef<HTMLElement>(null);
   const [animated, setAnimated] = useState(false);
@@ -2037,6 +2150,7 @@ export default function Homepage() {
       <MicrosoftEcosystemBanner />
       <CommandCenterShowcaseSection />
       <CredibilitySection />
+      <McKinseyValidationSection />
       <PersonalizedROISection />
       <ShadowSimulatorSection />
       <CTASection />

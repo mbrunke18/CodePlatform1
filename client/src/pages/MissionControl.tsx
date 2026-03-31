@@ -393,6 +393,32 @@ export default function MissionControl() {
             ))}
           </div>
 
+          {/* ── MCKINSEY MATURITY INDICATOR ─────────────────────────────────── */}
+          <div style={{ background: 'rgba(201,168,76,0.04)', border: '1px solid rgba(201,168,76,0.14)', borderRadius: 10, padding: '14px 22px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' as const }}>
+            <div style={{ flexShrink: 0 }}>
+              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', marginBottom: 4 }}>MCKINSEY AI MATURITY INDEX</div>
+              <div style={{ color: GOLD, fontSize: 11, fontWeight: 600 }}>Where does your enterprise stand?</div>
+            </div>
+            <div style={{ flex: 1, minWidth: 280 }}>
+              <div style={{ display: 'flex', height: 8, borderRadius: 4, overflow: 'hidden', marginBottom: 6 }}>
+                <div style={{ width: '65%', background: 'rgba(192,57,43,0.5)', position: 'relative' }} title="65% still piloting" />
+                <div style={{ width: '23%', background: 'rgba(201,168,76,0.55)' }} title="23% scaling" />
+                <div style={{ width: '11%', background: 'rgba(43,138,110,0.65)' }} title="11% not yet scaling" />
+                <div style={{ width: '1%', background: '#2B8A6E' }} title="1% mature" />
+              </div>
+              <div style={{ display: 'flex', gap: 16, fontSize: 10 }}>
+                <span style={{ color: 'rgba(192,57,43,0.8)' }}>■ 65% Piloting</span>
+                <span style={{ color: 'rgba(201,168,76,0.8)' }}>■ 23% Scaling</span>
+                <span style={{ color: 'rgba(43,138,110,0.9)', fontWeight: 700 }}>■ 1% Mature</span>
+              </div>
+            </div>
+            <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
+              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, marginBottom: 2 }}>Execution OS puts you in the</div>
+              <div style={{ color: TEAL, fontWeight: 800, fontSize: 14 }}>1% Mature</div>
+              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9 }}>12-min activation · 170 pre-staged playbooks</div>
+            </div>
+          </div>
+
           {/* ── NOC MAIN GRID ───────────────────────────────────────────────── */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 390px', gap: 20, alignItems: 'start', marginBottom: 24 }}>
 

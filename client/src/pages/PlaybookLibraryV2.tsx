@@ -46,6 +46,15 @@ const DOMAINS = [
   { id: "strategic", label: "AI Governance", count: 19, icon: Shield },
 ];
 
+const PILLARS = [
+  { id: "all", label: "All Pillars", color: "#6B7280" },
+  { id: "business", label: "Business Model", color: "#C9A84C", domains: ["financial", "competitive", "ma"] },
+  { id: "operating", label: "Operating Model", color: "#2B8A6E", domains: ["gtm", "crisis"] },
+  { id: "governance", label: "Governance", color: "#0A0F2E", domains: ["regulatory", "strategic"] },
+  { id: "workforce", label: "Workforce", color: "#7B5EA7", domains: ["talent"] },
+  { id: "technology", label: "Tech & Data", color: "#3BAF8A", domains: ["technology", "crisis"] },
+];
+
 const URGENCY_FILTERS = [
   { id: "all", label: "All Urgency" },
   { id: "critical", label: "Critical", count: 48 },
@@ -361,6 +370,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     // Accept either a short key ("gtm") or a full domain name ("Operational Excellence")
     return DOMAIN_NAME_TO_KEY[raw] || raw;
   });
+  const [activePillar, setActivePillar] = useState("all");
   const [activeUrgency, setActiveUrgency] = useState("all");
   const [search, setSearch] = useState(() => {
     const params = new URLSearchParams(window.location.search);
@@ -380,10 +390,22 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
     queryKey: ["/api/playbooks/templates"],
   });
 
+  const pillarDomains = activePillar === "all" ? null : (PILLARS.find(p => p.id === activePillar) as any)?.domains as string[] | undefined;
+
   const domainFilteredTemplates = (templates || []).filter((t) => {
-    if (activeDomain === "all") return true;
-    const mapped = DOMAIN_DB_MAP[activeDomain] || [];
-    return mapped.some((d) => t.domain === d);
+    const domainMatch = (() => {
+      if (activeDomain === "all") return true;
+      const mapped = DOMAIN_DB_MAP[activeDomain] || [];
+      return mapped.some((d) => t.domain === d);
+    })();
+    const pillarMatch = (() => {
+      if (!pillarDomains) return true;
+      return pillarDomains.some((domId) => {
+        const mapped = DOMAIN_DB_MAP[domId] || [];
+        return mapped.some((d) => t.domain === d);
+      });
+    })();
+    return domainMatch && pillarMatch;
   });
 
   const urgencyFiltered = domainFilteredTemplates.filter((t) => {
@@ -460,6 +482,29 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
           <div className="sticky top-24">
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>McKinsey Pillar</div>
+            <div className="space-y-0.5 mb-5">
+              {PILLARS.map((p) => {
+                const isActive = activePillar === p.id;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => { setActivePillar(p.id); if (p.id !== "all") setActiveDomain("all"); }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg transition-all text-left"
+                    style={{
+                      background: isActive ? `${p.color}14` : "transparent",
+                      border: isActive ? `1px solid ${p.color}40` : "1px solid transparent",
+                      color: isActive ? p.color : MUTED,
+                      fontSize: 11, fontWeight: isActive ? 700 : 500,
+                      letterSpacing: "0.06em",
+                    }}
+                  >
+                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: p.color, flexShrink: 0, display: "inline-block" }} />
+                    {p.label}
+                  </button>
+                );
+              })}
+            </div>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
             <nav className="space-y-0.5">
               {DOMAINS.map((domain) => {
