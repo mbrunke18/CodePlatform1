@@ -237,12 +237,12 @@ function scoreSignalAgainstPattern(signal: AnalyzedSignal, pattern: TriggerPatte
 
 export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
-  const CONFIDENCE_THRESHOLD = 78; // Raised — must be meaningfully above the base confidence floor
+  const CONFIDENCE_THRESHOLD = 72; // Aligned with documented threshold — meaningful above base noise floor
 
   // Minimum keyword matches required before a default-pattern trigger can fire.
-  // This prevents a single keyword coincidence from triggering an alert.
-  // A pattern with 15 keywords needs 3 matches = 20% density minimum.
-  const MIN_KEYWORD_MATCHES = 3;
+  // 2 matches required — confidence threshold (72%) acts as the accuracy filter.
+  // A single keyword coincidence still won't fire because density alone can't reach 72%.
+  const MIN_KEYWORD_MATCHES = 2;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
