@@ -157,9 +157,9 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
-        { label: "Live Demo", path: "/try-demo", icon: Rocket, description: "Full execution simulation — no login required", featured: true },
-        { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Feel a trigger fire and reach full execution in 12 minutes", featured: true },
+        { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Feel a trigger fire and reach full execution in 12 minutes — no login required", featured: true },
         { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives", featured: true },
+        { label: "Full Execution Simulation", path: "/try-demo", icon: Rocket, description: "Guided platform walkthrough with live data" },
       ],
     },
     {
@@ -470,24 +470,24 @@ export default function StandardNav() {
   const renderExperienceDropdown = () => {
     const primaryDemos = [
       {
-        path: '/try-demo',
-        icon: Rocket,
-        label: 'Full Execution Simulation',
-        sub: 'Pick a crisis. Watch revenue saved live as the IDEA Framework fires in real time.',
-        featured: true,
-      },
-      {
         path: '/12-minute-experience',
         icon: Play,
-        label: '12-Minute War Room',
-        sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live.',
-        featured: false,
+        label: '12-Minute Test Drive',
+        sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
+        featured: true,
       },
       {
         path: '/industry-demos',
         icon: Globe,
         label: 'Industry Proof Cases',
         sub: 'LVMH · Toyota · LoanDepot · Glenmark — real scenarios, real stakes, real outcomes.',
+        featured: true,
+      },
+      {
+        path: '/try-demo',
+        icon: Rocket,
+        label: 'Full Execution Simulation',
+        sub: 'Pick a crisis. Watch revenue saved live as the IDEA Framework fires in real time.',
         featured: false,
       },
     ];

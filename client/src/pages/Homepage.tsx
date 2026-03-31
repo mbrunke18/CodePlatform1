@@ -1471,7 +1471,7 @@ function McKinseyValidationSection() {
   ];
   return (
     <section style={{ background: "#060B1E", padding: "100px 0 80px", position: "relative", overflow: "hidden" }}>
-      <SectionMarker n="07b" />
+      <SectionMarker n="05" />
       {/* Subtle gold grid */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
       {/* Orbs */}
@@ -2144,13 +2144,13 @@ export default function Homepage() {
       <ProblemSection />
       <ExecutionGapSection />
       <MissingLayerSection />
+      <McKinseyValidationSection />
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
       <MicrosoftEcosystemBanner />
       <CommandCenterShowcaseSection />
       <CredibilitySection />
-      <McKinseyValidationSection />
       <PersonalizedROISection />
       <ShadowSimulatorSection />
       <CTASection />

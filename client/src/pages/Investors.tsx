@@ -153,7 +153,7 @@ const milestones = [
 ];
 
 const researchCitations = [
-  { id: 1, source: "McKinsey & Company", title: "Operating Model Research", year: "2024", finding: "Organizations with effective operating models execute 5-10x faster than peers" },
+  { id: 1, source: "McKinsey & Company", title: "Enterprise Architecture Synthesis", year: "2025–2026", finding: "65% of enterprises still piloting AI — only 1% fully mature. Leaders, not employees, are the bottleneck. $4.4T AI productivity potential locked behind a missing coordination layer: the 'orchestration layer · coordination fabric · shared source of truth' Execution OS provides." },
   { id: 2, source: "IBM/Ponemon Institute", title: "Cost of a Data Breach Report", year: "2024", finding: "Global average breach cost: $4.88M; AI/automation saves 98 days in breach lifecycle" },
   { id: 3, source: "PagerDuty", title: "State of Digital Operations", year: "2024", finding: "Distributed response management teams respond 3.5x faster than centralized teams" },
   { id: 4, source: "Bain & Company", title: "Digital Transformation Study", year: "2024", finding: "70-88% of digital transformations fail to meet their original objectives" },
@@ -514,6 +514,38 @@ export default function Investors() {
                   <p className="text-[#2B8A6E] text-xs font-bold">{metric.source}</p>
                 </motion.div>
               ))}
+            </div>
+          </motion.div>
+
+          {/* McKinsey Independent Validation */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="mb-20">
+            <div className="bg-[#0A0F2E] rounded-2xl overflow-hidden">
+              <div className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
+                <div>
+                  <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Independent Analyst Validation</p>
+                  <p className="text-white font-bold text-xl">McKinsey Named the Gap. We Built the Infrastructure.</p>
+                </div>
+                <div className="text-right shrink-0 ml-6">
+                  <div className="text-[#C9A84C] font-black text-lg tracking-wide">McKINSEY</div>
+                  <div className="text-white/40 text-xs">2025–2026 Enterprise Architecture Synthesis</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 divide-x divide-white/10">
+                {[
+                  { stat: "65%", label: "Still Piloting", sub: "Not yet scaling AI across the enterprise — Execution OS closes this gap", color: "text-[#C9A84C]" },
+                  { stat: "1%", label: "Fully Mature", sub: "Leaders — not employees — are the bottleneck. 221 executive triggers solve this.", color: "text-[#2B8A6E]" },
+                  { stat: "$4.4T", label: "AI Productivity Potential", sub: "Locked behind the missing coordination layer — the layer Execution OS provides", color: "text-[#3BAF8A]" },
+                ].map((s) => (
+                  <div key={s.stat} className="px-8 py-6">
+                    <div className={`text-4xl font-black mb-1 ${s.color}`}>{s.stat}</div>
+                    <div className="text-white font-bold text-sm mb-2">{s.label}</div>
+                    <div className="text-white/45 text-xs leading-relaxed">{s.sub}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="px-8 py-4 bg-white/[0.03] border-t border-white/10">
+                <p className="text-white/35 text-xs">"Orchestration layer · coordination fabric · shared source of truth" — McKinsey's label for the infrastructure layer at the center of every enterprise AI stack. They named it. We built it.</p>
+              </div>
             </div>
           </motion.div>
 
