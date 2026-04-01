@@ -38275,6 +38275,62 @@ function getBaseUrl() {
   }
   return "http://localhost:5000";
 }
+var ADMIN_EMAIL = "pilot@vaughnmartin.com";
+function buildAdminNotificationHtml(data, magicUrl) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>New Access Request \u2014 Execution OS</title></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:${NAVY};padding:28px 40px;">
+            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
+            <div style="color:#ffffff;font-size:18px;font-weight:700;">New Access Request</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:36px 40px;">
+            <p style="margin:0 0 20px;color:#111827;font-size:16px;font-weight:700;">Someone just requested pilot access:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${data.firstName} ${data.lastName}</span>
+              </td></tr>
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Company &amp; Title</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${data.title} \xB7 ${data.company}</span>
+              </td></tr>
+              <tr><td style="padding:16px 20px;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
+                <a href="mailto:${data.email}" style="color:${GOLD};font-size:15px;font-weight:600;text-decoration:none;">${data.email}</a>
+              </td></tr>
+            </table>
+            <p style="margin:0 0 16px;color:#374151;font-size:14px;">Their magic link (expires 24h):</p>
+            <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+              <tr>
+                <td style="background:${GOLD};border-radius:6px;">
+                  <a href="${magicUrl}" style="display:inline-block;padding:14px 32px;color:${NAVY};font-size:14px;font-weight:700;text-decoration:none;">
+                    Send This Link to ${data.firstName} \u2192
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0;color:#6B7280;font-size:12px;word-break:break-all;">${magicUrl}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Execution OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
 function buildEmailHtml(firstName, magicUrl) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -38380,38 +38436,52 @@ ${"\u2500".repeat(70)}`);
     console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
     return { success: true, emailSent: false };
   }
+  const resend = new Resend3(apiKey);
   const fromAddresses = [
-    "Execution OS <pilot@vaughnmartin.com>",
-    "Execution OS <onboarding@resend.dev>"
+    "Execution OS <onboarding@resend.dev>",
+    "Execution OS <pilot@vaughnmartin.com>"
   ];
+  let emailSent = false;
   for (const from of fromAddresses) {
     try {
-      const resend = new Resend3(apiKey);
       const { data: emailData, error: emailError } = await resend.emails.send({
         from,
-        replyTo: "pilot@vaughnmartin.com",
+        replyTo: ADMIN_EMAIL,
         to: data.email,
         subject: `Your Executive Access to Execution OS, ${data.firstName}`,
         html: buildEmailHtml(data.firstName, magicUrl)
       });
       if (emailError) {
-        if (emailError.message?.toLowerCase().includes("domain") || emailError.message?.toLowerCase().includes("sender")) {
-          console.warn(`\u26A0 Sender ${from} not verified \u2014 trying fallback sender`);
-          continue;
-        }
-        console.error(`\u2717 Magic link email failed to ${data.email}:`, JSON.stringify(emailError));
-        console.log(`\u2139 Token saved. Use the admin URL above to manually send access.`);
-        return { success: true, emailSent: false };
+        console.warn(`\u26A0 Sender ${from} rejected (${emailError.message}) \u2014 trying next`);
+        continue;
       }
       console.log(`\u2713 Magic link sent to ${data.email} via ${from} | Resend ID: ${emailData?.id}`);
-      return { success: true, emailSent: true };
+      emailSent = true;
+      break;
     } catch (err) {
-      console.warn(`\u26A0 Sender ${from} threw error: ${err.message} \u2014 trying fallback`);
-      continue;
+      console.warn(`\u26A0 Sender ${from} threw: ${err.message} \u2014 trying next`);
     }
   }
-  console.log(`\u26A0 All email senders failed. Token saved. Use the admin URL above to send manually.`);
-  return { success: true, emailSent: false };
+  if (!emailSent) {
+    console.log(`\u26A0 All senders failed. Token saved \u2014 use admin URL above to send manually.`);
+  }
+  try {
+    const { data: adminData, error: adminError } = await resend.emails.send({
+      from: "Execution OS <onboarding@resend.dev>",
+      replyTo: data.email,
+      to: ADMIN_EMAIL,
+      subject: `New Access Request \u2014 ${data.firstName} ${data.lastName} \xB7 ${data.company}`,
+      html: buildAdminNotificationHtml(data, magicUrl)
+    });
+    if (adminError) {
+      console.warn(`\u26A0 Admin notification failed: ${adminError.message}`);
+    } else {
+      console.log(`\u2713 Admin notification sent to ${ADMIN_EMAIL} | Resend ID: ${adminData?.id}`);
+    }
+  } catch (err) {
+    console.warn(`\u26A0 Admin notification threw: ${err.message}`);
+  }
+  return { success: true, emailSent };
 }
 async function verifyMagicLinkToken(token) {
   const rows = await db.select().from(magicLinkTokens).where(eq8(magicLinkTokens.token, token)).limit(1);
