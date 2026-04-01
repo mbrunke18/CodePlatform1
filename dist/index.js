@@ -34877,13 +34877,11 @@ init_schema();
 import { eq as eq5, and as and5 } from "drizzle-orm";
 async function enrollProspectForAlerts(prospect) {
   try {
-    const allOrgs = await db.select({ id: organizations.id }).from(organizations);
-    if (allOrgs.length === 0) {
-      console.log(`[ProspectEnrollment] No orgs found \u2014 skipping enrollment for ${prospect.email}`);
-      return;
-    }
+    const dbOrgs = await db.select({ id: organizations.id }).from(organizations);
+    const allOrgIds = ["system", ...dbOrgs.map((o) => o.id)];
     let enrolled = 0;
-    for (const org of allOrgs) {
+    for (const orgId of allOrgIds) {
+      const org = { id: orgId };
       try {
         const existing = await db.select({ id: stakeholderContacts.id, isActive: stakeholderContacts.isActive }).from(stakeholderContacts).where(
           and5(

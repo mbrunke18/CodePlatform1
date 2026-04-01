@@ -22,16 +22,16 @@ export async function enrollProspectForAlerts(prospect: {
   company: string;
 }): Promise<void> {
   try {
-    // Get every organization that exists — monitoring runs across all orgs,
-    // so we enroll prospects everywhere so they catch the next detection.
-    const allOrgs = await db.select({ id: organizations.id }).from(organizations);
-    if (allOrgs.length === 0) {
-      console.log(`[ProspectEnrollment] No orgs found — skipping enrollment for ${prospect.email}`);
-      return;
-    }
+    // Get every organization that exists in the DB, plus the built-in
+    // 'system' org — the default monitoring org used when no org-specific
+    // config is found. Enrolling in 'system' is the critical one that
+    // ensures prospects receive the live trigger alerts.
+    const dbOrgs = await db.select({ id: organizations.id }).from(organizations);
+    const allOrgIds: string[] = ['system', ...dbOrgs.map(o => o.id)];
 
     let enrolled = 0;
-    for (const org of allOrgs) {
+    for (const orgId of allOrgIds) {
+      const org = { id: orgId };
       try {
         // Check if this email is already registered in this org
         const existing = await db
