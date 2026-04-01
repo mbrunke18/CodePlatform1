@@ -258,7 +258,7 @@ function MyActionsPanel({ runId }: { runId: string }) {
   const [showCompleted, setShowCompleted] = useState(false);
   const { data: myTasks = [], isLoading } = useQuery<MyTask[]>({
     queryKey: ['/api/execution-runs', runId, 'my-tasks'],
-    queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.json()),
+    queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.ok ? r.json() : []),
     refetchInterval: 30000,
   });
 

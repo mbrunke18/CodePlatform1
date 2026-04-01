@@ -61,10 +61,11 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
   const qc = useQueryClient();
   const [expanded, setExpanded] = useState<number | null>(null);
 
-  const { data: timelines = [], isLoading } = useQuery<any[]>({
+  const { data: timelinesRaw, isLoading } = useQuery<any[]>({
     queryKey: ['/api/org/execution-timelines'],
     refetchInterval: 30000,
   });
+  const timelines = Array.isArray(timelinesRaw) ? timelinesRaw : [];
 
   const advanceMutation = useMutation({
     mutationFn: ({ id, milestone, playbookName }: { id: number; milestone: string; playbookName?: string }) =>

@@ -167,7 +167,7 @@ function JITContextBanner({ runId }: { runId: string }) {
 
 function MyActionsPanel({ runId }: { runId: string }) {
   const [showCompleted, setShowCompleted] = useState(false);
-  const { data: myTasks = [], isLoading } = useQuery<MyTask[]>({ queryKey: ['/api/execution-runs', runId, 'my-tasks'], queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.json()), refetchInterval: 30000 });
+  const { data: myTasks = [], isLoading } = useQuery<MyTask[]>({ queryKey: ['/api/execution-runs', runId, 'my-tasks'], queryFn: () => fetch(`/api/execution-runs/${runId}/my-tasks`, { credentials: 'include' }).then(r => r.ok ? r.json() : []), refetchInterval: 30000 });
   const pending = myTasks.filter(t => t.status === 'pending' || t.status === 'in_progress');
   const done = myTasks.filter(t => t.status === 'completed' || t.status === 'skipped');
   const blocked = myTasks.filter(t => t.status === 'blocked');

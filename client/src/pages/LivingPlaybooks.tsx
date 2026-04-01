@@ -94,9 +94,10 @@ export default function LivingPlaybooks() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
-  const { data: templates = [], isLoading } = useQuery<PlaybookTemplate[]>({
+  const { data: templatesRaw, isLoading } = useQuery<PlaybookTemplate[]>({
     queryKey: ['/api/playbooks/templates'],
   });
+  const templates = Array.isArray(templatesRaw) ? templatesRaw : [];
 
   const topPlaybooks = [...templates]
     .sort((a, b) => (b.severityScore || 0) - (a.severityScore || 0))

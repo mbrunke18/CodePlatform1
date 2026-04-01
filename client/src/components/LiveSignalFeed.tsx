@@ -50,10 +50,11 @@ export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: numbe
   const [liveEntries, setLiveEntries] = useState<ActivityEntry[]>([]);
   const isFirstLoad = useRef(true);
 
-  const { data = [] } = useQuery<ActivityEntry[]>({
+  const { data: rawFeedData } = useQuery<ActivityEntry[]>({
     queryKey: ['/api/signal-activity-log'],
     refetchInterval: 30000,
   });
+  const data = Array.isArray(rawFeedData) ? rawFeedData : [];
 
   useEffect(() => {
     if (data.length === 0) return;

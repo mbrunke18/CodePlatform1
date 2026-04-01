@@ -116,7 +116,8 @@ const STATUS_COLORS: Record<string, string> = {
 
 function ImprovementLog() {
   const qc = useQueryClient();
-  const { data: actions = [] } = useQuery<any[]>({ queryKey: ["/api/peer-review-actions"] });
+  const { data: actionsRaw } = useQuery<any[]>({ queryKey: ["/api/peer-review-actions"] });
+  const actions = Array.isArray(actionsRaw) ? actionsRaw : [];
 
   const [insight, setInsight] = useState("");
   const [action, setAction] = useState("");
