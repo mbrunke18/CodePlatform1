@@ -80,7 +80,7 @@ function timeAgo(dateStr: string) {
 export default function LiveDetectionFeed() {
   const { toast } = useToast();
   const qc = useQueryClient();
-  const { user } = useAuth();
+  const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const ORG_ID = user?.organizationId || 'system';
   const [showAddContact, setShowAddContact] = useState(false);
   const [newContact, setNewContact] = useState({ role: '', name: '', email: '', slackChannel: '' });
@@ -147,6 +147,97 @@ export default function LiveDetectionFeed() {
   const contacts = contactsQuery.data?.contacts ?? [];
   const active = detections.filter(d => d.status !== 'acknowledged' && d.status !== 'dismissed');
   const acknowledged = detections.filter(d => d.status === 'acknowledged');
+
+  if (!authLoading && !isAuthenticated) {
+    return (
+      <div style={{ background: '#f8f7f4', minHeight: '100vh' }}>
+        <div style={{ background: NAVY, padding: '56px 48px 48px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: 'linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+          }} />
+          <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 20, padding: '6px 16px', marginBottom: 24 }}>
+              <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+              <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Live System — Monitoring Active</span>
+            </div>
+            <h1 style={{ color: '#fff', fontSize: 36, fontWeight: 800, margin: '0 0 16px', lineHeight: 1.2 }}>
+              Signal Detection Feed
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 16, margin: '0 0 40px', lineHeight: 1.6, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+              Real signals from 8 live sources, scored against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically — before competitors react.
+            </p>
+            <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
+              {[
+                { icon: Radio, label: '8 Live Sources', sub: 'NYT, BBC, SEC, CNBC & more' },
+                { icon: Zap, label: '16 Trigger Patterns', sub: 'Evaluated every 15 minutes' },
+                { icon: Bell, label: 'Instant Alerts', sub: 'Email + Slack on threshold breach' },
+              ].map(({ icon: Icon, label, sub }) => (
+                <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '20px 24px', minWidth: 160, textAlign: 'center' }}>
+                  <Icon size={22} color={GOLD} style={{ marginBottom: 8 }} />
+                  <div style={{ color: '#fff', fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{label}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>{sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px' }}>
+          <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Shield size={16} color={NAVY} />
+            <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Live Feed Preview — Pilot Access Required</span>
+          </div>
+
+          {[
+            { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
+            { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Playbook' },
+            { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
+          ].map((item, i) => (
+            <div key={i} style={{
+              background: '#fff', border: `1px solid ${item.critical ? 'rgba(192,57,43,0.2)' : '#E8E4DC'}`,
+              borderLeft: `5px solid ${item.critical ? '#C0392B' : GOLD}`,
+              borderRadius: 10, padding: '20px 24px', marginBottom: 12,
+              filter: i > 0 ? 'blur(3px)' : 'none',
+              userSelect: 'none', position: 'relative',
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+                <div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.trigger}</div>
+                  <div style={{ fontSize: 12, color: '#6B7280' }}>Source: {item.source} · {item.time}</div>
+                </div>
+                <div style={{ background: item.confidence >= 85 ? 'rgba(192,57,43,0.1)' : 'rgba(201,168,76,0.1)', color: item.confidence >= 85 ? '#C0392B' : '#8B6914', border: `1px solid ${item.confidence >= 85 ? 'rgba(192,57,43,0.25)' : 'rgba(201,168,76,0.25)'}`, borderRadius: 6, padding: '3px 10px', fontSize: 12, fontWeight: 700 }}>
+                  {item.confidence}% confidence
+                </div>
+              </div>
+              <div style={{ fontSize: 12, color: '#2B8A6E', fontWeight: 600 }}>→ {item.playbook}</div>
+            </div>
+          ))}
+
+          <div style={{ background: NAVY, borderRadius: 16, padding: '40px 36px', textAlign: 'center', marginTop: 36 }}>
+            <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+              <Shield size={22} color={GOLD} />
+            </div>
+            <h3 style={{ color: '#fff', fontSize: 22, fontWeight: 700, margin: '0 0 12px' }}>
+              Access the Full Detection Feed
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, margin: '0 0 28px', lineHeight: 1.6 }}>
+              Pilot program members get real-time signal detection scoped to their organization, stakeholder alert routing, and full trigger history. 12-minute execution starts here.
+            </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
+                Request Pilot Access
+              </a>
+              <a href="/pilot-program" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ background: '#f8f7f4', minHeight: '100vh' }}>

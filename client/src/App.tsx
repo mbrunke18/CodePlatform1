@@ -407,7 +407,7 @@ function Router() {
         <Route path="/intelligence-control-center" component={IntelligenceControlCenter} />
         <Route path="/ai-radar" component={AIRadarDashboard} />
         <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
-        <Route path="/live-detection" component={LiveDetectionFeed} />
+        {renderRoutes(["/live-detection", "/live-detection-feed"], LiveDetectionFeed)}
         {renderRoutes(["/ai", "/pulse", "/flux", "/prism", "/echo", "/nova"], AIIntelligenceHub)}
         <Route path="/pulse-intelligence" component={PulseIntelligence} />
         <Route path="/flux-adaptations" component={FluxAdaptations} />
@@ -527,7 +527,7 @@ function Router() {
           "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough"
         ], TryDemo)}
         <Route path="/board-export" component={BoardExport} />
-        {renderRedirects(["/sandbox-demo", "/pilot-demo"], "/try-demo")}
+        {renderRedirects(["/sandbox-demo", "/sandbox", "/pilot-demo"], "/try-demo")}
         <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
         <Route path="/test-drive" component={TwelveMinuteTestDrive} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
