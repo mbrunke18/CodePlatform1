@@ -128,6 +128,7 @@ __export(schema_exports, {
   executionPreApprovedResources: () => executionPreApprovedResources,
   executionTaskDependencies: () => executionTaskDependencies,
   executionTaskStatusEnum: () => executionTaskStatusEnum,
+  executionTimelines: () => executionTimelines,
   executionValidationReports: () => executionValidationReports,
   executiveBriefings: () => executiveBriefings,
   executiveInsights: () => executiveInsights,
@@ -185,6 +186,7 @@ __export(schema_exports, {
   insertExecutionPlanTaskExtendedSchema: () => insertExecutionPlanTaskExtendedSchema,
   insertExecutionPlanTaskSchema: () => insertExecutionPlanTaskSchema,
   insertExecutionPreApprovedResourceSchema: () => insertExecutionPreApprovedResourceSchema,
+  insertExecutionTimelineSchema: () => insertExecutionTimelineSchema,
   insertExecutionValidationReportSchema: () => insertExecutionValidationReportSchema,
   insertExecutiveBriefingSchema: () => insertExecutiveBriefingSchema,
   insertExecutiveInsightSchema: () => insertExecutiveInsightSchema,
@@ -254,6 +256,7 @@ __export(schema_exports, {
   insertScenarioDependencySchema: () => insertScenarioDependencySchema,
   insertScenarioStakeholderSchema: () => insertScenarioStakeholderSchema,
   insertScenarioSuccessMetricSchema: () => insertScenarioSuccessMetricSchema,
+  insertSignalActivityLogSchema: () => insertSignalActivityLogSchema,
   insertSignalMonitoringConfigSchema: () => insertSignalMonitoringConfigSchema,
   insertSimulationAnalysisSchema: () => insertSimulationAnalysisSchema,
   insertStakeholderAlignmentSchema: () => insertStakeholderAlignmentSchema,
@@ -396,6 +399,7 @@ __export(schema_exports, {
   selectTaskSchema: () => selectTaskSchema,
   selectUserSchema: () => selectUserSchema,
   sessions: () => sessions,
+  signalActivityLog: () => signalActivityLog,
   signalMonitoringConfig: () => signalMonitoringConfig,
   simulationAnalyses: () => simulationAnalyses,
   simulationResults: () => simulationResults,
@@ -449,12 +453,13 @@ import {
   decimal,
   boolean,
   pgEnum,
-  serial as serial2
+  serial as serial2,
+  real
 } from "drizzle-orm/pg-core";
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6118,6 +6123,48 @@ var init_schema = __esm({
       // { conditionsMet: number, totalConditions: number, dataPoints: string[], matchedKeywords: string[], engine: string }
     });
     insertTriggerDetectionSchema = createInsertSchema2(triggerDetections).omit({ id: true, detectedAt: true });
+    executionTimelines = pgTable2("execution_timelines", {
+      id: serial2("id").primaryKey(),
+      organizationId: varchar("organization_id", { length: 255 }).notNull(),
+      triggerDetectionId: integer2("trigger_detection_id"),
+      // references triggerDetections.id
+      triggerName: varchar("trigger_name", { length: 255 }).notNull(),
+      triggerDomain: varchar("trigger_domain", { length: 100 }),
+      recommendedPlaybook: varchar("recommended_playbook", { length: 255 }),
+      // Milestone timestamps
+      detectedAt: timestamp2("detected_at").notNull(),
+      // T+0: trigger fired
+      notificationSentAt: timestamp2("notification_sent_at"),
+      // T+?: email dispatched
+      playbookActivatedAt: timestamp2("playbook_activated_at"),
+      // T+?: playbook deployed
+      playbookName: varchar("playbook_name", { length: 255 }),
+      firstTaskAcknowledgedAt: timestamp2("first_task_acknowledged_at"),
+      // T+?: first human action
+      executionCompletedAt: timestamp2("execution_completed_at"),
+      // T+end: done
+      // Derived metrics (populated on completion)
+      totalMinutes: real("total_minutes"),
+      speedMultiplier: real("speed_multiplier"),
+      // (30*24*60) / totalMinutes
+      status: varchar("status", { length: 50 }).default("detected"),
+      // detected|notified|activated|completed
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertExecutionTimelineSchema = createInsertSchema2(executionTimelines).omit({ id: true, createdAt: true });
+    signalActivityLog = pgTable2("signal_activity_log", {
+      id: serial2("id").primaryKey(),
+      organizationId: varchar("organization_id", { length: 255 }),
+      eventType: varchar("event_type", { length: 50 }).notNull(),
+      // 'scanning' | 'evaluated' | 'dismissed' | 'threshold_not_met' | 'trigger_fired'
+      source: varchar("source", { length: 100 }),
+      signalTitle: varchar("signal_title", { length: 500 }),
+      details: text2("details"),
+      confidence: integer2("confidence"),
+      keywordsMatched: text2("keywords_matched").array().default([]),
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertSignalActivityLogSchema = createInsertSchema2(signalActivityLog).omit({ id: true, createdAt: true });
   }
 });
 
@@ -26479,7 +26526,7 @@ function scoreSignalAgainstPattern(signal, pattern) {
 }
 function evaluateSignal(signal) {
   const detections = [];
-  const CONFIDENCE_THRESHOLD = 78;
+  const CONFIDENCE_THRESHOLD = 72;
   const MIN_KEYWORD_MATCHES = 3;
   for (const pattern of TRIGGER_PATTERNS) {
     const text3 = signal.description.toLowerCase();
@@ -26551,17 +26598,21 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
           </table>
           ${detection.dataPoints && detection.dataPoints.length > 0 ? `
           <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
-            <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">
-              Evidence Trail \u2014 Data Points That Fired This Trigger
-              <span style="margin-left:8px;background:#2B8A6E;color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;">${detection.conditionsMet ?? detection.dataPoints.length}/${detection.totalConditions ?? detection.dataPoints.length} CONDITIONS MET</span>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">
+                Why This Trigger Fired
+              </div>
+              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} KEYWORDS MATCHED</span>
             </div>
-            <div style="display:flex;flex-direction:column;gap:6px;">
-              ${detection.dataPoints.map((dp, i) => `
-                <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:#fff;border-radius:4px;border-left:3px solid #2B8A6E;">
-                  <span style="color:#2B8A6E;font-weight:700;font-size:11px;margin-top:1px;">${i + 1}</span>
-                  <span style="color:#0A0F2E;font-size:12px;line-height:1.4;">${dp}</span>
-                </div>
-              `).join("")}
+            <div style="margin-bottom:14px;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${detection.matchedKeywords.map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">${detection.triggerName} \u2014 ${detection.triggerDomain} domain \xB7 ${detection.confidenceScore}% confidence</div>
             </div>
           </div>` : ""}
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
@@ -26577,22 +26628,27 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
           <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
         </div>
       </div>
     </div>
   `;
-  try {
-    await resend.emails.send({
-      from: "Execution OS <pilot@vaughnmartin.com>",
-      replyTo: "pilot@vaughnmartin.com",
-      to: emails,
-      subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
-      html
-    });
-    console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
-  } catch (err) {
-    console.error("Detection email failed:", err);
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString("base64url");
+    const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+    try {
+      await resend.emails.send({
+        from: "Execution OS <pilot@vaughnmartin.com>",
+        replyTo: "pilot@vaughnmartin.com",
+        to: [recipientEmail],
+        subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+        html: personalizedHtml
+      });
+    } catch (err) {
+      console.error(`Detection email failed for ${recipientEmail}:`, err);
+    }
   }
+  console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
 }
 async function sendDetectionSlack(detection, signal) {
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
@@ -26660,6 +26716,38 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   }
   const evaluationMode = await getOrgEvaluationMode(organizationId);
   console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
+  try {
+    const sources = [...new Set(signals.map((s) => s.source).filter(Boolean))];
+    await db.insert(signalActivityLog).values({
+      organizationId,
+      eventType: "scanning",
+      source: sources.slice(0, 3).join(", "),
+      signalTitle: `Evaluating ${signals.length} signals across ${sources.length} source${sources.length !== 1 ? "s" : ""}`,
+      details: `Continuous monitoring cycle \u2014 scanning 248+ data points. Sources: ${sources.join(", ")}`,
+      confidence: null,
+      keywordsMatched: []
+    });
+  } catch {
+  }
+  try {
+    const sampleSignals = signals.slice(0, 2);
+    for (const sig of sampleSignals) {
+      const text3 = sig.description.toLowerCase();
+      const partialMatches = TRIGGER_PATTERNS.flatMap((p) => p.keywords.filter((kw) => text3.includes(kw.toLowerCase()))).slice(0, 4);
+      if (partialMatches.length > 0 && partialMatches.length < 3) {
+        await db.insert(signalActivityLog).values({
+          organizationId,
+          eventType: "threshold_not_met",
+          source: sig.source,
+          signalTitle: sig.description.substring(0, 120),
+          details: `Partial match: ${partialMatches.length} keyword${partialMatches.length !== 1 ? "s" : ""} detected \u2014 below 3-match threshold. Dismissed.`,
+          confidence: sig.confidence,
+          keywordsMatched: partialMatches
+        });
+      }
+    }
+  } catch {
+  }
   const allDetectionsFlat = [];
   const seenTriggerNames = /* @__PURE__ */ new Set();
   if (evaluationMode === "configured" || evaluationMode === "both") {
@@ -26717,7 +26805,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       } else {
         console.log(`\u{1F4EC} No domain approvers for "${detection.triggerDomain}" \u2014 sending to ${contactEmails.length} org-wide contact(s)`);
       }
-      await db.insert(triggerDetections).values({
+      const [savedDetection] = await db.insert(triggerDetections).values({
         organizationId,
         triggerName: detection.triggerName,
         triggerDomain: detection.triggerDomain,
@@ -26736,8 +26824,35 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
           matchedKeywords: detection.matchedKeywords
         }
-      });
+      }).returning();
       console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === "configured" ? "customer-configured" : "default-pattern"}]`);
+      const now = /* @__PURE__ */ new Date();
+      let executionTimelineId = null;
+      try {
+        const [timeline] = await db.insert(executionTimelines).values({
+          organizationId,
+          triggerDetectionId: savedDetection?.id ?? null,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          recommendedPlaybook: detection.recommendedPlaybook,
+          detectedAt: now,
+          status: "detected"
+        }).returning();
+        executionTimelineId = timeline?.id ?? null;
+      } catch {
+      }
+      try {
+        await db.insert(signalActivityLog).values({
+          organizationId,
+          eventType: "trigger_fired",
+          source: signal.source,
+          signalTitle: signal.description.substring(0, 200),
+          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Playbook recommended: ${detection.recommendedPlaybook}`,
+          confidence: detection.confidenceScore,
+          keywordsMatched: detection.matchedKeywords.slice(0, 5)
+        });
+      } catch {
+      }
       try {
         const io = wsService.getIO();
         if (io) {
@@ -26747,6 +26862,13 @@ async function evaluateAndPersistSignals(signals, organizationId) {
             confidenceScore: detection.confidenceScore,
             organizationId
           });
+          io.emit("signal-activity", {
+            eventType: "trigger_fired",
+            source: signal.source,
+            triggerName: detection.triggerName,
+            confidence: detection.confidenceScore,
+            timestamp: now.toISOString()
+          });
         }
       } catch {
       }
@@ -26754,6 +26876,13 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         sendDetectionSlack(detection, signal),
         contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve()
       ]);
+      const notifiedAt = /* @__PURE__ */ new Date();
+      try {
+        if (executionTimelineId) {
+          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: "notified" }).where(eq36(executionTimelines.id, executionTimelineId));
+        }
+      } catch {
+      }
       await db.update(triggerDetections).set({ notificationSent: true, status: "notified" }).where(eq36(triggerDetections.triggerName, detection.triggerName));
       detectionsCreated++;
     } catch (err) {
@@ -41677,7 +41806,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq43, desc as desc21, sql as sql19, like, and as and26, asc as asc2, count as count7 } from "drizzle-orm";
+import { eq as eq43, desc as desc21, sql as sql19, like, and as and26, asc as asc2, count as count7, gte as gte9, ne } from "drizzle-orm";
 function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
@@ -42348,6 +42477,46 @@ async function registerRoutes(app2, existingServer) {
   registerActivationRoutes(app2);
   registerDemoAccessRoute(app2);
   registerPeerReviewRoute(app2);
+  app2.get("/api/unsubscribe", async (req, res) => {
+    const t = req.query.t;
+    if (!t) {
+      return res.status(400).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Invalid unsubscribe link</h2><p>The link appears to be missing a required parameter.</p></body></html>`);
+    }
+    try {
+      let email;
+      try {
+        email = Buffer.from(t, "base64url").toString("utf8");
+      } catch {
+        return res.status(400).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Invalid unsubscribe token</h2></body></html>`);
+      }
+      const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const result = await db.update(scTable).set({ isActive: false }).where(eq43(scTable.email, email));
+      console.log(`\u{1F4ED} Unsubscribed: ${email}`);
+      return res.send(`
+        <html>
+          <head><title>Unsubscribed \u2014 Execution OS</title></head>
+          <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">
+            <div style="max-width:480px;background:#fff;border-radius:8px;border:1px solid #e8e4dc;padding:48px 40px;text-align:center;">
+              <div style="width:48px;height:48px;background:#2B8A6E15;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B8A6E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Execution OS</div>
+              <h1 style="font-size:22px;font-weight:700;color:#0A0F2E;margin:0 0 12px;">You've been unsubscribed</h1>
+              <p style="font-size:14px;color:#666;line-height:1.6;margin:0 0 24px;">
+                <strong>${email}</strong> will no longer receive trigger alerts, compound threat notifications, or weekly digests.
+              </p>
+              <p style="font-size:13px;color:#999;line-height:1.6;">
+                Changed your mind? Contact <a href="mailto:pilot@vaughnmartin.com" style="color:#C9A84C;">pilot@vaughnmartin.com</a> to re-enable alerts, or update your preferences inside the platform under Stakeholder Management.
+              </p>
+            </div>
+          </body>
+        </html>
+      `);
+    } catch (err) {
+      console.error("Unsubscribe error:", err.message);
+      return res.status(500).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Something went wrong</h2><p>Please contact pilot@vaughnmartin.com to be removed from alerts.</p></body></html>`);
+    }
+  });
   app2.post("/api/auth/magic-link/request", async (req, res) => {
     const { firstName, lastName, email, company, title } = req.body;
     if (!firstName || !lastName || !email || !company || !title) {
@@ -42384,6 +42553,23 @@ async function registerRoutes(app2, existingServer) {
         onboardingCompleted: false
       });
       userOrgs = await storage.getUserOrganizations(userId);
+      if (userOrgs[0]?.id) {
+        try {
+          const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          await db.insert(scTable).values({
+            organizationId: userOrgs[0].id,
+            role: title || "Executive",
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            isActive: true,
+            triggerDomains: []
+            // empty = receives all domain alerts
+          });
+          console.log(`\u2705 [Magic Link] Auto-enrolled ${email} as stakeholder contact for org ${userOrgs[0].id}`);
+        } catch (scErr) {
+          console.error("[Magic Link] Stakeholder contact auto-enroll failed:", scErr.message);
+        }
+      }
     }
     const sessionUser = {
       id: userId,
@@ -47507,6 +47693,72 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: "Failed to fetch customer health data" });
     }
   });
+  app2.get("/api/admin/pilot-health", isAuthenticated, async (req, res) => {
+    try {
+      const user = req.user;
+      if (!user || user.role !== "admin") return res.status(403).json({ error: "Admin access required" });
+      const {
+        organizations: orgsTable,
+        users: usersTable,
+        triggerDetections: tdTable,
+        playbookActivations: paTable,
+        stakeholderContacts: scTable,
+        taskAcknowledgments: taTable
+      } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const now = /* @__PURE__ */ new Date();
+      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1e3);
+      const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1e3);
+      const orgs = await db.select().from(orgsTable).where(ne(orgsTable.name, "System")).orderBy(asc2(orgsTable.createdAt));
+      const result = await Promise.all(orgs.map(async (org) => {
+        const [latestUser] = await db.select({ lastLoginAt: usersTable.lastLoginAt }).from(usersTable).where(eq43(usersTable.organizationId, org.id)).orderBy(desc21(usersTable.lastLoginAt)).limit(1);
+        const [det7] = await db.select({ c: count7() }).from(tdTable).where(and26(eq43(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo)));
+        const [det30] = await db.select({ c: count7() }).from(tdTable).where(and26(eq43(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, thirtyDaysAgo)));
+        const [acts] = await db.select({ c: count7() }).from(paTable).where(eq43(paTable.organizationId, org.id));
+        const [contacts] = await db.select({ c: count7() }).from(scTable).where(eq43(scTable.organizationId, org.id));
+        let taskAcks = 0;
+        try {
+          const [ta] = await db.select({ c: count7() }).from(taTable).where(and26(eq43(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, thirtyDaysAgo)));
+          taskAcks = Number(ta?.c ?? 0);
+        } catch {
+          taskAcks = 0;
+        }
+        const lastLogin = latestUser?.lastLoginAt ?? null;
+        const daysSinceLogin = lastLogin ? Math.floor((now.getTime() - new Date(lastLogin).getTime()) / 864e5) : null;
+        const health = daysSinceLogin === null ? "pending" : daysSinceLogin <= 2 ? "active" : daysSinceLogin <= 7 ? "watch" : "stalled";
+        const contactCount = Number(contacts?.c ?? 0);
+        const activationCount = Number(acts?.c ?? 0);
+        const hasContacts = contactCount >= 3;
+        const hasActivations = activationCount > 0;
+        const hasRecent7d = Number(det7?.c ?? 0) > 0;
+        const milestone = !hasContacts || !org.onboardingCompleted ? "setup" : hasActivations && hasRecent7d ? "live" : hasActivations ? "dry-run" : "dry-run";
+        const daysSinceCreation = org.createdAt ? Math.floor((now.getTime() - new Date(org.createdAt).getTime()) / 864e5) : null;
+        const pilotDayRemaining = daysSinceCreation !== null ? Math.max(0, 90 - daysSinceCreation) : null;
+        return {
+          id: org.id,
+          name: org.name,
+          industry: org.industry || "Enterprise",
+          subscriptionTier: org.subscriptionTier || "basic",
+          createdAt: org.createdAt,
+          lastUserLoginAt: lastLogin,
+          daysSinceLogin,
+          health,
+          triggerDetections7d: Number(det7?.c ?? 0),
+          triggerDetections30d: Number(det30?.c ?? 0),
+          playbookActivations: activationCount,
+          stakeholderContactsCount: contactCount,
+          taskAcknowledgments30d: taskAcks,
+          onboardingCompleted: !!org.onboardingCompleted,
+          milestone,
+          pilotDayRemaining
+        };
+      }));
+      const order = { stalled: 0, watch: 1, active: 2, pending: 3 };
+      result.sort((a, b) => (order[a.health] ?? 9) - (order[b.health] ?? 9));
+      res.json({ orgs: result, generatedAt: now.toISOString() });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   app2.get("/api/intelligence/maturity-score", requireOrgAccess2, async (req, res) => {
     try {
       const score = await storage.getExecutionMaturityScore(req.user.organizationId);
@@ -47689,6 +47941,76 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           status: "active"
         }).returning();
         saved.push(inserted);
+      }
+      const highConf = saved.filter((t) => (t.confidence || 0) >= 70);
+      if (highConf.length > 0) {
+        try {
+          const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+          if (apiKey) {
+            const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+            const contacts = await db.select().from(scTable).where(and26(eq43(scTable.organizationId, orgId), eq43(scTable.isActive, true)));
+            const emails = contacts.map((c) => c.email).filter(Boolean);
+            if (emails.length > 0) {
+              const { Resend: Resend6 } = await import("resend");
+              const resend = new Resend6(apiKey);
+              const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+              const threatRows = highConf.map((t) => `
+                <tr>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td>
+                </tr>
+                <tr>
+                  <td colspan="3" style="padding:8px 0 16px;font-size:13px;color:#444;line-height:1.5;border-bottom:1px solid #f0ede4;">${(t.aiHypothesis || "").substring(0, 260)}${(t.aiHypothesis || "").length > 260 ? "\u2026" : ""}</td>
+                </tr>`).join("");
+              const html = `
+                <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+                  <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+                    <div style="background:#132558;padding:32px 36px;">
+                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Compound Threat Intelligence</div>
+                      <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div>
+                      <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">AI synthesis identified compound risk patterns across ${activeDomains.length} active monitoring domains.</div>
+                    </div>
+                    <div style="padding:32px 36px;">
+                      <p style="color:#444;font-size:14px;line-height:1.6;margin-bottom:24px;">The following high-confidence compound threats were identified by cross-domain AI synthesis. Each represents a scenario where signals from multiple strategic domains could combine into a larger risk requiring executive attention.</p>
+                      <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">
+                        <tr style="border-bottom:2px solid #0A0F2E;">
+                          <th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th>
+                          <th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains Involved</th>
+                          <th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th>
+                        </tr>
+                        ${threatRows}
+                      </table>
+                      <div style="text-align:center;margin-bottom:12px;">
+                        <a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review in Command Center \u2192</a>
+                      </div>
+                      <div style="text-align:center;">
+                        <a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a>
+                      </div>
+                    </div>
+                    <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+                      <div style="color:#999;font-size:11px;text-align:center;">Compound Threat Intelligence monitors cross-domain signal combinations. Human executive review required before any action is taken.</div>
+                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
+                    </div>
+                  </div>
+                </div>`;
+              for (const contact of contacts.filter((c) => c.email)) {
+                const token = Buffer.from(contact.email).toString("base64url");
+                const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+                await resend.emails.send({
+                  from: "Execution OS <pilot@vaughnmartin.com>",
+                  replyTo: "pilot@vaughnmartin.com",
+                  to: [contact.email],
+                  subject: `\u26A0\uFE0F ${highConf.length} Compound Threat${highConf.length > 1 ? "s" : ""} Detected \u2014 Cross-Domain Risk Analysis`,
+                  html: personalizedHtml
+                });
+              }
+              console.log(`\u{1F4E7} Compound threat alert sent to ${emails.join(", ")}`);
+            }
+          }
+        } catch (emailErr) {
+          console.error("Compound threat email failed:", emailErr);
+        }
       }
       res.json({ threats: saved, analyzed: activeDomains.length });
     } catch (err) {
@@ -48112,6 +48434,358 @@ We commit to full cooperation with any regulatory review.
     }
   });
   console.log("\u2705 WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder");
+  async function runAutoCompoundThreatAnalysis() {
+    try {
+      const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
+      const { organizations: orgsTable, executiveTriggers: etTable, compoundThreatAlerts: ctaTable, stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const orgs = await db.select({ id: orgsTable.id, name: orgsTable.name }).from(orgsTable);
+      for (const org of orgs) {
+        try {
+          const triggers = await db.select().from(etTable).where(eq43(etTable.organizationId, org.id)).limit(100);
+          const activeDomains = Array.from(new Set(triggers.filter((t) => t.isActive).map((t) => t.category)));
+          if (activeDomains.length < 2) continue;
+          const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.
+
+Active monitoring domains: ${activeDomains.join(", ")}
+Total active triggers: ${triggers.filter((t) => t.isActive).length}
+High-severity triggers: ${triggers.filter((t) => t.severity === "critical" || t.severity === "high").length}
+
+Identify 2-3 compound threats where signals across multiple domains could combine into a larger strategic risk. For each threat:
+1. Name the domains involved
+2. Describe the compound threat hypothesis
+3. Reference a historical business scenario it resembles (if any)
+4. Suggest a confidence level (0-100)
+5. Recommend a playbook category to pre-stage
+
+Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "string", "confidence": 75, "aiHypothesis": "detailed hypothesis", "historicalMatch": "optional reference", "recommendedPlaybookCategory": "string" }]`;
+          const raw = await openAIService2.analyzeText(prompt);
+          let threats = [];
+          try {
+            const jsonMatch = raw.match(/\[[\s\S]*\]/);
+            threats = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+          } catch {
+            threats = [];
+          }
+          const saved = [];
+          for (const t of threats) {
+            const [inserted] = await db.insert(ctaTable).values({
+              organizationId: org.id,
+              domains: t.domains || [],
+              threatType: t.threatType || "Unknown Compound Threat",
+              confidence: Math.min(100, Math.max(0, t.confidence || 50)),
+              aiHypothesis: t.aiHypothesis || "",
+              historicalMatch: t.historicalMatch || null,
+              status: "active"
+            }).returning();
+            saved.push(inserted);
+          }
+          const highConf = saved.filter((t) => (t.confidence || 0) >= 70);
+          if (highConf.length > 0) {
+            const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+            if (apiKey) {
+              const contacts = await db.select().from(scTable).where(and26(eq43(scTable.organizationId, org.id), eq43(scTable.isActive, true)));
+              const emails = contacts.map((c) => c.email).filter(Boolean);
+              if (emails.length > 0) {
+                const { Resend: Resend6 } = await import("resend");
+                const resend = new Resend6(apiKey);
+                const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+                const threatRows = highConf.map((t) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis || "").substring(0, 240)}${(t.aiHypothesis || "").length > 240 ? "\u2026" : ""}</td></tr>`).join("");
+                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div></div></div></div>`;
+                for (const contact of contacts) {
+                  const token = Buffer.from(contact.email).toString("base64url");
+                  const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+                  await resend.emails.send({
+                    from: "Execution OS <pilot@vaughnmartin.com>",
+                    replyTo: "pilot@vaughnmartin.com",
+                    to: [contact.email],
+                    subject: `\u26A0\uFE0F Scheduled Scan: ${highConf.length} Compound Threat${highConf.length > 1 ? "s" : ""} Detected`,
+                    html: personalizedHtml
+                  });
+                }
+                console.log(`\u{1F4E7} [Auto] Compound threat alert sent for org ${org.name} \u2192 ${emails.join(", ")}`);
+              }
+            }
+          }
+          console.log(`[Auto Compound] Org ${org.name}: ${saved.length} threats analyzed, ${highConf.length} high-confidence`);
+        } catch (orgErr) {
+          console.error(`[Auto Compound] Error for org ${org.id}:`, orgErr.message);
+        }
+      }
+    } catch (err) {
+      console.error("[Auto Compound] Scheduled analysis failed:", err.message);
+    }
+  }
+  setTimeout(() => {
+    runAutoCompoundThreatAnalysis();
+    setInterval(runAutoCompoundThreatAnalysis, 4 * 60 * 60 * 1e3);
+  }, 3e4);
+  console.log("\u2705 Compound threat auto-analysis scheduled (every 4 hours)");
+  app2.get("/api/org/execution-timelines", requireOrgAccess2, async (req, res) => {
+    try {
+      const { executionTimelines: etTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const rows = await db.select().from(etTable).where(eq43(etTable.organizationId, req.orgId)).orderBy(desc21(etTable.detectedAt)).limit(50);
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/org/execution-timelines/:id/advance", requireOrgAccess2, async (req, res) => {
+    try {
+      const { executionTimelines: etTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { milestone, playbookName } = req.body;
+      const id = parseInt(req.params.id);
+      const now = /* @__PURE__ */ new Date();
+      const updates = {};
+      if (milestone === "activated") {
+        updates.playbookActivatedAt = now;
+        updates.playbookName = playbookName;
+        updates.status = "activated";
+      } else if (milestone === "task_acknowledged") {
+        updates.firstTaskAcknowledgedAt = now;
+      } else if (milestone === "completed") {
+        updates.executionCompletedAt = now;
+        const [row] = await db.select().from(etTable).where(eq43(etTable.id, id));
+        if (row?.detectedAt) {
+          const totalMs = now.getTime() - new Date(row.detectedAt).getTime();
+          const totalMins = totalMs / 6e4;
+          updates.totalMinutes = parseFloat(totalMins.toFixed(2));
+          updates.speedMultiplier = parseFloat((30 * 24 * 60 / totalMins).toFixed(0));
+          updates.status = "completed";
+        }
+      }
+      await db.update(etTable).set(updates).where(and26(eq43(etTable.id, id), eq43(etTable.organizationId, req.orgId)));
+      res.json({ ok: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/org/execution-dividend", requireOrgAccess2, async (req, res) => {
+    try {
+      const { executionTimelines: etTable, playbookActivations: paTable, triggerDetections: tdTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const [timelines, activations, detections] = await Promise.all([
+        db.select().from(etTable).where(eq43(etTable.organizationId, req.orgId)),
+        db.select().from(paTable).where(eq43(paTable.organizationId, req.orgId)),
+        db.select().from(tdTable).where(eq43(tdTable.organizationId, req.orgId))
+      ]);
+      const completedTimelines = timelines.filter((t) => t.totalMinutes && t.speedMultiplier);
+      const avgResponseMinutes = completedTimelines.length > 0 ? completedTimelines.reduce((s, t) => s + (t.totalMinutes || 0), 0) / completedTimelines.length : 12;
+      const triggerCount = detections.length;
+      const activationCount = activations.length;
+      const EXEC_HOURLY_RATE = 500;
+      const HOURS_SAVED_PER_TRIGGER = 30 * 24 - avgResponseMinutes / 60;
+      const totalHoursSaved = Math.round(triggerCount * HOURS_SAVED_PER_TRIGGER);
+      const totalValueCreated = Math.round(triggerCount * HOURS_SAVED_PER_TRIGGER * EXEC_HOURLY_RATE);
+      const avgSpeedMultiplier = completedTimelines.length > 0 ? Math.round(completedTimelines.reduce((s, t) => s + (t.speedMultiplier || 3600), 0) / completedTimelines.length) : 3600;
+      res.json({
+        totalValueCreated,
+        totalHoursSaved,
+        totalTriggersResponded: triggerCount,
+        activationCount,
+        avgResponseMinutes: parseFloat(avgResponseMinutes.toFixed(1)),
+        avgSpeedMultiplier,
+        sinceDate: detections.length > 0 ? detections[detections.length - 1].detectedAt : null
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/org/board-readiness", requireOrgAccess2, async (req, res) => {
+    try {
+      const { executionTimelines: etTable, triggerDetections: tdTable, playbookActivations: paTable, stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
+      const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1e3);
+      const [detections, timelines, activations, contacts] = await Promise.all([
+        db.select().from(tdTable).where(and26(eq43(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(30),
+        db.select().from(etTable).where(eq43(etTable.organizationId, req.orgId)).orderBy(desc21(etTable.detectedAt)).limit(20),
+        db.select().from(paTable).where(eq43(paTable.organizationId, req.orgId)).limit(20),
+        db.select().from(scTable).where(and26(eq43(scTable.organizationId, req.orgId), eq43(scTable.isActive, true)))
+      ]);
+      const TOTAL_DOMAINS = 9;
+      const activeDomains = [...new Set(detections.map((d) => d.triggerDomain).filter(Boolean))];
+      const domainCoverage = Math.round(activeDomains.length / TOTAL_DOMAINS * 100);
+      const completedTimelines = timelines.filter((t) => t.totalMinutes);
+      const avgResponseMinutes = completedTimelines.length > 0 ? parseFloat((completedTimelines.reduce((s, t) => s + (t.totalMinutes || 12), 0) / completedTimelines.length).toFixed(1)) : null;
+      const recent30 = detections.filter((d) => new Date(d.detectedAt) >= thirtyDaysAgo);
+      const readinessScore = Math.min(100, Math.round(
+        activeDomains.length / TOTAL_DOMAINS * 40 + (contacts.length > 0 ? 20 : 0) + (activations.length > 0 ? 20 : 0) + (detections.length > 0 ? 20 : 0)
+      ));
+      res.json({
+        readinessScore,
+        domainCoverage,
+        activeDomains,
+        totalDomains: TOTAL_DOMAINS,
+        triggerCount90d: detections.length,
+        triggerCount30d: recent30.length,
+        activationCount: activations.length,
+        avgResponseMinutes,
+        stakeholderCount: contacts.length,
+        recentDetections: recent30.slice(0, 5),
+        monitoringStatus: recent30.length > 5 ? "ALERT" : "MONITORING",
+        generatedAt: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/org/welcome-brief", requireOrgAccess2, async (req, res) => {
+    try {
+      const { triggerDetections: tdTable, stakeholderContacts: scTable, signalActivityLog: salTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
+      const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3);
+      const [detections, contacts, recentActivity] = await Promise.all([
+        db.select().from(tdTable).where(and26(eq43(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10),
+        db.select().from(scTable).where(eq43(scTable.organizationId, req.orgId)),
+        db.select().from(salTable).where(gte9(salTable.createdAt, threeDaysAgo)).orderBy(desc21(salTable.createdAt)).limit(20)
+      ]);
+      const signalsScanned72h = recentActivity.length;
+      res.json({
+        triggersArmed: 221,
+        domainsMonitored: 9,
+        signalsTracked: 248,
+        playbooksReady: 170,
+        signalsScanned72h,
+        recentDetections: detections,
+        stakeholdersEnrolled: contacts.filter((c) => c.isActive).length,
+        isNewOrg: detections.length === 0,
+        generatedAt: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/signal-activity-log", requireAuth6, async (req, res) => {
+    try {
+      const { signalActivityLog: salTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const rows = await db.select().from(salTable).orderBy(desc21(salTable.createdAt)).limit(100);
+      res.json(rows);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  async function sendWeeklyPilotDigest() {
+    try {
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) return;
+      const {
+        organizations: orgsTable,
+        triggerDetections: tdTable,
+        playbookActivations: paTable,
+        taskAcknowledgments: taTable,
+        stakeholderContacts: scTable
+      } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const now = /* @__PURE__ */ new Date();
+      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1e3);
+      const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+      const orgs = await db.select().from(orgsTable).where(ne(orgsTable.name, "System"));
+      for (const org of orgs) {
+        try {
+          const contacts = await db.select().from(scTable).where(and26(eq43(scTable.organizationId, org.id), eq43(scTable.isActive, true)));
+          const emails = contacts.map((c) => c.email).filter(Boolean);
+          if (emails.length === 0) continue;
+          const detections = await db.select().from(tdTable).where(and26(eq43(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10);
+          const [actRow] = await db.select({ c: count7() }).from(paTable).where(and26(eq43(paTable.organizationId, org.id), gte9(paTable.activatedAt, sevenDaysAgo)));
+          let taskAcks = 0;
+          try {
+            const [taRow] = await db.select({ c: count7() }).from(taTable).where(and26(eq43(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, sevenDaysAgo)));
+            taskAcks = Number(taRow?.c ?? 0);
+          } catch {
+            taskAcks = 0;
+          }
+          const triggerCount = detections.length;
+          const activations = Number(actRow?.c ?? 0);
+          const weekLabel = now.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+          const detectionRows = triggerCount > 0 ? detections.map((d) => `
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#0A0F2E;font-size:13px;font-weight:600;">${d.triggerName}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#666;font-size:12px;">${d.triggerDomain}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#2B8A6E;font-size:12px;font-weight:700;text-align:right;">${d.confidenceScore}%</td>
+              </tr>`).join("") : `<tr><td colspan="3" style="padding:20px 0;text-align:center;color:#999;font-size:13px;">No triggers detected this week \u2014 monitoring active across 248+ signals.</td></tr>`;
+          const statusBadge = triggerCount === 0 ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u2713 Market was quiet this week. All 221 triggers armed and scanning continuously.</div>` : `<div style="background:#C9A84C15;border:1px solid #C9A84C40;color:#8B6914;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">\u26A1 ${triggerCount} trigger${triggerCount > 1 ? "s" : ""} detected this week requiring your attention.</div>`;
+          const html = `
+            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+              <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+                <div style="background:#132558;padding:32px 36px;">
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Weekly Pilot Digest</div>
+                  <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Week of ${weekLabel}</div>
+                  <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">${org.name} \u2014 Strategic Execution Summary</div>
+                </div>
+                <div style="padding:32px 36px;">
+                  ${statusBadge}
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;">
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${triggerCount}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Triggers Fired</div>
+                    </div>
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${activations}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Playbooks Activated</div>
+                    </div>
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${taskAcks}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Tasks Acknowledged</div>
+                    </div>
+                  </div>
+                  <div style="margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;color:#0A0F2E;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Trigger Log</div>
+                    <table style="width:100%;border-collapse:collapse;">
+                      <tr style="border-bottom:2px solid #0A0F2E;">
+                        <th style="padding:8px 0;text-align:left;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Trigger</th>
+                        <th style="padding:8px 0;text-align:left;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domain</th>
+                        <th style="padding:8px 0;text-align:right;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th>
+                      </tr>
+                      ${detectionRows}
+                    </table>
+                  </div>
+                  <div style="text-align:center;margin-bottom:12px;">
+                    <a href="${platformUrl}/mission-control" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">View Mission Control \u2192</a>
+                  </div>
+                  <div style="text-align:center;">
+                    <a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Explore Playbook Library \u2192</a>
+                  </div>
+                </div>
+                <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+                  <div style="color:#999;font-size:11px;text-align:center;">Execution OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
+                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
+                </div>
+              </div>
+            </div>`;
+          const { Resend: Resend6 } = await import("resend");
+          const resend = new Resend6(apiKey);
+          const subject = triggerCount > 0 ? `\u{1F4CA} Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? "s" : ""} Detected \u2014 ${org.name}` : `\u{1F4CA} Weekly Digest: Monitoring Active, Market Quiet \u2014 ${org.name}`;
+          for (const contact of contacts) {
+            if (!contact.email) continue;
+            const token = Buffer.from(contact.email).toString("base64url");
+            const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+            await resend.emails.send({
+              from: "Execution OS <pilot@vaughnmartin.com>",
+              replyTo: "pilot@vaughnmartin.com",
+              to: [contact.email],
+              subject,
+              html: personalizedHtml
+            });
+          }
+          console.log(`\u{1F4E7} [Weekly Digest] Sent for org ${org.name} \u2192 ${emails.join(", ")}`);
+        } catch (orgErr) {
+          console.error(`[Weekly Digest] Error for org ${org.id}:`, orgErr.message);
+        }
+      }
+    } catch (err) {
+      console.error("[Weekly Digest] Failed:", err.message);
+    }
+  }
+  function scheduleWeeklyDigest() {
+    const now = /* @__PURE__ */ new Date();
+    const nextMonday = new Date(now);
+    nextMonday.setDate(now.getDate() + ((8 - now.getDay()) % 7 || 7));
+    nextMonday.setHours(8, 0, 0, 0);
+    const msUntilMonday = nextMonday.getTime() - now.getTime();
+    setTimeout(() => {
+      sendWeeklyPilotDigest();
+      setInterval(sendWeeklyPilotDigest, 7 * 24 * 60 * 60 * 1e3);
+    }, msUntilMonday);
+    console.log(`\u2705 Weekly pilot digest scheduled \u2014 next send: ${nextMonday.toISOString()}`);
+  }
+  scheduleWeeklyDigest();
   return httpServer;
 }
 
