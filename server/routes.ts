@@ -816,6 +816,25 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         onboardingCompleted: false,
       });
       userOrgs = await storage.getUserOrganizations(userId);
+
+      // Auto-enroll the requesting user as a stakeholder contact so they
+      // receive trigger alerts, compound threat emails, and weekly digests.
+      if (userOrgs[0]?.id) {
+        try {
+          const { stakeholderContacts: scTable } = await import('@shared/schema');
+          await db.insert(scTable).values({
+            organizationId: userOrgs[0].id,
+            role: title || 'Executive',
+            name: `${firstName} ${lastName}`.trim(),
+            email,
+            isActive: true,
+            triggerDomains: [], // empty = receives all domain alerts
+          });
+          console.log(`✅ [Magic Link] Auto-enrolled ${email} as stakeholder contact for org ${userOrgs[0].id}`);
+        } catch (scErr: any) {
+          console.error('[Magic Link] Stakeholder contact auto-enroll failed:', scErr.message);
+        }
+      }
     }
     const sessionUser = {
       id: userId, email, firstName, lastName, company, title,
