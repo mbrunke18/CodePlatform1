@@ -365,20 +365,36 @@ async function sendDetectionEmail(
     </div>
   `;
 
+  // Try reliable sender first (Resend's own verified domain), fall back to branded domain
+  const fromAddresses = [
+    'Execution OS <onboarding@resend.dev>',
+    'Execution OS <pilot@vaughnmartin.com>',
+  ];
+
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString('base64url');
     const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
-    try {
-      await resend.emails.send({
-        from: 'Execution OS <pilot@vaughnmartin.com>',
-        replyTo: 'pilot@vaughnmartin.com',
-        to: [recipientEmail],
-        subject: `🔴 Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
-        html: personalizedHtml,
-      });
-    } catch (err) {
-      console.error(`Detection email failed for ${recipientEmail}:`, err);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend.emails.send({
+          from,
+          replyTo: 'pilot@vaughnmartin.com',
+          to: [recipientEmail],
+          subject: `🔴 Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+          html: personalizedHtml,
+        });
+        if (error) {
+          console.warn(`⚠ Detection email sender ${from} rejected (${error.message}) — trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err: any) {
+        console.warn(`⚠ Detection email sender ${from} threw: ${err.message} — trying next`);
+      }
     }
+    if (!sent) console.error(`✗ All senders failed for detection alert to ${recipientEmail}`);
   }
   console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
 }
@@ -585,9 +601,14 @@ export async function evaluateAndPersistSignals(
         (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      const contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
+      let contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
 
-      if (domainApprovers.length > 0) {
+      // Admin fallback — if no stakeholder contacts are registered, always alert pilot
+      const ADMIN_FALLBACK = 'pilot@vaughnmartin.com';
+      if (contactEmails.length === 0) {
+        contactEmails = [ADMIN_FALLBACK];
+        console.log(`📬 No stakeholder contacts registered — routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
+      } else if (domainApprovers.length > 0) {
         console.log(`📬 Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
       } else {
         console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);

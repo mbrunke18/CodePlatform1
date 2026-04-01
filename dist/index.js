@@ -22621,12 +22621,26 @@ var init_NotificationService = __esm({
             };
           }
           const htmlContent = this.renderEmailTemplate(notification);
-          await this.resend.emails.send({
-            from: "noreply@vaughnmartin.com",
-            to: recipient.email,
-            subject: notification.title,
-            html: htmlContent
-          });
+          const fromAddresses = [
+            "Execution OS <onboarding@resend.dev>",
+            "Execution OS <noreply@vaughnmartin.com>"
+          ];
+          let sent = false;
+          for (const from of fromAddresses) {
+            const { error } = await this.resend.emails.send({
+              from,
+              replyTo: "pilot@vaughnmartin.com",
+              to: recipient.email,
+              subject: notification.title,
+              html: htmlContent
+            });
+            if (!error) {
+              sent = true;
+              break;
+            }
+            console.warn(`\u26A0 Notification sender ${from} rejected (${error.message}) \u2014 trying next`);
+          }
+          if (!sent) throw new Error("All notification senders failed");
           console.log(`\u2713 Email sent to ${recipient.email} via Resend`);
           return { channel: "email", success: true };
         } catch (error) {
@@ -26633,20 +26647,34 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
       </div>
     </div>
   `;
+  const fromAddresses = [
+    "Execution OS <onboarding@resend.dev>",
+    "Execution OS <pilot@vaughnmartin.com>"
+  ];
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString("base64url");
     const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
-    try {
-      await resend.emails.send({
-        from: "Execution OS <pilot@vaughnmartin.com>",
-        replyTo: "pilot@vaughnmartin.com",
-        to: [recipientEmail],
-        subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
-        html: personalizedHtml
-      });
-    } catch (err) {
-      console.error(`Detection email failed for ${recipientEmail}:`, err);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend.emails.send({
+          from,
+          replyTo: "pilot@vaughnmartin.com",
+          to: [recipientEmail],
+          subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+          html: personalizedHtml
+        });
+        if (error) {
+          console.warn(`\u26A0 Detection email sender ${from} rejected (${error.message}) \u2014 trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err) {
+        console.warn(`\u26A0 Detection email sender ${from} threw: ${err.message} \u2014 trying next`);
+      }
     }
+    if (!sent) console.error(`\u2717 All senders failed for detection alert to ${recipientEmail}`);
   }
   console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
 }
@@ -26799,8 +26827,12 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         (c) => c.isActive && c.email && (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      const contactEmails = recipientContacts.map((c) => c.email).filter(Boolean);
-      if (domainApprovers.length > 0) {
+      let contactEmails = recipientContacts.map((c) => c.email).filter(Boolean);
+      const ADMIN_FALLBACK = "pilot@vaughnmartin.com";
+      if (contactEmails.length === 0) {
+        contactEmails = [ADMIN_FALLBACK];
+        console.log(`\u{1F4EC} No stakeholder contacts registered \u2014 routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
+      } else if (domainApprovers.length > 0) {
         console.log(`\u{1F4EC} Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
       } else {
         console.log(`\u{1F4EC} No domain approvers for "${detection.triggerDomain}" \u2014 sending to ${contactEmails.length} org-wide contact(s)`);

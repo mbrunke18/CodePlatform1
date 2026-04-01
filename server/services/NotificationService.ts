@@ -139,12 +139,24 @@ class NotificationService {
 
       const htmlContent = this.renderEmailTemplate(notification);
 
-      await this.resend.emails.send({
-        from: 'noreply@vaughnmartin.com',
-        to: recipient.email,
-        subject: notification.title,
-        html: htmlContent,
-      });
+      // Use Resend's verified domain first; fall back to branded domain once DNS is configured
+      const fromAddresses = [
+        'Execution OS <onboarding@resend.dev>',
+        'Execution OS <noreply@vaughnmartin.com>',
+      ];
+      let sent = false;
+      for (const from of fromAddresses) {
+        const { error } = await this.resend.emails.send({
+          from,
+          replyTo: 'pilot@vaughnmartin.com',
+          to: recipient.email,
+          subject: notification.title,
+          html: htmlContent,
+        });
+        if (!error) { sent = true; break; }
+        console.warn(`⚠ Notification sender ${from} rejected (${error.message}) — trying next`);
+      }
+      if (!sent) throw new Error('All notification senders failed');
 
       console.log(`✓ Email sent to ${recipient.email} via Resend`);
       return { channel: 'email', success: true };
