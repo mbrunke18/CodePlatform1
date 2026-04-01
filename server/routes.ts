@@ -7660,6 +7660,75 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         }).returning();
         saved.push(inserted);
       }
+
+      // Send email alerts for high-confidence compound threats
+      const highConf = saved.filter((t: any) => (t.confidence || 0) >= 70);
+      if (highConf.length > 0) {
+        try {
+          const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+          if (apiKey) {
+            const { stakeholderContacts: scTable } = await import('@shared/schema');
+            const contacts = await db.select().from(scTable)
+              .where(eq(scTable.organizationId, orgId));
+            const emails = contacts.map((c: any) => c.email).filter(Boolean);
+            if (emails.length > 0) {
+              const { Resend } = await import('resend');
+              const resend = new Resend(apiKey);
+              const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+              const threatRows = highConf.map((t: any) => `
+                <tr>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(', ')}</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td>
+                </tr>
+                <tr>
+                  <td colspan="3" style="padding:8px 0 16px;font-size:13px;color:#444;line-height:1.5;border-bottom:1px solid #f0ede4;">${(t.aiHypothesis || '').substring(0, 260)}${(t.aiHypothesis || '').length > 260 ? '…' : ''}</td>
+                </tr>`).join('');
+              const html = `
+                <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+                  <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+                    <div style="background:#132558;padding:32px 36px;">
+                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Compound Threat Intelligence</div>
+                      <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? 's' : ''} Detected</div>
+                      <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">AI synthesis identified compound risk patterns across ${activeDomains.length} active monitoring domains.</div>
+                    </div>
+                    <div style="padding:32px 36px;">
+                      <p style="color:#444;font-size:14px;line-height:1.6;margin-bottom:24px;">The following high-confidence compound threats were identified by cross-domain AI synthesis. Each represents a scenario where signals from multiple strategic domains could combine into a larger risk requiring executive attention.</p>
+                      <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">
+                        <tr style="border-bottom:2px solid #0A0F2E;">
+                          <th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th>
+                          <th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains Involved</th>
+                          <th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th>
+                        </tr>
+                        ${threatRows}
+                      </table>
+                      <div style="text-align:center;margin-bottom:12px;">
+                        <a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review in Command Center →</a>
+                      </div>
+                      <div style="text-align:center;">
+                        <a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a>
+                      </div>
+                    </div>
+                    <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+                      <div style="color:#999;font-size:11px;text-align:center;">Compound Threat Intelligence monitors cross-domain signal combinations. Human executive review required before any action is taken.</div>
+                    </div>
+                  </div>
+                </div>`;
+              await resend.emails.send({
+                from: 'Execution OS <pilot@vaughnmartin.com>',
+                replyTo: 'pilot@vaughnmartin.com',
+                to: emails,
+                subject: `⚠️ ${highConf.length} Compound Threat${highConf.length > 1 ? 's' : ''} Detected — Cross-Domain Risk Analysis`,
+                html,
+              });
+              console.log(`📧 Compound threat alert sent to ${emails.join(', ')}`);
+            }
+          }
+        } catch (emailErr) {
+          console.error('Compound threat email failed:', emailErr);
+        }
+      }
+
       res.json({ threats: saved, analyzed: activeDomains.length });
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
@@ -8068,6 +8137,79 @@ Respond ONLY as JSON with this exact structure:
   });
 
   console.log('✅ WOW feature routes registered: compound-threats, roi, simulation, strategic-recorder');
+
+  // ── Auto compound threat analysis: runs every 4 hours across all active orgs ──
+  async function runAutoCompoundThreatAnalysis() {
+    try {
+      const { openAIService } = await import('./services/OpenAIService.js');
+      const { organizations: orgsTable, executiveTriggers: etTable, compoundThreatAlerts: ctaTable, stakeholderContacts: scTable } = await import('@shared/schema');
+      const orgs = await db.select({ id: orgsTable.id, name: orgsTable.name }).from(orgsTable);
+      for (const org of orgs) {
+        try {
+          const triggers = await db.select().from(etTable)
+            .where(eq(etTable.organizationId, org.id)).limit(100);
+          const activeDomains = Array.from(new Set(triggers.filter((t: any) => t.isActive).map((t: any) => t.category)));
+          if (activeDomains.length < 2) continue;
+          const prompt = `You are a strategic threat intelligence AI. Analyze these active signal domains and their trigger configurations to detect cross-domain compound threats.\n\nActive monitoring domains: ${activeDomains.join(', ')}\nTotal active triggers: ${triggers.filter((t: any) => t.isActive).length}\nHigh-severity triggers: ${triggers.filter((t: any) => t.severity === 'critical' || t.severity === 'high').length}\n\nIdentify 2-3 compound threats where signals across multiple domains could combine into a larger strategic risk. For each threat:\n1. Name the domains involved\n2. Describe the compound threat hypothesis\n3. Reference a historical business scenario it resembles (if any)\n4. Suggest a confidence level (0-100)\n5. Recommend a playbook category to pre-stage\n\nRespond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "string", "confidence": 75, "aiHypothesis": "detailed hypothesis", "historicalMatch": "optional reference", "recommendedPlaybookCategory": "string" }]`;
+          const raw = await openAIService.analyzeText(prompt);
+          let threats: any[] = [];
+          try {
+            const jsonMatch = raw.match(/\[[\s\S]*\]/);
+            threats = jsonMatch ? JSON.parse(jsonMatch[0]) : [];
+          } catch { threats = []; }
+          const saved = [];
+          for (const t of threats) {
+            const [inserted] = await db.insert(ctaTable).values({
+              organizationId: org.id,
+              domains: t.domains || [],
+              threatType: t.threatType || 'Unknown Compound Threat',
+              confidence: Math.min(100, Math.max(0, t.confidence || 50)),
+              aiHypothesis: t.aiHypothesis || '',
+              historicalMatch: t.historicalMatch || null,
+              status: 'active',
+            }).returning();
+            saved.push(inserted);
+          }
+          // Email stakeholders for high-confidence threats
+          const highConf = saved.filter((t: any) => (t.confidence || 0) >= 70);
+          if (highConf.length > 0) {
+            const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+            if (apiKey) {
+              const contacts = await db.select().from(scTable).where(eq(scTable.organizationId, org.id));
+              const emails = contacts.map((c: any) => c.email).filter(Boolean);
+              if (emails.length > 0) {
+                const { Resend } = await import('resend');
+                const resend = new Resend(apiKey);
+                const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+                const threatRows = highConf.map((t: any) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains||[]).join(', ')}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis||'').substring(0,240)}${(t.aiHypothesis||'').length>240?'…':''}</td></tr>`).join('');
+                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length>1?'s':''} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center →</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div></div></div></div>`;
+                await resend.emails.send({
+                  from: 'Execution OS <pilot@vaughnmartin.com>',
+                  replyTo: 'pilot@vaughnmartin.com',
+                  to: emails,
+                  subject: `⚠️ Scheduled Scan: ${highConf.length} Compound Threat${highConf.length>1?'s':''} Detected`,
+                  html,
+                });
+                console.log(`📧 [Auto] Compound threat alert sent for org ${org.name} → ${emails.join(', ')}`);
+              }
+            }
+          }
+          console.log(`[Auto Compound] Org ${org.name}: ${saved.length} threats analyzed, ${highConf.length} high-confidence`);
+        } catch (orgErr: any) {
+          console.error(`[Auto Compound] Error for org ${org.id}:`, orgErr.message);
+        }
+      }
+    } catch (err: any) {
+      console.error('[Auto Compound] Scheduled analysis failed:', err.message);
+    }
+  }
+
+  // Run 30 seconds after startup (to let DB settle), then every 4 hours
+  setTimeout(() => {
+    runAutoCompoundThreatAnalysis();
+    setInterval(runAutoCompoundThreatAnalysis, 4 * 60 * 60 * 1000);
+  }, 30_000);
+  console.log('✅ Compound threat auto-analysis scheduled (every 4 hours)');
 
   return httpServer;
 }

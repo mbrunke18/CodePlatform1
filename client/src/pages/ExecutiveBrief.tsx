@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { updatePageMetadata } from "@/lib/seo";
-import { ArrowRight, CheckCircle2, Clock, Shield, Users, BookOpen, TrendingUp, Zap, Globe, Mail, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Shield, Users, BookOpen, TrendingUp, Zap, Globe, Mail, Phone, Link2, Send } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -72,6 +72,8 @@ const roiCase = [
 ];
 
 export default function ExecutiveBrief() {
+  const [copied, setCopied] = useState(false);
+
   useEffect(() => {
     updatePageMetadata({
       title: "Executive Brief — Execution OS by VaughnMartin",
@@ -80,6 +82,22 @@ export default function ExecutiveBrief() {
       ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic execution platform built for Fortune 1000 enterprises.",
     });
   }, []);
+
+  function handleCopyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    });
+  }
+
+  function handleForwardToBoard() {
+    const url = window.location.href;
+    const subject = encodeURIComponent("Strategic Briefing: VaughnMartin Execution OS — 3,600× Execution Head Start");
+    const body = encodeURIComponent(
+      `Hi,\n\nSharing this for board consideration.\n\nVaughnMartin's Execution OS compresses the 30-day enterprise mobilization cycle to 12 minutes — a 3,600× execution head start over traditional operating models.\n\nThe full executive brief is here: ${url}\n\nKey headline: 170 pre-staged playbooks, continuous AI monitoring across 248+ signals, and full war-room coordination in under 12 minutes after a trigger fires.\n\nHappy to discuss at your convenience.`
+    );
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  }
 
   return (
     <PageLayout>
@@ -123,6 +141,23 @@ export default function ExecutiveBrief() {
                   Watch the 12-Minute Demo
                 </Button>
               </Link>
+              <Button
+                onClick={handleForwardToBoard}
+                variant="outline"
+                size="lg"
+                style={{ borderColor: "rgba(201,168,76,0.45)", color: GOLD, background: "rgba(201,168,76,0.08)" }}
+              >
+                <Send className="w-4 h-4 mr-2" /> Forward to Board
+              </Button>
+              <Button
+                onClick={handleCopyLink}
+                variant="outline"
+                size="lg"
+                style={{ borderColor: "rgba(255,255,255,0.15)", color: copied ? TEAL : "rgba(255,255,255,0.55)", background: "transparent", transition: "color 0.2s" }}
+              >
+                <Link2 className="w-4 h-4 mr-2" />
+                {copied ? "Link Copied" : "Copy Link"}
+              </Button>
             </div>
           </div>
         </section>
