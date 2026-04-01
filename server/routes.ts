@@ -76,7 +76,7 @@ import {
   strategicRecordings,
   executiveTriggers,
 } from "@shared/schema";
-import { eq, desc, sql, like, and, asc, count } from 'drizzle-orm';
+import { eq, desc, sql, like, and, asc, count, gte, ne } from 'drizzle-orm';
 import { db } from './db';
 
 // Helper function to get authenticated user ID from session
@@ -7434,6 +7434,121 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
 
+  // ─── Pilot Health Monitor ─────────────────────────────────────────────────
+  app.get('/api/admin/pilot-health', isAuthenticated, async (req: any, res) => {
+    try {
+      const user = req.user;
+      if (!user || user.role !== 'admin') return res.status(403).json({ error: 'Admin access required' });
+
+      const {
+        organizations: orgsTable,
+        users: usersTable,
+        triggerDetections: tdTable,
+        playbookActivations: paTable,
+        stakeholderContacts: scTable,
+        taskAcknowledgments: taTable,
+      } = await import('@shared/schema');
+
+      const now = new Date();
+      const sevenDaysAgo  = new Date(now.getTime() - 7  * 24 * 60 * 60 * 1000);
+      const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+      const orgs = await db.select().from(orgsTable)
+        .where(ne(orgsTable.name, 'System'))
+        .orderBy(asc(orgsTable.createdAt));
+
+      const result = await Promise.all(orgs.map(async (org: any) => {
+        const [latestUser] = await db
+          .select({ lastLoginAt: usersTable.lastLoginAt })
+          .from(usersTable)
+          .where(eq(usersTable.organizationId, org.id))
+          .orderBy(desc(usersTable.lastLoginAt))
+          .limit(1);
+
+        const [det7] = await db
+          .select({ c: count() })
+          .from(tdTable)
+          .where(and(eq(tdTable.organizationId, org.id), gte(tdTable.detectedAt, sevenDaysAgo)));
+
+        const [det30] = await db
+          .select({ c: count() })
+          .from(tdTable)
+          .where(and(eq(tdTable.organizationId, org.id), gte(tdTable.detectedAt, thirtyDaysAgo)));
+
+        const [acts] = await db
+          .select({ c: count() })
+          .from(paTable)
+          .where(eq(paTable.organizationId, org.id));
+
+        const [contacts] = await db
+          .select({ c: count() })
+          .from(scTable)
+          .where(eq(scTable.organizationId, org.id));
+
+        let taskAcks = 0;
+        try {
+          const [ta] = await db
+            .select({ c: count() })
+            .from(taTable)
+            .where(and(eq(taTable.organizationId, org.id), gte(taTable.acknowledgedAt, thirtyDaysAgo)));
+          taskAcks = Number(ta?.c ?? 0);
+        } catch { taskAcks = 0; }
+
+        const lastLogin = latestUser?.lastLoginAt ?? null;
+        const daysSinceLogin = lastLogin
+          ? Math.floor((now.getTime() - new Date(lastLogin).getTime()) / (86400000))
+          : null;
+
+        const health = daysSinceLogin === null ? 'pending'
+          : daysSinceLogin <= 2 ? 'active'
+          : daysSinceLogin <= 7 ? 'watch'
+          : 'stalled';
+
+        const contactCount  = Number(contacts?.c ?? 0);
+        const activationCount = Number(acts?.c ?? 0);
+        const hasContacts   = contactCount >= 3;
+        const hasActivations = activationCount > 0;
+        const hasRecent7d   = Number(det7?.c ?? 0) > 0;
+
+        const milestone = !hasContacts || !org.onboardingCompleted ? 'setup'
+          : hasActivations && hasRecent7d ? 'live'
+          : hasActivations ? 'dry-run'
+          : 'dry-run';
+
+        const daysSinceCreation = org.createdAt
+          ? Math.floor((now.getTime() - new Date(org.createdAt).getTime()) / 86400000)
+          : null;
+        const pilotDayRemaining = daysSinceCreation !== null ? Math.max(0, 90 - daysSinceCreation) : null;
+
+        return {
+          id: org.id,
+          name: org.name,
+          industry: org.industry || 'Enterprise',
+          subscriptionTier: org.subscriptionTier || 'basic',
+          createdAt: org.createdAt,
+          lastUserLoginAt: lastLogin,
+          daysSinceLogin,
+          health,
+          triggerDetections7d:  Number(det7?.c  ?? 0),
+          triggerDetections30d: Number(det30?.c ?? 0),
+          playbookActivations:  activationCount,
+          stakeholderContactsCount: contactCount,
+          taskAcknowledgments30d: taskAcks,
+          onboardingCompleted: !!org.onboardingCompleted,
+          milestone,
+          pilotDayRemaining,
+        };
+      }));
+
+      // Sort: stalled first, then watch, then active, then pending
+      const order: Record<string,number> = { stalled: 0, watch: 1, active: 2, pending: 3 };
+      result.sort((a, b) => (order[a.health] ?? 9) - (order[b.health] ?? 9));
+      res.json({ orgs: result, generatedAt: now.toISOString() });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // ─── Execution Intelligence / Maturity Score ─────────────────────────────
 
   app.get('/api/intelligence/maturity-score', requireOrgAccess, async (req: any, res) => {
@@ -8210,6 +8325,148 @@ Respond ONLY as JSON with this exact structure:
     setInterval(runAutoCompoundThreatAnalysis, 4 * 60 * 60 * 1000);
   }, 30_000);
   console.log('✅ Compound threat auto-analysis scheduled (every 4 hours)');
+
+  // ── Weekly pilot digest: every Monday (or every 7 days from startup) ──────
+  async function sendWeeklyPilotDigest() {
+    try {
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) return;
+
+      const {
+        organizations: orgsTable,
+        triggerDetections: tdTable,
+        playbookActivations: paTable,
+        taskAcknowledgments: taTable,
+        stakeholderContacts: scTable,
+      } = await import('@shared/schema');
+
+      const now = new Date();
+      const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+
+      const orgs = await db.select().from(orgsTable).where(ne(orgsTable.name, 'System'));
+
+      for (const org of orgs) {
+        try {
+          const contacts = await db.select().from(scTable).where(eq(scTable.organizationId, org.id));
+          const emails = contacts.map((c: any) => c.email).filter(Boolean);
+          if (emails.length === 0) continue;
+
+          const detections = await db.select().from(tdTable)
+            .where(and(eq(tdTable.organizationId, org.id), gte(tdTable.detectedAt, sevenDaysAgo)))
+            .orderBy(desc(tdTable.detectedAt))
+            .limit(10);
+
+          const [actRow] = await db.select({ c: count() }).from(paTable)
+            .where(and(eq(paTable.organizationId, org.id), gte(paTable.activatedAt, sevenDaysAgo)));
+
+          let taskAcks = 0;
+          try {
+            const [taRow] = await db.select({ c: count() }).from(taTable)
+              .where(and(eq(taTable.organizationId, org.id), gte(taTable.acknowledgedAt, sevenDaysAgo)));
+            taskAcks = Number(taRow?.c ?? 0);
+          } catch { taskAcks = 0; }
+
+          const triggerCount  = detections.length;
+          const activations   = Number(actRow?.c ?? 0);
+          const weekLabel     = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+          const detectionRows = triggerCount > 0
+            ? detections.map((d: any) => `
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#0A0F2E;font-size:13px;font-weight:600;">${d.triggerName}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#666;font-size:12px;">${d.triggerDomain}</td>
+                <td style="padding:10px 0;border-bottom:1px solid #f0ede4;color:#2B8A6E;font-size:12px;font-weight:700;text-align:right;">${d.confidenceScore}%</td>
+              </tr>`).join('')
+            : `<tr><td colspan="3" style="padding:20px 0;text-align:center;color:#999;font-size:13px;">No triggers detected this week — monitoring active across 248+ signals.</td></tr>`;
+
+          const statusBadge = triggerCount === 0
+            ? `<div style="background:#2B8A6E15;border:1px solid #2B8A6E40;color:#2B8A6E;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">✓ Market was quiet this week. All 221 triggers armed and scanning continuously.</div>`
+            : `<div style="background:#C9A84C15;border:1px solid #C9A84C40;color:#8B6914;padding:12px 20px;border-radius:6px;font-size:13px;margin-bottom:24px;">⚡ ${triggerCount} trigger${triggerCount > 1 ? 's' : ''} detected this week requiring your attention.</div>`;
+
+          const html = `
+            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+              <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+                <div style="background:#132558;padding:32px 36px;">
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Weekly Pilot Digest</div>
+                  <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Week of ${weekLabel}</div>
+                  <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">${org.name} — Strategic Execution Summary</div>
+                </div>
+                <div style="padding:32px 36px;">
+                  ${statusBadge}
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;">
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${triggerCount}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Triggers Fired</div>
+                    </div>
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${activations}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Playbooks Activated</div>
+                    </div>
+                    <div style="text-align:center;padding:16px;background:#f8f7f4;border-radius:8px;border:1px solid #e8e4dc;">
+                      <div style="font-size:28px;font-weight:700;color:#0A0F2E;">${taskAcks}</div>
+                      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Tasks Acknowledged</div>
+                    </div>
+                  </div>
+                  <div style="margin-bottom:28px;">
+                    <div style="font-size:11px;font-weight:700;color:#0A0F2E;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Trigger Log</div>
+                    <table style="width:100%;border-collapse:collapse;">
+                      <tr style="border-bottom:2px solid #0A0F2E;">
+                        <th style="padding:8px 0;text-align:left;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Trigger</th>
+                        <th style="padding:8px 0;text-align:left;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domain</th>
+                        <th style="padding:8px 0;text-align:right;font-size:10px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th>
+                      </tr>
+                      ${detectionRows}
+                    </table>
+                  </div>
+                  <div style="text-align:center;margin-bottom:12px;">
+                    <a href="${platformUrl}/mission-control" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">View Mission Control →</a>
+                  </div>
+                  <div style="text-align:center;">
+                    <a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Explore Playbook Library →</a>
+                  </div>
+                </div>
+                <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+                  <div style="color:#999;font-size:11px;text-align:center;">Execution OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
+                </div>
+              </div>
+            </div>`;
+
+          const { Resend } = await import('resend');
+          const resend = new Resend(apiKey);
+          await resend.emails.send({
+            from: 'Execution OS <pilot@vaughnmartin.com>',
+            replyTo: 'pilot@vaughnmartin.com',
+            to: emails,
+            subject: triggerCount > 0
+              ? `📊 Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? 's' : ''} Detected — ${org.name}`
+              : `📊 Weekly Digest: Monitoring Active, Market Quiet — ${org.name}`,
+            html,
+          });
+          console.log(`📧 [Weekly Digest] Sent for org ${org.name} → ${emails.join(', ')}`);
+        } catch (orgErr: any) {
+          console.error(`[Weekly Digest] Error for org ${org.id}:`, orgErr.message);
+        }
+      }
+    } catch (err: any) {
+      console.error('[Weekly Digest] Failed:', err.message);
+    }
+  }
+
+  // Schedule weekly digest: runs every Monday at startup + 7-day rolling interval
+  function scheduleWeeklyDigest() {
+    const now = new Date();
+    const nextMonday = new Date(now);
+    nextMonday.setDate(now.getDate() + ((8 - now.getDay()) % 7 || 7));
+    nextMonday.setHours(8, 0, 0, 0);
+    const msUntilMonday = nextMonday.getTime() - now.getTime();
+    setTimeout(() => {
+      sendWeeklyPilotDigest();
+      setInterval(sendWeeklyPilotDigest, 7 * 24 * 60 * 60 * 1000);
+    }, msUntilMonday);
+    console.log(`✅ Weekly pilot digest scheduled — next send: ${nextMonday.toISOString()}`);
+  }
+  scheduleWeeklyDigest();
 
   return httpServer;
 }
