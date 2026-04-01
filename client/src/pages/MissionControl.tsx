@@ -421,6 +421,16 @@ export default function MissionControl() {
             </div>
           </div>
 
+          {/* ── EXECUTION PULSE ROW (compact) ────────────────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
+            <div>
+              <ExecutionClock compact />
+            </div>
+            <div>
+              <ExecutionDividend compact />
+            </div>
+          </div>
+
           {/* ── NOC MAIN GRID ───────────────────────────────────────────────── */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 390px', gap: 20, alignItems: 'start', marginBottom: 24 }}>
 

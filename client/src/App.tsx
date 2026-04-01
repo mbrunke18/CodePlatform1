@@ -269,18 +269,39 @@ function PageLoader() {
   );
 }
 
+const WELCOME_BRIEF_KEY = 'vm_welcome_brief_seen';
+const WELCOME_BRIEF_BYPASS = ['/welcome-brief', '/onboarding', '/request-access', '/auth', '/login', '/magic-login'];
+
 function OnboardingGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, needsOnboarding, isLoading } = useAuth();
   const [location, setLocation] = useLocation();
   const hasRedirected = useRef(false);
 
   useEffect(() => {
-    if (!isLoading && isAuthenticated && needsOnboarding && location !== "/onboarding" && !hasRedirected.current) {
+    if (isLoading) return;
+
+    // 1. Onboarding takes priority
+    if (isAuthenticated && needsOnboarding && location !== "/onboarding" && !hasRedirected.current) {
       hasRedirected.current = true;
       setLocation("/onboarding");
+      return;
     }
     if (location === "/onboarding") {
       hasRedirected.current = true;
+      return;
+    }
+
+    // 2. Welcome Brief gate — show once to authenticated users landing on the platform
+    if (
+      isAuthenticated &&
+      !needsOnboarding &&
+      !hasRedirected.current &&
+      !localStorage.getItem(WELCOME_BRIEF_KEY) &&
+      !WELCOME_BRIEF_BYPASS.some(p => location.startsWith(p)) &&
+      (location === '/mission-control' || location === '/command-tower' || location === '/dashboard' || location === '/')
+    ) {
+      hasRedirected.current = true;
+      setLocation("/welcome-brief");
     }
   }, [isAuthenticated, needsOnboarding, isLoading, location, setLocation]);
 
