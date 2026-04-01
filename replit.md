@@ -57,6 +57,13 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Dual Evaluation Engine:** `SignalEvaluationService` runs configured + default engines in parallel (`'both'` mode, switchable per org). Each detection entry tracks its source engine (`'configured' | 'default'`) for accurate audit logging.
 - **Magic Link Authentication:** `/request-access` form for branded magic link login, creating tracked user identities.
 - **Growth Segment:** Permanent product track targeting SMBs and PE-backed startups with three tiers: Ready, Responsive, Orchestrated, based on deployment scope (not discounted products or per-seat pricing).
+- **Unsubscribe System:** Public `GET /api/unsubscribe?t=<base64url>` endpoint with branded confirmation page. All 4 email types send individually per-recipient with personalized unsubscribe tokens. `isActive = false` removes from all pipelines.
+- **Execution Clock:** `execution_timelines` DB table tracks 12-minute clock milestones per trigger event (detectedAt, notificationSentAt, playbookActivatedAt, firstTaskAcknowledgedAt, executionCompletedAt, totalMinutes, speedMultiplier). `ExecutionClock` component shown on Mission Control with expand/collapse per event and milestone advance buttons.
+- **Execution Dividend:** Real-time ROI counter (`ExecutionDividend` component on Mission Control). Formula: triggerCount × hours saved vs. 30-day baseline × $500/hr. API at `GET /api/org/execution-dividend`.
+- **Board Readiness Snapshot:** Print-ready executive report at `/board-readiness`. Domain coverage ring, response time stats, Execution Dividend, readiness score (0-100), recent detections table. Print/PDF export via `window.print()`. Sidebar under ADVANCE.
+- **Day One Welcome Brief:** Full-screen first-login experience at `/welcome-brief`. localStorage gate (shown once). Shows triggers armed, signals scanned 72h, historical detections, "what you would have seen" panel.
+- **Live Signal Activity Feed:** `signal_activity_log` DB table buffers scan events (scanning, threshold_not_met, trigger_fired). `LiveSignalFeed` component on Command Tower shows real-time evaluation work. `SignalEvaluationService` logs one "scanning" entry per batch + up to 2 "threshold_not_met" entries for partial matches + "trigger_fired" on detection.
+- **5 New APIs:** `GET /api/org/execution-timelines`, `PATCH /api/org/execution-timelines/:id/advance`, `GET /api/org/execution-dividend`, `GET /api/org/board-readiness`, `GET /api/org/welcome-brief`, `GET /api/signal-activity-log`.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o

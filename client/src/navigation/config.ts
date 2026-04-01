@@ -154,6 +154,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Dry-run scenarios before activation — Survive vs. Thrive'
         },
         {
+          id: 'execution-clock',
+          label: 'Execution Clock',
+          path: '/mission-control#execution-clock',
+          icon: '⏱️',
+          description: 'Live 12-minute execution clock — milestone tracker per trigger event'
+        },
+        {
           id: 'activation',
           label: 'Playbook Activation',
           path: '/execute/activation',
@@ -231,6 +238,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/roi-dashboard',
           icon: '💰',
           description: 'Board-ready value preserved metrics & response time ROI'
+        },
+        {
+          id: 'board-readiness',
+          label: 'Board Readiness Snapshot',
+          path: '/board-readiness',
+          icon: '📋',
+          description: 'Print-ready executive report: domain coverage, response times, Execution Dividend'
         },
         {
           id: 'metrics',

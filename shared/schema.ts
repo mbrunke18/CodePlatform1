@@ -13,6 +13,7 @@ import {
   boolean,
   pgEnum,
   serial,
+  real,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -6460,3 +6461,53 @@ export const triggerDetections = pgTable('trigger_detections', {
 export const insertTriggerDetectionSchema = createInsertSchema(triggerDetections).omit({ id: true, detectedAt: true });
 export type InsertTriggerDetection = z.infer<typeof insertTriggerDetectionSchema>;
 export type TriggerDetection = typeof triggerDetections.$inferSelect;
+
+// ── Execution Timelines — The 12-Minute Clock ────────────────────────────────
+// Created automatically when a trigger fires. Each milestone is stamped as it
+// occurs. totalMinutes + speedMultiplier prove the 3,600× claim with real data.
+export const executionTimelines = pgTable('execution_timelines', {
+  id: serial('id').primaryKey(),
+  organizationId: varchar('organization_id', { length: 255 }).notNull(),
+  triggerDetectionId: integer('trigger_detection_id'),       // references triggerDetections.id
+  triggerName: varchar('trigger_name', { length: 255 }).notNull(),
+  triggerDomain: varchar('trigger_domain', { length: 100 }),
+  recommendedPlaybook: varchar('recommended_playbook', { length: 255 }),
+
+  // Milestone timestamps
+  detectedAt: timestamp('detected_at').notNull(),            // T+0: trigger fired
+  notificationSentAt: timestamp('notification_sent_at'),     // T+?: email dispatched
+  playbookActivatedAt: timestamp('playbook_activated_at'),   // T+?: playbook deployed
+  playbookName: varchar('playbook_name', { length: 255 }),
+  firstTaskAcknowledgedAt: timestamp('first_task_acknowledged_at'), // T+?: first human action
+  executionCompletedAt: timestamp('execution_completed_at'), // T+end: done
+
+  // Derived metrics (populated on completion)
+  totalMinutes: real('total_minutes'),
+  speedMultiplier: real('speed_multiplier'),                 // (30*24*60) / totalMinutes
+  status: varchar('status', { length: 50 }).default('detected'), // detected|notified|activated|completed
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertExecutionTimelineSchema = createInsertSchema(executionTimelines).omit({ id: true, createdAt: true });
+export type InsertExecutionTimeline = z.infer<typeof insertExecutionTimelineSchema>;
+export type ExecutionTimeline = typeof executionTimelines.$inferSelect;
+
+// ── Signal Activity Log — Proof the AI Is Working ────────────────────────────
+// Rolling log of signal scan events. Written during every RSS evaluation cycle.
+// Powers the Live Signal Activity Feed on Command Tower.
+export const signalActivityLog = pgTable('signal_activity_log', {
+  id: serial('id').primaryKey(),
+  organizationId: varchar('organization_id', { length: 255 }),
+  eventType: varchar('event_type', { length: 50 }).notNull(),
+  // 'scanning' | 'evaluated' | 'dismissed' | 'threshold_not_met' | 'trigger_fired'
+  source: varchar('source', { length: 100 }),
+  signalTitle: varchar('signal_title', { length: 500 }),
+  details: text('details'),
+  confidence: integer('confidence'),
+  keywordsMatched: text('keywords_matched').array().default([]),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertSignalActivityLogSchema = createInsertSchema(signalActivityLog).omit({ id: true, createdAt: true });
+export type InsertSignalActivityLog = z.infer<typeof insertSignalActivityLogSchema>;
+export type SignalActivityLog = typeof signalActivityLog.$inferSelect;

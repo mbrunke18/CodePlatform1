@@ -7,6 +7,8 @@ import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
 import PulseMap from '@/components/mission/PulseMap';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
+import { ExecutionClock } from '@/components/ExecutionClock';
+import { ExecutionDividend } from '@/components/ExecutionDividend';
 import {
   Radio, Shield, AlertTriangle, Zap, Clock, Activity, Target,
   TrendingUp, ArrowRight, CheckCircle2, Circle, RefreshCw,
@@ -593,6 +595,16 @@ export default function MissionControl() {
             </div>
           )}
 
+          {/* ── EXECUTION CLOCK + DIVIDEND ──────────────────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+            <div>
+              <ExecutionClock />
+            </div>
+            <div>
+              <ExecutionDividend />
+            </div>
+          </div>
+
           {/* ── PLATFORM INTEL STRIP ────────────────────────────────────────── */}
           <div style={{ marginBottom: 32, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -604,6 +616,7 @@ export default function MissionControl() {
                 { label: 'Playbook Library', href: '/playbooks', gold: false },
                 { label: 'Trigger Intelligence', href: '/triggers-management', gold: false },
                 { label: 'Signal Intelligence', href: '/signal-intelligence', gold: false },
+                { label: 'Board Readiness', href: '/board-readiness', gold: true },
                 { label: 'Execution History', href: '/execution-history', gold: false },
                 { label: 'Settings', href: '/settings', gold: false },
               ].map(({ label, href, gold }) => (

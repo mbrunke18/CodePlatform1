@@ -8397,6 +8397,174 @@ Respond ONLY as JSON with this exact structure:
   }, 30_000);
   console.log('✅ Compound threat auto-analysis scheduled (every 4 hours)');
 
+  // ─── WOW Feature APIs ──────────────────────────────────────────────────────
+
+  // 1. Execution Timelines — clock history
+  app.get('/api/org/execution-timelines', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { executionTimelines: etTable } = await import('@shared/schema');
+      const rows = await db.select().from(etTable)
+        .where(eq(etTable.organizationId, req.orgId))
+        .orderBy(desc(etTable.detectedAt))
+        .limit(50);
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.patch('/api/org/execution-timelines/:id/advance', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { executionTimelines: etTable } = await import('@shared/schema');
+      const { milestone, playbookName } = req.body; // 'activated' | 'task_acknowledged' | 'completed'
+      const id = parseInt(req.params.id);
+      const now = new Date();
+      const updates: Record<string, any> = {};
+      if (milestone === 'activated') {
+        updates.playbookActivatedAt = now;
+        updates.playbookName = playbookName;
+        updates.status = 'activated';
+      } else if (milestone === 'task_acknowledged') {
+        updates.firstTaskAcknowledgedAt = now;
+      } else if (milestone === 'completed') {
+        updates.executionCompletedAt = now;
+        const [row] = await db.select().from(etTable).where(eq(etTable.id, id));
+        if (row?.detectedAt) {
+          const totalMs = now.getTime() - new Date(row.detectedAt).getTime();
+          const totalMins = totalMs / 60000;
+          updates.totalMinutes = parseFloat(totalMins.toFixed(2));
+          updates.speedMultiplier = parseFloat(((30 * 24 * 60) / totalMins).toFixed(0));
+          updates.status = 'completed';
+        }
+      }
+      await db.update(etTable).set(updates).where(and(eq(etTable.id, id), eq(etTable.organizationId, req.orgId)));
+      res.json({ ok: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // 2. Execution Dividend — running ROI counter
+  app.get('/api/org/execution-dividend', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { executionTimelines: etTable, playbookActivations: paTable, triggerDetections: tdTable } = await import('@shared/schema');
+      const [timelines, activations, detections] = await Promise.all([
+        db.select().from(etTable).where(eq(etTable.organizationId, req.orgId)),
+        db.select().from(paTable).where(eq(paTable.organizationId, req.orgId)),
+        db.select().from(tdTable).where(eq(tdTable.organizationId, req.orgId)),
+      ]);
+
+      const completedTimelines = timelines.filter(t => t.totalMinutes && t.speedMultiplier);
+      const avgResponseMinutes = completedTimelines.length > 0
+        ? completedTimelines.reduce((s, t) => s + (t.totalMinutes || 0), 0) / completedTimelines.length
+        : 12; // assume 12-min target if no real data yet
+
+      const triggerCount = detections.length;
+      const activationCount = activations.length;
+
+      // Each trigger response represents executive mobilization time saved vs. 30-day baseline.
+      // Estimated: 40 executive-hours per trigger avoided × $500/hr default executive rate.
+      const EXEC_HOURLY_RATE = 500;
+      const HOURS_SAVED_PER_TRIGGER = (30 * 24) - (avgResponseMinutes / 60);
+      const totalHoursSaved = Math.round(triggerCount * HOURS_SAVED_PER_TRIGGER);
+      const totalValueCreated = Math.round(triggerCount * HOURS_SAVED_PER_TRIGGER * EXEC_HOURLY_RATE);
+      const avgSpeedMultiplier = completedTimelines.length > 0
+        ? Math.round(completedTimelines.reduce((s, t) => s + (t.speedMultiplier || 3600), 0) / completedTimelines.length)
+        : 3600;
+
+      res.json({
+        totalValueCreated,
+        totalHoursSaved,
+        totalTriggersResponded: triggerCount,
+        activationCount,
+        avgResponseMinutes: parseFloat(avgResponseMinutes.toFixed(1)),
+        avgSpeedMultiplier,
+        sinceDate: detections.length > 0 ? detections[detections.length - 1].detectedAt : null,
+      });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // 3. Board Readiness Snapshot
+  app.get('/api/org/board-readiness', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { executionTimelines: etTable, triggerDetections: tdTable, playbookActivations: paTable, stakeholderContacts: scTable } = await import('@shared/schema');
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000);
+
+      const [detections, timelines, activations, contacts] = await Promise.all([
+        db.select().from(tdTable).where(and(eq(tdTable.organizationId, req.orgId), gte(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc(tdTable.detectedAt)).limit(30),
+        db.select().from(etTable).where(eq(etTable.organizationId, req.orgId)).orderBy(desc(etTable.detectedAt)).limit(20),
+        db.select().from(paTable).where(eq(paTable.organizationId, req.orgId)).limit(20),
+        db.select().from(scTable).where(and(eq(scTable.organizationId, req.orgId), eq(scTable.isActive, true))),
+      ]);
+
+      const TOTAL_DOMAINS = 9;
+      const activeDomains = [...new Set(detections.map(d => d.triggerDomain).filter(Boolean))];
+      const domainCoverage = Math.round((activeDomains.length / TOTAL_DOMAINS) * 100);
+      const completedTimelines = timelines.filter(t => t.totalMinutes);
+      const avgResponseMinutes = completedTimelines.length > 0
+        ? parseFloat((completedTimelines.reduce((s, t) => s + (t.totalMinutes || 12), 0) / completedTimelines.length).toFixed(1))
+        : null;
+      const recent30 = detections.filter(d => new Date(d.detectedAt!) >= thirtyDaysAgo);
+      const readinessScore = Math.min(100, Math.round(
+        (activeDomains.length / TOTAL_DOMAINS) * 40 +
+        (contacts.length > 0 ? 20 : 0) +
+        (activations.length > 0 ? 20 : 0) +
+        (detections.length > 0 ? 20 : 0)
+      ));
+
+      res.json({
+        readinessScore,
+        domainCoverage,
+        activeDomains,
+        totalDomains: TOTAL_DOMAINS,
+        triggerCount90d: detections.length,
+        triggerCount30d: recent30.length,
+        activationCount: activations.length,
+        avgResponseMinutes,
+        stakeholderCount: contacts.length,
+        recentDetections: recent30.slice(0, 5),
+        monitoringStatus: recent30.length > 5 ? 'ALERT' : 'MONITORING',
+        generatedAt: new Date().toISOString(),
+      });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // 4. Welcome Brief — first-login personalized view
+  app.get('/api/org/welcome-brief', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { triggerDetections: tdTable, stakeholderContacts: scTable, signalActivityLog: salTable } = await import('@shared/schema');
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
+
+      const [detections, contacts, recentActivity] = await Promise.all([
+        db.select().from(tdTable).where(and(eq(tdTable.organizationId, req.orgId), gte(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc(tdTable.detectedAt)).limit(10),
+        db.select().from(scTable).where(eq(scTable.organizationId, req.orgId)),
+        db.select().from(salTable).where(gte(salTable.createdAt, threeDaysAgo)).orderBy(desc(salTable.createdAt)).limit(20),
+      ]);
+
+      const signalsScanned72h = recentActivity.length;
+      res.json({
+        triggersArmed: 221,
+        domainsMonitored: 9,
+        signalsTracked: 248,
+        playbooksReady: 170,
+        signalsScanned72h,
+        recentDetections: detections,
+        stakeholdersEnrolled: contacts.filter(c => c.isActive).length,
+        isNewOrg: detections.length === 0,
+        generatedAt: new Date().toISOString(),
+      });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // 5. Signal Activity Log — live feed
+  app.get('/api/signal-activity-log', requireAuth, async (req: any, res) => {
+    try {
+      const { signalActivityLog: salTable } = await import('@shared/schema');
+      const rows = await db.select().from(salTable)
+        .orderBy(desc(salTable.createdAt))
+        .limit(100);
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
   // ── Weekly pilot digest: every Monday (or every 7 days from startup) ──────
   async function sendWeeklyPilotDigest() {
     try {

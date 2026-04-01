@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { updatePageMetadata } from '@/lib/seo';
+import { LiveSignalFeed } from '@/components/LiveSignalFeed';
 import {
   Radio,
   Shield,
@@ -812,6 +813,11 @@ export default function CommandTower() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* ── LIVE SIGNAL ACTIVITY FEED ────────────────────────────────────── */}
+        <div style={{ marginTop: 24 }}>
+          <LiveSignalFeed dark={true} maxRows={25} />
         </div>
 
         {/* ── DRILL-DOWN ACCESS STRIP ──────────────────────────────────────── */}
