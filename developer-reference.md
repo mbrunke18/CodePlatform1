@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 29, 2026 (rev 10) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: March 31, 2026 (rev 11) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -515,7 +515,7 @@ toast({ title: 'Error', description: 'Something went wrong.', variant: 'destruct
 
 - **170 active playbooks** in 9 domains (seeded to DB on startup)
 - **4 compound playbooks** (IDs 181–184): cross-domain crisis scenarios
-- **3 free sample playbooks** (visible to unauthenticated users): "Aggressive Pricing Disruption", "Compound: Geopolitical + Supply Chain Disruption", "AI Competitive Disruption"
+- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full content with an upsell CTA. All 167 others display a locked state routing to `/pilot-program`. Authenticated users see all 170 with Deploy/Preview actions. The public/locked logic lives in `PlaybookDetail.tsx` and `PlaybookLibraryV2.tsx` — never change the free sample set without founder approval.
 
 ### Domain Names (exact DB strings — use these for filtering)
 ```
@@ -1190,4 +1190,63 @@ if (import.meta.env.VITE_SENTRY_DSN) {
 2. Add `SENTRY_DSN` to Replit Secrets (server)
 3. Add `VITE_SENTRY_DSN` to Replit Secrets (frontend — must be prefixed `VITE_` to reach the browser)
 4. Redeploy — Sentry will begin capturing errors automatically
+
+---
+
+## 30. Live Signal Detection — SignalEvaluationService Internals (March 2026)
+
+The live signal pipeline is one of the most operationally sensitive parts of the system. Email alerts to pilot contacts are generated here. Any threshold change directly affects whether real alerts fire.
+
+### Service Files
+| File | Responsibility |
+|---|---|
+| `server/services/LiveSignalIngestionService.ts` | Fetches RSS feeds, classifies signals, calls evaluator |
+| `server/services/SignalEvaluationService.ts` | Scores signals against 16 trigger patterns, creates detections |
+
+### RSS Feed Sources (8 feeds, polled every 15 minutes)
+```
+NY Times Business     → rss.nytimes.com/services/xml/rss/nyt/Business.xml
+BBC Business          → feeds.bbci.co.uk/news/business/rss.xml
+SEC EDGAR 8-K         → sec.gov/cgi-bin/browse-edgar?type=8-K&output=atom
+CNBC Business         → search.cnbc.com/rs/search/...
+MarketWatch           → feeds.marketwatch.com/marketwatch/topstories/
+NPR Business          → feeds.npr.org/1006/rss.xml
+Google News Finance   → news.google.com/rss/topics/...
+Entrepreneur          → feeds.feedburner.com/entrepreneur/latest
+```
+
+Signal description passed to the evaluator:
+```ts
+`${item.title}${item.description ? ` — ${item.description.substring(0, 200)}` : ''}`
+```
+
+### Evaluation Rules (CRITICAL — do not change without founder sign-off)
+```ts
+CONFIDENCE_THRESHOLD = 72   // Minimum confidence % for a detection to be created and emailed
+MIN_KEYWORD_MATCHES = 3      // Signal must match 3+ keywords from a pattern before scoring
+```
+- **Why 3 keywords:** Ensures the article is substantively about the trigger domain, not tangentially mentioning a term. A single keyword hit should never trigger a playbook-level alert.
+- **Why 72%:** Documented threshold matching system-wide canonical value. Raising it (e.g. to 78%) caused silent detection failure — signals that would have fired at 82-84% fell below the gap and never emailed. Do NOT raise this value.
+- **Deduplication:** Once a trigger name fires, it will not fire again for 4 hours (prevents alert fatigue from repeated similar articles).
+
+### Trigger Pattern Set (16 patterns in `evaluateSignal`)
+Each pattern has a name, domain, confidence base, and keyword list. Examples:
+- `"M&A Activity Detected"` — Market Dynamics — keywords: merger, acquisition, takeover, buyout, deal, consolidation, …
+- `"Supply Chain Disruption"` — Supply Chain & Operations — keywords: supply chain, shortage, logistics, disruption, …
+- `"Regulatory Enforcement Action"` — Regulatory & Compliance — keywords: SEC, FTC, DOJ, enforcement, fine, penalty, …
+- (full list in `server/services/SignalEvaluationService.ts`)
+
+### Auto-Start (routes.ts ~line 6915)
+```ts
+liveSignalIngestionService.start('system', 15);  // 'system' org, 15-min interval
+```
+`'system'` is a non-UUID org ID. `getOrgEvaluationMode()` returns `'default'` for any non-UUID org ID, so the auto-start always uses the default 16-pattern engine regardless of configured engine settings.
+
+### What "notified" Status Means
+Detections stored in `trigger_detections` with `status: 'notified'` have had their email sent. The email is sent via Resend to all stakeholder contacts associated with the org (5 contacts for the system org, seeded as `pilot@vaughnmartin.com`).
+
+### Historical Behavior (March 30–31, 2026)
+- March 30: 8 detections fired (74–90% confidence) — heavy news day (tariffs, M&A, regulatory, geopolitical)
+- March 31: 0 detections — quieter news day; signals didn't reach 3-keyword density in any pattern
+- This is **correct behavior** — the system is news-driven, not a synthetic heartbeat
 
