@@ -329,17 +329,21 @@ async function sendDetectionEmail(
           </table>
           ${(detection.dataPoints && detection.dataPoints.length > 0) ? `
           <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
-            <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">
-              Evidence Trail — Data Points That Fired This Trigger
-              <span style="margin-left:8px;background:#2B8A6E;color:#fff;font-size:9px;padding:2px 6px;border-radius:3px;">${detection.conditionsMet ?? detection.dataPoints.length}/${detection.totalConditions ?? detection.dataPoints.length} CONDITIONS MET</span>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">
+                Why This Trigger Fired
+              </div>
+              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} KEYWORDS MATCHED</span>
             </div>
-            <div style="display:flex;flex-direction:column;gap:6px;">
-              ${detection.dataPoints.map((dp, i) => `
-                <div style="display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:#fff;border-radius:4px;border-left:3px solid #2B8A6E;">
-                  <span style="color:#2B8A6E;font-weight:700;font-size:11px;margin-top:1px;">${i + 1}</span>
-                  <span style="color:#0A0F2E;font-size:12px;line-height:1.4;">${dp}</span>
-                </div>
-              `).join('')}
+            <div style="margin-bottom:14px;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${detection.matchedKeywords.map(kw => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join('')}
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">${detection.triggerName} — ${detection.triggerDomain} domain · ${detection.confidenceScore}% confidence</div>
             </div>
           </div>` : ''}
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">

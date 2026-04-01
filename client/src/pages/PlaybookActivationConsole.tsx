@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -322,6 +323,7 @@ function BriefLoadingState() {
 
 export default function PlaybookActivationConsole() {
   const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
+  const { user } = useAuth();
   const { toast } = useToast();
   const [activationConfirmed, setActivationConfirmed] = useState(false);
   const [executionStartTime, setExecutionStartTime] = useState<Date | null>(null);
@@ -342,6 +344,21 @@ export default function PlaybookActivationConsole() {
   const [ackName, setAckName] = useState("Executive");
   const [ackRole, setAckRole] = useState("CEO");
   const [ackActionType, setAckActionType] = useState<'complete' | 'escalate' | 'delegate'>('complete');
+
+  // Pre-fill acknowledgment form from authenticated user — removes manual entry friction
+  useEffect(() => {
+    if (user?.firstName) {
+      setAckName(`${user.firstName}${user.lastName ? ' ' + user.lastName : ''}`);
+    }
+    if (user?.role) {
+      const roleToTitle: Record<string, string> = {
+        admin: 'Chief Strategy Officer',
+        executive: 'CEO',
+        strategist: 'Chief Strategy Officer',
+      };
+      setAckRole(roleToTitle[user.role] || 'CEO');
+    }
+  }, [user]);
 
   const submitAcknowledgment = useCallback(async (taskId: string, taskLabel: string, taskIndex: number) => {
     const at = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });

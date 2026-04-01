@@ -492,8 +492,8 @@ export default function StandardNav() {
       },
     ];
     const deeperDemos = [
+      { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Strategy Simulator', sub: 'The hardest to replicate. AI dry-runs any scenario and scores Survive vs. Thrive before a trigger fires.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
-      { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Simulator', sub: 'Dry-run any scenario before it\'s real. AI scores Survive vs. Thrive.' },
       { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },
       { path: '/executive-brief', icon: FileText, label: 'One-Page Board Brief', sub: 'The full thesis, 3,600× metric, and ROI case — shareable in 60 seconds' },
     ];

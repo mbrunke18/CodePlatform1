@@ -1782,15 +1782,15 @@ function ShadowSimulatorSection() {
         <div style={{ textAlign: "center", marginBottom: 56, opacity: animated ? 1 : 0, transition: "opacity 0.8s ease" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
             <div style={{ width: 28, height: 1, background: GOLD }} />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o · Proprietary AI Infrastructure</span>
             <div style={{ width: 28, height: 1, background: GOLD }} />
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
-            Test Your Organization Against<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>Any Threat — Right Now</em>
+            Rehearse the Decision<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>Before the Trigger Fires</em>
           </h2>
-          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto" }}>
-            Describe a real scenario your company is facing. Our AI scores your Survive and Thrive probability in seconds — and maps the exact playbooks you'd need.
+          <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 600, margin: "0 auto" }}>
+            The hardest capability to replicate. Describe any threat — a competitor acquisition, activist investor, regulatory inquiry — and AI scores your Survive and Thrive probability in seconds, then maps the exact playbooks you'd deploy.
           </p>
         </div>
 
