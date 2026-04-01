@@ -425,7 +425,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
             </Scene>
           )}
 
-          {/* Scene 2: 72 Hours */}
+          {/* Scene 2: 30 Days — The Mobilization Problem */}
           {currentScene === 2 && (
             <Scene key="scene-2">
               <div className="text-center max-w-4xl">
@@ -435,7 +435,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="text-lg text-gray-800 mb-4"
                 >
-                  The industry average for coordinating a crisis response:
+                  Time for a Fortune 1000 to mobilize after a strategic trigger fires:
                 </motion.p>
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}
@@ -443,17 +443,25 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="mb-6"
                 >
-                  <span className="text-8xl md:text-[10rem] font-bold text-red-500">72</span>
-                  <span className="text-4xl md:text-6xl text-red-400 ml-4">HOURS</span>
+                  <span className="text-8xl md:text-[10rem] font-bold text-red-500">30</span>
+                  <span className="text-4xl md:text-6xl text-red-400 ml-4">DAYS</span>
                 </motion.div>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="text-sm text-gray-500 mb-4"
+                >
+                  Just to figure out who needs to be in the room — before execution even begins.
+                </motion.p>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 1.5 }}
+                  transition={{ duration: 0.5, delay: 1.7 }}
                   className="flex flex-wrap justify-center gap-4"
                 >
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Conference calls</span>
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Scrambling</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Stakeholder alignment</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Committee deliberation</span>
                   <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Waiting on decisions</span>
                 </motion.div>
               </div>

@@ -1,60 +1,101 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'wouter';
-import { useEffect, useState } from 'react';
-import { Shield, Zap, Eye, BookOpen, Users, ArrowRight, CheckCircle, Clock, TrendingUp } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Shield, Zap, Eye, BookOpen, Users, ArrowRight, CheckCircle, Clock, TrendingUp, Radio, AlertTriangle } from 'lucide-react';
 
 const WELCOME_SEEN_KEY = 'vm_welcome_brief_seen';
-
-export function useWelcomeBriefGate() {
-  const [shouldShow, setShouldShow] = useState(false);
-  useEffect(() => {
-    const seen = localStorage.getItem(WELCOME_SEEN_KEY);
-    if (!seen) setShouldShow(true);
-  }, []);
-  return shouldShow;
-}
+const NAVY = '#0A0F2E';
+const GOLD = '#C9A84C';
+const TEAL = '#2B8A6E';
 
 export function markWelcomeBriefSeen() {
   localStorage.setItem(WELCOME_SEEN_KEY, '1');
 }
 
-const NAVY = '#0A0F2E';
-const GOLD = '#C9A84C';
-const TEAL = '#2B8A6E';
-
-function CountUp({ target, duration = 1800, prefix = '', suffix = '' }: { target: number; duration?: number; prefix?: string; suffix?: string }) {
+function useCountUp(target: number, duration = 2000, delay = 0) {
   const [value, setValue] = useState(0);
   useEffect(() => {
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) { setValue(target); clearInterval(timer); }
-      else setValue(Math.floor(start));
-    }, 16);
-    return () => clearInterval(timer);
-  }, [target, duration]);
-  return <>{prefix}{value.toLocaleString()}{suffix}</>;
+    const t = setTimeout(() => {
+      const start = Date.now();
+      const tick = () => {
+        const elapsed = Date.now() - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setValue(Math.floor(eased * target));
+        if (progress < 1) requestAnimationFrame(tick);
+        else setValue(target);
+      };
+      requestAnimationFrame(tick);
+    }, delay);
+    return () => clearTimeout(t);
+  }, [target, duration, delay]);
+  return value;
 }
 
-function Milestone({ label, value, icon: Icon, color }: { label: string; value: string | number; icon: any; color: string }) {
+function AnimatedStat({ target, label, prefix = '', suffix = '', delay = 0, color = GOLD }: {
+  target: number; label: string; prefix?: string; suffix?: string; delay?: number; color?: string;
+}) {
+  const value = useCountUp(target, 1800, delay);
   return (
-    <div style={{ textAlign: 'center', padding: '20px 16px', background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, borderTop: `3px solid ${color}` }}>
-      <div style={{ width: 40, height: 40, borderRadius: '50%', background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
-        <Icon size={18} color={color} />
+    <div style={{ textAlign: 'center', padding: '24px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, borderTop: `2px solid ${color}` }}>
+      <div style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, color: '#fff', lineHeight: 1, letterSpacing: '-1px', fontVariantNumeric: 'tabular-nums' }}>
+        {prefix}{value.toLocaleString()}{suffix}
       </div>
-      <div style={{ fontSize: 28, fontWeight: 800, color: NAVY, letterSpacing: '-0.5px' }}>{value}</div>
-      <div style={{ fontSize: 11, color: '#666', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', marginTop: 4 }}>{label}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '1.2px', marginTop: 8 }}>{label}</div>
+    </div>
+  );
+}
+
+function PulseOrb({ color, size = 8 }: { color: string; size?: number }) {
+  return (
+    <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
+      <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color, opacity: 0.25, animation: 'pulse 2s ease-in-out infinite' }} />
+      <div style={{ position: 'absolute', inset: 2, borderRadius: '50%', background: color }} />
+      <style>{`@keyframes pulse { 0%,100%{transform:scale(1);opacity:0.25} 50%{transform:scale(2.2);opacity:0.1} }`}</style>
+    </div>
+  );
+}
+
+function DetectionRow({ det, i }: { det: any; i: number }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setVisible(true), 600 + i * 120); return () => clearTimeout(t); }, [i]);
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px',
+      background: 'rgba(255,255,255,0.04)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.08)',
+      transition: 'opacity 0.5s, transform 0.5s', opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(8px)',
+    }}>
+      <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${GOLD}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <AlertTriangle size={14} color={GOLD} />
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{det.triggerName}</div>
+        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>
+          {det.triggerDomain} · {new Date(det.detectedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flexShrink: 0 }}>
+        <div style={{ fontSize: 14, fontWeight: 800, color: TEAL }}>{det.confidenceScore}%</div>
+        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>confidence</div>
+      </div>
     </div>
   );
 }
 
 export default function WelcomeBrief() {
   const [, setLocation] = useLocation();
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [statsVisible, setStatsVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
 
-  const { data, isLoading } = useQuery<any>({
-    queryKey: ['/api/org/welcome-brief'],
-  });
+  const { data, isLoading } = useQuery<any>({ queryKey: ['/api/org/welcome-brief'] });
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setHeroVisible(true), 100);
+    const t2 = setTimeout(() => setStatsVisible(true), 500);
+    const t3 = setTimeout(() => setContentVisible(true), 900);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
 
   function enter() {
     markWelcomeBriefSeen();
@@ -63,121 +104,193 @@ export default function WelcomeBrief() {
 
   if (isLoading) {
     return (
-      <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontFamily: 'system-ui, sans-serif' }}>
-          <div style={{ fontSize: 11, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>Execution OS</div>
-          <div style={{ fontSize: 14 }}>Preparing your activation brief...</div>
+      <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}30`, borderTop: `2px solid ${GOLD}`, borderRadius: '50%', margin: '0 auto 20px', animation: 'spin 1s linear infinite' }} />
+          <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Execution OS</div>
+          <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)' }}>Preparing your activation brief...</div>
+          <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
         </div>
       </div>
     );
   }
 
-  const d = data || { triggersArmed: 221, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 170, signalsScanned72h: 0, recentDetections: [], stakeholdersEnrolled: 0, isNewOrg: true };
+  const d = data || {
+    triggersArmed: 221, domainsMonitored: 9, signalsTracked: 248, playbooksReady: 170,
+    signalsScanned72h: 0, recentDetections: [], stakeholdersEnrolled: 0, isNewOrg: true,
+  };
   const detections: any[] = d.recentDetections || [];
+  const hasDetections = detections.length > 0;
+  const activationDate = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY, fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif", overflowX: 'hidden' }}>
       {/* Gold grid overlay */}
-      <div style={{ position: 'fixed', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+      <div style={{ position: 'fixed', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none', zIndex: 0 }} />
 
-      <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto', padding: '60px 24px 80px' }}>
+      {/* Ambient orbs */}
+      <div style={{ position: 'fixed', top: -200, right: -200, width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'fixed', bottom: -300, left: -200, width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
 
-        {/* Logo + badge */}
-        <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ display: 'inline-block', background: `${GOLD}20`, border: `1px solid ${GOLD}40`, borderRadius: 4, padding: '5px 14px', fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 24 }}>
-            Execution OS · Activation Brief
+      <div style={{ position: 'relative', zIndex: 1, maxWidth: 880, margin: '0 auto', padding: '64px 24px 96px' }}>
+
+        {/* ── HEADER ── */}
+        <div style={{
+          textAlign: 'center', marginBottom: 56,
+          opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(-16px)',
+          transition: 'opacity 0.7s ease, transform 0.7s ease',
+        }}>
+          {/* Status badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: `${TEAL}18`, border: `1px solid ${TEAL}35`, borderRadius: 20, padding: '6px 16px', marginBottom: 28 }}>
+            <PulseOrb color={TEAL} size={8} />
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: TEAL }}>System Live · {activationDate}</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 800, color: '#fff', margin: '0 0 16px', lineHeight: 1.15 }}>
-            We Were Already<br />
-            <span style={{ color: GOLD }}>Working For You</span>
+
+          {/* Headline */}
+          <h1 style={{ fontSize: 'clamp(30px, 5.5vw, 52px)', fontWeight: 800, color: '#fff', margin: '0 0 20px', lineHeight: 1.1, letterSpacing: '-0.5px' }}>
+            Your Execution Infrastructure<br />
+            <span style={{ color: GOLD }}>Was Already Working</span>
           </h1>
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', maxWidth: 520, margin: '0 auto', lineHeight: 1.6 }}>
-            While you completed the request form, Execution OS was monitoring 248+ strategic signals across 9 domains. Here's your status report.
+
+          <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 560, margin: '0 auto 28px', lineHeight: 1.65 }}>
+            We didn't wait for you to log in. While your account was being configured, Execution OS was monitoring
+            248+ strategic signals across 9 domains. This is your activation brief.
           </p>
-        </div>
 
-        {/* Stat grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, marginBottom: 40 }}>
-          <Milestone label="Triggers Armed" value={<CountUp target={d.triggersArmed} />} icon={Zap} color={GOLD} />
-          <Milestone label="Domains Monitored" value={d.domainsMonitored} icon={Eye} color={TEAL} />
-          <Milestone label="Playbooks Ready" value={d.playbooksReady} icon={BookOpen} color={NAVY.replace(NAVY, '#4A6FA5')} />
-          <Milestone label="Signals Scanned (72h)" value={<CountUp target={Math.max(d.signalsScanned72h, 12)} />} icon={Shield} color="#8B5CF6" />
-          {d.stakeholdersEnrolled > 0 && <Milestone label="Stakeholders Enrolled" value={d.stakeholdersEnrolled} icon={Users} color={TEAL} />}
-        </div>
-
-        {/* What you would have seen */}
-        {detections.length > 0 ? (
-          <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, padding: 28, marginBottom: 32 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>
-              Strategic Triggers Detected in the Past 30 Days
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {detections.slice(0, 5).map((det: any, i: number) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '12px 16px', background: 'rgba(255,255,255,0.04)', borderRadius: 6, border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${GOLD}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Zap size={14} color={GOLD} />
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{det.triggerName}</div>
-                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{det.triggerDomain} · {new Date(det.detectedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>
-                  </div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: TEAL, flexShrink: 0 }}>{det.confidenceScore}%</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ marginTop: 14, fontSize: 12, color: 'rgba(255,255,255,0.35)', fontStyle: 'italic' }}>
-              Had you been enrolled earlier, you would have received real-time email alerts for each of these events.
+          {/* 3,600× callout */}
+          <div style={{ display: 'inline-block', background: `${GOLD}10`, border: `1px solid ${GOLD}30`, borderRadius: 8, padding: '14px 28px', maxWidth: 560 }}>
+            <div style={{ fontSize: 12, color: GOLD, fontWeight: 700, letterSpacing: '0.5px', marginBottom: 4 }}>3,600× EXECUTION HEAD START</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.55 }}>
+              When the first trigger fires, your organization activates in 12 minutes. Competitors spend 30 days just figuring out who needs to be in the room. That gap is structural — and it's already in your favor.
             </div>
           </div>
-        ) : (
-          <div style={{ background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8, padding: 24, marginBottom: 32, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-            <CheckCircle size={20} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 6 }}>Market has been quiet — monitoring is active</div>
-              <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
-                No triggers have fired for your organization's monitoring profile in the past 30 days. Your 221 triggers remain armed and scanning continuously. You'll receive real-time email alerts the moment anything relevant fires.
+        </div>
+
+        {/* ── STAT GRID ── */}
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, marginBottom: 48,
+          opacity: statsVisible ? 1 : 0, transform: statsVisible ? 'translateY(0)' : 'translateY(12px)',
+          transition: 'opacity 0.6s ease, transform 0.6s ease',
+        }}>
+          <AnimatedStat target={d.triggersArmed} label="Triggers Armed" color={GOLD} delay={0} />
+          <AnimatedStat target={d.domainsMonitored} label="Domains Monitored" color={TEAL} delay={120} />
+          <AnimatedStat target={d.playbooksReady} label="Playbooks Pre-Staged" color="#8B5CF6" delay={240} />
+          <AnimatedStat target={d.signalsTracked} label="Signals Tracked" suffix="+" color="#F59E0B" delay={360} />
+          {d.stakeholdersEnrolled > 0 && (
+            <AnimatedStat target={d.stakeholdersEnrolled} label="Stakeholders Enrolled" color={TEAL} delay={480} />
+          )}
+        </div>
+
+        {/* ── DETECTION PANEL ── */}
+        <div style={{
+          marginBottom: 40,
+          opacity: contentVisible ? 1 : 0, transform: contentVisible ? 'translateY(0)' : 'translateY(12px)',
+          transition: 'opacity 0.6s ease, transform 0.6s ease',
+        }}>
+          {hasDetections ? (
+            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.10)', borderRadius: 12, padding: '28px 28px 24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>
+                    Strategic Triggers Detected — Past 30 Days
+                  </div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
+                    These events fired while monitoring was active. You would have received real-time alerts for each.
+                  </div>
+                </div>
+                <div style={{ background: `${GOLD}18`, border: `1px solid ${GOLD}30`, borderRadius: 6, padding: '4px 12px', flexShrink: 0, marginLeft: 20 }}>
+                  <span style={{ fontSize: 16, fontWeight: 800, color: GOLD }}>{detections.length}</span>
+                  <span style={{ fontSize: 10, color: `${GOLD}80`, marginLeft: 4, textTransform: 'uppercase', letterSpacing: 1 }}>events</span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {detections.slice(0, 6).map((det: any, i: number) => (
+                  <DetectionRow key={i} det={det} i={i} />
+                ))}
+              </div>
+              <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.07)', fontSize: 12, color: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Radio size={12} color="rgba(255,255,255,0.3)" />
+                Continuous monitoring is active. Alerts will be sent to enrolled stakeholders in real time.
               </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div style={{ background: 'rgba(43,138,110,0.09)', border: '1px solid rgba(43,138,110,0.25)', borderRadius: 12, padding: '24px 24px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                <CheckCircle size={20} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 6 }}>Market has been quiet</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
+                    No triggers have fired in the past 30 days. Your {d.triggersArmed} armed triggers remain active and scanning every 15 minutes across all 9 strategic domains.
+                  </div>
+                </div>
+              </div>
+              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.22)', borderRadius: 12, padding: '24px 24px', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
+                <Radio size={20} color={GOLD} style={{ flexShrink: 0, marginTop: 2 }} />
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 6 }}>What's being watched</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
+                    248+ signals across market dynamics, regulatory change, geopolitical risk, technology disruption, supply chain, talent, ESG, financial performance, and operational risk.
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
 
-        {/* What happens next */}
-        <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.10)', borderRadius: 8, padding: 24, marginBottom: 40 }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 16 }}>What Happens From Here</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {/* ── WHAT HAPPENS NEXT ── */}
+        <div style={{
+          background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '28px 28px 24px', marginBottom: 48,
+          opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.2s',
+        }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 20 }}>Your Execution Infrastructure — Live Now</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
             {[
-              { icon: Shield, label: 'Continuous monitoring', desc: '248+ signals scanned every 15 minutes across 9 strategic domains', color: GOLD },
-              { icon: Zap, label: 'Real-time alerts', desc: 'Email notifications to your team the moment a trigger fires with ≥72% confidence', color: TEAL },
-              { icon: Clock, label: '12-minute execution', desc: 'Playbooks pre-staged and ready — response begins before your competitors know the trigger fired', color: '#8B5CF6' },
-              { icon: TrendingUp, label: 'Running proof', desc: 'Every response builds your Execution Dividend — a live record of value created and time saved', color: '#F59E0B' },
+              { icon: Shield, label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
+              { icon: Zap, label: 'Real-Time Alerts', desc: 'Email notifications to enrolled stakeholders within minutes of a trigger firing at ≥72% confidence.', color: TEAL },
+              { icon: Clock, label: '12-Minute Activation', desc: '170 playbooks are pre-staged. Response begins before competitors know the trigger fired.', color: '#8B5CF6' },
+              { icon: TrendingUp, label: 'Execution Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: '#F59E0B' },
             ].map(({ icon: Icon, label, desc, color }, i) => (
-              <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                <div style={{ width: 32, height: 32, borderRadius: '50%', background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <Icon size={14} color={color} />
+              <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 8, background: `${color}15`, border: `1px solid ${color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon size={16} color={color} />
                 </div>
                 <div>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{label}: </span>
-                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{desc}</span>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{label}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{desc}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div style={{ textAlign: 'center' }}>
+        {/* ── CTA ── */}
+        <div style={{
+          textAlign: 'center',
+          opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.3s',
+        }}>
           <button
             onClick={enter}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: GOLD, color: NAVY, border: 'none', borderRadius: 6, padding: '16px 40px', fontSize: 15, fontWeight: 800, cursor: 'pointer', letterSpacing: 0.3, transition: 'opacity 0.15s' }}
-            onMouseOver={e => (e.currentTarget.style.opacity = '0.9')}
-            onMouseOut={e => (e.currentTarget.style.opacity = '1')}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              background: GOLD, color: NAVY, border: 'none', borderRadius: 8,
+              padding: '18px 48px', fontSize: 16, fontWeight: 800, cursor: 'pointer',
+              letterSpacing: 0.3, boxShadow: `0 0 40px ${GOLD}25`,
+              transition: 'all 0.2s ease',
+            }}
+            onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 40px ${GOLD}40`; }}
+            onMouseOut={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 0 40px ${GOLD}25`; }}
           >
-            Enter Mission Control <ArrowRight size={18} />
+            Enter Mission Control
+            <ArrowRight size={20} />
           </button>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 14 }}>
-            This brief is shown once. You can review execution history anytime from Mission Control.
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 16 }}>
+            <Eye size={11} color="rgba(255,255,255,0.2)" />
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>
+              This brief is shown once. Full execution history is always available from Mission Control.
+            </span>
           </div>
         </div>
+
       </div>
     </div>
   );

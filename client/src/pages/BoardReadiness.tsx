@@ -176,7 +176,7 @@ export default function BoardReadiness() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 {[
                   { label: 'Hours Saved', value: (div.totalHoursSaved || 0).toLocaleString() },
-                  { label: 'Speed Multiplier', value: `${(div.avgSpeedMultiplier || 3600).toLocaleString()}×` },
+                  { label: 'Exec Head Start', value: `${(div.avgSpeedMultiplier || 3600).toLocaleString()}×` },
                   { label: 'Avg Response', value: `${div.avgResponseMinutes || 12}m` },
                   { label: 'Baseline Replaced', value: '30 days' },
                 ].map(({ label, value }) => (

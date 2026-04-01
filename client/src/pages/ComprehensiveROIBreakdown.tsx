@@ -240,7 +240,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
               <CardHeader>
                 <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Playbook Value Analysis</CardTitle>
                 <CardDescription>
-                  Financial impact and speed advantages across strategic playbooks
+                  Financial impact and execution head start across strategic playbooks
                 </CardDescription>
               </CardHeader>
               <CardContent>

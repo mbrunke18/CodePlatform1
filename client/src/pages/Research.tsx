@@ -89,19 +89,24 @@ export default function Research() {
               <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }} className="p-6 mb-4">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div className="text-center">
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>72 hrs</div>
-                    <p className="text-sm text-muted-foreground">Industry average response time</p>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>30 days</div>
+                    <p className="text-sm text-muted-foreground">Traditional mobilization baseline</p>
+                    <p className="text-xs text-muted-foreground mt-1">just to align stakeholders before execution begins</p>
                   </div>
-                  <ArrowRight className="h-8 w-8" style={{ color: NAVY }} />
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                    <ArrowRight className="h-8 w-8" style={{ color: NAVY }} />
+                    <span style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: 1, textTransform: 'uppercase' }}>3,600× Head Start</span>
+                  </div>
                   <div className="text-center">
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: TEAL, lineHeight: 1 }}>12 min</div>
-                    <p className="text-sm text-muted-foreground">Execution OS: live in 12 min</p>
+                    <p className="text-sm text-muted-foreground">Execution OS activation</p>
+                    <p className="text-xs text-muted-foreground mt-1">playbooks pre-staged before the trigger fires</p>
                   </div>
                 </div>
               </div>
               
               <p className="text-sm text-muted-foreground">
-                Source: McKinsey & Company — Crisis Response Framework
+                Source: McKinsey & Company — Crisis Response Framework · MGI "Skill Partnerships in the Age of AI" (Nov 2025): 77% of executives cite mobilization speed as their primary execution barrier
               </p>
             </div>
 

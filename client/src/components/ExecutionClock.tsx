@@ -143,7 +143,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                 {totalMins !== null ? (
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
                     <div style={{ fontSize: 20, fontWeight: 800, color: totalMins <= 12 ? TEAL : GOLD }}>{totalMins}m</div>
-                    {t.speedMultiplier && <div style={{ fontSize: 10, color: '#999' }}>{Math.round(t.speedMultiplier).toLocaleString()}× faster</div>}
+                    {t.speedMultiplier && <div style={{ fontSize: 10, color: '#999' }}>{Math.round(t.speedMultiplier).toLocaleString()}× Head Start</div>}
                   </div>
                 ) : (
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
