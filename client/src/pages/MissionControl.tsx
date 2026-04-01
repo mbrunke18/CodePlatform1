@@ -395,6 +395,22 @@ export default function MissionControl() {
             ))}
           </div>
 
+          {/* ── RESEARCH CONSENSUS INDICATOR ──────────────────────────────── */}
+          <div style={{ background: 'rgba(43,138,110,0.03)', border: '1px solid rgba(43,138,110,0.1)', borderRadius: 8, padding: '9px 18px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const }}>
+            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', flexShrink: 0 }}>RESEARCH CONSENSUS</span>
+            {[
+              { label: 'McKinsey EA 2025–26', note: '"Named the gap"' },
+              { label: 'MGI Nov 2025', note: '"Org change is the constraint"' },
+              { label: 'WEF × Accenture Mar 2026', note: '"Not the AI — the operating model"' },
+            ].map(({ label, note }, i) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                {i > 0 && <span style={{ color: 'rgba(255,255,255,0.1)', fontSize: 10 }}>·</span>}
+                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>{label}</span>
+                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.18)', fontStyle: 'italic' }}>{note}</span>
+              </div>
+            ))}
+          </div>
+
           {/* ── MCKINSEY MATURITY INDICATOR ─────────────────────────────────── */}
           <div style={{ background: 'rgba(201,168,76,0.04)', border: '1px solid rgba(201,168,76,0.14)', borderRadius: 10, padding: '14px 22px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' as const }}>
             <div style={{ flexShrink: 0 }}>

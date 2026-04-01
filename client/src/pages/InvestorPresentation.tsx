@@ -50,7 +50,7 @@ function InvestorPresentation() {
   const [, setLocation] = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const totalSlides = 17;
+  const totalSlides = 18;
 
   const goToNext = useCallback(() => {
     setCurrentSlide(prev => Math.min(prev + 1, totalSlides - 1));
@@ -229,7 +229,67 @@ function InvestorPresentation() {
             </div>
           </div>
         </div>
-        <div className="text-[#6B7280] text-xs">Sources: McKinsey &amp; Company — "The Future of Enterprise Architecture" 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI" November 2025</div>
+        <div className="text-[#6B7280] text-xs">Sources: McKinsey &amp; Company — Enterprise Architecture Synthesis 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI" November 2025 · World Economic Forum × Accenture — March 2026</div>
+      </div>
+    ),
+
+    () => (
+      <div className="flex flex-col items-center justify-center h-full px-4">
+        <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Research Consensus — March 2026</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2 text-center max-w-4xl">
+          Three Independent Institutions. One Conclusion.
+        </h2>
+        <p className="text-[#6B7280] text-sm mb-7 text-center max-w-2xl">McKinsey, the World Economic Forum, and Accenture — publishing independently — have converged on the same diagnosis: enterprises have the AI. They lack the operating model to use it.</p>
+        <div className="grid md:grid-cols-3 gap-5 max-w-5xl w-full mb-6">
+          {[
+            {
+              org: "McKinsey & Company",
+              report: "Enterprise Architecture Synthesis · 2025–2026",
+              quote: "\"Orchestration layer · coordination fabric · shared source of truth\" — the box at the center of every enterprise AI architecture, left unnamed.",
+              bridge: "Execution OS is the product that fills it.",
+              color: "border-[#C9A84C]/40 bg-[#C9A84C]/5",
+              dot: "bg-[#C9A84C]",
+            },
+            {
+              org: "McKinsey Global Institute",
+              report: "Skill Partnerships in the Age of AI · November 2025",
+              quote: "\"The CEO who delegates AI to IT will lose this decade to the one who does not.\" 90% of enterprises invested in AI. <40% see measurable returns.",
+              bridge: "221 triggers make the CEO the signal, not the bottleneck.",
+              color: "border-[#2B8A6E]/40 bg-[#2B8A6E]/5",
+              dot: "bg-[#2B8A6E]",
+            },
+            {
+              org: "World Economic Forum × Accenture",
+              report: "Organizational Transformation in the Age of AI · March 2026",
+              quote: "\"Those that do not risk falling behind — not because AI fails them, but because organizational change does.\"",
+              bridge: "Execution OS is the operating model layer AI requires.",
+              color: "border-[#0A0F2E]/20 bg-[#0A0F2E]/5",
+              dot: "bg-[#0A0F2E]",
+            },
+          ].map(({ org, report, quote, bridge, color, dot }) => (
+            <div key={org} className={`border ${color} rounded-xl p-5 flex flex-col gap-3`}>
+              <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full shrink-0 ${dot}`} />
+                <span className="text-[#0A0F2E] font-bold text-sm leading-tight">{org}</span>
+              </div>
+              <div className="text-[#6B7280] text-[10px] uppercase tracking-wider font-mono">{report}</div>
+              <p className="text-[#374151] text-sm italic leading-relaxed flex-1">{quote}</p>
+              <div className="border-t border-[#E8E4DC] pt-3">
+                <p className="text-[#2B8A6E] text-xs font-semibold leading-snug">→ {bridge}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-5 flex items-center gap-6">
+          <div className="flex-1">
+            <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">The Unified Thesis</div>
+            <div className="text-white font-semibold text-base leading-snug">The constraint is never the AI. It is always the operating model. Execution OS is the infrastructure that closes that gap.</div>
+          </div>
+          <div className="text-right shrink-0">
+            <div className="text-[#C9A84C] font-black text-xl">VAUGHNMARTIN</div>
+            <div className="text-white/40 text-xs">Execution OS · 3,600× Head Start</div>
+          </div>
+        </div>
       </div>
     ),
 

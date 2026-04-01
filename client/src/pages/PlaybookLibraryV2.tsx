@@ -447,6 +447,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 <p style={{ color: "#6B7280" }} className="text-base max-w-lg">
                   Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.
                 </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
+                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
+                  <span style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace' }}>
+                    Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, AI-Powered Strategic Planning
+                  </span>
+                </div>
               </div>
                   <div className="flex flex-wrap gap-2 max-w-sm">
                 {["All Domains", "Financial", "Competitive", "Regulatory", "Crisis", "M&A"].map((chip, i) => {

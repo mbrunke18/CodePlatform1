@@ -1580,10 +1580,59 @@ function McKinseyValidationSection() {
             </div>
           </div>
 
+          {/* WEF × Accenture — March 2026 */}
+          <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 32 }}>
+            {/* Header band */}
+            <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, display: "inline-block", flexShrink: 0 }} />
+              <span style={{ ...MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
+                World Economic Forum × Accenture · Organizational Transformation in the Age of AI · March 2026
+              </span>
+            </div>
+            <div style={{ padding: "28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
+              {/* Left: primary quote */}
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+                <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "20px 20px" }}>
+                  <p style={{ ...GEO, fontSize: 16, fontWeight: 600, color: IVORY, lineHeight: 1.6, marginBottom: 10, fontStyle: "italic" as const }}>
+                    "Those that do not risk falling behind — not because AI fails them, but because organizational change does."
+                  </p>
+                  <p style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.35)", letterSpacing: "0.04em" }}>
+                    World Economic Forum × Accenture — March 2026
+                  </p>
+                </div>
+                <blockquote style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16, margin: 0 }}>
+                  <p style={{ ...GEO, fontSize: 13, fontWeight: 600, color: IVORY, lineHeight: 1.55, marginBottom: 6, fontStyle: "italic" as const }}>
+                    "Not whether AI works — but how organizations must re-architect their workflows, operating models and decision rights."
+                  </p>
+                  <p style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.35)" }}>
+                    WEF · Core thesis · March 2026
+                  </p>
+                </blockquote>
+              </div>
+              {/* Right: Focus Area 4 + bridge */}
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>
+                <div style={{ ...MONO, fontSize: 10, color: GOLD, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 2 }}>WEF AI Transformation Framework</div>
+                {[
+                  { n: "Focus 1", label: "Real-time, individualized CX", active: false },
+                  { n: "Focus 2", label: "Efficient and resilient operations", active: false },
+                  { n: "Focus 3", label: "Accelerated R&D and breakthrough innovation", active: false },
+                  { n: "Focus 4", label: "Predictive, AI-powered strategic planning", active: true },
+                  { n: "Focus 5", label: "Data-driven talent & workforce planning", active: false },
+                ].map(({ n, label, active }) => (
+                  <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 6, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>
+                    <span style={{ ...MONO, fontSize: 9, color: active ? GOLD : "rgba(240,237,228,0.2)", fontWeight: 700, flexShrink: 0 }}>{n}</span>
+                    <span style={{ ...DM, fontSize: 11, color: active ? IVORY : "rgba(240,237,228,0.25)", fontWeight: active ? 600 : 400 }}>{label}</span>
+                    {active && <span style={{ marginLeft: "auto", background: GOLD, color: "#0A0F2E", fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 3, letterSpacing: "0.08em", flexShrink: 0 }}>EXECUTION OS</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Source attribution */}
           <div style={{ textAlign: "center" }}>
             <span style={{ ...MONO, fontSize: 10, color: "rgba(240,237,228,0.2)", letterSpacing: "0.1em" }}>
-              Sources: McKinsey &amp; Company — "The Future of Enterprise Architecture" synthesis, 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI," November 2025
+              Sources: McKinsey &amp; Company — Enterprise Architecture Synthesis, 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI," November 2025 · World Economic Forum × Accenture — "Organizational Transformation in the Age of AI," March 2026
             </span>
           </div>
         </Reveal>

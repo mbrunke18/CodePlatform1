@@ -132,6 +132,11 @@ export default function BoardReadiness() {
                 <span style={{ fontSize: 12, fontWeight: 700, color: statusColor }}>{d.monitoringStatus}</span>
                 <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>· 221 triggers armed · 248+ signals tracked</span>
               </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
+                <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>WEF AI Framework</span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>·</span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Aligned with Focus Area 4: Predictive, AI-Powered Strategic Planning</span>
+              </div>
             </div>
             <ScoreRing score={d.readinessScore} />
           </div>
