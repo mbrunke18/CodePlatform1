@@ -779,6 +779,49 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   registerPeerReviewRoute(app);
 
   // ── Magic Link Authentication ─────────────────────────────────────────────
+  // ─── Public unsubscribe (no auth — must work from email client) ──────────
+  app.get('/api/unsubscribe', async (req, res) => {
+    const t = req.query.t as string;
+    if (!t) {
+      return res.status(400).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Invalid unsubscribe link</h2><p>The link appears to be missing a required parameter.</p></body></html>`);
+    }
+    try {
+      let email: string;
+      try { email = Buffer.from(t, 'base64url').toString('utf8'); }
+      catch { return res.status(400).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Invalid unsubscribe token</h2></body></html>`); }
+
+      const { stakeholderContacts: scTable } = await import('@shared/schema');
+      const result = await db.update(scTable)
+        .set({ isActive: false })
+        .where(eq(scTable.email, email));
+
+      console.log(`📭 Unsubscribed: ${email}`);
+      return res.send(`
+        <html>
+          <head><title>Unsubscribed — Execution OS</title></head>
+          <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">
+            <div style="max-width:480px;background:#fff;border-radius:8px;border:1px solid #e8e4dc;padding:48px 40px;text-align:center;">
+              <div style="width:48px;height:48px;background:#2B8A6E15;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B8A6E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Execution OS</div>
+              <h1 style="font-size:22px;font-weight:700;color:#0A0F2E;margin:0 0 12px;">You've been unsubscribed</h1>
+              <p style="font-size:14px;color:#666;line-height:1.6;margin:0 0 24px;">
+                <strong>${email}</strong> will no longer receive trigger alerts, compound threat notifications, or weekly digests.
+              </p>
+              <p style="font-size:13px;color:#999;line-height:1.6;">
+                Changed your mind? Contact <a href="mailto:pilot@vaughnmartin.com" style="color:#C9A84C;">pilot@vaughnmartin.com</a> to re-enable alerts, or update your preferences inside the platform under Stakeholder Management.
+              </p>
+            </div>
+          </body>
+        </html>
+      `);
+    } catch (err: any) {
+      console.error('Unsubscribe error:', err.message);
+      return res.status(500).send(`<html><body style="font-family:sans-serif;padding:40px;text-align:center;"><h2>Something went wrong</h2><p>Please contact pilot@vaughnmartin.com to be removed from alerts.</p></body></html>`);
+    }
+  });
+
   app.post('/api/auth/magic-link/request', async (req, res) => {
     const { firstName, lastName, email, company, title } = req.body;
     if (!firstName || !lastName || !email || !company || !title) {
@@ -7803,7 +7846,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           if (apiKey) {
             const { stakeholderContacts: scTable } = await import('@shared/schema');
             const contacts = await db.select().from(scTable)
-              .where(eq(scTable.organizationId, orgId));
+              .where(and(eq(scTable.organizationId, orgId), eq(scTable.isActive, true)));
             const emails = contacts.map((c: any) => c.email).filter(Boolean);
             if (emails.length > 0) {
               const { Resend } = await import('resend');
@@ -7845,16 +7888,21 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                     </div>
                     <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
                       <div style="color:#999;font-size:11px;text-align:center;">Compound Threat Intelligence monitors cross-domain signal combinations. Human executive review required before any action is taken.</div>
+                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
                     </div>
                   </div>
                 </div>`;
-              await resend.emails.send({
-                from: 'Execution OS <pilot@vaughnmartin.com>',
-                replyTo: 'pilot@vaughnmartin.com',
-                to: emails,
-                subject: `⚠️ ${highConf.length} Compound Threat${highConf.length > 1 ? 's' : ''} Detected — Cross-Domain Risk Analysis`,
-                html,
-              });
+              for (const contact of contacts.filter((c: any) => c.email)) {
+                const token = Buffer.from(contact.email).toString('base64url');
+                const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+                await resend.emails.send({
+                  from: 'Execution OS <pilot@vaughnmartin.com>',
+                  replyTo: 'pilot@vaughnmartin.com',
+                  to: [contact.email],
+                  subject: `⚠️ ${highConf.length} Compound Threat${highConf.length > 1 ? 's' : ''} Detected — Cross-Domain Risk Analysis`,
+                  html: personalizedHtml,
+                });
+              }
               console.log(`📧 Compound threat alert sent to ${emails.join(', ')}`);
             }
           }
@@ -8309,21 +8357,25 @@ Respond ONLY as JSON with this exact structure:
           if (highConf.length > 0) {
             const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
             if (apiKey) {
-              const contacts = await db.select().from(scTable).where(eq(scTable.organizationId, org.id));
+              const contacts = await db.select().from(scTable).where(and(eq(scTable.organizationId, org.id), eq(scTable.isActive, true)));
               const emails = contacts.map((c: any) => c.email).filter(Boolean);
               if (emails.length > 0) {
                 const { Resend } = await import('resend');
                 const resend = new Resend(apiKey);
                 const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
                 const threatRows = highConf.map((t: any) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains||[]).join(', ')}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis||'').substring(0,240)}${(t.aiHypothesis||'').length>240?'…':''}</td></tr>`).join('');
-                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length>1?'s':''} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center →</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div></div></div></div>`;
-                await resend.emails.send({
-                  from: 'Execution OS <pilot@vaughnmartin.com>',
-                  replyTo: 'pilot@vaughnmartin.com',
-                  to: emails,
-                  subject: `⚠️ Scheduled Scan: ${highConf.length} Compound Threat${highConf.length>1?'s':''} Detected`,
-                  html,
-                });
+                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length>1?'s':''} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center →</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div></div></div></div>`;
+                for (const contact of contacts) {
+                  const token = Buffer.from(contact.email!).toString('base64url');
+                  const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+                  await resend.emails.send({
+                    from: 'Execution OS <pilot@vaughnmartin.com>',
+                    replyTo: 'pilot@vaughnmartin.com',
+                    to: [contact.email!],
+                    subject: `⚠️ Scheduled Scan: ${highConf.length} Compound Threat${highConf.length>1?'s':''} Detected`,
+                    html: personalizedHtml,
+                  });
+                }
                 console.log(`📧 [Auto] Compound threat alert sent for org ${org.name} → ${emails.join(', ')}`);
               }
             }
@@ -8367,7 +8419,7 @@ Respond ONLY as JSON with this exact structure:
 
       for (const org of orgs) {
         try {
-          const contacts = await db.select().from(scTable).where(eq(scTable.organizationId, org.id));
+          const contacts = await db.select().from(scTable).where(and(eq(scTable.organizationId, org.id), eq(scTable.isActive, true)));
           const emails = contacts.map((c: any) => c.email).filter(Boolean);
           if (emails.length === 0) continue;
 
@@ -8447,21 +8499,28 @@ Respond ONLY as JSON with this exact structure:
                 </div>
                 <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
                   <div style="color:#999;font-size:11px;text-align:center;">Execution OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
+                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
                 </div>
               </div>
             </div>`;
 
           const { Resend } = await import('resend');
           const resend = new Resend(apiKey);
-          await resend.emails.send({
-            from: 'Execution OS <pilot@vaughnmartin.com>',
-            replyTo: 'pilot@vaughnmartin.com',
-            to: emails,
-            subject: triggerCount > 0
-              ? `📊 Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? 's' : ''} Detected — ${org.name}`
-              : `📊 Weekly Digest: Monitoring Active, Market Quiet — ${org.name}`,
-            html,
-          });
+          const subject = triggerCount > 0
+            ? `📊 Weekly Digest: ${triggerCount} Trigger${triggerCount > 1 ? 's' : ''} Detected — ${org.name}`
+            : `📊 Weekly Digest: Monitoring Active, Market Quiet — ${org.name}`;
+          for (const contact of contacts) {
+            if (!contact.email) continue;
+            const token = Buffer.from(contact.email).toString('base64url');
+            const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+            await resend.emails.send({
+              from: 'Execution OS <pilot@vaughnmartin.com>',
+              replyTo: 'pilot@vaughnmartin.com',
+              to: [contact.email],
+              subject,
+              html: personalizedHtml,
+            });
+          }
           console.log(`📧 [Weekly Digest] Sent for org ${org.name} → ${emails.join(', ')}`);
         } catch (orgErr: any) {
           console.error(`[Weekly Digest] Error for org ${org.id}:`, orgErr.message);

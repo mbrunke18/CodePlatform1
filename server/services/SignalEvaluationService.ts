@@ -359,23 +359,28 @@ async function sendDetectionEmail(
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
           <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
         </div>
       </div>
     </div>
   `;
 
-  try {
-    await resend.emails.send({
-      from: 'Execution OS <pilot@vaughnmartin.com>',
-      replyTo: 'pilot@vaughnmartin.com',
-      to: emails,
-      subject: `🔴 Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
-      html,
-    });
-    console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
-  } catch (err) {
-    console.error('Detection email failed:', err);
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString('base64url');
+    const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
+    try {
+      await resend.emails.send({
+        from: 'Execution OS <pilot@vaughnmartin.com>',
+        replyTo: 'pilot@vaughnmartin.com',
+        to: [recipientEmail],
+        subject: `🔴 Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+        html: personalizedHtml,
+      });
+    } catch (err) {
+      console.error(`Detection email failed for ${recipientEmail}:`, err);
+    }
   }
+  console.log(`📧 Detection alert sent to ${emails.join(', ')}`);
 }
 
 async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSignal): Promise<void> {
