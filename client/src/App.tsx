@@ -202,6 +202,7 @@ const EnterpriseMetrics = lazy(() => import("./pages/EnterpriseMetrics"));
 const UnifiedEnterprisePlatform = lazy(() => import("./pages/UnifiedEnterprisePlatform"));
 const WelcomeBrief = lazy(() => import("./pages/WelcomeBrief"));
 const BoardReadiness = lazy(() => import("./pages/BoardReadiness"));
+const LinkedInCarousel = lazy(() => import("./pages/LinkedInCarousel"));
 
 const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
@@ -340,6 +341,7 @@ function Router() {
             <Route path="/command-tower" component={CommandTower} />
             <Route path="/welcome-brief" component={WelcomeBrief} />
             <Route path="/board-readiness" component={BoardReadiness} />
+            <Route path="/linkedin-carousel" component={LinkedInCarousel} />
             <Route path="/workspace" component={WorkspaceHub} />
             <Route path="/workspaces/identify">{() => <Redirect to="/workspace?tab=identify" />}</Route>
             <Route path="/workspaces/detect">{() => <Redirect to="/workspace?tab=detect" />}</Route>
