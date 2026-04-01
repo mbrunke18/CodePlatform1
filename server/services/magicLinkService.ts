@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import { db } from '../db';
 import { magicLinkTokens } from '@shared/schema';
 import { eq } from 'drizzle-orm';
+import { enrollProspectForAlerts } from './prospectEnrollment.js';
 
 const NAVY = '#0A0F2E';
 const GOLD = '#C9A84C';
@@ -180,6 +181,15 @@ export async function createAndSendMagicLink(data: {
     token,
     expiresAt,
   });
+
+  // Enroll prospect immediately so the next trigger alert reaches them.
+  // This fires and forgets — request access flow is never blocked by it.
+  enrollProspectForAlerts({
+    email: data.email,
+    name: `${data.firstName} ${data.lastName}`.trim(),
+    role: data.title,
+    company: data.company,
+  }).catch(err => console.warn('[magicLink] Prospect enrollment non-fatal error:', err?.message));
 
   const baseUrl = getBaseUrl();
   const magicUrl = `${baseUrl}/magic-login?token=${token}`;

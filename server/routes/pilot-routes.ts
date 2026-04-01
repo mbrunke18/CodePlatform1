@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { db } from '../db';
 import { pilotApplications } from '../../shared/schema';
 import { Resend } from 'resend';
+import { enrollProspectForAlerts } from '../services/prospectEnrollment.js';
 
 const router = Router();
 
@@ -307,14 +308,23 @@ router.post('/apply', async (req, res) => {
       status: 'pending',
     }).returning();
 
+    // Enroll immediately — next trigger alert will reach this prospect
+    enrollProspectForAlerts({
+      email: data.email,
+      name: `${data.firstName} ${data.lastName}`.trim(),
+      role: data.title,
+      company: data.company,
+    }).catch(err => console.warn('[PilotApply] Prospect enrollment non-fatal error:', err?.message));
+
     // Send notification email to VaughnMartin team
     const resendKey = process.env.RESEND_API_KEY;
     if (resendKey) {
       try {
         const resend = new Resend(resendKey);
         await resend.emails.send({
-          from: 'noreply@vaughnmartin.com',
-          to: 'mbrunke@vaughnmartin.com',
+          from: 'Execution OS <onboarding@resend.dev>',
+          replyTo: 'pilot@vaughnmartin.com',
+          to: 'pilot@vaughnmartin.com',
           subject: `New Pilot Application — ${data.company} (${data.firstName} ${data.lastName})`,
           html: `
             <h2>New Pilot Program Application</h2>
