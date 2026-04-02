@@ -327,10 +327,15 @@ export default function PeerReview() {
       {/* Header */}
       <div style={{ background: NAVY, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>VaughnMartin · Execution OS</div>
+          <a href="/" style={{ textDecoration: "none" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>VaughnMartin · Execution OS</div>
+          </a>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 2 }}>Independent Peer Review & Assessment</div>
         </div>
-        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Estimated time: 25–35 minutes</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <a href="/" style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", textDecoration: "none", fontWeight: 600 }}>← Return to Homepage</a>
+          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>Estimated time: 25–35 minutes</span>
+        </div>
       </div>
 
       {/* Progress bar */}

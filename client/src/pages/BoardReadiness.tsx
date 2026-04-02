@@ -101,7 +101,11 @@ export default function BoardReadiness() {
 
       {/* Action bar (no-print) */}
       <div className="no-print" style={{ background: NAVY, padding: '14px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <a href="/mission-control" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.55)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.04em' }}>
+            ← Mission Control
+          </a>
+          <div style={{ width: 1, height: 18, background: 'rgba(255,255,255,0.15)' }} />
           <Award size={16} color={GOLD} />
           <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>Board Readiness Snapshot</span>
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 4 }}>· {generatedDate}</span>

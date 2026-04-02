@@ -490,6 +490,9 @@ export default function CommandTower() {
               </div>
               <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, marginTop: 1 }}>
                 Strategic Monitoring &amp; Execution Intelligence
+                <Link href="/mission-control" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10, marginLeft: 12, textDecoration: 'none', fontWeight: 600 }}>
+                  ← Mission Control
+                </Link>
               </div>
             </div>
           </div>

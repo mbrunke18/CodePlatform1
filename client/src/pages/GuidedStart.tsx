@@ -257,6 +257,16 @@ export default function GuidedStart() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)', width: 900, height: 900, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
 
+        {/* Top nav escape */}
+        <div style={{ position: 'absolute', top: 20, left: 24, right: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 20 }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+            ← Homepage
+          </a>
+          <a href="/pilot-program" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+            Request Access →
+          </a>
+        </div>
+
         <div className="relative z-10 w-full max-w-5xl">
           {/* Brand */}
           <div style={{ textAlign: 'center', marginBottom: 52 }}>

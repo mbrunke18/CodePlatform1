@@ -2,8 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { PlayCircle, Trophy, Users, Clock, TrendingUp, Target, CheckCircle } from 'lucide-react';
+import { PlayCircle, Trophy, Users, Clock, TrendingUp, Target, CheckCircle, ChevronLeft } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
+import PageLayout from '@/components/layout/PageLayout';
 
 const demoDrills = [
   {
@@ -160,7 +161,8 @@ export default function DrillTrackingSystem() {
   };
 
   return (
-    <div className="flex-1 bg-white overflow-auto">
+    <PageLayout>
+    <div className="bg-white overflow-auto min-h-screen">
       {/* Navy Hero Section */}
       <div style={{ background: NAVY, padding: "64px 48px", position: "relative", overflow: "hidden", minHeight: 320 }}>
         <div style={{ 
@@ -306,5 +308,6 @@ export default function DrillTrackingSystem() {
         </div>
       </div>
     </div>
+    </PageLayout>
   );
 }
