@@ -694,6 +694,148 @@ function IDEASection() {
   );
 }
 
+// ─── SECTION 5b: Three-Layer Chain ───────────────────────────────────────────
+function ThreeLayerChainSection() {
+  const layers = [
+    {
+      num: "248",
+      unit: "data points",
+      label: "SIGNAL LAYER",
+      title: "Detection",
+      body: "AI monitors 248 data points across 16 signal categories every 15 minutes — surfacing what the organization hasn't consciously registered yet.",
+      sub: "Competitive shifts. Regulatory moves. Financial signals. Operational anomalies.",
+      accent: TEAL,
+      light: `${TEAL}14`,
+      border: `${TEAL}35`,
+    },
+    {
+      num: "221",
+      unit: "executive triggers",
+      label: "DECISION LAYER",
+      title: "Decision",
+      body: "Each trigger is a pre-defined decision rule. When signal conditions are met, the decision is already made — before any meeting is called, before any executive is pulled off focus.",
+      sub: "The trigger IS the decision. Codified during The Install, not improvised at the moment.",
+      accent: GOLD,
+      light: `${GOLD}14`,
+      border: `${GOLD}35`,
+    },
+    {
+      num: "170",
+      unit: "playbooks",
+      label: "EXECUTION LAYER",
+      title: "Deployment",
+      body: "170 pre-staged playbooks deploy the moment a trigger fires — roles assigned, tasks distributed, war rooms opened, stakeholders notified. All of it in under 12 minutes.",
+      sub: "The execution is already staged. The organization moves because the work was done in advance.",
+      accent: TEAL_LIGHT,
+      light: `${TEAL_LIGHT}14`,
+      border: `${TEAL_LIGHT}35`,
+    },
+  ];
+
+  return (
+    <section style={{ background: NAVY_BG, padding: "96px 0 88px", position: "relative", overflow: "hidden", ...GOLD_GRID_BG }}>
+      {/* Orbs */}
+      <div style={{ position: "absolute", top: "-200px", left: "-200px", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}20 0%, transparent 70%)`, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: "-150px", right: "-100px", width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${GOLD}18 0%, transparent 70%)`, pointerEvents: "none" }} />
+
+      <div style={{ ...CONTAINER, maxWidth: 1180, position: "relative" }}>
+
+        {/* Header */}
+        <div style={{ textAlign: "center" as const, marginBottom: 64 }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 10,
+            background: `${GOLD}15`, border: `1px solid ${GOLD}35`,
+            borderRadius: 2, padding: "5px 16px", marginBottom: 24,
+          }}>
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: GOLD }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>
+              The Full Chain
+            </span>
+          </div>
+          <h2 style={{ ...GEO, fontSize: "clamp(28px,3.2vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 20 }}>
+            Not a coordination tool. Not a decision support tool.<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>The complete chain — all three layers, pre-staged.</em>
+          </h2>
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, lineHeight: 1.7, maxWidth: 680, margin: "0 auto" }}>
+            Every other vendor solves one layer. Execution OS is the only platform where signal detection feeds decision logic, 
+            and decision logic deploys execution — automatically, continuously, before the trigger ever fires.
+          </p>
+        </div>
+
+        {/* Three layer cards + connectors */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 36px 1fr 36px 1fr", alignItems: "stretch", gap: 0, marginBottom: 56 }}>
+          <div key="card-0" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[0].border}`, borderTop: `3px solid ${layers[0].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
+            <div style={{ background: layers[0].light, border: `1px solid ${layers[0].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[0].accent }}>{layers[0].label}</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[0].accent, lineHeight: 1 }}>{layers[0].num}</span>
+              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[0].unit}</span>
+            </div>
+            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[0].title}</div>
+            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[0].body}</div>
+            <div style={{ ...DM, fontSize: 12, color: layers[0].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[0].sub}</div>
+          </div>
+          <div key="arrow-0" style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 4 }}>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+            <div style={{ ...DM, fontSize: 20, color: GOLD, fontWeight: 700 }}>→</div>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+          </div>
+          <div key="card-1" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[1].border}`, borderTop: `3px solid ${layers[1].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
+            <div style={{ background: layers[1].light, border: `1px solid ${layers[1].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[1].accent }}>{layers[1].label}</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[1].accent, lineHeight: 1 }}>{layers[1].num}</span>
+              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[1].unit}</span>
+            </div>
+            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[1].title}</div>
+            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[1].body}</div>
+            <div style={{ ...DM, fontSize: 12, color: layers[1].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[1].sub}</div>
+          </div>
+          <div key="arrow-1" style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 4 }}>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+            <div style={{ ...DM, fontSize: 20, color: GOLD, fontWeight: 700 }}>→</div>
+            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+          </div>
+          <div key="card-2" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[2].border}`, borderTop: `3px solid ${layers[2].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
+            <div style={{ background: layers[2].light, border: `1px solid ${layers[2].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[2].accent }}>{layers[2].label}</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[2].accent, lineHeight: 1 }}>{layers[2].num}</span>
+              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[2].unit}</span>
+            </div>
+            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[2].title}</div>
+            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[2].body}</div>
+            <div style={{ ...DM, fontSize: 12, color: layers[2].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[2].sub}</div>
+          </div>
+        </div>
+
+        {/* Thesis callout */}
+        <div style={{
+          background: "rgba(255,255,255,0.03)",
+          border: `1px solid rgba(255,255,255,0.10)`,
+          borderLeft: `4px solid ${GOLD}`,
+          borderRadius: 6, padding: "28px 36px",
+          maxWidth: 860, margin: "0 auto",
+          textAlign: "center" as const,
+        }}>
+          <div style={{ ...GEO, fontSize: "clamp(17px,2vw,22px)", fontWeight: 700, color: "#fff", lineHeight: 1.45, marginBottom: 12 }}>
+            "The preparation IS the decision-making. Done before the trigger fires."
+          </div>
+          <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>
+            Roman, Chakri, Yana — every expert in this space is building tools to help organizations make faster decisions 
+            in the moment. Execution OS removed the moment entirely. The decisions are made during The Install. 
+            When the trigger fires, the organization executes — it does not deliberate.
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 6: Platform Preview ─────────────────────────────────────────────
 function SignalTimelineBar() {
   const [activeStage, setActiveStage] = useState(0);
@@ -2419,6 +2561,7 @@ export default function Homepage() {
       <McKinseyValidationSection />
       <ContrastMomentSection />
       <IDEASection />
+      <ThreeLayerChainSection />
       <PlatformPreviewSection />
       <PreFlightGovernanceSection />
       <MicrosoftEcosystemBanner />
