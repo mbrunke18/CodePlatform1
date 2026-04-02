@@ -197,10 +197,9 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
         >
           <Zap size={14} /> ACTIVATE PLAYBOOK
         </button>
-        <Link href="/live-detection-feed">
-          <a style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+        <Link href="/live-detection-feed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
             Details <ArrowRight size={12} />
-          </a>
+          
         </Link>
       </div>
     </motion.div>
@@ -367,10 +366,8 @@ export default function MissionControl() {
               <button onClick={handleRefresh} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 12px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11 }}>
                 <RefreshCw size={12} /> Refresh
               </button>
-              <Link href="/command-tower">
-                <a title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
-                  <Radar size={11} /> Command Tower
-                </a>
+              <Link href="/command-tower" title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
+                <Radar size={11} /> Command Tower
               </Link>
             </div>
           </div>
@@ -494,10 +491,8 @@ export default function MissionControl() {
                   </div>
                   <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 13, letterSpacing: '0.06em' }}>LIVE ALERT ZONE</span>
                 </div>
-                <Link href="/live-detection-feed">
-                  <a style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
                     Full Feed <ArrowRight size={11} />
-                  </a>
                 </Link>
               </div>
 
@@ -516,10 +511,8 @@ export default function MissionControl() {
                       >
                         <Zap size={14} /> Activate Playbook
                       </button>
-                      <Link href="/triggers-management">
-                        <a style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
+                      <Link href="/triggers-management" style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
                           <Eye size={13} /> View Triggers
-                        </a>
                       </Link>
                     </div>
                   </motion.div>
@@ -615,15 +608,11 @@ export default function MissionControl() {
 
               {/* Quick Actions */}
               <div style={{ display: 'flex', gap: 10 }}>
-                <Link href="/live-activation-center">
-                  <a style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 20px', fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none' }}>
+                <Link href="/live-activation-center" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 20px', fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none' }}>
                     <Zap size={13} /> ACTIVATE
-                  </a>
                 </Link>
-                <Link href="/live-detection-feed">
-                  <a style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 20px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+                <Link href="/live-detection-feed" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 20px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
                     <Radio size={12} /> FEED
-                  </a>
                 </Link>
               </div>
             </div>
@@ -678,10 +667,8 @@ export default function MissionControl() {
                 { label: 'Execution History', href: '/execution-history', gold: false },
                 { label: 'Settings', href: '/settings', gold: false },
               ].map(({ label, href, gold }) => (
-                <Link key={href} href={href}>
-                  <a style={{ display: 'flex', alignItems: 'center', gap: 5, background: gold ? GOLD : 'rgba(255,255,255,0.05)', border: `1px solid ${gold ? GOLD : 'rgba(255,255,255,0.1)'}`, borderRadius: 6, padding: '6px 12px', color: gold ? NAVY : 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: gold ? 800 : 600, textDecoration: 'none' }}>
+                <Link key={href} href={href} style={{ display: 'flex', alignItems: 'center', gap: 5, background: gold ? GOLD : 'rgba(255,255,255,0.05)', border: `1px solid ${gold ? GOLD : 'rgba(255,255,255,0.1)'}`, borderRadius: 6, padding: '6px 12px', color: gold ? NAVY : 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: gold ? 800 : 600, textDecoration: 'none' }}>
                     {label} <ArrowRight size={10} />
-                  </a>
                 </Link>
               ))}
             </div>
