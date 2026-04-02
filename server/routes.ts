@@ -7047,6 +7047,139 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
+  // POST /api/stakeholder-contacts/send-test-alert — send a sample trigger alert email to a specific address
+  app.post('/api/stakeholder-contacts/send-test-alert', async (req: any, res) => {
+    if (!req.isAuthenticated?.()) {
+      return res.status(401).json({ error: 'Authentication required' });
+    }
+    try {
+      const { email, name, role } = req.body;
+      if (!email) return res.status(400).json({ error: 'email is required' });
+
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) return res.status(503).json({ error: 'Email service not configured' });
+
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+      const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
+      const token = Buffer.from(email).toString('base64url');
+      const unsubUrl = `${platformUrl}/api/unsubscribe?t=${token}`;
+      const recipientName = name || email.split('@')[0];
+      const recipientRole = role || 'Executive';
+
+      const html = `
+        <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+          <div style="max-width:600px;margin:0 auto;">
+            <!-- SAMPLE BANNER -->
+            <div style="background:#C9A84C;padding:10px 20px;text-align:center;border-radius:4px 4px 0 0;">
+              <span style="color:#0A0F2E;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;">⚡ Sample Alert — This is what a live trigger notification looks like</span>
+            </div>
+            <div style="background:#ffffff;border-radius:0 0 8px 8px;overflow:hidden;border:1px solid #e8e4dc;border-top:none;">
+              <div style="background:#132558;padding:32px 36px;">
+                <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Live Detection Alert</div>
+                <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
+                <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:6px;">Hello ${recipientName} — Execution OS is now monitoring on your behalf.</div>
+              </div>
+              <div style="padding:32px 36px;">
+                <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">AI Competitive Disruption</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Competitive Intelligence</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">91%</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#C9A84C;">CNBC — Markets &amp; Technology</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
+                      <span style="color:#0A0F2E;font-weight:700;">AI Competitive Disruption Playbook</span>
+                      <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
+                    <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">Aggressive Pricing Disruption &nbsp;·&nbsp; Digital Transformation Acceleration</td>
+                  </tr>
+                </table>
+                <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                    <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Why This Trigger Fired</div>
+                    <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">4 of 5 KEYWORDS MATCHED</span>
+                  </div>
+                  <div style="margin-bottom:14px;">
+                    <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                      ${['AI disruption','market share','competitor launch','enterprise pivot'].map(kw => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join('')}
+                    </div>
+                  </div>
+                  <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+                    <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+                    <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption — Competitive Intelligence domain · 91% confidence</div>
+                  </div>
+                </div>
+                <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+                  <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+                  <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting Fortune 1000 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion…</div>
+                </div>
+                <div style="text-align:center;margin-bottom:12px;">
+                  <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection →</a>
+                </div>
+                <div style="text-align:center;">
+                  <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate Playbook →</a>
+                </div>
+              </div>
+              <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+                <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
+                <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const fromAddresses = [
+        'Execution OS <onboarding@resend.dev>',
+        'Execution OS <pilot@vaughnmartin.com>',
+      ];
+
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend.emails.send({
+            from,
+            replyTo: 'pilot@vaughnmartin.com',
+            to: [email],
+            subject: `🔴 [Sample] Strategic Trigger Detected: AI Competitive Disruption (91% confidence)`,
+            html,
+          });
+          if (!error) { sent = true; break; }
+          console.warn(`[TestAlert] Sender ${from} rejected: ${error.message}`);
+        } catch (err: any) {
+          console.warn(`[TestAlert] Sender ${from} threw: ${err.message}`);
+        }
+      }
+
+      if (sent) {
+        console.log(`✅ [TestAlert] Sample trigger alert sent to ${email} (${recipientName} · ${recipientRole})`);
+        res.json({ success: true, message: `Sample alert sent to ${email}` });
+      } else {
+        res.status(500).json({ success: false, error: 'Email delivery failed — check Resend domain verification' });
+      }
+    } catch (err: any) {
+      console.error('[TestAlert] Error:', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // POST /api/signals/live/test-detection — manually trigger one evaluation cycle (demo tool)
   // Also accepts localhost calls without session auth (internal test use only)
   app.post('/api/signals/live/test-detection', async (req: any, res) => {

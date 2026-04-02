@@ -22,6 +22,7 @@ import {
   Bell,
   BellOff,
   RefreshCw,
+  Send,
 } from 'lucide-react';
 
 const NAVY = '#0A0F2E';
@@ -140,6 +141,31 @@ export default function LiveDetectionFeed() {
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['/api/stakeholder-contacts'] });
       toast({ title: 'Contact removed' });
+    },
+  });
+
+  const [sendingTestTo, setSendingTestTo] = useState<number | null>(null);
+  const testAlertMutation = useMutation({
+    mutationFn: (contact: { id: number; email: string; name?: string; role?: string }) =>
+      apiRequest('POST', '/api/stakeholder-contacts/send-test-alert', {
+        email: contact.email,
+        name: contact.name,
+        role: contact.role,
+      }),
+    onMutate: (contact) => setSendingTestTo(contact.id),
+    onSettled: () => setSendingTestTo(null),
+    onSuccess: (_data: any, contact) => {
+      toast({
+        title: 'Sample Alert Sent',
+        description: `Test trigger email delivered to ${contact.email}`,
+      });
+    },
+    onError: (_err: any, contact) => {
+      toast({
+        title: 'Send Failed',
+        description: `Could not deliver to ${contact.email} — check Resend domain verification`,
+        variant: 'destructive',
+      });
     },
   });
 
@@ -558,14 +584,31 @@ export default function LiveDetectionFeed() {
                           </div>
                         )}
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => deleteContactMutation.mutate(contact.id)}
-                        style={{ color: '#ccc', padding: '4px 8px' }}
-                      >
-                        <Trash2 size={13} />
-                      </Button>
+                      <div style={{ display: 'flex', gap: 4 }}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          title="Send sample trigger alert email"
+                          disabled={sendingTestTo === contact.id}
+                          onClick={() => contact.email && testAlertMutation.mutate({ id: contact.id, email: contact.email, name: contact.name, role: contact.role })}
+                          style={{ color: TEAL, padding: '4px 8px', fontSize: 11, fontWeight: 600, opacity: contact.email ? 1 : 0.3 }}
+                        >
+                          {sendingTestTo === contact.id ? (
+                            <RefreshCw size={12} style={{ animation: 'spin 1s linear infinite' }} />
+                          ) : (
+                            <Send size={12} />
+                          )}
+                          <span style={{ marginLeft: 4 }}>Test</span>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => deleteContactMutation.mutate(contact.id)}
+                          style={{ color: '#ccc', padding: '4px 8px' }}
+                        >
+                          <Trash2 size={13} />
+                        </Button>
+                      </div>
                     </div>
                   ))}
                 </div>
