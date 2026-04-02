@@ -139,11 +139,11 @@ export default function StandardNav() {
     {
       heading: "Inside the Platform",
       links: [
-        { label: "Mission Control", path: "/mission-control", icon: Compass, description: "NOC-style executive hub — live alerts, domain board, activation", featured: true },
-        { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of the IDEA cycle", featured: true },
-        { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Public NOC wall display — live triggers, domain status, signal ticker", featured: true },
+        { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate playbooks", featured: true },
+        { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of your IDEA configuration", featured: true },
+        { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
-        { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
+        { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
       ],
@@ -334,16 +334,16 @@ export default function StandardNav() {
           <div style={{ padding: '12px 16px 12px 12px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("Inside the Platform")}
             {[
-              { path: '/mission-control', icon: Compass, label: 'Mission Control', sub: 'NOC-style executive hub — live alerts, domain board, activation', featured: true },
+              { path: '/mission-control', icon: Compass, label: 'Mission Control', sub: 'Your interactive operations center — configure, detect, activate', featured: true },
               { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
-              { path: '/situations-hub', icon: Shield, label: 'Situations Hub', sub: 'All 9 domains — readiness, drills & live coordination' },
+              { path: '/situations-hub', icon: Shield, label: '9-Domain Coverage Board', sub: 'Exposure & readiness across all 9 strategic domains' },
               { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
               { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'AI radar, signals & compound threat synthesis' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}
             {[
-              { path: '/command-tower', icon: Radio, label: 'Command Tower', sub: 'Public NOC wall display — live triggers, domain status, signal feed', featured: true },
+              { path: '/command-tower', icon: Radio, label: 'Command Tower', sub: 'Executive wall display — auto-refreshing live feed for conference rooms', featured: true },
               { path: '/concurrent-situations', icon: LayoutGrid, label: 'Concurrent Situation Board', sub: 'Command view — multiple situations at once' },
               { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
               { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a trigger fires' },

@@ -71,13 +71,13 @@ export default function SituationalHub() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-0.5" style={{ background: GOLD }} />
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>Platform · Situations</span>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>Platform · Strategic Domains</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-3" style={CG}>
-                Situations <em style={{ color: GOLD, fontStyle: 'italic' }}>Hub</em>
+                9-Domain <em style={{ color: GOLD, fontStyle: 'italic' }}>Coverage Board</em>
               </h1>
               <p className="text-white/60 max-w-xl">
-                Pre-staged response protocols across all 9 strategic domains — from M&A integration to competitive disruption, regulatory change, digital transformation, and beyond.
+                Exposure levels, readiness drills, and pre-staged playbooks across all 9 strategic domains — M&A, Competitive Response, Regulatory, Supply Chain, Digital Transformation, and beyond.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">

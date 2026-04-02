@@ -368,8 +368,8 @@ export default function MissionControl() {
                 <RefreshCw size={12} /> Refresh
               </button>
               <Link href="/command-tower">
-                <a style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
-                  <Radar size={11} /> Wall Display
+                <a title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
+                  <Radar size={11} /> Command Tower
                 </a>
               </Link>
             </div>
