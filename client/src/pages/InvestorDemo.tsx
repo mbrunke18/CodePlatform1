@@ -143,7 +143,7 @@ const IDEA_STORY = [
   {
     id: 5,
     beat: "EXECUTE",
-    title: "12 Minutes. Not 72 Hours.",
+    title: "12 Minutes. Not 30 Days.",
     subtitle: "One-click activation with 15-section executive data",
     phase: "EXECUTE",
     phaseColor: "bg-[#2B8A6E]",
