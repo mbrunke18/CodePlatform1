@@ -41460,6 +41460,12 @@ var PUBLIC_ROUTES = [
   // Magic link authentication — no session required to request or verify
   "/api/auth/magic-link/request",
   "/api/auth/magic-link/verify",
+  // 48-Hour Trial Access — self-serve, no prior auth required
+  "/api/trial/request",
+  "/api/trial/activate",
+  "/api/trial/status",
+  // Unsubscribe — must work without auth
+  "/api/unsubscribe",
   // Peer Review Questionnaire — public submission (no auth required to submit feedback)
   "/api/peer-reviews",
   // Marketing & Demo Routes - allow prospects to view content
