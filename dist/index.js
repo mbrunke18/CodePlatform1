@@ -18560,13 +18560,1107 @@ Document generated at ${vars.activationTime}`;
   }
 });
 
+// server/services/TriggerEvaluationEngine.ts
+var TriggerEvaluationEngine_exports = {};
+__export(TriggerEvaluationEngine_exports, {
+  evaluateSignalsWithOrgTriggers: () => evaluateSignalsWithOrgTriggers,
+  getOrgTriggerSummary: () => getOrgTriggerSummary,
+  loadConfiguredTriggers: () => loadConfiguredTriggers
+});
+import { eq as eq20, and as and12 } from "drizzle-orm";
+function isValidUuid(id) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+}
+async function loadConfiguredTriggers(organizationId) {
+  const configured = [];
+  if (!isValidUuid(organizationId)) {
+    return configured;
+  }
+  try {
+    const execTriggers = await db.select().from(executiveTriggers).where(and12(
+      eq20(executiveTriggers.organizationId, organizationId),
+      eq20(executiveTriggers.isActive, true)
+    ));
+    for (const t of execTriggers) {
+      const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
+      configured.push({
+        id: t.id,
+        name: t.name,
+        category: t.category || "general",
+        triggerType: t.triggerType,
+        conditions: t.conditions || { field: "", operator: "change", value: "any" },
+        alertThreshold: t.alertThreshold || "yellow",
+        severity: t.severity || "medium",
+        recommendedPlaybooks: playbooks2,
+        isActive: t.isActive ?? true,
+        source: "executive"
+      });
+    }
+    const custom = await db.select().from(customTriggers).where(and12(
+      eq20(customTriggers.organizationId, organizationId),
+      eq20(customTriggers.isActive, true)
+    ));
+    for (const t of custom) {
+      const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
+      configured.push({
+        id: t.id,
+        name: t.name,
+        category: t.category || "general",
+        triggerType: t.signalType || "event",
+        conditions: {
+          field: t.conditionField,
+          operator: t.conditionOperator,
+          value: t.conditionValue ? Number(t.conditionValue) : "any"
+        },
+        alertThreshold: t.alertThreshold || "yellow",
+        severity: t.severity || "medium",
+        recommendedPlaybooks: playbooks2,
+        isActive: t.isActive ?? true,
+        source: "custom"
+      });
+    }
+  } catch (err) {
+    console.error("[TriggerEvaluationEngine] Error loading configured triggers:", err);
+  }
+  return configured;
+}
+function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
+  const text3 = (signal.description + " " + signal.signalType + " " + signal.category).toLowerCase();
+  const matchedTerms = [];
+  const dataPoints = [];
+  let score = 0;
+  const conditions = Array.isArray(trigger.conditions) ? trigger.conditions : [trigger.conditions];
+  let conditionsMet = 0;
+  for (const condition2 of conditions) {
+    const { field, operator, value } = condition2;
+    let conditionHit = false;
+    const fieldWords = FIELD_KEYWORDS[field] || [];
+    const fieldMatches = fieldWords.filter((kw) => text3.includes(kw.toLowerCase()));
+    if (fieldMatches.length > 0) {
+      score += 30 + Math.min(fieldMatches.length * 5, 20);
+      matchedTerms.push(...fieldMatches);
+      conditionHit = true;
+      const fieldLabel = field.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+      dataPoints.push(`${fieldLabel}: matched "${fieldMatches.slice(0, 2).join('", "')}"`);
+    }
+    if (conditionHit) {
+      const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
+      const opMatches = opWords.filter((kw) => text3.includes(kw.toLowerCase()));
+      if (opMatches.length > 0) {
+        score += 8 + opMatches.length * 3;
+        matchedTerms.push(...opMatches);
+        dataPoints[dataPoints.length - 1] += ` (${operator}: "${opMatches[0]}")`;
+      }
+      if (typeof value === "string" && value !== "any" && text3.includes(value.toLowerCase())) {
+        score += 6;
+        matchedTerms.push(value);
+      }
+      conditionsMet++;
+    }
+  }
+  const allConditionsMet = conditionsMet === conditions.length;
+  if (allConditionsMet) {
+    if (signal.impact === "critical") score += 12;
+    else if (signal.impact === "high") score += 7;
+    else if (signal.impact === "medium") score += 3;
+    score += Math.max(0, (signal.confidence - 50) * 0.25);
+    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) {
+      score += 8;
+    }
+  }
+  return {
+    score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
+    matchedTerms: [...new Set(matchedTerms)],
+    conditionsMet,
+    totalConditions: conditions.length,
+    dataPoints,
+    allConditionsMet
+  };
+}
+function buildDetection(trigger, signal, result) {
+  const [primaryPlaybook, ...alternates] = trigger.recommendedPlaybooks;
+  return {
+    triggerName: trigger.name,
+    triggerDomain: categoryToDomain(trigger.category),
+    confidenceScore: result.score,
+    recommendedPlaybook: primaryPlaybook || "Playbook Not Configured",
+    alternatePlaybooks: alternates.slice(0, 2),
+    matchedKeywords: result.matchedTerms,
+    conditionsMet: result.conditionsMet,
+    totalConditions: result.totalConditions,
+    dataPoints: result.dataPoints,
+    engine: "configured"
+  };
+}
+function categoryToDomain(category) {
+  const map = {
+    competitive: "Market Dynamics",
+    market: "Market Dynamics",
+    financial: "Financial Strategy",
+    regulatory: "Regulatory & Compliance",
+    supplychain: "Supply Chain & Operations",
+    talent: "Talent & Leadership",
+    technology: "Technology & Innovation",
+    cyber: "Technology & Innovation",
+    media: "Brand & Reputation",
+    customer: "Brand & Reputation",
+    geopolitical: "Geopolitical",
+    economic: "Financial Strategy",
+    partnership: "Market Dynamics",
+    execution: "Operational Excellence",
+    behavior: "Market Dynamics",
+    innovation: "Technology & Innovation",
+    esg: "ESG & Sustainability",
+    general: "Strategic Intelligence"
+  };
+  return map[category.toLowerCase()] || "Strategic Intelligence";
+}
+async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
+  const configuredTriggers = await loadConfiguredTriggers(organizationId);
+  if (configuredTriggers.length === 0) {
+    console.log(`[TriggerEvaluationEngine] Org ${organizationId} has no configured triggers \u2014 using default patterns`);
+    return null;
+  }
+  console.log(`[TriggerEvaluationEngine] Evaluating ${signals.length} signal(s) against ${configuredTriggers.length} configured trigger(s) for org ${organizationId}`);
+  const allDetections = [];
+  for (const signal of signals) {
+    const signalDetections = [];
+    for (const trigger of configuredTriggers) {
+      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
+      if (result.score === 0) {
+        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+          console.log(
+            `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 AND gate failed: ${result.conditionsMet}/${result.totalConditions} conditions met \u2014 will not fire`
+          );
+        }
+        continue;
+      }
+      const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
+      if (result.score >= requiredConfidence) {
+        const detection = buildDetection(trigger, signal, result);
+        signalDetections.push(detection);
+        console.log(
+          `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${result.score}% (threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") \u2014 ALL ${result.totalConditions} condition(s) met \u2014 data points: [${result.dataPoints.join(" | ")}]`
+        );
+      }
+    }
+    const top2 = signalDetections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
+    allDetections.push(...top2);
+  }
+  return allDetections;
+}
+async function getOrgTriggerSummary(organizationId) {
+  const triggers = await loadConfiguredTriggers(organizationId);
+  const byAlertLevel = {};
+  const byCategory = {};
+  for (const t of triggers) {
+    byAlertLevel[t.alertThreshold] = (byAlertLevel[t.alertThreshold] || 0) + 1;
+    byCategory[t.category] = (byCategory[t.category] || 0) + 1;
+  }
+  return {
+    total: triggers.length,
+    byAlertLevel,
+    byCategory,
+    triggerNames: triggers.map((t) => t.name)
+  };
+}
+var THRESHOLD_CONFIDENCE_FLOOR, FIELD_KEYWORDS, OPERATOR_SIGNAL_WORDS;
+var init_TriggerEvaluationEngine = __esm({
+  "server/services/TriggerEvaluationEngine.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    THRESHOLD_CONFIDENCE_FLOOR = {
+      red: 85,
+      yellow: 72,
+      green: 58
+    };
+    FIELD_KEYWORDS = {
+      // Competitive
+      comp_product_launch: ["launch", "released", "announced", "new product", "new feature", "unveiled", "debut", "introduced"],
+      comp_pricing_change: ["price cut", "pricing", "discount", "price drop", "price reduction", "cheaper", "cost reduction", "price war"],
+      comp_patent_filings: ["patent", "ip filing", "intellectual property", "trademark", "innovation filing"],
+      comp_job_postings: ["hiring", "job posting", "recruitment", "headcount", "talent acquisition", "open roles"],
+      comp_exec_changes: ["CEO", "CFO", "CTO", "executive", "leadership change", "appointed", "departed", "succession"],
+      comp_funding: ["funding", "raised", "series", "investment", "venture capital", "valuation", "IPO"],
+      // Market
+      market_share: ["market share", "market position", "market leader", "gaining share", "losing share", "market dominance"],
+      market_growth: ["market growth", "market expansion", "growing market", "market opportunity"],
+      economic_indicators: ["GDP", "inflation", "interest rate", "recession", "economic slowdown", "economic growth"],
+      consumer_sentiment: ["consumer confidence", "customer sentiment", "buyer mood", "consumer spending"],
+      // Financial
+      revenue_decline: ["revenue decline", "revenue miss", "earnings miss", "profit warning", "guidance cut", "revenue shortfall"],
+      cash_flow: ["cash flow", "liquidity", "cash crunch", "free cash", "working capital"],
+      credit_rating: ["credit rating", "downgrade", "credit watch", "Moody", "S&P", "Fitch", "credit risk"],
+      debt_levels: ["debt", "leverage", "borrowing", "loan", "bond", "debt load"],
+      stock_price: ["stock price", "share price", "stock drop", "market cap", "equity value", "stock decline", "stock surge"],
+      // Regulatory
+      regulatory_fine: ["fine", "penalty", "enforcement", "SEC", "FTC", "DOJ", "regulator", "sanction", "consent decree"],
+      legislation_change: ["legislation", "regulation", "new law", "rule change", "compliance", "mandate", "GDPR", "CCPA", "executive order"],
+      sec_filing: ["8-K", "SEC filing", "material event", "securities filing", "10-K", "10-Q", "material disclosure"],
+      // Supply Chain
+      supplier_failure: ["supplier", "vendor", "sourcing", "supply chain", "supply disruption", "supplier risk"],
+      logistics_disruption: ["shipping", "logistics", "port", "freight", "delivery delay", "transport disruption", "shipping delay"],
+      inventory: ["inventory", "stockout", "shortage", "overstock", "inventory levels"],
+      // Talent
+      executive_departure: ["CEO resigned", "CFO left", "executive departure", "key executive", "leadership transition", "interim CEO"],
+      talent_exodus: ["layoffs", "mass departure", "attrition", "retention crisis", "talent loss", "brain drain"],
+      labor_action: ["strike", "union", "labor dispute", "walkout", "collective bargaining"],
+      // Technology / Cyber
+      data_breach: ["data breach", "hack", "cyber attack", "ransomware", "security incident", "data leak", "compromised", "unauthorized access"],
+      ai_disruption: ["AI", "artificial intelligence", "generative AI", "automation", "large language model", "ChatGPT", "GPT", "AI launch"],
+      tech_obsolescence: ["obsolete", "legacy system", "end of life", "deprecated", "technology shift", "platform migration"],
+      // Brand / Reputation
+      media_crisis: ["controversy", "scandal", "backlash", "viral", "boycott", "PR crisis", "reputational", "public outcry", "brand damage"],
+      customer_complaint: ["customer complaint", "negative review", "dissatisfied", "customer backlash", "review bombing"],
+      social_sentiment: ["social media", "twitter", "trending", "viral", "public reaction", "online sentiment"],
+      // Geopolitical
+      trade_war: ["tariff", "trade war", "trade policy", "sanctions", "export control", "trade restriction", "embargo"],
+      political_instability: ["political instability", "government change", "election", "coup", "political crisis", "regime change"],
+      sanctions: ["sanctions", "blacklist", "OFAC", "banned", "restricted", "economic sanction"],
+      // ESG
+      esg_controversy: ["ESG", "greenwashing", "environmental violation", "emissions", "climate", "sustainability", "carbon", "DEI", "social responsibility"]
+    };
+    OPERATOR_SIGNAL_WORDS = {
+      spike: ["surged", "spiked", "jumped", "soared", "increased sharply", "rose dramatically", "rapid increase", "dramatic rise"],
+      drop: ["fell", "dropped", "plunged", "declined", "decreased sharply", "tumbled", "slumped", "steep decline"],
+      gt: ["exceeded", "surpassed", "above", "more than", "over", "higher than", "beats", "outpaced"],
+      lt: ["below", "under", "less than", "fell short", "missed", "lower than", "beneath"],
+      gte: ["at least", "reached", "hit", "surpassed", "exceeded", "met or exceeded"],
+      lte: ["no more than", "at most", "capped at", "limited to", "within", "not exceeding"],
+      change: ["changed", "shifted", "altered", "new", "update", "announced", "reported"],
+      trend: ["trending", "pattern", "consistent", "ongoing", "sustained", "continued"]
+    };
+  }
+});
+
+// server/services/SignalEvaluationService.ts
+var SignalEvaluationService_exports = {};
+__export(SignalEvaluationService_exports, {
+  evaluateAndPersistSignals: () => evaluateAndPersistSignals,
+  evaluateSignal: () => evaluateSignal,
+  getRecentDetections: () => getRecentDetections
+});
+import { eq as eq21, desc as desc10 } from "drizzle-orm";
+import { Resend as Resend5 } from "resend";
+async function getOrgEvaluationMode(organizationId) {
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
+    return "default";
+  }
+  try {
+    const [config] = await db.select().from(signalMonitoringConfig).where(eq21(signalMonitoringConfig.organizationId, organizationId)).limit(1);
+    const mode = config?.evaluationMode || "both";
+    return ["configured", "default", "both"].includes(mode) ? mode : "both";
+  } catch {
+    return "both";
+  }
+}
+function scoreSignalAgainstPattern(signal, pattern) {
+  const text3 = signal.description.toLowerCase();
+  const matched = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
+  if (matched.length === 0) return 0;
+  const density = matched.length / pattern.keywords.length;
+  let score = pattern.baseConfidence + density * 20;
+  score += (signal.confidence - 50) * 0.3;
+  if (signal.impact === "critical") score += 10;
+  if (signal.impact === "high") score += 5;
+  if (signal.source.includes("SEC") && pattern.domain === "Regulatory & Compliance") score += 10;
+  return Math.min(Math.round(score), 97);
+}
+function evaluateSignal(signal) {
+  const detections = [];
+  const CONFIDENCE_THRESHOLD = 72;
+  const MIN_KEYWORD_MATCHES = 3;
+  for (const pattern of TRIGGER_PATTERNS) {
+    const text3 = signal.description.toLowerCase();
+    const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
+    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
+    const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
+    if (confidenceScore >= CONFIDENCE_THRESHOLD) {
+      detections.push({
+        triggerName: pattern.name,
+        triggerDomain: pattern.domain,
+        confidenceScore,
+        recommendedPlaybook: pattern.playbookName,
+        alternatePlaybooks: pattern.alternatePlaybooks,
+        matchedKeywords,
+        conditionsMet: matchedKeywords.length,
+        totalConditions: pattern.keywords.length,
+        dataPoints: matchedKeywords.map((kw) => `Keyword signal: "${kw}"`),
+        engine: "default"
+      });
+    }
+  }
+  return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
+}
+async function sendDetectionEmail(detection, signal, emails, orgId) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey || emails.length === 0) return;
+  const resend2 = new Resend5(apiKey);
+  const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
+  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#132558;padding:32px 36px;">
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Live Detection Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">${detection.confidenceScore}%</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:700;">${detection.recommendedPlaybook}</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+              </td>
+            </tr>
+            ${detection.alternatePlaybooks.length > 0 ? `
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
+                ${detection.alternatePlaybooks.join(" &nbsp;\xB7&nbsp; ")}
+              </td>
+            </tr>` : ""}
+          </table>
+          ${detection.dataPoints && detection.dataPoints.length > 0 ? `
+          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">
+                Why This Trigger Fired
+              </div>
+              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} KEYWORDS MATCHED</span>
+            </div>
+            <div style="margin-bottom:14px;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${detection.matchedKeywords.map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">${detection.triggerName} \u2014 ${detection.triggerDomain} domain \xB7 ${detection.confidenceScore}% confidence</div>
+            </div>
+          </div>` : ""}
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+          </div>
+          <div style="text-align:center;">
+            <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} \u2192</a>
+          </div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+  const fromAddresses = [
+    "Execution OS <onboarding@resend.dev>",
+    "Execution OS <pilot@vaughnmartin.com>"
+  ];
+  for (const recipientEmail of emails) {
+    const token = Buffer.from(recipientEmail).toString("base64url");
+    const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
+    let sent = false;
+    for (const from of fromAddresses) {
+      try {
+        const { error } = await resend2.emails.send({
+          from,
+          replyTo: "pilot@vaughnmartin.com",
+          to: [recipientEmail],
+          subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
+          html: personalizedHtml
+        });
+        if (error) {
+          console.warn(`\u26A0 Detection email sender ${from} rejected (${error.message}) \u2014 trying next`);
+          continue;
+        }
+        sent = true;
+        break;
+      } catch (err) {
+        console.warn(`\u26A0 Detection email sender ${from} threw: ${err.message} \u2014 trying next`);
+      }
+    }
+    if (!sent) console.error(`\u2717 All senders failed for detection alert to ${recipientEmail}`);
+  }
+  console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
+}
+async function sendDetectionSlack(detection, signal) {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  if (!webhookUrl) return;
+  const payload = {
+    text: `\u{1F534} *Strategic Trigger Detected* \u2014 ${detection.triggerName}`,
+    blocks: [
+      {
+        type: "header",
+        text: { type: "plain_text", text: "\u{1F534} Execution OS: Strategic Trigger Detected" }
+      },
+      {
+        type: "section",
+        fields: [
+          { type: "mrkdwn", text: `*Trigger:*
+${detection.triggerName}` },
+          { type: "mrkdwn", text: `*Domain:*
+${detection.triggerDomain}` },
+          { type: "mrkdwn", text: `*Confidence:*
+${detection.confidenceScore}%` },
+          { type: "mrkdwn", text: `*Primary Playbook:*
+${detection.recommendedPlaybook}` },
+          ...detection.alternatePlaybooks.length > 0 ? [{ type: "mrkdwn", text: `*Also Consider:*
+${detection.alternatePlaybooks.join(", ")}` }] : []
+        ]
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `*Signal:* ${signal.description.substring(0, 200)}${signal.description.length > 200 ? "\u2026" : ""}
+*Source:* ${signal.source}`
+        }
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: { type: "plain_text", text: "Review Live Detection \u2192" },
+            url: `${process.env.APP_URL || "https://vaughnmartin.com"}/live-detection-feed`,
+            style: "primary"
+          }
+        ]
+      }
+    ]
+  };
+  try {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    console.log(`\u{1F4F2} Detection Slack alert sent`);
+  } catch (err) {
+    console.error("Detection Slack alert failed:", err);
+  }
+}
+async function evaluateAndPersistSignals(signals, organizationId) {
+  let detectionsCreated = 0;
+  let allContacts = [];
+  try {
+    allContacts = await db.select().from(stakeholderContacts).where(eq21(stakeholderContacts.organizationId, organizationId));
+  } catch {
+  }
+  const evaluationMode = await getOrgEvaluationMode(organizationId);
+  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
+  try {
+    const sources = [...new Set(signals.map((s) => s.source).filter(Boolean))];
+    await db.insert(signalActivityLog).values({
+      organizationId,
+      eventType: "scanning",
+      source: sources.slice(0, 3).join(", "),
+      signalTitle: `Evaluating ${signals.length} signals across ${sources.length} source${sources.length !== 1 ? "s" : ""}`,
+      details: `Continuous monitoring cycle \u2014 scanning 248+ data points. Sources: ${sources.join(", ")}`,
+      confidence: null,
+      keywordsMatched: []
+    });
+  } catch {
+  }
+  try {
+    const sampleSignals = signals.slice(0, 2);
+    for (const sig of sampleSignals) {
+      const text3 = sig.description.toLowerCase();
+      const partialMatches = TRIGGER_PATTERNS.flatMap((p) => p.keywords.filter((kw) => text3.includes(kw.toLowerCase()))).slice(0, 4);
+      if (partialMatches.length > 0 && partialMatches.length < 3) {
+        await db.insert(signalActivityLog).values({
+          organizationId,
+          eventType: "threshold_not_met",
+          source: sig.source,
+          signalTitle: sig.description.substring(0, 120),
+          details: `Partial match: ${partialMatches.length} keyword${partialMatches.length !== 1 ? "s" : ""} detected \u2014 below 3-match threshold. Dismissed.`,
+          confidence: sig.confidence,
+          keywordsMatched: partialMatches
+        });
+      }
+    }
+  } catch {
+  }
+  const allDetectionsFlat = [];
+  const seenTriggerNames = /* @__PURE__ */ new Set();
+  if (evaluationMode === "configured" || evaluationMode === "both") {
+    try {
+      const configuredResults = await evaluateSignalsWithOrgTriggers(signals, organizationId);
+      if (configuredResults && configuredResults.length > 0) {
+        for (const detection of configuredResults) {
+          if (seenTriggerNames.has(detection.triggerName)) continue;
+          seenTriggerNames.add(detection.triggerName);
+          const matchingSignal = signals.find(
+            (s) => s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || "")
+          ) || signals[0];
+          if (matchingSignal) {
+            allDetectionsFlat.push({ detection, signal: matchingSignal, engine: "configured" });
+          }
+        }
+        console.log(`[SignalEvaluationService] Configured engine: ${configuredResults.length} detection(s)`);
+      } else if (evaluationMode === "configured") {
+        console.log(`[SignalEvaluationService] Configured engine: no triggers fired (org has no configured triggers or none matched)`);
+      }
+    } catch (err) {
+      console.error("[SignalEvaluationService] Configured engine error:", err);
+    }
+  }
+  if (evaluationMode === "default" || evaluationMode === "both") {
+    let defaultCount = 0;
+    for (const signal of signals) {
+      const detections = evaluateSignal(signal);
+      for (const detection of detections) {
+        if (seenTriggerNames.has(detection.triggerName)) continue;
+        seenTriggerNames.add(detection.triggerName);
+        allDetectionsFlat.push({ detection, signal, engine: "default" });
+        defaultCount++;
+      }
+    }
+    console.log(`[SignalEvaluationService] Default engine: ${defaultCount} detection(s)`);
+  }
+  console.log(`[SignalEvaluationService] Total detections to process: ${allDetectionsFlat.length} (mode: ${evaluationMode})`);
+  for (const { detection, signal, engine } of allDetectionsFlat) {
+    try {
+      const recent = await db.select().from(triggerDetections).where(eq21(triggerDetections.triggerName, detection.triggerName)).orderBy(desc10(triggerDetections.detectedAt)).limit(1);
+      const lastDetected = recent[0]?.detectedAt;
+      const hoursSince = lastDetected ? (Date.now() - new Date(lastDetected).getTime()) / 36e5 : 999;
+      if (hoursSince < 4) continue;
+      const domainApprovers = allContacts.filter(
+        (c) => c.isActive && c.email && Array.isArray(c.triggerDomains) && c.triggerDomains.length > 0 && c.triggerDomains.includes(detection.triggerDomain)
+      );
+      const fallbackContacts = allContacts.filter(
+        (c) => c.isActive && c.email && (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
+      );
+      const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
+      let contactEmails = [...new Set(recipientContacts.map((c) => c.email).filter(Boolean))];
+      const ADMIN_FALLBACK = "pilot@vaughnmartin.com";
+      if (contactEmails.length === 0) {
+        contactEmails = [ADMIN_FALLBACK];
+        console.log(`\u{1F4EC} No stakeholder contacts registered \u2014 routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
+      } else if (domainApprovers.length > 0) {
+        console.log(`\u{1F4EC} Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
+      } else {
+        console.log(`\u{1F4EC} No domain approvers for "${detection.triggerDomain}" \u2014 sending to ${contactEmails.length} org-wide contact(s)`);
+      }
+      const [savedDetection] = await db.insert(triggerDetections).values({
+        organizationId,
+        triggerName: detection.triggerName,
+        triggerDomain: detection.triggerDomain,
+        signalDescription: signal.description,
+        signalSource: signal.source,
+        signalSourceUrl: signal.sourceUrl || null,
+        confidenceScore: detection.confidenceScore,
+        recommendedPlaybook: detection.recommendedPlaybook,
+        alternatePlaybooks: detection.alternatePlaybooks,
+        status: "detected",
+        notificationSent: false,
+        matchedEvidence: {
+          engine,
+          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
+          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
+          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
+          matchedKeywords: detection.matchedKeywords
+        }
+      }).returning();
+      console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === "configured" ? "customer-configured" : "default-pattern"}]`);
+      const now = /* @__PURE__ */ new Date();
+      let executionTimelineId = null;
+      try {
+        const [timeline] = await db.insert(executionTimelines).values({
+          organizationId,
+          triggerDetectionId: savedDetection?.id ?? null,
+          triggerName: detection.triggerName,
+          triggerDomain: detection.triggerDomain,
+          recommendedPlaybook: detection.recommendedPlaybook,
+          detectedAt: now,
+          status: "detected"
+        }).returning();
+        executionTimelineId = timeline?.id ?? null;
+      } catch {
+      }
+      try {
+        await db.insert(signalActivityLog).values({
+          organizationId,
+          eventType: "trigger_fired",
+          source: signal.source,
+          signalTitle: signal.description.substring(0, 200),
+          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Playbook recommended: ${detection.recommendedPlaybook}`,
+          confidence: detection.confidenceScore,
+          keywordsMatched: detection.matchedKeywords.slice(0, 5)
+        });
+      } catch {
+      }
+      try {
+        const io = wsService.getIO();
+        if (io) {
+          io.emit("new-detection", {
+            triggerName: detection.triggerName,
+            triggerDomain: detection.triggerDomain,
+            confidenceScore: detection.confidenceScore,
+            organizationId
+          });
+          io.emit("signal-activity", {
+            eventType: "trigger_fired",
+            source: signal.source,
+            triggerName: detection.triggerName,
+            confidence: detection.confidenceScore,
+            timestamp: now.toISOString()
+          });
+        }
+      } catch {
+      }
+      await Promise.allSettled([
+        sendDetectionSlack(detection, signal),
+        contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve()
+      ]);
+      const notifiedAt = /* @__PURE__ */ new Date();
+      try {
+        if (executionTimelineId) {
+          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: "notified" }).where(eq21(executionTimelines.id, executionTimelineId));
+        }
+      } catch {
+      }
+      await db.update(triggerDetections).set({ notificationSent: true, status: "notified" }).where(eq21(triggerDetections.triggerName, detection.triggerName));
+      detectionsCreated++;
+    } catch (err) {
+      console.error("Error persisting detection:", err);
+    }
+  }
+  return detectionsCreated;
+}
+async function getRecentDetections(organizationId, limit = 20) {
+  return db.select().from(triggerDetections).where(eq21(triggerDetections.organizationId, organizationId)).orderBy(desc10(triggerDetections.detectedAt)).limit(limit);
+}
+var TRIGGER_PATTERNS;
+var init_SignalEvaluationService = __esm({
+  "server/services/SignalEvaluationService.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    init_WebSocketService();
+    init_TriggerEvaluationEngine();
+    TRIGGER_PATTERNS = [
+      // Market Dynamics
+      {
+        name: "Competitive Market Entry",
+        domain: "Market Dynamics",
+        keywords: ["competitor", "rival", "market entry", "new entrant", "competing", "launched", "expansion", "competitive threat", "market share", "disrupt", "market leader", "outcompete", "price war", "competitive pressure", "market position", "competitive", "outpaced", "undercutting", "market leader", "beat competitors", "market competition", "industry rival", "competitive landscape"],
+        playbookName: "Competitive Threat Response",
+        alternatePlaybooks: ["Investor Communications Protocol", "Reputational Crisis Protocol"],
+        baseConfidence: 70
+      },
+      {
+        name: "M&A Activity Detected",
+        domain: "Market Dynamics",
+        keywords: ["acquisition", "merger", "buyout", "takeover", "acquires", "acquired", "deal signed", "consolidation", "private equity", "strategic acquisition", "deal closed", "billion deal", "purchase agreement", "M&A", "joint venture", "acquirer", "merger agreement", "deal valued", "deal worth", "stake acquisition", "hostile takeover", "friendly takeover", "acquire", "acquired by", "bought by", "purchase of"],
+        playbookName: "M&A Response Playbook",
+        alternatePlaybooks: ["Investor Communications Protocol", "Competitive Threat Response"],
+        baseConfidence: 75
+      },
+      {
+        name: "Market Valuation Shift",
+        domain: "Market Dynamics",
+        keywords: ["valuation", "IPO", "stock price", "market cap", "earnings miss", "guidance cut", "revenue decline", "profit warning", "downgrade", "sell-off", "quarterly results", "analyst downgrade", "stock decline", "market correction", "investor concern"],
+        playbookName: "Investor Communications Protocol",
+        alternatePlaybooks: ["Financial Crisis Response", "Reputational Crisis Protocol"],
+        baseConfidence: 65
+      },
+      // Regulatory & Compliance
+      {
+        name: "Regulatory Enforcement Action",
+        domain: "Regulatory & Compliance",
+        keywords: ["SEC", "FTC", "DOJ", "enforcement", "investigation", "fine", "penalty", "sanction", "antitrust", "subpoena", "consent decree", "regulatory action", "regulator", "probe", "lawsuit filed", "class action", "compliance failure"],
+        playbookName: "Regulatory Compliance Sprint",
+        alternatePlaybooks: ["Regulatory Disclosure Protocol", "Reputational Crisis Protocol"],
+        baseConfidence: 80
+      },
+      {
+        name: "Legislation Change",
+        domain: "Regulatory & Compliance",
+        keywords: ["new regulation", "legislation", "compliance deadline", "regulatory change", "rule change", "policy shift", "mandate", "data privacy", "GDPR", "CCPA", "executive order", "new law", "compliance requirement", "regulatory framework", "federal rule"],
+        playbookName: "Regulatory Compliance Sprint",
+        alternatePlaybooks: ["ESG Crisis Response", "Regulatory Disclosure Protocol"],
+        baseConfidence: 70
+      },
+      {
+        name: "8-K Material Event Filing",
+        domain: "Regulatory & Compliance",
+        keywords: ["8-K", "material event", "form 8-K", "SEC filing", "material change", "reportable event", "current report", "material disclosure", "securities filing", "filed with the SEC", "SEC report", "8K filing", "material event disclosure", "regulatory filing", "securities disclosure", "public company filing"],
+        playbookName: "Regulatory Disclosure Protocol",
+        alternatePlaybooks: ["Investor Communications Protocol", "Regulatory Compliance Sprint"],
+        baseConfidence: 85
+      },
+      // Technology & Security
+      {
+        name: "Cybersecurity Breach Signal",
+        domain: "Technology & Security",
+        keywords: ["data breach", "cyberattack", "ransomware", "hack", "hacked", "security incident", "vulnerability", "zero-day", "phishing", "malware", "data leak", "cyber incident", "systems compromised", "cyber attack", "data stolen", "unauthorized access", "breach", "cyber", "hacker", "hackers", "stolen data", "compromised", "intrusion", "network breach", "security breach", "attack on", "attacked", "cybercriminals", "data exposed", "personal data", "credentials stolen"],
+        playbookName: "Cybersecurity Breach Response",
+        alternatePlaybooks: ["Reputational Crisis Protocol", "Regulatory Disclosure Protocol"],
+        baseConfidence: 85
+      },
+      {
+        name: "AI Disruption Signal",
+        domain: "Technology & Security",
+        keywords: ["artificial intelligence", "AI model", "generative AI", "automation", "AI disruption", "large language model", "GPT", "AI launch", "AI competitor", "machine learning", "ChatGPT", "AI investment", "workforce automation", "AI regulation", "tech disruption", "AI funding"],
+        playbookName: "Technology Disruption Response",
+        alternatePlaybooks: ["Competitive Threat Response", "Investor Communications Protocol"],
+        baseConfidence: 62
+      },
+      // Supply Chain & Operations
+      {
+        name: "Supply Chain Disruption",
+        domain: "Supply Chain & Operations",
+        keywords: ["supply chain", "shortage", "logistics disruption", "shipping delay", "port strike", "tariff", "trade war", "embargo", "supplier failure", "procurement crisis", "supply shortage", "inventory shortage", "shipping crisis", "disrupted supply", "sourcing issue"],
+        playbookName: "Supply Chain Disruption Protocol",
+        alternatePlaybooks: ["Operational Crisis Response", "Geopolitical Risk Response"],
+        baseConfidence: 75
+      },
+      {
+        name: "Operational Crisis",
+        domain: "Supply Chain & Operations",
+        keywords: ["plant shutdown", "factory fire", "operational failure", "production halt", "recall", "product defect", "quality crisis", "manufacturing issue", "facility closure", "operations disrupted", "product recall", "safety recall", "production stopped"],
+        playbookName: "Operational Crisis Response",
+        alternatePlaybooks: ["Supply Chain Disruption Protocol", "Reputational Crisis Protocol"],
+        baseConfidence: 80
+      },
+      // Brand & Reputation
+      {
+        name: "Reputational Crisis Signal",
+        domain: "Brand & Reputation",
+        keywords: ["controversy", "scandal", "backlash", "social media crisis", "viral", "boycott", "protest", "PR crisis", "reputational damage", "public outcry", "brand damage", "criticism", "public backlash", "brand crisis", "negative coverage", "media scrutiny"],
+        playbookName: "Reputational Crisis Protocol",
+        alternatePlaybooks: ["Executive Leadership Crisis", "ESG Crisis Response"],
+        baseConfidence: 70
+      },
+      {
+        name: "Executive Leadership Event",
+        domain: "Brand & Reputation",
+        keywords: ["CEO resigns", "CFO departure", "executive fired", "leadership change", "board shakeup", "C-suite", "management change", "succession", "CEO steps down", "executive departure", "leadership transition", "board resignation", "interim CEO", "top executive"],
+        playbookName: "Executive Leadership Crisis",
+        alternatePlaybooks: ["Investor Communications Protocol", "Reputational Crisis Protocol"],
+        baseConfidence: 75
+      },
+      // Financial
+      {
+        name: "Financial Distress Signal",
+        domain: "Financial",
+        keywords: ["bankruptcy", "insolvency", "debt default", "credit downgrade", "liquidity crisis", "cash crunch", "chapter 11", "restructuring", "financial distress", "debt crisis", "loan default", "credit rating cut", "financial trouble", "cash flow crisis"],
+        playbookName: "Financial Crisis Response",
+        alternatePlaybooks: ["Investor Communications Protocol", "Regulatory Disclosure Protocol"],
+        baseConfidence: 85
+      },
+      {
+        name: "Earnings Surprise",
+        domain: "Financial",
+        keywords: ["earnings beat", "earnings miss", "revenue surprise", "profit warning", "earnings guidance", "quarterly results", "financial results", "beat estimates", "missed estimates", "revenue growth", "profit decline", "Q1 results", "Q2 results", "Q3 results", "Q4 results", "annual results", "fiscal year", "shares fell", "stock fell", "stock dropped", "shares dropped", "revenue fell", "beat expectations", "missed expectations", "earnings report", "quarterly earnings", "profit fell", "net income", "revenue declined", "EPS", "earnings per share", "profit rose", "revenue rose"],
+        playbookName: "Investor Communications Protocol",
+        alternatePlaybooks: ["Financial Crisis Response", "Reputational Crisis Protocol"],
+        baseConfidence: 65
+      },
+      // ESG
+      {
+        name: "ESG / Climate Event",
+        domain: "ESG & Sustainability",
+        keywords: ["ESG", "climate", "sustainability", "carbon", "emissions", "greenwashing", "environmental violation", "climate risk", "net zero", "DEI controversy", "climate change", "renewable energy", "carbon neutral", "environmental impact", "social responsibility", "diversity controversy", "green energy", "fossil fuels", "carbon footprint", "clean energy", "sustainable", "climate crisis", "environmental", "emission targets", "Paris Agreement", "carbon tax", "DEI", "diversity"],
+        playbookName: "ESG Crisis Response",
+        alternatePlaybooks: ["Reputational Crisis Protocol", "Regulatory Compliance Sprint"],
+        baseConfidence: 65
+      },
+      // Geopolitical
+      {
+        name: "Geopolitical Risk Signal",
+        domain: "Geopolitical",
+        keywords: ["sanctions", "trade war", "tariff", "tariffs", "geopolitical", "conflict", "war", "political instability", "export control", "national security", "government shutdown", "tariffs imposed", "trade policy", "economic sanctions", "diplomatic crisis", "military conflict", "trade restrictions", "Iran", "military", "diplomatic", "Middle East", "NATO", "nuclear", "oil prices", "crude oil", "peace talks", "ceasefire", "embargo", "military strike", "weapons", "armed conflict", "foreign policy", "global tensions", "Trump tariff", "import duties", "trade deal", "export ban"],
+        playbookName: "Geopolitical Risk Response",
+        alternatePlaybooks: ["Supply Chain Disruption Protocol", "Operational Crisis Response"],
+        baseConfidence: 70
+      }
+    ];
+  }
+});
+
+// server/services/LiveSignalIngestionService.ts
+var LiveSignalIngestionService_exports = {};
+__export(LiveSignalIngestionService_exports, {
+  liveSignalIngestionService: () => liveSignalIngestionService
+});
+function parseXML(xmlText) {
+  const items = [];
+  const itemRegex = /<item[^>]*>([\s\S]*?)<\/item>|<entry[^>]*>([\s\S]*?)<\/entry>/gi;
+  let match;
+  while ((match = itemRegex.exec(xmlText)) !== null) {
+    const content = match[1] || match[2] || "";
+    const titleMatch = content.match(/<title[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/i);
+    const descMatch = content.match(/<description[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/description>|<summary[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/summary>/i);
+    const linkMatch = content.match(/<link[^>]*>([^<]*)<\/link>|<link[^>]*href="([^"]*)"[^>]*\/>/i);
+    const dateMatch = content.match(/<pubDate[^>]*>(.*?)<\/pubDate>|<updated[^>]*>(.*?)<\/updated>/i);
+    if (titleMatch) {
+      items.push({
+        title: titleMatch[1]?.trim() || "",
+        description: (descMatch?.[1] || descMatch?.[2] || "").replace(/<[^>]*>/g, "").trim().substring(0, 500),
+        link: (linkMatch?.[1] || linkMatch?.[2] || "").trim(),
+        pubDate: (dateMatch?.[1] || dateMatch?.[2] || (/* @__PURE__ */ new Date()).toISOString()).trim(),
+        source: "",
+        category: ""
+      });
+    }
+  }
+  return items;
+}
+function classifySignalType(text3) {
+  const lower = text3.toLowerCase();
+  let bestType = "market";
+  let bestScore = 0;
+  for (const [type, keywords] of Object.entries(SIGNAL_TYPE_MAP)) {
+    const score = keywords.filter((kw) => lower.includes(kw.toLowerCase())).length;
+    if (score > bestScore) {
+      bestScore = score;
+      bestType = type;
+    }
+  }
+  return bestType;
+}
+function classifyImpact(text3) {
+  const lower = text3.toLowerCase();
+  for (const level of ["critical", "high", "medium", "low"]) {
+    if (IMPACT_KEYWORDS[level].some((kw) => lower.includes(kw))) return level;
+  }
+  return "medium";
+}
+function calculateConfidence(item) {
+  let conf = 50;
+  if (item.description.length > 100) conf += 10;
+  if (item.source.includes("Reuters") || item.source.includes("SEC")) conf += 15;
+  if (item.source.includes("BBC") || item.source.includes("NY Times")) conf += 10;
+  const date = new Date(item.pubDate);
+  const hoursAgo = (Date.now() - date.getTime()) / (1e3 * 60 * 60);
+  if (hoursAgo < 6) conf += 15;
+  else if (hoursAgo < 24) conf += 10;
+  else if (hoursAgo < 72) conf += 5;
+  return Math.min(conf, 95);
+}
+function estimateTimeline(text3) {
+  const lower = text3.toLowerCase();
+  if (lower.includes("immediate") || lower.includes("today") || lower.includes("breaking")) return "Immediate";
+  if (lower.includes("this week") || lower.includes("next week")) return "1-2 weeks";
+  if (lower.includes("this month") || lower.includes("quarter")) return "1-3 months";
+  if (lower.includes("this year") || lower.includes("annual")) return "3-6 months";
+  return "1-3 months";
+}
+var RSS_FEEDS, SIGNAL_TYPE_MAP, IMPACT_KEYWORDS, LiveSignalIngestionService, liveSignalIngestionService;
+var init_LiveSignalIngestionService = __esm({
+  "server/services/LiveSignalIngestionService.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    init_SignalEvaluationService();
+    RSS_FEEDS = [
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
+      { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "market" },
+      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom", source: "SEC EDGAR 8-K Filings", category: "regulatory" },
+      { url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", source: "CNBC Business", category: "market" },
+      { url: "https://feeds.marketwatch.com/marketwatch/topstories/", source: "MarketWatch", category: "market" },
+      { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
+      { url: "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen", source: "Google News Finance", category: "market" },
+      { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" }
+    ];
+    SIGNAL_TYPE_MAP = {
+      market: ["acquisition", "merger", "market share", "revenue", "earnings", "IPO", "stock", "valuation", "growth", "decline"],
+      regulatory: ["regulation", "compliance", "SEC", "FTC", "antitrust", "sanctions", "policy", "legislation", "enforcement", "fine"],
+      technology: ["AI", "artificial intelligence", "cybersecurity", "breach", "cloud", "digital transformation", "automation", "quantum"],
+      competitor: ["competitor", "rival", "market leader", "disruption", "partnership", "alliance", "launch", "expansion"],
+      supply_chain: ["supply chain", "logistics", "shipping", "tariff", "trade war", "shortage", "inventory", "procurement"]
+    };
+    IMPACT_KEYWORDS = {
+      critical: ["crisis", "breach", "collapse", "bankruptcy", "shutdown", "emergency", "catastrophic"],
+      high: ["major", "significant", "billion", "disruption", "transformation", "acquisition", "merger"],
+      medium: ["growth", "expansion", "partnership", "update", "change", "shift"],
+      low: ["minor", "small", "incremental", "gradual", "expected"]
+    };
+    LiveSignalIngestionService = class {
+      isRunning = false;
+      intervalId = null;
+      lastFetchedUrls = /* @__PURE__ */ new Set();
+      async fetchFeed(feed) {
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 1e4);
+          const res = await fetch(feed.url, {
+            signal: controller.signal,
+            headers: { "User-Agent": "VaughnMartin-Signal-Monitor/1.0" }
+          });
+          clearTimeout(timeout);
+          if (!res.ok) {
+            console.log(`\u26A0 Feed ${feed.source} returned ${res.status}`);
+            return [];
+          }
+          const text3 = await res.text();
+          const items = parseXML(text3);
+          return items.map((item) => ({ ...item, source: feed.source, category: feed.category }));
+        } catch (err) {
+          console.log(`\u26A0 Feed ${feed.source} fetch failed: ${err instanceof Error ? err.message : "unknown"}`);
+          return [];
+        }
+      }
+      async ingestAllFeeds() {
+        const allItems = [];
+        const results = await Promise.allSettled(RSS_FEEDS.map((feed) => this.fetchFeed(feed)));
+        for (const result of results) {
+          if (result.status === "fulfilled") {
+            allItems.push(...result.value);
+          }
+        }
+        const newItems = allItems.filter((item) => {
+          const key = `${item.title}:${item.link}`;
+          if (this.lastFetchedUrls.has(key)) return false;
+          this.lastFetchedUrls.add(key);
+          return true;
+        });
+        if (this.lastFetchedUrls.size > 1e3) {
+          const arr = Array.from(this.lastFetchedUrls);
+          this.lastFetchedUrls = new Set(arr.slice(arr.length - 500));
+        }
+        const strategicItems = newItems.filter((item) => {
+          const text3 = `${item.title} ${item.description}`.toLowerCase();
+          return Object.values(SIGNAL_TYPE_MAP).some(
+            (keywords) => keywords.some((kw) => text3.includes(kw.toLowerCase()))
+          );
+        });
+        const topItems = strategicItems.slice(0, 10);
+        return topItems.map((item) => ({
+          signalType: classifySignalType(`${item.title} ${item.description}`),
+          description: `${item.title}${item.description ? ` \u2014 ${item.description.substring(0, 450)}` : ""}`,
+          confidence: calculateConfidence(item),
+          impact: classifyImpact(`${item.title} ${item.description}`),
+          timeline: estimateTimeline(`${item.title} ${item.description}`),
+          source: item.source,
+          sourceUrl: item.link,
+          category: item.category
+        }));
+      }
+      async persistSignals(signals, organizationId) {
+        let inserted = 0;
+        for (const signal of signals) {
+          try {
+            await db.insert(weakSignals).values({
+              organizationId,
+              signalType: signal.signalType,
+              description: signal.description,
+              confidence: String(signal.confidence),
+              impact: signal.impact,
+              timeline: signal.timeline,
+              source: `${signal.source} | ${signal.sourceUrl}`,
+              status: "active",
+              relatedScenarios: []
+            });
+            inserted++;
+          } catch (err) {
+          }
+        }
+        return inserted;
+      }
+      async generateAlerts(signals, organizationId) {
+        const alertTypeMap = {
+          market: "market_shift",
+          regulatory: "regulatory_change",
+          technology: "opportunity",
+          competitor: "competitive_threat",
+          supply_chain: "risk"
+        };
+        const criticalSignals = signals.filter((s) => s.impact === "critical" || s.impact === "high");
+        for (const signal of criticalSignals.slice(0, 3)) {
+          try {
+            await db.insert(strategicAlerts).values({
+              organizationId,
+              alertType: alertTypeMap[signal.signalType] || "market_shift",
+              title: `Live Signal: ${signal.description.substring(0, 100)}`,
+              description: signal.description,
+              severity: signal.impact === "critical" ? "critical" : "high",
+              status: "active",
+              dataSourcesUsed: [signal.source],
+              suggestedActions: [`Review ${signal.signalType} signal from ${signal.source}`, `Assess impact timeline: ${signal.timeline}`]
+            });
+          } catch (err) {
+          }
+        }
+      }
+      async runIngestionCycle(organizationId) {
+        console.log("\u{1F4E1} Running live signal ingestion cycle...");
+        const signals = await this.ingestAllFeeds();
+        console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
+        if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
+        const inserted = await this.persistSignals(signals, organizationId);
+        await this.generateAlerts(signals, organizationId);
+        const alertCount = signals.filter((s) => s.impact === "critical" || s.impact === "high").length;
+        const detections = await evaluateAndPersistSignals(signals, organizationId);
+        console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
+        return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
+      }
+      start(organizationId, intervalMinutes = 15) {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        console.log(`\u{1F4E1} Live Signal Ingestion started (every ${intervalMinutes} min)`);
+        this.runIngestionCycle(organizationId).catch(
+          (err) => console.error("Initial ingestion cycle failed:", err)
+        );
+        this.intervalId = setInterval(() => {
+          this.runIngestionCycle(organizationId).catch(
+            (err) => console.error("Ingestion cycle failed:", err)
+          );
+        }, intervalMinutes * 60 * 1e3);
+      }
+      stop() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+          this.intervalId = null;
+        }
+        this.isRunning = false;
+        console.log("\u{1F4E1} Live Signal Ingestion stopped");
+      }
+      getStatus() {
+        return {
+          running: this.isRunning,
+          feedCount: RSS_FEEDS.length,
+          cachedUrls: this.lastFetchedUrls.size
+        };
+      }
+    };
+    liveSignalIngestionService = new LiveSignalIngestionService();
+  }
+});
+
 // server/services/PreparednessEngine.ts
 var PreparednessEngine_exports = {};
 __export(PreparednessEngine_exports, {
   PreparednessEngine: () => PreparednessEngine,
   preparednessEngine: () => preparednessEngine
 });
-import { eq as eq20, and as and12, desc as desc10 } from "drizzle-orm";
+import { eq as eq22, and as and13, desc as desc11 } from "drizzle-orm";
 var PreparednessEngine, preparednessEngine;
 var init_PreparednessEngine = __esm({
   "server/services/PreparednessEngine.ts"() {
@@ -18580,12 +19674,12 @@ var init_PreparednessEngine = __esm({
       async calculateScore(organizationId) {
         try {
           const [scenarios3, activations, alignment, simulations] = await Promise.all([
-            db.select().from(strategicScenarios).where(eq20(strategicScenarios.organizationId, organizationId)),
-            db.select().from(warRoomSessions).where(eq20(warRoomSessions.organizationId, organizationId)),
-            db.select().from(stakeholderAlignment).where(eq20(stakeholderAlignment.organizationId, organizationId)).orderBy(desc10(stakeholderAlignment.createdAt)).limit(1),
-            db.select().from(crisisSimulations).where(and12(
-              eq20(crisisSimulations.organizationId, organizationId),
-              eq20(crisisSimulations.status, "completed")
+            db.select().from(strategicScenarios).where(eq22(strategicScenarios.organizationId, organizationId)),
+            db.select().from(warRoomSessions).where(eq22(warRoomSessions.organizationId, organizationId)),
+            db.select().from(stakeholderAlignment).where(eq22(stakeholderAlignment.organizationId, organizationId)).orderBy(desc11(stakeholderAlignment.createdAt)).limit(1),
+            db.select().from(crisisSimulations).where(and13(
+              eq22(crisisSimulations.organizationId, organizationId),
+              eq22(crisisSimulations.status, "completed")
             ))
           ]);
           const weights = {
@@ -18688,7 +19782,7 @@ var init_PreparednessEngine = __esm({
        */
       async getPreparednessTimeline(organizationId, months = 6) {
         const currentScore = await this.calculateScore(organizationId);
-        const activations = await db.select().from(warRoomSessions).where(eq20(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
+        const activations = await db.select().from(warRoomSessions).where(eq22(warRoomSessions.organizationId, organizationId)).orderBy(warRoomSessions.createdAt);
         const timeline = [];
         const now = /* @__PURE__ */ new Date();
         for (let i = months; i >= 0; i--) {
@@ -20331,7 +21425,7 @@ Contact: ${stakeholder.name}`;
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq21, and as and13, desc as desc11, isNull as isNull2, sql as sql13 } from "drizzle-orm";
+import { eq as eq23, and as and14, desc as desc12, isNull as isNull2, sql as sql13 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -20387,7 +21481,7 @@ var init_DatabaseNotificationService = __esm({
             notification: notifications,
             user: users,
             organization: organizations
-          }).from(notifications).leftJoin(users, eq21(notifications.userId, users.id)).leftJoin(organizations, eq21(notifications.organizationId, organizations.id)).where(eq21(notifications.id, notificationId));
+          }).from(notifications).leftJoin(users, eq23(notifications.userId, users.id)).leftJoin(organizations, eq23(notifications.organizationId, organizations.id)).where(eq23(notifications.id, notificationId));
           if (!notification) {
             throw new Error(`Notification ${notificationId} not found`);
           }
@@ -20406,7 +21500,7 @@ ${notification.notification.message}`,
             severity,
             metadata
           );
-          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq21(notifications.id, notificationId));
+          await db.update(notifications).set({ sentAt: /* @__PURE__ */ new Date() }).where(eq23(notifications.id, notificationId));
           console.log(`\u2705 Notification ${notificationId} delivered successfully`);
         } catch (error) {
           console.error(`\u274C Failed to deliver notification ${notificationId}:`, error);
@@ -20417,11 +21511,11 @@ ${notification.notification.message}`,
        * Get notifications for a user with pagination
        */
       async getUserNotifications(userId, organizationId, limit = 50, offset = 0) {
-        const whereConditions = [eq21(notifications.userId, userId)];
+        const whereConditions = [eq23(notifications.userId, userId)];
         if (organizationId) {
-          whereConditions.push(eq21(notifications.organizationId, organizationId));
+          whereConditions.push(eq23(notifications.organizationId, organizationId));
         }
-        return await db.select().from(notifications).where(and13(...whereConditions)).orderBy(desc11(notifications.createdAt)).limit(limit).offset(offset);
+        return await db.select().from(notifications).where(and14(...whereConditions)).orderBy(desc12(notifications.createdAt)).limit(limit).offset(offset);
       }
       /**
        * Mark notification as read
@@ -20432,9 +21526,9 @@ ${notification.notification.message}`,
             isRead: true,
             readAt: /* @__PURE__ */ new Date()
           }).where(
-            and13(
-              eq21(notifications.id, notificationId),
-              eq21(notifications.userId, userId)
+            and14(
+              eq23(notifications.id, notificationId),
+              eq23(notifications.userId, userId)
             )
           ).returning();
           return !!updated;
@@ -20448,13 +21542,13 @@ ${notification.notification.message}`,
        */
       async getUnreadCount(userId, organizationId) {
         const whereConditions = [
-          eq21(notifications.userId, userId),
-          eq21(notifications.isRead, false)
+          eq23(notifications.userId, userId),
+          eq23(notifications.isRead, false)
         ];
         if (organizationId) {
-          whereConditions.push(eq21(notifications.organizationId, organizationId));
+          whereConditions.push(eq23(notifications.organizationId, organizationId));
         }
-        const result = await db.select({ count: notifications.id }).from(notifications).where(and13(...whereConditions));
+        const result = await db.select({ count: notifications.id }).from(notifications).where(and14(...whereConditions));
         return result.length;
       }
       /**
@@ -20478,7 +21572,7 @@ ${notification.notification.message}`,
       async processScheduledNotifications() {
         try {
           const dueNotifications = await db.select().from(notifications).where(
-            and13(
+            and14(
               isNull2(notifications.sentAt),
               sql13`${notifications.scheduledFor} IS NOT NULL`,
               sql13`${notifications.scheduledFor} <= NOW()`
@@ -20498,9 +21592,9 @@ ${notification.notification.message}`,
       async createStrategicAlert(organizationId, alertData) {
         try {
           const executiveUsers = await db.select().from(users).where(
-            and13(
-              eq21(users.organizationId, organizationId),
-              eq21(users.department, "Executive")
+            and14(
+              eq23(users.organizationId, organizationId),
+              eq23(users.department, "Executive")
               // Or check role-based access
             )
           );
@@ -20550,8 +21644,8 @@ ${notification.notification.message}`,
           const cutoffDate = /* @__PURE__ */ new Date();
           cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
           await db.delete(notifications).where(
-            and13(
-              eq21(notifications.isRead, true),
+            and14(
+              eq23(notifications.isRead, true),
               sql13`${notifications.createdAt} <= ${cutoffDate}`
             )
           );
@@ -20573,7 +21667,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq22, and as and14, desc as desc12, gte as gte4, lte } from "drizzle-orm";
+import { eq as eq24, and as and15, desc as desc13, gte as gte4, lte } from "drizzle-orm";
 import pino10 from "pino";
 var logger8, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -20941,7 +22035,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async updateMetricsFromEvent(event) {
         try {
-          const relevantMetrics = await db.select().from(roiMetrics).where(eq22(roiMetrics.organizationId, event.organizationId));
+          const relevantMetrics = await db.select().from(roiMetrics).where(eq24(roiMetrics.organizationId, event.organizationId));
           for (const metric of relevantMetrics) {
             let shouldUpdate = false;
             let newValue = parseFloat(metric.currentValue || "0");
@@ -21000,7 +22094,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
                 dataPoints: updatedDataPoints,
                 lastCalculated: /* @__PURE__ */ new Date(),
                 updatedAt: /* @__PURE__ */ new Date()
-              }).where(eq22(roiMetrics.id, metric.id));
+              }).where(eq24(roiMetrics.id, metric.id));
             }
           }
         } catch (error) {
@@ -21012,7 +22106,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async calculateMetricROI(metricId) {
         try {
-          const [metric] = await db.select().from(roiMetrics).where(eq22(roiMetrics.id, metricId));
+          const [metric] = await db.select().from(roiMetrics).where(eq24(roiMetrics.id, metricId));
           if (!metric) {
             throw new Error(`Metric ${metricId} not found`);
           }
@@ -21066,17 +22160,17 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async generateExecutiveROIReport(organizationId, startDate, endDate) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq22(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq24(roiMetrics.organizationId, organizationId));
           const keyMetrics = await Promise.all(
             metrics.map((metric) => this.calculateMetricROI(metric.id))
           );
           const valueEvents = await db.select().from(valueTrackingEvents).where(
-            and14(
-              eq22(valueTrackingEvents.organizationId, organizationId),
+            and15(
+              eq24(valueTrackingEvents.organizationId, organizationId),
               gte4(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
             )
-          ).orderBy(desc12(valueTrackingEvents.valueGenerated)).limit(10);
+          ).orderBy(desc13(valueTrackingEvents.valueGenerated)).limit(10);
           const totalValueGenerated = keyMetrics.reduce((sum, m) => sum + Math.max(0, m.estimatedAnnualValue), 0);
           const totalCostAvoided = valueEvents.reduce((sum, e) => sum + parseFloat(e.costAvoided || "0"), 0);
           const platformCost = 5e5;
@@ -21188,7 +22282,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        */
       async checkROIAlerts(organizationId) {
         try {
-          const metrics = await db.select().from(roiMetrics).where(eq22(roiMetrics.organizationId, organizationId));
+          const metrics = await db.select().from(roiMetrics).where(eq24(roiMetrics.organizationId, organizationId));
           for (const metric of metrics) {
             const calculation = await this.calculateMetricROI(metric.id);
             if (calculation.improvementPercentage > 25 && calculation.confidenceLevel > 0.7) {
@@ -21780,7 +22874,7 @@ __export(ROITracker_exports, {
   ROITracker: () => ROITracker,
   roiTracker: () => roiTracker
 });
-import { eq as eq23, and as and15, desc as desc13 } from "drizzle-orm";
+import { eq as eq25, and as and16, desc as desc14 } from "drizzle-orm";
 var ROITracker, roiTracker;
 var init_ROITracker = __esm({
   "server/services/ROITracker.ts"() {
@@ -21793,10 +22887,10 @@ var init_ROITracker = __esm({
        */
       async calculateRealROI(organizationId) {
         try {
-          const activations = await db.select().from(warRoomSessions).where(and15(
-            eq23(warRoomSessions.organizationId, organizationId),
-            eq23(warRoomSessions.status, "completed")
-          )).orderBy(desc13(warRoomSessions.createdAt));
+          const activations = await db.select().from(warRoomSessions).where(and16(
+            eq25(warRoomSessions.organizationId, organizationId),
+            eq25(warRoomSessions.status, "completed")
+          )).orderBy(desc14(warRoomSessions.createdAt));
           let totalSavings = 0;
           let totalHoursSaved = 0;
           const successfulActivations = activations.filter((a) => a.outcome !== "failed");
@@ -21854,7 +22948,7 @@ var init_ROITracker = __esm({
         try {
           await db.update(warRoomSessions).set({
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq23(warRoomSessions.id, activationId));
+          }).where(eq25(warRoomSessions.id, activationId));
         } catch (error) {
           console.error("Error tracking business impact:", error);
           throw error;
@@ -21893,7 +22987,7 @@ var init_ROITracker = __esm({
         for (const activation of activations) {
           let category = "Other";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq23(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq25(strategicScenarios.id, activation.scenarioId)).limit(1);
             category = scenario[0]?.templateCategory || "Other";
           }
           const value = await this.calculateActivationValue(activation);
@@ -21946,12 +23040,12 @@ var init_ROITracker = __esm({
        * Calculate value per scenario type
        */
       async getValueByScenarioType(organizationId) {
-        const activations = await db.select().from(warRoomSessions).where(eq23(warRoomSessions.organizationId, organizationId));
+        const activations = await db.select().from(warRoomSessions).where(eq25(warRoomSessions.organizationId, organizationId));
         const typeMap = /* @__PURE__ */ new Map();
         for (const activation of activations) {
           let type = "Unknown";
           if (activation.scenarioId) {
-            const scenario = await db.select().from(strategicScenarios).where(eq23(strategicScenarios.id, activation.scenarioId)).limit(1);
+            const scenario = await db.select().from(strategicScenarios).where(eq25(strategicScenarios.id, activation.scenarioId)).limit(1);
             type = scenario[0]?.type || "Unknown";
           }
           const value = await this.calculateActivationValue(activation);
@@ -21981,7 +23075,7 @@ __export(TriggerIntelligenceService_exports, {
   triggerIntelligence: () => triggerIntelligence
 });
 import OpenAI5 from "openai";
-import { eq as eq24, and as and16, gte as gte6, desc as desc14 } from "drizzle-orm";
+import { eq as eq26, and as and17, gte as gte6, desc as desc15 } from "drizzle-orm";
 var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
@@ -22048,9 +23142,9 @@ Be specific and strategic. Focus on business impact.`;
        */
       async matchTriggers(organizationId, analysis, eventMetadata) {
         try {
-          const triggers = await db.select().from(executiveTriggers).where(and16(
-            eq24(executiveTriggers.organizationId, organizationId),
-            eq24(executiveTriggers.isActive, true)
+          const triggers = await db.select().from(executiveTriggers).where(and17(
+            eq26(executiveTriggers.organizationId, organizationId),
+            eq26(executiveTriggers.isActive, true)
           ));
           const matches = [];
           for (const trigger of triggers) {
@@ -22136,10 +23230,10 @@ Be specific and strategic. Focus on business impact.`;
        */
       async getIntelligenceMetrics(organizationId, timeWindowHours = 24) {
         const cutoffTime = new Date(Date.now() - timeWindowHours * 60 * 60 * 1e3);
-        const alerts = await db.select().from(strategicAlerts).where(and16(
-          eq24(strategicAlerts.organizationId, organizationId),
+        const alerts = await db.select().from(strategicAlerts).where(and17(
+          eq26(strategicAlerts.organizationId, organizationId),
           gte6(strategicAlerts.createdAt, cutoffTime)
-        )).orderBy(desc14(strategicAlerts.createdAt));
+        )).orderBy(desc15(strategicAlerts.createdAt));
         const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length) : 0;
         const byType = alerts.reduce((acc, alert) => {
           acc[alert.alertType] = (acc[alert.alertType] || 0) + 1;
@@ -22207,7 +23301,7 @@ __export(ExecutiveBriefingService_exports, {
   executiveBriefing: () => executiveBriefing
 });
 import OpenAI6 from "openai";
-import { eq as eq25, and as and17, gte as gte7, desc as desc15 } from "drizzle-orm";
+import { eq as eq27, and as and18, gte as gte7, desc as desc16 } from "drizzle-orm";
 var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
@@ -22333,24 +23427,24 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         const cutoffTime = new Date(Date.now() - hoursBack * 60 * 60 * 1e3);
         const [alerts, scenarios3, metrics, preparedness, recentActivations] = await Promise.all([
           // Recent alerts
-          db.select().from(strategicAlerts).where(and17(
-            eq25(strategicAlerts.organizationId, organizationId),
+          db.select().from(strategicAlerts).where(and18(
+            eq27(strategicAlerts.organizationId, organizationId),
             gte7(strategicAlerts.createdAt, cutoffTime)
-          )).orderBy(desc15(strategicAlerts.createdAt)),
+          )).orderBy(desc16(strategicAlerts.createdAt)),
           // Active scenarios
-          db.select().from(strategicScenarios).where(eq25(strategicScenarios.organizationId, organizationId)).limit(20),
+          db.select().from(strategicScenarios).where(eq27(strategicScenarios.organizationId, organizationId)).limit(20),
           // Key metrics
-          db.select().from(kpis).where(and17(
-            eq25(kpis.organizationId, organizationId),
-            eq25(kpis.isActive, true)
+          db.select().from(kpis).where(and18(
+            eq27(kpis.organizationId, organizationId),
+            eq27(kpis.isActive, true)
           )).limit(10),
           // Preparedness score
           preparednessEngine.calculateScore(organizationId),
           // Recent war room sessions (playbook activations)
-          db.select().from(warRoomSessions).where(and17(
-            eq25(warRoomSessions.organizationId, organizationId),
+          db.select().from(warRoomSessions).where(and18(
+            eq27(warRoomSessions.organizationId, organizationId),
             gte7(warRoomSessions.createdAt, cutoffTime)
-          )).orderBy(desc15(warRoomSessions.createdAt)).limit(5)
+          )).orderBy(desc16(warRoomSessions.createdAt)).limit(5)
         ]);
         return {
           alerts,
@@ -22495,7 +23589,7 @@ __export(eventIngestion_exports, {
   pollNewsFeeds: () => pollNewsFeeds,
   startEventIngestion: () => startEventIngestion
 });
-import { eq as eq26 } from "drizzle-orm";
+import { eq as eq28 } from "drizzle-orm";
 async function pollNewsFeeds() {
   try {
     const newsApiKey = process.env.NEWS_API_KEY;
@@ -22515,7 +23609,7 @@ async function pollNewsFeeds() {
     console.log(`Fetched ${articles.length} news articles for analysis`);
     const organizations3 = await db.selectDistinct({
       organizationId: executiveTriggers.organizationId
-    }).from(executiveTriggers).where(eq26(executiveTriggers.isActive, true));
+    }).from(executiveTriggers).where(eq28(executiveTriggers.isActive, true));
     for (const article of articles.slice(0, 10)) {
       try {
         const analysis = await triggerIntelligence.analyzeEvent({
@@ -22585,8 +23679,8 @@ var NotificationService_exports = {};
 __export(NotificationService_exports, {
   notificationService: () => notificationService
 });
-import { Resend as Resend5 } from "resend";
-import { eq as eq27 } from "drizzle-orm";
+import { Resend as Resend6 } from "resend";
+import { eq as eq29 } from "drizzle-orm";
 var NotificationService, notificationService;
 var init_NotificationService = __esm({
   "server/services/NotificationService.ts"() {
@@ -22602,7 +23696,7 @@ var init_NotificationService = __esm({
         const apiKey = process.env.RESEND_API_KEY;
         if (apiKey) {
           try {
-            this.resend = new Resend5(apiKey);
+            this.resend = new Resend6(apiKey);
             console.log("\u2713 Resend initialized");
           } catch (error) {
             console.warn("Failed to initialize Resend:", error);
@@ -22614,7 +23708,7 @@ var init_NotificationService = __esm({
       async deliverNotification(notificationId) {
         try {
           const notification = await db.query.notifications.findFirst({
-            where: eq27(notifications.id, notificationId),
+            where: eq29(notifications.id, notificationId),
             with: {
               user: true
             }
@@ -22660,7 +23754,7 @@ var init_NotificationService = __esm({
           if (anySuccess) {
             await db.update(notifications).set({
               sentAt: /* @__PURE__ */ new Date()
-            }).where(eq27(notifications.id, notificationId));
+            }).where(eq29(notifications.id, notificationId));
           } else {
             console.error(`All delivery channels failed for notification ${notificationId}:`, deliveryResults);
           }
@@ -22947,12 +24041,12 @@ __export(PlaybookLearningService_exports, {
   default: () => PlaybookLearningService_default,
   playbookLearningService: () => playbookLearningService
 });
-import { eq as eq28 } from "drizzle-orm";
+import { eq as eq30 } from "drizzle-orm";
 import pino11 from "pino";
 async function analyzeExecution(metrics) {
   try {
     log3.info({ metrics }, "Analyzing execution for learning opportunities");
-    const playbook = await db.select().from(playbookLibrary).where(eq28(playbookLibrary.id, metrics.playbookId)).limit(1);
+    const playbook = await db.select().from(playbookLibrary).where(eq30(playbookLibrary.id, metrics.playbookId)).limit(1);
     if (!playbook.length) {
       throw new Error("Playbook not found");
     }
@@ -23075,7 +24169,7 @@ __export(ComplianceCheckService_exports, {
   ComplianceCheckService: () => ComplianceCheckService,
   complianceCheckService: () => complianceCheckService
 });
-import { eq as eq29, and as and18 } from "drizzle-orm";
+import { eq as eq31, and as and19 } from "drizzle-orm";
 import pino12 from "pino";
 var logger9, ComplianceCheckService, complianceCheckService;
 var init_ComplianceCheckService = __esm({
@@ -23114,7 +24208,7 @@ var init_ComplianceCheckService = __esm({
             };
           }
           totalControls = allControlIds.size;
-          const frameworks = await db.select().from(complianceFrameworks).where(eq29(complianceFrameworks.organizationId, organizationId));
+          const frameworks = await db.select().from(complianceFrameworks).where(eq31(complianceFrameworks.organizationId, organizationId));
           for (const framework of frameworks) {
             let frameworkControls = framework.controls;
             if (frameworkControls && typeof frameworkControls === "object" && !Array.isArray(frameworkControls)) {
@@ -23204,9 +24298,9 @@ var init_ComplianceCheckService = __esm({
        */
       async getFrameworkStatus(frameworkId, organizationId) {
         const framework = await db.select().from(complianceFrameworks).where(
-          and18(
-            eq29(complianceFrameworks.id, frameworkId),
-            eq29(complianceFrameworks.organizationId, organizationId)
+          and19(
+            eq31(complianceFrameworks.id, frameworkId),
+            eq31(complianceFrameworks.organizationId, organizationId)
           )
         ).limit(1);
         if (framework.length === 0) {
@@ -23226,7 +24320,7 @@ var init_ComplianceCheckService = __esm({
        */
       async createAuditTrail(params) {
         const { organizationId, executionPlanId, decision, complianceCheck, approvedBy, notes } = params;
-        const frameworks = await db.select().from(complianceFrameworks).where(eq29(complianceFrameworks.organizationId, organizationId)).limit(1);
+        const frameworks = await db.select().from(complianceFrameworks).where(eq31(complianceFrameworks.organizationId, organizationId)).limit(1);
         if (frameworks.length > 0) {
           await db.insert(complianceReports).values({
             organizationId: frameworks[0].organizationId,
@@ -23254,14 +24348,14 @@ var init_ComplianceCheckService = __esm({
       async mapControlToTask(taskId, controlIds) {
         await db.update(executionPlanTasks).set({
           complianceControlIds: controlIds
-        }).where(eq29(executionPlanTasks.id, taskId));
+        }).where(eq31(executionPlanTasks.id, taskId));
         this.log.info({ taskId, controlCount: controlIds.length }, "Compliance controls mapped to task");
       }
       /**
        * Get compliance framework details
        */
       async getFrameworkDetails(frameworkId) {
-        return await db.select().from(complianceFrameworks).where(eq29(complianceFrameworks.id, frameworkId)).limit(1);
+        return await db.select().from(complianceFrameworks).where(eq31(complianceFrameworks.id, frameworkId)).limit(1);
       }
     };
     complianceCheckService = new ComplianceCheckService();
@@ -23274,7 +24368,7 @@ __export(ApprovalTokenService_exports, {
   ApprovalTokenService: () => ApprovalTokenService,
   approvalTokenService: () => approvalTokenService
 });
-import { eq as eq30, and as and19, isNull as isNull3 } from "drizzle-orm";
+import { eq as eq32, and as and20, isNull as isNull3 } from "drizzle-orm";
 import { nanoid as nanoid2 } from "nanoid";
 import bcrypt from "bcryptjs";
 import pino13 from "pino";
@@ -23386,7 +24480,7 @@ var init_ApprovalTokenService = __esm({
             usedBy: userId,
             ipAddress,
             userAgent
-          }).where(eq30(approvalTokens.id, record.id));
+          }).where(eq32(approvalTokens.id, record.id));
           if (record.action === "approve") {
             await this.approveExecution(record.executionInstanceId, userId);
           } else if (record.action === "reject") {
@@ -23411,7 +24505,7 @@ var init_ApprovalTokenService = __esm({
       async approveExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "running"
-        }).where(eq30(executionInstances.id, executionInstanceId));
+        }).where(eq32(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution approved via email");
       }
       /**
@@ -23420,7 +24514,7 @@ var init_ApprovalTokenService = __esm({
       async rejectExecution(executionInstanceId, userId) {
         await db.update(executionInstances).set({
           status: "cancelled"
-        }).where(eq30(executionInstances.id, executionInstanceId));
+        }).where(eq32(executionInstances.id, executionInstanceId));
         this.log.info({ executionInstanceId, userId }, "Execution rejected via email");
       }
       /**
@@ -23429,9 +24523,9 @@ var init_ApprovalTokenService = __esm({
       async getActiveTokens(userId) {
         const now = /* @__PURE__ */ new Date();
         return await db.select().from(approvalTokens).where(
-          and19(
-            eq30(approvalTokens.userId, userId),
-            eq30(approvalTokens.usedAt, null)
+          and20(
+            eq32(approvalTokens.userId, userId),
+            eq32(approvalTokens.usedAt, null)
           )
         );
       }
@@ -23442,14 +24536,14 @@ var init_ApprovalTokenService = __esm({
         await db.update(approvalTokens).set({
           usedAt: /* @__PURE__ */ new Date(),
           usedBy: userId
-        }).where(eq30(approvalTokens.id, tokenId));
+        }).where(eq32(approvalTokens.id, tokenId));
         this.log.info({ tokenId, userId }, "Token revoked");
       }
       /**
        * Get token audit trail
        */
       async getAuditTrail(executionInstanceId) {
-        const tokens = await db.select().from(approvalTokens).where(eq30(approvalTokens.executionInstanceId, executionInstanceId));
+        const tokens = await db.select().from(approvalTokens).where(eq32(approvalTokens.executionInstanceId, executionInstanceId));
         return tokens.map((token) => ({
           action: token.action,
           createdAt: token.createdAt,
@@ -23473,7 +24567,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq31, and as and20, desc as desc16, gte as gte8, count as count5 } from "drizzle-orm";
+import { eq as eq33, and as and21, desc as desc17, gte as gte8, count as count5 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -23483,7 +24577,7 @@ async function processPulseAnalysis(jobData) {
     return { status: "skipped", reason: "Invalid or missing organizationId" };
   }
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1e3);
-  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and20(eq31(weakSignals.organizationId, orgId), gte8(weakSignals.detectedAt, sixHoursAgo))).limit(1);
+  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and21(eq33(weakSignals.organizationId, orgId), gte8(weakSignals.detectedAt, sixHoursAgo))).limit(1);
   if (recentSignals.length > 0) {
     console.log("\u23ED\uFE0F Pulse analysis skipped \u2014 signal already created in last 6 hours");
     return { status: "skipped", reason: "Signal already created recently" };
@@ -23528,9 +24622,9 @@ async function processRiskAssessment(jobData) {
     return assessment2;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and20(
-    eq31(weakSignals.organizationId, orgId),
-    eq31(weakSignals.status, "active"),
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and21(
+    eq33(weakSignals.organizationId, orgId),
+    eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
@@ -23548,9 +24642,9 @@ async function processOpportunityDetection(jobData) {
     return { status: "skipped", reason: "No valid organizationId" };
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and20(
-    eq31(weakSignals.organizationId, orgId),
-    eq31(weakSignals.status, "active"),
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and21(
+    eq33(weakSignals.organizationId, orgId),
+    eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
@@ -23558,11 +24652,11 @@ async function processOpportunityDetection(jobData) {
     console.log(`\u23ED\uFE0F Opportunity detection skipped \u2014 only ${signals} signals (need 3+)`);
     return { status: "skipped", reason: `Insufficient signals (${signals}/3)` };
   }
-  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and20(
-    eq31(weakSignals.organizationId, orgId),
-    eq31(weakSignals.status, "active"),
+  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and21(
+    eq33(weakSignals.organizationId, orgId),
+    eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
-  )).orderBy(desc16(weakSignals.detectedAt)).limit(10);
+  )).orderBy(desc17(weakSignals.detectedAt)).limit(10);
   const highImpactCount = recentSignals.filter((s) => s.impact === "high").length;
   const opportunityName = highImpactCount >= 2 ? "Strategic response window identified" : "Emerging market opportunity detected";
   const confidence = Math.min(95, 50 + signals * 5);
@@ -23601,13 +24695,13 @@ async function processExecutiveSummary(jobData) {
     return empty;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: tasksCompleted }] = await db.select({ value: count5() }).from(continuousOperationsTasks).where(and20(
-    eq31(continuousOperationsTasks.organizationId, orgId),
-    eq31(continuousOperationsTasks.status, "completed"),
+  const [{ value: tasksCompleted }] = await db.select({ value: count5() }).from(continuousOperationsTasks).where(and21(
+    eq33(continuousOperationsTasks.organizationId, orgId),
+    eq33(continuousOperationsTasks.status, "completed"),
     gte8(continuousOperationsTasks.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
-  const [{ value: execCount }] = await db.select({ value: count5() }).from(executionInstances).where(and20(
-    eq31(executionInstances.organizationId, orgId),
+  const [{ value: execCount }] = await db.select({ value: count5() }).from(executionInstances).where(and21(
+    eq33(executionInstances.organizationId, orgId),
     gte8(executionInstances.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
   const tasks4 = Number(tasksCompleted) || 0;
@@ -23649,7 +24743,7 @@ __export(BackgroundJobService_exports, {
   BackgroundJobService: () => BackgroundJobService,
   backgroundJobService: () => backgroundJobService
 });
-import { eq as eq32 } from "drizzle-orm";
+import { eq as eq34 } from "drizzle-orm";
 import pino14 from "pino";
 var logger11, BackgroundJobService, backgroundJobService;
 var init_BackgroundJobService = __esm({
@@ -23714,7 +24808,7 @@ var init_BackgroundJobService = __esm({
        */
       async processNextJob() {
         try {
-          const pendingJobs = await db.select().from(backgroundJobs).where(eq32(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
+          const pendingJobs = await db.select().from(backgroundJobs).where(eq34(backgroundJobs.status, "pending")).orderBy(backgroundJobs.priority).limit(1);
           if (pendingJobs.length === 0) {
             return;
           }
@@ -23724,13 +24818,13 @@ var init_BackgroundJobService = __esm({
             status: "processing",
             startedAt: /* @__PURE__ */ new Date(),
             attempts: (job.attempts || 0) + 1
-          }).where(eq32(backgroundJobs.id, job.id));
+          }).where(eq34(backgroundJobs.id, job.id));
           try {
             await this.executeJob(job);
             await db.update(backgroundJobs).set({
               status: "completed",
               completedAt: /* @__PURE__ */ new Date()
-            }).where(eq32(backgroundJobs.id, job.id));
+            }).where(eq34(backgroundJobs.id, job.id));
             this.log.info({ jobId: job.id, jobType: job.jobType }, "Job completed successfully");
           } catch (error) {
             this.log.error({ error, jobId: job.id, jobType: job.jobType }, "Job failed");
@@ -23740,14 +24834,14 @@ var init_BackgroundJobService = __esm({
               await db.update(backgroundJobs).set({
                 status: "pending",
                 error: error.message
-              }).where(eq32(backgroundJobs.id, job.id));
+              }).where(eq34(backgroundJobs.id, job.id));
               this.log.info({ jobId: job.id, attempts: currentAttempts + 1 }, "Job will be retried");
             } else {
               await db.update(backgroundJobs).set({
                 status: "failed",
                 error: error.message,
                 completedAt: /* @__PURE__ */ new Date()
-              }).where(eq32(backgroundJobs.id, job.id));
+              }).where(eq34(backgroundJobs.id, job.id));
               this.log.error({ jobId: job.id, error }, "Job failed after max retries");
             }
           }
@@ -24057,7 +25151,7 @@ var init_DataIntegrationManager = __esm({
 });
 
 // server/services/integrationManager.ts
-import { eq as eq33 } from "drizzle-orm";
+import { eq as eq35 } from "drizzle-orm";
 import crypto4 from "crypto";
 var ENCRYPTION_KEY, ALGORITHM2, IntegrationManager, integrationManager;
 var init_integrationManager = __esm({
@@ -24134,13 +25228,13 @@ var init_integrationManager = __esm({
               status: "active",
               lastSyncAt: /* @__PURE__ */ new Date(),
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq33(enterpriseIntegrations.id, integration.id));
+            }).where(eq35(enterpriseIntegrations.id, integration.id));
           } else {
             await db.update(enterpriseIntegrations).set({
               status: "error",
               errorLog: { message: "Connection test failed" },
               updatedAt: /* @__PURE__ */ new Date()
-            }).where(eq33(enterpriseIntegrations.id, integration.id));
+            }).where(eq35(enterpriseIntegrations.id, integration.id));
           }
           return {
             ...integration,
@@ -24159,7 +25253,7 @@ var init_integrationManager = __esm({
           await db.update(enterpriseIntegrations).set({
             status: "inactive",
             updatedAt: /* @__PURE__ */ new Date()
-          }).where(eq33(enterpriseIntegrations.id, integrationId));
+          }).where(eq35(enterpriseIntegrations.id, integrationId));
           return { success: true };
         } catch (error) {
           console.error("Failed to disconnect integration:", error);
@@ -24171,7 +25265,7 @@ var init_integrationManager = __esm({
        */
       async testConnection(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq33(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq35(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return false;
           }
@@ -24289,7 +25383,7 @@ var init_integrationManager = __esm({
             status: enterpriseIntegrations.status,
             lastSyncAt: enterpriseIntegrations.lastSyncAt,
             createdAt: enterpriseIntegrations.createdAt
-          }).from(enterpriseIntegrations).where(eq33(enterpriseIntegrations.organizationId, organizationId));
+          }).from(enterpriseIntegrations).where(eq35(enterpriseIntegrations.organizationId, organizationId));
           return integrations;
         } catch (error) {
           console.error("Failed to get integrations:", error);
@@ -24301,7 +25395,7 @@ var init_integrationManager = __esm({
        */
       async getCredentials(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq33(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq35(enterpriseIntegrations.id, integrationId)).limit(1);
           const config = integration?.configuration;
           if (!integration || !config?.encryptedCredentials) {
             return null;
@@ -24336,7 +25430,7 @@ var init_integrationManager = __esm({
        */
       async getIntegrationHealth(integrationId) {
         try {
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq33(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq35(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             return { healthy: false, message: "Integration not found" };
           }
@@ -24360,7 +25454,7 @@ var init_integrationManager = __esm({
 });
 
 // server/services/dataSourceService.ts
-import { eq as eq34 } from "drizzle-orm";
+import { eq as eq36 } from "drizzle-orm";
 var DataSourceService, dataSourceService;
 var init_dataSourceService = __esm({
   "server/services/dataSourceService.ts"() {
@@ -24378,7 +25472,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq34(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -24404,7 +25498,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq34(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -24430,7 +25524,7 @@ var init_dataSourceService = __esm({
           if (!credentials) {
             throw new Error("Integration credentials not found");
           }
-          const [integration] = await db.select().from(enterpriseIntegrations).where(eq34(enterpriseIntegrations.id, integrationId)).limit(1);
+          const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId)).limit(1);
           if (!integration) {
             throw new Error("Integration not found");
           }
@@ -24735,7 +25829,7 @@ var init_dataSourceService = __esm({
 });
 
 // server/services/syncEngine.ts
-import { eq as eq35 } from "drizzle-orm";
+import { eq as eq37 } from "drizzle-orm";
 var SyncEngine, syncEngine;
 var init_syncEngine = __esm({
   "server/services/syncEngine.ts"() {
@@ -25043,11 +26137,11 @@ var init_syncEngine = __esm({
           calendar: null
         };
         try {
-          const [scenario] = await db.select().from(strategicScenarios).where(eq35(strategicScenarios.id, scenarioId)).limit(1);
+          const [scenario] = await db.select().from(strategicScenarios).where(eq37(strategicScenarios.id, scenarioId)).limit(1);
           if (!scenario) {
             return { success: false, results, errors: ["Scenario not found"] };
           }
-          const scenarioTasks = await db.select().from(tasks).where(eq35(tasks.scenarioId, scenarioId));
+          const scenarioTasks = await db.select().from(tasks).where(eq37(tasks.scenarioId, scenarioId));
           if (integrations.slack) {
             const slackResult = await this.createSlackChannel(integrations.slack, {
               name: `crisis-${(/* @__PURE__ */ new Date()).toISOString().split("T")[0]}`,
@@ -25825,7 +26919,7 @@ __export(oauth_routes_exports, {
 });
 import { Router as Router6 } from "express";
 import crypto5 from "crypto";
-import { eq as eq36 } from "drizzle-orm";
+import { eq as eq38 } from "drizzle-orm";
 function getBaseUrl3(req) {
   const proto = req.headers["x-forwarded-proto"] || req.protocol || "https";
   const host = req.headers["x-forwarded-host"] || req.headers.host;
@@ -25947,7 +27041,7 @@ var init_oauth_routes = __esm({
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.refreshToken) return res.status(400).json({ error: "No refresh token available" });
@@ -25962,7 +27056,7 @@ var init_oauth_routes = __esm({
           })
         });
         if (!tokenRes.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq36(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", errorLog: { error: "Token refresh failed", at: (/* @__PURE__ */ new Date()).toISOString() } }).where(eq38(enterpriseIntegrations.id, integrationId));
           return res.status(500).json({ error: "Token refresh failed" });
         }
         const tokens = await tokenRes.json();
@@ -25975,7 +27069,7 @@ var init_oauth_routes = __esm({
             expiresAt: Date.now() + tokens.expires_in * 1e3
           },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(enterpriseIntegrations.id, integrationId));
+        }).where(eq38(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Jira token refresh error:", err);
@@ -26082,7 +27176,7 @@ var init_oauth_routes = __esm({
           lastSyncAt: enterpriseIntegrations.lastSyncAt,
           createdAt: enterpriseIntegrations.createdAt,
           configuration: enterpriseIntegrations.configuration
-        }).from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.organizationId, organizationId));
+        }).from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.organizationId, organizationId));
         const available = {
           jira: { configured: !!JIRA_CLIENT_ID2, provider: "Atlassian Jira" },
           slack: { configured: !!SLACK_CLIENT_ID, provider: "Slack" }
@@ -26099,7 +27193,7 @@ var init_oauth_routes = __esm({
       const { integrationId } = req.body;
       if (!integrationId) return res.status(400).json({ error: "integrationId required" });
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         if (integration.vendor === "slack") {
           const metadata = integration.metadata;
@@ -26118,7 +27212,7 @@ var init_oauth_routes = __esm({
           status: "inactive",
           metadata: { disconnectedAt: (/* @__PURE__ */ new Date()).toISOString(), disconnectedBy: userId },
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq36(enterpriseIntegrations.id, integrationId));
+        }).where(eq38(enterpriseIntegrations.id, integrationId));
         res.json({ success: true });
       } catch (err) {
         console.error("Failed to disconnect:", err);
@@ -26130,7 +27224,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -26140,10 +27234,10 @@ var init_oauth_routes = __esm({
         });
         if (testRes.ok) {
           const user = await testRes.json();
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq36(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq38(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, user: { displayName: user.displayName, email: user.emailAddress } });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq36(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq38(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: `API returned ${testRes.status}` });
         }
       } catch (err) {
@@ -26155,7 +27249,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.json({ healthy: false, error: "Missing credentials" });
@@ -26165,10 +27259,10 @@ var init_oauth_routes = __esm({
         });
         const data = await testRes.json();
         if (data.ok) {
-          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq36(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "active", lastSyncAt: /* @__PURE__ */ new Date(), updatedAt: /* @__PURE__ */ new Date() }).where(eq38(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: true, team: data.team, user: data.user });
         } else {
-          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq36(enterpriseIntegrations.id, integrationId));
+          await db.update(enterpriseIntegrations).set({ status: "error", updatedAt: /* @__PURE__ */ new Date() }).where(eq38(enterpriseIntegrations.id, integrationId));
           res.json({ healthy: false, error: data.error });
         }
       } catch (err) {
@@ -26180,7 +27274,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, channel, text: text3, blocks } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -26200,7 +27294,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId, projectKey, summary, description, issueType, priority, assignee } = req.body;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -26250,7 +27344,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         const config = integration.configuration;
@@ -26276,7 +27370,7 @@ var init_oauth_routes = __esm({
       if (!userId) return res.status(401).json({ error: "Authentication required" });
       const { integrationId } = req.query;
       try {
-        const [integration] = await db.select().from(enterpriseIntegrations).where(eq36(enterpriseIntegrations.id, integrationId));
+        const [integration] = await db.select().from(enterpriseIntegrations).where(eq38(enterpriseIntegrations.id, integrationId));
         if (!integration) return res.status(404).json({ error: "Integration not found" });
         const metadata = integration.metadata;
         if (!metadata?.accessToken) return res.status(400).json({ error: "Not connected" });
@@ -26297,1100 +27391,6 @@ var init_oauth_routes = __esm({
       }
     });
     oauth_routes_default = router6;
-  }
-});
-
-// server/services/TriggerEvaluationEngine.ts
-var TriggerEvaluationEngine_exports = {};
-__export(TriggerEvaluationEngine_exports, {
-  evaluateSignalsWithOrgTriggers: () => evaluateSignalsWithOrgTriggers,
-  getOrgTriggerSummary: () => getOrgTriggerSummary,
-  loadConfiguredTriggers: () => loadConfiguredTriggers
-});
-import { eq as eq37, and as and23 } from "drizzle-orm";
-function isValidUuid(id) {
-  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
-}
-async function loadConfiguredTriggers(organizationId) {
-  const configured = [];
-  if (!isValidUuid(organizationId)) {
-    return configured;
-  }
-  try {
-    const execTriggers = await db.select().from(executiveTriggers).where(and23(
-      eq37(executiveTriggers.organizationId, organizationId),
-      eq37(executiveTriggers.isActive, true)
-    ));
-    for (const t of execTriggers) {
-      const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
-      configured.push({
-        id: t.id,
-        name: t.name,
-        category: t.category || "general",
-        triggerType: t.triggerType,
-        conditions: t.conditions || { field: "", operator: "change", value: "any" },
-        alertThreshold: t.alertThreshold || "yellow",
-        severity: t.severity || "medium",
-        recommendedPlaybooks: playbooks2,
-        isActive: t.isActive ?? true,
-        source: "executive"
-      });
-    }
-    const custom = await db.select().from(customTriggers).where(and23(
-      eq37(customTriggers.organizationId, organizationId),
-      eq37(customTriggers.isActive, true)
-    ));
-    for (const t of custom) {
-      const playbooks2 = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
-      configured.push({
-        id: t.id,
-        name: t.name,
-        category: t.category || "general",
-        triggerType: t.signalType || "event",
-        conditions: {
-          field: t.conditionField,
-          operator: t.conditionOperator,
-          value: t.conditionValue ? Number(t.conditionValue) : "any"
-        },
-        alertThreshold: t.alertThreshold || "yellow",
-        severity: t.severity || "medium",
-        recommendedPlaybooks: playbooks2,
-        isActive: t.isActive ?? true,
-        source: "custom"
-      });
-    }
-  } catch (err) {
-    console.error("[TriggerEvaluationEngine] Error loading configured triggers:", err);
-  }
-  return configured;
-}
-function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
-  const text3 = (signal.description + " " + signal.signalType + " " + signal.category).toLowerCase();
-  const matchedTerms = [];
-  const dataPoints = [];
-  let score = 0;
-  const conditions = Array.isArray(trigger.conditions) ? trigger.conditions : [trigger.conditions];
-  let conditionsMet = 0;
-  for (const condition2 of conditions) {
-    const { field, operator, value } = condition2;
-    let conditionHit = false;
-    const fieldWords = FIELD_KEYWORDS[field] || [];
-    const fieldMatches = fieldWords.filter((kw) => text3.includes(kw.toLowerCase()));
-    if (fieldMatches.length > 0) {
-      score += 30 + Math.min(fieldMatches.length * 5, 20);
-      matchedTerms.push(...fieldMatches);
-      conditionHit = true;
-      const fieldLabel = field.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
-      dataPoints.push(`${fieldLabel}: matched "${fieldMatches.slice(0, 2).join('", "')}"`);
-    }
-    if (conditionHit) {
-      const opWords = OPERATOR_SIGNAL_WORDS[operator] || [];
-      const opMatches = opWords.filter((kw) => text3.includes(kw.toLowerCase()));
-      if (opMatches.length > 0) {
-        score += 8 + opMatches.length * 3;
-        matchedTerms.push(...opMatches);
-        dataPoints[dataPoints.length - 1] += ` (${operator}: "${opMatches[0]}")`;
-      }
-      if (typeof value === "string" && value !== "any" && text3.includes(value.toLowerCase())) {
-        score += 6;
-        matchedTerms.push(value);
-      }
-      conditionsMet++;
-    }
-  }
-  const allConditionsMet = conditionsMet === conditions.length;
-  if (allConditionsMet) {
-    if (signal.impact === "critical") score += 12;
-    else if (signal.impact === "high") score += 7;
-    else if (signal.impact === "medium") score += 3;
-    score += Math.max(0, (signal.confidence - 50) * 0.25);
-    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) {
-      score += 8;
-    }
-  }
-  return {
-    score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
-    matchedTerms: [...new Set(matchedTerms)],
-    conditionsMet,
-    totalConditions: conditions.length,
-    dataPoints,
-    allConditionsMet
-  };
-}
-function buildDetection(trigger, signal, result) {
-  const [primaryPlaybook, ...alternates] = trigger.recommendedPlaybooks;
-  return {
-    triggerName: trigger.name,
-    triggerDomain: categoryToDomain(trigger.category),
-    confidenceScore: result.score,
-    recommendedPlaybook: primaryPlaybook || "Playbook Not Configured",
-    alternatePlaybooks: alternates.slice(0, 2),
-    matchedKeywords: result.matchedTerms,
-    conditionsMet: result.conditionsMet,
-    totalConditions: result.totalConditions,
-    dataPoints: result.dataPoints,
-    engine: "configured"
-  };
-}
-function categoryToDomain(category) {
-  const map = {
-    competitive: "Market Dynamics",
-    market: "Market Dynamics",
-    financial: "Financial Strategy",
-    regulatory: "Regulatory & Compliance",
-    supplychain: "Supply Chain & Operations",
-    talent: "Talent & Leadership",
-    technology: "Technology & Innovation",
-    cyber: "Technology & Innovation",
-    media: "Brand & Reputation",
-    customer: "Brand & Reputation",
-    geopolitical: "Geopolitical",
-    economic: "Financial Strategy",
-    partnership: "Market Dynamics",
-    execution: "Operational Excellence",
-    behavior: "Market Dynamics",
-    innovation: "Technology & Innovation",
-    esg: "ESG & Sustainability",
-    general: "Strategic Intelligence"
-  };
-  return map[category.toLowerCase()] || "Strategic Intelligence";
-}
-async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
-  const configuredTriggers = await loadConfiguredTriggers(organizationId);
-  if (configuredTriggers.length === 0) {
-    console.log(`[TriggerEvaluationEngine] Org ${organizationId} has no configured triggers \u2014 using default patterns`);
-    return null;
-  }
-  console.log(`[TriggerEvaluationEngine] Evaluating ${signals.length} signal(s) against ${configuredTriggers.length} configured trigger(s) for org ${organizationId}`);
-  const allDetections = [];
-  for (const signal of signals) {
-    const signalDetections = [];
-    for (const trigger of configuredTriggers) {
-      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
-      if (result.score === 0) {
-        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
-          console.log(
-            `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 AND gate failed: ${result.conditionsMet}/${result.totalConditions} conditions met \u2014 will not fire`
-          );
-        }
-        continue;
-      }
-      const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
-      if (result.score >= requiredConfidence) {
-        const detection = buildDetection(trigger, signal, result);
-        signalDetections.push(detection);
-        console.log(
-          `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${result.score}% (threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") \u2014 ALL ${result.totalConditions} condition(s) met \u2014 data points: [${result.dataPoints.join(" | ")}]`
-        );
-      }
-    }
-    const top2 = signalDetections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
-    allDetections.push(...top2);
-  }
-  return allDetections;
-}
-async function getOrgTriggerSummary(organizationId) {
-  const triggers = await loadConfiguredTriggers(organizationId);
-  const byAlertLevel = {};
-  const byCategory = {};
-  for (const t of triggers) {
-    byAlertLevel[t.alertThreshold] = (byAlertLevel[t.alertThreshold] || 0) + 1;
-    byCategory[t.category] = (byCategory[t.category] || 0) + 1;
-  }
-  return {
-    total: triggers.length,
-    byAlertLevel,
-    byCategory,
-    triggerNames: triggers.map((t) => t.name)
-  };
-}
-var THRESHOLD_CONFIDENCE_FLOOR, FIELD_KEYWORDS, OPERATOR_SIGNAL_WORDS;
-var init_TriggerEvaluationEngine = __esm({
-  "server/services/TriggerEvaluationEngine.ts"() {
-    "use strict";
-    init_db();
-    init_schema();
-    THRESHOLD_CONFIDENCE_FLOOR = {
-      red: 85,
-      yellow: 72,
-      green: 58
-    };
-    FIELD_KEYWORDS = {
-      // Competitive
-      comp_product_launch: ["launch", "released", "announced", "new product", "new feature", "unveiled", "debut", "introduced"],
-      comp_pricing_change: ["price cut", "pricing", "discount", "price drop", "price reduction", "cheaper", "cost reduction", "price war"],
-      comp_patent_filings: ["patent", "ip filing", "intellectual property", "trademark", "innovation filing"],
-      comp_job_postings: ["hiring", "job posting", "recruitment", "headcount", "talent acquisition", "open roles"],
-      comp_exec_changes: ["CEO", "CFO", "CTO", "executive", "leadership change", "appointed", "departed", "succession"],
-      comp_funding: ["funding", "raised", "series", "investment", "venture capital", "valuation", "IPO"],
-      // Market
-      market_share: ["market share", "market position", "market leader", "gaining share", "losing share", "market dominance"],
-      market_growth: ["market growth", "market expansion", "growing market", "market opportunity"],
-      economic_indicators: ["GDP", "inflation", "interest rate", "recession", "economic slowdown", "economic growth"],
-      consumer_sentiment: ["consumer confidence", "customer sentiment", "buyer mood", "consumer spending"],
-      // Financial
-      revenue_decline: ["revenue decline", "revenue miss", "earnings miss", "profit warning", "guidance cut", "revenue shortfall"],
-      cash_flow: ["cash flow", "liquidity", "cash crunch", "free cash", "working capital"],
-      credit_rating: ["credit rating", "downgrade", "credit watch", "Moody", "S&P", "Fitch", "credit risk"],
-      debt_levels: ["debt", "leverage", "borrowing", "loan", "bond", "debt load"],
-      stock_price: ["stock price", "share price", "stock drop", "market cap", "equity value", "stock decline", "stock surge"],
-      // Regulatory
-      regulatory_fine: ["fine", "penalty", "enforcement", "SEC", "FTC", "DOJ", "regulator", "sanction", "consent decree"],
-      legislation_change: ["legislation", "regulation", "new law", "rule change", "compliance", "mandate", "GDPR", "CCPA", "executive order"],
-      sec_filing: ["8-K", "SEC filing", "material event", "securities filing", "10-K", "10-Q", "material disclosure"],
-      // Supply Chain
-      supplier_failure: ["supplier", "vendor", "sourcing", "supply chain", "supply disruption", "supplier risk"],
-      logistics_disruption: ["shipping", "logistics", "port", "freight", "delivery delay", "transport disruption", "shipping delay"],
-      inventory: ["inventory", "stockout", "shortage", "overstock", "inventory levels"],
-      // Talent
-      executive_departure: ["CEO resigned", "CFO left", "executive departure", "key executive", "leadership transition", "interim CEO"],
-      talent_exodus: ["layoffs", "mass departure", "attrition", "retention crisis", "talent loss", "brain drain"],
-      labor_action: ["strike", "union", "labor dispute", "walkout", "collective bargaining"],
-      // Technology / Cyber
-      data_breach: ["data breach", "hack", "cyber attack", "ransomware", "security incident", "data leak", "compromised", "unauthorized access"],
-      ai_disruption: ["AI", "artificial intelligence", "generative AI", "automation", "large language model", "ChatGPT", "GPT", "AI launch"],
-      tech_obsolescence: ["obsolete", "legacy system", "end of life", "deprecated", "technology shift", "platform migration"],
-      // Brand / Reputation
-      media_crisis: ["controversy", "scandal", "backlash", "viral", "boycott", "PR crisis", "reputational", "public outcry", "brand damage"],
-      customer_complaint: ["customer complaint", "negative review", "dissatisfied", "customer backlash", "review bombing"],
-      social_sentiment: ["social media", "twitter", "trending", "viral", "public reaction", "online sentiment"],
-      // Geopolitical
-      trade_war: ["tariff", "trade war", "trade policy", "sanctions", "export control", "trade restriction", "embargo"],
-      political_instability: ["political instability", "government change", "election", "coup", "political crisis", "regime change"],
-      sanctions: ["sanctions", "blacklist", "OFAC", "banned", "restricted", "economic sanction"],
-      // ESG
-      esg_controversy: ["ESG", "greenwashing", "environmental violation", "emissions", "climate", "sustainability", "carbon", "DEI", "social responsibility"]
-    };
-    OPERATOR_SIGNAL_WORDS = {
-      spike: ["surged", "spiked", "jumped", "soared", "increased sharply", "rose dramatically", "rapid increase", "dramatic rise"],
-      drop: ["fell", "dropped", "plunged", "declined", "decreased sharply", "tumbled", "slumped", "steep decline"],
-      gt: ["exceeded", "surpassed", "above", "more than", "over", "higher than", "beats", "outpaced"],
-      lt: ["below", "under", "less than", "fell short", "missed", "lower than", "beneath"],
-      gte: ["at least", "reached", "hit", "surpassed", "exceeded", "met or exceeded"],
-      lte: ["no more than", "at most", "capped at", "limited to", "within", "not exceeding"],
-      change: ["changed", "shifted", "altered", "new", "update", "announced", "reported"],
-      trend: ["trending", "pattern", "consistent", "ongoing", "sustained", "continued"]
-    };
-  }
-});
-
-// server/services/SignalEvaluationService.ts
-var SignalEvaluationService_exports = {};
-__export(SignalEvaluationService_exports, {
-  evaluateAndPersistSignals: () => evaluateAndPersistSignals,
-  evaluateSignal: () => evaluateSignal,
-  getRecentDetections: () => getRecentDetections
-});
-import { eq as eq38, desc as desc17 } from "drizzle-orm";
-import { Resend as Resend6 } from "resend";
-async function getOrgEvaluationMode(organizationId) {
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(organizationId)) {
-    return "default";
-  }
-  try {
-    const [config] = await db.select().from(signalMonitoringConfig).where(eq38(signalMonitoringConfig.organizationId, organizationId)).limit(1);
-    const mode = config?.evaluationMode || "both";
-    return ["configured", "default", "both"].includes(mode) ? mode : "both";
-  } catch {
-    return "both";
-  }
-}
-function scoreSignalAgainstPattern(signal, pattern) {
-  const text3 = signal.description.toLowerCase();
-  const matched = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
-  if (matched.length === 0) return 0;
-  const density = matched.length / pattern.keywords.length;
-  let score = pattern.baseConfidence + density * 20;
-  score += (signal.confidence - 50) * 0.3;
-  if (signal.impact === "critical") score += 10;
-  if (signal.impact === "high") score += 5;
-  if (signal.source.includes("SEC") && pattern.domain === "Regulatory & Compliance") score += 10;
-  return Math.min(Math.round(score), 97);
-}
-function evaluateSignal(signal) {
-  const detections = [];
-  const CONFIDENCE_THRESHOLD = 72;
-  const MIN_KEYWORD_MATCHES = 3;
-  for (const pattern of TRIGGER_PATTERNS) {
-    const text3 = signal.description.toLowerCase();
-    const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
-    if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
-    const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
-    if (confidenceScore >= CONFIDENCE_THRESHOLD) {
-      detections.push({
-        triggerName: pattern.name,
-        triggerDomain: pattern.domain,
-        confidenceScore,
-        recommendedPlaybook: pattern.playbookName,
-        alternatePlaybooks: pattern.alternatePlaybooks,
-        matchedKeywords,
-        conditionsMet: matchedKeywords.length,
-        totalConditions: pattern.keywords.length,
-        dataPoints: matchedKeywords.map((kw) => `Keyword signal: "${kw}"`),
-        engine: "default"
-      });
-    }
-  }
-  return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
-}
-async function sendDetectionEmail(detection, signal, emails, orgId) {
-  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey || emails.length === 0) return;
-  const resend2 = new Resend6(apiKey);
-  const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
-  const sourceLink = signal.sourceUrl ? `<a href="${signal.sourceUrl}" style="color:#C9A84C;">${signal.source}</a>` : signal.source;
-  const html = `
-    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
-      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
-        <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Live Detection Alert</div>
-          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
-        </div>
-        <div style="padding:32px 36px;">
-          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">${detection.triggerName}</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">${detection.triggerDomain}</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">${detection.confidenceScore}%</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">${sourceLink}</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
-                <span style="color:#0A0F2E;font-weight:700;">${detection.recommendedPlaybook}</span>
-                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
-              </td>
-            </tr>
-            ${detection.alternatePlaybooks.length > 0 ? `
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
-                ${detection.alternatePlaybooks.join(" &nbsp;\xB7&nbsp; ")}
-              </td>
-            </tr>` : ""}
-          </table>
-          ${detection.dataPoints && detection.dataPoints.length > 0 ? `
-          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">
-                Why This Trigger Fired
-              </div>
-              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">${detection.conditionsMet ?? detection.matchedKeywords.length} of ${detection.totalConditions ?? detection.matchedKeywords.length} KEYWORDS MATCHED</span>
-            </div>
-            <div style="margin-bottom:14px;">
-              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
-              <div style="display:flex;flex-wrap:wrap;gap:6px;">
-                ${detection.matchedKeywords.map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
-              </div>
-            </div>
-            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
-              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
-              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">${detection.triggerName} \u2014 ${detection.triggerDomain} domain \xB7 ${detection.confidenceScore}% confidence</div>
-            </div>
-          </div>` : ""}
-          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
-            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
-          </div>
-          <div style="text-align:center;margin-bottom:12px;">
-            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
-          </div>
-          <div style="text-align:center;">
-            <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} \u2192</a>
-          </div>
-        </div>
-        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
-        </div>
-      </div>
-    </div>
-  `;
-  const fromAddresses = [
-    "Execution OS <onboarding@resend.dev>",
-    "Execution OS <pilot@vaughnmartin.com>"
-  ];
-  for (const recipientEmail of emails) {
-    const token = Buffer.from(recipientEmail).toString("base64url");
-    const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
-    let sent = false;
-    for (const from of fromAddresses) {
-      try {
-        const { error } = await resend2.emails.send({
-          from,
-          replyTo: "pilot@vaughnmartin.com",
-          to: [recipientEmail],
-          subject: `\u{1F534} Trigger Detected: ${detection.triggerName} (${detection.confidenceScore}% confidence)`,
-          html: personalizedHtml
-        });
-        if (error) {
-          console.warn(`\u26A0 Detection email sender ${from} rejected (${error.message}) \u2014 trying next`);
-          continue;
-        }
-        sent = true;
-        break;
-      } catch (err) {
-        console.warn(`\u26A0 Detection email sender ${from} threw: ${err.message} \u2014 trying next`);
-      }
-    }
-    if (!sent) console.error(`\u2717 All senders failed for detection alert to ${recipientEmail}`);
-  }
-  console.log(`\u{1F4E7} Detection alert sent to ${emails.join(", ")}`);
-}
-async function sendDetectionSlack(detection, signal) {
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
-  if (!webhookUrl) return;
-  const payload = {
-    text: `\u{1F534} *Strategic Trigger Detected* \u2014 ${detection.triggerName}`,
-    blocks: [
-      {
-        type: "header",
-        text: { type: "plain_text", text: "\u{1F534} Execution OS: Strategic Trigger Detected" }
-      },
-      {
-        type: "section",
-        fields: [
-          { type: "mrkdwn", text: `*Trigger:*
-${detection.triggerName}` },
-          { type: "mrkdwn", text: `*Domain:*
-${detection.triggerDomain}` },
-          { type: "mrkdwn", text: `*Confidence:*
-${detection.confidenceScore}%` },
-          { type: "mrkdwn", text: `*Primary Playbook:*
-${detection.recommendedPlaybook}` },
-          ...detection.alternatePlaybooks.length > 0 ? [{ type: "mrkdwn", text: `*Also Consider:*
-${detection.alternatePlaybooks.join(", ")}` }] : []
-        ]
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*Signal:* ${signal.description.substring(0, 200)}${signal.description.length > 200 ? "\u2026" : ""}
-*Source:* ${signal.source}`
-        }
-      },
-      {
-        type: "actions",
-        elements: [
-          {
-            type: "button",
-            text: { type: "plain_text", text: "Review Live Detection \u2192" },
-            url: `${process.env.APP_URL || "https://vaughnmartin.com"}/live-detection-feed`,
-            style: "primary"
-          }
-        ]
-      }
-    ]
-  };
-  try {
-    await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    console.log(`\u{1F4F2} Detection Slack alert sent`);
-  } catch (err) {
-    console.error("Detection Slack alert failed:", err);
-  }
-}
-async function evaluateAndPersistSignals(signals, organizationId) {
-  let detectionsCreated = 0;
-  let allContacts = [];
-  try {
-    allContacts = await db.select().from(stakeholderContacts).where(eq38(stakeholderContacts.organizationId, organizationId));
-  } catch {
-  }
-  const evaluationMode = await getOrgEvaluationMode(organizationId);
-  console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
-  try {
-    const sources = [...new Set(signals.map((s) => s.source).filter(Boolean))];
-    await db.insert(signalActivityLog).values({
-      organizationId,
-      eventType: "scanning",
-      source: sources.slice(0, 3).join(", "),
-      signalTitle: `Evaluating ${signals.length} signals across ${sources.length} source${sources.length !== 1 ? "s" : ""}`,
-      details: `Continuous monitoring cycle \u2014 scanning 248+ data points. Sources: ${sources.join(", ")}`,
-      confidence: null,
-      keywordsMatched: []
-    });
-  } catch {
-  }
-  try {
-    const sampleSignals = signals.slice(0, 2);
-    for (const sig of sampleSignals) {
-      const text3 = sig.description.toLowerCase();
-      const partialMatches = TRIGGER_PATTERNS.flatMap((p) => p.keywords.filter((kw) => text3.includes(kw.toLowerCase()))).slice(0, 4);
-      if (partialMatches.length > 0 && partialMatches.length < 3) {
-        await db.insert(signalActivityLog).values({
-          organizationId,
-          eventType: "threshold_not_met",
-          source: sig.source,
-          signalTitle: sig.description.substring(0, 120),
-          details: `Partial match: ${partialMatches.length} keyword${partialMatches.length !== 1 ? "s" : ""} detected \u2014 below 3-match threshold. Dismissed.`,
-          confidence: sig.confidence,
-          keywordsMatched: partialMatches
-        });
-      }
-    }
-  } catch {
-  }
-  const allDetectionsFlat = [];
-  const seenTriggerNames = /* @__PURE__ */ new Set();
-  if (evaluationMode === "configured" || evaluationMode === "both") {
-    try {
-      const configuredResults = await evaluateSignalsWithOrgTriggers(signals, organizationId);
-      if (configuredResults && configuredResults.length > 0) {
-        for (const detection of configuredResults) {
-          if (seenTriggerNames.has(detection.triggerName)) continue;
-          seenTriggerNames.add(detection.triggerName);
-          const matchingSignal = signals.find(
-            (s) => s.description.toLowerCase().includes(detection.matchedKeywords[0]?.toLowerCase() || "")
-          ) || signals[0];
-          if (matchingSignal) {
-            allDetectionsFlat.push({ detection, signal: matchingSignal, engine: "configured" });
-          }
-        }
-        console.log(`[SignalEvaluationService] Configured engine: ${configuredResults.length} detection(s)`);
-      } else if (evaluationMode === "configured") {
-        console.log(`[SignalEvaluationService] Configured engine: no triggers fired (org has no configured triggers or none matched)`);
-      }
-    } catch (err) {
-      console.error("[SignalEvaluationService] Configured engine error:", err);
-    }
-  }
-  if (evaluationMode === "default" || evaluationMode === "both") {
-    let defaultCount = 0;
-    for (const signal of signals) {
-      const detections = evaluateSignal(signal);
-      for (const detection of detections) {
-        if (seenTriggerNames.has(detection.triggerName)) continue;
-        seenTriggerNames.add(detection.triggerName);
-        allDetectionsFlat.push({ detection, signal, engine: "default" });
-        defaultCount++;
-      }
-    }
-    console.log(`[SignalEvaluationService] Default engine: ${defaultCount} detection(s)`);
-  }
-  console.log(`[SignalEvaluationService] Total detections to process: ${allDetectionsFlat.length} (mode: ${evaluationMode})`);
-  for (const { detection, signal, engine } of allDetectionsFlat) {
-    try {
-      const recent = await db.select().from(triggerDetections).where(eq38(triggerDetections.triggerName, detection.triggerName)).orderBy(desc17(triggerDetections.detectedAt)).limit(1);
-      const lastDetected = recent[0]?.detectedAt;
-      const hoursSince = lastDetected ? (Date.now() - new Date(lastDetected).getTime()) / 36e5 : 999;
-      if (hoursSince < 4) continue;
-      const domainApprovers = allContacts.filter(
-        (c) => c.isActive && c.email && Array.isArray(c.triggerDomains) && c.triggerDomains.length > 0 && c.triggerDomains.includes(detection.triggerDomain)
-      );
-      const fallbackContacts = allContacts.filter(
-        (c) => c.isActive && c.email && (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
-      );
-      const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      let contactEmails = recipientContacts.map((c) => c.email).filter(Boolean);
-      const ADMIN_FALLBACK = "pilot@vaughnmartin.com";
-      if (contactEmails.length === 0) {
-        contactEmails = [ADMIN_FALLBACK];
-        console.log(`\u{1F4EC} No stakeholder contacts registered \u2014 routing "${detection.triggerName}" to admin fallback (${ADMIN_FALLBACK})`);
-      } else if (domainApprovers.length > 0) {
-        console.log(`\u{1F4EC} Routing "${detection.triggerName}" to ${domainApprovers.length} domain-assigned approver(s) for "${detection.triggerDomain}"`);
-      } else {
-        console.log(`\u{1F4EC} No domain approvers for "${detection.triggerDomain}" \u2014 sending to ${contactEmails.length} org-wide contact(s)`);
-      }
-      const [savedDetection] = await db.insert(triggerDetections).values({
-        organizationId,
-        triggerName: detection.triggerName,
-        triggerDomain: detection.triggerDomain,
-        signalDescription: signal.description,
-        signalSource: signal.source,
-        signalSourceUrl: signal.sourceUrl || null,
-        confidenceScore: detection.confidenceScore,
-        recommendedPlaybook: detection.recommendedPlaybook,
-        alternatePlaybooks: detection.alternatePlaybooks,
-        status: "detected",
-        notificationSent: false,
-        matchedEvidence: {
-          engine,
-          conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
-          totalConditions: detection.totalConditions ?? detection.matchedKeywords.length,
-          dataPoints: detection.dataPoints ?? detection.matchedKeywords.map((kw) => `Signal matched: "${kw}"`),
-          matchedKeywords: detection.matchedKeywords
-        }
-      }).returning();
-      console.log(`\u{1F3AF} TRIGGER DETECTED: "${detection.triggerName}" (${detection.confidenceScore}% confidence) via ${signal.source} [${engine === "configured" ? "customer-configured" : "default-pattern"}]`);
-      const now = /* @__PURE__ */ new Date();
-      let executionTimelineId = null;
-      try {
-        const [timeline] = await db.insert(executionTimelines).values({
-          organizationId,
-          triggerDetectionId: savedDetection?.id ?? null,
-          triggerName: detection.triggerName,
-          triggerDomain: detection.triggerDomain,
-          recommendedPlaybook: detection.recommendedPlaybook,
-          detectedAt: now,
-          status: "detected"
-        }).returning();
-        executionTimelineId = timeline?.id ?? null;
-      } catch {
-      }
-      try {
-        await db.insert(signalActivityLog).values({
-          organizationId,
-          eventType: "trigger_fired",
-          source: signal.source,
-          signalTitle: signal.description.substring(0, 200),
-          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Playbook recommended: ${detection.recommendedPlaybook}`,
-          confidence: detection.confidenceScore,
-          keywordsMatched: detection.matchedKeywords.slice(0, 5)
-        });
-      } catch {
-      }
-      try {
-        const io = wsService.getIO();
-        if (io) {
-          io.emit("new-detection", {
-            triggerName: detection.triggerName,
-            triggerDomain: detection.triggerDomain,
-            confidenceScore: detection.confidenceScore,
-            organizationId
-          });
-          io.emit("signal-activity", {
-            eventType: "trigger_fired",
-            source: signal.source,
-            triggerName: detection.triggerName,
-            confidence: detection.confidenceScore,
-            timestamp: now.toISOString()
-          });
-        }
-      } catch {
-      }
-      await Promise.allSettled([
-        sendDetectionSlack(detection, signal),
-        contactEmails.length > 0 ? sendDetectionEmail(detection, signal, contactEmails, organizationId) : Promise.resolve()
-      ]);
-      const notifiedAt = /* @__PURE__ */ new Date();
-      try {
-        if (executionTimelineId) {
-          await db.update(executionTimelines).set({ notificationSentAt: notifiedAt, status: "notified" }).where(eq38(executionTimelines.id, executionTimelineId));
-        }
-      } catch {
-      }
-      await db.update(triggerDetections).set({ notificationSent: true, status: "notified" }).where(eq38(triggerDetections.triggerName, detection.triggerName));
-      detectionsCreated++;
-    } catch (err) {
-      console.error("Error persisting detection:", err);
-    }
-  }
-  return detectionsCreated;
-}
-async function getRecentDetections(organizationId, limit = 20) {
-  return db.select().from(triggerDetections).where(eq38(triggerDetections.organizationId, organizationId)).orderBy(desc17(triggerDetections.detectedAt)).limit(limit);
-}
-var TRIGGER_PATTERNS;
-var init_SignalEvaluationService = __esm({
-  "server/services/SignalEvaluationService.ts"() {
-    "use strict";
-    init_db();
-    init_schema();
-    init_WebSocketService();
-    init_TriggerEvaluationEngine();
-    TRIGGER_PATTERNS = [
-      // Market Dynamics
-      {
-        name: "Competitive Market Entry",
-        domain: "Market Dynamics",
-        keywords: ["competitor", "rival", "market entry", "new entrant", "competing", "launched", "expansion", "competitive threat", "market share", "disrupt", "market leader", "outcompete", "price war", "competitive pressure", "market position", "competitive", "outpaced", "undercutting", "market leader", "beat competitors", "market competition", "industry rival", "competitive landscape"],
-        playbookName: "Competitive Threat Response",
-        alternatePlaybooks: ["Investor Communications Protocol", "Reputational Crisis Protocol"],
-        baseConfidence: 70
-      },
-      {
-        name: "M&A Activity Detected",
-        domain: "Market Dynamics",
-        keywords: ["acquisition", "merger", "buyout", "takeover", "acquires", "acquired", "deal signed", "consolidation", "private equity", "strategic acquisition", "deal closed", "billion deal", "purchase agreement", "M&A", "joint venture", "acquirer", "merger agreement", "deal valued", "deal worth", "stake acquisition", "hostile takeover", "friendly takeover", "acquire", "acquired by", "bought by", "purchase of"],
-        playbookName: "M&A Response Playbook",
-        alternatePlaybooks: ["Investor Communications Protocol", "Competitive Threat Response"],
-        baseConfidence: 75
-      },
-      {
-        name: "Market Valuation Shift",
-        domain: "Market Dynamics",
-        keywords: ["valuation", "IPO", "stock price", "market cap", "earnings miss", "guidance cut", "revenue decline", "profit warning", "downgrade", "sell-off", "quarterly results", "analyst downgrade", "stock decline", "market correction", "investor concern"],
-        playbookName: "Investor Communications Protocol",
-        alternatePlaybooks: ["Financial Crisis Response", "Reputational Crisis Protocol"],
-        baseConfidence: 65
-      },
-      // Regulatory & Compliance
-      {
-        name: "Regulatory Enforcement Action",
-        domain: "Regulatory & Compliance",
-        keywords: ["SEC", "FTC", "DOJ", "enforcement", "investigation", "fine", "penalty", "sanction", "antitrust", "subpoena", "consent decree", "regulatory action", "regulator", "probe", "lawsuit filed", "class action", "compliance failure"],
-        playbookName: "Regulatory Compliance Sprint",
-        alternatePlaybooks: ["Regulatory Disclosure Protocol", "Reputational Crisis Protocol"],
-        baseConfidence: 80
-      },
-      {
-        name: "Legislation Change",
-        domain: "Regulatory & Compliance",
-        keywords: ["new regulation", "legislation", "compliance deadline", "regulatory change", "rule change", "policy shift", "mandate", "data privacy", "GDPR", "CCPA", "executive order", "new law", "compliance requirement", "regulatory framework", "federal rule"],
-        playbookName: "Regulatory Compliance Sprint",
-        alternatePlaybooks: ["ESG Crisis Response", "Regulatory Disclosure Protocol"],
-        baseConfidence: 70
-      },
-      {
-        name: "8-K Material Event Filing",
-        domain: "Regulatory & Compliance",
-        keywords: ["8-K", "material event", "form 8-K", "SEC filing", "material change", "reportable event", "current report", "material disclosure", "securities filing", "filed with the SEC", "SEC report", "8K filing", "material event disclosure", "regulatory filing", "securities disclosure", "public company filing"],
-        playbookName: "Regulatory Disclosure Protocol",
-        alternatePlaybooks: ["Investor Communications Protocol", "Regulatory Compliance Sprint"],
-        baseConfidence: 85
-      },
-      // Technology & Security
-      {
-        name: "Cybersecurity Breach Signal",
-        domain: "Technology & Security",
-        keywords: ["data breach", "cyberattack", "ransomware", "hack", "hacked", "security incident", "vulnerability", "zero-day", "phishing", "malware", "data leak", "cyber incident", "systems compromised", "cyber attack", "data stolen", "unauthorized access", "breach", "cyber", "hacker", "hackers", "stolen data", "compromised", "intrusion", "network breach", "security breach", "attack on", "attacked", "cybercriminals", "data exposed", "personal data", "credentials stolen"],
-        playbookName: "Cybersecurity Breach Response",
-        alternatePlaybooks: ["Reputational Crisis Protocol", "Regulatory Disclosure Protocol"],
-        baseConfidence: 85
-      },
-      {
-        name: "AI Disruption Signal",
-        domain: "Technology & Security",
-        keywords: ["artificial intelligence", "AI model", "generative AI", "automation", "AI disruption", "large language model", "GPT", "AI launch", "AI competitor", "machine learning", "ChatGPT", "AI investment", "workforce automation", "AI regulation", "tech disruption", "AI funding"],
-        playbookName: "Technology Disruption Response",
-        alternatePlaybooks: ["Competitive Threat Response", "Investor Communications Protocol"],
-        baseConfidence: 62
-      },
-      // Supply Chain & Operations
-      {
-        name: "Supply Chain Disruption",
-        domain: "Supply Chain & Operations",
-        keywords: ["supply chain", "shortage", "logistics disruption", "shipping delay", "port strike", "tariff", "trade war", "embargo", "supplier failure", "procurement crisis", "supply shortage", "inventory shortage", "shipping crisis", "disrupted supply", "sourcing issue"],
-        playbookName: "Supply Chain Disruption Protocol",
-        alternatePlaybooks: ["Operational Crisis Response", "Geopolitical Risk Response"],
-        baseConfidence: 75
-      },
-      {
-        name: "Operational Crisis",
-        domain: "Supply Chain & Operations",
-        keywords: ["plant shutdown", "factory fire", "operational failure", "production halt", "recall", "product defect", "quality crisis", "manufacturing issue", "facility closure", "operations disrupted", "product recall", "safety recall", "production stopped"],
-        playbookName: "Operational Crisis Response",
-        alternatePlaybooks: ["Supply Chain Disruption Protocol", "Reputational Crisis Protocol"],
-        baseConfidence: 80
-      },
-      // Brand & Reputation
-      {
-        name: "Reputational Crisis Signal",
-        domain: "Brand & Reputation",
-        keywords: ["controversy", "scandal", "backlash", "social media crisis", "viral", "boycott", "protest", "PR crisis", "reputational damage", "public outcry", "brand damage", "criticism", "public backlash", "brand crisis", "negative coverage", "media scrutiny"],
-        playbookName: "Reputational Crisis Protocol",
-        alternatePlaybooks: ["Executive Leadership Crisis", "ESG Crisis Response"],
-        baseConfidence: 70
-      },
-      {
-        name: "Executive Leadership Event",
-        domain: "Brand & Reputation",
-        keywords: ["CEO resigns", "CFO departure", "executive fired", "leadership change", "board shakeup", "C-suite", "management change", "succession", "CEO steps down", "executive departure", "leadership transition", "board resignation", "interim CEO", "top executive"],
-        playbookName: "Executive Leadership Crisis",
-        alternatePlaybooks: ["Investor Communications Protocol", "Reputational Crisis Protocol"],
-        baseConfidence: 75
-      },
-      // Financial
-      {
-        name: "Financial Distress Signal",
-        domain: "Financial",
-        keywords: ["bankruptcy", "insolvency", "debt default", "credit downgrade", "liquidity crisis", "cash crunch", "chapter 11", "restructuring", "financial distress", "debt crisis", "loan default", "credit rating cut", "financial trouble", "cash flow crisis"],
-        playbookName: "Financial Crisis Response",
-        alternatePlaybooks: ["Investor Communications Protocol", "Regulatory Disclosure Protocol"],
-        baseConfidence: 85
-      },
-      {
-        name: "Earnings Surprise",
-        domain: "Financial",
-        keywords: ["earnings beat", "earnings miss", "revenue surprise", "profit warning", "earnings guidance", "quarterly results", "financial results", "beat estimates", "missed estimates", "revenue growth", "profit decline", "Q1 results", "Q2 results", "Q3 results", "Q4 results", "annual results", "fiscal year", "shares fell", "stock fell", "stock dropped", "shares dropped", "revenue fell", "beat expectations", "missed expectations", "earnings report", "quarterly earnings", "profit fell", "net income", "revenue declined", "EPS", "earnings per share", "profit rose", "revenue rose"],
-        playbookName: "Investor Communications Protocol",
-        alternatePlaybooks: ["Financial Crisis Response", "Reputational Crisis Protocol"],
-        baseConfidence: 65
-      },
-      // ESG
-      {
-        name: "ESG / Climate Event",
-        domain: "ESG & Sustainability",
-        keywords: ["ESG", "climate", "sustainability", "carbon", "emissions", "greenwashing", "environmental violation", "climate risk", "net zero", "DEI controversy", "climate change", "renewable energy", "carbon neutral", "environmental impact", "social responsibility", "diversity controversy", "green energy", "fossil fuels", "carbon footprint", "clean energy", "sustainable", "climate crisis", "environmental", "emission targets", "Paris Agreement", "carbon tax", "DEI", "diversity"],
-        playbookName: "ESG Crisis Response",
-        alternatePlaybooks: ["Reputational Crisis Protocol", "Regulatory Compliance Sprint"],
-        baseConfidence: 65
-      },
-      // Geopolitical
-      {
-        name: "Geopolitical Risk Signal",
-        domain: "Geopolitical",
-        keywords: ["sanctions", "trade war", "tariff", "tariffs", "geopolitical", "conflict", "war", "political instability", "export control", "national security", "government shutdown", "tariffs imposed", "trade policy", "economic sanctions", "diplomatic crisis", "military conflict", "trade restrictions", "Iran", "military", "diplomatic", "Middle East", "NATO", "nuclear", "oil prices", "crude oil", "peace talks", "ceasefire", "embargo", "military strike", "weapons", "armed conflict", "foreign policy", "global tensions", "Trump tariff", "import duties", "trade deal", "export ban"],
-        playbookName: "Geopolitical Risk Response",
-        alternatePlaybooks: ["Supply Chain Disruption Protocol", "Operational Crisis Response"],
-        baseConfidence: 70
-      }
-    ];
-  }
-});
-
-// server/services/LiveSignalIngestionService.ts
-var LiveSignalIngestionService_exports = {};
-__export(LiveSignalIngestionService_exports, {
-  liveSignalIngestionService: () => liveSignalIngestionService
-});
-function parseXML(xmlText) {
-  const items = [];
-  const itemRegex = /<item[^>]*>([\s\S]*?)<\/item>|<entry[^>]*>([\s\S]*?)<\/entry>/gi;
-  let match;
-  while ((match = itemRegex.exec(xmlText)) !== null) {
-    const content = match[1] || match[2] || "";
-    const titleMatch = content.match(/<title[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/i);
-    const descMatch = content.match(/<description[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/description>|<summary[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/summary>/i);
-    const linkMatch = content.match(/<link[^>]*>([^<]*)<\/link>|<link[^>]*href="([^"]*)"[^>]*\/>/i);
-    const dateMatch = content.match(/<pubDate[^>]*>(.*?)<\/pubDate>|<updated[^>]*>(.*?)<\/updated>/i);
-    if (titleMatch) {
-      items.push({
-        title: titleMatch[1]?.trim() || "",
-        description: (descMatch?.[1] || descMatch?.[2] || "").replace(/<[^>]*>/g, "").trim().substring(0, 500),
-        link: (linkMatch?.[1] || linkMatch?.[2] || "").trim(),
-        pubDate: (dateMatch?.[1] || dateMatch?.[2] || (/* @__PURE__ */ new Date()).toISOString()).trim(),
-        source: "",
-        category: ""
-      });
-    }
-  }
-  return items;
-}
-function classifySignalType(text3) {
-  const lower = text3.toLowerCase();
-  let bestType = "market";
-  let bestScore = 0;
-  for (const [type, keywords] of Object.entries(SIGNAL_TYPE_MAP)) {
-    const score = keywords.filter((kw) => lower.includes(kw.toLowerCase())).length;
-    if (score > bestScore) {
-      bestScore = score;
-      bestType = type;
-    }
-  }
-  return bestType;
-}
-function classifyImpact(text3) {
-  const lower = text3.toLowerCase();
-  for (const level of ["critical", "high", "medium", "low"]) {
-    if (IMPACT_KEYWORDS[level].some((kw) => lower.includes(kw))) return level;
-  }
-  return "medium";
-}
-function calculateConfidence(item) {
-  let conf = 50;
-  if (item.description.length > 100) conf += 10;
-  if (item.source.includes("Reuters") || item.source.includes("SEC")) conf += 15;
-  if (item.source.includes("BBC") || item.source.includes("NY Times")) conf += 10;
-  const date = new Date(item.pubDate);
-  const hoursAgo = (Date.now() - date.getTime()) / (1e3 * 60 * 60);
-  if (hoursAgo < 6) conf += 15;
-  else if (hoursAgo < 24) conf += 10;
-  else if (hoursAgo < 72) conf += 5;
-  return Math.min(conf, 95);
-}
-function estimateTimeline(text3) {
-  const lower = text3.toLowerCase();
-  if (lower.includes("immediate") || lower.includes("today") || lower.includes("breaking")) return "Immediate";
-  if (lower.includes("this week") || lower.includes("next week")) return "1-2 weeks";
-  if (lower.includes("this month") || lower.includes("quarter")) return "1-3 months";
-  if (lower.includes("this year") || lower.includes("annual")) return "3-6 months";
-  return "1-3 months";
-}
-var RSS_FEEDS, SIGNAL_TYPE_MAP, IMPACT_KEYWORDS, LiveSignalIngestionService, liveSignalIngestionService;
-var init_LiveSignalIngestionService = __esm({
-  "server/services/LiveSignalIngestionService.ts"() {
-    "use strict";
-    init_db();
-    init_schema();
-    init_SignalEvaluationService();
-    RSS_FEEDS = [
-      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
-      { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "market" },
-      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom", source: "SEC EDGAR 8-K Filings", category: "regulatory" },
-      { url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", source: "CNBC Business", category: "market" },
-      { url: "https://feeds.marketwatch.com/marketwatch/topstories/", source: "MarketWatch", category: "market" },
-      { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
-      { url: "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen", source: "Google News Finance", category: "market" },
-      { url: "https://feeds.feedburner.com/entrepreneur/latest", source: "Entrepreneur", category: "market" }
-    ];
-    SIGNAL_TYPE_MAP = {
-      market: ["acquisition", "merger", "market share", "revenue", "earnings", "IPO", "stock", "valuation", "growth", "decline"],
-      regulatory: ["regulation", "compliance", "SEC", "FTC", "antitrust", "sanctions", "policy", "legislation", "enforcement", "fine"],
-      technology: ["AI", "artificial intelligence", "cybersecurity", "breach", "cloud", "digital transformation", "automation", "quantum"],
-      competitor: ["competitor", "rival", "market leader", "disruption", "partnership", "alliance", "launch", "expansion"],
-      supply_chain: ["supply chain", "logistics", "shipping", "tariff", "trade war", "shortage", "inventory", "procurement"]
-    };
-    IMPACT_KEYWORDS = {
-      critical: ["crisis", "breach", "collapse", "bankruptcy", "shutdown", "emergency", "catastrophic"],
-      high: ["major", "significant", "billion", "disruption", "transformation", "acquisition", "merger"],
-      medium: ["growth", "expansion", "partnership", "update", "change", "shift"],
-      low: ["minor", "small", "incremental", "gradual", "expected"]
-    };
-    LiveSignalIngestionService = class {
-      isRunning = false;
-      intervalId = null;
-      lastFetchedUrls = /* @__PURE__ */ new Set();
-      async fetchFeed(feed) {
-        try {
-          const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 1e4);
-          const res = await fetch(feed.url, {
-            signal: controller.signal,
-            headers: { "User-Agent": "VaughnMartin-Signal-Monitor/1.0" }
-          });
-          clearTimeout(timeout);
-          if (!res.ok) {
-            console.log(`\u26A0 Feed ${feed.source} returned ${res.status}`);
-            return [];
-          }
-          const text3 = await res.text();
-          const items = parseXML(text3);
-          return items.map((item) => ({ ...item, source: feed.source, category: feed.category }));
-        } catch (err) {
-          console.log(`\u26A0 Feed ${feed.source} fetch failed: ${err instanceof Error ? err.message : "unknown"}`);
-          return [];
-        }
-      }
-      async ingestAllFeeds() {
-        const allItems = [];
-        const results = await Promise.allSettled(RSS_FEEDS.map((feed) => this.fetchFeed(feed)));
-        for (const result of results) {
-          if (result.status === "fulfilled") {
-            allItems.push(...result.value);
-          }
-        }
-        const newItems = allItems.filter((item) => {
-          const key = `${item.title}:${item.link}`;
-          if (this.lastFetchedUrls.has(key)) return false;
-          this.lastFetchedUrls.add(key);
-          return true;
-        });
-        if (this.lastFetchedUrls.size > 1e3) {
-          const arr = Array.from(this.lastFetchedUrls);
-          this.lastFetchedUrls = new Set(arr.slice(arr.length - 500));
-        }
-        const strategicItems = newItems.filter((item) => {
-          const text3 = `${item.title} ${item.description}`.toLowerCase();
-          return Object.values(SIGNAL_TYPE_MAP).some(
-            (keywords) => keywords.some((kw) => text3.includes(kw.toLowerCase()))
-          );
-        });
-        const topItems = strategicItems.slice(0, 10);
-        return topItems.map((item) => ({
-          signalType: classifySignalType(`${item.title} ${item.description}`),
-          description: `${item.title}${item.description ? ` \u2014 ${item.description.substring(0, 450)}` : ""}`,
-          confidence: calculateConfidence(item),
-          impact: classifyImpact(`${item.title} ${item.description}`),
-          timeline: estimateTimeline(`${item.title} ${item.description}`),
-          source: item.source,
-          sourceUrl: item.link,
-          category: item.category
-        }));
-      }
-      async persistSignals(signals, organizationId) {
-        let inserted = 0;
-        for (const signal of signals) {
-          try {
-            await db.insert(weakSignals).values({
-              organizationId,
-              signalType: signal.signalType,
-              description: signal.description,
-              confidence: String(signal.confidence),
-              impact: signal.impact,
-              timeline: signal.timeline,
-              source: `${signal.source} | ${signal.sourceUrl}`,
-              status: "active",
-              relatedScenarios: []
-            });
-            inserted++;
-          } catch (err) {
-          }
-        }
-        return inserted;
-      }
-      async generateAlerts(signals, organizationId) {
-        const alertTypeMap = {
-          market: "market_shift",
-          regulatory: "regulatory_change",
-          technology: "opportunity",
-          competitor: "competitive_threat",
-          supply_chain: "risk"
-        };
-        const criticalSignals = signals.filter((s) => s.impact === "critical" || s.impact === "high");
-        for (const signal of criticalSignals.slice(0, 3)) {
-          try {
-            await db.insert(strategicAlerts).values({
-              organizationId,
-              alertType: alertTypeMap[signal.signalType] || "market_shift",
-              title: `Live Signal: ${signal.description.substring(0, 100)}`,
-              description: signal.description,
-              severity: signal.impact === "critical" ? "critical" : "high",
-              status: "active",
-              dataSourcesUsed: [signal.source],
-              suggestedActions: [`Review ${signal.signalType} signal from ${signal.source}`, `Assess impact timeline: ${signal.timeline}`]
-            });
-          } catch (err) {
-          }
-        }
-      }
-      async runIngestionCycle(organizationId) {
-        console.log("\u{1F4E1} Running live signal ingestion cycle...");
-        const signals = await this.ingestAllFeeds();
-        console.log(`   Found ${signals.length} strategic signals from ${RSS_FEEDS.length} feeds`);
-        if (signals.length === 0) return { signals: 0, alerts: 0, detections: 0 };
-        const inserted = await this.persistSignals(signals, organizationId);
-        await this.generateAlerts(signals, organizationId);
-        const alertCount = signals.filter((s) => s.impact === "critical" || s.impact === "high").length;
-        const detections = await evaluateAndPersistSignals(signals, organizationId);
-        console.log(`   \u2705 Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
-        return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
-      }
-      start(organizationId, intervalMinutes = 15) {
-        if (this.isRunning) return;
-        this.isRunning = true;
-        console.log(`\u{1F4E1} Live Signal Ingestion started (every ${intervalMinutes} min)`);
-        this.runIngestionCycle(organizationId).catch(
-          (err) => console.error("Initial ingestion cycle failed:", err)
-        );
-        this.intervalId = setInterval(() => {
-          this.runIngestionCycle(organizationId).catch(
-            (err) => console.error("Ingestion cycle failed:", err)
-          );
-        }, intervalMinutes * 60 * 1e3);
-      }
-      stop() {
-        if (this.intervalId) {
-          clearInterval(this.intervalId);
-          this.intervalId = null;
-        }
-        this.isRunning = false;
-        console.log("\u{1F4E1} Live Signal Ingestion stopped");
-      }
-      getStatus() {
-        return {
-          running: this.isRunning,
-          feedCount: RSS_FEEDS.length,
-          cachedUrls: this.lastFetchedUrls.size
-        };
-      }
-    };
-    liveSignalIngestionService = new LiveSignalIngestionService();
   }
 });
 
@@ -42932,6 +42932,14 @@ async function registerRoutes(app2, existingServer) {
             // empty = receives all domain alerts
           });
           console.log(`\u2705 [Magic Link] Auto-enrolled ${email} as stakeholder contact for org ${userOrgs[0].id}`);
+          const orgId = userOrgs[0].id;
+          Promise.resolve().then(() => (init_LiveSignalIngestionService(), LiveSignalIngestionService_exports)).then(({ liveSignalIngestionService: liveSignalIngestionService3 }) => {
+            liveSignalIngestionService3.runIngestionCycle(orgId).then((result2) => {
+              console.log(`\u{1F4E1} [Magic Link] Welcome scan for ${email}: ${result2.detections} detection(s) \u2014 alert sent`);
+            }).catch((err) => {
+              console.warn(`\u26A0 [Magic Link] Welcome scan failed for ${email}:`, err.message);
+            });
+          });
         } catch (scErr) {
           console.error("[Magic Link] Stakeholder contact auto-enroll failed:", scErr.message);
         }
