@@ -45,7 +45,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Competitive Market Entry',
     domain: 'Market Dynamics',
-    keywords: ['competitor', 'rival', 'market entry', 'new entrant', 'competing', 'launched', 'expansion', 'competitive threat', 'market share', 'disrupt', 'market leader', 'outcompete', 'price war', 'competitive pressure', 'market position'],
+    keywords: ['competitor', 'rival', 'market entry', 'new entrant', 'competing', 'launched', 'expansion', 'competitive threat', 'market share', 'disrupt', 'market leader', 'outcompete', 'price war', 'competitive pressure', 'market position', 'competitive', 'outpaced', 'undercutting', 'market leader', 'beat competitors', 'market competition', 'industry rival', 'competitive landscape'],
     playbookName: 'Competitive Threat Response',
     alternatePlaybooks: ['Investor Communications Protocol', 'Reputational Crisis Protocol'],
     baseConfidence: 70,
@@ -53,7 +53,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'M&A Activity Detected',
     domain: 'Market Dynamics',
-    keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition', 'deal closed', 'billion deal', 'purchase agreement', 'M&A', 'joint venture'],
+    keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition', 'deal closed', 'billion deal', 'purchase agreement', 'M&A', 'joint venture', 'acquirer', 'merger agreement', 'deal valued', 'deal worth', 'stake acquisition', 'hostile takeover', 'friendly takeover', 'acquire', 'acquired by', 'bought by', 'purchase of'],
     playbookName: 'M&A Response Playbook',
     alternatePlaybooks: ['Investor Communications Protocol', 'Competitive Threat Response'],
     baseConfidence: 75,
@@ -87,7 +87,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: '8-K Material Event Filing',
     domain: 'Regulatory & Compliance',
-    keywords: ['8-K', 'material event', 'form 8-K', 'SEC filing', 'material change', 'reportable event', 'current report', 'material disclosure', 'securities filing'],
+    keywords: ['8-K', 'material event', 'form 8-K', 'SEC filing', 'material change', 'reportable event', 'current report', 'material disclosure', 'securities filing', 'filed with the SEC', 'SEC report', '8K filing', 'material event disclosure', 'regulatory filing', 'securities disclosure', 'public company filing'],
     playbookName: 'Regulatory Disclosure Protocol',
     alternatePlaybooks: ['Investor Communications Protocol', 'Regulatory Compliance Sprint'],
     baseConfidence: 85,
@@ -97,7 +97,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Cybersecurity Breach Signal',
     domain: 'Technology & Security',
-    keywords: ['data breach', 'cyberattack', 'ransomware', 'hack', 'hacked', 'security incident', 'vulnerability', 'zero-day', 'phishing', 'malware', 'data leak', 'cyber incident', 'systems compromised', 'cyber attack', 'data stolen', 'unauthorized access'],
+    keywords: ['data breach', 'cyberattack', 'ransomware', 'hack', 'hacked', 'security incident', 'vulnerability', 'zero-day', 'phishing', 'malware', 'data leak', 'cyber incident', 'systems compromised', 'cyber attack', 'data stolen', 'unauthorized access', 'breach', 'cyber', 'hacker', 'hackers', 'stolen data', 'compromised', 'intrusion', 'network breach', 'security breach', 'attack on', 'attacked', 'cybercriminals', 'data exposed', 'personal data', 'credentials stolen'],
     playbookName: 'Cybersecurity Breach Response',
     alternatePlaybooks: ['Reputational Crisis Protocol', 'Regulatory Disclosure Protocol'],
     baseConfidence: 85,
@@ -159,7 +159,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Earnings Surprise',
     domain: 'Financial',
-    keywords: ['earnings beat', 'earnings miss', 'revenue surprise', 'profit warning', 'earnings guidance', 'quarterly results', 'financial results', 'beat estimates', 'missed estimates', 'revenue growth', 'profit decline', 'Q1 results', 'Q2 results', 'Q3 results', 'Q4 results', 'annual results', 'fiscal year'],
+    keywords: ['earnings beat', 'earnings miss', 'revenue surprise', 'profit warning', 'earnings guidance', 'quarterly results', 'financial results', 'beat estimates', 'missed estimates', 'revenue growth', 'profit decline', 'Q1 results', 'Q2 results', 'Q3 results', 'Q4 results', 'annual results', 'fiscal year', 'shares fell', 'stock fell', 'stock dropped', 'shares dropped', 'revenue fell', 'beat expectations', 'missed expectations', 'earnings report', 'quarterly earnings', 'profit fell', 'net income', 'revenue declined', 'EPS', 'earnings per share', 'profit rose', 'revenue rose'],
     playbookName: 'Investor Communications Protocol',
     alternatePlaybooks: ['Financial Crisis Response', 'Reputational Crisis Protocol'],
     baseConfidence: 65,
@@ -169,7 +169,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'ESG / Climate Event',
     domain: 'ESG & Sustainability',
-    keywords: ['ESG', 'climate', 'sustainability', 'carbon', 'emissions', 'greenwashing', 'environmental violation', 'climate risk', 'net zero', 'DEI controversy', 'climate change', 'renewable energy', 'carbon neutral', 'environmental impact', 'social responsibility', 'diversity controversy'],
+    keywords: ['ESG', 'climate', 'sustainability', 'carbon', 'emissions', 'greenwashing', 'environmental violation', 'climate risk', 'net zero', 'DEI controversy', 'climate change', 'renewable energy', 'carbon neutral', 'environmental impact', 'social responsibility', 'diversity controversy', 'green energy', 'fossil fuels', 'carbon footprint', 'clean energy', 'sustainable', 'climate crisis', 'environmental', 'emission targets', 'Paris Agreement', 'carbon tax', 'DEI', 'diversity'],
     playbookName: 'ESG Crisis Response',
     alternatePlaybooks: ['Reputational Crisis Protocol', 'Regulatory Compliance Sprint'],
     baseConfidence: 65,
@@ -179,7 +179,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
   {
     name: 'Geopolitical Risk Signal',
     domain: 'Geopolitical',
-    keywords: ['sanctions', 'trade war', 'tariff', 'geopolitical', 'conflict', 'war', 'political instability', 'export control', 'national security', 'government shutdown', 'tariffs imposed', 'trade policy', 'economic sanctions', 'diplomatic crisis', 'military conflict', 'trade restrictions'],
+    keywords: ['sanctions', 'trade war', 'tariff', 'tariffs', 'geopolitical', 'conflict', 'war', 'political instability', 'export control', 'national security', 'government shutdown', 'tariffs imposed', 'trade policy', 'economic sanctions', 'diplomatic crisis', 'military conflict', 'trade restrictions', 'Iran', 'military', 'diplomatic', 'Middle East', 'NATO', 'nuclear', 'oil prices', 'crude oil', 'peace talks', 'ceasefire', 'embargo', 'military strike', 'weapons', 'armed conflict', 'foreign policy', 'global tensions', 'Trump tariff', 'import duties', 'trade deal', 'export ban'],
     playbookName: 'Geopolitical Risk Response',
     alternatePlaybooks: ['Supply Chain Disruption Protocol', 'Operational Crisis Response'],
     baseConfidence: 70,
@@ -240,9 +240,11 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const CONFIDENCE_THRESHOLD = 72; // Aligned with documented threshold — meaningful above base noise floor
 
   // Minimum keyword matches required before a default-pattern trigger can fire.
-  // 3 matches required — ensures the signal is substantively about the trigger domain,
-  // not a tangential article that happens to mention one related term.
-  const MIN_KEYWORD_MATCHES = 3;
+  // 2 matches required — RSS feed descriptions are short (title + ~400 chars), so requiring 3
+  // was eliminating high-confidence signals that clearly belong to a domain but only
+  // surface 2 distinct keywords in the available text. Confidence threshold (72%) still
+  // filters noise — a signal must score meaningfully, not just graze 2 keywords.
+  const MIN_KEYWORD_MATCHES = 2;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();

@@ -180,7 +180,7 @@ class LiveSignalIngestionService {
 
     return topItems.map(item => ({
       signalType: classifySignalType(`${item.title} ${item.description}`),
-      description: `${item.title}${item.description ? ` — ${item.description.substring(0, 200)}` : ''}`,
+      description: `${item.title}${item.description ? ` — ${item.description.substring(0, 450)}` : ''}`,
       confidence: calculateConfidence(item),
       impact: classifyImpact(`${item.title} ${item.description}`),
       timeline: estimateTimeline(`${item.title} ${item.description}`),
