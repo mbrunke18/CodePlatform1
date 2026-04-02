@@ -6418,6 +6418,25 @@ export const insertMagicLinkTokenSchema = createInsertSchema(magicLinkTokens).om
 export type InsertMagicLinkToken = z.infer<typeof insertMagicLinkTokenSchema>;
 export type MagicLinkToken = typeof magicLinkTokens.$inferSelect;
 
+// ── 24-Hour Trial Sessions ────────────────────────────────────────────────────
+// Instant self-serve trial access — no admin approval required
+export const trialSessions = pgTable('trial_sessions', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: varchar('email', { length: 255 }).notNull(),
+  firstName: varchar('first_name', { length: 100 }).notNull(),
+  lastName: varchar('last_name', { length: 100 }).notNull(),
+  company: varchar('company', { length: 255 }).notNull(),
+  title: varchar('title', { length: 255 }).notNull(),
+  token: varchar('token', { length: 128 }).notNull().unique(),
+  expiresAt: timestamp('expires_at').notNull(),
+  activatedAt: timestamp('activated_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const insertTrialSessionSchema = createInsertSchema(trialSessions).omit({ id: true, activatedAt: true, createdAt: true });
+export type InsertTrialSession = z.infer<typeof insertTrialSessionSchema>;
+export type TrialSession = typeof trialSessions.$inferSelect;
+
 // ── Stakeholder Contact Registry ──────────────────────────────────────────────
 // Maps executive roles → real contact info per org for live notifications
 export const stakeholderContacts = pgTable('stakeholder_contacts', {

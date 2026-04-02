@@ -175,6 +175,7 @@ const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const RequestAccess = lazy(() => import("./pages/RequestAccess"));
+const TrialAccess = lazy(() => import("./pages/TrialAccess"));
 const MagicLogin = lazy(() => import("./pages/MagicLogin"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const PilotHealthMonitor = lazy(() => import("./pages/PilotHealthMonitor"));
@@ -272,7 +273,7 @@ function PageLoader() {
 }
 
 const WELCOME_BRIEF_KEY = 'vm_welcome_brief_seen';
-const WELCOME_BRIEF_BYPASS = ['/welcome-brief', '/onboarding', '/request-access', '/auth', '/login', '/magic-login'];
+const WELCOME_BRIEF_BYPASS = ['/welcome-brief', '/onboarding', '/request-access', '/trial-access', '/auth', '/login', '/magic-login'];
 
 function OnboardingGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, needsOnboarding, isLoading } = useAuth();
@@ -472,6 +473,7 @@ function Router() {
         <Route path="/get-started" component={GetStarted} />
         <Route path="/demo-access" component={DemoAccess} />
         <Route path="/request-access" component={RequestAccess} />
+        <Route path="/trial-access" component={TrialAccess} />
         <Route path="/magic-login" component={MagicLogin} />
         <Route path="/peer-review" component={PeerReview} />
         <Route path="/peer-review-report" component={PeerReviewReport} />

@@ -14,6 +14,7 @@ import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
 import { registerDemoAccessRoute } from "./routes/demoAccessRoute";
 import { createAndSendMagicLink, verifyMagicLinkToken } from "./services/magicLinkService";
+import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -890,6 +891,56 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         return res.status(500).json({ error: 'Session creation failed.' });
       }
       return res.json({ ok: true, redirect: '/mission-control' });
+    });
+  });
+
+  // ── 24-Hour Trial Access ───────────────────────────────────────────────────
+  app.post('/api/trial/request', async (req, res) => {
+    const { firstName, lastName, email, company, title } = req.body;
+    if (!firstName || !lastName || !email || !company || !title) {
+      return res.status(400).json({ error: 'All fields are required.' });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: 'Invalid email address.' });
+    }
+    try {
+      const result = await createTrialSession({ firstName, lastName, email, company, title });
+      return res.json({ ok: true, emailSent: result.emailSent });
+    } catch (err: any) {
+      console.error('Trial request error:', err);
+      return res.status(500).json({ error: 'Failed to process your request. Please try again.' });
+    }
+  });
+
+  app.get('/api/trial/activate', async (req, res) => {
+    const token = req.query.token as string;
+    if (!token) return res.redirect('/?trial=invalid');
+    const result = await activateTrialToken(token);
+    if (!result.valid) return res.redirect(`/?trial=${result.reason}`);
+    (req.session as any).trialToken = token;
+    (req.session as any).trialFirstName = result.data!.firstName;
+    (req.session as any).trialLastName = result.data!.lastName;
+    (req.session as any).trialEmail = result.data!.email;
+    (req.session as any).trialCompany = result.data!.company;
+    (req.session as any).trialExpiresAt = result.data!.expiresAt.toISOString();
+    return res.redirect('/mission-control?trial=activated');
+  });
+
+  app.get('/api/trial/status', async (req, res) => {
+    if (req.isAuthenticated()) return res.json({ active: false, reason: 'authenticated' });
+    const token = (req.session as any).trialToken;
+    const expiresAt = (req.session as any).trialExpiresAt;
+    if (!token || !expiresAt) return res.json({ active: false });
+    if (new Date() > new Date(expiresAt)) {
+      delete (req.session as any).trialToken;
+      return res.json({ active: false, reason: 'expired' });
+    }
+    return res.json({
+      active: true,
+      firstName: (req.session as any).trialFirstName,
+      company: (req.session as any).trialCompany,
+      expiresAt,
     });
   });
 
