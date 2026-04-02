@@ -694,43 +694,17 @@ function IDEASection() {
   );
 }
 
-// ─── SECTION 5b: Three-Layer Chain ───────────────────────────────────────────
+// ─── SECTION 5b: Four-Layer Execution Chain ──────────────────────────────────
 function ThreeLayerChainSection() {
-  const layers = [
-    {
-      num: "248",
-      unit: "data points",
-      label: "SIGNAL LAYER",
-      title: "Detection",
-      body: "AI monitors 248 data points across 16 signal categories every 15 minutes — surfacing what the organization hasn't consciously registered yet.",
-      sub: "Competitive shifts. Regulatory moves. Financial signals. Operational anomalies.",
-      accent: TEAL,
-      light: `${TEAL}14`,
-      border: `${TEAL}35`,
-    },
-    {
-      num: "221",
-      unit: "executive triggers",
-      label: "DECISION LAYER",
-      title: "Decision",
-      body: "Each trigger is a pre-defined decision rule. When signal conditions are met, the decision is already made — before any meeting is called, before any executive is pulled off focus.",
-      sub: "The trigger IS the decision. Codified during The Install, not improvised at the moment.",
-      accent: GOLD,
-      light: `${GOLD}14`,
-      border: `${GOLD}35`,
-    },
-    {
-      num: "170",
-      unit: "playbooks",
-      label: "EXECUTION LAYER",
-      title: "Deployment",
-      body: "170 pre-staged playbooks deploy the moment a trigger fires — roles assigned, tasks distributed, war rooms opened, stakeholders notified. All of it in under 12 minutes.",
-      sub: "The execution is already staged. The organization moves because the work was done in advance.",
-      accent: TEAL_LIGHT,
-      light: `${TEAL_LIGHT}14`,
-      border: `${TEAL_LIGHT}35`,
-    },
-  ];
+  const ARROW_COL = "26px";
+  const cardBase: React.CSSProperties = {
+    background: "rgba(255,255,255,0.04)",
+    borderRadius: 8,
+    padding: "30px 26px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+  };
 
   return (
     <section style={{ background: NAVY_BG, padding: "96px 0 88px", position: "relative", overflow: "hidden", ...GOLD_GRID_BG }}>
@@ -738,7 +712,7 @@ function ThreeLayerChainSection() {
       <div style={{ position: "absolute", top: "-200px", left: "-200px", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}20 0%, transparent 70%)`, pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: "-150px", right: "-100px", width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${GOLD}18 0%, transparent 70%)`, pointerEvents: "none" }} />
 
-      <div style={{ ...CONTAINER, maxWidth: 1180, position: "relative" }}>
+      <div style={{ ...CONTAINER, maxWidth: 1220, position: "relative" }}>
 
         {/* Header */}
         <div style={{ textAlign: "center" as const, marginBottom: 64 }}>
@@ -749,67 +723,131 @@ function ThreeLayerChainSection() {
           }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: GOLD }} />
             <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>
-              The Full Chain
+              The Complete Execution Chain
             </span>
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(28px,3.2vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 20 }}>
             Not a coordination tool. Not a decision support tool.<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>The complete chain — all three layers, pre-staged.</em>
+            <em style={{ fontStyle: "italic", color: GOLD }}>Four layers. All pre-staged. One authorized human.</em>
           </h2>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, lineHeight: 1.7, maxWidth: 680, margin: "0 auto" }}>
-            Every other vendor solves one layer. Execution OS is the only platform where signal detection feeds decision logic, 
-            and decision logic deploys execution — automatically, continuously, before the trigger ever fires.
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, lineHeight: 1.7, maxWidth: 720, margin: "0 auto" }}>
+            You cannot reach execution without passing through authorization. Execution OS pre-stages everything so that 
+            when a trigger fires, the executive who holds authority can act in seconds — not weeks. 
+            The preparation is what makes the authorization instant.
           </p>
         </div>
 
-        {/* Three layer cards + connectors */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 36px 1fr 36px 1fr", alignItems: "stretch", gap: 0, marginBottom: 56 }}>
-          <div key="card-0" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[0].border}`, borderTop: `3px solid ${layers[0].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
-            <div style={{ background: layers[0].light, border: `1px solid ${layers[0].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
-              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[0].accent }}>{layers[0].label}</span>
+        {/* Four-layer chain grid */}
+        <div style={{ display: "grid", gridTemplateColumns: `1fr ${ARROW_COL} 1fr ${ARROW_COL} 1fr ${ARROW_COL} 1fr`, alignItems: "stretch", gap: 0, marginBottom: 56 }}>
+
+          {/* LAYER 1 — Signal */}
+          <div style={{ ...cardBase, border: `1px solid ${TEAL}35`, borderTop: `3px solid ${TEAL}` }}>
+            <div style={{ background: `${TEAL}14`, border: `1px solid ${TEAL}35`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: TEAL }}>Signal Layer</span>
             </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[0].accent, lineHeight: 1 }}>{layers[0].num}</span>
-              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[0].unit}</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+              <span style={{ ...GEO, fontSize: 48, fontWeight: 700, color: TEAL, lineHeight: 1 }}>248</span>
+              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>data points</span>
             </div>
-            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[0].title}</div>
-            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[0].body}</div>
-            <div style={{ ...DM, fontSize: 12, color: layers[0].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[0].sub}</div>
+            <div style={{ ...DM, fontSize: 17, fontWeight: 700, color: "#fff" }}>Detection</div>
+            <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65 }}>
+              AI monitors 248 data points across 16 signal categories every 15 minutes — surfacing strategic shifts before they're visible to the organization.
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: TEAL, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 12, marginTop: 2 }}>
+              Competitive moves. Regulatory signals. Financial triggers. Operational anomalies.
+            </div>
           </div>
-          <div key="arrow-0" style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 4 }}>
-            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
-            <div style={{ ...DM, fontSize: 20, color: GOLD, fontWeight: 700 }}>→</div>
-            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+
+          {/* Arrow 1 */}
+          <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 3 }}>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
+            <div style={{ ...DM, fontSize: 18, color: GOLD, fontWeight: 700 }}>→</div>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
           </div>
-          <div key="card-1" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[1].border}`, borderTop: `3px solid ${layers[1].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
-            <div style={{ background: layers[1].light, border: `1px solid ${layers[1].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
-              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[1].accent }}>{layers[1].label}</span>
+
+          {/* LAYER 2 — Decision */}
+          <div style={{ ...cardBase, border: `1px solid ${GOLD}35`, borderTop: `3px solid ${GOLD}` }}>
+            <div style={{ background: `${GOLD}14`, border: `1px solid ${GOLD}35`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD }}>Decision Layer</span>
             </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[1].accent, lineHeight: 1 }}>{layers[1].num}</span>
-              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[1].unit}</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+              <span style={{ ...GEO, fontSize: 48, fontWeight: 700, color: GOLD, lineHeight: 1 }}>221</span>
+              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>exec triggers</span>
             </div>
-            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[1].title}</div>
-            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[1].body}</div>
-            <div style={{ ...DM, fontSize: 12, color: layers[1].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[1].sub}</div>
+            <div style={{ ...DM, fontSize: 17, fontWeight: 700, color: "#fff" }}>Pre-Staged Decision</div>
+            <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65 }}>
+              Each trigger encodes a pre-defined decision rule. When signal conditions are met, the decision is already made — codified during The Install, not improvised at the moment.
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: GOLD, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 12, marginTop: 2 }}>
+              The trigger IS the decision. The deliberation happened weeks ago, not under pressure.
+            </div>
           </div>
-          <div key="arrow-1" style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 4 }}>
-            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
-            <div style={{ ...DM, fontSize: 20, color: GOLD, fontWeight: 700 }}>→</div>
-            <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.12)" }} />
+
+          {/* Arrow 2 */}
+          <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 3 }}>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
+            <div style={{ ...DM, fontSize: 18, color: GOLD, fontWeight: 700 }}>→</div>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
           </div>
-          <div key="card-2" style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${layers[2].border}`, borderTop: `3px solid ${layers[2].accent}`, borderRadius: 8, padding: "36px 32px", display: "flex", flexDirection: "column" as const, gap: 16 }}>
-            <div style={{ background: layers[2].light, border: `1px solid ${layers[2].border}`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
-              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: layers[2].accent }}>{layers[2].label}</span>
+
+          {/* LAYER 3 — Authorization (human moment — visually distinct) */}
+          <div style={{
+            background: `rgba(201,168,76,0.08)`,
+            border: `1px solid ${GOLD}55`,
+            borderTop: `3px solid ${GOLD}`,
+            borderRadius: 8,
+            padding: "30px 26px",
+            display: "flex", flexDirection: "column" as const, gap: 14,
+            position: "relative" as const,
+            boxShadow: `0 0 40px ${GOLD}15`,
+          }}>
+            {/* Human badge */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ background: `${GOLD}20`, border: `1px solid ${GOLD}50`, borderRadius: 3, padding: "3px 10px" }}>
+                <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD }}>Authorization</span>
+              </div>
+              <div style={{ background: `${TEAL}20`, border: `1px solid ${TEAL}40`, borderRadius: 10, padding: "2px 8px" }}>
+                <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: TEAL_LIGHT }}>Human</span>
+              </div>
             </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-              <span style={{ ...GEO, fontSize: 56, fontWeight: 700, color: layers[2].accent, lineHeight: 1 }}>{layers[2].num}</span>
-              <span style={{ ...DM, fontSize: 13, color: MUTED_DARK, fontWeight: 500 }}>{layers[2].unit}</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+              <span style={{ ...GEO, fontSize: 48, fontWeight: 700, color: GOLD, lineHeight: 1 }}>1</span>
+              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>authorized executive</span>
             </div>
-            <div style={{ ...DM, fontSize: 18, fontWeight: 700, color: "#fff" }}>{layers[2].title}</div>
-            <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>{layers[2].body}</div>
-            <div style={{ ...DM, fontSize: 12, color: layers[2].accent, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 14, marginTop: 4 }}>{layers[2].sub}</div>
+            <div style={{ ...DM, fontSize: 17, fontWeight: 700, color: "#fff" }}>Swift Authorization</div>
+            <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65 }}>
+              The trigger fires. The executive with authority sees the pre-staged response, confirms governance is in place, and authorizes in seconds — not weeks. The preparation removed every obstacle to this moment.
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: GOLD, lineHeight: 1.55, fontStyle: "italic", borderTop: `1px solid ${GOLD}20`, paddingTop: 12, marginTop: 2 }}>
+              One click. Full organizational authority. Without the preparation, this moment takes 30 days.
+            </div>
           </div>
+
+          {/* Arrow 3 */}
+          <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center", gap: 3 }}>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
+            <div style={{ ...DM, fontSize: 18, color: GOLD, fontWeight: 700 }}>→</div>
+            <div style={{ width: 1, height: 16, background: "rgba(255,255,255,0.1)" }} />
+          </div>
+
+          {/* LAYER 4 — Execution */}
+          <div style={{ ...cardBase, border: `1px solid ${TEAL_LIGHT}35`, borderTop: `3px solid ${TEAL_LIGHT}` }}>
+            <div style={{ background: `${TEAL_LIGHT}14`, border: `1px solid ${TEAL_LIGHT}35`, borderRadius: 3, padding: "3px 10px", alignSelf: "flex-start" as const }}>
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: TEAL_LIGHT }}>Execution Layer</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+              <span style={{ ...GEO, fontSize: 48, fontWeight: 700, color: TEAL_LIGHT, lineHeight: 1 }}>170</span>
+              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>playbooks</span>
+            </div>
+            <div style={{ ...DM, fontSize: 17, fontWeight: 700, color: "#fff" }}>Deployment</div>
+            <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65 }}>
+              170 pre-staged playbooks deploy simultaneously — roles assigned, tasks distributed, war rooms opened, stakeholders notified. The organization moves without a coordination call.
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 12, marginTop: 2 }}>
+              30 days of mobilization compressed to 12 minutes. Every time. 3,600× head start.
+            </div>
+          </div>
+
         </div>
 
         {/* Thesis callout */}
@@ -817,17 +855,18 @@ function ThreeLayerChainSection() {
           background: "rgba(255,255,255,0.03)",
           border: `1px solid rgba(255,255,255,0.10)`,
           borderLeft: `4px solid ${GOLD}`,
-          borderRadius: 6, padding: "28px 36px",
-          maxWidth: 860, margin: "0 auto",
+          borderRadius: 6, padding: "28px 40px",
+          maxWidth: 920, margin: "0 auto",
           textAlign: "center" as const,
         }}>
-          <div style={{ ...GEO, fontSize: "clamp(17px,2vw,22px)", fontWeight: 700, color: "#fff", lineHeight: 1.45, marginBottom: 12 }}>
-            "The preparation IS the decision-making. Done before the trigger fires."
+          <div style={{ ...GEO, fontSize: "clamp(16px,1.8vw,21px)", fontWeight: 700, color: "#fff", lineHeight: 1.5, marginBottom: 12 }}>
+            "The preparation is what makes authorization instantaneous. Without it, every trigger becomes a 30-day deliberation cycle."
           </div>
-          <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.65 }}>
-            Roman, Chakri, Yana — every expert in this space is building tools to help organizations make faster decisions 
-            in the moment. Execution OS removed the moment entirely. The decisions are made during The Install. 
-            When the trigger fires, the organization executes — it does not deliberate.
+          <div style={{ ...DM, fontSize: 14, color: MUTED_DARK, lineHeight: 1.7 }}>
+            Every other vendor helps organizations decide faster or coordinate better. Execution OS is the only platform that 
+            pre-stages the signal detection, the decision logic, the governance structure, and the execution playbook — 
+            so the moment of authorization is measured in seconds, not months. Decision authority stays with your executives. 
+            Everything else is already done.
           </div>
         </div>
 
