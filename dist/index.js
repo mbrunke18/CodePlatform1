@@ -38649,6 +38649,111 @@ ${"\u2500".repeat(70)}`);
   }
   return { success: true, emailSent };
 }
+async function sendWelcomeTriggerDemo(email, firstName) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey) return;
+  const platformUrl = "https://vaughnmartin.com";
+  const unsubToken = Buffer.from(email).toString("base64url");
+  const unsubUrl = `${platformUrl}/api/unsubscribe?t=${unsubToken}`;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#132558;padding:32px 36px;">
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS \xB7 Live Detection Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">AI Competitive Disruption</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Technology &amp; Digital</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">94%</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;"><a href="https://www.cnbc.com/technology/" style="color:#C9A84C;">CNBC Technology</a></td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:700;">AI Competitive Disruption Response</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
+                Aggressive Pricing Disruption &nbsp;\xB7&nbsp; Digital Transformation Acceleration
+              </td>
+            </tr>
+          </table>
+          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Why This Trigger Fired</div>
+              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">5 of 6 KEYWORDS MATCHED</span>
+            </div>
+            <div style="margin-bottom:14px;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${["AI disruption", "market share", "competitive threat", "automation", "enterprise"].map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption \u2014 Technology &amp; Digital domain \xB7 94% confidence</div>
+            </div>
+          </div>
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprises are accelerating AI adoption across core operations \u2014 pricing automation, customer intelligence, and supply chain \u2014 creating structural competitive gaps between early movers and laggards that widen each quarter.</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+          </div>
+          <div style="text-align:center;">
+            <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
+          </div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Execution OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Execution OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+  const resend2 = new Resend3(apiKey);
+  const fromAddresses = [
+    "Execution OS <pilot@vaughnmartin.com>",
+    "Execution OS <onboarding@resend.dev>"
+  ];
+  for (const from of fromAddresses) {
+    try {
+      const { error } = await resend2.emails.send({
+        from,
+        replyTo: ADMIN_EMAIL,
+        to: email,
+        subject: `\u{1F534} Trigger Detected: AI Competitive Disruption (94% confidence)`,
+        html
+      });
+      if (error) {
+        console.warn(`[WelcomeTrigger] Sender ${from} rejected: ${error.message}`);
+        continue;
+      }
+      console.log(`\u2705 [WelcomeTrigger] Trigger demo alert sent to ${email} via ${from}`);
+      return;
+    } catch (err) {
+      console.warn(`[WelcomeTrigger] Sender ${from} threw: ${err.message}`);
+    }
+  }
+  console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
+}
 async function verifyMagicLinkToken(token) {
   const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
   if (!rows.length) return { valid: false, reason: "not_found" };
@@ -42945,6 +43050,9 @@ async function registerRoutes(app2, existingServer) {
         }
       }
     }
+    sendWelcomeTriggerDemo(email, firstName).catch(
+      (err) => console.warn("[MagicLink] Welcome trigger demo email failed (non-fatal):", err?.message)
+    );
     const sessionUser = {
       id: userId,
       email,

@@ -13,7 +13,7 @@ import demoRiskRoutes from "./routes/demoRiskRoutes";
 import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
 import { registerDemoAccessRoute } from "./routes/demoAccessRoute";
-import { createAndSendMagicLink, verifyMagicLinkToken } from "./services/magicLinkService";
+import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } from "./services/magicLinkService";
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
@@ -891,6 +891,14 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         }
       }
     }
+    // Fire a guaranteed trigger demo alert email so the user experiences
+    // what the platform delivers — regardless of RSS signal thresholds or
+    // deduplication windows. Fires once per token (verifyMagicLinkToken
+    // already marks tokens as used, so subsequent clicks return 'already_used').
+    sendWelcomeTriggerDemo(email, firstName).catch(err =>
+      console.warn('[MagicLink] Welcome trigger demo email failed (non-fatal):', err?.message)
+    );
+
     const sessionUser = {
       id: userId, email, firstName, lastName, company, title,
       organizationId: userOrgs[0]?.id,
