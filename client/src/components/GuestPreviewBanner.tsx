@@ -158,7 +158,7 @@ export function GuestPreviewBanner() {
             textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
           }}
         >
-          Get 24-Hour Access
+          Get 48-Hour Access
         </a>
         <button
           onClick={() => login()}
