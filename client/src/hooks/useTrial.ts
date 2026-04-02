@@ -16,6 +16,7 @@ export function useTrial() {
   });
 
   const active = data?.active ?? false;
+  const isExpired = !active && data?.reason === 'expired';
   const expiresAt = data?.expiresAt ? new Date(data.expiresAt) : null;
 
   function timeRemaining(): string {
@@ -30,6 +31,7 @@ export function useTrial() {
 
   return {
     isTrial: active,
+    isExpired,
     isLoading,
     firstName: data?.firstName,
     company: data?.company,
