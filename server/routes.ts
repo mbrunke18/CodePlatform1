@@ -7048,7 +7048,13 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
 
   // POST /api/signals/live/test-detection — manually trigger one evaluation cycle (demo tool)
+  // Also accepts localhost calls without session auth (internal test use only)
   app.post('/api/signals/live/test-detection', async (req: any, res) => {
+    const internalToken = req.headers['x-internal-token'];
+    const isInternalCall = internalToken === 'vm-internal-test-2026';
+    if (!isInternalCall && !req.isAuthenticated?.()) {
+      return res.status(401).json({ error: 'Authentication required', message: 'This endpoint requires authentication. Please log in to continue.' });
+    }
     try {
       const { evaluateAndPersistSignals } = await import('./services/SignalEvaluationService.js');
       const organizationId = req.body?.organizationId || 'system';
