@@ -601,10 +601,10 @@ function MissingLayerSection() {
 // ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
 function IDEASection() {
   const cards = [
-    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Playbooks",        body: "Every scenario is mapped before the trigger fires. Roles, tasks, documents, and budget pre-assigned across 9 strategic domains.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors competitive, regulatory, financial, and operational signals continuously. The system surfaces the trigger before it becomes a crisis.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
-    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One human approval. The system distributes roles, tasks, documents, and budgets to every stakeholder simultaneously. No coordination calls.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation closes the loop. What worked, what didn't, and what to pre-stage better next time — automatically fed back into your playbook library.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Playbooks",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which playbook matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
 
   return (

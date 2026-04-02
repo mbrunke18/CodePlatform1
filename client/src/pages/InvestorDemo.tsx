@@ -95,7 +95,7 @@ const IDEA_STORY = [
     id: 3,
     beat: "DETECT",
     title: "AI Monitors. You Decide.",
-    subtitle: "Human-AI partnership for strategic velocity",
+    subtitle: "The decision is pre-staged. The executive just authorizes.",
     phase: "DETECT",
     phaseColor: "bg-[#0A0F2E]",
     icon: AlertTriangle,
@@ -103,7 +103,7 @@ const IDEA_STORY = [
     bgColor: "bg-[#0A0F2E]/10",
     time: 50,
     description: "Execution OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right playbook with confidence scoring. AI monitors and recommends. Executives decide.",
-    investorHighlight: "The human-AI partnership is key to enterprise adoption. We augment executives, we don't replace them. This is how you sell to Fortune 1000 C-suites.",
+    investorHighlight: "What makes this sellable to Fortune 1000 C-suites: we don't replace executives — we eliminate the 30-day mobilization cycle that surrounds them. AI monitors and recommends. The human decision is the same. It just arrives in seconds instead of weeks.",
     metrics: [
       { label: "Signals Monitored", value: "2,847" },
       { label: "Pattern Match", value: "94%" },

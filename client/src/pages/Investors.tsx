@@ -130,8 +130,8 @@ const competitiveAdvantages = [
     icon: Zap,
   },
   {
-    title: "Human-AI Partnership",
-    description: "Unlike pure automation tools, Execution OS keeps executives in control while AI handles monitoring and recommendations.",
+    title: "Executive Authority Preserved",
+    description: "No playbook activates without executive authorization. AI monitors, scores, and recommends. Humans decide. The preparation just means that decision takes seconds — not 30 days.",
     icon: Users,
   },
   {

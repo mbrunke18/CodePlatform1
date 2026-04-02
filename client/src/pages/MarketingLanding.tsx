@@ -121,13 +121,13 @@ export default function MarketingLanding() {
               </Badge>
             </div>
             <h2 className="font-serif text-3xl md:text-6xl text-[#0A0F2E] mb-8">
-              Execution OS for Fortune 1000 Companies
+              While Others Mobilize, You're Already Executing.
             </h2>
             <p className="text-xl md:text-2xl text-[#6B7280] mb-8 leading-relaxed font-light">
-              When a strategic trigger hits—a competitor launches, regulations shift, or a market opportunity appears—organizations typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">waste 20-50 hours getting organized</span>. Execution OS compresses that to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
+              When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Execution OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              Our AI monitors 248+ data points across 16 signal categories, detecting threats and opportunities before competitors see them. When a signal breaches a threshold, Execution OS automatically activates the right playbook: notifying stakeholders, assigning tasks, and unlocking pre-approved budgets—all in under 12 minutes.
+              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Execution OS deploys the matched playbook: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>

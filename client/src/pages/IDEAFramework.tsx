@@ -130,7 +130,7 @@ export default function IDEAFramework() {
         "IDENTIFY triggers. DETECT signals. EXECUTE playbooks. ADVANCE the organization. The IDEA Framework is the operating model that powers 12-minute strategic execution.",
       ogTitle: "The IDEA Framework — VaughnMartin Execution OS",
       ogDescription:
-        "A human-AI partnership model for Fortune 1000 strategic execution. AI handles monitoring and orchestration. Humans retain all strategic authority.",
+        "The operating model that turns AI signal detection into 12-minute organizational execution. AI monitors, scores, and recommends. Executives authorize. The decision was already pre-staged.",
     });
   }, []);
 
@@ -325,7 +325,7 @@ export default function IDEAFramework() {
           );
         })}
 
-        {/* Human-AI Partnership Principle */}
+        {/* Governing Principle — Executive Authority */}
         <section style={{ background: NAVY }} className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-6">

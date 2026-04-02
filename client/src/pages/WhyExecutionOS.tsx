@@ -127,7 +127,7 @@ const fiveReasons = [
     icon: Shield,
     title: "Human authority is preserved — AI handles orchestration",
     body: "Every board's fear about AI is loss of control. Execution OS is explicitly built on the principle that humans decide and AI deploys. Your executives retain all decision authority. The AI monitors, recommends, and coordinates — but no activation happens without executive approval. This is not a limitation; it is the design.",
-    metric: "Human-AI partnership model",
+    metric: "Executive authority preserved",
   },
   {
     icon: Target,
