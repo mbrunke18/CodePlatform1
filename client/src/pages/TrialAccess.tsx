@@ -50,7 +50,7 @@ export default function TrialAccess() {
           </div>
           <h1 className="text-2xl font-bold mb-3" style={{ color: NAVY }}>Check Your Email</h1>
           <p className="text-sm mb-2" style={{ color: "#374151" }}>
-            Your 24-hour trial activation link has been sent to:
+            Your 48-hour trial activation link has been sent to:
           </p>
           <p className="font-bold mb-6" style={{ color: NAVY }}>{submittedEmail}</p>
           <div className="text-left rounded-lg p-4 mb-6" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
@@ -80,19 +80,19 @@ export default function TrialAccess() {
         </div>
         <div>
           <div className="inline-block px-3 py-1 rounded text-xs font-bold tracking-widest uppercase mb-6" style={{ background: "rgba(201,168,76,0.15)", color: GOLD, border: "1px solid rgba(201,168,76,0.3)" }}>
-            24-Hour Full Access
+            48-Hour Full Access
           </div>
           <h2 className="text-3xl font-bold text-white mb-4" style={{ lineHeight: 1.25 }}>
             See the full platform.<br />No commitment required.
           </h2>
           <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
-            Request access and get an activation link instantly. Your 24-hour session unlocks every capability — live trigger detection, 170 playbooks, Mission Control, and the complete IDEA Framework.
+            Request access and get an activation link instantly. Your 48-hour session unlocks every capability — live trigger detection, 170 playbooks, Mission Control, and the complete IDEA Framework.
           </p>
           <div className="space-y-4">
             {[
               { icon: Zap, text: "Activation link delivered in under 60 seconds" },
               { icon: Lock, text: "Full platform — no feature restrictions" },
-              { icon: Clock, text: "24 hours from the moment you activate" },
+              { icon: Clock, text: "48 hours from the moment you activate" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.15)" }}>
@@ -114,7 +114,7 @@ export default function TrialAccess() {
           <div className="mb-8 lg:hidden">
             <VaughnMartinLogo color="dark" height={40} variant="full" />
           </div>
-          <h1 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Get 24-Hour Full Access</h1>
+          <h1 className="text-2xl font-bold mb-2" style={{ color: NAVY }}>Get 48-Hour Full Access</h1>
           <p className="text-sm mb-8" style={{ color: "#6B7280" }}>
             Fill in your details and we'll send your activation link immediately.
           </p>

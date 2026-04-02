@@ -39,7 +39,7 @@ export function GuestPreviewBanner() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Clock size={14} color={GOLD} style={{ flexShrink: 0 }} />
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
-            <strong style={{ color: GOLD, fontWeight: 700 }}>Your 24-hour trial has ended.</strong>
+            <strong style={{ color: GOLD, fontWeight: 700 }}>Your 48-hour trial has ended.</strong>
             {' '}Ready to go deeper? Apply for the Pilot Program — or request extended access if you need more time.
           </span>
         </div>
@@ -145,7 +145,7 @@ export function GuestPreviewBanner() {
         <Lock size={14} color={GOLD} style={{ flexShrink: 0 }} />
         <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
           <strong style={{ color: '#fff', fontWeight: 700 }}>You are viewing a limited preview.</strong>
-          {' '}Full access is available to approved organizations — or request a 24-hour trial to explore the complete platform.
+          {' '}Full access is available to approved organizations — or request a 48-hour trial to explore the complete platform.
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
