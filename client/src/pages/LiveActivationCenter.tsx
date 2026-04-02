@@ -33,6 +33,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
 import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
 import PageLayout from '@/components/layout/PageLayout';
+import { GovernanceReadinessCheck } from '@/components/execution/GovernanceReadinessCheck';
 
 type StakeholderStatus = 'pending' | 'notifying' | 'notified' | 'acknowledged';
 type TaskStatus = 'pending' | 'in_progress' | 'completed';
@@ -250,6 +251,7 @@ export default function LiveActivationCenter() {
   const highlightedTaskIds = roleOverlay?.highlightedTaskIds || [];
 
   const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
+  const [showGovernanceCheck, setShowGovernanceCheck] = useState(false);
   const [activationId, setActivationId] = useState<string | null>(null);
   const [activationState, setActivationState] = useState<ActivationState>('ACTIVATING');
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
@@ -599,7 +601,7 @@ export default function LiveActivationCenter() {
                 </Button>
               </Link>
               <Button 
-                onClick={() => activateMutation.mutate(selectedPlaybook)}
+                onClick={() => setShowGovernanceCheck(true)}
                 disabled={activateMutation.isPending}
                 className="bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 px-12 font-bold rounded-xl text-lg shadow-lg group"
               >
@@ -615,6 +617,18 @@ export default function LiveActivationCenter() {
                   </>
                 )}
               </Button>
+
+              {showGovernanceCheck && (
+                <GovernanceReadinessCheck
+                  playbookName={activePlaybook?.name || 'Selected Playbook'}
+                  onConfirm={() => {
+                    setShowGovernanceCheck(false);
+                    activateMutation.mutate(selectedPlaybook);
+                  }}
+                  onCancel={() => setShowGovernanceCheck(false)}
+                  isActivating={activateMutation.isPending}
+                />
+              )}
             </div>
           </div>
         </div>

@@ -887,7 +887,139 @@ function PlatformPreviewSection() {
   );
 }
 
-// ─── SECTION 6b: Anonymous Executive Quote ────────────────────────────────────
+// ─── SECTION 6b: Pre-Flight Governance Callout ───────────────────────────────
+function PreFlightGovernanceSection() {
+  const checks = [
+    {
+      label: "Decision Authority",
+      question: "Is decision authority assigned for this domain?",
+      sub: "A named executive holds final approval rights",
+      color: TEAL,
+    },
+    {
+      label: "Executive Sponsorship",
+      question: "Is executive sponsorship confirmed?",
+      sub: "A C-suite sponsor is committed and will remove blockers",
+      color: GOLD,
+    },
+    {
+      label: "Escalation Authority",
+      question: "Is conflict escalation authority named?",
+      sub: "One person decides if alignment breaks down",
+      color: TEAL_LIGHT,
+    },
+  ];
+
+  return (
+    <section style={{ background: IVORY, padding: "88px 0 80px", position: "relative", overflow: "hidden" }}>
+      {/* Subtle border top */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, transparent, ${GOLD}40, transparent)` }} />
+      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+        <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: 48 }}>
+
+          {/* Left column: text */}
+          <div style={{ maxWidth: 680 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 10,
+              background: `${TEAL}12`, border: `1px solid ${TEAL}30`,
+              borderRadius: 2, padding: "5px 14px", marginBottom: 20,
+            }}>
+              <div style={{ width: 7, height: 7, borderRadius: "50%", background: TEAL }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL }}>
+                Pre-Flight Readiness Check
+              </span>
+            </div>
+            <h2 style={{ ...GEO, fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
+              Execution OS confirms your governance infrastructure<br />
+              <em style={{ fontStyle: "italic", color: GOLD }}>before the playbook deploys.</em>
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: MUTED_LIGHT, lineHeight: 1.7, maxWidth: 600, marginBottom: 0 }}>
+              Speed without governance is chaos. Before any activation, Execution OS surfaces three questions 
+              that determine whether your organization can actually execute — not just mobilize. 
+              It doesn't block action. It ensures the person taking action has full situational awareness.
+            </p>
+          </div>
+
+          {/* 3 checks */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, width: "100%" }}>
+            {checks.map((c, i) => (
+              <div key={c.label} style={{
+                background: "#fff",
+                border: `1px solid ${BORDER}`,
+                borderTop: `3px solid ${c.color}`,
+                borderRadius: 6,
+                padding: "28px 24px",
+                display: "flex", flexDirection: "column" as const, gap: 14,
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{
+                    width: 28, height: 28, borderRadius: 4,
+                    background: `${c.color}15`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                  }}>
+                    <span style={{ ...DM, fontSize: 13, fontWeight: 800, color: c.color }}>{i + 1}</span>
+                  </div>
+                  <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: c.color }}>
+                    {c.label}
+                  </span>
+                </div>
+                <div style={{ ...DM, fontSize: 14, fontWeight: 600, color: NAVY, lineHeight: 1.5 }}>
+                  "{c.question}"
+                </div>
+                <div style={{ ...DM, fontSize: 12, color: MUTED_LIGHT, lineHeight: 1.5 }}>
+                  {c.sub}
+                </div>
+                {/* Mock answer buttons */}
+                <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                  <div style={{
+                    flex: 1, textAlign: "center" as const, padding: "7px 0", borderRadius: 4,
+                    background: `${TEAL}12`, border: `1px solid ${TEAL}30`,
+                    fontSize: 11, fontWeight: 700, color: TEAL,
+                  }}>
+                    ✓ Yes, confirmed
+                  </div>
+                  <div style={{
+                    flex: 1, textAlign: "center" as const, padding: "7px 0", borderRadius: 4,
+                    background: "#F3F4F6", border: `1px solid ${BORDER}`,
+                    fontSize: 11, fontWeight: 600, color: "#9CA3AF",
+                  }}>
+                    Not yet
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer note */}
+          <div style={{
+            display: "flex", alignItems: "flex-start", gap: 16,
+            background: `${NAVY}06`, border: `1px solid ${BORDER}`,
+            borderLeft: `3px solid ${GOLD}`, borderRadius: 4, padding: "18px 24px",
+            maxWidth: 740,
+          }}>
+            <div style={{ width: 20, height: 20, borderRadius: "50%", background: `${GOLD}20`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+              <span style={{ fontSize: 10, fontWeight: 800, color: GOLD }}>!</span>
+            </div>
+            <div>
+              <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>
+                Gaps are flagged for awareness — not used to block activation.
+              </div>
+              <div style={{ ...DM, fontSize: 12, color: MUTED_LIGHT, lineHeight: 1.6 }}>
+                The Pre-Flight Check does not impose governance overhead. It ensures your orchestrator 
+                activates with full situational awareness, so the decision — and accountability — 
+                remains exactly where it belongs: with your executive leadership.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── SECTION 6c: Anonymous Executive Quote ────────────────────────────────────
 function AnonymousQuoteSection() {
   return (
     <section style={{ background: NAVY, padding: "80px 0", position: "relative", overflow: "hidden" }}>
@@ -2288,6 +2420,7 @@ export default function Homepage() {
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
+      <PreFlightGovernanceSection />
       <MicrosoftEcosystemBanner />
       <CredibilitySection />
       <PersonalizedROISection />
