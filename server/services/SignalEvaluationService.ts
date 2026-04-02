@@ -240,11 +240,12 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const CONFIDENCE_THRESHOLD = 72; // Aligned with documented threshold — meaningful above base noise floor
 
   // Minimum keyword matches required before a default-pattern trigger can fire.
-  // 2 matches required — RSS feed descriptions are short (title + ~400 chars), so requiring 3
-  // was eliminating high-confidence signals that clearly belong to a domain but only
-  // surface 2 distinct keywords in the available text. Confidence threshold (72%) still
-  // filters noise — a signal must score meaningfully, not just graze 2 keywords.
-  const MIN_KEYWORD_MATCHES = 2;
+  // 3 matches required — ensures the signal is substantively about the trigger domain,
+  // not a tangential article that happens to mention one or two related terms.
+  // The description window has been extended to 450 chars and each pattern now includes
+  // the natural news vocabulary writers actually use, so genuine events will surface
+  // 3+ matches while surface-level mentions remain filtered out.
+  const MIN_KEYWORD_MATCHES = 3;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
