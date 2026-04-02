@@ -715,7 +715,7 @@ function ThreeLayerChainSection() {
       <div style={{ ...CONTAINER, maxWidth: 1220, position: "relative" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center" as const, marginBottom: 64 }}>
+        <div style={{ textAlign: "center" as const, marginBottom: 56 }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 10,
             background: `${GOLD}15`, border: `1px solid ${GOLD}35`,
@@ -727,14 +727,79 @@ function ThreeLayerChainSection() {
             </span>
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(28px,3.2vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 20 }}>
-            Not a coordination tool. Not a decision support tool.<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>Four layers. All pre-staged. One authorized human.</em>
+            Prepare every situation in advance.<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>When the threshold fires — decision made, execution in flight.</em>
           </h2>
-          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, lineHeight: 1.7, maxWidth: 720, margin: "0 auto" }}>
-            You cannot reach execution without passing through authorization. Execution OS pre-stages everything so that 
-            when a trigger fires, the executive who holds authority can act in seconds — not weeks. 
-            The preparation is what makes the authorization instant.
+          <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, lineHeight: 1.7, maxWidth: 740, margin: "0 auto" }}>
+            You identify the situations you want to be ready for. You build the playbooks. You define the data points and 
+            set the thresholds specific to each situation. The moment those thresholds are met, the trigger fires — 
+            and because the decision was encoded during setup, authorization takes seconds and execution is immediately in motion.
           </p>
+        </div>
+
+        {/* THE INSTALL — preparation phase strip */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+            <div style={{ height: 1, flex: 1, background: "rgba(255,255,255,0.08)" }} />
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: `${TEAL}12`, border: `1px solid ${TEAL}30`,
+              borderRadius: 2, padding: "4px 14px",
+            }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
+              <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL }}>
+                Phase 1 — The Install
+              </span>
+            </div>
+            <div style={{ height: 1, flex: 1, background: "rgba(255,255,255,0.08)" }} />
+          </div>
+
+          <div style={{
+            background: "rgba(255,255,255,0.02)", border: `1px solid rgba(255,255,255,0.08)`,
+            borderRadius: 8, padding: "20px 28px",
+            display: "grid", gridTemplateColumns: "1fr 20px 1fr 20px 1fr 20px 1fr", alignItems: "center", gap: 0,
+          }}>
+            {[
+              { num: "1", label: "Identify", desc: "Every situation worth preparing for — mapped by domain and risk profile" },
+              { num: "2", label: "Build Playbooks", desc: "The exact execution response for each identified situation, pre-staged" },
+              { num: "3", label: "Define Triggers", desc: "The specific data points and signal conditions unique to each situation" },
+              { num: "4", label: "Set Thresholds", desc: "The precise conditions that — when met — activate the entire response" },
+            ].map((step, i) => (
+              <>
+                <div key={step.num} style={{ display: "flex", flexDirection: "column" as const, gap: 6, padding: "0 8px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <div style={{
+                      width: 22, height: 22, borderRadius: "50%",
+                      background: `${TEAL}20`, border: `1px solid ${TEAL}40`,
+                      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                    }}>
+                      <span style={{ ...DM, fontSize: 10, fontWeight: 800, color: TEAL }}>{step.num}</span>
+                    </div>
+                    <span style={{ ...DM, fontSize: 12, fontWeight: 700, color: "#fff" }}>{step.label}</span>
+                  </div>
+                  <span style={{ ...DM, fontSize: 11, color: MUTED_DARK, lineHeight: 1.5, paddingLeft: 30 }}>{step.desc}</span>
+                </div>
+                {i < 3 && (
+                  <div key={`sep-${i}`} style={{ textAlign: "center" as const, color: TEAL, fontSize: 14, fontWeight: 700, opacity: 0.6 }}>→</div>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+
+        {/* Divider: "When the threshold fires..." */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+          <div style={{ height: 1, flex: 1, background: "rgba(255,255,255,0.06)" }} />
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: `${GOLD}15`, border: `1px solid ${GOLD}35`,
+            borderRadius: 2, padding: "5px 16px",
+          }}>
+            <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>
+              ↓ Phase 2 — When the threshold fires
+            </span>
+          </div>
+          <div style={{ height: 1, flex: 1, background: "rgba(255,255,255,0.06)" }} />
         </div>
 
         {/* Four-layer chain grid */}
