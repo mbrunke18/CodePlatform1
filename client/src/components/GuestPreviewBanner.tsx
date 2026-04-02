@@ -27,29 +27,18 @@ export function GuestPreviewBanner() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Lock size={14} color={GOLD} style={{ flexShrink: 0 }} />
         <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
-          <strong style={{ color: '#fff', fontWeight: 700 }}>You're viewing in preview mode.</strong>
-          {' '}Sections showing limited data require sign-in — the platform is fully operational for authenticated users.
+          <strong style={{ color: '#fff', fontWeight: 700 }}>You are viewing a limited preview.</strong>
+          {' '}Full platform access is available to approved organizations. Apply for the Pilot Program if you meet the requirements, or sign in if you already have access.
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-        <a
-          href="/request-access"
-          style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
-            letterSpacing: '0.1em', textTransform: 'uppercase' as const,
-            padding: '7px 18px', background: GOLD, color: NAVY,
-            textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
-          }}
-        >
-          Request Access
-        </a>
         <button
           onClick={() => login()}
           style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: 'transparent',
-            border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.8)',
+            border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
             borderRadius: 4, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           }}
         >
