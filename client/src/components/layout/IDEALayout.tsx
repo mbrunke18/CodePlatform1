@@ -4,6 +4,7 @@ import StandardNav from './StandardNav';
 import Footer from './Footer';
 import { cn } from '@/lib/utils';
 import { BackButton } from '@/components/ui/back-button';
+import { GuestPreviewBanner } from '@/components/GuestPreviewBanner';
 
 interface IDEALayoutProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ export default function IDEALayout({
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <StandardNav />
+      <GuestPreviewBanner />
       <div className="flex flex-1">
         <IDEASidebar />
         <main className={cn('flex-1 lg:ml-0 overflow-auto', className)}>

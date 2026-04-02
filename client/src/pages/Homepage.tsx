@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { Link, useLocation } from "wouter";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
@@ -2684,6 +2685,7 @@ export default function Homepage() {
   return (
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
       <HomepageNav />
+      <GuestPreviewBanner />
       <HeroSection />
       <ProblemSection />
       <ExecutionGapSection />

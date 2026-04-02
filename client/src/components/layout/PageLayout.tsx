@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { BackButton } from '@/components/ui/back-button';
 import { useAuth } from '@/hooks/useAuth';
 import { ChevronRight } from 'lucide-react';
+import { GuestPreviewBanner } from '@/components/GuestPreviewBanner';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -121,6 +122,7 @@ export default function PageLayout({
   return (
     <div className={`min-h-screen flex flex-col page-background ${className}`}>
       <StandardNav />
+      <GuestPreviewBanner />
 
       {showBreadcrumb && <Breadcrumb location={location} />}
       
